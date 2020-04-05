@@ -1,0 +1,2099 @@
+Beyond Linux^® From Scratch (System V Edition) - Version 9.1
+
+Chapter 1. Welcome to BLFS
+
+  • Prev
+
+    Getting the Source Packages
+
+  • Next
+
+    Mailing Lists
+
+  • Up
+  • Home
+
+Change Log
+
+Current release: 9.1 – March 1st, 2020
+
+Changelog Entries:
+
+  • March 1st, 2020
+
+      □ [bdubbs] - Release of BLFS-9.1.
+
+  • February 29th, 2020
+
+      □ [renodr] - Update to seamonkey-2.53.1. This has security fixes from
+        several previous versions of firefox, and is a recommended upgrade.
+        Fixes #13202.
+
+  • February 28th, 2020
+
+      □ [ken] - Add libXpresent as external optional dependency for xfwm4.
+
+  • February 27th, 2020
+
+      □ [renodr] - Update to epiphany-3.34.4. Fixes #13138.
+
+      □ [renodr] - Update to gnome-disk-utility-3.34.4. Fixes #13148.
+
+      □ [renodr] - Update to file-roller-3.32.4. Fixes #13142.
+
+      □ [renodr] - Update to evolution-3.34.4. Fixes #13135.
+
+      □ [renodr] - Update to gnome-control-center-3.34.4. Fixes #13129.
+
+      □ [renodr] - Update to mutter-3.34.4. Fixes #13149.
+
+      □ [renodr] - Update to gnome-shell-3.34.4. Fixes #13150>.
+
+  • February 26th, 2020
+
+      □ [renodr] - Update to evolution-data-server-3.34.4. Part of #13135.
+
+      □ [renodr] - Update to tracker-2.3.2. Part of #13167.
+
+      □ [renodr] - Update to dconf-editor-3.34.4. Fixes #13132.
+
+      □ [renodr] - Add test instructions back to folks now that the test suite
+        has been restored.
+
+      □ [renodr] - Update to tracker-miners-2.3.2. Fixes #13167.
+
+  • February 25th, 2020
+
+      □ [renodr] - Update to grilo-0.3.12. Fixes #13137.
+
+      □ [renodr] - Update to gnome-desktop-3.34.4. Fixes #13153.
+
+      □ [renodr] - Update to gjs-1.58.5. Fixes #13157.
+
+      □ [renodr] - Update to WebkitGTK+-2.26.4. Fixes #13136.
+
+  • February 22nd, 2020
+
+      □ [ken] - Update to gimp-2.10.18 (bugfix for corruption of large xcf
+        files in 2.10.16). Fixes #13180.
+
+      □ [renodr] - Fix the build of cspctl in alsa-tools.
+
+  • February 21st, 2020
+
+      □ [ken] - Update to gimp-2.10.16. Fixes #13169.
+
+      □ [ken] - Update to gegl-0.4.22. Fixes #13163.
+
+  • February 20th, 2020
+
+      □ [ken] - Update to node-js-12.16.1. Fixes #13162.
+
+  • February 19th, 2020
+
+      □ [bdubbs] - Update to plasma5-5.18.1. Fixes #13166.
+
+      □ [bdubbs] - Update to cups-filters-1.27.1. Fixes #12620.
+
+      □ [pierre] - Update to thunderbird-68.5.0. Fixes #13123.
+
+      □ [bdubbs] - Update to proftpd-1.3.6c. Fixes #13165.
+
+      □ [bdubbs] - Update to gptfdisk-1.0.5. Fixes #13161.
+
+      □ [pierre] - Update to vim-8.2.0190. Part of #12241.
+
+  • February 18th, 2020
+
+      □ [ken] - Remove perl dependant modules Class::Factory::Util and
+        Test::Simple which are no longer used by anything in the book. Fixes #
+        13160.
+
+      □ [renodr] - Update to xf86-video-intel-20200218. Fixes #5918.
+
+      □ [bdubbs] - Update to postgresql-12.2. Fixes #13134.
+
+      □ [bdubbs] - Update to LVM2.2.03.08. Fixes #13118.
+
+      □ [bdubbs] - Update to mlt-6.20.0. Fixes #13151.
+
+      □ [bdubbs] - Update to x264-20200218. Addresses #7555.
+
+      □ [bdubbs] - Update to x265-3.3. Fixes #13156.
+
+  • February 17th, 2020
+
+      □ [bdubbs] - Update to zsh-5.8. Fixes #13144.
+
+      □ [bdubbs] - Update to ImageMagick-6.9.10-93. Addresses #7859.
+
+      □ [bdubbs] - Update to ImageMagick-7.0.9-23. Addresses #7859.
+
+      □ [ken] - Update to mutt-1.13.4. Fixes #13147.
+
+      □ [ken] - Update to fetchmail-6.4.2. Fixes #13140.
+
+      □ [renodr] - Update to krb5-1.18. Fixes #13127>.
+
+      □ [bdubbs] - Update to libmypaint-1.5.0. Fixes #13122.
+
+      □ [bdubbs] - Update to ModemManager-1.12.6. Fixes #13126.
+
+      □ [ken] - Update to node-js-12.16.0. Fixes #13120.
+
+  • February 16th, 2020
+
+      □ [bdubbs] - Update to gmime-3.2.6. Fixes #13141.
+
+      □ [bdubbs] - Update to ssh-askpass-8.2p1. Fixes #13131.
+
+      □ [bdubbs] - Update to bluez-5.53. Fixes #13146.
+
+      □ [bdubbs] - Update to IO-Socket-SSL-2.067 (Perl module). Fixes #13139.
+
+      □ [bdubbs] - Update to Net-DNS-1.22 (Perl module). Fixes #13133.
+
+      □ [pierre] - Remove “gtk” options for libreoffice: gtk2 is not used
+        anymore.
+
+      □ [pierre] - Add gnutls as a required dependency of samba.
+
+  • February 15th, 2020
+
+      □ [bdubbs] - Update to xterm-353. Fixes #13094.
+
+      □ [bdubbs] - Update to mesa-19.3.4. Fixes #13130.
+
+      □ [bdubbs] - Update to wayland-1.18.0. Fixes #13121.
+
+  • February 14th, 2020
+
+      □ [bdubbs] - Update to openssh-8.2p1. Fixes #13131.
+
+      □ [bdubbs] - Update to libarchive-3.4.2. Fixes #13119.
+
+      □ [bdubbs] - Update to pcre-8.44. Fixes #13125.
+
+      □ [ken] - Update to nfsutils-2.4.3. Fixes #13116.
+
+      □ [pierre] - Fix building ptlib with make-4.3.
+
+  • February 13th, 2020
+
+      □ [ken] - Reinstate pycairo-1.18.2 for python2 as 'pycairo', needed for
+        the deps of pygtk. Addresses #13128.
+
+      □ [timtas] - Update to dovecot-2.3.9.3. Fixes #13124.
+
+      □ [pierre] - Update to speexdsp-1.2.0. Fixes #13117.
+
+      □ [pierre] - Fix building openjdk with make-4.3. Report by Jean-Marc
+        Pigeon and patch found by Ken Moffat.
+
+  • February 12th, 2020
+
+      □ [bdubbs] - Update to plasma-5.18.0. Fixes #12863.
+
+  • February 11th, 2020
+
+      □ [renodr] - Add a patch to allow OpenSSH to build with glibc-2.31.
+
+      □ [ken] - Update to firefox-68.5.0esr (security fix). Fixes #13115.
+
+  • February 10th, 2020
+
+      □ [renodr] - Add a security patch to libexif to fix CVE-2019-9278, an
+        integer overflow vulnerability. Thanks goes to Chris Gorman for the
+        report.
+
+      □ [bdubbs] - Update to libgee-0.20.3. Fixes #13114.
+
+      □ [bdubbs] - Update to vala-0.46.6. Fixes #13113.
+
+      □ [bdubbs] - Update to cbindgen-0.13.1. Fixes #13112.
+
+  • February 9th, 2020
+
+      □ [bdubbs] - Update to kf5apps-19.12.2.
+
+      □ [bdubbs] - Update to kf5-5.67.0. Fixes #12882.
+
+      □ [ken] - Adjust the build of libreoffice: remove obsolete switches, note
+        that all of dictionaries, help and translations will be downloaded if
+        not present, reinstate system poppler. Fixes #13106.
+
+      □ [bdubbs] - Update to gdb-9.1. Fixes #13110.
+
+      □ [bdubbs] - Update to libgpg-error-1.37. Fixes #13109.
+
+      □ [bdubbs] - Update to nss-3.50. Fixes #13108.
+
+      □ [bdubbs] - Update to firewalld-0.8.1. Fixes #12995.
+
+  • February 8th, 2020
+
+      □ [renodr] - Update to samba-4.11.6. Fixes #12665.
+
+      □ [renodr] - Add a patch to fix CVE-2020-6750 in glib.
+
+      □ [ken] - Update to HTTP::Daemon-6.06 and Module::Build-0.4231 (perl
+        modules). Fixes #13107.
+
+  • February 7th, 2020
+
+      □ [ken] - Update perl module dependencies used by biber:
+        Alien::Build-2.00, Alien::Libxml2-0.12, Config::AutoConf-0.318,
+        DateTime::Locale-1.25, DateTime::TimeZone-2.38, FFI::CheckLib-0.26,
+        HTTP::Cookies-6.08, HTTP::Date-6.05 with new dependency of
+        TimeDate-2.31, IPC::System::Simple-1.26, libwww::perl-6.43,
+        List::SomeUtils-0.58, namespace::autoclean-0.29, Path::Tiny-0.112,
+        Role::Tiny-2.001004.
+
+      □ [bdubbs] - Update to nano-4.8. Fixes #13105.
+
+  • February 6th, 2020
+
+      □ [bdubbs] - Update to node.js-12.15.0. Fixes #13102.
+
+      □ [bdubbs] - Update to cmake-3.16.4. Fixes #13104.
+
+      □ [bdubbs] - Update to LSB-Tools-0.6. Fixes #13103.
+
+      □ [bdubbs] - Update to screen-4.8.0. Fixes #13101.
+
+  • February 5th, 2020
+
+      □ [bdubbs] - Update to folks-0.13.2. Fixes #13098.
+
+      □ [bdubbs] - Add python module python-dbusmock-0.19.
+
+      □ [bdubbs] - Update to NetworkManager-1.22.6. Fixes #13089.
+
+      □ [bdubbs] - Update to libsecret-0.20.1. Fixes #13071.
+
+      □ [bdubbs] - Update to gspell-1.8.3. Fixes #13060.
+
+  • February 4th, 2020
+
+      □ [bdubbs] - Update to libinput-1.15.1. Fixes #13097.
+
+      □ [bdubbs] - Update to mercurial-5.3. Fixes #13096.
+
+  • February 3rd, 2020
+
+      □ [bdubbs] - Update to pycryptodome-3.9.6 (Python module). Fixes #13095.
+
+  • February 2nd, 2020
+
+      □ [bdubbs] - Update to libtasn1-4.16.0. Fixes #13093.
+
+      □ [bdubbs] - Update to gnutls-3.6.12. Fixes #13092.
+
+  • February 1st, 2020
+
+      □ [bdubbs] - Update to nspr-4.25. Fixes #13091.
+
+      □ [bdubbs] - Update to libbytesize-2.2. Fixes #13090.
+
+  • January 31st, 2020
+
+      □ [pierre] - Update to elogind-243.4. Fixes #12984.
+
+      □ [bdubbs] - Update to xkeyboard-config-2.29. Fixes #13087.
+
+      □ [bdubbs] - Update to openldap-2.4.49. Fixes #13086.
+
+      □ [bdubbs] - Update to cbindgen-0.13.0. Fixes #13085.
+
+      □ [bdubbs] - Update to Jinja2-2.11.1. Fixes #13084.
+
+      □ [bdubbs] - Update to libgusb-0.3.3. Fixes #13083.
+
+      □ [bdubbs] - Update to sudo-1.8.31. Fixes #13082.
+
+  • January 30th, 2020
+
+      □ [bdubbs] - Update to mariadb-10.4.12. Fixes #13079.
+
+      □ [bdubbs] - Update to thunar-1.8.12. Fixes #13081.
+
+      □ [bdubbs] - Update to libreoffice-6.4.0.3. Fixes #13080.
+
+      □ [bdubbs] - Update to lxml-4.5.0. Fixes #13078.
+
+      □ [bdubbs] - Update to unrar-5.9.1. Fixes #13077.
+
+      □ [bdubbs] - Update to highlight-3.55. Fixes #13076.
+
+      □ [bdubbs] - Update to poppler-0.85.0. Fixes #13075.
+
+      □ [bdubbs] - Update to p11-kit-0.23.20. Fixes #13074.
+
+  • January 29th, 2020
+
+      □ [bdubbs] - Update to mesa-19.3.3. Fixes #13072.
+
+      □ [bdubbs] - Update to lxml-4.4.3 (Python Module). Fixes #13073.
+
+  • January 28th, 2020
+
+      □ [ken] - Security updates to Qt-5.14.1 and QtWebEngine-5.14.1. Fixes #
+        13067.
+
+      □ [timtas] - Update to thunderbird-68.4.2. Fixes #13059.
+
+      □ [bdubbs] - Update to sqlite-autoconf-3310100 (3.31.1). Fixes #13069.
+
+      □ [bdubbs] - Update to dhcpcd-8.1.6. Fixes #13066.
+
+      □ [bdubbs] - Update to Jinja2-2.11.0 (Python Module). Fixes #13065.
+
+  • January 27th, 2020
+
+      □ [renodr] - Fix a FTBS in HDSPMixer in alsa-tools due to Linux-5.4
+        kernel API changes.
+
+      □ [ken] - Update to mutt-1.13.3. Fixes #13016.
+
+      □ [ken] - Falkon: reinstate removal of po files. Fixes #13064.
+
+      □ [bdubbs] - Update to qpdf-9.1.1. Fixes #13063.
+
+      □ [bdubbs] - Update to mtdev-1.1.6. Fixes #13062.
+
+      □ [bdubbs] - Update to pciutils-3.6.4. Fixes #13061.
+
+      □ [bdubbs] - Update to shadow-4.8.1. Fixes #13057.
+
+  • January 25th, 2020
+
+      □ [bdubbs] - Update to bluefish-2.2.11. Fixes #13058.
+
+      □ [bdubbs] - Update to php-7.4.2. Fixes #13055.
+
+      □ [bdubbs] - Update to nss-3.49.2. Fixes #13054.
+
+      □ [bdubbs] - Update to dhcp-4.4.2. Fixes #13051.
+
+      □ [bdubbs] - Update to bind-9.14.10. Fixes #13048.
+
+  • January 24th, 2020
+
+      □ [bdubbs] - Update to pycairo-1.19.0 (Python Module). Fixes #13056.
+
+      □ [bdubbs] - Update to libuv-1.34.2. Fixes #13053.
+
+      □ [bdubbs] - Update to sqlite-autoconf-3310000 (3.31.0). Fixes #13052.
+
+      □ [bdubbs] - Update to pciutils-3.6.3. Fixes #13050.
+
+      □ [bdubbs] - Update to p11-kit-0.23.19. Fixes #13049.
+
+      □ [bdubbs] - Update to webkitgtk-2.26.3. Fixes #13047.
+
+      □ [renodr] - Update to mutter-3.34.3. Fixes #12631.
+
+  • January 23rd, 2020
+
+      □ [ken] - Update to asymptote-2.62. Fixes #13026.
+
+  • January 22nd, 2020
+
+      □ [bdubbs] - Update to cmake-3.16.3. Fixes #13046.
+
+  • January 21st, 2020
+
+      □ [ken] - Update to firefox-68.4.2esr. Fixes #13045.
+
+      □ [bdubbs] - Update to gparted-1.1.0. Fixes #13043.
+
+      □ [bdubbs] - Update to Mako-1.1.1 (Python Module). Fixes #13044.
+
+  • January 19th, 2020
+
+      □ [bdubbs] - Update to mc-4.8.24. Fixes #13039.
+
+      □ [bdubbs] - Update to libxkbcommon-0.10.0. Fixes #13038.
+
+  • January 18th, 2020
+
+      □ [bdubbs] - Update to gegl-0.4.20. Fixes #13037.
+
+  • January 17th, 2020
+
+      □ [bdubbs] - Update to xterm-352. Fixes #13036.
+
+      □ [bdubbs] - Update to libva-2.6.1. Fixes #13035.
+
+      □ [bdubbs] - Update to docutils-0.16 (Python Module). Fixes #13034.
+
+      □ [bdubbs] - Update to XML-LibXSLT-1.99 (Perl Module). Fixes #13033.
+
+  • January 16th, 2020
+
+      □ [bdubbs] - Update to wireshark-3.2.1. Fixes #13032.
+
+      □ [bdubbs] - Update to six-1.14.0 (Python module). Fixes #13031.
+
+      □ [bdubbs] - Update to guile-3.0.0. Fixes #13030.
+
+      □ [bdubbs] - Update to XML-LibXML-Simple-1.01 (Perl Module). Fixes #13029
+        .
+
+      □ [bdubbs] - Update to libqmi-1.24.4. Fixes #13028.
+
+      □ [bdubbs] - Update to libmbim-1.22.0. Fixes #13027.
+
+      □ [pierre] - Update to libcap-2.31. Fixes #13019.
+
+  • January 15th, 2020
+
+      □ [bdubbs] - Update to dbus-python-1.2.16 (Python Module). Fixes #13025.
+
+      □ [bdubbs] - Update to XML-LibXSLT-1.97 (Perl module). Fixes #13024.
+
+      □ [dj] - Update Mozilla Location Service API Key.
+
+  • January 14th, 2020
+
+      □ [renodr] - In clisp, work around a build failure caused by a bug in GCC
+        which is caused by binutils.
+
+      □ [bdubbs] - Update to git-2.25.0. Fixes #13022.
+
+      □ [bdubbs] - Update to ModemManager-1.12.4. Fixes #13021.
+
+      □ [bdubbs] - Update to nss-3.49.1. Fixes #13020.
+
+      □ [bdubbs] - Update to xorg-server-1.20.7. Fixes #13018.
+
+  • January 13th, 2020
+
+      □ [bdubbs] - Update to libsecret-0.20.0. Fixes #13017.
+
+      □ [bdubbs] - Update to cbindgen-0.12.2. Fixes #13015.
+
+      □ [bdubbs] - Update to babl-0.1.74. Fixes #13014.
+
+      □ [bdubbs] - Update to libuv-1.34.1. Fixes #13013.
+
+      □ [bdubbs] - Update to xfdesktop-4.14.2. Fixes #13012.
+
+      □ [bdubbs] - Update to xfce4-panel-4.14.3. Fixes #13011.
+
+      □ [renodr] - Adapt WebKitGTK+ to changes in ICU-65.1+
+
+  • January 11th, 2020
+
+      □ [bdubbs] - Update to xfce4-settings-4.14.2. Fixes #13008.
+
+      □ [bdubbs] - Update to xfce4-session-4.14.1. Fixes #13009.
+
+      □ [bdubbs] - Update to xfce4-panel-4.14.2. Fixes #13010.
+
+  • January 10th, 2020
+
+      □ [renodr] - Update to Thunderbird-68.4.1. Contains a 0-day security
+        patch and other security fixes. Fixes #13004.
+
+      □ [renodr] - Adapt alsa-tools to Linux-5.4+ and alsa-lib-1.2.1.2.
+        Re-evaluate this before BLFS 9.1 or after a new alsa-lib version,
+        whichever comes first.
+
+      □ [bdubbs] - Update to NetworkManager-1.22.4. Fixes #13007.
+
+      □ [bdubbs] - Update to grantlee-5.2.0. Fixes #13006.
+
+      □ [bdubbs] - Update to btrfs-progs-v5.4.1. Fixes #13005.
+
+      □ [bdubbs] - Update to mesa-19.3.2. Fixes #13003.
+
+  • January 9th, 2020
+
+      □ [bdubbs] - Update to gnome-desktop-3.34.3. Fixes #13000.
+
+      □ [bdubbs] - Update to curl-7.68.0. Fixes #12999.
+
+      □ [bdubbs] - Update to icewm-1.6.4. Fixes #12998.
+
+      □ [bdubbs] - Update to node.js-12.14.1. Fixes #12997.
+
+      □ [bdubbs] - Update to nss-3.49. Fixes #12996.
+
+      □ [ken] - Update to firefox-68.4.1esr (security fix, rated as critical).
+        Fixes #13002.
+
+      □ [pierre] - Add tests to elogind.
+
+      □ [pierre] - Add early microcode loading to the initramfs.
+
+  • January 8th, 2020
+
+      □ [xry111] - Update to gjs-1.58.4. Fixes #12994.
+
+      □ [xry111] - Update to grilo-0.3.11. Fixes #13001.
+
+  • January 7th, 2020
+
+      □ [bdubbs] - Update to mercurial-5.2.2. Fixes #12993.
+
+      □ [bdubbs] - Update to PyYAML-5.3 (Python Module). Fixes #12992.
+
+      □ [bdubbs] - Update to libwebp-1.1.0. Fixes #12991.
+
+      □ [bdubbs] - Update to libgusb-0.3.2. Fixes #12990.
+
+      □ [bdubbs] - Update to dconf-editor-3.34.3. Fixes #12989.
+
+      □ [ken] - Update to firefox-68.4.0esr (security fix). Fixes #12988.
+
+  • January 6th, 2020
+
+      □ [renodr] - Adapt the testsuite in libxcb-1.13.1 to API changes in
+        check-0.13.0 and later.
+
+      □ [bdubbs] - Update to seahorse-3.34.1. Fixes #12986.
+
+      □ [bdubbs] - Update to gnome-shell-3.34.3. Fixes #12985.
+
+      □ [bdubbs] - Update to glm-0.9.9.7. Fixes #12983.
+
+      □ [pierre] - Update to libcap-pam 2.30. Fixes #12981.
+
+  • January 5th, 2020
+
+      □ [bdubbs] - Update to gnome-menus-3.35.3. Fixes #12982.
+
+  • January 4th, 2020
+
+      □ [bdubbs] - Update to eog-3.34.2. Fixes #12980.
+
+      □ [bdubbs] - Update to gnome-maps-3.34.3. Fixes #12979.
+
+      □ [bdubbs] - Update to epiphany-3.34.3.1. Fixes #12971.
+
+      □ [bdubbs] - Update to evolution evolution-data-server 3.34.3. Fixes #
+        12977.
+
+      □ [bdubbs] - Update to libinput-1.15.0. Fixes #12975.
+
+      □ [bdubbs] - Update to sshfs-3.7.0. Fixes #12973.
+
+      □ [bdubbs] - Update to glib-networking-2.62.3. Fixes #12972.
+
+      □ [bdubbs] - Update to sysstat-12.3.1. Fixes #12970.
+
+      □ [bdubbs] - Update to dhcpcd-8.1.5. Fixes #12969.
+
+  • January 3rd, 2020
+
+      □ [renodr] - Update to xf86-input-wacom-0.39.0. Fixes #12948.
+
+  • January 1st, 2020
+
+      □ [bdubbs] - Update to ffmpeg-4.2.2. Fixes #12967.
+
+      □ [bdubbs] - Update to libjpeg-turbo-2.0.4. Fixes #12966.
+
+      □ [bdubbs] - Update to sudo-1.8.30. Fixes #12965.
+
+      □ [pierre] - Update to libva-2.6.0. Fixes #12961.
+
+      □ [ken] - Add option for --disable-elf-hack to thunderbird, needed for my
+        -march=native builds with clang-9.0.1 on Ryzen.
+
+      □ [bdubbs] - Update to libdazzle-3.34.1. Fixes #12963.
+
+      □ [bdubbs] - Update to smartmontools-7.1. Fixes #12964.
+
+      □ [bdubbs] - Update to libcap-2.29. Fixes #12950.
+
+  • December 30th, 2019
+
+      □ [pierre] - Update to cbindgen-0.12.1. Fixes #12960.
+
+      □ [pierre] - Update to libarchive-3.4.1. Fixes #12959.
+
+      □ [bdubbs] - Update to xvidcore-1.3.7. Fixes #12957.
+
+      □ [bdubbs] - Update to poppler-0.84.0. Fixes #12956.
+
+      □ [bdubbs] - Update to doxygen-1.8.17. Fixes #12955.
+
+      □ [bdubbs] - Update to ruby-2.7.0. Fixes #12951.
+
+      □ [bdubbs] - Update to NetworkManager-1.22.2. Fixes #12949.
+
+      □ [renodr] - Adapt rustc to build with LLVM9. Fixes #12958.
+
+  • December 29th, 2019
+
+      □ [bdubbs] - Update to file-roller-3.32.3. Fixes #12810.
+
+      □ [bdubbs] - Update to evince-3.34.2. Fixes #12809.
+
+      □ [bdubbs] - Update to gnome-maps-3.34.2. Fixes #12807.
+
+      □ [bdubbs] - Update to epiphany-3.34.2. Fixes #12804.
+
+      □ [bdubbs] - Update to evolution-3.34.2. Fixes #12802.
+
+      □ [bdubbs] - Update to gedit-3.34.1. Fixes #12794.
+
+      □ [bdubbs] - Update to gnome-settings-daemon-3.34.2. Fixes #12923.
+
+      □ [bdubbs] - Update to libsoup-2.68.3. Fixes #12868.
+
+      □ [ken] - Update to mutt-1.13.2. Fixes #12838.
+
+      □ [bdubbs] - Archive libESMTP. Fixes #12946.
+
+      □ [bdubbs] - Update to hexchat-2.14.3. Fixes #12945.
+
+      □ [bdubbs] - Update to tumbler-0.2.8. Fixes #12944.
+
+      □ [bdubbs] - Update to libmbim-1.20.4. Fixes #12943.
+
+      □ [bdubbs] - Update to tigervnc-1.10.1. Fixes #12942.
+
+  • December 28th, 2019
+
+      □ [bdubbs] - Update to opencv-4.2.0. Fixes #12939.
+
+      □ [bdubbs] - Update to libtirpc-1.2.5. Fixes #12941.
+
+      □ [bdubbs] - Update to xfsprogs-5.4.0. Fixes #12938.
+
+      □ [bdubbs] - Update to libvpx-1.8.2. Fixes #12933.
+
+      □ [bdubbs] - Update to php-7.4.1. Fixes #12931.
+
+      □ [timtas] - Update to xfce4-terminal-0.8.9.1. Fixes #12954.
+
+  • December 26th, 2019
+
+      □ [ken] - Update to (intel) microcode-20191115. Fixes #12952.
+
+      □ [ken] - Update to falkon-3.1.0. Fixes #12937.
+
+  • December 25th, 2019
+
+      □ [renodr] - Update to cifs-utils-6.10. Fixes #12921.
+
+      □ [thomas] - Update to dhcpcd-8.1.4. Fixes #12940.
+
+      □ [thomas] - Update to nano-4.7. Fixes #12947.
+
+      □ [thomas] - Update to cmake-3.16.2. Fixes #12930.
+
+  • December 24th, 2019
+
+      □ [ken] - Update to biber-2.14 with its new dependency of
+        Parse::RecDescent (perl module). Fixes #12845.
+
+      □ [pierre] - Patch Qt-5.14.0 to fix a cursor problem in Wayland, and fix
+        building KDE Frameworks with Qt-5.14.0.
+
+  • December 22nd, 2019
+
+      □ [bdubbs] - Update to llvm-9.0.1. Fixes #12550.
+
+      □ [bdubbs] - Update to bind-9.14.9. Fixes #12924.
+
+      □ [bdubbs] - Update to mesa-19.3.1. Fixes #12926.
+
+      □ [pierre] - Update to vim-8.2.0024. Fixes #12936.
+
+      □ [pierre] - Update to python3-3.8.1. Fixes #12932.
+
+  • December 20th, 2019
+
+      □ [ken] - Add Clone-0.43 (perl module). Fixes #12929.
+
+      □ [ken] - Update to Business:ISBN::Data-20191107 (perl module). Fixes
+        second part of #12893.
+
+      □ [timtas] - Update to dhcpcd-8.1.3. Fixes #12935.
+
+      □ [pierre] - Update to blocaled-0.2. Fixes #12934.
+
+  • December 19th, 2019
+
+      □ [bdubbs] - Update to glib-2.62.4. Fixes #12928.
+
+      □ [bdubbs] - Update to exo-0.12.11. Fixes #12927.
+
+      □ [bdubbs] - Update to wireshark-3.2.0. Fixes #12925.
+
+      □ [bdubbs] - Update to NetworkManager-1.22.0. Fixes #12920.
+
+      □ [bdubbs] - Update to node-12.14.0. Fixes #12922.
+
+      □ [pierre] - Update to elogind-241.4. Fixes #12918.
+
+  • December 17th, 2019
+
+      □ [renodr] - Update to gnome-shell-extensions-3.34.2. Fixes #12902.
+
+      □ [renodr] - Update to gnome-shell-3.34.2. Fixes #12902.
+
+      □ [timtas] - Update to thunderbird-68.3.1. Fixes #12917.
+
+      □ [bdubbs] - Update to scons-3.1.2. Fixes #12915.
+
+      □ [bdubbs] - Update to cbindgen-0.12.0. Fixes #12914.
+
+      □ [bdubbs] - Update to talloc-2.3.1. Fixes #12913.
+
+  • December 16th, 2019
+
+      □ [bdubbs] - Update to libreoffice-6.3.4.2. Fixes #12903.
+
+      □ [bdubbs] - Update to libical-3.0.7. Fixes #12912.
+
+      □ [bdubbs] - Update to xine-ui-0.99.12. Fixes #12426 (again).
+
+  • December 15th, 2019
+
+      □ [bdubbs] - Update to cups-2.3.1. Fixes #12911.
+
+      □ [bdubbs] - Update to fuse-3.9.0. Fixes #12910.
+
+      □ [bdubbs] - Update to xine-ui-0.99.11. Fixes #12426.
+
+      □ [bdubbs] - Update to xine-lib-1.2.10. Fixes #12909.
+
+      □ [bdubbs] - Update to imlib2-1.6.1. Fixes #12908.
+
+      □ [bdubbs] - Update to fribidi-1.0.8. Fixes #12906.
+
+      □ [bdubbs] - Update to qemu-4.2.0. Fixes #12905.
+
+      □ [bdubbs] - Update to unbound-1.9.6. Fixes #12901.
+
+      □ [bdubbs] - Update to libqmi-1.24.2. Fixes #12900.
+
+      □ [bdubbs] - Update to libXpm-3.5.13 (Xorg Library). Fixes #12899.
+
+      □ [bdubbs] - Update to mesa-19.3.0. Fixes #12898.
+
+      □ [bdubbs] - Update to mariadb-10.4.11. Fixes #12894.
+
+      □ [bdubbs] - Update to ModemManager-1.12.2. Fixes #12891.
+
+  • December 14th, 2019
+
+      □ [timtas] - Update to dovecot-2.3.9.2. Fixes #12907.
+
+      □ [renodr] - Update to gnome-autoar-0.2.4. Fixes #12897.
+
+      □ [pierre] - Update to Qt5 and Qtwebengine 5.14.0. Fixes #12895.
+
+      □ [pierre] - Update to MIT Kerberos V5-1.17.1. Fixes #12890.
+
+  • December 12th, 2019
+
+      □ [bdubbs] - Update to libcap-2.28. Fixes #12883.
+
+      □ [bdubbs] - Update to boost-1.72.0. Fixes #12896.
+
+      □ [bdubbs] - Update to Business-ISBN-3.005. Fixes #12893.
+
+      □ [bdubbs] - Update to unrar-5.8.5. Fixes #12892.
+
+      □ [bdubbs] - Update to cmake-3.16.1. Fixes #12889.
+
+  • December 10th, 2019
+
+      □ [ken] - Security update to git-2.24.1. Fixes #12888.
+
+      □ [renodr] - Update to gnome-session-3.34.2. Fixes #12834.
+
+      □ [bdubbs] - Update to frei0r-plugins-1.7.0. Fixes #12879.
+
+      □ [bdubbs] - Update to glib-networking-2.62.2. Fixes #12887.
+
+      □ [bdubbs] - Update to cbindgen-0.11.1. Fixes #12885.
+
+      □ [bdubbs] - Update to gnupg-2.2.19. Fixes #12884.
+
+      □ [ken] - Work around upstream qtwebengine's use of a NINJAJOBS
+        environment variable, reported by Alain Dumont.
+
+      □ [ken] - Update to dvisvgm-2.8.2. Fixes #12771.
+
+      □ [ken] - Update to asymptote-2.61. Fixes #12784.
+
+      □ [timtas] - Update to exim-4.93 Fixes #12886.
+
+  • December 9th, 2019
+
+      □ [renodr] - Fix CVE-2019-14822 in IBus and a regression caused by
+        glib-2.62.3 and later.
+
+      □ [renodr] - Update to gnome-control-center-3.34.2. Fixes #12824.
+
+      □ [pierre] - Add blocaled-0.1, a replacement for systemd-localed.
+
+  • December 8th, 2019
+
+      □ [bdubbs] - Update to lm-sensors-3-6-0. Fixes #12881.
+
+      □ [bdubbs] - Update to intel-vaapi-driver-2.4.0. Fixes #12878.
+
+      □ [thomas] - Update to iptables-1.8.4. Fixes #12852.
+
+  • December 7th, 2019
+
+      □ [renodr] - Adapt PyGTK to API changes in Pango.
+
+      □ [renodr] - Update to Nautilus-3.34.2. Fixes #12803.
+
+      □ [renodr] - Update to a cairo snapshot (1.17.2 + master). The new
+        version is 1.17.2+f93fc72c03e. Fixes #12880.
+
+      □ [renodr] - Update to pango-1.44.7. Fixes #12355.
+
+  • December 6th, 2019
+
+      □ [renodr] - Update to gvfs-1.42.2. Fixes #12801.
+
+      □ [bdubbs] - Update to iw-5.4. Fixes #12877.
+
+      □ [bdubbs] - Update to mercurial-5.2.1. Fixes #12876.
+
+      □ [bdubbs] - Update to gstreamer stack 1.16.2. Fixes #12866.
+
+      □ [bdubbs] - Update to mesa-19.2.7. Fixes #12870.
+
+      □ [renodr] - Fix the DConf sed so that dconf-editor builds.
+
+      □ [renodr] - Fix deadlock bugs in tracker-miners caused by gstreamer and
+        MP3 files.
+
+  • December 5th, 2019
+
+      □ [renodr] - Update to evolution-data-server-3.34.2. Part of #12802.
+
+      □ [renodr] - Fix a bug in libgweather that causes failures due to a
+        duplicate weather station.
+
+      □ [ken] - Update to nss-3.48. Fixes #12871.
+
+      □ [renodr] - Fix a build failure in Grilo caused by totem-pl-parser.
+
+      □ [renodr] - Update to gnome-desktop-3.34.2. Fixes #12862.
+
+      □ [bdubbs] - Update to xvidcore-1.3.6. Fixes #12874.
+
+      □ [bdubbs] - Update to wireshark-3.0.7. Fixes #12872.
+
+      □ [bdubbs] - Update to libcdio-paranoia-10.2+2.0.1. Fixes #12867.
+
+      □ [bdubbs] - Update to feh-3.3. Fixes #12864.
+
+      □ [bdubbs] - Update to libuv-v1.34.0. Fixes #12861.
+
+      □ [bdubbs] - Update to btrfs-progs-v5.4. Fixes #12860.
+
+      □ [bdubbs] - Update to cbindgen-0.11.0. Fixes #12855.
+
+      □ [bdubbs] - Update to gnutls-3.6.11.1. Fixes #12842.
+
+      □ [timtas] - Update to dovecot-2.3.9. Fixes #12873.
+
+      □ [timtas] - Update to thunderbird-68.3.0. Fixes #12865.
+
+      □ [renodr] - Update to shadow-4.8. Fixes #12843.
+
+  • December 4th, 2019
+
+      □ [bdubbs] - Update to tcsh-6.22.02. Fixes #12869.
+
+      □ [dj] - Update to blfs-bootscripts-20191203.
+
+      □ [dj] - Update to firewalld-0.8.0. Fixes #12734.
+
+      □ [dj] - Update to nftables-0.9.3. Fixes #12850.
+
+      □ [dj] - Update to libnftnl-1.1.5. Fixes #12851.
+
+      □ [dj] - Add missing dependency "six" to python-slip.
+
+  • December 3rd, 2019
+
+      □ [bdubbs] - Update to nspr-4.24. Fixes #12853.
+
+      □ [bdubbs] - Update to PyYAML-5.2. Fixes #12854.
+
+      □ [bdubbs] - Update to tcsh-6.22.01. Fixes #12844.
+
+      □ [bdubbs] - Update to LVM2.2.03.07. Fixes #12839.
+
+      □ [bdubbs] - Update to php-7.4.0. Fixes #12833.
+
+      □ [bdubbs] - Revert libsass to version 3.6.1. This is needed to prevent
+        problems in dependent applications.
+
+      □ [bdubbs] - Update to gtk+-3.24.13. Fixes #12829.
+
+      □ [renodr] - Update to NetworkManager-1.20.8. Fixes #12823.
+
+      □ [ken] - Apply security and other fixes to unzip-6.0, this also allows
+        the testsuite for Archive::Zip-1.67 to pass. Fixes #12840.
+
+      □ [ken] - Adjust inkscape to build with poppler-0.83.0. Fixes #12858.
+
+      □ [ken] - Update to firefox-68.3.0esr (security fix). Fixes #12856.
+
+      □ [ken] - Fix build breakage from ICU-65.1 in qtwebengine-5.13.2, again
+        caused by a U16NEXT() without a terminating semicolon.
+
+      □ [ken] - Do not use system ICU for libreoffice, 65.1 broke one of the
+        packages which it ships with (libfreehand). Fixes #12841.
+
+  • December 2nd, 2019
+
+      □ [renodr] - Update to yelp-xsl-3.34.2. Fixes #12808.
+
+      □ [renodr] - Update to VTE-0.58.3. Fixes #12811.
+
+  • November 30th, 2019
+
+      □ [ken] - Update to alsa-lib-1.2.1.2. Fixes #12837.
+
+      □ [bdubbs] - Update to pygments-2.5.2 (Python Module). Fixes #12836.
+
+  • November 29th, 2019
+
+      □ [bdubbs] - Update to tcsh-6.22.00. Fixes #12832.
+
+      □ [bdubbs] - Update to bubblewrap-0.4.0. Fixes #12831.
+
+      □ [bdubbs] - Update to poppler-0.83.0. Fixes #12830.
+
+      □ [bdubbs] - Update to cmake-3.16.0. Fixes #12828.
+
+      □ [bdubbs] - Update to pygments-2.5.1 (Python Module). Fixes #12827.
+
+      □ [bdubbs] - Update to lxml-4.4.2 (Python Module). Fixes #12826.
+
+      □ [bdubbs] - Update to keyutils-1.6.1. Fixes #12825.
+
+      □ [bdubbs] - Update to libepoxy-1.5.4. Fixes #12822.
+
+      □ [bdubbs] - Update to dbus-python-1.2.14 (Python module). Fixes #12820.
+
+      □ [thomas] - Update to nano-4.6. Fixes #12835.
+
+  • November 27th, 2019
+
+      □ [bdubbs] - Update to abiword 3.0.4. Fixes #12819.
+
+      □ [bdubbs] - Update to icewm-1.6.3. Fixes #12818.
+
+      □ [bdubbs] - Update to imlib2-1.6.0. Fixes #12817.
+
+      □ [bdubbs] - Update to postfix-3.4.8. Fixes #12816.
+
+      □ [bdubbs] - Update to librsvg-2.46.4. Fixes #12815.
+
+  • November 26th, 2019
+
+      □ [renodr] - Update to gjs-1.58.3. Fixes #12812.
+
+      □ [renodr] - Update to GnuPG-2.2.18 (security fix). Fixes #12821.
+
+  • November 25th, 2019
+
+      □ [bdubbs] - Update to xapian-core-1.4.14. Fixes #12814.
+
+      □ [bdubbs] - Update to stunnel-5.56. Fixes #12806.
+
+      □ [bdubbs] - Update to xorg-server-1.20.6. Fixes #12805.
+
+      □ [bdubbs] - Update to tcl8.6.10 and tk-8.6.10. Fixes #12800.
+
+      □ [bdubbs] - Update to pcre2-10.34. Fixes #12798.
+
+      □ [bdubbs] - Update to libtasn1-4.15.0. Fixes #12797.
+
+  • November 24th, 2019
+
+      □ [bdubbs] - Update to exo-0.12.10. Fixes #12793.
+
+      □ [bdubbs] - Update to cbindgen-0.10.0. Fixes #12790.
+
+      □ [bdubbs] - Update to nss-3.47.1. Fixes #12789.
+
+      □ [bdubbs] - Update to node.js-12.13.1. Fixes #12788.
+
+      □ [bdubbs] - Update to tigervnc-1.10.0. Fixes #12783.
+
+      □ [bdubbs] - Update to glib-2.62.3. Fixes #12787.
+
+      □ [bdubbs] - Update to unbound-1.9.5. Fixes #12786.
+
+      □ [bdubbs] - Update to icu-65.1. Fixes #12785.
+
+      □ [bdubbs] - Update to pycryptodome-3.9.4 (python module). Fixes #12782.
+
+      □ [bdubbs] - Update to vala-0.46.5. Fixes #12781.
+
+  • November 23rd, 2019
+
+      □ [renodr] - Update to alsa-lib-1.2.1.1 (and fix a pulseaudio build
+        problem related to alsa-lib). Fixes #12813>.
+
+      □ [renodr] - Update to alsa-{firmware,lib,utils,plugins}-1.2.1. Fixes #
+        12776.
+
+      □ [thomas] - Update to bind-9.14.8. Fixes #12792.
+
+      □ [thomas] - Update to php-7.3.12. Fixes #12799.
+
+  • November 21st, 2019
+
+      □ [renodr] - Update to mesa-19.2.6. Fixes #12795.
+
+      □ [renodr] - Update to mesa-19.2.5. Fixes #12791.
+
+      □ [renodr] - Update to xf86-input-wacom-0.38.0 (Xorg Driver). Fixes #
+        12651.
+
+      □ [renodr] - Update to xf86-video-amdgpu-19.1.0 (Xorg Driver). Fixes #
+        12637.
+
+      □ [renodr] - Update to xf86-video-ati-19.1.0 (Xorg Driver). Fixes #12652.
+
+  • November 19th, 2019
+
+      □ [ken] - Fix compilation of evince if texlive has been installed in
+        accordance with the BLFS instructions.
+
+  • November 18th, 2019
+
+      □ [bdubbs] - Update to xterm-351. Fixes #12780.
+
+      □ [bdubbs] - Update to unrar-5.8.4. Fixes #12779.
+
+      □ [bdubbs] - Update to qpdf-9.1.0. Fixes #12778.
+
+      □ [bdubbs] - Update to libgusb-0.3.1. Fixes #12777.
+
+      □ [bdubbs] - Update to nghttp2-1.40.0. Fixes #12775.
+
+      □ [bdubbs] - Update to xfsprogs-5.3.0. Fixes #12774.
+
+      □ [bdubbs] - Update to postgresql-12.1. Fixes #12768.
+
+  • November 17th, 2019
+
+      □ [bdubbs] - Update external packages in fop to {pdf,font}box-2.0.17.jar.
+        Fixes #12772.
+
+      □ [bdubbs] - Update to parole-1.0.5. Fixes #12770.
+
+      □ [bdubbs] - Update to exo-0.12.9. Fixes #12769.
+
+      □ [bdubbs] - Update to gmime-3.2.5. Fixes #12766.
+
+      □ [bdubbs] - Update to libidn2-2.3.0. Fixes #12765.
+
+      □ [bdubbs] - Update to sysstat-12.2.0. Fixes #12764.
+
+      □ [bdubbs] - Update to pycryptodome-3.9.3 (Python module). Fixes #12761.
+
+      □ [bdubbs] - Update to totem-pl-parser-3.26.4. Fixes #12759.
+
+      □ [bdubbs] - Update to mlt-6.18.0. Fixes #12758.
+
+      □ [bdubbs] - Update to highlight-3.54. Fixes #12756.
+
+      □ [bdubbs] - Update to thunderbird-68.2.2. Fixes #12750.
+
+      □ [bdubbs] - Update to thunar-1.8.11. Fixes #12773.
+
+  • November 15th, 2019
+
+      □ [timtas] - Update to qemu-4.1.1. Fixes #12767.
+
+      □ [renodr] - Update to vala-0.46.4. Fixes #12755.
+
+  • November 14th, 2019
+
+      □ [bdubbs] - Update to mesa-19.2.4. Fixes #12763.
+
+  • November 13th, 2019
+
+      □ [timtas] - Update to dhcpcd-8.1.2. Fixes #12762.
+
+      □ [ken] - Update to
+        Intel-Linux-Processor-Microcode-Data-Files-microcode-20191112. Fixes
+        the Jump Conditional Code erratum on skylake and derived CPUs, and the
+        TSX Async Abort vulnerability on some later CPUs. Fixes #12760.
+
+      □ [timtas] - Remove an invalid build option in talloc-2.3.0.
+
+      □ [timtas] - Require python3 instead of python2 in samba-4.11.0.
+
+  • November 12th, 2019
+
+      □ [bdubbs] - Update to plasma5-5.17.3. Fixes #12480.
+
+  • November 11th, 2019
+
+      □ [ken] - Update to asymptote-2.60. Fixes #12748.
+
+  • November 10th, 2019
+
+      □ [bdubbs] - Update to pycryptodome-3.9.2. Fixes #12754.
+
+      □ [renodr] - Remove an obsolete instruction for i686 systems in
+        Firefox-68.2.0.
+
+      □ [bdubbs] - Update to ModemManager-1.12.0. Fixes #12746.
+
+      □ [bdubbs] - Update to NetworkManager-1.20.6. Fixes #12743.
+
+      □ [bdubbs] - Update to thunar-1.8.10. Fixes #12752.
+
+  • November 9th, 2019
+
+      □ [bdubbs] - Update to DateTime-Calendar-Julian-0.102 (Perl Module).
+        Fixes #12753.
+
+      □ [bdubbs] - Update to kf5-5.64.0 including extra-cmake-modules and
+        oxygen-icons5. Fixes #12507.
+
+      □ [bdubbs] - Update to fop-2.4. Fixes #12739.
+
+      □ [bdubbs] - Update to adwaita-icon-theme-3.34.3. Fixes #12751.
+
+  • November 8th, 2019
+
+      □ [bdubbs] - Update to kf5-apps-19.08.3 including kwave and kate. Fixes #
+        12473.
+
+      □ [bdubbs] - Update to webkitgtk-2.26.2. Fixes #12741.
+
+      □ [bdubbs] - Update to mesa-19.2.3. Fixes #12742.
+
+      □ [bdubbs] - Update to gnumeric-1.12.46. Fixes #12744.
+
+      □ [bdubbs] - Update to libseccomp-2.4.2. Fixes #12749.
+
+      □ [bdubbs] - Update to mariadb-10.4.10. Fixes #12738.
+
+      □ [bdubbs] - Update to mercurial-5.2. Fixes #12736.
+
+      □ [bdubbs] - Update to sshfs-3.6.0. Fixes #12728.
+
+      □ [bdubbs] - Update to fuse-3.8.0. Fixes #12727.
+
+  • November 7th, 2019
+
+      □ [bdubbs] - Update to goffice-0.10.46. Fixes #12747.
+
+      □ [bdubbs] - Update to libmbim-1.20.2. Fixes #12745.
+
+      □ [bdubbs] - Update to six-1.13.0 (Python Module). Fixes #12737.
+
+      □ [bdubbs] - Update to Data-Compare-1.27 (Perl Module). Fixes #12735.
+
+      □ [bdubbs] - Update to libsass-3.6.3. Fixes #12732.
+
+      □ [bdubbs] - Update to adwaita-icon-theme-3.34.1. Fixes #12731.
+
+      □ [bdubbs] - Update to git-2.24.0. Fixes #12730.
+
+      □ [bdubbs] - Update to tiff-4.1.0. Fixes #12729.
+
+      □ [bdubbs] - Update to cpio-2.13. Fixes #12740.
+
+  • November 6th, 2019
+
+      □ [timtas] - Update to curl-7.67.0. Re-Fixes #12733.
+
+  • November 5th, 2019
+
+      □ [timtas] - Update to xfburn-0.6.1. Re-Fixes #12726.
+
+  • November 3rd, 2019
+
+      □ [timtas] - Update to xfburn-0.6.0. Fixes #12726.
+
+      □ [renodr] - Fix dconf breakage with meson-0.52.0. Fixes #12691.
+
+      □ [bdubbs] - Update to pycryptodome-3.9.1 (Python module). Fixes #12724.
+
+      □ [bdubbs] - Update to xterm-350. Fixes #12725.
+
+  • November 2nd, 2019
+
+      □ [renodr] - Fix a critical security vulnerability in qtwebengine. Fixes
+        #12723>.
+
+  • November 1st, 2019
+
+      □ [ken] - Add dvisvgm-2.8 with brotli-1.0.7 and woff2-1.0.2. Fixes #12105
+        .
+
+      □ [bdubbs] - Update to libreoffice-6.3.3.2. Fixes #12721.
+
+      □ [renodr] - Update to bluez-5.52. Fixes #12718.
+
+      □ [renodr] - Update to ModemManager-1.10.8. Fixes #12717.
+
+  • October 31st, 2019
+
+      □ [timtas] - Update to thunderbird-68.2.1. Fixes #12722.
+
+      □ [bdubbs] - Update to qt-everywhere-src-5.13.2. Includes
+        QtWebEngine-5.13.2. Fixes #12719.
+
+      □ [bdubbs] - Update to cmake-3.15.5. Fixes #12719.
+
+      □ [bdubbs] - Update to shared-mime-info-1.15. Fixes #12716.
+
+      □ [bdubbs] - Update to libpwquality-1.4.2. Fixes #12714.
+
+      □ [bdubbs] - Update to libxml2-2.9.10. Fixes #12713.
+
+      □ [bdubbs] - Update to libxslt-1.1.34. Fixes #12715.
+
+      □ [renodr] - Add libhandy (for gnome-tweaks). Fixes #12663.
+
+  • October 30th, 2019
+
+      □ [bdubbs] - Update to subversion-1.13.0. Fixes #12711.
+
+      □ [bdubbs] - Update to x265_3.2.1. Fixes #12712.
+
+      □ [bdubbs] - Update to harfbuzz-2.6.4. Fixes #12709.
+
+      □ [dj] - Add sudoers configuration for Xorg.
+
+  • October 29th, 2019
+
+      □ [renodr] - Fix the build of SDL2 on i686 systems. Fixes #12633. Thanks
+        goes to tnut for reporting.
+
+      □ [bdubbs] - Update to libchamplain-0.12.20. Fixes #12706.
+
+      □ [bdubbs] - Update to gnome-terminal-3.34.2. Fixes #12708.
+
+      □ [bdubbs] - Update to libpeas-1.24.1. Fixes #12707.
+
+      □ [bdubbs] - Update to gnome-user-docs-3.34.1. Fixes #12705.
+
+      □ [bdubbs] - Update to libinput-1.14.3. Fixes #12704.
+
+      □ [bdubbs] - Update to harfbuzz-2.6.3. Fixes #12703.
+
+      □ [timtas] - Update to sudo-1.8.29. Fixes #12702.
+
+  • October 28th, 2019
+
+      □ [bdubbs] - Update to evince-3.34.0. Fixes #12617.
+
+      □ [bdubbs] - Update to gnome-screenshot-3.34.0. Partially fixes #12617.
+
+      □ [bdubbs] - Update to gnome-terminal-3.34.1. Partially fixes #12617.
+
+      □ [bdubbs] - Update to gnome-maps-3.34.1. Partially fixes #12617.
+
+      □ [bdubbs] - Update to eog-3.34.1. Partially fixes #12617.
+
+      □ [bdubbs] - Update to evolution-3.34.1. Partially fixes #12617.
+
+      □ [bdubbs] - Update to gnome-calculator-3.34.1. Partially fixes #12617.
+
+      □ [bdubbs] - Update to {libburn,libisoburn,libisofs}-1.5.2. Fixes #12701.
+
+      □ [bdubbs] - Update to gimp-2.10.14. Fixes #12700.
+
+      □ [bdubbs] - Update to decorator-4.4.1. Fixes #12699.
+
+      □ [bdubbs] - Update to telepathy-mission-control-5.16.5. Fixes #12698.
+
+      □ [ken] - Update to asymptote-2.59. Fixes #12591.
+
+      □ [renodr] - Adjust inkscape to build with poppler-0.82.0 and higher.
+
+  • October 27th, 2019
+
+      □ [bdubbs] - Update to paps-0.7.1. Fixes #12697.
+
+      □ [bdubbs] - Update to mpg123-1.25.13. Fixes #12696.
+
+      □ [bdubbs] - Update to gegl-0.4.18. Fixes #12695.
+
+      □ [bdubbs] - Update to poppler-0.82.0. Fixes #12694.
+
+      □ [bdubbs] - Update to btrfs-progs-v5.3.1. Fixes #12693.
+
+      □ [bdubbs] - Update to mesa-19.2.2. Fixes #12690.
+
+      □ [bdubbs] - Update to thunderbird-68.2.0. Fixes #12687.
+
+  • October 26th, 2019
+
+      □ [xry111] - Update to biblatex-3.13a.
+
+  • October 25th, 2019
+
+      □ [bdubbs] - Update to php-7.3.11. Fixes #12689.
+
+      □ [bdubbs] - Update to gtkmm-3.24.2. Fixes #12688.
+
+      □ [bdubbs] - Update to wireshark-3.0.6. Fixes #12686.
+
+      □ [bdubbs] - Update to LVM2.2.03.06. Fixes #12685.
+
+      □ [bdubbs] - Update to librsvg-2.46.3. Fixes #12684.
+
+      □ [renodr] - Update to pycairo-1.18.2. Fixes #12692.
+
+      □ [dj] - Add nftables-0.9.2. Fixes #4620.
+
+      □ [dj] - Add firewalld-0.7.2.
+
+      □ [dj] - Add libnftnl-1.1.4.
+
+      □ [dj] - Add libmnl-1.0.4.
+
+      □ [dj] - Add decorator-4.4.0.
+
+      □ [dj] - Add python-slip-0.6.5.
+
+      □ [dj] - Update to blfs-bootscripts-20191025.
+
+  • October 24th, 2019
+
+      □ [bdubbs] - Update to node.js-12.13.0. Fixes #12682.
+
+      □ [bdubbs] - Update to btrfs-progs-v5.3. Fixes #12680.
+
+      □ [bdubbs] - Update to p11-kit-0.23.18.1. Fixes #12678.
+
+      □ [bdubbs] - Update to libpwquality-1.4.1. Fixes #12677.
+
+      □ [bdubbs] - Update to gnutls-3.6.10. Fixes #12676.
+
+      □ [ken] - Update to fetchmail-6.4.1. Fixes #12436.
+
+      □ [bdubbs] - Update to Python-2.7.17. Fixes #12669.
+
+      □ [bdubbs] - Update to proftpd-1.3.6b. Fixes #12683.
+
+      □ [renodr] - Update to libxkbcommon-0.9.1. Fixes #12681.
+
+      □ [renodr] - Archive Vino. Will be replaced with gnome-remote-desktop
+        soon.
+
+  • October 23rd, 2019
+
+      □ [dj] - Update to LSB-Tools-0.5.
+
+      □ [renodr] - Revert the change to Python3 for pip3.
+
+  • October 22nd, 2019
+
+      □ [ken] - Update to asymptote-2.58. Fixes #12591.
+
+      □ [renodr] - Fix an installation problem in Python-3.8 involving a
+        symbolic link for pip3 not being created.
+
+      □ [ken] - Update to firefox-68.2.0esr (the extended support release).
+        Includes security fixes. Please read the wiki link from the firefox
+        page before replacing a previous version as this will try to force a
+        new profile. Fixes #12615.
+
+      □ [thomas] - Update to sudo-1.8.28p1. Fixes #12679.
+
+  • October 21st, 2019
+
+      □ [bdubbs] - Update to libxkbcommon-0.9.0. Fixes #12672.
+
+      □ [bdubbs] - Update to balsa-2.5.9. Fixes #12671.
+
+      □ [bdubbs] - Update to xkeyboard-config-2.28. Fixes #12670.
+
+      □ [timtas] - Update to dovecot-2.3.8. Fixes #12623.
+
+      □ [bdubbs] - Update to xorgproto-2019.2. Fixes #12662.
+
+      □ [bdubbs] - Update to libdrm-2.4.100. Fixes #12654.
+
+      □ [bdubbs] - Update to xapian-core-1.4.13. Fixes #12643.
+
+      □ [bdubbs] - Update to proftpd-1.3.6a. Fixes #12642.
+
+      □ [renodr] - Update to glib-2.62.2. Fixes #12675.
+
+      □ [renodr] - Fix the build instruction for Python-3.8.0 by updating the
+        major version.
+
+      □ [renodr] - Update to unrar-5.8.3. Fixes #12673.
+
+      □ [renodr] - Update to bogofilter-1.2.5. Fixes #12552.
+
+      □ [renodr] - Update to NSS-3.47. Fixes #12674.
+
+      □ [renodr] - Update to libuv-1.33.1. Fixes #12668.
+
+      □ [renodr] - Update to nspr-4.23. Fixes #12664.
+
+  • October 19th, 2019
+
+      □ [renodr] - Update to libuv-1.33.0. Fixes #12658.
+
+      □ [bdubbs] - Update to ghostscript-9.50. Fixes #12653.
+
+      □ [bdubbs] - Update to qpdf-9.0.2. Fixes #12644.
+
+      □ [bdubbs] - Update to aspell-0.60.8. Fixes #12641.
+
+      □ [bdubbs] - Update to balsa-2.5.8. Fixes #12639.
+
+      □ [bdubbs] - Update to opencv-4.1.2. Fixes #12635.
+
+  • October 18th, 2019
+
+      □ [bdubbs] - Update to Python-3.8.0. Fixes #12650.
+
+      □ [bdubbs] - Update to sqlite-autoconf-3300100 (3.30.1). Fixes #12640.
+
+      □ [bdubbs] - Update to graphviz-2.42.3. Fixes #12630.
+
+      □ [bdubbs] - Update to librsvg-2.46.2. Fixes #12648.
+
+      □ [bdubbs] - Update to libdvdnav-6.0.1. Fixes #12645.
+
+      □ [bdubbs] - Update to libdvdread-6.0.2. Fixes #12646.
+
+      □ [bdubbs] - Update to bind-9.14.7. Fixes #12657.
+
+      □ [timtas] - Update to dhcpcd-8.1.1. Fixes #12659.
+
+      □ [renodr] - Update BIND instructions again to handle a blank file and a
+        typo in /etc/named. Fixes #12656.
+
+  • October 17th, 2019
+
+      □ [renodr] - Update to libinput-1.14.2. Fixes #12660.
+
+      □ [renodr] - Update to mutter-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to gnome-shell-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to gnome-shell-extensions-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to gnome-session-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to gdm-3.34.1. Part of #12617.
+
+  • October 16th, 2019
+
+      □ [renodr] - Update to nautilus-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to gnome-settings-daemon-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to network-manager-applet-1.8.24. Part of #12617.
+
+  • October 15th, 2019
+
+      □ [renodr] - Update to sudo-1.8.28. Fixes #12647. Contains a security fix
+        for CVE-2019-14287, which is a restriction bypass.
+
+      □ [renodr] - Update to libgweather-3.34.0. Part of #12617.
+
+      □ [renodr] - Update to evolution-data-server-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to tracker-2.3.1. Part of #12617.
+
+      □ [renodr] - Update to tracker-miners-2.3.1. Part of #12617.
+
+      □ [renodr] - Fix the configuration instructions for BIND. As part of
+        this, use a non-deprecated rndc-confgen line and adapt to changes in
+        9.14.6. Fixes #12649.
+
+      □ [renodr] - Update to dconf-editor-3.34.2. Part of #12617.
+
+      □ [renodr] - Update to gnome-online-accounts-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to parted-3.3. Fixes #12634.
+
+      □ [renodr] - Update to samba-4.11.0. Fixes #12543. NOTE: This version
+        only supports SMBv2 and higher. SMBv1 clients will no longer be able to
+        connect after upgrading.
+
+      □ [renodr] - Update to gvfs-1.42.1. Part of #12617.
+
+      □ [renodr] - Update to libsoup-2.68.2. Part of #12617.
+
+  • October 14th, 2019
+
+      □ [renodr] - Update to gnome-desktop-3.34.1. Part of #12617.
+
+      □ [renodr] - Update to VTE-0.58.2. Part of #12617.
+
+      □ [renodr] - Update to gcr-3.34.0. Part of #12617.
+
+  • October 13th, 2019
+
+      □ [bdubbs] - Update to Archive-Zip-1.37 (Perl Module). Fixes #12619.
+
+      □ [bdubbs] - Update to librsvg-2.46.1. Fixes #12618.
+
+      □ [thomas] - Update to dhcpcd-8.1.0. Fixes #12638.
+
+  • October 12th, 2019
+
+      □ [ken] - Update to rustc-1.37.0. Fixes #12629.
+
+      □ [timtas] - Update to thunderbird-68.1.2. Fixes #12636.
+
+      □ [thomas] - Update to openssh-8.1p1. Fixes #12632.
+
+  • October 11th, 2019
+
+      □ [renodr] - Update to gjs-1.58.1. Partially fixes #12617.
+
+      □ [renodr] - Update to fdk-aac-2.0.1. Fixes #12622.
+
+  • October 10th, 2019
+
+      □ [ken] - Update to nss-3.46.1. Fixes #12628.
+
+  • October 9th, 2019
+
+      □ [renodr] - Patch ghostscript against CVE-2019-14811, CVE-2019-18412,
+        CVE-2019-18413, and CVE-2019-14817.
+
+      □ [renodr] - Update to mesa-19.2.1. Fixes #12626.
+
+      □ [renodr] - Update to libX11-1.6.9 (Xorg Library). Fixes #12627.
+
+      □ [renodr] - Update to vala-0.46.3. Fixes #12625.
+
+  • October 8th, 2019
+
+      □ [renodr] - Update to at-spi2-atk-2.34.1. Part of #12617.
+
+      □ [renodr] - Update to gdk-pixbuf-2.40.0. Fixes #12621.
+
+  • October 7th, 2019
+
+      □ [bdubbs] - Update to autofs-5.1.6. Fixes #12616.
+
+  • October 6th, 2019
+
+      □ [bdubbs] - Update to epiphany-3.34.1. Fixes #12613.
+
+      □ [bdubbs] - Update to gnome-control-center-3.34.1. Fixes #12614.
+
+      □ [bdubbs] - Update to sqlite-autoconf-3300000 (3.30.0). Fixes #12612.
+
+      □ [bdubbs] - Update to gtk+3 3.24.12. Fixes #12608.
+
+      □ [bdubbs] - Update to glib-networking-2.62.1. Fixes #12611.
+
+      □ [bdubbs] - Update to Jinja2-2.10.3 (Python module). Fixes #12610.
+
+      □ [bdubbs] - Update to glib-2.62.1. Fixes #12609.
+
+  • October 4th, 2019
+
+      □ [bdubbs] - Update to unbound-1.9.4. Fixes #12605.
+
+      □ [bdubbs] - Update to postgresql-12.0. Fixes #12604.
+
+      □ [bdubbs] - Update to nano-4.5. Fixes #12607.
+
+      □ [bdubbs] - Update to iso-codes-4.4. Fixes #12603.
+
+      □ [bdubbs] - Update to gmime-3.2.4. Fixes #12602.
+
+  • October 3rd, 2019
+
+      □ [bdubbs] - Update to libreoffice-6.3.2.2. Fixes #12578.
+
+      □ [bdubbs] - Update to NetworkManager-1.20.4. Fixes #12588.
+
+      □ [bdubbs] - Update to mercurial-5.1.2. Fixes #12601.
+
+      □ [bdubbs] - Update to cmake-3.15.4. Fixes #12600.
+
+  • October 2nd, 2019
+
+      □ [bdubbs] - Update to libpcap-1.9.1. Fixes #12599.
+
+      □ [bdubbs] - Update to sysstat-12.1.7. Fixes #12598.
+
+      □ [bdubbs] - Update to ruby-2.6.5. Fixes #12597.
+
+      □ [bdubbs] - Update to screen-4.7.0. Fixes #12596.
+
+      □ [bdubbs] - Update to seahorse-3.34. Fixes #12592.
+
+  • October 1st, 2019
+
+      □ [bdubbs] - Update to harfbuzz-2.6.2. Fixes #12593.
+
+      □ [bdubbs] - Update to geoclue-2.5.5. Fixes #12594.
+
+      □ [bdubbs] - Update to gnome-keyring-3.34.0. Fixes #12590.
+
+      □ [bdubbs] - Update to vala-0.46.2. Fixes #12589.
+
+      □ [bdubbs] - Update to evince-3.34.0. Fixes #12587.
+
+      □ [bdubbs] - Update to freeglut-3.2.1. Fixes #12586.
+
+  • September 29th, 2019
+
+      □ [timtas] - Update to exim-4.92.3 Fixes #12585.
+
+  • September 28th, 2019
+
+      □ [bdubbs] - Update to geoclue-2.5.4. Fixes #12584.
+
+      □ [bdubbs] - Update to fribidi-1.0.7. Fixes #12583.
+
+      □ [bdubbs] - Update to fuse-3.7.0. Fixes #12582.
+
+  • September 27th, 2019
+
+      □ [bdubbs] - Update to x265-3.2. Fixes #12580.
+
+      □ [bdubbs] - Update to pipewire-0.2.7. Fixes #12579.
+
+      □ [bdubbs] - Update to php-7.3.10. Fixes #12575.
+
+      □ [bdubbs] - Update to gnome-tweaks-3.34.0. Fixes #12581.
+
+      □ [bdubbs] - Update to phonon-backend-vlc-0.11.1. Fixes #12577.
+
+      □ [bdubbs] - Update to phonon-4.11.1. Fixes #12576.
+
+      □ [bdubbs] - Update to unrar-5.8.2. Fixes #12574.
+
+  • September 26th, 2019
+
+      □ [bdubbs] - Update to mesa-19.2.0. Fixes #12570.
+
+      □ [bdubbs] - Update to links-2.20.2. Fixes #12572.
+
+      □ [bdubbs] - Update to xfce4-panel-4.14.1. Fixes #12571.
+
+      □ [timtas] - Update to thunderbird-68.1.1. Fixes #12573.
+
+  • September 24th, 2019
+
+      □ [bdubbs] - Update to gnome-weather-3.34.0. Fixes #12569.
+
+      □ [ken] - Update to mutt-1.12.2. Fixes #12559.
+
+      □ [bdubbs] - Update to gstreamer-1.16.1 and plugins. Fixes #12566.
+
+      □ [bdubbs] - Update to cups-filters-1.25.6. Fixes #12567.
+
+      □ [bdubbs] - Update to libXvMC-1.0.12 (Xorg Library). Fixes #12568.
+
+  • September 23rd, 2019
+
+      □ [bdubbs] - Update to WebKitGTK-2.26.1. Fixes #12565.
+
+      □ [bdubbs] - Update to xterm-349. Fixes #12564.
+
+      □ [bdubbs] - Update to v4l-utils-1.18.0. Fixes #12563.
+
+      □ [bdubbs] - Update to poppler-0.81.0. Fixes #12562.
+
+      □ [bdubbs] - Update to epiphany-3.34.0. Fixes #12533.
+
+  • September 22nd, 2019
+
+      □ [bdubbs] - Update to mdadm-4.1. Fixes #12286.
+
+      □ [bdubbs] - Update to postfix-3.4.7. Fixes #12550.
+
+      □ [pierre] - Update to Awaita-icon-them-3.34.0. Fixes #12561.
+
+  • September 21st, 2019
+
+      □ [bdubbs] - Update to wireshark-3.0.5. Fixes #12558.
+
+      □ [bdubbs] - Update to qpdf-9.0.1. Fixes #12556.
+
+      □ [bdubbs] - Update to libqmi-1.24.0. Fixes #12555.
+
+      □ [bdubbs] - Update to BIND Utilities and bind-9.14.6. Fixes #12547.
+
+      □ [bdubbs] - Update to gdb-8.3.1. Fixes #12554.
+
+      □ [bdubbs] - Update to mesa-19.1.7. Fixes #12544.
+
+      □ [bdubbs] - Update to icewm-1.6.2. Fixes #12542.
+
+      □ [bdubbs] - Update to glibmm-2.62.0. Fixes #12546.
+
+      □ [bdubbs] - Update to freeglut-3.2.0. Fixes #12541.
+
+      □ [renodr] - Update to shared-mime-info-1.14. Fixes #12557.
+
+  • September 20th, 2019
+
+      □ [bdubbs] - Update to vala-0.46.1. Fixes #12540.
+
+      □ [bdubbs] - Update to potrace-1.16. Fixes #12539.
+
+      □ [bdubbs] - Update to gedit-3.34.0. Fixes #12501.
+
+      □ [bdubbs] - Update to gnome-terminal-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to gnome-maps-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to gnome-disk-utility-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to gnome-calculator-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to file-roller-3.32.2. Partially fixes #12501.
+
+      □ [bdubbs] - Update to evolution-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to eog-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to cheese-3.34.0. Partially fixes #12501.
+
+      □ [bdubbs] - Update to baobab-3.34.0. Partially fixes #12501.
+
+      □ [xry111] - Update to bluez-5.51. Fixes #12551.
+
+      □ [renodr] - Update to gnome-logs-3.34.0. Fixes #12553.
+
+      □ [bdubbs] - Update to Data-Compare-1.26 (Perl Module). Fixes #12549.
+
+      □ [bdubbs] - Update to Archive-Zip-1.66 (Perl module). Fixes #12545.
+
+  • September 19th, 2019
+
+      □ [ken] - Update to asymptote-2.53. Fixes #12438.
+
+      □ [ken] - Archive::Zip (perl module) - move Test::MockModule to an
+        optional dependency, it is used by one obscure sub-module. Fixes #12522
+        .
+
+      □ [ken] - Update to firefox-69.0.1 (includes security fix). Fixes #12548.
+
+      □ [bdubbs] - Archive fuse2.
+
+  • September 16th, 2019
+
+      □ [bdubbs] - Update to yelp-3.34.0. Fixes #12523.
+
+      □ [bdubbs] - Update to gnome-user-docs-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gdm-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gnome-session-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gnome-shell-extensions-3.34.0. Partially fixes #
+        12523.
+
+      □ [bdubbs] - Update to gnome-shell-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to mutter-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to nautilus-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gvfs-1.42.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gnome-backgrounds-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gnome-control-center-3.34.0.1. Partially fixes #
+        12523.
+
+      □ [bdubbs] - Update to gnome-settings-daemon-3.34.0. Partially fixes #
+        12523.
+
+      □ [bdubbs] - Update to gnome-bluetooth-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to dconf-editor-3.34.1. Partially fixes #12523.
+
+      □ [bdubbs] - Update to dconf-0.34.0. Partially fixes #12523.
+
+  • September 16th, 2019
+
+      □ [bdubbs] - Update to folks-0.13.1. Partially fixes #12523.
+
+      □ [bdubbs] - Update to evolution-data-server-3.34.0. Partially fixes #
+        12523.
+
+      □ [bdubbs] - Update to libpeas-1.24.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to grilo-0.3.10. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gnome-online-accounts-3.34.0. Partially fixes #
+        12523.
+
+      □ [bdubbs] - Update to gnome-desktop-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to yelp-xsl-3.34.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to vte-0.58.0. Partially fixes #12523.
+
+      □ [bdubbs] - Update to gsettings-desktop-schemas-3.34.0. Partially fixes
+        #12523.
+
+      □ [renodr] - Update to Samba-4.10.8. Fixes #12476.
+
+  • September 15th, 2019
+
+      □ [bdubbs] - Update to libical-3.0.6. Fixes #12537.
+
+  • September 14th, 2019
+
+      □ [bdubbs] - Update to libXfont2-2.0.4 (Xorg library). Fixes #12536.
+
+      □ [bdubbs] - Update to pulseaudio-13.0. Fixes #12535.
+
+      □ [dj] - Added docbook-xml-5.0 and docbook-xml-5.1. Fixes #3717.
+
+  • September 13th, 2019
+
+      □ [bdubbs] - Update to glm-0.9.9.6. Fixes #12505.
+
+      □ [bdubbs] - Update to mariadb-10.4.8. Fixes #12529.
+
+      □ [bdubbs] - Update to wireshark-3.0.4. Fixes #12526.
+
+      □ [timtas] - Update to dhcpcd-8.0.6. Fixes #12534.
+
+      □ [bdubbs] - Update to ModemManager-1.10.6. Fixes #12531.
+
+      □ [bdubbs] - Update to dbus-python-1.2.12 (Python module). Fixes #12532.
+
+      □ [bdubbs] - Update to libsoup-2.68.1. Fixes #12528.
+
+      □ [bdubbs] - Update to shared-mime-info-1.13.1. Fixes #12525.
+
+      □ [bdubbs] - Update to enchant-2.2.7. Fixes #12524.
+
+  • September 12th, 2019
+
+      □ [bdubbs] - Update to webkitgtk-2.26.0. Fixes #12520.
+
+      □ [bdubbs] - Update to gtksourceview-4.4.0. Fixes #12519.
+
+      □ [bdubbs] - Update to librsvg-2.46.0. Fixes #12517.
+
+      □ [bdubbs] - Update to NetworkManager-1.20.2. Fixes #12485.
+
+      □ [timtas] - Update to thunderbird-68.1.0. Fixes #12530.
+
+      □ [timtas] - Update to curl-66.0. Fixes #12527.
+
+  • September 11th, 2019
+
+      □ [bdubbs] - Update to libreoffice-6.3.1.2. Fixes #12493.
+
+      □ [dj] - Update to make-ca-1.5.
+
+  • September 10th, 2019
+
+      □ [bdubbs] - Update to pyatspi-3.34.0 (python module). Fixes #12515.
+
+      □ [bdubbs] - Update to pygobject3-3.34.0 (python module). Fixes #12516.
+
+      □ [bdubbs] - Update to at-spi2-core-2.34.0 and at-spi2-atk-2.34.0. Fixes
+        #12518.
+
+      □ [bdubbs] - Update to atk-2.34.1. Fixes #12521.
+
+      □ [bdubbs] - Update to libuv-v1.32.0. Fixes #12514.
+
+      □ [bdubbs] - Update to libblockdev-2.23. Fixes #12513.
+
+      □ [bdubbs] - Update to gobject-introspection-1.62.0. Fixes #12512.
+
+      □ [bdubbs] - Update to gdk-pixbuf-2.38.2. Fixes #12511.
+
+      □ [bdubbs] - Update to libqmi-1.22.6. Fixes #12509.
+
+      □ [bdubbs] - Update to ffmpeg-4.2.1. Fixes #12503.
+
+  • September 9th, 2019
+
+      □ [bdubbs] - Update to apache-ant-1.10.7. Fixes #12495.
+
+      □ [bdubbs] - Update to gspell-1.8.2. Fixes #12497.
+
+      □ [bdubbs] - Update to Archive-Zip-1.65 (Perl module). Fixes #12510.
+
+      □ [bdubbs] - Update to qtwebengine-everywhere-src-5.13.1.
+
+      □ [bdubbs] - Update to qt-everywhere-src-5.13.1. Fixes #12492.
+
+      □ [bdubbs] - Update to glib-networking-2.62.0. Fixes #12506.
+
+      □ [bdubbs] - Update to mercurial-5.1.1. Fixes #12496.
+
+      □ [bdubbs] - Update to enchant-2.2.6. Fixes #12494.
+
+      □ [dj] - Replace PyCrypto with PyCryptodome. Fixes #12210.
+
+  • September 8th, 2019
+
+      □ [dj] - Update to LSB-Tools-0.4.
+
+      □ [bdubbs] - Update to gjs-1.58.0. Fixes #12508.
+
+      □ [bdubbs] - Update to libmbim-1.20.0. Fixes #12499.
+
+      □ [bdubbs] - Update to dhcpcd-8.0.4. Fixes #12491.
+
+      □ [bdubbs] - Update to cmake-3.15.3. Fixes #12490.
+
+      □ [timtas] - Update to exim-4.92.2 Fixes #12500.
+
+      □ [bdubbs] - Update to libjpeg-turbo-2.0.3. Fixes #12489.
+
+      □ [bdubbs] - Update to talloc-2.3.0. Fixes #12488.
+
+      □ [bdubbs] - Update to btrfs-progs-v5.2.2. Fixes #12487.
+
+      □ [bdubbs] - Update to glib-2.62.0. Fixes #12486.
+
+      □ [bdubbs] - Update to vala-0.46.0. Fixes #12484.
+
+      □ [bdubbs] - Update to mesa-19.1.6. Fixes #12479.
+
+      □ [bdubbs] - Update to cups-filters-1.25.5. Fixes #12498.
+
+      □ [xry111] - Update to epiphany-3.32.5. Fixes #12504.
+
+      □ [dj] - Update to BLFS-Bootscripts-20190908. Fixes #12010.
+
+  • September 7th, 2019
+
+      □ [xry111] - Update to libsecret-0.19.1. Fixes #12502.
+
+  • September 6th, 2019
+
+      □ [bdubbs] - Update to libsecret-0.19.0. Fixes #12482.
+
+      □ [bdubbs] - Update to upower-0.99.11. Fixes #12478.
+
+      □ [bdubbs] - Update to gtk+-3.24.11. Fixes #12477.
+
+      □ [bdubbs] - Update to v4l-utils-1.16.7. Fixes #12474.
+
+      □ [bdubbs] - Update to librsvg-2.44.15. Fixes #12472.
+
+      □ [bdubbs] - Update to libmypaint-1.4.0. Fixes #12468.
+
+      □ [bdubbs] - Update to libogg-1.3.4. Fixes #12467.
+
+      □ [bdubbs] - Update to qpdf-9.0.0. Fixes #12466.
+
+  • September 4th, 2019
+
+      □ [bdubbs] - Update to seamonkey-2.49.5. Fixes #12465.
+
+      □ [bdubbs] - Update to Net-DNS-1.21 (Perl Module). Fixes #12464.
+
+      □ [bdubbs] - Update to logrotate-3.15.1. Fixes #12462.
+
+      □ [bdubbs] - Update to php-7.3.9. Fixes #12460.
+
+      □ [bdubbs] - Update to links-2.20.1. Fixes #12457.
+
+      □ [bdubbs] - Update to emacs-26.3. Fixes #12454.
+
+      □ [renodr] - Update to glib-2.60.7. Fixes #12471.
+
+      □ [renodr] - Update to dbus-python-1.2.10 (Python Module). Fixes #12470.
+
+      □ [renodr] - Update to libnl-3.5.0. Fixes #12469.
+
+      □ [renodr] - Update to unrar-5.8.1. Fixes #12463.
+
+      □ [renodr] - Update to NSS-3.46. Fixes #12461.
+
+      □ [renodr] - Update to libusb-1.0.23. Fixes #12455.
+
+      □ [bdubbs] - Update to phonon-backend-vlc-4.11.0. Fixes #12451.
+
+      □ [bdubbs] - Update to phonon-backend-gstreamer-4.10.0. Fixes #12450.
+
+      □ [bdubbs] - Update to phonon-4.11.0. Fixes #12449.
+
+  • September 3rd, 2019
+
+      □ [bdubbs] - Update to unbound-1.9.3. Fixes #12447.
+
+      □ [bdubbs] - Update to cbindgen-0.9.1. Fixes #12445.
+
+      □ [bdubbs] - Update to cups-2.3.0. Fixes #12439.
+
+      □ [bdubbs] - Update to ibus-1.5.21. Fixes #12437.
+
+      □ [bdubbs] - Update to boost-1.71.0. Fixes #12435.
+
+      □ [bdubbs] - Update to poppler-0.80.0. Fixes #12432.
+
+      □ [bdubbs] - Update to babl-0.1.72. Fixes #12430.
+
+      □ [ken] - Update to firefox-69.0 (includes security fixes and dbus-glib
+        is now required). Fixes #12475.
+
+  • September 2nd, 2019
+
+      □ [bdubbs] - Update to libevdev-1.8.0. Fixes #12446.
+
+      □ [bdubbs] - Update to libvdpau-1.3. Fixes #12453.
+
+      □ [bdubbs] - Update to font-util-1.3.2 (xorg fonts). Fixes #12443.
+
+      □ [bdubbs] - Update to libinput-1.14.1. Fixes #12442.
+
+      □ [bdubbs] - Update to mesa-19.1.5. Fixes #12434.
+
+      □ [bdubbs] - Update to harfbuzz-2.6.1. Fixes #12431.
+
+      □ [bdubbs] - Update to cups-filters-1.25.3. Fixes #12427.
+
+      □ [bdubbs] - Update to graphviz-2.42.1. Fixes #12421.
+
+      □ [bdubbs] - Update to swig-4.0.1. Fixes #12420.
+
+      □ [bdubbs] - Update to nspr-4.22. Fixes #12414.
+
+      □ [dj] - Replace Lsb_release and Initd-tools with LSB-Tools package.
+
+      □ [dj] - Begin update of bootscript headers. Partial fix for #12010.
+
+      □ [dj] - Remove unneeded elogind and mountcgroupfs bootscripts.
+
+      □ [dj] - Update to blfs-bootscripts-20190902.
+
+  • September 1st, 2019
+
+      □ [bdubbs] - Release of BLFS-9.0.
+
+Last updated on 2020-02-29 14:16:05 -0800
+
+  • Prev
+
+    Getting the Source Packages
+
+  • Next
+
+    Mailing Lists
+
+  • Up
+  • Home
+
