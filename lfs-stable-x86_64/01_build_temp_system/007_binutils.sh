@@ -6,10 +6,10 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/binutils-pass2.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/binutils-pass2.html
 
 # Home page: http://www.gnu.org/software/binutils/
-# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz
 
 ###
 # Это второй проход binutils
@@ -39,7 +39,7 @@ make || make -j1 || exit 1
 make install
 
 # теперь подготовим компоновщик к этапу "повторной настройки", которая
-# понадобится позже. удалим все скомпилированные файлы в подкаталоге ld
+# понадобится позже. Удалим все скомпилированные файлы в подкаталоге ld
 make -C ld clean
 # указываем путь поиска библиотек по умолчанию для компоновщика
 make -C ld LIB_PATH=/usr/lib:/lib
