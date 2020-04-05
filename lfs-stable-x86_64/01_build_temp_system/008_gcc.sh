@@ -6,7 +6,7 @@ PRGNAME="gcc"
 # Пакет содержит коллекцию компиляторов GNU, которая включает компиляторы C и
 # C++
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gcc-pass2.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-pass2.html
 
 # Home page: https://gcc.gnu.org/
 # Download:  http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
@@ -19,6 +19,9 @@ source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # GCC для сборки требует пакеты gmp, mpfr и mpc
+# http://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.xz
+# http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
+# https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
 GMP_VER=$(echo "${SOURCES}/gmp"-*.tar.?z* | rev | cut -f 3- -d . | \
     cut -f 1 -d - | rev)
 MPFR_VER=$(echo "${SOURCES}/mpfr"-*.tar.?z* | rev | cut -f 3- -d . | \
@@ -78,6 +81,10 @@ done
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
 sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 
+# исправим проблему с Glibc-2.31
+sed -e '1161 s|^|//|' \
+    -i libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+
 # документация gcc рекомендует собирать gcc в отдельном каталоге для сборки
 mkdir build
 cd build || exit 1
@@ -96,19 +103,19 @@ cd build || exit 1
 # безупречно. Однако метод сборки LFS должен обеспечивать надежный компилятор
 # без необходимости каждый раз создавать "bootstrap"
 #    --disable-bootstrap
-CC="${LFS_TGT}-gcc"                                \
-CXX="${LFS_TGT}-g++"                               \
-AR="${LFS_TGT}-ar"                                 \
-RANLIB="${LFS_TGT}-ranlib"                         \
-../configure                                       \
-    --prefix=/tools                                \
-    --with-local-prefix=/tools                     \
-    --with-native-system-header-dir=/tools/include \
-    --enable-languages=c,c++                       \
-    --disable-libstdcxx-pch                        \
-    --disable-multilib                             \
-    --disable-bootstrap                            \
-    --disable-libgomp || exit 1
+CC="${LFS_TGT}-gcc"            \
+CXX="${LFS_TGT}-g++"           \
+AR="${LFS_TGT}-ar"             \
+RANLIB="${LFS_TGT}-ranlib"     \
+../configure                   \
+    --prefix=/tools            \
+    --with-local-prefix=/tools \
+    --enable-languages=c,c++   \
+    --disable-libstdcxx-pch    \
+    --disable-multilib         \
+    --disable-bootstrap        \
+    --disable-libgomp          \
+    --with-native-system-header-dir=/tools/include || exit 1
 
 make || make -j1 || exit 1
 make install
