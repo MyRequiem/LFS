@@ -9,11 +9,6 @@ FAQ:
 
 Errata:
     http://www.linuxfromscratch.org/lfs/errata/stable/
-        На 05.04.20:
-            - OpenSSL
-
-        Обновленные версии пакетов скачиваем с current ветки LFS:
-            http://www.linuxfromscratch.org/lfs/view/development/chapter03/packages.html
 
 Errors:
     http://www.linuxfromscratch.org/hints/downloads/files/errors.txt
