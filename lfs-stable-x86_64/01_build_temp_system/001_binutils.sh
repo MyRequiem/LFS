@@ -6,10 +6,10 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/binutils-pass1.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/binutils-pass1.html
 
 # Home page: http://www.gnu.org/software/binutils/
-# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz
 
 ###
 # Это первый проход binutils
