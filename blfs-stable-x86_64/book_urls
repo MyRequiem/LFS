@@ -1,0 +1,41 @@
+Book:
+    http://www.linuxfromscratch.org/blfs/view/stable/
+
+ChangeLog:
+    http://www.linuxfromscratch.org/blfs/view/stable/introduction/changelog.html
+
+FAQ:
+    http://www.linuxfromscratch.org/faq/
+
+Wiki:
+    http://wiki.linuxfromscratch.org/blfs/wiki
+
+Errata:
+    http://www.linuxfromscratch.org/blfs/errata/stable/
+        На 05.04.20:
+            - avahi
+            - wireshark
+            - php
+            - ntp
+            - webkitgtk+-2
+            - mozilla-firefox
+            - thunderbird
+            - bubblewrap
+            - gnutls
+            - httpd
+            - ruby
+            - qt5
+            - qtwebengine
+
+        Обновленные версии пакетов скачиваем с current версии LFS:
+            http://www.linuxfromscratch.org/lfs/view/development/chapter03/packages.html
+
+Errors:
+    http://www.linuxfromscratch.org/hints/downloads/files/errors.txt
+
+Sources:
+    Список зеркал:
+        http://www.linuxfromscratch.org/blfs/download.html#sources
+
+Patches:
+    http://www.linuxfromscratch.org/blfs/downloads/stable/patches/

@@ -1,0 +1,80 @@
+#! /bin/bash
+
+PRGNAME="inetutils"
+
+### Inetutils
+# Пакет содержит базовые сетевые утилиты
+
+# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/inetutils.html
+
+# Home page: http://www.gnu.org/software/inetutils/
+# Download:  http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz
+
+ROOT="/"
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+# по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
+# логирование. Мы не будем его устанавливать, т.к. пакет Util-Linux содержит
+# более продвинутую версию
+#    --disable-logger
+# НЕ собирать утилиту 'whois', которая считается устаревшей. В BLFS описана
+# более лучшая альтернатива данной утилите.
+#    --disable-whois
+# эти параметры отключают сборку устаревших программ, которые не должны
+# использоваться из-за проблем безопасности. Функции, предоставляемые этими
+# программами полностью заменяет пакет openssh из BLFS
+#    --disable-rcp
+#    --disable-rexec
+#    --disable-rlogin
+#    --disable-rsh
+# отключаем установку различных сетевых серверов. Эти серверы считаются
+# неподходящими в базовая система LFS. Некоторые из них небезопасны по своей
+# природе и считаются безопасными только в доверенных сетях. Для этих серверов
+# существуют более лучшие и безопасные замены
+#    --disable-servers
+./configure              \
+    --prefix=/usr        \
+    --localstatedir=/var \
+    --disable-logger     \
+    --disable-whois      \
+    --disable-rcp        \
+    --disable-rexec      \
+    --disable-rlogin     \
+    --disable-rsh        \
+    --disable-servers || exit 1
+
+make || exit 1
+# тест libls.sh может потерпеть неудачу в исходной среде chroot, но нормально
+# проходит после завершения создания LFS и ее чистой загрузки.
+# тест ping-localhost.sh потерпит неудачу, если в хост-системе нет возможности
+# ipv6
+make check
+make install
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"/{bin,sbin}
+make install DESTDIR="${TMP_DIR}"
+
+# переместим некоторые утилиты из /usr/bin в /bin и /sbin
+mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
+mv -v /usr/bin/ifconfig /sbin
+
+mv -v "${TMP_DIR}/usr/bin"/{hostname,ping,ping6,traceroute} "${TMP_DIR}/bin"
+mv -v "${TMP_DIR}/usr/bin/ifconfig"                         "${TMP_DIR}/sbin"
+
+cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+# Package: ${PRGNAME} (programs for basic networking)
+#
+# Inetutils is a collection of common network programs. It includes:
+# dnsdomainname, ftp, hostname, ifconfig, ping, ping6, talk, telnet, tftp,
+# traceroute
+#
+# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+#
+EOF
+
+source "${ROOT}/write_to_var_log_packages.sh" \
+    "${TMP_DIR}" "${PRGNAME}-${VERSION}"

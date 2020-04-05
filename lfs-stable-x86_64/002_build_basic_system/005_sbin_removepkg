@@ -1,0 +1,332 @@
+#! /bin/bash
+
+# install this script:
+# --------------------
+# cp 005_sbin_removepkg /mnt/lfs/sbin/removepkg
+# chown root:root /mnt/lfs/sbin/removepkg
+# chmod 755 /mnt/lfs/sbin/removepkg
+
+# Written for Linux From Scratch by MyRequiem <mrvladislavovich@gmail.com>
+# Based on removepkg script from Slackware
+
+# Usage: removepkg [--no-color] [--fake|--backup|--copy] [/var/log/packages/]pkgname-version
+#
+#    --no-color
+#       Do not colorize output
+#    --fake
+#       Generate a report to the standard output about which files and
+#       directories would be removed, but does not actually remove the package.
+#    --backup
+#       The complete package subtree is reconstructed in
+#       /var/log/setup/tmp/preserved/pkgname-version
+#       and then package will be deleted from system
+#    --copy
+#       The complete package subtree is reconstructed in
+#       /var/log/setup/tmp/preserved/pkgname-version
+#       but the package is not removed from the system
+#
+# Example:
+#    # removepkg /var/log/packages/terminus-font-4.48
+#    # removepkg terminus-font-4.48
+
+PACKAGES_DIR="/var/log/packages"
+REMOVED_PACKAGES_DIR="/var/log/removed_packages"
+PRESERVED_DIR="/var/log/setup/tmp/preserved"
+
+usage() {
+cat << EOF
+Usage: removepkg [params] [/var/log/packages/]pkgname-version
+
+Params:
+  --no-color        do not colorize output
+
+  [--fake|--backup|--copy]
+  --fake            generate a report to the standard output about which files
+                    and directories would be removed, but does not actually
+                    remove the package
+
+  --backup        the complete package subtree is reconstructed in
+                    /var/log/setup/tmp/preserved/pkgname-version and then
+                    package will be deleted from system
+
+  --copy            the complete package subtree is reconstructed in
+                    /var/log/setup/tmp/preserved/pkgname-version
+                    but the package is not removed from the system
+
+Example:
+    # removepkg /var/log/packages/terminus-font-4.48
+    # removepkg terminus-font-4.48
+EOF
+}
+
+confirm_continuation() {
+    echo -en "${LGREEN}Continue?${COLORRESET} [y/N]: "
+    read -r JUNK
+    [[ "x${JUNK}" != "xy" && "x${JUNK}" != "xY" ]] && exit 0
+    echo ""
+}
+
+backup() {
+    ITEM="$1"
+
+    if  [[ -L "${ITEM}" || -f "${ITEM}"  ]]; then
+        DIRNAME="${PRESERVED_DIR}/${PKG}$(dirname "${ITEM}")"
+        if ! [ -d "${DIRNAME}" ]; then
+            echo -en "${MAGENTA}Creating directory "
+            echo -e "${BROWN}${DIRNAME}${COLORRESET}"
+            mkdir -p "${DIRNAME}"
+        fi
+    fi
+
+    if [ -L "${ITEM}" ]; then
+        LINKNAME="$(basename "${ITEM}")"
+        TARGET="$(readlink "${ITEM}")"
+        echo -en "${GRAY}Creating symbolic link "
+        echo -en "${LCYAN}${LINKNAME}${COLORRESET} -> ${CYAN}${TARGET}${GREEN} "
+        echo -e "in ${BROWN}${DIRNAME}/${COLORRESET}"
+        (
+            cd "${DIRNAME}" || exit 1
+            ln -sf "${TARGET}" "${LINKNAME}"
+        )
+    elif [ -d "${ITEM}" ]; then
+        if ! [ -d "${PRESERVED_DIR}/${PKG}${ITEM}" ]; then
+            echo -en "${MAGENTA}Creating directory "
+            echo -e "${BROWN}${PRESERVED_DIR}/${PKG}${ITEM}${COLORRESET}"
+            mkdir -p "${PRESERVED_DIR}/${PKG}${ITEM}"
+        fi
+    else
+        echo -en "${GREEN}Copy ${CYAN}${LINE}${GREEN} to "
+        echo -e "${BROWN}${DIRNAME}/${COLORRESET}"
+        cp "${ITEM}" "${DIRNAME}/"
+    fi
+}
+
+remove_package() {
+    if [ -n "${BACKUP}" ]; then
+        # delete old backup if it exists
+        if [ -d "${PRESERVED_DIR}/${PKG}" ]; then
+            (
+                cd "${PRESERVED_DIR}" || exit 1
+                rm -rf "${PKG}"
+            )
+        fi
+
+        {
+            while read -r LINE; do
+                if ! [[ "${LINE}" =~ ^# ]]; then
+                    backup "${LINE}"
+                fi
+            done
+        } < "${PACKAGES_DIR}/${PKG}"
+    fi
+
+    # removing files
+    {
+        while read -r LINE; do
+            if [ -L "${LINE}" ]; then
+                TYPE=" ${LCYAN}[L]${COLORRESET}"
+            elif [ -f "${LINE}" ]; then
+                TYPE=" ${GREEN}[F]${COLORRESET}"
+            fi
+
+            echo -e "${MAGENTA}Removing${COLORRESET}${TYPE} ${LINE}"
+            # real removal
+            if [ -z "${FAKE}" ]; then
+                rm -f "${LINE}" &>/dev/null
+            fi
+        done
+    } < "${FILES_TO_DELETE}"
+
+    # removing directories
+    {
+        while read -r LINE; do
+            # real removal
+            if [ -z "${FAKE}" ]; then
+                # if directory is empty
+                if [ "$(ls -a "${LINE}" | wc -l)" ==  "2" ]; then
+                    echo -en "${MAGENTA}Removing ${BROWN}[D]${COLORRESET} "
+                    echo "${LINE}"
+                        rm -rf "${LINE}" &>/dev/null
+                fi
+            else
+                echo -en "${MAGENTA}Removing if empty "
+                echo -e "${BROWN}[D]${COLORRESET} ${LINE}"
+            fi
+        done
+    } < "${DIRS_TO_DELETE}_sort"
+
+    # show files contained in other packages that were not deleted
+    {
+        NOT_DELETED_FILES=""
+        while read -r LINE; do
+            if [[ "${LINE}" =~ ^# ]]; then
+                continue
+            fi
+
+            if [[ -L "${LINE}" || -f "${LINE}" ]]; then
+                if ! grep -qE "^${LINE}$" "${FILES_TO_DELETE}"; then
+                    NOT_DELETED_FILES="${NOT_DELETED_FILES}${LINE}\n"
+                fi
+            fi
+        done
+
+        if [ -n "${NOT_DELETED_FILES}" ]; then
+            echo -en "\n${LRED}Files contained in other packages that "
+            echo -e "have not been deleted${COLORRESET}:"
+            echo -e "${NOT_DELETED_FILES}"
+        fi
+    } < "${PACKAGES_DIR}/${PKG}"
+
+    # removing temporary files
+    rm -f "${FILES_TO_DELETE}" "${DIRS_TO_DELETE}"{,_sort}
+
+    # if real removal, move file from /var/log/packages/ to
+    # /var/log/removed_packages/
+    if [ -z "${FAKE}" ]; then
+        if ! [ -d "${REMOVED_PACKAGES_DIR}" ]; then
+            mkdir -p "${REMOVED_PACKAGES_DIR}"
+        fi
+
+        rm -f "${REMOVED_PACKAGES_DIR}/${PKG}"
+        mv "${PACKAGES_DIR}/${PKG}" "${REMOVED_PACKAGES_DIR}/"
+    fi
+}
+
+if [[ "$#" = "0" ]]; then
+    usage
+    exit 1
+fi
+
+NO_COLOR=""
+FAKE=""
+BACKUP=""
+while : ; do
+    case "$1" in
+        --no-color)
+            NO_COLOR="true";
+            shift
+            ;;
+        --copy)
+            FAKE="true";
+            BACKUP="true";
+            shift
+            ;;
+        --backup)
+            BACKUP="true";
+            shift
+            ;;
+        --fake)
+            FAKE="true";
+            shift
+            ;;
+        -*)
+            usage
+            exit 1
+            ;;
+        *) break
+    esac
+done
+
+PKG=$(basename "$1")
+if [ -z "${PKG}" ]; then
+    usage
+    exit 1
+fi
+
+if [ -z "${NO_COLOR}" ]; then
+    RED="\033[0;31m"
+    LRED="\033[1;31m"
+    LBLUE="\033[1;34m"
+    GREEN="\033[0;32m"
+    LGREEN="\033[1;32m"
+    BROWN="\033[0;33m"
+    MAGENTA="\033[0;35m"
+    CYAN="\033[0;36m"
+    LCYAN="\033[1;36m"
+    GRAY="\033[0;37m"
+    COLORRESET="\033[0;0m"
+fi
+
+if [[ "x${PKG}" == "xmain-directory-tree-9.0" ]]; then
+    if [ -z "${FAKE}" ]; then
+        echo -en "${RED}Package ${LBLUE}${PKG}${RED} "
+        echo -e "cannot be deleted !!!${COLORRESET}"
+        exit 0
+    fi
+fi
+
+if test "${EUID}" -ne 0; then
+    echo -ne "${RED}Error: $(basename "$0") must be run as the root user! "
+    echo -e "Exiting...${COLORRESET}"
+    exit 1
+fi
+
+if ! [ -f "${PACKAGES_DIR}/${PKG}" ]; then
+    echo -en "${RED}Package ${LBLUE}${PKG}${RED} not found in "
+    echo -e "${BROWN}${PACKAGES_DIR}/${COLORRESET}"
+    exit 1
+fi
+
+if [ "${FAKE}" = "true" ]; then
+    if [ "${BACKUP}" = "true" ]; then
+        echo -en "${MAGENTA}Contents of package ${LBLUE}${PKG}${MAGENTA} "
+        echo -e "will be copied to"
+        echo -e "${BROWN}${PRESERVED_DIR}/${PKG}/${COLORRESET}"
+        confirm_continuation
+    else
+        echo -en "${MAGENTA}Not actually removing any files. Here's what "
+        echo -en "${MAGENTA}would be\nremoved (and left behind) if you "
+        echo -e "removed the package${COLORRESET}"
+        confirm_continuation
+    fi
+
+else
+    if [ "${BACKUP}" = "true" ]; then
+        echo -en "${MAGENTA}Contents of package ${LBLUE}${PKG}${MAGENTA} "
+        echo "will be copied to directory"
+        echo -e "${BROWN}${PRESERVED_DIR}/${PKG}/${MAGENTA}"
+        echo -e "and then package will be deleted from you system${COLORRESET}"
+        confirm_continuation
+    fi
+fi
+
+if [[ -z "${FAKE}" && -z "${BACKUP}" ]]; then
+        echo -en "${MAGENTA}Package ${LBLUE}${PKG}${MAGENTA} will be "
+        echo -e "deleted from you system${COLORRESET}"
+        confirm_continuation
+fi
+
+# when  deleting  files,  removepkg will analyze the contents of the other
+# packages installed on your system, and will only delete the files that are
+# unique to the package being removed
+FILES_TO_DELETE="/tmp/removepkg_files_to_delete"
+DIRS_TO_DELETE="/tmp/removepkg_dirs_to_delete"
+rm -f "${FILES_TO_DELETE}"
+rm -f "${DIRS_TO_DELETE}"
+:> "${FILES_TO_DELETE}"
+:> "${DIRS_TO_DELETE}"
+
+echo "Building a list of files to delete. Please wait ..."
+{
+    while read -r LINE; do
+        if [[ "${LINE}" =~ ^# ]]; then
+            continue
+        fi
+
+        if ! grep -qE "^${LINE}$" --exclude="${PACKAGES_DIR}/${PKG}" \
+                "${PACKAGES_DIR}"/*; then
+            # if this is a directory
+            if ! [[ -L "${LINE}" || -f "${LINE}" ]]; then
+                if [ -e "${LINE}" ]; then
+                    echo "${LINE}" >> "${DIRS_TO_DELETE}"
+                fi
+            else
+                echo "${LINE}" >> "${FILES_TO_DELETE}"
+            fi
+        fi
+    done
+} < "${PACKAGES_DIR}/${PKG}"
+
+sort -r "${DIRS_TO_DELETE}" > "${DIRS_TO_DELETE}_sort"
+
+remove_package

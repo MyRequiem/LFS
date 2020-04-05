@@ -1,0 +1,27 @@
+Book:
+    http://www.linuxfromscratch.org/lfs/view/stable/index.html
+
+FAQ:
+    http://www.linuxfromscratch.org/faq/
+
+Errata:
+    http://www.linuxfromscratch.org/lfs/errata/stable/
+        На 05.04.20:
+            - OpenSSL
+
+        Обновленные версии пакетов скачиваем с current ветки LFS:
+            http://www.linuxfromscratch.org/lfs/view/development/chapter03/packages.html
+
+Errors:
+    http://www.linuxfromscratch.org/hints/downloads/files/errors.txt
+
+Sources:
+    Ссылки на все пакеты
+        http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
+    wget-list
+        http://www.linuxfromscratch.org/lfs/downloads/stable/
+    Список зеркал:
+        http://www.linuxfromscratch.org/lfs/packages.html#packages
+
+Patches:
+    http://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html

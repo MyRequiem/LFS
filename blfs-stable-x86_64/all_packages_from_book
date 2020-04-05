@@ -1,0 +1,1112 @@
+# ---------------------
+# (+) - установлено
+# (-) - не устанавливаем
+# (E) - пакет обновлен, версия указана в Errata: http://www.linuxfromscratch.org/blfs/errata/9.0/
+# (N) - пакет отсутствует в LFS и BLFS
+# Если указаны дополнительные пакеты, то их нужно пересобрать после установки текущего пакета
+# ---------------------
+
+make-ca                             (+)
+cracklib
+cryptsetup
+cyrus sasl                          (+)
+gnupg                               (E)
+gnutls                              (+)
+gpgme                               (+)
+haveged                             (+)
+iptables                            (+)
+libcap (with linux-pam)
+linux-pam
+liboauth
+libpwquality
+mit kerberos v5
+nettle                              (+)
+nss                                 (+E)
+openssh
+p11-kit                             (+)
+polkit
+shadow
+ssh-askpass
+stunnel
+sudo                                (E)
+tripwire
+volume_key
+btrfs-progs
+dosfstools                          (+)
+fuse-2
+fuse-3
+jfsutils
+lvm2
+mdadm
+ntfs-3g
+gptfdisk
+parted
+reiserfsprogs
+smartmontools                       (+)
+sshfs
+xfsprogs
+bluefish
+ed                                  (+)
+emacs
+gedit
+joe
+kate
+mousepad
+nano
+vim
+
+-------------
+other editors
+-------------
+geany
+leafpad
+-------------
+
+dash
+tcsh
+zsh
+qemu
+apr                                 (+ apr-util)
+apr-util                            (+)
+aspell                              (+)
+aspell-dict-en                      (+N)
+aspell-dict-ru                      (+N)
+boost
+clucene
+dbus-glib
+enchant
+exempi
+fftw                                (+)
+glib                                (+E)
+glibmm
+gmime-2
+gmime-3
+gobject-introspection               (+)
+grantlee
+gsl
+gspell
+icu
+jansson
+js
+json-c                              (+)
+json-glib                           (+)
+keyutils
+libaio                              (+)
+libarchive                          (+E)
+libassuan                           (+)
+libatasmart                         (+)
+libatomic_ops
+libblockdev
+libbytesize
+libcroco                            (+)
+libdaemon
+libesmtp
+libgcrypt                           (+)
+libgpg-error                        (+)
+libgrss
+libgsf
+libgudev                            (+)
+libgusb
+libical                             (+)
+libidn                              (+)
+libidn2
+libiodbc                            (+)
+libksba                             (+)
+liblinear
+libmbim                             (+)
+libpaper
+libqmi                              (+)
+libseccomp                          (+)
+libsigc++                           (+)
+libsigsegv                          (+)
+libssh                              (+N)
+libssh2
+libstatgrab                         (-)
+libtasn1                            (+)
+libunique
+libunistring                        (+)
+libusb
+libuv                               (+)
+libxkbcommon
+libxml2                             (+)
+libxslt                             (+)
+libwacom                            (-)
+libyaml
+lzo                                 (+)
+mtdev                               (-)
+node.js                             (E)
+npth                                (+)
+nspr                                (+E) (нет на errata-странице, но нужна
+                                          версия 4.25 для успешной сборки
+                                          nss-3.51
+                                          http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html)
+pcre                                (+)
+pcre2                               (+)
+popt                                (+)
+pth                                 (+)
+ptlib                               (-)
+qca                                 (-)
+talloc                              (+)
+telepathy-glib                      (-)
+wayland                             (-)
+wayland-protocols                   (-)
+wv                                  (-)
+xapian                              (-)
+aalib                               (+)
+babl                                (+)
+exiv2                               (-)
+freetype                            (+)
+fontconfig                          (+)
+c2man                               (+N)
+fribidi                             (+)
+gegl
+giflib
+glm                                 (-)
+graphite2                           (-)
+murrine                             (N)
+harfbuzz                            (freetype)
+jasper                              (+)
+little cms-1
+little cms-2                        (+)
+libexif                             (E)
+libgxps
+libjpeg-turbo                       (+E)
+libmng                              (+)
+libmypaint                          (-)
+libpng                              (+)
+libraw                              (-)
+librsvg
+libtiff                             (lcms2)
+libwebp                             (libtiff)
+mypaint-brushes
+newt
+opencv
+openjpeg
+pixman
+poppler
+potrace
+qpdf
+sassc
+asciidoc
+bogofilter
+compface
+desktop-file-utils
+graphviz
+gtk-doc
+hd2u
+highlight
+ibus
+imagemagick-6
+imagemagick-7
+iso codes
+lsof
+pinentry
+rarian
+rep-gtk
+screen                              (-E)
+tmux                                (N)
+shared-mime-info                    (+)
+sharutils
+telepathy-logger
+telepathy-mission-control
+tidy-html5
+time
+tree
+unixodbc                            (apr-util)
+xdg-user-dirs
+accountsservice
+acpid
+at
+autofs
+bluez
+bubblewrap
+colord
+cpio
+cups-pk-helper
+dbus
+elogind
+fcron
+gpm
+hdparm
+initd-tools
+lm_sensors
+logrotate
+mc
+modemmanager
+p7zip
+pax
+pciutils
+pm-utils
+raptor
+rasqal
+redland
+sg3_utils
+sysstat
+udisks
+unrar
+unzip                               (+E)
+upower
+usbutils
+which                               (+ aspell)
+zip
+lzip                                (+N)
+autoconf2
+cbindgen
+clisp
+cmake                               (+)
+dejagnu
+doxygen                             (jasper)
+expect
+gcc
+gc
+gdb                                 (+)
+git                                 (E)
+guile
+librep
+llvm
+lua-5.2
+lua-5.3
+mercurial
+nasm
+
+------------
+perl modules
+------------
+archive-zip
+autovivification
+business-isbn
+business-ismn
+business-issn
+class-accessor
+data-compare
+data-dump
+data-uniqid
+datetime-calendar-julian
+datetime-format-builder
+encode-eucjpascii
+encode-hanextra
+encode-jis2k
+file-slurper
+file-which
+html-parser
+http-daemon
+io-socket-ssl
+io-string
+ipc-run3
+lingua-translit
+list-allutils
+list-moreutils
+log-log4perl
+lwp-protocol-https
+module-build
+net-dns
+parse-yapp
+perlio-utf8_strict
+regexp-common
+sgmlspm
+sort-key
+test-command
+test-differences
+text-bibtex
+text-csv
+text-roman
+unicode-collate
+unicode-linebreak
+uri
+xml-libxml-simple
+xml-libxslt
+xml-simple
+xml-writer
+
+------------------------
+perl module dependencies
+------------------------
+algorithm-diff
+alien-build
+alien-libxml2
+b-hooks-endofscope
+business-isbn-data
+capture-tiny
+class-data-inheritable
+class-factory-util
+class-inspector
+class-singleton
+class-tiny
+config-autoconf
+cpan-meta-check
+datetime
+datetime-format-strptime
+datetime-locale
+datetime-timezone
+devel-stacktrace
+dist-checkconflicts
+encode-locale
+eval-closure
+exception-class
+exporter-tiny
+extutils-libbuilder
+ffi-checklib
+file-chdir
+file-copy-recursive
+file-find-rule
+file-listing
+file-sharedir
+file-sharedir-install
+html-tagset
+http-cookies
+http-date
+http-message
+http-negotiate
+importer
+io-html
+ipc-system-simple
+libwww-perl
+list-moreutils-xs
+list-someutils
+list-someutils-xs
+list-utilsby
+lwp-mediatypes
+mime-charset
+module-implementation
+module-pluggable
+module-runtime
+mro-compat
+namespace-autoclean
+namespace-clean
+net-http
+net-ssleay
+number-compare
+package-stash
+params-validate
+params-validationcompiler
+path-tiny
+role-tiny
+scope-guard
+specio
+sub-exporter-progressive
+sub-identify
+sub-info
+sub-quote
+sub-uplevel
+super
+term-table
+test-deep
+test-exception
+test-fatal
+test-file
+test-file-sharedir
+test-leaktrace
+test-mockmodule
+test-needs
+test-requires
+test-requiresinternet
+test-simple
+test-utf8
+test-warnings
+test-without-module
+test2-plugin-nowarnings
+test2-suite
+text-csv_xs
+text-diff
+text-glob
+tie-cycle
+try-tiny
+variable-magic
+www-robotrules
+xml-libxml
+xml-namespacesupport
+xml-sax
+xml-sax-base
+xml-sax-expat
+------------------------
+
+php                                 (E)
+python-2                            (+E)
+python-3
+
+--------------
+python modules
+--------------
+d-bus python
+docutils
+pyatspi2
+pycairo
+pycrypto
+pygments
+pygobject
+pygobject
+pygtk
+pyxdg
+libxml2 (for python2)
+lxml
+markupsafe
+jinja2
+mako
+scour
+six                                 (+)
+pyyaml
+--------------
+
+ruby                                (E)
+rustc
+scons
+slang
+subversion
+swig
+tcl                                 (+)
+tk
+vala
+valgrind
+yasm                                (+)
+
+-----------------------
+other programming tools
+-----------------------
+exuberant ctags
+-----------------------
+
+java
+openjdk
+apache-ant
+dhcpcd                              (E)
+dhcp
+bridge-utils
+cifs-utils
+iw
+ncftp
+net-tools
+nfs-utils
+ntp
+rpcbind
+rsync
+samba
+wget
+wireless tools
+wpa_supplicant
+
+-------------------------
+other networking programs
+-------------------------
+ncpfs
+-------------------------
+
+avahi
+bind utilities
+networkmanager
+nmap
+traceroute
+whois
+wireshark                           (E)
+c-ares
+curl                                (+E)
+geoclue
+glib-networking
+ldns
+libevent
+libnl
+libnsl
+libpcap
+libpsl
+libndp
+libsoup
+libtirpc
+neon
+nghttp2
+rpcsvc-proto
+serf
+uhttpmock
+links
+lynx
+fetchmail
+mailx
+mutt
+procmail
+
+----------------------------
+other mail and news programs
+----------------------------
+balsa
+seamonkey                           (E)
+thunderbird
+----------------------------
+
+apache
+bind
+proftpd                             (E)
+vsftpd
+dovecot
+exim                                (E)
+postfix
+sendmail
+berkeley-db                         (apr-util)
+freetds                             (N apr-util) http://www.freetds.org/
+mysql                               (N apr-util) https://www.mysql.com/
+lmdb
+mariadb                             (apr-util)
+postgresql                          (apr-util)
+sqlite                              (+ apr-util)
+openldap                            (apr-util)
+unbound                             (E)
+util-macros
+xorgproto
+libxau
+libxdmcp
+xcb-proto
+libxcb
+
+--------------
+xorg libraries
+--------------
+xtrans
+libx11
+libxext
+libfs
+libice
+libsm
+libxscrnsaver
+libxt
+libxmu
+libxpm
+libxaw
+libxfixes
+libxcomposite
+libxrender
+libxcursor
+libxdamage
+libfontenc
+libxfont2
+libxft
+libxi
+libxinerama
+libxrandr
+libxres
+libxtst
+libxv
+libxvmc
+libxxf86dga
+libxxf86vm
+libdmx
+libpciaccess
+libxkbfile
+libxshmfence
+--------------
+
+xcb-util
+xcb-util-image
+xcb-util-keysyms
+xcb-util-renderutil
+xcb-util-wm
+xcb-util-cursor
+mesa
+xbitmaps
+
+-----------------
+xorg applications
+-----------------
+iceauth
+luit
+mkfontdir
+mkfontscale
+sessreg
+setxkbmap
+smproxy
+x11perf
+xauth
+xbacklight
+xcmsdb
+xcursorgen
+xdpyinfo
+xdriinfo
+xev
+xgamma
+xhost
+xinput
+xkbcomp
+xkbevd
+xkbutils
+xkill
+xlsatoms
+xlsclients
+xmessage
+xmodmap
+xpr
+xprop
+xrandr
+xrdb
+xrefresh
+xset
+xsetroot
+xvinfo
+xwd
+xwininfo
+xwud
+-----------------
+
+xcursor-themes
+
+-----------
+xorg fonts
+-----------
+font-util
+encodings
+font-alias
+font-adobe-utopia-type1
+font-bh-ttf
+font-bh-type1
+font-ibm-type1
+font-misc-ethiopic
+font-xfree86-type1
+-----------
+
+xkeyboardconfig
+xorg-server
+
+------------
+xorg drivers
+------------
+libevdev
+xorg evdev driver
+libinput
+xorg libinput
+xorg synaptics driver
+xorg wacom driver
+xorg amdgpu driver
+xorg ati driver
+xorg fbdev driver
+xorg intel driver
+xorg nouveau driver
+xorg vmware driver
+libva
+libvdpau
+libvdpau-va-gl
+------------
+
+twm
+xterm
+xclock
+xinit
+
+------------------
+ttf and otf fonts
+------------------
+Caladea
+Cantarell fonts
+Carlito
+DejaVu fonts
+GNU FreeFont
+Gelasio
+Liberation fonts
+MicroSuck Core Fonts
+Noto fonts
+Oxygen fonts
+Source Code Pro
+CJK fonts
+Chinese fonts:
+Noto Sans CJK
+Opendesktop fonts
+UMing
+WenQuanYi Zen Hei
+Japanese fonts
+IPAex fonts
+Kochi fonts
+VL Gothic
+Korean fonts
+------------------
+
+-----------
+xorg legacy
+-----------
+bdftopcf
+font-adobe-100dpi
+font-adobe-75dpi
+font-jis-misc
+font-daewoo-misc
+font-isas-misc
+-----------
+
+atk                                 (+)
+atkmm
+at-spi2-core                        (E)
+at-spi2-atk
+cairo                               (harfbuzz)
+cairomm
+cogl
+clutter
+clutter-gst
+clutter-gtk
+colord-gtk
+fltk
+freeglut                            (jasper, libtiff)
+gdk-pixbuf
+glew
+glu
+goffice
+gtk+-2
+gtk+-3
+gtk engines
+gtkmm
+gtkmm
+gtk-vnc
+gtksourceview
+gtksourceview4
+imlib2
+keybinder
+libdazzle
+libdrm
+libepoxy
+libglade
+libnotify
+libxklavier
+pango
+pangomm
+qt-5                                (E)
+qtwebengine                         (E)
+startup-notification
+webkitgtk+
+lightdm
+lxdm
+fluxbox
+icewm
+openbox
+sawfish
+
+---------------------
+other window managers
+---------------------
+mwm
+---------------------
+
+adwaita-icon-theme
+breeze-icons
+gnome-icon-theme
+gnome-icon-theme-extras
+gnome-icon-theme-symbolic
+gnome-themes-extra
+hicolor-icon-theme
+icon-naming-utils
+lxde-icon-theme
+oxygen-icons5
+extra-cmake-modules
+phonon
+phonon-backend-gstreamer
+phonon-backend-vlc
+polkit-qt
+libdbusmenu-qt
+kde frameworks 5 pre
+building kde frameworks 5 (kf5)
+ark
+kdenlive
+kmix
+khelpcenter
+konsole
+libkexiv2
+okular
+libkdcraw
+gwenview
+libkcddb
+k3b
+
+---------------------
+further kde5 packages
+---------------------
+juk
+dragon
+kcalc
+kaccessible
+kwalletmanager
+marble
+kpat
+kfourinline
+kmines
+---------------------
+
+-----------------
+building plasma 5
+-----------------
+kdecoration
+libkscreen
+libksysguard
+breeze
+breeze-gtk
+kscreenlocker
+oxygen
+kinfocenter
+ksysguard
+kwin
+plasma-workspace
+bluedevil
+kde-gtk-config
+khotkeys
+kmenuedit
+kscreen
+kwallet-pam
+kwayland-integration
+kwrited
+milou
+plasma-nm
+plasma-pa
+plasma-workspace-wallpapers
+polkit-kde-agent-1
+powerdevil
+plasma-desktop
+kdeplasma-addons
+kgamma5
+ksshaskpass
+plasma-sdk
+sddm-kcm
+user-manager
+discover
+breeze-grub
+breeze-plymouth
+kactivitymanagerd
+plasma-integration
+plasma-tests
+plymouth-kcm
+xdg-desktop-portal-kde
+drkonqi
+plasma-vault
+plasma-browser-integration
+kde-cli-tools
+systemsettings
+-----------------
+
+gcr
+gsettings-desktop-schemas
+libsecret
+rest
+totem-pl-parser
+vte
+yelp-xsl
+gconf
+geocode-glib
+gjs
+gnome-autoar
+gnome-desktop
+gnome-menus
+gnome-video-effects
+gnome-online-accounts
+grilo
+libchamplain
+libgdata
+libgee
+libgtop
+libgweather
+libpeas
+libwnck
+evolution-data-server               (E)
+folks
+gfbgraph
+tracker
+tracker-miners
+gsound
+dconf / dconf-editor
+gnome-backgrounds
+gvfs
+gexiv2
+nautilus
+zenity
+gnome-bluetooth                     (E)
+gnome-keyring
+gnome-settings-daemon
+gnome-control-center
+mutter
+gnome-shell
+gnome-shell-extensions
+gnome-session
+gdm
+gnome-user-docs
+yelp
+notification-daemon
+polkit-gnome
+baobab
+brasero
+cheese
+eog
+evince
+evolution                           (E)
+file-roller
+gnome-calculator
+gnome-color-manager
+gnome-disk-utility
+gnome-maps
+gnome-nettool
+gnome-power-manager
+gnome-screenshot
+gnome-system-monitor
+gnome-terminal
+gnome-tweaks
+gnome-weather
+gucharmap
+network-manager-applet
+seahorse
+vinagre
+vino
+libxfce4util
+xfconf
+libxfce4ui
+exo
+garcon
+xfce4-panel
+thunar
+thunar-volman
+tumbler
+xfce4-appfinder
+xfce4-power-manager
+xfce4-settings
+xfdesktop
+xfwm4
+xfce4-session
+parole
+xfce4-terminal
+xfburn
+ristretto
+xfce4-notifyd
+lxmenu-data
+libfm-extra
+menu-cache
+libfm
+pcmanfm
+libwnck
+lxpanel
+lxappearance
+lxsession
+lxde-common
+gpicview
+lxappearance-obconf
+lxinput
+lxrandr
+lxtask
+vte
+lxterminal
+abiword
+gnumeric
+libreoffice
+epiphany
+falkon
+firefox                             (E)
+seamonkey
+balsa
+feh
+fontforge
+gimp
+gparted
+hexchat
+inkscape
+pidgin
+rox-filer
+rxvt-unicode
+thunderbird                         (E)
+tigervnc
+transmission
+xarchiver
+xdg-utils
+xscreensaver
+alsa
+alsa-lib
+alsa-plugins
+alsa-utils
+alsa-tools
+alsa-firmware
+alsa oss
+audiofile
+faac
+faad2
+fdk-aac
+flac
+frei0r-plugins
+gavl
+gstreamer
+gst-plugins-base
+gst-plugins-good
+gst-plugins-bad
+gst-plugins-ugly
+gst-libav
+gstreamer-vaapi
+id3lib
+liba52
+libao
+libass
+libcanberra
+libcddb
+libcdio
+libdiscid
+libdvdcss
+libdvdread
+libdvdnav
+libdv
+libmad
+libmpeg2
+libmusicbrainz
+libmusicbrainz
+libogg
+libquicktime
+libsamplerate
+libsndfile
+libtheora
+libvorbis
+libvpx
+mlt
+opus
+pipewire
+pulseaudio
+sbc
+sdl
+sdl2
+sound-theme-freedesktop
+soundtouch
+speex
+taglib
+v4l-utils
+x264-20190815
+x265
+xine-lib
+xvid                                (E)
+audacious
+cdparanoia-iii
+kwave
+lame
+mpg123
+pnmixer
+vorbis-tools
+ffmpeg
+mplayer
+transcode
+vlc
+xine-ui
+cdrdao
+cdrtools
+dvd+rw-tools
+libburn
+libisoburn
+libisofs
+cups                                (E)
+cups-filters
+ghostscript                         (E)
+gutenprint
+sane
+xsane
+sgml-common                         (+)
+docbook-3
+docbook-4
+opensp
+openjade
+docbook-dsssl
+docbook-utils
+docbook-xml                         (+)
+docbook-xsl-nons                    (+)
+itstool
+xmlto
+a2ps
+enscript
+psutils
+epdfview
+fop
+mupdf
+paps
+install-tl-unx
+texlive                             (jasper)
+asymptote
+biber
+xindy
+
+# vim:ft=conf

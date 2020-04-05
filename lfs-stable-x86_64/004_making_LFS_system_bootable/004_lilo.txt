@@ -1,0 +1,13 @@
+Если на хост-системе в качестве загрузчика установлен lilo, то добавляем в
+/etc/lilo.conf (/dev/sda10 меняем на тот раздел, на котором установлен корень
+LFS системы), ну и естественно после правки конфига
+    # lilo
+
+# LFS bootable partition config begins
+image = /boot/vmlinuz-lfs-5.2.21
+  root = /dev/sda10
+  label = LFS-9.0
+  read-only  # Partitions should be mounted read-only for checking
+# LFS bootable partition config ends
+
+# vim:ft=conf
