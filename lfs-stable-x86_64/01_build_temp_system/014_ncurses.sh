@@ -9,10 +9,10 @@ PRGNAME="ncurses"
 # абстракции, позволяющий не беспокоиться об аппаратных различиях терминалов и
 # писать переносимый код
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/ncurses.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/ncurses.html
 
 # Home page: http://www.gnu.org/software/ncurses/
-# Download:  http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
+# Download:  http://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
