@@ -6,7 +6,7 @@ PRGNAME="expect"
 # Пакет содержит программу для ведения диалоговых сценариев с другими
 # интерактивными программами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/expect.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
 
 # Home page: https://core.tcl.tk/expect/
 # Download:  https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz
@@ -47,6 +47,6 @@ make || make -j1 || exit 1
 make test
 
 # устанавливаем пакет, но предотвращаем установку дополнительных сценариев
-# Expect, которые не нужны
+# Expect, которые не нужны в данный момент
 #    SCRIPTS=""
 make SCRIPTS="" install
