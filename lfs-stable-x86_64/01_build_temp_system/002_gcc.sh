@@ -6,7 +6,7 @@ PRGNAME="gcc"
 # Пакет содержит коллекцию компиляторов GNU, которая включает компиляторы C и
 # C++
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gcc-pass1.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-pass1.html
 
 # Home page: https://gcc.gnu.org/
 # Download:  http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
@@ -19,6 +19,9 @@ source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # GCC для сборки требует пакеты gmp, mpfr и mpc
+# http://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.xz
+# http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
+# https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
 GMP_VER=$(echo "${SOURCES}/gmp"-*.tar.?z* | rev | cut -f 3- -d . | \
     cut -f 1 -d - | rev)
 MPFR_VER=$(echo "${SOURCES}/mpfr"-*.tar.?z* | rev | cut -f 3- -d . | \
@@ -105,27 +108,27 @@ cd build || exit 1
 # гарантирует, что будут собраны только компиляторы C и C ++. Это единственные
 # языки, необходимые сейчас.
 #    --enable-languages=c,c++
-../configure                                       \
-    --target="${LFS_TGT}"                          \
-    --prefix=/tools                                \
-    --with-glibc-version=2.11                      \
-    --with-sysroot="${LFS}"                        \
-    --with-newlib                                  \
-    --without-headers                              \
-    --with-local-prefix=/tools                     \
-    --with-native-system-header-dir=/tools/include \
-    --disable-nls                                  \
-    --disable-shared                               \
-    --disable-multilib                             \
-    --disable-decimal-float                        \
-    --disable-threads                              \
-    --disable-libatomic                            \
-    --disable-libgomp                              \
-    --disable-libquadmath                          \
-    --disable-libssp                               \
-    --disable-libvtv                               \
-    --disable-libstdcxx                            \
-    --enable-languages=c,c++ || exit 1
+../configure                   \
+    --target="${LFS_TGT}"      \
+    --prefix=/tools            \
+    --with-glibc-version=2.11  \
+    --with-sysroot="${LFS}"    \
+    --with-newlib              \
+    --without-headers          \
+    --with-local-prefix=/tools \
+    --disable-nls              \
+    --disable-shared           \
+    --disable-multilib         \
+    --disable-decimal-float    \
+    --disable-threads          \
+    --disable-libatomic        \
+    --disable-libgomp          \
+    --disable-libquadmath      \
+    --disable-libssp           \
+    --disable-libvtv           \
+    --disable-libstdcxx        \
+    --enable-languages=c,c++   \
+    --with-native-system-header-dir=/tools/include || exit 1
 
 make || make -j1 || exit 1
 make install
