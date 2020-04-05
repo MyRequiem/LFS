@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Simple script to list version numbers of critical development tools
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter02/hostreqs.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html
 
 export LC_ALL=C
 bash --version | head -n1 | cut -d ' ' -f 2-4
