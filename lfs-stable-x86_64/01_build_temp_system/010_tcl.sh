@@ -7,10 +7,10 @@ PRGNAME="tcl"
 # Этот пакет и два следующих (Expect и DejaGNU) установливаем для поддержки
 # запуска тестовых наборов для GCC, Binutils и других пакетов в дальнейшем.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/tcl.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/tcl.html
 
 # Home page: http://tcl.sourceforge.net/
-# Download:  https://downloads.sourceforge.net/tcl/tcl8.6.9-src.tar.gz
+# Download:  https://downloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz
 
 source "$(pwd)/check_environment.sh" || exit 1
 
@@ -44,5 +44,6 @@ chmod -v u+w /tools/lib/libtcl8.6.so
 # устанавливаем заголовки для TCL. Они потребуются для сборки следующего пакета
 # Expect
 make install-private-headers
+
 # создаем символическую ссылку в /tools/bin/ tclsh -> tclsh8.6
 ln -sv tclsh8.6 /tools/bin/tclsh
