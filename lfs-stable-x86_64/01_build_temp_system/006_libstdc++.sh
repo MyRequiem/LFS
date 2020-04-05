@@ -6,12 +6,12 @@ PRGNAME="libstdc++"
 # Libstdc ++ - это стандартная библиотека C++, которая необходима для
 # компиляции кода C++ (часть GCC написана на C++). Нам пришлось отложить
 # установку этой библиотеки при первом проходе GCC (002_gcc.sh), потому что
-# она зависит от glibc, который еще не был собран в /tools.
+# она зависит от glibc, который еще не был собран в /tools
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gcc-libstdc++.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-libstdc++.html
 
 # Home page: https://gcc.gnu.org/
-# Download: http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
+# Download:  http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
 
 source "$(pwd)/check_environment.sh"           || exit 1
 source "$(pwd)/unpack_source_archive.sh" "gcc" || exit 1
@@ -30,13 +30,13 @@ cd build || exit 1
 #    --disable-libstdcxx-pch
 # путь для поиска заголовочных файлов компилятором C++
 #    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/9.2.0
-../${PRGNAME}-v3/configure          \
-    --host="${LFS_TGT}"             \
-    --prefix=/tools                 \
-    --disable-multilib              \
-    --disable-nls                   \
-    --disable-libstdcxx-threads     \
-    --disable-libstdcxx-pch         \
+../"${PRGNAME}-v3/configure"    \
+    --host="${LFS_TGT}"         \
+    --prefix=/tools             \
+    --disable-multilib          \
+    --disable-nls               \
+    --disable-libstdcxx-threads \
+    --disable-libstdcxx-pch     \
     --with-gxx-include-dir="/tools/${LFS_TGT}/include/c++/${VERSION}" || exit 1
 
 make || make -j1 || exit 1
