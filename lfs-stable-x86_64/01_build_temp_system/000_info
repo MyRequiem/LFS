@@ -26,10 +26,11 @@
 Важно !!!
 =========
 Все временные инструменты будем собирать под пользователем lfs. Для этого:
-    - копируем эту директорию 001_build_temp_system в /home/lfs/
+    - копируем эту директорию 01_build_temp_system в /home/lfs/
     - меняем владельца
-        # chown -R lfs:lfs /home/lfs/001_build_temp_system
+        # chown -R lfs:lfs /home/lfs/01_build_temp_system
+
     - логинимся под lfs
         # su - lfs
-        $ cd 001_build_temp_system
+        $ cd 01_build_temp_system
             запускаем скрипты
