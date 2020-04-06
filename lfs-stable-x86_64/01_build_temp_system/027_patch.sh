@@ -6,7 +6,7 @@ PRGNAME="patch"
 # Программа для изменения или создания файлов путем применения файлов *.patch,
 # обычно создаваемых программой diff
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/patch.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/patch.html
 
 # Home page: https://savannah.gnu.org/projects/patch/
 # Download:  http://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
