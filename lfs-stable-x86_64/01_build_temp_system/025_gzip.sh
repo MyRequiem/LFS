@@ -5,7 +5,7 @@ PRGNAME="gzip"
 ### Grep
 # Программы для сжатия и распаковки файлов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gzip.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gzip.html
 
 # Home page: http://www.gnu.org/software/gzip/
 # Download:  http://ftp.gnu.org/gnu/gzip/gzip-1.10.tar.xz
