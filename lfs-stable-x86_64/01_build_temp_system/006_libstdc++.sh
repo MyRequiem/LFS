@@ -29,7 +29,7 @@ cd build || exit 1
 # предотвращает установку include файлов, которые не нужны на данном этапе
 #    --disable-libstdcxx-pch
 # путь для поиска заголовочных файлов компилятором C++
-#    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/9.2.0
+#    --with-gxx-include-dir="/tools/${LFS_TGT}/include/c++/${VERSION}"
 ../"${PRGNAME}-v3/configure"    \
     --host="${LFS_TGT}"         \
     --prefix=/tools             \
