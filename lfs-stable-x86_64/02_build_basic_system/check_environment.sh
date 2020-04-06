@@ -18,7 +18,7 @@ if [[ "${PATH}" != "/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin" ]]; then
     echo -n "Environment variable PATH musb be: "
     echo "/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin"
     echo "Now PATH=${PATH}"
-    echo -e "\nWhy? Check script 003_entering_chroot.sh in this directory. "
+    echo -e "\nWhy? Check script 003_entering_chroot.sh"
     echo "It must be set to a variable:"
     echo "PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin"
     exit 1
