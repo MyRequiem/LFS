@@ -2,9 +2,9 @@
 
 # install this script:
 # --------------------
-# cp 005_sbin_removepkg /mnt/lfs/sbin/removepkg
-# chown root:root /mnt/lfs/sbin/removepkg
-# chmod 755 /mnt/lfs/sbin/removepkg
+#    # cp 005_sbin_removepkg /mnt/lfs/sbin/removepkg
+#    # chown root:root /mnt/lfs/sbin/removepkg
+#    # chmod 744 /mnt/lfs/sbin/removepkg
 
 # Written for Linux From Scratch by MyRequiem <mrvladislavovich@gmail.com>
 # Based on removepkg script from Slackware
@@ -247,7 +247,7 @@ if [ -z "${NO_COLOR}" ]; then
     COLORRESET="\033[0;0m"
 fi
 
-if [[ "x${PKG}" == "xmain-directory-tree-9.0" ]]; then
+if [[ "x${PKG}" == "xmain-directory-tree" ]]; then
     if [ -z "${FAKE}" ]; then
         echo -en "${RED}Package ${LBLUE}${PKG}${RED} "
         echo -e "cannot be deleted !!!${COLORRESET}"
