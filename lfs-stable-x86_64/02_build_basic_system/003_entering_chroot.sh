@@ -10,7 +10,7 @@ fi
 LFS="/mnt/lfs"
 if ! mount | /bin/grep -q "${LFS}/proc"; then
     echo "You need to mount virtual file systems. Run script"
-    echo "# ./002_mount_virtual_kernel_file_systems.sh --mount"
+    echo "  # ./002_mount_virtual_kernel_file_systems.sh --mount"
     exit 1
 fi
 
@@ -33,7 +33,7 @@ chroot "${LFS}" /tools/bin/env -i                                         \
 # Обратим внимание, что /tools/bin стоит последним в PATH. Это означает, что
 # временный инструмент больше не будет использоваться после установки его
 # окончательной версии. Такое поведение задается передачей аргумента +h команде
-# bash. После этого оболочка не запоминает местоположения исполняемых двоичных
+# bash. После этого оболочка не запоминает местоположение исполняемых двоичных
 # файлов и при вызове каждый раз выполняет поиск в PATH
 
 # В приглашение вместо имени пользователя bash скажет "I have no name!". Это
