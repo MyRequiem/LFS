@@ -7,7 +7,7 @@ PRGNAME="xz"
 # xz). Сжатие текстовых файлов с помощью xz дает лучший процент сжатия, чем при
 # использовании традиционных команд gzip или bzip2.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/xz.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/xz.html
 
 # Home page: https://tukaani.org/xz
 # Download:  https://tukaani.org/xz/xz-5.2.4.tar.xz
