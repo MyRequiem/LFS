@@ -5,7 +5,7 @@ PRGNAME="dejagnu"
 ### DejaGNU
 # Пакет DejaGNU содержит платформу для тестирования других программ
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/dejagnu.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/dejagnu.html
 
 # Home page: http://www.gnu.org/software/dejagnu/
 # Download:  http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.2.tar.gz
