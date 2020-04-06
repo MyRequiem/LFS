@@ -7,7 +7,7 @@ PRGNAME="gettext"
 # компилироваться с NLS (Native Language Support), т.е. с поддержкой родного
 # языка
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gettext.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gettext.html
 
 # Home page: http://www.gnu.org/software/gettext/
 # Download:  http://ftp.gnu.org/gnu/gettext/gettext-0.20.1.tar.xz
