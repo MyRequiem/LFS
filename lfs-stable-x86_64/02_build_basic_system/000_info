@@ -12,7 +12,24 @@
         config_file_processing.sh
         unpack_source_archive.sh
         write_to_var_log_packages.sh
-        сборочный скрипт для пакета
+    - копируем сборочный скрипт для пакета в корень LFS системы
     - заходим в chroot окружение
         # ./003_entering_chroot.sh
     - запускаем сборочный скрипт
+        # /pkg_name.sh
+
+        =========
+        Важно !!!
+        =========
+            Сборочные скрипты запускаем в порядке строго соответствующем их
+            нумерации
+
+            Скрипты, которые нужно запускать от пользователя root не входя в
+            chroot окружение:
+                001_changing_ownership.sh
+                002_mount_virtual_kernel_file_systems.sh
+                003_entering_chroot.sh
+
+                005_sbin_removepkg - установка описана в коде скрипта
+
+# vim:ft=conf
