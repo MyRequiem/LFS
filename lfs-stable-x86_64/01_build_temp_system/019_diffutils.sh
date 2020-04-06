@@ -5,7 +5,7 @@ PRGNAME="diffutils"
 ### Diffutils
 # Утилиты, которые показывают различия между файлами или каталогами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/diffutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/diffutils.html
 
 # Home page: http://www.gnu.org/software/diffutils/
 # Download:  http://ftp.gnu.org/gnu/diffutils/diffutils-3.7.tar.xz
