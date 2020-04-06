@@ -5,10 +5,10 @@ PRGNAME="grep"
 ### Grep
 # Программы для поиска по файлам
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/grep.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/grep.html
 
 # Home page: http://www.gnu.org/software/grep/
-# Download:  http://ftp.gnu.org/gnu/grep/grep-3.3.tar.xz
+# Download:  http://ftp.gnu.org/gnu/grep/grep-3.4.tar.xz
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
