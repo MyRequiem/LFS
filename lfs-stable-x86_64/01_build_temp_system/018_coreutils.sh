@@ -6,7 +6,7 @@ PRGNAME="coreutils"
 # Утилиты для отображения и настройки основных характеристик системы: basename,
 # cat, chmod, chown, chroot, cp, cut, date и т.д.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/coreutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/coreutils.html
 
 # Home page: http://www.gnu.org/software/coreutils/
 # Download:  http://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz
