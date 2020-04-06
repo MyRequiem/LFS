@@ -5,7 +5,7 @@ PRGNAME="gawk"
 ### Gawk
 # Программы для работы с текстовыми файлами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/gawk.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gawk.html
 
 # Home page: http://www.gnu.org/software/gawk/
 # Download:  http://ftp.gnu.org/gnu/gawk/gawk-5.0.1.tar.xz
