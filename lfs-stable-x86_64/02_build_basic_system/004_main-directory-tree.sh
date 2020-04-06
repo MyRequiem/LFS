@@ -1,6 +1,8 @@
 #! /tools/bin/bash
 
-# Создаем основную структуру в файловой системе LFS
+PKGNAME="main-directory-tree"
+
+# Создаем основную структуру дерева корневой файловой системы LFS
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -114,8 +116,8 @@ chmod -v 600  /var/log/btmp
 chgrp -v utmp /var/log/lastlog
 chmod -v 664  /var/log/lastlog
 
-cat > /var/log/packages/main-directory-tree-9.0 << "EOF"
-# Package: main-directory-tree (Main directories and system files)
+cat << EOF > "/var/log/packages/${PKGNAME}"
+# Package: ${PKGNAME} (Main directories and system files)
 #
 # The main tree of the root file system. This package cannot be removed.
 #
