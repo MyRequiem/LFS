@@ -5,10 +5,10 @@ PRGNAME="perl"
 ### Perl
 # Practical Extraction and Report Language
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/perl.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/perl.html
 
 # Home page: https://www.perl.org/
-# Download:  https://www.cpan.org/src/5.0/perl-5.30.0.tar.xz
+# Download:  https://www.cpan.org/src/5.0/perl-5.30.1.tar.xz
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -34,5 +34,6 @@ make || make -j1 || exit 1
 # будем. На данный момент необходимо установить только несколько утилит и
 # библиотек:
 cp -v perl cpan/podlators/scripts/pod2man /tools/bin
-mkdir -pv /tools/lib/perl5/5.30.0
-cp -Rv lib/* /tools/lib/perl5/5.30.0
+PERL_LIBS="/tools/lib/perl5/${VERSION}"
+mkdir -pv    "${PERL_LIBS}"
+cp -Rv lib/* "${PERL_LIBS}"
