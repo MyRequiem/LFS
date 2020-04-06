@@ -5,7 +5,7 @@ PRGNAME="bash"
 ### Bash
 # Bourne-Again SHell
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter05/bash.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/bash.html
 
 # Home page: http://www.gnu.org/software/bash/
 # Download:  http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
