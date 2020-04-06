@@ -12,8 +12,7 @@
         config_file_processing.sh
         unpack_source_archive.sh
         write_to_var_log_packages.sh
-        xxx_pkg_name.sh
+        сборочный скрипт для пакета
     - заходим в chroot окружение
         # ./003_entering_chroot.sh
     - запускаем сборочный скрипт
-        # ./xxx_pkg_name.sh
