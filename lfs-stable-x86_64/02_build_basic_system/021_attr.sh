@@ -5,7 +5,7 @@ PRGNAME="attr"
 ### Attr
 # Утилиты для управления расширенными атрибутами объектов файловой системы
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/attr.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/attr.html
 
 # Home page: https://savannah.nongnu.org/projects/attr
 # Download:  http://download.savannah.gnu.org/releases/attr/attr-2.4.48.tar.gz
@@ -15,12 +15,16 @@ source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/lib"
+
 ./configure           \
     --prefix=/usr     \
     --bindir=/bin     \
     --disable-static  \
     --sysconfdir=/etc \
-    --docdir="/usr/share/doc/attr-${VERSION}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # тесты должны выполняться в файловой системе, которая поддерживает расширенные
@@ -35,13 +39,9 @@ fi
 
 # устанавливаем пакет
 make install
+make install DESTDIR="${TMP_DIR}"
 
 config_file_processing "${XATTR_CONFIG}"
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
-make install DESTDIR="${TMP_DIR}"
 
 # расшаренную библиотеку необходимо переместить из /usr/lib в /lib
 mv -v /usr/lib/libattr.so.* /lib
