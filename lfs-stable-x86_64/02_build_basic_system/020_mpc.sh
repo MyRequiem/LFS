@@ -6,7 +6,7 @@ PRGNAME="mpc"
 # Пакет содержит библиотеку для арифметики комплексных чисел с произвольно
 # высокой точностью и правильным округлением результата.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/mpc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/mpc.html
 
 # Home page: http://www.multiprecision.org/
 # Download:  https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
@@ -15,6 +15,10 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -22,17 +26,12 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # сборка
 make || exit 1
-# сборка документации
 make html || exit 1
-# запуск тестов
+
 make check
-# установка пакета и документации
+
 make install
 make install-html
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 make install-html DESTDIR="${TMP_DIR}"
 
