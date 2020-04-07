@@ -3,9 +3,10 @@
 PRGNAME="mpfr"
 
 ### Mpfr
-# Пакет содержит функции для математики с множественной точностью.
+# Библиотека содержит подпрограммы для математических вычислений с
+# множественной точностью.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/mpfr.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/mpfr.html
 
 # Home page: https://www.mpfr.org/
 # Download:  http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
@@ -13,6 +14,10 @@ PRGNAME="mpfr"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure              \
     --prefix=/usr        \
@@ -34,10 +39,6 @@ make check
 # установка пакета и документации
 make install
 make install-html
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 make install-html DESTDIR="${TMP_DIR}"
 
