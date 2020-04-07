@@ -6,7 +6,7 @@ PRGNAME="bzip2"
 # Программы для сжатия и распаковки файлов. Сжатие текстовых файлов с помощью
 # bzip2 дает гораздо лучший процент сжатия чем с традиционным Gzip.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/bzip2.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bzip2.html
 
 # Home page: https://sourceforge.net/projects/bzip2/
 # Download:  https://www.sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
@@ -14,6 +14,10 @@ PRGNAME="bzip2"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"/{bin,lib}
 
 # применим патч для установки документации
 patch -Np1 --verbose \
@@ -34,10 +38,6 @@ make clean
 # собираем утилиты bzip2 и bzip2recover и устанавливаем пакет
 make || exit 1
 make PREFIX=/usr install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,lib}
 make PREFIX="${TMP_DIR}/usr" install
 
 # установим bzip2 в /bin
@@ -60,7 +60,7 @@ ln -sv ../../lib/libbz2.so.1.0 /usr/lib/libbz2.so
 # ссылки в /bin/
 # bunzip2 -> bzip2
 # bzcat -> bzip2
-rm -fv /usr/bin/{bunzip2,bzcat,bzip2}
+rm -vf /usr/bin/{bunzip2,bzcat,bzip2}
 ln -sv bzip2 /bin/bunzip2
 ln -sv bzip2 /bin/bzcat
 
