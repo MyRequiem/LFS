@@ -6,14 +6,18 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/binutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/binutils.html
 
 # Home page: http://www.gnu.org/software/binutils/
-# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.xz
+# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # убедимся, что PTY работают правильно в среде chroot выполнив простой тест
 echo ""
@@ -31,7 +35,7 @@ read -r JUNK
 
 # удалим один тест tincremental_copy, который препятствует выполнению тестов до
 # самого конца
-sed -i '/@\tincremental_copy/d' gold/testsuite/Makefile.in
+sed -i '/@\tincremental_copy/d' gold/testsuite/Makefile.in || exit 1
 
 # документация Binutils рекомендует собирать binutils в отдельном каталоге для
 # сборки
@@ -80,10 +84,6 @@ make -k check
 
 # устанавливаем пакет
 make tooldir=/usr install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
