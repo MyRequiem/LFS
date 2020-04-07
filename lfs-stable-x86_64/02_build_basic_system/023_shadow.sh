@@ -5,19 +5,23 @@ PRGNAME="shadow"
 ### Shadow
 # Пакет содержит программы для безопасной работы с паролями
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/shadow.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/shadow.html
 
 # Home page: https://github.com/shadow-maint/shadow/
-# Download:  https://github.com/shadow-maint/shadow/releases/download/4.7/shadow-4.7.tar.xz
+# Download:  https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 # отключим установку программы 'groups' и ее man-страниц, так как пакет
-# Coreutils предоставляет лучшую версию. Также отменим установку ман-страниц,
-# которые уже были установлены вместе с пакетом man-pages
+# Coreutils предоставляет лучшую версию этой утилиты. Также отменим установку
+# ман-страниц, которые уже были установлены вместе с пакетом man-pages
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in
 find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
 find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
@@ -33,13 +37,13 @@ sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
        -e 's@/var/spool/mail@/var/mail@' etc/login.defs
 
 ### Примечание
-# Если нам нужно будет принудительно использовать надежные пароли для
-# пользователей, обратимся к
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/cracklib.html
-# для установки CrackLib до сборки Shadow. Затем нужно будет изменить
-# etc/login.defs
+# Если мы хотим принудительно использовать надежные пароли, то в системе должен
+# быть установлен пакет cracklib, который описан в blfs:
+#    http://www.linuxfromscratch.org/blfs/view/stable/postlfs/cracklib.html
+# После его установки нужно пересобрать shadow с параметром конфигурации
+#    --with-libcrack
+# а так же внести изменения в etc/login.defs
 # sed -i 's@DICTPATH.*@DICTPATH\t/lib/cracklib/pw_dict@' etc/login.defs
-# и добавить параметр конфигурации --with-libcrack
 
 # сделаем первый номер группы, сгенерированный useradd == 100, а не 1000:
 sed -i 's/1000/100/' etc/useradd
@@ -60,18 +64,9 @@ fi
 
 # этот пакет не поставляется с тестовым набором, поэтому сразу его установим
 make install
-
-config_file_processing "${USERADD}"
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
-# переместим программу passwd из /usr/bin/ в /bin/
-mv -v /usr/bin/passwd /bin
-mkdir -pv "${TMP_DIR}/bin"
-mv -v "${TMP_DIR}/usr/bin/passwd" "${TMP_DIR}/bin/"
+config_file_processing "${USERADD}"
 
 # ==================================
 # Конфигурация Shadow
@@ -80,6 +75,11 @@ mv -v "${TMP_DIR}/usr/bin/passwd" "${TMP_DIR}/bin/"
 pwconv
 # включим теневые групповые пароли
 grpconv
+
+# конфиг /etc/default/useradd содержит параметр CREATE_MAIL_SPOOL=yes, который
+# заставляет утилиту useradd создать файл почтового ящика для вновь созданного
+# пользователя. Отключим создание почтовых ящиков:
+sed -i 's/yes/no/' /etc/default/useradd
 
 # установим пароль для суперпользователя
 passwd root
