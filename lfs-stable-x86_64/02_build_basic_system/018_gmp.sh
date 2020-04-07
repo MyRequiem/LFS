@@ -6,14 +6,18 @@ PRGNAME="gmp"
 # Содержит математические библиотеки, в которых содержатся полезные функции для
 # арифметики произвольной точности
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/gmp.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gmp.html
 
 # Home page: http://www.gnu.org/software/gmp/
-# Download:  http://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.xz
+# Download:  http://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ###
 # Внимание !!!
@@ -45,6 +49,7 @@ make html || exit 1
 # Набор тестов для Gmp на данном этапе считается критическим. Нельзя пропускать
 # его ни при каких обстоятельствах
 make check 2>&1 | tee gmp-check-log
+
 # убедимся, что все 190 тестов в наборе пройдены
 echo ""
 echo -e "======================= Test results ======================="
@@ -58,10 +63,6 @@ echo "${JUNK}" > /dev/null
 # устанавливаем пакет и документацию
 make install
 make install-html
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 make install-html DESTDIR="${TMP_DIR}"
 
