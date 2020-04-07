@@ -3,16 +3,16 @@
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
-# Теперь библиотеки C окончательно установлены, и пришло время настроить набор
+# Теперь C-библиотеки окончательно установлены, и пришло время настроить набор
 # временных инструментов /tools так, чтобы он связывал любую вновь
 # скомпилированную программу с этими новыми библиотеками. Сначала создадим
 # резервную копию компоновщика /tools и заменим его на скорректированный
 # компоновщик, который мы создавали ранее. Мы также создадим ссылку на его
 # аналог /tools/x86_64-pc-linux-gnu в /bin
 mv -v  /tools/bin/{ld,ld-old}
-mv -v  /tools/"$(uname -m)-pc-linux-gnu/bin"/{ld,ld-old}
+mv -v  /tools/x86_64-pc-linux-gnu/bin/{ld,ld-old}
 mv -v  /tools/bin/{ld-new,ld}
-ln -sv /tools/bin/ld "/tools/$(uname -m)-pc-linux-gnu/bin/ld"
+ln -sv /tools/bin/ld /tools/x86_64-pc-linux-gnu/bin/ld
 
 # изменим файл спецификаций GCC так, чтобы он указывал на новый динамический
 # компоновщик. Простое удаление всех подстрок '/tools' в путях должно дать нам
@@ -180,4 +180,4 @@ echo ""
 
 # очищаем тестовые файлы:
 echo "Cleaning:"
-rm -v dummy.c a.out dummy.log
+rm -vf dummy.c a.out dummy.log
