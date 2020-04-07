@@ -8,16 +8,20 @@ PRGNAME="glibc"
 # закрытия файлов, чтения и записи файлов, обработки строк, сопоставления с
 # образцом, арифметики и так далее.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/glibc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/glibc.html
 
 # Home page: http://www.gnu.org/software/libc/
-# Download:  http://ftp.gnu.org/gnu/glibc/glibc-2.30.tar.xz
+# Download:  http://ftp.gnu.org/gnu/glibc/glibc-2.31.tar.xz
+#            https://www.iana.org/time-zones/repository/releases/tzdata2019c.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
-CWD="$(pwd)"
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/lib64"
 
 # система сборки Glibc является автономной и будет без проблем скомпилирована,
 # даже если файл спецификаций компилятора и компоновщик по-прежнему указывают
@@ -25,25 +29,17 @@ CWD="$(pwd)"
 # Glibc, потому что тесты Glibc autoconf дадут неверные результаты и не
 # позволят достичь чистой сборки
 
-# некоторые из программ Glibc используют каталог /var/db для хранения run-time
-# данных . Применим патч, чтобы такие программы хранили их в FHS-совместимых
-# местах (/var/lib/nss_db)
-patch -Nvp1 -i "/sources/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
+# некоторые из программ Glibc используют не FHS-совместимый каталог /var/db для
+# хранения run-time данных . Применим патч, чтобы такие программы хранили свои
+# run-time данные в FHS-совместимых местах (/var/lib/nss_db)
+patch --verbose -Nvp1 -i "/sources/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 
-# исправим проблему, связанную с ядром 5.2 версии
-sed -i '/asm.socket.h/a# include <linux/sockios.h>' \
-    sysdeps/unix/sysv/linux/bits/socket.h
-
-# создадим ссылки в /lib64 для соответствия Linux Standard Base (LSB)
+# создадим ссылки в /lib64 для соответствия LSB (Linux Standard Base)
 #    ld-linux-x86-64.so.2 -> ../lib/ld-linux-x86-64.so.2
 #    ld-lsb-x86-64.so.3   -> ../lib/ld-linux-x86-64.so.2
 # необходимую для правильной работы динамического загрузчика
 ln -sfv ../lib/ld-linux-x86-64.so.2 /lib64
 ln -sfv ../lib/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib64"
 (
     cd "${TMP_DIR}/lib64" || exit 1
     ln -sfv ../lib/ld-linux-x86-64.so.2 ld-linux-x86-64.so.2
@@ -51,7 +47,7 @@ mkdir -pv "${TMP_DIR}/lib64"
 )
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге для сборки
-mkdir build
+mkdir -v build
 cd build || exit 1
 
 ### Конфигурация
@@ -84,9 +80,22 @@ make || exit 1
 
 # следующая символическая ссылка необходима для запуска тестов сборки
 # в среде chroot. Она будет перезаписана на этапе установки пакета
-ln -sfnv "${CWD}/elf/ld-linux-x86-64.so.2" /lib
+ln -sfnv "${PWD}/elf/ld-linux-x86-64.so.2" /lib
 
-# на данном этапе запуск тестов обязателен
+### на данном этапе запуск тестов обязателен
+# набор тестов Glibc зависит от хост-системы. Список наиболее распространенных
+# проблем с тестами в среде LFS:
+#    - misc/tst-ttyname не работает в среде chroot LFS
+#    - inet/tst-idna_name_classify дает сбой в среде chroot LFS
+#    - posix/tst-getaddrinfo4 и posix/tst-getaddrinfo5 могут не работать на
+#       некоторых архитектурах
+#    - nss/tst-nss-files-hosts-multi может завершиться неудачей по причинам,
+#       которые не были определены
+#    - rt/tst-cputimer{1,2,3} зависят от ядра хост-системы. Известно, что ядра
+#       4.14.91–4.14.96, 4.19.13–4.19.18 и 4.20.0–4.20.5 вызывают сбой этих
+#       тестов.
+#    - математические тесты иногда не проходят при работе в системах, где ЦП не
+#       является относительно новым процессором Intel или AMD
 make check
 
 # на этапе установки Glibc будет жаловаться на отсутствие /etc/ld.so.conf,
@@ -119,11 +128,11 @@ mkdir -pv /var/cache/nscd
 mkdir -pv "${TMP_DIR}/var/cache/nscd"
 
 # ни одна из локалей не требуется на данный момент, но если некоторые из них
-# отсутствуют, тестовые наборы будущих пакетов пропустят важные тесты.
-# Отдельные локали могут быть установлены с помощью утилиты localedef.
-# Результат ее работы добавляется в файл /usr/lib/locale/locale-archive
-# Следующие инструкции установят минимальный набор локалей, необходимых для
-# оптимального охвата тестов
+# отсутствуют, тестовые наборы пакетов, которые мы будет устанавливать позже,
+# пропустят важные тесты. Отдельные локали могут быть установлены с помощью
+# утилиты localedef. Результат ее работы добавляется в файл
+# /usr/lib/locale/locale-archive Следующие инструкции установят минимальный
+# набор локалей, необходимых для оптимального охвата тестов
 mkdir -pv /usr/lib/locale
 localedef -i POSIX      -f UTF-8        C.UTF-8 2> /dev/null || true
 localedef -i cs_CZ      -f UTF-8        cs_CZ.UTF-8
@@ -204,9 +213,8 @@ mkdir -pv "${ZONEINFO}"/{posix,right}
 ZONEINFO_TMP="${TMP_DIR}/usr/share/zoneinfo"
 mkdir -pv "${ZONEINFO_TMP}"/{posix,right}
 
-# компилируем файлы временных зон из архива tzdata2019b.tar.gz и помещаем
-# результаты в /usr/share/zoneinfo
-tar -xvf /sources/tzdata2019b.tar.gz || exit 1
+# компилируем файлы временных зон и помещаем их в /usr/share/zoneinfo
+tar -xvf /sources/tzdata2019c.tar.gz || exit 1
 for TZ in etcetera southamerica northamerica europe africa antarctica \
         asia australasia backward pacificnew systemv; do
     zic -L /dev/null   -d "${ZONEINFO}"           "${TZ}"
@@ -238,14 +246,15 @@ unset ZONEINFO ZONEINFO_TMP
 ln -sfv ../usr/share/zoneinfo/Europe/Astrakhan /etc/localtime
 ln -sfv ../usr/share/zoneinfo/Europe/Astrakhan "${TMP_DIR}/etc/localtime"
 
-# Конфигурация динамического загрузчика
-# По умолчанию динамический загрузчик (ld-linux-x86-64.so.2), который нужен
-# программам при их запуске ищется в /lib и /usr/lib. Однако если в каталогах,
-# отличных от /lib и /usr/lib, есть дополнительные библиотеки, их необходимо
-# добавить в файл /etc/ld.so.conf, чтобы динамический загрузчик мог их найти.
-# Известно, что две директории содержат дополнительные библиотеки:
-# /usr/local/lib и /opt/lib, поэтому добавим эти каталоги в путь поиска для
-# динамического загрузчика
+### Конфигурация динамического загрузчика
+# По умолчанию поиск динамического загрузчика ld-linux-x86-64.so.2, который
+# нужен программам при их запуске, происходит в /lib и /usr/lib. Однако если в
+# каталогах, отличных от /lib и /usr/lib, есть дополнительные библиотеки, их
+# необходимо добавить в файл /etc/ld.so.conf, чтобы динамический загрузчик мог
+# их найти. Например, две дополнительные директории могут содержать библиотеки:
+# /usr/local/lib и /opt/lib, а так же другие пути к библиотекам могут быть
+# указаны в конфигурационных файлах в /etc/ld.so.conf.d/ Добавим эти каталоги в
+# пути поиска для динамического загрузчика
 
 # бэкапим конфиг /etc/ld.so.conf перед созданием, если он уже существует
 LD_SO_CONFIG="/etc/ld.so.conf"
@@ -256,11 +265,11 @@ fi
 cat << EOF > "${LD_SO_CONFIG}"
 # Begin ${LD_SO_CONFIG}
 
-/usr/local/lib
-/opt/lib
-
 # Add an include directory
 include /etc/ld.so.conf.d/*.conf
+
+/usr/local/lib
+/opt/lib
 
 # End ${LD_SO_CONFIG}
 EOF
