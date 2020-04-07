@@ -6,7 +6,7 @@ PRGNAME="readline"
 # Набор библиотек для редактирование из командной строки и возможности ведения
 # истории
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/readline.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/readline.html
 
 # Home page: https://tiswww.case.edu/php/chet/readline/rltop.html
 # Download:  http://ftp.gnu.org/gnu/readline/readline-8.0.tar.gz
@@ -14,6 +14,10 @@ PRGNAME="readline"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # переустановка Readline приведет к перемещению старых библиотек в
 # <имя_библиотеки>.old. Хотя обычно это не проблема, в некоторых случаях это
@@ -32,10 +36,6 @@ make SHLIB_LIBS="-L/tools/lib -lncursesw" || exit 1
 
 # установка пакета
 make SHLIB_LIBS="-L/tools/lib -lncursesw" install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make SHLIB_LIBS="-L/tools/lib -lncursesw" install DESTDIR="${TMP_DIR}"
 
 # теперь переместим динамические библиотеки в более подходящее место и исправим
@@ -58,7 +58,8 @@ ln -sfv ../../lib/"$(readlink /usr/lib/libhistory.so)" /usr/lib/libhistory.so
 )
 
 # устновим документацию
-install -v -m644 doc/*.{ps,pdf,html,dvi} "/usr/share/doc/${PRGNAME}-${VERSION}"
+install -v -m644 doc/*.{ps,pdf,html,dvi} \
+    "/usr/share/doc/${PRGNAME}-${VERSION}"
 install -v -m644 doc/*.{ps,pdf,html,dvi} \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 # удалим не нужную документацию
