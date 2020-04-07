@@ -30,6 +30,8 @@
                 002_mount_virtual_kernel_file_systems.sh
                 003_entering_chroot.sh
 
-                005_sbin_removepkg - установка описана в коде скрипта
+                Установка описана в коде скрипта:
+                    005_sbin_removepkg
+                    082_checkalldeps.sh
 
 # vim:ft=conf
