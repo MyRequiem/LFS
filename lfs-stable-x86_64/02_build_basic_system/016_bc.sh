@@ -5,14 +5,18 @@ PRGNAME="bc"
 ### Bc
 # Язык обработки чисел произвольной точности
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/bc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bc.html
 
 # Home page: https://github.com/gavinhoward/bc
-# Download:  https://github.com/gavinhoward/bc/archive/2.1.3/bc-2.1.3.tar.gz
+# Download:  https://github.com/gavinhoward/bc/archive/2.5.3/bc-2.5.3.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # определяем используемый компилятор и С-стандарт
 #    CC=gcc
@@ -23,7 +27,8 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 # присутствия GNU bc
 #    -G
 PREFIX=/usr \
-CC=gcc CFLAGS="-std=c99" \
+CC=gcc \
+CFLAGS="-std=c99" \
 ./configure.sh \
     -O3 \
     -G || exit 1
@@ -31,10 +36,6 @@ CC=gcc CFLAGS="-std=c99" \
 make || exit 1
 make test
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
