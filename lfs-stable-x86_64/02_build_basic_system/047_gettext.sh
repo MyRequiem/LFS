@@ -7,7 +7,7 @@ PRGNAME="gettext"
 # компилироваться с NLS (Native Language Support), т.е. с поддержкой родного
 # языка
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/gettext.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gettext.html
 
 # Home page: http://www.gnu.org/software/gettext/
 # Download:  http://ftp.gnu.org/gnu/gettext/gettext-0.20.1.tar.xz
@@ -15,6 +15,10 @@ PRGNAME="gettext"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure          \
     --prefix=/usr    \
@@ -24,10 +28,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 chmod -v 0755 /usr/lib/preloadable_libintl.so
