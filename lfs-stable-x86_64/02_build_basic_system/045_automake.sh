@@ -5,7 +5,7 @@ PRGNAME="automake"
 ### Automake
 # Пакет содержит программы создания Make-файлов для использования с Autoconf
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/automake.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/automake.html
 
 # Home page: http://www.gnu.org/software/automake/
 # Download:  http://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.xz
@@ -13,6 +13,10 @@ PRGNAME="automake"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
@@ -26,10 +30,6 @@ make || exit 1
 MAKEFLAGS="-j$(($(/tools/bin/nproc) + 1))"
 make "${MAKEFLAGS}" check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
