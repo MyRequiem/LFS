@@ -6,7 +6,7 @@ PRGNAME="psmisc"
 # Программы для отображения информации о защенных процессах, а так же для
 # управления такими процессами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/psmisc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/psmisc.html
 
 # Home page: http://psmisc.sourceforge.net/
 # Download:  https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.2.tar.xz
@@ -15,16 +15,16 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/bin"
+
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
-# в этот пакет не входит набор тестов, поэтому сразу устанавливаем
+# пакет не содержит набора тестов, поэтому сразу устанавливаем
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/bin"
 make install DESTDIR="${TMP_DIR}"
 
 # переместим программы 'killall' и 'fuser' из /usr/bin в /bin
