@@ -5,14 +5,18 @@ PRGNAME="check"
 ### Check
 # Фреймворк для тестов на C
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/check.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/check.html
 
 # Home page: https://libcheck.github.io/check
-# Download:  https://github.com/libcheck/check/releases/download/0.12.0/check-0.12.0.tar.gz
+# Download:  https://github.com/libcheck/check/releases/download/0.14.0/check-0.14.0.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -22,10 +26,6 @@ make check
 # устанавливаем пакет
 DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 make docdir="${DOC_DIR}" install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make docdir="${DOC_DIR}" install DESTDIR="${TMP_DIR}"
 
 # правим shebang скрипта checkmk
