@@ -5,7 +5,7 @@ PRGNAME="gperf"
 ### Gperf
 # Генерирует наилучшую хеш-функцию из набора ключей
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/gperf.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gperf.html
 
 # Home page: http://www.gnu.org/software/gperf/
 # Download:  http://ftp.gnu.org/gnu/gperf/gperf-3.1.tar.gz
@@ -13,6 +13,10 @@ PRGNAME="gperf"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
@@ -22,10 +26,6 @@ make || exit 1
 # тесты Gperf не проходят в многопоточном режиме, поэтому явно укажем -j1
 make -j1 check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
