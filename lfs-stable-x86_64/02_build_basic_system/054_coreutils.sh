@@ -6,14 +6,19 @@ PRGNAME="coreutils"
 # Утилиты для отображения и настройки основных характеристик системы: basename,
 # cat, chmod, chown, chroot, cp, cut, date и т.д.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/coreutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/coreutils.html
 
 # Home page: http://www.gnu.org/software/coreutils/
 # Download:  http://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz
+#            http://www.linuxfromscratch.org/patches/lfs/9.1/coreutils-8.31-i18n-1.patch
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"/{bin,usr/sbin}
 
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
@@ -34,8 +39,8 @@ autoreconf -fiv
 # пакетами позже
 #    --enable-no-install-program=kill,uptime
 FORCE_UNSAFE_CONFIGURE=1 \
-./configure       \
-    --prefix=/usr \
+./configure              \
+    --prefix=/usr        \
     --enable-no-install-program=kill,uptime || exit 1
 
 make || exit 1
@@ -52,16 +57,12 @@ chown -Rv nobody .
 # системе. Тест tty.sh также не проходит. Параметр RUN_EXPENSIVE_TESTS=yes
 # указывает тестовому набору выполнить некоторые дополнительные тесты
 su nobody -s /bin/bash -c "PATH=${PATH} make RUN_EXPENSIVE_TESTS=yes check"
-# удалим временную группу dummy
+# удалим созданную нами временную группу dummy
 sed -i '/dummy/d' /etc/group
 # восстановим владельца и группу дерева исходников
 chown -Rv root:root .
 # устанавливаем пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,usr/sbin}
 make install DESTDIR="${TMP_DIR}"
 
 # переместим некоторые программы в места, требуемые стандартом FHS
@@ -87,7 +88,7 @@ mv -v "${TMP_DIR}/usr/share/man/man1/chroot.1" \
     "${TMP_DIR}/usr/share/man/man8/chroot.8"
 sed -i s/\"1\"/\"8\"/1 "${TMP_DIR}/usr/share/man/man8/chroot.8"
 
-# некоторые из сценариев в пакете LFS-Bootscripts требуют наличие утилит head,
+# некоторые из сценариев в пакете LFS-Bootscripts требуют наличия утилит head,
 # nice, sleep, и touch. Поскольку /usr/bin может быть недоступен на ранних
 # стадиях загрузки системы, эти утилиты должны находиться в /bin
 mv -v /usr/bin/{head,nice,sleep,touch} /bin
