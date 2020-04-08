@@ -5,7 +5,7 @@ PRGNAME="inetutils"
 ### Inetutils
 # Пакет содержит базовые сетевые утилиты
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/inetutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/inetutils.html
 
 # Home page: http://www.gnu.org/software/inetutils/
 # Download:  http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz
@@ -13,6 +13,10 @@ PRGNAME="inetutils"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"/{bin,sbin}
 
 # по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
 # логирование. Мы не будем его устанавливать, т.к. пакет Util-Linux содержит
@@ -45,16 +49,12 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
     --disable-servers || exit 1
 
 make || exit 1
-# тест libls.sh может потерпеть неудачу в исходной среде chroot, но нормально
-# проходит после завершения создания LFS и ее чистой загрузки.
-# тест ping-localhost.sh потерпит неудачу, если в хост-системе нет возможности
-# ipv6
+# тест libls.sh может потерпеть неудачу в текущей среде chroot, но нормально
+# проходит после завершения создания LFS и ее чистой загрузки. Тест
+# ping-localhost.sh потерпит неудачу, если в ядре хост-системы не включена
+# возможность IPv6
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,sbin}
 make install DESTDIR="${TMP_DIR}"
 
 # переместим некоторые утилиты из /usr/bin в /bin и /sbin
