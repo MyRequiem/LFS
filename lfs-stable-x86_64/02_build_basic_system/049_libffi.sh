@@ -8,23 +8,18 @@ PRGNAME="libffi"
 # программисту вызывать любую функцию определенную описанием интерфейса вызова
 # во время выполнения
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/libffi.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libffi.html
 
 # Home page: https://sourceware.org/libffi/
-# Download:  ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+# Download:  ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# изменим Makefile для установки заголовочных файлов в стандартный каталог
-# /usr/include вместо каталога по умолчанию /usr/lib/libffi-${VERSION}/include
-sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
-    -i include/Makefile.in
-
-sed -e '/^includedir/ s/=.*$/=@includedir@/' \
-    -e 's/^Cflags: -I${includedir}/Cflags:/' \
-    -i libffi.pc.in
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # GCC будет проводить оптимизацию сборки для текущей системы
 #    --with-gcc-arch=native
@@ -36,10 +31,6 @@ sed -e '/^includedir/ s/=.*$/=@includedir@/' \
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
