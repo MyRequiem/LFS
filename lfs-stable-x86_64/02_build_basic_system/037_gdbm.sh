@@ -9,7 +9,7 @@ PRGNAME="gdbm"
 # ключ-значение, поиска и извлечение данных по ключу и удаление ключа вместе с
 # его данными.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/gdbm.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gdbm.html
 
 # Home page: http://www.gnu.org/software/gdbm/
 # Download:  http://ftp.gnu.org/gnu/gdbm/gdbm-1.18.1.tar.gz
@@ -17,6 +17,10 @@ PRGNAME="gdbm"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # ключ позволяет создать библиотеку совместимости, содержащую старые функции
 # DBM (libgdbm_compat.so), так как некоторые пакеты за пределами LFS могут
@@ -30,10 +34,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
