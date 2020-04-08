@@ -5,17 +5,18 @@ PRGNAME="bison"
 ### Bison
 # Пакет предназначен для автоматического создания синтаксических анализаторов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/bison.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bison.html
 
 # Home page: http://www.gnu.org/software/bison/
-# Download:  http://ftp.gnu.org/gnu/bison/bison-3.4.1.tar.xz
+# Download:  http://ftp.gnu.org/gnu/bison/bison-3.5.2.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# исправим проблему с текущей версией
-sed -i '6855 s/mv/cp/' Makefile.in
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
@@ -23,13 +24,9 @@ sed -i '6855 s/mv/cp/' Makefile.in
 
 # явно указываем сборку в 1 поток
 make -j1 || exit 1
-# существует циклическая зависимость между bison и flex в отношении тестов,
+# существует кольцевая зависимость между bison и flex в отношении тестов,
 # поэтому тесты в данный момент не запускаем, а сразу устанавливаем пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
