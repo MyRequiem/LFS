@@ -7,7 +7,7 @@ PRGNAME="libtool"
 # сложность использования разделяемых библиотек в согласованном, переносимом
 # интерфейсе
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/libtool.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libtool.html
 
 # Home page: http://www.gnu.org/software/libtool/
 # Download:  http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz
@@ -15,6 +15,10 @@ PRGNAME="libtool"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -26,24 +30,10 @@ make || exit 1
 # несколько потоков (количество ядер процессора + 1)
 MAKEFLAGS="-j$(($(/tools/bin/nproc) + 1))"
 # известно, что пять тестов не проходят в среде сборки LFS из-за наличия
-# циклических зависимостей, но после установки automake все тесты проходят
-## ------------- ##
-## Test results. ##
-## ------------- ##
-# ERROR: 139 tests were run,
-# 64 failed (59 expected failures).
-# 31 tests were skipped.
-## -------------------------- ##
-## testsuite.log was created. ##
-## -------------------------- ##
+# кольцевых зависимостей, но после установки automake все тесты проходят
 make "${MAKEFLAGS}" check
 
-# устанавливаем пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
