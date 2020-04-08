@@ -6,7 +6,7 @@ PRGNAME="pkg-config"
 # Инструмент для передачи путей include и/или путей к библиотекам для создания
 # инструментов во время настройки и выполнения файлов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/pkg-config.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/pkg-config.html
 
 # Home page: https://www.freedesktop.org/wiki/Software/pkg-config
 # Download:  https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
@@ -14,6 +14,10 @@ PRGNAME="pkg-config"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # указывает pkg-config использовать свою внутреннюю версию Glib, потому что
 # внешняя версия пока недоступна в нашей сборке LFS
@@ -29,10 +33,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
