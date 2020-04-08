@@ -5,14 +5,18 @@ PRGNAME="ninja"
 ### Ninja
 # небольшая система сборки, ориентированная на скорость
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/ninja.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ninja.html
 
 # Home page: https://ninja-build.org/
-# Download:  https://github.com/ninja-build/ninja/archive/v1.9.0/ninja-1.9.0.tar.gz
+# Download:  https://github.com/ninja-build/ninja/archive/v1.10.0/ninja-1.10.0.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr"/{bin,share/bash-completion/completions}
 
 # при запуске ninja обычно запускает максимальное количество процессов
 # параллельно. По умолчанию это количество ядер в системе + 2. В некоторых
@@ -30,7 +34,7 @@ sed -i '/int Guess/a \
   char* jobs = getenv( "NINJAJOBS" );\
   if ( jobs != NULL ) j = atoi( jobs );\
   if ( j > 0 ) return j;\
-' src/ninja.cc
+' src/ninja.cc || exit 1
 
 # собираем ninja
 # заставляет ninja пересобрать себя под текущую систему
@@ -45,23 +49,16 @@ python3 configure.py \
 
 # устанавливаем пакет
 install -vm755 ninja /usr/bin/
-install -vDm644 misc/bash-completion \
-    /usr/share/bash-completion/completions/ninja
-install -vDm644 misc/zsh-completion  \
-    /usr/share/zsh/site-functions/_ninja
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
-
-mkdir -pv "${TMP_DIR}/usr/bin"
 install -vm755 ninja "${TMP_DIR}/usr/bin/"
-mkdir -pv "${TMP_DIR}/usr/share/bash-completion/completions"
-install -vDm644 misc/bash-completion \
-    "${TMP_DIR}/usr/share/bash-completion/completions/ninja"
-mkdir -pv "${TMP_DIR}/usr/share/zsh/site-functions"
-install -vDm644 misc/zsh-completion  \
-    "${TMP_DIR}/usr/share/zsh/site-functions/_ninja"
+
+BASH_COMPL="/usr/share/bash-completion/completions"
+install -vDm644 misc/bash-completion "${BASH_COMPL}/ninja"
+install -vDm644 misc/bash-completion "${TMP_DIR}${BASH_COMPL}/ninja"
+
+ZSH_COMPL="/usr/share/zsh/site-functions"
+mkdir -pv "${TMP_DIR}${ZSH_COMPL}"
+install -vDm644 misc/zsh-completion  "${ZSH_COMPL}/_ninja"
+install -vDm644 misc/zsh-completion  "${TMP_DIR}${ZSH_COMPL}/_ninja"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (build system with a focus on speed)
