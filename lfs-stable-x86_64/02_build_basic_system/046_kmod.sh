@@ -5,7 +5,7 @@ PRGNAME="kmod"
 ### Kmod
 # Пакет содержит библиотеки и утилиты для загрузки модулей ядра
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/kmod.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/kmod.html
 
 # Home page: https://www.kernel.org/
 # Download:  https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-26.tar.xz
@@ -13,6 +13,10 @@ PRGNAME="kmod"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/sbin"
 
 # опции позволяют Kmod обрабатывать сжатые модули ядра
 #    --with-xz
@@ -30,19 +34,15 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 make || exit 1
 # пакет поставляется без набора тестов, которые можно запустить в среде chroot,
-# поэтому сразу устанавливаем его
+# поэтому сразу его устанавливаем
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/sbin"
 make install DESTDIR="${TMP_DIR}"
 
 # создадим символические ссылки в /sbin для совместимости с Module-Init-Tools
 # (пакет, который ранее работал с модулями ядра)
 # depmod -> ../bin/kmod
 # insmod -> ../bin/kmod
-# ...
+# и т.д.
 for TARGET in depmod insmod lsmod modinfo modprobe rmmod; do
     ln -sfv ../bin/kmod "/sbin/${TARGET}"
     (
