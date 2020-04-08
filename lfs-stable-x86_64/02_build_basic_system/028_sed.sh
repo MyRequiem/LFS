@@ -5,14 +5,18 @@ PRGNAME="sed"
 ### Sed
 # потоковый редактор
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/sed.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sed.html
 
 # Home page: http://www.gnu.org/software/sed/
-# Download:  http://ftp.gnu.org/gnu/sed/sed-4.7.tar.xz
+# Download:  http://ftp.gnu.org/gnu/sed/sed-4.8.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # исправим проблему окружения для среды LFS, а так же удалим один из тестов
 # (testsuite.panic-tests.sh), который терпит неудачу
@@ -23,24 +27,18 @@ sed -i 's/testsuite.panic-tests.sh//' Makefile.in
     --prefix=/usr \
     --bindir=/bin || exit 1
 
-# собираем пакет и документацию
 make || exit 1
 make html || exit 1
-# запускаем наборы тестов
 make check
-# устанавливаем пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 # устанавливаем документацию
-install -d -m755           "/usr/share/doc/${PRGNAME}-${VERSION}"
-install -m644 doc/sed.html "/usr/share/doc/${PRGNAME}-${VERSION}"
-install -d -m755           "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-install -m644 doc/sed.html "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+install -d -m755           "${DOCS}"
+install -m644 doc/sed.html "${DOCS}"
+install -d -m755           "${TMP_DIR}${DOCS}"
+install -m644 doc/sed.html "${TMP_DIR}${DOCS}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (stream editor)
