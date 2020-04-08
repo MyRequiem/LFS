@@ -6,7 +6,7 @@ PRGNAME="flex"
 # Пакет содержит утилиту для генерации программ, которые распознают шаблоны в
 # тексте
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/flex.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/flex.html
 
 # Home page: https://github.com/westes/flex
 # Download:  https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
@@ -15,13 +15,17 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# исправим проблему для glibc-2.26
-sed -i "/math.h/a #include <malloc.h>" src/flexdef.h
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
-# процедура сборки предполагает, что программа help2man доступна в системе, но
-# на данный момент она еще не установлена, поэтому мы используем переменную
-# окружения HELP2MAN, чтобы пропустить процесс создания man-страниц из
-# исполняемого файла с опцией --help
+# исправим проблему для glibc-2.26
+sed -i "/math.h/a #include <malloc.h>" src/flexdef.h || exit 1
+
+# процедура сборки предполагает, что утилита help2man доступна в системе для
+# создания man-страниц из исполняемого файла, но на данный момент она еще не
+# установлена, поэтому мы используем переменную окружения HELP2MAN, чтобы
+# пропустить процесс создания man-страниц
 HELP2MAN=/tools/bin/true \
 ./configure              \
     --prefix=/usr        \
@@ -30,10 +34,6 @@ HELP2MAN=/tools/bin/true \
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 # некоторые программы еще не знают о flex и пытаются запустить его
