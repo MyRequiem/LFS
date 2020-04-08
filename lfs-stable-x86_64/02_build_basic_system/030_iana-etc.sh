@@ -11,7 +11,7 @@ PRGNAME="iana-etc"
 #                       именами для Интернет услуг, а также соответствующие им
 #                       номера портов и типы протокола
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/iana-etc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/iana-etc.html
 
 # Home page: http://freecode.com/projects/iana-etc
 # Download:  http://anduin.linuxfromscratch.org/LFS/iana-etc-2.30.tar.bz2
@@ -20,15 +20,15 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# преобразуем необработанные данные, предоставленные IANA, в правильные форматы
-# для файлов данных /etc/protocols и /etc/services
-make
-# в этот пакет не входит набор тестов, поэтому сразу устанавливаем
-make install
-
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
+
+# команда 'make' преобразует необработанные данные, предоставленные IANA, в
+# правильные форматы для файлов данных /etc/protocols и /etc/services
+make
+# пакет не содержит набора тестов, поэтому сразу устанавливаем
+make install
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
