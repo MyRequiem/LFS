@@ -9,14 +9,18 @@ PRGNAME="ncurses"
 # абстракции, позволяющий не беспокоиться об аппаратных различиях терминалов и
 # писать переносимый код
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/ncurses.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ncurses.html
 
 # Home page: http://www.gnu.org/software/ncurses/
-# Download:  http://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
+# Download:  http://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/lib"
 
 # не устанавливаем статическую библиотеку, которая не обрабатывается командой
 # configure
@@ -46,10 +50,6 @@ make || exit 1
 # в состав пакета входят наборы тестов, но их можно запустить только после
 # того, как пакет будет установлен
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
 make install DESTDIR="${TMP_DIR}"
 
 # переместим разделяемые библиотеки из /usr/lib в /lib, где они и должны
@@ -72,7 +72,7 @@ for LIB in ncurses form panel menu ; do
     echo "INPUT(-l${LIB}w)" > "/usr/lib/lib${LIB}.so"
     ln -sfv "${LIB}w.pc"      "/usr/lib/pkgconfig/${LIB}.pc"
 
-    rm -vf                    "${TMP_DIR}/usr/lib/lib${LIB}.so"
+    rm -fv                    "${TMP_DIR}/usr/lib/lib${LIB}.so"
     echo "INPUT(-l${LIB}w)" > "${TMP_DIR}/usr/lib/lib${LIB}.so"
     (
         cd "${TMP_DIR}/usr/lib/pkgconfig" || exit 1
@@ -94,10 +94,11 @@ echo "INPUT(-lncursesw)" > "${TMP_DIR}/usr/lib/libcursesw.so"
 )
 
 # установим документацию
-mkdir -pv      "/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R doc/* "/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv      "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R doc/* "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv      "${DOCS}"
+cp -v -R doc/* "${DOCS}"
+mkdir -pv      "${TMP_DIR}${DOCS}"
+cp -v -R doc/* "${TMP_DIR}${DOCS}"
 
 # снова соберем пакет для построения 5 версии библиотеки, которая все еще
 # требуется некоторым программам
