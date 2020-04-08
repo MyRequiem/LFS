@@ -29,6 +29,7 @@
                 001_changing_ownership.sh
                 002_mount_virtual_kernel_file_systems.sh
                 003_entering_chroot.sh
+                035_entering_chroot.sh
 
                 Установка описана в коде скрипта:
                     005_sbin_removepkg
