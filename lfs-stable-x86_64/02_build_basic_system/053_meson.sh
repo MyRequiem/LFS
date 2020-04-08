@@ -6,14 +6,18 @@ PRGNAME="meson"
 # Система сборки, ориентированная на скорость и на максимальное удобство для
 # пользователя
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/meson.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/meson.html
 
 # Home page: https://mesonbuild.com
-# Download:  https://github.com/mesonbuild/meson/releases/download/0.51.1/meson-0.51.1.tar.gz
+# Download:  https://github.com/mesonbuild/meson/releases/download/0.53.1/meson-0.53.1.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # собираем meson
 python3 setup.py build
@@ -24,10 +28,6 @@ python3 setup.py build
 #    --root=dest
 python3 setup.py install --root=dest
 cp -rv dest/* /
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 cp -rv dest/* "${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
