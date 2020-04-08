@@ -5,26 +5,26 @@ PRGNAME="grep"
 ### Grep
 # Программы для поиска по файлам
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/grep.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grep.html
 
 # Home page: http://www.gnu.org/software/grep/
-# Download:  http://ftp.gnu.org/gnu/grep/grep-3.3.tar.xz
+# Download:  http://ftp.gnu.org/gnu/grep/grep-3.4.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
     --bindir=/bin || exit 1
 
 make || exit 1
-make -k check
+make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
