@@ -5,14 +5,23 @@ PRGNAME="bash"
 ### Bash
 # Bourne-Again SHell
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/bash.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html
 
 # Home page: http://www.gnu.org/software/bash/
 # Download:  http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
+#            http://www.linuxfromscratch.org/patches/lfs/9.1/bash-5.0-upstream_fixes-1.patch
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/bin"
+
+# применим патч с некоторыми исправлениями
+patch --verbose -Np1 -i \
+    "/sources/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # использовать библиотеку readline, которая уже устанавлена в системе вместо
 # использования собственной внутренней версии
@@ -31,10 +40,6 @@ su nobody -s /bin/bash -c "PATH=${PATH}:/tools/bin HOME=/home make tests"
 chown -Rv root:root .
 
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/bin"
 make install DESTDIR="${TMP_DIR}"
 
 # переместим bash из /usr/bin в /bin
