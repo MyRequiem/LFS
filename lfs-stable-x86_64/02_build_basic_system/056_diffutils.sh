@@ -5,7 +5,7 @@ PRGNAME="diffutils"
 ### Diffutils
 # Утилиты, которые показывают различия между файлами или каталогами
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/diffutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/diffutils.html
 
 # Home page: http://www.gnu.org/software/diffutils/
 # Download:  http://ftp.gnu.org/gnu/diffutils/diffutils-3.7.tar.xz
@@ -14,16 +14,16 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
