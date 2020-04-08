@@ -6,7 +6,7 @@ PRGNAME="autoconf"
 # Пакет макросов m4, которые создают сценарии оболочки для автоматической
 # настройки пакетов исходного кода программного обеспечения.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/autoconf.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/autoconf.html
 
 # Home page: http://www.gnu.org/software/autoconf/
 # Download:  http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz
@@ -15,8 +15,12 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 # исправим ошибку генерируемую Perl 5.28
-sed '361 s/{/\\{/' -i bin/autoscan.in
+sed '361 s/{/\\{/' -i bin/autoscan.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
@@ -25,10 +29,6 @@ make || exit 1
 # набор тестов не проходит на bash-5 и libtool-2.4.3
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
