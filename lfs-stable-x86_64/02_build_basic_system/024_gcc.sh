@@ -5,7 +5,7 @@ PRGNAME="gcc"
 ### GCC
 # Пакет содержит компиляторы GNU для C и C++
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/gcc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gcc.html
 
 # Home page: https://gcc.gnu.org/
 # Download:  http://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
@@ -14,8 +14,16 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
 sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+
+# исправим проблему с Glibc-2.31
+sed -e '1161 s|^|//|' \
+    -i libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
 
 # документация gcc рекомендует собирать gcc в отдельном каталоге для сборки
 mkdir build
@@ -32,13 +40,13 @@ cd build || exit 1
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию
 #    --with-system-zlib
-SED="sed"                    \
-../configure                 \
-    --prefix=/usr            \
-    --enable-languages=c,c++ \
-    --disable-multilib       \
-    --disable-bootstrap      \
-    --with-system-zlib || exit 1
+SED="sed"               \
+../configure            \
+    --prefix=/usr       \
+    --disable-multilib  \
+    --disable-bootstrap \
+    --with-system-zlib  \
+    --enable-languages=c,c++ || exit 1
 
 make || exit 1
 
@@ -75,13 +83,9 @@ chown -Rv root:root .
 
 # установим пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
-# удалим не нужную директорию
+# удалим ненужную директорию
 # /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include-fixed/bits
 rm -rf \
     "/usr/lib/gcc/$(gcc -dumpmachine)/${VERSION}/include-fixed/bits/"
@@ -146,7 +150,7 @@ echo ""
 echo "--------"
 echo "Step: 2"
 echo "--------"
-echo "# compiling source file dummy.c using /tools/bin/cc"
+echo "# compiling source file dummy.c using /usr/bin/cc (link to /usr/bin/gcc)"
 echo "# (as a result of compilation, an object file a.out is generated)"
 echo "cc dummy.c -v -Wl,--verbose &> dummy.log"
 
@@ -200,7 +204,7 @@ read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 # В зависимости от архитектуры машины вывод может незначительно отличатся,
-# обычно это имя каталога после /usr/lib/gcc. Здесь важно обратить внимание на
+# обычно это имя каталога после /usr/lib/gcc/. Здесь важно обратить внимание на
 # то, что gcc нашел все три файла crt*.o в каталоге /usr/lib/
 
 # убедимся, что компилятор ищет правильные заголовочные файлы
@@ -296,12 +300,14 @@ echo ""
 # очистим созданные нами тестовые файлы
 echo "Cleaning:"
 rm -v dummy.c a.out dummy.log
+echo ""
 
 # переместим некоторые файлы
-mkdir -pv /usr/share/gdb/auto-load/usr/lib
-mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
-mkdir -pv "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib"
-mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib"
+GDB="/usr/share/gdb/auto-load/usr/lib"
+mkdir -pv "${GDB}"
+mv -v /usr/lib/*gdb.py "${GDB}"
+mkdir -pv "${TMP_DIR}${GDB}"
+mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Base GCC package with C support)
