@@ -5,15 +5,19 @@ PRGNAME="perl"
 ### Perl
 # Practical Extraction and Report Language
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/perl.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/perl.html
 
 # Home page: https://www.perl.org/
-# Download:  https://www.cpan.org/src/5.0/perl-5.30.0.tar.xz
+# Download:  https://www.cpan.org/src/5.0/perl-5.30.1.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
 
 # файл /etc/hosts необходим для правильной ссылки в одном из файлов
 # конфигурации Perl, а также для дополнительного набора тестов, но перед его
@@ -25,15 +29,11 @@ fi
 
 # создаем /etc/hosts
 echo "127.0.0.1 localhost $(hostname)" > "${HOSTS}"
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc"
 cp "${HOSTS}" "${TMP_DIR}/etc/"
 
 config_file_processing "${HOSTS}"
 
-# данная версия Perl создает модули Compress::Raw::Zlib и Compress::Raw::BZip2.
+# данная версия Perl создает модули Compress::Raw::Zlib и Compress::Raw::BZip2
 # По умолчанию Perl будет использовать внутреннюю копию этих модулей для
 # сборки. Попросим сборку Perl использовать библиотеки, которые уже установлены
 # в системе
@@ -68,8 +68,7 @@ sh Configure                      \
     -Dusethreads || exit 1
 
 make || exit 1
-# один тест не проходит из-за использования самой последней версии gdbm
-make -k test
+make test
 make install
 make install DESTDIR="${TMP_DIR}"
 
