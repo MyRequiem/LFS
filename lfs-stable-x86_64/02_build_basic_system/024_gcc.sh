@@ -309,6 +309,8 @@ mv -v /usr/lib/*gdb.py "${GDB}"
 mkdir -pv "${TMP_DIR}${GDB}"
 mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 
+chmod 755 /usr/lib/libgcc_s.so{,.1}
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Base GCC package with C support)
 #
