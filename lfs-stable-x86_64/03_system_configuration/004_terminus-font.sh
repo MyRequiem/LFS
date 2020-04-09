@@ -5,17 +5,21 @@ PRGNAME="terminus-font"
 ### Шрифты для терминала linux
 # Растровый шрифт с фиксированной шириной для чистой консоли linux
 
-# Home page: http://terminus-font.sourceforge.net
-# Download:  https://netix.dl.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
-
 # пакет упоминается в BLFS
 # http://www.linuxfromscratch.org/blfs/view/stable/postlfs/console-fonts.html
-# но установим его сейчас для настройки нормального шрифта терминала после
-# установки System-V-configuration в файле /etc/sysconfig/console
+# но установим его сейчас для настройки нормального шрифта  чистого терминала
+# после установки System-V-configuration в файле /etc/sysconfig/console
+
+# Home page: http://terminus-font.sourceforge.net
+# Download:  https://netix.dl.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr/share/consolefonts"
 
 ./configure \
     --prefix=/usr
@@ -32,10 +36,6 @@ make psf
 mkdir -p /usr/share/consolefonts
 gzip -vc9 ter-v14n.psf > ter-v14n.psf.gz
 install -v -m644 ter-v14n.psf.gz /usr/share/consolefonts
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/usr/share/consolefonts"
 install -v -m644 ter-v14n.psf.gz "${TMP_DIR}/usr/share/consolefonts"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
