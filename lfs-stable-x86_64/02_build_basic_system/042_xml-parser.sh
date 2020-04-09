@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xml-parser"
+ARCH_NAME="XML-Parser"
 
 ### XML::Parser
 # Модуль XML::Parser является Perl-интерфейсом для синтаксического анализатора
@@ -12,8 +13,8 @@ PRGNAME="xml-parser"
 # Download:  https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "XML-Parser" || exit 1
+source "${ROOT}check_environment.sh"                    || exit 1
+source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -32,7 +33,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Expat.
 #
 # Home page: https://github.com/chorny/${PRGNAME}
-# Download:  https://cpan.metacpan.org/authors/id/T/TO/TODDR/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://cpan.metacpan.org/authors/id/T/TO/TODDR/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
