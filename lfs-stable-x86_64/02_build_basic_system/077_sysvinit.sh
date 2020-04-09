@@ -5,14 +5,19 @@ PRGNAME="sysvinit"
 ### Sysvinit
 # программы для контроля запуска и выключение системы
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/sysvinit.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sysvinit.html
 
 # Home page: https://savannah.nongnu.org/projects/sysvinit
-# Download:  http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.95.tar.xz
+# Download:  http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.96.tar.xz
+#            http://www.linuxfromscratch.org/patches/lfs/9.1/sysvinit-2.96-consolidated-1.patch
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # по умолчанию пакет sysvinit устанавливает в том числе:
 #    - ссылку в /bin pidof -> /sbin/killall5, но утилита /bin/pidof уже
@@ -34,14 +39,7 @@ patch --verbose -Np1 \
 make || exit 1
 # пакет не содержит набора тестов, поэтому сразу устанавливаем
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make ROOT="${TMP_DIR}" install
-
-cd "${TMP_DIR}" || exit 1
-rm -rf ./{bin,usr/{bin,share/man/man1}}
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (init, the parent of all processes)
