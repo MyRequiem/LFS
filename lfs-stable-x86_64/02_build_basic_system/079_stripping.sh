@@ -8,9 +8,9 @@ source "${ROOT}check_environment.sh" || exit 1
 # отладочная информация необходима, если выполняются регрессионные тесты,
 # использующие Valgrind или GDB позже в BLFS
 SAVE_LIB="              \
-    ld-2.30.so          \
-    libc-2.30.so        \
-    libpthread-2.30.so  \
+    ld-2.31.so          \
+    libc-2.31.so        \
+    libpthread-2.31.so  \
     libthread_db-1.0.so \
 "
 
