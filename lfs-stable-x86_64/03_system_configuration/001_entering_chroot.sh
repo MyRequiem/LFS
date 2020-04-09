@@ -7,9 +7,9 @@ fi
 
 LFS="/mnt/lfs"
 if ! mount | /bin/grep -q "${LFS}/proc"; then
-    echo "You need to mount virtual file systems."
-    echo "Run script in ../002_build_basic_system/"
-    echo "# ./002_mount_virtual_kernel_file_systems.sh --mount"
+    echo "You need to mount virtual file systems. Run script"
+    echo -n "# ../02_build_basic_system/"
+    echo "002_mount_virtual_kernel_file_systems.sh --mount"
     exit 1
 fi
 
