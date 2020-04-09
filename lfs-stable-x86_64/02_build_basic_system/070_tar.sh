@@ -5,7 +5,7 @@ PRGNAME="tar"
 ### Tar
 # Программа архивации файлов и каталогов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/tar.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/tar.html
 
 # Home page: http://www.gnu.org/software/tar/
 # Download:  http://ftp.gnu.org/gnu/tar/tar-1.32.tar.xz
@@ -13,6 +13,11 @@ PRGNAME="tar"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # заставляет тест для mknod запускаться от имени пользователя root. Вообще
 # считается опасным запускать этот тест от имени root, но в данный момент он
@@ -27,11 +32,6 @@ FORCE_UNSAFE_CONFIGURE=1 \
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
