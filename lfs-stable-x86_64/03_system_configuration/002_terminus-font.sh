@@ -26,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
 make psf
 
 make install-psf
-make install-psf DESTDIR="${PKG}"
+make install-psf DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (font for linux terminal)
