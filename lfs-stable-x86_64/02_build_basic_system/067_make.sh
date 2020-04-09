@@ -5,17 +5,18 @@ PRGNAME="make"
 ### Make
 # Программы для компиляции
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/make.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/make.html
 
 # Home page: http://www.gnu.org/software/make/
-# Download:  http://ftp.gnu.org/gnu/make/make-4.2.1.tar.gz
+# Download:  http://ftp.gnu.org/gnu/make/make-4.3.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# обойдем ошибку, вызванную glibc-2.27 и более поздними версиями
-sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -25,10 +26,6 @@ make || exit 1
 # исходников. Для этого мы используем переменную окружения PERL5LIB
 make PERL5LIB="${PWD}/tests/" check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
