@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Check is a unit testing framework for C.
 #
 # Home page: https://libcheck.github.io/${PRGNAME}
-# Download:  https://github.com/libcheck/${PRGNAME}/releases/download/0.12.0/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/libcheck/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
