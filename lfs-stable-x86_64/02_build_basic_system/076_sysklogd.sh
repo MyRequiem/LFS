@@ -5,7 +5,7 @@ PRGNAME="sysklogd"
 ### Sysklogd
 # содержит программы для регистрации системных сообщений (логирования)
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/sysklogd.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sysklogd.html
 
 # Home page: http://www.infodrom.org/projects/sysklogd/
 # Download:  http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
@@ -15,6 +15,10 @@ source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -p "${TMP_DIR}"/{etc,sbin,usr/share/man/{man5,man8}}
+
 # исправим проблему, которая вызывает segmentation fault в некоторых ситуациях,
 # а так же исправим устаревшую конструкцию в исходном коде syslogd.c
 sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
@@ -23,10 +27,6 @@ sed -i 's/union wait/int/' syslogd.c
 make || exit 1
 # пакет не содержит набора тестов, поэтому сразу устанавливаем
 make BINDIR=/sbin install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -p "${TMP_DIR}"/{etc,sbin,usr/share/man/{man5,man8}}
 make BINDIR="${TMP_DIR}/sbin" MANDIR="${TMP_DIR}/usr/share/man" install
 
 # бэкапим конфиг /etc/syslog.conf перед его созданием
