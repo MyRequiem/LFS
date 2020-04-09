@@ -5,7 +5,7 @@ PRGNAME="grub"
 ### GRUB
 # Загрузчик GRand Unified Bootloader
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/grub.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grub.html
 
 # Home page: http://www.gnu.org/software/grub/
 # Download:  https://ftp.gnu.org/gnu/grub/grub-2.04.tar.xz
@@ -13,6 +13,11 @@ PRGNAME="grub"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+BASH_COMPLETION="/usr/share/bash-completion/completions"
+mkdir -pv "${TMP_DIR}${BASH_COMPLETION}"
 
 # позволяет не прерывать сборку при появлении предупреждений для более поздних
 # версий Flex
@@ -30,17 +35,11 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 # пакет не содержит набора тестов, поэтому сразу устанавливаем
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/usr/share/bash-completion/completions"
 make install DESTDIR="${TMP_DIR}"
 
-mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions/
-rm -rf /etc/bash_completion.d
-mv -v "${TMP_DIR}/etc/bash_completion.d/grub" \
-    "${TMP_DIR}/usr/share/bash-completion/completions/"
-rm -rf "${TMP_DIR}/etc/bash_completion.d"
+BASH_COMPLETION_D="/etc/bash_completion.d"
+mv -v   "${BASH_COMPLETION_D}/grub" "${BASH_COMPLETION}"
+mv -v   "${TMP_DIR}${BASH_COMPLETION_D}/grub" "${TMP_DIR}${BASH_COMPLETION}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the GRand Unified Bootloader)
