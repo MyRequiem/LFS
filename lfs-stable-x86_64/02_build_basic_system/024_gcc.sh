@@ -35,7 +35,7 @@ cd build || exit 1
 # для других языков есть некоторые предварительные условия, которые пока не
 # доступны в нашей системе. Смотри BLFS для получения инструкций по созданию
 # всех поддерживаемых языков GCC:
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/gcc.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/gcc.html
 #    --enable-languages=c,c++
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию
