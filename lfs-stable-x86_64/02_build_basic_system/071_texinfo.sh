@@ -5,14 +5,18 @@ PRGNAME="texinfo"
 ### Texinfo
 # Программы для чтения, записи и конвертации страниц info
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/texinfo.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/texinfo.html
 
 # Home page: http://www.gnu.org/software/texinfo/
-# Download:  http://ftp.gnu.org/gnu/texinfo/texinfo-6.6.tar.xz
+# Download:  http://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # скрипт 'configure' будет жаловаться, что это нераспознанный параметр, но
 # сценарий настройки для XSParagraph распознает его и использует для отключения
@@ -25,15 +29,10 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 # установим компоненты, относящиеся к установке TeX. Переменная TEXMF содержит
-# местоположение корня дерева пакета TeX, который возможно будет установлен
-# позже
+# местоположение корня дерева пакета TeX, который будет установлен позже
 make TEXMF=/usr/share/texmf install-tex
 make TEXMF="${TMP_DIR}/usr/share/texmf" install-tex
 
@@ -41,7 +40,7 @@ make TEXMF="${TMP_DIR}/usr/share/texmf" install-tex
 # /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
 # который мы обновим
 cd /usr/share/info || exit 1
-rm -fv dir
+rm -vf dir
 for FILE in *; do
     install-info "${FILE}" dir 2>/dev/null
 done
