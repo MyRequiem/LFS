@@ -5,15 +5,19 @@ PRGNAME="man-db"
 ### Man-DB
 # программы для поиска и просмотра man-страниц
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/man-db.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/man-db.html
 
 # Home page: https://www.nongnu.org/man-db/
-# Download:  http://download.savannah.gnu.org/releases/man-db/man-db-2.8.6.1.tar.xz
+# Download:  http://download.savannah.gnu.org/releases/man-db/man-db-2.9.0.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # отключает установку пользователя man для программы man
 #    --disable-setuid
@@ -29,7 +33,7 @@ source "${ROOT}config_file_processing.sh"             || exit 1
 # эти параметры не позволяют устанавливать ненужные системные каталоги и файлы
 #    --with-systemdtmpfilesdir=
 #    --with-systemdsystemunitdir=
-./configure \
+./configure                       \
     --prefix=/usr                 \
     --sysconfdir=/etc             \
     --disable-setuid              \
@@ -51,13 +55,9 @@ if [ -f "${MAN_DB_CONF}" ]; then
 fi
 
 make install
+make install DESTDIR="${TMP_DIR}"
 
 config_file_processing "${MAN_DB_CONF}"
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
-make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (database-driven manual pager suite)
