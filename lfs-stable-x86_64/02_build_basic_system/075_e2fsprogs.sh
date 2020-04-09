@@ -6,21 +6,19 @@ PRGNAME="e2fsprogs"
 # утилиты для работы с файловой системой ext2, а также поддерживает
 # журналируемые файловые системы ext3 и ext4
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/e2fsprogs.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/e2fsprogs.html
 
 # Home page: http://e2fsprogs.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.45.5/e2fsprogs-1.45.5.tar.gz
-
-# В стабильной версии LFS-9.0 на 05.02.20 указаны обновления для этого пакета
-#    http://www.linuxfromscratch.org/lfs/errata/9.0/
-#
-#    ... Update to e2fsprogs-1.45.4 or later using the instructions in e2fsprogs-1.45.4
-#    http://www.linuxfromscratch.org/lfs/view/development/chapter06/e2fsprogs.html
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # документация E2fsprogs рекомендует проводить сборку в отдельном подкаталоге
 # дерева исходников
@@ -69,43 +67,24 @@ if [ -f "${MKE2FS_CONF}" ]; then
 fi
 
 make install
+make install DESTDIR="${TMP_DIR}"
 
 config_file_processing "${E2SCRUB_CONF}"
 config_file_processing "${MKE2FS_CONF}"
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
-make install DESTDIR="${TMP_DIR}"
-
-# устанавливаем статические библиотеки и заголовочные файлы
-make install-libs
-make install-libs DESTDIR="${TMP_DIR}"
 
 # сделаем установленные статические библиотеки *.a доступными для записи, чтобы
 # позже можно было удалить из них отладочную информацию
 chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
 chmod -v u+w "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
 
-# изменим полные пути для ссылок на библиотеки в /usr/lib на относительные
-(
-    for LIBDIR in /usr/lib/ ${TMP_DIR}/usr/lib/; do
-        cd "${LIBDIR}" || exit 1
-        ln -sfv "../..$(readlink libcom_err.so)" libcom_err.so
-        ln -sfv "../..$(readlink libe2p.so)"     libe2p.so
-        ln -sfv "../..$(readlink libext2fs.so)"  libext2fs.so
-        ln -sfv "../..$(readlink libss.so)"      libss.so
-    done
-)
-
 # пакет устанавливает сжатый файл libext2fs.info.gz, но не обновляет индекс
 # info-системы, который находится в файле /usr/share/info/dir. Распакуем архив,
 # а затем обновим индекс info-системы
-gunzip -v /usr/share/info/libext2fs.info.gz
-gunzip -v "${TMP_DIR}/usr/share/info/libext2fs.info.gz"
-install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
-install-info --dir-file="${TMP_DIR}/usr/share/info/dir" \
-    "${TMP_DIR}/usr/share/info/libext2fs.info"
+INFO="/usr/share/info/libext2fs.info"
+gunzip -v "${INFO}.gz"
+gunzip -v "${TMP_DIR}${INFO}.gz"
+install-info --dir-file=/usr/share/info/dir "${INFO}"
+install-info --dir-file="${TMP_DIR}/usr/share/info/dir" "${TMP_DIR}${INFO}"
 
 # установим документацию в систему info (/usr/share/info/)
 makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
