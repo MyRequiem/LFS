@@ -24,10 +24,6 @@ rm -f /usr/lib/libltdl.a
 rm -f /usr/lib/libfl.a
 rm -f /usr/lib/libz.a
 
-# есть также куча файлов *.la, установленных в /usr/lib/ и /usr/libexec/ Это
-# libtool-архивы которые вообще не нужны в системе Linux на данном этапе
-find /usr/lib /usr/libexec -name "*.la" -delete
-
 # удалим пути к удаленным файлам из списков установленных пакетами файлов в
 # /var/log/packages/
 PKG_FILES="$(find /var/log/packages -type f)"
@@ -42,7 +38,5 @@ for FILE in ${PKG_FILES}; do
     sed -i 's/^\/usr\/lib\/libltdl\.a$//'    "${FILE}"
     sed -i 's/^\/usr\/lib\/libfl\.a$//'      "${FILE}"
     sed -i 's/^\/usr\/lib\/libz\.a$//'       "${FILE}"
-    sed -i 's/^\/usr\/lib\/.*\.la$//'        "${FILE}"
-    sed -i 's/^\/usr\/libexec\/.*\.la$//'    "${FILE}"
     sed -i '/^$/d'                           "${FILE}"
 done
