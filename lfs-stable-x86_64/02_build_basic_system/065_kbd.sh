@@ -3,31 +3,39 @@
 PRGNAME="kbd"
 
 ### Kbd
-# Пакет содержит key-table файлы, консольные шрифты и утилиты клавиатуры
+# Пакет содержит key-table файлы, консольные шрифты и утилиты для управления и
+# настройки клавиатуры
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/kbd.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/kbd.html
 
 # Home page: http://ftp.altlinux.org/pub/people/legion/kbd
 # Download:  https://www.kernel.org/pub/linux/utils/kbd/kbd-2.2.0.tar.xz
+#            http://www.linuxfromscratch.org/patches/lfs/9.1/kbd-2.2.0-backspace-1.patch
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}${DOC_DIR}"
+
 # поведение клавиш Backspace и Delete не одинаково для всех раскладок в пакете
 # Kbd. Следующий патч исправляет эту проблему для i386 раскладки:
-patch -Np1 -i "/sources/${PRGNAME}-${VERSION}-backspace-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "/sources/${PRGNAME}-${VERSION}-backspace-1.patch" || exit 1
 # после применения патча клавиши Backspace и Backspace генерируют символ с
 # кодом 127
 
 # не будем создавать утилиту resizecons, для которой требуется более
 # неиспользуемая библиотека svgalib, a так же отключим созданием man-страницы
 # для нее
-sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
-sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
+sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure || exit 1
+sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in || exit 1
 
 # предотвращает сборку утилиты vlock, так как она требует библиотеку PAM,
-# которая не установлена в системе LFS
+# которая еще не установлена в системе LFS
 #    --disable-vlock
 PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 ./configure       \
@@ -37,11 +45,6 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}${DOC_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
