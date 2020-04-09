@@ -6,7 +6,7 @@ PRGNAME="patch"
 # Программа для изменения или создания файлов путем применения файлов *.patch,
 # обычно создаваемых программой diff
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/patch.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/patch.html
 
 # Home page: https://savannah.gnu.org/projects/patch/
 # Download:  http://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
@@ -15,16 +15,16 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
