@@ -74,7 +74,7 @@ http://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz
 https://www.iana.org/time-zones/repository/releases/tzdata2019c.tar.gz
 http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.xz
-http://anduin.linuxfromscratch.org/LFS/vim-8.2.0190.tar.gz
+ftp://ftp.vim.org/pub/vim/unix/vim-8.2.tar.bz2
 https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz
 https://tukaani.org/xz/xz-5.2.4.tar.xz
 https://zlib.net/zlib-1.2.11.tar.xz

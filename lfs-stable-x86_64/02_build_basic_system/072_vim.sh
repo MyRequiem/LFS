@@ -5,7 +5,7 @@ PRGNAME="vim"
 ### Vim
 # Powerful text editor
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/vim.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/vim.html
 
 # Home page: https://www.vim.org/
 #            https://github.com/vim/vim
@@ -22,6 +22,10 @@ MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 BUILD_DIR="${SOURCES}/build"
 
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
+
 mkdir -p "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 rm -rf "${PRGNAME}${MAJ_VER}${MIN_VER}"
@@ -29,8 +33,8 @@ rm -rf "${PRGNAME}${MAJ_VER}${MIN_VER}"
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
 cd "${PRGNAME}${MAJ_VER}${MIN_VER}" || exit 1
 
-# изменим расположение файла конфигурации vimrc на /etc (/usr/share/vim/vimrc
-# по умолчанию)
+# изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
+# умолчанию) на /etc/vimrc
 echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 
 ./configure \
@@ -53,10 +57,6 @@ fi
 
 # устанавливаем пакет
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc"
 make install DESTDIR="${TMP_DIR}"
 
 # удаляем не нужные нам *.desktop файлы и иконки, которые устанавливаются
