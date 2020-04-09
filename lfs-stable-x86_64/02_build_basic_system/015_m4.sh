@@ -5,7 +5,7 @@ PRGNAME="m4"
 ### M4
 # Пакет M4 содержит макропроцессор
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/m4.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/m4.html
 
 # Home page: http://www.gnu.org/software/m4/
 # Download:  http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
