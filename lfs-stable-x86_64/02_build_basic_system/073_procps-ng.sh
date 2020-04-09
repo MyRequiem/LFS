@@ -5,7 +5,7 @@ PRGNAME="procps-ng"
 ### Procps-ng
 # Программы для мониторинга процессов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/procps-ng.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/procps-ng.html
 
 # Home page: https://sourceforge.net/projects/procps-ng
 # Download:  https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-3.3.15.tar.xz
@@ -13,6 +13,10 @@ PRGNAME="procps-ng"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/lib"
 
 # отключаем сборку утилиты kill, которая будет установлена с пакетом util-linux
 #    --disable-kill
@@ -28,16 +32,12 @@ make || exit 1
 # набор тестов нуждается в некоторых пользовательских модификациях для LFS.
 # Удалим тест, который дает сбой, когда сценарии не используют tty-устройство и
 # исправим два других теста
-sed -i -r 's|(pmap_initname)\\\$|\1|' testsuite/pmap.test/pmap.exp
-sed -i '/set tty/d' testsuite/pkill.test/pkill.exp
+sed -i -r 's|(pmap_initname)\\\$|\1|' testsuite/pmap.test/pmap.exp   || exit 1
+sed -i '/set tty/d'                   testsuite/pkill.test/pkill.exp || exit 1
 rm testsuite/pgrep.test/pgrep.exp
 make check
-# устанавливаем пакет
-make install
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+make install
 make install DESTDIR="${TMP_DIR}"
 
 # переместим библиотеку libprocps.so из /usr/lib в /lib
