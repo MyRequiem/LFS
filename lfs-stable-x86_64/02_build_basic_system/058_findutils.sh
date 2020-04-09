@@ -5,22 +5,18 @@ PRGNAME="findutils"
 ### Findutils
 # Пакет содержит программы для поиска файлов
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/findutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/findutils.html
 
 # Home page: http://www.gnu.org/software/findutils/
-# Download:  http://ftp.gnu.org/gnu/findutils/findutils-4.6.0.tar.gz
+# Download:  http://ftp.gnu.org/gnu/findutils/findutils-4.7.0.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# отменим тест, который на некоторых машинах может бесконечно зацикливаться
-sed -i 's/test-lock..EXEEXT.//' tests/Makefile.in
-
-# внесем исправления, необходимые для glibc-2.28 и более поздних версий
-sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' gl/lib/*.c
-sed -i '/unistd/a #include <sys/sysmacros.h>' gl/lib/mountlist.c
-echo "#define _IO_IN_BACKUP 0x100" >> gl/lib/stdio-impl.h
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/bin"
 
 # изменяет расположение базы данных locate в /var/lib/locate, что соответствует
 # стандарту FHS
@@ -32,10 +28,6 @@ echo "#define _IO_IN_BACKUP 0x100" >> gl/lib/stdio-impl.h
 make || exit 1
 make check
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/bin"
 make install DESTDIR="${TMP_DIR}"
 
 # некоторые из сценариев в пакете LFS-Bootscripts используют утилиту find.
