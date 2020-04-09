@@ -5,7 +5,7 @@ PRGNAME="less"
 ### Less
 # средство просмотра текстовых файлов (Pager)
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/less.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/less.html
 
 # Home page: http://www.greenwoodsoftware.com/less/
 # Download:  http://www.greenwoodsoftware.com/less/less-551.tar.gz
@@ -14,7 +14,11 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# опция указывает создаваемым программам искать файлы конфигурации в /etc
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
+
+# искать файлы конфигурации в /etc
 #    --sysconfdir=/etc
 ./configure       \
     --prefix=/usr \
@@ -23,10 +27,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || exit 1
 # пакет не содержит набора тестов, поэтому сразу устанавливаем
 make install
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
