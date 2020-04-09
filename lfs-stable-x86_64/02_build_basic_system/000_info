@@ -33,6 +33,6 @@
 
                 Установка описана в коде скрипта:
                     005_sbin_removepkg
-                    082_checkalldeps.sh
+                    083_checkalldeps.sh
 
 # vim:ft=conf

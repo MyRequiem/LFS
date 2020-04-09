@@ -4,7 +4,7 @@
 
 # install this script:
 # --------------------
-#    # cp 082_checkalldeps.sh /mnt/lfs/sbin/checkalldeps.sh
+#    # cp 083_checkalldeps.sh /mnt/lfs/sbin/checkalldeps.sh
 #    # chown root:root /mnt/lfs/sbin/checkalldeps.sh
 #    # chmod 744 /mnt/lfs/sbin/checkalldeps.sh
 
@@ -13,7 +13,7 @@
 #     /usr/bin/opera \
 #     /opt/GuitarPro6/GuitarPro \
 # "
-
+#
 BLACKLIST=""
 
 DIRS="\
@@ -46,7 +46,7 @@ for DIR in ${DIRS}; do
             fi
 
             for BL in ${BLACKLIST}; do
-                [ "${FILE}" = "${BL}" ] && continue 2
+                [[ "x${FILE}" == "x${BL}" ]] && continue 2
             done
 
             /bin/false > "${TMP}"
@@ -54,14 +54,22 @@ for DIR in ${DIRS}; do
                 grep -E "not found|no version information" | \
                 sort -u > "${TMP}"
 
+            if grep -q "not a dynamic executable" "${ERRORS}"; then
+                /bin/false > "${ERRORS}"
+            fi
+
             cat "${ERRORS}" >> "${TMP}"
             if [ "$(stat -c%s "${TMP}")" != "0" ]; then
-                    echo -e "    \033[0;31m${FILE}\033[0m"
+                    echo -e "\033[0;31m${FILE}\033[0;35m"
+                    cat "${TMP}"
+                    echo -e "\033[0m"
                     {
                         echo -e "${FILE}\n------------------"
                         cat "${TMP}"
                         echo
                     } >> "${LOG}"
+            else
+                echo "${FILE}"
             fi
         done
     fi
