@@ -20,7 +20,6 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/lib"
 
 make || exit 1
-
 make prefix=/usr install
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
