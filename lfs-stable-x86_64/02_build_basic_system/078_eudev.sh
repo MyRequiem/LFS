@@ -5,16 +5,21 @@ PRGNAME="eudev"
 ### Eudev
 # программы для динамического создания узлов устройств
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter06/eudev.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/eudev.html
 
 # Home page: https://wiki.gentoo.org/wiki/Project:Eudev
-# Download:  https://dev.gentoo.org/~blueness/eudev/eudev-3.2.8.tar.gz
+# Download:  https://dev.gentoo.org/~blueness/eudev/eudev-3.2.9.tar.gz
 #            https://github.com/gentoo/eudev/releases
+#            http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}config_file_processing.sh"             || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure                \
     --prefix=/usr          \
@@ -30,17 +35,13 @@ source "${ROOT}config_file_processing.sh"             || exit 1
 
 make || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
-
 # создадим несколько каталогов, которые необходимы для тестов, а также будут
 # использоваться как часть установки системы
 mkdir -pv /lib/udev/rules.d
 mkdir -pv /etc/udev/rules.d
 mkdir -pv "${TMP_DIR}/lib/udev/rules.d"
 mkdir -pv "${TMP_DIR}/etc/udev/rules.d"
-# запускаем тесты
+
 make check
 
 # бэкапим конфиг /etc/udev/udev.conf перед установкой пакета, если он
