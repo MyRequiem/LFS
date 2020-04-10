@@ -2,7 +2,7 @@
 
 PRGNAME="util-linux"
 
-### Util-linux
+### Util-linux (a huge collection of essential utilities)
 # Содержит различные утилиты для обработки файловых систем, консолей, разделов,
 # сообщений и т.д.
 

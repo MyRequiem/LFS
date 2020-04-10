@@ -2,7 +2,7 @@
 
 PRGNAME="mpfr"
 
-### Mpfr
+### Mpfr (Multiple-Precision Floating-Point Reliable Library)
 # Библиотека содержит подпрограммы для математических вычислений с
 # множественной точностью.
 

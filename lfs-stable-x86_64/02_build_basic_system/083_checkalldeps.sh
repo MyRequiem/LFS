@@ -1,6 +1,8 @@
 #! /bin/sh
 
-# created by MyRequiem
+# Checking the dependencies of all binary files in the system using the ldd
+# utility.
+# Created by MyRequiem <mrvladislavovich@gmail.com>
 
 # install this script:
 # --------------------

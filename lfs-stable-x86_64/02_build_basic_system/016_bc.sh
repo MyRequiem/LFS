@@ -2,7 +2,7 @@
 
 PRGNAME="bc"
 
-### Bc
+### Bc (An arbitrary precision numeric processing language)
 # Язык обработки чисел произвольной точности
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bc.html

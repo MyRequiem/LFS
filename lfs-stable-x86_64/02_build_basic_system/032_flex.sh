@@ -2,7 +2,7 @@
 
 PRGNAME="flex"
 
-### Flex
+### Flex (fast lexical analyzer generator)
 # Пакет содержит утилиту для генерации программ, которые распознают шаблоны в
 # тексте
 

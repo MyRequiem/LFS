@@ -3,7 +3,7 @@
 PRGNAME="kernel-headers"
 ARCH_NAME="linux"
 
-### Linux Headers
+### Linux Headers (Linux kernel include files)
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/linux-headers.html
 

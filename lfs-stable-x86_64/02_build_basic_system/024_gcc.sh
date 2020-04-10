@@ -2,7 +2,7 @@
 
 PRGNAME="gcc"
 
-### GCC
+### GCC (Base GCC package with C support)
 # Пакет содержит компиляторы GNU для C и C++
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gcc.html

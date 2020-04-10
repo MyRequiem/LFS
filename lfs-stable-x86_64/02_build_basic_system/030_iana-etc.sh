@@ -2,7 +2,7 @@
 
 PRGNAME="iana-etc"
 
-### Iana-Etc
+### Iana-Etc (data for network services)
 # Пакет Iana-Etc предоставляет данные для сетевых служб и протоколов
 
 # /etc/protocols    - описывает различные доступные интернет-протоколы DARPA

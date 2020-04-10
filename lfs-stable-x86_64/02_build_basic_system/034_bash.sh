@@ -2,8 +2,8 @@
 
 PRGNAME="bash"
 
-### Bash
-# Bourne-Again SHell
+### Bash (Bourne-Again SHell - sh-compatible shell)
+# Командная оболочка UNIX
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html
 

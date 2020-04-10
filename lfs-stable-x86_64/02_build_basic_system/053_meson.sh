@@ -2,7 +2,7 @@
 
 PRGNAME="meson"
 
-### Meson
+### Meson (A high performance build system)
 # Система сборки, ориентированная на скорость и на максимальное удобство для
 # пользователя
 

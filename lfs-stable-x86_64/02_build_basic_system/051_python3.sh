@@ -2,7 +2,7 @@
 
 PRGNAME="python3"
 
-### python3
+### python3 (object-oriented interpreted programming language)
 # Язык программирования Python 3
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/Python.html

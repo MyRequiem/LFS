@@ -2,8 +2,8 @@
 
 PRGNAME="less"
 
-### Less
-# средство просмотра текстовых файлов (Pager)
+### Less (file pager)
+# Средство просмотра текстовых файлов (Pager)
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/less.html
 

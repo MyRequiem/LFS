@@ -2,7 +2,7 @@
 
 PRGNAME="gettext"
 
-### Gettext
+### Gettext (internationalization framework)
 # Утилиты для интернационализации и локализации, позволяющие программам
 # компилироваться с NLS (Native Language Support), т.е. с поддержкой родного
 # языка

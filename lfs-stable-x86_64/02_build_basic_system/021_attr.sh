@@ -2,7 +2,7 @@
 
 PRGNAME="attr"
 
-### Attr
+### Attr (tools for using extended attributes on filesystems)
 # Утилиты для управления расширенными атрибутами объектов файловой системы
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/attr.html

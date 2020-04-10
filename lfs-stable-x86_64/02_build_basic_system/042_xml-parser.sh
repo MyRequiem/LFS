@@ -3,7 +3,7 @@
 PRGNAME="xml-parser"
 ARCH_NAME="XML-Parser"
 
-### XML::Parser
+### XML::Parser (XML::Parser perl module)
 # Модуль XML::Parser является Perl-интерфейсом для синтаксического анализатора
 # XML документов Expat
 

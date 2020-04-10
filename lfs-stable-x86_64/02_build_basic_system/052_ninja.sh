@@ -2,7 +2,7 @@
 
 PRGNAME="ninja"
 
-### Ninja
+### Ninja (build system with a focus on speed)
 # небольшая система сборки, ориентированная на скорость
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ninja.html

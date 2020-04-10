@@ -2,7 +2,7 @@
 
 PRGNAME="sysklogd"
 
-### Sysklogd
+### Sysklogd (Linux system logging utilities)
 # содержит программы для регистрации системных сообщений (логирования)
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sysklogd.html

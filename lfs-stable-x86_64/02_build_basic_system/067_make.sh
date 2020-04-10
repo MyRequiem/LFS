@@ -2,7 +2,7 @@
 
 PRGNAME="make"
 
-### Make
+### Make (GNU make utility to maintain groups of programs)
 # Программы для компиляции
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/make.html

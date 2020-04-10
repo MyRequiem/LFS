@@ -2,7 +2,7 @@
 
 PRGNAME="coreutils"
 
-### Coreutils
+### Coreutils (core GNU utilities)
 # Утилиты для отображения и настройки основных характеристик системы: basename,
 # cat, chmod, chown, chroot, cp, cut, date и т.д.
 

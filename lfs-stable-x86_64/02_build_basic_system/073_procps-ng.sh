@@ -2,7 +2,7 @@
 
 PRGNAME="procps-ng"
 
-### Procps-ng
+### Procps-ng (utilities for displaying process information)
 # Программы для мониторинга процессов
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/procps-ng.html

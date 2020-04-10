@@ -2,7 +2,7 @@
 
 PRGNAME="automake"
 
-### Automake
+### Automake (a Makefile generator)
 # Пакет содержит программы создания Make-файлов для использования с Autoconf
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/automake.html

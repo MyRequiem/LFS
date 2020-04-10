@@ -2,7 +2,7 @@
 
 PRGNAME="zlib"
 
-### Zlib
+### Zlib (compression library)
 # Универсальная многопоточная библиотека сжатия данных
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/zlib.html

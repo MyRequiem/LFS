@@ -2,7 +2,7 @@
 
 PRGNAME="sysvinit"
 
-### Sysvinit
+### Sysvinit (init, the parent of all processes)
 # программы для контроля запуска и выключение системы
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sysvinit.html

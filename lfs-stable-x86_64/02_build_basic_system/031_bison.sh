@@ -2,7 +2,7 @@
 
 PRGNAME="bison"
 
-### Bison
+### Bison (parser generator similar to yacc)
 # Пакет предназначен для автоматического создания синтаксических анализаторов
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bison.html

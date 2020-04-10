@@ -2,7 +2,7 @@
 
 PRGNAME="man-pages"
 
-### Man-pages
+### Man-pages (system documentation)
 # Пакет Man-pages содержит более 2300 man-страниц.
 # Страницы устанавливаются в /usr/share/man/man{1,2,3,4,5,6,7,8}/*
 

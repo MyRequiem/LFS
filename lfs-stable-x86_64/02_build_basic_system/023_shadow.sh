@@ -2,7 +2,7 @@
 
 PRGNAME="shadow"
 
-### Shadow
+### Shadow (shadow password suite)
 # Пакет содержит программы для безопасной работы с паролями
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/shadow.html

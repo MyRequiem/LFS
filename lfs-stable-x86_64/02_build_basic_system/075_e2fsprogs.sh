@@ -2,7 +2,7 @@
 
 PRGNAME="e2fsprogs"
 
-### E2fsprogs
+### E2fsprogs (ext2 and ext3 filesystems utilities)
 # утилиты для работы с файловой системой ext2, а также поддерживает
 # журналируемые файловые системы ext3 и ext4
 

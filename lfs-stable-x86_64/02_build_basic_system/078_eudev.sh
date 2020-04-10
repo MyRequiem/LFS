@@ -2,7 +2,7 @@
 
 PRGNAME="eudev"
 
-### Eudev
+### Eudev (dynamic device directory system)
 # программы для динамического создания узлов устройств
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/eudev.html

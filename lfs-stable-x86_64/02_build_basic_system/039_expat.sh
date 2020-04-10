@@ -2,7 +2,7 @@
 
 PRGNAME="expat"
 
-### Expat
+### Expat (C library for parsing XML)
 # Пакет содержит потоково-ориентированную библиотеку C для анализа XML
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/expat.html

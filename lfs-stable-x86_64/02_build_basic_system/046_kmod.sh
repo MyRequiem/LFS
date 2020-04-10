@@ -2,7 +2,7 @@
 
 PRGNAME="kmod"
 
-### Kmod
+### Kmod (kernel module tools and library)
 # Пакет содержит библиотеки и утилиты для загрузки модулей ядра
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/kmod.html

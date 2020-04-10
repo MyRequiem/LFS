@@ -2,7 +2,7 @@
 
 PRGNAME="binutils"
 
-### Binutils
+### Binutils (GNU binary development tools)
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 

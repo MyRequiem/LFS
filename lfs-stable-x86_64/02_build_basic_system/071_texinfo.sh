@@ -2,7 +2,7 @@
 
 PRGNAME="texinfo"
 
-### Texinfo
+### Texinfo (GNU software documentation system)
 # Программы для чтения, записи и конвертации страниц info
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/texinfo.html

@@ -2,7 +2,7 @@
 
 PRGNAME="intltool"
 
-### Intltool
+### Intltool (Utilities for translation support)
 # Инструменты интернационализации, используемый для извлечения из исходного
 # кода файлов перевода программ на другие языки
 

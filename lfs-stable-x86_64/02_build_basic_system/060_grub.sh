@@ -2,7 +2,7 @@
 
 PRGNAME="grub"
 
-### GRUB
+### GRUB (the GRand Unified Bootloader)
 # Загрузчик GRand Unified Bootloader
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grub.html

@@ -2,9 +2,8 @@
 
 PRGNAME="kbd"
 
-### Kbd
-# Пакет содержит key-table файлы, консольные шрифты и утилиты для управления и
-# настройки клавиатуры
+### Kbd (keyboard maps and console fonts)
+# Пакет содержит файлы раскладки (key-table), шрифты и утилиты для клавиатуры
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/kbd.html
 

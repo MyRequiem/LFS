@@ -2,7 +2,7 @@
 
 PRGNAME="inetutils"
 
-### Inetutils
+### Inetutils (programs for basic networking)
 # Пакет содержит базовые сетевые утилиты
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/inetutils.html

@@ -2,7 +2,7 @@
 
 PRGNAME="gzip"
 
-### Gzip
+### Gzip (file compression utility)
 # Программы для сжатия и распаковки файлов
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gzip.html

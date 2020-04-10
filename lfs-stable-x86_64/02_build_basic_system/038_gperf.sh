@@ -2,7 +2,7 @@
 
 PRGNAME="gperf"
 
-### Gperf
+### Gperf (a perfect hash function generator)
 # Генерирует наилучшую хеш-функцию из набора ключей
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gperf.html

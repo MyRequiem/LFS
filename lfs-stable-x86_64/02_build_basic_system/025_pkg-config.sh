@@ -2,7 +2,7 @@
 
 PRGNAME="pkg-config"
 
-### Pkg-config
+### Pkg-config (system for managing library compile/link flags)
 # Инструмент для передачи путей include и/или путей к библиотекам для создания
 # инструментов во время настройки и выполнения файлов
 

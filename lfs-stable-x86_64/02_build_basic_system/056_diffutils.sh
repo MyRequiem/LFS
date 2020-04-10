@@ -2,7 +2,7 @@
 
 PRGNAME="diffutils"
 
-### Diffutils
+### Diffutils (finds differences between files)
 # Утилиты, которые показывают различия между файлами или каталогами
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/diffutils.html

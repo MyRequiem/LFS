@@ -2,8 +2,8 @@
 
 PRGNAME="perl"
 
-### Perl
-# Practical Extraction and Report Language
+### Perl (Practical Extraction and Report Language)
+# Язык программирования Perl
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/perl.html
 

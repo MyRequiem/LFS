@@ -3,7 +3,7 @@
 PRGNAME="libelf"
 ARCH_NAME="elfutils"
 
-### Libelf from Elfutils
+### Libelf from Elfutils (library for handling ELF)
 # Libelf - это библиотека для работы с файлами в формате ELF (Executable and
 # Linkable Format)
 

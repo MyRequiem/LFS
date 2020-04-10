@@ -2,7 +2,7 @@
 
 PRGNAME="check"
 
-### Check
+### Check (unit testing framework for C)
 # Фреймворк для тестов на C
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/check.html

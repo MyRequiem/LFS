@@ -2,7 +2,7 @@
 
 PRGNAME="file"
 
-### File
+### File (a utility to determine file type)
 # Утилита для определения типа файла
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/file.html

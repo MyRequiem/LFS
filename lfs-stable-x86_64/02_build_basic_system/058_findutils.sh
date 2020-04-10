@@ -2,7 +2,7 @@
 
 PRGNAME="findutils"
 
-### Findutils
+### Findutils (utilities to locate files)
 # Пакет содержит программы для поиска файлов
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/findutils.html

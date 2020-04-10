@@ -2,7 +2,7 @@
 
 PRGNAME="readline"
 
-### Readline
+### Readline (line input library with editing features)
 # Набор библиотек для редактирование из командной строки и возможности ведения
 # истории
 

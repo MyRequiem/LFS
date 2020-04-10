@@ -2,7 +2,7 @@
 
 PRGNAME="tar"
 
-### Tar
+### Tar (archiving utility)
 # Программа архивации файлов и каталогов
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/tar.html

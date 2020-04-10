@@ -2,7 +2,7 @@
 
 PRGNAME="libpipeline"
 
-### Libpipeline
+### Libpipeline (library for manipulating pipelines)
 # Пакет содержит библиотеку для манипулирования конвейерами подпроцессов гибким
 # и удобным способом
 

@@ -2,7 +2,7 @@
 
 PRGNAME="sed"
 
-### Sed
+### Sed (stream editor)
 # потоковый редактор
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sed.html

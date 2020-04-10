@@ -2,7 +2,7 @@
 
 PKGNAME="main-directory-tree"
 
-# Создаем основную структуру дерева корневой файловой системы LFS
+# Создание основной структуры дерева корневой файловой системы LFS
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1

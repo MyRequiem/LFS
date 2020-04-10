@@ -2,7 +2,7 @@
 
 PRGNAME="grep"
 
-### Grep
+### Grep (print lines matching a pattern)
 # Программы для поиска по файлам
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grep.html

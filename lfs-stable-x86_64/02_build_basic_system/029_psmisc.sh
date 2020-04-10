@@ -2,7 +2,7 @@
 
 PRGNAME="psmisc"
 
-### Psmisc
+### Psmisc (displaying information about running processes)
 # Программы для отображения информации о защенных процессах, а так же для
 # управления такими процессами
 

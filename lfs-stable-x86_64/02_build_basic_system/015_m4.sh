@@ -2,7 +2,7 @@
 
 PRGNAME="m4"
 
-### M4
+### M4 (an implementation of the UNIX macro processor)
 # Пакет M4 содержит макропроцессор
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/m4.html

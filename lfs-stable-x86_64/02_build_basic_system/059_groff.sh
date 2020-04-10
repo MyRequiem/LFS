@@ -2,7 +2,7 @@
 
 PRGNAME="groff"
 
-###Groff
+### Groff (document formatting system)
 # Программы для обработки и форматирования текста
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/groff.html

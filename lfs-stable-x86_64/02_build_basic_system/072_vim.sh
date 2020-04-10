@@ -2,7 +2,7 @@
 
 PRGNAME="vim"
 
-### Vim
+### Vim (Vi IMproved)
 # Powerful text editor
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/vim.html

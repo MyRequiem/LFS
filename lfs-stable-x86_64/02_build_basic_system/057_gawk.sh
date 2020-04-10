@@ -2,7 +2,7 @@
 
 PRGNAME="gawk"
 
-### Gawk
+### Gawk (pattern scanning and processing language)
 # Программы для работы с текстовыми файлами
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gawk.html

@@ -2,7 +2,7 @@
 
 PRGNAME="man-db"
 
-### Man-DB
+### Man-DB (database-driven manual pager suite)
 # программы для поиска и просмотра man-страниц
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/man-db.html

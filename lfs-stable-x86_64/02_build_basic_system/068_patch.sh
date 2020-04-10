@@ -2,7 +2,7 @@
 
 PRGNAME="patch"
 
-### Patch
+### Patch (apply a diff file to an original file or files)
 # Программа для изменения или создания файлов путем применения файлов *.patch,
 # обычно создаваемых программой diff
 

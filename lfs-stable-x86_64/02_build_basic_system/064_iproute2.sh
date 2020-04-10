@@ -2,7 +2,7 @@
 
 PRGNAME="iproute2"
 
-### IPRoute2
+### IPRoute2 (IP routing utilities)
 # Инструменты, используемые для администрирования многих расширенных функций
 # IPv4-маршрутизации ядра linux
 
