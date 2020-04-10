@@ -13,8 +13,8 @@ PRGNAME="etc-profile"
 #    /etc/profile.d/dircolors.sh
 #    /etc/profile.d/bash_completion.sh
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter07/profile.html
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/profile.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/profile.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/profile.html
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
