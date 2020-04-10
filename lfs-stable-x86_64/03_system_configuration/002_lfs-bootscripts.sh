@@ -2,7 +2,7 @@
 
 PRGNAME="lfs-bootscripts"
 
-### LFS-Bootscripts
+### LFS-Bootscripts (scripts to start/stop the LFS system)
 # Пакет содержит набор скриптов для запуска/остановки системы LFS при
 # загрузке/выключении
 
