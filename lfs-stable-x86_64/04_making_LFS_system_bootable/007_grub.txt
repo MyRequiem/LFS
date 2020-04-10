@@ -1,4 +1,4 @@
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter08/grub.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/grub.html
 # https://wiki.archlinux.org/index.php/GRUB_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
 
 GRUB использует собственную структуру имен для дисков и разделов в виде
