@@ -12,9 +12,13 @@ MOVE_CURS_TO_27_COL="\033[27G"
 
 show_packages() {
     echo -e "${LGREEN}$1${RESET}"
+
+    BASE_URL="${ERRATA_LFS_URL}"
+    [[ "$1" == "BLFS" ]] && BASE_URL="${ERRATA_BLFS_URL}"
+
     for PKG in $2; do
         PKGNAME="$(echo "${PKG}" | cut -d \> -f 2)"
-        URL="${ERRATA_LFS_URL}/$(echo "${PKG}" | cut -d / -f 3- | \
+        URL="${BASE_URL}/$(echo "${PKG}" | cut -d / -f 3- | \
             cut -d \" -f 1)"
         echo -e "${BROWN}${PKGNAME}${MOVE_CURS_TO_27_COL}${LBLUE}${URL}${RESET}"
     done
@@ -23,7 +27,7 @@ show_packages() {
 get_pkg_list() {
     PKG_LIST="$(wget -q -O - "$1/errata/${VERSION}/" | \
         grep '<a href="../../view/' | grep -v "development version of the" | \
-        cut -d \" -f 2- | cut -d \< -f 1)"
+        cut -d \" -f 2- | cut -d \< -f 1 | sort)"
 }
 
 get_pkg_list "${ERRATA_LFS_URL}"
