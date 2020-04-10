@@ -1,9 +1,8 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-VERSION="9.0"
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter07/network.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/network.html
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
@@ -136,8 +135,8 @@ EOF
 
 config_file_processing "${HOSTS}"
 
-# пишем список файлов в /var/log/packages/network-configuration-9.0
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+# пишем список файлов в /var/log/packages/network-configuration
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (network configuration files)
 #
 #    /etc/hostname
