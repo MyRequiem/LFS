@@ -57,11 +57,11 @@ set timeout=7
 # раздел /boot
 set root=(hd0,5)
 
-menuentry "GNU/Linux, Linux-5.2.21-lfs-9.0" {
+menuentry "GNU/Linux, Linux-5.5.15-lfs-stable" {
     # в качестве /boot используется /dev/sda5, поэтому указываем /kernel-name
     # в параметре root= указываем корневой раздел LFS системы, который
     # монтируется в режиме read-only
-    linux /vmlinuz-lfs-5.2.21 root=/dev/sda10 ro
+    linux /vmlinuz-lfs-5.5.15 root=/dev/sda10 ro
 }
 
 # End /boot/grub/menu.cfg
