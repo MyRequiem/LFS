@@ -4,9 +4,9 @@ LFS системы), ну и естественно после правки ко
     # lilo
 
 # LFS bootable partition config begins
-image = /boot/vmlinuz-lfs-5.2.21
+image = /boot/vmlinuz-lfs
   root = /dev/sda10
-  label = LFS-9.0
+  label = LFS-stable
   read-only  # Partitions should be mounted read-only for checking
 # LFS bootable partition config ends
 
