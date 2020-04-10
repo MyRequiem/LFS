@@ -8,7 +8,7 @@ PRGNAME="system-v-configuration"
 # собственный способ загрузки, но он так же основан на общепринятых стандартах
 # SysVinit
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter07/usage.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/usage.html
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
