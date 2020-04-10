@@ -1,7 +1,6 @@
 #! /bin/bash
 
-PRGNAME="etc_profile"
-VERSION="9.0"
+PRGNAME="etc-profile"
 
 ### Общесистемные настройки оболочки
 #    /etc/profile
@@ -20,11 +19,11 @@ ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
 source "${ROOT}config_file_processing.sh" || exit 1
 
-mkdir -p /etc/bash_completion.d
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"/etc/{profile.d,bash_completion.d}
+
+mkdir -pv /etc/{profile.d,bash_completion.d}
 
 # =============================== /etc/profile =================================
 PROFILE="/etc/profile"
@@ -604,7 +603,7 @@ chmod 755 "${I18N}"
 cp "${I18N}" "${TMP_DIR}/etc/profile.d/"
 config_file_processing "${I18N}"
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (system-wide defaults)
 #
 # System-wide shell settings
@@ -621,4 +620,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"
