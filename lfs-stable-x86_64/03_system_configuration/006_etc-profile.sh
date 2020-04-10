@@ -2,7 +2,8 @@
 
 PRGNAME="etc-profile"
 
-### Общесистемные настройки оболочки
+### /etc/profile (system-wide defaults)
+# Общесистемные настройки оболочки
 #    /etc/profile
 #    /etc/dircolors
 #    /etc/bash_completion.d/
