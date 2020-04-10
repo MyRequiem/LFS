@@ -7,7 +7,7 @@ PRGNAME="etc-inputrc"
 # возможности редактирования во время ввода в терминал. Переопределить
 # конфигурацию /etc/inputrc можно в файле ~/.inputrc для каждого пользователя.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter07/inputrc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/inputrc.html
 
 # в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
 # LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
