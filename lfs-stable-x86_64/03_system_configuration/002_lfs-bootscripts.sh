@@ -18,7 +18,6 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# устанавливаем пакет
 make install
 make install DESTDIR="${TMP_DIR}"
 
@@ -29,7 +28,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # system at bootup/shutdown. The configuration files and procedures needed to
 # customize the boot process are described in the following sections.
 #
-# Download: http://www.linuxfromscratch.org/lfs/downloads/9.0/${PRGNAME}-${VERSION}.tar.xz
+# Download: http://www.linuxfromscratch.org/lfs/downloads/9.1/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
