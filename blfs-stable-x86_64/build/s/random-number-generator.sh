@@ -1,14 +1,14 @@
 #! /bin/bash
 
 PRGNAME="random-number-generator"
-VERSION="20190609"
+VERSION="20191204"
 
 ### Инициализация генератора случайных чисел /dev/random и /dev/urandom
 # Ядро Linux предоставляет генератор случайных чисел, доступ к которому
 # осуществляется через /dev/random и /dev/urandom. Эти устройства используют
 # такие программы как OpenSSH и т.п.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/random.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/random.html
 
 # Когда система запущена и находится в относительно спокойном состоянии без
 # особого взаимодействия с пользователем, пул энтропии (данные, используемые
@@ -23,14 +23,14 @@ VERSION="20190609"
 # положили в /root Устанавливается скрипт /etc/rc.d/init.d/random и ссылки на
 # него в директориях /etc/rc.d/rcX.d/
 
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/build-${PRGNAME}-${VERSION}/package-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-cd /root/blfs-bootscripts || exit 1
+cd "${ROOT}/blfs-bootscripts" || exit 1
 make install-random
 make install-random DESTDIR="${TMP_DIR}"
 
