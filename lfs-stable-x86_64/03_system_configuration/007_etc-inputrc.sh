@@ -1,9 +1,8 @@
 #! /bin/bash
 
-PRGNAME="etc_inputrc"
-VERSION="9.0"
+PRGNAME="etc-inputrc"
 
-### etc_inputrc
+### /etc/inputrc (configures keyboard input for programs using readline)
 # /etc/inputrc - файл конфигурации библиотеки Readline, который предоставляет
 # возможности редактирования во время ввода в терминал. Переопределить
 # конфигурацию /etc/inputrc можно в файле ~/.inputrc для каждого пользователя.
@@ -30,7 +29,7 @@ fi
 ROOT="/"
 source "${ROOT}config_file_processing.sh" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
@@ -81,7 +80,7 @@ EOF
 cp "${INPUTRC}" "${TMP_DIR}/etc/"
 config_file_processing "${INPUTRC}"
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (configures keyboard input for programs using readline)
 #
 # /etc/inputrc
@@ -89,4 +88,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"
