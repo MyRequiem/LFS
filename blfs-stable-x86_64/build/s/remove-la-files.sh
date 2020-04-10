@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/introduction/la-files.html
+# http://www.linuxfromscratch.org/blfs/view/stable/introduction/la-files.html
 
 # В LFS мы установили пакет libtool, который используется многими пакетами для
 # сборки на различных платформах Unix. Истоки этого инструмента довольно
@@ -32,8 +32,8 @@
 # Скрипт можно запускать по мере необходимости для очистки каталогов, которые
 # могут вызывать проблемы.
 
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh" || exit 1
 
 SCRIPT="/usr/sbin/remove-la-files.sh"
 cat > "${SCRIPT}" << "EOF"
@@ -95,4 +95,4 @@ for d in $(echo $PKG_CONFIG_PATH | tr : ' ') $STD_PC_PATH; do
 done
 EOF
 
-chmod 755 "${SCRIPT}"
+chmod 744 "${SCRIPT}"
