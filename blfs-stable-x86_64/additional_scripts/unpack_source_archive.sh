@@ -2,16 +2,22 @@
 
 SRC_ARCH_NAME="$1"
 VERSION="$2"
-SOURCES="/sources"
-BUILD_DIR="${SOURCES}/build"
+SOURCES="/root/src"
+
 if [ -z "${VERSION}" ]; then
-    VERSION="$(echo "${SOURCES}/${SRC_ARCH_NAME}"-*.tar.?z* | rev | \
-        cut -d . -f 3- | cut -d - -f 1 | rev)"
+    VERSION="$(find ${SOURCES} -type f -name "${SRC_ARCH_NAME}-*.tar.?z*" \
+        2>/dev/null | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 fi
 
-mkdir -p "${BUILD_DIR}"
+if [ -z "${VERSION}" ]; then
+    echo "Can not determine the package version of ${SRC_ARCH_NAME}"
+    exit 1
+fi
+
+BUILD_DIR="/tmp/build-${SRC_ARCH_NAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-rm -rf "${SRC_ARCH_NAME}-${VERSION}"
 
 tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${SRC_ARCH_NAME}-${VERSION}" || exit 1

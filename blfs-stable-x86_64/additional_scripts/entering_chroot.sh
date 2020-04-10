@@ -12,6 +12,15 @@ if ! mount | /bin/grep -q "${LFS}/proc"; then
     exit 1
 fi
 
+# при входе в среду chroot сразу переходим в домашнюю директорию /root
+if ! [[ -e /mnt/lfs/root/.bash_profile && -e /mnt/lfs/root/.bashrc ]]; then
+    (
+        cd /mnt/lfs/root/ || exit 1
+        echo 'cd ${HOME}' > .bashrc
+        ln -sf .bashrc .bash_profile
+    )
+fi
+
 chroot "${LFS}" /usr/bin/env -i \
     HOME="/root"                \
     TERM="${TERM}"              \

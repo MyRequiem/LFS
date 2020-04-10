@@ -12,15 +12,15 @@ PRGNAME="blfs-bootscripts"
 #    например:
 #    # make install-service-dhcpcd
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/introduction/bootscripts.html
+# http://www.linuxfromscratch.org/blfs/view/stable/introduction/bootscripts.html
 
 # Home page: http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20190609.tar.xz
+# Download:  http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20191204.tar.xz
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # просто переместим исходники в /root
-cd .. || exit 1
-mv "${PRGNAME}-${VERSION}" "/root/${PRGNAME}"
+cd "${HOME}" || exit 1
+mv "${BUILD_DIR}/${PRGNAME}-${VERSION}" "${PRGNAME}"
