@@ -2,6 +2,8 @@
 
 PRGNAME="network-configuration"
 
+### Network Configuration (network configuration files)
+
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter07/network.html
 
 ROOT="/"
