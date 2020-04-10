@@ -2,7 +2,7 @@
 
 PRGNAME="terminus-font"
 
-### Шрифты для терминала linux
+### Terminus Font (clean, fixed width bitmap font for linux console)
 # Растровый шрифт с фиксированной шириной для чистой консоли linux
 
 # Пакет упоминается в BLFS, но установим его сейчас для настройки шрифта
