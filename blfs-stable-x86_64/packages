@@ -4,7 +4,7 @@
 # указанные дополнительные пакеты - пересобрать после установки текущего пакета
 # ---------------------
 
-blfs-bootscripts                    (+)
+kernel-firmware                     (+)
 make-ca
 cracklib
 cryptsetup
