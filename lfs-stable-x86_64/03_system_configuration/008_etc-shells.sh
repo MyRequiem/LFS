@@ -1,15 +1,12 @@
 #! /bin/bash
 
-PRGNAME="etc_shells"
-VERSION="9.0"
+PRGNAME="etc-shells"
 
-### etc_shells
+### /etc/shells (login shell list)
 # Файл /etc/shells содержит список оболочек для входа в систему. Приложения
 # используют этот файл, чтобы определить, является ли оболочка действительной.
-# Каждая оболочка записывается как полный путь к исполняемому файлу в отдельной
-# строке.
 
-# http://www.linuxfromscratch.org/lfs/view/9.0/chapter07/etcshells.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/etcshells.html
 
 # в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
 # LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
@@ -31,7 +28,7 @@ fi
 ROOT="/"
 source "${ROOT}config_file_processing.sh" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
@@ -40,6 +37,8 @@ if [ -f "${SHELLS}" ]; then
     mv "${SHELLS}" "${SHELLS}.old"
 fi
 
+# каждая оболочка записывается как полный путь к исполняемому файлу в отдельной
+# строке
 cat << EOF > "${SHELLS}"
 # Begin ${SHELLS}
 
@@ -52,7 +51,7 @@ EOF
 cp "${SHELLS}" "${TMP_DIR}/etc/"
 config_file_processing "${SHELLS}"
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (login shell list)
 #
 # /etc/shells
@@ -60,4 +59,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"
