@@ -1,11 +1,10 @@
 #! /bin/bash
 
-PRGNAME="System-V-configuration"
-VERSION="9.0"
+PRGNAME="system-v-configuration"
 
 ### System V configuration
 # Конфигурация SysVinit. В Linux используется специальная схема загрузки
-# SysVinit, основанная на концепции уровней выполнения. LFS имеет свой
+# SysVinit, основанная на концепции уровней загрузки. LFS имеет свой
 # собственный способ загрузки, но он так же основан на общепринятых стандартах
 # SysVinit
 
@@ -15,7 +14,7 @@ ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
 source "${ROOT}config_file_processing.sh" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc/sysconfig"
 
@@ -100,6 +99,7 @@ ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
 su:S016:once:/sbin/sulogin
 
+# three virtual consoles are more than enough :)
 1:2345:respawn:/sbin/agetty --noclear tty1 9600
 2:2345:respawn:/sbin/agetty tty2 9600
 3:2345:respawn:/sbin/agetty tty3 9600
@@ -253,9 +253,9 @@ EOF
 sed -i 's/.*OMIT_UDEV_RETRY_SETTLE.*/OMIT_UDEV_RETRY_SETTLE=yes/' \
     /etc/sysconfig/rc.site
 
-# по умолчанию проверка файловой системы во время загрузки ничего не выводит.
-# Это может показаться задержкой во время процесса загрузки. Включим вывод
-# программы fsck
+# по умолчанию проверка файловой системы утилитой fsck во время загрузки ничего
+# не выводит в консоль. Такое поведение может создавать ощущение паузы во время
+# процесса загрузки. Включим вывод утилиты fsck
 sed -i 's/.*VERBOSE_FSCK.*/VERBOSE_FSCK=yes/' /etc/sysconfig/rc.site
 
 # при перезагрузке можно полностью пропустить проверку файловой системы, если
@@ -269,7 +269,7 @@ sed -i 's/.*VERBOSE_FSCK.*/VERBOSE_FSCK=yes/' /etc/sysconfig/rc.site
 # основе.
 
 # как правило, все файлы в каталоге /tmp удаляются во время загрузки, что
-# увеличивать общее время загрузки. Отключим очистку директории /tmp
+# увеличивает общее время загрузки. Отключим очистку директории /tmp
 sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 
 # во время выключения системы программа init посылает сигнал TERM каждой
@@ -279,7 +279,7 @@ sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (System V configuration)
 #
 # /etc/inittab
@@ -289,4 +289,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"
