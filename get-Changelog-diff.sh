@@ -1,5 +1,10 @@
 #! /bin/bash
 
+if [[ "$(whoami)" == "root" ]]; then
+    echo "This script needs to be run as a regular user (not root)"
+    exit 1
+fi
+
 BOOK_URL="http://www.linuxfromscratch.org"
 LFS_URL="${BOOK_URL}/lfs/view/stable/chapter01/changelog.html"
 BLFS_URL="${BOOK_URL}/blfs/view/stable/introduction/changelog.html"
