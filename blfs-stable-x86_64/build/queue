@@ -3,7 +3,7 @@ s/remove-la-files.sh
 a/kernel-firmware.sh
 s/etc_issue.sh
 s/random-number-generator.sh
-s/lsb-release.sh
+
 l/apr.sh
 l/apr-util.sh
 a/which.sh
