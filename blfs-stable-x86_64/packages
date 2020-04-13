@@ -233,7 +233,7 @@ sg3-utils
 sysstat
 udisks
 unrar
-unzip
+unzip                               (+)
 upower
 usbutils
 which                               (+) aspell
