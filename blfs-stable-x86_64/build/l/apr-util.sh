@@ -6,7 +6,7 @@ PRGNAME="apr-util"
 # Пакет содержит дополнительные служебные интерфейсы для APR включая поддержку
 # XML, LDAP, интерфейсов базы данных, парсинга URI, и т.д.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/apr-util.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/apr-util.html
 
 # Home page: https://apr.apache.org/
 # Download:  https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
@@ -20,12 +20,11 @@ PRGNAME="apr-util"
 #           sqlite
 #           unixodbc
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # включает плагин apr_dbm_gdbm-1.so

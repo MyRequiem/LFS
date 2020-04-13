@@ -4,6 +4,9 @@
 # указанные дополнительные пакеты - пересобрать после установки текущего пакета
 # ---------------------
 
-
+freetds                             apr-util
+http://www.freetds.org/
+mysql                               (-) apr-util
+https://www.mysql.com/
 
 # vim:ft=conf

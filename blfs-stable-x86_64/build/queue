@@ -3,9 +3,9 @@ s/remove-la-files.sh
 a/kernel-firmware.sh
 s/etc_issue.sh
 s/random-number-generator.sh
-
 l/apr.sh
 l/apr-util.sh
+
 a/which.sh
 l/aspell.sh
 l/aspell-dict-en.sh

@@ -1,2 +1,4 @@
 http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20191204.tar.xz
 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20200316.tar.gz
+https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
+https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2

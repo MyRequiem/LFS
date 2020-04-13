@@ -61,8 +61,8 @@ dash
 tcsh
 zsh
 qemu
-apr
-apr-util
+apr                                 (+)
+apr-util                            (+)
 aspell
 boost
 brotli
@@ -200,7 +200,7 @@ telepathy-mission-control
 tidy-html5
 time
 tree
-unixodbc
+unixodbc                            apr-util
 xdg-user-dirs
 accountsservice
 acpid
@@ -506,12 +506,12 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db
+berkeley-db                         apr-util
 lmdb
-mariadb
-postgresql
-sqlite
-openldap
+mariadb                             apr-util
+postgresql                          apr-util
+sqlite                              apr-util
+openldap                            apr-util
 unbound
 util-macros
 xorgproto
