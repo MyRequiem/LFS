@@ -1,33 +1,32 @@
 #! /bin/bash
 
 PRGNAME="sqlite"
-ARCH_NAME="sqlite-autoconf"
+ARCH_NAME="${PRGNAME}-autoconf"
 
 ### SQLite
 # Пакет SQLite представляет собой программную библиотеку, которая реализует
 # автономный, безсерверный, с нулевой конфигурацией механизм транзакционной
 # базы данных SQL
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/server/sqlite.html
+# http://www.linuxfromscratch.org/blfs/view/stable/server/sqlite.html
 
 # Home page: https://sqlite.org
-# Download:  https://sqlite.org/2019/sqlite-autoconf-3290000.tar.gz
-#            https://sqlite.org/2019/sqlite-doc-3290000.zip
+# Download:  https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz
+#            https://sqlite.org/2020/sqlite-doc-3310100.zip
 
-# Required: unzip
-# Optional: no
+# Required: unzip (для распаковки архива с документацией)
+# Optional: libedit (https://www.thrysoee.dk/editline)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                    || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-VERSION="3.29.0"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+PRG_VERSION="$(grep "#define SQLITE_VERSION " sqlite3.c | cut -d \" -f 2)"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PRG_VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # распакуем документацию
-unzip -q /sources/sqlite-doc-3290000.zip
+unzip "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip"
 
 # включить 5 версию расширения полнотекстового поиска
 #    --enable-fts5
@@ -50,12 +49,13 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
-install -v -m755 -d "/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -m755 -d "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R sqlite-doc-3290000/* "/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R sqlite-doc-3290000/* "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${PRG_VERSION}"
+install -v -m755 -d "${DOCS}"
+install -v -m755 -d "${TMP_DIR}${DOCS}"
+cp -vR "sqlite-doc-${VERSION}"/* "${DOCS}"
+cp -vR "sqlite-doc-${VERSION}"/* "${TMP_DIR}${DOCS}"
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"
 # Package: ${PRGNAME} (simple, self contained database engine)
 #
 # SQLite is a small C library that implements a self-contained, embeddable,
@@ -65,13 +65,13 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # the SQLite library.
 #
 # Home page: https://sqlite.org
-# Download:  https://sqlite.org/2019/${PRGNAME}-autoconf-3290000.tar.gz
-#            https://sqlite.org/2019/${PRGNAME}-doc-3290000.zip
+# Download:  https://sqlite.org/2020/${ARCH_NAME}-${VERSION}.tar.gz
+#            https://sqlite.org/2020/${PRGNAME}-doc-${VERSION}.zip
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}-${PRG_VERSION}"
 
 echo -e "\n---------------\nRemoving *.la files..."
 remove-la-files.sh

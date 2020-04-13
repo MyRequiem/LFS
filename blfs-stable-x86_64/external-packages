@@ -16,4 +16,8 @@ http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 aspell-dict-ru                      (+)
 http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
+libedit
+https://www.thrysoee.dk/editline    (-) sqlite
+
+
 # vim:ft=conf

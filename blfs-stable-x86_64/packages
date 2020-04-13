@@ -510,7 +510,7 @@ berkeley-db                         apr-util
 lmdb
 mariadb                             apr-util
 postgresql                          apr-util
-sqlite                              apr-util
+sqlite                              (+) apr-util
 openldap                            apr-util
 unbound
 util-macros
