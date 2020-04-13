@@ -6,7 +6,7 @@ PRGNAME="which"
 # Команда 'which' принимает один или несколько аргументов и для каждого выводит
 # полный путь к исполняемым файлам
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/which.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/which.html
 
 # Home page: https://carlowood.github.io/which/
 # Download:  https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
@@ -14,12 +14,11 @@ PRGNAME="which"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \

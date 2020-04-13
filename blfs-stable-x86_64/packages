@@ -236,7 +236,7 @@ unrar
 unzip
 upower
 usbutils
-which
+which                               (+)
 zip
 autoconf2
 cbindgen
