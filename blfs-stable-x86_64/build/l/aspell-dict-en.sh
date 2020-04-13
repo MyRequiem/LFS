@@ -6,20 +6,19 @@ VERSION="2019.10.06-0"
 
 ### English dictionary for Aspell
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/aspell.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
-# Home page: https://ftp.gnu.org/gnu/aspell/dict
+# Home page: https://ftp.gnu.org/gnu/aspell/dict/en/
 # Download:  https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2
 
 # Required: aspell
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                                 || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" "${VERSION}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                                 || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" "${VERSION}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure || exit 1
@@ -33,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # GNU Aspell English Dictionary Package
 #
-# Home page: https://ftp.gnu.org/gnu/aspell/dict
+# Home page: https://ftp.gnu.org/gnu/aspell/dict/en/
 # Download:  https://ftp.gnu.org/gnu/aspell/dict/en/${ARCH_NAME}-${VERSION}.tar.bz2
 #
 EOF

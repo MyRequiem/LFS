@@ -63,7 +63,7 @@ zsh
 qemu
 apr                                 (+)
 apr-util                            (+)
-aspell
+aspell                              (+) aspell-dict-en, aspell-dict-ru
 boost
 brotli
 clucene
@@ -236,7 +236,7 @@ unrar
 unzip
 upower
 usbutils
-which                               (+)
+which                               (+) aspell
 zip
 autoconf2
 cbindgen

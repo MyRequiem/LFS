@@ -6,7 +6,14 @@
 
 freetds                             apr-util
 http://www.freetds.org/
+
 mysql                               (-) apr-util
 https://www.mysql.com/
+
+aspell-dict-en                      (+)
+http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
+
+aspell-dict-ru                      (+)
+http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
 # vim:ft=conf
