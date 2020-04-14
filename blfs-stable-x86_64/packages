@@ -217,7 +217,7 @@ blocaled
 fcron
 gpm
 hdparm
-lsb-tools
+lsb-tools                           (+)
 lm-sensors
 logrotate
 mc
