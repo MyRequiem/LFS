@@ -19,5 +19,14 @@ http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 libedit
 https://www.thrysoee.dk/editline    (-) sqlite
 
+libmetalink
+https://launchpad.net/libmetalink/
+
+librtmp
+http://rtmpdump.mplayerhq.hu/
+
+spnego
+http://spnego.sourceforge.net/
+
 
 # vim:ft=conf

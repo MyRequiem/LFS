@@ -5,12 +5,12 @@
 # ---------------------
 
 kernel-firmware                     (+)
-make-ca                             (+) p11-kit
+make-ca                             (+) p11-kit, curl
 cracklib
 cryptsetup
 cyrus-sasl
 gnupg
-gnutls
+gnutls                              curl
 gpgme
 haveged
 iptables
@@ -18,7 +18,7 @@ libcap
 linux-pam
 liboauth
 libpwquality
-mit-kerberos-v5
+mit-kerberos-v5                     curl
 nettle
 nss                                 p11-kit, make-ca
 openssh
@@ -26,7 +26,7 @@ p11-kit                             (+) make-ca
 polkit
 shadow
 ssh-askpass
-stunnel
+stunnel                             curl
 sudo
 tripwire
 volume-key
@@ -65,7 +65,7 @@ apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru
 boost
-brotli
+brotli                              curl
 clucene
 dbus-glib
 enchant
@@ -102,7 +102,7 @@ libgudev
 libgusb
 libical
 libidn
-libidn2
+libidn2                             curl
 libiodbc
 libksba
 liblinear
@@ -113,7 +113,7 @@ libqmi
 libseccomp
 libsigc++
 libsigsegv
-libssh2
+libssh2                             curl
 libstatgrab
 libtasn1                            (+) p11-kit
 libunique
@@ -439,7 +439,7 @@ swig
 tcl                                 (+)
 tk
 vala
-valgrind                            libtasn1
+valgrind                            libtasn1, curl
 yasm
 --- other programming tools ---
 ctags
@@ -458,7 +458,7 @@ nfs-utils
 ntp
 rpcbind
 rsync
-samba
+samba                               curl
 wget
 wireless-tools
 wpa-supplicant
@@ -472,7 +472,7 @@ nmap
 traceroute
 whois
 wireshark
-c-ares
+c-ares                              curl
 curl
 geoclue
 glib-networking
@@ -483,12 +483,12 @@ libnftnl
 libnl
 libnsl
 libpcap
-libpsl
+libpsl                              curl
 libndp
 libsoup
 libtirpc
 neon
-nghttp2
+nghttp2                             curl
 rpcsvc-proto
 serf
 uhttpmock
@@ -511,7 +511,7 @@ lmdb
 mariadb                             apr-util
 postgresql                          apr-util
 sqlite                              (+) apr-util
-openldap                            apr-util
+openldap                            apr-util, curl
 unbound
 util-macros
 xorgproto

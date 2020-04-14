@@ -7,36 +7,34 @@ PRGNAME="curl"
 # различных серверов по множеству различных протоколов: FTP, FTPS, HTTP, HTTPS,
 # SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/basicnet/curl.html
+# http://www.linuxfromscratch.org/blfs/view/stable/basicnet/curl.html
 
 # Home page: https://curl.haxx.se/
-# Download:  https://curl.haxx.se/download/curl-7.69.1.tar.xz
+# Download:  https://curl.haxx.se/download/curl-7.68.0.tar.xz
 
 # Required:    no
-# Recommended: make-ca-1.4 (runtime)
-# Optional:    c-ares
+# Recommended: make-ca (runtime)
+# Optional:    brotli
+#              c-ares
 #              gnutls
 #              libidn2
 #              libpsl
 #              libssh2
-#              MIT Kerberos
-#              v5
+#              mit-kerberos-v5
 #              nghttp2
 #              openldap
 #              samba
-#              brotli
-#              libmetalink
-#              librtmp
-#              spnego
+#              libmetalink (https://launchpad.net/libmetalink/)
+#              librtmp     (http://rtmpdump.mplayerhq.hu/)
+#              spnego      (http://spnego.sourceforge.net/)
 #              stunnel (для HTTPS and FTPS тестов)
 #              valgrind
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure                    \
@@ -46,7 +44,7 @@ mkdir -pv "${TMP_DIR}"
     --with-ca-path=/etc/ssl/certs || exit 1
 
 make || exit 1
-# известно, что в LFS системе тесты 323 and 1560 не проходят
+# известно, что в LFS системе тесты 323, 1139, 1140, 1173 и 1560 не проходят
 # make test
 make install
 make install DESTDIR="${TMP_DIR}"
@@ -54,10 +52,13 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf docs/examples/.deps
 find docs \( -name "Makefile*" -o -name "*.1" -o -name "*.3" \) -exec rm {} \;
 
-install -v -d -m755 "/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -d -m755 "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R docs/*     "/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v -R docs/*     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+# документация
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+install -v -d -m755 "${DOCS}"
+install -v -d -m755 "${TMP_DIR}${DOCS}"
+
+cp -vR docs/* "${DOCS}"
+cp -vR docs/* "${TMP_DIR}${DOCS}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (command line URL data transfer tool)
