@@ -5,7 +5,7 @@
 # ---------------------
 
 kernel-firmware                     (+)
-make-ca
+make-ca                             p11-kit
 cracklib
 cryptsetup
 cyrus-sasl
@@ -20,9 +20,9 @@ liboauth
 libpwquality
 mit-kerberos-v5
 nettle
-nss
+nss                                 p11-kit
 openssh
-p11-kit
+p11-kit                             (+)
 polkit
 shadow
 ssh-askpass
@@ -115,14 +115,14 @@ libsigc++
 libsigsegv
 libssh2
 libstatgrab
-libtasn1                            (+)
+libtasn1                            (+) p11-kit
 libunique
 libunistring
 libusb
 libuv                               (+)
 libxkbcommon
 libxml2
-libxslt
+libxslt                             p11-kit
 libwacom
 libyaml
 lzo
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils
 graphviz
-gtk-doc                             libtasn1
+gtk-doc                             libtasn1, p11-kit
 hd2u
 highlight
 ibus

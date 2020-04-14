@@ -6,27 +6,26 @@ PRGNAME="p11-kit"
 # Пакет p11-kit предоставляет способ загрузки и перечисления PKCS#11 (Модулей
 # криптографического интерфейса Token Standard)
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/p11-kit.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/p11-kit.html
 
 # Home page: http://p11-glue.freedesktop.org/p11-kit.html
-# Download:  https://github.com/p11-glue/p11-kit/releases/download/0.23.16.1/p11-kit-0.23.16.1.tar.gz
+# Download:  https://github.com/p11-glue/p11-kit/releases/download/0.23.20/p11-kit-0.23.20.tar.xz
 
 # Required:   no
+# Recommended libtasn1
+#             make-ca
 # Optional:   gtk-doc
 #             libxslt
 #             nss (runtime)
-# Recommended libtasn1
-#             make-ca
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-sed '20,$ d' -i trust/trust-extract-compat.in &&
+sed '20,$ d' -i trust/trust-extract-compat.in || exit 1
 
 cat >> trust/trust-extract-compat.in << "EOF"
 # Copy existing anchor modifications to /etc/ssl/local
@@ -68,7 +67,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # in the same process.
 #
 # Home page: http://p11-glue.freedesktop.org/p11-kit.html
-# Download:  https://github.com/p11-glue/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/p11-glue/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
