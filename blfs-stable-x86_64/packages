@@ -206,7 +206,7 @@ accountsservice
 acpid
 at
 autofs
-bluez                               python2
+bluez                               python2, python3
 bubblewrap
 colord
 cpio
@@ -217,7 +217,7 @@ blocaled
 fcron
 gpm
 hdparm
-lsb-tools                           (+)
+lsb-tools                           (+) python3
 lm-sensors
 logrotate
 mc
@@ -247,7 +247,7 @@ doxygen
 expect
 gcc
 gc
-gdb
+gdb                                 python3
 git
 guile
 librep
@@ -405,7 +405,7 @@ pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+)
-python3
+python3                             (+)
 --- python modules ---
 python-d-bus-python
 python-decorator
@@ -437,9 +437,9 @@ slang
 subversion
 swig
 tcl                                 (+)
-tk                                  python2
+tk                                  python2, python3
 vala
-valgrind                            libtasn1, curl, python2
+valgrind                            libtasn1, curl, python2, python3
 yasm
 --- other programming tools ---
 ctags
@@ -506,11 +506,11 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         apr-util
+berkeley-db                         apr-util, python3
 lmdb
 mariadb                             apr-util
 postgresql                          apr-util
-sqlite                              (+) apr-util, python2
+sqlite                              (+) apr-util, python2, python3
 openldap                            apr-util, curl
 unbound
 util-macros

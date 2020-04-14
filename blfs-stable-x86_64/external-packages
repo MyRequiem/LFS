@@ -19,14 +19,16 @@ http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 libedit
 https://www.thrysoee.dk/editline    (-) sqlite
 
-libmetalink
+libmetalink                         curl
 https://launchpad.net/libmetalink/
 
-librtmp
+librtmp                             curl
 http://rtmpdump.mplayerhq.hu/
 
-spnego
+spnego                              curl
 http://spnego.sourceforge.net/
 
+libmpdec                            python3
+http://www.bytereef.org/mpdecimal/
 
 # vim:ft=conf
