@@ -6,21 +6,20 @@ PRGNAME="libtasn1"
 # Легко переносимая библиотека C, которая кодирует и декодирует данные DER/BER
 # в телекоммуникациях и компьютерных сетях следуя схеме ASN.1
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libtasn1.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libtasn1.html
 
 # Home page: http://www.gnu.org/software/libtasn1/
-# Download:  https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.14.tar.gz
+# Download:  https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
 
 # Required: no
 # Optional: gtk-doc
 #           valgrind
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \
@@ -31,6 +30,10 @@ make || exit 1
 # make check
 make install
 make install DESTDIR="${TMP_DIR}"
+
+# установим документацию
+make -C doc/reference install-data-local
+make -C doc/reference install-data-local DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ASN.1 library)

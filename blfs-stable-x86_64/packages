@@ -115,7 +115,7 @@ libsigc++
 libsigsegv
 libssh2
 libstatgrab
-libtasn1
+libtasn1                            (+)
 libunique
 libunistring
 libusb
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils
 graphviz
-gtk-doc
+gtk-doc                             libtasn1
 hd2u
 highlight
 ibus
@@ -439,7 +439,7 @@ swig
 tcl                                 (+)
 tk
 vala
-valgrind
+valgrind                            libtasn1
 yasm
 --- other programming tools ---
 ctags
