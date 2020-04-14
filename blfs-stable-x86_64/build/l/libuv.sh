@@ -5,22 +5,21 @@ PRGNAME="libuv"
 ### libuv (Unicorn Velociraptor Library)
 # Многоплатформенная библиотека поддержки с акцентом на асинхронный ввод/вывод
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libuv.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libuv.html
 
 # Home page: https://libuv.org/
 #            https://github.com/libuv/libuv
-# Download:  https://dist.libuv.org/dist/v1.31.0/libuv-v1.31.0.tar.gz
+# Download:  https://dist.libuv.org/dist/v1.34.2/libuv-v1.34.2.tar.gz
 
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 VERSION=$(echo "${VERSION}" | cut -d v -f 2)
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 sh autogen.sh
@@ -45,8 +44,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # on libev was removed.
 #
 # Home page: https://libuv.org/
-#            https://github.com/libuv/libuv
-# Download:  https://dist.libuv.org/dist/v1.31.0/libuv-v1.31.0.tar.gz
+#            https://github.com/${PRGNAME}/${PRGNAME}
+# Download:  https://dist.libuv.org/dist/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
 #
 EOF
 

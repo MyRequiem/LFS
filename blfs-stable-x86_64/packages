@@ -119,7 +119,7 @@ libtasn1
 libunique
 libunistring
 libusb
-libuv
+libuv                               (+)
 libxkbcommon
 libxml2
 libxslt
