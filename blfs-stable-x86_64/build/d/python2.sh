@@ -5,23 +5,23 @@ PRGNAME="python2"
 ### Python
 # Язык программирования Python
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/python2.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/python2.html
 
 # Home page: https://www.python.org/
 # Download:  https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz
+# Docs:      https://docs.python.org/ftp/python/doc/2.7.17/python-2.7.17-docs-html.tar.bz2
 
 # Required: no
 # Optional: bluez
 #           valgrind
-#           sqlite
-#           tk
+#           sqlite   (для создания дополнительных модулей)
+#           tk       (для создания дополнительных модулей)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"              || exit 1
-source "${ROOT}unpack_source_archive.sh" "Python" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"              || exit 1
+source "${ROOT}/unpack_source_archive.sh" "Python" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure              \
@@ -36,19 +36,32 @@ make || exit 1
 # make -k test
 make install DESTDIR="${TMP_DIR}"
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     # /usr/bin/2to3 уже установлена с пакетом python3
     rm -f 2to3
-    ln -svf easy_install-2.7 easy_install
+    ln -svf "easy_install-${MAJ_VERSION}" easy_install
     ln -svf pip2 pip
-    ln -svf pip2.7 pip2
+    ln -svf "pip${MAJ_VERSION}" pip2
 )
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"
 
-# устанавливаем в корень файловой системы
+# документация
+DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+install -v -dm755 "${DOCS}"
+
+tar                       \
+    --strip-components=1  \
+    --no-same-owner       \
+    --directory "${DOCS}" \
+    -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2"
+
+find "${DOCS}" -type d -exec chmod 0755 {} \;
+find "${DOCS}" -type f -exec chmod 0644 {} \;
+
+# устанавливаем пакет в корень файловой системы
 cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

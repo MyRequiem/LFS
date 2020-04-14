@@ -206,7 +206,7 @@ accountsservice
 acpid
 at
 autofs
-bluez
+bluez                               python2
 bubblewrap
 colord
 cpio
@@ -404,7 +404,7 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2
+python2                             (+)
 python3
 --- python modules ---
 python-d-bus-python
@@ -437,9 +437,9 @@ slang
 subversion
 swig
 tcl                                 (+)
-tk
+tk                                  python2
 vala
-valgrind                            libtasn1, curl
+valgrind                            libtasn1, curl, python2
 yasm
 --- other programming tools ---
 ctags
@@ -473,7 +473,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl
-curl
+curl                                (+)
 geoclue
 glib-networking
 ldns
@@ -510,7 +510,7 @@ berkeley-db                         apr-util
 lmdb
 mariadb                             apr-util
 postgresql                          apr-util
-sqlite                              (+) apr-util
+sqlite                              (+) apr-util, python2
 openldap                            apr-util, curl
 unbound
 util-macros
