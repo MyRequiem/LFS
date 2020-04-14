@@ -5,7 +5,7 @@
 # ---------------------
 
 kernel-firmware                     (+)
-make-ca                             p11-kit
+make-ca                             (+) p11-kit
 cracklib
 cryptsetup
 cyrus-sasl
@@ -20,9 +20,9 @@ liboauth
 libpwquality
 mit-kerberos-v5
 nettle
-nss                                 p11-kit
+nss                                 p11-kit, make-ca
 openssh
-p11-kit                             (+)
+p11-kit                             (+) make-ca
 polkit
 shadow
 ssh-askpass
@@ -444,8 +444,8 @@ yasm
 --- other programming tools ---
 ctags
 --- end of other programming tools ---
-java
-openjdk
+java                                (-) make-ca
+openjdk                             make-ca
 apache-ant
 dhcpcd
 dhcp
