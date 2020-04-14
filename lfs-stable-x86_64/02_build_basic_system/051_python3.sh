@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 #    --with-system-expat
 # связываться с уже установленной системной версией libffi
 #    --with-system-ffi
-# создавать программы pip и setuptools
+# создавать утилиты pip и setuptools
 #    --with-ensurepip=yes
 ./configure             \
     --prefix=/usr       \
@@ -35,39 +35,34 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 
 # тесты на данном этапе не запускаем, т.к. они требуют установленных TK и
-# X Window System, поэтому сразу устанавливаем в корневую систему
-
-# Важно: сначала устанавливаем во временную директорию и только потом в корень
-# системы
+# X Window System, поэтому сразу устанавливаем
 make install DESTDIR="${TMP_DIR}"
-make install
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-chmod -v 755 "/usr/lib/libpython${MAJ_VERSION}.so"
-chmod -v 755 /usr/lib/libpython3.so
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
 
-# ссылка в /usr/bin
-# pip3 -> pip${MAJ_VERSION}
-ln -svf "pip${MAJ_VERSION}" /usr/bin/pip3
+# ссылки в /usr/bin
+# pip3          -> pip${MAJ_VERSION}
+# easy_install3 -> easy_install-${MAJ_VERSION}
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sfv "pip${MAJ_VERSION}" pip3
+    ln -sfv "easy_install-${MAJ_VERSION}" easy_install3
 )
 
 # устанавливаем документацию
-PYTHON_DOC_ARCH_NAME="python-${VERSION}-docs-html"
-tar xvf "/sources/${PYTHON_DOC_ARCH_NAME}".tar.?z* || exit 1
-cd "${PYTHON_DOC_ARCH_NAME}" || exit 1
-chown -R root:root ./*
-
-DOCS="/usr/share/doc/python-${VERSION}/html"
+DOCS="${TMP_DIR}/usr/share/doc/python3-${VERSION}/html"
 install -v -dm755 "${DOCS}"
-cp -R ./*         "${DOCS}"
+tar                       \
+    --strip-components=1  \
+    --no-same-owner       \
+    --no-same-permissions \
+    -C "${DOCS}"          \
+    -xvf "/sources/python-${VERSION}-docs-html.tar.bz2"
 
-install -v -dm755 "${TMP_DIR}/${DOCS}"
-cp -R ./*         "${TMP_DIR}/${DOCS}"
+# устанавливаем пакет в корень файловой системы
+cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (object-oriented interpreted programming language)
