@@ -52,7 +52,7 @@ chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
 )
 
 # устанавливаем документацию
-DOCS="${TMP_DIR}/usr/share/doc/python3-${VERSION}/html"
+DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
 install -v -dm755 "${DOCS}"
 tar                       \
     --strip-components=1  \
