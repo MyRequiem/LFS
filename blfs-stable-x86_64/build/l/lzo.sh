@@ -6,7 +6,7 @@ PRGNAME="lzo"
 # Библиотека сжатия данных без потерь, написанная на ANSI C. Предлагает
 # довольно быстрое сжатие и очень быструю распаковку.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/lzo.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/lzo.html
 
 # Home page: http://www.oberhumer.com/opensource/lzo/
 # Download:  http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
@@ -14,13 +14,11 @@ PRGNAME="lzo"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure          \
@@ -30,8 +28,13 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
+
+# проверить сборку
 # make check
+
+# полный набор тестов
 # make test
+
 make install
 make install DESTDIR="${TMP_DIR}"
 

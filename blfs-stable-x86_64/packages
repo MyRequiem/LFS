@@ -125,7 +125,7 @@ libxml2                             (+)
 libxslt                             p11-kit
 libwacom
 libyaml
-lzo
+lzo                                 (+)
 mtdev
 node-js
 npth

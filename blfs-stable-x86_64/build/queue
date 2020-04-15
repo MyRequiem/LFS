@@ -23,8 +23,8 @@ d/python2.sh
 s/lsb-tools.sh
 d/python3.sh
 l/libxml2.sh
-
 l/lzo.sh
+
 n/nettle.sh
 l/libarchive.sh
 d/cmake.sh
