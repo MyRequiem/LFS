@@ -133,7 +133,7 @@ nspr
 pcre
 pcre2
 popt
-pth
+pth                                 (+)
 ptlib
 qca
 talloc

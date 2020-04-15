@@ -7,7 +7,7 @@ PRGNAME="pth"
 # POSIX/ANSI-C, которая обеспечивает планирование выполнения задач на основе
 # приоритетов в многопоточных приложениях
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/pth.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/pth.html
 
 # Home page: http://www.gnu.org/software/pth/
 # Download:  https://ftp.gnu.org/gnu/pth/pth-2.0.7.tar.gz
@@ -15,13 +15,12 @@ PRGNAME="pth"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}"
 
 # позволим запускать make в несколько потоков (например, make -j4)
