@@ -2,7 +2,7 @@
 
 PRGNAME="python2"
 
-### Python
+### Python (object-oriented interpreted programming language)
 # Язык программирования Python
 
 # http://www.linuxfromscratch.org/blfs/view/stable/general/python2.html
