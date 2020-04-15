@@ -1,6 +1,7 @@
 #! /bin/bash
 
-mkdir -p /mnt/lfs/root/src/
+SOURCES="/mnt/lfs/root/src/"
+mkdir -p "${SOURCES}"
 
 wget                         \
     --input-file=./wget-list \
@@ -9,4 +10,4 @@ wget                         \
     --continue               \
     --tries=3                \
     --wait=2                 \
-    --directory-prefix=/mnt/lfs/root/src/
+    --directory-prefix="${SOURCES}"
