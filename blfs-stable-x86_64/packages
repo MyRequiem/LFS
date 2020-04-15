@@ -95,7 +95,7 @@ libbytesize
 libcroco
 libdaemon
 libgcrypt
-libgpg-error
+libgpg-error                        (+)
 libgrss
 libgsf
 libgudev
