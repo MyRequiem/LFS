@@ -7,7 +7,7 @@
 freetds                             apr-util
 http://www.freetds.org/
 
-mysql                               (-) apr-util
+mysql                               (-) apr-util, cyrus-sasl
 https://www.mysql.com/
 
 aspell-dict-en                      (+)
@@ -33,5 +33,11 @@ http://www.bytereef.org/mpdecimal/
 
 sphinx                              cmake
 https://pypi.org/project/Sphinx/
+
+krb4                                cyrus-sasl
+https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/
+
+dmalloc                             cyrus-sasl
+https://dmalloc.com/
 
 # vim:ft=conf

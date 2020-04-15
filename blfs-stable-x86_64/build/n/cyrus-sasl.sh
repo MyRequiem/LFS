@@ -2,35 +2,33 @@
 
 PRGNAME="cyrus-sasl"
 
-### Cyrus SASL
+### Cyrus SASL (Simple Authentication and Security Layer)
 # Библиотека Cyrus SASL используется почтовыми программами на клиентской или
 # серверной стороне для предоставления услуг аутентификации и авторизации.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/cyrus-sasl.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/cyrus-sasl.html
 
 # Home page: https://github.com/cyrusimap/cyrus-sasl/
 # Download:  https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
 
 # Required:    no
-# Recommended: berkeleydb
-# Optional:    linux-pam-1.3.1
+# Recommended: berkeley-db
+# Optional:    linux-pam
 #              mit-kerberos-v5
-#              mariadb или mysql
+#              mariadb или mysql (https://www.mysql.com/)
 #              openjdk
-#              openldap
+#              openldap (см. опции конфигурации ниже)
 #              postgresql
 #              sqlite
-#              krb4
-#              dmalloc
+#              krb4              (https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/)
+#              dmalloc           (https://dmalloc.com/)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 # включает сервер аутентификации SASLDB
@@ -46,8 +44,14 @@ mkdir -pv "${TMP_DIR}${DOCS}/html"
     --with-dbpath=/var/lib/sasl/sasldb2 \
     --with-saslauthd=/var/run/saslauthd || exit 1
 
-make -j1 || exit 1
+###
+# включение поддержки OpenLDAP
+#    --with-ldap
+###
 
+# пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
+make -j1 || exit 1
+# пакет не содержит набора тестов
 make install
 make install DESTDIR="${TMP_DIR}"
 
@@ -63,19 +67,12 @@ install -v -m644  doc/legacy/*.html "${TMP_DIR}${DOCS}/html"
 install -v -dm700 /var/lib/sasl
 install -v -dm700 "${TMP_DIR}/var/lib/sasl"
 
-# /etc/rc.d/init.d/saslauthd
-SASLAUTHD="/etc/rc.d/init.d/saslauthd"
-if [ -f "${SASLAUTHD}" ]; then
-    mv "${SASLAUTHD}" "${SASLAUTHD}.old"
-fi
-
+# init script: /etc/rc.d/init.d/saslauthd
 (
     cd /root/blfs-bootscripts || exit 1
     make install-saslauthd
     make install-saslauthd DESTDIR="${TMP_DIR}"
 )
-
-config_file_processing "${SASLAUTHD}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Simple Authentication and Security Layer)

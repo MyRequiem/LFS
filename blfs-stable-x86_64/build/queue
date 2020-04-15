@@ -29,9 +29,11 @@ l/libarchive.sh
 d/cmake.sh
 a/sharutils.sh
 s/berkeley-db.sh
-
-
-
+l/apr-util.sh
+d/python3.sh
+l/libxml2.sh
+l/libarchive.sh
+d/cmake.sh
 n/cyrus-sasl.sh
 
 n/libgpg-error.sh
