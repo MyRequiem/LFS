@@ -2,7 +2,7 @@
 
 PRGNAME="libgpg-error"
 
-### libgpg-error
+### libgpg-error (GnuPG Error Definitions Library)
 # Библиотека, которая определяет общие значения ошибок для всех компонентов
 # GnuPG. Среди них GPG, GPGSM, GPGME, GPG-Agent, libgcrypt, Libksba, DirMngr,
 # Pinentry, SmartCard Daemon и многое другое.
