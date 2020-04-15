@@ -6,7 +6,7 @@ SOURCES="/root/src"
 
 if [ -z "${VERSION}" ]; then
     VERSION="$(find ${SOURCES} -type f -name "${SRC_ARCH_NAME}-*.tar.?z*" \
-        2>/dev/null | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+        2>/dev/null | head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 fi
 
 if [ -z "${VERSION}" ]; then
