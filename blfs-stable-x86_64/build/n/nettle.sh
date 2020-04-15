@@ -2,7 +2,7 @@
 
 PRGNAME="nettle"
 
-### Nettle
+### Nettle (small cryptographic library)
 # Криптографическая библиотека для C++, Python, Pike и других
 # объектно-ориентированных языков программирования, а так же для таких
 # приложений как LSH, GNUPG и т.п.

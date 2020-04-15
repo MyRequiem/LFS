@@ -2,7 +2,7 @@
 
 PRGNAME="make-ca"
 
-### make-ca
+### make-ca (deliver and manage a complete PKI configuration)
 # Инфраструктура открытых ключей (PKI) и методы проверки их подлинности в
 # ненадежных сетях.
 
