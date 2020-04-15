@@ -2,7 +2,7 @@
 
 PRGNAME="which"
 
-### Which
+### Which (shows the full path to shell commands)
 # Команда 'which' принимает один или несколько аргументов и для каждого выводит
 # полный путь к исполняемым файлам
 
