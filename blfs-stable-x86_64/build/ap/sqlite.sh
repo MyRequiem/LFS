@@ -3,7 +3,7 @@
 PRGNAME="sqlite"
 ARCH_NAME="${PRGNAME}-autoconf"
 
-### SQLite
+### SQLite (simple, self contained database engine)
 # Пакет SQLite представляет собой программную библиотеку, которая реализует
 # автономный, безсерверный, с нулевой конфигурацией механизм транзакционной
 # базы данных SQL
