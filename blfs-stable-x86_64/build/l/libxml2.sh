@@ -5,24 +5,27 @@ PRGNAME="libxml2"
 ### libxml2
 # Библиотеки и утилиты для анализа XML файлов
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libxml2.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libxml2.html
 
 # Home page: http://xmlsoft.org/
-# Download:  http://xmlsoft.org/sources/libxml2-2.9.9.tar.gz
+# Download:  http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
 # For tests: http://www.w3.org/XML/Test/xmlts20130923.tar.gz
 
 # Required: no
 # Optional: python2
-#           icu (для тестов)
+#           python3
+#           icu      (для тестов)
 #           valgrind (для тестов)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# отключим один тест, который препятствует полному их выполнению
+sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
 
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
@@ -30,6 +33,11 @@ mkdir -pv "${TMP_DIR}"
 #    --with-python=/usr/bin/python3
 # включить поддержку многопоточности
 #    --with-threads
+
+###
+# если установлен пакет icu, добавляем для лучшей поддержки unicode-кодировки
+#    --with-icu
+###
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -40,10 +48,17 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 
 # для тестов
-tar xvf /sources/xmlts20130923.tar.gz || exit 1
-# На время тестов рекомендуется выключить сервер httpd:
+tar xvf "${SOURCES}/xmlts20130923.tar.gz" || exit 1
+#
+# в тестах используется http://localhost/, поэтому на время тестов
+# рекомендуется выключить сервер httpd
 #    # /etc/init.d/httpd stop
+#
+# если установлен valgrind и мы хотим провести тесты на утечку памяти
+# make check-valgrind
+# иначе
 # make check > check.log
+#
 # вывод общего результата тестов:
 #    # grep -E '^Total|expected' check.log
 

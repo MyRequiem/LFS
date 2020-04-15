@@ -79,7 +79,7 @@ gobject-introspection
 grantlee
 gsl
 gspell
-icu
+icu                                 libxml2
 jansson
 js
 json-c
@@ -121,7 +121,7 @@ libunistring
 libusb
 libuv                               (+)
 libxkbcommon
-libxml2
+libxml2                             (+)
 libxslt                             p11-kit
 libwacom
 libyaml
@@ -404,8 +404,8 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+)
-python3                             (+)
+python2                             (+) libxml2
+python3                             (+) libxml2
 --- python modules ---
 python-d-bus-python
 python-decorator
@@ -439,7 +439,7 @@ swig
 tcl                                 (+)
 tk                                  python2, python3
 vala
-valgrind                            libtasn1, curl, python2, python3
+valgrind                            libtasn1, curl, python2, python3, libxml2
 yasm
 --- other programming tools ---
 ctags
