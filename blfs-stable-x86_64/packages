@@ -8,17 +8,17 @@ kernel-firmware                     (+)
 make-ca                             (+) p11-kit, curl
 cracklib
 cryptsetup
-cyrus-sasl
+cyrus-sasl                          (+)
 gnupg
 gnutls                              curl
 gpgme
 haveged
 iptables
 libcap
-linux-pam
+linux-pam                           cyrus-sasl
 liboauth
 libpwquality
-mit-kerberos-v5                     curl
+mit-kerberos-v5                     curl, cyrus-sasl
 nettle                              (+) libarchive
 nss                                 p11-kit, make-ca
 openssh
@@ -194,7 +194,7 @@ rarian
 rep-gtk
 screen
 shared-mime-info
-sharutils
+sharutils                           (+)
 telepathy-logger
 telepathy-mission-control
 tidy-html5
@@ -445,7 +445,7 @@ yasm
 ctags
 --- end of other programming tools ---
 java                                (-) make-ca
-openjdk                             make-ca
+openjdk                             make-ca, cyrus-sasl
 apache-ant
 dhcpcd
 dhcp
@@ -506,12 +506,12 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         apr-util, python3
+berkeley-db                         apr-util, python3, cyrus-sasl
 lmdb
-mariadb                             apr-util
-postgresql                          apr-util
-sqlite                              (+) apr-util, python2, python3
-openldap                            apr-util, curl
+mariadb                             apr-util, cyrus-sasl
+postgresql                          apr-util, cyrus-sasl
+sqlite                              (+) apr-util, python2, python3, cyrus-sasl
+openldap                            apr-util, curl, cyrus-sasl
 unbound
 util-macros
 xorgproto

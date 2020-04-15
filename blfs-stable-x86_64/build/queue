@@ -27,8 +27,12 @@ l/lzo.sh
 n/nettle.sh
 l/libarchive.sh
 d/cmake.sh
+a/sharutils.sh
+
+
 
 n/cyrus-sasl.sh
+
 n/libgpg-error.sh
 n/libassuan.sh
 n/pth.sh
