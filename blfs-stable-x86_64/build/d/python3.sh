@@ -28,7 +28,7 @@ if [ -n "${INSTALLED}" ]; then
     INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
     echo "${INSTALLED_VERSION} already installed. Before building Python3 "
     echo "package, you need to remove it."
-    removepkg "${INSTALLED}"
+    removepkg --no-color "${INSTALLED}"
 fi
 
 source "${ROOT}/unpack_source_archive.sh" "Python" || exit 1

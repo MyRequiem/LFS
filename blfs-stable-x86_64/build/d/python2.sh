@@ -19,6 +19,15 @@ PRGNAME="python2"
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"              || exit 1
+
+INSTALLED="$(find /var/log/packages/ -type f -name "python2-2.*")"
+if [ -n "${INSTALLED}" ]; then
+    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${INSTALLED_VERSION} already installed. Before building Python2 "
+    echo "package, you need to remove it."
+    removepkg --no-color "${INSTALLED}"
+fi
+
 source "${ROOT}/unpack_source_archive.sh" "Python" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
