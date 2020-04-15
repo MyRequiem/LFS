@@ -19,7 +19,7 @@ linux-pam
 liboauth
 libpwquality
 mit-kerberos-v5                     curl
-nettle                              (+)
+nettle                              (+) libarchive
 nss                                 p11-kit, make-ca
 openssh
 p11-kit                             (+) make-ca
@@ -86,7 +86,7 @@ json-c
 json-glib
 keyutils
 libaio
-libarchive
+libarchive                          (+)
 libassuan
 libatasmart
 libatomic-ops
@@ -121,11 +121,11 @@ libunistring
 libusb
 libuv                               (+)
 libxkbcommon
-libxml2                             (+)
+libxml2                             (+) libarchive
 libxslt                             p11-kit
 libwacom
 libyaml
-lzo                                 (+)
+lzo                                 (+) libarchive
 mtdev
 node-js
 npth

@@ -7,7 +7,7 @@ PRGNAME="libarchive"
 # потоковые архивы в различных форматах, а также включает реализацию общих
 # инструментов командной строки tar, cpio и zcat
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/libarchive.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libarchive.html
 
 # Home page: http://libarchive.org
 # Download:  https://github.com/libarchive/libarchive/releases/download/v3.4.2/libarchive-3.4.2.tar.xz
@@ -17,12 +17,11 @@ PRGNAME="libarchive"
 #           lzo
 #           nettle
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
