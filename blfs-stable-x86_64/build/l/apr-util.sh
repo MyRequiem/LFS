@@ -2,7 +2,7 @@
 
 PRGNAME="apr-util"
 
-### Apr-Util
+### Apr-Util (Apache Portable Runtime utilities)
 # Пакет содержит дополнительные служебные интерфейсы для APR включая поддержку
 # XML, LDAP, интерфейсов базы данных, парсинга URI, и т.д.
 
