@@ -2,7 +2,7 @@
 
 PRGNAME="apr"
 
-### Apr
+### Apr (Apache Portable Runtime)
 # Apache Portable Runtime (APR) - библиотека, разрабатываемая Apache Software
 # Foundation и изначально входящая в состав веб-сервера Apache, но затем
 # выделенная в независимый проект. APR является кросс-платформенной оберткой
