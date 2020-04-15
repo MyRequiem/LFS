@@ -3,7 +3,7 @@
 PRGNAME="unzip"
 VERSION="6.0"
 
-### UnZip
+### UnZip (ZIP extraction utilities)
 # Утилиты для распаковки ZIP-архивов
 
 # http://www.linuxfromscratch.org/blfs/view/stable/general/unzip.html
