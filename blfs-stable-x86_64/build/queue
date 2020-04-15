@@ -28,6 +28,7 @@ n/nettle.sh
 l/libarchive.sh
 d/cmake.sh
 a/sharutils.sh
+s/berkeley-db.sh
 
 
 

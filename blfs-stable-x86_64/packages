@@ -194,7 +194,7 @@ rarian
 rep-gtk
 screen
 shared-mime-info
-sharutils                           (+)
+sharutils                           (+) berkeley-db
 telepathy-logger
 telepathy-mission-control
 tidy-html5
@@ -436,7 +436,7 @@ scons
 slang
 subversion                          cmake
 swig
-tcl                                 (+)
+tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
 valgrind                            libtasn1, curl, python2, python3, libxml2
@@ -506,7 +506,7 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         apr-util, python3, cyrus-sasl
+berkeley-db                         (+) apr-util, python3, cyrus-sasl
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
