@@ -31,4 +31,7 @@ http://spnego.sourceforge.net/
 libmpdec                            python3
 http://www.bytereef.org/mpdecimal/
 
+sphinx                              cmake
+https://pypi.org/project/Sphinx/
+
 # vim:ft=conf

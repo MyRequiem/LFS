@@ -1,7 +1,7 @@
 s/blfs-bootscripts.sh
 s/remove-la-files.sh
 a/kernel-firmware.sh
-s/etc_issue.sh
+s/etc-issue.sh
 s/random-number-generator.sh
 l/apr.sh
 l/apr-util.sh
@@ -26,8 +26,8 @@ l/libxml2.sh
 l/lzo.sh
 n/nettle.sh
 l/libarchive.sh
-
 d/cmake.sh
+
 n/cyrus-sasl.sh
 n/libgpg-error.sh
 n/libassuan.sh

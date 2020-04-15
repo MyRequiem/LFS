@@ -86,7 +86,7 @@ json-c
 json-glib
 keyutils
 libaio
-libarchive                          (+)
+libarchive                          (+) cmake
 libassuan
 libatasmart
 libatomic-ops
@@ -119,7 +119,7 @@ libtasn1                            (+) p11-kit
 libunique
 libunistring
 libusb
-libuv                               (+)
+libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive
 libxslt                             p11-kit
@@ -241,7 +241,7 @@ zip
 autoconf2
 cbindgen
 clisp
-cmake
+cmake                               (+)
 dejagnu
 doxygen
 expect
@@ -434,7 +434,7 @@ ruby
 rustc
 scons
 slang
-subversion
+subversion                          cmake
 swig
 tcl                                 (+)
 tk                                  python2, python3
@@ -473,7 +473,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl
-curl                                (+)
+curl                                (+) cmake
 geoclue
 glib-networking
 ldns
@@ -671,7 +671,7 @@ libnotify
 libxklavier
 pango
 pangomm
-qt
+qt5                                 cmake
 qtwebengine
 startup-notification
 webkitgtk+2
