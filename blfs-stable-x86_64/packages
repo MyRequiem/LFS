@@ -19,7 +19,7 @@ linux-pam
 liboauth
 libpwquality
 mit-kerberos-v5                     curl
-nettle
+nettle                              (+)
 nss                                 p11-kit, make-ca
 openssh
 p11-kit                             (+) make-ca
