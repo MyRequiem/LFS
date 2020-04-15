@@ -2,26 +2,25 @@
 
 PRGNAME="libassuan"
 
-### libassuan
+### libassuan (Interprocess Communication Library for GPG)
 # Небольшая библиотека, реализующая так называемый протокол Assuan. Этот
 # протокол используется для IPC между большинством компонентов GnuPG.
 # Представлена как серверная, так и клиентская часть.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libassuan.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libassuan.html
 
 # Home page: https://gnupg.org/software/libassuan/index.html
 # Download:  https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.3.tar.bz2
 
 # Required: libgpg-error
-# Optional: texlive (для создания документации в формате pdf и ps)
+# Optional: texlive или install-tl-unx (для создания pdf и ps документации)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 ./configure \
@@ -29,16 +28,16 @@ mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 make || exit 1
 
-# собираем документацию в формате html и txt
+# собираем документацию в формате html и plaintext
 make -C doc html
 makeinfo --html --no-split -o doc/assuan_nochunks.html doc/assuan.texi
 makeinfo --plaintext       -o doc/assuan.txt           doc/assuan.texi
 
-# если в системе установлен texlive, можно создать документацию в форматах pdf
-# и ps
+# если в системе установлен texlive или install-tl-unx, можно создать
+# документацию в форматах pdf и ps
 # make -C doc pdf ps
 
-make check
+# make check
 make install
 make install DESTDIR="${TMP_DIR}"
 

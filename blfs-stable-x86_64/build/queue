@@ -36,8 +36,8 @@ l/libarchive.sh
 d/cmake.sh
 n/cyrus-sasl.sh
 n/libgpg-error.sh
-
 n/libassuan.sh
+
 n/pth.sh
 n/npth.sh
 n/libgcrypt.sh
