@@ -2,7 +2,7 @@
 
 PRGNAME="libxml2"
 
-### libxml2
+### libxml2 (XML parser library)
 # Библиотеки и утилиты для анализа XML файлов
 
 # http://www.linuxfromscratch.org/blfs/view/stable/general/libxml2.html

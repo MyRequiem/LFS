@@ -2,7 +2,7 @@
 
 PRGNAME="curl"
 
-### cURL
+### cURL (command line URL data transfer tool)
 # Утилита командной строки, позволяющая взаимодействовать с множеством
 # различных серверов по множеству различных протоколов: FTP, FTPS, HTTP, HTTPS,
 # SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
