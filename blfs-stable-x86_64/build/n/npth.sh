@@ -11,7 +11,7 @@ PRGNAME="npth"
 # библиотека представляет интерес и для других проектов, было принято решение
 # развивать nPth в виде обособленного продукта.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/npth.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/npth.html
 
 # Home page: https://gnupg.org/software/npth/index.html
 # Download:  https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
@@ -19,12 +19,11 @@ PRGNAME="npth"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \

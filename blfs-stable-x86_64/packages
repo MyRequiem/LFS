@@ -128,7 +128,7 @@ libyaml
 lzo                                 (+) libarchive
 mtdev
 node-js
-npth
+npth                                (+)
 nspr
 pcre
 pcre2
