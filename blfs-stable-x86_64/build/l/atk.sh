@@ -2,24 +2,23 @@
 
 PRGNAME="atk"
 
-### ATK
+### ATK (accessibility functions library)
 # Библиотека функций, которая используется инструментарием GTK+-2
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/x/atk.html
+# http://www.linuxfromscratch.org/blfs/view/stable/x/atk.html
 
 # Home page: http://ftp.gnome.org/pub/gnome/sources/atk/
-# Download:  http://ftp.gnome.org/pub/gnome/sources/atk/2.32/atk-2.32.0.tar.xz
+# Download:  http://ftp.gnome.org/pub/gnome/sources/atk/2.34/atk-2.34.1.tar.xz
 
 # Required:    glib
 # Recommended: gobject-introspection (требуется для сборки GNOME)
 # Optional:    gtk-doc
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir -pv build
@@ -30,7 +29,6 @@ meson \
 
 ninja || exit 1
 # пакет не содержит набора тестов
-
 ninja install
 DESTDIR="${TMP_DIR}" ninja install
 

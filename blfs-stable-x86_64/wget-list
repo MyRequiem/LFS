@@ -52,3 +52,4 @@ http://ftp.gnome.org/pub/gnome/sources/glib/2.62/glib-2.62.4.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/9.1/glib-2.62.4-cve_2020_6750_fix-1.patch
 http://www.linuxfromscratch.org/patches/blfs/9.1/glib-2.62.4-skip_warnings-1.patch
 http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
+http://ftp.gnome.org/pub/gnome/sources/atk/2.34/atk-2.34.1.tar.xz

@@ -71,11 +71,11 @@ dbus-glib
 enchant
 exempi
 fftw
-glib                                (+) gobject-introspection
+glib                                (+) gobject-introspection, atk
 glibmm
 gmime2
 gmime3
-gobject-introspection               (+) glib
+gobject-introspection               (+) glib, atk
 grantlee
 gsl
 gspell
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk
 hd2u
 highlight
 ibus
@@ -635,7 +635,7 @@ font-daewoo-misc
 font-isas-misc
 font-misc-misc
 --- end of xorg legacy ---
-atk
+atk                                 (+)
 atkmm
 at-spi2-core
 at-spi2-atk
