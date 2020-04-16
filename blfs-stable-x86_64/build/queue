@@ -48,6 +48,11 @@ n/curl.sh
 d/cmake.sh
 s/sgml-common.sh
 s/docbook-xml.sh
+l/libxslt.sh
+n/p11-kit.sh
+n/make-ca.sh
+n/curl.sh
+d/cmake.sh
 
 a/zip.sh
 s/docbook-xsl-nons.sh
