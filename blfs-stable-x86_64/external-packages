@@ -46,4 +46,7 @@ https://sourceforge.net/projects/saxon/files/saxon6/
 xerces2-java                        docbook-xsl
 http://xerces.apache.org/xerces2-j/
 
+bindfs                              glib
+https://bindfs.org/
+
 # vim:ft=conf

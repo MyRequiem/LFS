@@ -71,11 +71,11 @@ dbus-glib
 enchant
 exempi
 fftw
-glib
+glib                                (+)
 glibmm
 gmime2
 gmime3
-gobject-introspection
+gobject-introspection               glib
 grantlee
 gsl
 gspell
@@ -122,7 +122,7 @@ libusb
 libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl
-libxslt                             (+) p11-kit, docbook-xsl
+libxslt                             (+) p11-kit, docbook-xsl, glib
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -130,7 +130,7 @@ mtdev
 node-js
 npth                                (+)
 nspr
-pcre                                (+)
+pcre                                (+) glib
 pcre2
 popt
 pth                                 (+) libgcrypt
@@ -179,9 +179,9 @@ woff2
 asciidoc
 bogofilter
 compface
-desktop-file-utils
+desktop-file-utils                  glib
 graphviz
-gtk-doc                             libtasn1, p11-kit
+gtk-doc                             libtasn1, p11-kit, glib
 hd2u
 highlight
 ibus
@@ -193,7 +193,7 @@ pinentry
 rarian
 rep-gtk
 screen
-shared-mime-info
+shared-mime-info                    glib
 sharutils                           (+) berkeley-db
 telepathy-logger
 telepathy-mission-control
@@ -211,7 +211,7 @@ bubblewrap
 colord
 cpio
 cups-pk-helper
-dbus
+dbus                                glib
 elogind
 blocaled
 fcron
@@ -247,7 +247,7 @@ doxygen
 expect
 gcc
 gc
-gdb                                 python3
+gdb                                 python3, glib
 git
 guile
 librep
@@ -1062,10 +1062,10 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils
-docbook-xml                         (+) libxslt
+docbook-xml                         (+) libxslt, glib
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt
+docbook-xsl                         (+) libxslt, glib
 itstool
 xmlto
 a2ps
