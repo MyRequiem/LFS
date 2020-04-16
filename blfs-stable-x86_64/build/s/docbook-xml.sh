@@ -1,49 +1,35 @@
 #! /bin/bash
 
 PRGNAME="docbook-xml"
-VERSION="4.5"
 
-### docbook-xml
+### docbook-xml (document type definitions)
 # Пакет содержит определения типов документов для проверки файлов данных XML по
 # набору правил DocBook. Применяется для структурирования книг и документации
 # программного обеспечения в соответствии со стандартом.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/pst/docbook.html
+# http://www.linuxfromscratch.org/blfs/view/stable/pst/docbook.html
+
 # Home page: http://www.docbook.org/xml/
-# Download:  http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
+# Download:  https://www.oasis-open.org/docbook/xml/4.5/docbook-xml-4.5.zip
 
 # Required: libxml2
 #           sgml-common
-#           unzip
+#           unzip (для распаковки архива с исходниками)
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}"/{etc/xml,"usr/share/xml/docbook/xml-dtd-${VERSION}"}
 
-SOURCES="/sources"
-BUILD_DIR="${SOURCES}/build"
-mkdir -p "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-rm -rf "${PRGNAME}-${VERSION}"
-
-unzip -d "${PRGNAME}-${VERSION}" "${SOURCES}/"${PRGNAME}-${VERSION}".zip"
-cd "${PRGNAME}-${VERSION}" || exit 1
-chown -R root:root .
-
-install -v -d -m755 "/usr/share/xml/docbook/xml-dtd-${VERSION}"
-install -v -d -m755 "${TMP_DIR}/usr/share/xml/docbook/xml-dtd-${VERSION}"
+XML_DTD="/usr/share/xml/docbook/xml-dtd-${VERSION}"
+install -v -d -m755 "${XML_DTD}"
 install -v -d -m755 /etc/xml
-install -v -d -m755 "${TMP_DIR}/etc/xml"
 
-cp -v -af docbook.cat ./*.dtd ent/ ./*.mod \
-    "/usr/share/xml/docbook/xml-dtd-${VERSION}"
-cp -v -af docbook.cat ./*.dtd ent/ ./*.mod \
-    "${TMP_DIR}/usr/share/xml/docbook/xml-dtd-${VERSION}"
+cp -v -af docbook.cat ./*.dtd ent/ ./*.mod "${XML_DTD}"
+cp -v -af docbook.cat ./*.dtd ent/ ./*.mod "${TMP_DIR}${XML_DTD}"
 
 if [ ! -e /etc/xml/docbook ]; then
     xmlcatalog --noout --create /etc/xml/docbook
@@ -115,7 +101,6 @@ xmlcatalog --noout --add "delegateURI" \
     "file:///etc/xml/docbook" \
     /etc/xml/catalog
 
-mkdir -pv "${TMP_DIR}/etc/xml"
 cp -vR /etc/xml/* "${TMP_DIR}/etc/xml/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -127,7 +112,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to utilize transformations already written for that standard.
 #
 # Home page: http://www.docbook.org/xml/
-# Download:  http://www.docbook.org/xml/${VERSION}/${PRGNAME}-${VERSION}.zip
+# Download:  https://www.oasis-open.org/docbook/xml/${VERSION}/${PRGNAME}-${VERSION}.zip
 #
 EOF
 

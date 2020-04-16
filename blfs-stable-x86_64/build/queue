@@ -47,8 +47,8 @@ n/make-ca.sh
 n/curl.sh
 d/cmake.sh
 s/sgml-common.sh
-
 s/docbook-xml.sh
+
 a/zip.sh
 s/docbook-xsl-nons.sh
 l/pcre.sh

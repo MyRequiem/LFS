@@ -121,7 +121,7 @@ libunistring
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive, libxslt
+libxml2                             (+) libarchive, libxslt, docbook-xml
 libxslt                             (+) p11-kit
 libwacom
 libyaml
@@ -233,7 +233,7 @@ sg3-utils
 sysstat
 udisks
 unrar
-unzip                               (+)
+unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell
@@ -1055,14 +1055,14 @@ ghostscript
 gutenprint
 sane
 xsane
-sgml-common                         (+)
+sgml-common                         (+) docbook-xml
 docbook3
 docbook4
 opensp
 openjade
 docbook-dsssl
 docbook-utils
-docbook-xml45                       libxslt
+docbook-xml                         (+) libxslt
 docbook-xml50
 docbook-xml51
 docbook-xsl                         libxslt
