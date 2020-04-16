@@ -2,27 +2,26 @@
 
 PRGNAME="libgcrypt"
 
-### libgcrypt
+### libgcrypt (General purpose crypto library)
 # Криптобиблиотека общего назначения, основанная на коде, используемом в GnuPG.
 # Библиотека предоставляет интерфейс высокого уровня для криптографии с
 # использованием расширяемого и гибкого API
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libgcrypt.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libgcrypt.html
 
 # Home page: https://gnupg.org/software/libgcrypt/index.html
 # Download:  https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.5.tar.bz2
 
 # Required: libgpg-error
 # Optional: pth
-#           texlive (для создания документации в формате pdf и ps)
+#           texlive или install-tl-unx (для создания pdf и ps документации)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 ./configure \
@@ -30,13 +29,13 @@ mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 make || exit 1
 
-# собираем документацию в формате html и txt
+# собираем документацию в формате html и plaintext
 make -C doc html
 makeinfo --html --no-split -o doc/gcrypt_nochunks.html doc/gcrypt.texi
 makeinfo --plaintext       -o doc/gcrypt.txt           doc/gcrypt.texi
 
-# если в системе установлен texlive, то можно собрать документацию в формате
-# pdf и ps
+# если в системе установлен пакет texlive или install-tl-unx, то можно собрать
+# документацию в формате pdf и ps
 # make -C doc pdf ps
 
 # make check
@@ -45,12 +44,12 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 install -v -dm755   "${DOCS}/html"
+install -v -m644 doc/gcrypt.html/* "${DOCS}/html"
+install -v -m644 doc/gcrypt.html/* "${TMP_DIR}${DOCS}/html"
+
 install -v -m644    README doc/{README.apichanges,fips*,libgcrypt*} "${DOCS}"
 install -v -m644    README doc/{README.apichanges,fips*,libgcrypt*} \
     "${TMP_DIR}${DOCS}"
-
-install -v -m644 doc/gcrypt.html/* "${DOCS}/html"
-install -v -m644 doc/gcrypt.html/* "${TMP_DIR}${DOCS}/html"
 
 install -v -m644 doc/gcrypt_nochunks.html "${DOCS}"
 install -v -m644 doc/gcrypt_nochunks.html "${TMP_DIR}${DOCS}"

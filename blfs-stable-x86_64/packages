@@ -95,7 +95,7 @@ libbytesize
 libcroco
 libdaemon
 libgcrypt
-libgpg-error                        (+) libassuan
+libgpg-error                        (+) libassuan, libgcrypt
 libgrss
 libgsf
 libgudev
@@ -133,7 +133,7 @@ nspr
 pcre
 pcre2
 popt
-pth                                 (+)
+pth                                 (+) libgcrypt
 ptlib
 qca
 talloc
@@ -1075,8 +1075,8 @@ epdfview
 fop
 mupdf
 paps
-install-tl-unx                      libassuan
-texlive                             libassuan
+install-tl-unx                      libassuan, libgcrypt
+texlive                             libassuan, libgcrypt
 asymptote
 biber
 dvisvgm
