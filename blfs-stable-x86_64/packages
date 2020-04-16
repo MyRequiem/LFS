@@ -130,7 +130,7 @@ mtdev
 node-js
 npth                                (+)
 nspr
-pcre
+pcre                                (+)
 pcre2
 popt
 pth                                 (+) libgcrypt
@@ -439,7 +439,7 @@ swig
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre
 yasm
 --- other programming tools ---
 ctags

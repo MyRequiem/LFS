@@ -2,26 +2,25 @@
 
 PRGNAME="pcre"
 
-### PCRE
+### PCRE (Perl-compatible regular expression library)
 # Совместимые с Perl библиотеки регулярных выражений, которые используются для
 # реализации сопоставления с шаблоном регулярного выражения, используя тот же
 # синтаксис и семантику что и в Perl 5
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/pcre.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/pcre.html
 
 # Home page: https://www.pcre.org/
-# Download:  https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.bz2
+# Download:  https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
 
 # Required: no
 # Optional: valgrind
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}/lib"
 
 # включает поддержку Unicode и код для обработки UTF-8/16/32 символов
 #    --enable-unicode-properties
@@ -35,6 +34,9 @@ mkdir -pv "${TMP_DIR}"
 #    --enable-pcregrep-libbz2
 # добавляет функции редактирования строк и истории в программу pcretest
 #    --enable-pcretest-libreadline
+# включает компиляцию "Just-in-time", что может значительно ускорить
+# сопоставление с паттерном
+#    --enable-jit
 ./configure                       \
     --prefix=/usr                 \
     --enable-unicode-properties   \
@@ -44,6 +46,7 @@ mkdir -pv "${TMP_DIR}"
     --enable-pcregrep-libbz2      \
     --enable-pcretest-libreadline \
     --disable-static              \
+    --enable-jit                  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -54,7 +57,6 @@ make install DESTDIR="${TMP_DIR}"
 # переместим библиотеку PCRE в корень файловой системы /lib, чтобы она была
 # доступна в случае переустановки grep с поддержкой PCRE
 mv -v /usr/lib/libpcre.so.* /lib
-mkdir -pv "${TMP_DIR}/lib"
 mv -v "${TMP_DIR}/usr/lib/libpcre.so."* "${TMP_DIR}/lib"
 
 ln -sfv "../../lib/$(readlink /usr/lib/libpcre.so)" /usr/lib/libpcre.so
