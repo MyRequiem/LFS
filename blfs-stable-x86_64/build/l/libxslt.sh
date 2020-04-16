@@ -12,7 +12,7 @@ PRGNAME="libxslt"
 # Download:  http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz
 
 # Required:    libxml2
-# Recommended: docbook-xml45
+# Recommended: docbook-xml
 #              docbook-xsl
 # Optional:    libgcrypt
 #              python2-libxml2
