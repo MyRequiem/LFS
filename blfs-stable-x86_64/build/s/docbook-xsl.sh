@@ -3,7 +3,7 @@
 PRGNAME="docbook-xsl"
 ARCH_NAME="${PRGNAME}-nons"
 
-### docbook-xsl
+### docbook-xsl (Stylesheets package)
 # Таблицы стилей XSL которые нужны для выполнения преобразований в файлах XML
 # DocBook
 
