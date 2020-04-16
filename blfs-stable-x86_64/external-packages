@@ -40,4 +40,10 @@ https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/
 dmalloc                             cyrus-sasl
 https://dmalloc.com/
 
+saxon6                              docbook-xsl
+https://sourceforge.net/projects/saxon/files/saxon6/
+
+xerces2-java                        docbook-xsl
+http://xerces.apache.org/xerces2-j/
+
 # vim:ft=conf

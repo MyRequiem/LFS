@@ -54,8 +54,8 @@ n/make-ca.sh
 n/curl.sh
 d/cmake.sh
 a/zip.sh
+s/docbook-xsl.sh
 
-s/docbook-xsl-nons.sh
 l/pcre.sh
 l/glib.sh
 l/gobject-introspection.sh

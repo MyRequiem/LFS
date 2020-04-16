@@ -121,8 +121,8 @@ libunistring
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive, libxslt, docbook-xml
-libxslt                             (+) p11-kit
+libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl
+libxslt                             (+) p11-kit, docbook-xsl
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -237,7 +237,7 @@ unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell
-zip                                 (+)
+zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
 clisp
@@ -404,7 +404,7 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2
+python2                             (+) libxml2, docbook-xsl
 python3                             (+) libxml2
 --- python modules ---
 python-d-bus-python
@@ -420,7 +420,7 @@ python-pygobject2
 python-pygobject3
 python-pygtk
 python-pyxdg
-python2-libxml2                     libxslt
+python2-libxml2                     libxslt, docbook-xsl
 python-lxml
 python-markupsafe
 python-jinja2
@@ -430,7 +430,7 @@ python-scour
 python-six
 python-pyyaml
 --- end of python modules ---
-ruby
+ruby                                docbook-xsl
 rustc
 scons
 slang
@@ -446,7 +446,7 @@ ctags
 --- end of other programming tools ---
 java                                (-) make-ca
 openjdk                             make-ca, cyrus-sasl
-apache-ant
+apache-ant                          docbook-xsl
 dhcpcd
 dhcp
 bridge-utils
@@ -1065,7 +1065,7 @@ docbook-utils
 docbook-xml                         (+) libxslt
 docbook-xml50
 docbook-xml51
-docbook-xsl                         libxslt
+docbook-xsl                         (+) libxslt
 itstool
 xmlto
 a2ps
