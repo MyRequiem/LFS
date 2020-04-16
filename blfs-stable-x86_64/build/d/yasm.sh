@@ -2,24 +2,30 @@
 
 PRGNAME="yasm"
 
-### yasm
-#
+### yasm (complete rewrite of the NASM assembler)
+# Ассемблер, являющийся попыткой полностью переписать ассемблер NASM. Yasm
+# предлагает поддержку x86-64, которую NASM, возможно, не поддерживает должным
+# образом или не поддерживает полностью. Например, проект Xvid может создать
+# оптимизированный машинный код для x86-64 архитектуры, используя Yasm, но не
+# может сделать так при использовании NASM. Кроме Intel-синтаксиса,
+# применяемого в NASM, Yasm также поддерживает AT&T-синтаксис, распространённый
+# в Unix. Yasm построен «модульно», что позволяет легко добавлять новые формы
+# синтаксиса, препроцессоры и т. п.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/yasm.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/yasm.html
 
 # Home page: http://www.tortall.net/projects/yasm/
 # Download:  http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 
 # Required: no
 # Optional: python2
-#           cython
+#           cython (https://cython.org/)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исключаем сборку vsyasm и ytasm, которые используются только в Windows
@@ -30,7 +36,6 @@ sed -i 's#) ytasm.*#)#' Makefile.in
 
 make || exit 1
 # make check
-
 make install
 make install DESTDIR="${TMP_DIR}"
 

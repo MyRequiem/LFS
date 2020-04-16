@@ -52,4 +52,7 @@ https://bindfs.org/
 markdown                            gobject-introspection
 https://pypi.org/project/Markdown/
 
+cython                              yasm
+https://cython.org/
+
 # vim:ft=conf

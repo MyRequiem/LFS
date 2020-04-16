@@ -404,7 +404,7 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2, docbook-xsl
+python2                             (+) libxml2, docbook-xsl, yasm
 python3                             (+) libxml2
 --- python modules ---
 python-d-bus-python
@@ -440,7 +440,7 @@ tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
 valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre
-yasm
+yasm                                (+)
 --- other programming tools ---
 ctags
 --- end of other programming tools ---
