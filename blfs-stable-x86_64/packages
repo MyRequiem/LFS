@@ -237,7 +237,7 @@ unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell
-zip
+zip                                 (+)
 autoconf2
 cbindgen
 clisp
