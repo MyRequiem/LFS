@@ -94,8 +94,8 @@ libblockdev
 libbytesize
 libcroco
 libdaemon
-libgcrypt
-libgpg-error                        (+) libassuan, libgcrypt
+libgcrypt                           (+)
+libgpg-error                        (+) libassuan, libgcrypt, libksba
 libgrss
 libgsf
 libgudev
@@ -104,7 +104,7 @@ libical
 libidn
 libidn2                             curl
 libiodbc
-libksba
+libksba                             (+)
 liblinear
 libmbim
 libnfsidmap
@@ -439,7 +439,7 @@ swig
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
-valgrind                            libtasn1, curl, python2, python3, libxml2
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba
 yasm
 --- other programming tools ---
 ctags

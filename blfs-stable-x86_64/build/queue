@@ -40,8 +40,8 @@ n/libassuan.sh
 n/pth.sh
 n/npth.sh
 n/libgcrypt.sh
-
 n/libksba.sh
+
 l/libxslt.sh
 s/sgml-common.sh
 s/docbook-xml.sh

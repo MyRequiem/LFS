@@ -2,10 +2,10 @@
 
 PRGNAME="libksba"
 
-### libksba
+### libksba (X.509 & CMS library for S/MIME and TLS)
 # Библиотека для работы с сертификатами X.509
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libksba.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libksba.html
 
 # Home page: https://gnupg.org/software/libksba/index.html
 # Download:  https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2
@@ -13,12 +13,12 @@ PRGNAME="libksba"
 # Required: libgpg-error
 # Optional: valgrind
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
@@ -47,8 +47,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # blocks of S/MIME and TLS. The library does not rely on another cryptographic
 # library but provides hooks for easy integration with Libgcrypt.
 #
-# Home page: https://gnupg.org/software/libksba/index.html
-# Download:  https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.3.5.tar.bz2
+# Home page: https://gnupg.org/software/${PRGNAME}/index.html
+# Download:  https://www.gnupg.org/ftp/gcrypt/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 
