@@ -49,4 +49,7 @@ http://xerces.apache.org/xerces2-j/
 bindfs                              glib
 https://bindfs.org/
 
+markdown                            gobject-introspection
+https://pypi.org/project/Markdown/
+
 # vim:ft=conf

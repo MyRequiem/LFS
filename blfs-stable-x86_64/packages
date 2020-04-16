@@ -71,11 +71,11 @@ dbus-glib
 enchant
 exempi
 fftw
-glib                                (+)
+glib                                (+) gobject-introspection
 glibmm
 gmime2
 gmime3
-gobject-introspection               glib
+gobject-introspection               (+) glib
 grantlee
 gsl
 gspell
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz
-gtk-doc                             libtasn1, p11-kit, glib
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection
 hd2u
 highlight
 ibus
@@ -424,7 +424,7 @@ python2-libxml2                     libxslt, docbook-xsl
 python-lxml
 python-markupsafe
 python-jinja2
-python-mako
+python3-mako                        gobject-introspection
 python-python-slip
 python-scour
 python-six
@@ -639,7 +639,7 @@ atk
 atkmm
 at-spi2-core
 at-spi2-atk
-cairo
+cairo                               gobject-introspection
 cairomm
 cogl
 clutter
@@ -850,7 +850,7 @@ vte058
 yelp-xsl
 gconf
 geocode-glib
-gjs
+gjs                                 gobject-introspection
 gnome-autoar
 gnome-desktop
 gnome-menus

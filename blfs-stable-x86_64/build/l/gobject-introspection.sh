@@ -2,27 +2,28 @@
 
 PRGNAME="gobject-introspection"
 
-### gobject-introspection
-#
+### gobject-introspection (GObject interface introspection library)
+# Проект для самоанализа API C-библиотек и предоставления машиночитаемых
+# данных. Эти данные могут быть использованы для автоматической генерации кода
+# для привязок, проверки API и генерация документации.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/gobject-introspection.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/gobject-introspection.html
 
 # Home page: http://live.gnome.org/GObjectIntrospection
-# Download:  http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.60/gobject-introspection-1.60.2.tar.xz
+# Download:  http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
 
 # Required: glib
-# Optional: cairo
-#           gjs
-#           gtk-doc
-#           mako
-#           markdown
+# Optional: cairo    (для тестов, см. опции конфигурации ниже)
+#           gjs      (для прохождния одного теста)
+#           gtk-doc  (для сборки документации, см. опции конфигурации ниже)
+#           python3-mako (для сборки _giscanner.cpython-37m-x86_64-linux-gnu.so)
+#           markdown (для прохождния одного теста) https://pypi.org/project/Markdown/
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir -pv build
@@ -32,7 +33,16 @@ meson \
     --prefix=/usr \
     .. || exit 1
 
+# если установлен пакет gtk-doc, то можно собрать gtk-документацию путем
+# добавления опции
+#    -Dgtk_doc=true
+# если установлен пакет gtk-doc, то для сборки утилиты g-ir-doc-tool добавляем
+#    -Ddoctool=true
+# если установлен пакет cairo, то для тестов добавляем опцию
+#    -Dcairo=true
+
 ninja || exit 1
+# для одного теста (test_docwriter) требуется пакет markdown
 # ninja test -k0
 ninja install
 DESTDIR="${TMP_DIR}" ninja install

@@ -62,8 +62,11 @@ n/curl.sh
 d/cmake.sh
 l/pcre.sh
 l/glib.sh
-
 l/gobject-introspection.sh
+
+l/glib.sh
+l/gobject-introspection.sh
+
 l/atk.sh
 d/yasm.sh
 l/libjpeg-turbo.sh
