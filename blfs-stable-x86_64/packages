@@ -1055,7 +1055,7 @@ ghostscript
 gutenprint
 sane
 xsane
-sgml-common
+sgml-common                         (+)
 docbook3
 docbook4
 opensp
