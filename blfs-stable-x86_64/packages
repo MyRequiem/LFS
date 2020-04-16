@@ -94,7 +94,7 @@ libblockdev
 libbytesize
 libcroco
 libdaemon
-libgcrypt                           (+)
+libgcrypt                           (+) libxslt
 libgpg-error                        (+) libassuan, libgcrypt, libksba
 libgrss
 libgsf
@@ -121,8 +121,8 @@ libunistring
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive
-libxslt                             p11-kit
+libxml2                             (+) libarchive, libxslt
+libxslt                             (+) p11-kit
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -420,7 +420,7 @@ python-pygobject2
 python-pygobject3
 python-pygtk
 python-pyxdg
-python2-libxml2
+python2-libxml2                     libxslt
 python-lxml
 python-markupsafe
 python-jinja2
@@ -1062,10 +1062,10 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils
-docbook-xml45
+docbook-xml45                       libxslt
 docbook-xml50
 docbook-xml51
-docbook-xsl
+docbook-xsl                         libxslt
 itstool
 xmlto
 a2ps

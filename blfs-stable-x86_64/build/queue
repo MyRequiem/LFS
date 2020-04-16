@@ -41,8 +41,10 @@ n/pth.sh
 n/npth.sh
 n/libgcrypt.sh
 n/libksba.sh
-
 l/libxslt.sh
+
+n/p11-kit.sh
+
 s/sgml-common.sh
 s/docbook-xml.sh
 a/zip.sh

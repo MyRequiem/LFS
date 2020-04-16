@@ -2,36 +2,31 @@
 
 PRGNAME="libxslt"
 
-### libxslt
+### libxslt (XML transformation library)
 # Библиотеки поддержки XSLT для libxml2
 # (XSLT - язык, используемый для преобразования документов XML)
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libxslt.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libxslt.html
 
 # Home page: http://xmlsoft.org/XSLT/
-# Download:  http://xmlsoft.org/sources/libxslt-1.1.33.tar.gz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.0/libxslt-1.1.33-security_fix-1.patch
+# Download:  http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz
 
 # Required:    libxml2
-# Recommended: docbook-xml
+# Recommended: docbook-xml45
 #              docbook-xsl
 # Optional:    libgcrypt
-#              libxml2 (для Python2)
+#              python2-libxml2
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-# патчим (исправление безопасности)
-patch -Np1 -i /sources/libxslt-1.1.33-security_fix-1.patch || exit 1
 
 # увеличим предел рекурсии с 3000 до 5000 в libxslt (необходимо некоторым
 # пакетам для их документации)
-sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml}
+sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml} || exit 1
 
 ./configure       \
     --prefix=/usr \
