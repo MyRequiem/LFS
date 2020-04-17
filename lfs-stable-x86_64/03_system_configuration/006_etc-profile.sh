@@ -45,9 +45,10 @@ export HISTSIZE=5000
 export HISTCONTROL=ignoreboth:erasedups
 
 # some defaults for graphical systems
-export XDG_DATA_DIRS=\${XDG_DATA_DIRS:-/usr/share/}
-export XDG_CONFIG_DIRS=\${XDG_CONFIG_DIRS:-/etc/xdg/}
-export XDG_RUNTIME_DIR=\${XDG_RUNTIME_DIR:-/tmp/xdg-\$USER}
+export XDG_DATA_DIRS=/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_CONFIG_HOME=\${HOME}/.config
+export XDG_RUNTIME_DIR=/tmp/xdg-runtime-\${USER}
 
 export MANPATH=/usr/share/man:/usr/local/share/man
 export EDITOR=vim
