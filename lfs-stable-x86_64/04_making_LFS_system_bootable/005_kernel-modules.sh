@@ -28,6 +28,12 @@ cd "${SRC_DIR}" || exit 1
 
 NUMJOBS="$(($(nproc) + 1))"
 make -j"${NUMJOBS}" modules || exit 1
+
+# удалим модули с прошлой установки
+MODULE_DIR="/lib/modules/${VERSION}"
+[ -d "${MODULE_DIR}" ] && rm -rf "${MODULE_DIR}"
+
+# устанавливаем собранные модули
 make modules_install
 
 # чаще всего модули ядра загружаются автоматически, но так происходит не
@@ -66,6 +72,6 @@ cat << EOF > "${TARGET}"
 /etc/modprobe.d/usb.conf
 EOF
 
-find "/lib/modules/${VERSION}" | sort >> "${TARGET}"
+find "${MODULE_DIR}" | sort >> "${TARGET}"
 # удалим пустые строки
 sed -i '/^$/d' "${TARGET}"
