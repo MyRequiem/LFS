@@ -2,12 +2,12 @@
 
 PRGNAME="libpng"
 
-### libpng
+### libpng (Portable Network Graphics library)
 # Библиотеки, используемые другими программами для чтения и создания файлов
 # PNG. Формат PNG был разработан в качестве замены формата GIF и TIFF, со
 # многими улучшениями и расширениями.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libpng.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libpng.html
 
 # Home page: http://libpng.org/pub/png/libpng.html
 # Download:  https://downloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz
@@ -16,17 +16,17 @@ PRGNAME="libpng"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 # патч для включения функций анимации png (apng) в libpng (используется в
 # Firefox, Seamonkey и Thunderbird):
-gzip -cd "/sources/${PRGNAME}-${VERSION}-apng.patch.gz" | \
+gzip -cd "${SOURCES}/${PRGNAME}-${VERSION}-apng.patch.gz" | \
     patch -p1 --verbose || exit 1
 
 ./configure       \
@@ -38,10 +38,8 @@ make || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
-# docs
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+# документация
 mkdir -pv "${DOCS}"
-mkdir -pv "${TMP_DIR}${DOCS}"
 cp -v README libpng-manual.txt "${DOCS}"
 cp -v README libpng-manual.txt "${TMP_DIR}${DOCS}"
 

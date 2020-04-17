@@ -161,7 +161,7 @@ libgxps
 libjpeg-turbo                       (+)
 libmng
 libmypaint
-libpng
+libpng                              (+)
 libraw
 librsvg
 libtiff

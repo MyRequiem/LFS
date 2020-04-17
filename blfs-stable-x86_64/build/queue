@@ -68,8 +68,8 @@ l/gobject-introspection.sh
 l/atk.sh
 d/yasm.sh
 l/libjpeg-turbo.sh
-
 l/libpng.sh
+
 l/shared-mime-info.sh
 l/libcroco.sh
 l/libunistring.sh
