@@ -117,7 +117,7 @@ libssh2                             curl
 libstatgrab
 libtasn1                            (+) p11-kit
 libunique
-libunistring
+libunistring                        (+)
 libusb
 libuv                               (+) cmake
 libxkbcommon
@@ -1075,8 +1075,8 @@ epdfview
 fop
 mupdf
 paps
-install-tl-unx                      libassuan, libgcrypt
-texlive                             libassuan, libgcrypt
+install-tl-unx                      libassuan, libgcrypt, libunistring
+texlive                             libassuan, libgcrypt, libunistring
 asymptote
 biber
 dvisvgm

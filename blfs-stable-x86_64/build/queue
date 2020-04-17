@@ -76,8 +76,8 @@ l/gobject-introspection.sh
 l/atk.sh
 l/shared-mime-info.sh
 l/libcroco.sh
-
 l/libunistring.sh
+
 n/gnutls.sh
 n/gpgme.sh
 s/haveged.sh

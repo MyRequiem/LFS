@@ -2,24 +2,23 @@
 
 PRGNAME="libunistring"
 
-### libunistring
+### libunistring (GNU Unicode string library)
 # Библиотека, предоставляющая функции для работы со строками в формате Unicode
 # a так же для работы со строками C в соответствии со стандартом Unicode
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libunistring.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libunistring.html
 
 # Home page: http://www.gnu.org/s/libunistring
 # Download:  https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 
 # Required: no
-# Optional: texlive or install-tl-unx (to rebuild the documentation)
+# Optional: texlive or install-tl-unx (для пересборки документации)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure          \
