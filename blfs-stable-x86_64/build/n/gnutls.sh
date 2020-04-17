@@ -7,10 +7,10 @@ PRGNAME="gnutls"
 # приложениям API для обеспечения надежной связи по протоколам транспортного
 # уровня
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/gnutls.html
+# http://www.linuxfromscratch.org/blfs/view/svn/postlfs/gnutls.html
 
 # Home page: http://www.gnu.org/software/gnutls/
-# Download:  https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.9.tar.xz
+# Download:  https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz
 
 # Required:    nettle
 # Recommended: make-ca
@@ -18,31 +18,41 @@ PRGNAME="gnutls"
 #              libtasn1
 #              p11-kit
 # Optional:    doxygen
-#              gtk-doc
+#              gtk-doc (для сборки API документации, см. опции ниже)
 #              guile
 #              libidn or libidn2
-#              net-tools (used during the test suite)
+#              net-tools (для тестов)
 #              texlive or install-tl-unx
-#              unbound (to build the DANE library)
-#              valgrind (used during the test suite)
-#              autogen
-#              cmocka
-#              datefudge (for test suite if the DANE library is built)
-#              trousers (Trusted Platform Module support)
+#              unbound (для создания libgnutls-dane.so и утилиты danetool)
+#              valgrind (для тестов)
+#              autogen (https://ftp.gnu.org/gnu/autogen/)
+#              cmocka (для тестов библиотеки DANE) https://cmocka.org/
+#              datefudge (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
+#              trousers (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/gtk-doc/html/gnutls"
+mkdir -p "${TMP_DIR}${DOCS}"
 
+# GnuTLS не поддерживает guile, поэтому отключаем его
+#    --disable-guile
+# включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
+#    --enable-openssl-compatibility
+# указываем GnuTLS использовать хранилище доверия PKCS#11 по умолчанию
+#    --with-default-trust-store-pkcs11="pkcs11:"
 ./configure                                     \
     --prefix=/usr                               \
     --disable-guile                             \
+    --enable-openssl-compatibility              \
     --with-default-trust-store-pkcs11="pkcs11:" \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+
+# если установлен gtk-doc, можно собрать API документацию добавив опцию
+#    --enable-gtk-doc
 
 make || exit 1
 # make check
@@ -51,9 +61,7 @@ make install DESTDIR="${TMP_DIR}"
 
 # документация
 make -C doc/reference install-data-local
-mkdir -p "${TMP_DIR}/usr/share/gtk-doc/html/gnutls"
-cp -Rv /usr/share/gtk-doc/html/gnutls/* \
-    "${TMP_DIR}/usr/share/gtk-doc/html/gnutls"
+cp -Rv "${DOCS}"/* "${TMP_DIR}${DOCS}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

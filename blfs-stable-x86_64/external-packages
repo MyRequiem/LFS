@@ -55,4 +55,16 @@ https://pypi.org/project/Markdown/
 cython                              yasm
 https://cython.org/
 
+autogen                             gnutls
+https://ftp.gnu.org/gnu/autogen/
+
+cmocka                              gnutls
+https://cmocka.org/
+
+datefudge                           gnutls
+http://ftp.debian.org/debian/pool/main/d/datefudge/
+
+trousers                            gnutls
+https://sourceforge.net/projects/trousers/files/
+
 # vim:ft=conf

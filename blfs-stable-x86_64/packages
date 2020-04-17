@@ -5,12 +5,12 @@
 # ---------------------
 
 kernel-firmware                     (+)
-make-ca                             (+) p11-kit, curl
+make-ca                             (+) p11-kit, curl, gnutls
 cracklib
 cryptsetup
 cyrus-sasl                          (+)
 gnupg
-gnutls                              curl
+gnutls                              (+) curl
 gpgme
 haveged
 iptables
@@ -19,10 +19,10 @@ linux-pam                           cyrus-sasl
 liboauth
 libpwquality
 mit-kerberos-v5                     curl, cyrus-sasl
-nettle                              (+) libarchive
+nettle                              (+) libarchive, gnutls
 nss                                 p11-kit, make-ca
 openssh
-p11-kit                             (+) make-ca
+p11-kit                             (+) make-ca, gnutls
 polkit
 shadow
 ssh-askpass
@@ -101,8 +101,8 @@ libgsf
 libgudev
 libgusb
 libical
-libidn
-libidn2                             curl
+libidn                              gnutls
+libidn2                             curl, gnutls
 libiodbc
 libksba                             (+)
 liblinear
@@ -115,9 +115,9 @@ libsigc++
 libsigsegv
 libssh2                             curl
 libstatgrab
-libtasn1                            (+) p11-kit
+libtasn1                            (+) p11-kit, gnutls
 libunique
-libunistring                        (+)
+libunistring                        (+) gnutls
 libusb
 libuv                               (+) cmake
 libxkbcommon
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls
 hd2u
 highlight
 ibus
@@ -243,13 +243,13 @@ cbindgen
 clisp
 cmake                               (+) libjpeg-turbo
 dejagnu
-doxygen
+doxygen                             gnutls
 expect
 gcc
 gc
 gdb                                 python3, glib
 git
-guile
+guile                               gnutls
 librep
 llvm
 lua52
@@ -439,7 +439,7 @@ swig
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
@@ -453,7 +453,7 @@ bridge-utils
 cifs-utils
 iw
 ncftp
-net-tools
+net-tools                           gnutls
 nfs-utils
 ntp
 rpcbind
@@ -512,7 +512,7 @@ mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl
 openldap                            apr-util, curl, cyrus-sasl
-unbound
+unbound                             gnutls
 util-macros
 xorgproto
 libxau
@@ -1075,8 +1075,8 @@ epdfview
 fop
 mupdf
 paps
-install-tl-unx                      libassuan, libgcrypt, libunistring
-texlive                             libassuan, libgcrypt, libunistring
+install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls
+texlive                             libassuan, libgcrypt, libunistring, gnutls
 asymptote
 biber
 dvisvgm
