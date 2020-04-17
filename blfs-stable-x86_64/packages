@@ -12,7 +12,7 @@ cyrus-sasl                          (+)
 gnupg                               gpgme
 gnutls                              (+) curl
 gpgme                               (+)
-haveged
+haveged                             (+)
 iptables
 libcap
 linux-pam                           cyrus-sasl

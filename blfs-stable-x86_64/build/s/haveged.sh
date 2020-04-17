@@ -2,11 +2,11 @@
 
 PRGNAME="haveged"
 
-### Haveged
+### Haveged (daemon for generate stream of random numbers)
 # Демон, который генерирует непредсказуемый поток случайных чисел в канал
 # /dev/random
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/haveged.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/haveged.html
 
 # Home page: https://sourceforge.net/projects/haveged/
 # Download:  https://downloads.sourceforge.net/haveged/haveged-1.9.2.tar.gz
@@ -14,14 +14,14 @@ PRGNAME="haveged"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"                 || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"                 || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -31,13 +31,13 @@ make || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
-mkdir -pv    "/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v README "/usr/share/doc/${PRGNAME}-${VERSION}"
-cp -v README "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+# документация
+mkdir -pv    "${DOCS}"
+cp -v README "${DOCS}"
+cp -v README "${TMP_DIR}${DOCS}"
 
-# установим скрипт /etc/rc.d/init.d/haveged для запуска демона при старте
-# системы
+# установим скрипт /etc/rc.d/init.d/haveged для возможности запускать демон при
+# старте системы
 HAVEGED="/etc/rc.d/init.d/haveged"
 if [ -f "${HAVEGED}" ]; then
     mv "${HAVEGED}" "${HAVEGED}.old"
