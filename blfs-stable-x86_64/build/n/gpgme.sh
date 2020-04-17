@@ -8,33 +8,36 @@ PRGNAME="gpgme"
 # шифрования/дешифрования, цифровых подписей, их верификации и управления
 # ключами. В настоящее время библиотека служит интерфейсом к GnuPG
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/gpgme.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/gpgme.html
 
 # Home page: https://gnupg.org/software/gpgme/index.html
 # Download:  https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.13.1.tar.bz2
 
 # Required: libassuan
-# Optional: doxygen and graphviz (for API documentation)
-#           gnupg (if Qt or SWIG are installed, used during the testsuite)
+# Optional: doxygen (для сборки API документации)
+#           graphviz (для сборки API документации)
+#           gnupg (если qt5 или swig установлены, используется для тестов)
 #           clisp
 #           python2
-#           qt5 and/or swig (for language bindings)
+#           qt5  (для языковых привязок и сборки библиотеки libqgpgme.so)
+#           swig (для языковых привязок)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
     --disable-gpg-test || exit 1
 
+# если установлены пакеты gnupg, qt5 и swig, то для успешного прохождения
+# тестов убираем параметр конфигурации
+#    --disable-gpg-test
+
 make || exit 1
-# для тестов требуется пакет gnupg (который пока не установлен) и gpgme должен
-# быть собран без параметра конфигурации --disable-gpg-test
 # make check
 make install
 make install DESTDIR="${TMP_DIR}"

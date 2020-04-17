@@ -81,8 +81,8 @@ n/gnutls.sh
 n/curl.sh
 d/cmake.sh
 l/libjpeg-turbo.sh
-
 n/gpgme.sh
+
 s/haveged.sh
 n/iptables.sh
 l/nspr.sh

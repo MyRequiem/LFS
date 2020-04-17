@@ -9,9 +9,9 @@ make-ca                             (+) p11-kit, curl, gnutls
 cracklib
 cryptsetup
 cyrus-sasl                          (+)
-gnupg
+gnupg                               gpgme
 gnutls                              (+) curl
-gpgme
+gpgme                               (+)
 haveged
 iptables
 libcap
@@ -87,7 +87,7 @@ json-glib
 keyutils
 libaio
 libarchive                          (+) cmake
-libassuan                           (+)
+libassuan                           (+) gpgme
 libatasmart
 libatomic-ops
 libblockdev
@@ -180,7 +180,7 @@ asciidoc
 bogofilter
 compface
 desktop-file-utils                  glib
-graphviz
+graphviz                            gpgme
 gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls
 hd2u
 highlight
@@ -240,10 +240,10 @@ which                               (+) aspell
 zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
-clisp
+clisp                               gpgme
 cmake                               (+) libjpeg-turbo
 dejagnu
-doxygen                             gnutls
+doxygen                             gnutls, gpgme
 expect
 gcc
 gc
@@ -404,7 +404,7 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2, docbook-xsl, yasm
+python2                             (+) libxml2, docbook-xsl, yasm, gpgme
 python3                             (+) libxml2
 --- python modules ---
 python-d-bus-python
@@ -435,7 +435,7 @@ rustc
 scons
 slang
 subversion                          cmake
-swig
+swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
@@ -671,7 +671,7 @@ libnotify
 libxklavier
 pango
 pangomm
-qt5                                 cmake
+qt5                                 cmake, gpgme
 qtwebengine
 startup-notification
 webkitgtk+2
