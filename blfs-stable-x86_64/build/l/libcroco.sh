@@ -2,29 +2,32 @@
 
 PRGNAME="libcroco"
 
-### libcroco
+### libcroco (CSS2 parsing and manipulation library)
 # Библиотека для анализа и манипулирования CSS2
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libcroco.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libcroco.html
 
 # Home page: https://github.com/GNOME/libcroco
 # Download:  http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6/libcroco-0.6.13.tar.xz
 
 # Required: glib
 #           libxml2
-# Optional: gtk-doc
+# Optional: gtk-doc (для создания API документации, см. опции конфигурации ниже)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
+
+# если установлен пакет gtk-doc, до для создания API документации добавлям
+# опцию конфигурации
+#    --enable-gtk-doc
 
 make || exit 1
 # make -k test

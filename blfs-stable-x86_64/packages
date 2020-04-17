@@ -71,7 +71,7 @@ dbus-glib
 enchant
 exempi
 fftw
-glib                                (+) gobject-introspection, atk, shared-mime-info
+glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco
 glibmm
 gmime2
 gmime3
@@ -92,7 +92,7 @@ libatasmart
 libatomic-ops
 libblockdev
 libbytesize
-libcroco
+libcroco                            (+)
 libdaemon
 libgcrypt                           (+) libxslt
 libgpg-error                        (+) libassuan, libgcrypt, libksba
@@ -121,7 +121,7 @@ libunistring
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info
+libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info, libcroco
 libxslt                             (+) p11-kit, docbook-xsl, glib
 libwacom
 libyaml
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco
 hd2u
 highlight
 ibus
