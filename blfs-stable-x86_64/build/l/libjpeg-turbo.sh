@@ -2,12 +2,12 @@
 
 PRGNAME="libjpeg-turbo"
 
-### libjpeg-turbo
+### libjpeg-turbo (high-speed version of libjpeg)
 # Форк оригинального libjpeg, который использует SIMD для ускоренного сжатия и
 # распаковки JPEG. Библиотека реализует кодирование, декодирование и
 # транскодирование изображений JPEG
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/libjpeg.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libjpeg.html
 
 # Home page: http://libjpeg-turbo.virtualgl.org
 # Download:  https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.4.tar.gz
@@ -16,12 +16,11 @@ PRGNAME="libjpeg-turbo"
 #           nasm или yasm
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir -pv build
@@ -36,11 +35,13 @@ cmake                                                             \
     .. || exit 1
 
 make || exit 1
+
 # make test
 
 # при обновлении пакета не все ссылки на библиотеки в /usr/lib правильно
-# обновляются. Исправим это:
+# обновляются. Исправим это недоразумение:)
 rm -f /usr/lib/libjpeg.so*
+
 make install
 make install DESTDIR="${TMP_DIR}"
 

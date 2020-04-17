@@ -158,7 +158,7 @@ lcms
 lcms2
 libexif
 libgxps
-libjpeg-turbo
+libjpeg-turbo                       (+)
 libmng
 libmypaint
 libpng
@@ -241,7 +241,7 @@ zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
 clisp
-cmake                               (+)
+cmake                               (+) libjpeg-turbo
 dejagnu
 doxygen
 expect
@@ -255,7 +255,7 @@ llvm
 lua52
 lua53
 mercurial
-nasm
+nasm                                (-) libjpeg-turbo
 --- perl modules ---
 pelr-archive-zip
 pelr-autovivification
@@ -440,7 +440,7 @@ tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala
 valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre
-yasm                                (+)
+yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
 --- end of other programming tools ---
