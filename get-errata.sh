@@ -19,11 +19,19 @@ show_packages() {
 
     /bin/false > "${TMP}"
     for PKG in $2; do
-        PKGNAME="$(echo "${PKG}" | cut -d \> -f 2)"
-        URL="${BASE_URL}/$(echo "${PKG}" | cut -d / -f 3- | \
-            cut -d \" -f 1)"
-        # переводим всю строку в нижний регистр
-        echo "${PKGNAME} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
+        if [[ $PKG =~ http:// ]]; then
+            PKGNAME="$(echo "${PKG}" | rev | cut -d / -f 1 | rev | \
+                cut -d - -f 1,2)"
+            URL="$(echo "${PKG}" | cut -d \" -f 1)"
+            # переводим всю строку в нижний регистр
+            echo "${PKGNAME} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
+        else
+            PKGNAME="$(echo "${PKG}" | cut -d \> -f 2)"
+            URL="${BASE_URL}/$(echo "${PKG}" | cut -d / -f 3- | \
+                cut -d \" -f 1)"
+            # переводим всю строку в нижний регистр
+            echo "${PKGNAME} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
+        fi
     done
 
     {
@@ -37,9 +45,14 @@ show_packages() {
 }
 
 get_pkg_list() {
-    PKG_LIST="$(wget -q -O - "$1/errata/${VERSION}/" | \
+    PKG_LIST_1="$(wget -q -O - "$1/errata/${VERSION}/" | \
         grep '<a href="../../view/' | grep -v "development version of the" | \
         cut -d \" -f 2- | cut -d \< -f 1)"
+    PKG_LIST_2="$(wget -q -O - "$1/errata/${VERSION}/" | \
+        grep '<a href="http://linuxfromscratch.org/patches/downloads/' | \
+        grep -v "development version of the" | \
+        cut -d \" -f 2- | cut -d \< -f 1)"
+    PKG_LIST="${PKG_LIST_1} ${PKG_LIST_2}"
 }
 
 get_pkg_list "${ERRATA_LFS_URL}"
