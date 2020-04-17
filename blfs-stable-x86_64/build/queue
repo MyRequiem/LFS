@@ -69,8 +69,13 @@ l/atk.sh
 d/yasm.sh
 l/libjpeg-turbo.sh
 l/libpng.sh
-
+ap/itstool.sh
 l/shared-mime-info.sh
+l/glib.sh
+l/gobject-introspection.sh
+l/atk.sh
+l/shared-mime-info.sh
+
 l/libcroco.sh
 l/libunistring.sh
 n/gnutls.sh

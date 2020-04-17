@@ -2,24 +2,24 @@
 
 PRGNAME="shared-mime-info"
 
-### shared-mime-info
+### shared-mime-info (MIME database)
 # База данных MIME
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/shared-mime-info.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/shared-mime-info.html
 
 # Home page: https://freedesktop.org/wiki/Software/shared-mime-info/
-# Download:  https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/80c7f1afbcad2769f38aeb9ba6317a51/shared-mime-info-1.12.tar.xz
+# Download:  https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/shared-mime-info-1.15.tar.xz
 
 # Required: glib
+#           itstool
 #           libxml2
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The update-mime-database command, used to install new MIME data.
 #
 # Home page: https://freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://gitlab.freedesktop.org/xdg/${PRGNAME}/uploads/80c7f1afbcad2769f38aeb9ba6317a51/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.freedesktop.org/xdg/${PRGNAME}/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

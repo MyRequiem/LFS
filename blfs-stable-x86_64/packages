@@ -71,7 +71,7 @@ dbus-glib
 enchant
 exempi
 fftw
-glib                                (+) gobject-introspection, atk
+glib                                (+) gobject-introspection, atk, shared-mime-info
 glibmm
 gmime2
 gmime3
@@ -121,7 +121,7 @@ libunistring
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl
+libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info
 libxslt                             (+) p11-kit, docbook-xsl, glib
 libwacom
 libyaml
@@ -193,7 +193,7 @@ pinentry
 rarian
 rep-gtk
 screen
-shared-mime-info                    glib
+shared-mime-info                    (+) glib
 sharutils                           (+) berkeley-db
 telepathy-logger
 telepathy-mission-control
@@ -1062,11 +1062,11 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils
-docbook-xml                         (+) libxslt, glib
+docbook-xml                         (+) libxslt, glib, itstool
 docbook-xml50
 docbook-xml51
 docbook-xsl                         (+) libxslt, glib
-itstool
+itstool                             (+) shared-mime-info
 xmlto
 a2ps
 enscript
