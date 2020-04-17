@@ -29,6 +29,7 @@ PRGNAME="glib"
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
@@ -87,6 +88,62 @@ cp -vR ../docs/reference/{NEWS,gio,glib,gobject} "${TMP_DIR}${DOCS}"
 #    shared-mime-info
 #
 # ninja test
+
+# устанавливаем переменные среды GLIB_LOG_LEVEL (см. выше), G_FILENAME_ENCODING
+# и G_BROKEN_FILENAMES в /etc/profile.d/glib.sh
+GLIB_SH="/etc/profile.d/glib.sh"
+if [ -f "${GLIB_SH}" ]; then
+    mv "${GLIB_SH}" "${GLIB_SH}.old"
+fi
+
+cat << EOF > "${GLIB_SH}"
+#! /bin/bash
+
+# Begin ${GLIB_SH}
+
+# adds a capabiility to skip printing warning messages using an environment
+# variable: GLIB_LOG_LEVEL. The value of the variable is a digit that
+# correponds to:
+#    1 Alert
+#    2 Critical
+#    3 Error
+#    4 Warning
+#    5 Notice
+
+# for instance GLIB_LOG_LEVEL=4 will skip output of Waring and Notice messages
+# (and Info/Debug messages if they are turned on)
+
+export GLIB_LOG_LEVEL=4
+
+# G_FILENAME_ENCODING
+#       this environment variable can be set to a comma-separated list of
+#       character set names. GLib assumes that filenames are encoded in the
+#       first character set from that list rather than in UTF-8. The special
+#       token "@locale" can be used to specify the character set for the
+#       current locale
+#
+# G_BROKEN_FILENAMES
+#       if this environment variable is set, GLib assumes that filenames are
+#       in the locale encoding rather than in UTF-8
+
+# if the LANG you have set contains any form of "UTF-8", we will guess you are
+# using a UTF-8 locale. Hopefully we're correct
+if grep -iqE "export LANG=.*UTF-8\"$" /etc/profile.d/i18n.sh 2>/dev/null; then
+    export G_FILENAME_ENCODING="@locale"
+fi
+
+# it doesn't hurt to export this since G_FILENAME_ENCODING takes priority over
+# G_BROKEN_FILENAMES
+export G_BROKEN_FILENAMES=1
+
+# End ${GLIB_SH}
+EOF
+chmod 755 "${GLIB_SH}"
+
+mkdir -pv "${TMP_DIR}/etc/profile.d/"
+cp "${GLIB_SH}" "${TMP_DIR}/etc/profile.d/"
+
+config_file_processing "${GLIB_SH}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
