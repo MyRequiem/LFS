@@ -44,4 +44,3 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # remove-la-files.sh
 # echo "---------------"
 
-
