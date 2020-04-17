@@ -5,5 +5,6 @@
 zlib                                cmake
 bzip2                               cmake
 expat                               cmake
+kernel-generic                      iptables
 
 vim:ft=conf

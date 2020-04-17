@@ -67,4 +67,16 @@ http://ftp.debian.org/debian/pool/main/d/datefudge/
 trousers                            gnutls
 https://sourceforge.net/projects/trousers/files/
 
+bpf-utils                           iptables
+https://github.com/tadamdam/bpf-utils
+
+libnfnetlink                        iptables
+https://netfilter.org/projects/libnfnetlink/
+
+libnetfilter-conntrack              iptables
+https://netfilter.org/projects/libnetfilter_conntrack/
+
+nftables                            iptables
+https://netfilter.org/projects/nftables/
+
 # vim:ft=conf

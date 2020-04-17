@@ -2,58 +2,81 @@
 
 PRGNAME="iptables"
 
-### Iptables
+### Iptables (IP packet filter administration)
 # Стандартный интерфейс управления работой межсетевого экрана (брандмауэра)
-# netfilter ядра linux. Конфигурация ядра:
-#    CONFIG_NET=y
-#    CONFIG_NETFILTER=y
-#
-# Note:
-#    При обновлении ядра linux пакет необходимо пересобирать.
+# netfilter ядра Linux.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/iptables.html
+# http://www.linuxfromscratch.org/blfs/view/svn/postlfs/iptables.html
 
 # Home page: https://netfilter.org/projects/iptables/index.html
-# Download:  http://www.netfilter.org/projects/iptables/files/iptables-1.8.3.tar.bz2
+# Download:  http://www.netfilter.org/projects/iptables/files/iptables-1.8.4.tar.bz2
 
 # Required: no
-# Optional: nftables (http://www.netfilter.org/projects/nftables/index.html)
+# Optional: libpcap                (для сборки утилиты конфигурации nfsynproxy)
+#           bpf-utils              (для поддержки berkely packet filter) https://github.com/tadamdam/bpf-utils
+#           libnfnetlink           (для поддержки connlabel) https://netfilter.org/projects/libnfnetlink/
+#           libnetfilter-conntrack (для поддержки connlabel) https://netfilter.org/projects/libnetfilter_conntrack/
+#           nftables               (для поддержки connlabel) https://netfilter.org/projects/nftables/
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+# Брандмауэр в Linux управляется через интерфейс netfilter ядра Linux. Чтобы
+# использовать iptables для настройки netfilter, необходимы следующие параметры
+# конфигурации ядра:
+#
+#    CONFIG_NET=y
+#    CONFIG_NETFILTER=y
+#    CONFIG_NETFILTER_ADVANCED=y
+#    CONFIG_NF_CONNTRACK=y|m
+#    CONFIG_NETFILTER_XTABLES=y|m
+#    CONFIG_NETFILTER_XT_TARGET_LOG=y|m
+#    CONFIG_IP_NF_IPTABLES=y|m
+#
+# Note:
+#    При обновлении ядра linux пакет необходимо пересобирать
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
+
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/{usr/bin,lib}
 
-# отключаем сборку nftables compat, т.к. опциональная зависимость nftables не
-# установлена в системе
-#    --disable-nftables
-# собирать библиотеку libipq.so
+# собирать библиотеку libipq.so, которая используется некоторыми пакетами за
+# пределами BLFS
 #    --enable-libipq
 # все модули iptables установливаются в /lib/xtables
 #    --with-xtlibdir=/lib/xtables
-./configure \
+./configure            \
     --prefix=/usr      \
     --sbindir=/sbin    \
-    --disable-nftables \
     --enable-libipq    \
+    --disable-nftables \
     --with-xtlibdir=/lib/xtables || exit 1
+
+# если установлен пакет libpcap (опциональная зависимость), то добавляем
+# параметр
+#    --enable-nfsynproxy
+# для сборки утилиты конфигурации nfsynproxy
+#
+# если пакет nftables (опциональная зависимость) установлен, то параметр
+# конфигурации
+#    --disable-nftables
+# нужно убрать
 
 make || exit 1
 # пакет не содержит набора тестов
 make install
 make install DESTDIR="${TMP_DIR}"
 
+# ссылка в /usr/bin iptables-xml -> ../../sbin/xtables-legacy-multi
 ln -sfv ../../sbin/xtables-legacy-multi /usr/bin/iptables-xml
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sfv ../../sbin/xtables-legacy-multi iptables-xml
 )
 
-for FILE in ip4tc ip6tc ipq iptc xtables; do
+# переносим библиотеки из /usr/lib в /lib и создаем ссылки на них в /usr/lib
+for FILE in ip4tc ip6tc ipq xtables; do
     mv -v /usr/lib/lib${FILE}.so.* /lib
     ln -sfv "../../lib/$(readlink /usr/lib/lib${FILE}.so)" \
         "/usr/lib/lib${FILE}.so"
@@ -61,14 +84,19 @@ done
 
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
-    for FILE in ip4tc ip6tc ipq iptc xtables; do
+    for FILE in ip4tc ip6tc ipq xtables; do
         mv -v "lib${FILE}.so."* ../../lib/
         ln -sfv "../../lib/$(readlink lib${FILE}.so)" lib${FILE}.so
     done
 )
 
 # установим скрипт /etc/rc.d/init.d/iptables для запуска фаервола при старте
-# системы
+# системы, который имеет 4 параметра:
+#    start  - старт/рестарт iptables
+#    status - вывод списка всех применяемых в настоящий момент правил
+#    clear  - отключает все настроенные правила
+#    lock   - блокировка передачи любых пакетов, кроме loopback (lo) интерфейса
+
 IPTABLES="/etc/rc.d/init.d/iptables"
 if [ -f "${IPTABLES}" ]; then
     mv "${IPTABLES}" "${IPTABLES}.old"
@@ -82,14 +110,6 @@ fi
 
 config_file_processing "${IPTABLES}"
 
-# Скрипт управления iptables имеет 4 параметра:
-# /etc/rc.d/init.d/iptables start  - старт/рестарт iptables
-# /etc/rc.d/init.d/iptables status - вывод списка всех применяемых в настоящий
-#                                       момент правил
-# /etc/rc.d/init.d/iptables clear  - отключает все настроенные правила
-# /etc/rc.d/init.d/iptables lock   - блокировка передачи любых пакетов, кроме
-#                                       loopback (lo) интерфейса
-
 # Основной скрипт запуска iptables /etc/rc.d/rc.iptables
 RC_IPTABLES="/etc/rc.d/rc.iptables"
 if [ -f "${RC_IPTABLES}" ]; then
@@ -101,84 +121,76 @@ cat << EOF > "${RC_IPTABLES}"
 
 # Begin ${RC_IPTABLES}
 
-# Insert iptables modules (not needed if built into the kernel)
-# modprobe nf_conntrack
-# modprobe nf_conntrack_ftp
-# modprobe xt_conntrack
+# insert connection-tracking modules (not needed if built into the kernel)
 modprobe xt_LOG
-# modprobe xt_state
 
-# Enable broadcast echo Protection
+# enable broadcast echo Protection
 echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
 
-# Disable Source Routed Packets
+# disable Source Routed Packets
 echo 0 > /proc/sys/net/ipv4/conf/all/accept_source_route
+echo 0 > /proc/sys/net/ipv4/conf/default/accept_source_route
 
-# Enable TCP SYN Cookie Protection
+# enable TCP SYN Cookie Protection
 echo 1 > /proc/sys/net/ipv4/tcp_syncookies
 
-# Disable ICMP Redirect Acceptance
-echo 0 > /proc/sys/net/ipv4/conf/all/accept_redirects
+# disable ICMP Redirect Acceptance
+echo 0 > /proc/sys/net/ipv4/conf/default/accept_redirects
 
-# Don't send Redirect Messages
+# do not send Redirect Messages
+echo 0 > /proc/sys/net/ipv4/conf/all/send_redirects
 echo 0 > /proc/sys/net/ipv4/conf/default/send_redirects
 
-# Drop Spoofed Packets coming in on an interface where responses
+# drop Spoofed Packets coming in on an interface, where responses
 # would result in the reply going out a different interface.
+echo 1 > /proc/sys/net/ipv4/conf/all/rp_filter
 echo 1 > /proc/sys/net/ipv4/conf/default/rp_filter
 
-# Log packets with impossible addresses.
+# log packets with impossible addresses.
 echo 1 > /proc/sys/net/ipv4/conf/all/log_martians
+echo 1 > /proc/sys/net/ipv4/conf/default/log_martians
 
-# Be verbose on dynamic ip-addresses  (not needed in case of static IP)
+# be verbose on dynamic ip-addresses  (not needed in case of static IP)
 echo 2 > /proc/sys/net/ipv4/ip_dynaddr
 
-# Disable Explicit Congestion Notification
-# Too many routers are still ignorant
+# disable Explicit Congestion Notification
+# too many routers are still ignorant
 echo 0 > /proc/sys/net/ipv4/tcp_ecn
 
-# Set a known state
+# set a known state
 iptables -P INPUT   DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT  DROP
 
-# These lines are here in case rules are already in place and the
-# script is ever rerun on the fly. We want to remove all rules and
-# pre-existing user defined chains before we implement new rules.
+# these lines are here in case rules are already in place and the script is
+# ever rerun on the fly. We want to remove all rules and pre-existing user
+# defined chains before we implement new rules
 iptables -F
 iptables -X
 iptables -Z
 
 iptables -t nat -F
 
-# Allow local connections
+# allow local-only connections
 iptables -A INPUT  -i lo -j ACCEPT
-iptables -A OUTPUT -o lo -j ACCEPT
 
-# Allow forwarding if the initiated on the intranet
-iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A FORWARD ! -i eth0 -m conntrack --ctstate NEW       -j ACCEPT
+# free output on any interface to any ip for any service (equal to -P ACCEPT)
+iptables -A OUTPUT -j ACCEPT
 
-# Do masquerading
-# (not needed if intranet is not using private ip-addresses)
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# permit answers on already established connections and permit new connections
+# related to established ones (e.g. port mode ftp)
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
-# Log everything for debugging
-# (last of all rules, but before policy rules)
-iptables -A INPUT   -j LOG --log-prefix "FIREWALL:INPUT "
-iptables -A FORWARD -j LOG --log-prefix "FIREWALL:FORWARD "
-iptables -A OUTPUT  -j LOG --log-prefix "FIREWALL:OUTPUT "
-
-# Enable IP Forwarding
-echo 1 > /proc/sys/net/ipv4/ip_forward
+# log everything else. What's Windows' latest exploitable vulnerability?
+iptables -A INPUT -j LOG --log-prefix "FIREWALL:INPUT "
 
 # End ${RC_IPTABLES}
 EOF
 
 config_file_processing "${RC_IPTABLES}"
 cp "${RC_IPTABLES}" "${TMP_DIR}/etc/rc.d/"
-chmod 744 "${RC_IPTABLES}"
-chmod 744 "${TMP_DIR}${RC_IPTABLES}"
+chmod 700 "${RC_IPTABLES}"
+chmod 700 "${TMP_DIR}${RC_IPTABLES}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (IP packet filter administration)
