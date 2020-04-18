@@ -71,11 +71,11 @@ dbus-glib
 enchant
 exempi
 fftw                                (+)
-glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco
+glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco, json-glib
 glibmm
 gmime2
 gmime3
-gobject-introspection               (+) glib, atk
+gobject-introspection               (+) glib, atk, json-glib
 grantlee
 gsl
 gspell
@@ -83,7 +83,7 @@ icu                                 libxml2
 jansson
 js
 json-c                              (+)
-json-glib
+json-glib                           (+)
 keyutils
 libaio
 libarchive                          (+) cmake, ed
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz                            gpgme
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib
 hd2u
 highlight
 ibus

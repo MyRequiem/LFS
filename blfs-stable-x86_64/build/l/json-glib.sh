@@ -2,25 +2,24 @@
 
 PRGNAME="json-glib"
 
-### JSON-GLib
+### JSON-GLib (a de/serialization library for the JS Object Notation)
 # Библиотека, обеспечивающая поддержку сериализации и десериализации
 # формата JSON (JavaScript Object Notation), описанного в RFC 4627
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/json-glib.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/json-glib.html
 
 # Home page: http://live.gnome.org/JsonGlib
 # Download:  http://ftp.gnome.org/pub/gnome/sources/json-glib/1.4/json-glib-1.4.4.tar.xz
 
 # Required: glib
-# Optional: gobject-introspection (required ifbuilding GNOME)
+# Optional: gobject-introspection
 #           gtk-doc
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir build

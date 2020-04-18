@@ -100,8 +100,8 @@ ap/lzip.sh
 a/ed.sh
 l/fftw.sh
 l/json-c.sh
-
 l/json-glib.sh
+
 l/libaio.sh
 l/libatasmart.sh
 a/libgudev.sh
