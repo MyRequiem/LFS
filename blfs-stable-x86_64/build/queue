@@ -84,8 +84,8 @@ l/libjpeg-turbo.sh
 n/gpgme.sh
 s/haveged.sh
 n/iptables.sh
-
 l/nspr.sh
+
 l/nss.sh
 a/dosfstools.sh
 a/smartmontools.sh

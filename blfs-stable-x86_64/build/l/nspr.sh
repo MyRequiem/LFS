@@ -6,7 +6,7 @@ PRGNAME="nspr"
 # Абстрактная платформо-независимая библиотека для не GUI объектов операционных
 # систем.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/nspr.html
 
 # Home page: https://developer.mozilla.org/ru/docs/NSPR
 # Download:  https://archive.mozilla.org/pub/nspr/releases/v4.25/src/nspr-4.25.tar.gz
@@ -14,12 +14,11 @@ PRGNAME="nspr"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 cd "${PRGNAME}" || exit 1

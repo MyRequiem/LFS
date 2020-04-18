@@ -129,7 +129,7 @@ lzo                                 (+) libarchive
 mtdev
 node-js
 npth                                (+)
-nspr
+nspr                                (+)
 pcre                                (+) glib
 pcre2
 popt
