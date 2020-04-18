@@ -9,7 +9,7 @@ make-ca                             (+) p11-kit, curl, gnutls
 cracklib
 cryptsetup
 cyrus-sasl                          (+)
-gnupg                               gpgme
+gnupg                               gpgme, smartmontools
 gnutls                              (+) curl
 gpgme                               (+)
 haveged                             (+)
@@ -40,7 +40,7 @@ ntfs
 gptfdisk
 parted
 reiserfsprogs
-smartmontools
+smartmontools                       (+)
 sshfs
 xfsprogs
 bluefish

@@ -7,28 +7,22 @@ PRGNAME="smartmontools"
 # SCSI жестких дисков. Используются для проверки надежности и прогнозирования
 # отказов жестких дисков.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/smartmontools.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/smartmontools.html
 
 # Home page: https://sourceforge.net/projects/smartmontools/
-# Download:  https://downloads.sourceforge.net/smartmontools/smartmontools-7.0.tar.gz
+# Download:  https://downloads.sourceforge.net/smartmontools/smartmontools-7.1.tar.gz
 
 # Required: no
 # Optional: curl or lynx or wget
+#           gnupg
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-# Конфиг: /etc/smartd.conf
-SMARTD_CONF="/etc/smartd.conf"
-if [ -f "${SMARTD_CONF}" ]; then
-    mv "${SMARTD_CONF}" "${SMARTD_CONF}.old"
-fi
 
 # не создавать скрипт инициализации smartd по умолчанию
 #    --with-initscriptdir=no
@@ -41,6 +35,13 @@ fi
 
 make || exit 1
 # пакет не содержит набора тестов
+
+# конфиг /etc/smartd.conf
+SMARTD_CONF="/etc/smartd.conf"
+if [ -f "${SMARTD_CONF}" ]; then
+    mv "${SMARTD_CONF}" "${SMARTD_CONF}.old"
+fi
+
 make install
 make install DESTDIR="${TMP_DIR}"
 
@@ -48,9 +49,11 @@ config_file_processing "${SMARTD_CONF}"
 
 # для автозапуска демона smartd при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/smartd
-cd /root/blfs-bootscripts || exit 1
-make install-smartd
-make install-smartd DESTDIR="${TMP_DIR}"
+(
+    cd /root/blfs-bootscripts || exit 1
+    make install-smartd
+    make install-smartd DESTDIR="${TMP_DIR}"
+)
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (hard drive monitoring utilities)
