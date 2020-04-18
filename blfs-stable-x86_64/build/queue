@@ -96,8 +96,8 @@ d/cmake.sh
 l/libjpeg-turbo.sh
 a/dosfstools.sh
 a/smartmontools.sh
-
 ap/lzip.sh
+
 a/ed.sh
 l/fftw.sh
 l/json-c.sh

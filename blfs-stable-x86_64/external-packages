@@ -79,4 +79,7 @@ https://netfilter.org/projects/libnetfilter_conntrack/
 nftables                            iptables
 https://netfilter.org/projects/nftables/
 
+lzip                                (+)
+https://www.nongnu.org/lzip/lzip.html
+
 # vim:ft=conf

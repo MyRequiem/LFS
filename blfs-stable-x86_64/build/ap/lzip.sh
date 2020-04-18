@@ -2,14 +2,14 @@
 
 PRGNAME="lzip"
 
-### Lzip
-# Компрессор данных без потерь с пользовательским интерфейсом, аналогичным из
-# gzip или bzip2. Lzip распаковывает почти так же быстро, как gzip и сжимает
-# лучше, чем bzip2, что делает его хорошо подходящим для распространения
-# программного обеспечения и архивирование данных. Lzip - это чистая реализация
-# алгоритма LZMA.
+### Lzip (a lossless data compressor)
+# Предоставляет алгорит сжатия данных без потерь с пользовательским
+# интерфейсом, аналогичным из gzip или bzip2. Lzip распаковывает почти так же
+# быстро, как gzip и сжимает лучше, чем bzip2, что делает его очень подходящим
+# для распространения программного обеспечения и архивирование данных. Lzip -
+# это чистая реализация алгоритма LZMA.
 
-# нет в LFS и BLFS
+# нет в BLFS
 
 # Home page: https://www.nongnu.org/lzip/lzip.html
 # Download:  http://download.savannah.gnu.org/releases/lzip/lzip-1.21.tar.gz
@@ -17,13 +17,13 @@ PRGNAME="lzip"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure       \
     --prefix=/usr \
@@ -34,9 +34,7 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 # документация
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${DOCS}"
-mkdir -pv "${TMP_DIR}${DOCS}"
 cp -va AUTHORS COPYING ChangeLog INSTALL NEWS README "${DOCS}"
 cp -va AUTHORS COPYING ChangeLog INSTALL NEWS README "${TMP_DIR}${DOCS}"
 
