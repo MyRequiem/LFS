@@ -66,3 +66,5 @@ https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.13.1.tar.bz2
 https://downloads.sourceforge.net/haveged/haveged-1.9.2.tar.gz
 http://www.netfilter.org/projects/iptables/files/iptables-1.8.4.tar.bz2
 https://archive.mozilla.org/pub/nspr/releases/v4.25/src/nspr-4.25.tar.gz
+https://archive.mozilla.org/pub/security/nss/releases/NSS_3_50_RTM/src/nss-3.50.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/9.1/nss-3.50-standalone-1.patch

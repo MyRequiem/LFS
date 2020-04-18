@@ -85,8 +85,16 @@ n/gpgme.sh
 s/haveged.sh
 n/iptables.sh
 l/nspr.sh
-
 l/nss.sh
+n/p11-kit.sh
+n/make-ca.sh
+n/p11-kit.sh
+n/make-ca.sh
+n/gnutls.sh
+n/curl.sh
+d/cmake.sh
+l/libjpeg-turbo.sh
+
 a/dosfstools.sh
 a/smartmontools.sh
 ap/lzip.sh

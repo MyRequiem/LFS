@@ -20,9 +20,9 @@ liboauth
 libpwquality
 mit-kerberos-v5                     curl, cyrus-sasl
 nettle                              (+) libarchive, gnutls
-nss                                 p11-kit, make-ca
+nss                                 (+) p11-kit, make-ca
 openssh
-p11-kit                             (+) make-ca, gnutls
+p11-kit                             (+) make-ca, gnutls, nss
 polkit
 shadow
 ssh-askpass
@@ -129,7 +129,7 @@ lzo                                 (+) libarchive
 mtdev
 node-js
 npth                                (+)
-nspr                                (+)
+nspr                                (+) nss
 pcre                                (+) glib
 pcre2
 popt
@@ -510,7 +510,7 @@ berkeley-db                         (+) apr-util, python3, cyrus-sasl
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
-sqlite                              (+) apr-util, python2, python3, cyrus-sasl
+sqlite                              (+) apr-util, python2, python3, cyrus-sasl, nss
 openldap                            apr-util, curl, cyrus-sasl
 unbound                             gnutls
 util-macros
