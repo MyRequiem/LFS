@@ -82,7 +82,7 @@ gspell
 icu                                 libxml2
 jansson
 js
-json-c
+json-c                              (+)
 json-glib
 keyutils
 libaio
