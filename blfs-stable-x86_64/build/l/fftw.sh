@@ -8,7 +8,7 @@ PRGNAME="fftw"
 # же подпрограммы для эффективной обработки массивов произвольных размеров.
 # FFTW обычно быстрее, чем другие общедоступные FFT.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/fftw.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/fftw.html
 
 # Home page: http://www.fftw.org/
 # Download:  http://www.fftw.org/fftw-3.3.8.tar.gz
@@ -16,12 +16,11 @@ PRGNAME="fftw"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # пакет будем собирать три раза для разных библиотек с разными значениями

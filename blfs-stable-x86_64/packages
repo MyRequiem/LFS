@@ -70,7 +70,7 @@ clucene
 dbus-glib
 enchant
 exempi
-fftw
+fftw                                (+)
 glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco
 glibmm
 gmime2
