@@ -44,7 +44,7 @@ smartmontools                       (+)
 sshfs
 xfsprogs
 bluefish
-ed
+ed                                  (+)
 emacs
 gedit
 joe
@@ -86,7 +86,7 @@ json-c
 json-glib
 keyutils
 libaio
-libarchive                          (+) cmake
+libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme
 libatasmart
 libatomic-ops
