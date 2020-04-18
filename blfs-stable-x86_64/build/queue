@@ -94,8 +94,8 @@ n/gnutls.sh
 n/curl.sh
 d/cmake.sh
 l/libjpeg-turbo.sh
-
 a/dosfstools.sh
+
 a/smartmontools.sh
 ap/lzip.sh
 a/ed.sh

@@ -2,10 +2,10 @@
 
 PRGNAME="dosfstools"
 
-### dosfstools
+### dosfstools (tools for working with FAT filesystems)
 # Утилиты для создания, проверки и восстановления файловых систем семейства FAT
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/postlfs/dosfstools.html
+# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/dosfstools.html
 
 # Home page: https://github.com/dosfstools/dosfstools
 # Download:  https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz
@@ -13,16 +13,15 @@ PRGNAME="dosfstools"
 # Required: no
 # Optional: no
 
-# Kernel Configuration:
+### Kernel Configuration:
 #    CONFIG_MSDOS_FS=m|y
 #    CONFIG_VFAT_FS=m|y
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # создаем dosfsck, dosfslabel, а так жесимволические ссылки fsck.msdos,

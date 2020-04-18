@@ -31,7 +31,7 @@ sudo
 tripwire
 volume-key
 btrfs-progs
-dosfstools
+dosfstools                          (+)
 fuse
 jfsutils
 lvm2
