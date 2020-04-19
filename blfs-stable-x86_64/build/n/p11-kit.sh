@@ -36,9 +36,7 @@ cat >> trust/trust-extract-compat.in << "EOF"
 EOF
 
 GTK_DOC="--disable-doc"
-if command -v gtkdoc-check &>/dev/null; then
-    GTK_DOC="--enable-doc"
-fi
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-doc"
 
 ./configure           \
     --prefix=/usr     \
