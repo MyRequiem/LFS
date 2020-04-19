@@ -103,8 +103,8 @@ l/json-c.sh
 l/json-glib.sh
 l/libaio.sh
 l/libatasmart.sh
-
 a/libgudev.sh
+
 l/libical.sh
 l/libidn.sh
 l/libiodbc.sh
