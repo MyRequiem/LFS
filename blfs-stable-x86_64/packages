@@ -85,7 +85,7 @@ js
 json-c                              (+)
 json-glib                           (+)
 keyutils
-libaio
+libaio                              (+)
 libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme
 libatasmart

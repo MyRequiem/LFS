@@ -2,12 +2,12 @@
 
 PRGNAME="libaio"
 
-### libaio
+### libaio (asynchronous I/O library)
 # Библиотека предоставляет встроенный в Linux API для асинхронного ввода-вывода
 # (async I/O или aio). Такое API имеет более богатый набор возможностей, чем
 # простой асинхронный ввод/вывод POSIX объектов.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libaio.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libaio.html
 
 # Home page: https://pagure.io/libaio
 # Download:  https://releases.pagure.org/libaio/libaio-0.3.112.tar.gz
@@ -15,12 +15,11 @@ PRGNAME="libaio"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # отключим установку статической библиотеки
