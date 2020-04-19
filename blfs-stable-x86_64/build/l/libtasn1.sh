@@ -22,8 +22,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+VALGRIND="--disable-valgrind-tests"
+if command -v valgrind &>/dev/null; then
+    VALGRIND="--enable-valgrind-tests"
+fi
+
+GTK_DOC="--disable-gtk-doc"
+if command -v gtkdoc-check &>/dev/null; then
+    GTK_DOC="--enable-gtk-doc"
+fi
+
 ./configure       \
     --prefix=/usr \
+    "${GTK_DOC}"  \
+    "${VALGRIND}" \
     --disable-static || exit 1
 
 make || exit 1
