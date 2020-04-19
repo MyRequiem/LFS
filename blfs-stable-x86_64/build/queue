@@ -105,8 +105,13 @@ l/libaio.sh
 l/libatasmart.sh
 a/libgudev.sh
 l/libical.sh
-
 l/libidn.sh
+n/gnutls.sh
+n/curl.sh
+d/cmake.sh
+l/libjpeg-turbo.sh
+l/libical.sh
+
 l/libiodbc.sh
 n/libmbim.sh
 n/libqmi.sh

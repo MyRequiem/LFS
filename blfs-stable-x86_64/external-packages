@@ -1,7 +1,7 @@
 # ---------------------
 # (+) - установлено
 # (-) - не устанавливаем
-# указанные дополнительные пакеты - пересобрать после установки текущего пакета
+# Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
 freetds                             apr-util
@@ -84,5 +84,8 @@ https://www.nongnu.org/lzip/lzip.html
 
 umockdev                            libgudev
 https://github.com/martinpitt/umockdev
+
+mono                                libidn
+https://www.mono-project.com/
 
 # vim:ft=conf

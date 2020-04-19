@@ -1,7 +1,7 @@
 # ---------------------
 # (+) - установлено
 # (-) - не устанавливаем
-# указанные дополнительные пакеты - пересобрать после установки текущего пакета
+# Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
 kernel-firmware                     (+)
@@ -45,7 +45,7 @@ sshfs
 xfsprogs
 bluefish
 ed                                  (+)
-emacs
+emacs                               (-) libidn
 gedit
 joe
 kate
@@ -101,7 +101,7 @@ libgsf
 libgudev                            (+)
 libgusb
 libical                             (+)
-libidn                              gnutls
+libidn                              (+) gnutls
 libidn2                             curl, gnutls
 libiodbc
 libksba                             (+)
@@ -133,7 +133,7 @@ nspr                                (+) nss
 pcre                                (+) glib
 pcre2
 popt
-pth                                 (+) libgcrypt
+pth                                 (+) libgcrypt, libidn
 ptlib
 qca
 talloc
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz                            gpgme
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn
 hd2u
 highlight
 ibus
@@ -439,13 +439,13 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
 --- end of other programming tools ---
 java                                (-) make-ca
-openjdk                             make-ca, cyrus-sasl
+openjdk                             make-ca, cyrus-sasl, libidn
 apache-ant                          docbook-xsl
 dhcpcd
 dhcp

@@ -9,7 +9,7 @@ PRGNAME="libidn"
 # преобразуя Unicode строки в строки ASCII, позволяющие приложениям
 # использовать определенное доменное имя в ASCII формате.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libidn.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libidn.html
 
 # Home page: http://www.gnu.org/software/libidn/
 # Download:  https://ftp.gnu.org/gnu/libidn/libidn-1.35.tar.gz
@@ -17,22 +17,25 @@ PRGNAME="libidn"
 # Required: no
 # Optional: pth
 #           emacs
-#           gtk-doc
+#           gtk-doc (для сборки API документации, см. опции конфигурации ниже)
 #           openjdk
 #           valgrind
-#           mono
+#           mono (https://www.mono-project.com/)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
+
+# если установлен пакет gtk-doc, то для сборки API документации добавляем
+#    --enable-gtk-doc
 
 make || exit 1
 # make check
@@ -40,13 +43,11 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 # документация
-find doc -name "Makefile*" -delete
-rm -rf -v doc/{gdoc,idn.1,stamp-vti,man,texi}
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${DOCS}"
-mkdir -pv "${TMP_DIR}${DOCS}"
-cp -r -v doc/* "${DOCS}"
-cp -r -v doc/* "${TMP_DIR}${DOCS}"
+find doc -name "Makefile*" -delete
+rm -rfv doc/{gdoc,idn.1,stamp-vti,man,texi}
+cp -Rv doc/* "${DOCS}"
+cp -Rv doc/* "${TMP_DIR}${DOCS}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU Internationalized Domain Name library)
