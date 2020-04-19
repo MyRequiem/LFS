@@ -35,9 +35,15 @@ cat >> trust/trust-extract-compat.in << "EOF"
 /usr/sbin/make-ca -f -g
 EOF
 
+GTK_DOC="--disable-doc"
+if command -v gtkdoc-check &>/dev/null; then
+    GTK_DOC="--enable-doc"
+fi
+
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
+    "${GTK_DOC}"      \
     --with-trust-paths=/etc/pki/anchors || exit 1
 
 make || exit 1
