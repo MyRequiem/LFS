@@ -27,22 +27,21 @@ mkdir -pv "${TMP_DIR}"
 # отключим один тест, который препятствует полному их выполнению
 sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
 
+ICU="--without-icu"
+command -v icuinfo 2>/dev/null && ICU="--with-icu"
+
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
 # собирать модуль libxml2 для Python3 вместо Python2
 #    --with-python=/usr/bin/python3
 # включить поддержку многопоточности
 #    --with-threads
-
-###
-# если установлен пакет icu, добавляем для лучшей поддержки unicode-кодировки
-#    --with-icu
-###
 ./configure          \
     --prefix=/usr    \
     --disable-static \
     --with-history   \
     --with-threads   \
+    "${ICU}"         \
     --with-python=/usr/bin/python3 || exit 1
 
 make || exit 1
