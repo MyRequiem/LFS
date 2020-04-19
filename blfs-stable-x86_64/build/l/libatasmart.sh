@@ -6,7 +6,7 @@ PRGNAME="libatasmart"
 # Компактная и чистая реализация ATA S.M.A.R.T. (Self-Monitoring, Analysis and
 # Reporting Technology) для жестких дисков ATA
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libatasmart.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libatasmart.html
 
 # Home page: http://0pointer.de/blog/projects/being-smart.html
 # Download:  http://0pointer.de/public/libatasmart-0.19.tar.xz
@@ -14,12 +14,11 @@ PRGNAME="libatasmart"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \
