@@ -26,7 +26,10 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PRG_VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # распакуем документацию
-unzip "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip"
+unzip -v "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip" || exit 1
+
+LIBEDIT="--disable-editline"
+[ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-editline"
 
 # включить 5 версию расширения полнотекстового поиска
 #    --enable-fts5
@@ -34,6 +37,7 @@ unzip "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip"
     --prefix=/usr                     \
     --disable-static                  \
     --enable-fts5                     \
+    "${LIBEDIT}"                      \
     CFLAGS="-g -O2                    \
     -DSQLITE_ENABLE_FTS3=1            \
     -DSQLITE_ENABLE_FTS4=1            \
