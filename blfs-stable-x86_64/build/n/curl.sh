@@ -38,47 +38,40 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 C_ARES="--disable-ares"
-[ -x /usr/lib/libcares.so ] && C_ARES="--enable-ares"
-GNUTLS="--without-gnutls"
-if command -v gnutls-cli &>/dev/null; then
-    GNUTLS="--with-gnutls=/usr"
-fi
 LIBIDN2="--without-libidn2"
-[ -x /usr/lib/libidn2.so ] && LIBIDN2="--with-libidn2=/usr"
 LIBPSL="--without-libpsl"
-[ -x /usr/lib/libpsl.so ] && LIBPSL="--with-libpsl"
 LIBSSH2="--without-libssh2"
-[ -x /usr/lib/libssh2.so ] && LIBSSH2="--with-libssh2"
 NGHTTP2="--without-nghttp2"
-[ -x /usr/lib/libnghttp2.so ] && NGHTTP2="--with-nghttp2=/usr"
-OPENLDAP="--disable-ldap"
-if command -v ldapadd &>/dev/null; then
-    OPENLDAP="--enable-ldap"
-fi
-SAMBA="--disable-smb"
-if command -v samba &>/dev/null; then
-    SAMBA="--enable-smb"
-fi
 LIBMETALINK="--without-libmetalink"
-[ -x /usr/lib/libmetalink.so ] && LIBMETALINK="--with-libmetalink=/usr"
+GNUTLS="--without-gnutls"
+OPENLDAP="--disable-ldap"
+SAMBA="--disable-smb"
 LIBRTMP="--without-librtmp"
-if command -v rtmpdump &>/dev/null; then
-    LIBRTMP="--with-librtmp=/usr"
-fi
+
+[ -x /usr/lib/libcares.so ]       && C_ARES="--enable-ares"
+[ -x /usr/lib/libidn2.so ]        && LIBIDN2="--with-libidn2=/usr"
+[ -x /usr/lib/libpsl.so ]         && LIBPSL="--with-libpsl"
+[ -x /usr/lib/libssh2.so ]        && LIBSSH2="--with-libssh2"
+[ -x /usr/lib/libnghttp2.so ]     && NGHTTP2="--with-nghttp2=/usr"
+[ -x /usr/lib/libmetalink.so ]    && LIBMETALINK="--with-libmetalink=/usr"
+command -v gnutls-cli &>/dev/null && GNUTLS="--with-gnutls=/usr"
+command -v ldapadd    &>/dev/null && OPENLDAP="--enable-ldap"
+command -v samba      &>/dev/null && SAMBA="--enable-smb"
+command -v rtmpdump   &>/dev/null && LIBRTMP="--with-librtmp=/usr"
 
 ./configure                    \
     --prefix=/usr              \
     --disable-static           \
     --enable-threaded-resolver \
     "${C_ARES}"                \
-    "${GNUTLS}"                \
     "${LIBIDN2}"               \
     "${LIBPSL}"                \
     "${LIBSSH2}"               \
     "${NGHTTP2}"               \
+    "${LIBMETALINK}"           \
+    "${GNUTLS}"                \
     "${OPENLDAP}"              \
     "${SAMBA}"                 \
-    "${LIBMETALINK}"           \
     "${LIBRTMP}"               \
     --with-ca-path=/etc/ssl/certs || exit 1
 
