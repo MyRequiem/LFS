@@ -29,15 +29,16 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 BERKELEY_DB="--without-berkeley-db"
-[ -x /usr/lib/libdb.so ] && BERKELEY_DB="--with-berkeley-db"
 SQLITE3="--without-sqlite3"
-[ -x /usr/bin/sqlite3 ] && SQLITE3="--with-sqlite3"
 NSS="--without-nss"
-[ -x /usr/bin/nss-config ] && NSS="--with-nss"
 LDAP="--without-ldap"
-[ -x /usr/bin/ldapadd ] && LDAP="--with-ldap"
 POSTGRESQL="--without-pgsql"
-[ -x /usr/bin/createdb ] && POSTGRESQL="--with-pgsql"
+
+[ -x /usr/lib/libdb.so ]          && BERKELEY_DB="--with-berkeley-db"
+command -v sqlite3    &>/dev/null && SQLITE3="--with-sqlite3"
+command -v nss-config &>/dev/null && NSS="--with-nss"
+command -v ldapadd    &>/dev/null && LDAP="--with-ldap"
+command -v createdb   &>/dev/null && POSTGRESQL="--with-pgsql"
 
 # включает плагин apr_dbm_gdbm-1.so
 #    --with-gdbm=/usr
@@ -50,8 +51,8 @@ POSTGRESQL="--without-pgsql"
     --with-gdbm=/usr    \
     --with-openssl=/usr \
     --with-crypto       \
-    "${BERKELEY_DB}"    \
     --without-sqlite2   \
+    "${BERKELEY_DB}"    \
     "${SQLITE3}"        \
     "${NSS}"            \
     "${LDAP}"           \
