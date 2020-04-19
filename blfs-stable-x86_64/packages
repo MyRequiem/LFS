@@ -20,7 +20,7 @@ liboauth
 libpwquality
 mit-kerberos-v5                     curl, cyrus-sasl
 nettle                              (+) libarchive, gnutls
-nss                                 (+) p11-kit, make-ca
+nss                                 (+) p11-kit, make-ca, apr-util
 openssh
 p11-kit                             (+) make-ca, gnutls, nss
 polkit

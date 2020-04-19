@@ -19,6 +19,7 @@ PRGNAME="apr-util"
 #           postgresql
 #           sqlite
 #           unixodbc
+#           nss
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,9 +28,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+BERKELEY_DB="--without-berkeley-db"
+[ -x /usr/lib/libdb.so ] && BERKELEY_DB="--with-berkeley-db"
+SQLITE3="--without-sqlite3"
+[ -x /usr/bin/sqlite3 ] && SQLITE3="--with-sqlite3"
+NSS="--without-nss"
+[ -x /usr/bin/nss-config ] && NSS="--with-nss"
+LDAP="--without-ldap"
+[ -x /usr/bin/ldapadd ] && LDAP="--with-ldap"
+POSTGRESQL="--without-pgsql"
+[ -x /usr/bin/createdb ] && POSTGRESQL="--with-pgsql"
+
 # включает плагин apr_dbm_gdbm-1.so
 #    --with-gdbm=/usr
-# включают плагин apr_crypto_openssl-1.so
+# включают плагин apr_crypto_openssl-1.so и поддержку криптографии
 #    --with-openssl=/usr
 #    --with-crypto
 ./configure             \
@@ -37,7 +49,13 @@ mkdir -pv "${TMP_DIR}"
     --with-apr=/usr     \
     --with-gdbm=/usr    \
     --with-openssl=/usr \
-    --with-crypto || exit 1
+    --with-crypto       \
+    "${BERKELEY_DB}"    \
+    --without-sqlite2   \
+    "${SQLITE3}"        \
+    "${NSS}"            \
+    "${LDAP}"           \
+    "${POSTGRESQL}" || exit 1
 
 make || exit 1
 # make test

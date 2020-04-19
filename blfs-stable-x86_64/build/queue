@@ -88,6 +88,7 @@ l/nspr.sh
 l/nss.sh
 n/p11-kit.sh
 n/make-ca.sh
+l/apr-util.sh
 n/p11-kit.sh
 n/make-ca.sh
 n/gnutls.sh
