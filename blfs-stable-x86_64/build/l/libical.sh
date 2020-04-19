@@ -2,28 +2,28 @@
 
 PRGNAME="libical"
 
-### LibIcal
+### LibIcal (iCAL protocol implementation)
 # Реализация IETF iCalendar, планирования и форматов данных (RFC 2445, 2446 и
 # 2447). Анализирует компоненты iCal и предоставляет C/C++/Python/Java API для
 # управления свойствами, параметрами, компонентами и подкомпонентами.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libical.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libical.html
 
 # Home page: https://github.com/libical/libical
-# Download:  https://github.com/libical/libical/releases/download/v3.0.5/libical-3.0.5.tar.gz
+# Download:  https://github.com/libical/libical/releases/download/v3.0.7/libical-3.0.7.tar.gz
 
-# Required: cmake
-# Optional: berkeley-db
-#           doxygen (for the api documentation)
-#           gobject-introspection
-#           icu
+# Required:    cmake
+# Recommended: gobject-introspection
+#              vala (см. опции конфигурации ниже)
+# Optional:    berkeley-db
+#              doxygen (для сборки API документации)
+#              icu
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir build
@@ -31,16 +31,26 @@ cd build || exit 1
 
 # применяем более высокий уровень оптимизации компилятора
 #    -DCMAKE_BUILD_TYPE=Release
-# создаваем только общие (shared) библиотеки
+# создаем только общие (shared) библиотеки
 #    -DSHARED_ONLY=yes
 # предотвращаем сборку документации GTK
 #    -DICAL_BUILD_DOCS=false
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release  \
-    -DSHARED_ONLY=yes           \
-    -DICAL_BUILD_DOCS=false     \
+# генерируем привязки метаданных GObject
+#    -DGOBJECT_INTROSPECTION=true
+# используем свой часовой пояс
+#    -DUSE_BUILTIN_TZDATA=yes
+cmake                            \
+    -DCMAKE_INSTALL_PREFIX=/usr  \
+    -DCMAKE_BUILD_TYPE=Release   \
+    -DSHARED_ONLY=yes            \
+    -DICAL_BUILD_DOCS=false      \
+    -DGOBJECT_INTROSPECTION=true \
+    -DICAL_GLIB_VAPI=false       \
+    -DUSE_BUILTIN_TZDATA=yes     \
     .. || exit 1
+
+# если пакет vala установлен, то меняем -DICAL_GLIB_VAPI=false на 'true' для
+# создание привязок для vala
 
 make || exit 1
 # make test

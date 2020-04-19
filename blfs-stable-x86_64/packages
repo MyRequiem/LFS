@@ -75,11 +75,11 @@ glib                                (+) gobject-introspection, atk, shared-mime-
 glibmm
 gmime2
 gmime3
-gobject-introspection               (+) glib, atk, json-glib, libgudev
+gobject-introspection               (+) glib, atk, json-glib, libgudev, libical
 grantlee
 gsl
 gspell
-icu                                 libxml2
+icu                                 libxml2, libical
 jansson
 js
 json-c                              (+)
@@ -100,7 +100,7 @@ libgrss
 libgsf
 libgudev                            (+)
 libgusb
-libical
+libical                             (+)
 libidn                              gnutls
 libidn2                             curl, gnutls
 libiodbc
@@ -241,9 +241,9 @@ zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
 clisp                               gpgme
-cmake                               (+) libjpeg-turbo
+cmake                               (+) libjpeg-turbo, libical
 dejagnu
-doxygen                             gnutls, gpgme
+doxygen                             gnutls, gpgme, libical
 expect
 gcc
 gc
@@ -438,7 +438,7 @@ subversion                          cmake
 swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
-vala
+vala                                libical
 valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
@@ -506,7 +506,7 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         (+) apr-util, python3, cyrus-sasl
+berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
