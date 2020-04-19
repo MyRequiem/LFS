@@ -23,14 +23,10 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 VALGRIND="--disable-valgrind-tests"
-if command -v valgrind &>/dev/null; then
-    VALGRIND="--enable-valgrind-tests"
-fi
-
 GTK_DOC="--disable-gtk-doc"
-if command -v gtkdoc-check &>/dev/null; then
-    GTK_DOC="--enable-gtk-doc"
-fi
+
+command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 ./configure       \
     --prefix=/usr \
