@@ -28,7 +28,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
 
 ICU="--without-icu"
-command -v icuinfo 2>/dev/null && ICU="--with-icu"
+command -v icuinfo &>/dev/null && ICU="--with-icu"
 
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
