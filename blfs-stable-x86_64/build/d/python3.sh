@@ -36,6 +36,9 @@ source "${ROOT}/unpack_source_archive.sh" "Python" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+VALGRIND="--without-valgrind"
+command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
+
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
 # связываться с уже установленной системной версией Expat
@@ -50,6 +53,7 @@ CXX="/usr/bin/g++"      \
     --enable-shared     \
     --with-system-expat \
     --with-system-ffi   \
+    "${VALGRIND}"       \
     --with-ensurepip=yes || exit 1
 
 make || exit 1
