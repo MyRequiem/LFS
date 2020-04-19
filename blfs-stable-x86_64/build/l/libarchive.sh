@@ -24,8 +24,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
+LZO2="--without-lzo2"
+XML2="--without-xml2"
+NETTLE="--without-nettle"
+
+[ -x /usr/lib/liblzo2.so ]         && LZO2="--with-lzo2"
+command -v xmllint     &>/dev/null && XML2="--with-xml2"
+command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
+
+./configure       \
     --prefix=/usr \
+    "${LZO2}"     \
+    "${XML2}"     \
+    "${NETTLE}"   \
     --disable-static || exit 1
 
 make || exit 1
