@@ -34,9 +34,11 @@ make -C doc html
 makeinfo --html --no-split -o doc/gcrypt_nochunks.html doc/gcrypt.texi
 makeinfo --plaintext       -o doc/gcrypt.txt           doc/gcrypt.texi
 
-# если в системе установлен пакет texlive или install-tl-unx, то можно собрать
-# документацию в формате pdf и ps
-# make -C doc pdf ps
+# если в системе установлен texlive или install-tl-unx, можно создать
+# документацию в форматах pdf и ps
+PDF_PS_DOC=""
+command -v texdoc &>/dev/null && PDF_PS_DOC="true"
+[ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
 
 # make check
 
@@ -58,8 +60,10 @@ install -v -m644 doc/gcrypt.{txt,texi} "${DOCS}"
 install -v -m644 doc/gcrypt.{txt,texi} "${TMP_DIR}${DOCS}"
 
 # если мы собирали документацию в pdf и ps форматах
-# install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${DOCS}"
-# install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
+if [ -n "${PDF_PS_DOC}" ]; then
+    install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${DOCS}"
+    install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
+fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (General purpose crypto library)
