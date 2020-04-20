@@ -52,7 +52,7 @@ https://bindfs.org/
 markdown                            gobject-introspection
 https://pypi.org/project/Markdown/
 
-cython                              yasm
+cython                              (+) yasm
 https://cython.org/
 
 autogen                             gnutls

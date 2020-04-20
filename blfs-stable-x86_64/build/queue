@@ -66,6 +66,7 @@ l/gobject-introspection.sh
 l/glib.sh
 l/gobject-introspection.sh
 l/atk.sh
+d/cython.sh
 d/yasm.sh
 l/libjpeg-turbo.sh
 l/libpng.sh
