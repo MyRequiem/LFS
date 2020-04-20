@@ -13,9 +13,9 @@ PRGNAME="gobject-introspection"
 # Download:  http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
 
 # Required: glib
-# Optional: cairo    (для тестов, см. опции конфигурации ниже)
+# Optional: cairo    (для тестов)
+#           gtk-doc  (для сборки документации и утилиты g-ir-doc-tool)
 #           gjs      (для прохождния одного теста)
-#           gtk-doc  (для сборки документации, см. опции конфигурации ниже)
 #           python3-mako (для сборки _giscanner.cpython-37m-x86_64-linux-gnu.so)
 #           markdown (для прохождния одного теста) https://pypi.org/project/Markdown/
 
@@ -29,17 +29,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
+CAIRO="-Dcairo=false"
+GTK_DOC="-Dgtk_doc=false"
+DOCTOOL="-Ddoctool=false"
+
+command -v cairo-sphinx &>/dev/null && CAIRO="-Dcairo=true"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
+command -v gtkdoc-check &>/dev/null && DOCTOOL="-Ddoctool=true"
+
 meson \
     --prefix=/usr \
+    "${CAIRO}"    \
+    "${GTK_DOC}"  \
+    "${DOCTOOL}"  \
     .. || exit 1
-
-# если установлен пакет gtk-doc, то можно собрать gtk-документацию путем
-# добавления опции
-#    -Dgtk_doc=true
-# если установлен пакет gtk-doc, то для сборки утилиты g-ir-doc-tool добавляем
-#    -Ddoctool=true
-# если установлен пакет cairo, то для тестов добавляем опцию
-#    -Dcairo=true
 
 ninja || exit 1
 # для одного теста (test_docwriter) требуется пакет markdown
