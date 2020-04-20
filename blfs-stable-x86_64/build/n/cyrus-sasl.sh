@@ -31,6 +31,24 @@ DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/html"
 
+PAM="--without-pam"
+MYSQL="--without-mysql"
+OPENJDK="--disable-java"
+OPENLDAP="--without-ldap"
+POSTGRESQL="--without-pgsql"
+SQLITE3="--without-sqlite3"
+KRB4="--disable-krb4"
+DMALLOC="--without-dmalloc"
+
+command -v mkhomedir_helper &>/dev/null && PAM="--with-pam"
+command -v mysql            &>/dev/null && MYSQL="--with-mysql"
+command -v java             &>/dev/null && OPENJDK="--enable-java"
+command -v ldapadd          &>/dev/null && OPENLDAP="--with-ldap"
+command -v createdb         &>/dev/null && POSTGRESQL="--with-pgsql"
+command -v sqlite3          &>/dev/null && SQLITE3="--with-sqlite3"
+command -v krb4-config      &>/dev/null && KRB4="--enable-krb4"
+command -v dmalloc          &>/dev/null && DMALLOC="--with-dmalloc"
+
 # включает сервер аутентификации SASLDB
 #    --enable-auth-sasldb
 # база данных sasldb создается в /var/lib/sasl вместо /etc
@@ -42,12 +60,16 @@ mkdir -pv "${TMP_DIR}${DOCS}/html"
     --sysconfdir=/etc                   \
     --enable-auth-sasldb                \
     --with-dbpath=/var/lib/sasl/sasldb2 \
+    --without-sqlite                    \
+    "${PAM}"                            \
+    "${MYSQL}"                          \
+    "${OPENJDK}"                        \
+    "${OPENLDAP}"                       \
+    "${POSTGRESQL}"                     \
+    "${SQLITE3}"                        \
+    "${KRB4}"                           \
+    "${DMALLOC}"                        \
     --with-saslauthd=/var/run/saslauthd || exit 1
-
-###
-# включение поддержки OpenLDAP
-#    --with-ldap
-###
 
 # пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
 make -j1 || exit 1
