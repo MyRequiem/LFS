@@ -21,8 +21,12 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+VALGRIND="--disable-valgrind-tests"
+command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
+
+./configure       \
+    --prefix=/usr \
+    "${VALGRIND}" || exit 1
 
 make || exit 1
 # make check
