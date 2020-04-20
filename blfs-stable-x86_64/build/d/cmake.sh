@@ -13,8 +13,8 @@ PRGNAME="cmake"
 # Required:    libuv
 # Recommended: zlib
 #              bzip2
-#              curl
 #              expat
+#              curl
 #              libarchive
 # Optional:    qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
 #              subversion (для тестов)
@@ -31,6 +31,20 @@ mkdir -pv "${TMP_DIR}"
 # /usr/lib64/
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
 
+ZLIB="--no-system-zlib"
+BZIP2="--no-system-bzip2"
+EXPAT="--no-system-expat"
+CURL="--no-system-curl"
+LIBARCHIVE="--no-system-libarchive"
+QT_GUI="--no-qt-gui"
+
+[ -x /usr/lib/libz.so ]             && ZLIB="--system-zlib"
+command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
+command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
+command -v curl         &>/dev/null && CURL="--system-curl"
+command -v bsdcat       &>/dev/null && LIBARCHIVE="--system-libarchive"
+command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
+
 # заставляет CMake связываться с Zlib, Bzip2, cURL, Expat и libarchive которые
 # уже установлены в системе
 #    --system-libs
@@ -42,13 +56,13 @@ sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
     --mandir=/share/man  \
     --no-system-jsoncpp  \
     --no-system-librhash \
+    "${ZLIB}"            \
+    "${BZIP2}"           \
+    "${EXPAT}"           \
+    "${CURL}"            \
+    "${LIBARCHIVE}"      \
+    "${QT_GUI}"          \
     --docdir="/share/doc/${PRGNAME}-${VERSION}" || exit 1
-
-###
-# если установлен пакет qt5, то добавляем
-#    --qt-gui
-# для создания графического интерфейса CMake
-###
 
 make || exit 1
 
