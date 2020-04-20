@@ -19,7 +19,7 @@ PRGNAME="yasm"
 
 # Required: no
 # Optional: python2
-#           cython (https://cython.org/)
+#           cython (для создания модуля /usr/lib/python2.7/site-packages/yasm.so) https://cython.org/
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,8 +31,16 @@ mkdir -pv "${TMP_DIR}"
 # исключаем сборку vsyasm и ytasm, которые используются только в Windows
 sed -i 's#) ytasm.*#)#' Makefile.in
 
-./configure \
-    --prefix=/usr || exit 1
+PYTHON="--disable-python"
+PYTHON_BINDINGS="--disable-python-bindings"
+
+command -v cython &>/dev/null && PYTHON="--enable-python" && \
+                                 PYTHON_BINDINGS="--enable-python-bindings"
+
+./configure       \
+    --prefix=/usr \
+    "${PYTHON}"   \
+    "${PYTHON_BINDINGS}" || exit 1
 
 make || exit 1
 # make check
