@@ -57,6 +57,10 @@ patch --verbose -Np1 -i \
 mkdir build
 cd build || exit 1
 
+# если установлен пакет gtk-doc, то можно собрать и установить API документацию
+GTK_DOC="-Ddoc=false"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="-Ddoc=true"
+
 # устанавливать man-страницы
 #    -Dman=true
 # отключить поддержку selinux
@@ -65,11 +69,8 @@ meson                  \
     --prefix=/usr      \
     -Dman=true         \
     -Dselinux=disabled \
+    "${GTK_DOC}"       \
     .. || exit 1
-
-# если установлен пакет gtk-doc, то можно собрать и установить API документацию
-# добавив опцию конфигурации
-#    -Ddoc=true
 
 ninja || exit 1
 # в конце сборки в консоль могут выводится ошибки типа:
