@@ -21,13 +21,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+GTK_DOC="--disable-gtk-doc"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+
 ./configure       \
     --prefix=/usr \
+    "${GTK_DOC}"  \
     --disable-static || exit 1
-
-# если установлен пакет gtk-doc, до для создания API документации добавлям
-# опцию конфигурации
-#    --enable-gtk-doc
 
 make || exit 1
 # make -k test
