@@ -11,8 +11,8 @@ PRGNAME="atk"
 # Download:  http://ftp.gnome.org/pub/gnome/sources/atk/2.34/atk-2.34.1.tar.xz
 
 # Required:    glib
-# Recommended: gobject-introspection (требуется для сборки GNOME)
-# Optional:    gtk-doc
+# Recommended: gobject-introspection
+# Optional:    gtk-doc (для сборки API документации)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,8 +24,17 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-meson \
-    --prefix=/usr || exit 1
+INTROSPECTION="-Dintrospection=false"
+GTK_DOC="-Ddocs=false"
+
+command -v g-ir-compiler &>/dev/null  && INTROSPECTION="-Dintrospection=true"
+command -v gtkdoc-check  &>/dev/null  && GTK_DOC="-Ddocs=true"
+
+meson                   \
+    --prefix=/usr       \
+    "${INTROSPECTION}"  \
+    "${GTK_DOC}"        \
+    .. || exit 1
 
 ninja || exit 1
 # пакет не содержит набора тестов
