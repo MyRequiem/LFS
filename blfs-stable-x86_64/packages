@@ -112,7 +112,7 @@ libpaper
 libqmi                              (+)
 libseccomp                          (+)
 libsigc++                           (+)
-libsigsegv
+libsigsegv                          (+)
 libssh2                             curl
 libstatgrab
 libtasn1                            (+) p11-kit, gnutls

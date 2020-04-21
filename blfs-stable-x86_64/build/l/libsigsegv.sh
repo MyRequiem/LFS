@@ -2,7 +2,7 @@
 
 PRGNAME="libsigsegv"
 
-### libsigsegv
+### libsigsegv (user mode page fault handling library)
 # Библиотека для обработки ошибок страниц памяти в пользовательском режиме,
 # т.е. ошибки возникающие тогда, когда программа пытается получить доступ к
 # области памяти, которая в данный момент не доступна. Является полезной при
@@ -10,7 +10,7 @@ PRGNAME="libsigsegv"
 # сборщиками мусора (garbage collectors), обработка ошибок переполнение стека,
 # работа с распределенной общей памятью и многое другое.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libsigsegv.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libsigsegv.html
 
 # Home page: http://www.gnu.org/software/libsigsegv/
 # Download:  https://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.12.tar.gz
@@ -18,12 +18,11 @@ PRGNAME="libsigsegv"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure         \
