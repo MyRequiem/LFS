@@ -29,13 +29,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+GNUPG="--disable-gpg-test"
+command -v gpg &>/dev/null && GNUPG="--enable-gpg-test"
+
 ./configure       \
     --prefix=/usr \
-    --disable-gpg-test || exit 1
-
-# если установлены пакеты gnupg, qt5 и swig, то для успешного прохождения
-# тестов убираем параметр конфигурации
-#    --disable-gpg-test
+    "${GNUPG}" || exit 1
 
 make || exit 1
 # make check
