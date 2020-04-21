@@ -242,14 +242,14 @@ autoconf2
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical
-dejagnu
-doxygen                             gnutls, gpgme, libical, libsigc++
+dejagnu                             gdb
+doxygen                             gnutls, gpgme, libical, libsigc++, gdb
 expect
-gcc
+gcc                                 gdb
 gc
-gdb                                 python3, glib
+gdb                                 (+) python3, glib
 git
-guile                               gnutls
+guile                               gnutls, gdb
 librep
 llvm
 lua52
@@ -404,7 +404,7 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2, docbook-xsl, yasm, gpgme
+python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb
 python3                             (+) libxml2
 --- python modules ---
 python-d-bus-python
@@ -427,11 +427,11 @@ python-jinja2
 python3-mako                        gobject-introspection
 python-python-slip
 python-scour
-python-six                          (+)
+python-six                          (+) gdb
 python-pyyaml
 --- end of python modules ---
 ruby                                docbook-xsl
-rustc
+rustc                               gdb
 scons
 slang
 subversion                          cmake
@@ -439,7 +439,7 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags

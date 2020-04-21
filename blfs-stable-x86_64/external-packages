@@ -94,4 +94,7 @@ https://ftp.gnu.org/gnu/help2man/
 lcov                                libseccomp
 http://ltp.sourceforge.net/coverage/lcov.php
 
+systemtap                           gdb
+https://sourceware.org/systemtap/
+
 # vim:ft=conf

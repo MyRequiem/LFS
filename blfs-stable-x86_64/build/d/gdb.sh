@@ -2,44 +2,49 @@
 
 PRGNAME="gdb"
 
-### GNU symbolic debugger
+### gdb (GNU symbolic debugger)
 # Отладчик проекта GNU, который работает на многих UNIX-подобных системах и
 # умеет производить отладку многих языков программирования, включая Си, C++,
 # Free Pascal, FreeBASIC, Ada, Фортран, Rust и др.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/gdb.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/gdb.html
 
 # Home page: http://www.gnu.org/software/gdb/
-# Download:  https://ftp.gnu.org/gnu/gdb/gdb-8.3.tar.xz
+# Download:  https://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz
 
-# Required: six (required at run-time)
+# Required: python-six
 # Optional: dejagnu (для тестов)
-#           doxygen (для сборки документации)
-#           gcc-ada и gcc-gfortran (для тестов)
+#           doxygen (для сборки API документации)
+#           gcc с поддержкой ada и gfortran (для тестов)
 #           guile
 #           python2
 #           rustc (для тестов)
 #           valgrind
-#           systemtap (для тестов)
+#           systemtap (для тестов) https://sourceware.org/systemtap/
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure                \
+mkdir build
+cd build || exit 1
+
+../configure               \
     --prefix=/usr          \
     --with-system-readline \
     --with-python=/usr/bin/python3 || exit 1
 
 make || exit 1
 
-# для создания API документации требуется пакет doxygen, который пока не
-# установлен
-# make -C gdb/doc doxy
+# для сборки API документации требуется пакет doxygen
+DOXYGEN=""
+command -v doxygen &>/dev/null && DOXYGEN="true"
+if [ -n "${DOXYGEN}" ]; then
+    make -C gdb/doc doxy || exit 1
+fi
 
 ### тесты
 # pushd gdb/testsuite || exit 1
@@ -51,13 +56,15 @@ make || exit 1
 make -C gdb install
 make -C gdb install DESTDIR="${TMP_DIR}"
 
-### если собирали API документацию:
-# DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-# rm -rf gdb/doc/doxy/xml
-# install -d "${DOCS}"
-# install -d "${TMP_DIR}${DOCS}"
-# cp -Rv gdb/doc/doxy "${DOCS}"
-# cp -Rv gdb/doc/doxy "${TMP_DIR}${DOCS}"
+# если собирали API документацию
+if [ -n "${DOXYGEN}" ]; then
+    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+    rm -rf gdb/doc/doxy/xml
+    install -d "${DOCS}"
+    install -d "${TMP_DIR}${DOCS}"
+    cp -Rv gdb/doc/doxy "${DOCS}"
+    cp -Rv gdb/doc/doxy "${TMP_DIR}${DOCS}"
+fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the GNU symbolic debugger)
