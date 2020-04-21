@@ -427,7 +427,7 @@ python-jinja2
 python3-mako                        gobject-introspection
 python-python-slip
 python-scour
-python-six
+python-six                          (+)
 python-pyyaml
 --- end of python modules ---
 ruby                                docbook-xsl

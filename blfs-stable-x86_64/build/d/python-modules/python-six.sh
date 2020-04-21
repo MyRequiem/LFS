@@ -3,26 +3,25 @@
 PRGNAME="python-six"
 ARCH_NAME="six"
 
-### python-six
-# Python библиотека совместимая Python2 и Python3. Обеспечивает функции
+### python-six (Python2 and Python3 compatibility utilities)
+# Python библиотека совместимости Python2 и Python3. Обеспечивает функции
 # сглаживания различий между версиями Python с целью написания кода,
 # совместимого с Python2 и Python3
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/python-modules.html#six
+# http://www.linuxfromscratch.org/blfs/view/stable/general/python-modules.html#six
 
 # Home page: https://pypi.python.org/pypi/six/
-# Download:  https://pypi.io/packages/source/s/six/six-1.12.0.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/s/six/six-1.14.0.tar.gz
 
 # Required: python2
 #           python3
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                    || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 python2 setup.py build || exit 1
