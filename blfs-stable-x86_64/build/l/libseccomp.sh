@@ -2,27 +2,26 @@
 
 PRGNAME="libseccomp"
 
-### libseccomp
+### libseccomp (Enhanced Seccomp library)
 # Пакет предоставляет простой в использовании и независимый от платформы
 # интерфейс к механизму фильтрации системных вызовов ядра Linux
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libseccomp.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libseccomp.html
 
 # Home page: https://github.com/seccomp/libseccomp
-# Download:  https://github.com/seccomp/libseccomp/releases/download/v2.4.1/libseccomp-2.4.1.tar.gz
+# Download:  https://github.com/seccomp/libseccomp/releases/download/v2.4.2/libseccomp-2.4.2.tar.gz
 
 # Required: no
-# Optional: which (needed for tests)
+# Optional: which  (needed for tests)
 #           valgrind
-#           cython
-#           lcov
+#           cython (https://cython.org/)
+#           lcov   (http://ltp.sourceforge.net/coverage/lcov.php)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \

@@ -14,7 +14,7 @@ PRGNAME="libqmi"
 # Required:    glib
 # Recommended: libmbim
 # Optional:    gtk-doc
-#              help2man
+#              help2man (https://ftp.gnu.org/gnu/help2man/)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -110,7 +110,7 @@ libmbim                             (+) libqmi
 libnfsidmap
 libpaper
 libqmi                              (+)
-libseccomp
+libseccomp                          (+)
 libsigc++
 libsigsegv
 libssh2                             curl
@@ -236,7 +236,7 @@ unrar
 unzip                               (+) docbook-xml
 upower
 usbutils
-which                               (+) aspell
+which                               (+) aspell, libseccomp
 zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
@@ -439,7 +439,7 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags

@@ -52,7 +52,7 @@ https://bindfs.org/
 markdown                            gobject-introspection
 https://pypi.org/project/Markdown/
 
-cython                              (+) yasm
+cython                              (+) yasm, libseccomp
 https://cython.org/
 
 autogen                             gnutls
@@ -90,5 +90,8 @@ https://www.mono-project.com/
 
 help2man                            libmbim, libqmi
 https://ftp.gnu.org/gnu/help2man/
+
+lcov                                libseccomp
+http://ltp.sourceforge.net/coverage/lcov.php
 
 # vim:ft=conf
