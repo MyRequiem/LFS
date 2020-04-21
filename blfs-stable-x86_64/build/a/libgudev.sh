@@ -14,8 +14,8 @@ PRGNAME="libgudev"
 
 # Required: glib
 # Optional: gobject-introspection
-#           gtk-doc  (для сборки API документации, см. параметры конфигурации ниже)
-#           umockdev (см. параметры конфигурации ниже) https://github.com/martinpitt/umockdev
+#           gtk-doc  (для сборки API документации)
+#           umockdev (https://github.com/martinpitt/umockdev)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,14 +24,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-umockdev || exit 1
+INTROSPECTION="no"
+GTK_DOC="--disable-gtk-doc"
+UMOCKDEV="--disable-umockdev"
 
-# если установлен пакет gtk-doc, то добавляем параметр
-#    --enable-gtk-doc
-# если установлен пакет umockdev, то убираем параметр
-#    --disable-umockdev
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="yes"
+command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+command -v umockdev-run  &>/dev/null && UMOCKDEV="--enable-umockdev"
+
+./configure                                 \
+    --prefix=/usr                           \
+    --enable-introspection=${INTROSPECTION} \
+    "${GTK_DOC}"                            \
+    "${UMOCKDEV}" || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
