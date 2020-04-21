@@ -17,7 +17,7 @@ PRGNAME="libidn"
 # Required: no
 # Optional: pth
 #           emacs
-#           gtk-doc (для сборки API документации, см. опции конфигурации ниже)
+#           gtk-doc (для сборки API документации)
 #           openjdk
 #           valgrind
 #           mono (https://www.mono-project.com/)
@@ -30,12 +30,26 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+THREADS="posix"
+GTK_DOC="--disable-gtk-doc"
+OPENJDK="--disable-java"
+VALGRIND="--disable-valgrind-tests"
+MONO="--disable-csharp"
 
-# если установлен пакет gtk-doc, то для сборки API документации добавляем
-#    --enable-gtk-doc
+command -v pth-config   &>/dev/null && THREADS="pth"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+command -v java         &>/dev/null && OPENJDK="--enable-java"
+command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
+command -v mono         &>/dev/null && MONO="--enable-csharp"
+
+./configure                       \
+    --prefix=/usr                 \
+    --enable-threads="${THREADS}" \
+    "${GTK_DOC}"                  \
+    "${OPENJDK}"                  \
+    "${VALGRIND}"                 \
+    "${MONO}"                     \
+    --disable-static || exit 1
 
 make || exit 1
 # make check
