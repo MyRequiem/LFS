@@ -111,7 +111,7 @@ libnfsidmap
 libpaper
 libqmi                              (+)
 libseccomp                          (+)
-libsigc++
+libsigc++                           (+)
 libsigsegv
 libssh2                             curl
 libstatgrab
@@ -122,7 +122,7 @@ libusb
 libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info, libcroco
-libxslt                             (+) p11-kit, docbook-xsl, glib
+libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -243,7 +243,7 @@ cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical
 dejagnu
-doxygen                             gnutls, gpgme, libical
+doxygen                             gnutls, gpgme, libical, libsigc++
 expect
 gcc
 gc

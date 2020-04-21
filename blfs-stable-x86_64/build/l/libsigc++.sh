@@ -2,25 +2,24 @@
 
 PRGNAME="libsigc++"
 
-### libsigc++
+### libsigc++ (typesafe callback system for standard C++)
 # Библиотека реализует систему безопасных обратных вызовов (callbacks) для
 # стандарта C++
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libsigc.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libsigc.html
 
 # Home page: https://libsigcplusplus.github.io/libsigcplusplus/
 # Download:  http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.10/libsigc++-2.10.2.tar.xz
 
 # Required: no
-# Optional: doxygen-1.8.16
-#           libxslt-1.1.33 (for documentation)
+# Optional: doxygen (для сборки документации)
+#           libxslt (для сборки документации)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим имя директории с документацией
