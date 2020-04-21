@@ -32,10 +32,10 @@ command -v g-ir-compiler &>/dev/null && INTROSPECTION="yes"
 command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v umockdev-run  &>/dev/null && UMOCKDEV="--enable-umockdev"
 
-./configure                                 \
-    --prefix=/usr                           \
-    --enable-introspection=${INTROSPECTION} \
-    "${GTK_DOC}"                            \
+./configure                                   \
+    --prefix=/usr                             \
+    --enable-introspection="${INTROSPECTION}" \
+    "${GTK_DOC}"                              \
     "${UMOCKDEV}" || exit 1
 
 make || exit 1

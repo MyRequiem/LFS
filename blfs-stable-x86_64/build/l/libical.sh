@@ -29,6 +29,12 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+INTROSPECTION="false"
+VALA_API="false"
+
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
+command -v valac         &>/dev/null && VALA_API="true"
+
 # применяем более высокий уровень оптимизации компилятора
 #    -DCMAKE_BUILD_TYPE=Release
 # создаем только общие (shared) библиотеки
@@ -37,20 +43,19 @@ cd build || exit 1
 #    -DICAL_BUILD_DOCS=false
 # генерируем привязки метаданных GObject
 #    -DGOBJECT_INTROSPECTION=true
+# сборка Vala API
+#    -DICAL_GLIB_VAPI
 # используем свой часовой пояс
 #    -DUSE_BUILTIN_TZDATA=yes
-cmake                            \
-    -DCMAKE_INSTALL_PREFIX=/usr  \
-    -DCMAKE_BUILD_TYPE=Release   \
-    -DSHARED_ONLY=yes            \
-    -DICAL_BUILD_DOCS=false      \
-    -DGOBJECT_INTROSPECTION=true \
-    -DICAL_GLIB_VAPI=false       \
-    -DUSE_BUILTIN_TZDATA=yes     \
+cmake                                          \
+    -DCMAKE_INSTALL_PREFIX=/usr                \
+    -DCMAKE_BUILD_TYPE=Release                 \
+    -DSHARED_ONLY=yes                          \
+    -DICAL_BUILD_DOCS=false                    \
+    -DGOBJECT_INTROSPECTION="${INTROSPECTION}" \
+    -DICAL_GLIB_VAPI="${VALA_API}"             \
+    -DUSE_BUILTIN_TZDATA=yes                   \
     .. || exit 1
-
-# если пакет vala установлен, то меняем -DICAL_GLIB_VAPI=false на 'true' для
-# создание привязок для vala
 
 make || exit 1
 # make test
