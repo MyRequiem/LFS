@@ -13,7 +13,8 @@ PRGNAME="json-glib"
 
 # Required: glib
 # Optional: gobject-introspection
-#           gtk-doc
+#           libxslt (для сборки man-страниц)
+#           gtk-doc (для сборки API документации)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,8 +26,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+INTROSPECTION="-Dintrospection=false"
+MAN="-Dman=false"
+GTK_DOC="-Ddoc=false"
+
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="-Dintrospection=true"
+command -v xslt-config   &>/dev/null && MAN="-Dman=true"
+# для сборки API документации требуется libxslt и gtk-doc
+[[ "x${MAN}" == "x-Dman=true" ]] && \
+    command -v gtkdoc-check  &>/dev/null && GTK_DOC="-Ddoc=true"
+
+meson                  \
+    --prefix=/usr      \
+    "${INTROSPECTION}" \
+    "${MAN}"           \
+    "${GTK_DOC}"       \
     .. || exit 1
 
 ninja || exit 1
