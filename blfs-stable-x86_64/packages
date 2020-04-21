@@ -71,7 +71,7 @@ dbus-glib
 enchant
 exempi
 fftw                                (+)
-glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco, json-glib, libgudev
+glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco, json-glib, libgudev, libqmi
 glibmm
 gmime2
 gmime3
@@ -106,10 +106,10 @@ libidn2                             curl, gnutls
 libiodbc                            (+)
 libksba                             (+)
 liblinear
-libmbim                             (+)
+libmbim                             (+) libqmi
 libnfsidmap
 libpaper
-libqmi
+libqmi                              (+)
 libseccomp
 libsigc++
 libsigsegv
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz                            gpgme
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn, libmbim
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn, libmbim, libqmi
 hd2u
 highlight
 ibus

@@ -6,36 +6,34 @@ PRGNAME="libqmi"
 # Основанная на glib библиотека для общения с модемами и устройствами WWAN,
 # которые передают данные по протоколу Qualcomm MSM Interface (QMI)
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libqmi.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libqmi.html
 
 # Home page: https://www.freedesktop.org/wiki/Software/libqmi/
-# Download:  https://www.freedesktop.org/software/libqmi/libqmi-1.22.4.tar.xz
+# Download:  https://www.freedesktop.org/software/libqmi/libqmi-1.24.4.tar.xz
 
 # Required:    glib
 # Recommended: libmbim
 # Optional:    gtk-doc
 #              help2man
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+LIBMBIM="no"
+GTK_DOC="--disable-gtk-doc"
 
-# исправим ошибку сборки путем удаления директивы -Werror из переменной CFLAGS,
-# которая говорит компилятору о том, что все предупреждения будут считаться
-# ошибкой
-# error: Deprecated pre-processor symbol, replace with  [-Werror]
-#                                QmiDevicePrivate);
-#                     ^          ~~~~~~~~~~~~~~
-sed -i "s, -Werror,," src/libqmi-glib/Makefile         || exit 1
-sed -i "s, -Werror,," src/qmi-firmware-update/Makefile || exit 1
+command -v mbimcli      &>/dev/null && LIBMBIM="yes"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+
+./configure                         \
+    --prefix=/usr                   \
+    --enable-mbim-qmux="${LIBMBIM}" \
+    "${GTK_DOC}"                    \
+    --disable-static || exit 1
 
 make || exit 1
 # make check
