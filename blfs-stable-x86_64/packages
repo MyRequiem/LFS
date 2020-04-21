@@ -482,7 +482,7 @@ libmnl
 libnftnl
 libnl
 libnsl
-libpcap                             (+) iptables
+libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup

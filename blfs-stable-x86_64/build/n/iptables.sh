@@ -41,6 +41,16 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/{usr/bin,lib}
 
+LIBNETFILTER="--disable-connlabel"
+LIBPCAP="--disable-nfsynproxy"
+BPF_COMPILER="--disable-bpf-compiler"
+NFTABLES="--disable-nftables"
+
+[ -x /usr/lib/libnetfilter_conntrack.so ] &&  LIBNETFILTER="--enable-connlabel"
+command -v pcap-config &>/dev/null && LIBPCAP="--enable-nfsynproxy"
+command -v bpf-test    &>/dev/null && BPF_COMPILER="--enable-bpf-compiler"
+command -v nft         &>/dev/null && NFTABLES="--enable-nftables"
+
 # собирать библиотеку libipq.so, которая используется некоторыми пакетами за
 # пределами BLFS
 #    --enable-libipq
@@ -50,18 +60,11 @@ mkdir -pv "${TMP_DIR}"/{usr/bin,lib}
     --prefix=/usr      \
     --sbindir=/sbin    \
     --enable-libipq    \
-    --disable-nftables \
+    "${LIBNETFILTER}"  \
+    "${LIBPCAP}"       \
+    "${BPF_COMPILER}"  \
+    "${NFTABLES}"      \
     --with-xtlibdir=/lib/xtables || exit 1
-
-# если установлен пакет libpcap (опциональная зависимость), то добавляем
-# параметр
-#    --enable-nfsynproxy
-# для сборки утилиты конфигурации nfsynproxy
-#
-# если пакет nftables (опциональная зависимость) установлен, то параметр
-# конфигурации
-#    --disable-nftables
-# нужно убрать
 
 make || exit 1
 # пакет не содержит набора тестов
