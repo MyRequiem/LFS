@@ -103,7 +103,7 @@ libgusb
 libical                             (+)
 libidn                              (+) gnutls
 libidn2                             curl, gnutls
-libiodbc
+libiodbc                            (+)
 libksba                             (+)
 liblinear
 libmbim
@@ -652,7 +652,7 @@ gdk-pixbuf
 glew
 glu
 goffice
-gtk+2
+gtk+2                               libiodbc
 gtk+3
 gtk engines
 gtkmm2

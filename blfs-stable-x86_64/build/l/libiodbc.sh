@@ -5,22 +5,24 @@ PRGNAME="libiodbc"
 ### libiodbc (Independent Open DataBase Connectivity)
 # API для ODBC-совместимых баз данных
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libiodbc.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libiodbc.html
 
 # Home page: http://www.iodbc.org/dataspace/iodbc/wiki/iODBC/
 # Download:  https://downloads.sourceforge.net/iodbc/libiodbc-3.52.12.tar.gz
 
 # Required:    no
+# Recommended: gtk+2 (для сборки GUI-инструмента администрирования)
 # Optional:    no
-# Recommended: gtk+2 (to create the GUI admin tool)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+GTK_TEST="--disable-gtktest"
+command -v gtk-demo &>/dev/null && GTK_TEST="--enable-gtktest"
 
 # путь к файлам конфигурации
 #    --with-iodbc-inidir=/etc/iodbc
@@ -35,6 +37,7 @@ mkdir -pv "${TMP_DIR}"
     --with-iodbc-inidir=/etc/iodbc  \
     --includedir=/usr/include/iodbc \
     --disable-libodbc               \
+    "${GTK_TEST}"                   \
     --disable-static || exit 1
 
 make || exit 1
