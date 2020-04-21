@@ -38,6 +38,19 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/gtk-doc/html/gnutls"
 mkdir -p "${TMP_DIR}${DOCS}"
 
+GTK_DOC="--disable-gtk-doc"
+IDN="--without-idn"
+UNBOUND="--disable-libdane"
+VALGRIND="--disable-valgrind-tests"
+TROUSERS="--without-tpm"
+
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+command -v idn          &>/dev/null && IDN="--with-idn"
+command -v idn2         &>/dev/null && IDN="--with-idn"
+command -v unbound      &>/dev/null && UNBOUND="--enable-libdane"
+command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
+command -v tcsd         &>/dev/null && TROUSERS="--with-tpm"
+
 # GnuTLS не поддерживает guile, поэтому отключаем его
 #    --disable-guile
 # включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
@@ -49,10 +62,12 @@ mkdir -p "${TMP_DIR}${DOCS}"
     --disable-guile                             \
     --enable-openssl-compatibility              \
     --with-default-trust-store-pkcs11="pkcs11:" \
+    "${GTK_DOC}"                                \
+    "${IDN}"                                    \
+    "${UNBOUND}"                                \
+    "${VALGRIND}"                               \
+    "${TROUSERS}"                               \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
-
-# если установлен gtk-doc, можно собрать API документацию добавив опцию
-#    --enable-gtk-doc
 
 make || exit 1
 # make check
