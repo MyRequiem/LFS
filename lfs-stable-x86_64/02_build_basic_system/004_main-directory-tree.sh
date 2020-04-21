@@ -31,6 +31,11 @@ install -dv -m 1777 /var/{cache,mail,spool,tmp,lib/{color,misc,locate}}
 mkdir -pv           /var/log/{packages,removed_packages,setup/tmp/preserved}
 
 (
+    cd /usr || exit 1
+    ln -sf share/doc doc
+)
+
+(
     cd /var || exit 1
     rm -f run lock
     ln -sf /run run
@@ -156,6 +161,7 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /tmp
 /usr
 /usr/bin
+/usr/doc
 /usr/include
 /usr/lib
 /usr/lib/pkgconfig
