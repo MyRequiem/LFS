@@ -88,4 +88,7 @@ https://github.com/martinpitt/umockdev
 mono                                libidn
 https://www.mono-project.com/
 
+help2man                            libmbim
+https://ftp.gnu.org/gnu/help2man/
+
 # vim:ft=conf

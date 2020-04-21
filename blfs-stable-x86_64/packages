@@ -98,7 +98,7 @@ libgcrypt                           (+) libxslt
 libgpg-error                        (+) libassuan, libgcrypt, libksba
 libgrss
 libgsf
-libgudev                            (+)
+libgudev                            (+) libmbim
 libgusb
 libical                             (+)
 libidn                              (+) gnutls
@@ -106,7 +106,7 @@ libidn2                             curl, gnutls
 libiodbc                            (+)
 libksba                             (+)
 liblinear
-libmbim
+libmbim                             (+)
 libnfsidmap
 libpaper
 libqmi
@@ -181,7 +181,7 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz                            gpgme
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn
+gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn, libmbim
 hd2u
 highlight
 ibus

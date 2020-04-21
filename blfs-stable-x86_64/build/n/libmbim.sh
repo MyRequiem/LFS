@@ -2,40 +2,36 @@
 
 PRGNAME="libmbim"
 
-### libmbim (Mobile Broadband Interface Model)
+### libmbim (Mobile Broadband Interface Model library and utils)
 # Mobile Broadband Interface Model (MBIM) - это стандарт взаимодействия с
 # модемами мобильного широкополосного доступа, разработанным на форуме
 # USB-разработчиков. Пакет содержит основанную на GLib библиотеку для общения с
 # модемами WWAN и другими устройствами, которые используют протокол MBIM
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libmbim.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libmbim.html
 
 # Home page: https://www.freedesktop.org/wiki/Software/libmbim/
-# Download:  https://www.freedesktop.org/software/libmbim/libmbim-1.18.2.tar.xz
+# Download:  https://www.freedesktop.org/software/libmbim/libmbim-1.22.0.tar.xz
 
 # Required: libgudev
 # Optional: gtk-doc
 #           help2man
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+GTK_DOC="--disable-gtk-doc"
+command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
-# исправим ошибку сборки путем удаления директивы -Werror из переменной CFLAGS,
-# которая говорит компилятору о том, что все предупреждения будут считаться
-# ошибкой
-# error: Deprecated pre-processor symbol, replace with  [-Werror]
-#                               MbimDevicePrivate);
-#                     ^         ~~~~~~~~~~~~~~
-sed -i "s, -Werror,," src/libmbim-glib/Makefile || exit 1
+./configure         \
+    --prefix=/usr   \
+    --with-udev=yes \
+    "${GTK_DOC}"    \
+    --disable-static || exit 1
 
 make || exit 1
 # make check
