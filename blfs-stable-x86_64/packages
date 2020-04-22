@@ -132,7 +132,7 @@ npth                                (+)
 nspr                                (+) nss
 pcre                                (+) glib
 pcre2                               (+)
-popt
+popt                                (+)
 pth                                 (+) libgcrypt, libidn
 ptlib
 qca
@@ -243,7 +243,7 @@ cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical
 dejagnu                             gdb
-doxygen                             gnutls, gpgme, libical, libsigc++, gdb
+doxygen                             gnutls, gpgme, libical, libsigc++, gdb, popt
 expect
 gcc                                 gdb
 gc

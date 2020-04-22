@@ -6,7 +6,7 @@ PRGNAME="popt"
 # C-библиотека для анализа параметров командной строки, используемая некоторыми
 # программами для их разбора.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/popt.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/popt.html
 
 # Home page: http://freshmeat.sourceforge.net/projects/popt
 # Download:  https://fossies.org/linux/misc/popt-1.16.tar.gz
@@ -14,12 +14,11 @@ PRGNAME="popt"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure       \
@@ -28,20 +27,23 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-### для создания API документации требуется пакет doxygen, но мы его еще не
-# устанавливали
-# doxygen
+# для создания API документации требуется пакет doxygen
+DOXYGEN=""
+command -v doxygen &>/dev/null && DOXYGEN="true"
+[ -n "${DOXYGEN}" ] && doxygen
 
 # make check
 make install
 make install DESTDIR="${TMP_DIR}"
 
 ### установка документации, если она была собрана командой 'doxygen'
-# DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-# install -v -m755 -d "${DOCS}"
-# install -v -m755 -d "${TMP_DIR}${DOCS}"
-# install -v -m644 doxygen/html/* "${DOCS}"
-# install -v -m644 doxygen/html/* "${TMP_DIR}${DOCS}"
+if [ -n "${DOXYGEN}" ]; then
+    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+    install -v -m755 -d "${DOCS}"
+    install -v -m755 -d "${TMP_DIR}${DOCS}"
+    install -v -m644 doxygen/html/* "${DOCS}"
+    install -v -m644 doxygen/html/* "${TMP_DIR}${DOCS}"
+fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (command line parsing library)
