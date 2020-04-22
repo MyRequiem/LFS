@@ -142,7 +142,7 @@ wayland
 wayland-protocols
 wv
 xapian
-aalib
+aalib                               (+)
 babl
 exiv2
 freetype
@@ -215,7 +215,7 @@ dbus                                glib
 elogind
 blocaled
 fcron
-gpm
+gpm                                 aalib
 hdparm
 lsb-tools                           (+) python3
 lm-sensors
@@ -433,7 +433,7 @@ python-pyyaml
 ruby                                docbook-xsl
 rustc                               gdb
 scons
-slang
+slang                               aalib
 subversion                          cmake
 swig                                gpgme
 tcl                                 (+) berkeley-db

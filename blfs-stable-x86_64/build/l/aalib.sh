@@ -4,34 +4,32 @@ PRGNAME="aalib"
 VERSION="1.4rc5"
 DIR_VERSION="1.4.0"
 
-### AAlib
+### AAlib (ASCII Art library)
 # Библиотека, которая отображает любую графику в ASCII символах.
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/aalib.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/aalib.html
 
 # Home page: http://aa-project.sourceforge.net/aalib/
 # Download:  https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 
 # Required: no
-# Optional: x-window-system
-#           slang
+# Optional: slang
 #           gpm
 
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh" || exit 1
 
-SOURCES="/sources"
-BUILD_DIR="${SOURCES}/build"
-mkdir -p "${BUILD_DIR}"
+SOURCES="/root/src"
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}"
+
 cd "${BUILD_DIR}" || exit 1
-rm -rf "${PRGNAME}-${DIR_VERSION}"
-
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-${DIR_VERSION}" || exit 1
-
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
 
 # исправим небольшую проблему с aalib.m4
 sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4
