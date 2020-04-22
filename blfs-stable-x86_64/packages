@@ -42,7 +42,7 @@ parted
 reiserfsprogs
 smartmontools                       (+)
 sshfs
-xfsprogs
+xfsprogs                            talloc
 bluefish
 ed                                  (+)
 emacs                               (-) libidn
@@ -122,7 +122,7 @@ libusb
 libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info, libcroco
-libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++
+libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++, talloc
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -136,7 +136,7 @@ popt                                (+)
 pth                                 (+) libgcrypt, libidn
 ptlib
 qca
-talloc
+talloc                              (+)
 telepathy-glib
 wayland
 wayland-protocols
@@ -247,8 +247,8 @@ doxygen                             gnutls, gpgme, libical, libsigc++, gdb, popt
 expect
 gcc                                 gdb
 gc
-gdb                                 (+) python3, glib
-git
+gdb                                 (+) python3, glib, talloc
+git                                 talloc
 guile                               gnutls, gdb
 librep
 llvm
@@ -404,8 +404,8 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb
-python3                             (+) libxml2
+python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb, talloc
+python3                             (+) libxml2, talloc
 --- python modules ---
 python-d-bus-python
 python-decorator
@@ -439,7 +439,7 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb, pcre2
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb, pcre2, talloc
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
@@ -486,7 +486,7 @@ libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc
+libtirpc                            talloc
 neon
 nghttp2                             curl
 rpcsvc-proto
@@ -1062,10 +1062,10 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils
-docbook-xml                         (+) libxslt, glib, itstool
+docbook-xml                         (+) libxslt, glib, itstool, talloc
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib
+docbook-xsl                         (+) libxslt, glib, talloc
 itstool                             (+) shared-mime-info
 xmlto
 a2ps

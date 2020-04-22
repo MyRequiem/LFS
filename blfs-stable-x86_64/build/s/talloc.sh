@@ -6,28 +6,28 @@ PRGNAME="talloc"
 # Иерархическая система пулов памяти со счетчиками и деструкторами. Является
 # основной системой выделения памяти, используемой в Samba
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/talloc.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/talloc.html
 
 # Home page: http://talloc.samba.org/
-# Download:  https://www.samba.org/ftp/talloc/talloc-2.2.0.tar.gz
+# Download:  https://www.samba.org/ftp/talloc/talloc-2.3.1.tar.gz
 
 # Required: no
 # Optional: docbook-xml
 #           docbook-xsl
 #           libxslt (для создания man-страниц),
 #           python2 (для создания Python2 модулей)
+#           python3 (для создания Python2 модулей)
 #           gdb
 #           git
 #           xfsprogs
 #           libtirpc
 #           valgrind
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
