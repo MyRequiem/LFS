@@ -4,6 +4,9 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+docwriter                           freetype
+https://pypi.org/project/docwriter/
+
 freetds                             apr-util
 http://www.freetds.org/
 

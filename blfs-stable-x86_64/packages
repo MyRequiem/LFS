@@ -149,14 +149,14 @@ xapian
 aalib                               (+)
 babl                                (+)
 exiv2
-freetype
+freetype                            (+)
 fontconfig
 fribidi
 gegl
 giflib
 glm
 graphite2
-harfbuzz
+harfbuzz                            freetype
 jasper
 lcms
 lcms2                               (+) babl
@@ -165,7 +165,7 @@ libgxps
 libjpeg-turbo                       (+) lcms2
 libmng
 libmypaint
-libpng                              (+)
+libpng                              (+) freetype
 libraw
 librsvg                             babl
 libtiff                             lcms2
@@ -243,7 +243,7 @@ unrar
 unzip                               (+) docbook-xml
 upower
 usbutils
-which                               (+) aspell, libseccomp
+which                               (+) aspell, libseccomp, freetype
 zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
