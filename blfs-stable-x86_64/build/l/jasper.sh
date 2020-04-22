@@ -6,7 +6,7 @@ PRGNAME="jasper"
 # програмная реализация кодека, указанного в стандарте JPEG-2000 Part-1, т. е.
 # ISO/IEC 15444-1
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/jasper.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/jasper.html
 
 # Home page: http://www.ece.uvic.ca/~mdadams/jasper/
 # Download:  http://www.ece.uvic.ca/~frodo/jasper/software/jasper-2.0.14.tar.gz
@@ -17,28 +17,27 @@ PRGNAME="jasper"
 #              doxygen  (для создания html документации)
 #              texlive  (для создания pdf документации)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# директория build уже существует в дереве исходного кода, поэтому создаем
-# _build
 mkdir _build || exit 1
 cd _build || exit 1
 
+# если установлен пакет texlive, то пересобираем документацию
+ENABLE_DOC="NO"
+command -v texdoc &>/dev/null && ENABLE_DOC="YES"
+
 # удаляем пути поиска встроенной библиотеки
 #    -DCMAKE_SKIP_INSTALL_RPATH=YES
-# отключаем пересоздание PDF документации, если установлен пакет texlive
-#    -DJAS_ENABLE_DOC=NO
-cmake                              \
-    -DCMAKE_INSTALL_PREFIX=/usr    \
-    -DCMAKE_BUILD_TYPE=Release     \
-    -DCMAKE_SKIP_INSTALL_RPATH=YES \
-    -DJAS_ENABLE_DOC=NO            \
+cmake                                                             \
+    -DCMAKE_INSTALL_PREFIX=/usr                                   \
+    -DCMAKE_BUILD_TYPE=Release                                    \
+    -DCMAKE_SKIP_INSTALL_RPATH=YES                                \
+    -DJAS_ENABLE_DOC="${ENABLE_DOC}"                              \
     -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 

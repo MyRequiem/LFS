@@ -158,12 +158,12 @@ giflib
 glm
 graphite2
 harfbuzz                            freetype
-jasper
+jasper                              (+)
 lcms
 lcms2                               (+) babl, libmng
 libexif
 libgxps
-libjpeg-turbo                       (+) lcms2, libmng
+libjpeg-turbo                       (+) lcms2, libmng, jasper
 libmng                              (+)
 libmypaint
 libpng                              (+) freetype
@@ -249,9 +249,9 @@ zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
 clisp                               gpgme
-cmake                               (+) libjpeg-turbo, libical
+cmake                               (+) libjpeg-turbo, libical, jasper
 dejagnu                             gdb
-doxygen                             gnutls, gpgme, libical, libsigc++, gdb, popt
+doxygen                             gnutls, gpgme, libical, libsigc++, gdb, popt, jasper
 expect
 gcc                                 gdb
 gc
@@ -659,7 +659,7 @@ clutter-gst
 clutter-gtk
 colord-gtk
 fltk
-freeglut
+freeglut                            jasper
 gdk-pixbuf
 glew
 glu
@@ -1088,7 +1088,7 @@ fop
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls, fontconfig
-texlive                             libassuan, libgcrypt, libunistring, gnutls, fontconfig
+texlive                             libassuan, libgcrypt, libunistring, gnutls, fontconfig, jasper
 asymptote
 biber
 dvisvgm
