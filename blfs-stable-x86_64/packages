@@ -155,16 +155,16 @@ graphite2
 harfbuzz
 jasper
 lcms
-lcms2
+lcms2                               (+)
 libexif
 libgxps
-libjpeg-turbo                       (+)
+libjpeg-turbo                       (+) lcms2
 libmng
 libmypaint
 libpng                              (+)
 libraw
 librsvg
-libtiff
+libtiff                             lcms2
 libwebp
 mypaint-brushes
 newt

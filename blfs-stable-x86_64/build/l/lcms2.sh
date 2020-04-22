@@ -2,11 +2,11 @@
 
 PRGNAME="lcms2"
 
-### Little CMS2 (Little Color Management System)
+### Little CMS2 (Little Color Management System Engine)
 # Небольшая система (движок) управления цветом с акцентом на точность и
 # производительность
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/lcms2.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/lcms2.html
 
 # Home page: http://www.littlecms.com/
 # Download:  https://downloads.sourceforge.net/lcms/lcms2-2.9.tar.gz
@@ -15,19 +15,18 @@ PRGNAME="lcms2"
 # Optional: libjpeg-turbo
 #           libtiff (для создания утилиты tificc)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # если мы будем запускать тесты, то сборка должна быть изменена так, чтобы
 # сделать некоторые внутренние ссылки на библиотеки видимыми для тестового кода
 sed -i '/AX_APPEND/s/^/#/' configure.ac || exit 1
-autoreconf
 
+autoreconf || exit 1
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
