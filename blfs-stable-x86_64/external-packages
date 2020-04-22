@@ -101,4 +101,7 @@ https://sourceware.org/systemtap/
 w3m                                 babl
 http://w3m.sourceforge.net/
 
+libssh                              (+)
+http://www.libssh.org/
+
 # vim:ft=conf
