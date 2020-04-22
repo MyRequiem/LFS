@@ -160,11 +160,11 @@ graphite2
 harfbuzz                            freetype
 jasper
 lcms
-lcms2                               (+) babl
+lcms2                               (+) babl, libmng
 libexif
 libgxps
-libjpeg-turbo                       (+) lcms2
-libmng
+libjpeg-turbo                       (+) lcms2, libmng
+libmng                              (+)
 libmypaint
 libpng                              (+) freetype
 libraw

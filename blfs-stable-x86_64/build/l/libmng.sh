@@ -7,7 +7,7 @@ PRGNAME="libmng"
 # модульной философией как и PNG и предназначеная для предоставления тех
 # анимационных возможностей, которые не имеются в PNG
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/libmng.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/libmng.html
 
 # Home page: http://www.libpng.org/pub/mng/
 # Download:  https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
@@ -16,13 +16,13 @@ PRGNAME="libmng"
 #           lcms2
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure       \
     --prefix=/usr \
@@ -34,9 +34,7 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 # документация
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 install -v -m755 -d "${DOCS}"
-install -v -m755 -d "${TMP_DIR}${DOCS}"
 
 install -v -m644 doc/libmng.txt "${DOCS}"
 install -v -m644 doc/libmng.txt "${TMP_DIR}${DOCS}"
