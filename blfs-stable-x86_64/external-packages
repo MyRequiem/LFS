@@ -4,107 +4,110 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+c2man
+# http://www.ciselant.de/c2man/c2man.html
+
 docwriter                           freetype
-https://pypi.org/project/docwriter/
+# https://pypi.org/project/docwriter/
 
 freetds                             apr-util
-http://www.freetds.org/
+# http://www.freetds.org/
 
 mysql                               (-) apr-util, cyrus-sasl
-https://www.mysql.com/
+# https://www.mysql.com/
 
 aspell-dict-en                      (+)
-http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
 aspell-dict-ru                      (+)
-http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
 libedit
 https://www.thrysoee.dk/editline    (-) sqlite, pcre2
-https://www.cs.utah.edu/~bigler/code/libedit.html
+# https://www.cs.utah.edu/~bigler/code/libedit.html
 
 libmetalink                         curl
-https://launchpad.net/libmetalink/
+# https://launchpad.net/libmetalink/
 
 librtmp                             curl
-http://rtmpdump.mplayerhq.hu/
+# http://rtmpdump.mplayerhq.hu/
 
 spnego                              curl
-http://spnego.sourceforge.net/
+# http://spnego.sourceforge.net/
 
 libmpdec                            python3
-http://www.bytereef.org/mpdecimal/
+# http://www.bytereef.org/mpdecimal/
 
 sphinx                              cmake
-https://pypi.org/project/Sphinx/
+# https://pypi.org/project/Sphinx/
 
 krb4                                cyrus-sasl
-https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/
+# https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/
 
 dmalloc                             cyrus-sasl
-https://dmalloc.com/
+# https://dmalloc.com/
 
 saxon6                              docbook-xsl
-https://sourceforge.net/projects/saxon/files/saxon6/
+# https://sourceforge.net/projects/saxon/files/saxon6/
 
 xerces2-java                        docbook-xsl
-http://xerces.apache.org/xerces2-j/
+# http://xerces.apache.org/xerces2-j/
 
 bindfs                              glib
-https://bindfs.org/
+# https://bindfs.org/
 
 markdown                            gobject-introspection
-https://pypi.org/project/Markdown/
+# https://pypi.org/project/Markdown/
 
 cython                              (+) yasm, libseccomp
-https://cython.org/
+# https://cython.org/
 
 autogen                             gnutls
-https://ftp.gnu.org/gnu/autogen/
+# https://ftp.gnu.org/gnu/autogen/
 
 cmocka                              gnutls
-https://cmocka.org/
+# https://cmocka.org/
 
 datefudge                           gnutls
-http://ftp.debian.org/debian/pool/main/d/datefudge/
+# http://ftp.debian.org/debian/pool/main/d/datefudge/
 
 trousers                            gnutls
-https://sourceforge.net/projects/trousers/files/
+# https://sourceforge.net/projects/trousers/files/
 
 bpf-utils                           iptables
-https://github.com/tadamdam/bpf-utils
+# https://github.com/tadamdam/bpf-utils
 
 libnfnetlink                        iptables
-https://netfilter.org/projects/libnfnetlink/
+# https://netfilter.org/projects/libnfnetlink/
 
 libnetfilter-conntrack              iptables
-https://netfilter.org/projects/libnetfilter_conntrack/
+# https://netfilter.org/projects/libnetfilter_conntrack/
 
 nftables                            iptables
-https://netfilter.org/projects/nftables/
+# https://netfilter.org/projects/nftables/
 
 lzip                                (+) ed
-https://www.nongnu.org/lzip/lzip.html
+# https://www.nongnu.org/lzip/lzip.html
 
 umockdev                            libgudev
-https://github.com/martinpitt/umockdev
+# https://github.com/martinpitt/umockdev
 
 mono                                libidn
-https://www.mono-project.com/
+# https://www.mono-project.com/
 
 help2man                            libmbim, libqmi
-https://ftp.gnu.org/gnu/help2man/
+# https://ftp.gnu.org/gnu/help2man/
 
 lcov                                libseccomp
-http://ltp.sourceforge.net/coverage/lcov.php
+# http://ltp.sourceforge.net/coverage/lcov.php
 
 systemtap                           gdb
-https://sourceware.org/systemtap/
+# https://sourceware.org/systemtap/
 
 w3m                                 babl
-http://w3m.sourceforge.net/
+# http://w3m.sourceforge.net/
 
 libssh                              (+)
-http://www.libssh.org/
+# http://www.libssh.org/
 
 # vim:ft=conf

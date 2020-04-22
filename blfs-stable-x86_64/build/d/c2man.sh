@@ -6,7 +6,7 @@ PRGNAME="c2man"
 # Инструмент для извлечения комментариев из исходного кода C для генерации
 # документации
 
-# нет в LFS и BLFS
+# нет в BLFS
 
 # Home page: http://www.ciselant.de/c2man/c2man.html
 # Download:  http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
@@ -14,32 +14,30 @@ PRGNAME="c2man"
 # Required: no
 # Optional: no
 
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh" || exit 1
 
-SOURCES="/sources"
-BUILD_DIR="${SOURCES}/build"
-mkdir -p "${BUILD_DIR}"
-
+SOURCES="/root/src"
 ARCH="$(find ${SOURCES} -type f -name "c2man-*")"
-VERSION="$(echo "${ARCH}" | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+ARCH_VERSION="$(echo "${ARCH}" | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+VERSION="${ARCH_VERSION//@/.}"
 
-cd "${BUILD_DIR}" || exit 1
-rm -rf "${PRGNAME}-${VERSION}"
-mkdir "${PRGNAME}-${VERSION}"
-tar -C "${PRGNAME}-${VERSION}" \
-    -xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION}" || exit 1
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
 
-NVERSION="${VERSION//@/.}"
-TMP_DIR="/tmp/pkg-${PRGNAME}-${NVERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/usr/{bin,lib,share/man/man1}
 
-# самая идиотская конфигурация, которую я когда-либо видел. Происходит в
-# интерактивном режиме и требует ответы на кучу вопросов, поэтому избегаем всех
-# вопросов (-d) для генерации Makefile по умолчанию, а потом приведем Makefile
-# в соответствие требованиям LFS системы. В конце конфигурации жмем <Enter>
+cd "${BUILD_DIR}" || exit 1
+mkdir "${PRGNAME}-${VERSION}"
+cd "${PRGNAME}-${VERSION}" || exit 1
+tar xvf "${ARCH}" || exit 1
+
+# конфигурация происходит в интерактивном режиме и требует ответы на кучу
+# вопросов, поэтому избегаем всех вопросов (-d) для генерации Makefile по
+# умолчанию, а потом приведем Makefile в соответствие требованиям LFS системы.
+# В конце конфигурации жмем <Enter>
 sh ./Configure -d
 
 # правим сгенерированный Makefile
@@ -62,7 +60,7 @@ make         || exit 1
 make install || exit 1
 chmod 644 "${TMP_DIR}/usr/lib/c2man/eg"/*
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${NVERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (extracts comments from C source code)
 #
 # c2man is an automatic documentation tool that extracts comments from C source
@@ -71,9 +69,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${NVERSION}"
 # often be generated from existing code with no modifications.
 #
 # Home page: http://www.ciselant.de/${PRGNAME}/${PRGNAME}.html
-# Download:  http://download.openpkg.org/components/cache/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  http://download.openpkg.org/components/cache/${PRGNAME}/${PRGNAME}-${ARCH_VERSION}.tar.gz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${NVERSION}"
+    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
