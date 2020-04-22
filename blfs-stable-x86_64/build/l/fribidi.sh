@@ -6,20 +6,19 @@ PRGNAME="fribidi"
 # Библиотека реализует двунаправленный алгоритм Unicode, который необходим для
 # поддержки языков с написанием справа налево, таких как арабский и иврит
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/fribidi.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/fribidi.html
 
 # Home page: http://fribidi.org
-# Download:  https://github.com/fribidi/fribidi/releases/download/v1.0.5/fribidi-1.0.5.tar.bz2
+# Download:  https://github.com/fribidi/fribidi/releases/download/v1.0.8/fribidi-1.0.8.tar.bz2
 
 # Required: no
-# Optional: c2man (для сборки man-страниц)
+# Optional: c2man (для сборки man-страниц) http://www.ciselant.de/c2man/c2man.html
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir build

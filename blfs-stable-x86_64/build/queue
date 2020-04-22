@@ -131,8 +131,8 @@ l/libssh.sh
 l/freetype.sh
 x/fontconfig.sh
 d/c2man.sh
-
 l/fribidi.sh
+
 l/libmng.sh
 l/jasper.sh
 l/libtiff.sh

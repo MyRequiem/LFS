@@ -152,7 +152,7 @@ babl                                (+)
 exiv2
 freetype                            (+) fontconfig
 fontconfig                          (+)
-fribidi
+fribidi                             (+)
 gegl
 giflib
 glm

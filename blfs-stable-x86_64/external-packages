@@ -4,7 +4,7 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
-c2man
+c2man                               (+) fribidi
 # http://www.ciselant.de/c2man/c2man.html
 
 docwriter                           freetype
