@@ -135,3 +135,7 @@ l/fribidi.sh
 l/libmng.sh
 l/jasper.sh
 l/libtiff.sh
+s/linux-pam.sh
+
+a/shadow.sh
+n/cyrus-sasl.sh

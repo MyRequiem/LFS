@@ -6,16 +6,16 @@
 
 kernel-firmware                     (+)
 make-ca                             (+) p11-kit, curl, gnutls
-cracklib
-cryptsetup
+cracklib                            linux-pam
+cryptsetup                          (-)
 cyrus-sasl                          (+)
 gnupg                               gpgme, smartmontools
 gnutls                              (+) curl
 gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
-libcap
-linux-pam                           cyrus-sasl
+libcap (with PAM)
+linux-pam                           (+) shadow, cyrus-sasl
 liboauth
 libpwquality
 mit-kerberos-v5                     curl, cyrus-sasl
@@ -127,7 +127,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc
+                                        talloc, linux-pam
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -498,14 +498,14 @@ libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc                            talloc
+libtirpc                            talloc, linux-pam
 neon
 nghttp2                             curl
 rpcsvc-proto
 serf
 uhttpmock
 links
-lynx
+lynx                                (-) linux-pam
 fetchmail
 mailx
 mutt
@@ -518,7 +518,7 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
+berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical, linux-pam
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
@@ -1075,17 +1075,17 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils                       fontconfig
-docbook-xml                         (+) libxslt, glib, itstool, talloc
+docbook-xml                         (+) libxslt, glib, itstool, talloc, linux-pam
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib, talloc
+docbook-xsl                         (+) libxslt, glib, talloc, linux-pam
 itstool                             (+) shared-mime-info
 xmlto
 a2ps
 enscript
 psutils-p17
 epdfview
-fop
+fop                                 linux-pam
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls, fontconfig
