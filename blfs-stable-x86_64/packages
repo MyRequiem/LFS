@@ -163,14 +163,14 @@ lcms
 lcms2                               (+) babl, libmng
 libexif
 libgxps
-libjpeg-turbo                       (+) lcms2, libmng, jasper
+libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff
 libmng                              (+)
 libmypaint
 libpng                              (+) freetype
 libraw
 librsvg                             babl
-libtiff                             lcms2
-libwebp
+libtiff                             (+) lcms2
+libwebp                             libtiff
 mypaint-brushes
 newt
 opencv
@@ -249,9 +249,10 @@ zip                                 (+) docbook-xsl
 autoconf2
 cbindgen
 clisp                               gpgme
-cmake                               (+) libjpeg-turbo, libical, jasper
+cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
 dejagnu                             gdb
-doxygen                             gnutls, gpgme, libical, libsigc++, gdb, popt, jasper
+doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
+                                    popt, jasper
 expect
 gcc                                 gdb
 gc
@@ -659,7 +660,7 @@ clutter-gst
 clutter-gtk
 colord-gtk
 fltk
-freeglut                            jasper
+freeglut                            jasper, libtiff
 gdk-pixbuf
 glew
 glu

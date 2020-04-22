@@ -4,6 +4,9 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+jbig-kit                            libtiff
+# http://www.cl.cam.ac.uk/~mgk25/jbigkit/
+
 c2man                               (+) fribidi
 # http://www.ciselant.de/c2man/c2man.html
 
