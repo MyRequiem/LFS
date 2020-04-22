@@ -2,28 +2,33 @@
 
 PRGNAME="pcre2"
 
-### PCRE2
+### PCRE2 (Perl-compatible regular expression library)
 # Совместимые с Perl библиотеки регулярных выражений нового поколения (в
 # отличие от pcre), которые используются для реализации сопоставления с
 # шаблоном регулярного выражения, используя тот же синтаксис и семантику что и
 # в Perl 5
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/pcre2.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/pcre2.html
 
 # Home page: https://www.pcre.org/
-# Download:  https://ftp.pcre.org/pub/pcre/pcre2-10.33.tar.bz2
+# Download:  https://downloads.sourceforge.net/pcre/pcre2-10.34.tar.bz2
 
 # Required: no
 # Optional: valgrind
-#           libedit
+#           libedit (https://www.cs.utah.edu/~bigler/code/libedit.html)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+VALGRIND="--disable-valgrind"
+LIBEDIT="--disable-pcre2test-libedit"
+
+command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
+[ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-pcre2test-libedit"
 
 # включает поддержку Unicode и функции для обработки UTF-8/16/32 символов
 #    --enable-unicode
@@ -49,6 +54,8 @@ mkdir -pv "${TMP_DIR}"
     --enable-pcre2grep-libz        \
     --enable-pcre2grep-libbz2      \
     --enable-pcre2test-libreadline \
+    "${LIBEDIT}"                   \
+    "${VALGRIND}"                  \
     --disable-static               \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 

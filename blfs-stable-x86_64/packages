@@ -131,7 +131,7 @@ node-js
 npth                                (+)
 nspr                                (+) nss
 pcre                                (+) glib
-pcre2
+pcre2                               (+)
 popt
 pth                                 (+) libgcrypt, libidn
 ptlib
@@ -439,7 +439,7 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb
+valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb, pcre2
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags

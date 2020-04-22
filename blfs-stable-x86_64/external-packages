@@ -17,7 +17,8 @@ aspell-dict-ru                      (+)
 http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
 libedit
-https://www.thrysoee.dk/editline    (-) sqlite
+https://www.thrysoee.dk/editline    (-) sqlite, pcre2
+https://www.cs.utah.edu/~bigler/code/libedit.html
 
 libmetalink                         curl
 https://launchpad.net/libmetalink/

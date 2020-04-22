@@ -121,8 +121,8 @@ l/libsigc++.sh
 l/libsigsegv.sh
 d/python-modules/python-six.sh
 d/gdb.sh
-
 l/pcre2.sh
+
 l/popt.sh
 s/talloc.sh
 l/aalib.sh
