@@ -98,4 +98,7 @@ http://ltp.sourceforge.net/coverage/lcov.php
 systemtap                           gdb
 https://sourceware.org/systemtap/
 
+w3m                                 babl
+http://w3m.sourceforge.net/
+
 # vim:ft=conf

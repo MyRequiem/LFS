@@ -126,8 +126,8 @@ l/popt.sh
 s/talloc.sh
 l/aalib.sh
 l/lcms2.sh
-
 l/babl.sh
+
 l/libssh.sh
 l/freetype.sh
 x/fontconfig.sh

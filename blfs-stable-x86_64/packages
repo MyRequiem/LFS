@@ -71,11 +71,13 @@ dbus-glib
 enchant
 exempi
 fftw                                (+)
-glib                                (+) gobject-introspection, atk, shared-mime-info, libcroco, json-glib, libgudev, libqmi
+glib                                (+) gobject-introspection, atk,
+                                        shared-mime-info, libcroco, json-glib,
+                                        libgudev, libqmi
 glibmm
 gmime2
 gmime3
-gobject-introspection               (+) glib, atk, json-glib, libgudev, libical
+gobject-introspection               (+) glib, atk, json-glib, libgudev, libical, babl
 grantlee
 gsl
 gspell
@@ -121,8 +123,10 @@ libunistring                        (+) gnutls
 libusb
 libuv                               (+) cmake
 libxkbcommon
-libxml2                             (+) libarchive, libxslt, docbook-xml, docbook-xsl, shared-mime-info, libcroco
-libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++, talloc
+libxml2                             (+) libarchive, libxslt, docbook-xml,
+                                        docbook-xsl, shared-mime-info, libcroco
+libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
+                                        talloc
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -143,7 +147,7 @@ wayland-protocols
 wv
 xapian
 aalib                               (+)
-babl
+babl                                (+)
 exiv2
 freetype
 fontconfig
@@ -155,7 +159,7 @@ graphite2
 harfbuzz
 jasper
 lcms
-lcms2                               (+)
+lcms2                               (+) babl
 libexif
 libgxps
 libjpeg-turbo                       (+) lcms2
@@ -163,7 +167,7 @@ libmng
 libmypaint
 libpng                              (+)
 libraw
-librsvg
+librsvg                             babl
 libtiff                             lcms2
 libwebp
 mypaint-brushes
@@ -181,7 +185,10 @@ bogofilter
 compface
 desktop-file-utils                  glib
 graphviz                            gpgme
-gtk-doc                             libtasn1, p11-kit, glib, gobject-introspection, atk, libcroco, gnutls, json-glib, libgudev, libidn, libmbim, libqmi
+gtk-doc                             libtasn1, p11-kit, glib,
+                                    gobject-introspection, atk, libcroco,
+                                    gnutls, json-glib, libgudev, libidn,
+                                    libmbim, libqmi
 hd2u
 highlight
 ibus
@@ -404,7 +411,8 @@ pelr-xml-sax-base
 pelr-xml-sax-expat
 --- end of perl module dependencies ---
 php
-python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb, talloc
+python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
+                                        talloc
 python3                             (+) libxml2, talloc
 --- python modules ---
 python-d-bus-python
@@ -439,7 +447,9 @@ swig                                gpgme
 tcl                                 (+) berkeley-db
 tk                                  python2, python3
 vala                                libical
-valgrind                            libtasn1, curl, python2, python3, libxml2, libksba, pcre, gnutls, libidn, libseccomp, gdb, pcre2, talloc
+valgrind                            libtasn1, curl, python2, python3, libxml2,
+                                    libksba, pcre, gnutls, libidn, libseccomp,
+                                    gdb, pcre2, talloc
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
@@ -510,7 +520,8 @@ berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
-sqlite                              (+) apr-util, python2, python3, cyrus-sasl, nss
+sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
+                                        nss
 openldap                            apr-util, curl, cyrus-sasl
 unbound                             gnutls
 util-macros

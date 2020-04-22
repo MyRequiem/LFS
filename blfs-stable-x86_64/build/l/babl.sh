@@ -2,28 +2,29 @@
 
 PRGNAME="babl"
 
-### babl
+### babl (pixel format translation library)
 # Библиотека преобразования пикселей между растровыми форматами (библиотека
 # перевода в любой пиксельный формат)
 
-# http://www.linuxfromscratch.org/blfs/view/9.0/general/babl.html
+# http://www.linuxfromscratch.org/blfs/view/stable/general/babl.html
 
 # Home page: http://gegl.org/babl/
-# Download:  https://download.gimp.org/pub/babl/0.1/babl-0.1.70.tar.xz
+# Download:  https://download.gimp.org/pub/babl/0.1/babl-0.1.74.tar.xz
 
-# Required: lcms2
-# Optional: no
+# Required:    no
+# Recommended: gobject-introspection
+#              librsvg
+# Optional:    lcms2
+#              w3m (http://w3m.sourceforge.net/)
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/root"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/gtk-doc/html/babl"
+mkdir -pv "${TMP_DIR}${DOCS}/graphics"
 
-# каталог build уже существует в дереве исходников, поэтому создаем директорию
-# _build
 mkdir _build
 cd _build || exit 1
 
@@ -37,9 +38,7 @@ ninja install
 DESTDIR="${TMP_DIR}" ninja install
 
 # документация
-DOCS="/usr/share/gtk-doc/html/babl"
 install -v -m755 -d "${DOCS}/graphics"
-install -v -m755 -d "${TMP_DIR}${DOCS}/graphics"
 
 install -v -m644 docs/*.{css,html} "${DOCS}"
 install -v -m644 docs/*.{css,html} "${TMP_DIR}${DOCS}"
