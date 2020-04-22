@@ -6,7 +6,7 @@
 
 kernel-firmware                     (+)
 make-ca                             (+) p11-kit, curl, gnutls
-cracklib                            linux-pam
+cracklib                            (-)
 cryptsetup                          (-)
 cyrus-sasl                          (+)
 gnupg                               gpgme, smartmontools
@@ -15,7 +15,7 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)
-linux-pam                           (+) shadow, cyrus-sasl
+linux-pam                           (-)
 liboauth
 libpwquality
 mit-kerberos-v5                     curl, cyrus-sasl
@@ -24,7 +24,7 @@ nss                                 (+) p11-kit, make-ca, apr-util
 openssh
 p11-kit                             (+) make-ca, gnutls, nss
 polkit
-shadow
+shadow                              (+)
 ssh-askpass
 stunnel                             curl
 sudo
@@ -127,7 +127,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc, linux-pam
+                                        talloc
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -498,14 +498,14 @@ libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc                            talloc, linux-pam
+libtirpc                            talloc
 neon
 nghttp2                             curl
 rpcsvc-proto
 serf
 uhttpmock
 links
-lynx                                (-) linux-pam
+lynx
 fetchmail
 mailx
 mutt
@@ -518,7 +518,7 @@ dovecot
 exim
 postfix
 sendmail
-berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical, linux-pam
+berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
@@ -1075,17 +1075,17 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils                       fontconfig
-docbook-xml                         (+) libxslt, glib, itstool, talloc, linux-pam
+docbook-xml                         (+) libxslt, glib, itstool, talloc
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib, talloc, linux-pam
+docbook-xsl                         (+) libxslt, glib, talloc
 itstool                             (+) shared-mime-info
 xmlto
 a2ps
 enscript
 psutils-p17
 epdfview
-fop                                 linux-pam
+fop
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls, fontconfig

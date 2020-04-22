@@ -4,9 +4,6 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
-prelude                             linux-pam
-# https://www.prelude-siem.org/
-
 jbig-kit                            libtiff
 # http://www.cl.cam.ac.uk/~mgk25/jbigkit/
 
@@ -110,7 +107,7 @@ lcov                                libseccomp
 systemtap                           gdb
 # https://sourceware.org/systemtap/
 
-w3m                                 babl, linux-pam
+w3m                                 babl
 # http://w3m.sourceforge.net/
 
 libssh                              (+)
