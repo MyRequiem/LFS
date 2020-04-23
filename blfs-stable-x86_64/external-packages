@@ -4,6 +4,15 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+libressl                            openssh
+# http://www.libressl.org/
+
+opensc                              openssh
+# https://github.com/OpenSC/OpenSC/wiki
+
+libsectok                           openssh
+# http://www.citi.umich.edu/projects/smartcard/sectok.html
+
 adns                                gnupg
 # http://www.chiark.greenend.org.uk/~ian/adns/
 
@@ -31,8 +40,8 @@ aspell-dict-en                      (+)
 aspell-dict-ru                      (+)
 # http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
-libedit
-https://www.thrysoee.dk/editline    (-) sqlite, pcre2
+libedit                             sqlite, pcre2, openssh
+# https://www.thrysoee.dk/editline
 # https://www.cs.utah.edu/~bigler/code/libedit.html
 
 libmetalink                         curl

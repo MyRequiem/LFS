@@ -15,13 +15,13 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-)
+linux-pam                           (-) openssh
 liboauth
 libpwquality
-mit-kerberos-v5                     curl, cyrus-sasl
+mit-kerberos-v5                     curl, cyrus-sasl, openssh
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
-openssh
+openssh                             (+)
 p11-kit                             (+) make-ca, gnutls, nss
 polkit
 shadow                              (+)
@@ -238,7 +238,7 @@ raptor
 rasqal
 redland
 sg3-utils
-sysstat
+sysstat                             openssh
 udisks
 unrar
 unzip                               (+) docbook-xml
@@ -256,7 +256,7 @@ doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
 expect
 gcc                                 gdb
 gc
-gdb                                 (+) python3, glib, talloc
+gdb                                 (+) python3, glib, talloc, openssh
 git                                 talloc
 guile                               gnutls, gdb
 librep
@@ -457,7 +457,7 @@ yasm                                (+) libjpeg-turbo
 ctags
 --- end of other programming tools ---
 java                                (-) make-ca
-openjdk                             make-ca, cyrus-sasl, libidn
+openjdk                             make-ca, cyrus-sasl, libidn, openssh
 apache-ant                          docbook-xsl
 dhcpcd
 dhcp
@@ -465,7 +465,7 @@ bridge-utils
 cifs-utils
 iw
 ncftp
-net-tools                           gnutls
+net-tools                           gnutls, openssh
 nfs-utils
 ntp
 rpcbind
@@ -550,7 +550,7 @@ sessreg
 setxkbmap
 smproxy
 x11perf
-xauth
+xauth                               openssh
 xbacklight
 xcmsdb
 xcursorgen
