@@ -4,6 +4,12 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+adns                                gnupg
+# http://www.chiark.greenend.org.uk/~ian/adns/
+
+fig2dev                             gnupg
+# http://mcj.sourceforge.net/
+
 jbig-kit                            libtiff
 # http://www.cl.cam.ac.uk/~mgk25/jbigkit/
 

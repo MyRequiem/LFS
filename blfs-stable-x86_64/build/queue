@@ -135,3 +135,6 @@ l/fribidi.sh
 l/libmng.sh
 l/jasper.sh
 l/libtiff.sh
+n/gnupg.sh
+n/gpgme.sh
+a/smartmontools.sh

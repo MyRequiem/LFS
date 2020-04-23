@@ -9,12 +9,12 @@ make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
 cryptsetup                          (-)
 cyrus-sasl                          (+)
-gnupg                               gpgme, smartmontools
-gnutls                              (+) curl
+gnupg                               (+) gpgme, smartmontools
+gnutls                              (+) curl, gnupg
 gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
-libcap (with PAM)
+libcap (with PAM)                   (-)
 linux-pam                           (-)
 liboauth
 libpwquality
@@ -32,7 +32,7 @@ tripwire
 volume-key
 btrfs-progs
 dosfstools                          (+)
-fuse
+fuse                                gnupg
 jfsutils
 lvm2
 mdadm
@@ -89,14 +89,14 @@ json-glib                           (+)
 keyutils
 libaio                              (+)
 libarchive                          (+) cmake, ed
-libassuan                           (+) gpgme
+libassuan                           (+) gpgme, gnupg
 libatasmart                         (+)
 libatomic-ops
 libblockdev
 libbytesize
 libcroco                            (+)
 libdaemon
-libgcrypt                           (+) libxslt
+libgcrypt                           (+) libxslt, gnupg
 libgpg-error                        (+) libassuan, libgcrypt, libksba
 libgrss
 libgsf
@@ -106,7 +106,7 @@ libical                             (+)
 libidn                              (+) gnutls
 libidn2                             curl, gnutls
 libiodbc                            (+)
-libksba                             (+)
+libksba                             (+) gnupg
 liblinear
 libmbim                             (+) libqmi
 libnfsidmap
@@ -120,7 +120,7 @@ libstatgrab
 libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls
-libusb
+libusb                              gnupg
 libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
@@ -133,7 +133,7 @@ libyaml
 lzo                                 (+) libarchive
 mtdev
 node-js
-npth                                (+)
+npth                                (+) gnupg
 nspr                                (+) nss
 pcre                                (+) glib
 pcre2                               (+)
@@ -194,10 +194,10 @@ hd2u
 highlight
 ibus
 imagemagick6
-imagemagick7
+imagemagick7                        gnupg
 iso-codes
 lsof
-pinentry
+pinentry                            gnupg
 rarian
 rep-gtk
 screen
@@ -485,7 +485,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl
-curl                                (+) cmake
+curl                                (+) cmake, gnupg
 geoclue
 glib-networking
 ldns
@@ -523,8 +523,8 @@ lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
-                                        nss
-openldap                            apr-util, curl, cyrus-sasl
+                                        nss, gnupg
+openldap                            apr-util, curl, cyrus-sasl, gnupg
 unbound                             gnutls
 util-macros
 xorgproto
@@ -1088,8 +1088,10 @@ epdfview
 fop
 mupdf
 paps
-install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls, fontconfig
-texlive                             libassuan, libgcrypt, libunistring, gnutls, fontconfig, jasper
+install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
+                                    fontconfig
+texlive                             libassuan, libgcrypt, libunistring, gnutls,
+                                    fontconfig, jasper, gnupg
 asymptote
 biber
 dvisvgm
