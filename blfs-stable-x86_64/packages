@@ -246,11 +246,11 @@ upower
 usbutils
 which                               (+) aspell, libseccomp, freetype
 zip                                 (+) docbook-xsl
-autoconf2
+autoconf213                         (+)
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
-dejagnu                             gdb
+dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
                                     popt, jasper, icu
 expect
