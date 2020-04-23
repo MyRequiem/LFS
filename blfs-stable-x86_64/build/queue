@@ -139,3 +139,6 @@ n/gnupg.sh
 n/gpgme.sh
 a/smartmontools.sh
 n/openssh.sh
+l/icu.sh
+l/libxml2.sh
+l/libical.sh

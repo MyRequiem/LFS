@@ -81,7 +81,7 @@ gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
 grantlee
 gsl
 gspell
-icu                                 libxml2, libical
+icu                                 (+) libxml2, libical
 jansson
 js
 json-c                              (+)
@@ -252,7 +252,7 @@ clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
 dejagnu                             gdb
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper
+                                    popt, jasper, icu
 expect
 gcc                                 gdb
 gc
@@ -260,7 +260,7 @@ gdb                                 (+) python3, glib, talloc, openssh
 git                                 talloc
 guile                               gnutls, gdb
 librep
-llvm
+llvm                                icu
 lua52
 lua53
 mercurial
