@@ -143,3 +143,4 @@ l/icu.sh
 l/libxml2.sh
 l/libical.sh
 d/autoconf213.sh
+d/js.sh

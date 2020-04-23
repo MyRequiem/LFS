@@ -81,9 +81,9 @@ gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
 grantlee
 gsl
 gspell
-icu                                 (+) libxml2, libical
+icu                                 (+) libxml2, libical, js
 jansson
-js
+js                                  (+) gjs
 json-c                              (+)
 json-glib                           (+)
 keyutils
@@ -244,15 +244,15 @@ unrar
 unzip                               (+) docbook-xml
 upower
 usbutils
-which                               (+) aspell, libseccomp, freetype
-zip                                 (+) docbook-xsl
-autoconf213                         (+)
+which                               (+) aspell, libseccomp, freetype, js
+zip                                 (+) docbook-xsl, js
+autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu
+                                    popt, jasper, icu, js
 expect
 gcc                                 gdb
 gc
@@ -414,7 +414,7 @@ perl-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc
+                                        talloc, js
 python3                             (+) libxml2, talloc
 --- python modules ---
 python-d-bus-python
@@ -863,7 +863,7 @@ vte058
 yelp-xsl
 gconf
 geocode-glib
-gjs                                 gobject-introspection
+gjs                                 (-) gobject-introspection
 gnome-autoar
 gnome-desktop
 gnome-menus
