@@ -24,6 +24,9 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+GPG="no"
+command -v gpg &>/dev/null && GPG="yes"
+
 # не создавать скрипт инициализации smartd по умолчанию
 #    --with-initscriptdir=no
 ./configure                 \
@@ -31,6 +34,7 @@ mkdir -pv "${TMP_DIR}"
     --sysconfdir=/etc       \
     --with-initscriptdir=no \
     --with-libsystemd=no    \
+    --with-gnupg="${GPG}"   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
