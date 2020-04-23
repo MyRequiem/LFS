@@ -49,6 +49,10 @@ make || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
+chmod 644 "/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
+chmod 644 "${TMP_DIR}/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Mozillas JavaScript engine)
 #
