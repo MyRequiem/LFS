@@ -138,3 +138,4 @@ l/libtiff.sh
 n/gnupg.sh
 n/gpgme.sh
 a/smartmontools.sh
+n/openssh.sh
