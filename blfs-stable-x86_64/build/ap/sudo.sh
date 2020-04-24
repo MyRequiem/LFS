@@ -122,7 +122,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # /var/log/ so the system administrator can keep an eye on things
 #
 # Home page: https://www.sudo.ws/
-# Download:  http://www.sudo.ws/dist/sudo-1.8.31.tar.gz
+# Download:  http://www.sudo.ws/dist/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
