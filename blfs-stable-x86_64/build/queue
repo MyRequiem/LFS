@@ -148,3 +148,5 @@ l/polkit.sh
 ap/sudo.sh
 l/fuse.sh
 n/gnupg.sh
+n/pinentry.sh
+n/gnupg.sh

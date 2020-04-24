@@ -114,3 +114,4 @@ https://www.freedesktop.org/software/polkit/releases/polkit-0.116.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/9.1/polkit-0.116-fix_elogind_detection-1.patch
 http://www.sudo.ws/dist/sudo-1.8.31.tar.gz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.9.0/fuse-3.9.0.tar.xz
+https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2

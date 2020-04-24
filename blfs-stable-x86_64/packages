@@ -45,7 +45,7 @@ sshfs
 xfsprogs                            talloc
 bluefish
 ed                                  (+)
-emacs                               (-) libidn
+emacs                               (-) libidn, pinentry
 gedit
 joe
 kate
@@ -90,7 +90,7 @@ json-glib                           (+)
 keyutils
 libaio                              (+)
 libarchive                          (+) cmake, ed
-libassuan                           (+) gpgme, gnupg
+libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
 libatomic-ops
 libblockdev
@@ -98,7 +98,7 @@ libbytesize
 libcroco                            (+)
 libdaemon
 libgcrypt                           (+) libxslt, gnupg
-libgpg-error                        (+) libassuan, libgcrypt, libksba
+libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss
 libgsf
 libgudev                            (+) libmbim
@@ -198,7 +198,7 @@ imagemagick6
 imagemagick7                        gnupg
 iso-codes
 lsof
-pinentry                            gnupg
+pinentry                            (+) gnupg
 rarian
 rep-gtk
 screen
@@ -660,14 +660,14 @@ clutter
 clutter-gst
 clutter-gtk
 colord-gtk
-fltk
+fltk                                pinentry
 freeglut                            jasper, libtiff
 gdk-pixbuf
 glew
 glu
 goffice
-gtk+2                               libiodbc
-gtk+3
+gtk+2                               libiodbc, pinentry
+gtk+3                               pinentry
 gtk engines
 gtkmm2
 gtkmm3
@@ -685,7 +685,7 @@ libnotify
 libxklavier
 pango
 pangomm
-qt5                                 cmake, gpgme
+qt5                                 cmake, gpgme, pinentry
 qtwebengine
 startup-notification
 webkitgtk+2
@@ -855,9 +855,9 @@ kde-cli-tools
 systemsettings
 plasma-thunderbolt
 --- end of building plasma 5 ---
-gcr
+gcr                                 pinentry
 gsettings-desktop-schemas
-libsecret
+libsecret                           pinentry
 rest
 totem-pl-parser
 vte058
