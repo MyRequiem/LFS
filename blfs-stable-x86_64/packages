@@ -28,11 +28,11 @@ shadow                              (+)
 ssh-askpass                         (-)
 stunnel                             (-) curl
 sudo                                (+)
-tripwire
-volume-key
-btrfs-progs
+tripwire                            (-)
+volume-key                          (-)
+btrfs-progs                         (-)
 dosfstools                          (+)
-fuse                                gnupg
+fuse                                (+) gnupg
 jfsutils
 lvm2
 mdadm
@@ -253,7 +253,7 @@ clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu, js
+                                    popt, jasper, icu, js, fuse
 expect
 gcc                                 gdb
 gc

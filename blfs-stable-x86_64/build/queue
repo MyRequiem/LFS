@@ -146,3 +146,5 @@ d/autoconf213.sh
 d/js.sh
 l/polkit.sh
 ap/sudo.sh
+l/fuse.sh
+n/gnupg.sh
