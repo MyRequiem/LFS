@@ -15,15 +15,15 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-) openssh
-liboauth
-libpwquality
+linux-pam                           (-) openssh, polkit
+liboauth                            (-)
+libpwquality                        (-)
 mit-kerberos-v5                     curl, cyrus-sasl, openssh
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
 openssh                             (+)
 p11-kit                             (+) make-ca, gnutls, nss
-polkit
+polkit                              (+)
 shadow                              (+)
 ssh-askpass
 stunnel                             curl
@@ -73,17 +73,18 @@ exempi
 fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
-                                        libgudev, libqmi
+                                        libgudev, libqmi, polkit
 glibmm
 gmime2
 gmime3
-gobject-introspection               (+) glib, atk, json-glib, libgudev, libical, babl
+gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
+                                        babl, polkit
 grantlee
 gsl
 gspell
 icu                                 (+) libxml2, libical, js
 jansson
-js                                  (+) gjs
+js                                  (+) gjs, polkit
 json-c                              (+)
 json-glib                           (+)
 keyutils
@@ -127,7 +128,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc
+                                        talloc, polkit
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -189,7 +190,7 @@ graphviz                            gpgme
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
-                                    libmbim, libqmi
+                                    libmbim, libqmi, polkit
 hd2u
 highlight
 ibus
@@ -220,7 +221,7 @@ colord
 cpio
 cups-pk-helper
 dbus                                glib
-elogind
+elogind                             polkit
 blocaled
 fcron
 gpm                                 aalib
@@ -834,7 +835,7 @@ milou
 plasma-nm
 plasma-pa
 plasma-workspace-wallpapers
-polkit-kde-agent
+polkit-kde-agent                    polkit
 powerdevil
 plasma-desktop
 kdeplasma-addons
@@ -894,14 +895,14 @@ gnome-keyring
 gnome-settings-daemon
 gnome-control-center
 mutter
-gnome-shell
+gnome-shell                         polkit
 gnome-shell-extensions
 gnome-session
 gdm
 gnome-user-docs
 yelp
 notification-daemon
-polkit-gnome
+polkit-gnome                        polkit
 baobab
 brasero
 cheese
@@ -952,7 +953,7 @@ pcmanfm
 libwnck2
 lxpanel
 lxappearance
-lxsession
+lxsession                           polkit
 lxde-common
 gpicview
 lxappearance-obconf
@@ -1075,10 +1076,10 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils                       fontconfig
-docbook-xml                         (+) libxslt, glib, itstool, talloc
+docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib, talloc
+docbook-xsl                         (+) libxslt, glib, talloc, polkit
 itstool                             (+) shared-mime-info
 xmlto
 a2ps
