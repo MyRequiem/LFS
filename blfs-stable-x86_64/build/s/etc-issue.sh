@@ -44,9 +44,9 @@ fi
 # \v   version of the OS, e.g., the build-date etc, e.g.
 #       #2 SMP Fri Jun 24 13:38:27 CDT 2016
 
-# Linux 5.5.15 x86_64
+# Linux 5.5.15 x86_64 (tty1)
 # Fri Apr 10 [23:23:26]
-printf " \\\s \\\r \\\m\\n \\\d [\\\t]\\n\\n" > "${ISSUE}"
+printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${ISSUE}"
 
 cp "${ISSUE}" "${TMP_DIR}/etc/"
 config_file_processing "${ISSUE}"
