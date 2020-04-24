@@ -4,6 +4,15 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+afs                                 sudo
+# http://www.openafs.org/
+
+fwtk                                sudo
+# http://www.fwtk.org/
+
+opie                                sudo
+# https://sourceforge.net/projects/opie/files/
+
 libressl                            openssh
 # http://www.libressl.org/
 

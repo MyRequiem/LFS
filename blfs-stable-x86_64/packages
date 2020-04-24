@@ -15,19 +15,19 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-) openssh, polkit
+linux-pam                           (-) openssh, polkit, sudo
 liboauth                            (-)
 libpwquality                        (-)
-mit-kerberos-v5                     curl, cyrus-sasl, openssh
+mit-kerberos-v5                     curl, cyrus-sasl, openssh, sudo
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
 openssh                             (+)
 p11-kit                             (+) make-ca, gnutls, nss
 polkit                              (+)
 shadow                              (+)
-ssh-askpass
-stunnel                             curl
-sudo
+ssh-askpass                         (-)
+stunnel                             (-) curl
+sudo                                (+)
 tripwire
 volume-key
 btrfs-progs
@@ -518,14 +518,14 @@ vsftpd
 dovecot
 exim
 postfix
-sendmail
+sendmail                            (-) sudo
 berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
                                         nss, gnupg
-openldap                            apr-util, curl, cyrus-sasl, gnupg
+openldap                            apr-util, curl, cyrus-sasl, gnupg, sudo
 unbound                             gnutls
 util-macros
 xorgproto

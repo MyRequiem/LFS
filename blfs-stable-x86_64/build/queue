@@ -145,3 +145,4 @@ l/libical.sh
 d/autoconf213.sh
 d/js.sh
 l/polkit.sh
+ap/sudo.sh

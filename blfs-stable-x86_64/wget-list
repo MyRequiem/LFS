@@ -112,3 +112,4 @@ http://www.linuxfromscratch.org/patches/blfs/9.1/autoconf-2.13-consolidated_fixe
 http://ftp.gnome.org/pub/gnome/teams/releng/tarballs-needing-help/mozjs/mozjs-60.8.0.tar.bz2
 https://www.freedesktop.org/software/polkit/releases/polkit-0.116.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/9.1/polkit-0.116-fix_elogind_detection-1.patch
+http://www.sudo.ws/dist/sudo-1.8.31.tar.gz
