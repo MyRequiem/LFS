@@ -4,6 +4,9 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+digest-crc                          parted
+# https://metacpan.org/pod/Digest::CRC
+
 fuse2                               ntfs-3g
 # https://github.com/libfuse/libfuse
 

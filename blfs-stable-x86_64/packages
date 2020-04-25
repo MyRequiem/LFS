@@ -31,14 +31,14 @@ sudo                                (+)
 tripwire                            (-)
 volume-key                          (-)
 btrfs-progs                         (-)
-dosfstools                          (+)
+dosfstools                          (+) parted
 fuse                                (+) gnupg
 jfsutils                            (-)
-lvm2                                (+)
+lvm2                                (+) parted
 mdadm                               (-) lvm2
 ntfs-3g                             (+)
-gptfdisk
-parted
+gptfdisk                            (-)
+parted                              (+)
 reiserfsprogs                       lvm2
 smartmontools                       (+)
 sshfs
@@ -139,7 +139,7 @@ nspr                                (+) nss
 pcre                                (+) glib
 pcre2                               (+)
 popt                                (+)
-pth                                 (+) libgcrypt, libidn
+pth                                 (+) libgcrypt, libidn, parted
 ptlib
 qca
 talloc                              (+)
@@ -1090,9 +1090,9 @@ fop
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig
+                                    fontconfig, parted
 texlive                             libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig, jasper, gnupg
+                                    fontconfig, jasper, gnupg, parted
 asymptote
 biber
 dvisvgm
