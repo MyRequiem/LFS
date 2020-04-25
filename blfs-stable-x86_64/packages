@@ -35,8 +35,8 @@ dosfstools                          (+)
 fuse                                (+) gnupg
 jfsutils                            (-)
 lvm2                                (+)
-mdadm                               lvm2
-ntfs
+mdadm                               (-) lvm2
+ntfs-3g                             (+)
 gptfdisk
 parted
 reiserfsprogs                       lvm2

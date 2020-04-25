@@ -4,6 +4,9 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+fuse2                               ntfs-3g
+# https://github.com/libfuse/libfuse
+
 thin-provisioning-tools             lvm2
 # https://github.com/jthornber/thin-provisioning-tools
 
