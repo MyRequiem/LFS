@@ -33,16 +33,16 @@ volume-key                          (-)
 btrfs-progs                         (-)
 dosfstools                          (+)
 fuse                                (+) gnupg
-jfsutils
-lvm2
-mdadm
+jfsutils                            (-)
+lvm2                                (+)
+mdadm                               lvm2
 ntfs
 gptfdisk
 parted
-reiserfsprogs
+reiserfsprogs                       lvm2
 smartmontools                       (+)
 sshfs
-xfsprogs                            talloc
+xfsprogs                            talloc, lvm2
 bluefish
 ed                                  (+)
 emacs                               (-) libidn, pinentry
@@ -88,7 +88,7 @@ js                                  (+) gjs, polkit
 json-c                              (+)
 json-glib                           (+)
 keyutils
-libaio                              (+)
+libaio                              (+) lvm2
 libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
@@ -245,7 +245,7 @@ unrar
 unzip                               (+) docbook-xml
 upower
 usbutils
-which                               (+) aspell, libseccomp, freetype, js
+which                               (+) aspell, libseccomp, freetype, js, lvm2
 zip                                 (+) docbook-xsl, js
 autoconf213                         (+) js
 cbindgen
@@ -452,7 +452,7 @@ tk                                  python2, python3
 vala                                libical
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
-                                    gdb, pcre2, talloc
+                                    gdb, pcre2, talloc, lvm2
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
