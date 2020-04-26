@@ -82,7 +82,8 @@ done
 
 # по умолчанию документация Vim устанавливается в /usr/share/vim, поэтому
 # установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
-ln -sv "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
+rm -f "/usr/share/doc/${PRGNAME}-${VERSION}"
+ln -svf "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
     "/usr/share/doc/${PRGNAME}-${VERSION}"
 
 (
