@@ -4,6 +4,9 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+open-mpi                            boost
+# https://www.open-mpi.org/
+
 digest-crc                          parted
 # https://metacpan.org/pod/Digest::CRC
 

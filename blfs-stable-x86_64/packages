@@ -53,18 +53,18 @@ mousepad                            (-)
 nano                                (-)
 vim                                 (+)
 --- other editors ---
-geany
-leafpad
-mcedit
+geany                               (-)
+leafpad                             (-)
+mcedit                              (-)
 --- end of other editors ---
-dash
-tcsh
-zsh
+dash                                (-)
+tcsh                                (-)
+zsh                                 (-)
 qemu
 apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru
-boost
+boost                               (+)
 brotli                              curl
 clucene
 dbus-glib
@@ -82,7 +82,7 @@ gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
 grantlee
 gsl
 gspell
-icu                                 (+) libxml2, libical, js
+icu                                 (+) libxml2, libical, js, boost
 jansson
 js                                  (+) gjs, polkit
 json-c                              (+)
@@ -245,7 +245,8 @@ unrar
 unzip                               (+) docbook-xml
 upower
 usbutils
-which                               (+) aspell, libseccomp, freetype, js, lvm2
+which                               (+) aspell, libseccomp, freetype, js, lvm2,
+                                        boost
 zip                                 (+) docbook-xsl, js
 autoconf213                         (+) js
 cbindgen
