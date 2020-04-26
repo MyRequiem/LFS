@@ -42,16 +42,16 @@ parted                              (+)
 reiserfsprogs                       (-) lvm2
 smartmontools                       (+)
 sshfs                               (+)
-xfsprogs                            talloc, lvm2
-bluefish
+xfsprogs                            (-) talloc, lvm2
+bluefish                            (-)
 ed                                  (+)
 emacs                               (-) libidn, pinentry
-gedit
-joe
-kate
-mousepad
-nano
-vim
+gedit                               (-)
+joe                                 (-)
+kate                                (-)
+mousepad                            (-)
+nano                                (-)
+vim                                 (+)
 --- other editors ---
 geany
 leafpad
@@ -224,7 +224,7 @@ dbus                                glib
 elogind                             polkit
 blocaled
 fcron
-gpm                                 aalib
+gpm                                 aalib, vim
 hdparm
 lsb-tools                           (+) python3
 lm-sensors
@@ -262,8 +262,8 @@ git                                 talloc
 guile                               gnutls, gdb
 librep
 llvm                                icu
-lua52
-lua53
+lua52                               vim
+lua53                               vim
 mercurial
 nasm                                (-) libjpeg-turbo
 --- perl modules ---
@@ -415,8 +415,8 @@ perl-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc, js
-python3                             (+) libxml2, talloc
+                                        talloc, js, vim
+python3                             (+) libxml2, talloc, vim
 --- python modules ---
 python-d-bus-python
 python-decorator
@@ -441,13 +441,13 @@ python-scour
 python-six                          (+) gdb
 python-pyyaml
 --- end of python modules ---
-ruby                                docbook-xsl
+ruby                                docbook-xsl, vim
 rustc                               gdb
 scons
 slang                               aalib
 subversion                          cmake
 swig                                gpgme
-tcl                                 (+) berkeley-db
+tcl                                 (+) berkeley-db, vim
 tk                                  python2, python3
 vala                                libical
 valgrind                            libtasn1, curl, python2, python3, libxml2,
@@ -470,7 +470,7 @@ net-tools                           gnutls, openssh
 nfs-utils
 ntp
 rpcbind
-rsync
+rsync                               vim
 samba                               curl
 wget
 wireless-tools
@@ -594,7 +594,7 @@ font-misc-ethiopic
 font-xfree86-type1
 --- end xorg fonts ---
 xkeyboardconfig
-xorg-server
+xorg-server                         vim
 --- xorg drivers ---
 libevdev
 xorg-evdev-driver
@@ -666,8 +666,8 @@ gdk-pixbuf
 glew
 glu
 goffice
-gtk+2                               libiodbc, pinentry
-gtk+3                               pinentry
+gtk+2                               libiodbc, pinentry, vim
+gtk+3                               pinentry, vim
 gtk engines
 gtkmm2
 gtkmm3
