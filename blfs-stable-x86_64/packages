@@ -21,7 +21,7 @@ libpwquality                        (-)
 mit-kerberos-v5                     curl, cyrus-sasl, openssh, sudo
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
-openssh                             (+)
+openssh                             (+) sshfs
 p11-kit                             (+) make-ca, gnutls, nss
 polkit                              (+)
 shadow                              (+)
@@ -32,16 +32,16 @@ tripwire                            (-)
 volume-key                          (-)
 btrfs-progs                         (-)
 dosfstools                          (+) parted
-fuse                                (+) gnupg
+fuse                                (+) gnupg, sshfs
 jfsutils                            (-)
 lvm2                                (+) parted
 mdadm                               (-) lvm2
 ntfs-3g                             (+)
 gptfdisk                            (-)
 parted                              (+)
-reiserfsprogs                       lvm2
+reiserfsprogs                       (-) lvm2
 smartmontools                       (+)
-sshfs
+sshfs                               (+)
 xfsprogs                            talloc, lvm2
 bluefish
 ed                                  (+)
@@ -73,7 +73,7 @@ exempi
 fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
-                                        libgudev, libqmi, polkit
+                                        libgudev, libqmi, polkit, sshfs
 glibmm
 gmime2
 gmime3
@@ -420,7 +420,7 @@ python3                             (+) libxml2, talloc
 --- python modules ---
 python-d-bus-python
 python-decorator
-python-docutils
+python3-docutils                    sshfs
 python-pyatspi2
 python-pycairo118
 python-pycairo119
