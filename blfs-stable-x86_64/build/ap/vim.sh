@@ -25,8 +25,8 @@ PRGNAME="vim"
 #              tcl
 
 ROOT="/root"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
+source "${ROOT}/check_environment.sh"      || exit 1
+source "${ROOT}/config_file_processing.sh" || exit 1
 
 SOURCES="/root/src"
 VERSION=$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | cut -f 3- -d . | \
@@ -167,6 +167,7 @@ config_file_processing "${VIMRC}"
 # по умолчанию документация Vim устанавливается в /usr/share/vim, поэтому
 # установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
 DOC="/usr/share/doc"
+rm -f "${DOC}/${PRGNAME}-${VERSION}"
 ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${DOC}/${PRGNAME}-${VERSION}"
 
 (
