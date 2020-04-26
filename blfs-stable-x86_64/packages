@@ -65,7 +65,7 @@ apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru
 boost                               (+)
-brotli                              curl
+brotli                              (+) curl
 clucene
 dbus-glib
 enchant
@@ -251,7 +251,8 @@ zip                                 (+) docbook-xsl, js
 autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
-cmake                               (+) libjpeg-turbo, libical, jasper, libtiff
+cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
+                                        brotli
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
                                     popt, jasper, icu, js, fuse
@@ -264,7 +265,7 @@ guile                               gnutls, gdb
 librep
 llvm                                icu
 lua52                               vim
-lua53                               vim
+lua53                               vim, brotli
 mercurial
 nasm                                (-) libjpeg-turbo
 --- perl modules ---
@@ -416,8 +417,8 @@ perl-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc, js, vim
-python3                             (+) libxml2, talloc, vim
+                                        talloc, js, vim, brotli
+python3                             (+) libxml2, talloc, vim, brotli
 --- python modules ---
 python-d-bus-python
 python-decorator

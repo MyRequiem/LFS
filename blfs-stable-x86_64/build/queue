@@ -155,3 +155,5 @@ a/ntfs-3g.sh
 l/parted.sh
 n/sshfs.sh
 ap/vim.sh
+d/brotli.sh
+n/curl.sh
