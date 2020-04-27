@@ -165,3 +165,5 @@ n/gnutls.sh
 l/libssh2.sh
 n/curl.sh
 s/libstatgrab.sh
+l/libusb.sh
+n/gnupg.sh

@@ -122,7 +122,7 @@ libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls, libidn2
-libusb                              gnupg
+libusb                              (+) gnupg
 libuv                               (+) cmake
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
@@ -256,7 +256,7 @@ cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu, js, fuse, glibmm
+                                    popt, jasper, icu, js, fuse, glibmm, libusb
 expect
 gcc                                 gdb
 gc
