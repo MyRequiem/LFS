@@ -9,7 +9,7 @@ make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
 cryptsetup                          (-)
 cyrus-sasl                          (+)
-gnupg                               (+) gpgme, smartmontools
+gnupg                               (+) gpgme, smartmontools, libssh2
 gnutls                              (+) curl, gnupg, glibmm
 gpgme                               (+)
 haveged                             (+)
@@ -21,7 +21,7 @@ libpwquality                        (-)
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
-openssh                             (+) sshfs
+openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
 polkit                              (+)
 shadow                              (+)
@@ -98,7 +98,7 @@ libblockdev                         (-)
 libbytesize                         (-)
 libcroco                            (+)
 libdaemon                           (-)
-libgcrypt                           (+) libxslt, gnupg
+libgcrypt                           (+) libxslt, gnupg, libssh2
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
@@ -109,15 +109,15 @@ libidn                              (+) gnutls
 libidn2                             (+) curl, gnutls
 libiodbc                            (+)
 libksba                             (+) gnupg
-liblinear
+liblinear                           (-)
 libmbim                             (+) libqmi
-libnfsidmap
-libpaper
+libnfsidmap                         (-)
+libpaper                            (-)
 libqmi                              (+)
 libseccomp                          (+)
 libsigc++                           (+) glibmm
 libsigsegv                          (+)
-libssh2                             curl
+libssh2                             (+) curl
 libstatgrab
 libtasn1                            (+) p11-kit, gnutls
 libunique

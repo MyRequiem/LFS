@@ -162,3 +162,5 @@ l/glibmm.sh
 l/libidn2.sh
 n/curl.sh
 n/gnutls.sh
+l/libssh2.sh
+n/curl.sh
