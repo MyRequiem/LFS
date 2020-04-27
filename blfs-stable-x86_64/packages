@@ -118,7 +118,7 @@ libseccomp                          (+)
 libsigc++                           (+) glibmm
 libsigsegv                          (+)
 libssh2                             (+) curl
-libstatgrab
+libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls, libidn2
