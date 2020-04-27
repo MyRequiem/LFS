@@ -43,12 +43,15 @@ make || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
+# удаляем директорию /usr/include/enchant, остается только
+# /usr/include/enchant-2
 INCLUDE_ENCHANT="/usr/include/enchant"
 rm -rf "${INCLUDE_ENCHANT}"
 rm -rf "${TMP_DIR}${INCLUDE_ENCHANT}"
 
 # создаем символические ссылки для того, чтобы другие пакеты могли найти его,
 # используя старое имя
+# в /usr/include        enchant       -> enchant-2
 # в /usr/bin/           enchant       -> enchant-2
 # в /usr/lib/           libenchant.so -> libenchant-2.so
 # в /usr/lib/pkgconfig  enchant.pc    -> enchant-2.pc
@@ -57,6 +60,8 @@ ln -sfv enchant-2       /usr/bin/enchant
 ln -sfv libenchant-2.so /usr/lib/libenchant.so
 ln -sfv enchant-2.pc    /usr/lib/pkgconfig/enchant.pc
 (
+    cd "${TMP_DIR}/usr/include" || exit 1
+    ln -sfv enchant-2 enchant
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sfv enchant-2 enchant
     cd "${TMP_DIR}/usr/lib" || exit 1
