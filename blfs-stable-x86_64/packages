@@ -10,7 +10,7 @@ cracklib                            (-)
 cryptsetup                          (-)
 cyrus-sasl                          (+)
 gnupg                               (+) gpgme, smartmontools
-gnutls                              (+) curl, gnupg
+gnutls                              (+) curl, gnupg, glibmm
 gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
@@ -69,13 +69,13 @@ brotli                              (+) curl
 clucene                             (-)
 dbus-glib                           enchant
 enchant                             (+)
-exempi
+exempi                              (-)
 fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
-                                        enchant
-glibmm
+                                        enchant, glibmm
+glibmm                              (+)
 gmime2
 gmime3
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
@@ -115,7 +115,7 @@ libnfsidmap
 libpaper
 libqmi                              (+)
 libseccomp                          (+)
-libsigc++                           (+)
+libsigc++                           (+) glibmm
 libsigsegv                          (+)
 libssh2                             curl
 libstatgrab
@@ -129,7 +129,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc, polkit
+                                        talloc, polkit, glibmm
 libwacom
 libyaml
 lzo                                 (+) libarchive
@@ -256,7 +256,7 @@ cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu, js, fuse
+                                    popt, jasper, icu, js, fuse, glibmm
 expect
 gcc                                 gdb
 gc
@@ -491,7 +491,7 @@ wireshark
 c-ares                              curl
 curl                                (+) cmake, gnupg
 geoclue
-glib-networking
+glib-networking                     glibmm
 ldns
 libevent
 libmnl

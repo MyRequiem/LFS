@@ -158,3 +158,4 @@ ap/vim.sh
 d/brotli.sh
 n/curl.sh
 l/enchant.sh
+l/glibmm.sh
