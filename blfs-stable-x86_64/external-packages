@@ -4,6 +4,18 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+hspell                              enchant
+# http://hspell.ivrix.org.il/
+
+hunspell                            enchant
+# http://hunspell.github.io/
+
+voikko                              enchant
+# https://voikko.puimula.org/
+
+unittest-cpp                        enchant
+# https://github.com/unittest-cpp/unittest-cpp/releases
+
 open-mpi                            boost
 # https://www.open-mpi.org/
 
@@ -55,10 +67,10 @@ freetds                             apr-util
 mysql                               (-) apr-util, cyrus-sasl
 # https://www.mysql.com/
 
-aspell-dict-en                      (+)
+aspell-dict-en                      (+) enchant
 # http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
-aspell-dict-ru                      (+)
+aspell-dict-ru                      (+) enchant
 # http://www.linuxfromscratch.org/blfs/view/stable/general/aspell.html
 
 libedit                             sqlite, pcre2, openssh

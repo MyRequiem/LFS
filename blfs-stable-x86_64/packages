@@ -63,17 +63,18 @@ zsh                                 (-)
 qemu
 apr                                 (+)
 apr-util                            (+)
-aspell                              (+) aspell-dict-en, aspell-dict-ru
+aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
 boost                               (+)
 brotli                              (+) curl
-clucene
-dbus-glib
-enchant
+clucene                             (-)
+dbus-glib                           enchant
+enchant                             (+)
 exempi
 fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
-                                        libgudev, libqmi, polkit, sshfs
+                                        libgudev, libqmi, polkit, sshfs,
+                                        enchant
 glibmm
 gmime2
 gmime3
