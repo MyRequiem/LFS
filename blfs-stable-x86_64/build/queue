@@ -159,3 +159,6 @@ d/brotli.sh
 n/curl.sh
 l/enchant.sh
 l/glibmm.sh
+l/libidn2.sh
+n/curl.sh
+n/gnutls.sh

@@ -18,7 +18,7 @@ libcap (with PAM)                   (-)
 linux-pam                           (-) openssh, polkit, sudo
 liboauth                            (-)
 libpwquality                        (-)
-mit-kerberos-v5                     curl, cyrus-sasl, openssh, sudo
+mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util
 openssh                             (+) sshfs
@@ -76,37 +76,37 @@ glib                                (+) gobject-introspection, atk,
                                         libgudev, libqmi, polkit, sshfs,
                                         enchant, glibmm
 glibmm                              (+)
-gmime2
-gmime3
+gmime2                              (-)
+gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
                                         babl, polkit
-grantlee
-gsl
-gspell
+grantlee                            (-)
+gsl                                 (-)
+gspell                              (-)
 icu                                 (+) libxml2, libical, js, boost
-jansson
+jansson                             (-)
 js                                  (+) gjs, polkit
 json-c                              (+)
 json-glib                           (+)
-keyutils
+keyutils                            (-)
 libaio                              (+) lvm2
 libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
-libatomic-ops
-libblockdev
-libbytesize
+libatomic-ops                       (-)
+libblockdev                         (-)
+libbytesize                         (-)
 libcroco                            (+)
-libdaemon
+libdaemon                           (-)
 libgcrypt                           (+) libxslt, gnupg
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
-libgrss
-libgsf
+libgrss                             (-)
+libgsf                              (-)
 libgudev                            (+) libmbim
-libgusb
+libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls
-libidn2                             curl, gnutls
+libidn2                             (+) curl, gnutls
 libiodbc                            (+)
 libksba                             (+) gnupg
 liblinear
@@ -121,7 +121,7 @@ libssh2                             curl
 libstatgrab
 libtasn1                            (+) p11-kit, gnutls
 libunique
-libunistring                        (+) gnutls
+libunistring                        (+) gnutls, libidn2
 libusb                              gnupg
 libuv                               (+) cmake
 libxkbcommon
@@ -191,7 +191,7 @@ graphviz                            gpgme
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
-                                    libmbim, libqmi, polkit
+                                    libmbim, libqmi, polkit, libidn2
 hd2u
 highlight
 ibus
@@ -261,7 +261,7 @@ expect
 gcc                                 gdb
 gc
 gdb                                 (+) python3, glib, talloc, openssh
-git                                 talloc
+git                                 talloc, libidn2
 guile                               gnutls, gdb
 librep
 llvm                                icu
