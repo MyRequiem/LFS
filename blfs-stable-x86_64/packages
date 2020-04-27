@@ -130,8 +130,8 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
                                         talloc, polkit, glibmm
-libwacom
-libyaml
+libwacom                            (-)
+libyaml                             (+)
 lzo                                 (+) libarchive
 mtdev
 node-js
@@ -256,7 +256,8 @@ cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu, js, fuse, glibmm, libusb
+                                    popt, jasper, icu, js, fuse, glibmm, libusb,
+                                    libyaml
 expect
 gcc                                 gdb
 gc
@@ -596,7 +597,7 @@ font-ibm-type1
 font-misc-ethiopic
 font-xfree86-type1
 --- end xorg fonts ---
-xkeyboardconfig
+xkeyboard-config
 xorg-server                         vim
 --- xorg drivers ---
 libevdev
