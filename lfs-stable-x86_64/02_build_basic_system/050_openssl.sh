@@ -10,7 +10,7 @@ PRGNAME="openssl"
 # http://www.linuxfromscratch.org/lfs/view/development/chapter06/openssl.html
 
 # Home page: https://www.openssl.org/
-# Download:  https://www.openssl.org/source/openssl-1.1.1f.tar.gz
+# Download:  https://www.openssl.org/source/openssl-1.1.1g.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
