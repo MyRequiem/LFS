@@ -133,7 +133,7 @@ libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
 libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
-mtdev
+mtdev                               (+)
 node-js
 npth                                (+) gnupg
 nspr                                (+) nss
