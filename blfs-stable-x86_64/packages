@@ -156,7 +156,7 @@ freetype                            (+) fontconfig
 fontconfig                          (+)
 fribidi                             (+)
 gegl                                (+)
-giflib
+giflib                              (+)
 glm
 graphite2
 harfbuzz                            freetype
@@ -1086,7 +1086,7 @@ docbook-xml50
 docbook-xml51
 docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto
 itstool                             (+) shared-mime-info
-xmlto                               (+)
+xmlto                               (+) giflib
 a2ps
 enscript
 psutils-p17
