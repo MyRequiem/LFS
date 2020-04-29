@@ -4,6 +4,12 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+http-parser                         nodejs
+# https://github.com/nodejs/http-parser
+
+npm                                 (-) nodejs
+# https://www.npmjs.com/
+
 hspell                              enchant
 # http://hspell.ivrix.org.il/
 

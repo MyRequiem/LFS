@@ -83,7 +83,7 @@ gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
-icu                                 (+) libxml2, libical, js, boost
+icu                                 (+) libxml2, libical, js, boost, nodejs
 jansson                             (-)
 js                                  (+) gjs, polkit
 json-c                              (+)
@@ -123,7 +123,7 @@ libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls, libidn2
 libusb                              (+) gnupg
-libuv                               (+) cmake
+libuv                               (+) cmake, nodejs
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
@@ -134,7 +134,7 @@ libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
 mtdev                               (+)
-node-js
+nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
 pcre                                (+) glib
@@ -419,7 +419,7 @@ perl-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc, js, vim, brotli
+                                        talloc, js, vim, brotli, nodejs
 python3                             (+) libxml2, talloc, vim, brotli
 --- python modules ---
 python-d-bus-python
@@ -489,7 +489,7 @@ nmap
 traceroute
 whois
 wireshark
-c-ares                              curl
+c-ares                              curl, nodejs
 curl                                (+) cmake, gnupg
 geoclue
 glib-networking                     glibmm
@@ -505,7 +505,7 @@ libndp
 libsoup
 libtirpc                            talloc
 neon
-nghttp2                             curl
+nghttp2                             curl, nodejs
 rpcsvc-proto
 serf
 uhttpmock
