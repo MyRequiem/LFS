@@ -164,7 +164,7 @@ systemtap                           gdb
 w3m                                 babl
 # http://w3m.sourceforge.net/
 
-libssh                              (+)
+libssh                              (+) exiv2
 # http://www.libssh.org/
 
 # vim:ft=conf

@@ -129,7 +129,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc, polkit, glibmm
+                                        talloc, polkit, glibmm, exiv2
 libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
@@ -141,17 +141,17 @@ pcre                                (+) glib
 pcre2                               (+)
 popt                                (+)
 pth                                 (+) libgcrypt, libidn, parted
-ptlib
-qca
+ptlib                               (-)
+qca                                 (-)
 talloc                              (+)
 telepathy-glib
-wayland
-wayland-protocols
-wv
-xapian
+wayland                             (-)
+wayland-protocols                   (-)
+wv                                  (-)
+xapian                              (-)
 aalib                               (+)
 babl                                (+)
-exiv2
+exiv2                               (+)
 freetype                            (+) fontconfig
 fontconfig                          (+)
 fribidi                             (+)
@@ -187,7 +187,7 @@ asciidoc
 bogofilter
 compface
 desktop-file-utils                  glib
-graphviz                            gpgme
+graphviz                            gpgme, exiv2
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
@@ -253,11 +253,11 @@ autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
-                                        brotli
+                                        brotli, exiv2
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
                                     popt, jasper, icu, js, fuse, glibmm, libusb,
-                                    libyaml
+                                    libyaml, exiv2
 expect
 gcc                                 gdb
 gc
@@ -490,7 +490,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl, nodejs
-curl                                (+) cmake, gnupg
+curl                                (+) cmake, gnupg, exiv2
 geoclue
 glib-networking                     glibmm
 ldns
