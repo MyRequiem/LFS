@@ -4,6 +4,12 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+dblatex                             xmlto
+# https://sourceforge.net/projects/dblatex/files/dblatex/
+
+passivetex                          xmlto
+# http://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html
+
 lensfun                             gegl
 # https://lensfun.github.io/
 
@@ -184,6 +190,9 @@ systemtap                           gdb
 
 w3m                                 babl
 # http://w3m.sourceforge.net/
+
+elinks                              xmlto
+# http://elinks.or.cz/
 
 libssh                              (+) exiv2
 # http://www.libssh.org/

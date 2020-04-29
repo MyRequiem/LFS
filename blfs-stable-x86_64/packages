@@ -129,7 +129,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc, polkit, glibmm, exiv2
+                                        talloc, polkit, glibmm, exiv2, xmlto
 libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
@@ -509,8 +509,8 @@ nghttp2                             curl, nodejs
 rpcsvc-proto
 serf
 uhttpmock
-links
-lynx
+links                               xmlto
+lynx                                xmlto
 fetchmail
 mailx
 mutt
@@ -1080,17 +1080,18 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils                       fontconfig
-docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit
+docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
+                                        xmlto
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib, talloc, polkit
+docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto
 itstool                             (+) shared-mime-info
-xmlto
+xmlto                               (+)
 a2ps
 enscript
 psutils-p17
 epdfview
-fop
+fop                                 xmlto
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
