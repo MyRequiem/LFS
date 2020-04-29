@@ -4,6 +4,27 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+lensfun                             gegl
+# https://lensfun.github.io/
+
+libopenraw                          gegl
+# https://libopenraw.pages.freedesktop.org/
+
+libspiro                            gegl
+# http://libspiro.sourceforge.net/
+
+libumfpack                          gegl
+# http://faculty.cse.tamu.edu/davis/suitesparse.html
+
+luajit                              gegl
+# http://luajit.org/luajit.html
+
+mrg                                 gegl
+# https://github.com/hodefoting/mrg/releases
+
+openexr                             gegl
+# https://www.openexr.com/
+
 http-parser                         nodejs
 # https://github.com/nodejs/http-parser
 

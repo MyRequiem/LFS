@@ -79,7 +79,7 @@ glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
-                                        babl, polkit
+                                        babl, polkit, gegl
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -87,7 +87,7 @@ icu                                 (+) libxml2, libical, js, boost, nodejs
 jansson                             (-)
 js                                  (+) gjs, polkit
 json-c                              (+)
-json-glib                           (+)
+json-glib                           (+) gegl
 keyutils                            (-)
 libaio                              (+) lvm2
 libarchive                          (+) cmake, ed
@@ -150,29 +150,29 @@ wayland-protocols                   (-)
 wv                                  (-)
 xapian                              (-)
 aalib                               (+)
-babl                                (+)
-exiv2                               (+)
+babl                                (+) gegl
+exiv2                               (+) gegl
 freetype                            (+) fontconfig
 fontconfig                          (+)
 fribidi                             (+)
-gegl
+gegl                                (+)
 giflib
 glm
 graphite2
 harfbuzz                            freetype
-jasper                              (+)
+jasper                              (+) gegl
 lcms
-lcms2                               (+) babl, libmng
+lcms2                               (+) babl, libmng, gegl
 libexif
 libgxps
-libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff
+libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl
 libmng                              (+)
 libmypaint
-libpng                              (+) freetype
+libpng                              (+) freetype, gegl
 libraw
-librsvg                             babl
-libtiff                             (+) lcms2
-libwebp                             libtiff
+librsvg                             babl, gegl
+libtiff                             (+) lcms2, gegl
+libwebp                             libtiff, gegl
 mypaint-brushes
 newt
 opencv
@@ -183,15 +183,15 @@ potrace
 qpdf
 sassc
 woff2
-asciidoc
+asciidoc                            gegl
 bogofilter
 compface
 desktop-file-utils                  glib
-graphviz                            gpgme, exiv2
+graphviz                            gpgme, exiv2, gegl
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
-                                    libmbim, libqmi, polkit, libidn2
+                                    libmbim, libqmi, polkit, libidn2, gegl
 hd2u
 highlight
 ibus
@@ -430,9 +430,9 @@ python-pycairo118
 python-pycairo119
 python-pycryptodome
 python-dbusmock
-python-pygments
+python3-pygments                    gegl
 python-pygobject2
-python-pygobject3
+python-pygobject3                   gegl
 python-pygtk
 python-pyxdg
 python2-libxml2                     libxslt, docbook-xsl
@@ -445,7 +445,7 @@ python-scour
 python-six                          (+) gdb
 python-pyyaml
 --- end of python modules ---
-ruby                                docbook-xsl, vim
+ruby                                docbook-xsl, vim, gegl
 rustc                               gdb
 scons
 slang                               aalib
@@ -453,7 +453,7 @@ subversion                          cmake
 swig                                gpgme
 tcl                                 (+) berkeley-db, vim
 tk                                  python2, python3
-vala                                libical
+vala                                libical, gegl
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
                                     gdb, pcre2, talloc, lvm2
@@ -657,7 +657,7 @@ atk                                 (+)
 atkmm
 at-spi2-core
 at-spi2-atk
-cairo                               gobject-introspection
+cairo                               gobject-introspection, gegl
 cairomm
 cogl
 clutter
@@ -666,7 +666,7 @@ clutter-gtk
 colord-gtk
 fltk                                pinentry
 freeglut                            jasper, libtiff
-gdk-pixbuf
+gdk-pixbuf                          gegl
 glew
 glu
 goffice
@@ -687,7 +687,7 @@ libepoxy
 libglade
 libnotify
 libxklavier
-pango
+pango                               gegl
 pangomm
 qt5                                 cmake, gpgme, pinentry
 qtwebengine
@@ -891,7 +891,7 @@ gsound
 dconf
 gnome-backgrounds
 gvfs
-gexiv2
+gexiv2                              gegl
 nautilus
 zenity
 gnome-bluetooth
@@ -1039,12 +1039,12 @@ pipewire
 pulseaudio
 sbc
 sdl
-sdl2
+sdl2                                gegl
 sound-theme-freedesktop
 soundtouch
 speex
 taglib
-v4l-utils
+v4l-utils                           gegl
 x264
 x265
 xine-lib
@@ -1056,7 +1056,7 @@ lame
 mpg123
 pnmixer
 vorbis-tools
-ffmpeg
+ffmpeg                              gegl
 mplayer
 transcode
 vlc
