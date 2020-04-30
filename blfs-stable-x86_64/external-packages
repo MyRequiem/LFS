@@ -4,8 +4,17 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
-dblatex                             xmlto
-# https://sourceforge.net/projects/dblatex/files/dblatex/
+silgraphite                         graphite2
+# https://sourceforge.net/projects/silgraphite/files/silgraphite
+
+graphite-font                       graphite2
+# https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_fonts
+
+fonttools                           harfbuzz, graphite2
+# https://pypi.org/project/fonttools/
+
+dblatex                             xmlto, graphite2
+# http://dblatex.sourceforge.net/
 
 passivetex                          xmlto
 # http://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html

@@ -74,16 +74,17 @@ fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
-                                        enchant, glibmm
+                                        enchant, glibmm, harfbuzz
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
-                                        babl, polkit, gegl
+                                        babl, polkit, gegl, harfbuzz
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
-icu                                 (+) libxml2, libical, js, boost, nodejs
+icu                                 (+) libxml2, libical, js, boost, nodejs,
+                                        harfbuzz
 jansson                             (-)
 js                                  (+) gjs, polkit
 json-c                              (+)
@@ -152,14 +153,14 @@ xapian                              (-)
 aalib                               (+)
 babl                                (+) gegl
 exiv2                               (+) gegl
-freetype                            (+) fontconfig
+freetype                            (+) fontconfig, harfbuzz, graphite2
 fontconfig                          (+)
 fribidi                             (+)
 gegl                                (+)
 giflib                              (+)
-glm
-graphite2
-harfbuzz                            freetype
+glm                                 (-)
+graphite2                           (+) harfbuzz
+harfbuzz                            (+) freetype, graphite2
 jasper                              (+) gegl
 lcms
 lcms2                               (+) babl, libmng, gegl
@@ -183,7 +184,7 @@ potrace
 qpdf
 sassc
 woff2
-asciidoc                            gegl
+asciidoc                            gegl, graphite2
 bogofilter
 compface
 desktop-file-utils                  glib
@@ -191,7 +192,8 @@ graphviz                            gpgme, exiv2, gegl
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
-                                    libmbim, libqmi, polkit, libidn2, gegl
+                                    libmbim, libqmi, polkit, libidn2, gegl,
+                                    harfbuzz
 hd2u
 highlight
 ibus
@@ -253,11 +255,11 @@ autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
-                                        brotli, exiv2
+                                        brotli, exiv2, graphite2
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
                                     popt, jasper, icu, js, fuse, glibmm, libusb,
-                                    libyaml, exiv2
+                                    libyaml, exiv2, graphite2
 expect
 gcc                                 gdb
 gc
@@ -419,7 +421,8 @@ perl-xml-sax-expat
 --- end of perl module dependencies ---
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc, js, vim, brotli, nodejs
+                                        talloc, js, vim, brotli, nodejs,
+                                        graphite2
 python3                             (+) libxml2, talloc, vim, brotli
 --- python modules ---
 python-d-bus-python
@@ -657,7 +660,7 @@ atk                                 (+)
 atkmm
 at-spi2-core
 at-spi2-atk
-cairo                               gobject-introspection, gegl
+cairo                               gobject-introspection, gegl, harfbuzz
 cairomm
 cogl
 clutter
@@ -1095,9 +1098,10 @@ fop                                 xmlto
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig, parted
+                                    fontconfig, parted, graphite2
 texlive                             libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig, jasper, gnupg, parted
+                                    fontconfig, jasper, gnupg, parted,
+                                    graphite2
 asymptote
 biber
 dvisvgm
