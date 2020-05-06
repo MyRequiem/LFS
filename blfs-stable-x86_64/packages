@@ -138,8 +138,8 @@ mtdev                               (+)
 nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
-pcre                                (+) glib
-pcre2                               (+)
+pcre                                (+) glib, git
+pcre2                               (+) git
 popt                                (+)
 pth                                 (+) libgcrypt, libidn, parted
 ptlib                               (-)
@@ -184,7 +184,7 @@ potrace
 qpdf
 sassc
 woff2
-asciidoc                            gegl, graphite2
+asciidoc                            gegl, graphite2, git
 bogofilter
 compface
 desktop-file-utils                  glib
@@ -452,14 +452,14 @@ ruby                                docbook-xsl, vim, gegl
 rustc                               gdb
 scons
 slang                               aalib
-subversion                          cmake
+subversion                          cmake, git
 swig                                gpgme
 tcl                                 (+) berkeley-db, vim
-tk                                  python2, python3
+tk                                  python2, python3, git
 vala                                libical, gegl
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
-                                    gdb, pcre2, talloc, lvm2
+                                    gdb, pcre2, talloc, lvm2, git
 yasm                                (+) libjpeg-turbo
 --- other programming tools ---
 ctags
@@ -493,7 +493,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl, nodejs
-curl                                (+) cmake, gnupg, exiv2
+curl                                (+) cmake, gnupg, exiv2, git
 geoclue
 glib-networking                     glibmm
 ldns
@@ -1089,7 +1089,7 @@ docbook-xml50
 docbook-xml51
 docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto
 itstool                             (+) shared-mime-info
-xmlto                               (+) giflib
+xmlto                               (+) giflib, git
 a2ps
 enscript
 psutils-p17

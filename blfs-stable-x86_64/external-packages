@@ -4,6 +4,12 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+asciidoctor                         git
+# https://asciidoctor.org/
+
+docbook2x                           git
+# http://docbook2x.sourceforge.net/
+
 silgraphite                         graphite2
 # https://sourceforge.net/projects/silgraphite/files/silgraphite
 
@@ -13,7 +19,7 @@ graphite-font                       graphite2
 fonttools                           harfbuzz, graphite2
 # https://pypi.org/project/fonttools/
 
-dblatex                             xmlto, graphite2
+dblatex                             xmlto, graphite2, git
 # http://dblatex.sourceforge.net/
 
 passivetex                          xmlto

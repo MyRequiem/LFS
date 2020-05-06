@@ -163,3 +163,4 @@ l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
 l/libexif.sh
+d/git.sh
