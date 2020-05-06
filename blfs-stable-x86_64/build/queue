@@ -162,3 +162,4 @@ ap/graphite2.sh
 l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
+l/libexif.sh

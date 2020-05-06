@@ -164,7 +164,7 @@ harfbuzz                            (+) freetype, graphite2
 jasper                              (+) gegl
 lcms
 lcms2                               (+) babl, libmng, gegl
-libexif
+libexif                             (+)
 libgxps
 libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl
 libmng                              (+)
@@ -188,7 +188,7 @@ asciidoc                            gegl, graphite2
 bogofilter
 compface
 desktop-file-utils                  glib
-graphviz                            gpgme, exiv2, gegl
+graphviz                            gpgme, exiv2, gegl, libexif
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
@@ -259,7 +259,7 @@ cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
 dejagnu                             gdb, autoconf213
 doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
                                     popt, jasper, icu, js, fuse, glibmm, libusb,
-                                    libyaml, exiv2, graphite2
+                                    libyaml, exiv2, graphite2, libexif
 expect
 gcc                                 gdb
 gc
