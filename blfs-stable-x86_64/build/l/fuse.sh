@@ -40,7 +40,7 @@ meson             \
 
 ninja || exit 1
 
-# если пакет doxygen установлен, то собираем документацию
+# если пакет doxygen установлен, то пересоберем документацию
 command -v doxygen &>/dev/null && doxygen doc/Doxyfile
 
 # пакет не имеет набора тестов, сразу устанавливаем
@@ -67,8 +67,9 @@ mv -vf "${TMP_DIR}/usr/sbin/mount.fuse3" "${TMP_DIR}/sbin"
 
 # документация
 install -v -m755 -d "${DOCS}"
-install -v -m644 ../doc/{README.NFS,kernel.txt} "${DOCS}"
-install -v -m644 ../doc/{README.NFS,kernel.txt} "${TMP_DIR}${DOCS}"
+install -v -m644 ../doc/{README.NFS,kernel.txt,fast17-vangoor.pdf} "${DOCS}"
+install -v -m644 ../doc/{README.NFS,kernel.txt,fast17-vangoor.pdf} \
+    "${TMP_DIR}${DOCS}"
 
 cp -Rv ../doc/html "${DOCS}"
 cp -Rv ../doc/html "${TMP_DIR}${DOCS}"
