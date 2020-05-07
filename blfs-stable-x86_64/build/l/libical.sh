@@ -31,9 +31,16 @@ cd build || exit 1
 
 INTROSPECTION="false"
 VALA_API="false"
+DOCS="false"
+DOXYGEN=""
+GTK_DOC=""
 
 command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
 command -v valac         &>/dev/null && VALA_API="true"
+command -v doxygen       &>/dev/null && DOXYGEN="true"
+command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
+
+[[ -n "${DOXYGEN}" && -n "${GTK_DOC}" ]] && DOCS="true"
 
 # применяем более высокий уровень оптимизации компилятора
 #    -DCMAKE_BUILD_TYPE=Release
@@ -51,7 +58,7 @@ cmake                                          \
     -DCMAKE_INSTALL_PREFIX=/usr                \
     -DCMAKE_BUILD_TYPE=Release                 \
     -DSHARED_ONLY=yes                          \
-    -DICAL_BUILD_DOCS=false                    \
+    -DICAL_BUILD_DOCS="${DOCS}"                \
     -DGOBJECT_INTROSPECTION="${INTROSPECTION}" \
     -DICAL_GLIB_VAPI="${VALA_API}"             \
     -DUSE_BUILTIN_TZDATA=yes                   \
