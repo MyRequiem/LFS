@@ -27,9 +27,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir _build || exit 1
 cd _build || exit 1
 
-# если установлен пакет texlive, то пересобираем документацию
+# если установлен пакет doxygen и/или texlive, то собираем документацию
 ENABLE_DOC="NO"
-command -v texdoc &>/dev/null && ENABLE_DOC="YES"
+command -v doxygen &>/dev/null && ENABLE_DOC="YES"
+command -v texdoc  &>/dev/null && ENABLE_DOC="YES"
 
 # удаляем пути поиска встроенной библиотеки
 #    -DCMAKE_SKIP_INSTALL_RPATH=YES
