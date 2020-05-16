@@ -31,9 +31,13 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
 
+DOXYGEN="--disable-internal-docs"
+command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
+
 ./configure          \
     --prefix=/usr    \
     --disable-static \
+    "${DOXYGEN}"     \
     --with-doc-dir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
