@@ -32,7 +32,8 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}/txt"
 
 # если не установлен python3 модуль для fonttools, то некоторые тесты не
 # проходят. Исправим:
@@ -51,7 +52,7 @@ ASCIIDOC=""
 DOXYGEN=""
 TEXLIVE=""
 DBLATEX=""
-INSTALL_DOCS=""
+BUILD_DOCS=""
 
 command -v asciidoc &>/dev/null && ASCIIDOC="true"
 command -v doxygen  &>/dev/null && DOXYGEN="true"
@@ -59,10 +60,10 @@ command -v texdoc   &>/dev/null && TEXLIVE="true"
 command -v dblatex  &>/dev/null && DBLATEX="true"
 
 # собираем документацию
-if [[ -n "${ASCIIDOC}" &&  -n "${DOXYGEN}" && \
-        -n "${TEXLIVE}" && -n "${DBLATEX}" ]]; then
-    INSTALL_DOCS="true"
-    make docs
+if [[ -n "${ASCIIDOC}" || -n "${DOXYGEN}" || \
+        -n "${TEXLIVE}" || -n "${DBLATEX}" ]]; then
+    BUILD_DOCS="true"
+    make docs || exit 1
 fi
 
 # make test
@@ -70,14 +71,20 @@ fi
 make install
 make install DESTDIR="${TMP_DIR}"
 
-# если собирали документацию
-if [ -n "${INSTALL_DOCS}" ]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -d -m755 "${DOCS}"
-    install -v -d -m755 "${TMP_DIR}${DOCS}"
+# txt документация
+install -vd -m755 "${DOCS}/txt"
+cp -vf ../doc/{GTF,manual}.txt  "${DOCS}/txt"
+cp -vf ../doc/{intro,building,calling,features,font,hacking,testing}.txt \
+    "${DOCS}/txt"
+cp -vf ../doc/{GTF,manual}.txt  "${TMP_DIR}${DOCS}/txt"
+cp -vf ../doc/{intro,building,calling,features,font,hacking,testing}.txt \
+    "${TMP_DIR}${DOCS}/txt"
 
+# если собирали pdf и/или html документацию
+if [ -n "${BUILD_DOCS}" ]; then
     cp -vf doc/{GTF,manual}.html "${DOCS}"
     cp -vf doc/{GTF,manual}.pdf  "${DOCS}"
+
     cp -vf doc/{GTF,manual}.html "${TMP_DIR}${DOCS}"
     cp -vf doc/{GTF,manual}.pdf  "${TMP_DIR}${DOCS}"
 fi
