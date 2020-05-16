@@ -40,6 +40,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+DOXYGEN=""
+GRAPHVIZ=""
+DOC="Off"
+
+command -v doxygen &>/dev/null && DOXYGEN="true"
+command -v dot     &>/dev/null && GRAPHVIZ="true"
+[[ -n "${DOXYGEN}" && -n "${GRAPHVIZ}" ]] && DOC="On"
+
 cmake                           \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release  \
@@ -47,10 +55,13 @@ cmake                           \
     -DEXIV2_ENABLE_WEBREADY=yes \
     -DEXIV2_ENABLE_CURL=yes     \
     -DEXIV2_BUILD_SAMPLES=no    \
+    -DEXIV2_BUILD_DOC="${DOC}"  \
     -G "Unix Makefiles"         \
     .. || exit 1
 
 make || exit 1
+[[ "${DOC}" == "On" ]] && make doc
+
 # пакет не имеет набора тестов
 make install
 make install DESTDIR="${TMP_DIR}"
