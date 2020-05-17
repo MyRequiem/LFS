@@ -22,8 +22,8 @@ https://curl.haxx.se/download/curl-7.68.0.tar.xz
 https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz
 https://docs.python.org/ftp/python/doc/2.7.17/python-2.7.17-docs-html.tar.bz2
 https://github.com/djlucas/LSB-Tools/releases/download/v0.6/LSB-Tools-0.6.tar.gz
-https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz
-https://www.python.org/ftp/python/doc/3.8.1/python-3.8.1-docs-html.tar.bz2
+https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+https://www.python.org/ftp/python/doc/3.8.3/python-3.8.3-docs-html.tar.bz2
 http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
 http://www.w3.org/XML/Test/xmlts20130923.tar.gz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
@@ -140,3 +140,4 @@ https://www.freedesktop.org/software/harfbuzz/release/harfbuzz-2.6.4.tar.xz
 https://downloads.sourceforge.net/libexif/libexif-0.6.21.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/9.1/libexif-0.6.21-security_fix-1.patch
 https://www.kernel.org/pub/software/scm/git/git-2.26.2.tar.xz
+http://doxygen.nl/files/doxygen-1.8.17.src.tar.gz

@@ -128,7 +128,7 @@ libuv                               (+) cmake, nodejs
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
-                                        fontconfig
+                                        fontconfig, doxygen
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
                                         talloc, polkit, glibmm, exiv2, xmlto
 libwacom                            (-)
@@ -149,7 +149,7 @@ telepathy-glib
 wayland                             (-)
 wayland-protocols                   (-)
 wv                                  (-)
-xapian                              (-)
+xapian                              (-) doxygen
 aalib                               (+)
 babl                                (+) gegl
 exiv2                               (+) gegl
@@ -188,7 +188,7 @@ asciidoc                            gegl, graphite2, git
 bogofilter
 compface
 desktop-file-utils                  glib
-graphviz                            gpgme, exiv2, gegl, libexif
+graphviz                            gpgme, exiv2, gegl, libexif, doxygen
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
@@ -255,19 +255,20 @@ autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
-                                        brotli, exiv2, graphite2
+                                        brotli, exiv2, graphite2, doxygen
 dejagnu                             gdb, autoconf213
-doxygen                             gnutls, gpgme, libical, libsigc++, gdb,
-                                    popt, jasper, icu, js, fuse, glibmm, libusb,
-                                    libyaml, exiv2, graphite2, libexif
+doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
+                                        popt, jasper, icu, js, fuse, glibmm,
+                                        libusb, libyaml, exiv2, graphite2,
+                                        libexif
 expect
 gcc                                 gdb
 gc
 gdb                                 (+) python3, glib, talloc, openssh
-git                                 talloc, libidn2
+git                                 talloc, libidn2, doxygen
 guile                               gnutls, gdb
 librep
-llvm                                icu
+llvm                                icu, doxygen
 lua52                               vim
 lua53                               vim, brotli
 mercurial
@@ -422,7 +423,7 @@ perl-xml-sax-expat
 php
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
-                                        graphite2
+                                        graphite2, doxygen
 python3                             (+) libxml2, talloc, vim, brotli
 --- python modules ---
 python-d-bus-python
@@ -692,7 +693,7 @@ libnotify
 libxklavier
 pango                               gegl
 pangomm
-qt5                                 cmake, gpgme, pinentry
+qt5                                 cmake, gpgme, pinentry, doxygen
 qtwebengine
 startup-notification
 webkitgtk+2
@@ -1072,7 +1073,7 @@ libisoburn
 libisofs
 cups
 cups-filters
-ghostscript
+ghostscript                         doxygen
 gutenprint
 sane
 xsane
@@ -1098,10 +1099,10 @@ fop                                 xmlto
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig, parted, graphite2
+                                    fontconfig, parted, graphite2, doxygen
 texlive                             libassuan, libgcrypt, libunistring, gnutls,
                                     fontconfig, jasper, gnupg, parted,
-                                    graphite2
+                                    graphite2, doxygen
 asymptote
 biber
 dvisvgm
