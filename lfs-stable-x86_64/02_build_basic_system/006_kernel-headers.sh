@@ -25,11 +25,12 @@ make mrproper
 make headers
 
 find usr/include -name '.*' -delete
-rm usr/include/Makefile
+rm -f usr/include/Makefile
 cp -rv usr/include/* /usr/include
 
+LOG="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+cat << EOF > "${LOG}"
 # Package: ${PRGNAME} (Linux kernel include files)
 #
 # The Linux API Headers expose the kernel's API (include files from the Linux
@@ -42,5 +43,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
-    "$(pwd)/usr/include" "${PRGNAME}-${VERSION}"
+# пишем список установленных файлов в лог
+find usr/include | sort >> "${LOG}"
+# добавим слеши в начале путей (usr/include/... -> /usr/include/...)
+sed -i 's/^usr\//\/usr\//' "${LOG}"
+# удалим пустые строки в файле
+sed -i '/^$/d' "${LOG}"
