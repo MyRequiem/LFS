@@ -8,17 +8,17 @@ PRGNAME="python3"
 # http://www.linuxfromscratch.org/blfs/view/stable/general/python3.html
 
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz
-# Docs:      https://www.python.org/ftp/python/doc/3.8.1/python-3.8.1-docs-html.tar.bz2
+# Download:  https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+# Docs:      https://www.python.org/ftp/python/doc/3.8.3/python-3.8.3-docs-html.tar.bz2
 
-# Required: lsb-tools
+# Required: no
 # Optional: bluez
-#           gdb (для некоторых тестов)
+#           gdb         (для некоторых тестов)
 #           valgrind
-#           libmpdec (http://www.bytereef.org/mpdecimal/)
 #           berkeley-db (для создания дополнительных модулей)
 #           sqlite      (для создания дополнительных модулей)
 #           tk          (для создания дополнительных модулей)
+#           libmpdec    (http://www.bytereef.org/mpdecimal/)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -37,7 +37,12 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 VALGRIND="--without-valgrind"
+SQLITE="--disable-loadable-sqlite-extensions"
+LIBMPDEC="--without-system-libmpdec"
+
 command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
+command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
+[ -x /usr/lib/libmpdec.so ] && LIBMPDEC="--with-system-libmpdec"
 
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
@@ -54,6 +59,8 @@ CXX="/usr/bin/g++"      \
     --with-system-expat \
     --with-system-ffi   \
     "${VALGRIND}"       \
+    "${LIBMPDEC}"       \
+    "${SQLITE}"         \
     --with-ensurepip=yes || exit 1
 
 make || exit 1

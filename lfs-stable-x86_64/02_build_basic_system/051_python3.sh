@@ -8,8 +8,8 @@ PRGNAME="python3"
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/Python.html
 
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz
-# Docs:      https://www.python.org/ftp/python/doc/3.8.1/python-3.8.1-docs-html.tar.bz2
+# Download:  https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+# Docs:      https://www.python.org/ftp/python/doc/3.8.3/python-3.8.3-docs-html.tar.bz2
 
 ROOT="/"
 source "${ROOT}check_environment.sh"              || exit 1

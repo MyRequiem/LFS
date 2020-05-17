@@ -9,7 +9,7 @@ echo "Building ${PRGNAME}..."
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter05/Python.html
 
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tar.xz
+# Download:  https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
 
 source "$(pwd)/check_environment.sh"              || exit 1
 source "$(pwd)/unpack_source_archive.sh" "Python" || exit 1
