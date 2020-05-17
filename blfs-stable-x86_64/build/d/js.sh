@@ -53,6 +53,16 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 chmod 644 "/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
 chmod 644 "${TMP_DIR}/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
 
+(
+    cd /usr/bin || exit 1
+    ln -sf "js${MAJ_VERSION}" js
+    ln -sf "js${MAJ_VERSION}-config" js-config
+
+    cd "${TMP_DIR}/usr/bin" || exit 1
+    ln -sf "js${MAJ_VERSION}" js
+    ln -sf "js${MAJ_VERSION}-config" js-config
+)
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Mozillas JavaScript engine)
 #
