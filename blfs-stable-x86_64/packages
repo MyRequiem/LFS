@@ -169,7 +169,7 @@ libgxps
 libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl
 libmng                              (+)
 libmypaint                          (-)
-libpng                              (+) freetype, gegl, openjpeg
+libpng                              (+) freetype, gegl, openjpeg, pixman
 libraw                              (-)
 librsvg                             babl, gegl
 libtiff                             (+) lcms2, gegl, openjpeg
@@ -178,7 +178,7 @@ mypaint-brushes                     (-)
 newt                                (-)
 opencv                              (-)
 openjpeg                            (+)
-pixman
+pixman                              (+)
 poppler
 potrace
 qpdf
@@ -675,7 +675,7 @@ gdk-pixbuf                          gegl
 glew
 glu
 goffice
-gtk+2                               libiodbc, pinentry, vim
+gtk+2                               libiodbc, pinentry, vim, pixman
 gtk+3                               pinentry, vim
 gtk engines
 gtkmm2
