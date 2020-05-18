@@ -163,21 +163,21 @@ graphite2                           (+) harfbuzz
 harfbuzz                            (+) freetype, graphite2
 jasper                              (+) gegl
 lcms
-lcms2                               (+) babl, libmng, gegl
+lcms2                               (+) babl, libmng, gegl, openjpeg
 libexif                             (+)
 libgxps
 libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl
 libmng                              (+)
-libmypaint
-libpng                              (+) freetype, gegl
-libraw
+libmypaint                          (-)
+libpng                              (+) freetype, gegl, openjpeg
+libraw                              (-)
 librsvg                             babl, gegl
-libtiff                             (+) lcms2, gegl
+libtiff                             (+) lcms2, gegl, openjpeg
 libwebp                             libtiff, gegl
-mypaint-brushes
-newt
-opencv
-openjpeg
+mypaint-brushes                     (-)
+newt                                (-)
+opencv                              (-)
+openjpeg                            (+)
 pixman
 poppler
 potrace
@@ -255,12 +255,13 @@ autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
-                                        brotli, exiv2, graphite2, doxygen
+                                        brotli, exiv2, graphite2, doxygen,
+                                        openjpeg
 dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
-                                        libexif
+                                        libexif, openjpeg
 expect
 gcc                                 gdb
 gc

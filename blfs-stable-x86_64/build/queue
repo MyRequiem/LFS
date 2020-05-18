@@ -181,3 +181,4 @@ l/exiv2.sh
 ap/graphite2.sh
 l/libexif.sh
 d/js.sh
+l/openjpeg.sh
