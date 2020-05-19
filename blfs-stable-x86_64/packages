@@ -45,7 +45,7 @@ sshfs                               (+)
 xfsprogs                            (-) talloc, lvm2
 bluefish                            (-)
 ed                                  (+)
-emacs                               (-) libidn, pinentry
+emacs                               (-) libidn, pinentry, desktop-file-utils
 gedit                               (-)
 joe                                 (-)
 kate                                (-)
@@ -74,7 +74,8 @@ fftw                                (+)
 glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
-                                        enchant, glibmm, harfbuzz
+                                        enchant, glibmm, harfbuzz,
+                                        desktop-file-utils
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
@@ -187,9 +188,9 @@ qpdf                                (-)
 sassc                               (-)
 woff2                               (+)
 asciidoc                            (+) gegl, graphite2, git
-bogofilter
-compface
-desktop-file-utils                  glib
+bogofilter                          (-)
+compface                            (-)
+desktop-file-utils                  (+) glib
 graphviz                            gpgme, exiv2, gegl, libexif, doxygen
 gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,

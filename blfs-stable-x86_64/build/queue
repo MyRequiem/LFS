@@ -190,3 +190,4 @@ s/asciidoc.sh
 l/gegl.sh
 ap/graphite2.sh
 d/git.sh
+s/desktop-file-utils.sh
