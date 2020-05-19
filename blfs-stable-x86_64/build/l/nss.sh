@@ -64,8 +64,8 @@ install -v -m644 Linux*/lib/{*.chk,libcrmf.a} "${TMP_DIR}/usr/lib"
 NSS_INCLUDE_DIR="/usr/include/${PRGNAME}"
 install -v -m755 -d "${NSS_INCLUDE_DIR}"
 
-cp -vRL "{public,private}/${PRGNAME}"/* "${NSS_INCLUDE_DIR}"
-cp -vRL "{public,private}/${PRGNAME}"/* "${TMP_DIR}${NSS_INCLUDE_DIR}"
+cp -vRL {public,private}/"${PRGNAME}"/* "${NSS_INCLUDE_DIR}"
+cp -vRL {public,private}/"${PRGNAME}"/* "${TMP_DIR}${NSS_INCLUDE_DIR}"
 chmod -v 644 "${NSS_INCLUDE_DIR}"/*
 chmod -v 644 "${TMP_DIR}${NSS_INCLUDE_DIR}"/*
 
