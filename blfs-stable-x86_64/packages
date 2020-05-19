@@ -20,7 +20,7 @@ liboauth                            (-)
 libpwquality                        (-)
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo
 nettle                              (+) libarchive, gnutls
-nss                                 (+) p11-kit, make-ca, apr-util
+nss                                 (+) p11-kit, make-ca, apr-util, poppler
 openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
 polkit                              (+)
@@ -64,7 +64,7 @@ qemu
 apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
-boost                               (+)
+boost                               (+) poppler
 brotli                              (+) curl
 clucene                             (-)
 dbus-glib                           enchant
@@ -79,7 +79,7 @@ glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
-                                        babl, polkit, gegl, harfbuzz
+                                        babl, polkit, gegl, harfbuzz, poppler
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -154,7 +154,7 @@ aalib                               (+)
 babl                                (+) gegl
 exiv2                               (+) gegl
 freetype                            (+) fontconfig, harfbuzz, graphite2
-fontconfig                          (+)
+fontconfig                          (+) poppler
 fribidi                             (+)
 gegl                                (+)
 giflib                              (+)
@@ -163,23 +163,25 @@ graphite2                           (+) harfbuzz
 harfbuzz                            (+) freetype, graphite2
 jasper                              (+) gegl
 lcms
-lcms2                               (+) babl, libmng, gegl, openjpeg
+lcms2                               (+) babl, libmng, gegl, openjpeg, poppler
 libexif                             (+)
 libgxps
-libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl
+libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl,
+                                        poppler
 libmng                              (+)
 libmypaint                          (-)
-libpng                              (+) freetype, gegl, openjpeg, pixman
+libpng                              (+) freetype, gegl, openjpeg, pixman,
+                                        poppler
 libraw                              (-)
 librsvg                             babl, gegl
-libtiff                             (+) lcms2, gegl, openjpeg
+libtiff                             (+) lcms2, gegl, openjpeg, poppler
 libwebp                             libtiff, gegl
 mypaint-brushes                     (-)
 newt                                (-)
 opencv                              (-)
-openjpeg                            (+)
+openjpeg                            (+) poppler
 pixman                              (+)
-poppler
+poppler                             (+)
 potrace
 qpdf
 sassc
@@ -193,7 +195,7 @@ gtk-doc                             libtasn1, p11-kit, glib,
                                     gobject-introspection, atk, libcroco,
                                     gnutls, json-glib, libgudev, libidn,
                                     libmbim, libqmi, polkit, libidn2, gegl,
-                                    harfbuzz
+                                    harfbuzz, poppler
 hd2u
 highlight
 ibus
@@ -256,7 +258,7 @@ cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
-                                        openjpeg
+                                        openjpeg, poppler
 dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,
@@ -266,7 +268,7 @@ expect
 gcc                                 gdb
 gc
 gdb                                 (+) python3, glib, talloc, openssh
-git                                 talloc, libidn2, doxygen
+git                                 talloc, libidn2, doxygen, poppler
 guile                               gnutls, gdb
 librep
 llvm                                icu, doxygen
@@ -495,7 +497,7 @@ traceroute
 whois
 wireshark
 c-ares                              curl, nodejs
-curl                                (+) cmake, gnupg, exiv2, git
+curl                                (+) cmake, gnupg, exiv2, git, poppler
 geoclue
 glib-networking                     glibmm
 ldns
@@ -662,7 +664,8 @@ atk                                 (+)
 atkmm
 at-spi2-core
 at-spi2-atk
-cairo                               gobject-introspection, gegl, harfbuzz
+cairo                               gobject-introspection, gegl, harfbuzz,
+                                    poppler
 cairomm
 cogl
 clutter
@@ -671,12 +674,12 @@ clutter-gtk
 colord-gtk
 fltk                                pinentry
 freeglut                            jasper, libtiff
-gdk-pixbuf                          gegl
+gdk-pixbuf                          gegl, poppler
 glew
 glu
 goffice
 gtk+2                               libiodbc, pinentry, vim, pixman
-gtk+3                               pinentry, vim
+gtk+3                               pinentry, vim, poppler
 gtk engines
 gtkmm2
 gtkmm3
@@ -694,7 +697,7 @@ libnotify
 libxklavier
 pango                               gegl
 pangomm
-qt5                                 cmake, gpgme, pinentry, doxygen
+qt5                                 cmake, gpgme, pinentry, doxygen, poppler
 qtwebengine
 startup-notification
 webkitgtk+2
