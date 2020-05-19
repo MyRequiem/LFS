@@ -155,7 +155,7 @@ aalib                               (+)
 babl                                (+) gegl
 exiv2                               (+) gegl
 freetype                            (+) fontconfig, harfbuzz, graphite2
-fontconfig                          (+) poppler
+fontconfig                          (+) poppler, graphviz
 fribidi                             (+)
 gegl                                (+)
 giflib                              (+)
@@ -168,21 +168,21 @@ lcms2                               (+) babl, libmng, gegl, openjpeg, poppler
 libexif                             (+)
 libgxps
 libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl,
-                                        poppler
+                                        poppler, graphviz
 libmng                              (+)
 libmypaint                          (-)
 libpng                              (+) freetype, gegl, openjpeg, pixman,
-                                        poppler
+                                        poppler, graphviz
 libraw                              (-)
-librsvg                             babl, gegl
+librsvg                             babl, gegl, graphviz
 libtiff                             (+) lcms2, gegl, openjpeg, poppler
-libwebp                             libtiff, gegl
+libwebp                             libtiff, gegl, graphviz
 mypaint-brushes                     (-)
 newt                                (-)
 opencv                              (-)
 openjpeg                            (+) poppler
 pixman                              (+)
-poppler                             (+)
+poppler                             (+) graphviz
 potrace                             (+)
 qpdf                                (-)
 sassc                               (-)
@@ -191,12 +191,12 @@ asciidoc                            (+) gegl, graphite2, git
 bogofilter                          (-)
 compface                            (-)
 desktop-file-utils                  (+) glib
-graphviz                            gpgme, exiv2, gegl, libexif, doxygen
-gtk-doc                             libtasn1, p11-kit, glib,
-                                    gobject-introspection, atk, libcroco,
-                                    gnutls, json-glib, libgudev, libidn,
-                                    libmbim, libqmi, polkit, libidn2, gegl,
-                                    harfbuzz, poppler
+graphviz                            (+) gpgme, exiv2, gegl, libexif, doxygen
+gtk-doc                                 libtasn1, p11-kit, glib,
+                                        gobject-introspection, atk, libcroco,
+                                        gnutls, json-glib, libgudev, libidn,
+                                        libmbim, libqmi, polkit, libidn2, gegl,
+                                        harfbuzz, poppler
 hd2u
 highlight
 ibus
@@ -266,15 +266,15 @@ doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg
 expect
-gcc                                 gdb
+gcc                                 gdb, graphviz
 gc
 gdb                                 (+) python3, glib, talloc, openssh
 git                                 talloc, libidn2, doxygen, poppler
-guile                               gnutls, gdb
+guile                               gnutls, gdb, graphviz
 librep
 llvm                                icu, doxygen, potrace
 lua52                               vim
-lua53                               vim, brotli
+lua53                               vim, brotli, graphviz
 mercurial
 nasm                                (-) libjpeg-turbo
 --- perl modules ---
@@ -424,10 +424,10 @@ perl-xml-sax
 perl-xml-sax-base
 perl-xml-sax-expat
 --- end of perl module dependencies ---
-php
+php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
-                                        graphite2, doxygen, asciidoc
+                                        graphite2, doxygen, asciidoc, graphviz
 python3                             (+) libxml2, talloc, vim, brotli
 --- python modules ---
 python-d-bus-python
@@ -453,14 +453,14 @@ python-scour
 python-six                          (+) gdb
 python-pyyaml
 --- end of python modules ---
-ruby                                docbook-xsl, vim, gegl
+ruby                                docbook-xsl, vim, gegl, graphviz
 rustc                               gdb
 scons
 slang                               aalib
 subversion                          cmake, git
-swig                                gpgme
-tcl                                 (+) berkeley-db, vim
-tk                                  python2, python3, git
+swig                                gpgme, graphviz
+tcl                                 (+) berkeley-db, vim, graphviz
+tk                                  python2, python3, git, graphviz
 vala                                libical, gegl
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
@@ -470,7 +470,8 @@ yasm                                (+) libjpeg-turbo
 ctags
 --- end of other programming tools ---
 java                                (-) make-ca
-openjdk                             make-ca, cyrus-sasl, libidn, openssh
+openjdk                             make-ca, cyrus-sasl, libidn, openssh,
+                                    graphviz
 apache-ant                          docbook-xsl
 dhcpcd
 dhcp
@@ -545,7 +546,7 @@ libxau
 libxdmcp
 xcb-proto
 libxcb
-xorg-libraries
+xorg-libraries                      graphviz
 xcb-util
 xcb-util-image
 xcb-util-keysyms
@@ -666,7 +667,7 @@ atkmm
 at-spi2-core
 at-spi2-atk
 cairo                               gobject-introspection, gegl, harfbuzz,
-                                    poppler
+                                    poppler, graphviz
 cairomm
 cogl
 clutter
@@ -674,12 +675,12 @@ clutter-gst
 clutter-gtk
 colord-gtk
 fltk                                pinentry
-freeglut                            jasper, libtiff
+freeglut                            jasper, libtiff, graphviz
 gdk-pixbuf                          gegl, poppler
 glew
 glu
 goffice
-gtk+2                               libiodbc, pinentry, vim, pixman
+gtk+2                               libiodbc, pinentry, vim, pixman, graphviz
 gtk+3                               pinentry, vim, poppler
 gtk engines
 gtkmm2
@@ -693,12 +694,13 @@ libdazzle
 libhandy
 libdrm
 libepoxy
-libglade
+libglade                            graphviz
 libnotify
 libxklavier
-pango                               gegl
+pango                               gegl, graphviz
 pangomm
-qt5                                 cmake, gpgme, pinentry, doxygen, poppler
+qt5                                 cmake, gpgme, pinentry, doxygen, poppler,
+                                    graphviz
 qtwebengine
 startup-notification
 webkitgtk+2
@@ -1078,7 +1080,7 @@ libisoburn
 libisofs
 cups
 cups-filters
-ghostscript                         doxygen
+ghostscript                         doxygen, graphviz
 gutenprint
 sane
 xsane
