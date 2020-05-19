@@ -21,7 +21,7 @@ PRGNAME="git"
 #              tk (для сборки утилиты gitk)
 #              valgrind
 #              xmlto
-#              asciidoc или asciidoctor (https://asciidoctor.org/)
+#              asciidoc или asciidoctor (https://asciidoctor.org/) для сборки txt и html документации
 #              dblatex (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
 #              docbook2x (для создания страниц info) http://docbook2x.sourceforge.net/
 
