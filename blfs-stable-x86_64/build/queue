@@ -184,3 +184,4 @@ d/js.sh
 l/openjpeg.sh
 x/pixman.sh
 l/poppler.sh
+ap/potrace.sh

@@ -182,7 +182,7 @@ opencv                              (-)
 openjpeg                            (+) poppler
 pixman                              (+)
 poppler                             (+)
-potrace
+potrace                             (+)
 qpdf
 sassc
 woff2
@@ -271,7 +271,7 @@ gdb                                 (+) python3, glib, talloc, openssh
 git                                 talloc, libidn2, doxygen, poppler
 guile                               gnutls, gdb
 librep
-llvm                                icu, doxygen
+llvm                                icu, doxygen, potrace
 lua52                               vim
 lua53                               vim, brotli
 mercurial
