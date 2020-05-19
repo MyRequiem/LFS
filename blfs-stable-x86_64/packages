@@ -65,7 +65,7 @@ apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
 boost                               (+) poppler
-brotli                              (+) curl
+brotli                              (+) curl, woff2
 clucene                             (-)
 dbus-glib                           enchant
 enchant                             (+)
@@ -183,9 +183,9 @@ openjpeg                            (+) poppler
 pixman                              (+)
 poppler                             (+)
 potrace                             (+)
-qpdf
-sassc
-woff2
+qpdf                                (-)
+sassc                               (-)
+woff2                               (+)
 asciidoc                            gegl, graphite2, git
 bogofilter
 compface
@@ -258,7 +258,7 @@ cbindgen
 clisp                               gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
-                                        openjpeg, poppler
+                                        openjpeg, poppler, woff2
 dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,

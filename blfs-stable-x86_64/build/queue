@@ -185,3 +185,4 @@ l/openjpeg.sh
 x/pixman.sh
 l/poppler.sh
 ap/potrace.sh
+d/woff2.sh
