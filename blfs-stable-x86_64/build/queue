@@ -186,3 +186,7 @@ x/pixman.sh
 l/poppler.sh
 ap/potrace.sh
 d/woff2.sh
+s/asciidoc.sh
+l/gegl.sh
+ap/graphite2.sh
+d/git.sh
