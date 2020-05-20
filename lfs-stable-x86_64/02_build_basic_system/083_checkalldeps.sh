@@ -18,6 +18,8 @@
 #
 BLACKLIST=""
 
+export LC_MESSAGES=en_US.UTF-8
+
 DIRS="\
     /bin \
     /sbin \
@@ -36,6 +38,7 @@ SCRIPTNAME=$(basename "$0")
 LOG=/tmp/${SCRIPTNAME}.log
 TMP=/tmp/${SCRIPTNAME}.tmp
 ERRORS=/tmp/${SCRIPTNAME}.err
+EXCLUDE="not a dynamic executable|not have execution permission"
 /bin/false > "${LOG}"
 
 for DIR in ${DIRS}; do
@@ -56,7 +59,7 @@ for DIR in ${DIRS}; do
                 grep -E "not found|no version information" | \
                 sort -u > "${TMP}"
 
-            if grep -q "not a dynamic executable" "${ERRORS}"; then
+            if grep -Eq "${EXCLUDE}" "${ERRORS}"; then
                 /bin/false > "${ERRORS}"
             fi
 
