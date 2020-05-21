@@ -56,11 +56,15 @@ mkdir build
 cd    build || exit 1
 
 GTK_DOC="false"
-command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+ASCIIDOC="false"
 
-meson                   \
-    --prefix=/usr       \
-    -Ddocs="${GTK_DOC}" \
+command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+command -v asciidoc     &>/dev/null && ASCIIDOC="true"
+
+meson                      \
+    --prefix=/usr          \
+    -Ddocs="${GTK_DOC}"    \
+    -Dasciidoc=${ASCIIDOC} \
     .. || exit 1
 
 ninja || exit 1
