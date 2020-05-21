@@ -427,8 +427,10 @@ perl-xml-sax-expat
 php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
-                                        graphite2, doxygen, asciidoc, graphviz
-python3                             (+) libxml2, talloc, vim, brotli
+                                        graphite2, doxygen, asciidoc, graphviz,
+                                        python-six
+python3                             (+) libxml2, talloc, vim, brotli,
+                                        python-six, python3-pygments
 --- python modules ---
 python-d-bus-python
 python-decorator
@@ -438,7 +440,7 @@ python-pycairo118
 python-pycairo119
 python-pycryptodome
 python-dbusmock
-python3-pygments                    gegl
+python3-pygments                    (+) gegl
 python-pygobject2
 python-pygobject3                   gegl
 python-pygtk
