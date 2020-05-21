@@ -34,7 +34,8 @@ command -v gpg &>/dev/null && GNUPG="--enable-gpg-test"
 
 ./configure       \
     --prefix=/usr \
-    "${GNUPG}" || exit 1
+    "${GNUPG}"    \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
