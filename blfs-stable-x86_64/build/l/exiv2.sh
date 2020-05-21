@@ -13,7 +13,7 @@ PRGNAME="exiv2"
 
 # Required:    cmake
 # Recommended: curl
-# Optional:    libssh
+# Optional:    libssh2
 #              doxygen
 #              graphviz
 #              libxslt
@@ -40,27 +40,31 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+CURL="OFF"
 DOXYGEN=""
 GRAPHVIZ=""
-DOC="Off"
+DOC="OFF"
 
+command -v curl    &>/dev/null && CURL="ON"
 command -v doxygen &>/dev/null && DOXYGEN="true"
 command -v dot     &>/dev/null && GRAPHVIZ="true"
-[[ -n "${DOXYGEN}" && -n "${GRAPHVIZ}" ]] && DOC="On"
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release  \
-    -DEXIV2_ENABLE_VIDEO=yes    \
-    -DEXIV2_ENABLE_WEBREADY=yes \
-    -DEXIV2_ENABLE_CURL=yes     \
-    -DEXIV2_BUILD_SAMPLES=no    \
-    -DEXIV2_BUILD_DOC="${DOC}"  \
-    -G "Unix Makefiles"         \
+[[ -n "${DOXYGEN}" && -n "${GRAPHVIZ}" ]] && DOC="ON"
+
+cmake                                                             \
+    -DCMAKE_INSTALL_PREFIX=/usr                                   \
+    -DCMAKE_BUILD_TYPE=Release                                    \
+    -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    -DEXIV2_ENABLE_VIDEO=ON                                       \
+    -DEXIV2_ENABLE_WEBREADY=ON                                    \
+    -DEXIV2_ENABLE_CURL="${CURL}"                                 \
+    -DEXIV2_BUILD_SAMPLES=OFF                                     \
+    -DEXIV2_BUILD_DOC="${DOC}"                                    \
+    -G "Unix Makefiles"                                           \
     .. || exit 1
 
 make || exit 1
-[[ "${DOC}" == "On" ]] && make doc
+[[ "${DOC}" == "ON" ]] && make doc
 
 # пакет не имеет набора тестов
 make install
