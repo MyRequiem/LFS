@@ -18,13 +18,13 @@ PRGNAME="doxygen"
 # Required: cmake
 #           git
 # Optional: graphviz
-#           ghostscript
-#           libxml2 (для тестов)
+#           ghostscript (для сборки pdf-документации)
+#           libxml2     (для тестов)
 #           llvm
 #           python2
-#           qt5 (для сборки doxywizard)
-#           texlive или install-tl-unx
-#           xapian (для сборки doxyindexer и doxysearch.cgi)
+#           qt5         (для сборки GUI инструмента конфигурации doxywizard)
+#           texlive или install-tl-unx (для сборки html-документации)
+#           xapian      (для сборки doxyindexer и doxysearch.cgi)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -61,6 +61,7 @@ cmake                           \
     -DCMAKE_BUILD_TYPE=Release  \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Dbuild_wizard="${QT5GUI}"  \
+    -Dbuild_app=ON              \
     -Dbuild_search="${XAPIAN}"  \
     -Duse_libclang="${LLVM}"    \
     -Wno-dev \
@@ -79,7 +80,7 @@ command -v python2 &>/dev/null && PYTHON2="true"
 command -v texdoc  &>/dev/null && TEXLIVE="true"
 command -v gs      &>/dev/null && GHOSTSCRIPT="true"
 
-# собираем документацию
+# собираем html и pdf документацию
 if [[ -n "${PYTHON2}" && -n "${TEXLIVE}" && -n ${GHOSTSCRIPT} ]]; then
     cmake                                                   \
         -DDOC_INSTALL_DIR="share/doc/${PRGNAME}-${VERSION}" \
