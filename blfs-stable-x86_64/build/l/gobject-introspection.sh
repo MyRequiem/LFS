@@ -14,9 +14,9 @@ PRGNAME="gobject-introspection"
 
 # Required: glib
 # Optional: cairo    (для тестов)
-#           gtk-doc  (для сборки документации и утилиты g-ir-doc-tool)
+#           gtk-doc  (для сборки документации)
 #           gjs      (для прохождния одного теста)
-#           python3-mako (для сборки _giscanner.cpython-37m-x86_64-linux-gnu.so)
+#           python3-mako (для сборки _giscanner.cpython-37m-x86_64-linux-gnu.so и утилиты g-ir-doc-tool)
 #           markdown (для прохождния одного теста) https://pypi.org/project/Markdown/
 
 ROOT="/root"
@@ -35,7 +35,7 @@ DOCTOOL="-Ddoctool=false"
 
 command -v cairo-sphinx &>/dev/null && CAIRO="-Dcairo=true"
 command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
-command -v gtkdoc-check &>/dev/null && DOCTOOL="-Ddoctool=true"
+command -v mako-render  &>/dev/null && DOCTOOL="-Ddoctool=true"
 
 meson \
     --prefix=/usr \
