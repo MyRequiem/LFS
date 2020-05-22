@@ -6,10 +6,15 @@ ERRATA_LFS_URL="${BOOK_URL}/lfs"
 ERRATA_BLFS_URL="${BOOK_URL}/blfs"
 LGREEN="\033[1;32m"
 BROWN="\033[0;33m"
+LRED="\033[1;31m"
+GRAY="\033[0;37m"
 LBLUE="\033[1;34m"
 RESET="\033[0m"
-MOVE_CURS_TO_30_COL="\033[30G"
+MOVE_CURS_TO_40_COL="\033[40G"
+PACKAGES="/var/log/packages"
+mount | grep -q /mnt/lfs && PACKAGES="/mnt/lfs${PACKAGES}"
 TMP="/tmp/lfs-errata.tmp"
+TMP_SORT="/tmp/lfs-errata_sort.tmp"
 
 show_packages() {
     echo -e "${LGREEN}$1${RESET}"
@@ -18,30 +23,62 @@ show_packages() {
     [[ "$1" == "BLFS" ]] && BASE_URL="${ERRATA_BLFS_URL}"
 
     /bin/false > "${TMP}"
-    for PKG in $2; do
-        if [[ $PKG =~ http:// ]]; then
-            PKGNAME="$(echo "${PKG}" | rev | cut -d / -f 1 | rev | \
+    for ITEM in $2; do
+        if [[ $ITEM =~ http:// ]]; then
+            PKG="$(echo "${ITEM}" | rev | cut -d / -f 1 | rev | \
                 cut -d - -f 1,2)"
-            URL="$(echo "${PKG}" | cut -d \" -f 1)"
+            URL="$(echo "${ITEM}" | cut -d \" -f 1)"
             # переводим всю строку в нижний регистр
-            echo "${PKGNAME} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
+            echo "${PKG} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
         else
-            PKGNAME="$(echo "${PKG}" | cut -d \> -f 2)"
-            URL="${BASE_URL}/$(echo "${PKG}" | cut -d / -f 3- | \
+            PKG="$(echo "${ITEM}" | cut -d \> -f 2)"
+            URL="${BASE_URL}/$(echo "${ITEM}" | cut -d / -f 3- | \
                 cut -d \" -f 1)"
             # переводим всю строку в нижний регистр
-            echo "${PKGNAME} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
+            echo "${PKG} ${URL}" | tr '[:upper:]' '[:lower:]' >> "${TMP}"
         fi
     done
 
+    sort "${TMP}" > "${TMP_SORT}"
+
     {
         while read -r LINE; do
-            PKGNAME="$(echo "${LINE}" | cut -d " " -f 1)"
+            PKG="$(echo "${LINE}" | cut -d " " -f 1)"
+            PKGNAME="$(echo "${PKG}" | rev | cut -d - -f 2- | rev)"
+            VER="$(echo "${PKG}" | rev | cut -d - -f 1 | rev)"
+
+            if [[ "${PKGNAME}" == "python" ]]; then
+                PKGNAME="${PKGNAME}$(echo "${VER}" | cut -d . -f 1)"
+            fi
+
+            if [[ "${PKGNAME}" == "qt" ]]; then
+                PKGNAME="${PKGNAME}$(echo "${VER}" | cut -d . -f 1)"
+            fi
+
+            if [[ "${PKGNAME}" == "webkitgtk+" ]]; then
+                PKGNAME="${PKGNAME}$(echo "${VER}" | cut -d . -f 1)"
+            fi
+
+            INSTALL_PKG="$(ls "${PACKAGES}/${PKGNAME}-"[0-9]* 2>/dev/null)"
+
+            if [ -n "${INSTALL_PKG}" ] ; then
+                INSTALL_VER="$(echo "${INSTALL_PKG}" | rev | \
+                    cut -d - -f 1 | rev)"
+
+                if [[ "${INSTALL_VER}" == "${VER}" ]]; then
+                    COLOR="${BROWN}"
+                else
+                    COLOR="${LRED}"
+                fi
+            else
+                COLOR="${GRAY}"
+            fi
+
             URL="$(echo "${LINE}" | cut -d " " -f 2)"
-            echo -en "${BROWN}${PKGNAME}${MOVE_CURS_TO_30_COL}"
+            echo -en "${COLOR}${PKGNAME}-${VER}${MOVE_CURS_TO_40_COL}"
             echo -e  "${LBLUE}${URL}${RESET}"
         done
-    } < "${TMP}" | sort
+    } < "${TMP_SORT}"
 }
 
 get_pkg_list() {
@@ -61,4 +98,4 @@ echo ""
 get_pkg_list "${ERRATA_BLFS_URL}"
 show_packages BLFS "${PKG_LIST}"
 
-rm -f "${TMP}"
+rm -f "${TMP}" "${TMP_SORT}"
