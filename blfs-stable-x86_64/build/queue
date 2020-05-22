@@ -195,3 +195,22 @@ s/desktop-file-utils.sh
 d/python-modules/python3-pygments.sh
 l/gegl.sh
 ap/gtk-doc.sh
+l/libtasn1.sh
+n/p11-kit.sh
+l/glib.sh
+l/gobject-introspection.sh
+l/atk.sh
+l/libcroco.sh
+n/gnutls.sh
+l/json-glib.sh
+a/libgudev.sh
+l/libidn.sh
+n/libmbim.sh
+n/libqmi.sh
+l/polkit.sh
+l/libidn2.sh
+l/gegl.sh
+l/harfbuzz.sh
+l/poppler.sh
+
+# vim:ft=conf
