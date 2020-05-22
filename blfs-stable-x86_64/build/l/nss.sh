@@ -8,11 +8,11 @@ PRGNAME="nss"
 # PKCS#7, PKCS#11, PKCS#12, сертификатов S/MIME, X.509 v3 и других стандартов
 # безопасности.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/nss.html
+# http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html
 
 # Home page: https://developer.mozilla.org/ru/docs/NSS
-# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_50_RTM/src/nss-3.50.tar.gz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/nss-3.50-standalone-1.patch
+# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_52_1_RTM/src/nss-3.52.1.tar.gz
+# Patch:     http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.52.1-standalone-1.patch
 
 # Required:    nspr
 # Recommended: sqlite
@@ -31,6 +31,9 @@ patch -Np1 --verbose -i \
 
 cd "${PRGNAME}" || exit 1
 
+SQLITE=0
+[ -f /usr/include/sqlite3.h ] && SQLITE=1
+
 # пакет не поддерживает компиляцию в несколько потоков, поэтому явно указываем
 # -j1
 # не включать в бинарники отладочную информацию и использовать оптимизацию
@@ -43,13 +46,13 @@ cd "${PRGNAME}" || exit 1
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
-make -j1                    \
-    BUILD_OPT=1             \
-    USE_SYSTEM_ZLIB=1       \
-    ZLIB_LIBS=-lz           \
-    NSS_ENABLE_WERROR=0     \
-    USE_64=1                \
-    NSS_USE_SYSTEM_SQLITE=1 \
+make -j1                            \
+    BUILD_OPT=1                     \
+    USE_SYSTEM_ZLIB=1               \
+    ZLIB_LIBS=-lz                   \
+    NSS_ENABLE_WERROR=0             \
+    USE_64=1                        \
+    NSS_USE_SYSTEM_SQLITE=${SQLITE} \
     NSPR_INCLUDE_DIR=/usr/include/nspr || exit 1
 
 # тесты уже были запущены во время сборки
