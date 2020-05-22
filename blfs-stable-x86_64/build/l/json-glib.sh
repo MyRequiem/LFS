@@ -28,13 +28,13 @@ cd build || exit 1
 
 INTROSPECTION="-Dintrospection=false"
 MAN="-Dman=false"
-GTK_DOC="-Ddoc=false"
+GTK_DOC="-Ddocs=false"
 
 command -v g-ir-compiler &>/dev/null && INTROSPECTION="-Dintrospection=true"
 command -v xslt-config   &>/dev/null && MAN="-Dman=true"
 # для сборки API документации требуется libxslt и gtk-doc
 [[ "x${MAN}" == "x-Dman=true" ]] && \
-    command -v gtkdoc-check  &>/dev/null && GTK_DOC="-Ddoc=true"
+    command -v gtkdoc-check  &>/dev/null && GTK_DOC="-Ddocs=true"
 
 meson                  \
     --prefix=/usr      \
