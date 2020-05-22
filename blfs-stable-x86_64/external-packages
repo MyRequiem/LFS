@@ -4,6 +4,12 @@
 # Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
 # ---------------------
 
+anytree                             gtk-doc
+# https://anytree.readthedocs.io/en/latest/
+
+parameterized                       gtk-doc
+# https://pypi.org/project/parameterized/
+
 io                                  graphviz
 # http://iolanguage.org/
 
@@ -58,7 +64,7 @@ graphite-font                       graphite2
 fonttools                           harfbuzz, graphite2
 # https://pypi.org/project/fonttools/
 
-dblatex                             xmlto, graphite2, git
+dblatex                             xmlto, graphite2, git, gtk-doc
 # http://dblatex.sourceforge.net/
 
 passivetex                          xmlto

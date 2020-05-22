@@ -75,7 +75,7 @@ glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
                                         enchant, glibmm, harfbuzz,
-                                        desktop-file-utils
+                                        desktop-file-utils, gtk-doc
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
@@ -131,7 +131,8 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig, doxygen
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
-                                        talloc, polkit, glibmm, exiv2, xmlto
+                                        talloc, polkit, glibmm, exiv2, xmlto,
+                                        gtk-doc
 libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
@@ -192,7 +193,7 @@ bogofilter                          (-)
 compface                            (-)
 desktop-file-utils                  (+) glib
 graphviz                            (+) gpgme, exiv2, gegl, libexif, doxygen
-gtk-doc                                 libtasn1, p11-kit, glib,
+gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gobject-introspection, atk, libcroco,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
@@ -252,7 +253,7 @@ unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
-                                        boost
+                                        boost, gtk-doc
 zip                                 (+) docbook-xsl, js
 autoconf213                         (+) js
 cbindgen
@@ -432,28 +433,28 @@ python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
 python3                             (+) libxml2, talloc, vim, brotli,
                                         python-six, python3-pygments
 --- python modules ---
-python-d-bus-python
-python-decorator
+python-d-bus
+python3-decorator
 python3-docutils                    sshfs
-python-pyatspi2
-python-pycairo118
-python-pycairo119
+python3-pyatspi2
+python2-pycairo
+python3-pycairo
 python-pycryptodome
-python-dbusmock
-python3-pygments                    (+) gegl
-python-pygobject2
+python3-dbusmock
+python3-pygments                    (+) gegl, gtk-doc
+python2-pygobject2
 python-pygobject3                   gegl
-python-pygtk
-python-pyxdg
+python2-pygtk
+python3-pyxdg
 python2-libxml2                     libxslt, docbook-xsl
-python-lxml
+python-lxml                         gtk-doc
 python-markupsafe
 python-jinja2
 python3-mako                        gobject-introspection
-python-python-slip
+python3-python-slip
+python-pyyaml
 python-scour
 python-six                          (+) gdb
-python-pyyaml
 --- end of python modules ---
 ruby                                docbook-xsl, vim, gegl, graphviz
 rustc                               gdb
@@ -1094,17 +1095,18 @@ openjade
 docbook-dsssl
 docbook-utils                       fontconfig
 docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
-                                        xmlto
+                                        xmlto, gtk-doc
 docbook-xml50
 docbook-xml51
-docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto
-itstool                             (+) shared-mime-info
+docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto,
+                                        gtk-doc
+itstool                             (+) shared-mime-info, gtk-doc
 xmlto                               (+) giflib, git
 a2ps
 enscript
 psutils-p17
 epdfview
-fop                                 xmlto
+fop                                 xmlto, gtk-doc
 mupdf
 paps
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,

@@ -194,3 +194,4 @@ d/git.sh
 s/desktop-file-utils.sh
 d/python-modules/python3-pygments.sh
 l/gegl.sh
+ap/gtk-doc.sh
