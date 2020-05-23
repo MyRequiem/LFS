@@ -35,13 +35,13 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-if [[ "${ARCH_TYPE}" == ".tar.?z" ]]; then
-    tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
-elif [[ "${ARCH_TYPE}" == ".t?z" ]]; then
+if [[ "${ARCH_TYPE}" == ".t?z" ]]; then
     tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.t?z || exit 1
 elif [[ "${ARCH_TYPE}" == ".zip" ]]; then
     unzip -d "${SRC_ARCH_NAME}-${VERSION}" \
         "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.zip || exit 1
+else
+    tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 fi
 
 cd "${SRC_ARCH_NAME}-${VERSION}" || exit 1
