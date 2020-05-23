@@ -15,7 +15,6 @@ PRGNAME="vim"
 #              gtk+2
 #              gtk+3
 # Optional:    gpm
-#              lua52
 #              lua53
 #              perl
 #              python2
