@@ -34,7 +34,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The hd2u package contains an any to any text format converter.
 #
 # Home page: https://hany.sk/~hany/
-# Download:  http://hany.sk/~hany/_data/hd2u/hd2u-1.0.4.tgz
+# Download:  http://hany.sk/~hany/_data/${PRGNAME}/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 
