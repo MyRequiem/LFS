@@ -153,3 +153,7 @@ https://www2.graphviz.org/Packages/stable/portable_source/graphviz-2.42.3.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.5.2.tar.gz
 http://ftp.gnome.org/pub/gnome/sources/gtk-doc/1.32/gtk-doc-1.32.tar.xz
 http://hany.sk/~hany/_data/hd2u/hd2u-1.0.4.tgz
+http://www.lua.org/ftp/lua-5.3.5.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/9.1/lua-5.3.5-shared_library-1.patch
+http://www.lua.org/tests/lua-5.3.4-tests.tar.gz
+http://www.andre-simon.de/zip/highlight-3.55.tar.bz2

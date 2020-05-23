@@ -213,5 +213,7 @@ l/gegl.sh
 l/harfbuzz.sh
 l/poppler.sh
 ap/hd2u.sh
+d/lua53.sh
+ap/highlight.sh
 
 # vim:ft=conf

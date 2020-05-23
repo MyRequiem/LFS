@@ -65,7 +65,7 @@ qemu
 apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
-boost                               (+) poppler
+boost                               (+) poppler, highlight
 brotli                              (+) curl, woff2
 clucene                             (-)
 dbus-glib                           enchant
@@ -200,7 +200,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler
 hd2u                                (+)
-highlight
+highlight                           (+)
 ibus
 imagemagick6
 imagemagick7                        gnupg
@@ -276,7 +276,7 @@ guile                               gnutls, gdb, graphviz
 librep
 llvm                                icu, doxygen, potrace
 lua52                               vim
-lua53                               vim, brotli, graphviz
+lua53                               (+) vim, brotli, graphviz, highlight
 mercurial
 nasm                                (-) libjpeg-turbo
 --- perl modules ---
@@ -704,7 +704,7 @@ libxklavier
 pango                               gegl, graphviz
 pangomm
 qt5                                 cmake, gpgme, pinentry, doxygen, poppler,
-                                    graphviz
+                                    graphviz, highlight
 qtwebengine
 startup-notification
 webkitgtk+2
