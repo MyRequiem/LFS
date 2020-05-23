@@ -1,7 +1,8 @@
 # ---------------------
 # (+) - установлено
 # (-) - не устанавливаем
-# Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего пакета
+# Далее указаны зависимые пакеты, т.е. пакеты, которые зависят от текущего
+# пакета
 # ---------------------
 
 kernel-firmware                     (+)
@@ -142,7 +143,7 @@ npth                                (+) gnupg
 nspr                                (+) nss
 pcre                                (+) glib, git
 pcre2                               (+) git
-popt                                (+)
+popt                                (+) hd2u
 pth                                 (+) libgcrypt, libidn, parted
 ptlib                               (-)
 qca                                 (-)
@@ -198,7 +199,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler
-hd2u
+hd2u                                (+)
 highlight
 ibus
 imagemagick6

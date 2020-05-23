@@ -212,5 +212,6 @@ l/libidn2.sh
 l/gegl.sh
 l/harfbuzz.sh
 l/poppler.sh
+ap/hd2u.sh
 
 # vim:ft=conf
