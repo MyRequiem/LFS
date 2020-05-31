@@ -4,15 +4,14 @@ PRGNAME="sqlite"
 ARCH_NAME="${PRGNAME}-autoconf"
 
 ### SQLite (simple, self contained database engine)
-# Пакет SQLite представляет собой программную библиотеку, которая реализует
-# автономный, безсерверный, с нулевой конфигурацией механизм транзакционной
-# базы данных SQL
+# Программная библиотека, реализующая автономный, безсерверный, с нулевой
+# конфигурацией механизм транзакционной базы данных SQL
 
-# http://www.linuxfromscratch.org/blfs/view/stable/server/sqlite.html
+# http://www.linuxfromscratch.org/blfs/view/svn/server/sqlite.html
 
 # Home page: https://sqlite.org
-# Download:  https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz
-#            https://sqlite.org/2020/sqlite-doc-3310100.zip
+# Download:  https://sqlite.org/2020/sqlite-autoconf-3320100.tar.gz
+#            https://sqlite.org/2020/sqlite-doc-3320100.zip
 
 # Required: unzip (для распаковки архива с документацией)
 # Optional: libedit (https://www.thrysoee.dk/editline)
@@ -23,7 +22,8 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 PRG_VERSION="$(grep "#define SQLITE_VERSION " sqlite3.c | cut -d \" -f 2)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PRG_VERSION}"
-mkdir -pv "${TMP_DIR}"
+DOCS="/usr/share/doc/${PRGNAME}-${PRG_VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 # распакуем документацию
 unzip -v "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip" || exit 1
@@ -53,9 +53,7 @@ make install
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
-DOCS="/usr/share/doc/${PRGNAME}-${PRG_VERSION}"
 install -v -m755 -d "${DOCS}"
-install -v -m755 -d "${TMP_DIR}${DOCS}"
 cp -vR "sqlite-doc-${VERSION}"/* "${DOCS}"
 cp -vR "sqlite-doc-${VERSION}"/* "${TMP_DIR}${DOCS}"
 
