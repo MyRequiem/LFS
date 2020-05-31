@@ -26,8 +26,7 @@ DOCS="/usr/share/doc/${PRGNAME}-${PRG_VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}"
 
 # распакуем документацию
-unzip -v "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip" || exit 1
-
+unzip "${SOURCES}/${PRGNAME}-doc-${VERSION}.zip" || exit 1
 LIBEDIT="--disable-editline"
 [ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-editline"
 
