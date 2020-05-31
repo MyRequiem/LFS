@@ -214,6 +214,9 @@ l/harfbuzz.sh
 l/poppler.sh
 ap/hd2u.sh
 d/lua53.sh
+ap/vim.sh
+d/brotli.sh
+ap/graphviz.sh
 ap/highlight.sh
 
 # vim:ft=conf

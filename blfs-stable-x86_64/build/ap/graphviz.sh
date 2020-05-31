@@ -87,12 +87,14 @@ sed -i '/LIBPOSTFIX="64"/s/64//' configure.ac &&
 
 IO="--disable-io"
 LIBWEBP="--without-webp"
+LUA="no"
 GLITZ="--without-glitz"
 LIBMING="--without-ming"
 OPENJDK=""
 
-command -v io     &>/dev/null && IO="--enable-io"
-command -v cwebp  &>/dev/null && LIBWEBP="--with-webp"
+command -v io    &>/dev/null && IO="--enable-io"
+command -v cwebp &>/dev/null && LIBWEBP="--with-webp"
+command -v lua   &>/dev/null && LUA="yes"
 [ -x /usr/lib/libglitz.so.1 ] && GLITZ="--with-glitz"
 [ -x /usr/lib/libming.so.1 ]  && LIBMING="--with-ming"
 
@@ -100,14 +102,15 @@ command -v cwebp  &>/dev/null && LIBWEBP="--with-webp"
     OPENJDK_INCLUDE="${JAVA_HOME}/include -I${JAVA_HOME}/include/linux" && \
     OPENJDK="--with-javaincludedir=${OPENJDK_INCLUDE}"
 
-autoreconf &&     \
-./configure       \
-    --prefix=/usr \
-    --with-smyrna \
-    "${IO}"       \
-    "${LIBWEBP}"  \
-    "${GLITZ}"    \
-    "${LIBMING}"  \
+autoreconf &&             \
+./configure               \
+    --prefix=/usr         \
+    --with-smyrna         \
+    --enable-lua="${LUA}" \
+    "${IO}"               \
+    "${LIBWEBP}"          \
+    "${GLITZ}"            \
+    "${LIBMING}"          \
     "${OPENJDK}" || exit 1
 
 make || exit 1
