@@ -221,5 +221,6 @@ ap/highlight.sh
 l/iso-codes.sh
 n/libtirpc.sh
 s/talloc.sh
+ap/lsof.sh
 
 # vim:ft=conf

@@ -206,7 +206,7 @@ ibus                                (-)
 imagemagick6
 imagemagick7                        gnupg
 iso-codes                           (+)
-lsof
+lsof                                (+)
 pinentry                            (+) gnupg
 rarian
 rep-gtk
@@ -517,7 +517,7 @@ libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc                            (+) talloc, rpcbind
+libtirpc                            (+) talloc, lsof, rpcbind
 neon
 nghttp2                             curl, nodejs
 rpcsvc-proto
