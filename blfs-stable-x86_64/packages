@@ -208,15 +208,15 @@ imagemagick7                        gnupg
 iso-codes                           (+)
 lsof                                (+)
 pinentry                            (+) gnupg
-rarian
-rep-gtk
-screen
+rarian                              (-)
+rep-gtk                             (-)
+screen                              (-)
 shared-mime-info                    (+) glib
 sharutils                           (+) berkeley-db
-telepathy-logger
-telepathy-mission-control
-tidy-html5
-time
+telepathy-logger                    (-)
+telepathy-mission-control           (-)
+tidy-html5                          (-)
+time                                (+)
 tree
 unixodbc                            apr-util
 xdg-user-dirs

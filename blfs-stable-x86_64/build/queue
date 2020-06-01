@@ -222,5 +222,6 @@ l/iso-codes.sh
 n/libtirpc.sh
 s/talloc.sh
 ap/lsof.sh
+a/time.sh
 
 # vim:ft=conf
