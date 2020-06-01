@@ -16,7 +16,7 @@ PRGNAME="talloc"
 #           docbook-xsl
 #           libxslt (для создания man-страниц),
 #           python2 (для создания Python2 модулей)
-#           python3 (для создания Python2 модулей)
+#           python3 (для создания Python3 модулей)
 #           gdb
 #           git
 #           xfsprogs
