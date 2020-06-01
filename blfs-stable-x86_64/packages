@@ -201,10 +201,10 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         harfbuzz, poppler
 hd2u                                (+)
 highlight                           (+)
-ibus
+ibus                                (-)
 imagemagick6
 imagemagick7                        gnupg
-iso-codes
+iso-codes                           (+)
 lsof
 pinentry                            (+) gnupg
 rarian
@@ -275,7 +275,7 @@ git                                 talloc, libidn2, doxygen, poppler
 guile                               gnutls, gdb, graphviz
 librep
 llvm                                icu, doxygen, potrace
-lua52                               vim
+lua52
 lua53                               (+) vim, brotli, graphviz, highlight
 mercurial
 nasm                                (-) libjpeg-turbo

@@ -218,5 +218,6 @@ ap/vim.sh
 d/brotli.sh
 ap/graphviz.sh
 ap/highlight.sh
+l/iso-codes.sh
 
 # vim:ft=conf
