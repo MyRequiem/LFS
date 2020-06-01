@@ -19,7 +19,8 @@ libcap (with PAM)                   (-)
 linux-pam                           (-) openssh, polkit, sudo
 liboauth                            (-)
 libpwquality                        (-)
-mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo
+mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
+                                        libtirpc
 nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util, poppler
 openssh                             (+) sshfs, libssh2
@@ -516,7 +517,7 @@ libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc                            talloc
+libtirpc                            (+) talloc, rpcbind
 neon
 nghttp2                             curl, nodejs
 rpcsvc-proto

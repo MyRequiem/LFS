@@ -219,5 +219,7 @@ d/brotli.sh
 ap/graphviz.sh
 ap/highlight.sh
 l/iso-codes.sh
+n/libtirpc.sh
+s/talloc.sh
 
 # vim:ft=conf
