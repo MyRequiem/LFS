@@ -223,5 +223,6 @@ n/libtirpc.sh
 s/talloc.sh
 ap/lsof.sh
 a/time.sh
+a/tree.sh
 
 # vim:ft=conf

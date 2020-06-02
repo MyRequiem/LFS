@@ -217,7 +217,7 @@ telepathy-logger                    (-)
 telepathy-mission-control           (-)
 tidy-html5                          (-)
 time                                (+)
-tree
+tree                                (+)
 unixodbc                            apr-util
 xdg-user-dirs
 accountsservice

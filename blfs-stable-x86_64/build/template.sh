@@ -24,6 +24,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} ()
 #
 #
+#
 # Home page:
 # Download:
 #
