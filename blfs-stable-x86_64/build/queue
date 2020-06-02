@@ -224,5 +224,7 @@ s/talloc.sh
 ap/lsof.sh
 a/time.sh
 a/tree.sh
+l/unixodbc.sh
+l/apr-util.sh
 
 # vim:ft=conf

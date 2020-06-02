@@ -5,6 +5,9 @@
 # пакета
 # ---------------------
 
+mini-sql                            unixodbc
+# http://www.hughes.com.au/products/msql/
+
 anytree                             gtk-doc
 # https://anytree.readthedocs.io/en/latest/
 

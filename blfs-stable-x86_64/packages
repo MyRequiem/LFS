@@ -145,7 +145,7 @@ nspr                                (+) nss
 pcre                                (+) glib, git
 pcre2                               (+) git
 popt                                (+) hd2u
-pth                                 (+) libgcrypt, libidn, parted
+pth                                 (+) libgcrypt, libidn, parted, unixodbc
 ptlib                               (-)
 qca                                 (-)
 talloc                              (+)
@@ -218,7 +218,7 @@ telepathy-mission-control           (-)
 tidy-html5                          (-)
 time                                (+)
 tree                                (+)
-unixodbc                            apr-util
+unixodbc                            (+) apr-util
 xdg-user-dirs
 accountsservice
 acpid
