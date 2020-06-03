@@ -5,7 +5,87 @@
 # пакета
 # ---------------------
 
+###
+# Table of contents
+###
+#
+-- Post LFS Configuration and Extra Software --
+    |- After LFS Configuration Issues
+    |- Security
+    |- File Systems and Disk Management
+    |- Editors
+    |- Shells
+    |- Virtualization
+
+-- General Libraries and Utilities --
+    |- General Libraries
+    |- Graphics and Font Libraries
+    |- General Utilities
+    |- System Utilities
+    |- Programming
+
+-- Networking --
+    |- Connecting to a Network
+    |- Networking Programs
+    |- Networking Utilities
+    |- Networking Libraries
+    |- Text Web Browsers
+    |- Mail/News Clients
+
+-- Servers --
+    |- Major Servers
+    |- Mail Server Software
+    |- Databases
+    |- Other Server Software
+
+-- Window and Display Managers --
+    |- X Window System Environment
+    |- X Libraries
+    |- Display Managers
+    |- Window Managers
+    |- Icons
+
+-- KDE --
+    |- Introduction to KDE
+    |- KDE Frameworks 5
+    |- KDE Frameworks 5 Based Applications
+    |- KDE Plasma 5
+
+-- GNOME --
+    |- GNOME Libraries and Desktop
+    |- GNOME Applications
+
+-- Xfce --
+    |- Xfce Desktop
+    |- Xfce Applications
+
+-- LXDE --
+    |- LXDE Desktop
+    |- LXDE Applications
+
+-- X Software --
+    |- Office Programs
+    |- Graphical Web Browsers
+    |- Other X-based Programs
+
+-- Multimedia--
+    |- Multimedia Libraries and Drivers
+    |- Audio Utilities
+    |- Video Utilities
+    |- CD/DVD-Writing Utilities
+
+-- Printing, Scanning and Typesetting --
+    |- Printing
+    |- Scanning
+    |- Standard Generalized Markup Language (SGML)
+    |- Extensible Markup Language (XML)
+    |- PostScript
+    |- Typesetting
+
+
+# - Post LFS Configuration and Extra Software/After LFS Configuration Issues ---
 kernel-firmware                     (+)
+# ------------ Post LFS Configuration and Extra Software/Security --------------
 make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
 cryptsetup                          (-)
@@ -32,6 +112,7 @@ stunnel                             (-) curl
 sudo                                (+)
 tripwire                            (-)
 volume-key                          (-)
+# - Post LFS Configuration and Extra Software/File Systems and Disk Management -
 btrfs-progs                         (-)
 dosfstools                          (+) parted
 fuse                                (+) gnupg, sshfs
@@ -45,6 +126,7 @@ reiserfsprogs                       (-) lvm2
 smartmontools                       (+)
 sshfs                               (+)
 xfsprogs                            (-) talloc, lvm2
+# ------------ Post LFS Configuration and Extra Software/Editors ---------------
 bluefish                            (-)
 ed                                  (+)
 emacs                               (-) libidn, pinentry, desktop-file-utils
@@ -54,15 +136,17 @@ kate                                (-)
 mousepad                            (-)
 nano                                (-)
 vim                                 (+)
---- other editors ---
-geany                               (-)
-leafpad                             (-)
-mcedit                              (-)
---- end of other editors ---
+# Other Editors
+  |- geany                          (-)
+  |- leafpad                        (-)
+  |- mcedit                         (-)
+# ------------- Post LFS Configuration and Extra Software/Shells ---------------
 dash                                (-)
 tcsh                                (-)
 zsh                                 (-)
+# --------- Post LFS Configuration and Extra Software/Virtualization -----------
 qemu
+# ------------ General Libraries and Utilities/General Libraries ---------------
 apr                                 (+)
 apr-util                            (+)
 aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
@@ -154,6 +238,7 @@ wayland                             (-)
 wayland-protocols                   (-)
 wv                                  (-)
 xapian                              (-) doxygen
+# ------- General Libraries and Utilities/Graphics and Font Libraries ----------
 aalib                               (+)
 babl                                (+) gegl
 exiv2                               (+) gegl
@@ -190,6 +275,7 @@ potrace                             (+)
 qpdf                                (-)
 sassc                               (-)
 woff2                               (+)
+# ------------ General Libraries and Utilities/General Utilities ---------------
 asciidoc                            (+) gegl, graphite2, git
 bogofilter                          (-)
 compface                            (-)
@@ -220,6 +306,7 @@ time                                (+)
 tree                                (+)
 unixodbc                            (+) apr-util
 xdg-user-dirs
+# ------------- General Libraries and Utilities/System Utilities ---------------
 accountsservice
 acpid
 at
@@ -257,6 +344,7 @@ usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
                                         boost, gtk-doc
 zip                                 (+) docbook-xsl, js
+# --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js
 cbindgen
 clisp                               gpgme
@@ -280,153 +368,151 @@ lua52
 lua53                               (+) vim, brotli, graphviz, highlight
 mercurial
 nasm                                (-) libjpeg-turbo
---- perl modules ---
-perl-archive-zip
-perl-autovivification
-perl-business-isbn
-perl-business-ismn
-perl-business-issn
-perl-class-accessor
-perl-data-compare
-perl-data-dump
-perl-data-uniqid
-perl-datetime-calendar-julian
-perl-datetime-format-builder
-perl-encode-eucjpascii
-perl-encode-hanextra
-perl-encode-jis2k
-perl-file-slurper
-perl-file-which
-perl-html-parser
-perl-http-daemon
-perl-io-socket-ssl
-perl-io-string
-perl-ipc-run3
-perl-lingua-translit
-perl-list-allutils
-perl-list-moreutils
-perl-log-log4perl
-perl-lwp-protocol-https
-perl-module-build
-perl-net-dns
-perl-parse-recdescent
-perl-parse-yapp
-perl-perlio-utf8-strict
-perl-regexp-common
-perl-sgmlspm                        fontconfig
-perl-sort-key
-perl-test-command
-perl-test-differences
-perl-text-bibtex
-perl-text-csv
-perl-text-roman
-perl-unicode-collate
-perl-unicode-linebreak
-perl-uri
-perl-xml-libxml-simple
-perl-xml-libxslt
-perl-xml-simple
-perl-xml-writer
---- end of perl modules ---
---- perl module dependencies ---
-perl-algorithm-diff
-perl-alien-build
-perl-alien-libxml2
-perl-b-hooks-endofscope
-perl-business-isbn-data
-perl-capture-tiny
-perl-class-data-inheritable
-perl-class-inspector
-perl-class-singleton
-perl-class-tiny
-perl-clone
-perl-config-autoconf
-perl-cpan-meta-check
-perl-datetime
-perl-datetime-format-strptime
-perl-datetime-locale
-perl-datetime-timezone
-perl-devel-stacktrace
-perl-dist-checkconflicts
-perl-encode-locale
-perl-eval-closure
-perl-exception-class
-perl-exporter-tiny
-perl-extutils-libbuilder
-perl-ffi-checklib
-perl-file-chdir
-perl-file-copy-recursive
-perl-file-find-rule
-perl-file-listing
-perl-file-sharedir
-perl-file-sharedir-install
-perl-html-tagset
-perl-http-cookies
-perl-http-date
-perl-http-message
-perl-http-negotiate
-perl-importer
-perl-io-html
-perl-ipc-system-simple
-perl-libwww-perl
-perl-list-moreutils-xs
-perl-list-someutils
-perl-list-someutils-xs
-perl-list-utilsby
-perl-lwp-mediatypes
-perl-mime-charset
-perl-module-implementation
-perl-module-pluggable
-perl-module-runtime
-perl-mro-compat
-perl-namespace-autoclean
-perl-namespace-clean
-perl-net-http
-perl-net-ssleay
-perl-number-compare
-perl-package-stash
-perl-params-validate
-perl-params-validationcompiler
-perl-path-tiny
-perl-role-tiny
-perl-scope-guard
-perl-specio
-perl-sub-exporter-progressive
-perl-sub-identify
-perl-sub-info
-perl-sub-quote
-perl-sub-uplevel
-perl-super
-perl-term-table
-perl-test-deep
-perl-test-exception
-perl-test-fatal
-perl-test-file
-perl-test-file-sharedir
-perl-test-leaktrace
-perl-test-mockmodule-v0.170.0
-perl-test-needs
-perl-test-requires
-perl-test-requiresinternet
-perl-test-utf8
-perl-test-warnings
-perl-test-without-module
-perl-test2-plugin-nowarnings
-perl-test2-suite
-perl-text-csv_xs
-perl-text-diff
-perl-text-glob
-perl-tie-cycle
-perl-timedate
-perl-try-tiny
-perl-variable-magic
-perl-www-robotrules
-perl-xml-libxml
-perl-xml-namespacesupport
-perl-xml-sax
-perl-xml-sax-base
-perl-xml-sax-expat
---- end of perl module dependencies ---
+# Perl Modules
+  |- perl-archive-zip
+  |- perl-autovivification
+  |- perl-business-isbn
+  |- perl-business-ismn
+  |- perl-business-issn
+  |- perl-class-accessor
+  |- perl-data-compare
+  |- perl-data-dump
+  |- perl-data-uniqid
+  |- perl-datetime-calendar-julian
+  |- perl-datetime-format-builder
+  |- perl-encode-eucjpascii
+  |- perl-encode-hanextra
+  |- perl-encode-jis2k
+  |- perl-file-slurper
+  |- perl-file-which
+  |- perl-html-parser
+  |- perl-http-daemon
+  |- perl-io-socket-ssl
+  |- perl-io-string
+  |- perl-ipc-run3
+  |- perl-lingua-translit
+  |- perl-list-allutils
+  |- perl-list-moreutils
+  |- perl-log-log4perl
+  |- perl-lwp-protocol-https
+  |- perl-module-build
+  |- perl-net-dns
+  |- perl-parse-recdescent
+  |- perl-parse-yapp
+  |- perl-perlio-utf8-strict
+  |- perl-regexp-common
+  |- perl-sgmlspm                   fontconfig
+  |- perl-sort-key
+  |- perl-test-command
+  |- perl-test-differences
+  |- perl-text-bibtex
+  |- perl-text-csv
+  |- perl-text-roman
+  |- perl-unicode-collate
+  |- perl-unicode-linebreak
+  |- perl-uri
+  |- perl-xml-libxml-simple
+  |- perl-xml-libxslt
+  |- perl-xml-simple
+  |- perl-xml-writer
+# Perl Module Dependencies
+  |- perl-algorithm-diff
+  |- perl-alien-build
+  |- perl-alien-libxml2
+  |- perl-b-hooks-endofscope
+  |- perl-business-isbn-data
+  |- perl-capture-tiny
+  |- perl-class-data-inheritable
+  |- perl-class-inspector
+  |- perl-class-singleton
+  |- perl-class-tiny
+  |- perl-clone
+  |- perl-config-autoconf
+  |- perl-cpan-meta-check
+  |- perl-datetime
+  |- perl-datetime-format-strptime
+  |- perl-datetime-locale
+  |- perl-datetime-timezone
+  |- perl-devel-stacktrace
+  |- perl-dist-checkconflicts
+  |- perl-encode-locale
+  |- perl-eval-closure
+  |- perl-exception-class
+  |- perl-exporter-tiny
+  |- perl-extutils-libbuilder
+  |- perl-ffi-checklib
+  |- perl-file-chdir
+  |- perl-file-copy-recursive
+  |- perl-file-find-rule
+  |- perl-file-listing
+  |- perl-file-sharedir
+  |- perl-file-sharedir-install
+  |- perl-html-tagset
+  |- perl-http-cookies
+  |- perl-http-date
+  |- perl-http-message
+  |- perl-http-negotiate
+  |- perl-importer
+  |- perl-io-html
+  |- perl-ipc-system-simple
+  |- perl-libwww-perl
+  |- perl-list-moreutils-xs
+  |- perl-list-someutils
+  |- perl-list-someutils-xs
+  |- perl-list-utilsby
+  |- perl-lwp-mediatypes
+  |- perl-mime-charset
+  |- perl-module-implementation
+  |- perl-module-pluggable
+  |- perl-module-runtime
+  |- perl-mro-compat
+  |- perl-namespace-autoclean
+  |- perl-namespace-clean
+  |- perl-net-http
+  |- perl-net-ssleay
+  |- perl-number-compare
+  |- perl-package-stash
+  |- perl-params-validate
+  |- perl-params-validationcompiler
+  |- perl-path-tiny
+  |- perl-role-tiny
+  |- perl-scope-guard
+  |- perl-specio
+  |- perl-sub-exporter-progressive
+  |- perl-sub-identify
+  |- perl-sub-info
+  |- perl-sub-quote
+  |- perl-sub-uplevel
+  |- perl-super
+  |- perl-term-table
+  |- perl-test-deep
+  |- perl-test-exception
+  |- perl-test-fatal
+  |- perl-test-file
+  |- perl-test-file-sharedir
+  |- perl-test-leaktrace
+  |- perl-test-mockmodule-v0.170.0
+  |- perl-test-needs
+  |- perl-test-requires
+  |- perl-test-requiresinternet
+  |- perl-test-utf8
+  |- perl-test-warnings
+  |- perl-test-without-module
+  |- perl-test2-plugin-nowarnings
+  |- perl-test2-suite
+  |- perl-text-csv_xs
+  |- perl-text-diff
+  |- perl-text-glob
+  |- perl-tie-cycle
+  |- perl-timedate
+  |- perl-try-tiny
+  |- perl-variable-magic
+  |- perl-www-robotrules
+  |- perl-xml-libxml
+  |- perl-xml-namespacesupport
+  |- perl-xml-sax
+  |- perl-xml-sax-base
+  |- perl-xml-sax-expat
 php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
@@ -434,30 +520,29 @@ python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         python-six
 python3                             (+) libxml2, talloc, vim, brotli,
                                         python-six, python3-pygments
---- python modules ---
-python-d-bus
-python3-decorator
-python3-docutils                    sshfs
-python3-pyatspi2
-python2-pycairo
-python3-pycairo
-python-pycryptodome
-python3-dbusmock
-python3-pygments                    (+) gegl, gtk-doc
-python2-pygobject2
-python-pygobject3                   gegl
-python2-pygtk
-python3-pyxdg
-python2-libxml2                     libxslt, docbook-xsl
-python-lxml                         gtk-doc
-python-markupsafe
-python-jinja2
-python3-mako                        gobject-introspection
-python3-python-slip
-python-pyyaml
-python-scour
-python-six                          (+) gdb
---- end of python modules ---
+# Python Modules
+  |- python-d-bus
+  |- python3-decorator
+  |- python3-docutils               sshfs
+  |- python3-pyatspi2
+  |- python2-pycairo
+  |- python3-pycairo
+  |- python-pycryptodome
+  |- python3-dbusmock
+  |- python3-pygments               (+) gegl, gtk-doc
+  |- python2-pygobject2
+  |- python-pygobject3              gegl
+  |- python2-pygtk
+  |- python3-pyxdg
+  |- python2-libxml2                libxslt, docbook-xsl
+  |- python-lxml                    gtk-doc
+  |- python-markupsafe
+  |- python-jinja2
+  |- python3-mako                   gobject-introspection
+  |- python3-python-slip
+  |- python-pyyaml
+  |- python-scour
+  |- python-six                     (+) gdb
 ruby                                docbook-xsl, vim, gegl, graphviz
 rustc                               gdb
 scons
@@ -471,15 +556,16 @@ valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
                                     gdb, pcre2, talloc, lvm2, git
 yasm                                (+) libjpeg-turbo
---- other programming tools ---
-ctags
---- end of other programming tools ---
+# Other Programming Tools
+  |- ctags
 java                                (-) make-ca
 openjdk                             make-ca, cyrus-sasl, libidn, openssh,
                                     graphviz
 apache-ant                          docbook-xsl
+# -------------------- Networking/Connecting to a Network ----------------------
 dhcpcd
 dhcp
+# ---------------------- Networking/Networking Programs ------------------------
 bridge-utils
 cifs-utils
 iw
@@ -493,9 +579,9 @@ samba                               curl
 wget
 wireless-tools
 wpa-supplicant
---- other networking programs ---
-ncpfs
---- end of other networking programs ---
+# Other Networking Programs
+  |- ncpfs
+# --------------------- Networking/Networking Utilities ------------------------
 avahi
 bind-utilities
 networkmanager
@@ -503,6 +589,7 @@ nmap
 traceroute
 whois
 wireshark
+# --------------------- Networking/Networking Libraries ------------------------
 c-ares                              curl, nodejs
 curl                                (+) cmake, gnupg, exiv2, git, poppler
 geoclue
@@ -523,35 +610,78 @@ nghttp2                             curl, nodejs
 rpcsvc-proto
 serf
 uhttpmock
+# ----------------------- Networking/Text Web Browsers -------------------------
 links                               xmlto
 lynx                                xmlto
+# ----------------------- Networking/Mail/News Clients -------------------------
 fetchmail
 mailx
 mutt
 procmail
+# Other Mail and News Programs
+  |- balsa
+  |- thunderbird
+
+# -------------------------- Servers/Major Servers -----------------------------
 httpd
 bind
 proftpd
 vsftpd
+# ----------------------- Servers/Mail Server Software -------------------------
 dovecot
 exim
 postfix
 sendmail                            (-) sudo
+# ---------------------------- Servers/Databases -------------------------------
 berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
 lmdb
 mariadb                             apr-util, cyrus-sasl
 postgresql                          apr-util, cyrus-sasl
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
                                         nss, gnupg
+# ---------------------- Servers/Other Server Software -------------------------
 openldap                            apr-util, curl, cyrus-sasl, gnupg, sudo
 unbound                             gnutls
+# --------- Window and Display Managers/X Window System Environment ------------
 util-macros
 xorgproto
 libxau
 libxdmcp
 xcb-proto
 libxcb
-xorg-libraries                      graphviz
+# Xorg Libraries                    graphviz
+  |- xtrans
+  |- libX11
+  |- libXext
+  |- libFS
+  |- libICE
+  |- libSM
+  |- libXScrnSaver
+  |- libXt
+  |- libXmu
+  |- libXpm
+  |- libXaw
+  |- libXfixes
+  |- libXcomposite
+  |- libXrender
+  |- libXcursor
+  |- libXdamage
+  |- libfontenc
+  |- libXfont2
+  |- libXft
+  |- libXi
+  |- libXinerama
+  |- libXrandr
+  |- libXres
+  |- libXtst
+  |- libXv
+  |- libXvMC
+  |- libXxf86dga
+  |- libXxf86vm
+  |- libdmx
+  |- libpciaccess
+  |- libxkbfile
+  |- libxshmfence
 xcb-util
 xcb-util-image
 xcb-util-keysyms
@@ -560,113 +690,112 @@ xcb-util-wm
 xcb-util-cursor
 mesa
 xbitmaps
---- xorg applications ---
-iceauth
-luit
-mkfontdir
-mkfontscale
-sessreg
-setxkbmap
-smproxy
-x11perf
-xauth                               openssh
-xbacklight
-xcmsdb
-xcursorgen
-xdpyinfo
-xdriinfo
-xev
-xgamma
-xhost
-xinput
-xkbcomp
-xkbevd
-xkbutils
-xkill
-xlsatoms
-xlsclients
-xmessage
-xmodmap
-xpr
-xprop
-xrandr
-xrdb
-xrefresh
-xset
-xsetroot
-xvinfo
-xwd
-xwininfo
-xwud
---- end of xorg applications ---
+# Xorg Applications
+  |- iceauth
+  |- luit
+  |- mkfontdir
+  |- mkfontscale
+  |- sessreg
+  |- setxkbmap
+  |- smproxy
+  |- x11perf
+  |- xauth                          openssh
+  |- xbacklight
+  |- xcmsdb
+  |- xcursorgen
+  |- xdpyinfo
+  |- xdriinfo
+  |- xev
+  |- xgamma
+  |- xhost
+  |- xinput
+  |- xkbcomp
+  |- xkbevd
+  |- xkbutils
+  |- xkill
+  |- xlsatoms
+  |- xlsclients
+  |- xmessage
+  |- xmodmap
+  |- xpr
+  |- xprop
+  |- xrandr
+  |- xrdb
+  |- xrefresh
+  |- xset
+  |- xsetroot
+  |- xvinfo
+  |- xwd
+  |- xwininfo
+  |- xwud
 xcursor-themes
---- xorg fonts ---
-font-util
-encodings
-font-alias
-font-adobe-utopia-type1
-font-bh-ttf
-font-bh-type1
-font-ibm-type1
-font-misc-ethiopic
-font-xfree86-type1
---- end xorg fonts ---
+# Xorg Fonts
+  |- font-util
+  |- encodings
+  |- font-alias
+  |- font-adobe-utopia-type1
+  |- font-bh-ttf
+  |- font-bh-type1
+  |- font-ibm-type1
+  |- font-misc-ethiopic
+  |- font-xfree86-type1
 xkeyboard-config
 xorg-server                         vim
---- xorg drivers ---
-libevdev
-xorg-evdev-driver
-libinput
-xorg-libinput
-xorg-synaptics-driver
-xorg-wacom-driver
-xorg-amdgpu-driver
-xorg-ati-driver
-xorg-fbdev-driver
-xorg-intel-driver
-xorg-nouveau-driver
-xorg-vmware-driver
-libva
-libvdpau
-libvdpau-va-gl
---- end of xorg drivers ---
+# Xorg Drivers
+  # Xorg Input Drivers
+  |- libevdev
+  |- xorg-evdev-driver
+  |- libinput
+  |- xorg-libinput
+  |- xorg-synaptics-driver
+  |- xorg-wacom-driver
+  # Xorg Video Drivers
+  |- xorg-amdgpu-driver
+  |- xorg-ati-driver
+  |- xorg-fbdev-driver
+  |- xorg-intel-driver
+  |- xorg-nouveau-driver
+  |- xorg-vmware-driver
+  # Hardware Video Acceleration
+  |- libva
+  |- libvdpau
+  |- libvdpau-va-gl
 twm
 xterm
 xclock
 xinit
---- ttf and otf fonts ---
-caladea
-cantarell-fonts
-carlito
-dejavu-fonts
-gnu-freefont
-gelasio
-liberation-fonts
-microsuck-core-fonts
-noto-fonts
-oxygen-fonts
-source-code-pro
-cjk-fonts
-chinese-fonts
-noto-sans-cjk
-opendesktop-fonts
-uming
-wenquanyi-zen-hei
-japanese-fonts
-ipaex-fonts
-kochi-fonts
-vl-gothic
-korean-fonts
---- end of ttf and otf fonts ---
---- xorg legacy ---
-bdftopcf
-font-adobe-100dpi
-font-adobe-75dpi
-font-jis-misc
-font-daewoo-misc
-font-isas-misc
-font-misc-misc
---- end of xorg legacy ---
+# TTF and OTF fonts
+  |- caladea
+  |- cantarell-fonts
+  |- carlito
+  |- dejavu-fonts
+  |- gnu-freefont
+  |- gelasio
+  |- liberation-fonts
+  |- microsuck-core-fonts
+  |- noto-fonts
+  |- oxygen-fonts
+  |- source-code-pro
+  |- cjk-fonts
+  |- chinese-fonts
+  |- noto-sans-cjk
+  |- opendesktop-fonts
+  |- uming
+  |- wenquanyi-zen-hei
+  |- japanese-fonts
+  |- ipaex-fonts
+  |- kochi-fonts
+  |- vl-gothic
+  |- korean-fonts
+# Xorg Legacy
+  |- bdftopcf
+  |- font-adobe-100dpi
+  |- font-adobe-75dpi
+  |- font-jis-misc
+  |- font-daewoo-misc
+  |- font-isas-misc
+  |- font-misc-misc
+# ----------------- Window and Display Managers/X Libraries --------------------
 atk                                 (+)
 atkmm
 at-spi2-core
@@ -709,15 +838,17 @@ qt5                                 cmake, gpgme, pinentry, doxygen, poppler,
 qtwebengine
 startup-notification
 webkitgtk+2
+# --------------- Window and Display Managers/Display Managers -----------------
 lightdm
 lxdm
+# --------------- Window and Display Managers/Window Managers ------------------
 fluxbox
 icewm
 openbox
 sawfish
---- other window managers ---
-mwm
---- end of other window managers ---
+# Other Window Managers
+  |- mwm
+# -------------------- Window and Display Managers/Icons -----------------------
 adwaita-icon-theme
 breeze-icons
 gnome-icon-theme
@@ -728,90 +859,92 @@ hicolor-icon-theme
 icon-naming-utils
 lxde-icon-theme
 oxygen-icons5
+# ------------------------- KDE/Introduction to KDE ----------------------------
 extra-cmake-modules
 phonon
 phonon-backend-gstreamer
 phonon-backend-vlc
 polkit-qt
 libdbusmenu-qt
---- building kde frameworks 5 (kf5) ---
-attica
-kapidox
-karchive
-kcodecs
-kconfig
-kcoreaddons
-kdbusaddons
-kdnssd
-kguiaddons
-ki18n
-kidletime
-kimageformats
-kitemmodels
-kitemviews
-kplotting
-kwidgetsaddons
-kwindowsystem
-networkmanager-qt
-solid
-sonnet
-threadweaver
-kauth
-kcompletion
-kcrash
-kdoctools
-kpty
-kunitconversion
-kconfigwidgets
-kservice
-kglobalaccel
-kpackage
-kdesu
-kemoticons
-kiconthemes
-kjobwidgets
-knotifications
-ktextwidgets
-kxmlgui
-kbookmarks
-kwallet
-kio
-kdeclarative
-kcmutils
-kirigami2
-knewstuff
-frameworkintegration
-kinit
-knotifyconfig
-kparts
-kactivities
-kded
-syntax-highlighting
-ktexteditor
-kdesignerplugin
-kwayland
-plasma-framework
-kpeople
-kxmlrpcclient
-bluez-qt
-kfilemetadata
-baloo
-kactivities-stats
-krunner
-qqc2-desktop-style
-kjs
-kdelibs4support
-khtml
-kjsembed
-kmediaplayer
-kross
-kholidays
-purpose
-syndication
-kcalendarcore
-kcontacts
-kquickcharts
---- end of building kde frameworks 5 (kf5) ---
+# --------------------------- KDE/KDE Frameworks 5 -----------------------------
+# Building KDE Frameworks 5 (KF5)
+  |- attica
+  |- kapidox
+  |- karchive
+  |- kcodecs
+  |- kconfig
+  |- kcoreaddons
+  |- kdbusaddons
+  |- kdnssd
+  |- kguiaddons
+  |- ki18n
+  |- kidletime
+  |- kimageformats
+  |- kitemmodels
+  |- kitemviews
+  |- kplotting
+  |- kwidgetsaddons
+  |- kwindowsystem
+  |- networkmanager-qt
+  |- solid
+  |- sonnet
+  |- threadweaver
+  |- kauth
+  |- kcompletion
+  |- kcrash
+  |- kdoctools
+  |- kpty
+  |- kunitconversion
+  |- kconfigwidgets
+  |- kservice
+  |- kglobalaccel
+  |- kpackage
+  |- kdesu
+  |- kemoticons
+  |- kiconthemes
+  |- kjobwidgets
+  |- knotifications
+  |- ktextwidgets
+  |- kxmlgui
+  |- kbookmarks
+  |- kwallet
+  |- kio
+  |- kdeclarative
+  |- kcmutils
+  |- kirigami2
+  |- knewstuff
+  |- frameworkintegration
+  |- kinit
+  |- knotifyconfig
+  |- kparts
+  |- kactivities
+  |- kded
+  |- syntax-highlighting
+  |- ktexteditor
+  |- kdesignerplugin
+  |- kwayland
+  |- plasma-framework
+  |- kpeople
+  |- kxmlrpcclient
+  |- bluez-qt
+  |- kfilemetadata
+  |- baloo
+  |- kactivities-stats
+  |- krunner
+  |- qqc2-desktop-style
+  |- kjs
+  |- kdelibs4support
+  |- khtml
+  |- kjsembed
+  |- kmediaplayer
+  |- kross
+  |- kholidays
+  |- purpose
+  |- syndication
+  |- kcalendarcore
+  |- kcontacts
+  |- kquickcharts
+# ----------------- KDE/KDE Frameworks 5 Based Applications --------------------
 ark
 kdenlive
 kmix
@@ -823,106 +956,109 @@ libkdcraw
 gwenview
 libkcddb
 k3b
---- further kde5 packages ---
-juk
-dragon
-kcalc
-kaccessible
-kwalletmanager
-marble
---- end of further kde5 packages ---
---- building plasma 5 ---
-kdecoration
-libkscreen
-libksysguard
-breeze
-breeze-gtk
-kscreenlocker
-oxygen
-kinfocenter
-ksysguard
-kwin
-plasma-workspace
-bluedevil
-kde-gtk-config
-khotkeys
-kmenuedit
-kscreen
-kwallet-pam
-kwayland-integration
-kwrited
-milou
-plasma-nm
-plasma-pa
-plasma-workspace-wallpapers
-polkit-kde-agent                    polkit
-powerdevil
-plasma-desktop
-kdeplasma-addons
-kgamma5
-ksshaskpass
-sddm-kcm
-user-manager
-discover
-kactivitymanagerd
-plasma-integration
-plasma-tests
-xdg-desktop-portal-kde
-drkonqi
-plasma-vault
-plasma-browser-integration
-kde-cli-tools
-systemsettings
-plasma-thunderbolt
---- end of building plasma 5 ---
-gcr                                 pinentry
-gsettings-desktop-schemas
-libsecret                           pinentry
-rest
-totem-pl-parser
-vte058
-yelp-xsl
-gconf
-geocode-glib
-gjs                                 (-) gobject-introspection
-gnome-autoar
-gnome-desktop
-gnome-menus
-gnome-video-effects
-gnome-online-accounts
-grilo
-libchamplain
-libgdata
-libgee
-libgtop
-libgweather
-libpeas
-libwnck3
-evolution-data-server
-folks
-gfbgraph
-tracker
-tracker-miners
-gsound
-dconf
-gnome-backgrounds
-gvfs
-gexiv2                              gegl
-nautilus
-zenity
-gnome-bluetooth
-gnome-keyring
-gnome-settings-daemon
-gnome-control-center
-mutter
-gnome-shell                         polkit
-gnome-shell-extensions
-gnome-session
-gdm
-gnome-user-docs
-yelp
-notification-daemon
-polkit-gnome                        polkit
+# Further KDE5 packages
+  |- juk
+  |- dragon
+  |- kcalc
+  |- kaccessible
+  |- kwalletmanager
+  |- marble
+# ----------------------------- KDE/KDE Plasma 5 -------------------------------
+# Building Plasma 5
+  |- kdecoration
+  |- libkscreen
+  |- libksysguard
+  |- breeze
+  |- breeze-gtk
+  |- kscreenlocker
+  |- oxygen
+  |- kinfocenter
+  |- ksysguard
+  |- kwin
+  |- plasma-workspace
+  |- bluedevil
+  |- kde-gtk-config
+  |- khotkeys
+  |- kmenuedit
+  |- kscreen
+  |- kwallet-pam
+  |- kwayland-integration
+  |- kwrited
+  |- milou
+  |- plasma-nm
+  |- plasma-pa
+  |- plasma-workspace-wallpapers
+  |- polkit-kde-agent               polkit
+  |- powerdevil
+  |- plasma-desktop
+  |- kdeplasma-addons
+  |- kgamma5
+  |- ksshaskpass
+  |- sddm-kcm
+  |- user-manager
+  |- discover
+  |- kactivitymanagerd
+  |- plasma-integration
+  |- plasma-tests
+  |- xdg-desktop-portal-kde
+  |- drkonqi
+  |- plasma-vault
+  |- plasma-browser-integration
+  |- kde-cli-tools
+  |- systemsettings
+  |- plasma-thunderbolt
+# -------------------- GNOME/GNOME Libraries and Desktop -----------------------
+# Libraries
+  |- gcr                            pinentry
+  |- gsettings-desktop-schemas
+  |- libsecret                      pinentry
+  |- rest
+  |- totem-pl-parser
+  |- vte058
+  |- yelp-xsl
+  |- gconf
+  |- geocode-glib
+  |- gjs                            gobject-introspection
+  |- gnome-autoar
+  |- gnome-desktop
+  |- gnome-menus
+  |- gnome-video-effects
+  |- gnome-online-accounts
+  |- grilo
+  |- libchamplain
+  |- libgdata
+  |- libgee
+  |- libgtop
+  |- libgweather
+  |- libpeas
+  |- libwnck3
+  |- evolution-data-server
+  |- folks
+  |- gfbgraph
+  |- tracker
+  |- tracker-miners
+  |- gsound
+# Required Runtime Dependencies
+  |- dconf
+  |- gnome-backgrounds
+  |- gvfs
+  |- gexiv2                         gegl
+  |- nautilus
+  |- zenity
+  |- gnome-bluetooth
+  |- gnome-keyring
+  |- gnome-settings-daemon
+  |- gnome-control-center
+  |- mutter
+  |- gnome-shell                    polkit
+  |- gnome-shell-extensions
+  |- gnome-session
+  |- gdm
+  |- gnome-user-docs
+  |- yelp
+  |- notification-daemon
+  |- polkit-gnome                   polkit
+# ------------------------- GNOME/GNOME Applications ---------------------------
 baobab
 brasero
 cheese
@@ -945,6 +1081,7 @@ gucharmap
 network-manager-applet
 seahorse
 vinagre
+# ---------------------------- Xfce/Xfce Desktop -------------------------------
 libxfce4util
 xfconf
 libxfce4ui
@@ -960,11 +1097,13 @@ xfce4-settings
 xfdesktop
 xfwm4
 xfce4-session
+# -------------------------- Xfce/Xfce Applications ----------------------------
 parole
 xfce4-terminal
 xfburn
 ristretto
 xfce4-notifyd
+# ---------------------------- LXDE/LXDE Desktop -------------------------------
 lxmenu-data
 libfm-extra
 menu-cache
@@ -975,6 +1114,7 @@ lxpanel
 lxappearance
 lxsession                           polkit
 lxde-common
+# -------------------------- LXDE/LXDE Applications ----------------------------
 gpicview
 lxappearance-obconf
 lxinput
@@ -982,14 +1122,16 @@ lxrandr
 lxtask
 vte028
 lxterminal
+# ------------------------ X Software/Office Programs --------------------------
 abiword
 gnumeric
 libreoffice
+# -------------------- X Software/Graphical Web Browsers -----------------------
 epiphany
 falkon
 firefox
 seamonkey
-balsa
+# -------------------- X Software/Other X-based Programs -----------------------
 feh
 fontforge
 gimp
@@ -999,12 +1141,12 @@ inkscape
 pidgin
 rox-filer
 rxvt-unicode
-thunderbird
 tigervnc
 transmission
 xarchiver
 xdg-utils
 xscreensaver
+# --------------- Multimedia/Multimedia Libraries and Drivers ------------------
 alsa
 alsa-lib
 alsa-plugins
@@ -1065,6 +1207,7 @@ x264
 x265
 xine-lib
 xvid
+# ------------------------ Multimedia/Audio Utilities --------------------------
 audacious
 cdparanoia-III
 kwave
@@ -1072,23 +1215,28 @@ lame
 mpg123
 pnmixer
 vorbis-tools
+# ------------------------ Multimedia/Video Utilities --------------------------
 ffmpeg                              gegl
 mplayer
 transcode
 vlc
 xine-ui
+# ------------------- Multimedia/CD/DVD-Writing Utilities ----------------------
 cdrdao
 cdrtools
 dvd+rw-tools
 libburn
 libisoburn
 libisofs
+# --------------- Printing, Scanning and Typesetting/Printing ------------------
 cups
 cups-filters
 ghostscript                         doxygen, graphviz
 gutenprint
+# --------------- Printing, Scanning and Typesetting/Scanning ------------------
 sane
 xsane
+# Printing, Scanning and Typesetting/Standard Generalized Markup Language (SGML)
 sgml-common                         (+) docbook-xml
 docbook3
 docbook4
@@ -1096,6 +1244,7 @@ opensp
 openjade
 docbook-dsssl
 docbook-utils                       fontconfig
+# --- Printing, Scanning and Typesetting/Extensible Markup Language (XML) ------
 docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
                                         xmlto, gtk-doc
 docbook-xml50
@@ -1104,6 +1253,7 @@ docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto,
                                         gtk-doc
 itstool                             (+) shared-mime-info, gtk-doc
 xmlto                               (+) giflib, git
+# -------------- Printing, Scanning and Typesetting/PostScript -----------------
 a2ps
 enscript
 psutils-p17
@@ -1111,6 +1261,7 @@ epdfview
 fop                                 xmlto, gtk-doc
 mupdf
 paps
+# -------------- Printing, Scanning and Typesetting/Typesetting ----------------
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
                                     fontconfig, parted, graphite2, doxygen
 texlive                             libassuan, libgcrypt, libunistring, gnutls,
