@@ -35,7 +35,10 @@ sed -e '/^pre-install:/{N;s@;@ -a -r $(sudoersdir)/sudoers;@}' \
     -i plugins/sudoers/Makefile.in || exit 1
 
 PAM="--without-pam"
+OPENLDAP="--without-ldap"
+
 command -v pam_tally &>/dev/null && PAM="--with-pam"
+command -v ldapadd   &>/dev/null && OPENLDAP="--with-ldap"
 
 # использовать переменную окружения EDITOR для visudo
 #    --with-env-editor
@@ -46,6 +49,7 @@ command -v pam_tally &>/dev/null && PAM="--with-pam"
     --with-all-insults                              \
     --with-env-editor                               \
     "${PAM}"                                        \
+    "${OPENLDAP}"                                   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     --with-passprompt="[sudo] password for %p: " || exit 1
 
