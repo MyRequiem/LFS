@@ -228,5 +228,11 @@ l/unixodbc.sh
 l/apr-util.sh
 x/xdg-user-dirs.sh
 a/acpid.sh
+n/openldap.sh
+l/apr-util.sh
+n/curl.sh
+n/cyrus-sasl.sh
+n/gnupg.sh
+ap/sudo.sh
 
 # vim:ft=conf

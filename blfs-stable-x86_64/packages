@@ -89,9 +89,9 @@ kernel-firmware                     (+)
 make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
 cryptsetup                          (-)
-cyrus-sasl                          (+)
+cyrus-sasl                          (+) openldap
 gnupg                               (+) gpgme, smartmontools, libssh2
-gnutls                              (+) curl, gnupg, glibmm
+gnutls                              (+) curl, gnupg, glibmm, openldap
 gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
@@ -229,7 +229,8 @@ nspr                                (+) nss
 pcre                                (+) glib, git
 pcre2                               (+) git
 popt                                (+) hd2u
-pth                                 (+) libgcrypt, libidn, parted, unixodbc
+pth                                 (+) libgcrypt, libidn, parted, unixodbc,
+                                        openldap
 ptlib                               (-)
 qca                                 (-)
 talloc                              (+)
@@ -304,7 +305,7 @@ telepathy-mission-control           (-)
 tidy-html5                          (-)
 time                                (+)
 tree                                (+)
-unixodbc                            (+) apr-util
+unixodbc                            (+) apr-util, openldap
 xdg-user-dirs                       (+)
 # ------------- General Libraries and Utilities/System Utilities ---------------
 accountsservice                     (-)
@@ -633,14 +634,15 @@ exim
 postfix
 sendmail                            (-) sudo
 # ---------------------------- Servers/Databases -------------------------------
-berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical
+berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical,
+                                        openldap
 lmdb
-mariadb                             apr-util, cyrus-sasl
-postgresql                          apr-util, cyrus-sasl
+mariadb                             apr-util, cyrus-sasl, openldap
+postgresql                          apr-util, cyrus-sasl, openldap
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
                                         nss, gnupg
 # ---------------------- Servers/Other Server Software -------------------------
-openldap                            apr-util, curl, cyrus-sasl, gnupg, sudo
+openldap                            (+) apr-util, curl, cyrus-sasl, gnupg, sudo
 unbound                             gnutls
 # --------- Window and Display Managers/X Window System Environment ------------
 util-macros

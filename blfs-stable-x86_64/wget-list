@@ -165,3 +165,5 @@ ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz
 ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.7.tar.gz
 https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.17.tar.gz
 https://downloads.sourceforge.net/acpid2/acpid-2.0.32.tar.xz
+ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.49.tgz
+http://www.linuxfromscratch.org/patches/blfs/9.1/openldap-2.4.49-consolidated-1.patch
