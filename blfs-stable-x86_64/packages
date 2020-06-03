@@ -307,8 +307,8 @@ tree                                (+)
 unixodbc                            (+) apr-util
 xdg-user-dirs                       (+)
 # ------------- General Libraries and Utilities/System Utilities ---------------
-accountsservice
-acpid
+accountsservice                     (-)
+acpid                               (+)
 at
 autofs
 bluez                               python2, python3

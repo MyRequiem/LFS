@@ -227,5 +227,6 @@ a/tree.sh
 l/unixodbc.sh
 l/apr-util.sh
 x/xdg-user-dirs.sh
+a/acpid.sh
 
 # vim:ft=conf
