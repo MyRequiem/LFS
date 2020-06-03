@@ -9,78 +9,78 @@
 # Table of contents
 ###
 #
--- Post LFS Configuration and Extra Software --
-    |- After LFS Configuration Issues
-    |- Security
-    |- File Systems and Disk Management
-    |- Editors
-    |- Shells
-    |- Virtualization
-
--- General Libraries and Utilities --
-    |- General Libraries
-    |- Graphics and Font Libraries
-    |- General Utilities
-    |- System Utilities
-    |- Programming
-
--- Networking --
-    |- Connecting to a Network
-    |- Networking Programs
-    |- Networking Utilities
-    |- Networking Libraries
-    |- Text Web Browsers
-    |- Mail/News Clients
-
--- Servers --
-    |- Major Servers
-    |- Mail Server Software
-    |- Databases
-    |- Other Server Software
-
--- Window and Display Managers --
-    |- X Window System Environment
-    |- X Libraries
-    |- Display Managers
-    |- Window Managers
-    |- Icons
-
--- KDE --
-    |- Introduction to KDE
-    |- KDE Frameworks 5
-    |- KDE Frameworks 5 Based Applications
-    |- KDE Plasma 5
-
--- GNOME --
-    |- GNOME Libraries and Desktop
-    |- GNOME Applications
-
--- Xfce --
-    |- Xfce Desktop
-    |- Xfce Applications
-
--- LXDE --
-    |- LXDE Desktop
-    |- LXDE Applications
-
--- X Software --
-    |- Office Programs
-    |- Graphical Web Browsers
-    |- Other X-based Programs
-
--- Multimedia--
-    |- Multimedia Libraries and Drivers
-    |- Audio Utilities
-    |- Video Utilities
-    |- CD/DVD-Writing Utilities
-
--- Printing, Scanning and Typesetting --
-    |- Printing
-    |- Scanning
-    |- Standard Generalized Markup Language (SGML)
-    |- Extensible Markup Language (XML)
-    |- PostScript
-    |- Typesetting
+# -- Post LFS Configuration and Extra Software --
+#     |- After LFS Configuration Issues
+#     |- Security
+#     |- File Systems and Disk Management
+#     |- Editors
+#     |- Shells
+#     |- Virtualization
+#
+# -- General Libraries and Utilities --
+#     |- General Libraries
+#     |- Graphics and Font Libraries
+#     |- General Utilities
+#     |- System Utilities
+#     |- Programming
+#
+# -- Networking --
+#     |- Connecting to a Network
+#     |- Networking Programs
+#     |- Networking Utilities
+#     |- Networking Libraries
+#     |- Text Web Browsers
+#     |- Mail/News Clients
+#
+# -- Servers --
+#     |- Major Servers
+#     |- Mail Server Software
+#     |- Databases
+#     |- Other Server Software
+#
+# -- Window and Display Managers --
+#     |- X Window System Environment
+#     |- X Libraries
+#     |- Display Managers
+#     |- Window Managers
+#     |- Icons
+#
+# -- KDE --
+#     |- Introduction to KDE
+#     |- KDE Frameworks 5
+#     |- KDE Frameworks 5 Based Applications
+#     |- KDE Plasma 5
+#
+# -- GNOME --
+#     |- GNOME Libraries and Desktop
+#     |- GNOME Applications
+#
+# -- Xfce --
+#     |- Xfce Desktop
+#     |- Xfce Applications
+#
+# -- LXDE --
+#     |- LXDE Desktop
+#     |- LXDE Applications
+#
+# -- X Software --
+#     |- Office Programs
+#     |- Graphical Web Browsers
+#     |- Other X-based Programs
+#
+# -- Multimedia--
+#     |- Multimedia Libraries and Drivers
+#     |- Audio Utilities
+#     |- Video Utilities
+#     |- CD/DVD-Writing Utilities
+#
+# -- Printing, Scanning and Typesetting --
+#     |- Printing
+#     |- Scanning
+#     |- Standard Generalized Markup Language (SGML)
+#     |- Extensible Markup Language (XML)
+#     |- PostScript
+#     |- Typesetting
 
 
 # - Post LFS Configuration and Extra Software/After LFS Configuration Issues ---
@@ -305,7 +305,7 @@ tidy-html5                          (-)
 time                                (+)
 tree                                (+)
 unixodbc                            (+) apr-util
-xdg-user-dirs
+xdg-user-dirs                       (+)
 # ------------- General Libraries and Utilities/System Utilities ---------------
 accountsservice
 acpid
