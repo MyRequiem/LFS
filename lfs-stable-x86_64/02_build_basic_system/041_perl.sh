@@ -5,33 +5,26 @@ PRGNAME="perl"
 ### Perl (Practical Extraction and Report Language)
 # Язык программирования Perl
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/perl.html
+# http://www.linuxfromscratch.org/lfs/view/development/chapter06/perl.html
 
 # Home page: https://www.perl.org/
-# Download:  https://www.cpan.org/src/5.0/perl-5.30.1.tar.xz
+# Download:  https://www.cpan.org/src/5.0/perl-5.30.3.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
 # файл /etc/hosts необходим для правильной ссылки в одном из файлов
-# конфигурации Perl, а также для дополнительного набора тестов, но перед его
-# созданием сделаем его бэкап, если он уже существует
+# конфигурации Perl, а также для дополнительного набора тестов. Создадим его,
+# если не существует
 HOSTS="/etc/hosts"
-if [ -f "${HOSTS}" ]; then
-    mv "${HOSTS}" "${HOSTS}.old"
+if ! [ -f "${HOSTS}" ]; then
+    echo "127.0.0.1 localhost $(hostname)" > "${HOSTS}"
 fi
-
-# создаем /etc/hosts
-echo "127.0.0.1 localhost $(hostname)" > "${HOSTS}"
-cp "${HOSTS}" "${TMP_DIR}/etc/"
-
-config_file_processing "${HOSTS}"
 
 # данная версия Perl создает модули Compress::Raw::Zlib и Compress::Raw::BZip2
 # По умолчанию Perl будет использовать внутреннюю копию этих модулей для
