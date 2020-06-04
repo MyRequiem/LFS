@@ -599,15 +599,15 @@ libevent
 libmnl
 libnftnl
 libnl
-libnsl
+libnsl                              (+)
 libpcap                             iptables
 libpsl                              curl
 libndp
 libsoup
-libtirpc                            (+) talloc, lsof, rpcbind
+libtirpc                            (+) talloc, lsof, rpcbind, libnsl
 neon
 nghttp2                             curl, nodejs
-rpcsvc-proto                        (+)
+rpcsvc-proto                        (+) libnsl
 serf
 uhttpmock
 # ----------------------- Networking/Text Web Browsers -------------------------

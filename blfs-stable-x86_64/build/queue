@@ -235,5 +235,6 @@ n/cyrus-sasl.sh
 n/gnupg.sh
 ap/sudo.sh
 l/rpcsvc-proto.sh
+l/libnsl.sh
 
 # vim:ft=conf
