@@ -7,6 +7,6 @@ bzip2                               cmake
 expat                               cmake
 kernel-generic                      iptables
 openssl                             libssh
-perl                                vim
+perl                                xml-parser, vim
 
 vim:ft=conf
