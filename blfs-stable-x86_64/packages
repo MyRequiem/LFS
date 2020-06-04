@@ -201,7 +201,7 @@ libmbim                             (+) libqmi
 libnfsidmap                         (-)
 libpaper                            (-)
 libqmi                              (+)
-libseccomp                          (+)
+libseccomp                          (+) gnutls
 libsigc++                           (+) glibmm
 libsigsegv                          (+)
 libssh2                             (+) curl

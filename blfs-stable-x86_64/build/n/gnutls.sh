@@ -10,7 +10,7 @@ PRGNAME="gnutls"
 # http://www.linuxfromscratch.org/blfs/view/svn/postlfs/gnutls.html
 
 # Home page: http://www.gnu.org/software/gnutls/
-# Download:  https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.13.tar.xz
+# Download:  https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.14.tar.xz
 
 # Required:    nettle
 # Recommended: make-ca
@@ -21,6 +21,7 @@ PRGNAME="gnutls"
 #              gtk-doc (для сборки API документации, см. опции ниже)
 #              guile
 #              libidn or libidn2
+#              libseccomp
 #              net-tools (для тестов)
 #              texlive or install-tl-unx
 #              unbound (для создания libgnutls-dane.so и утилиты danetool)
