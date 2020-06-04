@@ -607,7 +607,7 @@ libsoup
 libtirpc                            (+) talloc, lsof, rpcbind
 neon
 nghttp2                             curl, nodejs
-rpcsvc-proto
+rpcsvc-proto                        (+)
 serf
 uhttpmock
 # ----------------------- Networking/Text Web Browsers -------------------------

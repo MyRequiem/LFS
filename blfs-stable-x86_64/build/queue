@@ -234,5 +234,6 @@ n/curl.sh
 n/cyrus-sasl.sh
 n/gnupg.sh
 ap/sudo.sh
+l/rpcsvc-proto.sh
 
 # vim:ft=conf
