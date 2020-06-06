@@ -88,14 +88,14 @@ kernel-firmware                     (+)
 make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
 cryptsetup                          (-)
-cyrus-sasl                          (+) openldap
+cyrus-sasl                          (+) openldap, exim
 gnupg                               (+) gpgme, smartmontools, libssh2
-gnutls                              (+) curl, gnupg, glibmm, openldap
+gnutls                              (+) curl, gnupg, glibmm, openldap, exim
 gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-) openssh, polkit, sudo
+linux-pam                           (-) openssh, polkit, sudo, exim
 liboauth                            (-)
 libpwquality                        (-)
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
@@ -192,7 +192,7 @@ libgsf                              (-)
 libgudev                            (+) libmbim
 libgusb                             (-)
 libical                             (+)
-libidn                              (+) gnutls
+libidn                              (+) gnutls, exim
 libidn2                             (+) curl, gnutls
 libiodbc                            (+)
 libksba                             (+) gnupg
@@ -225,7 +225,7 @@ mtdev                               (+)
 nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
-pcre                                (+) glib, git
+pcre                                (+) glib, git, exim
 pcre2                               (+) git
 popt                                (+) hd2u
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
@@ -599,7 +599,7 @@ libevent
 libmnl
 libnftnl
 libnl
-libnsl                              (+)
+libnsl                              (+) exim
 libpcap                             iptables
 libpsl                              curl
 libndp
@@ -628,22 +628,24 @@ bind
 proftpd
 vsftpd
 # ----------------------- Servers/Mail Server Software -------------------------
-dovecot
-exim
-postfix
+dovecot                             (-)
+exim                                (+)
+postfix                             (-)
 sendmail                            (-) sudo
 # ---------------------------- Servers/Databases -------------------------------
 berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical,
                                         openldap
 lmdb
-mariadb                             apr-util, cyrus-sasl, openldap
-postgresql                          apr-util, cyrus-sasl, openldap
+mariadb                             apr-util, cyrus-sasl, openldap, exim
+postgresql                          apr-util, cyrus-sasl, openldap, exim
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
-                                        nss, gnupg
+                                        nss, gnupg, exim
 # ---------------------- Servers/Other Server Software -------------------------
-openldap                            (+) apr-util, curl, cyrus-sasl, gnupg, sudo
+openldap                            (+) apr-util, curl, cyrus-sasl, gnupg, sudo,
+                                        exim
 unbound                             gnutls
 # --------- Window and Display Managers/X Window System Environment ------------
+# X Window System Environment       exim
 util-macros
 xorgproto
 libxau

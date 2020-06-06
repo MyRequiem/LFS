@@ -236,5 +236,6 @@ n/gnupg.sh
 ap/sudo.sh
 l/rpcsvc-proto.sh
 l/libnsl.sh
+n/exim.sh
 
 # vim:ft=conf

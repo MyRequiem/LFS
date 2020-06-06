@@ -5,6 +5,16 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+
+tdb                                 exim
+# https://sourceforge.net/projects/tdb/
+
+heimdal-gssapi                      exim
+# https://github.com/heimdal/
+
+opendmarc                           exim
+# http://www.trusteddomain.org/opendmarc/
+
 openslp                             openldap
 # http://www.openslp.org/
 
@@ -164,7 +174,7 @@ docwriter                           freetype
 freetds                             apr-util
 # http://www.freetds.org/
 
-mysql                               (-) apr-util, cyrus-sasl, openldap
+mysql                               (-) apr-util, cyrus-sasl, openldap, exim
 # https://www.mysql.com/
 
 aspell-dict-en                      (+) enchant
