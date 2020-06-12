@@ -9,12 +9,13 @@ ARCH_NAME="node"
 # которая делает его легким и эффективным. Пакетная система npm (Node Package
 # Manager), является крупнейшей системой библиотек с открытым исходным кодом.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/nodejs.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/nodejs.html
 
 # Home page: https://nodejs.org/
-# Download:  https://nodejs.org/dist/v12.16.1/node-v12.16.1.tar.xz
+# Download:  https://nodejs.org/dist/v12.18.0/node-v12.18.0.tar.xz
 
 # Required:    python2
+#              which
 # Recommended: c-ares
 #              libuv
 #              nghttp2
@@ -34,10 +35,13 @@ C_ARES=""
 LIBUV=""
 NGHTTP2=""
 ICU="small-icu"
+NPM=""
+NPM_PKG="$(find /var/log/packages/ -type f -name "npm-*")"
 
 [ -x /usr/lib/libcares.so ]    && C_ARES="--shared-cares"
 [ -x /usr/lib/libuv.so ]       && LIBUV="--shared-libuv"
 [ -x /usr/lib/libnghttp2.so ]  && NGHTTP2="--shared-nghttp2"
+[ -n "${NPM_PKG}" ]            && NPM="--without-npm"
 command -v icuinfo &>/dev/null && ICU="system-icu"
 
 ./configure          \
@@ -47,10 +51,11 @@ command -v icuinfo &>/dev/null && ICU="system-icu"
     ${C_ARES}        \
     ${LIBUV}         \
     ${NGHTTP2}       \
+    ${NPM}           \
     --with-intl="${ICU}"|| exit 1
 
 make || exit 1
-# make check
+# make test-only
 make install
 make install DESTDIR="${TMP_DIR}"
 

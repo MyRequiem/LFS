@@ -342,7 +342,7 @@ unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
-                                        boost, gtk-doc
+                                        boost, gtk-doc, nodejs
 zip                                 (+) docbook-xsl, js
 # --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js
