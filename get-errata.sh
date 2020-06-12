@@ -59,6 +59,10 @@ show_packages() {
                 PKGNAME="${PKGNAME}$(echo "${VER}" | cut -d . -f 1)"
             fi
 
+            if [[ "${PKGNAME}" == "node.js" ]]; then
+                PKGNAME="nodejs"
+            fi
+
             INSTALL_PKG="$(ls "${PACKAGES}/${PKGNAME}-"[0-9]* 2>/dev/null)"
 
             if [ -n "${INSTALL_PKG}" ] ; then
