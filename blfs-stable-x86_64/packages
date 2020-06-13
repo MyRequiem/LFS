@@ -95,7 +95,7 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-) openssh, polkit, sudo, exim
+linux-pam                           (-) openssh, polkit, sudo, exim, at
 liboauth                            (-)
 libpwquality                        (-)
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
@@ -309,7 +309,7 @@ xdg-user-dirs                       (+)
 # ------------- General Libraries and Utilities/System Utilities ---------------
 accountsservice                     (-)
 acpid                               (+)
-at
+at                                  (+)
 autofs
 bluez                               python2, python3
 bubblewrap
@@ -628,10 +628,10 @@ bind
 proftpd
 vsftpd
 # ----------------------- Servers/Mail Server Software -------------------------
-dovecot                             (-)
-exim                                (+)
-postfix                             (-)
-sendmail                            (-) sudo
+dovecot                             (-) at
+exim                                (+) at
+postfix                             (-) at
+sendmail                            (-) sudo, at
 # ---------------------------- Servers/Databases -------------------------------
 berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical,
                                         openldap
