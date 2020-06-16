@@ -29,7 +29,7 @@ if [[ -e "${CHANGELOG_LFS}" && -e "${CHANGELOG_LFS}.new" ]]; then
     rm "${CHANGELOG_LFS}"
     mv "${CHANGELOG_LFS}.new" "${CHANGELOG_LFS}"
 
-    echo -e "LFS:\n-----"
+    echo -e "LFS: ${LFS_URL}\n-----------------------"
     cat "${CHANGELOG_LFS}.diff"
     echo ""
 fi
@@ -40,7 +40,7 @@ if [[ -e "${CHANGELOG_BLFS}" && -e "${CHANGELOG_BLFS}.new" ]]; then
     rm "${CHANGELOG_BLFS}"
     mv "${CHANGELOG_BLFS}.new" "${CHANGELOG_BLFS}"
 
-    echo -e "BLFS:\n-----"
+    echo -e "BLFS: ${BLFS_URL}\n-----------------------"
     cat "${CHANGELOG_BLFS}.diff"
     echo ""
 fi

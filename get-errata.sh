@@ -17,10 +17,10 @@ TMP="/tmp/lfs-errata.tmp"
 TMP_SORT="/tmp/lfs-errata_sort.tmp"
 
 show_packages() {
-    echo -e "${LGREEN}$1${RESET}"
-
     BASE_URL="${ERRATA_LFS_URL}"
     [[ "$1" == "BLFS" ]] && BASE_URL="${ERRATA_BLFS_URL}"
+
+    echo -e "${LGREEN}$1${RESET} ${BASE_URL}/errata/${VERSION}/"
 
     /bin/false > "${TMP}"
     for ITEM in $2; do
