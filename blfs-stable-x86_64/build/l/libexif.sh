@@ -10,11 +10,10 @@ PRGNAME="libexif"
 # стандарте EXIF 2.1. Библиотека libexif позволяет таким программам, как
 # gthumb, анализировать, редактировать и сохранять EXIF данные.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libexif.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/libexif.html
 
 # Home page: https://libexif.github.io/
-# Download:  https://downloads.sourceforge.net/libexif/libexif-0.6.21.tar.bz2
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/libexif-0.6.21-security_fix-1.patch
+# Download:  https://github.com/libexif/libexif/releases/download/libexif-0_6_22-release/libexif-0.6.22.tar.xz
 
 # Required: no
 # Optional: doxygen
@@ -26,10 +25,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-# исправим integer overflow проблему
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
 
 DOXYGEN="--disable-internal-docs"
 command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
@@ -56,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # data.
 #
 # Home page: https://libexif.github.io/
-# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${PRGNAME}-${VERSION//./_}-release/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
