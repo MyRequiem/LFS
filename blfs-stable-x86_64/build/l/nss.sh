@@ -11,8 +11,8 @@ PRGNAME="nss"
 # http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html
 
 # Home page: https://developer.mozilla.org/ru/docs/NSS
-# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_52_1_RTM/src/nss-3.52.1.tar.gz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.52.1-standalone-1.patch
+# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_53_1_RTM/src/nss-3.53.1.tar.gz
+# Patch:     http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.53.1-standalone-1.patch
 
 # Required:    nspr
 # Recommended: sqlite
@@ -55,7 +55,10 @@ make -j1                            \
     NSS_USE_SYSTEM_SQLITE=${SQLITE} \
     NSPR_INCLUDE_DIR=/usr/include/nspr || exit 1
 
-# тесты уже были запущены во время сборки
+# запуск тестов
+# cd tests || exit 1
+# HOST=localhost DOMSUF=localdomain ./all.sh || exit 1
+# cd ../ || exit 1
 
 cd ../dist || exit 1
 
@@ -78,7 +81,7 @@ install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} "${TMP_DIR}/usr/bin"
 install -v -m644 Linux*/lib/pkgconfig/nss.pc  /usr/lib/pkgconfig
 install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig"
 
-VER=$(echo "${VERSION/./_}")
+VER="$(echo ${VERSION//./_})"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Network Security Services)
 #
