@@ -310,11 +310,11 @@ xdg-user-dirs                       (+)
 accountsservice                     (-)
 acpid                               (+)
 at                                  (+)
-autofs
+autofs                              (-)
 bluez                               python2, python3
-bubblewrap
-colord
-cpio
+bubblewrap                          (-)
+colord                              (-)
+cpio                                (+)
 cups-pk-helper
 dbus                                glib
 elogind                             polkit
@@ -1266,10 +1266,10 @@ mupdf
 paps
 # -------------- Printing, Scanning and Typesetting/Typesetting ----------------
 install-tl-unx                      libassuan, libgcrypt, libunistring, gnutls,
-                                    fontconfig, parted, graphite2, doxygen
+                                    fontconfig, parted, graphite2, doxygen, cpio
 texlive                             libassuan, libgcrypt, libunistring, gnutls,
                                     fontconfig, jasper, gnupg, parted,
-                                    graphite2, doxygen
+                                    graphite2, doxygen, cpio
 asymptote
 biber
 dvisvgm

@@ -238,5 +238,6 @@ l/rpcsvc-proto.sh
 l/libnsl.sh
 n/exim.sh
 ap/at.sh
+a/cpio.sh
 
 # vim:ft=conf
