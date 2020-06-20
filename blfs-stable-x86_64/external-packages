@@ -6,6 +6,12 @@
 #                                   (-) - не устанавливаем
 
 
+ducktype                            dbus
+# https://pypi.org/project/mallard-ducktype/
+
+yelp-tools                          dbus
+# http://ftp.gnome.org/pub/gnome/sources/yelp-tools/
+
 tdb                                 exim
 # https://sourceforge.net/projects/tdb/
 

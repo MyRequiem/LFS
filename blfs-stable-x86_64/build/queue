@@ -239,5 +239,6 @@ l/libnsl.sh
 n/exim.sh
 ap/at.sh
 a/cpio.sh
+a/dbus.sh
 
 # vim:ft=conf

@@ -152,7 +152,7 @@ aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
 boost                               (+) poppler, highlight
 brotli                              (+) curl, woff2
 clucene                             (-)
-dbus-glib                           enchant
+dbus-glib                           enchant, dbus
 enchant                             (+)
 exempi                              (-)
 fftw                                (+)
@@ -315,9 +315,9 @@ bluez                               python2, python3
 bubblewrap                          (-)
 colord                              (-)
 cpio                                (+)
-cups-pk-helper
-dbus                                glib
-elogind                             polkit
+cups-pk-helper                      (-)
+dbus                                (+) glib
+elogind                             polkit, dbus
 blocaled
 fcron
 gpm                                 aalib, vim
@@ -355,7 +355,7 @@ dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
-                                        libexif, openjpeg
+                                        libexif, openjpeg, dbus
 expect
 gcc                                 gdb, graphviz
 gc
@@ -521,7 +521,7 @@ python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
 python3                             (+) libxml2, talloc, vim, brotli,
                                         python-six, python3-pygments
 # Python Modules
-  |- python-d-bus
+  |- python-d-bus                   dbus
   |- python3-decorator
   |- python3-docutils               sshfs
   |- python3-pyatspi2
@@ -531,7 +531,7 @@ python3                             (+) libxml2, talloc, vim, brotli,
   |- python3-dbusmock
   |- python3-pygments               (+) gegl, gtk-doc
   |- python2-pygobject2
-  |- python-pygobject3              gegl
+  |- python-pygobject3              gegl, dbus
   |- python2-pygtk
   |- python3-pyxdg
   |- python2-libxml2                libxslt, docbook-xsl
@@ -554,7 +554,7 @@ tk                                  python2, python3, git, graphviz
 vala                                libical, gegl
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
-                                    gdb, pcre2, talloc, lvm2, git
+                                    gdb, pcre2, talloc, lvm2, git, dbus
 yasm                                (+) libjpeg-turbo
 # Other Programming Tools
   |- ctags
@@ -652,7 +652,7 @@ libxau
 libxdmcp
 xcb-proto
 libxcb
-# Xorg Libraries                    graphviz
+# Xorg Libraries                    graphviz, dbus
   |- xtrans
   |- libX11
   |- libXext
@@ -1255,7 +1255,7 @@ docbook-xml51
 docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto,
                                         gtk-doc
 itstool                             (+) shared-mime-info, gtk-doc
-xmlto                               (+) giflib, git
+xmlto                               (+) giflib, git, dbus
 # -------------- Printing, Scanning and Typesetting/PostScript -----------------
 a2ps
 enscript
