@@ -67,8 +67,8 @@ https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.13.1.tar.bz2
 https://downloads.sourceforge.net/haveged/haveged-1.9.2.tar.gz
 http://www.netfilter.org/projects/iptables/files/iptables-1.8.4.tar.bz2
 https://archive.mozilla.org/pub/nspr/releases/v4.25/src/nspr-4.25.tar.gz
-https://archive.mozilla.org/pub/security/nss/releases/NSS_3_52_1_RTM/src/nss-3.52.1.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.52.1-standalone-1.patch
+https://archive.mozilla.org/pub/security/nss/releases/NSS_3_53_1_RTM/src/nss-3.53.1.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.53.1-standalone-1.patch
 https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz
 https://downloads.sourceforge.net/smartmontools/smartmontools-7.1.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.21.tar.gz
@@ -173,4 +173,4 @@ https://ftp.exim.org/pub/exim/exim4/old/exim-html-4.93.tar.xz
 https://ftp.exim.org/pub/exim/exim4/old/exim-texinfo-4.71.tar.bz2
 http://ftp.debian.org/debian/pool/main/a/at/at_3.1.23.orig.tar.gz
 https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.bz2
-https://dbus.freedesktop.org/releases/dbus/dbus-1.12.16.tar.gz
+https://dbus.freedesktop.org/releases/dbus/dbus-1.12.18.tar.gz

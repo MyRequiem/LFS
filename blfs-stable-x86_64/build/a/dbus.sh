@@ -7,10 +7,10 @@ PRGNAME="dbus"
 # печати, вход пользователя и т.д.), а так же сеансовый демон для общих
 # потребностей IPC пользовательских приложений.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/dbus.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/dbus.html
 
 # Home page: https://dbus.freedesktop.org/
-# Download:  https://dbus.freedesktop.org/releases/dbus/dbus-1.12.16.tar.gz
+# Download:  https://dbus.freedesktop.org/releases/dbus/dbus-1.12.18.tar.gz
 
 # Required:    no
 # Recommended: Xorg Libraries
