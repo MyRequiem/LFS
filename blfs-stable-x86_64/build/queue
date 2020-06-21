@@ -240,5 +240,6 @@ n/exim.sh
 ap/at.sh
 a/cpio.sh
 a/dbus.sh
+a/fcron.sh
 
 # vim:ft=conf

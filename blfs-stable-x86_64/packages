@@ -95,7 +95,7 @@ gpgme                               (+)
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
-linux-pam                           (-) openssh, polkit, sudo, exim, at
+linux-pam                           (-) openssh, polkit, sudo, exim, at, fcron
 liboauth                            (-)
 libpwquality                        (-)
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
@@ -317,9 +317,9 @@ colord                              (-)
 cpio                                (+)
 cups-pk-helper                      (-)
 dbus                                (+) glib
-elogind                             polkit, dbus
-blocaled
-fcron
+elogind                             (-) polkit, dbus
+blocaled                            (-)
+fcron                               (+)
 gpm                                 aalib, vim
 hdparm
 lsb-tools                           (+) python3
@@ -1246,7 +1246,7 @@ docbook4
 opensp
 openjade
 docbook-dsssl
-docbook-utils                       fontconfig
+docbook-utils                       fontconfig, fcron
 # --- Printing, Scanning and Typesetting/Extensible Markup Language (XML) ------
 docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
                                         xmlto, gtk-doc
