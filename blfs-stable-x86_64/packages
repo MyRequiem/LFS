@@ -320,7 +320,7 @@ dbus                                (+) glib
 elogind                             (-) polkit, dbus
 blocaled                            (-)
 fcron                               (+)
-gpm                                 aalib, vim
+gpm                                 (+) aalib, vim
 hdparm
 lsb-tools                           (+) python3
 lm-sensors
