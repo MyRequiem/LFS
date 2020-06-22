@@ -58,6 +58,7 @@ RUBY="no"
 PERL="no"
 PYTHON2="no"
 PYTHON3="no"
+GPM="dis"
 
 command -v gtk-demo  &>/dev/null && GUI="gtk2"
 command -v gtk3-demo &>/dev/null && GUI="gtk3"
@@ -68,6 +69,7 @@ command -v ruby      &>/dev/null && RUBY="yes"
 command -v perl      &>/dev/null && PERL="yes"
 command -v python2   &>/dev/null && PYTHON2="yes"
 command -v python3   &>/dev/null && PYTHON3="yes"
+command -v gpm       &>/dev/null && GPM="en"
 
 if [[ "x${XORG_SERVER}" == "x--with-x" ]]; then
     FONTSET="--enable-fontset"
@@ -103,7 +105,7 @@ fi
     --disable-arabic                  \
     --disable-farsi                   \
     --disable-xim                     \
-    --disable-gpm                     \
+    "--${GPM}able-gpm"                \
     --disable-sysmouse                \
     --disable-autoservername          \
     --with-compiledby="MyRequiem" || exit 1
