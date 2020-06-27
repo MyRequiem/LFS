@@ -47,7 +47,10 @@ mkdir build
 cd build || exit 1
 
 GTK_DOC="OFF"
+CURL="OFF"
+
 command -v gtkdoc-check &>/dev/null && GTK_DOC="ON"
+command -v curl         &>/dev/null && CURL="ON"
 
 # если в системе не установлен python2, то исправим скрипт сборки
 # API-документации для python3
@@ -72,6 +75,7 @@ cmake                                    \
     -DTESTDATADIR="${PWD}/testfiles"     \
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DENABLE_GTK_DOC="${GTK_DOC}"        \
+    -DENABLE_LIBCURL="${CURL}"           \
     .. || exit 1
 
 make || exit 1
