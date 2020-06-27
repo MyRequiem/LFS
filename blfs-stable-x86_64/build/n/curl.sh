@@ -10,7 +10,7 @@ PRGNAME="curl"
 # http://www.linuxfromscratch.org/blfs/view/stable/basicnet/curl.html
 
 # Home page: https://curl.haxx.se/
-# Download:  https://curl.haxx.se/download/curl-7.68.0.tar.xz
+# Download:  https://curl.haxx.se/download/curl-7.71.0.tar.xz
 
 # Required:    no
 # Recommended: make-ca (runtime)
@@ -27,6 +27,9 @@ PRGNAME="curl"
 #              libmetalink (https://launchpad.net/libmetalink/)
 #              librtmp     (http://rtmpdump.mplayerhq.hu/)
 #              spnego      (http://spnego.sourceforge.net/)
+#              impacket    (https://www.secureauth.com/labs/open-source-tools/impacket)
+#              ngtcp2      (https://github.com/ngtcp2/ngtcp2/)
+#              quiche      (https://github.com/cloudflare/quiche)
 #              stunnel (для HTTPS and FTPS тестов)
 #              valgrind
 

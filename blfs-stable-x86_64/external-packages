@@ -5,6 +5,14 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+impacket                            curl
+# https://www.secureauth.com/labs/open-source-tools/impacket
+
+ngtcp2                              curl
+# https://github.com/ngtcp2/ngtcp2/
+
+quiche                              curl
+# https://github.com/cloudflare/quiche
 
 ducktype                            dbus
 # https://pypi.org/project/mallard-ducktype/
