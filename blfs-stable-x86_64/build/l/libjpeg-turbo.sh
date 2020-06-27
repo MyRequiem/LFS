@@ -10,7 +10,7 @@ PRGNAME="libjpeg-turbo"
 # http://www.linuxfromscratch.org/blfs/view/stable/general/libjpeg.html
 
 # Home page: http://libjpeg-turbo.virtualgl.org
-# Download:  https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.4.tar.gz
+# Download:  https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.5.tar.gz
 
 # Required: cmake
 #           nasm или yasm
