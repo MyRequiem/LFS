@@ -32,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (read/set hard drive parameters)
 #
 # hdparm provides a command line interface to various hard disk ioctls
-# supported by the Linux ATA/IDE device driver subsystem.  This may be required
+# supported by the Linux ATA/IDE device driver subsystem. This may be required
 # to enable higher-performing disk modes.
 #
 # Home page: https://sourceforge.net/projects/${PRGNAME}/files/${PRGNAME}/

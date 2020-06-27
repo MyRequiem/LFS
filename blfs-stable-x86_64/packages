@@ -323,7 +323,7 @@ fcron                               (+)
 gpm                                 (+) aalib, vim
 hdparm                              (+)
 lsb-tools                           (+) python3
-lm-sensors
+lm-sensors                          (+)
 logrotate
 mc
 modemmanager
@@ -342,7 +342,7 @@ unzip                               (+) docbook-xml
 upower
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
-                                        boost, gtk-doc, nodejs
+                                        boost, gtk-doc, nodejs, lm-sensors
 zip                                 (+) docbook-xsl, js
 # --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js

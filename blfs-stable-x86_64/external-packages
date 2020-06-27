@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+rrdtool                             (-) lm-sensors
+# https://oss.oetiker.ch/rrdtool/
+
 impacket                            curl
 # https://www.secureauth.com/labs/open-source-tools/impacket
 

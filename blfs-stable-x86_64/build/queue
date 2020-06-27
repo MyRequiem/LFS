@@ -243,5 +243,6 @@ a/dbus.sh
 a/fcron.sh
 a/gpm.sh
 a/hdparm.sh
+ap/lm-sensors.sh
 
 # vim:ft=conf
