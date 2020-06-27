@@ -34,16 +34,19 @@ mkdir -pv "${TMP_DIR}"
 
 PCRE1="--without-libpcre1"
 PCRE2="--without-libpcre2"
+CURL="--without-curl"
 
 command -v pcre-config  &>/dev/null && PCRE1="--with-libpcre1"
 command -v pcre2-config &>/dev/null && PCRE2="--with-libpcre2" && \
     PCRE1="--without-libpcre1"
+command -v curl         &>/dev/null && CURL="--with-curl"
 
 ./configure               \
     --prefix=/usr         \
     --with-python=python3 \
     "${PCRE1}"            \
     "${PCRE2}"            \
+    "${CURL}"             \
     --with-gitconfig=/etc/gitconfig || exit 1
 
 make || exit 1
