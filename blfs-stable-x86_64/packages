@@ -321,7 +321,7 @@ elogind                             (-) polkit, dbus
 blocaled                            (-)
 fcron                               (+)
 gpm                                 (+) aalib, vim
-hdparm
+hdparm                              (+)
 lsb-tools                           (+) python3
 lm-sensors
 logrotate

@@ -242,5 +242,6 @@ a/cpio.sh
 a/dbus.sh
 a/fcron.sh
 a/gpm.sh
+a/hdparm.sh
 
 # vim:ft=conf
