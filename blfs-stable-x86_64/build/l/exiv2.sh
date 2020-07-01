@@ -6,10 +6,10 @@ PRGNAME="exiv2"
 # C++ библиотека и утилита командной строки для управления метаданными
 # изображений и видео
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/exiv2.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/exiv2.html
 
 # Home page: http://www.exiv2.org/
-# Download:  http://www.exiv2.org/builds/exiv2-0.27.2-Source.tar.gz
+# Download:  http://www.exiv2.org/builds/exiv2-0.27.3-Source.tar.gz
 
 # Required:    cmake
 # Recommended: curl
@@ -40,31 +40,31 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-CURL="OFF"
+CURL="Off"
 DOXYGEN=""
 GRAPHVIZ=""
-DOC="OFF"
+DOC="Off"
 
-command -v curl    &>/dev/null && CURL="ON"
+command -v curl    &>/dev/null && CURL="On"
 command -v doxygen &>/dev/null && DOXYGEN="true"
 command -v dot     &>/dev/null && GRAPHVIZ="true"
 
-[[ -n "${DOXYGEN}" && -n "${GRAPHVIZ}" ]] && DOC="ON"
+[[ -n "${DOXYGEN}" && -n "${GRAPHVIZ}" ]] && DOC="On"
 
 cmake                                                             \
     -DCMAKE_INSTALL_PREFIX=/usr                                   \
     -DCMAKE_BUILD_TYPE=Release                                    \
     -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    -DEXIV2_ENABLE_VIDEO=ON                                       \
-    -DEXIV2_ENABLE_WEBREADY=ON                                    \
+    -DEXIV2_ENABLE_VIDEO=On                                       \
+    -DEXIV2_ENABLE_WEBREADY=On                                    \
     -DEXIV2_ENABLE_CURL="${CURL}"                                 \
-    -DEXIV2_BUILD_SAMPLES=OFF                                     \
+    -DEXIV2_BUILD_SAMPLES=Off                                     \
     -DEXIV2_BUILD_DOC="${DOC}"                                    \
     -G "Unix Makefiles"                                           \
     .. || exit 1
 
 make || exit 1
-[[ "${DOC}" == "ON" ]] && make doc
+[[ "${DOC}" == "On" ]] && make doc || exit 1
 
 # пакет не имеет набора тестов
 make install
