@@ -12,15 +12,15 @@ PRGNAME="mc"
 # Home page: https://midnight-commander.org/
 # Download:  http://ftp.midnight-commander.org/mc-4.8.24.tar.xz
 
-# Required:    glib
-#              pcre
-# Recommended: slang
-# Optional:    doxygen
-#              gpm
-#              samba
-#              unzip
-#              X Window System Environment
-#              zip
+# Required: glib
+#           pcre
+#           slang
+# Optional: doxygen
+#           gpm
+#           samba
+#           unzip
+#           X Window System Environment
+#           zip
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1
