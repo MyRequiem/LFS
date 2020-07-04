@@ -63,6 +63,10 @@ show_packages() {
                 PKGNAME="nodejs"
             fi
 
+            if [[ "${PKGNAME}" == "ModemManager" ]]; then
+                PKGNAME="modem-manager"
+            fi
+
             INSTALL_PKG="$(ls "${PACKAGES}/${PKGNAME}-"[0-9]* 2>/dev/null)"
 
             if [ -n "${INSTALL_PKG}" ] ; then
