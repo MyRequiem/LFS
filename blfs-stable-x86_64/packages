@@ -160,7 +160,7 @@ glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
                                         enchant, glibmm, harfbuzz,
-                                        desktop-file-utils, gtk-doc
+                                        desktop-file-utils, gtk-doc, mc
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
@@ -225,7 +225,7 @@ mtdev                               (+)
 nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
-pcre                                (+) glib, git, exim
+pcre                                (+) glib, git, exim, slang, mc
 pcre2                               (+) git
 popt                                (+) hd2u
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
@@ -260,7 +260,7 @@ libjpeg-turbo                       (+) lcms2, libmng, jasper, libtiff, gegl,
 libmng                              (+)
 libmypaint                          (-)
 libpng                              (+) freetype, gegl, openjpeg, pixman,
-                                        poppler, graphviz
+                                        poppler, graphviz, slang
 libraw                              (-)
 librsvg                             babl, gegl, graphviz
 libtiff                             (+) lcms2, gegl, openjpeg, poppler
@@ -320,12 +320,12 @@ dbus                                (+) glib
 elogind                             (-) polkit, dbus
 blocaled                            (-)
 fcron                               (+)
-gpm                                 (+) aalib, vim
+gpm                                 (+) aalib, vim, mc
 hdparm                              (+)
 lsb-tools                           (+) python3
 lm-sensors                          (+)
-logrotate
-mc
+logrotate                           (-)
+mc                                  (+)
 modemmanager
 p7zip
 pax
@@ -338,12 +338,12 @@ sg3-utils
 sysstat                             openssh
 udisks
 unrar
-unzip                               (+) docbook-xml
+unzip                               (+) docbook-xml, mc
 upower
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
                                         boost, gtk-doc, nodejs, lm-sensors
-zip                                 (+) docbook-xsl, js
+zip                                 (+) docbook-xsl, js, mc
 # --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js
 cbindgen
@@ -355,7 +355,7 @@ dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
-                                        libexif, openjpeg, dbus
+                                        libexif, openjpeg, dbus, mc
 expect
 gcc                                 gdb, graphviz
 gc
@@ -546,7 +546,7 @@ python3                             (+) libxml2, talloc, vim, brotli,
 ruby                                docbook-xsl, vim, gegl, graphviz
 rustc                               gdb
 scons
-slang                               aalib
+slang                               (+) aalib, mc
 subversion                          cmake, git
 swig                                gpgme, graphviz
 tcl                                 (+) berkeley-db, vim, graphviz
@@ -575,7 +575,7 @@ nfs-utils
 ntp
 rpcbind
 rsync                               vim
-samba                               curl
+samba                               curl, mc
 wget
 wireless-tools
 wpa-supplicant
@@ -645,7 +645,7 @@ openldap                            (+) apr-util, curl, cyrus-sasl, gnupg, sudo,
                                         exim
 unbound                             gnutls
 # --------- Window and Display Managers/X Window System Environment ------------
-# X Window System Environment       exim
+# X Window System Environment       exim, mc
 util-macros
 xorgproto
 libxau

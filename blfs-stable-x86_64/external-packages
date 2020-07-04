@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+oniguruma                           slang
+# https://github.com/kkos/oniguruma
+
 rrdtool                             (-) lm-sensors
 # https://oss.oetiker.ch/rrdtool/
 

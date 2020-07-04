@@ -244,5 +244,7 @@ a/fcron.sh
 a/gpm.sh
 a/hdparm.sh
 ap/lm-sensors.sh
+l/slang.sh
+ap/mc.sh
 
 # vim:ft=conf
