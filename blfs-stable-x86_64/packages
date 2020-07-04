@@ -104,7 +104,7 @@ nettle                              (+) libarchive, gnutls
 nss                                 (+) p11-kit, make-ca, apr-util, poppler
 openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
-polkit                              (+)
+polkit                              (+) modem-manager
 shadow                              (+)
 ssh-askpass                         (-)
 stunnel                             (-) curl
@@ -165,7 +165,8 @@ glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
-                                        babl, polkit, gegl, harfbuzz, poppler
+                                        babl, polkit, gegl, harfbuzz, poppler,
+                                        modem-manager
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -189,7 +190,7 @@ libgcrypt                           (+) libxslt, gnupg, libssh2
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
-libgudev                            (+) libmbim
+libgudev                            (+) libmbim, modem-manager
 libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls, exim
@@ -197,10 +198,10 @@ libidn2                             (+) curl, gnutls
 libiodbc                            (+)
 libksba                             (+) gnupg
 liblinear                           (-)
-libmbim                             (+) libqmi
+libmbim                             (+) libqmi, modem-manager
 libnfsidmap                         (-)
 libpaper                            (-)
-libqmi                              (+)
+libqmi                              (+) modem-manager
 libseccomp                          (+) gnutls
 libsigc++                           (+) glibmm
 libsigsegv                          (+)
@@ -285,7 +286,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gobject-introspection, atk, libcroco,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
-                                        harfbuzz, poppler
+                                        harfbuzz, poppler, modem-manager
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -317,7 +318,7 @@ colord                              (-)
 cpio                                (+)
 cups-pk-helper                      (-)
 dbus                                (+) glib
-elogind                             (-) polkit, dbus
+elogind                             (-) polkit, dbus, modem-manager
 blocaled                            (-)
 fcron                               (+)
 gpm                                 (+) aalib, vim, mc
@@ -326,7 +327,7 @@ lsb-tools                           (+) python3
 lm-sensors                          (+)
 logrotate                           (-)
 mc                                  (+)
-modemmanager
+modem-manager                       (+)
 p7zip
 pax
 pciutils
@@ -551,7 +552,7 @@ subversion                          cmake, git
 swig                                gpgme, graphviz
 tcl                                 (+) berkeley-db, vim, graphviz
 tk                                  python2, python3, git, graphviz
-vala                                libical, gegl
+vala                                libical, gegl, modem-manager
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
                                     gdb, pcre2, talloc, lvm2, git, dbus

@@ -246,5 +246,6 @@ a/hdparm.sh
 ap/lm-sensors.sh
 l/slang.sh
 ap/mc.sh
+n/modem-manager.sh
 
 # vim:ft=conf
