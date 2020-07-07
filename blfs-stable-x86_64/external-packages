@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+wxwidgets                           p7zip
+# https://www.wxwidgets.org/
+
 oniguruma                           slang
 # https://github.com/kkos/oniguruma
 

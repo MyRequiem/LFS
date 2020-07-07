@@ -328,7 +328,7 @@ lm-sensors                          (+)
 logrotate                           (-)
 mc                                  (+)
 modem-manager                       (+)
-p7zip
+p7zip                               (+)
 pax
 pciutils
 pm-utils
