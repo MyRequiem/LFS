@@ -248,5 +248,6 @@ l/slang.sh
 ap/mc.sh
 n/modem-manager.sh
 s/p7zip.sh
+s/pax.sh
 
 # vim:ft=conf

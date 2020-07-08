@@ -315,7 +315,7 @@ autofs                              (-)
 bluez                               python2, python3
 bubblewrap                          (-)
 colord                              (-)
-cpio                                (+)
+cpio                                (+) pax
 cups-pk-helper                      (-)
 dbus                                (+) glib
 elogind                             (-) polkit, dbus, modem-manager
@@ -329,7 +329,7 @@ logrotate                           (-)
 mc                                  (+)
 modem-manager                       (+)
 p7zip                               (+)
-pax
+pax                                 (+)
 pciutils
 pm-utils
 raptor

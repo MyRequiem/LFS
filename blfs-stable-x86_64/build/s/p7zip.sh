@@ -21,7 +21,7 @@ PRGNAME="p7zip"
 ROOT="/root"
 source "${ROOT}/check_environment.sh" || exit 1
 
-SOURCES="/root/src"
+SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}_*.tar.?z*" 2>/dev/null | \
     sort | head -n 1 | cut -d _ -f 2)"
 
