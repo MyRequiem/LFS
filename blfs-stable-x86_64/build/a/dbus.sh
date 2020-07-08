@@ -10,7 +10,7 @@ PRGNAME="dbus"
 # http://www.linuxfromscratch.org/blfs/view/svn/general/dbus.html
 
 # Home page: https://dbus.freedesktop.org/
-# Download:  https://dbus.freedesktop.org/releases/dbus/dbus-1.12.18.tar.gz
+# Download:  https://dbus.freedesktop.org/releases/dbus/dbus-1.12.20.tar.gz
 
 # Required:    no
 # Recommended: Xorg Libraries
