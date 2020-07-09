@@ -16,7 +16,7 @@ ARCH_NAME="${PRGNAME}mirabilis"
 # Optional: no
 
 ROOT="/root"
-source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f \
@@ -28,7 +28,8 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-gzip -dck "${ARCH_NAME}-${VERSION}.cpio.gz" | cpio -mid || exit 1
+gzip -dck "${SOURCES}/${ARCH_NAME}-${VERSION}.cpio.gz" | cpio -mid || exit 1
+
 mv "${PRGNAME}" "${PRGNAME}-${VERSION}"
 cd "${PRGNAME}-${VERSION}" || exit 1
 
@@ -43,8 +44,8 @@ cc -O2 -DLONG_OFF_T -o pax -DPAX_SAFE_PATH=\"/bin\" ./*.c
 
 install -v pax /bin
 install -v pax "${TMP_DIR}/bin"
-install -v pax.1 "${MAN}"
-install -v pax.1 "${TMP_DIR}${MAN}"
+install -vm 644 pax.1 "${MAN}"
+install -vm 644 pax.1 "${TMP_DIR}${MAN}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tar/cpio compatible archiver)
