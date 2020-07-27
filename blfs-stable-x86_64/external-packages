@@ -5,6 +5,12 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+ethtool                             pm-utils
+# https://mirrors.edge.kernel.org/pub/software/network/ethtool/
+
+vbetool                             pm-utils
+# http://ftp.de.debian.org/debian/pool/main/v/vbetool/
+
 wxwidgets                           p7zip
 # https://www.wxwidgets.org/
 

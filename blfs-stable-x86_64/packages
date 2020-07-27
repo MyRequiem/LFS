@@ -322,7 +322,7 @@ elogind                             (-) polkit, dbus, modem-manager
 blocaled                            (-)
 fcron                               (+)
 gpm                                 (+) aalib, vim, mc
-hdparm                              (+)
+hdparm                              (+) pm-utils
 lsb-tools                           (+) python3
 lm-sensors                          (+)
 logrotate                           (-)
@@ -331,7 +331,7 @@ modem-manager                       (+)
 p7zip                               (+)
 pax                                 (+)
 pciutils                            (+)
-pm-utils
+pm-utils                            (+)
 raptor
 rasqal
 redland
@@ -579,7 +579,7 @@ rpcbind
 rsync                               vim
 samba                               curl, mc
 wget                                pciutils
-wireless-tools
+wireless-tools                      pm-utils
 wpa-supplicant
 # Other Networking Programs
   |- ncpfs
@@ -1258,7 +1258,7 @@ docbook-xml51
 docbook-xsl                         (+) libxslt, glib, talloc, polkit, xmlto,
                                         gtk-doc
 itstool                             (+) shared-mime-info, gtk-doc
-xmlto                               (+) giflib, git, dbus
+xmlto                               (+) giflib, git, dbus, pm-utils
 # -------------- Printing, Scanning and Typesetting/PostScript -----------------
 a2ps
 enscript
