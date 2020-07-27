@@ -330,7 +330,7 @@ mc                                  (+)
 modem-manager                       (+)
 p7zip                               (+)
 pax                                 (+)
-pciutils
+pciutils                            (+)
 pm-utils
 raptor
 rasqal
@@ -343,7 +343,8 @@ unzip                               (+) docbook-xml, mc
 upower
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
-                                        boost, gtk-doc, nodejs, lm-sensors
+                                        boost, gtk-doc, nodejs, lm-sensors,
+                                        pciutils
 zip                                 (+) docbook-xsl, js, mc
 # --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js
@@ -577,7 +578,7 @@ ntp
 rpcbind
 rsync                               vim
 samba                               curl, mc
-wget
+wget                                pciutils
 wireless-tools
 wpa-supplicant
 # Other Networking Programs
@@ -592,7 +593,8 @@ whois
 wireshark
 # --------------------- Networking/Networking Libraries ------------------------
 c-ares                              curl, nodejs
-curl                                (+) cmake, gnupg, exiv2, git, poppler
+curl                                (+) cmake, gnupg, exiv2, git, poppler,
+                                        pciutils
 geoclue
 glib-networking                     glibmm
 ldns
@@ -613,7 +615,7 @@ serf
 uhttpmock
 # ----------------------- Networking/Text Web Browsers -------------------------
 links                               xmlto
-lynx                                xmlto
+lynx                                xmlto, pciutils
 # ----------------------- Networking/Mail/News Clients -------------------------
 fetchmail
 mailx

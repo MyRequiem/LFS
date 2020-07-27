@@ -249,5 +249,6 @@ ap/mc.sh
 n/modem-manager.sh
 s/p7zip.sh
 s/pax.sh
+a/pciutils.sh
 
 # vim:ft=conf
