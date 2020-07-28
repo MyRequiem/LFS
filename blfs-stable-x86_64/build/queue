@@ -254,5 +254,6 @@ ap/pm-utils.sh
 l/raptor.sh
 l/rasqal.sh
 l/redland.sh
+l/sg3-utils.sh
 
 # vim:ft=conf

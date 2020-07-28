@@ -336,7 +336,7 @@ pm-utils                            (+)
 raptor                              (+) rasqal
 rasqal                              (+) redland
 redland                             (+)
-sg3-utils
+sg3-utils                           (+)
 sysstat                             openssh
 udisks
 unrar
