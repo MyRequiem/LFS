@@ -182,8 +182,8 @@ libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
 libatomic-ops                       (-)
-libblockdev                         (-)
-libbytesize                         (-)
+libblockdev
+libbytesize
 libcroco                            (+)
 libdaemon                           (-)
 libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal
@@ -337,9 +337,9 @@ raptor                              (+) rasqal
 rasqal                              (+) redland
 redland                             (+)
 sg3-utils                           (+)
-sysstat                             openssh
+sysstat                             (-) openssh
 udisks
-unrar
+unrar                               (+)
 unzip                               (+) docbook-xml, mc
 upower
 usbutils
