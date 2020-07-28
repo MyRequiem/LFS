@@ -171,7 +171,7 @@ grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
 icu                                 (+) libxml2, libical, js, boost, nodejs,
-                                        harfbuzz
+                                        harfbuzz, raptor
 jansson                             (-)
 js                                  (+) gjs, polkit
 json-c                              (+)
@@ -218,7 +218,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         fontconfig, doxygen
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
                                         talloc, polkit, glibmm, exiv2, xmlto,
-                                        gtk-doc
+                                        gtk-doc, raptor
 libwacom                            (-)
 libyaml                             (+)
 lzo                                 (+) libarchive
@@ -286,7 +286,8 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gobject-introspection, atk, libcroco,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
-                                        harfbuzz, poppler, modem-manager
+                                        harfbuzz, poppler, modem-manager,
+                                        raptor
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -332,7 +333,7 @@ p7zip                               (+)
 pax                                 (+)
 pciutils                            (+)
 pm-utils                            (+)
-raptor
+raptor                              (+)
 rasqal
 redland
 sg3-utils
@@ -594,7 +595,7 @@ wireshark
 # --------------------- Networking/Networking Libraries ------------------------
 c-ares                              curl, nodejs
 curl                                (+) cmake, gnupg, exiv2, git, poppler,
-                                        pciutils
+                                        pciutils, raptor
 geoclue
 glib-networking                     glibmm
 ldns

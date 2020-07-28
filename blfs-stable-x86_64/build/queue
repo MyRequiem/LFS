@@ -251,5 +251,6 @@ s/p7zip.sh
 s/pax.sh
 a/pciutils.sh
 ap/pm-utils.sh
+l/raptor.sh
 
 # vim:ft=conf

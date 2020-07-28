@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+libyajl                             raptor
+# http://lloyd.github.io/yajl/
+
 ethtool                             pm-utils
 # https://mirrors.edge.kernel.org/pub/software/network/ethtool/
 
