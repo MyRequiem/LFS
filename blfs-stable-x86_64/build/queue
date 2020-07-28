@@ -252,5 +252,6 @@ s/pax.sh
 a/pciutils.sh
 ap/pm-utils.sh
 l/raptor.sh
+l/rasqal.sh
 
 # vim:ft=conf

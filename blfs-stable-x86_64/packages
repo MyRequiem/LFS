@@ -186,7 +186,7 @@ libblockdev                         (-)
 libbytesize                         (-)
 libcroco                            (+)
 libdaemon                           (-)
-libgcrypt                           (+) libxslt, gnupg, libssh2
+libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
@@ -226,7 +226,7 @@ mtdev                               (+)
 nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
-pcre                                (+) glib, git, exim, slang, mc
+pcre                                (+) glib, git, exim, slang, mc, rasqal
 pcre2                               (+) git
 popt                                (+) hd2u
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
@@ -333,8 +333,8 @@ p7zip                               (+)
 pax                                 (+)
 pciutils                            (+)
 pm-utils                            (+)
-raptor                              (+)
-rasqal
+raptor                              (+) rasqal
+rasqal                              (+)
 redland
 sg3-utils
 sysstat                             openssh
