@@ -5,6 +5,12 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+virtuoso                            redland
+# https://sourceforge.net/projects/virtuoso/files/
+
+3store                              redland
+# https://sourceforge.net/projects/threestore/
+
 libyajl                             raptor
 # http://lloyd.github.io/yajl/
 
@@ -206,7 +212,8 @@ docwriter                           freetype
 freetds                             apr-util
 # http://www.freetds.org/
 
-mysql                               (-) apr-util, cyrus-sasl, openldap, exim
+mysql                               (-) apr-util, cyrus-sasl, openldap, exim,
+                                        redland
 # https://www.mysql.com/
 
 aspell-dict-en                      (+) enchant

@@ -195,7 +195,7 @@ libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls, exim
 libidn2                             (+) curl, gnutls
-libiodbc                            (+)
+libiodbc                            (+) redland
 libksba                             (+) gnupg
 liblinear                           (-)
 libmbim                             (+) libqmi, modem-manager
@@ -334,8 +334,8 @@ pax                                 (+)
 pciutils                            (+)
 pm-utils                            (+)
 raptor                              (+) rasqal
-rasqal                              (+)
-redland
+rasqal                              (+) redland
+redland                             (+)
 sg3-utils
 sysstat                             openssh
 udisks
@@ -638,12 +638,14 @@ postfix                             (-) at
 sendmail                            (-) sudo, at
 # ---------------------------- Servers/Databases -------------------------------
 berkeley-db                         (+) apr-util, python3, cyrus-sasl, libical,
-                                        openldap
+                                        openldap, redland
 lmdb
-mariadb                             apr-util, cyrus-sasl, openldap, exim
-postgresql                          apr-util, cyrus-sasl, openldap, exim
+mariadb                             apr-util, cyrus-sasl, openldap, exim,
+                                    redland
+postgresql                          apr-util, cyrus-sasl, openldap, exim,
+                                    redland
 sqlite                              (+) apr-util, python2, python3, cyrus-sasl,
-                                        nss, gnupg, exim
+                                        nss, gnupg, exim, redland
 # ---------------------- Servers/Other Server Software -------------------------
 openldap                            (+) apr-util, curl, cyrus-sasl, gnupg, sudo,
                                         exim
