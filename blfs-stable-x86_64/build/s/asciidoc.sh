@@ -36,6 +36,18 @@ make install DESTDIR="${TMP_DIR}"
 make docs
 make docs DESTDIR="${TMP_DIR}"
 
+# удалим битую ссылку
+# /usr/share/doc/asciidoc-x.x.x/examples/website/asciidoc-graphviz-sample.txt ->
+#     ../../filters/graphviz/asciidoc-graphviz-sample.txt
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+rm -f "${DOCS}/examples/website/asciidoc-graphviz-sample.txt"
+rm -f "${TMP_DIR}${DOCS}/examples/website/asciidoc-graphviz-sample.txt"
+
+cp -v filters/graphviz/asciidoc-graphviz-sample.txt \
+    "${DOCS}/examples/website/"
+cp -v filters/graphviz/asciidoc-graphviz-sample.txt \
+    "${TMP_DIR}${DOCS}/examples/website/"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a text document format)
 #
