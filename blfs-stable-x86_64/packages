@@ -87,11 +87,11 @@ kernel-firmware                     (+)
 # ------------ Post LFS Configuration and Extra Software/Security --------------
 make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
-cryptsetup                          (+)
+cryptsetup                          (+) volume-key
 cyrus-sasl                          (+) openldap, exim
 gnupg                               (+) gpgme, smartmontools, libssh2
 gnutls                              (+) curl, gnupg, glibmm, openldap, exim
-gpgme                               (+)
+gpgme                               (+) volume-key
 haveged                             (+)
 iptables                            (+)
 libcap (with PAM)                   (-)
@@ -101,7 +101,8 @@ libpwquality                        (-) cryptsetup
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
                                         libtirpc
 nettle                              (+) libarchive, gnutls
-nss                                 (+) p11-kit, make-ca, apr-util, poppler
+nss                                 (+) p11-kit, make-ca, apr-util, poppler,
+                                        volume-key
 openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
 polkit                              (+) modem-manager
@@ -110,7 +111,7 @@ ssh-askpass                         (-)
 stunnel                             (-) curl
 sudo                                (+)
 tripwire                            (-)
-volume-key                          (-)
+volume-key                          (+)
 # - Post LFS Configuration and Extra Software/File Systems and Disk Management -
 btrfs-progs                         (-)
 dosfstools                          (+) parted
@@ -160,7 +161,8 @@ glib                                (+) gobject-introspection, atk,
                                         shared-mime-info, libcroco, json-glib,
                                         libgudev, libqmi, polkit, sshfs,
                                         enchant, glibmm, harfbuzz,
-                                        desktop-file-utils, gtk-doc, mc
+                                        desktop-file-utils, gtk-doc, mc,
+                                        volume-key
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
@@ -521,9 +523,9 @@ php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
                                         graphite2, doxygen, asciidoc, graphviz,
-                                        python-six, cryptsetup
+                                        python-six, cryptsetup, volume-key
 python3                             (+) libxml2, talloc, vim, brotli,
-                                        python-six, python3-pygments
+                                        python-six, python3-pygments, volume-key
 # Python Modules
   |- python-d-bus                   dbus
   |- python3-decorator
@@ -552,7 +554,7 @@ rustc                               gdb
 scons
 slang                               (+) aalib, mc
 subversion                          cmake, git
-swig                                gpgme, graphviz
+swig                                gpgme, graphviz, volume-key
 tcl                                 (+) berkeley-db, vim, graphviz
 tk                                  python2, python3, git, graphviz
 vala                                libical, gegl, modem-manager

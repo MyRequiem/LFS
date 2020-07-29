@@ -258,5 +258,6 @@ l/sg3-utils.sh
 s/unrar.sh
 l/libbytesize.sh
 a/cryptsetup.sh
+l/volume-key.sh
 
 # vim:ft=conf
