@@ -257,5 +257,6 @@ l/redland.sh
 l/sg3-utils.sh
 s/unrar.sh
 l/libbytesize.sh
+a/cryptsetup.sh
 
 # vim:ft=conf

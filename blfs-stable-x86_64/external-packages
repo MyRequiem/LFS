@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+passwdqc                            cryptsetup
+# https://www.openwall.com/passwdqc/
+
 pocketlint                          libbytesize
 # https://github.com/rhinstaller/pocketlint/releases
 

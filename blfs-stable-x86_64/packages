@@ -87,7 +87,7 @@ kernel-firmware                     (+)
 # ------------ Post LFS Configuration and Extra Software/Security --------------
 make-ca                             (+) p11-kit, curl, gnutls
 cracklib                            (-)
-cryptsetup                          (-)
+cryptsetup                          (+)
 cyrus-sasl                          (+) openldap, exim
 gnupg                               (+) gpgme, smartmontools, libssh2
 gnutls                              (+) curl, gnupg, glibmm, openldap, exim
@@ -97,7 +97,7 @@ iptables                            (+)
 libcap (with PAM)                   (-)
 linux-pam                           (-) openssh, polkit, sudo, exim, at, fcron
 liboauth                            (-)
-libpwquality                        (-)
+libpwquality                        (-) cryptsetup
 mit-kerberos-v5                     (-) curl, cyrus-sasl, openssh, sudo,
                                         libtirpc
 nettle                              (+) libarchive, gnutls
@@ -116,7 +116,7 @@ btrfs-progs                         (-)
 dosfstools                          (+) parted
 fuse                                (+) gnupg, sshfs
 jfsutils                            (-)
-lvm2                                (+) parted
+lvm2                                (+) parted, cryptsetup
 mdadm                               (-) lvm2
 ntfs-3g                             (+)
 gptfdisk                            (-)
@@ -174,7 +174,7 @@ icu                                 (+) libxml2, libical, js, boost, nodejs,
                                         harfbuzz, raptor
 jansson                             (-)
 js                                  (+) gjs, polkit
-json-c                              (+)
+json-c                              (+) cryptsetup
 json-glib                           (+) gegl
 keyutils                            (-)
 libaio                              (+) lvm2
@@ -186,7 +186,8 @@ libblockdev
 libbytesize                         (+)
 libcroco                            (+)
 libdaemon                           (-)
-libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal
+libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal,
+                                        cryptsetup
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
@@ -228,7 +229,7 @@ npth                                (+) gnupg
 nspr                                (+) nss
 pcre                                (+) glib, git, exim, slang, mc, rasqal
 pcre2                               (+) git, libbytesize
-popt                                (+) hd2u
+popt                                (+) hd2u, cryptsetup
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
                                         openldap
 ptlib                               (-)
@@ -520,7 +521,7 @@ php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
                                         talloc, js, vim, brotli, nodejs,
                                         graphite2, doxygen, asciidoc, graphviz,
-                                        python-six
+                                        python-six, cryptsetup
 python3                             (+) libxml2, talloc, vim, brotli,
                                         python-six, python3-pygments
 # Python Modules
