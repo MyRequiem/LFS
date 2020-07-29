@@ -183,7 +183,7 @@ libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
 libatomic-ops                       (-)
 libblockdev
-libbytesize
+libbytesize                         (+)
 libcroco                            (+)
 libdaemon                           (-)
 libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal
@@ -227,7 +227,7 @@ nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
 pcre                                (+) glib, git, exim, slang, mc, rasqal
-pcre2                               (+) git
+pcre2                               (+) git, libbytesize
 popt                                (+) hd2u
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
                                         openldap
@@ -287,7 +287,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler, modem-manager,
-                                        raptor
+                                        raptor, libbytesize
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -545,7 +545,7 @@ python3                             (+) libxml2, talloc, vim, brotli,
   |- python3-python-slip
   |- python-pyyaml
   |- python-scour
-  |- python-six                     (+) gdb
+  |- python-six                     (+) gdb, libbytesize
 ruby                                docbook-xsl, vim, gegl, graphviz
 rustc                               gdb
 scons

@@ -5,6 +5,12 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+pocketlint                          libbytesize
+# https://github.com/rhinstaller/pocketlint/releases
+
+polib                               libbytesize
+# https://pypi.org/project/polib/
+
 virtuoso                            redland
 # https://sourceforge.net/projects/virtuoso/files/
 

@@ -256,5 +256,6 @@ l/rasqal.sh
 l/redland.sh
 l/sg3-utils.sh
 s/unrar.sh
+l/libbytesize.sh
 
 # vim:ft=conf
