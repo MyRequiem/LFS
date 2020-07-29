@@ -12,7 +12,7 @@ PRGNAME="git"
 # http://www.linuxfromscratch.org/blfs/view/svn/general/git.html
 
 # Home page: https://git-scm.com/
-# Download:  https://www.kernel.org/pub/software/scm/git/git-2.26.2.tar.xz
+# Download:  https://www.kernel.org/pub/software/scm/git/git-2.28.0.tar.xz
 
 # Required:    no
 # Recommended: curl
