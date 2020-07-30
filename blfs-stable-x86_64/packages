@@ -105,7 +105,7 @@ nss                                 (+) p11-kit, make-ca, apr-util, poppler,
                                         volume-key
 openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
-polkit                              (+) modem-manager
+polkit                              (+) modem-manager, udisks
 shadow                              (+)
 ssh-askpass                         (-)
 stunnel                             (-) curl
@@ -113,19 +113,19 @@ sudo                                (+)
 tripwire                            (-)
 volume-key                          (+) libblockdev
 # - Post LFS Configuration and Extra Software/File Systems and Disk Management -
-btrfs-progs                         (-) libblockdev
-dosfstools                          (+) parted
+btrfs-progs                         (-) libblockdev, udisks
+dosfstools                          (+) parted, udisks
 fuse                                (+) gnupg, sshfs
 jfsutils                            (-)
-lvm2                                (+) parted, cryptsetup
-mdadm                               (-) lvm2, libblockdev
-ntfs-3g                             (+)
-gptfdisk                            (-)
+lvm2                                (+) parted, cryptsetup, udisks
+mdadm                               (-) lvm2, libblockdev, udisks
+ntfs-3g                             (+) udisks
+gptfdisk                            (-) udisks
 parted                              (+) libblockdev
 reiserfsprogs                       (-) lvm2
 smartmontools                       (+)
 sshfs                               (+)
-xfsprogs                            (-) talloc, lvm2
+xfsprogs                            (-) talloc, lvm2, udisks
 # ------------ Post LFS Configuration and Extra Software/Editors ---------------
 bluefish                            (-)
 ed                                  (+)
@@ -168,7 +168,7 @@ gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
                                         babl, polkit, gegl, harfbuzz, poppler,
-                                        modem-manager, libblockdev
+                                        modem-manager, libblockdev, udisks
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -182,9 +182,9 @@ keyutils                            (-)
 libaio                              (+) lvm2
 libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
-libatasmart                         (+)
+libatasmart                         (+) udisks
 libatomic-ops                       (-)
-libblockdev                         (+)
+libblockdev                         (+) udisks
 libbytesize                         (+) libblockdev
 libcroco                            (+)
 libdaemon                           (-)
@@ -193,7 +193,7 @@ libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal,
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
-libgudev                            (+) libmbim, modem-manager
+libgudev                            (+) libmbim, modem-manager, udisks
 libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls, exim
@@ -221,7 +221,7 @@ libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         fontconfig, doxygen
 libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
                                         talloc, polkit, glibmm, exiv2, xmlto,
-                                        gtk-doc, raptor
+                                        gtk-doc, raptor, udisks
 libwacom                            (-)
 libyaml                             (+) libblockdev
 lzo                                 (+) libarchive
@@ -290,7 +290,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler, modem-manager,
-                                        raptor, libbytesize, libblockdev
+                                        raptor, libbytesize, libblockdev, udisks
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -321,8 +321,8 @@ bubblewrap                          (-)
 colord                              (-)
 cpio                                (+) pax
 cups-pk-helper                      (-)
-dbus                                (+) glib
-elogind                             (-) polkit, dbus, modem-manager
+dbus                                (+) glib, udisks
+elogind                             (-) polkit, dbus, modem-manager, udisks
 blocaled                            (-)
 fcron                               (+)
 gpm                                 (+) aalib, vim, mc
@@ -341,7 +341,7 @@ rasqal                              (+) redland
 redland                             (+)
 sg3-utils                           (+)
 sysstat                             (-) openssh
-udisks
+udisks                              (+)
 unrar                               (+)
 unzip                               (+) docbook-xml, mc
 upower
@@ -527,7 +527,7 @@ python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
 python3                             (+) libxml2, talloc, vim, brotli,
                                         python-six, python3-pygments, volume-key
 # Python Modules
-  |- python-d-bus                   dbus
+  |- python-d-bus                   dbus, udisks
   |- python3-decorator
   |- python3-docutils               sshfs
   |- python3-pyatspi2
@@ -537,7 +537,7 @@ python3                             (+) libxml2, talloc, vim, brotli,
   |- python3-dbusmock
   |- python3-pygments               (+) gegl, gtk-doc
   |- python2-pygobject2
-  |- python-pygobject3              gegl, dbus
+  |- python-pygobject3              gegl, dbus, udisks
   |- python2-pygtk
   |- python3-pyxdg
   |- python2-libxml2                libxslt, docbook-xsl

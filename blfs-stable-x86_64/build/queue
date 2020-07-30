@@ -260,5 +260,6 @@ l/libbytesize.sh
 a/cryptsetup.sh
 l/volume-key.sh
 l/libblockdev.sh
+a/udisks.sh
 
 # vim:ft=conf

@@ -5,6 +5,12 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+exfat                               udisks
+# https://github.com/relan/exfat
+
+libiscsi                            udisks
+# https://github.com/sahlberg/libiscsi
+
 dmraid                              libblockdev
 # http://people.redhat.com/~heinzm/sw/dmraid/
 
