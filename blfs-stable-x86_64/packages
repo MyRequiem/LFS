@@ -111,17 +111,17 @@ ssh-askpass                         (-)
 stunnel                             (-) curl
 sudo                                (+)
 tripwire                            (-)
-volume-key                          (+)
+volume-key                          (+) libblockdev
 # - Post LFS Configuration and Extra Software/File Systems and Disk Management -
-btrfs-progs                         (-)
+btrfs-progs                         (-) libblockdev
 dosfstools                          (+) parted
 fuse                                (+) gnupg, sshfs
 jfsutils                            (-)
 lvm2                                (+) parted, cryptsetup
-mdadm                               (-) lvm2
+mdadm                               (-) lvm2, libblockdev
 ntfs-3g                             (+)
 gptfdisk                            (-)
-parted                              (+)
+parted                              (+) libblockdev
 reiserfsprogs                       (-) lvm2
 smartmontools                       (+)
 sshfs                               (+)
@@ -168,7 +168,7 @@ gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
                                         babl, polkit, gegl, harfbuzz, poppler,
-                                        modem-manager
+                                        modem-manager, libblockdev
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -184,8 +184,8 @@ libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+)
 libatomic-ops                       (-)
-libblockdev
-libbytesize                         (+)
+libblockdev                         (+)
+libbytesize                         (+) libblockdev
 libcroco                            (+)
 libdaemon                           (-)
 libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal,
@@ -223,7 +223,7 @@ libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
                                         talloc, polkit, glibmm, exiv2, xmlto,
                                         gtk-doc, raptor
 libwacom                            (-)
-libyaml                             (+)
+libyaml                             (+) libblockdev
 lzo                                 (+) libarchive
 mtdev                               (+)
 nodejs                              (+)
@@ -290,7 +290,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler, modem-manager,
-                                        raptor, libbytesize
+                                        raptor, libbytesize, libblockdev
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)

@@ -259,5 +259,6 @@ s/unrar.sh
 l/libbytesize.sh
 a/cryptsetup.sh
 l/volume-key.sh
+l/libblockdev.sh
 
 # vim:ft=conf

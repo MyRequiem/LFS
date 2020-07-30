@@ -5,6 +5,15 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+dmraid                              libblockdev
+# http://people.redhat.com/~heinzm/sw/dmraid/
+
+bcachefs                            libblockdev
+# https://bcachefs.org/
+
+ndctl                               libblockdev
+# https://github.com/pmem/ndctl
+
 passwdqc                            cryptsetup
 # https://www.openwall.com/passwdqc/
 
