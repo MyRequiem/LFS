@@ -8,17 +8,17 @@ PRGNAME="python3"
 # http://www.linuxfromscratch.org/blfs/view/stable/general/python3.html
 
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
-# Docs:      https://www.python.org/ftp/python/doc/3.8.3/python-3.8.3-docs-html.tar.bz2
+# Download:  https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
+# Docs:      https://www.python.org/ftp/python/doc/3.8.5/python-3.8.5-docs-html.tar.bz2
 
-# Required: no
-# Optional: bluez
-#           gdb         (для некоторых тестов)
-#           valgrind
-#           berkeley-db (для создания дополнительных модулей)
-#           sqlite      (для создания дополнительных модулей)
-#           tk          (для создания дополнительных модулей)
-#           libmpdec    (http://www.bytereef.org/mpdecimal/)
+# Required:    no
+# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox)
+# Optional:    bluez
+#              gdb         (для некоторых тестов)
+#              valgrind
+#              berkeley-db (для создания дополнительных модулей)
+#              tk          (для создания дополнительных модулей)
+#              libmpdec    (http://www.bytereef.org/mpdecimal/)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -52,21 +52,34 @@ command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
 #    --with-system-ffi
 # создавать утилиты pip и setuptools
 #    --with-ensurepip=yes
-CXX="/usr/bin/g++"      \
-./configure             \
-    --prefix=/usr       \
-    --enable-shared     \
-    --with-system-expat \
-    --with-system-ffi   \
-    "${VALGRIND}"       \
-    "${LIBMPDEC}"       \
-    "${SQLITE}"         \
-    --with-ensurepip=yes || exit 1
+# включить оптимизацию по профилю (увеличивает время компиляции, но может
+# немного ускорить выполнение скриптов Python3)
+#    --enable-optimization
+CXX="/usr/bin/g++"       \
+./configure              \
+    --prefix=/usr        \
+    --enable-shared      \
+    --with-system-expat  \
+    --with-system-ffi    \
+    "${VALGRIND}"        \
+    "${LIBMPDEC}"        \
+    "${SQLITE}"          \
+    --with-ensurepip=yes \
+    --enable-optimization || exit 1
 
 make || exit 1
 
-# тесты на данном этапе не запускаем, т.к. они требуют установленных TK и
-# X Window System, поэтому сразу устанавливаем
+### Для запуска тестов требуется:
+# > установленные пакеты tk и X Window System Environment
+# > запускать с использованием X-терминала
+# > интернет соединение
+# > запускать нужно либо до, либо после сборки и установки пакета python3, т.е.
+#    НЕЛЬЗЯ запускать 'make install' после запуска набора тестов
+# > ТОЛЬКО чистый исходный код либо после 'make clean'. Затем снова
+#    сконфигурировать добавив опцию '--with-pydebug', потом собрать 'make' и
+#    только потом запустить тесты 'make test'
+# > известно, что тест test_sqlite не проходит
+
 make install DESTDIR="${TMP_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
