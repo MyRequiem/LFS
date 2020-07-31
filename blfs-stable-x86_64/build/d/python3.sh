@@ -5,7 +5,7 @@ PRGNAME="python3"
 ### python3 (object-oriented interpreted programming language)
 # Язык программирования Python 3
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/python3.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/python3.html
 
 # Home page: https://www.python.org/
 # Download:  https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
