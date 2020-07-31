@@ -11,8 +11,8 @@ PRGNAME="nss"
 # http://www.linuxfromscratch.org/blfs/view/svn/postlfs/nss.html
 
 # Home page: https://developer.mozilla.org/ru/docs/NSS
-# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_53_1_RTM/src/nss-3.53.1.tar.gz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.53.1-standalone-1.patch
+# Download:  https://archive.mozilla.org/pub/security/nss/releases/NSS_3_55_RTM/src/nss-3.55.tar.gz
+# Patch:     http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.55-standalone-1.patch
 
 # Required:    nspr
 # Recommended: sqlite
@@ -34,8 +34,6 @@ cd "${PRGNAME}" || exit 1
 SQLITE=0
 [ -f /usr/include/sqlite3.h ] && SQLITE=1
 
-# пакет не поддерживает компиляцию в несколько потоков, поэтому явно указываем
-# -j1
 # не включать в бинарники отладочную информацию и использовать оптимизацию
 # компилятора по умолчанию
 #    BUILD_OPT=1
@@ -46,7 +44,7 @@ SQLITE=0
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
-make -j1                            \
+make                                \
     BUILD_OPT=1                     \
     USE_SYSTEM_ZLIB=1               \
     ZLIB_LIBS=-lz                   \
