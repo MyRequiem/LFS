@@ -6,10 +6,10 @@ PRGNAME="nspr"
 # Абстрактная платформо-независимая библиотека для не GUI объектов операционных
 # систем.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/nspr.html
+# http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html
 
 # Home page: https://developer.mozilla.org/ru/docs/NSPR
-# Download:  https://archive.mozilla.org/pub/nspr/releases/v4.25/src/nspr-4.25.tar.gz
+# Download:  https://archive.mozilla.org/pub/nspr/releases/v4.27/src/nspr-4.27.tar.gz
 
 # Required: no
 # Optional: no
