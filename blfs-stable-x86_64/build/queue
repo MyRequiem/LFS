@@ -265,5 +265,7 @@ l/dbus-glib.sh
 l/enchant.sh
 a/dbus.sh
 a/upower.sh
+n/wget.sh
+a/pciutils.sh
 
 # vim:ft=conf

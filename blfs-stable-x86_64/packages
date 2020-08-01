@@ -85,12 +85,13 @@
 # - Post LFS Configuration and Extra Software/After LFS Configuration Issues ---
 kernel-firmware                     (+)
 # ------------ Post LFS Configuration and Extra Software/Security --------------
-make-ca                             (+) p11-kit, curl, gnutls
+make-ca                             (+) p11-kit, curl, gnutls, wget
 cracklib                            (-)
 cryptsetup                          (+) volume-key
 cyrus-sasl                          (+) openldap, exim
 gnupg                               (+) gpgme, smartmontools, libssh2
-gnutls                              (+) curl, gnupg, glibmm, openldap, exim
+gnutls                              (+) curl, gnupg, glibmm, openldap, exim,
+                                        wget
 gpgme                               (+) volume-key
 haveged                             (+)
 iptables                            (+)
@@ -198,7 +199,7 @@ libgudev                            (+) libmbim, modem-manager, udisks, upower
 libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls, exim
-libidn2                             (+) curl, gnutls
+libidn2                             (+) curl, gnutls, wget
 libiodbc                            (+) redland
 libksba                             (+) gnupg
 liblinear                           (-)
@@ -230,8 +231,9 @@ mtdev                               (+)
 nodejs                              (+)
 npth                                (+) gnupg
 nspr                                (+) nss
-pcre                                (+) glib, git, exim, slang, mc, rasqal
-pcre2                               (+) git, libbytesize
+pcre                                (+) glib, git, exim, slang, mc, rasqal,
+                                        wget
+pcre2                               (+) git, libbytesize, wget
 popt                                (+) hd2u, cryptsetup
 pth                                 (+) libgcrypt, libidn, parted, unixodbc,
                                         openldap
@@ -394,8 +396,8 @@ nasm                                (-) libjpeg-turbo
   |- perl-file-slurper
   |- perl-file-which
   |- perl-html-parser
-  |- perl-http-daemon
-  |- perl-io-socket-ssl
+  |- perl-http-daemon               wget
+  |- perl-io-socket-ssl             wget
   |- perl-io-string
   |- perl-ipc-run3
   |- perl-lingua-translit
@@ -562,7 +564,7 @@ tk                                  python2, python3, git, graphviz
 vala                                libical, gegl, modem-manager
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
-                                    gdb, pcre2, talloc, lvm2, git, dbus
+                                    gdb, pcre2, talloc, lvm2, git, dbus, wget
 yasm                                (+) libjpeg-turbo
 # Other Programming Tools
   |- ctags
@@ -584,7 +586,7 @@ ntp
 rpcbind
 rsync                               vim
 samba                               curl, mc
-wget                                pciutils
+wget                                (+) pciutils
 wireless-tools                      pm-utils
 wpa-supplicant
 # Other Networking Programs
@@ -610,7 +612,7 @@ libnftnl
 libnl
 libnsl                              (+) exim
 libpcap                             iptables
-libpsl                              curl
+libpsl                              curl, wget
 libndp
 libsoup
 libtirpc                            (+) talloc, lsof, rpcbind, libnsl
