@@ -262,5 +262,8 @@ l/volume-key.sh
 l/libblockdev.sh
 a/udisks.sh
 l/dbus-glib.sh
+l/enchant.sh
+a/dbus.sh
+a/upower.sh
 
 # vim:ft=conf

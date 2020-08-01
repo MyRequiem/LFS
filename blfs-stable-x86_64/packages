@@ -105,7 +105,7 @@ nss                                 (+) p11-kit, make-ca, apr-util, poppler,
                                         volume-key
 openssh                             (+) sshfs, libssh2
 p11-kit                             (+) make-ca, gnutls, nss
-polkit                              (+) modem-manager, udisks
+polkit                              (+) modem-manager, udisks, upower
 shadow                              (+)
 ssh-askpass                         (-)
 stunnel                             (-) curl
@@ -153,7 +153,7 @@ aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
 boost                               (+) poppler, highlight
 brotli                              (+) curl, woff2
 clucene                             (-)
-dbus-glib                           (+) enchant, dbus
+dbus-glib                           (+) enchant, dbus, upower
 enchant                             (+)
 exempi                              (-)
 fftw                                (+)
@@ -168,7 +168,8 @@ gmime2                              (-)
 gmime3                              (-)
 gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
                                         babl, polkit, gegl, harfbuzz, poppler,
-                                        modem-manager, libblockdev, udisks
+                                        modem-manager, libblockdev, udisks,
+                                        upower
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
@@ -193,7 +194,7 @@ libgcrypt                           (+) libxslt, gnupg, libssh2, rasqal,
 libgpg-error                        (+) libassuan, libgcrypt, libksba, pinentry
 libgrss                             (-)
 libgsf                              (-)
-libgudev                            (+) libmbim, modem-manager, udisks
+libgudev                            (+) libmbim, modem-manager, udisks, upower
 libgusb                             (-)
 libical                             (+)
 libidn                              (+) gnutls, exim
@@ -213,7 +214,7 @@ libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls, libidn2
-libusb                              (+) gnupg
+libusb                              (+) gnupg, upower
 libuv                               (+) cmake, nodejs
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
@@ -291,7 +292,7 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler, modem-manager,
                                         raptor, libbytesize, libblockdev,
-                                        udisks, dbus-glib
+                                        udisks, dbus-glib, upower
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -345,7 +346,7 @@ sysstat                             (-) openssh
 udisks                              (+)
 unrar                               (+)
 unzip                               (+) docbook-xml, mc
-upower
+upower                              (+)
 usbutils
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
                                         boost, gtk-doc, nodejs, lm-sensors,
@@ -535,10 +536,10 @@ python3                             (+) libxml2, talloc, vim, brotli,
   |- python2-pycairo
   |- python3-pycairo
   |- python-pycryptodome
-  |- python3-dbusmock
+  |- python3-dbusmock               upower
   |- python3-pygments               (+) gegl, gtk-doc
   |- python2-pygobject2
-  |- python-pygobject3              gegl, dbus, udisks
+  |- python-pygobject3              gegl, dbus, udisks, upower
   |- python2-pygtk
   |- python3-pyxdg
   |- python2-libxml2                libxslt, docbook-xsl

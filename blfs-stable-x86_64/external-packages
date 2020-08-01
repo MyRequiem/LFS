@@ -313,7 +313,7 @@ nftables                            iptables
 lzip                                (+) ed
 # https://www.nongnu.org/lzip/lzip.html
 
-umockdev                            libgudev
+umockdev                            libgudev, upower
 # https://github.com/martinpitt/umockdev
 
 mono                                libidn
