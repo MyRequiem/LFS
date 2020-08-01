@@ -267,5 +267,6 @@ a/dbus.sh
 a/upower.sh
 n/wget.sh
 a/pciutils.sh
+a/usbutils.sh
 
 # vim:ft=conf

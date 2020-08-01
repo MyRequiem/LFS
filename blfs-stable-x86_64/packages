@@ -215,7 +215,7 @@ libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
 libunique
 libunistring                        (+) gnutls, libidn2
-libusb                              (+) gnupg, upower
+libusb                              (+) gnupg, upower, usbutils
 libuv                               (+) cmake, nodejs
 libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
@@ -349,7 +349,7 @@ udisks                              (+)
 unrar                               (+)
 unzip                               (+) docbook-xml, mc
 upower                              (+)
-usbutils
+usbutils                            (+)
 which                               (+) aspell, libseccomp, freetype, js, lvm2,
                                         boost, gtk-doc, nodejs, lm-sensors,
                                         pciutils
@@ -586,7 +586,7 @@ ntp
 rpcbind
 rsync                               vim
 samba                               curl, mc
-wget                                (+) pciutils
+wget                                (+) pciutils, usbutils
 wireless-tools                      pm-utils
 wpa-supplicant
 # Other Networking Programs
