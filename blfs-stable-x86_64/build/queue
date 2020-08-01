@@ -261,5 +261,6 @@ a/cryptsetup.sh
 l/volume-key.sh
 l/libblockdev.sh
 a/udisks.sh
+l/dbus-glib.sh
 
 # vim:ft=conf

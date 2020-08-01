@@ -153,7 +153,7 @@ aspell                              (+) aspell-dict-en, aspell-dict-ru, enchant
 boost                               (+) poppler, highlight
 brotli                              (+) curl, woff2
 clucene                             (-)
-dbus-glib                           enchant, dbus
+dbus-glib                           (+) enchant, dbus
 enchant                             (+)
 exempi                              (-)
 fftw                                (+)
@@ -162,7 +162,7 @@ glib                                (+) gobject-introspection, atk,
                                         libgudev, libqmi, polkit, sshfs,
                                         enchant, glibmm, harfbuzz,
                                         desktop-file-utils, gtk-doc, mc,
-                                        volume-key
+                                        volume-key, dbus-glib
 glibmm                              (+)
 gmime2                              (-)
 gmime3                              (-)
@@ -290,7 +290,8 @@ gtk-doc                             (+) libtasn1, p11-kit, glib,
                                         gnutls, json-glib, libgudev, libidn,
                                         libmbim, libqmi, polkit, libidn2, gegl,
                                         harfbuzz, poppler, modem-manager,
-                                        raptor, libbytesize, libblockdev, udisks
+                                        raptor, libbytesize, libblockdev,
+                                        udisks, dbus-glib
 hd2u                                (+)
 highlight                           (+)
 ibus                                (-)
@@ -321,7 +322,7 @@ bubblewrap                          (-)
 colord                              (-)
 cpio                                (+) pax
 cups-pk-helper                      (-)
-dbus                                (+) glib, udisks
+dbus                                (+) glib, udisks, dbus-glib
 elogind                             (-) polkit, dbus, modem-manager, udisks
 blocaled                            (-)
 fcron                               (+)
