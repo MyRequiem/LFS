@@ -366,7 +366,7 @@ doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc
-expect
+expect                              (+)
 gcc                                 gdb, graphviz
 gc
 gdb                                 (+) python3, glib, talloc, openssh
@@ -559,8 +559,8 @@ scons
 slang                               (+) aalib, mc
 subversion                          cmake, git
 swig                                gpgme, graphviz, volume-key
-tcl                                 (+) berkeley-db, vim, graphviz
-tk                                  python2, python3, git, graphviz
+tcl                                 (+) berkeley-db, vim, graphviz, expect
+tk                                  python2, python3, git, graphviz, expect
 vala                                libical, gegl, modem-manager
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,

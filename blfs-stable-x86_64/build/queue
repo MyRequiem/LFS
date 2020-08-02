@@ -270,5 +270,6 @@ a/pciutils.sh
 a/usbutils.sh
 d/clisp.sh
 n/gpgme.sh
+tcl/expect.sh
 
 # vim:ft=conf
