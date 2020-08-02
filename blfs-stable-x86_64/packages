@@ -209,7 +209,7 @@ libpaper                            (-)
 libqmi                              (+) modem-manager
 libseccomp                          (+) gnutls
 libsigc++                           (+) glibmm
-libsigsegv                          (+)
+libsigsegv                          (+) clisp
 libssh2                             (+) curl
 libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
@@ -356,8 +356,8 @@ which                               (+) aspell, libseccomp, freetype, js, lvm2,
 zip                                 (+) docbook-xsl, js, mc
 # --------------- General Libraries and Utilities/Programming ------------------
 autoconf213                         (+) js
-cbindgen
-clisp                               gpgme
+cbindgen                            (-)
+clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
                                         openjpeg, poppler, woff2

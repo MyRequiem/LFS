@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+libffcall                           clisp
+# http://www.gnu.org/software/libffcall/
+
 exfat                               udisks
 # https://github.com/relan/exfat
 

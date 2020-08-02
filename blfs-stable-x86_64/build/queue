@@ -268,5 +268,7 @@ a/upower.sh
 n/wget.sh
 a/pciutils.sh
 a/usbutils.sh
+d/clisp.sh
+n/gpgme.sh
 
 # vim:ft=conf
