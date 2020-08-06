@@ -7,10 +7,10 @@ PRGNAME="curl"
 # различных серверов по множеству различных протоколов: FTP, FTPS, HTTP, HTTPS,
 # SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
 
-# http://www.linuxfromscratch.org/blfs/view/stable/basicnet/curl.html
+# http://www.linuxfromscratch.org/blfs/view/svn/basicnet/curl.html
 
 # Home page: https://curl.haxx.se/
-# Download:  https://curl.haxx.se/download/curl-7.71.0.tar.xz
+# Download:  https://curl.haxx.se/download/curl-7.71.1.tar.xz
 
 # Required:    no
 # Recommended: make-ca (runtime)
@@ -24,13 +24,13 @@ PRGNAME="curl"
 #              nghttp2
 #              openldap
 #              samba
+#              impacket    (https://www.secureauth.com/labs/open-source-tools/impacket)
 #              libmetalink (https://launchpad.net/libmetalink/)
 #              librtmp     (http://rtmpdump.mplayerhq.hu/)
-#              spnego      (http://spnego.sourceforge.net/)
-#              impacket    (https://www.secureauth.com/labs/open-source-tools/impacket)
 #              ngtcp2      (https://github.com/ngtcp2/ngtcp2/)
 #              quiche      (https://github.com/cloudflare/quiche)
-#              stunnel (для HTTPS and FTPS тестов)
+#              spnego      (http://spnego.sourceforge.net/)
+#              stunnel     (для HTTPS and FTPS тестов)
 #              valgrind
 
 ROOT="/root"
@@ -79,7 +79,6 @@ command -v rtmpdump   &>/dev/null && LIBRTMP="--with-librtmp=/usr"
     --with-ca-path=/etc/ssl/certs || exit 1
 
 make || exit 1
-# известно, что в LFS системе тесты 323, 1139, 1140, 1173 и 1560 не проходят
 # make test
 make install
 make install DESTDIR="${TMP_DIR}"
