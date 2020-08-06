@@ -10,8 +10,8 @@ ARCH_NAME="${PRGNAME}-autoconf"
 # http://www.linuxfromscratch.org/blfs/view/svn/server/sqlite.html
 
 # Home page: https://sqlite.org
-# Download:  https://sqlite.org/2020/sqlite-autoconf-3320100.tar.gz
-#            https://sqlite.org/2020/sqlite-doc-3320100.zip
+# Download:  https://sqlite.org/2020/sqlite-autoconf-3320300.tar.gz
+#            https://sqlite.org/2020/sqlite-doc-3320300.zip
 
 # Required: unzip (для распаковки архива с документацией)
 # Optional: libedit (https://www.thrysoee.dk/editline)
