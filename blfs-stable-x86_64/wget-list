@@ -8,8 +8,8 @@ https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-consolidated_fixes-1.patch
-https://sqlite.org/2020/sqlite-autoconf-3310100.tar.gz
-https://sqlite.org/2020/sqlite-doc-3310100.zip
+https://sqlite.org/2020/sqlite-autoconf-3320300.tar.gz
+https://sqlite.org/2020/sqlite-doc-3320300.zip
 https://downloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz
 https://downloads.sourceforge.net/tcl/tcl8.6.10-html.tar.gz
 https://dist.libuv.org/dist/v1.34.2/libuv-v1.34.2.tar.gz
@@ -130,7 +130,7 @@ http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/lib
 https://github.com/libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2
 https://github.com/yaml/libyaml/archive/0.2.2/libyaml-dist-0.2.2.tar.gz
 http://bitmath.org/code/mtdev/mtdev-1.1.6.tar.bz2
-https://nodejs.org/dist/v12.16.1/node-v12.16.1.tar.xz
+https://nodejs.org/dist/v12.18.3/node-v12.18.3.tar.xz
 http://www.exiv2.org/builds/exiv2-0.27.3-Source.tar.gz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.22.tar.xz
 https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.bz2

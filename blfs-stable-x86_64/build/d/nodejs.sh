@@ -12,7 +12,7 @@ ARCH_NAME="node"
 # http://www.linuxfromscratch.org/blfs/view/svn/general/nodejs.html
 
 # Home page: https://nodejs.org/
-# Download:  https://nodejs.org/dist/v12.18.0/node-v12.18.0.tar.xz
+# Download:  https://nodejs.org/dist/v12.18.3/node-v12.18.3.tar.xz
 
 # Required:    python2
 #              which

@@ -128,7 +128,7 @@ l/icu.sh
 l/libxml2.sh
 l/libical.sh
 d/autoconf213.sh
-d/js.sh
+d/js60.sh
 l/polkit.sh
 ap/sudo.sh
 l/fuse.sh
@@ -181,7 +181,7 @@ l/libyaml.sh
 l/exiv2.sh
 ap/graphite2.sh
 l/libexif.sh
-d/js.sh
+d/js60.sh
 l/openjpeg.sh
 x/pixman.sh
 l/poppler.sh
@@ -271,5 +271,7 @@ a/usbutils.sh
 d/clisp.sh
 n/gpgme.sh
 tcl/expect.sh
+
+sqlite   (+) python2, python3, cyrus-sasl, nss, gnupg, exim, redland
 
 # vim:ft=conf
