@@ -5,10 +5,10 @@ PRGNAME="perl"
 ### Perl (Practical Extraction and Report Language)
 # Язык программирования Perl
 
-# http://www.linuxfromscratch.org/lfs/view/development/chapter06/perl.html
+# http://www.linuxfromscratch.org/lfs/view/development/chapter08/perl.html
 
 # Home page: https://www.perl.org/
-# Download:  https://www.cpan.org/src/5.0/perl-5.30.3.tar.xz
+# Download:  https://www.cpan.org/src/5.0/perl-5.32.0.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -37,31 +37,40 @@ export BUILD_BZIP2=0
 #     -d    - использовать значения по умолчанию для всех элементов
 #     -e    - обеспечивает выполнение всех заданий
 #     -s    - заставляет "замолчать" несущественный вывод
+# создадим общий libperl, необходимый для некоторых модулей perl
+#    -Duseshrplib
+# сборка Perl с поддержкой потоков
+#    -Dusethreads
 # путь для установки модулей Perl
 #    -Dvendorprefix=/usr
-# используем 'less' вместо 'more'
-#    -Dpager="/usr/bin/less -isR"
 # поскольку Groff еще не установлен, Configure считает, что мы не хотим
 # устанавливать man-страницы. Отменим его решение и укажем явно пути для
 # man-страниц
 #    -Dman1dir=/usr/share/man/man1
 #    -Dman3dir=/usr/share/man/man3
-# создадим общий libperl, необходимый для некоторых модулей perl
-#    -Duseshrplib
-# сборка Perl с поддержкой потоков
-#    -Dusethreads
-sh Configure                      \
-    -des                          \
-    -Dprefix=/usr                 \
-    -Dvendorprefix=/usr           \
-    -Dman1dir=/usr/share/man/man1 \
-    -Dman3dir=/usr/share/man/man3 \
-    -Dpager="/usr/bin/less -isR"  \
-    -Duseshrplib                  \
-    -Dusethreads || exit 1
+# используем 'less' вместо 'more'
+#    -Dpager="/usr/bin/less -isR"
+# где Perl ищет установленные модули
+#    -Dsitelib,-Dprivlib,-Darchlib, ...
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
+sh Configure                                         \
+    -des                                             \
+    -Duseshrplib                                     \
+    -Dusethreads                                     \
+    -Dprefix=/usr                                    \
+    -Dvendorprefix=/usr                              \
+    -Dman1dir=/usr/share/man/man1                    \
+    -Dman3dir=/usr/share/man/man3                    \
+    -Dpager="/usr/bin/less -isR"                     \
+    -Dsitelib=/usr/share/perl5/site_perl             \
+    -Dprivlib=/usr/share/perl5/core_perl             \
+    -Dvendorlib=/usr/share/perl5/vendor_perl         \
+    -Darchlib="/usr/lib/perl5/${MAJ_VER}/core_perl"  \
+    -Dsitearch="/usr/lib/perl5/${MAJ_VER}/site_perl" \
+    -Dvendorarch="/usr/lib/perl5/${MAJ_VER}/vendor_perl" || exit 1
 
 make || exit 1
-make test
+# make test
 make install
 make install DESTDIR="${TMP_DIR}"
 
