@@ -272,6 +272,4 @@ d/clisp.sh
 n/gpgme.sh
 tcl/expect.sh
 
-sqlite   (+) python2, python3, cyrus-sasl, nss, gnupg, exim, redland
-
 # vim:ft=conf
