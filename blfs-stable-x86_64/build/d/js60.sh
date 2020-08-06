@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="js"
+PRGNAME="js60"
 ARCH_NAME="mozjs"
 
 ### JS (Mozillas JavaScript engine)

@@ -31,12 +31,6 @@ def fix_pkg_name(name):
     if name == 'libjpeg':
         name = 'libjpeg-turbo'
 
-    if name == 'js60':
-        name = 'js'
-
-    if name == 'js68':
-        name = 'js'
-
     return name
 
 

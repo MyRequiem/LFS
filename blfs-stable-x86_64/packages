@@ -174,10 +174,10 @@ gobject-introspection               (+) glib, atk, json-glib, libgudev, libical,
 grantlee                            (-)
 gsl                                 (-)
 gspell                              (-)
-icu                                 (+) libxml2, libical, js, boost, nodejs,
+icu                                 (+) libxml2, libical, js60, boost, nodejs,
                                         harfbuzz, raptor
 jansson                             (-)
-js                                  (+) gjs, polkit
+js60                                (+) gjs, polkit
 json-c                              (+) cryptsetup
 json-glib                           (+) gegl
 keyutils                            (-)
@@ -350,12 +350,12 @@ unrar                               (+)
 unzip                               (+) docbook-xml, mc
 upower                              (+)
 usbutils                            (+)
-which                               (+) aspell, libseccomp, freetype, js, lvm2,
-                                        boost, gtk-doc, nodejs, lm-sensors,
-                                        pciutils
-zip                                 (+) docbook-xsl, js, mc
+which                               (+) aspell, libseccomp, freetype, js60,
+                                        lvm2, boost, gtk-doc, nodejs,
+                                        lm-sensors, pciutils
+zip                                 (+) docbook-xsl, js60, mc
 # --------------- General Libraries and Utilities/Programming ------------------
-autoconf213                         (+) js
+autoconf213                         (+) js60
 cbindgen                            (-)
 clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
@@ -363,7 +363,7 @@ cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         openjpeg, poppler, woff2
 dejagnu                             gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
-                                        popt, jasper, icu, js, fuse, glibmm,
+                                        popt, jasper, icu, js60, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc
 expect                              (+)
@@ -525,7 +525,7 @@ nasm                                (-) libjpeg-turbo
   |- perl-xml-sax-expat
 php                                 graphviz
 python2                             (+) libxml2, docbook-xsl, yasm, gpgme, gdb,
-                                        talloc, js, vim, brotli, nodejs,
+                                        talloc, js60, vim, brotli, nodejs,
                                         graphite2, doxygen, asciidoc, graphviz,
                                         python-six, cryptsetup, volume-key
 python3                             (+) libxml2, talloc, vim, brotli,
