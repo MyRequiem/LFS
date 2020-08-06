@@ -9,7 +9,7 @@ PRGNAME="iptables"
 # http://www.linuxfromscratch.org/blfs/view/svn/postlfs/iptables.html
 
 # Home page: https://netfilter.org/projects/iptables/index.html
-# Download:  http://www.netfilter.org/projects/iptables/files/iptables-1.8.4.tar.bz2
+# Download:  http://www.netfilter.org/projects/iptables/files/iptables-1.8.5.tar.bz2
 
 # Required: no
 # Optional: libpcap                (для сборки утилиты конфигурации nfsynproxy)

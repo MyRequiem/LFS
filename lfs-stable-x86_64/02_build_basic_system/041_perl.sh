@@ -70,7 +70,7 @@ sh Configure                                         \
     -Dvendorarch="/usr/lib/perl5/${MAJ_VER}/vendor_perl" || exit 1
 
 make || exit 1
-# make test
+make test
 make install
 make install DESTDIR="${TMP_DIR}"
 
