@@ -134,7 +134,7 @@ gd-library                          graphviz
 asciidoctor                         git
 # https://asciidoctor.org/
 
-docbook2x                           git
+docbook2x                           git, dejagnu
 # http://docbook2x.sourceforge.net/
 
 silgraphite                         graphite2

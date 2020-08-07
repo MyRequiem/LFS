@@ -361,12 +361,12 @@ clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
                                         openjpeg, poppler, woff2
-dejagnu                             gdb, autoconf213
+dejagnu                             (+) gdb, autoconf213
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js60, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc
-expect                              (+)
+expect                              (+) dejagnu
 gcc                                 gdb, graphviz
 gc
 gdb                                 (+) python3, glib, talloc, openssh
@@ -1259,7 +1259,7 @@ docbook4
 opensp
 openjade
 docbook-dsssl
-docbook-utils                       fontconfig, fcron
+docbook-utils                       fontconfig, fcron, dejagnu
 # --- Printing, Scanning and Typesetting/Extensible Markup Language (XML) ------
 docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
                                         xmlto, gtk-doc

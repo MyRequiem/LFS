@@ -271,5 +271,8 @@ a/usbutils.sh
 d/clisp.sh
 n/gpgme.sh
 tcl/expect.sh
+d/dejagnu.sh
+d/gdb.sh
+d/autoconf213.sh
 
 # vim:ft=conf
