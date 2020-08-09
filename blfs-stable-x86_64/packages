@@ -361,15 +361,15 @@ clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
                                         openjpeg, poppler, woff2
-dejagnu                             (+) gdb, autoconf213
+dejagnu                             (+) gdb, autoconf213, gcc
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js60, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc
 expect                              (+) dejagnu
-gcc                                 gdb, graphviz
+gcc                                 (+) gdb, graphviz
 gc
-gdb                                 (+) python3, glib, talloc, openssh
+gdb                                 (+) python3, glib, talloc, openssh, gcc
 git                                 talloc, libidn2, doxygen, poppler
 guile                               gnutls, gdb, graphviz
 librep
@@ -564,7 +564,8 @@ tk                                  python2, python3, git, graphviz, expect
 vala                                libical, gegl, modem-manager
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
-                                    gdb, pcre2, talloc, lvm2, git, dbus, wget
+                                    gdb, pcre2, talloc, lvm2, git, dbus, wget,
+                                    gcc
 yasm                                (+) libjpeg-turbo
 # Other Programming Tools
   |- ctags

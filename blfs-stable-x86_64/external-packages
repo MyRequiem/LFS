@@ -5,6 +5,9 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+isl                                 gcc
+# https://repo.or.cz/isl.git
+
 libffcall                           clisp
 # http://www.gnu.org/software/libffcall/
 

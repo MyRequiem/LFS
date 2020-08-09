@@ -274,5 +274,8 @@ tcl/expect.sh
 d/dejagnu.sh
 d/gdb.sh
 d/autoconf213.sh
+d/gcc.sh
+d/gdb.sh
+ap/graphviz.sh
 
 # vim:ft=conf
