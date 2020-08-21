@@ -47,8 +47,10 @@ def main():
     """
 
     book_url = 'http://www.linuxfromscratch.org'
-    response = urllib.request.urlopen(('{0}/{1}/errata/'
-                                       'stable/').format(book_url, repo))
+    full_url = '{0}/{1}/errata/stable/'.format(book_url, repo)
+    print('### {0}'.format(full_url))
+
+    response = urllib.request.urlopen(full_url)
     soup = BeautifulSoup(response,
                          from_encoding=response.info().get_param('charset'),
                          features='html.parser')
