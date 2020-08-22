@@ -185,7 +185,7 @@ libaio                              (+) lvm2
 libarchive                          (+) cmake, ed
 libassuan                           (+) gpgme, gnupg, pinentry
 libatasmart                         (+) udisks
-libatomic-ops                       (+)
+libatomic-ops                       (+) gc
 libblockdev                         (+) udisks
 libbytesize                         (+) libblockdev
 libcroco                            (+)
@@ -368,7 +368,7 @@ doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         libexif, openjpeg, dbus, mc
 expect                              (+) dejagnu
 gcc                                 (+) gdb, graphviz
-gc
+gc                                  (+)
 gdb                                 (+) python3, glib, talloc, openssh, gcc
 git                                 (+) talloc, libidn2, doxygen, poppler
 guile                               gnutls, gdb, graphviz

@@ -278,5 +278,6 @@ d/gcc.sh
 d/gdb.sh
 ap/graphviz.sh
 l/libatomic-ops.sh
+d/gc.sh
 
 # vim:ft=conf
