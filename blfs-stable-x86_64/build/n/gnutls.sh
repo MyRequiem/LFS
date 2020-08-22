@@ -44,6 +44,7 @@ IDN="--without-idn"
 UNBOUND="--disable-libdane"
 VALGRIND="--disable-valgrind-tests"
 TROUSERS="--without-tpm"
+GUILE="--disable-guile"
 
 command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v idn          &>/dev/null && IDN="--with-idn"
@@ -51,6 +52,7 @@ command -v idn2         &>/dev/null && IDN="--with-idn"
 command -v unbound      &>/dev/null && UNBOUND="--enable-libdane"
 command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
 command -v tcsd         &>/dev/null && TROUSERS="--with-tpm"
+command -v guile        &>/dev/null && GUILE="--enable-guile"
 
 # GnuTLS не поддерживает guile, поэтому отключаем его
 #    --disable-guile
@@ -60,7 +62,6 @@ command -v tcsd         &>/dev/null && TROUSERS="--with-tpm"
 #    --with-default-trust-store-pkcs11="pkcs11:"
 ./configure                                     \
     --prefix=/usr                               \
-    --disable-guile                             \
     --enable-openssl-compatibility              \
     --with-default-trust-store-pkcs11="pkcs11:" \
     "${GTK_DOC}"                                \
@@ -68,6 +69,7 @@ command -v tcsd         &>/dev/null && TROUSERS="--with-tpm"
     "${UNBOUND}"                                \
     "${VALGRIND}"                               \
     "${TROUSERS}"                               \
+    "${GUILE}"                                  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
