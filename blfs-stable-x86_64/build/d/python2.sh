@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="python2"
+ARCH_NAME="Python"
 
 ### Python (object-oriented interpreted programming language)
 # Язык программирования Python
@@ -18,7 +19,7 @@ PRGNAME="python2"
 #           tk       (для создания дополнительных модулей)
 
 ROOT="/root"
-source "${ROOT}/check_environment.sh"              || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 INSTALLED="$(find /var/log/packages/ -type f -name "python2-2.*")"
 if [ -n "${INSTALLED}" ]; then
@@ -28,7 +29,17 @@ if [ -n "${INSTALLED}" ]; then
     removepkg --no-color "${INSTALLED}"
 fi
 
-source "${ROOT}/unpack_source_archive.sh" "Python" || exit 1
+SOURCES="${ROOT}/src"
+VERSION="$(find ${SOURCES} -type f \
+    -name "${ARCH_NAME}-2*.tar.?z*" 2>/dev/null | sort | \
+    head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+tar xvf "${SOURCES}/Python-${VERSION}".tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
