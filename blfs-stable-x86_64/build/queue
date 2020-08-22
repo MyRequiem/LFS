@@ -279,5 +279,9 @@ d/gdb.sh
 ap/graphviz.sh
 l/libatomic-ops.sh
 d/gc.sh
+d/guile.sh
+n/gnutls.sh
+d/gdb.sh
+ap/graphviz.sh
 
 # vim:ft=conf

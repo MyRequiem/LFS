@@ -130,7 +130,8 @@ xfsprogs                            (-) talloc, lvm2, udisks
 # ------------ Post LFS Configuration and Extra Software/Editors ---------------
 bluefish                            (-)
 ed                                  (+)
-emacs                               (-) libidn, pinentry, desktop-file-utils
+emacs                               (-) libidn, pinentry, desktop-file-utils,
+                                        guile
 gedit                               (-)
 joe                                 (-)
 kate                                (-)
@@ -214,7 +215,7 @@ libssh2                             (+) curl
 libstatgrab                         (+)
 libtasn1                            (+) p11-kit, gnutls
 libunique
-libunistring                        (+) gnutls, libidn2
+libunistring                        (+) gnutls, libidn2, guile
 libusb                              (+) gnupg, upower, usbutils
 libuv                               (+) cmake, nodejs
 libxkbcommon
@@ -368,10 +369,11 @@ doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         libexif, openjpeg, dbus, mc
 expect                              (+) dejagnu
 gcc                                 (+) gdb, graphviz
-gc                                  (+)
-gdb                                 (+) python3, glib, talloc, openssh, gcc
+gc                                  (+) guile
+gdb                                 (+) python3, glib, talloc, openssh, gcc,
+                                        guile
 git                                 (+) talloc, libidn2, doxygen, poppler
-guile                               gnutls, gdb, graphviz
+guile                               (+) gnutls, gdb, graphviz
 librep
 llvm                                icu, doxygen, potrace
 lua52
