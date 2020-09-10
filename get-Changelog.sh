@@ -31,6 +31,7 @@ if [[ -e "${CHANGELOG_LFS}" && -e "${CHANGELOG_LFS}.new" ]]; then
 
     echo -e "LFS: ${LFS_URL}\n-----------------------"
     cat "${CHANGELOG_LFS}.diff"
+    rm -f "${CHANGELOG_LFS}.diff"
     echo ""
 fi
 
@@ -42,5 +43,6 @@ if [[ -e "${CHANGELOG_BLFS}" && -e "${CHANGELOG_BLFS}.new" ]]; then
 
     echo -e "BLFS: ${BLFS_URL}\n-----------------------"
     cat "${CHANGELOG_BLFS}.diff"
+    rm -f "${CHANGELOG_BLFS}.diff"
     echo ""
 fi
