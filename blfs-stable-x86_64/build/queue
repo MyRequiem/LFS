@@ -283,5 +283,9 @@ d/guile.sh
 n/gnutls.sh
 d/gdb.sh
 ap/graphviz.sh
+d/llvm.sh
+l/icu.sh
+d/doxygen.sh
+ap/potrace.sh
 
 # vim:ft=conf

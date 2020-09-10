@@ -5,6 +5,12 @@
 #                                   (+) - установлено
 #                                   (-) - не устанавливаем
 
+recommonmark                        llvm
+# https://pypi.org/project/recommonmark/
+
+z3                                  llvm
+# https://github.com/Z3Prover/z3
+
 isl                                 gcc
 # https://repo.or.cz/isl.git
 
@@ -101,7 +107,7 @@ io                                  graphviz
 mono                                graphviz
 # https://www.mono-project.com/
 
-ocaml                               graphviz
+ocaml                               graphviz, llvm
 # https://ocaml.org/
 
 r                                   graphviz
@@ -268,7 +274,7 @@ spnego                              curl
 libmpdec                            python3
 # http://www.bytereef.org/mpdecimal/
 
-sphinx                              cmake
+sphinx                              cmake, llvm
 # https://pypi.org/project/Sphinx/
 
 krb4                                cyrus-sasl
