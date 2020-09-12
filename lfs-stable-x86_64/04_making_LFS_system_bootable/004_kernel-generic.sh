@@ -6,7 +6,7 @@ VERSION="$1"
 ### Linux kernel generic (a general purpose SMP Linux kernel)
 # Ядро linux
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/kernel.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -40,7 +40,7 @@ make mrproper
 # копируем заранее приготовленный конфиг в корень LFS системы
 cp "${CONFIG}" .config || exit 1
 
-NUMJOBS="$(($(nproc) + 1))"
+NUMJOBS="$(nproc)"
 # собираем ядро
 make -j"${NUMJOBS}" bzImage || exit 1
 

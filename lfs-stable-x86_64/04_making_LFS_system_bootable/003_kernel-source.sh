@@ -6,17 +6,17 @@ ARCH_NAME="linux"
 ### Linux kernel source (Source code for Linus Torvalds Linux kernel)
 # Исходный код ядра linux
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/kernel.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html
 
 # Home page:    https://www.kernel.org/
-# Download:     https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.15.tar.xz
+# Download:     https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.8.8.tar.xz
 # All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
 
-# На 05.04.20 версия ядра linux для LFS-stable - 5.5.3
+# На 12.09.20 версия ядра linux для LFS-stable - 5.8.3
 # По рекомендации на странице
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
-# cледует использовать последнюю доступную версию ядра 5.5.x
-# На 05.04.20 последняя версия ядра ветки 5.5.x это 5.5.15
+# cледует использовать последнюю доступную версию ядра 5.8.x
+# На 12.09.20 последняя версия ядра ветки 5.8.x это 5.8.8
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
