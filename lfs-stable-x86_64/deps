@@ -3,4 +3,4 @@
 ###***###
 perl                                xml-parser, vim
 
-vim:ft=conf
+# vim:ft=conf
