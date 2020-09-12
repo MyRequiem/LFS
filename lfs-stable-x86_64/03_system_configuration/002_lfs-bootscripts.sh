@@ -25,8 +25,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (scripts to start/stop the LFS system)
 #
 # The LFS-Bootscripts package contains a set of scripts to start/stop the LFS
-# system at bootup/shutdown. The configuration files and procedures needed to
-# customize the boot process are described in the following sections.
+# system at bootup/shutdown.
 #
 # Download: http://www.linuxfromscratch.org/lfs/downloads/9.1/${PRGNAME}-${VERSION}.tar.xz
 #
