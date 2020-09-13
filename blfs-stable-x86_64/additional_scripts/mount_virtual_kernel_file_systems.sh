@@ -37,8 +37,10 @@ case "$1" in
         ;;
 esac
 
+LFS_TMP_ON_HOST="/root/src/lfs-tmp"
 if [ -n "${UMOUNT}" ]; then
-    umount -v ${LFS}/{dev{/pts,},proc,sys,run,boot} 2>/dev/null
+    umount "${LFS_TMP_ON_HOST}"
+    umount "${LFS}"/{dev{/pts,},proc,sys,run,boot} 2>/dev/null
     exit 0
 fi
 
@@ -124,4 +126,10 @@ fi
 if ! mount | /bin/grep -q "${LFS}/boot"; then
     ! [ -d "${LFS}/boot" ] && mkdir -pv "${LFS}/boot"
     mount -v --bind /boot "${LFS}/boot"
+fi
+
+# монтируем директорию на хосте на ${LFS}/tmp
+if ! mount | /bin/grep -q "${LFS_TMP_ON_HOST}"; then
+    ! [ -d "${LFS_TMP_ON_HOST}" ] && mkdir -p "${LFS_TMP_ON_HOST}"
+    mount -v --bind "${LFS_TMP_ON_HOST}" "${LFS}/tmp/"
 fi
