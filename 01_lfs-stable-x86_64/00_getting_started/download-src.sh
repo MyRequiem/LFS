@@ -1,7 +1,5 @@
 #! /bin/bash
 
-! [ -d /mnt/lfs/sources ] && mkdir -pv /mnt/lfs/sources
-
 ! [ -r ./wget-list ] && \
     wget http://www.linuxfromscratch.org/lfs/downloads/stable/wget-list
 
@@ -13,3 +11,5 @@ wget                         \
     --tries=3                \
     --wait=2                 \
     --directory-prefix=/mnt/lfs/sources/
+
+rm -f wget-list

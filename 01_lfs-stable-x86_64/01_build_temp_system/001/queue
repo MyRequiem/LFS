@@ -1,0 +1,33 @@
+###
+# Компиляция кросс-инструментальной цепочки инструментов
+###
+binutils_pass_1.sh
+gcc_pass_1.sh
+linux-headers.sh
+glibc.sh
+check_compiling_and_linking_1.sh
+libstdc++.sh
+
+###
+# Кросс-компиляция временных инструментов
+###
+m4.sh
+ncurses.sh
+bash.sh
+coreutils.sh
+diffutils.sh
+file.sh
+findutils.sh
+gawk.sh
+grep.sh
+gzip.sh
+make.sh
+patch.sh
+sed.sh
+tar.sh
+xz.sh
+binutils_pass_2.sh
+gcc_pass_2.sh
+check_compiling_and_linking_2.sh
+
+# vim:ft=conf

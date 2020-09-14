@@ -5,7 +5,6 @@
 checking LFS and BLFS update
 """
 
-import sys
 import urllib.request
 from glob import glob as Glob
 
@@ -31,17 +30,13 @@ def fix_pkg_name(name):
     if name == 'libjpeg':
         name = 'libjpeg-turbo'
 
+    if name == 'x7lib':
+        name = 'xorg-libraries'
+
     return name
 
 
-def show_help():
-    """
-    show help message
-    """
-    print('Usage: {0} <lfs|blfs>'.format(sys.argv[0]))
-
-
-def main():
+def main(repo):
     """
     main
     """
@@ -137,14 +132,5 @@ def main():
                                 clrs['reset']))
 
 
-args = sys.argv[1:]
-if len(args) == 0:
-    show_help()
-    raise SystemExit
-
-repo = args[0]
-if repo not in ('lfs', 'blfs'):
-    show_help()
-    raise SystemExit
-
-main()
+main('lfs')
+main('blfs')

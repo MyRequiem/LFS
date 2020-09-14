@@ -6,8 +6,7 @@
 LFS="/mnt/lfs"
 PART="/dev/sda10"
 
-# сначала нужно отмонтировать раздел на котором будем собирать LFS систему
-# (если он примонтирован) и отформатировать его в ext4
+# Форматирование раздела в ext4
 echo "Attention!!!"
 echo "Partition on which the system will be build: ${PART}"
 echo -n "Do you want to format it to a ext4 file system? [yes/No]: "
@@ -15,11 +14,14 @@ echo -n "Do you want to format it to a ext4 file system? [yes/No]: "
 read -r JUNK
 
 if [[ "x${JUNK}" == "xyes" ]]; then
-    umount "${PART}" &>/dev/null
     echo ""
+    echo "Unmounting ${PART} partition:"
+    umount "${PART}" 2>/dev/null
     fdisk -l "${PART}"
     echo ""
+    echo "Creating ext4 file system on a partition ${PART}"
     mkfs.ext4 -v "${PART}"
+    echo ""
 else
     echo "Canceled ..."
     exit 0
@@ -38,9 +40,8 @@ mount -vt ext4 "${PART}" "${LFS}"
 # /mnt/lfs/sources
 # /mnt/lfs/tools
 mkdir -pv "${LFS}"/{sources,tools}
-# разрешена запись всем пользователям, но удалять может только владелец
-# каталога
-chmod -v a+wt "${LFS}/sources"
+# запись разрешена всем, но удалять может только владелец каталога
+chmod -v a+wt "${LFS}/sources" 2>/dev/null
 
 # ссылка на хосте /tools -> /mnt/lfs/tools
 ln -sfv "${LFS}/tools" /
