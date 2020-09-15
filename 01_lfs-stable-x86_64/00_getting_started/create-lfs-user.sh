@@ -23,10 +23,8 @@ if [ -z "${USER_EXISTS}" ]; then
     passwd lfs
 fi
 
-# предоставим пользователю lfs полный доступ к каталогам ${LFS}/tools и
-# ${LFS}/sources, сделав его владельцем этих каталогов
-chown lfs:root "${LFS}/tools"
-chown lfs:root "${LFS}/sources"
+# предоставим пользователю lfs полный доступ ко всем каталогам в LFS системе
+chown -v lfs:lfs "${LFS}"/{bin,etc,lib,lib64,sbin,sources,tools,usr,var}
 
 BASH_PROFILE="/home/lfs/.bash_profile"
 cat << EOF > "${BASH_PROFILE}"
@@ -75,7 +73,7 @@ LC_ALL=C
 # временного набора инструментов
 LFS_TGT=x86_64-lfs-linux-gnu
 
-PATH=/tools/bin:/bin:/usr/bin
+PATH="\${LFS}/tools/bin:/bin:/usr/bin"
 
 # количество потоков сборки для 'make' установим равный количеству ядер
 # процессора
@@ -88,32 +86,6 @@ alias vh='/bin/ls -F -b -T 0 --group-directories-first --color=auto --format=lon
 # End ${BASHRC}
 EOF
 
-VIMRC="/home/lfs/.vimrc"
-cat << EOF > "${VIMRC}"
-" Begin ${VIMRC}
-
-" ensure defaults are set before customizing settings,
-" not after source \$VIMRUNTIME/defaults.vim
-let skip_defaults_vim = 1
-
-set nocompatible
-syntax on
-set background=dark
-set number
-set backspace=indent,eol,start
-set nobackup
-set noswapfile
-set noundofile
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set shiftround
-set expandtab
-
-" End ${VIMRC}
-EOF
-
-chown -v lfs:lfs /home/lfs/{.bash_profile,.bashrc,.vimrc}
+chown -v lfs:lfs /home/lfs/{.bash_profile,.bashrc}
 
 echo -e "\nNow, you can login as a lfs user by entering the command\n# su - lfs"

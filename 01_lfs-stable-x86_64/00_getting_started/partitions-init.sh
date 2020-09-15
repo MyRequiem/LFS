@@ -1,10 +1,10 @@
 #! /bin/bash
 
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter02/mounting.html
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter03/introduction.html
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter04/creatingtoolsdir.html
 
-LFS="/mnt/lfs"
 PART="/dev/sda10"
+LFS="/mnt/lfs"
 
 # Форматирование раздела в ext4
 echo "Attention!!!"
@@ -15,11 +15,11 @@ read -r JUNK
 
 if [[ "x${JUNK}" == "xyes" ]]; then
     echo ""
-    echo "Unmounting ${PART} partition:"
+    echo "*** Unmounting ${PART} partition:"
     umount "${PART}" 2>/dev/null
     fdisk -l "${PART}"
     echo ""
-    echo "Creating ext4 file system on a partition ${PART}"
+    echo "*** Creating ext4 file system on a partition ${PART}"
     mkfs.ext4 -v "${PART}"
     echo ""
 else
@@ -36,12 +36,8 @@ mkdir -pv "${LFS}"
 # другой раздел /dev/sdaXX, и т.д.
 mount -vt ext4 "${PART}" "${LFS}"
 
-# создаем нужные директории:
-# /mnt/lfs/sources
-# /mnt/lfs/tools
-mkdir -pv "${LFS}"/{sources,tools}
-# запись разрешена всем, но удалять может только владелец каталога
-chmod -v a+wt "${LFS}/sources" 2>/dev/null
+# создаем нужные директории
+mkdir -pv "${LFS}"/{bin,etc,lib,lib64,sbin,sources,tools,usr,var}
 
-# ссылка на хосте /tools -> /mnt/lfs/tools
-ln -sfv "${LFS}/tools" /
+# запись в /sources разрешена всем, но удалять может только владелец каталога
+chmod -v a+wt "${LFS}/sources"

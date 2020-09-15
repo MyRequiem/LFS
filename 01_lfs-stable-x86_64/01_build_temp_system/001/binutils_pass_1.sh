@@ -17,8 +17,7 @@ PRGNAME="binutils"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# документация Binutils рекомендует собирать binutils в отдельном каталоге для
-# сборки
+# документация Binutils рекомендует собирать binutils в отдельном каталоге
 mkdir build
 cd build || exit 1
 
@@ -39,7 +38,7 @@ cd build || exit 1
 # компилятора хоста
 #    --disable-werror
 ../configure                \
-    --prefix="${LFS}/tools" \
+    --prefix=/tools         \
     --with-sysroot="${LFS}" \
     --target="${LFS_TGT}"   \
     --disable-nls           \
