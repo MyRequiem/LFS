@@ -1,15 +1,20 @@
 ###
-# Компиляция кросс-инструментальной цепочки инструментов
+# Компиляция кросс-инструментальной цепочки
 ###
-binutils_pass_1.sh
-gcc_pass_1.sh
+binutils-pass-1.sh
+gcc-pass-1.sh
 linux-headers.sh
 glibc.sh
-check_compiling_and_linking_1.sh
-libstdc++.sh
+check-compiling-and-linking.sh
+libstdc++-pass-1.sh
 
 ###
 # Кросс-компиляция временных инструментов
+###
+# Следующие утилиты устанавливаются на свое окончательное место, но пока не
+# могут быть использованы, т.к. при их компоновке будут использоваться уже
+# установленные в LFS систему новые библиотеки и собранные программы будут
+# находить их в дальнейшем только в среде chroot
 ###
 m4.sh
 ncurses.sh
@@ -26,8 +31,7 @@ patch.sh
 sed.sh
 tar.sh
 xz.sh
-binutils_pass_2.sh
-gcc_pass_2.sh
-check_compiling_and_linking_2.sh
+binutils-pass-2.sh
+gcc-pass-2.sh
 
 # vim:ft=conf

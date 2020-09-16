@@ -5,10 +5,9 @@ PRGNAME="bash"
 ### Bash
 # Bourne-Again SHell
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/bash.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html
 
 # Home page: http://www.gnu.org/software/bash/
-# Download:  http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -17,13 +16,18 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 # которая, как известно, вызывает ошибки сегментации. Теперь Bash будет
 # использовать функции malloc из Glibc, которые более стабильны.
 #    --without-bash-malloc
-./configure         \
-    --prefix=/tools \
-    --without-bash-malloc || exit 1
+./configure                           \
+    --prefix=/usr                     \
+    --host="${LFS_TGT}"               \
+    --without-bash-malloc             \
+    --build="$(support/config.guess)" \
+    --docdir="/usr/share/doc/bash-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-make tests
-make install
+make install DESTDIR="${LFS}"
 
-# создадим символическую ссылку в /tools/bin sh -> bash
-ln -sv bash /tools/bin/sh
+# переместим исполняемый файл из /mnt/lfs/usr/bin в /mnt/lfs/bin
+mv "${LFS}/usr/bin/bash" "${LFS}/bin/bash"
+
+# создадим ссылку sh -> bash в /bin/
+ln -svf bash "${LFS}/bin/sh"

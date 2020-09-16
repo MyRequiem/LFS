@@ -21,10 +21,9 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 mkdir build
 cd build || exit 1
 
-### Конфигурация
-# установка в каталог /tools
+# установка в каталог /mnt/lfs/tools
 #    --prefix="${LFS}/tools"
-# искать библиотеки целевой системы по мере необходимости в ${LFS}
+# искать библиотеки целевой системы по мере необходимости в /mnt/lfs
 #    --with-sysroot="${LFS}"
 # поскольку описание компьютера в переменной LFS_TGT (x86_64-lfs-linux-gnu)
 # немного отличается от значения, возвращаемого сценарием config.guess
@@ -38,7 +37,7 @@ cd build || exit 1
 # компилятора хоста
 #    --disable-werror
 ../configure                \
-    --prefix=/tools         \
+    --prefix="${LFS}/tools" \
     --with-sysroot="${LFS}" \
     --target="${LFS_TGT}"   \
     --disable-nls           \

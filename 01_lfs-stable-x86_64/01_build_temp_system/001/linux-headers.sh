@@ -9,7 +9,6 @@ ARCH_NAME="$(echo ${PRGNAME} | cut -d - -f 1)"
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter05/linux-headers.html
 
 # Home page: https://www.kernel.org/
-# Download:  https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.8.9.tar.xz
 
 # cледует использовать последнюю доступную стабильную версию ядра ветки v5.x
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
@@ -30,4 +29,4 @@ make headers
 # удалим не нужные файлы и скопируем заголовки в $LFS/tools/include/
 find usr/include -name '.*' -delete
 rm -f usr/include/Makefile
-cp -rv usr/include/* /tools/include/
+cp -rv usr/include "${LFS}/usr"

@@ -22,7 +22,7 @@ if [[ "${LFS_TGT}" != "x86_64-lfs-linux-gnu" ]]; then
     exit 1
 fi
 
-if [[ "${PATH}" != "/tools/bin:/bin:/usr/bin" ]]; then
+if [[ "${PATH}" != "${LFS}/tools/bin:/bin:/usr/bin" ]]; then
     echo "Error: PATH=\"${PATH}\""
     echo ""
     echo "Environment variable PATH must be equal '/tools/bin:/bin:/usr/bin'"

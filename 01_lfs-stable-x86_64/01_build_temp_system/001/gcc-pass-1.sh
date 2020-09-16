@@ -3,8 +3,8 @@
 PRGNAME="gcc"
 
 ### GCC
-# Пакет содержит коллекцию компиляторов GNU, которая включает компиляторы C и
-# C++
+# Пакет содержит коллекцию компиляторов GNU, который на данный момент будет
+# включать только компиляторы C и C++
 
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-pass1.html
 
@@ -44,7 +44,9 @@ sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 mkdir build
 cd build || exit 1
 
-### Конфигурация
+# пакет гарантированно будет совместим с версией Glibc хоста, т.е.
+# устанавливаем минимальные требования к версии
+# --with-glibc-version=2.11
 # поскольку рабочая библиотека C еще не доступна, это гарантирует, что при
 # сборке libgcc определена константа injit_libc. Это предотвращает компиляцию
 # любого кода, который требует поддержки libc.
@@ -56,19 +58,18 @@ cd build || exit 1
 # использовать некоторые внутренние структуры данных, которые необходимы, но не
 # могут быть обнаружены при построении кросс-компилятора
 #    --enable-initfini-array
-# локальный префикс - это место в системе, в котором GCC будет искать локально
-# по умолчанию GCC ищет системные заголовки в /usr/include.
-#    --with-native-system-header-dir=/tools/include
-# заставляет GCC статически связывать свои внутренние библиотеки. Мы делаем это,
-# чтобы избежать возможных проблем с хост-системой
+# отключаем локализацию, поскольку i18n на данном этапе нам не требуется
+#    --disable-nls
+# заставляет GCC статически связывать свои внутренние библиотеки. Мы делаем это
+# для того, чтобы избежать возможных проблем с библиотеками хост-системы
 #    --disable-shared
 # для x86_64 архитектуры LFS пока не поддерживает мультибиблиотечную
 # конфигурацию
 #    --disable-multilib
-# Эти ключи отключают поддержку десятичного расширения с плавающей запятой,
-# потоков libatomic, libgomp, libquadmath, libssp, libvtv и стандартной
-# библиотеки C ++ соответственно. Эти функции не будут компилироваться при
-# сборке кросс-компилятора и не нужны для кросс-компиляции временного Glibc
+# отключачаем поддержку десятичного расширения с плавающей запятой, потоков
+# libatomic, libgomp, libquadmath, libssp, libvtv и стандартной библиотеки C++
+# соответственно, т.к. эти функции не нужны для кросс-компиляции временного
+# libc
 #    --disable-decimal-float
 #    --disable-threads
 #    --disable-libatomic
@@ -79,25 +80,25 @@ cd build || exit 1
 #    --disable-libstdcxx
 # собираем только необходимые на данный момент компиляторы C и C++
 #    --enable-languages=c,c++
-../configure                   \
-    --target="${LFS_TGT}"      \
-    --prefix=/tools            \
-    --with-glibc-version=2.11  \
-    --with-sysroot="${LFS}"    \
-    --with-newlib              \
-    --without-headers          \
-    --enable-initfini-array    \
-    --disable-nls              \
-    --disable-shared           \
-    --disable-multilib         \
-    --disable-decimal-float    \
-    --disable-threads          \
-    --disable-libatomic        \
-    --disable-libgomp          \
-    --disable-libquadmath      \
-    --disable-libssp           \
-    --disable-libvtv           \
-    --disable-libstdcxx        \
+../configure                  \
+    --target="${LFS_TGT}"     \
+    --prefix="${LFS}/tools"   \
+    --with-glibc-version=2.11 \
+    --with-sysroot="${LFS}"   \
+    --with-newlib             \
+    --without-headers         \
+    --enable-initfini-array   \
+    --disable-nls             \
+    --disable-shared          \
+    --disable-multilib        \
+    --disable-decimal-float   \
+    --disable-threads         \
+    --disable-libatomic       \
+    --disable-libgomp         \
+    --disable-libquadmath     \
+    --disable-libssp          \
+    --disable-libvtv          \
+    --disable-libstdcxx       \
     --enable-languages=c,c++ || exit 1
 
 make || make -j1 || exit 1
