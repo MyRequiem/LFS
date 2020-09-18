@@ -4,7 +4,7 @@
 changing-ownership.sh
 # перед запуском следующего скрипта проверить в нем переменную PART, которая
 # должна указывать на раздел жесткого диска, смонтированного в /mnt/lfs
-mount-virtual-kernel-file-systems.sh
+mount-virtual-kernel-file-systems.sh --mount
 
 ###
 # Переходим в chroot окружение
@@ -20,6 +20,15 @@ gettext.sh
 bison.sh
 perl.sh
 python3.sh
+texinfo.sh
+util-linux.sh
+cleaning-up-temporary-system.sh
+
+###
+# Выходим из chroot окружения и запускаем от пользователя root
+###
+mount-virtual-kernel-file-systems.sh --umount
+stripping.sh
 
 
 #vim:ft=conf
