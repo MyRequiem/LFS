@@ -14,7 +14,8 @@ creating-directories-tree.sh
 creating-essential-files-and-symlinks.sh
 
 # собираем пакеты
-
+rev.sh
+libstdc++-pass-2.sh
 
 
 #vim:ft=conf
