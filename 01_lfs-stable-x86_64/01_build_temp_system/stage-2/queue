@@ -1,0 +1,20 @@
+###
+# Запускаем от пользователя root
+###
+changing-ownership.sh
+# перед запуском следующего скрипта проверить в нем переменную PART, которая
+# должна указывать на раздел жесткого диска, смонтированного в /mnt/lfs
+mount-virtual-kernel-file-systems.sh
+
+###
+# Переходим в chroot окружение
+./entering-chroot-env.sh
+###
+creating-directories-tree.sh
+creating-essential-files-and-symlinks.sh
+
+# собираем пакеты
+
+
+
+#vim:ft=conf

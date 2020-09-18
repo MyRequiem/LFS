@@ -2,7 +2,9 @@
 
 PKGNAME="main-directory-tree"
 
-# Создание основной структуры дерева корневой файловой системы LFS
+# Создание основного дерева каталогов корневой файловой системы, основанного на
+# Filesystem Hierarchy Standard (FHS)
+# https://refspecs.linuxfoundation.org/fhs.shtml
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1

@@ -1,9 +1,9 @@
 #! /bin/bash
 
 SRC_ARCH_NAME="$1"
-SOURCES="${LFS}/sources"
-VERSION=$(echo "${SOURCES}/${SRC_ARCH_NAME}"-*.tar.?z* | rev | \
-    cut -f 3- -d . | cut -f 1 -d - | rev)
+SOURCES="/sources"
+VERSION="$(echo "${SOURCES}/${SRC_ARCH_NAME}"-*.tar.?z* | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
 BUILD_DIR="${SOURCES}/build"
 
 mkdir -p "${BUILD_DIR}"
