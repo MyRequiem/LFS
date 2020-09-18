@@ -16,6 +16,7 @@ creating-essential-files-and-symlinks.sh
 # собираем пакеты
 rev.sh
 libstdc++-pass-2.sh
+gettext.sh
 
 
 #vim:ft=conf
