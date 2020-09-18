@@ -11,8 +11,9 @@ PRGNAME="gettext"
 
 # Home page: http://www.gnu.org/software/gettext/
 
-source "$(pwd)/check_environment.sh"                  || exit 1
-source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+ROOT="/"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # на данный момент не нужно устанавливать какие-либо общие библиотеки Gettext,
 # поэтому нет необходимости их создавать

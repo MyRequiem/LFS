@@ -17,6 +17,8 @@ creating-essential-files-and-symlinks.sh
 rev.sh
 libstdc++-pass-2.sh
 gettext.sh
+bison.sh
+perl.sh
 
 
 #vim:ft=conf
