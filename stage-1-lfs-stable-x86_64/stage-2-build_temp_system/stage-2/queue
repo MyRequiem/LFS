@@ -19,6 +19,7 @@ libstdc++-pass-2.sh
 gettext.sh
 bison.sh
 perl.sh
+python3.sh
 
 
 #vim:ft=conf
