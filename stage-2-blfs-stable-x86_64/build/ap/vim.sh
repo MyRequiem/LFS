@@ -21,7 +21,6 @@ PRGNAME="vim"
 #              python3
 #              rsync
 #              ruby
-#              tcl
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"      || exit 1
@@ -52,7 +51,6 @@ echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
 GUI="no"
 XORG_SERVER="--without-x"
 FONTSET="--disable-fontset"
-TCL="no"
 LUA="no"
 RUBY="no"
 PERL="no"
@@ -63,7 +61,6 @@ GPM="dis"
 command -v gtk-demo  &>/dev/null && GUI="gtk2"
 command -v gtk3-demo &>/dev/null && GUI="gtk3"
 command -v Xorg      &>/dev/null && XORG_SERVER="--with-x"
-command -v tclsh     &>/dev/null && TCL="yes"
 command -v lua       &>/dev/null && LUA="yes"
 command -v ruby      &>/dev/null && RUBY="yes"
 command -v perl      &>/dev/null && PERL="yes"
@@ -86,7 +83,7 @@ fi
     --enable-multibyte                \
     --enable-terminal                 \
     --enable-cscope                   \
-    --enable-tclinterp="${TCL}"       \
+    --enable-tclinterp="yes"          \
     --enable-luainterp=${LUA}         \
     --enable-mzschemeinterp           \
     --enable-rubyinterp=${RUBY}       \

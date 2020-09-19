@@ -14,7 +14,6 @@ ARCH_NAME="autoconf"
 # Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/autoconf-2.13-consolidated_fixes-1.patch
 
 # Required: no
-# Optional: dejagnu (для тестов)
 
 ###
 # autoconf213 является старой версией Autoconf. Эта версия принимает флаги
@@ -40,7 +39,6 @@ rm -v autoconf.info
 
 make || exit 1
 
-# для тестов требуется пакет dejagnu
 # command -v runtest &>/dev/null && make check
 
 make install

@@ -63,7 +63,6 @@ PRGNAME="graphviz"
 #    php
 #    python2
 #    ruby
-#    tcl
 #    tk
 #    io      (http://iolanguage.org/)
 #    mono    (https://www.mono-project.com/)

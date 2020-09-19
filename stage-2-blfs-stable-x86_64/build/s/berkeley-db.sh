@@ -19,8 +19,7 @@ ARCH_NAME="db"
 # Download:  http://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
 
 # Required: no
-# Optional: tcl
-#           sharutils (for the uudecode command)
+# Optional: sharutils (for the uudecode command)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                    || exit 1

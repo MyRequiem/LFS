@@ -11,7 +11,6 @@ l/aspell-dict-en.sh
 l/aspell-dict-ru.sh
 a/unzip.sh
 ap/sqlite.sh
-tcl/tcl.sh
 l/libuv.sh
 l/libtasn1.sh
 n/p11-kit.sh
@@ -270,8 +269,6 @@ a/pciutils.sh
 a/usbutils.sh
 d/clisp.sh
 n/gpgme.sh
-tcl/expect.sh
-d/dejagnu.sh
 d/gdb.sh
 d/autoconf213.sh
 d/gcc.sh

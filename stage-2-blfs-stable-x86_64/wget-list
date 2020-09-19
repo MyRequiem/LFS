@@ -10,8 +10,6 @@ https://downloads.sourceforge.net/infozip/unzip60.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-consolidated_fixes-1.patch
 https://sqlite.org/2020/sqlite-autoconf-3330000.tar.gz
 https://sqlite.org/2020/sqlite-doc-3330000.zip
-https://downloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz
-https://downloads.sourceforge.net/tcl/tcl8.6.10-html.tar.gz
 https://dist.libuv.org/dist/v1.34.2/libuv-v1.34.2.tar.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.23.20/p11-kit-0.23.20.tar.xz
@@ -203,8 +201,6 @@ https://ftp.gnu.org/gnu/wget/wget-1.20.3.tar.gz
 https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-012.tar.xz
 https://ftp.gnu.org/gnu/clisp/latest/clisp-2.49.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/9.1/clisp-2.49-readline7_fixes-1.patch
-https://downloads.sourceforge.net/expect/expect5.45.4.tar.gz
-https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.2.tar.gz
 https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
 https://github.com/ivmai/libatomic_ops/releases/download/v7.6.10/libatomic_ops-7.6.10.tar.gz
 https://www.hboehm.info/gc/gc_source/gc-8.0.4.tar.gz

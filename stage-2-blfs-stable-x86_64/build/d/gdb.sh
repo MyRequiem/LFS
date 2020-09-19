@@ -13,8 +13,7 @@ PRGNAME="gdb"
 # Download:  https://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz
 
 # Required: python-six
-# Optional: dejagnu (для тестов)
-#           doxygen (для сборки API документации)
+# Optional: doxygen (для сборки API документации)
 #           gcc с поддержкой ada и gfortran (для тестов)
 #           guile
 #           python2

@@ -12,7 +12,6 @@ PRGNAME="gcc"
 # Download:  https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
 
 # Required:    no
-# Recommended: dejagnu  (для тестов)
 # Optional:    gdb
 #              valgrind (для тестов)
 #              isl      (для включения оптимизации graphite) https://repo.or.cz/isl.git

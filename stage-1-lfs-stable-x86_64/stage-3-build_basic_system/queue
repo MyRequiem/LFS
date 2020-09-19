@@ -18,6 +18,8 @@ chmod 744       /mnt/lfs/sbin/removepkg
 ./entering-chroot-env.sh
 ###
 kernel-headers.sh
+man-pages.sh
+tcl.sh
 
 
 # vim:ft=conf

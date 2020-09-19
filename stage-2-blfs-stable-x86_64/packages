@@ -363,12 +363,10 @@ clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
                                         openjpeg, poppler, woff2, llvm
-dejagnu                             (+) gdb, autoconf213, gcc
 doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
                                         popt, jasper, icu, js60, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc, llvm
-expect                              (+) dejagnu
 gcc                                 (+) gdb, graphviz
 gc                                  (+) guile
 gdb                                 (+) python3, glib, talloc, openssh, gcc,
@@ -562,8 +560,7 @@ scons
 slang                               (+) aalib, mc
 subversion                          cmake, git
 swig                                gpgme, graphviz, volume-key
-tcl                                 (+) berkeley-db, vim, graphviz, expect
-tk                                  python2, python3, git, graphviz, expect
+tk                                  python2, python3, git, graphviz
 vala                                libical, gegl, modem-manager
 valgrind                            libtasn1, curl, python2, python3, libxml2,
                                     libksba, pcre, gnutls, libidn, libseccomp,
@@ -1263,7 +1260,7 @@ docbook4
 opensp
 openjade
 docbook-dsssl
-docbook-utils                       fontconfig, fcron, dejagnu
+docbook-utils                       fontconfig, fcron
 # --- Printing, Scanning and Typesetting/Extensible Markup Language (XML) ------
 docbook-xml                         (+) libxslt, glib, itstool, talloc, polkit,
                                         xmlto, gtk-doc
