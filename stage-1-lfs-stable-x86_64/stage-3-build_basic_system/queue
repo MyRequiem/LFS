@@ -20,6 +20,7 @@ chmod 744       /mnt/lfs/sbin/removepkg
 kernel-headers.sh
 man-pages.sh
 tcl.sh
+expect.sh
 
 
 # vim:ft=conf

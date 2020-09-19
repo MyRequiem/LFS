@@ -14,7 +14,7 @@ PRGNAME="tcl"
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
-SOURCES="/sources"
+SOURCES="${ROOT}sources"
 VERSION=$(echo "${SOURCES}/${PRGNAME}"*-src.tar.?z* | rev | cut -d / -f 1 | \
     rev | cut -d - -f 1 | cut -d l -f 2)
 
