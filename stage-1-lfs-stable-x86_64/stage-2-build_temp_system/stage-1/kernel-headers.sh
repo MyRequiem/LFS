@@ -1,7 +1,8 @@
 #! /bin/bash
 
-PRGNAME="linux-headers"
-ARCH_NAME="$(echo ${PRGNAME} | cut -d - -f 1)"
+PRGNAME="kernel-headers"
+echo "Building ${PRGNAME}"
+ARCH_NAME="linux"
 
 ### Linux Headers
 # Заголовочные файлы ядра linux для использования API ядра при сборке Glibc

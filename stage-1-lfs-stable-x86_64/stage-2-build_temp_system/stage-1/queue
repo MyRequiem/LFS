@@ -3,7 +3,7 @@
 ###
 binutils-pass-1.sh
 gcc-pass-1.sh
-linux-headers.sh
+kernel-headers.sh
 glibc.sh
 check-compiling-and-linking.sh
 libstdc++-pass-1.sh

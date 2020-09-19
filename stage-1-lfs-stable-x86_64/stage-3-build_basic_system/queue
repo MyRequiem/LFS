@@ -17,7 +17,7 @@ chmod 744       /mnt/lfs/sbin/removepkg
 # Переходим в chroot окружение
 ./entering-chroot-env.sh
 ###
-
+kernel-headers.sh
 
 
 # vim:ft=conf
