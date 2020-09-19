@@ -11,13 +11,6 @@
 # файле ./queue
 ###
 
-###
-# NOTE:
-# Для следующих скриптов установка описана в их коде:
-#    removepkg
-#    checkalldeps.sh
-###
-
 - копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
