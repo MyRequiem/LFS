@@ -1,0 +1,10 @@
+###
+# Переходим в chroot окружение
+./entering-chroot-env.sh
+###
+
+main-directory-tree.sh
+
+
+
+# vim:ft=conf

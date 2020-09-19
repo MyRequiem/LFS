@@ -10,8 +10,8 @@ PRGNAME="texinfo"
 # Home page: http://www.gnu.org/software/texinfo/
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # в процессе конфигурации выполняется тест, который выдает ошибку для
 # TestXS_la-TestXS.lo. Эта ошибка на данном этапе должна игнорироваться

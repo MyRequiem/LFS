@@ -11,8 +11,8 @@ PRGNAME="util-linux"
 # Home page: http://freecode.com/projects/util-linux
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # создадим каталог для хранения данных утилиты hwclock
 mkdir -pv /var/lib/hwclock

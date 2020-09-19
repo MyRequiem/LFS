@@ -12,7 +12,7 @@ ARCH_NAME="util-linux"
 # Home page: http://freecode.com/projects/util-linux
 
 ROOT="/"
-source "${ROOT}/check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 SOURCES="/sources"
 BUILD_DIR="${SOURCES}/build"

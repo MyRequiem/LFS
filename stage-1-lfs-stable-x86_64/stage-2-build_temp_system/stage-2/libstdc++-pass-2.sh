@@ -19,8 +19,8 @@ ARCH_NAME="gcc"
 ###
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}check_environment.sh"                    || exit 1
+source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 # создадим ссылку в каталоге libgcc/ дерева исходного кода GCC
 #    gthr-default.h -> gthr-posix.h

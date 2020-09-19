@@ -12,8 +12,8 @@ ARCH_NAME="Python"
 # Home page: https://www.python.org/
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}check_environment.sh"                    || exit 1
+source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 # не устанавливаем статические библиотеки
 #    --enable-shared

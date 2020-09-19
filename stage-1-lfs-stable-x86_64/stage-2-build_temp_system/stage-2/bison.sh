@@ -10,8 +10,8 @@ PRGNAME="bison"
 # Home page: http://www.gnu.org/software/bison/
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 ./configure       \
     --prefix=/usr \

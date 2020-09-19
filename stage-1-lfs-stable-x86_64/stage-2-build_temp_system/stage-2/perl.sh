@@ -10,8 +10,8 @@ PRGNAME="perl"
 # Home page: https://www.perl.org/
 
 ROOT="/"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MAJ_MIN_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"

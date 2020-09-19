@@ -1,7 +1,7 @@
 #! /bin/bash
 
 ROOT="/"
-source "${ROOT}/check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 # Файлы libtool *.la полезны только при компоновке со статическими
 # библиотеками, но они не нужны и потенциально опасны при использовании

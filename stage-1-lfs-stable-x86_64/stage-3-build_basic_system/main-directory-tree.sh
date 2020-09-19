@@ -1,4 +1,4 @@
-#! /tools/bin/bash
+#! /bin/bash
 
 PKGNAME="main-directory-tree"
 
@@ -10,18 +10,21 @@ ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
 mkdir -pv           /bin
-mkdir -pv           /etc/profile.d
-mkdir -pv           /etc/skel
-mkdir -pv           /etc/sysconfig
+mkdir -pv           /boot
+mkdir -pv           /dev/pts
+mkdir -pv           /etc/{opt,profile.d,skel,sysconfig}
 mkdir -pv           /home
 mkdir -pv           /lib/firmware
 mkdir -pv           /lib64
-mkdir -pv           /media/{flash{1,2},cdrom}
-mkdir -pv           /mnt/{hdd{1,2},iso,repo,src}
+mkdir -pv           /media/{flash{0,1},cdrom0}
+mkdir -pv           /mnt/{hdd{0,1},iso,repo,src}
 mkdir -pv           /opt
+mkdir -pv           /proc
 install -dv -m 0750 /root
+mkdir -pv           /run
 mkdir -pv           /sbin
 mkdir -pv           /srv
+mkdir -pv           /sys
 install -dv -m 1777 /tmp
 mkdir -pv           /usr/{,local/}{bin,include,lib,sbin,src}
 mkdir -pv           /usr/{,local/}share/{color,dict,doc,info,locale}
@@ -32,49 +35,19 @@ mkdir -pv           /usr/lib/pkgconfig
 install -dv -m 1777 /var/{cache,mail,spool,tmp,lib/{color,misc,locate}}
 mkdir -pv           /var/log/{packages,removed_packages,setup/tmp/preserved}
 
-(
-    cd /usr || exit 1
-    ln -sf share/doc doc
-)
-
-(
-    cd /var || exit 1
-    rm -f run lock
-    ln -sf /run run
-    ln -sf /run/lock lock
-)
-
-# некоторые программы используют жесткие пути к другим программам, которые еще
-# не установлены в нашей системе. Чтобы удовлетворить зависимости этих
-# программ, создадим ряд символических ссылок, которые будут заменены реальными
-# файлами в ходе сборки LFS
-ln -sv /tools/bin/{bash,cat,chmod,dd,echo,ln,mkdir,pwd,rm,stty,touch} /bin
-ln -sv bash /bin/sh
-ln -sv /tools/bin/{env,install,perl,printf} /usr/bin
-ln -sv /tools/lib/libgcc_s.so{,.1}          /usr/lib
-ln -sv /tools/lib/libstdc++.{a,so{,.6}}     /usr/lib
-
 # исторически Linux поддерживает список смонтированных файловых систем в файле
 # /etc/mtab. Современные ядра поддерживают этот список внутренне и
 # предоставляют его пользователю через файловую систему /proc. Чтобы
 # удовлетворить зависимости утилит, которые ожидают наличия /etc/mtab, создадим
 # символическую ссылку
-ln -sv /proc/self/mounts /etc/mtab
+ln -svf /proc/self/mounts /etc/mtab
 
 # чтобы пользователь root мог войти в систему и чтобы имя 'root' было
-# распознано, в файлах /etc/passwd и /etc/group должны быть соответствующие
+# распознано, в файлах /etc/group и /etc/passwd должны быть соответствующие
 # записи
-cat > /etc/passwd << "EOF"
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/dev/null:/bin/false
-daemon:x:6:6:Daemon User:/dev/null:/bin/false
-messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
-nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
-EOF
-
 # фактический пароль для пользователя root (используемый здесь "x" - просто
 # заполнитель) будет установлен позже
-cat > /etc/group << "EOF"
+cat << EOF > "/etc/group"
 root:x:0:
 bin:x:1:daemon
 sys:x:2:
@@ -98,17 +71,36 @@ mail:x:34:
 kvm:x:61:
 wheel:x:97:
 nogroup:x:99:
-users:x:100:
+users:x:999:
+tester:x:101:
 EOF
 
-# Созданные групп не являются частью какого-либо стандарта - они являются
-# группами, определяемыми частично требованиями конфигурации Udev и частично
-# общим соглашением, используемым рядом существующих дистрибутивов Linux. Кроме
-# того, некоторые тестовые наборы зависят от конкретных пользователей или
-# групп. Стандартная база Linux рекомендует присутствие кроме группы с ID 0
-# (root) группы с ID 1 (bin). Все другие имена групп и GID могут быть свободно
-# выбраны системным администратором, поскольку хорошо написанные программы не
-# зависят от номеров GID, а скорее используют имя группы.
+cat << EOF > "/etc/passwd"
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/dev/null:/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
+nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+tester:x:1000:101::/home/tester:/bin/bash
+EOF
+
+(
+    cd /media || exit 1
+    ln -svf cdrom0 cdrom
+    ln -svf flash0 flash
+)
+
+(
+    cd /usr || exit 1
+    ln -svf share/doc doc
+)
+
+(
+    cd /var || exit 1
+    rm -f run lock
+    ln -svf /run run
+    ln -svf /run/lock lock
+)
 
 # Программы login, agetty, init и другие используют ряд файлов журналов для
 # записи информации, например, кто вошел в систему и когда. Однако эти
@@ -129,12 +121,13 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 # The main tree of the root file system. This package cannot be removed.
 #
 /bin
-/bin/sh
 /boot
 /dev
+/dev/pts
 /etc
 /etc/group
 /etc/mtab
+/etc/opt
 /etc/passwd
 /etc/profile.d
 /etc/skel
@@ -145,11 +138,13 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /lib64
 /media
 /media/cdrom
+/media/cdrom0
+/media/flash
+/media/flash0
 /media/flash1
-/media/flash2
 /mnt
+/mnt/hdd0
 /mnt/hdd1
-/mnt/hdd2
 /mnt/iso
 /mnt/repo
 /mnt/src
