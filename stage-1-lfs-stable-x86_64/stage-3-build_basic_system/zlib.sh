@@ -5,10 +5,9 @@ PRGNAME="zlib"
 ### Zlib (compression library)
 # Универсальная многопоточная библиотека сжатия данных
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/zlib.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/zlib.html
 
 # Home page: https://www.zlib.net/
-# Download:  https://zlib.net/zlib-1.2.11.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,8 +21,7 @@ mkdir -pv "${TMP_DIR}/lib"
     --prefix=/usr || exit 1
 
 make || exit 1
-make check
-make install
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # библиотеку libz.so.${VERSION} необходимо переместить из /usr/lib в /lib, а
@@ -36,15 +34,13 @@ make install DESTDIR="${TMP_DIR}"
 #       libz.so.1 -> libz.so.${VERSION}
 #    в /usr/lib
 #       libz.so -> ../../lib/libz.so.${VERSION}
-mv -v /usr/lib/libz.so.* /lib
-# /usr/lib/libz.so -> ../../lib/libz.so.${VERSION}
-ln -sfv "../../lib/$(readlink /usr/lib/libz.so)" /usr/lib/libz.so
-
 (
     cd "${TMP_DIR}" || exit 1
     mv -v usr/lib/libz.so.* lib/
     ln -sfv "../../lib/$(readlink usr/lib/libz.so)" usr/lib/libz.so
 )
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (compression library)
@@ -56,5 +52,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

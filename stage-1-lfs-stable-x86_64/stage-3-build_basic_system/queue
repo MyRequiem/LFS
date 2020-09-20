@@ -24,6 +24,7 @@ expect.sh
 dejagnu.sh
 iana-etc.sh
 glibc.sh
+zlib.sh
 
 
 # vim:ft=conf
