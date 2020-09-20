@@ -6,10 +6,9 @@ PRGNAME="readline"
 # Набор библиотек для редактирование из командной строки и возможности ведения
 # истории
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/readline.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/readline.html
 
 # Home page: https://tiswww.case.edu/php/chet/readline/rltop.html
-# Download:  http://ftp.gnu.org/gnu/readline/readline-8.0.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -17,7 +16,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/lib"
 
 # переустановка Readline приведет к перемещению старых библиотек в
 # <имя_библиотеки>.old. Хотя обычно это не проблема, в некоторых случаях это
@@ -25,46 +24,43 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install
 
+# сообщает Readline, что он может найти функции библиотеки termcap в библиотеке
+# curses, а не в отдельной библиотеке termcap, что позволяет создать правильный
+# /usr/lib/pkgconfig/readline.pc
+#    --with-curses
 ./configure          \
     --prefix=/usr    \
     --disable-static \
+    --with-curses    \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 # заставляет Readline связываться с библиотекой libncursesw
-#    SHLIB_LIBS="-L/tools/lib -lncursesw"
-make SHLIB_LIBS="-L/tools/lib -lncursesw" || exit 1
+#    SHLIB_LIBS="-lncursesw"
+make SHLIB_LIBS="-lncursesw" || make -j1 SHLIB_LIBS="-lncursesw" || exit 1
 
-# установка пакета
-make SHLIB_LIBS="-L/tools/lib -lncursesw" install
-make SHLIB_LIBS="-L/tools/lib -lncursesw" install DESTDIR="${TMP_DIR}"
+# пакет не имеет набора тестов
 
-# теперь переместим динамические библиотеки в более подходящее место и исправим
+make SHLIB_LIBS="-lncursesw" install DESTDIR="${TMP_DIR}"
+
+# переместим динамические библиотеки в более подходящее место и исправим
 # некоторые разрешения и символические ссылки
-mv -v /usr/lib/lib{readline,history}.so.* /lib
-chmod -v u+w /lib/lib{readline,history}.so.*
-ln -sfv ../../lib/"$(readlink /usr/lib/libreadline.so)" /usr/lib/libreadline.so
-ln -sfv ../../lib/"$(readlink /usr/lib/libhistory.so)" /usr/lib/libhistory.so
-
 (
     cd "${TMP_DIR}" || exit 1
-    mkdir -pv lib
     mv -v usr/lib/lib{readline,history}.so.* lib/
     chmod -v u+w lib/lib{readline,history}.so.*
 
-    ln -sfv ../../lib/"$(readlink usr/lib/libreadline.so)" \
-        usr/lib/libreadline.so
-    ln -sfv ../../lib/"$(readlink usr/lib/libhistory.so)" \
-        usr/lib/libhistory.so
+    cd "${TMP_DIR}/usr/lib" || exit 1
+    ln -svf "../../lib/$(readlink libreadline.so)" libreadline.so
+    ln -svf "../../lib/$(readlink libhistory.so)"  libhistory.so
 )
 
 # устновим документацию
 install -v -m644 doc/*.{ps,pdf,html,dvi} \
-    "/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -m644 doc/*.{ps,pdf,html,dvi} \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 # удалим не нужную документацию
-rm -rf /usr/share/doc/readline
 rm -rf "${TMP_DIR}/usr/share/doc/readline"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (line input library with editing features)
@@ -81,5 +77,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

@@ -29,6 +29,7 @@ bzip2.sh
 xz.sh
 zstd.sh
 file.sh
+readline.sh
 
 
 # vim:ft=conf
