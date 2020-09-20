@@ -16,4 +16,3 @@ wget                                   \
     --directory-prefix="${SOURCES}"/
 
 chown lfs:lfs "${SOURCES}"/*
-rm -f wget-list
