@@ -20,7 +20,7 @@ mkdir -pv "${TMP_DIR}/lib"
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
