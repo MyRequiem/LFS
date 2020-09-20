@@ -28,6 +28,7 @@ zlib.sh
 bzip2.sh
 xz.sh
 zstd.sh
+file.sh
 
 
 # vim:ft=conf
