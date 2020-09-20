@@ -21,6 +21,7 @@ kernel-headers.sh
 man-pages.sh
 tcl.sh
 expect.sh
+dejagnu.sh
 
 
 # vim:ft=conf
