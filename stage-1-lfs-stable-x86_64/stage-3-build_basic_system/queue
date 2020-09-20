@@ -23,6 +23,7 @@ tcl.sh
 expect.sh
 dejagnu.sh
 iana-etc.sh
+glibc.sh
 
 
 # vim:ft=conf
