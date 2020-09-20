@@ -4,17 +4,16 @@ PRGNAME="iana-etc"
 
 ### Iana-Etc (data for network services)
 # Пакет Iana-Etc предоставляет данные для сетевых служб и протоколов
-
+#
 # /etc/protocols    - описывает различные доступные интернет-протоколы DARPA
 #                       из подсистемы TCP/IP
 # /etc/services     - обеспечивает соответствие между дружественными текстовыми
 #                       именами для Интернет услуг, а также соответствующие им
 #                       номера портов и типы протокола
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/iana-etc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/iana-etc.html
 
 # Home page: http://freecode.com/projects/iana-etc
-# Download:  http://anduin.linuxfromscratch.org/LFS/iana-etc-2.30.tar.bz2
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,14 +21,11 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
 
-# команда 'make' преобразует необработанные данные, предоставленные IANA, в
-# правильные форматы для файлов данных /etc/protocols и /etc/services
-make
-# пакет не содержит набора тестов, поэтому сразу устанавливаем
-make install
-make install DESTDIR="${TMP_DIR}"
+cp services protocols "${TMP_DIR}/etc"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (data for network services)
@@ -43,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #                       numbers and protocol types
 #
 # Home page: http://freecode.com/projects/${PRGNAME}
-# Download:  http://anduin.linuxfromscratch.org/LFS/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/Mic92/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

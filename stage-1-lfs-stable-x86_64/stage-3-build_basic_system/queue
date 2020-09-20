@@ -22,6 +22,7 @@ man-pages.sh
 tcl.sh
 expect.sh
 dejagnu.sh
+iana-etc.sh
 
 
 # vim:ft=conf
