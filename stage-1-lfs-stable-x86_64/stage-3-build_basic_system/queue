@@ -26,6 +26,7 @@ iana-etc.sh
 glibc.sh
 zlib.sh
 bzip2.sh
+xz.sh
 
 
 # vim:ft=conf

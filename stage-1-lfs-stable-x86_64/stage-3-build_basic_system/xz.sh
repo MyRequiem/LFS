@@ -7,10 +7,9 @@ PRGNAME="xz"
 # xz). Сжатие текстовых файлов с помощью xz дает лучший процент сжатия, чем при
 # использовании традиционных команд gzip или bzip2.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/xz.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/xz.html
 
 # Home page: https://tukaani.org/xz
-# Download:  https://tukaani.org/xz/xz-5.2.4.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -26,25 +25,23 @@ mkdir -pv "${TMP_DIR}"/{bin,lib}
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-make check
-make install
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # переместим некоторые утилиты из /usr/bin в /bin
-mv -v /usr/bin/{lzma,unlzma,lzcat,xz,unxz,xzcat} /bin
 mv -v "${TMP_DIR}/usr/bin"/{lzma,unlzma,lzcat,xz,unxz,xzcat} "${TMP_DIR}/bin"
 
 # библиотеку liblzma.so необходимо переместить из /usr/lib в /lib
-mv -v /usr/lib/liblzma.so.* /lib
 mv -v "${TMP_DIR}/usr/lib"/liblzma.so.* "${TMP_DIR}/lib"
 
 # воссоздадим ссылку liblzma.so в /usr/lib
 # liblzma.so -> ../../lib/liblzma.so.${VERSION}
-ln -svf "../../lib/$(readlink /usr/lib/liblzma.so)" /usr/lib/liblzma.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -svf "../../lib/$(readlink liblzma.so)" liblzma.so
 )
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (compression utility based on the LZMA algorithm)
@@ -62,5 +59,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
