@@ -38,6 +38,7 @@ gmp.sh
 mpfr.sh
 mpc.sh
 attr.sh
+acl.sh
 
 
 # vim:ft=conf

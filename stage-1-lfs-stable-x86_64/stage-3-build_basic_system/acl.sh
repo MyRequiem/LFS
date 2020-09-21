@@ -6,10 +6,9 @@ PRGNAME="acl"
 # Содержит утилиты для управления контроля доступа, которые используются для
 # определения прав доступа к файлам и каталогам
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/acl.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/acl.html
 
 # Home page: http://savannah.nongnu.org/projects/acl
-# Download:  http://download.savannah.gnu.org/releases/acl/acl-2.2.53.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -26,25 +25,26 @@ mkdir -pv "${TMP_DIR}/lib"
     --libexecdir=/usr/lib \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
+
 # тесты Acl должны выполняться в файловой системе, которая поддерживает
 # контроль доступа после того, как был собран пакет Coreutils с библиотеками
-# Acl. На данный момент Coreutils еще не установлен, поэтому сразу
-# устанавливаем acl
-make install
+# Acl. На данный момент Coreutils еще не установлен, поэтому тесты мы
+# пропускаем
+
 make install DESTDIR="${TMP_DIR}"
 
-# расшаренную библиотеку необходимо переместить из /usr/lib в /lib
-mv -v /usr/lib/libacl.so.* /lib
+# библиотеку необходимо переместить из /usr/lib в /lib
 mv -v "${TMP_DIR}/usr/lib"/libacl.so.* "${TMP_DIR}/lib"
 
 # воссоздадим ссылку libacl.so в /usr/lib
-# libacl.so -> ../../lib/libacl.so.x.x.xxxx
-ln -sfv "../../lib/$(readlink /usr/lib/libacl.so)" /usr/lib/libacl.so
+#    libacl.so -> ../../lib/libacl.so.x.x.xxxx
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -sfv "../../lib/$(readlink libacl.so)" libacl.so
 )
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tools for using POSIX Access Control Lists)
@@ -59,5 +59,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
