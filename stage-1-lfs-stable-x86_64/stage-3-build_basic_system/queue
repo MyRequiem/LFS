@@ -30,6 +30,7 @@ xz.sh
 zstd.sh
 file.sh
 readline.sh
+m4.sh
 
 
 # vim:ft=conf

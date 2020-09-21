@@ -3,12 +3,17 @@
 PRGNAME="m4"
 
 ### M4 (an implementation of the UNIX macro processor)
-# Пакет M4 содержит макропроцессор
+# Макропроцессор. Копирует ввод на вывод, используя макросы. Макросы могут быть
+# как встроеными, так и пользовательскими и могут иметь несколько аргументов.
+# Помимо макро-преобразований, m4 имеет встроеные функции для включения
+# именованых файлов, запуска команд Unix, целочисленной арифметики,
+# разносторонними манипуляциями с текстом, рекурсию и др. M4 может
+# использоваться в качестве front-end для компиляторов или как макропроцессор
+# на усмотрение пользователя.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/m4.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/m4.html
 
 # Home page: http://www.gnu.org/software/m4/
-# Download:  http://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -19,16 +24,17 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 # внесем исправления, необходимые для glibc-2.28
-sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
+sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c || exit 1
 echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
 
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (an implementation of the UNIX macro processor)
@@ -44,5 +50,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
