@@ -6,10 +6,9 @@ PRGNAME="mpfr"
 # Библиотека содержит подпрограммы для математических вычислений с
 # множественной точностью.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/mpfr.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/mpfr.html
 
 # Home page: https://www.mpfr.org/
-# Download:  http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -25,22 +24,18 @@ mkdir -pv "${TMP_DIR}"
     --enable-thread-safe \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
-# сборка документации
+make || make -j1 || exit 1
+# сборка html-документации
 make html || exit 1
 
-###
-# Важно !!!
-###
-# Набор тестов для Mpfr на данном этапе считается критическим. Нельзя
+# набор тестов для Mpfr на данном этапе считается критическим. Нельзя
 # пропускать его ни при каких обстоятельствах
-make check
+# make check
 
-# установка пакета и документации
-make install
-make install-html
 make install DESTDIR="${TMP_DIR}"
 make install-html DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Multiple-Precision Floating-Point Reliable Library)
@@ -56,5 +51,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

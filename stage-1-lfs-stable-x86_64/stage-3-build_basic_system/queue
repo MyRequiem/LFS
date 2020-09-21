@@ -35,6 +35,7 @@ bc.sh
 flex.sh
 binutils.sh
 gmp.sh
+mpfr.sh
 
 
 # vim:ft=conf
