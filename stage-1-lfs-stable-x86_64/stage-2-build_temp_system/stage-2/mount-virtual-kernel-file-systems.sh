@@ -40,10 +40,10 @@ case "$1" in
         ;;
 esac
 
-! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/pts,proc,run,sys}
-
 # смонтируем LFS раздел
 mount "${PART}" "${LFS}" &>/dev/null
+
+! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/pts,proc,run,sys}
 
 ### Подготовка виртуальной файловой системы ядра
 # ----------------------------------------------
