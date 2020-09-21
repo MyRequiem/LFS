@@ -7,10 +7,9 @@ PRGNAME="libcap"
 # возможностей, доступных в ядрах Linux. Эти возможности предоставляют
 # разделение корневых привилегий в набор различных привилегий.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libcap.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/libcap.html
 
 # Home page: https://sites.google.com/site/fullycapable/
-# Download:  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.31.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,23 +19,32 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/lib"
 
-# запретим установку двух статических библиотек
-sed -i '/install.*STA...LIBNAME/d' libcap/Makefile || exit 1
+# запретим установку статической библиотеки
+sed -i '/install -m.*STACAPLIBNAME/d' libcap/Makefile
 
 # собирать библиотеки с префиксом /lib, а не /lib64
 #    lib=lib
-make lib=lib || exit 1
-make test
-# избегаем ошибок установки, если ядро или файловая система не поддерживают
-# расширенные возможности
-#    RAISE_SETFCAP=no
-# установить библиотеку в $prefix/lib, а не в $prefix/lib64
-#    lib=lib
-make lib=lib install
-make lib=lib install DESTDIR="${TMP_DIR}"
+make lib=lib || make -j1 lib=lib || exit 1
 
-chmod -v 755 "/lib/libcap.so.${VERSION}"
+# make test
+
+# установить библиотеку в $prefix/lib, а не в $prefix/lib64 и путь к директории
+# pkgconfig
+#    lib=lib PKGCONFIGDIR=...
+make lib=lib PKGCONFIGDIR=/usr/lib/pkgconfig install DESTDIR="${TMP_DIR}"
+
+# исправим права для /lib/libcap.so.${VERSION}
 chmod -v 755 "${TMP_DIR}/lib/libcap.so.${VERSION}"
+
+# переместим libpsx.a из /lib в /usr/lib
+mv -v "${TMP_DIR}/lib/libpsx.a" "${TMP_DIR}/usr/lib"
+
+# удалим ссылку /lib/libcap.so и создадим ее в /usr/lib
+rm -vf "${TMP_DIR}/lib/libcap.so"
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
+ln -sfv "../../lib/libcap.so.${MAJ_VERSION}" "${TMP_DIR}/usr/lib/libcap.so"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (get/set POSIX capabilities)
@@ -47,9 +55,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # privilege into a set of distinct privileges.
 #
 # Home page: https://sites.google.com/site/fullycapable/
-# Download:  https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://www.kernel.org/pub/linux/libs/security/linux-privs/${PRGNAME}${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

@@ -39,6 +39,7 @@ mpfr.sh
 mpc.sh
 attr.sh
 acl.sh
+libcap.sh
 
 
 # vim:ft=conf
