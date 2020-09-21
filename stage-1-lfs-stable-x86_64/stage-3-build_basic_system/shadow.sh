@@ -5,10 +5,9 @@ PRGNAME="shadow"
 ### Shadow (shadow password suite)
 # Пакет содержит программы для безопасной работы с паролями
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/shadow.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/shadow.html
 
 # Home page: https://github.com/shadow-maint/shadow/
-# Download:  https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 # отключим установку программы 'groups' и ее man-страниц, так как пакет
 # Coreutils предоставляет лучшую версию этой утилиты. Также отменим установку
 # ман-страниц, которые уже были установлены вместе с пакетом man-pages
-sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+sed -i 's/groups$(EXEEXT) //' src/Makefile.in || exit 1
 find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
 find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
@@ -33,8 +32,9 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
 # устаревшее местоположение /var/spool/mail для пользовательских почтовых
 # ящиков, которые Shadow использует по умолчанию, на /var/mail, используемое в
 # LFS
-sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
-       -e 's@/var/spool/mail@/var/mail@' etc/login.defs
+sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
+    -e 's:/var/spool/mail:/var/mail:'                 \
+    -i etc/login.defs || exit 1
 
 ### Примечание
 # Если мы хотим принудительно использовать надежные пароли, то в системе должен
@@ -43,10 +43,15 @@ sed -i -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
 # После его установки нужно пересобрать shadow с параметром конфигурации
 #    --with-libcrack
 # а так же внести изменения в etc/login.defs
-# sed -i 's@DICTPATH.*@DICTPATH\t/lib/cracklib/pw_dict@' etc/login.defs
+# sed -i 's:DICTPATH.*:DICTPATH\t/lib/cracklib/pw_dict:' etc/login.defs
 
-# сделаем первый номер группы, сгенерированный useradd == 100, а не 1000:
-sed -i 's/1000/100/' etc/useradd
+# сделаем первый номер группы, сгенерированный useradd был 1000, а не 1001
+sed -i 's/1000/999/' etc/useradd
+
+# /usr/bin/ passwd должен существовать перед сборкой, потому что его
+# расположение жестко закодировано в некоторых утилитах пакета
+PASSWD="/usr/bin/passwd"
+! [ -r "${PASSWD}" ] && touch "${PASSWD}"
 
 # максимальная длина имени пользователя или группы 32 символа
 #    --with-group-name-max-length=32
@@ -54,33 +59,36 @@ sed -i 's/1000/100/' etc/useradd
     --sysconfdir=/etc \
     --with-group-name-max-length=32 || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 
-# бэкапим конфиг /etc/default/useradd если он уже существует
-USERADD="/etc/default/useradd"
-if [ -f "${USERADD}" ]; then
-    mv "${USERADD}" "${USERADD}.old"
-fi
+# пакет не имеет тестового набора
 
-# этот пакет не поставляется с тестовым набором, поэтому сразу его установим
-make install
 make install DESTDIR="${TMP_DIR}"
-
-config_file_processing "${USERADD}"
-
-# ==================================
-# Конфигурация Shadow
-# ==================================
-# включим теневые пароли
-pwconv
-# включим теневые групповые пароли
-grpconv
 
 # конфиг /etc/default/useradd содержит параметр CREATE_MAIL_SPOOL=yes, который
 # заставляет утилиту useradd создать файл почтового ящика для вновь созданного
 # пользователя. Отключим создание почтовых ящиков:
-sed -i 's/yes/no/' /etc/default/useradd
+USERADD="/etc/default/useradd"
+sed -i 's/yes/no/' "${TMP_DIR}${USERADD}"
 
+# бэкапим конфиг /etc/default/useradd если он уже существует
+if [ -f "${USERADD}" ]; then
+    mv "${USERADD}" "${USERADD}.old"
+fi
+
+/bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${USERADD}"
+
+# на утилиту 'passwd' установим suid бит, чтобы любой пользователь мог ее
+# запустить с правами владельца (root). Необходимо, чтобы пользователь сам мог
+# менять свой пароль.
+chmod 4711 "/usr/bin/passwd"
+
+# включим теневые пароли
+pwconv
+# включим теневые групповые пароли
+grpconv
 # установим пароль для суперпользователя
 passwd root
 
@@ -98,5 +106,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
