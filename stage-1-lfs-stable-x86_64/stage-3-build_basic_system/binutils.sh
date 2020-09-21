@@ -6,10 +6,9 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/binutils.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/binutils.html
 
 # Home page: http://www.gnu.org/software/binutils/
-# Download:  http://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -37,8 +36,7 @@ read -r JUNK
 # самого конца
 sed -i '/@\tincremental_copy/d' gold/testsuite/Makefile.in || exit 1
 
-# документация Binutils рекомендует собирать binutils в отдельном каталоге для
-# сборки
+# документация Binutils рекомендует собирать binutils в отдельном каталоге
 mkdir build
 cd build || exit 1
 
@@ -53,7 +51,7 @@ cd build || exit 1
 #    --enable-plugins
 # включаем 64-битную поддержку. Может не понадобиться на 64-битных системах, но
 # не повредит
-# --enable-64-bit-bfd
+#    --enable-64-bit-bfd
 # использовать уже установленную библиотеку zlib, а не собирать встроенную
 # версию
 #    --with-system-zlib
@@ -72,19 +70,18 @@ cd build || exit 1
 # Машины с архитектурой x86_64 будут расширять этот путь до
 # /usr/x86_64-unknown-linux-gnu, но каталог x86_64-unknown-linux-gnu в /usr нам
 # не требуется, поэтому явно указываем tooldir
-make tooldir=/usr || exit 1
+make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 
 ###
 # Важно !!!
 ###
 # Набор тестов для Binutils на данном этапе считается критическим. Нельзя
 # пропускать его ни при каких обстоятельствах
-make -k check
-# тесты PC-relative offset и debug_msg.sh могут не пройти в среде LFS
+# make -k check
 
-# устанавливаем пакет
-make tooldir=/usr install
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU binary development tools)
@@ -99,5 +96,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

@@ -33,6 +33,7 @@ readline.sh
 m4.sh
 bc.sh
 flex.sh
+binutils.sh
 
 
 # vim:ft=conf
