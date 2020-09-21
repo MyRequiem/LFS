@@ -5,10 +5,9 @@ PRGNAME="bc"
 ### Bc (An arbitrary precision numeric processing language)
 # Язык обработки чисел произвольной точности
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bc.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bc.html
 
 # Home page: https://github.com/gavinhoward/bc
-# Download:  https://github.com/gavinhoward/bc/archive/2.5.3/bc-2.5.3.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -21,22 +20,23 @@ mkdir -pv "${TMP_DIR}"
 # определяем используемый компилятор и С-стандарт
 #    CC=gcc
 #    CFLAGS="-std=c99"
+# пропустим те части тестового набора, которые не будут работать без уже
+# установленного GNU bc
+#    -G
 # указываем оптимизацию для компилятора
 #    -O3
-# пропустим те части тестового набора, которые не будут работать без
-# присутствия GNU bc
-#    -G
-PREFIX=/usr \
-CC=gcc \
+PREFIX=/usr       \
+CC=gcc            \
 CFLAGS="-std=c99" \
-./configure.sh \
-    -O3 \
-    -G || exit 1
+./configure.sh    \
+    -G            \
+    -O3 || exit 1
 
-make || exit 1
-make test
-make install
+make || make -j1 || exit 1
+# make test
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (An arbitrary precision numeric processing language)
@@ -46,9 +46,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # execution of statements.
 #
 # Home page: https://github.com/gavinhoward/bc
-# Download:  https://github.com/gavinhoward/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/gavinhoward/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
