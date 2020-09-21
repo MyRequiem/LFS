@@ -37,6 +37,7 @@ binutils.sh
 gmp.sh
 mpfr.sh
 mpc.sh
+attr.sh
 
 
 # vim:ft=conf
