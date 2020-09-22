@@ -13,7 +13,6 @@ echo "Step: 1"
 echo "--------"
 echo "# creating simple C-file"
 echo "echo 'int main(){}' > dummy.c"
-
 echo 'int main(){}' > dummy.c
 echo "ls -l dummy.c"
 ls -l dummy.c
@@ -29,7 +28,6 @@ echo "--------"
 echo "# compiling source file dummy.c using ${LFS}/tools/bin/${LFS_TGT}-gcc"
 echo "# (as a result of compilation, an object file a.out is generated)"
 echo "${LFS_TGT}-gcc dummy.c"
-
 "${LFS_TGT}"-gcc dummy.c
 echo "ls -l a.out"
 ls -l a.out
@@ -39,10 +37,10 @@ read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 
-# посмотрим имя динамического компоновщика
 echo "--------"
 echo "Step: 3"
 echo "--------"
+# посмотрим имя динамического компоновщика
 echo "# show dynamic linker name"
 echo "readelf -l a.out | grep '/ld-linux'"
 readelf -l a.out | grep '/ld-linux'

@@ -41,6 +41,8 @@ attr.sh
 acl.sh
 libcap.sh
 shadow.sh
+gcc.sh
+check-compiling-and-linking.sh
 
 
 # vim:ft=conf
