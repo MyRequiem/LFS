@@ -1,14 +1,4 @@
-###
-# Переходим в chroot окружение
-./entering-chroot-env.sh
-###
-
-main-directory-tree.sh
-
-###
-# Выходим из chroot окружения и устанавливаем утилиту 'removepkg' от
-# пользователя root
-###
+# устанавливаем утилиту 'removepkg' от пользователя root
 cp -v removepkg /mnt/lfs/sbin/
 chown root:root /mnt/lfs/sbin/removepkg
 chmod 744       /mnt/lfs/sbin/removepkg
@@ -17,6 +7,7 @@ chmod 744       /mnt/lfs/sbin/removepkg
 # Переходим в chroot окружение
 ./entering-chroot-env.sh
 ###
+main-directory-tree.sh
 kernel-headers.sh
 man-pages.sh
 tcl.sh
