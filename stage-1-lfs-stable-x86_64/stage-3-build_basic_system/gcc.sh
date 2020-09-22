@@ -111,10 +111,11 @@ mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib"
 
 chmod 755 "${TMP_DIR}/usr/lib/libgcc_s.so"{,.1}
 
-# удалим директории, которые были установлены в систему временным GCC
+# удалим директории и файлы, которые были установлены в систему временным GCC
 rm -rf "/usr/include/c++/${VERSION}/x86_64-lfs-linux-gnu"
 rm -rf /usr/lib/gcc/x86_64-lfs-linux-gnu
 rm -rf /usr/libexec/gcc/x86_64-lfs-linux-gnu
+rm -f /usr/bin/x86_64-lfs-linux-gnu-*
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
