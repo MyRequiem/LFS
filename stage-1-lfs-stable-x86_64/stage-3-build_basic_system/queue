@@ -34,6 +34,7 @@ libcap.sh
 shadow.sh
 gcc.sh
 check-compiling-and-linking.sh
+pkg-config.sh
 
 
 # vim:ft=conf

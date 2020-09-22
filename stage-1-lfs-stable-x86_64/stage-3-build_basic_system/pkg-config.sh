@@ -6,10 +6,9 @@ PRGNAME="pkg-config"
 # Инструмент для передачи путей include и/или путей к библиотекам для создания
 # инструментов во время настройки и выполнения файлов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/pkg-config.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/pkg-config.html
 
 # Home page: https://www.freedesktop.org/wiki/Software/pkg-config
-# Download:  https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,9 +19,9 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 # указывает pkg-config использовать свою внутреннюю версию Glib, потому что
-# внешняя версия пока недоступна в нашей сборке LFS
+# внешняя версия недоступна в сборке LFS
 #    --with-internal-glib
-# опция отключает создание нежелательной жесткой ссылки на программу pkg-config
+# опция отключает создание нежелательной жесткой ссылки на утилиту pkg-config
 #    --disable-host-tool
 ./configure                    \
     --prefix=/usr              \
@@ -31,9 +30,10 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-make check
-make install
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (system for managing library compile/link flags)
@@ -49,5 +49,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
