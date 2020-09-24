@@ -3,12 +3,11 @@
 PRGNAME="sed"
 
 ### Sed (stream editor)
-# потоковый редактор
+# Потоковый редактор
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sed.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/sed.html
 
 # Home page: http://www.gnu.org/software/sed/
-# Download:  http://ftp.gnu.org/gnu/sed/sed-4.8.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -16,29 +15,27 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
-
-# исправим проблему окружения для среды LFS, а так же удалим один из тестов
-# (testsuite.panic-tests.sh), который терпит неудачу
-sed -i 's/usr/tools/'                 build-aux/help2man
-sed -i 's/testsuite.panic-tests.sh//' Makefile.in
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure       \
     --prefix=/usr \
     --bindir=/bin || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 make html || exit 1
-make check
-make install
+
+# тесты проводим от пользователя tester
+# chown -Rv tester .
+# su tester -c "PATH=${PATH} make check"
+# chown -Rv root:root .
+
 make install DESTDIR="${TMP_DIR}"
 
 # устанавливаем документацию
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-install -d -m755           "${DOCS}"
-install -m644 doc/sed.html "${DOCS}"
-install -d -m755           "${TMP_DIR}${DOCS}"
 install -m644 doc/sed.html "${TMP_DIR}${DOCS}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (stream editor)
@@ -53,5 +50,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
