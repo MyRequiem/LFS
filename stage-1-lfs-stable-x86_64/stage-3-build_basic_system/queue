@@ -35,6 +35,7 @@ shadow.sh
 gcc.sh
 check-compiling-and-linking.sh
 pkg-config.sh
+ncurses.sh
 
 
 # vim:ft=conf

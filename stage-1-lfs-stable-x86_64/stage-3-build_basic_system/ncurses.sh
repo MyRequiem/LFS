@@ -9,10 +9,9 @@ PRGNAME="ncurses"
 # абстракции, позволяющий не беспокоиться об аппаратных различиях терминалов и
 # писать переносимый код
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ncurses.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/ncurses.html
 
 # Home page: http://www.gnu.org/software/ncurses/
-# Download:  http://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,17 +19,17 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}"{/lib,"${DOCS}"}
 
-# не устанавливаем статическую библиотеку, которая не обрабатывается командой
-# configure
+# не устанавливаем статическую библиотеку, установка которой полностью не
+# контролируется параметрами скрипта 'configure'
 sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 
-# заставляет собирать wide-character библиотеки (например,
-# libncursesw.so.${VERSION}) вместо обычных (например,
-# libncurses.so.${VERSION}). Такие wide-character библиотеки можно использовать
-# как в многобайтовых, так и в традиционных 8-битных локалях, тогда как обычные
-# библиотеки правильно работают только в 8-битных локалях
+# заставляет собирать wide-character библиотеки (например, libncursesw.so)
+# вместо обычных (libncurses.so). Такие wide-character библиотеки можно
+# использовать как в многобайтовых, так и в традиционных 8-битных локалях,
+# тогда как обычные библиотеки правильно работают только в 8-битных локалях
 #    --enable-widec
 # ключ генерирует и устанавливает файлы .pc для pkg-config
 #    --enable-pc-files
@@ -45,20 +44,23 @@ sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
     --enable-pc-files       \
     --enable-widec || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 
 # в состав пакета входят наборы тестов, но их можно запустить только после
 # того, как пакет будет установлен
+
+# устанавливаем сразу в систему и во временную директорию, иначе при
+# копировании с ${TMP_DIR} в корень выдаст ошибку "Segmentation fault" из-за
+# сбоя настроек терминала
 make install
 make install DESTDIR="${TMP_DIR}"
 
-# переместим разделяемые библиотеки из /usr/lib в /lib, где они и должны
-# находится
+# переместим библиотеки из /usr/lib в /lib
 mv -v /usr/lib/libncursesw.so.6* /lib
-mv "${TMP_DIR}/usr/lib"/libncursesw.so.6* "${TMP_DIR}/lib/"
+mv "${TMP_DIR}/usr/lib/libncursesw.so.6"* "${TMP_DIR}/lib/"
 
-# поскольку библиотеки были перемещены, символическая ссылка
-# /usr/lib/libncursesw.so будет битая. Исправим ее:
+# исправим ссылку в /usr/lib
+#    libncursesw.so -> ../../lib/libncursesw.so.${VERSION}
 ln -sfv "../../lib/$(readlink /usr/lib/libncursesw.so)" /usr/lib/libncursesw.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
@@ -94,11 +96,9 @@ echo "INPUT(-lncursesw)" > "${TMP_DIR}/usr/lib/libcursesw.so"
 )
 
 # установим документацию
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv      "${DOCS}"
-cp -v -R doc/* "${DOCS}"
-mkdir -pv      "${TMP_DIR}${DOCS}"
-cp -v -R doc/* "${TMP_DIR}${DOCS}"
+mkdir -v        "${DOCS}"
+cp -vR    doc/* "${DOCS}"
+cp -vR    doc/* "${TMP_DIR}${DOCS}"
 
 # снова соберем пакет для построения 5 версии библиотеки, которая все еще
 # требуется некоторым программам
@@ -111,7 +111,7 @@ make distclean
     --without-cxx-binding \
     --with-abi-version=5 || exit 1
 
-make sources libs || exit 1
+make sources libs || make -j1 sources libs || exit 1
 
 cp -av lib/lib*.so.5* /usr/lib
 cp -av lib/lib*.so.5* "${TMP_DIR}/usr/lib/"
@@ -131,5 +131,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
