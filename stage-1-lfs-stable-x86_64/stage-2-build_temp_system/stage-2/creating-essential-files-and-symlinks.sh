@@ -10,8 +10,10 @@ LS_OPTIONS="-F -b -T 0 --group-directories-first --color=auto"
 alias v='/bin/ls \$LS_OPTIONS --format=long --time-style="+%d.%m.%y %H:%M:%S"'
 alias vh='v --human-readable'
 
-MAKEFLAGS="-j$(/usr/bin/nproc)"
-export MAKEFLAGS
+JOBS="-j$(/usr/bin/nproc)"
+MAKEFLAGS="\${JOBS}"
+NINJAJOBS="\${JOBS}"
+export MAKEFLAGS NINJAJOBS
 EOF
 
 ln -svf .bashrc /root/.bash_profile
