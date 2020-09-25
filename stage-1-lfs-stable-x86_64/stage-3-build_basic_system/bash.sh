@@ -5,11 +5,9 @@ PRGNAME="bash"
 ### Bash (Bourne-Again SHell - sh-compatible shell)
 # Командная оболочка UNIX
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bash.html
 
 # Home page: http://www.gnu.org/software/bash/
-# Download:  http://ftp.gnu.org/gnu/bash/bash-5.0.tar.gz
-#            http://www.linuxfromscratch.org/patches/lfs/9.1/bash-5.0-upstream_fixes-1.patch
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -32,19 +30,28 @@ patch --verbose -Np1 -i \
     --with-installed-readline \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 
-# тесты будем запускать от пользователя nobody
-chown -Rv nobody .
-su nobody -s /bin/bash -c "PATH=${PATH}:/tools/bin HOME=/home make tests"
-chown -Rv root:root .
+# тесты будем запускать от пользователя tester
+# chown -Rv tester .
+# su tester << EOF
+# PATH=$PATH make tests < $(tty)
+# EOF
+# chown -Rv root:root .
 
+# уставливаем сразу в систему и временную директорию, т.к. скопировать
+# "${TMP_DIR}/bin/bash" в /bin/bash будет невозможно:
+#    cannot create regular file '/bin/bash': Text file busy
 make install
 make install DESTDIR="${TMP_DIR}"
 
-# переместим bash из /usr/bin в /bin
-mv -vf /usr/bin/bash /bin
-mv -vf "${TMP_DIR}/usr/bin/bash" "${TMP_DIR}/bin"
+# переместим 'bash' из /usr/bin в /bin
+mv -fv /usr/bin/bash /bin
+mv -fv "${TMP_DIR}/usr/bin/bash" "${TMP_DIR}/bin"
+
+# создадим ссылку sh -> bash в /bin/
+ln -svf bash /bin/sh
+ln -svf bash "${TMP_DIR}/bin/sh"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Bourne-Again SHell - sh-compatible shell)
@@ -59,5 +66,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

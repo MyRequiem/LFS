@@ -41,6 +41,7 @@ psmisc.sh
 gettext.sh
 bison.sh
 grep.sh
+bash.sh
 
 
 # vim:ft=conf
