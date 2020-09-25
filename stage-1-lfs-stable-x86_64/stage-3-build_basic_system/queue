@@ -39,6 +39,7 @@ ncurses.sh
 sed.sh
 psmisc.sh
 gettext.sh
+bison.sh
 
 
 # vim:ft=conf
