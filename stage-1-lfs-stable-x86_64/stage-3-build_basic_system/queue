@@ -38,6 +38,7 @@ pkg-config.sh
 ncurses.sh
 sed.sh
 psmisc.sh
+gettext.sh
 
 
 # vim:ft=conf
