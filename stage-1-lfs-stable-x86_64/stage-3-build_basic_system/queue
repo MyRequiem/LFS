@@ -37,6 +37,7 @@ check-compiling-and-linking.sh
 pkg-config.sh
 ncurses.sh
 sed.sh
+psmisc.sh
 
 
 # vim:ft=conf
