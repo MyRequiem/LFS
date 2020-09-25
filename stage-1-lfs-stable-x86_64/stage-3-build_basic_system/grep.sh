@@ -5,10 +5,9 @@ PRGNAME="grep"
 ### Grep (print lines matching a pattern)
 # Программы для поиска по файлам
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/grep.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/grep.html
 
 # Home page: http://www.gnu.org/software/grep/
-# Download:  http://ftp.gnu.org/gnu/grep/grep-3.4.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,10 +21,11 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr \
     --bindir=/bin || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (print lines matching a pattern)
@@ -39,5 +39,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
