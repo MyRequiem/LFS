@@ -42,6 +42,7 @@ gettext.sh
 bison.sh
 grep.sh
 bash.sh
+libtool.sh
 
 
 # vim:ft=conf
