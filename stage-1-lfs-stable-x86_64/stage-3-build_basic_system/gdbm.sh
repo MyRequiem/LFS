@@ -33,7 +33,7 @@ sed -r -i '/^char.*parseopt_program_(doc|args)/d' src/parseopt.c
     --disable-static \
     --enable-libgdbm-compat || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 

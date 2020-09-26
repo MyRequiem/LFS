@@ -5,10 +5,9 @@ PRGNAME="gperf"
 ### Gperf (a perfect hash function generator)
 # Генерирует наилучшую хеш-функцию из набора ключей
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gperf.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/gperf.html
 
 # Home page: http://www.gnu.org/software/gperf/
-# Download:  http://ftp.gnu.org/gnu/gperf/gperf-3.1.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,11 +21,14 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
-# тесты Gperf не проходят в многопоточном режиме, поэтому явно укажем -j1
-make -j1 check
-make install
+make || make -j1 || exit 1
+
+# тесты Gperf не проходят в несколько потоков, поэтому явно укажем -j1
+# make -j1 check
+
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a perfect hash function generator)
@@ -42,5 +44,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
