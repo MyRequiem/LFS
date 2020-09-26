@@ -47,6 +47,7 @@ gdbm.sh
 gperf.sh
 expat.sh
 inetutils.sh
+perl.sh
 
 
 # vim:ft=conf
