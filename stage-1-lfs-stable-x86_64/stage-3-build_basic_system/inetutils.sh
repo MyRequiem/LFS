@@ -8,7 +8,6 @@ PRGNAME="inetutils"
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/inetutils.html
 
 # Home page: http://www.gnu.org/software/inetutils/
-# Download:  http://ftp.gnu.org/gnu/inetutils/inetutils-1.9.4.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -33,9 +32,9 @@ mkdir -pv "${TMP_DIR}"/{bin,sbin}
 #    --disable-rlogin
 #    --disable-rsh
 # отключаем установку различных сетевых серверов. Эти серверы считаются
-# неподходящими в базовая система LFS. Некоторые из них небезопасны по своей
+# неподходящими для базовой LFS системы. Некоторые из них небезопасны по своей
 # природе и считаются безопасными только в доверенных сетях. Для этих серверов
-# существуют более лучшие и безопасные замены
+# существуют более лучшие и безопасные альтернативы
 #    --disable-servers
 ./configure              \
     --prefix=/usr        \
@@ -48,21 +47,21 @@ mkdir -pv "${TMP_DIR}"/{bin,sbin}
     --disable-rsh        \
     --disable-servers || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
+
 # тест libls.sh может потерпеть неудачу в текущей среде chroot, но нормально
 # проходит после завершения создания LFS и ее чистой загрузки. Тест
 # ping-localhost.sh потерпит неудачу, если в ядре хост-системы не включена
-# возможность IPv6
-make check
-make install
+# поддержка IPv6 протокола
+# make check
+
 make install DESTDIR="${TMP_DIR}"
 
 # переместим некоторые утилиты из /usr/bin в /bin и /sbin
-mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
-mv -v /usr/bin/ifconfig /sbin
-
 mv -v "${TMP_DIR}/usr/bin"/{hostname,ping,ping6,traceroute} "${TMP_DIR}/bin"
 mv -v "${TMP_DIR}/usr/bin/ifconfig"                         "${TMP_DIR}/sbin"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)
@@ -76,5 +75,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

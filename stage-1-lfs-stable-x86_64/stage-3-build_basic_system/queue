@@ -46,6 +46,7 @@ libtool.sh
 gdbm.sh
 gperf.sh
 expat.sh
+inetutils.sh
 
 
 # vim:ft=conf
