@@ -45,6 +45,7 @@ bash.sh
 libtool.sh
 gdbm.sh
 gperf.sh
+expat.sh
 
 
 # vim:ft=conf
