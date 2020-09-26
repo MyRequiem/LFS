@@ -43,6 +43,7 @@ bison.sh
 grep.sh
 bash.sh
 libtool.sh
+gdbm.sh
 
 
 # vim:ft=conf
