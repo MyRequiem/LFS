@@ -7,10 +7,9 @@ ARCH_NAME="XML-Parser"
 # Модуль XML::Parser является Perl-интерфейсом для синтаксического анализатора
 # XML документов Expat
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/xml-parser.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/xml-parser.html
 
 # Home page: https://github.com/chorny/XML-Parser
-# Download:  https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
@@ -23,8 +22,9 @@ mkdir -pv "${TMP_DIR}"
 perl Makefile.PL
 make
 make test
-make install
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (XML::Parser perl module)
@@ -37,5 +37,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
