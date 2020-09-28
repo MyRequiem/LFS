@@ -6,10 +6,9 @@ PRGNAME="intltool"
 # Инструменты интернационализации, используемый для извлечения из исходного
 # кода файлов перевода программ на другие языки
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/intltool.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/intltool.html
 
 # Home page: https://freedesktop.org/wiki/Software/intltool
-# Download:  https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -17,24 +16,24 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # исправим предупреждение, вызванное perl-5.22 и более поздними версиями
+# '\${' --> '\$\{'
 sed -i 's:\\\${:\\\$\\{:' intltool-update.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
-install -d -m755                 "${DOCS}"
-install -v -Dm644 doc/I18N-HOWTO "${DOCS}"
-install -v -Dm644 doc/I18N-HOWTO "${TMP_DIR}${DOCS}"
+install -v -Dm644 doc/I18N-HOWTO \
+    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/I18N-HOWTO"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Utilities for translation support)
@@ -47,5 +46,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

@@ -49,6 +49,7 @@ expat.sh
 inetutils.sh
 perl.sh
 xml-parser.sh
+intltool.sh
 
 
 # vim:ft=conf
