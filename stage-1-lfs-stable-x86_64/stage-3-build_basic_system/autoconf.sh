@@ -6,10 +6,9 @@ PRGNAME="autoconf"
 # Пакет макросов m4, которые создают сценарии оболочки для автоматической
 # настройки пакетов исходного кода программного обеспечения.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/autoconf.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/autoconf.html
 
 # Home page: http://www.gnu.org/software/autoconf/
-# Download:  http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,16 +19,19 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим ошибку генерируемую Perl 5.28
-sed '361 s/{/\\{/' -i bin/autoscan.in || exit 1
+sed -i '361 s/{/\\{/' bin/autoscan.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-# набор тестов не проходит на bash-5 и libtool-2.4.3
-make check
-make install
+make || make -j1 || exit 1
+
+# набор тестов не проходит на bash-5 с libtool-2.4.3
+# make check
+
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (generate configuration scripts)
@@ -47,5 +49,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

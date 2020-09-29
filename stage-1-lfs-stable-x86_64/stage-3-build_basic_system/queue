@@ -50,6 +50,7 @@ inetutils.sh
 perl.sh
 xml-parser.sh
 intltool.sh
+autoconf.sh
 
 
 # vim:ft=conf
