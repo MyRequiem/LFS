@@ -51,6 +51,7 @@ perl.sh
 xml-parser.sh
 intltool.sh
 autoconf.sh
+automake.sh
 
 
 # vim:ft=conf

@@ -5,10 +5,9 @@ PRGNAME="automake"
 ### Automake (a Makefile generator)
 # Пакет содержит программы создания Make-файлов для использования с Autoconf
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/automake.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/automake.html
 
 # Home page: http://www.gnu.org/software/automake/
-# Download:  http://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -18,19 +17,24 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим тест
+sed -i "s/''/etags/" t/tags-lisp-space.sh
+
 ./configure       \
     --prefix=/usr \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
+
 # здесь можно запускать тесты в несколько потоков (это ускорит тестирование
 # даже в системах с одним процессором, из-за внутренних задержек в отдельных
 # тестах)
-# известно, что один тест не проходит в среде LFS: subobj.sh
-MAKEFLAGS="-j$(($(/tools/bin/nproc) + 1))"
-make "${MAKEFLAGS}" check
-make install
+# известно, что тест t/subobj.sh не проходит в среде LFS
+# make -j4 check
+
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a Makefile generator)
@@ -44,11 +48,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # certain things to be done in your configure.in. You must install the "m4" and
 # "perl" packages to be able to use automake.
 #
-#
 # Home page: http://www.gnu.org/software/${PRGNAME}/
 # Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
