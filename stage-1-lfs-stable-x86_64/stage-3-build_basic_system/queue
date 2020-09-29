@@ -52,6 +52,7 @@ xml-parser.sh
 intltool.sh
 autoconf.sh
 automake.sh
+kmod.sh
 
 
 # vim:ft=conf

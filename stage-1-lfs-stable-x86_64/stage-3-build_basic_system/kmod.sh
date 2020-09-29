@@ -5,10 +5,9 @@ PRGNAME="kmod"
 ### Kmod (kernel module tools and library)
 # Пакет содержит библиотеки и утилиты для загрузки модулей ядра
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/kmod.html
+# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/kmod.html
 
 # Home page: https://www.kernel.org/
-# Download:  https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-26.tar.xz
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -32,31 +31,28 @@ mkdir -pv "${TMP_DIR}/sbin"
     --with-xz              \
     --with-zlib || exit 1
 
-make || exit 1
-# пакет поставляется без набора тестов, которые можно запустить в среде chroot,
-# поэтому сразу его устанавливаем
-make install
+make || make -j1 || exit 1
+
+# пакет поставляется без набора тестов, которые можно запустить в среде chroot
+
 make install DESTDIR="${TMP_DIR}"
 
-# создадим символические ссылки в /sbin для совместимости с Module-Init-Tools
-# (пакет, который ранее работал с модулями ядра)
-# depmod -> ../bin/kmod
-# insmod -> ../bin/kmod
-# и т.д.
-for TARGET in depmod insmod lsmod modinfo modprobe rmmod; do
-    ln -sfv ../bin/kmod "/sbin/${TARGET}"
-    (
-        cd "${TMP_DIR}/sbin" || exit 1
+# для совместимости с Module-Init-Tools (пакет, который ранее работал с
+# модулями ядра) создадим символические ссылки в /sbin
+#    depmod -> ../bin/kmod
+#    insmod -> ../bin/kmod
+#    и т.д.
+(
+    cd "${TMP_DIR}/sbin" || exit 1
+    for TARGET in depmod insmod lsmod modinfo modprobe rmmod; do
         ln -sfv ../bin/kmod "${TARGET}"
-    )
-done
+    done
+)
 
 # ссылка в /bin lsmod -> kmod
-ln -sfv kmod /bin/lsmod
-(
-    cd "${TMP_DIR}/bin" || exit 1
-    ln -sfv kmod lsmod
-)
+ln -sfv kmod "${TMP_DIR}/bin/lsmod"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (kernel module tools and library)
@@ -72,5 +68,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
