@@ -7,11 +7,6 @@ ARCH_NAME="elfutils"
 # Libelf - это библиотека для работы с файлами в формате ELF (Executable and
 # Linkable Format)
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libelf.html
-
-# Home page: https://sourceware.org/ftp/elfutils/
-# Download:  https://sourceware.org/ftp/elfutils/0.178/elfutils-0.178.tar.bz2
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
@@ -22,16 +17,20 @@ mkdir -pv "${TMP_DIR}/usr/lib/pkgconfig"
 
 ./configure       \
     --prefix=/usr \
+    --libdir=/lib \
     --disable-debuginfod || exit 1
 
-make || exit 1
-make check
+make || make -j1 || exit 1
+
+# make check
+
 # устанавливаем только libelf
-make -C libelf install
 make -C libelf install DESTDIR="${TMP_DIR}"
 
-install -vm644 config/libelf.pc /usr/lib/pkgconfig
 install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig"
+rm -f "${TMP_DIR}/lib/libelf.a"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for handling ELF)
@@ -44,5 +43,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

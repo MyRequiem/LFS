@@ -53,6 +53,7 @@ intltool.sh
 autoconf.sh
 automake.sh
 kmod.sh
+libelf.sh
 
 
 # vim:ft=conf
