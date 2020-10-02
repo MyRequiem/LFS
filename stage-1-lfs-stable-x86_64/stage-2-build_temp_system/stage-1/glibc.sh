@@ -8,10 +8,6 @@ PRGNAME="glibc"
 # чтения/записи файлов, обработки строк, сопоставления с шаблонами, арифметики
 # и так далее.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/glibc.html
-
-# Home page: http://www.gnu.org/software/libc/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

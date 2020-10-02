@@ -6,10 +6,6 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/binutils.html
-
-# Home page: http://www.gnu.org/software/binutils/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

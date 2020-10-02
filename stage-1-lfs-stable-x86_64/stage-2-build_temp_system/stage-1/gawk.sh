@@ -5,10 +5,6 @@ PRGNAME="gawk"
 ### Gawk
 # Программы для работы с текстовыми файлами
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gawk.html
-
-# Home page: http://www.gnu.org/software/gawk/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

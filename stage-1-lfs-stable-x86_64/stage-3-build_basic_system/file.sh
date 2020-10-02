@@ -5,10 +5,6 @@ PRGNAME="file"
 ### File (a utility to determine file type)
 # Утилита для определения типа файла
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/file.html
-
-# Home page: https://www.darwinsys.com/file/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

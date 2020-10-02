@@ -7,10 +7,6 @@ PRGNAME="xz"
 # xz). Сжатие текстовых файлов с помощью xz дает лучший процент сжатия, чем при
 # использовании традиционных команд gzip или bzip2.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/xz.html
-
-# Home page: https://tukaani.org/xz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

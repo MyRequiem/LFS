@@ -5,10 +5,6 @@ PRGNAME="inetutils"
 ### Inetutils (programs for basic networking)
 # Пакет содержит базовые сетевые утилиты
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/inetutils.html
-
-# Home page: http://www.gnu.org/software/inetutils/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

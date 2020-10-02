@@ -5,10 +5,6 @@ PRGNAME="bison"
 ### Bison (parser generator similar to yacc)
 # Пакет предназначен для автоматического создания синтаксических анализаторов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bison.html
-
-# Home page: http://www.gnu.org/software/bison/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

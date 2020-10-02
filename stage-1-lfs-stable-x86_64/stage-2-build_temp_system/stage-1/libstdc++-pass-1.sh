@@ -9,10 +9,6 @@ ARCH_NAME="gcc"
 # библиотеки при первом проходе GCC (gcc-pass-1.sh), потому что она зависит от
 # glibc, который еще не был установлен
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gcc-libstdc++-pass1.html
-
-# Home page: https://gcc.gnu.org/
-
 ###
 # Это первый проход libstdc++
 ###

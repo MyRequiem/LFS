@@ -5,10 +5,6 @@ PRGNAME="bc"
 ### Bc (An arbitrary precision numeric processing language)
 # Язык обработки чисел произвольной точности
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bc.html
-
-# Home page: https://github.com/gavinhoward/bc
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

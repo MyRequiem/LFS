@@ -7,10 +7,6 @@ PRGNAME="libcap"
 # возможностей, доступных в ядрах Linux. Эти возможности предоставляют
 # разделение корневых привилегий в набор различных привилегий.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/libcap.html
-
-# Home page: https://sites.google.com/site/fullycapable/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

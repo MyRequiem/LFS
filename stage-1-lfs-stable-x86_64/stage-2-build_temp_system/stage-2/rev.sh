@@ -7,10 +7,6 @@ ARCH_NAME="util-linux"
 ### rev
 # утилита из пакета util-linux, которая  посимвольно "переворачивает" строки
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/util-linux.html
-
-# Home page: http://freecode.com/projects/util-linux
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 

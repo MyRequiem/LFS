@@ -6,10 +6,6 @@ PRGNAME="zstd"
 # Real-time алгоритм сжатия, обеспечивающий относительно высокую степень сжатия
 # и поддерживается очень быстрым декодером
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/zstd.html
-
-# Home page: https://facebook.github.io/zstd/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

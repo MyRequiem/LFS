@@ -7,10 +7,6 @@ PRGNAME="expect"
 # интерактивными программами такими как telnet, ftp, passwd, fsck, rlogin, tip
 # и т.д. Пакет также полезен для тестирования приложений.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/expect.html
-
-# Home page: https://core.tcl.tk/expect/
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 

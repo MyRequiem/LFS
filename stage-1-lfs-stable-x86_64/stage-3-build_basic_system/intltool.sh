@@ -6,10 +6,6 @@ PRGNAME="intltool"
 # Инструменты интернационализации, используемый для извлечения из исходного
 # кода файлов перевода программ на другие языки
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/intltool.html
-
-# Home page: https://freedesktop.org/wiki/Software/intltool
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

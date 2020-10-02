@@ -6,10 +6,6 @@ PRGNAME="bzip2"
 # Программы для сжатия и распаковки файлов. Сжатие текстовых файлов с помощью
 # bzip2 дает гораздо лучший процент сжатия чем с традиционным Gzip.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bzip2.html
-
-# Home page: https://sourceforge.net/projects/bzip2/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

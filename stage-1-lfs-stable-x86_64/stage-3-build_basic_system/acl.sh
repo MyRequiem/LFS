@@ -6,10 +6,6 @@ PRGNAME="acl"
 # Содержит утилиты для управления контроля доступа, которые используются для
 # определения прав доступа к файлам и каталогам
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/acl.html
-
-# Home page: http://savannah.nongnu.org/projects/acl
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

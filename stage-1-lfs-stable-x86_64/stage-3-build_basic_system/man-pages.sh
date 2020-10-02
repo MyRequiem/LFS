@@ -7,10 +7,6 @@ PRGNAME="man-pages"
 # устройств, важные файлы конфигурации и т.д. Страницы устанавливаются в
 # /usr/share/man/man{1,2,3,4,5,6,7,8}/*
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/man-pages.html
-
-# Home page: https://www.kernel.org/doc/man-pages/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

@@ -6,10 +6,6 @@ PRGNAME="mpfr"
 # Библиотека содержит подпрограммы для математических вычислений с
 # множественной точностью.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/mpfr.html
-
-# Home page: https://www.mpfr.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

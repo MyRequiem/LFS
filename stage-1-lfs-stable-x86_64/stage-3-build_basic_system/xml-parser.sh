@@ -7,10 +7,6 @@ ARCH_NAME="XML-Parser"
 # Модуль XML::Parser является Perl-интерфейсом для синтаксического анализатора
 # XML документов Expat
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/xml-parser.html
-
-# Home page: https://github.com/chorny/XML-Parser
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1

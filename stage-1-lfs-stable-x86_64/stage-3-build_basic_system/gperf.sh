@@ -5,10 +5,6 @@ PRGNAME="gperf"
 ### Gperf (a perfect hash function generator)
 # Генерирует наилучшую хеш-функцию из набора ключей
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/gperf.html
-
-# Home page: http://www.gnu.org/software/gperf/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

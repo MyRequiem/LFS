@@ -5,11 +5,6 @@ PRGNAME=""
 ### <PRGNAME> ()
 
 
-# BOOK_URL
-
-# Home page:
-# Download:
-
 # Required: no
 # Optional: no
 

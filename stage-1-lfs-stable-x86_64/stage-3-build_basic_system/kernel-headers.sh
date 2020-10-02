@@ -5,15 +5,6 @@ ARCH_NAME="linux"
 
 ### Linux Headers (Linux kernel include files)
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter05/linux-headers.html
-
-# Home page:    https://www.kernel.org/
-# Download:     https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.8.9.tar.xz
-# All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
-
-# cледует использовать последнюю доступную стабильную версию ядра ветки v5.x
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1

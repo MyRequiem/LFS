@@ -5,10 +5,6 @@ PRGNAME="perl"
 ### Perl
 # Practical Extraction and Report Language
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/perl.html
-
-# Home page: https://www.perl.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

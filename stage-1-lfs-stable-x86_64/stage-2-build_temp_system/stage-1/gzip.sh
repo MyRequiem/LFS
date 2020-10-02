@@ -5,10 +5,6 @@ PRGNAME="gzip"
 ### Gzip
 # Программы для сжатия и распаковки файлов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gzip.html
-
-# Home page: http://www.gnu.org/software/gzip/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

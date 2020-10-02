@@ -5,10 +5,6 @@ PRGNAME="attr"
 ### Attr (tools for using extended attributes on filesystems)
 # Утилиты для управления расширенными атрибутами объектов файловой системы
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/attr.html
-
-# Home page: https://savannah.nongnu.org/projects/attr
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

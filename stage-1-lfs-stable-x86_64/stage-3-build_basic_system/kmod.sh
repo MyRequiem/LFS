@@ -5,10 +5,6 @@ PRGNAME="kmod"
 ### Kmod (kernel module tools and library)
 # Пакет содержит библиотеки и утилиты для загрузки модулей ядра
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/kmod.html
-
-# Home page: https://www.kernel.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

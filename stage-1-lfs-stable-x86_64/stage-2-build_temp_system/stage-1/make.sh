@@ -7,10 +7,6 @@ PRGNAME="make"
 # другую. Чаще всего это компиляция исходного кода в объектные файлы и
 # последующая компоновка в исполняемые файлы или библиотеки.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/make.html
-
-# Home page: http://www.gnu.org/software/make/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

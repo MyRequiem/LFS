@@ -6,10 +6,6 @@ PRGNAME="mpc"
 # Пакет содержит библиотеку для арифметики комплексных чисел с произвольно
 # высокой точностью и правильным округлением результата.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/mpc.html
-
-# Home page: http://www.multiprecision.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

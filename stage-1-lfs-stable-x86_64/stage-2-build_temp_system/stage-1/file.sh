@@ -5,10 +5,6 @@ PRGNAME="file"
 ### File
 # Утилита для определения типа файла
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/file.html
-
-# Home page: https://www.darwinsys.com/file/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

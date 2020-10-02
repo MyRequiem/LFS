@@ -5,10 +5,6 @@ PRGNAME="zlib"
 ### Zlib (compression library)
 # Универсальная многопоточная библиотека сжатия данных
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/zlib.html
-
-# Home page: https://www.zlib.net/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

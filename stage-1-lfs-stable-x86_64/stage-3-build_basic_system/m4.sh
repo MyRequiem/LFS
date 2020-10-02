@@ -11,10 +11,6 @@ PRGNAME="m4"
 # использоваться в качестве front-end для компиляторов или как макропроцессор
 # на усмотрение пользователя.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/m4.html
-
-# Home page: http://www.gnu.org/software/m4/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

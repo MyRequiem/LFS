@@ -6,10 +6,6 @@ PRGNAME="pkg-config"
 # Инструмент для передачи путей include и/или путей к библиотекам для создания
 # инструментов во время настройки и выполнения файлов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/pkg-config.html
-
-# Home page: https://www.freedesktop.org/wiki/Software/pkg-config
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

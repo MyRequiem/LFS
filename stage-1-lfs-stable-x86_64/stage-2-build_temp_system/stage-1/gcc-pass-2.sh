@@ -6,10 +6,6 @@ PRGNAME="gcc"
 # Пакет содержит коллекцию компиляторов GNU, который на данный момент будет
 # включать только компиляторы C и C++
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gcc-pass2.html
-
-# Home page: https://gcc.gnu.org/
-
 ###
 # Это второй проход gcc
 ###
@@ -18,9 +14,6 @@ source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # GCC для сборки требует пакеты gmp, mpfr и mpc
-# http://ftp.gnu.org/gnu/gmp/gmp-6.2.0.tar.xz
-# http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
-# https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
 GMP_VER=$(echo "${SOURCES}/gmp"-*.tar.?z* | rev | cut -f 3- -d . | \
     cut -f 1 -d - | rev)
 MPFR_VER=$(echo "${SOURCES}/mpfr"-*.tar.?z* | rev | cut -f 3- -d . | \

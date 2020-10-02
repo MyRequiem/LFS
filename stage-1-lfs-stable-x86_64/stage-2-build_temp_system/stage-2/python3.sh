@@ -7,10 +7,6 @@ ARCH_NAME="Python"
 ### Python
 # Язык программирования Python v3
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/Python.html
-
-# Home page: https://www.python.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1

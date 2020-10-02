@@ -7,10 +7,6 @@ PRGNAME="tcl"
 # удобным для написания интерактивных сценариев. Этот пакет и два следующих
 # (Expect и DejaGNU) необходимы для поддержки запуска тестовых наборов.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/tcl.html
-
-# Home page: http://tcl.sourceforge.net/
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 

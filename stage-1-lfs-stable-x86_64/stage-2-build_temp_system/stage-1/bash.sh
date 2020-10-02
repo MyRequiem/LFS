@@ -5,10 +5,6 @@ PRGNAME="bash"
 ### Bash
 # Bourne-Again SHell
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/bash.html
-
-# Home page: http://www.gnu.org/software/bash/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

@@ -5,10 +5,6 @@ PRGNAME="m4"
 ### M4
 # Пакет M4 содержит макропроцессор
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/m4.html
-
-# Home page: http://www.gnu.org/software/m4/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

@@ -6,10 +6,6 @@ PRGNAME="coreutils"
 # Утилиты для отображения и настройки основных характеристик системы: basename,
 # cat, chmod, chown, chroot, cp, cut, date и т.д.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/coreutils.html
-
-# Home page: http://www.gnu.org/software/coreutils/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

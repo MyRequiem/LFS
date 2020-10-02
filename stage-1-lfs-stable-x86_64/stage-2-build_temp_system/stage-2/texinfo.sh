@@ -5,10 +5,6 @@ PRGNAME="texinfo"
 ### Texinfo
 # Программы для чтения, записи и конвертации страниц info
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/texinfo.html
-
-# Home page: http://www.gnu.org/software/texinfo/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

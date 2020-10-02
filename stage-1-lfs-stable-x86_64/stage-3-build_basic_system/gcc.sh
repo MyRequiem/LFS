@@ -5,10 +5,6 @@ PRGNAME="gcc"
 ### GCC (Base GCC package with C support)
 # Пакет содержит компиляторы GNU для C и C++
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/gcc.html
-
-# Home page: https://gcc.gnu.org/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -24,10 +20,7 @@ sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 mkdir build
 cd build || exit 1
 
-# для других языков есть некоторые предварительные условия, которые пока не
-# доступны в нашей системе. Смотри BLFS для получения инструкций по созданию
-# всех поддерживаемых языков GCC:
-# http://www.linuxfromscratch.org/blfs/view/stable/general/gcc.html
+# включаем поддержку только С и C++
 #    --enable-languages=c,c++
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию

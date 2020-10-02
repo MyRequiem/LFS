@@ -9,10 +9,6 @@ PRGNAME="gdbm"
 # ключ-значение, поиска и извлечение данных по ключу и удаление ключа вместе с
 # его данными.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/gdbm.html
-
-# Home page: http://www.gnu.org/software/gdbm/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

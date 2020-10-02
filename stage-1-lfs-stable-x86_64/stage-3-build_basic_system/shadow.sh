@@ -5,10 +5,6 @@ PRGNAME="shadow"
 ### Shadow (shadow password suite)
 # Пакет содержит программы для безопасной работы с паролями
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/shadow.html
-
-# Home page: https://github.com/shadow-maint/shadow/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

@@ -6,10 +6,6 @@ PRGNAME="autoconf"
 # Пакет макросов m4, которые создают сценарии оболочки для автоматической
 # настройки пакетов исходного кода программного обеспечения.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/autoconf.html
-
-# Home page: http://www.gnu.org/software/autoconf/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

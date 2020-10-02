@@ -9,10 +9,6 @@ PRGNAME="ncurses"
 # абстракции, позволяющий не беспокоиться об аппаратных различиях терминалов и
 # писать переносимый код
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/ncurses.html
-
-# Home page: http://www.gnu.org/software/ncurses/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

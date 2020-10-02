@@ -6,10 +6,6 @@ PRGNAME="readline"
 # Набор библиотек для редактирование из командной строки и возможности ведения
 # истории
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/readline.html
-
-# Home page: https://tiswww.case.edu/php/chet/readline/rltop.html
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

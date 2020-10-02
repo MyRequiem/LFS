@@ -5,10 +5,6 @@ PRGNAME="automake"
 ### Automake (a Makefile generator)
 # Пакет содержит программы создания Make-файлов для использования с Autoconf
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/automake.html
-
-# Home page: http://www.gnu.org/software/automake/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

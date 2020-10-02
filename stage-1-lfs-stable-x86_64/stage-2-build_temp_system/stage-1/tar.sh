@@ -5,10 +5,6 @@ PRGNAME="tar"
 ### Tar
 # Программа архивации файлов и каталогов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/tar.html
-
-# Home page: http://www.gnu.org/software/tar/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

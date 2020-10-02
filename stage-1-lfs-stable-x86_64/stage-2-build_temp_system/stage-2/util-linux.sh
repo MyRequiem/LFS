@@ -6,10 +6,6 @@ PRGNAME="util-linux"
 # Содержит различные утилиты для обработки файловых систем, консолей, разделов,
 # сообщений и т.д.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/util-linux.html
-
-# Home page: http://freecode.com/projects/util-linux
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

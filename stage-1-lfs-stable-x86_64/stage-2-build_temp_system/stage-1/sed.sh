@@ -5,10 +5,6 @@ PRGNAME="sed"
 ### Sed
 # Потоковый редактор
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sed.html
-
-# Home page: http://www.gnu.org/software/sed/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

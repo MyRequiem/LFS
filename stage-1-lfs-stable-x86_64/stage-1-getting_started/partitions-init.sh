@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter02/mounting.html
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter03/introduction.html
-
 PART="/dev/sda10"
 LFS="/mnt/lfs"
 

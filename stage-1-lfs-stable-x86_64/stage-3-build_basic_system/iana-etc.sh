@@ -11,10 +11,6 @@ PRGNAME="iana-etc"
 #                       именами для Интернет услуг, а также соответствующие им
 #                       номера портов и типы протокола
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/iana-etc.html
-
-# Home page: http://freecode.com/projects/iana-etc
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

@@ -6,10 +6,6 @@ PRGNAME="patch"
 # Программа для изменения или создания файлов путем применения файлов *.patch,
 # обычно создаваемых программой diff
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/patch.html
-
-# Home page: https://savannah.gnu.org/projects/patch/
-
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 

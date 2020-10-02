@@ -8,10 +8,6 @@ PRGNAME="dejagnu"
 # процедур Tcl, созданную для поддержки написания программных тестов. DejaGnu
 # написан на Expect, который  использует командный язык Tcl
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/dejagnu.html
-
-# Home page: http://www.gnu.org/software/dejagnu/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

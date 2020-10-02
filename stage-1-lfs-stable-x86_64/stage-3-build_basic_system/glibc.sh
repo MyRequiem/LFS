@@ -10,10 +10,6 @@ TIMEZONE="Europe/Astrakhan"
 # закрытия файлов, чтения и записи файлов, обработки строк, сопоставления с
 # образцом, арифметики и так далее.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/glibc.html
-
-# Home page: http://www.gnu.org/software/libc/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

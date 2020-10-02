@@ -5,10 +5,6 @@ PRGNAME="bash"
 ### Bash (Bourne-Again SHell - sh-compatible shell)
 # Командная оболочка UNIX
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/bash.html
-
-# Home page: http://www.gnu.org/software/bash/
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1

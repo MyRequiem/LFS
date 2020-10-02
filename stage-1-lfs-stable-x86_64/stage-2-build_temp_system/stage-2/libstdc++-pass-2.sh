@@ -10,10 +10,6 @@ ARCH_NAME="gcc"
 # бы не могли использовать собранный нами GCC, потому что он мог работать
 # только в chroot среде.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/gcc-libstdc++-pass2.html
-
-# Home page: https://gcc.gnu.org/
-
 ###
 # Это второй проход libstdc++
 ###

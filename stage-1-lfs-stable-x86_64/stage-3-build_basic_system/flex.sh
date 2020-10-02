@@ -6,10 +6,6 @@ PRGNAME="flex"
 # Пакет содержит утилиту для генерации программ, которые распознают шаблоны в
 # тексте
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/flex.html
-
-# Home page: https://github.com/westes/flex
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
