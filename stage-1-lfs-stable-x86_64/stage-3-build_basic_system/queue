@@ -56,6 +56,7 @@ kmod.sh
 libelf.sh
 libffi.sh
 openssl.sh
+python3.sh
 
 
 # vim:ft=conf
