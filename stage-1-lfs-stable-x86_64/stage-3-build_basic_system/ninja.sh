@@ -5,18 +5,15 @@ PRGNAME="ninja"
 ### Ninja (build system with a focus on speed)
 # небольшая система сборки, ориентированная на скорость
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/ninja.html
-
-# Home page: https://ninja-build.org/
-# Download:  https://github.com/ninja-build/ninja/archive/v1.10.0/ninja-1.10.0.tar.gz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/usr"/{bin,share/bash-completion/completions}
+BASH_COMPL="share/bash-completion/completions"
+ZSH_COMPL="share/zsh/site-functions"
+mkdir -pv "${TMP_DIR}/usr"/{bin,"${BASH_COMPL}","${ZSH_COMPL}"}
 
 # при запуске ninja обычно запускает максимальное количество процессов
 # параллельно. По умолчанию это количество ядер в системе + 2. В некоторых
@@ -25,8 +22,9 @@ mkdir -pv "${TMP_DIR}/usr"/{bin,share/bash-completion/completions}
 # потоков, то можно ограничить количество параллельных процессов, но некоторые
 # пакеты при сборке не передают параметр -jN. Можно установить переменную
 # окружения NINJAJOBS, для принудительного ограничения количества потоков
-# сборки. Установим значение равное количеству процессоров + 1
-export NINJAJOBS="-j$(($(/tools/bin/nproc) + 1))"
+# сборки. Установим значение равное количеству процессоров
+NINJAJOBS="-j$(nproc)"
+export NINJAJOBS
 
 # добавим возможность использовать переменную окружения NINJAJOBS
 sed -i '/int Guess/a \
@@ -36,29 +34,22 @@ sed -i '/int Guess/a \
   if ( j > 0 ) return j;\
 ' src/ninja.cc || exit 1
 
-# собираем ninja
 # заставляет ninja пересобрать себя под текущую систему
 #    --bootstrap
 python3 configure.py \
     --bootstrap || exit 1
 
-# запускаем тесты
-./ninja ninja_test
-./ninja_test \
-    --gtest_filter=-SubprocessTest.SetWithLots
+# тесты
+# ./ninja ninja_test
+# ./ninja_test \
+#     --gtest_filter=-SubprocessTest.SetWithLots
 
 # устанавливаем пакет
-install -vm755 ninja /usr/bin/
-install -vm755 ninja "${TMP_DIR}/usr/bin/"
+install -vm755  ninja                "${TMP_DIR}/usr/bin/"
+install -vDm644 misc/bash-completion "${TMP_DIR}/usr/${BASH_COMPL}/ninja"
+install -vDm644 misc/zsh-completion  "${TMP_DIR}/usr/${ZSH_COMPL}/_ninja"
 
-BASH_COMPL="/usr/share/bash-completion/completions"
-install -vDm644 misc/bash-completion "${BASH_COMPL}/ninja"
-install -vDm644 misc/bash-completion "${TMP_DIR}${BASH_COMPL}/ninja"
-
-ZSH_COMPL="/usr/share/zsh/site-functions"
-mkdir -pv "${TMP_DIR}${ZSH_COMPL}"
-install -vDm644 misc/zsh-completion  "${ZSH_COMPL}/_ninja"
-install -vDm644 misc/zsh-completion  "${TMP_DIR}${ZSH_COMPL}/_ninja"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (build system with a focus on speed)
@@ -73,5 +64,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

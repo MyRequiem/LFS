@@ -57,6 +57,7 @@ libelf.sh
 libffi.sh
 openssl.sh
 python3.sh
+ninja.sh
 
 
 # vim:ft=conf
