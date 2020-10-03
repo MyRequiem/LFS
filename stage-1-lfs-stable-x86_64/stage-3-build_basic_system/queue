@@ -55,6 +55,7 @@ automake.sh
 kmod.sh
 libelf.sh
 libffi.sh
+openssl.sh
 
 
 # vim:ft=conf

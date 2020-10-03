@@ -7,11 +7,6 @@ PRGNAME="openssl"
 # предоставления криптографических функций другим пакетам, таким как OpenSSH,
 # почтовым приложениям, веб-браузерам (для доступа по протоколу HTTPS) и т.д.
 
-# http://www.linuxfromscratch.org/lfs/view/development/chapter06/openssl.html
-
-# Home page: https://www.openssl.org/
-# Download:  https://www.openssl.org/source/openssl-1.1.1g.tar.gz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -27,22 +22,23 @@ mkdir -pv "${TMP_DIR}"
     shared                \
     zlib-dynamic || exit 1
 
-make || exit 1
-# запускаем тесты. Известно, что один подтест в тесте 20-test_enc.t не проходит
-make test
+make || make -j1 || exit 1
+
+# известно, что один тест 30-test_afalg.t is не проходит в определенных
+# конфигурациях ядра (предполагается, что не были выбраны некоторые параметры
+# шифрования)
+# make test
 
 # устанавливаем пакет
-sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
-make MANSUFFIX=ssl install
+sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile || exit 1
 make MANSUFFIX=ssl install DESTDIR="${TMP_DIR}"
 
 # устанавливаем документацию
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mv -v /usr/share/doc/${PRGNAME} "${DOCS}"
+DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+mv -v "${TMP_DIR}/usr/share/doc/${PRGNAME}" "${DOCS}"
 cp -vfr doc/* "${DOCS}"
 
-mv -v "${TMP_DIR}/usr/share/doc/${PRGNAME}" "${TMP_DIR}${DOCS}"
-cp -vfr doc/* "${TMP_DIR}${DOCS}"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Secure Sockets Layer toolkit)
@@ -57,5 +53,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
