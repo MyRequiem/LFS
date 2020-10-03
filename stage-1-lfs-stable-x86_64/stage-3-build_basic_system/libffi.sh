@@ -3,15 +3,9 @@
 PRGNAME="libffi"
 
 ### Libffi (A Portable Foreign Function Interface Library)
-# Libffi - библиотека, которая предоставляет переносимый программный интерфейс
-# высокого уровня для различных соглашений о вызовах. Это позволяет
-# программисту вызывать любую функцию определенную описанием интерфейса вызова
-# во время выполнения
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libffi.html
-
-# Home page: https://sourceware.org/libffi/
-# Download:  ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
+# Библиотека, предоставляющая переносимый программный интерфейс высокого уровня
+# для различных соглашений о вызовах. Это позволяет программисту вызывать любую
+# функцию определенную описанием интерфейса вызова во время выполнения
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -28,10 +22,13 @@ mkdir -pv "${TMP_DIR}"
     --disable-static \
     --with-gcc-arch=native || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+
+# make check
+
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (A Portable Foreign Function Interface Library)
@@ -48,5 +45,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

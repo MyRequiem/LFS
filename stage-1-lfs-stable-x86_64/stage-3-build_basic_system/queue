@@ -54,6 +54,7 @@ autoconf.sh
 automake.sh
 kmod.sh
 libelf.sh
+libffi.sh
 
 
 # vim:ft=conf
