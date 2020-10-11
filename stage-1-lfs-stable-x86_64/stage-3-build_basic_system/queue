@@ -58,6 +58,7 @@ libffi.sh
 openssl.sh
 python3.sh
 ninja.sh
+meson.sh
 
 
 # vim:ft=conf
