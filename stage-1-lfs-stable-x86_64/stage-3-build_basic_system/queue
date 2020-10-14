@@ -59,6 +59,7 @@ openssl.sh
 python3.sh
 ninja.sh
 meson.sh
+coreutils.sh
 
 
 # vim:ft=conf
