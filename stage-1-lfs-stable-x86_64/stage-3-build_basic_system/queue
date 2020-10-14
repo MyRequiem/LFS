@@ -60,6 +60,7 @@ python3.sh
 ninja.sh
 meson.sh
 coreutils.sh
+check.sh
 
 
 # vim:ft=conf

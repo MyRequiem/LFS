@@ -5,11 +5,6 @@ PRGNAME="check"
 ### Check (unit testing framework for C)
 # Фреймворк для тестов на C
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/check.html
-
-# Home page: https://libcheck.github.io/check
-# Download:  https://github.com/libcheck/check/releases/download/0.14.0/check-0.14.0.tar.gz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -18,20 +13,19 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+./configure       \
+    --prefix=/usr \
+    --disable-static || exit 1
 
-make || exit 1
-make check
-# устанавливаем пакет
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-make docdir="${DOC_DIR}" install
-make docdir="${DOC_DIR}" install DESTDIR="${TMP_DIR}"
+make || make -j1 || exit 1
 
-# правим shebang скрипта checkmk
-# '#! /tools/bin/gawk -f' --> '#! /usr/bin/gawk -f'
-sed -i '1 s/tools/usr/' /usr/bin/checkmk
-sed -i '1 s/tools/usr/' "${TMP_DIR}/usr/bin/checkmk"
+# make check
+
+make                                              \
+    docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (unit testing framework for C)
@@ -43,5 +37,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
