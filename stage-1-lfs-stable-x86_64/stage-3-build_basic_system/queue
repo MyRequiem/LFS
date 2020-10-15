@@ -62,6 +62,7 @@ meson.sh
 coreutils.sh
 check.sh
 diffutils.sh
+gawk.sh
 
 
 # vim:ft=conf
