@@ -3,12 +3,9 @@
 PRGNAME="findutils"
 
 ### Findutils (utilities to locate files)
-# Пакет содержит программы для поиска файлов
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/findutils.html
-
-# Home page: http://www.gnu.org/software/findutils/
-# Download:  http://ftp.gnu.org/gnu/findutils/findutils-4.7.0.tar.xz
+# Программа для поиска файлов в файловой системе (find), в базе данных имен
+# файлов (locate), для обновления этой базы данных (updatedb) и утилита для
+# применения заданной команды к списку файлов (xargs)
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -18,25 +15,28 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/bin"
 
-# изменяет расположение базы данных locate в /var/lib/locate, что соответствует
-# стандарту FHS
+# задает расположение базы данных locate в соответствии со стандартом FHS
 #    --localstatedir=/var/lib/locate
 ./configure       \
     --prefix=/usr \
     --localstatedir=/var/lib/locate || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+
+# тесты запускаем от пользователя tester
+# chown -Rv tester .
+# su tester -c "PATH=${PATH} make check"
+# chown -Rv root:root .
+
 make install DESTDIR="${TMP_DIR}"
 
 # некоторые из сценариев в пакете LFS-Bootscripts используют утилиту find.
 # Каталог /usr/bin может быть недоступен на ранних стадиях загрузки системы,
 # поэтому переместим утилиту find в /bin
-mv -v /usr/bin/find /bin
-sed -i 's|find:=${BINDIR}|find:=/bin|' /usr/bin/updatedb
 mv -v "${TMP_DIR}/usr/bin/find" "${TMP_DIR}/bin"
 sed -i 's|find:=${BINDIR}|find:=/bin|' "${TMP_DIR}/usr/bin/updatedb"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (utilities to locate files)
@@ -54,5 +54,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

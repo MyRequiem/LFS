@@ -63,6 +63,7 @@ coreutils.sh
 check.sh
 diffutils.sh
 gawk.sh
+findutils.sh
 
 
 # vim:ft=conf
