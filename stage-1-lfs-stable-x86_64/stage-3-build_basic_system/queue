@@ -61,6 +61,7 @@ ninja.sh
 meson.sh
 coreutils.sh
 check.sh
+diffutils.sh
 
 
 # vim:ft=conf
