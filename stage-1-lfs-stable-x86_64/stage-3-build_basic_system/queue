@@ -66,6 +66,7 @@ gawk.sh
 findutils.sh
 groff.sh
 grub.sh
+less.sh
 
 
 # vim:ft=conf
