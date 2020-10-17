@@ -52,7 +52,7 @@ tar                       \
     --no-same-owner       \
     --no-same-permissions \
     -C "${DOCS}"          \
-    -xvf "/sources/python-${VERSION}-docs-html.tar.bz2"
+    -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2"
 
 # устанавливаем пакет в корень файловой системы
 /bin/cp -vR "${TMP_DIR}"/* /

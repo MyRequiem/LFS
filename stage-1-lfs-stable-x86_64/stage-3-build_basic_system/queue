@@ -69,6 +69,7 @@ grub.sh
 less.sh
 gzip.sh
 iproute2.sh
+kbd.sh
 
 
 # vim:ft=conf

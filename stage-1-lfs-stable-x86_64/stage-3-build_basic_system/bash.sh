@@ -15,7 +15,7 @@ mkdir -pv "${TMP_DIR}/bin"
 
 # применим патч с некоторыми исправлениями
 patch --verbose -Np1 -i \
-    "/sources/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # использовать библиотеку readline, которая уже устанавлена в системе вместо
 # использования собственной внутренней версии

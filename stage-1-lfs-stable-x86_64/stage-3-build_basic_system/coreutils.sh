@@ -17,7 +17,8 @@ mkdir -pv "${TMP_DIR}"/{bin,usr/{sbin,share/man/man8}}
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
 # это несоответствия и другие ошибки, связанные с интернационализацией
-patch --verbose -Np1 -i "/sources/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
 
 # отключим тест gnulib.mk, который на некоторых машинах может бесконечно
 # зацикливаться

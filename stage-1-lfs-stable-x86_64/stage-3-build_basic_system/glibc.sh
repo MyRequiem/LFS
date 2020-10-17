@@ -27,7 +27,7 @@ mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 # /var/db и заменяет их на
 #    /var/cache/nscd    - для nscd
 #    /var/lib/nss_db    - для nss_db
-patch --verbose -Nvp1 -i "/sources/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
+patch --verbose -Nvp1 -i "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
