@@ -5,11 +5,6 @@ PRGNAME="gzip"
 ### Gzip (file compression utility)
 # Программы для сжатия и распаковки файлов
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/gzip.html
-
-# Home page: http://www.gnu.org/software/gzip/
-# Download:  http://ftp.gnu.org/gnu/gzip/gzip-1.10.tar.xz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -21,15 +16,14 @@ mkdir -pv "${TMP_DIR}/bin"
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-# известно, что в среде LFS не проходят два теста: help-version и zmore
-make check
-make install
+make || make -j1 || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # переместим gzip из /usr/bin в /bin, т.к. этого требуют многие программы
-mv -v /usr/bin/gzip /bin
 mv -v "${TMP_DIR}/usr/bin/gzip" "${TMP_DIR}/bin"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (file compression utility)
@@ -44,5 +38,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

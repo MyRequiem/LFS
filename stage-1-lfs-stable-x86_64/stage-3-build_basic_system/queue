@@ -67,6 +67,7 @@ findutils.sh
 groff.sh
 grub.sh
 less.sh
+gzip.sh
 
 
 # vim:ft=conf
