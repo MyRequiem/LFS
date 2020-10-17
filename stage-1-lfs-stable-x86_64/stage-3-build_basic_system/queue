@@ -68,6 +68,7 @@ groff.sh
 grub.sh
 less.sh
 gzip.sh
+iproute2.sh
 
 
 # vim:ft=conf
