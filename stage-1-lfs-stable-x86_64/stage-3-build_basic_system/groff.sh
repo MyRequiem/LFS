@@ -5,11 +5,6 @@ PRGNAME="groff"
 ### Groff (document formatting system)
 # Программы для обработки и форматирования текста
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/groff.html
-
-# Home page: http://www.gnu.org/software/groff/
-# Download:  http://ftp.gnu.org/gnu/groff/groff-1.22.4.tar.gz
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -27,9 +22,10 @@ PAGE=A4 ./configure \
 
 # пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
 make -j1 || exit 1
-# пакет не содержит набора тестов, поэтому сразу устанавливаем
-make install
+# пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (document formatting system)
@@ -45,5 +41,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

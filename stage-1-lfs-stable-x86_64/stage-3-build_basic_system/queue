@@ -64,6 +64,7 @@ check.sh
 diffutils.sh
 gawk.sh
 findutils.sh
+groff.sh
 
 
 # vim:ft=conf
