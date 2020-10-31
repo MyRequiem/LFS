@@ -71,6 +71,7 @@ gzip.sh
 iproute2.sh
 kbd.sh
 libpipeline.sh
+make.sh
 
 
 # vim:ft=conf
