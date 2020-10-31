@@ -70,6 +70,7 @@ less.sh
 gzip.sh
 iproute2.sh
 kbd.sh
+libpipeline.sh
 
 
 # vim:ft=conf

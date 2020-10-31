@@ -3,13 +3,8 @@
 PRGNAME="libpipeline"
 
 ### Libpipeline (library for manipulating pipelines)
-# Пакет содержит библиотеку для манипулирования конвейерами подпроцессов гибким
-# и удобным способом
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/libpipeline.html
-
-# Home page: http://libpipeline.nongnu.org/
-# Download:  http://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.2.tar.gz
+# Пакет содержит библиотеку для управления конвейерами подпроцессов гибким и
+# удобным способом
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,10 +17,11 @@ mkdir -pv "${TMP_DIR}"
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-make check
-make install
+make || make -j1 || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for manipulating pipelines)
@@ -38,5 +34,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
