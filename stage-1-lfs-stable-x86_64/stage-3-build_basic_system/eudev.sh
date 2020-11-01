@@ -3,14 +3,7 @@
 PRGNAME="eudev"
 
 ### Eudev (dynamic device directory system)
-# программы для динамического создания узлов устройств
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/eudev.html
-
-# Home page: https://wiki.gentoo.org/wiki/Project:Eudev
-# Download:  https://dev.gentoo.org/~blueness/eudev/eudev-3.2.9.tar.gz
-#            https://github.com/gentoo/eudev/releases
-#            http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.xz
+# Программы для динамического создания узлов устройств
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -33,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
     --enable-manpages      \
     --disable-static || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 
 # создадим несколько каталогов, которые необходимы для тестов, а также будут
 # использоваться как часть установки системы
@@ -42,23 +35,17 @@ mkdir -pv /etc/udev/rules.d
 mkdir -pv "${TMP_DIR}/lib/udev/rules.d"
 mkdir -pv "${TMP_DIR}/etc/udev/rules.d"
 
-make check
+# make check
 
-# бэкапим конфиг /etc/udev/udev.conf перед установкой пакета, если он
-# существует
-UDEV_CONF="/etc/udev/udev.conf"
-if [ -f "${UDEV_CONF}" ]; then
-    mv "${UDEV_CONF}" "${UDEV_CONF}.old"
-fi
-
-# устанавливаем пакет
-make install
 make install DESTDIR="${TMP_DIR}"
 
-config_file_processing "${UDEV_CONF}"
-
-# установим некоторые пользовательские правила и файлы поддержки, которые будут
-# полезные в среде LFS
+# установим некоторые пользовательские правила и файлы поддержки из архива
+# udev-lfs, которые будут полезные в среде LFS
+UDEV_LFS="udev-lfs"
+UDEV_LFS_VERSION="$(echo "${SOURCES}/${UDEV_LFS}"-*.tar.?z* | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
+# http://anduin.linuxfromscratch.org/LFS/udev-lfs-${UDEV_LFS_VERSION}.tar.?z*
+#
 # /etc
 # └── udev
 #     └── rules.d
@@ -75,17 +62,24 @@ config_file_processing "${UDEV_CONF}"
 # /usr
 #     └── share
 #         └── doc
-#             └── udev-${VERSION}
+#             └── udev-${UDEV_LFS_VERSION}
 #                 └── lfs
 #                     ├── 55-lfs.txt
 #                     └── README
-UDEV_LFS="udev-lfs"
-UDEV_LFS_VERSION="$(echo "${SOURCES}/${UDEV_LFS}"-*.tar.?z* | rev | \
-    cut -d . -f 3- | cut -d - -f 1 | rev)"
+#
 tar xvf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}".tar.?z* || exit 1
-make -f "${UDEV_LFS}-${UDEV_LFS_VERSION}/Makefile.lfs" install
 make -f "${UDEV_LFS}-${UDEV_LFS_VERSION}/Makefile.lfs" install \
     DESTDIR="${TMP_DIR}"
+
+# бэкапим конфиг /etc/udev/udev.conf перед установкой пакета
+UDEV_CONF="/etc/udev/udev.conf"
+if [ -f "${UDEV_CONF}" ]; then
+    mv "${UDEV_CONF}" "${UDEV_CONF}.old"
+fi
+
+/bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${UDEV_CONF}"
 
 ### конфигурация Eudev
 # информация об аппаратных устройствах хранится в каталогах
@@ -110,9 +104,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://wiki.gentoo.org/wiki/Project:Eudev
 # Download:  https://dev.gentoo.org/~blueness/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
-#            https://github.com/gentoo/${PRGNAME}/releases
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
