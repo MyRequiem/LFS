@@ -74,6 +74,7 @@ libpipeline.sh
 make.sh
 patch.sh
 man-db.sh
+tar.sh
 
 
 # vim:ft=conf
