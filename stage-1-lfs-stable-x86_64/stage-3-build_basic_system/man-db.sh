@@ -3,12 +3,7 @@
 PRGNAME="man-db"
 
 ### Man-DB (database-driven manual pager suite)
-# программы для поиска и просмотра man-страниц
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/man-db.html
-
-# Home page: https://www.nongnu.org/man-db/
-# Download:  http://download.savannah.gnu.org/releases/man-db/man-db-2.9.0.tar.xz
+# Программы для поиска и просмотра man-страниц
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -23,14 +18,13 @@ mkdir -pv "${TMP_DIR}"
 #    --disable-setuid
 # общесистемные файлы кэша принадлежат пользователю bin
 #    --enable-cache-owner=bin
-# программы по умолчанию, которые можно установить позже:
-# браузер w3m
+# программы по умолчанию, которые можно установить позже: браузер w3m
 #    --with-browser=/usr/bin/w3m
 # 'vgrind' преобразует исходные тексты программы во входные данные Groff
 #    --with-vgrind=/usr/bin/vgrind
 # 'grap' полезен для набора графов в документах Groff
 #    --with-grap=/usr/bin/grap
-# эти параметры не позволяют устанавливать ненужные системные каталоги и файлы
+# не позволяем устанавливать ненужные системные каталоги и файлы
 #    --with-systemdtmpfilesdir=
 #    --with-systemdsystemunitdir=
 ./configure                       \
@@ -45,8 +39,9 @@ mkdir -pv "${TMP_DIR}"
     --with-systemdsystemunitdir=  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
+make || make -j1 || exit 1
 make check
+make install DESTDIR="${TMP_DIR}"
 
 # бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует
 MAN_DB_CONF="/etc/man_db.conf"
@@ -54,8 +49,7 @@ if [ -f "${MAN_DB_CONF}" ]; then
     mv "${MAN_DB_CONF}" "${MAN_DB_CONF}.old"
 fi
 
-make install
-make install DESTDIR="${TMP_DIR}"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${MAN_DB_CONF}"
 
@@ -73,5 +67,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

@@ -73,6 +73,7 @@ kbd.sh
 libpipeline.sh
 make.sh
 patch.sh
+man-db.sh
 
 
 # vim:ft=conf
