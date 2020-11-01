@@ -76,6 +76,7 @@ patch.sh
 man-db.sh
 tar.sh
 texinfo.sh
+vim.sh
 
 
 # vim:ft=conf

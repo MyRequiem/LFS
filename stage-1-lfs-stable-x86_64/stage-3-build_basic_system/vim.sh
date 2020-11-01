@@ -5,15 +5,8 @@ PRGNAME="vim"
 ### Vim (Vi IMproved)
 # Powerful text editor
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/vim.html
-
-# Home page: https://www.vim.org/
-#            https://github.com/vim/vim
-# Download:  ftp://ftp.vim.org/pub/vim/unix/vim-8.2.tar.bz2
-
 ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 SOURCES="/sources"
 VERSION=$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | \
@@ -24,7 +17,8 @@ BUILD_DIR="${SOURCES}/build"
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc"
+DOCS="/usr/share/doc"
+mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
 mkdir -p "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
@@ -40,37 +34,26 @@ echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 ./configure \
     --prefix=/usr || exit 1
 
-make || exit 1
-# тесты будем запускать от пользователя nobody
-chown -Rv nobody .
+make || make -j1 || exit 1
+
+# тесты будем запускать от пользователя tester
+# chown -Rv tester .
 # набор тестов выводит много двоичных данных в stdout, что может привести к
-# проблемам с настройками текущего терминала. Этого можно избежать, если
-# перенаправить вывод в лог файл
-su nobody -s /bin/bash -c "LANG=en_US.UTF-8 make -j1 test" &> vim-test.log
-chown -Rv root:root .
+# проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
+# файл
+# su tester -c "LANG=en_US.UTF-8 make -j1 test" &> vim-test.log
+# chown -Rv root:root .
 
-# бэкапим конфиг /etc/vimrc перед установкой пакета, если он существует
-VIMRC="/etc/vimrc"
-if [ -f "${VIMRC}" ]; then
-    mv "${VIMRC}" "${VIMRC}.old"
-fi
-
-# устанавливаем пакет
-make install
 make install DESTDIR="${TMP_DIR}"
 
-# удаляем не нужные нам *.desktop файлы и иконки, которые устанавливаются
-# только когда команде 'make install' передается параметр DESTDIR
-# (см. src/Makefile в дереве исходников, цель install-icons:)
+# мы же не будем пользоватся GUI-версией редактора, правда? :) Поэтому удаляем
+# не нужные нам *.desktop файлы и иконки, которые устанавливаются только когда
+# команде 'make install' передается параметр DESTDIR (см. src/Makefile в дереве
+# исходников, цель install-icons)
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 
-# установим ссылку vi -> vim в /usr/bin и создадим man-страницы для vi, т.е.
-# ссылки vi.1 -> vim.1 и т.д. в /usr/share/man/*/man1/
-ln -sv vim /usr/bin/vi
-for MANPAGE in /usr/share/man/{,*/}man1/vim.1; do
-    ln -sv vim.1 "$(dirname ${MANPAGE})/vi.1"
-done
-
+# установим ссылку в /usr/bin vi -> vim и создадим man-страницы для vi, т.е.
+# ссылки vi.1 -> vim.1 в /usr/share/man/*/man1/
 (
     cd "${TMP_DIR}/usr/bin" || exit
     ln -sv vim vi
@@ -80,20 +63,16 @@ done
     done
 )
 
-# по умолчанию документация Vim устанавливается в /usr/share/vim, поэтому
+# по умолчанию документация устанавливается в /usr/share/vim/, поэтому
 # установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
-rm -f "/usr/share/doc/${PRGNAME}-${VERSION}"
-ln -svf "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
-    "/usr/share/doc/${PRGNAME}-${VERSION}"
-
 (
-    mkdir -p "${TMP_DIR}/usr/share/doc"
-    cd "${TMP_DIR}/usr/share/doc" || exit 1
+    cd "${TMP_DIR}${DOCS}" || exit 1
     ln -sv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
 )
 
 # конфигурация по умолчанию
-cat << EOF > "${VIMRC}"
+VIMRC="/etc/vimrc"
+cat << EOF > "${TMP_DIR}${VIMRC}"
 " Begin ${VIMRC}
 
 " ensure defaults are set before customizing settings,
@@ -118,9 +97,7 @@ set expandtab
 " End ${VIMRC}
 EOF
 
-cp "${VIMRC}" "${TMP_DIR}/etc/"
-
-config_file_processing "${VIMRC}"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Vi IMproved)
@@ -138,5 +115,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
