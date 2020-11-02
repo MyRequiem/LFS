@@ -82,6 +82,7 @@ procps-ng.sh
 util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
+sysvinit.sh
 
 
 # vim:ft=conf
