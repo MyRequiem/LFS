@@ -3,13 +3,8 @@
 PRGNAME="e2fsprogs"
 
 ### E2fsprogs (ext2 and ext3 filesystems utilities)
-# утилиты для работы с файловой системой ext2, а также поддерживает
-# журналируемые файловые системы ext3 и ext4
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/e2fsprogs.html
-
-# Home page: http://e2fsprogs.sourceforge.net/
-# Download:  https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.45.5/e2fsprogs-1.45.5.tar.gz
+# Пакет содержит утилиты для работы с файловой системой ext2, а также
+# поддерживает журналируемые файловые системы ext3 и ext4
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,8 +15,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# документация E2fsprogs рекомендует проводить сборку в отдельном подкаталоге
-# дерева исходников
+# документация E2fsprogs рекомендует собирать пакет в отдельном каталоге
 mkdir build
 cd build || exit 1
 
@@ -31,7 +25,7 @@ cd build || exit 1
 # доступны. Поэтому установим их в /bin и /lib
 #    --with-root-prefix=""
 #    --bindir=/bin
-# создаем общие библиотеки, которые используют некоторые программы в этом
+# создаем общие библиотеки, которые используются некоторыми программами в этом
 # пакете
 #    --enable-elf-shlibs
 # не будем собирать и устанавливать libuuid, библиотеки libblkid, демон uuidd и
@@ -51,11 +45,26 @@ cd build || exit 1
     --disable-uuidd       \
     --disable-fsck || exit 1
 
-make || exit 1
-make check
+make || make -j1 || exit 1
+# make check
+make install DESTDIR="${TMP_DIR}"
 
-# бэкапим конфиги /etc/e2scrub.conf и /etc/mke2fs.conf перед установкой пакета,
-# если они существует
+# сделаем установленные статические библиотеки *.a доступными для записи, чтобы
+# позже можно было удалить из них отладочную информацию
+chmod -v u+w "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
+
+# пакет устанавливает сжатый libext2fs.info.gz, распакуем его
+INFO="/usr/share/info"
+gunzip -v "${TMP_DIR}${INFO}/libext2fs.info.gz" || exit 1
+
+# установим документацию в систему info (/usr/share/info/)
+makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
+install -v -m644 doc/com_err.info "${TMP_DIR}/usr/share/info"
+
+# бэкапим конфиги
+#    /etc/e2scrub.conf
+#    /etc/mke2fs.conf
+# перед установкой пакета, если они существуют
 E2SCRUB_CONF="/etc/e2scrub.conf"
 if [ -f "${E2SCRUB_CONF}" ]; then
     mv "${E2SCRUB_CONF}" "${E2SCRUB_CONF}.old"
@@ -66,33 +75,15 @@ if [ -f "${MKE2FS_CONF}" ]; then
     mv "${MKE2FS_CONF}" "${MKE2FS_CONF}.old"
 fi
 
-make install
-make install DESTDIR="${TMP_DIR}"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${E2SCRUB_CONF}"
 config_file_processing "${MKE2FS_CONF}"
 
-# сделаем установленные статические библиотеки *.a доступными для записи, чтобы
-# позже можно было удалить из них отладочную информацию
-chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
-chmod -v u+w "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
-
-# пакет устанавливает сжатый файл libext2fs.info.gz, но не обновляет индекс
-# info-системы, который находится в файле /usr/share/info/dir. Распакуем архив,
-# а затем обновим индекс info-системы
-INFO="/usr/share/info/libext2fs.info"
-gunzip -v "${INFO}.gz"
-gunzip -v "${TMP_DIR}${INFO}.gz"
-install-info --dir-file=/usr/share/info/dir "${INFO}"
-install-info --dir-file="${TMP_DIR}/usr/share/info/dir" "${TMP_DIR}${INFO}"
-
-# установим документацию в систему info (/usr/share/info/)
-makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
-install  -v -m644 doc/com_err.info /usr/share/info
-install  -v -m644 doc/com_err.info "${TMP_DIR}/usr/share/info"
-install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info
-install-info --dir-file="${TMP_DIR}/usr/share/info/dir" \
-    "${TMP_DIR}/usr/share/info/com_err.info"
+# пакет устанавливает libext2fs.info и com_err.info, но не обновляет индекс
+# info-системы (/usr/share/info/dir), поэтому обновим вручную
+install-info --dir-file=/usr/share/info/dir "${INFO}/libext2fs.info"
+install-info --dir-file=/usr/share/info/dir "${INFO}/com_err.info"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ext2 and ext3 filesystems utilities)
@@ -106,5 +97,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"

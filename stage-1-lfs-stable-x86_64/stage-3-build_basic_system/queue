@@ -80,6 +80,7 @@ vim.sh
 eudev.sh
 procps-ng.sh
 util-linux.sh
+e2fsprogs.sh
 
 
 # vim:ft=conf
