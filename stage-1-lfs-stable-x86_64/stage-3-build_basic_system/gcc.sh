@@ -108,7 +108,8 @@ chmod 755 "${TMP_DIR}/usr/lib/libgcc_s.so"{,.1}
 rm -rf "/usr/include/c++/${VERSION}/x86_64-lfs-linux-gnu"
 rm -rf /usr/lib/gcc/x86_64-lfs-linux-gnu
 rm -rf /usr/libexec/gcc/x86_64-lfs-linux-gnu
-rm -f /usr/bin/x86_64-lfs-linux-gnu-*
+rm -f  /usr/bin/x86_64-lfs-linux-gnu-*
+rm -f  /usr/x86_64-lfs-linux-gnu
 
 /bin/cp -vR "${TMP_DIR}"/* /
 

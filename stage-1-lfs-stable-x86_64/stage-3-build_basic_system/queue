@@ -84,7 +84,7 @@ e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
 stripping.sh
-cleaning_up_stage_1.sh
+cleaning-up.sh
 
 
 # vim:ft=conf
