@@ -1,0 +1,7 @@
+###
+# Переходим в chroot окружение
+./entering-chroot-env.sh
+###
+
+
+# vim:ft=conf

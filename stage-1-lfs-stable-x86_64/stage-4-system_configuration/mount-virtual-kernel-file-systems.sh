@@ -1,1 +1,1 @@
-/home/myrequiem/projects/git/LFS/stage-1-lfs-stable-x86_64/stage-2-build_temp_system/stage-2/mount-virtual-kernel-file-systems.sh
+../stage-2-build_temp_system/stage-2/mount-virtual-kernel-file-systems.sh
