@@ -79,6 +79,7 @@ texinfo.sh
 vim.sh
 eudev.sh
 procps-ng.sh
+util-linux.sh
 
 
 # vim:ft=conf

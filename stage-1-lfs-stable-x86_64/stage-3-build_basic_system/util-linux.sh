@@ -3,13 +3,8 @@
 PRGNAME="util-linux"
 
 ### Util-linux (a huge collection of essential utilities)
-# Содержит различные утилиты для обработки файловых систем, консолей, разделов,
-# сообщений и т.д.
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/util-linux.html
-
-# Home page: http://freecode.com/projects/util-linux
-# Download:  https://www.kernel.org/pub/linux/utils/util-linux/v2.35/util-linux-2.35.1.tar.xz
+# Служебные утилиты для работы с файловыми системами, консолями, разделами
+# жесткого диска, системными сообщениями и др.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -38,18 +33,21 @@ mkdir -pv /var/lib/hwclock
     --without-systemdsystemunitdir        \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
-# запуск набора тестов от имени пользователя root может быть не безопасным для
-# системы, поэтому будем запускать от имени пользователя nobody. Для запуска
-# тестов в конфигурации ядра должен быть установлен параметр
-# CONFIG_SCSI_DEBUG=m
-bash tests/run.sh --srcdir="${PWD}" --builddir="${PWD}"
-chown -Rv nobody .
-su nobody -s /bin/bash -c "PATH=${PATH} make -k check"
-chown -Rv root:root .
+make || make -j1 || exit 1
 
-make install
+# NOTE:
+# для запуска тестов в конфигурации ядра хоста должен быть установлен параметр
+# CONFIG_SCSI_DEBUG как модуль
+#
+# запуск набора тестов от имени пользователя root может быть не безопасным для
+# системы, поэтому будем запускать от имени пользователя tester
+# chown -Rv tester .
+# su tester -c "make -k check"
+# chown -Rv root:root .
+
 make install DESTDIR="${TMP_DIR}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -64,5 +62,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
