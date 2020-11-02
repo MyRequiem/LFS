@@ -81,6 +81,7 @@ eudev.sh
 procps-ng.sh
 util-linux.sh
 e2fsprogs.sh
+sysklogd.sh
 
 
 # vim:ft=conf

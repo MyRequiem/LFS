@@ -3,12 +3,7 @@
 PRGNAME="sysklogd"
 
 ### Sysklogd (Linux system logging utilities)
-# содержит программы для регистрации системных сообщений (логирования)
-
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter06/sysklogd.html
-
-# Home page: http://www.infodrom.org/projects/sysklogd/
-# Download:  http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
+# Программы для регистрации системных сообщений (логирования)
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -24,20 +19,13 @@ mkdir -p "${TMP_DIR}"/{etc,sbin,usr/share/man/{man5,man8}}
 sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
 sed -i 's/union wait/int/' syslogd.c
 
-make || exit 1
-# пакет не содержит набора тестов, поэтому сразу устанавливаем
-make BINDIR=/sbin install
+make || make -j1 || exit 1
+# пакет не содержит набора тестов
 make BINDIR="${TMP_DIR}/sbin" MANDIR="${TMP_DIR}/usr/share/man" install
 
-# бэкапим конфиг /etc/syslog.conf перед его созданием
+### конфиг /etc/syslog.conf
 SYSLOG_CONF="/etc/syslog.conf"
-if [ -f "${SYSLOG_CONF}" ]; then
-    mv "${SYSLOG_CONF}" "${SYSLOG_CONF}.old"
-fi
-
-### конфигурация sysklogd
-# создадим /etc/syslog.conf
-cat << EOF > "${SYSLOG_CONF}"
+cat << EOF > "${TMP_DIR}${SYSLOG_CONF}"
 # Begin ${SYSLOG_CONF} - configuration file for syslogd(8)
 
 # all messages with the priority 'crit'
@@ -84,7 +72,12 @@ user.*                      -/var/log/user
 # End ${SYSLOG_CONF}
 EOF
 
-cp "${SYSLOG_CONF}" "${TMP_DIR}/etc/"
+# бэкапим /etc/syslog.conf
+if [ -f "${SYSLOG_CONF}" ]; then
+    mv "${SYSLOG_CONF}" "${SYSLOG_CONF}.old"
+fi
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${SYSLOG_CONF}"
 
@@ -99,5 +92,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
