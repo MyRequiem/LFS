@@ -1,0 +1,15 @@
+#
+### ВАЖНО !!!
+#
+# Открываем скрипт etc-fstab.sh и проверяем переменные
+#    SWAP_PART  - указывает на swap раздел жесткого диска или на swap-файл
+#    ROOT_PART  - корневой раздел LFS системы
+
+###
+# Переходим в chroot окружение
+./entering-chroot-env.sh
+###
+etc-fstab.sh
+
+
+# vim:ft=conf
