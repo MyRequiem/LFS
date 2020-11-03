@@ -4,6 +4,7 @@
 ###
 lfs-bootscripts.sh
 network-configuration.sh
+terminus-font.sh
 
 
 # vim:ft=conf

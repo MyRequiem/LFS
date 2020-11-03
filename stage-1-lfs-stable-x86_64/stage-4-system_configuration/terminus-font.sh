@@ -5,14 +5,10 @@ PRGNAME="terminus-font"
 ### Terminus Font (clean, fixed width bitmap font for linux console)
 # Растровый шрифт с фиксированной шириной для чистой консоли linux
 
-# Пакет упоминается в BLFS, но установим его сейчас для настройки шрифта
-# ter-v14n в чистом терминале после установки System-V-configuration в файле
-# /etc/sysconfig/console
-
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/console-fonts.html
-
-# Home page: http://terminus-font.sourceforge.net
-# Download:  https://netix.dl.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
+# Пакет упоминается в BLFS:
+#    http://www.linuxfromscratch.org/blfs/view/stable/postlfs/console-fonts.html
+# Установим его сейчас для настройки шрифта ter-v14n в чистом терминале после
+# установки System-V-configuration в файле /etc/sysconfig/console
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -24,21 +20,21 @@ FONTS="/usr/share/consolefonts"
 mkdir -pv "${TMP_DIR}${FONTS}"
 
 ./configure \
-    --prefix=/usr
+    --prefix=/usr || exit 1
 
 # собираем только PSF шрифты для чистого терминала. В пакете присутствуют еще
 # PCF шрифты для X Window System, но для их сборки нужна утилита bdftopcf
 # входящая в состав иксов, которые пока не установлены
-make psf
+make psf || make -j1 psf || exit 1
 
 # установка всех собранных шрифтов в /usr/share/consolefonts
 #    # make install-psf [DESTDIR=...]
 
 # установим только ter-v14n шрифт
-mkdir -pv "${FONTS}"
 gzip -vc9 ter-v14n.psf > ter-v14n.psf.gz
-install -v -m644 ter-v14n.psf.gz "${FONTS}"
 install -v -m644 ter-v14n.psf.gz "${TMP_DIR}${FONTS}"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (clean, fixed width bitmap font for linux console)
@@ -58,5 +54,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
