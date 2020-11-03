@@ -2,6 +2,6 @@
 # Переходим в chroot окружение
 ./entering-chroot-env.sh
 ###
-
+lfs-bootscripts.sh
 
 # vim:ft=conf
