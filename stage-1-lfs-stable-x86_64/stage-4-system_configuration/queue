@@ -6,6 +6,7 @@ lfs-bootscripts.sh
 network-configuration.sh
 terminus-font.sh
 system-v-configuration.sh
+etc-profile.sh
 
 
 # vim:ft=conf

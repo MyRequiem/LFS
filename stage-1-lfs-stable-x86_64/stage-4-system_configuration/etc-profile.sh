@@ -13,26 +13,16 @@ PRGNAME="etc-profile"
 #    /etc/profile.d/dircolors.sh
 #    /etc/profile.d/bash_completion.sh
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/profile.html
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/profile.html
-
 ROOT="/"
-source "${ROOT}check_environment.sh"      || exit 1
-source "${ROOT}config_file_processing.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"/etc/{profile.d,bash_completion.d}
 
-mkdir -pv /etc/{profile.d,bash_completion.d}
-
 # =============================== /etc/profile =================================
 PROFILE="/etc/profile"
-if [ -f "${PROFILE}" ]; then
-    mv "${PROFILE}" "${PROFILE}.old"
-fi
-
-cat << EOF > "${PROFILE}"
+cat << EOF > "${TMP_DIR}${PROFILE}"
 #! /bin/bash
 
 # Begin ${PROFILE}
@@ -118,16 +108,9 @@ HOST_NAME TIME CURR_DIR
 # End ${PROFILE}
 EOF
 
-cp "${PROFILE}" "${TMP_DIR}/etc/"
-config_file_processing "${PROFILE}"
-
 # ==================== /etc/profile.d/bash_completion.sh =======================
 BASH_COMPLETION="/etc/profile.d/bash_completion.sh"
-if [ -f "${BASH_COMPLETION}" ]; then
-    mv "${BASH_COMPLETION}" "${BASH_COMPLETION}.old"
-fi
-
-cat << EOF > "${BASH_COMPLETION}"
+cat << EOF > "${TMP_DIR}${BASH_COMPLETION}"
 #! /bin/bash
 
 # Begin ${BASH_COMPLETION}
@@ -156,18 +139,12 @@ done
 
 # End ${BASH_COMPLETION}
 EOF
-chmod 755 "${BASH_COMPLETION}"
 
-cp "${BASH_COMPLETION}" "${TMP_DIR}/etc/profile.d/"
-config_file_processing "${BASH_COMPLETION}"
+chmod 755 "${TMP_DIR}${BASH_COMPLETION}"
 
 # ======================= /etc/profile.d/dircolors.sh ==========================
 DIRCOLORS_SH="/etc/profile.d/dircolors.sh"
-if [ -f "${DIRCOLORS_SH}" ]; then
-    mv "${DIRCOLORS_SH}" "${DIRCOLORS_SH}.old"
-fi
-
-cat << EOF > "${DIRCOLORS_SH}"
+cat << EOF > "${TMP_DIR}${DIRCOLORS_SH}"
 #! /bin/bash
 
 # Begin ${DIRCOLORS_SH}
@@ -192,18 +169,12 @@ fi
 
 # End ${DIRCOLORS_SH}
 EOF
-chmod 755 "${DIRCOLORS_SH}"
 
-cp "${DIRCOLORS_SH}" "${TMP_DIR}/etc/profile.d/"
-config_file_processing "${DIRCOLORS_SH}"
+chmod 755 "${TMP_DIR}${DIRCOLORS_SH}"
 
 # ============================== /etc/dircolors ================================
 DIRCOLORS="/etc/dircolors"
-if [ -f "${DIRCOLORS}" ]; then
-    mv "${DIRCOLORS}" "${DIRCOLORS}.old"
-fi
-
-cat << EOF > "${DIRCOLORS}"
+cat << EOF > "${TMP_DIR}${DIRCOLORS}"
 # Begin ${DIRCOLORS}
 
 # Configuration file for dircolors, a utility to help you set the
@@ -495,16 +466,9 @@ STICKY_OTHER_WRITABLE 30;42
 # End ${DIRCOLORS}
 EOF
 
-cp "${DIRCOLORS}" "${TMP_DIR}/etc/"
-config_file_processing "${DIRCOLORS}"
-
 # ======================== /etc/profile.d/readline.sh ==========================
 READLINE="/etc/profile.d/readline.sh"
-if [ -f "${READLINE}" ]; then
-    mv "${READLINE}" "${READLINE}.old"
-fi
-
-cat << EOF > "${READLINE}"
+cat << EOF > "${TMP_DIR}${READLINE}"
 #! /bin/bash
 
 # Begin ${READLINE}
@@ -523,18 +487,12 @@ export INPUTRC
 
 # End ${READLINE}
 EOF
-chmod 755 "${READLINE}"
 
-cp "${READLINE}" "${TMP_DIR}/etc/profile.d/"
-config_file_processing "${READLINE}"
+chmod 755 "${TMP_DIR}${READLINE}"
 
 # ========================= /etc/profile.d/umask.sh ============================
 UMASK="/etc/profile.d/umask.sh"
-if [ -f "${UMASK}" ]; then
-    mv "${UMASK}" "${UMASK}.old"
-fi
-
-cat << EOF > "${UMASK}"
+cat << EOF > "${TMP_DIR}${UMASK}"
 #! /bin/bash
 
 # Begin ${UMASK}
@@ -551,18 +509,12 @@ fi
 
 # End ${UMASK}
 EOF
-chmod 755 "${UMASK}"
 
-cp "${UMASK}" "${TMP_DIR}/etc/profile.d/"
-config_file_processing "${UMASK}"
+chmod 755 "${TMP_DIR}${UMASK}"
 
 # ========================== /etc/profile.d/i18n.sh ============================
 I18N="/etc/profile.d/i18n.sh"
-if [ -f "${I18N}" ]; then
-    mv "${I18N}" "${I18N}.old"
-fi
-
-cat << EOF > "${I18N}"
+cat << EOF > "${TMP_DIR}${I18N}"
 #! /bin/bash
 
 # Begin ${I18N}
@@ -600,10 +552,12 @@ export LC_ALL=
 
 # End ${I18N}
 EOF
-chmod 755 "${I18N}"
 
-cp "${I18N}" "${TMP_DIR}/etc/profile.d/"
-config_file_processing "${I18N}"
+chmod 755 "${TMP_DIR}${I18N}"
+
+# ==============================================================================
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (system-wide defaults)
@@ -621,5 +575,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}"
