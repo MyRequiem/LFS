@@ -8,6 +8,7 @@ terminus-font.sh
 system-v-configuration.sh
 etc-profile.sh
 etc-inputrc.sh
+etc-shells.sh
 
 
 # vim:ft=conf

@@ -51,7 +51,6 @@ login (через getty) и скрипты. Эти скрипты, обычно 
 
 - копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
     ./check_environment.sh
-    ./config_file_processing.sh
     ./unpack_source_archive.sh
     ./write_to_var_log_packages.sh
 
