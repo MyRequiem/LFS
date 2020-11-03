@@ -7,8 +7,6 @@ PRGNAME="etc-inputrc"
 # возможности редактирования во время ввода в терминал. Переопределить
 # конфигурацию /etc/inputrc можно в файле ~/.inputrc для каждого пользователя.
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/inputrc.html
-
 # в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
 # LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
 # пройден. Проверим окружение явно:
@@ -27,18 +25,12 @@ if [[ "${ID1}" == "${ID2}" ]]; then
 fi
 
 ROOT="/"
-source "${ROOT}config_file_processing.sh" || exit 1
-
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
 INPUTRC="/etc/inputrc"
-if [ -f "${INPUTRC}" ]; then
-    mv "${INPUTRC}" "${INPUTRC}.old"
-fi
-
-cat << EOF > "${INPUTRC}"
+cat << EOF > "${TMP_DIR}${INPUTRC}"
 # Begin ${INPUTRC}
 
 # This file configures keyboard input for programs using readline.
@@ -77,8 +69,7 @@ set echo-control-characters off
 # End ${INPUTRC}
 EOF
 
-cp "${INPUTRC}" "${TMP_DIR}/etc/"
-config_file_processing "${INPUTRC}"
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (configures keyboard input for programs using readline)
@@ -87,5 +78,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}"
