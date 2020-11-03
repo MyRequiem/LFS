@@ -3,5 +3,7 @@
 ./entering-chroot-env.sh
 ###
 lfs-bootscripts.sh
+network-configuration.sh
+
 
 # vim:ft=conf

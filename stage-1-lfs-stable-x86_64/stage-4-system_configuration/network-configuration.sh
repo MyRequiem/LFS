@@ -4,11 +4,8 @@ PRGNAME="network-configuration"
 
 ### Network Configuration (network configuration files)
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/network.html
-
 ROOT="/"
-source "${ROOT}check_environment.sh"      || exit 1
-source "${ROOT}config_file_processing.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 # Именование сетевых устройств
 # ----------------------------
@@ -57,13 +54,7 @@ source "${ROOT}config_file_processing.sh" || exit 1
 #               используются DSL провайдерами. Если переменная не указана, то
 #               ее значение по умолчанию равно 24
 
-# бэкапим конфиг /etc/sysconfig/ifconfig.eth0 перед его созданием, если он
-# существует
 IFCONFIG_ETH0="/etc/sysconfig/ifconfig.eth0"
-if [ -f "${IFCONFIG_ETH0}" ]; then
-    mv "${IFCONFIG_ETH0}" "${IFCONFIG_ETH0}.old"
-fi
-
 cat << EOF > "${IFCONFIG_ETH0}"
 # Begin ${IFCONFIG_ETH0}
 
@@ -78,20 +69,13 @@ BROADCAST=192.168.1.255
 # End ${IFCONFIG_ETH0}
 EOF
 
-config_file_processing "${IFCONFIG_ETH0}"
-
 ### Создадим файл /etc/resolv.conf
 # Системе понадобятся некоторые средства для преобразования доменных имен в
 # IP-адреса и наоборот. Это достигается путем размещения IP-адреса DNS-сервера,
 # доступного от интернет-провайдера или сетевого администратора в файле
 # /etc/resolv.conf
 
-# бэкапим /etc/resolv.conf перед его созданием, если он существует
 RESOLV_CONF="/etc/resolv.conf"
-if [ -f "${RESOLV_CONF}" ]; then
-    mv "${RESOLV_CONF}" "${RESOLV_CONF}.old"
-fi
-
 cat << EOF > "${RESOLV_CONF}"
 # Begin ${RESOLV_CONF}
 
@@ -102,28 +86,12 @@ nameserver 8.8.4.4
 # End ${RESOLV_CONF}
 EOF
 
-config_file_processing "${RESOLV_CONF}"
-
 ### Конфигурация имени хоста
 # В процессе загрузки файл /etc/hostname используется для установки имени хоста
-
-# бэкапим /etc/hostname перед его созданием, если он существует
-HOST_NAME="/etc/hostname"
-if [ -f "${HOST_NAME}" ]; then
-    mv "${HOST_NAME}" "${HOST_NAME}.old"
-fi
-
-echo "lfs" > "${HOST_NAME}"
-
-config_file_processing "${HOST_NAME}"
+echo "lfs" > /etc/hostname
 
 ### Настройка файла /etc/hosts
-# бэкапим /etc/hosts перед его созданием, если он существует
 HOSTS="/etc/hosts"
-if [ -f "${HOSTS}" ]; then
-    mv "${HOSTS}" "${HOSTS}.old"
-fi
-
 cat << EOF > "${HOSTS}"
 # Begin ${HOSTS}
 
@@ -134,8 +102,6 @@ cat << EOF > "${HOSTS}"
 
 # End ${HOSTS}
 EOF
-
-config_file_processing "${HOSTS}"
 
 # пишем список файлов в /var/log/packages/network-configuration
 cat << EOF > "/var/log/packages/${PRGNAME}"
