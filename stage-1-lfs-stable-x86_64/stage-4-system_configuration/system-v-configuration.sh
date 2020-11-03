@@ -8,11 +8,8 @@ PRGNAME="system-v-configuration"
 # собственный способ загрузки, но он так же основан на общепринятых стандартах
 # SysVinit
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter07/usage.html
-
 ROOT="/"
-source "${ROOT}check_environment.sh"      || exit 1
-source "${ROOT}config_file_processing.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
@@ -73,11 +70,7 @@ mkdir -pv "${TMP_DIR}/etc/sysconfig"
 # 'stop' не зависимо от имени ссылки.
 
 INITTAB="/etc/inittab"
-if [ -f "${INITTAB}" ]; then
-    mv "${INITTAB}" "${INITTAB}.old"
-fi
-
-cat << EOF > "${INITTAB}"
+cat << EOF > "${TMP_DIR}${INITTAB}"
 # Begin ${INITTAB}
 
 # default run-level
@@ -110,9 +103,6 @@ su:S016:once:/sbin/sulogin
 # End ${INITTAB}
 EOF
 
-cp "${INITTAB}" "${TMP_DIR}/etc/"
-config_file_processing "${INITTAB}"
-
 ###
 # Конфигурация системных часов
 ###
@@ -133,24 +123,17 @@ config_file_processing "${INITTAB}"
 # CLOCKPARAMS и UTC могут быть установлены в /etc/sysconfig/rc.site
 
 ETC_CLOCK="/etc/sysconfig/clock"
-if [ -f "${ETC_CLOCK}" ]; then
-    mv "${ETC_CLOCK}" "${ETC_CLOCK}.old"
-fi
-
-cat << EOF > "${ETC_CLOCK}"
+cat << EOF > "${TMP_DIR}${ETC_CLOCK}"
 # Begin ${ETC_CLOCK}
 
 UTC=1
 
-# Set this to any options you might need to give to hwclock,
-# such as machine hardware clock type for Alphas.
+# Set this to any options you might need to give to hwclock, such as machine
+# hardware clock type for Alphas
 CLOCKPARAMS=
 
 # End ${ETC_CLOCK}
 EOF
-
-cp "${ETC_CLOCK}" "${TMP_DIR}/etc/sysconfig/"
-config_file_processing "${ETC_CLOCK}"
 
 ###
 # Конфигурация консоли
@@ -191,11 +174,7 @@ config_file_processing "${ETC_CLOCK}"
 #                       переменная установлена в кодировку не UTF-8
 
 CONSOLE="/etc/sysconfig/console"
-if [ -f "${CONSOLE}" ]; then
-    mv "${CONSOLE}" "${CONSOLE}.old"
-fi
-
-cat << EOF > "${CONSOLE}"
+cat << EOF > "${TMP_DIR}${CONSOLE}"
 # Begin ${CONSOLE}
 
 UNICODE="1"
@@ -220,9 +199,6 @@ FONT="ter-v14n"
 # End ${CONSOLE}
 EOF
 
-cp "${CONSOLE}" "${TMP_DIR}/etc/sysconfig/"
-config_file_processing "${CONSOLE}"
-
 ###
 # Создание файлов при загрузке
 ###
@@ -232,14 +208,17 @@ config_file_processing "${CONSOLE}"
 # пакетом lfs-bootscripts и его синтаксис описан в нем.
 
 # удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
-sed -i '$ d' /etc/sysconfig/createfiles
+CREATEFILES="/etc/sysconfig/createfiles"
+sed -i '$ d' "${CREATEFILES}"
 # и допишем в конец файла
-cat >> /etc/sysconfig/createfiles << "EOF"
+cat << EOF >> "${CREATEFILES}"
 /tmp/.ICE-unix    dir    1777    root    root
 /tmp/.X11-unix    dir    1777    root    root
 
-# End /etc/sysconfig/createfiles
+# End ${CREATEFILES}
 EOF
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 ###
 # Настройка сценариев загрузки и завершения работы
@@ -249,7 +228,7 @@ EOF
 # /etc/sysconfig/rc.site для увеличения скорости
 
 # команда udev_retry при загрузке обычно требуется только если каталог /var
-# монтируется как отдельный раздел. Отменим ее запуск
+# монтируется как отдельный раздел. Если это не так, отменим ее запуск
 sed -i 's/.*OMIT_UDEV_RETRY_SETTLE.*/OMIT_UDEV_RETRY_SETTLE=yes/' \
     /etc/sysconfig/rc.site
 
@@ -273,8 +252,8 @@ sed -i 's/.*VERBOSE_FSCK.*/VERBOSE_FSCK=yes/' /etc/sysconfig/rc.site
 sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 
 # во время выключения системы программа init посылает сигнал TERM каждой
-# запущенной программе, затем ждет установленного таймаута (по умолчанию 3
-# секунды). Этот таймаут можно отключить
+# запущенной программе, затем ждет установленного таймаута (по умолчанию 3 сек)
+# Этот таймаут можно отключить
 #    # shutdown -t0 -r now
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
@@ -288,5 +267,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}"
