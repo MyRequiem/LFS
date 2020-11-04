@@ -11,10 +11,10 @@ ARCH_NAME="linux"
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
-ROOT_SRC="/root/srс"
+ROOT_SRC="/root/src"
 mkdir -pv "${ROOT_SRC}"
 
-# архив с исходным кодом лежит в /sources или /root/srс
+# архив с исходным кодом лежит в /sources или /root/src
 SOURCES="/sources"
 ARCH=$(find "${SOURCES}" -type f -name "${ARCH_NAME}-*.tar.?z*" \
     2>/dev/null | head -n 1)

@@ -2,7 +2,7 @@
 
 SRC_ARCH_NAME="$1"
 VERSION="$2"
-SOURCES="/root/src"
+SOURCES="/root/src/lfs/src"
 
 if [ -z "${VERSION}" ]; then
     ARCH_TYPE=".tar.?z"
