@@ -10,6 +10,7 @@
 ./entering-chroot-env.sh
 ###
 etc-fstab.sh
+etc-lfs-release.sh
 
 
 # vim:ft=conf
