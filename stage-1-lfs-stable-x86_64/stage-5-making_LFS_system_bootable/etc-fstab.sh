@@ -8,8 +8,6 @@ ROOT_PART="/dev/sda10"
 # /etc/fstab - файл в котором хранятся настройки монтирования различных
 # разделов, включая корень и swap
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter08/fstab.html
-
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
 source "${ROOT}config_file_processing.sh" || exit 1
@@ -19,11 +17,7 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
 FSTAB="/etc/fstab"
-if [ -f "${FSTAB}" ]; then
-    mv "${FSTAB}" "${FSTAB}.old"
-fi
-
-cat << EOF > "${FSTAB}"
+cat << EOF > "${TMP_DIR}${FSTAB}"
 # Begin ${FSTAB}
 
 # File System    mount-point    type        options             dump fsck order
@@ -39,8 +33,7 @@ devtmpfs         /dev           devtmpfs    mode=0755,nosuid    0       0
 # End ${FSTAB}
 EOF
 
-cp "${FSTAB}" "${TMP_DIR}/etc/"
-config_file_processing "${FSTAB}"
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (partition mount settings)
@@ -49,5 +42,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}"
