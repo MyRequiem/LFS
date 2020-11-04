@@ -6,12 +6,20 @@
 #    ROOT_PART  - корневой раздел LFS системы
 
 ###
+# Если в хост-системе /boot находится на отдельном разделе, то ядро LFS системы
+# должно быть установлено именно туда. Самый простой способ сделать это -
+# смонтировать /boot хоста в каталог /boot LFS-системы
+mount -v --bind /boot /mnt/lfs/boot
+###
+
+###
 # Переходим в chroot окружение
 ./entering-chroot-env.sh
 ###
 etc-fstab.sh
 etc-lfs-release.sh
 kernel-source.sh
+kernel-generic.sh <kernel-version>
 
 
 # vim:ft=conf

@@ -6,7 +6,9 @@ VERSION="$1"
 ### Linux kernel generic (a general purpose SMP Linux kernel)
 # Ядро linux
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html
+# LFS рекомендует использовать последнюю стабильную версию ядра.
+# Конфигурация ядра для BLFS:
+#    http://www.linuxfromscratch.org/blfs/view/stable/longindex.html#kernel-config-index
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -35,9 +37,7 @@ cd "${SRC_DIR}" || exit 1
 echo "make mrproper..."
 make mrproper
 
-# конфигурация ядра для BLFS
-# http://www.linuxfromscratch.org/blfs/view/stable/longindex.html#kernel-config-index
-# копируем заранее приготовленный конфиг в корень LFS системы
+# копируем заранее приготовленный конфиг
 cp "${CONFIG}" .config || exit 1
 
 NUMJOBS="$(nproc)"
@@ -52,7 +52,7 @@ cp -v .config               "/boot/config-lfs-${VERSION}"
 # ссылка в /boot vmlinuz-lfs -> vmlinuz-lfs-${VERSION}
 (
     cd /boot || exit 1
-    ln -sfv "vmlinuz-lfs-${VERSION}" vmlinuz-lfs
+    ln -svf "vmlinuz-lfs-${VERSION}" vmlinuz-lfs
 )
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

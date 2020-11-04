@@ -16,10 +16,12 @@
 # файле ./queue
 ###
 
-- копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
+- копируем вспомогательные скрипты для сборки и конфиг ядра в корень LFS
+  системы (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
     ./write_to_var_log_packages.sh
+    ./lfs-kernel-config-x.x.x
 
 - копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
 
