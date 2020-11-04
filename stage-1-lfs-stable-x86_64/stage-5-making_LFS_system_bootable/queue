@@ -20,6 +20,7 @@ etc-fstab.sh
 etc-lfs-release.sh
 kernel-source.sh
 kernel-generic.sh <kernel-version>
+kernel-modules.sh <kernel-version>
 
 
 # vim:ft=conf

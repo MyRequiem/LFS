@@ -6,8 +6,6 @@ VERSION="$1"
 ### Linux kernel modules
 # Модули ядра linux
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 source "${ROOT}config_file_processing.sh" || exit 1
@@ -29,7 +27,7 @@ cd "${SRC_DIR}" || exit 1
 NUMJOBS="$(nproc)"
 make -j"${NUMJOBS}" modules || exit 1
 
-# удалим модули с прошлой установки
+# удалим модули текущей версии ядра, если уже установлены
 MODULE_DIR="/lib/modules/${VERSION}"
 [ -d "${MODULE_DIR}" ] && rm -rf "${MODULE_DIR}"
 
