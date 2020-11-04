@@ -6,17 +6,7 @@ ARCH_NAME="linux"
 ### Linux kernel source (Source code for Linus Torvalds Linux kernel)
 # Исходный код ядра linux
 
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter10/kernel.html
-
-# Home page:    https://www.kernel.org/
-# Download:     https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.8.8.tar.xz
-# All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
-
-# На 12.09.20 версия ядра linux для LFS-stable - 5.8.3
-# По рекомендации на странице
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
-# cледует использовать последнюю доступную версию ядра 5.8.x
-# На 12.09.20 последняя версия ядра ветки 5.8.x это 5.8.8
+# LFS рекомендует использовать последнюю стабильную версию ядра.
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -44,7 +34,8 @@ fi
 VERSION="$(echo "${ARCH}" | rev | cut -d / -f 1 | cut -d . -f 3- | \
     cut -d - -f 1 | rev)"
 
-cd /usr/src || exit 1
+USR_SRC="/usr/src"
+cd "${USR_SRC}" || exit 1
 rm -rf "${ARCH_NAME}-${VERSION}"
 
 tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
@@ -52,7 +43,7 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 # очистим дерево исходников
 echo -e "\n# make mrproper..."
-make mrproper
+make mrproper || exit 1
 
 TARGET="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
@@ -64,9 +55,10 @@ cat << EOF > "${TARGET}"
 #
 # Home page:    https://www.kernel.org/
 # Download:     https://www.kernel.org/pub/linux/kernel/v${MAJ_VER}.x/${ARCH_NAME}-${VERSION}.tar.xz
+# All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
 #
 EOF
 
-find "/usr/src/${ARCH_NAME}-${VERSION}" | sort >> "${TARGET}"
+find "${USR_SRC}/${ARCH_NAME}-${VERSION}" | sort >> "${TARGET}"
 # удалим пустые строки
 sed -i '/^$/d' "${TARGET}"

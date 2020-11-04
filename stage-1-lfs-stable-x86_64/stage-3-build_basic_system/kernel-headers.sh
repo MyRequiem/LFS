@@ -10,14 +10,14 @@ source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 # очищаем дерево исходников ядра
-make mrproper
+make mrproper || exit 1
 
 # извлечем заголовки из исходного кода ядра в ./usr/include/
 # Рекомендованный
 #    make target "headers_install"
 # не может быть использован, поскольку он требует rsync, который пока не
 # установлен в LFS системе
-make headers
+make headers || exit 1
 
 # удалим не нужные файлы и скопируем заголовки в /usr/include/
 find usr/include -name '.*' -delete
