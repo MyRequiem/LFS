@@ -33,7 +33,7 @@ make -f unix/Makefile generic_gcc
 make prefix="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man/man1" \
     -f unix/Makefile install
 
-source "${ROOT}/stripping.sh" || exit 1
+source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 

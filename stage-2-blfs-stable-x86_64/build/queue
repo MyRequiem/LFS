@@ -6,5 +6,6 @@ a/zip.sh
 a/unzip.sh
 a/which.sh
 a/time.sh
+a/tree.sh
 
 # vim:ft=conf
