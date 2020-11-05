@@ -6,6 +6,8 @@ ARCH_NAME="linux-firmware"
 ### Firmware for the linux kernel
 # Файлы прошивки для ядра Linux которые используются для аппаратных драйверов.
 
+# Download: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20201022.tar.gz
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1

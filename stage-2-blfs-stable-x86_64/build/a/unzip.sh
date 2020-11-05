@@ -6,6 +6,9 @@ VERSION="6.0"
 ### UnZip (ZIP extraction utilities)
 # Утилиты для распаковки ZIP-архивов
 
+# Download: https://downloads.sourceforge.net/infozip/unzip60.tar.gz
+#           http://www.linuxfromscratch.org/patches/blfs/10.0/unzip-6.0-consolidated_fixes-1.patch
+
 # Required:    no
 # Recommended: no
 # Optional:    no
@@ -25,7 +28,6 @@ cd unzip60 || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# http://www.linuxfromscratch.org/patches/blfs/10.0/unzip-6.0-consolidated_fixes-1.patch
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated_fixes-1.patch" || exit 1
 
@@ -39,6 +41,7 @@ make                                       \
     -f unix/Makefile install
 
 source "${ROOT}/stripping.sh" || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

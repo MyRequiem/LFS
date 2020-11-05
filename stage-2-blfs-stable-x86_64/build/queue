@@ -4,6 +4,6 @@ s/etc-issue.sh
 s/remove-la-files.sh
 a/zip.sh
 a/unzip.sh
-
+a/which.sh
 
 # vim:ft=conf

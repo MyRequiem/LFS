@@ -1,11 +1,11 @@
 Создаем директорию где будут лежать архивы с исходниками
     /mnt/lfs/root/src/lfs/src
 
-Копируем сборочный скрипт для пакета и вспомогательные скрипты:
+Копируем в /mnt/lfs/root/src/lfs/ сборочный скрипт для пакета и вспомогательные
+скрипты:
     ./check_environment.sh
     ./config_file_processing.sh
     ./stripping.sh
     ./unpack_source_archive.sh
+    ./update-info-db.sh
     ./write_to_var_log_packages.sh
-
-в /mnt/lfs/root/src/lfs/

@@ -7,6 +7,8 @@ VERSION="3.0"
 ### Zip (compressing files into ZIP archives)
 # Утилиты для сжатия файлов в ZIP архивы
 
+# Download: https://downloads.sourceforge.net/infozip/zip30.tar.gz
+
 # Required:    no
 # Recommended: no
 # Optional:    no
@@ -32,6 +34,7 @@ make prefix="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man/man1" \
     -f unix/Makefile install
 
 source "${ROOT}/stripping.sh" || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
