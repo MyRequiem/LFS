@@ -5,8 +5,6 @@ PRGNAME=""
 ### <PRGNAME> ()
 
 
-# Download:
-
 # Required:    no
 # Recommended: no
 # Optional:    no

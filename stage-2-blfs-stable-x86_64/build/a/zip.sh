@@ -7,8 +7,6 @@ VERSION="3.0"
 ### Zip (compressing files into ZIP archives)
 # Утилиты для сжатия файлов в ZIP архивы
 
-# Download: https://downloads.sourceforge.net/infozip/zip30.tar.gz
-
 # Required:    no
 # Recommended: no
 # Optional:    no

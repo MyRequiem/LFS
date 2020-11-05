@@ -13,7 +13,6 @@ PRGNAME="blfs-bootscripts"
 #    # make install-service-dhcpcd
 
 # Home page: http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20200818.tar.xz
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

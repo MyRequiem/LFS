@@ -6,8 +6,6 @@ PRGNAME="which"
 # Команда 'which' принимает один или несколько аргументов и для каждого выводит
 # полный путь к исполняемым файлам
 
-# Download: https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
-
 # Required:    no
 # Recommended: no
 # Optional:    no

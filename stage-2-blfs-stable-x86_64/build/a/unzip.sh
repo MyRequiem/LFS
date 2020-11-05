@@ -6,9 +6,6 @@ VERSION="6.0"
 ### UnZip (ZIP extraction utilities)
 # Утилиты для распаковки ZIP-архивов
 
-# Download: https://downloads.sourceforge.net/infozip/unzip60.tar.gz
-#           http://www.linuxfromscratch.org/patches/blfs/10.0/unzip-6.0-consolidated_fixes-1.patch
-
 # Required:    no
 # Recommended: no
 # Optional:    no

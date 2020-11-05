@@ -8,8 +8,6 @@ PRGNAME="tree"
 # установлена переменная окружения LS_COLORS (устанавливается в
 # /etc/profile.d/dircolors.sh командой dircolors)
 
-# Download: ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz
-
 # Required:    no
 # Recommended: no
 # Optional:    no

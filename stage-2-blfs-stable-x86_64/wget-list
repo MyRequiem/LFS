@@ -1,0 +1,8 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20201022.tar.gz
+http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20200818.tar.xz
+https://downloads.sourceforge.net/infozip/zip30.tar.gz
+https://downloads.sourceforge.net/infozip/unzip60.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.0/unzip-6.0-consolidated_fixes-1.patch
+https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
+https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
+ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz

@@ -9,8 +9,6 @@ PRGNAME="time"
 # встроенную команду 'time', обеспечивающую аналогичные функции, эта утилита
 # требуется LSB (Linux Standard Base)
 
-# Download: https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
-
 # Required:    no
 # Recommended: no
 # Optional:    no
