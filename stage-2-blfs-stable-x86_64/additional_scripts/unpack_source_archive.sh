@@ -2,25 +2,25 @@
 
 SRC_ARCH_NAME="$1"
 VERSION="$2"
-SOURCES="/root/src/lfs/src"
+SOURCES="${ROOT}/src"
 
 if [ -z "${VERSION}" ]; then
     ARCH_TYPE=".tar.?z"
-    VERSION="$(find ${SOURCES} -type f \
+    VERSION="$(find "${SOURCES}" -type f \
         -name "${SRC_ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
         rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 fi
 
 if [ -z "${VERSION}" ]; then
     ARCH_TYPE=".t?z"
-    VERSION="$(find ${SOURCES} -type f \
+    VERSION="$(find "${SOURCES}" -type f \
         -name "${SRC_ARCH_NAME}-*.t?z" 2>/dev/null | sort | head -n 1 | rev | \
         cut -d . -f 2- | cut -d - -f 1 | rev)"
 fi
 
 if [ -z "${VERSION}" ]; then
     ARCH_TYPE=".zip"
-    VERSION="$(find ${SOURCES} -type f \
+    VERSION="$(find "${SOURCES}" -type f \
         -name "${SRC_ARCH_NAME}-*.zip" 2>/dev/null | sort | head -n 1 | rev | \
         cut -d . -f 2- | cut -d - -f 1 | rev)"
 fi

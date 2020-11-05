@@ -8,5 +8,7 @@ a/which.sh
 a/time.sh
 a/tree.sh
 a/dosfstools.sh
+a/gpm.sh
+
 
 # vim:ft=conf

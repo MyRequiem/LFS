@@ -7,3 +7,5 @@ https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz
 https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz
+http://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2
+http://www.linuxfromscratch.org/patches/blfs/10.0/gpm-1.20.7-consolidated-1.patch
