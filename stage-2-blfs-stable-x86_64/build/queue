@@ -9,6 +9,7 @@ a/time.sh
 a/tree.sh
 a/dosfstools.sh
 a/gpm.sh
+a/hdparm.sh
 
 
 # vim:ft=conf
