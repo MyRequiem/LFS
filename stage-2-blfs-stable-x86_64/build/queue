@@ -2,6 +2,7 @@ a/kernel-firmware.sh
 a/blfs-bootscripts.sh
 s/etc-issue.sh
 s/remove-la-files.sh
+a/zip.sh
 
 
 # vim:ft=conf
