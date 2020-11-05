@@ -6,21 +6,12 @@ ARCH_NAME="linux-firmware"
 ### Firmware for the linux kernel
 # Файлы прошивки для ядра Linux которые используются для аппаратных драйверов.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/firmware.html
-
-# Home page: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-# Download:  https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20200316.tar.gz
-#            git clone git://git.kernel.org/pub/scm/linux/kernel/git/dwmw2/linux-firmware.git
-#            Зеркало LFS: http://anduin.linuxfromscratch.org/BLFS/linux-firmware/
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{lib/firmware,usr/share/doc}
-
-chown -R root:root ./*
+mkdir -pv "${TMP_DIR}/lib/firmware"
 
 # удалим исходники carl9170fw
 if [ -d carl9170fw ]; then
@@ -29,17 +20,8 @@ if [ -d carl9170fw ]; then
     rm -rf carl9170fw
 fi
 
-cp -R ./* /lib/firmware
-cp -R ./* "${TMP_DIR}/lib/firmware"
-
-# устанавливаем ссылку на документацию в /usr/share/doc
-(
-    cd /usr/share/doc || exit 1
-    rm -f "${PRGNAME}-${VERSION}"
-    ln -sf ../../../lib/firmware/ "${PRGNAME}-${VERSION}"
-)
-
-echo "Link to /lib/firmware" > "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+cp -vpR ./* /lib/firmware
+cp -vpR ./* "${TMP_DIR}/lib/firmware"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Firmware for the kernel)
