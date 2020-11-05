@@ -1,6 +1,20 @@
 ###***###
-# Пакет .......................... Зависимые пакеты
+# Пакет
+#    зависимые пакеты
 ###***###
+
+
+curl
+    smartmontools
+
+lynx
+    smartmontools
+
+wget
+    smartmontools
+
+gnupg
+    smartmontools
 
 
 # vim:ft=conf

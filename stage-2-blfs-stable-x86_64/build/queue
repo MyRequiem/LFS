@@ -10,6 +10,7 @@ a/tree.sh
 a/dosfstools.sh
 a/gpm.sh
 a/hdparm.sh
+a/smartmontools.sh
 
 
 # vim:ft=conf
