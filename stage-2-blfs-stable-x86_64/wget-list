@@ -6,3 +6,4 @@ http://www.linuxfromscratch.org/patches/blfs/10.0/unzip-6.0-consolidated_fixes-1
 https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz
+https://github.com/dosfstools/dosfstools/releases/download/v4.1/dosfstools-4.1.tar.xz

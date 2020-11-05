@@ -7,5 +7,6 @@ a/unzip.sh
 a/which.sh
 a/time.sh
 a/tree.sh
+a/dosfstools.sh
 
 # vim:ft=conf
