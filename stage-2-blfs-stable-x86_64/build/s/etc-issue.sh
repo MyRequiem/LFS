@@ -7,27 +7,12 @@ PRGNAME="etc-issue"
 # в систему. Он может содержать различные последовательности @char и \char,
 # которые читает утилита agetty
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/logon.html
-
-ROOT="/root"
-source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
-
-TMP_DIR="/tmp/build-${PRGNAME}/package-${PRGNAME}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc"
-
-ISSUE="/etc/issue"
-if [ -f "${ISSUE}" ]; then
-    mv "${ISSUE}" "${ISSUE}.old"
-fi
-
 # Очистка экрана - escape-последовательность '[H[J'
 #     - Esc
 # [H    - помещает курсор в верхний левый угол экрана
 # [J    - стирает экран
 # Такую escape-последовательность возвращает команда 'clear'
-# clear > "${ISSUE}"
+# clear > /etc/issue
 
 # Другие последовательности:
 # \b   baudrate of the current line, e.g. 38400
@@ -37,19 +22,25 @@ fi
 # \m   architecture identifier of the machine, e.g., x86_64
 # \n   nodename of the machine, also known as the hostname, e.g. lfs
 # \o   domainname of the machine
-# \r   release number of the kernel, e.g., 5.5.15
+# \r   release number of the kernel, e.g., 5.9.3
 # \t   current time
 # \u   number of current users logged in
 # \U   string "N user" where N is the number of current users logged in
 # \v   version of the OS, e.g., the build-date etc, e.g.
 #       #2 SMP Fri Jun 24 13:38:27 CDT 2016
 
-# Linux 5.5.15 x86_64 (tty1)
-# Fri Apr 10 [23:23:26]
-printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${ISSUE}"
+ROOT="/root/src/lfs"
+source "${ROOT}/check_environment.sh"      || exit 1
 
-cp "${ISSUE}" "${TMP_DIR}/etc/"
-config_file_processing "${ISSUE}"
+TMP_DIR="/tmp/build-${PRGNAME}/package-${PRGNAME}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
+
+# Linux 5.9.3 x86_64 (tty1)
+# Fri Apr 10 [23:23:26]
+printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${TMP_DIR}/etc/issue"
+
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (pre-login message)
