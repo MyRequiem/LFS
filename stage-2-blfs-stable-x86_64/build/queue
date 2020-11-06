@@ -17,6 +17,7 @@ a/cpio.sh
 a/acpid.sh
 a/fcron.sh
 ap/sudo.sh
+ap/lzip.sh
 
 
 # vim:ft=conf
