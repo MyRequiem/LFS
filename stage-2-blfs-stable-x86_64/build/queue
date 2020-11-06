@@ -14,6 +14,7 @@ a/smartmontools.sh
 a/ntfs-3g.sh
 a/sharutils.sh
 a/cpio.sh
+a/acpid.sh
 
 
 # vim:ft=conf
