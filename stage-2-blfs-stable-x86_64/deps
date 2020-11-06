@@ -63,4 +63,19 @@ fwtk (http://www.fwtk.org/)
 opie (https://sourceforge.net/projects/opie/files/)
     sudo
 
+xmlto
+    pm-utils
+
+hdparm
+    pm-utils
+
+wireless-tools
+    pm-utils
+
+ethtool (https://mirrors.edge.kernel.org/pub/software/network/ethtool/)
+    pm-utils
+
+vbetool (http://ftp.de.debian.org/debian/pool/main/v/vbetool/)
+    pm-utils
+
 # vim:ft=conf
