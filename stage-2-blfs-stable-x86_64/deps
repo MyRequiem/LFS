@@ -3,6 +3,27 @@
 #    Зависимые пакеты
 ###***###
 
+pm-utils
+sudo
+lzip (https://www.nongnu.org/lzip/lzip.html)
+c2man
+etc-issue
+remove-la-files
+gpm
+sharutils
+which
+acpid
+smartmontools
+dosfstools
+blfs-bootscripts
+tree
+ntfs-3g
+time
+zip
+unzip
+cpio
+fcron
+kernel-firmware
 
 curl
     smartmontools
