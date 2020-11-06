@@ -36,15 +36,31 @@ postfix
 
 sendmail
     fcron
+    sudo
 
 vim
     fcron
 
 linux-pam
     fcron
+    sudo
 
 docbook-utils
     fcron
 
+mit-kerberos-v5
+    sudo
+
+openldap
+    sudo
+
+afs  (http://www.openafs.org/)
+    sudo
+
+fwtk (http://www.fwtk.org/)
+    sudo
+
+opie (https://sourceforge.net/projects/opie/files/)
+    sudo
 
 # vim:ft=conf

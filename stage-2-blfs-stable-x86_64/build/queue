@@ -16,6 +16,7 @@ a/sharutils.sh
 a/cpio.sh
 a/acpid.sh
 a/fcron.sh
+ap/sudo.sh
 
 
 # vim:ft=conf
