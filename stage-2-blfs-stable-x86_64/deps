@@ -19,5 +19,10 @@ gnupg
 fuse2 (https://github.com/libfuse/libfuse)
     ntfs-3g
 
+texlive
+    cpio
+
+install-tl-unx
+    cpio
 
 # vim:ft=conf
