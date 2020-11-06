@@ -25,4 +25,26 @@ texlive
 install-tl-unx
     cpio
 
+dovecot
+    fcron
+
+exim
+    fcron
+
+postfix
+    fcron
+
+sendmail
+    fcron
+
+vim
+    fcron
+
+linux-pam
+    fcron
+
+docbook-utils
+    fcron
+
+
 # vim:ft=conf

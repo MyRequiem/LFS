@@ -15,6 +15,7 @@ a/ntfs-3g.sh
 a/sharutils.sh
 a/cpio.sh
 a/acpid.sh
+a/fcron.sh
 
 
 # vim:ft=conf
