@@ -1,6 +1,6 @@
 ###***###
 # Пакет
-#    зависимые пакеты
+#    Зависимые пакеты
 ###***###
 
 
@@ -15,6 +15,9 @@ wget
 
 gnupg
     smartmontools
+
+fuse2 (https://github.com/libfuse/libfuse)
+    ntfs-3g
 
 
 # vim:ft=conf

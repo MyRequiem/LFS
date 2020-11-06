@@ -11,6 +11,7 @@ a/dosfstools.sh
 a/gpm.sh
 a/hdparm.sh
 a/smartmontools.sh
+a/ntfs-3g.sh
 
 
 # vim:ft=conf
