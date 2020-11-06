@@ -19,6 +19,7 @@ a/fcron.sh
 ap/sudo.sh
 ap/lzip.sh
 ap/pm-utils.sh
+d/c2man.sh
 
 
 # vim:ft=conf
