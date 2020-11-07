@@ -20,6 +20,7 @@ ap/sudo.sh
 ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
+d/lua.sh
 
 
 # vim:ft=conf

@@ -24,6 +24,7 @@ unzip
 cpio
 fcron
 kernel-firmware
+lua
 
 curl
     smartmontools
