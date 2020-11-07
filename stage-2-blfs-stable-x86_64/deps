@@ -27,18 +27,33 @@ kernel-firmware
 lua
 autoconf213
 python2
+python3
+
+
+gdb
+    python3
+
+berkeley-db
+    python3
+
+libmpdec (http://www.bytereef.org/mpdecimal/)
+    python3
 
 bluez
     python2
+    python3
 
 valgrind
     python2
+    python3
 
 sqlite
     python2
+    python3
 
 tk
     python2
+    python3
 
 
 libedit (https://www.thrysoee.dk/editline)
