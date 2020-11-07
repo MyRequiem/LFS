@@ -26,7 +26,19 @@ fcron
 kernel-firmware
 lua
 autoconf213
+python2
+
+bluez
+    python2
+
+valgrind
+    python2
+
 sqlite
+    python2
+
+tk
+    python2
 
 
 libedit (https://www.thrysoee.dk/editline)

@@ -23,6 +23,7 @@ d/c2man.sh
 d/lua.sh
 d/autoconf213.sh
 ap/sqlite.sh
+d/python2.sh
 
 
 # vim:ft=conf
