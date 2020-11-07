@@ -22,6 +22,7 @@ ap/pm-utils.sh
 d/c2man.sh
 d/lua.sh
 d/autoconf213.sh
+ap/sqlite.sh
 
 
 # vim:ft=conf

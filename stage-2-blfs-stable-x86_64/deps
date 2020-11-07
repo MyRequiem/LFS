@@ -15,17 +15,22 @@ which
 acpid
 smartmontools
 dosfstools
+unzip
 blfs-bootscripts
 tree
 ntfs-3g
 time
 zip
-unzip
 cpio
 fcron
 kernel-firmware
 lua
 autoconf213
+sqlite
+
+
+libedit (https://www.thrysoee.dk/editline)
+    sqlite
 
 curl
     smartmontools
