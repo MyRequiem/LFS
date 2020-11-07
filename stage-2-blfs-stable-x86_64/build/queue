@@ -21,6 +21,7 @@ ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
 d/lua.sh
+d/autoconf213.sh
 
 
 # vim:ft=conf

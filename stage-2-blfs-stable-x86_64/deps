@@ -25,6 +25,7 @@ cpio
 fcron
 kernel-firmware
 lua
+autoconf213
 
 curl
     smartmontools
