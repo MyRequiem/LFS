@@ -26,9 +26,13 @@ fcron
 kernel-firmware
 lua
 autoconf213
-python2
-python3
+cython
 
+python2
+    cython
+
+python3
+    cython
 
 gdb
     python3
