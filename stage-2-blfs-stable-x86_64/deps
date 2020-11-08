@@ -28,7 +28,7 @@ autoconf213
 yasm
 cython                              yasm
 python2                             cython, yasm
-python3                             cython
+python3                             cython, lsb-tools
 gdb                                 python3
 berkeley-db                         python3
 libmpdec                            python3
@@ -62,5 +62,7 @@ wireless-tools                      pm-utils
 ethtool                             pm-utils
 vbetool                             pm-utils
 pciutils
+lsb-tools
+
 
 # vim:ft=conf
