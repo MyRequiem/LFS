@@ -10,7 +10,7 @@ etc-issue
 remove-la-files
 gpm
 sharutils
-which
+which                               pciutils
 acpid
 smartmontools
 dosfstools
@@ -37,9 +37,9 @@ valgrind                            python2, python3
 sqlite                              python2, python3
 tk                                  python2, python3
 libedit                             sqlite
-curl                                smartmontools
-lynx                                smartmontools
-wget                                smartmontools
+curl                                smartmontools, pciutils
+wget                                smartmontools, pciutils
+lynx                                smartmontools, pciutils
 gnupg                               smartmontools
 fuse2                               ntfs-3g
 texlive                             cpio
@@ -61,5 +61,6 @@ hdparm                              pm-utils
 wireless-tools                      pm-utils
 ethtool                             pm-utils
 vbetool                             pm-utils
+pciutils
 
 # vim:ft=conf
