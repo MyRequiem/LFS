@@ -29,6 +29,7 @@ d/cython.sh
 d/yasm.sh
 a/pciutils.sh
 s/lsb-tools.sh
+ap/p7zip.sh
 
 
 # vim:ft=conf

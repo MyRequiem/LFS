@@ -63,6 +63,7 @@ ethtool                             pm-utils
 vbetool                             pm-utils
 pciutils
 lsb-tools
-
+p7zip
+wxwidgets                           p7zip
 
 # vim:ft=conf
