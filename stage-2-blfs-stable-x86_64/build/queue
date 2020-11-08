@@ -30,6 +30,7 @@ d/yasm.sh
 a/pciutils.sh
 s/lsb-tools.sh
 ap/p7zip.sh
+s/bash-completion.sh
 
 
 # vim:ft=conf

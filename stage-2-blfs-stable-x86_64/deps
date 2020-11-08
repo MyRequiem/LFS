@@ -65,5 +65,7 @@ pciutils
 lsb-tools
 p7zip
 wxwidgets                           p7zip
+bash-completion
+
 
 # vim:ft=conf
