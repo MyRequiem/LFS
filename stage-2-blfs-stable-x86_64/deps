@@ -1,11 +1,10 @@
 ###***###
-# Пакет
-#    Зависимые пакеты
+# Пакет ........................... Зависимые пакеты
 ###***###
 
 pm-utils
 sudo
-lzip (https://www.nongnu.org/lzip/lzip.html)
+lzip
 c2man
 etc-issue
 remove-la-files
@@ -26,115 +25,41 @@ fcron
 kernel-firmware
 lua
 autoconf213
-cython
-
-python2
-    cython
-
-python3
-    cython
-
-gdb
-    python3
-
-berkeley-db
-    python3
-
-libmpdec (http://www.bytereef.org/mpdecimal/)
-    python3
-
-bluez
-    python2
-    python3
-
-valgrind
-    python2
-    python3
-
-sqlite
-    python2
-    python3
-
-tk
-    python2
-    python3
-
-
-libedit (https://www.thrysoee.dk/editline)
-    sqlite
-
-curl
-    smartmontools
-
-lynx
-    smartmontools
-
-wget
-    smartmontools
-
-gnupg
-    smartmontools
-
-fuse2 (https://github.com/libfuse/libfuse)
-    ntfs-3g
-
-texlive
-    cpio
-
-install-tl-unx
-    cpio
-
-dovecot
-    fcron
-
-exim
-    fcron
-
-postfix
-    fcron
-
-sendmail
-    fcron
-    sudo
-
-vim
-    fcron
-
-linux-pam
-    fcron
-    sudo
-
-docbook-utils
-    fcron
-
-mit-kerberos-v5
-    sudo
-
-openldap
-    sudo
-
-afs  (http://www.openafs.org/)
-    sudo
-
-fwtk (http://www.fwtk.org/)
-    sudo
-
-opie (https://sourceforge.net/projects/opie/files/)
-    sudo
-
-xmlto
-    pm-utils
-
-hdparm
-    pm-utils
-
-wireless-tools
-    pm-utils
-
-ethtool (https://mirrors.edge.kernel.org/pub/software/network/ethtool/)
-    pm-utils
-
-vbetool (http://ftp.de.debian.org/debian/pool/main/v/vbetool/)
-    pm-utils
+yasm
+cython                              yasm
+python2                             cython, yasm
+python3                             cython
+gdb                                 python3
+berkeley-db                         python3
+libmpdec                            python3
+bluez                               python2, python3
+valgrind                            python2, python3
+sqlite                              python2, python3
+tk                                  python2, python3
+libedit                             sqlite
+curl                                smartmontools
+lynx                                smartmontools
+wget                                smartmontools
+gnupg                               smartmontools
+fuse2                               ntfs-3g
+texlive                             cpio
+install-tl-unx                      cpio
+dovecot                             fcron
+exim                                fcron
+postfix                             fcron
+sendmail                            fcron, sudo
+vim                                 fcron
+linux-pam                           fcron, sudo
+docbook-utils                       fcron
+mit-kerberos-v5                     sudo
+openldap                            sudo
+afs                                 sudo
+fwtk                                sudo
+opie                                sudo
+xmlto                               pm-utils
+hdparm                              pm-utils
+wireless-tools                      pm-utils
+ethtool                             pm-utils
+vbetool                             pm-utils
 
 # vim:ft=conf

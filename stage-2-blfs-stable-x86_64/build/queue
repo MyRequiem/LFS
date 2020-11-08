@@ -26,6 +26,7 @@ ap/sqlite.sh
 d/python2.sh
 d/python3.sh
 d/cython.sh
+d/yasm.sh
 
 
 # vim:ft=conf
