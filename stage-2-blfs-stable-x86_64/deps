@@ -42,8 +42,8 @@ wget                                smartmontools, pciutils
 lynx                                smartmontools, pciutils
 gnupg                               smartmontools
 fuse2                               ntfs-3g
-texlive                             cpio
-install-tl-unx                      cpio
+texlive                             cpio, libassuan
+install-tl-unx                      cpio, libassuan
 dovecot                             fcron
 exim                                fcron
 postfix                             fcron
@@ -66,7 +66,8 @@ lsb-tools
 p7zip
 wxwidgets                           p7zip
 bash-completion
-libgpg-error
+libassuan
+libgpg-error                        libassuan
 
 
 # vim:ft=conf
