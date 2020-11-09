@@ -69,6 +69,7 @@ bash-completion
 libassuan
 libgpg-error                        libassuan, libksba
 libksba
+nettle
 
 
 # vim:ft=conf

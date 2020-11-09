@@ -7,20 +7,17 @@ PRGNAME="nettle"
 # объектно-ориентированных языков программирования, а так же для таких
 # приложений как LSH, GNUPG и т.п.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/nettle.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://www.lysator.liu.se/~nisse/nettle/
-# Download:  https://ftp.gnu.org/gnu/nettle/nettle-3.5.1.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure       \
     --prefix=/usr \
@@ -28,18 +25,16 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
-chmod   -v  755 /usr/lib/lib{hogweed,nettle}.so
-chmod   -v  755 "${TMP_DIR}/usr/lib/lib"{hogweed,nettle}.so
+chmod -v 755 "${TMP_DIR}/usr/lib/lib"{hogweed,nettle}.so
 
 # документация
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -m755 -d "${DOCS}"
-install -v -m755 -d "${TMP_DIR}${DOCS}"
-install -v -m644 nettle.html "${DOCS}"
 install -v -m644 nettle.html "${TMP_DIR}${DOCS}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (small cryptographic library)

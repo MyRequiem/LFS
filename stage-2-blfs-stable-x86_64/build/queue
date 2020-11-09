@@ -34,6 +34,7 @@ s/bash-completion.sh
 n/libgpg-error.sh
 n/libassuan.sh
 n/libksba.sh
+n/nettle.sh
 
 
 # vim:ft=conf
