@@ -33,7 +33,7 @@ gdb                                 python3
 berkeley-db                         python3
 libmpdec                            python3
 bluez                               python2, python3
-valgrind                            python2, python3
+valgrind                            python2, python3, libksba
 sqlite                              python2, python3
 tk                                  python2, python3
 libedit                             sqlite
@@ -67,7 +67,8 @@ p7zip
 wxwidgets                           p7zip
 bash-completion
 libassuan
-libgpg-error                        libassuan
+libgpg-error                        libassuan, libksba
+libksba
 
 
 # vim:ft=conf

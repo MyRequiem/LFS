@@ -33,6 +33,7 @@ ap/p7zip.sh
 s/bash-completion.sh
 n/libgpg-error.sh
 n/libassuan.sh
+n/libksba.sh
 
 
 # vim:ft=conf
