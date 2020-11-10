@@ -5,19 +5,12 @@ PRGNAME="libxml2"
 ### libxml2 (XML parser library)
 # Библиотеки и утилиты для анализа XML файлов
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libxml2.html
-
-# Home page: http://xmlsoft.org/
-# Download:  http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
-# For tests: http://www.w3.org/XML/Test/xmlts20130923.tar.gz
-
-# Required: no
+# Required: python3
 # Optional: python2
-#           python3
 #           icu      (для тестов)
-#           valgrind (для тестов)
+#           valgrind (для тестов) ROOT="/root/src/lfs"
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -46,11 +39,11 @@ command -v icuinfo &>/dev/null && ICU="--with-icu"
 
 make || exit 1
 
-# для тестов
-tar xvf "${SOURCES}/xmlts20130923.tar.gz" || exit 1
+# распаковываем архив для тестов
+# tar xvf "${SOURCES}/xmlts"[0-9]*.tar.?z* || exit 1
 #
 # в тестах используется http://localhost/, поэтому на время тестов
-# рекомендуется выключить сервер httpd
+# рекомендуется отключить сервер httpd
 #    # /etc/init.d/httpd stop
 #
 # если установлен valgrind и мы хотим провести тесты на утечку памяти
@@ -61,8 +54,16 @@ tar xvf "${SOURCES}/xmlts20130923.tar.gz" || exit 1
 # вывод общего результата тестов:
 #    # grep -E '^Total|expected' check.log
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+DOCS="${TMP_DIR}/usr/share/doc"
+mv "${DOCS}/${PRGNAME}-python-${VERSION}" \
+    "${DOCS}/${PRGNAME}-${VERSION}/${PRGNAME}-python"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (XML parser library)

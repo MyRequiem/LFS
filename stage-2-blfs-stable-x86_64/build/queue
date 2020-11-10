@@ -44,6 +44,7 @@ l/fftw.sh
 l/fribidi.sh
 l/libuv.sh
 l/icu.sh
+l/libxml2.sh
 
 
 # vim:ft=conf
