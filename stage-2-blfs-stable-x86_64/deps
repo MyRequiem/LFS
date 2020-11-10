@@ -36,22 +36,23 @@ hdparm                              pm-utils
 icu                                 libxml2
 install-tl-unx                      cpio, libassuan
 kernel-firmware
+libarchive
 libassuan
 libedit                             sqlite
 libgpg-error                        libassuan, libksba
 libksba
 libmpdec                            python3
 libuv
-libxml2                             python2-libxml2
+libxml2                             python2-libxml2, libarchive
 linux-pam                           fcron, sudo
 llvm                                icu
 lsb-tools
 lua
 lynx                                smartmontools, pciutils
 lzip
-lzo
+lzo                                 libarchive
 mit-kerberos-v5                     sudo
-nettle
+nettle                              libarchive
 npth
 ntfs-3g
 openldap                            sudo

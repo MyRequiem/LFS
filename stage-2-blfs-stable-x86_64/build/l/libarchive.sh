@@ -7,17 +7,13 @@ PRGNAME="libarchive"
 # потоковые архивы в различных форматах, а также включает реализацию общих
 # инструментов командной строки tar, cpio и zcat
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libarchive.html
+# Required:    no
+# Recommended: no
+# Optional:    libxml2
+#              lzo
+#              nettle
 
-# Home page: http://libarchive.org
-# Download:  https://github.com/libarchive/libarchive/releases/download/v3.4.2/libarchive-3.4.2.tar.xz
-
-# Required: no
-# Optional: libxml2
-#           lzo
-#           nettle
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -32,6 +28,10 @@ NETTLE="--without-nettle"
 command -v xmllint     &>/dev/null && XML2="--with-xml2"
 command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
 
+# "адаптируем" набор тестов к изменениям в glibc-2.32
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-testsuite_fix-1.patch" || exit 1
+
 ./configure       \
     --prefix=/usr \
     "${LZO2}"     \
@@ -41,8 +41,11 @@ command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
 
 make || exit 1
 # LC_ALL=C make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (archive reading library)
@@ -51,8 +54,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # different streaming archive formats, including most popular TAR variants and
 # several CPIO formats. It can also write SHAR archives.
 #
-# Home page: http://libarchive.org
-# Download:  https://github.com/libarchive/libarchive/releases/download/v3.4.2/libarchive-3.4.2.tar.xz
+# Home page: http://${PRGNAME}.org
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

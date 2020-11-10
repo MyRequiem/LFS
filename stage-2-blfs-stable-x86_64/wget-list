@@ -51,3 +51,5 @@ http://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.
 http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
 http://www.w3.org/XML/Test/xmlts20130923.tar.gz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+https://github.com/libarchive/libarchive/releases/download/v3.4.3/libarchive-3.4.3.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/10.0/libarchive-3.4.3-testsuite_fix-1.patch
