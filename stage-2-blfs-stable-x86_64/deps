@@ -42,7 +42,7 @@ libgpg-error                        libassuan, libksba
 libksba
 libmpdec                            python3
 libuv
-libxml2
+libxml2                             python2-libxml2
 linux-pam                           fcron, sudo
 llvm                                icu
 lsb-tools
@@ -59,7 +59,8 @@ p7zip
 pciutils
 pm-utils
 postfix                             fcron
-python2                             cython, yasm, libxml2
+python2                             cython, yasm, libxml2, python2-libxml2
+python2-libxml2
 python3                             cython, lsb-tools, libxml2
 remove-la-files
 sendmail                            fcron, sudo
@@ -82,6 +83,5 @@ wxwidgets                           p7zip
 xmlto                               pm-utils
 yasm
 zip
-
 
 # vim:ft=conf

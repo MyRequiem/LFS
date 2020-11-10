@@ -45,6 +45,7 @@ l/fribidi.sh
 l/libuv.sh
 l/icu.sh
 l/libxml2.sh
+d/python-modules/python2-libxml2.sh
 
 
 # vim:ft=conf
