@@ -14,8 +14,9 @@ berkeley-db                         python3
 blfs-bootscripts
 bluez                               python2, python3
 c2man                               fribidi
+cmake
 cpio
-curl                                smartmontools, pciutils
+curl                                smartmontools, pciutils, cmake
 cython                              yasm
 docbook-utils                       fcron
 dosfstools
@@ -30,19 +31,20 @@ fribidi
 fuse2                               ntfs-3g
 fwtk                                sudo
 gdb                                 python3
+git                                 cmake
 gnupg                               smartmontools
 gpm
 hdparm                              pm-utils
 icu                                 libxml2
 install-tl-unx                      cpio, libassuan
 kernel-firmware
-libarchive
+libarchive                          cmake
 libassuan
 libedit                             sqlite
 libgpg-error                        libassuan, libksba
 libksba
 libmpdec                            python3
-libuv
+libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 linux-pam                           fcron, sudo
 llvm                                icu
@@ -53,6 +55,7 @@ lzip
 lzo                                 libarchive
 mit-kerberos-v5                     sudo
 nettle                              libarchive
+nghttp2                             cmake
 npth
 ntfs-3g
 openldap                            sudo
@@ -64,11 +67,14 @@ postfix                             fcron
 python2                             cython, yasm, libxml2, python2-libxml2
 python2-libxml2
 python3                             cython, lsb-tools, libxml2
+qt5                                 cmake
 remove-la-files
 sendmail                            fcron, sudo
 sharutils
 smartmontools
+sphinx                              cmake
 sqlite                              python2, python3
+subversion                          cmake
 sudo
 texlive                             cpio, libassuan
 time
@@ -85,5 +91,6 @@ wxwidgets                           p7zip
 xmlto                               pm-utils
 yasm
 zip
+
 
 # vim:ft=conf

@@ -48,6 +48,7 @@ l/libxml2.sh
 d/python-modules/python2-libxml2.sh
 l/lzo.sh
 l/libarchive.sh
+d/cmake.sh
 
 
 # vim:ft=conf

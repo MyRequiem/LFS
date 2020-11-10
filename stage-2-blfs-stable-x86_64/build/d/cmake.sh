@@ -5,22 +5,16 @@ PRGNAME="cmake"
 ### CMake (cross-platform, open-source make system)
 # Современный набор инструментов, используемый для генерации Makefile
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/cmake.html
-
-# Home page: https://cmake.org/
-# Download:  https://cmake.org/files/v3.16/cmake-3.16.4.tar.gz
-
 # Required:    libuv
-# Recommended: zlib
-#              bzip2
-#              expat
-#              curl
+# Recommended: curl
 #              libarchive
-# Optional:    qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
+#              nghttp2
+# Optional:    git
+#              qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
 #              subversion (для тестов)
 #              sphinx     (для сборки документации) https://pypi.org/project/Sphinx/
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -32,6 +26,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
 
 ZLIB="--no-system-zlib"
+NGHTTP2="--no-system-nghttp2"
 BZIP2="--no-system-bzip2"
 EXPAT="--no-system-expat"
 CURL="--no-system-curl"
@@ -39,6 +34,7 @@ LIBARCHIVE="--no-system-libarchive"
 QT_GUI="--no-qt-gui"
 
 [ -x /usr/lib/libz.so ]             && ZLIB="--system-zlib"
+[ -x /usr/lib/libnghttp2.so ]       && NGHTTP2="--system-nghttp2"
 command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
 command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
 command -v curl         &>/dev/null && CURL="--system-curl"
@@ -57,6 +53,7 @@ command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
     --no-system-jsoncpp  \
     --no-system-librhash \
     "${ZLIB}"            \
+    "${NGHTTP2}"         \
     "${BZIP2}"           \
     "${EXPAT}"           \
     "${CURL}"            \
@@ -73,8 +70,11 @@ make || exit 1
 # NUMJOBS="$(($(nproc) + 1))"
 # bin/ctest -j"${NUMJOBS}" -O "${PRGNAME}-${VERSION}-test.log"
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
