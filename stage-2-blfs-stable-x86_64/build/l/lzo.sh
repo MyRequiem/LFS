@@ -6,15 +6,11 @@ PRGNAME="lzo"
 # Библиотека сжатия данных без потерь, написанная на ANSI C. Предлагает
 # довольно быстрое сжатие и очень быструю распаковку.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/lzo.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: http://www.oberhumer.com/opensource/lzo/
-# Download:  http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -31,12 +27,14 @@ make || exit 1
 
 # проверить сборку
 # make check
-
 # полный набор тестов
 # make test
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (LZO Compression Library)

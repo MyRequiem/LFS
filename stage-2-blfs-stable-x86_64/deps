@@ -49,6 +49,7 @@ lsb-tools
 lua
 lynx                                smartmontools, pciutils
 lzip
+lzo
 mit-kerberos-v5                     sudo
 nettle
 npth
