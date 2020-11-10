@@ -11,15 +11,11 @@ PRGNAME="npth"
 # библиотека представляет интерес и для других проектов, было принято решение
 # развивать nPth в виде обособленного продукта.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/npth.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://gnupg.org/software/npth/index.html
-# Download:  https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -31,11 +27,14 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (New GNU Portable Threads)
+# Package: ${PRGNAME} (New GNU Portable Threads Library)
 #
 # nPth is a non-preemptive threads implementation using an API very similar to
 # the one known from GNU Pth. It has been designed as a replacement of GNU Pth
