@@ -10,7 +10,7 @@ etc-issue
 remove-la-files
 gpm
 sharutils
-which                               pciutils
+which                               pciutils, aspell
 acpid
 smartmontools
 dosfstools
@@ -72,6 +72,9 @@ libksba
 nettle
 npth
 apr
+aspell                              aspell-dict-en, aspell-dict-ru
+aspell-dict-en
+aspell-dict-ru
 
 
 # vim:ft=conf

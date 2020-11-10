@@ -37,6 +37,9 @@ n/libksba.sh
 n/nettle.sh
 n/npth.sh
 l/apr.sh
+l/aspell.sh
+l/aspell-dict-en.sh
+l/aspell-dict-ru.sh
 
 
 # vim:ft=conf
