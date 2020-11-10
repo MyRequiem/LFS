@@ -5,7 +5,7 @@
 pm-utils
 sudo
 lzip
-c2man
+c2man                               fribidi
 etc-issue
 remove-la-files
 gpm
@@ -76,6 +76,7 @@ aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
 fftw
+fribidi
 
 
 # vim:ft=conf

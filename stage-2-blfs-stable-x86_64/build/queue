@@ -41,6 +41,7 @@ l/aspell.sh
 l/aspell-dict-en.sh
 l/aspell-dict-ru.sh
 l/fftw.sh
+l/fribidi.sh
 
 
 # vim:ft=conf
