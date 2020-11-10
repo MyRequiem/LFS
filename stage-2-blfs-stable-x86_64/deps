@@ -75,6 +75,7 @@ apr
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
+fftw
 
 
 # vim:ft=conf

@@ -8,15 +8,11 @@ PRGNAME="fftw"
 # же подпрограммы для эффективной обработки массивов произвольных размеров.
 # FFTW обычно быстрее, чем другие общедоступные FFT.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/fftw.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: http://www.fftw.org/
-# Download:  http://www.fftw.org/fftw-3.3.8.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -35,13 +31,13 @@ mkdir -pv "${TMP_DIR}"
 ./configure          \
     --prefix=/usr    \
     --enable-shared  \
+    --disable-static \
     --enable-threads \
     --enable-sse2    \
     --enable-avx || exit 1
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # для float
@@ -49,6 +45,7 @@ make clean &&        \
 ./configure          \
     --prefix=/usr    \
     --enable-shared  \
+    --disable-static \
     --enable-threads \
     --enable-sse2    \
     --enable-avx     \
@@ -56,7 +53,6 @@ make clean &&        \
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # для long double
@@ -64,13 +60,17 @@ make clean &&        \
 ./configure          \
     --prefix=/usr    \
     --enable-shared  \
+    --disable-static \
     --enable-threads \
     --enable-long-double || exit 1
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Fastest Fourier Transform in the West)

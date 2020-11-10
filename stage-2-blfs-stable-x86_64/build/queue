@@ -40,6 +40,7 @@ l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh
 l/aspell-dict-ru.sh
+l/fftw.sh
 
 
 # vim:ft=conf
