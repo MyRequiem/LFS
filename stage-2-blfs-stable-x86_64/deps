@@ -78,6 +78,9 @@ aspell-dict-ru
 fftw
 fribidi
 libuv
+icu
+llvm                                icu
+doxygen                             icu
 
 
 # vim:ft=conf

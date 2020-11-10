@@ -1,34 +1,32 @@
 #! /bin/bash
 
 PRGNAME="icu"
-VERSION="65.1"
 ARCH_NAME="${PRGNAME}4c"
-ARCH_VERSION="$(echo "${VERSION}" | tr . _)"
 
 ### ICU (International Components for Unicode)
 # Набор C/C++ библиотек International Components for Unicode (ICU).
 # Предоставляют надежные и полнофункциональные сервисы Unicode для широкого
 # спектра платформ.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/icu.html
+# Required:    no
+# Recommended: no
+# Optional:    llvm    (собранный с clang)
+#              doxygen (для сборки документации)
 
-# Home page: https://home.unicode.org/
-# Download:  http://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz
-
-# Required: no
-# Optional: llvm    (должен быть собран с clang)
-#           doxygen (для документации)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+ARCH_VERSION="$(find ${SOURCES} -type f -name "${ARCH_NAME}-*" | rev | \
+    cut -d / -f 1 | rev | cut -d - -f 2)"
+VERSION="$(echo "${ARCH_VERSION}" | tr _ .)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-SOURCES="/root/src"
-tar xvf "${SOURCES}/${ARCH_NAME}-${ARCH_VERSION}-src"*.t?z || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${ARCH_VERSION}"*.t?z || exit 1
 cd "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
@@ -41,8 +39,11 @@ cd "source" || exit 1
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MODVER="$(echo "${VERSION}" | tr . -)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

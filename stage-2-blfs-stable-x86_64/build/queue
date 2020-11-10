@@ -43,6 +43,7 @@ l/aspell-dict-ru.sh
 l/fftw.sh
 l/fribidi.sh
 l/libuv.sh
+l/icu.sh
 
 
 # vim:ft=conf
