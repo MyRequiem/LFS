@@ -2,7 +2,7 @@
 
 PRGNAME="apr"
 
-### Apr (Apache Portable Runtime)
+### Apr (Apache Portable Runtime library)
 # Apache Portable Runtime (APR) - библиотека, разрабатываемая Apache Software
 # Foundation и изначально входящая в состав веб-сервера Apache, но затем
 # выделенная в независимый проект. APR является кросс-платформенной оберткой
@@ -28,10 +28,11 @@ PRGNAME="apr"
 # Home page: https://apr.apache.org/
 # Download:  https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
 
-# Required: no
-# Optional: no
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -45,11 +46,14 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make test
-make install
 make install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Apache Portable Runtime)
+# Package: ${PRGNAME} (Apache Portable Runtime library)
 #
 # The mission of the Apache Portable Runtime (APR) project is to create and
 # maintain software libraries that provide a predictable and consistent

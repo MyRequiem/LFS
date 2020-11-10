@@ -71,6 +71,7 @@ libgpg-error                        libassuan, libksba
 libksba
 nettle
 npth
+apr
 
 
 # vim:ft=conf

@@ -36,6 +36,7 @@ n/libassuan.sh
 n/libksba.sh
 n/nettle.sh
 n/npth.sh
+l/apr.sh
 
 
 # vim:ft=conf
