@@ -57,6 +57,7 @@ l/libaio.sh
 l/libatasmart.sh
 l/libjpeg-turbo.sh
 l/libexif.sh
+l/libpng.sh
 
 
 # vim:ft=conf

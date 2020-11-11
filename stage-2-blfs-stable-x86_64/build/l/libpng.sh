@@ -7,16 +7,11 @@ PRGNAME="libpng"
 # PNG. Формат PNG был разработан в качестве замены формата GIF и TIFF, со
 # многими улучшениями и расширениями.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libpng.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: http://libpng.org/pub/png/libpng.html
-# Download:  https://downloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz
-# Patch:     https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.37-apng.patch.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -35,13 +30,15 @@ gzip -cd "${SOURCES}/${PRGNAME}-${VERSION}-apng.patch.gz" | \
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # документация
 mkdir -pv "${DOCS}"
-cp -v README libpng-manual.txt "${DOCS}"
 cp -v README libpng-manual.txt "${TMP_DIR}${DOCS}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Portable Network Graphics library)

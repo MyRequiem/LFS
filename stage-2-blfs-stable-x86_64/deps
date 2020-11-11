@@ -53,6 +53,7 @@ libgpg-error                        libassuan, libksba
 libjpeg-turbo
 libksba
 libmpdec                            python3
+libpng
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 linux-pam                           fcron, sudo
