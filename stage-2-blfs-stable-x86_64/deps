@@ -13,6 +13,7 @@ bash-completion
 berkeley-db                         python3
 blfs-bootscripts
 bluez                               python2, python3
+boost
 c2man                               fribidi
 cmake
 cpio
@@ -35,7 +36,7 @@ git                                 cmake
 gnupg                               smartmontools
 gpm
 hdparm                              pm-utils
-icu                                 libxml2
+icu                                 libxml2, boost
 install-tl-unx                      cpio, libassuan
 kernel-firmware
 libarchive                          cmake
@@ -58,6 +59,7 @@ nettle                              libarchive
 nghttp2                             cmake
 npth
 ntfs-3g
+open-mpi                            boost
 openldap                            sudo
 opie                                sudo
 p7zip
@@ -85,7 +87,7 @@ valgrind                            python2, python3, libksba, libxml2
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils
-which                               pciutils, aspell
+which                               pciutils, aspell, boost
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xmlto                               pm-utils

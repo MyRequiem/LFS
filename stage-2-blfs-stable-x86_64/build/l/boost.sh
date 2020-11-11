@@ -8,17 +8,12 @@ PRGNAME="boost"
 # лаконичного кодирования различных повседневных подзадач программирования
 # (работа с данными, алгоритмами, файлами, потоками и т. п.)
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/boost.html
-
-# Home page: http://www.boost.org/
-# Download:  https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2
-
 # Required:    no
 # Recommended: which
 # Optional:    icu
 #              open-mpi (https://www.open-mpi.org/)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -37,35 +32,43 @@ cd "${PRGNAME}_${ARCH_VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
 
-./bootstrap.sh \
-    --prefix=/usr || exit 1
+# пакет лучше собирать в несколько потоков
+NUMJOBS="${MAKEFLAGS}"
+[ -z "${NUMJOBS}" ] && NUMJOBS="-j$(nproc)"
 
-# пакет должен собираться в несколько потоков, если это возможно
-NUMJOBS="$(($(nproc) + 1))"
+./bootstrap.sh    \
+    --prefix=/usr \
+    --with-python=python3 || exit 1
+
 # гарантирует, что Boost будет построен с поддержкой многопоточности
 #    threading=multi
 # создаем только shared библиотеки, за исключением libboost_exception и
 # libboost_test_exec_monitor, которые создаются как статические
 #    link=shared
-./b2 stage -j"${NUMJOBS}" threading=multi link=shared || exit 1
-./b2 install threading=multi link=shared
+./b2 stage "${NUMJOBS}" \
+    threading=multi     \
+    link=shared || exit 1
 
-# ссылка в /usr/include/boost/uuid/ sha1.hpp -> detail/sha1.hpp
-(
-    cd "/usr/include/boost/uuid/" || exit 1
-    ln -svf detail/sha1.hpp sha1.hpp
-)
+# тесты
+# pushd tools/build/test || exit 1
+# python3 test_all.py
+# popd || exit 1
 
-./bootstrap.sh \
-    --prefix="${TMP_DIR}/usr" || exit 1
+./b2 install        \
+    threading=multi \
+    link=shared     \
+    --prefix="${TMP_DIR}/usr"
 
-./b2 stage -j"${NUMJOBS}" threading=multi link=shared || exit 1
-./b2 install threading=multi link=shared
-
+# ссылка в /usr/include/boost/uuid/
+#    sha1.hpp -> detail/sha1.hpp
 (
     cd "${TMP_DIR}/usr/include/boost/uuid/" || exit 1
     ln -svf detail/sha1.hpp sha1.hpp
 )
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Boost C++ Libraries)
