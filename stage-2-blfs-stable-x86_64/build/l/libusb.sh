@@ -6,19 +6,15 @@ PRGNAME="libusb"
 # Библиотека, используемая некоторыми приложениями для доступа к USB
 # устройствам.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libusb.html
-
-# Home page: http://libusb.info
-# Download:  https://github.com/libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2
-
-# Required: no
-# Optional: doxygen (для создания документации)
+# Required:    no
+# Recommended: no
+# Optional:    doxygen (для создания документации)
 
 ### Конфигурация ядра
 #    CONFIG_USB_SUPPORT=y
 #    CONFIG_USB=m|y
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -42,17 +38,17 @@ command -v doxygen &>/dev/null && DOXYGEN="true"
 
 # пакет не имеет набора тестов
 
-make install
 make install DESTDIR="${TMP_DIR}"
 
 if [ -n "${DOXYGEN}" ]; then
     DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -d -m755 "${DOCS}/apidocs"
     install -v -d -m755 "${TMP_DIR}${DOCS}/apidocs"
-
-    install -v -m644    doc/html/* "${DOCS}/apidocs"
-    install -v -m644    doc/html/* "${TMP_DIR}${DOCS}/apidocs"
+    install -v -m644 doc/html/* "${TMP_DIR}${DOCS}/apidocs"
 fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (USB library)

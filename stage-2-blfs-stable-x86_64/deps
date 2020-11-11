@@ -22,7 +22,7 @@ cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse, libexif
+doxygen                             icu, fuse, libexif, libusb
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
@@ -55,6 +55,7 @@ libksba
 libmpdec                            python3
 libpng
 libunistring
+libusb
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 linux-pam                           fcron, sudo
