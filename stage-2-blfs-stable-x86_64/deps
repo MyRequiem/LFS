@@ -15,7 +15,7 @@ blfs-bootscripts
 bluez                               python2, python3
 boost
 c2man                               fribidi
-cmake
+cmake                               json-c
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
@@ -40,6 +40,7 @@ hdparm                              pm-utils
 icu                                 libxml2, boost
 install-tl-unx                      cpio, libassuan
 iso-codes
+json-c
 kernel-firmware
 libarchive                          cmake
 libassuan
@@ -96,5 +97,6 @@ wxwidgets                           p7zip
 xmlto                               pm-utils
 yasm
 zip
+
 
 # vim:ft=conf
