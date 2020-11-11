@@ -10,16 +10,12 @@ PRGNAME="libexif"
 # стандарте EXIF 2.1. Библиотека libexif позволяет таким программам, как
 # gthumb, анализировать, редактировать и сохранять EXIF данные.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/libexif.html
+# Required:    no
+# Recommended: no
+# Optional:    doxygen  (для создания документации)
+#              graphviz (для создания документации)
 
-# Home page: https://libexif.github.io/
-# Download:  https://github.com/libexif/libexif/releases/download/libexif-0_6_22-release/libexif-0.6.22.tar.xz
-
-# Required: no
-# Optional: doxygen
-#           graphviz
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -27,7 +23,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 DOXYGEN="--disable-internal-docs"
-command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
+# command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
 
 ./configure          \
     --prefix=/usr    \
@@ -37,8 +33,11 @@ command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Exchangeable Image File Format library)

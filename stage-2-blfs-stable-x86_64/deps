@@ -22,7 +22,7 @@ cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse
+doxygen                             icu, fuse, libexif
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
@@ -36,6 +36,7 @@ gdb                                 python3
 git                                 cmake
 gnupg                               smartmontools
 gpm
+graphviz                            libexif
 hdparm                              pm-utils
 icu                                 libxml2, boost
 install-tl-unx                      cpio, libassuan
@@ -47,6 +48,7 @@ libarchive                          cmake
 libassuan
 libatasmart
 libedit                             sqlite
+libexif
 libgpg-error                        libassuan, libksba
 libjpeg-turbo
 libksba
