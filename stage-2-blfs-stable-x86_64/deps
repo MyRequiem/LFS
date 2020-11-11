@@ -15,7 +15,7 @@ blfs-bootscripts
 bluez                               python2, python3
 boost
 c2man                               fribidi
-cmake                               json-c
+cmake                               json-c, libjpeg-turbo
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
@@ -48,6 +48,7 @@ libassuan
 libatasmart
 libedit                             sqlite
 libgpg-error                        libassuan, libksba
+libjpeg-turbo
 libksba
 libmpdec                            python3
 libuv                               cmake
@@ -60,6 +61,7 @@ lynx                                smartmontools, pciutils
 lzip
 lzo                                 libarchive
 mit-kerberos-v5                     sudo
+nasm                                libjpeg-turbo
 nettle                              libarchive
 nghttp2                             cmake
 npth
@@ -97,7 +99,7 @@ which                               pciutils, aspell, boost
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xmlto                               pm-utils
-yasm
+yasm                                libjpeg-turbo
 zip
 
 

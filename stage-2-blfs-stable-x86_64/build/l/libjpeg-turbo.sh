@@ -7,16 +7,12 @@ PRGNAME="libjpeg-turbo"
 # распаковки JPEG. Библиотека реализует кодирование, декодирование и
 # транскодирование изображений JPEG
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libjpeg.html
+# Required:    cmake
+#              nasm или yasm
+# Recommended: no
+# Optional:    no
 
-# Home page: http://libjpeg-turbo.virtualgl.org
-# Download:  https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.5.tar.gz
-
-# Required: cmake
-#           nasm или yasm
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -42,8 +38,11 @@ make || exit 1
 # обновляются. Исправим это недоразумение:)
 rm -f /usr/lib/libjpeg.so*
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (high-speed version of libjpeg)

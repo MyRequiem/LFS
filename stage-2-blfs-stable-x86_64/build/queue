@@ -55,6 +55,7 @@ l/iso-codes.sh
 l/json-c.sh
 l/libaio.sh
 l/libatasmart.sh
+l/libjpeg-turbo.sh
 
 
 # vim:ft=conf
