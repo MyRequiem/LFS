@@ -22,13 +22,14 @@ cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu
+doxygen                             icu, fuse
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
 fcron
 fftw
 fribidi
+fuse
 fuse2                               ntfs-3g
 fwtk                                sudo
 gdb                                 python3
@@ -66,6 +67,7 @@ p7zip
 pciutils
 pm-utils
 postfix                             fcron
+pytest                              fuse
 python2                             cython, yasm, libxml2, python2-libxml2
 python2-libxml2
 python3                             cython, lsb-tools, libxml2
@@ -93,6 +95,5 @@ wxwidgets                           p7zip
 xmlto                               pm-utils
 yasm
 zip
-
 
 # vim:ft=conf

@@ -8,18 +8,16 @@ PRGNAME="fuse"
 # как специфичные файловые системы в собственном пространстве, например на
 # жёстком диске.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/fuse.html
-
-# Home page: http://fuse.sourceforge.net
-# Download:  https://github.com/libfuse/libfuse/releases/download/fuse-3.9.0/fuse-3.9.0.tar.xz
-
-# Required: no
-# Optional: doxygen (для сборки API документации)
+# Required:    no
+# Recommended: no
+# Optional:    doxygen (для сборки API документации)
+#              pytest  (для тестов) https://pypi.org/project/pytest/
 
 ### Конфигурация ядра
 #    CONFIG_FUSE_FS=y|m
+#    CONFIG_CUSE=y|m
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -32,7 +30,7 @@ mkdir -pv "${TMP_DIR}"{/{bin,etc,lib,sbin},"${DOCS}"}
 sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 
 mkdir build
-cd    build || exit 1
+cd build || exit 1
 
 meson             \
     --prefix=/usr \
@@ -41,38 +39,30 @@ meson             \
 ninja || exit 1
 
 # если пакет doxygen установлен, то пересоберем документацию
-command -v doxygen &>/dev/null && doxygen doc/Doxyfile
+# command -v doxygen &>/dev/null && doxygen doc/Doxyfile
 
-# пакет не имеет набора тестов, сразу устанавливаем
-ninja install
+# тесты (требуется модуль 'pytest')
+# python3 -m pytest test/
+
 DESTDIR="${TMP_DIR}" ninja install
 
 # переместим /usr/lib/libfuse3.so.* в /lib и пересоздадим ссылку
 # /usr/lib/libfuse3.so
-mv -vf /usr/lib/libfuse3.so.* /lib
-ln -sfvn "../../lib/$(readlink /usr/lib/libfuse3.so)" /usr/lib/libfuse3.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     mv -vf libfuse3.so.* "${TMP_DIR}/lib"
     ln -sfvn "../../lib/$(readlink libfuse3.so)" libfuse3.so
 )
 
-mv -vf /usr/bin/fusermount3             /bin
 mv -vf "${TMP_DIR}/usr/bin/fusermount3" "${TMP_DIR}/bin"
-chmod u+s /bin/fusermount3
 chmod u+s "${TMP_DIR}/bin/fusermount3"
 
-mv -vf /usr/sbin/mount.fuse3             /sbin
 mv -vf "${TMP_DIR}/usr/sbin/mount.fuse3" "${TMP_DIR}/sbin"
 
 # документация
-install -v -m755 -d "${DOCS}"
-install -v -m644 ../doc/{README.NFS,kernel.txt,fast17-vangoor.pdf} "${DOCS}"
-install -v -m644 ../doc/{README.NFS,kernel.txt,fast17-vangoor.pdf} \
-    "${TMP_DIR}${DOCS}"
-
-cp -Rv ../doc/html "${DOCS}"
-cp -Rv ../doc/html "${TMP_DIR}${DOCS}"
+install -v -m644 ../doc/{README.NFS,kernel.txt} "${TMP_DIR}${DOCS}"
+# html доки более 50M
+# cp -Rv ../doc/html "${TMP_DIR}${DOCS}"
 
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле
@@ -82,7 +72,7 @@ if [ -f "${FUSE_CONF}" ]; then
     mv "${FUSE_CONF}" "${FUSE_CONF}.old"
 fi
 
-cat << EOF > "${FUSE_CONF}"
+cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 # Begin ${FUSE_CONF}
 
 # The config file ${FUSE_CONF} allows for the following parameters:
@@ -106,7 +96,10 @@ cat << EOF > "${FUSE_CONF}"
 EOF
 
 config_file_processing "${FUSE_CONF}"
-cp "${FUSE_CONF}" "${TMP_DIR}/etc"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Filesystem in Userspace)

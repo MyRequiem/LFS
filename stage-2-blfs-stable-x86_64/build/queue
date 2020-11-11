@@ -50,6 +50,7 @@ l/lzo.sh
 l/libarchive.sh
 d/cmake.sh
 l/boost.sh
+l/fuse.sh
 
 
 # vim:ft=conf
