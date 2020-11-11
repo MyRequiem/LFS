@@ -54,6 +54,7 @@ l/fuse.sh
 l/iso-codes.sh
 l/json-c.sh
 l/libaio.sh
+l/libatasmart.sh
 
 
 # vim:ft=conf

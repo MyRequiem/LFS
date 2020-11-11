@@ -45,6 +45,7 @@ kernel-firmware
 libaio
 libarchive                          cmake
 libassuan
+libatasmart
 libedit                             sqlite
 libgpg-error                        libassuan, libksba
 libksba
