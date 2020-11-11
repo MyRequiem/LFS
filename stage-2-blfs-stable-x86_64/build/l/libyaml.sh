@@ -7,15 +7,11 @@ ARCH_NAME="libyaml-dist"
 # Библиотека YAML стандарта (удобная сериализация данных) для всех языков
 # программирования.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libyaml.html
+# Required:    no
+# Recommended: no
+# Optional:    doxygen (для создания документации)
 
-# Home page: http://pyyaml.org/wiki/LibYAML
-# Download:  https://github.com/yaml/libyaml/archive/0.2.2/libyaml-dist-0.2.2.tar.gz
-
-# Required: no
-# Optional: doxygen (для создания документации)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -40,8 +36,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (YAML parser, written in C)
