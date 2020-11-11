@@ -51,6 +51,7 @@ l/libarchive.sh
 d/cmake.sh
 l/boost.sh
 l/fuse.sh
+l/iso-codes.sh
 
 
 # vim:ft=conf

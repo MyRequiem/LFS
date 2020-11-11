@@ -7,15 +7,11 @@ PRGNAME="iso-codes"
 # валют и т.д.), которые используются в качестве центральной базы данных для
 # доступа к этим данным.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/iso-codes.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: http://pkg-isocodes.alioth.debian.org/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/iso-codes/iso-codes-4.4.tar.xz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -31,10 +27,15 @@ make || exit 1
 # если мы устанавливаем пакет поверх предыдущей установленной версии,
 # 'make install' потерпит неудачу при создании некоторых символических ссылок.
 # Обновим эти ссылки так как нужно:
-sed -i '/^LN_S/s/s/sfvn/' */Makefile
+if [ -d /usr/share/iso-codes ]; then
+    sed -i '/^LN_S/s/s/sfvn/' */Makefile
+fi
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ISO-standard lists)

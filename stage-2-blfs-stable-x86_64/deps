@@ -39,6 +39,7 @@ gpm
 hdparm                              pm-utils
 icu                                 libxml2, boost
 install-tl-unx                      cpio, libassuan
+iso-codes
 kernel-firmware
 libarchive                          cmake
 libassuan
