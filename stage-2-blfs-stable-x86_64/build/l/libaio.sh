@@ -7,15 +7,11 @@ PRGNAME="libaio"
 # (async I/O или aio). Такое API имеет более богатый набор возможностей, чем
 # простой асинхронный ввод/вывод POSIX объектов.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libaio.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://pagure.io/libaio
-# Download:  https://releases.pagure.org/libaio/libaio-0.3.112.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -25,10 +21,16 @@ mkdir -pv "${TMP_DIR}"
 # отключим установку статической библиотеки
 sed -i '/install.*libaio.a/s/^/#/' src/Makefile || exit 1
 
-make
-# пакет не имеет набора тестов
-make install
+make || exit 1
+
+# тесты
+# make partcheck
+
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (asynchronous I/O library)

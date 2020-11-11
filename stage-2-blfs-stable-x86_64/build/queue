@@ -53,6 +53,7 @@ l/boost.sh
 l/fuse.sh
 l/iso-codes.sh
 l/json-c.sh
+l/libaio.sh
 
 
 # vim:ft=conf

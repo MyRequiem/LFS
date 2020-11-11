@@ -42,6 +42,7 @@ install-tl-unx                      cpio, libassuan
 iso-codes
 json-c
 kernel-firmware
+libaio
 libarchive                          cmake
 libassuan
 libedit                             sqlite
