@@ -39,7 +39,7 @@ gpm
 graphviz                            libexif
 hdparm                              pm-utils
 icu                                 libxml2, boost
-install-tl-unx                      cpio, libassuan
+install-tl-unx                      cpio, libassuan, libunistring
 iso-codes
 json-c
 kernel-firmware
@@ -54,6 +54,7 @@ libjpeg-turbo
 libksba
 libmpdec                            python3
 libpng
+libunistring
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 linux-pam                           fcron, sudo
@@ -89,7 +90,7 @@ sphinx                              cmake
 sqlite                              python2, python3
 subversion                          cmake
 sudo
-texlive                             cpio, libassuan
+texlive                             cpio, libassuan, libunistring
 time
 tk                                  python2, python3
 tree

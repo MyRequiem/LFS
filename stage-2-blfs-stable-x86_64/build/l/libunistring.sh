@@ -6,15 +6,11 @@ PRGNAME="libunistring"
 # Библиотека, предоставляющая функции для работы со строками в формате Unicode
 # a так же для работы со строками C в соответствии со стандартом Unicode
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libunistring.html
+# Required:    no
+# Recommended: no
+# Optional:    texlive или install-tl-unx (для пересборки документации)
 
-# Home page: http://www.gnu.org/s/libunistring
-# Download:  https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.10.tar.xz
-
-# Required: no
-# Optional: texlive or install-tl-unx (для пересборки документации)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -28,8 +24,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU Unicode string library)

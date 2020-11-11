@@ -58,6 +58,7 @@ l/libatasmart.sh
 l/libjpeg-turbo.sh
 l/libexif.sh
 l/libpng.sh
+l/libunistring.sh
 
 
 # vim:ft=conf
