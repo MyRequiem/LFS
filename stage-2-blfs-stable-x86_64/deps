@@ -78,6 +78,7 @@ openldap                            sudo
 opie                                sudo
 p7zip
 pciutils
+pcre
 pm-utils
 postfix                             fcron
 pytest                              fuse
@@ -98,7 +99,7 @@ time
 tk                                  python2, python3
 tree
 unzip
-valgrind                            python2, python3, libksba, libxml2
+valgrind                            python2, python3, libksba, libxml2, pcre
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils

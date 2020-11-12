@@ -7,15 +7,11 @@ PRGNAME="pcre"
 # реализации сопоставления с шаблоном регулярного выражения, используя тот же
 # синтаксис и семантику что и в Perl 5
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/pcre.html
+# Required:    no
+# Recommended: no
+# Optional:    valgrind
 
-# Home page: https://www.pcre.org/
-# Download:  https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
-
-# Required: no
-# Optional: valgrind
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -55,19 +51,19 @@ command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # переместим библиотеку PCRE в корень файловой системы /lib, чтобы она была
 # доступна в случае переустановки grep с поддержкой PCRE
-mv -v /usr/lib/libpcre.so.* /lib
 mv -v "${TMP_DIR}/usr/lib/libpcre.so."* "${TMP_DIR}/lib"
-
-ln -sfv "../../lib/$(readlink /usr/lib/libpcre.so)" /usr/lib/libpcre.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -sfv "../../lib/$(readlink libpcre.so)" libpcre.so
 )
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Perl-compatible regular expression library)
