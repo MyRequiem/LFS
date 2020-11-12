@@ -71,6 +71,7 @@ nasm                                libjpeg-turbo
 nettle                              libarchive
 nghttp2                             cmake
 npth
+nspr
 ntfs-3g
 open-mpi                            boost
 openldap                            sudo

@@ -6,15 +6,11 @@ PRGNAME="nspr"
 # Абстрактная платформо-независимая библиотека для не GUI объектов операционных
 # систем.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/nspr.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://developer.mozilla.org/ru/docs/NSPR
-# Download:  https://archive.mozilla.org/pub/nspr/releases/v4.27/src/nspr-4.27.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -26,7 +22,7 @@ cd "${PRGNAME}" || exit 1
 # отключаем установку двух ненужных скриптов
 sed -ri 's#^(RELEASE_BINS =).*#\1#' pr/src/misc/Makefile.in || exit 1
 # отключаем установку статических библиотек
-sed -i  's#$(LIBRARY) ##' config/rules.mk || exit 1
+sed -i 's#$(LIBRARY) ##' config/rules.mk || exit 1
 
 # добавляем поддержку библиотек Mozilla (обязательно, если мы будем собирать
 # какие-либо другие продукты Mozilla)
@@ -40,8 +36,11 @@ sed -i  's#$(LIBRARY) ##' config/rules.mk || exit 1
     --enable-64bit || exit 1
 
 make || exit 1
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Netscape Portable Runtime)

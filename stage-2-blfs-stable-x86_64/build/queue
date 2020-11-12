@@ -61,6 +61,7 @@ l/libpng.sh
 l/libunistring.sh
 l/libusb.sh
 l/libyaml.sh
+l/nspr.sh
 
 
 # vim:ft=conf
