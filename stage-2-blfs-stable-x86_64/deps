@@ -47,7 +47,7 @@ libaio
 libarchive                          cmake
 libassuan
 libatasmart
-libedit                             sqlite
+libedit                             sqlite, pcre2
 libexif
 libgpg-error                        libassuan, libksba
 libjpeg-turbo
@@ -79,6 +79,7 @@ opie                                sudo
 p7zip
 pciutils
 pcre
+pcre2
 pm-utils
 postfix                             fcron
 pytest                              fuse
@@ -99,7 +100,8 @@ time
 tk                                  python2, python3
 tree
 unzip
-valgrind                            python2, python3, libksba, libxml2, pcre
+valgrind                            python2, python3, libksba, libxml2, pcre,
+                                    pcre2
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils

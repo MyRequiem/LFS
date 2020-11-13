@@ -8,16 +8,12 @@ PRGNAME="pcre2"
 # шаблоном регулярного выражения, используя тот же синтаксис и семантику что и
 # в Perl 5
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/pcre2.html
+# Required:    no
+# Recommended: no
+# Optional:    valgrind
+#              libedit (https://www.cs.utah.edu/~bigler/code/libedit.html)
 
-# Home page: https://www.pcre.org/
-# Download:  https://downloads.sourceforge.net/pcre/pcre2-10.34.tar.bz2
-
-# Required: no
-# Optional: valgrind
-#           libedit (https://www.cs.utah.edu/~bigler/code/libedit.html)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -61,8 +57,11 @@ command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Perl-compatible regular expression library)
