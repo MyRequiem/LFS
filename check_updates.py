@@ -33,6 +33,9 @@ def fix_pkg_name(name):
     if name == 'x7lib':
         name = 'xorg-libraries'
 
+    if name == 'mitkrb':
+        name = 'mit-kerberos-v5'
+
     return name
 
 
