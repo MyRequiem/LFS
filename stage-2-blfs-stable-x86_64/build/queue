@@ -66,6 +66,7 @@ l/pcre.sh
 l/pcre2.sh
 d/python-modules/python-six.sh
 d/python-modules/python3-pygments.sh
+a/ed.sh
 
 
 # vim:ft=conf

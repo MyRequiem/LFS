@@ -23,6 +23,7 @@ docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml
+ed
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
@@ -44,7 +45,7 @@ iso-codes
 json-c
 kernel-firmware
 libaio
-libarchive                          cmake
+libarchive                          cmake, ed
 libassuan
 libatasmart
 libedit                             sqlite, pcre2
@@ -64,7 +65,7 @@ llvm                                icu
 lsb-tools
 lua
 lynx                                smartmontools, pciutils
-lzip
+lzip                                ed
 lzo                                 libarchive
 mit-kerberos-v5                     sudo
 nasm                                libjpeg-turbo
