@@ -64,6 +64,7 @@ l/libyaml.sh
 l/nspr.sh
 l/pcre.sh
 l/pcre2.sh
+d/python-modules/python-six.sh
 
 
 # vim:ft=conf

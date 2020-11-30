@@ -83,9 +83,10 @@ pcre2
 pm-utils
 postfix                             fcron
 pytest                              fuse
-python2                             cython, yasm, libxml2, python2-libxml2
+python-six
+python2                             cython, yasm, libxml2, python2-libxml2, python-six
 python2-libxml2
-python3                             cython, lsb-tools, libxml2
+python3                             cython, lsb-tools, libxml2, python-six
 qt5                                 cmake
 remove-la-files
 sendmail                            fcron, sudo
@@ -100,8 +101,7 @@ time
 tk                                  python2, python3
 tree
 unzip
-valgrind                            python2, python3, libksba, libxml2, pcre,
-                                    pcre2
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils
