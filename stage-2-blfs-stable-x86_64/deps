@@ -86,7 +86,8 @@ pytest                              fuse
 python-six
 python2                             cython, yasm, libxml2, python2-libxml2, python-six
 python2-libxml2
-python3                             cython, lsb-tools, libxml2, python-six
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments
+python3-pygments
 qt5                                 cmake
 remove-la-files
 sendmail                            fcron, sudo

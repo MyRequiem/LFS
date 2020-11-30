@@ -7,18 +7,15 @@ ARCH_NAME="Pygments"
 # Подсветка синтаксиса для более чем 300 языков программирования и форматов
 # разметки. Используется на форумных системах, wiki и в других приложениях, в
 # которых необходимо отображения исходного кода. Поддерживается добавление
-# новых языков программирования. Форматы вывода: HTML, LaTeX, RTF, SVG и ANSI.
-# Так же может использоваться как инструмент командной строки и как библиотека.
+# подсветки для новых языков программирования. Форматы вывода: HTML, LaTeX,
+# RTF, SVG и ANSI. Так же может использоваться как инструмент командной строки
+# и как библиотека.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/python-modules.html#pygments
+# Required:    python3
+# Recommended: no
+# Optional:    no
 
-# Home page: https://pypi.org/project/Pygments/
-# Download:  https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.5.2.tar.gz
-
-# Required: python3
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -28,7 +25,9 @@ mkdir -pv "${TMP_DIR}"
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
 
-cp -vR "${TMP_DIR}"/* /
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (syntax highlighter)
