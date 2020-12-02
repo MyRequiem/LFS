@@ -6,13 +6,9 @@ PRGNAME="gcc"
 # Коллекция компиляторов для C, C++, D, Fortran, Go, Objective-C и
 # Objective-C++ кода
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/gcc.html
-
-# Home page: https://gcc.gnu.org/
-# Download:  https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
-
 # Required:    no
-# Optional:    gdb
+# Recommended: no
+# Optional:    gdb      (для тестов)
 #              valgrind (для тестов)
 #              isl      (для включения оптимизации graphite) https://repo.or.cz/isl.git
 
@@ -27,7 +23,7 @@ PRGNAME="gcc"
 # будет пересобрать ядро, его собственные модули и потом все сторонние модули.
 ###
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -36,7 +32,7 @@ GDB="/usr/share/gdb/auto-load/usr/lib"
 mkdir -pv "${TMP_DIR}"{"${GDB}",/lib,/usr/lib/bfd-plugins}
 
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
-sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 || exit 1
 
 mkdir build
 cd build || exit 1
@@ -55,9 +51,10 @@ cd build || exit 1
     --enable-bootstrap \
     --enable-languages=c,c++,d,fortran,go,objc,obj-c++ || exit 1
 
-# собираем в количество потоков равных количествую ядер
-NUMJOBS="$(nproc)"
-make -j"${NUMJOBS}" || exit 1
+# собираем в количество потоков равных количеству ядер
+NUMJOBS="${MAKEFLAGS}"
+[ -z "${NUMJOBS}" ] && NUMJOBS="-j$(nproc)"
+make "${NUMJOBS}" || exit 1
 
 ###
 # Важно !!!
@@ -68,44 +65,36 @@ make -j"${NUMJOBS}" || exit 1
 # неудачу и сообщать FAIL. Начиная с gcc-9.2.0 в среде LFS тестирование выдает
 # не менее 120 ошибок.
 
-# # известно, что один набор тестов в наборе тестов GCC переполняет стек, поэтому
-# # увеличим размер стека
+# известно, что один набор тестов в наборе тестов GCC переполняет стек, поэтому
+# увеличим размер стека
 # ulimit -s 32768
 
-# # запускаем тесты
+# запускаем тесты
 # make -k check
-# # пишем результаты тестов в gcc-test.log
+# пишем результаты тестов в gcc-test.log
 # ../contrib/test_summary 2>&1 | grep -A7 Summ > gcc-test.log
 
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # переместим некоторые файлы
-mkdir -pv "${GDB}"
-mv -v /usr/lib/*gdb.py "${GDB}"
 mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 
 LIB_GCC="/usr/lib/gcc/$(gcc -dumpmachine)/${VERSION}"
-chown -vR root:root "${LIB_GCC}/include"{,-fixed}
 chown -vR root:root "${TMP_DIR}${LIB_GCC}/include"{,-fixed}
 
 # удалим ненужную директорию
 # /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include-fixed/bits
-rm -rf "${LIB_GCC}/include-fixed/bits/"
 rm -rf "${TMP_DIR}${LIB_GCC}/include-fixed/bits/"
 
 # многие программы используют имя 'cc' для вызова компилятора C, поэтому
 # создадим символическую ссылку cc -> gcc в /usr/bin/
-ln -svf gcc /usr/bin/cc
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sv gcc cc
 )
 
-# создадим символическую ссылку в /lib/
+# создадим символическую ссылку в /lib/ требуемую FHS по историческим причинам
 # cpp -> ../usr/bin/cpp
-# требуемую FHS по историческим причинам
-ln -svf ../usr/bin/cpp /lib
 (
     cd "${TMP_DIR}/lib" || exit 1
     ln -sv ../usr/bin/cpp cpp
@@ -116,17 +105,16 @@ ln -svf ../usr/bin/cpp /lib
 #    ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
 # для совместимости, чтобы разрешить сборку программ с помощью
 # Link Time Optimization (LTO)
-install -v -dm755 /usr/lib/bfd-plugins
-ln -sfv "../../libexec/gcc/$(gcc -dumpmachine)/${VERSION}/liblto_plugin.so" \
-        /usr/lib/bfd-plugins/
-
-install -v -dm755 "${TMP_DIR}/usr/lib/bfd-plugins"
 (
     cd "${TMP_DIR}/usr/lib/bfd-plugins" || exit 1
     ln -sfv \
         "../../libexec/gcc/$(gcc -dumpmachine)/${VERSION}/liblto_plugin.so" \
         liblto_plugin.so
 )
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU compiler collection)
@@ -141,6 +129,10 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+
+echo -e "\n---------------\nRemoving *.la files..."
+remove-la-files.sh
+echo "---------------"
 
 # После установки необходимо убедиться, что основные функции (компиляция и
 # компоновка) работают должным образом. Вывод сообщений всех последующих команд
@@ -158,10 +150,10 @@ echo "Step: 1"
 echo "--------"
 echo "# creating simple C-file"
 echo "echo 'int main(){}' > dummy.c"
-
 echo 'int main(){}' > dummy.c
+echo "ls -l dummy.c"
+ls -l dummy.c
 echo ""
-
 echo -n "Press any key... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
@@ -170,13 +162,13 @@ echo ""
 echo "--------"
 echo "Step: 2"
 echo "--------"
-echo "# compiling source file dummy.c using /usr/bin/cc (link to /usr/bin/gcc)"
+echo "# compiling source file dummy.c using 'cc' (link to gcc)'"
 echo "# (as a result of compilation, an object file a.out is generated)"
 echo "cc dummy.c -v -Wl,--verbose &> dummy.log"
-
 cc dummy.c -v -Wl,--verbose &> dummy.log
+echo "ls -l a.out"
+ls -l a.out
 echo ""
-
 echo -n "Press any key... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
@@ -185,12 +177,11 @@ echo ""
 echo "--------"
 echo "Step: 3"
 echo "--------"
+# посмотрим имя динамического компоновщика
 echo "# show dynamic linker name"
 echo "readelf -l a.out | grep ': /lib'"
-
 readelf -l a.out | grep ': /lib'
 echo ""
-
 echo "# The output should be something like this:"
 echo "#     [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]"
 echo ""
@@ -198,22 +189,21 @@ echo -n "Press any key... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
-# если вывод не показан, как указано выше, или вывод не был получен вообще,
+# если вывод не такой, как указано выше, или вывод не был получен вообще,
 # значит что-то не так
 
+echo "--------"
+echo "Step: 4"
+echo "--------"
+VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
 # проверим настройки для стартовых файлов
 # /usr/lib/crt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
-echo "--------"
-echo "Step: 4"
-echo "--------"
 echo "# make sure that we're setup to use the correct start files"
 echo "grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log"
-
 grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
 echo ""
-
 echo "# The output should be something like this:"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crt1.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crti.o succeeded"
@@ -227,39 +217,34 @@ echo ""
 # обычно это имя каталога после /usr/lib/gcc/. Здесь важно обратить внимание на
 # то, что gcc нашел все три файла crt*.o в каталоге /usr/lib/
 
-# убедимся, что компилятор ищет правильные заголовочные файлы
 echo "--------"
 echo "Step: 5"
 echo "--------"
+# убедимся, что компилятор ищет правильные заголовочные файлы
 echo "# verify that the compiler is searching for the correct header files"
 echo "grep -B4 '^ /usr/include' dummy.log"
-
 grep -B4 '^ /usr/include' dummy.log
 echo ""
-
 echo "# The output should be something like this:"
 echo "#include <...> search starts here:"
 echo " /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include"
 echo " /usr/local/include"
 echo " /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include-fixed"
 echo " /usr/include"
-
 echo ""
 echo -n "Press any key... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 
-# убедимся, что новый компоновщик использует правильные пути для поиска
 echo "--------"
 echo "Step: 6"
 echo "--------"
+# убедимся, что новый компоновщик использует правильные пути для поиска
 echo "verify that the new linker is being used with the correct search paths"
 printf "grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\\\n|g'\n"
-
 grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\n|g'
 echo ""
-
 # ссылки на пути, в которых есть компоненты с -linux-gnu, должны
 # игнорироваться, но весь остальной вывод должен быть такой
 echo "# The output should be something like this:"
@@ -271,23 +256,20 @@ echo 'SEARCH_DIR("/usr/x86_64-pc-linux-gnu/lib")'
 echo 'SEARCH_DIR("/usr/local/lib")'
 echo 'SEARCH_DIR("/lib")'
 echo 'SEARCH_DIR("/usr/lib")'
-
 echo ""
 echo -n "Press any key... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 
-# убедимся, что мы используем правильный libc
 echo "--------"
 echo "Step: 7"
 echo "--------"
+# убедимся, что мы используем правильный libc
 echo "# make sure that we're using the correct libc"
 echo 'grep "/lib.*/libc.so.6 " dummy.log'
-
 grep "/lib.*/libc.so.6 " dummy.log
 echo ""
-
 echo "# The output should be something like this:"
 echo "attempt to open /lib/libc.so.6 succeeded"
 echo ""
@@ -296,16 +278,14 @@ read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 
-# наконец, убедимся, что GCC использует правильный динамический компоновщик
 echo "--------"
 echo "Step: 8"
 echo "--------"
+# наконец, убедимся, что GCC использует правильный динамический компоновщик
 echo "# make sure GCC is using the correct dynamic linker"
 echo "grep found dummy.log"
-
 grep found dummy.log
 echo ""
-
 echo "# The output should be something like this:"
 echo "found ld-linux-x86-64.so.2 at /lib/ld-linux-x86-64.so.2"
 echo ""
@@ -320,7 +300,3 @@ echo ""
 # очистим созданные нами тестовые файлы
 echo "Cleaning:"
 rm -v dummy.c a.out dummy.log
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

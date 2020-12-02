@@ -16,8 +16,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}/usr"/{bin,include,share/{aclocal,man/{man1,man3}}}
 
 # позволим запускать make в несколько потоков (например, make -j4)
 sed -i 's#$(LOBJS): Makefile#$(LOBJS): pth_p.h Makefile#' Makefile.in
@@ -35,6 +34,8 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -p "${TMP_DIR}${DOCS}"
 install -v -m644 README PORTING SUPPORT TESTS "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -8,18 +8,14 @@ ARCH_NAME="LVM2"
 # дисками и файловой системой и позволяющая использовать разные области одного
 # жёсткого диска и/или области с разных жёстких дисков как один логический том.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/lvm2.html
-
-# Home page: https://github.com/lvmteam/lvm2/
-# Download:  https://sourceware.org/ftp/lvm2/LVM2.2.03.08.tgz
-
-# Required: libaio
-# Optional: mdadm
-#           reiserfsprogs
-#           valgrind
-#           which
-#           xfsprogs
-#           thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
+# Required:    libaio
+# Recommended: no
+# Optional:    mdadm
+#              reiserfsprogs
+#              valgrind
+#              which
+#              xfsprogs
+#              thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
 
 ### Конфигурация ядра
 #    CONFIG_MD=y
@@ -30,7 +26,7 @@ ARCH_NAME="LVM2"
 #    CONFIG_DM_MIRROR=m|y
 #    CONFIG_MAGIC_SYSRQ=y
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
 source "${ROOT}/config_file_processing.sh" || exit 1
 
@@ -49,6 +45,12 @@ cd "${ARCH_NAME}.${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# создаем shared библиотеку команд для сборки демона событий
+#    --enable-cmdlib
+# установливаем файлы поддержки для pkg-config
+#    --enable-pkgconfig
+# включаем синхронизацию с Udev
+#    --enable-udev_sync
 SAVEPATH="${PATH}"             && \
 PATH="${PATH}:/sbin:/usr/sbin" && \
 ./configure                       \
@@ -60,11 +62,12 @@ PATH="${PATH}:/sbin:/usr/sbin" && \
 
 make || exit 1
 
-PATH="${SAVEPATH}" && unset SAVEPATH
+PATH="${SAVEPATH}"
+unset SAVEPATH
 
 ### тесты
-# используют udev для синхронизации логических томов, поэтому правила LVM
-# udev и некоторые утилиты должны быть установлены до запуска тестов. Если мы
+# тесты используют udev для синхронизации логических томов, поэтому правила LVM
+# udev и некоторые утилиты из пакета lvm2 должны быть уже установлены. Если мы
 # устанавливаем LVM2 в первый раз, то установим минимальный набор утилит для
 # запуска тестов:
 # if ! command -v lvm &>/dev/null; then
@@ -73,8 +76,13 @@ PATH="${SAVEPATH}" && unset SAVEPATH
 #     make -C libdm install
 # fi
 #
-# запускаем тесты
-# make check_local
+### запускаем тесты
+# опция S=... позволяет пропускать тесты. Сообщается, что тест
+# shell/thin-flags.sh приводит к зависанию компьютера. Доступны и другие цели,
+# которые можно посмотреть с помощью команды 'make -C test help'
+# make S=shell/thin-flags.sh check_local
+
+make install DESTDIR="${TMP_DIR}"
 
 # конфиг /etc/lvm/lvm.conf
 LVM_CONF="/etc/lvm/lvm.conf"
@@ -88,8 +96,9 @@ if [ -f "${LVMLOCAL_CONF}" ]; then
     mv "${LVMLOCAL_CONF}" "${LVMLOCAL_CONF}.old"
 fi
 
-make install
-make install DESTDIR="${TMP_DIR}"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LVM_CONF}"
 config_file_processing "${LVMLOCAL_CONF}"
