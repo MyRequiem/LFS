@@ -36,6 +36,12 @@ def fix_pkg_name(name):
     if name == 'mitkrb':
         name = 'mit-kerberos-v5'
 
+    if name == 'libexif-0':
+        name = 'libexif'
+
+    if name == 'libxml2-2':
+        name = 'libxml2'
+
     return name
 
 
@@ -115,10 +121,13 @@ def main(repo):
                                  from_encoding=resp.info().get_param('charset'),
                                  features='html.parser')
             new_version = soup.find_all('h1')
-            new_version = new_version[0].contents[2].split('-')[-1].strip()
+            if not new_version:
+                new_version = ''
+            else:
+                new_version = new_version[0].contents[2].split('-')[-1].strip()
 
             update = '{0}[{1}] '.format(clrs['reset'], system_version)
-            if system_version != new_version:
+            if new_version and system_version != new_version:
                 update = '{0}{1} --> {2}{3} '.format(clrs['lred'],
                                                      system_version,
                                                      new_version,
