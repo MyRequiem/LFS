@@ -6,15 +6,11 @@ PRGNAME="popt"
 # C-библиотека для анализа параметров командной строки, используемая некоторыми
 # программами для их разбора.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/popt.html
+# Required:    no
+# Recommended: no
+# Optional:    doxygen (для сборки документации)
 
-# Home page: http://freshmeat.sourceforge.net/projects/popt
-# Download:  https://fossies.org/linux/misc/popt-1.16.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -29,22 +25,27 @@ make || exit 1
 
 # для создания API документации требуется пакет doxygen
 DOXYGEN=""
-command -v doxygen &>/dev/null && DOXYGEN="true"
-[ -n "${DOXYGEN}" ] && doxygen
+# command -v doxygen &>/dev/null && DOXYGEN="true"
+
+if [ -n "${DOXYGEN}" ]; then
+    sed -i 's@\./@src/@' Doxyfile && doxygen
+fi
 
 # make check
-make install
+
 make install DESTDIR="${TMP_DIR}"
 
-### установка документации, если она была собрана командой 'doxygen'
 if [ -n "${DOXYGEN}" ]; then
     DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d "${DOCS}"
-    install -v -m755 -d "${TMP_DIR}${DOCS}"
-    install -v -m644 doxygen/html/* "${DOCS}"
+    install -v -m755 -d             "${TMP_DIR}${DOCS}"
     install -v -m644 doxygen/html/* "${TMP_DIR}${DOCS}"
 fi
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (command line parsing library)
 #
@@ -58,7 +59,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # arbitrary strings into argv[] arrays using popt: shell-like rules.
 #
 # Home page: http://freshmeat.sourceforge.net/projects/${PRGNAME}
-# Download:  https://fossies.org/linux/misc/${PRGNAME}-${VERSION}.tar.gz
+# Download:  http://ftp.rpm.org/${PRGNAME}/releases/${PRGNAME}-${MAJ_VER}.x/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -74,8 +74,7 @@ n/wget.sh
 a/smartmontools.sh
 a/pciutils.sh
 a/usbutils.sh
-
-
+l/popt.sh
 
 
 # vim:ft=conf

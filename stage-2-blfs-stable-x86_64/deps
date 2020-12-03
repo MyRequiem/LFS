@@ -22,7 +22,7 @@ cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt
 ed
 etc-issue
 ethtool                             pm-utils
@@ -92,6 +92,7 @@ pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 pm-utils
+popt
 postfix                             fcron
 pth
 pytest                              fuse
