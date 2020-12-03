@@ -7,13 +7,9 @@ PRGNAME="lm-sensors"
 # производительности некоторых аппаратных средств (например, вентиляторов
 # охлаждения)
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/lm_sensors.html
-
-# Home page: https://github.com/lm-sensors/lm-sensors/
-# Download:  https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
-
-# Required: which
-# Optional: rrdtool (для сборки sensord) https://oss.oetiker.ch/rrdtool/
+# Required:    which
+# Recommended: no
+# Optional:    rrdtool (для сборки sensord) https://oss.oetiker.ch/rrdtool/
 
 ### Конфигурация ядра
 #    CONFIG_MODULES=y
@@ -37,7 +33,7 @@ PRGNAME="lm-sensors"
 # Определим все аппаратные датчики, которые есть в системе
 #    # sensors-detect
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -68,16 +64,13 @@ make                      \
 make                   \
     PREFIX=/usr        \
     BUILD_STATIC_LIB=0 \
-    MANDIR=/usr/share/man install
-
-make                   \
-    PREFIX=/usr        \
-    BUILD_STATIC_LIB=0 \
     MANDIR=/usr/share/man install DESTDIR="${TMP_DIR}"
 
-install -v -m755 -d "${DOCS}"
-cp -rv README INSTALL doc/* "${DOCS}"
 cp -rv README INSTALL doc/* "${TMP_DIR}${DOCS}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (hardware monitoring package)

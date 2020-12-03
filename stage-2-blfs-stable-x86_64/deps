@@ -68,6 +68,7 @@ libxml2                             python2-libxml2, libarchive
 libyaml
 linux-pam                           fcron, sudo
 llvm                                icu
+lm-sensors
 lsb-tools
 lua                                 highlight
 lvm2
@@ -105,6 +106,7 @@ python3-pygments
 qt5                                 cmake, highlight
 reiserfsprogs                       lvm2
 remove-la-files
+rrdtool                             lm-sensors
 sendmail                            fcron, sudo
 sharutils
 smartmontools
@@ -123,13 +125,12 @@ valgrind                            python2, python3, libksba, libxml2, pcre, pc
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2
+which                               pciutils, aspell, boost, lvm2, lm-sensors
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
 zip
-
 
 # vim:ft=conf

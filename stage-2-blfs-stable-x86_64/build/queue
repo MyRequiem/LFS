@@ -76,6 +76,7 @@ a/pciutils.sh
 a/usbutils.sh
 l/popt.sh
 ap/highlight.sh
+ap/lm-sensors.sh
 
 
 # vim:ft=conf
