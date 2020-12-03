@@ -75,6 +75,7 @@ a/smartmontools.sh
 a/pciutils.sh
 a/usbutils.sh
 l/popt.sh
+ap/highlight.sh
 
 
 # vim:ft=conf

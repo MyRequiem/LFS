@@ -13,7 +13,7 @@ bash-completion
 berkeley-db                         python3
 blfs-bootscripts
 bluez                               python2, python3
-boost
+boost                               highlight
 c2man                               fribidi
 cmake                               json-c, libjpeg-turbo
 cpio
@@ -41,6 +41,7 @@ gnutls                              wget
 gpm
 graphviz                            libexif
 hdparm                              pm-utils
+highlight
 icu                                 libxml2, boost
 install-tl-unx                      cpio, libassuan, libunistring
 isl                                 gcc
@@ -68,7 +69,7 @@ libyaml
 linux-pam                           fcron, sudo
 llvm                                icu
 lsb-tools
-lua
+lua                                 highlight
 lvm2
 lynx                                smartmontools, pciutils
 lzip                                ed
@@ -101,7 +102,7 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-libxml2
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments
 python3-pygments
-qt5                                 cmake
+qt5                                 cmake, highlight
 reiserfsprogs                       lvm2
 remove-la-files
 sendmail                            fcron, sudo
