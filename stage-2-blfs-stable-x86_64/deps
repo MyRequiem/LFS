@@ -37,6 +37,7 @@ gcc
 gdb                                 python3, gcc
 git                                 cmake
 gnupg                               smartmontools
+gnutls                              wget
 gpm
 graphviz                            libexif
 hdparm                              pm-utils
@@ -53,12 +54,14 @@ libatasmart
 libedit                             sqlite, pcre2
 libexif
 libgpg-error                        libassuan, libksba
+libidn2                             wget
 libjpeg-turbo
 libksba
 libmpdec                            python3
 libpng
+libpsl                              wget
 libunistring
-libusb
+libusb                              usbutils
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 libyaml
@@ -70,6 +73,7 @@ lvm2
 lynx                                smartmontools, pciutils
 lzip                                ed
 lzo                                 libarchive
+make-ca                             wget
 mdadm                               lvm2
 mit-kerberos-v5                     sudo
 nasm                                libjpeg-turbo
@@ -83,8 +87,10 @@ openldap                            sudo
 opie                                sudo
 p7zip
 pciutils
-pcre
-pcre2
+pcre                                wget
+pcre2                               wget
+perl-http-daemon                    wget
+perl-io-socket-ssl                  wget
 pm-utils
 postfix                             fcron
 pth
@@ -110,10 +116,11 @@ time
 tk                                  python2, python3
 tree
 unzip
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc
+usbutils
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget
 vbetool                             pm-utils
 vim                                 fcron
-wget                                smartmontools, pciutils
+wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2
 wireless-tools                      pm-utils
 wxwidgets                           p7zip

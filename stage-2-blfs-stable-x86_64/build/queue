@@ -70,6 +70,12 @@ d/python-modules/python3-pygments.sh
 a/ed.sh
 a/lvm2.sh
 d/gcc.sh
+n/wget.sh
+a/smartmontools.sh
+a/pciutils.sh
+a/usbutils.sh
+
+
 
 
 # vim:ft=conf

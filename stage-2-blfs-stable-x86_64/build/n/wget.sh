@@ -7,11 +7,6 @@ PRGNAME="wget"
 # протоколам HTTP и FTP. Работает в не интерактивном режиме, что позволяет
 # продолжать егу работу после выхода из системы.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/basicnet/wget.html
-
-# Home page: http://www.gnu.org/software/wget/
-# Download:  https://ftp.gnu.org/gnu/wget/wget-1.20.3.tar.gz
-
 # Required:    no
 # Recommended: make-ca            (runtime)
 # Optional:    gnutls
@@ -22,7 +17,7 @@ PRGNAME="wget"
 #              pcre или pcre2
 #              valgrind           (для тестов)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -38,16 +33,20 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
+### тесты
 # известно, что HTTPS-тесты не проходят, если установлен Perl модуль
 # IO::Socket::INET6
 #
 # Для выполнения тестов с Valgrind добавляем опцию конфигурации
-# --enable-valgrind-tests
+#    --enable-valgrind-tests
 #
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a non-interactive network retriever)
