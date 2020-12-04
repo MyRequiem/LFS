@@ -61,7 +61,7 @@ libksba
 libmpdec                            python3
 libpng
 libpsl                              wget
-libtirpc                            rpcbind
+libtirpc                            rpcbind, lsof
 libunistring
 libusb                              usbutils
 libuv                               cmake
@@ -71,6 +71,7 @@ linux-pam                           fcron, sudo
 llvm                                icu
 lm-sensors
 lsb-tools
+lsof
 lua                                 highlight
 lvm2
 lynx                                smartmontools, pciutils

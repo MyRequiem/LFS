@@ -6,15 +6,11 @@ PRGNAME="lsof"
 # Утилита для вывода информации о файлах, которые открыты процессами,
 # запущенными в системе.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/lsof.html
+# Required:    libtirpc
+# Recommended: no
+# Optional:    no
 
-# Home page: https://www.mirrorservice.org/sites/lsof.itap.purdue.edu
-# Download:  https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof_4.91.tar.gz
-
-# Required: libtirpc
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -38,16 +34,18 @@ mkdir -pv "${TMP_DIR}"{/usr/bin,${MAN}}
 
 ./Configure -n linux || exit 1
 
-# в команду 'make' добавляем расположение библиотек libtirpc
+# указываем расположение библиотеки libtirpc, которая находится в /lib
+#    CFGL="-L./lib -ltirpc"
 make CFGL="-L./lib -ltirpc"
 
 # пакет не имеет набора тестов
 
-install -v -m0755 -o root -g root lsof /usr/bin
 install -v -m0755 -o root -g root lsof "${TMP_DIR}/usr/bin"
-
-install -v lsof.8 "${MAN}"
 install -v lsof.8 "${TMP_DIR}${MAN}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (list open files)

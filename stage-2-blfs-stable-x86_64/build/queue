@@ -78,6 +78,7 @@ l/popt.sh
 ap/highlight.sh
 ap/lm-sensors.sh
 n/libtirpc.sh
+ap/lsof.sh
 
 
 # vim:ft=conf
