@@ -61,6 +61,7 @@ libksba
 libmpdec                            python3
 libpng
 libpsl                              wget
+libtirpc                            rpcbind
 libunistring
 libusb                              usbutils
 libuv                               cmake
@@ -77,7 +78,7 @@ lzip                                ed
 lzo                                 libarchive
 make-ca                             wget
 mdadm                               lvm2
-mit-kerberos-v5                     sudo
+mit-kerberos-v5                     sudo, libtirpc
 nasm                                libjpeg-turbo
 nettle                              libarchive
 nghttp2                             cmake
@@ -132,5 +133,6 @@ xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
 zip
+
 
 # vim:ft=conf
