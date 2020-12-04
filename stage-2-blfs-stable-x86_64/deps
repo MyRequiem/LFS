@@ -33,6 +33,7 @@ fribidi
 fuse
 fuse2                               ntfs-3g
 fwtk                                sudo
+gc
 gcc
 gdb                                 python3, gcc
 git                                 cmake
@@ -52,7 +53,7 @@ libaio                              lvm2
 libarchive                          cmake, ed
 libassuan
 libatasmart
-libatomic-ops
+libatomic-ops                       gc
 libedit                             sqlite, pcre2
 libexif
 libgpg-error                        libassuan, libksba

@@ -81,6 +81,7 @@ n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
+d/gc.sh
 
 
 # vim:ft=conf

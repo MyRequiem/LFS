@@ -12,15 +12,11 @@ PRGNAME="gc"
 # вариант, может использоваться как детектор утечек памяти для программ на C
 # или C ++, хотя это не является его основной целью.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/gc.html
+# Required:    libatomic-ops
+# Recommended: no
+# Optional:    no
 
-# Home page: https://www.hboehm.info/gc/
-# Download:  https://www.hboehm.info/gc/gc_source/gc-8.0.4.tar.gz
-
-# Required: libatomic-ops
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -38,11 +34,16 @@ mkdir -pv "${TMP_DIR}${MAN}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
-install -v -m644 doc/gc.man "${MAN}/gc_malloc.3"
-install -v -m644 doc/gc.man "${TMP_DIR}${MAN}/gc_malloc.3"
+(
+    cd "${TMP_DIR}${MAN}" || exit 1
+    ln -svf gc.3 gc_malloc.3
+)
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Boehm-Demers-Weiser garbage collector)
