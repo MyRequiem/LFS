@@ -59,7 +59,7 @@ libidn2                             wget
 libjpeg-turbo
 libksba
 libmpdec                            python3
-libpng
+libpng                              slang
 libpsl                              wget
 libtirpc                            rpcbind, lsof
 libunistring
@@ -86,12 +86,13 @@ nghttp2                             cmake
 npth
 nspr
 ntfs-3g
+oniguruma                           slang
 open-mpi                            boost
 openldap                            sudo
 opie                                sudo
 p7zip
 pciutils
-pcre                                wget
+pcre                                wget, slang
 pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
@@ -111,6 +112,7 @@ remove-la-files
 rrdtool                             lm-sensors
 sendmail                            fcron, sudo
 sharutils
+slang
 smartmontools
 sphinx                              cmake
 sqlite                              python2, python3

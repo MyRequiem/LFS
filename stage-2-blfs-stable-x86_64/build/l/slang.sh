@@ -9,17 +9,13 @@ PRGNAME="slang"
 # управления экранами, обработки нажатия клавиш и низкоуровневого терминального
 # ввода-вывода для интерактивных приложений.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/slang.html
+# Required:    no
+# Recommended: no
+# Optional:    libpng
+#              pcre
+#              oniguruma (https://github.com/kkos/oniguruma)
 
-# Home page: http://www.jedsoft.org/slang/
-# Download:  http://www.jedsoft.org/releases/slang/slang-2.3.2.tar.bz2
-
-# Required: no
-# Optional: libpng
-#           pcre
-#           oniguruma (https://github.com/kkos/oniguruma)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -34,17 +30,20 @@ mkdir -pv "${TMP_DIR}${DOCS}/slsh"
     --sysconfdir=/etc   \
     --with-readline=gnu || exit 1
 
-# пакет не поддерживает сборку в несколько потоков
+# пакет не поддерживает сборку и установку в несколько потоков
 make -j1 || exit 1
 # make check
-make install_doc_dir="${DOCS}" SLSH_DOC_DIR="${DOCS}/slsh" install-all
-make install_doc_dir="${DOCS}" SLSH_DOC_DIR="${DOCS}/slsh" install-all \
-    DESTDIR="${TMP_DIR}"
+make -j1                        \
+    install_doc_dir="${DOCS}"   \
+    SLSH_DOC_DIR="${DOCS}/slsh" \
+    install-all DESTDIR="${TMP_DIR}"
 
-chmod -v 755 "/usr/lib/libslang.so.${VERSION}" \
-    /usr/lib/slang/v2/modules/*.so
-chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so.${VERSION}" \
-    "${TMP_DIR}/usr/lib/slang/v2/modules"/*.so
+chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so.${VERSION}"
+chmod -v 755 "${TMP_DIR}/usr/lib/slang/v2/modules"/*.so
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (S-Lang interpreter)
