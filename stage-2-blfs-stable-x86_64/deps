@@ -24,6 +24,7 @@ dosfstools
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt
 ed
+emacs                               guile
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
@@ -33,14 +34,15 @@ fribidi
 fuse
 fuse2                               ntfs-3g
 fwtk                                sudo
-gc
+gc                                  guile
 gcc
-gdb                                 python3, gcc
+gdb                                 python3, gcc, guile
 git                                 cmake
 gnupg                               smartmontools
 gnutls                              wget
 gpm
 graphviz                            libexif
+guile
 hdparm                              pm-utils
 highlight
 icu                                 libxml2, boost
@@ -64,7 +66,7 @@ libmpdec                            python3
 libpng                              slang
 libpsl                              wget
 libtirpc                            rpcbind, lsof
-libunistring
+libunistring                        guile
 libusb                              usbutils
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive

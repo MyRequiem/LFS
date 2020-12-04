@@ -82,6 +82,7 @@ ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
 d/gc.sh
+d/guile.sh
 
 
 # vim:ft=conf

@@ -6,17 +6,13 @@ PRGNAME="guile"
 # Реализация языка программирования Scheme, рекомендованная в качестве
 # скриптового языка, встраиваемого в программные продукты проекта GNU
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/guile.html
+# Required:    gc
+#              libunistring
+# Recommended: no
+# Optional:    emacs
+#              gdb
 
-# Home page: http://www.gnu.org/software/guile/
-# Download:  https://ftp.gnu.org/gnu/guile/guile-3.0.0.tar.xz
-
-# Required: gc
-#           libunistring
-# Optional: emacs
-#           gdb
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -38,31 +34,26 @@ makeinfo --plaintext -o doc/ref/guile.txt doc/ref/guile.texi || exit 1
 # тесты
 # ./check-guile
 
-make install
-make install DESTDIR="${TMP_DIR}"
-make install-html
+make install      DESTDIR="${TMP_DIR}"
 make install-html DESTDIR="${TMP_DIR}"
 
-mkdir -p "${LIBS}"
-mv /usr/lib/libguile-*-gdb.scm             "${LIBS}/"
-mv "${TMP_DIR}/usr/lib/libguile-"*-gdb.scm "${LIBS}/"
+mv "${TMP_DIR}/usr/lib/libguile-"*-gdb.scm "${TMP_DIR}${LIBS}"
 
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mv "${DOCS}"/{guile.html,ref}
 mv "${TMP_DIR}${DOCS}"/{guile.html,ref}
-
-mv "${DOCS}"/r5rs{.html,}
 mv "${TMP_DIR}${DOCS}"/r5rs{.html,}
 
 find examples -name "Makefile*" -delete
-cp -vR examples "${DOCS}"
 cp -vR examples "${TMP_DIR}${DOCS}"
 
-for DIRNAME in r5rs ref; do
-    install -v -m644  "doc/${DIRNAME}"/*.txt "${DOCS}/${DIRNAME}"
+for DIRNAME in ref r5rs; do
     install -v -m644  "doc/${DIRNAME}"/*.txt "${TMP_DIR}${DOCS}/${DIRNAME}"
 done
 unset DIRNAME
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU's Ubiquitous Intelligent Language for Extension)
