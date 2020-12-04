@@ -80,6 +80,7 @@ ap/lm-sensors.sh
 n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
+l/libatomic-ops.sh
 
 
 # vim:ft=conf

@@ -52,6 +52,7 @@ libaio                              lvm2
 libarchive                          cmake, ed
 libassuan
 libatasmart
+libatomic-ops
 libedit                             sqlite, pcre2
 libexif
 libgpg-error                        libassuan, libksba

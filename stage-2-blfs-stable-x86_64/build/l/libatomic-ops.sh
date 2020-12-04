@@ -6,15 +6,11 @@ ARCH_NAME="libatomic_ops"
 ### libatomic-ops (implementations for atomic memory update operations)
 # Библиотеки, реализующие операции обновления памяти для ряда архитектур.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libatomic_ops.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://github.com/ivmai/libatomic_ops
-# Download:  https://github.com/ivmai/libatomic_ops/releases/download/v7.6.10/libatomic_ops-7.6.10.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -29,8 +25,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (implementations for atomic memory update operations)
