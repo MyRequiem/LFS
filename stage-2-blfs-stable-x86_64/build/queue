@@ -83,6 +83,8 @@ l/slang.sh
 l/libatomic-ops.sh
 d/gc.sh
 d/guile.sh
+n/libgcrypt.sh
+d/mozjs.sh
 
 
 # vim:ft=conf

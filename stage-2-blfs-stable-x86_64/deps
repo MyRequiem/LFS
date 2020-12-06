@@ -8,7 +8,7 @@ apr
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-autoconf213
+autoconf213                         mozjs
 bash-completion
 berkeley-db                         python3
 blfs-bootscripts
@@ -22,7 +22,7 @@ cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs
 ed
 emacs                               guile
 etc-issue
@@ -45,8 +45,8 @@ graphviz                            libexif
 guile
 hdparm                              pm-utils
 highlight
-icu                                 libxml2, boost
-install-tl-unx                      cpio, libassuan, libunistring
+icu                                 libxml2, boost, mozjs
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt
 isl                                 gcc
 iso-codes
 json-c
@@ -58,7 +58,7 @@ libatasmart
 libatomic-ops                       gc
 libedit                             sqlite, pcre2
 libexif
-libgpg-error                        libassuan, libksba
+libgpg-error                        libassuan, libksba, libgcrypt
 libidn2                             wget
 libjpeg-turbo
 libksba
@@ -72,7 +72,7 @@ libuv                               cmake
 libxml2                             python2-libxml2, libarchive
 libyaml
 linux-pam                           fcron, sudo
-llvm                                icu
+llvm                                icu, mozjs
 lm-sensors
 lsb-tools
 lsof
@@ -84,7 +84,8 @@ lzo                                 libarchive
 make-ca                             wget
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
-nasm                                libjpeg-turbo
+mozjs
+nasm                                libjpeg-turbo, mozjs
 nettle                              libarchive
 nghttp2                             cmake
 npth
@@ -103,10 +104,10 @@ perl-io-socket-ssl                  wget
 pm-utils
 popt
 postfix                             fcron
-pth
+pth                                 libgcrypt
 pytest                              fuse
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs
 python2-libxml2
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments
 python3-pygments
@@ -122,7 +123,7 @@ sphinx                              cmake
 sqlite                              python2, python3
 subversion                          cmake
 sudo
-texlive                             cpio, libassuan, libunistring
+texlive                             cpio, libassuan, libunistring, libgcrypt
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
@@ -133,13 +134,14 @@ valgrind                            python2, python3, libksba, libxml2, pcre, pc
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
 zip
+libgcrypt
 
 
 # vim:ft=conf

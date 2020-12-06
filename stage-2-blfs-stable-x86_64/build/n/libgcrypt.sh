@@ -7,21 +7,17 @@ PRGNAME="libgcrypt"
 # Библиотека предоставляет интерфейс высокого уровня для криптографии с
 # использованием расширяемого и гибкого API
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libgcrypt.html
+# Required:    libgpg-error
+# Recommended: no
+# Optional:    pth
+#              texlive или install-tl-unx (для создания pdf и ps документации)
 
-# Home page: https://gnupg.org/software/libgcrypt/index.html
-# Download:  https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.5.tar.bz2
-
-# Required: libgpg-error
-# Optional: pth
-#           texlive или install-tl-unx (для создания pdf и ps документации)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/html"
 
 ./configure \
@@ -36,34 +32,29 @@ makeinfo --plaintext       -o doc/gcrypt.txt           doc/gcrypt.texi
 
 # если в системе установлен texlive или install-tl-unx, можно создать
 # документацию в форматах pdf и ps
-PDF_PS_DOC=""
-command -v texdoc &>/dev/null && PDF_PS_DOC="true"
-[ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
+# PDF_PS_DOC=""
+# command -v texdoc &>/dev/null && PDF_PS_DOC="true"
+# [ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
 
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
 
-install -v -dm755   "${DOCS}/html"
-install -v -m644 doc/gcrypt.html/* "${DOCS}/html"
-install -v -m644 doc/gcrypt.html/* "${TMP_DIR}${DOCS}/html"
-
-install -v -m644    README doc/{README.apichanges,fips*,libgcrypt*} "${DOCS}"
-install -v -m644    README doc/{README.apichanges,fips*,libgcrypt*} \
+# установим документацию
+install -v -m644 README doc/{README.apichanges,fips*,libgcrypt*} \
     "${TMP_DIR}${DOCS}"
-
-install -v -m644 doc/gcrypt_nochunks.html "${DOCS}"
+install -v -m644 doc/gcrypt.{txt,texi}    "${TMP_DIR}${DOCS}"
 install -v -m644 doc/gcrypt_nochunks.html "${TMP_DIR}${DOCS}"
-
-install -v -m644 doc/gcrypt.{txt,texi} "${DOCS}"
-install -v -m644 doc/gcrypt.{txt,texi} "${TMP_DIR}${DOCS}"
+install -v -m644 doc/gcrypt.html/*        "${TMP_DIR}${DOCS}/html"
 
 # если мы собирали документацию в pdf и ps форматах
-if [ -n "${PDF_PS_DOC}" ]; then
-    install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${DOCS}"
-    install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
-fi
+# if [ -n "${PDF_PS_DOC}" ]; then
+#     install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
+# fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (General purpose crypto library)
