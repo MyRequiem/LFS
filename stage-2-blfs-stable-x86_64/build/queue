@@ -85,6 +85,7 @@ d/gc.sh
 d/guile.sh
 n/libgcrypt.sh
 d/mozjs.sh
+d/python-modules/python-pyyaml.sh
 
 
 # vim:ft=conf

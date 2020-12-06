@@ -58,6 +58,7 @@ libatasmart
 libatomic-ops                       gc
 libedit                             sqlite, pcre2
 libexif
+libgcrypt
 libgpg-error                        libassuan, libksba, libgcrypt
 libidn2                             wget
 libjpeg-turbo
@@ -70,7 +71,7 @@ libunistring                        guile
 libusb                              usbutils
 libuv                               cmake
 libxml2                             python2-libxml2, libarchive
-libyaml
+libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
 lm-sensors
@@ -106,10 +107,11 @@ popt
 postfix                             fcron
 pth                                 libgcrypt
 pytest                              fuse
+python-pyyaml
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml
 python2-libxml2
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments
 qt5                                 cmake, highlight
 reiserfsprogs                       lvm2
@@ -141,7 +143,6 @@ xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
 zip
-libgcrypt
 
 
 # vim:ft=conf
