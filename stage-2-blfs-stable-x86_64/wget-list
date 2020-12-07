@@ -92,3 +92,6 @@ https://ftp.gnu.org/gnu/guile/guile-3.0.4.tar.xz
 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.8.6.tar.bz2
 https://archive.mozilla.org/pub/firefox/releases/68.11.0esr/source/firefox-68.11.0esr.source.tar.xz
 http://pyyaml.org/download/pyyaml/PyYAML-5.3.1.tar.gz
+https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/llvm-10.0.1.src.tar.xz
+https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/clang-10.0.1.src.tar.xz
+https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/compiler-rt-10.0.1.src.tar.xz

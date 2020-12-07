@@ -15,14 +15,14 @@ blfs-bootscripts
 bluez                               python2, python3
 boost                               highlight
 c2man                               fribidi
-cmake                               json-c, libjpeg-turbo
+cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 docbook-utils                       fcron
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm
 ed
 emacs                               guile
 etc-issue
@@ -37,16 +37,16 @@ fwtk                                sudo
 gc                                  guile
 gcc
 gdb                                 python3, gcc, guile
-git                                 cmake
+git                                 cmake, llvm
 gnupg                               smartmontools
 gnutls                              wget
 gpm
-graphviz                            libexif
+graphviz                            libexif, llvm
 guile
 hdparm                              pm-utils
 highlight
 icu                                 libxml2, boost, mozjs
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm
 isl                                 gcc
 iso-codes
 json-c
@@ -70,7 +70,7 @@ libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils
 libuv                               cmake
-libxml2                             python2-libxml2, libarchive
+libxml2                             python2-libxml2, libarchive, llvm
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -92,6 +92,7 @@ nghttp2                             cmake
 npth
 nspr
 ntfs-3g
+ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 openldap                            sudo
@@ -105,34 +106,37 @@ perl-io-socket-ssl                  wget
 pm-utils
 popt
 postfix                             fcron
+psutil                              llvm
 pth                                 libgcrypt
 pytest                              fuse
-python-pyyaml
+python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm
 python2-libxml2
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments
 qt5                                 cmake, highlight
+recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
 rrdtool                             lm-sensors
+rsync                               llvm
 sendmail                            fcron, sudo
 sharutils
 slang
 smartmontools
-sphinx                              cmake
+sphinx                              cmake, llvm
 sqlite                              python2, python3
 subversion                          cmake
 sudo
-texlive                             cpio, libassuan, libunistring, libgcrypt
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
 tree
 unzip
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils, usbutils
@@ -142,7 +146,8 @@ wxwidgets                           p7zip
 xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
-zip
+z3                                  llvm
+zip                                 llvm
 
 
 # vim:ft=conf

@@ -20,31 +20,25 @@ COMPILER_RT="compiler-rt"
 # в том числе ARM, x86, x86-64, PowerPC, MIPS, SPARC, RISC-V и других (включая
 # GPU от Nvidia и AMD).
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/llvm.html
+# Required:    cmake
+# Recommended: no
+# Optional:    doxygen
+#              git
+#              graphviz
+#              libxml2
+#              python2
+#              rsync           (для тестов)
+#              texlive или install-tl-unx
+#              valgrind
+#              python-pyyaml
+#              zip
+#              ocaml           (https://ocaml.org/)
+#              psutil          (https://pypi.org/project/psutil/)
+#              recommonmark    (https://pypi.org/project/recommonmark/)
+#              sphinx          (https://pypi.org/project/Sphinx/)
+#              z3              (https://github.com/Z3Prover/z3)
 
-# Home page: http://llvm.org/
-# Download:  * LLVM
-#            https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/llvm-10.0.1.src.tar.xz
-#            * Clang:
-#            https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/clang-10.0.1.src.tar.xz
-#            * Compiler RT
-#            https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/compiler-rt-10.0.1.src.tar.xz
-
-# Required: cmake
-# Optional: doxygen
-#           graphviz
-#           libxml2
-#           python2
-#           texlive или install-tl-unx
-#           valgrind
-#           python-pyyaml
-#           zip
-#           ocaml           (https://ocaml.org/)
-#           recommonmark    (https://pypi.org/project/recommonmark/)
-#           sphinx          (https://pypi.org/project/Sphinx/)
-#           z3              (https://github.com/Z3Prover/z3)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -53,7 +47,7 @@ VERSION="$(echo "${VERSION}" | rev | cut -d . -f 2- | rev)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man1"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{"${MAN}","${DOCS}"/{llvm-html,clang-html}}
+mkdir -pv "${TMP_DIR}"{"${MAN}","${DOCS}"}
 
 tar -xvf "${SOURCES}/${CLANG}-${VERSION}.src.tar.xz" -C tools          || exit 1
 tar -xvf "${SOURCES}/${COMPILER_RT}-${VERSION}.src.tar.xz" -C projects || exit 1
@@ -62,14 +56,14 @@ mv "tools/${CLANG}-${VERSION}.src" "tools/${CLANG}"
 mv "projects/${COMPILER_RT}-${VERSION}.src" "projects/${COMPILER_RT}"
 
 DOXYGEN="OFF"
-SPHINX=""
-RECOMMONMARK=""
+# SPHINX=""
+# RECOMMONMARK=""
 LLVM_DOCS=""
 
-command -v doxygen      &>/dev/null          && DOXYGEN="ON"
-command -v sphinx-build &>/dev/null          && SPHINX="true"
-command -v cm2html      &>/dev/null          && RECOMMONMARK="true"
-[[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
+# command -v doxygen      &>/dev/null          && DOXYGEN="ON"
+# command -v sphinx-build &>/dev/null          && SPHINX="true"
+# command -v cm2html      &>/dev/null          && RECOMMONMARK="true"
+# [[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
 
 mkdir -v build
 cd build || exit 1
@@ -98,7 +92,7 @@ cd build || exit 1
 # для тестов собираем LLVM unit tests
 #    -DLLVM_BUILD_TESTS=ON
 ###
-CC=gcc CXX=g++ \
+CC=gcc CXX=g++                                \
 cmake                                         \
     -DCMAKE_INSTALL_PREFIX=/usr               \
     -DLLVM_ENABLE_FFI=ON                      \
@@ -113,8 +107,8 @@ cmake                                         \
 
 # берем количество потоков сборки равное количеству ядер процессора (по
 # умолчанию ninja берет количество ядер + 2)
-NINJAJOBS="-j$(/usr/bin/nproc)"
-export NINJAJOBS
+[ -z "${NINJAJOBS}" ] && NINJAJOBS="-j$(/usr/bin/nproc)"
+
 ninja "${NINJAJOBS}" || exit 1
 
 # если пакеты sphinx и recommonmark установлены, сгенерируем html документацию
@@ -125,7 +119,7 @@ if [ -n "${LLVM_DOCS}" ]; then
         -DSPHINX_WARNINGS_AS_ERRORS=OFF \
         -Wno-dev -G Ninja .. || exit 1
 
-    ninja docs-llvm-html docs-llvm-man
+    ninja docs-llvm-html  docs-llvm-man
     ninja docs-clang-html docs-clang-man
 
     # doxygen документация llvm
@@ -139,32 +133,35 @@ fi
 #    -DLLVM_BUILD_TESTS=ON
 # ninja check-all
 
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
 
+chmod 644 "${TMP_DIR}${MAN}"
+
 # установка документации llvm
+cp -v ../LICENSE.TXT ../README.txt "${TMP_DIR}${DOCS}"
+
 if [ -d docs/man ]; then
-    install -v -m644 docs/man/* "${MAN}"
     install -v -m644 docs/man/* "${TMP_DIR}${MAN}"
 fi
 
 if [ -d docs/html ]; then
-    install -v -d -m755 "${DOCS}/llvm-html"
-    cp -Rv docs/html/*  "${DOCS}/llvm-html"
+    install -v -d -m755 "${TMP_DIR}${DOCS}/llvm-html"
     cp -Rv docs/html/*  "${TMP_DIR}${DOCS}/llvm-html"
 fi
 
 # установка документации clang
 if [ -d tools/clang/docs/man ]; then
-    install -v -m644 tools/clang/docs/man/* "${MAN}"
     install -v -m644 tools/clang/docs/man/* "${TMP_DIR}${MAN}"
 fi
 
 if [ -d tools/clang/docs/html ]; then
-    install -v -d -m755 "${DOCS}/clang-html"
-    cp -Rv tools/clang/docs/html/* "${DOCS}/clang-html"
+    install -v -d -m755 "${TMP_DIR}${DOCS}/clang-html"
     cp -Rv tools/clang/docs/html/* "${TMP_DIR}${DOCS}/clang-html"
 fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Low Level Virtual Machine compiler toolkit)
@@ -180,13 +177,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # packages which use Rust, for example Mozilla Firefox.
 #
 # Home page: http://${PRGNAME}.org/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-9.0.1/${PRGNAME}-${VERSION}.src.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-${VERSION}/${PRGNAME}-${VERSION}.src.tar.xz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
