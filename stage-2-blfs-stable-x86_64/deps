@@ -118,7 +118,7 @@ pth                                 libgcrypt
 pytest                              fuse
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, nodejs
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm
 python2-libxml2                     libxslt
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments

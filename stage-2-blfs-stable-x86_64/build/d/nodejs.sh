@@ -9,8 +9,7 @@ ARCH_NAME="node"
 # которая делает его легким и эффективным. Пакетная система npm (Node Package
 # Manager), является крупнейшей системой библиотек с открытым исходным кодом.
 
-# Required:    python2
-#              which
+# Required:    which
 # Recommended: c-ares
 #              icu
 #              libuv
