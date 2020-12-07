@@ -10,15 +10,11 @@ ARCH_NAME="${PRGNAME}src"
 # частью архиватора RAR и содержит алгоритм сжатия RAR. Библиотека UnRAR также
 # может использоваться другими программами для извлечения RAR-архивов.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/unrar.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://www.rarlab.com/rar_add.htm
-# Download:  http://www.rarlab.com/rar/unrarsrc-5.9.1.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -45,14 +41,15 @@ sed -e "s#.*-shared -o libunrar.so.*#\t\$(LINK) -shared -Wl,-soname,libunrar.so.
 cp -av . ../libunrar
 
 # собираем libunrar.so.${VERSION}
-make -C ../libunrar lib libversion="${VERSION}" CXXFLAGS="-O2 -fPIC" || exit 1
+make -C ../libunrar lib libversion="${VERSION}" || exit 1
 
 # собираем unrar
-make -f makefile unrar lib CXXFLAGS="-O2 -fPIC" || exit 1
+make -f makefile || exit 1
 
 # пакет не содержит набора тестов
 
 install -vm 755 unrar "${TMP_DIR}/usr/bin/unrar"
+
 install -vm 755 "../libunrar/libunrar.so.${VERSION}" \
     "${TMP_DIR}/usr/lib/libunrar.so.${VERSION}"
 
@@ -65,7 +62,9 @@ install -vm 755 "../libunrar/libunrar.so.${VERSION}" \
 
 cp -a ./*.cpp ./*.hpp "${TMP_DIR}/usr/include/unrar/"
 
-cp -vR "${TMP_DIR}"/* /
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Extract, test and view RAR archives)

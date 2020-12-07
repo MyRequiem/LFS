@@ -88,6 +88,9 @@ d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh
 d/mozjs.sh
+ap/unrar.sh
+l/libxslt.sh
+d/nodejs.sh
 
 
 # vim:ft=conf

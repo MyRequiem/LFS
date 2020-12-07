@@ -1,6 +1,8 @@
 #! /bin/bash
 
 PRGNAME="xdg-user-dirs"
+DOCBOOK_XML_VERSION="4.5"
+DOCBOOK_XSL_VERSION="1.79.2"
 
 ### Xdg-user-dirs (manage XDG user directories)
 # Инструмент, используемый различными XDG-совместимыми окружениями рабочего
@@ -8,9 +10,10 @@ PRGNAME="xdg-user-dirs"
 # каталогов (папки рабочего стола, музыки, документов и т.д.) Также
 # обрабатывает локализацию/перевод имен файлов и каталогов.
 
-# Required:    no
+# Required:    libxslt
 # Recommended: no
-# Optional:    no
+# Optional:    docbook-xml (для создания документации)
+#              docbook-xsl (для создания документации)
 
 ###
 # Конфигурация
@@ -62,15 +65,29 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --sysconfdir=/etc || exit 1
+DOCBOOK_XML=""
+DOCBOOK_XSL=""
+DOCUMENTATION="--disable-documentation"
+
+[ -f "/usr/share/xml/docbook/xml-dtd-${DOCBOOK_XML_VERSION}/ent/README" ] && \
+    DOCBOOK_XML="true"
+[ -f "/usr/share/doc/docbook-xsl-${DOCBOOK_XSL_VERSION}/README" ] && \
+    DOCBOOK_XSL="true"
+
+[[ -n "${DOCBOOK_XML}" && -n "${DOCBOOK_XSL}" ]] && \
+    DOCUMENTATION="--enable-documentation"
+
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    "${DOCUMENTATION}" || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-source "${ROOT}/stripping.sh" || exit 1
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

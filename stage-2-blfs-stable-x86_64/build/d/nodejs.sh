@@ -9,21 +9,16 @@ ARCH_NAME="node"
 # которая делает его легким и эффективным. Пакетная система npm (Node Package
 # Manager), является крупнейшей системой библиотек с открытым исходным кодом.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/nodejs.html
-
-# Home page: https://nodejs.org/
-# Download:  https://nodejs.org/dist/v12.18.3/node-v12.18.3.tar.xz
-
 # Required:    python2
 #              which
 # Recommended: c-ares
+#              icu
 #              libuv
 #              nghttp2
-#              icu
 # Optional:    http-parser (https://github.com/nodejs/http-parser)
-#              npm (если не установлен, будет собрана внутренняя копия npm) https://www.npmjs.com/
+#              npm         (если не установлен, будет собрана внутренняя копия npm) https://www.npmjs.com/
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -56,18 +51,18 @@ command -v icuinfo &>/dev/null && ICU="system-icu"
 
 make || exit 1
 # make test-only
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # по умолчанию документация устанавливается в /usr/share/doc/node/
 # создадим ссылку в /usr/share/doc/ ${PRGNAME}-${VERSION} -> node
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-rm -f "${DOCS}"
-ln -sfv node "${DOCS}"
 (
     cd "${TMP_DIR}/usr/share/doc/" || exit 1
     ln -sfv node "${PRGNAME}-${VERSION}"
 )
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (JavaScript runtime)

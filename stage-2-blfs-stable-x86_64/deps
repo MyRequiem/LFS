@@ -14,12 +14,15 @@ berkeley-db                         python3
 blfs-bootscripts
 bluez                               python2, python3
 boost                               highlight
+c-ares                              nodejs
 c2man                               fribidi
 cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 docbook-utils                       fcron
+docbook-xml                         libxslt
+docbook-xsl                         libxslt
 dosfstools
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm
@@ -45,7 +48,8 @@ graphviz                            libexif, llvm
 guile
 hdparm                              pm-utils
 highlight
-icu                                 libxml2, boost, mozjs
+http-parser                         nodejs
+icu                                 libxml2, boost, mozjs, nodejs
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm
 isl                                 gcc
 iso-codes
@@ -58,7 +62,7 @@ libatasmart
 libatomic-ops                       gc
 libedit                             sqlite, pcre2
 libexif
-libgcrypt
+libgcrypt                           libxslt
 libgpg-error                        libassuan, libksba, libgcrypt
 libidn2                             wget
 libjpeg-turbo
@@ -69,8 +73,9 @@ libpsl                              wget
 libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils
-libuv                               cmake
-libxml2                             python2-libxml2, libarchive, llvm
+libuv                               cmake, nodejs
+libxml2                             python2-libxml2, libarchive, llvm, libxslt
+libxslt
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -88,7 +93,9 @@ mit-kerberos-v5                     sudo, libtirpc
 mozjs
 nasm                                libjpeg-turbo, mozjs
 nettle                              libarchive
-nghttp2                             cmake
+nghttp2                             cmake, nodejs
+nodejs
+npm                                 nodejs
 npth
 nspr
 ntfs-3g
@@ -111,8 +118,8 @@ pth                                 libgcrypt
 pytest                              fuse
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm
-python2-libxml2
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, nodejs
+python2-libxml2                     libxslt
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments
 qt5                                 cmake, highlight
@@ -134,13 +141,14 @@ thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
 tree
+unrar
 unzip
 usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm
 vbetool                             pm-utils
 vim                                 fcron
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xfsprogs                            lvm2
@@ -148,6 +156,5 @@ xmlto                               pm-utils
 yasm                                libjpeg-turbo
 z3                                  llvm
 zip                                 llvm
-
 
 # vim:ft=conf

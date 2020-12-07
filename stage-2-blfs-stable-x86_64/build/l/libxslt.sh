@@ -6,18 +6,17 @@ PRGNAME="libxslt"
 # Библиотеки поддержки XSLT для libxml2
 # (XSLT - язык, используемый для преобразования документов XML)
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libxslt.html
-
-# Home page: http://xmlsoft.org/XSLT/
-# Download:  http://xmlsoft.org/sources/libxslt-1.1.34.tar.gz
-
 # Required:    libxml2
-# Recommended: docbook-xml
-#              docbook-xsl
+# Recommended: docbook-xml (хоть зависимости и не прямые, но многие приложения
+#              docbook-xsl  использующие libxslt ожидают наличия этих двух пакетов)
 # Optional:    libgcrypt
 #              python2-libxml2
 
-ROOT="/root"
+# *** Recommended: docbook-xml и docbook-xsl
+#       хоть зависимости и не прямые, но многие приложения, использующие
+#       libxslt ожидают наличия этих двух пакетов
+
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -34,8 +33,15 @@ sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml} || exit 1
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+DOCS="/usr/share/doc"
+mv "${TMP_DIR}${DOCS}/${PRGNAME}-python-${VERSION}" \
+    "${TMP_DIR}${DOCS}/${PRGNAME}-${VERSION}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (XML transformation library)
