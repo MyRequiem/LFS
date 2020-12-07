@@ -31,6 +31,15 @@ make || exit 1
 # пакет не содержит набора тестов
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
 
+# перед обновлением пакета нужно удалить некоторые файлы
+if command -v install-catalog &>/dev/null; then
+    install-catalog --remove /etc/sgml/sgml-ent.cat \
+        /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
+
+    install-catalog --remove /etc/sgml/sgml-docbook.cat \
+        /etc/sgml/sgml-ent.cat
+fi
+
 SGML_CONF="/etc/sgml/sgml.conf"
 if [ -f "${SGML_CONF}" ]; then
     mv "${SGML_CONF}" "${SGML_CONF}.old"
