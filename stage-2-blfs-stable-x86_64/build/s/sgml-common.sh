@@ -6,16 +6,11 @@ PRGNAME="sgml-common"
 # Общий пакет SGML содержит утилиту 'install-catalog', необходимую для создания
 # и поддержки централизованных каталогов SGML и XML
 
-# http://www.linuxfromscratch.org/blfs/view/stable/pst/sgml-common.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://sourceware.org/ftp/docbook-tools/
-# Download:  https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/sgml-common-0.6.3-manpage-1.patch
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -23,14 +18,9 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-SGML_CONF="/etc/sgml/sgml.conf"
-if [ -f "${SGML_CONF}" ]; then
-    mv "${SGML_CONF}" "${SGML_CONF}.old"
-fi
-
 # исправим синтаксис doc/man/Makefile.am для текущей версии Automake
-patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-manpage-1.patch" || \
-    exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-manpage-1.patch" || exit 1
 
 autoreconf -f -i
 ./configure       \
@@ -39,8 +29,16 @@ autoreconf -f -i
 
 make || exit 1
 # пакет не содержит набора тестов
-make docdir=/usr/share/doc install
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
+
+SGML_CONF="/etc/sgml/sgml.conf"
+if [ -f "${SGML_CONF}" ]; then
+    mv "${SGML_CONF}" "${SGML_CONF}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SGML_CONF}"
 

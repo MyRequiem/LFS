@@ -91,6 +91,7 @@ d/mozjs.sh
 ap/unrar.sh
 l/libxslt.sh
 d/nodejs.sh
+s/sgml-common.sh
 
 
 # vim:ft=conf

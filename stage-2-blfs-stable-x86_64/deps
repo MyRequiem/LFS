@@ -129,6 +129,7 @@ remove-la-files
 rrdtool                             lm-sensors
 rsync                               llvm
 sendmail                            fcron, sudo
+sgml-common
 sharutils
 slang
 smartmontools
@@ -156,5 +157,6 @@ xmlto                               pm-utils
 yasm                                libjpeg-turbo
 z3                                  llvm
 zip                                 llvm
+
 
 # vim:ft=conf
