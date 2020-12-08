@@ -22,8 +22,8 @@ cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 docbook-utils                       fcron
-docbook-xml                         libxslt, docbook-xsl
-docbook-xsl                         libxslt
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
+docbook-xsl                         libxslt, xdg-user-dirs
 dosfstools
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm
@@ -76,7 +76,7 @@ libunistring                        guile
 libusb                              usbutils
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl
+libxslt                             docbook-xsl, xdg-user-dirs
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -155,6 +155,7 @@ wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
+xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
 xmlto                               pm-utils

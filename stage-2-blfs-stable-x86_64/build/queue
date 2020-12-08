@@ -95,6 +95,7 @@ s/docbook-xml.sh
 l/libxslt.sh
 s/docbook-xsl.sh
 l/libxslt.sh
+x/xdg-user-dirs.sh
 
 
 # vim:ft=conf
