@@ -74,7 +74,7 @@ libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils
 libuv                               cmake, nodejs
-libxml2                             python2-libxml2, libarchive, llvm, libxslt
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml
 libxslt
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
@@ -129,7 +129,7 @@ remove-la-files
 rrdtool                             lm-sensors
 rsync                               llvm
 sendmail                            fcron, sudo
-sgml-common
+sgml-common                         docbook-xml
 sharutils
 slang
 smartmontools
@@ -143,7 +143,7 @@ time
 tk                                  python2, python3
 tree
 unrar
-unzip
+unzip                               docbook-xml
 usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm
 vbetool                             pm-utils

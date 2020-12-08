@@ -92,6 +92,7 @@ ap/unrar.sh
 l/libxslt.sh
 d/nodejs.sh
 s/sgml-common.sh
+s/docbook-xml.sh
 
 
 # vim:ft=conf
