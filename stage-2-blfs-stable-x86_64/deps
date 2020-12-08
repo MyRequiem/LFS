@@ -4,6 +4,7 @@
 
 acpid
 afs                                 sudo
+apache-ant                          docbook-xsl
 apr
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
@@ -21,7 +22,7 @@ cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 docbook-utils                       fcron
-docbook-xml                         libxslt
+docbook-xml                         libxslt, docbook-xsl
 docbook-xsl                         libxslt
 dosfstools
 dovecot                             fcron
@@ -74,8 +75,8 @@ libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils
 libuv                               cmake, nodejs
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml
-libxslt
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
+libxslt                             docbook-xsl
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -118,8 +119,8 @@ pth                                 libgcrypt
 pytest                              fuse
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm
-python2-libxml2                     libxslt
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl
+python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments
 qt5                                 cmake, highlight
@@ -128,6 +129,8 @@ reiserfsprogs                       lvm2
 remove-la-files
 rrdtool                             lm-sensors
 rsync                               llvm
+ruby                                docbook-xsl
+saxon6                              docbook-xsl
 sendmail                            fcron, sudo
 sgml-common                         docbook-xml
 sharutils
@@ -152,11 +155,12 @@ wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
+xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
 xmlto                               pm-utils
 yasm                                libjpeg-turbo
 z3                                  llvm
-zip                                 llvm
+zip                                 llvm, docbook-xsl
 
 
 # vim:ft=conf
