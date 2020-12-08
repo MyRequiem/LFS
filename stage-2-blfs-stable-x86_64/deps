@@ -28,7 +28,7 @@ docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
 docbook-xsl                         libxslt, xdg-user-dirs
 dosfstools
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++
 ed
 emacs                               guile
 etc-issue
@@ -73,12 +73,13 @@ libksba
 libmpdec                            python3
 libpng                              slang
 libpsl                              wget
+libsigc++
 libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs

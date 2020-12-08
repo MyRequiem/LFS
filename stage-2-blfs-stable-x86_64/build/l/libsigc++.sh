@@ -6,16 +6,12 @@ PRGNAME="libsigc++"
 # Библиотека реализует систему безопасных обратных вызовов (callbacks) для
 # стандарта C++
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libsigc.html
+# Required:    no
+# Recommended: no
+# Optional:    doxygen (для сборки документации)
+#              libxslt (для сборки документации)
 
-# Home page: https://libsigcplusplus.github.io/libsigcplusplus/
-# Download:  http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.10/libsigc++-2.10.2.tar.xz
-
-# Required: no
-# Optional: doxygen (для сборки документации)
-#           libxslt (для сборки документации)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -24,15 +20,18 @@ mkdir -pv "${TMP_DIR}"
 
 # исправим имя директории с документацией
 sed -e "/^libdocdir =/ s/\$(book_name)/${PRGNAME}-${VERSION}/" -i \
-    docs/Makefile.in
+    docs/Makefile.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

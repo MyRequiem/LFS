@@ -97,6 +97,7 @@ s/docbook-xsl.sh
 l/libxslt.sh
 x/xdg-user-dirs.sh
 l/aalib.sh
+l/libsigc++.sh
 
 
 # vim:ft=conf
