@@ -7,19 +7,16 @@ DIR_VERSION="1.4.0"
 ### AAlib (ASCII Art library)
 # Библиотека, которая отображает любую графику в ASCII символах.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/aalib.html
+# Required:    no
+# Recommended: no
+# Optional:    X Window System
+#              slang
+#              gpm
 
-# Home page: http://aa-project.sourceforge.net/aalib/
-# Download:  https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
-
-# Required: no
-# Optional: slang
-#           gpm
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
-SOURCES="/root/src"
+SOURCES="${ROOT}/src"
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
@@ -42,8 +39,11 @@ sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ASCII Art library)

@@ -2,6 +2,8 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
+X Window System                     aalib
+aalib
 acpid
 afs                                 sudo
 apache-ant                          docbook-xsl
@@ -44,7 +46,7 @@ gdb                                 python3, gcc, guile
 git                                 cmake, llvm
 gnupg                               smartmontools
 gnutls                              wget
-gpm
+gpm                                 aalib
 graphviz                            libexif, llvm
 guile
 hdparm                              pm-utils
@@ -134,7 +136,7 @@ saxon6                              docbook-xsl
 sendmail                            fcron, sudo
 sgml-common                         docbook-xml
 sharutils
-slang
+slang                               aalib
 smartmontools
 sphinx                              cmake, llvm
 sqlite                              python2, python3
