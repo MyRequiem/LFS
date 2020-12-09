@@ -6,17 +6,13 @@ PRGNAME="iptables"
 # Стандартный интерфейс управления работой межсетевого экрана (брандмауэра)
 # netfilter ядра Linux.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/postlfs/iptables.html
-
-# Home page: https://netfilter.org/projects/iptables/index.html
-# Download:  http://www.netfilter.org/projects/iptables/files/iptables-1.8.5.tar.bz2
-
-# Required: no
-# Optional: libpcap                (для сборки утилиты конфигурации nfsynproxy)
-#           bpf-utils              (для поддержки berkely packet filter) https://github.com/tadamdam/bpf-utils
-#           libnfnetlink           (для поддержки connlabel) https://netfilter.org/projects/libnfnetlink/
-#           libnetfilter-conntrack (для поддержки connlabel) https://netfilter.org/projects/libnetfilter_conntrack/
-#           nftables               (для поддержки connlabel) https://netfilter.org/projects/nftables/
+# Required:    no
+# Recommended: no
+# Optional:    libpcap                (для сборки утилиты конфигурации nfsynproxy)
+#              bpf-utils              (для поддержки berkely packet filter) https://github.com/tadamdam/bpf-utils
+#              libnfnetlink           (для поддержки connlabel) https://netfilter.org/projects/libnfnetlink/
+#              libnetfilter-conntrack (для поддержки connlabel) https://netfilter.org/projects/libnetfilter_conntrack/
+#              nftables               (для поддержки connlabel) https://netfilter.org/projects/nftables/
 
 # Брандмауэр в Linux управляется через интерфейс netfilter ядра Linux. Чтобы
 # использовать iptables для настройки netfilter, необходимы следующие параметры
@@ -33,7 +29,7 @@ PRGNAME="iptables"
 # Note:
 #    При обновлении ядра linux пакет необходимо пересобирать
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -68,23 +64,19 @@ command -v nft         &>/dev/null && NFTABLES="--enable-nftables"
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
 
+# удалим битую ссылку в /sbin
+#    ip6tables-apply -> iptables-apply
+rm -f "${TMP_DIR}/sbin/ip6tables-apply"
+
 # ссылка в /usr/bin iptables-xml -> ../../sbin/xtables-legacy-multi
-ln -sfv ../../sbin/xtables-legacy-multi /usr/bin/iptables-xml
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sfv ../../sbin/xtables-legacy-multi iptables-xml
 )
 
 # переносим библиотеки из /usr/lib в /lib и создаем ссылки на них в /usr/lib
-for FILE in ip4tc ip6tc ipq xtables; do
-    mv -v /usr/lib/lib${FILE}.so.* /lib
-    ln -sfv "../../lib/$(readlink /usr/lib/lib${FILE}.so)" \
-        "/usr/lib/lib${FILE}.so"
-done
-
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     for FILE in ip4tc ip6tc ipq xtables; do
@@ -99,27 +91,14 @@ done
 #    status - вывод списка всех применяемых в настоящий момент правил
 #    clear  - отключает все настроенные правила
 #    lock   - блокировка передачи любых пакетов, кроме loopback (lo) интерфейса
-
-IPTABLES="/etc/rc.d/init.d/iptables"
-if [ -f "${IPTABLES}" ]; then
-    mv "${IPTABLES}" "${IPTABLES}.old"
-fi
-
 (
-    cd /root/blfs-bootscripts || exit 1
-    make install-iptables
+    cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-iptables DESTDIR="${TMP_DIR}"
 )
 
-config_file_processing "${IPTABLES}"
-
-# Основной скрипт запуска iptables /etc/rc.d/rc.iptables
+# основной скрипт запуска iptables /etc/rc.d/rc.iptables
 RC_IPTABLES="/etc/rc.d/rc.iptables"
-if [ -f "${RC_IPTABLES}" ]; then
-    mv "${RC_IPTABLES}" "${RC_IPTABLES}.old"
-fi
-
-cat << EOF > "${RC_IPTABLES}"
+cat << EOF > "${TMP_DIR}${RC_IPTABLES}"
 #!/bin/sh
 
 # Begin ${RC_IPTABLES}
@@ -190,10 +169,17 @@ iptables -A INPUT -j LOG --log-prefix "FIREWALL:INPUT "
 # End ${RC_IPTABLES}
 EOF
 
-config_file_processing "${RC_IPTABLES}"
-cp "${RC_IPTABLES}" "${TMP_DIR}/etc/rc.d/"
-chmod 700 "${RC_IPTABLES}"
 chmod 700 "${TMP_DIR}${RC_IPTABLES}"
+
+if [ -f "${RC_IPTABLES}" ]; then
+    mv "${RC_IPTABLES}" "${RC_IPTABLES}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${RC_IPTABLES}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (IP packet filter administration)

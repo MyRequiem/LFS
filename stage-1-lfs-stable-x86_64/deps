@@ -2,6 +2,7 @@
 # Пакет .......................... Зависимые пакеты
 ###***###
 perl                                xml-parser, vim
+kernel-generic                      iptables
 
 
 # vim:ft=conf

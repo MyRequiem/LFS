@@ -16,14 +16,16 @@ autoconf213                         mozjs
 bash-completion
 berkeley-db                         python3
 blfs-bootscripts
-bluez                               python2, python3
+bluez                               python2, python3, libpcap
 boost                               highlight
+bpf-utils                           iptables
 c-ares                              nodejs
 c2man                               fribidi
 cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
+dag                                 libpcap
 dblatex                             asciidoc
 digest-crc                          parted
 docbook-utils                       fcron
@@ -58,6 +60,7 @@ highlight
 http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted
+iptables
 isl                                 gcc
 iso-codes
 json-c
@@ -75,12 +78,16 @@ libidn2                             wget
 libjpeg-turbo
 libksba
 libmpdec                            python3
+libnetfilter-conntrack              iptables
+libnfnetlink                        iptables
+libnl                               libpcap
+libpcap                             iptables
 libpng                              slang
 libpsl                              wget
 libsigc++
 libtirpc                            rpcbind, lsof
 libunistring                        guile
-libusb                              usbutils
+libusb                              usbutils, libpcap
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc
@@ -101,6 +108,7 @@ mit-kerberos-v5                     sudo, libtirpc
 mozjs
 nasm                                libjpeg-turbo, mozjs
 nettle                              libarchive
+nftables                            iptables
 nghttp2                             cmake, nodejs
 nodejs
 npm                                 nodejs
@@ -140,6 +148,7 @@ rsync                               llvm
 ruby                                docbook-xsl
 saxon6                              docbook-xsl
 sendmail                            fcron, sudo
+septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml
 sharutils

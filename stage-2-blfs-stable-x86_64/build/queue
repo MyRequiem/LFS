@@ -101,6 +101,8 @@ l/libsigc++.sh
 l/parted.sh
 l/sg3-utils.sh
 ap/asciidoc.sh
+l/libpcap.sh
+n/iptables.sh
 
 
 # vim:ft=conf

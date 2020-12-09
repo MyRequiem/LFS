@@ -109,3 +109,6 @@ http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.10/libsigc++-2.10.3.tar.xz
 https://ftp.gnu.org/gnu/parted/parted-3.3.tar.xz
 http://sg.danny.cz/sg/p/sg3_utils-1.45.tar.xz
 https://github.com/asciidoc/asciidoc-py3/releases/download/9.0.2/asciidoc-9.0.2.tar.gz
+http://www.tcpdump.org/release/libpcap-1.9.1.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.0/libpcap-1.9.1-enable_bluetooth-1.patch
+http://www.netfilter.org/projects/iptables/files/iptables-1.8.5.tar.bz2
