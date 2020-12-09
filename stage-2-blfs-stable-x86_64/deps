@@ -137,6 +137,7 @@ rsync                               llvm
 ruby                                docbook-xsl
 saxon6                              docbook-xsl
 sendmail                            fcron, sudo
+sg3-utils
 sgml-common                         docbook-xml
 sharutils
 slang                               aalib

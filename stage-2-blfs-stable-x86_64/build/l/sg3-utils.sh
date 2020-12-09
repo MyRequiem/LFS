@@ -10,15 +10,11 @@ ARCH_NAME="sg3_utils"
 # данных, дисками Fibre Channel, устройствами хранения данных IEEE 1394
 # (которые используют протокол SBP), устройствами SAS, iSCSI и FCoE.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/sg3_utils.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: http://sg.danny.cz/sg/sg3_utils.html
-# Download:  http://sg.danny.cz/sg/p/sg3_utils-1.44.tar.xz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -31,8 +27,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # пакет не имеет набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (utilities and test programs for the linux sg driver)
