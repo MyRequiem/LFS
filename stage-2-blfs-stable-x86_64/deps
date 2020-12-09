@@ -8,6 +8,7 @@ acpid
 afs                                 sudo
 apache-ant                          docbook-xsl
 apr
+asciidoc
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
@@ -23,10 +24,11 @@ cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
+dblatex                             asciidoc
 digest-crc                          parted
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
-docbook-xsl                         libxslt, xdg-user-dirs
+docbook-xsl                         libxslt, xdg-user-dirs, asciidoc
 dosfstools                          parted
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++
@@ -37,6 +39,7 @@ ethtool                             pm-utils
 exim                                fcron
 fcron
 fftw
+fop                                 asciidoc
 fribidi
 fuse
 fuse2                               ntfs-3g
@@ -80,7 +83,7 @@ libunistring                        guile
 libusb                              usbutils
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -89,7 +92,7 @@ lsb-tools
 lsof
 lua                                 highlight
 lvm2                                parted
-lynx                                smartmontools, pciutils
+lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget
@@ -157,6 +160,7 @@ usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm
 vbetool                             pm-utils
 vim                                 fcron
+w3m                                 asciidoc
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
 wireless-tools                      pm-utils

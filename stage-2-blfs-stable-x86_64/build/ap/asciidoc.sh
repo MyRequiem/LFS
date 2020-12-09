@@ -7,20 +7,27 @@ PRGNAME="asciidoc"
 # книг, слайд-шоу, веб-страниц, man-страниц и блогов. Файлы AsciiDoc могут быть
 # переведены во многие форматы, включая HTML, PDF, EPUB и man-страницы.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/asciidoc.html
+# Required:    no
+# Recommended: no
+# Optional:    docbook-xsl
+#              fop
+#              libxslt
+#              lynx
+#              dblatex (https://sourceforge.net/projects/dblatex/)
+#              w3m     (http://w3m.sourceforge.net/)
 
-# Home page: http://asciidoc.org/
-# Download:  https://downloads.sourceforge.net/asciidoc/asciidoc-8.6.9.tar.gz
-
-# Required: python2
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+First, fix a build problem if the optional dependencies are not installed:
+
+# устраним проблему сборки, если не установлены опциональные зависимости
+sed -i 's:doc/testasciidoc.1::' Makefile.in || exit 1
+rm -f doc/testasciidoc.1.txt
 
 ./configure           \
     --prefix=/usr     \
@@ -29,24 +36,12 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # пакет не содержит набора тестов
-
-make install
 make install DESTDIR="${TMP_DIR}"
+make docs    DESTDIR="${TMP_DIR}"
 
-make docs
-make docs DESTDIR="${TMP_DIR}"
-
-# удалим битую ссылку
-# /usr/share/doc/asciidoc-x.x.x/examples/website/asciidoc-graphviz-sample.txt ->
-#     ../../filters/graphviz/asciidoc-graphviz-sample.txt
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-rm -f "${DOCS}/examples/website/asciidoc-graphviz-sample.txt"
-rm -f "${TMP_DIR}${DOCS}/examples/website/asciidoc-graphviz-sample.txt"
-
-cp -v filters/graphviz/asciidoc-graphviz-sample.txt \
-    "${DOCS}/examples/website/"
-cp -v filters/graphviz/asciidoc-graphviz-sample.txt \
-    "${TMP_DIR}${DOCS}/examples/website/"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a text document format)
@@ -57,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # EPUB, and man page.
 #
 # Home page: http://asciidoc.org/
-# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}-py3/releases/download/9.0.2/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
