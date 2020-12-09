@@ -23,10 +23,11 @@ cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
+digest-crc                          parted
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
 docbook-xsl                         libxslt, xdg-user-dirs
-dosfstools
+dosfstools                          parted
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++
 ed
@@ -53,7 +54,7 @@ hdparm                              pm-utils
 highlight
 http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted
 isl                                 gcc
 iso-codes
 json-c
@@ -87,7 +88,7 @@ lm-sensors
 lsb-tools
 lsof
 lua                                 highlight
-lvm2
+lvm2                                parted
 lynx                                smartmontools, pciutils
 lzip                                ed
 lzo                                 libarchive
@@ -109,6 +110,7 @@ open-mpi                            boost
 openldap                            sudo
 opie                                sudo
 p7zip
+parted
 pciutils
 pcre                                wget, slang
 pcre2                               wget
@@ -118,11 +120,11 @@ pm-utils
 popt
 postfix                             fcron
 psutil                              llvm
-pth                                 libgcrypt
+pth                                 libgcrypt, parted
 pytest                              fuse
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
 python3-pygments
@@ -143,7 +145,7 @@ sphinx                              cmake, llvm
 sqlite                              python2, python3
 subversion                          cmake
 sudo
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3

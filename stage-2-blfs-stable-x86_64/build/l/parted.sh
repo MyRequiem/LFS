@@ -9,19 +9,14 @@ PRGNAME="parted"
 # использования диска, копирование данных между жесткими дисками и образами
 # дисков.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/parted.html
-
-# Home page: http://www.gnu.org/software/parted/
-# Download:  https://ftp.gnu.org/gnu/parted/parted-3.3.tar.xz
-
-# Required:    no
+# Required:    python2
 # Recommended: lvm2
 # Optional:    dosfstools
 #              pth
 #              texlive или install-tl-unx
 #              digest-crc (для тестов) https://metacpan.org/pod/Digest::CRC
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -46,33 +41,32 @@ makeinfo --plaintext -o doc/parted.txt doc/parted.texi
 
 # если установлен texlive или install-tl-unx, то соберем pdf и ps документацию
 TEXLIVE=""
-command -v texdoc &>/dev/null && TEXLIVE="true"
+# command -v texdoc &>/dev/null && TEXLIVE="true"
 if [ -n "${TEXLIVE}" ]; then
     texi2pdf             -o doc/parted.pdf doc/parted.texi
     texi2dvi             -o doc/parted.dvi doc/parted.texi
     dvips                -o doc/parted.ps  doc/parted.dvi
 fi
 
+### тесты
 # удалим два теста, которые не проходят в среде LFS
-sed -i '/t0251-gpt-unicode.sh/d' tests/Makefile || exit 1
-sed -i '/t6002-dm-busy.sh/d' tests/Makefile     || exit 1
-
+# sed -i '/t0251-gpt-unicode.sh/d' tests/Makefile || exit 1
+# sed -i '/t6002-dm-busy.sh/d'     tests/Makefile || exit 1
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
 
-install -v -m755 -d "${DOCS}/html"
-install -v -m644    doc/html/* "${DOCS}/html"
-install -v -m644    doc/html/* "${TMP_DIR}${DOCS}/html"
-
-install -v -m644    doc/{FAT,API,parted.{txt,html}} "${DOCS}"
-install -v -m644    doc/{FAT,API,parted.{txt,html}} "${TMP_DIR}${DOCS}"
+# документация
+install -v -m644 doc/html/* "${TMP_DIR}${DOCS}/html"
+install -v -m644 doc/{FAT,API,parted.{txt,html}} "${TMP_DIR}${DOCS}"
 
 if [ -n "${TEXLIVE}" ]; then
-    install -v -m644 doc/parted.{pdf,ps,dvi} "${DOCS}"
-    install -v -m644 doc/parted.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
+    install -v -m644 doc/FAT doc/API doc/parted.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
 fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU disk partitioning tool)
