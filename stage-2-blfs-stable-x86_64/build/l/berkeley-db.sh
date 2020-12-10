@@ -13,15 +13,11 @@ ARCH_NAME="db"
 # большинство UNIX-подобных систем и Windows, а также на операционных системах
 # реального времени.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/server/db.html
+# Required:    no
+# Recommended: no
+# Optional:    sharutils (for the uudecode command)
 
-# Home page: https://www.oracle.com/database/technologies/related/berkeleydb.html
-# Download:  http://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
-
-# Required: no
-# Optional: sharutils (for the uudecode command)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -53,16 +49,13 @@ cd build_unix || exit 1
     --with-tcl=/usr/lib || exit 1
 
 make || exit 1
+make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-make docdir="${DOCS}" install
-make docdir="${DOCS}" install DESTDIR="${TMP_DIR}"
+chown -vR root:root "${TMP_DIR}"
 
-chown -vR root:root         \
-    "${DOCS}"               \
-    /usr/bin/db_*           \
-    /usr/lib/libdb*.{so,la} \
-    /usr/include/db{,_185,_cxx}.h
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (high-performance embedded database for key/value data)

@@ -103,6 +103,7 @@ l/sg3-utils.sh
 ap/asciidoc.sh
 l/libpcap.sh
 n/iptables.sh
+l/berkeley-db.sh
 
 
 # vim:ft=conf

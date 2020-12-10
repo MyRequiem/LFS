@@ -151,7 +151,7 @@ sendmail                            fcron, sudo
 septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml
-sharutils
+sharutils                           berkeley-db
 slang                               aalib
 smartmontools
 sphinx                              cmake, llvm
