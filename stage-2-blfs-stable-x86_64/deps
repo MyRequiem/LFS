@@ -27,14 +27,18 @@ curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
 dblatex                             asciidoc
+dbus
+dbus-glib                           dbus
 digest-crc                          parted
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc
 dosfstools                          parted
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus
+ducktype                            dbus
 ed
+elogind                             dbus
 emacs                               guile
 etc-issue
 ethtool                             pm-utils
@@ -133,6 +137,8 @@ postfix                             fcron
 psutil                              llvm
 pth                                 libgcrypt, parted
 pytest                              fuse
+python-d-bus                        dbus
+python-pygobject3                   dbus
 python-pyyaml                       llvm
 python-six
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted
@@ -166,7 +172,7 @@ tree
 unrar
 unzip                               docbook-xml
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus
 vbetool                             pm-utils
 vim                                 fcron
 w3m                                 asciidoc
@@ -177,8 +183,10 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
-xmlto                               pm-utils
+xmlto                               pm-utils, dbus
+xorg-libraries                      dbus
 yasm                                libjpeg-turbo
+yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl
 

@@ -7,13 +7,8 @@ PRGNAME="dbus"
 # печати, вход пользователя и т.д.), а так же сеансовый демон для общих
 # потребностей IPC пользовательских приложений.
 
-# http://www.linuxfromscratch.org/blfs/view/svn/general/dbus.html
-
-# Home page: https://dbus.freedesktop.org/
-# Download:  https://dbus.freedesktop.org/releases/dbus/dbus-1.12.20.tar.gz
-
 # Required:    no
-# Recommended: Xorg Libraries
+# Recommended: Xorg Libraries (для сборки утилиты dbus-launch)
 #              elogind
 #              ---
 #              Note:
@@ -21,16 +16,16 @@ PRGNAME="dbus"
 #              затем пересобираем dbus после установки Xorg Libraries, и затем
 #              после установки elogind
 #              ---
-# Optional:    dbus-glib
-#              python-d-bus
-#              python-pygobject3
+# Optional:    dbus-glib            (для тестов)
+#              python-d-bus         (для тестов)
+#              python-pygobject3    (для тестов)
 #              valgrind
 #              doxygen
 #              xmlto
 #              ducktype   (https://pypi.org/project/mallard-ducktype/)
 #              yelp-tools (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -42,9 +37,9 @@ DOXYGEN="--disable-doxygen-docs"
 XMLTO="--disable-xml-docs"
 DUCKTYPE="--disable-ducktype-docs"
 
-command -v doxygen  &>/dev/null && DOXYGEN="--enable-doxygen-docs"
-command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
-command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
+# command -v doxygen  &>/dev/null && DOXYGEN="--enable-doxygen-docs"
+# command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
+# command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
 
 ./configure                                         \
     --prefix=/usr                                   \
@@ -59,43 +54,31 @@ command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
     "${DOXYGEN}"                                    \
     "${XMLTO}"                                      \
     "${DUCKTYPE}"                                   \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     --disable-tests                                 \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     --with-system-socket=/run/dbus/system_bus_socket || exit 1
 
 make || exit 1
-
-make install
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/var/run"
+
 # переместим библиотеку libdbus-1.so из /usr/lib в /lib
-mv -v /usr/lib/libdbus-1.so.* /lib
 mv -v "${TMP_DIR}/usr/lib/libdbus-1.so."* "${TMP_DIR}/lib"
 
 # пересоздадим ссылку /usr/lib/libdbus-1.so -> /lib/libdbus-1.so.**
-ln -sfv "../../lib/$(readlink /usr/lib/libdbus-1.so)" /usr/lib/libdbus-1.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -sfv "../../lib/$(readlink libdbus-1.so)" libdbus-1.so
 )
 
 HELPER="/usr/libexec/dbus-daemon-launch-helper"
-chown -v root:messagebus "${HELPER}"
 chown -v root:messagebus "${TMP_DIR}${HELPER}"
-chmod -v 4750            "${HELPER}"
 chmod -v 4750            "${TMP_DIR}${HELPER}"
-
-# сразу сгенерируем D-Bus UUID, чтобы избежать предупреждений при компиляции
-# других зависимых пакетов
-dbus-uuidgen --ensure
-
-# /var/lib/dbus/machine-id не устанавливается по DESTDIR
-cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 
 # если установлен elogind создадим ссылку
 #    /etc/machine-id -> /var/lib/dbus/machine-id
 if command -v busctl &>/dev/null; then
-    ln -svf /var/lib/dbus/machine-id /etc
     (
         cd "${TMP_DIR}/etc" || exit 1
         ln -svf ../var/lib/dbus/machine-id machine-id
@@ -111,16 +94,14 @@ fi
 # тесты могут не пройти, если они выполняются внутри оболочки Midnight
 # Commander. В ходе выполнения можно получать сообщения о нехватки памяти. Это
 # нормально и такие сообщения могут быть безопасно проигнорированны.
-#
 # if command -v dbus-binding-tool &>/dev/null; then
-#     make distclean              &&
+#     make distclean &&
 #     ./configure                 \
+#         --enable-tests          \
 #         --enable-asserts        \
 #         --disable-doxygen-docs  \
-#         --enable-tests          \
-#         --enable-embedded-tests \
+#         --disable-ducktype-docs \
 #         --disable-xml-docs || exit 1
-#
 #     make || exit 1
 #     make check
 # fi
@@ -144,11 +125,7 @@ fi
 # /usr/share/dbus-1/services, а в каталог /usr/local/share/dbus-1/services,
 # поэтому этот каталог нужно добавить в пути поиска
 SESSION_LOCAL_CONF="/etc/dbus-1/session-local.conf"
-if [ -f "${SESSION_LOCAL_CONF}" ]; then
-    mv "${SESSION_LOCAL_CONF}" "${SESSION_LOCAL_CONF}.old"
-fi
-
-cat << EOF > "${SESSION_LOCAL_CONF}"
+cat << EOF > "${TMP_DIR}${SESSION_LOCAL_CONF}"
 <!DOCTYPE busconfig PUBLIC
  "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
  "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
@@ -160,14 +137,10 @@ cat << EOF > "${SESSION_LOCAL_CONF}"
 </busconfig>
 EOF
 
-config_file_processing "${SESSION_LOCAL_CONF}"
-cp "${SESSION_LOCAL_CONF}" "${TMP_DIR}/etc/dbus-1/"
-
 # для автозапуска демона D-Bus при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/dbus
 (
-    cd /root/blfs-bootscripts || exit 1
-    make install-dbus
+    cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-dbus DESTDIR="${TMP_DIR}"
 )
 
@@ -195,6 +168,21 @@ cp "${SESSION_LOCAL_CONF}" "${TMP_DIR}/etc/dbus-1/"
 #
 #  * другие примеры для KDM с KDE
 #       http://www.linuxfromscratch.org/hints/downloads/files/starting-and-stopping-dbus-with-kdm.txt
+
+if [ -f "${SESSION_LOCAL_CONF}" ]; then
+    mv "${SESSION_LOCAL_CONF}" "${SESSION_LOCAL_CONF}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${SESSION_LOCAL_CONF}"
+
+# сгенерируем D-Bus UUID, чтобы избежать предупреждений при компиляции других
+# зависимых пакетов
+dbus-uuidgen --ensure
+cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (D-Bus message bus system)
