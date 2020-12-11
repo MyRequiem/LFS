@@ -8,7 +8,7 @@ PRGNAME="dbus"
 # потребностей IPC пользовательских приложений.
 
 # Required:    no
-# Recommended: Xorg Libraries (для сборки утилиты dbus-launch)
+# Recommended: Xorg Libraries
 #              elogind
 #              ---
 #              Note:
