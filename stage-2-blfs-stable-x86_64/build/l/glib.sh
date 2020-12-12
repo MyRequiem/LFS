@@ -69,7 +69,7 @@ ninja || exit 1
 DESTDIR=${TMP_DIR} ninja install
 
 # документация
-cp -vR ../docs/reference/{NEWS,gio,glib,gobject} "${TMP_DIR}${DOCS}"
+cp -vR ../docs/reference/{gio,glib,gobject} "${TMP_DIR}${DOCS}"
 
 # для запуска тестов требуются 2 установленных пакета:
 #    shared-mime-info

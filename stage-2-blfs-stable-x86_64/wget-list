@@ -114,5 +114,5 @@ http://www.linuxfromscratch.org/patches/blfs/10.0/libpcap-1.9.1-enable_bluetooth
 http://www.netfilter.org/projects/iptables/files/iptables-1.8.5.tar.bz2
 http://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
 https://dbus.freedesktop.org/releases/dbus/dbus-1.12.20.tar.gz
-http://ftp.gnome.org/pub/gnome/sources/glib/2.64/glib-2.64.4.tar.xz
-http://www.linuxfromscratch.org/patches/blfs/10.0/glib-2.64.4-skip_warnings-1.patch
+https://download.gnome.org/sources/glib/2.66/glib-2.66.3.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/svn/glib-2.66.3-skip_warnings-1.patch
