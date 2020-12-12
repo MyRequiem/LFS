@@ -15,6 +15,7 @@ aspell-dict-ru
 autoconf213                         mozjs
 bash-completion
 berkeley-db                         python3
+bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
 boost                               highlight
@@ -27,12 +28,13 @@ curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
 dblatex                             asciidoc
-dbus
+dbus                                glib
 dbus-glib                           dbus
+desktop-file-utils                  glib
 digest-crc                          parted
 docbook-utils                       fcron
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs
-docbook-xsl                         libxslt, xdg-user-dirs, asciidoc
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib
+docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib
 dosfstools                          parted
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus
@@ -52,12 +54,15 @@ fuse2                               ntfs-3g
 fwtk                                sudo
 gc                                  guile
 gcc
-gdb                                 python3, gcc, guile
+gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
+glib
 gnupg                               smartmontools
 gnutls                              wget
+gobject-introspection               glib
 gpm                                 aalib
 graphviz                            libexif, llvm
+gtk-doc                             glib
 guile
 hdparm                              pm-utils
 highlight
@@ -94,7 +99,7 @@ libunistring                        guile
 libusb                              usbutils, libpcap
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo
 llvm                                icu, mozjs
@@ -127,7 +132,7 @@ opie                                sudo
 p7zip
 parted
 pciutils
-pcre                                wget, slang
+pcre                                wget, slang, glib
 pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
@@ -157,6 +162,7 @@ sendmail                            fcron, sudo
 septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml
+shared-mime-info                    glib
 sharutils                           berkeley-db
 slang                               aalib
 smartmontools

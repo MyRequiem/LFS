@@ -6,13 +6,6 @@ PRGNAME="glib"
 # Библиотеки низкого уровня, которые включают подпрограммы поддержки C, такие
 # как списки, деревья, хэши, распределение памяти и многое другое.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/glib2.html
-
-# Home page: https://www.gtk.org/
-# Download:  http://ftp.gnome.org/pub/gnome/sources/glib/2.62/glib-2.62.4.tar.xz
-# Patches:   http://www.linuxfromscratch.org/patches/blfs/9.1/glib-2.62.4-cve_2020_6750_fix-1.patch
-#            http://www.linuxfromscratch.org/patches/blfs/9.1/glib-2.62.4-skip_warnings-1.patch
-
 # Required:    no
 # Recommended: libxslt
 #              pcre
@@ -23,17 +16,17 @@ PRGNAME="glib"
 #              docbook-xsl
 #              gtk-doc (для сборки API документации, см. конфигурацию ниже)
 #              gobject-introspection
-#              desktop-file-utils (для тестов)
 #              shared-mime-info   (для тестов)
+#              desktop-file-utils (для тестов)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"{"${DOCS}",/etc/profile.d}
 
 # Во многих случаях приложения, которые используют эту библиотеку, прямо или
 # косвенно через другие библиотеки, такие как GTK+-3, выводят многочисленные
@@ -50,16 +43,12 @@ mkdir -pv "${TMP_DIR}${DOCS}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-skip_warnings-1.patch" || exit 1
 
-# исправление уязвимости обхода прокси
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-cve_2020_6750_fix-1.patch" || exit 1
-
 mkdir build
 cd build || exit 1
 
 # если установлен пакет gtk-doc, то можно собрать и установить API документацию
-GTK_DOC="-Ddoc=false"
-command -v gtkdoc-check &>/dev/null && GTK_DOC="-Ddoc=true"
+GTK_DOC="-Dgtk_doc=false"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
 
 # устанавливать man-страницы
 #    -Dman=true
@@ -77,27 +66,22 @@ ninja || exit 1
 #    Error: no ID for constraint linkend: ...
 # Такие ошибки допустимы и безвредны.
 
-ninja install
 DESTDIR=${TMP_DIR} ninja install
 
-mkdir -pv "${DOCS}"
-cp -vR ../docs/reference/{NEWS,gio,glib,gobject} "${DOCS}"
+# документация
 cp -vR ../docs/reference/{NEWS,gio,glib,gobject} "${TMP_DIR}${DOCS}"
 
 # для запуска тестов требуются 2 установленных пакета:
-#    desktop-file-utils
 #    shared-mime-info
+#    desktop-file-utils
 #
 # ninja test
 
 # устанавливаем переменные среды GLIB_LOG_LEVEL (см. выше), G_FILENAME_ENCODING
 # и G_BROKEN_FILENAMES в /etc/profile.d/glib.sh
-GLIB_SH="/etc/profile.d/glib.sh"
-if [ -f "${GLIB_SH}" ]; then
-    mv "${GLIB_SH}" "${GLIB_SH}.old"
-fi
 
-cat << EOF > "${GLIB_SH}"
+GLIB_SH="/etc/profile.d/glib.sh"
+cat << EOF > "${TMP_DIR}${GLIB_SH}"
 #! /bin/bash
 
 # Begin ${GLIB_SH}
@@ -139,10 +123,16 @@ export G_BROKEN_FILENAMES=1
 
 # End ${GLIB_SH}
 EOF
-chmod 755 "${GLIB_SH}"
 
-mkdir -pv "${TMP_DIR}/etc/profile.d/"
-cp "${GLIB_SH}" "${TMP_DIR}/etc/profile.d/"
+chmod 755 "${TMP_DIR}${GLIB_SH}"
+
+if [ -f "${GLIB_SH}" ]; then
+    mv "${GLIB_SH}" "${GLIB_SH}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${GLIB_SH}"
 

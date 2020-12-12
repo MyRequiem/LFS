@@ -105,6 +105,7 @@ l/libpcap.sh
 n/iptables.sh
 l/berkeley-db.sh
 a/dbus.sh
+l/glib.sh
 
 
 # vim:ft=conf
