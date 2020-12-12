@@ -42,6 +42,9 @@ def fix_pkg_name(name):
     if name == 'libxml2-2':
         name = 'libxml2'
 
+    if name == 'glib2':
+        name = 'glib'
+
     return name
 
 
