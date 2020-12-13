@@ -111,6 +111,7 @@ d/python-modules/python3-mako.sh
 d/python-modules/python3-markdown.sh
 l/gobject-introspection.sh
 a/libgudev.sh
+l/dbus-glib.sh
 
 
 # vim:ft=conf

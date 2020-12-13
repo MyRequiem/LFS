@@ -29,7 +29,7 @@ curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
 dblatex                             asciidoc
-dbus                                glib
+dbus                                glib, dbus-glib
 dbus-glib                           dbus
 desktop-file-utils                  glib
 digest-crc                          parted
@@ -58,13 +58,13 @@ gcc
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev
+glib                                gobject-introspection, libgudev, dbus-glib
 gnupg                               smartmontools
 gnutls                              wget
 gobject-introspection               glib, libgudev
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection, libgudev
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib
 guile
 hdparm                              pm-utils
 highlight
