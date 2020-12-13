@@ -58,13 +58,13 @@ gcc
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
 gjs                                 gobject-introspection
-glib                                gobject-introspection
+glib                                gobject-introspection, libgudev
 gnupg                               smartmontools
 gnutls                              wget
-gobject-introspection               glib
+gobject-introspection               glib, libgudev
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection
+gtk-doc                             glib, gobject-introspection, libgudev
 guile
 hdparm                              pm-utils
 highlight
@@ -85,6 +85,7 @@ libedit                             sqlite, pcre2
 libexif
 libgcrypt                           libxslt
 libgpg-error                        libassuan, libksba, libgcrypt
+libgudev
 libidn2                             wget
 libjpeg-turbo
 libksba
@@ -114,7 +115,6 @@ lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget
-python3-markdown.sh                 gobject-introspection
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
 mozjs
@@ -154,6 +154,7 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown
 python3-mako                        gobject-introspection
+python3-markdown                    gobject-introspection
 python3-pygments
 qt5                                 cmake, highlight
 recommonmark                        llvm
@@ -180,6 +181,7 @@ thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
 tree
+umockdev                            libgudev
 unrar
 unzip                               docbook-xml
 usbutils
@@ -202,4 +204,4 @@ z3                                  llvm
 zip                                 llvm, docbook-xsl
 
 
-# vim:ft=conf
+# vim:ft=conf nowrap

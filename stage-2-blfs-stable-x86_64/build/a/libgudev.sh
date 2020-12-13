@@ -7,17 +7,13 @@ PRGNAME="libgudev"
 # частью udev-extras, затем udev, затем systemd, и потом была выделена в
 # отдельный проект.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libgudev.html
+# Required:    glib
+# Recommended: no
+# Optional:    gobject-introspection
+#              gtk-doc  (для сборки API документации)
+#              umockdev (для тестов) https://github.com/martinpitt/umockdev
 
-# Home page: http://wiki.gnome.org/Projects/libgudev
-# Download:  http://ftp.gnome.org/pub/gnome/sources/libgudev/233/libgudev-233.tar.xz
-
-# Required: glib
-# Optional: gobject-introspection
-#           gtk-doc  (для сборки API документации)
-#           umockdev (https://github.com/martinpitt/umockdev)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -29,7 +25,7 @@ GTK_DOC="--disable-gtk-doc"
 UMOCKDEV="--disable-umockdev"
 
 command -v g-ir-compiler &>/dev/null && INTROSPECTION="yes"
-command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v umockdev-run  &>/dev/null && UMOCKDEV="--enable-umockdev"
 
 ./configure                                   \
@@ -40,8 +36,11 @@ command -v umockdev-run  &>/dev/null && UMOCKDEV="--enable-umockdev"
 
 make || exit 1
 # пакет не имеет набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (udev GObject bindings library)
