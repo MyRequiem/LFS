@@ -22,6 +22,7 @@ boost                               highlight
 bpf-utils                           iptables
 c-ares                              nodejs
 c2man                               fribidi
+cairo                               gobject-introspection
 cmake                               json-c, libjpeg-turbo, llvm
 cpio
 curl                                smartmontools, pciutils, cmake
@@ -56,13 +57,14 @@ gc                                  guile
 gcc
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
-glib
+gjs                                 gobject-introspection
+glib                                gobject-introspection
 gnupg                               smartmontools
 gnutls                              wget
 gobject-introspection               glib
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib
+gtk-doc                             glib, gobject-introspection
 guile
 hdparm                              pm-utils
 highlight
@@ -112,6 +114,7 @@ lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget
+python3-markdown.sh                 gobject-introspection
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
 mozjs
@@ -149,8 +152,8 @@ python-pyyaml                       llvm
 python-six
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako
-python3-mako
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown
+python3-mako                        gobject-introspection
 python3-pygments
 qt5                                 cmake, highlight
 recommonmark                        llvm

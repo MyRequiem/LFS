@@ -7,19 +7,15 @@ PRGNAME="gobject-introspection"
 # данных. Эти данные могут быть использованы для автоматической генерации кода
 # для привязок, проверки API и генерация документации.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/gobject-introspection.html
+# Required:    glib
+# Recommended: no
+# Optional:    cairo        (для тестов)
+#              gjs          (для прохождния одного теста)
+#              gtk-doc      (для сборки документации)
+#              python3-mako (для сборки _giscanner.cpython-38-x86_64-linux-gnu.so и утилиты g-ir-doc-tool)
+#              markdown     (для python3-mako и прохождения одного теста) https://pypi.org/project/Markdown/
 
-# Home page: http://live.gnome.org/GObjectIntrospection
-# Download:  http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
-
-# Required: glib
-# Optional: cairo    (для тестов)
-#           gtk-doc  (для сборки документации)
-#           gjs      (для прохождния одного теста)
-#           python3-mako (для сборки _giscanner.cpython-37m-x86_64-linux-gnu.so и утилиты g-ir-doc-tool)
-#           markdown (для прохождния одного теста) https://pypi.org/project/Markdown/
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -29,13 +25,18 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-CAIRO="-Dcairo=false"
+CAIRO="-Dcairo=disabled"
 GTK_DOC="-Dgtk_doc=false"
-DOCTOOL="-Ddoctool=false"
+MAKO=""
+MARKDOWN=""
+DOCTOOL="-Ddoctool=disabled"
 
-command -v cairo-sphinx &>/dev/null && CAIRO="-Dcairo=true"
-command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
-command -v mako-render  &>/dev/null && DOCTOOL="-Ddoctool=true"
+command -v cairo-sphinx &>/dev/null && CAIRO="-Dcairo=enabled"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
+command -v mako-render  &>/dev/null && MAKO="true"
+command -v markdown_py  &>/dev/null && MARKDOWN="true"
+
+[[ -n "${MAKO}" && -n "${MARKDOWN}" ]] && DOCTOOL="-Ddoctool=enabled"
 
 meson \
     --prefix=/usr \
@@ -45,10 +46,15 @@ meson \
     .. || exit 1
 
 ninja || exit 1
+
 # для одного теста (test_docwriter) требуется пакет markdown
 # ninja test -k0
-ninja install
+
 DESTDIR="${TMP_DIR}" ninja install
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
