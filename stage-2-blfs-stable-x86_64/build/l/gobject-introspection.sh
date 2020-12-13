@@ -9,11 +9,11 @@ PRGNAME="gobject-introspection"
 
 # Required:    glib
 # Recommended: no
-# Optional:    cairo        (для тестов)
-#              gjs          (для прохождния одного теста)
-#              gtk-doc      (для сборки документации)
-#              python3-mako (для сборки _giscanner.cpython-38-x86_64-linux-gnu.so и утилиты g-ir-doc-tool)
-#              markdown     (для python3-mako и прохождения одного теста) https://pypi.org/project/Markdown/
+# Optional:    cairo                (для тестов)
+#              gjs                  (для прохождния одного теста)
+#              gtk-doc              (для сборки документации)
+#              python3-mako         (для сборки _giscanner.cpython-38-x86_64-linux-gnu.so и утилиты g-ir-doc-tool)
+#              python3-markdown     (для утилиты g-ir-doc-tool и прохождения одного теста) https://pypi.org/project/Markdown/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -47,7 +47,7 @@ meson \
 
 ninja || exit 1
 
-# для одного теста (test_docwriter) требуется пакет markdown
+# для одного теста (test_docwriter) требуется пакет python3-markdown
 # ninja test -k0
 
 DESTDIR="${TMP_DIR}" ninja install

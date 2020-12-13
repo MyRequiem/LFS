@@ -31,7 +31,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # completely compliant with the reference implementation, though there are a
 # few known issues.
 #
-# Home page: https://python-markdown.github.io/
+# Home page: https://pypi.org/project/${ARCH_NAME}/
 # Download:  https://files.pythonhosted.org/packages/fd/d6/9eeda2f440ef798c8222b77d7355199345ce3477941d8a02a2024ccb9ed2/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
