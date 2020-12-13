@@ -143,12 +143,14 @@ psutil                              llvm
 pth                                 libgcrypt, parted
 pytest                              fuse
 python-d-bus                        dbus
+python-markupsafe                   python3-mako
 python-pygobject3                   dbus
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako
+python3-mako
 python3-pygments
 qt5                                 cmake, highlight
 recommonmark                        llvm
