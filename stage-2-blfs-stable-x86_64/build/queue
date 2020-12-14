@@ -112,6 +112,9 @@ d/python-modules/python3-markdown.sh
 l/gobject-introspection.sh
 a/libgudev.sh
 l/dbus-glib.sh
+d/python-modules/python-dbus.sh
+d/python-modules/python3-dbusmock.sh
+l/polkit.sh
 
 
 # vim:ft=conf

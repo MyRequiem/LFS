@@ -29,19 +29,19 @@ curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
 dblatex                             asciidoc
-dbus                                glib, dbus-glib
+dbus                                glib, dbus-glib, python-dbus
 dbus-glib                           dbus
 desktop-file-utils                  glib
 digest-crc                          parted
 docbook-utils                       fcron
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib
-docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit
+docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted
 dovecot                             fcron
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus
 ducktype                            dbus
 ed
-elogind                             dbus
+elogind                             dbus, polkit
 emacs                               guile
 etc-issue
 ethtool                             pm-utils
@@ -58,13 +58,14 @@ gcc
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit
+gnome-shell                         polkit
 gnupg                               smartmontools
 gnutls                              wget
-gobject-introspection               glib, libgudev
+gobject-introspection               glib, libgudev, polkit
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit
 guile
 hdparm                              pm-utils
 highlight
@@ -102,22 +103,23 @@ libunistring                        guile
 libusb                              usbutils, libpcap
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit
 libyaml                             python-pyyaml
-linux-pam                           fcron, sudo
+linux-pam                           fcron, sudo, polkit
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
 lsof
 lua                                 highlight
 lvm2                                parted
+lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
-mozjs
+mozjs                               polkit
 nasm                                libjpeg-turbo, mozjs
 nettle                              libarchive
 nftables                            iptables
@@ -140,19 +142,25 @@ pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 pm-utils
+polkit
+polkit-gnome                        polkit
+polkit-kde-agent                    polkit
 popt
 postfix                             fcron
 psutil                              llvm
 pth                                 libgcrypt, parted
 pytest                              fuse
 python-d-bus                        dbus
+python-dbus                         python3-dbusmock, polkit
 python-markupsafe                   python3-mako
-python-pygobject3                   dbus
+python-pygobject3                   dbus, python-dbus
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
+python3-dbusmock                    polkit
+python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
 python3-pygments
@@ -172,10 +180,12 @@ shared-mime-info                    glib
 sharutils                           berkeley-db
 slang                               aalib
 smartmontools
-sphinx                              cmake, llvm
+sphinx                              cmake, llvm, python-dbus
+sphinx-rtd-theme                    python-dbus
 sqlite                              python2, python3
 subversion                          cmake
 sudo
+tap-py                              python-dbus
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted
 thin-provisioning-tools             lvm2
 time

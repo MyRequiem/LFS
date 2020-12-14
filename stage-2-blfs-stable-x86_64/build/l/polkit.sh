@@ -11,17 +11,13 @@ DOCBOOK_XSL_VERSION="1.79.2"
 # sudo, но не наделяет процесс пользователя правами администратора, а позволяет
 # точно контролировать, что разрешено, а что запрещено.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/polkit.html
-
-# Home page: http://www.freedesktop.org/wiki/Software/PolicyKit
-# Download:  https://www.freedesktop.org/software/polkit/releases/polkit-0.116.tar.gz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/polkit-0.116-fix_elogind_detection-1.patch
-
 # Required:    glib
-#              js
+#              mozjs
 # Recommended: linux-pam
 #              elogind
 # Optional:    gobject-introspection
+#              python-dbus
+#              python3-dbusmock
 #              docbook-xml
 #              docbook-xsl
 #              gtk-doc
@@ -31,7 +27,7 @@ DOCBOOK_XSL_VERSION="1.79.2"
 #              polkit-gnome
 #              lxsession
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -74,7 +70,7 @@ command -v xslt-config &>/dev/null && LIBXSLT="true"
 [[ -n "${LIBXSLT}" && -n "${DOCBOOK_XML}" && -n "${DOCBOOK_XSL}" ]] && \
     MAN_PAGES="--enable-man-pages"
 
-command -v gtkdoc-check    &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check    &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v pam_tally       &>/dev/null && AUTHFW="pam"
 command -v elogind-inhibit &>/dev/null && LIBELOGIND="yes"
 command -v g-ir-compiler   &>/dev/null && INTROSPECTION="yes"
@@ -94,10 +90,19 @@ autoreconf -fi &&                       \
     --enable-introspection="${INTROSPECTION}" || exit 1
 
 make || exit 1
+
+### тесты
 # для прохождения тестового набора должен быть запущен системный демон D-Bus
+#
+# cp ../polkitbackendjsauthoritytest-wrapper.py test/polkitbackend/
+# chmod 755 test/polkitbackend/polkitbackendjsauthoritytest-wrapper.py
 # make check
-make install
+
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (PolicyKit authentication framework)
