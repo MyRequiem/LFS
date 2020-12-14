@@ -5,18 +5,15 @@ PRGNAME="libbytesize"
 ### libbytesize (library for working with sizes in bytes)
 # Библиотека для работы с общими операциями размеров в байтах
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libbytesize.html
+# Required:    pcre2
+#              python3-pygments
+# Recommended: no
+# Optional:    gtk-doc
+#              python-six (для тестов и python bindings)
+#              pocketlint (python модуль для одного теста) https://github.com/rhinstaller/pocketlint/releases
+#              polib      (python модуль для одного теста) https://pypi.org/project/polib/
 
-# Home page: https://github.com/storaged-project/libbytesize/
-# Download:  https://github.com/storaged-project/libbytesize/releases/download/2.2/libbytesize-2.2.tar.gz
-
-# Required: pcre2
-# Optional: gtk-doc
-#           python-six (для тестов и python bindings)
-#           pocketlint (python модуль для одного теста) https://github.com/rhinstaller/pocketlint/releases
-#           polib      (python модуль для одного теста) https://pypi.org/project/polib/
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -28,12 +25,15 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-# если установлены опциональные модули Python (python-six, pocketlint, polib),
-# то можно запустить регрессионные тесты
+# если установлены опциональные Python модули, то можно запустить регрессионные
+# тесты
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for working with sizes in bytes)

@@ -116,6 +116,7 @@ d/python-modules/python-dbus.sh
 d/python-modules/python3-dbusmock.sh
 l/polkit.sh
 a/cryptsetup.sh
+l/libbytesize.sh
 
 
 # vim:ft=conf

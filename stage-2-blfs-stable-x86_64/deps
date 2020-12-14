@@ -67,7 +67,7 @@ gnutls                              wget
 gobject-introspection               glib, libgudev, polkit
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize
 guile
 hdparm                              pm-utils
 highlight
@@ -84,6 +84,7 @@ libarchive                          cmake, ed
 libassuan
 libatasmart
 libatomic-ops                       gc
+libbytesize
 libedit                             sqlite, pcre2
 libexif
 libgcrypt                           libxslt
@@ -142,10 +143,12 @@ parted
 passwdqc                            cryptsetup
 pciutils
 pcre                                wget, slang, glib
-pcre2                               wget
+pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 pm-utils
+pocketlint                          libbytesize
+polib                               libbytesize
 polkit
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
@@ -159,7 +162,7 @@ python-dbus                         python3-dbusmock, polkit
 python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus
 python-pyyaml                       llvm
-python-six
+python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
@@ -167,7 +170,7 @@ python3-dbusmock                    polkit
 python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
-python3-pygments
+python3-pygments                    libbytesize
 qt5                                 cmake, highlight
 recommonmark                        llvm
 reiserfsprogs                       lvm2
