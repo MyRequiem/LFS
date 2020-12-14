@@ -115,6 +115,7 @@ l/dbus-glib.sh
 d/python-modules/python-dbus.sh
 d/python-modules/python3-dbusmock.sh
 l/polkit.sh
+a/cryptsetup.sh
 
 
 # vim:ft=conf

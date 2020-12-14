@@ -8,6 +8,7 @@ acpid
 afs                                 sudo
 apache-ant                          docbook-xsl
 apr
+argon2                              cryptsetup
 asciidoc
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
@@ -25,6 +26,7 @@ c2man                               fribidi
 cairo                               gobject-introspection
 cmake                               json-c, libjpeg-turbo, llvm
 cpio
+cryptsetup
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
@@ -75,7 +77,7 @@ install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, ll
 iptables
 isl                                 gcc
 iso-codes
-json-c
+json-c                              cryptsetup
 kernel-firmware
 libaio                              lvm2
 libarchive                          cmake, ed
@@ -97,6 +99,7 @@ libnl                               libpcap
 libpcap                             iptables
 libpng                              slang
 libpsl                              wget
+libpwquality                        cryptsetup
 libsigc++
 libtirpc                            rpcbind, lsof
 libunistring                        guile
@@ -111,7 +114,7 @@ lm-sensors
 lsb-tools
 lsof
 lua                                 highlight
-lvm2                                parted
+lvm2                                parted, cryptsetup
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
@@ -136,6 +139,7 @@ openldap                            sudo
 opie                                sudo
 p7zip
 parted
+passwdqc                            cryptsetup
 pciutils
 pcre                                wget, slang, glib
 pcre2                               wget
@@ -145,7 +149,7 @@ pm-utils
 polkit
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
-popt
+popt                                cryptsetup
 postfix                             fcron
 psutil                              llvm
 pth                                 libgcrypt, parted
@@ -156,7 +160,7 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus
 python-pyyaml                       llvm
 python-six
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
 python3-dbusmock                    polkit

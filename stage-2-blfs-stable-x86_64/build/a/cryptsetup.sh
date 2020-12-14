@@ -7,18 +7,14 @@ PRGNAME="cryptsetup"
 # которая доступна посредством утилиты cryptsetup и используется для
 # прозрачного шифрования блочных устройств используя API ядра Linux
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/cryptsetup.html
-
-# Home page: https://gitlab.com/cryptsetup/cryptsetup
-# Download:  https://www.kernel.org/pub/linux/utils/cryptsetup/v2.0/cryptsetup-2.0.6.tar.xz
-
-# Required: json-c
-#           libgcrypt
-#           lvm2
-#           popt
-# Optional: libpwquality
-#           python2
-#           passwdqc (https://www.openwall.com/passwdqc/)
+# Required:    json-c
+#              lvm2
+#              popt
+# Recommended: no
+# Optional:    libpwquality
+#              python2
+#              argon2   (https://github.com/P-H-C/phc-winner-argon2)
+#              passwdqc (https://www.openwall.com/passwdqc/)
 
 ### Конфигурация ядра
 #    CONFIG_MD=y
@@ -27,20 +23,18 @@ PRGNAME="cryptsetup"
 #    CONFIG_CRYPTO_XTS=m|y
 #    CONFIG_CRYPTO_SHA256=m|y
 #    CONFIG_CRYPTO_AES=m|y
-#    CONFIG_CRYPTO_AES_X86_64=m|y
 #    CONFIG_CRYPTO_USER_API_SKCIPHER=m|y
 #    CONFIG_CRYPTO_TWOFISH=m|y
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --with-crypto_backend=openssl || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 
@@ -49,8 +43,11 @@ make || exit 1
 #
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
