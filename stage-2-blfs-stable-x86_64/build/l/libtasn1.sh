@@ -3,19 +3,15 @@
 PRGNAME="libtasn1"
 
 ### libtasn1 (ASN.1 library)
-# Легко переносимая библиотека C, которая кодирует и декодирует данные DER/BER
-# в телекоммуникациях и компьютерных сетях следуя схеме ASN.1
+# C-библиотека для кодирования и декодирования данных DER/BER в
+# телекоммуникационных и компьютерных сетях следуя схеме ASN.1
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libtasn1.html
+# Required:    no
+# Recommended: no
+# Optional:    gtk-doc
+#              valgrind
 
-# Home page: http://www.gnu.org/software/libtasn1/
-# Download:  https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
-
-# Required: no
-# Optional: gtk-doc
-#           valgrind
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -26,7 +22,7 @@ VALGRIND="--disable-valgrind-tests"
 GTK_DOC="--disable-gtk-doc"
 
 command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
-command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 ./configure       \
     --prefix=/usr \
@@ -36,12 +32,15 @@ command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # установим документацию
-make -C doc/reference install-data-local
-make -C doc/reference install-data-local DESTDIR="${TMP_DIR}"
+[[  "x${GTK_DOC}" == "x--enable-gtk-doc" ]] && \
+    make -C doc/reference install-data-local DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ASN.1 library)

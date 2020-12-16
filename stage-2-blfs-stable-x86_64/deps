@@ -67,7 +67,7 @@ gnutls                              wget
 gobject-introspection               glib, libgudev, polkit
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1
 guile
 hdparm                              pm-utils
 highlight
@@ -102,6 +102,7 @@ libpng                              slang
 libpsl                              wget
 libpwquality                        cryptsetup
 libsigc++
+libtasn1
 libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils, libpcap
@@ -202,7 +203,7 @@ umockdev                            libgudev
 unrar
 unzip                               docbook-xml
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1
 vbetool                             pm-utils
 vim                                 fcron
 w3m                                 asciidoc
