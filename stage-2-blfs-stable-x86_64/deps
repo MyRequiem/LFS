@@ -132,7 +132,8 @@ nghttp2                             cmake, nodejs
 nodejs
 npm                                 nodejs
 npth
-nspr
+nspr                                nss
+nss
 nss                                 p11-kit
 ntfs-3g
 ocaml                               llvm
@@ -140,7 +141,7 @@ oniguruma                           slang
 open-mpi                            boost
 openldap                            sudo
 opie                                sudo
-p11-kit
+p11-kit                             nss
 p7zip
 parted
 passwdqc                            cryptsetup
@@ -192,7 +193,7 @@ slang                               aalib
 smartmontools
 sphinx                              cmake, llvm, python-dbus
 sphinx-rtd-theme                    python-dbus
-sqlite                              python2, python3
+sqlite                              python2, python3, nss
 subversion                          cmake
 sudo
 tap-py                              python-dbus

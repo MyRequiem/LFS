@@ -119,6 +119,7 @@ a/cryptsetup.sh
 l/libbytesize.sh
 l/libtasn1.sh
 n/p11-kit.sh
+l/nss.sh
 
 
 # vim:ft=conf
