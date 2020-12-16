@@ -118,6 +118,7 @@ l/polkit.sh
 a/cryptsetup.sh
 l/libbytesize.sh
 l/libtasn1.sh
+n/p11-kit.sh
 
 
 # vim:ft=conf

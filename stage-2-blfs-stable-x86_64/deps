@@ -67,7 +67,7 @@ gnutls                              wget
 gobject-introspection               glib, libgudev, polkit
 gpm                                 aalib
 graphviz                            libexif, llvm
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit
 guile
 hdparm                              pm-utils
 highlight
@@ -102,13 +102,13 @@ libpng                              slang
 libpsl                              wget
 libpwquality                        cryptsetup
 libsigc++
-libtasn1
+libtasn1                            p11-kit
 libtirpc                            rpcbind, lsof
 libunistring                        guile
 libusb                              usbutils, libpcap
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit
 libyaml                             python-pyyaml
 linux-pam                           fcron, sudo, polkit
 llvm                                icu, mozjs
@@ -121,7 +121,7 @@ lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
-make-ca                             wget
+make-ca                             wget, p11-kit
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
 mozjs                               polkit
@@ -133,12 +133,14 @@ nodejs
 npm                                 nodejs
 npth
 nspr
+nss                                 p11-kit
 ntfs-3g
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 openldap                            sudo
 opie                                sudo
+p11-kit
 p7zip
 parted
 passwdqc                            cryptsetup
