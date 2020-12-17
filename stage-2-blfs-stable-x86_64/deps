@@ -44,12 +44,13 @@ doxygen                             icu, fuse, libexif, libusb, libyaml, popt, m
 ducktype                            dbus
 ed
 elogind                             dbus, polkit
-emacs                               guile
+emacs                               guile, pinentry
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
 fcron
 fftw
+fltk                                pinentry
 fop                                 asciidoc
 fribidi
 fuse
@@ -57,6 +58,7 @@ fuse2                               ntfs-3g
 fwtk                                sudo
 gc                                  guile
 gcc
+gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm
 gjs                                 gobject-introspection
@@ -67,6 +69,8 @@ gnutls                              wget
 gobject-introspection               glib, libgudev, polkit
 gpm                                 aalib
 graphviz                            libexif, llvm
+gtk+2                               pinentry
+gtk+3                               pinentry
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit
 guile
 hdparm                              pm-utils
@@ -81,14 +85,14 @@ json-c                              cryptsetup
 kernel-firmware
 libaio                              lvm2
 libarchive                          cmake, ed
-libassuan
+libassuan                           pinentry
 libatasmart
 libatomic-ops                       gc
 libbytesize
 libedit                             sqlite, pcre2
 libexif
 libgcrypt                           libxslt
-libgpg-error                        libassuan, libksba, libgcrypt
+libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev
 libidn2                             wget
 libjpeg-turbo
@@ -101,6 +105,7 @@ libpcap                             iptables
 libpng                              slang
 libpsl                              wget
 libpwquality                        cryptsetup
+libsecret                           pinentry
 libsigc++
 libtasn1                            p11-kit
 libtirpc                            rpcbind, lsof
@@ -150,6 +155,7 @@ pcre                                wget, slang, glib
 pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
+pinentry
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
@@ -175,7 +181,7 @@ python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
 python3-pygments                    libbytesize
-qt5                                 cmake, highlight
+qt5                                 cmake, highlight, pinentry
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files

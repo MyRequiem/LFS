@@ -7,11 +7,6 @@ PRGNAME="pinentry"
 # которые использует протокол Assuan. Утилиты ввода PIN-кода обычно запускаются
 # демоном gpg-agent, но также могут быть запущены и из командной строки.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/pinentry.html
-
-# Home page: https://gnupg.org/related_software/pinentry/index.html
-# Download:  https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2
-
 # Required: libassuan
 #           libgpg-error
 # Optional: emacs
@@ -22,7 +17,7 @@ PRGNAME="pinentry"
 #           libsecret
 #           qt5
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -58,8 +53,11 @@ command -v emacs &>/dev/null && EMACS_PIN="--enable-pinentry-emacs" && \
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (PIN Entry dialogs)

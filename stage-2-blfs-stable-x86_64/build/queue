@@ -120,6 +120,7 @@ l/libbytesize.sh
 l/libtasn1.sh
 n/p11-kit.sh
 l/nss.sh
+n/pinentry.sh
 
 
 # vim:ft=conf
