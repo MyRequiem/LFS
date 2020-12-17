@@ -21,9 +21,9 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-sed '20,$ d' -i trust/trust-extract-compat.in || exit 1
+sed '20,$ d' -i trust/trust-extract-compat || exit 1
 
-cat >> trust/trust-extract-compat.in << "EOF"
+cat >> trust/trust-extract-compat << "EOF"
 # Copy existing anchor modifications to /etc/ssl/local
 /usr/libexec/make-ca/copy-trust-modifications
 

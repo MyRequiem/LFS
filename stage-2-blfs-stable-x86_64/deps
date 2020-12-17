@@ -138,7 +138,6 @@ nodejs
 npm                                 nodejs
 npth
 nspr                                nss
-nss
 nss                                 p11-kit
 ntfs-3g
 ocaml                               llvm

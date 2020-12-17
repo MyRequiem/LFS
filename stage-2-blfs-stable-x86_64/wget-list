@@ -129,7 +129,7 @@ http://www.linuxfromscratch.org/patches/blfs/10.0/polkit-0.117-fix_elogind_detec
 https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-2.3.4.tar.xz
 https://github.com/storaged-project/libbytesize/releases/download/2.4/libbytesize-2.4.tar.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
-https://github.com/p11-glue/p11-kit/releases/download/0.23.20/p11-kit-0.23.20.tar.xz
-https://archive.mozilla.org/pub/security/nss/releases/NSS_3_59_RTM/src/nss-3.59.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.59-standalone-1.patch
+https://github.com/p11-glue/p11-kit/releases/download/0.23.22/p11-kit-0.23.22.tar.xz
+https://archive.mozilla.org/pub/security/nss/releases/NSS_3_60_RTM/src/nss-3.60.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.60-standalone-1.patch
 https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2
