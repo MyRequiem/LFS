@@ -121,6 +121,9 @@ l/libtasn1.sh
 n/p11-kit.sh
 l/nss.sh
 n/pinentry.sh
+n/make-ca.sh
+n/wget.sh
+n/p11-kit.sh
 
 
 # vim:ft=conf

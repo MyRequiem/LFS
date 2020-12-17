@@ -138,14 +138,14 @@ nodejs
 npm                                 nodejs
 npth
 nspr                                nss
-nss                                 p11-kit
+nss                                 p11-kit, make-ca
 ntfs-3g
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 openldap                            sudo
 opie                                sudo
-p11-kit                             nss
+p11-kit                             nss, make-ca
 p7zip
 parted
 passwdqc                            cryptsetup

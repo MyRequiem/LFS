@@ -133,3 +133,6 @@ https://github.com/p11-glue/p11-kit/releases/download/0.23.22/p11-kit-0.23.22.ta
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_60_RTM/src/nss-3.60.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/nss-3.60-standalone-1.patch
 https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2
+https://github.com/djlucas/make-ca/releases/download/v1.7/make-ca-1.7.tar.xz
+http://www.cacert.org/certs/root.crt
+http://www.cacert.org/certs/class3.crt
