@@ -44,7 +44,7 @@ doxygen                             icu, fuse, libexif, libusb, libyaml, popt, m
 ducktype                            dbus
 ed
 elogind                             dbus, polkit
-emacs                               guile, pinentry
+emacs                               guile, pinentry, libidn
 etc-issue
 ethtool                             pm-utils
 exim                                fcron
@@ -60,7 +60,7 @@ gc                                  guile
 gcc
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib
-git                                 cmake, llvm
+git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit
 gnome-shell                         polkit
@@ -71,7 +71,7 @@ gpm                                 aalib
 graphviz                            libexif, llvm
 gtk+2                               pinentry
 gtk+3                               pinentry
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2
 guile
 hdparm                              pm-utils
 highlight
@@ -94,6 +94,7 @@ libexif
 libgcrypt                           libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev
+libidn
 libidn2                             wget
 libjpeg-turbo
 libksba
@@ -109,7 +110,7 @@ libsecret                           pinentry
 libsigc++
 libtasn1                            p11-kit
 libtirpc                            rpcbind, lsof
-libunistring                        guile
+libunistring                        guile, libidn2
 libusb                              usbutils, libpcap
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
@@ -129,6 +130,7 @@ lzo                                 libarchive
 make-ca                             wget, p11-kit
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
+mono                                libidn
 mozjs                               polkit
 nasm                                libjpeg-turbo, mozjs
 nettle                              libarchive
@@ -143,6 +145,7 @@ ntfs-3g
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
+openjdk                             libidn
 openldap                            sudo
 opie                                sudo
 p11-kit                             nss, make-ca
@@ -164,7 +167,7 @@ polkit-kde-agent                    polkit
 popt                                cryptsetup
 postfix                             fcron
 psutil                              llvm
-pth                                 libgcrypt, parted
+pth                                 libgcrypt, parted, libidn
 pytest                              fuse
 python-d-bus                        dbus
 python-dbus                         python3-dbusmock, polkit
@@ -211,7 +214,7 @@ umockdev                            libgudev
 unrar
 unzip                               docbook-xml
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn
 vbetool                             pm-utils
 vim                                 fcron
 w3m                                 asciidoc

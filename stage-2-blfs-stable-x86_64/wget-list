@@ -136,3 +136,5 @@ https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2
 https://github.com/djlucas/make-ca/releases/download/v1.7/make-ca-1.7.tar.xz
 http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt
+https://ftp.gnu.org/gnu/libidn/libidn-1.36.tar.gz
+https://ftp.gnu.org/gnu/libidn/libidn2-2.3.0.tar.gz
