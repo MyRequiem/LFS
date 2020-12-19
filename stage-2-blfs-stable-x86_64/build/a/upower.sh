@@ -9,22 +9,18 @@ PRGNAME="upower"
 # шину сообщений. Некоторые операции (например приостановка системы) ограничены
 # использованием PolicyKit.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/upower.html
+# Required:    dbus-glib
+#              libgudev
+#              libusb
+#              polkit
+# Recommended: no
+# Optional:    gobject-introspection
+#              gtk-doc
+#              python-pygobject3
+#              python3-dbusmock
+#              umockdev (для тестов)
 
-# Home page: http://upower.freedesktop.org/
-# Download:  https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
-
-# Required: dbus-glib
-#           libgudev
-#           libusb
-#           polkit
-# Optional: gobject-introspection
-#           gtk-doc
-#           python-pygobject3
-#           python3-dbusmock
-#           umockdev (для тестов) https://github.com/martinpitt/umockdev
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -32,7 +28,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 GTK_DOC="--disable-gtk-doc"
-command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 # включим устаревший функционал, который все еще требуется некоторым
 # приложениям
@@ -52,8 +48,11 @@ make || exit 1
 #
 # make check
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (power management abstraction daemon)

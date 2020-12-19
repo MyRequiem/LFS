@@ -32,7 +32,7 @@ cython                              yasm
 dag                                 libpcap
 dblatex                             asciidoc
 dbus                                glib, dbus-glib, python-dbus
-dbus-glib                           dbus
+dbus-glib                           dbus, upower
 desktop-file-utils                  glib
 digest-crc                          parted
 docbook-utils                       fcron
@@ -66,12 +66,12 @@ glib                                gobject-introspection, libgudev, dbus-glib, 
 gnome-shell                         polkit
 gnupg                               smartmontools
 gnutls                              wget
-gobject-introspection               glib, libgudev, polkit
+gobject-introspection               glib, libgudev, polkit, upower
 gpm                                 aalib
 graphviz                            libexif, llvm
 gtk+2                               pinentry
 gtk+3                               pinentry
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower
 guile
 hdparm                              pm-utils
 highlight
@@ -93,7 +93,7 @@ libedit                             sqlite, pcre2
 libexif
 libgcrypt                           libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
-libgudev
+libgudev                            upower
 libidn
 libidn2                             wget
 libjpeg-turbo
@@ -111,7 +111,7 @@ libsigc++
 libtasn1                            p11-kit
 libtirpc                            rpcbind, lsof
 libunistring                        guile, libidn2
-libusb                              usbutils, libpcap
+libusb                              usbutils, libpcap, upower
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit
@@ -161,7 +161,7 @@ pinentry
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
-polkit
+polkit                              upower
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
@@ -172,13 +172,13 @@ pytest                              fuse
 python-d-bus                        dbus
 python-dbus                         python3-dbusmock, polkit
 python-markupsafe                   python3-mako
-python-pygobject3                   dbus, python-dbus
+python-pygobject3                   dbus, python-dbus, upower
 python-pyyaml                       llvm
 python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
-python3-dbusmock                    polkit
+python3-dbusmock                    polkit, upower
 python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
@@ -210,9 +210,10 @@ thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
 tree
-umockdev                            libgudev
+umockdev                            libgudev, upower
 unrar
 unzip                               docbook-xml
+upower
 usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn
 vbetool                             pm-utils
