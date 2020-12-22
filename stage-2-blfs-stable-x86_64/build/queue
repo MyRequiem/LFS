@@ -129,6 +129,8 @@ l/libidn2.sh
 a/upower.sh
 n/gnutls.sh
 n/wget.sh
+n/gnupg.sh
+a/smartmontools.sh
 
 
 # vim:ft=conf

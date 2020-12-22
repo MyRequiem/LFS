@@ -21,13 +21,14 @@ PRGNAME="gnupg"
 #              gnutls
 #              imagemagick7 (для создания документации)
 #              libusb
+#              MTA          (dovecot или exim или postfix или sendmail)
 #              openldap
 #              sqlite
 #              texlive или install-tl-unx
 #              fig2dev     (для создания документации) http://mcj.sourceforge.net/
 #              adns        (http://www.chiark.greenend.org.uk/~ian/adns/)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -52,41 +53,39 @@ sed -e '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
+
 # info-документация
 makeinfo --html --no-split -o doc/gnupg_nochunks.html doc/gnupg.texi || exit 1
 makeinfo --plaintext       -o doc/gnupg.txt           doc/gnupg.texi || exit 1
+
 # html-документация
 make -C doc html || exit 1
 
 # если пакет texlive установлен, то можно создать документацию в pdf и ps
 # форматах
 PDF_DOCS=""
-command -v texdoc &>/dev/null && PDF_DOCS="true"
+# command -v texdoc &>/dev/null && PDF_DOCS="true"
 if [ -n "${PDF_DOCS}" ]; then
     make -C doc pdf ps || exit 1
 fi
 
 # make check
-make install
+
 make install DESTDIR="${TMP_DIR}"
 
 # установка документации
-install -v -m755 -d "${DOCS}/html"
-
-install -v -m644 doc/*.texi doc/gnupg.txt "${DOCS}"
 install -v -m644 doc/*.texi doc/gnupg.txt "${TMP_DIR}${DOCS}"
-
-install -v -m644 doc/gnupg_nochunks.html "${DOCS}/html/gnupg.html"
-install -v -m644 doc/gnupg_nochunks.html "${TMP_DIR}${DOCS}/html/gnupg.html"
-
-install -v -m644 doc/gnupg.html/* "${DOCS}/html"
-install -v -m644 doc/gnupg.html/* "${TMP_DIR}${DOCS}/html"
+install -v -m644 doc/gnupg_nochunks.html  "${TMP_DIR}${DOCS}/html/gnupg.html"
+install -v -m644 doc/gnupg.html/*         "${TMP_DIR}${DOCS}/html"
 
 # если создавали документацию в форматах pdf и ps
 if [ -n "${PDF_DOCS}" ]; then
-    install -v -m644 doc/gnupg.{pdf,dvi,ps} "${DOCS}"
     install -v -m644 doc/gnupg.{pdf,dvi,ps} "${TMP_DIR}${DOCS}"
 fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (The GNU Privacy Guard)
