@@ -131,6 +131,7 @@ n/gnutls.sh
 n/wget.sh
 n/gnupg.sh
 a/smartmontools.sh
+n/gpgme.sh
 
 
 # vim:ft=conf

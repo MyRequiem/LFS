@@ -26,6 +26,7 @@ bpf-utils                           iptables
 c-ares                              nodejs
 c2man                               fribidi
 cairo                               gobject-introspection
+clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm
 cmocka                              gnutls
 cpio
@@ -44,7 +45,7 @@ docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, p
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted
 dovecot                             fcron, gnupg
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme
 ducktype                            dbus
 ed
 elogind                             dbus, polkit
@@ -69,11 +70,12 @@ git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit
 gnome-shell                         polkit
-gnupg                               smartmontools
+gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg
 gobject-introspection               glib, libgudev, polkit, upower
+gpgme
 gpm                                 aalib
-graphviz                            libexif, llvm
+graphviz                            libexif, llvm, gpgme
 gtk+2                               pinentry
 gtk+3                               pinentry
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls
@@ -91,7 +93,7 @@ json-c                              cryptsetup
 kernel-firmware
 libaio                              lvm2
 libarchive                          cmake, ed
-libassuan                           pinentry, gnupg
+libassuan                           pinentry, gnupg, gpgme
 libatasmart
 libatomic-ops                       gc
 libbytesize
@@ -183,7 +185,7 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
 python3-dbusmock                    polkit, upower
@@ -191,7 +193,7 @@ python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
 python3-pygments                    libbytesize
-qt5                                 cmake, highlight, pinentry
+qt5                                 cmake, highlight, pinentry, gpgme
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
@@ -212,6 +214,7 @@ sphinx-rtd-theme                    python-dbus
 sqlite                              python2, python3, nss, gnupg
 subversion                          cmake
 sudo
+swig                                gpgme
 tap-py                              python-dbus
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
 thin-provisioning-tools             lvm2
