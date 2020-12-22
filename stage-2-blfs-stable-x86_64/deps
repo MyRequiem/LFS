@@ -14,6 +14,7 @@ aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
 autoconf213                         mozjs
+autogen                             gnutls
 bash-completion
 berkeley-db                         python3
 bindfs                              glib
@@ -25,11 +26,13 @@ c-ares                              nodejs
 c2man                               fribidi
 cairo                               gobject-introspection
 cmake                               json-c, libjpeg-turbo, llvm
+cmocka                              gnutls
 cpio
 cryptsetup
 curl                                smartmontools, pciutils, cmake
 cython                              yasm
 dag                                 libpcap
+datefudge                           gnutls
 dblatex                             asciidoc
 dbus                                glib, dbus-glib, python-dbus
 dbus-glib                           dbus, upower
@@ -40,7 +43,7 @@ docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, p
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted
 dovecot                             fcron
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls
 ducktype                            dbus
 ed
 elogind                             dbus, polkit
@@ -71,13 +74,13 @@ gpm                                 aalib
 graphviz                            libexif, llvm
 gtk+2                               pinentry
 gtk+3                               pinentry
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower
-guile
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls
+guile                               gnutls
 hdparm                              pm-utils
 highlight
 http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls
 iptables
 isl                                 gcc
 iso-codes
@@ -94,8 +97,8 @@ libexif
 libgcrypt                           libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower
-libidn
-libidn2                             wget
+libidn                              gnutls
+libidn2                             wget, gnutls
 libjpeg-turbo
 libksba
 libmpdec                            python3
@@ -106,11 +109,12 @@ libpcap                             iptables
 libpng                              slang
 libpsl                              wget
 libpwquality                        cryptsetup
+libseccomp                          gnutls
 libsecret                           pinentry
 libsigc++
-libtasn1                            p11-kit
+libtasn1                            p11-kit, gnutls
 libtirpc                            rpcbind, lsof
-libunistring                        guile, libidn2
+libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
@@ -127,13 +131,14 @@ lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
-make-ca                             wget, p11-kit
+make-ca                             wget, p11-kit, gnutls
 mdadm                               lvm2
 mit-kerberos-v5                     sudo, libtirpc
 mono                                libidn
 mozjs                               polkit
 nasm                                libjpeg-turbo, mozjs
-nettle                              libarchive
+net-tools                           gnutls
+nettle                              libarchive, gnutls
 nftables                            iptables
 nghttp2                             cmake, nodejs
 nodejs
@@ -148,7 +153,7 @@ open-mpi                            boost
 openjdk                             libidn
 openldap                            sudo
 opie                                sudo
-p11-kit                             nss, make-ca
+p11-kit                             nss, make-ca, gnutls
 p7zip
 parted
 passwdqc                            cryptsetup
@@ -205,17 +210,19 @@ sqlite                              python2, python3, nss
 subversion                          cmake
 sudo
 tap-py                              python-dbus
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3
 tree
+trousers                            gnutls
 umockdev                            libgudev, upower
+unbound                             gnutls
 unrar
 unzip                               docbook-xml
 upower
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls
 vbetool                             pm-utils
 vim                                 fcron
 w3m                                 asciidoc

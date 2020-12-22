@@ -127,6 +127,8 @@ n/p11-kit.sh
 l/libidn.sh
 l/libidn2.sh
 a/upower.sh
+n/gnutls.sh
+n/wget.sh
 
 
 # vim:ft=conf

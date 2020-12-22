@@ -7,11 +7,6 @@ PRGNAME="gnutls"
 # приложениям API для обеспечения надежной связи по протоколам транспортного
 # уровня
 
-# http://www.linuxfromscratch.org/blfs/view/svn/postlfs/gnutls.html
-
-# Home page: http://www.gnu.org/software/gnutls/
-# Download:  https://www.gnupg.org/ftp/gcrypt/gnutls/v3.6/gnutls-3.6.14.tar.xz
-
 # Required:    nettle
 # Recommended: make-ca
 #              libunistring
@@ -31,13 +26,12 @@ PRGNAME="gnutls"
 #              datefudge (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
 #              trousers (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/gtk-doc/html/gnutls"
-mkdir -p "${TMP_DIR}${DOCS}"
+mkdir -p "${TMP_DIR}"
 
 GTK_DOC="--disable-gtk-doc"
 IDN="--without-idn"
@@ -46,7 +40,7 @@ VALGRIND="--disable-valgrind-tests"
 TROUSERS="--without-tpm"
 GUILE="--disable-guile"
 
-command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v idn          &>/dev/null && IDN="--with-idn"
 command -v idn2         &>/dev/null && IDN="--with-idn"
 command -v unbound      &>/dev/null && UNBOUND="--enable-libdane"
@@ -74,12 +68,18 @@ command -v guile        &>/dev/null && GUILE="--enable-guile"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
-# документация
-make -C doc/reference install-data-local
-cp -Rv "${DOCS}"/* "${TMP_DIR}${DOCS}"
+# документация GTK
+if [[ "x${GTK_DOC}" == "x--enable-gtk-doc" ]]; then
+    DOCS="/usr/share/gtk-doc/html/gnutls"
+    mkdir -p "${TMP_DIR}${DOCS}"
+    make -C doc/reference install-data-local DESTDIR="${TMP_DIR}"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
