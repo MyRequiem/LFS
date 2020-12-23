@@ -21,7 +21,7 @@ berkeley-db                         python3
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
-boost                               highlight
+boost                               highlight, swig
 bpf-utils                           iptables
 c-ares                              nodejs
 c2man                               fribidi
@@ -30,7 +30,7 @@ clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm
 cmocka                              gnutls
 cpio
-cryptsetup
+cryptsetup                          volume-key
 curl                                smartmontools, pciutils, cmake, gnupg
 cython                              yasm
 dag                                 libpcap
@@ -68,12 +68,12 @@ gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg
 gobject-introspection               glib, libgudev, polkit, upower
-gpgme
+gpgme                               volume-key
 gpm                                 aalib
 graphviz                            libexif, llvm, gpgme
 gtk+2                               pinentry
@@ -150,7 +150,7 @@ nodejs
 npm                                 nodejs
 npth                                gnupg
 nspr                                nss
-nss                                 p11-kit, make-ca
+nss                                 p11-kit, make-ca, volume-key
 ntfs-3g
 ocaml                               llvm
 oniguruma                           slang
@@ -163,7 +163,7 @@ p7zip
 parted
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib
+pcre                                wget, slang, glib, swig
 pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
@@ -185,9 +185,9 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key
 python3-dbusmock                    polkit, upower
 python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
@@ -214,7 +214,7 @@ sphinx-rtd-theme                    python-dbus
 sqlite                              python2, python3, nss, gnupg
 subversion                          cmake
 sudo
-swig                                gpgme
+swig                                gpgme, volume-key
 tap-py                              python-dbus
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
 thin-provisioning-tools             lvm2
@@ -231,6 +231,7 @@ usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls
 vbetool                             pm-utils
 vim                                 fcron
+volume-key
 w3m                                 asciidoc
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs

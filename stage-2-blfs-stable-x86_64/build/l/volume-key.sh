@@ -11,11 +11,6 @@ ARCH_NAME="volume_key"
 # для извлечения данных после аппаратного или программного сбоя, который может
 # повредить заголовок зашифрованного тома.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/volume_key.html
-
-# Home page: https://github.com/felixonmars/volume_key/
-# Download:  https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
-
 # Require:     cryptsetup
 #              glib
 #              gpgme
@@ -24,7 +19,7 @@ ARCH_NAME="volume_key"
 # Optional:    python2 (для сборки Python 2 bindings, но для этого требуется swig)
 #              python3 (для сборки Python 3 bindings, но для этого требуется swig)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
@@ -59,8 +54,11 @@ autoreconf -fiv   &&
 
 make || exit 1
 # пакет не имеет набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (manipulating storage volume encryption keys)

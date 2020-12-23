@@ -131,7 +131,9 @@ n/gnutls.sh
 n/wget.sh
 n/gnupg.sh
 a/smartmontools.sh
+d/swig.sh
 n/gpgme.sh
+l/volume-key.sh
 
 
 # vim:ft=conf
