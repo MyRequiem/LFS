@@ -6,11 +6,6 @@ PRGNAME="udisks"
 # Демон реализующий D-Bus интерфейсы, инструменты и библиотеки для доступа и
 # управления дисками и другими устройствами хранения данных.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/udisks2.html
-
-# Home page: http://www.freedesktop.org/wiki/Software/udisks
-# Download:  https://github.com/storaged-project/udisks/releases/download/udisks-2.8.4/udisks-2.8.4.tar.bz2
-
 # Required:    libatasmart
 #              libblockdev
 #              libgudev
@@ -32,9 +27,10 @@ PRGNAME="udisks"
 #              exfat                 (https://github.com/relan/exfat)
 #              libiscsi              (https://github.com/sahlberg/libiscsi)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -44,7 +40,7 @@ BTRFS="--disable-btrfs"
 LVM2="--disable-lvm2"
 ISCSI="--disable-iscsi"
 
-command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v btrfs        &>/dev/null && BTRFS="--enable-btrfs"
 command -v fsadm        &>/dev/null && LVM2="--enable-lvm2"
 [ -x /usr/lib/libiscsi.so ]         && ISCSI="--enable-iscsi"
@@ -72,8 +68,23 @@ make || exit 1
 # более тщательные тесты:
 # make ci
 
-make install
 make install DESTDIR="${TMP_DIR}"
+
+[[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
+    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+
+MOUNT_OPTIONS_CONF="/etc/udisks2/mount_options.conf"
+cp "${TMP_DIR}${MOUNT_OPTIONS_CONF}.example" "${TMP_DIR}${MOUNT_OPTIONS_CONF}"
+
+if [ -f "${CONFIG}" ]; then
+    mv "${CONFIG}" "${CONFIG}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (storage device daemon)

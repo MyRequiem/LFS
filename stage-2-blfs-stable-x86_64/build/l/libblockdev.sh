@@ -6,24 +6,20 @@ PRGNAME="libblockdev"
 # C-библиотека, поддерживающая GObject Introspection для управления блочными
 # устройствами.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libblockdev.html
+# Required:    gobject-introspection
+#              libbytesize
+#              libyaml
+#              parted
+#              volume-key
+# Recommended: no
+# Optional:    gtk-doc
+#              btrfs-progs
+#              mdadm
+#              dmraid    (http://people.redhat.com/~heinzm/sw/dmraid/)
+#              bcachefs  (https://bcachefs.org/)
+#              ndctl     (https://github.com/pmem/ndctl)
 
-# Home page: https://github.com/storaged-project/libblockdev/
-# Download:  https://github.com/storaged-project/libblockdev/releases/download/2.23-1/libblockdev-2.23.tar.gz
-
-# Required: gobject-introspection
-#           libbytesize
-#           libyaml
-#           parted
-#           volume-key
-# Optional: gtk-doc
-#           btrfs-progs
-#           mdadm
-#           dmraid    (http://people.redhat.com/~heinzm/sw/dmraid/)
-#           bcachefs  (https://bcachefs.org/)
-#           ndctl     (https://github.com/pmem/ndctl)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -37,7 +33,7 @@ BTRFS="--without-btrfs"
 DMRAID="--without-dmraid"
 NDCTL="--without-nvdimm"
 
-command -v gtkdoc-check &>/dev/null && GTK_DOC="--with-gtk-doc"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="--with-gtk-doc"
 command -v python2      &>/dev/null && PYTHON2="--with-python2"
 command -v python3      &>/dev/null && PYTHON3="--with-python3"
 command -v btrfs        &>/dev/null && BTRFS="--with-btrfs"
@@ -56,8 +52,11 @@ command -v dmraid       &>/dev/null && DMRAID="--with-dmraid"
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for manipulation of block devices)

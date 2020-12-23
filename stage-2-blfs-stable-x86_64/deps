@@ -17,12 +17,14 @@ aspell-dict-ru
 autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
+bcachefs                            libblockdev
 berkeley-db                         python3
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
 boost                               highlight, swig
 bpf-utils                           iptables
+btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs
 c2man                               fribidi
 cairo                               gobject-introspection
@@ -36,22 +38,24 @@ cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc
-dbus                                glib, dbus-glib, python-dbus
+dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
 digest-crc                          parted
+dmraid                              libblockdev
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
-dosfstools                          parted
+dosfstools                          parted, udisks
 dovecot                             fcron, gnupg
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme
 ducktype                            dbus
 ed
-elogind                             dbus, polkit
+elogind                             dbus, polkit, udisks
 emacs                               guile, pinentry, libidn
 etc-issue
 ethtool                             pm-utils
+exfat                               udisks
 exim                                fcron, gnupg
 fcron
 fftw
@@ -72,13 +76,14 @@ glib                                gobject-introspection, libgudev, dbus-glib, 
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg
-gobject-introspection               glib, libgudev, polkit, upower
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
 gpm                                 aalib
+gptfdisk                            udisks
 graphviz                            libexif, llvm, gpgme
 gtk+2                               pinentry
 gtk+3                               pinentry
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev
 guile                               gnutls
 hdparm                              pm-utils
 highlight
@@ -94,16 +99,18 @@ kernel-firmware
 libaio                              lvm2
 libarchive                          cmake, ed
 libassuan                           pinentry, gnupg, gpgme
-libatasmart
+libatasmart                         udisks
 libatomic-ops                       gc
-libbytesize
+libblockdev                         udisks
+libbytesize                         libblockdev
 libedit                             sqlite, pcre2
 libexif
 libgcrypt                           libxslt, gnupg
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
-libgudev                            upower
+libgudev                            upower, udisks
 libidn                              gnutls
 libidn2                             wget, gnutls
+libiscsi                            udisks
 libjpeg-turbo
 libksba                             gnupg
 libmpdec                            python3
@@ -123,25 +130,26 @@ libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit
-libyaml                             python-pyyaml
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
+libyaml                             python-pyyaml, libblockdev
 linux-pam                           fcron, sudo, polkit
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
 lsof
 lua                                 highlight
-lvm2                                parted, cryptsetup
+lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls
-mdadm                               lvm2
+mdadm                               lvm2, udisks, libblockdev
 mit-kerberos-v5                     sudo, libtirpc
 mono                                libidn
 mozjs                               polkit
 nasm                                libjpeg-turbo, mozjs
+ndctl                               libblockdev
 net-tools                           gnutls
 nettle                              libarchive, gnutls
 nftables                            iptables
@@ -151,7 +159,7 @@ npm                                 nodejs
 npth                                gnupg
 nspr                                nss
 nss                                 p11-kit, make-ca, volume-key
-ntfs-3g
+ntfs-3g                             udisks
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
@@ -160,7 +168,7 @@ openldap                            sudo, gnupg
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
-parted
+parted                              libblockdev
 passwdqc                            cryptsetup
 pciutils
 pcre                                wget, slang, glib, swig
@@ -171,7 +179,7 @@ pinentry                            gnupg
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
-polkit                              upower
+polkit                              upower, udisks
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
@@ -179,10 +187,10 @@ postfix                             fcron, gnupg
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn
 pytest                              fuse
-python-d-bus                        dbus
+python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
 python-markupsafe                   python3-mako
-python-pygobject3                   dbus, python-dbus, upower
+python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyyaml                       llvm
 python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key
@@ -222,6 +230,7 @@ time
 tk                                  python2, python3
 tree
 trousers                            gnutls
+udisks
 umockdev                            libgudev, upower
 unbound                             gnutls
 unrar
@@ -231,7 +240,7 @@ usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls
 vbetool                             pm-utils
 vim                                 fcron
-volume-key
+volume-key                          libblockdev
 w3m                                 asciidoc
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
@@ -239,7 +248,7 @@ wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
-xfsprogs                            lvm2
+xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus
 xorg-libraries                      dbus
 yasm                                libjpeg-turbo
