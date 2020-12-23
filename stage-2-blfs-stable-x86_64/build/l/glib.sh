@@ -15,6 +15,7 @@ PRGNAME="glib"
 #              docbook-xml
 #              docbook-xsl
 #              gtk-doc (для сборки API документации, см. конфигурацию ниже)
+#              glib-networking
 #              gobject-introspection
 #              shared-mime-info   (для тестов)
 #              desktop-file-utils (для тестов)

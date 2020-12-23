@@ -73,6 +73,7 @@ gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key
+glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg
