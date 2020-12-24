@@ -8,15 +8,11 @@ PRGNAME="rpcsvc-proto"
 # файлов и исходников из прото файлов. Этот пакет необходим только если glibc
 # компилировалась без устаревшего sunrpc
 
-# http://www.linuxfromscratch.org/blfs/view/stable/basicnet/rpcsvc-proto.html
+# Required:    no
+# Recommended: no
+# Optional:    no
 
-# Home page: https://github.com/thkukuk/rpcsvc-proto
-# Download:  https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4/rpcsvc-proto-1.4.tar.gz
-
-# Required: no
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -28,8 +24,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # пакет не содержит набота тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (rpcsvc protocol.x files and headers)
@@ -41,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # replace it.
 #
 # Home page: https://github.com/thkukuk/${PRGNAME}
-# Download:  https://github.com/thkukuk/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/thkukuk/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

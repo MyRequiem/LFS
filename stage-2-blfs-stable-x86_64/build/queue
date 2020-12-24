@@ -136,6 +136,7 @@ n/gpgme.sh
 l/volume-key.sh
 l/libblockdev.sh
 a/udisks.sh
+l/rpcsvc-proto.sh
 
 
 # vim:ft=conf

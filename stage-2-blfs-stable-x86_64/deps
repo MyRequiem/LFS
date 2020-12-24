@@ -206,6 +206,7 @@ qt5                                 cmake, highlight, pinentry, gpgme
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
+rpcsvc-proto
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
