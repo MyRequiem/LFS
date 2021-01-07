@@ -69,6 +69,10 @@ install -v -m644 Linux*/lib/{*.chk,libcrmf.a} "${TMP_DIR}/usr/lib"
 # /usr/lib/pkgconfig/
 install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig"
 
+# ссылка /usr/lib/libnssckbi.so -> ./pkcs11/p11-kit-trust.so устанавливается с
+# пакетом p11-kit, и если она уже существует, удалим ее
+[ -L /usr/lib/libnssckbi.so ] && rm -f "${TMP_DIR}/usr/lib/libnssckbi.so"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
