@@ -21,9 +21,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-enable_bluetooth-1.patch" || exit 1
-
 LIBNL="--without-libnl"
 BLUETOOTH="no"
 LIBUSB="no"
