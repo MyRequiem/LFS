@@ -41,13 +41,10 @@ mkdir -pv "${TMP_DIR}${DOCS}/html"
 sed -e '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' \
     -i tools/Makefile.in || exit 1
 
-# создаем утилиту symcryptrun
-#    --enable-symcryptrun
 # создаем утилитy g13
 #    --enable-g13
 ./configure                  \
     --prefix=/usr            \
-    --enable-symcryptrun     \
     --enable-g13             \
     --localstatedir=/var     \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
