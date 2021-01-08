@@ -118,6 +118,7 @@ libmpdec                            python3
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               libpcap
+libnsl
 libpcap                             iptables
 libpng                              slang
 libpsl                              wget
@@ -126,7 +127,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsigc++
 libtasn1                            p11-kit, gnutls
-libtirpc                            rpcbind, lsof
+libtirpc                            rpcbind, lsof, libnsl
 libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
@@ -206,7 +207,7 @@ qt5                                 cmake, highlight, pinentry, gpgme
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
-rpcsvc-proto
+rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl

@@ -137,6 +137,11 @@ l/volume-key.sh
 l/libblockdev.sh
 a/udisks.sh
 l/rpcsvc-proto.sh
+n/make-ca.sh
+n/wget.sh
+n/p11-kit.sh
+n/gnutls.sh
+l/libnsl.sh
 
 
 # vim:ft=conf

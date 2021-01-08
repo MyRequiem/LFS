@@ -7,16 +7,12 @@ PRGNAME="libnsl"
 # клиенткий интерфейс для NIS(YP) и NIS+. Ранее данный код был частью glibc, но
 # теперь существует отдельно для связи с TI-RPC и поддержки IPv6
 
-# http://www.linuxfromscratch.org/blfs/view/stable/basicnet/libnsl.html
+# Required:    rpcsvc-proto
+#              libtirpc
+# Recommended: no
+# Optional:    no
 
-# Home page: https://github.com/thkukuk/libnsl
-# Download:  https://github.com/thkukuk/libnsl/archive/v1.2.0/libnsl-1.2.0.tar.gz
-
-# Required: rpcsvc-proto
-#           libtirpc
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -29,22 +25,24 @@ autoreconf -fi || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
 
-mv /usr/lib/libnsl.so.* /lib
+# переместим библиотеку в /lib, чтобы она была доступна до монтирования /usr
 mv "${TMP_DIR}/usr/lib/libnsl.so".* "${TMP_DIR}/lib"
 
 # определим версию перемещенной библиотеки
 LIB_VERSION="$(find "${TMP_DIR}/lib" -type f -name "libnsl.so.*" | rev | \
     cut -d / -f 1 | rev | cut -d . -f 3-)"
 
-# переместим библиотеку в /lib, чтобы она была доступна до монтирования /usr
-ln -svf "../../lib/libnsl.so.${LIB_VERSION}" /usr/lib/libnsl.so
+# восстановим ссылку libnsl.so в /usr/lib
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -svf "../../lib/libnsl.so.${LIB_VERSION}" libnsl.so
 )
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the public client interface for NIS(YP) and NIS+)
