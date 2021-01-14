@@ -48,7 +48,7 @@ docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted, udisks
-dovecot                             fcron, sudo, gnupg
+dovecot                             fcron, sudo, gnupg, at
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme
 ducktype                            dbus
 ed
@@ -57,7 +57,7 @@ emacs                               guile, pinentry, libidn
 etc-issue
 ethtool                             pm-utils
 exfat                               udisks
-exim                                fcron, sudo, gnupg
+exim                                fcron, sudo, gnupg, at
 fcron
 fftw
 fig2dev                             gnupg
@@ -136,7 +136,7 @@ libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
 libyaml                             python-pyyaml, libblockdev
-linux-pam                           fcron, sudo, polkit, exim
+linux-pam                           fcron, sudo, polkit, exim, at
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
@@ -190,7 +190,7 @@ polkit                              upower, udisks
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
-postfix                             fcron, sudo, gnupg
+postfix                             fcron, sudo, gnupg, at
 postgresql                          exim
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn
@@ -218,7 +218,7 @@ rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
 saxon6                              docbook-xsl
-sendmail                            fcron, sudo, gnupg
+sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml

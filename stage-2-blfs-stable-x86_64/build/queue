@@ -146,6 +146,7 @@ n/exim.sh
 a/fcron.sh
 ap/sudo.sh
 n/gnupg.sh
+ap/at.sh
 
 
 # vim:ft=conf
