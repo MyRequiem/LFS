@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib
+X Window System                     aalib, exim
 aalib
 acpid
 adns                                gnupg
@@ -34,6 +34,7 @@ cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
 curl                                smartmontools, pciutils, cmake, gnupg
+cyrus-sasl                          exim
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
@@ -47,7 +48,7 @@ docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted, udisks
-dovecot                             fcron, gnupg
+dovecot                             fcron, sudo, gnupg
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme
 ducktype                            dbus
 ed
@@ -56,7 +57,7 @@ emacs                               guile, pinentry, libidn
 etc-issue
 ethtool                             pm-utils
 exfat                               udisks
-exim                                fcron, gnupg
+exim                                fcron, sudo, gnupg
 fcron
 fftw
 fig2dev                             gnupg
@@ -76,7 +77,7 @@ glib                                gobject-introspection, libgudev, dbus-glib, 
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme
-gnutls                              wget, gnupg
+gnutls                              wget, gnupg, exim
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
 gpm                                 aalib
@@ -87,6 +88,7 @@ gtk+3                               pinentry
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev
 guile                               gnutls
 hdparm                              pm-utils
+heimdal-gssapi                      exim
 highlight
 http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs
@@ -109,7 +111,7 @@ libexif
 libgcrypt                           libxslt, gnupg
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
-libidn                              gnutls
+libidn                              gnutls, exim
 libidn2                             wget, gnutls
 libiscsi                            udisks
 libjpeg-turbo
@@ -118,7 +120,7 @@ libmpdec                            python3
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               libpcap
-libnsl
+libnsl                              exim
 libpcap                             iptables
 libpng                              slang
 libpsl                              wget
@@ -134,7 +136,7 @@ libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
 libyaml                             python-pyyaml, libblockdev
-linux-pam                           fcron, sudo, polkit
+linux-pam                           fcron, sudo, polkit, exim
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
@@ -146,10 +148,12 @@ lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls
+mariadb                             exim
 mdadm                               lvm2, udisks, libblockdev
 mit-kerberos-v5                     sudo, libtirpc
 mono                                libidn
 mozjs                               polkit
+mysql                               exim
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
 net-tools                           gnutls
@@ -165,15 +169,16 @@ ntfs-3g                             udisks
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
+opendmarc                           exim
 openjdk                             libidn
-openldap                            sudo, gnupg
+openldap                            sudo, gnupg, exim
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
 parted                              libblockdev
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib, swig
+pcre                                wget, slang, glib, swig, exim
 pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
@@ -185,7 +190,8 @@ polkit                              upower, udisks
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
-postfix                             fcron, gnupg
+postfix                             fcron, sudo, gnupg
+postgresql                          exim
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn
 pytest                              fuse
@@ -222,11 +228,12 @@ slang                               aalib
 smartmontools
 sphinx                              cmake, llvm, python-dbus
 sphinx-rtd-theme                    python-dbus
-sqlite                              python2, python3, nss, gnupg
+sqlite                              python2, python3, nss, gnupg, exim
 subversion                          cmake
 sudo
 swig                                gpgme, volume-key
 tap-py                              python-dbus
+tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
 thin-provisioning-tools             lvm2
 time

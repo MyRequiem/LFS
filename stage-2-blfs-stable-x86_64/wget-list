@@ -16,7 +16,7 @@ https://ftp.gnu.org/gnu/sharutils/sharutils-4.15.2.tar.xz
 https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.bz2
 https://downloads.sourceforge.net/acpid2/acpid-2.0.32.tar.xz
 http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-http://www.sudo.ws/dist/sudo-1.9.2.tar.gz
+http://www.sudo.ws/dist/sudo-1.9.5p1.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.21.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
@@ -139,7 +139,7 @@ https://ftp.gnu.org/gnu/libidn/libidn-1.36.tar.gz
 https://ftp.gnu.org/gnu/libidn/libidn2-2.3.0.tar.gz
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
 https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.0.tar.xz
-https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.26.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2
 https://downloads.sourceforge.net/swig/swig-4.0.2.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.14.0.tar.bz2
 https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
@@ -147,3 +147,4 @@ https://github.com/storaged-project/libblockdev/releases/download/2.24-1/libbloc
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.1/udisks-2.9.1.tar.bz2
 https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.2/rpcsvc-proto-1.4.2.tar.xz
 https://github.com/thkukuk/libnsl/archive/v1.2.0/libnsl-1.2.0.tar.gz
+https://ftp.exim.org/pub/exim/exim4/exim-4.94.tar.xz

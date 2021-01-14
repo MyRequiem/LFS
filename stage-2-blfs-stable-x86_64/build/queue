@@ -142,6 +142,10 @@ n/wget.sh
 n/p11-kit.sh
 n/gnutls.sh
 l/libnsl.sh
+n/exim.sh
+a/fcron.sh
+ap/sudo.sh
+n/gnupg.sh
 
 
 # vim:ft=conf

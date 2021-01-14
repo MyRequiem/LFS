@@ -13,7 +13,7 @@ PRGNAME="sudo"
 # Optional:    linux-pam
 #              mit-kerberos-v5
 #              openldap
-#              sendmail
+#              MTA  (dovecot или exim или postfix или sendmail)
 #              afs  (http://www.openafs.org/)
 #              fwtk (http://www.fwtk.org/)
 #              opie (https://sourceforge.net/projects/opie/files/)
@@ -50,7 +50,7 @@ make || exit 1
 # тесты
 #    # env LC_ALL=C make check 2>&1 | tee ../make-check.log
 # проверим результаты
-#    #grep failed ../make-check.log
+#    # grep failed ../make-check.log
 
 make install DESTDIR="${TMP_DIR}"
 

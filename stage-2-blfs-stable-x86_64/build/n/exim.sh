@@ -1,8 +1,6 @@
 #! /bin/bash
 
 PRGNAME="exim"
-# версия info документации (exim-texinfo)
-INFO_VERSION="4.71"
 
 ### Exim (the Exim MTA - Mail Transfer Agent)
 # Представляет собой универсальный и гибкий почтовик с широкими возможностями
@@ -26,7 +24,7 @@ INFO_VERSION="4.71"
 #           openldap
 #           gnutls
 #           sqlite
-#           X Window System Environment
+#           X Window System
 #           tdb (alternative to gdbm) https://sourceforge.net/projects/tdb/
 #           heimdal-gssapi (https://github.com/heimdal/)
 #           opendmarc (http://www.trusteddomain.org/opendmarc/)
@@ -35,7 +33,7 @@ INFO_VERSION="4.71"
 #    /etc/exim.conf
 #    /etc/aliases
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -44,11 +42,6 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{"${DOCS}","${MAN}"}
-
-# распакуем документацию
-tar xvf "${SOURCES}/${PRGNAME}-html-${VERSION}"*.tar.?z* || exit 1
-tar xvf "${SOURCES}/${PRGNAME}-texinfo-${INFO_VERSION}"*.tar.?z* || exit 1
-cp -v "exim-texinfo-${INFO_VERSION}/doc"/* doc/
 
 # перед установкой Exim должны существовать группа и пользователь exim
 ! grep -qE "^exim:" /etc/group  && \
@@ -111,48 +104,32 @@ sed -e 's,^BIN_DIR.*$,BIN_DIRECTORY=/usr/sbin,'                              \
     -e 's,^CONF.*$,CONFIGURE_FILE=/etc/exim.conf,'                           \
     -e '/# INFO_DIRECTORY=\/usr\/share\/info/s,^# ,,'                        \
     -e 's,^EXIM_USER.*$,EXIM_USER=exim,'                                     \
+    -e '/# SUPPORT_TLS=yes/s,^#,,'                                           \
     -e '/# USE_OPENSSL/s,^# ,,'                                              \
+    -e 's,^EXIM_MONITOR,#EXIM_MONITOR,'                                      \
     -e 's,^# LOG_FILE_PATH=/var/.*$,LOG_FILE_PATH=/var/log/exim/exim_%slog,' \
         src/EDITME > Local/Makefile || exit 1
 
+printf "USE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile &&
+
 make || exit 1
-
 # пакет не имеет набора тестов
-
-EXIM_CONF="/etc/exim.conf"
-if [ -f "${EXIM_CONF}" ]; then
-    mv "${EXIM_CONF}" "${EXIM_CONF}.old"
-fi
-
-make install
-make DESTDIR="${TMP_DIR}" install
-
-config_file_processing "${EXIM_CONF}"
+make install DESTDIR="${TMP_DIR}"
 
 # man-страница
-install -v -m644 doc/exim.8 "${MAN}"
 install -v -m644 doc/exim.8 "${TMP_DIR}${MAN}"
-
 # документация
-install -v -d -m755 "${DOCS}"
-install -v -m644 doc/* "${DOCS}"
+rm -f doc/exim.8
 install -v -m644 doc/* "${TMP_DIR}${DOCS}"
-cp -vR "${PRGNAME}-html-${VERSION}/${PRGNAME}-html-${VERSION}/doc"/* \
-    "${DOCS}"
-cp -vR "${PRGNAME}-html-${VERSION}/${PRGNAME}-html-${VERSION}/doc"/* \
-    "${TMP_DIR}${DOCS}"
 
-# ссылка в /usr/bin sendmail -> exim
+# ссылка в /usr/sbin sendmail -> exim
 # для приложений, которым это необходимо, и exim принимает большинство
 # параметров командной строки sendmail
-ln -svf exim /usr/sbin/sendmail
 (
     cd "${TMP_DIR}/usr/sbin" || exit
     ln -svf exim sendmail
 )
 
-install -v -d -m750 -o exim -g exim /var/log/exim
-install -v -d -m750 -o exim -g exim /var/spool/exim
 install -v -d -m750 -o exim -g exim "${TMP_DIR}/var/log/exim"
 install -v -d -m750 -o exim -g exim "${TMP_DIR}/var/spool/exim"
 
@@ -164,20 +141,35 @@ chmod -v a+wt /var/mail
 # еще не существует. По умолчанию он полностью закомментирован. Создадим в нем
 # пару стандартных псевдонимов
 ALIASES="/etc/aliases"
-if ! grep -Eq '^postmaster:' "${ALIASES}" &>/dev/null; then
-    cat >> "${ALIASES}" << "EOF"
+if ! grep -Eq '^postmaster:' "${TMP_DIR}${ALIASES}" &>/dev/null; then
+    cat >> "${TMP_DIR}${ALIASES}" << "EOF"
 
 postmaster: root
 mailer-daemon: postmaster
 EOF
 fi
 
-# установим скрипт для возможной автозагрузки exim при старте системы
+# установим скрипт для возможности автозагрузки exim при старте системы
 (
-    cd /root/blfs-bootscripts || exit 1
-    make install-exim
+    cd /root/src/lfs/blfs-bootscripts || exit 1
     make install-exim DESTDIR="${TMP_DIR}"
 )
+
+if [ -f "${ALIASES}" ]; then
+    mv "${ALIASES}" "${ALIASES}.old"
+fi
+
+EXIM_CONF="/etc/exim.conf"
+if [ -f "${EXIM_CONF}" ]; then
+    mv "${EXIM_CONF}" "${EXIM_CONF}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${ALIASES}"
+config_file_processing "${EXIM_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the Exim MTA - Mail Transfer Agent)
@@ -188,7 +180,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # can be integrated with other email tools.
 #
 # Home page: http://www.exim.org/
-# Download:  https://ftp.exim.org/pub/${PRGNAME}/${PRGNAME}4/old/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftp.exim.org/pub/${PRGNAME}/${PRGNAME}4/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
