@@ -45,7 +45,7 @@ desktop-file-utils                  glib
 digest-crc                          parted
 dmraid                              libblockdev
 docbook-utils                       fcron
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
@@ -97,6 +97,7 @@ install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, ll
 iptables
 isl                                 gcc
 iso-codes
+itstool
 json-c                              cryptsetup
 kernel-firmware
 libaio                              lvm2

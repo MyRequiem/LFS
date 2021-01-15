@@ -147,6 +147,7 @@ a/fcron.sh
 ap/sudo.sh
 n/gnupg.sh
 ap/at.sh
+ap/itstool.sh
 
 
 # vim:ft=conf

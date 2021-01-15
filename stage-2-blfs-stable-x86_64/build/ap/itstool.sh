@@ -7,15 +7,11 @@ PRGNAME="itstool"
 # тегов интернационализации W3C (ITS) для определения того, что перевести и как
 # разделить его на сообщения.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/pst/itstool.html
+# Required:    docbook-xml
+# Recommended: no
+# Optional:    no
 
-# Home page: http://itstool.org/
-# Download:  http://files.itstool.org/itstool/itstool-2.0.6.tar.bz2
-
-# Required: docbook-xml
-# Optional: no
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -28,8 +24,11 @@ PYTHON=/usr/bin/python3 \
 
 make || exit 1
 # пакет не содержит набора тестов
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Translate XML documents with PO files)
