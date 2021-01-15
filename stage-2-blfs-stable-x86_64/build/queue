@@ -149,6 +149,8 @@ n/gnupg.sh
 ap/at.sh
 ap/itstool.sh
 ap/mc.sh
+d/ruby.sh
+s/docbook-xsl.sh
 
 
 # vim:ft=conf

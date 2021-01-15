@@ -18,7 +18,7 @@ autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
 bcachefs                            libblockdev
-berkeley-db                         python3
+berkeley-db                         python3, ruby
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
@@ -49,7 +49,8 @@ docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, p
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby
+dtrace                              ruby
 ducktype                            dbus
 ed
 elogind                             dbus, polkit, udisks
@@ -82,7 +83,7 @@ gobject-introspection               glib, libgudev, polkit, upower, udisks, libb
 gpgme                               volume-key
 gpm                                 aalib, mc
 gptfdisk                            udisks
-graphviz                            libexif, llvm, gpgme
+graphviz                            libexif, llvm, gpgme, ruby
 gtk+2                               pinentry
 gtk+3                               pinentry
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev
@@ -136,7 +137,7 @@ libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
-libyaml                             python-pyyaml, libblockdev
+libyaml                             python-pyyaml, libblockdev, ruby
 linux-pam                           fcron, sudo, polkit, exim, at
 llvm                                icu, mozjs
 lm-sensors
@@ -240,7 +241,7 @@ tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
 thin-provisioning-tools             lvm2
 time
-tk                                  python2, python3
+tk                                  python2, python3, ruby
 tree
 trousers                            gnutls
 udisks
@@ -250,7 +251,7 @@ unrar
 unzip                               docbook-xml, mc
 upower
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby
 vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
