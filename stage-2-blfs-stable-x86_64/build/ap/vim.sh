@@ -5,13 +5,8 @@ PRGNAME="vim"
 ### Vim (Vi IMproved)
 # Powerful text editor
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/vim.html
-
-# Home page: https://www.vim.org/
-# Download:  ftp://ftp.vim.org/pub/vim/unix/vim-8.2.tar.bz2
-
 # Required:    no
-# Recommended: xorg-server
+# Recommended: X Window System
 #              gtk+2
 #              gtk+3
 # Optional:    gpm
@@ -22,26 +17,14 @@ PRGNAME="vim"
 #              rsync
 #              ruby
 
-ROOT="/root"
-source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
-
-SOURCES="/root/src"
-VERSION=$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | cut -f 3- -d . | \
-    cut -f 1 -d - | rev)
-MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
-MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
-cd "${PRGNAME}${MAJ_VER}${MIN_VER}" || exit 1
+ROOT="/root/src/lfs"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/etc"
+DOCS="/usr/share/doc"
+mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
@@ -114,16 +97,11 @@ make || exit 1
 # перенаправить вывод в лог файл
 # make test &> vim-test.log
 
-VIMRC="/etc/vimrc"
-if [ -f "${VIMRC}" ]; then
-    mv "${VIMRC}" "${VIMRC}.old"
-fi
-
-make install
 make install DESTDIR="${TMP_DIR}"
 
 # конфигурация по умолчанию
-cat << EOF > "${VIMRC}"
+VIMRC="/etc/vimrc"
+cat << EOF > "${TMP_DIR}${VIMRC}"
 " Begin ${VIMRC}
 
 " ensure defaults are set before customizing settings,
@@ -148,42 +126,39 @@ set expandtab
 " End ${VIMRC}
 EOF
 
-cp "${VIMRC}" "${TMP_DIR}/etc/"
-config_file_processing "${VIMRC}"
-
 # удаляем /etc/gvimrc и делаем ссылку в /etc gvimrc -> vimrc
 (
-    cd /etc || exit 1
-    rm -f gvimrc
-    ln -sfv vimrc gvimrc
-
     cd "${TMP_DIR}/etc" || exit 1
     rm -f gvimrc
-    ln -sfv vimrc gvimrc
+    ln -s vimrc gvimrc
+)
+
+# установим ссылку в /usr/bin vi -> vim и создадим man-страницы для vi, т.е.
+# ссылки vi.1 -> vim.1 в /usr/share/man/*/man1/
+(
+    cd "${TMP_DIR}/usr/bin" || exit 1
+    ln -sv vim vi
+    cd "${TMP_DIR}" || exit 1
+    for MANPAGE in usr/share/man/{,*/}man1/vim.1; do
+        ln -sv vim.1 "$(dirname ${MANPAGE})/vi.1"
+    done
 )
 
 # по умолчанию документация Vim устанавливается в /usr/share/vim, поэтому
 # установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
-DOC="/usr/share/doc"
-rm -f "${DOC}/${PRGNAME}-${VERSION}"
-ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${DOC}/${PRGNAME}-${VERSION}"
-
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
+MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 (
-    mkdir -p "${TMP_DIR}${DOC}"
-    cd "${TMP_DIR}${DOC}" || exit 1
-    ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
+    cd "${TMP_DIR}${DOCS}" || exit 1
+    ln -sn "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
 )
 
 APPL="/usr/share/applications"
-ICONS="/usr/share/icons"
-
 if [[ "x${XORG_SERVER}" == "x--with-x" ]]; then
-    mkdir -pv "${APPL}"
-    mkdir -pv "${ICONS}"
+    mkdir -pv "${TMP_DIR}${APPL}"
+    rm -f "${TMP_DIR}${APPL}/vim.desktop"
 
-    rm -fv {,"${TMP_DIR}"}"${APPL}/vim.desktop"
-
-cat > "${APPL}/gvim.desktop" << "EOF"
+cat > "${TMP_DIR}${APPL}/gvim.desktop" << "EOF"
 [Desktop Entry]
 GenericName=GVim
 GenericName[en]=GVim
@@ -206,16 +181,24 @@ StartupNotify=true
 Categories=Utility;TextEditor;
 MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
 EOF
-    cp "${APPL}/gvim.desktop" "${TMP_DIR}${APPL}"
-    cp -Rv "${TMP_DIR}${ICONS}"/* "${ICONS}"
 else
     # удаляем *.desktop файлы и иконки, которые устанавливаются только если
     # команде 'make install' передается параметр DESTDIR не зависимо от того,
     # собирался Vim с поддержкой Xorg или нет (см. src/Makefile в дереве
     # исходников, цель 'install-icons')
     rm -rf "${TMP_DIR}${APPL}"
-    rm -rf "${TMP_DIR}${ICONS}"
+    rm -rf "${TMP_DIR}/usr/share/icons"
 fi
+
+if [ -f "${VIMRC}" ]; then
+    mv "${VIMRC}" "${VIMRC}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${VIMRC}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Vi IMproved)
@@ -229,7 +212,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://www.vim.org/
 #            https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  ftp://ftp.vim.org/pub/${PRGNAME}/unix/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

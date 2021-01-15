@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib, exim, mc
+X Window System                     aalib, exim, mc, vim
 aalib
 acpid
 adns                                gnupg
@@ -81,11 +81,11 @@ gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg, exim
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
-gpm                                 aalib, mc
+gpm                                 aalib, mc, vim
 gptfdisk                            udisks
 graphviz                            libexif, llvm, gpgme, ruby
-gtk+2                               pinentry
-gtk+3                               pinentry
+gtk+2                               pinentry, vim
+gtk+3                               pinentry, vim
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev
 guile                               gnutls
 hdparm                              pm-utils
@@ -143,7 +143,7 @@ llvm                                icu, mozjs
 lm-sensors
 lsb-tools
 lsof
-lua                                 highlight
+lua                                 highlight, vim
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc
@@ -204,9 +204,9 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim
 python3-dbusmock                    polkit, upower
 python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
@@ -218,8 +218,8 @@ reiserfsprogs                       lvm2
 remove-la-files
 rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
-rsync                               llvm
-ruby                                docbook-xsl
+rsync                               llvm, vim
+ruby                                docbook-xsl, vim
 samba                               mc
 saxon6                              docbook-xsl
 sendmail                            fcron, sudo, gnupg, at

@@ -151,6 +151,8 @@ ap/itstool.sh
 ap/mc.sh
 d/ruby.sh
 s/docbook-xsl.sh
+ap/vim.sh
+a/fcron.sh
 
 
 # vim:ft=conf
