@@ -7,22 +7,18 @@ PRGNAME="mc"
 # операционных систем (клон Norton Commander). Имеется поддержка мыши через
 # GPM.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/mc.html
+# Required:    glib
+#              pcre
+#              slang
+# Recommended: no
+# Optional:    doxygen
+#              gpm
+#              samba
+#              unzip
+#              X Window System
+#              zip
 
-# Home page: https://midnight-commander.org/
-# Download:  http://ftp.midnight-commander.org/mc-4.8.24.tar.xz
-
-# Required: glib
-#           pcre
-#           slang
-# Optional: doxygen
-#           gpm
-#           samba
-#           unzip
-#           X Window System Environment
-#           zip
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -37,10 +33,10 @@ DOXYGEN_PDF="--disable-doxygen-pdf"
 
 command -v samba    &>/dev/null && SAMBA="--enable-vfs-smb"
 command -v gpm      &>/dev/null && GPM="--with-gpm-mouse"
-command -v doxygen  &>/dev/null &&       \
-    DOXYGEN_DOC="--enable-doxygen-doc"   \
-    DOXYGEN_HTML="--enable-doxygen-html" \
-    DOXYGEN_PDF="--enable-doxygen-pdf"
+# command -v doxygen  &>/dev/null &&       \
+#     DOXYGEN_DOC="--enable-doxygen-doc"   \
+#     DOXYGEN_HTML="--enable-doxygen-html" \
+#     DOXYGEN_PDF="--enable-doxygen-pdf"
 
 # добавим поддержку кодировок при редактировании файлов в mcedit отличных от
 # текущей локали
@@ -58,11 +54,11 @@ command -v doxygen  &>/dev/null &&       \
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
 
-cp -v doc/keybind-migration.txt /usr/share/mc
-cp -v doc/keybind-migration.txt "${TMP_DIR}/usr/share/mc"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Midnight Commander file manager)

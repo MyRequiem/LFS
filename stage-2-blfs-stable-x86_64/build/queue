@@ -148,6 +148,7 @@ ap/sudo.sh
 n/gnupg.sh
 ap/at.sh
 ap/itstool.sh
+ap/mc.sh
 
 
 # vim:ft=conf

@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib, exim
+X Window System                     aalib, exim, mc
 aalib
 acpid
 adns                                gnupg
@@ -49,7 +49,7 @@ docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, p
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc
 ducktype                            dbus
 ed
 elogind                             dbus, polkit, udisks
@@ -73,14 +73,14 @@ gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme
 gnutls                              wget, gnupg, exim
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
-gpm                                 aalib
+gpm                                 aalib, mc
 gptfdisk                            udisks
 graphviz                            libexif, llvm, gpgme
 gtk+2                               pinentry
@@ -150,6 +150,7 @@ lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls
 mariadb                             exim
+mc
 mdadm                               lvm2, udisks, libblockdev
 mit-kerberos-v5                     sudo, libtirpc
 mono                                libidn
@@ -179,7 +180,7 @@ p7zip
 parted                              libblockdev
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib, swig, exim
+pcre                                wget, slang, glib, swig, exim, mc
 pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
@@ -218,6 +219,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
+samba                               mc
 saxon6                              docbook-xsl
 sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
@@ -225,7 +227,7 @@ sg3-utils
 sgml-common                         docbook-xml
 shared-mime-info                    glib
 sharutils                           berkeley-db
-slang                               aalib
+slang                               aalib, mc
 smartmontools
 sphinx                              cmake, llvm, python-dbus
 sphinx-rtd-theme                    python-dbus
@@ -245,7 +247,7 @@ udisks
 umockdev                            libgudev, upower
 unbound                             gnutls
 unrar
-unzip                               docbook-xml
+unzip                               docbook-xml, mc
 upower
 usbutils
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls
@@ -265,7 +267,7 @@ xorg-libraries                      dbus
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
-zip                                 llvm, docbook-xsl
+zip                                 llvm, docbook-xsl, mc
 
 
 # vim:ft=conf nowrap
