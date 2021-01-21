@@ -154,6 +154,8 @@ s/docbook-xsl.sh
 ap/vim.sh
 a/fcron.sh
 d/brotli.sh
+n/net-tools.sh
+n/gnutls.sh
 
 
 # vim:ft=conf
