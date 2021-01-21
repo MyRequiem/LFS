@@ -153,6 +153,7 @@ d/ruby.sh
 s/docbook-xsl.sh
 ap/vim.sh
 a/fcron.sh
+d/brotli.sh
 
 
 # vim:ft=conf

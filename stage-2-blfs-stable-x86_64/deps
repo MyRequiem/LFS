@@ -24,12 +24,13 @@ blfs-bootscripts
 bluez                               python2, python3, libpcap
 boost                               highlight, swig
 bpf-utils                           iptables
+brotli
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs
 c2man                               fribidi
 cairo                               gobject-introspection
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm
+cmake                               json-c, libjpeg-turbo, llvm, brotli
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
@@ -204,9 +205,9 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli
 python3-dbusmock                    polkit, upower
 python3-docutils                    python-dbus
 python3-mako                        gobject-introspection
