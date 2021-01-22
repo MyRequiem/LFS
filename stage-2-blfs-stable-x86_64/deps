@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib, exim, mc, vim
+X Window System                     aalib, exim, mc, vim, openssh
 aalib
 acpid
 adns                                gnupg
@@ -72,7 +72,7 @@ fwtk                                sudo
 gc                                  guile
 gcc
 gcr                                 pinentry
-gdb                                 python3, gcc, guile, glib
+gdb                                 python3, gcc, guile, glib, openssh
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc
@@ -109,7 +109,7 @@ libatasmart                         udisks
 libatomic-ops                       gc
 libblockdev                         udisks
 libbytesize                         libblockdev
-libedit                             sqlite, pcre2
+libedit                             sqlite, pcre2, openssh
 libexif
 libgcrypt                           libxslt, gnupg
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
@@ -128,8 +128,10 @@ libpcap                             iptables
 libpng                              slang
 libpsl                              wget
 libpwquality                        cryptsetup
+libressl                            openssh
 libseccomp                          gnutls
 libsecret                           pinentry
+libsectok                           openssh
 libsigc++
 libtasn1                            p11-kit, gnutls
 libtirpc                            rpcbind, lsof, libnsl
@@ -139,7 +141,7 @@ libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
 libyaml                             python-pyyaml, libblockdev, ruby
-linux-pam                           fcron, sudo, polkit, exim, at
+linux-pam                           fcron, sudo, polkit, exim, at, openssh
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
@@ -154,13 +156,13 @@ make-ca                             wget, p11-kit, gnutls
 mariadb                             exim
 mc
 mdadm                               lvm2, udisks, libblockdev
-mit-kerberos-v5                     sudo, libtirpc
+mit-kerberos-v5                     sudo, libtirpc, openssh
 mono                                libidn
 mozjs                               polkit
 mysql                               exim
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
-net-tools                           gnutls
+net-tools                           gnutls, openssh
 nettle                              libarchive, gnutls
 nftables                            iptables
 nghttp2                             cmake, nodejs
@@ -174,8 +176,10 @@ ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 opendmarc                           exim
-openjdk                             libidn
+openjdk                             libidn, openssh
 openldap                            sudo, gnupg, exim
+opensc                              openssh
+openssh
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
@@ -237,7 +241,7 @@ sqlite                              python2, python3, nss, gnupg, exim
 subversion                          cmake
 sudo
 swig                                gpgme, volume-key
-sysstat
+sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg

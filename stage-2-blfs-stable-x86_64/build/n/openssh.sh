@@ -6,35 +6,35 @@ PRGNAME="openssh"
 # Набор программ, предоставляющих шифрование сеансов связи по компьютерным
 # сетям с использованием протокола SSH
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/openssh.html
+# Required:    no
+# Recommended: no
+# Optional:    gdb (для тестов)
+#              linux-pam
+#              X Window System
+#              mit-kerberos-v5
+#              openjdk
+#              net-tools
+#              sysstat
+#              libedit (https://www.thrysoee.dk/editline)
+#              libressl (http://www.libressl.org/)
+#              opensc (https://github.com/OpenSC/OpenSC/wiki)
+#              libsectok (http://www.citi.umich.edu/projects/smartcard/sectok.html)
 
-# Home page: http://www.openssh.com/
-# Download:  http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.2p1.tar.gz
-
-# Required: no
-# Optional: gdb (для тестов)
-#           linux-pam
-#           xauth
-#           mit-kerberos-v5
-#           libedit (https://www.thrysoee.dk/editline)
-#           libressl (http://www.libressl.org/)
-#           opensc (https://github.com/OpenSC/OpenSC/wiki)
-#           libsectok (http://www.citi.umich.edu/projects/smartcard/sectok.html)
-#           openjdk
-#           net-tools
-#           sysstat
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}"{"${DOCS}",${MAN},/var/lib/sshd}
+mkdir -pv "${TMP_DIR}"{"${DOCS}",${MAN}}
 
+# каталог /var/lib/sshd должен существовать в системе
 install -v -m700 -d /var/lib/sshd
+install -v -m700 -d "${TMP_DIR}/var/lib/sshd"
 chown   -v root:sys /var/lib/sshd
+chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
 
 # добавим группу sshd, если не существует
 ! grep -qE "^sshd:" /etc/group  && \
@@ -50,12 +50,10 @@ chown   -v root:sys /var/lib/sshd
 
 LIBEDIT="--without-libedit"
 PAM="--without-pam"
-XAUTH="--without-xauth"
 KERBEROS5="--without-kerberos5"
 
 [ -x /usr/lib/libedit.so ] && LIBEDIT="--with-libedit"
 command -v pam_tally   &>/dev/null && PAM="--with-pam"
-command -v xauth       &>/dev/null && XAUTH="--with-xauth=/usr/bin/xauth"
 command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
 
 # использовать пароли MD5
@@ -66,7 +64,6 @@ command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
     --with-md5-passwords  \
     "${LIBEDIT}"          \
     "${PAM}"              \
-    "${XAUTH}"            \
     "${KERBEROS5}"        \
     --with-privsep-path=/var/lib/sshd || exit 1
 
@@ -81,31 +78,39 @@ fi
 
 # make tests
 
-make install
 make install DESTDIR="${TMP_DIR}"
 
-cp -v /etc/ssh/* "${TMP_DIR}/etc/ssh/"
-
 # /usr/bin/ssh-copy-id
-install -v -m755    contrib/ssh-copy-id /usr/bin
-install -v -m755    contrib/ssh-copy-id "${TMP_DIR}/usr/bin"
-
+install -v -m755 contrib/ssh-copy-id "${TMP_DIR}/usr/bin"
 # man-страницы
-install -v -m644    contrib/ssh-copy-id.1 "${MAN}"
-install -v -m644    contrib/ssh-copy-id.1 "${TMP_DIR}${MAN}"
-
+install -v -m644 contrib/ssh-copy-id.1 "${TMP_DIR}${MAN}"
 # документация
-install -v -m755 -d "${DOCS}"
-install -v -m644    INSTALL LICENCE OVERVIEW README* "${DOCS}"
-install -v -m644    INSTALL LICENCE OVERVIEW README* "${TMP_DIR}${DOCS}"
+install -v -m644 INSTALL LICENCE OVERVIEW README* "${TMP_DIR}${DOCS}"
 
 # для запуска SSH сервера при старте системы добавим скрипт инициализации в
 # /etc/rc.d/init.d/ и ссылки в /etc/rc.d/rc{0-6}.d/
 (
-    cd /root/blfs-bootscripts || exit 1
-    make install-sshd
+    cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-sshd DESTDIR="${TMP_DIR}"
 )
+
+SSH_CONFIG="/etc/ssh/ssh_config"
+SSHD_CONFIG="/etc/ssh/sshd_config"
+
+if [ -f "${SSH_CONFIG}" ]; then
+    mv "${SSH_CONFIG}" "${SSH_CONFIG}.old"
+fi
+
+if [ -f "${SSHD_CONFIG}" ]; then
+    mv "${SSHD_CONFIG}" "${SSHD_CONFIG}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${SSH_CONFIG}"
+config_file_processing "${SSHD_CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Secure Shell daemon and clients)

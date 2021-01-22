@@ -157,6 +157,7 @@ d/brotli.sh
 n/net-tools.sh
 n/gnutls.sh
 ap/sysstat.sh
+n/openssh.sh
 
 
 # vim:ft=conf
