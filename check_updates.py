@@ -54,7 +54,8 @@ def main(repo):
     """
 
     book_url = 'http://www.linuxfromscratch.org'
-    full_url = '{0}/{1}/errata/stable/'.format(book_url, repo)
+    # full_url = '{0}/{1}/errata/stable/'.format(book_url, repo)
+    full_url = '{0}/{1}/errata/10.0/'.format(book_url, repo)
     print('### {0}'.format(full_url))
 
     response = urllib.request.urlopen(full_url)
