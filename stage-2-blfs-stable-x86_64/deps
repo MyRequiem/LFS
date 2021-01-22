@@ -78,7 +78,7 @@ gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc
 glib-networking                     glib
 gnome-shell                         polkit
-gnupg                               smartmontools, gpgme
+gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
@@ -111,7 +111,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libedit                             sqlite, pcre2, openssh
 libexif
-libgcrypt                           libxslt, gnupg
+libgcrypt                           libxslt, gnupg, libssh2
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
@@ -133,6 +133,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libsigc++
+libssh2
 libtasn1                            p11-kit, gnutls
 libtirpc                            rpcbind, lsof, libnsl
 libunistring                        guile, libidn2, gnutls
@@ -179,7 +180,7 @@ opendmarc                           exim
 openjdk                             libidn, openssh
 openldap                            sudo, gnupg, exim
 opensc                              openssh
-openssh
+openssh                             libssh2
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip

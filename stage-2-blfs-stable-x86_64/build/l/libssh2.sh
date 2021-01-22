@@ -7,17 +7,13 @@ PRGNAME="libssh2"
 # клиента и сервера. С libssh можно удаленно выполнять программы, передавать
 # файлы и использовать безопасный и прозрачный туннель
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libssh2.html
+# Required:    no
+# Recommended: no
+# Optional:    gnupg     (для тестов)
+#              libgcrypt (для тестов)
+#              openssh   (для тестов)
 
-# Home page: http://www.libssh2.org/
-# Download:  https://www.libssh2.org/download/libssh2-1.9.0.tar.gz
-
-# Required: no
-# Optional: gnupg
-#           libgcrypt
-#           openssh
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -30,8 +26,11 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (SSH2 library)

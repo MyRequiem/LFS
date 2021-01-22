@@ -158,6 +158,7 @@ n/net-tools.sh
 n/gnutls.sh
 ap/sysstat.sh
 n/openssh.sh
+l/libssh2.sh
 
 
 # vim:ft=conf
