@@ -237,6 +237,7 @@ sqlite                              python2, python3, nss, gnupg, exim
 subversion                          cmake
 sudo
 swig                                gpgme, volume-key
+sysstat
 tap-py                              python-dbus
 tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg

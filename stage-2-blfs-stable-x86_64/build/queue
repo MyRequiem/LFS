@@ -156,6 +156,7 @@ a/fcron.sh
 d/brotli.sh
 n/net-tools.sh
 n/gnutls.sh
+ap/sysstat.sh
 
 
 # vim:ft=conf
