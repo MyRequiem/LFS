@@ -159,6 +159,12 @@ n/gnutls.sh
 ap/sysstat.sh
 n/openssh.sh
 l/libssh2.sh
+n/cyrus-sasl.sh
+n/openldap.sh
+ap/sudo.sh
+n/gnupg.sh
+n/cyrus-sasl.sh
+n/exim.sh
 
 
 # vim:ft=conf

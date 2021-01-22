@@ -18,7 +18,7 @@ autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
 bcachefs                            libblockdev
-berkeley-db                         python3, ruby
+berkeley-db                         python3, ruby, cyrus-sasl, openldap
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
@@ -35,7 +35,7 @@ cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
 curl                                smartmontools, pciutils, cmake, gnupg
-cyrus-sasl                          exim
+cyrus-sasl                          exim, openldap
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
@@ -44,6 +44,7 @@ dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
 digest-crc                          parted
+dmalloc                             cyrus-sasl
 dmraid                              libblockdev
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
@@ -79,7 +80,7 @@ glib                                gobject-introspection, libgudev, dbus-glib, 
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
-gnutls                              wget, gnupg, exim
+gnutls                              wget, gnupg, exim, openldap
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev
 gpgme                               volume-key
 gpm                                 aalib, mc, vim
@@ -102,6 +103,7 @@ iso-codes
 itstool
 json-c                              cryptsetup
 kernel-firmware
+krb4                                cyrus-sasl
 libaio                              lvm2
 libarchive                          cmake, ed
 libassuan                           pinentry, gnupg, gpgme
@@ -142,7 +144,7 @@ libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
 libyaml                             python-pyyaml, libblockdev, ruby
-linux-pam                           fcron, sudo, polkit, exim, at, openssh
+linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
 llvm                                icu, mozjs
 lm-sensors
 lsb-tools
@@ -154,13 +156,13 @@ lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls
-mariadb                             exim
+mariadb                             exim, cyrus-sasl, openldap
 mc
 mdadm                               lvm2, udisks, libblockdev
-mit-kerberos-v5                     sudo, libtirpc, openssh
+mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl
 mono                                libidn
 mozjs                               polkit
-mysql                               exim
+mysql                               exim, cyrus-sasl, openldap
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
@@ -177,9 +179,10 @@ ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 opendmarc                           exim
-openjdk                             libidn, openssh
-openldap                            sudo, gnupg, exim
+openjdk                             libidn, openssh, cyrus-sasl
+openldap                            sudo, gnupg, exim, cyrus-sasl
 opensc                              openssh
+openslp                             openldap
 openssh                             libssh2
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
@@ -191,6 +194,7 @@ pcre                                wget, slang, glib, swig, exim, mc
 pcre2                               wget, libbytesize
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
+perl-pod-pom-view-restructured      cyrus-sasl
 pinentry                            gnupg
 pm-utils
 pocketlint                          libbytesize
@@ -200,9 +204,9 @@ polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
 postfix                             fcron, sudo, gnupg, at
-postgresql                          exim
+postgresql                          exim, cyrus-sasl, openldap
 psutil                              llvm
-pth                                 libgcrypt, parted, libidn
+pth                                 libgcrypt, parted, libidn, openldap
 pytest                              fuse
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
@@ -236,9 +240,9 @@ shared-mime-info                    glib
 sharutils                           berkeley-db
 slang                               aalib, mc
 smartmontools
-sphinx                              cmake, llvm, python-dbus
+sphinx                              cmake, llvm, python-dbus, cyrus-sasl
 sphinx-rtd-theme                    python-dbus
-sqlite                              python2, python3, nss, gnupg, exim
+sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl
 subversion                          cmake
 sudo
 swig                                gpgme, volume-key
@@ -254,6 +258,7 @@ trousers                            gnutls
 udisks
 umockdev                            libgudev, upower
 unbound                             gnutls
+unixodbc                            openldap
 unrar
 unzip                               docbook-xml, mc
 upower

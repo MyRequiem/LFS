@@ -9,22 +9,16 @@ PRGNAME="openldap"
 # изменения или удаления записей. LDAP часто используется для обеспечения
 # аутентификации (например, для электронной почты)
 
-# http://www.linuxfromscratch.org/blfs/view/stable/server/openldap.html
-
-# Home page: http://www.openldap.org/
-# Download:  ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.49.tgz
-# Patch:     http://www.linuxfromscratch.org/patches/blfs/9.1/openldap-2.4.49-consolidated-1.patch
-
 # Required:    no
 # Recommended: cyrus-sasl
 # Optional:    gnutls
 #              pth
 #              unixodbc
-#              mariadb или postgresql или mysql (http://www.mysql.com/)
-#              openslp (http://www.openslp.org/)
 #              berkeley-db (для сборки slapd, но эта утилита устарела)
+#              mariadb или postgresql или mysql (http://www.mysql.com/)
+#              openslp                          (http://www.openslp.org/)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -36,7 +30,7 @@ mkdir -pv "${TMP_DIR}"
 # устанавливаем ТОЛЬКО клиентскую сторону и библиотеки
 
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-2.patch" || exit 1
 
 autoconf || exit 1
 ./configure           \
@@ -52,13 +46,16 @@ make || exit 1
 
 # при сборке только клиента и библиотек тесты не доступны
 
+make install DESTDIR="${TMP_DIR}"
+
 LDAP_CONF="/etc/openldap/ldap.conf"
 if [ -f "${LDAP_CONF}" ]; then
     mv "${LDAP_CONF}" "${LDAP_CONF}.old"
 fi
 
-make install
-make install DESTDIR="${TMP_DIR}"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LDAP_CONF}"
 

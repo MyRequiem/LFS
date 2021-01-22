@@ -159,3 +159,7 @@ http://www.linuxfromscratch.org/patches/blfs/10.0/net-tools-CVS_20101030-remove_
 http://sebastien.godard.pagesperso-orange.fr/sysstat-12.4.0.tar.xz
 http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.3p1.tar.gz
 https://www.libssh2.org/download/libssh2-1.9.0.tar.gz
+https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.0/cyrus-sasl-2.1.27-doc_fixes-1.patch
+ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.51.tgz
+http://www.linuxfromscratch.org/patches/blfs/10.0/openldap-2.4.51-consolidated-2.patch
