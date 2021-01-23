@@ -170,6 +170,10 @@ a/smartmontools.sh
 a/pciutils.sh
 d/cmake.sh
 n/gnupg.sh
+d/git.sh
+d/cmake.sh
+d/llvm.sh
+l/libidn2.sh
 
 
 # vim:ft=conf

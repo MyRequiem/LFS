@@ -10,7 +10,8 @@ afs                                 sudo
 apache-ant                          docbook-xsl
 apr
 argon2                              cryptsetup
-asciidoc
+asciidoc                            git
+asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
@@ -34,12 +35,12 @@ cmake                               json-c, libjpeg-turbo, llvm, brotli
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
-curl                                smartmontools, pciutils, cmake, gnupg
+curl                                smartmontools, pciutils, cmake, gnupg, git
 cyrus-sasl                          exim, openldap
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
-dblatex                             asciidoc
+dblatex                             asciidoc, git
 dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
@@ -49,6 +50,7 @@ dmraid                              libblockdev
 docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
+docbook2x                           git
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby
@@ -194,8 +196,8 @@ p7zip
 parted                              libblockdev
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib, swig, exim, mc
-pcre2                               wget, libbytesize
+pcre                                wget, slang, glib, swig, exim, mc, git
+pcre2                               wget, libbytesize, git
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
@@ -250,7 +252,7 @@ sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl
 stunnel                             curl
-subversion                          cmake
+subversion                          cmake, git
 sudo
 swig                                gpgme, volume-key
 sysstat                             openssh
@@ -259,7 +261,7 @@ tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
 thin-provisioning-tools             lvm2
 time
-tk                                  python2, python3, ruby
+tk                                  python2, python3, ruby, git
 tree
 trousers                            gnutls
 udisks
@@ -270,7 +272,7 @@ unrar
 unzip                               docbook-xml, mc
 upower
 usbutils
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git
 vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
@@ -282,7 +284,7 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
-xmlto                               pm-utils, dbus
+xmlto                               pm-utils, dbus, git
 xorg-libraries                      dbus
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
