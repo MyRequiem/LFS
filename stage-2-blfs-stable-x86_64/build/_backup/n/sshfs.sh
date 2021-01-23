@@ -16,7 +16,7 @@ PRGNAME="sshfs"
 # Required: fuse
 #           glib
 #           openssh
-# Optional: python3-docutils (для создания man-страниц)
+# Optional: python-docutils (для создания man-страниц)
 
 ROOT="/root"
 source "${ROOT}/check_environment.sh"                  || exit 1

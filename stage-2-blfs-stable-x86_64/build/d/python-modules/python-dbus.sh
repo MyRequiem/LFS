@@ -12,7 +12,7 @@ ARCH_NAME="dbus-python"
 #              glib
 # Recommended: no
 # Optional:    python-pygobject3
-#              python3-docutils
+#              python-docutils
 #              tap-py           (https://pypi.org/project/tap.py/)
 #              sphinx           (https://www.sphinx-doc.org/en/master/)
 #              sphinx-rtd-theme (https://github.com/readthedocs/sphinx_rtd_theme)

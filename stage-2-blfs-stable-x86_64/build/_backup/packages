@@ -534,7 +534,7 @@ python3                             (+) libxml2, talloc, vim, brotli,
 # Python Modules
   |- python-d-bus                   dbus, udisks
   |- python3-decorator
-  |- python3-docutils               sshfs
+  |- python-docutils                sshfs
   |- python3-pyatspi2
   |- python2-pycairo
   |- python3-pycairo

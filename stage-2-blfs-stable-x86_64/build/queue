@@ -174,6 +174,8 @@ d/git.sh
 d/cmake.sh
 d/llvm.sh
 l/libidn2.sh
+d/python-modules/python-docutils.sh
+d/python-modules/python-dbus.sh
 
 
 # vim:ft=conf
