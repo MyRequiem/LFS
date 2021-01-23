@@ -7,11 +7,6 @@ PRGNAME="curl"
 # различных серверов по множеству различных протоколов: FTP, FTPS, HTTP, HTTPS,
 # SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
 
-# http://www.linuxfromscratch.org/blfs/view/svn/basicnet/curl.html
-
-# Home page: https://curl.haxx.se/
-# Download:  https://curl.haxx.se/download/curl-7.71.1.tar.xz
-
 # Required:    no
 # Recommended: make-ca (runtime)
 # Optional:    brotli
@@ -33,12 +28,16 @@ PRGNAME="curl"
 #              stunnel     (для HTTPS and FTPS тестов)
 #              valgrind
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+mkdir -pv "${TMP_DIR}${DOCS}"
+
+# адаптируем тесты для python3
+grep -rl '#!.*python$' | xargs sed -i '1s/python/&3/'
 
 C_ARES="--disable-ares"
 LIBIDN2="--without-libidn2"
@@ -80,19 +79,16 @@ command -v rtmpdump   &>/dev/null && LIBRTMP="--with-librtmp=/usr"
 
 make || exit 1
 # make test
-make install
 make install DESTDIR="${TMP_DIR}"
 
+# документация
 rm -rf docs/examples/.deps
 find docs \( -name "Makefile*" -o -name "*.1" -o -name "*.3" \) -exec rm {} \;
-
-# документация
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -d -m755 "${DOCS}"
-install -v -d -m755 "${TMP_DIR}${DOCS}"
-
-cp -vR docs/* "${DOCS}"
 cp -vR docs/* "${TMP_DIR}${DOCS}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (command line URL data transfer tool)
