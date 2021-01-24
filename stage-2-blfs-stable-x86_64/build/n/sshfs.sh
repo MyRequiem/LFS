@@ -8,17 +8,13 @@ PRGNAME="sshfs"
 # расширению SFTP) таким образом, как будто они находятся на локальном
 # компьютере.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/sshfs.html
+# Required:    fuse
+#              glib
+#              openssh
+# Recommended: no
+# Optional:    python-docutils (для создания man-страниц)
 
-# Home page: https://github.com/libfuse/sshfs/
-# Download:  https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.0/sshfs-3.7.0.tar.xz
-
-# Required: fuse
-#           glib
-#           openssh
-# Optional: python-docutils (для создания man-страниц)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -34,8 +30,11 @@ meson             \
 
 ninja || exit 1
 # пакет не содержит набора тестов
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (filesystem client based on the SSH)

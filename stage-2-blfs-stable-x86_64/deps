@@ -69,7 +69,7 @@ fig2dev                             gnupg
 fltk                                pinentry
 fop                                 asciidoc
 fribidi
-fuse                                gnupg
+fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
 fwtk                                sudo
 gc                                  guile
@@ -78,7 +78,7 @@ gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
@@ -189,7 +189,7 @@ openjdk                             libidn, openssh, cyrus-sasl
 openldap                            sudo, gnupg, exim, cyrus-sasl, curl
 opensc                              openssh
 openslp                             openldap
-openssh                             libssh2
+openssh                             libssh2, sshfs
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
@@ -216,6 +216,7 @@ pth                                 libgcrypt, parted, libidn, openldap
 pytest                              fuse
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
+python-docutils                     python-dbus, sshfs
 python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyyaml                       llvm
@@ -224,7 +225,6 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils
 python3-dbusmock                    polkit, upower
-python-docutils                     python-dbus
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
 python3-pygments                    libbytesize
@@ -251,6 +251,7 @@ sphinx                              cmake, llvm, python-dbus, cyrus-sasl
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl
+sshfs
 stunnel                             curl
 subversion                          cmake, git
 sudo
