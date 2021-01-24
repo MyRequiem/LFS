@@ -45,6 +45,9 @@ def fix_pkg_name(name):
     if name == 'glib2':
         name = 'glib'
 
+    if name == 'freetype2':
+        name = 'freetype'
+
     return name
 
 
