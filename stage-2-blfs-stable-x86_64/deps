@@ -26,7 +26,7 @@ blfs-bootscripts
 bluez                               python2, python3, libpcap
 boost                               highlight, swig
 bpf-utils                           iptables
-brotli                              curl
+brotli                              curl, freetype
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
@@ -52,6 +52,7 @@ docbook-utils                       fcron
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 docbook2x                           git
+docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
 doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby
@@ -70,6 +71,7 @@ fig2dev                             gnupg
 fltk                                pinentry
 fop                                 asciidoc
 freetds                             apr-util
+freetype
 fribidi
 fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
@@ -94,6 +96,7 @@ gtk+2                               pinentry, vim
 gtk+3                               pinentry, vim
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev
 guile                               gnutls
+harfbuzz                            freetype
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 highlight
@@ -133,7 +136,7 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang
+libpng                              slang, freetype
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
@@ -281,7 +284,7 @@ vim                                 fcron
 volume-key                          libblockdev
 w3m                                 asciidoc
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xdg-user-dirs

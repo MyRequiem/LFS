@@ -178,6 +178,7 @@ d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
 n/sshfs.sh
 l/apr-util.sh
+l/freetype.sh
 
 
 # vim:ft=conf
