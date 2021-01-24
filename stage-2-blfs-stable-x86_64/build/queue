@@ -177,6 +177,7 @@ l/libidn2.sh
 d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
 n/sshfs.sh
+l/apr-util.sh
 
 
 # vim:ft=conf

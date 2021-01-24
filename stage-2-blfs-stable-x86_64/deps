@@ -8,7 +8,8 @@ acpid
 adns                                gnupg
 afs                                 sudo
 apache-ant                          docbook-xsl
-apr
+apr                                 apr-util
+apr-util
 argon2                              cryptsetup
 asciidoc                            git
 asciidoctor                         git
@@ -19,7 +20,7 @@ autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
 bcachefs                            libblockdev
-berkeley-db                         python3, ruby, cyrus-sasl, openldap
+berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
@@ -68,6 +69,7 @@ fftw
 fig2dev                             gnupg
 fltk                                pinentry
 fop                                 asciidoc
+freetds                             apr-util
 fribidi
 fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
@@ -161,13 +163,13 @@ lynx                                smartmontools, pciutils, asciidoc
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls, curl
-mariadb                             exim, cyrus-sasl, openldap
+mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mono                                libidn
 mozjs                               polkit
-mysql                               exim, cyrus-sasl, openldap
+mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
@@ -186,7 +188,7 @@ oniguruma                           slang
 open-mpi                            boost
 opendmarc                           exim
 openjdk                             libidn, openssh, cyrus-sasl
-openldap                            sudo, gnupg, exim, cyrus-sasl, curl
+openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util
 opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs
@@ -210,7 +212,7 @@ polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 popt                                cryptsetup
 postfix                             fcron, sudo, gnupg, at
-postgresql                          exim, cyrus-sasl, openldap
+postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
 pytest                              fuse
@@ -250,7 +252,7 @@ smartmontools
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
-sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl
+sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util
 sshfs
 stunnel                             curl
 subversion                          cmake, git
@@ -268,7 +270,7 @@ trousers                            gnutls
 udisks
 umockdev                            libgudev, upower
 unbound                             gnutls
-unixodbc                            openldap
+unixodbc                            openldap, apr-util
 unrar
 unzip                               docbook-xml, mc
 upower

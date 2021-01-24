@@ -6,22 +6,17 @@ PRGNAME="apr-util"
 # Пакет содержит дополнительные служебные интерфейсы для APR включая поддержку
 # XML, LDAP, интерфейсов базы данных, парсинга URI, и т.д.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/apr-util.html
+# Required:    apr
+# Recommended: no
+# Optional:    berkeley-db
+#              freetds (http://www.freetds.org/)
+#              mariadb or mysql (https://www.mysql.com/)
+#              openldap
+#              postgresql
+#              sqlite
+#              unixodbc
 
-# Home page: https://apr.apache.org/
-# Download:  https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
-
-# Required: apr
-# Optional: berkeley-db
-#           freetds (http://www.freetds.org/)
-#           mariadb or mysql (https://www.mysql.com/)
-#           openldap
-#           postgresql
-#           sqlite
-#           unixodbc
-#           nss
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -60,8 +55,11 @@ command -v createdb   &>/dev/null && POSTGRESQL="--with-pgsql"
 
 make || exit 1
 # make test
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Apache Portable Runtime utilities)
