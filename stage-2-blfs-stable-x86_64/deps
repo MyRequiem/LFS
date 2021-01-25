@@ -11,7 +11,7 @@ apache-ant                          docbook-xsl
 apr                                 apr-util
 apr-util
 argon2                              cryptsetup
-asciidoc                            git
+asciidoc                            git, graphite2
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
@@ -32,7 +32,7 @@ c-ares                              nodejs, curl
 c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
@@ -41,7 +41,7 @@ cyrus-sasl                          exim, openldap
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
-dblatex                             asciidoc, git
+dblatex                             asciidoc, git, graphite2
 dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
@@ -55,7 +55,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -69,10 +69,10 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fonttools                           harfbuzz
+fonttools                           harfbuzz, graphite2
 fop                                 asciidoc
 freetds                             apr-util
-freetype                            harfbuzz
+freetype                            harfbuzz, graphite2
 fribidi
 fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
@@ -92,13 +92,14 @@ gobject-introspection               glib, libgudev, polkit, upower, udisks, libb
 gpgme                               volume-key
 gpm                                 aalib, mc, vim
 gptfdisk                            udisks
+graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby
 gtk+2                               pinentry, vim
 gtk+3                               pinentry, vim
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz
 guile                               gnutls
-harfbuzz                            freetype
+harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 highlight
@@ -106,7 +107,7 @@ http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs, harfbuzz
 imagemagick7                        gnupg
 impacket                            curl
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2
 iptables
 isl                                 gcc
 iso-codes
@@ -252,6 +253,7 @@ sg3-utils
 sgml-common                         docbook-xml
 shared-mime-info                    glib
 sharutils                           berkeley-db
+silgraphite                         graphite2
 slang                               aalib, mc
 smartmontools
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl
@@ -266,7 +268,7 @@ swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3, ruby, git

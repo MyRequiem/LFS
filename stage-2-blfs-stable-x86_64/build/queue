@@ -179,7 +179,9 @@ d/python-modules/python-dbus.sh
 n/sshfs.sh
 l/apr-util.sh
 l/freetype.sh
+ap/graphite2.sh
 l/harfbuzz.sh
+ap/graphite2.sh
 l/freetype.sh
 
 
