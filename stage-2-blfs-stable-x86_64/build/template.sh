@@ -17,6 +17,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -46,4 +47,7 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # fi
 # config_file_processing "${CONFIG}"
 
-# source "${ROOT}/xorg_config.sh" "${PRGNAME}"           || exit 1
+# source "${ROOT}/xorg_config.sh"                        || exit 1
+# # shellcheck disable=SC2086
+# ./configure        \
+#     ${XORG_CONFIG} || exit 1

@@ -183,6 +183,7 @@ ap/graphite2.sh
 l/harfbuzz.sh
 ap/graphite2.sh
 l/freetype.sh
+x/util-macros.sh
 
 
 # vim:ft=conf

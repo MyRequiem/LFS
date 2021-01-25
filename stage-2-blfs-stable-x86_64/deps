@@ -282,6 +282,7 @@ unrar
 unzip                               docbook-xml, mc
 upower
 usbutils
+util-macros
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git
 vbetool                             pm-utils
 vim                                 fcron
