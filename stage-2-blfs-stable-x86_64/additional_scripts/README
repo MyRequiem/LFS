@@ -9,3 +9,4 @@
     ./unpack_source_archive.sh
     ./update-info-db.sh
     ./write_to_var_log_packages.sh
+    ./xorg_config.sh
