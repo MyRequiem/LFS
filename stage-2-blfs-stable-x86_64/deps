@@ -11,7 +11,7 @@ apache-ant                          docbook-xsl
 apr                                 apr-util
 apr-util
 argon2                              cryptsetup
-asciidoc                            git, graphite2
+asciidoc                            git, graphite2, xorgproto
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
@@ -70,7 +70,7 @@ fftw
 fig2dev                             gnupg
 fltk                                pinentry
 fonttools                           harfbuzz, graphite2
-fop                                 asciidoc
+fop                                 asciidoc, xorgproto
 freetds                             apr-util
 freetype                            harfbuzz, graphite2
 fribidi
@@ -155,7 +155,7 @@ libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto
 libyaml                             python-pyyaml, libblockdev, ruby
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
 llvm                                icu, mozjs
@@ -282,7 +282,7 @@ unrar
 unzip                               docbook-xml, mc
 upower
 usbutils
-util-macros
+util-macros                         xorgproto
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git
 vbetool                             pm-utils
 vim                                 fcron
@@ -295,8 +295,9 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
-xmlto                               pm-utils, dbus, git
+xmlto                               pm-utils, dbus, git, xorgproto
 xorg-libraries                      dbus
+xorgproto
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm

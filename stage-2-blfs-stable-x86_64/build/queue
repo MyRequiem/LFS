@@ -184,6 +184,7 @@ l/harfbuzz.sh
 ap/graphite2.sh
 l/freetype.sh
 x/util-macros.sh
+x/xorgproto.sh
 
 
 # vim:ft=conf
