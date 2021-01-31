@@ -154,6 +154,7 @@ libtirpc                            rpcbind, lsof, libnsl
 libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
+libxau
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -297,7 +298,7 @@ xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto
 xorg-libraries                      dbus
-xorgproto
+xorgproto                           libxau
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
