@@ -70,7 +70,7 @@ fftw
 fig2dev                             gnupg
 fltk                                pinentry
 fonttools                           harfbuzz, graphite2
-fop                                 asciidoc, xorgproto
+fop                                 asciidoc, xorgproto, libxdmcp
 freetds                             apr-util
 freetype                            harfbuzz, graphite2
 fribidi
@@ -155,8 +155,9 @@ libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libxau
+libxdmcp
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp
 libyaml                             python-pyyaml, libblockdev, ruby
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
 llvm                                icu, mozjs
@@ -296,9 +297,9 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
-xmlto                               pm-utils, dbus, git, xorgproto
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp
 xorg-libraries                      dbus
-xorgproto                           libxau
+xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
