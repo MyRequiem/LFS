@@ -39,7 +39,7 @@ SQLITE=0
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
-make                                \
+make -j1                            \
     BUILD_OPT=1                     \
     USE_SYSTEM_ZLIB=1               \
     ZLIB_LIBS=-lz                   \
