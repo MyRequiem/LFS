@@ -188,6 +188,7 @@ x/xorgproto.sh
 x/libxau.sh
 x/libxdmcp.sh
 x/xcb-proto.sh
+x/libxcb.sh
 
 
 # vim:ft=conf
