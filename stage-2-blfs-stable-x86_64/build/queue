@@ -189,6 +189,7 @@ x/libxau.sh
 x/libxdmcp.sh
 x/xcb-proto.sh
 x/libxcb.sh
+d/perl/perl-sgmlspm.sh
 
 
 # vim:ft=conf

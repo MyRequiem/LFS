@@ -212,6 +212,7 @@ pcre2                               wget, libbytesize, git
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
+perl-sgmlspm
 pinentry                            gnupg
 pm-utils
 pocketlint                          libbytesize
