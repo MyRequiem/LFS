@@ -48,7 +48,7 @@ desktop-file-utils                  glib
 digest-crc                          parted
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
-docbook-utils                       fcron
+docbook-utils                       fcron, fontconfig
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
 docbook2x                           git
@@ -69,10 +69,11 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
+fontconfig
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp
 freetds                             apr-util
-freetype                            harfbuzz, graphite2
+freetype                            harfbuzz, graphite2, fontconfig
 fribidi
 fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
@@ -107,12 +108,12 @@ http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs, harfbuzz
 imagemagick7                        gnupg
 impacket                            curl
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig
 iptables
 isl                                 gcc
 iso-codes
 itstool
-json-c                              cryptsetup
+json-c                              cryptsetup, fontconfig
 kernel-firmware
 krb4                                cyrus-sasl
 libaio                              lvm2
@@ -157,7 +158,7 @@ libuv                               cmake, nodejs
 libxau                              libxcb
 libxcb
 libxdmcp                            libxcb
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb
 libyaml                             python-pyyaml, libblockdev, ruby
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
@@ -212,7 +213,7 @@ pcre2                               wget, libbytesize, git
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
-perl-sgmlspm
+perl-sgmlspm                        fontconfig
 pinentry                            gnupg
 pm-utils
 pocketlint                          libbytesize
@@ -272,7 +273,7 @@ swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3, ruby, git

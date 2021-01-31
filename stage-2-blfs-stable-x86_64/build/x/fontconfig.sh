@@ -6,18 +6,15 @@ PRGNAME="fontconfig"
 # Библиотека и инструменты, разработанные для конфигурации общесистемных
 # шрифтов
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/fontconfig.html
+# Required:    freetype
+# Recommended: no
+# Optional:    json-c
+#              docbook-utils
+#              libxml2
+#              texlive или install-tl-unx
+#              perl-sgmlspm
 
-# Home page: https://www.freedesktop.org/wiki/Software/fontconfig/
-# Download:  https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.1.tar.bz2
-
-# Required: freetype
-# Optional: docbook-utils
-#           libxml2
-#           texlive или install-tl-unx
-#           perl-sgmlspm
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
@@ -50,6 +47,7 @@ command -v sgmlspl      &>/dev/null && PERL_SGMLSPM="true"
 
 make || exit 1
 # make check
+make install DESTDIR="${TMP_DIR}"
 
 # Конфигурация Fontconfig
 # -----------------------
@@ -80,42 +78,30 @@ make || exit 1
 #
 # Описание файлов конфигурации: /etc/fonts/conf.d/README
 
-FONTS_CONF="/etc/fonts/fonts.conf"
-if [ -f "${FONTS_CONF}" ]; then
-    mv "${FONTS_CONF}" "${FONTS_CONF}.old"
-fi
-
-make install
-make install DESTDIR="${TMP_DIR}"
-
-config_file_processing "${FONTS_CONF}"
-
 # если мы не устанавливали документацию, то установим ее вручную
 if [[ "x${INSTALL_DOCS}" == "x--disable-docs" ]]; then
     DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
     MAN="/usr/share/man"
 
-    install -v -dm755 "${DOCS}/fontconfig-devel"
-    install -v -dm755 "${TMP_DIR}${DOCS}/fontconfig-devel"
-
-    install -v -dm755 "${MAN}"/man{1,3,5}
+    install -v -dm755 "${TMP_DIR}${DOCS}"
     install -v -dm755 "${TMP_DIR}${MAN}"/man{1,3,5}
 
-    install -v -m644 fc-*/*.1 "${MAN}/man1"
-    install -v -m644 fc-*/*.1 "${TMP_DIR}${MAN}/man1"
-
-    install -v -m644 doc/*.3   "${MAN}/man3"
-    install -v -m644 doc/*.3   "${TMP_DIR}${MAN}/man3"
-
-    install -v -m644 doc/fonts-conf.5 "${MAN}/man5"
+    install -v -m644 doc/*.{txt,html} "${TMP_DIR}${DOCS}"
+    install -v -m644 fc-*/*.1         "${TMP_DIR}${MAN}/man1"
+    install -v -m644 doc/*.3          "${TMP_DIR}${MAN}/man3"
     install -v -m644 doc/fonts-conf.5 "${TMP_DIR}${MAN}/man5"
-
-    install -v -m644 doc/fontconfig-devel/* "${DOCS}/fontconfig-devel"
-    install -v -m644 doc/fontconfig-devel/* "${TMP_DIR}${DOCS}/fontconfig-devel"
-
-    install -v -m644 doc/*.{pdf,sgml,txt,html} "${DOCS}"
-    install -v -m644 doc/*.{pdf,sgml,txt,html} "${TMP_DIR}${DOCS}"
 fi
+
+FONTS_CONFIG="/etc/fonts/fonts.conf"
+if [ -f "${FONTS_CONFIG}" ]; then
+    mv "${FONTS_CONFIG}" "${FONTS_CONFIG}.old"
+fi
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${FONTS_CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Font library and tools)
