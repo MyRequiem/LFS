@@ -156,7 +156,7 @@ libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libxau
 libxdmcp
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp
 libyaml                             python-pyyaml, libblockdev, ruby
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
@@ -233,7 +233,7 @@ python-pyyaml                       llvm
 python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto
 python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection
 python3-markdown                    gobject-introspection
@@ -294,6 +294,7 @@ wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
+xcb-proto
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
