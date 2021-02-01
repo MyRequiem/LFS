@@ -47,16 +47,21 @@ command -v pcre2-config &>/dev/null && PCRE2="--with-libpcre2" && \
 
 make || exit 1
 
+###
+# NOTE:
+###
+#    html-документацию и man-страницы устанавливаем из скачанных архивов
+#
 # html-документация
 ASCIIDOC=""
-command -v asciidoc &>/dev/null && ASCIIDOC="true"
+# command -v asciidoc &>/dev/null && ASCIIDOC="true"
 if [ -n "${ASCIIDOC}" ]; then
     make html
 fi
 
 # man-страницы
 XMLTO=""
-command -v xmlto &>/dev/null && XMLTO="true"
+# command -v xmlto &>/dev/null && XMLTO="true"
 if [[ -n "${ASCIIDOC}" && -n "${XMLTO}" ]]; then
     make man
 fi
