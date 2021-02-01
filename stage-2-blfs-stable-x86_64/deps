@@ -41,7 +41,7 @@ cyrus-sasl                          exim, openldap
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
-dblatex                             asciidoc, git, graphite2
+dblatex                             asciidoc, git, graphite2, xmlto
 dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
@@ -50,8 +50,8 @@ directfb                            links
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
 docbook-utils                       fcron, fontconfig
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool
-docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto
+docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto
 docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
@@ -60,6 +60,7 @@ doxygen                             icu, fuse, libexif, libusb, libyaml, popt, m
 dtrace                              ruby
 ducktype                            dbus
 ed
+elinks                              xmlto
 elogind                             dbus, polkit, udisks, xorg-libraries
 emacs                               guile, pinentry, libidn
 etc-issue
@@ -72,7 +73,7 @@ fig2dev                             gnupg
 fltk                                pinentry
 fontconfig                          xorg-libraries
 fonttools                           harfbuzz, graphite2
-fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries
+fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig
 fribidi
@@ -163,9 +164,9 @@ libxau                              libxcb
 libxcb                              xorg-libraries
 libxdmcp                            libxcb
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb. xmlto
 libyaml                             python-pyyaml, libblockdev, ruby
-links                               xorg-libraries
+links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
 llvm                                icu, mozjs
 lm-sensors
@@ -174,7 +175,7 @@ lsof
 lua                                 highlight, vim
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
-lynx                                smartmontools, pciutils, asciidoc, xorg-libraries
+lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
 lzip                                ed
 lzo                                 libarchive
 make-ca                             wget, p11-kit, gnutls, curl
@@ -211,6 +212,7 @@ opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
 parted                              libblockdev
+passivetex                          xmlto
 passwdqc                            cryptsetup
 pciutils
 pcre                                wget, slang, glib, swig, exim, mc, git
@@ -298,7 +300,7 @@ valgrind                            python2, python3, libksba, libxml2, pcre, pc
 vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
-w3m                                 asciidoc, xorg-libraries
+w3m                                 asciidoc, xmlto, xorg-libraries
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils

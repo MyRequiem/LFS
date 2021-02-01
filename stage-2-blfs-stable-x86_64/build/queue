@@ -187,6 +187,7 @@ x/util-macros.sh
 x/xorgproto.sh
 l/libevent.sh
 n/links.sh
+s/xmlto.sh
 x/libxau.sh
 x/libxdmcp.sh
 x/xcb-proto.sh

@@ -7,20 +7,16 @@ PRGNAME="xmlto"
 # таблицу стилей для преобразования и применяет ее, используя внешний
 # XSLT-процессор. Также выполняет любую необходимую последующую обработку.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/pst/xmlto.html
+# Required:    docbook-xml
+#              docbook-xsl
+#              libxslt
+# Recommended: no
+# Optional:    fop
+#              dblatex                https://sourceforge.net/projects/dblatex/files/dblatex/
+#              passivetex             http://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html
+#              links или lynx или w3m (http://w3m.sourceforge.net/) или elinks (http://elinks.or.cz/)
 
-# Home page: https://pagure.io/xmlto
-# Download:  https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.bz2
-
-# Required: docbook-xml
-#           docbook-xsl
-#           libxslt
-# Optional: fop
-#           dblatex https://sourceforge.net/projects/dblatex/files/dblatex/
-#           passivetex http://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html
-#           links или lynx или w3m (http://w3m.sourceforge.net/) или elinks (http://elinks.or.cz/)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -35,8 +31,11 @@ LINKS="/usr/bin/links" \
 
 make || exit 1
 # make check
-make install
 make install DESTDIR="${TMP_DIR}"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (front-end to a XSL toolchain)
