@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib, exim, mc, vim, openssh
+X Window System                     aalib, exim, mc, vim, openssh, links
 aalib
 acpid
 adns                                gnupg
@@ -46,6 +46,7 @@ dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
 desktop-file-utils                  glib
 digest-crc                          parted
+directfb                            links
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
 docbook-utils                       fcron, fontconfig
@@ -91,7 +92,7 @@ gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz
 gpgme                               volume-key
-gpm                                 aalib, mc, vim
+gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
@@ -124,7 +125,7 @@ libatomic-ops                       gc
 libblockdev                         udisks
 libbytesize                         libblockdev
 libedit                             sqlite, pcre2, openssh
-libevent
+libevent                            links
 libexif
 libgcrypt                           libxslt, gnupg, libssh2
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
@@ -132,7 +133,7 @@ libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
 libiscsi                            udisks
-libjpeg-turbo
+libjpeg-turbo                       links
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -141,10 +142,11 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype
+libpng                              slang, freetype, links
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
+librsvg                             links
 librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
@@ -152,6 +154,7 @@ libsectok                           openssh
 libsigc++
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
+libtiff                             links
 libtirpc                            rpcbind, lsof, libnsl
 libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
@@ -271,6 +274,7 @@ sshfs
 stunnel                             curl
 subversion                          cmake, git
 sudo
+svgalib                             links
 swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
