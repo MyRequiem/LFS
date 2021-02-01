@@ -49,14 +49,14 @@ make || exit 1
 
 # html-документация
 ASCIIDOC=""
-# command -v asciidoc &>/dev/null && ASCIIDOC="true"
+command -v asciidoc &>/dev/null && ASCIIDOC="true"
 if [ -n "${ASCIIDOC}" ]; then
     make html
 fi
 
 # man-страницы
 XMLTO=""
-# command -v xmlto &>/dev/null && XMLTO="true"
+command -v xmlto &>/dev/null && XMLTO="true"
 if [[ -n "${ASCIIDOC}" && -n "${XMLTO}" ]]; then
     make man
 fi
