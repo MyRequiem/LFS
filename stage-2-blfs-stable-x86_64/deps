@@ -55,7 +55,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -124,6 +124,7 @@ libatomic-ops                       gc
 libblockdev                         udisks
 libbytesize                         libblockdev
 libedit                             sqlite, pcre2, openssh
+libevent
 libexif
 libgcrypt                           libxslt, gnupg, libssh2
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
