@@ -38,7 +38,7 @@ XMLTO="--disable-xml-docs"
 DUCKTYPE="--disable-ducktype-docs"
 
 # command -v doxygen  &>/dev/null && DOXYGEN="--enable-doxygen-docs"
-# command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
+command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
 # command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
 
 ./configure                                         \
