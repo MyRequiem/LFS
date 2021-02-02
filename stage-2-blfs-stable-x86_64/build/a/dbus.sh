@@ -8,12 +8,12 @@ PRGNAME="dbus"
 # потребностей IPC пользовательских приложений.
 
 # Required:    no
-# Recommended: Xorg Libraries
+# Recommended: xorg-libraries
 #              elogind
 #              ---
 #              Note:
 #              Эти две зависимости кольцевые, т.е. сначала собираем без них,
-#              затем пересобираем dbus после установки Xorg Libraries, и затем
+#              затем пересобираем dbus после установки xorg-libraries, и затем
 #              после установки elogind
 #              ---
 # Optional:    dbus-glib            (для тестов)
