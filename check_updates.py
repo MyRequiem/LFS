@@ -5,6 +5,7 @@
 checking LFS and BLFS update
 """
 
+import re
 import urllib.request
 from glob import glob as Glob
 
@@ -51,17 +52,16 @@ def fix_pkg_name(name):
     return name
 
 
-def main(repo):
+def main(repo, repo_version):
     """
     main
     """
 
     book_url = 'http://www.linuxfromscratch.org'
-    # full_url = '{0}/{1}/errata/stable/'.format(book_url, repo)
-    full_url = '{0}/{1}/errata/10.0/'.format(book_url, repo)
-    print('### {0}'.format(full_url))
+    errata_url = '{0}/{1}/errata/{2}/'.format(book_url, repo, repo_version)
+    print('### {0}'.format(errata_url))
 
-    response = urllib.request.urlopen(full_url)
+    response = urllib.request.urlopen(errata_url)
     soup = BeautifulSoup(response,
                          from_encoding=response.info().get_param('charset'),
                          features='html.parser')
@@ -127,11 +127,20 @@ def main(repo):
             soup = BeautifulSoup(resp,
                                  from_encoding=resp.info().get_param('charset'),
                                  features='html.parser')
-            new_version = soup.find_all('h1')
-            if not new_version:
-                new_version = ''
+            if pkg['pkg_name'] == 'xorg-libraries':
+                # версия пакета xorg-libraries == версии библиотеки libX11,
+                # поэтому ищем на странице тег <code> и в нем libX11-x.x.x.tar.
+                code_content = soup.findAll('code')[0].contents[0]
+                pattern = r'libX11-([^\s]+)\.tar'
+                result = re.search(pattern, code_content)
+                new_version = result.group(1)
             else:
-                new_version = new_version[0].contents[2].split('-')[-1].strip()
+                new_version = soup.find_all('h1')
+                if not new_version:
+                    new_version = ''
+                else:
+                    new_version = new_version[0].contents[2]
+                    new_version = new_version.split('-')[-1].strip()
 
             update = '{0}[{1}] '.format(clrs['reset'], system_version)
             if new_version and system_version != new_version:
@@ -151,5 +160,5 @@ def main(repo):
                                 clrs['reset']))
 
 
-main('lfs')
-main('blfs')
+main('lfs', '10.0')
+main('blfs', '10.0')
