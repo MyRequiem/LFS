@@ -56,7 +56,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -306,7 +306,8 @@ which                               pciutils, aspell, boost, lvm2, lm-sensors, m
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
 xcb-proto                           libxcb
-xcb-util                            xcb-util-image
+xcb-util                            xcb-util-image, xcb-util-cursor
+xcb-util-cursor
 xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
