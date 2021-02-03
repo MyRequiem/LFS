@@ -198,6 +198,7 @@ d/perl/perl-sgmlspm.sh
 x/fontconfig.sh
 x/xorg-libraries.sh
 a/dbus.sh
+x/xcb-util.sh
 
 
 # vim:ft=conf

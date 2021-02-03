@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libxcb to allow reuse by other projects, such as additional language
 # bindings, protocol dissectors, or documentation generators.
 #
-# Home page: https://www.x.org
+# Home page: https://xcb.freedesktop.org/
 # Download:  https://xorg.freedesktop.org/archive/individual/proto/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

@@ -3,11 +3,11 @@
 PRGNAME="libxcb"
 
 ### libxcb (X protocol C-language Binding)
-# Библиотеки предоставляющие интерфейс для протокола X Window System, который
-# полностью заменяет Xlib. Фактически, libX11 в наибольшей степени использует
-# libxcb. В портировании на XCB есть несколько преимуществ, такие как
-# использование меньшего объема памяти, скрытие задержки, прямой доступ по
-# протоколу и улучшенная поддержка потоков.
+# Библиотеки предоставляющие интерфейс для протокола XCB (X protocol C-language
+# Binding), который полностью заменяет Xlib. Фактически, libX11 в наибольшей
+# степени использует libxcb. В портировании на XCB есть несколько преимуществ,
+# такие как использование меньшего объема памяти, скрытие задержки, прямой
+# доступ по протоколу и улучшенная поддержка потоков.
 
 # Required:    libxau
 #              xcb-proto
@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # support. Xlib can also use XCB as a transport layer, allowing software to
 # make requests and receive responses with both.
 #
-# Home page: https://www.x.org
+# Home page: https://xcb.freedesktop.org/
 # Download:  https://xorg.freedesktop.org/archive/individual/lib/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
