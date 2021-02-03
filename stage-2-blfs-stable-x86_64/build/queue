@@ -202,6 +202,7 @@ x/xcb-util.sh
 x/xcb-util-image.sh
 x/xcb-util-keysyms.sh
 x/xcb-util-renderutil.sh
+x/xcb-util-wm.sh
 
 
 # vim:ft=conf
