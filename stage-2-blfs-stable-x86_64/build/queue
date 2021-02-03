@@ -201,6 +201,7 @@ a/dbus.sh
 x/xcb-util.sh
 x/xcb-util-image.sh
 x/xcb-util-keysyms.sh
+x/xcb-util-renderutil.sh
 
 
 # vim:ft=conf
