@@ -30,12 +30,13 @@ brotli                              curl, freetype
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz
+cairo                               gobject-introspection, harfbuzz, libdrm
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
+cunit                               libdrm
 curl                                smartmontools, pciutils, cmake, gnupg, git
 cyrus-sasl                          exim, openldap
 cython                              yasm
@@ -50,8 +51,8 @@ directfb                            links
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
 docbook-utils                       fcron, fontconfig
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto
-docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm
+docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm
 docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
@@ -122,9 +123,10 @@ libaio                              lvm2
 libarchive                          cmake, ed
 libassuan                           pinentry, gnupg, gpgme
 libatasmart                         udisks
-libatomic-ops                       gc
+libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
+libdrm
 libedit                             sqlite, pcre2, openssh
 libevent                            links
 libexif
@@ -164,7 +166,7 @@ libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb. xmlto
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
@@ -296,7 +298,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm
 vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
@@ -316,7 +318,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                      dbus
+xorg-libraries                      dbus, libdrm
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus

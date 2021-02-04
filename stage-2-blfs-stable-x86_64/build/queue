@@ -204,6 +204,7 @@ x/xcb-util-keysyms.sh
 x/xcb-util-renderutil.sh
 x/xcb-util-wm.sh
 x/xcb-util-cursor.sh
+x/libdrm.sh
 
 
 # vim:ft=conf
