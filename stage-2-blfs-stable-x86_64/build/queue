@@ -205,6 +205,7 @@ x/xcb-util-renderutil.sh
 x/xcb-util-wm.sh
 x/xcb-util-cursor.sh
 x/libdrm.sh
+x/libva.sh
 
 
 # vim:ft=conf

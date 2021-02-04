@@ -57,7 +57,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -112,6 +112,7 @@ icu                                 libxml2, boost, mozjs, nodejs, harfbuzz
 imagemagick7                        gnupg
 impacket                            curl
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig
+intel-gpu-tools                     libva
 iptables
 isl                                 gcc
 iso-codes
@@ -126,7 +127,7 @@ libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
-libdrm
+libdrm                              libva
 libedit                             sqlite, pcre2, openssh
 libevent                            links
 libexif
@@ -162,6 +163,7 @@ libtirpc                            rpcbind, lsof, libnsl
 libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
+libva
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
@@ -184,6 +186,7 @@ make-ca                             wget, p11-kit, gnutls, curl
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
+mesa                                libva
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mono                                libidn
 mozjs                               polkit
@@ -303,6 +306,7 @@ vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries
+wayland                             libva
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
