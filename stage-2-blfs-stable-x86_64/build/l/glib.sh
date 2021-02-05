@@ -48,18 +48,18 @@ mkdir build
 cd build || exit 1
 
 # если установлен пакет gtk-doc, то можно собрать и установить API документацию
-GTK_DOC="-Dgtk_doc=false"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
+GTK_DOC="false"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
 
 # устанавливать man-страницы
 #    -Dman=true
 # отключить поддержку selinux
 #    -Dselinux=disabled
-meson                  \
-    --prefix=/usr      \
-    -Dman=true         \
-    -Dselinux=disabled \
-    "${GTK_DOC}"       \
+meson                      \
+    --prefix=/usr          \
+    -Dman=true             \
+    -Dselinux=disabled     \
+    -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
 
 ninja || exit 1
@@ -147,7 +147,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # object system.
 #
 # Home page: https://www.gtk.org/
-# Download:  http://ftp.gnome.org/pub/gnome/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

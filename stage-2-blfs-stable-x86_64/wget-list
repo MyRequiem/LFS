@@ -113,8 +113,8 @@ http://www.tcpdump.org/release/libpcap-1.10.0.tar.gz
 http://www.netfilter.org/projects/iptables/files/iptables-1.8.5.tar.bz2
 http://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
 https://dbus.freedesktop.org/releases/dbus/dbus-1.12.20.tar.gz
-https://download.gnome.org/sources/glib/2.66/glib-2.66.4.tar.xz
-http://www.linuxfromscratch.org/patches/blfs/svn/glib-2.66.4-skip_warnings-1.patch
+https://download.gnome.org/sources/glib/2.66/glib-2.66.6.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/svn/glib-2.66.6-skip_warnings-1.patch
 https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-1.1.1.tar.gz
 https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.1.3.tar.gz
 https://files.pythonhosted.org/packages/fd/d6/9eeda2f440ef798c8222b77d7355199345ce3477941d8a02a2024ccb9ed2/Markdown-3.3.3.tar.gz
@@ -163,7 +163,7 @@ https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyru
 http://www.linuxfromscratch.org/patches/blfs/10.0/cyrus-sasl-2.1.27-doc_fixes-1.patch
 ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.51.tgz
 http://www.linuxfromscratch.org/patches/blfs/10.0/openldap-2.4.51-consolidated-2.patch
-https://curl.haxx.se/download/curl-7.74.0.tar.xz
+https://curl.haxx.se/download/curl-7.75.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-2.28.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-manpages-2.28.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.28.0.tar.xz
