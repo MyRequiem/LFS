@@ -32,6 +32,7 @@ btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm
+cairo-5c                            xorg-applications
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm
 cmocka                              gnutls
@@ -147,7 +148,7 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype, links
+libpng                              slang, freetype, links, xorg-applications
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
@@ -175,7 +176,7 @@ libxml2                             python2-libxml2, libarchive, llvm, libxslt, 
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
-linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
+linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications
 llvm                                icu, mozjs, mesa
 lm-sensors                          mesa
 lsb-tools
@@ -190,7 +191,7 @@ make-ca                             wget, p11-kit, gnutls, curl
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
-mesa                                libva, libvdpau
+mesa                                libva, libvdpau, xorg-applications
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mono                                libidn
@@ -203,6 +204,7 @@ nettle                              libarchive, gnutls, mesa
 nftables                            iptables
 nghttp2                             cmake, nodejs, curl
 ngtcp2                              curl
+nickle                              xorg-applications
 nodejs
 npm                                 nodejs
 npth                                gnupg
@@ -317,9 +319,9 @@ wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
-xbitmaps
+xbitmaps                            xorg-applications
 xcb-proto                           libxcb
-xcb-util                            xcb-util-image, xcb-util-cursor
+xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications
 xcb-util-cursor
 xcb-util-image
 xcb-util-keysyms
@@ -329,6 +331,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
+xorg-applications
 xorg-libraries                      dbus, libdrm, libvdpau, mesa
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo

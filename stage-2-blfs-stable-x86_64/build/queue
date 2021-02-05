@@ -211,6 +211,7 @@ x/mesa.sh
 x/libva.sh
 x/libvdpau.sh
 x/xbitmaps.sh
+x/xorg-applications.sh
 
 
 # vim:ft=conf
