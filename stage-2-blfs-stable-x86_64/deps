@@ -305,7 +305,7 @@ unrar
 unzip                               docbook-xml, mc
 upower
 usbutils
-util-macros                         xorgproto
+util-macros                         xorgproto, xbitmaps
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa
 vbetool                             pm-utils
 vim                                 fcron
@@ -317,6 +317,7 @@ wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
 wxwidgets                           p7zip
+xbitmaps
 xcb-proto                           libxcb
 xcb-util                            xcb-util-image, xcb-util-cursor
 xcb-util-cursor
