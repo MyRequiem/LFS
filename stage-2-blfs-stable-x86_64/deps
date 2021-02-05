@@ -20,6 +20,7 @@ autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
 bcachefs                            libblockdev
+bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util
 bindfs                              glib
 blfs-bootscripts
@@ -127,11 +128,11 @@ libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
-libdrm                              libva
+libdrm                              libva, mesa
 libedit                             sqlite, pcre2, openssh
 libevent                            links
 libexif
-libgcrypt                           libxslt, gnupg, libssh2
+libgcrypt                           libxslt, gnupg, libssh2, mesa
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
@@ -160,11 +161,13 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libtiff                             links
 libtirpc                            rpcbind, lsof, libnsl
+libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
+libunwind                           mesa
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
-libva
-libvdpau
+libva                               mesa
+libvdpau                            mesa
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
@@ -173,8 +176,8 @@ libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, ascii
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl
-llvm                                icu, mozjs
-lm-sensors
+llvm                                icu, mozjs, mesa
+lm-sensors                          mesa
 lsb-tools
 lsof
 lua                                 highlight, vim
@@ -188,6 +191,7 @@ mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mesa                                libva, libvdpau
+mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mono                                libidn
 mozjs                               polkit
@@ -195,7 +199,7 @@ mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
-nettle                              libarchive, gnutls
+nettle                              libarchive, gnutls, mesa
 nftables                            iptables
 nghttp2                             cmake, nodejs, curl
 ngtcp2                              curl
@@ -251,7 +255,7 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto
 python3-dbusmock                    polkit, upower
-python3-mako                        gobject-introspection
+python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
 python3-pygments                    libbytesize
 qt5                                 cmake, highlight, pinentry, gpgme
@@ -302,12 +306,13 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa
 vbetool                             pm-utils
 vim                                 fcron
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries
 wayland                             libva
+wayland-protocols                   mesa
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
@@ -323,7 +328,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                      dbus, libdrm, libvdpau
+xorg-libraries                      dbus, libdrm, libvdpau, mesa
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus

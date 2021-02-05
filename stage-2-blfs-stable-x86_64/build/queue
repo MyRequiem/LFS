@@ -207,6 +207,9 @@ x/xcb-util-cursor.sh
 x/libdrm.sh
 x/libva.sh
 x/libvdpau.sh
+x/mesa.sh
+x/libva.sh
+x/libvdpau.sh
 
 
 # vim:ft=conf
