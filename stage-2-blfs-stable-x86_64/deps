@@ -57,7 +57,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -98,7 +98,7 @@ gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
-graphviz                            libexif, llvm, gpgme, ruby
+graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim
 gtk+3                               pinentry, vim
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz
@@ -111,7 +111,7 @@ http-parser                         nodejs
 icu                                 libxml2, boost, mozjs, nodejs, harfbuzz
 imagemagick7                        gnupg
 impacket                            curl
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
 intel-gpu-tools                     libva
 iptables
 isl                                 gcc
@@ -164,6 +164,7 @@ libunistring                        guile, libidn2, gnutls
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva
+libvdpau
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
@@ -186,7 +187,7 @@ make-ca                             wget, p11-kit, gnutls, curl
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
-mesa                                libva
+mesa                                libva, libvdpau
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mono                                libidn
 mozjs                               polkit
@@ -286,7 +287,7 @@ swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
 thin-provisioning-tools             lvm2
 time
 tk                                  python2, python3, ruby, git
@@ -322,7 +323,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                      dbus, libdrm
+xorg-libraries                      dbus, libdrm, libvdpau
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus

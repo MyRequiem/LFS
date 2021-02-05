@@ -7,7 +7,9 @@ PRGNAME="libva"
 # аппаратному обеспечению для ускорения обработки видео и разгрузки ЦП
 
 # Required:    libdrm
-# Recommended: mesa
+# Recommended: mesa (циклическая зависимость: сначала собираем libva без
+#                    поддержки egl и glx, т.е. без пакета mesa, и после
+#                    установки mesa пересобираем libva)
 # Optional:    doxygen
 #              wayland
 #              intel-gpu-tools
