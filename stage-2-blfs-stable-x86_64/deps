@@ -327,12 +327,13 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xcursor-themes
+xcursor-themes                      xorg-fonts
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
 xorg-applications                   xcursor-themes
+xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo

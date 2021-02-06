@@ -213,6 +213,7 @@ x/libvdpau.sh
 x/xbitmaps.sh
 x/xorg-applications.sh
 x/xcursor-themes.sh
+x/xorg-fonts.sh
 
 
 # vim:ft=conf
