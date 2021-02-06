@@ -136,6 +136,7 @@ xvinfo \
 xwd \
 xwininfo \
 xwud \
+bdftopcf \
 "
 
 for PKGNAME in ${PACKAGES}; do
