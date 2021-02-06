@@ -214,6 +214,7 @@ x/xbitmaps.sh
 x/xorg-applications.sh
 x/xcursor-themes.sh
 x/xorg-fonts.sh
+x/xkeyboard-config.sh
 
 
 # vim:ft=conf

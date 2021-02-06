@@ -334,12 +334,13 @@ xfsprogs                            lvm2, udisks
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
 xorg-applications                   xcursor-themes
 xorg-fonts
-xorg-libraries                      dbus, libdrm, libvdpau, mesa
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl, mc
+xkeyboard-config
 
 
 # vim:ft=conf nowrap
