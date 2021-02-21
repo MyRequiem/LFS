@@ -144,7 +144,7 @@ for PKGNAME in ${PACKAGES}; do
 
     # директория для установки собранного пакета
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
-    mkdir -pv "${PKG_INSTALL_DIR}"
+    mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
     make install DESTDIR="${PKG_INSTALL_DIR}" || {
         show_error "'make install' for ${PKGNAME} package"
@@ -170,6 +170,29 @@ for PKGNAME in ${PACKAGES}; do
             install-info --dir-file="${INFO}/dir" "${FILE}" 2>/dev/null
         done
     fi
+
+    # имя пакета в нижний регистр
+    PKGNAME="$(echo "${PKGNAME}" | tr '[:upper:]' '[:lower:]')"
+
+    # пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
+    (
+        cd "${PKG_INSTALL_DIR}" || exit 1
+
+        LOG="var/log/packages/${PKGNAME}-${VERSION}"
+        cat << EOF > "${LOG}"
+# Package: ${PKGNAME}
+#
+###
+# This package is part of '${PRGNAME}' package
+###
+#
+EOF
+        find . | cut -d . -f 2- | sort >> "${LOG}"
+        # удалим пустые строки в файле
+        sed -i '/^$/d' "${LOG}"
+        # комментируем все пути
+        sed -i 's/^\//# \//g' "${LOG}"
+    )
 
     # копируем собранный пакет в директорию основного пакета и в корень системы
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* "${TMP_PACKAGE}"/
