@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-libraries"
+PKG_VERSION="7"
 
 ### Xorg Libraries (Xorg libraries)
 # Библиотеки Xorg, которые используются во всех X Window приложения
@@ -96,20 +97,11 @@ get_pkg_version() {
     echo "${TARBOL_VERSION}"
 }
 
-# версию пакета xorg-libraries устанавливаем как версию libX11
-XORG_LIBRARIES_VERSION="$(get_pkg_version libX11)"
-
-# если версия не найдена
-if [ -z "${XORG_LIBRARIES_VERSION}" ]; then
-    show_error "Version for 'libX11' package not found in ${SOURCES}"
-    exit 1
-fi
-
-TMP="/tmp/build-${PRGNAME}-${XORG_LIBRARIES_VERSION}"
+TMP="/tmp/build-${PRGNAME}-${PKG_VERSION}"
 rm -rf "${TMP}"
 
 # директория для сборки всего пакета
-TMP_PACKAGE="${TMP}/package-${PRGNAME}-${XORG_LIBRARIES_VERSION}"
+TMP_PACKAGE="${TMP}/package-${PRGNAME}-${PKG_VERSION}"
 mkdir -pv "${TMP_PACKAGE}"
 
 # директория для распаковки исходников
@@ -259,7 +251,7 @@ for PKGNAME in ${PACKAGES}; do
 
     # директория для установки собранного пакета
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
-    mkdir -pv "${PKG_INSTALL_DIR}"
+    mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
     make install DESTDIR="${PKG_INSTALL_DIR}" || {
         show_error "'make install' for ${PKGNAME} package"
@@ -286,6 +278,29 @@ for PKGNAME in ${PACKAGES}; do
         done
     fi
 
+    # имя пакета в нижний регистр
+    PKGNAME="$(echo "${PKGNAME}" | tr '[:upper:]' '[:lower:]')"
+
+    # пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
+    (
+        cd "${PKG_INSTALL_DIR}" || exit 1
+
+        LOG="var/log/packages/${PKGNAME}-${VERSION}"
+        cat << EOF > "${LOG}"
+# Package: ${PKGNAME}
+#
+###
+# This package is part of '${PRGNAME}' package
+###
+#
+EOF
+        find . | cut -d . -f 2- | sort >> "${LOG}"
+        # удалим пустые строки в файле
+        sed -i '/^$/d' "${LOG}"
+        # комментируем все пути
+        sed -i 's/^\//# \//g' "${LOG}"
+    )
+
     # копируем собранный пакет в директорию основного пакета и в корень системы
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* "${TMP_PACKAGE}"/
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* /
@@ -296,7 +311,7 @@ for PKGNAME in ${PACKAGES}; do
     /sbin/ldconfig
 done
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${XORG_LIBRARIES_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # Package: ${PRGNAME} (Xorg libraries)
 #
 # The Xorg libraries provide library routines that are used within all X Window
@@ -308,7 +323,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${XORG_LIBRARIES_VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_PACKAGE}" "${PRGNAME}-${XORG_LIBRARIES_VERSION}"
+    "${TMP_PACKAGE}" "${PRGNAME}-${PKG_VERSION}"
 
 echo -e "\n---------------\nRemoving *.la files..."
 remove-la-files.sh
