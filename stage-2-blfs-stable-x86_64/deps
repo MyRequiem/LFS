@@ -34,12 +34,12 @@ c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm
 cairo-5c                            xorg-applications
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
 cunit                               libdrm
-curl                                smartmontools, pciutils, cmake, gnupg, git
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc
 cyrus-sasl                          exim, openldap
 cython                              yasm
 dag                                 libpcap
@@ -86,7 +86,7 @@ fwtk                                sudo
 gc                                  guile
 gcc
 gcr                                 pinentry
-gdb                                 python3, gcc, guile, glib, openssh
+gdb                                 python3, gcc, guile, glib, openssh, rustc
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz
@@ -158,7 +158,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libsigc++
-libssh2                             curl
+libssh2                             curl, rustc
 libtasn1                            p11-kit, gnutls
 libtiff                             links
 libtirpc                            rpcbind, lsof, libnsl
@@ -177,7 +177,7 @@ libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, ascii
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications
-llvm                                icu, mozjs, mesa
+llvm                                icu, mozjs, mesa, rustc
 lm-sensors                          mesa
 lsb-tools
 lsof
@@ -253,7 +253,7 @@ python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, mozjs, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto
 python3-dbusmock                    polkit, upower
@@ -269,6 +269,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm, vim
 ruby                                docbook-xsl, vim
+rustc                               mozjs
 samba                               mc, curl
 saxon6                              docbook-xsl
 sendmail                            fcron, sudo, gnupg, at
@@ -331,6 +332,7 @@ xcursor-themes                      xorg-fonts
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
+xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
 xorg-applications                   xcursor-themes
 xorg-fonts
@@ -340,7 +342,6 @@ yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl, mc
-xkeyboard-config
 
 
 # vim:ft=conf nowrap

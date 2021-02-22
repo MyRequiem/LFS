@@ -87,7 +87,7 @@ n/libgcrypt.sh
 d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh
-d/mozjs.sh
+d/mozjs.sh (v68)
 ap/unrar.sh
 d/nodejs.sh
 s/sgml-common.sh
@@ -215,6 +215,7 @@ x/xorg-applications.sh
 x/xcursor-themes.sh
 x/xorg-fonts.sh
 x/xkeyboard-config.sh
+d/rustc.sh
 
 
 # vim:ft=conf
