@@ -3,6 +3,7 @@
 ###***###
 perl                                xml-parser, vim
 kernel-generic                      iptables
+python3                             meson
 
 
 # vim:ft=conf

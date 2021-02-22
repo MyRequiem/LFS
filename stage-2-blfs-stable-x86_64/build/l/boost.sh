@@ -8,7 +8,7 @@ PRGNAME="boost"
 # лаконичного кодирования различных повседневных подзадач программирования
 # (работа с данными, алгоритмами, файлами, потоками и т. п.)
 
-# Required:    no
+# Required:    python3
 # Recommended: which
 # Optional:    icu
 #              open-mpi (https://www.open-mpi.org/)

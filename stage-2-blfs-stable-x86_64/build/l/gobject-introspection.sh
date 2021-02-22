@@ -8,6 +8,7 @@ PRGNAME="gobject-introspection"
 # для привязок, проверки API и генерация документации.
 
 # Required:    glib
+#              python3
 # Recommended: no
 # Optional:    cairo                (для тестов)
 #              gjs                  (для прохождния одного теста)

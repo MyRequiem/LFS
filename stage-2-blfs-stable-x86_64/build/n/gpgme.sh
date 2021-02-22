@@ -15,6 +15,7 @@ PRGNAME="gpgme"
 #              gnupg    (если qt5 или swig установлены, используется для тестов)
 #              clisp
 #              python2
+#              python3
 #              qt5      (для языковых привязок и сборки библиотеки libqgpgme.so)
 #              swig     (для языковых привязок)
 

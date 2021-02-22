@@ -6,6 +6,7 @@ PRGNAME="libbytesize"
 # Библиотека для работы с общими операциями размеров в байтах
 
 # Required:    pcre2
+#              python3
 #              python3-pygments
 # Recommended: no
 # Optional:    gtk-doc

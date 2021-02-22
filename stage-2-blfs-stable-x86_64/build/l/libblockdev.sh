@@ -11,6 +11,7 @@ PRGNAME="libblockdev"
 #              libyaml
 #              parted
 #              volume-key
+#              python3
 # Recommended: no
 # Optional:    gtk-doc
 #              btrfs-progs

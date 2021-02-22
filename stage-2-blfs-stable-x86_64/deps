@@ -255,7 +255,7 @@ python-pyyaml                       llvm
 python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, llvm, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
 python2-libxml2                     libxslt, docbook-xsl
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, gobject-introspection, libbytesize, gpgme, libblockdev, boost
 python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
