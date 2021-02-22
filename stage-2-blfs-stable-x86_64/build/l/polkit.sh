@@ -85,7 +85,7 @@ autoreconf -fi &&                       \
     "${MAN_PAGES}"                      \
     "${GTK_DOC}"                        \
     --with-authfw=${AUTHFW}             \
-    --enable-libsystemd-login=no        \
+    --disable-libsystemd-login          \
     --enable-libelogind="${LIBELOGIND}" \
     --enable-introspection="${INTROSPECTION}" || exit 1
 
@@ -93,9 +93,6 @@ make || exit 1
 
 ### тесты
 # для прохождения тестового набора должен быть запущен системный демон D-Bus
-#
-# cp ../polkitbackendjsauthoritytest-wrapper.py test/polkitbackend/
-# chmod 755 test/polkitbackend/polkitbackendjsauthoritytest-wrapper.py
 # make check
 
 make install DESTDIR="${TMP_DIR}"
