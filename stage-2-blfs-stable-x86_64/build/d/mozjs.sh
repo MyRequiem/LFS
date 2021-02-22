@@ -9,12 +9,10 @@ ARCH_NAME="firefox"
 
 # Required:    autoconf213
 #              icu
-#              python2
+#              rustc
 #              which
 # Recommended: no
-# Optional:    llvm    (собранный с clang)
-#              nasm
-#              doxygen (для создания документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -35,13 +33,8 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# система сборки Firefox выполняет поиск rustc и cargo. Поскольку мы строим
-# автономный движок JS, а не весь браузер, они фактически не используются,
-# поэтому удалим ссылку на них, чтобы мы могли собрать mozjs без rustc и cargo
-sed '21,+4d' -i js/moz.configure || exit 1
-
-mkdir mozjs-build
-cd mozjs-build || exit 1
+mkdir obj
+cd obj || exit 1
 
 # обязательно передаем в окружение переменную SHELL, иначе конфигурация
 # завершится ошибкой
@@ -57,16 +50,15 @@ export SHELL
 # jemalloc который содержит mozjs конфликтует с malloc из glibc, поэтому
 # отключаем его
 #    --disable-jemalloc
-CC=gcc CXX=g++ LLVM_OBJDUMP=/bin/false \
-../js/src/configure                    \
-    --prefix=/usr                      \
-    --with-intl-api                    \
-    --with-system-zlib                 \
-    --with-system-icu                  \
-    --disable-jemalloc                 \
-    --disable-debug-symbols            \
-    --enable-readline                  \
-    --enable-unaligned-private-values || exit 1
+CC=gcc CXX=g++                  \
+../js/src/configure             \
+    --prefix=/usr               \
+    --with-intl-api             \
+    --with-system-zlib          \
+    --with-system-icu           \
+    --disable-jemalloc          \
+    --disable-debug-symbols     \
+    --enable-readline || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

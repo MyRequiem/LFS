@@ -216,6 +216,8 @@ x/xcursor-themes.sh
 x/xorg-fonts.sh
 x/xkeyboard-config.sh
 d/rustc.sh
+d/mozjs.sh (v78)
+l/polkit.sh
 
 
 # vim:ft=conf
