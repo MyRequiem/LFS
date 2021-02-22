@@ -20,6 +20,9 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
 
+# исправим проблему сборки с Python3 v3.9.0 и выше
+sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c}
+
 # отключим один тест, который препятствует полному их выполнению
 sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
 
@@ -36,7 +39,6 @@ command -v icuinfo &>/dev/null && ICU="--with-icu"
     --prefix=/usr    \
     --disable-static \
     --with-history   \
-    --with-threads   \
     "${ICU}"         \
     --with-python=/usr/bin/python3 || exit 1
 
