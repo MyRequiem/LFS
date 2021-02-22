@@ -32,9 +32,9 @@ makeinfo --plaintext       -o doc/gcrypt.txt           doc/gcrypt.texi
 
 # если в системе установлен texlive или install-tl-unx, можно создать
 # документацию в форматах pdf и ps
-# PDF_PS_DOC=""
+PDF_PS_DOC=""
 # command -v texdoc &>/dev/null && PDF_PS_DOC="true"
-# [ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
+[ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
 
 # make check
 
@@ -48,9 +48,9 @@ install -v -m644 doc/gcrypt_nochunks.html "${TMP_DIR}${DOCS}"
 install -v -m644 doc/gcrypt.html/*        "${TMP_DIR}${DOCS}/html"
 
 # если мы собирали документацию в pdf и ps форматах
-# if [ -n "${PDF_PS_DOC}" ]; then
-#     install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
-# fi
+if [ -n "${PDF_PS_DOC}" ]; then
+    install -v -m644 doc/gcrypt.{pdf,ps,dvi} "${TMP_DIR}${DOCS}"
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
