@@ -219,6 +219,8 @@ d/rustc.sh
 d/mozjs.sh (v78)
 l/polkit.sh
 l/atk.sh
+l/shared-mime-info.sh
+l/glib.sh
 
 
 # vim:ft=conf

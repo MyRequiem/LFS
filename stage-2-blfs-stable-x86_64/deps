@@ -90,7 +90,7 @@ gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
@@ -119,7 +119,7 @@ intel-gpu-tools                     libva
 iptables
 isl                                 gcc
 iso-codes
-itstool
+itstool                             shared-mime-info
 json-c                              cryptsetup, fontconfig
 kernel-firmware
 krb4                                cyrus-sasl
@@ -173,7 +173,7 @@ libvdpau                            mesa
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
@@ -334,7 +334,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xkeyboard-config
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
 xorg-applications                   xcursor-themes
 xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config

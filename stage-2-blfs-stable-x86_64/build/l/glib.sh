@@ -17,8 +17,8 @@ PRGNAME="glib"
 #              gtk-doc (для сборки API документации, см. конфигурацию ниже)
 #              glib-networking
 #              gobject-introspection
-#              shared-mime-info   (для тестов)
-#              desktop-file-utils (для тестов)
+#              shared-mime-info
+#              desktop-file-utils
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
