@@ -218,6 +218,7 @@ x/xkeyboard-config.sh
 d/rustc.sh
 d/mozjs.sh (v78)
 l/polkit.sh
+l/atk.sh
 
 
 # vim:ft=conf

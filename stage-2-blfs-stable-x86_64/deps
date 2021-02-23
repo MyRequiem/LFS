@@ -16,6 +16,7 @@ asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
+atk
 autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
@@ -89,12 +90,12 @@ gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
 git                                 cmake, llvm, libidn2
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk
 glib-networking                     glib
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -103,7 +104,7 @@ graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim
 gtk+3                               pinentry, vim
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
