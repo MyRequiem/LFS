@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2020a"
+TZDATA_VERSION="2021a"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -28,6 +28,11 @@ mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 #    /var/cache/nscd    - для nscd
 #    /var/lib/nss_db    - для nss_db
 patch --verbose -Nvp1 -i "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
+
+# исправим ошибку, которая вызывает проблемы с приложениями запущенными в среде
+# chroot
+sed -e '402a\      *result = local->data.services[database_index];' \
+    -i nss/nss_database.c
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
@@ -59,25 +64,12 @@ cd build || exit 1
 make || make -j1 || exit 1
 
 # для тестов меняем ссылку
-#    /lib/ld-linux-x86-64.so.2 -> ld-2.32.so
+#    /lib/ld-linux-x86-64.so.2 -> ld-2.3x.so
 # на только что собранную библиотеку ld-linux-x86-64.so.2
 #    /lib/ld-linux-x86-64.so.2 -> <sources_tree>/build/elf/ld-linux-x86-64.so.2
 #
 # На этапе установки пакета она обратно перезапишется на правильную
-ln -svfn "${PWD}/elf/ld-linux-x86-64.so.2" /lib
-
-# набор тестов Glibc зависит от хост-системы. Список наиболее распространенных
-# проблем с тестами в среде LFS:
-#    - io/tst-lchmod не работает в среде chroot LFS
-#    - misc/tst-ttyname не работает в среде chroot LFS
-#    - nss/tst-nss-files-hosts-multi может завершиться неудачей по причинам,
-#       которые не были определены
-#    - rt/tst-cputimer{1,2,3} зависят от ядра хост-системы. Известно, что
-#       ядра 4.14.91–4.14.96, 4.19.13–4.19.18 и 4.20.0–4.20.5 вызывают сбой
-#       этих тестов
-#    - математические тесты иногда не проходят при работе в системах, где
-#       ЦП не является относительно новым процессором Intel или AMD
-#
+# ln -svfn "${PWD}/elf/ld-linux-x86-64.so.2" /lib
 # make check
 
 # если конфиг динамического загрузчика /etc/ld.so.conf не существует, то на
@@ -150,7 +142,7 @@ ZONEINFO_DIR="${TMP_DIR}${ZONEINFO}"
 # компилируем файлы временных зон и помещаем их в /usr/share/zoneinfo
 tar -xvf "${SOURCES}/tzdata${TZDATA_VERSION}.tar.gz" || exit 1
 for TZ in etcetera southamerica northamerica europe africa antarctica \
-        asia australasia backward pacificnew systemv; do
+        asia australasia backward; do
     zic -L /dev/null   -d "${ZONEINFO_DIR}"       "${TZ}"
     zic -L /dev/null   -d "${ZONEINFO_DIR}/posix" "${TZ}"
     zic -L leapseconds -d "${ZONEINFO_DIR}/right" "${TZ}"
@@ -238,9 +230,9 @@ EOF
 # NOTE:
 #    Устанавливаем все, кроме /lib, т.к. она уже установлена 'make install'.
 #    Если мы будем пытаться скопировать ${TMP_DIR}/lib в корень LFS системы, то
-#    библиотека /lib/ld-2.32.so естественно будет занята и копирование
+#    библиотека /lib/ld-2.3x.so естественно будет занята и копирование
 #    прервется с ошибкой:
-#       /bin/cp: cannot create regular file '/lib/ld-2.32.so': Text file busy
+#       /bin/cp: cannot create regular file '/lib/ld-2.3x.so': Text file busy
 /bin/cp -vR "${TMP_DIR}"/etc  /
 /bin/cp -vR "${TMP_DIR}"/sbin /
 /bin/cp -vR "${TMP_DIR}"/usr  /
