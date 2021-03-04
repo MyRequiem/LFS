@@ -15,6 +15,7 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/lib"
 
 make || make -j1 || exit 1
+# make check
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
 # удалим статическую библиотеку
