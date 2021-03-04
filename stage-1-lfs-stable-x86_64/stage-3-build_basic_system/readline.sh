@@ -43,20 +43,27 @@ make SHLIB_LIBS="-lncursesw" install DESTDIR="${TMP_DIR}"
 (
     cd "${TMP_DIR}" || exit 1
     mv -v usr/lib/lib{readline,history}.so.* lib/
-    chmod -v u+w lib/lib{readline,history}.so.*
 
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -svf "../../lib/$(readlink libreadline.so)" libreadline.so
     ln -svf "../../lib/$(readlink libhistory.so)"  libhistory.so
 )
 
-# устновим документацию
-install -v -m644 doc/*.{ps,pdf,html,dvi} \
-    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+# устновим html-документацию
+install -v -m644 doc/*.html "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 # удалим не нужную документацию
 rm -rf "${TMP_DIR}/usr/share/doc/readline"
 
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (line input library with editing features)
