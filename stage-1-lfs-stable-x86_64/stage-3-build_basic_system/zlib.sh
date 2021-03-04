@@ -34,6 +34,8 @@ make install DESTDIR="${TMP_DIR}"
     cd "${TMP_DIR}" || exit 1
     mv -v usr/lib/libz.so.* lib/
     ln -sfv "../../lib/$(readlink usr/lib/libz.so)" usr/lib/libz.so
+    # удалим бесполезную статическую библиотеку libz.a
+    rm -fv "${TMP_DIR}/usr/lib/libz.a"
 )
 
 /bin/cp -vR "${TMP_DIR}"/* /
