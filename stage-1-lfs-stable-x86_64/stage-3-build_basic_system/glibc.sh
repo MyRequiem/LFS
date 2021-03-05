@@ -243,6 +243,15 @@ config_file_processing "${NSCD_CONFIG}"
 config_file_processing "${NSSWITCH_CONFIG}"
 config_file_processing "${LD_SO_CONFIG}"
 
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU C libraries)
 #
