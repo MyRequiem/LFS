@@ -55,7 +55,7 @@ http://ftp.gnu.org/gnu/ncurses/ncurses-6.2.tar.gz
 https://github.com/ninja-build/ninja/archive/v1.10.0/ninja-1.10.0.tar.gz
 https://www.openssl.org/source/openssl-1.1.1g.tar.gz
 http://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.xz
-https://www.cpan.org/src/5.0/perl-5.32.0.tar.xz
+https://www.cpan.org/src/5.0/perl-5.32.1.tar.xz
 https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
 https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-3.3.16.tar.xz
 https://sourceforge.net/projects/psmisc/files/psmisc/psmisc-23.4.tar.xz
