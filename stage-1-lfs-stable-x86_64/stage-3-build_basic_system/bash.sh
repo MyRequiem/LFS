@@ -4,7 +4,6 @@ PRGNAME="bash"
 
 ### Bash (Bourne-Again SHell - sh-compatible shell)
 # Командная оболочка UNIX
-
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -13,9 +12,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/bin"
 
-# применим патч с некоторыми исправлениями
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+# исправим ошибку сборки в несколько потоков
+sed -i '/^bashline.o:.*shmbchar.h/a bashline.o: ${DEFDIR}/builtext.h' \
+    Makefile.in
 
 # использовать библиотеку readline, которая уже устанавлена в системе вместо
 # использования собственной внутренней версии
@@ -48,6 +47,17 @@ mv -fv "${TMP_DIR}/usr/bin/bash" "${TMP_DIR}/bin"
 # создадим ссылку sh -> bash в /bin/
 ln -svf bash /bin/sh
 ln -svf bash "${TMP_DIR}/bin/sh"
+
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Bourne-Again SHell - sh-compatible shell)
