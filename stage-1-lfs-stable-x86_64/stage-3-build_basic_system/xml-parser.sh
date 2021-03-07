@@ -17,7 +17,7 @@ mkdir -pv "${TMP_DIR}"
 
 perl Makefile.PL
 make
-make test
+# make test
 make install DESTDIR="${TMP_DIR}"
 
 /bin/cp -vR "${TMP_DIR}"/* /
