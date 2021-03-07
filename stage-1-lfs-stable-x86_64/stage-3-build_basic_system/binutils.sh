@@ -6,6 +6,12 @@ PRGNAME="binutils"
 # Пакет содержит компоновщик, ассемблер и другие инструменты для работы с
 # объектными файлами
 
+###
+# NOTE:
+###
+# При обновлении binutils, пакет пересобираем и устанавливаем дважды, и только
+# потом удаляем библиотеки передыдущей версии
+
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -77,7 +83,21 @@ make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
+# удалим бесполезные статические библиотеки
+rm -vf "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,opcodes}.a
+
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU binary development tools)
