@@ -87,11 +87,22 @@ mv -v "${TMP_DIR}/usr/share/man/man1/chroot.1" \
     "${TMP_DIR}/usr/share/man/man8/chroot.8"
 sed -i 's/"1"/"8"/' "${TMP_DIR}/usr/share/man/man8/chroot.8"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 # утилиту 'cp' переместим в /tmp, т.к. ее нужно будет скопировать в /bin из
 # только что собранного пакета
 mv /bin/cp /tmp
 /tmp/cp -vR "${TMP_DIR}"/* /
 rm -f /tmp/cp
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (core GNU utilities)
