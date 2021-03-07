@@ -54,6 +54,8 @@ install -v -m644 doc/*.html "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 # удалим не нужную документацию
 rm -rf "${TMP_DIR}/usr/share/doc/readline"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
 
 # система документации Info использует простые текстовые файлы в
