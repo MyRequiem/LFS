@@ -13,19 +13,12 @@ source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
 
-makeinfo --html --no-split -o doc/dejagnu.html doc/dejagnu.texi || exit 1
-makeinfo --plaintext       -o doc/dejagnu.txt  doc/dejagnu.texi || exit 1
-
 make install DESTDIR="${TMP_DIR}"
-
-# установим документацию
-install -v -m644   doc/dejagnu.{html,txt} "${TMP_DIR}${DOCS}"
 
 # тесты
 # make check
