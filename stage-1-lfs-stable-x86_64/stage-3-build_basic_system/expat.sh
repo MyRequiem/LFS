@@ -11,20 +11,16 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure          \
     --prefix=/usr    \
     --disable-static \
-    --docdir="${DOCS}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-# установим документацию
-install -v -m644 doc/*.{html,png,css} "${TMP_DIR}${DOCS}"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
