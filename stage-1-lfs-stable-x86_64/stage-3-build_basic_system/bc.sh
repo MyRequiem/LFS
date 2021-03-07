@@ -23,7 +23,6 @@ mkdir -pv "${TMP_DIR}"
 #    -O3
 PREFIX=/usr       \
 CC=gcc            \
-CFLAGS="-std=c99" \
 ./configure.sh    \
     -G            \
     -O3 || exit 1
