@@ -243,6 +243,8 @@ config_file_processing "${NSCD_CONFIG}"
 config_file_processing "${NSSWITCH_CONFIG}"
 config_file_processing "${LD_SO_CONFIG}"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 # система документации Info использует простые текстовые файлы в
 # /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
 # который мы обновим
