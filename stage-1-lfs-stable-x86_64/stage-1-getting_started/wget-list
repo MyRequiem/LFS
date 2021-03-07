@@ -69,8 +69,7 @@ https://github.com/systemd/systemd/archive/v246/systemd-246.tar.gz
 http://anduin.linuxfromscratch.org/LFS/systemd-man-pages-246.tar.xz
 http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.97.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.32.tar.xz
-https://downloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz
-https://downloads.sourceforge.net/tcl/tcl8.6.10-html.tar.gz
+https://downloads.sourceforge.net/tcl/tcl8.6.11-src.tar.gz
 http://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz
 https://www.iana.org/time-zones/repository/releases/tzdata2021a.tar.gz
 http://anduin.linuxfromscratch.org/LFS/udev-lfs-20171102.tar.xz

@@ -16,8 +16,7 @@ VERSION=$(echo "${SOURCES}/${PRGNAME}"*-src.tar.?z* | rev | cut -d / -f 1 | \
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 BUILD_DIR="${SOURCES}/build"
 mkdir -p "${BUILD_DIR}"
@@ -43,16 +42,16 @@ sed -e "s|${SRCDIR}/unix|/usr/lib|" \
     -e "s|${SRCDIR}|/usr/include|"  \
     -i tclConfig.sh || exit 1
 
-sed -e "s|${SRCDIR}/unix/pkgs/tdbc1.1.1|/usr/lib/tdbc1.1.1|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.1/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.1/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.1|/usr/include|"            \
-    -i pkgs/tdbc1.1.1/tdbcConfig.sh || exit 1
+sed -e "s|${SRCDIR}/unix/pkgs/tdbc1.1.2|/usr/lib/tdbc1.1.2|" \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.2/generic|/usr/include|"    \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.2/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.2|/usr/include|"            \
+    -i pkgs/tdbc1.1.2/tdbcConfig.sh || exit 1
 
-sed -e "s|${SRCDIR}/unix/pkgs/itcl4.2.0|/usr/lib/itcl4.2.0|" \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.0/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.0|/usr/include|"            \
-    -i pkgs/itcl4.2.0/itclConfig.sh || exit 1
+sed -e "s|${SRCDIR}/unix/pkgs/itcl4.2.1|/usr/lib/itcl4.2.1|" \
+    -e "s|${SRCDIR}/pkgs/itcl4.2.1/generic|/usr/include|"    \
+    -e "s|${SRCDIR}/pkgs/itcl4.2.1|/usr/include|"            \
+    -i pkgs/itcl4.2.1/itclConfig.sh || exit 1
 
 # запускаем тестовый набор Tcl
 # make test
@@ -69,9 +68,9 @@ make install-private-headers DESTDIR="${TMP_DIR}"
 # создаем символическую ссылку в /usr/bin/ tclsh -> tclsh${MAJ_VERSION}
 ln -sv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 
-# установим документацию
-tar xvf "${SOURCES}/${PRGNAME}${VERSION}"-html.tar.?z* --strip-components=1 \
-    -C "${TMP_DIR}${DOCS}" || exit 1
+# переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
+# устанавливается с пакетом Perl
+mv "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
