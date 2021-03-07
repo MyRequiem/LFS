@@ -19,9 +19,7 @@ mkdir -pv "${TMP_DIR}/bin"
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-
 # пакет не содержит набора тестов
-
 make install DESTDIR="${TMP_DIR}"
 
 # переместим программы 'killall' и 'fuser' из /usr/bin в /bin
