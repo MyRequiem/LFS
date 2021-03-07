@@ -15,10 +15,11 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr/lib/pkgconfig"
 
-./configure       \
-    --prefix=/usr \
-    --libdir=/lib \
-    --disable-debuginfod || exit 1
+./configure              \
+    --prefix=/usr        \
+    --libdir=/lib        \
+    --disable-debuginfod \
+    --enable-libdebuginfod=dummy || exit 1
 
 make || make -j1 || exit 1
 
