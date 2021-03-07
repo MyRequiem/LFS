@@ -22,16 +22,27 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 # сборка html-документации
-make html || exit 1
+# make html || exit 1
 
 # набор тестов для Mpfr на данном этапе считается критическим. Нельзя
 # пропускать его ни при каких обстоятельствах
 # make check
 
 make install DESTDIR="${TMP_DIR}"
-make install-html DESTDIR="${TMP_DIR}"
+# make install-html DESTDIR="${TMP_DIR}"
+
+rm -f "${TMP_DIR}/usr/share/info/dir"
 
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Multiple-Precision Floating-Point Reliable Library)
