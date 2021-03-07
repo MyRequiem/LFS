@@ -15,22 +15,22 @@ mkdir -pv "${TMP_DIR}/sbin"
 
 # опции позволяют Kmod обрабатывать сжатые модули ядра
 #    --with-xz
+#    --with-zstd
 #    --with-zlib
 # гарантирует, что файлы, относящиеся к разным библиотекам, будут размещены в
 # правильных каталогах
 #    --with-rootlibdir=/lib
-./configure                \
-    --prefix=/usr          \
-    --bindir=/bin          \
-    --sysconfdir=/etc      \
-    --with-rootlibdir=/lib \
-    --with-xz              \
-    --with-zlib || exit 1
+./configure           \
+    --prefix=/usr     \
+    --bindir=/bin     \
+    --sysconfdir=/etc \
+    --with-xz         \
+    --with-zstd       \
+    --with-zlib       \
+    --with-rootlibdir=/lib || exit 1
 
 make || make -j1 || exit 1
-
 # пакет поставляется без набора тестов, которые можно запустить в среде chroot
-
 make install DESTDIR="${TMP_DIR}"
 
 # для совместимости с Module-Init-Tools (пакет, который ранее работал с
