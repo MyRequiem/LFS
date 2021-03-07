@@ -16,8 +16,7 @@ VERSION=$(echo "${SOURCES}/${PRGNAME}"*.tar.?z* | rev | cut -d / -f 1 | \
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 BUILD_DIR="${SOURCES}/build"
 mkdir -p "${BUILD_DIR}"
@@ -36,8 +35,7 @@ cd "${PRGNAME}${VERSION}" || exit 1
     --with-tcl=/usr/lib            \
     --enable-shared                \
     --mandir=/usr/share/man        \
-    --with-tclinclude=/usr/include \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --with-tclinclude=/usr/include || exit 1
 
 make || make -j1 || exit 1
 
@@ -49,9 +47,6 @@ make install DESTDIR="${TMP_DIR}"
 # ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so
 ln -svf "expect${VERSION}/libexpect${VERSION}.so" "${TMP_DIR}/usr/lib"
-
-# документация
-cp ChangeLog FAQ NEWS README "${TMP_DIR}${DOCS}/"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
