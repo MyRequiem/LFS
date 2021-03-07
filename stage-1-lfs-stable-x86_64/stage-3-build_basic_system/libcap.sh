@@ -16,29 +16,27 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/lib"
 
 # запретим установку статической библиотеки
-sed -i '/install -m.*STACAPLIBNAME/d' libcap/Makefile
+sed -i '/install -m.*STA/d' libcap/Makefile
 
 # собирать библиотеки с префиксом /lib, а не /lib64
 #    lib=lib
-make lib=lib || make -j1 lib=lib || exit 1
+make prefix=/usr lib=lib || make -j1 prefix=/usr lib=lib || exit 1
 
 # make test
 
 # установить библиотеку в $prefix/lib, а не в $prefix/lib64 и путь к директории
 # pkgconfig
 #    lib=lib PKGCONFIGDIR=...
-make lib=lib PKGCONFIGDIR=/usr/lib/pkgconfig install DESTDIR="${TMP_DIR}"
+make prefix=/usr lib=lib install DESTDIR="${TMP_DIR}"
 
-# исправим права для /lib/libcap.so.${VERSION}
-chmod -v 755 "${TMP_DIR}/lib/libcap.so.${VERSION}"
-
-# переместим libpsx.a из /lib в /usr/lib
-mv -v "${TMP_DIR}/lib/libpsx.a" "${TMP_DIR}/usr/lib"
-
-# удалим ссылку /lib/libcap.so и создадим ее в /usr/lib
-rm -vf "${TMP_DIR}/lib/libcap.so"
+# переместим библиотеки из /usr/lib в /lib и восстановим ссылки в /usr/lib
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-ln -sfv "../../lib/libcap.so.${MAJ_VERSION}" "${TMP_DIR}/usr/lib/libcap.so"
+for LIBNAME in cap psx; do
+    mv -v "${TMP_DIR}/usr/lib/lib${LIBNAME}.so."* "${TMP_DIR}/lib"
+    ln -sfv "../../lib/lib${LIBNAME}.so.${MAJ_VERSION}" \
+        "${TMP_DIR}/usr/lib/lib${LIBNAME}.so"
+    chmod -v 755 "${TMP_DIR}/lib/lib${LIBNAME}.so.${VERSION}"
+done
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
