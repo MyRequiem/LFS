@@ -57,7 +57,18 @@ make install DESTDIR="${TMP_DIR}"
 mv -v "${TMP_DIR}/usr/bin"/{hostname,ping,ping6,traceroute} "${TMP_DIR}/bin"
 mv -v "${TMP_DIR}/usr/bin/ifconfig"                         "${TMP_DIR}/sbin"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)
