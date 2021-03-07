@@ -44,7 +44,7 @@ sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
 # сделаем первый номер группы, сгенерированный useradd был 1000, а не 1001
 sed -i 's/1000/999/' etc/useradd
 
-# /usr/bin/ passwd должен существовать перед сборкой, потому что его
+# /usr/bin/passwd должен существовать перед сборкой, потому что его
 # расположение жестко закодировано в некоторых утилитах пакета
 PASSWD="/usr/bin/passwd"
 ! [ -r "${PASSWD}" ] && touch "${PASSWD}"
@@ -56,9 +56,7 @@ PASSWD="/usr/bin/passwd"
     --with-group-name-max-length=32 || exit 1
 
 make || make -j1 || exit 1
-
 # пакет не имеет тестового набора
-
 make install DESTDIR="${TMP_DIR}"
 
 # конфиг /etc/default/useradd содержит параметр CREATE_MAIL_SPOOL=yes, который
