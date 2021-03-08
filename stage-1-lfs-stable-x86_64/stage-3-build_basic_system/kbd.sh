@@ -24,8 +24,8 @@ patch --verbose -Np1 -i \
 # не будем создавать утилиту resizecons, для которой требуется более
 # неиспользуемая библиотека svgalib, a так же отключим созданием man-страницы
 # для нее
-sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure       || exit 1
-sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in  || exit 1
+sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure      || exit 1
+sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in || exit 1
 
 # предотвращает сборку утилиты vlock, так как она требует библиотеку PAM,
 # которая еще не установлена в системе LFS
@@ -38,11 +38,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# удалим установленную библиотеку
-rm -fv "${TMP_DIR}/usr/lib"/libtswrap.{a,la,so*}
-
-# установим документацию
-cp -Rv docs/doc/* "${TMP_DIR}${DOC_DIR}"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
