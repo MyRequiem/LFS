@@ -14,15 +14,19 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# утилиту arpd создавать не будем, так как она зависит от Berkeley DB, которая
-# у нас в LFS системе не установлена
-sed -i /ARPD/d Makefile || exit 1
-# тем не менее man-страницы для arpd все равно будут установлены, удалим их
-rm -fv man/man8/arpd.8
+# утилита arpd зависит от пакета Berkeley DB, поэтому если он не установлен
+# (blfs еще не собирали), создавать arpd не будем
+if ! [ -f /usr/lib/libdb.so ]; then
+    sed -i /ARPD/d Makefile || exit 1
+    # тем не менее man-страницы для arpd все равно будут установлены, удалим их
+    rm -fv man/man8/arpd.8
+fi
 
 # также необходимо отключить сборку двух модулей, для которых требуется
-# iptables
-sed -i 's/.m_ipt.o//' tc/Makefile || exit 1
+# iptables, если он не установлен
+if ! command -v iptables &>/dev/null; then
+    sed -i 's/.m_ipt.o//' tc/Makefile || exit 1
+fi
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
