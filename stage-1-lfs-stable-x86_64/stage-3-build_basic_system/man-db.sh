@@ -40,7 +40,7 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-make check
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует
