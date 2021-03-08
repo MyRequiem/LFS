@@ -23,7 +23,18 @@ make install DESTDIR="${TMP_DIR}"
 # переместим gzip из /usr/bin в /bin, т.к. этого требуют многие программы
 mv -v "${TMP_DIR}/usr/bin/gzip" "${TMP_DIR}/bin"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (file compression utility)
