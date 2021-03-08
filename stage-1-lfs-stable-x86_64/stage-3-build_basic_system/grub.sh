@@ -14,6 +14,10 @@ rm -rf "${TMP_DIR}"
 BASH_COMPLETION="/usr/share/bash-completion/completions"
 mkdir -pv "${TMP_DIR}${BASH_COMPLETION}"
 
+# исправим проблему, вызванную binutils-2.36
+sed "s/gold-version/& -R .note.gnu.property/" \
+    -i Makefile.in grub-core/Makefile.in || exit 1
+
 # позволяет не прерывать сборку при появлении предупреждений для более поздних
 # версий Flex
 #    --disable-werror
@@ -33,7 +37,18 @@ make install DESTDIR="${TMP_DIR}"
 
 mv -v "${TMP_DIR}/etc/bash_completion.d/grub" "${TMP_DIR}${BASH_COMPLETION}"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the GRand Unified Bootloader)
