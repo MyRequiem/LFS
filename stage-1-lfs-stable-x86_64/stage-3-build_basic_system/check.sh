@@ -18,14 +18,23 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || make -j1 || exit 1
-
 # make check
-
 make                                              \
     docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     install DESTDIR="${TMP_DIR}"
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (unit testing framework for C)
