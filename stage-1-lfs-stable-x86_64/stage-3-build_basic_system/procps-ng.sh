@@ -7,7 +7,19 @@ PRGNAME="procps-ng"
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+SOURCES="/sources"
+VERSION="$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
+BUILD_DIR="${SOURCES}/build"
+
+mkdir -p "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+UNPACK_NAME="$(echo ${PRGNAME} | cut -d - -f 1)"
+rm -rf "${UNPACK_NAME}-${VERSION}"
+
+tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
+cd "${UNPACK_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
