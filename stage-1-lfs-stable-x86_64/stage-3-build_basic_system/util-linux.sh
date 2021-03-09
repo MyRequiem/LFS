@@ -31,6 +31,7 @@ mkdir -pv /var/lib/hwclock
     --without-python                      \
     --without-systemd                     \
     --without-systemdsystemunitdir        \
+    runstatedir=/run                      \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
