@@ -13,14 +13,8 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# скрипт 'configure' будет жаловаться, что это нераспознанный параметр, но
-# сценарий настройки для сборки библиотеки XSParagraph.so распознает его и
-# использует для отключения установки статического XSParagraph.a в
-# /usr/lib/texinfo
-#    --disable-static
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
 # make check
@@ -29,6 +23,8 @@ make install DESTDIR="${TMP_DIR}"
 # установим компоненты, используемые пакетом tetex (texlive), который будет
 # установлен в BLFS
 make TEXMF="${TMP_DIR}/usr/share/texmf" install-tex
+
+rm -f "${TMP_DIR}/usr/share/info/dir"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
