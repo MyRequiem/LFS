@@ -14,26 +14,14 @@ PRGNAME="p7zip"
 # Optional:    wxwidgets (https://www.wxwidgets.org/) для сборки GUI интерфейса 7zG
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}_*.tar.?z*" 2>/dev/null | \
-    sort | head -n 1 | cut -d _ -f 2)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}_${VERSION}" || exit 1
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим некоторые проблемы связанные с безопасностью
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-consolidated_fixes-1.patch" || exit 1
+# не позволяем p7zip устанавливать сжатые (gzip) man-страницы
+sed '/^gzip/d' -i install.sh
 
 make all3
 
@@ -63,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # MSI, MSLZ, NSIS, NTFS, RAR RPM, SquashFS, UDF, VHD, WIM, XAR and Z formats.
 #
 # Home page: https://sourceforge.net/projects/${PRGNAME}/
-# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}_${VERSION}_src_all.tar.bz2
+# Download:  https://github.com/jinfeihan57/p7zip/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
