@@ -21,7 +21,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 GPG="no"
-# command -v gpg &>/dev/null && GPG="yes"
+command -v gpg &>/dev/null && GPG="yes"
 
 # не создавать скрипт инициализации smartd по умолчанию
 #    --with-initscriptdir=no
