@@ -56,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"
 # the SQLite library.
 #
 # Home page: https://sqlite.org
-# Download:  https://sqlite.org/2020/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://sqlite.org/2021/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
