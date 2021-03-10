@@ -50,7 +50,6 @@ make install DESTDIR="${TMP_DIR}"
 )
 
 if [[ "x${ALLOW_USER_MOUNT}" == "xtrue" ]]; then
-    chmod -v 4755 /bin/ntfs-3g
     chmod -v 4755 "${TMP_DIR}/bin/ntfs-3g"
 fi
 
