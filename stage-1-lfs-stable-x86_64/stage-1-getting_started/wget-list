@@ -67,7 +67,7 @@ https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.
 http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.1.tar.gz
 https://github.com/systemd/systemd/archive/v246/systemd-246.tar.gz
 http://anduin.linuxfromscratch.org/LFS/systemd-man-pages-246.tar.xz
-http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.97.tar.xz
+http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.98.tar.xz
 http://ftp.gnu.org/gnu/tar/tar-1.34.tar.xz
 https://downloads.sourceforge.net/tcl/tcl8.6.11-src.tar.gz
 http://ftp.gnu.org/gnu/texinfo/texinfo-6.7.tar.xz
@@ -84,4 +84,4 @@ http://www.linuxfromscratch.org/patches/lfs/10.0/bzip2-1.0.8-install_docs-1.patc
 http://www.linuxfromscratch.org/patches/lfs/10.0/coreutils-8.32-i18n-1.patch
 http://www.linuxfromscratch.org/patches/lfs/10.1/glibc-2.33-fhs-1.patch
 http://www.linuxfromscratch.org/patches/lfs/10.1/kbd-2.4.0-backspace-1.patch
-http://www.linuxfromscratch.org/patches/lfs/10.0/sysvinit-2.97-consolidated-1.patch
+http://www.linuxfromscratch.org/patches/lfs/10.1/sysvinit-2.98-consolidated-1.patch
