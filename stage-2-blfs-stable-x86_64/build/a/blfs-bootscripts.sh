@@ -20,4 +20,5 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # просто переместим исходники в /root/src/lfs
 cd "${ROOT}" || exit 1
+rm -rf "./${PRGNAME}"
 mv "${BUILD_DIR}/${PRGNAME}-${VERSION}" "${PRGNAME}"
