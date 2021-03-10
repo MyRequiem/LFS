@@ -25,7 +25,7 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}/support"}
+mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
@@ -39,14 +39,13 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# создадим ссылку /usr/lib/libgpm.so
+# создадим ссылку в /usr/lib libgpm.so -> libgpm.so.${LIBGPM_SO_VERSION}
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -s "libgpm.so.${LIBGPM_SO_VERSION}" libgpm.so
 )
 
 install -v -m644 conf/gpm-root.conf "${TMP_DIR}/etc"
-install -v -m644 doc/support/* "${TMP_DIR}${DOCS}/support"
 install -v -m644 doc/{FAQ,HACK_GPM,README*} "${TMP_DIR}${DOCS}"
 
 # для автозапуска gpm сервера при загрузке системы установим скрипт
