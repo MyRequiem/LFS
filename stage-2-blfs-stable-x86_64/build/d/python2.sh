@@ -39,6 +39,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# отключим установку утилиты 2to3
+sed -i '/2to3/d' ./setup.py
+
 VALGRIND="--without-valgrind"
 command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
 
@@ -47,22 +50,20 @@ command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
     --enable-shared      \
     --with-system-expat  \
     --with-system-ffi    \
-    --with-ensurepip=yes \
     "${VALGRIND}"        \
     --enable-unicode=ucs4 || exit 1
 
 make || exit 1
 # make -k test
-make install DESTDIR="${TMP_DIR}"
+make altinstall DESTDIR="${TMP_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
     # /usr/bin/2to3 уже установлена с пакетом python3
     rm -f 2to3
-    ln -svf "easy_install-${MAJ_VERSION}" easy_install
-    ln -svf pip2 pip
-    ln -svf "pip${MAJ_VERSION}" pip2
+    ln -svf python2.7 python2
+    ln -svf python2.7-config python2-config
 )
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"
