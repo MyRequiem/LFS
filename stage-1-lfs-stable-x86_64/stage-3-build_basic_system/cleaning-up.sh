@@ -1,5 +1,6 @@
 #! /bin/bash
 
+ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
 # временные инструменты /tools нам больше не понадобятся и их можно удалить
