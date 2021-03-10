@@ -49,15 +49,13 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# сделаем установленные статические библиотеки *.a доступными для записи, чтобы
-# позже можно было удалить из них отладочную информацию
-chmod -v u+w "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
+# удалим бесполезные статические библиотеки
+rm -fv "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
 
 # пакет устанавливает сжатый libext2fs.info.gz, распакуем его
-INFO="/usr/share/info"
-gunzip -v "${TMP_DIR}${INFO}/libext2fs.info.gz" || exit 1
+gunzip -v "${TMP_DIR}/usr/share/info/libext2fs.info.gz" || exit 1
 
-# установим документацию в систему info (/usr/share/info/)
+# установим дополнительную документацию в систему info (/usr/share/info/)
 makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
 install -v -m644 doc/com_err.info "${TMP_DIR}/usr/share/info"
 
@@ -75,15 +73,21 @@ if [ -f "${MKE2FS_CONF}" ]; then
     mv "${MKE2FS_CONF}" "${MKE2FS_CONF}.old"
 fi
 
+rm -f "${TMP_DIR}/usr/share/info/dir"
+
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${E2SCRUB_CONF}"
 config_file_processing "${MKE2FS_CONF}"
 
-# пакет устанавливает libext2fs.info и com_err.info, но не обновляет индекс
-# info-системы (/usr/share/info/dir), поэтому обновим вручную
-install-info --dir-file=/usr/share/info/dir "${INFO}/libext2fs.info"
-install-info --dir-file=/usr/share/info/dir "${INFO}/com_err.info"
+# система документации Info использует простые текстовые файлы в
+# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
+# который мы обновим
+cd /usr/share/info || exit 1
+rm -fv dir
+for FILE in *; do
+    install-info "${FILE}" dir 2>/dev/null
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ext2 and ext3 filesystems utilities)
