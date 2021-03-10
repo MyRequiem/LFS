@@ -112,6 +112,17 @@ source "${ROOT}/update-info-db.sh" || exit 1
 config_file_processing "${SSH_CONFIG}"
 config_file_processing "${SSHD_CONFIG}"
 
+# создадим новые ключи хоста в /etc/ssh/, если они еще не существуют
+# ssh_host_dsa_key
+# ssh_host_dsa_key.pub
+# ssh_host_ecdsa_key
+# ssh_host_ecdsa_key.pub
+# ssh_host_ed25519_key
+# ssh_host_ed25519_key.pub
+# ssh_host_rsa_key
+# ssh_host_rsa_key.pub
+ssh-keygen -A
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Secure Shell daemon and clients)
 #
