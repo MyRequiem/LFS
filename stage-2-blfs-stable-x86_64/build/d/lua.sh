@@ -18,8 +18,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # некоторые пакеты проверяют файл pkg-config для Lua, поэтому создадим его
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
@@ -66,7 +65,6 @@ make                                                                 \
     TO_LIB="liblua.so liblua.so.${MAJ_VERSION} liblua.so.${VERSION}" \
     install || exit 1
 
-cp -v doc/*.{html,css,gif,png} "${TMP_DIR}${DOCS}"
 install -v -m644 -D lua.pc "${TMP_DIR}/usr/lib/pkgconfig/lua.pc"
 
 source "${ROOT}/stripping.sh"      || exit 1

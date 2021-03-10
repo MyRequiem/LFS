@@ -20,8 +20,8 @@ http://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
-http://www.lua.org/ftp/lua-5.4.0.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/10.0/lua-5.4.0-shared_library-1.patch
+http://www.lua.org/ftp/lua-5.4.2.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.1/lua-5.4.2-shared_library-1.patch
 https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.0/autoconf-2.13-consolidated_fixes-1.patch
 https://sqlite.org/2020/sqlite-autoconf-3330000.tar.gz
