@@ -17,7 +17,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}/html"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -36,11 +36,11 @@ PDF_PS_DOC=""
 [ -n "${PDF_PS_DOC}" ] && make -C doc pdf ps
 
 # make check
+
 make install DESTDIR="${TMP_DIR}"
 
-install -v -m644 doc/assuan.html/*        "${TMP_DIR}${DOCS}/html"
 install -v -m644 doc/assuan_nochunks.html "${TMP_DIR}${DOCS}"
-install -v -m644 doc/assuan.{txt,texi}    "${TMP_DIR}${DOCS}"
+install -v -m644 doc/assuan.txt           "${TMP_DIR}${DOCS}"
 
 # если мы собирали документацию в pdf и ps форматах
 if [ -n "${PDF_PS_DOC}" ]; then
