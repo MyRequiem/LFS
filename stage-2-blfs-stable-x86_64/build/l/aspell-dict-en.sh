@@ -2,9 +2,11 @@
 
 PRGNAME="aspell-dict-en"
 ARCH_NAME="aspell6-en"
-VERSION="2019.10.06-0"
+VERSION="2020.12.07-0"
 
 ### English dictionary for Aspell
+
+# Нет в BLFS
 
 # Required:    aspell
 # Recommended: no
