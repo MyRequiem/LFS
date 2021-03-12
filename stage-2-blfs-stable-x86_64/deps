@@ -111,7 +111,7 @@ hdparm                              pm-utils
 heimdal-gssapi                      exim
 highlight
 http-parser                         nodejs
-icu                                 libxml2, boost, mozjs, nodejs, harfbuzz
+icu                                 libxml2, boost, mozjs, nodejs, harfbuzz, llvm
 imagemagick7                        gnupg
 impacket                            curl
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
