@@ -23,11 +23,6 @@ PRGNAME="apr"
 #     - Потоки, процессы и мьютексы
 #     - Разделяемая память
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/apr.html
-
-# Home page: https://apr.apache.org/
-# Download:  https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
-
 # Required:    no
 # Recommended: no
 # Optional:    no
