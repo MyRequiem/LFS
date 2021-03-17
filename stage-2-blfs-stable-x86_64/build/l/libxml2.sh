@@ -8,7 +8,7 @@ PRGNAME="libxml2"
 # Required: python3
 # Optional: python2
 #           icu      (для тестов)
-#           valgrind (для тестов) ROOT="/root/src/lfs"
+#           valgrind (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,10 +21,13 @@ patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
 
 # исправим проблему сборки с Python3 v3.9.0 и выше
-sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c}
+sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c} || exit 1
 
 # отключим один тест, который препятствует полному их выполнению
 sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
+
+# исправим ошибку сборки с пакетом icu-68.2
+sed -i 's/ TRUE/ true/' encoding.c
 
 ICU="--without-icu"
 command -v icuinfo &>/dev/null && ICU="--with-icu"
