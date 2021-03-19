@@ -52,8 +52,7 @@ http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/svn/libxml2-2.9.10-security_fixes-1.patch
 http://www.w3.org/XML/Test/xmlts20130923.tar.gz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-https://github.com/libarchive/libarchive/releases/download/v3.4.3/libarchive-3.4.3.tar.xz
-http://www.linuxfromscratch.org/patches/blfs/10.0/libarchive-3.4.3-testsuite_fix-1.patch
+https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
 https://cmake.org/files/v3.18/cmake-3.18.1.tar.gz
 https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.bz2
 https://github.com/libfuse/libfuse/releases/download/fuse-3.9.3/fuse-3.9.3.tar.xz

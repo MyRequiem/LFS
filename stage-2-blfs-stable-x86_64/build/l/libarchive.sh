@@ -28,10 +28,6 @@ NETTLE="--without-nettle"
 command -v xmllint     &>/dev/null && XML2="--with-xml2"
 command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
 
-# "адаптируем" набор тестов к изменениям в glibc-2.32
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-testsuite_fix-1.patch" || exit 1
-
 ./configure       \
     --prefix=/usr \
     "${LZO2}"     \
@@ -55,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # several CPIO formats. It can also write SHAR archives.
 #
 # Home page: http://${PRGNAME}.org
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
