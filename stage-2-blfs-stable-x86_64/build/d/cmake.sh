@@ -9,9 +9,12 @@ PRGNAME="cmake"
 # Recommended: curl
 #              libarchive
 #              nghttp2
-# Optional:    git
+# Optional:    gcc        (для gfortran)
+#              git        (используется во время тестов)
+#              mercurial  (используется во время тестов)
 #              qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
 #              subversion (для тестов)
+#              rhash      (http://rhash.sourceforge.net/)
 #              sphinx     (для сборки документации) https://pypi.org/project/Sphinx/
 
 ROOT="/root/src/lfs"
@@ -32,9 +35,11 @@ EXPAT="--no-system-expat"
 CURL="--no-system-curl"
 LIBARCHIVE="--no-system-libarchive"
 QT_GUI="--no-qt-gui"
+RHASH="--no-system-librhash"
 
 [ -x /usr/lib/libz.so ]             && ZLIB="--system-zlib"
 [ -x /usr/lib/libnghttp2.so ]       && NGHTTP2="--system-nghttp2"
+[ -x /usr/lib/librhash.so ]         && RHASH="--system-librhash"
 command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
 command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
 command -v curl         &>/dev/null && CURL="--system-curl"
@@ -51,7 +56,7 @@ command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
     --system-libs        \
     --mandir=/share/man  \
     --no-system-jsoncpp  \
-    --no-system-librhash \
+    "${RHASH}"           \
     "${ZLIB}"            \
     "${NGHTTP2}"         \
     "${BZIP2}"           \
@@ -64,11 +69,9 @@ command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
 make || exit 1
 
 # тесты
-# известно что тест RunCMake.CommandLineTar завершается ошибкой, если пакет
-# zstd (из lfs) не установлен
-# unset LANG
-# NUMJOBS="$(($(nproc) + 1))"
-# bin/ctest -j"${NUMJOBS}" -O "${PRGNAME}-${VERSION}-test.log"
+# NUMJOBS="$(nproc)"
+# LC_ALL=en_US.UTF-8 && \
+#     bin/ctest -j"${NUMJOBS}" -O "${PRGNAME}-${VERSION}-test.log"
 
 make install DESTDIR="${TMP_DIR}"
 

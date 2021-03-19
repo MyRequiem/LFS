@@ -85,7 +85,7 @@ fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
 fwtk                                sudo
 gc                                  guile
-gcc
+gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
 git                                 cmake, llvm, libidn2
@@ -192,6 +192,7 @@ make-ca                             wget, p11-kit, gnutls, curl
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
+mercurial                           cmake
 mesa                                libva, libvdpau, xorg-applications
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
@@ -266,6 +267,7 @@ quiche                              curl
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
+rhash                               cmake
 rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm, vim
