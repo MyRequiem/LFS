@@ -21,29 +21,30 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# убираем предупреждение при сборке документации
-sed -i "s/^PROJECT_LOGO/#&/" doc/doxygen.cfg.in || exit 1
-
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
 
-# пакет не поддерживаем сборки в несколько потоков, поэтому явно указываем -j1
-make -j1 || exit 1
+make || exit 1
 
 # если doxygen установлен, то собираем документацию
 DOXYGEN=""
-command -v doxygen &>/dev/null && DOXYGEN="true"
-[ -n "${DOXYGEN}" ] && make -C doc docs
+# command -v doxygen &>/dev/null && DOXYGEN="true"
+
+if [ -n "${DOXYGEN}" ]; then
+    # предотвращаем появление некоторых предупреждений при создании документации
+    sed -i "s/^TCL_SUBST/#&/; s/wide//" doc/doxygen.cfg || exit 1
+    make -C doc docs
+fi
 
 # пакет не имеет набора тестов
 
 make install DESTDIR="${TMP_DIR}"
 
 if [ -n "${DOXYGEN}" ]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -d -m755 "${TMP_DIR}${DOCS}/apidocs"
-    install -v -m644 doc/html/* "${TMP_DIR}${DOCS}/apidocs"
+    API_DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/apidocs"
+    install -v -d -m755 "${TMP_DIR}${API_DOCS}"
+    install -v -m644 doc/html/* "${TMP_DIR}${API_DOCS}"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
