@@ -33,7 +33,6 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # документация
-mkdir -pv "${DOCS}"
 cp -v README libpng-manual.txt "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
