@@ -60,7 +60,7 @@ http://anduin.linuxfromscratch.org/BLFS/iso-codes/iso-codes-4.5.0.tar.xz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
 https://releases.pagure.org/libaio/libaio-0.3.112.tar.gz
 http://0pointer.de/public/libatasmart-0.19.tar.xz
-https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.5.tar.gz
+https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.6.tar.gz
 https://github.com/libexif/libexif/releases/download/libexif-0_6_22-release/libexif-0.6.22.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/svn/libexif-0.6.22-security_fixes-1.patch
 https://downloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz
