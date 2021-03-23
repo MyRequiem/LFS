@@ -314,6 +314,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa
 vbetool                             pm-utils
+vdo                                 lvm2
 vim                                 fcron
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries

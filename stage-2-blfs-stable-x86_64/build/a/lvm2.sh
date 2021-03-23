@@ -16,6 +16,7 @@ ARCH_NAME="LVM2"
 #              which
 #              xfsprogs
 #              thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
+#              vdo                     (https://github.com/dm-vdo/vdo)
 
 ### Конфигурация ядра
 #    CONFIG_MD=y
@@ -51,8 +52,6 @@ mkdir -pv "${TMP_DIR}"
 #    --enable-pkgconfig
 # включаем синхронизацию с Udev
 #    --enable-udev_sync
-SAVEPATH="${PATH}"             && \
-PATH="${PATH}:/sbin:/usr/sbin" && \
 ./configure                       \
     --prefix=/usr                 \
     --exec-prefix=                \
@@ -61,9 +60,6 @@ PATH="${PATH}:/sbin:/usr/sbin" && \
     --enable-udev_sync || exit 1
 
 make || exit 1
-
-PATH="${SAVEPATH}"
-unset SAVEPATH
 
 ### тесты
 # тесты используют udev для синхронизации логических томов, поэтому правила LVM
