@@ -22,22 +22,22 @@ mkdir -pv "${TMP_DIR}"
 # не сжимаем man-страницы
 sed -i '/GZIP/s/^/#/' makefile || exit 1
 
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/"
 GUI=""
-command -v assistant &>/dev/null && GUI="true"
+# command -v assistant &>/dev/null && GUI="true"
 
 make || exit 1
 
+DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/"
 if [ -n "${GUI}" ]; then
-    make gui doc_dir="${DOCS}" || exit 1
+    make doc_dir="${DOCS}" gui || exit 1
 fi
 
 # пакет не содержит набора тестов
 
-make install doc_dir="${DOCS}" DESTDIR="${TMP_DIR}"
+make doc_dir="${DOCS}" install DESTDIR="${TMP_DIR}"
 
 if [ -n "${GUI}" ]; then
-    make install-gui
+    make install-gui DESTDIR="${TMP_DIR}"
 fi
 
 CONFIG="/etc/highlight/filetypes.conf"
