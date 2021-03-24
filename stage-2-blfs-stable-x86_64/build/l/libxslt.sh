@@ -32,6 +32,14 @@ sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml} || exit 1
     --disable-static || exit 1
 
 make || exit 1
+
+# man-страницы генерируются в неверном формате, если установлены рекомендуемые
+# зависимости, поэтому нужно создать их заново
+sed -e \
+    's@http://cdn.docbook.org/release/xsl@https://cdn.docbook.org/release/xsl-nons@' \
+    -e 's@\$Date\$@31 October 2019@' -i doc/xsltproc.xml &&
+xsltproc/xsltproc --nonet doc/xsltproc.xml -o doc/xsltproc.1
+
 # make check
 make install DESTDIR="${TMP_DIR}"
 
