@@ -88,8 +88,8 @@ d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh
 ap/unrar.sh
-d/nodejs.sh
 s/sgml-common.sh
+d/nodejs.sh
 s/docbook-xml.sh
 l/libxslt.sh
 s/docbook-xsl.sh
