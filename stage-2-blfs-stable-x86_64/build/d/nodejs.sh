@@ -30,7 +30,7 @@ LIBUV=""
 NGHTTP2=""
 ICU="small-icu"
 NPM=""
-NPM_PKG="$(find /var/log/packages/ -type f -name "npm-*")"
+NPM_PKG="$(find /var/log/packages/ -type f -name "npm-[0-9]*")"
 
 [ -x /usr/lib/libcares.so ]    && C_ARES="--shared-cares"
 [ -x /usr/lib/libuv.so ]       && LIBUV="--shared-libuv"
