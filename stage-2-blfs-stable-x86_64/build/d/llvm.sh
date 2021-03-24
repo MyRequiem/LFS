@@ -26,7 +26,7 @@ COMPILER_RT="compiler-rt"
 #              git
 #              graphviz
 #              libxml2
-#              python2
+#              python3-pygments
 #              rsync           (для тестов)
 #              texlive или install-tl-unx
 #              valgrind
@@ -65,6 +65,11 @@ LLVM_DOCS=""
 # command -v cm2html      &>/dev/null          && RECOMMONMARK="true"
 # [[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
 
+# в исходниках лежит много Python-скриптов, которые используют shebang
+# /usr/bin/env python для доступа к системному Python, который в LFS -
+# Python-3.x.x. Исправим эти скрипты, чтобы shebang был /usr/bin/env python3
+grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+
 mkdir -v build
 cd build || exit 1
 
@@ -102,6 +107,7 @@ cmake                                         \
     -DLLVM_ENABLE_RTTI=ON                     \
     -DLLVM_BUILD_TESTS=OFF                    \
     -DLLVM_ENABLE_DOXYGEN="${DOXYGEN}"        \
+    -DLLVM_BINUTILS_INCDIR=/usr/include       \
     -DLLVM_TARGETS_TO_BUILD="host;AMDGPU;BPF" \
     -Wno-dev -G Ninja .. || exit 1
 
@@ -114,7 +120,8 @@ ninja "${NINJAJOBS}" || exit 1
 # если пакеты sphinx и recommonmark установлены, сгенерируем html документацию
 # и man-страницы для llvm и clang
 if [ -n "${LLVM_DOCS}" ]; then
-    cmake \
+    cmake                               \
+        -DLLVM_BUILD_DOCS=ON            \
         -DLLVM_ENABLE_SPHINX=ON         \
         -DSPHINX_WARNINGS_AS_ERRORS=OFF \
         -Wno-dev -G Ninja .. || exit 1
