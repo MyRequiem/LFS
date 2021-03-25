@@ -66,10 +66,6 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# удалим битую ссылку в /sbin
-#    ip6tables-apply -> iptables-apply
-rm -f "${TMP_DIR}/sbin/ip6tables-apply"
-
 # ссылка в /usr/bin iptables-xml -> ../../sbin/xtables-legacy-multi
 (
     cd "${TMP_DIR}/usr/bin" || exit 1

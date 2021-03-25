@@ -122,6 +122,7 @@ iso-codes
 itstool                             shared-mime-info
 json-c                              cryptsetup, fontconfig
 kernel-firmware
+kernel-generic                      iptables
 krb4                                cyrus-sasl
 libaio                              lvm2
 libarchive                          cmake, ed
