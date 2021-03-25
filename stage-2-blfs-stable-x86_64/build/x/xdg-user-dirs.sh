@@ -12,8 +12,8 @@ DOCBOOK_XSL_VERSION="1.79.2"
 
 # Required:    libxslt
 # Recommended: no
-# Optional:    docbook-xml (для создания документации)
-#              docbook-xsl (для создания документации)
+# Optional:    docbook-xml (для создания man-страниц)
+#              docbook-xsl (для создания man-страниц)
 
 ###
 # Конфигурация
