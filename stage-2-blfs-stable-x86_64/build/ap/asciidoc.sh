@@ -23,8 +23,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-First, fix a build problem if the optional dependencies are not installed:
-
 # устраним проблему сборки, если не установлены опциональные зависимости
 sed -i 's:doc/testasciidoc.1::' Makefile.in || exit 1
 rm -f doc/testasciidoc.1.txt
@@ -52,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # EPUB, and man page.
 #
 # Home page: http://asciidoc.org/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}-py3/releases/download/9.0.2/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}-py3/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
