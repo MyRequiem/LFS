@@ -209,7 +209,7 @@ libnfsidmap                         (-)
 libpaper                            (-)
 libqmi                              (+) modem-manager
 libseccomp                          (+) gnutls
-libsigc++                           (+) glibmm
+libsigc++2                          (+) glibmm
 libsigsegv                          (+) clisp
 libssh2                             (+) curl
 libstatgrab                         (+)
@@ -222,7 +222,7 @@ libxkbcommon
 libxml2                             (+) libarchive, libxslt, docbook-xml,
                                         docbook-xsl, shared-mime-info, libcroco,
                                         fontconfig, doxygen, llvm
-libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++,
+libxslt                             (+) p11-kit, docbook-xsl, glib, libsigc++2,
                                         talloc, polkit, glibmm, exiv2, xmlto,
                                         gtk-doc, raptor, udisks
 libwacom                            (-)
@@ -363,7 +363,7 @@ clisp                               (+) gpgme
 cmake                               (+) libjpeg-turbo, libical, jasper, libtiff,
                                         brotli, exiv2, graphite2, doxygen,
                                         openjpeg, poppler, woff2, llvm
-doxygen                             (+) gnutls, gpgme, libical, libsigc++, gdb,
+doxygen                             (+) gnutls, gpgme, libical, libsigc++2, gdb,
                                         popt, jasper, icu, js60, fuse, glibmm,
                                         libusb, libyaml, exiv2, graphite2,
                                         libexif, openjpeg, dbus, mc, llvm

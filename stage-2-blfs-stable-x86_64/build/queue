@@ -96,7 +96,7 @@ s/docbook-xsl.sh
 l/libxslt.sh
 x/xdg-user-dirs.sh
 l/aalib.sh
-l/libsigc++.sh
+l/libsigc++2.sh
 l/parted.sh
 l/sg3-utils.sh
 ap/asciidoc.sh

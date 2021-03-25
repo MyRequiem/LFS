@@ -26,7 +26,7 @@ berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-uti
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
-boost                               highlight, swig
+boost                               highlight, swig, libsigc++2
 bpf-utils                           iptables
 brotli                              curl, freetype
 btrfs-progs                         udisks, libblockdev
@@ -53,14 +53,14 @@ digest-crc                          parted
 directfb                            links
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
-docbook-utils                       fcron, fontconfig
+docbook-utils                       fcron, fontconfig, libsigc++2
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm
 docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -158,7 +158,7 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
-libsigc++
+libsigc++2
 libssh2                             curl, rustc
 libtasn1                            p11-kit, gnutls
 libtiff                             links
@@ -174,7 +174,7 @@ libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications
@@ -196,6 +196,7 @@ mercurial                           cmake
 mesa                                libva, libvdpau, xorg-applications
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
+mm-common                           libsigc++2
 mono                                libidn
 mozjs                               polkit
 mysql                               exim, cyrus-sasl, openldap, apr-util

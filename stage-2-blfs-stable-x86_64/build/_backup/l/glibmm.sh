@@ -13,7 +13,7 @@ PRGNAME="glibmm"
 # Download:  http://ftp.gnome.org/pub/gnome/sources/glibmm/2.62/glibmm-2.62.0.tar.xz
 
 # Required: glib
-#           libsigc++
+#           libsigc++2
 # Optional: doxygen         (для создания документации)
 #           glib-networking (для тестов)
 #           gnutls          (для тестов)
