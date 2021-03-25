@@ -22,7 +22,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}/html"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 LVM2="--disable-device-mapper"
 command -v lvm &>/dev/null && LVM2="--enable-device-mapper"
@@ -36,28 +36,24 @@ make || exit 1
 
 # html и plaintex документация
 make -C doc html
-makeinfo --html      -o doc/html       doc/parted.texi
+# makeinfo --html      -o doc/html       doc/parted.texi
 makeinfo --plaintext -o doc/parted.txt doc/parted.texi
 
 # если установлен texlive или install-tl-unx, то соберем pdf и ps документацию
 TEXLIVE=""
 # command -v texdoc &>/dev/null && TEXLIVE="true"
 if [ -n "${TEXLIVE}" ]; then
-    texi2pdf             -o doc/parted.pdf doc/parted.texi
-    texi2dvi             -o doc/parted.dvi doc/parted.texi
-    dvips                -o doc/parted.ps  doc/parted.dvi
+    texi2pdf -o doc/parted.pdf doc/parted.texi
+    texi2dvi -o doc/parted.dvi doc/parted.texi
+    dvips    -o doc/parted.ps  doc/parted.dvi
 fi
 
-### тесты
-# удалим два теста, которые не проходят в среде LFS
-# sed -i '/t0251-gpt-unicode.sh/d' tests/Makefile || exit 1
-# sed -i '/t6002-dm-busy.sh/d'     tests/Makefile || exit 1
 # make check
 
 make install DESTDIR="${TMP_DIR}"
 
 # документация
-install -v -m644 doc/html/* "${TMP_DIR}${DOCS}/html"
+# install -v -m644 doc/html/* "${TMP_DIR}${DOCS}/html"
 install -v -m644 doc/{FAT,API,parted.{txt,html}} "${TMP_DIR}${DOCS}"
 
 if [ -n "${TEXLIVE}" ]; then
