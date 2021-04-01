@@ -96,7 +96,7 @@ fi
 # нормально и такие сообщения могут быть безопасно проигнорированны.
 # if command -v dbus-binding-tool &>/dev/null; then
 #     make distclean &&
-#     ./configure                 \
+#     PYTHON=python3 ./configure  \
 #         --enable-tests          \
 #         --enable-asserts        \
 #         --disable-doxygen-docs  \
