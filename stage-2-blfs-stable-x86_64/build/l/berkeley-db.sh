@@ -15,7 +15,7 @@ ARCH_NAME="db"
 
 # Required:    no
 # Recommended: no
-# Optional:    sharutils (for the uudecode command)
+# Optional:    sharutils (для утилиты uudecode)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -50,6 +50,8 @@ cd build_unix || exit 1
 
 make || exit 1
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share/doc/"
 
 chown -vR root:root "${TMP_DIR}"
 

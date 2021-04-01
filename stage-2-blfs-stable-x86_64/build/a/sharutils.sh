@@ -11,7 +11,7 @@ PRGNAME="sharutils"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    berkeley-db (для утилиты uudecode)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

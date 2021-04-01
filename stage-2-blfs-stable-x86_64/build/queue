@@ -103,6 +103,7 @@ ap/asciidoc.sh
 l/libpcap.sh
 n/iptables.sh
 l/berkeley-db.sh
+a/sharutils.sh
 a/dbus.sh
 l/glib.sh
 d/python-modules/python-markupsafe.sh
