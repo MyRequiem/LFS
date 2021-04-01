@@ -26,8 +26,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{"${DOCS}",/etc/profile.d}
+mkdir -pv "${TMP_DIR}/etc/profile.d"
 
 # Во многих случаях приложения, которые используют эту библиотеку, прямо или
 # косвенно через другие библиотеки, такие как GTK+-3, выводят многочисленные
@@ -68,9 +67,6 @@ ninja || exit 1
 # Такие ошибки допустимы и безвредны.
 
 DESTDIR=${TMP_DIR} ninja install
-
-# документация
-cp -vR ../docs/reference/{gio,glib,gobject} "${TMP_DIR}${DOCS}"
 
 # для запуска тестов требуются 2 установленных пакета:
 #    shared-mime-info
