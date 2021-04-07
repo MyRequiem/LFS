@@ -8,7 +8,6 @@ PRGNAME="gobject-introspection"
 # для привязок, проверки API и генерация документации.
 
 # Required:    glib
-#              python3
 # Recommended: no
 # Optional:    cairo                (для тестов)
 #              gjs                  (для прохождния одного теста)
@@ -23,7 +22,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-mkdir -pv build
+mkdir build
 cd build || exit 1
 
 CAIRO="-Dcairo=disabled"
@@ -66,8 +65,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # used for automatic code generation for bindings, API verification, and
 # documentation generation.
 #
-# Home page: http://live.gnome.org/GObjectIntrospection
-# Download:  http://ftp.gnome.org/pub/gnome/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://live.gnome.org/GObjectIntrospection
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
