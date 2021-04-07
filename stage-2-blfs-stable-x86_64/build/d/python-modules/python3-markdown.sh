@@ -32,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # few known issues.
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/fd/d6/9eeda2f440ef798c8222b77d7355199345ce3477941d8a02a2024ccb9ed2/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/49/02/37bd82ae255bb4dfef97a4b32d95906187b7a7a74970761fca1360c4ba22/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

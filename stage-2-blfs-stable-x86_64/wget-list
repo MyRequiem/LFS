@@ -115,7 +115,7 @@ https://download.gnome.org/sources/glib/2.66/glib-2.66.7.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/glib-2.66.7-skip_warnings-1.patch
 https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-1.1.1.tar.gz
 https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.1.4.tar.gz
-https://files.pythonhosted.org/packages/fd/d6/9eeda2f440ef798c8222b77d7355199345ce3477941d8a02a2024ccb9ed2/Markdown-3.3.3.tar.gz
+https://files.pythonhosted.org/packages/49/02/37bd82ae255bb4dfef97a4b32d95906187b7a7a74970761fca1360c4ba22/Markdown-3.3.4.tar.gz
 http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.64/gobject-introspection-1.64.1.tar.xz
 http://ftp.gnome.org/pub/gnome/sources/libgudev/233/libgudev-233.tar.xz
 https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.110.tar.gz
