@@ -49,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to be part of udev, but it's now a project on its own.
 #
 # Home page: http://wiki.gnome.org/Projects/${PRGNAME}
-# Download:  http://ftp.gnome.org/pub/gnome/sources/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
