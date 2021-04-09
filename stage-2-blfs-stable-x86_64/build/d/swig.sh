@@ -19,8 +19,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # отключает принудительное соответствие компилятора ansi, что вызывает ошибки в
 # заголовках Lua >= 5.3
@@ -35,8 +34,6 @@ make || exit 1
 # PY3=1 make -k check TCL_INCLUDE=.
 
 make install DESTDIR="${TMP_DIR}"
-
-cp -v -R Doc/* "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
