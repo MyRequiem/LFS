@@ -114,9 +114,6 @@ a/libgudev.sh
 l/dbus-glib.sh
 d/python-modules/python-dbus.sh
 d/python-modules/python3-dbusmock.sh
-d/rustc.sh
-d/mozjs.sh
-l/polkit.sh
 a/cryptsetup.sh
 l/libbytesize.sh
 l/libtasn1.sh
@@ -128,7 +125,6 @@ n/wget.sh
 n/p11-kit.sh
 l/libidn.sh
 l/libidn2.sh
-a/upower.sh
 n/gnutls.sh
 n/wget.sh
 n/gnupg.sh
@@ -137,7 +133,6 @@ d/swig.sh
 n/gpgme.sh
 l/volume-key.sh
 l/libblockdev.sh
-a/udisks.sh
 l/rpcsvc-proto.sh
 n/make-ca.sh
 n/wget.sh
@@ -175,6 +170,11 @@ n/gnupg.sh
 d/git.sh
 d/cmake.sh
 d/llvm.sh
+d/rustc.sh
+d/mozjs.sh
+l/polkit.sh
+a/upower.sh
+a/udisks.sh
 l/libidn2.sh
 d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
