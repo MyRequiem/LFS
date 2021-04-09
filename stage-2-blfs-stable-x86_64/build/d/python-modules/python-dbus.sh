@@ -31,7 +31,7 @@ pushd python2 || exit 1
 PYTHON=/usr/bin/python2 \
 ../configure            \
     --prefix=/usr       \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --disable-documentation || exit 1
 
 make || exit 1
 popd || exit 1
