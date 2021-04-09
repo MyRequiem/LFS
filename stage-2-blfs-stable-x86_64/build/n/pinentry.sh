@@ -16,6 +16,7 @@ PRGNAME="pinentry"
 #           gtk+3
 #           libsecret
 #           qt5
+#           efl (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

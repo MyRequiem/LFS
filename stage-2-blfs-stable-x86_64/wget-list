@@ -129,7 +129,7 @@ https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.16.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.23.22/p11-kit-0.23.22.tar.xz
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/nss-3.61.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/nss-3.61-standalone-1.patch
-https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.0.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.1.tar.bz2
 https://github.com/djlucas/make-ca/releases/download/v1.7/make-ca-1.7.tar.xz
 http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt

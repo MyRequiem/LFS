@@ -64,6 +64,7 @@ doxygen                             icu, fuse, libexif, libusb, libyaml, popt, m
 dtrace                              ruby
 ducktype                            dbus
 ed
+efl                                 pinentry
 elinks                              xmlto
 elogind                             dbus, polkit, udisks, xorg-libraries
 emacs                               guile, pinentry, libidn
