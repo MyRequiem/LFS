@@ -41,12 +41,12 @@ TROUSERS="--without-tpm"
 GUILE="--disable-guile"
 
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
-command -v idn          &>/dev/null && IDN="--with-idn"
-command -v idn2         &>/dev/null && IDN="--with-idn"
-command -v unbound      &>/dev/null && UNBOUND="--enable-libdane"
-command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
-command -v tcsd         &>/dev/null && TROUSERS="--with-tpm"
-command -v guile        &>/dev/null && GUILE="--enable-guile"
+command -v idn      &>/dev/null && IDN="--with-idn"
+command -v idn2     &>/dev/null && IDN="--with-idn"
+command -v unbound  &>/dev/null && UNBOUND="--enable-libdane"
+command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
+command -v tcsd     &>/dev/null && TROUSERS="--with-tpm"
+command -v guile    &>/dev/null && GUILE="--enable-guile"
 
 # GnuTLS не поддерживает guile, поэтому отключаем его
 #    --disable-guile
@@ -69,6 +69,9 @@ command -v guile        &>/dev/null && GUILE="--enable-guile"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+# в документации только *.png файлы
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 # документация GTK
 if [[ "x${GTK_DOC}" == "x--enable-gtk-doc" ]]; then
