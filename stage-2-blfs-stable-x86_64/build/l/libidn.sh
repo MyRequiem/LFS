@@ -23,8 +23,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 THREADS="posix"
 GTK_DOC="--disable-gtk-doc"
@@ -50,11 +49,6 @@ command -v mono         &>/dev/null && MONO="--enable-csharp"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-find doc -name "Makefile*" -delete
-rm -rfv doc/{gdoc*,stamp-vti,*texi,man,idn.1,*.info}
-cp -Rv doc/* "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
