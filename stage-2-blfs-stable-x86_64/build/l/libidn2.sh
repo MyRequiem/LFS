@@ -19,8 +19,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 GTK_DOC="--disable-gtk-doc"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
@@ -33,11 +32,6 @@ GTK_DOC="--disable-gtk-doc"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-find doc -name "Makefile*" -delete
-rm -rfv doc/{gdoc*,stamp-vti,*texi,man,idn2.1,*.info,*.c}
-cp -Rv doc/* "${TMP_DIR}${DOCS}"
 
 [[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
     rm -rf "${TMP_DIR}/usr/share/gtk-doc"
