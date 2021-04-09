@@ -39,16 +39,26 @@ SQLITE=0
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
+#
+# NOTE:
+#    пакет не поддерживает сборку в несколько потоков (явно указываем -j1)
 make -j1                            \
     BUILD_OPT=1                     \
     USE_SYSTEM_ZLIB=1               \
     ZLIB_LIBS=-lz                   \
     NSS_ENABLE_WERROR=0             \
     USE_64=1                        \
+    NSS_DISABLE_GTESTS=1            \
     NSS_USE_SYSTEM_SQLITE=${SQLITE} \
     NSPR_INCLUDE_DIR=/usr/include/nspr || exit 1
 
-# запуск тестов
+###
+# тесты
+###
+# NOTE:
+#    для запуска тестов при сборке нужно удалить опцию NSS_DISABLE_GTESTS=1 из
+#    команды 'make'
+#
 # cd tests || exit 1
 # HOST=localhost DOMSUF=localdomain ./all.sh || exit 1
 # cd ../ || exit 1
