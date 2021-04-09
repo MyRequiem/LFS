@@ -34,7 +34,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}/html"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 # по умолчанию GnuPG не устанавливает устаревший скрипт gpg-zip, но он все еще
 # необходимо для некоторых программ, поэтому включим его установку
@@ -51,12 +51,12 @@ sed -e '/noinst_SCRIPTS = gpg-zip/c sbin_SCRIPTS += gpg-zip' \
 
 make || exit 1
 
-# info-документация
-makeinfo --html --no-split -o doc/gnupg_nochunks.html doc/gnupg.texi || exit 1
-makeinfo --plaintext       -o doc/gnupg.txt           doc/gnupg.texi || exit 1
+# документация
+# makeinfo --html --no-split -o doc/gnupg_nochunks.html doc/gnupg.texi || exit 1
+makeinfo --plaintext -o doc/gnupg.txt doc/gnupg.texi || exit 1
 
 # html-документация
-make -C doc html || exit 1
+# make -C doc html || exit 1
 
 # если пакет texlive установлен, то можно создать документацию в pdf и ps
 # форматах
@@ -71,9 +71,13 @@ fi
 make install DESTDIR="${TMP_DIR}"
 
 # установка документации
-install -v -m644 doc/*.texi doc/gnupg.txt "${TMP_DIR}${DOCS}"
-install -v -m644 doc/gnupg_nochunks.html  "${TMP_DIR}${DOCS}/html/gnupg.html"
-install -v -m644 doc/gnupg.html/*         "${TMP_DIR}${DOCS}/html"
+install -v -m644 doc/gnupg.txt "${TMP_DIR}${DOCS}"
+# install -v -m644 doc/gnupg_nochunks.html  "${TMP_DIR}${DOCS}/html/gnupg.html"
+# install -v -m644 doc/gnupg.html/*         "${TMP_DIR}${DOCS}/html"
+
+mv "${TMP_DIR}${DOCS}/examples/gpgconf.conf" \
+    "${TMP_DIR}${DOCS}/gpgconf.conf_example"
+rm -rf "${TMP_DIR}${DOCS}/examples"
 
 # если создавали документацию в форматах pdf и ps
 if [ -n "${PDF_DOCS}" ]; then
