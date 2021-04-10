@@ -15,7 +15,6 @@ PRGNAME="gpgme"
 #              gnupg    (если qt5 или swig установлены, используется для тестов)
 #              clisp
 #              python2
-#              python3
 #              qt5      (для языковых привязок и сборки библиотеки libqgpgme.so)
 #              swig     (для языковых привязок)
 
@@ -31,11 +30,14 @@ GNUPG="--disable-gpg-test"
 
 ./configure       \
     --prefix=/usr \
-    "${GNUPG}"    \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    "${GNUPG}" || exit 1
 
 make || exit 1
-# make check
+
+# для тестов переменная GNUPG при конфигурации должна иметь значение
+# --enable-gpg-test
+# make -k check
+
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
