@@ -16,8 +16,8 @@ ARCH_NAME="volume_key"
 #              gpgme
 #              nss
 # Recommended: swig
-# Optional:    python2 (для сборки Python 2 bindings, но для этого требуется swig)
-#              python3 (для сборки Python 3 bindings, но для этого требуется swig)
+# Optional:    python2 (для сборки Python 2 bindings, но для этого требуется
+#                       swig, как и для сборки Python3 bindings)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
