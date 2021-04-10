@@ -11,10 +11,9 @@ PRGNAME="libblockdev"
 #              libyaml
 #              parted
 #              volume-key
-#              python3
 # Recommended: no
-# Optional:    gtk-doc
-#              btrfs-progs
+# Optional:    btrfs-progs
+#              gtk-doc
 #              mdadm
 #              dmraid    (http://people.redhat.com/~heinzm/sw/dmraid/)
 #              bcachefs  (https://bcachefs.org/)
@@ -29,26 +28,25 @@ mkdir -pv "${TMP_DIR}"
 
 GTK_DOC="--without-gtk-doc"
 PYTHON2="--without-python2"
-PYTHON3="--without-python3"
 BTRFS="--without-btrfs"
 DMRAID="--without-dmraid"
 NDCTL="--without-nvdimm"
 
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--with-gtk-doc"
 command -v python2      &>/dev/null && PYTHON2="--with-python2"
-command -v python3      &>/dev/null && PYTHON3="--with-python3"
 command -v btrfs        &>/dev/null && BTRFS="--with-btrfs"
 command -v dmraid       &>/dev/null && DMRAID="--with-dmraid"
 [ -x /usr/lib/libndctl.so ]         && NDCTL="--with-nvdimm"
 
-./configure       \
-    --prefix=/usr \
-    "${GTK_DOC}"  \
-    "${PYTHON2}"  \
-    "${PYTHON3}"  \
-    "${BTRFS}"    \
-    "${DMRAID}"   \
-    "${NDCTL}"    \
+./configure        \
+    --prefix=/usr  \
+    --with-python3 \
+    "${GTK_DOC}"   \
+    "${PYTHON2}"   \
+    "${BTRFS}"     \
+    "${DMRAID}"    \
+    "${NDCTL}"     \
+    --without-dm   \
     --sysconfdir=/etc || exit 1
 
 make || exit 1
