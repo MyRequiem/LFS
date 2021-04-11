@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # should not be used anymore.
 #
 # Home page: https://github.com/thkukuk/${PRGNAME}
-# Download:  https://github.com/thkukuk/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/thkukuk/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
