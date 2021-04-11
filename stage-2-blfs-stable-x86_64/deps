@@ -161,7 +161,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libsigc++2
-libssh2                             curl, rustc
+libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
 libtiff                             links
 libtirpc                            rpcbind, lsof, libnsl
@@ -274,7 +274,7 @@ rhash                               cmake
 rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm, vim
-ruby                                docbook-xsl, vim
+ruby                                docbook-xsl, vim, mc
 rustc                               mozjs
 samba                               mc, curl
 saxon6                              docbook-xsl

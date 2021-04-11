@@ -13,6 +13,8 @@ PRGNAME="mc"
 # Recommended: no
 # Optional:    doxygen
 #              gpm
+#              libssh2
+#              ruby
 #              samba
 #              unzip
 #              X Window System

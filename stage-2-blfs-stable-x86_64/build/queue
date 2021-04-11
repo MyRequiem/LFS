@@ -145,8 +145,8 @@ ap/sudo.sh
 n/gnupg.sh
 ap/at.sh
 ap/itstool.sh
-ap/mc.sh
 d/ruby.sh
+ap/mc.sh
 s/docbook-xsl.sh
 ap/vim.sh
 a/fcron.sh
@@ -156,6 +156,7 @@ n/gnutls.sh
 ap/sysstat.sh
 n/openssh.sh
 l/libssh2.sh
+ap/mc.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 ap/sudo.sh
