@@ -33,3 +33,7 @@ cd build || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
+
+# решим проблему, из-за которой libctf.so связывается с zlib хоста, а не с zlib
+# LFS
+install -vm755 libctf/.libs/libctf.so.0.0.0 "${LFS}/usr/lib"
