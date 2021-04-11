@@ -52,7 +52,7 @@ mkdir -pv "${TMP_DIR}${DOCS}"
 
 # пакет "не любит" сборку в несколько потоков
 make -j1 || exit 1
-# пакет не имеет набора тестов
+# make test
 make install docdir="${DOCS}" atdocdir="${DOCS}" IROOT="${TMP_DIR}"
 
 # скрипт /etc/init.d/atd для запуска демона atd при старте системы
