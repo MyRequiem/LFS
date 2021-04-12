@@ -35,6 +35,9 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-CVS_${VERSION}-remove_dups-1.patch" || exit 1
 
+# исправим ошибку сборки с linux headers v4.8
+sed -i '/#include <netinet\/ip.h>/d' iptunnel.c || exit 1
+
 make config || exit 1
 make || exit 1
 # пакет не имеет набора тестов
