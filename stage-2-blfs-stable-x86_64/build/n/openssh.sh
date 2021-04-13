@@ -48,6 +48,9 @@ chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
             -s /bin/false     \
             -u 50 sshd
 
+# адаптируем утилиту 'ssh-copy-id' к изменениям в bash-5.1
+sed -e '/INSTALLKEYS_SH/s/)//' -e '260a\  )' -i contrib/ssh-copy-id
+
 LIBEDIT="--without-libedit"
 PAM="--without-pam"
 KERBEROS5="--without-kerberos5"
@@ -70,13 +73,10 @@ command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
 make || exit 1
 
 # для выполнения тестов требуется установленная утилита 'scp', поэтому
-# скопируем ее в /usr/bin, если она не существует (openssh устанавливается в
-# первый раз)
-if ! [ -e /usr/bin/scp ]; then
-    cp scp /usr/bin
-fi
+# скопируем ее в /usr/bin
+cp scp /usr/bin
 
-# make tests
+# make -j1 tests
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -122,6 +122,8 @@ config_file_processing "${SSHD_CONFIG}"
 # ssh_host_rsa_key
 # ssh_host_rsa_key.pub
 ssh-keygen -A
+
+cp /etc/ssh/ssh_host_* "${TMP_DIR}/etc/ssh"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Secure Shell daemon and clients)
