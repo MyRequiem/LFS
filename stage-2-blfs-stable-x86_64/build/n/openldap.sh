@@ -14,9 +14,9 @@ PRGNAME="openldap"
 # Optional:    gnutls
 #              pth
 #              unixodbc
-#              berkeley-db (для сборки slapd, но эта утилита устарела)
 #              mariadb или postgresql или mysql (http://www.mysql.com/)
 #              openslp                          (http://www.openslp.org/)
+#              berkeley-db (для сборки slapd, но эта утилита устарела)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,7 +30,7 @@ mkdir -pv "${TMP_DIR}"
 # устанавливаем ТОЛЬКО клиентскую сторону и библиотеки
 
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-2.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
 autoconf || exit 1
 ./configure           \
@@ -68,7 +68,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # used to provide authentication (such as for email)
 #
 # Home page: http://www.openldap.org/
-# Download:  ftp://ftp.openldap.org/pub/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
+# Download:  https://www.openldap.org/software/download/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 
