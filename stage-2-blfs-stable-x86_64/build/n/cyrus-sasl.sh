@@ -27,7 +27,7 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}/html"
+mkdir -pv "${TMP_DIR}${DOCS}"
 
 # исправим ошибку сборки, если в системе установлен пакет sphinx или
 # python-docutils
@@ -81,7 +81,6 @@ make install DESTDIR="${TMP_DIR}"
 
 # документация
 install -v -m644  saslauthd/LDAP_SASLAUTHD "${TMP_DIR}${DOCS}"
-install -v -m644  doc/legacy/*.html "${TMP_DIR}${DOCS}/html"
 
 install -v -dm700 "${TMP_DIR}/var/lib/sasl"
 
