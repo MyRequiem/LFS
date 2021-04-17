@@ -33,8 +33,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # адаптируем тесты для python3
 grep -rl '#!.*python$' | xargs sed -i '1s/python/&3/'
@@ -80,11 +79,6 @@ command -v rtmpdump   &>/dev/null && LIBRTMP="--with-librtmp=/usr"
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-rm -rf docs/examples/.deps
-find docs \( -name "Makefile*" -o -name "*.1" -o -name "*.3" \) -exec rm {} \;
-cp -vR docs/* "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
