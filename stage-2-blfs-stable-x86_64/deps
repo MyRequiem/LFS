@@ -89,7 +89,7 @@ gc                                  guile
 gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
-git                                 cmake, llvm, libidn2
+git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info
 glib-networking                     glib
