@@ -23,17 +23,14 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устраним зависимость от пакета libpthread-stubs, который бесполезен в Linux
-sed "s/pthread-stubs//" -i configure || exit 1
-
 DOXYGEN="--without-doxygen"
 # command -v doxygen &>/dev/null && DOXYGEN="--with-doxygen"
 
 # shellcheck disable=SC2086
-CFLAGS=-Wno-error=format-extra-args \
-./configure                         \
-    ${XORG_CONFIG}                  \
-    "${DOXYGEN}"                    \
+CFLAGS="${CFLAGS:--O2 -g} -Wno-error=format-extra-args" \
+./configure        \
+    ${XORG_CONFIG} \
+    "${DOXYGEN}"   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
