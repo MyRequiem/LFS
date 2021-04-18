@@ -43,7 +43,6 @@ PKG_VERSION="7"
 # xkbevd          - is the XKB event daemon
 # xkbvleds        - shows the XKB status of keyboard LEDs
 # xkbwatch        - monitors modifier keys and LEDs
-# xkill           - kills a client by its X resource
 # xlsatoms        - lists interned atoms defined on the server
 # xlsclients      - lists client applications running on a display
 # xmessage        - displays a message or query in a window
@@ -59,6 +58,30 @@ PKG_VERSION="7"
 # xwd             - dumps an image of an X window
 # xwininfo        - is a window information utility for X
 # xwud            - is an image displayer for X
+# appres          - list X application resource database
+# bitmap          - XBM format bitmap editor and converter utilities
+# fonttosfnt      - wrap a bitmap font in a sfnt (TrueType) wrapper
+# fslsfonts       - list fonts served by X font server
+# fstobdf         - generate BDF font from X font server
+# listres         - list resources in widgets
+# mkcomposecache  - creates global (system-wide) Compose cache files
+# rendercheck     - test X11 Render support
+# rgb             - X colorname -> RGB mapping database
+# transset        - utility for setting opacity property
+# xcalc           - scientific calculator for X
+# xclipboard      - X clipboard manager
+# xconsole        - monitor system console messages with X
+# xdbedizzy       - DBE (Double Buffer Extension) sample
+# xditview        - display ditroff output
+# xfd             - display all the characters in an X font
+# xfontsel        - point and click selection of X11 font names
+# xkbprint        - print an XKB keyboard description
+# xlsfonts        - list X fonts available on X server
+# xmag            - magnify parts of the screen
+# xscope          - program to monitor X11/Client conversations
+# xsm             - X Session Manager
+# xstdcmap        - X standard colormap utility
+# xvidtune        - video mode tuner for Xorg
 
 ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"
@@ -120,7 +143,6 @@ xinput \
 xkbcomp \
 xkbevd \
 xkbutils \
-xkill \
 xlsatoms \
 xlsclients \
 xmessage \
@@ -137,6 +159,30 @@ xwd \
 xwininfo \
 xwud \
 bdftopcf \
+appres \
+bitmap \
+fonttosfnt \
+fslsfonts \
+fstobdf \
+listres \
+mkcomposecache \
+rendercheck \
+rgb \
+transset \
+xcalc \
+xclipboard \
+xconsole \
+xdbedizzy \
+xditview \
+xfd \
+xfontsel \
+xkbprint \
+xlsfonts \
+xmag \
+xscope \
+xsm \
+xstdcmap \
+xvidtune \
 "
 
 for PKGNAME in ${PACKAGES}; do
