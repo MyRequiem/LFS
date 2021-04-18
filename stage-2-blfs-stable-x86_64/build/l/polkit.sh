@@ -42,9 +42,9 @@ mkdir -pv "${TMP_DIR}"
 ! grep -qE "^polkitd:" /etc/passwd && \
     useradd -c "PolicyKit Daemon Owner" \
             -d /etc/polkit-1 \
+            -u 27            \
             -g polkitd       \
-            -s /bin/false    \
-            -u 27 polkitd
+            -s /bin/false polkitd
 
 # исправим ошибку, возникающую при использовании последних версий Polkit вместе
 # с elogind
@@ -75,7 +75,7 @@ command -v pam_tally       &>/dev/null && AUTHFW="pam"
 command -v elogind-inhibit &>/dev/null && LIBELOGIND="yes"
 command -v g-ir-compiler   &>/dev/null && INTROSPECTION="yes"
 
-autoreconf -fi &&                       \
+autoreconf -fv || exit 1
 ./configure                             \
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
