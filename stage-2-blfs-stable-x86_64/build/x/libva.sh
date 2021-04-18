@@ -12,7 +12,7 @@ PRGNAME="libva"
 #                    установки mesa пересобираем libva)
 # Optional:    doxygen
 #              wayland
-#              intel-gpu-tools
+#              intel-gpu-tools (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -21,7 +21,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 # Если мы переустанавливаем этот пакет, нужно обязательно удалить установленную
 # версию пакета
 if [ -x /usr/lib/libva.so ]; then
-    echo -en "***\n* Before reinstalling the package, you need "
+    echo -en "***\n* Before reinstalling 'libva' package, you need "
     echo -e "to remove the installed version\n***"
     exit 1
 fi
