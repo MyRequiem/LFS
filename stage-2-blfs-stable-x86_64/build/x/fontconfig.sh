@@ -22,9 +22,6 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# убедимся, что система регенерирует src/fcobjshash.h
-rm -f src/fcobjshash.h
-
 # для сборки документации нужны пакеты texlive или install-tl-unx,
 # docbook-utils и perl-sgmlspm
 INSTALL_DOCS="--disable-docs"
@@ -32,7 +29,7 @@ DOCBOOK_UTILS=""
 TEXLIVE=""
 PERL_SGMLSPM=""
 
-command -v docbook2html &>/dev/null && DOCBOOK_UTILS="true"
+# command -v docbook2html &>/dev/null && DOCBOOK_UTILS="true"
 command -v texdoc       &>/dev/null && TEXLIVE="true"
 command -v sgmlspl      &>/dev/null && PERL_SGMLSPM="true"
 [[ -n "${DOCBOOK_UTILS}" && -n "${TEXLIVE}" && -n "${PERL_SGMLSPM}" ]] && \
