@@ -38,8 +38,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/xorg_config.sh"                        || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # применим патч для включения сборки утилит 'glxinfo' и 'glxgears' (mesa-demos)
 patch --verbose -Np1 -i \
@@ -64,7 +63,7 @@ cd build || exit 1
 #    -Dbuild-tests=false
 GALLIUM_DRV="i915,iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl"
 DRI_DRIVERS="i965,nouveau"
-PLATFORMS="drm,x11"
+PLATFORMS="x11"
 
 # shellcheck disable=SC2086
 meson                                  \
@@ -88,21 +87,10 @@ ninja || exit 1
 # для запуска тестов необходимо конфигурировать mesa с параметром
 #    -Dbuild-tests=true
 #
-# известно, что четыре теста из набора glcpp и два теста из набора llvmpipe
-# завершаются как fail
+# известно, что два теста из набора llvmpipe завершаются с ошибкой
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
-
-# документация
-(
-    cd ../docs || exit 1
-    mkdir -p html
-    mv relnotes html
-    rm -rf specs
-    mv ./{*.html,*.css,*.ico,*.png} html/
-    cp -rfv ./* "${TMP_DIR}${DOCS}"
-)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

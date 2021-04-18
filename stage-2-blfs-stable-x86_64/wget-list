@@ -224,8 +224,8 @@ https://dri.freedesktop.org/libdrm/libdrm-2.4.104.tar.xz
 https://github.com/intel/libva/releases/download/2.10.0/libva-2.10.0.tar.bz2
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
 https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.4/libvdpau-1.4.tar.bz2
-https://mesa.freedesktop.org/archive/mesa-20.1.5.tar.xz
-http://www.linuxfromscratch.org/patches/blfs/10.0/mesa-20.1.5-add_xdemos-1.patch
+https://mesa.freedesktop.org/archive/mesa-20.3.4.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/10.1/mesa-20.3.4-add_xdemos-1.patch
 https://www.x.org/pub/individual/data/xbitmaps-1.1.2.tar.bz2
 https://www.x.org/pub/individual/app/iceauth-1.0.8.tar.bz2
 https://www.x.org/pub/individual/app/luit-1.1.1.tar.bz2
