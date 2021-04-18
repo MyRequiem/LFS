@@ -14,6 +14,9 @@ ARCH_NAME="firefox"
 # Recommended: no
 # Optional:    no
 
+### NOTE:
+# Перед обновлением рекомендуется удалить пакет из системы
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
@@ -61,7 +64,12 @@ CC=gcc CXX=g++                  \
     --enable-readline || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+
+# JS тесты
+# make -C js/src check-jstests JSTESTS_EXTRA_ARGS="--timeout 300 --wpt=disabled"
+# JIT тесты
+# make -C js/src check-jit-test JITTEST_EXTRA_ARGS="--timeout 300"
+
 make install DESTDIR="${TMP_DIR}"
 
 # удалим достаточно большую статическую библиотеку, которая не используется ни
@@ -70,6 +78,9 @@ rm -vf "${TMP_DIR}/usr/lib/libjs_static.ajs"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 chmod 644 "${TMP_DIR}/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
+
+# запретим js78-config использовать ошибочные CFLAGS
+sed -i '/@NSPR_CFLAGS@/d' "${TMP_DIR}/usr/bin/js${MAJ_VERSION}-config"
 
 # установим ссылки в /usr/bin
 #    js        -> js${MAJ_VERSION}
