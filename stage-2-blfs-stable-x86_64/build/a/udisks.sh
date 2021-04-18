@@ -76,15 +76,15 @@ make install DESTDIR="${TMP_DIR}"
 MOUNT_OPTIONS_CONF="/etc/udisks2/mount_options.conf"
 cp "${TMP_DIR}${MOUNT_OPTIONS_CONF}.example" "${TMP_DIR}${MOUNT_OPTIONS_CONF}"
 
-if [ -f "${CONFIG}" ]; then
-    mv "${CONFIG}" "${CONFIG}.old"
+if [ -f "${MOUNT_OPTIONS_CONF}" ]; then
+    mv "${MOUNT_OPTIONS_CONF}" "${MOUNT_OPTIONS_CONF}.old"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-config_file_processing "${CONFIG}"
+config_file_processing "${MOUNT_OPTIONS_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (storage device daemon)
