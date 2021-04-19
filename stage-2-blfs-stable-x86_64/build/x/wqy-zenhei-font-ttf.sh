@@ -1,10 +1,10 @@
 #! /bin/bash
 
-PRGNAME="indic-fonts-ttf"
-ARCH_NAME="ttf-indic-fonts"
+PRGNAME="wqy-zenhei-font-ttf"
+ARCH_NAME="wqy-zenhei"
 
-### indic-fonts-ttf (Indic fonts)
-# Индийские шрифты
+### wqy-zenhei-font-ttf (Wen Quan Yi Zen Hei CJK Font)
+# Китайский шрифт
 
 # Required:    xcursor-themes
 #              xorg-applications
@@ -13,28 +13,31 @@ ARCH_NAME="ttf-indic-fonts"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
+source "${ROOT}/check_environment.sh"                  || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d _ -f 1 | rev)"
+    -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1,2 | rev | sed 's/-/_/')"
 
-BUILD_DIR="/tmp/build-${ARCH_NAME}-${VERSION}"
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${ARCH_NAME}_${VERSION}".tar.?z* || exit 1
-cd "${ARCH_NAME}-${VERSION}" || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-"*.tar.?z* || exit 1
+cd "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
 ETC_FONTS="/etc/fonts"
 mkdir -pv "${TMP_DIR}"{"${TTF_FONT_DIR}","${ETC_FONTS}"/conf.{d,avail}}
 
-find . -type f -name "*.ttf" \
+zcat "${SOURCES}/fixup-fontconfig-file.diff.gz" | patch -p1 --verbose || exit 1
+
+find . -type f \( -name "*.ttf" -o  -name "*.ttc" \) \
     -exec cp -a {} "${TMP_DIR}${TTF_FONT_DIR}" \;
+
 find . -type f -name "*.conf" \
     -exec cp -a {} "${TMP_DIR}${ETC_FONTS}/conf.avail" \;
 
@@ -58,14 +61,16 @@ mkfontdir .
 fc-cache -f
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Indic fonts)
+# Package: ${PRGNAME} (Wen Quan Yi Zen Hei CJK Font)
 #
-# This is a collection of free fonts that support some of the more widely used
-# Indic scripts. Included are TTF fonts for Bengali, Devanagari, Gujarati,
-# Kannada, Malayalam, Oriya, Punjabi, Tamil, and Telugu.
+# The WenQuanYi Zen Hei font is a Chinese (or CJK) outline font with Hei Ti
+# style (a sans-serif style) Hanzi glyphs. This font is developed for general
+# purpose use of Chinese for formating, printing and on-screen display. This
+# font is also targeted at platform independence and the utility for document
+# exchange between various operating systems.
 #
-# Home page: https://launchpad.net/ttf-indic-fonts
-# Download:  https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/${ARCH_NAME}/${ARCH_NAME}_${VERSION}.tar.xz
+# Home page: http://wqy.sourceforge.net/en/
+# Download:  https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/${PRGNAME}/${ARCH_NAME}-${VERSION//_/-}.tar.bz2
 #
 EOF
 

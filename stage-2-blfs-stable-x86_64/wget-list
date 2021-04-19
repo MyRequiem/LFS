@@ -333,6 +333,8 @@ https://releases.pagure.org/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/sinhala_lklug-font-ttf/sinhala_lklug.ttf
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-font-ttf/TibetanMachineUnicodeFont.zip
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
+https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/wqy-zenhei-font-ttf/wqy-zenhei-0.8.38-1.tar.bz2
+https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/wqy-zenhei-font-ttf/fixup-fontconfig-file.diff.gz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.30.tar.bz2
 https://static.rust-lang.org/dist/rustc-1.47.0-src.tar.gz
 http://ftp.gnome.org/pub/gnome/sources/atk/2.36/atk-2.36.0.tar.xz

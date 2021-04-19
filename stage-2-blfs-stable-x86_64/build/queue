@@ -223,6 +223,7 @@ x/liberation-fonts-ttf.sh
 x/sinhala-lklug-font-ttf.sh
 x/tibmachuni-font-ttf.sh
 x/indic-fonts-ttf.sh
+x/wqy-zenhei-font-ttf.sh
 x/xkeyboard-config.sh
 l/polkit.sh
 l/atk.sh
