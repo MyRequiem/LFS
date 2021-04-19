@@ -217,6 +217,7 @@ x/xbitmaps.sh
 x/xorg-applications.sh
 x/xcursor-themes.sh
 x/xorg-fonts.sh
+x/sazanami-fonts-ttf.sh
 x/xkeyboard-config.sh
 l/polkit.sh
 l/atk.sh

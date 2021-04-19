@@ -76,7 +76,7 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fontconfig                          xorg-libraries, xorg-fonts
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freetds                             apr-util
@@ -335,13 +335,13 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xcursor-themes                      xorg-fonts
+xcursor-themes                      xorg-fonts, sazanami-fonts-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
-xorg-applications                   xcursor-themes, xorg-fonts
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf
 xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
 xorgproto                           libxau, libxdmcp
