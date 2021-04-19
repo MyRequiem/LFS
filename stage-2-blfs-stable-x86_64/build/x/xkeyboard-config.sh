@@ -17,6 +17,15 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# По умолчанию установленные правила XKB называются 'base'. В директории
+# /usr/share/X11/xkb/rules/ мы создаем символические ссылки с именем 'xorg' на
+# эти правила, что для Xorg является именем по умолчанию:
+#    xorg     -> base
+#    xorg.lst -> base.lst
+#    xorg.xml -> base.xml
+#
+#    --with-xkb-rules-symlink=xorg
+#
 # shellcheck disable=SC2086
 ./configure        \
     ${XORG_CONFIG} \
