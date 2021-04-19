@@ -77,7 +77,7 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freetds                             apr-util
@@ -288,6 +288,7 @@ sgml-common                         docbook-xml
 shared-mime-info                    glib
 sharutils                           berkeley-db
 silgraphite                         graphite2
+sinhala-lklug-font-ttf
 slang                               aalib, mc
 smartmontools
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl
@@ -338,13 +339,13 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf
+xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
-xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
 xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
 xorgproto                           libxau, libxdmcp
@@ -352,6 +353,5 @@ yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl, mc
-
 
 # vim:ft=conf nowrap
