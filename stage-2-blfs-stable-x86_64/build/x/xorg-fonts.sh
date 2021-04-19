@@ -50,6 +50,7 @@ ln -svfn ./X11/TTF "${TMP_PACKAGE}${FONTS}/X11-TTF"
 
 # сразу создадим эти ссылки в корневой системе
 (
+    mkdir -p "${FONTS}"
     cd "${FONTS}" || exit 1
     rm -f X11-OTF X11-TTF
     ln -svfn ./X11/OTF X11-OTF
