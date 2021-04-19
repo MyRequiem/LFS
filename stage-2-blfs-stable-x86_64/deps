@@ -94,6 +94,7 @@ git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info
 glib-networking                     glib
+glu
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
@@ -198,7 +199,7 @@ mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mercurial                           cmake
-mesa                                libva, libvdpau, xorg-applications
+mesa                                libva, libvdpau, xorg-applications, glu
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mm-common                           libsigc++2
