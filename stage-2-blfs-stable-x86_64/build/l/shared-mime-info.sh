@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The update-mime-database command, used to install new MIME data.
 #
 # Home page: https://freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://gitlab.freedesktop.org/xdg/${PRGNAME}/uploads/0440063a2e6823a4b1a6fb2f2af8350f/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.freedesktop.org/xdg/${PRGNAME}/uploads/0ee50652091363ab0d17e335e5e74fbe/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
