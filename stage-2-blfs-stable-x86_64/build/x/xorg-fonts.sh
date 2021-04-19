@@ -7,6 +7,8 @@ PKG_VERSION="7"
 # Масштабируемые шрифты и вспомогательные утилиты для приложений Xorg
 
 # Required:    xcursor-themes
+#              xorg-applications
+#              fontconfig
 # Recommended: no
 # Optional:    no
 
@@ -152,6 +154,10 @@ for PKGNAME in ${PACKAGES}; do
         exit 1
     }
 
+    # удаляем файлы fonts.dir и fonts.scale
+    find "${PKG_INSTALL_DIR}${FONTS}" \
+        -type f \( -name fonts.dir -o -name fonts.scale \) -delete
+
     # stripping
     BINARY="$(find "${PKG_INSTALL_DIR}" -type f -print0 | \
         xargs -0 file 2>/dev/null | grep -e "executable" -e "shared object" | \
@@ -199,6 +205,21 @@ EOF
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* "${TMP_PACKAGE}"/
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* /
 done
+
+# обновим индексы установленных шрифтов (создадим fonts.dir и fonts.scale в
+# каждой директории со шрифтами)
+for FONTDIR in "${FONTS}/X11"/*; do
+    (
+        cd "${FONTDIR}" || exit 1
+        # создаем индекс файлов масштабируемых шрифтов
+        mkfontscale .
+        # создаем индекс файлов шрифтов в каталоге
+        mkfontdir .
+    )
+done
+
+# создаем файлы кэша информации о шрифтах для fontconfig
+fc-cache -f
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # Package: ${PRGNAME} (Xorg Fonts)
