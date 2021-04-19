@@ -41,13 +41,8 @@ find . -type f \( -name "*.ttf" -o  -name "*.ttc" \) \
 find . -type f -name "*.conf" \
     -exec cp -a {} "${TMP_DIR}${ETC_FONTS}/conf.avail" \;
 
-cd "${TMP_DIR}${ETC_FONTS}/conf.avail" || exit 1
-for CONF in *; do
-    (
-        cd "${TMP_DIR}${ETC_FONTS}/conf.d" || exit 1
-        ln -sf "../conf.avail/${CONF}" "${CONF}"
-    )
-done
+cd "${TMP_DIR}${ETC_FONTS}/conf.d" || exit 1
+ln -sf ../conf.avail/44-wqy-zenhei.conf 44-wqy-zenhei.conf
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
