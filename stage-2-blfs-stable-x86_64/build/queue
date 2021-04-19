@@ -229,6 +229,7 @@ l/atk.sh
 l/shared-mime-info.sh
 l/glib.sh
 x/glu.sh
+x/freeglut.sh
 
 
 # vim:ft=conf

@@ -340,3 +340,5 @@ https://static.rust-lang.org/dist/rustc-1.47.0-src.tar.gz
 https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0ee50652091363ab0d17e335e5e74fbe/shared-mime-info-2.1.tar.xz
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
+https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch

@@ -35,7 +35,7 @@ c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm
 cairo-5c                            xorg-applications
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
@@ -80,6 +80,7 @@ fltk                                pinentry
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
+freeglut
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig
 fribidi
@@ -94,7 +95,7 @@ git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info
 glib-networking                     glib
-glu
+glu                                 freeglut
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
@@ -199,7 +200,7 @@ mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mercurial                           cmake
-mesa                                libva, libvdpau, xorg-applications, glu
+mesa                                libva, libvdpau, xorg-applications, glu, freeglut
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mm-common                           libsigc++2
