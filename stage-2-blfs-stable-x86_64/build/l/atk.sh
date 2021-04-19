@@ -19,16 +19,16 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-INTROSPECTION="-Dintrospection=false"
-GTK_DOC="-Ddocs=false"
+INTROSPECTION="false"
+GTK_DOC="false"
 
-command -v g-ir-compiler &>/dev/null  && INTROSPECTION="-Dintrospection=true"
-# command -v gtkdoc-check  &>/dev/null  && GTK_DOC="-Ddocs=true"
+command -v g-ir-compiler &>/dev/null  && INTROSPECTION="true"
+# command -v gtkdoc-check  &>/dev/null  && GTK_DOC="true"
 
-meson                  \
-    --prefix=/usr      \
-    "${INTROSPECTION}" \
-    "${GTK_DOC}"       \
+meson                                  \
+    --prefix=/usr                      \
+    -Ddocs="${GTK_DOC}"                \
+    -Dintrospection="${INTROSPECTION}" \
     .. || exit 1
 
 ninja || exit 1
