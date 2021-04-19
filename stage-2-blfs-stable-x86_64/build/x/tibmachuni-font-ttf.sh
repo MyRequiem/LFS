@@ -14,7 +14,7 @@ VERSION="1.901b"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"

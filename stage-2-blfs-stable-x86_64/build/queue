@@ -222,6 +222,7 @@ x/dejavu-fonts-ttf.sh
 x/liberation-fonts-ttf.sh
 x/sinhala-lklug-font-ttf.sh
 x/tibmachuni-font-ttf.sh
+x/indic-fonts-ttf.sh
 x/xkeyboard-config.sh
 l/polkit.sh
 l/atk.sh
