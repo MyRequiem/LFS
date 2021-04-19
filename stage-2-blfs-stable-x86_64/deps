@@ -77,7 +77,7 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freetds                             apr-util
@@ -306,6 +306,7 @@ tap-py                              python-dbus
 tdb                                 exim
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
 thin-provisioning-tools             lvm2
+tibmachuni-font-ttf
 time
 tk                                  python2, python3, ruby, git
 tree
@@ -339,13 +340,13 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
+xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
-xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf
 xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
 xorgproto                           libxau, libxdmcp
