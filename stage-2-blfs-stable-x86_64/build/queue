@@ -219,6 +219,7 @@ x/xcursor-themes.sh
 x/xorg-fonts.sh
 x/sazanami-fonts-ttf.sh
 x/dejavu-fonts-ttf.sh
+x/liberation-fonts-ttf.sh
 x/xkeyboard-config.sh
 l/polkit.sh
 l/atk.sh
