@@ -48,6 +48,7 @@ datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
+dejavu-fonts-ttf
 desktop-file-utils                  glib
 digest-crc                          parted
 directfb                            links
@@ -76,7 +77,7 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freetds                             apr-util
@@ -278,6 +279,7 @@ ruby                                docbook-xsl, vim, mc
 rustc                               mozjs
 samba                               mc, curl
 saxon6                              docbook-xsl
+sazanami-fonts-ttf
 sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
 sg3-utils
@@ -335,13 +337,13 @@ xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
-xcursor-themes                      xorg-fonts, sazanami-fonts-ttf
+xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
-xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf
 xorg-fonts
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
 xorgproto                           libxau, libxdmcp
