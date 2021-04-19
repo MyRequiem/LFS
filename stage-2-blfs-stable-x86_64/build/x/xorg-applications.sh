@@ -124,7 +124,6 @@ mkdir -p "${TMP_PKGS}"
 PACKAGES="\
 iceauth \
 luit \
-mkfontdir \
 mkfontscale \
 sessreg \
 setxkbmap \
