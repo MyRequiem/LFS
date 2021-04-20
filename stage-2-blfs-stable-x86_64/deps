@@ -35,7 +35,7 @@ c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm
 cairo-5c                            xorg-applications
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
@@ -80,7 +80,7 @@ fltk                                pinentry
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
-freeglut
+freeglut                            libtiff
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig
 fribidi
@@ -125,6 +125,7 @@ iptables
 isl                                 gcc
 iso-codes
 itstool                             shared-mime-info
+jbig-kit                            libtiff
 json-c                              cryptsetup, fontconfig
 kernel-firmware
 kernel-generic                      iptables
@@ -147,7 +148,7 @@ libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
 libiscsi                            udisks
-libjpeg-turbo                       links
+libjpeg-turbo                       links, libtiff
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -177,6 +178,7 @@ libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva                               mesa
 libvdpau                            mesa
+libwebp                             libtiff
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb

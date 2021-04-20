@@ -4,13 +4,8 @@ PRGNAME="libtiff"
 ARCH_NAME="tiff"
 
 ### LibTIFF (a library for reading and writing TIFF files)
-# Пакет содержит библиотеки и утилиты для работы с изображениями в формате TIFF
-# (Tag Image File Format)
-
-# http://www.linuxfromscratch.org/blfs/view/stable/general/libtiff.html
-
-# Home page: http://simplesystems.org/libtiff/
-# Download:  http://download.osgeo.org/libtiff/tiff-4.1.0.tar.gz
+# Библиотеки и утилиты для работы с изображениями в формате TIFF (Tag Image
+# File Format)
 
 # Required:    no
 # Recommended: cmake
@@ -19,15 +14,15 @@ ARCH_NAME="tiff"
 #              libwebp
 #              jbig-kit (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
 
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-mkdir -p _build
-cd _build || exit 1
+mkdir -p libtiff-build
+cd libtiff-build || exit 1
 
 cmake                                                             \
     -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
@@ -36,8 +31,11 @@ cmake                                                             \
 
 ninja || exit 1
 # ninja test
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a library for reading and writing TIFF files)

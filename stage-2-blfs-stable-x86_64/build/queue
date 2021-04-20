@@ -230,6 +230,8 @@ l/shared-mime-info.sh
 l/glib.sh
 x/glu.sh
 x/freeglut.sh
+l/libtiff.sh
+n/links.sh
 
 
 # vim:ft=conf
