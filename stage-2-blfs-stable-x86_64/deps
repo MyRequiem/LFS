@@ -35,7 +35,7 @@ c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm
 cairo-5c                            xorg-applications
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper
 cmocka                              gnutls
 cpio
 cryptsetup                          volume-key
@@ -61,7 +61,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -80,7 +80,7 @@ fltk                                pinentry
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
-freeglut                            libtiff
+freeglut                            libtiff, jasper
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig
 fribidi
@@ -125,6 +125,7 @@ iptables
 isl                                 gcc
 iso-codes
 itstool                             shared-mime-info
+jasper
 jbig-kit                            libtiff
 json-c                              cryptsetup, fontconfig
 kernel-firmware
@@ -148,7 +149,7 @@ libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff
+libjpeg-turbo                       links, libtiff, jasper
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -309,7 +310,7 @@ swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
 time

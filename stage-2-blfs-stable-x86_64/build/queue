@@ -232,6 +232,7 @@ x/glu.sh
 x/freeglut.sh
 l/libtiff.sh
 n/links.sh
+l/jasper.sh
 
 
 # vim:ft=conf
