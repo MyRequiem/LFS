@@ -233,6 +233,7 @@ x/freeglut.sh
 l/libtiff.sh
 n/links.sh
 l/jasper.sh
+l/gdk-pixbuf.sh
 
 
 # vim:ft=conf

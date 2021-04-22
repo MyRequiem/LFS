@@ -91,15 +91,16 @@ gc                                  guile
 gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
+gdk-pixbuf
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf
 glib-networking                     glib
 glu                                 freeglut
 gnome-shell                         polkit
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -108,7 +109,7 @@ graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim
 gtk+3                               pinentry, vim
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
@@ -149,7 +150,7 @@ libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -158,11 +159,11 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
-librsvg                             links
+librsvg                             links, gdk-pixbuf
 librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
@@ -170,7 +171,7 @@ libsectok                           openssh
 libsigc++2
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
-libtiff                             links
+libtiff                             links, gdk-pixbuf
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
@@ -291,7 +292,7 @@ sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml
-shared-mime-info                    glib
+shared-mime-info                    glib, gdk-pixbuf
 sharutils                           berkeley-db
 silgraphite                         graphite2
 sinhala-lklug-font-ttf
