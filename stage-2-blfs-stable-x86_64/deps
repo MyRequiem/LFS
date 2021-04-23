@@ -107,7 +107,7 @@ gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
-gtk+2                               pinentry, vim
+gtk+2                               pinentry, vim, pixman
 gtk+3                               pinentry, vim
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf
 guile                               gnutls
@@ -159,7 +159,7 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
@@ -248,6 +248,7 @@ perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig
 pinentry                            gnupg
+pixman
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize

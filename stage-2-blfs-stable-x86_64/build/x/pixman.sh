@@ -7,16 +7,12 @@ PRGNAME="pixman"
 # компоновка изображений и трапецеидальная растеризация. Используется как xorg,
 # так и cairo.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/pixman.html
+# Required:    no
+# Recommended: no
+# Optional:    gtk+2
+#              libpng (для тестов и демо)
 
-# Home page: http://www.pixman.org/
-# Download:  https://www.cairographics.org/releases/pixman-0.38.4.tar.gz
-
-# Required: no
-# Optional: gtk+2
-#           libpng (для тестов и демо)
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
@@ -30,11 +26,12 @@ meson \
     --prefix=/usr || exit 1
 
 ninja || exit 1
-
 # ninja test
-
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (pixel manipulation library)
