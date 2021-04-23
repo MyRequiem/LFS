@@ -235,6 +235,10 @@ n/links.sh
 l/jasper.sh
 l/gdk-pixbuf.sh
 x/pixman.sh
+l/cairo.sh
+l/gobject-introspection.sh
+l/harfbuzz.sh
+x/libdrm.sh
 
 
 # vim:ft=conf

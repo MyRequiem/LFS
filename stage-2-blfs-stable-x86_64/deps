@@ -37,6 +37,7 @@ cairo-5c                            xorg-applications
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper
 cmocka                              gnutls
+cogl                                cairo
 cpio
 cryptsetup                          volume-key
 cunit                               libdrm
@@ -51,7 +52,7 @@ dbus-glib                           dbus, upower
 dejavu-fonts-ttf
 desktop-file-utils                  glib
 digest-crc                          parted
-directfb                            links
+directfb                            links, cairo
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
 docbook-utils                       fcron, fontconfig, libsigc++2
@@ -77,7 +78,7 @@ fcron
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
 freeglut                            libtiff, jasper
@@ -92,9 +93,10 @@ gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
 gdk-pixbuf
+ghostscript                         cairo
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo
 glib-networking                     glib
 glu                                 freeglut
 gnome-shell                         polkit
@@ -107,9 +109,9 @@ gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
-gtk+2                               pinentry, vim, pixman
-gtk+3                               pinentry, vim
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf
+gtk+2                               pinentry, vim, pixman, cairo
+gtk+3                               pinentry, vim, cairo
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
@@ -128,6 +130,7 @@ iso-codes
 itstool                             shared-mime-info
 jasper
 jbig-kit                            libtiff
+jbig2dec                            cairo
 json-c                              cryptsetup, fontconfig
 kernel-firmware
 kernel-generic                      iptables
@@ -139,7 +142,7 @@ libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
-libdrm                              libva, mesa
+libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
 liberation-fonts-ttf
 libevent                            links
@@ -159,16 +162,17 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
-librsvg                             links, gdk-pixbuf
+librsvg                             links, gdk-pixbuf, cairo
 librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libsigc++2
+libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
 libtiff                             links, gdk-pixbuf
@@ -184,7 +188,7 @@ libwebp                             libtiff
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
 libxdmcp                            libxcb
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
@@ -198,13 +202,13 @@ lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
 lzip                                ed
-lzo                                 libarchive
+lzo                                 libarchive, cairo
 make-ca                             wget, p11-kit, gnutls, curl
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mercurial                           cmake
-mesa                                libva, libvdpau, xorg-applications, glu, freeglut
+mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo
 mesa-demos                          mesa
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mm-common                           libsigc++2
@@ -248,13 +252,14 @@ perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig
 pinentry                            gnupg
-pixman
+pixman                              cairo
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
 polkit                              upower, udisks
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
+poppler                             cairo
 popt                                cryptsetup
 postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
@@ -275,7 +280,8 @@ python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
 python3-pygments                    libbytesize, llvm
-qt5                                 cmake, highlight, pinentry, gpgme
+qt4                                 cairo
+qt5                                 cmake, highlight, pinentry, gpgme, cairo
 quiche                              curl
 recommonmark                        llvm
 reiserfsprogs                       lvm2
@@ -297,6 +303,7 @@ shared-mime-info                    glib, gdk-pixbuf
 sharutils                           berkeley-db
 silgraphite                         graphite2
 sinhala-lklug-font-ttf
+skia                                cairo
 slang                               aalib, mc
 smartmontools
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl
@@ -328,7 +335,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -357,7 +364,7 @@ xkeyboard-config
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xorg-fonts
-xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
