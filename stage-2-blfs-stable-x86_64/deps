@@ -118,6 +118,7 @@ harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 help2man                            pango
+hicolor-icon-theme
 highlight
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm

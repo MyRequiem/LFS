@@ -240,6 +240,7 @@ l/gobject-introspection.sh
 l/harfbuzz.sh
 x/libdrm.sh
 l/pango.sh
+l/hicolor-icon-theme.sh
 
 
 # vim:ft=conf
