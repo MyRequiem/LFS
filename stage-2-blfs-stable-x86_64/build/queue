@@ -239,6 +239,7 @@ l/cairo.sh
 l/gobject-introspection.sh
 l/harfbuzz.sh
 x/libdrm.sh
+l/pango.sh
 
 
 # vim:ft=conf
