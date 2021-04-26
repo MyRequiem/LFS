@@ -250,6 +250,7 @@ x/xorg-server.sh
 x/libevdev.sh
 x/mtdev.sh
 x/xorg-evdev-driver.sh
+x/libinput.sh
 
 
 # vim:ft=conf

@@ -113,7 +113,7 @@ graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim, pixman, cairo
-gtk+3                               pinentry, vim, cairo
+gtk+3                               pinentry, vim, cairo, libinput
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2
 guile                               gnutls
 harfbuzz                            freetype, graphite2
@@ -151,7 +151,7 @@ libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
 libepoxy                            xorg-server
 liberation-fonts-ttf
-libevdev                            xorg-evdev-driver
+libevdev                            xorg-evdev-driver, libinput
 libevent                            links
 libexif
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server
@@ -159,6 +159,7 @@ libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
+libinput
 libiscsi                            udisks
 libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf
 libksba                             gnupg
@@ -187,11 +188,12 @@ libtiff                             links, gdk-pixbuf
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
-libunwind                           mesa, xorg-server
+libunwind                           mesa, xorg-server, libinput
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva                               mesa
 libvdpau                            mesa
+libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
@@ -222,7 +224,7 @@ mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
 mm-common                           libsigc++2
 mono                                libidn
 mozjs                               polkit
-mtdev                               xorg-evdev-driver
+mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
@@ -281,6 +283,7 @@ python-dbus                         python3-dbusmock, polkit
 python-docutils                     python-dbus, sshfs
 python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks
+python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
@@ -316,7 +319,7 @@ sinhala-lklug-font-ttf
 skia                                cairo
 slang                               aalib, mc
 smartmontools
-sphinx                              cmake, llvm, python-dbus, cyrus-sasl
+sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util
@@ -345,7 +348,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
