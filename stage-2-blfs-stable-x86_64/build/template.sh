@@ -51,5 +51,5 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # https://www.x.org
 # source "${ROOT}/xorg_config.sh"                        || exit 1
 # # shellcheck disable=SC2086
-# ./configure        \
+# ./configure \
 #     ${XORG_CONFIG} || exit 1

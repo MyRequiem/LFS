@@ -247,6 +247,7 @@ ap/vim.sh
 x/pixman.sh
 l/cairo.sh
 x/xorg-server.sh
+x/libevdev.sh
 
 
 # vim:ft=conf
