@@ -248,6 +248,8 @@ x/pixman.sh
 l/cairo.sh
 x/xorg-server.sh
 x/libevdev.sh
+x/mtdev.sh
+x/xorg-evdev-driver.sh
 
 
 # vim:ft=conf
