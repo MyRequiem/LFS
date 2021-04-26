@@ -241,6 +241,11 @@ l/harfbuzz.sh
 x/libdrm.sh
 l/pango.sh
 l/hicolor-icon-theme.sh
+l/gtk+2.sh
+n/pinentry.sh
+ap/vim.sh
+x/pixman.sh
+l/cairo.sh
 
 
 # vim:ft=conf

@@ -16,7 +16,7 @@ asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-atk
+atk                                 gtk+2
 autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
@@ -42,6 +42,7 @@ cogl                                cairo
 cpio
 cryptsetup                          volume-key
 cunit                               libdrm
+cups                                gtk+2
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc
 cyrus-sasl                          exim, openldap
 cython                              yasm
@@ -56,7 +57,7 @@ digest-crc                          parted
 directfb                            links, cairo
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
-docbook-utils                       fcron, fontconfig, libsigc++2
+docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm
 docbook2x                           git
@@ -93,7 +94,7 @@ gc                                  guile
 gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
-gdk-pixbuf
+gdk-pixbuf                          gtk+2
 ghostscript                         cairo
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
@@ -101,9 +102,10 @@ glib                                gobject-introspection, libgudev, dbus-glib, 
 glib-networking                     glib
 glu                                 freeglut
 gnome-shell                         polkit
+gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -112,13 +114,13 @@ graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim, pixman, cairo
 gtk+3                               pinentry, vim, cairo
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 help2man                            pango
-hicolor-icon-theme
+hicolor-icon-theme                  gtk+2
 highlight
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm
@@ -245,7 +247,7 @@ openssh                             libssh2, sshfs
 opie                                sudo
 p11-kit                             nss, make-ca, gnutls
 p7zip
-pango
+pango                               gtk+2
 parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
