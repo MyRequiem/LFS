@@ -4,7 +4,7 @@
 
 X Window System                     aalib, exim, mc, vim, openssh, links
 aalib
-acpid
+acpid                               xorg-server
 adns                                gnupg
 afs                                 sudo
 apache-ant                          docbook-xsl
@@ -64,13 +64,13 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server
 dtrace                              ruby
 ducktype                            dbus
 ed
 efl                                 pinentry
 elinks                              xmlto
-elogind                             dbus, polkit, udisks, xorg-libraries
+elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server
 emacs                               guile, pinentry, libidn
 etc-issue
 ethtool                             pm-utils
@@ -82,7 +82,7 @@ fig2dev                             gnupg
 fltk                                pinentry
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango
 fonttools                           harfbuzz, graphite2
-fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto
+fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server
 freeglut                            libtiff, jasper
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig
@@ -149,10 +149,11 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
+libepoxy                            xorg-server
 liberation-fonts-ttf
 libevent                            links
 libexif
-libgcrypt                           libxslt, gnupg, libssh2, mesa
+libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
@@ -185,7 +186,7 @@ libtiff                             links, gdk-pixbuf
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
-libunwind                           mesa
+libunwind                           mesa, xorg-server
 libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva                               mesa
@@ -224,7 +225,7 @@ mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, mozjs
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
-nettle                              libarchive, gnutls, mesa
+nettle                              libarchive, gnutls, mesa, xorg-server
 nftables                            iptables
 nghttp2                             cmake, nodejs, curl
 ngtcp2                              curl
@@ -259,11 +260,11 @@ perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig
 pinentry                            gnupg
-pixman                              cairo
+pixman                              cairo, xorg-server
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
-polkit                              upower, udisks
+polkit                              upower, udisks, xorg-server
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 poppler                             cairo
@@ -348,8 +349,8 @@ vdo                                 lvm2
 vim                                 fcron
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries
-wayland                             libva
-wayland-protocols                   mesa
+wayland                             libva, xorg-server
+wayland-protocols                   mesa, xorg-server
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
@@ -359,19 +360,21 @@ xbitmaps                            xorg-applications
 xcb-proto                           libxcb
 xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications
 xcb-util-cursor
-xcb-util-image
-xcb-util-keysyms
-xcb-util-renderutil
-xcb-util-wm
+xcb-util-image                      xorg-server
+xcb-util-keysyms                    xorg-server
+xcb-util-renderutil                 xorg-server
+xcb-util-wm                         xorg-server
 xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
-xkeyboard-config
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
+xkeyboard-config                    xorg-server
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
-xorg-fonts
+xorg-fonts                          xorg-server
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango
+xorg-server
+xorg-sgml-doctools                  xorg-server
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus

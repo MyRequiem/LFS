@@ -246,6 +246,7 @@ n/pinentry.sh
 ap/vim.sh
 x/pixman.sh
 l/cairo.sh
+x/xorg-server.sh
 
 
 # vim:ft=conf
