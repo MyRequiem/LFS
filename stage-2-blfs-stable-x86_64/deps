@@ -159,7 +159,7 @@ libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
-libinput
+libinput                            xorg-libinput-driver
 libiscsi                            udisks
 libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf
 libksba                             gnupg
@@ -378,8 +378,9 @@ xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xo
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xorg-evdev-driver
 xorg-fonts                          xorg-server
+xorg-libinput-driver
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango
-xorg-server                         xorg-evdev-driver
+xorg-server                         xorg-evdev-driver, xorg-libinput-driver
 xorg-sgml-doctools                  xorg-server
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
