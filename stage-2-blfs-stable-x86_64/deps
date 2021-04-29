@@ -151,7 +151,7 @@ libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
 libepoxy                            xorg-server
 liberation-fonts-ttf
-libevdev                            xorg-evdev-driver, libinput
+libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links
 libexif
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server
@@ -380,8 +380,9 @@ xorg-evdev-driver
 xorg-fonts                          xorg-server
 xorg-libinput-driver
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango
-xorg-server                         xorg-evdev-driver, xorg-libinput-driver
+xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver
 xorg-sgml-doctools                  xorg-server
+xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
 yasm                                libjpeg-turbo
 yelp-tools                          dbus

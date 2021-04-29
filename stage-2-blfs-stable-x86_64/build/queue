@@ -252,6 +252,7 @@ x/mtdev.sh
 x/xorg-evdev-driver.sh
 x/libinput.sh
 x/xorg-libinput-driver.sh
+x/xorg-synaptics-driver.sh
 
 
 # vim:ft=conf
