@@ -259,6 +259,7 @@ x/xorg-ati-driver.sh
 x/xorg-fbdev-driver.sh
 x/xorg-intel-driver.sh
 x/xorg-nouveau-driver.sh
+x/startup-notification.sh
 
 
 # vim:ft=conf

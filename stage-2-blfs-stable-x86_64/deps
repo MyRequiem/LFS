@@ -324,6 +324,7 @@ sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util
 sshfs
+startup-notification
 stunnel                             curl
 subversion                          cmake, git
 sudo
@@ -363,7 +364,7 @@ wqy-zenhei-font-ttf
 wxwidgets                           p7zip
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb
-xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver
+xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification
 xcb-util-cursor
 xcb-util-image                      xorg-server
 xcb-util-keysyms                    xorg-server
@@ -383,7 +384,7 @@ xorg-fbdev-driver
 xorg-fonts                          xorg-server
 xorg-intel-driver
 xorg-libinput-driver
-xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification
 xorg-nouveau-driver
 xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver
 xorg-sgml-doctools                  xorg-server
