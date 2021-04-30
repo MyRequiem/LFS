@@ -246,6 +246,7 @@ n/pinentry.sh
 ap/vim.sh
 x/pixman.sh
 l/cairo.sh
+x/libepoxy.sh
 x/xorg-server.sh
 x/libevdev.sh
 x/mtdev.sh
@@ -253,6 +254,7 @@ x/xorg-evdev-driver.sh
 x/libinput.sh
 x/xorg-libinput-driver.sh
 x/xorg-synaptics-driver.sh
+x/xorg-amdgpu-driver.sh
 
 
 # vim:ft=conf
