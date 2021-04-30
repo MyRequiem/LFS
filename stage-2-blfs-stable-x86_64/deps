@@ -363,7 +363,7 @@ wqy-zenhei-font-ttf
 wxwidgets                           p7zip
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb
-xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications
+xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver
 xcb-util-cursor
 xcb-util-image                      xorg-server
 xcb-util-keysyms                    xorg-server
@@ -381,9 +381,10 @@ xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
 xorg-fonts                          xorg-server
+xorg-intel-driver
 xorg-libinput-driver
 xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango
-xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver
+xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver
 xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp

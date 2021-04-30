@@ -257,6 +257,7 @@ x/xorg-synaptics-driver.sh
 x/xorg-amdgpu-driver.sh
 x/xorg-ati-driver.sh
 x/xorg-fbdev-driver.sh
+x/xorg-intel-driver.sh
 
 
 # vim:ft=conf
