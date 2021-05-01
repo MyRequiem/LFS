@@ -196,7 +196,7 @@ libvdpau                            mesa
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
-libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm
+libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm
 libxdmcp                            libxcb
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
@@ -370,6 +370,7 @@ xcb-util-image                      xorg-server
 xcb-util-keysyms                    xorg-server
 xcb-util-renderutil                 xorg-server
 xcb-util-wm                         xorg-server
+xcb-util-xrm
 xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
