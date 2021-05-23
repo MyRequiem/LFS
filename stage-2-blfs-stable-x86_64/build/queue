@@ -261,6 +261,7 @@ x/xorg-intel-driver.sh
 x/xorg-nouveau-driver.sh
 x/startup-notification.sh
 x/xcb-util-xrm.sh
+x/xterm.sh
 
 
 # vim:ft=conf

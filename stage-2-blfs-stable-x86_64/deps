@@ -51,7 +51,7 @@ datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbus                                glib, dbus-glib, python-dbus, udisks
 dbus-glib                           dbus, upower
-dejavu-fonts-ttf
+dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib
 digest-crc                          parted
 directfb                            links, cairo
@@ -214,6 +214,7 @@ lynx                                smartmontools, pciutils, asciidoc, xmlto, xo
 lzip                                ed
 lzo                                 libarchive, cairo
 make-ca                             wget, p11-kit, gnutls, curl
+man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
@@ -257,8 +258,8 @@ parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib, swig, exim, mc, git
-pcre2                               wget, libbytesize, git
+pcre                                wget, slang, glib, swig, exim, mc, git, xterm
+pcre2                               wget, libbytesize, git, xterm
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
@@ -349,7 +350,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -378,7 +379,7 @@ xfsprogs                            lvm2, udisks
 xkeyboard-config                    xorg-server
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server
 xorg-amdgpu-driver
-xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm
 xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
@@ -391,6 +392,7 @@ xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xor
 xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
+xterm
 yasm                                libjpeg-turbo
 yelp-tools                          dbus
 z3                                  llvm
