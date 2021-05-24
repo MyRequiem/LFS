@@ -263,6 +263,7 @@ x/startup-notification.sh
 x/xcb-util-xrm.sh
 x/xterm.sh
 x/xinit.sh
+x/caladea-font-ttf.sh
 
 
 # vim:ft=conf
