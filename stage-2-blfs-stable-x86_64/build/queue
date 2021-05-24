@@ -266,6 +266,7 @@ x/xinit.sh
 x/caladea-font-ttf.sh
 x/cantarell-font-otf.sh
 x/carlito-font-ttf.sh
+x/freefont.sh
 
 
 # vim:ft=conf
