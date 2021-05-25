@@ -268,6 +268,7 @@ x/cantarell-font-otf.sh
 x/carlito-font-ttf.sh
 x/freefont.sh
 x/gelasio-font-ttf.sh
+x/microsoft-webcore-fonts-ttf.sh
 
 
 # vim:ft=conf

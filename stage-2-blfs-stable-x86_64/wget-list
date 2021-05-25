@@ -329,7 +329,7 @@ https://www.x.org/archive/individual/font/font-winitzki-cyrillic-1.0.3.tar.bz2
 https://www.x.org/archive/individual/font/font-xfree86-type1-1.0.4.tar.bz2
 https://mirrors.bfsu.edu.cn/osdn//efont/10087/sazanami-20040629.tar.bz2
 https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
-https://releases.pagure.org/liberation-fonts/liberation-fonts-ttf-2.00.1.tar.gz
+https://github.com/liberationfonts/liberation-fonts/files/6418984/liberation-fonts-ttf-2.1.4.tar.gz
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/sinhala_lklug-font-ttf/sinhala_lklug.ttf
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-font-ttf/TibetanMachineUnicodeFont.zip
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
@@ -373,3 +373,4 @@ http://gsdview.appspot.com/chromeos-localmirror/distfiles/crosextrafonts-carlito
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 https://fontlibrary.org/assets/downloads/gelasio/4d610887ff4d445cbc639aae7828d139/gelasio.zip
+http://avi.alkalay.net/software/webcore-fonts/webcore-fonts-3.0.tar.gz
