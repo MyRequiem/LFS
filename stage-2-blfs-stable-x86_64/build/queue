@@ -271,6 +271,7 @@ x/gelasio-font-ttf.sh
 x/microsoft-webcore-fonts-ttf.sh
 x/noto-fonts-ttf.sh
 x/oxygen-fonts-ttf.sh
+x/adobe-source-code-pro-font.sh
 
 
 # vim:ft=conf
