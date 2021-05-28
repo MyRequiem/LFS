@@ -273,6 +273,7 @@ x/fonts/noto-fonts-ttf.sh
 x/fonts/oxygen-fonts-ttf.sh
 x/fonts/adobe-source-code-pro-font.sh
 x/fonts/noto-sans-cjk-fonts-otf.sh
+x/fonts/opendesktop-fonts-ttf.sh
 
 
 # vim:ft=conf
