@@ -272,6 +272,7 @@ x/microsoft-webcore-fonts-ttf.sh
 x/noto-fonts-ttf.sh
 x/oxygen-fonts-ttf.sh
 x/adobe-source-code-pro-font.sh
+x/noto-sans-cjk-fonts-otf.sh
 
 
 # vim:ft=conf
