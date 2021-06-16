@@ -13,12 +13,12 @@ ARCH_NAME="wqy-zenhei"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1,2 | rev | sed 's/-/_/')"
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -30,19 +30,9 @@ cd "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
-ETC_FONTS="/etc/fonts"
-mkdir -pv "${TMP_DIR}"{"${TTF_FONT_DIR}","${ETC_FONTS}"/conf.{d,avail}}
+mkdir -pv "${TMP_DIR}${TTF_FONT_DIR}"
 
-zcat "${SOURCES}/fixup-fontconfig-file.diff.gz" | patch -p1 --verbose || exit 1
-
-find . -type f \( -name "*.ttf" -o  -name "*.ttc" \) \
-    -exec cp -a {} "${TMP_DIR}${TTF_FONT_DIR}" \;
-
-find . -type f -name "*.conf" \
-    -exec cp -a {} "${TMP_DIR}${ETC_FONTS}/conf.avail" \;
-
-cd "${TMP_DIR}${ETC_FONTS}/conf.d" || exit 1
-ln -sf ../conf.avail/44-wqy-zenhei.conf 44-wqy-zenhei.conf
+cp ./*.ttc "${TMP_DIR}${TTF_FONT_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
@@ -64,8 +54,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # font is also targeted at platform independence and the utility for document
 # exchange between various operating systems.
 #
-# Home page: http://wqy.sourceforge.net/en/
-# Download:  https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/${PRGNAME}/${ARCH_NAME}-${VERSION//_/-}.tar.bz2
+# Home page: http://wenq.org/wqy2/index.cgi?action=browse&id=Home&lang=en
+# Download:  https://deac-riga.dl.sourceforge.net/project/wqy/${ARCH_NAME}/${VERSION}%20%28Fighting-state%20RC1%29/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
