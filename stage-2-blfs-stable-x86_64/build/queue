@@ -276,6 +276,7 @@ x/fonts/noto-sans-cjk-fonts-otf.sh
 x/fonts/opendesktop-fonts-ttf.sh
 x/fonts/uming-fonts-ttf.sh
 x/fonts/ipaex-fonts-ttf.sh
+x/fonts/kochi-substitute-fonts-ttf.sh
 
 
 # vim:ft=conf
