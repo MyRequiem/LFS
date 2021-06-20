@@ -278,6 +278,7 @@ x/fonts/uming-fonts-ttf.sh
 x/fonts/ipaex-fonts-ttf.sh
 x/fonts/kochi-substitute-fonts-ttf.sh
 x/fonts/vlgothic-fonts-ttf.sh
+l/libxkbcommon.sh
 
 
 # vim:ft=conf

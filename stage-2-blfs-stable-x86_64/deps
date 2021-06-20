@@ -68,7 +68,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -204,8 +204,9 @@ libvdpau                            mesa
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
-libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm
+libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon
 libxdmcp                            libxcb
+libxkbcommon
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -371,8 +372,8 @@ vim                                 fcron
 vlgothic-fonts-ttf
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries
-wayland                             libva, xorg-server
-wayland-protocols                   mesa, xorg-server
+wayland                             libva, xorg-server, libxkbcommon
+wayland-protocols                   mesa, xorg-server, libxkbcommon
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils
@@ -392,7 +393,7 @@ xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2, udisks
 xinit
-xkeyboard-config                    xorg-server
+xkeyboard-config                    xorg-server, libxkbcommon
 xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
