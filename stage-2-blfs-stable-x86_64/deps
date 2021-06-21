@@ -68,7 +68,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -104,13 +104,14 @@ gelasio-font-ttf
 ghostscript                         cairo
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango
-glib-networking                     glib
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm
+glib-networking                     glib, glibmm
+glibmm
 glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2
-gnutls                              wget, gnupg, exim, openldap, curl
+gnutls                              wget, gnupg, exim, openldap, curl, glibmm
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -187,7 +188,7 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
-libsigc++2
+libsigc++2                          glibmm
 libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
@@ -208,7 +209,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications
@@ -232,7 +233,7 @@ mesa                                libva, libvdpau, xorg-applications, glu, fre
 mesa-demos                          mesa
 microsoft-webcore-fonts-ttf
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
-mm-common                           libsigc++2
+mm-common                           libsigc++2, glibmm
 mono                                libidn
 mozjs                               polkit
 mtdev                               xorg-evdev-driver, libinput

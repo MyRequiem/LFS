@@ -279,6 +279,7 @@ x/fonts/ipaex-fonts-ttf.sh
 x/fonts/kochi-substitute-fonts-ttf.sh
 x/fonts/vlgothic-fonts-ttf.sh
 l/libxkbcommon.sh
+l/glibmm.sh
 
 
 # vim:ft=conf
