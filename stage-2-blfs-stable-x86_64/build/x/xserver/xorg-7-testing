@@ -1,0 +1,89 @@
+===============
+Xorg-7 Testing
+===============
+
+********
+* Notes:
+Перед первым запуском Xorg:
+    - полезно обновить кэш shared библиотек в системе
+        # ldconfig
+    - часто требуется перезагрузить систему, чтобы гарантировать запуск всех
+        нужных демонов
+********
+
+Если Xorg зависает по какой-либо причине (например, из-за отсутствия
+подходящего драйвера ввода), система может перестать реагировать на любой ввод
+пользователя. В этом случае можно использовать SysRq "волшебные" ключи:
+    0   - полностью отключить sysrq
+    1   - включить все функции sysrq
+    2   - enable control of console logging level
+    4   - enable control of keyboard (SAK, unraw)
+    8   - enable debugging dumps of processes etc.
+    16  - enable sync command
+    32  - enable remount read-only
+    64  - enable signalling of processes (term, kill, oom-kill)
+    128 - allow reboot/poweroff
+    256 - allow nicing of all RT tasks
+
+    # echo 1 > /proc/sys/kernel/sysrq
+
+    Затем переводим клавиатуру в Raw режим: Alt+SysRq+r, после чего должна
+    появится возможность переключения между VT (виртуальными терминалами)
+    комбинацией Ctrl+Alt+Fx (где Fx - номер терминала). Если переключиться
+    удается, то можно убить Хоrg используя новый VT
+
+Запускаем Xorg
+---------------
+    $ startx
+
+Проверка Direct Rendering Infrastructure (DRI)
+-----------------------------------------------
+    DRI - это структура, позволяющая программному обеспечению эффективным
+    способом получать доступ к графическому оборудованию. DRI установлен в Mesa
+    по умолчанию.
+
+    Чтобы проверить, правильно ли установлены драйверы DRI, проверим
+    /var/log/Xorg.0.log
+
+        # grep -i "DRI2 Enabled" /var/log/Xorg.0.log
+            (II) intel(0): direct rendering: DRI2 enabled
+        или
+        # grep -i "NOUVEAU" /var/log/Xorg.0.log
+            (II) NOUVEAU(0): Loaded DRI module
+
+        * конфигурация DRI может отличаться, если используются альтернативные
+            драйверы, например от NVIDIA или AMD
+
+    Другой способ определить, правильно ли работает DRI - использовать утилиту
+    glxinfo (входит в состав Mesa)
+        $ LIBGL_DEBUG=verbose glxinfo | head -n 3
+            name of display: :0
+            display: :0  screen: 0
+            direct rendering: Yes
+
+        $ glxinfo | egrep "(OpenGL vendor|OpenGL renderer| OpenGL version)"
+            OpenGL vendor string: Intel Open Source Technology Center
+            OpenGL renderer string: Mesa DRI Intel(R) Ironlake Mobile
+
+
+    Если на оборудовании нет драйвера DRI2, то для прямого рендеринга будет
+    использоваться программный растеризатор с ускорением LLVM, который
+    называется LLVMPipe. В этом случае весь рендеринг будет выполняться на CPU,
+    а не на GPU, поэтому дисплей будет работать медленнее, чем с аппаратным
+    ускорением. Чтобы проверить, используется ли вы LLVMpipe, смотрим вывод
+    команды 'glxinfo'
+
+        $ glxinfo | egrep "(OpenGL vendor|OpenGL renderer| OpenGL version)"
+            OpenGL vendor string: VMware, Inc.
+            OpenGL renderer string: Gallium 0.4 on llvmpipe (LLVM 3.5, 256 bits)
+            OpenGL version string: 3.0 Mesa 10.4.5
+
+    Чтобы принудительно использовать LLVMPipe, нужно перед запуском Xorg
+    экспортировать переменную LIBGL_ALWAYS_SOFTWARE
+        $ export LIBGL_ALWAYS_SOFTWARE=1 startx
+
+    Также можно запустить тестовую утилиту из пакета Mesa 'glxgears'. В
+    терминале будет отображаться, сколько кадров было отрисовано за каждые пять
+    секунд, и это даст примерное представление.
+
+# vim:ft=conf
