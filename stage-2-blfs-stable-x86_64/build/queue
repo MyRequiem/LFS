@@ -281,6 +281,7 @@ x/fonts/vlgothic-fonts-ttf.sh
 l/libxkbcommon.sh
 l/glibmm.sh
 l/atkmm.sh
+l/at-spi2-core.sh
 
 
 # vim:ft=conf
