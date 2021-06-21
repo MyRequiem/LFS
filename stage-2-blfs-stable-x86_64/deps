@@ -17,8 +17,9 @@ asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-at-spi2-core
-atk                                 gtk+2, atkmm
+at-spi2-atk
+at-spi2-core                        at-spi2-atk
+atk                                 gtk+2, atkmm, at-spi2-atk
 atkmm
 autoconf213                         mozjs
 autogen                             gnutls
