@@ -17,7 +17,8 @@ asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-atk                                 gtk+2
+atk                                 gtk+2, atkmm
+atkmm
 autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
@@ -106,7 +107,7 @@ git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm
 glib-networking                     glib, glibmm
-glibmm
+glibmm                              atkmm
 glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
