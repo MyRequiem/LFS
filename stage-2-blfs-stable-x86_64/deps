@@ -108,6 +108,7 @@ gelasio-font-ttf
 ghostscript                         cairo
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
+glew
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core
 glib-networking                     glib, glibmm
 glibmm                              atkmm
@@ -233,7 +234,7 @@ mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
 mercurial                           cmake
-mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy
+mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew
 mesa-demos                          mesa
 microsoft-webcore-fonts-ttf
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl
