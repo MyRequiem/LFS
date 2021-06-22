@@ -283,6 +283,7 @@ l/glibmm.sh
 l/atkmm.sh
 l/at-spi2-core.sh
 l/at-spi2-atk.sh
+l/cairomm.sh
 
 
 # vim:ft=conf

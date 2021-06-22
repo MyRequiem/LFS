@@ -30,14 +30,15 @@ berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-uti
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
-boost                               highlight, swig, libsigc++2
+boost                               highlight, swig, libsigc++2, cairomm
 bpf-utils                           iptables
 brotli                              curl, freetype
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm
 cairo-5c                            xorg-applications
+cairomm
 caladea-font-ttf
 cantarell-font-otf
 cantarell-fonts                     pango
@@ -71,7 +72,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -191,7 +192,7 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
-libsigc++2                          glibmm
+libsigc++2                          glibmm, cairomm
 libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
