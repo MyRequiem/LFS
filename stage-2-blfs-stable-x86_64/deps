@@ -7,6 +7,7 @@ aalib
 acpid                               xorg-server
 adns                                gnupg
 adobe-source-code-pro-font
+adwaita-icon-theme                  gtk+3
 afs                                 sudo
 apache-ant                          docbook-xsl
 apr                                 apr-util
@@ -17,7 +18,7 @@ asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-at-spi2-atk
+at-spi2-atk                         gtk+3
 at-spi2-core                        at-spi2-atk
 atk                                 gtk+2, atkmm, at-spi2-atk
 atkmm
@@ -47,10 +48,11 @@ clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper
 cmocka                              gnutls
 cogl                                cairo
+colord                              gtk+3
 cpio
 cryptsetup                          volume-key
 cunit                               libdrm
-cups                                gtk+2
+cups                                gtk+2, gtk+3
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc
 cyrus-sasl                          exim, openldap
 cython                              yasm
@@ -65,7 +67,7 @@ digest-crc                          parted
 directfb                            links, cairo
 dmalloc                             cyrus-sasl
 dmraid                              libblockdev
-docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2
+docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm
 docbook2x                           git
@@ -103,7 +105,7 @@ gc                                  guile
 gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
-gdk-pixbuf                          gtk+2
+gdk-pixbuf                          gtk+2, gtk+3
 gelasio-font-ttf
 ghostscript                         cairo
 git                                 cmake, llvm, libidn2, harfbuzz
@@ -117,7 +119,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -126,13 +128,13 @@ graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau
 gtk+2                               pinentry, vim, pixman, cairo
 gtk+3                               pinentry, vim, cairo, libinput
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 help2man                            pango
-hicolor-icon-theme                  gtk+2
+hicolor-icon-theme                  gtk+2, gtk+3
 highlight
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm
@@ -144,12 +146,13 @@ intel-gpu-tools                     libva
 ipaex-fonts-ttf
 iptables
 isl                                 gcc
-iso-codes
+iso-codes                           gtk+3
 itstool                             shared-mime-info
 jasper
 jbig-kit                            libtiff
 jbig2dec                            cairo
 json-c                              cryptsetup, fontconfig
+json-glib                           gtk+3
 kernel-firmware
 kernel-generic                      iptables
 kochi-substitute-fonts-ttf
@@ -163,7 +166,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
-libepoxy                            xorg-server
+libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links
@@ -212,7 +215,7 @@ libwebp                             libtiff
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon
 libxdmcp                            libxcb
-libxkbcommon
+libxkbcommon                        gtk+3
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -273,7 +276,8 @@ opie                                sudo
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls
 p7zip
-pango                               gtk+2
+pango                               gtk+2, gtk+3
+papi                                gtk+3
 parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
@@ -298,6 +302,7 @@ postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
+pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
@@ -320,6 +325,7 @@ quiche                              curl
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
+rest                                gtk+3
 rhash                               cmake
 rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
@@ -327,6 +333,7 @@ rsync                               llvm, vim
 ruby                                docbook-xsl, vim, mc
 rustc                               mozjs
 samba                               mc, curl
+sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
 sendmail                            fcron, sudo, gnupg, at
@@ -378,8 +385,8 @@ vim                                 fcron
 vlgothic-fonts-ttf
 volume-key                          libblockdev
 w3m                                 asciidoc, xmlto, xorg-libraries
-wayland                             libva, xorg-server, libxkbcommon
-wayland-protocols                   mesa, xorg-server, libxkbcommon
+wayland                             libva, xorg-server, libxkbcommon, gtk+3
+wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
 wireless-tools                      pm-utils

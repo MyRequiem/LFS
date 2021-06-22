@@ -69,7 +69,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 config_file_processing "${IM_MULTIPRESS_CONF}"
 
-# создаем файл /usr/lib/gtk-x.x/x.xx.x/immodules.cache
+# создаем файл /usr/lib/gtk-2.x/2.xx.x/immodules.cache
 gtk-query-immodules-2.0 --update-cache
 
 # копируем созданный immodules.cache в ${TMP_DIR}

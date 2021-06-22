@@ -285,6 +285,7 @@ l/at-spi2-core.sh
 l/at-spi2-atk.sh
 l/cairomm.sh
 x/libs/glew.sh
+l/gtk+3.sh
 
 
 # vim:ft=conf
