@@ -39,7 +39,7 @@ c-ares                              nodejs, curl
 c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm
 cairo-5c                            xorg-applications
-cairomm
+cairomm                             pangomm
 caladea-font-ttf
 cantarell-font-otf
 cantarell-fonts                     pango
@@ -113,7 +113,7 @@ gjs                                 gobject-introspection
 glew
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr
 glib-networking                     glib, glibmm
-glibmm                              atkmm
+glibmm                              atkmm, pangomm
 glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
@@ -276,7 +276,8 @@ opie                                sudo
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
-pango                               gtk+2, gtk+3
+pango                               gtk+2, gtk+3, pangomm
+pangomm
 papi                                gtk+3
 parted                              libblockdev
 passivetex                          xmlto

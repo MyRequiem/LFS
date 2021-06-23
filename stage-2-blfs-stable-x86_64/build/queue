@@ -292,6 +292,7 @@ x/libs/libinput.sh
 d/vala.sh
 l/gcr.sh
 n/pinentry.sh
+l/pangomm.sh
 
 
 # vim:ft=conf
