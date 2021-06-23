@@ -293,6 +293,8 @@ d/vala.sh
 l/gcr.sh
 n/pinentry.sh
 l/pangomm.sh
+l/gtkmm2.sh
+l/gtkmm3.sh
 
 
 # vim:ft=conf

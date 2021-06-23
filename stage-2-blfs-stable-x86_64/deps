@@ -21,7 +21,7 @@ aspell-dict-ru
 at-spi2-atk                         gtk+3
 at-spi2-core                        at-spi2-atk
 atk                                 gtk+2, atkmm, at-spi2-atk
-atkmm
+atkmm                               gtkmm2, gtkmm3
 autoconf213                         mozjs
 autogen                             gnutls
 bash-completion
@@ -74,7 +74,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -126,9 +126,11 @@ gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
-gtk+2                               pinentry, vim, pixman, cairo
-gtk+3                               pinentry, vim, cairo, libinput, gcr
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr
+gtkmm2
+gtkmm3
 guile                               gnutls
 harfbuzz                            freetype, graphite2
 hdparm                              pm-utils
@@ -277,7 +279,7 @@ oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
 pango                               gtk+2, gtk+3, pangomm
-pangomm
+pangomm                             gtkmm2, gtkmm3
 papi                                gtk+3
 parted                              libblockdev
 passivetex                          xmlto
