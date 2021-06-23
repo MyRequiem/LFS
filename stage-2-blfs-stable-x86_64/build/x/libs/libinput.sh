@@ -31,13 +31,13 @@ mkdir build
 cd build || exit 1
 
 # shellcheck disable=SC2086
-meson \
+meson                       \
     --prefix=${XORG_PREFIX} \
-    -Dudev-dir=/lib/udev  \
-    -Ddebug-gui=false     \
-    -Dtests=false         \
-    -Ddocumentation=false \
-    -Dlibwacom=false      \
+    -Dudev-dir=/lib/udev    \
+    -Ddebug-gui=false       \
+    -Dtests=false           \
+    -Ddocumentation=false   \
+    -Dlibwacom=false        \
     .. || exit 1
 
 ninja || exit 1
