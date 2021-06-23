@@ -286,6 +286,12 @@ l/at-spi2-atk.sh
 l/cairomm.sh
 x/libs/glew.sh
 l/gtk+3.sh
+ap/vim.sh
+l/cairo.sh
+x/libs/libinput.sh
+d/vala.sh
+l/gcr.sh
+n/pinentry.sh
 
 
 # vim:ft=conf
