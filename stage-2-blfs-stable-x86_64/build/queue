@@ -295,6 +295,7 @@ n/pinentry.sh
 l/pangomm.sh
 l/gtkmm2.sh
 l/gtkmm3.sh
+s/gtk-vnc.sh
 
 
 # vim:ft=conf

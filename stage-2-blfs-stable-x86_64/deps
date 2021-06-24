@@ -54,7 +54,7 @@ cryptsetup                          volume-key
 cunit                               libdrm
 cups                                gtk+2, gtk+3
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc
-cyrus-sasl                          exim, openldap
+cyrus-sasl                          exim, openldap, gtk-vnc
 cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
@@ -118,8 +118,8 @@ glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
-gnutls                              wget, gnupg, exim, openldap, curl, glibmm
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr
+gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -127,8 +127,9 @@ graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr
+gtk-vnc
 gtkmm2
 gtkmm3
 guile                               gnutls
@@ -173,7 +174,7 @@ liberation-fonts-ttf
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links
 libexif
-libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr
+libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
 libidn                              gnutls, exim
@@ -305,6 +306,7 @@ postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
+pulseaudio                          gtk-vnc
 pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
@@ -315,7 +317,7 @@ python-pygobject3                   dbus, python-dbus, upower, udisks
 python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc
 python2-libxml2                     libxslt, docbook-xsl
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost
 python3-dbusmock                    polkit, upower
@@ -381,7 +383,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-vala                                gcr
+vala                                gcr, gtk-vnc
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr
 vbetool                             pm-utils
 vdo                                 lvm2
