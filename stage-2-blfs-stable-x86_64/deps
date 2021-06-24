@@ -108,6 +108,7 @@ gdb                                 python3, gcc, guile, glib, openssh, rustc
 gdk-pixbuf                          gtk+2, gtk+3
 gelasio-font-ttf
 ghostscript                         cairo
+giflib                              imlib2
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
@@ -142,6 +143,7 @@ highlight
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm
 imagemagick7                        gnupg
+imlib2
 impacket                            curl
 indic-fonts-ttf
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
@@ -177,11 +179,12 @@ libexif
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks
+libid3tag                           imlib2
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl
 libinput                            xorg-libinput-driver
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -190,7 +193,7 @@ libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
@@ -204,7 +207,7 @@ libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
 libthai                             pango
-libtiff                             links, gdk-pixbuf
+libtiff                             links, gdk-pixbuf, imlib2
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
@@ -423,7 +426,7 @@ xorg-fbdev-driver
 xorg-fonts                          xorg-server
 xorg-intel-driver
 xorg-libinput-driver
-xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2
 xorg-nouveau-driver
 xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver
 xorg-sgml-doctools                  xorg-server
