@@ -298,6 +298,7 @@ l/gtkmm3.sh
 s/gtk-vnc.sh
 l/imlib2.sh
 l/libglade.sh
+l/libogg.sh
 
 
 # vim:ft=conf

@@ -193,6 +193,7 @@ libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
+libogg
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2
 libpsl                              wget, curl
