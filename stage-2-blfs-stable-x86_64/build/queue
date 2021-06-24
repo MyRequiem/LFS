@@ -299,6 +299,7 @@ s/gtk-vnc.sh
 l/imlib2.sh
 l/libglade.sh
 l/libogg.sh
+l/libvorbis.sh
 
 
 # vim:ft=conf

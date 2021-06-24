@@ -74,7 +74,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -146,7 +146,7 @@ imagemagick7                        gnupg
 imlib2
 impacket                            curl
 indic-fonts-ttf
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, libvorbis
 intel-gpu-tools                     libva
 ipaex-fonts-ttf
 iptables
@@ -193,7 +193,7 @@ libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               libpcap
 libnsl                              exim
-libogg
+libogg                              libvorbis
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2
 libpsl                              wget, curl
@@ -218,6 +218,7 @@ libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva                               mesa
 libvdpau                            mesa
+libvorbis
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
@@ -371,7 +372,7 @@ swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
 time
