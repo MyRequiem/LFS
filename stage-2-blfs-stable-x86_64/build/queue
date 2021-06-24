@@ -300,6 +300,7 @@ l/imlib2.sh
 l/libglade.sh
 l/libogg.sh
 l/libvorbis.sh
+l/libcanberra.sh
 
 
 # vim:ft=conf

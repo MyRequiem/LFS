@@ -9,6 +9,7 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
+alsa-lib                            libcanberra
 apache-ant                          docbook-xsl
 apr                                 apr-util
 apr-util
@@ -127,8 +128,9 @@ gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc
+gstreamer                           libcanberra
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade
 gtk-vnc
 gtkmm2
@@ -169,6 +171,7 @@ libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
+libcanberra
 libdrm                              libva, mesa, cairo
 libedit                             sqlite, pcre2, openssh
 libepoxy                            xorg-server, gtk+3
@@ -218,7 +221,7 @@ libusb                              usbutils, libpcap, upower, gnupg
 libuv                               cmake, nodejs
 libva                               mesa
 libvdpau                            mesa
-libvorbis
+libvorbis                           libcanberra
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
@@ -312,7 +315,7 @@ postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
-pulseaudio                          gtk-vnc
+pulseaudio                          gtk-vnc, libcanberra
 pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
@@ -371,7 +374,7 @@ svgalib                             links
 swig                                gpgme, volume-key
 sysstat                             openssh
 tap-py                              python-dbus
-tdb                                 exim
+tdb                                 exim, libcanberra
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
