@@ -17,7 +17,7 @@ PRGNAME="notification-daemon"
 # libnotify)
 #    $ pgrep -l notification-da && \
 #       notify-send -i info Information "Hi ${USER}, This is a Test"
-
+#
 # команда 'pgrep -l notification-da' добавлена чтобы убедиться, что запущен
 # демон именно из этого пакета, а не другого (например демон из пакета
 # xfce4-notifyd)

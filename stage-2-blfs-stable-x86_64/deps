@@ -121,7 +121,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -130,8 +130,8 @@ graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
 gstreamer                           libcanberra
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -195,6 +195,7 @@ libmpdec                            python3
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               libpcap
+libnotify
 libnsl                              exim
 libogg                              libvorbis
 libpcap                             iptables
@@ -267,7 +268,7 @@ nghttp2                             cmake, nodejs, curl
 ngtcp2                              curl
 nickle                              xorg-applications
 nodejs
-notification-daemon
+notification-daemon                 libnotify
 noto-fonts-ttf
 noto-sans-cjk-fonts-otf
 npm                                 nodejs
@@ -421,10 +422,11 @@ xcb-util-xrm
 xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xerces2-java                        docbook-xsl
+xfce4-notifyd                       libnotify
 xfsprogs                            lvm2, udisks
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
 xorg-ati-driver

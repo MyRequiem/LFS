@@ -302,6 +302,7 @@ l/libogg.sh
 l/libvorbis.sh
 l/libcanberra.sh
 s/notification-daemon.sh
+l/libnotify.sh
 
 
 # vim:ft=conf
