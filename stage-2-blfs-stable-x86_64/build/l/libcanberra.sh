@@ -10,7 +10,7 @@ PRGNAME="libcanberra"
 # сконфигурированный звук.
 
 # Required:    libvorbis
-# Recommended: alsa-lib
+# Recommended: alsa-lib    (для сборки утилиты 'canberra-boot' и libcanberra-alsa.so)
 #              gstreamer
 #              gtk+3
 # Optional:    gtk+2

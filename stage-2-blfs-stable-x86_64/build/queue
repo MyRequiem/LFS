@@ -304,6 +304,8 @@ l/libcanberra.sh
 s/notification-daemon.sh
 l/libnotify.sh
 l/libxklavier.sh
+l/alsa-lib.sh
+l/libcanberra.sh
 
 
 # vim:ft=conf
