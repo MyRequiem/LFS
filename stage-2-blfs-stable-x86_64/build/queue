@@ -303,6 +303,7 @@ l/libvorbis.sh
 l/libcanberra.sh
 s/notification-daemon.sh
 l/libnotify.sh
+l/libxklavier.sh
 
 
 # vim:ft=conf
