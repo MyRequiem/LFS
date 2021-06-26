@@ -59,6 +59,7 @@ auth.*                      -/var/log/auth
 
 # cron related logs
 cron.*                      -/var/log/cron
+fcron.*                     -/var/log/fcron
 
 # mail related logs
 mail.*                      -/var/log/mail
