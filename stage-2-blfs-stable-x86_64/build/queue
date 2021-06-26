@@ -306,6 +306,9 @@ l/libnotify.sh
 l/libxklavier.sh
 l/alsa-lib.sh
 l/libcanberra.sh
+ap/cups.sh
+l/gtk+2.sh
+l/gtk+3.sh
 
 
 # vim:ft=conf
