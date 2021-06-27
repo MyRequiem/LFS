@@ -312,6 +312,7 @@ l/gtk+3.sh
 l/gstreamer.sh
 l/libcanberra.sh
 l/gst-plugins-base.sh
+d/nasm.sh
 
 
 # vim:ft=conf

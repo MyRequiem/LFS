@@ -14,7 +14,7 @@ apache-ant                          docbook-xsl
 apr                                 apr-util
 apr-util
 argon2                              cryptsetup
-asciidoc                            git, graphite2, xorgproto
+asciidoc                            git, graphite2, xorgproto, nasm
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
@@ -78,7 +78,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, mozjs, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -248,7 +248,7 @@ libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asci
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups
-llvm                                icu, mozjs, mesa, rustc
+llvm                                icu, mesa, rustc
 lm-sensors                          mesa
 lsb-tools
 lsof
@@ -273,7 +273,7 @@ mono                                libidn
 mozjs                               polkit
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
-nasm                                libjpeg-turbo, mozjs
+nasm                                libjpeg-turbo
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
 nettle                              libarchive, gnutls, mesa, xorg-server
@@ -447,7 +447,7 @@ xfce4-notifyd                       libnotify
 xfsprogs                            lvm2, udisks
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
 xorg-ati-driver
