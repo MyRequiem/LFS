@@ -309,6 +309,8 @@ l/libcanberra.sh
 ap/cups.sh
 l/gtk+2.sh
 l/gtk+3.sh
+l/gstreamer.sh
+l/libcanberra.sh
 
 
 # vim:ft=conf

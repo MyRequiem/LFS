@@ -26,7 +26,7 @@ atkmm                               gtkmm2, gtkmm3
 autoconf213                         mozjs
 autogen                             gnutls
 avahi                               cups
-bash-completion
+bash-completion                     gstreamer
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util
@@ -115,7 +115,7 @@ giflib                              imlib2
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer
 glib-networking                     glib, glibmm
 glibmm                              atkmm, pangomm
 glu                                 freeglut
@@ -123,16 +123,17 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
+gsl                                 gstreamer
 gstreamer                           libcanberra
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier
 gtk-vnc
 gtkmm2
@@ -145,6 +146,7 @@ heimdal-gssapi                      exim
 help2man                            pango, vala
 hicolor-icon-theme                  gtk+2, gtk+3
 highlight
+hotdoc                              gstreamer
 hplip                               cups
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm
@@ -177,6 +179,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libcanberra                         notification-daemon
 libdrm                              libva, mesa, cairo
+libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
@@ -222,7 +225,7 @@ libtiff                             links, gdk-pixbuf, imlib2
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
-libunwind                           mesa, xorg-server, libinput
+libunwind                           mesa, xorg-server, libinput, gstreamer
 libusb                              usbutils, libpcap, upower, gnupg, cups
 libuv                               cmake, nodejs
 libva                               mesa
@@ -402,7 +405,7 @@ upower
 usbutils
 util-macros                         xorgproto, xbitmaps
 vala                                gcr, gtk-vnc, libxklavier
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
