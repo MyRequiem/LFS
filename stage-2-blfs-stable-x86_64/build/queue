@@ -311,6 +311,7 @@ l/gtk+2.sh
 l/gtk+3.sh
 l/gstreamer.sh
 l/libcanberra.sh
+ap/opus.sh
 l/gst-plugins-base.sh
 d/nasm.sh
 ap/flac.sh
