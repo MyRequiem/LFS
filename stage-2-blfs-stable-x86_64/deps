@@ -9,7 +9,7 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
-alsa-lib                            libcanberra, gst-plugins-base
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile
 apache-ant                          docbook-xsl
 apr                                 apr-util
 apr-util
@@ -93,7 +93,7 @@ exim                                fcron, sudo, gnupg, at
 fcron
 fftw
 fig2dev                             gnupg
-flac
+flac                                libsndfile
 fltk                                pinentry
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
 fonttools                           harfbuzz, graphite2
@@ -221,6 +221,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libsigc++2                          glibmm, cairomm
+libsndfile
 libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
@@ -236,7 +237,7 @@ libuv                               cmake, nodejs
 libva                               mesa
 libvdpau                            mesa
 libvisual                           gst-plugins-base
-libvorbis                           libcanberra, gst-plugins-base
+libvorbis                           libcanberra, gst-plugins-base, libsndfile
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
@@ -302,7 +303,7 @@ opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs
 opie                                sudo
-opus                                gst-plugins-base
+opus                                gst-plugins-basea, libsndfile
 orc                                 gst-plugins-base
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
@@ -383,10 +384,11 @@ sinhala-lklug-font-ttf
 skia                                cairo
 slang                               aalib, mc
 smartmontools
+speex                               libsndfile
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
-sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util
+sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile
 sshfs
 startup-notification
 stunnel                             curl

@@ -315,6 +315,7 @@ ap/opus.sh
 l/gst-plugins-base.sh
 d/nasm.sh
 ap/flac.sh
+l/libsndfile.sh
 
 
 # vim:ft=conf
