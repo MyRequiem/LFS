@@ -316,6 +316,7 @@ l/gst-plugins-base.sh
 d/nasm.sh
 ap/flac.sh
 l/libsndfile.sh
+l/lame.sh
 
 
 # vim:ft=conf
