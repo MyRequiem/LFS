@@ -318,6 +318,9 @@ ap/flac.sh
 l/libsndfile.sh
 l/lame.sh
 l/gsettings-desktop-schemas.sh
+l/glib-networking.sh
+l/glib.sh
+l/glibmm.sh
 
 
 # vim:ft=conf

@@ -118,14 +118,14 @@ giflib                              imlib2
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking
 glib-networking                     glib, glibmm
 glibmm                              atkmm, pangomm
 glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
-gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups
+gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -134,7 +134,7 @@ graphene                            gst-plugins-base
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
-gsettings-desktop-schemas
+gsettings-desktop-schemas           glib-networking
 gsl                                 gstreamer
 gst-plugins-base
 gstreamer                           libcanberra, gst-plugins-base
@@ -215,6 +215,7 @@ libogg                              libvorbis, gst-plugins-base, flac
 libpaper                            cups
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2
+libproxy                            glib-networking
 libpsl                              wget, curl
 libpwquality                        cryptsetup
 libressl                            openssh
@@ -263,7 +264,7 @@ lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
 lzip                                ed
 lzo                                 libarchive, cairo
-make-ca                             wget, p11-kit, gnutls, curl
+make-ca                             wget, p11-kit, gnutls, curl, glib-networking
 man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
