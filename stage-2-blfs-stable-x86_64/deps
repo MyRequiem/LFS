@@ -11,6 +11,7 @@ adwaita-icon-theme                  gtk+3
 afs                                 sudo
 alsa-lib                            libcanberra, gst-plugins-base, libsndfile
 apache-ant                          docbook-xsl
+apache-httpd                        libsoup
 apr                                 apr-util
 apr-util
 argon2                              cryptsetup
@@ -35,7 +36,7 @@ blfs-bootscripts
 bluez                               python2, python3, libpcap
 boost                               highlight, swig, libsigc++2, cairomm
 bpf-utils                           iptables
-brotli                              curl, freetype
+brotli                              curl, freetype, libsoup
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
@@ -57,7 +58,7 @@ cryptsetup                          volume-key
 cunit                               libdrm
 cups                                gtk+2, gtk+3
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup
 cyrus-sasl                          exim, openldap, gtk-vnc
 cython                              yasm
 dag                                 libpcap
@@ -119,14 +120,14 @@ git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking
-glib-networking                     glib, glibmm
+glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -140,7 +141,7 @@ gst-plugins-base
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -217,7 +218,7 @@ libpaper                            cups
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2
 libproxy                            glib-networking
-libpsl                              wget, curl
+libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
 libressl                            openssh
 librsvg                             links, gdk-pixbuf, cairo
@@ -227,6 +228,7 @@ libsecret                           pinentry
 libsectok                           openssh
 libsigc++2                          glibmm, cairomm
 libsndfile                          lame
+libsoup
 libspectre                          cairo
 libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
@@ -250,7 +252,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
@@ -274,7 +276,7 @@ mercurial                           cmake
 mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base
 mesa-demos                          mesa
 microsoft-webcore-fonts-ttf
-mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups
+mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup
 mm-common                           libsigc++2, glibmm
 mono                                libidn
 mozjs                               polkit
@@ -326,7 +328,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig
-php                                 cups
+php                                 cups, libsoup
 pinentry                            gnupg
 pixman                              cairo, xorg-server
 pm-utils
@@ -372,7 +374,7 @@ rrdtool                             lm-sensors
 rsync                               llvm, vim
 ruby                                docbook-xsl, vim, mc
 rustc                               mozjs
-samba                               mc, curl
+samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
@@ -393,7 +395,7 @@ speex                               libsndfile
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
-sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile
+sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup
 sshfs
 startup-notification
 stunnel                             curl
@@ -401,6 +403,7 @@ subversion                          cmake, git
 sudo
 svgalib                             links
 swig                                gpgme, volume-key
+sysprof                             libsoup
 sysstat                             openssh
 tap-py                              python-dbus
 tdb                                 exim, libcanberra
@@ -422,7 +425,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-vala                                gcr, gtk-vnc, libxklavier, libdazzle
+vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl
 vbetool                             pm-utils
 vdo                                 lvm2
