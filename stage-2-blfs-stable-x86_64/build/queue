@@ -324,6 +324,7 @@ l/glibmm.sh
 l/libpsl.sh
 n/wget.sh
 n/curl.sh
+l/libdazzle.sh
 
 
 # vim:ft=conf

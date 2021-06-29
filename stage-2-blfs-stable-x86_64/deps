@@ -139,7 +139,7 @@ gsl                                 gstreamer
 gst-plugins-base
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl
 gtk-vnc
 gtkmm2
@@ -185,6 +185,7 @@ libatomic-ops                       gc, libdrm
 libblockdev                         udisks
 libbytesize                         libblockdev
 libcanberra                         notification-daemon
+libdazzle
 libdrm                              libva, mesa, cairo
 libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh
@@ -421,7 +422,7 @@ unzip                               docbook-xml, mc
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
-vala                                gcr, gtk-vnc, libxklavier
+vala                                gcr, gtk-vnc, libxklavier, libdazzle
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl
 vbetool                             pm-utils
 vdo                                 lvm2
