@@ -58,7 +58,7 @@ cryptsetup                          volume-key
 cunit                               libdrm
 cups                                gtk+2, gtk+3
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx
 cyrus-sasl                          exim, openldap, gtk-vnc
 cython                              yasm
 dag                                 libpcap
@@ -79,7 +79,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx
 dtrace                              ruby
 ducktype                            dbus
 ed
@@ -245,6 +245,7 @@ libva                               mesa
 libvdpau                            mesa
 libvisual                           gst-plugins-base
 libvorbis                           libcanberra, gst-plugins-base, libsndfile
+libvpx
 libwacom                            libinput
 libwebp                             libtiff
 libxau                              libxcb
@@ -282,7 +283,7 @@ mono                                libidn
 mozjs                               polkit
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
-nasm                                libjpeg-turbo, flac, lame
+nasm                                libjpeg-turbo, flac, lame, libvpx
 ndctl                               libblockdev
 net-tools                           gnutls, openssh
 nettle                              libarchive, gnutls, mesa, xorg-server
@@ -328,7 +329,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig
-php                                 cups, libsoup
+php                                 cups, libsoup, libvpx
 pinentry                            gnupg
 pixman                              cairo, xorg-server
 pm-utils
@@ -437,7 +438,7 @@ wayland                             libva, xorg-server, libxkbcommon, gtk+3
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base
 weasyprint                          vala
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx
 wireless-tools                      pm-utils
 wqy-zenhei-font-ttf
 wxwidgets                           p7zip
@@ -474,7 +475,7 @@ xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
 xterm
-yasm                                libjpeg-turbo
+yasm                                libjpeg-turbo, libvpx
 yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl, mc

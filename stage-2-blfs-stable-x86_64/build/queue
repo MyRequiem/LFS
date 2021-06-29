@@ -326,6 +326,7 @@ n/wget.sh
 n/curl.sh
 l/libdazzle.sh
 l/libsoup.sh
+l/libvpx.sh
 
 
 # vim:ft=conf
