@@ -327,6 +327,7 @@ n/curl.sh
 l/libdazzle.sh
 l/libsoup.sh
 l/libvpx.sh
+ap/mpg123.sh
 
 
 # vim:ft=conf

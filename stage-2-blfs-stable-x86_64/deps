@@ -9,7 +9,7 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123
 apache-ant                          docbook-xsl
 apache-httpd                        libsoup
 apr                                 apr-util
@@ -168,6 +168,7 @@ iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base
 itstool                             shared-mime-info
+jack                                mpg123
 jasper
 jbig-kit                            libtiff
 jbig2dec                            cairo
@@ -281,6 +282,7 @@ mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, c
 mm-common                           libsigc++2, glibmm
 mono                                libidn
 mozjs                               polkit
+mpg123
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, flac, lame, libvpx
@@ -303,6 +305,7 @@ ntfs-3g                             udisks
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
+openal                              mpg123
 opendesktop-fonts-ttf
 opendmarc                           exim
 openjdk                             libidn, openssh, cyrus-sasl, cups
@@ -340,11 +343,12 @@ polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 poppler                             cairo
 popt                                cryptsetup
+portaudio                           mpg123
 postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
-pulseaudio                          gtk-vnc, libcanberra
+pulseaudio                          gtk-vnc, libcanberra, mpg123
 pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
@@ -379,7 +383,7 @@ samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
-sdl                                 gst-plugins-base
+sdl                                 gst-plugins-base, mpg123
 sdl2                                gst-plugins-base
 sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
