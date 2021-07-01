@@ -194,7 +194,8 @@ libcanberra                         notification-daemon
 libdazzle
 libdrm                              libva, mesa, cairo
 libdv                               gst-plugins-good
-libdvdread
+libdvdnav
+libdvdread                          libdvdnav
 libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh
 libepoxy                            xorg-server, gtk+3

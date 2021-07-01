@@ -330,6 +330,7 @@ l/libvpx.sh
 ap/mpg123.sh
 l/gst-plugins-good.sh
 l/libdvdread.sh
+l/libdvdnav.sh
 
 
 # vim:ft=conf
