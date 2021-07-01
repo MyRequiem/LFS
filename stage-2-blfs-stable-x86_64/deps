@@ -406,6 +406,7 @@ sinhala-lklug-font-ttf
 skia                                cairo
 slang                               aalib, mc
 smartmontools
+soundtouch
 speex                               libsndfile, gst-plugins-good
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
 sphinx-rtd-theme                    python-dbus
