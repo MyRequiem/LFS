@@ -29,9 +29,6 @@ API_DOCS="--disable-apidoc"
 
 make || exit 1
 # пакет не имеет набора тестов
-make install
-
-DESTDIR="${TMP_DIR}" ninja install
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
