@@ -329,6 +329,7 @@ l/libsoup.sh
 l/libvpx.sh
 ap/mpg123.sh
 l/gst-plugins-good.sh
+l/libdvdread.sh
 
 
 # vim:ft=conf
