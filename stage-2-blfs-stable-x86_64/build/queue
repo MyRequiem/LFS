@@ -337,6 +337,9 @@ n/bluez.sh
 d/python2.sh
 d/python3.sh
 l/libpcap.sh
+ap/alsa-utils.sh
+ap/faac.sh
+ap/faad2.sh
 
 
 # vim:ft=conf

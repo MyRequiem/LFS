@@ -9,8 +9,9 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils
 alsa-oss                            gst-plugins-good
+alsa-utils                          faac, faad2
 apache-ant                          docbook-xsl
 apache-httpd                        libsoup
 apr                                 apr-util
@@ -69,6 +70,7 @@ dbus                                glib, dbus-glib, python-dbus, udisks, at-spi
 dbus-glib                           dbus, upower
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib
+dialog                              alsa-utils
 digest-crc                          parted
 directfb                            links, cairo
 dmalloc                             cyrus-sasl, lame
@@ -93,8 +95,10 @@ etc-issue
 ethtool                             pm-utils
 exfat                               udisks
 exim                                fcron, sudo, gnupg, at
+faac                                faad2
+faad2
 fcron
-fftw
+fftw                                alsa-utils
 fig2dev                             gnupg
 flac                                libsndfile, gst-plugins-good
 fltk                                pinentry
@@ -234,6 +238,7 @@ libraw1394                          gst-plugins-good
 libressl                            openssh
 librsvg                             links, gdk-pixbuf, cairo
 librtmp                             curl
+libsamplerate                       alsa-utils
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
@@ -364,7 +369,7 @@ pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
-python-docutils                     python-dbus, sshfs
+python-docutils                     python-dbus, sshfs, alsa-utils
 python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput
@@ -479,7 +484,7 @@ xfce4-notifyd                       libnotify
 xfsprogs                            lvm2, udisks
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
 xorg-ati-driver
