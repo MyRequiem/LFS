@@ -333,6 +333,10 @@ l/libdvdread.sh
 l/libdvdnav.sh
 l/soundtouch.sh
 l/libical.sh
+n/bluez.sh
+d/python2.sh
+d/python3.sh
+l/libpcap.sh
 
 
 # vim:ft=conf

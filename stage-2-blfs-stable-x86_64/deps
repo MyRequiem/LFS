@@ -65,7 +65,7 @@ cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
-dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups
+dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez
 dbus-glib                           dbus, upower
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib
@@ -120,7 +120,7 @@ giflib                              imlib2
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut
@@ -207,7 +207,7 @@ libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, 
 libglade
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good
-libical
+libical                             bluez
 libid3tag                           imlib2
 libidn                              gnutls, exim
 libidn2                             wget, gnutls, curl, libpsl

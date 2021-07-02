@@ -432,3 +432,5 @@ https://get.videolan.org/libdvdread/6.1.1/libdvdread-6.1.1.tar.bz2
 https://get.videolan.org/libdvdnav/6.1.0/libdvdnav-6.1.0.tar.bz2
 https://gitlab.com/soundtouch/soundtouch/-/archive/2.2/soundtouch-2.2.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz
+https://www.kernel.org/pub/linux/bluetooth/bluez-5.55.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/10.1/bluez-5.55-upstream_fixes-1.patch
