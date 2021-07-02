@@ -98,6 +98,7 @@ exim                                fcron, sudo, gnupg, at
 faac                                faad2
 faad2
 fcron
+fdk-aac
 fftw                                alsa-utils
 fig2dev                             gnupg
 flac                                libsndfile, gst-plugins-good

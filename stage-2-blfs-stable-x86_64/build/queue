@@ -340,6 +340,7 @@ l/libpcap.sh
 ap/alsa-utils.sh
 ap/faac.sh
 ap/faad2.sh
+l/fdk-aac.sh
 
 
 # vim:ft=conf
