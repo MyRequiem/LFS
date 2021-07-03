@@ -186,6 +186,7 @@ kernel-generic                      iptables
 kochi-substitute-fonts-ttf
 krb4                                cyrus-sasl
 lame                                gst-plugins-good
+lcms2
 libaio                              lvm2
 libarchive                          cmake, ed
 libassuan                           pinentry, gnupg, gpgme
@@ -219,7 +220,7 @@ libidn2                             wget, gnutls, curl, libpsl
 libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -252,7 +253,7 @@ libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
 libthai                             pango
 libtheora                           gst-plugins-base
-libtiff                             links, gdk-pixbuf, imlib2
+libtiff                             links, gdk-pixbuf, imlib2, lcms2
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls

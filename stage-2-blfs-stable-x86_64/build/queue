@@ -341,6 +341,7 @@ ap/alsa-utils.sh
 ap/faac.sh
 ap/faad2.sh
 l/fdk-aac.sh
+l/lcms2.sh
 
 
 # vim:ft=conf
