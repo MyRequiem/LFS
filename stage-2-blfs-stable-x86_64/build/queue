@@ -346,6 +346,8 @@ l/libass.sh
 s/desktop-file-utils.sh
 l/glib.sh
 s/desktop-file-utils.sh
+l/fltk.sh
+n/pinentry.sh
 
 
 # vim:ft=conf
