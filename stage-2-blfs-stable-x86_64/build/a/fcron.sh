@@ -167,7 +167,7 @@ if [ -f "${SYSTAB}.orig" ]; then
     mv "${SYSTAB}.orig" "${SYSTAB}.orig.old"
 fi
 
-mv "${TMP_DIR}/var/run" "${TMP_DIR}/"
+rm -rf "${TMP_DIR}/var/run"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

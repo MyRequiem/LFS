@@ -106,9 +106,7 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/tmp"
-
-mv "${TMP_DIR}/var/run" "${TMP_DIR}/"
+rm -rf "${TMP_DIR}"/{tmp,var/run}
 
 # создадим базовый файл конфигурации клиента cups
 CLIENT_CONF="/etc/cups/client.conf"

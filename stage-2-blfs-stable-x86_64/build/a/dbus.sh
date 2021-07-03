@@ -61,7 +61,7 @@ command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-mv "${TMP_DIR}/var/run" "${TMP_DIR}/"
+rm -rf "${TMP_DIR}/var/run"
 
 # переместим библиотеку libdbus-1.so из /usr/lib в /lib
 mv -v "${TMP_DIR}/usr/lib/libdbus-1.so."* "${TMP_DIR}/lib"
