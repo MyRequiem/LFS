@@ -348,6 +348,7 @@ l/glib.sh
 s/desktop-file-utils.sh
 l/fltk.sh
 n/pinentry.sh
+ap/alsa-tools.sh
 
 
 # vim:ft=conf
