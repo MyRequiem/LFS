@@ -9,14 +9,14 @@ PRGNAME="pinentry"
 
 # Required: libassuan
 #           libgpg-error
-# Optional: emacs
-#           fltk
+# Optional: emacs     (для сборки 'pinentry-emacs')
+#           fltk      (для сборки 'pinentry-fltk')
 #           gcr
 #           gtk+2
 #           gtk+3
 #           libsecret
-#           qt5
-#           efl (https://www.enlightenment.org/about-efl)
+#           qt5       (для сборки 'pinentry-qt')
+#           efl       (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,7 +38,7 @@ command -v gtk-demo    &>/dev/null && GTK2="--enable-pinentry-gtk2"
 command -v gtk3-demo   &>/dev/null && GTK3="--enable-pinentry-gnome3"
 command -v secret-tool &>/dev/null && LIBSECRET="--enable-libsecret"
 command -v assistant   &>/dev/null && QT="--enable-pinentry-qt"
-command -v emacs &>/dev/null && EMACS_PIN="--enable-pinentry-emacs" && \
+command -v emacs       &>/dev/null && EMACS_PIN="--enable-pinentry-emacs" && \
     EMACS_HACK="--enable-inside-emacs"
 
 ./configure         \
