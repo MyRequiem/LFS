@@ -342,6 +342,10 @@ ap/faac.sh
 ap/faad2.sh
 l/fdk-aac.sh
 l/lcms2.sh
+l/libass.sh
+s/desktop-file-utils.sh
+l/glib.sh
+s/desktop-file-utils.sh
 
 
 # vim:ft=conf

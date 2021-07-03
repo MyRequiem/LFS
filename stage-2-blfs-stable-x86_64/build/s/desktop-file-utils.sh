@@ -3,30 +3,36 @@
 PRGNAME="desktop-file-utils"
 
 ### Desktop File Utils (Utilities for manipulating desktop files)
-# Утилиты командной строки для работы с .desktop файлами
+# Утилиты командной строки для работы с .desktop файлами. Так же они
+# используются средами рабочего стола и другими приложениями для управления
+# базами данных MIME-типов и помогают придерживаться спецификации Desktop Entry
+# Specification
 
-# http://www.linuxfromscratch.org/blfs/view/stable/general/desktop-file-utils.html
+# Required:    glib
+# Recommended: no
+# Optional:    emacs
 
-# Home page: http://www.freedesktop.org/wiki/Software/desktop-file-utils
-# Download:  https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.24.tar.xz
-
-# Required: glib
-# Optional: emacs
-
-ROOT="/root"
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+meson             \
+    --prefix=/usr \
+    .. || exit 1
+
+ninja || exit 1
 # пакет не содержит набора тестов
-make install
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 ### Конфигурация
 # Спецификация XDG Base Directory определяет стандартные месторасположения
@@ -41,13 +47,11 @@ make install DESTDIR="${TMP_DIR}"
 #
 # Среды GNOME, KDE и XFCE придерживаются этих настроек.
 
-# создадим директорию для .desktop файлов и создадим/обновим файл кэша для базы
-# данных MIME
+# если директория /usr/share/applications/ уже существует, то создадим/обновим
+# файл кэша для базы данных MIME
+#    /usr/share/applications/mimeinfo.cache
 APPLICATIONS="/usr/share/applications"
-install -vdm755 "${APPLICATIONS}"
-install -vdm755 "${TMP_DIR}${APPLICATIONS}"
-update-desktop-database "${APPLICATIONS}"
-update-desktop-database "${TMP_DIR}${APPLICATIONS}"
+[ -d "${APPLICATIONS}" ] && update-desktop-database "${APPLICATIONS}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Utilities for manipulating desktop files)
@@ -57,7 +61,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Environments and other applications to manipulate the MIME-types application
 # databases and help adhere to the Desktop Entry Specification.
 #
-# Home page: http://www.freedesktop.org/wiki/Software/${PRGNAME}
+# Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
 # Download:  https://www.freedesktop.org/software/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
