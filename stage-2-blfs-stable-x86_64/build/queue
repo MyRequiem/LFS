@@ -357,6 +357,10 @@ l/sdl.sh
 l/gst-plugins-base.sh
 ap/mpg123.sh
 l/libmpeg2.sh
+l/librsvg.sh
+n/links.sh
+l/gdk-pixbuf.sh
+l/cairo.sh
 
 
 # vim:ft=conf

@@ -46,7 +46,7 @@ brotli                              curl, freetype, libsoup
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg
 cairo-5c                            xorg-applications
 cairomm                             pangomm
 caladea-font-ttf
@@ -123,7 +123,7 @@ gc                                  guile
 gcc                                 cmake
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
-gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good
+gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg
 gelasio-font-ttf
 ggi                                 sdl
 ghostscript                         cairo
@@ -139,7 +139,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -154,7 +154,7 @@ gst-plugins-good
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -347,7 +347,7 @@ orc                                 gst-plugins-base, gst-plugins-good
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
-pango                               gtk+2, gtk+3, pangomm
+pango                               gtk+2, gtk+3, pangomm, librsvg
 pangomm                             gtkmm2, gtkmm3
 papi                                gtk+3
 parted                              libblockdev
@@ -407,7 +407,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm, vim
 ruby                                docbook-xsl, vim, mc
-rustc                               mozjs
+rustc                               mozjs, librsvg
 samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
@@ -463,7 +463,7 @@ upower
 usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
-vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical
+vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good
 vbetool                             pm-utils
 vdo                                 lvm2
