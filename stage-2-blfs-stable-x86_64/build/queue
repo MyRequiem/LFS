@@ -353,6 +353,9 @@ l/alsa-oss.sh
 l/gst-plugins-good.sh
 s/alsa-firmware.sh
 l/alsa-plugins.sh
+l/sdl.sh
+l/gst-plugins-base.sh
+ap/mpg123.sh
 
 
 # vim:ft=conf
