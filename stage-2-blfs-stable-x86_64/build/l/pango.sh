@@ -49,7 +49,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSIO="$(echo "${VERSION}" | cut -d . -f 1,2)"
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for layout and rendering of text)
 #
@@ -59,7 +59,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a test platform. Pango forms the core of text and font handling for GTK+-2.
 #
 # Home page: https://pango.gnome.org/
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSIO}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
