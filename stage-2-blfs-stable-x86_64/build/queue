@@ -351,6 +351,7 @@ n/pinentry.sh
 ap/alsa-tools.sh
 l/alsa-oss.sh
 l/gst-plugins-good.sh
+s/alsa-firmware.sh
 
 
 # vim:ft=conf

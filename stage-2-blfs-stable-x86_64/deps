@@ -9,15 +9,17 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
+alsa-firmware
 alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss
 alsa-oss                            gst-plugins-good
-alsa-tools
+alsa-tools                          alsa-firmware
 alsa-utils                          faac, faad2
 apache-ant                          docbook-xsl
 apache-httpd                        libsoup
 apr                                 apr-util
 apr-util
 argon2                              cryptsetup
+as31                                alsa-firmware
 asciidoc                            git, graphite2, xorgproto, nasm
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru
