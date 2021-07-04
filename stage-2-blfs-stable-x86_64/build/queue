@@ -356,6 +356,7 @@ l/alsa-plugins.sh
 l/sdl.sh
 l/gst-plugins-base.sh
 ap/mpg123.sh
+l/libmpeg2.sh
 
 
 # vim:ft=conf
