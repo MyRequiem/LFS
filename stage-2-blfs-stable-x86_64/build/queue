@@ -349,6 +349,8 @@ s/desktop-file-utils.sh
 l/fltk.sh
 n/pinentry.sh
 ap/alsa-tools.sh
+l/alsa-oss.sh
+l/gst-plugins-good.sh
 
 
 # vim:ft=conf

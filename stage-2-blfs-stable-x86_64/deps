@@ -9,7 +9,7 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss
 alsa-oss                            gst-plugins-good
 alsa-tools
 alsa-utils                          faac, faad2
