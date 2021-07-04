@@ -352,6 +352,7 @@ ap/alsa-tools.sh
 l/alsa-oss.sh
 l/gst-plugins-good.sh
 s/alsa-firmware.sh
+l/alsa-plugins.sh
 
 
 # vim:ft=conf

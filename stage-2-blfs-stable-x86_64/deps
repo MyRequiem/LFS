@@ -10,8 +10,9 @@ adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
 alsa-firmware
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins
 alsa-oss                            gst-plugins-good
+alsa-plugins
 alsa-tools                          alsa-firmware
 alsa-utils                          faac, faad2
 apache-ant                          docbook-xsl
@@ -102,6 +103,7 @@ faac                                faad2
 faad2
 fcron
 fdk-aac
+ffmpeg                              alsa-plugins
 fftw                                alsa-utils
 fig2dev                             gnupg
 flac                                libsndfile, gst-plugins-good
@@ -178,7 +180,7 @@ iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base
 itstool                             shared-mime-info
-jack                                mpg123, gst-plugins-good
+jack                                mpg123, gst-plugins-good, alsa-plugins
 jasper
 jbig-kit                            libtiff
 jbig2dec                            cairo
@@ -197,6 +199,7 @@ libassuan                           pinentry, gnupg, gpgme
 libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libavc1394                          gst-plugins-good
+libavtp                             alsa-plugins
 libblockdev                         udisks
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good
@@ -244,7 +247,7 @@ libraw1394                          gst-plugins-good
 libressl                            openssh
 librsvg                             links, gdk-pixbuf, cairo
 librtmp                             curl
-libsamplerate                       alsa-utils
+libsamplerate                       alsa-utils, alsa-plugins
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
@@ -291,6 +294,7 @@ lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
 lzip                                ed
 lzo                                 libarchive, cairo
+maemo                               alsa-plugins
 make-ca                             wget, p11-kit, gnutls, curl, glib-networking
 man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util
@@ -370,7 +374,7 @@ postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap
-pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good
+pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins
 pyatspi2                            gtk+3
 pytest                              fuse
 python-d-bus                        dbus, udisks
@@ -419,7 +423,7 @@ skia                                cairo
 slang                               aalib, mc
 smartmontools
 soundtouch
-speex                               libsndfile, gst-plugins-good
+speex                               libsndfile, gst-plugins-good, alsa-plugins
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
