@@ -361,6 +361,8 @@ l/librsvg.sh
 n/links.sh
 l/gdk-pixbuf.sh
 l/cairo.sh
+l/giflib.sh
+l/imlib2.sh
 
 
 # vim:ft=conf

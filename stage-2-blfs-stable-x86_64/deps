@@ -497,7 +497,7 @@ xfce4-notifyd                       libnotify
 xfsprogs                            lvm2, udisks
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
 xorg-ati-driver
