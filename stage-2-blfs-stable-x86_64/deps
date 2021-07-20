@@ -112,7 +112,7 @@ fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-t
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server
 freefont
-freeglut                            libtiff, jasper
+freeglut                            libtiff, jasper, libwebp
 freetds                             apr-util
 freetype                            harfbuzz, graphite2, fontconfig, libass
 fribidi                             pango, libass
@@ -127,7 +127,7 @@ gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg
 gelasio-font-ttf
 ggi                                 sdl
 ghostscript                         cairo
-giflib                              imlib2
+giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
@@ -228,7 +228,7 @@ libidn2                             wget, gnutls, curl, libpsl
 libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp
 libksba                             gnupg
 libmetalink                         curl
 libmpdec                            python3
@@ -241,7 +241,7 @@ libnsl                              exim
 libogg                              libvorbis, gst-plugins-base, flac
 libpaper                            cups
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp
 libproxy                            glib-networking
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
@@ -262,7 +262,7 @@ libssh2                             curl, rustc, mc
 libtasn1                            p11-kit, gnutls
 libthai                             pango
 libtheora                           gst-plugins-base
-libtiff                             links, gdk-pixbuf, imlib2, lcms2
+libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
@@ -412,7 +412,7 @@ samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
-sdl                                 gst-plugins-base, mpg123, libmpeg2
+sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp
 sdl2                                gst-plugins-base
 sendmail                            fcron, sudo, gnupg, at
 septel                              libpcap
