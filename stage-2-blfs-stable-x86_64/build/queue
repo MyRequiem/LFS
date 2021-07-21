@@ -365,6 +365,14 @@ l/giflib.sh
 l/imlib2.sh
 l/libwebp.sh
 l/libtiff.sh
+n/mit-kerberos-v5.sh
+ap/sudo.sh
+n/libtirpc.sh
+n/openssh.sh
+n/cyrus-sasl.sh
+n/curl.sh
+ap/cups.sh
+l/libsoup.sh
 
 
 # vim:ft=conf

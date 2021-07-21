@@ -37,6 +37,7 @@ bash-completion                     gstreamer
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical
+bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap
@@ -56,7 +57,7 @@ carlito-font-ttf
 cdparanoia-III                      gst-plugins-base
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical
-cmocka                              gnutls
+cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups
 cpio
@@ -137,7 +138,7 @@ glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
-gnupg                               smartmontools, gpgme, libssh2, gcr
+gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg
 gpgme                               volume-key
@@ -189,6 +190,7 @@ json-c                              cryptsetup, fontconfig
 json-glib                           gtk+3
 kernel-firmware
 kernel-generic                      iptables
+keyutils                            mit-kerberos-v5
 kochi-substitute-fonts-ttf
 krb4                                cyrus-sasl
 lame                                gst-plugins-good
@@ -211,7 +213,7 @@ libdv                               gst-plugins-good
 libdvdnav
 libdvdread                          libdvdnav
 libdw                               gstreamer
-libedit                             sqlite, pcre2, openssh
+libedit                             sqlite, pcre2, openssh, mit-kerberos-v5
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
@@ -337,7 +339,7 @@ openal                              mpg123
 opendesktop-fonts-ttf
 opendmarc                           exim
 openjdk                             libidn, openssh, cyrus-sasl, cups
-openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util
+openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5
 opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs
@@ -379,6 +381,7 @@ psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap, sdl
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl
 pyatspi2                            gtk+3
+pyrad                               mit-kerberos-v5
 pytest                              fuse
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
@@ -401,6 +404,7 @@ quiche                              curl
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
+resolv_wrapper                      mit-kerberos-v5
 rest                                gtk+3
 rhash                               cmake
 rpcsvc-proto                        libnsl
@@ -464,7 +468,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -513,7 +517,7 @@ xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
 xterm
-yasm                                libjpeg-turbo, libvpx
+yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5
 yelp-tools                          dbus
 z3                                  llvm
 zip                                 llvm, docbook-xsl, mc
