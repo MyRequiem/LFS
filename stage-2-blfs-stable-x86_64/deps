@@ -139,7 +139,7 @@ glu                                 freeglut, fltk, sdl
 gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
-gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking
+gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -244,7 +244,7 @@ libogg                              libvorbis, gst-plugins-base, flac
 libpaper                            cups
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp
-libproxy                            glib-networking
+libproxy                            glib-networking, neon
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
 libraw1394                          gst-plugins-good
@@ -283,7 +283,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr
 libyaml                             python-pyyaml, libblockdev, ruby
 links                               xmlto, xorg-libraries
@@ -308,7 +308,7 @@ mercurial                           cmake
 mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk
 mesa-demos                          mesa
 microsoft-webcore-fonts-ttf
-mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup
+mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon
 mm-common                           libsigc++2, glibmm
 mono                                libidn
 mozjs                               polkit
@@ -317,6 +317,7 @@ mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl
 ndctl                               libblockdev
+neon
 net-tools                           gnutls, openssh
 nettle                              libarchive, gnutls, mesa, xorg-server
 nftables                            iptables
@@ -349,6 +350,7 @@ orc                                 gst-plugins-base, gst-plugins-good
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
+pakchois                            neon
 pango                               gtk+2, gtk+3, pangomm, librsvg
 pangomm                             gtkmm2, gtkmm3
 papi                                gtk+3

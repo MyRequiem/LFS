@@ -373,6 +373,7 @@ n/cyrus-sasl.sh
 n/curl.sh
 ap/cups.sh
 l/libsoup.sh
+l/neon.sh
 
 
 # vim:ft=conf
