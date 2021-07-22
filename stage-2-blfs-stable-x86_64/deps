@@ -257,7 +257,7 @@ libsecret                           pinentry
 libsectok                           openssh
 libshout                            gst-plugins-good
 libsigc++2                          glibmm, cairomm
-libsndfile                          lame
+libsndfile                          lame, sbc
 libsoup                             gst-plugins-good
 libspectre                          cairo
 libssh2                             curl, rustc, mc
@@ -419,6 +419,7 @@ samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
+sbc
 sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp
 sdl2                                gst-plugins-base
 sendmail                            fcron, sudo, gnupg, at
