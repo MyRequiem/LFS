@@ -374,6 +374,7 @@ n/curl.sh
 ap/cups.sh
 l/libsoup.sh
 l/neon.sh
+l/openjpeg.sh
 
 
 # vim:ft=conf
