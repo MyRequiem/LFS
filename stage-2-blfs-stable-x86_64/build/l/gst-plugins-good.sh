@@ -2,7 +2,7 @@
 
 PRGNAME="gst-plugins-good"
 
-### gst-plugins-good (good set of GStreamer plugins)
+### GStreamer Good Plug-ins (good set of GStreamer plugins)
 # Набор подключаемых модулей для GStreamer. Модули имеют хороший качественный
 # код и правильный функционал. Содержит широкий спектр видео и аудиодекодеров,
 # кодировщиков и фильтров.

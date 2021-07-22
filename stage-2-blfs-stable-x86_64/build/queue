@@ -377,6 +377,7 @@ l/neon.sh
 l/openjpeg.sh
 l/sbc.sh
 ap/x265.sh
+l/gst-plugins-bad.sh
 
 
 # vim:ft=conf
