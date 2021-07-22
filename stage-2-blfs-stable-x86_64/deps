@@ -56,7 +56,7 @@ cantarell-fonts                     pango
 carlito-font-ttf
 cdparanoia-III                      gst-plugins-base
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265
 cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups
@@ -315,7 +315,7 @@ mozjs                               polkit
 mpg123                              gst-plugins-good
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
-nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl
+nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265
 ndctl                               libblockdev
 neon
 net-tools                           gnutls, openssh
@@ -333,6 +333,7 @@ npth                                gnupg
 nspr                                nss
 nss                                 p11-kit, make-ca, volume-key
 ntfs-3g                             udisks
+numactl                             x265
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
@@ -488,6 +489,7 @@ which                               pciutils, aspell, boost, lvm2, lm-sensors, m
 wireless-tools                      pm-utils
 wqy-zenhei-font-ttf
 wxwidgets                           p7zip
+x265
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb
 xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification

@@ -376,6 +376,7 @@ l/libsoup.sh
 l/neon.sh
 l/openjpeg.sh
 l/sbc.sh
+ap/x265.sh
 
 
 # vim:ft=conf
