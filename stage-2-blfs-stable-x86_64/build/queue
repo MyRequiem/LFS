@@ -380,6 +380,7 @@ l/x265.sh
 l/gst-plugins-bad.sh
 l/liba52.sh
 l/x264.sh
+l/libcddb.sh
 
 
 # vim:ft=conf

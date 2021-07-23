@@ -221,6 +221,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl
 libcanberra                         notification-daemon
+libcddb
 libdazzle
 libdc1394_2                         gst-plugins-bad
 libdca                              gst-plugins-bad
