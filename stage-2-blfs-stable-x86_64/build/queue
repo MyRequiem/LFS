@@ -378,6 +378,7 @@ l/openjpeg.sh
 l/sbc.sh
 ap/x265.sh
 l/gst-plugins-bad.sh
+l/liba52.sh
 
 
 # vim:ft=conf
