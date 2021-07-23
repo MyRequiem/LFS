@@ -110,6 +110,7 @@ faad2                               gst-plugins-bad
 fcron
 fdk-aac                             gst-plugins-bad
 ffmpeg                              alsa-plugins
+ffms2                               x264
 fftw                                alsa-utils
 fig2dev                             gnupg
 flac                                libsndfile, gst-plugins-good
@@ -149,6 +150,7 @@ gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg
+gpac                                x264
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
 gptfdisk                            udisks
@@ -248,6 +250,7 @@ libiscsi                            udisks
 libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp
 libkate                             gst-plugins-bad
 libksba                             gnupg
+liblsmash                           x264
 libmetalink                         curl
 libmfx                              gst-plugins-bad
 libmms                              gst-plugins-bad
@@ -344,7 +347,7 @@ mozjs                               polkit
 mpg123                              gst-plugins-good
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
-nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265
+nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264
 ndctl                               libblockdev
 neon                                gst-plugins-bad
 net-tools                           gnutls, openssh
@@ -531,6 +534,7 @@ wpe-webkit                          gst-plugins-bad
 wpebackend-fdo                      gst-plugins-bad
 wqy-zenhei-font-ttf
 wxwidgets                           p7zip
+x264
 x265                                gst-plugins-bad
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb

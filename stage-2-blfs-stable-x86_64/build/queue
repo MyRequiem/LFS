@@ -376,9 +376,10 @@ l/libsoup.sh
 l/neon.sh
 l/openjpeg.sh
 l/sbc.sh
-ap/x265.sh
+l/x265.sh
 l/gst-plugins-bad.sh
 l/liba52.sh
+l/x264.sh
 
 
 # vim:ft=conf
