@@ -381,6 +381,7 @@ l/gst-plugins-bad.sh
 l/liba52.sh
 l/x264.sh
 l/libcddb.sh
+l/libcdio.sh
 
 
 # vim:ft=conf
