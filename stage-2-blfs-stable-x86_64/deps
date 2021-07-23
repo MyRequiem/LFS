@@ -162,8 +162,9 @@ gsettings-desktop-schemas           glib-networking
 gsl                                 gstreamer
 gsm                                 gst-plugins-bad
 gst-plugins-bad
-gst-plugins-base                    gst-plugins-good, gst-plugins-bad
+gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 gst-plugins-good
+gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad
@@ -179,7 +180,7 @@ heimdal-gssapi                      exim
 help2man                            pango, vala
 hicolor-icon-theme                  gtk+2, gtk+3, fltk
 highlight
-hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad
+hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 hplip                               cups
 http-parser                         nodejs
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical
@@ -208,7 +209,7 @@ krb4                                cyrus-sasl
 ladspa                              gst-plugins-bad
 lame                                gst-plugins-good
 lcms2                               openjpeg, gst-plugins-bad
-liba52
+liba52                              gst-plugins-ugly
 libaio                              lvm2
 libarchive                          cmake, ed
 libass                              gst-plugins-bad
@@ -222,7 +223,7 @@ libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl
 libcanberra                         notification-daemon
 libcddb                             libcdio
-libcdio
+libcdio                             gst-plugins-ugly
 libdazzle
 libdc1394_2                         gst-plugins-bad
 libdca                              gst-plugins-bad
@@ -230,7 +231,7 @@ libde265                            gst-plugins-bad
 libdrm                              libva, mesa, cairo
 libdv                               gst-plugins-good
 libdvdnav                           gst-plugins-bad
-libdvdread                          libdvdnav, gst-plugins-bad
+libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh, mit-kerberos-v5
 libepoxy                            xorg-server, gtk+3
@@ -258,7 +259,7 @@ libmfx                              gst-plugins-bad
 libmms                              gst-plugins-bad
 libmodplug                          gst-plugins-bad
 libmpdec                            python3
-libmpeg2                            gst-plugins-bad
+libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnice                             gst-plugins-bad
@@ -284,6 +285,7 @@ libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libshout                            gst-plugins-good
+libsidplay                          gst-plugins-ugly
 libsigc++2                          glibmm, cairomm
 libsndfile                          lame, sbc, gst-plugins-bad
 libsoup                             gst-plugins-good
@@ -372,6 +374,7 @@ ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
 openal                              mpg123, gst-plugins-bad
+opencore-amr                        gst-plugins-ugly
 opencv                              gst-plugins-bad
 opendesktop-fonts-ttf
 opendmarc                           exim
@@ -385,7 +388,7 @@ openslp                             openldap
 openssh                             libssh2, sshfs
 opie                                sudo
 opus                                gst-plugins-base, libsndfile, gst-plugins-bad
-orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad
+orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
@@ -501,7 +504,7 @@ tk                                  python2, python3, ruby, git
 tree
 tremor                              gst-plugins-base
 trousers                            gnutls
-twolame                             gst-plugins-good
+twolame                             gst-plugins-good, gst-plugins-ugly
 udisks
 uming-fonts-ttf
 umockdev                            libgudev, upower
@@ -514,7 +517,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -536,7 +539,7 @@ wpe-webkit                          gst-plugins-bad
 wpebackend-fdo                      gst-plugins-bad
 wqy-zenhei-font-ttf
 wxwidgets                           p7zip
-x264
+x264                                gst-plugins-ugly
 x265                                gst-plugins-bad
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb

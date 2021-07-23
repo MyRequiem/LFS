@@ -382,6 +382,7 @@ l/liba52.sh
 l/x264.sh
 l/libcddb.sh
 l/libcdio.sh
+l/gst-plugins-ugly.sh
 
 
 # vim:ft=conf
