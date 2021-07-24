@@ -142,7 +142,7 @@ giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -150,7 +150,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2
 gpac                                x264
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -318,7 +318,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
@@ -438,9 +438,10 @@ python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2
 python2-libxml2                     libxslt, docbook-xsl
-python2-pycairo
+python2-pycairo                     python2-pygobject2
+python2-pygobject2
 python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo
 python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection, mesa
