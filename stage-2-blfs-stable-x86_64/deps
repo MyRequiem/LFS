@@ -34,7 +34,7 @@ atkmm                               gtkmm2, gtkmm3
 autoconf213                         mozjs
 autogen                             gnutls
 avahi                               cups
-bash-completion                     gstreamer
+bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical
@@ -74,8 +74,9 @@ cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
-dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez
+dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf
 dbus-glib                           dbus, upower
+dconf
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib, fltk
 dialog                              alsa-utils
@@ -141,7 +142,7 @@ giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -167,8 +168,8 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -315,8 +316,8 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
@@ -517,7 +518,7 @@ upower
 usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
-vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg
+vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly
 vbetool                             pm-utils
 vdo                                 lvm2

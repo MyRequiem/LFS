@@ -384,6 +384,7 @@ l/libcddb.sh
 l/libcdio.sh
 l/gst-plugins-ugly.sh
 l/libmng.sh
+l/dconf.sh
 
 
 # vim:ft=conf
