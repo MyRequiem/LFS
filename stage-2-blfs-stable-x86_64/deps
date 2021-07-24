@@ -49,7 +49,7 @@ bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo
 cairo-5c                            xorg-applications
 cairomm                             pangomm
 caladea-font-ttf
@@ -184,7 +184,7 @@ highlight
 hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 hplip                               cups
 http-parser                         nodejs
-hypothesis                          python2-pycairo
+hypothesis                          python2-pycairo, python3-pycairo
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical
 imagemagick7                        gnupg
 imlib2
@@ -441,10 +441,11 @@ python-six                          libbytesize
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo
 python2-libxml2                     libxslt, docbook-xsl
 python2-pycairo
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo
 python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
+python3-pycairo
 python3-pygments                    libbytesize, llvm
 qt4                                 cairo
 qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good
