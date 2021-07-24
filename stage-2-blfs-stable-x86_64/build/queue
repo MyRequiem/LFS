@@ -385,6 +385,7 @@ l/libcdio.sh
 l/gst-plugins-ugly.sh
 l/libmng.sh
 l/dconf.sh
+d/python-modules/python2-pycairo.sh
 
 
 # vim:ft=conf
