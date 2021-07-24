@@ -383,6 +383,7 @@ l/x264.sh
 l/libcddb.sh
 l/libcdio.sh
 l/gst-plugins-ugly.sh
+l/libmng.sh
 
 
 # vim:ft=conf
