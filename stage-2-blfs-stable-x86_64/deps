@@ -150,7 +150,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3
 gpac                                x264
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -405,6 +405,7 @@ passwdqc                            cryptsetup
 pciutils
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm
 pcre2                               wget, libbytesize, git, xterm
+pep8                                python3-pygobject3
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
@@ -428,8 +429,9 @@ psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap, sdl
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl
 pyatspi2                            gtk+3
+pyflakes                            python3-pygobject3
 pyrad                               mit-kerberos-v5
-pytest                              fuse
+pytest                              fuse, python3-pygobject3
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit
 python-docutils                     python-dbus, sshfs, alsa-utils
@@ -442,12 +444,13 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-libxml2                     libxslt, docbook-xsl
 python2-pycairo                     python2-pygobject2
 python2-pygobject2
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3
 python3-dbusmock                    polkit, upower
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
-python3-pycairo
+python3-pycairo                     python3-pygobject3
 python3-pygments                    libbytesize, llvm
+python3-pygobject3
 qt4                                 cairo
 qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good
 quiche                              curl
