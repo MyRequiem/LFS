@@ -33,15 +33,15 @@ source "${ROOT}/stripping.sh" || exit 1
 
 # собираем  и устанавливаем libcdio-paranoia
 LIB_PARANOIA="$(find "${SOURCES}" -type f -name "${PRGNAME}-paranoia-*")"
-LIB_PARANOIA_VERSION="$(echo "${LIB_PARANOIA}" | rev | cut -d . -f 3- | \
+PARANOIA_VERSION="$(echo "${LIB_PARANOIA}" | rev | cut -d . -f 3- | \
     cut -d - -f 1 | rev)"
 
-TMP_DIR_PARANOIA="${BUILD_DIR}/package-${PRGNAME}-paranoia-${VERSION}"
+TMP_DIR_PARANOIA="${BUILD_DIR}/package-${PRGNAME}-paranoia-${PARANOIA_VERSION}"
 mkdir -pv "${TMP_DIR_PARANOIA}"
 
 cd "${BUILD_DIR}" || exit 1
 tar -xvf "${LIB_PARANOIA}"
-cd "${PRGNAME}-paranoia-${LIB_PARANOIA_VERSION}" || exit 1
+cd "${PRGNAME}-paranoia-${PARANOIA_VERSION}" || exit 1
 
 ./configure       \
     --prefix=/usr \
@@ -76,7 +76,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: http://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
-#            https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-paranoia-${LIB_PARANOIA_VERSION}.tar.bz2
+#            https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-paranoia-${PARANOIA_VERSION}.tar.bz2
 #
 EOF
 
