@@ -76,7 +76,7 @@ datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf
 dbus-glib                           dbus, upower
-dconf
+dconf                               ibus
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib, fltk
 dialog                              alsa-utils
@@ -102,6 +102,7 @@ electric-fence                      lame
 elinks                              xmlto
 elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server
 emacs                               guile, pinentry, libidn, desktop-file-utils
+emojione                            ibus
 etc-issue
 ethtool                             pm-utils
 exfat                               udisks
@@ -150,7 +151,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus
 gpac                                x264
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -167,9 +168,9 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -185,6 +186,7 @@ hotdoc                              gstreamer, gst-plugins-base, gst-plugins-goo
 hplip                               cups
 http-parser                         nodejs
 hypothesis                          python2-pycairo, python3-pycairo
+ibus
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical
 imagemagick7                        gnupg
 imlib2
@@ -195,7 +197,7 @@ intel-gpu-tools                     libva
 ipaex-fonts-ttf
 iptables
 isl                                 gcc
-iso-codes                           gtk+3, libxklavier, gst-plugins-base
+iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
 itstool                             shared-mime-info
 jack                                mpg123, gst-plugins-good, alsa-plugins
 jasper
@@ -267,7 +269,7 @@ libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnice                             gst-plugins-bad
 libnl                               libpcap
-libnotify
+libnotify                           ibus
 libnsl                              exim
 libofa                              gst-plugins-bad
 libogg                              libvorbis, gst-plugins-base, flac
@@ -315,7 +317,7 @@ libwebp                             libtiff, gst-plugins-bad
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon
 libxdmcp                            libxcb
-libxkbcommon                        gtk+3, gst-plugins-bad
+libxkbcommon                        gtk+3, gst-plugins-bad, ibus
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2
@@ -433,7 +435,7 @@ pyflakes                            python3-pygobject3
 pyrad                               mit-kerberos-v5
 pytest                              fuse, python3-pygobject3
 python-d-bus                        dbus, udisks
-python-dbus                         python3-dbusmock, polkit
+python-dbus                         python3-dbusmock, polkit, ibus
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-markupsafe                   python3-mako
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
@@ -450,8 +452,8 @@ python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
 python3-pycairo                     python3-pygobject3
 python3-pygments                    libbytesize, llvm
-python3-pygobject3
-python3-pyxdg
+python3-pygobject3                  ibus
+python3-pyxdg                       ibus
 qt4                                 cairo
 qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good
 quiche                              curl
@@ -526,7 +528,7 @@ upower
 usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
-vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf
+vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly
 vbetool                             pm-utils
 vdo                                 lvm2
@@ -538,7 +540,7 @@ volume-key                          libblockdev
 vulkan                              gst-plugins-bad
 w3m                                 asciidoc, xmlto, xorg-libraries
 wavpack                             gst-plugins-good
-wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad
+wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad, ibus
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base
 weasyprint                          vala
 wget                                smartmontools, pciutils, usbutils

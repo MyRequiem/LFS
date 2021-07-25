@@ -390,6 +390,7 @@ d/python-modules/python3-pycairo.sh
 d/python-modules/python2-pygobject2.sh
 d/python-modules/python3-pygobject3.sh
 d/python-modules/python3-pyxdg.sh
+s/ibus.sh
 
 
 # vim:ft=conf
