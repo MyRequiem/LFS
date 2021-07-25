@@ -42,7 +42,7 @@ bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap, gst-plugins-bad
-boost                               highlight, swig, libsigc++2, cairomm
+boost                               highlight, swig, libsigc++2, cairomm, mariadb
 bpf-utils                           iptables
 brotli                              curl, freetype, libsoup
 bs2b                                gst-plugins-bad
@@ -59,7 +59,7 @@ carlito-font-ttf
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb
 cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups
@@ -160,6 +160,7 @@ graphene                            gst-plugins-base
 graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
+groonga                             mariadb
 gsettings-desktop-schemas           glib-networking
 gsl                                 gstreamer
 gsm                                 gst-plugins-bad
@@ -205,16 +206,18 @@ jbig-kit                            libtiff
 jbig2dec                            cairo
 json-c                              cryptsetup, fontconfig
 json-glib                           gtk+3
+judy                                mariadb
 kernel-firmware
 kernel-generic                      iptables
 keyutils                            mit-kerberos-v5
 kochi-substitute-fonts-ttf
 krb4                                cyrus-sasl
+kytea                               mariadb
 ladspa                              gst-plugins-bad
 lame                                gst-plugins-good
 lcms2                               openjpeg, gst-plugins-bad, libmng
 liba52                              gst-plugins-ugly
-libaio                              lvm2
+libaio                              lvm2, mariadb
 libarchive                          cmake, ed
 libass                              gst-plugins-bad
 libassuan                           pinentry, gnupg, gpgme
@@ -241,7 +244,7 @@ libedit                             sqlite, pcre2, openssh, mit-kerberos-v5
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
-libevent                            links
+libevent                            links, mariadb
 libexif                             gst-plugins-bad
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad
 libglade
@@ -319,12 +322,12 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
-linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups
+linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb
 llvm                                icu, mesa, rustc
 lm-sensors                          mesa
 lrdf                                gst-plugins-bad
@@ -335,6 +338,7 @@ lua                                 highlight, vim
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
+lz4                                 mariadb
 lzip                                ed
 lzo                                 libarchive, cairo
 maemo                               alsa-plugins
@@ -343,18 +347,21 @@ man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util
 mc
 mdadm                               lvm2, udisks, libblockdev
+mecab                               mariadb
 mercurial                           cmake
 mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk
 mesa-demos                          mesa
+messagepack                         mariadb
 microdns                            gst-plugins-bad
 microsoft-webcore-fonts-ttf
 minisql                             unixodbc
-mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon
+mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon, mariadb
 mjpeg-tools                         gst-plugins-bad
 mm-common                           libsigc++2, glibmm
 mono                                libidn
 mozjs                               polkit
 mpg123                              gst-plugins-good
+mruby                               mariadb
 mtdev                               xorg-evdev-driver, libinput
 mysql                               exim, cyrus-sasl, openldap, apr-util
 nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264
@@ -406,7 +413,7 @@ parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
 pciutils
-pcre                                wget, slang, glib, swig, exim, mc, git, xterm
+pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb
 pcre2                               wget, libbytesize, git, xterm
 pep8                                python3-pygobject3
 perl-http-daemon                    wget
@@ -468,7 +475,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm, vim
 rtmpdump                            gst-plugins-bad
-ruby                                docbook-xsl, vim, mc
+ruby                                docbook-xsl, vim, mc, mariadb
 rustc                               mozjs, librsvg
 samba                               mc, curl, libsoup
 sassc                               gtk+3
@@ -491,7 +498,7 @@ smartmontools
 soundtouch                          gst-plugins-bad
 spandsp                             gst-plugins-bad
 speex                               libsndfile, gst-plugins-good, alsa-plugins
-sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput
+sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup
@@ -514,6 +521,7 @@ thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
 time
 tk                                  python2, python3, ruby, git
+tokudb                              mariadb
 tree
 tremor                              gst-plugins-base
 trousers                            gnutls
@@ -522,7 +530,7 @@ udisks
 uming-fonts-ttf
 umockdev                            libgudev, upower
 unbound                             gnutls
-unixodbc                            openldap, apr-util
+unixodbc                            openldap, apr-util, mariadb
 unrar
 unzip                               docbook-xml, mc
 upower
@@ -530,7 +538,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -591,6 +599,7 @@ yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5
 yelp-tools                          dbus
 z3                                  llvm
 zbar                                gst-plugins-bad
+zeromq                              mariadb
 zip                                 llvm, docbook-xsl, mc
 zvbi                                gst-plugins-bad
 zxing                               gst-plugins-bad

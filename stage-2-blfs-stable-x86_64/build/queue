@@ -394,6 +394,11 @@ s/ibus.sh
 l/unixodbc.sh
 n/openldap.sh
 l/apr-util.sh
+ap/mariadb.sh
+n/exim.sh
+n/cyrus-sasl.sh
+n/openldap.sh
+l/apr-util.sh
 
 
 # vim:ft=conf
