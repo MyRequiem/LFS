@@ -348,6 +348,7 @@ mesa                                libva, libvdpau, xorg-applications, glu, fre
 mesa-demos                          mesa
 microdns                            gst-plugins-bad
 microsoft-webcore-fonts-ttf
+minisql                             unixodbc
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon
 mjpeg-tools                         gst-plugins-bad
 mm-common                           libsigc++2, glibmm
@@ -428,7 +429,7 @@ portaudio                           mpg123
 postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util
 psutil                              llvm
-pth                                 libgcrypt, parted, libidn, openldap, sdl
+pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl
 pyatspi2                            gtk+3
 pyflakes                            python3-pygobject3
