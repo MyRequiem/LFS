@@ -404,6 +404,10 @@ n/exim.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 l/apr-util.sh
+l/speex.sh
+l/libsndfile.sh
+l/gst-plugins-good.sh
+l/alsa-plugins.sh
 
 
 # vim:ft=conf

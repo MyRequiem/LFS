@@ -278,7 +278,7 @@ libnl                               libpcap
 libnotify                           ibus
 libnsl                              exim
 libofa                              gst-plugins-bad
-libogg                              libvorbis, gst-plugins-base, flac
+libogg                              libvorbis, gst-plugins-base, flac, speex
 libopenmpt                          gst-plugins-bad
 libopenni                           gst-plugins-bad
 libpaper                            cups
@@ -542,7 +542,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
