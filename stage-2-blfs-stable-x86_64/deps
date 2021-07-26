@@ -10,7 +10,7 @@ adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
 alsa-firmware
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, pulseaudio
 alsa-oss                            gst-plugins-good, sdl
 alsa-plugins                        sdl
 alsa-tools                          alsa-firmware, sdl
@@ -33,7 +33,7 @@ atk                                 gtk+2, atkmm, at-spi2-atk
 atkmm                               gtkmm2, gtkmm3
 autoconf213                         mozjs
 autogen                             gnutls
-avahi                               cups
+avahi                               cups, pulseaudio
 bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
@@ -41,7 +41,7 @@ berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-uti
 bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
-bluez                               python2, python3, libpcap, gst-plugins-bad
+bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio
 bonjour                             postgresql
 boost                               highlight, swig, libsigc++2, cairomm, mariadb
 bpf-utils                           iptables
@@ -75,7 +75,7 @@ cython                              yasm
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
-dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf
+dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio
 dbus-glib                           dbus, upower
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
@@ -103,7 +103,7 @@ ed
 efl                                 pinentry
 electric-fence                      lame
 elinks                              xmlto
-elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server
+elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
 emacs                               guile, pinentry, libidn, desktop-file-utils
 emojione                            ibus
 etc-issue
@@ -116,7 +116,7 @@ fcron
 fdk-aac                             gst-plugins-bad
 ffmpeg                              alsa-plugins
 ffms2                               x264
-fftw                                alsa-utils
+fftw                                alsa-utils, pulseaudio
 fig2dev                             gnupg
 flac                                libsndfile, gst-plugins-good
 flite                               gst-plugins-bad
@@ -136,6 +136,7 @@ fwtk                                sudo
 game-music-emu                      gst-plugins-bad
 gc                                  guile
 gcc                                 cmake
+gconf                               pulseaudio
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
 gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg
@@ -146,7 +147,7 @@ giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -173,7 +174,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus
 gtk-vnc
 gtkmm2
@@ -203,7 +204,7 @@ iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
 itstool                             shared-mime-info
-jack                                mpg123, gst-plugins-good, alsa-plugins
+jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 jasper
 jbig-kit                            libtiff
 jbig2dec                            cairo
@@ -224,6 +225,7 @@ libaio                              lvm2, mariadb
 libarchive                          cmake, ed
 libass                              gst-plugins-bad
 libassuan                           pinentry, gnupg, gpgme
+libasyncns                          pulseaudio
 libatasmart                         udisks
 libatomic-ops                       gc, libdrm
 libavc1394                          gst-plugins-good
@@ -232,6 +234,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl
 libcanberra                         notification-daemon
+libcap                              pulseaudio
 libcddb                             libcdio
 libcdio                             gst-plugins-ugly
 libdazzle
@@ -291,14 +294,14 @@ libraw1394                          gst-plugins-good
 libressl                            openssh
 librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad
 librtmp                             curl
-libsamplerate                       alsa-utils, alsa-plugins
+libsamplerate                       alsa-utils, alsa-plugins, pulseaudio
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
 libshout                            gst-plugins-good
 libsidplay                          gst-plugins-ugly
 libsigc++2                          glibmm, cairomm
-libsndfile                          lame, sbc, gst-plugins-bad
+libsndfile                          lame, sbc, gst-plugins-bad, pulseaudio
 libsoup                             gst-plugins-good
 libspectre                          cairo
 libsrtp                             gst-plugins-bad
@@ -331,6 +334,7 @@ libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql
+lirc                                pulseaudio
 llvm                                icu, mesa, rustc
 lm-sensors                          mesa
 lrdf                                gst-plugins-bad
@@ -405,7 +409,7 @@ openslp                             openldap
 openssh                             libssh2, sshfs
 opie                                sudo
 opus                                gst-plugins-base, libsndfile, gst-plugins-bad
-orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
+orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip
@@ -485,7 +489,7 @@ samba                               mc, curl, libsoup
 sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
-sbc                                 gst-plugins-bad
+sbc                                 gst-plugins-bad, pulseaudio
 sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad
 sdl2                                gst-plugins-base
 sendmail                            fcron, sudo, gnupg, at
@@ -500,8 +504,9 @@ skia                                cairo
 slang                               aalib, mc
 smartmontools
 soundtouch                          gst-plugins-bad
+soxr                                pulseaudio
 spandsp                             gst-plugins-bad
-speex                               libsndfile, gst-plugins-good, alsa-plugins
+speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudio
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
@@ -519,7 +524,7 @@ sysprof                             libsoup
 sysstat                             openssh
 taglib                              gst-plugins-good
 tap-py                              python-dbus
-tdb                                 exim, libcanberra
+tdb                                 exim, libcanberra, pulseaudio
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis, opus, fltk
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
@@ -542,7 +547,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
@@ -556,6 +561,7 @@ wavpack                             gst-plugins-good
 wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad, ibus
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base
 weasyprint                          vala
+webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx
 wildmidi                            gst-plugins-bad
@@ -592,7 +598,7 @@ xorg-fbdev-driver
 xorg-fonts                          xorg-server
 xorg-intel-driver
 xorg-libinput-driver
-xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2, libxklavier, gst-plugins-base, gst-plugins-good, fltk, sdl, gst-plugins-bad
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2, libxklavier, gst-plugins-base, gst-plugins-good, fltk, sdl, gst-plugins-bad, pulseaudio
 xorg-nouveau-driver
 xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver
 xorg-sgml-doctools                  xorg-server

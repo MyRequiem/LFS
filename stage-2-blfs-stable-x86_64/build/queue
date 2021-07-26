@@ -408,6 +408,13 @@ l/speex.sh
 l/libsndfile.sh
 l/gst-plugins-good.sh
 l/alsa-plugins.sh
+ap/pulseaudio.sh
+s/gtk-vnc.sh
+l/libcanberra.sh
+ap/mpg123.sh
+l/gst-plugins-good.sh
+l/alsa-plugins.sh
+l/sdl.sh
 
 
 # vim:ft=conf
