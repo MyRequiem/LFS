@@ -399,6 +399,11 @@ n/exim.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 l/apr-util.sh
+ap/postgresql.sh
+n/exim.sh
+n/cyrus-sasl.sh
+n/openldap.sh
+l/apr-util.sh
 
 
 # vim:ft=conf

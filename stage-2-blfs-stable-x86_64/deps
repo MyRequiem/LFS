@@ -42,6 +42,7 @@ bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap, gst-plugins-bad
+bonjour                             postgresql
 boost                               highlight, swig, libsigc++2, cairomm, mariadb
 bpf-utils                           iptables
 brotli                              curl, freetype, libsoup
@@ -85,10 +86,12 @@ directfb                            links, cairo, sdl
 djbfft                              liba52
 dmalloc                             cyrus-sasl, lame
 dmraid                              libblockdev
-docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac
+docbook-dsssl                       postgresql
+docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm
 docbook2x                           git
+docbook4                            postgresql
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
@@ -121,7 +124,7 @@ fltk                                pinentry, alsa-tools
 fluidsynth                          gst-plugins-bad
 fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass
 fonttools                           harfbuzz, graphite2
-fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server
+fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server, postgresql
 freefont
 freeglut                            libtiff, jasper, libwebp
 freetds                             apr-util
@@ -188,7 +191,7 @@ hplip                               cups
 http-parser                         nodejs
 hypothesis                          python2-pycairo, python3-pycairo
 ibus
-icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical
+icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql
 imagemagick7                        gnupg
 imlib2
 impacket                            curl
@@ -322,12 +325,12 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
-linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb
+linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql
 llvm                                icu, mesa, rustc
 lm-sensors                          mesa
 lrdf                                gst-plugins-bad
@@ -355,7 +358,7 @@ messagepack                         mariadb
 microdns                            gst-plugins-bad
 microsoft-webcore-fonts-ttf
 minisql                             unixodbc
-mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon, mariadb
+mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon, mariadb, postgresql
 mjpeg-tools                         gst-plugins-bad
 mm-common                           libsigc++2, glibmm
 mono                                libidn
@@ -393,9 +396,10 @@ opendesktop-fonts-ttf
 opendmarc                           exim
 openexr                             gst-plugins-bad
 openh264                            gst-plugins-bad
+openjade                            postgresql
 openjdk                             libidn, openssh, cyrus-sasl, cups
 openjpeg                            gst-plugins-bad
-openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5
+openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql
 opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs
@@ -419,7 +423,7 @@ pep8                                python3-pygobject3
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-pod-pom-view-restructured      cyrus-sasl
-perl-sgmlspm                        fontconfig
+perl-sgmlspm                        fontconfig, postgresql
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
@@ -450,7 +454,7 @@ python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql
 python2-libxml2                     libxslt, docbook-xsl
 python2-pycairo                     python2-pygobject2
 python2-pygobject2
