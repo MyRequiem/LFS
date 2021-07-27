@@ -222,6 +222,7 @@ include /etc/ld.so.conf.d/*.conf
 
 /usr/local/lib
 /opt/lib
+/opt/qt5/lib
 
 # End ${LD_SO_CONFIG}
 EOF
