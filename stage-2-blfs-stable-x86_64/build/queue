@@ -419,6 +419,14 @@ l/alsa-plugins.sh
 l/sdl.sh
 l/sdl2.sh
 l/gst-plugins-base.sh
+l/qt5.sh
+d/cmake.sh
+ap/highlight.sh
+n/pinentry.sh
+n/gpgme.sh
+l/cairo.sh
+l/gst-plugins-base.sh
+l/gst-plugins-good.sh
 
 
 # vim:ft=conf
