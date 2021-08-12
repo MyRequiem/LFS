@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/GZIP/s/^/#/' makefile || exit 1
 
 GUI=""
-# command -v assistant &>/dev/null && GUI="true"
+command -v assistant &>/dev/null && GUI="true"
 
 make || exit 1
 
