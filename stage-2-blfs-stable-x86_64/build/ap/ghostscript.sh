@@ -46,7 +46,7 @@ patch --verbose -Np1 -i \
 
 # опция немного уменьшает размеры файлов gs и libgs.so
 #    --disable-compile-inits
-./configure \
+./configure                 \
     --prefix=/usr           \
     --disable-compile-inits \
     --enable-dynamic        \
