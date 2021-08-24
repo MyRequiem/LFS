@@ -2,7 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript
 aalib                               gst-plugins-good, sdl
 acpid                               xorg-server
 adns                                gnupg
@@ -51,7 +51,7 @@ bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript
 cairo-5c                            xorg-applications
 cairomm                             pangomm
 caladea-font-ttf
@@ -68,7 +68,7 @@ colord                              gtk+3, cups
 cpio
 cryptsetup                          volume-key
 cunit                               libdrm
-cups                                gtk+2, gtk+3, qt5
+cups                                gtk+2, gtk+3, qt5, ghostscript
 cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad
 cyrus-sasl                          exim, openldap, gtk-vnc
@@ -125,13 +125,13 @@ flac                                libsndfile, gst-plugins-good
 flite                               gst-plugins-bad, qt5
 fltk                                pinentry, alsa-tools
 fluidsynth                          gst-plugins-bad
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server, postgresql
 freefont
 freeglut                            libtiff, jasper, libwebp
 freetds                             apr-util, qt5
-freetype                            harfbuzz, graphite2, fontconfig, libass
+freetype                            harfbuzz, graphite2, fontconfig, libass, ghostscript
 fribidi                             pango, libass
 fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
@@ -177,7 +177,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus
 gtk-vnc
 gtkmm2
@@ -261,12 +261,12 @@ libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad
 libical                             bluez
 libid3tag                           imlib2
-libidn                              gnutls, exim
+libidn                              gnutls, exim, ghostscript
 libidn2                             wget, gnutls, curl, libpsl
 libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver, qt5
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript
 libkate                             gst-plugins-bad
 libksba                             gnupg
 liblsmash                           x264
@@ -287,9 +287,9 @@ libofa                              gst-plugins-bad
 libogg                              libvorbis, gst-plugins-base, flac, speex
 libopenmpt                          gst-plugins-bad
 libopenni                           gst-plugins-bad
-libpaper                            cups
+libpaper                            cups, ghostscript
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript
 libproxy                            glib-networking, neon, qt5
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
@@ -312,7 +312,7 @@ libssh2                             curl, rustc, mc, gst-plugins-bad
 libtasn1                            p11-kit, gnutls
 libthai                             pango
 libtheora                           gst-plugins-base
-libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5
+libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libunistring                        guile, libidn2, gnutls
@@ -405,7 +405,7 @@ openexr                             gst-plugins-bad
 openh264                            gst-plugins-bad
 openjade                            postgresql
 openjdk                             libidn, openssh, cyrus-sasl, cups
-openjpeg                            gst-plugins-bad
+openjpeg                            gst-plugins-bad, ghostscript
 openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql
 opensc                              openssh
 openslp                             openldap

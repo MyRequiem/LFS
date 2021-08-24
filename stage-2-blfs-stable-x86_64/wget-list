@@ -483,3 +483,7 @@ https://github.com/libsndfile/libsamplerate/releases/download/0.2.1/libsamplerat
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-14.2.tar.xz
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
+https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.xz
+http://www.linuxfromscratch.org/patches/blfs/10.1/ghostscript-9.53.3-freetype_fix-1.patch
+https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
+https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz

@@ -427,6 +427,8 @@ n/gpgme.sh
 l/cairo.sh
 l/gst-plugins-base.sh
 l/gst-plugins-good.sh
+ap/ghostscript.sh
+l/cairo.sh
 
 
 # vim:ft=conf
