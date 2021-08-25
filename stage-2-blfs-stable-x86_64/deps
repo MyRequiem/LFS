@@ -145,7 +145,7 @@ gdb                                 python3, gcc, guile, glib, openssh, rustc
 gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf
 gelasio-font-ttf
 ggi                                 sdl
-ghostscript                         cairo
+ghostscript                         cairo, goffice
 giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
@@ -158,7 +158,8 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice
+goffice
 gpac                                x264
 gpgme                               volume-key
 gpm                                 aalib, mc, vim, links
@@ -168,7 +169,7 @@ graphite-font                       graphite2
 graphite2                           harfbuzz
 graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala
 groonga                             mariadb
-gsettings-desktop-schemas           glib-networking
+gsettings-desktop-schemas           glib-networking, goffice
 gsl                                 gstreamer
 gsm                                 gst-plugins-bad
 gst-plugins-bad
@@ -177,8 +178,8 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -222,6 +223,7 @@ krb4                                cyrus-sasl
 kytea                               mariadb
 ladspa                              gst-plugins-bad
 lame                                gst-plugins-good
+lasem                               goffice
 lcms2                               openjpeg, gst-plugins-bad, libmng
 liba52                              gst-plugins-ugly
 libaio                              lvm2, mariadb
@@ -258,7 +260,7 @@ libexif                             gst-plugins-bad
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad
 libglade
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
-libgsf
+libgsf                              goffice
 libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad
 libical                             bluez
 libid3tag                           imlib2
@@ -296,7 +298,7 @@ libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
 libraw1394                          gst-plugins-good
 libressl                            openssh
-librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad
+librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice
 librtmp                             curl
 libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
 libseccomp                          gnutls
@@ -307,7 +309,7 @@ libsidplay                          gst-plugins-ugly
 libsigc++2                          glibmm, cairomm
 libsndfile                          lame, sbc, gst-plugins-bad, libsamplerate, pulseaudio
 libsoup                             gst-plugins-good
-libspectre                          cairo
+libspectre                          cairo, goffice
 libsrtp                             gst-plugins-bad
 libssh2                             curl, rustc, mc, gst-plugins-bad
 libtasn1                            p11-kit, gnutls
@@ -333,7 +335,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries
@@ -569,7 +571,7 @@ wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-
 weasyprint                          vala
 webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice
 wildmidi                            gst-plugins-bad
 wireless-tools                      pm-utils
 wpe-webkit                          gst-plugins-bad

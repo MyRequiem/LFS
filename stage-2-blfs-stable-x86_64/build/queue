@@ -430,6 +430,7 @@ l/gst-plugins-good.sh
 ap/ghostscript.sh
 l/cairo.sh
 l/libgsf.sh
+l/goffice.sh
 
 
 # vim:ft=conf
