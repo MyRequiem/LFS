@@ -431,6 +431,7 @@ ap/ghostscript.sh
 l/cairo.sh
 l/libgsf.sh
 l/goffice.sh
+l/gtk-engines.sh
 
 
 # vim:ft=conf

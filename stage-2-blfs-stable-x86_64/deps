@@ -51,7 +51,7 @@ bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines
 cairo-5c                            xorg-applications
 cairomm                             pangomm
 caladea-font-ttf
@@ -177,9 +177,10 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice
+gtk-engines
 gtk-vnc
 gtkmm2
 gtkmm3
@@ -347,7 +348,7 @@ lrdf                                gst-plugins-bad
 lsb-tools
 lsof
 ltc-tools                           gst-plugins-bad
-lua                                 highlight, vim
+lua                                 highlight, vim, gtk-engines
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
@@ -571,7 +572,7 @@ wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-
 weasyprint                          vala
 webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils
-which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice
+which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines
 wildmidi                            gst-plugins-bad
 wireless-tools                      pm-utils
 wpe-webkit                          gst-plugins-bad
