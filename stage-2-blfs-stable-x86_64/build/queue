@@ -432,6 +432,16 @@ l/cairo.sh
 l/libgsf.sh
 l/goffice.sh
 l/gtk-engines.sh
+l/aalib.sh
+n/exim.sh
+ap/mc.sh
+ap/vim.sh
+n/openssh.sh
+n/links.sh
+l/sdl.sh
+l/libmpeg2.sh
+l/sdl2.sh
+ap/ghostscript.sh
 
 
 # vim:ft=conf
