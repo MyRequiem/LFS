@@ -442,6 +442,8 @@ l/sdl.sh
 l/libmpeg2.sh
 l/sdl2.sh
 ap/ghostscript.sh
+l/json-glib.sh
+l/gtk+3.sh
 
 
 # vim:ft=conf
