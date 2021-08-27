@@ -444,6 +444,8 @@ l/sdl2.sh
 ap/ghostscript.sh
 l/json-glib.sh
 l/gtk+3.sh
+l/libseccomp.sh
+n/gnutls.sh
 
 
 # vim:ft=conf
