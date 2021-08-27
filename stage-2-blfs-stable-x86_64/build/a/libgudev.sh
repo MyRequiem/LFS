@@ -11,7 +11,7 @@ PRGNAME="libgudev"
 # Recommended: no
 # Optional:    gobject-introspection
 #              gtk-doc  (для сборки API документации)
-#              umockdev (для тестов) https://github.com/martinpitt/umockdev
+#              umockdev (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
