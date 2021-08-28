@@ -138,12 +138,13 @@ fuse                                gnupg, sshfs
 fuse2                               ntfs-3g
 fwtk                                sudo
 game-music-emu                      gst-plugins-bad
-gc                                  guile
+gc                                  guile, w3m
 gcc                                 cmake
 gconf                               pulseaudio
 gcr                                 pinentry
 gdb                                 python3, gcc, guile, glib, openssh, rustc
-gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf
+gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m
+gdk-pixbuf-xlib                     w3m
 gelasio-font-ttf
 ggi                                 sdl
 ghostscript                         cairo, goffice
@@ -151,7 +152,7 @@ giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -178,9 +179,9 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice
-gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib
+gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib
 gtk-engines
 gtk-vnc
 gtkmm2
@@ -200,7 +201,7 @@ hypothesis                          python2-pycairo, python3-pycairo
 ibus                                sdl2, qt5
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5
 imagemagick7                        gnupg
-imlib2
+imlib2                              w3m
 impacket                            curl
 indic-fonts-ttf
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, libvorbis, opus, fltk
@@ -609,7 +610,7 @@ xorg-fbdev-driver
 xorg-fonts                          xorg-server
 xorg-intel-driver
 xorg-libinput-driver
-xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2, libxklavier, gst-plugins-base, gst-plugins-good, fltk, sdl, gst-plugins-bad, pulseaudio, sdl2, qt5
+xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2, libxklavier, gst-plugins-base, gst-plugins-good, fltk, sdl, gst-plugins-bad, pulseaudio, sdl2, qt5, gdk-pixbuf-xlib
 xorg-nouveau-driver
 xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver
 xorg-sgml-doctools                  xorg-server

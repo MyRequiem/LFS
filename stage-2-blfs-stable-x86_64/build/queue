@@ -446,6 +446,11 @@ l/json-glib.sh
 l/gtk+3.sh
 l/libseccomp.sh
 n/gnutls.sh
+l/gdk-pixbuf-xlib.sh
+n/w3m.sh
+ap/asciidoc.sh
+s/xmlto.sh
+x/libs/xorg-libraries.sh
 l/babl.sh
 
 
