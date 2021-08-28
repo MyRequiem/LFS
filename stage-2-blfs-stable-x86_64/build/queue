@@ -452,6 +452,7 @@ ap/asciidoc.sh
 s/xmlto.sh
 x/libs/xorg-libraries.sh
 l/babl.sh
+l/gegl.sh
 
 
 # vim:ft=conf
