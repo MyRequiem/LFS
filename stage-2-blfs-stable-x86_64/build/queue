@@ -453,6 +453,8 @@ s/xmlto.sh
 x/libs/xorg-libraries.sh
 l/babl.sh
 l/gegl.sh
+l/poppler.sh
+l/cairo.sh
 
 
 # vim:ft=conf
