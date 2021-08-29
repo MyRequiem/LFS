@@ -265,7 +265,7 @@ liberation-fonts-ttf
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links, mariadb
 libexif                             gst-plugins-bad
-libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad
+libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal
 libglade
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgsf                              goffice
@@ -441,7 +441,7 @@ parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
 pciutils                            qt5
-pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb
+pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-http-daemon                    wget
@@ -493,7 +493,8 @@ python3-pyxdg                       ibus
 qt4                                 cairo
 qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler
 quiche                              curl
-raptor
+raptor                              rasqal
+rasqal
 recommonmark                        llvm
 reiserfsprogs                       lvm2
 remove-la-files
