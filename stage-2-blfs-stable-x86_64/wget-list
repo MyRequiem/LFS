@@ -500,3 +500,5 @@ https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.28.tar.xz
 https://poppler.freedesktop.org/poppler-21.02.0.tar.xz
 https://poppler.freedesktop.org/poppler-data-0.4.10.tar.gz
+http://download.librdf.org/source/raptor2-2.0.15.tar.gz
+http://www.linuxfromscratch.org/patches/blfs/10.1/raptor-2.0.15-security_fixes-1.patch

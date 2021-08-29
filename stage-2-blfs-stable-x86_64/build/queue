@@ -455,6 +455,7 @@ l/babl.sh
 l/gegl.sh
 l/poppler.sh
 l/cairo.sh
+l/raptor.sh
 
 
 # vim:ft=conf
