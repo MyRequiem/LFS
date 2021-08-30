@@ -2,6 +2,7 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
+3store                              redland
 X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript
 aalib                               gst-plugins-good, sdl
 acpid                               xorg-server
@@ -39,7 +40,7 @@ babl                                gegl
 bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
-berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical
+berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland
 bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
@@ -182,7 +183,7 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor
 gtk-engines
@@ -276,6 +277,7 @@ libidn                              gnutls, exim, ghostscript
 libidn2                             wget, gnutls, curl, libpsl
 libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver, qt5
+libiodbc                            redland
 libiscsi                            udisks
 libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler
 libkate                             gst-plugins-bad
@@ -370,7 +372,7 @@ lzo                                 libarchive, cairo
 maemo                               alsa-plugins
 make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5
 man2html                            xterm
-mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5
+mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland
 mc
 mdadm                               lvm2, udisks, libblockdev
 mecab                               mariadb
@@ -390,7 +392,7 @@ mpg123                              gst-plugins-good
 mrg                                 gegl
 mruby                               mariadb
 mtdev                               xorg-evdev-driver, libinput, qt5
-mysql                               exim, cyrus-sasl, openldap, apr-util, qt5
+mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland
 nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2
 ndctl                               libblockdev
 neon                                gst-plugins-bad
@@ -462,7 +464,7 @@ poppler                             cairo
 popt                                cryptsetup
 portaudio                           mpg123
 postfix                             fcron, sudo, gnupg, at
-postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5
+postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5
@@ -494,8 +496,9 @@ qt4                                 cairo
 qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler
 quiche                              curl
 raptor                              rasqal
-rasqal
+rasqal                              redland
 recommonmark                        llvm
+redland
 reiserfsprogs                       lvm2
 remove-la-files
 resolv_wrapper                      mit-kerberos-v5
@@ -533,7 +536,7 @@ speex                               libsndfile, gst-plugins-good, alsa-plugins, 
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
-sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5
+sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland
 srt                                 gst-plugins-bad
 sshfs
 startup-notification
@@ -575,6 +578,7 @@ valgrind                            python2, python3, libksba, libxml2, pcre, pc
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
+virtuoso                            redland
 vlgothic-fonts-ttf
 vo-aac                              gst-plugins-bad
 vo-amrwb                            gst-plugins-bad

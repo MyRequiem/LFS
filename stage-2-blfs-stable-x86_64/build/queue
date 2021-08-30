@@ -457,6 +457,8 @@ l/poppler.sh
 l/cairo.sh
 l/raptor.sh
 l/rasqal.sh
+l/libiodbc.sh
+l/redland.sh
 
 
 # vim:ft=conf
