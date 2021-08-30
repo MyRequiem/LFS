@@ -460,6 +460,7 @@ l/rasqal.sh
 l/libiodbc.sh
 l/redland.sh
 d/perl/perl-module-build.sh
+d/perl/perl-sub-identify.sh
 
 
 # vim:ft=conf
