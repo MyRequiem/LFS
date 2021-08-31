@@ -446,6 +446,7 @@ pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
+perl-archive-zip
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-module-build                   perl-test-mockmodule
@@ -453,7 +454,7 @@ perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig, postgresql
 perl-sub-identify                   perl-super
 perl-super                          perl-test-mockmodule
-perl-test-mockmodule
+perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
 php                                 cups, libsoup, libvpx
 picogui                             sdl
@@ -573,7 +574,7 @@ umockdev                            libgudev, upower
 unbound                             gnutls
 unixodbc                            openldap, apr-util, mariadb, qt5
 unrar
-unzip                               docbook-xml, mc
+unzip                               docbook-xml, mc, perl-archive-zip
 upower
 usbutils
 util-macros                         xorgproto, xbitmaps
