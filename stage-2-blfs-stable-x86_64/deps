@@ -451,7 +451,9 @@ perl-io-socket-ssl                  wget
 perl-module-build
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig, postgresql
-perl-sub-identify
+perl-sub-identify                   perl-super
+perl-super
+perl-test-warnings
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
