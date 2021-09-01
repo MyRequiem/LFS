@@ -465,6 +465,7 @@ d/perl/perl-super.sh
 d/perl/perl-test-warnings.sh
 d/perl/perl-test-mockmodule.sh
 d/perl/perl-archive-zip.sh
+d/perl/perl-autovivification.sh
 
 
 # vim:ft=conf
