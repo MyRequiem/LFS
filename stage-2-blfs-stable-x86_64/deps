@@ -448,6 +448,8 @@ pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-archive-zip
 perl-autovivification
+perl-business-isbn
+perl-business-isbn-data             perl-business-isbn
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-module-build                   perl-test-mockmodule

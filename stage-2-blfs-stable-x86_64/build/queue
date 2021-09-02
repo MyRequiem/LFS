@@ -197,7 +197,7 @@ x/libs/libxau.sh
 x/libs/libxdmcp.sh
 x/xcb/xcb-proto.sh
 x/libs/libxcb.sh
-d/perl/perl-sgmlspm.sh
+d/perl-modules/perl-sgmlspm.sh
 x/misc/fontconfig.sh
 x/libs/xorg-libraries.sh
 a/dbus.sh
@@ -459,13 +459,15 @@ l/raptor.sh
 l/rasqal.sh
 l/libiodbc.sh
 l/redland.sh
-d/perl/perl-module-build.sh
-d/perl/perl-sub-identify.sh
-d/perl/perl-super.sh
-d/perl/perl-test-warnings.sh
-d/perl/perl-test-mockmodule.sh
-d/perl/perl-archive-zip.sh
-d/perl/perl-autovivification.sh
+d/perl-modules/perl-module-build.sh
+d/perl-modules/perl-sub-identify.sh
+d/perl-modules/perl-super.sh
+d/perl-modules/perl-test-warnings.sh
+d/perl-modules/perl-test-mockmodule.sh
+d/perl-modules/perl-archive-zip.sh
+d/perl-modules/perl-autovivification.sh
+d/perl-modules/perl-business-isbn-data.sh
+d/perl-modules/perl-business-isbn.sh
 
 
 # vim:ft=conf
