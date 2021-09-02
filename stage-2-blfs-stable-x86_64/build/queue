@@ -468,6 +468,8 @@ d/perl-modules/perl-archive-zip.sh
 d/perl-modules/perl-autovivification.sh
 d/perl-modules/perl-business-isbn-data.sh
 d/perl-modules/perl-business-isbn.sh
+d/perl-modules/perl-tie-cycle.sh
+d/perl-modules/perl-business-ismn.sh
 
 
 # vim:ft=conf

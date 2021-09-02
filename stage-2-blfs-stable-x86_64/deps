@@ -450,6 +450,7 @@ perl-archive-zip
 perl-autovivification
 perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
+perl-business-ismn
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-module-build                   perl-test-mockmodule
@@ -459,6 +460,7 @@ perl-sub-identify                   perl-super
 perl-super                          perl-test-mockmodule
 perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
+perl-tie-cycle                      perl-business-ismn
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
