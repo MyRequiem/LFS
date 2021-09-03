@@ -451,6 +451,7 @@ perl-autovivification
 perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
+perl-business-issn
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 perl-module-build                   perl-test-mockmodule
