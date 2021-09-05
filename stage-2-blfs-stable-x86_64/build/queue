@@ -474,6 +474,9 @@ d/perl-modules/perl-business-issn.sh
 d/perl-modules/perl-class-accessor.sh
 d/perl-modules/perl-b-cow.sh
 d/perl-modules/perl-number-compare.sh
+d/perl-modules/perl-text-glob.sh
+d/perl-modules/perl-file-find-rule.sh
+d/perl-modules/perl-clone.sh
 
 
 # vim:ft=conf
