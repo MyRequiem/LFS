@@ -472,6 +472,7 @@ d/perl-modules/perl-tie-cycle.sh
 d/perl-modules/perl-business-ismn.sh
 d/perl-modules/perl-business-issn.sh
 d/perl-modules/perl-class-accessor.sh
+d/perl-modules/perl-b-cow.sh
 
 
 # vim:ft=conf
