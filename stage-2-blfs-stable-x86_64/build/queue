@@ -473,6 +473,7 @@ d/perl-modules/perl-business-ismn.sh
 d/perl-modules/perl-business-issn.sh
 d/perl-modules/perl-class-accessor.sh
 d/perl-modules/perl-b-cow.sh
+d/perl-modules/perl-number-compare.sh
 
 
 # vim:ft=conf
