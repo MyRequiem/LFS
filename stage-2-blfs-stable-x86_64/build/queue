@@ -480,6 +480,7 @@ d/perl-modules/perl-clone.sh
 d/perl-modules/perl-data-compare.sh
 d/perl-modules/perl-data-dump.sh
 d/perl-modules/perl-data-uniqid.sh
+d/perl-modules/perl-capture-tiny.sh
 
 
 # vim:ft=conf
