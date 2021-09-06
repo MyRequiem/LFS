@@ -479,6 +479,7 @@ d/perl-modules/perl-file-find-rule.sh
 d/perl-modules/perl-clone.sh
 d/perl-modules/perl-data-compare.sh
 d/perl-modules/perl-data-dump.sh
+d/perl-modules/perl-data-uniqid.sh
 
 
 # vim:ft=conf

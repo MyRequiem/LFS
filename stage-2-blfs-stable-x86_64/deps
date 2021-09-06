@@ -457,6 +457,7 @@ perl-class-accessor
 perl-clone                          perl-data-compare
 perl-data-compare
 perl-data-dump
+perl-data-uniqid
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
