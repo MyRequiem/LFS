@@ -453,7 +453,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-capture-tiny
+perl-capture-tiny                   perl-try-tiny
 perl-class-accessor
 perl-clone                          perl-data-compare
 perl-data-compare
@@ -472,6 +472,7 @@ perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
+perl-try-tiny
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
