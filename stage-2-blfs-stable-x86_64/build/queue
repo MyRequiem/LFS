@@ -484,6 +484,7 @@ d/perl-modules/perl-capture-tiny.sh
 d/perl-modules/perl-try-tiny.sh
 d/perl-modules/perl-test-fatal.sh
 d/perl-modules/perl-test-deep.sh
+d/perl-modules/perl-cpan-meta-check.sh
 
 
 # vim:ft=conf
