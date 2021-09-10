@@ -468,11 +468,12 @@ perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig, postgresql
 perl-sub-identify                   perl-super
 perl-super                          perl-test-mockmodule
+perl-test-fatal
 perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
-perl-try-tiny
+perl-try-tiny                       perl-test-fatal
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg

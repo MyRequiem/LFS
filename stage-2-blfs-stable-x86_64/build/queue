@@ -482,6 +482,7 @@ d/perl-modules/perl-data-dump.sh
 d/perl-modules/perl-data-uniqid.sh
 d/perl-modules/perl-capture-tiny.sh
 d/perl-modules/perl-try-tiny.sh
+d/perl-modules/perl-test-fatal.sh
 
 
 # vim:ft=conf
