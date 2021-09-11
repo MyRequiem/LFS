@@ -487,6 +487,7 @@ d/perl-modules/perl-test-deep.sh
 d/perl-modules/perl-cpan-meta-check.sh
 d/perl-modules/perl-test-requires.sh
 d/perl-modules/perl-ipc-run3.sh
+d/perl-modules/perl-importer.sh
 
 
 # vim:ft=conf

@@ -462,6 +462,7 @@ perl-data-dump
 perl-data-uniqid
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
+perl-importer
 perl-io-socket-ssl                  wget
 perl-ipc-run3
 perl-module-build                   perl-test-mockmodule
