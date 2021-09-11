@@ -472,6 +472,7 @@ perl-super                          perl-test-mockmodule
 perl-test-deep                      perl-cpan-meta-check
 perl-test-fatal
 perl-test-mockmodule                perl-archive-zip
+perl-test-requires
 perl-test-warnings                  perl-test-mockmodule
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
