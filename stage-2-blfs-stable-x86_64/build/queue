@@ -490,6 +490,7 @@ d/perl-modules/perl-ipc-run3.sh
 d/perl-modules/perl-importer.sh
 d/perl-modules/perl-term-table.sh
 d/perl-modules/perl-sub-info.sh
+d/perl-modules/perl-scope-guard.sh
 
 
 # vim:ft=conf
