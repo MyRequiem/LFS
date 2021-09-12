@@ -489,6 +489,7 @@ d/perl-modules/perl-test-requires.sh
 d/perl-modules/perl-ipc-run3.sh
 d/perl-modules/perl-importer.sh
 d/perl-modules/perl-term-table.sh
+d/perl-modules/perl-sub-info.sh
 
 
 # vim:ft=conf

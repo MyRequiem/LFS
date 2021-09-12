@@ -462,7 +462,7 @@ perl-data-dump
 perl-data-uniqid
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
-perl-importer                       perl-term-table
+perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget
 perl-ipc-run3
 perl-module-build                   perl-test-mockmodule
@@ -470,6 +470,7 @@ perl-number-compare                 perl-file-find-rule
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        fontconfig, postgresql
 perl-sub-identify                   perl-super
+perl-sub-info
 perl-super                          perl-test-mockmodule
 perl-term-table
 perl-test-deep                      perl-cpan-meta-check
