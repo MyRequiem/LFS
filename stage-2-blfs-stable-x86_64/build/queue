@@ -493,6 +493,7 @@ d/perl-modules/perl-sub-info.sh
 d/perl-modules/perl-scope-guard.sh
 d/perl-modules/perl-module-pluggable.sh
 d/perl-modules/perl-test2-suite.sh
+d/perl-modules/perl-test2-plugin-nowarnings.sh
 
 
 # vim:ft=conf

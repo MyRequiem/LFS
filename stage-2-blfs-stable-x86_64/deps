@@ -464,7 +464,7 @@ perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget
-perl-ipc-run3
+perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-module-build                   perl-test-mockmodule
 perl-module-pluggable               perl-test2-suite
 perl-number-compare                 perl-file-find-rule
@@ -480,7 +480,8 @@ perl-test-fatal
 perl-test-mockmodule                perl-archive-zip
 perl-test-requires
 perl-test-warnings                  perl-test-mockmodule
-perl-test2-suite
+perl-test2-plugin-nowarnings
+perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
 perl-try-tiny                       perl-test-fatal
