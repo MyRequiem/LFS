@@ -478,6 +478,7 @@ perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check
 perl-test-fatal
 perl-test-mockmodule                perl-archive-zip
+perl-test-needs
 perl-test-requires
 perl-test-warnings                  perl-test-mockmodule
 perl-test-without-module
