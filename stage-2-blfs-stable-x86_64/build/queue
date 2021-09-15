@@ -497,6 +497,9 @@ d/perl-modules/perl-test2-plugin-nowarnings.sh
 d/perl-modules/perl-test-without-module.sh
 d/perl-modules/perl-test-needs.sh
 d/perl-modules/perl-module-runtime.sh
+d/perl-modules/perl-module-implementation.sh
+d/perl-modules/perl-dist-checkconflicts.sh
+d/perl-modules/perl-package-stash.sh
 
 
 # vim:ft=conf
