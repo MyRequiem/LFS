@@ -500,6 +500,7 @@ d/perl-modules/perl-module-runtime.sh
 d/perl-modules/perl-module-implementation.sh
 d/perl-modules/perl-dist-checkconflicts.sh
 d/perl-modules/perl-package-stash.sh
+d/perl-modules/perl-variable-magic.sh
 
 
 # vim:ft=conf

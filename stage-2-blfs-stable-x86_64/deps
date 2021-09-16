@@ -491,6 +491,7 @@ perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
 perl-try-tiny                       perl-test-fatal, perl-module-implementation
+perl-variable-magic
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
