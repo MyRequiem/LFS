@@ -475,6 +475,7 @@ perl-package-stash
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-scope-guard                    perl-test2-suite
 perl-sgmlspm                        fontconfig, postgresql
+perl-sub-exporter-progressive
 perl-sub-identify                   perl-super
 perl-sub-info                       perl-test2-suite
 perl-super                          perl-test-mockmodule
