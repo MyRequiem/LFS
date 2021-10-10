@@ -471,6 +471,7 @@ perl-module-build                   perl-test-mockmodule
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope
 perl-module-pluggable               perl-test2-suite
 perl-module-runtime                 perl-module-implementation, perl-dist-checkconflicts
+perl-mro-compat
 perl-namespace-autoclean
 perl-namespace-clean                perl-namespace-autoclean
 perl-number-compare                 perl-file-find-rule
