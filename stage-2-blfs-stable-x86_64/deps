@@ -482,10 +482,11 @@ perl-sgmlspm                        fontconfig, postgresql
 perl-sub-exporter-progressive       perl-b-hooks-endofscope
 perl-sub-identify                   perl-super, perl-namespace-autoclean
 perl-sub-info                       perl-test2-suite
+perl-sub-quote
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote
 perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean
 perl-test-requires                  perl-module-implementation
