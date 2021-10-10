@@ -504,6 +504,7 @@ d/perl-modules/perl-variable-magic.sh
 d/perl-modules/perl-sub-exporter-progressive.sh
 d/perl-modules/perl-b-hooks-endofscope.sh
 d/perl-modules/perl-namespace-clean.sh
+d/perl-modules/perl-namespace-autoclean.sh
 
 
 # vim:ft=conf
