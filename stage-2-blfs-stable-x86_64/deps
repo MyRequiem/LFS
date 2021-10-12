@@ -465,7 +465,7 @@ perl-data-uniqid
 perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
-perl-exception-class
+perl-exception-class                perl-params-validationcompiler
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
@@ -480,11 +480,12 @@ perl-namespace-autoclean            perl-specio
 perl-namespace-clean                perl-namespace-autoclean
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
+perl-params-validationcompiler
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-role-tiny                      perl-specio
 perl-scope-guard                    perl-test2-suite
 perl-sgmlspm                        fontconfig, postgresql
-perl-specio
+perl-specio                         perl-params-validationcompiler
 perl-sub-exporter-progressive       perl-b-hooks-endofscope
 perl-sub-identify                   perl-super, perl-namespace-autoclean
 perl-sub-info                       perl-test2-suite
@@ -497,8 +498,8 @@ perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio
 perl-test-requires                  perl-module-implementation, perl-eval-closure
 perl-test-warnings                  perl-test-mockmodule
-perl-test-without-module
-perl-test2-plugin-nowarnings
+perl-test-without-module            perl-params-validationcompiler
+perl-test2-plugin-nowarnings        perl-params-validationcompiler
 perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
