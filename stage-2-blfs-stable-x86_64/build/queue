@@ -512,6 +512,7 @@ d/perl-modules/perl-eval-closure.sh
 d/perl-modules/perl-devel-stacktrace.sh
 d/perl-modules/perl-specio.sh
 d/perl-modules/perl-class-data-inheritable.sh
+d/perl-modules/perl-exception-class.sh
 
 
 # vim:ft=conf

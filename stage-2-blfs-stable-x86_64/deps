@@ -456,15 +456,16 @@ perl-business-ismn
 perl-business-issn
 perl-capture-tiny                   perl-try-tiny
 perl-class-accessor
-perl-class-data-inheritable
+perl-class-data-inheritable         perl-exception-class
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
 perl-data-compare
 perl-data-dump
 perl-data-uniqid
-perl-devel-stacktrace               perl-specio
+perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
+perl-exception-class
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
