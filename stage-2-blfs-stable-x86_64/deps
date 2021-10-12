@@ -462,6 +462,7 @@ perl-data-compare
 perl-data-dump
 perl-data-uniqid
 perl-dist-checkconflicts            perl-package-stash
+perl-eval-closure
 perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
@@ -487,10 +488,10 @@ perl-sub-quote
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure
 perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean
-perl-test-requires                  perl-module-implementation
+perl-test-requires                  perl-module-implementation, perl-eval-closure
 perl-test-warnings                  perl-test-mockmodule
 perl-test-without-module
 perl-test2-plugin-nowarnings

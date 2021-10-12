@@ -508,6 +508,7 @@ d/perl-modules/perl-namespace-autoclean.sh
 d/perl-modules/perl-mro-compat.sh
 d/perl-modules/perl-sub-quote.sh
 d/perl-modules/perl-role-tiny.sh
+d/perl-modules/perl-eval-closure.sh
 
 
 # vim:ft=conf
