@@ -511,6 +511,7 @@ d/perl-modules/perl-role-tiny.sh
 d/perl-modules/perl-eval-closure.sh
 d/perl-modules/perl-devel-stacktrace.sh
 d/perl-modules/perl-specio.sh
+d/perl-modules/perl-class-data-inheritable.sh
 
 
 # vim:ft=conf
