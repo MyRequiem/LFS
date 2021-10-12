@@ -461,6 +461,7 @@ perl-cpan-meta-check                perl-package-stash
 perl-data-compare
 perl-data-dump
 perl-data-uniqid
+perl-devel-stacktrace
 perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure
 perl-file-find-rule                 perl-data-compare
