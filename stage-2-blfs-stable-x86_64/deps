@@ -457,12 +457,13 @@ perl-business-issn
 perl-capture-tiny                   perl-try-tiny
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
-perl-class-singleton
+perl-class-singleton                perl-datetime-timezone
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
 perl-data-compare
 perl-data-dump
 perl-data-uniqid
+perl-datetime-timezone
 perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
@@ -475,13 +476,13 @@ perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-module-build                   perl-test-mockmodule
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope
 perl-module-pluggable               perl-test2-suite
-perl-module-runtime                 perl-module-implementation, perl-dist-checkconflicts, perl-specio
+perl-module-runtime                 perl-module-implementation, perl-dist-checkconflicts, perl-specio, perl-datetime-timezone
 perl-mro-compat                     perl-specio
 perl-namespace-autoclean            perl-specio
 perl-namespace-clean                perl-namespace-autoclean
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
-perl-params-validationcompiler
+perl-params-validationcompiler      perl-datetime-timezone
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-role-tiny                      perl-specio
 perl-scope-guard                    perl-test2-suite
@@ -494,10 +495,10 @@ perl-sub-quote                      perl-specio
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone
 perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio
-perl-test-requires                  perl-module-implementation, perl-eval-closure
+perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone
 perl-test-warnings                  perl-test-mockmodule
 perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
