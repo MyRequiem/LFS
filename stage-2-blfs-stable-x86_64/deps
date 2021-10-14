@@ -457,6 +457,7 @@ perl-business-issn
 perl-capture-tiny                   perl-try-tiny
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
+perl-class-singleton
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
 perl-data-compare

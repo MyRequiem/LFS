@@ -514,6 +514,7 @@ d/perl-modules/perl-specio.sh
 d/perl-modules/perl-class-data-inheritable.sh
 d/perl-modules/perl-exception-class.sh
 d/perl-modules/perl-params-validationcompiler.sh
+d/perl-modules/perl-class-singleton.sh
 
 
 # vim:ft=conf
