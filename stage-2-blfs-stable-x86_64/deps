@@ -457,7 +457,7 @@ perl-business-issn
 perl-capture-tiny                   perl-try-tiny
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
-perl-class-inspector
+perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
@@ -470,7 +470,8 @@ perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-file-find-rule                 perl-data-compare
-perl-file-sharedir-install
+perl-file-sharedir
+perl-file-sharedir-install          perl-file-sharedir
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget
