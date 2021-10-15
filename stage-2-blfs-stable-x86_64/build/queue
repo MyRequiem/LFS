@@ -522,6 +522,7 @@ d/perl-modules/perl-class-inspector.sh
 d/perl-modules/perl-file-sharedir.sh
 d/perl-modules/perl-test-utf8.sh
 d/perl-modules/perl-test-file.sh
+d/perl-modules/perl-file-copy-recursive.sh
 
 
 # vim:ft=conf
