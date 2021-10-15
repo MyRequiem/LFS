@@ -469,6 +469,7 @@ perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-file-find-rule                 perl-data-compare
+perl-file-sharedir-install
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget

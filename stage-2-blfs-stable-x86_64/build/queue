@@ -517,6 +517,7 @@ d/perl-modules/perl-params-validationcompiler.sh
 d/perl-modules/perl-class-singleton.sh
 d/perl-modules/perl-datetime-timezone.sh
 d/perl-modules/perl-path-tiny.sh
+d/perl-modules/perl-file-sharedir-install.sh
 
 
 # vim:ft=conf
