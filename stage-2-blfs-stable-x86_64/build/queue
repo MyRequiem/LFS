@@ -516,6 +516,7 @@ d/perl-modules/perl-exception-class.sh
 d/perl-modules/perl-params-validationcompiler.sh
 d/perl-modules/perl-class-singleton.sh
 d/perl-modules/perl-datetime-timezone.sh
+d/perl-modules/perl-path-tiny.sh
 
 
 # vim:ft=conf
