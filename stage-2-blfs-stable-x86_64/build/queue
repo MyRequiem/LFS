@@ -520,6 +520,7 @@ d/perl-modules/perl-path-tiny.sh
 d/perl-modules/perl-file-sharedir-install.sh
 d/perl-modules/perl-class-inspector.sh
 d/perl-modules/perl-file-sharedir.sh
+d/perl-modules/perl-test-utf8.sh
 
 
 # vim:ft=conf

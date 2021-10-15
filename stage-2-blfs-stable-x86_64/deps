@@ -503,6 +503,7 @@ perl-test-fatal                     perl-module-implementation, perl-dist-checkc
 perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio
 perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone
+perl-test-utf8
 perl-test-warnings                  perl-test-mockmodule
 perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
