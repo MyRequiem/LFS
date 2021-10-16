@@ -459,6 +459,7 @@ perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
 perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
+perl-class-tiny
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
 perl-data-compare
