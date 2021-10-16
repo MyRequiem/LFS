@@ -459,7 +459,7 @@ perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
 perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
-perl-class-tiny
+perl-class-tiny                     perl-test-file-sharedir
 perl-clone                          perl-data-compare
 perl-cpan-meta-check                perl-package-stash
 perl-data-compare
@@ -470,9 +470,9 @@ perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
-perl-file-copy-recursive
+perl-file-copy-recursive            perl-test-file-sharedir
 perl-file-find-rule                 perl-data-compare
-perl-file-sharedir
+perl-file-sharedir                  perl-test-file-sharedir
 perl-file-sharedir-install          perl-file-sharedir
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
@@ -488,10 +488,10 @@ perl-namespace-clean                perl-namespace-autoclean
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
 perl-params-validationcompiler      perl-datetime-timezone
-perl-path-tiny                      perl-file-copy-recursive
+perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-role-tiny                      perl-specio
-perl-scope-guard                    perl-test2-suite
+perl-scope-guard                    perl-test2-suite, perl-test-file-sharedir
 perl-sgmlspm                        fontconfig, postgresql
 perl-specio                         perl-params-validationcompiler
 perl-sub-exporter-progressive       perl-b-hooks-endofscope
@@ -501,8 +501,9 @@ perl-sub-quote                      perl-specio
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir
 perl-test-file                      perl-file-copy-recursive
+perl-test-file-sharedir
 perl-test-mockmodule                perl-archive-zip
 perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio
 perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone
