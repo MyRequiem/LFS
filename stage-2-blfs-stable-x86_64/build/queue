@@ -526,6 +526,7 @@ d/perl-modules/perl-file-copy-recursive.sh
 d/perl-modules/perl-class-tiny.sh
 d/perl-modules/perl-test-file-sharedir.sh
 d/perl-modules/perl-ipc-system-simple.sh
+d/perl-modules/perl-datetime-locale.sh
 
 
 # vim:ft=conf
