@@ -529,6 +529,7 @@ d/perl-modules/perl-ipc-system-simple.sh
 d/perl-modules/perl-datetime-locale.sh
 d/perl-modules/perl-datetime.sh
 d/perl-modules/perl-datetime-calendar-julian.sh
+d/perl-modules/perl-params-validate.sh
 
 
 # vim:ft=conf
