@@ -530,6 +530,7 @@ d/perl-modules/perl-datetime-locale.sh
 d/perl-modules/perl-datetime.sh
 d/perl-modules/perl-datetime-calendar-julian.sh
 d/perl-modules/perl-params-validate.sh
+d/perl-modules/perl-datetime-format-strptime.sh
 
 
 # vim:ft=conf

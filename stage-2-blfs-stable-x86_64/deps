@@ -465,8 +465,9 @@ perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, pe
 perl-data-compare
 perl-data-dump
 perl-data-uniqid
-perl-datetime                       perl-datetime-calendar-julian
+perl-datetime                       perl-datetime-calendar-julian, perl-datetime-format-strptime
 perl-datetime-calendar-julian
+perl-datetime-format-strptime
 perl-datetime-locale                perl-datetime
 perl-datetime-timezone              perl-datetime
 perl-devel-stacktrace               perl-specio, perl-exception-class
