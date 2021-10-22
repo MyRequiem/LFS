@@ -473,6 +473,7 @@ perl-datetime-locale                perl-datetime
 perl-datetime-timezone              perl-datetime
 perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash, perl-datetime-locale
+perl-encode-eucjpascii
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-file-copy-recursive            perl-test-file-sharedir
