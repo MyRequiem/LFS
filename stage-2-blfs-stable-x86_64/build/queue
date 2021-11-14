@@ -534,6 +534,7 @@ d/perl-modules/perl-datetime-format-strptime.sh
 d/perl-modules/perl-datetime-format-builder.sh
 d/perl-modules/perl-encode-eucjpascii.sh
 d/perl-modules/perl-encode-hanextra.sh
+d/perl-modules/perl-encode-jis2k.sh
 
 
 # vim:ft=conf
