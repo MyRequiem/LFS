@@ -536,6 +536,7 @@ d/perl-modules/perl-encode-eucjpascii.sh
 d/perl-modules/perl-encode-hanextra.sh
 d/perl-modules/perl-encode-jis2k.sh
 d/perl-modules/perl-file-slurper.sh
+d/perl-modules/perl-file-which.sh
 
 
 # vim:ft=conf
