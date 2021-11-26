@@ -484,6 +484,7 @@ perl-file-sharedir                  perl-test-file-sharedir, perl-datetime-local
 perl-file-sharedir-install          perl-file-sharedir
 perl-file-slurper
 perl-file-which
+perl-html-tagset
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget
