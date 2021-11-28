@@ -539,6 +539,7 @@ d/perl-modules/perl-file-slurper.sh
 d/perl-modules/perl-file-which.sh
 d/perl-modules/perl-html-tagset.sh
 d/perl-modules/perl-uri.sh
+d/perl-modules/perl-lwp-mediatypes.sh
 
 
 # vim:ft=conf

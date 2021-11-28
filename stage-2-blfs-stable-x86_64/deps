@@ -490,6 +490,7 @@ perl-importer                       perl-term-table, perl-sub-info
 perl-io-socket-ssl                  wget
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
+perl-lwp-mediatypes
 perl-module-build                   perl-test-mockmodule, perl-params-validate
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate
 perl-module-pluggable               perl-test2-suite
@@ -514,7 +515,7 @@ perl-sub-quote                      perl-specio
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate, perl-lwp-mediatypes
 perl-test-file                      perl-file-copy-recursive
 perl-test-file-sharedir             perl-datetime-locale
 perl-test-mockmodule                perl-archive-zip
