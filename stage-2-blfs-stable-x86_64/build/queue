@@ -538,6 +538,7 @@ d/perl-modules/perl-encode-jis2k.sh
 d/perl-modules/perl-file-slurper.sh
 d/perl-modules/perl-file-which.sh
 d/perl-modules/perl-html-tagset.sh
+d/perl-modules/perl-uri.sh
 
 
 # vim:ft=conf

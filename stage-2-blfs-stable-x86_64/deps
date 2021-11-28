@@ -518,7 +518,7 @@ perl-test-fatal                     perl-module-implementation, perl-dist-checkc
 perl-test-file                      perl-file-copy-recursive
 perl-test-file-sharedir             perl-datetime-locale
 perl-test-mockmodule                perl-archive-zip
-perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio
+perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio, perl-uri
 perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone, perl-params-validate
 perl-test-utf8                      perl-test-file
 perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursive, perl-datetime, perl-file-slurper
@@ -528,6 +528,7 @@ perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio
+perl-uri
 perl-variable-magic                 perl-b-hooks-endofscope
 php                                 cups, libsoup, libvpx
 picogui                             sdl
