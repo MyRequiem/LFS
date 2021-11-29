@@ -487,6 +487,7 @@ perl-file-which
 perl-html-tagset
 perl-http-daemon                    wget
 perl-importer                       perl-term-table, perl-sub-info
+perl-io-html
 perl-io-socket-ssl                  wget
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
