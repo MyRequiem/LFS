@@ -541,6 +541,7 @@ d/perl-modules/perl-html-tagset.sh
 d/perl-modules/perl-uri.sh
 d/perl-modules/perl-lwp-mediatypes.sh
 d/perl-modules/perl-io-html.sh
+d/perl-modules/perl-timedate.sh
 
 
 # vim:ft=conf

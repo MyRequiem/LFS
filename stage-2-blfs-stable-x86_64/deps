@@ -529,6 +529,7 @@ perl-test2-plugin-nowarnings        perl-params-validationcompiler
 perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
+perl-timedate
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio
 perl-uri
 perl-variable-magic                 perl-b-hooks-endofscope
