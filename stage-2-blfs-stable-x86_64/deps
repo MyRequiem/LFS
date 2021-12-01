@@ -476,7 +476,7 @@ perl-dist-checkconflicts            perl-package-stash, perl-datetime-locale
 perl-encode-eucjpascii
 perl-encode-hanextra
 perl-encode-jis2k
-perl-encode-locale
+perl-encode-locale                  perl-http-message
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-file-copy-recursive            perl-test-file-sharedir
@@ -487,13 +487,14 @@ perl-file-slurper
 perl-file-which
 perl-html-tagset
 perl-http-daemon                    wget
-perl-http-date
+perl-http-date                      perl-http-message
+perl-http-message
 perl-importer                       perl-term-table, perl-sub-info
-perl-io-html
+perl-io-html                        perl-http-message
 perl-io-socket-ssl                  wget
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
-perl-lwp-mediatypes
+perl-lwp-mediatypes                 perl-http-message
 perl-module-build                   perl-test-mockmodule, perl-params-validate
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate
 perl-module-pluggable               perl-test2-suite
@@ -532,8 +533,8 @@ perl-test2-suite                    perl-test2-plugin-nowarnings
 perl-text-glob                      perl-file-find-rule
 perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
-perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio
-perl-uri
+perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message
+perl-uri                            perl-http-message
 perl-variable-magic                 perl-b-hooks-endofscope
 php                                 cups, libsoup, libvpx
 picogui                             sdl
