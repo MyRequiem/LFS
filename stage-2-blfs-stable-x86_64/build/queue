@@ -545,6 +545,7 @@ d/perl-modules/perl-timedate.sh
 d/perl-modules/perl-http-date.sh
 d/perl-modules/perl-encode-locale.sh
 d/perl-modules/perl-http-message.sh
+d/perl-modules/perl-html-parser.sh
 
 
 # vim:ft=conf
