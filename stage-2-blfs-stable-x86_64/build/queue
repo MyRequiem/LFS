@@ -548,6 +548,7 @@ d/perl-modules/perl-http-message.sh
 d/perl-modules/perl-html-parser.sh
 d/perl-modules/perl-http-daemon.sh
 d/perl-modules/perl-io-string.sh
+d/perl-modules/perl-lingua-translit.sh
 
 
 # vim:ft=conf

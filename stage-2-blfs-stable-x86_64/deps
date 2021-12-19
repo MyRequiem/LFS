@@ -496,6 +496,7 @@ perl-io-socket-ssl                  wget
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
+perl-lingua-translit
 perl-lwp-mediatypes                 perl-http-message
 perl-module-build                   perl-test-mockmodule, perl-params-validate
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate
