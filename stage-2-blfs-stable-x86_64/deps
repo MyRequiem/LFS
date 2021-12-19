@@ -493,6 +493,7 @@ perl-http-message                   perl-html-parser, perl-http-daemon
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
 perl-io-socket-ssl                  wget
+perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
 perl-lwp-mediatypes                 perl-http-message
