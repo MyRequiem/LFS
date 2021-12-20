@@ -506,6 +506,7 @@ perl-module-runtime                 perl-module-implementation, perl-dist-checkc
 perl-mro-compat                     perl-specio
 perl-namespace-autoclean            perl-specio, perl-datetime-locale
 perl-namespace-clean                perl-namespace-autoclean
+perl-net-dns
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
 perl-params-validate                perl-datetime-format-builder
