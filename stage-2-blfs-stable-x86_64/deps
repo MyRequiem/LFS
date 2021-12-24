@@ -512,6 +512,7 @@ perl-package-stash                  perl-namespace-clean
 perl-params-validate                perl-datetime-format-builder
 perl-params-validationcompiler      perl-datetime-timezone, perl-datetime-locale
 perl-parse-recdescent
+perl-parse-yapp
 perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-role-tiny                      perl-specio
