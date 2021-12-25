@@ -519,6 +519,7 @@ perl-regexp-common
 perl-role-tiny                      perl-specio
 perl-scope-guard                    perl-test2-suite, perl-test-file-sharedir
 perl-sgmlspm                        fontconfig, postgresql
+perl-sort-key
 perl-specio                         perl-params-validationcompiler
 perl-sub-exporter-progressive       perl-b-hooks-endofscope
 perl-sub-identify                   perl-super, perl-namespace-autoclean

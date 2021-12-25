@@ -554,6 +554,7 @@ d/perl-modules/perl-net-dns.sh
 d/perl-modules/perl-parse-recdescent.sh
 d/perl-modules/perl-parse-yapp.sh
 d/perl-modules/perl-regexp-common.sh
+d/perl-modules/perl-sort-key.sh
 
 
 # vim:ft=conf
