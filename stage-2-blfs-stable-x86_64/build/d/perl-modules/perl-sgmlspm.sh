@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The SGMLSpm module is a Perl library used for parsing the output from James
 # Clark's SGMLS and NSGMLS parsers.
 #
-# Home page: https://www.cpan.org/authors/id/R/RA/RAAB/
+# Home page: https://metacpan.org/release/RAAB/SGMLSpm-1.1
 # Download:  https://www.cpan.org/authors/id/R/RA/RAAB/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
