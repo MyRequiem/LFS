@@ -553,6 +553,7 @@ d/perl-modules/perl-log-log4perl.sh
 d/perl-modules/perl-net-dns.sh
 d/perl-modules/perl-parse-recdescent.sh
 d/perl-modules/perl-parse-yapp.sh
+d/perl-modules/perl-regexp-common.sh
 
 
 # vim:ft=conf
