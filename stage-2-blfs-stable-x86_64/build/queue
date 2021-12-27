@@ -561,6 +561,7 @@ d/perl-modules/perl-unicode-collate.sh
 d/perl-modules/perl-xml-writer.sh
 d/perl-modules/perl-ffi-checklib.sh
 d/perl-modules/perl-file-chdir.sh
+d/perl-modules/perl-list-utilsby.sh
 
 
 # vim:ft=conf
