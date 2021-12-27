@@ -560,6 +560,7 @@ d/perl-modules/perl-text-roman.sh
 d/perl-modules/perl-unicode-collate.sh
 d/perl-modules/perl-xml-writer.sh
 d/perl-modules/perl-ffi-checklib.sh
+d/perl-modules/perl-file-chdir.sh
 
 
 # vim:ft=conf
