@@ -499,9 +499,10 @@ perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
 perl-lingua-translit
-perl-list-someutils
+perl-list-allutils
+perl-list-someutils                 perl-list-allutils
 perl-list-someutils-xs              perl-list-someutils
-perl-list-utilsby
+perl-list-utilsby                   perl-list-allutils
 perl-log-log4perl
 perl-lwp-mediatypes                 perl-http-message
 perl-module-build                   perl-test-mockmodule, perl-params-validate
