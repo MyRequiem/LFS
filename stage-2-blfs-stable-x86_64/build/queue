@@ -557,6 +557,7 @@ d/perl-modules/perl-regexp-common.sh
 d/perl-modules/perl-sort-key.sh
 d/perl-modules/perl-test-command.sh
 d/perl-modules/perl-text-roman.sh
+d/perl-modules/perl-unicode-collate.sh
 
 
 # vim:ft=conf

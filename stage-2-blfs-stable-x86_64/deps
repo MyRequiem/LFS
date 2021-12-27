@@ -545,6 +545,7 @@ perl-text-roman
 perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message
+perl-unicode-collate
 perl-uri                            perl-http-message
 perl-variable-magic                 perl-b-hooks-endofscope
 php                                 cups, libsoup, libvpx
