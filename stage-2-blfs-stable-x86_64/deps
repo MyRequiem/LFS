@@ -500,6 +500,7 @@ perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
 perl-lingua-translit
 perl-list-allutils
+perl-list-moreutils-xs
 perl-list-someutils                 perl-list-allutils
 perl-list-someutils-xs              perl-list-someutils
 perl-list-utilsby                   perl-list-allutils

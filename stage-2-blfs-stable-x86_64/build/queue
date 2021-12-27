@@ -568,6 +568,7 @@ d/perl-modules/perl-test-leaktrace.sh
 d/perl-modules/perl-list-someutils-xs.sh
 d/perl-modules/perl-list-someutils.sh
 d/perl-modules/perl-list-allutils.sh
+d/perl-modules/perl-list-moreutils-xs.sh
 
 
 # vim:ft=conf
