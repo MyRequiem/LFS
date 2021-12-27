@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 # которые завершатся ошибкой, если у вас нет подключения к сети (значение по
 # умолчанию - 'n'). С помощью инструкции [yes ''] пропускаем эти тесты
 yes '' | perl Makefile.PL || exit 1
-make             || exit 1
+make                      || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 

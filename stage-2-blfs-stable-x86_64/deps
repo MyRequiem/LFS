@@ -370,7 +370,7 @@ lz4                                 mariadb
 lzip                                ed
 lzo                                 libarchive, cairo
 maemo                               alsa-plugins
-make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5
+make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5, perl-io-socket-ssl
 man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland
 mc
@@ -510,7 +510,7 @@ perl-mro-compat                     perl-specio
 perl-namespace-autoclean            perl-specio, perl-datetime-locale
 perl-namespace-clean                perl-namespace-autoclean
 perl-net-dns
-perl-net-ssleay
+perl-net-ssleay                     perl-io-socket-ssl
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
 perl-params-validate                perl-datetime-format-builder
@@ -550,7 +550,7 @@ perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message
 perl-unicode-collate
-perl-uri                            perl-http-message
+perl-uri                            perl-http-message, perl-io-socket-ssl
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-xml-writer
 php                                 cups, libsoup, libvpx
