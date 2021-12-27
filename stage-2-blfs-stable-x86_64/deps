@@ -479,7 +479,7 @@ perl-encode-jis2k
 perl-encode-locale                  perl-http-message
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
-perl-exporter-tiny
+perl-exporter-tiny                  perl-list-moreutils
 perl-ffi-checklib
 perl-file-chdir
 perl-file-copy-recursive            perl-test-file-sharedir
@@ -501,7 +501,8 @@ perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
 perl-lingua-translit
 perl-list-allutils
-perl-list-moreutils-xs
+perl-list-moreutils
+perl-list-moreutils-xs              perl-list-moreutils
 perl-list-someutils                 perl-list-allutils
 perl-list-someutils-xs              perl-list-someutils
 perl-list-utilsby                   perl-list-allutils
