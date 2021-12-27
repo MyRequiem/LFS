@@ -479,6 +479,7 @@ perl-encode-jis2k
 perl-encode-locale                  perl-http-message
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
+perl-exporter-tiny
 perl-ffi-checklib
 perl-file-chdir
 perl-file-copy-recursive            perl-test-file-sharedir
