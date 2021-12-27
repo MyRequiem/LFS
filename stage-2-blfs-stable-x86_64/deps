@@ -548,6 +548,7 @@ perl-try-tiny                       perl-test-fatal, perl-module-implementation,
 perl-unicode-collate
 perl-uri                            perl-http-message
 perl-variable-magic                 perl-b-hooks-endofscope
+perl-xml-writer
 php                                 cups, libsoup, libvpx
 picogui                             sdl
 pinentry                            gnupg
