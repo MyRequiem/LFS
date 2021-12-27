@@ -565,6 +565,7 @@ d/perl-modules/perl-list-utilsby.sh
 d/perl-modules/perl-net-ssleay.sh
 d/perl-modules/perl-io-socket-ssl.sh
 d/perl-modules/perl-test-leaktrace.sh
+d/perl-modules/perl-list-someutils-xs.sh
 
 
 # vim:ft=conf
