@@ -562,6 +562,7 @@ d/perl-modules/perl-xml-writer.sh
 d/perl-modules/perl-ffi-checklib.sh
 d/perl-modules/perl-file-chdir.sh
 d/perl-modules/perl-list-utilsby.sh
+d/perl-modules/perl-net-ssleay.sh
 
 
 # vim:ft=conf
