@@ -574,6 +574,7 @@ d/perl-modules/perl-list-moreutils.sh
 d/perl-modules/perl-test-requiresinternet.sh
 d/perl-modules/perl-net-http.sh
 d/perl-modules/perl-http-negotiate.sh
+d/perl-modules/perl-http-cookies.sh
 
 
 # vim:ft=conf

@@ -490,9 +490,10 @@ perl-file-slurper
 perl-file-which
 perl-html-parser
 perl-html-tagset                    perl-html-parser
+perl-http-cookies
 perl-http-daemon                    wget
 perl-http-date                      perl-http-message
-perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate
+perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate, perl-http-cookies
 perl-http-negotiate
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
