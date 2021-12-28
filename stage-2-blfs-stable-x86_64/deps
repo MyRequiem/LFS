@@ -492,7 +492,8 @@ perl-html-parser
 perl-html-tagset                    perl-html-parser
 perl-http-daemon                    wget
 perl-http-date                      perl-http-message
-perl-http-message                   perl-html-parser, perl-http-daemon
+perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate
+perl-http-negotiate
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
 perl-io-socket-ssl                  wget
