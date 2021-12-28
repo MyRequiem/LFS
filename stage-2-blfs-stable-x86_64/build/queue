@@ -572,6 +572,7 @@ d/perl-modules/perl-list-moreutils-xs.sh
 d/perl-modules/perl-exporter-tiny.sh
 d/perl-modules/perl-list-moreutils.sh
 d/perl-modules/perl-test-requiresinternet.sh
+d/perl-modules/perl-net-http.sh
 
 
 # vim:ft=conf

@@ -516,6 +516,7 @@ perl-mro-compat                     perl-specio
 perl-namespace-autoclean            perl-specio, perl-datetime-locale
 perl-namespace-clean                perl-namespace-autoclean
 perl-net-dns
+perl-net-http
 perl-net-ssleay                     perl-io-socket-ssl
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
@@ -558,7 +559,7 @@ perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message
 perl-unicode-collate
-perl-uri                            perl-http-message, perl-io-socket-ssl
+perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-xml-writer
 php                                 cups, libsoup, libvpx
