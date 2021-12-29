@@ -502,7 +502,7 @@ perl-io-socket-ssl                  wget
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
-perl-libwww-perl
+perl-libwww-perl                    perl-www-robotrules
 perl-lingua-translit
 perl-list-allutils
 perl-list-moreutils
