@@ -484,6 +484,7 @@ perl-ffi-checklib
 perl-file-chdir
 perl-file-copy-recursive            perl-test-file-sharedir
 perl-file-find-rule                 perl-data-compare
+perl-file-listing
 perl-file-sharedir                  perl-test-file-sharedir, perl-datetime-locale
 perl-file-sharedir-install          perl-file-sharedir
 perl-file-slurper
@@ -492,7 +493,7 @@ perl-html-parser
 perl-html-tagset                    perl-html-parser
 perl-http-cookies
 perl-http-daemon                    wget
-perl-http-date                      perl-http-message
+perl-http-date                      perl-http-message, perl-file-listing
 perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate, perl-http-cookies
 perl-http-negotiate
 perl-importer                       perl-term-table, perl-sub-info
