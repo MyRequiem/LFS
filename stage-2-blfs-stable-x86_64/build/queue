@@ -576,6 +576,7 @@ d/perl-modules/perl-net-http.sh
 d/perl-modules/perl-http-negotiate.sh
 d/perl-modules/perl-http-cookies.sh
 d/perl-modules/perl-file-listing.sh
+d/perl-modules/perl-libwww-perl.sh
 
 
 # vim:ft=conf

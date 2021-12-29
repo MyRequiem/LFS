@@ -484,24 +484,25 @@ perl-ffi-checklib
 perl-file-chdir
 perl-file-copy-recursive            perl-test-file-sharedir
 perl-file-find-rule                 perl-data-compare
-perl-file-listing
+perl-file-listing                   perl-libwww-perl
 perl-file-sharedir                  perl-test-file-sharedir, perl-datetime-locale
 perl-file-sharedir-install          perl-file-sharedir
 perl-file-slurper
 perl-file-which
-perl-html-parser
+perl-html-parser                    perl-libwww-perl
 perl-html-tagset                    perl-html-parser
-perl-http-cookies
-perl-http-daemon                    wget
+perl-http-cookies                   perl-libwww-perl
+perl-http-daemon                    wget, perl-libwww-perl
 perl-http-date                      perl-http-message, perl-file-listing
 perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate, perl-http-cookies
-perl-http-negotiate
+perl-http-negotiate                 perl-libwww-perl
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
 perl-io-socket-ssl                  wget
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
+perl-libwww-perl
 perl-lingua-translit
 perl-list-allutils
 perl-list-moreutils
@@ -519,7 +520,7 @@ perl-mro-compat                     perl-specio
 perl-namespace-autoclean            perl-specio, perl-datetime-locale
 perl-namespace-clean                perl-namespace-autoclean
 perl-net-dns
-perl-net-http
+perl-net-http                       perl-libwww-perl
 perl-net-ssleay                     perl-io-socket-ssl
 perl-number-compare                 perl-file-find-rule
 perl-package-stash                  perl-namespace-clean
@@ -543,14 +544,14 @@ perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-command
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
-perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate, perl-lwp-mediatypes
+perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate, perl-lwp-mediatypes, perl-libwww-perl
 perl-test-file                      perl-file-copy-recursive
 perl-test-file-sharedir             perl-datetime-locale
 perl-test-leaktrace                 perl-list-someutils-xs
 perl-test-mockmodule                perl-archive-zip
-perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio, perl-uri
+perl-test-needs                     perl-package-stash, perl-namespace-autoclean, perl-specio, perl-uri, perl-libwww-perl
 perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone, perl-params-validate
-perl-test-requiresinternet
+perl-test-requiresinternet          perl-libwww-perl
 perl-test-utf8                      perl-test-file
 perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursive, perl-datetime, perl-file-slurper, perl-list-someutils-xs
 perl-test-without-module            perl-params-validationcompiler
@@ -560,10 +561,11 @@ perl-text-glob                      perl-file-find-rule
 perl-text-roman
 perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
-perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message
+perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message, perl-libwww-perl
 perl-unicode-collate
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
+perl-www-robotrules                 perl-libwww-perl
 perl-xml-writer
 php                                 cups, libsoup, libvpx
 picogui                             sdl
