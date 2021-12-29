@@ -370,7 +370,7 @@ lz4                                 mariadb
 lzip                                ed
 lzo                                 libarchive, cairo
 maemo                               alsa-plugins
-make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5, perl-io-socket-ssl
+make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5, perl-io-socket-ssl, perl-lwp-protocol-https
 man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland
 mc
@@ -498,11 +498,11 @@ perl-http-message                   perl-html-parser, perl-http-daemon, perl-htt
 perl-http-negotiate                 perl-libwww-perl
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
-perl-io-socket-ssl                  wget
+perl-io-socket-ssl                  wget, perl-lwp-protocol-https
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
-perl-libwww-perl                    perl-www-robotrules
+perl-libwww-perl                    perl-www-robotrules, perl-lwp-protocol-https
 perl-lingua-translit
 perl-list-allutils
 perl-list-moreutils
@@ -512,6 +512,7 @@ perl-list-someutils-xs              perl-list-someutils
 perl-list-utilsby                   perl-list-allutils
 perl-log-log4perl
 perl-lwp-mediatypes                 perl-http-message
+perl-lwp-protocol-https
 perl-module-build                   perl-test-mockmodule, perl-params-validate
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate, perl-list-someutils
 perl-module-pluggable               perl-test2-suite
