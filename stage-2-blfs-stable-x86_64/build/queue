@@ -581,6 +581,7 @@ d/perl-modules/perl-www-robotrules.sh
 d/perl-modules/perl-libwww-perl.sh
 d/perl-modules/perl-lwp-protocol-https.sh
 d/perl-modules/perl-sub-uplevel.sh
+d/perl-modules/perl-test-exception.sh
 
 
 # vim:ft=conf
