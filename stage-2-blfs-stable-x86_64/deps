@@ -541,6 +541,7 @@ perl-sub-exporter-progressive       perl-b-hooks-endofscope
 perl-sub-identify                   perl-super, perl-namespace-autoclean
 perl-sub-info                       perl-test2-suite
 perl-sub-quote                      perl-specio
+perl-sub-uplevel
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-command
