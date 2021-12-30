@@ -530,6 +530,7 @@ perl-params-validationcompiler      perl-datetime-timezone, perl-datetime-locale
 perl-parse-recdescent
 perl-parse-yapp
 perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir, perl-ffi-checklib
+perl-perlio-utf8_strict
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-regexp-common
 perl-role-tiny                      perl-specio
@@ -546,7 +547,7 @@ perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-command
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
-perl-test-exception
+perl-test-exception                 perl-perlio-utf8_strict
 perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate, perl-lwp-mediatypes, perl-libwww-perl
 perl-test-file                      perl-file-copy-recursive
 perl-test-file-sharedir             perl-datetime-locale
