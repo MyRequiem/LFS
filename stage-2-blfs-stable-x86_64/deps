@@ -446,6 +446,7 @@ pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
+perl-algorithm-diff
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
