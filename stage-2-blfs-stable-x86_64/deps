@@ -455,7 +455,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib
+perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
 perl-class-inspector                perl-file-sharedir
@@ -548,6 +548,7 @@ perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
 perl-test-command
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
+perl-test-differences
 perl-test-exception                 perl-perlio-utf8_strict
 perl-test-fatal                     perl-module-implementation, perl-dist-checkconflicts, perl-package-stash, perl-sub-quote, perl-eval-closure, perl-specio, perl-datetime-timezone, perl-file-copy-recursive, perl-test-file-sharedir, perl-datetime, perl-params-validate, perl-lwp-mediatypes, perl-libwww-perl
 perl-test-file                      perl-file-copy-recursive
@@ -562,7 +563,7 @@ perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursi
 perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
 perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib
-perl-text-diff
+perl-text-diff                      perl-test-differences
 perl-text-glob                      perl-file-find-rule
 perl-text-roman
 perl-tie-cycle                      perl-business-ismn
