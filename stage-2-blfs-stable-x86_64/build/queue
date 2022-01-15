@@ -584,6 +584,7 @@ d/perl-modules/perl-sub-uplevel.sh
 d/perl-modules/perl-test-exception.sh
 d/perl-modules/perl-perlio-utf8_strict.sh
 d/perl-modules/perl-algorithm-diff.sh
+d/perl-modules/perl-text-diff.sh
 
 
 # vim:ft=conf

@@ -446,7 +446,7 @@ pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
-perl-algorithm-diff
+perl-algorithm-diff                 perl-text-diff
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -562,6 +562,7 @@ perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursi
 perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
 perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib
+perl-text-diff
 perl-text-glob                      perl-file-find-rule
 perl-text-roman
 perl-tie-cycle                      perl-business-ismn
