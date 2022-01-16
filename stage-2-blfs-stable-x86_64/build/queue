@@ -589,6 +589,7 @@ d/perl-modules/perl-test-differences.sh
 d/perl-modules/perl-extutils-libbuilder.sh
 d/perl-modules/perl-config-autoconf.sh
 d/perl-modules/perl-text-bibtex.sh
+d/perl-modules/perl-text-csv_xs.sh
 
 
 # vim:ft=conf
