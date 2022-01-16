@@ -586,6 +586,7 @@ d/perl-modules/perl-perlio-utf8_strict.sh
 d/perl-modules/perl-algorithm-diff.sh
 d/perl-modules/perl-text-diff.sh
 d/perl-modules/perl-test-differences.sh
+d/perl-modules/perl-extutils-libbuilder.sh
 
 
 # vim:ft=conf

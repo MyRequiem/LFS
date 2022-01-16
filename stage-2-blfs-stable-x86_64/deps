@@ -481,6 +481,7 @@ perl-encode-locale                  perl-http-message
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-exporter-tiny                  perl-list-moreutils
+perl-extutils-libbuilder
 perl-ffi-checklib
 perl-file-chdir
 perl-file-copy-recursive            perl-test-file-sharedir
@@ -514,7 +515,7 @@ perl-list-utilsby                   perl-list-allutils
 perl-log-log4perl
 perl-lwp-mediatypes                 perl-http-message
 perl-lwp-protocol-https
-perl-module-build                   perl-test-mockmodule, perl-params-validate
+perl-module-build                   perl-test-mockmodule, perl-params-validate, perl-extutils-libbuilder
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate, perl-list-someutils
 perl-module-pluggable               perl-test2-suite
 perl-module-runtime                 perl-module-implementation, perl-dist-checkconflicts, perl-specio, perl-datetime-timezone
