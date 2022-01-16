@@ -566,7 +566,8 @@ perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
 perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib
 perl-text-bibtex
-perl-text-csv_xs
+perl-text-csv
+perl-text-csv_xs                    perl-text-csv
 perl-text-diff                      perl-test-differences
 perl-text-glob                      perl-file-find-rule
 perl-text-roman
