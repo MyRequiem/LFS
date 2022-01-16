@@ -587,6 +587,7 @@ d/perl-modules/perl-algorithm-diff.sh
 d/perl-modules/perl-text-diff.sh
 d/perl-modules/perl-test-differences.sh
 d/perl-modules/perl-extutils-libbuilder.sh
+d/perl-modules/perl-config-autoconf.sh
 
 
 # vim:ft=conf

@@ -455,13 +455,14 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences
+perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
 perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
 perl-class-tiny                     perl-test-file-sharedir
 perl-clone                          perl-data-compare
+perl-config-autoconf
 perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
 perl-data-compare
 perl-data-dump
@@ -489,7 +490,7 @@ perl-file-find-rule                 perl-data-compare
 perl-file-listing                   perl-libwww-perl
 perl-file-sharedir                  perl-test-file-sharedir, perl-datetime-locale
 perl-file-sharedir-install          perl-file-sharedir
-perl-file-slurper
+perl-file-slurper                   perl-config-autoconf
 perl-file-which
 perl-html-parser                    perl-libwww-perl
 perl-html-tagset                    perl-html-parser
