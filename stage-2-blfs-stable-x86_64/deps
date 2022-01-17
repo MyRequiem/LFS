@@ -580,6 +580,7 @@ perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-www-robotrules                 perl-libwww-perl
+perl-xml-sax-base
 perl-xml-writer
 php                                 cups, libsoup, libvpx
 picogui                             sdl
