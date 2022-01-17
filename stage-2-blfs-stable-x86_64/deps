@@ -325,7 +325,7 @@ libspiro                            gegl
 libsrtp                             gst-plugins-bad
 libssh2                             curl, rustc, mc, gst-plugins-bad
 libtasn1                            p11-kit, gnutls
-libthai                             pango
+libthai                             pango, perl-unicode-linebreak
 libtheora                           gst-plugins-base
 libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler
 libtirpc                            rpcbind, lsof, libnsl
@@ -516,7 +516,7 @@ perl-list-utilsby                   perl-list-allutils
 perl-log-log4perl
 perl-lwp-mediatypes                 perl-http-message
 perl-lwp-protocol-https
-perl-mime-charset
+perl-mime-charset                   perl-unicode-linebreak
 perl-module-build                   perl-test-mockmodule, perl-params-validate, perl-extutils-libbuilder
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate, perl-list-someutils
 perl-module-pluggable               perl-test2-suite
@@ -576,6 +576,7 @@ perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message, perl-libwww-perl
 perl-unicode-collate
+perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-www-robotrules                 perl-libwww-perl
@@ -720,7 +721,7 @@ wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base, sdl2
 weasyprint                          vala
 webrtc-audio-processing             pulseaudio
-wget                                smartmontools, pciutils, usbutils
+wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp
 wildmidi                            gst-plugins-bad
 wireless-tools                      pm-utils

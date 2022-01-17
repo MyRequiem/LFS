@@ -592,6 +592,7 @@ d/perl-modules/perl-text-bibtex.sh
 d/perl-modules/perl-text-csv_xs.sh
 d/perl-modules/perl-text-csv.sh
 d/perl-modules/perl-mime-charset.sh
+d/perl-modules/perl-unicode-linebreak.sh
 
 
 # vim:ft=conf
