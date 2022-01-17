@@ -594,6 +594,7 @@ d/perl-modules/perl-text-csv.sh
 d/perl-modules/perl-mime-charset.sh
 d/perl-modules/perl-unicode-linebreak.sh
 d/perl-modules/perl-xml-sax-base.sh
+d/perl-modules/perl-xml-namespacesupport.sh
 
 
 # vim:ft=conf
