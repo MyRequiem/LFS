@@ -475,9 +475,9 @@ perl-datetime-locale                perl-datetime
 perl-datetime-timezone              perl-datetime
 perl-devel-stacktrace               perl-specio, perl-exception-class
 perl-dist-checkconflicts            perl-package-stash, perl-datetime-locale
-perl-encode-eucjpascii
-perl-encode-hanextra
-perl-encode-jis2k
+perl-encode-eucjpascii              perl-mime-charset
+perl-encode-hanextra                perl-mime-charset
+perl-encode-jis2k                   perl-mime-charset
 perl-encode-locale                  perl-http-message
 perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
@@ -516,6 +516,7 @@ perl-list-utilsby                   perl-list-allutils
 perl-log-log4perl
 perl-lwp-mediatypes                 perl-http-message
 perl-lwp-protocol-https
+perl-mime-charset
 perl-module-build                   perl-test-mockmodule, perl-params-validate, perl-extutils-libbuilder
 perl-module-implementation          perl-package-stash, perl-b-hooks-endofscope, perl-params-validate, perl-list-someutils
 perl-module-pluggable               perl-test2-suite
