@@ -33,7 +33,7 @@ mkdir -pv "${TMP_DIR}"
 # на все вопросы  отвечаем 'no' с помощью инструкции "yes '' | ..."
 # ...
 yes '' | perl Makefile.PL || exit 1
-make             || exit 1
+make                      || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 

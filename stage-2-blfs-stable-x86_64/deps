@@ -347,7 +347,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -580,8 +580,9 @@ perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-www-robotrules                 perl-libwww-perl
-perl-xml-namespacesupport
-perl-xml-sax-base
+perl-xml-namespacesupport           perl-xml-sax
+perl-xml-sax
+perl-xml-sax-base                   perl-xml-sax
 perl-xml-writer
 php                                 cups, libsoup, libvpx
 picogui                             sdl
