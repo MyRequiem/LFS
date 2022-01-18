@@ -600,6 +600,7 @@ d/perl-modules/perl-alien-build.sh
 d/perl-modules/perl-alien-libxml2.sh
 d/perl-modules/perl-xml-libxml.sh
 d/perl-modules/perl-xml-libxml-simple.sh
+d/perl-modules/perl-xml-libxslt.sh
 
 
 # vim:ft=conf
