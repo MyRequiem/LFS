@@ -586,8 +586,9 @@ perl-xml-libxml                     perl-xml-libxml-simple, perl-xml-libxslt
 perl-xml-libxml-simple
 perl-xml-libxslt
 perl-xml-namespacesupport           perl-xml-sax
-perl-xml-sax                        perl-xml-libxml
+perl-xml-sax                        perl-xml-libxml, perl-xml-simple
 perl-xml-sax-base                   perl-xml-sax
+perl-xml-simple
 perl-xml-writer
 php                                 cups, libsoup, libvpx
 picogui                             sdl
