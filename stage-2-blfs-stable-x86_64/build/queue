@@ -596,6 +596,7 @@ d/perl-modules/perl-unicode-linebreak.sh
 d/perl-modules/perl-xml-sax-base.sh
 d/perl-modules/perl-xml-namespacesupport.sh
 d/perl-modules/perl-xml-sax.sh
+d/perl-modules/perl-alien-build.sh
 
 
 # vim:ft=conf

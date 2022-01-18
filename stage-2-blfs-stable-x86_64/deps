@@ -447,6 +447,7 @@ pcre                                wget, slang, glib, swig, exim, mc, git, xter
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
+perl-alien-build
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -455,7 +456,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf
+perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
 perl-class-inspector                perl-file-sharedir
@@ -483,15 +484,15 @@ perl-eval-closure                   perl-specio
 perl-exception-class                perl-params-validationcompiler
 perl-exporter-tiny                  perl-list-moreutils
 perl-extutils-libbuilder            perl-text-bibtex
-perl-ffi-checklib
-perl-file-chdir
+perl-ffi-checklib                   perl-alien-build
+perl-file-chdir                     perl-alien-build
 perl-file-copy-recursive            perl-test-file-sharedir
 perl-file-find-rule                 perl-data-compare
 perl-file-listing                   perl-libwww-perl
 perl-file-sharedir                  perl-test-file-sharedir, perl-datetime-locale
 perl-file-sharedir-install          perl-file-sharedir
 perl-file-slurper                   perl-config-autoconf
-perl-file-which
+perl-file-which                     perl-alien-build
 perl-html-parser                    perl-libwww-perl
 perl-html-tagset                    perl-html-parser
 perl-http-cookies                   perl-libwww-perl
