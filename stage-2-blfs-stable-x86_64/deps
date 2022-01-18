@@ -347,7 +347,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -447,7 +447,8 @@ pcre                                wget, slang, glib, swig, exim, mc, git, xter
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
-perl-alien-build
+perl-alien-build                    perl-alien-libxml2
+perl-alien-libxml2
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -566,7 +567,7 @@ perl-test-utf8                      perl-test-file
 perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursive, perl-datetime, perl-file-slurper, perl-list-someutils-xs
 perl-test-without-module            perl-params-validationcompiler
 perl-test2-plugin-nowarnings        perl-params-validationcompiler
-perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib
+perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib, perl-alien-libxml2
 perl-text-bibtex
 perl-text-csv
 perl-text-csv_xs                    perl-text-csv
