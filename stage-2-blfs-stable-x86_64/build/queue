@@ -598,6 +598,7 @@ d/perl-modules/perl-xml-namespacesupport.sh
 d/perl-modules/perl-xml-sax.sh
 d/perl-modules/perl-alien-build.sh
 d/perl-modules/perl-alien-libxml2.sh
+d/perl-modules/perl-xml-libxml.sh
 
 
 # vim:ft=conf

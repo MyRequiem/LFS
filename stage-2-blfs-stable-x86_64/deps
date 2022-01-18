@@ -448,7 +448,7 @@ pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
 perl-alien-build                    perl-alien-libxml2
-perl-alien-libxml2
+perl-alien-libxml2                  perl-xml-libxml
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -582,8 +582,9 @@ perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-www-robotrules                 perl-libwww-perl
+perl-xml-libxml
 perl-xml-namespacesupport           perl-xml-sax
-perl-xml-sax
+perl-xml-sax                        perl-xml-libxml
 perl-xml-sax-base                   perl-xml-sax
 perl-xml-writer
 php                                 cups, libsoup, libvpx
