@@ -582,7 +582,8 @@ perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
 perl-variable-magic                 perl-b-hooks-endofscope
 perl-www-robotrules                 perl-libwww-perl
-perl-xml-libxml
+perl-xml-libxml                     perl-xml-libxml-simple
+perl-xml-libxml-simple
 perl-xml-namespacesupport           perl-xml-sax
 perl-xml-sax                        perl-xml-libxml
 perl-xml-sax-base                   perl-xml-sax
