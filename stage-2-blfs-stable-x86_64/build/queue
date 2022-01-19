@@ -607,6 +607,7 @@ d/python-modules/python-py3c.sh
 d/python-modules/python3-pyatspi2.sh
 d/python-modules/python-pycryptodome.sh
 d/python-modules/python2-pygtk.sh
+d/python-modules/python-lxml.sh
 
 
 # vim:ft=conf

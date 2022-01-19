@@ -69,6 +69,7 @@ cogl                                cairo
 colord                              gtk+3, cups
 cpio
 cryptsetup                          volume-key
+cssselect                           python-lxml
 cunit                               libdrm
 cups                                gtk+2, gtk+3, qt5, ghostscript
 cups-filters                        cups
@@ -144,7 +145,7 @@ gc                                  guile, w3m
 gcc                                 cmake
 gconf                               pulseaudio
 gcr                                 pinentry
-gdb                                 python3, gcc, guile, glib, openssh, rustc
+gdb                                 python3, gcc, guile, glib, openssh, rustc, python-lxml
 gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler
 gdk-pixbuf-xlib                     w3m
 gegl
@@ -348,7 +349,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
@@ -616,6 +617,7 @@ pytest                              fuse, python3-pygobject3
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus
 python-docutils                     python-dbus, sshfs, alsa-utils
+python-lxml
 python-markupsafe                   python3-mako
 python-py3c
 python-pycryptodome
@@ -623,7 +625,7 @@ python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml
 python2-libxml2                     libxslt, docbook-xsl
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
@@ -720,7 +722,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good, gegl
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp, python-lxml
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
