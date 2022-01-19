@@ -62,7 +62,11 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
     cd "${TMP_DIR}/usr/bin" || exit 1
     # /usr/bin/2to3 уже установлена с пакетом python3
     rm -f 2to3
+    # python2        -> python2.7
+    # python         -> python2
+    # python2-config -> python2.7-config
     ln -svf python2.7 python2
+    ln -svf python2 python
     ln -svf python2.7-config python2-config
 )
 
