@@ -616,6 +616,7 @@ python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-markupsafe                   python3-mako
+python-py3c
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput
 python-pyyaml                       llvm
