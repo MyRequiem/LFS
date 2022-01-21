@@ -610,6 +610,7 @@ d/python-modules/python2-pygtk.sh
 d/python-modules/python-lxml.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python-slip.sh
+d/python-modules/python3-scour.sh
 
 
 # vim:ft=conf
