@@ -609,6 +609,7 @@ d/python-modules/python-pycryptodome.sh
 d/python-modules/python2-pygtk.sh
 d/python-modules/python-lxml.sh
 d/python-modules/python3-jinja2.sh
+d/python-modules/python-slip.sh
 
 
 # vim:ft=conf
