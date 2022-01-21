@@ -63,7 +63,7 @@ carlito-font-ttf
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5
 cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups
@@ -349,7 +349,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
@@ -706,6 +706,7 @@ tdb                                 exim, libcanberra, pulseaudio
 texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis, opus, fltk
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
+tidy-html5
 time
 tk                                  python2, python3, ruby, git
 tokudb                              mariadb
