@@ -358,6 +358,7 @@ linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyru
 lirc                                pulseaudio
 llvm                                icu, mesa, rustc
 lm-sensors                          mesa
+lmdb
 lrdf                                gst-plugins-bad
 lsb-tools
 lsof

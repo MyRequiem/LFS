@@ -611,6 +611,7 @@ d/python-modules/python-lxml.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python-slip.sh
 d/python-modules/python3-scour.sh
+ap/lmdb.sh
 
 
 # vim:ft=conf
