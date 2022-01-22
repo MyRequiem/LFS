@@ -25,7 +25,7 @@ argon2                              cryptsetup
 as31                                alsa-firmware
 asciidoc                            git, graphite2, xorgproto, nasm, gegl
 asciidoctor                         git
-aspell                              aspell-dict-en, aspell-dict-ru
+aspell                              aspell-dict-en, aspell-dict-ru, enchant
 aspell-dict-en
 aspell-dict-ru
 assimp                              qt5
@@ -80,7 +80,7 @@ dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio
-dbus-glib                           dbus, upower
+dbus-glib                           dbus, upower, enchant
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib, fltk
@@ -99,7 +99,7 @@ docbook4                            postgresql
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant
 dssim                               gst-plugins-bad
 dtrace                              ruby
 ducktype                            dbus
@@ -110,6 +110,7 @@ elinks                              xmlto
 elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
 emacs                               guile, pinentry, libidn, desktop-file-utils
 emojione                            ibus
+enchant
 etc-issue
 ethtool                             pm-utils
 exfat                               udisks
@@ -157,7 +158,7 @@ giflib                              imlib2, libwebp
 git                                 cmake, llvm, libidn2, harfbuzz, poppler
 gjs                                 gobject-introspection
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant
 glib-networking                     glib, glibmm, libsoup
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -201,7 +202,9 @@ hicolor-icon-theme                  gtk+2, gtk+3, fltk
 highlight
 hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 hplip                               cups
+hspell                              enchant
 http-parser                         nodejs
+hunspell                            enchant
 hypothesis                          python2-pycairo, python3-pycairo
 ibus                                sdl2, qt5
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5, raptor
@@ -415,6 +418,7 @@ nss                                 p11-kit, make-ca, volume-key, poppler
 ntfs-3g                             udisks
 numactl                             x265
 numpy                               python2-pygtk
+nuspell                             enchant
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
@@ -719,6 +723,7 @@ udisks
 uming-fonts-ttf
 umockdev                            libgudev, upower
 unbound                             gnutls
+unittest-cpp                        enchant
 unixodbc                            openldap, apr-util, mariadb, qt5
 unrar
 unzip                               docbook-xml, mc, perl-archive-zip
@@ -735,6 +740,7 @@ virtuoso                            redland
 vlgothic-fonts-ttf
 vo-aac                              gst-plugins-bad
 vo-amrwb                            gst-plugins-bad
+voikko                              enchant
 volume-key                          libblockdev
 vulkan                              gst-plugins-bad, qt5
 w3m                                 asciidoc, xmlto, xorg-libraries, babl

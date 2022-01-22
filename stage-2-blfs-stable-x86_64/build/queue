@@ -613,6 +613,7 @@ d/python-modules/python-slip.sh
 d/python-modules/python3-scour.sh
 ap/lmdb.sh
 d/tidy-html5.sh
+l/enchant.sh
 
 
 # vim:ft=conf
