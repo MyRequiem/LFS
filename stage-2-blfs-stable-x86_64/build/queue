@@ -614,6 +614,8 @@ d/python-modules/python3-scour.sh
 ap/lmdb.sh
 d/tidy-html5.sh
 l/enchant.sh
+n/rsync.sh
+ap/vim.sh
 
 
 # vim:ft=conf

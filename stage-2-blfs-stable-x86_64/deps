@@ -99,7 +99,7 @@ docbook4                            postgresql
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync
 dssim                               gst-plugins-bad
 dtrace                              ruby
 ducktype                            dbus
@@ -371,7 +371,7 @@ luajit                              gegl
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
-lz4                                 mariadb
+lz4                                 mariadb, rsync
 lzip                                ed
 lzo                                 libarchive, cairo
 maemo                               alsa-plugins
@@ -608,7 +608,7 @@ polkit                              upower, udisks, xorg-server
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 poppler                             cairo
-popt                                cryptsetup
+popt                                cryptsetup, rsync
 portaudio                           mpg123
 postfix                             fcron, sudo, gnupg, at
 postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland
@@ -792,6 +792,7 @@ xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
 xterm
+xxhash                              rsync
 yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5
 yelp-tools                          dbus
 z3                                  llvm
