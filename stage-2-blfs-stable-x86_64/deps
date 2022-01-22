@@ -63,7 +63,7 @@ carlito-font-ttf
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares
 cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups

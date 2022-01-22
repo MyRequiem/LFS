@@ -617,6 +617,9 @@ l/enchant.sh
 n/rsync.sh
 ap/vim.sh
 l/jansson.sh
+l/c-ares.sh
+d/nodejs.sh
+n/curl.sh
 
 
 # vim:ft=conf
