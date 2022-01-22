@@ -46,12 +46,12 @@ bindfs                              glib
 blfs-bootscripts
 bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5
 bonjour                             postgresql
-boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler
+boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2
 bpf-utils                           iptables
 brotli                              curl, freetype, libsoup
 bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
-c-ares                              nodejs, curl
+c-ares                              nodejs, curl, nghttp2
 c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler
 cairo-5c                            xorg-applications
@@ -70,12 +70,12 @@ colord                              gtk+3, cups
 cpio
 cryptsetup                          volume-key
 cssselect                           python-lxml
-cunit                               libdrm
+cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript
 cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor
 cyrus-sasl                          exim, openldap, gtk-vnc
-cython                              yasm, libseccomp
+cython                              yasm, libseccomp, nghttp2
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
@@ -220,10 +220,11 @@ isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
 itstool                             shared-mime-info
 jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
-jansson
+jansson                             nghttp2
 jasper                              qt5, gegl
 jbig-kit                            libtiff
 jbig2dec                            cairo
+jemalloc                            nghttp2
 json-c                              cryptsetup, fontconfig
 json-glib                           gtk+3, gegl
 judy                                mariadb
@@ -268,8 +269,9 @@ libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh, mit-kerberos-v5
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
+libev                               nghttp2
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
-libevent                            links, mariadb
+libevent                            links, mariadb, nghttp2
 libexif                             gst-plugins-bad
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal
 libglade                            python2-pygtk
@@ -352,7 +354,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -396,7 +398,7 @@ mono                                libidn
 mozjs                               polkit
 mpg123                              gst-plugins-good
 mrg                                 gegl
-mruby                               mariadb
+mruby                               mariadb, nghttp2
 mtdev                               xorg-evdev-driver, libinput, qt5
 mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland
 nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2
@@ -688,9 +690,10 @@ smartmontools
 soundtouch                          gst-plugins-bad
 soxr                                pulseaudio
 spandsp                             gst-plugins-bad
+spdylay                             nghttp2
 speech-dispatcher                   qt5
 speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudio
-sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb
+sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland

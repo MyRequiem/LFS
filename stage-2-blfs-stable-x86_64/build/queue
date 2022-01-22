@@ -618,6 +618,8 @@ n/rsync.sh
 ap/vim.sh
 l/jansson.sh
 l/c-ares.sh
+n/nghttp2.sh
+d/cmake.sh
 d/nodejs.sh
 n/curl.sh
 
