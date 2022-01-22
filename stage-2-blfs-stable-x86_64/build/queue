@@ -616,6 +616,7 @@ d/tidy-html5.sh
 l/enchant.sh
 n/rsync.sh
 ap/vim.sh
+l/jansson.sh
 
 
 # vim:ft=conf

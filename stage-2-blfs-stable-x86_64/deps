@@ -220,6 +220,7 @@ isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
 itstool                             shared-mime-info
 jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
+jansson
 jasper                              qt5, gegl
 jbig-kit                            libtiff
 jbig2dec                            cairo
