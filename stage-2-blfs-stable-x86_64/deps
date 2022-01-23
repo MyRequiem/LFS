@@ -20,7 +20,7 @@ aom                                 gst-plugins-bad
 apache-ant                          docbook-xsl
 apache-httpd                        libsoup
 apr                                 apr-util
-apr-util
+apr-util                            apache-httpd
 argon2                              cryptsetup
 as31                                alsa-firmware
 asciidoc                            git, graphite2, xorgproto, nasm, gegl
@@ -40,7 +40,7 @@ babl                                gegl
 bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
-berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland
+berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd
 bind-utilities                      mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
@@ -48,7 +48,7 @@ bluez                               python2, python3, libpcap, gst-plugins-bad, 
 bonjour                             postgresql
 boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2
 bpf-utils                           iptables
-brotli                              curl, freetype, libsoup
+brotli                              curl, freetype, libsoup, apache-httpd
 bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl, nghttp2
@@ -87,6 +87,7 @@ desktop-file-utils                  glib, fltk
 dialog                              alsa-utils
 digest-crc                          parted
 directfb                            links, cairo, sdl, sdl2
+distcache                           apache-httpd
 djbfft                              liba52
 dmalloc                             cyrus-sasl, lame
 dmraid                              libblockdev
@@ -99,14 +100,14 @@ docbook4                            postgresql
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd
 dssim                               gst-plugins-bad
 dtrace                              ruby
 ducktype                            dbus
 ed
 efl                                 pinentry
 electric-fence                      lame
-elinks                              xmlto
+elinks                              xmlto, apache-httpd
 elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
 emacs                               guile, pinentry, libidn, desktop-file-utils
 emojione                            ibus
@@ -354,12 +355,12 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
-links                               xmlto, xorg-libraries
+links                               xmlto, xorg-libraries, apache-httpd
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql
 lirc                                pulseaudio
 llvm                                icu, mesa, rustc
@@ -369,11 +370,11 @@ lrdf                                gst-plugins-bad
 lsb-tools
 lsof
 ltc-tools                           gst-plugins-bad
-lua                                 highlight, vim, gtk-engines
+lua                                 highlight, vim, gtk-engines, apache-httpd
 luajit                              gegl
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
-lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries
+lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries, apache-httpd
 lz4                                 mariadb, rsync
 lzip                                ed
 lzo                                 libarchive, cairo
@@ -407,7 +408,7 @@ neon                                gst-plugins-bad
 net-tools                           gnutls, openssh
 nettle                              libarchive, gnutls, mesa, xorg-server, gst-plugins-bad
 nftables                            iptables
-nghttp2                             cmake, nodejs, curl
+nghttp2                             cmake, nodejs, curl, apache-httpd
 ngtcp2                              curl
 nickle                              xorg-applications
 nodejs
@@ -435,7 +436,7 @@ openh264                            gst-plugins-bad
 openjade                            postgresql
 openjdk                             libidn, openssh, cyrus-sasl, cups
 openjpeg                            gst-plugins-bad, ghostscript, poppler
-openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql
+openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd
 opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs
@@ -453,7 +454,7 @@ parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
 pciutils                            qt5
-pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal
+pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd
 pcre2                               wget, libbytesize, git, xterm, qt5
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
@@ -665,7 +666,7 @@ rest                                gtk+3
 rhash                               cmake
 rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
-rsync                               llvm, vim
+rsync                               llvm, vim, apache-httpd
 rtmpdump                            gst-plugins-bad
 ruby                                docbook-xsl, vim, mc, mariadb, gegl
 rustc                               mozjs, librsvg

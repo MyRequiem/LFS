@@ -622,6 +622,7 @@ n/nghttp2.sh
 d/cmake.sh
 d/nodejs.sh
 n/curl.sh
+n/apache-httpd.sh
 
 
 # vim:ft=conf
