@@ -162,9 +162,6 @@ cat << EOF >> "${TMP_DIR}${HTTPD_CONF}"
 # Uncomment the following line to enable PHP
 #Include /etc/httpd/mod_php.conf
 
-# Uncomment the following lines (and mod_dav above) to enable svn support
-#LoadModule dav_svn_module lib/httpd/modules/mod_dav_svn.so
-#LoadModule authz_svn_module lib/httpd/modules/mod_authz_svn.so
 EOF
 
 if [ -f "${HTTPD_CONF}" ]; then
