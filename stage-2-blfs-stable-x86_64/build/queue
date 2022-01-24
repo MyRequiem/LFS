@@ -625,6 +625,11 @@ n/curl.sh
 n/apache-httpd.sh
 n/php.sh
 ap/cups.sh
+ap/tk.sh
+d/python2.sh
+d/python3.sh
+d/ruby.sh
+d/git.sh
 
 
 # vim:ft=conf
