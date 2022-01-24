@@ -623,6 +623,8 @@ d/cmake.sh
 d/nodejs.sh
 n/curl.sh
 n/apache-httpd.sh
+n/php.sh
+ap/cups.sh
 
 
 # vim:ft=conf
