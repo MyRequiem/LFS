@@ -630,6 +630,11 @@ d/python2.sh
 d/python3.sh
 d/ruby.sh
 d/git.sh
+d/openjdk.sh
+l/libidn.sh
+n/openssh.sh
+n/cyrus-sasl.sh
+ap/cups.sh
 
 
 # vim:ft=conf
