@@ -226,7 +226,7 @@ MANPATH=\${MANPATH}:\${JAVA_HOME}/man
 
 AUTO_CLASSPATH_DIR=/usr/share/java
 
-CLASSPATH=".:"
+CLASSPATH="."
 
 JDIRS="\$(find \${AUTO_CLASSPATH_DIR} -type d 2>/dev/null)"
 for JDIR in \${JDIRS}; do
