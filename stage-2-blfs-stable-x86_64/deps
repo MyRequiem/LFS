@@ -67,6 +67,7 @@ caudium                             php
 cdb                                 php
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
+chronyd                             dhcpcd
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares
 cmocka                              gnutls, mit-kerberos-v5
@@ -90,6 +91,7 @@ dbus-glib                           dbus, upower, enchant
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib, fltk
+dhcpcd
 dialog                              alsa-utils
 digest-crc                          parted
 directfb                            links, cairo, sdl, sdl2
@@ -376,7 +378,7 @@ lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries, apache-httpd
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql
 lirc                                pulseaudio
-llvm                                icu, mesa, rustc
+llvm                                icu, mesa, rustc, dhcpcd
 lm-sensors                          mesa
 lmdb                                php
 lrdf                                gst-plugins-bad
@@ -438,7 +440,7 @@ npth                                gnupg
 nspr                                nss
 nss                                 p11-kit, make-ca, volume-key, poppler
 ntfs-3g                             udisks
-ntp
+ntp                                 dhcpcd
 numactl                             x265
 numpy                               python2-pygtk
 nuspell                             enchant
@@ -827,6 +829,7 @@ xterm
 xxhash                              rsync
 yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5
 yelp-tools                          dbus
+ypbind                              dhcpcd
 z3                                  llvm
 zbar                                gst-plugins-bad
 zeromq                              mariadb

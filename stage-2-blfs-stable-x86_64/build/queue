@@ -636,6 +636,7 @@ n/openssh.sh
 n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh
+n/dhcpcd.sh
 
 
 # vim:ft=conf
