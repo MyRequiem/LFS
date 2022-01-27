@@ -38,7 +38,7 @@ mkdir -pv "${TMP_DIR}"
 ! grep -qE "^polkitd:" /etc/group  && \
     groupadd -fg 27 polkitd
 
-# добавим пользователя polkitd, если не существуют
+# добавим пользователя polkitd, если не существует
 ! grep -qE "^polkitd:" /etc/passwd && \
     useradd -c "PolicyKit Daemon Owner" \
             -d /etc/polkit-1 \

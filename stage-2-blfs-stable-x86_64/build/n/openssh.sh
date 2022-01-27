@@ -40,7 +40,7 @@ chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
 ! grep -qE "^sshd:" /etc/group  && \
     groupadd -g 50 sshd
 
-# добавим пользователя sshd, если не существуют
+# добавим пользователя sshd, если не существует
 ! grep -qE "^sshd:" /etc/passwd && \
     useradd -c 'sshd PrivSep' \
             -d /var/lib/sshd  \

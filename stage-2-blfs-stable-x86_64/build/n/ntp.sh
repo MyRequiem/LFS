@@ -25,7 +25,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{etc,var/lib/ntp}
+mkdir -pv "${TMP_DIR}"
 
 DOCS="false"
 
@@ -33,7 +33,7 @@ DOCS="false"
 ! grep -qE "^ntp:" /etc/group  && \
     groupadd -g 87 ntp
 
-# добавим пользователя ntp, если не существуют
+# добавим пользователя ntp, если не существует
 ! grep -qE "^ntp:" /etc/passwd &&      \
     useradd -c "Network Time Protocol" \
             -d /var/lib/ntp            \
@@ -66,9 +66,15 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-install -v -o ntp -g ntp -d /var/lib/ntp
-
 [[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
+
+install -v -o ntp -g ntp -d "${TMP_DIR}/var/lib/ntp/"
+
+# init script: /etc/rc.d/init.d/ntp
+(
+    cd "${ROOT}/blfs-bootscripts" || exit 1
+    make install-ntpd DESTDIR="${TMP_DIR}"
+)
 
 ### Конфигурация
 NTP_CONF="/etc/ntp.conf"
@@ -120,12 +126,6 @@ restrict ::1
 
 # End ${NTP_CONF}
 EOF
-
-# init script: /etc/rc.d/init.d/ntp
-(
-    cd "${ROOT}/blfs-bootscripts" || exit 1
-    make install-ntpd DESTDIR="${TMP_DIR}"
-)
 
 if [ -f "${NTP_CONF}" ]; then
     mv "${NTP_CONF}" "${NTP_CONF}.old"

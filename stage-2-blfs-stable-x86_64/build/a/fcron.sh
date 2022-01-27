@@ -40,7 +40,7 @@ mkdir -pv "${TMP_DIR}"/{etc/cron.{hourly,daily,weekly,monthly},var/spool/fcron}
 ! grep -qE "^fcron:" /etc/group  && \
     groupadd -g 22 fcron
 
-# добавим пользователя fcron, если не существуют
+# добавим пользователя fcron, если не существует
 ! grep -qE "^fcron:" /etc/passwd && \
     useradd -c "Fcron User" \
             -d /dev/null    \
