@@ -36,7 +36,7 @@ at-spi2-core                        at-spi2-atk, python3-pyatspi2
 atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 atkmm                               gtkmm2, gtkmm3
 autoconf213                         mozjs
-autogen                             gnutls
+autogen                             gnutls, ntp
 avahi                               cups, pulseaudio
 babl                                gegl
 bash-completion                     gstreamer, dconf
@@ -266,7 +266,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl
 libcanberra                         notification-daemon
-libcap                              pulseaudio
+libcap                              pulseaudio, ntp
 libcddb                             libcdio
 libcdio                             gst-plugins-ugly
 libdazzle
@@ -278,12 +278,12 @@ libdv                               gst-plugins-good
 libdvdnav                           gst-plugins-bad
 libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 libdw                               gstreamer
-libedit                             sqlite, pcre2, openssh, mit-kerberos-v5
+libedit                             sqlite, pcre2, openssh, mit-kerberos-v5, ntp
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
 libev                               nghttp2
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
-libevent                            links, mariadb, nghttp2
+libevent                            links, mariadb, nghttp2, ntp
 libexif                             gst-plugins-bad, php
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal
 libgd                               php
@@ -438,6 +438,7 @@ npth                                gnupg
 nspr                                nss
 nss                                 p11-kit, make-ca, volume-key, poppler
 ntfs-3g                             udisks
+ntp
 numactl                             x265
 numpy                               python2-pygtk
 nuspell                             enchant
@@ -534,7 +535,7 @@ perl-http-message                   perl-html-parser, perl-http-daemon, perl-htt
 perl-http-negotiate                 perl-libwww-perl
 perl-importer                       perl-term-table, perl-sub-info
 perl-io-html                        perl-http-message
-perl-io-socket-ssl                  wget, perl-lwp-protocol-https
+perl-io-socket-ssl                  wget, perl-lwp-protocol-https, ntp
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale

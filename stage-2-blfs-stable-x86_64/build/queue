@@ -635,6 +635,7 @@ l/libidn.sh
 n/openssh.sh
 n/cyrus-sasl.sh
 ap/cups.sh
+n/ntp.sh
 
 
 # vim:ft=conf
