@@ -637,6 +637,8 @@ n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh
 n/dhcpcd.sh
+l/libnl.sh
+l/libpcap.sh
 
 
 # vim:ft=conf
