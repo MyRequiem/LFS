@@ -639,6 +639,7 @@ n/ntp.sh
 n/dhcpcd.sh
 l/libnl.sh
 l/libpcap.sh
+n/iw.sh
 
 
 # vim:ft=conf

@@ -233,6 +233,7 @@ iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
 itstool                             shared-mime-info
+iw
 jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 jansson                             nghttp2
 jasper                              qt5, gegl
@@ -316,7 +317,7 @@ libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnice                             gst-plugins-bad
-libnl                               libpcap
+libnl                               libpcap, iw
 libnotify                           ibus
 libnsl                              exim
 libofa                              gst-plugins-bad
