@@ -640,6 +640,8 @@ n/dhcpcd.sh
 l/libnl.sh
 l/libpcap.sh
 n/iw.sh
+n/wireless-tools.sh
+ap/pm-utils.sh
 
 
 # vim:ft=conf
