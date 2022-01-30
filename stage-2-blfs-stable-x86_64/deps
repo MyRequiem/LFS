@@ -43,7 +43,7 @@ bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd, php
-bind-utilities                      mit-kerberos-v5
+bind-utils                          mit-kerberos-v5
 bindfs                              glib
 birdstep                            php
 blfs-bootscripts
@@ -240,7 +240,7 @@ jasper                              qt5, gegl
 jbig-kit                            libtiff
 jbig2dec                            cairo
 jemalloc                            nghttp2
-json-c                              cryptsetup, fontconfig
+json-c                              cryptsetup, fontconfig, bind-utils
 json-glib                           gtk+3, gegl
 judy                                mariadb
 kernel-firmware
@@ -269,7 +269,7 @@ libblockdev                         udisks
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl
 libcanberra                         notification-daemon
-libcap                              pulseaudio, ntp
+libcap                              pulseaudio, ntp, bind-utils
 libcddb                             libcdio
 libcdio                             gst-plugins-ugly
 libdazzle
@@ -358,7 +358,7 @@ libumfpack                          gegl
 libunistring                        guile, libidn2, gnutls
 libunwind                           mesa, xorg-server, libinput, gstreamer
 libusb                              usbutils, libpcap, upower, gnupg, cups, gst-plugins-bad
-libuv                               cmake, nodejs
+libuv                               cmake, nodejs, bind-utils
 libva                               mesa
 libvdpau                            mesa
 libvisual                           gst-plugins-base
@@ -371,7 +371,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -721,7 +721,7 @@ spandsp                             gst-plugins-bad
 spdylay                             nghttp2
 speech-dispatcher                   qt5
 speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudio
-sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2
+sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2, bind-utils
 sphinx-rtd-theme                    python-dbus
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php
