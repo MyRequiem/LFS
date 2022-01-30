@@ -642,6 +642,7 @@ l/libpcap.sh
 n/iw.sh
 n/wireless-tools.sh
 ap/pm-utils.sh
+n/wpa-supplicant.sh
 
 
 # vim:ft=conf

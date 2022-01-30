@@ -86,11 +86,11 @@ dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbmaker                             php
-dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio
+dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant
 dbus-glib                           dbus, upower, enchant
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
-desktop-file-utils                  glib, fltk
+desktop-file-utils                  glib, fltk, wpa-supplicant
 dhcpcd
 dialog                              alsa-utils
 digest-crc                          parted
@@ -317,7 +317,7 @@ libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnice                             gst-plugins-bad
-libnl                               libpcap, iw
+libnl                               libpcap, iw, wpa-supplicant
 libnotify                           ibus
 libnsl                              exim
 libofa                              gst-plugins-bad
@@ -371,7 +371,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -678,7 +678,7 @@ python3-pyxdg                       ibus
 python3-scour
 qdbm                                php
 qt4                                 cairo
-qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler
+qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant
 quiche                              curl
 raptor                              rasqal
 rasqal                              redland
@@ -787,6 +787,7 @@ wget                                smartmontools, pciutils, usbutils, perl-unic
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 wildmidi                            gst-plugins-bad
 wireless-tools                      pm-utils
+wpa-supplicant
 wpe-webkit                          gst-plugins-bad
 wpebackend-fdo                      gst-plugins-bad
 wqy-zenhei-font-ttf
