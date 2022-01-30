@@ -747,6 +747,7 @@ tidy-html5                          php
 time
 tk                                  python2, python3, ruby, git
 tokudb                              mariadb
+traceroute
 tree
 tremor                              gst-plugins-base
 trousers                            gnutls

@@ -645,6 +645,7 @@ ap/pm-utils.sh
 n/wpa-supplicant.sh
 n/bind-utils.sh
 n/mit-kerberos-v5.sh
+n/traceroute.sh
 
 
 # vim:ft=conf
