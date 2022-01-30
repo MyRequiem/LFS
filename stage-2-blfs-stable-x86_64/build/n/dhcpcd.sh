@@ -40,7 +40,6 @@ VAR_LIB_DHCPCD="/var/lib/dhcpcd"
 # доступен в начале загрузки, /usr/libexec также нельзя использовать
 #    --libexecdir=/lib/dhcpcd
 ./configure                 \
-    --prefix=/usr           \
     --sysconfdir=/etc       \
     --privsepuser=dhcpcd    \
     --dbdir=/var/lib/dhcpcd \
