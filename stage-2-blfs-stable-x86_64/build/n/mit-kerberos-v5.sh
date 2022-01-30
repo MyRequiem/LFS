@@ -13,7 +13,7 @@ ARCH_NAME="krb5"
 
 # Required:    no
 # Recommended: no
-# Optional:    bind-utilities
+# Optional:    bind-utils
 #              gnupg
 #              keyutils
 #              openldap
