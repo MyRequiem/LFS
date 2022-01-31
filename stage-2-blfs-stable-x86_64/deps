@@ -296,8 +296,8 @@ libgsf                              goffice
 libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad
 libical                             bluez
 libid3tag                           imlib2
-libidn                              gnutls, exim, ghostscript
-libidn2                             wget, gnutls, curl, libpsl
+libidn                              gnutls, exim, ghostscript, whois
+libidn2                             wget, gnutls, curl, libpsl, whois
 libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver, qt5
 libiodbc                            redland, php
@@ -786,6 +786,7 @@ weasyprint                          vala
 webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak, openjdk
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
+whois
 wildmidi                            gst-plugins-bad
 wireless-tools                      pm-utils
 wpa-supplicant
