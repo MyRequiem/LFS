@@ -611,6 +611,7 @@ d/python-modules/python-lxml.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python-slip.sh
 d/python-modules/python3-scour.sh
+d/python-modules/python2-future.sh
 ap/lmdb.sh
 d/tidy-html5.sh
 l/enchant.sh
@@ -647,6 +648,7 @@ n/bind-utils.sh
 n/mit-kerberos-v5.sh
 n/traceroute.sh
 n/whois.sh
+n/fetchmail.sh
 
 
 # vim:ft=conf
