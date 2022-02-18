@@ -650,6 +650,8 @@ n/traceroute.sh
 n/whois.sh
 n/fetchmail.sh
 n/mutt.sh
+l/adwaita-icon-theme.sh
+l/gtk+3.sh
 
 
 # vim:ft=conf
