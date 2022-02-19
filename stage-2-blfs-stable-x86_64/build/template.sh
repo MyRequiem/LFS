@@ -40,6 +40,8 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # remove-la-files.sh
 # echo "---------------"
 
+# MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
+
 # source "${ROOT}/config_file_processing.sh"             || exit 1
 # CONFIG="...."
 # if [ -f "${CONFIG}" ]; then
