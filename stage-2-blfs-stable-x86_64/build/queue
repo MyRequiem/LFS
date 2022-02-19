@@ -652,6 +652,7 @@ n/fetchmail.sh
 n/mutt.sh
 l/adwaita-icon-theme.sh
 l/gtk+3.sh
+d/gjs.sh
 
 
 # vim:ft=conf
