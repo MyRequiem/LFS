@@ -12,7 +12,7 @@
 
 PART="/dev/sda10"
 LFS="/mnt/lfs"
-TMP_ON_HOST="/root/src/lfs-tmp"
+# TMP_ON_HOST="/root/src/lfs-tmp"
 
 if [[ "$(whoami)" != "root" ]]; then
     echo "Only superuser (root) can run this script"
@@ -31,7 +31,7 @@ case "$1" in
     --mount)
         ;;
     --umount)
-        umount "${TMP_ON_HOST}" &>/dev/null
+        # umount "${TMP_ON_HOST}" &>/dev/null
         umount "${LFS}"/{dev{/pts,},proc,run,sys} &>/dev/null
         find_mnt
         exit 0
@@ -102,9 +102,9 @@ if [ -h "${LFS}/dev/shm" ]; then
 fi
 
 # монтируем директорию на хосте на ${LFS}/tmp
-if ! mount | /bin/grep -q "${TMP_ON_HOST}"; then
-    ! [ -d "${TMP_ON_HOST}" ] && mkdir -p "${TMP_ON_HOST}"
-    mount -v --bind "${TMP_ON_HOST}" "${LFS}/tmp/"
-fi
+# if ! mount | /bin/grep -q "${TMP_ON_HOST}"; then
+#     ! [ -d "${TMP_ON_HOST}" ] && mkdir -p "${TMP_ON_HOST}"
+#     mount -v --bind "${TMP_ON_HOST}" "${LFS}/tmp/"
+# fi
 
 find_mnt
