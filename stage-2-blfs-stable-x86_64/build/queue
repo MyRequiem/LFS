@@ -654,6 +654,8 @@ l/adwaita-icon-theme.sh
 l/gtk+3.sh
 d/gjs.sh
 l/gnome-keyring.sh
+l/libsecret.sh
+n/pinentry.sh
 
 
 # vim:ft=conf
