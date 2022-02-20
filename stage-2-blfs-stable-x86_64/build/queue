@@ -656,6 +656,7 @@ d/gjs.sh
 l/gnome-keyring.sh
 l/libsecret.sh
 n/pinentry.sh
+l/vte2.sh
 
 
 # vim:ft=conf
