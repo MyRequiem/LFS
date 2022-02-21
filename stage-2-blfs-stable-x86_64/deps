@@ -87,7 +87,7 @@ datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbmaker                             php
 dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant, gjs, gnome-keyring
-dbus-glib                           dbus, upower, enchant
+dbus-glib                           dbus, upower, enchant, gconf
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
 desktop-file-utils                  glib, fltk, wpa-supplicant
@@ -180,7 +180,7 @@ gnome-shell                         polkit
 gnome-themes-extra                  gtk+2
 gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5, mutt, gnome-keyring
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon, mutt, vte3
-gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3
+gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3, gconf
 goffice
 gpac                                x264
 gpgme                               volume-key, mutt
@@ -200,7 +200,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3
 gtk-engines
@@ -378,7 +378,7 @@ libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, 
 libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
-libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3
+libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
@@ -467,7 +467,7 @@ openh264                            gst-plugins-bad
 openjade                            postgresql
 openjdk                             libidn, openssh, cyrus-sasl, cups
 openjpeg                            gst-plugins-bad, ghostscript, poppler
-openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd, php
+openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd, php, gconf
 opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs, gnome-keyring
@@ -641,7 +641,7 @@ pixman                              cairo, xorg-server
 pm-utils
 pocketlint                          libbytesize
 polib                               libbytesize
-polkit                              upower, udisks, xorg-server
+polkit                              upower, udisks, xorg-server, gconf
 polkit-gnome                        polkit
 polkit-kde-agent                    polkit
 poppler                             cairo

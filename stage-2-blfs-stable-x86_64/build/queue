@@ -658,6 +658,8 @@ l/libsecret.sh
 n/pinentry.sh
 l/vte2.sh
 l/vte3.sh
+l/gconf.sh
+ap/pulseaudio.sh
 
 
 # vim:ft=conf
