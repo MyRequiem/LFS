@@ -41,6 +41,7 @@ export XDG_CONFIG_HOME=\${HOME}/.config
 export XDG_RUNTIME_DIR=/tmp/xdg-runtime-\${USER}
 
 export MANPATH=/usr/share/man:/usr/local/share/man
+export INFOPATH=/usr/share/info
 export EDITOR=vim
 export PAGER=less
 HOSTNAME="\$(cat /etc/hostname)"
