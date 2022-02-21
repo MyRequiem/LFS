@@ -3,7 +3,7 @@
 PRGNAME="vte2"
 ARCH_NAME="vte"
 
-### Vte (terminal emulator widget for use with GTK+2)
+### VTE (terminal emulator widget for use with GTK+2)
 # Виджет эмулятора терминала использующий GTK+2. Пакет содержит библиотеку VTE
 # и минимальное демонстрационное приложение vte, которое использует libvte
 
