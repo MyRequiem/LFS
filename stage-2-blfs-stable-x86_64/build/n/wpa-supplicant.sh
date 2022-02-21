@@ -54,7 +54,7 @@ source "${ROOT}/config_file_processing.sh"               || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/"{sbin,usr/{bin,share/man/man{5,8}}}
 mkdir -pv "${TMP_DIR}/"{etc/dbus-1/system.d,usr/share/dbus-1/system-services}
-mkdir -pv "${TMP_DIR}/"{etc/sysconfig,usr/share/applications,pixmaps}
+mkdir -pv "${TMP_DIR}/"{etc/sysconfig,usr/share/{applications,pixmaps}}
 
 cd "${ARCH_NAME}" || exit 1
 
