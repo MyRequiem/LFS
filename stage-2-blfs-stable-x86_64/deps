@@ -200,7 +200,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3
 gtk-engines
@@ -237,7 +237,7 @@ ipaex-fonts-ttf
 iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus
-itstool                             shared-mime-info
+itstool                             shared-mime-info, zenity
 iw
 jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 jansson                             nghttp2
@@ -325,7 +325,7 @@ libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnice                             gst-plugins-bad
 libnl                               libpcap, iw, wpa-supplicant
-libnotify                           ibus
+libnotify                           ibus, zenity
 libnsl                              exim
 libofa                              gst-plugins-bad
 libogg                              libvorbis, gst-plugins-base, flac, speex
@@ -379,7 +379,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
@@ -798,6 +798,7 @@ wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base, sdl2
 wddx                                php
 weasyprint                          vala
+webkitgtk                           zenity
 webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak, openjdk
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
@@ -851,6 +852,7 @@ yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm
 zbar                                gst-plugins-bad
+zenity
 zeromq                              mariadb
 zip                                 llvm, docbook-xsl, mc, openjdk
 zvbi                                gst-plugins-bad

@@ -660,6 +660,7 @@ l/vte2.sh
 l/vte3.sh
 l/gconf.sh
 ap/pulseaudio.sh
+ap/zenity.sh
 
 
 # vim:ft=conf
