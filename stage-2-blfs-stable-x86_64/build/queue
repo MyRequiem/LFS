@@ -664,6 +664,7 @@ ap/zenity.sh
 l/libmypaint.sh
 l/mypaint-brushes.sh
 l/exiv2.sh
+l/gexiv2.sh
 l/gegl.sh
 
 
