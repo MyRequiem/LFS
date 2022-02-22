@@ -663,6 +663,8 @@ ap/pulseaudio.sh
 ap/zenity.sh
 l/libmypaint.sh
 l/mypaint-brushes.sh
+l/exiv2.sh
+l/gegl.sh
 
 
 # vim:ft=conf
