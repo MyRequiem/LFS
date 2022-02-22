@@ -666,6 +666,7 @@ l/mypaint-brushes.sh
 l/exiv2.sh
 l/gexiv2.sh
 l/gegl.sh
+x/apps/xdg-utils.sh
 
 
 # vim:ft=conf

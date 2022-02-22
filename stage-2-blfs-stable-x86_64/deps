@@ -86,7 +86,7 @@ dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
 dbmaker                             php
-dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant, gjs, gnome-keyring
+dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant, gjs, gnome-keyring xdg-utils
 dbus-glib                           dbus, upower, enchant, gconf
 dconf                               ibus
 dejavu-fonts-ttf                    xterm
@@ -386,7 +386,7 @@ libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asci
 libyajl                             raptor
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
-links                               xmlto, xorg-libraries, apache-httpd, mutt
+links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils
 linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql, gnome-keyring
 lirc                                pulseaudio
 llvm                                icu, mesa, rustc, dhcpcd
@@ -400,7 +400,7 @@ lua                                 highlight, vim, gtk-engines, apache-httpd
 luajit                              gegl
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
-lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries, apache-httpd, mutt
+lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils
 lz4                                 mariadb, rsync
 lzip                                ed
 lzo                                 libarchive, cairo
@@ -796,7 +796,7 @@ volume-key                          libblockdev
 vte2
 vte3
 vulkan                              gst-plugins-bad, qt5
-w3m                                 asciidoc, xmlto, xorg-libraries, babl, mutt
+w3m                                 asciidoc, xmlto, xorg-libraries, babl, mutt, xdg-utils
 wavpack                             gst-plugins-good
 wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad, ibus, qt5
 wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base, sdl2
@@ -834,9 +834,9 @@ xfsprogs                            lvm2, udisks
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
 xmlrpc-epi                          php
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib, xdg-utils
 xorg-amdgpu-driver
-xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
+xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xdg-utils
 xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
