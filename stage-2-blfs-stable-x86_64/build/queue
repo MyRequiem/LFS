@@ -668,6 +668,7 @@ l/gexiv2.sh
 l/gegl.sh
 x/apps/xdg-utils.sh
 xap/gimp.sh
+l/lcms.sh
 
 
 # vim:ft=conf

@@ -261,6 +261,7 @@ kytea                               mariadb
 ladspa                              gst-plugins-bad
 lame                                gst-plugins-good
 lasem                               goffice
+lcms
 lcms2                               openjpeg, gst-plugins-bad, libmng, babl, gegl, poppler, openjdk, gimp
 lcov                                libseccomp, gjs, gnome-keyring
 lensfun                             gegl
@@ -315,7 +316,7 @@ libiec61883                         gst-plugins-good
 libinput                            xorg-libinput-driver, qt5
 libiodbc                            redland, php
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms
 libkate                             gst-plugins-bad
 libksba                             gnupg
 liblsmash                           x264
@@ -366,7 +367,7 @@ libssh2                             curl, rustc, mc, gst-plugins-bad
 libtasn1                            p11-kit, gnutls
 libthai                             pango, perl-unicode-linebreak
 libtheora                           gst-plugins-base
-libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp
+libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms
 libtirpc                            rpcbind, lsof, libnsl
 libtizonia                          mesa
 libumfpack                          gegl
@@ -679,7 +680,7 @@ python-pyparsing                    libinput
 python-pyyaml                       llvm
 python-six                          libbytesize, python-slip, python3-scour
 python-slip
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms
 python2-future
 python2-libxml2                     libxslt, docbook-xsl, gimp
 python2-pycairo                     python2-pygobject2, python2-pygtk
@@ -754,7 +755,7 @@ subversion                          cmake, git
 sudo
 svgalib                             links, sdl
 svthevcenc                          gst-plugins-bad
-swig                                gpgme, volume-key
+swig                                gpgme, volume-key, lcms
 sysprof                             libsoup, gjs
 sysstat                             openssh
 systemtap                           gjs
