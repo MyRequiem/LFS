@@ -669,6 +669,7 @@ l/gegl.sh
 x/apps/xdg-utils.sh
 xap/gimp.sh
 l/lcms.sh
+l/libgxps.sh
 
 
 # vim:ft=conf
