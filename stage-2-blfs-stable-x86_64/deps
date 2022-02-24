@@ -173,7 +173,7 @@ gimp
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps
 gjs                                 gobject-introspection, libsecret
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -477,7 +477,7 @@ opendmarc                           exim
 openexr                             gst-plugins-bad, gegl
 openh264                            gst-plugins-bad
 openjade                            postgresql
-openjdk                             libidn, openssh, cyrus-sasl, cups
+openjdk                             libidn, openssh, cyrus-sasl, cups, apache-ant
 openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp
 openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd, php, gconf
 opensc                              openssh
