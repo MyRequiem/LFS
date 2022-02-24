@@ -443,7 +443,7 @@ mtdev                               xorg-evdev-driver, libinput, qt5
 mutt
 mypaint-brushes                     gimp
 mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
-nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2
+nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2, xvid
 ndctl                               libblockdev
 neon                                gst-plugins-bad
 net-snmp                            php
@@ -858,8 +858,9 @@ xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
 xterm
+xvid
 xxhash                              rsync
-yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5
+yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5, xvid
 yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm

@@ -670,6 +670,7 @@ x/apps/xdg-utils.sh
 xap/gimp.sh
 l/lcms.sh
 l/libgxps.sh
+l/xvid.sh
 
 
 # vim:ft=conf
