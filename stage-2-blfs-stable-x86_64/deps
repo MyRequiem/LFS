@@ -44,6 +44,7 @@ bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd, php
+bibtex                              libtheora
 bind-utils                          mit-kerberos-v5
 bindfs                              glib
 birdstep                            php
@@ -109,7 +110,7 @@ docbook4                            postgresql
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at, php, mutt, gimp
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd, libmypaint, exiv2
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd, libmypaint, exiv2, libtheora
 dssim                               gst-plugins-bad
 dtrace                              ruby, gjs
 ducktype                            dbus
@@ -235,7 +236,7 @@ imlib2                              w3m
 impacket                            curl
 indic-fonts-ttf
 inkscape                            adwaita-icon-theme
-install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, libvorbis, opus, fltk
+install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, libvorbis, opus, fltk, libtheora
 intel-gpu-tools                     libva
 ipaex-fonts-ttf
 iptables
@@ -338,13 +339,13 @@ libnl                               libpcap, iw, wpa-supplicant
 libnotify                           ibus, zenity
 libnsl                              exim
 libofa                              gst-plugins-bad
-libogg                              libvorbis, gst-plugins-base, flac, speex
+libogg                              libvorbis, gst-plugins-base, flac, speex, libtheora
 libopenmpt                          gst-plugins-bad
 libopenni                           gst-plugins-bad
 libopenraw                          gegl
 libpaper                            cups, ghostscript
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora
 libproxy                            glib-networking, neon, qt5
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
@@ -380,7 +381,7 @@ libuv                               cmake, nodejs, bind-utils
 libva                               mesa
 libvdpau                            mesa
 libvisual                           gst-plugins-base
-libvorbis                           libcanberra, gst-plugins-base, libsndfile
+libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora
 libvpx                              gst-plugins-good
 libwacom                            libinput
 libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp
@@ -726,7 +727,7 @@ sassc                               gtk+3
 saxon6                              docbook-xsl
 sazanami-fonts-ttf
 sbc                                 gst-plugins-bad, pulseaudio
-sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad
+sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad, libtheora
 sdl2                                gst-plugins-base, qt5, gegl
 sendmail                            fcron, sudo, gnupg, at, php, mutt, gimp
 septel                              libpcap
@@ -765,7 +766,7 @@ t1lib                               php
 taglib                              gst-plugins-good
 tap-py                              python-dbus
 tdb                                 exim, libcanberra, pulseaudio
-texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis, opus, fltk
+texlive                             cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, jasper, libvorbis, opus, fltk, libtheora
 thin-provisioning-tools             lvm2
 tibmachuni-font-ttf
 tidy-html5                          php
@@ -774,6 +775,7 @@ tk                                  python2, python3, ruby, git
 tokudb                              mariadb
 tokyo-cabinet                       mutt
 traceroute
+transfig                            libtheora
 tree
 tremor                              gst-plugins-base
 trousers                            gnutls
@@ -792,7 +794,7 @@ usbutils
 util-macros                         xorgproto, xbitmaps
 v4l-utils                           gst-plugins-good, gegl
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2
-valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp, python-lxml, gjs, gnome-keyring, libsecret
+valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp, python-lxml, gjs, gnome-keyring, libsecreta, libtheora
 vbetool                             pm-utils
 vdo                                 lvm2
 vim                                 fcron
