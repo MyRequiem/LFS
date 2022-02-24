@@ -673,6 +673,7 @@ l/libgxps.sh
 l/xvid.sh
 d/apache-ant.sh
 s/docbook-xsl.sh
+l/libmad.sh
 
 
 # vim:ft=conf

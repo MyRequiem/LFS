@@ -321,6 +321,7 @@ libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, 
 libkate                             gst-plugins-bad
 libksba                             gnupg
 liblsmash                           x264
+libmad
 libmcrypt                           php
 libmetalink                         curl
 libmfx                              gst-plugins-bad
