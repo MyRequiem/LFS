@@ -676,6 +676,9 @@ s/docbook-xsl.sh
 l/libmad.sh
 l/libtheora.sh
 l/gst-plugins-base.sh
+l/ffmpeg.sh
+l/alsa-plugins.sh
+l/gegl.sh
 
 
 # vim:ft=conf
