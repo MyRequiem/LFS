@@ -19,7 +19,7 @@ PRGNAME="gnupg"
 # Optional:    curl
 #              fuse
 #              gnutls
-#              imagemagick7 (для создания документации)
+#              imagemagick  (для создания документации)
 #              libusb
 #              MTA          (dovecot или exim или postfix или sendmail)
 #              openldap

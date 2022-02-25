@@ -679,6 +679,7 @@ l/gst-plugins-base.sh
 l/ffmpeg.sh
 l/alsa-plugins.sh
 l/gegl.sh
+xap/imagemagick.sh
 
 
 # vim:ft=conf
