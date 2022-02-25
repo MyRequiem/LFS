@@ -85,7 +85,7 @@ cssselect                           python-lxml
 cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt
 cython                              yasm, libseccomp, nghttp2
 dag                                 libpcap
@@ -140,6 +140,7 @@ fcitx                               sdl2
 fcron
 fdf-toolkit                         php
 fdk-aac                             gst-plugins-bad, ffmpeg
+feh
 fetchmail
 ffmpeg                              alsa-plugins, gegl, imagemagick
 ffms2                               x264
@@ -180,7 +181,7 @@ gexiv2                              gegl, gimp
 ggi                                 sdl
 ghostpcl                            imagemagick
 ghostscript                         cairo, goffice, gimp, imagemagick
-giflib                              imlib2, libwebp, openjdk
+giflib                              imlib2, libwebp, openjdk, feh
 gimp                                imagemagick
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps
 gjs                                 gobject-introspection, libsecret
@@ -245,8 +246,8 @@ ibm-db2                             php
 ibus                                sdl2, qt5
 icon-tools                          adwaita-icon-theme
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5, raptor, vte3
-imagemagick                         gnupg
-imlib2                              w3m
+imagemagick                         gnupg, feh
+imlib2                              w3m, feh
 impacket                            curl
 indic-fonts-ttf
 inkscape                            adwaita-icon-theme, imagemagick
@@ -318,7 +319,7 @@ liberation-fonts-ttf
 libev                               nghttp2
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links, mariadb, nghttp2, ntp
-libexif                             gst-plugins-bad, php
+libexif                             gst-plugins-bad, php, feh
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal, libsecret
 libgd                               php
 libglade                            python2-pygtk
@@ -337,7 +338,7 @@ libilbc                             ffmpeg
 libinput                            xorg-libinput-driver, qt5
 libiodbc                            redland, php
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick, feh
 libkate                             gst-plugins-bad
 libksba                             gnupg
 liblsmash                           x264
@@ -365,7 +366,7 @@ libopenni                           gst-plugins-bad
 libopenraw                          gegl
 libpaper                            cups, ghostscript
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh
 libproxy                            glib-networking, neon, qt5
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
@@ -632,7 +633,7 @@ perl-sub-quote                      perl-specio
 perl-sub-uplevel                    perl-test-exception
 perl-super                          perl-test-mockmodule
 perl-term-table                     perl-test2-suite
-perl-test-command
+perl-test-command                   feh
 perl-test-deep                      perl-cpan-meta-check, perl-file-copy-recursive
 perl-test-differences
 perl-test-exception                 perl-perlio-utf8_strict

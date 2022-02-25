@@ -680,6 +680,7 @@ l/ffmpeg.sh
 l/alsa-plugins.sh
 l/gegl.sh
 xap/imagemagick.sh
+ap/feh.sh
 
 
 # vim:ft=conf
