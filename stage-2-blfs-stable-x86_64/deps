@@ -3,7 +3,7 @@
 ###***###
 
 3store                              redland
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode
 aalib                               gst-plugins-good, sdl, gimp
 acpid                               xorg-server
 adabas                              php
@@ -172,7 +172,7 @@ gcc                                 cmake
 gconf                               pulseaudio
 gcr                                 pinentry, gnome-keyring
 gdb                                 python3, gcc, guile, glib, openssh, rustc, python-lxml, mutt
-gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler
+gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler, rxvt-unicode
 gdk-pixbuf-xlib                     w3m
 gegl                                libmypaint, gimp
 gelasio-font-ttf
@@ -751,6 +751,7 @@ rsync                               llvm, vim, apache-httpd
 rtmpdump                            gst-plugins-bad
 ruby                                docbook-xsl, vim, mc, mariadb, gegl
 rustc                               mozjs, librsvg
+rxvt-unicode
 samba                               mc, curl, libsoup, ffmpeg
 sane                                imagemagick
 sassc                               gtk+3
@@ -783,7 +784,7 @@ spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad
 sshfs
-startup-notification
+startup-notification                rxvt-unicode
 stunnel                             curl
 subversion                          cmake, git
 sudo

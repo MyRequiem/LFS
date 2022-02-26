@@ -681,6 +681,7 @@ l/alsa-plugins.sh
 l/gegl.sh
 xap/imagemagick.sh
 ap/feh.sh
+ap/rxvt-unicode.sh
 
 
 # vim:ft=conf
