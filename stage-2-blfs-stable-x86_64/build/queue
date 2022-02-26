@@ -684,6 +684,7 @@ ap/feh.sh
 ap/rxvt-unicode.sh
 ap/xsel.sh
 ap/xclip.sh
+n/transmission.sh
 
 
 # vim:ft=conf
