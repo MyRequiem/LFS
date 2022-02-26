@@ -686,6 +686,7 @@ ap/xsel.sh
 ap/xclip.sh
 n/transmission.sh
 xap/pavucontrol.sh
+l/id3lib.sh
 
 
 # vim:ft=conf

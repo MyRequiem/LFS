@@ -246,6 +246,7 @@ ibm-db2                             php
 ibus                                sdl2, qt5
 icon-tools                          adwaita-icon-theme
 icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5, raptor, vte3
+id3lib
 imagemagick                         gnupg, feh
 imlib2                              w3m, feh
 impacket                            curl
