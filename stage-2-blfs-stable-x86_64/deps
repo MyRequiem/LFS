@@ -223,7 +223,7 @@ gtk-doc                             glib, gobject-introspection, libgudev, dbus-
 gtk-engines
 gtk-vnc
 gtkmm2
-gtkmm3
+gtkmm3                              pavucontrol
 guile                               gnutls
 gutenprint                          cups
 gvfs                                gimp
@@ -297,7 +297,7 @@ libblockdev                         udisks
 libbluray                           ffmpeg
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl, ffmpeg
-libcanberra                         notification-daemon
+libcanberra                         notification-daemon, pavucontrol
 libcap                              pulseaudio, ntp, bind-utils
 libcap-ng                           gnome-keyring
 libcddb                             libcdio
@@ -382,7 +382,7 @@ libsecret                           pinentry
 libsectok                           openssh
 libshout                            gst-plugins-good
 libsidplay                          gst-plugins-ugly
-libsigc++2                          glibmm, cairomm
+libsigc++2                          glibmm, cairomm, pavucontrol
 libsndfile                          lame, sbc, gst-plugins-bad, libsamplerate, pulseaudio
 libsoup                             gst-plugins-good
 libspectre                          cairo, goffice
@@ -524,6 +524,7 @@ papi                                gtk+3
 parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
+pavucontrol
 pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php
 pcre2                               wget, libbytesize, git, xterm, qt5, vte3
@@ -693,7 +694,7 @@ procmail                            fetchmail
 profiles                            imagemagick
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php
-pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg
+pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol
 pyatspi2                            gtk+3
 pyflakes                            python3-pygobject3
 pyrad                               mit-kerberos-v5
