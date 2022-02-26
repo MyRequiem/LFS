@@ -683,6 +683,7 @@ xap/imagemagick.sh
 ap/feh.sh
 ap/rxvt-unicode.sh
 ap/xsel.sh
+ap/xclip.sh
 
 
 # vim:ft=conf

@@ -3,7 +3,7 @@
 ###***###
 
 3store                              redland
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip
 aalib                               gst-plugins-good, sdl, gimp
 acpid                               xorg-server
 adabas                              php
@@ -873,6 +873,7 @@ xcb-util-keysyms                    xorg-server, qt5
 xcb-util-renderutil                 xorg-server, qt5
 xcb-util-wm                         xorg-server, qt5
 xcb-util-xrm
+xclip
 xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xdg-utils                           cups, gimp, imagemagick
