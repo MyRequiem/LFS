@@ -3,7 +3,7 @@
 ###***###
 
 3store                              redland
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao
 aalib                               gst-plugins-good, sdl, gimp
 acpid                               xorg-server
 adabas                              php
@@ -12,12 +12,12 @@ adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
 aka-mrsid-utilities                 imagemagick
-alsa-firmware
-alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg
-alsa-oss                            gst-plugins-good, sdl, sdl2
-alsa-plugins                        sdl, sdl2
-alsa-tools                          alsa-firmware, sdl, sdl2
-alsa-utils                          faac, faad2, sdl, sdl2
+alsa-firmware                       libao
+alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao
+alsa-oss                            gst-plugins-good, sdl, sdl2, libao
+alsa-plugins                        sdl, sdl2, libao
+alsa-tools                          alsa-firmware, sdl, sdl2, libao
+alsa-utils                          faac, faad2, sdl, sdl2, libao
 aom                                 gst-plugins-bad
 apache-ant                          docbook-xsl
 apache-httpd                        libsoup, php
@@ -285,6 +285,7 @@ lensfun                             gegl
 liba52                              gst-plugins-ugly
 libaacplus                          ffmpeg
 libaio                              lvm2, mariadb
+libao
 libarchive                          cmake, ed, libgxps
 libass                              gst-plugins-bad, ffmpeg
 libassuan                           pinentry, gnupg, gpgme
@@ -695,7 +696,7 @@ procmail                            fetchmail
 profiles                            imagemagick
 psutil                              llvm
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php
-pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol
+pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao
 pyatspi2                            gtk+3
 pyflakes                            python3-pygobject3
 pyrad                               mit-kerberos-v5

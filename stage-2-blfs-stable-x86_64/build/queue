@@ -687,6 +687,7 @@ ap/xclip.sh
 n/transmission.sh
 xap/pavucontrol.sh
 l/id3lib.sh
+l/libao.sh
 
 
 # vim:ft=conf
