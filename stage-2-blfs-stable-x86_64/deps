@@ -3,7 +3,7 @@
 ###***###
 
 3store                              redland
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel
 aalib                               gst-plugins-good, sdl, gimp
 acpid                               xorg-server
 adabas                              php
@@ -897,6 +897,7 @@ xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xor
 xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorgproto                           libxau, libxdmcp
+xsel
 xterm                               imagemagick
 xvid                                ffmpeg
 xxhash                              rsync
