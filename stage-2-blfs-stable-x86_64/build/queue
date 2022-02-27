@@ -691,6 +691,7 @@ l/libao.sh
 l/taglib.sh
 l/gst-plugins-good.sh
 n/ebtables.sh
+n/dnsmasq.sh
 
 
 # vim:ft=conf

@@ -106,6 +106,7 @@ djbfft                              liba52
 djvulibre                           imagemagick
 dmalloc                             cyrus-sasl, lame, php, imagemagick
 dmraid                              libblockdev
+dnsmasq
 docbook-dsssl                       postgresql
 docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql
 docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm, libsecret
