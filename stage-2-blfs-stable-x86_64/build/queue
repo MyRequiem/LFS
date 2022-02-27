@@ -692,6 +692,7 @@ l/taglib.sh
 l/gst-plugins-good.sh
 n/ebtables.sh
 n/dnsmasq.sh
+d/device-tree-compiler.sh
 
 
 # vim:ft=conf

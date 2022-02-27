@@ -97,6 +97,7 @@ dbus-glib                           dbus, upower, enchant, gconf, gimp
 dconf                               ibus
 dejavu-fonts-ttf                    xterm, imagemagick
 desktop-file-utils                  glib, fltk, wpa-supplicant
+device-tree-compiler
 dhcpcd
 dialog                              alsa-utils
 digest-crc                          parted
