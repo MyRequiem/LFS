@@ -54,7 +54,7 @@ blender                             imagemagick
 blfs-bootscripts
 bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5
 bonjour                             postgresql
-boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2
+boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2, taglib
 bpf-utils                           iptables
 brotli                              curl, freetype, libsoup, apache-httpd
 bs2b                                gst-plugins-bad
@@ -74,7 +74,7 @@ cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 chronyd                             dhcpcd
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib
 cmocka                              gnutls, mit-kerberos-v5
 cogl                                cairo
 colord                              gtk+3, cups

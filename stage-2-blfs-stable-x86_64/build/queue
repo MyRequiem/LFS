@@ -688,6 +688,8 @@ n/transmission.sh
 xap/pavucontrol.sh
 l/id3lib.sh
 l/libao.sh
+l/taglib.sh
+l/gst-plugins-good.sh
 
 
 # vim:ft=conf
