@@ -119,6 +119,7 @@ doxygen                             icu, fuse, libexif, libusb, libyaml, popt, l
 dssim                               gst-plugins-bad
 dtrace                              ruby, gjs
 ducktype                            dbus
+ebtables
 ed
 efl                                 pinentry
 electric-fence                      lame, imagemagick

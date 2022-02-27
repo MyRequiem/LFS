@@ -690,6 +690,7 @@ l/id3lib.sh
 l/libao.sh
 l/taglib.sh
 l/gst-plugins-good.sh
+n/ebtables.sh
 
 
 # vim:ft=conf
