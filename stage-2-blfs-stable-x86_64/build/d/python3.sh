@@ -92,12 +92,16 @@ chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
 
 # ссылки в /usr/bin
+# pip           -> pip3
 # pip3          -> pip${MAJ_VERSION}
+# easy_install -> easy_install3
 # easy_install3 -> easy_install-${MAJ_VERSION}
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sfv "pip${MAJ_VERSION}" pip3
-    ln -sfv "easy_install-${MAJ_VERSION}" easy_install3
+    ln -svf "pip${MAJ_VERSION}" pip3
+    ln -svf pip3                pip
+    ln -svf "easy_install-${MAJ_VERSION}" easy_install3
+    ln -svf "easy_install3"               easy_install
 )
 
 # устанавливаем документацию
