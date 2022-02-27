@@ -31,7 +31,7 @@ cd "${PRGNAME}-v${ARCH_VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# избегаем предупреждения как-ошибки, которые прерывают сборку
+# избегаем 'все предупреждения являются ошибками', которые прерывают сборку
 sed -e "s|-Wunused|-Wno-error=unused-but-set-variable|" -i Makefile || exit 1
 
 make || exit 1
@@ -39,6 +39,8 @@ make                      \
     BINDIR=/usr/sbin      \
     MANDIR=/usr/share/man \
     install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/etc"/{rc.d,sysconfig}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
