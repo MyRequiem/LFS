@@ -40,6 +40,9 @@ make install DESTDIR="${TMP_DIR}"
     ln -svf ../libexec/glusterfs/gfevents/glustereventsd.py glustereventsd
 )
 
+# удалим /var/run во временной директории (монтируется в tmpfs)
+rm -rf "${TMP_DIR}/var/run"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
