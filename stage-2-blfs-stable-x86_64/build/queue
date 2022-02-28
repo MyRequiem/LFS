@@ -697,6 +697,7 @@ l/liburcu.sh
 l/gperftools.sh
 l/libmypaint.sh
 n/glusterfs.sh
+s/pcsc-lite.sh
 
 
 # vim:ft=conf
