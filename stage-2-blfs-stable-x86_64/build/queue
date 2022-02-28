@@ -699,6 +699,8 @@ l/libmypaint.sh
 n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
+n/libiscsi.sh
+a/udisks.sh
 
 
 # vim:ft=conf
