@@ -303,6 +303,7 @@ libblockdev                         udisks
 libbluray                           ffmpeg
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl, ffmpeg
+libcacard
 libcanberra                         notification-daemon, pavucontrol
 libcap                              pulseaudio, ntp, bind-utils
 libcap-ng                           gnome-keyring
@@ -535,7 +536,7 @@ pavucontrol
 pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php
 pcre2                               wget, libbytesize, git, xterm, qt5, vte3
-pcsc-lite
+pcsc-lite                           libcacard
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
 perl-alien-build                    perl-alien-libxml2

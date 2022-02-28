@@ -698,6 +698,7 @@ l/gperftools.sh
 l/libmypaint.sh
 n/glusterfs.sh
 s/pcsc-lite.sh
+l/libcacard.sh
 
 
 # vim:ft=conf
