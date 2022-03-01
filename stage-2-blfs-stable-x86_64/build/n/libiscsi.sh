@@ -10,6 +10,21 @@ PRGNAME="libiscsi"
 # Recommended: no
 # Optional:    no
 
+### Конфигурация ядра
+#    CONFIG_SCSI_LOWLEVEL=y
+#    CONFIG_ISCSI_IBFT_FIND=y
+#    CONFIG_ISCSI_IBFT=m
+#    CONFIG_SCSI_ISCSI_ATTRS=m
+#    CONFIG_ISCSI_TCP=m
+#    CONFIG_ISCSI_BOOT_SYSFS=m
+#    CONFIG_SCSI_CXGB3_ISCSI=m
+#    CONFIG_SCSI_CXGB4_ISCSI=m
+#    CONFIG_SCSI_BNX2_ISCSI=m
+#    CONFIG_BE2ISCSI=m
+#    CONFIG_SCSI_QLA_ISCSI=m
+#    CONFIG_FW_CFG_SYSFS=m
+#    CONFIG_FW_CFG_SYSFS_CMDLINE=y
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
