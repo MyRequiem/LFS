@@ -783,6 +783,7 @@ sinhala-lklug-font-ttf
 skia                                cairo
 slang                               aalib, mc, mutt
 smartmontools
+snappy
 soundtouch                          gst-plugins-bad
 soxr                                pulseaudio
 spandsp                             gst-plugins-bad
