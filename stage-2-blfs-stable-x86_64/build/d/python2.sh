@@ -45,13 +45,15 @@ sed -i '/2to3/d' ./setup.py
 VALGRIND="--without-valgrind"
 command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
 
-./configure              \
-    --prefix=/usr        \
-    --enable-shared      \
-    --with-system-expat  \
-    --with-system-ffi    \
-    "${VALGRIND}"        \
-    --enable-unicode=ucs4 || exit 1
+./configure               \
+    --prefix=/usr         \
+    --enable-shared       \
+    --with-system-expat   \
+    --with-system-ffi     \
+    "${VALGRIND}"         \
+    --with-ensurepip=yes  \
+    --enable-unicode=ucs4 \
+    --enable-optimization || exit 1
 
 make || exit 1
 # make -k test
@@ -64,10 +66,14 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
     rm -f 2to3
     # python2        -> python2.7
     # python         -> python2
-    # python2-config -> python2.7-config
     ln -svf python2.7 python2
     ln -svf python2 python
+    # python2-config -> python2.7-config
     ln -svf python2.7-config python2-config
+    # easy_install2  -> easy_install-2.7
+    ln -svf easy_install-2.7 easy_install2
+    # pip2           -> pip2.7
+    ln -svf pip2.7 pip2
 )
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"
