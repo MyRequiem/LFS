@@ -792,6 +792,7 @@ speech-dispatcher                   qt5
 speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudioa, ffmpeg
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2, bind-utils
 sphinx-rtd-theme                    python-dbus
+spice-protocol
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad

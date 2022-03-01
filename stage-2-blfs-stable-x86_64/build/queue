@@ -704,6 +704,7 @@ a/udisks.sh
 l/libnfs.sh
 d/snappy.sh
 d/python-modules/python-pyparsing.sh
+d/spice-protocol.sh
 
 
 # vim:ft=conf
