@@ -43,7 +43,14 @@ ISCSI="--disable-iscsi"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v btrfs        &>/dev/null && BTRFS="--enable-btrfs"
 command -v fsadm        &>/dev/null && LVM2="--enable-lvm2"
-[ -x /usr/lib/libiscsi.so ]         && ISCSI="--enable-iscsi"
+
+# не собирается с параметром --enable-iscsi и установленным libiscsi
+#    checking libiscsi.h usability... no
+#    checking libiscsi.h presence... no
+#    checking for libiscsi.h... no
+#    checking for libiscsi_init in -liscsi... no
+#    configure: error: iSCSI support requested but libraries not found
+# [ -x /usr/lib/libiscsi.so ]         && ISCSI="--enable-iscsi"
 
 ./configure           \
     --prefix=/usr     \
