@@ -361,6 +361,7 @@ libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 libmypaint                          mypaint-brushes, gimp
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
+libnfs
 libnice                             gst-plugins-bad
 libnl                               libpcap, iw, wpa-supplicant
 libnotify                           ibus, zenity

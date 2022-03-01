@@ -54,3 +54,16 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # # shellcheck disable=SC2086
 # ./configure \
 #     ${XORG_CONFIG} || exit 1
+
+# SOURCES="${ROOT}/src"
+# VERSION="$(find "${SOURCES}" -type f \
+#     -name "${SRC_ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+#     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+#
+# BUILD_DIR="/tmp/build-${SRC_ARCH_NAME}-${VERSION}"
+# rm -rf "${BUILD_DIR}"
+# mkdir -pv "${BUILD_DIR}"
+# cd "${BUILD_DIR}" || exit 1
+#
+# tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+# cd "${SRC_ARCH_NAME}-${VERSION}" || exit 1

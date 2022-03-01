@@ -701,6 +701,7 @@ s/pcsc-lite.sh
 l/libcacard.sh
 n/libiscsi.sh
 a/udisks.sh
+l/libnfs.sh
 
 
 # vim:ft=conf
