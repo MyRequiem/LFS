@@ -1,0 +1,8 @@
+diff -U 1 -r snappy-1.1.9_orig/snappy.cc snappy-1.1.9/snappy.cc
+--- snappy-1.1.9_orig/snappy.cc	2022-03-02 00:18:15.555179632 +0400
++++ snappy-1.1.9/snappy.cc	2022-03-02 00:27:15.597219252 +0400
+@@ -1016,3 +1016,3 @@
+ SNAPPY_ATTRIBUTE_ALWAYS_INLINE
+-size_t AdvanceToNextTag(const uint8_t** ip_p, size_t* tag) {
++inline size_t AdvanceToNextTag(const uint8_t** ip_p, size_t* tag) {
+   const uint8_t*& ip = *ip_p;
