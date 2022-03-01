@@ -70,3 +70,13 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 /boot/System.map-lfs-${VERSION}
 /boot/config-lfs-${VERSION}
 EOF
+
+echo ""
+echo "======================================================="
+echo "### NOTE"
+echo "Do not remember create a symlinks in /boot directory:"
+echo "    System.map -> System.map-lfs-${VERSION}"
+echo "    config     -> config-lfs-${VERSION}"
+echo "    vmlinuz    -> vmlinuz-lfs"
+echo "======================================================="
+echo ""
