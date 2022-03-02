@@ -714,6 +714,7 @@ ap/pulseaudio.sh
 n/spice.sh
 s/usbredir.sh
 n/spice-gtk.sh
+n/vde2.sh
 
 
 # vim:ft=conf
