@@ -852,6 +852,7 @@ vbetool                             pm-utils
 vde2
 vdo                                 lvm2
 vim                                 fcron
+virglrenderer
 virtuoso                            redland
 vlgothic-fonts-ttf
 vo-aac                              gst-plugins-bad
