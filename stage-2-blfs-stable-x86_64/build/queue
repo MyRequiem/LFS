@@ -712,6 +712,8 @@ l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
 ap/pulseaudio.sh
 n/spice.sh
+s/usbredir.sh
+n/spice-gtk.sh
 
 
 # vim:ft=conf
