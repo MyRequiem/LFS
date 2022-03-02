@@ -734,3 +734,5 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.9-gtest.patch
 https://github.com/pyparsing/pyparsing/releases/download/pyparsing_2.4.7/pyparsing-2.4.7.tar.gz
 https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz
+https://gstreamer.freedesktop.org/src/orc/orc-0.4.32.tar.xz
+https://www.spice-space.org/download/releases/spice-server/spice-0.15.0.tar.bz2

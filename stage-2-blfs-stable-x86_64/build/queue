@@ -705,6 +705,13 @@ l/libnfs.sh
 d/snappy.sh
 d/python-modules/python-pyparsing.sh
 d/spice-protocol.sh
+d/orc.sh
+l/gst-plugins-base.sh
+l/gst-plugins-good.sh
+l/gst-plugins-bad.sh
+l/gst-plugins-ugly.sh
+ap/pulseaudio.sh
+n/spice.sh
 
 
 # vim:ft=conf

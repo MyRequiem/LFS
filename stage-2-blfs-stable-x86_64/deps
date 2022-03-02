@@ -519,8 +519,8 @@ opensc                              openssh
 openslp                             openldap
 openssh                             libssh2, sshfs, gnome-keyring
 opie                                sudo
-opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg
-orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio
+opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice
+orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio, spice
 ossp_mm                             php
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
@@ -717,9 +717,9 @@ python-markupsafe                   python3-mako, python3-jinja2
 python-py3c
 python-pycryptodome
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
-python-pyparsing                    libinput
+python-pyparsing                    libinput, spice
 python-pyyaml                       llvm
-python-six                          libbytesize, python-slip, python3-scour
+python-six                          libbytesize, python-slip, python3-scour, spice
 python-slip
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms
 python2-future
@@ -792,7 +792,8 @@ speech-dispatcher                   qt5
 speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudioa, ffmpeg
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2, bind-utils
 sphinx-rtd-theme                    python-dbus
-spice-protocol
+spice
+spice-protocol                      spice
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad
