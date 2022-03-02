@@ -716,6 +716,8 @@ s/usbredir.sh
 n/spice-gtk.sh
 n/vde2.sh
 l/virglrenderer.sh
+l/libmd.sh
+l/libbsd.sh
 
 
 # vim:ft=conf

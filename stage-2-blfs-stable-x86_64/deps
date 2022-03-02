@@ -301,6 +301,7 @@ libavtp                             alsa-plugins, gst-plugins-bad
 libbacktrace                        gimp
 libblockdev                         udisks
 libbluray                           ffmpeg
+libbsd
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl, ffmpeg
 libcacard                           spice-gtk
@@ -351,6 +352,7 @@ libksba                             gnupg
 liblsmash                           x264
 libmad
 libmcrypt                           php
+libmd                               libbsd
 libmetalink                         curl
 libmfx                              gst-plugins-bad
 libmms                              gst-plugins-bad
