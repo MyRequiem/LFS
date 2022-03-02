@@ -301,7 +301,7 @@ libavtp                             alsa-plugins, gst-plugins-bad
 libbacktrace                        gimp
 libblockdev                         udisks
 libbluray                           ffmpeg
-libbsd
+libbsd                              netcat-openbsd
 libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl, ffmpeg
 libcacard                           spice-gtk
@@ -485,6 +485,7 @@ ndctl                               libblockdev
 neon                                gst-plugins-bad
 net-snmp                            php
 net-tools                           gnutls, openssh
+netcat-openbsd
 nettle                              libarchive, gnutls, mesa, xorg-server, gst-plugins-bad
 nftables                            iptables
 nghttp2                             cmake, nodejs, curl, apache-httpd

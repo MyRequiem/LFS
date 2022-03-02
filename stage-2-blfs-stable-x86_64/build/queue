@@ -718,6 +718,7 @@ n/vde2.sh
 l/virglrenderer.sh
 l/libmd.sh
 l/libbsd.sh
+n/netcat-openbsd.sh
 
 
 # vim:ft=conf
