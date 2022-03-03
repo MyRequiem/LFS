@@ -25,7 +25,10 @@ mkdir -pv "${TMP_DIR}"
 
 INSTALL_GTK_DOC="false"
 ICU=""
+YAJL="--with-yajl=no"
+
 command -v icu-config &>/dev/null && ICU="--with-icu-config=/usr/bin/icu-config"
+[ -x /usr/lib/libyajl.so ] && YAJL="--with-yajl=yes"
 
 # устраним несколько проблем с безопасностью
 patch --verbose -Np1 \
@@ -34,6 +37,7 @@ patch --verbose -Np1 \
 ./configure       \
     --prefix=/usr \
     ${ICU}        \
+    "${YAJL}"     \
     --disable-static || exit 1
 
 make || exit 1
