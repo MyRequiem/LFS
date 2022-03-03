@@ -719,6 +719,8 @@ l/virglrenderer.sh
 l/libmd.sh
 l/libbsd.sh
 n/netcat-openbsd.sh
+s/numactl.sh
+l/x265.sh
 
 
 # vim:ft=conf
