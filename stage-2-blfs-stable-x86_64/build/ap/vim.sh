@@ -108,8 +108,13 @@ cat << EOF > "${TMP_DIR}${VIMRC}"
 " not after source \$VIMRUNTIME/defaults.vim
 let skip_defaults_vim = 1
 
+language en_US
+
 set nocompatible
 syntax on
+filetype on
+filetype plugin on
+filetype plugin indent on
 set background=dark
 set number
 set backspace=indent,eol,start
@@ -122,6 +127,7 @@ set shiftwidth=4
 set softtabstop=4
 set shiftround
 set expandtab
+set helplang=en
 
 " End ${VIMRC}
 EOF
