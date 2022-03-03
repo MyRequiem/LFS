@@ -723,6 +723,8 @@ s/numactl.sh
 l/x265.sh
 d/python-modules/python-pycurl.sh
 d/python-modules/python-urlgrabber.sh
+l/libyajl.sh
+l/raptor.sh
 
 
 # vim:ft=conf
