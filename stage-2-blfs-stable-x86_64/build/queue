@@ -721,6 +721,8 @@ l/libbsd.sh
 n/netcat-openbsd.sh
 s/numactl.sh
 l/x265.sh
+d/python-modules/python-pycurl.sh
+d/python-modules/python-urlgrabber.sh
 
 
 # vim:ft=conf
