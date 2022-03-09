@@ -28,8 +28,18 @@ find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
 # устаревшее местоположение /var/spool/mail для пользовательских почтовых
 # ящиков, которые Shadow использует по умолчанию, на /var/mail, используемое в
 # LFS
-sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
-    -e 's:/var/spool/mail:/var/mail:'                 \
+sed -e 's:#ENCRYPT_METHOD.*:ENCRYPT_METHOD SHA512:'        \
+    -e 's:MAIL_DIR.*:MAIL_DIR /var/mail:'                  \
+    -e 's:FAIL_DELAY.*:FAIL_DELAY 0:'                      \
+    -e 's:FAILLOG_ENAB.*:FAILLOG_ENAB no:'                 \
+    -e 's:LASTLOG_ENAB.*:LASTLOG_ENAB no:'                 \
+    -e 's:MAIL_CHECK_ENAB.*:MAIL_CHECK_ENAB no:'           \
+    -e 's:OBSCURE_CHECKS_ENAB.*:OBSCURE_CHECKS_ENAB no:'   \
+    -e 's:PORTTIME_CHECKS_ENAB.*:PORTTIME_CHECKS_ENAB no:' \
+    -e 's:QUOTAS_ENAB.*:QUOTAS_ENAB no:'                   \
+    -e 's:SYSLOG_SU_ENAB.*:SYSLOG_SU_ENAB no:'             \
+    -e 's:SYSLOG_SG_ENAB.*:SYSLOG_SG_ENAB no:'             \
+    -e 's:PASS_ALWAYS_WARN.*:PASS_ALWAYS_WARN no:'         \
     -i etc/login.defs || exit 1
 
 ### Примечание
