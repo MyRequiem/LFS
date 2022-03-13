@@ -725,6 +725,13 @@ d/python-modules/python-pycurl.sh
 d/python-modules/python-urlgrabber.sh
 l/libyajl.sh
 l/raptor.sh
+s/talloc.sh
+s/jemalloc.sh
+n/nghttp2.sh
+l/libcap-ng.sh
+l/gnome-keyring.sh
+s/qemu.sh
+l/libvirt.sh
 
 
 # vim:ft=conf

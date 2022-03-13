@@ -748,3 +748,9 @@ https://github.com/numactl/numactl/releases/download/v2.0.14/numactl-2.0.14.tar.
 https://files.pythonhosted.org/packages/47/f9/c41d6830f7bd4e70d5726d26f8564538d08ca3a7ac3db98b325f94cdcb7f/pycurl-7.44.1.tar.gz
 https://files.pythonhosted.org/packages/b1/23/61cb4d829138f24bfae2c77af6794ddd67240811dbb4e3e2eb22c4f57742/urlgrabber-4.1.0.tar.gz
 https://fossies.org/linux/www/yajl-2.1.0.tar.gz
+https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
+https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2
+https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.8.2.tar.gz
+http://download.qemu-project.org/qemu-5.2.0.tar.xz
+https://libvirt.org/sources/libvirt-8.1.0.tar.xz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
