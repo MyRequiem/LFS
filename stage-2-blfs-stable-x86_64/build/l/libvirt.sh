@@ -49,7 +49,6 @@ meson                              \
     --sysconfdir=/etc              \
     --localstatedir=/var           \
     -Dtests=disabled               \
-    -Ddocs=disabled                \
     -Dqemu_user="${VIRTUSER}"      \
     -Dqemu_group="${VIRTGROUP}"    \
     -Dexpensive_tests=disabled     \
@@ -71,6 +70,7 @@ meson                              \
     -Dstorage_vstorage=disabled    \
     -Ddtrace=disabled              \
     -Dinit_script=none             \
+    -Ddocs=enabled                 \
     -Ddocdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
