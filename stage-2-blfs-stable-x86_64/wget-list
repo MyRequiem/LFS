@@ -756,3 +756,4 @@ http://download.qemu-project.org/qemu-5.2.0.tar.xz
 https://libvirt.org/sources/libvirt-8.1.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
 https://libvirt.org/sources/python/libvirt-python-8.1.0.tar.gz
+https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz
