@@ -259,6 +259,7 @@ x/drivers/xorg-ati-driver.sh
 x/drivers/xorg-fbdev-driver.sh
 x/drivers/xorg-intel-driver.sh
 x/drivers/xorg-nouveau-driver.sh
+x/drivers/xorg-vmware-driver.sh
 x/libs/startup-notification.sh
 x/xcb/xcb-util-xrm.sh
 x/misc/xterm.sh
