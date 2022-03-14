@@ -414,7 +414,7 @@ libusb                              usbutils, libpcap, upower, gnupg, cups, gst-
 libuv                               cmake, nodejs, bind-utils
 libva                               mesa, ffmpeg
 libvdpau                            mesa, ffmpeg
-libvirt
+libvirt                             python3-libvirt
 libvisual                           gst-plugins-base
 libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
 libvpx                              gst-plugins-good, ffmpeg
@@ -428,7 +428,7 @@ libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc
-libyajl                             raptor, libvirt
+libyajl                             raptor, libvirt, python3-libvirt
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils
@@ -738,6 +738,7 @@ python3                             cython, lsb-tools, libxml2, python-six, pyth
 python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-jinja2
+python3-libvirt
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
 python3-pyatspi2

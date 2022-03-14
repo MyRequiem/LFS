@@ -733,6 +733,7 @@ l/libcap-ng.sh
 l/gnome-keyring.sh
 s/qemu.sh
 l/libvirt.sh
+d/python-modules/python3-libvirt.sh
 
 
 # vim:ft=conf
