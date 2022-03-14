@@ -757,3 +757,7 @@ https://libvirt.org/sources/libvirt-8.1.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
 https://libvirt.org/sources/python/libvirt-python-8.1.0.tar.gz
 https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz
+https://files.pythonhosted.org/packages/6c/ae/d26450834f0acc9e3d1f74508da6df1551ceab6c2ce0766a593362d6d57f/certifi-2021.10.8.tar.gz
+https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz
+https://files.pythonhosted.org/packages/62/08/e3fc7c8161090f742f504f40b1bccbfc544d4a4e09eb774bf40aafce5436/idna-3.3.tar.gz
+https://files.pythonhosted.org/packages/b0/b1/7bbf5181f8e3258efae31702f5eab87d8a74a72a0aa78bc8c08c1466e243/urllib3-1.26.8.tar.gz

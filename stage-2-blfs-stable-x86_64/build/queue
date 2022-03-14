@@ -735,6 +735,10 @@ s/qemu.sh
 l/libvirt.sh
 d/python-modules/python3-libvirt.sh
 l/libvirt-glib.sh
+d/python-modules/python-certifi.sh
+d/python-modules/python-chardet.sh
+d/python-modules/python3-idna.sh
+d/python-modules/python-urllib3.sh
 
 
 # vim:ft=conf
