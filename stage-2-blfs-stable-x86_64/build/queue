@@ -739,6 +739,8 @@ d/python-modules/python-certifi.sh
 d/python-modules/python-chardet.sh
 d/python-modules/python3-idna.sh
 d/python-modules/python-urllib3.sh
+d/python-modules/python-requests.sh
+d/python-modules/python-ipaddr.sh
 
 
 # vim:ft=conf
