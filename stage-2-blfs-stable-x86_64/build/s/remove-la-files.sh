@@ -59,8 +59,9 @@ mkdir -p $OLD_LA_DIR
 OPTDIRS=$(find /opt -mindepth 1 -maxdepth 1 -type d)
 
 # move any found .la files to a directory out of the way
-find /usr/lib $OPTDIRS -name "*.la" ! -path "/usr/lib/ImageMagick*" \
-    -exec mv -fv {} $OLD_LA_DIR \;
+find /usr/lib $OPTDIRS -name "*.la" ! -name "libosp.la" \
+    ! -path "/usr/lib/ImageMagick*" -exec mv -fv {} $OLD_LA_DIR \;
+
 ###############
 
 # fix any .pc files that may have .la references
