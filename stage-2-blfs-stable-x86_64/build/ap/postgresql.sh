@@ -49,6 +49,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' \
     src/include/pg_config_manual.h || exit 1
 
+export PYTHON="/usr/bin/python3" &&
 ./configure                                      \
     --prefix=/usr                                \
     --enable-thread-safety                       \
