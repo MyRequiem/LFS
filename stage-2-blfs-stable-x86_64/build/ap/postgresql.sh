@@ -17,7 +17,7 @@ PRGNAME="postgresql"
 #              mit-kerberos-v5
 #              bonjour (https://developer.apple.com/bonjour/)
 #              fop
-#              docbook4.5
+#              docbook-dtd4
 #              docbook-dsssl
 #              docbook-utils
 #              openjade
