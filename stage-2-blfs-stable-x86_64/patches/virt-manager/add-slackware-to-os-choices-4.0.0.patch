@@ -1,0 +1,50 @@
+diff -Nur virt-manager-4.0.0_orig/virtinst/install/urldetect.py virt-manager-4.0.0/virtinst/install/urldetect.py
+--- virt-manager-4.0.0_orig/virtinst/install/urldetect.py	2022-02-13 17:51:40.000000000 +0400
++++ virt-manager-4.0.0/virtinst/install/urldetect.py	2022-03-18 09:38:40.333533338 +0400
+@@ -482,6 +482,46 @@
+             return True
+ 
+ 
++class SlackwareDistro(_DistroTree):
++    # slackware doesn't have installable URLs, so this is just for a
++    # mounted ISO
++    name = "Slackware"
++    urldistro = "slackware"
++    os_variant = "linux"
++
++    PRETTY_NAME = "Slackware"
++    matching_distros = ["slackware"]
++    _variant_prefix = "slackware"
++
++    _boot_iso_paths = []
++    _xen_kernel_paths = []
++
++    def __init__(self, *args, **kwargs):
++        Distro.__init__(self, *args, **kwargs)
++        if re.match(r'i[4-9]86', self.arch):
++            self.arch = 'i486'
++            self.kname = 'hugesmp.s'
++        else:
++            self.arch = 'x86_64'
++            self.kname = 'huge.s'
++
++        self._hvm_kernel_paths = [("kernels/%s/bzImage" % self.kname,
++                                    "isolinux/initrd.img")]
++
++    def isValidStore(self):
++        # Don't support any paravirt installs
++        if self.type is not None and self.type != "hvm":
++            return False
++
++        # Slackware website / media appear to have a Slackware-HOWTO
++        # file in top level which we can use as our 'magic'
++        # check for validity
++        if not self.fetcher.hasFile("Slackware-HOWTO"):
++            return False
++
++        logging.debug("Regex didn't match, not a %s distro", self.name)
++        return False
++
+ 
+ class _SuseDistro(_RHELDistro):
+     PRETTY_NAME = None
