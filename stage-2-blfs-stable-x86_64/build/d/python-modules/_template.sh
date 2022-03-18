@@ -30,7 +30,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} ()
 #
 #
-# Home page:
+# Home page: https://pypi.org/project/${ARCH_NAME}/
 # Download:
 #
 EOF
