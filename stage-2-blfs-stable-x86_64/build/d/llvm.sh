@@ -33,7 +33,7 @@ COMPILER_RT="compiler-rt"
 #              python-pyyaml
 #              zip
 #              ocaml           (https://ocaml.org/)
-#              psutil          (https://pypi.org/project/psutil/)
+#              python-psutil   (https://pypi.org/project/psutil/)
 #              recommonmark    (https://pypi.org/project/recommonmark/)
 #              sphinx          (https://pypi.org/project/Sphinx/)
 #              z3              (https://github.com/Z3Prover/z3)

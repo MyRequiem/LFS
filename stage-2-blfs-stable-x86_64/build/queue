@@ -758,6 +758,9 @@ l/gtk+2.sh
 l/gtk+3.sh
 ap/flac.sh
 ap/postgresql.sh
+d/python-modules/python-psutil.sh
+d/python-modules/python-netifaces.sh
+d/llvm.sh
 
 
 # vim:ft=conf

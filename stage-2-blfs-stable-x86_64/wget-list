@@ -775,3 +775,5 @@ https://downloads.sourceforge.net/docbook/docbook-dsssl-1.79.tar.bz2
 https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/docbook-utils-0.6.14.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/docbook-utils-0.6.14-grep_fix-1.patch
 http://downloads.sourceforge.net/tunctl/tunctl-1.5.tar.gz
+https://files.pythonhosted.org/packages/47/b6/ea8a7728f096a597f0032564e8013b705aa992a0990becd773dcc4d7b4a7/psutil-5.9.0.tar.gz
+https://files.pythonhosted.org/packages/a6/91/86a6eac449ddfae239e93ffc1918cf33fd9bab35c04d1e963b311e347a73/netifaces-0.11.0.tar.gz
