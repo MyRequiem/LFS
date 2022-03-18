@@ -761,6 +761,7 @@ ap/postgresql.sh
 d/python-modules/python-psutil.sh
 d/python-modules/python-netifaces.sh
 d/llvm.sh
+s/virt-manager.sh
 
 
 # vim:ft=conf

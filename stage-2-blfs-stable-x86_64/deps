@@ -226,7 +226,7 @@ gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3,
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3, gexiv2, gimp, libgxps
 gtk-engines
-gtk-vnc
+gtk-vnc                             virt-manager
 gtkmm2
 gtkmm3                              pavucontrol
 guile                               gnutls
@@ -375,7 +375,7 @@ libogg                              libvorbis, gst-plugins-base, flac, speex, li
 libopenmpt                          gst-plugins-bad
 libopenni                           gst-plugins-bad
 libopenraw                          gegl
-libosinfo
+libosinfo                           virt-manager
 libpaper                            cups, ghostscript
 libpcap                             iptables
 libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh
@@ -416,8 +416,8 @@ libusb                              usbutils, libpcap, upower, gnupg, cups, gst-
 libuv                               cmake, nodejs, bind-utils
 libva                               mesa, ffmpeg
 libvdpau                            mesa, ffmpeg
-libvirt                             python3-libvirt, libvirt-glib
-libvirt-glib
+libvirt                             python3-libvirt, libvirt-glib, virt-manager
+libvirt-glib                        virt-manager
 libvisual                           gst-plugins-base
 libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
 libvpx                              gst-plugins-good, ffmpeg
@@ -431,7 +431,7 @@ libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc
-libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib
+libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
@@ -529,8 +529,8 @@ openssh                             libssh2, sshfs, gnome-keyring
 opie                                sudo
 opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk
 orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio, spice
-osinfo-db                           libosinfo
-osinfo-db-tools                     osinfo-db, libosinfo
+osinfo-db                           libosinfo, virt-manager
+osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 ossp_mm                             php
 oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
@@ -724,7 +724,7 @@ python-chardet                      python-requests
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 python-docutils                     python-dbus, sshfs, alsa-utils
-python-ipaddr
+python-ipaddr                       virt-manager
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
 python-netifaces
@@ -735,7 +735,7 @@ python-pycurl                       python-urlgrabber
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
 python-pyyaml                       llvm
-python-requests
+python-requests                     virt-manager
 python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber
 python-slip
 python-urlgrabber                   libvirt
@@ -751,7 +751,7 @@ python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-idna                        python-requests
 python3-jinja2
-python3-libvirt
+python3-libvirt                     virt-manager
 python3-mako                        gobject-introspection, mesa
 python3-markdown                    gobject-introspection
 python3-pyatspi2
@@ -814,9 +814,9 @@ speech-dispatcher                   qt5
 speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudioa, ffmpeg
 sphinx                              cmake, llvm, python-dbus, cyrus-sasl, libinput, mariadb, nghttp2, bind-utils
 sphinx-rtd-theme                    python-dbus
-spice                               spice-gtk
-spice-gtk
-spice-protocol                      spice, spice-gtk
+spice                               spice-gtk, virt-manager
+spice-gtk                           virt-manager
+spice-protocol                      spice, spice-gtk, virt-manager
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad
@@ -851,7 +851,7 @@ tree
 tremor                              gst-plugins-base
 trousers                            gnutls
 tslib                               qt5
-tunctl
+tunctl                              virt-manager
 twolame                             gst-plugins-good, gst-plugins-ugly, ffmpeg
 udisks
 ufraw                               imagemagick
@@ -876,6 +876,7 @@ vde2
 vdo                                 lvm2
 vim                                 fcron
 virglrenderer
+virt-manager
 virtuoso                            redland
 vlgothic-fonts-ttf
 vo-aac                              gst-plugins-bad
