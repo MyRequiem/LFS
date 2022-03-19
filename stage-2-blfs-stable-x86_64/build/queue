@@ -762,6 +762,8 @@ d/python-modules/python-psutil.sh
 d/python-modules/python-netifaces.sh
 d/llvm.sh
 s/virt-manager.sh
+l/libev.sh
+n/nghttp2.sh
 
 
 # vim:ft=conf
