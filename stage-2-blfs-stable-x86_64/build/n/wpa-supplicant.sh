@@ -28,7 +28,7 @@ ARCH_NAME="${PRGNAME//-/_}"
 # /etc/sysconfig/wpa_supplicant-wlan0.conf
 #
 # настроить подключение по названию точки доступа (SSID) и паролю
-#    cat << EOF >
+#    cat << EOF > /etc/sysconfig/wpa_supplicant-wlan0.conf
 #    ctrl_interface=/run/wpa_supplicant
 #    ctrl_interface_group=root
 #    update_config=1
