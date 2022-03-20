@@ -764,6 +764,7 @@ d/llvm.sh
 s/virt-manager.sh
 l/libev.sh
 n/nghttp2.sh
+d/perl-modules/perl-pod-simple.sh
 
 
 # vim:ft=conf

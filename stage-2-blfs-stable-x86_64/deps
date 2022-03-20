@@ -641,6 +641,7 @@ perl-parse-yapp
 perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir, perl-ffi-checklib
 perl-perlio-utf8_strict
 perl-pod-pom-view-restructured      cyrus-sasl
+perl-pod-simple
 perl-regexp-common
 perl-role-tiny                      perl-specio
 perl-scope-guard                    perl-test2-suite, perl-test-file-sharedir
