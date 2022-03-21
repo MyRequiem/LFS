@@ -768,6 +768,7 @@ d/perl-modules/perl-pod-simple.sh
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh
 d/perl-modules/perl-types-serialiser.sh
+d/perl-modules/perl-json-xs.sh
 
 
 # vim:ft=conf
