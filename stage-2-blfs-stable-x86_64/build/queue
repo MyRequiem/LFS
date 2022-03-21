@@ -767,6 +767,7 @@ n/nghttp2.sh
 d/perl-modules/perl-pod-simple.sh
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh
+d/perl-modules/perl-types-serialiser.sh
 
 
 # vim:ft=conf

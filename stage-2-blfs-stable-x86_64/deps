@@ -568,7 +568,7 @@ perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
 perl-class-tiny                     perl-test-file-sharedir
 perl-clone                          perl-data-compare
-perl-common-sense
+perl-common-sense                   perl-types-serialiser
 perl-config-autoconf                perl-text-bibtex
 perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
 perl-data-compare
@@ -683,6 +683,7 @@ perl-text-roman
 perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message, perl-libwww-perl
+perl-types-serialiser
 perl-unicode-collate
 perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
