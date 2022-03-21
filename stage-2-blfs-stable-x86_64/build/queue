@@ -766,6 +766,7 @@ l/libev.sh
 n/nghttp2.sh
 d/perl-modules/perl-pod-simple.sh
 d/perl-modules/perl-common-sense.sh
+d/perl-modules/perl-canary-stability.sh
 
 
 # vim:ft=conf

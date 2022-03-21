@@ -560,6 +560,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
+perl-canary-stability
 perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
