@@ -552,6 +552,7 @@ pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
 perl-alien-build                    perl-alien-libxml2
 perl-alien-libxml2                  perl-xml-libxml
+perl-anyevent
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -560,7 +561,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-canary-stability               perl-json-xs
+perl-canary-stability               perl-json-xs, perl-anyevent
 perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
