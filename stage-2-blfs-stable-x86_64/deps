@@ -552,7 +552,8 @@ pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
 perl-alien-build                    perl-alien-libxml2
 perl-alien-libxml2                  perl-xml-libxml
-perl-anyevent
+perl-anyevent                       perl-anyevent-i3
+perl-anyevent-i3
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -613,7 +614,7 @@ perl-io-socket-ssl                  wget, perl-lwp-protocol-https, ntp
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
-perl-json-xs
+perl-json-xs                        perl-anyevent-i3
 perl-libwww-perl                    perl-www-robotrules, perl-lwp-protocol-https
 perl-lingua-translit
 perl-list-allutils
