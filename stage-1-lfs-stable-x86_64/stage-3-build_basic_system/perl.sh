@@ -60,7 +60,10 @@ make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-unset BUILD_ZLIB BUILD_BZIP2
+# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+find "${TMP_DIR}" \
+    \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
+    -exec rm {} \;
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
