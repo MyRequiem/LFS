@@ -771,6 +771,7 @@ d/perl-modules/perl-types-serialiser.sh
 d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
+s/clipnotify.sh
 
 
 # vim:ft=conf
