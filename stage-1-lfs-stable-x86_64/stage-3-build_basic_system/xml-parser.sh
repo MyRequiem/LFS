@@ -20,13 +20,10 @@ make
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# исправим пути (убираем из путей временную директорию установки пакета)
-PERL_MAJ_VER="$(perl -v | /bin/grep version | cut -d \( -f 2 | cut -d v -f 2 | \
-    cut -d . -f 1,2)"
-PERL_MAIN_VER="$(echo "${PERL_MAJ_VER}" | cut -d . -f 1)"
-PERL_LIB_PATH="/usr/lib/perl${PERL_MAIN_VER}/${PERL_MAJ_VER}"
-sed -e "s|${TMP_DIR}||" -i \
-    "${TMP_DIR}${PERL_LIB_PATH}/site_perl/auto/XML/Parser/.packlist"
+# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+find "${TMP_DIR}" \
+    \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
+    -exec rm {} \;
 
 /bin/cp -vR "${TMP_DIR}"/* /
 

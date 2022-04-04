@@ -33,6 +33,19 @@ make                   || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
+# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+find "${TMP_DIR}" \
+    \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
+    -exec rm {} \;
+
+PERL_MAJ_VER="$(perl -v | /bin/grep version | cut -d \( -f 2 | cut -d v -f 2 | \
+    cut -d . -f 1,2)"
+PERL_MAIN_VER="$(echo "${PERL_MAJ_VER}" | cut -d . -f 1)"
+PERL_LIB_PATH="/usr/lib/perl${PERL_MAIN_VER}/${PERL_MAJ_VER}"
+
+rm -f "${PERL_LIB_PATH}/site_perl/auto/XML/SAX/.packlist"
+rm -f "${PERL_LIB_PATH}/core_perl/perllocal.pod"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (simple API for XML)
 #
