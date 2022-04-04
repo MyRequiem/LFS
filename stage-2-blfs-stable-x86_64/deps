@@ -73,7 +73,8 @@ cdb                                 php
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 chronyd                             dhcpcd
-clipnotify
+clipmenu
+clipnotify                          clipmenu
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib
 cmocka                              gnutls, mit-kerberos-v5
