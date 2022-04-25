@@ -73,7 +73,7 @@ cdb                                 php
 cdparanoia-III                      gst-plugins-base
 chromaprint                         gst-plugins-bad
 chronyd                             dhcpcd
-clipmenu
+clipmenu                            dmenu
 clipnotify                          clipmenu
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib
@@ -108,6 +108,7 @@ distcache                           apache-httpd
 djbfft                              liba52
 djvulibre                           imagemagick
 dmalloc                             cyrus-sasl, lame, php, imagemagick
+dmenu
 dmraid                              libblockdev
 dnsmasq
 docbook-dsssl                       postgresql, docbook-utils
@@ -545,6 +546,7 @@ papi                                gtk+3
 parted                              libblockdev
 passivetex                          xmlto
 passwdqc                            cryptsetup
+password-store                      dmenu
 pavucontrol
 pciutils                            qt5
 pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php
@@ -952,7 +954,7 @@ xorg-sgml-doctools                  xorg-server
 xorg-synaptics-driver
 xorg-vmware-driver
 xorgproto                           libxau, libxdmcp
-xsel
+xsel                                dmenu
 xterm                               imagemagick
 xvid                                ffmpeg
 xxhash                              rsync

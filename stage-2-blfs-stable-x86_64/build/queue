@@ -773,6 +773,7 @@ d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 s/clipnotify.sh
 s/clipmenu.sh
+ap/dmenu.sh
 
 
 # vim:ft=conf
