@@ -1,0 +1,25 @@
+diff -U 1 -ur dmenu-5.1_orig/config.def.h dmenu-5.1/config.def.h
+--- dmenu-5.1_orig/config.def.h	2022-02-11 15:31:56.000000000 +0400
++++ dmenu-5.1/config.def.h	2022-04-25 13:40:03.252958705 +0400
+@@ -21,3 +21,6 @@
+  * for example: " /?\"&[]"
+  */
+ static const char worddelimiters[] = " ";
++
++/* Size of the window border */
++static const unsigned int border_width = 5;
+diff -U 1 -ur dmenu-5.1_orig/dmenu.c dmenu-5.1/dmenu.c
+--- dmenu-5.1_orig/dmenu.c	2022-02-11 15:31:56.000000000 +0400
++++ dmenu-5.1/dmenu.c	2022-04-25 13:42:56.990971451 +0400
+@@ -677,9 +677,10 @@
+ 	swa.override_redirect = True;
+ 	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+-	win = XCreateWindow(dpy, parentwin, x, y, mw, mh, 0,
++ 	win = XCreateWindow(dpy, parentwin, x, y, mw, mh, border_width,
+ 	                    CopyFromParent, CopyFromParent, CopyFromParent,
+ 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
++ 	XSetWindowBorder(dpy, win, scheme[SchemeSel][ColBg].pixel);
+ 	XSetClassHint(dpy, win, &ch);
+ 
+ 
