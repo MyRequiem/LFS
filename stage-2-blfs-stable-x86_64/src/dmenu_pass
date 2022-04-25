@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if ! [ -x /usr/bin/pass ]; then
+    echo "Command 'pass' not found (package 'password-store' not installed?)"
+    exit
+fi
+
+if [ -z "${PASSWORD_STORE_DIR}" ]; then
+    echo '$PASSWORD_STORE_DIR is not set'
+    echo "Variable must contain the path for password-store repository"
+    exit
+fi
+
+PASS_FILE=$(find "${PASSWORD_STORE_DIR}" -type f -name '*.gpg' | \
+    rev | cut -d . -f 2- | cut -d / -f 1,2 | rev | dmenu "$@")
+
+# copy pass to clipboard
+[ -n "${PASS_FILE}" ] && pass show -c "${PASS_FILE}" &>/dev/null
+sleep 1
+# copy login/name to clipboard
+echo "${PASS_FILE}" | cut -d / -f 2 | tr -d '\r\n' | xsel --clipboard
