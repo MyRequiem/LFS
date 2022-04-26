@@ -774,6 +774,7 @@ d/perl-modules/perl-anyevent-i3.sh
 s/clipnotify.sh
 s/clipmenu.sh
 ap/dmenu.sh
+ap/password-store.sh
 
 
 # vim:ft=conf
