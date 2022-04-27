@@ -775,6 +775,7 @@ s/clipnotify.sh
 s/clipmenu.sh
 ap/dmenu.sh
 ap/password-store.sh
+s/hddtemp.sh
 
 
 # vim:ft=conf

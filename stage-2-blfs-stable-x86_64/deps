@@ -236,6 +236,7 @@ guile                               gnutls
 gutenprint                          cups
 gvfs                                gimp
 harfbuzz                            freetype, graphite2, libass, qt5, gimp
+hddtemp
 hdparm                              pm-utils
 heimdal-gssapi                      exim
 help2man                            pango, vala

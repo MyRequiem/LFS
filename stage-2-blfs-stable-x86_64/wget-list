@@ -796,3 +796,7 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-xyw-5.1.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/dmenu_pass
 https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
+https://download.savannah.gnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/hddtemp/hddtemp-0.3-beta15.patch
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/hddtemp.db
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/hddtemp/hddtemp
