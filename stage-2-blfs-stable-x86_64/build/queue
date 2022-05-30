@@ -776,6 +776,7 @@ s/clipmenu.sh
 ap/dmenu.sh
 ap/password-store.sh
 s/hddtemp.sh
+x/apps/i3.sh
 
 
 # vim:ft=conf

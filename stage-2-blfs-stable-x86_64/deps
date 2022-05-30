@@ -27,7 +27,7 @@ apr                                 apr-util
 apr-util                            apache-httpd
 argon2                              cryptsetup
 as31                                alsa-firmware
-asciidoc                            git, graphite2, xorgproto, nasm, gegl
+asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru, enchant, php, mutt
 aspell-dict-en
@@ -61,7 +61,7 @@ bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
 c-ares                              nodejs, curl, nghttp2
 c2man                               fribidi
-cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler, gjs
+cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler, gjsa, i3
 cairo-5c                            xorg-applications
 cairomm                             pangomm
 caladea-font-ttf
@@ -108,14 +108,14 @@ distcache                           apache-httpd
 djbfft                              liba52
 djvulibre                           imagemagick
 dmalloc                             cyrus-sasl, lame, php, imagemagick
-dmenu                               password-store
+dmenu                               password-store, i3
 dmraid                              libblockdev
 dnsmasq
 docbook-dsssl                       postgresql, docbook-utils
 docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        postgresql, docbook-dsssl
 docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
-docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm, libsecret, talloc
+docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm, libsecret, talloc, i3
 docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm, libsecret, talloc
 docbook2x                           git
 docwriter                           freetype
@@ -251,6 +251,7 @@ http-parser                         nodejs
 hunspell                            enchant
 hyperwave                           php
 hypothesis                          python2-pycairo, python3-pycairo
+i3
 ibm-db2                             php
 ibus                                sdl2, qt5
 icon-tools                          adwaita-icon-theme
@@ -329,7 +330,7 @@ libdw                               gstreamer
 libedit                             sqlite, pcre2, openssh, mit-kerberos-v5, ntp
 libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
-libev                               nghttp2
+libev                               nghttp2, i3
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 libevent                            links, mariadb, nghttp2, ntp, transmission
 libexif                             gst-plugins-bad, php, feh
@@ -429,13 +430,13 @@ libwacom                            libinput
 libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick
 libwmf                              gimp, imagemagick
 libxau                              libxcb
-libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon
+libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 libxdmcp                            libxcb
-libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5
+libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc
-libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager
+libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad
 links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
@@ -541,7 +542,7 @@ p11-kit                             nss, make-ca, gnutls, gcr
 p7zip                               imagemagick
 pakchois                            neon
 pandoc                              openjdk
-pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick
+pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 pangomm                             gtkmm2, gtkmm3
 papi                                gtk+3
 parted                              libblockdev
@@ -550,15 +551,15 @@ passwdqc                            cryptsetup
 password-store                      dmenu
 pavucontrol
 pciutils                            qt5
-pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php
+pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php, i3
 pcre2                               wget, libbytesize, git, xterm, qt5, vte3
 pcsc-lite                           libcacard
 pep8                                python3-pygobject3
 perl-algorithm-diff                 perl-text-diff
 perl-alien-build                    perl-alien-libxml2
 perl-alien-libxml2                  perl-xml-libxml
-perl-anyevent                       perl-anyevent-i3
-perl-anyevent-i3
+perl-anyevent                       perl-anyevent-i3, i3
+perl-anyevent-i3                    i3
 perl-archive-zip
 perl-autovivification
 perl-b-cow                          perl-clone
@@ -567,7 +568,7 @@ perl-business-isbn
 perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
-perl-canary-stability               perl-json-xs, perl-anyevent
+perl-canary-stability               perl-json-xs, perl-anyevent, i3
 perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 perl-class-accessor
 perl-class-data-inheritable         perl-exception-class
@@ -575,7 +576,7 @@ perl-class-inspector                perl-file-sharedir
 perl-class-singleton                perl-datetime-timezone
 perl-class-tiny                     perl-test-file-sharedir
 perl-clone                          perl-data-compare
-perl-common-sense                   perl-types-serialiser, perl-json-xs
+perl-common-sense                   perl-types-serialiser, perl-json-xs, i3
 perl-config-autoconf                perl-text-bibtex
 perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
 perl-data-compare
@@ -619,7 +620,7 @@ perl-io-socket-ssl                  wget, perl-lwp-protocol-https, ntp
 perl-io-string
 perl-ipc-run3                       perl-test2-plugin-nowarnings
 perl-ipc-system-simple              perl-datetime-locale
-perl-json-xs                        perl-anyevent-i3
+perl-json-xs                        perl-anyevent-i3, i3
 perl-libwww-perl                    perl-www-robotrules, perl-lwp-protocol-https
 perl-lingua-translit
 perl-list-allutils
@@ -651,7 +652,7 @@ perl-parse-yapp
 perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir, perl-ffi-checklib
 perl-perlio-utf8_strict
 perl-pod-pom-view-restructured      cyrus-sasl
-perl-pod-simple
+perl-pod-simple                     i3
 perl-regexp-common
 perl-role-tiny                      perl-specio
 perl-scope-guard                    perl-test2-suite, perl-test-file-sharedir
@@ -691,7 +692,7 @@ perl-text-roman
 perl-tie-cycle                      perl-business-ismn
 perl-timedate                       perl-http-date
 perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message, perl-libwww-perl
-perl-types-serialiser               perl-json-xs
+perl-types-serialiser               perl-json-xs, i3
 perl-unicode-collate
 perl-unicode-linebreak
 perl-uri                            perl-http-message, perl-io-socket-ssl, perl-net-http
@@ -833,7 +834,7 @@ spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad
 sshfs
-startup-notification                rxvt-unicode
+startup-notification                rxvt-unicode, i3
 stunnel                             curl
 subversion                          cmake, git
 sudo
@@ -922,13 +923,13 @@ x264                                gst-plugins-ugly, ffmpeg
 x265                                gst-plugins-bad, ffmpeg
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb
-xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification
-xcb-util-cursor
+xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification, i3
+xcb-util-cursor                     i3
 xcb-util-image                      xorg-server, qt5
-xcb-util-keysyms                    xorg-server, qt5
+xcb-util-keysyms                    xorg-server, qt5, i3
 xcb-util-renderutil                 xorg-server, qt5
-xcb-util-wm                         xorg-server, qt5
-xcb-util-xrm
+xcb-util-wm                         xorg-server, qt5, i3
+xcb-util-xrm                        i3
 xclip                               password-store
 xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
@@ -939,7 +940,7 @@ xfsprogs                            lvm2, udisks, talloc
 xinit
 xkeyboard-config                    xorg-server, libxkbcommon
 xmlrpc-epi                          php
-xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib, xdg-utils, opensp
+xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib, xdg-utils, opensp, i3
 xorg-amdgpu-driver
 xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xdg-utils
 xorg-ati-driver
