@@ -40,6 +40,7 @@ mkdir -pv           /var/log/{packages,removed_packages,setup/tmp/preserved}
 # предоставляют его пользователю через файловую систему /proc. Чтобы
 # удовлетворить зависимости утилит, которые ожидают наличия /etc/mtab, создадим
 # символическую ссылку
+rm -f /etc/mtab
 ln -svf /proc/self/mounts /etc/mtab
 
 # чтобы пользователь root мог войти в систему и чтобы имя 'root' было
@@ -86,12 +87,14 @@ EOF
 
 (
     cd /media || exit 1
+    rm -f cdrom flash
     ln -svf cdrom0 cdrom
     ln -svf flash0 flash
 )
 
 (
     cd /usr || exit 1
+    rm -f doc
     ln -svf share/doc doc
 )
 
