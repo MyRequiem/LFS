@@ -777,6 +777,7 @@ ap/dmenu.sh
 ap/password-store.sh
 s/hddtemp.sh
 x/apps/i3.sh
+x/apps/bumblebee-status.sh
 
 
 # vim:ft=conf
