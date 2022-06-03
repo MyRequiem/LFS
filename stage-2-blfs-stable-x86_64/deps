@@ -332,7 +332,7 @@ libepoxy                            xorg-server, gtk+3
 liberation-fonts-ttf
 libev                               nghttp2, i3
 libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
-libevent                            links, mariadb, nghttp2, ntp, transmission
+libevent                            links, mariadb, nghttp2, ntp, transmission, tmux
 libexif                             gst-plugins-bad, php, feh
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal, libsecret, qemu
 libgd                               php
@@ -855,6 +855,7 @@ tibmachuni-font-ttf
 tidy-html5                          php
 time
 tk                                  python2, python3, ruby, git
+tmux
 tokudb                              mariadb
 tokyo-cabinet                       mutt
 traceroute
@@ -960,7 +961,7 @@ xsel                                dmenu
 xterm                               imagemagick
 xvid                                ffmpeg
 xxhash                              rsync
-yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5, xvid, ffmpeg
+yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5, xvid, ffmpeg, tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm
