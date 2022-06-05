@@ -88,6 +88,7 @@ cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu
+curlftpfs                           vifm
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2
 dag                                 libpcap
@@ -170,8 +171,11 @@ freetype                            harfbuzz, graphite2, fontconfig, libass, gho
 frei0r-plugins                      ffmpeg
 fribidi                             pango, libass, vte3, ffmpeg
 frontbase                           php
-fuse                                gnupg, sshfs
+fuse                                gnupg, sshfs, vifm
+fuse-zip                            vifm
 fuse2                               ntfs-3g
+fusefat                             vifm
+fuseiso                             vifm
 fwtk                                sudo
 game-music-emu                      gst-plugins-bad
 gc                                  guile, w3m
@@ -833,7 +837,7 @@ spice-protocol                      spice, spice-gtk, virt-manager
 spnego                              curl
 sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 srt                                 gst-plugins-bad
-sshfs
+sshfs                               vifm
 startup-notification                rxvt-unicode, i3
 stunnel                             curl
 subversion                          cmake, git
@@ -888,6 +892,7 @@ valgrind                            python2, python3, libksba, libxml2, pcre, pc
 vbetool                             pm-utils
 vde2
 vdo                                 lvm2
+vifm
 vim                                 fcron
 virglrenderer
 virt-manager
