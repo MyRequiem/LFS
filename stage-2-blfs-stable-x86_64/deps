@@ -88,7 +88,7 @@ cssselect                           python-lxml
 cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs
 curlftpfs                           vifm
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2
@@ -172,7 +172,7 @@ freetype                            harfbuzz, graphite2, fontconfig, libass, gho
 frei0r-plugins                      ffmpeg
 fribidi                             pango, libass, vte3, ffmpeg
 frontbase                           php
-fuse                                gnupg, sshfs, vifm
+fuse                                gnupg, sshfs, vifm, curlftpfs
 fuse-zip                            vifm
 fuse2                               ntfs-3g, archivemount
 fusefat                             vifm
