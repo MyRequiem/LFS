@@ -786,6 +786,7 @@ n/curlftpfs.sh
 s/fuseiso.sh
 ap/vifm.sh
 ap/gcolor2.sh
+ap/gsimplecal.sh
 
 
 # vim:ft=conf
