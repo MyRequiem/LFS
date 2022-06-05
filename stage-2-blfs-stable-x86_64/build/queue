@@ -783,6 +783,7 @@ l/fuse2.sh
 a/ntfs-3g.sh
 s/archivemount.sh
 n/curlftpfs.sh
+s/fuseiso.sh
 ap/vifm.sh
 
 
