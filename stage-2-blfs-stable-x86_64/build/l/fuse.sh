@@ -19,8 +19,20 @@ PRGNAME="fuse"
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${PRGNAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
@@ -109,7 +121,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non privileged users to create and mount their own filesystem
 # implementations.
 #
-# Home page: http://fuse.sourceforge.net
+# Home page: http://${PRGNAME}.sourceforge.net
 # Download:  https://github.com/libfuse/libfuse/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
