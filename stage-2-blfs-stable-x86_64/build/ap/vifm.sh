@@ -13,6 +13,8 @@ PRGNAME="vifm"
 #              fuse-zip
 #              fusefat
 #              fuseiso
+#              archivemount
+#              highlight
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

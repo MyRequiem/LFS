@@ -25,6 +25,7 @@ apparmor                            php
 appstream-glib                      gimp
 apr                                 apr-util
 apr-util                            apache-httpd
+archivemount                        vifm
 argon2                              cryptsetup
 as31                                alsa-firmware
 asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3
@@ -245,7 +246,7 @@ hdparm                              pm-utils
 heimdal-gssapi                      exim
 help2man                            pango, vala
 hicolor-icon-theme                  gtk+2, gtk+3, fltk
-highlight
+highlight                           vifm
 hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 hp2xx                               imagemagick
 hplip                               cups
