@@ -172,7 +172,7 @@ freetype                            harfbuzz, graphite2, fontconfig, libass, gho
 frei0r-plugins                      ffmpeg
 fribidi                             pango, libass, vte3, ffmpeg
 frontbase                           php
-fuse                                gnupg, sshfs, vifm, curlftpfs
+fuse                                gnupg, sshfs, vifm, curlftpfs, fuseiso
 fuse-zip                            vifm
 fuse2                               ntfs-3g, archivemount
 fusefat                             vifm
