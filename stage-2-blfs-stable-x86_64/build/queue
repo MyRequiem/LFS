@@ -779,6 +779,10 @@ s/hddtemp.sh
 x/apps/i3.sh
 x/apps/bumblebee-status.sh
 ap/tmux.sh
+l/fuse2.sh
+a/ntfs-3g.sh
+s/archivemount.sh
+
 ap/vifm.sh
 
 

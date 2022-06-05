@@ -38,7 +38,7 @@ at-spi2-atk                         gtk+3
 at-spi2-core                        at-spi2-atk, python3-pyatspi2
 atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 atkmm                               gtkmm2, gtkmm3
-autoconf213                         mozjs
+autoconf213                         mozjs, archivemount
 autogen                             gnutls, ntp
 autotrace                           imagemagick
 avahi                               cups, pulseaudio
@@ -174,7 +174,7 @@ fribidi                             pango, libass, vte3, ffmpeg
 frontbase                           php
 fuse                                gnupg, sshfs, vifm
 fuse-zip                            vifm
-fuse2                               ntfs-3g
+fuse2                               ntfs-3g, archivemount
 fusefat                             vifm
 fuseiso                             vifm
 fwtk                                sudo
@@ -301,7 +301,7 @@ liba52                              gst-plugins-ugly
 libaacplus                          ffmpeg
 libaio                              lvm2, mariadb
 libao
-libarchive                          cmake, ed, libgxps
+libarchive                          cmake, ed, libgxps, archivemount
 libass                              gst-plugins-bad, ffmpeg
 libassuan                           pinentry, gnupg, gpgme
 libasyncns                          pulseaudio
