@@ -785,6 +785,7 @@ s/archivemount.sh
 n/curlftpfs.sh
 s/fuseiso.sh
 ap/vifm.sh
+ap/gcolor2.sh
 
 
 # vim:ft=conf

@@ -809,3 +809,8 @@ https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
 http://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz
 http://downloads.sourceforge.net/fuseiso/fuseiso-20070708.tar.bz2
 https://prdownloads.sourceforge.net/vifm/vifm-0.12.tar.bz2
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-amd64_segfault.patch
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-color_definition_path.patch
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-fno-common.patch
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/gcolor2.svg
+http://downloads.sourceforge.net/gcolor2/gcolor2-0.4.tar.gz
