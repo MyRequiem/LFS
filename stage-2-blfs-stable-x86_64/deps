@@ -454,6 +454,7 @@ lirc                                pulseaudio
 llvm                                icu, mesa, rustc, dhcpcd, imagemagick
 lm-sensors                          mesa
 lmdb                                php
+lnav
 lrdf                                gst-plugins-bad
 lsb-tools
 lsof
