@@ -88,7 +88,7 @@ cssselect                           python-lxml
 cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools
 curlftpfs                           vifm
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2
@@ -199,7 +199,7 @@ gimp                                imagemagick
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc
 gjs                                 gobject-introspection, libsecret
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -474,6 +474,7 @@ mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, r
 mc
 mdadm                               lvm2, udisks, libblockdev
 mecab                               mariadb
+megatools
 mercurial                           cmake, openjdk
 mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk, qt5, qemu
 mesa-demos                          mesa

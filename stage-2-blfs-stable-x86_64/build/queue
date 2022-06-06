@@ -789,6 +789,7 @@ ap/gcolor2.sh
 ap/gsimplecal.sh
 ap/imwheel.sh
 ap/lnav.sh
+ap/megatools.sh
 
 
 # vim:ft=conf
