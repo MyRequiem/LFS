@@ -787,6 +787,7 @@ s/fuseiso.sh
 ap/vifm.sh
 ap/gcolor2.sh
 ap/gsimplecal.sh
+ap/imwheel.sh
 
 
 # vim:ft=conf

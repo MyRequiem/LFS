@@ -267,6 +267,7 @@ id3lib
 imagemagick                         gnupg, feh
 imlib2                              w3m, feh
 impacket                            curl
+imwheel
 indic-fonts-ttf
 inkscape                            adwaita-icon-theme, imagemagick
 install-tl-unx                      cpio, libassuan, libunistring, libgcrypt, llvm, parted, gnutls, gnupg, graphite2, fontconfig, libvdpau, libvorbis, opus, fltk, libtheora, ffmpeg, imagemagick
