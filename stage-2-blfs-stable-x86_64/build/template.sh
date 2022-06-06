@@ -42,6 +42,14 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 
 # MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 
+# mkdir build
+# cd build || exit 1
+# meson             \
+#     --prefix=/usr \
+#     -D... || exit 1
+#
+# ninja || exit 1
+
 # source "${ROOT}/config_file_processing.sh"             || exit 1
 # CONFIG="...."
 # if [ -f "${CONFIG}" ]; then
