@@ -3,7 +3,7 @@
 ###***###
 
 3store                              redland
-X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu
+X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
 aalib                               gst-plugins-good, sdl, gimp
 acpid                               xorg-server
 adabas                              php
@@ -522,6 +522,7 @@ nss                                 p11-kit, make-ca, volume-key, poppler
 ntfs-3g                             udisks
 ntp                                 dhcpcd
 numactl                             x265
+numlockx
 numpy                               python2-pygtk
 nuspell                             enchant
 ocaml                               llvm

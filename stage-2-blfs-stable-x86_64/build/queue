@@ -791,6 +791,8 @@ ap/imwheel.sh
 ap/lnav.sh
 ap/megatools.sh
 ap/mirage.sh
+d/help2man.sh
+s/numlockx.sh
 
 
 # vim:ft=conf
