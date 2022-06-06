@@ -231,7 +231,7 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3, gexiv2, gimp, libgxps
@@ -484,6 +484,7 @@ microdns                            gst-plugins-bad
 microsoft-webcore-fonts-ttf
 mini-sql                            php
 minisql                             unixodbc
+mirage
 mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon, mariadb, postgresql, qt5, php, fetchmail, mutt
 mixmaster                           mutt
 mjpeg-tools                         gst-plugins-bad
@@ -769,7 +770,7 @@ python2-libxml2                     libxslt, docbook-xsl, gimp
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage
 python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-idna                        python-requests
@@ -780,7 +781,7 @@ python3-markdown                    gobject-introspection
 python3-pyatspi2
 python3-pycairo                     python3-pygobject3
 python3-pygments                    libbytesize, llvm, gegl, poppler
-python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret
+python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
 python3-pyxdg                       ibus
 python3-scour
 qdbm                                php, mutt

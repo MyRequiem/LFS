@@ -790,6 +790,7 @@ ap/gsimplecal.sh
 ap/imwheel.sh
 ap/lnav.sh
 ap/megatools.sh
+ap/mirage.sh
 
 
 # vim:ft=conf
