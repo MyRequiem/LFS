@@ -89,7 +89,7 @@ cssselect                           python-lxml
 cunit                               libdrm, nghttp2
 cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 cups-filters                        cups
-curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools
+curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools, uget
 curlftpfs                           vifm
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2
@@ -232,7 +232,7 @@ gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugi
 gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
-gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage
+gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage, uget
 gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3, gexiv2, gimp, libgxps
@@ -885,6 +885,7 @@ tunctl                              virt-manager
 twolame                             gst-plugins-good, gst-plugins-ugly, ffmpeg
 udisks
 ufraw                               imagemagick
+uget
 uming-fonts-ttf
 umockdev                            libgudev, upower
 unbound                             gnutls
