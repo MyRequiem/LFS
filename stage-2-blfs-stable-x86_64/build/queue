@@ -796,6 +796,7 @@ s/numlockx.sh
 s/prelink.sh
 ap/pwgen.sh
 s/ag.sh
+n/translate-shell.sh
 
 
 # vim:ft=conf
