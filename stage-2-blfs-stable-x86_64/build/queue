@@ -795,6 +795,7 @@ d/help2man.sh
 s/numlockx.sh
 s/prelink.sh
 ap/pwgen.sh
+s/ag.sh
 
 
 # vim:ft=conf

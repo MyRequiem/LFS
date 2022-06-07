@@ -11,6 +11,7 @@ adns                                gnupg
 adobe-source-code-pro-font
 adwaita-icon-theme                  gtk+3
 afs                                 sudo
+ag
 aka-mrsid-utilities                 imagemagick
 alsa-firmware                       libao
 alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
