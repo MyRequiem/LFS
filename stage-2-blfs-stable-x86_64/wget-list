@@ -823,3 +823,5 @@ https://gitlab.com/thomasross/mirage/-/archive/0.11.1/mirage-0.11.1.tar.bz2
 http://ftp.gnu.org/gnu/help2man/help2man-1.49.2.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/numlockx.1
 http://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/prelink.conf
+http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2

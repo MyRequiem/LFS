@@ -736,6 +736,7 @@ portaudio                           mpg123
 postfix                             fcron, sudo, gnupg, at, php, mutt, gimp
 postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 pov-ray                             imagemagick
+prelink
 procmail                            fetchmail
 profiles                            imagemagick
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php

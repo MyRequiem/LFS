@@ -793,6 +793,7 @@ ap/megatools.sh
 ap/mirage.sh
 d/help2man.sh
 s/numlockx.sh
+s/prelink.sh
 
 
 # vim:ft=conf
