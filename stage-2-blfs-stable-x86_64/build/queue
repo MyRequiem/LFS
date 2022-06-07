@@ -794,6 +794,7 @@ ap/mirage.sh
 d/help2man.sh
 s/numlockx.sh
 s/prelink.sh
+ap/pwgen.sh
 
 
 # vim:ft=conf
