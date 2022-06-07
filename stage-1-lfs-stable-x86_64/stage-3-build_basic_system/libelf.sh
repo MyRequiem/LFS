@@ -29,7 +29,10 @@ make || make -j1 || exit 1
 make -C libelf install DESTDIR="${TMP_DIR}"
 
 install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig"
-rm -f "${TMP_DIR}/lib/libelf.a"
+
+# НЕ удаляем статическую библиотеку, т.к. она требуется для сборки некоторых
+# сторонних пакетов (например 'prelink')
+# rm -f "${TMP_DIR}/lib/libelf.a"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
