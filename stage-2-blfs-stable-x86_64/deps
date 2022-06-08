@@ -795,6 +795,7 @@ qt5                                 cmake, highlight, pinentry, gpgme, cairo, gs
 quiche                              curl
 radiance                            imagemagick
 ralcgm                              imagemagick
+ramdefrag
 raptor                              rasqal
 rasqal                              redland
 re2c                                php

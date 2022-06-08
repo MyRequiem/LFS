@@ -798,6 +798,7 @@ ap/pwgen.sh
 s/ag.sh
 n/translate-shell.sh
 n/uget.sh
+s/ramdefrag.sh
 
 
 # vim:ft=conf
