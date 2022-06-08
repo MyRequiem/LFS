@@ -902,6 +902,7 @@ usbredir                            spice-gtk
 usbutils
 utah-raster-toolkit                 imagemagick
 util-macros                         xorgproto, xbitmaps
+utimer
 v4l-utils                           gst-plugins-good, gegl, ffmpeg
 vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
 valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp, python-lxml, gjs, gnome-keyring, libsecreta, libtheora, talloc
