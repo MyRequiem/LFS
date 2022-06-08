@@ -800,6 +800,7 @@ n/translate-shell.sh
 n/uget.sh
 s/ramdefrag.sh
 d/python-modules/python-urwid.sh
+n/urlscan.sh
 
 
 # vim:ft=conf
