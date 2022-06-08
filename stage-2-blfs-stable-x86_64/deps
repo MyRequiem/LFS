@@ -945,6 +945,7 @@ wqy-zenhei-font-ttf
 wxwidgets                           p7zip
 x264                                gst-plugins-ugly, ffmpeg
 x265                                gst-plugins-bad, ffmpeg
+xbanish
 xbitmaps                            xorg-applications
 xcb-proto                           libxcb
 xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification, i3
