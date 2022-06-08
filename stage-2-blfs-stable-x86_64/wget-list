@@ -835,3 +835,7 @@ https://github.com/firecat53/urlscan/archive/0.9.9/urlscan-0.9.9.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/utimer/utimer-0.4-locale.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/utimer/utimer-0.4-fno-common.patch
 https://sourceforge.net/projects/utimer/files/utimer-0.4.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wgetpaste.example
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wgetpaste.1
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wgetpaste_info
+http://wgetpaste.zlin.dk/wgetpaste-2.30.tar.bz2

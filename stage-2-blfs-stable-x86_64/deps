@@ -933,6 +933,7 @@ weasyprint                          vala
 webkitgtk                           zenity
 webrtc-audio-processing             pulseaudio
 wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak, openjdk, imagemagick
+wgetpaste
 which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 whois
 wildmidi                            gst-plugins-bad

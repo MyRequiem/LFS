@@ -802,6 +802,7 @@ s/ramdefrag.sh
 d/python-modules/python-urwid.sh
 n/urlscan.sh
 ap/utimer.sh
+n/wgetpaste.sh
 
 
 # vim:ft=conf
