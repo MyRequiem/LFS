@@ -811,6 +811,8 @@ l/libspectre.sh
 l/cairo.sh
 l/goffice.sh
 l/girara.sh
+l/djvulibre.sh
+xap/imagemagick.sh
 ap/zathura.sh
 
 

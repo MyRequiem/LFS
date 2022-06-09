@@ -109,7 +109,7 @@ digest-crc                          parted
 directfb                            links, cairo, sdl, sdl2
 distcache                           apache-httpd
 djbfft                              liba52
-djvulibre                           imagemagick
+djvulibre                           imagemagick, zathura
 dmalloc                             cyrus-sasl, lame, php, imagemagick
 dmenu                               password-store, i3
 dmraid                              libblockdev
@@ -201,7 +201,7 @@ girara                              zathura
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc
 gjs                                 gobject-introspection, libsecret
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara, zathura
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -413,7 +413,7 @@ libsidplay                          gst-plugins-ugly
 libsigc++2                          glibmm, cairomm, pavucontrol
 libsndfile                          lame, sbc, gst-plugins-bad, libsamplerate, pulseaudio
 libsoup                             gst-plugins-good
-libspectre                          cairo, goffice
+libspectre                          cairo, goffice, zathura
 libspiro                            gegl
 libsrtp                             gst-plugins-bad
 libssh                              exiv2, ffmpeg

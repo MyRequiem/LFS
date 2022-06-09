@@ -845,8 +845,11 @@ https://www.x.org/archive/individual/util/imake-1.0.8.tar.gz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 http://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
 https://github.com/pwmt/girara/archive/0.3.7/girara-0.3.7.tar.gz
+http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathurarc.5
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.png
 https://github.com/pwmt/zathura-pdf-poppler/archive/0.3.0/zathura-pdf-poppler-0.3.0.tar.gz
+https://github.com/pwmt/zathura-djvu/archive/0.2.9/zathura-djvu-0.2.9.tar.gz
+https://github.com/pwmt/zathura-ps/archive/0.2.7/zathura-ps-0.2.7.tar.gz
 https://github.com/pwmt/zathura/archive/0.4.9/zathura-0.4.9.tar.gz
