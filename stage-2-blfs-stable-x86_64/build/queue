@@ -810,6 +810,7 @@ ap/xxkb.sh
 l/libspectre.sh
 l/cairo.sh
 l/goffice.sh
+l/girara.sh
 
 
 # vim:ft=conf

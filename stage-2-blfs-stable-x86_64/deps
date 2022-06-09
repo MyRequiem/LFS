@@ -124,7 +124,7 @@ docbook2x                           git
 docwriter                           freetype
 dosfstools                          parted, udisks
 dovecot                             fcron, sudo, gnupg, at, php, mutt, gimp
-doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd, libmypaint, exiv2, libtheora, ffmpeg, transmission
+doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd, libmypaint, exiv2, libtheora, ffmpeg, transmission, girara
 dssim                               gst-plugins-bad
 dtrace                              ruby, gjs
 ducktype                            dbus
@@ -197,10 +197,11 @@ ghostpcl                            imagemagick
 ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
 giflib                              imlib2, libwebp, openjdk, feh
 gimp                                imagemagick
+girara
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc
 gjs                                 gobject-introspection, libsecret
 glew
-glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools
+glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
 glu                                 freeglut, fltk, sdl
@@ -233,7 +234,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer                           libcanberra, gst-plugins-base
 gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage, uget
-gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu
+gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu, girara
 gtk+4                               gjs, vte3
 gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3, gexiv2, gimp, libgxps
 gtk-engines
@@ -286,7 +287,7 @@ jasper                              qt5, gegl, imagemagick
 jbig-kit                            libtiff, imagemagick
 jbig2dec                            cairo
 jemalloc                            nghttp2, qemu
-json-c                              cryptsetup, fontconfig, bind-utils, libmypaint
+json-c                              cryptsetup, fontconfig, bind-utils, libmypaint, girara
 json-glib                           gtk+3, gegl
 judy                                mariadb
 kernel-firmware
@@ -382,7 +383,7 @@ libnfnetlink                        iptables
 libnfs
 libnice                             gst-plugins-bad
 libnl                               libpcap, iw, wpa-supplicant
-libnotify                           ibus, zenity
+libnotify                           ibus, zenity, girara
 libnsl                              exim, talloc
 libnut                              ffmpeg
 libofa                              gst-plugins-bad
