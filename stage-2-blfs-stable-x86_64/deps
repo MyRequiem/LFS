@@ -194,7 +194,7 @@ geoexpress                          imagemagick
 gexiv2                              gegl, gimp
 ggi                                 sdl
 ghostpcl                            imagemagick
-ghostscript                         cairo, goffice, gimp, imagemagick
+ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
 giflib                              imlib2, libwebp, openjdk, feh
 gimp                                imagemagick
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc

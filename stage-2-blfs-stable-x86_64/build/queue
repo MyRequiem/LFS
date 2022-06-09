@@ -807,6 +807,9 @@ ap/xbanish.sh
 x/utils/xorg-cf-files.sh
 d/imake.sh
 ap/xxkb.sh
+l/libspectre.sh
+l/cairo.sh
+l/goffice.sh
 
 
 # vim:ft=conf
