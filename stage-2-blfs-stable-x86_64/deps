@@ -197,7 +197,7 @@ ghostpcl                            imagemagick
 ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
 giflib                              imlib2, libwebp, openjdk, feh
 gimp                                imagemagick
-girara
+girara                              zathura
 git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc
 gjs                                 gobject-introspection, libsecret
 glew
@@ -993,6 +993,7 @@ yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5, xvid
 yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm
+zathura
 zbar                                gst-plugins-bad
 zenity
 zeromq                              mariadb

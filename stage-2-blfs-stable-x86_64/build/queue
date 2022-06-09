@@ -811,6 +811,7 @@ l/libspectre.sh
 l/cairo.sh
 l/goffice.sh
 l/girara.sh
+ap/zathura.sh
 
 
 # vim:ft=conf
