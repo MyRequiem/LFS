@@ -29,7 +29,7 @@ apr-util                            apache-httpd
 archivemount                        vifm
 argon2                              cryptsetup
 as31                                alsa-firmware
-asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3
+asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3, cppcheck
 asciidoctor                         git
 aspell                              aspell-dict-en, aspell-dict-ru, enchant, php, mutt
 aspell-dict-en
@@ -86,6 +86,7 @@ cogl                                cairo
 colord                              gtk+3, cups
 corefonts                           imagemagick
 cpio                                openjdk
+cppcheck
 cryptsetup                          volume-key
 cssselect                           python-lxml
 cunit                               libdrm, nghttp2
@@ -449,7 +450,7 @@ libxdmcp                            libxcb
 libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
-libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc
+libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc, cppcheck
 libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 libyaml                             python-pyyaml, libblockdev, ruby
 lilv                                gst-plugins-bad

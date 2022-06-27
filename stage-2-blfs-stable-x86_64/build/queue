@@ -817,6 +817,7 @@ ap/zathura.sh
 d/shellcheck.sh
 ap/bviplus.sh
 ap/cmus.sh
+d/cppcheck.sh
 
 
 # vim:ft=conf
