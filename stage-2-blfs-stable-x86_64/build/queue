@@ -814,6 +814,7 @@ l/girara.sh
 l/djvulibre.sh
 xap/imagemagick.sh
 ap/zathura.sh
+d/shellcheck.sh
 
 
 # vim:ft=conf

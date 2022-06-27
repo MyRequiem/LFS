@@ -832,6 +832,7 @@ sg3-utils
 sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
 shared-mime-info                    glib, gdk-pixbuf
 sharutils                           berkeley-db
+shellcheck
 silgraphite                         graphite2
 sinhala-lklug-font-ttf
 skia                                cairo
