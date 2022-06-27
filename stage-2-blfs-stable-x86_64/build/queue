@@ -815,6 +815,7 @@ l/djvulibre.sh
 xap/imagemagick.sh
 ap/zathura.sh
 d/shellcheck.sh
+ap/bviplus.sh
 
 
 # vim:ft=conf

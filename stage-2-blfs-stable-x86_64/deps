@@ -61,6 +61,7 @@ bpf-utils                           iptables
 brotli                              curl, freetype, libsoup, apache-httpd
 bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
+bviplus
 c-ares                              nodejs, curl, nghttp2
 c2man                               fribidi
 cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler, gjsa, i3
