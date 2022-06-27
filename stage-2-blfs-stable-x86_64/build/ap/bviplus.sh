@@ -26,7 +26,7 @@ sed -i '/printf.*argv\[%d\]/d'          main.c        || exit 1
 
 make    \
     V=1 \
-    EXTRA_CFLAGS="-Wall -Wno-unused -O2 -fPIC -Wl,-s"
+    EXTRA_CFLAGS="-Wall -Wno-unused -O2 -fPIC -Wl,-s" || exit 1
 
 cp -a "${PRGNAME}" "${TMP_DIR}/usr/bin"
 

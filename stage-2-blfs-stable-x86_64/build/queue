@@ -816,6 +816,7 @@ xap/imagemagick.sh
 ap/zathura.sh
 d/shellcheck.sh
 ap/bviplus.sh
+ap/cmus.sh
 
 
 # vim:ft=conf

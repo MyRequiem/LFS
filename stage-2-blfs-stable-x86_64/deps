@@ -81,6 +81,7 @@ clipnotify                          clipmenu
 clisp                               gpgme
 cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib
 cmocka                              gnutls, mit-kerberos-v5
+cmus
 cogl                                cairo
 colord                              gtk+3, cups
 corefonts                           imagemagick
@@ -146,14 +147,14 @@ exfat                               udisks
 exim                                fcron, sudo, gnupg, at, php, mutt, gimp
 exiv2                               gegl, gexiv2
 faac                                faad2, gst-plugins-bad
-faad2                               gst-plugins-bad
+faad2                               gst-plugins-bad, cmus
 fcitx                               sdl2
 fcron
 fdf-toolkit                         php
 fdk-aac                             gst-plugins-bad, ffmpeg
 feh
 fetchmail
-ffmpeg                              alsa-plugins, gegl, imagemagick
+ffmpeg                              alsa-plugins, gegl, imagemagick, cmus
 ffms2                               x264
 fftw                                alsa-utils, libsamplerate, pulseaudio, imagemagick
 fig2dev                             gnupg
@@ -376,6 +377,7 @@ libmfx                              gst-plugins-bad
 libmms                              gst-plugins-bad
 libmng                              qt5, gimp
 libmodplug                          gst-plugins-bad, ffmpeg
+libmp4v2                            cmus
 libmpdec                            python3
 libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 libmypaint                          mypaint-brushes, gimp
@@ -501,6 +503,7 @@ mpg123                              gst-plugins-good
 mrg                                 gegl
 mruby                               mariadb, nghttp2
 mtdev                               xorg-evdev-driver, libinput, qt5
+musepack-tools                      cmus
 mutt
 mypaint-brushes                     gimp
 mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
@@ -548,7 +551,8 @@ openslp                             openldap
 opensp                              openjade, docbook-dsssl
 openssh                             libssh2, sshfs, gnome-keyring
 opie                                sudo
-opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk
+opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
+opusfile                            cmus
 orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio, spice
 osinfo-db                           libosinfo, virt-manager
 osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
