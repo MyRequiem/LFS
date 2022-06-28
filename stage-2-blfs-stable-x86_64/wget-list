@@ -860,6 +860,8 @@ https://downloads.sourceforge.net/project/bviplus/bviplus/1.0/bviplus-1.0.tgz
 https://github.com/cmus/cmus/archive/v2.9.1/cmus-2.9.1.tar.gz
 https://sourceforge.net/projects/cppcheck/files/cppcheck/2.8/cppcheck-2.8.tar.gz
 https://github.com/vborrego/deb2tgz/archive/0.2/deb2tgz-0.2.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/rpm/Packages.gz
+http://ftp.rpm.org/releases/rpm-4.17.x/rpm-4.17.0.tar.bz2
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/rpmoffset.c
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0001-fix-d-handling.patch.gz
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0002-fix-spurious-path-to-rpm-file-with-n-option.patch.gz

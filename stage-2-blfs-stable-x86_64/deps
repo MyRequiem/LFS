@@ -526,8 +526,8 @@ noto-fonts-ttf
 noto-sans-cjk-fonts-otf
 npm                                 nodejs
 npth                                gnupg
-nspr                                nss
-nss                                 p11-kit, make-ca, volume-key, poppler
+nspr                                nss, rpm
+nss                                 p11-kit, make-ca, volume-key, poppler, rpm
 ntfs-3g                             udisks
 ntp                                 dhcpcd
 numactl                             x265

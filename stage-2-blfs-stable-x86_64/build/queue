@@ -819,6 +819,7 @@ ap/bviplus.sh
 ap/cmus.sh
 d/cppcheck.sh
 ap/deb2tgz.sh
+ap/rpm.sh
 ap/rpm2tgz.sh
 
 
