@@ -7,7 +7,7 @@ VERSION="1.2.2"
 ### rpm2tgz (a tool for converting an RPM archive into a tar+gz one)
 # Конвертирует пакеты .rpm в пакеты Slackware (tgz, txz)
 
-# Required:    no
+# Required:    rpm
 # Recommended: no
 # Optional:    no
 

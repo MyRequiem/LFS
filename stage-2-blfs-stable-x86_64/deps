@@ -818,6 +818,7 @@ rest                                gtk+3
 rhash                               cmake
 roxen-webserver                     php
 rpcsvc-proto                        libnsl
+rpm                                 rpm2tgz
 rpm2tgz
 rrdtool                             lm-sensors
 rsync                               llvm, vim, apache-httpd
