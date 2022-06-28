@@ -818,6 +818,8 @@ d/shellcheck.sh
 ap/bviplus.sh
 ap/cmus.sh
 d/cppcheck.sh
+ap/deb2tgz.sh
+ap/rpm2tgz.sh
 
 
 # vim:ft=conf

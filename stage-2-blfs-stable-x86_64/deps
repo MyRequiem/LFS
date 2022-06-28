@@ -103,6 +103,7 @@ dbmaker                             php
 dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant, gjs, gnome-keyring xdg-utils
 dbus-glib                           dbus, upower, enchant, gconf, gimp
 dconf                               ibus
+deb2tgz
 dejavu-fonts-ttf                    xterm, imagemagick
 desktop-file-utils                  glib, fltk, wpa-supplicant
 device-tree-compiler
@@ -817,6 +818,7 @@ rest                                gtk+3
 rhash                               cmake
 roxen-webserver                     php
 rpcsvc-proto                        libnsl
+rpm2tgz
 rrdtool                             lm-sensors
 rsync                               llvm, vim, apache-httpd
 rtmpdump                            gst-plugins-bad

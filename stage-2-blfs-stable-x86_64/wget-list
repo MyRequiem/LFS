@@ -859,3 +859,14 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://downloads.sourceforge.net/project/bviplus/bviplus/1.0/bviplus-1.0.tgz
 https://github.com/cmus/cmus/archive/v2.9.1/cmus-2.9.1.tar.gz
 https://sourceforge.net/projects/cppcheck/files/cppcheck/2.8/cppcheck-2.8.tar.gz
+https://github.com/vborrego/deb2tgz/archive/0.2/deb2tgz-0.2.tar.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/rpmoffset.c
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0001-fix-d-handling.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0002-fix-spurious-path-to-rpm-file-with-n-option.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0003-allow-every-user-to-use-rpm2tgz.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0004-produce-more-compliant-slack-desc.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0007-Add-support-for-.txz-packages-and-rpm2txz-symlink.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0008-Avoid-none-values-in-slack-desc.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0009-Add-c-option-just-as-makepkg-c-y.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0011-ignore-rpm2cpio-error-code.patch.gz
+https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/rpm2targz
