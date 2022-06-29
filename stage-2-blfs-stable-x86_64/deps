@@ -200,6 +200,7 @@ gexiv2                              gegl, gimp
 ggi                                 sdl
 ghostpcl                            imagemagick
 ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
+giblib
 giflib                              imlib2, libwebp, openjdk, feh
 gimp                                imagemagick
 girara                              zathura
@@ -273,7 +274,7 @@ icu                                 libxml2, python2-libxml2, boost, mozjs, node
 id3lib
 imagemagick                         gnupg, feh
 imake                               xxkb
-imlib2                              w3m, feh
+imlib2                              w3m, feh, giblib
 impacket                            curl
 imwheel
 indic-fonts-ttf

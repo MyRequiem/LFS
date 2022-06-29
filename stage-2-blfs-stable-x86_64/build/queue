@@ -822,6 +822,7 @@ ap/deb2tgz.sh
 ap/rpm.sh
 ap/rpm2tgz.sh
 xap/flameshot.sh
+l/giblib.sh
 
 
 # vim:ft=conf
