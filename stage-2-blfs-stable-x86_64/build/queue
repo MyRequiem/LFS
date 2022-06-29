@@ -824,6 +824,7 @@ ap/rpm2tgz.sh
 xap/flameshot.sh
 l/giblib.sh
 d/glm.sh
+xap/gtick.sh
 
 
 # vim:ft=conf
