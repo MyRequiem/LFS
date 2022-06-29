@@ -825,6 +825,7 @@ xap/flameshot.sh
 l/giblib.sh
 d/glm.sh
 xap/gtick.sh
+s/hstr.sh
 
 
 # vim:ft=conf

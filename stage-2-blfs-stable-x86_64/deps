@@ -263,6 +263,7 @@ hotdoc                              gstreamer, gst-plugins-base, gst-plugins-goo
 hp2xx                               imagemagick
 hplip                               cups
 hspell                              enchant
+hstr
 html2ps                             imagemagick
 http-parser                         nodejs
 hunspell                            enchant
