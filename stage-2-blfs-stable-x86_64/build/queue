@@ -821,6 +821,7 @@ d/cppcheck.sh
 ap/deb2tgz.sh
 ap/rpm.sh
 ap/rpm2tgz.sh
+xap/flameshot.sh
 
 
 # vim:ft=conf

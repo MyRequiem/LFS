@@ -79,7 +79,7 @@ chronyd                             dhcpcd
 clipmenu                            dmenu
 clipnotify                          clipmenu
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib, flameshot
 cmocka                              gnutls, mit-kerberos-v5
 cmus
 cogl                                cairo
@@ -162,6 +162,7 @@ fftw                                alsa-utils, libsamplerate, pulseaudio, image
 fig2dev                             gnupg
 firebird                            qt5
 flac                                libsndfile, gst-plugins-good
+flameshot
 flashpix                            imagemagick
 flif                                imagemagick
 flite                               gst-plugins-bad, qt5, ffmpeg
@@ -407,7 +408,7 @@ libraqm                             imagemagick
 libraw                              imagemagick
 libraw1394                          gst-plugins-good
 libressl                            openssh
-librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick
+librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick, flameshot
 librtmp                             curl, ffmpeg
 libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
 libseccomp                          gnutls
@@ -448,7 +449,7 @@ libwmf                              gimp, imagemagick
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 libxdmcp                            libxcb
-libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3
+libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc, cppcheck
@@ -801,7 +802,7 @@ python3-scour
 qdbm                                php, mutt
 qemu
 qt4                                 cairo
-qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission
+qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission, flameshot
 quiche                              curl
 radiance                            imagemagick
 ralcgm                              imagemagick
