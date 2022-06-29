@@ -210,6 +210,7 @@ glew
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara, zathura
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
+glm
 glu                                 freeglut, fltk, sdl
 glusterfs
 gnome-keyring                       libsecret
