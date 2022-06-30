@@ -210,7 +210,7 @@ glew
 glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara, zathura
 glib-networking                     glib, glibmm, libsoup, gimp
 glibmm                              atkmm, pangomm
-glm
+glm                                 slop
 glu                                 freeglut, fltk, sdl
 glusterfs
 gnome-keyring                       libsecret
@@ -278,7 +278,7 @@ icu                                 libxml2, python2-libxml2, boost, mozjs, node
 id3lib
 imagemagick                         gnupg, feh
 imake                               xxkb
-imlib2                              w3m, feh, giblib
+imlib2                              w3m, feh, giblib, maim
 impacket                            curl
 imwheel
 indic-fonts-ttf
@@ -484,6 +484,7 @@ lz4                                 mariadb, rsync
 lzip                                ed
 lzo                                 libarchive, cairo, qemu
 maemo                               alsa-plugins
+maim
 make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5, perl-io-socket-ssl, perl-lwp-protocol-https, openjdk
 man2html                            xterm
 mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
@@ -854,6 +855,7 @@ silgraphite                         graphite2
 sinhala-lklug-font-ttf
 skia                                cairo
 slang                               aalib, mc, mutt
+slop                                maim
 smartmontools
 snappy
 soundtouch                          gst-plugins-bad
