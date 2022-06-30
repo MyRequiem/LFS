@@ -23,8 +23,8 @@ sed -i "s/-O2/-O2 -fPIC/" Makefile
 chmod -x ./git2log
 echo "${VERSION}" > VERSION
 
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
+make LIBDIR=/usr/lib                              || exit 1
+make LIBDIR=/usr/lib install DESTDIR="${TMP_DIR}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
