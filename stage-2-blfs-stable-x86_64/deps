@@ -267,6 +267,7 @@ hstr
 html2ps                             imagemagick
 http-parser                         nodejs
 hunspell                            enchant
+hwinfo
 hyperwave                           php
 hypothesis                          python2-pycairo, python3-pycairo
 i3                                  bumblebee-status
@@ -450,7 +451,7 @@ libvpx                              gst-plugins-good, ffmpeg
 libwacom                            libinput
 libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick
 libwmf                              gimp, imagemagick
-libx86emu
+libx86emu                           hwinfo
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 libxdmcp                            libxcb

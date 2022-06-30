@@ -827,6 +827,7 @@ d/glm.sh
 xap/gtick.sh
 s/hstr.sh
 l/libx86emu.sh
+s/hwinfo.sh
 
 
 # vim:ft=conf
