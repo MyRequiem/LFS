@@ -828,6 +828,7 @@ xap/gtick.sh
 s/hstr.sh
 l/libx86emu.sh
 s/hwinfo.sh
+s/inxi.sh
 
 
 # vim:ft=conf
