@@ -107,11 +107,11 @@ cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 # End ${FUSE_CONF}
 EOF
 
-config_file_processing "${FUSE_CONF}"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${FUSE_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Filesystem in Userspace)
