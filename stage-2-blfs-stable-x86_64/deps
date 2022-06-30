@@ -168,13 +168,13 @@ flif                                imagemagick
 flite                               gst-plugins-bad, qt5, ffmpeg
 fltk                                pinentry, alsa-tools
 fluidsynth                          gst-plugins-bad
-fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript, poppler, ffmpeg
+fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript, poppler, ffmpeg, libgd
 fonttools                           harfbuzz, graphite2
 fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server, postgresql
 freefont
 freeglut                            libtiff, jasper, libwebp
 freetds                             apr-util, qt5
-freetype                            harfbuzz, graphite2, fontconfig, libass, ghostscript, php, ffmpeg
+freetype                            harfbuzz, graphite2, fontconfig, libass, ghostscript, php, ffmpeg, libgd
 frei0r-plugins                      ffmpeg
 fribidi                             pango, libass, vte3, ffmpeg
 frontbase                           php
@@ -357,7 +357,7 @@ libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-
 libevent                            links, mariadb, nghttp2, ntp, transmission, tmux
 libexif                             gst-plugins-bad, php, feh
 libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal, libsecret, qemu
-libgd                               php
+libgd                               php, nginx
 libglade                            python2-pygtk
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libgsf                              goffice
@@ -374,7 +374,7 @@ libilbc                             ffmpeg
 libinput                            xorg-libinput-driver, qt5
 libiodbc                            redland, php
 libiscsi                            udisks
-libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick, feh
+libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick, feh, libgd
 libkate                             gst-plugins-bad
 libksba                             gnupg
 liblsmash                           x264
@@ -406,7 +406,7 @@ libopenraw                          gegl
 libosinfo                           virt-manager
 libpaper                            cups, ghostscript
 libpcap                             iptables
-libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh
+libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh, libgd
 libproxy                            glib-networking, neon, qt5
 libpsl                              wget, curl, libsoup
 libpwquality                        cryptsetup
@@ -433,7 +433,7 @@ libssh2                             curl, rustc, mc, gst-plugins-bad, qemu
 libtasn1                            p11-kit, gnutls
 libthai                             pango, perl-unicode-linebreak
 libtheora                           gst-plugins-base, ffmpeg
-libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick
+libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
 libtirpc                            rpcbind, lsof, libnsl, talloc
 libtizonia                          mesa
 libumfpack                          gegl
@@ -450,7 +450,7 @@ libvisual                           gst-plugins-base
 libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
 libvpx                              gst-plugins-good, ffmpeg
 libwacom                            libinput
-libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick
+libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick, libgd
 libwmf                              gimp, imagemagick
 libx86emu                           hwinfo
 libxau                              libxcb
@@ -527,6 +527,7 @@ netcat-openbsd
 nettle                              libarchive, gnutls, mesa, xorg-server, gst-plugins-bad, qemu
 nftables                            iptables
 nghttp2                             cmake, nodejs, curl, apache-httpd
+nginx
 ngtcp2                              curl
 nickle                              xorg-applications
 nodejs

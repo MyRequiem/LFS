@@ -883,3 +883,7 @@ https://github.com/openSUSE/hwinfo/archive/21.82/hwinfo-21.82.tar.gz
 https://github.com/smxi/inxi/archive/3.3.19-1/inxi-3.3.19-1.tar.gz
 https://github.com/naelstrof/slop/archive/v7.6/slop-7.6.tar.gz
 https://github.com/naelstrof/maim/archive/v5.7.4/maim-5.7.4.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libgd/libgd-2.3.3.patch
+https://github.com/libgd/libgd/archive/refs/tags/gd-2.3.3.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/nginx/nginx
+http://nginx.org/download/nginx-1.23.0.tar.gz

@@ -831,6 +831,9 @@ s/hwinfo.sh
 s/inxi.sh
 ap/slop.sh
 ap/maim.sh
+l/libgd.sh
+n/php.sh
+n/nginx.sh
 
 
 # vim:ft=conf
