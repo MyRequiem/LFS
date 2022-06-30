@@ -832,8 +832,10 @@ s/inxi.sh
 ap/slop.sh
 ap/maim.sh
 l/libgd.sh
-n/php.sh
 n/nginx.sh
+d/oniguruma.sh
+l/slang.sh
+n/php.sh
 
 
 # vim:ft=conf
