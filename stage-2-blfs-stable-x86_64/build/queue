@@ -840,6 +840,8 @@ s/pspg.sh
 ap/optipng.sh
 s/jq.sh
 d/pycodestyle.sh
+d/pyflakes.sh
+d/python-modules/python3-pygobject3.sh
 
 
 # vim:ft=conf
