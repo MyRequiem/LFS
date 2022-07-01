@@ -843,6 +843,7 @@ d/pycodestyle.sh
 d/pyflakes.sh
 d/python-modules/python3-pygobject3.sh
 l/qt5-styleplugins.sh
+s/qt5ct.sh
 
 
 # vim:ft=conf

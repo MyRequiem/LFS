@@ -896,3 +896,7 @@ https://files.pythonhosted.org/packages/15/60/c577e54518086e98470e9088278247f4af
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-build-against-Qt-5.15.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
+http://prdownloads.sourceforge.net/qt5ct/qt5ct-1.5.tar.bz2
+
+
+# vim:ft=conf nowrap

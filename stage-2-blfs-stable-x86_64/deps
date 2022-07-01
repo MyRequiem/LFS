@@ -457,7 +457,7 @@ libx86emu                           hwinfo
 libxau                              libxcb
 libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 libxdmcp                            libxcb
-libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins
+libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 libxklavier
 libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
 libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc, cppcheck
@@ -798,7 +798,7 @@ python2-libxml2                     libxslt, docbook-xsl, gimp
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins, qt5ct
 python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-idna                        python-requests
@@ -815,8 +815,9 @@ python3-scour
 qdbm                                php, mutt
 qemu
 qt4                                 cairo
-qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission, flameshot, qt5-styleplugins
+qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission, flameshot, qt5-styleplugins, qt5ct
 qt5-styleplugins
+qt5ct
 quiche                              curl
 radiance                            imagemagick
 ralcgm                              imagemagick
