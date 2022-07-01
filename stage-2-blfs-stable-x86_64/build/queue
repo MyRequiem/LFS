@@ -838,6 +838,7 @@ l/slang.sh
 n/php.sh
 s/pspg.sh
 ap/optipng.sh
+s/jq.sh
 
 
 # vim:ft=conf

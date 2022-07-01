@@ -298,6 +298,7 @@ jasper                              qt5, gegl, imagemagick
 jbig-kit                            libtiff, imagemagick
 jbig2dec                            cairo
 jemalloc                            nghttp2, qemu
+jq
 json-c                              cryptsetup, fontconfig, bind-utils, libmypaint, girara
 json-glib                           gtk+3, gegl
 judy                                mariadb
@@ -545,7 +546,7 @@ numlockx
 numpy                               python2-pygtk
 nuspell                             enchant
 ocaml                               llvm
-oniguruma                           slang, php
+oniguruma                           slang, php, jq
 open-mpi                            boost
 openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
 opencore-amr                        gst-plugins-ugly, ffmpeg
