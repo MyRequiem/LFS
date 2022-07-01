@@ -839,6 +839,7 @@ n/php.sh
 s/pspg.sh
 ap/optipng.sh
 s/jq.sh
+d/pycodestyle.sh
 
 
 # vim:ft=conf
