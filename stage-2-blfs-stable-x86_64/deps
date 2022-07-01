@@ -759,6 +759,7 @@ pov-ray                             imagemagick
 prelink
 procmail                            fetchmail
 profiles                            imagemagick
+pspg
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu
 pwgen

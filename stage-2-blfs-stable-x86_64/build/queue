@@ -836,6 +836,7 @@ n/nginx.sh
 d/oniguruma.sh
 l/slang.sh
 n/php.sh
+s/pspg.sh
 
 
 # vim:ft=conf
