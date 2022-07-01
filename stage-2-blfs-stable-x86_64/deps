@@ -563,6 +563,7 @@ openslp                             openldap
 opensp                              openjade, docbook-dsssl
 openssh                             libssh2, sshfs, gnome-keyring
 opie                                sudo
+optipng
 opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
 opusfile                            cmus
 orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, pulseaudio, spice

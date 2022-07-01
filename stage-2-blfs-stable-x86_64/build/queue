@@ -837,6 +837,7 @@ d/oniguruma.sh
 l/slang.sh
 n/php.sh
 s/pspg.sh
+ap/optipng.sh
 
 
 # vim:ft=conf
