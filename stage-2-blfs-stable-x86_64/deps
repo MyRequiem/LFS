@@ -792,7 +792,8 @@ python-pycryptodome
 python-pycurl                       python-urlgrabber
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
-python-pytest
+python-pytest                       python-pytest-runner
+python-pytest-runner
 python-pyyaml                       llvm
 python-requests                     virt-manager
 python-scandir                      python-pathlib2, python-pytest
