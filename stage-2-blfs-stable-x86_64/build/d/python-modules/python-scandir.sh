@@ -3,7 +3,7 @@
 PRGNAME="python-scandir"
 ARCH_NAME="scandir"
 
-### python-scandir (directory iterator)
+### scandir (directory iterator)
 # Улучшенный итератор каталогов по сравнению с os.listdir(). Использование
 # scandir() увеличивает скорость os.walk() в 2-20 раз (в зависимости от
 # платформы и файловой системы), в большинстве случаев избегая ненужных вызовов
