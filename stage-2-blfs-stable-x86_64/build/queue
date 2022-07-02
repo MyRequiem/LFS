@@ -848,6 +848,7 @@ d/python-modules/python-scandir.sh
 d/python-modules/python-setuptools-scm.sh
 d/python-modules/python-py.sh
 d/python-modules/python-attrs.sh
+d/python-modules/python-pluggy.sh
 
 
 # vim:ft=conf

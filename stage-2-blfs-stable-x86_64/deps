@@ -780,6 +780,7 @@ python-ipaddr                       virt-manager
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
 python-netifaces                    bumblebee-status
+python-pluggy
 python-psutil                       llvm, bumblebee-status
 python-py
 python-py3c
@@ -790,7 +791,7 @@ python-pyparsing                    libinput, spice, spice-gtk
 python-pyyaml                       llvm
 python-requests                     virt-manager
 python-scandir
-python-setuptools-scm               python-py
+python-setuptools-scm               python-py, python-pluggy
 python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber
 python-slip
 python-urlgrabber                   libvirt
