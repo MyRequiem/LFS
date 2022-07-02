@@ -781,6 +781,7 @@ python-funcsigs                     python-pytest
 python-ipaddr                       virt-manager
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
+python-mccabe
 python-more-itertools               python-pytest
 python-netifaces                    bumblebee-status
 python-pathlib2                     python-pytest
@@ -792,8 +793,8 @@ python-pycryptodome
 python-pycurl                       python-urlgrabber
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
-python-pytest                       python-pytest-runner
-python-pytest-runner
+python-pytest                       python-pytest-runner, python-mccabe
+python-pytest-runner                python-mccabe
 python-pyyaml                       llvm
 python-requests                     virt-manager
 python-scandir                      python-pathlib2, python-pytest
