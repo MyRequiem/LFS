@@ -774,6 +774,7 @@ python-atomicwrites                 python-pytest
 python-attrs                        python-pytest
 python-certifi                      python-requests
 python-chardet                      python-requests
+python-configparser
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 python-docutils                     python-dbus, sshfs, alsa-utils
