@@ -770,6 +770,7 @@ pycodestyle
 pyflakes                            python3-pygobject3
 pyrad                               mit-kerberos-v5
 pytest                              fuse, python3-pygobject3
+python-attrs
 python-certifi                      python-requests
 python-chardet                      python-requests
 python-d-bus                        dbus, udisks

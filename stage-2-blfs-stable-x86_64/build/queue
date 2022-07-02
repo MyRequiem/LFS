@@ -847,6 +847,7 @@ s/qt5ct.sh
 d/python-modules/python-scandir.sh
 d/python-modules/python-setuptools-scm.sh
 d/python-modules/python-py.sh
+d/python-modules/python-attrs.sh
 
 
 # vim:ft=conf
