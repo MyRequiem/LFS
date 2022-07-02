@@ -777,6 +777,7 @@ python-chardet                      python-requests
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 python-docutils                     python-dbus, sshfs, alsa-utils
+python-funcsigs
 python-ipaddr                       virt-manager
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2

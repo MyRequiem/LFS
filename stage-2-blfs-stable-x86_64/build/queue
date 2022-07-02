@@ -851,6 +851,7 @@ d/python-modules/python-attrs.sh
 d/python-modules/python-pluggy.sh
 d/python-modules/python-more-itertools.sh
 d/python-modules/python-atomicwrites.sh
+d/python-modules/python-funcsigs.sh
 
 
 # vim:ft=conf
