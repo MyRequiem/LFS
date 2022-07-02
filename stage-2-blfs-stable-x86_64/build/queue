@@ -846,6 +846,7 @@ l/qt5-styleplugins.sh
 s/qt5ct.sh
 d/python-modules/python-scandir.sh
 d/python-modules/python-setuptools-scm.sh
+d/python-modules/python-py.sh
 
 
 # vim:ft=conf
