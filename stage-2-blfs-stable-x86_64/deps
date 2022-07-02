@@ -783,6 +783,7 @@ python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
 python-more-itertools
 python-netifaces                    bumblebee-status
+python-pathlib2
 python-pluggy
 python-psutil                       llvm, bumblebee-status
 python-py
@@ -793,9 +794,9 @@ python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
 python-pyyaml                       llvm
 python-requests                     virt-manager
-python-scandir
+python-scandir                      python-pathlib2
 python-setuptools-scm               python-py, python-pluggy
-python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber, python-more-itertools
+python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber, python-more-itertools, python-pathlib2
 python-slip
 python-urlgrabber                   libvirt
 python-urllib3                      python-requests
