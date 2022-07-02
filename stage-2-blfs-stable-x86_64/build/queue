@@ -850,6 +850,7 @@ d/python-modules/python-py.sh
 d/python-modules/python-attrs.sh
 d/python-modules/python-pluggy.sh
 d/python-modules/python-more-itertools.sh
+d/python-modules/python-atomicwrites.sh
 
 
 # vim:ft=conf
