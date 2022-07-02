@@ -849,6 +849,7 @@ d/python-modules/python-setuptools-scm.sh
 d/python-modules/python-py.sh
 d/python-modules/python-attrs.sh
 d/python-modules/python-pluggy.sh
+d/python-modules/python-more-itertools.sh
 
 
 # vim:ft=conf
