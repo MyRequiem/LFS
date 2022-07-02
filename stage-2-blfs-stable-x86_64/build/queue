@@ -853,6 +853,7 @@ d/python-modules/python-more-itertools.sh
 d/python-modules/python-atomicwrites.sh
 d/python-modules/python-funcsigs.sh
 d/python-modules/python-pathlib2.sh
+d/python-modules/python-pytest.sh
 
 
 # vim:ft=conf
