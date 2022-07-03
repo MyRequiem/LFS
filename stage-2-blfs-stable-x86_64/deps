@@ -788,6 +788,7 @@ python-mccabe                       flake8
 python-more-itertools               python-pytest
 python-netifaces                    bumblebee-status
 python-pathlib2                     python-pytest
+python-pies
 python-pluggy                       python-pytest
 python-psutil                       llvm, bumblebee-status
 python-py                           python-pytest
@@ -808,10 +809,10 @@ python-urlgrabber                   libvirt
 python-urllib3                      python-requests
 python-urwid                        urlscan
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms, talloc, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, python-urwid
-python2-enum34                      flake8
+python2-enum34                      flake8, python-pies
 python2-future
 python2-libxml2                     libxslt, docbook-xsl, gimp
-python2-pies2overrides
+python2-pies2overrides              python-pies
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
