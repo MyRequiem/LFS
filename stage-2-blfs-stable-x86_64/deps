@@ -831,6 +831,7 @@ python3-pygments                    libbytesize, llvm, gegl, poppler
 python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
 python3-pyxdg                       ibus
 python3-scour
+python3-typed-ast
 qdbm                                php, mutt
 qemu
 qt4                                 cairo

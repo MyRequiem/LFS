@@ -863,6 +863,7 @@ d/python-modules/python-ipaddress.sh
 d/python-modules/python2-pies2overrides.sh
 d/python-modules/python-pies.sh
 d/isort.sh
+d/python-modules/python3-typed-ast.sh
 
 
 # vim:ft=conf
