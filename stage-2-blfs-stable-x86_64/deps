@@ -781,7 +781,7 @@ python-dbus                         python3-dbusmock, polkit, ibus, python-slip,
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-funcsigs                     python-pytest
 python-ipaddr                       virt-manager
-python-ipaddress
+python-ipaddress                    python2-pies2overrides
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
 python-mccabe                       flake8
@@ -811,6 +811,7 @@ python2                             cython, yasm, libxml2, python2-libxml2, pyth
 python2-enum34                      flake8
 python2-future
 python2-libxml2                     libxslt, docbook-xsl, gimp
+python2-pies2overrides
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
