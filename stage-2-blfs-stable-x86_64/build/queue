@@ -865,6 +865,8 @@ d/python-modules/python-pies.sh
 d/isort.sh
 d/python-modules/python3-typed-ast.sh
 d/python-modules/python-toml.sh
+d/python-modules/python2-lazy-object-proxy.sh
+d/python-modules/python3-lazy-object-proxy.sh
 
 
 # vim:ft=conf
