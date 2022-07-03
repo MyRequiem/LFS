@@ -291,6 +291,7 @@ ipaex-fonts-ttf
 iptables
 isl                                 gcc
 iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus, gimp
+isort
 itstool                             shared-mime-info, zenity
 iw
 jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
@@ -788,7 +789,7 @@ python-mccabe                       flake8
 python-more-itertools               python-pytest
 python-netifaces                    bumblebee-status
 python-pathlib2                     python-pytest
-python-pies
+python-pies                         isort
 python-pluggy                       python-pytest
 python-psutil                       llvm, bumblebee-status
 python-py                           python-pytest
