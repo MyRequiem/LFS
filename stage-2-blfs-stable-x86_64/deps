@@ -781,6 +781,7 @@ python-dbus                         python3-dbusmock, polkit, ibus, python-slip,
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-funcsigs                     python-pytest
 python-ipaddr                       virt-manager
+python-ipaddress
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
 python-mccabe                       flake8
