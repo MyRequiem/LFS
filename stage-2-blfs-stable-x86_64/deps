@@ -806,6 +806,7 @@ python-scandir                      python-pathlib2, python-pytest
 python-setuptools-scm               python-py, python-pluggy, python-pytest
 python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber, python-more-itertools, python-pathlib2, python-pytest
 python-slip
+python-toml
 python-urlgrabber                   libvirt
 python-urllib3                      python-requests
 python-urwid                        urlscan
