@@ -858,6 +858,7 @@ d/python-modules/python-pytest-runner.sh
 d/python-modules/python-mccabe.sh
 d/python-modules/python-configparser.sh
 d/python-modules/python2-enum34.sh
+d/flake8.sh
 
 
 # vim:ft=conf

@@ -162,6 +162,7 @@ fftw                                alsa-utils, libsamplerate, pulseaudio, image
 fig2dev                             gnupg
 firebird                            qt5
 flac                                libsndfile, gst-plugins-good
+flake8
 flameshot
 flashpix                            imagemagick
 flif                                imagemagick
@@ -766,15 +767,15 @@ pth                                 libgcrypt, parted, libidn, openldap, sdl, un
 pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu
 pwgen
 pyatspi2                            gtk+3
-pycodestyle
-pyflakes                            python3-pygobject3
+pycodestyle                         flake8
+pyflakes                            python3-pygobject3, flake8
 pyrad                               mit-kerberos-v5
 pytest                              fuse, python3-pygobject3
 python-atomicwrites                 python-pytest
 python-attrs                        python-pytest
 python-certifi                      python-requests
 python-chardet                      python-requests
-python-configparser
+python-configparser                 flake8
 python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 python-docutils                     python-dbus, sshfs, alsa-utils
@@ -782,7 +783,7 @@ python-funcsigs                     python-pytest
 python-ipaddr                       virt-manager
 python-lxml
 python-markupsafe                   python3-mako, python3-jinja2
-python-mccabe
+python-mccabe                       flake8
 python-more-itertools               python-pytest
 python-netifaces                    bumblebee-status
 python-pathlib2                     python-pytest
@@ -794,8 +795,8 @@ python-pycryptodome
 python-pycurl                       python-urlgrabber
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
-python-pytest                       python-pytest-runner, python-mccabe
-python-pytest-runner                python-mccabe
+python-pytest                       python-pytest-runner, python-mccabe, flake8
+python-pytest-runner                python-mccabe, flake8
 python-pyyaml                       llvm
 python-requests                     virt-manager
 python-scandir                      python-pathlib2, python-pytest
@@ -806,7 +807,7 @@ python-urlgrabber                   libvirt
 python-urllib3                      python-requests
 python-urwid                        urlscan
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms, talloc, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, python-urwid
-python2-enum34
+python2-enum34                      flake8
 python2-future
 python2-libxml2                     libxslt, docbook-xsl, gimp
 python2-pycairo                     python2-pygobject2, python2-pygtk
