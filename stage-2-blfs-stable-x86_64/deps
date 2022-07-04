@@ -772,6 +772,7 @@ pycodestyle                         flake8
 pyflakes                            python3-pygobject3, flake8
 pyrad                               mit-kerberos-v5
 pytest                              fuse, python3-pygobject3
+python-appdirs
 python-astroid
 python-atomicwrites                 python-pytest
 python-attrs                        python-pytest

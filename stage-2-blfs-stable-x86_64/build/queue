@@ -869,6 +869,7 @@ d/python-modules/python2-lazy-object-proxy.sh
 d/python-modules/python3-lazy-object-proxy.sh
 d/python-modules/python-wrapt.sh
 d/python-modules/python-astroid.sh
+d/python-modules/python-appdirs.sh
 
 
 # vim:ft=conf
