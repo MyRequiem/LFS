@@ -7,7 +7,8 @@ PRGNAME="pyflakes"
 # Анализирует исходный файл, а не импортирует его, поэтому его безопасно
 # использовать на модулях с побочными эффектами.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

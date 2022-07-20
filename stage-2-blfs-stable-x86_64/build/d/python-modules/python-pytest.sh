@@ -6,7 +6,9 @@ ARCH_NAME="pytest"
 ### pytest (simple powerful testing with Python)
 # Полнофункциональный инструмент для тестирования Python программ.
 
-# Required:    python-six
+# Required:    python2
+#              python3
+#              python-six
 #              python-scandir
 #              python-setuptools-scm
 #              python-py

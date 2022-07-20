@@ -8,7 +8,9 @@ ARCH_NAME="astroid"
 # pychecker, pyreverse, pylint и др. На самом деле разработка этой библиотеки в
 # основном регулируется потребностями pylint
 
-# Required:    python-six
+# Required:    python2
+#              python3
+#              python-six
 #              python2-lazy-object-proxy
 #              python3-lazy-object-proxy
 #              python-wrapt

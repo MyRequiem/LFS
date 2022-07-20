@@ -7,8 +7,8 @@ ARCH_NAME="certifi"
 # Тщательно отобранная коллекция корневых сертификатов для проверки надежности
 # SSL-сертификатов хостов TLS
 
-# Required:    python3
-#              python2
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

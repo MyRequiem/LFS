@@ -7,7 +7,8 @@ ARCH_NAME="pies2overrides"
 # Определяет классы, которые следует включать в круговые диаграммы, только если
 # они выполняются на Python2
 
-# Required:    python-ipaddress
+# Required:    python2
+#              python-ipaddress
 # Recommended: no
 # Optional:    no
 

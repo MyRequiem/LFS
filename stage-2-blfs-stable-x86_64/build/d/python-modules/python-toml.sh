@@ -6,7 +6,8 @@ ARCH_NAME="toml"
 ### toml (A Python library for parsing and creating TOML)
 # Библиотека Python для разбора и создания TOML
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

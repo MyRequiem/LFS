@@ -6,8 +6,8 @@ ARCH_NAME="requests"
 ### python-requests (HTTP request library for python)
 # Python-библиотека HTTP-запросов
 
-# Required:    python3
-#              python2
+# Required:    python2
+#              python3
 #              python-certifi
 #              python-chardet
 #              python3-idna

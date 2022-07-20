@@ -9,7 +9,8 @@ ARCH_NAME="pyparsing"
 # Модуль pyparsing предоставляет библиотеку классов, которые клиент использует
 # для построения грамматики непосредственно в коде Python
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

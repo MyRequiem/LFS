@@ -9,7 +9,8 @@ ARCH_NAME="scandir"
 # платформы и файловой системы), в большинстве случаев избегая ненужных вызовов
 # os.stat()
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

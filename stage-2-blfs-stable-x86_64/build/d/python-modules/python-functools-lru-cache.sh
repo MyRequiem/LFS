@@ -7,6 +7,7 @@ ARCH_NAME="backports.functools_lru_cache"
 # Бэкпорт functools.lru_cache из Python 3.3
 
 # Required:    python2
+#              python3
 #              python-setuptools-scm
 # Recommended: no
 # Optional:    no

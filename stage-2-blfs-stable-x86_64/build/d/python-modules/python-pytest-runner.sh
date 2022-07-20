@@ -7,7 +7,9 @@ ARCH_NAME="pytest-runner"
 # Данный пакет могут использовать сценарии установки для добавления поддержки
 # тестов setup.py для pytest-runner
 
-# Required:    python-pytest
+# Required:    python2
+#              python3
+#              python-pytest
 # Recommended: no
 # Optional:    no
 

@@ -6,7 +6,9 @@ ARCH_NAME="mccabe"
 ### mccabe (Complexity checker for Python)
 # McCabe checker - плагин для flake8 (средства проверки кода Python)
 
-# Required:    python-pytest
+# Required:    python2
+#              python3
+#              python-pytest
 #              python-pytest-runner
 # Recommended: no
 # Optional:    no

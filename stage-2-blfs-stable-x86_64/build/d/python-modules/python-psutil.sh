@@ -10,8 +10,8 @@ ARCH_NAME="psutil"
 # free, lsof, netstat, ifconfig, nice, ionice, iostat, iotop, uptime, pidof,
 # tty, who, taskset, pmap
 
-# Required:    python3
-#              python2
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

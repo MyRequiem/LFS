@@ -6,7 +6,8 @@ ARCH_NAME="libvirt-python"
 ### python3-libvirt (python bindings for libvirt)
 # Привязки Python3 для libvirt
 
-# Required:    libyajl
+# Required:    python3
+#              libyajl
 #              libvirt
 # Recommended: no
 # Optional:    no

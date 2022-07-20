@@ -6,7 +6,9 @@ PRGNAME="python-slip"
 # Обеспечивает удобство, расширение и обходной код для Python и некоторых
 # Python-модулей
 
-# Required:    python-dbus
+# Required:    python2
+#              python3
+#              python-dbus
 #              python3-decorator
 #              python-six
 # Recommended: no

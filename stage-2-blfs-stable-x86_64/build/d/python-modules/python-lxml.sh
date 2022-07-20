@@ -6,8 +6,10 @@ ARCH_NAME="lxml"
 ### python-lxml (Python bindings for libxml2 and libxslt)
 # Python bindings для библиотек libxml2 и libxslt
 
-# Required:    libxslt
-# Recommended: python2
+# Required:    python2
+#              python3
+#              libxslt
+# Recommended: no
 # Optional:    gdb       (для тестов)
 #              valgrind  (для тестов)
 #              cssselect (для тестов) https://pypi.org/project/cssselect/

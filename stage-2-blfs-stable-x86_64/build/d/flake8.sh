@@ -6,7 +6,9 @@ PRGNAME="flake8"
 # Инструмент Python, который связывает вместе pep8, pyflakes, mccabe и
 # сторонние плагины для проверки стиля и качества кода Python
 
-# Required:    python-pytest
+# Required:    python2
+#              python3
+#              python-pytest
 #              python-pytest-runner
 #              pycodestyle
 #              pyflakes

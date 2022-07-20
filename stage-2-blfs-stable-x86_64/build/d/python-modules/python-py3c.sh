@@ -4,7 +4,7 @@ PRGNAME="python-py3c"
 ARCH_NAME="py3c"
 
 ### python-py3c (Python 2/3 compatibility layer for C extensions)
-# помогает портировать расширения C на Python 3
+# Помогает портировать расширения C на Python 3
 
 # Required:    no
 # Recommended: no

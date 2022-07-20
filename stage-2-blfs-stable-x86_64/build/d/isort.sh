@@ -6,7 +6,9 @@ PRGNAME="isort"
 # Сортировка импорта Python модулей в алфавитном порядке и автоматическое
 # разделения на разделы
 
-# Required:    python-pies
+# Required:    python2
+#              python3
+#              python-pies
 # Recommended: no
 # Optional:    no
 

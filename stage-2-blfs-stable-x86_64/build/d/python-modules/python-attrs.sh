@@ -7,7 +7,8 @@ ARCH_NAME="attrs"
 # Декораторы классов Python, упрощающие рутинную работу по реализации наиболее
 # распространенных объектных протоколов, связанных с атрибутами.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

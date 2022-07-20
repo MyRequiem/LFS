@@ -8,7 +8,8 @@ ARCH_NAME="wrapt"
 # прозрачный объектный прокси для Python, который может использоваться в
 # качестве основы для построения обёрток и декораторов функций.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

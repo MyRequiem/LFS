@@ -6,8 +6,9 @@ ARCH_NAME="libxml2"
 ### python2-libxml2 (Python2 bindings for libxml2)
 # Python2 bindings для libxml2
 
-# Required:    libxml2
-#              python2
+# Required:    python2
+#              libxml2
+#              icu
 # Recommended: no
 # Optional:    no
 

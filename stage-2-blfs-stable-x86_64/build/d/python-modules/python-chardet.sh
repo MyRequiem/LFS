@@ -6,8 +6,8 @@ ARCH_NAME="chardet"
 ### python-chardet (Universal encoding detector for Python 2 and 3)
 # Автоматическое определение кодировки символов в Python
 
-# Required:    python3
-#              python2
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

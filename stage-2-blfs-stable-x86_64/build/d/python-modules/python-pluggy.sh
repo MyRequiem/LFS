@@ -7,7 +7,9 @@ ARCH_NAME="pluggy"
 # Менеджер плагинов, используемый pytest, но лишенный специфичных для pytest
 # деталей.
 
-# Required:    python-setuptools-scm
+# Required:    python2
+#              python3
+#              python-setuptools-scm
 # Recommended: no
 # Optional:    no
 

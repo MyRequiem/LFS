@@ -8,7 +8,7 @@ ARCH_NAME="future"
 # совместимый с Python 3.x код для поддержки как Python 2, так и Python 3 с
 # минимальными накладными расходами.
 
-# Required:    no
+# Required:    python2
 # Recommended: no
 # Optional:    no
 

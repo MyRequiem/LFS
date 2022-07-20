@@ -7,7 +7,8 @@ ARCH_NAME="appdirs"
 # Python модуль для определения подходящих каталогов для конкретных платформ,
 # например каталога пользовательских данных.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

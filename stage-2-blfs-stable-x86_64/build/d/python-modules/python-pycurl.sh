@@ -6,7 +6,8 @@ ARCH_NAME="pycurl"
 ### python-pycurl (Python interface to cURL library)
 # Python интерфейс для libcurl
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

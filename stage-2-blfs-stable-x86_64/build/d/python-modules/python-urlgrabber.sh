@@ -8,7 +8,9 @@ ARCH_NAME="urlgrabber"
 # Предназначен для использования в программах, которым нужны общие (но не
 # обязательно простые) функции извлечения URL
 
-# Required:    python-six
+# Required:    python2
+#              python3
+#              python-six
 #              python-pycurl (http://pycurl.sourceforge.net)
 # Recommended: no
 # Optional:    no

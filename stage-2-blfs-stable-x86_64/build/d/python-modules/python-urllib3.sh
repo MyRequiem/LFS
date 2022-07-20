@@ -6,8 +6,8 @@ ARCH_NAME="urllib3"
 ### python-urllib3 (Powerful, sanity-friendly HTTP client for Python)
 # Мощный и удобный HTTP-клиент для Python
 
-# Required:    python3
-#              python2
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

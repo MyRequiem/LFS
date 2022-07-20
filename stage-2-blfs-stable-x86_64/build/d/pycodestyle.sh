@@ -6,7 +6,8 @@ PRGNAME="pycodestyle"
 # Инструмент для проверки кода Python на соответствие некоторым стилям и
 # соглашениям PEP 8
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

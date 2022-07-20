@@ -8,7 +8,8 @@ ARCH_NAME="setuptools_scm"
 # объявлять их в качестве аргумента версии или в файле, управляемом scm. Также
 # обрабатывает средства поиска файлов для поддерживаемых scms.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

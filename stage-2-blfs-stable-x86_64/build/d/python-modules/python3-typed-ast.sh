@@ -8,7 +8,7 @@ ARCH_NAME="typed_ast"
 # парсеры в typed_ast включают комментарии типа PEP 484 и не зависят от версии
 # Python, под которым они запущены.
 
-# Required:    no
+# Required:    python3
 # Recommended: no
 # Optional:    no
 

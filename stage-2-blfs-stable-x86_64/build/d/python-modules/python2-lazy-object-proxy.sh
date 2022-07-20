@@ -6,7 +6,7 @@ ARCH_NAME="lazy-object-proxy"
 ### python2-lazy-object-proxy (Python lazy object proxy)
 # Быстрый Python2 объектный прокси
 
-# Required:    no
+# Required:    python2
 # Recommended: no
 # Optional:    no
 

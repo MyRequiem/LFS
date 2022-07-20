@@ -8,7 +8,8 @@ ARCH_NAME="configparser"
 # крупное обновление в Python 3.x. Это резервная копия этих изменений, поэтому
 # ее можно использовать напрямую в Python 2.6 - 2.7
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

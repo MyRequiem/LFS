@@ -6,7 +6,8 @@ ARCH_NAME="funcsigs"
 ### funcsigs (Backport of the PEP 362)
 # Бэкпорт функций подписи PEP 362 из Python3
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

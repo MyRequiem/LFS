@@ -6,8 +6,6 @@ PRGNAME="c2man"
 # Инструмент для извлечения комментариев из исходного кода C для генерации
 # документации
 
-# нет в BLFS
-
 # Required:    no
 # Recommended: no
 # Optional:    no

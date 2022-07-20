@@ -9,7 +9,8 @@ ARCH_NAME="scour"
 # использования после экспорта изображений в SVG формат в графических
 # редакторах (Inkscape, Adobe и т.д.)
 
-# Required:    python-six
+# Required:    python3
+#              python-six
 # Recommended: no
 # Optional:    no
 

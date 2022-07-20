@@ -7,7 +7,8 @@ ARCH_NAME="pycryptodome"
 # Набор безопасных хэш-функций (таких как SHA256 и RIPEMD160) и различные
 # алгоритмы шифрования (AES, DES, RSA, ElGamal и др.). Является форком PyCrypto
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

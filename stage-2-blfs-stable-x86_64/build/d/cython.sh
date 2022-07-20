@@ -7,8 +7,6 @@ ARCH_NAME="Cython"
 # Оптимизированный статический компилятор для Python и язык программирования
 # Cython (на основе Pyrex)
 
-# нет в BLFS
-
 # Required:    python2
 #              python3
 # Recommended: no

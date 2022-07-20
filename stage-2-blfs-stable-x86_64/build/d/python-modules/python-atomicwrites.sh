@@ -7,7 +7,8 @@ ARCH_NAME="atomicwrites"
 # Использует временный файл в том же каталоге, что и указанный путь. Это
 # гарантирует, что временный файл находится в той же файловой системе.
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 

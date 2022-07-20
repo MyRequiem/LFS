@@ -6,7 +6,8 @@ ARCH_NAME="pyatspi"
 ### python3-pyatspi2 (Python bindings for core components of the GNOME Accessibility)
 # Python bindings для основных компонентов GNOME Accessibility
 
-# Required:    python3-pygobject3
+# Required:    python3
+#              python3-pygobject3
 # Recommended: at-spi2-core
 # Optional:    no
 

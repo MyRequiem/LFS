@@ -10,7 +10,9 @@ ARCH_NAME="pathlib2"
 # функции стандартной библиотеки pathlib можно использовать и в более старых
 # версиях Python.
 
-# Required:    python-six
+# Required:    python2
+#              python3
+#              python-six
 #              python-scandir
 # Recommended: no
 # Optional:    no

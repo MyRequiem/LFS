@@ -6,7 +6,9 @@ ARCH_NAME="more-itertools"
 ### more-itertools (Python more itertools library)
 # Позволяет создавать элегантные решения для функций, работающих с итерациями
 
-# Required:    python-six
+# Required:    python2
+#              python3
+#              python-six
 # Recommended: no
 # Optional:    no
 

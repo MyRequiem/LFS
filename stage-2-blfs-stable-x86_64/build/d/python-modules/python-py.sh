@@ -11,7 +11,9 @@ ARCH_NAME="py"
 #    py.iniconfig - простой анализ .ini файлов
 #    py.code      - динамическая генерация кода и самоанализ
 
-# Required:    python-setuptools-scm
+# Required:    python2
+#              python3
+#              python-setuptools-scm
 # Recommended: no
 # Optional:    no
 

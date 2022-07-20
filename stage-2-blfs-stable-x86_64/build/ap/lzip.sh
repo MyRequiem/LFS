@@ -9,8 +9,6 @@ PRGNAME="lzip"
 # для распространения программного обеспечения и архивирование данных. Lzip -
 # это чистая реализация алгоритма LZMA.
 
-# нет в BLFS
-
 # Required:    no
 # Recommended: no
 # Optional:    no

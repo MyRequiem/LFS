@@ -7,7 +7,9 @@ ARCH_NAME="pies"
 # Самый простой способ написать одну программу, работающую на Python 2.6+ и
 # Python3
 
-# Required:    python2-pies2overrides
+# Required:    python2
+#              python3
+#              python2-pies2overrides
 #              python2-enum34
 # Recommended: no
 # Optional:    no

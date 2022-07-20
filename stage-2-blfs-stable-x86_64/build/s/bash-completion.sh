@@ -5,8 +5,6 @@ PRGNAME="bash-completion"
 ### bash-completion (programmable completion for the bash shell)
 # Добавляет в оболочку bash автозавершение для команд
 
-# нет в BLFS
-
 # Required:    no
 # Recommended: no
 # Optional:    no

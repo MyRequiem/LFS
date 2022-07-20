@@ -6,7 +6,7 @@ ARCH_NAME="enum34"
 ### enum34 (backported Python 3.4 Enum)
 # Бэкпорт Enum c Python 3.4
 
-# Required:    no
+# Required:    python2
 # Recommended: no
 # Optional:    no
 

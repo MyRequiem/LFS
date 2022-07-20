@@ -6,7 +6,8 @@ ARCH_NAME="ipaddress"
 ### ipaddress (IPv4/IPv6 manipulation library)
 # Порт модуля ipaddress Python 3.3+ в 2.6 и 2.7
 
-# Required:    no
+# Required:    python2
+#              python3
 # Recommended: no
 # Optional:    no
 
