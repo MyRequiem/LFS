@@ -783,6 +783,7 @@ python-d-bus                        dbus, udisks
 python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-funcsigs                     python-pytest
+python-functools-lru-cache
 python-ipaddr                       virt-manager
 python-ipaddress                    python2-pies2overrides
 python-lxml
@@ -805,7 +806,7 @@ python-pytest-runner                python-mccabe, flake8
 python-pyyaml                       llvm
 python-requests                     virt-manager
 python-scandir                      python-pathlib2, python-pytest
-python-setuptools-scm               python-py, python-pluggy, python-pytest, python-astroid
+python-setuptools-scm               python-py, python-pluggy, python-pytest, python-astroid, python-functools-lru-cache
 python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber, python-more-itertools, python-pathlib2, python-pytest, python-astroid
 python-slip
 python-toml
@@ -813,7 +814,7 @@ python-urlgrabber                   libvirt
 python-urllib3                      python-requests
 python-urwid                        urlscan
 python-wrapt                        python-astroid
-python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms, talloc, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, python-urwid
+python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms, talloc, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, python-urwid, python-functools-lru-cache
 python2-enum34                      flake8, python-pies
 python2-future
 python2-lazy-object-proxy           python-astroid

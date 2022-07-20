@@ -870,6 +870,7 @@ d/python-modules/python3-lazy-object-proxy.sh
 d/python-modules/python-wrapt.sh
 d/python-modules/python-astroid.sh
 d/python-modules/python-appdirs.sh
+d/python-modules/python-functools-lru-cache.sh
 
 
 # vim:ft=conf
