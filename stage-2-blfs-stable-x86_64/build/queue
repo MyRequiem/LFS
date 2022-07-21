@@ -872,6 +872,12 @@ d/python-modules/python-astroid.sh
 d/python-modules/python-appdirs.sh
 d/python-modules/python-functools-lru-cache.sh
 d/python-modules/python-singledispatch.sh
+d/python-modules/python-dill.sh
+d/python-modules/python3-platformdirs.sh
+d/python-modules/python-tomlkit.sh
+d/python-modules/python-tomli.sh
+d/python-modules/python-typing-extensions.sh
+d/pylint3.sh
 
 
 # vim:ft=conf
