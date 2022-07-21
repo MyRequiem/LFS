@@ -878,6 +878,7 @@ d/python-modules/python-tomlkit.sh
 d/python-modules/python-tomli.sh
 d/python-modules/python-typing-extensions.sh
 d/pylint3.sh
+d/pylint2.sh
 
 
 # vim:ft=conf
