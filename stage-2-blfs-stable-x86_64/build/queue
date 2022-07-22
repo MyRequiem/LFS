@@ -868,7 +868,8 @@ d/python-modules/python-toml.sh
 d/python-modules/python2-lazy-object-proxy.sh
 d/python-modules/python3-lazy-object-proxy.sh
 d/python-modules/python-wrapt.sh
-d/python-modules/python-astroid.sh
+d/python-modules/python3-astroid.sh
+d/python-modules/python2-astroid.sh
 d/python-modules/python-appdirs.sh
 d/python-modules/python-functools-lru-cache.sh
 d/python-modules/python-singledispatch.sh

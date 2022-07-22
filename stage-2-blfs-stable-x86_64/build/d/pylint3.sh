@@ -10,7 +10,7 @@ ARCH_NAME="pylint"
 #              python-pytest-runner
 #              python3-typed-ast
 #              python-toml
-#              python-astroid
+#              python3-astroid
 #              isort
 #              python-mccabe
 #              python-appdirs
