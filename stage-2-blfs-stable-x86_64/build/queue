@@ -862,6 +862,7 @@ d/flake8.sh
 d/python-modules/python-ipaddress.sh
 d/python-modules/python2-pies2overrides.sh
 d/python-modules/python-pies.sh
+d/python-modules/python2-futures.sh
 d/isort3.sh
 d/isort2.sh
 d/python-modules/python3-typed-ast.sh

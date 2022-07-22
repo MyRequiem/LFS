@@ -9,6 +9,7 @@ ARCH_NAME="isort"
 
 # Required:    python2
 #              python-pies
+#              python2-futures
 # Recommended: no
 # Optional:    no
 
