@@ -1,29 +1,44 @@
 #! /bin/bash
 
-PRGNAME="isort"
+PRGNAME="isort3"
+ARCH_NAME="isort"
 
 ### isort (sort imports alphabetically)
 # Сортировка импорта Python модулей в алфавитном порядке и автоматическое
 # разделения на разделы
 
-# Required:    python2
-#              python3
+# Required:    python3
 #              python-pies
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-5*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-python2 setup.py build || exit 1
-python2 setup.py install --optimize=1 --root="${TMP_DIR}"
-
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+
+# не конфликтуем с пакетом isort2
+(
+    cd "${TMP_DIR}/usr/bin" || exit 1
+    mv isort isort3
+)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -37,8 +52,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Python library and plugins for various editors to quickly sort all your
 # imports.
 #
-# Home page: https://pypi.org/project/${PRGNAME}/
-# Download:  https://files.pythonhosted.org/packages/ab/e9/964cb0b2eedd80c92f5172f1f8ae0443781a9d461c1372a3ce5762489593/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://pypi.org/project/${ARCH_NAME}/
+# Download:  https://files.pythonhosted.org/packages/ab/e9/964cb0b2eedd80c92f5172f1f8ae0443781a9d461c1372a3ce5762489593/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

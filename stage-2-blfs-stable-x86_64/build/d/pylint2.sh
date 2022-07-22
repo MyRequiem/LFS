@@ -8,7 +8,7 @@ ARCH_NAME="pylint"
 
 # Required:    python2
 #              python2-astroid
-#              isort
+#              isort2
 #              python-functools-lru-cache
 #              python-configparser
 #              python-singledispatch

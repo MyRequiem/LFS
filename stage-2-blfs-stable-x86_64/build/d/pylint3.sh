@@ -11,7 +11,7 @@ ARCH_NAME="pylint"
 #              python3-typed-ast
 #              python-toml
 #              python3-astroid
-#              isort
+#              isort3
 #              python-mccabe
 #              python-appdirs
 #              python-configparser
