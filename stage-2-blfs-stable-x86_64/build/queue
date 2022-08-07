@@ -884,6 +884,7 @@ d/pylint3.sh
 d/pylint2.sh
 d/python-modules/python-blessings.sh
 d/python-modules/python3-cwcwidth.sh
+d/python-modules/python3-curtsies.sh
 
 
 # vim:ft=conf
