@@ -95,7 +95,7 @@ cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools, uget
 curlftpfs                           vifm
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
-cython                              yasm, libseccomp, nghttp2
+cython                              yasm, libseccomp, nghttp2, python3-cwcwidth
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             asciidoc, git, graphite2, xmlto
@@ -778,6 +778,7 @@ pytest                              fuse, python3-pygobject3
 python-appdirs                      pylint3
 python-atomicwrites                 python-pytest
 python-attrs                        python-pytest
+python-blessings
 python-certifi                      python-requests
 python-chardet                      python-requests
 python-configparser                 flake8, pylint3, pylint2
@@ -832,8 +833,9 @@ python2-pies2overrides              python-pies
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins, qt5ct, python-attrs, python-appdirs, python3-astroid, python-atomicwrites, python-configparser, python-funcsigs, python-functools-lru-cache, python-ipaddress, python-lxml, python-mccabe, python-more-itertools, python-pathlib2, python-pies, python-pluggy, python-py, python-pycryptodome, python-pycurl, python-pyparsing, python-pytest-runner, python-pytest, python-scandir, python-setuptools-scm, python-slip, python-toml, python-urlgrabber, python-wrapt, python3-jinja2, python3-lazy-object-proxy, python3-libvirt, python3-pyatspi2, python3-scour, python3-typed-ast, flake8, isort3, pycodestyle, pyflakes, python-singledispatch, python-dill, python3-platformdirs, python-tomlkit, python-tomli, python-typing-extensions, pylint3, python-blessings
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins, qt5ct, python-attrs, python-appdirs, python3-astroid, python-atomicwrites, python-configparser, python-funcsigs, python-functools-lru-cache, python-ipaddress, python-lxml, python-mccabe, python-more-itertools, python-pathlib2, python-pies, python-pluggy, python-py, python-pycryptodome, python-pycurl, python-pyparsing, python-pytest-runner, python-pytest, python-scandir, python-setuptools-scm, python-slip, python-toml, python-urlgrabber, python-wrapt, python3-jinja2, python3-lazy-object-proxy, python3-libvirt, python3-pyatspi2, python3-scour, python3-typed-ast, flake8, isort3, pycodestyle, pyflakes, python-singledispatch, python-dill, python3-platformdirs, python-tomlkit, python-tomli, python-typing-extensions, pylint3, python-blessings, python3-cwcwidth
 python3-astroid                     pylint3
+python3-cwcwidth
 python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-idna                        python-requests

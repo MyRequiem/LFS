@@ -883,6 +883,7 @@ d/python-modules/python-typing-extensions.sh
 d/pylint3.sh
 d/pylint2.sh
 d/python-modules/python-blessings.sh
+d/python-modules/python3-cwcwidth.sh
 
 
 # vim:ft=conf
