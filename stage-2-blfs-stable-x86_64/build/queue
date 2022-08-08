@@ -887,6 +887,7 @@ d/python-modules/python3-cwcwidth.sh
 d/python-modules/python3-curtsies.sh
 d/python-modules/python-greenlet.sh
 d/python-modules/python-pyperclip.sh
+d/bpython.sh
 
 
 # vim:ft=conf

@@ -58,6 +58,7 @@ bluez                               python2, python3, libpcap, gst-plugins-bad, 
 bonjour                             postgresql
 boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2, taglib
 bpf-utils                           iptables
+bpython
 brotli                              curl, freetype, libsoup, apache-httpd
 bs2b                                gst-plugins-bad
 btrfs-progs                         udisks, libblockdev
@@ -788,7 +789,7 @@ python-dill                         pylint3
 python-docutils                     python-dbus, sshfs, alsa-utils
 python-funcsigs                     python-pytest
 python-functools-lru-cache          pylint3, pylint2
-python-greenlet
+python-greenlet                     bpython
 python-ipaddr                       virt-manager
 python-ipaddress                    python2-pies2overrides
 python-lxml
@@ -806,11 +807,11 @@ python-pycryptodome
 python-pycurl                       python-urlgrabber
 python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 python-pyparsing                    libinput, spice, spice-gtk
-python-pyperclip
+python-pyperclip                    bpython
 python-pytest                       python-pytest-runner, python-mccabe, flake8
 python-pytest-runner                python-mccabe, flake8, pylint3
 python-pyyaml                       llvm
-python-requests                     virt-manager
+python-requests                     virt-manager, bpython
 python-scandir                      python-pathlib2, python-pytest
 python-setuptools-scm               python-py, python-pluggy, python-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
 python-singledispatch               pylint3, pylint2
@@ -819,10 +820,10 @@ python-slip
 python-toml                         pylint3
 python-tomli                        pylint3
 python-tomlkit                      pylint3
-python-typing-extensions            pylint3
+python-typing-extensions            pylint3, bpython
 python-urlgrabber                   libvirt
 python-urllib3                      python-requests
-python-urwid                        urlscan
+python-urwid                        urlscan, bpython
 python-wrapt                        python2-astroid, python3-astroid
 python2                             cython, yasm, libxml2, python2-libxml2, python-six, python-pyyaml, docbook-xsl, parted, python-markupsafe, python-dbus, cryptsetup, gpgme, volume-key, vim, brotli, python-docutils, gtk-vnc, libglade, alsa-lib, cups, python2-pycairo, python2-pygobject2, python3-pyxdg, postgresql, qt5, python2-pygtk, python-lxml, gexiv2, lcms, talloc, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, python-urwid, python-functools-lru-cache, python-appdirs, python2-astroid, python-atomicwrites, python-attrs, python-configparser, python-funcsigs, python-ipaddress, python-mccabe, python-more-itertools, python-pathlib2, python-pies, python-pluggy, python-py, python-pycryptodome, python-pycurl, python-pyparsing, python-pytest-runner, python-pytest, python-scandir, python-setuptools-scm, python-slip, python-toml, python-urlgrabber, python-wrapt, python2-enum34, python2-future, python2-lazy-object-proxy, python2-pies2overrides, flake8, python2-futures, isort2, pycodestyle, pyflakes, python-singledispatch, python-dill, python-tomlkit, python-tomli, python-typing-extensions, pylint2, python-blessings, python-greenlet, python-pyperclip
 python2-astroid                     pylint2
@@ -835,10 +836,10 @@ python2-pies2overrides              python-pies
 python2-pycairo                     python2-pygobject2, python2-pygtk
 python2-pygobject2                  python2-pygtk
 python2-pygtk                       vte2, gimp
-python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins, qt5ct, python-attrs, python-appdirs, python3-astroid, python-atomicwrites, python-configparser, python-funcsigs, python-functools-lru-cache, python-ipaddress, python-lxml, python-mccabe, python-more-itertools, python-pathlib2, python-pies, python-pluggy, python-py, python-pycryptodome, python-pycurl, python-pyparsing, python-pytest-runner, python-pytest, python-scandir, python-setuptools-scm, python-slip, python-toml, python-urlgrabber, python-wrapt, python3-jinja2, python3-lazy-object-proxy, python3-libvirt, python3-pyatspi2, python3-scour, python3-typed-ast, flake8, isort3, pycodestyle, pyflakes, python-singledispatch, python-dill, python3-platformdirs, python-tomlkit, python-tomli, python-typing-extensions, pylint3, python-blessings, python3-cwcwidth, python3-curtsies, python-greenlet, python-pyperclip
+python3                             cython, lsb-tools, libxml2, python-six, python3-pygments, python-pyyaml, python-markupsafe, python3-mako, python3-markdown, python-dbus, python3-dbusmock, volume-key, vim, brotli, python-docutils, xcb-proto, libbytesize, gpgme, libblockdev, boost, python3-pycairo, python3-pygobject3, python3-pyxdg, python3-decorator, fetchmail, glusterfs, qemu, python-certifi, python-chardet, python3-idna, python-urllib3, python-requests, python-ipaddr, python-psutil, python-netifaces, bumblebee-status, mirage, python-urwid, urlscan, qt5-styleplugins, qt5ct, python-attrs, python-appdirs, python3-astroid, python-atomicwrites, python-configparser, python-funcsigs, python-functools-lru-cache, python-ipaddress, python-lxml, python-mccabe, python-more-itertools, python-pathlib2, python-pies, python-pluggy, python-py, python-pycryptodome, python-pycurl, python-pyparsing, python-pytest-runner, python-pytest, python-scandir, python-setuptools-scm, python-slip, python-toml, python-urlgrabber, python-wrapt, python3-jinja2, python3-lazy-object-proxy, python3-libvirt, python3-pyatspi2, python3-scour, python3-typed-ast, flake8, isort3, pycodestyle, pyflakes, python-singledispatch, python-dill, python3-platformdirs, python-tomlkit, python-tomli, python-typing-extensions, pylint3, python-blessings, python3-cwcwidth, python3-curtsies, python-greenlet, python-pyperclip, bpython
 python3-astroid                     pylint3
-python3-curtsies
-python3-cwcwidth                    python3-curtsies
+python3-curtsies                    bpython
+python3-cwcwidth                    python3-curtsies, bpython
 python3-dbusmock                    polkit, upower
 python3-decorator                   python-slip
 python3-idna                        python-requests
@@ -850,9 +851,9 @@ python3-markdown                    gobject-introspection
 python3-platformdirs                pylint3
 python3-pyatspi2
 python3-pycairo                     python3-pygobject3
-python3-pygments                    libbytesize, llvm, gegl, poppler
+python3-pygments                    libbytesize, llvm, gegl, poppler, bpython
 python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
-python3-pyxdg                       ibus
+python3-pyxdg                       ibus, bpython
 python3-scour
 python3-typed-ast                   python3-astroid, pylint3
 qdbm                                php, mutt
