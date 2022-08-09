@@ -891,6 +891,7 @@ d/bpython.sh
 ap/scrot.sh
 l/aom.sh
 l/gst-plugins-bad.sh
+l/libplacebo.sh
 
 
 # vim:ft=conf
