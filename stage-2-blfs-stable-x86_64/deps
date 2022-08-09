@@ -80,7 +80,7 @@ chronyd                             dhcpcd
 clipmenu                            dmenu
 clipnotify                          clipmenu
 clisp                               gpgme
-cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib, flameshot
+cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib, flameshot, aom
 cmocka                              gnutls, mit-kerberos-v5
 cmus
 cogl                                cairo
@@ -523,7 +523,7 @@ musepack-tools                      cmus
 mutt
 mypaint-brushes                     gimp
 mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
-nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2, xvid, ffmpeg
+nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2, xvid, ffmpeg, aom
 ndctl                               libblockdev
 neon                                gst-plugins-bad
 net-snmp                            php

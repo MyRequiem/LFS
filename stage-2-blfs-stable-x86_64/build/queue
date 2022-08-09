@@ -889,6 +889,8 @@ d/python-modules/python-greenlet.sh
 d/python-modules/python-pyperclip.sh
 d/bpython.sh
 ap/scrot.sh
+l/aom.sh
+l/gst-plugins-bad.sh
 
 
 # vim:ft=conf
