@@ -892,6 +892,7 @@ ap/scrot.sh
 l/aom.sh
 l/gst-plugins-bad.sh
 l/libplacebo.sh
+d/mujs.sh
 
 
 # vim:ft=conf

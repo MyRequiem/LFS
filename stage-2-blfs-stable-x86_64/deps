@@ -520,6 +520,7 @@ mpg123                              gst-plugins-good
 mrg                                 gegl
 mruby                               mariadb, nghttp2
 mtdev                               xorg-evdev-driver, libinput, qt5
+mujs
 musepack-tools                      cmus
 mutt
 mypaint-brushes                     gimp
