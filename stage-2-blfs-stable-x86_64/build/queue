@@ -893,6 +893,7 @@ l/aom.sh
 l/gst-plugins-bad.sh
 l/libplacebo.sh
 d/mujs.sh
+ap/mpv.sh
 
 
 # vim:ft=conf
