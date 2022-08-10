@@ -92,12 +92,14 @@ chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
 
 # ссылки в /usr/bin
+# python        -> python3
 # pip           -> pip3
 # pip3          -> pip${MAJ_VERSION}
-# easy_install -> easy_install3
+# easy_install  -> easy_install3
 # easy_install3 -> easy_install-${MAJ_VERSION}
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
+    ln -svf python3             python
     ln -svf "pip${MAJ_VERSION}" pip3
     ln -svf pip3                pip
     ln -svf "easy_install-${MAJ_VERSION}" easy_install3
@@ -112,7 +114,7 @@ tar                       \
     --no-same-owner       \
     --no-same-permissions \
     -C "${DOCS}"          \
-    -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2"
+    -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2" || exit 1
 
 # чтобы python3 мог найти установленную документацию, создадим не зависимую от
 # версии Python3 ссылку в /usr/share/doc/

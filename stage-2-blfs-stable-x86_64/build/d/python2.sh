@@ -65,9 +65,7 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
     # /usr/bin/2to3 уже установлена с пакетом python3
     rm -f 2to3
     # python2        -> python2.7
-    # python         -> python2
     ln -svf python2.7 python2
-    ln -svf python2 python
     # python2-config -> python2.7-config
     ln -svf python2.7-config python2-config
     # easy_install2  -> easy_install-2.7
