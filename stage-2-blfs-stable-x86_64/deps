@@ -267,9 +267,11 @@ hplip                               cups
 hspell                              enchant
 hstr
 html2ps                             imagemagick
+htop
 http-parser                         nodejs
 hunspell                            enchant
 hwinfo
+hwloc                               htop
 hyperwave                           php
 hypothesis                          python2-pycairo, python3-pycairo
 i3                                  bumblebee-status
@@ -339,7 +341,7 @@ libbytesize                         libblockdev
 libcaca                             gst-plugins-good, sdl, ffmpeg
 libcacard                           spice-gtk, qemu
 libcanberra                         notification-daemon, pavucontrol
-libcap                              pulseaudio, ntp, bind-utils
+libcap                              pulseaudio, ntp, bind-utils, htop
 libcap-ng                           gnome-keyring, qemu
 libcddb                             libcdio
 libcdio                             gst-plugins-ugly, ffmpeg, mpv
@@ -399,7 +401,7 @@ libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnfs
 libnice                             gst-plugins-bad
-libnl                               libpcap, iw, wpa-supplicant
+libnl                               libpcap, iw, wpa-supplicant, htop
 libnotify                           ibus, zenity, girara
 libnsl                              exim, talloc
 libnut                              ffmpeg
@@ -474,7 +476,7 @@ linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyru
 liquid-rescale                      imagemagick
 lirc                                pulseaudio
 llvm                                icu, mesa, rustc, dhcpcd, imagemagick
-lm-sensors                          mesa
+lm-sensors                          mesa, htop
 lmdb                                php
 lnav
 lrdf                                gst-plugins-bad
