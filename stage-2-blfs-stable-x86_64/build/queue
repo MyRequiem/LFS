@@ -896,6 +896,10 @@ d/mujs.sh
 ap/mpv.sh
 ap/htop.sh
 ap/dmidecode.sh
+l/lz4.sh
+a/lrzip.sh
+ap/mariadb.sh
+n/rsync.sh
 
 
 # vim:ft=conf

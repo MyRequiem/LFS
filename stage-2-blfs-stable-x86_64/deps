@@ -481,6 +481,7 @@ lm-sensors                          mesa, htop
 lmdb                                php
 lnav
 lrdf                                gst-plugins-bad
+lrzip
 lsb-tools
 lsof
 ltc-tools                           gst-plugins-bad
@@ -489,7 +490,7 @@ luajit                              gegl
 lvm2                                parted, cryptsetup, udisks
 lxsession                           polkit
 lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
-lz4                                 mariadb, rsync
+lz4                                 mariadb, rsync, lrzip
 lzip                                ed
 lzo                                 libarchive, cairo, qemu
 maemo                               alsa-plugins
