@@ -117,6 +117,7 @@ djbfft                              liba52
 djvulibre                           imagemagick, zathura
 dmalloc                             cyrus-sasl, lame, php, imagemagick
 dmenu                               password-store, i3
+dmidecode
 dmraid                              libblockdev
 dnsmasq
 docbook-dsssl                       postgresql, docbook-utils

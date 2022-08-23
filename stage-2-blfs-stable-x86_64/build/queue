@@ -895,6 +895,7 @@ l/libplacebo.sh
 d/mujs.sh
 ap/mpv.sh
 ap/htop.sh
+ap/dmidecode.sh
 
 
 # vim:ft=conf
