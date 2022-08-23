@@ -900,6 +900,7 @@ l/lz4.sh
 a/lrzip.sh
 ap/mariadb.sh
 n/rsync.sh
+l/cxxopts.sh
 
 
 # vim:ft=conf

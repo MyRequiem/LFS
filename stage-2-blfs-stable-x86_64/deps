@@ -95,6 +95,7 @@ cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, ima
 cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools, uget
 curlftpfs                           vifm
+cxxopts
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2, python3-cwcwidth
 dag                                 libpcap
