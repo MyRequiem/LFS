@@ -485,6 +485,7 @@ lrdf                                gst-plugins-bad
 lrzip
 lsb-tools
 lsof
+lsscsi
 ltc-tools                           gst-plugins-bad
 lua                                 highlight, vim, gtk-engines, apache-httpd, mpv
 luajit                              gegl
