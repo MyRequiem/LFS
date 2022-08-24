@@ -95,7 +95,7 @@ cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, ima
 cups-filters                        cups
 curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools, uget
 curlftpfs                           vifm
-cxxopts
+cxxopts                             pamixer
 cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 cython                              yasm, libseccomp, nghttp2, python3-cwcwidth
 dag                                 libpcap
@@ -587,6 +587,7 @@ oxygen-fonts-ttf
 p11-kit                             nss, make-ca, gnutls, gcr
 p7zip                               imagemagick
 pakchois                            neon
+pamixer
 pandoc                              openjdk
 pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 pangomm                             gtkmm2, gtkmm3
@@ -775,7 +776,7 @@ procmail                            fetchmail
 profiles                            imagemagick
 pspg
 pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php
-pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu
+pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 pwgen
 pyatspi2                            gtk+3
 pycodestyle                         flake8

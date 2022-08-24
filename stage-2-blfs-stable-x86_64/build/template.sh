@@ -46,7 +46,9 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 # cd build || exit 1
 # meson             \
 #     --prefix=/usr \
-#     -D... || exit 1
+#     -D<param>     \
+#     ...
+#     .. || exit 1
 #
 # ninja || exit 1
 

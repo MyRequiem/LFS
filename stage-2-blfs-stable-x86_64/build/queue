@@ -901,6 +901,7 @@ a/lrzip.sh
 ap/mariadb.sh
 n/rsync.sh
 l/cxxopts.sh
+ap/pamixer.sh
 
 
 # vim:ft=conf
