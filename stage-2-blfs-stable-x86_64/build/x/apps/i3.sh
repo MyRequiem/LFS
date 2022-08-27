@@ -258,7 +258,7 @@ bar {
 #######################################################################
 exec i3-config-wizard
 
-# END ${CONFIG}
+# End ${CONFIG}
 EOF
 
 if [ -f "${CONFIG}" ]; then
