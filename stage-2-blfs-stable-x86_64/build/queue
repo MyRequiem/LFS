@@ -903,6 +903,7 @@ n/rsync.sh
 l/cxxopts.sh
 ap/pamixer.sh
 ap/lsscsi.sh
+xap/google-chrome.sh
 
 
 # vim:ft=conf

@@ -225,6 +225,7 @@ gnuplot                             imagemagick
 gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon, mutt, vte3, ffmpeg, qemu
 gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3, gconf, libmypaint, spice-gtk
 goffice
+google-chrome
 gpac                                x264
 gperftools                          libmypaint, glusterfs
 gpgme                               volume-key, mutt
