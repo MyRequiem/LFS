@@ -1,61 +1,123 @@
 #!/bin/bash
 
 # Simple script to list version numbers of critical development tools
-# http://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html
+# https://www.linuxfromscratch.org/lfs/view/stable/chapter02/hostreqs.html
 
 export LC_ALL=C
-bash --version | head -n1 | cut -d ' ' -f 2-4
 
+echo -e "###\n# List version numbers of critical development tools\n###\n"
+
+### Bash
+echo "Bash: $(bash --version | head -n 1 | cut -d ' ' -f 4)"
+echo "Required: >=3.2"
+
+# /bin/sh should be a symbolic or hard link to bash
 MYSH="$(readlink -f /bin/sh)"
-echo "/bin/sh -> ${MYSH}"
-echo "${MYSH}" | grep -q bash || echo "ERROR: /bin/sh does not point to bash"
+echo "${MYSH}" | grep -q bash || {
+    echo "ERROR: /bin/sh should be a symbolic or hard link to bash"
+    exit
+}
+echo -e "/bin/sh -> ${MYSH}\n"
 unset MYSH
 
-echo -n "Binutils: "
-ld --version | head -n1 | cut -d ' ' -f 3-
-bison --version | head -n1
+### Binutils
+echo "Binutils: $(ld --version | head -n 1 | cut -d ' ' -f 4)"
+echo "Required: >=2.13.1"
+echo -e "Version >2.40 not recommended\n"
 
+### Bison
+echo "Bison: $(bison --version | head -n 1 | cut -d ' ' -f 4)"
+echo "Required: >=2.7"
+# /usr/bin/yacc should be a link to bison or a small script that executes bison
 if [ -L /usr/bin/yacc ]; then
-    echo "/usr/bin/yacc -> $(readlink -f /usr/bin/yacc)";
+    echo -e "/usr/bin/yacc -> $(readlink -f /usr/bin/yacc)\n";
 elif [ -x /usr/bin/yacc ]; then
-    echo "yacc is $(/usr/bin/yacc --version | head -n1)"
+    echo -e "/usr/bin/yacc: $(yacc --version | head -n 1 | cut -d ' ' -f 4)\n"
 else
-    echo "yacc not found"
+    echo -e "\nERROR: /usr/bin/yacc (from Bison) not found\n"
+    exit
 fi
 
-bzip2 --version 2>&1 < /dev/null | head -n1 | cut -d ' ' -f 1,6-
-echo -n "Coreutils: "
-chown --version | head -n1 | cut -d ")" -f 2
-diff --version | head -n1
-find . --version | head -n1
-gawk --version | head -n1
+### Coreutils
+echo "Coreutils: $(chown --version | head -n 1 | cut -d ' '  -f 4)"
+echo -e "Required: >=6.9\n"
 
+### Diffutils
+echo "Diffutils: $(diff --version | head -n 1 | cut -d ' '  -f 4)"
+echo -e "Required: >=2.8.1\n"
+
+### Findutils
+echo "Findutils: $(find . --version | head -n 1 | cut -d ' '  -f 4)"
+echo -e "Required: >=4.2.31\n"
+
+### Gawk
+echo "Gawk: $(gawk --version | head -n 1 | cut -d ' ' -f 3 | cut -d , -f 1)"
+echo "Required: >=4.0.1"
+# /usr/bin/awk should be a link to gawk
 if [ -h /usr/bin/awk ]; then
-    echo "/usr/bin/awk -> $(readlink -f /usr/bin/awk)";
+    echo -e "/usr/bin/awk -> $(readlink -f /usr/bin/awk)\n";
 elif [ -x /usr/bin/awk ]; then
-    echo "awk is $(/usr/bin/awk --version | head -n1)"
+    echo -e "/usr/bin/awk version: $(/usr/bin/awk --version | head -n 1 | \
+        cut -d ' ' -f 3 | cut -d , -f 1)\n"
 else
-    echo "awk not found"
+    echo -e "ERROR: awk not found\n"
 fi
 
-gcc --version | head -n1
-g++ --version | head -n1
-echo -n "Glibc vesion: "
-GLIBC_VERSION="$(ldd --version | head -n1 | cut -d " " -f 2-)"
-echo "${GLIBC_VERSION}"
-grep --version | head -n1
-gzip --version | head -n1
-cat /proc/version
-m4 --version | head -n1
-make --version | head -n1
-patch --version | head -n1
-echo "Perl vesion: $(perl -V:version | cut -d \' -f 2)"
-echo "Python3 version: $(python3 --version | cut -d ' ' -f 2)"
-sed --version | head -n1
-tar --version | head -n1
-echo "Texinfo vesion: $(makeinfo --version | head -n1 | cut -d ' ' -f 2-)"
-xz --version | head -n1
-echo ""
+### GCC, G++
+echo "GCC: $(gcc --version | head -n 1 | cut -d ' ' -f 3)"
+echo "G++: $(g++ --version | head -n 1 | cut -d ' ' -f 3)"
+echo "Required: >=5.1"
+echo -e "Version >12.2.0 not recommended\n"
+
+### Grep
+echo "Grep: $(grep --version | head -n 1 | cut -d ' ' -f 4)"
+echo -e "Required: >=2.5.1a\n"
+
+### Gzip
+echo "Gzip: $(gzip --version | head -n 1 | cut -d ' ' -f 2)"
+echo -e "Required: >=1.3.12\n"
+
+### Linux Kernel
+echo "Linux Kernel: $(uname -r)"
+echo -e "Required: >=3.2\n"
+
+### M4
+echo "M4: $(m4 --version | head -n 1 | cut -d ' ' -f 4)"
+echo -e "Required: >=1.4.10\n"
+
+### Make
+echo "Make: $(make --version | head -n 1 | cut -d ' ' -f 3)"
+echo -e "Required: >=4.0\n"
+
+### Patch
+echo "Patch: $(patch --version | head -n 1 | cut -d ' ' -f 3)"
+echo -e "Required: >=2.5.4\n"
+
+### Perl
+echo "Perl: $(perl -V:version | cut -d \' -f 2)"
+echo -e "Required: >=5.8.8\n"
+
+### Python3
+echo "Python3: $(python3 --version | cut -d ' ' -f 2)"
+echo -e "Required: >=3.4\n"
+
+### Sed
+echo "Sed: $(sed --version | head -n 1 | cut -d ' ' -f 4)"
+echo -e "Required: >=4.1.5\n"
+
+### Tar
+echo "Tar: $(tar --version | head -n 1 | cut -d ' ' -f 4)"
+echo -e "Required: >=1.22\n"
+
+### Texinfo
+echo "Texinfo: $(makeinfo --version | head -n1 | cut -d ' ' -f 4)"
+echo -e "Required: >=4.7\n"
+
+### Xz
+echo "Xz: $(xz --version | head -n 1 | cut -d ' ' -f 4)"
+echo -e "Required: >=5.0.0\n"
+
+echo "=== Compilation tools test ==="
 echo "# creating simple C-file dummy.c"
 echo "echo 'int main(){}' > dummy.c"
 echo 'int main(){}' > dummy.c
@@ -64,9 +126,9 @@ echo "g++ -o dummy dummy.c"
 g++ -o dummy dummy.c
 
 if [ -x dummy ]; then
-    echo "g++ compilation OK";
+    echo -e "g++ compilation OK\n";
 else
-    echo "g++ compilation failed";
+    echo -e "g++ compilation failed\n";
 fi
 
 rm -f dummy.c dummy
