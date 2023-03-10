@@ -29,5 +29,4 @@ cleaning-up-temporary-system.sh
 mount-virtual-kernel-file-systems.sh --umount
 stripping.sh
 
-
 #vim:ft=conf
