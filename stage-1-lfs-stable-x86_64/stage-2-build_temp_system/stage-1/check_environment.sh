@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PART="/dev/sda10"
+PART="/dev/sda5"
 
 if [[ "$(whoami)" != "lfs" ]]; then
     echo "You need to login as lfs user"
