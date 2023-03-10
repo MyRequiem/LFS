@@ -23,7 +23,7 @@ mkdir -pv /var/lib/hwclock
 #    --without-python
 ./configure                               \
     ADJTIME_PATH=/var/lib/hwclock/adjtime \
-    --prefix=/usr                         \
+    --libdir=/usr/lib                     \
     --disable-chfn-chsh                   \
     --disable-login                       \
     --disable-nologin                     \
@@ -33,6 +33,7 @@ mkdir -pv /var/lib/hwclock
     --disable-pylibmount                  \
     --disable-static                      \
     --without-python                      \
+    runstatedir=/run                      \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
