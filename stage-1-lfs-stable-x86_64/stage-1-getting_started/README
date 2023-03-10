@@ -6,13 +6,26 @@
     - форматирование
     - создание файловой системы ext4
     - монтирование
-    - создание минимального набора каталогов:
-        /mnt/lfs/{bin,etc,lib,lib64,sbin,sources,tools,usr,var}
+    - создание минимального необходимого набора каталогов:
+        /mnt/lfs/{bin,boot,etc,home,lib,lib64,sbin,sources,tmp,tools,usr,var}
 
     ### Важно ###
-    В скрипте partitions-init.sh устанавливаем переменную PART (раздел для
-    сборки LFS системы, по умолчанию "/dev/sda10"). Монтироваться раздел будет
-    в /mnt/lfs
+    # Диск при сборке был разбит таким образом:
+    sda
+    |-sda1  100M   /boot
+    |-sda2    1G   [SWAP]
+    |-sda3    1K   [Extended]
+    |  -sda5  100G /
+    |  -sda6  150G /home
+    |  -sda7   25G /tmp
+    |  -sda8   22G [HOST]
+
+    sda{1,7} - LFS
+    sda8     - Host система (Slackware 15.0)
+
+    В скрипте ./partitions-init.sh устанавливаем переменную PART - корневой
+    раздел для сборки LFS системы. Данный раздел будет монтироваться в /mnt/lfs
+    В данном случае PART="/dev/sda5"
 
     # ./partitions-init.sh
 

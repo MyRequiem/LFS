@@ -24,7 +24,7 @@ if [ -z "${USER_EXISTS}" ]; then
 fi
 
 # предоставим пользователю lfs полный доступ ко всем каталогам в LFS системе
-chown -v lfs:lfs "${LFS}"/{bin,etc,lib,lib64,sbin,sources,tools,usr,var}
+chown -vR lfs:lfs "${LFS}"/*
 
 BASH_PROFILE="/home/lfs/.bash_profile"
 cat << EOF > "${BASH_PROFILE}"
@@ -35,8 +35,8 @@ cat << EOF > "${BASH_PROFILE}"
 # Это гарантирует, что нежелательные и потенциально опасные переменные среды из
 # хост-системы не попадут в среду сборки
 exec env -i                \\
-    HOME=/home/lfs         \\
-    TERM="${TERM}" \\
+    HOME="\${HOME}"         \\
+    TERM="\${TERM}" \\
     PS1="\u:\w\$ "          \\
     /bin/bash
 
@@ -74,12 +74,13 @@ LC_ALL=C
 LFS_TGT=x86_64-lfs-linux-gnu
 
 PATH="\${LFS}/tools/bin:/bin:/usr/bin"
+CONFIG_SITE="\${LFS}/usr/share/config.site"
 
 # количество потоков сборки для 'make' установим равный количеству ядер
 # процессора
 MAKEFLAGS="-j\$(nproc)"
 
-export LFS LC_ALL LFS_TGT PATH MAKEFLAGS
+export LFS LC_ALL LFS_TGT PATH CONFIG_SITE MAKEFLAGS
 
 alias vh='/bin/ls -F -b -T 0 --group-directories-first --color=auto --format=long --time-style="+%d.%m.%y %H:%M:%S" --human-readable'
 
