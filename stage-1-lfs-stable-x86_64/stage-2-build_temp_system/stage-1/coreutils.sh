@@ -9,7 +9,8 @@ PRGNAME="coreutils"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# собирать утилиту hostname - ее создание отключено по умолчанию
+# собирать утилиту hostname - ее создание отключено по умолчанию, но она нужна
+# для тестов при сборке Perl
 #    --enable-install-program=hostname
 ./configure                             \
     --prefix=/usr                       \
@@ -21,18 +22,10 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
 
-# переместим некоторые утилиты в их ожидаемое местоположение (для их запуска в
-# нашей временной среде в этом нет необходимости, но мы должны это сделать,
-# т.к. некоторые программы жестко кодируют расположение исполняемых файлов)
-BIN="${LFS}/bin"
-USBIN="${LFS}/usr/sbin"
-mv -v "${LFS}/usr/bin"/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} "${BIN}"
-mv -v "${LFS}/usr/bin"/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        "${BIN}"
-mv -v "${LFS}/usr/bin"/{rmdir,stty,sync,true,uname}               "${BIN}"
-mv -v "${LFS}/usr/bin"/{head,nice,sleep,touch}                    "${BIN}"
-mv -v "${LFS}/usr/bin/chroot"                                     "${USBIN}"
+# утилита chroot в /usr/sbin
+mv -v "${LFS}/usr/bin/chroot" "${LFS}/usr/sbin"
 
-MAN="${LFS}/usr/share/man"
-mkdir -pv "${MAN}/man8"
-mv -v "${MAN}/man1/chroot.1" "${MAN}/man8/chroot.8"
-sed -i 's/"1"/"8"/' "${MAN}/man8/chroot.8"
+# переместим man-страницу из man1 в man8
+mkdir -pv "${LFS}/usr/share/man/man8"
+mv -v "${LFS}/usr/share/man/man1/chroot.1" "${LFS}/usr/share/man/man8/chroot.8"
+sed -i 's/"1"/"8"/' "${LFS}/usr/share/man/man8/chroot.8"
