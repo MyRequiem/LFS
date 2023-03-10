@@ -33,47 +33,57 @@ mv "mpc-${MPC_VER}" mpc
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
 sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 
+# переопределим правило сборки заголовков libgcc и libstdc++, чтобы разрешить
+# сборку этих библиотек с поддержкой потоков POSIX
+sed '/thread_header =/s/@.*@/gthr-posix.h/' \
+    -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in || exit 1
+
 # документация gcc рекомендует собирать gcc в отдельном каталоге
 mkdir build
 cd build || exit 1
 
-# создадим ссылку в каталоге сборки, позволяющую собирать libgcc с поддержкой
-# потоков posix
-#    x86_64-lfs-linux-gnu/libgcc/gthr-default.h -> ../../../libgcc/gthr-posix.h
-mkdir -pv "${LFS_TGT}/libgcc"
-ln -s ../../../libgcc/gthr-posix.h "${LFS_TGT}/libgcc/gthr-default.h"
-
-# эта опция автоматически включается при сборке native компилятора, но здесь мы
-# используем кросс-компилятор, поэтому нам нужно явно установить эту опцию
-#    --enable-initfini-array
-# обычно использование параметра '--host' гарантирует, что кросс-компилятор
-# используется для сборки GCC, и этот компилятор знает, что он должен искать
-# заголовки и библиотеки в /mnt/lfs Но система сборки GCC использует и другие
-# инструменты, которые не знают об этом, поэтому явно указываем, что нужные
-# файлы нужно искать не на хосте а в /mnt/lfs
-#    --with-build-sysroot="${LFS}"
+# отключаем локализацию, поскольку i18n на данном этапе нам не требуется
+#    --disable-nls
+# для x86_64 архитектуры LFS пока не поддерживает мультибиблиотечную
+# конфигурацию
+#    --disable-multilib
+# отключачаем поддержку десятичного расширения с плавающей запятой, потоков
+# libatomic, libgomp, libquadmath, libssp, libvtv и стандартной библиотеки C++
+# соответственно, т.к. эти функции не нужны для кросс-компиляции временного
+# libc
+#    --disable-libatomic
+#    --disable-libgomp
+#    --disable-libquadmath
+#    --disable-libssp
+#    --disable-libvtv
+# собираем только необходимые на данный момент компиляторы C и C++
+#    --enable-languages=c,c++
+# разрешить libstdc++ использовать общий libgcc, созданный на этом этапе,
+# вместо статической версии, созданной при первой сборке GCC. Это необходимо
+# для поддержки обработки исключений C++
+#    LDFLAGS_FOR_TARGET=...
 ../configure                      \
-    --build="$(../config.guess)"  \
     --host="${LFS_TGT}"           \
+    --target="${LFS_TGT}"         \
     --prefix=/usr                 \
-    --enable-initfini-array       \
+    --enable-default-pie          \
+    --enable-default-ssp          \
     --disable-nls                 \
     --disable-multilib            \
-    --disable-decimal-float       \
     --disable-libatomic           \
     --disable-libgomp             \
     --disable-libquadmath         \
     --disable-libssp              \
     --disable-libvtv              \
-    --disable-libstdcxx           \
+    --build="$(../config.guess)"  \
     --enable-languages=c,c++      \
     --with-build-sysroot="${LFS}" \
-    CC_FOR_TARGET="${LFS_TGT}-gcc" || exit 1
+    LDFLAGS_FOR_TARGET=-L"${PWD}/${LFS_TGT}/libgcc" || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
 
-# создадим ссылку cc -> gcc в /mnt/lfs/usr/bin/, т.к. многие программы и
-# скрипты запускают 'cc' вместо 'gcc' для универсальности и совместимости со
-# всеми UNIX-системами
+# создадим ссылку cc -> gcc в /usr/bin/ для универсальности и совместимости со
+# всеми UNIX-системами, т.к. многие программы и скрипты запускают 'cc' вместо
+# 'gcc'
 ln -svf gcc "${LFS}/usr/bin/cc"
