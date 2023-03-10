@@ -19,7 +19,7 @@ if [[ "${ID1}" != "${ID2}" ]]; then
 fi
 
 # виртуальные файловые системы должны быть отмонтированы
-if mount | /bin/grep -q "${LFS}/proc"; then
+if mountpoint "${LFS}/proc" &>/dev/null; then
     echo "Virtual file systems must be unmounted. Run the script:"
     echo "./mount-virtual-kernel-file-systems.sh --umount"
     exit 1
@@ -31,4 +31,3 @@ fi
 # основном это оносится к скриптам, а не бинарным файлам.
 strip --strip-debug    "${LFS}/usr/lib"/*
 strip --strip-unneeded "${LFS}/usr"/{,s}bin/*
-strip --strip-unneeded "${LFS}/tools/bin"/*
