@@ -1,7 +1,7 @@
 # устанавливаем утилиту 'removepkg' от пользователя root
-cp -v removepkg /mnt/lfs/sbin/
-chown root:root /mnt/lfs/sbin/removepkg
-chmod 744       /mnt/lfs/sbin/removepkg
+cp -v removepkg /mnt/lfs/usr/sbin/
+chown root:root /mnt/lfs/usr/sbin/removepkg
+chmod 744       /mnt/lfs/usr/sbin/removepkg
 
 ###
 # Переходим в chroot окружение
