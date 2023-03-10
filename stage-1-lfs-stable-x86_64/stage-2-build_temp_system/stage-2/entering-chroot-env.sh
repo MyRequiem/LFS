@@ -23,7 +23,7 @@ RESETCOLOR="\[\033[0;0m\]"
 chroot "${LFS}" /usr/bin/env -i                                           \
     HOME="/root"                                                          \
     TERM="${TERM}"                                                        \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin                                    \
+    PATH=/usr/bin:/usr/sbin                                               \
     PS1="\u ${MAGENTA}[LFS chroot]${RESETCOLOR}:${RED}\w\$${RESETCOLOR} " \
     /bin/bash --login +h
 
