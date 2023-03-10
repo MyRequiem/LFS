@@ -28,6 +28,9 @@ patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 mkdir build
 cd build || exit 1
 
+# утилиты ldconfig и sln будут установлены в /usr/sbin:
+echo "rootsbindir=/usr/sbin" > configparms
+
 # комбинированный эффект этих двух параметров заключается в том, что система
 # сборки Glibc сама настраивается для кросс-компиляции, используя кросс-линкер
 # и кросс-компилятор в /mnt/lfs/tools
@@ -62,7 +65,11 @@ cd build || exit 1
     --build="$(../scripts/config.guess)" \
     --enable-kernel=3.2                  \
     --with-headers="${LFS}/usr/include"  \
-    libc_cv_slibdir=/lib || exit 1
+    libc_cv_slibdir=/usr/lib || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
+
+# исправим жестко запрограммированный путь к исполняемому загрузчику в скрипте
+# ldd
+sed '/RTLDLIST=/s@/usr@@g' -i "${LFS}/usr/bin/ldd"
