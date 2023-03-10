@@ -15,7 +15,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-make install DESTDIR="${TMP_DIR}"
+make prefix=/usr install DESTDIR="${TMP_DIR}"
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
