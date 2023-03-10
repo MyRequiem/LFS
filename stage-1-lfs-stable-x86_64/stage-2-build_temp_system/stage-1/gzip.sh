@@ -14,6 +14,3 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
-
-# переместим утилиту gzip из /mnt/lfs/usr/bin/ в /mnt/lfs/bin/
-mv -v "${LFS}/usr/bin/gzip" "${LFS}/bin"
