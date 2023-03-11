@@ -20,24 +20,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# библиотеку libz.so.${VERSION} необходимо переместить из /usr/lib в /lib, а
-# затем воссоздать файл libz.so в /usr/lib
-# было в /usr/lib:
-#    libz.so   -> libz.so.${VERSION}
-#    libz.so.1 -> libz.so.${VERSION}
-# стало:
-#    в /lib
-#       libz.so.1 -> libz.so.${VERSION}
-#    в /usr/lib
-#       libz.so -> ../../lib/libz.so.${VERSION}
-(
-    cd "${TMP_DIR}" || exit 1
-    mv -v usr/lib/libz.so.* lib/
-    ln -sfv "../../lib/$(readlink usr/lib/libz.so)" usr/lib/libz.so
-    # удалим бесполезную статическую библиотеку libz.a
-    rm -fv "${TMP_DIR}/usr/lib/libz.a"
-)
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
