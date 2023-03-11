@@ -1,9 +1,15 @@
 #! /bin/bash
 
-BINARY="$(find "${TMP_DIR}" -type f -not -path "*/usr/share/qemu/*" -print0 | \
-    xargs -0 file 2>/dev/null | /bin/grep -e "executable" -e "shared object" | \
-    /bin/grep ELF | /bin/grep -v "32-bit" | cut -f 1 -d :)"
+DIRS="\
+/bin
+/lib
+/sbin
+/usr/bin
+/usr/lib
+/usr/sbin
+"
 
-for BIN in ${BINARY}; do
-    strip --strip-unneeded "${BIN}"
+for BINDIR in ${DIRS}; do
+    [ -d "${TMP_DIR}${BINDIR}" ] && \
+        strip --strip-unneeded "${TMP_DIR}${BINDIR}"/* &>/dev/null
 done

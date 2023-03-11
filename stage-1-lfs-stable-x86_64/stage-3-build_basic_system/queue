@@ -83,7 +83,7 @@ util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
-stripping.sh
+strip.sh
 cleaning-up.sh
 
 
