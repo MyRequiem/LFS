@@ -13,24 +13,29 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# определяем используемый компилятор и С-стандарт
+# определяем используемый компилятор
 #    CC=gcc
-#    CFLAGS="-std=c99"
 # пропустим те части тестового набора, которые не будут работать без уже
 # установленного GNU bc
 #    -G
 # указываем оптимизацию для компилятора
 #    -O3
-PREFIX=/usr       \
+# включаем использование readline, чтобы улучшить функцию редактирования строк
+# в bc
+#    -r
 CC=gcc            \
-./configure.sh    \
+./configure       \
+    --prefix=/usr \
     -G            \
-    -O3 || exit 1
+    -O3           \
+    -r || exit 1
 
 make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

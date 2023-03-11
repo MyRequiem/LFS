@@ -24,25 +24,13 @@ make || make -j1 || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # некоторые программы еще не знают о flex и пытаются запустить его
-# предшественника lex. Для поддержки таких программ создадим ссылку в /usr/bin
-# lex -> flex
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sv flex lex
-)
+# предшественника lex. Для поддержки этих программ создадим символическую
+# ссылку lex -> flex в /usr/bin, которая запускает flex в режиме эмуляции lex
+ln -sv flex "${TMP_DIR}/usr/bin/lex"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (fast lexical analyzer generator)
