@@ -11,7 +11,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
