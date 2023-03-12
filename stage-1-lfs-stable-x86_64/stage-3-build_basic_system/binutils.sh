@@ -34,10 +34,6 @@ read -r JUNK
 # то среда настроена НЕ правильно для работы PTY. Эту проблему необходимо
 # решить перед запуском тестовых пакетов для Binutils и GCC
 
-# удалим один тест tincremental_copy, который препятствует выполнению тестов до
-# самого конца
-sed -i '/@\tincremental_copy/d' gold/testsuite/Makefile.in || exit 1
-
 # документация Binutils рекомендует собирать binutils в отдельном каталоге
 mkdir build
 cd build || exit 1
@@ -59,6 +55,7 @@ cd build || exit 1
 #    --with-system-zlib
 ../configure            \
     --prefix=/usr       \
+    --sysconfdir=/etc   \
     --enable-gold       \
     --enable-ld=default \
     --enable-plugins    \
@@ -80,24 +77,18 @@ make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 # Набор тестов для Binutils на данном этапе считается критическим. Нельзя
 # пропускать его ни при каких обстоятельствах
 # make -k check
+# получить список неудачных тестов:
+#    # grep '^FAIL:' $(find -name '*.log')
 
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
 # удалим бесполезные статические библиотеки
-rm -vf "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,opcodes}.a
+rm -fv "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
+rm -fv /usr/share/man/man1/{gprofng,gp-*}.1
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU binary development tools)

@@ -38,16 +38,15 @@ cd "${PRGNAME}${VERSION}" || exit 1
     --with-tclinclude=/usr/include || exit 1
 
 make || make -j1 || exit 1
-
-# запускаем тестовый набор
 # make test
-
 make install DESTDIR="${TMP_DIR}"
 
 # ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so
 ln -svf "expect${VERSION}/libexpect${VERSION}.so" "${TMP_DIR}/usr/lib"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
