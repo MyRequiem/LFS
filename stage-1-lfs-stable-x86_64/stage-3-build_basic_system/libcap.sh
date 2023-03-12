@@ -13,7 +13,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 # запретим установку статической библиотеки
 sed -i '/install -m.*STA/d' libcap/Makefile
@@ -21,25 +21,14 @@ sed -i '/install -m.*STA/d' libcap/Makefile
 # собирать библиотеки с префиксом /lib, а не /lib64
 #    lib=lib
 make prefix=/usr lib=lib || make -j1 prefix=/usr lib=lib || exit 1
-
 # make test
-
-# установить библиотеку в $prefix/lib, а не в $prefix/lib64 и путь к директории
-# pkgconfig
-#    lib=lib PKGCONFIGDIR=...
 make prefix=/usr lib=lib install DESTDIR="${TMP_DIR}"
 
-# переместим библиотеки из /usr/lib в /lib и восстановим ссылки в /usr/lib
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-for LIBNAME in cap psx; do
-    mv -v "${TMP_DIR}/usr/lib/lib${LIBNAME}.so."* "${TMP_DIR}/lib"
-    ln -sfv "../../lib/lib${LIBNAME}.so.${MAJ_VERSION}" \
-        "${TMP_DIR}/usr/lib/lib${LIBNAME}.so"
-    chmod -v 755 "${TMP_DIR}/lib/lib${LIBNAME}.so.${VERSION}"
-done
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (get/set POSIX capabilities)
 #

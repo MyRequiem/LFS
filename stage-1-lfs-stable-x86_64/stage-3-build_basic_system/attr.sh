@@ -12,11 +12,10 @@ source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 ./configure           \
     --prefix=/usr     \
-    --bindir=/bin     \
     --disable-static  \
     --sysconfdir=/etc \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -27,18 +26,7 @@ make || make -j1 || exit 1
 # атрибуты, такие как ext2, ext3 или ext4
 # make check
 
-# устанавливаем пакет
 make install DESTDIR="${TMP_DIR}"
-
-# библиотеку необходимо переместить из /usr/lib в /lib
-mv -v "${TMP_DIR}/usr/lib/libattr.so."* "${TMP_DIR}/lib/"
-
-# воссоздадим ссылку libattr.so в /usr/lib
-#    libattr.so -> ../../lib/libattr.so.x.x.xxxx
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv "../../lib/$(readlink libattr.so)" libattr.so
-)
 
 # бэкапим конфиг /etc/xattr.conf перед установкой пакета, если он существует
 XATTR_CONFIG="/etc/xattr.conf"
@@ -46,6 +34,8 @@ if [ -f "${XATTR_CONFIG}" ]; then
     mv "${XATTR_CONFIG}" "${XATTR_CONFIG}.old"
 fi
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${XATTR_CONFIG}"
