@@ -15,63 +15,68 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{/lib,"${DOCS}"}
+mkdir -pv "${TMP_DIR}"
 
-# не устанавливаем статическую библиотеку, установка которой полностью не
-# контролируется параметрами скрипта 'configure'
-sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
-
+# отключает сборку и установку большинства статических библиотек
+#    --without-normal
+# ключ генерирует и устанавливает файлы .pc для pkg-config
+#    --enable-pc-files
 # заставляет собирать wide-character библиотеки (например, libncursesw.so)
 # вместо обычных (libncurses.so). Такие wide-character библиотеки можно
 # использовать как в многобайтовых, так и в традиционных 8-битных локалях,
 # тогда как обычные библиотеки правильно работают только в 8-битных локалях
 #    --enable-widec
-# ключ генерирует и устанавливает файлы .pc для pkg-config
-#    --enable-pc-files
-# отключает сборку и установку большинства статических библиотек
-#    --without-normal
 ./configure                 \
     --prefix=/usr           \
     --mandir=/usr/share/man \
     --with-shared           \
     --without-debug         \
     --without-normal        \
+    --with-cxx-shared       \
     --enable-pc-files       \
-    --enable-widec || exit 1
+    --enable-widec          \
+    --with-pkg-config-libdir=/usr/lib/pkgconfig || exit 1
 
 make || make -j1 || exit 1
 
 # в состав пакета входят наборы тестов, но их можно запустить только после
 # того, как пакет будет установлен
 
-# устанавливаем сразу в систему и во временную директорию, иначе при
-# копировании с ${TMP_DIR} в корень выдаст ошибку "Segmentation fault" из-за
-# сбоя настроек терминала
-make install
-make install DESTDIR="${TMP_DIR}"
+# установка пакета сразу в корень системы командой 'make install' перезапишет
+# libncursesw.so.${VERSION} Это может привести к сбою настроек терминала и
+# ошибки оболочки (Segmentation fault), которая будет пытаться использовать код
+# и данные из прежней библиотеки. Установим пакет с помощью DESTDIR правильно
+# заменив файл библиотеки:
+make install DESTDIR="${PWD}/dest"
 
-# переместим библиотеки из /usr/lib в /lib
-mv -v /usr/lib/libncursesw.so.6* /lib
-mv "${TMP_DIR}/usr/lib/libncursesw.so.6"* "${TMP_DIR}/lib/"
+# stripping
+BINARY="$(find ./dest -type f -print0 | xargs -0 file 2>/dev/null | \
+    /bin/grep -e "executable" -e "shared object" | /bin/grep ELF | \
+    cut -f 1 -d :)"
 
-# исправим ссылку в /usr/lib
-#    libncursesw.so -> ../../lib/libncursesw.so.${VERSION}
-ln -sfv "../../lib/$(readlink /usr/lib/libncursesw.so)" /usr/lib/libncursesw.so
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv "../../lib/$(readlink libncursesw.so)" libncursesw.so
-)
+for BIN in ${BINARY}; do
+    strip --strip-unneeded "${BIN}" &>/dev/null
+done
 
-# многие приложения все еще ожидают, что компоновщик сможет найти обычные, а не
-# wide-character Ncurses библиотеки. Обманем такие приложения:
+cp -vR dest/* "${TMP_DIR}"/
+
+LIBNCURSESW="dest/usr/lib/libncursesw.so.${VERSION}"
+install -vm755 "${LIBNCURSESW}" /usr/lib
+rm -v  "${LIBNCURSESW}"
+cp -av dest/* /
+
+# многие приложения все еще ожидают, что компоновщик сможет найти обычные
+# libncurses.so, а не wide-character libncursesw.so библиотеки. Обманем такие
+# приложения:
 for LIB in ncurses form panel menu ; do
     rm -vf                    "/usr/lib/lib${LIB}.so"
     echo "INPUT(-l${LIB}w)" > "/usr/lib/lib${LIB}.so"
     ln -sfv "${LIB}w.pc"      "/usr/lib/pkgconfig/${LIB}.pc"
+    chmod 755 "/usr/lib/lib${LIB}.so"
 
     rm -fv                    "${TMP_DIR}/usr/lib/lib${LIB}.so"
     echo "INPUT(-l${LIB}w)" > "${TMP_DIR}/usr/lib/lib${LIB}.so"
+    chmod 755 "${TMP_DIR}/usr/lib/lib${LIB}.so"
     (
         cd "${TMP_DIR}/usr/lib/pkgconfig" || exit 1
         ln -sfv "${LIB}w.pc" "${LIB}.pc"
@@ -83,18 +88,15 @@ done
 rm -vf                     /usr/lib/libcursesw.so
 echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
 ln -sfv libncurses.so      /usr/lib/libcurses.so
+chmod 755 /usr/lib/libcursesw.so
 
 rm -vf                     "${TMP_DIR}/usr/lib/libcursesw.so"
 echo "INPUT(-lncursesw)" > "${TMP_DIR}/usr/lib/libcursesw.so"
+chmod 755 "${TMP_DIR}/usr/lib/libcursesw.so"
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
     ln -sfv libncurses.so libcurses.so
 )
-
-# установим документацию
-mkdir -v        "${DOCS}"
-cp -vR    doc/* "${DOCS}"
-cp -vR    doc/* "${TMP_DIR}${DOCS}"
 
 # снова соберем пакет для построения 5 версии библиотеки, которая все еще
 # требуется некоторым программам
@@ -109,7 +111,16 @@ make distclean
 
 make sources libs || make -j1 sources libs || exit 1
 
-cp -av lib/lib*.so.5* /usr/lib
+# stripping
+BINARY="$(find lib/ -type f -name "*.so.5*" -print0 | \
+    xargs -0 file 2>/dev/null | /bin/grep -e "executable" -e "shared object" | \
+    /bin/grep ELF | cut -f 1 -d :)"
+
+for BIN in ${BINARY}; do
+    strip --strip-unneeded "${BIN}" &>/dev/null
+done
+
+cp -av lib/lib*.so.5* /usr/lib/
 cp -av lib/lib*.so.5* "${TMP_DIR}/usr/lib/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
