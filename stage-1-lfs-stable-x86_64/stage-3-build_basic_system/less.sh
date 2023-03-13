@@ -13,8 +13,6 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# искать файлы конфигурации в /etc
-#    --sysconfdir=/etc
 ./configure       \
     --prefix=/usr \
     --sysconfdir=/etc || exit 1
@@ -23,6 +21,8 @@ make || make -j1 || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
