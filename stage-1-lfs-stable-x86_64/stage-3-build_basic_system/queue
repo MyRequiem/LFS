@@ -53,10 +53,10 @@ xml-parser.sh
 intltool.sh
 autoconf.sh
 automake.sh
+openssl.sh
 kmod.sh
 libelf.sh
 libffi.sh
-openssl.sh
 python3.sh
 ninja.sh
 meson.sh
