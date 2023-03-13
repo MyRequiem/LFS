@@ -13,7 +13,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/bin"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -22,10 +22,8 @@ make || make -j1 || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# переместим программы 'killall' и 'fuser' из /usr/bin в /bin
-mv -v "${TMP_DIR}/usr/bin/fuser"   "${TMP_DIR}/bin"
-mv -v "${TMP_DIR}/usr/bin/killall" "${TMP_DIR}/bin"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
