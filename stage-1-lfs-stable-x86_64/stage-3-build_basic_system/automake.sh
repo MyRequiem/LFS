@@ -13,9 +13,6 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим тест
-sed -i "s/''/etags/" t/tags-lisp-space.sh
-
 ./configure       \
     --prefix=/usr \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -23,25 +20,15 @@ sed -i "s/''/etags/" t/tags-lisp-space.sh
 make || make -j1 || exit 1
 
 # здесь можно запускать тесты в несколько потоков (это ускорит тестирование
-# даже в системах с одним процессором, из-за внутренних задержек в отдельных
-# тестах)
-# известно, что тест t/subobj.sh не проходит в среде LFS
+# даже в системах с одним процессором (ядром), из-за внутренних задержек в
+# отдельных тестах)
 # make -j4 check
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a Makefile generator)
