@@ -47,6 +47,7 @@ gdbm.sh
 gperf.sh
 expat.sh
 inetutils.sh
+less.sh
 perl.sh
 xml-parser.sh
 intltool.sh
@@ -66,7 +67,6 @@ gawk.sh
 findutils.sh
 groff.sh
 grub.sh
-less.sh
 gzip.sh
 iproute2.sh
 kbd.sh
