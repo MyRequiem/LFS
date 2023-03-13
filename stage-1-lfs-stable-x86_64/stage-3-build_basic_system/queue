@@ -58,6 +58,7 @@ kmod.sh
 libelf.sh
 libffi.sh
 python3.sh
+wheel.sh
 ninja.sh
 meson.sh
 coreutils.sh
