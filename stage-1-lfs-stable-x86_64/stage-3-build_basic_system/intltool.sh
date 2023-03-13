@@ -29,6 +29,8 @@ make install DESTDIR="${TMP_DIR}"
 install -v -Dm644 doc/I18N-HOWTO \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/I18N-HOWTO"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
