@@ -17,7 +17,6 @@ mkdir -pv "${TMP_DIR}/usr/lib/pkgconfig"
 
 ./configure              \
     --prefix=/usr        \
-    --libdir=/lib        \
     --disable-debuginfod \
     --enable-libdebuginfod=dummy || exit 1
 
@@ -27,13 +26,16 @@ make || make -j1 || exit 1
 
 # устанавливаем только libelf
 make -C libelf install DESTDIR="${TMP_DIR}"
-
 install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig"
 
-# НЕ удаляем статическую библиотеку, т.к. она требуется для сборки некоторых
-# сторонних пакетов (например 'prelink')
-# rm -f "${TMP_DIR}/lib/libelf.a"
+### WARNING !!!
+# == НЕ == удаляем статическую библиотеку libelf.a, как описано в официальной
+# сборке LFS, т.к. она требуется для сборки некоторых сторонних пакетов,
+# например 'prelink'
+# rm -f "${TMP_DIR}/usr/lib/libelf.a"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
