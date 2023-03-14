@@ -27,8 +27,8 @@ autoreconf -fiv
 
 # позволяет собирать пакет от имени пользователя root
 #    FORCE_UNSAFE_CONFIGURE=1
-# запретим установку утилит kill и uptime, которые будут установлены с другими
-# пакетами позже
+# запретим установку утилит kill и uptime ('kill' будет установлена с пакетом
+# util-linux, 'uptime' с пакетом procps-ng)
 #    --enable-no-install-program=kill,uptime
 FORCE_UNSAFE_CONFIGURE=1 \
 ./configure              \
