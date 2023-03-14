@@ -17,22 +17,36 @@ PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 SITE_PACKAGES="/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 mkdir -pv "${TMP_DIR}${SITE_PACKAGES}"
 
-# позволяет пакету (еще не установленному) создавать для себя архив, чтобы
-# избежать проблемы "курицы или яйца"
-#    PYTHONPATH=src
+###
+# создаем в директории dist дерева исходников пакет
+#    wheel-${VERSION}-py3-none-any.whl
+###
+# позволяет пакету (еще не установленному) создавать для себя архив (пакет),
+# чтобы избежать проблемы "курица или яйцо"
+#    PYTHONPATH=./src
 # команда создает архив для этого пакета
 #    wheel
 # инструктирует pip поместить созданный пакет в указанный каталог dist
-#    -w "${TMP_DIR}"
+#    --wheel-dir=./dist
+# не устанавливать зависимости для пакета
+#    --no-deps
 # предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
 # пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
 # какие-либо файлы
 #    --no-build-isolation
-#    --no-deps
-PYTHONPATH=src pip3 ${PRGNAME} -w dist --no-build-isolation --no-deps "${PWD}"
+PYTHONPATH=./src         \
+pip3 wheel               \
+    --wheel-dir=./dist   \
+    --no-deps            \
+    --no-build-isolation \
+    ./ || exit 1
 
-# устанавливаем в "${TMP_DIR}"
-pip3 install -t "${TMP_DIR}/usr" --no-index --find-links=dist ${PRGNAME}
+# устанавливаем созданный пакет в "${TMP_DIR}"
+pip3 install \
+    --target="${TMP_DIR}/usr" \
+    --find-links=./dist       \
+    --no-index                \
+     ${PRGNAME}
 
 # перемещаем директории
 mv "${TMP_DIR}/usr/${PRGNAME}"                      "${TMP_DIR}${SITE_PACKAGES}"
