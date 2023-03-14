@@ -12,7 +12,8 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,usr/{sbin,share/man/man8}}
+MAN8="/usr/share/man/man8"
+mkdir -pv "${TMP_DIR}"{/usr/sbin,"${MAN8}"}
 
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
@@ -20,12 +21,8 @@ mkdir -pv "${TMP_DIR}"/{bin,usr/{sbin,share/man/man8}}
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
 
-# отключим тест gnulib.mk, который на некоторых машинах может бесконечно
-# зацикливаться
-sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk || exit 1
-
-# обновим созданные файлы конфигурации в соответствии с последней версией
-# automake
+# применение патча модифицировало систему сборки, поэтому файлы конфигурации
+# необходимо сгенерировать заново
 autoreconf -fiv
 
 # позволяет собирать пакет от имени пользователя root
@@ -70,39 +67,21 @@ make || make -j1 || exit 1
 # устанавливаем пакет
 make install DESTDIR="${TMP_DIR}"
 
-# переместим некоторые программы с соответствии со стандартом FHS
-mv -v "${TMP_DIR}/usr/bin"/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} \
-    "${TMP_DIR}/bin"
-mv -v "${TMP_DIR}/usr/bin"/{false,ln,ls,mkdir,mknod,mv,pwd,rm} "${TMP_DIR}/bin"
-mv -v "${TMP_DIR}/usr/bin"/{rmdir,stty,sync,true,uname} "${TMP_DIR}/bin"
+# утилита chroot в /usr/sbin
 mv -v "${TMP_DIR}/usr/bin/chroot" "${TMP_DIR}/usr/sbin"
 
-# некоторые из сценариев в пакете LFS-Bootscripts требуют наличия утилит head,
-# nice, sleep, и touch. Поскольку /usr/bin может быть недоступен на ранних
-# стадиях загрузки системы, эти утилиты должны находиться в /bin
-mv -v "${TMP_DIR}/usr/bin"/{head,nice,sleep,touch} "${TMP_DIR}/bin"
+# переместим man-страницу для chroot из man1 в man8
+mv -v "${TMP_DIR}/usr/share/man/man1/chroot.1" "${TMP_DIR}${MAN8}/chroot.8"
+sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 
-# переместим и переименуем man-страницу
-mv -v "${TMP_DIR}/usr/share/man/man1/chroot.1" \
-    "${TMP_DIR}/usr/share/man/man8/chroot.8"
-sed -i 's/"1"/"8"/' "${TMP_DIR}/usr/share/man/man8/chroot.8"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
-# утилиту 'cp' переместим в /tmp, т.к. ее нужно будет скопировать в /bin из
+# утилиту 'cp' переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
 # только что собранного пакета
-mv /bin/cp /tmp
+mv /usr/bin/cp /tmp
 /tmp/cp -vR "${TMP_DIR}"/* /
 rm -f /tmp/cp
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (core GNU utilities)

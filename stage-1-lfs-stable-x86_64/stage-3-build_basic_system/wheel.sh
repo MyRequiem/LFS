@@ -42,7 +42,7 @@ pip3 wheel               \
     ./ || exit 1
 
 # устанавливаем созданный пакет в "${TMP_DIR}"
-pip3 install \
+pip3 install                  \
     --target="${TMP_DIR}/usr" \
     --find-links=./dist       \
     --no-index                \
