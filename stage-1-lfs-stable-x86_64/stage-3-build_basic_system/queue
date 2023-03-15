@@ -74,11 +74,11 @@ kbd.sh
 libpipeline.sh
 make.sh
 patch.sh
-man-db.sh
 tar.sh
 texinfo.sh
 vim.sh
 eudev.sh
+man-db.sh
 procps-ng.sh
 util-linux.sh
 e2fsprogs.sh
