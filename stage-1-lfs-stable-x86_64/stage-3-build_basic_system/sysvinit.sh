@@ -14,9 +14,9 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 # по умолчанию пакет sysvinit устанавливает в том числе:
-#    - ссылку в /bin pidof -> /sbin/killall5, но утилита /bin/pidof уже
+#    - ссылку в /bin pidof -> /sbin/killall5, но утилита /usr/bin/pidof уже
 #       установлена с пакетом procps-ng
-#    - /sbin/logsave (уже установлена с пакетом e2fsprogs)
+#    - /usr/sbin/logsave (уже установлена с пакетом e2fsprogs)
 #    - /usr/bin/readbootlog
 #    уже установленые с пакетом util-linux:
 #    - /sbin/sulogin
@@ -30,10 +30,18 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 \
     -i "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
+# исправим пути установки
+#    /bin  -> /usr/bin
+#    /sbin -> /usr/sbin
+sed -i 's/)\/bin/)\/usr\/bin/'   src/Makefile || exit 1
+sed -i 's/)\/sbin/)\/usr\/sbin/' src/Makefile || exit 1
+
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
 make ROOT="${TMP_DIR}" install
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -43,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and shutdown of the system.
 #
 # Home page: https://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/slicer69/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

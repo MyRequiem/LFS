@@ -14,15 +14,13 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим местоположение правил udev в файле .pc
+sed -i '/udevdir/a udev_dir=${udevdir}' src/udev/udev.pc.in || exit 1
+
 ./configure                \
     --prefix=/usr          \
-    --bindir=/sbin         \
-    --sbindir=/sbin        \
-    --libdir=/usr/lib      \
+    --bindir=/usr/sbin     \
     --sysconfdir=/etc      \
-    --libexecdir=/lib      \
-    --with-rootprefix=     \
-    --with-rootlibdir=/lib \
     --enable-manpages      \
     --disable-static || exit 1
 
@@ -30,9 +28,9 @@ make || make -j1 || exit 1
 
 # создадим несколько каталогов, которые необходимы для тестов, а также будут
 # использоваться как часть установки системы
-mkdir -pv /lib/udev/rules.d
+mkdir -pv /usr/lib/udev/rules.d
 mkdir -pv /etc/udev/rules.d
-mkdir -pv "${TMP_DIR}/lib/udev/rules.d"
+mkdir -pv "${TMP_DIR}/usr/lib/udev/rules.d"
 mkdir -pv "${TMP_DIR}/etc/udev/rules.d"
 
 # make check
@@ -52,13 +50,13 @@ UDEV_LFS_VERSION="$(echo "${SOURCES}/${UDEV_LFS}"-*.tar.?z* | rev | \
 #         ├── 55-lfs.rules
 #         ├── 81-cdrom.rules
 #         └── 83-cdrom-symlinks.rules
-# /lib
-# └── udev
-#     ├── rules.d/
-#     ├── init-net-rules.sh
-#     ├── rule_generator.functions
-#     ├── write_cd_rules
-#     └── write_net_rules
+# /usr/lib
+#       └── udev
+#           ├── rules.d/
+#           ├── init-net-rules.sh
+#           ├── rule_generator.functions
+#           ├── write_cd_rules
+#           └── write_net_rules
 # /usr
 #     └── share
 #         └── doc
@@ -68,8 +66,9 @@ UDEV_LFS_VERSION="$(echo "${SOURCES}/${UDEV_LFS}"-*.tar.?z* | rev | \
 #                     └── README
 #
 tar xvf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}".tar.?z* || exit 1
-make -f "${UDEV_LFS}-${UDEV_LFS_VERSION}/Makefile.lfs" install \
-    DESTDIR="${TMP_DIR}"
+MAKEFILE_LFS="${UDEV_LFS}-${UDEV_LFS_VERSION}/Makefile.lfs"
+sed -i 's/\/lib/\/usr\/lib/' "${MAKEFILE_LFS}"               || exit 1
+make -f "${MAKEFILE_LFS}" install DESTDIR="${TMP_DIR}"       || exit 1
 
 # бэкапим конфиг /etc/udev/udev.conf перед установкой пакета
 UDEV_CONF="/etc/udev/udev.conf"
@@ -77,6 +76,8 @@ if [ -f "${UDEV_CONF}" ]; then
     mv "${UDEV_CONF}" "${UDEV_CONF}.old"
 fi
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${UDEV_CONF}"
@@ -84,7 +85,7 @@ config_file_processing "${UDEV_CONF}"
 ### конфигурация Eudev
 # информация об аппаратных устройствах хранится в каталогах
 #    /etc/udev/hwdb.d/
-#    /lib/udev/hwdb.d/
+#    /usr/lib/udev/hwdb.d/
 # Для Eudev нужно, чтобы эта информация была собрана в двоичной базе данных
 #    /etc/udev/hwdb.bin
 # Создадим эту исходную базу данных. Эта команда должна выполняться каждый раз,
@@ -103,7 +104,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # particular flavor of system initialization.
 #
 # Home page: https://wiki.gentoo.org/wiki/Project:Eudev
-# Download:  https://dev.gentoo.org/~blueness/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}-project/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -19,12 +19,6 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# некоторые программы этого пакета, например e2fsck, должны быть доступны на
-# ранних стадиях загрузки системы, но каталоги /usr/{bin,lib} куда
-# устанавливаются такие программы по умолчанию, в этот момент могут быть еще не
-# доступны. Поэтому установим их в /bin и /lib
-#    --with-root-prefix=""
-#    --bindir=/bin
 # создаем общие библиотеки, которые используются некоторыми программами в этом
 # пакете
 #    --enable-elf-shlibs
@@ -37,8 +31,7 @@ cd build || exit 1
 #    --disable-fsck
 ../configure              \
     --prefix=/usr         \
-    --bindir=/bin         \
-    --with-root-prefix="" \
+    --sysconfdir=/etc     \
     --enable-elf-shlibs   \
     --disable-libblkid    \
     --disable-libuuid     \
@@ -73,21 +66,12 @@ if [ -f "${MKE2FS_CONF}" ]; then
     mv "${MKE2FS_CONF}" "${MKE2FS_CONF}.old"
 fi
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${E2SCRUB_CONF}"
 config_file_processing "${MKE2FS_CONF}"
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ext2 and ext3 filesystems utilities)

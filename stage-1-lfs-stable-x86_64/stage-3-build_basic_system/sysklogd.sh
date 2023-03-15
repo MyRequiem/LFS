@@ -12,16 +12,16 @@ source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -p "${TMP_DIR}"/{etc,sbin,usr/share/man/{man5,man8}}
+mkdir -p "${TMP_DIR}"/{etc,usr/sbin,usr/share/man/{man5,man8}}
 
-# исправим проблему, которая вызывает segmentation fault в некоторых ситуациях,
-# а так же исправим устаревшую конструкцию в исходном коде syslogd.c
-sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
-sed -i 's/union wait/int/' syslogd.c
+# исправим проблему, которая вызывает segmentation fault в некоторых ситуациях
+# в klogd, а так же исправим устаревшую конструкцию в исходном коде syslogd.c
+sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c || exit 1
+sed -i 's/union wait/int/' syslogd.c                      || exit 1
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
-make BINDIR="${TMP_DIR}/sbin" MANDIR="${TMP_DIR}/usr/share/man" install
+make BINDIR="${TMP_DIR}/usr/sbin" MANDIR="${TMP_DIR}/usr/share/man" install
 
 ### конфиг /etc/syslog.conf
 SYSLOG_CONF="/etc/syslog.conf"
@@ -78,6 +78,8 @@ if [ -f "${SYSLOG_CONF}" ]; then
     mv "${SYSLOG_CONF}" "${SYSLOG_CONF}.old"
 fi
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${SYSLOG_CONF}"
