@@ -21,8 +21,9 @@
 # библиотек по мере необходимости во время выполнения и разрешения их
 # зависимостей. В этом случае файлы .la должны остаться.
 #
-# Данный сценарий, создает скрипт /usr/sbin/remove-la-files.sh, который при
-# запуске удаляет все ненужные файлы .la и сохраняет их в каталоге
+# libtool-архивы находятся в каталогах /usr/lib и /usr/libexec. Данный
+# сценарий, создает скрипт /usr/sbin/remove-la-files.sh, который при запуске
+# удаляет все ненужные файлы .la и сохраняет их в каталоге
 # /var/log/removed_la_files. Он также ищет во всех файлах pkg-config (файлы с
 # расширением *.pc) встроенные ссылки на файлы *.la и исправляет их на обычные
 # ссылки на библиотеки, необходимые при сборке приложения или библиотеки.
@@ -30,7 +31,7 @@
 # Скрипт можно запускать по мере необходимости для очистки каталогов, которые
 # могут вызывать проблемы.
 
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SCRIPT="/usr/sbin/remove-la-files.sh"
@@ -49,7 +50,7 @@ if test "${EUID}" -ne 0; then
 fi
 
 # make sure PKG_CONFIG_PATH is set if discarded by sudo
-source /etc/profile
+[ -r /etc/profile ] && source /etc/profile
 
 OLD_LA_DIR=/var/log/removed_la_files
 
@@ -59,7 +60,7 @@ mkdir -p $OLD_LA_DIR
 OPTDIRS=$(find /opt -mindepth 1 -maxdepth 1 -type d)
 
 # move any found .la files to a directory out of the way
-find /usr/lib $OPTDIRS -name "*.la" ! -name "libosp.la" \
+find /usr/lib /usr/libexec $OPTDIRS -name "*.la" ! -name "libosp.la" \
     ! -path "/usr/lib/ImageMagick*" -exec mv -fv {} $OLD_LA_DIR \;
 
 ###############

@@ -883,7 +883,6 @@ re2c                                php
 recommonmark                        llvm
 redland
 reiserfsprogs                       lvm2
-remove-la-files
 resolv_wrapper                      mit-kerberos-v5
 rest                                gtk+3
 rhash                               cmake
