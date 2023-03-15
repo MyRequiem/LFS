@@ -14,41 +14,45 @@ rm -rf "${TMP_DIR}"
 BASH_COMPLETION="/usr/share/bash-completion/completions"
 mkdir -pv "${TMP_DIR}${BASH_COMPLETION}"
 
-# исправим проблему, вызванную binutils-2.36
-sed "s/gold-version/& -R .note.gnu.property/" \
-    -i Makefile.in grub-core/Makefile.in || exit 1
+###
+# WARNING
+###
+# удалим все переменные среды, которые могут повлиять на сборку
+unset {C,CPP,CXX,LD}FLAGS
+# при сборке пакета Grub нельзя применять специальные флаги компиляции, т.к.
+# низкоуровневые операции в исходном коде могут быть нарушены агрессивной
+# оптимизацией
 
-# позволяет не прерывать сборку при появлении предупреждений для более поздних
-# версий Flex
-#    --disable-werror
+# устраним проблему, приводившую к сбою grub-install, когда раздел /boot не
+# является отдельным разделом
+patch -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
 # минимизирует сборку, отключая некоторые особенности и тестирование программ,
 # которые не нужны для LFS
 #    --disable-efiemu
+# позволяет не прерывать сборку при появлении предупреждений для более поздних
+# версий Flex
+#    --disable-werror
 ./configure           \
     --prefix=/usr     \
-    --sbindir=/sbin   \
     --sysconfdir=/etc \
     --disable-efiemu  \
     --disable-werror || exit 1
 
 make || make -j1 || exit 1
-# пакет не содержит набора тестов
+
+# запускать набор тестов для этого пакета не рекомендуется
+# make check
+
 make install DESTDIR="${TMP_DIR}"
 
-mv -v "${TMP_DIR}/etc/bash_completion.d/grub" "${TMP_DIR}${BASH_COMPLETION}"
+mv -v  "${TMP_DIR}/etc/bash_completion.d/grub" "${TMP_DIR}${BASH_COMPLETION}"
+rm -rf "${TMP_DIR}/etc/bash_completion.d"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the GRand Unified Bootloader)

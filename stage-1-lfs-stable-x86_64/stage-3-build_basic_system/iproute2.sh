@@ -22,16 +22,12 @@ if ! [ -f /usr/lib/libdb.so ]; then
     rm -fv man/man8/arpd.8
 fi
 
-# также необходимо отключить сборку двух модулей, для которых требуется
-# iptables, если он не установлен
-if ! command -v iptables &>/dev/null; then
-    sed -i 's/.m_ipt.o//' tc/Makefile || exit 1
-fi
-
-make || make -j1 || exit 1
+make NETNS_RUN_DIR=/run/netns || make -j1 NETNS_RUN_DIR=/run/netns || exit 1
 # пакет не содержит набора тестов
-make DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+make SBINDIR=/usr/sbin install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

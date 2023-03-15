@@ -13,6 +13,11 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим некоторые проблемы, выявленные в upstream
+sed -e '/ifdef SIGPIPE/,+2 d' \
+    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);' \
+    -i src/main.c || exit 1
+
 ./configure \
     --prefix=/usr || exit 1
 
@@ -20,18 +25,9 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU make utility to maintain groups of programs)
