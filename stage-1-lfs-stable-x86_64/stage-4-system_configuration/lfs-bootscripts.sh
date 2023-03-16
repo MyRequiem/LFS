@@ -15,6 +15,7 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 make install DESTDIR="${TMP_DIR}"
+mv "${TMP_DIR}"/{lib,sbin} "${TMP_DIR}/usr/"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
