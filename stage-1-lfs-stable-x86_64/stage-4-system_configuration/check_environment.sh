@@ -9,17 +9,16 @@ fi
 ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
 ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
 if [[ "${ID1}" == "${ID2}" ]]; then
-    echo "You must enter chroot environment."
-    echo "Run 001_entering_chroot.sh script in this directory."
+    echo "You must enter chroot environment"
+    echo "Run ./entering-chroot-env.sh"
     exit 1
 fi
 
-if [[ "${PATH}" != "/bin:/usr/bin:/sbin:/usr/sbin" ]]; then
-    echo -n "Environment variable PATH musb be: "
-    echo "/bin:/usr/bin:/sbin:/usr/sbin"
+if [[ "${PATH}" != "/usr/bin:/usr/sbin" ]]; then
+    echo "Environment variable PATH musb be: /usr/bin:/usr/sbin"
+    echo ""
     echo "Now PATH=${PATH}"
-    echo -e "\nWhy? Check script 001_entering_chroot.sh in this directory. "
-    echo "It must be set to a variable:"
-    echo "PATH=/bin:/usr/bin:/sbin:/usr/sbin"
+    echo ""
+    echo "Check script ./entering-chroot-env.sh"
     exit 1
 fi
