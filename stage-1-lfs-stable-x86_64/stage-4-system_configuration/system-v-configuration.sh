@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="system-v-configuration"
+LFS_VERSION="11.3"
 
 ### System V configuration
 # Конфигурация SysVinit. В Linux используется специальная схема загрузки
@@ -90,7 +91,8 @@ l6:6:wait:/etc/rc.d/init.d/rc 6
 
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
-su:S016:once:/sbin/sulogin
+su:S06:once:/sbin/sulogin
+s1:1:respawn:/sbin/sulogin
 
 # three virtual consoles are more than enough :)
 1:2345:respawn:/sbin/agetty --noclear tty1 9600
@@ -258,7 +260,7 @@ sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
 
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (System V configuration)
 #
 # /etc/inittab
@@ -268,4 +270,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}"
+    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
