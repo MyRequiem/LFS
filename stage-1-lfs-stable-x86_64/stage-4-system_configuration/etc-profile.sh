@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
+LFS_VERSION="11.3"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
@@ -48,7 +49,7 @@ HOSTNAME="\$(cat /etc/hostname)"
 export HOSTNAME
 
 # set the default system \$PATH
-export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin"
+export PATH="/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin"
 
 # if exist \$HOME/bin directory add it to the \$PATH
 if [ -d "\${HOME}/bin" ]; then
@@ -92,8 +93,10 @@ PS2='> '
 export PS1 PS2
 
 PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
-PKG_CONFIG_PATH=\${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
-PKG_CONFIG_PATH=\${PKG_CONFIG_PATH}:/usr/local/share/pkgconfig
+[ -d  /usr/local/lib/pkgconfig ] &&
+    PKG_CONFIG_PATH=\${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
+[ -d /usr/local/share/pkgconfig ] &&
+    PKG_CONFIG_PATH=\${PKG_CONFIG_PATH}:/usr/local/share/pkgconfig
 export PKG_CONFIG_PATH
 
 # append any additional bash scripts found in /etc/profile.d directory
@@ -196,24 +199,24 @@ TERM xterm
 TERM xterm-256color
 
 # below are the color init strings for the basic file types
-BLK                   01;33
-CAPABILITY            30;41
-CHR                   01;33
-DIR                   0;33
-DOOR                  01;35
-EXEC                  01;32
-FIFO                  01;34
-FILE                  00;37
-LINK                  01;36
 NORMAL                00
-ORPHAN                01;31
-OTHER_WRITABLE        34;42
+FILE                  00;37
 RESET                 0
-SETGID                30;43
-SETUID                37;41
+DIR                   0;33
+LINK                  01;36
+FIFO                  01;34
 SOCK                  01;35
-STICKY                37;44
+DOOR                  01;35
+BLK                   01;33
+CHR                   01;33
+ORPHAN                01;31
+SETUID                37;41
+SETGID                30;43
+CAPABILITY            30;41
 STICKY_OTHER_WRITABLE 30;42
+OTHER_WRITABLE        34;42
+STICKY                37;44
+EXEC                  01;32
 
 # list any file extensions like '.gz' or '.tar' that you would like ls
 # to colorize below
@@ -266,16 +269,21 @@ STICKY_OTHER_WRITABLE 30;42
 
 # DOS-style executables
 .bat  01;32
+.btm  01;32
 .cmd  01;32
-.exe  01;32
 .com  01;32
+.dll  01;32
+.exe  01;32
 
 # archives or compressed
 .7z   02;33
+.ace  02;33
 .arj  02;33
 .bz   02;33
 .bz2  02;33
+.cpio 02;33
 .deb  02;33
+.dz   02;33
 .gz   02;33
 .jar  02;33
 .lha  02;33
@@ -284,38 +292,65 @@ STICKY_OTHER_WRITABLE 30;42
 .lzma 02;33
 .rar  02;33
 .rpm  02;33
+.rz   02;33
 .tar  02;33
-.tbz  02;33
+.taz  02;33
+.tb2  02;33
 .tbz2 02;33
-.tgz  01;31
-.txz  00;36
+.tbz  02;33
+.tgz  02;33
 .tlz  00;33
+.trz  02;33
+.txz  00;36
+.tz   02;33
+.tz2  02;33
+.tzst 02;33
 .xz   02;33
 .z    02;33
 .Z    02;33
 .zip  02;33
 .cab  02;33
 .zoo  02;33
+.zst  02;33
 .arc  02;33
 .ark  02;33
-.ace  02;33
 
 # video/sound file formats
+.aac  00;32
+.anx  00;32
+.asf  00;32
+.au   00;32
+.axa  00;32
+.axv  00;32
 .avi  00;32
-.mp4  00;32
-.mpeg 00;32
-.mpg  00;32
+.divx 00;32
 .flac 00;32
+.flv  00;32
+.m2a  00;32
+.m2t  00;32
+.m2v  00;32
+.m4a  00;32
+.m4p  00;32
+.m4v  00;32
 .mid  00;32
 .midi 00;32
+.mka  00;32
+.mkv  00;32
+.mov  00;32
 .mp2  00;32
 .mp3  00;32
-.ogg  00;32
-.wav  00;32
+.mp4  00;32
+.mp4v 00;32
+.mpc  00;32
+.mpeg 00;32
+.mpg  00;32
+.nuv  00;32
+.oga  00;32
 .ogv  00;32
-.mkv  00;32
-.asf  00;32
-.mov  00;32
+.ogx  00;32
+.ogg  00;32
+.opus 00;32
+.wav  00;32
 .mol  00;32
 .mpl  00;32
 .xm   00;32
@@ -325,27 +360,39 @@ STICKY_OTHER_WRITABLE 30;42
 .s3m  00;32
 .umx  00;32
 .vob  00;32
-.flv  00;32
 .m3u  00;32
 .ape  00;32
 .wma  00;32
 .wmv  00;32
 .3gp  00;32
 .webm 00;32
+.webp 00;32
+.xwd  00;32
+.xvid 00;32
 
 # image file formats
+.png  01;36
+.ppm  01;36
+.qt   01;36
+.ra   01;36
+.ram  01;36
+.rm   01;36
+.spx  01;36
+.svg  01;36
+.svgz 01;36
+.tga  01;36
+.tif  01;36
+.tiff 01;36
 .ico  01;36
 .bmp  01;36
 .gif  01;36
 .jpg  01;36
 .jpeg 01;36
-.png  01;36
-.svg  01;36
-.tif  01;36
-.tiff 01;36
 .pcx  01;36
-.xpm  01;36
 .xbm  01;36
+.xcf  01;36
+.xpm  01;36
+.xspf 01;36
 .eps  01;36
 .pic  01;36
 .rle  01;36
@@ -356,11 +403,10 @@ STICKY_OTHER_WRITABLE 30;42
 .ora  01;36
 .fits 01;36
 .ppc  01;36
+.pbm  01;36
 .pgm  01;36
-.ppm  01;36
 .psd  01;36
 .rgb  01;36
-.xcf  01;36
 
 # pdf,djvu
 .pdf  01;34
@@ -560,7 +606,7 @@ chmod 755 "${TMP_DIR}${I18N}"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (system-wide defaults)
 #
 # System-wide shell settings
@@ -577,4 +623,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}"
+    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
