@@ -9,7 +9,7 @@ fi
 ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
 ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
 if [[ "${ID1}" == "${ID2}" ]]; then
-    echo "You must enter chroot environment."
-    echo "Run 000_entering_chroot.sh script in this directory."
+    echo "You must enter chroot environment"
+    echo "Run ./entering-chroot-env.sh"
     exit 1
 fi
