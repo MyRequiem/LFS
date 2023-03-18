@@ -2,6 +2,21 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
+
+lsb-tools
+python3                             lsb-tools
+
+
+
+
+
+
+
+
+
+
+
+
 3store                              redland
 X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
 aalib                               gst-plugins-good, sdl, gimp
@@ -484,7 +499,6 @@ lmdb                                php
 lnav
 lrdf                                gst-plugins-bad
 lrzip
-lsb-tools
 lsof
 lsscsi
 ltc-tools                           gst-plugins-bad

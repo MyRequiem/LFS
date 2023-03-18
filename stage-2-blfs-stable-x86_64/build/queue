@@ -1,3 +1,6 @@
+s/lsb-tools.sh
+
+
 a/kernel-firmware.sh
 a/blfs-bootscripts.sh
 s/etc-issue.sh
@@ -27,7 +30,6 @@ d/python3.sh
 d/cython.sh
 d/yasm.sh
 a/pciutils.sh
-s/lsb-tools.sh
 ap/p7zip.sh
 s/bash-completion.sh
 n/libgpg-error.sh
