@@ -10,7 +10,7 @@ LFS_VERSION="11.3"
 #                       некоторыми графическими средами рабочего стола
 
 ROOT="/"
-source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
