@@ -5,6 +5,7 @@
 
 lsb-tools
 python3                             lsb-tools
+bash-completion
 
 
 
@@ -59,7 +60,6 @@ autogen                             gnutls, ntp
 autotrace                           imagemagick
 avahi                               cups, pulseaudio
 babl                                gegl
-bash-completion                     gstreamer, dconf
 bcachefs                            libblockdev
 bellagio-openmax                    mesa
 berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd, php
