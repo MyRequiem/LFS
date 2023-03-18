@@ -6,13 +6,13 @@
 # содержимое находится в памяти:
 #    /dev       - каталог /dev хоста
 #    /dev/pts   - devpts
+#    /dev/shm   - tmpfs
 #    /proc      - proc
 #    /run       - tmpfs
 #    /sys       - sysfs
 
-PART="/dev/sda10"
+PART="/dev/sda5"
 LFS="/mnt/lfs"
-# TMP_ON_HOST="/root/src/lfs-tmp"
 
 if [[ "$(whoami)" != "root" ]]; then
     echo "Only superuser (root) can run this script"
@@ -31,8 +31,7 @@ case "$1" in
     --mount)
         ;;
     --umount)
-        # umount "${TMP_ON_HOST}" &>/dev/null
-        umount "${LFS}"/{dev{/pts,},proc,run,sys} &>/dev/null
+        umount "${LFS}"/{dev/{pts,shm,},proc,run,sys} &>/dev/null
         find_mnt
         exit 0
         ;;
@@ -45,7 +44,7 @@ esac
 # смонтируем LFS раздел
 mount "${PART}" "${LFS}" &>/dev/null
 
-! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/pts,proc,run,sys}
+! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/{pts,shm},proc,run,sys}
 
 ### Подготовка виртуальной файловой системы ядра
 # ----------------------------------------------
@@ -55,15 +54,19 @@ mount "${PART}" "${LFS}" &>/dev/null
 # udevd и, кроме того, когда ядро запускается с параметром init=/bin/bash
 
 # если каталог ${LFS}/dev уже смонтирован, отмонтируем его
-umount "${LFS}/dev/pts" &>/dev/null
-umount "${LFS}/dev"     &>/dev/null
+if mountpoint "${LFS}/dev" &>/dev/null; then
+    umount "${LFS}/dev/pts" &>/dev/null
+    umount "${LFS}/dev/shm" &>/dev/null
+    umount "${LFS}/dev"     &>/dev/null
+fi
 
 # создаем символьные устройства /dev/console и /dev/null, если не существуют
-! [ -e "${LFS}/dev/console" ] && \
-    mknod -m 600 "${LFS}/dev/console" c 5 1
-! [ -e "${LFS}/dev/null" ] && \
-    mknod -m 666 "${LFS}/dev/null"    c 1 3
+! [ -e "${LFS}/dev/console" ] && mknod -m 600 "${LFS}/dev/console" c 5 1
+! [ -e "${LFS}/dev/null" ]    && mknod -m 666 "${LFS}/dev/null"    c 1 3
 
+###
+# монтируем /dev, /dev/pts, /dev/shm
+###
 # рекомендуемый метод заполнения каталога /dev устройствами - это смонтировать
 # виртуальную файловую систему (например, tmpfs) в каталоге /dev и позволить
 # динамически создавать устройства в этой виртуальной файловой системе по мере
@@ -82,29 +85,25 @@ mount --bind /dev "${LFS}/dev" &>/dev/null
 # /dev/pts хоста в /mnt/lfs/dev/pts
 mount --bind /dev/pts "${LFS}/dev/pts" &>/dev/null
 
-# proc, run, sys
-if ! mount | /bin/grep -q "${LFS}/proc"; then
-    mount -t proc  proc  "${LFS}/proc" &>/dev/null
-fi
-
-if ! mount | /bin/grep -q "${LFS}/run"; then
-    mount -t tmpfs tmpfs "${LFS}/run"  &>/dev/null
-fi
-
-if ! mount | /bin/grep -q "${LFS}/sys"; then
-    mount -t sysfs sysfs "${LFS}/sys"  &>/dev/null
-fi
-
 # в некоторых хост-системах /dev/shm является символической ссылкой на
 # /run/shm, поэтому в таком случае необходимо создать каталог /run/shm
 if [ -h "${LFS}/dev/shm" ]; then
     mkdir -pv "${LFS}/$(readlink ${LFS}/dev/shm)"
+else
+    mount -t tmpfs -o nosuid,nodev tmpfs "${LFS}/dev/shm" &>/dev/null
 fi
 
-# монтируем директорию на хосте на ${LFS}/tmp
-# if ! mount | /bin/grep -q "${TMP_ON_HOST}"; then
-#     ! [ -d "${TMP_ON_HOST}" ] && mkdir -p "${TMP_ON_HOST}"
-#     mount -v --bind "${TMP_ON_HOST}" "${LFS}/tmp/"
-# fi
+# монтируем /proc, /run, /sys
+if ! mountpoint "${LFS}/proc" &>/dev/null; then
+    mount -t proc proc "${LFS}/proc" &>/dev/null
+fi
+
+if ! mountpoint "${LFS}/run" &>/dev/null; then
+    mount -t tmpfs tmpfs "${LFS}/run" &>/dev/null
+fi
+
+if ! mountpoint "${LFS}/sys" &>/dev/null; then
+    mount -t sysfs sysfs "${LFS}/sys" &>/dev/null
+fi
 
 find_mnt
