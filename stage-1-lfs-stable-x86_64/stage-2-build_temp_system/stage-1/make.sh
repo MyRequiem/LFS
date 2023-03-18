@@ -10,6 +10,11 @@ PRGNAME="make"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+# исправим проблему, обнаруженную в upstream
+sed -e '/ifdef SIGPIPE/,+2 d'                     \
+    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);' \
+    -i src/main.c
+
 # Make не будет ссылаться на библиотеки Guile, которые могут присутствовать в
 # хост-системе, но не доступны в нашей временной среде
 #    --without-guile

@@ -20,7 +20,25 @@ ln -svf .bashrc /root/.bash_profile
 
 # создадим /etc/inputrc и настроим автодополнение путей в консоли по <TAB>
 cat << EOF > "/etc/inputrc"
+set bell-style none
+set meta-flag On
+set input-meta On
+set convert-meta Off
+set output-meta On
+set echo-control-characters off
+
 TAB: menu-complete
+
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+"\C-h": backward-delete-char
 EOF
 
 # современные ядра поддерживают список смонтированных файловых систем внутри
@@ -31,16 +49,20 @@ ln -svf /proc/self/mounts /etc/mtab
 
 # создадим базовый /etc/hosts, который нужен для конфигурации некоторых
 # пакетов, например Perl
-echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
+cat << EOF > /etc/hosts
+127.0.0.1 localhost $(hostname)
+::1       localhost
+EOF
 
 # чтобы пользователь root мог войти в систему и распознавать свое имя, в файлах
 # /etc/passwd и /etc/group должны быть соответствующие записи
 cat << EOF > "/etc/passwd"
 root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/dev/null:/bin/false
-daemon:x:6:6:Daemon User:/dev/null:/bin/false
-messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
-nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
+bin:x:1:1:bin:/dev/null:/usr/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false
+uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
+nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
 EOF
 
 cat << EOF > "/etc/group"
@@ -65,17 +87,16 @@ messagebus:x:18:
 input:x:24:
 mail:x:34:
 kvm:x:61:
+uuidd:x:80:
 wheel:x:97:
-nogroup:x:99:
 users:x:999:
+nogroup:x:99:
 EOF
 
-# для некоторых дальнейших тестов нам понадобится обычный пользователь
-# (позже мы его удалим)
-echo "tester:x:1000:101::/home/tester:/bin/bash" \
-    >> /etc/passwd
-echo "tester:x:101:" \
-    >> /etc/group
+# для некоторых дальнейших тестов нам понадобится обычный пользователь (позже
+# мы его удалим)
+echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
+echo "tester:x:101:" >> /etc/group
 install -o tester -d /home/tester
 
 # /var/log/

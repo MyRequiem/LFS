@@ -28,7 +28,7 @@ sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure      || exit 1
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in || exit 1
 
 # предотвращает сборку утилиты vlock, так как она требует библиотеку PAM,
-# которая еще не установлена в системе LFS
+# которая не установлена в системе LFS
 #    --disable-vlock
 ./configure       \
     --prefix=/usr \
@@ -40,6 +40,8 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share/doc"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

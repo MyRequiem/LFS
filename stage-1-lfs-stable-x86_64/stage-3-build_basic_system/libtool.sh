@@ -21,29 +21,17 @@ mkdir -pv "${TMP_DIR}"
 make || make -j1 || exit 1
 
 ### запуск набора тестов
-# в данном случае для сокращения времени тестирования можно указать переменную
-# TESTSUITEFLAGS
-# make TESTSUITEFLAGS="-j$(nproc)" check
-# известно, что пять тестов не проходят в среде сборки LFS из-за наличия
-# кольцевых зависимостей, но после установки automake все тесты проходят
+# для сокращения времени тестирования можно указать переменную TESTSUITEFLAGS
+# make TESTSUITEFLAGS="-j$(nproc)" -k check
 
 make install DESTDIR="${TMP_DIR}"
 
 # удалим бесполезную статическую библиотеку
 rm -fv "${TMP_DIR}/usr/lib/libltdl.a"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a generic library support script)

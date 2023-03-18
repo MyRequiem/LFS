@@ -11,7 +11,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,sbin}
+mkdir -pv "${TMP_DIR}/usr/sbin"
 
 # по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
 # логирование. Мы не будем его устанавливать, т.к. пакет Util-Linux содержит
@@ -34,6 +34,7 @@ mkdir -pv "${TMP_DIR}"/{bin,sbin}
 #    --disable-servers
 ./configure              \
     --prefix=/usr        \
+    --bindir=/usr/bin    \
     --localstatedir=/var \
     --disable-logger     \
     --disable-whois      \
@@ -44,31 +45,15 @@ mkdir -pv "${TMP_DIR}"/{bin,sbin}
     --disable-servers || exit 1
 
 make || make -j1 || exit 1
-
-# тест libls.sh может потерпеть неудачу в текущей среде chroot, но нормально
-# проходит после завершения создания LFS и ее чистой загрузки. Тест
-# ping-localhost.sh потерпит неудачу, если в ядре хост-системы не включена
-# поддержка IPv6 протокола
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
-# переместим некоторые утилиты из /usr/bin в /bin и /sbin
-mv -v "${TMP_DIR}/usr/bin"/{hostname,ping,ping6,traceroute} "${TMP_DIR}/bin"
-mv -v "${TMP_DIR}/usr/bin/ifconfig"                         "${TMP_DIR}/sbin"
+# переместим утилиту 'ifconfig' из /usr/bin в /usr/sbin
+mv -v "${TMP_DIR}/usr"/{,s}bin/ifconfig
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)

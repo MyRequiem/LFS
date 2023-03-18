@@ -45,6 +45,11 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 echo -e "\n# make mrproper..."
 make mrproper || exit 1
 
+# ссылка в /usr/src
+#    linux -> linux-${VERSION}
+cd /usr/src || exit 1
+ln -svf "linux-${VERSION}" linux
+
 TARGET="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "${TARGET}"
@@ -57,6 +62,7 @@ cat << EOF > "${TARGET}"
 # Download:     https://www.kernel.org/pub/linux/kernel/v${MAJ_VER}.x/${ARCH_NAME}-${VERSION}.tar.xz
 # All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
 #
+/usr/src/linux
 EOF
 
 find "${USR_SRC}/${ARCH_NAME}-${VERSION}" | sort >> "${TARGET}"

@@ -9,7 +9,7 @@ if [[ "$(whoami)" != "root" ]]; then
     exit 1
 fi
 
-if ! mount | /bin/grep -q "${LFS}/proc"; then
+if ! mountpoint "${LFS}/proc" &>/dev/null; then
     echo "You need to mount virtual file systems. Run script:"
     echo "  # ./mount-virtual-kernel-file-systems.sh --mount"
     exit 1

@@ -10,7 +10,6 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 ./configure             \
     --prefix=/usr       \
-    --bindir=/bin       \
     --host="${LFS_TGT}" \
     --build="$(build-aux/config.guess)" || exit 1
 

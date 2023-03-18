@@ -27,15 +27,20 @@ mkdir -pv "${TMP_DIR}${FONTS}"
 # входящая в состав иксов, которые пока не установлены
 make psf || make -j1 psf || exit 1
 
-# установка всех собранных шрифтов в /usr/share/consolefonts
-#    # make install-psf [DESTDIR=...]
+# для установки всех собранных PSF шрифтов (~250 шт) запускаем:
+# make install-psf DESTDIR="${TMP_DIR}"
 
-# установим только ter-v14n шрифт
-gzip -vc9 ter-v14n.psf > ter-v14n.psf.gz
-install -v -m644 ter-v14n.psf.gz "${TMP_DIR}${FONTS}"
+# список шрифтов, которые будут установлены
+FONT_LIST="\
+ter-v14n.psf \
+"
+for FONT_NAME in ${FONT_LIST}; do
+    gzip -vc "${FONT_NAME}" > "${TMP_DIR}${FONTS}/${FONT_NAME}.gz" ;
+done
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (clean, fixed width bitmap font for linux console)
 #
@@ -49,8 +54,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Weights: normal and bold (except for 6x12), plus CRT VGA-bold for 8x14 and
 # 8x16.
 #
-# Home page: http://terminus-font.sourceforge.net
-# Download:  https://netix.dl.sourceforge.net/project/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: http://${PRGNAME}.sourceforge.net
+# Download:  https://nav.dl.sourceforge.net/project/${PRGNAME}/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

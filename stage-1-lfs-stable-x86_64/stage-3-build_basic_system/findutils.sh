@@ -13,7 +13,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/bin"
+mkdir -pv "${TMP_DIR}"
 
 # задает расположение базы данных locate в соответствии со стандартом FHS
 #    --localstatedir=/var/lib/locate
@@ -30,24 +30,9 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-# некоторые из сценариев в пакете LFS-Bootscripts используют утилиту find.
-# Каталог /usr/bin может быть недоступен на ранних стадиях загрузки системы,
-# поэтому переместим утилиту find в /bin
-mv -v "${TMP_DIR}/usr/bin/find" "${TMP_DIR}/bin"
-sed -i 's|find:=${BINDIR}|find:=/bin|' "${TMP_DIR}/usr/bin/updatedb"
-
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (utilities to locate files)

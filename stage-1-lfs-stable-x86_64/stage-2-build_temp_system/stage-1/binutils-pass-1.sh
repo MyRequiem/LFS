@@ -37,6 +37,7 @@ cd build || exit 1
     --with-sysroot="${LFS}" \
     --target="${LFS_TGT}"   \
     --disable-nls           \
+    --enable-gprofng=no     \
     --disable-werror || exit 1
 
 make || make -j1 || exit 1

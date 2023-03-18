@@ -14,8 +14,8 @@ if [[ "${ID1}" == "${ID2}" ]]; then
     exit 1
 fi
 
-if [[ "${PATH}" != "/bin:/usr/bin:/sbin:/usr/sbin" ]]; then
-    echo "Environment variable PATH musb be: /bin:/usr/bin:/sbin:/usr/sbin"
+if [[ "${PATH}" != "/usr/bin:/usr/sbin" ]]; then
+    echo "Environment variable PATH musb be: /usr/bin:/usr/sbin"
     echo ""
     echo "Now PATH=${PATH}"
     echo ""

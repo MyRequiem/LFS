@@ -30,7 +30,6 @@ SRCDIR="$(pwd)"
 cd unix || exit 1
 ./configure        \
     --prefix=/usr  \
-    --enable-64bit \
     --mandir=/usr/share/man || exit 1
 
 make || make -j1 || exit 1
@@ -42,16 +41,16 @@ sed -e "s|${SRCDIR}/unix|/usr/lib|" \
     -e "s|${SRCDIR}|/usr/include|"  \
     -i tclConfig.sh || exit 1
 
-sed -e "s|${SRCDIR}/unix/pkgs/tdbc1.1.2|/usr/lib/tdbc1.1.2|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.2/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.2/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.2|/usr/include|"            \
-    -i pkgs/tdbc1.1.2/tdbcConfig.sh || exit 1
+sed -e "s|${SRCDIR}/unix/pkgs/tdbc1.1.5|/usr/lib/tdbc1.1.5|" \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.5/generic|/usr/include|"    \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.5/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|${SRCDIR}/pkgs/tdbc1.1.5|/usr/include|"            \
+    -i pkgs/tdbc1.1.5/tdbcConfig.sh || exit 1
 
-sed -e "s|${SRCDIR}/unix/pkgs/itcl4.2.1|/usr/lib/itcl4.2.1|" \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.1/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.1|/usr/include|"            \
-    -i pkgs/itcl4.2.1/itclConfig.sh || exit 1
+sed -e "s|${SRCDIR}/unix/pkgs/itcl4.2.3|/usr/lib/itcl4.2.3|" \
+    -e "s|${SRCDIR}/pkgs/itcl4.2.3/generic|/usr/include|"    \
+    -e "s|${SRCDIR}/pkgs/itcl4.2.3|/usr/include|"            \
+    -i pkgs/itcl4.2.3/itclConfig.sh || exit 1
 
 # запускаем тестовый набор Tcl
 # make test
@@ -65,13 +64,16 @@ chmod -v u+w "${TMP_DIR}/usr/lib/libtcl${MAJ_VERSION}".so
 # устанавливаем заголовки, которые требуются для сборки пакета Expect
 make install-private-headers DESTDIR="${TMP_DIR}"
 
-# создаем символическую ссылку в /usr/bin/ tclsh -> tclsh${MAJ_VERSION}
+# создаем символическую ссылку в /usr/bin/
+#    tclsh -> tclsh${MAJ_VERSION}
 ln -sv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 
 # переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
 # устанавливается с пакетом Perl
 mv "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

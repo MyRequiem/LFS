@@ -9,12 +9,11 @@ PKGNAME="main-directory-tree"
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
-mkdir -pv           /bin
 mkdir -pv           /boot
 mkdir -pv           /dev/pts
 mkdir -pv           /etc/{opt,profile.d,skel,sysconfig}
 mkdir -pv           /home
-mkdir -pv           /lib/firmware
+mkdir -pv           /usr/lib/firmware
 mkdir -pv           /lib64
 mkdir -pv           /media/{flash{0,1},cdrom0}
 mkdir -pv           /mnt/{hdd{0,1},iso,repo,src}
@@ -22,7 +21,6 @@ mkdir -pv           /opt
 mkdir -pv           /proc
 install -dv -m 0750 /root
 mkdir -pv           /run
-mkdir -pv           /sbin
 mkdir -pv           /srv
 mkdir -pv           /sys
 install -dv -m 1777 /tmp
@@ -40,7 +38,7 @@ mkdir -pv           /var/log/{packages,removed_packages,setup/tmp/preserved}
 # предоставляют его пользователю через файловую систему /proc. Чтобы
 # удовлетворить зависимости утилит, которые ожидают наличия /etc/mtab, создадим
 # символическую ссылку
-rm -f /etc/mtab
+rm -f   /etc/mtab
 ln -svf /proc/self/mounts /etc/mtab
 
 # чтобы пользователь root мог войти в систему и чтобы имя 'root' было
@@ -70,19 +68,21 @@ messagebus:x:18:
 input:x:24:
 mail:x:34:
 kvm:x:61:
+uuidd:x:80:
 wheel:x:97:
-nogroup:x:99:
 users:x:999:
+nogroup:x:99:
 tester:x:101:
 EOF
 
 cat << EOF > "/etc/passwd"
 root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/dev/null:/bin/false
-daemon:x:6:6:Daemon User:/dev/null:/bin/false
-messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
-nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
-tester:x:1000:101::/home/tester:/bin/bash
+bin:x:1:1:bin:/dev/null:/usr/bin/false
+daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
+messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false
+uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
+nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
+tester:x:101:101::/home/tester:/bin/bash
 EOF
 
 (
@@ -123,7 +123,6 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 #
 # The main tree of the root file system. This package cannot be removed.
 #
-/bin
 /boot
 /dev
 /dev/pts
@@ -136,8 +135,6 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /etc/skel
 /etc/sysconfig
 /home
-/lib
-/lib/firmware
 /lib64
 /media
 /media/cdrom
@@ -155,7 +152,6 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /proc
 /root
 /run
-/sbin
 /srv
 /sys
 /tmp
@@ -164,6 +160,7 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /usr/doc
 /usr/include
 /usr/lib
+/usr/lib/firmware
 /usr/lib/pkgconfig
 /usr/libexec
 /usr/local

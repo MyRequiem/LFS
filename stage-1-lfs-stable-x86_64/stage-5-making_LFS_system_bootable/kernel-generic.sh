@@ -45,15 +45,17 @@ NUMJOBS="$(nproc)"
 make -j"${NUMJOBS}" bzImage || exit 1
 
 # устанавливаем собранное ядро, System.map и config в /boot
-cp -v arch/x86/boot/bzImage "/boot/vmlinuz-lfs-${VERSION}"
-cp -v System.map            "/boot/System.map-lfs-${VERSION}"
-cp -v .config               "/boot/config-lfs-${VERSION}"
+install -vm644 arch/x86/boot/bzImage "/boot/vmlinuz-generic-${VERSION}"
+install -vm644 System.map            "/boot/System.map-generic-${VERSION}"
+install -vm644 .config               "/boot/config-generic-${VERSION}"
 
-# ссылка в /boot vmlinuz-lfs -> vmlinuz-lfs-${VERSION}
-(
-    cd /boot || exit 1
-    ln -svf "vmlinuz-lfs-${VERSION}" vmlinuz-lfs
-)
+# ссылки в /boot
+#    vmlinuz    -> vmlinuz-generic-${VERSION}
+#    System.map -> System.map-generic-${VERSION}
+#    config     -> config-generic-${VERSION}
+ln -svf "vmlinuz-generic-${VERSION}"    /boot/vmlinuz
+ln -svf "System.map-generic-${VERSION}" /boot/System.map
+ln -svf "config-generic-${VERSION}"     /boot/config
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a general purpose SMP Linux kernel)
@@ -65,18 +67,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # SMP is "Symmetric multiprocessing", or multiple CPU/core support
 #
-/boot/vmlinuz-lfs
-/boot/vmlinuz-lfs-${VERSION}
-/boot/System.map-lfs-${VERSION}
-/boot/config-lfs-${VERSION}
+/boot/System.map
+/boot/System.map-generic-${VERSION}
+/boot/config
+/boot/config-generic-${VERSION}
+/boot/vmlinuz
+/boot/vmlinuz-generic-${VERSION}
 EOF
-
-echo ""
-echo "======================================================="
-echo "### NOTE"
-echo "Do not remember create a symlinks in /boot directory:"
-echo "    System.map -> System.map-lfs-${VERSION}"
-echo "    config     -> config-lfs-${VERSION}"
-echo "    vmlinuz    -> vmlinuz-lfs"
-echo "======================================================="
-echo ""

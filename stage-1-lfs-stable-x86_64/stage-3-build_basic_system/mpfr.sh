@@ -14,6 +14,11 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим тест для старых выпусков glibc
+sed -e 's/+01,234,567/+1,234,567 /' \
+    -e 's/13.10Pd/13Pd/'            \
+    -i tests/tsprintf.c
+
 ./configure              \
     --prefix=/usr        \
     --disable-static     \
@@ -31,18 +36,9 @@ make || make -j1 || exit 1
 make install DESTDIR="${TMP_DIR}"
 # make install-html DESTDIR="${TMP_DIR}"
 
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Multiple-Precision Floating-Point Reliable Library)

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
+LFS_VERSION="11.3"
 
 ### Network Configuration (network configuration files)
 
@@ -60,7 +61,13 @@ cat << EOF > "${IFCONFIG_ETH0}"
 
 ONBOOT=yes
 IFACE=eth0
+
+# The SERVICE variable defines the method used for obtaining the IP address.
+# The LFS-Bootscripts package has a modular IP assignment format, and creating
+# additional files in the /lib/services/ directory allows other IP assignment
+# methods
 SERVICE=ipv4-static
+
 IP=192.168.1.7
 GATEWAY=192.168.1.1
 PREFIX=24
@@ -79,9 +86,12 @@ RESOLV_CONF="/etc/resolv.conf"
 cat << EOF > "${RESOLV_CONF}"
 # Begin ${RESOLV_CONF}
 
+# router
+# nameserver 192.168.1.1
+
 # Google Public IPv4 DNS addresses
-nameserver 8.8.8.8
-nameserver 8.8.4.4
+# nameserver 8.8.8.8
+# nameserver 8.8.4.4
 
 # End ${RESOLV_CONF}
 EOF
@@ -95,16 +105,17 @@ HOSTS="/etc/hosts"
 cat << EOF > "${HOSTS}"
 # Begin ${HOSTS}
 
-# IP-address        Full domain name            Alias
-# ----------        ----------------            -----
-127.0.0.1           localhost
-127.0.0.1           lfs.myrequiem.net           lfs
+# IP-address        Fully Qualified Domain Name     Alias
+# ----------        ---------------------------     -----
+::1                 ip6-localhost                   ip6-loopback
+127.0.0.1           localhost.lfs                   localhost
+127.0.0.1           lfs.myrequiem.net               lfs
 
 # End ${HOSTS}
 EOF
 
 # пишем список файлов в /var/log/packages/network-configuration
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (network configuration files)
 #
 #    /etc/hostname

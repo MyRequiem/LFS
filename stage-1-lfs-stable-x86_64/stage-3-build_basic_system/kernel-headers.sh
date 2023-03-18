@@ -20,9 +20,8 @@ make mrproper || exit 1
 make headers || exit 1
 
 # удалим не нужные файлы и скопируем заголовки в /usr/include/
-find usr/include -name '.*' -delete
-rm -f usr/include/Makefile
-cp -rv usr/include/* /usr/include
+find usr/include -type f ! -name '*.h' -delete
+cp -rv usr/include "${LFS}/usr"
 
 LOG="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"

@@ -12,7 +12,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,lib}
+mkdir -pv "${TMP_DIR}/usr"/{bin,lib}
 
 # применим патч для установки документации
 patch -Np1 --verbose \
@@ -34,30 +34,26 @@ make || make -j1 || exit 1
 
 make PREFIX="${TMP_DIR}/usr" install
 
-# установим
-#    bzip2      в /bin
-#    libbz2.so* в /lib
-cp -v  bzip2-shared "${TMP_DIR}/bin/bzip2"
-cp -av libbz2.so*   "${TMP_DIR}/lib"
+# установим libbz2.so.* в /usr/lib
+cp -av libbz2.so.*   "${TMP_DIR}/usr/lib"
+# ссылка в /usr/lib
+#    libbz2.so -> libbz2.so.${VERSION}
+ln -sv "libbz2.so.${VERSION}" "${TMP_DIR}/usr/lib/libbz2.so"
 
-rm -v "${TMP_DIR}/usr/bin"/{bunzip2,bzcat,bzip2}
+# установим /usr/bin/bzip2
+cp -v bzip2-shared "${TMP_DIR}/usr/bin/bzip2"
+# ссылки в /usr/bin
+#    bzcat   -> bzip2
+#    bunzip2 -> bzip2
+for UTIL in ${TMP_DIR}/usr/bin/{bzcat,bunzip2}; do
+    ln -sfv bzip2 "${UTIL}"
+done
 
-# создадим необходимые ссылки
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-(
-    # ссылка в /usr/lib/
-    #    libbz2.so -> ../../lib/libbz2.so.${MAJ_VERSION}
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sv "../../lib/libbz2.so.${MAJ_VERSION}" libbz2.so
+# удалим бесполезную статическую библиотеку
+rm -fv "${TMP_DIR}/usr/lib/libbz2.a"
 
-    # ссылки в /bin/
-    #    bunzip2 -> bzip2
-    #    bzcat   -> bzip2
-    cd "${TMP_DIR}/bin" || exit 1
-    ln -sv bzip2 bunzip2
-    ln -sv bzip2 bzcat
-)
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

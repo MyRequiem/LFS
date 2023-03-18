@@ -6,7 +6,7 @@ gcc-pass-1.sh
 kernel-headers.sh
 glibc.sh
 check-compiling-and-linking.sh
-libstdc++-pass-1.sh
+libstdc++.sh
 
 ###
 # Кросс-компиляция временных инструментов

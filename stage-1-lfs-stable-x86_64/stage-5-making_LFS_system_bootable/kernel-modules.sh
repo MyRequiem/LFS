@@ -7,7 +7,7 @@ VERSION="$1"
 # Модули ядра linux
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
 source "${ROOT}config_file_processing.sh" || exit 1
 
 if [ -z "${VERSION}" ]; then
@@ -22,13 +22,14 @@ if ! [ -d "${SRC_DIR}" ]; then
     exit 1
 fi
 
+! [ -d /usr/lib/modules ] && mkdir /usr/lib/modules
 cd "${SRC_DIR}" || exit 1
 
 NUMJOBS="$(nproc)"
 make -j"${NUMJOBS}" modules || exit 1
 
 # удалим модули текущей версии ядра, если уже установлены
-MODULE_DIR="/lib/modules/${VERSION}"
+MODULE_DIR="/usr/lib/modules/${VERSION}"
 [ -d "${MODULE_DIR}" ] && rm -rf "${MODULE_DIR}"
 
 # устанавливаем собранные модули
@@ -68,6 +69,8 @@ cat << EOF > "${TARGET}"
 #
 /etc/modprobe.d
 /etc/modprobe.d/usb.conf
+/usr/lib/modules
+${MODULE_DIR}
 EOF
 
 find "${MODULE_DIR}" | sort >> "${TARGET}"

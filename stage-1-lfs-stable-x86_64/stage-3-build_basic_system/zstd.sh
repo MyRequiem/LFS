@@ -12,24 +12,17 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
-make || make -j1 || exit 1
+make prefix=/usr || make -j1  prefix=/usr || exit 1
 # make check
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
 # удалим статическую библиотеку
-rm -v "${TMP_DIR}/usr/lib/libzstd.a"
+rm -fv "${TMP_DIR}/usr/lib/libzstd.a"
 
-# переместим libzstd.so.* из /usr/lib в /lib
-mv -v "${TMP_DIR}/usr/lib/libzstd.so."* "${TMP_DIR}/lib"
-
-# воссоздадим ссылку в /usr/lib libzstd.so -> ../../lib/libzstd.so.${VERSION}
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf "../../lib/$(readlink libzstd.so)" libzstd.so
-)
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

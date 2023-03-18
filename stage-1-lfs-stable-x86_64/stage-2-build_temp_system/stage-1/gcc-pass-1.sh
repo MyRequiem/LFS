@@ -39,7 +39,7 @@ cd build || exit 1
 
 # пакет гарантированно будет совместим с версией Glibc хоста, т.е.
 # устанавливаем минимальные требования к версии
-# --with-glibc-version=2.11
+#    --with-glibc-version=2.37
 # поскольку рабочая библиотека C еще не доступна, это гарантирует, что при
 # сборке libgcc определена константа injit_libc. Это предотвращает компиляцию
 # любого кода, который требует поддержки libc.
@@ -48,9 +48,6 @@ cd build || exit 1
 # совместимые с целевой системой. Для наших целей эти заголовки не понадобятся,
 # поэтому не позволяем GCC искать их.
 #    --without-headers
-# использовать некоторые внутренние структуры данных, которые необходимы, но не
-# могут быть обнаружены при построении кросс-компилятора
-#    --enable-initfini-array
 # отключаем локализацию, поскольку i18n на данном этапе нам не требуется
 #    --disable-nls
 # заставляет GCC статически связывать свои внутренние библиотеки. Мы делаем это
@@ -63,7 +60,6 @@ cd build || exit 1
 # libatomic, libgomp, libquadmath, libssp, libvtv и стандартной библиотеки C++
 # соответственно, т.к. эти функции не нужны для кросс-компиляции временного
 # libc
-#    --disable-decimal-float
 #    --disable-threads
 #    --disable-libatomic
 #    --disable-libgomp
@@ -76,15 +72,15 @@ cd build || exit 1
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.11 \
+    --with-glibc-version=2.37 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \
-    --enable-initfini-array   \
+    --enable-default-pie      \
+    --enable-default-ssp      \
     --disable-nls             \
     --disable-shared          \
     --disable-multilib        \
-    --disable-decimal-float   \
     --disable-threads         \
     --disable-libatomic       \
     --disable-libgomp         \

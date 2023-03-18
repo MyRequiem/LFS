@@ -49,6 +49,8 @@ if [ -f "${MAN_DB_CONF}" ]; then
     mv "${MAN_DB_CONF}" "${MAN_DB_CONF}.old"
 fi
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${MAN_DB_CONF}"

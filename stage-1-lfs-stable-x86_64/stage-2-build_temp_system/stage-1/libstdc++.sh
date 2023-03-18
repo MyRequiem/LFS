@@ -9,10 +9,6 @@ ARCH_NAME="gcc"
 # библиотеки при первом проходе GCC (gcc-pass-1.sh), потому что она зависит от
 # glibc, который еще не был установлен
 
-###
-# Это первый проход libstdc++
-###
-
 source "$(pwd)/check_environment.sh"                    || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
@@ -38,3 +34,6 @@ cd build || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
+
+# удалим libtool архивы (.la), так как они вредны для кросс-компиляции
+rm -fv "${LFS}/usr/lib"/lib{stdc++,stdc++fs,supc++}.la

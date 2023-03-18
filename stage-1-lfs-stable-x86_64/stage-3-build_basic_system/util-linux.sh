@@ -20,6 +20,9 @@ mkdir -pv /var/lib/hwclock
 
 ./configure                               \
     ADJTIME_PATH=/var/lib/hwclock/adjtime \
+    --bindir=/usr/bin                     \
+    --libdir=/usr/lib                     \
+    --sbindir=/usr/sbin                   \
     --disable-chfn-chsh                   \
     --disable-login                       \
     --disable-nologin                     \
@@ -31,7 +34,6 @@ mkdir -pv /var/lib/hwclock
     --without-python                      \
     --without-systemd                     \
     --without-systemdsystemunitdir        \
-    runstatedir=/run                      \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
@@ -48,6 +50,8 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

@@ -24,9 +24,6 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# известно, что один тест 30-test_afalg.t is не проходит в определенных
-# конфигурациях ядра (предполагается, что не были выбраны некоторые параметры
-# шифрования)
 # make test
 
 # устанавливаем пакет
@@ -37,6 +34,8 @@ make MANSUFFIX=ssl install DESTDIR="${TMP_DIR}"
 mv -v "${TMP_DIR}/usr/share/doc/${PRGNAME}" \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

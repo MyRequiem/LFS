@@ -28,7 +28,12 @@ popd || exit 1
     --host="${LFS_TGT}" \
     --build="$(./config.guess)" || exit 1
 
-make FILE_COMPILE="$(pwd)/build/src/file" || \
-    make -j1 FILE_COMPILE="$(pwd)/build/src/file" || exit 1
+# путь к утилите 'file', которую мы только что скомпилировали
+FILE_COMPILE_PATH="$(pwd)/build/src/file"
+make FILE_COMPILE="${FILE_COMPILE_PATH}" || \
+    make -j1 FILE_COMPILE="${FILE_COMPILE_PATH}" || exit 1
 
 make install DESTDIR="${LFS}"
+
+# удалим libtool архив (.la), поскольку он вреден для кросс-компиляции
+rm -fv "${LFS}/usr/lib/libmagic.la"

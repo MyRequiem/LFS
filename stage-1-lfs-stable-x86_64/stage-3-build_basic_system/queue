@@ -1,7 +1,7 @@
 # устанавливаем утилиту 'removepkg' от пользователя root
-cp -v removepkg /mnt/lfs/sbin/
-chown root:root /mnt/lfs/sbin/removepkg
-chmod 744       /mnt/lfs/sbin/removepkg
+cp -v removepkg /mnt/lfs/usr/sbin/
+chown root:root /mnt/lfs/usr/sbin/removepkg
+chmod 744       /mnt/lfs/usr/sbin/removepkg
 
 ###
 # Переходим в chroot окружение
@@ -47,16 +47,18 @@ gdbm.sh
 gperf.sh
 expat.sh
 inetutils.sh
+less.sh
 perl.sh
 xml-parser.sh
 intltool.sh
 autoconf.sh
 automake.sh
+openssl.sh
 kmod.sh
 libelf.sh
 libffi.sh
-openssl.sh
 python3.sh
+wheel.sh
 ninja.sh
 meson.sh
 coreutils.sh
@@ -66,24 +68,26 @@ gawk.sh
 findutils.sh
 groff.sh
 grub.sh
-less.sh
 gzip.sh
 iproute2.sh
 kbd.sh
 libpipeline.sh
 make.sh
 patch.sh
-man-db.sh
 tar.sh
 texinfo.sh
 vim.sh
 eudev.sh
+man-db.sh
 procps-ng.sh
 util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
-stripping.sh
+# устанавливаем скрипт /usr/sbin/remove-la-files.sh  и затем запускаем его для
+# очистки системы от libtool-архивов (*.la)
+set-remove-la-files.sh
+strip.sh
 cleaning-up.sh
 
 

@@ -4,7 +4,7 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### python3 (object-oriented interpreted programming language)
-# Язык программирования Python 3
+# Python 3 интерпретатор
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
@@ -12,49 +12,40 @@ source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
 
 # связываться с уже установленной системной версией Expat
 #    --with-system-expat
 # связываться с уже установленной системной версией libffi
 #    --with-system-ffi
-# создавать утилиты pip и setuptools
-#    --with-ensurepip=yes
 ./configure             \
     --prefix=/usr       \
     --enable-shared     \
     --with-system-expat \
     --with-system-ffi   \
-    --with-ensurepip=yes || exit 1
+    --enable-optimizations || exit 1
 
 make || make -j1 || exit 1
 
 # тесты на данном этапе не запускаем, т.к. они требуют сконфигурированного
 # сетевого подключения и установленных TK и X Window System
+# make test
 
 make install DESTDIR="${TMP_DIR}"
 
+cat << EOF > "${TMP_DIR}/etc/pip.conf"
+[global]
+root-user-action = ignore
+disable-pip-version-check = true
+EOF
+
+# ссылка в /usr/bin
+#    pip3 -> pip${MAJ_VERSION}
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
+ln -sfv "pip${MAJ_VERSION}" "${TMP_DIR}/usr/bin/pip3"
 
-# ссылки в /usr/bin
-# pip3          -> pip${MAJ_VERSION}
-# easy_install3 -> easy_install-${MAJ_VERSION}
-ln -sfv "pip${MAJ_VERSION}"           "${TMP_DIR}/usr/bin/pip3"
-ln -sfv "easy_install-${MAJ_VERSION}" "${TMP_DIR}/usr/bin/easy_install3"
-
-# устанавливаем документацию
-DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
-install -v -dm755 "${DOCS}"
-tar                       \
-    --strip-components=1  \
-    --no-same-owner       \
-    --no-same-permissions \
-    -C "${DOCS}"          \
-    -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2"
-
-# устанавливаем пакет в корень файловой системы
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

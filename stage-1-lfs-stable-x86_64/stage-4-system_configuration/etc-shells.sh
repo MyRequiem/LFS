@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-shells"
+LFS_VERSION="11.3"
 
 ### /etc/shells (login shell list)
 # Файл /etc/shells содержит список оболочек для входа в систему. Приложения
@@ -42,7 +43,7 @@ EOF
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (login shell list)
 #
 # /etc/shells
@@ -50,4 +51,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}"
+    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"

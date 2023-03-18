@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2021a"
+TZDATA_VERSION="2022g"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -27,16 +27,19 @@ mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 # /var/db и заменяет их на
 #    /var/cache/nscd    - для nscd
 #    /var/lib/nss_db    - для nss_db
-patch --verbose -Nvp1 -i "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
+patch --verbose -Nvp1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 
-# исправим ошибку, которая вызывает проблемы с приложениями запущенными в среде
-# chroot
-sed -e '402a\      *result = local->data.services[database_index];' \
-    -i nss/nss_database.c
+# исправим проблему безопасности, обнаруженную в upstream
+sed '/width -=/s/workend - string/number_length/' \
+    -i stdio-common/vfprintf-process-arg.c || exit 1
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
 cd build || exit 1
+
+# утилиты ldconfig и sln будут установлены в /usr/sbin
+echo "rootsbindir=/usr/sbin" > configparms
 
 ### Конфигурация
 # отключает параметр -Werror, передаваемый в GCC. Это необходимо для запуска
@@ -59,17 +62,9 @@ cd build || exit 1
     --enable-kernel=3.2             \
     --enable-stack-protector=strong \
     --with-headers=/usr/include     \
-    libc_cv_slibdir=/lib || exit 1
+    libc_cv_slibdir=/usr/lib || exit 1
 
 make || make -j1 || exit 1
-
-# для тестов меняем ссылку
-#    /lib/ld-linux-x86-64.so.2 -> ld-2.3x.so
-# на только что собранную библиотеку ld-linux-x86-64.so.2
-#    /lib/ld-linux-x86-64.so.2 -> <sources_tree>/build/elf/ld-linux-x86-64.so.2
-#
-# На этапе установки пакета она обратно перезапишется на правильную
-# ln -svfn "${PWD}/elf/ld-linux-x86-64.so.2" /lib
 # make check
 
 # если конфиг динамического загрузчика /etc/ld.so.conf не существует, то на
@@ -84,6 +79,10 @@ sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 make install
 make install DESTDIR="${TMP_DIR}"
 
+# исправим жестко закодированный путь к динамическому загрузчику в скрипте ldd
+sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd             || exit 1
+sed '/RTLDLIST=/s@/usr@@g' -i "${TMP_DIR}/usr/bin/ldd" || exit 1
+
 # ни одна из локалей не требуется на данный момент, но если некоторые из них
 # отсутствуют, тестовые наборы пакетов, которые мы будет устанавливать позже,
 # пропустят важные тесты, поэтому установим минимальный набор локалей,
@@ -92,32 +91,41 @@ make install DESTDIR="${TMP_DIR}"
 # файл
 #    /usr/lib/locale/locale-archive
 mkdir -pv /usr/lib/locale
-localedef -i POSIX      -f UTF-8        C.UTF-8 2> /dev/null || true
-localedef -i cs_CZ      -f UTF-8        cs_CZ.UTF-8
-localedef -i de_DE      -f ISO-8859-1   de_DE
-localedef -i de_DE      -f UTF-8        de_DE.UTF-8
-localedef -i de_DE@euro -f ISO-8859-15  de_DE@euro
-localedef -i el_GR      -f ISO-8859-7   el_GR
-localedef -i en_GB      -f UTF-8        en_GB.UTF-8
-localedef -i en_HK      -f ISO-8859-1   en_HK
-localedef -i en_PH      -f ISO-8859-1   en_PH
-localedef -i en_US      -f ISO-8859-1   en_US
-localedef -i en_US      -f UTF-8        en_US.UTF-8
-localedef -i es_MX      -f ISO-8859-1   es_MX
-localedef -i fa_IR      -f UTF-8        fa_IR
-localedef -i fr_FR      -f ISO-8859-1   fr_FR
-localedef -i fr_FR      -f UTF-8        fr_FR.UTF-8
-localedef -i fr_FR@euro -f ISO-8859-15  fr_FR@euro
-localedef -i it_IT      -f ISO-8859-1   it_IT
-localedef -i it_IT      -f UTF-8        it_IT.UTF-8
-localedef -i ja_JP      -f EUC-JP       ja_JP
-localedef -i ja_JP      -f SHIFT_JIS    ja_JP.SIJS 2> /dev/null || true
-localedef -i ja_JP      -f UTF-8        ja_JP.UTF-8
-localedef -i ru_RU      -f KOI8-R       ru_RU.KOI8-R
-localedef -i ru_RU      -f UTF-8        ru_RU.UTF-8
-localedef -i tr_TR      -f UTF-8        tr_TR.UTF-8
-localedef -i zh_CN      -f GB18030      zh_CN.GB18030
-localedef -i zh_HK      -f BIG5-HKSCS   zh_HK.BIG5-HKSCS
+localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
+localedef -i de_DE -f ISO-8859-1 de_DE
+localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
+localedef -i de_DE -f UTF-8 de_DE.UTF-8
+localedef -i el_GR -f ISO-8859-7 el_GR
+localedef -i en_GB -f ISO-8859-1 en_GB
+localedef -i en_GB -f UTF-8 en_GB.UTF-8
+localedef -i en_HK -f ISO-8859-1 en_HK
+localedef -i en_PH -f ISO-8859-1 en_PH
+localedef -i en_US -f ISO-8859-1 en_US
+localedef -i en_US -f UTF-8 en_US.UTF-8
+localedef -i es_ES -f ISO-8859-15 es_ES@euro
+localedef -i es_MX -f ISO-8859-1 es_MX
+localedef -i fa_IR -f UTF-8 fa_IR
+localedef -i fr_FR -f ISO-8859-1 fr_FR
+localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
+localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
+localedef -i is_IS -f ISO-8859-1 is_IS
+localedef -i is_IS -f UTF-8 is_IS.UTF-8
+localedef -i it_IT -f ISO-8859-1 it_IT
+localedef -i it_IT -f ISO-8859-15 it_IT@euro
+localedef -i it_IT -f UTF-8 it_IT.UTF-8
+localedef -i ja_JP -f EUC-JP ja_JP
+localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
+localedef -i ja_JP -f UTF-8 ja_JP.UTF-8
+localedef -i nl_NL@euro -f ISO-8859-15 nl_NL@euro
+localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R
+localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
+localedef -i se_NO -f UTF-8 se_NO.UTF-8
+localedef -i ta_IN -f UTF-8 ta_IN.UTF-8
+localedef -i tr_TR -f UTF-8 tr_TR.UTF-8
+localedef -i zh_CN -f GB18030 zh_CN.GB18030
+localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS
+localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
 
 cp /usr/lib/locale/locale-archive "${TMP_DIR}/usr/lib/locale/"
 
@@ -227,33 +235,17 @@ include /etc/ld.so.conf.d/*.conf
 # End ${LD_SO_CONFIG}
 EOF
 
-# устанавливаем пакет в корень системы
-# NOTE:
-#    Устанавливаем все, кроме /lib, т.к. она уже установлена 'make install'.
-#    Если мы будем пытаться скопировать ${TMP_DIR}/lib в корень LFS системы, то
-#    библиотека /lib/ld-2.3x.so естественно будет занята и копирование
-#    прервется с ошибкой:
-#       /bin/cp: cannot create regular file '/lib/ld-2.3x.so': Text file busy
-/bin/cp -vR "${TMP_DIR}"/etc  /
-/bin/cp -vR "${TMP_DIR}"/sbin /
-/bin/cp -vR "${TMP_DIR}"/usr  /
-/bin/cp -vR "${TMP_DIR}"/var  /
+source "${ROOT}/update-info-db.sh" || exit 1
+
+# устанавливаем конфиги и директории в корень системы
+/bin/cp -vR "${TMP_DIR}"/etc       /
+/bin/cp -vR "${TMP_DIR}"/usr/share /usr
+/bin/cp -vR "${TMP_DIR}"/var       /
 
 # обрабатываем созданные нами и установленные конфиги
 config_file_processing "${NSCD_CONFIG}"
 config_file_processing "${NSSWITCH_CONFIG}"
 config_file_processing "${LD_SO_CONFIG}"
-
-rm -f "${TMP_DIR}/usr/share/info/dir"
-
-# система документации Info использует простые текстовые файлы в
-# /usr/share/info/, а список этих файлов хранится в файле /usr/share/info/dir
-# который мы обновим
-cd /usr/share/info || exit 1
-rm -fv dir
-for FILE in *; do
-    install-info "${FILE}" dir 2>/dev/null
-done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU C libraries)

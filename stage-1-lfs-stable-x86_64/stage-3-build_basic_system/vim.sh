@@ -6,26 +6,13 @@ PRGNAME="vim"
 # Powerful text editor
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
-
-SOURCES="/sources"
-VERSION=$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | \
-    cut -f 3- -d . | cut -f 1 -d - | rev)
-MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
-MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
-BUILD_DIR="${SOURCES}/build"
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 DOCS="/usr/share/doc"
 mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
-
-mkdir -p "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-rm -rf "${PRGNAME}${MAJ_VER}${MIN_VER}"
-
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
-cd "${PRGNAME}${MAJ_VER}${MIN_VER}" || exit 1
 
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
@@ -52,19 +39,11 @@ make install DESTDIR="${TMP_DIR}"
 # исходников, цель install-icons)
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 
-# установим ссылку в /usr/bin vi -> vim и создадим man-страницы для vi, т.е.
-# ссылки vi.1 -> vim.1 в /usr/share/man/*/man1/
-(
-    cd "${TMP_DIR}/usr/bin" || exit
-    ln -sv vim vi
-    cd "${TMP_DIR}" || exit
-    for MANPAGE in usr/share/man/{,*/}man1/vim.1; do
-        ln -sv vim.1 "$(dirname ${MANPAGE})/vi.1"
-    done
-)
-
 # по умолчанию документация устанавливается в /usr/share/vim/, поэтому
-# установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
+# установим ссылку в /usr/share/doc/
+#    vim-${VERSION} -> ../vim/vimXX/doc
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
+MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 (
     cd "${TMP_DIR}${DOCS}" || exit 1
     ln -sv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
@@ -103,6 +82,8 @@ set helplang=en
 " End ${VIMRC}
 EOF
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -115,9 +96,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # integrates with many tools and more. Vim is rock stable and is continuously
 # being developed to become even better.
 #
-# Home page: https://www.vim.org/
+# Home page: https://www.${PRGNAME}.org/
 #            https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  ftp://ftp.vim.org/pub/${PRGNAME}/unix/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://anduin.linuxfromscratch.org/LFS/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

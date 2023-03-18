@@ -1,7 +1,7 @@
 #! /bin/bash
 
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+# ROOT="/"
+# source "${ROOT}check_environment.sh" || exit 1
 
 # Теперь, когда наша конечная цепочка инструментов (binutils+glibc+gcc)
 # полностью готова, важно снова убедиться, что компиляция и компоновка будут
@@ -64,11 +64,11 @@ VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
 echo "# make sure that we're setup to use the correct start files"
-echo "grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log"
-grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+echo "grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log"
+grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crt1.o succeeded"
+echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/Scrt1.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crti.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crtn.o succeeded"
 echo ""
@@ -134,7 +134,7 @@ echo 'grep "/lib.*/libc.so.6 " dummy.log'
 grep "/lib.*/libc.so.6 " dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "attempt to open /lib/libc.so.6 succeeded"
+echo "attempt to open /usr/lib/libc.so.6 succeeded"
 echo ""
 echo -n "Press any key... "
 read -r JUNK
@@ -150,7 +150,7 @@ echo "grep found dummy.log"
 grep found dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "found ld-linux-x86-64.so.2 at /lib/ld-linux-x86-64.so.2"
+echo "found ld-linux-x86-64.so.2 at /usr/lib/ld-linux-x86-64.so.2"
 echo ""
 echo -n "Press any key... "
 read -r JUNK

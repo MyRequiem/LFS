@@ -1,13 +1,9 @@
 #! /bin/bash
 
-# Исполняемые файлы и библиотеки, созданные до сих пор, содержат не нужную нам
-# отладочную информацию, которую можно удалить.
-ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+BINARY="$(find "${TMP_DIR}" -type f -print0 | xargs -0 file 2>/dev/null | \
+    /bin/grep -e "executable" -e "shared object" | \
+    /bin/grep ELF | /bin/grep -v "32-bit" | cut -f 1 -d :)"
 
-# В выводе следующих команд будут  присутствовать сообщения о том, что не
-# распознается формат файлов. В основном это оносится к скриптам, а не бинарным
-# файлам.
-find /usr/lib -type f -name "*.a" -exec strip --strip-debug {} \;
-find /lib /usr/lib -type f -name "*.so*" -exec strip --strip-unneeded {} \;
-find /{bin,sbin} /usr/{bin,sbin,libexec} -type f -exec strip --strip-all {} \;
+for BIN in ${BINARY}; do
+    strip --strip-unneeded "${BIN}" &>/dev/null
+done

@@ -12,13 +12,11 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 ./configure               \
     --prefix=/usr         \
-    --bindir=/bin         \
     --disable-static      \
-    --libexecdir=/usr/lib \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
@@ -30,16 +28,8 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-# библиотеку необходимо переместить из /usr/lib в /lib
-mv -v "${TMP_DIR}/usr/lib"/libacl.so.* "${TMP_DIR}/lib"
-
-# воссоздадим ссылку libacl.so в /usr/lib
-#    libacl.so -> ../../lib/libacl.so.x.x.xxxx
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv "../../lib/$(readlink libacl.so)" libacl.so
-)
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

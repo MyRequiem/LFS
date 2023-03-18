@@ -16,7 +16,7 @@
 программу к запуску и затем запускает ее. Имя динамического компоновщика
 можно определить проверив любой двоичный файл из хост-системы:
 
-    # readelf -l /bin/ls  | /bin/grep interpreter
+    # readelf -l /bin/ls  | /bin/grep -E 'interpret|интерпрет'
     [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
 
     Видим, что имя динамического компоновщика ld-linux-x86-64.so.2

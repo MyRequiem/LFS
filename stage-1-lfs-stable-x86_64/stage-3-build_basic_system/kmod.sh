@@ -11,43 +11,45 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/sbin"
+mkdir -pv "${TMP_DIR}/usr/sbin"
 
+# позволяет Kmod обрабатывать подписи PKCS7 для модулей ядра
+#    --with-openssl
 # опции позволяют Kmod обрабатывать сжатые модули ядра
 #    --with-xz
 #    --with-zstd
 #    --with-zlib
-# гарантирует, что файлы, относящиеся к разным библиотекам, будут размещены в
-# правильных каталогах
-#    --with-rootlibdir=/lib
 ./configure           \
     --prefix=/usr     \
-    --bindir=/bin     \
     --sysconfdir=/etc \
+    --with-openssl    \
     --with-xz         \
     --with-zstd       \
-    --with-zlib       \
-    --with-rootlibdir=/lib || exit 1
+    --with-zlib || exit 1
 
 make || make -j1 || exit 1
-# пакет поставляется без набора тестов, которые можно запустить в среде chroot
+
+# для набора тестов этого пакета требуются необработанные заголовки ядра (а не
+# «продезинфицированные», которые были установленные ранее), что выходит за
+# рамки LFS
+
 make install DESTDIR="${TMP_DIR}"
 
 # для совместимости с Module-Init-Tools (пакет, который ранее работал с
-# модулями ядра) создадим символические ссылки в /sbin
+# модулями ядра) создадим символические ссылки в /usr/sbin/
 #    depmod -> ../bin/kmod
 #    insmod -> ../bin/kmod
 #    и т.д.
-(
-    cd "${TMP_DIR}/sbin" || exit 1
-    for TARGET in depmod insmod lsmod modinfo modprobe rmmod; do
-        ln -sfv ../bin/kmod "${TARGET}"
-    done
-)
+for TARGET in depmod insmod modinfo modprobe rmmod; do
+    ln -sfv ../bin/kmod "${TMP_DIR}/usr/sbin/${TARGET}"
+done
 
-# ссылка в /bin lsmod -> kmod
-ln -sfv kmod "${TMP_DIR}/bin/lsmod"
+# ссылка в /usr/bin/
+#    lsmod -> kmod
+ln -sfv kmod "${TMP_DIR}/usr/bin/lsmod"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

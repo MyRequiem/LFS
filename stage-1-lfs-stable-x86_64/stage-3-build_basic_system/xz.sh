@@ -13,7 +13,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{bin,lib}
+mkdir -pv "${TMP_DIR}"
 
 ./configure          \
     --prefix=/usr    \
@@ -24,19 +24,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# переместим некоторые утилиты из /usr/bin в /bin
-mv -v "${TMP_DIR}/usr/bin"/{lzma,unlzma,lzcat,xz,unxz,xzcat} "${TMP_DIR}/bin"
-
-# библиотеку liblzma.so необходимо переместить из /usr/lib в /lib
-mv -v "${TMP_DIR}/usr/lib"/liblzma.so.* "${TMP_DIR}/lib"
-
-# воссоздадим ссылку liblzma.so в /usr/lib
-# liblzma.so -> ../../lib/liblzma.so.${VERSION}
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf "../../lib/$(readlink liblzma.so)" liblzma.so
-)
-
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

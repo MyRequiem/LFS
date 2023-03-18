@@ -15,7 +15,6 @@ creating-essential-files-and-symlinks.sh
 
 # собираем пакеты
 rev.sh
-libstdc++-pass-2.sh
 gettext.sh
 bison.sh
 perl.sh
@@ -28,7 +27,5 @@ cleaning-up-temporary-system.sh
 # Выходим из chroot окружения и запускаем от пользователя root
 ###
 mount-virtual-kernel-file-systems.sh --umount
-stripping.sh
-
 
 #vim:ft=conf
