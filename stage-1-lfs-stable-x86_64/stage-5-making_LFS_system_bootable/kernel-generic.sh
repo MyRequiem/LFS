@@ -45,9 +45,9 @@ NUMJOBS="$(nproc)"
 make -j"${NUMJOBS}" bzImage || exit 1
 
 # устанавливаем собранное ядро, System.map и config в /boot
-cp -v arch/x86/boot/bzImage "/boot/vmlinuz-generic-${VERSION}"
-cp -v System.map            "/boot/System.map-generic-${VERSION}"
-cp -v .config               "/boot/config-generic-${VERSION}"
+install -vm644 arch/x86/boot/bzImage "/boot/vmlinuz-generic-${VERSION}"
+install -vm644 System.map            "/boot/System.map-generic-${VERSION}"
+install -vm644 .config               "/boot/config-generic-${VERSION}"
 
 # ссылки в /boot
 #    vmlinuz    -> vmlinuz-generic-${VERSION}
