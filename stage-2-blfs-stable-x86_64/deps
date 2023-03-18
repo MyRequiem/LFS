@@ -3,21 +3,11 @@
 ###***###
 
 
+bash-completion
+kernel-firmware
 lsb-tools
 python3                             lsb-tools
-bash-completion
-
-
-
-
-
-
-
-
-
-
-
-
+================================================================================
 3store                              redland
 X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
 aalib                               gst-plugins-good, sdl, gimp
@@ -326,7 +316,6 @@ jq
 json-c                              cryptsetup, fontconfig, bind-utils, libmypaint, girara
 json-glib                           gtk+3, gegl
 judy                                mariadb
-kernel-firmware
 kernel-generic                      iptables
 keyutils                            mit-kerberos-v5
 kochi-substitute-fonts-ttf
