@@ -2,9 +2,9 @@ s/lsb-tools.sh
 s/bash-completion.sh
 a/kernel-firmware.sh
 a/blfs-bootscripts.sh
-
-
 s/etc-issue.sh
+
+
 a/zip.sh
 a/unzip.sh
 a/which.sh

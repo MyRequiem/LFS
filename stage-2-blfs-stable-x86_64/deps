@@ -5,6 +5,7 @@
 
 bash-completion
 blfs-bootscripts
+etc-issue
 kernel-firmware
 lsb-tools
 python3                             lsb-tools
@@ -151,7 +152,6 @@ python3                             lsb-tools
 # empress                             php
 # enchant                             php
 # enscript                            imagemagick
-# etc-issue
 # ethtool                             pm-utils
 # exfat                               udisks
 # exim                                fcron, sudo, gnupg, at, php, mutt, gimp
