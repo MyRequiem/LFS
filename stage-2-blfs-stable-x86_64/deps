@@ -16,10 +16,10 @@ make-ca                             p11-kit
 nss                                 make-ca
 nss                                 p11-kit
 p11-kit                             make-ca
+pcre
 pcre2
 python3                             lsb-tools
-valgrind                            libtasn1
-valgrind                            pcre2
+valgrind                            libtasn1, pcre2, pcre
 which
 
 # ===============================================================================
@@ -610,7 +610,6 @@ which
 # password-store                      dmenu
 # pavucontrol
 # pciutils                            qt5
-# pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php, i3
 # pcsc-lite                           libcacard
 # pep8                                python3-pygobject3
 # perl-algorithm-diff                 perl-text-diff
