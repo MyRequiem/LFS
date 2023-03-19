@@ -5,6 +5,10 @@ https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20230
 https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz
+https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
+https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
+http://www.cacert.org/certs/root.crt
+http://www.cacert.org/certs/class3.crt
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -131,9 +135,6 @@ https://github.com/storaged-project/libbytesize/releases/download/2.5/libbytesiz
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/nss-3.61.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/nss-3.61-standalone-1.patch
 https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.1.tar.bz2
-https://github.com/djlucas/make-ca/releases/download/v1.7/make-ca-1.7.tar.xz
-http://www.cacert.org/certs/root.crt
-http://www.cacert.org/certs/class3.crt
 https://ftp.gnu.org/gnu/libidn/libidn-1.36.tar.gz
 https://ftp.gnu.org/gnu/libidn/libidn2-2.3.0.tar.gz
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz

@@ -6,6 +6,8 @@ s/etc-issue.sh
 a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh
+n/make-ca.sh
+n/p11-kit.sh
 
 a/zip.sh
 a/unzip.sh
@@ -120,7 +122,6 @@ a/cryptsetup.sh
 l/libbytesize.sh
 l/nss.sh
 n/pinentry.sh
-n/make-ca.sh
 n/wget.sh
 l/libidn.sh
 l/libidn2.sh
@@ -133,7 +134,6 @@ n/gpgme.sh
 l/volume-key.sh
 l/libblockdev.sh
 l/rpcsvc-proto.sh
-n/make-ca.sh
 n/wget.sh
 n/gnutls.sh
 l/libnsl.sh

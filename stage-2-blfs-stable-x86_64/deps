@@ -12,8 +12,9 @@ libtasn1                            p11-kit
 libxslt                             p11-kit
 lsb-tools
 make-ca                             p11-kit
+nss                                 make-ca
 nss                                 p11-kit
-p11-kit
+p11-kit                             make-ca
 python3                             lsb-tools
 valgrind                            libtasn1
 which
