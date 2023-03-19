@@ -6,10 +6,14 @@
 bash-completion
 blfs-bootscripts
 etc-issue
-gtk-doc                             libtasn1
+gtk-doc                             libtasn1, p11-kit
 kernel-firmware
-libtasn1
+libtasn1                            p11-kit
+libxslt                             p11-kit
 lsb-tools
+make-ca                             p11-kit
+nss                                 p11-kit
+p11-kit
 python3                             lsb-tools
 valgrind                            libtasn1
 which
@@ -476,7 +480,6 @@ which
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libxml2                             python2-libxml2, libarchive, llvm, libxslt, docbook-xml, docbook-xsl, xcb-proto, fontconfig, shared-mime-info, cairo, libglade, libxklavier, libsoup, neon, dconf, mariadb, postgresql, libgsf, perl-xml-sax, perl-alien-libxml2, nghttp2, apache-httpd, php, wpa-supplicant, bind-utils, vte3, gconf
-# libxslt                             docbook-xsl, xdg-user-dirs, libsigc++2, asciidoc, glib, polkit, p11-kit, udisks, xorgproto, libxdmcp, libxcb, xmlto, libdrm, glibmm, vala, gcr, dconf, python2-pygobject2, postgresql, goffice, raptor, perl-xml-libxslt, python2-pygtk, python-lxml, tidy-html5, php, gnome-keyring, libsecret, zenity, exiv2, libgxps, talloc, cppcheck
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # libyaml                             python-pyyaml, libblockdev, ruby
 # lilv                                gst-plugins-bad
@@ -503,7 +506,6 @@ which
 # lzo                                 libarchive, cairo, qemu
 # maemo                               alsa-plugins
 # maim
-# make-ca                             wget, p11-kit, gnutls, curl, glib-networking, qt5, perl-io-socket-ssl, perl-lwp-protocol-https, openjdk
 # man2html                            xterm
 # mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # mc
@@ -557,7 +559,6 @@ which
 # npm                                 nodejs
 # npth                                gnupg
 # nspr                                nss, rpm
-# nss                                 p11-kit, make-ca, volume-key, poppler, rpm
 # ntfs-3g                             udisks
 # ntp                                 dhcpcd
 # numactl                             x265
@@ -591,7 +592,6 @@ which
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm                             php
 # oxygen-fonts-ttf
-# p11-kit                             nss, make-ca, gnutls, gcr
 # p7zip                               imagemagick
 # pakchois                            neon
 # pamixer
