@@ -11,6 +11,8 @@ http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt
 https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
+https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
+https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -46,7 +48,6 @@ https://github.com/jinfeihan57/p7zip/archive/v17.03/p7zip-17.03.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.41.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.4.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.5.0.tar.bz2
-https://ftp.gnu.org/gnu/nettle/nettle-3.7.1.tar.gz
 https://ftp.gnu.org/gnu/pth/pth-2.0.7.tar.gz
 https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
 https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
@@ -74,7 +75,6 @@ https://github.com/libexif/libexif/releases/download/libexif-0_6_22-release/libe
 http://www.linuxfromscratch.org/patches/blfs/10.1/libexif-0.6.22-security_fixes-1.patch
 https://downloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz
 https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.37-apng.patch.gz
-https://ftp.gnu.org/gnu/libunistring/libunistring-0.9.10.tar.xz
 https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2
 https://github.com/yaml/libyaml/archive/0.2.4/libyaml-dist-0.2.4.tar.gz
 https://archive.mozilla.org/pub/nspr/releases/v4.29/src/nspr-4.29.tar.gz

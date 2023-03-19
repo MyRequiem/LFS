@@ -10,6 +10,8 @@ n/make-ca.sh
 n/p11-kit.sh
 l/pcre2.sh
 l/pcre.sh
+l/libunistring.sh
+n/nettle.sh
 
 a/zip.sh
 a/unzip.sh
@@ -40,7 +42,6 @@ ap/p7zip.sh
 n/libgpg-error.sh
 n/libassuan.sh
 n/libksba.sh
-n/nettle.sh
 n/pth.sh
 n/npth.sh
 l/apr.sh
@@ -65,7 +66,6 @@ l/libatasmart.sh
 l/libjpeg-turbo.sh
 l/libexif.sh
 l/libpng.sh
-l/libunistring.sh
 l/libusb.sh
 l/libyaml.sh
 l/nspr.sh
