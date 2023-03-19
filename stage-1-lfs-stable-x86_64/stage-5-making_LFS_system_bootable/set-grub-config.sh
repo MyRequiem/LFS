@@ -4,7 +4,8 @@
 # (MBR) жесткого диска.
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 ###
 # Данные GRUB находятся в /boot/grub. Главный файл конфигурации:
@@ -23,21 +24,23 @@ mkdir -pv "${GRUB_DIR}"
 # дальнейшем вместо grub.cfg править только menu.cfg Нужно обязательно
 # указывать переменную $prefix. Если указать полный путь как
 # /boot/grub/menu.cfg, то система не загрузится
-echo "# Creating ${GRUB_DIR}/grub.cfg ..."
-echo ". \$prefix/menu.cfg" > ${GRUB_CONFIG}
-echo "# cat ${GRUB_CONFIG}"
-cat "${GRUB_CONFIG}"
-echo ""
+if ! [ -r "${GRUB_CONFIG}" ]; then
+    echo "# Creating ${GRUB_DIR}/grub.cfg ..."
+    echo ". \$prefix/menu.cfg" > ${GRUB_CONFIG}
+    echo "# cat ${GRUB_CONFIG}"
+    cat "${GRUB_CONFIG}"
+    echo ""
 
-# присваиваем атрибут 'immutable' для /boot/grub/grub.cfg
-echo "# Current attributes for ${GRUB_CONFIG}"
-lsattr ${GRUB_CONFIG}
-echo "# Assign an attribute 'immutable' to ${GRUB_CONFIG}"
-chattr +i "${GRUB_CONFIG}"
-lsattr ${GRUB_CONFIG}
-echo ""
-# если потребуется, снять блокировку можно командой:
-#    # chattr -i /boot/grub/grub.cfg
+    # присваиваем атрибут 'immutable' для /boot/grub/grub.cfg
+    echo "# Current attributes for ${GRUB_CONFIG}"
+    lsattr ${GRUB_CONFIG}
+    echo "# Assign an attribute 'immutable' to ${GRUB_CONFIG}"
+    chattr +i "${GRUB_CONFIG}"
+    lsattr ${GRUB_CONFIG}
+    echo ""
+    # если потребуется, снять блокировку можно командой:
+    #    # chattr -i /boot/grub/grub.cfg
+fi
 
 ###
 # Конфигурация загрузочного меню /boot/grub/menu.cfg
@@ -75,7 +78,12 @@ echo ""
 #    root=/dev/sdaX
 # параметры передаваемые ядру при его загрузке
 #    net.ifnames=0 vt.default_utf8=1
+
 GRUB_MENU="${GRUB_DIR}/menu.cfg"
+if [ -f "${GRUB_MENU}" ]; then
+    mv "${GRUB_MENU}" "${GRUB_MENU}.old"
+fi
+
 echo "Creating ${GRUB_MENU} ..."
 echo ""
 cat << EOF > "${GRUB_MENU}"
@@ -98,6 +106,8 @@ menuentry "GNU/Linux, Slackware-15.0 Linux-4.4.276" {
 
 # End ${GRUB_MENU}
 EOF
+
+config_file_processing "${GRUB_MENU}"
 
 # Установим файлы GRUB и перезапишем загрузочную запись (MBR), после чего можно
 # перезапускать систему
