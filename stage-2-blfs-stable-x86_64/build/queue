@@ -3,11 +3,11 @@ s/bash-completion.sh
 a/kernel-firmware.sh
 a/blfs-bootscripts.sh
 s/etc-issue.sh
-
+a/which.sh
+l/libtasn1.sh
 
 a/zip.sh
 a/unzip.sh
-a/which.sh
 a/time.sh
 a/tree.sh
 a/dosfstools.sh
@@ -117,7 +117,6 @@ d/python-modules/python-dbus.sh
 d/python-modules/python3-dbusmock.sh
 a/cryptsetup.sh
 l/libbytesize.sh
-l/libtasn1.sh
 n/p11-kit.sh
 l/nss.sh
 n/pinentry.sh

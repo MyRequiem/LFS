@@ -6,9 +6,13 @@
 bash-completion
 blfs-bootscripts
 etc-issue
+gtk-doc                             libtasn1
 kernel-firmware
+libtasn1
 lsb-tools
 python3                             lsb-tools
+valgrind                            libtasn1
+which
 # ===============================================================================
 # 3store                              redland
 # X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
@@ -254,7 +258,6 @@ python3                             lsb-tools
 # gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage, uget
 # gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu, girara
 # gtk+4                               gjs, vte3
-# gtk-doc                             glib, gobject-introspection, libgudev, dbus-glib, polkit, libbytesize, libtasn1, p11-kit, libidn, libidn2, upower, gnutls, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, cairo, pango, gtk+2, at-spi2-core, gtk+3, gcr, libglade, libnotify, libxklavier, libpsl, libsoup, libical, librsvg, dconf, ibus, libgsf, goffice, json-glib, gdk-pixbuf-xlib, gegl, poppler, raptor, libsecret, vte2, vte3, gexiv2, gimp, libgxps
 # gtk-engines
 # gtk-vnc                             virt-manager
 # gtkmm2
@@ -445,7 +448,6 @@ python3                             lsb-tools
 # libsrtp                             gst-plugins-bad
 # libssh                              exiv2, ffmpeg
 # libssh2                             curl, rustc, mc, gst-plugins-bad, qemu
-# libtasn1                            p11-kit, gnutls
 # libthai                             pango, perl-unicode-linebreak
 # libtheora                           gst-plugins-base, ffmpeg
 # libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
@@ -992,7 +994,6 @@ python3                             lsb-tools
 # utimer
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
 # vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
-# valgrind                            python2, python3, libksba, libxml2, pcre, pcre2, lvm2, gcc, wget, llvm, dbus, libtasn1, libidn, gnutls, ruby, curl, git, libdrm, mesa, cairo, libevdev, libinput, xterm, gcr, gstreamer, gst-plugins-base, flac, libpsl, gst-plugins-good, mit-kerberos-v5, gst-plugins-bad, gst-plugins-ugly, mariadb, speex, pulseaudio, libseccomp, python-lxml, gjs, gnome-keyring, libsecreta, libtheora, talloc
 # vbetool                             pm-utils
 # vde2
 # vdo                                 lvm2
@@ -1021,7 +1022,6 @@ python3                             lsb-tools
 # webrtc-audio-processing             pulseaudio
 # wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak, openjdk, imagemagick
 # wgetpaste
-# which                               pciutils, aspell, boost, lvm2, lm-sensors, mozjs, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 # whois
 # wildmidi                            gst-plugins-bad
 # wireless-tools                      pm-utils
