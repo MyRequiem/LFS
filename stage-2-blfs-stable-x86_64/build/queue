@@ -8,6 +8,7 @@ l/libtasn1.sh
 n/p11-kit.sh
 n/make-ca.sh
 n/p11-kit.sh
+l/pcre2.sh
 
 a/zip.sh
 a/unzip.sh
@@ -68,7 +69,6 @@ l/libusb.sh
 l/libyaml.sh
 l/nspr.sh
 l/pcre.sh
-l/pcre2.sh
 d/python-modules/python-six.sh
 d/python-modules/python3-pygments.sh
 a/ed.sh

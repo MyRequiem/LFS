@@ -9,6 +9,7 @@ https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
 https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt
+https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -77,7 +78,6 @@ https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2
 https://github.com/yaml/libyaml/archive/0.2.4/libyaml-dist-0.2.4.tar.gz
 https://archive.mozilla.org/pub/nspr/releases/v4.29/src/nspr-4.29.tar.gz
 https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
-https://ftp.pcre.org/pub/pcre/pcre2-10.36.tar.bz2
 https://files.pythonhosted.org/packages/source/s/six/six-1.15.0.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.8.0.tar.gz
 https://ftp.gnu.org/gnu/ed/ed-1.17.tar.lz

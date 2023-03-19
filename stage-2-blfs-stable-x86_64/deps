@@ -8,6 +8,7 @@ blfs-bootscripts
 etc-issue
 gtk-doc                             libtasn1, p11-kit
 kernel-firmware
+libedit                             pcre2
 libtasn1                            p11-kit
 libxslt                             p11-kit
 lsb-tools
@@ -15,9 +16,12 @@ make-ca                             p11-kit
 nss                                 make-ca
 nss                                 p11-kit
 p11-kit                             make-ca
+pcre2
 python3                             lsb-tools
 valgrind                            libtasn1
+valgrind                            pcre2
 which
+
 # ===============================================================================
 # 3store                              redland
 # X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
@@ -607,7 +611,6 @@ which
 # pavucontrol
 # pciutils                            qt5
 # pcre                                wget, slang, glib, swig, exim, mc, git, xterm, mariadb, rasqal, apache-httpd, php, i3
-# pcre2                               wget, libbytesize, git, xterm, qt5, vte3
 # pcsc-lite                           libcacard
 # pep8                                python3-pygobject3
 # perl-algorithm-diff                 perl-text-diff

@@ -11,7 +11,7 @@ PRGNAME="pcre2"
 # Required:    no
 # Recommended: no
 # Optional:    valgrind
-#              libedit (https://www.cs.utah.edu/~bigler/code/libedit.html)
+#              libedit    (https://www.cs.utah.edu/~bigler/code/libedit.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 VALGRIND="--disable-valgrind"
 LIBEDIT="--disable-pcre2test-libedit"
 
-command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
+# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
 [ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-pcre2test-libedit"
 
 # включает поддержку Unicode и функции для обработки UTF-8/16/32 символов
@@ -72,7 +72,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Perl 5, with just a few differences (documented in the man page)
 #
 # Home page: https://www.pcre.org/
-# Download:  https://ftp.pcre.org/pub/pcre/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/PCRE2Project/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+
 #
 EOF
 
