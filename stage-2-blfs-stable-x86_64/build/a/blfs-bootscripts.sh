@@ -12,7 +12,7 @@ PRGNAME="blfs-bootscripts"
 #    например:
 #    # make install-service-dhcpcd
 
-# Home page: http://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/
+# Home page: https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
