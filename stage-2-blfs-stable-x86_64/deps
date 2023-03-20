@@ -6,35 +6,46 @@
 autogen                             gnutls
 bash-completion
 blfs-bootscripts
-brotli                              gnutls
+brotli                              gnutls, curl
+c-ares                              curl
 cmocka                              gnutls
+curl
 datefudge                           gnutls
 doxygen                             gnutls
 emacs                               libidn
 etc-issue
 gcc                                 pth
 git                                 libidn2
-gnutls                              wget
+gnutls                              wget, curl
+gsasl                               curl
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
+impacket                            curl
 install-tl-unx                      libunistring, gnutls
 kernel-firmware
 libedit                             pcre2
 libidn                              gnutls
-libidn2                             gnutls, libpsl, wget
+libidn2                             gnutls, libpsl, wget, curl
+libmetalink                         curl
 libnsl                              pth
-libpsl                              wget
+libpsl                              wget, curl
+librtmp                             curl
 libseccomp                          gnutls
+libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libxslt                             p11-kit
 lsb-tools
-make-ca                             p11-kit, gnutls, wget
+make-ca                             p11-kit, gnutls, wget, curl
+mit-kerberos-v5                     curl
 mono                                libidn
 net-tools                           gnutls
 nettle                              gnutls
+nghttp2                             curl
+ngtcp2                              curl
 npth
 nss                                 p11-kit, make-ca
 openjdk                             libidn
+openldap                            curl
 p11-kit                             make-ca, gnutls
 pcre                                wget
 pcre2                               wget
@@ -42,10 +53,14 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 pth                                 libidn
 python3                             lsb-tools
+quiche                              curl
+samba                               curl
+spnego                              curl
+stunnel                             curl
 texlive                             libunistring, gnutls
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl
 wget
 which
 
@@ -107,7 +122,6 @@ which
 # bs2b                                gst-plugins-bad
 # btrfs-progs                         udisks, libblockdev
 # bviplus
-# c-ares                              nodejs, curl, nghttp2
 # c2man                               fribidi
 # cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler, gjsa, i3
 # cairo-5c                            xorg-applications
@@ -136,7 +150,6 @@ which
 # cunit                               libdrm, nghttp2
 # cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 # cups-filters                        cups
-# curl                                smartmontools, pciutils, cmake, gnupg, git, rustc, libsoup, libvpx, gst-plugins-bad, poppler, raptor, php, exiv2, imagemagick, feh, transmission, qemu, curlftpfs, megatools, uget
 # curlftpfs                           vifm
 # cxxopts                             pamixer
 # cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
@@ -321,7 +334,6 @@ which
 # imagemagick                         gnupg, feh
 # imake                               xxkb
 # imlib2                              w3m, feh, giblib, maim, scrot
-# impacket                            curl
 # imwheel
 # indic-fonts-ttf
 # inkscape                            adwaita-icon-theme, imagemagick
@@ -421,7 +433,6 @@ which
 # libmad
 # libmcrypt                           php
 # libmd                               libbsd
-# libmetalink                         curl
 # libmfx                              gst-plugins-bad
 # libmms                              gst-plugins-bad
 # libmng                              qt5, gimp
@@ -454,7 +465,6 @@ which
 # libraw1394                          gst-plugins-good
 # libressl                            openssh
 # librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick, flameshot
-# librtmp                             curl, ffmpeg
 # libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
 # libsecret                           pinentry
 # libsectok                           openssh
@@ -467,7 +477,6 @@ which
 # libspiro                            gegl
 # libsrtp                             gst-plugins-bad
 # libssh                              exiv2, ffmpeg
-# libssh2                             curl, rustc, mc, gst-plugins-bad, qemu
 # libthai                             pango, perl-unicode-linebreak
 # libtheora                           gst-plugins-base, ffmpeg
 # libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
@@ -537,7 +546,6 @@ which
 # mini-sql                            php
 # minisql                             unixodbc
 # mirage
-# mit-kerberos-v5                     sudo, libtirpc, openssh, cyrus-sasl, curl, cups, libsoup, neon, mariadb, postgresql, qt5, php, fetchmail, mutt
 # mixmaster                           mutt
 # mjpeg-tools                         gst-plugins-bad
 # mm-common                           libsigc++2, glibmm
@@ -560,9 +568,7 @@ which
 # net-snmp                            php
 # netcat-openbsd
 # nftables                            iptables
-# nghttp2                             cmake, nodejs, curl, apache-httpd
 # nginx
-# ngtcp2                              curl
 # nickle                              xorg-applications
 # nodejs
 # notification-daemon                 libnotify
@@ -588,7 +594,6 @@ which
 # openh264                            gst-plugins-bad
 # openjade                            postgresql, docbook-dsssl, docbook-utils
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
-# openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd, php, gconf
 # opensc                              openssh
 # openslp                             openldap
 # opensp                              openjade, docbook-dsssl
@@ -882,7 +887,6 @@ which
 # qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission, flameshot, qt5-styleplugins, qt5ct
 # qt5-styleplugins
 # qt5ct
-# quiche                              curl
 # radiance                            imagemagick
 # ralcgm                              imagemagick
 # ramdefrag
@@ -905,7 +909,6 @@ which
 # ruby                                docbook-xsl, vim, mc, mariadb, gegl
 # rustc                               mozjs, librsvg
 # rxvt-unicode
-# samba                               mc, curl, libsoup, ffmpeg
 # sane                                imagemagick
 # sassc                               gtk+3
 # saxon6                              docbook-xsl
@@ -940,12 +943,10 @@ which
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
-# spnego                              curl
 # sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 # srt                                 gst-plugins-bad
 # sshfs                               vifm
 # startup-notification                rxvt-unicode, i3
-# stunnel                             curl
 # subversion                          cmake, git
 # sudo
 # svgalib                             links, sdl

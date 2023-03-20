@@ -19,6 +19,7 @@ l/libidn2.sh
 n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
+n/curl.sh
 
 a/zip.sh
 a/unzip.sh
@@ -157,7 +158,6 @@ ap/sudo.sh
 n/gnupg.sh
 n/cyrus-sasl.sh
 n/exim.sh
-n/curl.sh
 a/smartmontools.sh
 a/pciutils.sh
 d/cmake.sh
@@ -315,7 +315,6 @@ l/gsettings-desktop-schemas.sh
 l/glib-networking.sh
 l/glib.sh
 l/glibmm.sh
-n/curl.sh
 l/libdazzle.sh
 l/libsoup.sh
 l/libvpx.sh
@@ -362,7 +361,6 @@ ap/sudo.sh
 n/libtirpc.sh
 n/openssh.sh
 n/cyrus-sasl.sh
-n/curl.sh
 ap/cups.sh
 l/libsoup.sh
 l/neon.sh
@@ -613,7 +611,6 @@ l/c-ares.sh
 n/nghttp2.sh
 d/cmake.sh
 d/nodejs.sh
-n/curl.sh
 n/apache-httpd.sh
 n/php.sh
 ap/cups.sh
