@@ -12,9 +12,11 @@ l/pcre2.sh
 l/pcre.sh
 l/libunistring.sh
 n/nettle.sh
-n/gnutls.sh
 n/npth.sh
 n/pth.sh
+l/libidn.sh
+l/libidn2.sh
+n/gnutls.sh
 
 a/zip.sh
 a/unzip.sh
@@ -124,8 +126,6 @@ l/libbytesize.sh
 l/nss.sh
 n/pinentry.sh
 n/wget.sh
-l/libidn.sh
-l/libidn2.sh
 n/wget.sh
 n/gnupg.sh
 a/smartmontools.sh
@@ -172,7 +172,6 @@ d/mozjs.sh
 l/polkit.sh
 a/upower.sh
 a/udisks.sh
-l/libidn2.sh
 d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
 n/sshfs.sh
@@ -628,7 +627,6 @@ d/python3.sh
 d/ruby.sh
 d/git.sh
 d/openjdk.sh
-l/libidn.sh
 n/openssh.sh
 n/cyrus-sasl.sh
 ap/cups.sh

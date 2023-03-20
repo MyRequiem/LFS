@@ -53,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and converting entire domain names to and from the ASCII Compatible Encoding
 # (ACE) form.
 #
-# Home page: http://www.gnu.org/software/libidn/
+# Home page: https://www.gnu.org/software/libidn/
 # Download:  https://ftp.gnu.org/gnu/libidn/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

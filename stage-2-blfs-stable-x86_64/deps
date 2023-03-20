@@ -10,10 +10,12 @@ brotli                              gnutls
 cmocka                              gnutls
 datefudge                           gnutls
 doxygen                             gnutls
+emacs                               libidn
 etc-issue
 gcc                                 pth
+git                                 libidn2
 gnutls
-gtk-doc                             libtasn1, p11-kit, gnutls
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2
 install-tl-unx                      libunistring, gnutls
 kernel-firmware
 libedit                             pcre2
@@ -22,23 +24,25 @@ libidn2                             gnutls
 libnsl                              pth
 libseccomp                          gnutls
 libtasn1                            p11-kit, gnutls
-libunistring                        gnutls
+libunistring                        libidn2, gnutls
 libxslt                             p11-kit
 lsb-tools
 make-ca                             p11-kit, gnutls
+mono                                libidn
 net-tools                           gnutls
 nettle                              gnutls
 npth
 nss                                 p11-kit, make-ca
+openjdk                             libidn
 p11-kit                             make-ca, gnutls
 pcre
 pcre2
-pth
+pth                                 libidn
 python3                             lsb-tools
 texlive                             libunistring, gnutls
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn
 which
 
 # ===============================================================================
@@ -174,7 +178,6 @@ which
 # electric-fence                      lame, imagemagick
 # elinks                              xmlto, apache-httpd, mutt
 # elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
-# emacs                               guile, pinentry, libidn, desktop-file-utils
 # emojione                            ibus
 # empress                             php
 # enchant                             php
@@ -239,7 +242,6 @@ which
 # giflib                              imlib2, libwebp, openjdk, feh
 # gimp                                imagemagick
 # girara                              zathura
-# git                                 cmake, llvm, libidn2, harfbuzz, poppler, openjdk, adwaita-icon-theme, libgxps, talloc
 # gjs                                 gobject-introspection, libsecret
 # glew
 # glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara, zathura
@@ -538,7 +540,6 @@ which
 # mm-common                           libsigc++2, glibmm
 # mnogosearch                         php
 # monetra                             php
-# mono                                libidn
 # mozjs                               polkit, gjs
 # mpg123                              gst-plugins-good
 # mpv
@@ -583,7 +584,6 @@ which
 # openexr                             gst-plugins-bad, gegl, imagemagick
 # openh264                            gst-plugins-bad
 # openjade                            postgresql, docbook-dsssl, docbook-utils
-# openjdk                             libidn, openssh, cyrus-sasl, cups, apache-ant
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
 # openldap                            sudo, gnupg, exim, cyrus-sasl, curl, apr-util, mit-kerberos-v5, postgresql, apache-httpd, php, gconf
 # opensc                              openssh
