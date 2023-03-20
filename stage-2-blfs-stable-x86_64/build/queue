@@ -17,6 +17,7 @@ n/pth.sh
 l/libidn.sh
 l/libidn2.sh
 n/gnutls.sh
+l/libpsl.sh
 
 a/zip.sh
 a/unzip.sh
@@ -317,7 +318,6 @@ l/gsettings-desktop-schemas.sh
 l/glib-networking.sh
 l/glib.sh
 l/glibmm.sh
-l/libpsl.sh
 n/wget.sh
 n/curl.sh
 l/libdazzle.sh

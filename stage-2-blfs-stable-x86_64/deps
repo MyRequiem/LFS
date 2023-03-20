@@ -15,13 +15,14 @@ etc-issue
 gcc                                 pth
 git                                 libidn2
 gnutls
-gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
 install-tl-unx                      libunistring, gnutls
 kernel-firmware
 libedit                             pcre2
 libidn                              gnutls
-libidn2                             gnutls
+libidn2                             gnutls, libpsl
 libnsl                              pth
+libpsl
 libseccomp                          gnutls
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
@@ -42,7 +43,7 @@ python3                             lsb-tools
 texlive                             libunistring, gnutls
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl
 which
 
 # ===============================================================================
@@ -444,7 +445,6 @@ which
 # libplacebo                          mpv
 # libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh, libgd
 # libproxy                            glib-networking, neon, qt5
-# libpsl                              wget, curl, libsoup
 # libpwquality                        cryptsetup
 # libraqm                             imagemagick
 # libraw                              imagemagick
