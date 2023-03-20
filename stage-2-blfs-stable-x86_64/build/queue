@@ -12,6 +12,7 @@ l/pcre2.sh
 l/pcre.sh
 l/libunistring.sh
 n/nettle.sh
+n/gnutls.sh
 
 a/zip.sh
 a/unzip.sh
@@ -125,7 +126,6 @@ n/pinentry.sh
 n/wget.sh
 l/libidn.sh
 l/libidn2.sh
-n/gnutls.sh
 n/wget.sh
 n/gnupg.sh
 a/smartmontools.sh
@@ -135,7 +135,6 @@ l/volume-key.sh
 l/libblockdev.sh
 l/rpcsvc-proto.sh
 n/wget.sh
-n/gnutls.sh
 l/libnsl.sh
 n/exim.sh
 a/fcron.sh
@@ -150,7 +149,6 @@ ap/vim.sh
 a/fcron.sh
 d/brotli.sh
 n/net-tools.sh
-n/gnutls.sh
 ap/sysstat.sh
 n/openssh.sh
 l/libssh2.sh
@@ -444,7 +442,6 @@ ap/ghostscript.sh
 l/json-glib.sh
 l/gtk+3.sh
 l/libseccomp.sh
-n/gnutls.sh
 l/gdk-pixbuf-xlib.sh
 n/w3m.sh
 ap/asciidoc.sh

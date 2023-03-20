@@ -12,19 +12,19 @@ PRGNAME="gnutls"
 #              libunistring
 #              libtasn1
 #              p11-kit
-# Optional:    doxygen
+# Optional:    brotli
+#              doxygen
 #              gtk-doc (для сборки API документации, см. опции ниже)
-#              guile
 #              libidn or libidn2
 #              libseccomp
-#              net-tools (для тестов)
+#              net-tools   (для тестов)
 #              texlive or install-tl-unx
-#              unbound (для создания libgnutls-dane.so и утилиты danetool)
-#              valgrind (для тестов)
-#              autogen (https://ftp.gnu.org/gnu/autogen/)
-#              cmocka (для тестов библиотеки DANE) https://cmocka.org/
-#              datefudge (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
-#              trousers (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
+#              unbound     (для создания libgnutls-dane.so и утилиты danetool)
+#              valgrind    (для тестов)
+#              autogen     (https://ftp.gnu.org/gnu/autogen/)
+#              cmocka      (для тестов библиотеки DANE) https://cmocka.org/
+#              datefudge   (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
+#              trousers    (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,18 +38,14 @@ IDN="--without-idn"
 UNBOUND="--disable-libdane"
 VALGRIND="--disable-valgrind-tests"
 TROUSERS="--without-tpm"
-GUILE="--disable-guile"
 
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v idn      &>/dev/null && IDN="--with-idn"
 command -v idn2     &>/dev/null && IDN="--with-idn"
 command -v unbound  &>/dev/null && UNBOUND="--enable-libdane"
-command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
+# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
 command -v tcsd     &>/dev/null && TROUSERS="--with-tpm"
-command -v guile    &>/dev/null && GUILE="--enable-guile"
 
-# GnuTLS не поддерживает guile, поэтому отключаем его
-#    --disable-guile
 # включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
 #    --enable-openssl-compatibility
 # указываем GnuTLS использовать хранилище доверия PKCS#11 по умолчанию
@@ -63,7 +59,6 @@ command -v guile    &>/dev/null && GUILE="--enable-guile"
     "${UNBOUND}"                                \
     "${VALGRIND}"                               \
     "${TROUSERS}"                               \
-    "${GUILE}"                                  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -104,7 +99,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Pre-Shared-Keys (PSK) extension, the Inner Application (TLS/IA) extension and
 # X.509 and OpenPGP certificate handling.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://www.gnupg.org/ftp/gcrypt/${PRGNAME}/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

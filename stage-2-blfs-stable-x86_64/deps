@@ -3,26 +3,38 @@
 ###***###
 
 
+autogen                             gnutls
 bash-completion
 blfs-bootscripts
+brotli                              gnutls
+cmocka                              gnutls
+datefudge                           gnutls
+doxygen                             gnutls
 etc-issue
-gtk-doc                             libtasn1, p11-kit
-install-tl-unx                      libunistring
+gnutls
+gtk-doc                             libtasn1, p11-kit, gnutls
+install-tl-unx                      libunistring, gnutls
 kernel-firmware
 libedit                             pcre2
-libtasn1                            p11-kit
-libunistring
+libidn                              gnutls
+libidn2                             gnutls
+libseccomp                          gnutls
+libtasn1                            p11-kit, gnutls
+libunistring                        gnutls
 libxslt                             p11-kit
 lsb-tools
-make-ca                             p11-kit
-nettle
+make-ca                             p11-kit, gnutls
+net-tools                           gnutls
+nettle                              gnutls
 nss                                 p11-kit, make-ca
-p11-kit                             make-ca
+p11-kit                             make-ca, gnutls
 pcre
 pcre2
 python3                             lsb-tools
-texlive                             libunistring
-valgrind                            libtasn1, pcre2, pcre, nettle
+texlive                             libunistring, gnutls
+trousers                            gnutls
+unbound                             gnutls
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls
 which
 
 # ===============================================================================
@@ -64,7 +76,6 @@ which
 # atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 # atkmm                               gtkmm2, gtkmm3
 # autoconf213                         mozjs, archivemount
-# autogen                             gnutls, ntp
 # autotrace                           imagemagick
 # avahi                               cups, pulseaudio
 # babl                                gegl
@@ -81,7 +92,6 @@ which
 # boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2, taglib
 # bpf-utils                           iptables
 # bpython
-# brotli                              curl, freetype, libsoup, apache-httpd
 # bs2b                                gst-plugins-bad
 # btrfs-progs                         udisks, libblockdev
 # bviplus
@@ -103,7 +113,6 @@ which
 # clipnotify                          clipmenu
 # clisp                               gpgme
 # cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib, flameshot, aom
-# cmocka                              gnutls, mit-kerberos-v5
 # cmus
 # cogl                                cairo
 # colord                              gtk+3, cups
@@ -121,7 +130,6 @@ which
 # cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 # cython                              yasm, libseccomp, nghttp2, python3-cwcwidth
 # dag                                 libpcap
-# datefudge                           gnutls
 # dblatex                             asciidoc, git, graphite2, xmlto
 # dbmaker                             php
 # dbus                                glib, dbus-glib, python-dbus, udisks, at-spi2-core, vala, cups, bluez, dconf, pulseaudio, wpa-supplicant, gjs, gnome-keyring xdg-utils
@@ -153,7 +161,6 @@ which
 # docwriter                           freetype
 # dosfstools                          parted, udisks
 # dovecot                             fcron, sudo, gnupg, at, php, mutt, gimp
-# doxygen                             icu, fuse, libexif, libusb, libyaml, popt, llvm, libsigc++2, dbus, gnutls, gpgme, mc, ruby, graphite2, libxcb, libevent, xcb-util, xcb-util-image, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-cursor, libva, libvdpau, jasper, xorg-server, libevdev, libepoxy, libxkbcommon, glibmm, cairomm, gtkmm3, libvorbis, alsa-lib, flac, opus, libvpx, libical, fltk, openjpeg, sdl2, enchant, rsync, apache-httpd, libmypaint, exiv2, libtheora, ffmpeg, transmission, girara
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
 # ducktype                            dbus
@@ -243,7 +250,6 @@ which
 # gnome-themes-extra                  gtk+2
 # gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5, mutt, gnome-keyring, imagemagick
 # gnuplot                             imagemagick
-# gnutls                              wget, gnupg, exim, openldap, curl, glibmm, gtk-vnc, cups, glib-networking, neon, mutt, vte3, ffmpeg, qemu
 # gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3, gconf, libmypaint, spice-gtk
 # goffice
 # google-chrome
@@ -394,8 +400,6 @@ which
 # libheif                             gimp, imagemagick
 # libical                             bluez
 # libid3tag                           imlib2
-# libidn                              gnutls, exim, ghostscript, whois, mutt
-# libidn2                             wget, gnutls, curl, libpsl, whois
 # libiec61883                         gst-plugins-good, ffmpeg
 # libilbc                             ffmpeg
 # libinput                            xorg-libinput-driver, qt5
@@ -445,7 +449,6 @@ which
 # librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick, flameshot
 # librtmp                             curl, ffmpeg
 # libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
-# libseccomp                          gnutls
 # libsecret                           pinentry
 # libsectok                           openssh
 # libshout                            gst-plugins-good
@@ -549,7 +552,6 @@ which
 # ndctl                               libblockdev
 # neon                                gst-plugins-bad
 # net-snmp                            php
-# net-tools                           gnutls, openssh
 # netcat-openbsd
 # nftables                            iptables
 # nghttp2                             cmake, nodejs, curl, apache-httpd
@@ -970,7 +972,6 @@ which
 # transmission
 # tree
 # tremor                              gst-plugins-base
-# trousers                            gnutls
 # tslib                               qt5
 # tunctl                              virt-manager
 # twolame                             gst-plugins-good, gst-plugins-ugly, ffmpeg
@@ -979,7 +980,6 @@ which
 # uget
 # uming-fonts-ttf
 # umockdev                            libgudev, upower
-# unbound                             gnutls
 # uniconvertor                        imagemagick
 # unittest-cpp                        enchant
 # unixodbc                            openldap, apr-util, mariadb, qt5, php
