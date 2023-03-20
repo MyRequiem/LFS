@@ -14,21 +14,21 @@ emacs                               libidn
 etc-issue
 gcc                                 pth
 git                                 libidn2
-gnutls
+gnutls                              wget
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
 install-tl-unx                      libunistring, gnutls
 kernel-firmware
 libedit                             pcre2
 libidn                              gnutls
-libidn2                             gnutls, libpsl
+libidn2                             gnutls, libpsl, wget
 libnsl                              pth
-libpsl
+libpsl                              wget
 libseccomp                          gnutls
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libxslt                             p11-kit
 lsb-tools
-make-ca                             p11-kit, gnutls
+make-ca                             p11-kit, gnutls, wget
 mono                                libidn
 net-tools                           gnutls
 nettle                              gnutls
@@ -36,14 +36,17 @@ npth
 nss                                 p11-kit, make-ca
 openjdk                             libidn
 p11-kit                             make-ca, gnutls
-pcre
-pcre2
+pcre                                wget
+pcre2                               wget
+perl-http-daemon                    wget
+perl-io-socket-ssl                  wget
 pth                                 libidn
 python3                             lsb-tools
 texlive                             libunistring, gnutls
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget
+wget
 which
 
 # ===============================================================================
@@ -669,13 +672,11 @@ which
 # perl-html-parser                    perl-libwww-perl
 # perl-html-tagset                    perl-html-parser
 # perl-http-cookies                   perl-libwww-perl
-# perl-http-daemon                    wget, perl-libwww-perl
 # perl-http-date                      perl-http-message, perl-file-listing
 # perl-http-message                   perl-html-parser, perl-http-daemon, perl-http-negotiate, perl-http-cookies
 # perl-http-negotiate                 perl-libwww-perl
 # perl-importer                       perl-term-table, perl-sub-info
 # perl-io-html                        perl-http-message
-# perl-io-socket-ssl                  wget, perl-lwp-protocol-https, ntp
 # perl-io-string
 # perl-ipc-run3                       perl-test2-plugin-nowarnings
 # perl-ipc-system-simple              perl-datetime-locale
@@ -1020,7 +1021,6 @@ which
 # weasyprint                          vala
 # webkitgtk                           zenity
 # webrtc-audio-processing             pulseaudio
-# wget                                smartmontools, pciutils, usbutils, perl-unicode-linebreak, openjdk, imagemagick
 # wgetpaste
 # whois
 # wildmidi                            gst-plugins-bad

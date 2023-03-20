@@ -24,22 +24,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+VALGRIND_TESTS="--disable-valgrind-tests"
+
 # wget бует использовать OpenSSL вместо GnuTLS
 #    --with-ssl=openssl
-./configure            \
-    --prefix=/usr      \
-    --sysconfdir=/etc  \
+./configure             \
+    --prefix=/usr       \
+    --sysconfdir=/etc   \
+    "${VALGRIND_TESTS}" \
     --with-ssl=openssl || exit 1
 
 make || exit 1
 
-### тесты
-# известно, что HTTPS-тесты не проходят, если установлен Perl модуль
-# IO::Socket::INET6
-#
 # Для выполнения тестов с Valgrind добавляем опцию конфигурации
 #    --enable-valgrind-tests
-#
 # make check
 
 make install DESTDIR="${TMP_DIR}"
@@ -56,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non-interactively, thus enabling work in the background after having logged
 # off.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

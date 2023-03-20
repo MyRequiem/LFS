@@ -18,6 +18,7 @@ l/libidn.sh
 l/libidn2.sh
 n/gnutls.sh
 l/libpsl.sh
+n/wget.sh
 
 a/zip.sh
 a/unzip.sh
@@ -78,7 +79,6 @@ d/python-modules/python3-pygments.sh
 a/ed.sh
 a/lvm2.sh
 d/gcc.sh
-n/wget.sh
 a/smartmontools.sh
 a/pciutils.sh
 a/usbutils.sh
@@ -126,8 +126,6 @@ a/cryptsetup.sh
 l/libbytesize.sh
 l/nss.sh
 n/pinentry.sh
-n/wget.sh
-n/wget.sh
 n/gnupg.sh
 a/smartmontools.sh
 d/swig.sh
@@ -135,7 +133,6 @@ n/gpgme.sh
 l/volume-key.sh
 l/libblockdev.sh
 l/rpcsvc-proto.sh
-n/wget.sh
 l/libnsl.sh
 n/exim.sh
 a/fcron.sh
@@ -318,7 +315,6 @@ l/gsettings-desktop-schemas.sh
 l/glib-networking.sh
 l/glib.sh
 l/glibmm.sh
-n/wget.sh
 n/curl.sh
 l/libdazzle.sh
 l/libsoup.sh
