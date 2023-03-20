@@ -11,6 +11,7 @@ cmocka                              gnutls
 datefudge                           gnutls
 doxygen                             gnutls
 etc-issue
+gcc                                 pth
 gnutls
 gtk-doc                             libtasn1, p11-kit, gnutls
 install-tl-unx                      libunistring, gnutls
@@ -18,6 +19,7 @@ kernel-firmware
 libedit                             pcre2
 libidn                              gnutls
 libidn2                             gnutls
+libnsl                              pth
 libseccomp                          gnutls
 libtasn1                            p11-kit, gnutls
 libunistring                        gnutls
@@ -26,10 +28,12 @@ lsb-tools
 make-ca                             p11-kit, gnutls
 net-tools                           gnutls
 nettle                              gnutls
+npth
 nss                                 p11-kit, make-ca
 p11-kit                             make-ca, gnutls
 pcre
 pcre2
+pth
 python3                             lsb-tools
 texlive                             libunistring, gnutls
 trousers                            gnutls
@@ -218,7 +222,6 @@ which
 # fwtk                                sudo
 # game-music-emu                      gst-plugins-bad
 # gc                                  guile, w3m
-# gcc                                 cmake
 # gcolor2
 # gconf                               pulseaudio
 # gcr                                 pinentry, gnome-keyring
@@ -427,7 +430,6 @@ which
 # libnice                             gst-plugins-bad
 # libnl                               libpcap, iw, wpa-supplicant, htop
 # libnotify                           ibus, zenity, girara
-# libnsl                              exim, talloc
 # libnut                              ffmpeg
 # libofa                              gst-plugins-bad
 # libogg                              libvorbis, gst-plugins-base, flac, speex, libtheora
@@ -563,7 +565,6 @@ which
 # noto-fonts-ttf
 # noto-sans-cjk-fonts-otf
 # npm                                 nodejs
-# npth                                gnupg
 # nspr                                nss, rpm
 # ntfs-3g                             udisks
 # ntp                                 dhcpcd
@@ -786,7 +787,6 @@ which
 # procmail                            fetchmail
 # profiles                            imagemagick
 # pspg
-# pth                                 libgcrypt, parted, libidn, openldap, sdl, unixodbc, php
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3

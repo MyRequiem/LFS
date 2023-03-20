@@ -14,6 +14,8 @@ https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
 https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
 https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz
+https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
+https://ftp.gnu.org/gnu/pth/pth-2.0.7.tar.gz
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -49,8 +51,6 @@ https://github.com/jinfeihan57/p7zip/archive/v17.03/p7zip-17.03.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.41.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.4.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.5.0.tar.bz2
-https://ftp.gnu.org/gnu/pth/pth-2.0.7.tar.gz
-https://www.gnupg.org/ftp/gcrypt/npth/npth-1.6.tar.bz2
 https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
 https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2

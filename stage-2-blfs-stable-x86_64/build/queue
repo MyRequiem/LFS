@@ -13,6 +13,8 @@ l/pcre.sh
 l/libunistring.sh
 n/nettle.sh
 n/gnutls.sh
+n/npth.sh
+n/pth.sh
 
 a/zip.sh
 a/unzip.sh
@@ -43,8 +45,6 @@ ap/p7zip.sh
 n/libgpg-error.sh
 n/libassuan.sh
 n/libksba.sh
-n/pth.sh
-n/npth.sh
 l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh
