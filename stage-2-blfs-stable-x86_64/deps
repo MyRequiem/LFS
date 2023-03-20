@@ -9,7 +9,7 @@ blfs-bootscripts
 brotli                              gnutls, curl
 c-ares                              curl
 cmocka                              gnutls
-curl
+curl                                pciutils
 datefudge                           gnutls
 doxygen                             gnutls
 emacs                               libidn
@@ -35,6 +35,7 @@ libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libxslt                             p11-kit
 lsb-tools
+lynx                                pciutils
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl
 mono                                libidn
@@ -47,6 +48,7 @@ nss                                 p11-kit, make-ca
 openjdk                             libidn
 openldap                            curl
 p11-kit                             make-ca, gnutls
+pciutils
 pcre                                wget
 pcre2                               wget
 perl-http-daemon                    wget
@@ -61,8 +63,8 @@ texlive                             libunistring, gnutls
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl
-wget
-which
+wget                                pciutils
+which                               pciutils
 
 # ===============================================================================
 # 3store                              redland
@@ -524,7 +526,6 @@ which
 # luajit                              gegl
 # lvm2                                parted, cryptsetup, udisks
 # lxsession                           polkit
-# lynx                                smartmontools, pciutils, asciidoc, xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
 # lz4                                 mariadb, rsync, lrzip
 # lzip                                ed
 # lzo                                 libarchive, cairo, qemu
@@ -619,7 +620,6 @@ which
 # passwdqc                            cryptsetup
 # password-store                      dmenu
 # pavucontrol
-# pciutils                            qt5
 # pcsc-lite                           libcacard
 # pep8                                python3-pygobject3
 # perl-algorithm-diff                 perl-text-diff

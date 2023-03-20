@@ -16,7 +16,8 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/etc/cron.weekly"
+CRON_WEEKLY="/etc/cron.weekly"
+mkdir -pv "${TMP_DIR}${CRON_WEEKLY}"
 
 make            \
     PREFIX=/usr \
@@ -34,11 +35,11 @@ make                           \
 chmod -v 755 "${TMP_DIR}/usr/lib/libpci.so"
 
 ### Конфигурация:
-# Файл данных pci.ids находится в /usr/share/hwdata и должен периодически
+# Файл данных pci.ids находится в /usr/share/hwdata/ и должен периодически
 # обновляться. Чтобы получить его текущую версию в состав пакета входит скрипт
 # update-pciids, запуск которого настроим через fcron
 
-UPDATE_PCIIDS="${TMP_DIR}/etc/cron.weekly/update-pciids.sh"
+UPDATE_PCIIDS="${TMP_DIR}${CRON_WEEKLY}/update-pciids.sh"
 cat << EOF > "${UPDATE_PCIIDS}"
 #!/bin/bash
 
@@ -59,8 +60,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # from and writing to PCI device configuration registers. For example, you can
 # adjust the latency timers with it.
 #
-# Home page: http://mj.ucw.cz/sw/${PRGNAME}/
-# Download:  https://www.kernel.org/pub/software/utils/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://mj.ucw.cz/sw/${PRGNAME}/
+# Download:  https://mj.ucw.cz/download/linux/pci/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

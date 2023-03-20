@@ -20,6 +20,7 @@ n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
 n/curl.sh
+a/pciutils.sh
 
 a/zip.sh
 a/unzip.sh
@@ -45,7 +46,6 @@ d/python2.sh
 d/python3.sh
 d/cython.sh
 d/yasm.sh
-a/pciutils.sh
 ap/p7zip.sh
 n/libgpg-error.sh
 n/libassuan.sh
@@ -81,7 +81,6 @@ a/ed.sh
 a/lvm2.sh
 d/gcc.sh
 a/smartmontools.sh
-a/pciutils.sh
 a/usbutils.sh
 l/popt.sh
 ap/highlight.sh
@@ -159,7 +158,6 @@ n/gnupg.sh
 n/cyrus-sasl.sh
 n/exim.sh
 a/smartmontools.sh
-a/pciutils.sh
 d/cmake.sh
 n/gnupg.sh
 d/git.sh
