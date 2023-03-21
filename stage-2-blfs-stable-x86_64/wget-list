@@ -26,6 +26,8 @@ https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.46.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.2.1.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -139,9 +141,7 @@ https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-2.3.4.tar.xz
 https://github.com/storaged-project/libbytesize/releases/download/2.5/libbytesize-2.5.tar.gz
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_61_RTM/src/nss-3.61.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/nss-3.61-standalone-1.patch
-https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.1.1.tar.bz2
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
-https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.27.tar.bz2
 https://downloads.sourceforge.net/swig/swig-4.0.2.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.15.1.tar.bz2
 https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz

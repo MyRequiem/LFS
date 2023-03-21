@@ -25,6 +25,8 @@ n/libgpg-error.sh
 n/libassuan.sh
 n/libksba.sh
 n/libgcrypt.sh
+n/pinentry.sh
+n/gnupg.sh
 
 a/zip.sh
 a/unzip.sh
@@ -125,8 +127,6 @@ d/python-modules/python3-dbusmock.sh
 a/cryptsetup.sh
 l/libbytesize.sh
 l/nss.sh
-n/pinentry.sh
-n/gnupg.sh
 a/smartmontools.sh
 d/swig.sh
 n/gpgme.sh
@@ -137,7 +137,6 @@ l/libnsl.sh
 n/exim.sh
 a/fcron.sh
 ap/sudo.sh
-n/gnupg.sh
 ap/at.sh
 ap/itstool.sh
 d/ruby.sh
@@ -154,12 +153,10 @@ ap/mc.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 ap/sudo.sh
-n/gnupg.sh
 n/cyrus-sasl.sh
 n/exim.sh
 a/smartmontools.sh
 d/cmake.sh
-n/gnupg.sh
 d/git.sh
 d/cmake.sh
 d/llvm.sh
@@ -233,7 +230,6 @@ x/libs/libdrm.sh
 l/pango.sh
 l/hicolor-icon-theme.sh
 l/gtk+2.sh
-n/pinentry.sh
 ap/vim.sh
 x/libs/pixman.sh
 l/cairo.sh
@@ -278,12 +274,13 @@ l/at-spi2-atk.sh
 l/cairomm.sh
 x/libs/glew.sh
 l/gtk+3.sh
+l/wayland-protocols
+l/gtk4.sh
 ap/vim.sh
 l/cairo.sh
 x/libs/libinput.sh
 d/vala.sh
 l/gcr.sh
-n/pinentry.sh
 l/pangomm.sh
 l/gtkmm2.sh
 l/gtkmm3.sh
@@ -336,7 +333,6 @@ s/desktop-file-utils.sh
 l/glib.sh
 s/desktop-file-utils.sh
 l/fltk.sh
-n/pinentry.sh
 ap/alsa-tools.sh
 l/alsa-oss.sh
 l/gst-plugins-good.sh
@@ -410,7 +406,6 @@ l/gst-plugins-base.sh
 l/qt5.sh
 d/cmake.sh
 ap/highlight.sh
-n/pinentry.sh
 n/gpgme.sh
 l/cairo.sh
 l/gst-plugins-base.sh
@@ -640,7 +635,6 @@ l/gtk+3.sh
 d/gjs.sh
 l/gnome-keyring.sh
 l/libsecret.sh
-n/pinentry.sh
 l/vte2.sh
 l/vte3.sh
 l/gconf.sh

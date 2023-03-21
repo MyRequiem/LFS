@@ -3,40 +3,54 @@
 ###***###
 
 
+adns                                gnupg
 autogen                             gnutls
 bash-completion
 blfs-bootscripts
 brotli                              gnutls, curl
 c-ares                              curl
 cmocka                              gnutls
-curl                                pciutils
+curl                                pciutils, gnupg
 datefudge                           gnutls
+dovecot                             gnupg
 doxygen                             gnutls
-emacs                               libidn
+efl                                 pinentry
+emacs                               libidn, pinentry
 etc-issue
+exim                                gnupg
+fig2dev                             gnupg
+fltk                                pinentry
+fuse                                gnupg
 gcc                                 pth
+gcr                                 pinentry
 git                                 libidn2
-gnutls                              wget, curl
+gnupg
+gnutls                              wget, curl, gnupg
 gsasl                               curl
+gtk+2                               pinentry
+gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
+imagemagick                         gnupg
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
 kernel-firmware
-libassuan
+libassuan                           pinentry, gnupg
 libedit                             pcre2
-libgcrypt
-libgpg-error                        libassuan, libksba, libgcrypt
+libgcrypt                           gnupg
+libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls
 libidn2                             gnutls, libpsl, wget, curl
-libksba
+libksba                             gnupg
 libmetalink                         curl
 libnsl                              pth
 libpsl                              wget, curl
 librtmp                             curl
 libseccomp                          gnutls
+libsecret                           pinentry
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
+libusb                              gnupg
 libxslt                             p11-kit
 lsb-tools
 lynx                                pciutils
@@ -47,29 +61,33 @@ net-tools                           gnutls
 nettle                              gnutls
 nghttp2                             curl
 ngtcp2                              curl
-npth
+npth                                gnupg
 nss                                 p11-kit, make-ca
 openjdk                             libidn
-openldap                            curl
+openldap                            curl, gnupg
 p11-kit                             make-ca, gnutls
 pciutils
 pcre                                wget
 pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
+pinentry                            gnupg
+postfix                             gnupg
 pth                                 libidn, libgcrypt
 python3                             lsb-tools
+qt5                                 pinentry
 quiche                              curl
 samba                               curl
+sendmail                            gnupg
 spnego                              curl
+sqlite                              gnupg
 stunnel                             curl
-texlive                             libunistring, gnutls, libassuan, libgcrypt
+texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
 which                               pciutils
-
 
 # ===============================================================================
 # 3store                              redland
@@ -77,7 +95,6 @@ which                               pciutils
 # aalib                               gst-plugins-good, sdl, gimp
 # acpid                               xorg-server
 # adabas                              php
-# adns                                gnupg
 # adobe-source-code-pro-font
 # adwaita-icon-theme                  gtk+3
 # afs                                 sudo
@@ -192,13 +209,11 @@ which                               pciutils
 # docbook2x                           git
 # docwriter                           freetype
 # dosfstools                          parted, udisks
-# dovecot                             fcron, sudo, gnupg, at, php, mutt, gimp
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
 # ducktype                            dbus
 # ebtables
 # ed
-# efl                                 pinentry
 # electric-fence                      lame, imagemagick
 # elinks                              xmlto, apache-httpd, mutt
 # elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
@@ -208,7 +223,6 @@ which                               pciutils
 # enscript                            imagemagick
 # ethtool                             pm-utils
 # exfat                               udisks
-# exim                                fcron, sudo, gnupg, at, php, mutt, gimp
 # exiv2                               gegl, gexiv2
 # faac                                faad2, gst-plugins-bad
 # faad2                               gst-plugins-bad, cmus
@@ -221,7 +235,6 @@ which                               pciutils
 # ffmpeg                              alsa-plugins, gegl, imagemagick, cmus, mpv
 # ffms2                               x264
 # fftw                                alsa-utils, libsamplerate, pulseaudio, imagemagick
-# fig2dev                             gnupg
 # firebird                            qt5
 # flac                                libsndfile, gst-plugins-good
 # flake8
@@ -229,7 +242,6 @@ which                               pciutils
 # flashpix                            imagemagick
 # flif                                imagemagick
 # flite                               gst-plugins-bad, qt5, ffmpeg
-# fltk                                pinentry, alsa-tools
 # fluidsynth                          gst-plugins-bad
 # fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript, poppler, ffmpeg, libgd
 # fonttools                           harfbuzz, graphite2
@@ -241,7 +253,6 @@ which                               pciutils
 # frei0r-plugins                      ffmpeg
 # fribidi                             pango, libass, vte3, ffmpeg
 # frontbase                           php
-# fuse                                gnupg, sshfs, vifm, curlftpfs, fuseiso
 # fuse-zip                            vifm
 # fuse2                               ntfs-3g, archivemount
 # fusefat                             vifm
@@ -251,7 +262,6 @@ which                               pciutils
 # gc                                  guile, w3m
 # gcolor2
 # gconf                               pulseaudio
-# gcr                                 pinentry, gnome-keyring
 # gdb                                 python3, gcc, guile, glib, openssh, rustc, python-lxml, mutt, transmission, talloc
 # gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler, rxvt-unicode
 # gdk-pixbuf-xlib                     w3m
@@ -277,7 +287,6 @@ which                               pciutils
 # gnome-keyring                       libsecret
 # gnome-shell                         polkit
 # gnome-themes-extra                  gtk+2
-# gnupg                               smartmontools, gpgme, libssh2, gcr, mit-kerberos-v5, mutt, gnome-keyring, imagemagick
 # gnuplot                             imagemagick
 # gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3, gconf, libmypaint, spice-gtk
 # goffice
@@ -302,8 +311,6 @@ which                               pciutils
 # gst-plugins-ugly
 # gstreamer                           libcanberra, gst-plugins-base
 # gtick
-# gtk+2                               pinentry, vim, pixman, cairo, gtkmm2, libglade, libcanberra, alsa-tools, ibus, gtk-engines, w3m, libiodbc, python2-pygtk, adwaita-icon-theme, vte2, qemu, gcolor2, gsimplecal, mirage, uget
-# gtk+3                               pinentry, vim, cairo, libinput, gcr, gtkmm3, gtk-vnc, libcanberra, notification-daemon, libnotify, gstreamer, gst-plugins-base, libdazzle, gst-plugins-good, alsa-tools, gst-plugins-bad, dconf, pulseaudio, ghostscript, goffice, poppler, adwaita-icon-theme, gjs, vte3, gconf, zenity, gimp, libgxps, transmission, qemu, girara
 # gtk+4                               gjs, vte3
 # gtk-engines
 # gtk-vnc                             virt-manager
@@ -338,7 +345,6 @@ which                               pciutils
 # icon-tools                          adwaita-icon-theme
 # icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5, raptor, vte3
 # id3lib
-# imagemagick                         gnupg, feh
 # imake                               xxkb
 # imlib2                              w3m, feh, giblib, maim, scrot
 # imwheel
@@ -469,7 +475,6 @@ which                               pciutils
 # libressl                            openssh
 # librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick, flameshot
 # libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
-# libsecret                           pinentry
 # libsectok                           openssh
 # libshout                            gst-plugins-good
 # libsidplay                          gst-plugins-ugly
@@ -488,7 +493,6 @@ which                               pciutils
 # libumfpack                          gegl
 # libunwind                           mesa, xorg-server, libinput, gstreamer, gimp
 # liburcu                             glusterfs
-# libusb                              usbutils, libpcap, upower, gnupg, cups, gst-plugins-bad, qemu
 # libuv                               cmake, nodejs, bind-utils
 # libva                               mesa, ffmpeg
 # libvdpau                            mesa, ffmpeg
@@ -776,7 +780,6 @@ which                               pciutils
 # phodav                              spice-gtk
 # php                                 cups, libsoup, libvpx
 # picogui                             sdl
-# pinentry                            gnupg
 # pixman                              cairo, xorg-server
 # pm-utils
 # pocketlint                          libbytesize
@@ -787,7 +790,6 @@ which                               pciutils
 # poppler                             cairo, gimp
 # popt                                cryptsetup, rsync
 # portaudio                           mpg123
-# postfix                             fcron, sudo, gnupg, at, php, mutt, gimp
 # postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # pov-ray                             imagemagick
 # prelink
@@ -885,7 +887,6 @@ which                               pciutils
 # qdbm                                php, mutt
 # qemu
 # qt4                                 cairo
-# qt5                                 cmake, highlight, pinentry, gpgme, cairo, gst-plugins-base, gst-plugins-good, poppler, wpa-supplicant, transmission, flameshot, qt5-styleplugins, qt5ct
 # qt5-styleplugins
 # qt5ct
 # radiance                            imagemagick
@@ -919,7 +920,6 @@ which                               pciutils
 # scrot
 # sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
-# sendmail                            fcron, sudo, gnupg, at, php, mutt, gimp
 # septel                              libpcap
 # sg3-utils
 # sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
@@ -944,7 +944,6 @@ which                               pciutils
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
-# sqlite                              python2, python3, nss, gnupg, exim, cyrus-sasl, apr-util, libsndfile, libsoup, qt5, redland, php, mutt
 # srt                                 gst-plugins-bad
 # sshfs                               vifm
 # startup-notification                rxvt-unicode, i3
