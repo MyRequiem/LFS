@@ -23,6 +23,7 @@ n/curl.sh
 a/pciutils.sh
 n/libgpg-error.sh
 n/libassuan.sh
+n/libksba.sh
 
 a/zip.sh
 a/unzip.sh
@@ -49,7 +50,6 @@ d/python3.sh
 d/cython.sh
 d/yasm.sh
 ap/p7zip.sh
-n/libksba.sh
 l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh

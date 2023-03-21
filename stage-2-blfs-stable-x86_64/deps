@@ -24,9 +24,10 @@ install-tl-unx                      libunistring, gnutls, libassuan
 kernel-firmware
 libassuan
 libedit                             pcre2
-libgpg-error                        libassuan
+libgpg-error                        libassuan, libksba
 libidn                              gnutls
 libidn2                             gnutls, libpsl, wget, curl
+libksba
 libmetalink                         curl
 libnsl                              pth
 libpsl                              wget, curl
@@ -64,9 +65,10 @@ stunnel                             curl
 texlive                             libunistring, gnutls, libassuan
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
 which                               pciutils
+
 
 # ===============================================================================
 # 3store                              redland
@@ -430,7 +432,6 @@ which                               pciutils
 # libiscsi                            udisks
 # libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick, feh, libgd
 # libkate                             gst-plugins-bad
-# libksba                             gnupg
 # liblsmash                           x264
 # libmad
 # libmcrypt                           php
