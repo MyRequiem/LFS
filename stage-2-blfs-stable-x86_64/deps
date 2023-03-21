@@ -20,9 +20,11 @@ gnutls                              wget, curl
 gsasl                               curl
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
 impacket                            curl
-install-tl-unx                      libunistring, gnutls
+install-tl-unx                      libunistring, gnutls, libassuan
 kernel-firmware
+libassuan
 libedit                             pcre2
+libgpg-error                        libassuan
 libidn                              gnutls
 libidn2                             gnutls, libpsl, wget, curl
 libmetalink                         curl
@@ -59,7 +61,7 @@ quiche                              curl
 samba                               curl
 spnego                              curl
 stunnel                             curl
-texlive                             libunistring, gnutls
+texlive                             libunistring, gnutls, libassuan
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl
@@ -377,7 +379,6 @@ which                               pciutils
 # libao
 # libarchive                          cmake, ed, libgxps, archivemount
 # libass                              gst-plugins-bad, ffmpeg, mpv
-# libassuan                           pinentry, gnupg, gpgme
 # libasyncns                          pulseaudio
 # libatasmart                         udisks
 # libatomic-ops                       gc, libdrm
@@ -415,7 +416,6 @@ which                               pciutils
 # libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal, libsecret, qemu
 # libgd                               php, nginx
 # libglade                            python2-pygtk
-# libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 # libgsf                              goffice
 # libgssapi                           fetchmail, mutt
 # libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gimp
