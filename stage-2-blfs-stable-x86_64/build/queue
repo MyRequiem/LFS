@@ -24,6 +24,7 @@ a/pciutils.sh
 n/libgpg-error.sh
 n/libassuan.sh
 n/libksba.sh
+n/libgcrypt.sh
 
 a/zip.sh
 a/unzip.sh
@@ -91,7 +92,6 @@ l/slang.sh
 l/libatomic-ops.sh
 d/gc.sh
 d/guile.sh
-n/libgcrypt.sh
 d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh

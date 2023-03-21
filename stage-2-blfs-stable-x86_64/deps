@@ -20,11 +20,12 @@ gnutls                              wget, curl
 gsasl                               curl
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt
 kernel-firmware
 libassuan
 libedit                             pcre2
-libgpg-error                        libassuan, libksba
+libgcrypt
+libgpg-error                        libassuan, libksba, libgcrypt
 libidn                              gnutls
 libidn2                             gnutls, libpsl, wget, curl
 libksba
@@ -56,13 +57,13 @@ pcre                                wget
 pcre2                               wget
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
-pth                                 libidn
+pth                                 libidn, libgcrypt
 python3                             lsb-tools
 quiche                              curl
 samba                               curl
 spnego                              curl
 stunnel                             curl
-texlive                             libunistring, gnutls, libassuan
+texlive                             libunistring, gnutls, libassuan, libgcrypt
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
@@ -415,7 +416,6 @@ which                               pciutils
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libevent                            links, mariadb, nghttp2, ntp, transmission, tmux
 # libexif                             gst-plugins-bad, php, feh
-# libgcrypt                           libxslt, gnupg, libssh2, mesa, xorg-server, gcr, gtk-vnc, gst-plugins-bad, rasqal, libsecret, qemu
 # libgd                               php, nginx
 # libglade                            python2-pygtk
 # libgsf                              goffice
