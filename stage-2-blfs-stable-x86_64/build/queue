@@ -27,6 +27,7 @@ n/libksba.sh
 n/libgcrypt.sh
 n/pinentry.sh
 n/gnupg.sh
+ap/sysstat.sh
 
 a/zip.sh
 a/unzip.sh
@@ -146,7 +147,6 @@ ap/vim.sh
 a/fcron.sh
 d/brotli.sh
 n/net-tools.sh
-ap/sysstat.sh
 n/openssh.sh
 l/libssh2.sh
 ap/mc.sh

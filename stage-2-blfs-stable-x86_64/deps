@@ -82,6 +82,7 @@ sendmail                            gnupg
 spnego                              curl
 sqlite                              gnupg
 stunnel                             curl
+sysstat
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
 trousers                            gnutls
 unbound                             gnutls
@@ -953,7 +954,6 @@ which                               pciutils
 # svthevcenc                          gst-plugins-bad
 # swig                                gpgme, volume-key, lcms
 # sysprof                             libsoup, gjs
-# sysstat                             openssh
 # systemtap                           gjs
 # t1lib                               php
 # taglib                              gst-plugins-good

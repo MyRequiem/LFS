@@ -28,6 +28,7 @@ https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.2.1.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
+http://sebastien.godard.pagesperso-orange.fr/sysstat-12.7.2.tar.xz
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
 https://downloads.sourceforge.net/infozip/unzip60.tar.gz
@@ -158,7 +159,6 @@ http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz
 https://github.com/google/brotli/archive/v1.0.9/brotli-1.0.9.tar.gz
 http://anduin.linuxfromscratch.org/BLFS/net-tools/net-tools-CVS_20101030.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/net-tools-CVS_20101030-remove_dups-1.patch
-http://sebastien.godard.pagesperso-orange.fr/sysstat-12.5.3.tar.xz
 http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.4p1.tar.gz
 https://www.libssh2.org/download/libssh2-1.9.0.tar.gz
 https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.27/cyrus-sasl-2.1.27.tar.gz
