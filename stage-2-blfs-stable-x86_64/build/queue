@@ -28,6 +28,7 @@ n/libgcrypt.sh
 n/pinentry.sh
 n/gnupg.sh
 ap/sysstat.sh
+n/net-tools.sh
 
 a/zip.sh
 a/unzip.sh
@@ -146,7 +147,6 @@ s/docbook-xsl.sh
 ap/vim.sh
 a/fcron.sh
 d/brotli.sh
-n/net-tools.sh
 n/openssh.sh
 l/libssh2.sh
 ap/mc.sh
