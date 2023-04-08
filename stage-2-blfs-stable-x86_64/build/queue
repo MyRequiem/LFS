@@ -29,6 +29,7 @@ n/pinentry.sh
 n/gnupg.sh
 ap/sysstat.sh
 n/net-tools.sh
+n/openssh.sh
 
 a/zip.sh
 a/unzip.sh
@@ -147,7 +148,6 @@ s/docbook-xsl.sh
 ap/vim.sh
 a/fcron.sh
 d/brotli.sh
-n/openssh.sh
 l/libssh2.sh
 ap/mc.sh
 n/cyrus-sasl.sh
@@ -353,7 +353,6 @@ l/libtiff.sh
 n/mit-kerberos-v5.sh
 ap/sudo.sh
 n/libtirpc.sh
-n/openssh.sh
 n/cyrus-sasl.sh
 ap/cups.sh
 l/libsoup.sh
@@ -419,7 +418,6 @@ l/aalib.sh
 n/exim.sh
 ap/mc.sh
 ap/vim.sh
-n/openssh.sh
 n/links.sh
 l/sdl.sh
 l/libmpeg2.sh
@@ -613,7 +611,6 @@ d/python3.sh
 d/ruby.sh
 d/git.sh
 d/openjdk.sh
-n/openssh.sh
 n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh

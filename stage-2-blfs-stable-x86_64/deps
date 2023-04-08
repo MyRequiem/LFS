@@ -3,6 +3,7 @@
 ###***###
 
 
+X Window System                     openssh
 adns                                gnupg
 autogen                             gnutls
 bash-completion
@@ -23,6 +24,7 @@ fltk                                pinentry
 fuse                                gnupg
 gcc                                 pth
 gcr                                 pinentry
+gdb                                 openssh
 git                                 libidn2
 gnupg
 gnutls                              wget, curl, gnupg
@@ -35,7 +37,7 @@ impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
 kernel-firmware
 libassuan                           pinentry, gnupg
-libedit                             pcre2
+libedit                             pcre2, openssh
 libgcrypt                           gnupg
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls
@@ -44,20 +46,23 @@ libksba                             gnupg
 libmetalink                         curl
 libnsl                              pth
 libpsl                              wget, curl
+libressl                            openssh
 librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
+libsectok                           openssh
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxslt                             p11-kit
+linux-pam                           openssh
 lsb-tools
 lynx                                pciutils
 make-ca                             p11-kit, gnutls, wget, curl
-mit-kerberos-v5                     curl
+mit-kerberos-v5                     curl, openssh
 mono                                libidn
-net-tools                           gnutls
+net-tools                           gnutls, openssh
 nettle                              gnutls
 nghttp2                             curl
 ngtcp2                              curl
@@ -65,6 +70,8 @@ npth                                gnupg
 nss                                 p11-kit, make-ca
 openjdk                             libidn
 openldap                            curl, gnupg
+opensc                              openssh
+openssh
 p11-kit                             make-ca, gnutls
 pciutils
 pcre                                wget
@@ -82,17 +89,16 @@ sendmail                            gnupg
 spnego                              curl
 sqlite                              gnupg
 stunnel                             curl
-sysstat
+sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
-which                               pciutils
+which                               pciutils, openssh
 
 # ===============================================================================
 # 3store                              redland
-# X Window System                     aalib, exim, mc, vim, openssh, links, sdl, libmpeg2, sdl2, ghostscript, php, gimp, ffmpeg, rxvt-unicode, xsel, xclip, libao, qemu, numlockx
 # aalib                               gst-plugins-good, sdl, gimp
 # acpid                               xorg-server
 # adabas                              php
@@ -263,7 +269,6 @@ which                               pciutils
 # gc                                  guile, w3m
 # gcolor2
 # gconf                               pulseaudio
-# gdb                                 python3, gcc, guile, glib, openssh, rustc, python-lxml, mutt, transmission, talloc
 # gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler, rxvt-unicode
 # gdk-pixbuf-xlib                     w3m
 # gegl                                libmypaint, gimp
@@ -473,10 +478,8 @@ which                               pciutils
 # libraqm                             imagemagick
 # libraw                              imagemagick
 # libraw1394                          gst-plugins-good
-# libressl                            openssh
 # librsvg                             links, gdk-pixbuf, cairo, gst-plugins-bad, goffice, babl, gegl, adwaita-icon-theme, gimp, imagemagick, flameshot
 # libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
-# libsectok                           openssh
 # libshout                            gst-plugins-good
 # libsidplay                          gst-plugins-ugly
 # libsigc++2                          glibmm, cairomm, pavucontrol
@@ -516,7 +519,6 @@ which                               pciutils
 # libyaml                             python-pyyaml, libblockdev, ruby
 # lilv                                gst-plugins-bad
 # links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
-# linux-pam                           fcron, sudo, polkit, exim, at, openssh, cyrus-sasl, xorg-applications, cups, mariadb, postgresql, gnome-keyring
 # liquid-rescale                      imagemagick
 # lirc                                pulseaudio
 # llvm                                icu, mesa, rustc, dhcpcd, imagemagick
@@ -601,10 +603,8 @@ which                               pciutils
 # openh264                            gst-plugins-bad
 # openjade                            postgresql, docbook-dsssl, docbook-utils
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
-# opensc                              openssh
 # openslp                             openldap
 # opensp                              openjade, docbook-dsssl
-# openssh                             libssh2, sshfs, gnome-keyring
 # opie                                sudo
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus

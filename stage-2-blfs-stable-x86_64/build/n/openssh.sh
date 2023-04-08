@@ -8,17 +8,22 @@ PRGNAME="openssh"
 
 # Required:    no
 # Recommended: no
-# Optional:    gdb (для тестов)
+# Optional:    gdb          (для тестов)
 #              linux-pam
 #              X Window System
 #              mit-kerberos-v5
-#              openjdk
+#              which        (для тестов)
 #              net-tools
 #              sysstat
-#              libedit (https://www.thrysoee.dk/editline)
-#              libressl (http://www.libressl.org/)
-#              opensc (https://github.com/OpenSC/OpenSC/wiki)
-#              libsectok (http://www.citi.umich.edu/projects/smartcard/sectok.html)
+#              libedit      (https://www.thrysoee.dk/editline)
+#              libressl     (http://www.libressl.org/)
+#              opensc       (https://github.com/OpenSC/OpenSC/wiki)
+#              libsectok    (http://www.citi.umich.edu/projects/smartcard/sectok.html)
+
+### Конфиги
+#    /.ssh/*
+#    /etc/ssh/ssh_config
+#    /etc/ssh/sshd_config
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -48,9 +53,6 @@ chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
             -s /bin/false     \
             -u 50 sshd
 
-# адаптируем утилиту 'ssh-copy-id' к изменениям в bash-5.1
-sed -e '/INSTALLKEYS_SH/s/)//' -e '260a\  )' -i contrib/ssh-copy-id
-
 LIBEDIT="--without-libedit"
 PAM="--without-pam"
 KERBEROS5="--without-kerberos5"
@@ -59,21 +61,25 @@ KERBEROS5="--without-kerberos5"
 command -v pam_tally   &>/dev/null && PAM="--with-pam"
 command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
 
-# использовать пароли MD5
-#    --with-md5-passwords
-./configure               \
-    --prefix=/usr         \
-    --sysconfdir=/etc/ssh \
-    --with-md5-passwords  \
-    "${LIBEDIT}"          \
-    "${PAM}"              \
-    "${KERBEROS5}"        \
-    --with-privsep-path=/var/lib/sshd || exit 1
+./configure                                  \
+    --prefix=/usr                            \
+    --sysconfdir=/etc/ssh                    \
+    --with-privsep-path=/var/lib/sshd        \
+    --with-default-path=/usr/bin             \
+    --with-superuser-path=/usr/sbin:/usr/bin \
+    --with-pid-dir=/run                      \
+    "${LIBEDIT}"                             \
+    "${PAM}"                                 \
+    "${KERBEROS5}" || exit 1
 
 make || exit 1
 
 # для выполнения тестов требуется установленная утилита 'scp', поэтому
-# скопируем ее в /usr/bin
+# скопируем ее в /usr/bin, предварительно сохранив старую копию scp, если она
+# существует
+if [ -e /usr/bin/scp ]; then
+    mv /usr/bin/scp /tmp
+fi
 cp scp /usr/bin
 
 # make -j1 tests
@@ -133,8 +139,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # rsh, and provide secure encrypted communications between two untrusted hosts
 # over an insecure network. sshd (SSH Daemon) is the daemon program for ssh.
 #
-# Home page: http://www.openssh.com/
-# Download:  http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.${PRGNAME}.com/
+# Download:  https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
