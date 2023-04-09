@@ -13,6 +13,7 @@ c-ares                              curl
 cmocka                              gnutls
 curl                                pciutils, gnupg
 datefudge                           gnutls
+dmidecode
 dovecot                             gnupg
 doxygen                             gnutls
 efl                                 pinentry
@@ -204,7 +205,6 @@ which                               pciutils, openssh
 # djvulibre                           imagemagick, zathura
 # dmalloc                             cyrus-sasl, lame, php, imagemagick
 # dmenu                               password-store, i3
-# dmidecode
 # dmraid                              libblockdev
 # dnsmasq
 # docbook-dsssl                       postgresql, docbook-utils

@@ -31,6 +31,8 @@ https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 http://sebastien.godard.pagesperso-orange.fr/sysstat-12.7.2.tar.xz
 https://downloads.sourceforge.net/project/net-tools/net-tools-2.10.tar.xz
 https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.2p1.tar.gz
+http://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.5.tar.xz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmidecode/dmidecode-3.5-OEM-record-type-237-offset.patch
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -950,7 +952,6 @@ https://mujs.com/downloads/mujs-1.2.0.tar.xz
 https://github.com/mpv-player/mpv/archive/v0.34.1/mpv-0.34.1.tar.gz
 https://waf.io/waf-2.0.20
 https://github.com/htop-dev/htop/releases/download/3.2.1/htop-3.2.1.tar.xz
-http://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.4.tar.xz
 https://github.com/lz4/lz4/archive/v1.9.4/lz4-1.9.4.tar.gz
 http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.0.0.tar.gz

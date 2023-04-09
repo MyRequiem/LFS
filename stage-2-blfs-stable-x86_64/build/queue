@@ -30,6 +30,7 @@ n/gnupg.sh
 ap/sysstat.sh
 n/net-tools.sh
 n/openssh.sh
+ap/dmidecode.sh
 
 a/zip.sh
 a/unzip.sh
@@ -870,7 +871,6 @@ l/libplacebo.sh
 d/mujs.sh
 ap/mpv.sh
 ap/htop.sh
-ap/dmidecode.sh
 l/lz4.sh
 a/lrzip.sh
 ap/mariadb.sh
