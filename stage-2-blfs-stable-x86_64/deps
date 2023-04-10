@@ -13,7 +13,7 @@ c-ares                              curl
 cmocka                              gnutls
 curl                                pciutils, gnupg
 datefudge                           gnutls
-dmidecode
+dmidecode                           lm-sensors
 dovecot                             gnupg
 doxygen                             gnutls
 efl                                 pinentry
@@ -58,6 +58,7 @@ libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxslt                             p11-kit
 linux-pam                           openssh
+lm-sensors
 lsb-tools
 lynx                                pciutils
 make-ca                             p11-kit, gnutls, wget, curl
@@ -85,6 +86,7 @@ pth                                 libidn, libgcrypt
 python3                             lsb-tools
 qt5                                 pinentry
 quiche                              curl
+rrdtool                             lm-sensors
 samba                               curl
 sendmail                            gnupg
 spnego                              curl
@@ -96,7 +98,7 @@ trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
-which                               pciutils, openssh
+which                               pciutils, openssh, lm-sensors
 
 # ===============================================================================
 # 3store                              redland
@@ -522,7 +524,6 @@ which                               pciutils, openssh
 # liquid-rescale                      imagemagick
 # lirc                                pulseaudio
 # llvm                                icu, mesa, rustc, dhcpcd, imagemagick
-# lm-sensors                          mesa, htop
 # lmdb                                php
 # lnav
 # lrdf                                gst-plugins-bad
@@ -906,7 +907,6 @@ which                               pciutils, openssh
 # rpcsvc-proto                        libnsl
 # rpm                                 rpm2tgz
 # rpm2tgz
-# rrdtool                             lm-sensors
 # rsync                               llvm, vim, apache-httpd
 # rtmpdump                            gst-plugins-bad
 # ruby                                docbook-xsl, vim, mc, mariadb, gegl

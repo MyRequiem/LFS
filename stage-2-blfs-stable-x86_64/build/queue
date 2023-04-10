@@ -31,6 +31,7 @@ ap/sysstat.sh
 n/net-tools.sh
 n/openssh.sh
 ap/dmidecode.sh
+ap/lm-sensors.sh
 
 a/zip.sh
 a/unzip.sh
@@ -91,7 +92,6 @@ a/smartmontools.sh
 a/usbutils.sh
 l/popt.sh
 ap/highlight.sh
-ap/lm-sensors.sh
 n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
