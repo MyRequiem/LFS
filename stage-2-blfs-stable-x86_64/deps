@@ -10,9 +10,11 @@ bash-completion
 blfs-bootscripts
 brotli                              gnutls, curl
 c-ares                              curl
+chronyd                             dhcpcd
 cmocka                              gnutls
 curl                                pciutils, gnupg
 datefudge                           gnutls
+dhcpcd
 dmidecode                           lm-sensors
 dovecot                             gnupg
 doxygen                             gnutls
@@ -58,6 +60,7 @@ libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxslt                             p11-kit
 linux-pam                           openssh
+llvm                                dhcpcd
 lm-sensors
 lsb-tools
 lynx                                pciutils
@@ -70,6 +73,7 @@ nghttp2                             curl
 ngtcp2                              curl
 npth                                gnupg
 nss                                 p11-kit, make-ca
+ntp                                 dhcpcd
 openjdk                             libidn
 openldap                            curl, gnupg
 opensc                              openssh
@@ -99,6 +103,7 @@ unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors
+ypbind                              dhcpcd
 
 # ===============================================================================
 # 3store                              redland
@@ -168,7 +173,6 @@ which                               pciutils, openssh, lm-sensors
 # cdb                                 php
 # cdparanoia-III                      gst-plugins-base
 # chromaprint                         gst-plugins-bad
-# chronyd                             dhcpcd
 # clipmenu                            dmenu
 # clipnotify                          clipmenu
 # clisp                               gpgme
@@ -198,7 +202,6 @@ which                               pciutils, openssh, lm-sensors
 # dejavu-fonts-ttf                    xterm, imagemagick
 # desktop-file-utils                  glib, fltk, wpa-supplicant
 # device-tree-compiler
-# dhcpcd
 # dialog                              alsa-utils
 # digest-crc                          parted
 # directfb                            links, cairo, sdl, sdl2
@@ -523,7 +526,6 @@ which                               pciutils, openssh, lm-sensors
 # links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
 # liquid-rescale                      imagemagick
 # lirc                                pulseaudio
-# llvm                                icu, mesa, rustc, dhcpcd, imagemagick
 # lmdb                                php
 # lnav
 # lrdf                                gst-plugins-bad
@@ -587,7 +589,6 @@ which                               pciutils, openssh, lm-sensors
 # npm                                 nodejs
 # nspr                                nss, rpm
 # ntfs-3g                             udisks
-# ntp                                 dhcpcd
 # numactl                             x265
 # numlockx
 # numpy                               python2-pygtk
@@ -1077,7 +1078,6 @@ which                               pciutils, openssh, lm-sensors
 # xxkb
 # yasm                                libjpeg-turbo, libvpx, mit-kerberos-v5, xvid, ffmpeg, tmux
 # yelp-tools                          dbus
-# ypbind                              dhcpcd
 # z3                                  llvm
 # zathura
 # zbar                                gst-plugins-bad

@@ -34,6 +34,7 @@ https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.2p1.tar.gz
 http://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.5.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmidecode/dmidecode-3.5-OEM-record-type-237-offset.patch
 https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
+https://roy.marples.name/downloads/dhcpcd/dhcpcd-9.4.1.tar.xz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -677,7 +678,6 @@ https://downloads.sourceforge.net/tcl/tk8.6.11.1-src.tar.gz
 https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz
 https://github.com/openjdk/jdk15u/archive/jdk-15.0.2-ga.tar.gz
 https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz
-https://roy.marples.name/downloads/dhcpcd/dhcpcd-9.4.0.tar.xz
 https://github.com/thom311/libnl/releases/download/libnl3_5_0/libnl-3.5.0.tar.gz
 https://www.kernel.org/pub/software/network/iw/iw-5.9.tar.xz
 https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz

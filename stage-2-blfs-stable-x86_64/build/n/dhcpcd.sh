@@ -19,58 +19,62 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+VAR_LIB_DHCPCD="/var/lib/dhcpcd"
+mkdir -pv "${TMP_DIR}${VAR_LIB_DHCPCD}"
+
+# директория /var/lib/dhcpcd должна присутствовать в системе
+if ! [ -d "${VAR_LIB_DHCPCD}" ]; then
+    install -v -m700 -d      "${VAR_LIB_DHCPCD}"
+    chown   -v dhcpcd:dhcpcd "${VAR_LIB_DHCPCD}"
+fi
 
 # добавим группу dhcpcd, если не существует
 ! grep -qE "^dhcpcd:" /etc/group  && \
     groupadd -g 52 dhcpcd
 
 # добавим пользователя dhcpcd, если не существует
-VAR_LIB_DHCPCD="/var/lib/dhcpcd"
 ! grep -qE "^dhcpcd:" /etc/passwd && \
-    useradd -c 'dhcpcd PrivSep'  \
-            -d ${VAR_LIB_DHCPCD} \
-            -g dhcpcd            \
-            -s /bin/false        \
+    useradd -c 'dhcpcd PrivSep'      \
+            -d ${VAR_LIB_DHCPCD}     \
+            -g dhcpcd                \
+            -s /bin/false            \
             -u 52 dhcpcd
+
+# исправим runtime error, вызванную изменениями в glibc-2.36
+sed '/Deny everything else/i SECCOMP_ALLOW(__NR_getrandom),' \
+    -i src/privsep-linux.c
 
 # по умолчанию /var/db не соответствует FHS
 #    --dbdir=/var/lib/dhcpcd
-# /libexec по умолчанию не совместим с FHS, но так как этот каталог должен быть
-# доступен в начале загрузки, /usr/libexec также нельзя использовать
-#    --libexecdir=/lib/dhcpcd
-./configure                 \
-    --sysconfdir=/etc       \
-    --privsepuser=dhcpcd    \
-    --dbdir=/var/lib/dhcpcd \
-    --libexecdir=/lib/dhcpcd || exit 1
+./configure                      \
+    --prefix=/usr                \
+    --sysconfdir=/etc            \
+    --libexecdir=/usr/lib/dhcpcd \
+    --dbdir="${VAR_LIB_DHCPCD}"  \
+    --runstatedir=/run           \
+    --disable-privsep || exit 1
 
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# install network service script: /lib/services/dhcpcd
+# install network service script: /usr/lib/services/dhcpcd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
-    make install-service-dhcpcd DESTDIR="${TMP_DIR}"
+    # по умолчанию устанавливается в /lib/services/, нам нужно в
+    # /usr/lib/services/
+    make install-service-dhcpcd DESTDIR="${TMP_DIR}/usr"
 )
 
-# исправим скрипт запуска сервиса
-#    pidfile_old="/var/run/dhcpcd-$1.pid"
+# исправим скрипт запуска сервиса:
+#    pidfile_old="/run/dhcpcd-$1.pid"
 #    ->
-#    pidfile_old="/var/run/dhcpcd/$1.pid"
-sed -i "s;/run/dhcpcd-;/run/dhcpcd/;g" "${TMP_DIR}/lib/services/dhcpcd"
+#    pidfile_old="/run/dhcpcd/$1.pid"
+sed -i "s;/run/dhcpcd-;/run/dhcpcd/;g" "${TMP_DIR}/usr/lib/services/dhcpcd"
 
-ETC_SYSCONFIG="/etc/sysconfig"
-mkdir -p "${TMP_DIR}${ETC_SYSCONFIG}"
-cat << EOF > "${TMP_DIR}${ETC_SYSCONFIG}/ifconfig.eth0.dhcp.example"
-ONBOOT="yes"
-IFACE="eth0"
-SERVICE="dhcpcd"
-# DHCP_START=" <insert appropriate start options here>"
-DHCP_START="-b -q -t 10 -h 192.168.1.1"
-DHCP_STOP="-k <insert additional stop options here>"
-EOF
+# файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0,
+# устанавливаемый в LFS вместе с пакетом network-configuration, уже содержит
+# инструкции для настройки для DHCP
 
 DHCPCD_CONF="/etc/dhcpcd.conf"
 if [ -f "${DHCPCD_CONF}" ]; then

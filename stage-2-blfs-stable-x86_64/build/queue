@@ -32,6 +32,7 @@ n/net-tools.sh
 n/openssh.sh
 ap/dmidecode.sh
 ap/lm-sensors.sh
+n/dhcpcd.sh
 
 a/zip.sh
 a/unzip.sh
@@ -615,7 +616,6 @@ d/openjdk.sh
 n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh
-n/dhcpcd.sh
 l/libnl.sh
 l/libpcap.sh
 n/iw.sh
