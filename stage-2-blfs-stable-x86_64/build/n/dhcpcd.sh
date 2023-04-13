@@ -72,9 +72,37 @@ make install DESTDIR="${TMP_DIR}"
 #    pidfile_old="/run/dhcpcd/$1.pid"
 sed -i "s;/run/dhcpcd-;/run/dhcpcd/;g" "${TMP_DIR}/usr/lib/services/dhcpcd"
 
-# файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0,
-# устанавливаемый в LFS вместе с пакетом network-configuration, уже содержит
-# инструкции для настройки для DHCP
+# файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0
+# устанавливается в LFS вместе с пакетом network-configuration
+IFCONFIG_ETH0="/etc/sysconfig/ifconfig.eth0"
+cat << EOF > "${IFCONFIG_ETH0}"
+# Begin ${IFCONFIG_ETH0}
+
+ONBOOT=no
+IFACE=eth0
+
+# The SERVICE variable defines the method used for obtaining the IP address.
+# The LFS-Bootscripts package has a modular IP assignment format, and creating
+# additional files in the /lib/services/ directory allows other IP assignment
+# methods
+
+### for static IP: 192.168.1.7
+# SERVICE=ipv4-static
+# IP=192.168.1.7
+# PREFIX=24
+###
+
+### for DHCP and router with IP: 192.168.1.1
+SERVICE="dhcpcd"
+DHCP_START="--background --quiet --timeout 15 --ipv4only --hostname 192.168.1.1"
+DHCP_STOP="--ipv4only -k eth0"
+###
+
+# GATEWAY=
+# BROADCAST=
+
+# End ${IFCONFIG_ETH0}
+EOF
 
 DHCPCD_CONF="/etc/dhcpcd.conf"
 if [ -f "${DHCPCD_CONF}" ]; then
