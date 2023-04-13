@@ -103,7 +103,9 @@ unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors
+wireless-tools
 ypbind                              dhcpcd
+
 
 # ===============================================================================
 # 3store                              redland
@@ -1026,7 +1028,6 @@ ypbind                              dhcpcd
 # wgetpaste
 # whois
 # wildmidi                            gst-plugins-bad
-# wireless-tools                      pm-utils
 # wpa-supplicant
 # wpe-webkit                          gst-plugins-bad
 # wpebackend-fdo                      gst-plugins-bad

@@ -33,6 +33,7 @@ n/openssh.sh
 ap/dmidecode.sh
 ap/lm-sensors.sh
 n/dhcpcd.sh
+n/wireless-tools.sh
 
 a/zip.sh
 a/unzip.sh
@@ -619,7 +620,6 @@ n/ntp.sh
 l/libnl.sh
 l/libpcap.sh
 n/iw.sh
-n/wireless-tools.sh
 ap/pm-utils.sh
 n/wpa-supplicant.sh
 n/bind-utils.sh

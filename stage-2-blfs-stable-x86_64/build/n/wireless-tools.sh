@@ -34,7 +34,7 @@ tar xvf "${SOURCES}/${ARCH_NAME}.${VERSION}"*.tar.?z* || exit 1
 cd "${ARCH_NAME}.${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{sbin,usr/{include,lib,share/man/man{5,7,8}}}
+mkdir -pv "${TMP_DIR}"
 
 # устраним проблему, возникающую если доступно несколько беспроводных сетей
 patch --verbose -Np1 -i \
@@ -42,27 +42,9 @@ patch --verbose -Np1 -i \
 
 make || exit 1
 # пакет не имеет набора тестов
-
-# в Makefile нет параметра DESTDIR
-cp -a ifrename iwconfig iwevent iwgetid iwlist iwpriv iwspy "${TMP_DIR}/sbin"
-chmod 755 "${TMP_DIR}/sbin/"*
-
-cp -a "libiw.so.${VERSION}" iwlib.so "${TMP_DIR}/usr/lib"
-chmod 755 "${TMP_DIR}/usr/lib/"*
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -s "libiw.so.${VERSION}" libiw.so
-)
-
-cp -a iwlib.h wireless.h "${TMP_DIR}/usr/include"
-chmod 644                "${TMP_DIR}/usr/include/"*
-
-# man-страницы
-cp -a iftab.5         "${TMP_DIR}/usr/share/man/man5/"
-cp -a wireless.7      "${TMP_DIR}/usr/share/man/man7/"
-for MAN_PAGE in *.8; do
-    cp -a "${MAN_PAGE}" "${TMP_DIR}/usr/share/man/man8/"
-done
+make                        \
+    PREFIX="${TMP_DIR}/usr" \
+    INSTALL_MAN="${TMP_DIR}/usr/share/man" install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
