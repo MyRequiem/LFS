@@ -20,7 +20,7 @@ mkdir -pv "${TMP_DIR}"
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
-    --disable-static  || exit 1
+    --disable-static || exit 1
 
 make || exit 1
 # make check

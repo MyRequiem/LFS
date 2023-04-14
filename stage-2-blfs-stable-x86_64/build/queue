@@ -34,6 +34,9 @@ ap/dmidecode.sh
 ap/lm-sensors.sh
 n/dhcpcd.sh
 n/wireless-tools.sh
+l/libnl.sh
+n/iw.sh
+n/wpa-supplicant.sh
 
 a/zip.sh
 a/unzip.sh
@@ -617,11 +620,8 @@ d/openjdk.sh
 n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh
-l/libnl.sh
 l/libpcap.sh
-n/iw.sh
 ap/pm-utils.sh
-n/wpa-supplicant.sh
 n/bind-utils.sh
 n/mit-kerberos-v5.sh
 n/traceroute.sh
