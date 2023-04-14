@@ -37,6 +37,9 @@ n/wireless-tools.sh
 l/libnl.sh
 n/iw.sh
 n/wpa-supplicant.sh
+l/libevent.sh
+d/yasm.sh
+ap/tmux.sh
 
 a/zip.sh
 a/unzip.sh
@@ -61,7 +64,6 @@ ap/sqlite.sh
 d/python2.sh
 d/python3.sh
 d/cython.sh
-d/yasm.sh
 ap/p7zip.sh
 l/apr.sh
 l/aspell.sh
@@ -181,7 +183,6 @@ l/harfbuzz.sh
 ap/graphite2.sh
 l/freetype.sh
 x/utils/util-macros.sh
-l/libevent.sh
 n/links.sh
 s/xmlto.sh
 ap/pm-utils.sh
@@ -754,7 +755,6 @@ ap/password-store.sh
 s/hddtemp.sh
 x/apps/i3.sh
 x/apps/bumblebee-status.sh
-ap/tmux.sh
 l/fuse2.sh
 a/ntfs-3g.sh
 s/archivemount.sh

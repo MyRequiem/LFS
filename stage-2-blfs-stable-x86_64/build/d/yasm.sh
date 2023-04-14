@@ -30,8 +30,9 @@ sed -i 's#) ytasm.*#)#' Makefile.in
 PYTHON="--disable-python"
 PYTHON_BINDINGS="--disable-python-bindings"
 
-command -v cython &>/dev/null && PYTHON="--enable-python" && \
-                                 PYTHON_BINDINGS="--enable-python-bindings"
+command -v cython &>/dev/null && \
+    PYTHON="--enable-python" && \
+    PYTHON_BINDINGS="--enable-python-bindings"
 
 ./configure       \
     --prefix=/usr \
@@ -57,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # information in STABS, DWARF 2, and CodeView 8 formats.
 #
 # Home page: http://www.tortall.net/projects/${PRGNAME}/
-# Download:  http://www.tortall.net/projects/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.tortall.net/projects/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

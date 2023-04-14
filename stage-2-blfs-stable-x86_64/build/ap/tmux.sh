@@ -8,8 +8,7 @@ PRGNAME="tmux"
 # утилиты GNU screen
 
 # Required:    libevent
-#              ncurses
-#              yasm или bison (для сборки)
+#              yasm
 # Recommended: no
 # Optional:    no
 
