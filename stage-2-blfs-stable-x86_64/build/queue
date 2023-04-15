@@ -40,6 +40,7 @@ n/wpa-supplicant.sh
 l/libevent.sh
 d/yasm.sh
 ap/tmux.sh
+l/fuse2.sh
 
 a/zip.sh
 a/unzip.sh
@@ -755,7 +756,6 @@ ap/password-store.sh
 s/hddtemp.sh
 x/apps/i3.sh
 x/apps/bumblebee-status.sh
-l/fuse2.sh
 a/ntfs-3g.sh
 s/archivemount.sh
 n/curlftpfs.sh

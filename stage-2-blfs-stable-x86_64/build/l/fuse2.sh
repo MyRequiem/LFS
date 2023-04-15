@@ -35,12 +35,17 @@ tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}/usr/sbin"
 
+patch -Np1 --verbose -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || exit 1
+
+autoreconf -fv || exit 1
 ./configure                   \
     --prefix=/usr             \
-    --bindir=/bin             \
-    --sbindir=/sbin           \
+    --bindir=/usr/bin         \
+    --sbindir=/usr/sbin       \
+    --libdir=/usr/lib         \
     --localstatedir=/var      \
     --enable-lib              \
     --enable-util             \
@@ -50,18 +55,15 @@ mkdir -pv "${TMP_DIR}/lib"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/etc/init.d"
 (
     cd "${TMP_DIR}" || exit 1
-    rm -rf dev
-)
+    # /sbin все равно остается, переместим в /usr/
+    if [ -d ./sbin ]; then
+        mv ./sbin/* ./usr/sbin/
+        rm -rf ./sbin
+    fi
 
-# переместим /usr/lib/libfuse.so.* в /lib и пересоздадим ссылку
-# /usr/lib/libfuse.so
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    mv -vf libfuse.so.* "${TMP_DIR}/lib"
-    ln -sfvn "../../lib/$(readlink libfuse.so)" libfuse.so
+    rm -rf ./etc/init.d ./dev
 )
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -43,6 +43,8 @@ https://w1.fi/releases/wpa_supplicant-2.10.tar.gz
 https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
 https://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
+https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/fuse2/fuse2-2.9.9-fix-build-with-glibc-2.34.patch
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -807,7 +809,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/hddtemp/hddtemp
 https://i3wm.org/downloads/i3-4.20.1.tar.xz
 https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.1.5/bumblebee-status-2.1.5.tar.gz
-https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/archivemount/manpage.diff
 https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
 http://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz

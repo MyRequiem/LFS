@@ -28,6 +28,7 @@ exim                                gnupg
 fig2dev                             gnupg
 fltk                                pinentry
 fuse                                gnupg
+fuse2
 gcc                                 pth
 gcr                                 pinentry
 gdb                                 openssh
@@ -276,7 +277,6 @@ ypbind                              dhcpcd
 # fribidi                             pango, libass, vte3, ffmpeg
 # frontbase                           php
 # fuse-zip                            vifm
-# fuse2                               ntfs-3g, archivemount
 # fusefat                             vifm
 # fuseiso                             vifm
 # fwtk                                sudo
