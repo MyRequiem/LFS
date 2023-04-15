@@ -45,6 +45,7 @@ https://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
 https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/fuse2/fuse2-2.9.9-fix-build-with-glibc-2.34.patch
+https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -84,9 +85,6 @@ http://www.fftw.org/fftw-3.3.9.tar.gz
 https://github.com/fribidi/fribidi/releases/download/v1.0.9/fribidi-1.0.9.tar.xz
 https://dist.libuv.org/dist/v1.41.0/libuv-v1.41.0.tar.gz
 http://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz
-http://xmlsoft.org/sources/libxml2-2.9.10.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/svn/libxml2-2.9.10-security_fixes-1.patch
-http://www.w3.org/XML/Test/xmlts20130923.tar.gz
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
 https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz

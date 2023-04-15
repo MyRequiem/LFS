@@ -39,6 +39,7 @@ gsasl                               curl
 gtk+2                               pinentry
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
+icu                                 libxml2
 imagemagick                         gnupg
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
@@ -110,7 +111,7 @@ texlive                             libunistring, gnutls, libassuan, libgcrypt, 
 tmux
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors
 wireless-tools
@@ -364,7 +365,6 @@ ypbind                              dhcpcd
 # ibm-db2                             php
 # ibus                                sdl2, qt5
 # icon-tools                          adwaita-icon-theme
-# icu                                 libxml2, python2-libxml2, boost, mozjs, nodejs, harfbuzz, llvm, libical, postgresql, qt5, raptor, vte3
 # id3lib
 # imake                               xxkb
 # imlib2                              w3m, feh, giblib, maim, scrot

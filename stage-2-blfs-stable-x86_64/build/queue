@@ -41,6 +41,7 @@ l/libevent.sh
 d/yasm.sh
 ap/tmux.sh
 l/fuse2.sh
+l/libxml2.sh
 
 a/zip.sh
 a/unzip.sh
@@ -74,7 +75,6 @@ l/fftw.sh
 l/fribidi.sh
 l/libuv.sh
 l/icu.sh
-l/libxml2.sh
 d/python-modules/python2-libxml2.sh
 l/lzo.sh
 l/libarchive.sh
