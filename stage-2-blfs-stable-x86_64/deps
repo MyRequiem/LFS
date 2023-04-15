@@ -7,6 +7,7 @@ X Window System                     openssh
 adns                                gnupg
 autogen                             gnutls
 bash-completion
+bindfs                              glib
 blfs-bootscripts
 brotli                              gnutls, curl
 c-ares                              curl
@@ -15,12 +16,12 @@ cmocka                              gnutls
 curl                                pciutils, gnupg
 cython                              yasm
 datefudge                           gnutls
-dbus                                wpa-supplicant
-desktop-file-utils                  wpa-supplicant
+dbus                                wpa-supplicant, glib
+desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
-docbook-xml                         libxslt
-docbook-xsl                         libxslt
+docbook-xml                         libxslt, glib
+docbook-xsl                         libxslt, glib
 dovecot                             gnupg
 doxygen                             gnutls, libevent
 efl                                 pinentry
@@ -29,18 +30,21 @@ etc-issue
 exim                                gnupg
 fig2dev                             gnupg
 fltk                                pinentry
-fuse                                gnupg
+fuse                                gnupg, glib
 fuse2
 gcc                                 pth
 gcr                                 pinentry
-gdb                                 openssh
+gdb                                 openssh, glib
 git                                 libidn2
+glib
+glib-networking                     glib
 gnupg
 gnutls                              wget, curl, gnupg
+gobject-introspection               glib
 gsasl                               curl
 gtk+2                               pinentry
 gtk+3                               pinentry
-gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
 icu                                 libxml2
 imagemagick                         gnupg
 impacket                            curl
@@ -69,7 +73,7 @@ libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxml2                             wpa-supplicant, libxslt
-libxslt                             p11-kit
+libxslt                             p11-kit, glib
 linux-pam                           openssh
 llvm                                dhcpcd
 lm-sensors
@@ -92,7 +96,7 @@ openssh
 p11-kit                             make-ca, gnutls
 pciutils
 pcre                                wget
-pcre2                               wget
+pcre2                               wget, glib
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget
 pinentry                            gnupg
@@ -106,9 +110,11 @@ quiche                              curl
 rrdtool                             lm-sensors
 samba                               curl
 sendmail                            gnupg
+shared-mime-info                    glib
 spnego                              curl
 sqlite                              gnupg
 stunnel                             curl
+sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
 tmux
@@ -121,7 +127,6 @@ wireless-tools
 wpa-supplicant
 yasm                                tmux
 ypbind                              dhcpcd
-
 
 # ===============================================================================
 # 3store                              redland
@@ -168,7 +173,6 @@ ypbind                              dhcpcd
 # berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd, php
 # bibtex                              libtheora
 # bind-utils                          mit-kerberos-v5
-# bindfs                              glib
 # birdstep                            php
 # blender                             imagemagick
 # bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5, qemu
@@ -301,8 +305,6 @@ ypbind                              dhcpcd
 # girara                              zathura
 # gjs                                 gobject-introspection, libsecret
 # glew
-# glib                                gobject-introspection, libgudev, dbus-glib, python-dbus, polkit, volume-key, mc, sshfs, harfbuzz, atk, shared-mime-info, gdk-pixbuf, cairo, pango, glibmm, at-spi2-core, vala, gcr, libxklavier, gstreamer, gsettings-desktop-schemas, glib-networking, bluez, desktop-file-utils, dconf, python2-pygobject2, pulseaudio, qt5, libgsf, json-glib, w3m, enchant, libsecret, libmypaint, apache-ant, qemu, libosinfo, megatools, girara, zathura
-# glib-networking                     glib, glibmm, libsoup, gimp
 # glibmm                              atkmm, pangomm
 # glm                                 slop
 # glu                                 freeglut, fltk, sdl
@@ -311,7 +313,6 @@ ypbind                              dhcpcd
 # gnome-shell                         polkit
 # gnome-themes-extra                  gtk+2
 # gnuplot                             imagemagick
-# gobject-introspection               glib, libgudev, polkit, upower, udisks, libblockdev, harfbuzz, atk, gdk-pixbuf, pango, gtk+2, at-spi2-core, gtk+3, gcr, gtk-vnc, libnotify, libxklavier, gstreamer, gst-plugins-base, gsettings-desktop-schemas, libsoup, libical, librsvg, python2-pygobject2, python3-pygobject3, ibus, libgsf, goffice, json-glib, babl, gegl, poppler, gjs, libsecret, vte2, vte3, gconf, libmypaint, spice-gtk
 # goffice
 # google-chrome
 # gpac                                x264
@@ -930,7 +931,6 @@ ypbind                              dhcpcd
 # septel                              libpcap
 # sg3-utils
 # sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
-# shared-mime-info                    glib, gdk-pixbuf
 # sharutils                           berkeley-db
 # shellcheck
 # silgraphite                         graphite2
@@ -959,7 +959,6 @@ ypbind                              dhcpcd
 # svgalib                             links, sdl
 # svthevcenc                          gst-plugins-bad
 # swig                                gpgme, volume-key, lcms
-# sysprof                             libsoup, gjs
 # systemtap                           gjs
 # t1lib                               php
 # taglib                              gst-plugins-good

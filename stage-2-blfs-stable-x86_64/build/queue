@@ -44,6 +44,7 @@ l/fuse2.sh
 l/libxml2.sh
 l/libxslt.sh
 n/p11-kit.sh
+l/glib.sh
 
 a/zip.sh
 a/unzip.sh
@@ -127,7 +128,6 @@ n/iptables.sh
 l/berkeley-db.sh
 a/sharutils.sh
 a/dbus.sh
-l/glib.sh
 d/python-modules/python-markupsafe.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-markdown.sh
@@ -223,7 +223,6 @@ x/fonts/wqy-zenhei-font-ttf.sh
 x/data/xkeyboard-config.sh
 l/atk.sh
 l/shared-mime-info.sh
-l/glib.sh
 x/misc/glu.sh
 x/misc/freeglut.sh
 l/libtiff.sh
@@ -316,7 +315,6 @@ l/libsndfile.sh
 l/lame.sh
 l/gsettings-desktop-schemas.sh
 l/glib-networking.sh
-l/glib.sh
 l/glibmm.sh
 l/libdazzle.sh
 l/libsoup.sh
@@ -338,7 +336,6 @@ l/fdk-aac.sh
 l/lcms2.sh
 l/libass.sh
 s/desktop-file-utils.sh
-l/glib.sh
 s/desktop-file-utils.sh
 l/fltk.sh
 ap/alsa-tools.sh
