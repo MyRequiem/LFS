@@ -7,14 +7,15 @@ PRGNAME="libxslt"
 # (XSLT - язык, используемый для преобразования документов XML)
 
 # Required:    libxml2
-# Recommended: docbook-xml (хоть зависимости и не прямые, но многие приложения
-#              docbook-xsl  использующие libxslt ожидают наличия этих двух пакетов)
+# Recommended: docbook-xml
+#              docbook-xsl
 # Optional:    libgcrypt
 #              python2-libxml2
 
-# *** Recommended: docbook-xml и docbook-xsl
-#       хоть зависимости и не прямые, но многие приложения, использующие
-#       libxslt ожидают наличия этих двух пакетов
+### NOTE:
+# Recommended: docbook-xml и docbook-xsl
+#    хоть зависимости и не прямые, но многие приложения, использующие libxslt
+#    ожидают наличия этих двух пакетов
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,34 +24,28 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# увеличим предел рекурсии с 3000 до 5000 в libxslt (необходимо некоторым
-# пакетам для их документации)
-sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml} || exit 1
+DOCS="false"
+GTK_DOC="false"
+DOC_DIR="/usr/share/doc"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+./configure                 \
+    --prefix=/usr           \
+    --disable-static        \
+    PYTHON=/usr/bin/python3 \
+    --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-
-# man-страницы генерируются в неверном формате, если установлены рекомендуемые
-# зависимости, поэтому нужно создать их заново
-sed -e \
-    's@http://cdn.docbook.org/release/xsl@https://cdn.docbook.org/release/xsl-nons@' \
-    -e 's@\$Date\$@31 October 2019@' -i doc/xsltproc.xml &&
-xsltproc/xsltproc --nonet doc/xsltproc.xml -o doc/xsltproc.1
-
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-DOCS="/usr/share/doc"
-mv "${TMP_DIR}${DOCS}/${PRGNAME}-python-${VERSION}" \
-    "${TMP_DIR}${DOCS}/${PRGNAME}-${VERSION}"
+[ "${DOCS}" == "false" ]    && rm -rf "${TMP_DIR}${DOC_DIR}"
+[ "${GTK_DOC}" == "false" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (XML transformation library)
 #
@@ -58,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # documents)
 #
 # Home page: http://xmlsoft.org/XSLT/
-# Download:  http://xmlsoft.org/sources/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -42,6 +42,8 @@ d/yasm.sh
 ap/tmux.sh
 l/fuse2.sh
 l/libxml2.sh
+l/libxslt.sh
+n/p11-kit.sh
 
 a/zip.sh
 a/unzip.sh
@@ -113,9 +115,7 @@ ap/unrar.sh
 s/sgml-common.sh
 d/nodejs.sh
 s/docbook-xml.sh
-l/libxslt.sh
 s/docbook-xsl.sh
-l/libxslt.sh
 x/misc/xdg-user-dirs.sh
 l/aalib.sh
 l/libsigc++2.sh

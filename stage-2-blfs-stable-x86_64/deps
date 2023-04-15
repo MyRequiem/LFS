@@ -19,6 +19,8 @@ dbus                                wpa-supplicant
 desktop-file-utils                  wpa-supplicant
 dhcpcd
 dmidecode                           lm-sensors
+docbook-xml                         libxslt
+docbook-xsl                         libxslt
 dovecot                             gnupg
 doxygen                             gnutls, libevent
 efl                                 pinentry
@@ -48,7 +50,7 @@ kernel-firmware
 libassuan                           pinentry, gnupg
 libedit                             pcre2, openssh
 libevent                            tmux
-libgcrypt                           gnupg
+libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls
 libidn2                             gnutls, libpsl, wget, curl
@@ -66,7 +68,7 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
-libxml2                             wpa-supplicant
+libxml2                             wpa-supplicant, libxslt
 libxslt                             p11-kit
 linux-pam                           openssh
 llvm                                dhcpcd
@@ -97,6 +99,7 @@ pinentry                            gnupg
 postfix                             gnupg
 pth                                 libidn, libgcrypt
 python2                             yasm
+python2-libxml2                     libxslt
 python3                             lsb-tools
 qt5                                 pinentry, wpa-supplicant
 quiche                              curl
@@ -228,8 +231,6 @@ ypbind                              dhcpcd
 # docbook-dtd3                        docbook-dsssl, docbook-utils
 # docbook-dtd4                        postgresql, docbook-dsssl
 # docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
-# docbook-xml                         libxslt, docbook-xsl, xdg-user-dirs, glib, polkit, itstool, xmlto, libdrm, libsecret, talloc, i3
-# docbook-xsl                         libxslt, xdg-user-dirs, asciidoc, glib, polkit, xmlto, libdrm, libsecret, talloc
 # docbook2x                           git
 # docwriter                           freetype
 # dosfstools                          parted, udisks
@@ -868,7 +869,6 @@ ypbind                              dhcpcd
 # python2-future
 # python2-futures                     isort2
 # python2-lazy-object-proxy           python2-astroid
-# python2-libxml2                     libxslt, docbook-xsl, gimp
 # python2-pies2overrides              python-pies
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
