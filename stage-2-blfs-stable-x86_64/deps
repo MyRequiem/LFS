@@ -119,6 +119,7 @@ python2                             yasm
 python2-libxml2                     libxslt
 python3                             lsb-tools
 python3-docutils                    sshfs
+pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
 rrdtool                             lm-sensors
