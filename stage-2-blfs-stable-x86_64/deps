@@ -9,7 +9,7 @@ autogen                             gnutls
 bash-completion
 bindfs                              glib
 blfs-bootscripts
-boost
+boost                               highlight
 brotli                              gnutls, curl
 c-ares                              curl
 chronyd                             dhcpcd
@@ -46,6 +46,7 @@ gsasl                               curl
 gtk+2                               pinentry
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
+highlight
 icu                                 libxml2, boost
 imagemagick                         gnupg
 impacket                            curl
@@ -79,7 +80,7 @@ linux-pam                           openssh
 llvm                                dhcpcd
 lm-sensors
 lsb-tools
-lua
+lua                                 highlight
 lynx                                pciutils
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl, openssh
@@ -110,7 +111,7 @@ python2                             yasm
 python2-libxml2                     libxslt
 python3                             lsb-tools
 python3-docutils                    sshfs
-qt5                                 pinentry, wpa-supplicant
+qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
 rrdtool                             lm-sensors
 samba                               curl
@@ -133,7 +134,6 @@ wireless-tools
 wpa-supplicant
 yasm                                tmux
 ypbind                              dhcpcd
-
 
 # ===============================================================================
 # 3store                              redland
@@ -355,7 +355,6 @@ ypbind                              dhcpcd
 # heimdal-gssapi                      exim
 # help2man                            pango, vala
 # hicolor-icon-theme                  gtk+2, gtk+3, fltk
-# highlight                           vifm
 # hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 # hp2xx                               imagemagick
 # hplip                               cups

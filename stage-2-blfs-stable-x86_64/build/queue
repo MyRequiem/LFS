@@ -49,6 +49,7 @@ l/glib.sh
 n/sshfs.sh
 d/lua.sh
 l/boost.sh
+ap/highlight.sh
 
 a/zip.sh
 a/unzip.sh
@@ -103,7 +104,6 @@ d/gcc.sh
 a/smartmontools.sh
 a/usbutils.sh
 l/popt.sh
-ap/highlight.sh
 n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
@@ -409,7 +409,6 @@ l/sdl2.sh
 l/gst-plugins-base.sh
 l/qt5.sh
 d/cmake.sh
-ap/highlight.sh
 n/gpgme.sh
 l/cairo.sh
 l/gst-plugins-base.sh
