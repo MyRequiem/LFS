@@ -54,6 +54,9 @@ l/lzo.sh
 l/libarchive.sh
 d/autoconf213.sh
 s/archivemount.sh
+s/fuseiso.sh
+n/curlftpfs.sh
+ap/vifm.sh
 
 a/zip.sh
 a/unzip.sh
@@ -754,9 +757,6 @@ s/hddtemp.sh
 x/apps/i3.sh
 x/apps/bumblebee-status.sh
 a/ntfs-3g.sh
-n/curlftpfs.sh
-s/fuseiso.sh
-ap/vifm.sh
 ap/gcolor2.sh
 ap/gsimplecal.sh
 ap/imwheel.sh

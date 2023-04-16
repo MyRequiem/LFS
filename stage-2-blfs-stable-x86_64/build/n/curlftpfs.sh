@@ -36,8 +36,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # CurlFtpFS is a filesystem for acessing ftp hosts based on FUSE and libcurl.
 # It automatically reconnects if the server times out.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
-# Download:  http://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.sourceforge.net/
+# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+#
 #
 EOF
 
