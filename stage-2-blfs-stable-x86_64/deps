@@ -23,7 +23,7 @@ dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib
 docbook-xsl                         libxslt, glib
 dovecot                             gnupg
-doxygen                             gnutls, libevent
+doxygen                             gnutls, libevent, fuse
 efl                                 pinentry
 emacs                               libidn, pinentry
 etc-issue
@@ -102,6 +102,7 @@ perl-io-socket-ssl                  wget
 pinentry                            gnupg
 postfix                             gnupg
 pth                                 libidn, libgcrypt
+pytest                              fuse
 python2                             yasm
 python2-libxml2                     libxslt
 python3                             lsb-tools
@@ -815,7 +816,6 @@ ypbind                              dhcpcd
 # pylint2
 # pylint3
 # pyrad                               mit-kerberos-v5
-# pytest                              fuse, python3-pygobject3
 # python-appdirs                      pylint3
 # python-atomicwrites                 python-pytest
 # python-attrs                        python-pytest

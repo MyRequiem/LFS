@@ -26,7 +26,6 @@ n/libassuan.sh
 n/libksba.sh
 n/libgcrypt.sh
 n/pinentry.sh
-n/gnupg.sh
 ap/sysstat.sh
 n/net-tools.sh
 n/openssh.sh
@@ -44,6 +43,8 @@ l/fuse2.sh
 l/libxml2.sh
 l/libxslt.sh
 n/p11-kit.sh
+l/fuse.sh
+n/gnupg.sh
 l/glib.sh
 
 a/zip.sh
@@ -83,7 +84,6 @@ l/lzo.sh
 l/libarchive.sh
 d/cmake.sh
 l/boost.sh
-l/fuse.sh
 l/iso-codes.sh
 l/json-c.sh
 l/libaio.sh

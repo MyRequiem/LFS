@@ -27,7 +27,6 @@ https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.2.1.tar.bz2
-https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 http://sebastien.godard.pagesperso-orange.fr/sysstat-12.7.2.tar.xz
 https://downloads.sourceforge.net/project/net-tools/net-tools-2.10.tar.xz
 https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.2p1.tar.gz
@@ -47,9 +46,10 @@ https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.g
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/fuse2/fuse2-2.9.9-fix-build-with-glibc-2.34.patch
 https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.37.tar.xz
+https://github.com/libfuse/libfuse/releases/download/fuse-3.13.1/fuse-3.13.1.tar.xz
+https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
-
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -93,7 +93,6 @@ http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
 https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz
 https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2
-https://github.com/libfuse/libfuse/releases/download/fuse-3.10.2/fuse-3.10.2.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/iso-codes/iso-codes-4.5.0.tar.xz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
 https://releases.pagure.org/libaio/libaio-0.3.112.tar.gz
