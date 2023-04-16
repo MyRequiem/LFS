@@ -51,6 +51,9 @@ https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
 https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.xz
+https://www.lua.org/ftp/lua-5.4.4.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/11.3/lua-5.4.4-shared_library-2.patch
+https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -72,8 +75,6 @@ http://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
-http://www.lua.org/ftp/lua-5.4.2.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/10.1/lua-5.4.2-shared_library-1.patch
 https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/autoconf-2.13-consolidated_fixes-1.patch
 https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz
@@ -93,7 +94,6 @@ http://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.
 http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
 https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz
-https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2
 http://anduin.linuxfromscratch.org/BLFS/iso-codes/iso-codes-4.5.0.tar.xz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
 https://releases.pagure.org/libaio/libaio-0.3.112.tar.gz

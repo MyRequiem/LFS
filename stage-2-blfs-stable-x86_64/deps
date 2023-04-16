@@ -9,6 +9,7 @@ autogen                             gnutls
 bash-completion
 bindfs                              glib
 blfs-bootscripts
+boost
 brotli                              gnutls, curl
 c-ares                              curl
 chronyd                             dhcpcd
@@ -45,7 +46,7 @@ gsasl                               curl
 gtk+2                               pinentry
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
-icu                                 libxml2
+icu                                 libxml2, boost
 imagemagick                         gnupg
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
@@ -78,6 +79,7 @@ linux-pam                           openssh
 llvm                                dhcpcd
 lm-sensors
 lsb-tools
+lua
 lynx                                pciutils
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl, openssh
@@ -89,6 +91,7 @@ ngtcp2                              curl
 npth                                gnupg
 nss                                 p11-kit, make-ca
 ntp                                 dhcpcd
+open-mpi                            boost
 openjdk                             libidn
 openldap                            curl, gnupg
 opensc                              openssh
@@ -125,7 +128,7 @@ trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2
 wget                                pciutils
-which                               pciutils, openssh, lm-sensors
+which                               pciutils, openssh, lm-sensors, boost
 wireless-tools
 wpa-supplicant
 yasm                                tmux
@@ -181,7 +184,6 @@ ypbind                              dhcpcd
 # blender                             imagemagick
 # bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5, qemu
 # bonjour                             postgresql
-# boost                               highlight, swig, libsigc++2, cairomm, mariadb, poppler, nghttp2, taglib
 # bpf-utils                           iptables
 # bpython
 # bs2b                                gst-plugins-bad
@@ -545,7 +547,6 @@ ypbind                              dhcpcd
 # lsof
 # lsscsi
 # ltc-tools                           gst-plugins-bad
-# lua                                 highlight, vim, gtk-engines, apache-httpd, mpv
 # luajit                              gegl
 # lvm2                                parted, cryptsetup, udisks
 # lxsession                           polkit
@@ -607,7 +608,6 @@ ypbind                              dhcpcd
 # nuspell                             enchant
 # ocaml                               llvm
 # oniguruma                           slang, php, jq
-# open-mpi                            boost
 # openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
 # opencv                              gst-plugins-bad, ffmpeg

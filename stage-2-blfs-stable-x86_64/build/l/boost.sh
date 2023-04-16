@@ -8,7 +8,7 @@ PRGNAME="boost"
 # лаконичного кодирования различных повседневных подзадач программирования
 # (работа с данными, алгоритмами, файлами, потоками и т. п.)
 
-# Required:    python3
+# Required:    no
 # Recommended: which
 # Optional:    icu
 #              open-mpi (https://www.open-mpi.org/)
@@ -32,6 +32,10 @@ cd "${PRGNAME}_${ARCH_VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
 
+# изменения в boost-1.81.0 ломают несколько пакетов, использующих модуль
+# phoenix при компиляции с GCC. В BLFS это пакет libreoffice. Исправим:
+sed -i '/#include.*phoenix.*tuple.hpp.*/d' boost/phoenix/stl.hpp || exit 1
+
 # пакет лучше собирать в несколько потоков
 NUMJOBS="${MAKEFLAGS}"
 [ -z "${NUMJOBS}" ] && NUMJOBS="-j$(nproc)"
@@ -54,17 +58,15 @@ NUMJOBS="${MAKEFLAGS}"
 # python3 test_all.py
 # popd || exit 1
 
+# Boost устанавливает множество каталогов в /usr/lib/cmake. Если новая версия
+# Boost установливается поверх предыдущей версии, старые каталоги cmake должны
+# быть явно удалены:
+rm -rf /usr/lib/cmake/[Bb]oost*
+
 ./b2 install        \
     threading=multi \
     link=shared     \
     --prefix="${TMP_DIR}/usr"
-
-# ссылка в /usr/include/boost/uuid/
-#    sha1.hpp -> detail/sha1.hpp
-(
-    cd "${TMP_DIR}/usr/include/boost/uuid/" || exit 1
-    ln -svf detail/sha1.hpp sha1.hpp
-)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -80,8 +82,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libraries for linear algebra, pseudorandom number generation, multithreading,
 # image processing, regular expressions and unit testing.
 #
-# Home page: http://www.boost.org/
-# Download:  https://dl.bintray.com/boostorg/release/${VERSION}/source/${PRGNAME}_${ARCH_VERSION}.tar.bz2
+# Home page: http://www.${PRGNAME}.org/
+# Download:  https://boostorg.jfrog.io/artifactory/main/release/${VERSION}/source/${PRGNAME}_${ARCH_VERSION}.tar.bz2
 #
 EOF
 

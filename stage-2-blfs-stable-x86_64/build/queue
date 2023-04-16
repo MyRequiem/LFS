@@ -47,6 +47,8 @@ l/fuse.sh
 n/gnupg.sh
 l/glib.sh
 n/sshfs.sh
+d/lua.sh
+l/boost.sh
 
 a/zip.sh
 a/unzip.sh
@@ -65,7 +67,6 @@ ap/sudo.sh
 ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
-d/lua.sh
 d/autoconf213.sh
 ap/sqlite.sh
 d/python2.sh
@@ -84,7 +85,6 @@ d/python-modules/python2-libxml2.sh
 l/lzo.sh
 l/libarchive.sh
 d/cmake.sh
-l/boost.sh
 l/iso-codes.sh
 l/json-c.sh
 l/libaio.sh
