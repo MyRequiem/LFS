@@ -46,6 +46,7 @@ n/p11-kit.sh
 l/fuse.sh
 n/gnupg.sh
 l/glib.sh
+n/sshfs.sh
 
 a/zip.sh
 a/unzip.sh
@@ -176,7 +177,6 @@ a/upower.sh
 a/udisks.sh
 d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
-n/sshfs.sh
 l/apr-util.sh
 l/freetype.sh
 ap/graphite2.sh

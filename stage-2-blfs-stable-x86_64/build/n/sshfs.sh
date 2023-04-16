@@ -12,7 +12,7 @@ PRGNAME="sshfs"
 #              glib
 #              openssh
 # Recommended: no
-# Optional:    python-docutils (для создания man-страниц)
+# Optional:    python3-docutils (для создания man-страниц)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,8 +24,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1

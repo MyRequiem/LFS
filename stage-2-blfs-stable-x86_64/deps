@@ -30,13 +30,13 @@ etc-issue
 exim                                gnupg
 fig2dev                             gnupg
 fltk                                pinentry
-fuse                                gnupg, glib
+fuse                                gnupg, glib, sshfs
 fuse2
 gcc                                 pth
 gcr                                 pinentry
 gdb                                 openssh, glib
 git                                 libidn2
-glib
+glib                                sshfs
 glib-networking                     glib
 gnupg
 gnutls                              wget, curl, gnupg
@@ -92,7 +92,7 @@ ntp                                 dhcpcd
 openjdk                             libidn
 openldap                            curl, gnupg
 opensc                              openssh
-openssh
+openssh                             sshfs
 p11-kit                             make-ca, gnutls
 pciutils
 pcre                                wget
@@ -106,6 +106,7 @@ pytest                              fuse
 python2                             yasm
 python2-libxml2                     libxslt
 python3                             lsb-tools
+python3-docutils                    sshfs
 qt5                                 pinentry, wpa-supplicant
 quiche                              curl
 rrdtool                             lm-sensors
@@ -114,6 +115,7 @@ sendmail                            gnupg
 shared-mime-info                    glib
 spnego                              curl
 sqlite                              gnupg
+sshfs
 stunnel                             curl
 sysprof                             glib
 sysstat                             openssh
@@ -128,6 +130,7 @@ wireless-tools
 wpa-supplicant
 yasm                                tmux
 ypbind                              dhcpcd
+
 
 # ===============================================================================
 # 3store                              redland
@@ -826,7 +829,6 @@ ypbind                              dhcpcd
 # python-d-bus                        dbus, udisks
 # python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
-# python-docutils                     python-dbus, sshfs, alsa-utils, mpv
 # python-funcsigs                     python-pytest
 # python-functools-lru-cache          pylint3, pylint2
 # python-greenlet                     bpython
@@ -952,7 +954,6 @@ ypbind                              dhcpcd
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
 # srt                                 gst-plugins-bad
-# sshfs                               vifm
 # startup-notification                rxvt-unicode, i3
 # subversion                          cmake, git
 # sudo
