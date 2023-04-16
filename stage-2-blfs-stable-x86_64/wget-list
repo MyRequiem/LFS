@@ -55,6 +55,12 @@ https://www.lua.org/ftp/lua-5.4.4.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/lua-5.4.4-shared_library-2.patch
 https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
 http://www.andre-simon.de/zip/highlight-4.4.tar.bz2
+https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
+https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/11.3/autoconf-2.13-consolidated_fixes-1.patch
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/archivemount/archivemount-0.9.1-manpage.diff
+https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -76,8 +82,6 @@ http://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
-https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/10.1/autoconf-2.13-consolidated_fixes-1.patch
 https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
@@ -92,8 +96,6 @@ http://www.fftw.org/fftw-3.3.9.tar.gz
 https://github.com/fribidi/fribidi/releases/download/v1.0.9/fribidi-1.0.9.tar.xz
 https://dist.libuv.org/dist/v1.41.0/libuv-v1.41.0.tar.gz
 http://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz
-http://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-https://github.com/libarchive/libarchive/releases/download/3.5.1/libarchive-3.5.1.tar.xz
 https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz
 http://anduin.linuxfromscratch.org/BLFS/iso-codes/iso-codes-4.5.0.tar.xz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
@@ -807,8 +809,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/hddtemp/hddtemp
 https://i3wm.org/downloads/i3-4.20.1.tar.xz
 https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.1.5/bumblebee-status-2.1.5.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/archivemount/manpage.diff
-https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
 http://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz
 http://downloads.sourceforge.net/fuseiso/fuseiso-20070708.tar.bz2
 https://prdownloads.sourceforge.net/vifm/vifm-0.12.tar.bz2

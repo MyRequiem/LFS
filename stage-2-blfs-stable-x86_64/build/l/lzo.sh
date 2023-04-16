@@ -25,7 +25,6 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-# проверить сборку
 # make check
 # полный набор тестов
 # make test
@@ -44,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # favors speed over compression ratio.
 #
 # Home page: http://www.oberhumer.com/opensource/${PRGNAME}/
-# Download:  http://www.oberhumer.com/opensource/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.oberhumer.com/opensource/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

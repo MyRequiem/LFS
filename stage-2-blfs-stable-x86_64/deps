@@ -5,6 +5,8 @@
 
 X Window System                     openssh
 adns                                gnupg
+archivemount
+autoconf213                         archivemount
 autogen                             gnutls
 bash-completion
 bindfs                              glib
@@ -32,7 +34,7 @@ exim                                gnupg
 fig2dev                             gnupg
 fltk                                pinentry
 fuse                                gnupg, glib, sshfs
-fuse2
+fuse2                               archivemount
 gcc                                 pth
 gcr                                 pinentry
 gdb                                 openssh, glib
@@ -53,6 +55,7 @@ impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
 iw
 kernel-firmware
+libarchive                          archivemount
 libassuan                           pinentry, gnupg
 libedit                             pcre2, openssh
 libevent                            tmux
@@ -74,7 +77,7 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
-libxml2                             wpa-supplicant, libxslt
+libxml2                             wpa-supplicant, libxslt, libarchive
 libxslt                             p11-kit, glib
 linux-pam                           openssh
 llvm                                dhcpcd
@@ -82,11 +85,12 @@ lm-sensors
 lsb-tools
 lua                                 highlight
 lynx                                pciutils
+lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl, openssh
 mono                                libidn
 net-tools                           gnutls, openssh
-nettle                              gnutls
+nettle                              gnutls, libarchive
 nghttp2                             curl
 ngtcp2                              curl
 npth                                gnupg
@@ -158,7 +162,6 @@ ypbind                              dhcpcd
 # appstream-glib                      gimp
 # apr                                 apr-util
 # apr-util                            apache-httpd
-# archivemount                        vifm
 # argon2                              cryptsetup
 # as31                                alsa-firmware
 # asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3, cppcheck
@@ -171,7 +174,6 @@ ypbind                              dhcpcd
 # at-spi2-core                        at-spi2-atk, python3-pyatspi2
 # atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 # atkmm                               gtkmm2, gtkmm3
-# autoconf213                         mozjs, archivemount
 # autotrace                           imagemagick
 # avahi                               cups, pulseaudio
 # babl                                gegl
@@ -413,7 +415,6 @@ ypbind                              dhcpcd
 # libaacplus                          ffmpeg
 # libaio                              lvm2, mariadb
 # libao
-# libarchive                          cmake, ed, libgxps, archivemount
 # libass                              gst-plugins-bad, ffmpeg, mpv
 # libasyncns                          pulseaudio
 # libatasmart                         udisks
@@ -551,7 +552,6 @@ ypbind                              dhcpcd
 # lxsession                           polkit
 # lz4                                 mariadb, rsync, lrzip
 # lzip                                ed
-# lzo                                 libarchive, cairo, qemu
 # maemo                               alsa-plugins
 # maim
 # man2html                            xterm

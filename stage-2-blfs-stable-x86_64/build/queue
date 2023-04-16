@@ -50,6 +50,10 @@ n/sshfs.sh
 d/lua.sh
 l/boost.sh
 ap/highlight.sh
+l/lzo.sh
+l/libarchive.sh
+d/autoconf213.sh
+s/archivemount.sh
 
 a/zip.sh
 a/unzip.sh
@@ -68,7 +72,6 @@ ap/sudo.sh
 ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
-d/autoconf213.sh
 ap/sqlite.sh
 d/python2.sh
 d/python3.sh
@@ -83,8 +86,6 @@ l/fribidi.sh
 l/libuv.sh
 l/icu.sh
 d/python-modules/python2-libxml2.sh
-l/lzo.sh
-l/libarchive.sh
 d/cmake.sh
 l/iso-codes.sh
 l/json-c.sh
@@ -753,7 +754,6 @@ s/hddtemp.sh
 x/apps/i3.sh
 x/apps/bumblebee-status.sh
 a/ntfs-3g.sh
-s/archivemount.sh
 n/curlftpfs.sh
 s/fuseiso.sh
 ap/vifm.sh

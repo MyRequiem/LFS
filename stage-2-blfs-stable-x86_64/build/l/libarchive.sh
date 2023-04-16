@@ -39,6 +39,9 @@ make || exit 1
 # LC_ALL=C make check
 make install DESTDIR="${TMP_DIR}"
 
+# удалим недопустимую запись в /usr/lib/pkgconfig/libarchive.pc
+sed -i "s/iconv //" "${TMP_DIR}/usr/lib/pkgconfig/libarchive.pc"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -51,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # several CPIO formats. It can also write SHAR archives.
 #
 # Home page: http://${PRGNAME}.org
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
