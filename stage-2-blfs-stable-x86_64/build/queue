@@ -59,6 +59,7 @@ n/curlftpfs.sh
 ap/vifm.sh
 s/pytrash.sh
 d/gc.sh
+n/w3m.sh
 
 a/zip.sh
 a/unzip.sh
@@ -436,7 +437,6 @@ l/json-glib.sh
 l/gtk+3.sh
 l/libseccomp.sh
 l/gdk-pixbuf-xlib.sh
-n/w3m.sh
 ap/asciidoc.sh
 s/xmlto.sh
 x/libs/xorg-libraries.sh

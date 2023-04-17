@@ -40,22 +40,26 @@ fuse2                               archivemount
 fusefat                             vifm
 fuseiso                             vifm
 gc
+gc                                  w3m
 gcc                                 pth
 gcr                                 pinentry
 gdb                                 openssh, glib
+gdk-pixbuf                          w3m
+gdk-pixbuf-xlib                     w3m
 git                                 libidn2
-glib                                sshfs
+glib                                sshfs, w3m
 glib-networking                     glib
 gnupg
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib
 gsasl                               curl
-gtk+2                               pinentry
+gtk+2                               pinentry, w3m
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
 highlight                           vifm
 icu                                 libxml2, boost
 imagemagick                         gnupg
+imlib2                              w3m
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
 iw
@@ -140,6 +144,7 @@ trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2
 vifm
+w3m
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors, boost
 wireless-tools
@@ -301,8 +306,6 @@ ypbind                              dhcpcd
 # game-music-emu                      gst-plugins-bad
 # gcolor2
 # gconf                               pulseaudio
-# gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler, rxvt-unicode
-# gdk-pixbuf-xlib                     w3m
 # gegl                                libmypaint, gimp
 # gelasio-font-ttf
 # geoexpress                          imagemagick
@@ -379,7 +382,6 @@ ypbind                              dhcpcd
 # icon-tools                          adwaita-icon-theme
 # id3lib
 # imake                               xxkb
-# imlib2                              w3m, feh, giblib, maim, scrot
 # imwheel
 # indic-fonts-ttf
 # inkscape                            adwaita-icon-theme, imagemagick
@@ -1019,7 +1021,6 @@ ypbind                              dhcpcd
 # vte2                                qemu
 # vte3                                qemu
 # vulkan                              gst-plugins-bad, qt5
-# w3m                                 asciidoc, xmlto, xorg-libraries, babl, mutt, xdg-utils, docbook-utils
 # wavpack                             gst-plugins-good
 # wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad, ibus, qt5
 # wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base, sdl2

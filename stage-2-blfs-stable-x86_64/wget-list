@@ -66,6 +66,7 @@ https://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz
 https://prdownloads.sourceforge.net/vifm/vifm-0.13.tar.bz2
 https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
 https://github.com/ivmai/bdwgc/releases/download/v8.2.2/gc-8.2.2.tar.gz
+https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -512,8 +513,6 @@ http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
 https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 http://anduin.linuxfromscratch.org/BLFS/gdk-pixbuf-xlib/gdk-pixbuf-xlib-3116b8ae.tar.xz
-https://jztkft.dl.sourceforge.net/project/w3m/w3m/w3m-0.5.3/w3m-0.5.3.tar.gz
-http://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3-37.debian.tar.xz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.28.tar.xz
 https://poppler.freedesktop.org/poppler-21.02.0.tar.xz
