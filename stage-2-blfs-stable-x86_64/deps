@@ -6,6 +6,7 @@
 X Window System                     openssh
 adns                                gnupg
 archivemount                        vifm
+asciidoc                            git
 autoconf213                         archivemount
 autogen                             gnutls
 bash-completion
@@ -16,16 +17,18 @@ brotli                              gnutls, curl
 c-ares                              curl
 chronyd                             dhcpcd
 cmocka                              gnutls
-curl                                pciutils, gnupg, curlftpfs
+curl                                pciutils, gnupg, curlftpfs, git
 curlftpfs                           vifm
 cython                              yasm
 datefudge                           gnutls
+dblatex                             git
 dbus                                wpa-supplicant, glib
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib
 docbook-xsl                         libxslt, glib
+docbook2x                           git
 dovecot                             gnupg
 doxygen                             gnutls, libevent, fuse
 efl                                 pinentry
@@ -49,7 +52,7 @@ gdk-pixbuf-xlib                     w3m
 git                                 libidn2
 glib                                sshfs, w3m
 glib-networking                     glib
-gnupg
+gnupg                               git
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib
 gsasl                               curl
@@ -110,13 +113,15 @@ open-mpi                            boost
 openjdk                             libidn
 openldap                            curl, gnupg
 opensc                              openssh
-openssh                             sshfs
+openssh                             sshfs, git
 p11-kit                             make-ca, gnutls
 pciutils
-pcre                                wget
-pcre2                               wget, glib
+pcre                                wget, git
+pcre2                               wget, glib, git
+perl-authen-sasl                    git
 perl-http-daemon                    wget
-perl-io-socket-ssl                  wget
+perl-io-socket-ssl                  wget, git
+perl-mime-base64                    git
 pinentry                            gnupg
 postfix                             gnupg
 pth                                 libidn, libgcrypt
@@ -136,21 +141,25 @@ spnego                              curl
 sqlite                              gnupg
 sshfs                               vifm
 stunnel                             curl
+subversion                          git
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
+tk                                  git
 tmux
 trousers                            gnutls
 unbound                             gnutls
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git
 vifm
 w3m
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors, boost
 wireless-tools
 wpa-supplicant
+xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
+
 
 # ===============================================================================
 # 3store                              redland
@@ -177,7 +186,6 @@ ypbind                              dhcpcd
 # apr-util                            apache-httpd
 # argon2                              cryptsetup
 # as31                                alsa-firmware
-# asciidoc                            git, graphite2, xorgproto, nasm, gegl, i3, cppcheck
 # asciidoctor                         git
 # aspell                              aspell-dict-en, aspell-dict-ru, enchant, php, mutt
 # aspell-dict-en
@@ -234,7 +242,6 @@ ypbind                              dhcpcd
 # cxxopts                             pamixer
 # cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 # dag                                 libpcap
-# dblatex                             asciidoc, git, graphite2, xmlto
 # dbmaker                             php
 # dbus-glib                           dbus, upower, enchant, gconf, gimp
 # dconf                               ibus
@@ -255,7 +262,6 @@ ypbind                              dhcpcd
 # docbook-dtd3                        docbook-dsssl, docbook-utils
 # docbook-dtd4                        postgresql, docbook-dsssl
 # docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
-# docbook2x                           git
 # docwriter                           freetype
 # dosfstools                          parted, udisks
 # dssim                               gst-plugins-bad
@@ -958,7 +964,6 @@ ypbind                              dhcpcd
 # spice-protocol                      spice, spice-gtk, virt-manager
 # srt                                 gst-plugins-bad
 # startup-notification                rxvt-unicode, i3
-# subversion                          cmake, git
 # sudo
 # svgalib                             links, sdl
 # svthevcenc                          gst-plugins-bad
@@ -973,7 +978,6 @@ ypbind                              dhcpcd
 # tibmachuni-font-ttf
 # tidy-html5                          php
 # time
-# tk                                  python2, python3, ruby, git
 # tokudb                              mariadb
 # tokyo-cabinet                       mutt
 # traceroute
@@ -1057,7 +1061,6 @@ ypbind                              dhcpcd
 # xinit
 # xkeyboard-config                    xorg-server, libxkbcommon
 # xmlrpc-epi                          php
-# xmlto                               pm-utils, dbus, git, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, xorg-server, libnotify, nasm, alsa-utils, giflib, xdg-utils, opensp, i3
 # xorg-amdgpu-driver
 # xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xdg-utils
 # xorg-ati-driver

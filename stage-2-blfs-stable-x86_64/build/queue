@@ -60,6 +60,7 @@ ap/vifm.sh
 s/pytrash.sh
 d/gc.sh
 n/w3m.sh
+d/git.sh
 
 a/zip.sh
 a/unzip.sh
@@ -173,7 +174,6 @@ n/cyrus-sasl.sh
 n/exim.sh
 a/smartmontools.sh
 d/cmake.sh
-d/git.sh
 d/cmake.sh
 d/llvm.sh
 d/rustc.sh
@@ -618,7 +618,6 @@ ap/tk.sh
 d/python2.sh
 d/python3.sh
 d/ruby.sh
-d/git.sh
 d/openjdk.sh
 n/cyrus-sasl.sh
 ap/cups.sh
