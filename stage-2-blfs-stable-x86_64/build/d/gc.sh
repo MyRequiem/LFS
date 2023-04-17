@@ -38,7 +38,7 @@ make install DESTDIR="${TMP_DIR}"
 
 (
     cd "${TMP_DIR}${MAN}" || exit 1
-    ln -svf gc.3 gc_malloc.3
+    ln -svf "${PRGNAME}.3" "${PRGNAME}_malloc.3"
 )
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -61,7 +61,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # is not its primary goal.
 #
 # Home page: https://www.hboehm.info/${PRGNAME}/
-# Download:  https://www.hboehm.info/${PRGNAME}/${PRGNAME}_source/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/ivmai/bdwgc/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

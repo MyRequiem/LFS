@@ -39,6 +39,7 @@ fuse-zip                            vifm
 fuse2                               archivemount
 fusefat                             vifm
 fuseiso                             vifm
+gc
 gcc                                 pth
 gcr                                 pinentry
 gdb                                 openssh, glib
@@ -61,6 +62,7 @@ iw
 kernel-firmware
 libarchive                          archivemount
 libassuan                           pinentry, gnupg
+libatomic-ops                       gc
 libedit                             pcre2, openssh
 libevent                            tmux
 libgcrypt                           gnupg, libxslt
@@ -297,7 +299,6 @@ ypbind                              dhcpcd
 # frontbase                           php
 # fwtk                                sudo
 # game-music-emu                      gst-plugins-bad
-# gc                                  guile, w3m
 # gcolor2
 # gconf                               pulseaudio
 # gdk-pixbuf                          gtk+2, gtk+3, gst-plugins-good, librsvg, libgsf, gdk-pixbuf-xlib, w3m, gegl, poppler, rxvt-unicode
@@ -420,7 +421,6 @@ ypbind                              dhcpcd
 # libass                              gst-plugins-bad, ffmpeg, mpv
 # libasyncns                          pulseaudio
 # libatasmart                         udisks
-# libatomic-ops                       gc, libdrm
 # libavc1394                          gst-plugins-good
 # libavtp                             alsa-plugins, gst-plugins-bad
 # libbacktrace                        gimp

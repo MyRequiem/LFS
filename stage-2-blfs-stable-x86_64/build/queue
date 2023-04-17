@@ -58,6 +58,7 @@ s/fuseiso.sh
 n/curlftpfs.sh
 ap/vifm.sh
 s/pytrash.sh
+d/gc.sh
 
 a/zip.sh
 a/unzip.sh
@@ -113,7 +114,6 @@ n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
-d/gc.sh
 d/guile.sh
 d/python-modules/python-pyyaml.sh
 d/llvm.sh
