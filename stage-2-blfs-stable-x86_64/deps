@@ -74,8 +74,8 @@ libedit                             pcre2, openssh
 libevent                            tmux
 libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
-libidn                              gnutls
-libidn2                             gnutls, libpsl, wget, curl
+libidn                              gnutls, whois
+libidn2                             gnutls, libpsl, wget, curl, whois
 libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant
@@ -154,6 +154,7 @@ vifm
 w3m
 wget                                pciutils
 which                               pciutils, openssh, lm-sensors, boost
+whois
 wireless-tools
 wpa-supplicant
 xmlto                               git
@@ -1033,7 +1034,6 @@ ypbind                              dhcpcd
 # webkitgtk                           zenity
 # webrtc-audio-processing             pulseaudio
 # wgetpaste
-# whois
 # wildmidi                            gst-plugins-bad
 # wpe-webkit                          gst-plugins-bad
 # wpebackend-fdo                      gst-plugins-bad

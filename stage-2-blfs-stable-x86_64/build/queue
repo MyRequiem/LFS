@@ -61,6 +61,7 @@ s/pytrash.sh
 d/gc.sh
 n/w3m.sh
 d/git.sh
+n/whois.sh
 
 a/zip.sh
 a/unzip.sh
@@ -627,7 +628,6 @@ ap/pm-utils.sh
 n/bind-utils.sh
 n/mit-kerberos-v5.sh
 n/traceroute.sh
-n/whois.sh
 n/fetchmail.sh
 n/mutt.sh
 l/adwaita-icon-theme.sh
