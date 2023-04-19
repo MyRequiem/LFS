@@ -16,6 +16,11 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 PRG_VERSION="$(grep "#define SQLITE_VERSION " sqlite3.c | cut -d \" -f 2)"
+if [ -z "${PRG_VERSION}" ]; then
+    echo "Can't determine package version in sqlite3.c"
+    exit 1
+fi
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PRG_VERSION}"
 mkdir -pv "${TMP_DIR}"
 
@@ -55,8 +60,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"
 # administer an SQLite database and which serves as an example of how to use
 # the SQLite library.
 #
-# Home page: https://sqlite.org
-# Download:  https://sqlite.org/2021/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org
+# Download:  https://${PRGNAME}.org/2022/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

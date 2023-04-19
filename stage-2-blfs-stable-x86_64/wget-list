@@ -47,6 +47,7 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.37.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.13.1/fuse-3.13.1.tar.xz
+https://sqlite.org/2022/sqlite-autoconf-3400100.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
@@ -70,6 +71,9 @@ https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-2.39.2.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-manpages-2.39.2.tar.xz
 https://github.com/rfc1036/whois/archive/v5.4.3/whois-5.4.3.tar.gz
+https://github.com/ggreer/the_silver_searcher/archive/2.2.0/the_silver_searcher-2.2.0.tar.gz
+https://github.com/soimort/translate-shell/archive/v0.9.7.1/translate-shell-0.9.7.1.tar.gz
+https://github.com/tstack/lnav/releases/download/v0.11.1/lnav-0.11.1.tar.gz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -91,7 +95,6 @@ http://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz
 http://download.savannah.gnu.org/releases/lzip/lzip-1.22.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
-https://sqlite.org/2021/sqlite-autoconf-3340100.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
@@ -819,7 +822,6 @@ http://downloads.sourceforge.net/gcolor2/gcolor2-0.4.tar.gz
 https://github.com/dmedvinsky/gsimplecal/archive/v2.3/gsimplecal-2.3.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/imwheel/imwheel-1.0.0pre12-noautoconfigurator.patch
 http://downloads.sourceforge.net/project/imwheel/imwheel-source/1.0.0pre12/imwheel-1.0.0pre12.tar.gz
-https://github.com/tstack/lnav/releases/download/v0.10.1/lnav-0.10.1.tar.gz
 https://megatools.megous.com/builds/megatools-1.10.3.tar.gz
 https://gitlab.com/thomasross/mirage/-/archive/0.11.1/mirage-0.11.1.tar.bz2
 http://ftp.gnu.org/gnu/help2man/help2man-1.49.2.tar.xz
@@ -828,8 +830,6 @@ http://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/prelink/prelink.conf
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
 https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
-https://github.com/ggreer/the_silver_searcher/archive/2.2.0/the_silver_searcher-2.2.0.tar.gz
-https://github.com/soimort/translate-shell/archive/v0.9.6.12/translate-shell-0.9.6.12.tar.gz
 https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 https://downloads.sourceforge.net/project/ramdefrag/ramdefrag/0.4.0/ramdefrag_0.4.0.tar.gz
 https://pypi.org/packages/source/u/urwid/urwid-2.1.2.tar.gz

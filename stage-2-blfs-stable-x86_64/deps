@@ -5,6 +5,7 @@
 
 X Window System                     openssh
 adns                                gnupg
+ag
 archivemount                        vifm
 asciidoc                            git
 autoconf213                         archivemount
@@ -70,7 +71,7 @@ kernel-firmware
 libarchive                          archivemount
 libassuan                           pinentry, gnupg
 libatomic-ops                       gc
-libedit                             pcre2, openssh
+libedit                             pcre2, openssh, sqlite
 libevent                            tmux
 libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
@@ -95,6 +96,7 @@ libxslt                             p11-kit, glib
 linux-pam                           openssh
 llvm                                dhcpcd
 lm-sensors
+lnav
 lsb-tools
 lua                                 highlight
 lynx                                pciutils
@@ -138,7 +140,7 @@ samba                               curl
 sendmail                            gnupg
 shared-mime-info                    glib
 spnego                              curl
-sqlite                              gnupg
+sqlite                              gnupg, lnav
 sshfs                               vifm
 stunnel                             curl
 subversion                          git
@@ -147,6 +149,7 @@ sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
 tk                                  git
 tmux
+translate-shell
 trousers                            gnutls
 unbound                             gnutls
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git
@@ -161,8 +164,7 @@ xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
 
-
-# ===============================================================================
+# ==============================================================================
 # 3store                              redland
 # aalib                               gst-plugins-good, sdl, gimp
 # acpid                               xorg-server
@@ -170,7 +172,6 @@ ypbind                              dhcpcd
 # adobe-source-code-pro-font
 # adwaita-icon-theme                  gtk+3
 # afs                                 sudo
-# ag
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao
 # alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
@@ -552,7 +553,6 @@ ypbind                              dhcpcd
 # liquid-rescale                      imagemagick
 # lirc                                pulseaudio
 # lmdb                                php
-# lnav
 # lrdf                                gst-plugins-bad
 # lrzip
 # lsof
@@ -983,7 +983,6 @@ ypbind                              dhcpcd
 # tokyo-cabinet                       mutt
 # traceroute
 # transfig                            libtheora
-# translate-shell
 # transmission
 # tree
 # tremor                              gst-plugins-base

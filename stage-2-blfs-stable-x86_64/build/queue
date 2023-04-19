@@ -44,6 +44,7 @@ l/libxml2.sh
 l/libxslt.sh
 n/p11-kit.sh
 l/fuse.sh
+ap/sqlite.sh
 n/gnupg.sh
 l/glib.sh
 n/sshfs.sh
@@ -62,6 +63,9 @@ d/gc.sh
 n/w3m.sh
 d/git.sh
 n/whois.sh
+s/ag.sh
+n/translate-shell.sh
+ap/lnav.sh
 
 a/zip.sh
 a/unzip.sh
@@ -80,7 +84,6 @@ ap/sudo.sh
 ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
-ap/sqlite.sh
 d/python2.sh
 d/python3.sh
 d/cython.sh
@@ -760,15 +763,12 @@ a/ntfs-3g.sh
 ap/gcolor2.sh
 ap/gsimplecal.sh
 ap/imwheel.sh
-ap/lnav.sh
 ap/megatools.sh
 ap/mirage.sh
 d/help2man.sh
 s/numlockx.sh
 s/prelink.sh
 ap/pwgen.sh
-s/ag.sh
-n/translate-shell.sh
 n/uget.sh
 s/ramdefrag.sh
 d/python-modules/python-urwid.sh
