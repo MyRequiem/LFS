@@ -66,6 +66,7 @@ n/whois.sh
 s/ag.sh
 n/translate-shell.sh
 ap/lnav.sh
+s/lshw.sh
 
 a/zip.sh
 a/unzip.sh

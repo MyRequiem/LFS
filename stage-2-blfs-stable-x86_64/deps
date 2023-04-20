@@ -98,6 +98,7 @@ llvm                                dhcpcd
 lm-sensors
 lnav
 lsb-tools
+lshw
 lua                                 highlight
 lynx                                pciutils
 lzo                                 libarchive
@@ -140,7 +141,7 @@ samba                               curl
 sendmail                            gnupg
 shared-mime-info                    glib
 spnego                              curl
-sqlite                              gnupg, lnav
+sqlite                              gnupg, lnav, lshw
 sshfs                               vifm
 stunnel                             curl
 subversion                          git
@@ -163,6 +164,7 @@ wpa-supplicant
 xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
+
 
 # ==============================================================================
 # 3store                              redland
