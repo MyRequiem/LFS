@@ -67,6 +67,7 @@ s/ag.sh
 n/translate-shell.sh
 ap/lnav.sh
 s/lshw.sh
+s/grc.sh
 
 a/zip.sh
 a/unzip.sh
