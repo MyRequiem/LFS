@@ -68,6 +68,7 @@ n/translate-shell.sh
 ap/lnav.sh
 s/lshw.sh
 s/grc.sh
+d/shellcheck.sh
 
 a/zip.sh
 a/unzip.sh
@@ -788,7 +789,6 @@ l/girara.sh
 l/djvulibre.sh
 xap/imagemagick.sh
 ap/zathura.sh
-d/shellcheck.sh
 ap/bviplus.sh
 ap/cmus.sh
 d/cppcheck.sh

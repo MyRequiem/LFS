@@ -141,6 +141,7 @@ rrdtool                             lm-sensors
 samba                               curl
 sendmail                            gnupg
 shared-mime-info                    glib
+shellcheck
 spnego                              curl
 sqlite                              gnupg, lnav, lshw
 sshfs                               vifm
@@ -946,7 +947,6 @@ ypbind                              dhcpcd
 # sg3-utils
 # sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
 # sharutils                           berkeley-db
-# shellcheck
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo

@@ -76,6 +76,8 @@ https://github.com/soimort/translate-shell/archive/v0.9.7.1/translate-shell-0.9.
 https://github.com/tstack/lnav/releases/download/v0.11.1/lnav-0.11.1.tar.gz
 https://www.ezix.org/software/files/lshw-B.02.19.2.tar.gz
 https://github.com/garabik/grc/archive/v1.13/grc-1.13.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/shellcheck/shellcheck.1
+https://github.com/koalaman/shellcheck/releases/download/v0.9.0/shellcheck-v0.9.0.linux.x86_64.tar.xz
 
 ================================================================================
 https://downloads.sourceforge.net/infozip/zip30.tar.gz
@@ -857,8 +859,6 @@ https://github.com/pwmt/zathura-pdf-poppler/archive/0.3.0/zathura-pdf-poppler-0.
 https://github.com/pwmt/zathura-djvu/archive/0.2.9/zathura-djvu-0.2.9.tar.gz
 https://github.com/pwmt/zathura-ps/archive/0.2.7/zathura-ps-0.2.7.tar.gz
 https://github.com/pwmt/zathura/archive/0.4.9/zathura-0.4.9.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/shellcheck/shellcheck.1
-https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/bviplus/bviplus.1
 https://downloads.sourceforge.net/project/bviplus/bviplus/1.0/bviplus-1.0.tgz
 https://github.com/cmus/cmus/archive/v2.9.1/cmus-2.9.1.tar.gz
