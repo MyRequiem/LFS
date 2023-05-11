@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="unzip"
+ARCH_NAME="${PRGNAME}60"
 VERSION="6.0"
 
 ### UnZip (ZIP extraction utilities)
@@ -19,8 +20,8 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/unzip60".tar.?z* || exit 1
-cd unzip60 || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}".tar.?z* || exit 1
+cd "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -49,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Info-ZIP utilities, primarily in a DOS environment.
 #
 # Home page: https://sourceforge.net/projects/infozip/
-# Download:  https://downloads.sourceforge.net/infozip/unzip60.tar.gz
+# Download:  https://downloads.sourceforge.net/infozip/${ARCH_NAME}.tar.gz
 #
 EOF
 
