@@ -71,6 +71,7 @@ s/grc.sh
 d/shellcheck.sh
 a/zip.sh
 a/unzip.sh
+ap/unrar.sh
 
 a/time.sh
 a/tree.sh
@@ -127,7 +128,6 @@ d/guile.sh
 d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh
-ap/unrar.sh
 s/sgml-common.sh
 d/nodejs.sh
 s/docbook-xml.sh

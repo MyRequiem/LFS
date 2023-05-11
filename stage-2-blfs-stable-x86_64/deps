@@ -155,6 +155,7 @@ tmux
 translate-shell
 trousers                            gnutls
 unbound                             gnutls
+unrar
 unzip
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git
 vifm
@@ -1002,7 +1003,6 @@ zip
 # uniconvertor                        imagemagick
 # unittest-cpp                        enchant
 # unixodbc                            openldap, apr-util, mariadb, qt5, php
-# unrar
 # upower
 # urlscan
 # usbredir                            spice-gtk

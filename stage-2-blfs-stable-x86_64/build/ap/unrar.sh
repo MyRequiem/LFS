@@ -31,36 +31,35 @@ tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/usr/"{bin,lib,include/unrar}
+mkdir -pv "${TMP_DIR}/usr/"{bin,lib,"include/${PRGNAME}"}
 
-# библиотека должна создаваться в виде libunrar.so.${VERSION}
-# (по умолчанию создается libunrar.so)
-sed -e "s#.*-shared -o libunrar.so.*#\t\$(LINK) -shared -Wl,-soname,libunrar.so.\$(libversion) -o libunrar.so.\$(libversion) \$(LDFLAGS) \$(OBJECTS) \$(LIB_OBJ)#" -i makefile || exit 1
+# изменим имя библитеки libunrar.so (by default) на libunrar.so.${VERSION}
+patch -p1 --verbose < "${SOURCES}/${PRGNAME}-${VERSION}-soname.patch"
 
 # копируем дерево исходников в директорию libunrar для сборки библиотеки
 cp -av . ../libunrar
 
-# собираем libunrar.so.${VERSION}
+# собираем и устанавливаем unrar и libunrar.so.${VERSION}
+make -f makefile                                || exit 1
 make -C ../libunrar lib libversion="${VERSION}" || exit 1
 
-# собираем unrar
-make -f makefile || exit 1
-
-# пакет не содержит набора тестов
-
-install -vm 755 unrar "${TMP_DIR}/usr/bin/unrar"
-
+install -vm 755 "${PRGNAME}" "${TMP_DIR}/usr/bin/${PRGNAME}"
 install -vm 755 "../libunrar/libunrar.so.${VERSION}" \
     "${TMP_DIR}/usr/lib/libunrar.so.${VERSION}"
 
+# ссылки в /usr/lib/
+#    libunrar.so.6 -> libunrar.so.6.2.6
+#    libunrar.so   -> libunrar.so.6
+#    libunrar.so.5 -> libunrar.so.6 (для совместимости)
 (
   cd "${TMP_DIR}/usr/lib" || exit 1
   MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
   ln -sv "libunrar.so.${VERSION}" "libunrar.so.${MAJ_VERSION}"
   ln -sv "libunrar.so.${MAJ_VERSION}" libunrar.so
+  ln -sv "libunrar.so.${MAJ_VERSION}" libunrar.so.5
 )
 
-cp -a ./*.cpp ./*.hpp "${TMP_DIR}/usr/include/unrar/"
+install -vm 644 dll.hpp "${TMP_DIR}/usr/include/${PRGNAME}/dll.hpp"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -77,7 +76,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # also be used by other programs to extract RAR archives.
 #
 # Home page: https://www.rarlab.com/rar_add.htm
-# Download:  http://www.rarlab.com/rar/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.rarlab.com/rar/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
