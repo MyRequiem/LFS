@@ -69,8 +69,8 @@ ap/lnav.sh
 s/lshw.sh
 s/grc.sh
 d/shellcheck.sh
-
 a/zip.sh
+
 a/unzip.sh
 a/time.sh
 a/tree.sh

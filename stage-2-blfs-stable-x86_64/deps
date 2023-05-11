@@ -166,6 +166,8 @@ wpa-supplicant
 xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
+zip
+
 
 # ==============================================================================
 # 3store                              redland
@@ -1089,7 +1091,6 @@ ypbind                              dhcpcd
 # zbar                                gst-plugins-bad
 # zenity
 # zeromq                              mariadb
-# zip                                 llvm, docbook-xsl, mc, openjdk
 # zvbi                                gst-plugins-bad, ffmpeg
 # zxing                               gst-plugins-bad
 
