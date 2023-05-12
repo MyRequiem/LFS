@@ -102,6 +102,7 @@ lsb-tools
 lshw
 lua                                 highlight
 lynx                                pciutils
+lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl, openssh
@@ -119,6 +120,7 @@ openldap                            curl, gnupg
 opensc                              openssh
 openssh                             sshfs, git
 p11-kit                             make-ca, gnutls
+p7zip
 pciutils
 pcre                                wget, git
 pcre2                               wget, glib, git
@@ -165,6 +167,7 @@ which                               pciutils, openssh, lm-sensors, boost
 whois
 wireless-tools
 wpa-supplicant
+wxwidgets                           p7zip
 xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
@@ -569,7 +572,6 @@ zip
 # lvm2                                parted, cryptsetup, udisks
 # lxsession                           polkit
 # lz4                                 mariadb, rsync, lrzip
-# lzip                                ed
 # maemo                               alsa-plugins
 # maim
 # man2html                            xterm
@@ -645,7 +647,6 @@ zip
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm                             php
 # oxygen-fonts-ttf
-# p7zip                               imagemagick
 # pakchois                            neon
 # pamixer
 # pandoc                              openjdk
@@ -1041,7 +1042,6 @@ zip
 # wpe-webkit                          gst-plugins-bad
 # wpebackend-fdo                      gst-plugins-bad
 # wqy-zenhei-font-ttf
-# wxwidgets                           p7zip
 # x264                                gst-plugins-ugly, ffmpeg, mpv
 # x265                                gst-plugins-bad, ffmpeg, mpv
 # xbanish

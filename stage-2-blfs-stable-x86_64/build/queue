@@ -72,6 +72,8 @@ d/shellcheck.sh
 a/zip.sh
 a/unzip.sh
 ap/unrar.sh
+ap/lzip.sh
+ap/p7zip.sh
 
 a/time.sh
 a/tree.sh
@@ -85,13 +87,11 @@ a/cpio.sh
 a/acpid.sh
 a/fcron.sh
 ap/sudo.sh
-ap/lzip.sh
 ap/pm-utils.sh
 d/c2man.sh
 d/python2.sh
 d/python3.sh
 d/cython.sh
-ap/p7zip.sh
 l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh

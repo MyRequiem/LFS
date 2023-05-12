@@ -20,16 +20,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+GUI="false"
+
 # не позволяем p7zip устанавливать сжатые (gzip) man-страницы
 sed '/^gzip/d' -i install.sh
+
+# устраним уязвимость в системе безопасности
+sed -i '160a if(_buffer == nullptr || _size == _pos) return E_FAIL;' \
+    CPP/7zip/Common/StreamObjects.cpp || exit 1
 
 make all3
 
 # make test
 
 if command -v wxrc &>/dev/null; then
-    make 7zG
-    # make test_7zG
+    if [[ "${GUI}" == "true" ]]; then
+        make 7zG
+        # make test_7zG
+    fi
 fi
 
 make                        \
@@ -50,8 +58,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # ARJ, CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, LZMA2, MBR,
 # MSI, MSLZ, NSIS, NTFS, RAR RPM, SquashFS, UDF, VHD, WIM, XAR and Z formats.
 #
-# Home page: https://sourceforge.net/projects/${PRGNAME}/
-# Download:  https://github.com/jinfeihan57/p7zip/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://github.com/${PRGNAME}-project/${PRGNAME}
+# Download:  https://github.com/${PRGNAME}-project/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
