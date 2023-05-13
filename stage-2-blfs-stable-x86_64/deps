@@ -98,10 +98,12 @@ linux-pam                           openssh
 llvm                                dhcpcd
 lm-sensors
 lnav
+lrzip
 lsb-tools
 lshw
 lua                                 highlight
 lynx                                pciutils
+lz4                                 lrzip
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
@@ -564,14 +566,12 @@ zip
 # lirc                                pulseaudio
 # lmdb                                php
 # lrdf                                gst-plugins-bad
-# lrzip
 # lsof
 # lsscsi
 # ltc-tools                           gst-plugins-bad
 # luajit                              gegl
 # lvm2                                parted, cryptsetup, udisks
 # lxsession                           polkit
-# lz4                                 mariadb, rsync, lrzip
 # maemo                               alsa-plugins
 # maim
 # man2html                            xterm

@@ -74,6 +74,8 @@ a/unzip.sh
 ap/unrar.sh
 ap/lzip.sh
 ap/p7zip.sh
+l/lz4.sh
+a/lrzip.sh
 
 a/time.sh
 a/tree.sh
@@ -869,8 +871,6 @@ l/libplacebo.sh
 d/mujs.sh
 ap/mpv.sh
 ap/htop.sh
-l/lz4.sh
-a/lrzip.sh
 ap/mariadb.sh
 n/rsync.sh
 l/cxxopts.sh
