@@ -76,6 +76,7 @@ ap/lzip.sh
 ap/p7zip.sh
 l/lz4.sh
 a/lrzip.sh
+ap/sudo.sh
 
 a/time.sh
 a/tree.sh
@@ -88,7 +89,6 @@ a/sharutils.sh
 a/cpio.sh
 a/acpid.sh
 a/fcron.sh
-ap/sudo.sh
 ap/pm-utils.sh
 d/c2man.sh
 d/python2.sh
@@ -165,7 +165,6 @@ l/rpcsvc-proto.sh
 l/libnsl.sh
 n/exim.sh
 a/fcron.sh
-ap/sudo.sh
 ap/at.sh
 ap/itstool.sh
 d/ruby.sh
@@ -178,7 +177,6 @@ l/libssh2.sh
 ap/mc.sh
 n/cyrus-sasl.sh
 n/openldap.sh
-ap/sudo.sh
 n/cyrus-sasl.sh
 n/exim.sh
 a/smartmontools.sh
@@ -371,7 +369,6 @@ l/imlib2.sh
 l/libwebp.sh
 l/libtiff.sh
 n/mit-kerberos-v5.sh
-ap/sudo.sh
 n/libtirpc.sh
 n/cyrus-sasl.sh
 ap/cups.sh

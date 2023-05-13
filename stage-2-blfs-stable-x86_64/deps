@@ -2,9 +2,9 @@
 # Пакет ........................... Зависимые пакеты
 ###***###
 
-
 X Window System                     openssh
 adns                                gnupg
+afs                                 sudo
 ag
 archivemount                        vifm
 asciidoc                            git
@@ -30,12 +30,12 @@ dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib
 docbook-xsl                         libxslt, glib
 docbook2x                           git
-dovecot                             gnupg
+dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse
 efl                                 pinentry
 emacs                               libidn, pinentry
 etc-issue
-exim                                gnupg
+exim                                gnupg, sudo
 fig2dev                             gnupg
 fltk                                pinentry
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
@@ -43,6 +43,7 @@ fuse-zip                            vifm
 fuse2                               archivemount
 fusefat                             vifm
 fuseiso                             vifm
+fwtk                                sudo
 gc
 gc                                  w3m
 gcc                                 pth
@@ -94,7 +95,7 @@ libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxml2                             wpa-supplicant, libxslt, libarchive
 libxslt                             p11-kit, glib
-linux-pam                           openssh
+linux-pam                           openssh, sudo
 llvm                                dhcpcd
 lm-sensors
 lnav
@@ -107,7 +108,7 @@ lz4                                 lrzip
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
-mit-kerberos-v5                     curl, openssh
+mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
@@ -118,9 +119,10 @@ nss                                 p11-kit, make-ca
 ntp                                 dhcpcd
 open-mpi                            boost
 openjdk                             libidn
-openldap                            curl, gnupg
+openldap                            curl, gnupg, sudo
 opensc                              openssh
 openssh                             sshfs, git
+opie                                sudo
 p11-kit                             make-ca, gnutls
 p7zip
 pciutils
@@ -131,7 +133,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 pinentry                            gnupg
-postfix                             gnupg
+postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 pytest                              fuse
 python2                             yasm
@@ -143,7 +145,7 @@ qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
 rrdtool                             lm-sensors
 samba                               curl
-sendmail                            gnupg
+sendmail                            gnupg, sudo
 shared-mime-info                    glib
 shellcheck
 spnego                              curl
@@ -151,6 +153,7 @@ sqlite                              gnupg, lnav, lshw
 sshfs                               vifm
 stunnel                             curl
 subversion                          git
+sudo
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
@@ -183,7 +186,6 @@ zip
 # adabas                              php
 # adobe-source-code-pro-font
 # adwaita-icon-theme                  gtk+3
-# afs                                 sudo
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao
 # alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
@@ -322,7 +324,6 @@ zip
 # frei0r-plugins                      ffmpeg
 # fribidi                             pango, libass, vte3, ffmpeg
 # frontbase                           php
-# fwtk                                sudo
 # game-music-emu                      gst-plugins-bad
 # gcolor2
 # gconf                               pulseaudio
@@ -638,7 +639,6 @@ zip
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
 # openslp                             openldap
 # opensp                              openjade, docbook-dsssl
-# opie                                sudo
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
 # opusfile                            cmus
@@ -972,7 +972,6 @@ zip
 # spice-protocol                      spice, spice-gtk, virt-manager
 # srt                                 gst-plugins-bad
 # startup-notification                rxvt-unicode, i3
-# sudo
 # svgalib                             links, sdl
 # svthevcenc                          gst-plugins-bad
 # swig                                gpgme, volume-key, lcms

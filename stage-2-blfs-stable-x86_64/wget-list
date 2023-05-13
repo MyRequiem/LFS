@@ -87,6 +87,7 @@ http://download.savannah.gnu.org/releases/lzip/lzip-1.23.tar.gz
 https://github.com/p7zip-project/p7zip/archive/v17.04/p7zip-17.04.tar.gz
 https://github.com/lz4/lz4/archive/v1.9.4/lz4-1.9.4.tar.gz
 http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
+https://www.sudo.ws/dist/sudo-1.9.13p1.tar.gz
 
 
 ================================================================================
@@ -102,7 +103,6 @@ https://ftp.gnu.org/gnu/sharutils/sharutils-4.15.2.tar.xz
 https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.bz2
 https://downloads.sourceforge.net/acpid2/acpid-2.0.32.tar.xz
 http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-http://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz
 https://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
