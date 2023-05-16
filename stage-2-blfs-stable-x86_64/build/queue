@@ -88,6 +88,7 @@ a/ntfs-3g.sh
 a/sharutils.sh
 a/cpio.sh
 a/acpid.sh
+a/elogind
 a/fcron.sh
 ap/pm-utils.sh
 d/c2man.sh
