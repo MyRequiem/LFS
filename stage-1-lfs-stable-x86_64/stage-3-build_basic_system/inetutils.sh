@@ -51,12 +51,12 @@ make install DESTDIR="${TMP_DIR}"
 # переместим утилиту 'ifconfig' из /usr/bin в /usr/sbin
 mv -v "${TMP_DIR}/usr"/{,s}bin/ifconfig
 
-# добавим suid-бит утилите ping для ее запуска от обычного пользователя
-chmod 4755 "${TMP_DIR}/usr/bin/ping"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
+
+# добавим suid-бит утилите ping для ее запуска от обычного пользователя
+chmod 4755 /usr/bin/ping
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)
