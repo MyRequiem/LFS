@@ -14,7 +14,7 @@ source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc/sysconfig"
+mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 
 ###
 # Конфигурация init
@@ -70,6 +70,16 @@ mkdir -pv "${TMP_DIR}/etc/sysconfig"
 # (перезагрузка). В этих каталогах скрипты всегда вызываются с параметром
 # 'stop' не зависимо от имени ссылки.
 
+RC_LOCAL="/etc/rc.d/rc.local"
+cat << EOF > "${TMP_DIR}${RC_LOCAL}"
+#!/bin/bash
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local startup commands in here
+
+EOF
+
 INITTAB="/etc/inittab"
 cat << EOF > "${TMP_DIR}${INITTAB}"
 # Begin ${INITTAB}
@@ -88,6 +98,8 @@ l3:3:wait:/etc/rc.d/init.d/rc 3
 l4:4:wait:/etc/rc.d/init.d/rc 4
 l5:5:wait:/etc/rc.d/init.d/rc 5
 l6:6:wait:/etc/rc.d/init.d/rc 6
+
+rc::bootwait:/etc/rc.d/rc.local
 
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
@@ -222,6 +234,8 @@ EOF
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
+chmod 754 "${RC_LOCAL}"
+
 ###
 # Настройка сценариев загрузки и завершения работы
 ###
@@ -264,6 +278,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (System V configuration)
 #
 # /etc/inittab
+# /etc/rc.d/rc.local
 # /etc/sysconfig/clock
 # /etc/sysconfig/console
 #
