@@ -95,12 +95,12 @@ su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
 # three virtual consoles are more than enough :)
-1:2345:respawn:/sbin/agetty --noclear tty1 9600
-2:2345:respawn:/sbin/agetty tty2 9600
-3:2345:respawn:/sbin/agetty tty3 9600
-# 4:2345:respawn:/sbin/agetty tty4 9600
-# 5:2345:respawn:/sbin/agetty tty5 9600
-# 6:2345:respawn:/sbin/agetty tty6 9600
+c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux
+c2:12345:respawn:/sbin/agetty 38400 tty2 linux
+c3:12345:respawn:/sbin/agetty 38400 tty3 linux
+# c4:12345:respawn:/sbin/agetty 38400 tty4 linux
+# c5:12345:respawn:/sbin/agetty 38400 tty5 linux
+# c6:12345:respawn:/sbin/agetty 38400 tty6 linux
 
 # End ${INITTAB}
 EOF
