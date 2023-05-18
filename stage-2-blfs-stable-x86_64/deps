@@ -157,6 +157,7 @@ sudo
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
+time
 tk                                  git
 tmux
 translate-shell
@@ -984,7 +985,6 @@ zip
 # thin-provisioning-tools             lvm2
 # tibmachuni-font-ttf
 # tidy-html5                          php
-# time
 # tokudb                              mariadb
 # tokyo-cabinet                       mutt
 # traceroute
