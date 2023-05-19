@@ -1,11 +1,12 @@
 #! /bin/bash
 
-PRGNAME=""
-ARCH_NAME=""
+PRGNAME="python3-lxml"
+ARCH_NAME="lxml"
 
-###  ()
+### python3-lxml (Python bindings for libxml2 and libxslt)
+# Python bindings для библиотек libxml2 и libxslt
 
-# Required:    no
+# Required:    libxslt
 # Recommended: no
 # Optional:    no
 
@@ -16,7 +17,7 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-##
+###
 # создаем в директории dist дерева исходников пакет
 ###
 # команда создает архив для этого пакета
@@ -49,19 +50,21 @@ pip3 install             \
     --find-links=./dist  \
     --no-cache-dir       \
     --no-user            \
-    --no-index <${ARCH_NAME}|${PRGNAME}>
+    --no-index ${ARCH_NAME}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} ()
+# Package: ${PRGNAME} (Python bindings for libxml2 and libxslt)
 #
+# lxml is a Pythonic binding for the libxml2 and libxslt libraries. It is
+# unique in that it combines the speed and feature completeness of these
+# libraries with the simplicity of a native Python API
 #
-# Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:
-#
+# Home page: https://${ARCH_NAME}.de/
+# Download:  https://files.pythonhosted.org/packages/source/l/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
