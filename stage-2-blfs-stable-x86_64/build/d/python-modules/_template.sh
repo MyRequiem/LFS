@@ -51,6 +51,10 @@ pip3 install             \
     --no-user            \
     --no-index <${ARCH_NAME}|${PRGNAME}>
 
+# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# перемещаем ее в ${TMP_DIR}/usr/bin/
+[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
