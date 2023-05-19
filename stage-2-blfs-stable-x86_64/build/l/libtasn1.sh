@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 VALGRIND="--disable-valgrind-tests"
 GTK_DOC="--disable-gtk-doc"
 
-command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
+# command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 ./configure       \
@@ -50,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # representing, encoding, transmitting, and decoding data in telecommunications
 # and computer networking.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

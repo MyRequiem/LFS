@@ -44,9 +44,15 @@ export XDG_RUNTIME_DIR=/tmp/xdg-runtime-\${USER}
 export MANPATH=/usr/share/man:/usr/local/share/man
 export INFOPATH=/usr/share/info
 export EDITOR=vim
-export PAGER=less
 HOSTNAME="\$(cat /etc/hostname)"
 export HOSTNAME
+
+VIMPAGER="\$(find /usr/share/vim/ -type f -name "less.sh" 2>/dev/null)"
+if [ -x "\${VIMPAGER}" ]; then
+    export PAGER="\${VIMPAGER}"
+else
+    export PAGER=/usr/bin/less
+fi
 
 # set the default system \$PATH
 export PATH="/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin"

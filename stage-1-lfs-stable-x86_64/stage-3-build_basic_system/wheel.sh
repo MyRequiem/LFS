@@ -13,9 +13,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
-SITE_PACKAGES="/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
-mkdir -pv "${TMP_DIR}${SITE_PACKAGES}"
+mkdir -pv "${TMP_DIR}"
 
 ###
 # создаем в директории dist дерева исходников пакет
@@ -42,15 +40,17 @@ pip3 wheel               \
     ./ || exit 1
 
 # устанавливаем созданный пакет в "${TMP_DIR}"
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+TARGET="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 pip3 install                  \
-    --target="${TMP_DIR}/usr" \
+    --target="${TARGET}"      \
     --find-links=./dist       \
     --no-index                \
-     ${PRGNAME}
+    ${PRGNAME}
 
-# перемещаем директории
-mv "${TMP_DIR}/usr/${PRGNAME}"                      "${TMP_DIR}${SITE_PACKAGES}"
-mv "${TMP_DIR}/usr/${PRGNAME}-${VERSION}.dist-info" "${TMP_DIR}${SITE_PACKAGES}"
+# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# перемещаем ее в ${TMP_DIR}/usr/bin/
+[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

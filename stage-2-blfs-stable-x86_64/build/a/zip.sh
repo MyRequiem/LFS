@@ -26,7 +26,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 cd "${ARCH_NAME}" || exit 1
 
-make -f unix/Makefile generic_gcc
+make -f unix/Makefile generic_gcc || exit 1
 # пакет не содержит набора тестов
 make prefix="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man/man1" \
     -f unix/Makefile install

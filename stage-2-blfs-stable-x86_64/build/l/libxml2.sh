@@ -5,10 +5,10 @@ PRGNAME="libxml2"
 ### libxml2 (XML parser library)
 # Библиотеки и утилиты для анализа XML файлов
 
-# Required: python3
-# Optional: python2
-#           icu      (для тестов)
-#           valgrind (для тестов)
+# Required:    no
+# Recommended: no
+# Optional:    icu      (для тестов)
+#              valgrind (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,62 +17,37 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
-
-# исправим проблему сборки с Python3 v3.9.0 и выше
-sed -i '/if Py/{s/Py/(Py/;s/)/))/}' python/{types.c,libxml.c} || exit 1
-
-# отключим один тест, который препятствует полному их выполнению
-sed -i 's/test.test/#&/' python/tests/tstLastError.py || exit 1
-
-# исправим ошибку сборки с пакетом icu-68.2
-sed -i 's/ TRUE/ true/' encoding.c
-
 ICU="--without-icu"
 command -v icuinfo &>/dev/null && ICU="--with-icu"
+
+DOCS="false"
+GTK_DOC="false"
+DOC_DIR="/usr/share/doc"
 
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
 # собирать модуль libxml2 для Python3 вместо Python2
-#    --with-python=/usr/bin/python3
-# включить поддержку многопоточности
-#    --with-threads
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
-    --with-history   \
-    "${ICU}"         \
-    --with-python=/usr/bin/python3 || exit 1
+#    PYTHON=/usr/bin/python3
+./configure                 \
+    --prefix=/usr           \
+    --sysconfdir=/etc       \
+    --disable-static        \
+    --with-history          \
+    "${ICU}"                \
+    PYTHON=/usr/bin/python3 \
+    --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-
-# распаковываем архив для тестов
-# tar xvf "${SOURCES}/xmlts"[0-9]*.tar.?z* || exit 1
-#
-# в тестах используется http://localhost/, поэтому на время тестов
-# рекомендуется отключить сервер httpd
-#    # /etc/init.d/httpd stop
-#
-# если установлен valgrind и мы хотим провести тесты на утечку памяти
-# make check-valgrind
-# иначе
-# make check > check.log
-#
-# вывод общего результата тестов:
-#    # grep -E '^Total|expected' check.log
-
 make install DESTDIR="${TMP_DIR}"
 
-DOCS="${TMP_DIR}/usr/share/doc"
-mv "${DOCS}/${PRGNAME}-python-${VERSION}" \
-    "${DOCS}/${PRGNAME}-${VERSION}/${PRGNAME}-python"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+[ "${DOCS}" == "false" ]    && rm -rf "${TMP_DIR}${DOC_DIR}"
+[ "${GTK_DOC}" == "false" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (XML parser library)
 #
@@ -84,7 +59,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # environments.
 #
 # Home page: http://xmlsoft.org/
-# Download:  http://xmlsoft.org/sources/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

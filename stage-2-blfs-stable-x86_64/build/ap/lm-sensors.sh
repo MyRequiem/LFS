@@ -9,7 +9,8 @@ PRGNAME="lm-sensors"
 
 # Required:    which
 # Recommended: no
-# Optional:    rrdtool (для сборки sensord) https://oss.oetiker.ch/rrdtool/
+# Optional:    rrdtool    (для сборки sensord) https://oss.oetiker.ch/rrdtool/
+#              dmidecode  https://www.nongnu.org/dmidecode/
 
 ### Конфигурация ядра
 #    CONFIG_MODULES=y
@@ -51,8 +52,7 @@ tar xvf "${SOURCES}/${PRGNAME}-${ARCH_VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-${ARCH_VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 make                      \
     PREFIX=/usr           \
@@ -65,8 +65,6 @@ make                   \
     PREFIX=/usr        \
     BUILD_STATIC_LIB=0 \
     MANDIR=/usr/share/man install DESTDIR="${TMP_DIR}"
-
-cp -rv README INSTALL doc/* "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -35,8 +35,11 @@ tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{/{bin,etc,lib,sbin},"${DOCS}"}
+mkdir -pv "${TMP_DIR}/etc"
+
+DOCS="false"
+DOXYGEN="false"
+# command -v doxygen &>/dev/null && DOXYGEN="true"
 
 # отключим установку ненужного загрузочного скрипта и правила udev
 sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
@@ -44,42 +47,38 @@ sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1
 
-# если пакет doxygen установлен, то пересоберем документацию
-# command -v doxygen &>/dev/null && doxygen doc/Doxyfile
+if [ "${DOCS}" == "true" ]; then
+    if [ "${DOXYGEN}" == "true" ]; then
+        doxygen doc/Doxyfile || exit 1
+    fi
+fi
 
 # тесты (требуется модуль 'pytest')
 # python3 -m pytest test/
 
 DESTDIR="${TMP_DIR}" ninja install
 
-# переместим /usr/lib/libfuse3.so.* в /lib и пересоздадим ссылку
-# /usr/lib/libfuse3.so
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    mv -vf libfuse3.so.* "${TMP_DIR}/lib"
-    ln -sfvn "../../lib/$(readlink libfuse3.so)" libfuse3.so
-)
-
-mv -vf "${TMP_DIR}/usr/bin/fusermount3" "${TMP_DIR}/bin"
-chmod u+s "${TMP_DIR}/bin/fusermount3"
-
-mv -vf "${TMP_DIR}/usr/sbin/mount.fuse3" "${TMP_DIR}/sbin"
+chmod u+s "${TMP_DIR}/usr/bin/fusermount3"
 
 # документация
-install -v -m644 ../doc/{README.NFS,kernel.txt} "${TMP_DIR}${DOCS}"
-# html доки более 50M
-# cp -Rv ../doc/html "${TMP_DIR}${DOCS}"
+if [ "${DOCS}" == "true" ]; then
+    DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
+    install -v -d -m755 "${TMP_DIR}${DOC_DIR}"
+    install -v -m644 ../doc/{README.NFS,kernel.txt} "${TMP_DIR}${DOC_DIR}"
+    cp -Rv ../doc/html "${TMP_DIR}${DOC_DIR}"
+fi
 
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
-FUSE_CONF="/etc/fuse.conf"
+FUSE_CONF="/etc/${PRGNAME}.conf"
 if [ -f "${FUSE_CONF}" ]; then
     mv "${FUSE_CONF}" "${FUSE_CONF}.old"
 fi
@@ -121,7 +120,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non privileged users to create and mount their own filesystem
 # implementations.
 #
-# Home page: http://${PRGNAME}.sourceforge.net
+# Home page: https://github.com/libfuse/libfuse
 # Download:  https://github.com/libfuse/libfuse/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

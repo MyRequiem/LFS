@@ -27,31 +27,33 @@ cat >> trust/trust-extract-compat << "EOF"
 # Copy existing anchor modifications to /etc/ssl/local
 /usr/libexec/make-ca/copy-trust-modifications
 
-# Generate a new trust store
-/usr/sbin/make-ca -f -g
+# Update trust stores
+/usr/sbin/make-ca -r
 EOF
 
-GTK_DOC="--disable-doc"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-doc"
+GTK_DOC="false"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
 
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    "${GTK_DOC}"      \
-    --with-trust-paths=/etc/pki/anchors || exit 1
+mkdir p11-build
+cd    p11-build || exit 1
 
-make || exit 1
-# make check
-make install DESTDIR="${TMP_DIR}"
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
+    -Dgtk_doc="false"   \
+    -Dtrust_paths=/etc/pki/anchors || exit 1
 
-[[ "x${GTK_DOC}" == "x--disable-doc" ]] && \
-    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
+
+[[ "x${GTK_DOC}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 # ссылка
 #    /usr/bin/update-ca-certificates -> ../libexec/p11-kit/trust-extract-compat
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sfv ../libexec/p11-kit/trust-extract-compat update-ca-certificates
+    ln -sfv ../libexec/${PRGNAME}/trust-extract-compat update-ca-certificates
 )
 
 # чтобы сделать систему прозрачной для центров сертификации при использовании
@@ -61,7 +63,7 @@ make install DESTDIR="${TMP_DIR}"
 # создадим ссылку /usr/lib/libnssckbi.so -> pkcs11/p11-kit-trust.so
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf ./pkcs11/p11-kit-trust.so libnssckbi.so
+    ln -svf ./pkcs11/${PRGNAME}-trust.so libnssckbi.so
 )
 
 # конфиг /etc/pkcs11/pkcs11.conf
@@ -86,14 +88,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # coordinating the use of PKCS#11 by different components or libraries living
 # in the same process.
 #
-# Home page: http://p11-glue.freedesktop.org/p11-kit.html
+# Home page: https://p11-glue.github.io/p11-glue/${PRGNAME}.html
 # Download:  https://github.com/p11-glue/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

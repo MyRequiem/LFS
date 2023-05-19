@@ -24,11 +24,16 @@ make install DESTDIR="${TMP_DIR}"
 # скрипт 'make-ca' загрузит в /etc/ssl/ файл certdata.txt, затем загрузит в
 # /etc/pki/ и обработает сертификаты включенные в него, для использования в
 # качестве якорей доверия модуля p11-kit
-"${TMP_DIR}"/usr/sbin/make-ca --get --destdir "${TMP_DIR}"
+# "${TMP_DIR}"/usr/sbin/make-ca --get --destdir "${TMP_DIR}"
 #    --get    - загрузить файл certdata.txt
+#
+# чтобы не использовать утилиту make-ca при установке пакета, мы сразу скачали
+# файл certdata.txt в директорию исходников: /root/src/lfs/src/certdata.txt
+cp "${SOURCES}/certdata.txt" "${TMP_DIR}/etc/ssl/" || exit 1
 
-MAKE_CA_CONF="/etc/make-ca.conf"
-cp "${TMP_DIR}${MAKE_CA_CONF}.dist" "${TMP_DIR}${MAKE_CA_CONF}"
+# копируем /etc/make-ca/make-ca.conf.dist в make-ca.conf
+MAKE_CA_CONF="/etc/${PRGNAME}/${PRGNAME}.conf"
+cp "${TMP_DIR}${MAKE_CA_CONF}"{.dist,} || exit 1
 
 UPDATE_PKI="/etc/cron.weekly/update-pki.sh"
 cat << EOF > "${TMP_DIR}${UPDATE_PKI}"
@@ -76,8 +81,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # dependencies for early system build, but has been written to be generic
 # enough for any Linux distribution.
 #
-# Home page: https://github.com/djlucas/make-ca/
-# Download:  https://github.com/djlucas/make-ca/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://github.com/djlucas/${PRGNAME}/
+# Download:  https://github.com/lfs-book/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

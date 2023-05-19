@@ -14,8 +14,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 autoreconf -vif || exit 1
 ./configure           \
@@ -23,12 +22,10 @@ autoreconf -vif || exit 1
   --sysconfdir=/etc   \
   --mandir=/usr/man   \
   --infodir=/usr/info \
-  --docdir="${DOCS}" || exit 1
+  --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
-
-cp -a AUTHORS COPYING README.md CHANGES "${TMP_DIR}${DOCS}"
 
 # скрипт /etc/profile.d/bash_completion.sh уже установлен с пакетом
 # 'etc-profile'

@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/GZIP/s/^/#/' makefile || exit 1
 
 GUI=""
-command -v assistant &>/dev/null && GUI="true"
+# command -v assistant &>/dev/null && GUI="true"
 
 make || exit 1
 
@@ -34,7 +34,7 @@ fi
 
 # пакет не содержит набора тестов
 
-make doc_dir="${DOCS}" install DESTDIR="${TMP_DIR}"
+make doc_dir="${DOCS}/" install DESTDIR="${TMP_DIR}"
 
 if [ -n "${GUI}" ]; then
     make install-gui DESTDIR="${TMP_DIR}"

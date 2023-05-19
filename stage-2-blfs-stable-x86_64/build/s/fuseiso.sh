@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Ridge, Joliet, and zisofs.
 #
 # Home page: https://sourceforge.net/projects/${PRGNAME}/
-# Download:  http://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

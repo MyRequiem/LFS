@@ -37,6 +37,9 @@ API_DOCS=""
 # command -v doxygen &>/dev/null && \
 #     DOXYGEN="--enable-doxygen-doc" && API_DOCS="true"
 
+# устраним проблему, из-за которой не работает event_rpcgen.py
+sed -i 's/python/&3/' event_rpcgen.py
+
 ./configure       \
     --prefix=/usr \
     "${DOXYGEN}"  \
@@ -44,9 +47,11 @@ API_DOCS=""
 
 make || exit 1
 
-[ -n "${API_DOCS}" ] && doxygen Doxyfile
+if [ -n "${API_DOCS}" ]; then
+    doxygen Doxyfile || exit 1
+fi
 
-# # тесты
+# тесты
 # make verify
 
 make install DESTDIR="${TMP_DIR}"

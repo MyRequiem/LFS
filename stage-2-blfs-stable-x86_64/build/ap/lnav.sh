@@ -5,7 +5,7 @@ PRGNAME="lnav"
 ### lnav (The Log File Navigator)
 # Усовершенствованная утилита для просмотра лог-файлов
 
-# Required:    no
+# Required:    sqlite
 # Recommended: no
 # Optional:    no
 
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # that these features will allow the user to quickly and efficiently zero in on
 # problems.
 #
-# Home page: http://${PRGNAME}.org
+# Home page: https://${PRGNAME}.org
 # Download:  https://github.com/tstack/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

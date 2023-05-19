@@ -41,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # providing similar functionalities, this utility is required by the LSB (Linux
 # Standard Base)
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -18,6 +18,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+### рекомендуемый на официальном сайте патч:
+#    dmioem: HPE OEM Record 237 Firmware change
+#    HPE OEM record type 237 offset 0x09 field was changed from a single
+#    byte STRING to a two byte WORD representing date
+patch --verbose -p1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-OEM-record-type-237-offset.patch" \
+    || exit 1
+
 DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 make prefix=/usr docdir="${DOC_DIR}"                              || exit 1
 make prefix=/usr docdir="${DOC_DIR}" install DESTDIR="${TMP_DIR}" || exit 1

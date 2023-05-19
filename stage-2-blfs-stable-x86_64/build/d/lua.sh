@@ -46,7 +46,7 @@ Cflags: -I\${includedir}
 EOF
 
 patch -Np1 --verbose -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-shared_library-1.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-shared_library-2.patch" || exit 1
 
 make linux
 
@@ -83,7 +83,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # embedded systems too.
 #
 # Home page: http://www.lua.org/
-# Download:  http://www.lua.org/ftp/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.lua.org/ftp/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -55,6 +55,9 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
+# добавим suid-бит утилите ping для ее запуска от обычного пользователя
+chmod 4755 /usr/bin/ping
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)
 #

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-issue"
+VERSION="11.3"
 
 ### /etc/issue (pre-login message)
 # Файл /etc/issue содержит сообщения, которые выводятся до приглашения на вход
@@ -22,8 +23,8 @@ PRGNAME="etc-issue"
 # \m   architecture identifier of the machine, e.g., x86_64
 # \n   nodename of the machine, also known as the hostname, e.g. lfs
 # \o   domainname of the machine
-# \r   release number of the kernel, e.g., 5.9.3
-# \t   current time
+# \r   release number of the kernel, e.g. 5.9.3
+# \t   current time, e.g. 23:23:26
 # \u   number of current users logged in
 # \U   string "N user" where N is the number of current users logged in
 # \v   version of the OS, e.g., the build-date etc, e.g.
@@ -32,17 +33,13 @@ PRGNAME="etc-issue"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
 
-TMP_DIR="/tmp/build-${PRGNAME}/package-${PRGNAME}"
-rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc"
-
+ISSUE="/etc/issue"
+# Вид устанавливаемого приглашения:
 # Linux 5.9.3 x86_64 (tty1)
 # Fri Apr 10 [23:23:26]
-printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${TMP_DIR}/etc/issue"
+printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${ISSUE}"
 
-/bin/cp -vpR "${TMP_DIR}"/* /
-
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (pre-login message)
 #
 # /etc/issue is a text file which contains a message or system identification
@@ -50,7 +47,6 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 # \\char sequences, if supported by the getty-type program employed on the
 # system
 #
+/etc
+${ISSUE}
 EOF
-
-source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}"

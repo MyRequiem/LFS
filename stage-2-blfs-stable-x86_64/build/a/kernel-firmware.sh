@@ -11,7 +11,7 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/lib/firmware"
+mkdir -pv "${TMP_DIR}/usr/lib/firmware"
 
 # удалим исходники carl9170fw
 if [ -d carl9170fw ]; then
@@ -20,8 +20,8 @@ if [ -d carl9170fw ]; then
     rm -rf carl9170fw
 fi
 
-cp -vpR ./* /lib/firmware
-cp -vpR ./* "${TMP_DIR}/lib/firmware"
+cp -vpR ./* /usr/lib/firmware/
+cp -vpR ./* "${TMP_DIR}/usr/lib/firmware/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Firmware for the kernel)

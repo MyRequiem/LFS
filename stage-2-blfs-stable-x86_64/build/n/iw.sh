@@ -30,7 +30,7 @@ sed -i "/INSTALL.*gz/s/.gz//" Makefile || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
-make SBINDIR=/sbin install DESTDIR="${TMP_DIR}"
+make SBINDIR=/usr/sbin install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

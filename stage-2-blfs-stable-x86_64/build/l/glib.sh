@@ -1,6 +1,8 @@
 #! /bin/bash
 
 PRGNAME="glib"
+DOCBOOK_XML_VER="4.5"
+DOCBOOK_XSL_VER="1.79.2"
 
 ### GLib (library of C routines)
 # Библиотеки низкого уровня, которые включают подпрограммы поддержки C, такие
@@ -8,14 +10,16 @@ PRGNAME="glib"
 
 # Required:    no
 # Recommended: libxslt
-#              pcre
-# Optional:    dbus   (для некоторых тестов)
-#              bindfs (для некоторых тестов) https://bindfs.org/
+#              pcre2
+# Optional:    dbus        (для некоторых тестов)
+#              fuse
+#              bindfs      (для некоторых тестов) https://bindfs.org/
 #              gdb
-#              docbook-xml
-#              docbook-xsl
-#              gtk-doc (для сборки API документации, см. конфигурацию ниже)
+#              docbook-xml (для сборки man-страниц)
+#              docbook-xsl (для сборки man-страниц)
+#              gtk-doc     (для сборки API документации, см. конфигурацию ниже)
 #              glib-networking
+#              sysprof
 #              gobject-introspection
 #              shared-mime-info
 #              desktop-file-utils
@@ -46,9 +50,13 @@ patch --verbose -Np1 -i \
 mkdir build
 cd build || exit 1
 
-# если установлен пакет gtk-doc, то можно собрать и установить API документацию
 GTK_DOC="false"
+MAN="false"
+
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+[ -d "/usr/share/xml/docbook/xml-dtd-${DOCBOOK_XML_VER}" ] && \
+    [ -d "/usr/share/xml/docbook/xsl-stylesheets-nons-${DOCBOOK_XSL_VER}" ] && \
+    MAN="true"
 
 # устанавливать man-страницы
 #    -Dman=true
@@ -56,7 +64,8 @@ GTK_DOC="false"
 #    -Dselinux=disabled
 meson                      \
     --prefix=/usr          \
-    -Dman=true             \
+    --buildtype=release    \
+    -Dman="${MAN}"         \
     -Dselinux=disabled     \
     -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
@@ -72,7 +81,12 @@ DESTDIR=${TMP_DIR} ninja install
 #    shared-mime-info
 #    desktop-file-utils
 #
-# ninja test
+### WARNING:
+# Не запускайте набор тестов от имени пользователя root, иначе некоторые тесты
+# неожиданно завершатся ошибкой и оставят некоторые несовместимые с FHS
+# каталоги в каталоге /usr
+#
+# LC_ALL=C ninja test
 
 # устанавливаем переменные среды GLIB_LOG_LEVEL (см. выше), G_FILENAME_ENCODING
 # и G_BROKEN_FILENAMES в /etc/profile.d/glib.sh
@@ -94,7 +108,6 @@ cat << EOF > "${TMP_DIR}${GLIB_SH}"
 
 # for instance GLIB_LOG_LEVEL=4 will skip output of Waring and Notice messages
 # (and Info/Debug messages if they are turned on)
-
 export GLIB_LOG_LEVEL=4
 
 # G_FILENAME_ENCODING
@@ -110,7 +123,7 @@ export GLIB_LOG_LEVEL=4
 
 # if the LANG you have set contains any form of "UTF-8", we will guess you are
 # using a UTF-8 locale. Hopefully we're correct
-if grep -iqE "export LANG=.*UTF-8\"$" /etc/profile.d/i18n.sh 2>/dev/null; then
+if grep -iqE "export LANG=.*UTF-8" /etc/profile.d/i18n.sh 2>/dev/null; then
     export G_FILENAME_ENCODING="@locale"
 fi
 

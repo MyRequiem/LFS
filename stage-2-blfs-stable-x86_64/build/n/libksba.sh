@@ -17,7 +17,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 VALGRIND="--disable-valgrind-tests"
-command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
+# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind-tests"
 
 ./configure       \
     --prefix=/usr \

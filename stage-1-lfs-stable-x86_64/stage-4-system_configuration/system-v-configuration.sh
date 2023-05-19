@@ -14,7 +14,7 @@ source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/etc/sysconfig"
+mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 
 ###
 # Конфигурация init
@@ -70,6 +70,16 @@ mkdir -pv "${TMP_DIR}/etc/sysconfig"
 # (перезагрузка). В этих каталогах скрипты всегда вызываются с параметром
 # 'stop' не зависимо от имени ссылки.
 
+RC_LOCAL="/etc/rc.d/rc.local"
+cat << EOF > "${TMP_DIR}${RC_LOCAL}"
+#!/bin/bash
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local startup commands in here
+
+EOF
+
 INITTAB="/etc/inittab"
 cat << EOF > "${TMP_DIR}${INITTAB}"
 # Begin ${INITTAB}
@@ -89,18 +99,20 @@ l4:4:wait:/etc/rc.d/init.d/rc 4
 l5:5:wait:/etc/rc.d/init.d/rc 5
 l6:6:wait:/etc/rc.d/init.d/rc 6
 
+rc::bootwait:/etc/rc.d/rc.local
+
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
 # three virtual consoles are more than enough :)
-1:2345:respawn:/sbin/agetty --noclear tty1 9600
-2:2345:respawn:/sbin/agetty tty2 9600
-3:2345:respawn:/sbin/agetty tty3 9600
-# 4:2345:respawn:/sbin/agetty tty4 9600
-# 5:2345:respawn:/sbin/agetty tty5 9600
-# 6:2345:respawn:/sbin/agetty tty6 9600
+c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux
+c2:12345:respawn:/sbin/agetty 38400 tty2 linux
+c3:12345:respawn:/sbin/agetty 38400 tty3 linux
+# c4:12345:respawn:/sbin/agetty 38400 tty4 linux
+# c5:12345:respawn:/sbin/agetty 38400 tty5 linux
+# c6:12345:respawn:/sbin/agetty 38400 tty6 linux
 
 # End ${INITTAB}
 EOF
@@ -222,6 +234,8 @@ EOF
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
+chmod 754 "${RC_LOCAL}"
+
 ###
 # Настройка сценариев загрузки и завершения работы
 ###
@@ -264,6 +278,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (System V configuration)
 #
 # /etc/inittab
+# /etc/rc.d/rc.local
 # /etc/sysconfig/clock
 # /etc/sysconfig/console
 #

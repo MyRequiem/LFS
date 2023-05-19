@@ -5,5 +5,5 @@ BINARY="$(find "${TMP_DIR}" -type f -not -path "*/usr/share/qemu/*" -print0 | \
     /bin/grep ELF | /bin/grep -v "32-bit" | cut -f 1 -d :)"
 
 for BIN in ${BINARY}; do
-    strip --strip-unneeded "${BIN}"
+    strip --strip-unneeded "${BIN}" &>/dev/null
 done

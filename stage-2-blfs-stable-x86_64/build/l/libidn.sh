@@ -47,7 +47,11 @@ command -v mono         &>/dev/null && MONO="--enable-csharp"
     --disable-static || exit 1
 
 make || exit 1
+
+# pushd tests || exit 1
 # make check
+# popd tests  || exit 1
+
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -67,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and converting entire domain names to and from the ASCII Compatible Encoding
 # (ACE) form.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

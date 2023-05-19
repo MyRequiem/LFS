@@ -26,8 +26,8 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-consolidated_fixes-1.patch" || exit 1
 
-mv -v autoconf.texi "${PRGNAME}.texi"
-rm -v autoconf.info
+mv -v  autoconf.texi "${PRGNAME}.texi"
+rm -fv autoconf.info
 
 ./configure       \
     --prefix=/usr \

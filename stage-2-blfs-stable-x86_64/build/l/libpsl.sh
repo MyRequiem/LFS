@@ -23,13 +23,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# принудительно используем Python3
+sed -i 's/env python/&3/' src/psl-make-dafsa || exit 1
+
 GTK_DOC="--disable-gtk-doc"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
-# принудительно использует Python3
-sed -i 's/env python/&3/' src/psl-make-dafsa &&
-
 ./configure          \
+    PYTHON=python3   \
     --prefix=/usr    \
     "${GTK_DOC}"     \
     --disable-static \

@@ -9,21 +9,24 @@ PRGNAME="pth"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    gcc    (для gfortran)
+#              libnsl
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/usr"/{bin,include,share/{aclocal,man/{man1,man3}}}
+mkdir -pv "${TMP_DIR}"
 
 # позволим запускать make в несколько потоков (например, make -j4)
-sed -i 's#$(LOBJS): Makefile#$(LOBJS): pth_p.h Makefile#' Makefile.in
+sed -i 's#$(LOBJS): Makefile#$(LOBJS): pth_p.h Makefile#' Makefile.in || exit 1
 
-# Внимание!!!
+###
+# WARNING !!!
+###
 # нелязя добавлять параметр '--enable-pthread' в параметры конфигурации, т.к.
-# произойдет перезапись библиотеки pthread (/usr/lib/libpthread.so) и
+# произойдет перезапись библиотеки pthread (/usr/lib/libpthread.so.0) и
 # заголовочных файлов, которые были установлены с пакетом Glibc
 ./configure          \
     --prefix=/usr    \
@@ -32,11 +35,8 @@ sed -i 's#$(LOBJS): Makefile#$(LOBJS): pth_p.h Makefile#' Makefile.in
 
 make || exit 1
 # make test
-make install DESTDIR="${TMP_DIR}"
-
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -p "${TMP_DIR}${DOCS}"
-install -v -m644 README PORTING SUPPORT TESTS "${TMP_DIR}${DOCS}"
+# установка в несколько потоков не поддерживается
+make -j1 install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -52,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # thread has its own individual program-counter, run-time stack, signal mask
 # and errno variable.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

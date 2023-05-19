@@ -16,10 +16,10 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 VALGRIND="--disable-valgrind"
-command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
+# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
 
 # включает поддержку Unicode и код для обработки UTF-8/16/32 символов
 #    --enable-unicode-properties
@@ -53,14 +53,6 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# переместим библиотеку PCRE в корень файловой системы /lib, чтобы она была
-# доступна в случае переустановки grep с поддержкой PCRE
-mv -v "${TMP_DIR}/usr/lib/libpcre.so."* "${TMP_DIR}/lib"
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv "../../lib/$(readlink libpcre.so)" libpcre.so
-)
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -72,8 +64,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # pattern matching using the same syntax and semantics as Perl 5, with just a
 # few differences (documented in the man page)
 #
-# Home page: https://www.pcre.org/
-# Download:  https://ftp.pcre.org/pub/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://sourceforge.net/projects/${PRGNAME}/files/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

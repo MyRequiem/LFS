@@ -54,16 +54,17 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+# ссылка в /usr/lib/sudo/
+#    libsudo_util.so.0 -> libsudo_util.so.0.0.0
 (
-    # ссылка в /usr/lib/sudo/
-    #    libsudo_util.so.0 -> libsudo_util.so.0.0.0
     cd "${TMP_DIR}/usr/lib/sudo/" || exit 1
     ln -sfv libsudo_util.so.0.0.0 libsudo_util.so.0
 )
 
-# закомментируем строку 'root ALL=(ALL) ALL' в /etc/sudoers
+# закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
 SUDOERS="/etc/sudoers"
-sed -e "s#^root ALL=(ALL) ALL#\# root ALL=(ALL) ALL#" -i "${TMP_DIR}${SUDOERS}"
+sed -e "s#^root ALL=(ALL:ALL) ALL#\# root ALL=(ALL:ALL) ALL#" -i \
+    "${TMP_DIR}${SUDOERS}"
 
 ### Конфигурация в /etc/sudoers.d/
 SUDOERS_D_MYREQUIEM="/etc/sudoers.d/myrequiem"
