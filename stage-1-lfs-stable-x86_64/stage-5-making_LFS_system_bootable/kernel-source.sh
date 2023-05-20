@@ -11,23 +11,12 @@ ARCH_NAME="linux"
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
-ROOT_SRC="/root/src/lfs/src"
-mkdir -pv "${ROOT_SRC}"
-
-# архив с исходным кодом лежит в /sources или в /root/src/lfs/src
 SOURCES="/sources"
 ARCH=$(find "${SOURCES}" -type f -name "${ARCH_NAME}-*.tar.?z*" \
     2>/dev/null | head -n 1)
 
 if [ -z "${ARCH}" ]; then
-    SOURCES="${ROOT_SRC}"
-    ARCH=$(find "${SOURCES}" -type f -name "${ARCH_NAME}-*.tar.?z*" \
-        2>/dev/null | head -n 1)
-fi
-
-if [ -z "${ARCH}" ]; then
-    echo -n "Linux kernel source archive not found in "
-    echo "${SOURCES} and ${ROOT_SRC} directories"
+    echo -n "Linux kernel source archive not found in ${SOURCES} directory"
     exit 1
 fi
 

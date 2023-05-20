@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="kernel-generic"
+ARCH_NAME="linux"
 VERSION="$1"
 
 ### Linux kernel generic (a general purpose SMP Linux kernel)
@@ -18,7 +19,7 @@ if [ -z "${VERSION}" ]; then
     exit 1
 fi
 
-SRC_DIR="/usr/src/linux-${VERSION}"
+SRC_DIR="/usr/src/${ARCH_NAME}-${VERSION}"
 if ! [ -d "${SRC_DIR}" ]; then
     echo "Directory ${SRC_DIR} not found !!!"
     echo "You need to install 'kernel-source-${VERSION}' package"
@@ -27,7 +28,7 @@ fi
 
 CONFIG="${ROOT}lfs-kernel-config-${VERSION}"
 if ! [ -f "${ROOT}lfs-kernel-config-${VERSION}" ]; then
-    echo "Config for linux kernel ${CONFIG} not found !!!"
+    echo "Config for ${ARCH_NAME} kernel ${CONFIG} not found !!!"
     exit 1
 fi
 
@@ -57,6 +58,7 @@ ln -svf "vmlinuz-generic-${VERSION}"    /boot/vmlinuz
 ln -svf "System.map-generic-${VERSION}" /boot/System.map
 ln -svf "config-generic-${VERSION}"     /boot/config
 
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a general purpose SMP Linux kernel)
 #
@@ -66,6 +68,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # initrd.
 #
 # SMP is "Symmetric multiprocessing", or multiple CPU/core support
+#
+# Home page: https://www.kernel.org
+# Download:  https://www.kernel.org/pub/${ARCH_NAME}/kernel/v${MAJ_VER}.x/${ARCH_NAME}-${VERSION}.tar.xz
 #
 /boot/System.map
 /boot/System.map-generic-${VERSION}
