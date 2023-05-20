@@ -20,7 +20,7 @@ https://ftp.gnu.org/gnu/libidn/libidn-1.41.tar.gz
 https://ftp.gnu.org/gnu/libidn/libidn2-2.3.4.tar.gz
 https://github.com/rockdaboot/libpsl/releases/download/0.21.2/libpsl-0.21.2.tar.gz
 https://ftp.gnu.org/gnu/wget/wget-1.21.3.tar.gz
-https://curl.se/download/curl-7.88.1.tar.xz
+https://curl.se/download/curl-8.1.0.tar.xz
 https://mj.ucw.cz/download/linux/pci/pciutils-3.9.0.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.46.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2
@@ -44,7 +44,7 @@ https://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
 https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/fuse2/fuse2-2.9.9-fix-build-with-glibc-2.34.patch
-https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.3.tar.xz
+https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.37.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.13.1/fuse-3.13.1.tar.xz
 https://sqlite.org/2022/sqlite-autoconf-3400100.tar.gz
@@ -68,8 +68,8 @@ https://prdownloads.sourceforge.net/vifm/vifm-0.13.tar.bz2
 https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
 https://github.com/ivmai/bdwgc/releases/download/v8.2.2/gc-8.2.2.tar.gz
 https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-2.39.2.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-manpages-2.39.2.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.40.1.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-manpages-2.40.1.tar.xz
 https://github.com/rfc1036/whois/archive/v5.4.3/whois-5.4.3.tar.gz
 https://github.com/ggreer/the_silver_searcher/archive/2.2.0/the_silver_searcher-2.2.0.tar.gz
 https://github.com/soimort/translate-shell/archive/v0.9.7.1/translate-shell-0.9.7.1.tar.gz
@@ -90,6 +90,5 @@ http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
 https://www.sudo.ws/dist/sudo-1.9.13p1.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://files.pythonhosted.org/packages/source/l/lxml/lxml-4.9.2.tar.gz
-
 
 # vim:nowrap

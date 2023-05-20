@@ -6,6 +6,7 @@ X Window System                     openssh
 adns                                gnupg
 afs                                 sudo
 ag
+apache-httpd                        curl
 archivemount                        vifm
 asciidoc                            git
 autoconf213                         archivemount
@@ -179,6 +180,5 @@ xmlto                               git
 yasm                                tmux
 ypbind                              dhcpcd
 zip
-
 
 # vim:ft=conf nowrap
