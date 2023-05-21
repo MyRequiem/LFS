@@ -41,9 +41,8 @@ make mrproper
 # копируем заранее приготовленный конфиг
 cp "${CONFIG}" .config || exit 1
 
-NUMJOBS="$(nproc)"
 # собираем ядро
-make -j"${NUMJOBS}" bzImage || exit 1
+make bzImage || exit 1
 
 # устанавливаем собранное ядро, System.map и config в /boot
 install -vm644 arch/x86/boot/bzImage "/boot/vmlinuz-generic-${VERSION}"
