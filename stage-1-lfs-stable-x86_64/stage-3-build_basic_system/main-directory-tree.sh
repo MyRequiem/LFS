@@ -16,7 +16,7 @@ mkdir -pv           /home
 mkdir -pv           /usr/lib/firmware
 mkdir -pv           /lib64
 mkdir -pv           /media/{flash{0,1},cdrom0}
-mkdir -pv           /mnt/{hdd{0,1},iso,repo,src}
+mkdir -pv           /mnt/{hdd{0,1},iso}
 mkdir -pv           /opt
 mkdir -pv           /proc
 install -dv -m 0750 /root
@@ -146,8 +146,6 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /mnt/hdd0
 /mnt/hdd1
 /mnt/iso
-/mnt/repo
-/mnt/src
 /opt
 /proc
 /root
