@@ -163,6 +163,7 @@ time
 tk                                  git
 tmux
 translate-shell
+tree
 trousers                            gnutls
 unbound                             gnutls
 unrar
@@ -990,7 +991,6 @@ zip
 # traceroute
 # transfig                            libtheora
 # transmission
-# tree
 # tremor                              gst-plugins-base
 # tslib                               qt5
 # tunctl                              virt-manager

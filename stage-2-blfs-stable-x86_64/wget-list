@@ -90,10 +90,10 @@ http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
 https://www.sudo.ws/dist/sudo-1.9.13p1.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://files.pythonhosted.org/packages/source/l/lxml/lxml-4.9.2.tar.gz
+https://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz
 
 
 ================================================================================
-ftp://mama.indstate.edu/linux/tree/tree-1.8.0.tgz
 https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
 http://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/10.0/gpm-1.20.7-consolidated-1.patch
