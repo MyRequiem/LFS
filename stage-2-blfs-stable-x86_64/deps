@@ -59,6 +59,7 @@ glib-networking                     glib
 gnupg                               git
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib
+gpm
 grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
@@ -356,7 +357,6 @@ zip
 # gpac                                x264
 # gperftools                          libmypaint, glusterfs
 # gpgme                               volume-key, mutt
-# gpm                                 aalib, mc, vim, links
 # gptfdisk                            udisks
 # graphene                            gst-plugins-base
 # graphite-font                       graphite2
