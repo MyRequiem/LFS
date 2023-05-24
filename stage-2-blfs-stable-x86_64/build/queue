@@ -111,8 +111,8 @@ d/python-modules/python3-lxml.sh
 a/tree.sh
 a/dosfstools.sh
 a/gpm.sh
-
 a/hdparm.sh
+
 a/smartmontools.sh
 a/ntfs-3g.sh
 a/sharutils.sh
@@ -129,7 +129,6 @@ a/elogind
 a/dbus.sh
 
 a/fcron.sh
-ap/pm-utils.sh
 d/c2man.sh
 d/python2.sh
 d/python3.sh
@@ -228,7 +227,6 @@ l/freetype.sh
 x/utils/util-macros.sh
 n/links.sh
 s/xmlto.sh
-ap/pm-utils.sh
 x/proto/xorgproto.sh
 x/libs/libxau.sh
 x/libs/libxdmcp.sh
@@ -654,7 +652,6 @@ n/cyrus-sasl.sh
 ap/cups.sh
 n/ntp.sh
 l/libpcap.sh
-ap/pm-utils.sh
 n/bind-utils.sh
 n/mit-kerberos-v5.sh
 n/traceroute.sh

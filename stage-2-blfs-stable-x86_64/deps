@@ -65,6 +65,7 @@ gsasl                               curl
 gtk+2                               pinentry, w3m
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
+hdparm
 highlight                           vifm
 icu                                 libxml2, boost
 imagemagick                         gnupg
@@ -296,7 +297,6 @@ zip
 # empress                             php
 # enchant                             php
 # enscript                            imagemagick
-# ethtool                             pm-utils
 # exfat                               udisks
 # exiv2                               gegl, gexiv2
 # faac                                faad2, gst-plugins-bad
@@ -383,7 +383,6 @@ zip
 # gvfs                                gimp
 # harfbuzz                            freetype, graphite2, libass, qt5, gimp
 # hddtemp                             bumblebee-status
-# hdparm                              pm-utils
 # heimdal-gssapi                      exim
 # help2man                            pango, vala
 # hicolor-icon-theme                  gtk+2, gtk+3, fltk
@@ -817,7 +816,6 @@ zip
 # php                                 cups, libsoup, libvpx
 # picogui                             sdl
 # pixman                              cairo, xorg-server
-# pm-utils
 # pocketlint                          libbytesize
 # polib                               libbytesize
 # polkit                              upower, udisks, xorg-server, gconf, spice-gtk
@@ -1012,7 +1010,6 @@ zip
 # utimer
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
 # vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
-# vbetool                             pm-utils
 # vde2
 # vdo                                 lvm2
 # vim                                 fcron
