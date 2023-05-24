@@ -31,6 +31,7 @@ dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib
 docbook-xsl                         libxslt, glib
 docbook2x                           git
+dosfstools
 dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse
 efl                                 pinentry
@@ -282,7 +283,6 @@ zip
 # docbook-dtd4                        postgresql, docbook-dsssl
 # docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
 # docwriter                           freetype
-# dosfstools                          parted, udisks
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
 # ducktype                            dbus
