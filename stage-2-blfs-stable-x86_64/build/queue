@@ -128,6 +128,8 @@ l/gobject-introspection.sh
 a/elogind
 a/dbus.sh
 
+l/libsigsegv.sh
+d/clisp.sh
 a/fcron.sh
 d/c2man.sh
 d/python2.sh
