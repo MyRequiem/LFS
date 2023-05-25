@@ -42,7 +42,7 @@ fig2dev                             gnupg
 fltk                                pinentry
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                            vifm
-fuse2                               archivemount
+fuse2                               archivemount, ntfs-3g
 fusefat                             vifm
 fuseiso                             vifm
 fwtk                                sudo
@@ -120,6 +120,7 @@ nghttp2                             curl
 ngtcp2                              curl
 npth                                gnupg
 nss                                 p11-kit, make-ca
+ntfs-3g
 ntp                                 dhcpcd
 open-mpi                            boost
 openjdk                             libidn
@@ -624,7 +625,6 @@ zip
 # noto-sans-cjk-fonts-otf
 # npm                                 nodejs
 # nspr                                nss, rpm
-# ntfs-3g                             udisks
 # numactl                             x265
 # numlockx
 # numpy                               python2-pygtk
