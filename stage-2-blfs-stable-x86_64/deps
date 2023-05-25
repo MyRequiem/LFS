@@ -19,7 +19,7 @@ brotli                              gnutls, curl
 c-ares                              curl
 chronyd                             dhcpcd
 cmocka                              gnutls
-curl                                pciutils, gnupg, curlftpfs, git
+curl                                pciutils, gnupg, curlftpfs, git, smartmontools
 curlftpfs                           vifm
 cython                              yasm
 datefudge                           gnutls
@@ -56,7 +56,7 @@ gdk-pixbuf-xlib                     w3m
 git                                 libidn2
 glib                                sshfs, w3m
 glib-networking                     glib
-gnupg                               git
+gnupg                               git, smartmontools
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib
 gpm
@@ -107,7 +107,7 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
-lynx                                pciutils
+lynx                                pciutils, smartmontools
 lz4                                 lrzip
 lzip
 lzo                                 libarchive
@@ -153,6 +153,7 @@ samba                               curl
 sendmail                            gnupg, sudo
 shared-mime-info                    glib
 shellcheck
+smartmontools
 spnego                              curl
 sqlite                              gnupg, lnav, lshw
 sshfs                               vifm
@@ -174,7 +175,7 @@ unzip
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git
 vifm
 w3m
-wget                                pciutils
+wget                                pciutils, smartmontools
 which                               pciutils, openssh, lm-sensors, boost
 whois
 wireless-tools
@@ -957,7 +958,6 @@ zip
 # skia                                cairo
 # slang                               aalib, mc, mutt
 # slop                                maim
-# smartmontools
 # snappy
 # soundtouch                          gst-plugins-bad
 # soxr                                pulseaudio

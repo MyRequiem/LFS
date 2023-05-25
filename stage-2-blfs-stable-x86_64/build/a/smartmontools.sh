@@ -44,10 +44,22 @@ make install DESTDIR="${TMP_DIR}"
     make install-smartd DESTDIR="${TMP_DIR}"
 )
 
-# конфиг /etc/smartd.conf
+ETC_SYSCONFIG_SMARTMONTOOLS="/etc/sysconfig/smartmontools"
+cat << EOF > "${TMP_DIR}${ETC_SYSCONFIG_SMARTMONTOOLS}"
+# Begin ${ETC_SYSCONFIG_SMARTMONTOOLS}
+
+smartd_opts="-l local3"
+
+# End ${ETC_SYSCONFIG_SMARTMONTOOLS}
+EOF
+
 SMARTD_CONF="/etc/smartd.conf"
 if [ -f "${SMARTD_CONF}" ]; then
     mv "${SMARTD_CONF}" "${SMARTD_CONF}.old"
+fi
+
+if [ -f "${ETC_SYSCONFIG_SMARTMONTOOLS}" ]; then
+    mv "${ETC_SYSCONFIG_SMARTMONTOOLS}" "${ETC_SYSCONFIG_SMARTMONTOOLS}.old"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -55,6 +67,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SMARTD_CONF}"
+config_file_processing "${ETC_SYSCONFIG_SMARTMONTOOLS}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (S.M.A.R.T. Monitoring Tools)
