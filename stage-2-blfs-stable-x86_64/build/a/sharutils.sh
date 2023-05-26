@@ -11,7 +11,7 @@ PRGNAME="sharutils"
 
 # Required:    no
 # Recommended: no
-# Optional:    berkeley-db (для утилиты uudecode)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,8 +21,8 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим переполнение буфера стека и проблему, обнаруженную с GCC-10
-sed -i 's/BUFSIZ/rw_base_size/' src/unshar.c    || exit 1
-sed -i '/program_name/s/^/extern /' src/*opts.h || exit 1
+sed -i 's/BUFSIZ/rw_base_size/'     src/unshar.c || exit 1
+sed -i '/program_name/s/^/extern /' src/*opts.h  || exit 1
 
 sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c || exit 1
 echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # electronic channel which ignores or otherwise mangles the eight bit (high
 # order bit) of bytes. 'uudecode' does the converse transformation.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

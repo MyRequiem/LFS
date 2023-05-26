@@ -12,6 +12,7 @@ asciidoc                            git
 autoconf213                         archivemount
 autogen                             gnutls
 bash-completion
+berkeley-db
 bindfs                              glib
 blfs-bootscripts
 boost                               highlight
@@ -86,7 +87,7 @@ libidn2                             gnutls, libpsl, wget, curl, whois
 libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant
-libnsl                              pth
+libnsl                              pth, berkeley-db
 libpsl                              wget, curl
 libressl                            openssh
 librtmp                             curl
@@ -153,6 +154,7 @@ rrdtool                             lm-sensors
 samba                               curl
 sendmail                            gnupg, sudo
 shared-mime-info                    glib
+sharutils                           berkeley-db
 shellcheck
 smartmontools
 spnego                              curl
@@ -225,7 +227,6 @@ zip
 # babl                                gegl
 # bcachefs                            libblockdev
 # bellagio-openmax                    mesa
-# berkeley-db                         python3, ruby, cyrus-sasl, openldap, apr-util, libical, redland, apache-httpd, php
 # bibtex                              libtheora
 # bind-utils                          mit-kerberos-v5
 # birdstep                            php
@@ -952,7 +953,6 @@ zip
 # septel                              libpcap
 # sg3-utils
 # sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
-# sharutils                           berkeley-db
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo

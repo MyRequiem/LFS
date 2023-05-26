@@ -15,7 +15,8 @@ ARCH_NAME="db"
 
 # Required:    no
 # Recommended: no
-# Optional:    sharutils (для утилиты uudecode)
+# Optional:    libnsl
+#              sharutils
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -34,9 +35,9 @@ cd build_unix || exit 1
 # включаем поддержку устаревшего интерфейса, необходимую для некоторых старых
 # пакетов
 #    --enable-dbm
-# создавать API библиотеки C++
+# создавать API библиотеки C++ (libdb_cxx.so)
 #    --enable-cxx
-# включаем поддержку Tcl и создание библиотеки libdb_tcl
+# включаем поддержку Tcl и создание библиотеки libdb_tcl.so
 #    --enable-tcl
 #    --with-tcl=/usr/lib
 ../dist/configure      \
@@ -51,9 +52,10 @@ cd build_unix || exit 1
 make || exit 1
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
+# в /usr/share/ только документация, удалим ее (>80M)
 (
-    cd "${TMP_DIR}" || exit 1
-    rm -rf "usr/share"
+    cd "${TMP_DIR}/usr/" || exit 1
+    rm -rf ./share
 )
 
 chown -vR root:root "${TMP_DIR}"
@@ -75,7 +77,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # database.
 #
 # Home page: https://www.oracle.com/database/technologies/related/berkeleydb.html
-# Download:  http://anduin.linuxfromscratch.org/BLFS/bdb/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/bdb/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -114,10 +114,9 @@ a/gpm.sh
 a/hdparm.sh
 a/smartmontools.sh
 a/ntfs-3g.sh
-
 a/sharutils.sh
 l/berkeley-db.sh
-a/sharutils.sh
+
 a/cpio.sh
 a/acpid.sh
 a/dbus.sh
