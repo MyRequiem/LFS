@@ -116,9 +116,9 @@ a/smartmontools.sh
 a/ntfs-3g.sh
 a/sharutils.sh
 l/berkeley-db.sh
-
 a/cpio.sh
 a/acpid.sh
+
 a/dbus.sh
 s/sgml-common.sh
 s/docbook-xml.sh

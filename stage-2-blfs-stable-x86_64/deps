@@ -3,6 +3,7 @@
 ###***###
 
 X Window System                     openssh
+acpid
 adns                                gnupg
 afs                                 sudo
 ag
@@ -20,6 +21,7 @@ brotli                              gnutls, curl
 c-ares                              curl
 chronyd                             dhcpcd
 cmocka                              gnutls
+cpio
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools
 curlftpfs                           vifm
 cython                              yasm
@@ -72,7 +74,7 @@ icu                                 libxml2, boost
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
 iw
 kernel-firmware
 libarchive                          archivemount
@@ -165,7 +167,7 @@ subversion                          git
 sudo
 sysprof                             glib
 sysstat                             openssh
-texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg
+texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
 time
 tk                                  git
 tmux
@@ -193,7 +195,6 @@ zip
 # ==============================================================================
 # 3store                              redland
 # aalib                               gst-plugins-good, sdl, gimp
-# acpid                               xorg-server
 # adabas                              php
 # adobe-source-code-pro-font
 # adwaita-icon-theme                  gtk+3
@@ -258,7 +259,6 @@ zip
 # cogl                                cairo
 # colord                              gtk+3, cups
 # corefonts                           imagemagick
-# cpio                                openjdk
 # cppcheck
 # cryptsetup                          volume-key
 # cunit                               libdrm, nghttp2

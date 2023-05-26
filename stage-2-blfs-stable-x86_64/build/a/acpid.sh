@@ -50,41 +50,17 @@ EOF
 cat << EOF > "${TMP_DIR}/etc/acpi/suspend.sh"
 #!/bin/sh
 
+###
 # suspend the system when the laptop lid is closed
+###
 
 # 'elogind' package required
-! command -v loginctl &>/dev/null && exit
+! command -v loginctl &>/dev/null && exit 0
 
 # laptop lid state (open/close)
 # cat /proc/acpi/button/lid/*/state
-
-# look at the output of 'acpi_listen' command when lid is opening/closing
-#    button/lid LID close
-#    button/lid LID open
-
-case "\$1" in
-    button/lid)
-        case "\$2" in
-            LID)
-                case "\$3" in
-                    close)
-                        loginctl suspend
-                        ;;
-                    *)
-                        ;;
-                esac
-                ;;
-            *)
-                ;;
-        esac
-        ;;
-    *)
-        ;;
-esac
-
-### can be made shorter in ${EVENTS}/lid
-#    event=button/lid LID close
-#    action=/usr/sbin/pm-suspend
+/bin/grep -q open /proc/acpi/button/lid/*/state && exit 0
+loginctl suspend
 EOF
 
 chmod 755 "${TMP_DIR}/etc/acpi/suspend.sh"
@@ -110,7 +86,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configuration files, which can be dropped into place by packages or by the
 # user.
 #
-# Home page: http://sourceforge.net/projects/${PRGNAME}2/
+# Home page: https://sourceforge.net/projects/${PRGNAME}2/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}2/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
