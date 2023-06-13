@@ -36,8 +36,10 @@ docbook-xsl                         libxslt, glib
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse
+doxygen                             gnutls, libevent, fuse, dbus
+ducktype                            dbus
 efl                                 pinentry
+elogind                             dbus
 emacs                               libidn, pinentry
 etc-issue
 exim                                gnupg, sudo
@@ -144,6 +146,8 @@ pinentry                            gnupg
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 pytest                              fuse
+python-d-bus                        dbus
+python-pygobject3                   dbus
 python2                             yasm
 python2-libxml2                     libxslt
 python3                             lsb-tools
@@ -177,7 +181,7 @@ trousers                            gnutls
 unbound                             gnutls
 unrar
 unzip
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus
 vifm
 w3m
 wget                                pciutils, smartmontools
@@ -186,8 +190,10 @@ whois
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
-xmlto                               git
+xmlto                               git, dbus
+xorg-libraries                      dbus
 yasm                                tmux
+yelp-tools                          dbus
 ypbind                              dhcpcd
 zip
 
@@ -290,12 +296,10 @@ zip
 # docwriter                           freetype
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
-# ducktype                            dbus
 # ebtables
 # ed
 # electric-fence                      lame, imagemagick
 # elinks                              xmlto, apache-httpd, mutt
-# elogind                             dbus, polkit, udisks, xorg-libraries, xorg-server, pulseaudio
 # emojione                            ibus
 # empress                             php
 # enchant                             php
@@ -847,7 +851,6 @@ zip
 # python-certifi                      python-requests
 # python-chardet                      python-requests
 # python-configparser                 flake8, pylint3, pylint2
-# python-d-bus                        dbus, udisks
 # python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
 # python-funcsigs                     python-pytest
@@ -867,7 +870,6 @@ zip
 # python-py3c
 # python-pycryptodome
 # python-pycurl                       python-urlgrabber
-# python-pygobject3                   dbus, python-dbus, upower, udisks, libical
 # python-pyparsing                    libinput, spice, spice-gtk
 # python-pyperclip                    bpython
 # python-pytest                       python-pytest-runner, python-mccabe, flake8
@@ -1069,7 +1071,6 @@ zip
 # xorg-fonts                          xorg-server
 # xorg-intel-driver
 # xorg-libinput-driver
-# xorg-libraries                      dbus, libdrm, libvdpau, mesa, xkeyboard-config, cairo, pango, startup-notification, xinit, at-spi2-core, imlib2, libxklavier, gst-plugins-base, gst-plugins-good, fltk, sdl, gst-plugins-bad, pulseaudio, sdl2, qt5, gdk-pixbuf-xlib, tk, openjdk, imagemagick
 # xorg-nouveau-driver
 # xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 # xorg-sgml-doctools                  xorg-server
@@ -1081,7 +1082,6 @@ zip
 # xvid                                ffmpeg
 # xxhash                              rsync
 # xxkb
-# yelp-tools                          dbus
 # z3                                  llvm
 # zathura
 # zbar                                gst-plugins-bad
