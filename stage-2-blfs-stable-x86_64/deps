@@ -7,6 +7,7 @@ acpid
 adns                                gnupg
 afs                                 sudo
 ag
+apache-ant                          docbook-xsl
 apache-httpd                        curl
 archivemount                        vifm
 asciidoc                            git
@@ -102,8 +103,8 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
-libxml2                             wpa-supplicant, libxslt, libarchive
-libxslt                             p11-kit, glib, python3-lxml
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl
 linux-pam                           openssh, sudo
 llvm                                dhcpcd
 lm-sensors
@@ -148,8 +149,8 @@ pth                                 libidn, libgcrypt
 pytest                              fuse
 python-d-bus                        dbus
 python-pygobject3                   dbus
-python2                             yasm
-python2-libxml2                     libxslt
+python2                             yasm, docbook-xsl
+python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-docutils                    sshfs
 python3-lxml
@@ -157,9 +158,11 @@ pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
 rrdtool                             lm-sensors
+ruby                                docbook-xsl
 samba                               curl
+saxon6                              docbook-xsl
 sendmail                            gnupg, sudo
-sgml-common
+sgml-common                         docbook-xml
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
@@ -181,7 +184,7 @@ tree
 trousers                            gnutls
 unbound                             gnutls
 unrar
-unzip
+unzip                               docbook-xml
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus
 vifm
 w3m
@@ -191,12 +194,13 @@ whois
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
+xerces2-java                        docbook-xsl
 xmlto                               git, dbus
 xorg-libraries                      dbus
 yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
-zip
+zip                                 docbook-xsl
 
 
 # ==============================================================================
@@ -213,7 +217,6 @@ zip
 # alsa-tools                          alsa-firmware, sdl, sdl2, libao, qemu
 # alsa-utils                          faac, faad2, sdl, sdl2, libao, qemu
 # aom                                 gst-plugins-bad, mpv
-# apache-ant                          docbook-xsl
 # apache-httpd                        libsoup, php
 # apparmor                            php
 # appstream-glib                      gimp
@@ -941,12 +944,10 @@ zip
 # rpm2tgz
 # rsync                               llvm, vim, apache-httpd
 # rtmpdump                            gst-plugins-bad
-# ruby                                docbook-xsl, vim, mc, mariadb, gegl
 # rustc                               mozjs, librsvg
 # rxvt-unicode
 # sane                                imagemagick
 # sassc                               gtk+3
-# saxon6                              docbook-xsl
 # sazanami-fonts-ttf
 # sbc                                 gst-plugins-bad, pulseaudio
 # schroedinger                        ffmpeg
@@ -1056,7 +1057,6 @@ zip
 # xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 # xdg-user-dirs
 # xdg-utils                           cups, gimp, imagemagick
-# xerces2-java                        docbook-xsl
 # xfce4-notifyd                       libnotify
 # xfsprogs                            lvm2, udisks, talloc
 # xinit

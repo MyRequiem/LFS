@@ -9,7 +9,7 @@ PRGNAME="docbook-xml"
 
 # Required:    libxml2
 #              sgml-common
-#              unzip (для распаковки архива с исходниками)
+#              unzip        (для распаковки архива с исходниками)
 # Recommended: no
 # Optional:    no
 
@@ -128,8 +128,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # for structuring books and software documentation to a standard allowing you
 # to utilize transformations already written for that standard.
 #
-# Home page: http://www.docbook.org/xml/
-# Download:  http://www.docbook.org/xml/${VERSION}/${PRGNAME}-${VERSION}.zip
+# Home page: https://www.docbook.org/
+# Download:  https://www.docbook.org/xml/${VERSION}/${PRGNAME}-${VERSION}.zip
 #
 EOF
 
