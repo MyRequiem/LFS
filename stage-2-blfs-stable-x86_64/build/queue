@@ -91,9 +91,7 @@ ap/sudo.sh
 #    - git
 # поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
 #
-######
-# P.S.
-######
+# NOTE: 
 #    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
 #    строки, которые отвечают за проверку chroot среды:
 #
@@ -105,6 +103,25 @@ ap/sudo.sh
 #       # ......
 #       # fi
 # ==============================================================================
+#
+# После настройки сети Internet для корректной работы консольного браузера
+# необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
+# отсутствие: unable to get local issuer certificate
+#
+#    # update-ca-certificates
+#    ......
+#    ......
+#    ......
+#    Extracting OpenSSL certificates to:
+#    /etc/ssl/certs...Done!
+#    Extracting GNUTLS server auth certificates to:
+#    /etc/pki/tls/certs/ca-bundle.crt...Done!
+#    Extracting GNUTLS S-Mime certificates to:
+#    /etc/pki/tls/certs/email-ca-bundle.crt...Done!
+#    Extracting GNUTLS code signing certificates to:
+#    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
+#    Extracting Java cacerts (JKS) to:
+#    /etc/pki/tls/java/cacerts...Done!
 
 a/time.sh
 d/python-modules/python3-lxml.sh
