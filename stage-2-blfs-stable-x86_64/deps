@@ -159,6 +159,7 @@ quiche                              curl
 rrdtool                             lm-sensors
 samba                               curl
 sendmail                            gnupg, sudo
+sgml-common
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
@@ -954,7 +955,6 @@ zip
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
 # septel                              libpcap
 # sg3-utils
-# sgml-common                         docbook-xml, opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo
