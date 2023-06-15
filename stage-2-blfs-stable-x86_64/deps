@@ -13,7 +13,7 @@ archivemount                        vifm
 asciidoc                            git
 autoconf213                         archivemount
 autogen                             gnutls
-bash-completion
+bash-completion                     elogind
 berkeley-db
 bindfs                              glib
 blfs-bootscripts
@@ -28,12 +28,12 @@ curlftpfs                           vifm
 cython                              yasm
 datefudge                           gnutls
 dblatex                             git
-dbus                                wpa-supplicant, glib
+dbus                                wpa-supplicant, glib, elogind
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
-docbook-xml                         libxslt, glib
-docbook-xsl                         libxslt, glib
+docbook-xml                         libxslt, glib, elogind
+docbook-xsl                         libxslt, glib, elogind
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
@@ -64,7 +64,7 @@ glib                                sshfs, w3m
 glib-networking                     glib
 gnupg                               git, smartmontools
 gnutls                              wget, curl, gnupg
-gobject-introspection               glib
+gobject-introspection               glib, elogind
 gpm
 grc
 gsasl                               curl
@@ -104,8 +104,8 @@ libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl
-linux-pam                           openssh, sudo
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind
+linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd
 lm-sensors
 lnav
@@ -153,7 +153,7 @@ python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-docutils                    sshfs
-python3-lxml
+python3-lxml                        elogind
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -185,7 +185,7 @@ trousers                            gnutls
 unbound                             gnutls
 unrar
 unzip                               docbook-xml
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind
 vifm
 w3m
 wget                                pciutils, smartmontools
@@ -201,6 +201,11 @@ yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
 zip                                 docbook-xsl
+polkit                              elogind
+zsh                                 elogind
+audit-userspace                     elogind
+kexec                               elogind
+selinux                             elogind
 
 
 # ==============================================================================
@@ -828,7 +833,6 @@ zip                                 docbook-xsl
 # pixman                              cairo, xorg-server
 # pocketlint                          libbytesize
 # polib                               libbytesize
-# polkit                              upower, udisks, xorg-server, gconf, spice-gtk
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp

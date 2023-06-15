@@ -91,7 +91,7 @@ ap/sudo.sh
 #    - git
 # поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
 #
-# NOTE: 
+# NOTE:
 #    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
 #    строки, которые отвечают за проверку chroot среды:
 #
@@ -141,11 +141,11 @@ s/docbook-xml.sh
 s/docbook-xsl.sh
 l/libxslt.sh
 l/glib.sh
-
-l/gobject-introspection.sh
 a/elogind
 a/dbus.sh
 
+
+l/gobject-introspection.sh
 l/libsigsegv.sh
 d/clisp.sh
 a/fcron.sh

@@ -107,6 +107,7 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/sgml-common-0.6.3-manpage-1.p
 https://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
 https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/11.3/docbook-xsl-nons-1.79.2-stack_fix-1.patch
+https://github.com/elogind/elogind/archive/v246.10/elogind-246.10.tar.gz
 
 
 ================================================================================
