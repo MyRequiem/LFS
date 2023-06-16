@@ -143,10 +143,10 @@ l/libxslt.sh
 l/glib.sh
 a/elogind
 a/dbus.sh
+l/libsigsegv.sh
 
 
 l/gobject-introspection.sh
-l/libsigsegv.sh
 d/clisp.sh
 a/fcron.sh
 d/c2man.sh

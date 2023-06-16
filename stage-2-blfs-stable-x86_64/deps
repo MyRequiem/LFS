@@ -11,6 +11,7 @@ apache-ant                          docbook-xsl
 apache-httpd                        curl
 archivemount                        vifm
 asciidoc                            git
+audit-userspace                     elogind
 autoconf213                         archivemount
 autogen                             gnutls
 bash-completion                     elogind
@@ -80,6 +81,7 @@ impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
 iw
 kernel-firmware
+kexec                               elogind
 libarchive                          archivemount
 libassuan                           pinentry, gnupg
 libatomic-ops                       gc
@@ -99,6 +101,7 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
+libsigsegv
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
@@ -144,6 +147,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 pinentry                            gnupg
+polkit                              elogind
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 pytest                              fuse
@@ -161,6 +165,7 @@ rrdtool                             lm-sensors
 ruby                                docbook-xsl
 samba                               curl
 saxon6                              docbook-xsl
+selinux                             elogind
 sendmail                            gnupg, sudo
 sgml-common                         docbook-xml
 shared-mime-info                    glib
@@ -201,11 +206,7 @@ yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
 zip                                 docbook-xsl
-polkit                              elogind
 zsh                                 elogind
-audit-userspace                     elogind
-kexec                               elogind
-selinux                             elogind
 
 
 # ==============================================================================
