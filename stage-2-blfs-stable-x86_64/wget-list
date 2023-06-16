@@ -109,11 +109,11 @@ https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/d
 https://www.linuxfromscratch.org/patches/blfs/11.3/docbook-xsl-nons-1.79.2-stack_fix-1.patch
 https://github.com/elogind/elogind/archive/v246.10/elogind-246.10.tar.gz
 https://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.14.tar.gz
+http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
 
 
 ================================================================================
 http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
