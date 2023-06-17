@@ -34,6 +34,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему с проверкой пути в шаблоне скрипта configure
+sed -e '/^case "$0"/s;$0;$(readlink -f $0);' -i apr-config.in || exit 1
+
 ./configure          \
     --prefix=/usr    \
     --disable-static \

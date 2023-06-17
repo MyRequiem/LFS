@@ -9,8 +9,12 @@ afs                                 sudo
 ag
 apache-ant                          docbook-xsl
 apache-httpd                        curl
+apr
 archivemount                        vifm
 asciidoc                            git
+aspell                              aspell-dict-en, aspell-dict-ru
+aspell-dict-en
+aspell-dict-ru
 audit-userspace                     elogind
 autoconf213                         archivemount
 autogen                             gnutls
@@ -195,7 +199,7 @@ valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libid
 vifm
 w3m
 wget                                pciutils, smartmontools
-which                               pciutils, openssh, lm-sensors, boost
+which                               pciutils, openssh, lm-sensors, boost, aspell
 whois
 wireless-tools
 wpa-supplicant
@@ -227,14 +231,10 @@ zsh                                 elogind
 # apache-httpd                        libsoup, php
 # apparmor                            php
 # appstream-glib                      gimp
-# apr                                 apr-util
 # apr-util                            apache-httpd
 # argon2                              cryptsetup
 # as31                                alsa-firmware
 # asciidoctor                         git
-# aspell                              aspell-dict-en, aspell-dict-ru, enchant, php, mutt
-# aspell-dict-en
-# aspell-dict-ru
 # assimp                              qt5
 # at-spi2-atk                         gtk+3
 # at-spi2-core                        at-spi2-atk, python3-pyatspi2

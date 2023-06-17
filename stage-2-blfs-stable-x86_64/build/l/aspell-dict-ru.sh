@@ -6,8 +6,6 @@ VERSION="0.99f7-1"
 
 ### Russian dictionary for Aspell
 
-# Нет в BLFS
-
 # Required:    aspell
 # Recommended: no
 # Optional:    no

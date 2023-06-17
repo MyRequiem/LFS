@@ -111,6 +111,10 @@ https://github.com/elogind/elogind/archive/v246.10/elogind-246.10.tar.gz
 https://ftp.gnu.org/gnu/libsigsegv/libsigsegv-2.14.tar.gz
 http://download.openpkg.org/components/cache/c2man/c2man-2.0@42.tar.gz
 https://github.com/cython/cython/releases/download/0.29.33/Cython-0.29.33.tar.gz
+https://archive.apache.org/dist/apr/apr-1.7.2.tar.bz2
+https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
+https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
+https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 
 
 ================================================================================
@@ -118,10 +122,6 @@ http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
-https://archive.apache.org/dist/apr/apr-1.7.0.tar.bz2
-https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
-https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
-https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 http://www.fftw.org/fftw-3.3.9.tar.gz
 https://github.com/fribidi/fribidi/releases/download/v1.0.9/fribidi-1.0.9.tar.xz
 https://dist.libuv.org/dist/v1.41.0/libuv-v1.41.0.tar.gz
