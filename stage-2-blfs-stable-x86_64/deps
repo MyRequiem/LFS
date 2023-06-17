@@ -501,7 +501,7 @@ zsh                                 elogind
 # libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gimp
 # libgxps                             imagemagick
 # libheif                             gimp, imagemagick
-# libical                             bluez
+# libical
 # libid3tag                           imlib2
 # libiec61883                         gst-plugins-good, ffmpeg
 # libilbc                             ffmpeg
