@@ -145,14 +145,13 @@ a/elogind
 a/dbus.sh
 l/libsigsegv.sh
 d/c2man.sh
-
+d/cython.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
 a/fcron.sh
 d/python2.sh
 d/python3.sh
-d/cython.sh
 l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh

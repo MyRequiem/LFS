@@ -7,8 +7,7 @@ ARCH_NAME="Cython"
 # Оптимизированный статический компилятор для Python и язык программирования
 # Cython (на основе Pyrex)
 
-# Required:    python2
-#              python3
+# Required:    no
 # Recommended: no
 # Optional:    no
 
@@ -19,11 +18,44 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-python2 setup.py build || exit 1
-python3 setup.py build || exit 1
+##
+# создаем в директории dist дерева исходников пакет
+###
+# команда создает архив для этого пакета
+#    wheel
+# инструктирует pip поместить созданный пакет в указанный каталог dist
+#    --wheel-dir=./dist
+# не устанавливать зависимости для пакета
+#    --no-deps
+# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
+# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
+# какие-либо файлы
+#    --no-build-isolation
+pip3 wheel               \
+    --wheel-dir=./dist   \
+    --no-deps            \
+    --no-build-isolation \
+    ./ || exit 1
 
-python2 setup.py install --optimize=1 --root="${TMP_DIR}"
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+### устанавливаем созданный пакет в "${TMP_DIR}"
+# отключает кеш, чтобы предотвратить предупреждение при установке от
+# пользователя root
+#    --no-cache-dir
+# предотвращает ошибочный запуск команды установки от имени обычного
+# пользователя без полномочий root
+#    --no-user
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+TARGET="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+pip3 install             \
+    --target="${TARGET}" \
+    --find-links=./dist  \
+    --no-cache-dir       \
+    --no-user            \
+    --no-index ${ARCH_NAME}
+
+# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# перемещаем ее в ${TMP_DIR}/usr/bin/
+[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -36,8 +68,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # language and the extended Cython programming language (based on Pyrex). It
 # makes writing C extensions for Python as easy as Python itself.
 #
-# Home page: https://cython.org/
-# Download:  https://files.pythonhosted.org/packages/d3/38/adc49a5aca4f644e6322237089fdcf194084f5fe41445e6e632f28b32bf7/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
