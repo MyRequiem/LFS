@@ -20,8 +20,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1
@@ -39,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # needed in order to support right-to-left languages such as Arabic and Hebrew.
 # It is used in display software like KDE's SVG modules.
 #
-# Home page: http://fribidi.org
+# Home page: http://${PRGNAME}.org
 # Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

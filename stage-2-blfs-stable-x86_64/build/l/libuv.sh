@@ -41,8 +41,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # poll and IOCP on Windows. In node-v0.9.0's version of libuv, the dependency
 # on libev was removed.
 #
-# Home page: https://libuv.org/
-# Download:  https://dist.libuv.org/dist/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://dist.${PRGNAME}.org/dist/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
 #
 EOF
 

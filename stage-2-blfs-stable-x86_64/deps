@@ -25,7 +25,7 @@ blfs-bootscripts
 boost                               highlight
 brotli                              gnutls, curl
 c-ares                              curl
-c2man
+c2man                               fribidi
 chronyd                             dhcpcd
 cmocka                              gnutls
 cpio
@@ -50,8 +50,10 @@ elogind                             dbus
 emacs                               libidn, pinentry
 etc-issue
 exim                                gnupg, sudo
+fftw
 fig2dev                             gnupg
 fltk                                pinentry
+fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                            vifm
 fuse2                               archivemount, ntfs-3g
@@ -111,6 +113,7 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
+libuv
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind
 linux-pam                           openssh, sudo, elogind
@@ -326,7 +329,6 @@ zsh                                 elogind
 # fetchmail
 # ffmpeg                              alsa-plugins, gegl, imagemagick, cmus, mpv
 # ffms2                               x264
-# fftw                                alsa-utils, libsamplerate, pulseaudio, imagemagick
 # firebird                            qt5
 # flac                                libsndfile, gst-plugins-good
 # flake8
@@ -343,7 +345,6 @@ zsh                                 elogind
 # freetds                             apr-util, qt5
 # freetype                            harfbuzz, graphite2, fontconfig, libass, ghostscript, php, ffmpeg, libgd
 # frei0r-plugins                      ffmpeg
-# fribidi                             pango, libass, vte3, ffmpeg
 # frontbase                           php
 # game-music-emu                      gst-plugins-bad
 # gcolor2
@@ -561,7 +562,6 @@ zsh                                 elogind
 # libumfpack                          gegl
 # libunwind                           mesa, xorg-server, libinput, gstreamer, gimp
 # liburcu                             glusterfs
-# libuv                               cmake, nodejs, bind-utils
 # libva                               mesa, ffmpeg
 # libvdpau                            mesa, ffmpeg
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager

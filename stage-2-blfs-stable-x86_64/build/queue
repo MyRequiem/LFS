@@ -150,15 +150,15 @@ l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh
 l/aspell-dict-ru.sh
+l/fftw.sh
+l/fribidi.sh
+l/libuv.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
 a/fcron.sh
 d/python2.sh
 d/python3.sh
-l/fftw.sh
-l/fribidi.sh
-l/libuv.sh
 l/icu.sh
 d/python-modules/python2-libxml2.sh
 d/cmake.sh
