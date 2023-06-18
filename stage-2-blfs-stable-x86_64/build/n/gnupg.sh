@@ -6,11 +6,6 @@ PRGNAME="gnupg"
 # Программа для шифрования информации, создания электронных цифровых подписей и
 # управления ключами шифрования.
 
-# http://www.linuxfromscratch.org/blfs/view/stable/postlfs/gnupg.html
-
-# Home page: https://gnupg.org/
-# Download:  https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.19.tar.bz2
-
 # Required:    libassuan
 #              libgcrypt
 #              libksba
@@ -64,8 +59,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # standard as described in RFC2440 and the S/MIME standard as described by
 # several RFCs.
 #
-# Home page: https://gnupg.org/
-# Download:  https://www.gnupg.org/ftp/gcrypt/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://${PRGNAME}.org/
+# Download:  https://www.${PRGNAME}.org/ftp/gcrypt/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 
