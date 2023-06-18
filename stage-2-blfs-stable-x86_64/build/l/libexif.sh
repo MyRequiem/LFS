@@ -22,9 +22,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
-
 DOXYGEN="--disable-internal-docs"
 # command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
 
@@ -52,8 +49,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libexif library allows programs such as gthumb to parse, edit, and save EXIF
 # data.
 #
-# Home page: https://libexif.github.io/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${PRGNAME}-${VERSION//./_}-release/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://${PRGNAME}.github.io/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

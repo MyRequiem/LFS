@@ -43,7 +43,7 @@ docbook-xsl                         libxslt, glib, elogind
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus
+doxygen                             gnutls, libevent, fuse, dbus, libexif
 ducktype                            dbus
 efl                                 pinentry
 elogind                             dbus
@@ -74,6 +74,7 @@ gnupg                               git, smartmontools
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib, elogind
 gpm
+graphviz                            libexif
 grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
@@ -90,11 +91,14 @@ iso-codes
 iw
 kernel-firmware
 kexec                               elogind
+libaio
 libarchive                          archivemount
 libassuan                           pinentry, gnupg
+libatasmart
 libatomic-ops                       gc
 libedit                             pcre2, openssh, sqlite
 libevent                            tmux
+libexif
 libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls, whois
@@ -381,7 +385,6 @@ zsh                                 elogind
 # graphene                            gst-plugins-base
 # graphite-font                       graphite2
 # graphite2                           harfbuzz
-# graphviz                            libexif, llvm, gpgme, ruby, libvdpau, vala, gegl, openjdk, exiv2, imagemagick
 # groonga                             mariadb
 # gsettings-desktop-schemas           glib-networking, goffice
 # gsimplecal
@@ -460,11 +463,9 @@ zsh                                 elogind
 # lensfun                             gegl
 # liba52                              gst-plugins-ugly
 # libaacplus                          ffmpeg
-# libaio                              lvm2, mariadb
 # libao
 # libass                              gst-plugins-bad, ffmpeg, mpv
 # libasyncns                          pulseaudio
-# libatasmart                         udisks
 # libavc1394                          gst-plugins-good
 # libavtp                             alsa-plugins, gst-plugins-bad
 # libbacktrace                        gimp
@@ -494,7 +495,6 @@ zsh                                 elogind
 # liberation-fonts-ttf
 # libev                               nghttp2, i3
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
-# libexif                             gst-plugins-bad, php, feh
 # libgd                               php, nginx
 # libglade                            python2-pygtk
 # libgsf                              goffice

@@ -38,8 +38,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # may impact drive reliability in the hope of predicting a drive failure before
 # it occurs.
 #
-# Home page: http://0pointer.de/blog/projects/being-smart.html
-# Download:  http://0pointer.de/public/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://0pointer.de/blog/projects/being-smart.html
+# Download:  https://0pointer.de/public/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

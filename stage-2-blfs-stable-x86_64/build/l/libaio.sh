@@ -23,7 +23,8 @@ sed -i '/install.*libaio.a/s/^/#/' src/Makefile || exit 1
 
 make || exit 1
 
-# тесты
+# для запуска тестов необходимо исправить проблему с glibc >=2.34
+# sed 's/-Werror//' -i harness/Makefile
 # make partcheck
 
 make install DESTDIR="${TMP_DIR}"
@@ -43,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # API.
 #
 # Home page: https://pagure.io/${PRGNAME}
-# Download:  https://releases.pagure.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://pagure.io/${PRGNAME}/archive/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

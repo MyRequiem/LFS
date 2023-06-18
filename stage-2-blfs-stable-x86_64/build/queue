@@ -155,6 +155,9 @@ l/fribidi.sh
 l/libuv.sh
 l/rpcsvc-proto.sh
 l/iso-codes.sh
+l/libaio.sh
+l/libatasmart.sh
+l/libexif.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -165,10 +168,7 @@ l/icu.sh
 d/python-modules/python2-libxml2.sh
 d/cmake.sh
 l/json-c.sh
-l/libaio.sh
-l/libatasmart.sh
 l/libjpeg-turbo.sh
-l/libexif.sh
 l/libpng.sh
 l/libusb.sh
 l/libyaml.sh
