@@ -86,6 +86,7 @@ imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
+iso-codes
 iw
 kernel-firmware
 kexec                               elogind
@@ -169,6 +170,7 @@ python3-lxml                        elogind
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
+rpcsvc-proto
 rrdtool                             lm-sensors
 ruby                                docbook-xsl
 samba                               curl
@@ -431,7 +433,6 @@ zsh                                 elogind
 # ipaex-fonts-ttf
 # iptables
 # isl                                 gcc
-# iso-codes                           gtk+3, libxklavier, gst-plugins-base, ibus, gimp
 # isort2                              pylint2
 # isort3                              pylint3
 # itstool                             shared-mime-info, zenity
@@ -944,7 +945,6 @@ zsh                                 elogind
 # rest                                gtk+3
 # rhash                               cmake
 # roxen-webserver                     php
-# rpcsvc-proto                        libnsl
 # rpm                                 rpm2tgz
 # rpm2tgz
 # rsync                               llvm, vim, apache-httpd

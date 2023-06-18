@@ -153,6 +153,8 @@ l/aspell-dict-ru.sh
 l/fftw.sh
 l/fribidi.sh
 l/libuv.sh
+l/rpcsvc-proto.sh
+l/iso-codes.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -162,7 +164,6 @@ d/python3.sh
 l/icu.sh
 d/python-modules/python2-libxml2.sh
 d/cmake.sh
-l/iso-codes.sh
 l/json-c.sh
 l/libaio.sh
 l/libatasmart.sh
@@ -210,7 +211,6 @@ d/swig.sh
 n/gpgme.sh
 l/volume-key.sh
 l/libblockdev.sh
-l/rpcsvc-proto.sh
 l/libnsl.sh
 n/exim.sh
 a/fcron.sh
