@@ -48,6 +48,7 @@ https://download.gnome.org/sources/libxml2/2.10/libxml2-2.10.4.tar.xz
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.37.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.13.1/fuse-3.13.1.tar.xz
 https://sqlite.org/2022/sqlite-autoconf-3400100.tar.gz
+https://github.com/libusb/libusb/releases/download/v1.0.26/libusb-1.0.26.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
@@ -123,6 +124,9 @@ https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.12.0/iso-codes-v4
 https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2
+https://downloads.sourceforge.net/libpng/libpng-1.6.39.tar.xz
+https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.39-apng.patch.gz
+https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
 
 
 ================================================================================
@@ -134,10 +138,6 @@ http://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.
 https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
 https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.6.tar.gz
-https://downloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz
-https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.37-apng.patch.gz
-https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2
-https://github.com/yaml/libyaml/archive/0.2.4/libyaml-dist-0.2.4.tar.gz
 https://archive.mozilla.org/pub/nspr/releases/v4.29/src/nspr-4.29.tar.gz
 https://files.pythonhosted.org/packages/source/s/six/six-1.15.0.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.8.0.tar.gz

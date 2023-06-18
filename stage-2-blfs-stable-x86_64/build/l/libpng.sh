@@ -16,11 +16,10 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # патч для включения функций анимации png (apng) в libpng (используется в
-# Firefox, Seamonkey и Thunderbird):
+# Firefox, Seamonkey и Thunderbird)
 gzip -cd "${SOURCES}/${PRGNAME}-${VERSION}-apng.patch.gz" | \
     patch -p1 --verbose || exit 1
 
@@ -31,9 +30,6 @@ gzip -cd "${SOURCES}/${PRGNAME}-${VERSION}-apng.patch.gz" | \
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-cp -v README libpng-manual.txt "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

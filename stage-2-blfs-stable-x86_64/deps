@@ -43,7 +43,7 @@ docbook-xsl                         libxslt, glib, elogind
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml
 ducktype                            dbus
 efl                                 pinentry
 elogind                             dbus
@@ -107,6 +107,7 @@ libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant
 libnsl                              pth, berkeley-db
+libpng
 libpsl                              wget, curl
 libressl                            openssh
 librtmp                             curl
@@ -121,6 +122,7 @@ libusb                              gnupg
 libuv
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind
+libyaml
 linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd
 lm-sensors
@@ -538,7 +540,6 @@ zsh                                 elogind
 # libpaper                            cups, ghostscript
 # libpcap                             iptables
 # libplacebo                          mpv
-# libpng                              slang, freetype, links, xorg-applications, gdk-pixbuf, pixman, cairo, imlib2, gst-plugins-good, fltk, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, openjdk, libtheora, imagemagick, feh, libgd
 # libproxy                            glib-networking, neon, qt5
 # libpwquality                        cryptsetup
 # libraqm                             imagemagick
@@ -580,7 +581,6 @@ zsh                                 elogind
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
-# libyaml                             python-pyyaml, libblockdev, ruby
 # lilv                                gst-plugins-bad
 # links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
 # liquid-rescale                      imagemagick

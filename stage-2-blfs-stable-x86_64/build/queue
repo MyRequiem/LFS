@@ -45,6 +45,7 @@ l/libxslt.sh
 n/p11-kit.sh
 l/fuse.sh
 ap/sqlite.sh
+l/libusb.sh
 n/gnupg.sh
 l/glib.sh
 n/sshfs.sh
@@ -158,6 +159,8 @@ l/iso-codes.sh
 l/libaio.sh
 l/libatasmart.sh
 l/libexif.sh
+l/libpng.sh
+l/libyaml.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -169,9 +172,6 @@ d/python-modules/python2-libxml2.sh
 d/cmake.sh
 l/json-c.sh
 l/libjpeg-turbo.sh
-l/libpng.sh
-l/libusb.sh
-l/libyaml.sh
 l/nspr.sh
 d/python-modules/python-six.sh
 d/python-modules/python3-pygments.sh
