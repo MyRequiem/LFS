@@ -11,7 +11,6 @@ apache-ant                          docbook-xsl
 apache-httpd                        curl
 apr
 archivemount                        vifm
-asciidoc                            git
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
@@ -33,13 +32,13 @@ curl                                pciutils, gnupg, curlftpfs, git, smartmontoo
 curlftpfs                           vifm
 cython                              yasm
 datefudge                           gnutls
-dblatex                             git
+dblatex                             git, python3-asciidoc
 dbus                                wpa-supplicant, glib, elogind
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib, elogind
-docbook-xsl                         libxslt, glib, elogind
+docbook-xsl                         libxslt, glib, elogind, python3-asciidoc
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
@@ -53,6 +52,7 @@ exim                                gnupg, sudo
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
+fop                                 python3-asciidoc
 fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                            vifm
@@ -121,7 +121,7 @@ libunistring                        libidn2, gnutls
 libusb                              gnupg
 libuv
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
 libyaml
 linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd
@@ -131,7 +131,7 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
-lynx                                pciutils, smartmontools
+lynx                                pciutils, smartmontools, python3-asciidoc
 lz4                                 lrzip
 lzip
 lzo                                 libarchive
@@ -171,6 +171,7 @@ python-pygobject3                   dbus
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
+python3-asciidoc                    git
 python3-docutils                    sshfs
 python3-lxml                        elogind
 pytrash
@@ -208,7 +209,7 @@ unrar
 unzip                               docbook-xml
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind
 vifm
-w3m
+w3m                                 python3-asciidoc
 wget                                pciutils, smartmontools
 which                               pciutils, openssh, lm-sensors, boost, aspell
 whois
@@ -245,7 +246,6 @@ zsh                                 elogind
 # apr-util                            apache-httpd
 # argon2                              cryptsetup
 # as31                                alsa-firmware
-# asciidoctor                         git
 # assimp                              qt5
 # at-spi2-atk                         gtk+3
 # at-spi2-core                        at-spi2-atk, python3-pyatspi2
@@ -347,7 +347,6 @@ zsh                                 elogind
 # fluidsynth                          gst-plugins-bad
 # fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript, poppler, ffmpeg, libgd
 # fonttools                           harfbuzz, graphite2
-# fop                                 asciidoc, xorgproto, libxdmcp, xorg-libraries, xmlto, xorg-server, postgresql
 # freefont
 # freeglut                            libtiff, jasper, libwebp
 # freetds                             apr-util, qt5

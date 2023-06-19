@@ -161,6 +161,7 @@ l/libatasmart.sh
 l/libexif.sh
 l/libpng.sh
 l/libyaml.sh
+d/python-modules/python3-asciidoc.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -194,7 +195,6 @@ l/aalib.sh
 l/libsigc++2.sh
 l/parted.sh
 l/sg3-utils.sh
-ap/asciidoc.sh
 l/libpcap.sh
 n/iptables.sh
 d/python-modules/python-markupsafe.sh
@@ -485,7 +485,6 @@ l/json-glib.sh
 l/gtk+3.sh
 l/libseccomp.sh
 l/gdk-pixbuf-xlib.sh
-ap/asciidoc.sh
 s/xmlto.sh
 x/libs/xorg-libraries.sh
 l/babl.sh

@@ -127,6 +127,7 @@ https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.
 https://downloads.sourceforge.net/libpng/libpng-1.6.39.tar.xz
 https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.39-apng.patch.gz
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+https://files.pythonhosted.org/packages/source/a/asciidoc/asciidoc-10.2.0.tar.gz
 
 
 ================================================================================
@@ -162,7 +163,6 @@ https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 https://download.gnome.org/sources/libsigc++/2.10/libsigc++-2.10.6.tar.xz
 https://ftp.gnu.org/gnu/parted/parted-3.4.tar.xz
 http://sg.danny.cz/sg/p/sg3_utils-1.45.tar.xz
-https://github.com/asciidoc/asciidoc-py3/releases/download/9.1.0/asciidoc-9.1.0.tar.gz
 http://www.tcpdump.org/release/libpcap-1.10.0.tar.gz
 http://www.netfilter.org/projects/iptables/files/iptables-1.8.7.tar.bz2
 https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-1.1.1.tar.gz

@@ -10,7 +10,7 @@ PRGNAME="xorgproto"
 # Optional:    fop
 #              libxslt
 #              xmlto
-#              asciidoc (для создания документации)
+#              python3-asciidoc (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

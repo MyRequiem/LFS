@@ -13,7 +13,7 @@ PRGNAME="gegl"
 #              graphviz
 #              python3-pygments
 #              python3-pygobject3
-# Optional:    asciidoc
+# Optional:    python3-asciidoc
 #              cairo
 #              exiv2
 #              ffmpeg

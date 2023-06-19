@@ -9,7 +9,7 @@ PRGNAME="nasm"
 
 # Required:    no
 # Recommended: no
-# Optional:    asciidoc
+# Optional:    python3-asciidoc
 #              xmlto
 
 ROOT="/root/src/lfs"

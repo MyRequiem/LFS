@@ -21,7 +21,7 @@ PRGNAME="git"
 #              perl-mime-base64     (https://metacpan.org/pod/MIME::Base64) для команды 'git send-email'
 #              perl-io-socket-ssl   (для команды 'git send-email')
 #              xmlto                (для сборки man-страниц)
-#              asciidoc
+#              python3-asciidoc
 #              dblatex              (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
 #              docbook2x            (для создания страниц info) http://docbook2x.sourceforge.net/
 

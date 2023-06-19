@@ -9,8 +9,8 @@ PRGNAME="cppcheck"
 
 # Required:    no
 # Recommended: no
-# Optional:    libxslt  (для создания man-страниц)
-#              asciidoc (для создания man-страниц)
+# Optional:    libxslt          (для создания man-страниц)
+#              python3-asciidoc (для создания man-страниц)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,16 +28,16 @@ make install                         \
     FILESDIR="/usr/share/${PRGNAME}" \
     CFGDIR="/usr/share/${PRGNAME}/cfg" DESTDIR="${TMP_DIR}" || exit 1
 
+MANPAGE_XSL="/usr/lib/python3.11/site-packages/asciidoc/resources/docbook-xsl/manpage.xsl"
 if command -v xsltproc &>/dev/null; then
-    if [ -r /etc/asciidoc/docbook-xsl/manpage.xsl ]; then
+    if command -v asciidoc &>/dev/null; then
         xsltproc                                  \
             --nonet                               \
             --output man/                         \
             --param make.year.ranges        "1"   \
             --param man.charmap.use.subset  "0"   \
             --param make.single.year.ranges "1"   \
-            /etc/asciidoc/docbook-xsl/manpage.xsl \
-            "man/${PRGNAME}.1.xml"
+            "${MANPAGE_XSL}" "man/${PRGNAME}.1.xml"
 
         MANDIR="/usr/share/man/man1"
         mkdir -p "${TMP_DIR}${MANDIR}"

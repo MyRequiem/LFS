@@ -20,7 +20,7 @@ PRGNAME="graphite2"
 #              harfbuzz (циклическая зависимость: сначала собираем graphite2 без harfbuzz, потом harfbuzz и пересобираем graphite2)
 #
 #              *** для создания документации
-#              asciidoc
+#              python3-asciidoc
 #              doxygen
 #              texlive или install-tl-unx
 #              dblatex (для создания pdf документации) http://dblatex.sourceforge.net/

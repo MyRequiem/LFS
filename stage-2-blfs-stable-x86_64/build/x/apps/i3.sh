@@ -14,7 +14,7 @@ PRGNAME="i3"
 #              libev
 #              libxkbcommon
 #              libyajl
-#              asciidoc
+#              python3-asciidoc
 #              xmlto
 #              docbook-xml
 #              pcre
