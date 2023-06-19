@@ -154,6 +154,7 @@ openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls
 p7zip
+patchelf
 pciutils
 pcre                                wget, git
 pcre2                               wget, glib, git

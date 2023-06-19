@@ -162,6 +162,7 @@ l/libexif.sh
 l/libpng.sh
 l/libyaml.sh
 d/python-modules/python3-asciidoc.sh
+d/patchelf.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
