@@ -48,6 +48,7 @@ ap/sqlite.sh
 l/libusb.sh
 n/gnupg.sh
 l/glib.sh
+d/python-modules/python3-docutils.sh
 n/sshfs.sh
 d/lua.sh
 l/boost.sh
@@ -236,7 +237,6 @@ d/mozjs.sh
 l/polkit.sh
 a/upower.sh
 a/udisks.sh
-d/python-modules/python-docutils.sh
 d/python-modules/python-dbus.sh
 l/apr-util.sh
 l/freetype.sh

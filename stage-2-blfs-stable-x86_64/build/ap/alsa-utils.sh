@@ -11,7 +11,7 @@ PRGNAME="alsa-utils"
 
 # Required:    alsa-lib
 # Recommended: no
-# Optional:    python-docutils
+# Optional:    python3-docutils
 #              fftw
 #              libsamplerate
 #              xmlto

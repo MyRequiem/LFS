@@ -30,7 +30,7 @@ DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}"
 
 # исправим ошибку сборки, если в системе установлен пакет sphinx или
-# python-docutils
+# python3-docutils
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-doc_fixes-1.patch" || exit 1
 

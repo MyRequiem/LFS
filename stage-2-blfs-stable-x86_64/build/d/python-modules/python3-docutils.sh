@@ -1,9 +1,12 @@
 #! /bin/bash
 
-PRGNAME=""
-ARCH_NAME=""
+PRGNAME="python3-docutils"
+ARCH_NAME="docutils"
 
-###  ()
+### docutils (Python Documentation Utilities)
+# Модульная система для преобразования документации в другие форматы, такие как
+# HTML, XML и LaTeX. Для ввода Docutils поддерживает reStructuredText, простой
+# для чтения текст в формате "что видишь, то и получаешь"
 
 # Required:    no
 # Recommended: no
@@ -49,23 +52,38 @@ pip3 install             \
     --find-links=./dist  \
     --no-cache-dir       \
     --no-user            \
-    --no-index <${ARCH_NAME}|${PRGNAME}>
+    --no-index "${ARCH_NAME}"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/bin/ и удаляем все скомпилированные байт-коды
 [ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
 
+# ссылки в /usr/bin:
+#    rst2xml   -> rst2xml.py
+#    rst2latex -> rst2latex.py
+#    ...
+(
+    cd "${TMP_DIR}/usr/bin" || exit 1
+    for FILE in rst*.py; do
+        ln -svf "${FILE}" "$(basename "${FILE}" .py)"
+    done
+)
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} ()
+# Package: ${PRGNAME} (Python Documentation Utilities)
 #
+# Docutils is a modular system for processing documentation into useful
+# formats, such as HTML, XML, and LaTeX. For input Docutils supports
+# reStructuredText, an easy-to-read, what-you-see-is-what-you-get plaintext
+# markup syntax.
 #
-# Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:
+# Home page: https://pypi.python.org/pypi/${ARCH_NAME}/
+# Download:  https://downloads.sourceforge.net/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
