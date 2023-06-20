@@ -60,11 +60,10 @@ fuse2                               archivemount, ntfs-3g
 fusefat                             vifm
 fuseiso                             vifm
 fwtk                                sudo
-gc
 gc                                  w3m
 gcc                                 pth
 gcr                                 pinentry
-gdb                                 openssh, glib
+gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2
@@ -87,6 +86,7 @@ imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
+isl                                 gcc
 iso-codes
 iw
 kernel-firmware
@@ -208,7 +208,7 @@ trousers                            gnutls
 unbound                             gnutls
 unrar
 unzip                               docbook-xml
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc
 vifm
 w3m                                 python3-asciidoc
 wget                                pciutils, smartmontools
@@ -437,7 +437,6 @@ zsh                                 elogind
 # inxi
 # ipaex-fonts-ttf
 # iptables
-# isl                                 gcc
 # isort2                              pylint2
 # isort3                              pylint3
 # itstool                             shared-mime-info, zenity
