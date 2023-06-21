@@ -166,6 +166,7 @@ pinentry                            gnupg
 polkit                              elogind
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
+py3c
 pytest                              fuse
 python-d-bus                        dbus
 python-pygobject3                   dbus
@@ -876,7 +877,6 @@ zsh                                 elogind
 # python-pluggy                       python-pytest
 # python-psutil                       llvm, bumblebee-status
 # python-py                           python-pytest
-# python-py3c
 # python-pycryptodome
 # python-pycurl                       python-urlgrabber
 # python-pyparsing                    libinput, spice, spice-gtk
