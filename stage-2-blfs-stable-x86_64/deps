@@ -176,6 +176,7 @@ python3                             lsb-tools
 python3-asciidoc                    git
 python3-docutils                    sshfs
 python3-lxml                        elogind
+python3-pycryptodome
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -877,7 +878,6 @@ zsh                                 elogind
 # python-pluggy                       python-pytest
 # python-psutil                       llvm, bumblebee-status
 # python-py                           python-pytest
-# python-pycryptodome
 # python-pycurl                       python-urlgrabber
 # python-pyparsing                    libinput, spice, spice-gtk
 # python-pyperclip                    bpython

@@ -132,6 +132,7 @@ https://github.com/NixOS/patchelf/releases/download/0.17.2/patchelf-0.17.2.tar.g
 https://downloads.sourceforge.net/docutils/docutils-0.19.tar.gz
 https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
 https://github.com/encukou/py3c/archive/v1.4/py3c-1.4.tar.gz
+https://github.com/Legrandin/pycryptodome/archive/v3.17.0/pycryptodome-3.17.0.tar.gz
 
 
 ================================================================================
@@ -679,7 +680,6 @@ https://www.cpan.org/authors/id/S/SH/SHLOMIF/XML-LibXSLT-1.99.tar.gz
 https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
 https://files.pythonhosted.org/packages/source/d/decorator/decorator-4.4.2.tar.gz
 https://download.gnome.org/sources/pyatspi/2.38/pyatspi-2.38.0.tar.xz
-https://github.com/Legrandin/pycryptodome/archive/v3.10.1/pycryptodome-3.10.1.tar.gz
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-2.11.3.tar.gz
 https://github.com/nphilipp/python-slip/releases/download/python-slip-0.6.5/python-slip-0.6.5.tar.bz2

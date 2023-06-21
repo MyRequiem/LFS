@@ -167,6 +167,8 @@ d/patchelf.sh
 d/gcc.sh
 n/pth.sh
 d/py3c.sh
+d/python-modules/python3-pycryptodome.sh
+
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -643,7 +645,6 @@ d/perl-modules/perl-xml-libxslt.sh
 d/perl-modules/perl-xml-simple.sh
 d/python-modules/python3-decorator.sh
 d/python-modules/python3-pyatspi2.sh
-d/python-modules/python-pycryptodome.sh
 d/python-modules/python2-pygtk.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python-slip.sh
