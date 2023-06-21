@@ -6,9 +6,9 @@ ARCH_NAME="pyxdg"
 ### python-pyxdg (Python XDG Library)
 # Библиотека Python для доступа к стандартам freedesktop.org
 
-# Required:    python3
+# Required:    no
 # Recommended: no
-# Optional:    python2
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -17,9 +17,48 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-python3 setup.py build || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+##
+# создаем в директории dist дерева исходников пакет
+###
+# команда создает архив для этого пакета
+#    wheel
+# инструктирует pip поместить созданный пакет в указанный каталог dist
+#    --wheel-dir=./dist
+# не устанавливать зависимости для пакета
+#    --no-deps
+# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
+# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
+# какие-либо файлы
+#    --no-build-isolation
+pip3 wheel               \
+    --wheel-dir=./dist   \
+    --no-deps            \
+    --no-build-isolation \
+    ./ || exit 1
 
+### устанавливаем созданный пакет в "${TMP_DIR}"
+# отключает кеш, чтобы предотвратить предупреждение при установке от
+# пользователя root
+#    --no-cache-dir
+# предотвращает ошибочный запуск команды установки от имени обычного
+# пользователя без полномочий root
+#    --no-user
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+TARGET="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+pip3 install             \
+    --target="${TARGET}" \
+    --find-links=./dist  \
+    --no-cache-dir       \
+    --no-user            \
+    --no-index "${ARCH_NAME}"
+
+# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
+[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
+rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -28,7 +67,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # PyXDG is a Python library to access freedesktop.org standards
 #
 # Home page: http://freedesktop.org/wiki/Software/${ARCH_NAME}
-# Download:  https://files.pythonhosted.org/packages/6f/2e/2251b5ae2f003d865beef79c8fcd517e907ed6a69f58c32403cec3eba9b2/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/b0/25/7998cd2dec731acbd438fbf91bc619603fc5188de0a9a17699a781840452/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -169,6 +169,7 @@ n/pth.sh
 d/py3c.sh
 d/python-modules/python3-pycryptodome.sh
 d/python-modules/python3-pygments.sh
+d/python-modules/python3-pyxdg.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -435,7 +436,6 @@ d/python-modules/python2-pycairo.sh
 d/python-modules/python3-pycairo.sh
 d/python-modules/python2-pygobject2.sh
 d/python-modules/python3-pygobject3.sh
-d/python-modules/python3-pyxdg.sh
 s/ibus.sh
 l/unixodbc.sh
 n/openldap.sh
