@@ -168,7 +168,7 @@ d/gcc.sh
 n/pth.sh
 d/py3c.sh
 d/python-modules/python3-pycryptodome.sh
-
+d/python-modules/python3-pygments.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -182,7 +182,6 @@ l/json-c.sh
 l/libjpeg-turbo.sh
 l/nspr.sh
 d/python-modules/python-six.sh
-d/python-modules/python3-pygments.sh
 a/ed.sh
 a/lvm2.sh
 a/usbutils.sh

@@ -52,7 +52,7 @@ pip3 install             \
     --no-index <${ARCH_NAME}|${PRGNAME}>
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
-# перемещаем ее в ${TMP_DIR}/usr/bin/ и удаляем все скомпилированные байт-коды
+# перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
 [ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
 
