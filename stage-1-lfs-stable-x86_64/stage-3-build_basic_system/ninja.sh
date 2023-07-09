@@ -22,17 +22,30 @@ mkdir -pv "${TMP_DIR}/usr"/{bin,"${BASH_COMPL}","${ZSH_COMPL}"}
 # потоков, то можно ограничить количество параллельных процессов, но некоторые
 # пакеты при сборке не передают параметр -jN. Можно установить переменную
 # окружения NINJAJOBS, для принудительного ограничения количества потоков
-# сборки. Установим значение равное количеству процессоров
-NINJAJOBS="-j$(nproc)"
+# сборки. Установим -j2 для сборки самого пакета ninja в данный момент
+NINJAJOBS="-j2"
 export NINJAJOBS
 
 # добавим возможность использовать переменную окружения NINJAJOBS
-sed -i '/int Guess/a \
-  int   j = 0;\
-  char* jobs = getenv( "NINJAJOBS" );\
-  if ( jobs != NULL ) j = atoi( jobs );\
-  if ( j > 0 ) return j;\
-' src/ninja.cc || exit 1
+sed -i "/int Guess/a \\
+  char* jobs = getenv( \"NINJAJOBS\" );\\
+\\
+  if ( jobs != NULL ) {\\
+    int j = 0;\\
+    int lenJobsEnv = strlen(jobs);\\
+\\
+    if (lenJobsEnv > 1) {\\
+      j = jobs[lenJobsEnv - 1] - '0';\\
+    } else {\\
+      j = atoi(jobs);\\
+    }\\
+\\
+    if (j > 0) return j;\\
+  }\\
+\\
+  int countProcs = GetProcessorCount();\\
+  return countProcs;\\
+" src/ninja.cc || exit 1
 
 # заставляет ninja пересобрать себя под текущую систему
 #    --bootstrap
