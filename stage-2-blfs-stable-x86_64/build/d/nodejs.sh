@@ -46,6 +46,7 @@ command -v icuinfo &>/dev/null && ICU="system-icu"
     ${LIBUV}         \
     ${NGHTTP2}       \
     ${NPM}           \
+    --ninja          \
     --with-intl="${ICU}"|| exit 1
 
 make || exit 1
