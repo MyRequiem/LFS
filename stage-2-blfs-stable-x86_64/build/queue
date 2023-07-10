@@ -170,6 +170,7 @@ d/py3c.sh
 d/python-modules/python3-pycryptodome.sh
 d/python-modules/python3-pygments.sh
 d/python-modules/python3-pyxdg.sh
+ap/htop.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -906,7 +907,6 @@ l/gst-plugins-bad.sh
 l/libplacebo.sh
 d/mujs.sh
 ap/mpv.sh
-ap/htop.sh
 ap/mariadb.sh
 n/rsync.sh
 l/cxxopts.sh

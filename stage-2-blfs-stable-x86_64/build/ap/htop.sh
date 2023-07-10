@@ -10,7 +10,6 @@ PRGNAME="htop"
 # Recommended: no
 # Optional:    lm-sensors
 #              hwloc (https://www.open-mpi.org/projects/hwloc/)
-#              libcap
 #              libnl
 
 ROOT="/root/src/lfs"

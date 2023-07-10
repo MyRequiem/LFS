@@ -81,6 +81,8 @@ gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
 hdparm
 highlight                           vifm
+htop
+hwloc                               htop
 icu                                 libxml2, boost
 imagemagick                         gnupg
 imlib2                              w3m
@@ -105,7 +107,7 @@ libidn                              gnutls, whois
 libidn2                             gnutls, libpsl, wget, curl, whois
 libksba                             gnupg
 libmetalink                         curl
-libnl                               iw, wpa-supplicant
+libnl                               iw, wpa-supplicant, htop
 libnsl                              pth, berkeley-db
 libpng
 libpsl                              wget, curl
@@ -125,7 +127,7 @@ libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, el
 libyaml
 linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd
-lm-sensors
+lm-sensors                          htop
 lnav
 lrzip
 lsb-tools
@@ -421,11 +423,9 @@ zsh                                 elogind
 # hspell                              enchant
 # hstr
 # html2ps                             imagemagick
-# htop
 # http-parser                         nodejs
 # hunspell                            enchant
 # hwinfo
-# hwloc                               htop
 # hyperwave                           php
 # hypothesis                          python2-pycairo, python3-pycairo
 # i3                                  bumblebee-status
@@ -481,7 +481,7 @@ zsh                                 elogind
 # libcaca                             gst-plugins-good, sdl, ffmpeg
 # libcacard                           spice-gtk, qemu
 # libcanberra                         notification-daemon, pavucontrol
-# libcap                              pulseaudio, ntp, bind-utils, htop
+# libcap                              pulseaudio, ntp, bind-utils
 # libcap-ng                           gnome-keyring, qemu
 # libcddb                             libcdio
 # libcdio                             gst-plugins-ugly, ffmpeg, mpv
