@@ -30,7 +30,7 @@ COMPILER_RT="compiler-rt"
 #              rsync           (для тестов)
 #              texlive или install-tl-unx
 #              valgrind
-#              python-pyyaml
+#              python3-pyyaml
 #              zip
 #              ocaml           (https://ocaml.org/)
 #              python-psutil   (https://pypi.org/project/psutil/)

@@ -37,6 +37,7 @@ https://roy.marples.name/downloads/dhcpcd/dhcpcd-9.4.1.tar.xz
 https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/wireless_tools-29-fix_iwlist_scanning-1.patch
 https://github.com/thom311/libnl/releases/download/libnl3_7_0/libnl-3.7.0.tar.gz
+https://github.com/htop-dev/htop/releases/download/3.2.2/htop-3.2.2.tar.xz
 https://www.kernel.org/pub/software/network/iw/iw-5.19.tar.xz
 https://w1.fi/releases/wpa_supplicant-2.10.tar.gz
 https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
@@ -135,7 +136,7 @@ https://github.com/encukou/py3c/archive/v1.4/py3c-1.4.tar.gz
 https://github.com/Legrandin/pycryptodome/archive/v3.17.0/pycryptodome-3.17.0.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.14.0.tar.gz
 https://files.pythonhosted.org/packages/b0/25/7998cd2dec731acbd438fbf91bc619603fc5188de0a9a17699a781840452/pyxdg-0.28.tar.gz
-https://github.com/htop-dev/htop/releases/download/3.2.2/htop-3.2.2.tar.xz
+https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-6.0.tar.gz
 
 
 ================================================================================
@@ -159,7 +160,6 @@ http://www.jedsoft.org/releases/slang/slang-2.3.2.tar.bz2
 https://github.com/ivmai/libatomic_ops/releases/download/v7.6.10/libatomic_ops-7.6.10.tar.gz
 https://ftp.gnu.org/gnu/guile/guile-3.0.5.tar.xz
 https://archive.mozilla.org/pub/firefox/releases/78.8.0esr/source/firefox-78.8.0esr.source.tar.xz
-http://pyyaml.org/download/pyyaml/PyYAML-5.3.1.tar.gz
 https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/llvm-11.1.0.src.tar.xz
 https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/clang-11.1.0.src.tar.xz
 https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/compiler-rt-11.1.0.src.tar.xz

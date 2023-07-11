@@ -34,6 +34,7 @@ ap/lm-sensors.sh
 n/dhcpcd.sh
 n/wireless-tools.sh
 l/libnl.sh
+ap/htop.sh
 n/iw.sh
 n/wpa-supplicant.sh
 l/libevent.sh
@@ -91,6 +92,7 @@ ap/sudo.sh
 #    - WiFi (wpa-supplicant)
 #    - консольный браузер w3m
 #    - git
+#    - htop
 # поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
 #
 # NOTE:
@@ -170,7 +172,7 @@ d/py3c.sh
 d/python-modules/python3-pycryptodome.sh
 d/python-modules/python3-pygments.sh
 d/python-modules/python3-pyxdg.sh
-ap/htop.sh
+d/python-modules/python3-pyyaml.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -193,7 +195,6 @@ ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
 d/guile.sh
-d/python-modules/python-pyyaml.sh
 d/llvm.sh
 l/icu.sh
 d/nodejs.sh

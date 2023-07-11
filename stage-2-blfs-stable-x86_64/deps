@@ -30,7 +30,7 @@ cmocka                              gnutls
 cpio
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools
 curlftpfs                           vifm
-cython                              yasm
+cython                              yasm, python3-pyyaml
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc
 dbus                                wpa-supplicant, glib, elogind
@@ -124,7 +124,7 @@ libusb                              gnupg
 libuv
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
-libyaml
+libyaml                             python3-pyyaml
 linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd
 lm-sensors                          htop
@@ -181,6 +181,7 @@ python3-lxml                        elogind
 python3-pycryptodome
 python3-pygments
 python3-pyxdg
+python3-pyyaml
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -885,7 +886,6 @@ zsh                                 elogind
 # python-pyperclip                    bpython
 # python-pytest                       python-pytest-runner, python-mccabe, flake8
 # python-pytest-runner                python-mccabe, flake8, pylint3
-# python-pyyaml                       llvm
 # python-requests                     virt-manager, bpython
 # python-scandir                      python-pathlib2, python-pytest
 # python-setuptools-scm               python-py, python-pluggy, python-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
