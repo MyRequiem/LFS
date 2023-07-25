@@ -10,7 +10,7 @@ ARCH_NAME="scour"
 # редакторах (Inkscape, Adobe и т.д.)
 
 # Required:    python3
-#              python-six
+#              python3-six
 # Recommended: no
 # Optional:    no
 

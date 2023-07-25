@@ -9,7 +9,7 @@ ARCH_NAME="astroid"
 # основном регулируется потребностями pylint
 
 # Required:    python2
-#              python-six
+#              python3-six
 #              python2-lazy-object-proxy
 #              python-wrapt
 #              python-setuptools-scm

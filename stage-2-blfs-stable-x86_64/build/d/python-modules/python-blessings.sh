@@ -9,7 +9,7 @@ ARCH_NAME="blessings"
 
 # Required:    python3
 #              python2
-#              python-six
+#              python3-six
 # Recommended: no
 # Optional:    no
 

@@ -6,7 +6,7 @@ PRGNAME="spice-gtk"
 
 # Required:    opus
 #              vala
-#              python-six
+#              python3-six
 #              spice-protocol   (https://www.spice-space.org)
 #              spice            (https://www.spice-space.org/)
 #              python-pyparsing (https://pypi.org/project/pyparsing/)

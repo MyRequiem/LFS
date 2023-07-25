@@ -26,7 +26,9 @@ brotli                              gnutls, curl
 c-ares                              curl
 c2man                               fribidi
 chronyd                             dhcpcd
+cloudpickle                         python3-attrs
 cmocka                              gnutls
+coverage                            python3-attrs
 cpio
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools
 curlftpfs                           vifm
@@ -83,6 +85,7 @@ hdparm
 highlight                           vifm
 htop
 hwloc                               htop
+hypothesis                          python3-attrs
 icu                                 libxml2, boost
 imagemagick                         gnupg
 imlib2                              w3m
@@ -140,6 +143,7 @@ lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
 mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
+mypy                                python3-attrs
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
 nghttp2                             curl
@@ -169,19 +173,23 @@ polkit                              elogind
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 py3c
-pytest                              fuse
+pympler                             python3-attrs
+pytest                              fuse, python3-attrs
+pytest-mypy-plugins                 python3-attrs
 python-d-bus                        dbus
 python-pygobject3                   dbus
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-asciidoc                    git
+python3-attrs
 python3-docutils                    sshfs
 python3-lxml                        elogind
 python3-pycryptodome
 python3-pygments
 python3-pyxdg
 python3-pyyaml
+python3-six
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -231,6 +239,7 @@ yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
 zip                                 docbook-xsl
+zope-interface                      python3-attrs
 zsh                                 elogind
 
 
@@ -428,7 +437,6 @@ zsh                                 elogind
 # hunspell                            enchant
 # hwinfo
 # hyperwave                           php
-# hypothesis                          python2-pycairo, python3-pycairo
 # i3                                  bumblebee-status
 # ibm-db2                             php
 # ibus                                sdl2, qt5
@@ -860,7 +868,6 @@ zsh                                 elogind
 # pyrad                               mit-kerberos-v5
 # python-appdirs                      pylint3
 # python-atomicwrites                 python-pytest
-# python-attrs                        python-pytest
 # python-blessings                    python3-curtsies
 # python-certifi                      python-requests
 # python-chardet                      python-requests
@@ -890,7 +897,6 @@ zsh                                 elogind
 # python-scandir                      python-pathlib2, python-pytest
 # python-setuptools-scm               python-py, python-pluggy, python-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
 # python-singledispatch               pylint3, pylint2
-# python-six                          libbytesize, python-slip, python3-scour, spice, spice-gtk, python-urlgrabber, python-more-itertools, python-pathlib2, python-pytest, python2-astroid, python3-astroid, python-blessings, python3-curtsies
 # python-slip
 # python-toml                         pylint3
 # python-tomli                        pylint3

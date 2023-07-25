@@ -12,7 +12,7 @@ ARCH_NAME="pathlib2"
 
 # Required:    python2
 #              python3
-#              python-six
+#              python3-six
 #              python-scandir
 # Recommended: no
 # Optional:    no

@@ -8,7 +8,7 @@ ARCH_NAME="more-itertools"
 
 # Required:    python2
 #              python3
-#              python-six
+#              python3-six
 # Recommended: no
 # Optional:    no
 

@@ -10,7 +10,7 @@ ARCH_NAME="urlgrabber"
 
 # Required:    python2
 #              python3
-#              python-six
+#              python3-six
 #              python-pycurl (http://pycurl.sourceforge.net)
 # Recommended: no
 # Optional:    no

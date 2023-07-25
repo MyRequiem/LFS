@@ -8,7 +8,7 @@ ARCH_NAME="curtsies"
 # отображением на основе компоновки двухмерных массивов текста.
 
 # Required:    python3
-#              python-six
+#              python3-six
 #              python-blessings
 #              python3-cwcwidth
 # Recommended: no

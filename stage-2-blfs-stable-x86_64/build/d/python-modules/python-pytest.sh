@@ -8,11 +8,11 @@ ARCH_NAME="pytest"
 
 # Required:    python2
 #              python3
-#              python-six
+#              python3-six
 #              python-scandir
 #              python-setuptools-scm
 #              python-py
-#              python-attrs
+#              python3-attrs
 #              python-pluggy
 #              python-more-itertools
 #              python-atomicwrites

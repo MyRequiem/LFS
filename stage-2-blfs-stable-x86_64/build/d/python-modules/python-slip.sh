@@ -10,7 +10,7 @@ PRGNAME="python-slip"
 #              python3
 #              python-dbus
 #              python3-decorator
-#              python-six
+#              python3-six
 # Recommended: no
 # Optional:    no
 
