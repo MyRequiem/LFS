@@ -184,6 +184,7 @@ python3                             lsb-tools
 python3-asciidoc                    git
 python3-attrs
 python3-docutils                    sshfs
+python3-editables
 python3-lxml                        elogind
 python3-pycryptodome
 python3-pygments

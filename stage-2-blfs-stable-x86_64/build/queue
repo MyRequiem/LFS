@@ -175,6 +175,7 @@ d/python-modules/python3-pyxdg.sh
 d/python-modules/python3-pyyaml.sh
 d/python-modules/python3-six.sh
 d/python-modules/python3-attrs.sh
+d/python-modules/python3-editables.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
