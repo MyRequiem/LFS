@@ -174,7 +174,6 @@ postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 py3c
 pympler                             python3-attrs
-pytest                              fuse, python3-attrs
 pytest-mypy-plugins                 python3-attrs
 python-d-bus                        dbus
 python-pygobject3                   dbus
@@ -185,12 +184,15 @@ python3-asciidoc                    git
 python3-attrs
 python3-docutils                    sshfs
 python3-editables
+python3-flit-core
 python3-lxml                        elogind
 python3-pycryptodome
 python3-pygments
+python3-pytest                      fuse, python3-attrs, python3-flit-core
 python3-pyxdg
 python3-pyyaml
 python3-six
+python3-testpath                    python3-flit-core
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -868,35 +870,34 @@ zsh                                 elogind
 # pylint3
 # pyrad                               mit-kerberos-v5
 # python-appdirs                      pylint3
-# python-atomicwrites                 python-pytest
+# python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
 # python-certifi                      python-requests
 # python-chardet                      python-requests
 # python-configparser                 flake8, pylint3, pylint2
 # python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
-# python-funcsigs                     python-pytest
+# python-funcsigs                     python3-pytest
 # python-functools-lru-cache          pylint3, pylint2
 # python-greenlet                     bpython
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
 # python-markupsafe                   python3-mako, python3-jinja2
 # python-mccabe                       flake8, pylint3, pylint2
-# python-more-itertools               python-pytest
+# python-more-itertools               python3-pytest
 # python-netifaces                    bumblebee-status
-# python-pathlib2                     python-pytest
+# python-pathlib2                     python3-pytest
 # python-pies                         isort2, isort3, pylint3
-# python-pluggy                       python-pytest
+# python-pluggy                       python3-pytest
 # python-psutil                       llvm, bumblebee-status
-# python-py                           python-pytest
+# python-py                           python3-pytest
 # python-pycurl                       python-urlgrabber
 # python-pyparsing                    libinput, spice, spice-gtk
 # python-pyperclip                    bpython
-# python-pytest                       python-pytest-runner, python-mccabe, flake8
 # python-pytest-runner                python-mccabe, flake8, pylint3
 # python-requests                     virt-manager, bpython
-# python-scandir                      python-pathlib2, python-pytest
-# python-setuptools-scm               python-py, python-pluggy, python-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
+# python-scandir                      python-pathlib2, python3-pytest
+# python-setuptools-scm               python-py, python-pluggy, python3-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
 # python-singledispatch               pylint3, pylint2
 # python-slip
 # python-toml                         pylint3
