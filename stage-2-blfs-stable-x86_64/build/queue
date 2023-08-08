@@ -177,6 +177,7 @@ d/python-modules/python3-six.sh
 d/python-modules/python3-attrs.sh
 d/python-modules/python3-editables.sh
 d/python-modules/python3-flit-core.sh
+d/python-modules/python3-packaging.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
