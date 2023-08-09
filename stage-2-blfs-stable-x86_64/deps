@@ -184,7 +184,7 @@ python3-asciidoc                    git
 python3-attrs
 python3-docutils                    sshfs
 python3-editables
-python3-flit-core                   python3-packaging
+python3-flit-core                   python3-packaging, python3-typing-extensions
 python3-lxml                        elogind
 python3-packaging
 python3-pretend                     python3-packaging
@@ -195,6 +195,7 @@ python3-pyxdg
 python3-pyyaml
 python3-six
 python3-testpath                    python3-flit-core
+python3-typing-extensions
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -246,6 +247,8 @@ ypbind                              dhcpcd
 zip                                 docbook-xsl
 zope-interface                      python3-attrs
 zsh                                 elogind
+
+
 
 
 # ==============================================================================
@@ -905,7 +908,6 @@ zsh                                 elogind
 # python-toml                         pylint3
 # python-tomli                        pylint3
 # python-tomlkit                      pylint3
-# python-typing-extensions            pylint3, bpython
 # python-urlgrabber                   libvirt
 # python-urllib3                      python-requests
 # python-urwid                        urlscan, bpython

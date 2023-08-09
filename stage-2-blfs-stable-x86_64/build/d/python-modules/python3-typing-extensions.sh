@@ -1,11 +1,16 @@
 #! /bin/bash
 
-PRGNAME=""
-ARCH_NAME=""
+PRGNAME="python3-typing-extensions"
+ARCH_NAME="typing_extensions"
 
-###  ()
+### Typing_extensions (Backported and Experimental Type Hints for Python)
+# Модуль typing был добавлен в стандартную библиотеку Python 3.5 на на
+# временной основе и больше не будет временным в Python 3.7 Это означает, что
+# пользователи Python 3.5 - 3.6, которые не могут обновиться до Python 7, не
+# будут иметь возможность использовать новые типы, добавленные в модуль typing,
+# например typing.Text или typing.Coroutine
 
-# Required:    no
+# Required:    python3-flit-core
 # Recommended: no
 # Optional:    no
 
@@ -49,7 +54,7 @@ pip3 install             \
     --find-links=./dist  \
     --no-cache-dir       \
     --no-user            \
-    --no-index "${ARCH_NAME}"|"${PRGNAME}"
+    --no-index "${ARCH_NAME}"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
@@ -61,11 +66,16 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} ()
+# Package: ${PRGNAME} (Backported and Experimental Type Hints for Python)
 #
+# The typing module was added to the standard library in Python 3.5 on a
+# provisional basis and will no longer be provisional in Python 3.7. However,
+# this means users of Python 3.5 - 3.6 who are unable to upgrade willnot be
+# able to take advantage of new types added to the typing module, such as
+# typing.Text or typing.Coroutine
 #
-# Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:
+# Home page: https://pypi.org/project/typing-extensions/
+# Download:  https://files.pythonhosted.org/packages/source/t/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

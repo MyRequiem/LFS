@@ -10,7 +10,7 @@ PRGNAME="bpython"
 #              python-requests
 #              python3-pygments
 #              python3-pyxdg
-#              python-typing-extensions
+#              python3-typing-extensions
 #              python-urwid
 #              python3-cwcwidth
 #              python3-curtsies

@@ -22,7 +22,7 @@ ARCH_NAME="pylint"
 #              python3-platformdirs
 #              python-tomlkit
 #              python-tomli
-#              python-typing-extensions
+#              python3-typing-extensions
 # Recommended: no
 # Optional:    no
 

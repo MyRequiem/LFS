@@ -178,6 +178,7 @@ d/python-modules/python3-attrs.sh
 d/python-modules/python3-editables.sh
 d/python-modules/python3-flit-core.sh
 d/python-modules/python3-packaging.sh
+d/python-modules/python3-typing-extensions.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -896,7 +897,6 @@ d/python-modules/python-dill.sh
 d/python-modules/python3-platformdirs.sh
 d/python-modules/python-tomlkit.sh
 d/python-modules/python-tomli.sh
-d/python-modules/python-typing-extensions.sh
 d/pylint3.sh
 d/pylint2.sh
 d/python-modules/python-blessings.sh
