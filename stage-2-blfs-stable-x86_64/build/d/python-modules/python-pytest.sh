@@ -13,7 +13,7 @@ ARCH_NAME="pytest"
 #              python3-setuptools-scm
 #              python-py
 #              python3-attrs
-#              python-pluggy
+#              python3-pluggy
 #              python-more-itertools
 #              python-atomicwrites
 #              python-funcsigs

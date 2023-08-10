@@ -188,13 +188,15 @@ python3-editables
 python3-flit-core                   python3-packaging, python3-typing-extensions
 python3-lxml                        elogind
 python3-packaging                   python3-setuptools-scm
+python3-pluggy
 python3-pretend                     python3-packaging
 python3-pycryptodome
 python3-pygments
-python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm
+python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy
+python3-pytest-benchmark            python3-pluggy
 python3-pyxdg
 python3-pyyaml
-python3-setuptools-scm
+python3-setuptools-scm              python3-pluggy
 python3-six
 python3-testpath                    python3-flit-core
 python3-typing-extensions           python3-setuptools-scm
@@ -892,7 +894,6 @@ zsh                                 elogind
 # python-netifaces                    bumblebee-status
 # python-pathlib2                     python3-pytest
 # python-pies                         isort2, isort3, pylint3
-# python-pluggy                       python3-pytest
 # python-psutil                       llvm, bumblebee-status
 # python-py                           python3-pytest
 # python-pycurl                       python-urlgrabber
