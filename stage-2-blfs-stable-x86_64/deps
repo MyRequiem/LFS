@@ -68,7 +68,7 @@ gcr                                 pinentry
 gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
-git                                 libidn2
+git                                 libidn2, python3-setuptools-scm
 glib                                sshfs, w3m
 glib-networking                     glib
 gnupg                               git, smartmontools
@@ -141,6 +141,7 @@ lz4                                 lrzip
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl
+mercurial                           python3-setuptools-scm
 mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
 mypy                                python3-attrs
@@ -186,16 +187,17 @@ python3-docutils                    sshfs
 python3-editables
 python3-flit-core                   python3-packaging, python3-typing-extensions
 python3-lxml                        elogind
-python3-packaging
+python3-packaging                   python3-setuptools-scm
 python3-pretend                     python3-packaging
 python3-pycryptodome
 python3-pygments
-python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging
+python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm
 python3-pyxdg
 python3-pyyaml
+python3-setuptools-scm
 python3-six
 python3-testpath                    python3-flit-core
-python3-typing-extensions
+python3-typing-extensions           python3-setuptools-scm
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -247,8 +249,6 @@ ypbind                              dhcpcd
 zip                                 docbook-xsl
 zope-interface                      python3-attrs
 zsh                                 elogind
-
-
 
 
 # ==============================================================================
@@ -621,7 +621,6 @@ zsh                                 elogind
 # mdadm                               lvm2, udisks, libblockdev
 # mecab                               mariadb
 # megatools
-# mercurial                           cmake, openjdk
 # mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk, qt5, qemu
 # mesa-demos                          mesa
 # messagepack                         mariadb
@@ -902,7 +901,6 @@ zsh                                 elogind
 # python-pytest-runner                python-mccabe, flake8, pylint3
 # python-requests                     virt-manager, bpython
 # python-scandir                      python-pathlib2, python3-pytest
-# python-setuptools-scm               python-py, python-pluggy, python3-pytest, python2-astroid, python3-astroid, python-functools-lru-cache
 # python-singledispatch               pylint3, pylint2
 # python-slip
 # python-toml                         pylint3

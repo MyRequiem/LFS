@@ -179,6 +179,7 @@ d/python-modules/python3-editables.sh
 d/python-modules/python3-flit-core.sh
 d/python-modules/python3-packaging.sh
 d/python-modules/python3-typing-extensions.sh
+d/python-modules/python3-setuptools-scm.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -864,7 +865,6 @@ d/python-modules/python3-pygobject3.sh
 l/qt5-styleplugins.sh
 s/qt5ct.sh
 d/python-modules/python-scandir.sh
-d/python-modules/python-setuptools-scm.sh
 d/python-modules/python-py.sh
 d/python-modules/python-pluggy.sh
 d/python-modules/python-more-itertools.sh

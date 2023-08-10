@@ -9,7 +9,7 @@ ARCH_NAME="pluggy"
 
 # Required:    python2
 #              python3
-#              python-setuptools-scm
+#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 

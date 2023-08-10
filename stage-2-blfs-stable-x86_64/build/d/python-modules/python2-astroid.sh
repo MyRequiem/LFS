@@ -12,7 +12,7 @@ ARCH_NAME="astroid"
 #              python3-six
 #              python2-lazy-object-proxy
 #              python-wrapt
-#              python-setuptools-scm
+#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 

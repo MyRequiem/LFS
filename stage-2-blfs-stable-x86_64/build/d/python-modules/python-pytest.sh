@@ -10,7 +10,7 @@ ARCH_NAME="pytest"
 #              python3
 #              python3-six
 #              python-scandir
-#              python-setuptools-scm
+#              python3-setuptools-scm
 #              python-py
 #              python3-attrs
 #              python-pluggy
