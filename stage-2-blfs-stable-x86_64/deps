@@ -183,16 +183,21 @@ python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-asciidoc                    git
 python3-attrs
+python3-build                       python3-hatchling
 python3-docutils                    sshfs
-python3-editables
-python3-flit-core                   python3-packaging, python3-typing-extensions
+python3-editables                   python3-hatchling
+python3-flit-core                   python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build
+python3-hatchling
+python3-installer                   python3-pyproject-hooks, python3-build
 python3-lxml                        elogind
-python3-packaging                   python3-setuptools-scm
-python3-pluggy
+python3-packaging                   python3-setuptools-scm, python3-hatchling
+python3-pathspec                    python3-hatchling
+python3-pluggy                      python3-hatchling
 python3-pretend                     python3-packaging
 python3-pycryptodome
 python3-pygments
-python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy
+python3-pyproject-hooks             python3-build
+python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec
 python3-pytest-benchmark            python3-pluggy
 python3-pyxdg
 python3-pyyaml

@@ -181,6 +181,11 @@ d/python-modules/python3-packaging.sh
 d/python-modules/python3-typing-extensions.sh
 d/python-modules/python3-setuptools-scm.sh
 d/python-modules/python3-pluggy.sh
+d/python-modules/python3-pathspec.sh
+d/python-modules/python3-installer.sh
+d/python-modules/python3-pyproject-hooks.sh
+d/python-modules/python3-build.sh
+d/python-modules/python3-hatchling.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
