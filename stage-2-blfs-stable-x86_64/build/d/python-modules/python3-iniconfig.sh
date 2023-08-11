@@ -1,11 +1,12 @@
 #! /bin/bash
 
-PRGNAME=""
-ARCH_NAME=""
+PRGNAME="python3-iniconfig"
+ARCH_NAME="iniconfig"
 
-###  ()
+### Iniconfig (ini file parsing)
+# небольшой и простой парсер INI-файлов
 
-# Required:    no
+# Required:    python3-hatch-vcs
 # Recommended: no
 # Optional:    no
 
@@ -16,23 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# ==============================================================================
-# сборка скриптом setup.py
-python2 setup.py build                                    || exit 1
-python2 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
-
-python3 setup.py build                                    || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
-# ==============================================================================
-# сборка с помощью модуля build (пакет python3-build) или модуля flit_core
-# (пакет python3-flit-core) и установка с помощью модуля installer (пакет
-# python3-installer)
-python3 -m build --no-isolation                       || exit 1
-# python3 -m flit_core.wheel                            || exit 1
-python3 -m installer -d "${TMP_DIR}" \
-    ./dist/"${ARCH_NAME}-${VERSION}-py3-none-any.whl" || exit 1
-# ==============================================================================
-# сборка средствами модуля wheel
 ##
 # создаем в директории dist дерева исходников пакет
 ###
@@ -72,18 +56,18 @@ pip3 install             \
 # перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
 [ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
-# ==============================================================================
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} ()
+# Package: ${PRGNAME} (ini file parsing)
 #
+# iniconfig is a small and simple INI-file parser module
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:
+# Download:  https://files.pythonhosted.org/packages/source/i/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

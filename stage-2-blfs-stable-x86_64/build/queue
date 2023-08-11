@@ -186,6 +186,8 @@ d/python-modules/python3-setuptools-scm.sh
 d/python-modules/python3-pluggy.sh
 d/python-modules/python3-pathspec.sh
 d/python-modules/python3-hatchling.sh
+d/python-modules/python3-hatch-vcs.sh
+d/python-modules/python3-iniconfig.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
