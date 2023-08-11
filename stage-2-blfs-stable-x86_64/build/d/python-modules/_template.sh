@@ -16,6 +16,21 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# ==============================================================================
+# setup.py
+python2 setup.py build                                    || exit 1
+python2 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
+
+python3 setup.py build                                    || exit 1
+python3 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
+# ==============================================================================
+# с помощью модуля build (пакет python3-build) и установка с помощью модуля
+# installer (пакет python3-installer)
+python3 -m build --no-isolation                       || exit 1
+python3 -m installer -d "${TMP_DIR}" \
+    ./dist/"${ARCH_NAME}-${VERSION}-py3-none-any.whl" || exit 1
+# ==============================================================================
+# с помощью wheel
 ##
 # создаем в директории dist дерева исходников пакет
 ###
@@ -49,12 +64,13 @@ pip3 install             \
     --find-links=./dist  \
     --no-cache-dir       \
     --no-user            \
-    --no-index "${ARCH_NAME}"|"${PRGNAME}"
+    --no-index "${ARCH_NAME}"|"${PRGNAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
 [ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
 rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
+# ==============================================================================
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
