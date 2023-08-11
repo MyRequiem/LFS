@@ -6,9 +6,10 @@ ARCH_NAME="setuptools_scm"
 ### Setuptools_scm (manage versions by scm tags)
 # Управляет версиями пакетов python в метаданных scm вместо того, чтобы
 # объявлять их в качестве аргумента версии или в файле, управляемом scm. Также
-# обрабатывает средства поиска файлов для поддерживаемых scms.
+# обрабатывает средства поиска файлов поддерживаемых scms
 
-# Required:    python3-packaging
+# Required:    python3-build
+#              python3-packaging
 #              python3-typing-extensions
 # Recommended: no
 # Optional:    --- для тестов ---
@@ -23,8 +24,9 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-python3 setup.py build || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+python3 -m build --no-isolation                       || exit 1
+python3 -m installer -d "${TMP_DIR}" \
+    ./dist/"${ARCH_NAME}-${VERSION}-py3-none-any.whl" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
