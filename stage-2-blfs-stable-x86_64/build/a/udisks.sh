@@ -23,7 +23,7 @@ PRGNAME="udisks"
 #              python-d-bus          (для тестов)
 #              lvm2
 #              ntfs-3g
-#              python-pygobject3     (для тестов)
+#              python3-pygobject3     (для тестов)
 #              exfat                 (https://github.com/relan/exfat)
 #              libiscsi              (https://github.com/sahlberg/libiscsi)
 
@@ -65,7 +65,7 @@ command -v fsadm        &>/dev/null && LVM2="--enable-lvm2"
 make || exit 1
 
 # Перед запуском тестов должны быть установлены опциональные пакеты
-# gobject-introspection, python-d-bus и python-pygobject3, а также должны
+# gobject-introspection, python-d-bus и python3-pygobject3, а также должны
 # существовать каталоги:
 #    /var/run/udisks2
 #    /var/lib/udisks2

@@ -16,7 +16,7 @@ PRGNAME="upower"
 # Recommended: no
 # Optional:    gobject-introspection
 #              gtk-doc
-#              python-pygobject3
+#              python3-pygobject3
 #              python3-dbusmock
 #              umockdev (для тестов)
 

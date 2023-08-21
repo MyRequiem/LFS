@@ -188,6 +188,7 @@ d/python-modules/python3-pathspec.sh
 d/python-modules/python3-hatchling.sh
 d/python-modules/python3-hatch-vcs.sh
 d/python-modules/python3-iniconfig.sh
+d/python-modules/python3-py.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -873,7 +874,6 @@ d/python-modules/python3-pygobject3.sh
 l/qt5-styleplugins.sh
 s/qt5ct.sh
 d/python-modules/python-scandir.sh
-d/python-modules/python-py.sh
 d/python-modules/python-more-itertools.sh
 d/python-modules/python-atomicwrites.sh
 d/python-modules/python-funcsigs.sh

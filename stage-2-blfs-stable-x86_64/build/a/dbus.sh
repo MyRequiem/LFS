@@ -18,7 +18,7 @@ PRGNAME="dbus"
 #              ---
 # Optional:    *** для тестов ***
 #              python-d-bus
-#              python-pygobject3
+#              python3-pygobject3
 #              valgrind
 #              *** для документации ***
 #              doxygen
@@ -77,7 +77,7 @@ fi
 # Тесты
 ###
 # тесты dbus не могут быть запущены до тех пор, пока не будут установлены
-# пакеты python-d-bus и python-pygobject3, а так же должны запускаться от
+# пакеты python-d-bus и python3-pygobject3, а так же должны запускаться от
 # непривилегированного пользователя:
 # make distclean &&
 # PYTHON=python3 ./configure  \

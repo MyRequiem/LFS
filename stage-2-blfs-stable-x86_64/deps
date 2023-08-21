@@ -176,8 +176,8 @@ pth                                 libidn, libgcrypt
 py3c
 pympler                             python3-attrs
 pytest-mypy-plugins                 python3-attrs
-python-d-bus                        dbus
-python-pygobject3                   dbus
+python3-d-bus                       dbus
+python3-pygobject3                  dbus
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
@@ -196,6 +196,7 @@ python3-packaging                   python3-setuptools-scm, python3-hatchling
 python3-pathspec                    python3-hatchling
 python3-pluggy                      python3-hatchling
 python3-pretend                     python3-packaging
+python3-py
 python3-pycryptodome
 python3-pygments
 python3-pyproject-hooks             python3-build
@@ -203,7 +204,7 @@ python3-pytest                      fuse, python3-attrs, python3-flit-core, pyth
 python3-pytest-benchmark            python3-pluggy
 python3-pyxdg
 python3-pyyaml
-python3-setuptools-scm              python3-pluggy, python3-hatch-vcs
+python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py
 python3-six
 python3-testpath                    python3-flit-core
 python3-typing-extensions           python3-setuptools-scm
@@ -902,7 +903,6 @@ zsh                                 elogind
 # python-pathlib2                     python3-pytest
 # python-pies                         isort2, isort3, pylint3
 # python-psutil                       llvm, bumblebee-status
-# python-py                           python3-pytest
 # python-pycurl                       python-urlgrabber
 # python-pyparsing                    libinput, spice, spice-gtk
 # python-pyperclip                    bpython

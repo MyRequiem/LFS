@@ -14,7 +14,7 @@ PRGNAME="libical"
 #              doxygen           (для сборки API документации)
 #              gtk-doc           (для сборки API документации)
 #              icu
-#              python-pygobject3 (для некоторых тестов)
+#              python3-pygobject3 (для некоторых тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
