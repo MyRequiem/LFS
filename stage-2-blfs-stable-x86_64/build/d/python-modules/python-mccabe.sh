@@ -8,7 +8,7 @@ ARCH_NAME="mccabe"
 
 # Required:    python2
 #              python3
-#              python-pytest
+#              python3-pytest
 #              python-pytest-runner
 # Recommended: no
 # Optional:    no

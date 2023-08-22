@@ -26,9 +26,7 @@ brotli                              gnutls, curl
 c-ares                              curl
 c2man                               fribidi
 chronyd                             dhcpcd
-cloudpickle                         python3-attrs
 cmocka                              gnutls
-coverage                            python3-attrs
 cpio
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools
 curlftpfs                           vifm
@@ -85,7 +83,6 @@ hdparm
 highlight                           vifm
 htop
 hwloc                               htop
-hypothesis                          python3-attrs
 icu                                 libxml2, boost
 imagemagick                         gnupg
 imlib2                              w3m
@@ -144,7 +141,6 @@ make-ca                             p11-kit, gnutls, wget, curl
 mercurial                           python3-setuptools-scm
 mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
-mypy                                python3-attrs
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
 nghttp2                             curl
@@ -174,40 +170,50 @@ polkit                              elogind
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 py3c
-pympler                             python3-attrs
-pytest-mypy-plugins                 python3-attrs
-python3-d-bus                       dbus
-python3-pygobject3                  dbus
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
+python3-argcomplete                 python3-pytest
 python3-asciidoc                    git
-python3-attrs
+python3-attrs                       python3-pytest
 python3-build                       python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
+python3-cloudpickle                 python3-attrs
+python3-coverage                    python3-attrs
+python3-d-bus                       dbus
 python3-docutils                    sshfs
 python3-editables                   python3-hatchling
 python3-flit-core                   python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build
 python3-hatch-vcs                   python3-iniconfig
 python3-hatchling                   python3-hatch-vcs
-python3-iniconfig
+python3-hypothesis                  python3-attrs, python3-pytest
+python3-iniconfig                   python3-pytest
 python3-installer                   python3-pyproject-hooks, python3-build
 python3-lxml                        elogind
-python3-packaging                   python3-setuptools-scm, python3-hatchling
+python3-mock                        python3-pytest
+python3-mypy                        python3-attrs
+python3-nose                        python3-pytest
+python3-packaging                   python3-setuptools-scm, python3-hatchling, python3-pytest
 python3-pathspec                    python3-hatchling
-python3-pluggy                      python3-hatchling
+python3-pluggy                      python3-hatchling, python3-pytest
 python3-pretend                     python3-packaging
-python3-py
+python3-py                          python3-pytest
 python3-pycryptodome
-python3-pygments
+python3-pygments                    python3-pytest
+python3-pygobject3                  dbus
+python3-pympler                     python3-attrs
 python3-pyproject-hooks             python3-build
 python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs
 python3-pytest-benchmark            python3-pluggy
+python3-pytest-mypy-plugins         python3-attrs
 python3-pyxdg
 python3-pyyaml
-python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py
+python3-requests                    python3-pytest
+python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest
 python3-six
 python3-testpath                    python3-flit-core
 python3-typing-extensions           python3-setuptools-scm
+python3-xmlschema                   python3-pytest
+python3-zope-interface              python3-attrs
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight
 quiche                              curl
@@ -257,7 +263,6 @@ yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
 zip                                 docbook-xsl
-zope-interface                      python3-attrs
 zsh                                 elogind
 
 
@@ -886,8 +891,8 @@ zsh                                 elogind
 # python-appdirs                      pylint3
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
-# python-certifi                      python-requests
-# python-chardet                      python-requests
+# python-certifi                      python3-requests
+# python-chardet                      python3-requests
 # python-configparser                 flake8, pylint3, pylint2
 # python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
@@ -907,7 +912,7 @@ zsh                                 elogind
 # python-pyparsing                    libinput, spice, spice-gtk
 # python-pyperclip                    bpython
 # python-pytest-runner                python-mccabe, flake8, pylint3
-# python-requests                     virt-manager, bpython
+# python3-requests                     virt-manager, bpython
 # python-scandir                      python-pathlib2, python3-pytest
 # python-singledispatch               pylint3, pylint2
 # python-slip
@@ -915,7 +920,7 @@ zsh                                 elogind
 # python-tomli                        pylint3
 # python-tomlkit                      pylint3
 # python-urlgrabber                   libvirt
-# python-urllib3                      python-requests
+# python-urllib3                      python3-requests
 # python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid, python3-astroid
 # python2-astroid                     pylint2
@@ -932,7 +937,7 @@ zsh                                 elogind
 # python3-cwcwidth                    python3-curtsies, bpython
 # python3-dbusmock                    polkit, upower
 # python3-decorator                   python-slip
-# python3-idna                        python-requests
+# python3-idna                        python3-requests
 # python3-jinja2
 # python3-lazy-object-proxy           python3-astroid
 # python3-libvirt                     virt-manager

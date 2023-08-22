@@ -9,7 +9,7 @@ ARCH_NAME="pytest-runner"
 
 # Required:    python2
 #              python3
-#              python-pytest
+#              python3-pytest
 # Recommended: no
 # Optional:    no
 

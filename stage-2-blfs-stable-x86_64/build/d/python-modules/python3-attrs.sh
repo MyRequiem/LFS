@@ -10,14 +10,14 @@ ARCH_NAME="attrs"
 # Required:    no
 # Recommended: no
 # Optional:    === для тестов ===
-#              pytest
-#              coverage             (https://pypi.org/project/coverage/)
-#              hypothesis           (https://pypi.org/project/hypothesis/)
-#              pympler              (https://pypi.org/project/Pympler/)
-#              mypy                 (https://pypi.org/project/mypy/)
-#              pytest-mypy-plugins  (https://pypi.org/project/pytest-mypy-plugins/)
-#              zope-interface       (https://pypi.org/project/zope.interface/)
-#              cloudpickle          (https://pypi.org/project/cloudpickle/)
+#              python3-pytest
+#              python3-coverage             (https://pypi.org/project/coverage/)
+#              python3-hypothesis           (https://pypi.org/project/hypothesis/)
+#              python3-pympler              (https://pypi.org/project/Pympler/)
+#              python3-mypy                 (https://pypi.org/project/mypy/)
+#              python3-pytest-mypy-plugins  (https://pypi.org/project/pytest-mypy-plugins/)
+#              python3-zope-interface       (https://pypi.org/project/zope.interface/)
+#              python3-cloudpickle          (https://pypi.org/project/cloudpickle/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

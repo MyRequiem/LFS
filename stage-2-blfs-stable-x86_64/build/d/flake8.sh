@@ -8,7 +8,7 @@ PRGNAME="flake8"
 
 # Required:    python2
 #              python3
-#              python-pytest
+#              python3-pytest
 #              python-pytest-runner
 #              pycodestyle
 #              pyflakes
