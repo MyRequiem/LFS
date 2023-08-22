@@ -32,11 +32,11 @@ COMPILER_RT="compiler-rt"
 #              valgrind
 #              python3-pyyaml
 #              zip
-#              ocaml           (https://ocaml.org/)
-#              python-psutil   (https://pypi.org/project/psutil/)
-#              recommonmark    (https://pypi.org/project/recommonmark/)
-#              sphinx          (https://pypi.org/project/Sphinx/)
-#              z3              (https://github.com/Z3Prover/z3)
+#              ocaml                 (https://ocaml.org/)
+#              python-psutil         (https://pypi.org/project/psutil/)
+#              python3-recommonmark  (https://pypi.org/project/recommonmark/)
+#              sphinx                (https://pypi.org/project/Sphinx/)
+#              z3                    (https://github.com/Z3Prover/z3)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -117,8 +117,8 @@ cmake                                         \
 
 ninja "${NINJAJOBS}" || exit 1
 
-# если пакеты sphinx и recommonmark установлены, сгенерируем html документацию
-# и man-страницы для llvm и clang
+# если пакеты sphinx и python3-recommonmark установлены, сгенерируем html
+# документацию и man-страницы для llvm и clang
 if [ -n "${LLVM_DOCS}" ]; then
     cmake                               \
         -DLLVM_BUILD_DOCS=ON            \

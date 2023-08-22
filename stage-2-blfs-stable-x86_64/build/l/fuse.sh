@@ -10,8 +10,8 @@ PRGNAME="fuse"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen (для сборки API документации)
-#              pytest  (для тестов) https://pypi.org/project/pytest/
+# Optional:    doxygen         (для сборки API документации)
+#              python3-pytest  (для тестов)
 
 ### Конфигурация ядра
 #    CONFIG_FUSE_FS=y|m

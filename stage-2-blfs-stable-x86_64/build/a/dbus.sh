@@ -23,8 +23,8 @@ PRGNAME="dbus"
 #              *** для документации ***
 #              doxygen
 #              xmlto
-#              ducktype   (https://pypi.org/project/mallard-ducktype/)
-#              yelp-tools (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
+#              python3-ducktype  (https://pypi.org/project/mallard-ducktype/)
+#              yelp-tools        (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

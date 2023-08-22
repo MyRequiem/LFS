@@ -9,12 +9,12 @@ PRGNAME="libinput"
 # Required:    libevdev
 #              mtdev
 # Recommended: no
-# Optional:    valgrind         (для тестов)
-#              sphinx           (для создания документации)
-#              gtk+3            (для сборки GUI event viewer)
-#              libunwind        (для тестов) http://www.nongnu.org/libunwind/
-#              libwacom         (для тестов)
-#              python-pyparsing (для тестов) https://pypi.org/project/pyparsing/
+# Optional:    valgrind          (для тестов)
+#              sphinx            (для создания документации)
+#              gtk+3             (для сборки GUI event viewer)
+#              libunwind         (для тестов) http://www.nongnu.org/libunwind/
+#              libwacom          (для тестов)
+#              python3-pyparsing (для тестов)
 
 # Конфигурация ядра
 #    CONFIG_INPUT_UINPUT=y|m

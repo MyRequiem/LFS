@@ -10,9 +10,9 @@ ARCH_NAME="pygobject"
 #              python3-pycairo
 #              python3
 # Recommended: no
-# Optional:    pep8     (https://pypi.org/project/pep8/)
-#              pyflakes (https://pypi.org/project/pyflakes/)
-#              pytest   (https://pypi.org/project/pytest/)
+# Optional:    pep8             (https://pypi.org/project/pep8/)
+#              pyflakes         (https://pypi.org/project/pyflakes/)
+#              python3-pytest   (https://pypi.org/project/pytest/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

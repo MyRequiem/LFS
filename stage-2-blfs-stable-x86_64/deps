@@ -43,7 +43,6 @@ docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml
-ducktype                            dbus
 efl                                 pinentry
 elogind                             dbus
 emacs                               libidn, pinentry
@@ -181,6 +180,7 @@ python3-cloudpickle                 python3-attrs
 python3-coverage                    python3-attrs
 python3-d-bus                       dbus
 python3-docutils                    sshfs
+python3-ducktype                    dbus
 python3-editables                   python3-hatchling
 python3-flit-core                   python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build
 python3-hatch-vcs                   python3-iniconfig
@@ -868,7 +868,7 @@ zsh                                 elogind
 # picogui                             sdl
 # pixman                              cairo, xorg-server
 # pocketlint                          libbytesize
-# polib                               libbytesize
+# python3-polib                       libbytesize
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp
@@ -887,7 +887,7 @@ zsh                                 elogind
 # pyflakes                            python3-pygobject3, flake8
 # pylint2
 # pylint3
-# pyrad                               mit-kerberos-v5
+# python3-pyrad                       mit-kerberos-v5
 # python-appdirs                      pylint3
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
@@ -960,7 +960,7 @@ zsh                                 elogind
 # raptor                              rasqal
 # rasqal                              redland
 # re2c                                php
-# recommonmark                        llvm
+# python3-recommonmark                llvm
 # redland
 # reiserfsprogs                       lvm2
 # resolv_wrapper                      mit-kerberos-v5
@@ -1009,7 +1009,7 @@ zsh                                 elogind
 # t1lib                               php
 # taglib                              gst-plugins-good
 # talloc
-# tap-py                              python-dbus
+# python3-tap-py                      python-dbus
 # tdb                                 exim, libcanberra, pulseaudio
 # thin-provisioning-tools             lvm2
 # tibmachuni-font-ttf

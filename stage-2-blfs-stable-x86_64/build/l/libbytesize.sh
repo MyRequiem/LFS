@@ -10,9 +10,9 @@ PRGNAME="libbytesize"
 #              python3-pygments
 # Recommended: no
 # Optional:    gtk-doc
-#              python3-six (для тестов и python bindings)
-#              pocketlint  (python модуль для одного теста) https://github.com/rhinstaller/pocketlint/releases
-#              polib       (python модуль для одного теста) https://pypi.org/project/polib/
+#              python3-six    (для тестов и python bindings)
+#              pocketlint     (python модуль для одного теста) https://github.com/rhinstaller/pocketlint/releases
+#              python3-polib  (python модуль для одного теста) https://pypi.org/project/polib/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -21,7 +21,7 @@ ARCH_NAME="krb5"
 #              yasm
 #              libedit        (http://thrysoee.dk/editline/)
 #              cmocka         (https://cmocka.org/)
-#              pyrad          (https://pypi.org/project/pyrad/)
+#              python3-pyrad  (https://pypi.org/project/pyrad/)
 #              resolv_wrapper (https://cwrap.org/resolv_wrapper.html)
 
 ### NOTE

@@ -7,9 +7,9 @@ PRGNAME="spice-gtk"
 # Required:    opus
 #              vala
 #              python3-six
-#              spice-protocol   (https://www.spice-space.org)
-#              spice            (https://www.spice-space.org/)
-#              python-pyparsing (https://pypi.org/project/pyparsing/)
+#              spice-protocol    (https://www.spice-space.org)
+#              spice             (https://www.spice-space.org/)
+#              python3-pyparsing (https://pypi.org/project/pyparsing/)
 # Recommended: gobject-introspection
 #              polkit
 # Optional:    libcacard        (https://www.spice-space.org/)
