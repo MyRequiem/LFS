@@ -54,6 +54,9 @@ TAB: menu-complete
 
 set echo-control-characters off
 
+# disable highlighted pasted text in the terminal
+set enable-bracketed-paste off
+
 ### for linux console
 "\\e[1~": beginning-of-line
 "\\e[4~": end-of-line
