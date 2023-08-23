@@ -1,19 +1,22 @@
 #! /bin/bash
 
-PRGNAME="python3-py"
-ARCH_NAME="py"
+PRGNAME="python3-urllib3"
+ARCH_NAME="urllib3"
 
-### Py (library with cross-python path)
-# Библиотека поддержки разработки Python, содержащая следующие инструменты и
-# модули:
-#    py.path      - унифицированные локальные и svn пути объектов
-#    py.apipkg    - явное управление с помощью API и ленивый импорт
-#    py.iniconfig - простой анализ .ini файлов
-#    py.code      - динамическая генерация кода и самоанализ
+### Urllib3 (Powerful, sanity-friendly HTTP client for Python)
+# Мощный и удобный HTTP-клиент для Python
 
 # Required:    no
-# Recommended: python3-setuptools-scm
-# Optional:    no
+# Recommended: no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3-mock              (https://pypi.org/project/mock/)
+#              python3-pysocks           (https://pypi.org/project/PySocks/)
+#              python3-pytest-freezegun  (https://pypi.org/project/pytest-freezegun/)
+#              python3-pytest-timeout    (https://pypi.org/project/pytest-timeout/)
+#              python3-dateutil          (https://pypi.org/project/python-dateutil/)
+#              python3-tornado           (https://pypi.org/project/tornado/)
+#              python3-trustme           (https://pypi.org/project/trustme/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -22,7 +25,7 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-###
+##
 # сборка средствами модуля wheel
 # создаем в директории dist дерева исходников пакет
 ###
@@ -68,17 +71,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (library with cross-python path)
+# Package: ${PRGNAME} (Powerful, sanity-friendly HTTP client for Python)
 #
-# The py lib is a Python development support library featuring the following
-# tools and modules:
-#    py.path      - uniform local and svn path objects
-#    py.apipkg    - explicit API control and lazy-importing
-#    py.iniconfig - easy parsing of .ini files
-#    py.code      - dynamic code generation and introspection
+# Urllib3 is a powerful, sanity-friendly HTTP client for Python. Much of the
+# Python ecosystem already uses Urllib3 and you should too.
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/p/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/u/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

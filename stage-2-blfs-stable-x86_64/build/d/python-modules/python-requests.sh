@@ -11,7 +11,7 @@ ARCH_NAME="requests"
 #              python-certifi
 #              python-chardet
 #              python3-idna
-#              python-urllib3
+#              python3-urllib3
 # Recommended: no
 # Optional:    no
 

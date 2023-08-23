@@ -3,7 +3,7 @@
 PRGNAME="python3-pytest"
 ARCH_NAME="pytest"
 
-### pytest (simple powerful testing with Python)
+### Pytest (simple powerful testing with Python)
 # Полнофункциональный инструмент для тестирования Python программ.
 
 # Required:    python3-attrs

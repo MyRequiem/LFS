@@ -190,6 +190,8 @@ d/python-modules/python3-hatch-vcs.sh
 d/python-modules/python3-iniconfig.sh
 d/python-modules/python3-py.sh
 d/python-modules/python3-pytest.sh
+d/python-modules/python3-urllib3.sh
+d/python-modules/python3-idna.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -778,8 +780,6 @@ d/python-modules/python3-libvirt.sh
 l/libvirt-glib.sh
 d/python-modules/python-certifi.sh
 d/python-modules/python-chardet.sh
-d/python-modules/python3-idna.sh
-d/python-modules/python-urllib3.sh
 d/python-modules/python-requests.sh
 d/python-modules/python-ipaddr.sh
 s/osinfo-db-tools.sh

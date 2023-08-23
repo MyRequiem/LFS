@@ -179,17 +179,19 @@ python3-build                       python3-setuptools-scm, python3-hatchling, p
 python3-cloudpickle                 python3-attrs
 python3-coverage                    python3-attrs
 python3-d-bus                       dbus
+python3-dateutil                    python3-urllib3
 python3-docutils                    sshfs
 python3-ducktype                    dbus
 python3-editables                   python3-hatchling
-python3-flit-core                   python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build
+python3-flit-core                   python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna
 python3-hatch-vcs                   python3-iniconfig
 python3-hatchling                   python3-hatch-vcs
 python3-hypothesis                  python3-attrs, python3-pytest
+python3-idna
 python3-iniconfig                   python3-pytest
 python3-installer                   python3-pyproject-hooks, python3-build
 python3-lxml                        elogind
-python3-mock                        python3-pytest
+python3-mock                        python3-pytest, python3-urllib3
 python3-mypy                        python3-attrs
 python3-nose                        python3-pytest
 python3-packaging                   python3-setuptools-scm, python3-hatchling, python3-pytest
@@ -202,16 +204,22 @@ python3-pygments                    python3-pytest
 python3-pygobject3                  dbus
 python3-pympler                     python3-attrs
 python3-pyproject-hooks             python3-build
-python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs
+python3-pysocks                     python3-urllib3
+python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna
 python3-pytest-benchmark            python3-pluggy
+python3-pytest-freezegun            python3-urllib3
 python3-pytest-mypy-plugins         python3-attrs
+python3-pytest-timeout              python3-urllib3
 python3-pyxdg
 python3-pyyaml
 python3-requests                    python3-pytest
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest
 python3-six
 python3-testpath                    python3-flit-core
+python3-tornado                     python3-urllib3
+python3-trustme                     python3-urllib3
 python3-typing-extensions           python3-setuptools-scm
+python3-urllib3
 python3-xmlschema                   python3-pytest
 python3-zope-interface              python3-attrs
 pytrash
@@ -920,7 +928,6 @@ zsh                                 elogind
 # python-tomli                        pylint3
 # python-tomlkit                      pylint3
 # python-urlgrabber                   libvirt
-# python-urllib3                      python3-requests
 # python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid, python3-astroid
 # python2-astroid                     pylint2
@@ -937,7 +944,6 @@ zsh                                 elogind
 # python3-cwcwidth                    python3-curtsies, bpython
 # python3-dbusmock                    polkit, upower
 # python3-decorator                   python-slip
-# python3-idna                        python3-requests
 # python3-jinja2
 # python3-lazy-object-proxy           python3-astroid
 # python3-libvirt                     virt-manager
