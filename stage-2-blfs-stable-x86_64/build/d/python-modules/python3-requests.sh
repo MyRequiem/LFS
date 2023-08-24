@@ -32,8 +32,8 @@ mkdir -pv "${TMP_DIR}"
 
 # применим патч, чтобы переменная среды _PIP_STANDALONE_CERT, которая содержит
 # путь к системным сертификатам /etc/pki/tls/certs/ca-bundle.crt и
-# устанавливается после переустановки Python3 (см. build/d/python3.sh), также
-# могла использоваться этим модулем
+# устанавливается после пересборки Python3 в BLFS (см. build/d/python3.sh),
+# также могла использоваться этим модулем
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-use_system_certs-1.patch" || exit 1
 
