@@ -6,8 +6,7 @@ PRGNAME="bpython"
 # Интерфейс для интерактивного Python3 интерпретатора с подсветкой синтаксиса,
 # автодополнением, автоотступами и т.д.
 
-# Required:    python3
-#              python-requests
+# Required:    python3-requests
 #              python3-pygments
 #              python3-pyxdg
 #              python3-typing-extensions
