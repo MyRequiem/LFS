@@ -124,7 +124,8 @@ tar                       \
     ln -svfn "${PRGNAME}-${VERSION}" python-3
 )
 
-# добавим переменную окружения PYTHONDOCS в профиль системы
+# добавим переменную окружения PYTHONDOCS содержащую путь к документации
+# Python 3
 PROFILE_D="/etc/profile.d"
 install -v -dm755 "${TMP_DIR}${PROFILE_D}"
 PYTHON3_PYTHONDOCS_SH="${PROFILE_D}/python3-pythondocs.sh"
@@ -138,6 +139,23 @@ export PYTHONDOCS=/usr/share/doc/python-3/html
 # End ${PYTHON3_PYTHONDOCS_SH}
 EOF
 chmod 755 "${TMP_DIR}${PYTHON3_PYTHONDOCS_SH}"
+
+# make-ca уже установлен, и корневые системные сертификаты обновлены командой
+#    # update-ca-certificates
+# добавим переменную окружения _PIP_STANDALONE_CERT содержащую путь к системным
+# сертификатам, которые будет использовать 'pip' (по умолчанию он устанавливает
+# собственные сертификаты)
+PYTHON3_CERTS_SH="${PROFILE_D}/python3-certs.sh"
+cat << EOF > "${TMP_DIR}${PYTHON3_CERTS_SH}"
+#! /bin/bash
+
+# Begin ${PYTHON3_CERTS_SH}
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End ${PYTHON3_CERTS_SH}
+EOF
+chmod 755 "${TMP_DIR}${PYTHON3_CERTS_SH}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
