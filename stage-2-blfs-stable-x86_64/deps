@@ -913,7 +913,7 @@ zsh                                 elogind
 # python-certifi                      python3-requests
 # python-chardet                      python3-requests
 # python-configparser                 flake8, pylint3, pylint2
-# python-dbus                         python3-dbusmock, polkit, ibus, python-slip, libsecret
+# python-dbus                         polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
 # python-funcsigs                     python3-pytest
 # python-functools-lru-cache          pylint3, pylint2
@@ -951,7 +951,6 @@ zsh                                 elogind
 # python3-astroid                     pylint3
 # python3-curtsies                    bpython
 # python3-cwcwidth                    python3-curtsies, bpython
-# python3-dbusmock                    polkit, upower
 # python3-decorator                   python-slip
 # python3-jinja2
 # python3-lazy-object-proxy           python3-astroid

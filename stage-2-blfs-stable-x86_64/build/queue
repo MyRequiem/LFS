@@ -233,7 +233,6 @@ d/python-modules/python3-markdown.sh
 a/libgudev.sh
 l/dbus-glib.sh
 d/python-modules/python-dbus.sh
-d/python-modules/python3-dbusmock.sh
 a/cryptsetup.sh
 l/libbytesize.sh
 l/nss.sh
