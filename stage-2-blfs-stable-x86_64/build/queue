@@ -670,7 +670,6 @@ d/python-modules/python3-pyatspi2.sh
 d/python-modules/python2-pygtk.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python-slip.sh
-d/python-modules/python3-scour.sh
 d/python-modules/python2-future.sh
 ap/lmdb.sh
 d/tidy-html5.sh

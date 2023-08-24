@@ -961,7 +961,6 @@ zsh                                 elogind
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3
 # python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
-# python3-scour
 # python3-typed-ast                   python3-astroid, pylint3
 # qdbm                                php, mutt
 # qemu
