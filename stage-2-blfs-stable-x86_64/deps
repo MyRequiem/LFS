@@ -177,9 +177,10 @@ python3-asciidoc                    git
 python3-attrs                       python3-pytest
 python3-build                       python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
+python3-chardet
 python3-charset-normalizer          python3-requests
 python3-cloudpickle                 python3-attrs
-python3-coverage                    python3-attrs
+python3-coverage                    python3-attrs, python3-markdown
 python3-d-bus                       dbus
 python3-dateutil                    python3-urllib3
 python3-docutils                    sshfs
@@ -195,6 +196,7 @@ python3-idna                        python3-requests
 python3-iniconfig                   python3-pytest
 python3-installer                   python3-pyproject-hooks, python3-build
 python3-lxml                        elogind
+python3-markdown
 python3-markupsafe                  python3-requests
 python3-mock                        python3-pytest, python3-urllib3
 python3-msgpack                     python3-cachecontrol
@@ -211,7 +213,7 @@ python3-pygobject3                  dbus
 python3-pympler                     python3-attrs
 python3-pyproject-hooks             python3-build
 python3-pysocks                     python3-urllib3, python3-requests
-python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack
+python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet
 python3-pytest-benchmark            python3-pluggy
 python3-pytest-cov                  python3-charset-normalizer
 python3-pytest-freezegun            python3-urllib3
@@ -220,7 +222,7 @@ python3-pytest-mock                 python3-requests
 python3-pytest-mypy-plugins         python3-attrs
 python3-pytest-timeout              python3-urllib3
 python3-pyxdg
-python3-pyyaml
+python3-pyyaml                      python3-markdown
 python3-requests                    python3-pytest, python3-cachecontrol
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six
@@ -911,7 +913,6 @@ zsh                                 elogind
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
 # python-certifi                      python3-requests
-# python-chardet                      python3-requests
 # python-configparser                 flake8, pylint3, pylint2
 # python-dbus                         polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
@@ -956,7 +957,6 @@ zsh                                 elogind
 # python3-lazy-object-proxy           python3-astroid
 # python3-libvirt                     virt-manager
 # python3-mako                        gobject-introspection, mesa
-# python3-markdown                    gobject-introspection
 # python3-platformdirs                pylint3
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3

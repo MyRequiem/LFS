@@ -196,6 +196,8 @@ d/python-modules/python3-charset-normalizer.sh
 d/python-modules/python3-requests.sh
 d/python-modules/python3-msgpack.sh
 d/python-modules/python3-cachecontrol.sh
+d/python-modules/python3-markdown.sh
+d/python-modules/python3-chardet.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -229,7 +231,6 @@ l/libpcap.sh
 n/iptables.sh
 d/python-modules/python-markupsafe.sh
 d/python-modules/python3-mako.sh
-d/python-modules/python3-markdown.sh
 a/libgudev.sh
 l/dbus-glib.sh
 d/python-modules/python-dbus.sh
@@ -781,7 +782,6 @@ l/libvirt.sh
 d/python-modules/python3-libvirt.sh
 l/libvirt-glib.sh
 d/python-modules/python-certifi.sh
-d/python-modules/python-chardet.sh
 d/python-modules/python-ipaddr.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh

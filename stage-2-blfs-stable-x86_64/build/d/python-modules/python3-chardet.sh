@@ -1,17 +1,14 @@
 #! /bin/bash
 
-PRGNAME="python3-markdown"
-ARCH_NAME="Markdown"
+PRGNAME="python3-chardet"
+ARCH_NAME="chardet"
 
-### Markdown (Python implementation of Markdown)
-# Python-реализация Markdown
+### Chardet (Universal encoding detector for Python)
+# Автоматическое определение кодировки символов в Python
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-pyyaml
-#              python3-coverage (https://pypi.org/project/coverage/)
+# Optional:    python3-pytest (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -66,14 +63,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Python implementation of Markdown)
+# Package: ${PRGNAME} (Universal encoding detector for Python)
 #
-# This is a Python implementation of John Gruber's Markdown. It is almost
-# completely compliant with the reference implementation, though there are a
-# few known issues.
+# Character encoding auto-detection in Python. As smart as your browser.
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/M/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/c/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
