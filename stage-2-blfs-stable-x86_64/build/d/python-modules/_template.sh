@@ -16,25 +16,9 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# ==============================================================================
-# сборка скриптом setup.py
-python2 setup.py build                                    || exit 1
-python2 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
-
-python3 setup.py build                                    || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
-# ==============================================================================
-# сборка с помощью модуля build (пакет python3-build) или модуля flit_core
-# (пакет python3-flit-core) и установка с помощью модуля installer (пакет
-# python3-installer)
-python3 -m build --no-isolation                       || exit 1
-# python3 -m flit_core.wheel                            || exit 1
-python3 -m installer -d "${TMP_DIR}" \
-    ./dist/"${ARCH_NAME}-${VERSION}-py3-none-any.whl" || exit 1
-# ==============================================================================
+###
 # сборка средствами модуля wheel
-##
-# создаем в директории dist дерева исходников пакет
+# создаем пакет в формате .whl в директории dist дерева исходников
 ###
 # команда создает архив для этого пакета
 #    wheel
@@ -59,20 +43,24 @@ pip3 wheel               \
 # предотвращает ошибочный запуск команды установки от имени обычного
 # пользователя без полномочий root
 #    --no-user
-PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
-TARGET="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
-pip3 install             \
-    --target="${TARGET}" \
-    --find-links=./dist  \
-    --no-cache-dir       \
-    --no-user            \
+pip3 install            \
+    --root="${TMP_DIR}" \
+    --find-links=./dist \
+    --no-cache-dir      \
+    --no-user           \
     --no-index "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
-# перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
-[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
-rm -rfv "${TMP_DIR}/usr/bin/__pycache__"
-# ==============================================================================
+# перемещаем ее в ${TMP_DIR}/usr/
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+[ -d "${TMP_SITE_PACKAGES}/bin" ] && \
+    mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
+
+# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
+# имеются
+PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
+[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

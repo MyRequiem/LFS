@@ -20,9 +20,9 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-##
+###
 # сборка средствами модуля wheel
-# создаем в директории dist дерева исходников пакет
+# создаем пакет в формате .whl в директории dist дерева исходников
 ###
 # команда создает архив для этого пакета
 #    wheel
@@ -47,22 +47,24 @@ pip3 wheel               \
 # предотвращает ошибочный запуск команды установки от имени обычного
 # пользователя без полномочий root
 #    --no-user
-pip3 install             \
-    --root="${TMP_DIR}"  \
-    --find-links=./dist  \
-    --no-cache-dir       \
-    --no-user            \
+pip3 install            \
+    --root="${TMP_DIR}" \
+    --find-links=./dist \
+    --no-cache-dir      \
+    --no-user           \
     --no-index "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
-# перемещаем ее в ${TMP_DIR}/usr/ и удаляем все скомпилированные байт-коды
+# перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
-TMP_SPKG="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+[ -d "${TMP_SITE_PACKAGES}/bin" ] && \
+    mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-if [ -d "${TMP_SPKG}/bin" ]; then
-    mv "${TMP_SPKG}/bin" "${TMP_DIR}/usr/"
-    rm -rf "${TMP_DIR}/usr/bin/__pycache__"
-fi
+# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
+# имеются
+PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
+[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
 
 INCLUDE="${TMP_DIR}/usr/include"
 mv "${INCLUDE}/python${PYTHON_MAJ_VER}/dbus-python/dbus-1.0" \
@@ -70,10 +72,10 @@ mv "${INCLUDE}/python${PYTHON_MAJ_VER}/dbus-python/dbus-1.0" \
 rm -rf "${INCLUDE}/python${PYTHON_MAJ_VER}"
 
 DBUS_PYTHON_MESONPY_LIBS=".dbus_python.mesonpy.libs"
-mv "${TMP_SPKG}/${DBUS_PYTHON_MESONPY_LIBS}/pkgconfig" \
+mv "${TMP_SITE_PACKAGES}/${DBUS_PYTHON_MESONPY_LIBS}/pkgconfig" \
     "${TMP_DIR}/usr/lib/"
 
-cd "${TMP_SPKG}" || exit 1
+cd "${TMP_SITE_PACKAGES}" || exit 1
 rm -rf "${DBUS_PYTHON_MESONPY_LIBS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
