@@ -13,7 +13,7 @@ PRGNAME="ibus"
 # Recommended: gobject-introspection
 #              gtk+2
 #              libnotify
-# Optional:    python-dbus
+# Optional:    python3-dbus
 #              python3-pygobject3
 #              gtk-doc
 #              python3-pyxdg (для сборки утилиты ibus-setup)

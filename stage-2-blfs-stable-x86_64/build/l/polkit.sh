@@ -16,7 +16,7 @@ DOCBOOK_XSL_VERSION="1.79.2"
 # Recommended: linux-pam
 #              elogind
 # Optional:    gobject-introspection
-#              python-dbus
+#              python3-dbus
 #              python3-dbusmock
 #              docbook-xml
 #              docbook-xsl

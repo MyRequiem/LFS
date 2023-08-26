@@ -8,7 +8,7 @@ PRGNAME="python-slip"
 
 # Required:    python2
 #              python3
-#              python-dbus
+#              python3-dbus
 #              python3-decorator
 #              python3-six
 # Recommended: no

@@ -14,7 +14,7 @@ PRGNAME="libsecret"
 #              docbook-xsl
 #              libxslt            (для сборки man-страниц)
 #              valgrind           (для тестов)
-#              python-dbus        (для тестов)
+#              python3-dbus       (для тестов)
 #              gjs                (для тестов)
 #              python3-pygobject3 (для тестов)
 #              gnome-keyring

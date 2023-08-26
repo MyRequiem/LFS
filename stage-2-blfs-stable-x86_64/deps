@@ -33,7 +33,7 @@ curlftpfs                           vifm
 cython                              yasm, python3-pyyaml, python3-msgpack
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc
-dbus                                wpa-supplicant, glib, elogind
+dbus                                wpa-supplicant, glib, elogind, python3-dbus
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
@@ -66,7 +66,7 @@ gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm
-glib                                sshfs, w3m
+glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
 gnupg                               git, smartmontools
 gnutls                              wget, curl, gnupg
@@ -156,7 +156,7 @@ openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
 p7zip
-patchelf
+patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git
 pcre2                               wget, glib, git
@@ -183,6 +183,7 @@ python3-cloudpickle                 python3-attrs
 python3-coverage                    python3-attrs, python3-markdown
 python3-d-bus                       dbus
 python3-dateutil                    python3-urllib3
+python3-dbus
 python3-docutils                    sshfs
 python3-ducktype                    dbus
 python3-editables                   python3-hatchling
@@ -200,11 +201,12 @@ python3-lxml                        elogind
 python3-mako
 python3-markdown
 python3-markupsafe                  python3-requests, python3-jinja2, python3-mako
+python3-meson                       python3-dbus
 python3-mock                        python3-pytest, python3-urllib3
 python3-msgpack                     python3-cachecontrol
 python3-mypy                        python3-attrs
 python3-nose                        python3-pytest
-python3-packaging                   python3-setuptools-scm, python3-hatchling, python3-pytest
+python3-packaging                   python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                    python3-hatchling
 python3-pluggy                      python3-hatchling, python3-pytest, python3-msgpack
 python3-pretend                     python3-packaging
@@ -215,6 +217,7 @@ python3-pygobject3                  dbus
 python3-pympler                     python3-attrs
 python3-pyparsing
 python3-pyproject-hooks             python3-build
+python3-pyproject-metadata          python3-meson
 python3-pysocks                     python3-urllib3, python3-requests
 python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako
 python3-pytest-benchmark            python3-pluggy
@@ -918,7 +921,6 @@ zsh                                 elogind
 # python-blessings                    python3-curtsies
 # python-certifi                      python3-requests
 # python-configparser                 flake8, pylint3, pylint2
-# python-dbus                         polkit, ibus, python-slip, libsecret
 # python-dill                         pylint3
 # python-funcsigs                     python3-pytest
 # python-functools-lru-cache          pylint3, pylint2
@@ -1009,7 +1011,6 @@ zsh                                 elogind
 # spdylay                             nghttp2
 # speech-dispatcher                   qt5
 # speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudioa, ffmpeg
-# sphinx-rtd-theme                    python-dbus
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
@@ -1022,7 +1023,6 @@ zsh                                 elogind
 # t1lib                               php
 # taglib                              gst-plugins-good
 # talloc
-# python3-tap-py                      python-dbus
 # tdb                                 exim, libcanberra, pulseaudio
 # thin-provisioning-tools             lvm2
 # tibmachuni-font-ttf

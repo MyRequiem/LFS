@@ -202,6 +202,9 @@ d/python-modules/python3-markupsafe.sh
 d/python-modules/python3-jinja2.sh
 d/python-modules/python3-pyparsing.sh
 d/python-modules/python3-mako.sh
+d/python-modules/python3-pyproject-metadata.sh
+d/python-modules/python3-meson.sh
+d/python-modules/python3-dbus.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -235,7 +238,6 @@ l/libpcap.sh
 n/iptables.sh
 a/libgudev.sh
 l/dbus-glib.sh
-d/python-modules/python-dbus.sh
 a/cryptsetup.sh
 l/libbytesize.sh
 l/nss.sh
@@ -267,7 +269,6 @@ d/mozjs.sh
 l/polkit.sh
 a/upower.sh
 a/udisks.sh
-d/python-modules/python-dbus.sh
 l/apr-util.sh
 l/freetype.sh
 ap/graphite2.sh
