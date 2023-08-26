@@ -43,7 +43,7 @@ meson                       \
 ninja || exit 1
 
 # для запуска тестов конфигурируем пакет без опции '-Dtests=false', а так же
-# должен быть установлен пакет 'python-pyparsing'
+# должен быть установлен пакет 'python3-pyparsing'
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

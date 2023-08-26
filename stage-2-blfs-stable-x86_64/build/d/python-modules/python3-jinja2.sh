@@ -9,8 +9,7 @@ ARCH_NAME="Jinja2"
 # использовать чистые Python выражения и поддерживает гибкую систему
 # расширений.
 
-# Required:    python3
-#              python-markupsafe
+# Required:    python3-markupsafe
 # Recommended: no
 # Optional:    no
 
@@ -21,8 +20,11 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-python3 setup.py build || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+# сборка с помощью модуля build (пакет python3-build) и установка с помощью
+# модуля installer (пакет python3-installer)
+python3 -m build --no-isolation                       || exit 1
+python3 -m installer -d "${TMP_DIR}" \
+    ./dist/"${ARCH_NAME}-${VERSION}-py3-none-any.whl" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
