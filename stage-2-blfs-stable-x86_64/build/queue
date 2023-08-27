@@ -205,6 +205,10 @@ d/python-modules/python3-mako.sh
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
+l/jansson.sh
+n/nghttp2.sh
+n/curl.sh
+d/cmake.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -213,7 +217,6 @@ d/python2.sh
 d/python3.sh
 l/icu.sh
 d/python-modules/python2-libxml2.sh
-d/cmake.sh
 l/json-c.sh
 l/libjpeg-turbo.sh
 l/nspr.sh
@@ -261,8 +264,6 @@ n/cyrus-sasl.sh
 n/openldap.sh
 n/cyrus-sasl.sh
 n/exim.sh
-d/cmake.sh
-d/cmake.sh
 d/llvm.sh
 d/rustc.sh
 d/mozjs.sh
@@ -493,7 +494,6 @@ l/sdl.sh
 l/sdl2.sh
 l/gst-plugins-base.sh
 l/qt5.sh
-d/cmake.sh
 n/gpgme.sh
 l/cairo.sh
 l/gst-plugins-base.sh
@@ -679,10 +679,7 @@ d/tidy-html5.sh
 l/enchant.sh
 n/rsync.sh
 ap/vim.sh
-l/jansson.sh
 l/c-ares.sh
-n/nghttp2.sh
-d/cmake.sh
 d/nodejs.sh
 n/apache-httpd.sh
 n/php.sh
@@ -775,7 +772,6 @@ l/libyajl.sh
 l/raptor.sh
 s/talloc.sh
 s/jemalloc.sh
-n/nghttp2.sh
 l/libcap-ng.sh
 l/gnome-keyring.sh
 s/qemu.sh
@@ -806,7 +802,6 @@ d/python-modules/python-netifaces.sh
 d/llvm.sh
 s/virt-manager.sh
 l/libev.sh
-n/nghttp2.sh
 d/perl-modules/perl-pod-simple.sh
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh

@@ -5,17 +5,18 @@ PRGNAME="cmake"
 ### CMake (cross-platform, open-source make system)
 # Современный набор инструментов, используемый для генерации Makefile
 
-# Required:    libuv
+# Required:    no
 # Recommended: curl
 #              libarchive
+#              libuv
 #              nghttp2
 # Optional:    gcc        (для gfortran)
 #              git        (используется во время тестов)
 #              mercurial  (используется во время тестов)
 #              qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
+#              sphinx     (для сборки документации) https://pypi.org/project/Sphinx/
 #              subversion (для тестов)
 #              rhash      (http://rhash.sourceforge.net/)
-#              sphinx     (для сборки документации) https://pypi.org/project/Sphinx/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -88,8 +89,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # platform- and compiler-independent. CMake generates native makefiles and
 # workspaces that can be used in the compiler environment of your choice.
 #
-# Home page: https://cmake.org/
-# Download:  https://cmake.org/files/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://${PRGNAME}.org/files/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

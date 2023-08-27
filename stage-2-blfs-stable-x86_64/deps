@@ -21,16 +21,18 @@ bash-completion                     elogind
 berkeley-db
 bindfs                              glib
 blfs-bootscripts
-boost                               highlight
+boost                               highlight, nghttp2
 brotli                              gnutls, curl
-c-ares                              curl
+c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
+cmake
 cmocka                              gnutls
 cpio
-curl                                pciutils, gnupg, curlftpfs, git, smartmontools
+cunit                               nghttp2
+curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake
 curlftpfs                           vifm
-cython                              yasm, python3-pyyaml, python3-msgpack
+cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc
 dbus                                wpa-supplicant, glib, elogind, python3-dbus
@@ -60,12 +62,12 @@ fusefat                             vifm
 fuseiso                             vifm
 fwtk                                sudo
 gc                                  w3m
-gcc                                 pth
+gcc                                 pth, cmake
 gcr                                 pinentry
 gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
-git                                 libidn2, python3-setuptools-scm
+git                                 libidn2, python3-setuptools-scm, cmake
 glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
 gnupg                               git, smartmontools
@@ -90,15 +92,18 @@ install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, 
 isl                                 gcc
 iso-codes
 iw
+jansson                             nghttp2
+jemalloc                            nghttp2
 kernel-firmware
 kexec                               elogind
 libaio
-libarchive                          archivemount
+libarchive                          archivemount, cmake
 libassuan                           pinentry, gnupg
 libatasmart
 libatomic-ops                       gc
 libedit                             pcre2, openssh, sqlite
-libevent                            tmux
+libev                               nghttp2
+libevent                            tmux, nghttp2
 libexif
 libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
@@ -120,8 +125,8 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
-libuv
-libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl
+libuv                               cmake
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
 libyaml                             python3-pyyaml
 linux-pam                           openssh, sudo, elogind
@@ -137,12 +142,13 @@ lz4                                 lrzip
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl, python3-requests
-mercurial                           python3-setuptools-scm
+mercurial                           python3-setuptools-scm, cmake
 mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
+mruby                               nghttp2
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
-nghttp2                             curl
+nghttp2                             curl, cmake
 ngtcp2                              curl
 npth                                gnupg
 nss                                 p11-kit, make-ca
@@ -242,8 +248,9 @@ python3-werkzeug                    python3-requests
 python3-xmlschema                   python3-pytest
 python3-zope-interface              python3-attrs
 pytrash
-qt5                                 pinentry, wpa-supplicant, highlight
+qt5                                 pinentry, wpa-supplicant, highlight, cmake
 quiche                              curl
+rhash                               cmake
 rpcsvc-proto
 rrdtool                             lm-sensors
 ruby                                docbook-xsl
@@ -256,12 +263,13 @@ shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
 smartmontools
-sphinx                              python3-requests
+spdylay                             nghttp2
+sphinx                              python3-requests, nghttp2, cmake
 spnego                              curl
 sqlite                              gnupg, lnav, lshw
 sshfs                               vifm
 stunnel                             curl
-subversion                          git
+subversion                          git, cmake
 sudo
 sysprof                             glib
 sysstat                             openssh
@@ -349,14 +357,12 @@ zsh                                 elogind
 # clipmenu                            dmenu
 # clipnotify                          clipmenu
 # clisp                               gpgme
-# cmake                               json-c, libjpeg-turbo, llvm, brotli, graphite2, libdrm, rustc, freeglut, libtiff, jasper, libical, openjpeg, x265, mariadb, poppler, tidy-html5, c-ares, exiv2, taglib, flameshot, aom
 # cmus
 # cogl                                cairo
 # colord                              gtk+3, cups
 # corefonts                           imagemagick
 # cppcheck
 # cryptsetup                          volume-key
-# cunit                               libdrm, nghttp2
 # cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 # cups-filters                        cups
 # cxxopts                             pamixer
@@ -505,11 +511,9 @@ zsh                                 elogind
 # isort3                              pylint3
 # itstool                             shared-mime-info, zenity
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
-# jansson                             nghttp2
 # jasper                              qt5, gegl, imagemagick
 # jbig-kit                            libtiff, imagemagick
 # jbig2dec                            cairo
-# jemalloc                            nghttp2, qemu
 # jq
 # json-c                              cryptsetup, fontconfig, bind-utils, libmypaint, girara
 # json-glib                           gtk+3, gegl
@@ -558,7 +562,6 @@ zsh                                 elogind
 # libdw                               gstreamer
 # libepoxy                            xorg-server, gtk+3
 # liberation-fonts-ttf
-# libev                               nghttp2, i3
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               php, nginx
 # libglade                            python2-pygtk
@@ -682,7 +685,6 @@ zsh                                 elogind
 # mpg123                              gst-plugins-good
 # mpv
 # mrg                                 gegl
-# mruby                               mariadb, nghttp2
 # mtdev                               xorg-evdev-driver, libinput, qt5
 # mujs                                mpv
 # musepack-tools                      cmus
@@ -981,7 +983,6 @@ zsh                                 elogind
 # reiserfsprogs                       lvm2
 # resolv_wrapper                      mit-kerberos-v5
 # rest                                gtk+3
-# rhash                               cmake
 # roxen-webserver                     php
 # rpm                                 rpm2tgz
 # rpm2tgz
@@ -1008,7 +1009,6 @@ zsh                                 elogind
 # soundtouch                          gst-plugins-bad
 # soxr                                pulseaudio
 # spandsp                             gst-plugins-bad
-# spdylay                             nghttp2
 # speech-dispatcher                   qt5
 # speex                               libsndfile, gst-plugins-good, alsa-plugins, pulseaudioa, ffmpeg
 # spice                               spice-gtk, virt-manager

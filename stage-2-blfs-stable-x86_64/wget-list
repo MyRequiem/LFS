@@ -170,6 +170,9 @@ https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.2.4.tar.gz
 https://files.pythonhosted.org/packages/source/p/pyproject-metadata/pyproject-metadata-0.7.0.tar.gz
 https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-0.12.0.tar.gz
 https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
+https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
+https://github.com/nghttp2/nghttp2/releases/download/v1.52.0/nghttp2-1.52.0.tar.xz
+https://cmake.org/files/v3.25/cmake-3.25.2.tar.gz
 
 
 ================================================================================
@@ -178,7 +181,6 @@ https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
 http://github.com/unicode-org/icu/releases/download/release-68-2/icu4c-68_2-src.tgz
-https://cmake.org/files/v3.19/cmake-3.19.5.tar.gz
 https://s3.amazonaws.com/json-c_releases/releases/json-c-0.15.tar.gz
 https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.0.6.tar.gz
 https://archive.mozilla.org/pub/nspr/releases/v4.29/src/nspr-4.29.tar.gz
@@ -715,9 +717,7 @@ https://github.com/LMDB/lmdb/archive/LMDB_0.9.28.tar.gz
 https://github.com/htacg/tidy-html5/archive/5.6.0/tidy-html5-5.6.0.tar.gz
 https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
 https://www.samba.org/ftp/rsync/src/rsync-3.2.3.tar.gz
-http://www.digip.org/jansson/releases/jansson-2.13.1.tar.gz
 https://c-ares.haxx.se/download/c-ares-1.17.1.tar.gz
-https://github.com/nghttp2/nghttp2/releases/download/v1.43.0/nghttp2-1.43.0.tar.xz
 https://archive.apache.org/dist/httpd/httpd-2.4.46.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/10.1/httpd-2.4.46-blfs_layout-1.patch
 https://www.php.net/distributions/php-8.0.2.tar.xz

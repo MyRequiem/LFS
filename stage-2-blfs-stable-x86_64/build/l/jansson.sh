@@ -17,6 +17,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим один из тестов
+sed -e "/DT/s;| sort;| sed 's/@@libjansson.*//' &;" \
+    -i test/suites/api/check-exports || exit 1
+
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
@@ -29,6 +33,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library for encoding, decoding and manipulating json data)
 #
@@ -36,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # JSON data
 #
 # Home page: https://github.com/akheron/${PRGNAME}
-# Download:  http://www.digip.org/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/akheron/${PRGNAME}/releases/download/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 
