@@ -10,8 +10,8 @@ PRGNAME="rsync"
 # Required:    no
 # Recommended: popt
 # Optional:    doxygen
-#              lz4     (https://lz4.github.io/lz4/)
-#              xxhash  (https://cyan4973.github.io/xxHash/)
+#              lz4     (https://lz4.org/)
+#              xxhash  (https://xxhash.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -42,7 +42,7 @@ XXHASH="--disable-xxhash"
 # zstd, который предоставляется в LFS
 
 # command -v doxygen &>/dev/null && DOXYGEN="true"
-# command -v lz4     &>/dev/null && LZ4="--enable-lz4"
+command -v lz4     &>/dev/null && LZ4="--enable-lz4"
 command -v xxhsum  &>/dev/null && XXHASH="--enable-xxhash"
 
 # используем zlib установленный в системе
@@ -91,6 +91,7 @@ use chroot = yes
     list = yes
     uid = rsyncd
     gid = rsyncd
+
 EOF
 
 if [ -f "${RSYNCD_CONF}" ]; then

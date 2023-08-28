@@ -205,10 +205,15 @@ d/python-modules/python3-mako.sh
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
+d/python-modules/python3-psutil.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
 d/cmake.sh
+l/popt.sh
+n/rsync.sh
+d/llvm.sh
+n/dhcpcd.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
@@ -223,13 +228,11 @@ l/nspr.sh
 a/ed.sh
 a/lvm2.sh
 a/usbutils.sh
-l/popt.sh
 n/libtirpc.sh
 ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
 d/guile.sh
-d/llvm.sh
 l/icu.sh
 d/nodejs.sh
 x/misc/xdg-user-dirs.sh
@@ -264,7 +267,6 @@ n/cyrus-sasl.sh
 n/openldap.sh
 n/cyrus-sasl.sh
 n/exim.sh
-d/llvm.sh
 d/rustc.sh
 d/mozjs.sh
 l/polkit.sh
@@ -677,7 +679,6 @@ d/python-modules/python2-future.sh
 ap/lmdb.sh
 d/tidy-html5.sh
 l/enchant.sh
-n/rsync.sh
 ap/vim.sh
 l/c-ares.sh
 d/nodejs.sh
@@ -797,9 +798,7 @@ l/gtk+2.sh
 l/gtk+3.sh
 ap/flac.sh
 ap/postgresql.sh
-d/python-modules/python-psutil.sh
 d/python-modules/python-netifaces.sh
-d/llvm.sh
 s/virt-manager.sh
 l/libev.sh
 d/perl-modules/perl-pod-simple.sh
@@ -916,7 +915,6 @@ l/libplacebo.sh
 d/mujs.sh
 ap/mpv.sh
 ap/mariadb.sh
-n/rsync.sh
 l/cxxopts.sh
 ap/pamixer.sh
 ap/lsscsi.sh

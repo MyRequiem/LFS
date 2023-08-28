@@ -26,7 +26,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
-cmake
+cmake                               llvm
 cmocka                              gnutls
 cpio
 cunit                               nghttp2
@@ -44,7 +44,7 @@ docbook-xsl                         libxslt, glib, elogind, python3-asciidoc
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm
 efl                                 pinentry
 elogind                             dbus
 emacs                               libidn, pinentry
@@ -67,14 +67,14 @@ gcr                                 pinentry
 gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
-git                                 libidn2, python3-setuptools-scm, cmake
+git                                 libidn2, python3-setuptools-scm, cmake, llvm
 glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
 gnupg                               git, smartmontools
 gnutls                              wget, curl, gnupg
 gobject-introspection               glib, elogind
 gpm
-graphviz                            libexif
+graphviz                            libexif, llvm
 grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
@@ -88,7 +88,7 @@ icu                                 libxml2, boost
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm
 isl                                 gcc
 iso-codes
 iw
@@ -126,7 +126,7 @@ libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
 libuv                               cmake
-libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
 libyaml                             python3-pyyaml
 linux-pam                           openssh, sudo, elogind
@@ -138,7 +138,7 @@ lsb-tools
 lshw
 lua                                 highlight
 lynx                                pciutils, smartmontools, python3-asciidoc
-lz4                                 lrzip
+lz4                                 lrzip, rsync
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl, python3-requests
@@ -154,6 +154,7 @@ npth                                gnupg
 nss                                 p11-kit, make-ca
 ntfs-3g
 ntp                                 dhcpcd
+ocaml                               llvm
 open-mpi                            boost
 openjdk                             libidn
 openldap                            curl, gnupg, sudo
@@ -172,6 +173,7 @@ perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 pinentry                            gnupg
 polkit                              elogind
+popt                                rsync
 postfix                             gnupg, sudo
 pth                                 libidn, libgcrypt
 py3c
@@ -216,9 +218,10 @@ python3-packaging                   python3-setuptools-scm, python3-hatchling, p
 python3-pathspec                    python3-hatchling
 python3-pluggy                      python3-hatchling, python3-pytest, python3-msgpack
 python3-pretend                     python3-packaging
+python3-psutil                      llvm
 python3-py                          python3-pytest
 python3-pycryptodome
-python3-pygments                    python3-pytest
+python3-pygments                    python3-pytest, llvm
 python3-pygobject3                  dbus
 python3-pympler                     python3-attrs
 python3-pyparsing
@@ -234,8 +237,9 @@ python3-pytest-mock                 python3-requests
 python3-pytest-mypy-plugins         python3-attrs
 python3-pytest-timeout              python3-urllib3
 python3-pyxdg
-python3-pyyaml                      python3-markdown
+python3-pyyaml                      python3-markdown, llvm
 python3-railroad-diagrams           python3-pyparsing
+python3-recommonmark                llvm
 python3-requests                    python3-pytest, python3-cachecontrol
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six
@@ -253,6 +257,7 @@ quiche                              curl
 rhash                               cmake
 rpcsvc-proto
 rrdtool                             lm-sensors
+rsync                               llvm
 ruby                                docbook-xsl
 samba                               curl
 saxon6                              docbook-xsl
@@ -273,7 +278,7 @@ subversion                          git, cmake
 sudo
 sysprof                             glib
 sysstat                             openssh
-texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio
+texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm
 time
 tk                                  git
 tmux
@@ -283,7 +288,7 @@ trousers                            gnutls
 unbound                             gnutls
 unrar
 unzip                               docbook-xml
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm
 vifm
 w3m                                 python3-asciidoc
 wget                                pciutils, smartmontools
@@ -295,10 +300,12 @@ wxwidgets                           p7zip
 xerces2-java                        docbook-xsl
 xmlto                               git, dbus
 xorg-libraries                      dbus
+xxhash                              rsync
 yasm                                tmux
 yelp-tools                          dbus
 ypbind                              dhcpcd
-zip                                 docbook-xsl
+z3                                  llvm
+zip                                 docbook-xsl, llvm
 zsh                                 elogind
 
 
@@ -709,7 +716,6 @@ zsh                                 elogind
 # numlockx
 # numpy                               python2-pygtk
 # nuspell                             enchant
-# ocaml                               llvm
 # oniguruma                           slang, php, jq
 # openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
@@ -902,7 +908,6 @@ zsh                                 elogind
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp
-# popt                                cryptsetup, rsync
 # portaudio                           mpg123
 # postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # pov-ray                             imagemagick
@@ -934,7 +939,6 @@ zsh                                 elogind
 # python-netifaces                    bumblebee-status
 # python-pathlib2                     python3-pytest
 # python-pies                         isort2, isort3, pylint3
-# python-psutil                       llvm, bumblebee-status
 # python-pycurl                       python-urlgrabber
 # python-pyperclip                    bpython
 # python-pytest-runner                python-mccabe, flake8, pylint3
@@ -978,7 +982,6 @@ zsh                                 elogind
 # raptor                              rasqal
 # rasqal                              redland
 # re2c                                php
-# python3-recommonmark                llvm
 # redland
 # reiserfsprogs                       lvm2
 # resolv_wrapper                      mit-kerberos-v5
@@ -986,7 +989,6 @@ zsh                                 elogind
 # roxen-webserver                     php
 # rpm                                 rpm2tgz
 # rpm2tgz
-# rsync                               llvm, vim, apache-httpd
 # rtmpdump                            gst-plugins-bad
 # rustc                               mozjs, librsvg
 # rxvt-unicode
@@ -1120,9 +1122,7 @@ zsh                                 elogind
 # xsel                                dmenu
 # xterm                               imagemagick
 # xvid                                ffmpeg
-# xxhash                              rsync
 # xxkb
-# z3                                  llvm
 # zathura
 # zbar                                gst-plugins-bad
 # zenity
