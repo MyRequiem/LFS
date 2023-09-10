@@ -55,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # results on all platforms.
 #
 # Home page: https://home.unicode.org/
-# Download:  http://github.com/unicode-org/${PRGNAME}/releases/download/release-${MODVER}/${ARCH_NAME}-${ARCH_VERSION}-src.tgz
+# Download:  https://github.com/unicode-org/${PRGNAME}/releases/download/release-${MODVER}/${ARCH_NAME}-${ARCH_VERSION}-src.tgz
 #
 EOF
 

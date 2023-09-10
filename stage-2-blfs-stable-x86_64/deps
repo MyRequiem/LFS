@@ -44,7 +44,7 @@ docbook-xsl                         libxslt, glib, elogind, python3-asciidoc
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu
 efl                                 pinentry
 elogind                             dbus
 emacs                               libidn, pinentry
@@ -130,7 +130,7 @@ libxml2                             wpa-supplicant, libxslt, libarchive, docbook
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
 libyaml                             python3-pyyaml
 linux-pam                           openssh, sudo, elogind
-llvm                                dhcpcd
+llvm                                dhcpcd, icu
 lm-sensors                          htop
 lnav
 lrzip

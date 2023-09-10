@@ -214,13 +214,15 @@ l/popt.sh
 n/rsync.sh
 d/llvm.sh
 n/dhcpcd.sh
+l/icu.sh
+l/libxml2.sh
+l/boost.sh
 
 l/gobject-introspection.sh
 d/clisp.sh
 a/fcron.sh
 d/python2.sh
 d/python3.sh
-l/icu.sh
 d/python-modules/python2-libxml2.sh
 l/json-c.sh
 l/libjpeg-turbo.sh
@@ -233,7 +235,6 @@ ap/lsof.sh
 l/slang.sh
 l/libatomic-ops.sh
 d/guile.sh
-l/icu.sh
 d/nodejs.sh
 x/misc/xdg-user-dirs.sh
 l/aalib.sh
