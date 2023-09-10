@@ -7,7 +7,7 @@ PRGNAME="libxml2"
 
 # Required:    no
 # Recommended: no
-# Optional:    icu      (для тестов)
+# Optional:    icu      (для лучшей поддержки UNICODE)
 #              valgrind (для тестов)
 
 ROOT="/root/src/lfs"
