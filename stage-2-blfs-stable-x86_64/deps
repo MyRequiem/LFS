@@ -26,7 +26,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
-cmake                               llvm
+cmake                               llvm, json-c
 cmocka                              gnutls
 cpio
 cunit                               nghttp2
@@ -34,18 +34,19 @@ curl                                pciutils, gnupg, curlftpfs, git, smartmontoo
 curlftpfs                           vifm
 cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
 datefudge                           gnutls
-dblatex                             git, python3-asciidoc
+dblatex                             git, python3-asciidoc, xmlto
 dbus                                wpa-supplicant, glib, elogind, python3-dbus
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmidecode                           lm-sensors
-docbook-xml                         libxslt, glib, elogind
-docbook-xsl                         libxslt, glib, elogind, python3-asciidoc
+docbook-xml                         libxslt, glib, elogind, xmlto
+docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu
 efl                                 pinentry
+elinks                              xmlto
 elogind                             dbus
 emacs                               libidn, pinentry
 etc-issue
@@ -53,7 +54,7 @@ exim                                gnupg, sudo
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fop                                 python3-asciidoc
+fop                                 python3-asciidoc, xmlto
 fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                            vifm
@@ -94,6 +95,7 @@ iso-codes
 iw
 jansson                             nghttp2
 jemalloc                            nghttp2
+json-c
 kernel-firmware
 kexec                               elogind
 libaio
@@ -127,8 +129,9 @@ libunistring                        libidn2, gnutls
 libusb                              gnupg
 libuv                               cmake
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
 libyaml                             python3-pyyaml
+links                               xmlto
 linux-pam                           openssh, sudo, elogind
 llvm                                dhcpcd, icu
 lm-sensors                          htop
@@ -137,7 +140,7 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
-lynx                                pciutils, smartmontools, python3-asciidoc
+lynx                                pciutils, smartmontools, python3-asciidoc, xmlto
 lz4                                 lrzip, rsync
 lzip
 lzo                                 libarchive
@@ -163,6 +166,7 @@ openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
 p7zip
+passivetex                          xmlto
 patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git
@@ -290,7 +294,7 @@ unrar
 unzip                               docbook-xml
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm
 vifm
-w3m                                 python3-asciidoc
+w3m                                 python3-asciidoc, xmlto
 wget                                pciutils, smartmontools
 which                               pciutils, openssh, lm-sensors, boost, aspell
 whois
@@ -401,7 +405,6 @@ zsh                                 elogind
 # ebtables
 # ed
 # electric-fence                      lame, imagemagick
-# elinks                              xmlto, apache-httpd, mutt
 # emojione                            ibus
 # empress                             php
 # enchant                             php
@@ -522,7 +525,6 @@ zsh                                 elogind
 # jbig-kit                            libtiff, imagemagick
 # jbig2dec                            cairo
 # jq
-# json-c                              cryptsetup, fontconfig, bind-utils, libmypaint, girara
 # json-glib                           gtk+3, gegl
 # judy                                mariadb
 # kernel-generic                      iptables
@@ -655,7 +657,6 @@ zsh                                 elogind
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # lilv                                gst-plugins-bad
-# links                               xmlto, xorg-libraries, apache-httpd, mutt, xdg-utils, docbook-utils
 # liquid-rescale                      imagemagick
 # lirc                                pulseaudio
 # lmdb                                php
@@ -743,7 +744,6 @@ zsh                                 elogind
 # pangomm                             gtkmm2, gtkmm3
 # papi                                gtk+3
 # parted                              libblockdev
-# passivetex                          xmlto
 # passwdqc                            cryptsetup
 # password-store                      dmenu
 # pavucontrol

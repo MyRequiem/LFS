@@ -20,6 +20,7 @@ PRGNAME="git"
 #              perl-authen-sasl     (https://metacpan.org/pod/Authen::SASL) для команды 'git send-email'
 #              perl-mime-base64     (https://metacpan.org/pod/MIME::Base64) для команды 'git send-email'
 #              perl-io-socket-ssl   (для команды 'git send-email')
+#              --- для сборки html, pdf и info документации ---
 #              xmlto                (для сборки man-страниц)
 #              python3-asciidoc
 #              dblatex              (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
