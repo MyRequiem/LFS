@@ -12,12 +12,12 @@ PRGNAME="nghttp2"
 #              cython
 #              jansson
 #              libevent
-#              sphinx
-#              jemalloc (https://jemalloc.net/)
-#              libev    (software.schmorp.de/pkg/libev.html)
-#              mruby    (https://mruby.org/)
-#              spdylay  (https://tatsuhiro-t.github.io/spdylay/)
-#              cunit    для тестов (https://cunit.sourceforge.net/)
+#              python3-sphinx
+#              jemalloc         (https://jemalloc.net/)
+#              libev            (software.schmorp.de/pkg/libev.html)
+#              mruby            (https://mruby.org/)
+#              spdylay          (https://tatsuhiro-t.github.io/spdylay/)
+#              cunit            (для тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -10,7 +10,7 @@ ARCH_NAME="$(echo "${PRGNAME}" | cut -d - -f 1)"
 # Recommended: json-c
 # Optional:    libcap
 #              libxml2
-#              sphinx (https://www.sphinx-doc.org/en/master/)
+#              python3-sphinx (https://www.sphinx-doc.org/en/master/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
