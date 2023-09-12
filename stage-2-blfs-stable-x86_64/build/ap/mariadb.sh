@@ -16,16 +16,16 @@ PRGNAME="mariadb"
 #              ruby
 #              unixodbc
 #              valgrind
-#              groonga     (https://groonga.org/)
-#              kytea       (http://www.phontron.com/kytea/)
-#              judy        (https://sourceforge.net/projects/judy/)
-#              lz4         (https://github.com/lz4/lz4)
-#              mecab       (http://taku910.github.io/mecab/)
-#              messagepack (https://msgpack.org/)
-#              mruby       (https://mruby.org/)
-#              sphinx      (http://sphinxsearch.com/downloads/)
-#              tokudb      (https://mariadb.com/kb/en/tokudb/)
-#              zeromq      (https://zeromq.org/)
+#              groonga          (https://groonga.org/)
+#              kytea            (http://www.phontron.com/kytea/)
+#              judy             (https://sourceforge.net/projects/judy/)
+#              lz4              (https://github.com/lz4/lz4)
+#              mecab            (http://taku910.github.io/mecab/)
+#              messagepack      (https://msgpack.org/)
+#              mruby            (https://mruby.org/)
+#              python3-sphinx   (http://sphinxsearch.com/downloads/)
+#              tokudb           (https://mariadb.com/kb/en/tokudb/)
+#              zeromq           (https://zeromq.org/)
 
 ### Конфигурация
 #    /etc/mysql/my.cnf
