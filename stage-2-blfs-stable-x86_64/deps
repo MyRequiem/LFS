@@ -26,7 +26,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
-cmake                               llvm, json-c
+cmake                               llvm, json-c, libjpeg-turbo
 cmocka                              gnutls
 cpio
 cunit                               nghttp2
@@ -111,6 +111,7 @@ libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls, whois
 libidn2                             gnutls, libpsl, wget, curl, whois
+libjpeg-turbo
 libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant, htop
@@ -149,6 +150,7 @@ mercurial                           python3-setuptools-scm, cmake
 mit-kerberos-v5                     curl, openssh, sudo
 mono                                libidn
 mruby                               nghttp2
+nasm                                libjpeg-turbo
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
 nghttp2                             curl, cmake
@@ -185,7 +187,7 @@ python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-argcomplete                 python3-pytest
-python3-asciidoc                    git
+python3-asciidoc                    git, nasm
 python3-attrs                       python3-pytest
 python3-build                       python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
@@ -302,10 +304,10 @@ wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
 xerces2-java                        docbook-xsl
-xmlto                               git, dbus
+xmlto                               git, dbus, nasm
 xorg-libraries                      dbus
 xxhash                              rsync
-yasm                                tmux
+yasm                                tmux, libjpeg-turbo
 yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm
@@ -586,7 +588,6 @@ zsh                                 elogind
 # libinput                            xorg-libinput-driver, qt5
 # libiodbc                            redland, php
 # libiscsi                            udisks
-# libjpeg-turbo                       links, libtiff, jasper, gdk-pixbuf, imlib2, gst-plugins-good, lcms2, fltk, libwebp, libmng, qt5, ghostscript, gegl, poppler, php, openjdk, gimp, lcms, libgxps, imagemagick, feh, libgd
 # libkate                             gst-plugins-bad
 # liblsmash                           x264
 # libmad
@@ -699,7 +700,6 @@ zsh                                 elogind
 # mutt
 # mypaint-brushes                     gimp
 # mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
-# nasm                                libjpeg-turbo, flac, lame, libvpx, gst-plugins-good, libass, sdl, x265, x264, sdl2, xvid, ffmpeg, aom
 # ndctl                               libblockdev
 # neon                                gst-plugins-bad
 # net-snmp                            php

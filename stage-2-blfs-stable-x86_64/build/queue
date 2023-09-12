@@ -219,9 +219,9 @@ l/libxml2.sh
 l/boost.sh
 l/json-c.sh
 s/xmlto.sh
+d/nasm.sh
+l/libjpeg-turbo.sh
 
-d/git.sh
-a/dbus.sh
 
 # l/gobject-introspection.sh
 # d/clisp.sh
@@ -229,7 +229,6 @@ a/dbus.sh
 # d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
-# l/libjpeg-turbo.sh
 # l/nspr.sh
 # a/ed.sh
 # a/lvm2.sh
@@ -404,7 +403,6 @@ a/dbus.sh
 # l/libcanberra.sh
 # ap/opus.sh
 # l/gst-plugins-base.sh
-# d/nasm.sh
 # ap/flac.sh
 # l/libsndfile.sh
 # l/lame.sh
