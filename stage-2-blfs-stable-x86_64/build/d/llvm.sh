@@ -121,8 +121,8 @@ cmake                                         \
 
 ninja || exit 1
 
-# если пакеты sphinx и python3-recommonmark установлены, сгенерируем html
-# документацию и man-страницы для llvm и clang
+# если пакеты python3-sphinx и python3-recommonmark установлены, сгенерируем
+# html документацию и man-страницы для llvm и clang
 if [ -n "${LLVM_DOCS}" ]; then
     cmake                               \
         -DLLVM_BUILD_DOCS=ON            \

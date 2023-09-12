@@ -10,13 +10,13 @@ PRGNAME="cmake"
 #              libarchive
 #              libuv
 #              nghttp2
-# Optional:    gcc        (для gfortran)
-#              git        (используется во время тестов)
-#              mercurial  (используется во время тестов)
-#              qt5        (для Qt-based GUI, см. опцию конфигурации ниже)
-#              sphinx     (для сборки документации) https://pypi.org/project/Sphinx/
-#              subversion (для тестов)
-#              rhash      (http://rhash.sourceforge.net/)
+# Optional:    gcc            (для gfortran)
+#              git            (используется во время тестов)
+#              mercurial      (используется во время тестов)
+#              qt5            (для Qt-based GUI, см. опцию конфигурации ниже)
+#              python3-sphinx (для сборки документации) https://pypi.org/project/Sphinx/
+#              subversion     (для тестов)
+#              rhash          (http://rhash.sourceforge.net/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
