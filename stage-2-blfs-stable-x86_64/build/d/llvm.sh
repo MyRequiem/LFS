@@ -59,14 +59,14 @@ mv "tools/${CLANG}-${VERSION}.src"          "tools/${CLANG}"
 mv "projects/${COMPILER_RT}-${VERSION}.src" "projects/${COMPILER_RT}"
 
 DOXYGEN="OFF"
-# SPHINX=""
-# RECOMMONMARK=""
+SPHINX=""
+RECOMMONMARK=""
 LLVM_DOCS=""
 
 # command -v doxygen      &>/dev/null          && DOXYGEN="ON"
 # command -v sphinx-build &>/dev/null          && SPHINX="true"
 # command -v cm2html      &>/dev/null          && RECOMMONMARK="true"
-# [[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
+[[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
 
 # в исходниках лежит много Python-скриптов, которые используют shebang
 # /usr/bin/env python для доступа к системному Python, который в LFS -
