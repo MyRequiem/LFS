@@ -31,7 +31,7 @@ MAKO=""
 MARKDOWN=""
 DOCTOOL="-Ddoctool=disabled"
 
-command -v cairo-sphinx &>/dev/null && CAIRO="-Dcairo=enabled"
+command -v cairo-trace &>/dev/null && CAIRO="-Dcairo=enabled"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="-Dgtk_doc=true"
 command -v mako-render  &>/dev/null && MAKO="true"
 command -v markdown_py  &>/dev/null && MARKDOWN="true"
