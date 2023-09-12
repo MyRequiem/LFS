@@ -10,7 +10,7 @@ PRGNAME="libinput"
 #              mtdev
 # Recommended: no
 # Optional:    valgrind          (для тестов)
-#              sphinx            (для создания документации)
+#              python3-sphinx    (для создания документации)
 #              gtk+3             (для сборки GUI event viewer)
 #              libunwind         (для тестов) http://www.nongnu.org/libunwind/
 #              libwacom          (для тестов)
