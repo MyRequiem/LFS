@@ -16,6 +16,7 @@ PRGNAME="openldap"
 #              unixodbc
 #              mariadb или postgresql или mysql (http://www.mysql.com/)
 #              openslp                          (http://www.openslp.org/)
+#              wiredtiger                       (https://www.mongodb.com/docs/manual/core/wiredtiger/)
 #              berkeley-db (для сборки slapd, но эта утилита устарела)
 
 ROOT="/root/src/lfs"
@@ -26,8 +27,8 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-### Note:
-# устанавливаем ТОЛЬКО клиентскую сторону и библиотеки
+### NOTE:
+# собираем ТОЛЬКО клиентскую сторону и библиотеки
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
@@ -39,13 +40,12 @@ autoconf || exit 1
     --disable-static  \
     --enable-dynamic  \
     --disable-debug   \
-    --disable-slapd || exit 1
+    --disable-slapd   \
+    --enable-versioning=yes || exit 1
 
 make depend || exit 1
-make || exit 1
-
+make        || exit 1
 # при сборке только клиента и библиотек тесты не доступны
-
 make install DESTDIR="${TMP_DIR}"
 
 LDAP_CONF="/etc/openldap/ldap.conf"
@@ -67,8 +67,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # It uses the TCP/IP stack versus the overly complex OSI stack. LDAP is often
 # used to provide authentication (such as for email)
 #
-# Home page: http://www.openldap.org/
-# Download:  https://www.openldap.org/software/download/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
+# Home page: http://www.${PRGNAME}.org/
+# Download:  https://www.${PRGNAME}.org/software/download/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 

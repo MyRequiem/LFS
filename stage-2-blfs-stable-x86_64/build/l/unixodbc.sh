@@ -25,8 +25,8 @@ mkdir -pv "${TMP_DIR}"
 
 DOCS="false"
 
-# создаем драйверы, которые были установлены по умолчанию в предыдущих версиях
-# и библиотеки их конфигурации
+# создаем драйверы, которые были установлены по умолчанию в предыдущих версиях,
+# а так же библиотеки их конфигурации
 #    --enable-drivers
 #    --enable-drivers-conf
 ./configure               \
@@ -80,7 +80,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libraries.
 #
 # Home page: http://www.${PRGNAME}.org/
-# Download:  ftp://ftp.${PRGNAME}.org/pub/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://github.com/lurcher/${ARCH_NAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -18,7 +18,7 @@ audit-userspace                     elogind
 autoconf213                         archivemount
 autogen                             gnutls
 bash-completion                     elogind
-berkeley-db
+berkeley-db                         cyrus-sasl, openldap
 bindfs                              glib
 blfs-bootscripts
 boost                               highlight, nghttp2
@@ -32,12 +32,14 @@ cpio
 cunit                               nghttp2
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake
 curlftpfs                           vifm
+cyrus-sasl                          openldap
 cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc, xmlto
 dbus                                wpa-supplicant, glib, elogind, python3-dbus
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
+dmalloc                             cyrus-sasl
 dmidecode                           lm-sensors
 docbook-xml                         libxslt, glib, elogind, xmlto
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
@@ -72,7 +74,7 @@ git                                 libidn2, python3-setuptools-scm, cmake, llvm
 glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
 gnupg                               git, smartmontools
-gnutls                              wget, curl, gnupg
+gnutls                              wget, curl, gnupg, openldap
 gobject-introspection               glib, elogind
 gpm
 graphviz                            libexif, llvm
@@ -98,6 +100,7 @@ jemalloc                            nghttp2
 json-c
 kernel-firmware
 kexec                               elogind
+krb4                                cyrus-sasl
 libaio
 libarchive                          archivemount, cmake
 libassuan                           pinentry, gnupg
@@ -133,7 +136,7 @@ libxml2                             wpa-supplicant, libxslt, libarchive, docbook
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
 libyaml                             python3-pyyaml
 links                               xmlto
-linux-pam                           openssh, sudo, elogind
+linux-pam                           openssh, sudo, elogind, cyrus-sasl
 llvm                                dhcpcd, icu
 lm-sensors                          htop
 lnav
@@ -146,10 +149,13 @@ lz4                                 lrzip, rsync
 lzip
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl, python3-requests
+mariadb                             cyrus-sasl, openldap
 mercurial                           python3-setuptools-scm, cmake
-mit-kerberos-v5                     curl, openssh, sudo
+minisql                             unixodbc
+mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl
 mono                                libidn
 mruby                               nghttp2
+mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
@@ -162,8 +168,9 @@ ntp                                 dhcpcd
 ocaml                               llvm
 open-mpi                            boost
 openjdk                             libidn
-openldap                            curl, gnupg, sudo
+openldap                            curl, gnupg, sudo, cyrus-sasl
 opensc                              openssh
+openslp                             openldap
 openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
@@ -177,11 +184,13 @@ perl-authen-sasl                    git
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
+perl-pod-pom-view-restructured      cyrus-sasl
 pinentry                            gnupg
 polkit                              elogind
 popt                                rsync
 postfix                             gnupg, sudo
-pth                                 libidn, libgcrypt
+postgresql                          cyrus-sasl, openldap
+pth                                 libidn, libgcrypt, unixodbc, openldap
 py3c
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
@@ -249,6 +258,7 @@ python3-recommonmark                llvm
 python3-requests                    python3-pytest, python3-cachecontrol
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six
+python3-sphinx                      python3-requests, nghttp2, cmake, cyrus-sasl
 python3-testpath                    python3-flit-core
 python3-tornado                     python3-urllib3
 python3-trustme                     python3-urllib3, python3-requests
@@ -275,9 +285,8 @@ sharutils                           berkeley-db
 shellcheck
 smartmontools
 spdylay                             nghttp2
-sphinx                              python3-requests, nghttp2, cmake
 spnego                              curl
-sqlite                              gnupg, lnav, lshw
+sqlite                              gnupg, lnav, lshw, cyrus-sasl
 sshfs                               vifm
 stunnel                             curl
 subversion                          git, cmake
@@ -292,6 +301,7 @@ translate-shell
 tree
 trousers                            gnutls
 unbound                             gnutls
+unixodbc                            openldap
 unrar
 unzip                               docbook-xml
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm
@@ -300,6 +310,7 @@ w3m                                 python3-asciidoc, xmlto
 wget                                pciutils, smartmontools
 which                               pciutils, openssh, lm-sensors, boost, aspell
 whois
+wiredtiger                          openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
@@ -379,7 +390,6 @@ zsh                                 elogind
 # cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 # cups-filters                        cups
 # cxxopts                             pamixer
-# cyrus-sasl                          exim, openldap, gtk-vnc, php, mutt, qemu
 # dag                                 libpcap
 # dbmaker                             php
 # dbus-glib                           dbus, upower, enchant, gconf, gimp
@@ -393,7 +403,6 @@ zsh                                 elogind
 # distcache                           apache-httpd
 # djbfft                              liba52
 # djvulibre                           imagemagick, zathura
-# dmalloc                             cyrus-sasl, lame, php, imagemagick
 # dmenu                               password-store, i3
 # dmraid                              libblockdev
 # dnsmasq
@@ -532,7 +541,6 @@ zsh                                 elogind
 # kernel-generic                      iptables
 # keyutils                            mit-kerberos-v5
 # kochi-substitute-fonts-ttf
-# krb4                                cyrus-sasl
 # kytea                               mariadb
 # ladspa                              gst-plugins-bad
 # lame                                gst-plugins-good, ffmpeg
@@ -671,7 +679,6 @@ zsh                                 elogind
 # maemo                               alsa-plugins
 # maim
 # man2html                            xterm
-# mariadb                             exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # mc
 # mdadm                               lvm2, udisks, libblockdev
 # mecab                               mariadb
@@ -683,7 +690,6 @@ zsh                                 elogind
 # microdns                            gst-plugins-bad
 # microsoft-webcore-fonts-ttf
 # mini-sql                            php
-# minisql                             unixodbc
 # mirage
 # mixmaster                           mutt
 # mjpeg-tools                         gst-plugins-bad
@@ -699,7 +705,6 @@ zsh                                 elogind
 # musepack-tools                      cmus
 # mutt
 # mypaint-brushes                     gimp
-# mysql                               exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # ndctl                               libblockdev
 # neon                                gst-plugins-bad
 # net-snmp                            php
@@ -727,7 +732,6 @@ zsh                                 elogind
 # openh264                            gst-plugins-bad
 # openjade                            postgresql, docbook-dsssl, docbook-utils
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
-# openslp                             openldap
 # opensp                              openjade, docbook-dsssl
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
@@ -843,7 +847,6 @@ zsh                                 elogind
 # perl-parse-yapp
 # perl-path-tiny                      perl-file-copy-recursive, perl-test-file-sharedir, perl-ffi-checklib
 # perl-perlio-utf8_strict
-# perl-pod-pom-view-restructured      cyrus-sasl
 # perl-pod-simple                     i3
 # perl-regexp-common
 # perl-role-tiny                      perl-specio
@@ -909,7 +912,6 @@ zsh                                 elogind
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp
 # portaudio                           mpg123
-# postgresql                          exim, cyrus-sasl, openldap, apr-util, qt5, redland, php
 # pov-ray                             imagemagick
 # prelink
 # procmail                            fetchmail
@@ -1045,7 +1047,6 @@ zsh                                 elogind
 # umockdev                            libgudev, upower
 # uniconvertor                        imagemagick
 # unittest-cpp                        enchant
-# unixodbc                            openldap, apr-util, mariadb, qt5, php
 # upower
 # urlscan
 # usbredir                            spice-gtk

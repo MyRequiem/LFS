@@ -221,6 +221,13 @@ l/json-c.sh
 s/xmlto.sh
 d/nasm.sh
 l/libjpeg-turbo.sh
+l/unixodbc.sh
+n/cyrus-sasl.sh
+n/openldap.sh
+n/curl.sh
+n/gnupg.sh
+ap/sudo.sh
+n/cyrus-sasl.sh
 
 
 # l/gobject-introspection.sh
@@ -267,9 +274,6 @@ l/libjpeg-turbo.sh
 # d/brotli.sh
 # l/libssh2.sh
 # ap/mc.sh
-# n/cyrus-sasl.sh
-# n/openldap.sh
-# n/cyrus-sasl.sh
 # n/exim.sh
 # d/rustc.sh
 # d/mozjs.sh
@@ -449,7 +453,6 @@ l/libjpeg-turbo.sh
 # l/libtiff.sh
 # n/mit-kerberos-v5.sh
 # n/libtirpc.sh
-# n/cyrus-sasl.sh
 # ap/cups.sh
 # l/libsoup.sh
 # l/neon.sh
@@ -469,18 +472,12 @@ l/libjpeg-turbo.sh
 # d/python-modules/python2-pygobject2.sh
 # d/python-modules/python3-pygobject3.sh
 # s/ibus.sh
-# l/unixodbc.sh
-# n/openldap.sh
 # l/apr-util.sh
 # ap/mariadb.sh
 # n/exim.sh
-# n/cyrus-sasl.sh
-# n/openldap.sh
 # l/apr-util.sh
 # ap/postgresql.sh
 # n/exim.sh
-# n/cyrus-sasl.sh
-# n/openldap.sh
 # l/apr-util.sh
 # l/speex.sh
 # l/libsndfile.sh
@@ -691,7 +688,6 @@ l/libjpeg-turbo.sh
 # d/python3.sh
 # d/ruby.sh
 # d/openjdk.sh
-# n/cyrus-sasl.sh
 # ap/cups.sh
 # n/ntp.sh
 # l/libpcap.sh
