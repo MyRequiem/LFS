@@ -192,6 +192,7 @@ https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.
 https://www.linuxfromscratch.org/patches/blfs/11.3/openldap-2.6.4-consolidated-1.patch
 https://c-ares.haxx.se/download/c-ares-1.19.0.tar.gz
 https://ftp.isc.org/isc/bind9/9.18.12/bind-9.18.12.tar.xz
+https://kerberos.org/dist/krb5/1.20/krb5-1.20.1.tar.gz
 
 
 ================================================================================
@@ -521,7 +522,6 @@ http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.3.tar.xz
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz
-https://kerberos.org/dist/krb5/1.19/krb5-1.19.1.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
 https://github.com/uclouvain/openjpeg/archive/v2.4.0/openjpeg-2.4.0.tar.gz
 https://www.kernel.org/pub/linux/bluetooth/sbc-1.5.tar.xz

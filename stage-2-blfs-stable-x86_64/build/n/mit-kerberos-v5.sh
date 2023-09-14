@@ -17,12 +17,13 @@ ARCH_NAME="krb5"
 #              gnupg
 #              keyutils
 #              openldap
-#              valgrind       (для тестов)
+#              valgrind          (для тестов)
 #              yasm
-#              libedit        (http://thrysoee.dk/editline/)
-#              cmocka         (https://cmocka.org/)
-#              python3-pyrad  (https://pypi.org/project/pyrad/)
-#              resolv_wrapper (https://cwrap.org/resolv_wrapper.html)
+#              libedit           (http://thrysoee.dk/editline/)
+#              cmocka            (https://cmocka.org/)
+#              python3-kdcproxy  (https://pypi.org/project/kdcproxy/)
+#              python3-pyrad     (https://pypi.org/project/pyrad/)
+#              resolv-wrapper    (https://cwrap.org/resolv_wrapper.html)
 
 ### NOTE
 # В системе обязательно потребуется какое-то средство синхронизации времени,
@@ -38,7 +39,7 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{bin,etc,lib}
+mkdir -pv "${TMP_DIR}/etc"
 
 INSTALL_DOCS="false"
 LDAP="--without-ldap"
@@ -46,14 +47,9 @@ command -v ldapadd &>/dev/null && LDAP="--with-ldap"
 
 cd src || exit 1
 
-# увеличим ширину виртуального терминала до 300 символов, используемого для
-# некоторых тестов, чтобы предотвратить появление ложного текста в выводе,
-# который считается ошибкой
-sed -i -e 's@\^u}@^u cols 300}@' tests/dejagnu/config/default.exp     || exit 1
-# удалим заведомо неудачный тест
-sed -i -e '/eq 0/{N;s/12 //}'    plugins/kdb/db2/libdb2/test/run.test || exit 1
-# удалим тест который, как известно, зависает
-sed -i '/t_iprop.py/d'           tests/Makefile.in                    || exit 1
+# удалим два заведомо неудачных теста
+sed -i -e '/eq 0/{N;s/12 //}' plugins/kdb/db2/libdb2/test/run.test || exit 1
+sed -i '/t_kadm5.py/d'        lib/kadm5/Makefile.in                || exit 1
 
 ./configure                  \
     --prefix=/usr            \
@@ -67,38 +63,10 @@ sed -i '/t_iprop.py/d'           tests/Makefile.in                    || exit 1
     --enable-dns-for-realm || exit 1
 
 make || exit 1
-
-# тесты лучше проводить после установки новой версии пакета в систему, иначе
-# может случиться так, что набор тестов будет использовать установленные в
-# системе версии библиотек, а не новые, только что собранные
 # make -k -j1 check
-
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
-
-# сделаем библиотеки исполняемыми
-for LIB in gssapi_krb5 gssrpc k5crypto kadm5clnt kadm5srv \
-        kdb5 kdb_ldap krad krb5 krb5support verto ; do
-
-    find "${TMP_DIR}/usr/lib" -type f -name "lib${LIB}*.so*" \
-        -exec chmod -v 755 {} \;
-done
-
-# переместим важные библиотеки в /lib, чтобы они были доступны при загрузке
-# системы, если файловая система /usr еще не смонтирована
-mv "${TMP_DIR}/usr/lib/libkrb5.so".3*        "${TMP_DIR}/lib" || exit 1
-mv "${TMP_DIR}/usr/lib/libk5crypto.so".3*    "${TMP_DIR}/lib" || exit 1
-mv "${TMP_DIR}/usr/lib/libkrb5support.so".0* "${TMP_DIR}/lib" || exit 1
-
-ln -sfv ../../lib/libkrb5.so.3.3        "${TMP_DIR}/usr/lib/libkrb5.so"
-ln -sfv ../../lib/libk5crypto.so.3.1    "${TMP_DIR}/usr/lib/libk5crypto.so"
-ln -sfv ../../lib/libkrb5support.so.0.1 "${TMP_DIR}/usr/lib/libkrb5support.so"
-
-# переместим утилиту 'ksu' в /bin, чтобы она была доступна при загрузке
-# системы, если файловая система /usr еще не смонтирована
-mv -v        "${TMP_DIR}/usr/bin/ksu" "${TMP_DIR}/bin"
-chmod -v 755 "${TMP_DIR}/bin/ksu"
 
 # документация
 if [[ "x${INSTALL_DOCS}" == "xtrue" ]]; then

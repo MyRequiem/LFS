@@ -19,7 +19,7 @@ autoconf213                         archivemount
 autogen                             gnutls
 bash-completion                     elogind
 berkeley-db                         cyrus-sasl, openldap
-bind-utils
+bind-utils                          mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
 boost                               highlight, nghttp2
@@ -28,7 +28,7 @@ c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
 cmake                               llvm, json-c, libjpeg-turbo, c-ares
-cmocka                              gnutls
+cmocka                              gnutls, mit-kerberos-v5
 cpio
 cunit                               nghttp2
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake
@@ -74,7 +74,7 @@ gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm
 glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
-gnupg                               git, smartmontools
+gnupg                               git, smartmontools, mit-kerberos-v5
 gnutls                              wget, curl, gnupg, openldap
 gobject-introspection               glib, elogind
 gpm
@@ -101,6 +101,7 @@ jemalloc                            nghttp2
 json-c                              bind-utils
 kernel-firmware
 kexec                               elogind
+keyutils                            mit-kerberos-v5
 krb4                                cyrus-sasl
 libaio
 libarchive                          archivemount, cmake
@@ -108,7 +109,7 @@ libassuan                           pinentry, gnupg
 libatasmart
 libatomic-ops                       gc
 libcap                              bind-utils
-libedit                             pcre2, openssh, sqlite
+libedit                             pcre2, openssh, sqlite, mit-kerberos-v5
 libev                               nghttp2
 libevent                            tmux, nghttp2
 libexif
@@ -170,7 +171,7 @@ ntp                                 dhcpcd
 ocaml                               llvm
 open-mpi                            boost
 openjdk                             libidn
-openldap                            curl, gnupg, sudo, cyrus-sasl
+openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                              openssh
 openslp                             openldap
 openssh                             sshfs, git
@@ -222,6 +223,7 @@ python3-idna                        python3-requests
 python3-iniconfig                   python3-pytest
 python3-installer                   python3-pyproject-hooks, python3-build
 python3-jinja2                      python3-pyparsing
+python3-kdcproxy                    mit-kerberos-v5
 python3-lxml                        elogind
 python3-mako
 python3-markdown
@@ -244,6 +246,7 @@ python3-pympler                     python3-attrs
 python3-pyparsing
 python3-pyproject-hooks             python3-build
 python3-pyproject-metadata          python3-meson
+python3-pyrad                       mit-kerberos-v5
 python3-pysocks                     python3-urllib3, python3-requests
 python3-pytest                      fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako
 python3-pytest-benchmark            python3-pluggy
@@ -272,6 +275,7 @@ python3-zope-interface              python3-attrs
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight, cmake
 quiche                              curl
+resolv-wrapper                      mit-kerberos-v5
 rhash                               cmake
 rpcsvc-proto
 rrdtool                             lm-sensors
@@ -306,7 +310,7 @@ unbound                             gnutls
 unixodbc                            openldap
 unrar
 unzip                               docbook-xml
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5
 vifm
 w3m                                 python3-asciidoc, xmlto
 wget                                pciutils, smartmontools
@@ -320,7 +324,7 @@ xerces2-java                        docbook-xsl
 xmlto                               git, dbus, nasm
 xorg-libraries                      dbus
 xxhash                              rsync
-yasm                                tmux, libjpeg-turbo
+yasm                                tmux, libjpeg-turbo, mit-kerberos-v5
 yelp-tools                          dbus
 ypbind                              dhcpcd
 z3                                  llvm
@@ -540,7 +544,6 @@ zsh                                 elogind
 # json-glib                           gtk+3, gegl
 # judy                                mariadb
 # kernel-generic                      iptables
-# keyutils                            mit-kerberos-v5
 # kochi-substitute-fonts-ttf
 # kytea                               mariadb
 # ladspa                              gst-plugins-bad
@@ -924,7 +927,6 @@ zsh                                 elogind
 # pyflakes                            python3-pygobject3, flake8
 # pylint2
 # pylint3
-# python3-pyrad                       mit-kerberos-v5
 # python-appdirs                      pylint3
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
@@ -986,7 +988,6 @@ zsh                                 elogind
 # re2c                                php
 # redland
 # reiserfsprogs                       lvm2
-# resolv_wrapper                      mit-kerberos-v5
 # rest                                gtk+3
 # roxen-webserver                     php
 # rpm                                 rpm2tgz
