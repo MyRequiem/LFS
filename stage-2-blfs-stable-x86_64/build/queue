@@ -236,10 +236,14 @@ n/curl.sh
 n/openssh.sh
 ap/sudo.sh
 n/cyrus-sasl.sh
+n/libtirpc.sh
+l/libnsl.sh
+n/pth.sh
+l/berkeley-db.sh
+d/clisp.sh
 
 
 # l/gobject-introspection.sh
-# d/clisp.sh
 # a/fcron.sh
 # d/python2.sh
 # d/python3.sh
@@ -248,7 +252,6 @@ n/cyrus-sasl.sh
 # a/ed.sh
 # a/lvm2.sh
 # a/usbutils.sh
-# n/libtirpc.sh
 # ap/lsof.sh
 # l/slang.sh
 # l/libatomic-ops.sh
@@ -270,7 +273,6 @@ n/cyrus-sasl.sh
 # n/gpgme.sh
 # l/volume-key.sh
 # l/libblockdev.sh
-# l/libnsl.sh
 # n/exim.sh
 # a/fcron.sh
 # ap/at.sh
@@ -459,7 +461,6 @@ n/cyrus-sasl.sh
 # l/imlib2.sh
 # l/libwebp.sh
 # l/libtiff.sh
-# n/libtirpc.sh
 # ap/cups.sh
 # l/libsoup.sh
 # l/neon.sh

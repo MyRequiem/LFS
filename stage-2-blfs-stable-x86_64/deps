@@ -27,6 +27,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
+clisp
 cmake                               llvm, json-c, libjpeg-turbo, c-ares
 cmocka                              gnutls, mit-kerberos-v5
 cpio
@@ -113,6 +114,7 @@ libedit                             pcre2, openssh, sqlite, mit-kerberos-v5
 libev                               nghttp2
 libevent                            tmux, nghttp2
 libexif
+libffcall                           clisp
 libgcrypt                           gnupg, libxslt
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls, whois
@@ -121,7 +123,7 @@ libjpeg-turbo
 libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant, htop
-libnsl                              pth, berkeley-db
+libnsl                              pth, berkeley-db, clisp
 libpng
 libpsl                              wget, curl
 libressl                            openssh
@@ -129,9 +131,10 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
-libsigsegv
+libsigsegv                          clisp
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
+libtirpc                            libnsl
 libunistring                        libidn2, gnutls
 libusb                              gnupg
 libuv                               cmake, bind-utils
@@ -155,7 +158,7 @@ make-ca                             p11-kit, gnutls, wget, curl, python3-request
 mariadb                             cyrus-sasl, openldap
 mercurial                           python3-setuptools-scm, cmake
 minisql                             unixodbc
-mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl
+mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl, libtirpc
 mono                                libidn
 mruby                               nghttp2
 mysql                               cyrus-sasl, openldap
@@ -277,7 +280,7 @@ qt5                                 pinentry, wpa-supplicant, highlight, cmake
 quiche                              curl
 resolv-wrapper                      mit-kerberos-v5
 rhash                               cmake
-rpcsvc-proto
+rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
@@ -385,7 +388,6 @@ zsh                                 elogind
 # chromaprint                         gst-plugins-bad
 # clipmenu                            dmenu
 # clipnotify                          clipmenu
-# clisp                               gpgme
 # cmus
 # cogl                                cairo
 # colord                              gtk+3, cups
@@ -646,7 +648,6 @@ zsh                                 elogind
 # libthai                             pango, perl-unicode-linebreak
 # libtheora                           gst-plugins-base, ffmpeg
 # libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
-# libtirpc                            rpcbind, lsof, libnsl, talloc
 # libtizonia                          mesa
 # libumfpack                          gegl
 # libunwind                           mesa, xorg-server, libinput, gstreamer, gimp
