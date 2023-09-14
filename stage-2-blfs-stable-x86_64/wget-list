@@ -190,6 +190,8 @@ https://github.com/lurcher/unixODBC/releases/download/2.3.11/unixODBC-2.3.11.tar
 https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
 https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 https://www.linuxfromscratch.org/patches/blfs/11.3/openldap-2.6.4-consolidated-1.patch
+https://c-ares.haxx.se/download/c-ares-1.19.0.tar.gz
+https://ftp.isc.org/isc/bind9/9.18.12/bind-9.18.12.tar.xz
 
 
 ================================================================================
@@ -719,7 +721,6 @@ https://files.pythonhosted.org/packages/45/0b/38b06fd9b92dc2b68d58b75f900e97884c
 https://github.com/LMDB/lmdb/archive/LMDB_0.9.28.tar.gz
 https://github.com/htacg/tidy-html5/archive/5.6.0/tidy-html5-5.6.0.tar.gz
 https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz
-https://c-ares.haxx.se/download/c-ares-1.17.1.tar.gz
 https://archive.apache.org/dist/httpd/httpd-2.4.46.tar.bz2
 http://www.linuxfromscratch.org/patches/blfs/10.1/httpd-2.4.46-blfs_layout-1.patch
 https://www.php.net/distributions/php-8.0.2.tar.xz
@@ -727,7 +728,6 @@ https://downloads.sourceforge.net/tcl/tk8.6.11.1-src.tar.gz
 https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz
 https://github.com/openjdk/jdk15u/archive/jdk-15.0.2-ga.tar.gz
 https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz
-ftp://ftp.isc.org/isc/bind9/9.16.11/bind-9.16.11.tar.xz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.0.tar.gz
 https://downloads.sourceforge.net/fetchmail/fetchmail-6.4.16.tar.xz
 ftp://ftp.mutt.org/pub/mutt/mutt-2.1.5.tar.gz

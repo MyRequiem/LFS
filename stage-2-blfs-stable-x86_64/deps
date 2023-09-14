@@ -19,6 +19,7 @@ autoconf213                         archivemount
 autogen                             gnutls
 bash-completion                     elogind
 berkeley-db                         cyrus-sasl, openldap
+bind-utils
 bindfs                              glib
 blfs-bootscripts
 boost                               highlight, nghttp2
@@ -26,7 +27,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2
 c2man                               fribidi
 chronyd                             dhcpcd
-cmake                               llvm, json-c, libjpeg-turbo
+cmake                               llvm, json-c, libjpeg-turbo, c-ares
 cmocka                              gnutls
 cpio
 cunit                               nghttp2
@@ -97,7 +98,7 @@ iso-codes
 iw
 jansson                             nghttp2
 jemalloc                            nghttp2
-json-c
+json-c                              bind-utils
 kernel-firmware
 kexec                               elogind
 krb4                                cyrus-sasl
@@ -106,6 +107,7 @@ libarchive                          archivemount, cmake
 libassuan                           pinentry, gnupg
 libatasmart
 libatomic-ops                       gc
+libcap                              bind-utils
 libedit                             pcre2, openssh, sqlite
 libev                               nghttp2
 libevent                            tmux, nghttp2
@@ -131,8 +133,8 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libunistring                        libidn2, gnutls
 libusb                              gnupg
-libuv                               cmake
-libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm
+libuv                               cmake, bind-utils
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
 libyaml                             python3-pyyaml
 links                               xmlto
@@ -159,7 +161,7 @@ mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
-nghttp2                             curl, cmake
+nghttp2                             curl, cmake, bind-utils
 ngtcp2                              curl
 npth                                gnupg
 nss                                 p11-kit, make-ca
@@ -258,7 +260,7 @@ python3-recommonmark                llvm
 python3-requests                    python3-pytest, python3-cachecontrol
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six
-python3-sphinx                      python3-requests, nghttp2, cmake, cyrus-sasl
+python3-sphinx                      python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
 python3-testpath                    python3-flit-core
 python3-tornado                     python3-urllib3
 python3-trustme                     python3-urllib3, python3-requests
@@ -357,7 +359,6 @@ zsh                                 elogind
 # bcachefs                            libblockdev
 # bellagio-openmax                    mesa
 # bibtex                              libtheora
-# bind-utils                          mit-kerberos-v5
 # birdstep                            php
 # blender                             imagemagick
 # bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5, qemu
@@ -564,7 +565,6 @@ zsh                                 elogind
 # libcaca                             gst-plugins-good, sdl, ffmpeg
 # libcacard                           spice-gtk, qemu
 # libcanberra                         notification-daemon, pavucontrol
-# libcap                              pulseaudio, ntp, bind-utils
 # libcap-ng                           gnome-keyring, qemu
 # libcddb                             libcdio
 # libcdio                             gst-plugins-ugly, ffmpeg, mpv

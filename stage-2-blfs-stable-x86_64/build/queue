@@ -224,10 +224,13 @@ l/libjpeg-turbo.sh
 l/unixodbc.sh
 n/cyrus-sasl.sh
 n/openldap.sh
-n/curl.sh
 n/gnupg.sh
 ap/sudo.sh
 n/cyrus-sasl.sh
+l/c-ares.sh
+n/curl.sh
+n/nghttp2.sh
+n/bind-utils.sh
 
 
 # l/gobject-introspection.sh
@@ -678,7 +681,6 @@ n/cyrus-sasl.sh
 # d/tidy-html5.sh
 # l/enchant.sh
 # ap/vim.sh
-# l/c-ares.sh
 # d/nodejs.sh
 # n/apache-httpd.sh
 # n/php.sh
@@ -691,7 +693,6 @@ n/cyrus-sasl.sh
 # ap/cups.sh
 # n/ntp.sh
 # l/libpcap.sh
-# n/bind-utils.sh
 # n/mit-kerberos-v5.sh
 # n/traceroute.sh
 # n/fetchmail.sh

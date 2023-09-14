@@ -8,9 +8,10 @@ ARCH_NAME="$(echo "${PRGNAME}" | cut -d - -f 1)"
 
 # Required:    libuv
 # Recommended: json-c
-# Optional:    libcap
+#              nghttp2
+# Optional:    libcap (собранный с PAM)
 #              libxml2
-#              python3-sphinx (https://www.sphinx-doc.org/en/master/)
+#              python3-sphinx
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -20,28 +21,29 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN_DIR="/usr/share/man/man1"
 mkdir -pv "${TMP_DIR}${MAN_DIR}"
 
-# устраним необходимость в неиспользуемом модуле Python
-#    --without-python
-./configure       \
-    --prefix=/usr \
-    --without-python || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
-# собираем библиотеки, необходимые для клиентских программ
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-make -C lib/dns                  || exit 1
-make -C lib/isc                  || exit 1
-make -C lib/bind"${MAJ_VERSION}" || exit 1
-make -C lib/isccfg               || exit 1
-make -C lib/irs                  || exit 1
-# собираем клиентские программы (dig, host, nslookup)
-make -C bin/dig || exit 1
-# собираем man-страницы
+make -C lib/isc    && \
+make -C lib/dns    && \
+make -C lib/ns     && \
+make -C lib/isccfg && \
+make -C lib/bind9  && \
+make -C lib/irs    && \
+make -C bin/dig    && \
 make -C doc || exit 1
 
-# данная часть пакета не имеет набора тестов
+# пакет не имеет набора тестов
 
-make -C bin/dig install DESTDIR="${TMP_DIR}"
-cp -v doc/man/{dig,host,nslookup}.1 "${TMP_DIR}${MAN_DIR}"
+make -C lib/isc    install DESTDIR="${TMP_DIR}" && \
+make -C lib/dns    install DESTDIR="${TMP_DIR}" && \
+make -C lib/ns     install DESTDIR="${TMP_DIR}" && \
+make -C lib/isccfg install DESTDIR="${TMP_DIR}" && \
+make -C lib/bind9  install DESTDIR="${TMP_DIR}" && \
+make -C lib/irs    install DESTDIR="${TMP_DIR}" && \
+make -C bin/dig    install DESTDIR="${TMP_DIR}" || exit 1
+
+cp -v doc/man/{dig.1,host.1,nslookup.1} "${TMP_DIR}${MAN_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -58,9 +60,13 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # applications.
 #
 # Home page: https://www.isc.org/${ARCH_NAME}/
-# Download:  ftp://ftp.isc.org/isc/${ARCH_NAME}${MAJ_VERSION}/${VERSION}/${ARCH_NAME}.tar.xz
+# Download:  https://ftp.isc.org/isc/${ARCH_NAME}9/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+
+echo -e "\n---------------\nRemoving *.la files..."
+remove-la-files.sh
+echo "---------------"
