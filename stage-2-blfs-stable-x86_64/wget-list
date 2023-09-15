@@ -198,6 +198,7 @@ https://github.com/thkukuk/libnsl/releases/download/v2.0.0/libnsl-2.0.0.tar.xz
 https://ftp.gnu.org/gnu/clisp/latest/clisp-2.49.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/11.3/clisp-2.49-readline7_fixes-1.patch
 https://archive.mozilla.org/pub/nspr/releases/v4.35/src/nspr-4.35.tar.gz
+https://ftp.gnu.org/gnu/ed/ed-1.19.tar.lz
 
 
 ================================================================================
@@ -205,7 +206,6 @@ http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
-https://ftp.gnu.org/gnu/ed/ed-1.17.tar.lz
 https://sourceware.org/ftp/lvm2/LVM2.2.03.11.tgz
 https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-013.tar.xz
 https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof_4.91.tar.gz

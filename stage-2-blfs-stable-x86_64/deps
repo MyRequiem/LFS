@@ -49,6 +49,7 @@ docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu
+ed
 efl                                 pinentry
 elinks                              xmlto
 elogind                             dbus
@@ -105,7 +106,7 @@ kexec                               elogind
 keyutils                            mit-kerberos-v5
 krb4                                cyrus-sasl
 libaio
-libarchive                          archivemount, cmake
+libarchive                          archivemount, cmake, ed
 libassuan                           pinentry, gnupg
 libatasmart
 libatomic-ops                       gc
@@ -152,7 +153,7 @@ lshw
 lua                                 highlight
 lynx                                pciutils, smartmontools, python3-asciidoc, xmlto
 lz4                                 lrzip, rsync
-lzip
+lzip                                ed
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl, python3-requests
 mariadb                             cyrus-sasl, openldap
@@ -422,7 +423,6 @@ zsh                                 elogind
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
 # ebtables
-# ed
 # electric-fence                      lame, imagemagick
 # emojione                            ibus
 # empress                             php
