@@ -168,6 +168,7 @@ nettle                              gnutls, libarchive
 nghttp2                             curl, cmake, bind-utils
 ngtcp2                              curl
 npth                                gnupg
+nspr
 nss                                 p11-kit, make-ca
 ntfs-3g
 ntp                                 dhcpcd
@@ -721,7 +722,6 @@ zsh                                 elogind
 # noto-fonts-ttf
 # noto-sans-cjk-fonts-otf
 # npm                                 nodejs
-# nspr                                nss, rpm
 # numactl                             x265
 # numlockx
 # numpy                               python2-pygtk

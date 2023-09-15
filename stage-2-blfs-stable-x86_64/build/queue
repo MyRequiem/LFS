@@ -241,6 +241,7 @@ l/libnsl.sh
 n/pth.sh
 l/berkeley-db.sh
 d/clisp.sh
+l/nspr.sh
 
 
 # l/gobject-introspection.sh
@@ -248,7 +249,6 @@ d/clisp.sh
 # d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
-# l/nspr.sh
 # a/ed.sh
 # a/lvm2.sh
 # a/usbutils.sh
