@@ -204,6 +204,7 @@ https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://github.com/ivmai/libatomic_ops/releases/download/v7.6.14/libatomic_ops-7.6.14.tar.gz
 https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz
+https://nodejs.org/dist/v18.14.1/node-v18.14.1.tar.xz
 
 
 ================================================================================
@@ -213,7 +214,6 @@ https://www.python.org/ftp/python/3.9.2/Python-3.9.2.tar.xz
 https://www.python.org/ftp/python/doc/3.9.2/python-3.9.2-docs-html.tar.bz2
 https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof_4.91.tar.gz
 https://archive.mozilla.org/pub/firefox/releases/78.8.0esr/source/firefox-78.8.0esr.source.tar.xz
-https://nodejs.org/dist/v14.16.0/node-v14.16.0.tar.xz
 https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.17.tar.gz
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 https://download.gnome.org/sources/libsigc++/2.10/libsigc++-2.10.6.tar.xz

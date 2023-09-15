@@ -54,7 +54,8 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # по умолчанию документация устанавливается в /usr/share/doc/node/
-# создадим ссылку в /usr/share/doc/ ${PRGNAME}-${VERSION} -> node
+# создадим ссылку в /usr/share/doc/
+#    ${PRGNAME}-${VERSION} -> node
 (
     cd "${TMP_DIR}/usr/share/doc/" || exit 1
     ln -sfv node "${PRGNAME}-${VERSION}"

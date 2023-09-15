@@ -249,6 +249,7 @@ l/slang.sh
 l/libatomic-ops.sh
 d/gc.sh
 d/guile.sh
+d/nodejs.sh
 
 
 # l/gobject-introspection.sh
@@ -258,7 +259,6 @@ d/guile.sh
 # d/python-modules/python2-libxml2.sh
 # n/nmap (NEW)
 # ap/lsof.sh
-# d/nodejs.sh
 # x/misc/xdg-user-dirs.sh
 # l/aalib.sh
 # l/libsigc++2.sh
@@ -688,7 +688,6 @@ d/guile.sh
 # d/tidy-html5.sh
 # l/enchant.sh
 # ap/vim.sh
-# d/nodejs.sh
 # n/apache-httpd.sh
 # n/php.sh
 # ap/cups.sh

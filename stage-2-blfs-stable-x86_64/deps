@@ -24,7 +24,7 @@ bindfs                              glib
 blfs-bootscripts
 boost                               highlight, nghttp2
 brotli                              gnutls, curl
-c-ares                              curl, nghttp2
+c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
 chronyd                             dhcpcd
 clisp
@@ -90,8 +90,9 @@ guile
 hdparm
 highlight                           vifm
 htop
+http-parser                         nodejs
 hwloc                               htop
-icu                                 libxml2, boost
+icu                                 libxml2, boost, nodejs
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
@@ -139,7 +140,7 @@ libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
 libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils
-libuv                               cmake, bind-utils
+libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
 libyaml                             python3-pyyaml
@@ -169,8 +170,10 @@ mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
-nghttp2                             curl, cmake, bind-utils
+nghttp2                             curl, cmake, bind-utils, nodejs
 ngtcp2                              curl
+nodejs
+npm                                 nodejs
 npth                                gnupg
 nspr
 nss                                 p11-kit, make-ca
@@ -328,7 +331,7 @@ vdo                                 lvm2
 vifm
 w3m                                 python3-asciidoc, xmlto
 wget                                pciutils, smartmontools, usbutils
-which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2
+which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs
 whois
 wiredtiger                          openldap
 wireless-tools
@@ -528,7 +531,6 @@ zsh                                 elogind
 # hspell                              enchant
 # hstr
 # html2ps                             imagemagick
-# http-parser                         nodejs
 # hunspell                            enchant
 # hwinfo
 # hyperwave                           php
@@ -724,11 +726,9 @@ zsh                                 elogind
 # nftables                            iptables
 # nginx
 # nickle                              xorg-applications
-# nodejs
 # notification-daemon                 libnotify
 # noto-fonts-ttf
 # noto-sans-cjk-fonts-otf
-# npm                                 nodejs
 # numactl                             x265
 # numlockx
 # numpy                               python2-pygtk
