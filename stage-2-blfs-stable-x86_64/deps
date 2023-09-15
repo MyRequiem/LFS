@@ -73,7 +73,7 @@ gcr                                 pinentry
 gdb                                 openssh, glib, gcc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
-git                                 libidn2, python3-setuptools-scm, cmake, llvm
+git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
 glib                                sshfs, w3m, python3-dbus
 glib-networking                     glib
 gnupg                               git, smartmontools, mit-kerberos-v5
@@ -137,7 +137,7 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
 libunistring                        libidn2, gnutls
-libusb                              gnupg
+libusb                              gnupg, usbutils
 libuv                               cmake, bind-utils
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
@@ -319,11 +319,12 @@ unbound                             gnutls
 unixodbc                            openldap
 unrar
 unzip                               docbook-xml
+usbutils
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
 vifm
 w3m                                 python3-asciidoc, xmlto
-wget                                pciutils, smartmontools
+wget                                pciutils, smartmontools, usbutils
 which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2
 whois
 wiredtiger                          openldap
@@ -1054,7 +1055,6 @@ zsh                                 elogind
 # upower
 # urlscan
 # usbredir                            spice-gtk
-# usbutils
 # utah-raster-toolkit                 imagemagick
 # util-macros                         xorgproto, xbitmaps
 # utimer
