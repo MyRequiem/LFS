@@ -53,7 +53,7 @@ ed
 efl                                 pinentry
 elinks                              xmlto
 elogind                             dbus
-emacs                               libidn, pinentry
+emacs                               libidn, pinentry, guile
 etc-issue
 exim                                gnupg, sudo
 fftw
@@ -67,10 +67,10 @@ fuse2                               archivemount, ntfs-3g
 fusefat                             vifm
 fuseiso                             vifm
 fwtk                                sudo
-gc                                  w3m
+gc                                  w3m, guile
 gcc                                 pth, cmake
 gcr                                 pinentry
-gdb                                 openssh, glib, gcc
+gdb                                 openssh, glib, gcc, guile
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
@@ -86,6 +86,7 @@ gsasl                               curl
 gtk+2                               pinentry, w3m
 gtk+3                               pinentry
 gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
+guile
 hdparm
 highlight                           vifm
 htop
@@ -136,7 +137,7 @@ libsigsegv                          clisp
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
-libunistring                        libidn2, gnutls
+libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils
 libuv                               cmake, bind-utils
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
@@ -514,7 +515,6 @@ zsh                                 elogind
 # gtk-vnc                             virt-manager
 # gtkmm2
 # gtkmm3                              pavucontrol
-# guile                               gnutls
 # gutenprint                          cups
 # gvfs                                gimp
 # harfbuzz                            freetype, graphite2, libass, qt5, gimp

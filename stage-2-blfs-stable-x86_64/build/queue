@@ -246,6 +246,9 @@ a/ed.sh
 a/lvm2.sh
 a/usbutils.sh
 l/slang.sh
+l/libatomic-ops.sh
+d/gc.sh
+d/guile.sh
 
 
 # l/gobject-introspection.sh
@@ -255,8 +258,6 @@ l/slang.sh
 # d/python-modules/python2-libxml2.sh
 # n/nmap (NEW)
 # ap/lsof.sh
-# l/libatomic-ops.sh
-# d/guile.sh
 # d/nodejs.sh
 # x/misc/xdg-user-dirs.sh
 # l/aalib.sh
