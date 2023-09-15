@@ -125,7 +125,7 @@ libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant, htop
 libnsl                              pth, berkeley-db, clisp
-libpng
+libpng                              slang
 libpsl                              wget, curl
 libressl                            openssh
 librtmp                             curl
@@ -176,6 +176,7 @@ nss                                 p11-kit, make-ca
 ntfs-3g
 ntp                                 dhcpcd
 ocaml                               llvm
+oniguruma                           slang
 open-mpi                            boost
 openjdk                             libidn
 openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
@@ -188,7 +189,7 @@ p7zip
 passivetex                          xmlto
 patchelf                            python3-meson, python3-dbus
 pciutils
-pcre                                wget, git
+pcre                                wget, git, slang
 pcre2                               wget, glib, git
 perl-authen-sasl                    git
 perl-http-daemon                    wget
@@ -297,6 +298,7 @@ sgml-common                         docbook-xml
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
+slang
 smartmontools
 spdylay                             nghttp2
 spnego                              curl
@@ -731,7 +733,6 @@ zsh                                 elogind
 # numlockx
 # numpy                               python2-pygtk
 # nuspell                             enchant
-# oniguruma                           slang, php, jq
 # openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
 # opencv                              gst-plugins-bad, ffmpeg
@@ -1013,7 +1014,6 @@ zsh                                 elogind
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo
-# slang                               aalib, mc, mutt
 # slop                                maim
 # snappy
 # soundtouch                          gst-plugins-bad

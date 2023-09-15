@@ -245,6 +245,7 @@ l/nspr.sh
 a/ed.sh
 a/lvm2.sh
 a/usbutils.sh
+l/slang.sh
 
 
 # l/gobject-introspection.sh
@@ -252,8 +253,8 @@ a/usbutils.sh
 # d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
+# n/nmap (NEW)
 # ap/lsof.sh
-# l/slang.sh
 # l/libatomic-ops.sh
 # d/guile.sh
 # d/nodejs.sh
@@ -862,7 +863,6 @@ a/usbutils.sh
 # l/libgd.sh
 # n/nginx.sh
 # d/oniguruma.sh
-# l/slang.sh
 # n/php.sh
 # s/pspg.sh
 # ap/optipng.sh

@@ -36,9 +36,9 @@ make -j1 || exit 1
 make -j1                        \
     install_doc_dir="${DOCS}"   \
     SLSH_DOC_DIR="${DOCS}/slsh" \
-    install-all DESTDIR="${TMP_DIR}"
+    install DESTDIR="${TMP_DIR}"
 
-chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so.${VERSION}"
+chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so"*
 chmod -v 755 "${TMP_DIR}/usr/lib/slang/v2/modules"/*.so
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -56,8 +56,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # management, keymaps, and low-level terminal I/O required by interactive
 # applications such as display/screen management, keyboard input and keymaps.
 #
-# Home page: http://www.jedsoft.org/${PRGNAME}/
-# Download:  http://www.jedsoft.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://www.jedsoft.org/${PRGNAME}/
+# Download:  https://www.jedsoft.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 
