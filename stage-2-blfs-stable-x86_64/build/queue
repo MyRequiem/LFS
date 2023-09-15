@@ -243,6 +243,7 @@ l/berkeley-db.sh
 d/clisp.sh
 l/nspr.sh
 a/ed.sh
+a/lvm2.sh
 
 
 # l/gobject-introspection.sh
@@ -250,7 +251,6 @@ a/ed.sh
 # d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
-# a/lvm2.sh
 # a/usbutils.sh
 # ap/lsof.sh
 # l/slang.sh

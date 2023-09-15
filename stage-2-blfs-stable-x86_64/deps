@@ -105,7 +105,7 @@ kernel-firmware
 kexec                               elogind
 keyutils                            mit-kerberos-v5
 krb4                                cyrus-sasl
-libaio
+libaio                              lvm2
 libarchive                          archivemount, cmake, ed
 libassuan                           pinentry, gnupg
 libatasmart
@@ -151,12 +151,14 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
+lvm2
 lynx                                pciutils, smartmontools, python3-asciidoc, xmlto
 lz4                                 lrzip, rsync
 lzip                                ed
 lzo                                 libarchive
 make-ca                             p11-kit, gnutls, wget, curl, python3-requests
 mariadb                             cyrus-sasl, openldap
+mdadm                               lvm2
 mercurial                           python3-setuptools-scm, cmake
 minisql                             unixodbc
 mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl, libtirpc
@@ -280,6 +282,7 @@ python3-zope-interface              python3-attrs
 pytrash
 qt5                                 pinentry, wpa-supplicant, highlight, cmake
 quiche                              curl
+reiserfsprogs                       lvm2
 resolv-wrapper                      mit-kerberos-v5
 rhash                               cmake
 rpcsvc-proto                        libnsl
@@ -305,6 +308,7 @@ sudo
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm
+thin-provisioning-tools             lvm2
 time
 tk                                  git
 tmux
@@ -315,17 +319,19 @@ unbound                             gnutls
 unixodbc                            openldap
 unrar
 unzip                               docbook-xml
-valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5
+valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
+vdo                                 lvm2
 vifm
 w3m                                 python3-asciidoc, xmlto
 wget                                pciutils, smartmontools
-which                               pciutils, openssh, lm-sensors, boost, aspell
+which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2
 whois
 wiredtiger                          openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
 xerces2-java                        docbook-xsl
+xfsprogs                            lvm2
 xmlto                               git, dbus, nasm
 xorg-libraries                      dbus
 xxhash                              rsync
@@ -679,13 +685,11 @@ zsh                                 elogind
 # lsscsi
 # ltc-tools                           gst-plugins-bad
 # luajit                              gegl
-# lvm2                                parted, cryptsetup, udisks
 # lxsession                           polkit
 # maemo                               alsa-plugins
 # maim
 # man2html                            xterm
 # mc
-# mdadm                               lvm2, udisks, libblockdev
 # mecab                               mariadb
 # megatools
 # mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk, qt5, qemu
@@ -988,7 +992,6 @@ zsh                                 elogind
 # rasqal                              redland
 # re2c                                php
 # redland
-# reiserfsprogs                       lvm2
 # rest                                gtk+3
 # roxen-webserver                     php
 # rpm                                 rpm2tgz
@@ -1030,7 +1033,6 @@ zsh                                 elogind
 # taglib                              gst-plugins-good
 # talloc
 # tdb                                 exim, libcanberra, pulseaudio
-# thin-provisioning-tools             lvm2
 # tibmachuni-font-ttf
 # tidy-html5                          php
 # tokudb                              mariadb
@@ -1059,7 +1061,6 @@ zsh                                 elogind
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
 # vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
 # vde2
-# vdo                                 lvm2
 # vim                                 fcron
 # virglrenderer
 # virt-manager
@@ -1103,7 +1104,6 @@ zsh                                 elogind
 # xdg-user-dirs
 # xdg-utils                           cups, gimp, imagemagick
 # xfce4-notifyd                       libnotify
-# xfsprogs                            lvm2, udisks, talloc
 # xinit
 # xkeyboard-config                    xorg-server, libxkbcommon
 # xmlrpc-epi                          php

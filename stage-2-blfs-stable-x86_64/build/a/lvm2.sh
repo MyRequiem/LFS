@@ -24,7 +24,11 @@ ARCH_NAME="LVM2"
 #    CONFIG_DM_CRYPT=m|y
 #    CONFIG_DM_SNAPSHOT=m|y
 #    CONFIG_DM_THIN_PROVISIONING=m|y
+#    CONFIG_DM_CACHE=m|y
 #    CONFIG_DM_MIRROR=m|y
+#    CONFIG_DM_ZERO=m|y
+#    CONFIG_DM_DELAY=m|y
+#    CONFIG_BLK_DEV_RAM=m|y
 #    CONFIG_MAGIC_SYSRQ=y
 
 ROOT="/root/src/lfs"
@@ -54,7 +58,6 @@ mkdir -pv "${TMP_DIR}"
 #    --enable-udev_sync
 ./configure                       \
     --prefix=/usr                 \
-    --exec-prefix=                \
     --enable-cmdlib               \
     --enable-pkgconfig            \
     --enable-udev_sync || exit 1
@@ -72,13 +75,13 @@ make || exit 1
 #     make -C libdm install
 # fi
 #
-### запускаем тесты
-# опция S=... позволяет пропускать тесты. Сообщается, что тест
-# shell/thin-flags.sh приводит к зависанию компьютера. Доступны и другие цели,
-# которые можно посмотреть с помощью команды 'make -C test help'
-# make S=shell/thin-flags.sh check_local
+# запускаем тесты
+# LC_ALL=en_US.UTF-8 make check_local
 
 make install DESTDIR="${TMP_DIR}"
+
+# удалим правило, которое выполняется в другом скрипте
+rm -f "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"
 
 # конфиг /etc/lvm/lvm.conf
 LVM_CONF="/etc/lvm/lvm.conf"
