@@ -48,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Netscape Portable Runtime (NSPR) provides a platform-neutral API for system
 # level and libc like functions.
 #
-# Home page: https://developer.mozilla.org/ru/docs/NSPR
+# Home page: https://www-archive.mozilla.org/projects/${PRGNAME}/
 # Download:  https://archive.mozilla.org/pub/${PRGNAME}/releases/v${VERSION}/src/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
