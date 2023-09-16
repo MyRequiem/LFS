@@ -43,8 +43,9 @@ desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmalloc                             cyrus-sasl
 dmidecode                           lm-sensors
-docbook-dtd3
-docbook-dtd4
+docbook-dsssl
+docbook-dtd3                        docbook-dsssl
+docbook-dtd4                        docbook-dsssl
 docbook-xml                         libxslt, glib, elogind, xmlto
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
 docbook2x                           git
@@ -184,12 +185,12 @@ ntp                                 dhcpcd
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
-openjade
+openjade                            docbook-dsssl
 openjdk                             libidn
 openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                              openssh
 openslp                             openldap
-opensp                              openjade
+opensp                              openjade, docbook-dsssl
 openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
@@ -302,7 +303,7 @@ samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
 sendmail                            gnupg, sudo
-sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4, opensp
+sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
@@ -432,7 +433,6 @@ zsh                                 elogind
 # dmenu                               password-store, i3
 # dmraid                              libblockdev
 # dnsmasq
-# docbook-dsssl                       postgresql, docbook-utils
 # docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
 # docwriter                           freetype
 # dssim                               gst-plugins-bad

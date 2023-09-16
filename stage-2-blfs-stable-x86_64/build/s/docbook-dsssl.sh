@@ -7,6 +7,7 @@ PRGNAME="docbook-dsssl"
 # OpenJade или другими инструментами для преобразования SGML и XML DocBook
 
 # Required:    sgml-common
+#              --- для тестирования набора инструментов DocBook SGML ---
 #              docbook-dtd3
 #              docbook-dtd4
 #              opensp
@@ -23,7 +24,7 @@ MANDIR="/usr/share/man/man1"
 SHARE_SGML="/usr/share/sgml/docbook/dsssl-stylesheets-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/sgml,/usr/bin,"${MANDIR}","${SHARE_SGML}"}
 
-install -v -m755 bin/collateindex.pl   "/usr/bin"
+install -v -m755 bin/collateindex.pl   /usr/bin
 install -v -m755 bin/collateindex.pl   "${TMP_DIR}/usr/bin"
 
 install -v -m644 bin/collateindex.pl.1 "${MANDIR}"
@@ -46,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The DocBook DSSSL Stylesheets package contains DSSSL stylesheets. These are
 # used by OpenJade or other tools to transform SGML and XML DocBook files.
 #
-# Home page: http://docbook.sourceforge.net/
+# Home page: https://docbook.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/docbook/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
