@@ -43,6 +43,8 @@ desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmalloc                             cyrus-sasl
 dmidecode                           lm-sensors
+docbook-dtd3
+docbook-dtd4
 docbook-xml                         libxslt, glib, elogind, xmlto
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
 docbook2x                           git
@@ -298,7 +300,7 @@ samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
 sendmail                            gnupg, sudo
-sgml-common                         docbook-xml
+sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
@@ -324,7 +326,7 @@ trousers                            gnutls
 unbound                             gnutls
 unixodbc                            openldap
 unrar
-unzip                               docbook-xml
+unzip                               docbook-xml, docbook-dtd3, docbook-dtd4
 usbutils
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
@@ -429,8 +431,6 @@ zsh                                 elogind
 # dmraid                              libblockdev
 # dnsmasq
 # docbook-dsssl                       postgresql, docbook-utils
-# docbook-dtd3                        docbook-dsssl, docbook-utils
-# docbook-dtd4                        postgresql, docbook-dsssl
 # docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
 # docwriter                           freetype
 # dssim                               gst-plugins-bad

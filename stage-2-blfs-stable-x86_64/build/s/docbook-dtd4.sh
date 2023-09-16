@@ -23,14 +23,13 @@ mkdir -pv "${TMP_DIR}"{/etc/sgml,"${SHARE_SGML}"}
 
 chown -R root:root .
 
-sed \
-    -e '/ISO 8879/d' \
-    -e '/gml/d' \
-    -i docbook.cat || exit 1
+sed -i -e '/ISO 8879/d' \
+       -e '/gml/d'      \
+       docbook.cat || exit 1
 
-install -v -d -m755       "${SHARE_SGML}"
-cp -avf ./*.{dtd,mod,dcl} "${SHARE_SGML}/"
-install -v docbook.cat    "${SHARE_SGML}/catalog"
+install -v -d -m755             "${SHARE_SGML}"
+cp -avf ./*.dtd ./*.mod ./*.dcl "${SHARE_SGML}/"
+install -v docbook.cat          "${SHARE_SGML}/catalog"
 chmod 644 "${SHARE_SGML}/catalog"
 
 ETC_SGML_CAT="/etc/sgml/sgml-docbook-dtd-${VERSION}.cat"
@@ -38,7 +37,6 @@ install-catalog --add "${ETC_SGML_CAT}" "${SHARE_SGML}/catalog"
 install-catalog --add "${ETC_SGML_CAT}" /etc/sgml/sgml-docbook.cat
 
 cat << EOF >> "${SHARE_SGML}/catalog"
-
   -- Begin Single Major Version catalog changes --
 
 PUBLIC "-//OASIS//DTD DocBook V4.4//EN" "docbook.dtd"

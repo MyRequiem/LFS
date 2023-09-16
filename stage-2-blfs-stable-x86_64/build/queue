@@ -250,6 +250,8 @@ l/libatomic-ops.sh
 d/gc.sh
 d/guile.sh
 d/nodejs.sh
+s/docbook-dtd3.sh
+s/docbook-dtd4.sh
 
 
 # l/gobject-introspection.sh
@@ -789,8 +791,6 @@ d/nodejs.sh
 # l/libosinfo.sh
 # l/opensp.sh
 # l/openjade.sh
-# s/docbook-dtd3.sh
-# s/docbook-dtd4.sh
 # s/docbook-dsssl.sh
 # ap/docbook-utils.sh
 # n/tunctl.sh
