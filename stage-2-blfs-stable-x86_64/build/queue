@@ -255,6 +255,7 @@ s/docbook-dtd4.sh
 l/opensp.sh
 l/openjade.sh
 s/docbook-dsssl.sh
+d/perl-modules/perl-sgmlspm.sh
 
 
 # l/gobject-introspection.sh
@@ -310,7 +311,6 @@ s/docbook-dsssl.sh
 # x/libs/libxdmcp.sh
 # x/xcb/xcb-proto.sh
 # x/libs/libxcb.sh
-# d/perl-modules/perl-sgmlspm.sh
 # x/misc/fontconfig.sh
 # x/libs/xorg-libraries.sh
 # x/xcb/xcb-util.sh

@@ -205,6 +205,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 perl-pod-pom-view-restructured      cyrus-sasl
+perl-sgmlspm
 pinentry                            gnupg
 polkit                              elogind
 popt                                rsync
@@ -861,7 +862,6 @@ zsh                                 elogind
 # perl-regexp-common
 # perl-role-tiny                      perl-specio
 # perl-scope-guard                    perl-test2-suite, perl-test-file-sharedir
-# perl-sgmlspm                        fontconfig, postgresql, docbook-utils
 # perl-sort-key
 # perl-specio                         perl-params-validationcompiler
 # perl-sub-exporter-progressive       perl-b-hooks-endofscope
