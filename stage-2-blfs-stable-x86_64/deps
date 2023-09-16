@@ -184,11 +184,12 @@ ntp                                 dhcpcd
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
+openjade
 openjdk                             libidn
 openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                              openssh
 openslp                             openldap
-opensp
+opensp                              openjade
 openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
@@ -741,7 +742,6 @@ zsh                                 elogind
 # opendmarc                           exim
 # openexr                             gst-plugins-bad, gegl, imagemagick
 # openh264                            gst-plugins-bad
-# openjade                            postgresql, docbook-dsssl, docbook-utils
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus

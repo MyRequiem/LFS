@@ -253,6 +253,7 @@ d/nodejs.sh
 s/docbook-dtd3.sh
 s/docbook-dtd4.sh
 l/opensp.sh
+l/openjade.sh
 
 
 # l/gobject-introspection.sh
@@ -790,7 +791,6 @@ l/opensp.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh
-# l/openjade.sh
 # s/docbook-dsssl.sh
 # ap/docbook-utils.sh
 # n/tunctl.sh
