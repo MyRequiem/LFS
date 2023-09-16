@@ -256,6 +256,7 @@ l/opensp.sh
 l/openjade.sh
 s/docbook-dsssl.sh
 d/perl-modules/perl-sgmlspm.sh
+ap/docbook-utils.sh
 
 
 # l/gobject-introspection.sh
@@ -792,7 +793,6 @@ d/perl-modules/perl-sgmlspm.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh
-# ap/docbook-utils.sh
 # n/tunctl.sh
 # a/fcron.sh
 # x/misc/fontconfig.sh

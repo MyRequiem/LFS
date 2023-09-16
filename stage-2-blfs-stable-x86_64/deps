@@ -43,9 +43,10 @@ desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmalloc                             cyrus-sasl
 dmidecode                           lm-sensors
-docbook-dsssl
-docbook-dtd3                        docbook-dsssl
+docbook-dsssl                       docbook-utils
+docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        docbook-dsssl
+docbook-utils
 docbook-xml                         libxslt, glib, elogind, xmlto
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
 docbook2x                           git
@@ -147,7 +148,7 @@ libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
 libyaml                             python3-pyyaml
-links                               xmlto
+links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
 llvm                                dhcpcd, icu
 lm-sensors                          htop
@@ -157,7 +158,7 @@ lsb-tools
 lshw
 lua                                 highlight
 lvm2
-lynx                                pciutils, smartmontools, python3-asciidoc, xmlto
+lynx                                pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils
 lz4                                 lrzip, rsync
 lzip                                ed
 lzo                                 libarchive
@@ -185,7 +186,7 @@ ntp                                 dhcpcd
 ocaml                               llvm
 oniguruma                           slang
 open-mpi                            boost
-openjade                            docbook-dsssl
+openjade                            docbook-dsssl, docbook-utils
 openjdk                             libidn
 openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                              openssh
@@ -205,7 +206,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 perl-pod-pom-view-restructured      cyrus-sasl
-perl-sgmlspm
+perl-sgmlspm                        docbook-utils
 pinentry                            gnupg
 polkit                              elogind
 popt                                rsync
@@ -335,7 +336,7 @@ usbutils
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
 vifm
-w3m                                 python3-asciidoc, xmlto
+w3m                                 python3-asciidoc, xmlto, docbook-utils
 wget                                pciutils, smartmontools, usbutils
 which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs
 whois
@@ -434,7 +435,6 @@ zsh                                 elogind
 # dmenu                               password-store, i3
 # dmraid                              libblockdev
 # dnsmasq
-# docbook-utils                       fcron, fontconfig, libsigc++2, gtk+2, gtk+3, flac, postgresql, tunctl
 # docwriter                           freetype
 # dssim                               gst-plugins-bad
 # dtrace                              ruby, gjs
