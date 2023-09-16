@@ -28,9 +28,13 @@ DOCS_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
     --disable-static \
     --docdir="${DOCS_DIR}" || exit 1
 
-make                                     || exit 1
-[[ "x${DOCS}" == "xtrue" ]] && make html || exit 1
+make || exit 1
 
+if [[ "x${DOCS}" == "xtrue" ]]; then
+    make html || exit 1
+fi
+
+# создадим .info документацию
 makeinfo --plaintext -o doc/r5rs/r5rs.txt doc/r5rs/r5rs.texi || exit 1
 makeinfo --plaintext -o doc/ref/guile.txt doc/ref/guile.texi || exit 1
 
