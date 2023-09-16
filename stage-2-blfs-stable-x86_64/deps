@@ -128,7 +128,7 @@ libjpeg-turbo
 libksba                             gnupg
 libmetalink                         curl
 libnl                               iw, wpa-supplicant, htop
-libnsl                              pth, berkeley-db, clisp
+libnsl                              pth, berkeley-db, clisp, opensp
 libpng                              slang
 libpsl                              wget, curl
 libressl                            openssh
@@ -188,6 +188,7 @@ openjdk                             libidn
 openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                              openssh
 openslp                             openldap
+opensp
 openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
@@ -300,7 +301,7 @@ samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
 sendmail                            gnupg, sudo
-sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4
+sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4, opensp
 shared-mime-info                    glib
 sharutils                           berkeley-db
 shellcheck
@@ -341,7 +342,7 @@ wpa-supplicant
 wxwidgets                           p7zip
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
-xmlto                               git, dbus, nasm
+xmlto                               git, dbus, nasm, opensp
 xorg-libraries                      dbus
 xxhash                              rsync
 yasm                                tmux, libjpeg-turbo, mit-kerberos-v5
@@ -742,7 +743,6 @@ zsh                                 elogind
 # openh264                            gst-plugins-bad
 # openjade                            postgresql, docbook-dsssl, docbook-utils
 # openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
-# opensp                              openjade, docbook-dsssl
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
 # opusfile                            cmus
