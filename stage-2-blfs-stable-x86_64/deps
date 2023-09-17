@@ -22,7 +22,7 @@ berkeley-db                         cyrus-sasl, openldap
 bind-utils                          mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
-boost                               highlight, nghttp2
+boost                               highlight, nghttp2, libsigc++2
 brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
@@ -46,13 +46,13 @@ dmidecode                           lm-sensors
 docbook-dsssl                       docbook-utils
 docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        docbook-dsssl
-docbook-utils
-docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs
+docbook-utils                       libsigc++2
+docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2
 ed
 efl                                 pinentry
 elinks                              xmlto
@@ -138,6 +138,7 @@ librtmp                             curl
 libseccomp                          gnutls
 libsecret                           pinentry
 libsectok                           openssh
+libsigc++2
 libsigsegv                          clisp
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
@@ -146,7 +147,7 @@ libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils
 libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
@@ -168,6 +169,7 @@ mdadm                               lvm2
 mercurial                           python3-setuptools-scm, cmake
 minisql                             unixodbc
 mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl, libtirpc
+mm-common                           libsigc++2
 mono                                libidn
 mruby                               nghttp2
 mysql                               cyrus-sasl, openldap
@@ -654,7 +656,6 @@ zsh                                 elogind
 # libsamplerate                       alsa-utils, alsa-plugins, pulseaudio, sdl2
 # libshout                            gst-plugins-good
 # libsidplay                          gst-plugins-ugly
-# libsigc++2                          glibmm, cairomm, pavucontrol
 # libsndfile                          lame, sbc, gst-plugins-bad, libsamplerate, pulseaudio
 # libsoup                             gst-plugins-good
 # libspectre                          cairo, goffice, zathura
@@ -711,7 +712,6 @@ zsh                                 elogind
 # mirage
 # mixmaster                           mutt
 # mjpeg-tools                         gst-plugins-bad
-# mm-common                           libsigc++2, glibmm
 # mnogosearch                         php
 # monetra                             php
 # mozjs                               polkit, gjs

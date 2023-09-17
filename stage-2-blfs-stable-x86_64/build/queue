@@ -258,6 +258,7 @@ s/docbook-dsssl.sh
 d/perl-modules/perl-sgmlspm.sh
 ap/docbook-utils.sh
 x/misc/xdg-user-dirs.sh
+l/libsigc++2.sh
 
 
 # l/gobject-introspection.sh
@@ -268,7 +269,6 @@ x/misc/xdg-user-dirs.sh
 # n/nmap (NEW)
 # ap/lsof.sh
 # l/aalib.sh
-# l/libsigc++2.sh
 # l/parted.sh
 # l/sg3-utils.sh
 # l/libpcap.sh
@@ -796,7 +796,6 @@ x/misc/xdg-user-dirs.sh
 # n/tunctl.sh
 # a/fcron.sh
 # x/misc/fontconfig.sh
-# l/libsigc++2.sh
 # l/gtk+2.sh
 # l/gtk+3.sh
 # ap/flac.sh
