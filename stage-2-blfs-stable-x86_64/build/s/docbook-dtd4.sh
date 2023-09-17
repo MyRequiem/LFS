@@ -14,8 +14,22 @@ ARCH_NAME="docbook"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-4*.zip" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 2- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+unzip -d "${ARCH_NAME}-${VERSION}" \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}".zip || exit 1
+
+cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 SHARE_SGML="/usr/share/sgml/docbook/sgml-dtd-${VERSION}"
