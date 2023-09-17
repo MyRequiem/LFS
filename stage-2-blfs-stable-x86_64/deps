@@ -50,7 +50,7 @@ docbook-utils                       libsigc++2
 docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 docbook2x                           git
-dosfstools
+dosfstools                          parted
 dovecot                             gnupg, sudo
 doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2
 ed
@@ -100,7 +100,7 @@ icu                                 libxml2, boost, nodejs
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
 isl                                 gcc
 iso-codes
 iw
@@ -158,7 +158,7 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
-lvm2
+lvm2                                parted
 lynx                                pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils
 lz4                                 lrzip, rsync
 lzip                                ed
@@ -198,12 +198,14 @@ openssh                             sshfs, git
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests
 p7zip
+parted
 passivetex                          xmlto
 patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git, slang
 pcre2                               wget, glib, git
 perl-authen-sasl                    git
+perl-digest-crc                     parted
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
@@ -214,7 +216,7 @@ polkit                              elogind
 popt                                rsync
 postfix                             gnupg, sudo
 postgresql                          cyrus-sasl, openldap
-pth                                 libidn, libgcrypt, unixodbc, openldap
+pth                                 libidn, libgcrypt, unixodbc, openldap, parted
 py3c
 python2                             yasm, docbook-xsl
 python2-libxml2                     libxslt, docbook-xsl
@@ -322,7 +324,7 @@ subversion                          git, cmake
 sudo
 sysprof                             glib
 sysstat                             openssh
-texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm
+texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
 thin-provisioning-tools             lvm2
 time
 tk                                  git
@@ -430,7 +432,6 @@ zsh                                 elogind
 # dejavu-fonts-ttf                    xterm, imagemagick
 # device-tree-compiler
 # dialog                              alsa-utils
-# digest-crc                          parted
 # directfb                            links, cairo, sdl, sdl2
 # distcache                           apache-httpd
 # djbfft                              liba52
@@ -759,7 +760,6 @@ zsh                                 elogind
 # pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 # pangomm                             gtkmm2, gtkmm3
 # papi                                gtk+3
-# parted                              libblockdev
 # passwdqc                            cryptsetup
 # password-store                      dmenu
 # pavucontrol

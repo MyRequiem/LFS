@@ -259,6 +259,7 @@ d/perl-modules/perl-sgmlspm.sh
 ap/docbook-utils.sh
 x/misc/xdg-user-dirs.sh
 l/libsigc++2.sh
+l/parted.sh
 
 
 # l/gobject-introspection.sh
@@ -269,7 +270,6 @@ l/libsigc++2.sh
 # n/nmap (NEW)
 # ap/lsof.sh
 # l/aalib.sh
-# l/parted.sh
 # l/sg3-utils.sh
 # l/libpcap.sh
 # n/iptables.sh
