@@ -47,8 +47,8 @@ docbook-dsssl                       docbook-utils
 docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        docbook-dsssl
 docbook-utils
-docbook-xml                         libxslt, glib, elogind, xmlto
-docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto
+docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs
+docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 docbook2x                           git
 dosfstools
 dovecot                             gnupg, sudo
@@ -146,7 +146,7 @@ libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils
 libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
@@ -344,6 +344,7 @@ wiredtiger                          openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
+xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
 xmlto                               git, dbus, nasm, opensp
@@ -1101,7 +1102,6 @@ zsh                                 elogind
 # xcb-util-xrm                        i3
 # xclip                               password-store
 # xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
-# xdg-user-dirs
 # xdg-utils                           cups, gimp, imagemagick
 # xfce4-notifyd                       libnotify
 # xinit

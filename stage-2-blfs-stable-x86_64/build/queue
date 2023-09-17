@@ -257,6 +257,7 @@ l/openjade.sh
 s/docbook-dsssl.sh
 d/perl-modules/perl-sgmlspm.sh
 ap/docbook-utils.sh
+x/misc/xdg-user-dirs.sh
 
 
 # l/gobject-introspection.sh
@@ -266,7 +267,6 @@ ap/docbook-utils.sh
 # d/python-modules/python2-libxml2.sh
 # n/nmap (NEW)
 # ap/lsof.sh
-# x/misc/xdg-user-dirs.sh
 # l/aalib.sh
 # l/libsigc++2.sh
 # l/parted.sh

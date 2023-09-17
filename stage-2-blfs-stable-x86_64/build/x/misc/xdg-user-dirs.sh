@@ -1,8 +1,6 @@
 #! /bin/bash
 
 PRGNAME="xdg-user-dirs"
-DOCBOOK_XML_VERSION="4.5"
-DOCBOOK_XSL_VERSION="1.79.2"
 
 ### Xdg-user-dirs (manage XDG user directories)
 # Инструмент, используемый различными XDG-совместимыми окружениями рабочего
@@ -52,7 +50,8 @@ DOCBOOK_XSL_VERSION="1.79.2"
 # /etc/xdg/user-dirs.conf
 #
 #    # также можно настроить конфигурацию для каждого пользователя в
-#    # ~/.config/user-dirs.conf или установить переменные окружения
+#    #    ~/.config/user-dirs.conf
+#    # или установить переменные окружения
 #    # XDG_CONFIG_HOME и/или XDG_CONFIG_DIRS
 #
 #    enabled=True
@@ -65,17 +64,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCBOOK_XML=""
-DOCBOOK_XSL=""
 DOCUMENTATION="--disable-documentation"
-
-[ -f "/usr/share/xml/docbook/xml-dtd-${DOCBOOK_XML_VERSION}/ent/README" ] && \
-    DOCBOOK_XML="true"
-[ -f "/usr/share/doc/docbook-xsl-${DOCBOOK_XSL_VERSION}/README" ] && \
-    DOCBOOK_XSL="true"
-
-[[ -n "${DOCBOOK_XML}" && -n "${DOCBOOK_XSL}" ]] && \
-    DOCUMENTATION="--enable-documentation"
+[ -d /usr/share/xml/docbook/xml-* ] && \
+    [ -d /usr/share/xml/docbook/xsl-* ] && \
+        DOCUMENTATION="--enable-documentation"
 
 ./configure           \
     --prefix=/usr     \
