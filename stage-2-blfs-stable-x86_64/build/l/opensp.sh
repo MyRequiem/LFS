@@ -77,7 +77,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-# есть один *.la файл
-# /usr/lib/libosp.la
-# но он нужен для сборки пакета openjade, поэтому удалим его после
