@@ -260,6 +260,7 @@ ap/docbook-utils.sh
 x/misc/xdg-user-dirs.sh
 l/libsigc++2.sh
 l/parted.sh
+l/sg3-utils.sh
 
 
 # l/gobject-introspection.sh
@@ -270,7 +271,6 @@ l/parted.sh
 # n/nmap (NEW)
 # ap/lsof.sh
 # l/aalib.sh
-# l/sg3-utils.sh
 # l/libpcap.sh
 # n/iptables.sh
 # a/libgudev.sh

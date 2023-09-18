@@ -309,6 +309,7 @@ samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
 sendmail                            gnupg, sudo
+sg3-utils
 sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
 shared-mime-info                    glib
 sharutils                           berkeley-db
@@ -1011,7 +1012,6 @@ zsh                                 elogind
 # sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
 # septel                              libpcap
-# sg3-utils
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo
