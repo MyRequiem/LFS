@@ -22,6 +22,7 @@ berkeley-db                         cyrus-sasl, openldap
 bind-utils                          mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
+bluez                               libpcap
 boost                               highlight, nghttp2, libsigc++2
 brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
@@ -36,6 +37,7 @@ curl                                pciutils, gnupg, curlftpfs, git, smartmontoo
 curlftpfs                           vifm
 cyrus-sasl                          openldap
 cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
+dag                                 libpcap
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc, xmlto
 dbus                                wpa-supplicant, glib, elogind, python3-dbus
@@ -129,8 +131,9 @@ libidn2                             gnutls, libpsl, wget, curl, whois
 libjpeg-turbo
 libksba                             gnupg
 libmetalink                         curl
-libnl                               iw, wpa-supplicant, htop
+libnl                               iw, wpa-supplicant, htop, libpcap
 libnsl                              pth, berkeley-db, clisp, opensp
+libpcap
 libpng                              slang
 libpsl                              wget, curl
 libressl                            openssh
@@ -144,7 +147,7 @@ libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
 libunistring                        libidn2, gnutls, guile
-libusb                              gnupg, usbutils
+libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2
@@ -309,6 +312,7 @@ samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
 sendmail                            gnupg, sudo
+septel                              libpcap
 sg3-utils
 sgml-common                         docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
 shared-mime-info                    glib
@@ -396,7 +400,6 @@ zsh                                 elogind
 # bibtex                              libtheora
 # birdstep                            php
 # blender                             imagemagick
-# bluez                               python2, python3, libpcap, gst-plugins-bad, pulseaudio, qt5, qemu
 # bonjour                             postgresql
 # bpf-utils                           iptables
 # bpython
@@ -425,7 +428,6 @@ zsh                                 elogind
 # cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 # cups-filters                        cups
 # cxxopts                             pamixer
-# dag                                 libpcap
 # dbmaker                             php
 # dbus-glib                           dbus, upower, enchant, gconf, gimp
 # dconf                               ibus
@@ -647,7 +649,6 @@ zsh                                 elogind
 # libopenraw                          gegl
 # libosinfo                           virt-manager
 # libpaper                            cups, ghostscript
-# libpcap                             iptables
 # libplacebo                          mpv
 # libproxy                            glib-networking, neon, qt5
 # libpwquality                        cryptsetup
@@ -1011,7 +1012,6 @@ zsh                                 elogind
 # scrot
 # sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
-# septel                              libpcap
 # silgraphite                         graphite2
 # sinhala-lklug-font-ttf
 # skia                                cairo
