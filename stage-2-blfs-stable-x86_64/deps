@@ -24,6 +24,7 @@ bindfs                              glib
 blfs-bootscripts
 bluez                               libpcap
 boost                               highlight, nghttp2, libsigc++2
+bpf-utils                           iptables
 brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
@@ -103,6 +104,7 @@ imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
 install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
+iptables
 isl                                 gcc
 iso-codes
 iw
@@ -131,9 +133,11 @@ libidn2                             gnutls, libpsl, wget, curl, whois
 libjpeg-turbo
 libksba                             gnupg
 libmetalink                         curl
+libnetfilter-conntrack              iptables
+libnfnetlink                        iptables
 libnl                               iw, wpa-supplicant, htop, libpcap
 libnsl                              pth, berkeley-db, clisp, opensp
-libpcap
+libpcap                             iptables
 libpng                              slang
 libpsl                              wget, curl
 libressl                            openssh
@@ -179,6 +183,7 @@ mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
+nftables                            iptables
 nghttp2                             curl, cmake, bind-utils, nodejs
 ngtcp2                              curl
 nodejs
@@ -401,7 +406,6 @@ zsh                                 elogind
 # birdstep                            php
 # blender                             imagemagick
 # bonjour                             postgresql
-# bpf-utils                           iptables
 # bpython
 # bs2b                                gst-plugins-bad
 # btrfs-progs                         udisks, libblockdev
@@ -556,7 +560,6 @@ zsh                                 elogind
 # intel-gpu-tools                     libva
 # inxi
 # ipaex-fonts-ttf
-# iptables
 # isort2                              pylint2
 # isort3                              pylint3
 # itstool                             shared-mime-info, zenity
@@ -567,7 +570,6 @@ zsh                                 elogind
 # jq
 # json-glib                           gtk+3, gegl
 # judy                                mariadb
-# kernel-generic                      iptables
 # kochi-substitute-fonts-ttf
 # kytea                               mariadb
 # ladspa                              gst-plugins-bad
@@ -636,8 +638,6 @@ zsh                                 elogind
 # libmpdec                            python3
 # libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 # libmypaint                          mypaint-brushes, gimp
-# libnetfilter-conntrack              iptables
-# libnfnetlink                        iptables
 # libnfs
 # libnice                             gst-plugins-bad
 # libnotify                           ibus, zenity, girara
@@ -730,7 +730,6 @@ zsh                                 elogind
 # neon                                gst-plugins-bad
 # net-snmp                            php
 # netcat-openbsd
-# nftables                            iptables
 # nginx
 # nickle                              xorg-applications
 # notification-daemon                 libnotify

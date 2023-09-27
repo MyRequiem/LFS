@@ -262,6 +262,7 @@ l/libsigc++2.sh
 l/parted.sh
 l/sg3-utils.sh
 l/libpcap.sh
+n/iptables.sh
 
 
 # l/gobject-introspection.sh
@@ -272,7 +273,6 @@ l/libpcap.sh
 # n/nmap (NEW)
 # ap/lsof.sh
 # l/aalib.sh
-# n/iptables.sh
 # a/libgudev.sh
 # l/dbus-glib.sh
 # a/cryptsetup.sh
