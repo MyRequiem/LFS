@@ -95,7 +95,7 @@ grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
 gtk+3                               pinentry
-gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize
 guile
 hdparm
 highlight                           vifm
@@ -123,6 +123,7 @@ libarchive                          archivemount, cmake, ed
 libassuan                           pinentry, gnupg
 libatasmart
 libatomic-ops                       gc
+libbytesize
 libcap                              bind-utils
 libedit                             pcre2, openssh, sqlite, mit-kerberos-v5
 libev                               nghttp2
@@ -217,7 +218,7 @@ passwdqc                            cryptsetup
 patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git, slang
-pcre2                               wget, glib, git
+pcre2                               wget, glib, git, libbytesize
 perl-authen-sasl                    git
 perl-digest-crc                     parted
 perl-http-daemon                    wget
@@ -226,6 +227,7 @@ perl-mime-base64                    git
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        docbook-utils
 pinentry                            gnupg
+pocketlint                          libbytesize
 polkit                              elogind
 popt                                rsync, cryptsetup
 postfix                             gnupg, sudo
@@ -273,11 +275,12 @@ python3-nose                        python3-pytest
 python3-packaging                   python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                    python3-hatchling
 python3-pluggy                      python3-hatchling, python3-pytest, python3-msgpack
+python3-polib                       libbytesize
 python3-pretend                     python3-packaging
 python3-psutil                      llvm
 python3-py                          python3-pytest
 python3-pycryptodome
-python3-pygments                    python3-pytest, llvm
+python3-pygments                    python3-pytest, llvm, libbytesize
 python3-pygobject3                  dbus
 python3-pympler                     python3-attrs
 python3-pyparsing
@@ -299,7 +302,7 @@ python3-railroad-diagrams           python3-pyparsing
 python3-recommonmark                llvm
 python3-requests                    python3-pytest, python3-cachecontrol
 python3-setuptools-scm              python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
-python3-six
+python3-six                         libbytesize
 python3-sphinx                      python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
 python3-testpath                    python3-flit-core
 python3-tornado                     python3-urllib3
@@ -593,7 +596,6 @@ zsh                                 elogind
 # libblockdev                         udisks
 # libbluray                           ffmpeg
 # libbsd                              netcat-openbsd
-# libbytesize                         libblockdev
 # libcaca                             gst-plugins-good, sdl, ffmpeg
 # libcacard                           spice-gtk, qemu
 # libcanberra                         notification-daemon, pavucontrol
@@ -918,8 +920,6 @@ zsh                                 elogind
 # php                                 cups, libsoup, libvpx
 # picogui                             sdl
 # pixman                              cairo, xorg-server
-# pocketlint                          libbytesize
-# python3-polib                       libbytesize
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp

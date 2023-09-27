@@ -265,6 +265,7 @@ l/libpcap.sh
 n/iptables.sh
 l/dbus-glib.sh
 a/cryptsetup.sh
+l/libbytesize.sh
 
 
 # l/gobject-introspection.sh
@@ -276,7 +277,6 @@ a/cryptsetup.sh
 # ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
-# l/libbytesize.sh
 # l/nss.sh
 # d/swig.sh
 # n/gpgme.sh
