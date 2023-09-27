@@ -129,9 +129,9 @@ iptables -Z
 iptables -t nat -F
 
 # allow local, eth and wlan connections
-iptables -A INPUT  -i lo    -j ACCEPT
-iptables -A INPUT  -i eth0  -j ACCEPT
-iptables -A INPUT  -i wlan0 -j ACCEPT
+iptables -A INPUT -i lo    -j ACCEPT
+iptables -A INPUT -i eth+  -j ACCEPT
+iptables -A INPUT -i wlan+ -j ACCEPT
 
 # free output on any interface to any ip for any service (equal to -P ACCEPT)
 iptables -A OUTPUT -j ACCEPT
