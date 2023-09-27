@@ -263,6 +263,7 @@ l/parted.sh
 l/sg3-utils.sh
 l/libpcap.sh
 n/iptables.sh
+l/dbus-glib.sh
 
 
 # l/gobject-introspection.sh
@@ -274,7 +275,6 @@ n/iptables.sh
 # ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
-# l/dbus-glib.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
 # l/nss.sh

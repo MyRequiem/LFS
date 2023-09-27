@@ -41,7 +41,8 @@ cython                              yasm, python3-pyyaml, python3-msgpack, nghtt
 dag                                 libpcap
 datefudge                           gnutls
 dblatex                             git, python3-asciidoc, xmlto
-dbus                                wpa-supplicant, glib, elogind, python3-dbus
+dbus                                wpa-supplicant, glib, elogind, python3-dbus, dbus-glib
+dbus-glib
 desktop-file-utils                  wpa-supplicant, glib
 dhcpcd
 dmalloc                             cyrus-sasl
@@ -81,7 +82,7 @@ gdb                                 openssh, glib, gcc, guile
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
-glib                                sshfs, w3m, python3-dbus
+glib                                sshfs, w3m, python3-dbus, dbus-glib
 glib-networking                     glib
 gnupg                               git, smartmontools, mit-kerberos-v5
 gnutls                              wget, curl, gnupg, openldap
@@ -92,7 +93,7 @@ grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
 gtk+3                               pinentry
-gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib
 guile
 hdparm
 highlight                           vifm
@@ -433,7 +434,6 @@ zsh                                 elogind
 # cups-filters                        cups
 # cxxopts                             pamixer
 # dbmaker                             php
-# dbus-glib                           dbus, upower, enchant, gconf, gimp
 # dconf                               ibus
 # deb2tgz
 # dejavu-fonts-ttf                    xterm, imagemagick

@@ -220,6 +220,7 @@ https://ftp.gnu.org/gnu/parted/parted-3.5.tar.xz
 https://sg.danny.cz/sg/p/sg3_utils-1.47.tar.xz
 https://www.tcpdump.org/release/libpcap-1.10.3.tar.gz
 https://www.netfilter.org/projects/iptables/files/iptables-1.8.9.tar.xz
+https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.112.tar.gz
 
 
 ================================================================================
@@ -232,7 +233,6 @@ https://archive.mozilla.org/pub/firefox/releases/78.8.0esr/source/firefox-78.8.0
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 https://download.gnome.org/sources/gobject-introspection/1.66/gobject-introspection-1.66.1.tar.xz
 https://download.gnome.org/sources/libgudev/234/libgudev-234.tar.xz
-https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.110.tar.gz
 https://www.freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/polkit-0.118-fix_elogind_detection-1.patch
 https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-2.3.4.tar.xz
