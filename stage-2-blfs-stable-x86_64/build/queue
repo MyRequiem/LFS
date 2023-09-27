@@ -264,6 +264,7 @@ l/sg3-utils.sh
 l/libpcap.sh
 n/iptables.sh
 l/dbus-glib.sh
+a/cryptsetup.sh
 
 
 # l/gobject-introspection.sh
@@ -275,7 +276,6 @@ l/dbus-glib.sh
 # ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
-# a/cryptsetup.sh
 # l/libbytesize.sh
 # l/nss.sh
 # d/swig.sh

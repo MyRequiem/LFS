@@ -11,6 +11,7 @@ apache-ant                          docbook-xsl
 apache-httpd                        curl
 apr
 archivemount                        vifm
+argon2                              cryptsetup
 aspell                              aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
@@ -33,6 +34,7 @@ clisp
 cmake                               llvm, json-c, libjpeg-turbo, c-ares
 cmocka                              gnutls, mit-kerberos-v5
 cpio
+cryptsetup
 cunit                               nghttp2
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake
 curlftpfs                           vifm
@@ -111,7 +113,7 @@ iso-codes
 iw
 jansson                             nghttp2
 jemalloc                            nghttp2
-json-c                              bind-utils
+json-c                              bind-utils, cryptsetup
 kernel-firmware
 kexec                               elogind
 keyutils                            mit-kerberos-v5
@@ -141,6 +143,7 @@ libnsl                              pth, berkeley-db, clisp, opensp
 libpcap                             iptables
 libpng                              slang
 libpsl                              wget, curl
+libpwquality                        cryptsetup
 libressl                            openssh
 librtmp                             curl
 libseccomp                          gnutls
@@ -148,6 +151,7 @@ libsecret                           pinentry
 libsectok                           openssh
 libsigc++2
 libsigsegv                          clisp
+libssh                              cryptsetup
 libssh2                             curl
 libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
@@ -166,7 +170,7 @@ lrzip
 lsb-tools
 lshw
 lua                                 highlight
-lvm2                                parted
+lvm2                                parted, cryptsetup
 lynx                                pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils
 lz4                                 lrzip, rsync
 lzip                                ed
@@ -209,6 +213,7 @@ p11-kit                             make-ca, gnutls, python3-requests
 p7zip
 parted
 passivetex                          xmlto
+passwdqc                            cryptsetup
 patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git, slang
@@ -222,7 +227,7 @@ perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        docbook-utils
 pinentry                            gnupg
 polkit                              elogind
-popt                                rsync
+popt                                rsync, cryptsetup
 postfix                             gnupg, sudo
 postgresql                          cyrus-sasl, openldap
 pth                                 libidn, libgcrypt, unixodbc, openldap, parted
@@ -391,7 +396,6 @@ zsh                                 elogind
 # apparmor                            php
 # appstream-glib                      gimp
 # apr-util                            apache-httpd
-# argon2                              cryptsetup
 # as31                                alsa-firmware
 # assimp                              qt5
 # at-spi2-atk                         gtk+3
@@ -429,7 +433,6 @@ zsh                                 elogind
 # colord                              gtk+3, cups
 # corefonts                           imagemagick
 # cppcheck
-# cryptsetup                          volume-key
 # cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
 # cups-filters                        cups
 # cxxopts                             pamixer
@@ -651,7 +654,6 @@ zsh                                 elogind
 # libpaper                            cups, ghostscript
 # libplacebo                          mpv
 # libproxy                            glib-networking, neon, qt5
-# libpwquality                        cryptsetup
 # libraqm                             imagemagick
 # libraw                              imagemagick
 # libraw1394                          gst-plugins-good
@@ -664,7 +666,6 @@ zsh                                 elogind
 # libspectre                          cairo, goffice, zathura
 # libspiro                            gegl
 # libsrtp                             gst-plugins-bad
-# libssh                              exiv2, ffmpeg
 # libthai                             pango, perl-unicode-linebreak
 # libtheora                           gst-plugins-base, ffmpeg
 # libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
@@ -761,7 +762,6 @@ zsh                                 elogind
 # pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 # pangomm                             gtkmm2, gtkmm3
 # papi                                gtk+3
-# passwdqc                            cryptsetup
 # password-store                      dmenu
 # pavucontrol
 # pcsc-lite                           libcacard
