@@ -36,7 +36,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{usr/bin,lib}
+mkdir -pv "${TMP_DIR}"
 
 LIBNETFILTER="--disable-connlabel"
 LIBPCAP="--disable-nfsynproxy"
