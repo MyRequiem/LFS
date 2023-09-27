@@ -27,22 +27,21 @@ patch -Np1 --verbose -i \
 cd "${PRGNAME}" || exit 1
 
 SQLITE=0
+# если в системе установлен пакет sqlite, то libsoftokn3.so будет связываться
+# имеено с системной версией sqlite
 [ -f /usr/include/sqlite3.h ] && SQLITE=1
 
 # не включать в бинарники отладочную информацию и использовать оптимизацию
 # компилятора по умолчанию
 #    BUILD_OPT=1
-# расположение заголовочных файлов nspr
-#    NSPR_INCLUDE_DIR=/usr/include/nspr
-# связывать с zlib установленной в системе, а не с той, которая присутствует в
-# дереве исходников
+# связывать libssl3.so с zlib установленной в системе, а не с той, которая
+# присутствует в дереве исходников
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
-#
-# NOTE:
-#    пакет не поддерживает сборку в несколько потоков (явно указываем -j1)
-make -j1                            \
+# расположение заголовочных файлов nspr
+#    NSPR_INCLUDE_DIR=/usr/include/nspr
+make                                \
     BUILD_OPT=1                     \
     USE_SYSTEM_ZLIB=1               \
     ZLIB_LIBS=-lz                   \
@@ -56,8 +55,7 @@ make -j1                            \
 # тесты
 ###
 # NOTE:
-#    для запуска тестов при сборке нужно удалить опцию NSS_DISABLE_GTESTS=1 из
-#    команды 'make'
+#    для запуска тестов нужно удалить NSS_DISABLE_GTESTS=1 из команды 'make'
 #
 # cd tests || exit 1
 # HOST=localhost DOMSUF=localdomain ./all.sh || exit 1
@@ -65,23 +63,25 @@ make -j1                            \
 
 cd ../dist || exit 1
 
-# /usr/bin/
-install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} "${TMP_DIR}/usr/bin"
-
-# /usr/include/nss/
-cp -vRL {public,private}/"${PRGNAME}"/* "${TMP_DIR}${NSS_INCLUDE_DIR}"
-chmod -v 644 "${TMP_DIR}${NSS_INCLUDE_DIR}"/*
-
 # /usr/lib/
 install -v -m755 Linux*/lib/*.so              "${TMP_DIR}/usr/lib"
 install -v -m644 Linux*/lib/{*.chk,libcrmf.a} "${TMP_DIR}/usr/lib"
 
-# /usr/lib/pkgconfig/
-install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig"
+# /usr/include/nss/
+cp -vRL {public,private}/"${PRGNAME}"/* "${TMP_DIR}${NSS_INCLUDE_DIR}/"
+chmod -v 644 "${TMP_DIR}${NSS_INCLUDE_DIR}"/*
 
-# ссылка /usr/lib/libnssckbi.so -> ./pkcs11/p11-kit-trust.so устанавливается с
-# пакетом p11-kit, и если она уже существует, удалим ее
-[ -L /usr/lib/libnssckbi.so ] && rm -f "${TMP_DIR}/usr/lib/libnssckbi.so"
+# /usr/bin/
+install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} "${TMP_DIR}/usr/bin/"
+
+# /usr/lib/pkgconfig/
+install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig/"
+
+# ссылка
+#    /usr/lib/libnssckbi.so -> ./pkcs11/p11-kit-trust.so
+# устанавливается с пакетом p11-kit, поэтому удалим /usr/lib/libnssckbi.so из
+# временной директории пакета nss
+rm -f "${TMP_DIR}/usr/lib/libnssckbi.so"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

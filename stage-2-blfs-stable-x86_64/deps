@@ -195,7 +195,7 @@ ngtcp2                              curl
 nodejs
 npm                                 nodejs
 npth                                gnupg
-nspr
+nspr                                nss
 nss                                 p11-kit, make-ca
 ntfs-3g
 ntp                                 dhcpcd
@@ -210,7 +210,7 @@ openslp                             openldap
 opensp                              openjade, docbook-dsssl
 openssh                             sshfs, git
 opie                                sudo
-p11-kit                             make-ca, gnutls, python3-requests
+p11-kit                             make-ca, gnutls, python3-requests, nss
 p7zip
 parted
 passivetex                          xmlto
@@ -336,7 +336,7 @@ slang
 smartmontools
 spdylay                             nghttp2
 spnego                              curl
-sqlite                              gnupg, lnav, lshw, cyrus-sasl
+sqlite                              gnupg, lnav, lshw, cyrus-sasl, nss
 sshfs                               vifm
 stunnel                             curl
 subversion                          git, cmake

@@ -266,6 +266,9 @@ n/iptables.sh
 l/dbus-glib.sh
 a/cryptsetup.sh
 l/libbytesize.sh
+l/nss.sh
+n/p11-kit.sh
+n/make-ca.sh
 
 
 # l/gobject-introspection.sh
@@ -277,7 +280,6 @@ l/libbytesize.sh
 # ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
-# l/nss.sh
 # d/swig.sh
 # n/gpgme.sh
 # l/volume-key.sh

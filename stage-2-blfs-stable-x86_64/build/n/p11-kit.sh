@@ -58,7 +58,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 # чтобы сделать систему прозрачной для центров сертификации при использовании
 # приложений поддерживающих NSS, модуль /usr/lib/pkcs11/p11-kit-trust.so можно
-# использовать как замену для /usr/lib/libnssckbi.so
+# использовать как замену для /usr/lib/libnssckbi.so из пакета nss
 #
 # создадим ссылку /usr/lib/libnssckbi.so -> pkcs11/p11-kit-trust.so
 (
