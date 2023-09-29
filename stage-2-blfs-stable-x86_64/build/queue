@@ -269,6 +269,7 @@ l/libbytesize.sh
 l/nss.sh
 n/p11-kit.sh
 n/make-ca.sh
+d/swig.sh
 
 
 # l/gobject-introspection.sh
@@ -280,7 +281,6 @@ n/make-ca.sh
 # ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
-# d/swig.sh
 # n/gpgme.sh
 # l/volume-key.sh
 # l/libblockdev.sh

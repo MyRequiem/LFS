@@ -225,6 +225,7 @@ https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
 https://github.com/storaged-project/libbytesize/releases/download/2.7/libbytesize-2.7.tar.gz
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_88_1_RTM/src/nss-3.88.1.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/nss-3.88.1-standalone-1.patch
+https://downloads.sourceforge.net/swig/swig-4.1.1.tar.gz
 
 
 ================================================================================
@@ -240,7 +241,6 @@ https://download.gnome.org/sources/libgudev/234/libgudev-234.tar.xz
 https://www.freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/polkit-0.118-fix_elogind_detection-1.patch
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
-https://downloads.sourceforge.net/swig/swig-4.0.2.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.15.1.tar.bz2
 https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 https://github.com/storaged-project/libblockdev/releases/download/2.25-1/libblockdev-2.25.tar.gz

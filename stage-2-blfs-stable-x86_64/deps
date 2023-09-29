@@ -24,7 +24,7 @@ bind-utils                          mit-kerberos-v5
 bindfs                              glib
 blfs-bootscripts
 bluez                               libpcap
-boost                               highlight, nghttp2, libsigc++2
+boost                               highlight, nghttp2, libsigc++2, swig
 bpf-utils                           iptables
 brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
@@ -218,7 +218,7 @@ passwdqc                            cryptsetup
 patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git, slang
-pcre2                               wget, glib, git, libbytesize
+pcre2                               wget, glib, git, libbytesize, swig
 perl-authen-sasl                    git
 perl-digest-crc                     parted
 perl-http-daemon                    wget
@@ -341,6 +341,7 @@ sshfs                               vifm
 stunnel                             curl
 subversion                          git, cmake
 sudo
+swig
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
@@ -1028,7 +1029,6 @@ zsh                                 elogind
 # startup-notification                rxvt-unicode, i3
 # svgalib                             links, sdl
 # svthevcenc                          gst-plugins-bad
-# swig                                gpgme, volume-key, lcms
 # systemtap                           gjs
 # t1lib                               php
 # taglib                              gst-plugins-good
