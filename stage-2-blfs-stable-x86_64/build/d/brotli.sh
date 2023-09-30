@@ -10,7 +10,6 @@ PRGNAME="brotli"
 # Required:    cmake
 # Recommended: no
 # Optional:    python2 (для python2-bindings)
-#              python3 (для python3-bindings)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,8 +21,8 @@ mkdir -pv "${TMP_DIR}"
 # исправим проблему в файлах pkg-config
 sed -i 's@-R..libdir.@@' scripts/*.pc.in
 
-mkdir build
-cd build || exit 1
+mkdir out
+cd out || exit 1
 
 cmake                           \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,19 +33,26 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# собираем python-bindings
 cd .. || exit 1
 
-# python 2
+# Python3 bindings
+pip3 wheel               \
+    --wheel-dir=./dist   \
+    --no-deps            \
+    --no-build-isolation \
+    ./ || exit 1
+
+pip3 install            \
+    --root="${TMP_DIR}" \
+    --find-links=./dist \
+    --no-cache-dir      \
+    --no-user           \
+    --no-index Brotli || exit 1
+
+# Python 2
 if command -v python2 &>/dev/null; then
     python2 setup.py build || exit 1
     python2 setup.py install --optimize=1 --root="${TMP_DIR}"
-fi
-
-# python 3
-if command -v python3 &>/dev/null; then
-    python3 setup.py build || exit 1
-    python3 setup.py install --optimize=1 --root="${TMP_DIR}"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1

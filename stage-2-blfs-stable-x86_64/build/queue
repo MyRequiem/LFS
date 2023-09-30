@@ -272,6 +272,8 @@ n/make-ca.sh
 d/swig.sh
 ap/itstool.sh
 l/libssh2.sh
+d/brotli.sh
+n/gnutls.sh
 n/curl.sh
 
 
@@ -294,7 +296,6 @@ n/curl.sh
 # ap/mc.sh
 # ap/vim.sh
 # a/fcron.sh
-# d/brotli.sh
 # ap/mc.sh
 # n/exim.sh
 # d/rustc.sh

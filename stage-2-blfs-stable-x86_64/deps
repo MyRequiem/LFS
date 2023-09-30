@@ -31,7 +31,7 @@ c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
 chronyd                             dhcpcd
 clisp
-cmake                               llvm, json-c, libjpeg-turbo, c-ares
+cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli
 cmocka                              gnutls, mit-kerberos-v5
 cpio
 cryptsetup
@@ -235,7 +235,7 @@ postfix                             gnupg, sudo
 postgresql                          cyrus-sasl, openldap
 pth                                 libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                             yasm, docbook-xsl
+python2                             yasm, docbook-xsl, brotli
 python2-libxml2                     libxslt, docbook-xsl
 python3                             lsb-tools
 python3-argcomplete                 python3-pytest
