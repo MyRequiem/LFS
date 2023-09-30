@@ -31,10 +31,6 @@ mkdir -pv "${TMP_DIR}"
     --without-javascript \
     --without-maximum-compile-warnings || exit 1
 
-./configure --prefix=/usr                      \
-            --without-javascript               \
-            --without-maximum-compile-warnings &&
-
 make || exit 1
 
 # тесты
@@ -56,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # underlying C/C++ code. In addition, SWIG provides a variety of customization
 # features that let you tailor the wrapping process to suit your application.
 #
-# Home page: http://www.swig.org/
+# Home page: http://www.${PRGNAME}.org/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
