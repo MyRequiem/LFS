@@ -31,12 +31,12 @@ c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
 chronyd                             dhcpcd
 clisp
-cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli
+cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc
 cmocka                              gnutls, mit-kerberos-v5
 cpio
 cryptsetup
 cunit                               nghttp2
-curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake
+curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc
 curlftpfs                           vifm
 cyrus-sasl                          openldap
 cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
@@ -80,7 +80,7 @@ fwtk                                sudo
 gc                                  w3m, guile
 gcc                                 pth, cmake
 gcr                                 pinentry
-gdb                                 openssh, glib, gcc, guile
+gdb                                 openssh, glib, gcc, guile, rustc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
@@ -132,6 +132,7 @@ libevent                            tmux, nghttp2
 libexif
 libffcall                           clisp
 libgcrypt                           gnupg, libxslt, libssh2
+libgit2                             rustc
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls, whois
 libidn2                             gnutls, libpsl, wget, curl, whois
@@ -154,7 +155,7 @@ libsectok                           openssh
 libsigc++2
 libsigsegv                          clisp
 libssh                              cryptsetup
-libssh2                             curl
+libssh2                             curl, rustc
 libtasn1                            p11-kit, gnutls
 libtirpc                            libnsl
 libunistring                        libidn2, gnutls, guile
@@ -165,7 +166,7 @@ libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, el
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
-llvm                                dhcpcd, icu
+llvm                                dhcpcd, icu, rustc
 lm-sensors                          htop
 lnav
 lrzip
@@ -323,6 +324,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
+rustc
 samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
@@ -1002,7 +1004,6 @@ zsh                                 elogind
 # rpm                                 rpm2tgz
 # rpm2tgz
 # rtmpdump                            gst-plugins-bad
-# rustc                               mozjs, librsvg
 # rxvt-unicode
 # sane                                imagemagick
 # sassc                               gtk+3

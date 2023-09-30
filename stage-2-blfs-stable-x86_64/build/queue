@@ -275,6 +275,7 @@ l/libssh2.sh
 d/brotli.sh
 n/gnutls.sh
 n/curl.sh
+d/rustc.sh
 
 
 # l/gobject-introspection.sh
@@ -298,7 +299,6 @@ n/curl.sh
 # a/fcron.sh
 # ap/mc.sh
 # n/exim.sh
-# d/rustc.sh
 # d/mozjs.sh
 # l/polkit.sh
 # a/upower.sh

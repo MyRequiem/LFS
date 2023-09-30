@@ -5,11 +5,12 @@ PRGNAME="rustc"
 ### Rustc (The Rust programming language)
 # Язык программирования Rust
 
-# Required:    curl
-#              cmake
+# Required:    cmake
+# Recommended: curl
 #              libssh2
-# Recommended: llvm
-# Optional:    gdb (для тестов)
+#              llvm
+# Optional:    gdb     (для тестов)
+#              libgit2 (https://libgit2.org/)
 
 # NOTES:
 #  * Перед обновлением пакета старую версию нужно удалить из системы.
@@ -23,8 +24,8 @@ source "${ROOT}/check_environment.sh" || exit 1
 INSTALLED="$(find /var/log/packages/ -type f -name "rustc-*")"
 if [ -n "${INSTALLED}" ]; then
     INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
-    echo "${INSTALLED_VERSION} already installed. Before building Rust "
-    echo "package, you need to remove it."
+    echo "${PRGNAME} version ${INSTALLED_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
     removepkg --no-color "${INSTALLED}"
 fi
 
@@ -46,9 +47,10 @@ mkdir -pv "${TMP_DIR}"
 
 # конфиг для сборки
 cat << EOF > config.toml
-# see config.toml.example for more possible options See the 8.4 book for an
-# example using shipped LLVM e.g. if not installing clang, or using a version
-# before 10.0
+# see config.toml.example for more possible options
+
+# tell x.py to not keep printing an annoying warning
+changelog-seen = 2
 
 [llvm]
 # by default, rust will build for a myriad of architectures
@@ -61,8 +63,19 @@ link-shared = true
 # omit docs to save time and space (default is to build them)
 docs = false
 
-# install cargo as well as rust
+# install extended tools: cargo, clippy, etc.
 extended = true
+
+# do not query new versions of dependencies online
+locked-deps = true
+
+# specify which extended tools (those from the default install)
+tools = ["cargo", "clippy", "rustfmt"]
+
+# use the source code shipped in the tarball for the dependencies: the
+# combination of this and the "locked-deps" entry avoids downloading many
+# crates from internet, and makes the rustc build more stable.
+vendor = true
 
 [install]
 prefix = "/usr"
@@ -70,10 +83,11 @@ docdir = "share/doc/${PRGNAME}-${VERSION}"
 
 [rust]
 channel = "stable"
-rpath = false
+description = "for BLFS 11.3"
 
-# BLFS does not install the FileCheck executable from llvm,
-# so disable codegen tests
+# BLFS used to not install the FileCheck executable from llvm, so disabled
+# codegen tests.  The assembly tests rely on FileCheck and cannot easily be
+# disabled, so those will anyway fail if FileCheck has not been installed
 codegen-tests = false
 
 [target.x86_64-unknown-linux-gnu]
@@ -100,14 +114,16 @@ EOF
 sed -i 's/"-y", "30"/"-k", "-y", "30"/' src/bootstrap/bootstrap.py || exit 1
 
 # сборка
-export RUSTFLAGS="${RUSTFLAGS} -C link-args=-lffi"
-python3 ./x.py build --exclude src/tools/miri
+{
+    [ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1;
+} && python3 ./x.py build
 
 # тесты
 # python3 ./x.py test --verbose --no-fail-fast | tee rustc-testlog
 #
 # количество неудачных тестов:
-# grep '^test result:' rustc-testlog | awk  '{ sum += $6 } END { print sum }'
+# grep '^test result:' rustc-testlog | \
+#   awk '{sum1 += $4; sum2 += $6} END { print sum1 " passed; " sum2 " failed" }'
 
 # установка
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
@@ -127,7 +143,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # language.
 #
 # Home page: https://www.rust-lang.org/
-# Download:  https://static.rust-lang.org/dist/${PRGNAME}-${VERSION}-src.tar.gz
+# Download:  https://static.rust-lang.org/dist/${PRGNAME}-${VERSION}-src.tar.xz
 #
 EOF
 

@@ -230,6 +230,7 @@ https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://www.libssh2.org/download/libssh2-1.10.0.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/libssh2-1.10.0-upstream_fix-1.patch
 https://github.com/google/brotli/archive/v1.0.9/brotli-1.0.9.tar.gz
+https://static.rust-lang.org/dist/rustc-1.67.1-src.tar.xz
 
 
 ================================================================================
@@ -419,7 +420,6 @@ https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-fon
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
 https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.32.tar.bz2
-https://static.rust-lang.org/dist/rustc-1.47.0-src.tar.gz
 https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0ee50652091363ab0d17e335e5e74fbe/shared-mime-info-2.1.tar.xz
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
