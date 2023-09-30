@@ -97,7 +97,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3 certificates, and
 # other security standards.
 #
-# Home page: https://developer.mozilla.org/ru/docs/NSS
+# Home page: https://firefox-source-docs.mozilla.org/security/${PRGNAME}/index.html
 # Download:  https://archive.mozilla.org/pub/security/${PRGNAME}/releases/NSS_${VER}_RTM/src/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
