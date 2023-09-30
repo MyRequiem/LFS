@@ -226,6 +226,7 @@ https://github.com/storaged-project/libbytesize/releases/download/2.7/libbytesiz
 https://archive.mozilla.org/pub/security/nss/releases/NSS_3_88_1_RTM/src/nss-3.88.1.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/nss-3.88.1-standalone-1.patch
 https://downloads.sourceforge.net/swig/swig-4.1.1.tar.gz
+https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 
 
 ================================================================================
@@ -247,7 +248,6 @@ https://github.com/storaged-project/libblockdev/releases/download/2.25-1/libbloc
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.2/udisks-2.9.2.tar.bz2
 https://ftp.exim.org/pub/exim/exim4/exim-4.94.tar.xz
 http://software.calhariz.com/at/at_3.2.1.orig.tar.gz
-http://files.itstool.org/itstool/itstool-2.0.6.tar.bz2
 http://ftp.midnight-commander.org/mc-4.8.26.tar.xz
 http://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz

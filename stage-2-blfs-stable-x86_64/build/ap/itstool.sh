@@ -37,8 +37,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # rules from the W3C Internationalization Tag Set (ITS) to determine what to
 # translate and how to separate it into PO file messages.
 #
-# Home page: http://itstool.org/
-# Download:  http://files.itstool.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://itstool.org/
+# Download:  https://files.itstool.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

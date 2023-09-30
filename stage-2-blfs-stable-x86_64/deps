@@ -53,7 +53,7 @@ docbook-dsssl                       docbook-utils
 docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        docbook-dsssl
 docbook-utils                       libsigc++2
-docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2
+docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 docbook2x                           git
 dosfstools                          parted
@@ -110,6 +110,7 @@ install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, 
 iptables
 isl                                 gcc
 iso-codes
+itstool
 iw
 jansson                             nghttp2
 jemalloc                            nghttp2
@@ -569,7 +570,6 @@ zsh                                 elogind
 # ipaex-fonts-ttf
 # isort2                              pylint2
 # isort3                              pylint3
-# itstool                             shared-mime-info, zenity
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 # jasper                              qt5, gegl, imagemagick
 # jbig-kit                            libtiff, imagemagick
