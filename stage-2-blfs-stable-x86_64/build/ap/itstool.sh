@@ -19,7 +19,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 PYTHON=/usr/bin/python3 \
-./configure \
+./configure             \
     --prefix=/usr || exit 1
 
 make || exit 1
