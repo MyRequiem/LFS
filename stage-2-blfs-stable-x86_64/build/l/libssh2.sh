@@ -9,9 +9,10 @@ PRGNAME="libssh2"
 
 # Required:    no
 # Recommended: no
-# Optional:    gnupg     (для тестов)
-#              libgcrypt (для тестов)
-#              openssh   (для тестов)
+# Optional:    --- для тестов ---
+#              gnupg
+#              libgcrypt
+#              openssh
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,6 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch"
 
 ./configure       \
     --prefix=/usr \
@@ -37,8 +40,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Libssh2 package is a client-side C library implementing the SSH2 protocol.
 #
-# Home page: http://www.libssh2.org/
-# Download:  https://www.libssh2.org/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://www.${PRGNAME}.org/download/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

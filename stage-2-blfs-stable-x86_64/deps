@@ -86,7 +86,7 @@ gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
 glib                                sshfs, w3m, python3-dbus, dbus-glib
 glib-networking                     glib
-gnupg                               git, smartmontools, mit-kerberos-v5
+gnupg                               git, smartmontools, mit-kerberos-v5, libssh2
 gnutls                              wget, curl, gnupg, openldap
 gobject-introspection               glib, elogind
 gpm
@@ -131,7 +131,7 @@ libev                               nghttp2
 libevent                            tmux, nghttp2
 libexif
 libffcall                           clisp
-libgcrypt                           gnupg, libxslt
+libgcrypt                           gnupg, libxslt, libssh2
 libgpg-error                        libassuan, libksba, libgcrypt, pinentry
 libidn                              gnutls, whois
 libidn2                             gnutls, libpsl, wget, curl, whois
@@ -209,7 +209,7 @@ openldap                            curl, gnupg, sudo, cyrus-sasl, mit-kerberos-
 opensc                              openssh
 openslp                             openldap
 opensp                              openjade, docbook-dsssl
-openssh                             sshfs, git
+openssh                             sshfs, git, libssh2
 opie                                sudo
 p11-kit                             make-ca, gnutls, python3-requests, nss
 p7zip

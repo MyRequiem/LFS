@@ -271,6 +271,8 @@ n/p11-kit.sh
 n/make-ca.sh
 d/swig.sh
 ap/itstool.sh
+l/libssh2.sh
+n/curl.sh
 
 
 # l/gobject-introspection.sh
@@ -293,7 +295,6 @@ ap/itstool.sh
 # ap/vim.sh
 # a/fcron.sh
 # d/brotli.sh
-# l/libssh2.sh
 # ap/mc.sh
 # n/exim.sh
 # d/rustc.sh
