@@ -278,6 +278,7 @@ n/curl.sh
 d/rustc.sh
 n/nmap.sh
 ap/lsof.sh
+n/gpgme.sh
 
 
 # l/gobject-introspection.sh
@@ -287,7 +288,6 @@ ap/lsof.sh
 # d/python-modules/python2-libxml2.sh
 # l/aalib.sh
 # a/libgudev.sh
-# n/gpgme.sh
 # l/volume-key.sh
 # l/libblockdev.sh
 # n/exim.sh
@@ -514,7 +514,6 @@ ap/lsof.sh
 # l/sdl2.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
-# n/gpgme.sh
 # l/cairo.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh

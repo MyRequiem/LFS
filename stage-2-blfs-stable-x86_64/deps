@@ -30,7 +30,7 @@ brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
 chronyd                             dhcpcd
-clisp
+clisp                               gpgme
 cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc
 cmocka                              gnutls, mit-kerberos-v5
 cpio
@@ -58,7 +58,7 @@ docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xm
 docbook2x                           git
 dosfstools                          parted
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme
 ed
 efl                                 pinentry
 elinks                              xmlto
@@ -86,11 +86,12 @@ gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
 glib                                sshfs, w3m, python3-dbus, dbus-glib
 glib-networking                     glib
-gnupg                               git, smartmontools, mit-kerberos-v5, libssh2
+gnupg                               git, smartmontools, mit-kerberos-v5, libssh2, gpgme
 gnutls                              wget, curl, gnupg, openldap
 gobject-introspection               glib, elogind
+gpgme
 gpm
-graphviz                            libexif, llvm
+graphviz                            libexif, llvm, gpgme
 grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
@@ -121,7 +122,7 @@ keyutils                            mit-kerberos-v5
 krb4                                cyrus-sasl
 libaio                              lvm2
 libarchive                          archivemount, cmake, ed
-libassuan                           pinentry, gnupg
+libassuan                           pinentry, gnupg, gpgme
 libatasmart
 libatomic-ops                       gc
 libbytesize
@@ -319,7 +320,7 @@ python3-werkzeug                    python3-requests
 python3-xmlschema                   python3-pytest
 python3-zope-interface              python3-attrs
 pytrash
-qt5                                 pinentry, wpa-supplicant, highlight, cmake
+qt5                                 pinentry, wpa-supplicant, highlight, cmake, gpgme
 quiche                              curl
 reiserfsprogs                       lvm2
 resolv-wrapper                      mit-kerberos-v5
@@ -348,7 +349,7 @@ sshfs                               vifm
 stunnel                             curl
 subversion                          git, cmake
 sudo
-swig
+swig                                gpgme
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
@@ -525,7 +526,6 @@ zsh                                 elogind
 # google-chrome
 # gpac                                x264
 # gperftools                          libmypaint, glusterfs
-# gpgme                               volume-key, mutt
 # gptfdisk                            udisks
 # graphene                            gst-plugins-base
 # graphite-font                       graphite2
