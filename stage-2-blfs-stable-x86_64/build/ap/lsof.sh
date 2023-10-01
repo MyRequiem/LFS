@@ -8,7 +8,10 @@ PRGNAME="lsof"
 
 # Required:    libtirpc
 # Recommended: no
-# Optional:    no
+# Optional:    nmap (для тестов)
+
+### Конфигурация ядра (для запуска тестов)
+#    CONFIG_POSIX_MQUEUE=y
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -33,12 +36,8 @@ MAN="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{/usr/bin,${MAN}}
 
 ./Configure -n linux || exit 1
-
-# указываем расположение библиотеки libtirpc, которая находится в /lib
-#    CFGL="-L./lib -ltirpc"
-make CFGL="-L./lib -ltirpc"
-
-# пакет не имеет набора тестов
+make || exit 1
+# make check
 
 install -v -m0755 -o root -g root lsof "${TMP_DIR}/usr/bin"
 install -v lsof.8 "${TMP_DIR}${MAN}"
@@ -54,8 +53,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # does just that. It lists information about files that are open by the
 # processes running on the system.
 #
-# Home page: https://www.mirrorservice.org/sites/lsof.itap.purdue.edu
-# Download:  https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/${PRGNAME}/${PRGNAME}_${VERSION}.tar.gz
+# Home page: https://github.com/${PRGNAME}-org/${PRGNAME}/
+# Download:  https://github.com/${PRGNAME}-org/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}_${VERSION}.linux.tar.bz2
 #
 EOF
 

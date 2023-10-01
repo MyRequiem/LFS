@@ -138,12 +138,13 @@ libidn                              gnutls, whois
 libidn2                             gnutls, libpsl, wget, curl, whois
 libjpeg-turbo
 libksba                             gnupg
+liblinear                           nmap
 libmetalink                         curl
 libnetfilter-conntrack              iptables
 libnfnetlink                        iptables
 libnl                               iw, wpa-supplicant, htop, libpcap
 libnsl                              pth, berkeley-db, clisp, opensp
-libpcap                             iptables
+libpcap                             iptables, nmap
 libpng                              slang
 libpsl                              wget, curl
 libpwquality                        cryptsetup
@@ -155,9 +156,9 @@ libsectok                           openssh
 libsigc++2
 libsigsegv                          clisp
 libssh                              cryptsetup
-libssh2                             curl, rustc
+libssh2                             curl, rustc, nmap
 libtasn1                            p11-kit, gnutls
-libtirpc                            libnsl
+libtirpc                            libnsl, lsof
 libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
@@ -172,7 +173,8 @@ lnav
 lrzip
 lsb-tools
 lshw
-lua                                 highlight
+lsof
+lua                                 highlight, nmap
 lvm2                                parted, cryptsetup
 lynx                                pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils
 lz4                                 lrzip, rsync
@@ -194,6 +196,7 @@ nettle                              gnutls, libarchive
 nftables                            iptables
 nghttp2                             curl, cmake, bind-utils, nodejs
 ngtcp2                              curl
+nmap                                lsof
 nodejs
 npm                                 nodejs
 npth                                gnupg
@@ -219,7 +222,7 @@ passivetex                          xmlto
 passwdqc                            cryptsetup
 patchelf                            python3-meson, python3-dbus
 pciutils
-pcre                                wget, git, slang
+pcre                                wget, git, slang, nmap
 pcre2                               wget, glib, git, libbytesize, swig
 perl-authen-sasl                    git
 perl-digest-crc                     parted
@@ -236,8 +239,9 @@ postfix                             gnupg, sudo
 postgresql                          cyrus-sasl, openldap
 pth                                 libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                             yasm, docbook-xsl, brotli
+python2                             yasm, docbook-xsl, brotli, nmap
 python2-libxml2                     libxslt, docbook-xsl
+python2-pygtk                       nmap
 python3                             lsb-tools
 python3-argcomplete                 python3-pytest
 python3-asciidoc                    git, nasm
@@ -700,7 +704,6 @@ zsh                                 elogind
 # lirc                                pulseaudio
 # lmdb                                php
 # lrdf                                gst-plugins-bad
-# lsof
 # lsscsi
 # ltc-tools                           gst-plugins-bad
 # luajit                              gegl
@@ -975,7 +978,6 @@ zsh                                 elogind
 # python2-pies2overrides              python-pies
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
-# python2-pygtk                       vte2, gimp
 # python3-astroid                     pylint3
 # python3-curtsies                    bpython
 # python3-cwcwidth                    python3-curtsies, bpython

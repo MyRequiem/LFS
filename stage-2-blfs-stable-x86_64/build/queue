@@ -276,6 +276,8 @@ d/brotli.sh
 n/gnutls.sh
 n/curl.sh
 d/rustc.sh
+n/nmap.sh
+ap/lsof.sh
 
 
 # l/gobject-introspection.sh
@@ -283,8 +285,6 @@ d/rustc.sh
 # d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
-# n/nmap (NEW)
-# ap/lsof.sh
 # l/aalib.sh
 # a/libgudev.sh
 # n/gpgme.sh
