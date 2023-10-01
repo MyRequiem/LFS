@@ -130,6 +130,8 @@ export LIBSSH2_SYS_USE_PKG_CONFIG=1
 DESTDIR="${TMP_DIR}" python3 ./x.py install
 unset LIBSSH2_SYS_USE_PKG_CONFIG
 
+chmod 755 "${TMP_DIR}/usr/lib/lib"*
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
