@@ -13,11 +13,11 @@ ARCH_NAME="volume_key"
 
 # Require:     cryptsetup
 #              glib
+#              gnupg
 #              gpgme
 #              nss
 # Recommended: swig
-# Optional:    python2 (для сборки Python 2 bindings, но для этого требуется
-#                       swig, как и для сборки Python3 bindings)
+# Optional:    python2 (для сборки Python 2 bindings)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -38,12 +38,17 @@ cd "${ARCH_NAME}-${ARCH_NAME}-${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# указываем системе сборки правильные пути для gpgme и gnupg
+sed -e '/AM_PATH_GPGME/iAM_PATH_GPG_ERROR' \
+    -e 's/gpg2/gpg/' -i configure.ac
+
 PYTHON2="--without-python"
 PYTHON3="--without-python3"
 
+# для сборки Python2/3 bindings требуется пакет swig
 if command -v swig &>/dev/null; then
+    PYTHON3="--with-python3"
     command -v python2 &>/dev/null && PYTHON2="--with-python"
-    command -v python3 &>/dev/null && PYTHON3="--with-python3"
 fi
 
 autoreconf -fiv   &&
@@ -53,7 +58,7 @@ autoreconf -fiv   &&
     "${PYTHON3}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

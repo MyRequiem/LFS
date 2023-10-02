@@ -34,7 +34,7 @@ clisp                               gpgme
 cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc
 cmocka                              gnutls, mit-kerberos-v5
 cpio
-cryptsetup
+cryptsetup                          volume-key
 cunit                               nghttp2
 curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc
 curlftpfs                           vifm
@@ -84,12 +84,12 @@ gdb                                 openssh, glib, gcc, guile, rustc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
-glib                                sshfs, w3m, python3-dbus, dbus-glib
+glib                                sshfs, w3m, python3-dbus, dbus-glib, volume-key
 glib-networking                     glib
-gnupg                               git, smartmontools, mit-kerberos-v5, libssh2, gpgme
+gnupg                               git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                              wget, curl, gnupg, openldap
 gobject-introspection               glib, elogind
-gpgme
+gpgme                               volume-key
 gpm
 graphviz                            libexif, llvm, gpgme
 grc
@@ -202,7 +202,7 @@ nodejs
 npm                                 nodejs
 npth                                gnupg
 nspr                                nss
-nss                                 p11-kit, make-ca
+nss                                 p11-kit, make-ca, volume-key
 ntfs-3g
 ntp                                 dhcpcd
 ocaml                               llvm
@@ -240,7 +240,7 @@ postfix                             gnupg, sudo
 postgresql                          cyrus-sasl, openldap
 pth                                 libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                             yasm, docbook-xsl, brotli, nmap
+python2                             yasm, docbook-xsl, brotli, nmap, volume-key
 python2-libxml2                     libxslt, docbook-xsl
 python2-pygtk                       nmap
 python3                             lsb-tools
@@ -349,7 +349,7 @@ sshfs                               vifm
 stunnel                             curl
 subversion                          git, cmake
 sudo
-swig                                gpgme
+swig                                gpgme, volume-key
 sysprof                             glib
 sysstat                             openssh
 texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted
@@ -368,6 +368,7 @@ usbutils
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
 vifm
+volume-key
 w3m                                 python3-asciidoc, xmlto, docbook-utils
 wget                                pciutils, smartmontools, usbutils
 which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs
@@ -1074,7 +1075,6 @@ zsh                                 elogind
 # vo-amrwb                            gst-plugins-bad
 # vo-amrwbenc                         ffmpeg
 # voikko                              enchant
-# volume-key                          libblockdev
 # vte2                                qemu
 # vte3                                qemu
 # vulkan                              gst-plugins-bad, qt5

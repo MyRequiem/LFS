@@ -235,6 +235,7 @@ https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.18.0.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/11.3/gpgme-1.18.0-gpg_error_1_46-1.patch
+https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 
 
 ================================================================================
@@ -249,7 +250,6 @@ https://download.gnome.org/sources/libgudev/234/libgudev-234.tar.xz
 https://www.freedesktop.org/software/polkit/releases/polkit-0.118.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/polkit-0.118-fix_elogind_detection-1.patch
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
-https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
 https://github.com/storaged-project/libblockdev/releases/download/2.25-1/libblockdev-2.25.tar.gz
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.2/udisks-2.9.2.tar.bz2
 https://ftp.exim.org/pub/exim/exim4/exim-4.94.tar.xz

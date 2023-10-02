@@ -279,6 +279,7 @@ d/rustc.sh
 n/nmap.sh
 ap/lsof.sh
 n/gpgme.sh
+l/volume-key.sh
 
 
 # l/gobject-introspection.sh
@@ -288,7 +289,6 @@ n/gpgme.sh
 # d/python-modules/python2-libxml2.sh
 # l/aalib.sh
 # a/libgudev.sh
-# l/volume-key.sh
 # l/libblockdev.sh
 # n/exim.sh
 # a/fcron.sh
