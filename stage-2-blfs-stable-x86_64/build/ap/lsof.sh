@@ -19,7 +19,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f \
     -name "${PRGNAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d _ -f 1 | rev)"
+    rev | cut -d . -f 4- | cut -d _ -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -27,9 +27,7 @@ mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
 tar xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}_${VERSION}" || exit 1
-tar xvf "${PRGNAME}_${VERSION}_src.tar"
-cd "${PRGNAME}_${VERSION}_src" || exit 1
+cd "${PRGNAME}_${VERSION}"* || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man8"
