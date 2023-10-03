@@ -7,8 +7,7 @@ ARCH_NAME="firefox"
 # Движок Mozilla JavaScript, написанный на C. Включает в себя интерпретатор
 # JavaScript и библиотеки.
 
-# Required:    autoconf213
-#              icu
+# Required:    icu
 #              rustc
 #              which
 # Recommended: no
@@ -44,8 +43,6 @@ cd obj || exit 1
 SHELL=/bin/bash
 export SHELL
 
-# система сборки Firefox теперь предпочитает clang, поэтому переопределим его
-#    CC=gcc CXX=g++
 # система сборки firefox ищет файл llvm-objdump, но поскольку мы строим
 # автономный движок JS, а не весь браузер, llvm практически не используется,
 # поэтому переопределим переменную для сборки движка без llvm
@@ -53,8 +50,7 @@ export SHELL
 # jemalloc который содержит mozjs конфликтует с malloc из glibc, поэтому
 # отключаем его
 #    --disable-jemalloc
-CC=gcc CXX=g++                  \
-../js/src/configure             \
+sh ../js/src/configure.in       \
     --prefix=/usr               \
     --with-intl-api             \
     --with-system-zlib          \
@@ -70,6 +66,10 @@ make || exit 1
 # JIT тесты
 # make -C js/src check-jit-test JITTEST_EXTRA_ARGS="--timeout 300"
 
+# процесс установки приводит к сбою любой работающей программы, которая
+# ссылается на библиотеку JS102 (например, GNOME Shell), поэтому перед
+# установкой удалим старую версию библиотеки:
+rm -fv /usr/lib/libmozjs-102.so
 make install DESTDIR="${TMP_DIR}"
 
 # удалим достаточно большую статическую библиотеку, которая не используется ни
@@ -79,7 +79,7 @@ rm -vf "${TMP_DIR}/usr/lib/libjs_static.ajs"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 chmod 644 "${TMP_DIR}/usr/lib/pkgconfig/mozjs-${MAJ_VERSION}.pc"
 
-# запретим js78-config использовать ошибочные CFLAGS
+# запретим jsXXX-config использовать ошибочные CFLAGS
 sed -i '/@NSPR_CFLAGS@/d' "${TMP_DIR}/usr/bin/js${MAJ_VERSION}-config"
 
 # установим ссылки в /usr/bin

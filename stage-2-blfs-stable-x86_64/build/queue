@@ -280,6 +280,7 @@ n/nmap.sh
 ap/lsof.sh
 n/gpgme.sh
 l/volume-key.sh
+d/mozjs.sh
 
 
 # l/gobject-introspection.sh
@@ -299,7 +300,6 @@ l/volume-key.sh
 # a/fcron.sh
 # ap/mc.sh
 # n/exim.sh
-# d/mozjs.sh
 # l/polkit.sh
 # a/upower.sh
 # a/udisks.sh

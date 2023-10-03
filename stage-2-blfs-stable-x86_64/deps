@@ -103,7 +103,7 @@ highlight                           vifm
 htop
 http-parser                         nodejs
 hwloc                               htop
-icu                                 libxml2, boost, nodejs
+icu                                 libxml2, boost, nodejs, mozjs
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
@@ -189,6 +189,7 @@ minisql                             unixodbc
 mit-kerberos-v5                     curl, openssh, sudo, cyrus-sasl, libtirpc
 mm-common                           libsigc++2
 mono                                libidn
+mozjs
 mruby                               nghttp2
 mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
@@ -329,7 +330,7 @@ rpcsvc-proto                        libnsl
 rrdtool                             lm-sensors
 rsync                               llvm
 ruby                                docbook-xsl
-rustc
+rustc                               mozjs
 samba                               curl
 saxon6                              docbook-xsl
 selinux                             elogind
@@ -371,7 +372,7 @@ vifm
 volume-key
 w3m                                 python3-asciidoc, xmlto, docbook-utils
 wget                                pciutils, smartmontools, usbutils
-which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs
+which                               pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs
 whois
 wiredtiger                          openldap
 wireless-tools
@@ -727,7 +728,6 @@ zsh                                 elogind
 # mjpeg-tools                         gst-plugins-bad
 # mnogosearch                         php
 # monetra                             php
-# mozjs                               polkit, gjs
 # mpg123                              gst-plugins-good
 # mpv
 # mrg                                 gegl
