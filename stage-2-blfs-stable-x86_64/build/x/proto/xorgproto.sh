@@ -18,8 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/xorg_config.sh"                        || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 mkdir build
 cd build || exit 1
@@ -38,8 +37,9 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-# документация
-install -vm 644 ../[^m]*.txt ../PM_spec "${TMP_DIR}${DOCS}"
+DOCS="${TMP_DIR}${XORG_PREFIX}/share/doc"
+[ -d "${DOCS}/${PRGNAME}" ] && \
+    mv "${DOCS}"/{"${PRGNAME}","${PRGNAME}-${VERSION}"}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -53,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # X Window system.
 #
 # Home page: https://www.x.org
-# Download:  https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2020.1.tar.bz2
+# Download:  https://xorg.freedesktop.org/archive/individual/proto/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -69,7 +69,7 @@ exim                                gnupg, sudo
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fop                                 python3-asciidoc, xmlto
+fop                                 python3-asciidoc, xmlto, xorgproto
 freetype                            graphite2
 fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
@@ -168,7 +168,7 @@ libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
@@ -250,7 +250,7 @@ python2-libxml2                     libxslt, docbook-xsl
 python2-pygtk                       nmap
 python3                             lsb-tools
 python3-argcomplete                 python3-pytest
-python3-asciidoc                    git, nasm, graphite2
+python3-asciidoc                    git, nasm, graphite2, xorgproto
 python3-attrs                       python3-pytest
 python3-build                       python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
@@ -372,7 +372,7 @@ unixodbc                            openldap
 unrar
 unzip                               docbook-xml, docbook-dtd3, docbook-dtd4
 usbutils
-util-macros
+util-macros                         xorgproto
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
 vifm
@@ -388,8 +388,9 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
-xmlto                               git, dbus, nasm, opensp
+xmlto                               git, dbus, nasm, opensp, xorgproto
 xorg-libraries                      dbus
+xorgproto
 xxhash                              rsync
 yasm                                tmux, libjpeg-turbo, mit-kerberos-v5
 yelp-tools                          dbus
@@ -1123,7 +1124,6 @@ zsh                                 elogind
 # xorg-sgml-doctools                  xorg-server
 # xorg-synaptics-driver
 # xorg-vmware-driver
-# xorgproto                           libxau, libxdmcp
 # xsel                                dmenu
 # xterm                               imagemagick
 # xvid                                ffmpeg

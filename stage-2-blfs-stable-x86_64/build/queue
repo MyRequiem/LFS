@@ -283,6 +283,7 @@ l/volume-key.sh
 d/mozjs.sh
 ap/graphite2.sh
 x/utils/util-macros.sh
+x/proto/xorgproto.sh
 
 
 # l/gobject-introspection.sh
@@ -310,7 +311,6 @@ x/utils/util-macros.sh
 # l/harfbuzz.sh
 # l/freetype.sh
 # n/links.sh
-# x/proto/xorgproto.sh
 # x/libs/libxau.sh
 # x/libs/libxdmcp.sh
 # x/xcb/xcb-proto.sh
