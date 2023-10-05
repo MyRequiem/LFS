@@ -281,6 +281,7 @@ ap/lsof.sh
 n/gpgme.sh
 l/volume-key.sh
 d/mozjs.sh
+ap/graphite2.sh
 
 
 # l/gobject-introspection.sh
@@ -305,9 +306,7 @@ d/mozjs.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/freetype.sh
-# ap/graphite2.sh
 # l/harfbuzz.sh
-# ap/graphite2.sh
 # l/freetype.sh
 # x/utils/util-macros.sh
 # n/links.sh

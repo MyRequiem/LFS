@@ -15,7 +15,7 @@ PRGNAME="harfbuzz"
 # Optional:    cairo (для сборки утилиты 'hb-view')
 #              git
 #              gtk-doc
-#              fonttools (python2 и python3 модули для тестов) https://pypi.org/project/fonttools/
+#              python3-fonttools (для тестов) https://pypi.org/project/fonttools/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
