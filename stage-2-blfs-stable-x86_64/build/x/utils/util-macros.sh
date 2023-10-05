@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configure scripts with autoconf.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/util/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/util/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

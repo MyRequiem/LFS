@@ -372,6 +372,7 @@ unixodbc                            openldap
 unrar
 unzip                               docbook-xml, docbook-dtd3, docbook-dtd4
 usbutils
+util-macros
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
 vdo                                 lvm2
 vifm
@@ -1060,7 +1061,6 @@ zsh                                 elogind
 # urlscan
 # usbredir                            spice-gtk
 # utah-raster-toolkit                 imagemagick
-# util-macros                         xorgproto, xbitmaps
 # utimer
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
 # vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
