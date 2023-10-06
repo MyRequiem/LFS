@@ -145,7 +145,7 @@ s/docbook-xml.sh
 s/docbook-xsl.sh
 l/libxslt.sh
 l/glib.sh
-a/elogind
+a/elogind.sh
 a/dbus.sh
 l/libsigsegv.sh
 d/c2man.sh
@@ -288,9 +288,11 @@ x/libs/libxau.sh
 x/libs/libxdmcp.sh
 x/xcb/xcb-proto.sh
 x/libs/libxcb.sh
+l/gobject-introspection.sh
+l/glib.sh
+a/elogind.sh
 
 
-# l/gobject-introspection.sh
 # a/fcron.sh
 # d/python2.sh
 # d/python3.sh

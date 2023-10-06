@@ -26,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
 # shellcheck disable=SC2086
 ./configure        \
     ${XORG_CONFIG} \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --docdir="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check

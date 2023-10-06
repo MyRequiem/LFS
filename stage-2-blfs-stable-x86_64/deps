@@ -29,6 +29,7 @@ bpf-utils                           iptables
 brotli                              gnutls, curl
 c-ares                              curl, nghttp2, nodejs
 c2man                               fribidi
+cairo                               gobject-introspection
 chronyd                             dhcpcd
 clisp                               gpgme
 cmake                               llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2
@@ -85,7 +86,8 @@ gdb                                 openssh, glib, gcc, guile, rustc
 gdk-pixbuf                          w3m
 gdk-pixbuf-xlib                     w3m
 git                                 libidn2, python3-setuptools-scm, cmake, llvm, usbutils
-glib                                sshfs, w3m, python3-dbus, dbus-glib, volume-key
+gjs                                 gobject-introspection
+glib                                sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection
 glib-networking                     glib
 gnupg                               git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                              wget, curl, gnupg, openldap
@@ -99,7 +101,7 @@ grc
 gsasl                               curl
 gtk+2                               pinentry, w3m
 gtk+3                               pinentry
-gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize
+gtk-doc                             libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection
 guile
 harfbuzz                            graphite2
 hdparm
@@ -280,8 +282,8 @@ python3-installer                   python3-pyproject-hooks, python3-build
 python3-jinja2                      python3-pyparsing
 python3-kdcproxy                    mit-kerberos-v5
 python3-lxml                        elogind
-python3-mako
-python3-markdown
+python3-mako                        gobject-introspection
+python3-markdown                    gobject-introspection
 python3-markupsafe                  python3-requests, python3-jinja2, python3-mako
 python3-meson                       python3-dbus
 python3-mock                        python3-pytest, python3-urllib3
@@ -442,7 +444,6 @@ zsh                                 elogind
 # bs2b                                gst-plugins-bad
 # btrfs-progs                         udisks, libblockdev
 # bviplus
-# cairo                               gobject-introspection, harfbuzz, libdrm, pango, cairomm, gst-plugins-good, librsvg, python2-pycairo, python3-pycairo, ghostscript, gtk-engines, gegl, poppler, gjsa, i3
 # cairo-5c                            xorg-applications
 # cairomm                             pangomm
 # caladea-font-ttf
@@ -525,7 +526,6 @@ zsh                                 elogind
 # giflib                              imlib2, libwebp, openjdk, feh
 # gimp                                imagemagick
 # girara                              zathura
-# gjs                                 gobject-introspection, libsecret
 # glew
 # glibmm                              atkmm, pangomm
 # glm                                 slop
