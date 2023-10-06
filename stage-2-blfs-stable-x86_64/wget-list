@@ -242,6 +242,7 @@ https://www.x.org/pub/individual/util/util-macros-1.20.0.tar.xz
 https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz
 https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz
 https://www.x.org/pub/individual/lib/libXdmcp-1.1.4.tar.xz
+https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz
 
 
 ================================================================================
@@ -266,7 +267,6 @@ https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 https://downloads.sourceforge.net/freetype/freetype-2.10.4.tar.xz
 https://github.com/harfbuzz/harfbuzz/releases/download/2.7.4/harfbuzz-2.7.4.tar.xz
 http://links.twibright.com/download/links-2.21.tar.bz2
-https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.14.1.tar.xz
 https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.14.tar.xz
 https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.1.tar.bz2
 https://www.x.org/pub/individual/lib/xtrans-1.4.0.tar.bz2

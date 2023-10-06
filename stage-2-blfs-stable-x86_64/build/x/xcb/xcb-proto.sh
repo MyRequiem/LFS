@@ -6,7 +6,7 @@ PRGNAME="xcb-proto"
 # Пакет предоставляет описания протокола XML-XCB, которые libxcb использует для
 # генерирования большей части своего кода и API
 
-# Required:    python3
+# Required:    no
 # Recommended: no
 # Optional:    libxml2 (для запуска тестов)
 
@@ -25,6 +25,11 @@ PYTHON=python3 \
 
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+# при обновлении пакета до версии >1.15.1 нужно удалить
+# /usr/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
+# /usr/share/pkgconfig
+rm -f "${XORG_PREFIX}/lib/pkgconfig/${PRGNAME}.pc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -169,7 +169,7 @@ libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
 libxau
 libxdmcp
-libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
@@ -387,6 +387,7 @@ wiredtiger                          openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
+xcb-proto
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
@@ -1096,7 +1097,6 @@ zsh                                 elogind
 # x265                                gst-plugins-bad, ffmpeg, mpv
 # xbanish
 # xbitmaps                            xorg-applications
-# xcb-proto                           libxcb
 # xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification, i3
 # xcb-util-cursor                     i3
 # xcb-util-image                      xorg-server, qt5
