@@ -167,6 +167,7 @@ libtirpc                            libnsl, lsof
 libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
+libxau
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto
 libyaml                             python3-pyyaml
@@ -390,7 +391,7 @@ xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
 xmlto                               git, dbus, nasm, opensp, xorgproto
 xorg-libraries                      dbus
-xorgproto
+xorgproto                           libxau
 xxhash                              rsync
 yasm                                tmux, libjpeg-turbo, mit-kerberos-v5
 yelp-tools                          dbus
@@ -698,7 +699,6 @@ zsh                                 elogind
 # libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick, libgd, mpv
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
-# libxau                              libxcb
 # libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 # libxdmcp                            libxcb
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
