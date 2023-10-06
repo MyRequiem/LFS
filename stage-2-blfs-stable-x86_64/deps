@@ -69,7 +69,7 @@ exim                                gnupg, sudo
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
-fop                                 python3-asciidoc, xmlto, xorgproto
+fop                                 python3-asciidoc, xmlto, xorgproto, libxdmcp
 freetype                            graphite2
 fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
@@ -168,8 +168,9 @@ libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
 libxau
+libxdmcp
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
@@ -389,9 +390,10 @@ wxwidgets                           p7zip
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
-xmlto                               git, dbus, nasm, opensp, xorgproto
+xmlto                               git, dbus, nasm, opensp, xorgproto, libxdmcp
 xorg-libraries                      dbus
-xorgproto                           libxau
+xorg-sgml-doctools                  libxdmcp
+xorgproto                           libxau, libxdmcp
 xxhash                              rsync
 yasm                                tmux, libjpeg-turbo, mit-kerberos-v5
 yelp-tools                          dbus
@@ -700,7 +702,6 @@ zsh                                 elogind
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
 # libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
-# libxdmcp                            libxcb
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
@@ -1121,7 +1122,6 @@ zsh                                 elogind
 # xorg-libinput-driver
 # xorg-nouveau-driver
 # xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
-# xorg-sgml-doctools                  xorg-server
 # xorg-synaptics-driver
 # xorg-vmware-driver
 # xsel                                dmenu

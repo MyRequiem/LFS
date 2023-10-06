@@ -25,7 +25,7 @@ PRGNAME="xorg-server"
 #              xcb-util-wm         (для сборки xephyr)
 #              xmlto               (для сборки документации)
 #              libunwind           (http://mirror.yongbok.net/nongnu/libunwind/)
-#              xorg-sgml-doctools  (для сборки документации) https://www.x.org/archive/individual/doc/
+#              xorg-sgml-doctools  (для сборки документации) https://gitlab.freedesktop.org/xorg/doc/xorg-sgml-doctools
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
