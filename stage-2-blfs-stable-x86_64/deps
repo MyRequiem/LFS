@@ -58,7 +58,7 @@ docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xm
 docbook2x                           git
 dosfstools                          parted
 dovecot                             gnupg, sudo
-doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2
+doxygen                             gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb
 ed
 efl                                 pinentry
 elinks                              xmlto
@@ -167,10 +167,11 @@ libtirpc                            libnsl, lsof
 libunistring                        libidn2, gnutls, guile
 libusb                              gnupg, usbutils, libpcap
 libuv                               cmake, bind-utils, nodejs
-libxau
-libxdmcp
+libxau                              libxcb
+libxcb
+libxdmcp                            libxcb
 libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto
-libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp
+libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
 linux-pam                           openssh, sudo, elogind, cyrus-sasl
@@ -387,7 +388,7 @@ wiredtiger                          openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                           p7zip
-xcb-proto
+xcb-proto                           libxcb
 xdg-user-dirs
 xerces2-java                        docbook-xsl
 xfsprogs                            lvm2
@@ -702,7 +703,6 @@ zsh                                 elogind
 # libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick, libgd, mpv
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
-# libxcb                              xorg-libraries, xcb-util, xcb-util-keysyms, xcb-util-renderutil, xcb-util-wm, xcb-util-xrm, libxkbcommon, i3
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3

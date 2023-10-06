@@ -287,6 +287,7 @@ x/proto/xorgproto.sh
 x/libs/libxau.sh
 x/libs/libxdmcp.sh
 x/xcb/xcb-proto.sh
+x/libs/libxcb.sh
 
 
 # l/gobject-introspection.sh
@@ -314,7 +315,6 @@ x/xcb/xcb-proto.sh
 # l/harfbuzz.sh
 # l/freetype.sh
 # n/links.sh
-# x/libs/libxcb.sh
 # x/misc/fontconfig.sh
 # x/libs/xorg-libraries.sh
 # x/xcb/xcb-util.sh
