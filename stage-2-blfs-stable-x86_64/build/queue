@@ -290,7 +290,8 @@ x/xcb/xcb-proto.sh
 x/libs/libxcb.sh
 l/gobject-introspection.sh
 l/glib.sh
-a/elogind.sh
+l/harfbuzz.sh
+ap/graphite2.sh
 
 
 # a/fcron.sh
@@ -314,7 +315,6 @@ a/elogind.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/freetype.sh
-# l/harfbuzz.sh
 # l/freetype.sh
 # n/links.sh
 # x/misc/fontconfig.sh
@@ -353,7 +353,6 @@ a/elogind.sh
 # l/gdk-pixbuf.sh
 # x/libs/pixman.sh
 # l/cairo.sh
-# l/harfbuzz.sh
 # x/libs/libdrm.sh
 # l/pango.sh
 # l/hicolor-icon-theme.sh
