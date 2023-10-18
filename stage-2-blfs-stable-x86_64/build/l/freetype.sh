@@ -7,10 +7,11 @@ PRGNAME="freetype"
 # рендерить шрифты TrueType, OpenType и Type 1
 
 # Required:    no
-# Recommended: harfbuzz
+# Recommended: harfbuzz (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
 #              libpng
 #              which
 # Optional:    brotli
+#              librsvg
 #              docwriter (для сборки документации) https://pypi.org/project/docwriter/
 
 ROOT="/root/src/lfs"
@@ -25,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
 #    # AUX_MODULES += otvalid --> AUX_MODULES +=
 sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg || exit 1
 
-# включим субпиксельный рендеринг (раскомментируем определение
+# включим субпиксельный рендеринг (раскомментируем определение)
 #    #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING)
 sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     -i include/freetype/config/ftoption.h || exit 1

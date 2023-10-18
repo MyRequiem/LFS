@@ -290,7 +290,9 @@ x/xcb/xcb-proto.sh
 x/libs/libxcb.sh
 l/gobject-introspection.sh
 l/glib.sh
+l/freetype.sh
 l/harfbuzz.sh
+l/freetype.sh
 ap/graphite2.sh
 
 
@@ -314,8 +316,6 @@ ap/graphite2.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
-# l/freetype.sh
-# l/freetype.sh
 # n/links.sh
 # x/misc/fontconfig.sh
 # x/libs/xorg-libraries.sh
