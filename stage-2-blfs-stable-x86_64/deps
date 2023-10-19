@@ -37,7 +37,7 @@ cmocka                              gnutls, mit-kerberos-v5
 cpio
 cryptsetup                          volume-key
 cunit                               nghttp2
-curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc
+curl                                pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
 curlftpfs                           vifm
 cyrus-sasl                          openldap
 cython                              yasm, python3-pyyaml, python3-msgpack, nghttp2
@@ -53,7 +53,7 @@ dmidecode                           lm-sensors
 docbook-dsssl                       docbook-utils
 docbook-dtd3                        docbook-dsssl, docbook-utils
 docbook-dtd4                        docbook-dsssl
-docbook-utils                       libsigc++2
+docbook-utils                       libsigc++2, fontconfig
 docbook-xml                         libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool
 docbook-xsl                         libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
 docbook2x                           git
@@ -71,8 +71,9 @@ exim                                gnupg, sudo
 fftw
 fig2dev                             gnupg
 fltk                                pinentry
+fontconfig
 fop                                 python3-asciidoc, xmlto, xorgproto, libxdmcp
-freetype                            graphite2, harfbuzz
+freetype                            graphite2, harfbuzz, fontconfig
 fribidi
 fuse                                gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                            vifm
@@ -114,7 +115,7 @@ icu                                 libxml2, boost, nodejs, mozjs, harfbuzz
 imagemagick                         gnupg
 imlib2                              w3m
 impacket                            curl
-install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2
+install-tl-unx                      libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
 iptables
 isl                                 gcc
 iso-codes
@@ -122,7 +123,7 @@ itstool
 iw
 jansson                             nghttp2
 jemalloc                            nghttp2
-json-c                              bind-utils, cryptsetup
+json-c                              bind-utils, cryptsetup, fontconfig
 kernel-firmware
 kexec                               elogind
 keyutils                            mit-kerberos-v5
@@ -174,7 +175,7 @@ libuv                               cmake, bind-utils, nodejs
 libxau                              libxcb
 libxcb
 libxdmcp                            libxcb
-libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto
+libxml2                             wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig
 libxslt                             p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb
 libyaml                             python3-pyyaml
 links                               xmlto, docbook-utils
@@ -243,7 +244,7 @@ perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 perl-pod-pom-view-restructured      cyrus-sasl
-perl-sgmlspm                        docbook-utils
+perl-sgmlspm                        docbook-utils, fontconfig
 pinentry                            gnupg
 pocketlint                          libbytesize
 polkit                              elogind
@@ -367,7 +368,7 @@ sudo
 swig                                gpgme, volume-key
 sysprof                             glib
 sysstat                             openssh
-texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2
+texlive                             libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
 thin-provisioning-tools             lvm2
 time
 tk                                  git
@@ -378,7 +379,7 @@ trousers                            gnutls
 unbound                             gnutls
 unixodbc                            openldap
 unrar
-unzip                               docbook-xml, docbook-dtd3, docbook-dtd4
+unzip                               docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig
 usbutils
 util-macros                         xorgproto
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
@@ -508,7 +509,6 @@ zsh                                 elogind
 # flif                                imagemagick
 # flite                               gst-plugins-bad, qt5, ffmpeg
 # fluidsynth                          gst-plugins-bad
-# fontconfig                          xorg-libraries, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, cairo, pango, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ghostscript, poppler, ffmpeg, libgd
 # freefont
 # freeglut                            libtiff, jasper, libwebp
 # freetds                             apr-util, qt5

@@ -294,6 +294,7 @@ l/freetype.sh
 l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
+x/misc/fontconfig.sh
 
 
 # a/fcron.sh
@@ -317,7 +318,6 @@ ap/graphite2.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/misc/fontconfig.sh
 # x/libs/xorg-libraries.sh
 # x/xcb/xcb-util.sh
 # x/xcb/xcb-util-image.sh
@@ -796,7 +796,6 @@ ap/graphite2.sh
 # l/libosinfo.sh
 # n/tunctl.sh
 # a/fcron.sh
-# x/misc/fontconfig.sh
 # l/gtk+2.sh
 # l/gtk+3.sh
 # ap/flac.sh
