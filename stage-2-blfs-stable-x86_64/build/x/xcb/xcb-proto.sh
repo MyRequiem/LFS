@@ -27,8 +27,8 @@ PYTHON=python3 \
 make install DESTDIR="${TMP_DIR}"
 
 # при обновлении пакета до версии >1.15.1 нужно удалить
-# /usr/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
-# /usr/share/pkgconfig
+# ${XORG_PREFIX}/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
+# ${XORG_PREFIX}/share/pkgconfig
 rm -f "${XORG_PREFIX}/lib/pkgconfig/${PRGNAME}.pc"
 
 source "${ROOT}/stripping.sh"      || exit 1
