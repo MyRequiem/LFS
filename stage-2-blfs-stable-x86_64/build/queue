@@ -295,6 +295,7 @@ l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
 x/misc/fontconfig.sh
+a/ncompress.sh
 
 
 # a/fcron.sh

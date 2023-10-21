@@ -205,6 +205,7 @@ mozjs
 mruby                               nghttp2
 mysql                               cyrus-sasl, openldap
 nasm                                libjpeg-turbo
+ncompress
 net-tools                           gnutls, openssh
 nettle                              gnutls, libarchive
 nftables                            iptables
