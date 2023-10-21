@@ -36,8 +36,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 # если не установлен пакет python3-fonttools, то некоторые тесты не проходят.
 # Исправим:
@@ -76,9 +75,11 @@ make install DESTDIR="${TMP_DIR}"
 
 # документация
 if [ -n "${BUILD_DOCS}" ]; then
-    cp -vf doc/{GTF,manual}.html  "${TMP_DIR}${DOCS}"
+    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+    mkdir -p "${TMP_DIR}${DOCS}"
+    cp -vf doc/{GTF,manual}.html    "${TMP_DIR}${DOCS}"
     if [ -n "${DBLATEX}" ]; then
-        cp -vf doc/{GTF,manual}.pdf  "${TMP_DIR}${DOCS}"
+        cp -vf doc/{GTF,manual}.pdf "${TMP_DIR}${DOCS}"
     fi
 fi
 
