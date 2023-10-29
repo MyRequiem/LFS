@@ -247,6 +247,7 @@ perl-mime-base64                    git
 perl-module-build
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        docbook-utils, fontconfig
+perl-sub-identify
 perl-test-warnings
 pinentry                            gnupg
 pocketlint                          libbytesize
@@ -884,7 +885,6 @@ zsh                                 elogind
 # perl-sort-key
 # perl-specio                         perl-params-validationcompiler
 # perl-sub-exporter-progressive       perl-b-hooks-endofscope
-# perl-sub-identify                   perl-super, perl-namespace-autoclean
 # perl-sub-info                       perl-test2-suite
 # perl-sub-quote                      perl-specio
 # perl-sub-uplevel                    perl-test-exception
