@@ -296,6 +296,8 @@ l/freetype.sh
 ap/graphite2.sh
 x/misc/fontconfig.sh
 a/ncompress.sh
+x/libs/xorg-libraries.sh
+a/dbus.sh
 
 
 # a/fcron.sh
@@ -319,7 +321,6 @@ a/ncompress.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/libs/xorg-libraries.sh
 # x/xcb/xcb-util.sh
 # x/xcb/xcb-util-image.sh
 # x/xcb/xcb-util-keysyms.sh
@@ -536,7 +537,6 @@ a/ncompress.sh
 # l/gtk+3.sh
 # l/libseccomp.sh
 # l/gdk-pixbuf-xlib.sh
-# x/libs/xorg-libraries.sh
 # l/babl.sh
 # l/gegl.sh
 # l/poppler.sh
