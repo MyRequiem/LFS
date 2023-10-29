@@ -239,6 +239,7 @@ patchelf                            python3-meson, python3-dbus
 pciutils
 pcre                                wget, git, slang, nmap
 pcre2                               wget, glib, git, libbytesize, swig
+perl-archive-zip
 perl-authen-sasl                    git
 perl-digest-crc                     parted
 perl-http-daemon                    wget
@@ -249,7 +250,7 @@ perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        docbook-utils, fontconfig
 perl-sub-identify                   perl-super
 perl-super                          perl-test-mockmodule
-perl-test-mockmodule
+perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
 pinentry                            gnupg
 pocketlint                          libbytesize
@@ -385,7 +386,7 @@ trousers                            gnutls
 unbound                             gnutls
 unixodbc                            openldap
 unrar
-unzip                               docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig
+unzip                               docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                         xorgproto
 valgrind                            libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
@@ -792,7 +793,6 @@ zsh                                 elogind
 # perl-alien-libxml2                  perl-xml-libxml
 # perl-anyevent                       perl-anyevent-i3, i3
 # perl-anyevent-i3                    i3
-# perl-archive-zip
 # perl-autovivification
 # perl-b-cow                          perl-clone
 # perl-b-hooks-endofscope             perl-namespace-clean

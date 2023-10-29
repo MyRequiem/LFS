@@ -303,6 +303,7 @@ d/perl-modules/perl-module-build.sh
 d/perl-modules/perl-sub-identify.sh
 d/perl-modules/perl-super.sh
 d/perl-modules/perl-test-mockmodule.sh
+d/perl-modules/perl-archive-zip.sh
 
 
 # a/fcron.sh
@@ -550,7 +551,6 @@ d/perl-modules/perl-test-mockmodule.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/perl-modules/perl-archive-zip.sh
 # d/perl-modules/perl-autovivification.sh
 # d/perl-modules/perl-business-isbn-data.sh
 # d/perl-modules/perl-business-isbn.sh
