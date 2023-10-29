@@ -246,6 +246,7 @@ perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
 perl-pod-pom-view-restructured      cyrus-sasl
 perl-sgmlspm                        docbook-utils, fontconfig
+perl-test-warnings
 pinentry                            gnupg
 pocketlint                          libbytesize
 polkit                              elogind
@@ -902,7 +903,6 @@ zsh                                 elogind
 # perl-test-requires                  perl-module-implementation, perl-eval-closure, perl-datetime-timezone, perl-params-validate
 # perl-test-requiresinternet          perl-libwww-perl
 # perl-test-utf8                      perl-test-file
-# perl-test-warnings                  perl-test-mockmodule, perl-file-copy-recursive, perl-datetime, perl-file-slurper, perl-list-someutils-xs
 # perl-test-without-module            perl-params-validationcompiler
 # perl-test2-plugin-nowarnings        perl-params-validationcompiler
 # perl-test2-suite                    perl-test2-plugin-nowarnings, perl-ffi-checklib, perl-alien-libxml2

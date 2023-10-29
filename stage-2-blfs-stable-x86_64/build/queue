@@ -298,6 +298,7 @@ x/misc/fontconfig.sh
 a/ncompress.sh
 x/libs/xorg-libraries.sh
 a/dbus.sh
+d/perl-modules/perl-test-warnings.sh
 
 
 # a/fcron.sh
@@ -548,7 +549,6 @@ a/dbus.sh
 # d/perl-modules/perl-module-build.sh
 # d/perl-modules/perl-sub-identify.sh
 # d/perl-modules/perl-super.sh
-# d/perl-modules/perl-test-warnings.sh
 # d/perl-modules/perl-test-mockmodule.sh
 # d/perl-modules/perl-archive-zip.sh
 # d/perl-modules/perl-autovivification.sh
