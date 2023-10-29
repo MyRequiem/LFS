@@ -299,6 +299,7 @@ a/ncompress.sh
 x/libs/xorg-libraries.sh
 a/dbus.sh
 d/perl-modules/perl-test-warnings.sh
+d/perl-modules/perl-module-build.sh
 
 
 # a/fcron.sh
@@ -546,7 +547,6 @@ d/perl-modules/perl-test-warnings.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/perl-modules/perl-module-build.sh
 # d/perl-modules/perl-sub-identify.sh
 # d/perl-modules/perl-super.sh
 # d/perl-modules/perl-test-mockmodule.sh
