@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # copy of the original arguments
 #
 # Home page: https://metacpan.org/pod/Data::Dump
-# Download:  https://cpan.metacpan.org/authors/id/G/GA/GARU/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.cpan.org/authors/id/G/GA/GARU/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

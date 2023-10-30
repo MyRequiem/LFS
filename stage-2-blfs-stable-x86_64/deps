@@ -241,6 +241,8 @@ pcre                                wget, git, slang, nmap
 pcre2                               wget, glib, git, libbytesize, swig
 perl-archive-zip
 perl-authen-sasl                    git
+perl-data-dump
+perl-data-uniqid
 perl-digest-crc                     parted
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
@@ -252,6 +254,7 @@ perl-sub-identify                   perl-super
 perl-super                          perl-test-mockmodule
 perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
+perl-text-glob
 pinentry                            gnupg
 pocketlint                          libbytesize
 polkit                              elogind
@@ -812,8 +815,6 @@ zsh                                 elogind
 # perl-config-autoconf                perl-text-bibtex
 # perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
 # perl-data-compare
-# perl-data-dump
-# perl-data-uniqid
 # perl-datetime                       perl-datetime-calendar-julian, perl-datetime-format-strptime
 # perl-datetime-calendar-julian
 # perl-datetime-format-builder
@@ -910,7 +911,6 @@ zsh                                 elogind
 # perl-text-csv
 # perl-text-csv_xs                    perl-text-csv
 # perl-text-diff                      perl-test-differences
-# perl-text-glob                      perl-file-find-rule
 # perl-text-roman
 # perl-tie-cycle                      perl-business-ismn
 # perl-timedate                       perl-http-date
