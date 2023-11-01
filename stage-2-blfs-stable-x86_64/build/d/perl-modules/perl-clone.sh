@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Perl module Clone for recursively copies perl datatypes
 #
 # Home page: https://metacpan.org/pod/Clone
-# Download:  https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://cpan.metacpan.org/authors/id/G/GA/GARU/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

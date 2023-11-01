@@ -241,7 +241,8 @@ pcre                                wget, git, slang, nmap
 pcre2                               wget, glib, git, libbytesize, swig
 perl-archive-zip
 perl-authen-sasl                    git
-perl-b-cow
+perl-b-cow                          perl-clone
+perl-clone
 perl-data-dump
 perl-data-uniqid
 perl-digest-crc                     parted
@@ -812,7 +813,6 @@ zsh                                 elogind
 # perl-class-inspector                perl-file-sharedir
 # perl-class-singleton                perl-datetime-timezone
 # perl-class-tiny                     perl-test-file-sharedir
-# perl-clone                          perl-data-compare
 # perl-common-sense                   perl-types-serialiser, perl-json-xs, i3
 # perl-config-autoconf                perl-text-bibtex
 # perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
