@@ -317,6 +317,8 @@ d/perl-modules/perl-business-issn.sh
 d/perl-modules/perl-tie-cycle.sh
 d/perl-modules/perl-business-ismn.sh
 d/perl-modules/perl-business-isbn-data.sh
+d/perl-modules/perl-business-isbn.sh
+d/perl-modules/perl-autovivification.sh
 
 
 # d/python-modules/python3-numpy.sh
@@ -565,8 +567,6 @@ d/perl-modules/perl-business-isbn-data.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/perl-modules/perl-autovivification.sh
-# d/perl-modules/perl-business-isbn.sh
 # d/perl-modules/perl-capture-tiny.sh
 # d/perl-modules/perl-try-tiny.sh
 # d/perl-modules/perl-test-fatal.sh

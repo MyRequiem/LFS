@@ -241,8 +241,10 @@ pcre                                wget, git, slang, nmap
 pcre2                               wget, glib, git, libbytesize, swig
 perl-archive-zip
 perl-authen-sasl                    git
+perl-autovivification
 perl-b-cow                          perl-clone
-perl-business-isbn-data
+perl-business-isbn
+perl-business-isbn-data             perl-business-isbn
 perl-business-ismn
 perl-business-issn
 perl-class-accessor
@@ -806,9 +808,7 @@ zsh                                 elogind
 # perl-alien-libxml2                  perl-xml-libxml
 # perl-anyevent                       perl-anyevent-i3, i3
 # perl-anyevent-i3                    i3
-# perl-autovivification
 # perl-b-hooks-endofscope             perl-namespace-clean
-# perl-business-isbn
 # perl-canary-stability               perl-json-xs, perl-anyevent, i3
 # perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 # perl-class-data-inheritable         perl-exception-class
