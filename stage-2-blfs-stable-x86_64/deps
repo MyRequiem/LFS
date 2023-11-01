@@ -242,6 +242,8 @@ pcre2                               wget, glib, git, libbytesize, swig
 perl-archive-zip
 perl-authen-sasl                    git
 perl-b-cow                          perl-clone
+perl-business-isbn-data
+perl-business-ismn
 perl-business-issn
 perl-class-accessor
 perl-clone                          perl-data-compare
@@ -262,6 +264,7 @@ perl-super                          perl-test-mockmodule
 perl-test-mockmodule                perl-archive-zip
 perl-test-warnings                  perl-test-mockmodule
 perl-text-glob                      perl-file-find-rule
+perl-tie-cycle                      perl-business-ismn
 pinentry                            gnupg
 pocketlint                          libbytesize
 polkit                              elogind
@@ -806,8 +809,6 @@ zsh                                 elogind
 # perl-autovivification
 # perl-b-hooks-endofscope             perl-namespace-clean
 # perl-business-isbn
-# perl-business-isbn-data             perl-business-isbn
-# perl-business-ismn
 # perl-canary-stability               perl-json-xs, perl-anyevent, i3
 # perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
 # perl-class-data-inheritable         perl-exception-class
@@ -912,7 +913,6 @@ zsh                                 elogind
 # perl-text-csv_xs                    perl-text-csv
 # perl-text-diff                      perl-test-differences
 # perl-text-roman
-# perl-tie-cycle                      perl-business-ismn
 # perl-timedate                       perl-http-date
 # perl-try-tiny                       perl-test-fatal, perl-module-implementation, perl-b-hooks-endofscope, perl-specio, perl-http-message, perl-libwww-perl
 # perl-types-serialiser               perl-json-xs, i3
