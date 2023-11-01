@@ -242,11 +242,14 @@ pcre2                               wget, glib, git, libbytesize, swig
 perl-archive-zip
 perl-authen-sasl                    git
 perl-b-cow                          perl-clone
-perl-clone
+perl-business-issn
+perl-class-accessor
+perl-clone                          perl-data-compare
+perl-data-compare
 perl-data-dump
 perl-data-uniqid
 perl-digest-crc                     parted
-perl-file-find-rule
+perl-file-find-rule                 perl-data-compare
 perl-http-daemon                    wget
 perl-io-socket-ssl                  wget, git
 perl-mime-base64                    git
@@ -805,10 +808,8 @@ zsh                                 elogind
 # perl-business-isbn
 # perl-business-isbn-data             perl-business-isbn
 # perl-business-ismn
-# perl-business-issn
 # perl-canary-stability               perl-json-xs, perl-anyevent, i3
 # perl-capture-tiny                   perl-try-tiny, perl-ffi-checklib, perl-test-differences, perl-config-autoconf, perl-alien-build
-# perl-class-accessor
 # perl-class-data-inheritable         perl-exception-class
 # perl-class-inspector                perl-file-sharedir
 # perl-class-singleton                perl-datetime-timezone
@@ -816,7 +817,6 @@ zsh                                 elogind
 # perl-common-sense                   perl-types-serialiser, perl-json-xs, i3
 # perl-config-autoconf                perl-text-bibtex
 # perl-cpan-meta-check                perl-package-stash, perl-datetime-locale, perl-datetime
-# perl-data-compare
 # perl-datetime                       perl-datetime-calendar-julian, perl-datetime-format-strptime
 # perl-datetime-calendar-julian
 # perl-datetime-format-builder
