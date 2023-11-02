@@ -22,7 +22,7 @@ PRGNAME="dbus"
 #              valgrind
 #              *** для документации ***
 #              doxygen
-#              xmlto
+#              xmlto             (для сборки man-страниц)
 #              python3-ducktype  (https://pypi.org/project/mallard-ducktype/)
 #              yelp-tools        (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
@@ -39,30 +39,38 @@ XMLTO="--disable-xml-docs"
 DUCKTYPE="--disable-ducktype-docs"
 
 # command -v doxygen  &>/dev/null && DOXYGEN="--enable-doxygen-docs"
-# command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
+command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
 # command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
 
-./configure                                         \
-    --prefix=/usr                                   \
-    --sysconfdir=/etc                               \
-    --localstatedir=/var                            \
-    --runstatedir=/run                              \
-    --enable-user-session                           \
-    --disable-static                                \
-    --with-systemduserunitdir=no                    \
-    --with-systemdsystemunitdir=no                  \
-    --with-system-pid-file=/run/dbus/pid            \
-    "${DOXYGEN}"                                    \
-    "${XMLTO}"                                      \
-    "${DUCKTYPE}"                                   \
-    --disable-tests                                 \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
+DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
+./configure                              \
+    --prefix=/usr                        \
+    --sysconfdir=/etc                    \
+    --localstatedir=/var                 \
+    --runstatedir=/run                   \
+    --enable-user-session                \
+    --disable-static                     \
+    --with-systemduserunitdir=no         \
+    --with-systemdsystemunitdir=no       \
+    --with-system-pid-file=/run/dbus/pid \
+    --docdir="${DOC_DIR}"                \
+    "${DOXYGEN}"                         \
+    "${XMLTO}"                           \
+    "${DUCKTYPE}"                        \
+    --disable-tests                      \
     --with-system-socket=/run/dbus/system_bus_socket || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/var/run"
+
+# почистим документацию:
+find "${TMP_DIR}${DOC_DIR}" -type f -a \( \
+    -name '*.html' -o \
+    -name '*.png'  -o \
+    -name "*.svg"  -o \
+    -name "*.py" \) -delete
 
 # если установлен elogind создадим ссылку в /etc/
 #    machine-id -> /var/lib/dbus/machine-id
@@ -168,9 +176,9 @@ HELPER="/usr/libexec/dbus-daemon-launch-helper"
 chown -v root:messagebus "${HELPER}"
 chmod -v 4750            "${HELPER}"
 
-# сгенерируем D-Bus UUID, чтобы избежать предупреждений при компиляции других
-# зависимых пакетов
-dbus-uuidgen --ensure
+# остановим D-Bus сервис (если запущен), и запустим заново
+/etc/rc.d/init.d/dbus restart
+
 cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
