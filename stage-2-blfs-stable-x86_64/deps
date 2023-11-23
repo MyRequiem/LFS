@@ -40,7 +40,7 @@ cunit                                   nghttp2
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
 curlftpfs                               vifm
 cyrus-sasl                              openldap
-cython                                  yasm, python3-pyyaml, python3-msgpack, nghttp2
+cython                                  yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2
@@ -82,7 +82,7 @@ fusefat                                 vifm
 fuseiso                                 vifm
 fwtk                                    sudo
 gc                                      w3m, guile
-gcc                                     pth, cmake
+gcc                                     pth, cmake, python3-numpy
 gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc
 gdk-pixbuf                              w3m
@@ -128,6 +128,7 @@ kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
+lapack                                  python3-numpy
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
 libassuan                               pinentry, gnupg, gpgme
@@ -223,6 +224,7 @@ ntp                                     dhcpcd
 ocaml                                   llvm
 oniguruma                               slang
 open-mpi                                boost
+openblas                                python3-numpy
 openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
@@ -409,7 +411,7 @@ python2-pygtk                           nmap
 python3                                 lsb-tools
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
-python3-attrs                           python3-pytest
+python3-attrs                           python3-pytest, python3-numpy
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
@@ -428,7 +430,7 @@ python3-fonttools                       graphite2, harfbuzz
 python3-hatch-vcs                       python3-iniconfig
 python3-hatchling                       python3-hatch-vcs
 python3-httpbin                         python3-requests
-python3-hypothesis                      python3-attrs, python3-pytest
+python3-hypothesis                      python3-attrs, python3-pytest, python3-numpy
 python3-idna                            python3-requests
 python3-iniconfig                       python3-pytest
 python3-installer                       python3-pyproject-hooks, python3-build
@@ -443,6 +445,7 @@ python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
 python3-mypy                            python3-attrs
 python3-nose                            python3-pytest
+python3-numpy
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
@@ -459,7 +462,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako
+python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3

@@ -206,6 +206,7 @@ d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 d/python-modules/python3-psutil.sh
+d/python-modules/python3-numpy.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -453,7 +454,6 @@ d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 
 
-# d/python-modules/python3-numpy.sh
 # a/fcron.sh
 # d/python2.sh
 # d/python3.sh

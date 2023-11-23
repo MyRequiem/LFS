@@ -14,7 +14,7 @@ ARCH_NAME="pygtk"
 #              python2-pycairo
 #              libglade
 # Recommended: no
-# Optional:    numpy   (https://numpy.org/)
+# Optional:    python3-numpy
 #              libxslt (для сборки документации)
 
 ROOT="/root/src/lfs"
