@@ -21,12 +21,6 @@ PRGNAME="i3"
 #              startup-notification
 #              pango
 #              cairo
-#              perl-pod-simple
-#              perl-common-sense
-#              perl-canary-stability
-#              perl-types-serialiser
-#              perl-json-xs
-#              perl-anyevent
 #              perl-anyevent-i3
 #              dmenu
 # Recommended: no
