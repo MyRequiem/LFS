@@ -1,28 +1,46 @@
 #! /bin/bash
 
-PRGNAME="pylint3"
+PRGNAME="python3-pylint"
 ARCH_NAME="pylint"
 
 ### pylint3 (python code checker)
 # Инструмент статического анализа кода для Python 3
 
-# Required:    python3
+# Required:    python3-platformdirs
+#              python3-astroid
+#              python3-isort
+#              python3-mccabe
+#              python3-tomlkit
+#              python3-typing-extensions
+#              python3-dill
+#              python3-tomli
+#              python3-flit-core
+#              python3-installer
+#              python-zipp
+#              python3-pyproject-hooks
+#              python3-importlib-metadata
+#              python3-build
+#              python3-calver
+#              python3-editables
+#              python3-pathspec
+#              python3-pluggy
+#              python3-trove-classifiers
+#              python3-hatchling
+#              python3-hatch-vcs
+#              python3-poetry-core
+#              python3-lazy-object-proxy
+#              python3-wrapt
+#              -----
+#              ???
+#              -----
 #              python-pytest-runner
 #              python3-typed-ast
 #              python-toml
-#              python3-astroid
-#              isort3
-#              python-mccabe
-#              python-appdirs
+#              python3-appdirs
 #              python-configparser
 #              python-pies
 #              python-functools-lru-cache
 #              python-singledispatch
-#              python-dill
-#              python3-platformdirs
-#              python-tomlkit
-#              python-tomli
-#              python3-typing-extensions
 # Recommended: no
 # Optional:    no
 
@@ -47,23 +65,6 @@ mkdir -pv "${TMP_DIR}"
 
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
-
-# не конфликтуем с пакетом pylint2, переименовываем утилиты и создаем ссылки
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-
-    mv e${ARCH_NAME}       e${ARCH_NAME}3
-    mv ${ARCH_NAME}        ${ARCH_NAME}3
-    mv ${ARCH_NAME}-config ${ARCH_NAME}-config3
-    mv pyreverse           pyreverse3
-    mv symilar             symilar3
-
-    ln -s e${ARCH_NAME}3       e${ARCH_NAME}
-    ln -s ${ARCH_NAME}3        ${ARCH_NAME}
-    ln -s ${ARCH_NAME}-config3 ${ARCH_NAME}-config
-    ln -s pyreverse3           pyreverse
-    ln -s symilar3             symilar
-)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

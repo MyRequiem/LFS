@@ -207,6 +207,7 @@ d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 d/python-modules/python3-psutil.sh
 d/python-modules/python3-numpy.sh
+d/python-modules/python3-appdirs.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -890,8 +891,7 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-pies2overrides.sh
 # d/python-modules/python-pies.sh
 # d/python-modules/python2-futures.sh
-# d/isort3.sh
-# d/isort2.sh
+# d/python-modules/python3-isort.sh
 # d/python-modules/python3-typed-ast.sh
 # d/python-modules/python-toml.sh
 # d/python-modules/python2-lazy-object-proxy.sh
@@ -899,15 +899,13 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-wrapt.sh
 # d/python-modules/python3-astroid.sh
 # d/python-modules/python2-astroid.sh
-# d/python-modules/python-appdirs.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
 # d/python-modules/python-dill.sh
 # d/python-modules/python3-platformdirs.sh
 # d/python-modules/python-tomlkit.sh
 # d/python-modules/python-tomli.sh
-# d/pylint3.sh
-# d/pylint2.sh
+# d/python-modules/python3-pylint.sh
 # d/python-modules/python-blessings.sh
 # d/python-modules/python3-cwcwidth.sh
 # d/python-modules/python3-curtsies.sh

@@ -409,6 +409,7 @@ python2                                 yasm, docbook-xsl, brotli, nmap, volume-
 python2-libxml2                         libxslt, docbook-xsl
 python2-pygtk                           nmap
 python3                                 lsb-tools
+python3-appdirs
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
 python3-attrs                           python3-pytest, python3-numpy
@@ -739,8 +740,7 @@ zsh                                     elogind
 # intel-gpu-tools                     libva
 # inxi
 # ipaex-fonts-ttf
-# isort2                              pylint2
-# isort3                              pylint3
+# python3-isort                       python3-pylint
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 # jasper                              qt5, gegl, imagemagick
 # jbig-kit                            libtiff, imagemagick
@@ -952,29 +952,27 @@ zsh                                     elogind
 # pyatspi2                            gtk+3
 # pycodestyle                         flake8
 # pyflakes                            python3-pygobject3, flake8
-# pylint2
-# pylint3
-# python-appdirs                      pylint3
+# python3-pylint
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
 # python-certifi                      python3-requests
-# python-configparser                 flake8, pylint3, pylint2
-# python-dill                         pylint3
+# python-configparser                 flake8, python3-pylint
+# python-dill                         python3-pylint
 # python-funcsigs                     python3-pytest
-# python-functools-lru-cache          pylint3, pylint2
+# python-functools-lru-cache          python3-pylint
 # python-greenlet                     bpython
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
-# python-mccabe                       flake8, pylint3, pylint2
+# python-mccabe                       flake8, python3-pylint
 # python-more-itertools               python3-pytest
 # python-netifaces                    bumblebee-status
 # python-pathlib2                     python3-pytest
-# python-pies                         isort2, isort3, pylint3
+# python-pies                         python3-isort, python3-pylint
 # python-pycurl                       python-urlgrabber
 # python-pyperclip                    bpython
-# python-pytest-runner                python-mccabe, flake8, pylint3
+# python-pytest-runner                python-mccabe, flake8, python3-pylint
 # python-scandir                      python-pathlib2, python3-pytest
-# python-singledispatch               pylint3, pylint2
+# python-singledispatch               pylint3
 # python-slip
 # python-toml                         pylint3
 # python-tomli                        pylint3
@@ -982,10 +980,10 @@ zsh                                     elogind
 # python-urlgrabber                   libvirt
 # python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid, python3-astroid
-# python2-astroid                     pylint2
+# python2-astroid
 # python2-enum34                      flake8, python-pies
 # python2-future
-# python2-futures                     isort2
+# python2-futures
 # python2-lazy-object-proxy           python2-astroid
 # python2-pies2overrides              python-pies
 # python2-pycairo                     python2-pygobject2, python2-pygtk
