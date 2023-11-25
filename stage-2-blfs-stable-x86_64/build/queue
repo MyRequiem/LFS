@@ -209,6 +209,7 @@ d/python-modules/python3-psutil.sh
 d/python-modules/python3-numpy.sh
 d/python-modules/python3-appdirs.sh
 d/python-modules/python3-platformdirs.sh
+d/python-modules/python3-astroid.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -898,7 +899,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-lazy-object-proxy.sh
 # d/python-modules/python3-lazy-object-proxy.sh
 # d/python-modules/python-wrapt.sh
-# d/python-modules/python3-astroid.sh
 # d/python-modules/python2-astroid.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
