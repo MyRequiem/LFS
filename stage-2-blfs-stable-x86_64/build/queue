@@ -208,6 +208,7 @@ d/python-modules/python3-dbus.sh
 d/python-modules/python3-psutil.sh
 d/python-modules/python3-numpy.sh
 d/python-modules/python3-appdirs.sh
+d/python-modules/python3-platformdirs.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -902,7 +903,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
 # d/python-modules/python-dill.sh
-# d/python-modules/python3-platformdirs.sh
 # d/python-modules/python-tomlkit.sh
 # d/python-modules/python-tomli.sh
 # d/python-modules/python3-pylint.sh

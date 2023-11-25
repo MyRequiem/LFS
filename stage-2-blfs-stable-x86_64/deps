@@ -409,7 +409,7 @@ python2                                 yasm, docbook-xsl, brotli, nmap, volume-
 python2-libxml2                         libxslt, docbook-xsl
 python2-pygtk                           nmap
 python3                                 lsb-tools
-python3-appdirs
+python3-appdirs                         python3-platformdirs
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
 python3-attrs                           python3-pytest, python3-numpy
@@ -428,8 +428,8 @@ python3-editables                       python3-hatchling
 python3-flask                           python3-requests
 python3-flit-core                       python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna, python3-pyparsing
 python3-fonttools                       graphite2, harfbuzz
-python3-hatch-vcs                       python3-iniconfig
-python3-hatchling                       python3-hatch-vcs
+python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
+python3-hatchling                       python3-hatch-vcs, python3-platformdirs
 python3-httpbin                         python3-requests
 python3-hypothesis                      python3-attrs, python3-pytest, python3-numpy
 python3-idna                            python3-requests
@@ -449,6 +449,7 @@ python3-nose                            python3-pytest
 python3-numpy
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
+python3-platformdirs
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
 python3-polib                           libbytesize
 python3-pretend                         python3-packaging
@@ -463,7 +464,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy
+python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
@@ -482,7 +483,7 @@ python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-
 python3-testpath                        python3-flit-core
 python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
-python3-typing-extensions               python3-setuptools-scm
+python3-typing-extensions               python3-setuptools-scm, python3-platformdirs
 python3-urllib3                         python3-requests
 python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
@@ -994,7 +995,6 @@ zsh                                     elogind
 # python3-decorator                   python-slip
 # python3-lazy-object-proxy           python3-astroid
 # python3-libvirt                     virt-manager
-# python3-platformdirs                pylint3
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3
 # python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage

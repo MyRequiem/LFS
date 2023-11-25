@@ -81,7 +81,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # feature.
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/82/e5/ae649803c4f3a4e47720337352af046089f8e9ff8a25958199df74268984/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/p/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
