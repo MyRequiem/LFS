@@ -210,6 +210,7 @@ d/python-modules/python3-numpy.sh
 d/python-modules/python3-appdirs.sh
 d/python-modules/python3-platformdirs.sh
 d/python-modules/python3-astroid.sh
+d/python-modules/python3-isort.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -893,7 +894,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-pies2overrides.sh
 # d/python-modules/python-pies.sh
 # d/python-modules/python2-futures.sh
-# d/python-modules/python3-isort.sh
 # d/python-modules/python3-typed-ast.sh
 # d/python-modules/python-toml.sh
 # d/python-modules/python2-lazy-object-proxy.sh
