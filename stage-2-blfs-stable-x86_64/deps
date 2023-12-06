@@ -453,6 +453,7 @@ python3-packaging                       python3-setuptools-scm, python3-hatchlin
 python3-pathspec                        python3-hatchling
 python3-platformdirs
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
+python3-poetry-core                     python3-isort
 python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm

@@ -1,31 +1,18 @@
 #! /bin/bash
 
-PRGNAME="python3-isort"
-ARCH_NAME="isort"
+PRGNAME="python3-poetry-core"
+ARCH_NAME="poetry_core"
 
-### isort (sort imports alphabetically)
-# Сортировка импорта Python модулей в алфавитном порядке и автоматическое
-# разделения на разделы
+### poetry-core (Poetry PEP 517 Build Backend)
+# Реализация серверной части сборки PEP 517, разработанная для Poetry
 
-# Required:    python3-poetry-core
+# Required:    no
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-5*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${ARCH_NAME}-${VERSION}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -81,15 +68,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (sort imports alphabetically)
+# Package: ${PRGNAME} (Poetry PEP 517 Build Backend)
 #
-# isort is a Python utility/library to sort imports alphabetically, and
-# automatically separated into sections. It provides a command line utility,
-# Python library and plugins for various editors to quickly sort all your
-# imports.
+# A PEP 517 build backend implementation developed for Poetry
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/i/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/p/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

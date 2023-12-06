@@ -210,6 +210,7 @@ d/python-modules/python3-numpy.sh
 d/python-modules/python3-appdirs.sh
 d/python-modules/python3-platformdirs.sh
 d/python-modules/python3-astroid.sh
+d/python-modules/python3-poetry-core.sh
 d/python-modules/python3-isort.sh
 l/jansson.sh
 n/nghttp2.sh
