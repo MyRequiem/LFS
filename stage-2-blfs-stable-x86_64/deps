@@ -454,7 +454,7 @@ python3-packaging                       python3-setuptools-scm, python3-hatchlin
 python3-pathspec                        python3-hatchling
 python3-platformdirs
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
-python3-poetry-core                     python3-isort
+python3-poetry-core                     python3-isort, python3-tomlkit
 python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm
@@ -485,6 +485,7 @@ python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, pytho
 python3-six                             libbytesize
 python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
 python3-testpath                        python3-flit-core
+python3-tomlkit
 python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
 python3-typing-extensions               python3-setuptools-scm, python3-platformdirs, python3-astroid
@@ -979,7 +980,6 @@ zsh                                     elogind
 # python-slip
 # python-toml                         pylint3
 # python-tomli                        pylint3
-# python-tomlkit                      pylint3
 # python-urlgrabber                   libvirt
 # python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid

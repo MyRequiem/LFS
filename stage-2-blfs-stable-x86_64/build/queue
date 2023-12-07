@@ -213,6 +213,7 @@ d/python-modules/python3-astroid.sh
 d/python-modules/python3-poetry-core.sh
 d/python-modules/python3-isort.sh
 d/python-modules/python3-mccabe.sh
+d/python-modules/python3-tomlkit.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -904,7 +905,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
 # d/python-modules/python-dill.sh
-# d/python-modules/python-tomlkit.sh
 # d/python-modules/python-tomli.sh
 # d/python-modules/python3-pylint.sh
 # d/python-modules/python-blessings.sh
