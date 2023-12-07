@@ -443,6 +443,7 @@ python3-lxml                            elogind
 python3-mako                            gobject-introspection
 python3-markdown                        gobject-introspection
 python3-markupsafe                      python3-requests, python3-jinja2, python3-mako
+python3-mccabe
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
@@ -966,14 +967,13 @@ zsh                                     elogind
 # python-greenlet                     bpython
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
-# python-mccabe                       flake8, python3-pylint
 # python-more-itertools               python3-pytest
 # python-netifaces                    bumblebee-status
 # python-pathlib2                     python3-pytest
 # python-pies                         python3-pylint
 # python-pycurl                       python-urlgrabber
 # python-pyperclip                    bpython
-# python-pytest-runner                python-mccabe, flake8, python3-pylint
+# python-pytest-runner                flake8, python3-pylint
 # python-scandir                      python-pathlib2, python3-pytest
 # python-singledispatch               pylint3
 # python-slip

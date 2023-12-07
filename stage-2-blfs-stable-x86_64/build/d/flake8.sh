@@ -12,7 +12,7 @@ PRGNAME="flake8"
 #              python-pytest-runner
 #              pycodestyle
 #              pyflakes
-#              python-mccabe
+#              python3-mccabe
 #              python-configparser
 #              python2-enum34
 # Recommended: no
