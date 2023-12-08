@@ -412,7 +412,7 @@ python3                                 lsb-tools
 python3-appdirs                         python3-platformdirs
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
-python3-astroid
+python3-astroid                         python3-pylint
 python3-attrs                           python3-pytest, python3-numpy
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
@@ -423,7 +423,7 @@ python3-coverage                        python3-attrs, python3-markdown
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus
-python3-dill
+python3-dill                            python3-pylint
 python3-docutils                        sshfs
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
@@ -437,14 +437,14 @@ python3-hypothesis                      python3-attrs, python3-pytest, python3-n
 python3-idna                            python3-requests
 python3-iniconfig                       python3-pytest
 python3-installer                       python3-pyproject-hooks, python3-build
-python3-isort
+python3-isort                           python3-pylint
 python3-jinja2                          python3-pyparsing
 python3-kdcproxy                        mit-kerberos-v5
 python3-lxml                            elogind
 python3-mako                            gobject-introspection
 python3-markdown                        gobject-introspection
 python3-markupsafe                      python3-requests, python3-jinja2, python3-mako
-python3-mccabe
+python3-mccabe                          python3-pylint
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
@@ -453,7 +453,7 @@ python3-nose                            python3-pytest
 python3-numpy
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
-python3-platformdirs
+python3-platformdirs                    python3-pylint
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
 python3-poetry-core                     python3-isort, python3-tomlkit
 python3-polib                           libbytesize
@@ -463,6 +463,7 @@ python3-py                              python3-pytest
 python3-pycryptodome
 python3-pygments                        python3-pytest, llvm, libbytesize
 python3-pygobject3                      dbus
+python3-pylint
 python3-pympler                         python3-attrs
 python3-pyparsing
 python3-pyproject-hooks                 python3-build
@@ -486,8 +487,8 @@ python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, pytho
 python3-six                             libbytesize
 python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
 python3-testpath                        python3-flit-core
-python3-tomli
-python3-tomlkit
+python3-tomli                           python3-pylint
+python3-tomlkit                         python3-pylint
 python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
 python3-typing-extensions               python3-setuptools-scm, python3-platformdirs, python3-astroid
@@ -959,27 +960,26 @@ zsh                                     elogind
 # pyatspi2                            gtk+3
 # pycodestyle                         flake8
 # pyflakes                            python3-pygobject3, flake8
-# python3-pylint
 # python-atomicwrites                 python3-pytest
 # python-blessings                    python3-curtsies
 # python-certifi                      python3-requests
-# python-configparser                 flake8, python3-pylint
+# python-configparser                 flake8
 # python-funcsigs                     python3-pytest
-# python-functools-lru-cache          python3-pylint
+# python-functools-lru-cache
 # python-greenlet                     bpython
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
 # python-more-itertools               python3-pytest
 # python-netifaces                    bumblebee-status
 # python-pathlib2                     python3-pytest
-# python-pies                         python3-pylint
+# python-pies
 # python-pycurl                       python-urlgrabber
 # python-pyperclip                    bpython
-# python-pytest-runner                flake8, python3-pylint
+# python-pytest-runner                flake8
 # python-scandir                      python-pathlib2, python3-pytest
-# python-singledispatch               pylint3
+# python-singledispatch
 # python-slip
-# python-toml                         pylint3
+# python-toml
 # python-urlgrabber                   libvirt
 # python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid
@@ -999,7 +999,7 @@ zsh                                     elogind
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3
 # python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
-# python3-typed-ast                   pylint3
+# python3-typed-ast
 # qdbm                                php, mutt
 # qemu
 # qt4                                 cairo
