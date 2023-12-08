@@ -423,6 +423,7 @@ python3-coverage                        python3-attrs, python3-markdown
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus
+python3-dill
 python3-docutils                        sshfs
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
@@ -962,7 +963,6 @@ zsh                                     elogind
 # python-blessings                    python3-curtsies
 # python-certifi                      python3-requests
 # python-configparser                 flake8, python3-pylint
-# python-dill                         python3-pylint
 # python-funcsigs                     python3-pytest
 # python-functools-lru-cache          python3-pylint
 # python-greenlet                     bpython
