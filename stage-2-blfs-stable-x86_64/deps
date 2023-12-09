@@ -430,6 +430,7 @@ python3-editables                       python3-hatchling
 python3-flask                           python3-requests
 python3-flit-core                       python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna, python3-pyparsing, python3-tomli
 python3-fonttools                       graphite2, harfbuzz
+python3-greenlet
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
 python3-httpbin                         python3-requests
@@ -962,7 +963,6 @@ zsh                                     elogind
 # python-configparser                 flake8
 # python-funcsigs                     python3-pytest
 # python-functools-lru-cache
-# python-greenlet                     bpython
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
 # python-more-itertools               python3-pytest
