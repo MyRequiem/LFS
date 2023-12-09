@@ -220,6 +220,7 @@ d/python-modules/python3-pylint.sh
 d/python-modules/python3-wcwidth.sh
 d/python-modules/python3-cwcwidth.sh
 d/python-modules/python3-greenlet.sh
+d/python-modules/python3-blessed.sh
 
 l/jansson.sh
 n/nghttp2.sh

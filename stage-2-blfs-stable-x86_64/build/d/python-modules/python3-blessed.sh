@@ -1,13 +1,13 @@
 #! /bin/bash
 
-PRGNAME="python3-wcwidth"
-ARCH_NAME="wcwidth"
+PRGNAME="python3-blessed"
+ARCH_NAME="blessed"
 
-### wcwidth (Measures number of Terminal)
-# Python API предназначенное для CLI утилит, которым нужно определять ширину
-# терминала, ширину строки и т.д.
+### blessed (library for making terminal apps)
+# Простая Python библиотека для создания терминальных приложений
 
-# Required:    no
+# Required:    python3-wcwidth
+#              python3-six
 # Recommended: no
 # Optional:    no
 
@@ -69,15 +69,14 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Measures number of Terminal)
+# Package: ${PRGNAME} (library for making terminal apps)
 #
-# This API is mainly for Terminal Emulator implementors - any python program
-# that attempts to determine the printable width of a string on a Terminal. It
-# is implemented in python (no C library calls) and has no 3rd-party
-# dependencies.
+# Blessed is an easy, practical library for making terminal apps, by providing
+# an elegant, well-documented interface to Colors, Keyboard input, and screen
+# position and Location capabilities.
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/w/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/b/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

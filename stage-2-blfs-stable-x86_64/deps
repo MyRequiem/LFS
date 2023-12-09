@@ -414,6 +414,7 @@ python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
 python3-astroid                         python3-pylint
 python3-attrs                           python3-pytest, python3-numpy
+python3-blessed
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
@@ -486,7 +487,7 @@ python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
-python3-six                             libbytesize
+python3-six                             libbytesize, python3-blessed
 python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
 python3-testpath                        python3-flit-core
 python3-tomli                           python3-pylint
@@ -495,7 +496,7 @@ python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
 python3-typing-extensions               python3-setuptools-scm, python3-platformdirs, python3-astroid
 python3-urllib3                         python3-requests
-python3-wcwidth
+python3-wcwidth                         python3-blessed
 python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
 python3-zope-interface                  python3-attrs
