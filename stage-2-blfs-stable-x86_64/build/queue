@@ -729,8 +729,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # ap/cups.sh
 # n/ntp.sh
 # n/traceroute.sh
-# n/fetchmail.sh
-# n/mutt.sh
 # l/adwaita-icon-theme.sh
 # l/gtk+3.sh
 # d/gjs.sh
@@ -843,8 +841,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # ap/pwgen.sh
 # n/uget.sh
 # s/ramdefrag.sh
-# d/python-modules/python-urwid.sh
-# n/urlscan.sh
 # ap/utimer.sh
 # n/wgetpaste.sh
 # ap/xbanish.sh
@@ -911,7 +907,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python3-cwcwidth.sh
 # d/python-modules/python3-curtsies.sh
 # d/python-modules/python-greenlet.sh
-# d/python-modules/python-pyperclip.sh
 # d/bpython.sh
 # ap/scrot.sh
 # l/aom.sh

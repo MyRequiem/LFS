@@ -10,12 +10,11 @@ PRGNAME="bpython"
 #              python3-pygments
 #              python3-pyxdg
 #              python3-typing-extensions
-#              python-urwid
 #              python3-cwcwidth
 #              python3-curtsies
 #              python-greenlet
 # Recommended: no
-# Optional:    python-pyperclip (копирование/вставка из буфера обмена)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

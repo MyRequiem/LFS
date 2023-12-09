@@ -661,7 +661,6 @@ zsh                                     elogind
 # fdf-toolkit                         php
 # fdk-aac                             gst-plugins-bad, ffmpeg
 # feh
-# fetchmail
 # ffmpeg                              alsa-plugins, gegl, imagemagick, cmus, mpv
 # ffms2                               x264
 # firebird                            qt5
@@ -799,7 +798,6 @@ zsh                                     elogind
 # libgd                               php, nginx
 # libglade                            python2-pygtk
 # libgsf                              goffice
-# libgssapi                           fetchmail, mutt
 # libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gimp
 # libgxps                             imagemagick
 # libheif                             gimp, imagemagick
@@ -890,7 +888,6 @@ zsh                                     elogind
 # microsoft-webcore-fonts-ttf
 # mini-sql                            php
 # mirage
-# mixmaster                           mutt
 # mjpeg-tools                         gst-plugins-bad
 # mnogosearch                         php
 # monetra                             php
@@ -900,7 +897,6 @@ zsh                                     elogind
 # mtdev                               xorg-evdev-driver, libinput, qt5
 # mujs                                mpv
 # musepack-tools                      cmus
-# mutt
 # mypaint-brushes                     gimp
 # ndctl                               libblockdev
 # neon                                gst-plugins-bad
@@ -952,7 +948,6 @@ zsh                                     elogind
 # portaudio                           mpg123
 # pov-ray                             imagemagick
 # prelink
-# procmail                            fetchmail
 # profiles                            imagemagick
 # pspg
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
@@ -974,14 +969,12 @@ zsh                                     elogind
 # python-pathlib2                     python3-pytest
 # python-pies
 # python-pycurl                       python-urlgrabber
-# python-pyperclip                    bpython
 # python-pytest-runner                flake8
 # python-scandir                      python-pathlib2, python3-pytest
 # python-singledispatch
 # python-slip
 # python-toml
 # python-urlgrabber                   libvirt
-# python-urwid                        urlscan, bpython
 # python-wrapt                        python2-astroid
 # python2-astroid
 # python2-enum34                      flake8, python-pies
@@ -1000,7 +993,7 @@ zsh                                     elogind
 # python3-pycairo                     python3-pygobject3
 # python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
 # python3-typed-ast
-# qdbm                                php, mutt
+# qdbm                                php
 # qemu
 # qt4                                 cairo
 # qt5-styleplugins
@@ -1050,7 +1043,6 @@ zsh                                     elogind
 # tibmachuni-font-ttf
 # tidy-html5                          php
 # tokudb                              mariadb
-# tokyo-cabinet                       mutt
 # traceroute
 # transfig                            libtheora
 # transmission
@@ -1066,7 +1058,6 @@ zsh                                     elogind
 # uniconvertor                        imagemagick
 # unittest-cpp                        enchant
 # upower
-# urlscan
 # usbredir                            spice-gtk
 # utah-raster-toolkit                 imagemagick
 # utimer
