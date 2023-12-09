@@ -414,14 +414,15 @@ python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
 python3-astroid                         python3-pylint
 python3-attrs                           python3-pytest, python3-numpy
-python3-blessed
+python3-blessed                         python3-curtsies
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
 python3-charset-normalizer              python3-requests
 python3-cloudpickle                     python3-attrs
 python3-coverage                        python3-attrs, python3-markdown
-python3-cwcwidth
+python3-curtsies
+python3-cwcwidth                        python3-curtsies
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus
@@ -960,7 +961,7 @@ zsh                                     elogind
 # pycodestyle                         flake8
 # pyflakes                            python3-pygobject3, flake8
 # python-atomicwrites                 python3-pytest
-# python-blessings                    python3-curtsies
+# python-blessings
 # python-certifi                      python3-requests
 # python-configparser                 flake8
 # python-funcsigs                     python3-pytest
@@ -987,7 +988,6 @@ zsh                                     elogind
 # python2-pies2overrides              python-pies
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
-# python3-curtsies                    bpython
 # python3-decorator                   python-slip
 # python3-lazy-object-proxy
 # python3-libvirt                     virt-manager
