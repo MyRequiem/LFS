@@ -217,6 +217,7 @@ d/python-modules/python3-tomlkit.sh
 d/python-modules/python3-dill.sh
 d/python-modules/python3-tomli.sh
 d/python-modules/python3-pylint.sh
+d/python-modules/python3-wcwidth.sh
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
