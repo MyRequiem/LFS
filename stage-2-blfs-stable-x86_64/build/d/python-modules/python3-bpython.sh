@@ -87,9 +87,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # syntax highlighting, expected parameter list, auto-indentation, and
 # autocompletion.
 #
-# Home page: https://${PRGNAME}-interpreter.org/
-#            https://pypi.org/project/${PRGNAME}/
-#            https://github.com/${PRGNAME}/${PRGNAME}/
+# Home page: https://${ARCH_NAME}-interpreter.org/
+#            https://pypi.org/project/${ARCH_NAME}/
+#            https://github.com/${ARCH_NAME}/${ARCH_NAME}/
 # Download:  https://files.pythonhosted.org/packages/source/b/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
