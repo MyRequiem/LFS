@@ -222,6 +222,7 @@ d/python-modules/python3-cwcwidth.sh
 d/python-modules/python3-greenlet.sh
 d/python-modules/python3-blessed.sh
 d/python-modules/python3-curtsies.sh
+d/python-modules/python3-bpython.sh
 
 l/jansson.sh
 n/nghttp2.sh
@@ -910,7 +911,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
 # d/python-modules/python-blessings.sh
-# d/bpython.sh
 # ap/scrot.sh
 # l/aom.sh
 # l/gst-plugins-bad.sh
