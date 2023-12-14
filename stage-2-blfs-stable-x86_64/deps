@@ -960,21 +960,20 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3
-# python-atomicwrites                 python3-pytest
 # python-blessings
 # python-certifi                      python3-requests
 # python-configparser
-# python-funcsigs                     python3-pytest
+# python-funcsigs
 # python-functools-lru-cache
 # python-ipaddr                       virt-manager
 # python-ipaddress                    python2-pies2overrides
-# python-more-itertools               python3-pytest
+# python-more-itertools
 # python-netifaces                    bumblebee-status
-# python-pathlib2                     python3-pytest
+# python-pathlib2
 # python-pies
 # python-pycurl                       python-urlgrabber
 # python-pytest-runner
-# python-scandir                      python-pathlib2, python3-pytest
+# python-scandir                      python-pathlib2
 # python-singledispatch
 # python-slip
 # python-toml
