@@ -188,6 +188,9 @@ https://files.pythonhosted.org/packages/source/c/cwcwidth/cwcwidth-0.1.9.tar.gz
 https://files.pythonhosted.org/packages/source/b/blessed/blessed-1.20.0.tar.gz
 https://files.pythonhosted.org/packages/source/c/curtsies/curtsies-0.4.2.tar.gz
 https://files.pythonhosted.org/packages/source/b/bpython/bpython-0.24.tar.gz
+https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-2.11.1.tar.gz
+https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-3.1.0.tar.gz
+https://files.pythonhosted.org/packages/source/f/flake8/flake8-6.1.0.tar.gz
 
 
 https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
@@ -942,8 +945,6 @@ https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
 https://github.com/okbob/pspg/archive/5.5.4/pspg-5.5.4.tar.gz
 http://prdownloads.sourceforge.net/optipng/optipng-0.7.7.tar.gz
 https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
-https://files.pythonhosted.org/packages/08/dc/b29daf0a202b03f57c19e7295b60d1d5e1281c45a6f5f573e41830819918/pycodestyle-2.8.0.tar.gz
-https://files.pythonhosted.org/packages/15/60/c577e54518086e98470e9088278247f4af1d39cb43bcbd731e2c307acd6a/pyflakes-2.4.0.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-build-against-Qt-5.15.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
@@ -956,7 +957,6 @@ https://files.pythonhosted.org/packages/df/16/e9d6bcf1aed52a55bc1696324ab2258671
 https://files.pythonhosted.org/packages/5b/82/1462f86e6c3600f2471d5f552fcc31e39f17717023df4bab712b4a9db1b3/pytest-runner-5.2.tar.gz
 https://files.pythonhosted.org/packages/16/4f/48975536bd488d3a272549eb795ac4a13a5f7fcdc8995def77fbef3532ee/configparser-4.0.2.tar.gz
 https://files.pythonhosted.org/packages/11/c4/2da1f4952ba476677a42f25cd32ab8aaf0e1c0d0e00b89822b835c7e654c/enum34-1.1.10.tar.gz
-https://files.pythonhosted.org/packages/9e/47/15b267dfe7e03dca4c4c06e7eadbd55ef4dfd368b13a0bab36d708b14366/flake8-3.9.2.tar.gz
 https://files.pythonhosted.org/packages/b9/9a/3e9da40ea28b8210dd6504d3fe9fe7e013b62bf45902b458d1cdc3c34ed9/ipaddress-1.0.23.tar.gz
 https://pypi.python.org/packages/57/5e/73f57e9819b2d2e4540ca9a77cedb9b32840035fcb046ec573c54be6531f/pies2overrides-2.6.7.tar.gz
 https://pypi.python.org/packages/54/d2/aab9e975477e75e47608417e9610a9e47721a7c889e42be5cc363280087f/pies-2.6.7.tar.gz

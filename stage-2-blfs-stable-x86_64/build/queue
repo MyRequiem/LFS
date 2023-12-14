@@ -223,6 +223,9 @@ d/python-modules/python3-greenlet.sh
 d/python-modules/python3-blessed.sh
 d/python-modules/python3-curtsies.sh
 d/python-modules/python3-bpython.sh
+d/python-modules/python3-pycodestyle.sh
+d/python-modules/python3-pyflakes.sh
+d/python-modules/python3-flake8.sh
 
 l/jansson.sh
 n/nghttp2.sh
@@ -884,8 +887,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # s/pspg.sh
 # ap/optipng.sh
 # s/jq.sh
-# d/pycodestyle.sh
-# d/pyflakes.sh
 # d/python-modules/python3-pygobject3.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
@@ -897,7 +898,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-pytest-runner.sh
 # d/python-modules/python-configparser.sh
 # d/python-modules/python2-enum34.sh
-# d/flake8.sh
 # d/python-modules/python-ipaddress.sh
 # d/python-modules/python2-pies2overrides.sh
 # d/python-modules/python-pies.sh

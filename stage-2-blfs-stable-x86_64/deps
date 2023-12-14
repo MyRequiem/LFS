@@ -431,6 +431,7 @@ python3-dill                            python3-pylint
 python3-docutils                        sshfs
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
+python3-flake8
 python3-flask                           python3-requests
 python3-flit-core                       python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna, python3-pyparsing, python3-tomli
 python3-fonttools                       graphite2, harfbuzz
@@ -449,7 +450,7 @@ python3-lxml                            elogind
 python3-mako                            gobject-introspection
 python3-markdown                        gobject-introspection
 python3-markupsafe                      python3-requests, python3-jinja2, python3-mako
-python3-mccabe                          python3-pylint
+python3-mccabe                          python3-pylint, python3-flake8
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
@@ -465,7 +466,9 @@ python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm
 python3-py                              python3-pytest
+python3-pycodestyle                     python3-flake8
 python3-pycryptodome
+python3-pyflakes                        python3-flake8
 python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython
 python3-pygobject3                      dbus
 python3-pylint
@@ -670,7 +673,6 @@ zsh                                     elogind
 # ffms2                               x264
 # firebird                            qt5
 # flac                                libsndfile, gst-plugins-good
-# flake8
 # flameshot
 # flashpix                            imagemagick
 # flif                                imagemagick
@@ -958,12 +960,10 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3
-# pycodestyle                         flake8
-# pyflakes                            python3-pygobject3, flake8
 # python-atomicwrites                 python3-pytest
 # python-blessings
 # python-certifi                      python3-requests
-# python-configparser                 flake8
+# python-configparser
 # python-funcsigs                     python3-pytest
 # python-functools-lru-cache
 # python-ipaddr                       virt-manager
@@ -973,7 +973,7 @@ zsh                                     elogind
 # python-pathlib2                     python3-pytest
 # python-pies
 # python-pycurl                       python-urlgrabber
-# python-pytest-runner                flake8
+# python-pytest-runner
 # python-scandir                      python-pathlib2, python3-pytest
 # python-singledispatch
 # python-slip
@@ -981,7 +981,7 @@ zsh                                     elogind
 # python-urlgrabber                   libvirt
 # python-wrapt                        python2-astroid
 # python2-astroid
-# python2-enum34                      flake8, python-pies
+# python2-enum34                      python-pies
 # python2-future
 # python2-futures
 # python2-lazy-object-proxy           python2-astroid
