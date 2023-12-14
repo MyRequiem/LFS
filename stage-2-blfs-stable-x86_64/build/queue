@@ -909,7 +909,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-astroid.sh
 # d/python-modules/python-functools-lru-cache.sh
 # d/python-modules/python-singledispatch.sh
-# d/python-modules/python-blessings.sh
 # ap/scrot.sh
 # l/aom.sh
 # l/gst-plugins-bad.sh
