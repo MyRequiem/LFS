@@ -14,8 +14,8 @@ ARCH_NAME="flake8"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
