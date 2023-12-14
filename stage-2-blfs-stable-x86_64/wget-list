@@ -845,7 +845,6 @@ https://libvirt.org/sources/libvirt-8.1.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
 https://libvirt.org/sources/python/libvirt-python-8.1.0.tar.gz
 https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz
-https://files.pythonhosted.org/packages/6c/ae/d26450834f0acc9e3d1f74508da6df1551ceab6c2ce0766a593362d6d57f/certifi-2021.10.8.tar.gz
 https://files.pythonhosted.org/packages/9d/a7/1b39a16cb90dfe491f57e1cab3103a15d4e8dd9a150872744f531b1106c1/ipaddr-2.2.0.tar.gz
 https://releases.pagure.org/libosinfo/osinfo-db-tools-1.10.0.tar.xz
 https://releases.pagure.org/libosinfo/osinfo-db-20220214.tar.xz

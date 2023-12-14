@@ -819,7 +819,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # l/libvirt.sh
 # d/python-modules/python3-libvirt.sh
 # l/libvirt-glib.sh
-# d/python-modules/python-certifi.sh
 # d/python-modules/python-ipaddr.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
