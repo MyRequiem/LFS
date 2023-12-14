@@ -9,7 +9,7 @@ PRGNAME="brotli"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    python2 (для python2-bindings)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -48,12 +48,6 @@ pip3 install            \
     --no-cache-dir      \
     --no-user           \
     --no-index Brotli || exit 1
-
-# Python 2
-if command -v python2 &>/dev/null; then
-    python2 setup.py build || exit 1
-    python2 setup.py install --optimize=1 --root="${TMP_DIR}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
