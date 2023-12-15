@@ -962,7 +962,6 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3
-# python-more-itertools
 # python-pathlib2
 # python-pycurl                       python-urlgrabber
 # python-pytest-runner
