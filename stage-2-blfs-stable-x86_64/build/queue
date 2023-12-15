@@ -894,7 +894,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python-funcsigs.sh
 # d/python-modules/python-pathlib2.sh
 # d/python-modules/python-pytest-runner.sh
-# d/python-modules/python-configparser.sh
 # d/python-modules/python2-enum34.sh
 # d/python-modules/python-ipaddress.sh
 # d/python-modules/python2-pies2overrides.sh
