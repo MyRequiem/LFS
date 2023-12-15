@@ -7,7 +7,7 @@ PRGNAME="libvirt"
 # Linux
 
 # Required:    libyajl
-#              python-urlgrabber
+#              python3-urlgrabber
 # Recommended: no
 # Optional:    no
 

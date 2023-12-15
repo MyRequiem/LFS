@@ -229,6 +229,7 @@ d/python-modules/python3-flake8.sh
 d/python-modules/python3-netifaces.sh
 d/python-modules/python3-ipaddr.sh
 d/python-modules/python3-pycurl.sh
+d/python-modules/python3-urlgrabber.sh
 
 l/jansson.sh
 n/nghttp2.sh
@@ -810,7 +811,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # n/netcat-openbsd.sh
 # s/numactl.sh
 # l/x265.sh
-# d/python-modules/python-urlgrabber.sh
 # l/libyajl.sh
 # l/raptor.sh
 # s/talloc.sh
