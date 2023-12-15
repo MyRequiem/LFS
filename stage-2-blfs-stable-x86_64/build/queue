@@ -226,6 +226,7 @@ d/python-modules/python3-bpython.sh
 d/python-modules/python3-pycodestyle.sh
 d/python-modules/python3-pyflakes.sh
 d/python-modules/python3-flake8.sh
+d/python-modules/python3-netifaces.sh
 
 l/jansson.sh
 n/nghttp2.sh
@@ -829,7 +830,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # l/gtk+3.sh
 # ap/flac.sh
 # ap/postgresql.sh
-# d/python-modules/python-netifaces.sh
 # s/virt-manager.sh
 # l/libev.sh
 # s/clipnotify.sh
