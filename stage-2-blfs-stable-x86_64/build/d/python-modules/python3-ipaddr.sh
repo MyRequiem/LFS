@@ -1,10 +1,11 @@
 #! /bin/bash
 
-PRGNAME="python3-netifaces"
-ARCH_NAME="netifaces"
+PRGNAME="python3-ipaddr"
+ARCH_NAME="ipaddr"
 
-### netifaces (python module to query netif info)
-# Python модуль для доступа к информации о сетевых интерфейсах.
+### ipaddr (IPv4/IPv6 manipulation library in Python)
+# Библиотека для работы с IPv4/IPv6 адресами. Используется для
+# создания/подключения/манипулирования адресами и префиксами IPv4 и IPv6
 
 # Required:    no
 # Recommended: no
@@ -68,12 +69,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (python module to query netif info)
+# Package: ${PRGNAME} (IPv4/IPv6 manipulation library in Python)
 #
-# Portable module to access network interface information in Python
+# ipaddr-py is an IPv4/IPv6 manipulation library in Python. This library is
+# used to create/poke/manipulate IPv4 and IPv6 addresses and prefixes
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/n/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/i/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

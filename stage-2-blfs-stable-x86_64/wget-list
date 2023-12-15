@@ -192,6 +192,7 @@ https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-2.11.1.
 https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-3.1.0.tar.gz
 https://files.pythonhosted.org/packages/source/f/flake8/flake8-6.1.0.tar.gz
 https://files.pythonhosted.org/packages/source/n/netifaces/netifaces-0.11.0.tar.gz
+https://files.pythonhosted.org/packages/source/i/ipaddr/ipaddr-2.2.0.tar.gz
 
 
 https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
@@ -846,7 +847,6 @@ https://libvirt.org/sources/libvirt-8.1.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
 https://libvirt.org/sources/python/libvirt-python-8.1.0.tar.gz
 https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz
-https://files.pythonhosted.org/packages/9d/a7/1b39a16cb90dfe491f57e1cab3103a15d4e8dd9a150872744f531b1106c1/ipaddr-2.2.0.tar.gz
 https://releases.pagure.org/libosinfo/osinfo-db-tools-1.10.0.tar.xz
 https://releases.pagure.org/libosinfo/osinfo-db-20220214.tar.xz
 https://releases.pagure.org/libosinfo/libosinfo-1.10.0.tar.xz

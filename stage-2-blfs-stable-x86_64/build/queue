@@ -227,6 +227,7 @@ d/python-modules/python3-pycodestyle.sh
 d/python-modules/python3-pyflakes.sh
 d/python-modules/python3-flake8.sh
 d/python-modules/python3-netifaces.sh
+d/python-modules/python3-ipaddr.sh
 
 l/jansson.sh
 n/nghttp2.sh
@@ -820,7 +821,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # l/libvirt.sh
 # d/python-modules/python3-libvirt.sh
 # l/libvirt-glib.sh
-# d/python-modules/python-ipaddr.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh
