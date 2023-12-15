@@ -962,10 +962,9 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3
-# python-ipaddress                    python2-pies2overrides
+# python-ipaddress
 # python-more-itertools
 # python-pathlib2
-# python-pies
 # python-pycurl                       python-urlgrabber
 # python-pytest-runner
 # python-scandir                      python-pathlib2
@@ -975,11 +974,10 @@ zsh                                     elogind
 # python-urlgrabber                   libvirt
 # python-wrapt                        python2-astroid
 # python2-astroid
-# python2-enum34                      python-pies
+# python2-enum34
 # python2-future
 # python2-futures
 # python2-lazy-object-proxy           python2-astroid
-# python2-pies2overrides              python-pies
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
 # python3-decorator                   python-slip
