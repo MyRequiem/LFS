@@ -967,11 +967,9 @@ zsh                                     elogind
 # python2-enum34
 # python2-future
 # python2-futures
-# python2-lazy-object-proxy
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
 # python3-decorator
-# python3-lazy-object-proxy
 # python3-libvirt                     virt-manager
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3

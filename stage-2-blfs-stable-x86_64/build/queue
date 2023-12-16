@@ -891,8 +891,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-enum34.sh
 # d/python-modules/python2-futures.sh
 # d/python-modules/python3-typed-ast.sh
-# d/python-modules/python2-lazy-object-proxy.sh
-# d/python-modules/python3-lazy-object-proxy.sh
 # ap/scrot.sh
 # l/aom.sh
 # l/gst-plugins-bad.sh
