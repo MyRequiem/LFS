@@ -965,14 +965,12 @@ zsh                                     elogind
 # pwgen
 # pyatspi2                            gtk+3
 # python2-future
-# python2-futures
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
 # python3-libvirt                     virt-manager
 # python3-pyatspi2
 # python3-pycairo                     python3-pygobject3
 # python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
-# python3-typed-ast
 # qdbm                                php
 # qemu
 # qt4                                 cairo
