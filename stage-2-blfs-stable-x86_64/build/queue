@@ -894,7 +894,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python2-lazy-object-proxy.sh
 # d/python-modules/python3-lazy-object-proxy.sh
 # d/python-modules/python-wrapt.sh
-# d/python-modules/python2-astroid.sh
 # ap/scrot.sh
 # l/aom.sh
 # l/gst-plugins-bad.sh
