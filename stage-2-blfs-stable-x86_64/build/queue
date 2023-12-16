@@ -726,7 +726,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python3-decorator.sh
 # d/python-modules/python3-pyatspi2.sh
 # d/python-modules/python2-pygtk.sh
-# d/python-modules/python-slip.sh
 # d/python-modules/python2-future.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
