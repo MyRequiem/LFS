@@ -230,7 +230,6 @@ d/python-modules/python3-netifaces.sh
 d/python-modules/python3-ipaddr.sh
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-
 l/jansson.sh
 n/nghttp2.sh
 n/curl.sh
@@ -476,6 +475,8 @@ d/perl-modules/perl-types-serialiser.sh
 d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
+ap/tk.sh
+d/git.sh
 
 
 # a/fcron.sh
@@ -732,7 +733,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # n/apache-httpd.sh
 # n/php.sh
 # ap/cups.sh
-# ap/tk.sh
 # d/python2.sh
 # d/python3.sh
 # d/ruby.sh

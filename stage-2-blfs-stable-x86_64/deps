@@ -575,7 +575,7 @@ xdg-user-dirs
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                          dbus
+xorg-libraries                          dbus, tk
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
