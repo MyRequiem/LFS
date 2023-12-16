@@ -964,7 +964,6 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2                            gtk+3
-# python2-future
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
 # python3-libvirt                     virt-manager

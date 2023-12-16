@@ -725,7 +725,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # l/redland.sh
 # d/python-modules/python3-pyatspi2.sh
 # d/python-modules/python2-pygtk.sh
-# d/python-modules/python2-future.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
 # l/enchant.sh
