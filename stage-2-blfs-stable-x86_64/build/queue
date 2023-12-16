@@ -723,7 +723,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/python-modules/python3-decorator.sh
 # d/python-modules/python3-pyatspi2.sh
 # d/python-modules/python2-pygtk.sh
 # d/python-modules/python2-future.sh
@@ -888,7 +887,6 @@ d/perl-modules/perl-anyevent-i3.sh
 # d/python-modules/python3-pygobject3.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
-# d/python-modules/python2-enum34.sh
 # d/python-modules/python2-futures.sh
 # d/python-modules/python3-typed-ast.sh
 # ap/scrot.sh

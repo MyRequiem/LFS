@@ -761,7 +761,6 @@ http://www.linuxfromscratch.org/patches/blfs/10.1/raptor-2.0.15-security_fixes-1
 http://download.librdf.org/source/rasqal-0.9.33.tar.gz
 https://downloads.sourceforge.net/iodbc/libiodbc-3.52.12.tar.gz
 http://download.librdf.org/source/redland-1.0.17.tar.gz
-https://files.pythonhosted.org/packages/source/d/decorator/decorator-4.4.2.tar.gz
 https://download.gnome.org/sources/pyatspi/2.38/pyatspi-2.38.0.tar.xz
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://files.pythonhosted.org/packages/45/0b/38b06fd9b92dc2b68d58b75f900e97884c45bedd2ff83203d933cf5851c9/future-0.18.2.tar.gz
@@ -947,7 +946,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
 http://prdownloads.sourceforge.net/qt5ct/qt5ct-1.5.tar.bz2
-https://files.pythonhosted.org/packages/11/c4/2da1f4952ba476677a42f25cd32ab8aaf0e1c0d0e00b89822b835c7e654c/enum34-1.1.10.tar.gz
 https://files.pythonhosted.org/packages/47/04/5fc6c74ad114032cd2c544c575bffc17582295e9cd6a851d6026ab4b2c00/futures-3.3.0.tar.gz
 https://files.pythonhosted.org/packages/07/d2/d55702e8deba2c80282fea0df53130790d8f398648be589750954c2dcce4/typed_ast-1.5.4.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/scrot/scrot-0.10.0.tar.xz
