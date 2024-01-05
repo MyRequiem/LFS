@@ -476,7 +476,6 @@ d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 ap/tk.sh
-d/git.sh
 
 
 # a/fcron.sh
