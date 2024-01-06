@@ -17,7 +17,7 @@ ARCH_NAME="volume_key"
 #              gpgme
 #              nss
 # Recommended: swig
-# Optional:    python2 (для сборки Python 2 bindings)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -42,19 +42,15 @@ mkdir -pv "${TMP_DIR}"
 sed -e '/AM_PATH_GPGME/iAM_PATH_GPG_ERROR' \
     -e 's/gpg2/gpg/' -i configure.ac
 
-PYTHON2="--without-python"
 PYTHON3="--without-python3"
 
-# для сборки Python2/3 bindings требуется пакет swig
-if command -v swig &>/dev/null; then
-    PYTHON3="--with-python3"
-    command -v python2 &>/dev/null && PYTHON2="--with-python"
-fi
+# для сборки Python3 bindings требуется пакет swig
+command -v swig &>/dev/null && PYTHON3="--with-python3"
 
-autoreconf -fiv   &&
-./configure       \
-    --prefix=/usr \
-    "${PYTHON2}"  \
+autoreconf -fiv &&
+./configure          \
+    --prefix=/usr    \
+    --without-python \
     "${PYTHON3}" || exit 1
 
 make || exit 1
