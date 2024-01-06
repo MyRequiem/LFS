@@ -479,13 +479,12 @@ ap/tk.sh
 d/python2.sh
 d/python-modules/python2-cython.sh
 d/yasm.sh
-s/docbook-xsl.sh
 n/nmap.sh
+d/python-modules/python2-libxml2.sh
 
 
 # a/fcron.sh
 # d/python3.sh
-# d/python-modules/python2-libxml2.sh
 # l/aalib.sh
 # a/libgudev.sh
 # l/libblockdev.sh

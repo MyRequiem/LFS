@@ -176,7 +176,7 @@ libuv                                   cmake, bind-utils, nodejs
 libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
@@ -404,9 +404,9 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2
 python2-cython
-python2-libxml2                         libxslt, docbook-xsl
+python2-libxml2                         docbook-xsl
 python2-pygtk                           nmap
 python3                                 lsb-tools
 python3-appdirs                         python3-platformdirs

@@ -8,7 +8,6 @@ ARCH_NAME="libxml2"
 
 # Required:    python2
 #              libxml2
-#              icu
 # Recommended: no
 # Optional:    no
 
@@ -18,6 +17,9 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+./configure \
+    PYTHON=python2 || exit 1
 
 cd python || exit 1
 python2 setup.py build || exit 1
