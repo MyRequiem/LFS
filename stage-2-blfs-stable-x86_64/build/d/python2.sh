@@ -34,7 +34,7 @@ BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/Python-${VERSION}".tar.?z* || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
@@ -68,9 +68,7 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
     # python2 -> python2.7
     ln -s "python${MAJ_VERSION}" python2
     # python2-config -> python2.7-config
-    ln -svf "python${MAJ_VERSION}-config" python2-config
-    # easy_install -> easy_install-2.7
-    ln -svf "easy_install-${MAJ_VERSION}" easy_install
+    ln -s "python${MAJ_VERSION}-config" python2-config
 )
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"
@@ -88,7 +86,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # adaptable as an extension language for existing applications.
 #
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
+# Download:  https://www.python.org/ftp/python/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
