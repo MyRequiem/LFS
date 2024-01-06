@@ -40,7 +40,6 @@ cunit                                   nghttp2
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
 curlftpfs                               vifm
 cyrus-sasl                              openldap
-cython                                  yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2
@@ -425,6 +424,7 @@ python3-cloudpickle                     python3-attrs
 python3-coverage                        python3-attrs, python3-markdown
 python3-curtsies                        python3-bpython
 python3-cwcwidth                        python3-curtsies, python3-bpython
+python3-cython                          yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus

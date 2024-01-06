@@ -6,7 +6,7 @@ ARCH_NAME="numpy"
 ### NumPy (fundamental package for scientific computing with Python)
 # Фундаментальный пакет для научных вычислений на Python
 
-# Required:    cython
+# Required:    python3-cython
 # Recommended: no
 # Optional:    gcc whith fortran
 #              lapack                (https://www.netlib.org/lapack/)

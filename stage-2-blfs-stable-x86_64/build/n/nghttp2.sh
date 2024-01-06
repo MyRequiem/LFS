@@ -9,7 +9,7 @@ PRGNAME="nghttp2"
 # Recommended: libxml2
 # Optional:    boost
 #              c-ares
-#              cython
+#              python3-cython
 #              jansson
 #              libevent
 #              python3-sphinx

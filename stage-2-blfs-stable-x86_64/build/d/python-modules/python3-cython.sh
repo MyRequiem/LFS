@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="cython"
+PRGNAME="python3-cython"
 ARCH_NAME="Cython"
 
 ### Cython (static compiler for Python)

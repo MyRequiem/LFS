@@ -10,7 +10,7 @@ PRGNAME="libseccomp"
 # Recommended: no
 # Optional:    which    (для тестов)
 #              valgrind
-#              cython   (https://cython.org/)
+#              python3-cython
 #              lcov     (http://ltp.sourceforge.net/coverage/lcov.php)
 
 ROOT="/root/src/lfs"

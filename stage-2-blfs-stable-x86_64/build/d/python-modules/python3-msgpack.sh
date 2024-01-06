@@ -8,7 +8,7 @@ ARCH_NAME="msgpack"
 # позволяет обмениваться сообщениями между компонентами системы подобно тому,
 # как это делается с помощью JSON формата
 
-# Required:    cython
+# Required:    python3-cython
 #              python3-setuptools-scm
 # Recommended: no
 # Optional:    --- для тестов ---

@@ -8,7 +8,7 @@ ARCH_NAME="PyYAML"
 # поддержку Unicode, поддержку pickle, совместимый API расширений, анализатор
 # сообщений об ошибках и т.д.
 
-# Required:    cython
+# Required:    python3-cython
 #              libyaml
 # Recommended: no
 # Optional:    no

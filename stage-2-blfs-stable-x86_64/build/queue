@@ -149,7 +149,7 @@ a/elogind.sh
 a/dbus.sh
 l/libsigsegv.sh
 d/c2man.sh
-d/cython.sh
+d/python-modules/python3-cython.sh
 l/apr.sh
 l/aspell.sh
 l/aspell-dict-en.sh
