@@ -405,7 +405,8 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap
+python2                                 yasm, docbook-xsl, nmap, python2-cython
+python2-cython
 python2-libxml2                         libxslt, docbook-xsl
 python2-pygtk                           nmap
 python3                                 lsb-tools

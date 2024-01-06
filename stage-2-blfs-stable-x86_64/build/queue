@@ -477,6 +477,7 @@ d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 ap/tk.sh
 d/python2.sh
+d/python-modules/python2-cython.sh
 d/yasm.sh
 s/docbook-xsl.sh
 n/nmap.sh
