@@ -10,7 +10,6 @@ PRGNAME="libxslt"
 # Recommended: docbook-xml
 #              docbook-xsl
 # Optional:    libgcrypt
-#              python2-libxml2
 
 ### NOTE:
 # Recommended: docbook-xml и docbook-xsl
