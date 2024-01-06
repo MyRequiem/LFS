@@ -476,10 +476,13 @@ d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 ap/tk.sh
+d/python2.sh
+d/yasm.sh
+s/docbook-xsl.sh
+n/nmap.sh
 
 
 # a/fcron.sh
-# d/python2.sh
 # d/python3.sh
 # d/python-modules/python2-libxml2.sh
 # l/aalib.sh
@@ -624,7 +627,6 @@ ap/tk.sh
 # l/libdvdnav.sh
 # l/soundtouch.sh
 # l/libical.sh
-# d/python2.sh
 # d/python3.sh
 # ap/alsa-utils.sh
 # ap/faac.sh
@@ -732,7 +734,6 @@ ap/tk.sh
 # n/apache-httpd.sh
 # n/php.sh
 # ap/cups.sh
-# d/python2.sh
 # d/python3.sh
 # d/ruby.sh
 # d/openjdk.sh

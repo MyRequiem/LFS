@@ -7,11 +7,12 @@ ARCH_NAME="Python"
 # Язык программирования Python
 
 # Required:    no
-# Recommended: no
+# Recommended: sqlite   (для создания дополнительных модулей)
 # Optional:    bluez
 #              valgrind
-#              sqlite   (для создания дополнительных модулей)
-#              tk       (для создания дополнительных модулей)
+#              === для создания дополнительных модулей ===
+#              libnsl
+#              tk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -39,8 +40,11 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# отключим установку утилиты 2to3
+# отключим установку утилиты 2to3, которая уже установлена с пакетом python3
 sed -i '/2to3/d' ./setup.py
+
+patch -Np1 --verbose -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-security_fixes-1.patch" || exit 1
 
 VALGRIND="--without-valgrind"
 command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
@@ -51,7 +55,6 @@ command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
     --with-system-expat   \
     --with-system-ffi     \
     "${VALGRIND}"         \
-    --with-ensurepip=yes  \
     --enable-unicode=ucs4 \
     --enable-optimization || exit 1
 
@@ -62,16 +65,12 @@ make altinstall DESTDIR="${TMP_DIR}"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
-    # /usr/bin/2to3 уже установлена с пакетом python3
-    rm -f 2to3
-    # python2        -> python2.7
-    ln -svf python2.7 python2
+    # python2 -> python2.7
+    ln -s "python${MAJ_VERSION}" python2
     # python2-config -> python2.7-config
-    ln -svf python2.7-config python2-config
-    # easy_install2  -> easy_install-2.7
-    ln -svf easy_install-2.7 easy_install2
-    # pip2           -> pip2.7
-    ln -svf pip2.7 pip2
+    ln -svf "python${MAJ_VERSION}-config" python2-config
+    # easy_install -> easy_install-2.7
+    ln -svf "easy_install-${MAJ_VERSION}" easy_install
 )
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"

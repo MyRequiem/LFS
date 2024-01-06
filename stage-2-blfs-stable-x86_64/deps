@@ -23,7 +23,7 @@ berkeley-db                             cyrus-sasl, openldap
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
-bluez                                   libpcap
+bluez                                   libpcap, python2
 boost                                   highlight, nghttp2, libsigc++2, swig
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
@@ -153,7 +153,7 @@ libmetalink                             curl
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
-libnsl                                  pth, berkeley-db, clisp, opensp
+libnsl                                  pth, berkeley-db, clisp, opensp, python2
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype
 libpsl                                  wget, curl
@@ -405,7 +405,7 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl nmap, volume-key
+python2                                 yasm, docbook-xsl, nmap
 python2-libxml2                         libxslt, docbook-xsl
 python2-pygtk                           nmap
 python3                                 lsb-tools
@@ -536,7 +536,7 @@ slang
 smartmontools
 spdylay                                 nghttp2
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2
 sshfs                                   vifm
 stunnel                                 curl
 subversion                              git, cmake
@@ -547,7 +547,7 @@ sysstat                                 openssh
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
 thin-provisioning-tools                 lvm2
 time
-tk                                      git
+tk                                      git, python2
 tmux
 translate-shell
 tree
@@ -558,7 +558,7 @@ unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                             xorgproto
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2
 vdo                                     lvm2
 vifm
 volume-key
