@@ -4,16 +4,18 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### Python3 (object-oriented interpreted programming language)
-# Язык программирования Python 3
+# Язык программирования Python3
 
 # Required:    no
-# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox)
+# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox или thunderbird)
 # Optional:    bluez
 #              gdb         (для некоторых тестов)
 #              valgrind
 #              libmpdec    (http://www.bytereef.org/mpdecimal/)
-#              berkeley-db (для создания дополнительных модулей)
-#              tk          (для создания дополнительных модулей)
+#              --- для создания дополнительных модулей ---
+#              berkeley-db
+#              libnsl
+#              tk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -51,15 +53,6 @@ command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
 
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
-# связываться с уже установленной системной версией Expat
-#    --with-system-expat
-# связываться с уже установленной системной версией libffi
-#    --with-system-ffi
-# создавать утилиты pip и setuptools
-#    --with-ensurepip=yes
-# включить оптимизацию по профилю (увеличивает время компиляции, но может
-# немного ускорить выполнение скриптов Python3)
-#    --enable-optimization
 CXX="/usr/bin/g++"       \
 ./configure              \
     --prefix=/usr        \
@@ -69,42 +62,15 @@ CXX="/usr/bin/g++"       \
     "${VALGRIND}"        \
     "${LIBMPDEC}"        \
     "${SQLITE}"          \
-    --with-ensurepip=yes \
     --enable-optimization || exit 1
 
 make || exit 1
-
-### Для запуска тестов требуется:
-# > установленные пакеты tk и X Window System Environment
-# > запускать с использованием X-терминала
-# > интернет соединение
-# > запускать нужно либо до, либо после сборки и установки пакета python3, т.е.
-#    НЕЛЬЗЯ запускать 'make install' после запуска набора тестов
-# > ТОЛЬКО чистый исходный код либо после 'make clean'. Затем снова
-#    сконфигурировать добавив опцию '--with-pydebug', потом собрать 'make' и
-#    только потом запустить тесты 'make test'
-# > известно, что тест test_sqlite не проходит
-
+# make test
 make install DESTDIR="${TMP_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
-
-# ссылки в /usr/bin
-# python        -> python3
-# pip           -> pip3
-# pip3          -> pip${MAJ_VERSION}
-# easy_install  -> easy_install3
-# easy_install3 -> easy_install-${MAJ_VERSION}
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -svf python3             python
-    ln -svf "pip${MAJ_VERSION}" pip3
-    ln -svf pip3                pip
-    ln -svf "easy_install-${MAJ_VERSION}" easy_install3
-    ln -svf "easy_install3"               easy_install
-)
 
 # устанавливаем документацию
 DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
@@ -119,13 +85,10 @@ tar                       \
 # чтобы python3 мог найти установленную документацию, создадим не зависимую от
 # версии Python3 ссылку в /usr/share/doc/
 #    python-3 -> python3-${VERSION}
-(
-    cd "${TMP_DIR}/usr/share/doc/" || exit 1
-    ln -svfn "${PRGNAME}-${VERSION}" python-3
-)
+ln -svfn "python-${VERSION}" "${TMP_DIR}/usr/share/doc/python-3"
 
 # добавим переменную окружения PYTHONDOCS содержащую путь к документации
-# Python 3
+# Python3
 PROFILE_D="/etc/profile.d"
 install -v -dm755 "${TMP_DIR}${PROFILE_D}"
 PYTHON3_PYTHONDOCS_SH="${PROFILE_D}/python3-pythondocs.sh"

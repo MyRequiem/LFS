@@ -481,10 +481,10 @@ d/python-modules/python2-cython.sh
 d/yasm.sh
 n/nmap.sh
 d/python-modules/python2-libxml2.sh
+d/python3.sh
 
 
 # a/fcron.sh
-# d/python3.sh
 # l/aalib.sh
 # a/libgudev.sh
 # l/libblockdev.sh
@@ -627,7 +627,6 @@ d/python-modules/python2-libxml2.sh
 # l/libdvdnav.sh
 # l/soundtouch.sh
 # l/libical.sh
-# d/python3.sh
 # ap/alsa-utils.sh
 # ap/faac.sh
 # ap/faad2.sh
@@ -734,7 +733,6 @@ d/python-modules/python2-libxml2.sh
 # n/apache-httpd.sh
 # n/php.sh
 # ap/cups.sh
-# d/python3.sh
 # d/ruby.sh
 # d/openjdk.sh
 # ap/cups.sh

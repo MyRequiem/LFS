@@ -19,11 +19,11 @@ audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
 bash-completion                         elogind
-berkeley-db                             cyrus-sasl, openldap
+berkeley-db                             cyrus-sasl, openldap, python3
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
-bluez                                   libpcap, python2
+bluez                                   libpcap, python2, python3
 boost                                   highlight, nghttp2, libsigc++2, swig
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
@@ -83,7 +83,7 @@ fwtk                                    sudo
 gc                                      w3m, guile
 gcc                                     pth, cmake, python3-numpy
 gcr                                     pinentry
-gdb                                     openssh, glib, gcc, guile, rustc
+gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m
 gdk-pixbuf-xlib                         w3m
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
@@ -149,10 +149,11 @@ libjpeg-turbo
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
+libmpdec                                python3
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
-libnsl                                  pth, berkeley-db, clisp, opensp, python2
+libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype
 libpsl                                  wget, curl
@@ -408,7 +409,7 @@ python2                                 yasm, docbook-xsl, nmap, python2-cython,
 python2-cython
 python2-libxml2                         docbook-xsl
 python2-pygtk                           nmap
-python3                                 lsb-tools
+python3
 python3-appdirs                         python3-platformdirs
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries
@@ -537,7 +538,7 @@ slang
 smartmontools
 spdylay                                 nghttp2
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3
 sshfs                                   vifm
 stunnel                                 curl
 subversion                              git, cmake
@@ -548,7 +549,7 @@ sysstat                                 openssh
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
 thin-provisioning-tools                 lvm2
 time
-tk                                      git, python2
+tk                                      git, python2, python3
 tmux
 translate-shell
 tree
@@ -559,7 +560,7 @@ unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                             xorgproto
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3
 vdo                                     lvm2
 vifm
 volume-key
@@ -830,7 +831,6 @@ zsh                                     elogind
 # libmng                              qt5, gimp
 # libmodplug                          gst-plugins-bad, ffmpeg
 # libmp4v2                            cmus
-# libmpdec                            python3
 # libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 # libmypaint                          mypaint-brushes, gimp
 # libnfs
