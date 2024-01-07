@@ -12,7 +12,7 @@ ARCH_NAME="LSB-Tools"
 # утилита для определения информации о доступных модулях LSB
 #    /usr/bin/lsb_release
 
-# Required:    python3
+# Required:    no
 # Recommended: no
 # Optional:    no
 
