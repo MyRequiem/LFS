@@ -88,11 +88,11 @@ gdk-pixbuf                              w3m
 gdk-pixbuf-xlib                         w3m
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas
 glib-networking                         glib
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap
-gobject-introspection                   glib, elogind, harfbuzz
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -100,6 +100,7 @@ graphite2                               harfbuzz
 graphviz                                libexif, llvm, gpgme
 grc
 gsasl                                   curl
+gsettings-desktop-schemas
 gtk+2                                   pinentry, w3m
 gtk+3                                   pinentry
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz
@@ -719,7 +720,6 @@ zsh                                     elogind
 # gptfdisk                            udisks
 # graphene                            gst-plugins-base
 # groonga                             mariadb
-# gsettings-desktop-schemas           glib-networking, goffice
 # gsimplecal
 # gsl                                 gstreamer
 # gsm                                 gst-plugins-bad, ffmpeg

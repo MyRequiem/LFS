@@ -18,13 +18,14 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим некоторые устаревшие записи в шаблонах схем
-sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in &&
+sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in || exit 1
 
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1

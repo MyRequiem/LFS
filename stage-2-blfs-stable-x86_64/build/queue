@@ -482,6 +482,7 @@ d/yasm.sh
 n/nmap.sh
 d/python-modules/python2-libxml2.sh
 d/python3.sh
+l/gsettings-desktop-schemas.sh
 
 
 # a/fcron.sh
@@ -615,7 +616,6 @@ d/python3.sh
 # ap/flac.sh
 # l/libsndfile.sh
 # l/lame.sh
-# l/gsettings-desktop-schemas.sh
 # l/glib-networking.sh
 # l/glibmm.sh
 # l/libdazzle.sh
