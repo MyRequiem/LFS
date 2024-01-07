@@ -37,7 +37,7 @@ BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/Python-${VERSION}".tar.?z* || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
@@ -53,15 +53,15 @@ command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
 
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
-CXX="/usr/bin/g++"       \
-./configure              \
-    --prefix=/usr        \
-    --enable-shared      \
-    --with-system-expat  \
-    --with-system-ffi    \
-    "${VALGRIND}"        \
-    "${LIBMPDEC}"        \
-    "${SQLITE}"          \
+CXX="/usr/bin/g++"      \
+./configure             \
+    --prefix=/usr       \
+    --enable-shared     \
+    --with-system-expat \
+    --with-system-ffi   \
+    "${VALGRIND}"       \
+    "${LIBMPDEC}"       \
+    "${SQLITE}"         \
     --enable-optimization || exit 1
 
 make || exit 1
@@ -69,11 +69,17 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
+# pip3 и pip${MAJ_VERSION} одинаковые скрипты, создадим ссылку
+#    pip3 -> pip${MAJ_VERSION}
+ln -sfv "pip${MAJ_VERSION}" "${TMP_DIR}/usr/bin/pip3"
+
+# исправим shebang в скрипте pip${MAJ_VERSION}
+#    #!/usr/bin/python -> #!/usr/bin/python3
+sed 's/\/usr\/bin\/python$/\/usr\/bin\/python3/' \
+    -i "${TMP_DIR}/usr/bin/pip${MAJ_VERSION}" || exit 1
 
 # устанавливаем документацию
-DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
+DOCS="${TMP_DIR}/usr/share/doc/python-${VERSION}/html"
 install -v -dm755 "${DOCS}"
 tar                       \
     --strip-components=1  \
@@ -133,7 +139,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # adaptable as an extension language for existing applications.
 #
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
+# Download:  https://www.python.org/ftp/python/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
