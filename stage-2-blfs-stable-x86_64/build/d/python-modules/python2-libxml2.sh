@@ -28,13 +28,14 @@ python2 setup.py install --optimize=1 --root="${TMP_DIR}"
 source "${ROOT}/stripping.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Python2 bindings for libxml2)
 #
 # Python2 bindings for libxml2
 #
 # Home page: http://xmlsoft.org/
-# Download:  http://xmlsoft.org/sources/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
