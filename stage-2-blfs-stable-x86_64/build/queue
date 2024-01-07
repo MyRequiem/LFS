@@ -483,6 +483,7 @@ n/nmap.sh
 d/python-modules/python2-libxml2.sh
 d/python3.sh
 l/gsettings-desktop-schemas.sh
+l/at-spi2-core.sh
 
 
 # a/fcron.sh
@@ -580,7 +581,6 @@ l/gsettings-desktop-schemas.sh
 # l/libxkbcommon.sh
 # l/glibmm.sh
 # l/atkmm.sh
-# l/at-spi2-core.sh
 # l/at-spi2-atk.sh
 # l/cairomm.sh
 # x/libs/glew.sh

@@ -15,6 +15,7 @@ argon2                                  cryptsetup
 aspell                                  aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
+at-spi2-core
 audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
@@ -43,7 +44,7 @@ cyrus-sasl                              openldap
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2
-dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib
+dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core
 dbus-glib
 desktop-file-utils                      wpa-supplicant, glib
 dhcpcd
@@ -88,11 +89,11 @@ gdk-pixbuf                              w3m
 gdk-pixbuf-xlib                         w3m
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core
 glib-networking                         glib
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -100,10 +101,10 @@ graphite2                               harfbuzz
 graphviz                                libexif, llvm, gpgme
 grc
 gsasl                                   curl
-gsettings-desktop-schemas
+gsettings-desktop-schemas               at-spi2-core
 gtk+2                                   pinentry, w3m
 gtk+3                                   pinentry
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core
 guile
 harfbuzz                                graphite2, freetype
 hdparm
@@ -578,7 +579,7 @@ xdg-user-dirs
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                          dbus, tk
+xorg-libraries                          dbus, tk, at-spi2-core
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -611,7 +612,6 @@ zsh                                     elogind
 # as31                                alsa-firmware
 # assimp                              qt5
 # at-spi2-atk                         gtk+3
-# at-spi2-core                        at-spi2-atk, python3-pyatspi2
 # atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 # atkmm                               gtkmm2, gtkmm3
 # autotrace                           imagemagick

@@ -10,6 +10,7 @@ PRGNAME="at-spi2-core"
 
 # Required:    dbus
 #              glib
+#              gsettings-desktop-schemas
 #              xorg-libraries
 # Recommended: no
 # Optional:    gobject-introspection
@@ -30,10 +31,11 @@ cd build || exit 1
 # помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
 # System V не может использовать этот файл
 #    -Dsystemd_user_dir=/tmp
-meson                                  \
-    --prefix=/usr                      \
-    -Ddocs="${DOCS}"                   \
-    -Dsystemd_user_dir=/tmp            \
+meson                       \
+    --prefix=/usr           \
+    --buildtype=release     \
+    -Ddocs="${DOCS}"        \
+    -Dsystemd_user_dir=/tmp \
     .. || exit 1
 
 ninja || exit 1

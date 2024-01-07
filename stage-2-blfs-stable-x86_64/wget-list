@@ -462,6 +462,7 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-
 https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
 https://download.gnome.org/sources/gsettings-desktop-schemas/43/gsettings-desktop-schemas-43.0.tar.xz
+https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 
 
 ================================================================================
@@ -656,7 +657,6 @@ https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.0.3.tar.xz
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.0.tar.xz
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.1.tar.xz
-https://download.gnome.org/sources/at-spi2-core/2.38/at-spi2-core-2.38.0.tar.xz
 https://download.gnome.org/sources/at-spi2-atk/2.38/at-spi2-atk-2.38.0.tar.xz
 https://www.cairographics.org/releases/cairomm-1.14.0.tar.xz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
