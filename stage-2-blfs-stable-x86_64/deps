@@ -33,7 +33,7 @@ c2man                                   fribidi
 cairo                                   gobject-introspection, harfbuzz
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg
 cmocka                                  gnutls, mit-kerberos-v5
 cpio
 cryptsetup                              volume-key
@@ -60,7 +60,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -132,7 +132,7 @@ kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
 lapack                                  python3-numpy
-lcms2
+lcms2                                   openjpeg
 lerc                                    libtiff
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
@@ -161,7 +161,7 @@ libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype
+libpng                                  slang, freetype, openjpeg
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
@@ -176,7 +176,7 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak
-libtiff                                 lcms2
+libtiff                                 lcms2, openjpeg
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
 libusb                                  gnupg, usbutils, libpcap
@@ -235,6 +235,7 @@ open-mpi                                boost
 openblas                                python3-numpy
 openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn
+openjpeg
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                                  openssh
 openslp                                 openldap
@@ -931,7 +932,6 @@ zsh                                     elogind
 # opendmarc                           exim
 # openexr                             gst-plugins-bad, gegl, imagemagick
 # openh264                            gst-plugins-bad
-# openjpeg                            gst-plugins-bad, ghostscript, poppler, gimp, ffmpeg, imagemagick
 # optipng
 # opus                                gst-plugins-base, libsndfile, gst-plugins-bad, ffmpeg, spice, spice-gtk, cmus
 # opusfile                            cmus

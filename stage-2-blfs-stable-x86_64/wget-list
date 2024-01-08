@@ -465,6 +465,7 @@ https://download.gnome.org/sources/gsettings-desktop-schemas/43/gsettings-deskto
 https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz
+https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 
 
 ================================================================================
@@ -714,7 +715,6 @@ https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.3.tar.xz
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
-https://github.com/uclouvain/openjpeg/archive/v2.4.0/openjpeg-2.4.0.tar.gz
 https://www.kernel.org/pub/linux/bluetooth/sbc-1.5.tar.xz
 https://github.com/videolan/x265/archive/3.4/x265-3.4.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.18.3.tar.xz

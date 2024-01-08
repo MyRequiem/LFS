@@ -486,6 +486,7 @@ l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
 l/libtiff.sh
 l/lcms2.sh
+l/openjpeg.sh
 
 
 # a/fcron.sh
@@ -655,7 +656,6 @@ l/lcms2.sh
 # ap/cups.sh
 # l/libsoup.sh
 # l/neon.sh
-# l/openjpeg.sh
 # l/sbc.sh
 # l/x265.sh
 # l/gst-plugins-bad.sh
