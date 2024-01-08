@@ -463,6 +463,7 @@ https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
 https://download.gnome.org/sources/gsettings-desktop-schemas/43/gsettings-desktop-schemas-43.0.tar.xz
 https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
+https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 
 
 ================================================================================
@@ -607,7 +608,6 @@ https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/0ee50652091363ab0d17
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
-http://download.osgeo.org/libtiff/tiff-4.2.0.tar.gz
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz
 https://www.cairographics.org/releases/pixman-0.40.0.tar.gz

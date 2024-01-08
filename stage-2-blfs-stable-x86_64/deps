@@ -33,7 +33,7 @@ c2man                                   fribidi
 cairo                                   gobject-introspection, harfbuzz
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff
 cmocka                                  gnutls, mit-kerberos-v5
 cpio
 cryptsetup                              volume-key
@@ -73,6 +73,7 @@ fig2dev                                 gnupg
 fltk                                    pinentry
 fontconfig                              xorg-libraries
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries
+freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig
 fribidi
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
@@ -123,6 +124,7 @@ iso-codes
 itstool
 iw
 jansson                                 nghttp2
+jbig-kit                                libtiff
 jemalloc                                nghttp2
 json-c                                  bind-utils, cryptsetup, fontconfig
 kernel-firmware
@@ -130,6 +132,7 @@ kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
 lapack                                  python3-numpy
+lerc                                    libtiff
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
 libassuan                               pinentry, gnupg, gpgme
@@ -147,7 +150,7 @@ libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo
+libjpeg-turbo                           libtiff
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
@@ -172,10 +175,12 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak
+libtiff
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
 libusb                                  gnupg, usbutils, libpcap
 libuv                                   cmake, bind-utils, nodejs
+libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
@@ -500,7 +505,7 @@ python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six                             libbytesize, python3-blessed, python3-urlgrabber
-python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils
+python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff
 python3-testpath                        python3-flit-core
 python3-tomli                           python3-pylint
 python3-tomlkit                         python3-pylint
@@ -686,7 +691,6 @@ zsh                                     elogind
 # flite                               gst-plugins-bad, qt5, ffmpeg
 # fluidsynth                          gst-plugins-bad
 # freefont
-# freeglut                            libtiff, jasper, libwebp
 # freetds                             apr-util, qt5
 # frei0r-plugins                      ffmpeg
 # frontbase                           php
@@ -701,13 +705,13 @@ zsh                                     elogind
 # ghostpcl                            imagemagick
 # ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
 # giblib                              scrot
-# giflib                              imlib2, libwebp, openjdk, feh
+# giflib                              imlib2, openjdk, feh
 # gimp                                imagemagick
 # girara                              zathura
 # glew
 # glibmm                              atkmm, pangomm
 # glm                                 slop
-# glu                                 freeglut, fltk, sdl
+# glu                                 fltk, sdl
 # glusterfs
 # gnome-keyring                       libsecret
 # gnome-shell                         polkit
@@ -763,7 +767,6 @@ zsh                                     elogind
 # ipaex-fonts-ttf
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
 # jasper                              qt5, gegl, imagemagick
-# jbig-kit                            libtiff, imagemagick
 # jbig2dec                            cairo
 # jq
 # json-glib                           gtk+3, gegl
@@ -858,7 +861,6 @@ zsh                                     elogind
 # libspiro                            gegl
 # libsrtp                             gst-plugins-bad
 # libtheora                           gst-plugins-base, ffmpeg
-# libtiff                             links, gdk-pixbuf, imlib2, lcms2, libwebp, openjpeg, qt5, ghostscript, gegl, poppler, php, gimp, lcms, libgxps, imagemagick, libgd
 # libtizonia                          mesa
 # libumfpack                          gegl
 # libunwind                           mesa, xorg-server, libinput, gstreamer, gimp
@@ -871,7 +873,6 @@ zsh                                     elogind
 # libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
 # libvpx                              gst-plugins-good, ffmpeg
 # libwacom                            libinput
-# libwebp                             libtiff, gst-plugins-bad, qt5, gegla, php, gimp, ffmpeg, imagemagick, libgd, mpv
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
 # libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
@@ -892,7 +893,7 @@ zsh                                     elogind
 # mc
 # mecab                               mariadb
 # megatools
-# mesa                                libva, libvdpau, xorg-applications, glu, freeglut, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk, qt5, qemu
+# mesa                                libva, libvdpau, xorg-applications, glu, cairo, libepoxy, glew, gst-plugins-base, gst-plugins-good, fltk, qt5, qemu
 # mesa-demos                          mesa
 # messagepack                         mariadb
 # mhash                               php
@@ -995,7 +996,7 @@ zsh                                     elogind
 # sbc                                 gst-plugins-bad, pulseaudio
 # schroedinger                        ffmpeg
 # scrot
-# sdl                                 gst-plugins-base, mpg123, libmpeg2, libwebp, gst-plugins-bad, libtheora, qemu
+# sdl                                 gst-plugins-base, mpg123, libmpeg2, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
 # sinhala-lklug-font-ttf
 # skia                                cairo

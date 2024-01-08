@@ -484,6 +484,7 @@ d/python-modules/python2-libxml2.sh
 d/python3.sh
 l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
+l/libtiff.sh
 
 
 # a/fcron.sh
@@ -532,7 +533,6 @@ l/at-spi2-core.sh
 # l/shared-mime-info.sh
 # x/misc/glu.sh
 # x/misc/freeglut.sh
-# l/libtiff.sh
 # n/links.sh
 # l/jasper.sh
 # l/gdk-pixbuf.sh
@@ -652,7 +652,6 @@ l/at-spi2-core.sh
 # l/giflib.sh
 # l/imlib2.sh
 # l/libwebp.sh
-# l/libtiff.sh
 # ap/cups.sh
 # l/libsoup.sh
 # l/neon.sh
