@@ -488,6 +488,7 @@ l/libtiff.sh
 l/lcms2.sh
 l/openjpeg.sh
 ap/ghostscript.sh
+x/libs/pixman.sh
 
 
 # a/fcron.sh
@@ -539,14 +540,12 @@ ap/ghostscript.sh
 # n/links.sh
 # l/jasper.sh
 # l/gdk-pixbuf.sh
-# x/libs/pixman.sh
 # l/cairo.sh
 # x/libs/libdrm.sh
 # l/pango.sh
 # l/hicolor-icon-theme.sh
 # l/gtk+2.sh
 # ap/vim.sh
-# x/libs/pixman.sh
 # l/cairo.sh
 # x/libs/libepoxy.sh
 # x/xserver/xorg-server.sh

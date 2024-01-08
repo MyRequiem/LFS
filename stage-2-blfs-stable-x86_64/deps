@@ -105,7 +105,7 @@ graphviz                                libexif, llvm, gpgme
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core
-gtk+2                                   pinentry, w3m
+gtk+2                                   pinentry, w3m, pixman
 gtk+3                                   pinentry, ghostscript
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core
 guile
@@ -164,7 +164,7 @@ libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpaper                                ghostscript
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
@@ -410,6 +410,7 @@ perl-xml-sax-base                       perl-xml-sax
 perl-xml-simple
 perl-xml-writer
 pinentry                                gnupg
+pixman
 pocketlint                              libbytesize
 polkit                                  elogind
 popt                                    rsync, cryptsetup
@@ -954,7 +955,6 @@ zsh                                     elogind
 # phodav                              spice-gtk
 # php                                 libsoup, libvpx
 # picogui                             sdl
-# pixman                              cairo, xorg-server
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
 # poppler                             cairo, gimp

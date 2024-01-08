@@ -22,8 +22,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson \
-    --prefix=/usr || exit 1
+meson             \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test

@@ -469,6 +469,7 @@ https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
 https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
+https://www.cairographics.org/releases/pixman-0.42.2.tar.gz
 
 
 ================================================================================
@@ -615,7 +616,6 @@ https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz
-https://www.cairographics.org/releases/pixman-0.40.0.tar.gz
 http://anduin.linuxfromscratch.org/BLFS/cairo/cairo-1.17.2+f93fc72c03e.tar.xz
 https://download.gnome.org/sources/pango/1.48/pango-1.48.2.tar.xz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
