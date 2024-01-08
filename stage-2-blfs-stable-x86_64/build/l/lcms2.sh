@@ -19,6 +19,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему при использовании вместе с пакетом colord
+sed '/BufferSize < TagSize/,+1 s/goto Error/TagSize = BufferSize/' \
+    -i src/cmsio0.c || exit 1
+
 ./configure \
     --prefix=/usr \
     --disable-static || exit 1
@@ -41,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # for color management.
 #
 # Home page: https://www.littlecms.com/
-# Download:  https://downloads.sourceforge.net/${REPO_NAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/mm2/Little-CMS/releases/download/${REPO_NAME}${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

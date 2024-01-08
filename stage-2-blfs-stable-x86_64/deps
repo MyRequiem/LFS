@@ -132,6 +132,7 @@ kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
 lapack                                  python3-numpy
+lcms2
 lerc                                    libtiff
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
@@ -150,7 +151,7 @@ libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo                           libtiff
+libjpeg-turbo                           libtiff, lcms2
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
@@ -175,7 +176,7 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak
-libtiff
+libtiff                                 lcms2
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
 libusb                                  gnupg, usbutils, libpcap
@@ -777,7 +778,6 @@ zsh                                     elogind
 # lame                                gst-plugins-good, ffmpeg
 # lasem                               goffice
 # lcms                                imagemagick
-# lcms2                               openjpeg, gst-plugins-bad, libmng, babl, gegl, poppler, openjdk, gimpa, libgxps, imagemagick
 # lcov                                libseccomp, gjs, gnome-keyring
 # lensfun                             gegl
 # liba52                              gst-plugins-ugly
