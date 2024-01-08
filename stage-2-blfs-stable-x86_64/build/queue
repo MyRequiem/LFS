@@ -487,6 +487,7 @@ l/at-spi2-core.sh
 l/libtiff.sh
 l/lcms2.sh
 l/openjpeg.sh
+ap/ghostscript.sh
 
 
 # a/fcron.sh
@@ -697,7 +698,6 @@ l/openjpeg.sh
 # l/cairo.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# ap/ghostscript.sh
 # l/cairo.sh
 # l/libgsf.sh
 # l/goffice.sh
@@ -710,7 +710,6 @@ l/openjpeg.sh
 # l/sdl.sh
 # l/libmpeg2.sh
 # l/sdl2.sh
-# ap/ghostscript.sh
 # l/json-glib.sh
 # l/gtk+3.sh
 # l/libseccomp.sh

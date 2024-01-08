@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-X Window System                         openssh
+X Window System                         openssh, ghostscript
 acpid
 adns                                    gnupg
 afs                                     sudo
@@ -30,7 +30,7 @@ bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   gobject-introspection, harfbuzz
+cairo                                   gobject-introspection, harfbuzz, ghostscript
 chronyd                                 dhcpcd
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg
@@ -38,6 +38,7 @@ cmocka                                  gnutls, mit-kerberos-v5
 cpio
 cryptsetup                              volume-key
 cunit                                   nghttp2
+cups                                    ghostscript
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
 curlftpfs                               vifm
 cyrus-sasl                              openldap
@@ -71,10 +72,10 @@ exim                                    gnupg, sudo
 fftw
 fig2dev                                 gnupg
 fltk                                    pinentry
-fontconfig                              xorg-libraries
+fontconfig                              xorg-libraries, ghostscript
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries
 freeglut                                libtiff
-freetype                                graphite2, harfbuzz, fontconfig
+freetype                                graphite2, harfbuzz, fontconfig, ghostscript
 fribidi
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                                vifm
@@ -88,6 +89,7 @@ gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m
 gdk-pixbuf-xlib                         w3m
+ghostscript
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core
@@ -104,7 +106,7 @@ grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core
 gtk+2                                   pinentry, w3m
-gtk+3                                   pinentry
+gtk+3                                   pinentry, ghostscript
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core
 guile
 harfbuzz                                graphite2, freetype
@@ -132,7 +134,7 @@ kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
 lapack                                  python3-numpy
-lcms2                                   openjpeg
+lcms2                                   openjpeg, ghostscript
 lerc                                    libtiff
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
@@ -149,9 +151,9 @@ libffcall                               clisp
 libgcrypt                               gnupg, libxslt, libssh2
 libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
-libidn                                  gnutls, whois
+libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo                           libtiff, lcms2
+libjpeg-turbo                           libtiff, lcms2, ghostscript
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
@@ -160,8 +162,9 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
+libpaper                                ghostscript
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg
+libpng                                  slang, freetype, openjpeg, ghostscript
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
@@ -176,7 +179,7 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak
-libtiff                                 lcms2, openjpeg
+libtiff                                 lcms2, openjpeg, ghostscript
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
 libusb                                  gnupg, usbutils, libpcap
@@ -235,7 +238,7 @@ open-mpi                                boost
 openblas                                python3-numpy
 openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn
-openjpeg
+openjpeg                                ghostscript
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
 opensc                                  openssh
 openslp                                 openldap
@@ -603,7 +606,7 @@ zsh                                     elogind
 # aalib                               gst-plugins-good, sdl, gimp
 # adabas                              php
 # adobe-source-code-pro-font
-# adwaita-icon-theme                  gtk+3
+# adwaita-icon-theme
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao
 # alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
@@ -618,11 +621,11 @@ zsh                                     elogind
 # apr-util                            apache-httpd
 # as31                                alsa-firmware
 # assimp                              qt5
-# at-spi2-atk                         gtk+3
+# at-spi2-atk
 # atk                                 gtk+2, atkmm, at-spi2-atk, python2-pygtk
 # atkmm                               gtkmm2, gtkmm3
 # autotrace                           imagemagick
-# avahi                               cups, pulseaudio
+# avahi                               pulseaudio
 # babl                                gegl
 # bcachefs                            libblockdev
 # bellagio-openmax                    mesa
@@ -647,11 +650,10 @@ zsh                                     elogind
 # clipnotify                          clipmenu
 # cmus
 # cogl                                cairo
-# colord                              gtk+3, cups
+# colord
 # corefonts                           imagemagick
 # cppcheck
-# cups                                gtk+2, gtk+3, qt5, ghostscript, openjdk, imagemagick
-# cups-filters                        cups
+# cups-filters
 # cxxopts                             pamixer
 # dbmaker                             php
 # dconf                               ibus
@@ -705,7 +707,6 @@ zsh                                     elogind
 # gexiv2                              gegl, gimp
 # ggi                                 sdl
 # ghostpcl                            imagemagick
-# ghostscript                         cairo, goffice, gimp, imagemagick, libspectre
 # giblib                              scrot
 # giflib                              imlib2, openjdk, feh
 # gimp                                imagemagick
@@ -740,15 +741,15 @@ zsh                                     elogind
 # gtk-vnc                             virt-manager
 # gtkmm2
 # gtkmm3                              pavucontrol
-# gutenprint                          cups
+# gutenprint
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
 # heimdal-gssapi                      exim
 # help2man                            pango, vala
-# hicolor-icon-theme                  gtk+2, gtk+3, fltk
+# hicolor-icon-theme                  gtk+2, fltk
 # hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 # hp2xx                               imagemagick
-# hplip                               cups
+# hplip
 # hspell                              enchant
 # hstr
 # html2ps                             imagemagick
@@ -771,7 +772,7 @@ zsh                                     elogind
 # jasper                              qt5, gegl, imagemagick
 # jbig2dec                            cairo
 # jq
-# json-glib                           gtk+3, gegl
+# json-glib                           gegl
 # judy                                mariadb
 # kochi-substitute-fonts-ttf
 # kytea                               mariadb
@@ -809,7 +810,7 @@ zsh                                     elogind
 # libdvdnav                           gst-plugins-bad, mpv
 # libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 # libdw                               gstreamer
-# libepoxy                            xorg-server, gtk+3
+# libepoxy                            xorg-server
 # liberation-fonts-ttf
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               php, nginx
@@ -847,7 +848,6 @@ zsh                                     elogind
 # libopenni                           gst-plugins-bad
 # libopenraw                          gegl
 # libosinfo                           virt-manager
-# libpaper                            cups, ghostscript
 # libplacebo                          mpv
 # libproxy                            glib-networking, neon, qt5
 # libraqm                             imagemagick
@@ -876,7 +876,7 @@ zsh                                     elogind
 # libwacom                            libinput
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
-# libxkbcommon                        gtk+3, gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
+# libxkbcommon                        gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # lilv                                gst-plugins-bad
@@ -943,16 +943,16 @@ zsh                                     elogind
 # pakchois                            neon
 # pamixer
 # pandoc                              openjdk
-# pango                               gtk+2, gtk+3, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
+# pango                               gtk+2, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 # pangomm                             gtkmm2, gtkmm3
-# papi                                gtk+3
+# papi
 # password-store                      dmenu
 # pavucontrol
 # pcsc-lite                           libcacard
 # pep8                                python3-pygobject3
 # pgp                                 imagemagick
 # phodav                              spice-gtk
-# php                                 cups, libsoup, libvpx
+# php                                 libsoup, libvpx
 # picogui                             sdl
 # pixman                              cairo, xorg-server
 # polkit-gnome                        polkit
@@ -965,7 +965,7 @@ zsh                                     elogind
 # pspg
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
-# pyatspi2                            gtk+3
+# pyatspi2
 # python2-pycairo                     python2-pygobject2, python2-pygtk
 # python2-pygobject2                  python2-pygtk
 # python3-libvirt                     virt-manager
@@ -984,14 +984,14 @@ zsh                                     elogind
 # rasqal                              redland
 # re2c                                php
 # redland
-# rest                                gtk+3
+# rest
 # roxen-webserver                     php
 # rpm                                 rpm2tgz
 # rpm2tgz
 # rtmpdump                            gst-plugins-bad
 # rxvt-unicode
 # sane                                imagemagick
-# sassc                               gtk+3
+# sassc
 # sazanami-fonts-ttf
 # sbc                                 gst-plugins-bad, pulseaudio
 # schroedinger                        ffmpeg
@@ -1057,8 +1057,8 @@ zsh                                     elogind
 # vte3                                qemu
 # vulkan                              gst-plugins-bad, qt5
 # wavpack                             gst-plugins-good
-# wayland                             libva, xorg-server, libxkbcommon, gtk+3, gst-plugins-good, gst-plugins-bad, ibus, qt5
-# wayland-protocols                   mesa, xorg-server, libxkbcommon, gtk+3, gst-plugins-base, sdl2
+# wayland                             libva, xorg-server, libxkbcommon, gst-plugins-good, gst-plugins-bad, ibus, qt5
+# wayland-protocols                   mesa, xorg-server, libxkbcommon, gst-plugins-base, sdl2
 # wddx                                php
 # weasyprint                          vala
 # webkitgtk                           zenity
@@ -1081,7 +1081,7 @@ zsh                                     elogind
 # xcb-util-xrm                        i3
 # xclip                               password-store
 # xcursor-themes                      xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
-# xdg-utils                           cups, gimp, imagemagick
+# xdg-utils                           gimp, imagemagick
 # xfce4-notifyd                       libnotify
 # xinit
 # xkeyboard-config                    xorg-server, libxkbcommon

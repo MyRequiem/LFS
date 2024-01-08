@@ -466,6 +466,9 @@ https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz
 https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
+https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
+https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
+https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 
 
 ================================================================================
@@ -741,10 +744,6 @@ https://github.com/libsndfile/libsamplerate/releases/download/0.2.1/libsamplerat
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-14.2.tar.xz
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
-https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.xz
-http://www.linuxfromscratch.org/patches/blfs/10.1/ghostscript-9.53.3-freetype_fix-1.patch
-https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
-https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/libgsf/1.14/libgsf-1.14.47.tar.xz
 https://download.gnome.org/sources/goffice/0.10/goffice-0.10.48.tar.xz
 https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2
