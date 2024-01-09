@@ -65,11 +65,8 @@ install -v -m644 base/*.h "${TMP_DIR}/usr/include/${PRGNAME}"
 #    ps -> ghostscript
 ln -sfvn "${PRGNAME}" "${TMP_DIR}/usr/include/ps"
 
-# исправим путь к документации
-DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-mv -v  "${TMP_DIR}/usr/share/doc/${PRGNAME}/${VERSION}" "${TMP_DIR}${DOC_PATH}"
-rm -rf "${TMP_DIR}/usr/share/doc/${PRGNAME}"
-cp -r examples/ "${TMP_DIR}/usr/share/${PRGNAME}/${VERSION}/"
+# удалим документацию
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 # установим шрифты
 FONTS_PATH="/usr/share/fonts/X11/Type1/"
