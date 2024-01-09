@@ -31,10 +31,8 @@ mkdir -pv "${TMP_DIR}"
 tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
 
-python2 setup.py build                                      || exit 1
-python2 setup.py install --optimize=1   --root="${TMP_DIR}" || exit 1
-python2 setup.py install_pycairo_header --root="${TMP_DIR}" || exit 1
-python2 setup.py install_pkgconfig      --root="${TMP_DIR}" || exit 1
+python2 setup.py build                                    || exit 1
+python2 setup.py install --optimize=1 --root="${TMP_DIR}" || exit 1
 
 source "${ROOT}/stripping.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
