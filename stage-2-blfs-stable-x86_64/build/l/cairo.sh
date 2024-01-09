@@ -63,6 +63,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+if [ "x${GTK_DOC}" == "xno" ]; then
+    cd "${TMP_DIR}/usr/share/" || exit 1
+    rm -rf gtk-doc
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
