@@ -489,6 +489,9 @@ l/lcms2.sh
 l/openjpeg.sh
 ap/ghostscript.sh
 x/libs/pixman.sh
+l/cairo.sh
+l/harfbuzz.sh
+ap/ghostscript.sh
 
 
 # a/fcron.sh
@@ -540,13 +543,11 @@ x/libs/pixman.sh
 # n/links.sh
 # l/jasper.sh
 # l/gdk-pixbuf.sh
-# l/cairo.sh
 # x/libs/libdrm.sh
 # l/pango.sh
 # l/hicolor-icon-theme.sh
 # l/gtk+2.sh
 # ap/vim.sh
-# l/cairo.sh
 # x/libs/libepoxy.sh
 # x/xserver/xorg-server.sh
 # x/libs/libevdev.sh
@@ -590,7 +591,6 @@ x/libs/pixman.sh
 # l/wayland-protocols
 # l/gtk4.sh
 # ap/vim.sh
-# l/cairo.sh
 # x/libs/libinput.sh
 # d/vala.sh
 # l/gcr.sh
@@ -649,7 +649,6 @@ x/libs/pixman.sh
 # l/librsvg.sh
 # n/links.sh
 # l/gdk-pixbuf.sh
-# l/cairo.sh
 # l/giflib.sh
 # l/imlib2.sh
 # l/libwebp.sh
@@ -694,10 +693,8 @@ x/libs/pixman.sh
 # l/sdl2.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
-# l/cairo.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# l/cairo.sh
 # l/libgsf.sh
 # l/goffice.sh
 # l/gtk-engines.sh
@@ -716,7 +713,6 @@ x/libs/pixman.sh
 # l/babl.sh
 # l/gegl.sh
 # l/poppler.sh
-# l/cairo.sh
 # l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
@@ -849,7 +845,6 @@ x/libs/pixman.sh
 # d/imake.sh
 # ap/xxkb.sh
 # l/libspectre.sh
-# l/cairo.sh
 # l/goffice.sh
 # l/girara.sh
 # l/djvulibre.sh
