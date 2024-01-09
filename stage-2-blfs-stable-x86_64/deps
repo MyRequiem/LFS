@@ -95,11 +95,11 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2
 glib-networking                         glib
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -110,6 +110,7 @@ gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core
 gtk+2                                   pinentry, w3m, pixman, cairo
 gtk+3                                   pinentry, ghostscript, cairo
+gtk+4                                   python3-pygobject3
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo
 guile
 harfbuzz                                graphite2, freetype
@@ -195,7 +196,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl
@@ -261,6 +262,7 @@ patchelf                                python3-meson, python3-dbus
 pciutils
 pcre                                    wget, git, slang, nmap
 pcre2                                   wget, glib, git, libbytesize, swig
+pep8                                    python3-pygobject3
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -426,10 +428,11 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2
 python2-cython
 python2-libxml2                         docbook-xsl
-python2-pycairo
+python2-pycairo                         python2-pygobject2
+python2-pygobject2
 python2-pygtk                           nmap
 python3
 python3-appdirs                         python3-platformdirs
@@ -492,11 +495,11 @@ python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm
 python3-py                              python3-pytest
-python3-pycairo
+python3-pycairo                         python3-pygobject3
 python3-pycodestyle                     python3-flake8
 python3-pycryptodome
 python3-pycurl                          python3-urlgrabber
-python3-pyflakes                        python3-flake8
+python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython
 python3-pygobject3                      dbus
 python3-pylint
@@ -506,7 +509,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo
+python3-pytest                          fuse, python3-attrs, python3-flit-core, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
@@ -746,7 +749,6 @@ zsh                                     elogind
 # gst-plugins-ugly
 # gstreamer                           libcanberra, gst-plugins-base
 # gtick
-# gtk+4                               gjs, vte3
 # gtk-engines
 # gtk-vnc                             virt-manager
 # gtkmm2
@@ -955,7 +957,6 @@ zsh                                     elogind
 # password-store                      dmenu
 # pavucontrol
 # pcsc-lite                           libcacard
-# pep8                                python3-pygobject3
 # pgp                                 imagemagick
 # phodav                              spice-gtk
 # php                                 libsoup, libvpx
@@ -970,10 +971,8 @@ zsh                                     elogind
 # pulseaudio                          gtk-vnc, libcanberra, mpg123, gst-plugins-good, alsa-plugins, sdl, sdl2, qt5, ffmpeg, pavucontrol, libao, qemu, pamixer
 # pwgen
 # pyatspi2
-# python2-pygobject2                  python2-pygtk
 # python3-libvirt                     virt-manager
 # python3-pyatspi2
-# python3-pygobject3                  ibus, gegl, python3-pyatspi2, libsecret, mirage
 # qdbm                                php
 # qemu
 # qt5-styleplugins

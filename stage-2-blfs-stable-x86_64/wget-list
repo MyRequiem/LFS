@@ -474,6 +474,8 @@ https://download.gnome.org/sources/cairo/1.17/cairo-1.17.6.tar.xz
 https://github.com/pygobject/pycairo/releases/download/v1.18.2/pycairo-1.18.2.tar.gz
 https://github.com/pygobject/pycairo/releases/download/v1.23.0/pycairo-1.23.0.tar.gz
 https://www.cairographics.org/releases/cairomm-1.14.0.tar.xz
+https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
+https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 
 
 ================================================================================
@@ -732,8 +734,6 @@ https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.18.3.t
 https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
 https://download.gnome.org/sources/dconf/0.38/dconf-0.38.0.tar.xz
 https://download.gnome.org/sources/dconf-editor/3.38/dconf-editor-3.38.2.tar.xz
-https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
-https://download.gnome.org/sources/pygobject/3.38/pygobject-3.38.0.tar.xz
 https://github.com/ibus/ibus/releases/download/1.5.23/ibus-1.5.23.tar.gz
 https://www.unicode.org/Public/zipped/13.0.0/UCD.zip
 https://archive.mariadb.org/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz

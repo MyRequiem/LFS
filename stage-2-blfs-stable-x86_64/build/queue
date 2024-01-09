@@ -495,6 +495,8 @@ ap/ghostscript.sh
 d/python-modules/python2-pycairo.sh
 d/python-modules/python3-pycairo.sh
 l/cairomm.sh
+d/python-modules/python2-pygobject2.sh
+d/python-modules/python3-pygobject3.sh
 
 
 # a/fcron.sh
@@ -591,7 +593,7 @@ l/cairomm.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/wayland-protocols
-# l/gtk4.sh
+# l/gtk+4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
 # d/vala.sh
@@ -667,8 +669,6 @@ l/cairomm.sh
 # l/gst-plugins-ugly.sh
 # l/libmng.sh
 # l/dconf.sh
-# d/python-modules/python2-pygobject2.sh
-# d/python-modules/python3-pygobject3.sh
 # s/ibus.sh
 # l/apr-util.sh
 # ap/mariadb.sh
@@ -873,7 +873,6 @@ l/cairomm.sh
 # s/pspg.sh
 # ap/optipng.sh
 # s/jq.sh
-# d/python-modules/python3-pygobject3.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
 # ap/scrot.sh
