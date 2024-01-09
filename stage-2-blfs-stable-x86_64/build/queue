@@ -494,6 +494,7 @@ l/harfbuzz.sh
 ap/ghostscript.sh
 d/python-modules/python2-pycairo.sh
 d/python-modules/python3-pycairo.sh
+l/cairomm.sh
 
 
 # a/fcron.sh
@@ -587,7 +588,6 @@ d/python-modules/python3-pycairo.sh
 # l/glibmm.sh
 # l/atkmm.sh
 # l/at-spi2-atk.sh
-# l/cairomm.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/wayland-protocols

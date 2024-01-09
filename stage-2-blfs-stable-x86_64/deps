@@ -25,12 +25,13 @@ bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
 bluez                                   libpcap, python2, python3
-boost                                   highlight, nghttp2, libsigc++2, swig
+boost                                   highlight, nghttp2, libsigc++2, swig, cairomm
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo
+cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm
+cairomm
 chronyd                                 dhcpcd
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg
@@ -63,7 +64,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -177,7 +178,7 @@ librtmp                                 curl
 libseccomp                              gnutls
 libsecret                               pinentry
 libsectok                               openssh
-libsigc++2
+libsigc++2                              cairomm
 libsigsegv                              clisp
 libspectre                              cairo
 libssh                                  cryptsetup
@@ -649,7 +650,6 @@ zsh                                     elogind
 # btrfs-progs                         udisks, libblockdev
 # bviplus
 # cairo-5c                            xorg-applications
-# cairomm                             pangomm
 # caladea-font-ttf
 # cantarell-font-otf
 # cantarell-fonts                     pango
