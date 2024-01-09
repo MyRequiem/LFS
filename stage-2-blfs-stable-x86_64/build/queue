@@ -492,6 +492,8 @@ x/libs/pixman.sh
 l/cairo.sh
 l/harfbuzz.sh
 ap/ghostscript.sh
+d/python-modules/python2-pycairo.sh
+d/python-modules/python3-pycairo.sh
 
 
 # a/fcron.sh
@@ -665,8 +667,6 @@ ap/ghostscript.sh
 # l/gst-plugins-ugly.sh
 # l/libmng.sh
 # l/dconf.sh
-# d/python-modules/python2-pycairo.sh
-# d/python-modules/python3-pycairo.sh
 # d/python-modules/python2-pygobject2.sh
 # d/python-modules/python3-pygobject3.sh
 # s/ibus.sh
