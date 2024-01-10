@@ -503,6 +503,7 @@ l/pango.sh
 l/glib-networking.sh
 l/glib.sh
 l/glibmm.sh
+l/pangomm.sh
 
 
 # a/fcron.sh
@@ -602,7 +603,6 @@ l/glibmm.sh
 # x/libs/libinput.sh
 # d/vala.sh
 # l/gcr.sh
-# l/pangomm.sh
 # l/gtkmm2.sh
 # l/gtkmm3.sh
 # s/gtk-vnc.sh

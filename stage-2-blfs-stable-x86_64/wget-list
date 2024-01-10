@@ -481,6 +481,7 @@ https://ftp.gnu.org/gnu/help2man/help2man-1.49.3.tar.xz
 https://download.gnome.org/sources/pango/1.50/pango-1.50.12.tar.xz
 https://download.gnome.org/sources/glib-networking/2.74/glib-networking-2.74.0.tar.xz
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
+https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 
 
 ================================================================================
@@ -675,7 +676,6 @@ https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.25.tar.xz
 https://download.gnome.org/sources/vala/0.50/vala-0.50.3.tar.xz
 https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz
-https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.0.tar.xz
 https://download.gnome.org/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
 https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.3.tar.xz
 https://download.gnome.org/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz

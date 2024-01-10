@@ -31,7 +31,7 @@ brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
 cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango
-cairomm
+cairomm                                 pangomm
 cantarell-font-otf                      pango
 chronyd                                 dhcpcd
 clisp                                   gpgme
@@ -99,7 +99,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm
 glib-networking                         glib, glibmm
-glibmm
+glibmm                                  pangomm
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango
@@ -260,7 +260,8 @@ openssh                                 sshfs, git, libssh2
 opie                                    sudo
 p11-kit                                 make-ca, gnutls, python3-requests, nss
 p7zip
-pango
+pango                                   pangomm
+pangomm
 parted
 passivetex                              xmlto
 passwdqc                                cryptsetup
@@ -954,7 +955,6 @@ zsh                                     elogind
 # pakchois                            neon
 # pamixer
 # pandoc                              openjdk
-# pangomm                             gtkmm2, gtkmm3
 # papi
 # password-store                      dmenu
 # pavucontrol

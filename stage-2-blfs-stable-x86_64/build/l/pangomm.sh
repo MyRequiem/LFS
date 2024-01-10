@@ -25,6 +25,7 @@ cd build || exit 1
 
 meson                               \
     --prefix=/usr                   \
+    --buildtype=release             \
     -Dbuild-documentation="${DOCS}" \
     .. || exit 1
 
