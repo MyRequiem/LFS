@@ -11,7 +11,7 @@ ARCH_NAME="pygobject"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              gtk+4
-#              pep8             (https://pypi.org/project/pep8/)
+#              python3-pep8     (https://pypi.org/project/pep8/)
 #              python3-pyflakes (https://pypi.org/project/pyflakes/)
 #              python3-pytest   (https://pypi.org/project/pytest/)
 

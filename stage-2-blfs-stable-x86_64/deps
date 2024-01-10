@@ -262,7 +262,6 @@ patchelf                                python3-meson, python3-dbus
 pciutils
 pcre                                    wget, git, slang, nmap
 pcre2                                   wget, glib, git, libbytesize, swig
-pep8                                    python3-pygobject3
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -488,6 +487,7 @@ python3-nose                            python3-pytest
 python3-numpy
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
+python3-pep8                            python3-pygobject3
 python3-platformdirs                    python3-pylint
 python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
 python3-poetry-core                     python3-isort, python3-tomlkit
