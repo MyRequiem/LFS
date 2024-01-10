@@ -14,10 +14,11 @@ PRGNAME="pango"
 # Recommended: cairo
 #              gobject-introspection (требуется для сборки GNOME)
 #              xorg-libraries
-# Optional:    cantarell-fonts (для тестов)
-#              gtk-doc
-#              help2man (https://mirror.tochlab.net/pub/gnu/help2man/)
-#              libthai  (https://linux.thai.net/projects/libthai)
+# Optional:    cantarell-font-otf    (для тестов)
+#              sysprof
+#              gi-docgen             (для генерации документации)
+#              help2man              (https://www.gnu.org/software/help2man/) для генерации man-страниц
+#              libthai               (https://linux.thai.net/projects/libthai)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -32,17 +33,18 @@ cd build || exit 1
 GTK_DOC="false"
 # command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
 
+# не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе
+#    --wrap-mode=nofallback
 meson                      \
     --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nofallback \
     -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
 
 ninja || exit 1
-
-# если 'cantarell-fonts' не установлен, то test-font, test-layout и
-# test-itemize не проходят
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

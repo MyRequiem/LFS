@@ -30,8 +30,9 @@ bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm
+cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango
 cairomm
+cantarell-font-otf                      pango
 chronyd                                 dhcpcd
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg
@@ -75,11 +76,11 @@ exim                                    gnupg, sudo
 fftw
 fig2dev                                 gnupg
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo
+fontconfig                              xorg-libraries, ghostscript, cairo, pango
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
-fribidi
+fribidi                                 pango
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                                vifm
 fuse2                                   archivemount, ntfs-3g
@@ -93,13 +94,14 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
+gi-docgen                               pango
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango
 glib-networking                         glib
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -115,7 +117,7 @@ gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libid
 guile
 harfbuzz                                graphite2, freetype
 hdparm
-help2man
+help2man                                pango
 highlight                               vifm
 htop
 http-parser                             nodejs
@@ -186,7 +188,7 @@ libspectre                              cairo
 libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
-libthai                                 perl-unicode-linebreak
+libthai                                 perl-unicode-linebreak, pango
 libtiff                                 lcms2, openjpeg, ghostscript
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
@@ -256,6 +258,7 @@ openssh                                 sshfs, git, libssh2
 opie                                    sudo
 p11-kit                                 make-ca, gnutls, python3-requests, nss
 p7zip
+pango
 parted
 passivetex                              xmlto
 passwdqc                                cryptsetup
@@ -574,7 +577,7 @@ stunnel                                 curl
 subversion                              git, cmake
 sudo
 swig                                    gpgme, volume-key
-sysprof                                 glib
+sysprof                                 glib, pango
 sysstat                                 openssh
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
 thin-provisioning-tools                 lvm2
@@ -607,7 +610,7 @@ xdg-user-dirs
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries
-xorg-libraries                          dbus, tk, at-spi2-core, cairo
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -656,8 +659,7 @@ zsh                                     elogind
 # bviplus
 # cairo-5c                            xorg-applications
 # caladea-font-ttf
-# cantarell-font-otf
-# cantarell-fonts                     pango
+# cantarell-fonts
 # carlito-font-ttf
 # caudium                             php
 # cdb                                 php
@@ -952,7 +954,6 @@ zsh                                     elogind
 # pakchois                            neon
 # pamixer
 # pandoc                              openjdk
-# pango                               gtk+2, pangomm, librsvg, gegl, python2-pygtk, imagemagick, i3
 # pangomm                             gtkmm2, gtkmm3
 # papi
 # password-store                      dmenu
@@ -1086,7 +1087,7 @@ zsh                                     elogind
 # xkeyboard-config                    xorg-server, libxkbcommon
 # xmlrpc-epi                          php
 # xorg-amdgpu-driver
-# xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xdg-utils
+# xorg-applications                   xcursor-themes, xorg-fonts, sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf, xterm, caladea-font-ttf, carlito-font-ttf, freefont, gelasio-font-ttf, microsoft-webcore-fonts-ttf, noto-fonts-ttf, oxygen-fonts-ttf, adobe-source-code-pro-font, noto-sans-cjk-fonts-otf, opendesktop-fonts-ttf, uming-fonts-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xdg-utils
 # xorg-ati-driver
 # xorg-cf-files                       imake
 # xorg-evdev-driver

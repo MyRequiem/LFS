@@ -499,6 +499,7 @@ d/python-modules/python2-pygobject2.sh
 d/python-modules/python3-pygobject3.sh
 d/python-modules/python3-pyatspi2.sh
 d/help2man.sh
+l/pango.sh
 
 
 # a/fcron.sh
@@ -551,7 +552,6 @@ d/help2man.sh
 # l/jasper.sh
 # l/gdk-pixbuf.sh
 # x/libs/libdrm.sh
-# l/pango.sh
 # l/hicolor-icon-theme.sh
 # l/gtk+2.sh
 # ap/vim.sh
