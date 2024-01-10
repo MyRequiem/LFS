@@ -65,7 +65,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -97,10 +97,11 @@ ghostscript                             cairo
 gi-docgen                               pango
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango
-glib-networking                         glib
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm
+glib-networking                         glib, glibmm
+glibmm
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
-gnutls                                  wget, curl, gnupg, openldap
+gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango
 gpgme                                   volume-key
 gpm
@@ -109,7 +110,7 @@ graphite2                               harfbuzz
 graphviz                                libexif, llvm, gpgme
 grc
 gsasl                                   curl
-gsettings-desktop-schemas               at-spi2-core
+gsettings-desktop-schemas               at-spi2-core, glib-networking
 gtk+2                                   pinentry, w3m, pixman, cairo
 gtk+3                                   pinentry, ghostscript, cairo
 gtk+4                                   python3-pygobject3
@@ -174,6 +175,7 @@ libnsl                                  pth, berkeley-db, clisp, opensp, python2
 libpaper                                ghostscript
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo
+libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
@@ -182,7 +184,7 @@ librtmp                                 curl
 libseccomp                              gnutls
 libsecret                               pinentry
 libsectok                               openssh
-libsigc++2                              cairomm
+libsigc++2                              cairomm, glibmm
 libsigsegv                              clisp
 libspectre                              cairo
 libssh                                  cryptsetup
@@ -199,7 +201,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl
@@ -216,14 +218,14 @@ lynx                                    pciutils, smartmontools, python3-asciido
 lz4                                     lrzip, rsync
 lzip                                    ed
 lzo                                     libarchive, cairo
-make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https
+make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
 mesa                                    cairo
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc
-mm-common                               libsigc++2
+mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs
 mruby                                   nghttp2
@@ -729,7 +731,6 @@ zsh                                     elogind
 # gimp                                imagemagick
 # girara                              zathura
 # glew
-# glibmm                              atkmm, pangomm
 # glm                                 slop
 # glu                                 fltk, sdl
 # glusterfs
@@ -862,7 +863,6 @@ zsh                                     elogind
 # libopenraw                          gegl
 # libosinfo                           virt-manager
 # libplacebo                          mpv
-# libproxy                            glib-networking, neon, qt5
 # libraqm                             imagemagick
 # libraw                              imagemagick
 # libraw1394                          gst-plugins-good

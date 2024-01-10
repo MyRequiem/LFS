@@ -500,6 +500,9 @@ d/python-modules/python3-pygobject3.sh
 d/python-modules/python3-pyatspi2.sh
 d/help2man.sh
 l/pango.sh
+l/glib-networking.sh
+l/glib.sh
+l/glibmm.sh
 
 
 # a/fcron.sh
@@ -589,7 +592,6 @@ l/pango.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # l/libxkbcommon.sh
-# l/glibmm.sh
 # l/atkmm.sh
 # l/at-spi2-atk.sh
 # x/libs/glew.sh
@@ -624,8 +626,6 @@ l/pango.sh
 # ap/flac.sh
 # l/libsndfile.sh
 # l/lame.sh
-# l/glib-networking.sh
-# l/glibmm.sh
 # l/libdazzle.sh
 # l/libsoup.sh
 # l/libvpx.sh
