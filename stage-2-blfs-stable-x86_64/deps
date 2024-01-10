@@ -115,6 +115,7 @@ gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libid
 guile
 harfbuzz                                graphite2, freetype
 hdparm
+help2man
 highlight                               vifm
 htop
 http-parser                             nodejs
@@ -758,7 +759,6 @@ zsh                                     elogind
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
 # heimdal-gssapi                      exim
-# help2man                            pango, vala
 # hicolor-icon-theme                  gtk+2, fltk
 # hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 # hp2xx                               imagemagick

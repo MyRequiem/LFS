@@ -498,6 +498,7 @@ l/cairomm.sh
 d/python-modules/python2-pygobject2.sh
 d/python-modules/python3-pygobject3.sh
 d/python-modules/python3-pyatspi2.sh
+d/help2man.sh
 
 
 # a/fcron.sh
@@ -832,7 +833,6 @@ d/python-modules/python3-pyatspi2.sh
 # ap/imwheel.sh
 # ap/megatools.sh
 # ap/mirage.sh
-# d/help2man.sh
 # s/numlockx.sh
 # s/prelink.sh
 # ap/pwgen.sh
