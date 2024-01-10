@@ -497,6 +497,7 @@ d/python-modules/python3-pycairo.sh
 l/cairomm.sh
 d/python-modules/python2-pygobject2.sh
 d/python-modules/python3-pygobject3.sh
+d/python-modules/python3-pyatspi2.sh
 
 
 # a/fcron.sh
@@ -717,7 +718,6 @@ d/python-modules/python3-pygobject3.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/python-modules/python3-pyatspi2.sh
 # d/python-modules/python2-pygtk.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
