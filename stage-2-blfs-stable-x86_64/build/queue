@@ -507,6 +507,8 @@ l/pangomm.sh
 ap/cups.sh
 ap/ghostscript.sh
 l/hicolor-icon-theme.sh
+l/shared-mime-info.sh
+l/glib.sh
 
 
 # a/fcron.sh
@@ -552,7 +554,6 @@ l/hicolor-icon-theme.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
 # x/data/xkeyboard-config.sh
 # l/atk.sh
-# l/shared-mime-info.sh
 # x/misc/glu.sh
 # x/misc/freeglut.sh
 # n/links.sh

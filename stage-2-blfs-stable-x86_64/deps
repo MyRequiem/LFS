@@ -100,7 +100,7 @@ ghostscript                             cairo
 gi-docgen                               pango
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info
 glib-networking                         glib, glibmm
 glibmm                                  pangomm
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
@@ -206,7 +206,7 @@ libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
@@ -620,7 +620,7 @@ xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
