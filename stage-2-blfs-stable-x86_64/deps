@@ -94,18 +94,17 @@ gc                                      w3m, guile
 gcc                                     pth, cmake, python3-numpy
 gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
-gdk-pixbuf                              w3m
+gdk-pixbuf                              w3m, gdk-pixbuf-xlib
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
-gi-docgen                               pango
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf
 glib-networking                         glib, glibmm
 glibmm                                  pangomm
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -116,8 +115,8 @@ gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
 gtk+2                                   pinentry, w3m, pixman, cairo
 gtk+3                                   pinentry, ghostscript, cairo
-gtk+4                                   python3-pygobject3
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo
+gtk4                                    python3-pygobject3
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib
 guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
@@ -169,7 +168,7 @@ libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo                           libtiff, lcms2, ghostscript
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
@@ -180,12 +179,12 @@ libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf
 libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
-librsvg                                 freetype, cairo
+librsvg                                 freetype, cairo, gdk-pixbuf
 librtmp                                 curl
 libseccomp                              gnutls
 libsecret                               pinentry
@@ -197,7 +196,7 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
-libtiff                                 lcms2, openjpeg, ghostscript
+libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
 libusb                                  gnupg, usbutils, libpcap, cups
@@ -468,13 +467,14 @@ python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus
 python3-dill                            python3-pylint
-python3-docutils                        sshfs
+python3-docutils                        sshfs, gdk-pixbuf
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
 python3-flake8
 python3-flask                           python3-requests
 python3-flit-core                       python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna, python3-pyparsing, python3-tomli
 python3-fonttools                       graphite2, harfbuzz
+python3-gi-docgen                       pango, gdk-pixbuf
 python3-greenlet                        python3-bpython
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
@@ -572,7 +572,7 @@ sendmail                                gnupg, sudo
 septel                                  libpcap
 sg3-utils
 sgml-common                             docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
-shared-mime-info                        glib
+shared-mime-info                        glib, gdk-pixbuf
 sharutils                               berkeley-db
 shellcheck
 silgraphite                             graphite2
@@ -621,7 +621,7 @@ xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync

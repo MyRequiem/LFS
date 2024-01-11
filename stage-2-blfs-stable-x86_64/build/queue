@@ -509,6 +509,8 @@ ap/ghostscript.sh
 l/hicolor-icon-theme.sh
 l/shared-mime-info.sh
 l/glib.sh
+l/gdk-pixbuf.sh
+l/gdk-pixbuf-xlib.sh
 
 
 # a/fcron.sh
@@ -558,7 +560,6 @@ l/glib.sh
 # x/misc/freeglut.sh
 # n/links.sh
 # l/jasper.sh
-# l/gdk-pixbuf.sh
 # x/libs/libdrm.sh
 # l/gtk+2.sh
 # ap/vim.sh
@@ -600,8 +601,10 @@ l/glib.sh
 # l/at-spi2-atk.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
-# l/wayland-protocols
-# l/gtk+4.sh
+# x/libs/wayland
+# x/libs/wayland-protocols
+# l/gtk4.sh
+# l/webkit2gtk4.1
 # ap/vim.sh
 # x/libs/libinput.sh
 # d/vala.sh
@@ -656,7 +659,6 @@ l/glib.sh
 # l/libmpeg2.sh
 # l/librsvg.sh
 # n/links.sh
-# l/gdk-pixbuf.sh
 # l/giflib.sh
 # l/imlib2.sh
 # l/libwebp.sh
@@ -712,7 +714,6 @@ l/glib.sh
 # l/json-glib.sh
 # l/gtk+3.sh
 # l/libseccomp.sh
-# l/gdk-pixbuf-xlib.sh
 # l/babl.sh
 # l/gegl.sh
 # l/poppler.sh

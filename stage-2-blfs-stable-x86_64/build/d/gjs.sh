@@ -13,7 +13,7 @@ PRGNAME="gjs"
 # Optional:    sysprof
 #              valgrind  (для тестов)
 #              dtrace    (http://dtrace.org/blogs/about/)
-#              gtk+4     (https://wiki.gnome.org/Projects/GTK/Roadmap/GTK4)
+#              gtk4      (https://wiki.gnome.org/Projects/GTK/Roadmap/GTK4)
 #              lcov      (http://ltp.sourceforge.net/coverage/lcov.php)
 #              systemtap (https://sourceware.org/systemtap/)
 

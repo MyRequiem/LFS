@@ -16,7 +16,7 @@ PRGNAME="pango"
 #              xorg-libraries
 # Optional:    cantarell-font-otf    (для тестов)
 #              sysprof
-#              gi-docgen             (для генерации документации)
+#              python3-gi-docgen     (для генерации документации)
 #              help2man              (https://www.gnu.org/software/help2man/) для генерации man-страниц
 #              libthai               (https://linux.thai.net/projects/libthai)
 
@@ -31,7 +31,7 @@ mkdir build
 cd build || exit 1
 
 GTK_DOC="false"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
+# command -v gi-docgen &>/dev/null && GTK_DOC="true"
 
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе

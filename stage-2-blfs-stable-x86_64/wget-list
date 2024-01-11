@@ -485,6 +485,8 @@ https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
 https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-2.2.tar.gz
+https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz
+https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 
 
 ================================================================================
@@ -629,7 +631,6 @@ ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
-https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.2.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
 https://github.com/anholt/libepoxy/releases/download/1.5.5/libepoxy-1.5.5.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
@@ -752,7 +753,6 @@ https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2
 http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
 https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
-http://anduin.linuxfromscratch.org/BLFS/gdk-pixbuf-xlib/gdk-pixbuf-xlib-3116b8ae.tar.xz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.28.tar.xz
 https://poppler.freedesktop.org/poppler-21.02.0.tar.xz
