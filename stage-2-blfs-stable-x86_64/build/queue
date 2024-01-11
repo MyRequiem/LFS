@@ -504,6 +504,8 @@ l/glib-networking.sh
 l/glib.sh
 l/glibmm.sh
 l/pangomm.sh
+ap/cups.sh
+ap/ghostscript.sh
 
 
 # a/fcron.sh
@@ -616,7 +618,6 @@ l/pangomm.sh
 # l/libxklavier.sh
 # l/alsa-lib.sh
 # l/libcanberra.sh
-# ap/cups.sh
 # l/gtk+2.sh
 # l/gtk+3.sh
 # l/gstreamer.sh
@@ -658,7 +659,6 @@ l/pangomm.sh
 # l/giflib.sh
 # l/imlib2.sh
 # l/libwebp.sh
-# ap/cups.sh
 # l/libsoup.sh
 # l/neon.sh
 # l/sbc.sh
@@ -726,10 +726,8 @@ l/pangomm.sh
 # ap/vim.sh
 # n/apache-httpd.sh
 # n/php.sh
-# ap/cups.sh
 # d/ruby.sh
 # d/openjdk.sh
-# ap/cups.sh
 # n/ntp.sh
 # n/traceroute.sh
 # l/adwaita-icon-theme.sh

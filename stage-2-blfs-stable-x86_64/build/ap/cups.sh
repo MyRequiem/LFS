@@ -15,7 +15,6 @@ PRGNAME="cups"
 #    - Back-end - система, отправляющая данные на устройства печати
 
 # Required:    gnutls
-#              cups-filters
 # Recommended: colord
 #              dbus
 #              libusb
@@ -24,17 +23,22 @@ PRGNAME="cups"
 # Optional:    avahi
 #              libpaper
 #              mit-kerberos-v5
-#              openjdk
 #              php
 #              python2
+#              cups-filters
 #              gutenprint
-#              hplip (для принтеров HP - https://developers.hp.com/hp-linux-imaging-and-printing)
+#              hplip            (для принтеров HP - https://developers.hp.com/hp-linux-imaging-and-printing)
 
 ### Конфигурация ядра
+# Для USB принтеров
 #    CONFIG_USB_SUPPORT=y
 #    CONFIG_USB_OHCI_HCD=y|m
 #    CONFIG_USB_UHCI_HCD=y|m
 #    CONFIG_USB_PRINTER=y|m
+# Для принтеров, подключаемых через параллельный порт
+#    CONFIG_PARPORT=y|m
+#    CONFIG_PARPORT_PC=y|m
+#    CONFIG_PRINTER=y|m
 
 ### Конфиги
 #    /etc/cups/*
@@ -64,33 +68,20 @@ mkdir -pv "${TMP_DIR}"
 ! grep -qE "^lpadmin:" /etc/group  && \
     groupadd -g 19 lpadmin
 
-! grep -qE "^lp:" /etc/passwd &&    \
-    useradd -c "Print Service User" \
-            -d /var/spool/cups      \
-            -g lp                   \
-            -s /bin/false           \
+! grep -qE "^lp:" /etc/passwd &&       \
+    useradd -c "Print Service User"    \
+            -d "/var/spool/${PRGNAME}" \
+            -g lp                      \
+            -s /bin/false              \
             -u 9 lp
-
-# изменим браузер по умолчанию на Firefox, который будет использоваться для
-# доступа к веб-интерфейсу Cups (к серверу Cups обычно можно подключиться по
-# адресу http://localhost:631)
-sed -i 's#@CUPS_HTMLVIEW@#firefox#' desktop/cups.desktop.in || exit 1
-
-# исправим ошибку, вызванную изменениями в glibc >=2.30 в API пользовательского
-# пространства для сокетов
-sed -i '/stat.h/a #include <asm-generic/ioctls.h>' tools/ipptool.c || exit 1
 
 LIBPAPER="--disable-libpaper"
 command -v paperconf &>/dev/null && LIBPAPER="--enable-libpaper"
 
 # устанавливаем поставляемый с пакетом загрузочный скрипт в /tmp вместо
-# /etc/rc.d, а замем его удалим. Позже мы установим свой загрузочный скрипт в
+# /etc/rc.d, а затем его удалим. Позже мы установим свой загрузочный скрипт в
 # /etc/rc.d
 #    --with-rcdir=/tmp/cupsinit
-#
-# используем именно gcc, а не clang (использование clang почти удваивается
-# время сборки)
-CC=gcc CXX=g++                   \
 ./configure                      \
     --libdir=/usr/lib            \
     --disable-systemd            \
@@ -109,11 +100,8 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}"/{tmp,var/run}
 
 # создадим базовый файл конфигурации клиента cups
-CLIENT_CONF="/etc/cups/client.conf"
-echo "ServerName /run/cups/cups.sock" > "${TMP_DIR}${CLIENT_CONF}"
-
-# создадим/обновим кэш иконок /usr/share/icons/hicolor/icon-theme.cache
-gtk-update-icon-cache -qtf /usr/share/icons/hicolor
+CLIENT_CONF="/etc/${PRGNAME}/client.conf"
+echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > "${TMP_DIR}${CLIENT_CONF}"
 
 # установим загрузочный скрипт для запуска cups при старте системы
 (
@@ -144,7 +132,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # drivers and other CUPS services.
 #
 # Home page: https://openprinting.github.io/${PRGNAME}/
-# Download:  https://github.com/apple/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
+# Download:  https://github.com/OpenPrinting/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
 #
 EOF
 
