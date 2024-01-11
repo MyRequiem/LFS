@@ -123,6 +123,7 @@ gutenprint                              cups
 harfbuzz                                graphite2, freetype
 hdparm
 help2man                                pango
+hicolor-icon-theme
 highlight                               vifm
 hplip                                   cups
 htop
@@ -766,7 +767,6 @@ zsh                                     elogind
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
 # heimdal-gssapi                      exim
-# hicolor-icon-theme                  gtk+2, fltk
 # hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 # hp2xx                               imagemagick
 # hspell                              enchant

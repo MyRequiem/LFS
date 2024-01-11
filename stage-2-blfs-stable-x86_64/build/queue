@@ -506,6 +506,7 @@ l/glibmm.sh
 l/pangomm.sh
 ap/cups.sh
 ap/ghostscript.sh
+l/hicolor-icon-theme.sh
 
 
 # a/fcron.sh
@@ -558,7 +559,6 @@ ap/ghostscript.sh
 # l/jasper.sh
 # l/gdk-pixbuf.sh
 # x/libs/libdrm.sh
-# l/hicolor-icon-theme.sh
 # l/gtk+2.sh
 # ap/vim.sh
 # x/libs/libepoxy.sh
