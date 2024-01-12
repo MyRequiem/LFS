@@ -516,6 +516,8 @@ l/librsvg.sh
 l/freetype.sh
 l/cairo.sh
 l/gdk-pixbuf.sh
+x/libs/wayland.sh
+x/libs/wayland-protocols.sh
 
 
 # a/fcron.sh
@@ -606,8 +608,6 @@ l/gdk-pixbuf.sh
 # l/at-spi2-atk.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
-# x/libs/wayland
-# x/libs/wayland-protocols
 # l/gtk4.sh
 # l/webkit2gtk4.1
 # ap/vim.sh

@@ -62,13 +62,13 @@ docbook-dsssl                           docbook-utils
 docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl
 docbook-utils                           libsigc++2, fontconfig
-docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool
-docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs
+docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland
+docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -109,7 +109,7 @@ gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                libexif, llvm, gpgme, vala
+graphviz                                libexif, llvm, gpgme, vala, wayland
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
@@ -206,8 +206,8 @@ libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -610,6 +610,8 @@ vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
+wayland                                 wayland-protocols
+wayland-protocols
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
@@ -623,7 +625,7 @@ xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib
 xorg-sgml-doctools                      libxdmcp
@@ -1061,8 +1063,6 @@ zsh                                     elogind
 # vte3                                qemu
 # vulkan                              gst-plugins-bad, qt5
 # wavpack                             gst-plugins-good
-# wayland                             libva, xorg-server, libxkbcommon, gst-plugins-good, gst-plugins-bad, ibus, qt5
-# wayland-protocols                   xorg-server, libxkbcommon, gst-plugins-base, sdl2
 # wddx
 # webkitgtk                           zenity
 # webrtc-audio-processing             pulseaudio
