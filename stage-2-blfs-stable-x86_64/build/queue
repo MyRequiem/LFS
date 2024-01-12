@@ -567,7 +567,6 @@ l/cairo.sh
 # x/fonts/indic-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
 # x/data/xkeyboard-config.sh
-# l/atk.sh
 # x/misc/glu.sh
 # x/misc/freeglut.sh
 # n/links.sh
@@ -609,7 +608,6 @@ l/cairo.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # l/libxkbcommon.sh
 # l/atkmm.sh
-# l/at-spi2-atk.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/gtk4.sh

@@ -660,8 +660,6 @@ zsh                                     elogind
 # apr-util                            apache-httpd
 # as31                                alsa-firmware
 # assimp                              qt5
-# at-spi2-atk
-# atk                                 atkmm, at-spi2-atk, python2-pygtk
 # atkmm                               gtkmm2, gtkmm3
 # autotrace                           imagemagick
 # babl                                gegl

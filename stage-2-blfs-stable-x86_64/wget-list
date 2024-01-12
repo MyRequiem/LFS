@@ -631,7 +631,6 @@ https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-fon
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
 https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.32.tar.bz2
-https://download.gnome.org/sources/atk/2.36/atk-2.36.0.tar.xz
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
@@ -677,7 +676,6 @@ https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.0.3.tar.xz
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.1.tar.xz
-https://download.gnome.org/sources/at-spi2-atk/2.38/at-spi2-atk-2.38.0.tar.xz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.25.tar.xz
 https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz

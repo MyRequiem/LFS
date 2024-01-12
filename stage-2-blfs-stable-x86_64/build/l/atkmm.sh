@@ -5,7 +5,7 @@ PRGNAME="atkmm"
 ### Atkmm (C++ bindings for ATK)
 # C++ bindings для ATK (accessibility toolkit library)
 
-# Required:    atk
+# Required:    at-spi2-core
 #              glibmm
 # Recommended: no
 # Optional:    no
