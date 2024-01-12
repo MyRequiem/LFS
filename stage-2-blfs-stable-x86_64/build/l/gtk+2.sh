@@ -8,7 +8,7 @@ ARCH_NAME="gtk+"
 # (фреймворк). Наряду с библиотекой Qt является одной из наиболее популярных на
 # сегодняшний день библиотек для X Window System.
 
-# Required:    atk
+# Required:    at-spi2-core
 #              gdk-pixbuf
 #              pango
 # Recommended: hicolor-icon-theme
