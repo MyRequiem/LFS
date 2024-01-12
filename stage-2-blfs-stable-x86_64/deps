@@ -51,7 +51,7 @@ cyrus-sasl                              openldap
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2
-dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups
+dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala
 dbus-glib
 desktop-file-utils                      wpa-supplicant, glib
 dhcpcd
@@ -99,7 +99,7 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala
 glib-networking                         glib, glibmm
 glibmm                                  pangomm
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
@@ -109,19 +109,19 @@ gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                libexif, llvm, gpgme
+graphviz                                libexif, llvm, gpgme, vala
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
 gtk+2                                   pinentry, w3m, pixman, cairo
 gtk+3                                   pinentry, ghostscript, cairo
-gtk4                                    python3-pygobject3
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib
+gtk4                                    python3-pygobject3
 guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
 hdparm
-help2man                                pango
+help2man                                pango, vala
 hicolor-icon-theme
 highlight                               vifm
 hplip                                   cups
@@ -142,6 +142,7 @@ jansson                                 nghttp2
 jbig-kit                                libtiff
 jbig2dec                                cairo
 jemalloc                                nghttp2
+jing                                    vala
 json-c                                  bind-utils, cryptsetup, fontconfig
 kernel-firmware
 kexec                                   elogind
@@ -206,7 +207,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -603,11 +604,13 @@ unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                             xorgproto
+vala
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo
 vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
+weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
 whois
@@ -1042,7 +1045,6 @@ zsh                                     elogind
 # utah-raster-toolkit                 imagemagick
 # utimer
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
-# vala                                gcr, gtk-vnc, libxklavier, libdazzle, libsoup, libical, librsvg, dconf, ibus, gegl, libsecret, vte3, gexiv2, spice-gtk
 # vde2
 # vim                                 fcron
 # virglrenderer
@@ -1061,7 +1063,6 @@ zsh                                     elogind
 # wayland                             libva, xorg-server, libxkbcommon, gst-plugins-good, gst-plugins-bad, ibus, qt5
 # wayland-protocols                   xorg-server, libxkbcommon, gst-plugins-base, sdl2
 # wddx
-# weasyprint                          vala
 # webkitgtk                           zenity
 # webrtc-audio-processing             pulseaudio
 # wgetpaste
