@@ -512,6 +512,10 @@ l/glib.sh
 l/gdk-pixbuf.sh
 l/gdk-pixbuf-xlib.sh
 d/vala.sh
+l/librsvg.sh
+l/freetype.sh
+l/cairo.sh
+l/gdk-pixbuf.sh
 
 
 # a/fcron.sh
@@ -657,7 +661,6 @@ d/vala.sh
 # l/gst-plugins-base.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
-# l/librsvg.sh
 # n/links.sh
 # l/giflib.sh
 # l/imlib2.sh

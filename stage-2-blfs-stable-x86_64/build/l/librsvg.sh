@@ -6,13 +6,15 @@ PRGNAME="librsvg"
 # Библиотека и инструменты для управления, преобразования и отрисовки
 # масштабируемой векторной графики в формате SVG
 
-# Required:    gdk-pixbuf
-#              cairo
+# Required:    cairo
+#              gdk-pixbuf
 #              pango
 #              rustc
 # Recommended: gobject-introspection
 #              vala
-# Optional:    gtk-doc
+# Optional:    python3-docutils
+#              python3-gi-docgen
+#              xorg-fonts
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,24 +23,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALA="--disable-vala"
-INTROSPECTION="--disable-introspection"
+VALA="no"
+INTROSPECTION="no"
 GTK_DOC="--disable-gtk-doc"
 
-command -v vala          &>/dev/null && VALA="--enable-vala"
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="--enable-introspection"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+command -v vala          &>/dev/null && VALA="yes"
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="yes"
+# command -v gi-docgen &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
-./configure            \
-    --prefix=/usr      \
-    "${VALA}"          \
-    "${INTROSPECTION}" \
-    "${GTK_DOC}"       \
-    --disable-static   \
+./configure                                   \
+    --prefix=/usr                             \
+    --enable-vala="${VALA}"                   \
+    --enable-static=no                        \
+    --enable-introspection="${INTROSPECTION}" \
+    "${GTK_DOC}"                              \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# make -k check
 make install DESTDIR="${TMP_DIR}"
 
 [[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \

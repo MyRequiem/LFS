@@ -488,6 +488,7 @@ https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-in
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 https://download.gnome.org/sources/vala/0.56/vala-0.56.4.tar.xz
+https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
 
 
 ================================================================================
@@ -721,7 +722,6 @@ https://www.alsa-project.org/files/pub/firmware/alsa-firmware-1.2.4.tar.bz2
 https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.2.tar.bz2
 https://www.libsdl.org/release/SDL-1.2.15.tar.gz
 http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
-https://download.gnome.org/sources/librsvg/2.50/librsvg-2.50.3.tar.xz
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
