@@ -493,6 +493,7 @@ https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.21.0/downloads/wayla
 https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.31/downloads/wayland-protocols-1.31.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
 https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
+https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 
 
 ================================================================================
@@ -762,7 +763,6 @@ http://www.linuxfromscratch.org/patches/blfs/10.1/raptor-2.0.15-security_fixes-1
 http://download.librdf.org/source/rasqal-0.9.33.tar.gz
 https://downloads.sourceforge.net/iodbc/libiodbc-3.52.12.tar.gz
 http://download.librdf.org/source/redland-1.0.17.tar.gz
-https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://github.com/LMDB/lmdb/archive/LMDB_0.9.28.tar.gz
 https://github.com/htacg/tidy-html5/archive/5.6.0/tidy-html5-5.6.0.tar.gz
 https://github.com/AbiWord/enchant/releases/download/v2.2.15/enchant-2.2.15.tar.gz

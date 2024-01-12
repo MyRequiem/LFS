@@ -524,6 +524,8 @@ n/w3m.sh
 x/libs/pixman.sh
 l/cairo.sh
 l/libglade.sh
+d/python-modules/python2-pygtk.sh
+n/nmap.sh
 
 
 # a/fcron.sh
@@ -725,7 +727,6 @@ l/libglade.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# d/python-modules/python2-pygtk.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
 # l/enchant.sh

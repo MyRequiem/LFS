@@ -15,7 +15,7 @@ argon2                                  cryptsetup
 aspell                                  aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-at-spi2-core                            python3-pyatspi2, gtk+2
+at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk
 audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
@@ -114,7 +114,7 @@ graphviz                                libexif, llvm, gpgme, vala, wayland
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk
 gtk+3                                   pinentry, ghostscript, cairo
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade
 gtk4                                    python3-pygobject3
@@ -167,7 +167,7 @@ libexif
 libffcall                               clisp
 libgcrypt                               gnupg, libxslt, libssh2
 libgit2                                 rustc
-libglade
+libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
@@ -209,7 +209,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -268,7 +268,7 @@ openssh                                 sshfs, git, libssh2
 opie                                    sudo
 p11-kit                                 make-ca, gnutls, python3-requests, nss
 p7zip
-pango                                   pangomm, librsvg, gtk+2
+pango                                   pangomm, librsvg, gtk+2, python2-pygtk
 pangomm
 parted
 passivetex                              xmlto
@@ -443,11 +443,11 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk
 python2-cython
 python2-libxml2                         docbook-xsl
-python2-pycairo                         python2-pygobject2
-python2-pygobject2
+python2-pycairo                         python2-pygobject2, python2-pygtk
+python2-pygobject2                      python2-pygtk
 python2-pygtk                           nmap
 python3
 python3-appdirs                         python3-platformdirs
@@ -501,7 +501,7 @@ python3-msgpack                         python3-cachecontrol
 python3-mypy                            python3-attrs
 python3-netifaces
 python3-nose                            python3-pytest
-python3-numpy
+python3-numpy                           python2-pygtk
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
@@ -941,7 +941,6 @@ zsh                                     elogind
 # noto-sans-cjk-fonts-otf
 # numactl                             x265
 # numlockx
-# numpy                               python2-pygtk
 # nuspell                             enchant
 # openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
