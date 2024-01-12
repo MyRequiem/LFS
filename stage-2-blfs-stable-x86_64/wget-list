@@ -492,6 +492,7 @@ https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.21.0/downloads/wayland-1.21.0.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.31/downloads/wayland-protocols-1.31.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
+https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 
 
 ================================================================================
@@ -683,7 +684,6 @@ https://download.gnome.org/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
 https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.3.tar.xz
 https://download.gnome.org/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz
 https://downloads.sourceforge.net/enlightenment/imlib2-1.7.1.tar.bz2
-https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 https://downloads.xiph.org/releases/ogg/libogg-1.3.4.tar.xz
 https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz
 http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz

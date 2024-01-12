@@ -114,9 +114,9 @@ graphviz                                libexif, llvm, gpgme, vala, wayland
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
-gtk+2                                   pinentry, w3m, pixman, cairo
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade
 gtk+3                                   pinentry, ghostscript, cairo
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade
 gtk4                                    python3-pygobject3
 guile
 gutenprint                              cups
@@ -167,6 +167,7 @@ libexif
 libffcall                               clisp
 libgcrypt                               gnupg, libxslt, libssh2
 libgit2                                 rustc
+libglade
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
@@ -207,7 +208,7 @@ libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
@@ -442,7 +443,7 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade
 python2-cython
 python2-libxml2                         docbook-xsl
 python2-pycairo                         python2-pygobject2
@@ -835,7 +836,6 @@ zsh                                     elogind
 # liberation-fonts-ttf
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               nginx
-# libglade                            python2-pygtk
 # libgsf                              goffice
 # libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gimp
 # libgxps                             imagemagick
