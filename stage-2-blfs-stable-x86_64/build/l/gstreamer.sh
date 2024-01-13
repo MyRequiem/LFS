@@ -11,11 +11,11 @@ PRGNAME="gstreamer"
 # Recommended: gobject-introspection
 # Optional:    gtk+3
 #              gsl             (для одного из тестов)
+#              libunwind
 #              valgrind
 #              bash-completion (https://github.com/scop/bash-completion/)
 #              hotdoc          (https://pypi.org/project/hotdoc/)
 #              libdw           (https://sourceware.org/elfutils/)
-#              libunwind       (http://www.nongnu.org/libunwind/)
 
 ### NOTE:
 # Если мы обновляем пакет, то сначала нужно удалить пакеты:

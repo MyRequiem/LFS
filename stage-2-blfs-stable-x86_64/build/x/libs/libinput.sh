@@ -12,7 +12,7 @@ PRGNAME="libinput"
 # Optional:    valgrind          (для тестов)
 #              python3-sphinx    (для создания документации)
 #              gtk+3             (для сборки GUI event viewer)
-#              libunwind         (для тестов) http://www.nongnu.org/libunwind/
+#              libunwind         (для тестов)
 #              libwacom          (для тестов)
 #              python3-pyparsing (для тестов)
 

@@ -21,16 +21,18 @@ PRGNAME="mesa"
 #              wayland-protocols (для сборки plasma5, gnome, а так же
 #                                 рекомендуется для gtk+3)
 # Optional:    libgcrypt
+#              libunwind
 #              lm-sensors
 #              nettle
 #              valgrind
-#              mesa-demos (ftp://ftp.freedesktop.org/pub/mesa/demos/)
-#                         Патч ниже добавляет теже утилиты, что и mesa-demos
-#                         (glxinfo и glxgears), поэтому при его использовании в
-#                         пакете mesa-demos нет необходимости
-#              bellagio-openmax (http://omxil.sourceforge.net/) для мобильных платформ
-#              libunwind        (http://www.nongnu.org/libunwind/)
-#              libtizonia       (https://github.com/tizonia/tizonia-openmax-il/wiki/Tizonia-OpenMAX-IL)
+#              mesa-demos       (ftp://ftp.freedesktop.org/pub/mesa/demos/)
+#                                 Патч ниже добавляет теже утилиты, что и mesa-demos
+#                                 (glxinfo и glxgears), поэтому при его использовании в
+#                                 пакете mesa-demos нет необходимости
+#              bellagio-openmax (https://omxil.sourceforge.net/) для мобильных платформ
+#              glslang          (https://github.com/KhronosGroup/glslang) для драйвера vulkan
+#              libtizonia       (https://github.com/tizonia/tizonia-openmax-il/wiki/Tizonia-OpenMAX-IL/)
+#              libvulkan        (https://www.vulkan.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -43,9 +45,6 @@ mkdir -pv "${TMP_DIR}"
 # применим патч для включения сборки утилит 'glxinfo' и 'glxgears' (mesa-demos)
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-add_xdemos-1.patch" || exit 1
-
-# настроим набор тестов для использования Python-3, вместо Python-2
-sed '1s/python/&3/' -i bin/symbols-check.py || exit 1
 
 mkdir build
 cd build || exit 1
@@ -63,20 +62,31 @@ cd build || exit 1
 #    -Dbuild-tests=false
 GALLIUM_DRV="i915,iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl"
 DRI_DRIVERS="i965,nouveau"
-PLATFORMS="x11"
+
+if [ -d /usr/share/wayland-protocols ]; then
+    PLATFORMS="x11,wayland"
+else
+    PLATFORMS="x11"
+fi
+
+VALGRIND="disabled"
+LIBUNWIND="disabled"
+# command -v valgrind &>/dev/null && VALGRIND="enabled"
+[ -x /usr/lib/libunwind.so ] && LIBUNWIND="enabled"
 
 # shellcheck disable=SC2086
 meson                                  \
     --prefix=${XORG_PREFIX}            \
-    -Dbuildtype=release                \
+    --buildtype=release                \
+    -Dplatforms="${PLATFORMS}"         \
     -Ddri-drivers="${DRI_DRIVERS}"     \
     -Dgallium-drivers="${GALLIUM_DRV}" \
+    -Dvulkan-drivers=""                \
     -Dgallium-nine=true                \
     -Dglx=dri                          \
     -Dosmesa=gallium                   \
-    -Dvalgrind=false                   \
-    -Dlibunwind=false                  \
-    -Dplatforms="${PLATFORMS}"         \
+    -Dvalgrind="${VALGRIND}"           \
+    -Dlibunwind="${LIBUNWIND}"         \
     -Dbuild-tests=false                \
     .. || exit 1
 
@@ -86,8 +96,6 @@ ninja || exit 1
 ### тесты
 # для запуска тестов необходимо конфигурировать mesa с параметром
 #    -Dbuild-tests=true
-#
-# известно, что два теста из набора llvmpipe завершаются с ошибкой
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

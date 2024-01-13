@@ -22,6 +22,7 @@ autoconf213                             archivemount
 autogen                                 gnutls
 avahi                                   cups
 bash-completion                         elogind
+bellagio-openmax                        mesa
 berkeley-db                             cyrus-sasl, openldap, python3
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
@@ -103,6 +104,7 @@ gjs                                     gobject-introspection
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
+glslang                                 mesa
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
@@ -161,13 +163,13 @@ libatasmart
 libatomic-ops                           gc, libdrm
 libbytesize
 libcap                                  bind-utils
-libdrm                                  cairo, libva
+libdrm                                  cairo, libva, mesa
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libev                                   nghttp2
 libevent                                tmux, nghttp2
 libexif
 libffcall                               clisp
-libgcrypt                               gnupg, libxslt, libssh2
+libgcrypt                               gnupg, libxslt, libssh2, mesa
 libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
@@ -203,12 +205,14 @@ libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
 libtirpc                                libnsl, lsof
+libtizonia                              mesa
 libunistring                            libidn2, gnutls, guile
-libunwind
+libunwind                               mesa
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
-libva
-libvdpau
+libva                                   mesa
+libvdpau                                mesa
+libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries
@@ -218,8 +222,8 @@ libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
-llvm                                    dhcpcd, icu, rustc
-lm-sensors                              htop
+llvm                                    dhcpcd, icu, rustc, mesa
+lm-sensors                              htop, mesa
 lnav
 lrzip
 lsb-tools
@@ -236,6 +240,7 @@ mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
 mesa                                    cairo, libvdpau, libva
+mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
 mm-common                               libsigc++2, glibmm
@@ -246,7 +251,7 @@ mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
-nettle                                  gnutls, libarchive
+nettle                                  gnutls, libarchive, mesa
 nftables                                iptables
 nghttp2                                 curl, cmake, bind-utils, nodejs
 ngtcp2                                  curl
@@ -496,7 +501,7 @@ python3-isort                           python3-pylint
 python3-jinja2                          python3-pyparsing
 python3-kdcproxy                        mit-kerberos-v5
 python3-lxml                            elogind
-python3-mako                            gobject-introspection
+python3-mako                            gobject-introspection, mesa
 python3-markdown                        gobject-introspection
 python3-markupsafe                      python3-requests, python3-jinja2, python3-mako
 python3-mccabe                          python3-pylint, python3-flake8
@@ -612,13 +617,13 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto
 vala                                    librsvg
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa
 vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
 wayland                                 wayland-protocols, libva
-wayland-protocols
+wayland-protocols                       mesa
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
@@ -634,7 +639,7 @@ xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -669,7 +674,6 @@ zsh                                     elogind
 # autotrace                           imagemagick
 # babl                                gegl
 # bcachefs                            libblockdev
-# bellagio-openmax
 # bibtex                              libtheora
 # birdstep
 # blender                             imagemagick
@@ -883,7 +887,6 @@ zsh                                     elogind
 # libspiro                            gegl
 # libsrtp                             gst-plugins-bad
 # libtheora                           gst-plugins-base, ffmpeg
-# libtizonia
 # libumfpack                          gegl
 # liburcu                             glusterfs
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
@@ -912,7 +915,6 @@ zsh                                     elogind
 # mc
 # mecab
 # megatools
-# mesa-demos
 # messagepack
 # mhash
 # microdns                            gst-plugins-bad

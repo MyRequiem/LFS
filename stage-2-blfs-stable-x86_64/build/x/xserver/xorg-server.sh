@@ -17,6 +17,7 @@ PRGNAME="xorg-server"
 # Optional:    acpid
 #              doxygen             (для сборки документации)
 #              fop                 (для сборки документации)
+#              libunwind
 #              nettle              (для сборки xephyr)
 #              libgcrypt           (для сборки xephyr)
 #              xcb-util-keysyms    (для сборки xephyr)
@@ -24,7 +25,6 @@ PRGNAME="xorg-server"
 #              xcb-util-renderutil (для сборки xephyr)
 #              xcb-util-wm         (для сборки xephyr)
 #              xmlto               (для сборки документации)
-#              libunwind           (http://mirror.yongbok.net/nongnu/libunwind/)
 #              xorg-sgml-doctools  (для сборки документации) https://gitlab.freedesktop.org/xorg/doc/xorg-sgml-doctools
 
 ROOT="/root/src/lfs"

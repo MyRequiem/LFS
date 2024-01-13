@@ -532,6 +532,10 @@ l/cairo.sh
 l/libunwind.sh
 x/libs/libvdpau.sh
 x/libs/libva.sh
+x/misc/mesa.sh
+l/cairo.sh
+x/libs/libvdpau.sh
+x/libs/libva.sh
 
 
 # a/fcron.sh
@@ -558,7 +562,6 @@ x/libs/libva.sh
 # x/xcb/xcb-util-renderutil.sh
 # x/xcb/xcb-util-wm.sh
 # x/xcb/xcb-util-cursor.sh
-# x/misc/mesa.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh

@@ -33,6 +33,7 @@ PRGNAME="gimp"
 # Optional:    aalib
 #              alsa-lib
 #              libmng
+#              libunwind
 #              libwebp
 #              openjpeg
 #              dovecot или exim или postfix или sendmail
@@ -41,7 +42,6 @@ PRGNAME="gimp"
 #              libbacktrace   (https://github.com/ianlancetaylor/libbacktrace)
 #              libheif        (https://github.com/strukturag/libheif/)
 #              libde265       (https://github.com/strukturag/libde265/)
-#              libunwind      (https://www.nongnu.org/libunwind/)
 #              libwmf         (http://wvware.sourceforge.net/libwmf.html)
 
 ### Конфиги:
