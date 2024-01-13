@@ -527,6 +527,8 @@ l/libglade.sh
 d/python-modules/python2-pygtk.sh
 n/nmap.sh
 l/atkmm.sh
+x/libs/libdrm.sh
+l/cairo.sh
 
 
 # a/fcron.sh
@@ -553,7 +555,6 @@ l/atkmm.sh
 # x/xcb/xcb-util-renderutil.sh
 # x/xcb/xcb-util-wm.sh
 # x/xcb/xcb-util-cursor.sh
-# x/libs/libdrm.sh
 # x/libs/libva.sh
 # x/libs/libvdpau.sh
 # x/misc/mesa.sh
@@ -575,7 +576,6 @@ l/atkmm.sh
 # x/misc/freeglut.sh
 # n/links.sh
 # l/jasper.sh
-# x/libs/libdrm.sh
 # ap/vim.sh
 # x/libs/libepoxy.sh
 # x/xserver/xorg-server.sh

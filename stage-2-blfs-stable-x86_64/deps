@@ -32,18 +32,18 @@ bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg
+cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm
 cairomm                                 pangomm
 cantarell-font-otf                      pango
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups
 cpio
 cryptsetup                              volume-key
-cunit                                   nghttp2
+cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
@@ -63,8 +63,8 @@ docbook-dsssl                           docbook-utils
 docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl
 docbook-utils                           libsigc++2, fontconfig, gtk+2
-docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland
-docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland
+docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland, libdrm
+docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
@@ -157,7 +157,7 @@ libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
 libassuan                               pinentry, gnupg, gpgme
 libatasmart
-libatomic-ops                           gc
+libatomic-ops                           gc, libdrm
 libbytesize
 libcap                                  bind-utils
 libdrm                                  cairo
@@ -210,7 +210,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries
 libxdmcp                                libxcb
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -471,7 +471,7 @@ python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus
 python3-dill                            python3-pylint
-python3-docutils                        sshfs, gdk-pixbuf, librsvg
+python3-docutils                        sshfs, gdk-pixbuf, librsvg, libdrm
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
 python3-flake8
@@ -608,7 +608,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto
 vala                                    librsvg
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm
 vdo                                     lvm2
 vifm
 volume-key
@@ -630,7 +630,7 @@ xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync

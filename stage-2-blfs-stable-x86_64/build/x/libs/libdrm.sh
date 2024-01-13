@@ -8,15 +8,16 @@ PRGNAME="libdrm"
 # Используется для поддержки аппаратного ускорения 3D рендеринга.
 
 # Required:    no
-# Recommended: xorg-libraries (для intel kms api support, требуемой для mesa)
-# Optional:    cairo          (для тестов)
-#              cmake          (может использоваться для поиска зависимостей без файлов pkgconfig)
+# Recommended: xorg-libraries   (для intel kms api support, требуемой для mesa)
+# Optional:    cairo            (для тестов)
+#              cmake            (может использоваться для поиска зависимостей без файлов pkgconfig)
 #              docbook-xml
 #              docbook-xsl
-#              libxslt        (для сборки man-страниц)
+#              python3-docutils
+#              libxslt          (для сборки man-страниц)
 #              libatomic-ops
 #              valgrind
-#              cunit          (для amdgpu тестов) http://cunit.sourceforge.net/
+#              cunit            (для amdgpu тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,6 +27,9 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+VALGRIND="disabled"
+# command -v valgrind &>/dev/null && VALGRIND="enabled"
+
 mkdir build
 cd build || exit 1
 
@@ -33,9 +37,11 @@ cd build || exit 1
 #    -Dudev=true
 #
 # shellcheck disable=SC2086
-meson           \
-    -Dudev=true \
-    --prefix=${XORG_PREFIX} || exit 1
+meson setup                 \
+    --prefix=${XORG_PREFIX} \
+    --buildtype=release     \
+    -Dudev=true             \
+    -Dvalgrind="${VALGRIND}" || exit 1
 
 ninja || exit 1
 # ninja test
