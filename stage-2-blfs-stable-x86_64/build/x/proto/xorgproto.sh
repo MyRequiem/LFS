@@ -4,6 +4,7 @@ PRGNAME="xorgproto"
 
 ### xorgproto (the header files for building X Window System)
 # Заголовочные файлы, необходимые для сборки X Window System
+# (Graphical Environments)
 
 # Required:    util-macros
 # Recommended: no

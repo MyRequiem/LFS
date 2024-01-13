@@ -2,8 +2,8 @@
 
 PRGNAME="xterm"
 
-### xterm (terminal emulator for X)
-# Эмулятор терминала для X Window System.
+### xterm (terminal emulator for X Window System)
+# Эмулятор терминала для X Window System
 
 # Required:    xorg-applications
 #              dejavu-fonts-ttf
@@ -67,7 +67,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 config_file_processing "${XTERM_CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (terminal emulator for X)
+# Package: ${PRGNAME} (terminal emulator for X Window System)
 #
 # The xterm program is a terminal emulator for the X Window System. It provides
 # DEC VT102/VT220 (VTxxx) and Tektronix 4014 compatible terminals for programs

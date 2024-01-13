@@ -4,7 +4,7 @@ PRGNAME="numlockx"
 
 ### numlockx (Start X with NumLock Turned On)
 
-# Required:    X Window System
+# Required:    Graphical Environments
 # Recommended: no
 # Optional:    no
 

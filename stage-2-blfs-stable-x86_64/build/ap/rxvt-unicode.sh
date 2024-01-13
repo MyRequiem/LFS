@@ -5,7 +5,7 @@ PRGNAME="rxvt-unicode"
 ### rxvt-unicode (enhanced version of rxvt terminal emulator)
 # Клон эмулятора терминала rxvt с поддержкой XFT, Unicode и Perl расширениями
 
-# Required:    X Window System
+# Required:    Graphical Environments
 # Recommended: no
 # Optional:    gdk-pixbuf
 #              startup-notification

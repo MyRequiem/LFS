@@ -9,10 +9,10 @@ PRGNAME="links"
 
 # Required:    no
 # Recommended: libevent
-# Optional:    gpm             (для поддержики мыши в графическом режиме с фреймбуффером)
-#              svgalib         (http://www.svgalib.org/)
-#              directfb        (http://pkgs.fedoraproject.org/repo/pkgs/directfb/)
-#              X Window System
+# Optional:    gpm                      (для поддержики мыши в графическом режиме с фреймбуффером)
+#              svgalib                  (http://www.svgalib.org/)
+#              directfb                 (http://pkgs.fedoraproject.org/repo/pkgs/directfb/)
+#              Graphical Environments
 #              libpng
 #              libjpeg-turbo
 #              librsvg

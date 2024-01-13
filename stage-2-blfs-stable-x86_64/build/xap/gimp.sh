@@ -22,7 +22,7 @@ PRGNAME="gimp"
 #              lcms2
 #              mypaint-brushes
 #              poppler
-#              X Window System
+#              Graphical Environments
 # Recommended: dbus-glib
 #              ghostscript
 #              gvfs

@@ -6,14 +6,14 @@ ARCH_NAME="gtk+"
 ### GTK+3 (multi-platform GUI toolkit)
 # GTK (GIMP ToolKit) - кроссплатформенная библиотека элементов интерфейса
 # (фреймворк). Наряду с библиотекой Qt является одной из наиболее популярных на
-# сегодняшний день библиотек для X Window System.
+# сегодняшний день библиотек для X
 
 # Required:    at-spi2-core
 #              gdk-pixbuf
 #              libepoxy
 #              pango
-# Recommended: adwaita-icon-theme (для некоторых настроек gtk+3 и для тестов)
-#              hicolor-icon-theme (для тестов)
+# Recommended: adwaita-icon-theme    (для некоторых настроек gtk+3 и для тестов)
+#              hicolor-icon-theme    (для тестов)
 #              iso-codes
 #              libxkbcommon
 #              sassc
@@ -27,7 +27,7 @@ ARCH_NAME="gtk+"
 #              json-glib
 #              pyatspi2 (для тестов)
 #              rest
-#              papi     (http://icl.cs.utk.edu/papi/)
+#              papi                  (http://icl.cs.utk.edu/papi/)
 
 ###
 # Конфигурация

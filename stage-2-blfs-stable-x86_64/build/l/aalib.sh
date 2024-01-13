@@ -9,7 +9,7 @@ DIR_VERSION="1.4.0"
 
 # Required:    no
 # Recommended: no
-# Optional:    X Window System
+# Optional:    Graphical Environments
 #              slang
 #              gpm
 

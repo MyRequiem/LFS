@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-X Window System                         openssh, ghostscript
+Graphical Environments                  openssh, ghostscript
 acpid
 adns                                    gnupg
 afs                                     sudo

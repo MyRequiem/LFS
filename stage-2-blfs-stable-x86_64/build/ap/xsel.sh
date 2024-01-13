@@ -6,7 +6,7 @@ PRGNAME="xsel"
 # Утилита командной строки для получения содержимого выделения в X и его
 # помещения/вставки в/из clipboard
 
-# Required:    X Window System
+# Required:    Graphical Environments
 # Recommended: no
 # Optional:    no
 

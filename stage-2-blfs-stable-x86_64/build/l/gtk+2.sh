@@ -6,7 +6,7 @@ ARCH_NAME="gtk+"
 ### GTK+2 (multi-platform GUI toolkit)
 # GTK (GIMP ToolKit) - кроссплатформенная библиотека элементов интерфейса
 # (фреймворк). Наряду с библиотекой Qt является одной из наиболее популярных на
-# сегодняшний день библиотек для X Window System.
+# сегодняшний день библиотек для X
 
 # Required:    at-spi2-core
 #              gdk-pixbuf

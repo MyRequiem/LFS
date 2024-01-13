@@ -19,15 +19,15 @@ PRGNAME="exim"
 # Optional: cyrus-sasl
 #           libidn
 #           linux-pam
-#           mariadb or mysql (https://www.mysql.com/)
+#           mariadb or mysql        (https://www.mysql.com/)
 #           postgresql
 #           openldap
 #           gnutls
 #           sqlite
-#           X Window System
-#           tdb (alternative to gdbm) https://sourceforge.net/projects/tdb/
-#           heimdal-gssapi (https://github.com/heimdal/)
-#           opendmarc (http://www.trusteddomain.org/opendmarc/)
+#           Graphical Environments
+#           tdb                     (alternative to gdbm) https://sourceforge.net/projects/tdb/
+#           heimdal-gssapi          (https://github.com/heimdal/)
+#           opendmarc               (http://www.trusteddomain.org/opendmarc/)
 
 ### Конфигурационные файлы
 #    /etc/exim.conf

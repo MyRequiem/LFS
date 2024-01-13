@@ -6,7 +6,7 @@ PRGNAME="vim"
 # Powerful text editor
 
 # Required:    no
-# Recommended: X Window System
+# Recommended: Graphical Environments
 #              gtk+2
 #              gtk+3
 # Optional:    gpm

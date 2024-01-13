@@ -3,7 +3,7 @@
 PRGNAME="xkeyboard-config"
 
 ### XKeyboardConfig (X Keyboard Extension config files)
-# База данных конфигурации клавиатуры для X Window System
+# База данных конфигурации клавиатуры для X
 
 # Required:    xorg-libraries
 # Recommended: no
@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (X Keyboard Extension config files and)
 #
 # The XKeyboardConfig package contains the keyboard configuration database for
-# the X Window System.
+# the X Window System
 #
 # Home page: https://www.x.org
 # Download:  https://www.x.org/pub/individual/data/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2

@@ -8,7 +8,7 @@ PRGNAME="qemu"
 # расширенную виртуализацию (Intel VT или AMD-V)
 
 # Required:    glib
-#              X Window System
+#              Graphical Environments
 # Recommended: alsa-lib
 #              sdl2
 #              jemalloc  (http://jemalloc.net/)

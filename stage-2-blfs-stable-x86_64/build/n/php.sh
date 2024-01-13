@@ -34,7 +34,7 @@ PRGNAME="php"
 #              libpng
 #              libtiff
 #              libwebp
-#              X Window System
+#              Graphical Environments
 #              fdf-toolkit       (https://opensource.adobe.com/dc-acrobat-sdk-docs/acrobatsdk/)
 #              libgd             (https://github.com/libgd/libgd)
 #              t1lib             (https://www.t1lib.org/)

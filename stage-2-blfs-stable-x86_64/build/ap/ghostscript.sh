@@ -23,7 +23,7 @@ GNU_GS_FONTS_OTHER_VERSION="6.0"
 #              gtk+3
 #              libidn
 #              libpaper
-#              X Window System
+#              Graphical Environments
 
 # NOTE:
 #    В запущенной X-сессии можно потестировать работу пакета (должна открыться

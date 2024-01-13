@@ -7,7 +7,7 @@ PRGNAME="libmpeg2"
 
 # Required:    no
 # Recommended: no
-# Optional:    X Window System
+# Optional:    Graphical Environments
 #              sdl
 
 ROOT="/root/src/lfs"

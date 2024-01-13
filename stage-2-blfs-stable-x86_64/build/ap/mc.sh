@@ -17,7 +17,7 @@ PRGNAME="mc"
 #              ruby
 #              samba
 #              unzip
-#              X Window System
+#              Graphical Environments
 #              zip
 
 ROOT="/root/src/lfs"

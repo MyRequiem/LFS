@@ -10,9 +10,9 @@ PRGNAME="xorg-server"
 #              xorg-fonts
 #              xkeyboard-config
 # Recommended: elogind
-#              libepoxy (для glamor и xwayland)
+#              libepoxy            (для glamor и xwayland)
 #              polkit
-#              wayland (для xwayland)
+#              wayland             (для xwayland)
 #              wayland-protocols
 # Optional:    acpid
 #              doxygen             (для сборки документации)
