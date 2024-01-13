@@ -69,7 +69,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -135,6 +135,7 @@ imagemagick                             gnupg
 imlib2                                  w3m
 impacket                                curl
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau
+intel-gpu-tools                         libva
 iptables
 isl                                     gcc
 iso-codes
@@ -160,7 +161,7 @@ libatasmart
 libatomic-ops                           gc, libdrm
 libbytesize
 libcap                                  bind-utils
-libdrm                                  cairo
+libdrm                                  cairo, libva
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libev                                   nghttp2
 libevent                                tmux, nghttp2
@@ -206,6 +207,7 @@ libunistring                            libidn2, gnutls, guile
 libunwind
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
+libva
 libvdpau
 libwebp                                 libtiff
 libxau                                  libxcb
@@ -233,7 +235,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau
+mesa                                    cairo, libvdpau, libva
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
 mm-common                               libsigc++2, glibmm
@@ -615,7 +617,7 @@ vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
-wayland                                 wayland-protocols
+wayland                                 wayland-protocols, libva
 wayland-protocols
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
@@ -790,7 +792,6 @@ zsh                                     elogind
 # imwheel
 # indic-fonts-ttf
 # inkscape                            adwaita-icon-theme, imagemagick
-# intel-gpu-tools                     libva
 # inxi
 # ipaex-fonts-ttf
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
@@ -885,7 +886,6 @@ zsh                                     elogind
 # libtizonia
 # libumfpack                          gegl
 # liburcu                             glusterfs
-# libva                               ffmpeg
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base
