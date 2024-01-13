@@ -538,6 +538,7 @@ x/libs/libvdpau.sh
 x/libs/libva.sh
 x/libs/libepoxy.sh
 x/data/xkeyboard-config.sh
+l/libxkbcommon.sh
 
 
 # a/fcron.sh
@@ -612,7 +613,6 @@ x/data/xkeyboard-config.sh
 # x/fonts/ipaex-fonts-ttf.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
-# l/libxkbcommon.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/gtk4.sh

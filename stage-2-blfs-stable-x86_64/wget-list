@@ -504,6 +504,7 @@ https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/mesa-22.3.5-add_xdemos-1.patch
 https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.38.tar.xz
+https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz
 
 
 ================================================================================
@@ -678,7 +679,6 @@ http://ponce.cc/slackware/sources/repo/ttf-arphic-uming_0.2.20080216.1.orig.tar.
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
-https://xkbcommon.org/download/libxkbcommon-1.0.3.tar.xz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.25.tar.xz
 https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz

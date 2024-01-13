@@ -70,7 +70,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -216,8 +216,9 @@ libvdpau                                mesa
 libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
-libxcb                                  xorg-libraries
+libxcb                                  xorg-libraries, libxkbcommon
 libxdmcp                                libxcb
+libxkbcommon
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm
 libyaml                                 python3-pyyaml
@@ -623,8 +624,8 @@ vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
-wayland                                 wayland-protocols, libva
-wayland-protocols                       mesa
+wayland                                 wayland-protocols, libva, libxkbcommon
+wayland-protocols                       mesa, libxkbcommon
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
@@ -638,7 +639,7 @@ xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
-xkeyboard-config
+xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config
@@ -898,7 +899,6 @@ zsh                                     elogind
 # libwacom                            libinput
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
-# libxkbcommon                        gst-plugins-bad, ibus, sdl2, qt5, i3, flameshot, qt5-styleplugins, qt5ct
 # libxklavier
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # lilv                                gst-plugins-bad
