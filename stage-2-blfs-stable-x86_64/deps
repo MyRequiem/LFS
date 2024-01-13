@@ -767,7 +767,6 @@ zsh                                     elogind
 # gtick
 # gtk-engines
 # gtk-vnc                             virt-manager
-# gtkmm2
 # gtkmm3                              pavucontrol
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
