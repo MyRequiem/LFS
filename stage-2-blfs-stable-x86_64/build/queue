@@ -529,6 +529,7 @@ n/nmap.sh
 l/atkmm.sh
 x/libs/libdrm.sh
 l/cairo.sh
+l/libunwind.sh
 
 
 # a/fcron.sh

@@ -203,6 +203,7 @@ libthai                                 perl-unicode-linebreak, pango
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
 libtirpc                                libnsl, lsof
 libunistring                            libidn2, gnutls, guile
+libunwind
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libwebp                                 libtiff
@@ -593,7 +594,7 @@ sudo
 swig                                    gpgme, volume-key
 sysprof                                 glib, pango
 sysstat                                 openssh
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind
 thin-provisioning-tools                 lvm2
 time
 tk                                      git, python2, python3
@@ -882,7 +883,6 @@ zsh                                     elogind
 # libtheora                           gst-plugins-base, ffmpeg
 # libtizonia
 # libumfpack                          gegl
-# libunwind                           xorg-server, libinput, gstreamer, gimp
 # liburcu                             glusterfs
 # libva                               ffmpeg
 # libvdpau                            ffmpeg
