@@ -526,6 +526,7 @@ l/cairo.sh
 l/libglade.sh
 d/python-modules/python2-pygtk.sh
 n/nmap.sh
+l/atkmm.sh
 
 
 # a/fcron.sh
@@ -610,7 +611,6 @@ n/nmap.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # l/libxkbcommon.sh
-# l/atkmm.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/gtk4.sh

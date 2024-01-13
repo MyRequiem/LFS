@@ -19,11 +19,12 @@ mkdir -pv "${TMP_DIR}"
 
 DOCS="false"
 
-mkdir _build
-cd _build || exit 1
+mkdir build
+cd build || exit 1
 
 meson                               \
     --prefix=/usr                   \
+    --buildtype=release             \
     -Dbuild-documentation="${DOCS}" \
     .. || exit 1
 

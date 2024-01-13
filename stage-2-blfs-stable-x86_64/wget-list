@@ -494,6 +494,7 @@ https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.31/downloa
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
 https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
+https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 
 
 ================================================================================
@@ -677,7 +678,6 @@ https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.0.3.tar.xz
-https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.1.tar.xz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.25.tar.xz
 https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz
