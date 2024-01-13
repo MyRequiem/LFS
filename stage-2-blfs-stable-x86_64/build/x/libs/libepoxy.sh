@@ -20,28 +20,35 @@ mkdir build
 cd build || exit 1
 
 DOCS="false"
+TESTS="false"
 # command -v doxygen &>/dev/null && DOCS="true"
 
-meson                \
-    --prefix=/usr    \
-    -Ddocs="${DOCS}" \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
+    -Ddocs="${DOCS}"    \
+    -Dtests="${TESTS}"  \
     .. || exit 1
 
 ninja || exit 1
+
+# для запуска тестов установить переменную TESTS="true"
 # ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (OpenGL function pointer management library)
 #
 # libepoxy is a library for handling OpenGL function pointer management
 #
 # Home page: https://github.com/anholt/${PRGNAME}
-# Download:  https://github.com/anholt/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

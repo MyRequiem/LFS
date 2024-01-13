@@ -70,7 +70,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -165,6 +165,7 @@ libbytesize
 libcap                                  bind-utils
 libdrm                                  cairo, libva, mesa
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
+libepoxy
 libev                                   nghttp2
 libevent                                tmux, nghttp2
 libexif
@@ -239,7 +240,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva
+mesa                                    cairo, libvdpau, libva, libepoxy
 mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
@@ -838,7 +839,6 @@ zsh                                     elogind
 # libdvdnav                           gst-plugins-bad, mpv
 # libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 # libdw                               gstreamer
-# libepoxy                            xorg-server
 # liberation-fonts-ttf
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               nginx

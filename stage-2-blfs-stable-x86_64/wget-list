@@ -502,6 +502,7 @@ https://github.com/intel/libva/releases/download/2.17.0/libva-2.17.0.tar.bz2
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
 https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/mesa-22.3.5-add_xdemos-1.patch
+https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
 
 
 ================================================================================
@@ -639,7 +640,6 @@ ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
-https://github.com/anholt/libepoxy/releases/download/1.5.5/libepoxy-1.5.5.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
 https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz
 http://bitmath.org/code/mtdev/mtdev-1.1.6.tar.bz2

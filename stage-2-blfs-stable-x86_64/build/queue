@@ -536,6 +536,7 @@ x/misc/mesa.sh
 l/cairo.sh
 x/libs/libvdpau.sh
 x/libs/libva.sh
+x/libs/libepoxy.sh
 
 
 # a/fcron.sh
@@ -579,7 +580,6 @@ x/libs/libva.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh
-# x/libs/libepoxy.sh
 # x/xserver/xorg-server.sh
 # x/libs/libevdev.sh
 # x/misc/mtdev.sh
@@ -890,5 +890,6 @@ x/libs/libva.sh
 # ap/pamixer.sh
 # ap/lsscsi.sh
 # xap/google-chrome.sh
+# n/telegram
 
 # vim:ft=conf
