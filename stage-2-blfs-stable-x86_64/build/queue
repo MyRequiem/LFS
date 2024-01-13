@@ -537,6 +537,7 @@ l/cairo.sh
 x/libs/libvdpau.sh
 x/libs/libva.sh
 x/libs/libepoxy.sh
+x/data/xkeyboard-config.sh
 
 
 # a/fcron.sh
@@ -574,7 +575,6 @@ x/libs/libepoxy.sh
 # x/fonts/tibmachuni-font-ttf.sh
 # x/fonts/indic-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
-# x/data/xkeyboard-config.sh
 # x/misc/glu.sh
 # x/misc/freeglut.sh
 # n/links.sh
@@ -616,7 +616,6 @@ x/libs/libepoxy.sh
 # x/libs/glew.sh
 # l/gtk+3.sh
 # l/gtk4.sh
-# l/webkit2gtk4.1
 # ap/vim.sh
 # x/libs/libinput.sh
 # l/gcr.sh
@@ -890,6 +889,7 @@ x/libs/libepoxy.sh
 # ap/pamixer.sh
 # ap/lsscsi.sh
 # xap/google-chrome.sh
-# n/telegram
+# l/webkit2gtk4.1.sh [NEW]
+# n/telegram.sh
 
 # vim:ft=conf

@@ -503,6 +503,7 @@ https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-
 https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/mesa-22.3.5-add_xdemos-1.patch
 https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
+https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.38.tar.xz
 
 
 ================================================================================
@@ -635,7 +636,6 @@ https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/sinhala_lklug-
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-font-ttf/TibetanMachineUnicodeFont.zip
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
 https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
-https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.32.tar.bz2
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.1.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
