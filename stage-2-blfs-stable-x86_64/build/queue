@@ -530,6 +530,7 @@ l/atkmm.sh
 x/libs/libdrm.sh
 l/cairo.sh
 l/libunwind.sh
+x/libs/libvdpau.sh
 
 
 # a/fcron.sh
@@ -557,10 +558,8 @@ l/libunwind.sh
 # x/xcb/xcb-util-wm.sh
 # x/xcb/xcb-util-cursor.sh
 # x/libs/libva.sh
-# x/libs/libvdpau.sh
 # x/misc/mesa.sh
 # x/libs/libva.sh
-# x/libs/libvdpau.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh

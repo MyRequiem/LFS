@@ -26,6 +26,8 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/profile.d"
 
+DOCS="false"
+
 mkdir build
 cd build || exit 1
 
@@ -37,6 +39,8 @@ meson                       \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+if [ "x${DOCS}" == "xfalse" ] && rm -rf "${TMP_DIR}/usr/share/doc"
 
 VDPAU_SH="/etc/profile.d/vdpau.sh"
 cat << EOF > "${TMP_DIR}${VDPAU_SH}"
