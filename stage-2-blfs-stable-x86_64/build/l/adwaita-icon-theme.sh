@@ -28,17 +28,16 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# если установлен librsvg
-if command -v rsvg-convert &>/dev/null; then
-    # если установлен gtk+2
-    command -v gtk-update-icon-cache   &>/dev/null && gtk-update-icon-cache
-    # если установлен gtk+3
-    command -v gtk-encode-symbolic-svg &>/dev/null && gtk-encode-symbolic-svg
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+# если установлен librsvg и gtk+2 и/или gtk+3 создадим/обновим
+# /usr/share/icons/Adwaita/icon-theme.cache
+command -v rsvg-convert &>/dev/null && \
+    command -v gtk-update-icon-cache &>/dev/null && \
+        echo "gtk-update-icon-cache ..." && \
+            gtk-update-icon-cache /usr/share/icons/Adwaita/
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
