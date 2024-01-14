@@ -40,7 +40,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-if [ "x${DOCS}" == "xfalse" ] && rm -rf "${TMP_DIR}/usr/share/doc"
+[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
 
 VDPAU_SH="/etc/profile.d/vdpau.sh"
 cat << EOF > "${TMP_DIR}${VDPAU_SH}"
