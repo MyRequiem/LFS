@@ -539,6 +539,7 @@ x/libs/libva.sh
 x/libs/libepoxy.sh
 x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
+l/adwaita-icon-theme.sh
 
 
 # a/fcron.sh
@@ -736,7 +737,6 @@ l/libxkbcommon.sh
 # d/openjdk.sh
 # n/ntp.sh
 # n/traceroute.sh
-# l/adwaita-icon-theme.sh
 # l/gtk+3.sh
 # d/gjs.sh
 # l/gnome-keyring.sh

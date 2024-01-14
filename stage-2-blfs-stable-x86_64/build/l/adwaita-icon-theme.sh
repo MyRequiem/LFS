@@ -8,7 +8,8 @@ PRGNAME="adwaita-icon-theme"
 # Required:    no
 # Recommended: no
 # Optional:    git
-#              gtk+2 или gtk+3
+#              gtk+2
+#              gtk+3
 #              librsvg
 #              inkscape
 #              icon-tools (https://launchpad.net/icontool/)
@@ -26,6 +27,14 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+# если установлен librsvg
+if command -v rsvg-convert &>/dev/null; then
+    # если установлен gtk+2
+    command -v gtk-update-icon-cache   &>/dev/null && gtk-update-icon-cache
+    # если установлен gtk+3
+    command -v gtk-encode-symbolic-svg &>/dev/null && gtk-encode-symbolic-svg
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

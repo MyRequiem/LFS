@@ -5,6 +5,7 @@
 Graphical Environments                  openssh, ghostscript
 acpid
 adns                                    gnupg
+adwaita-icon-theme
 afs                                     sudo
 ag
 apache-ant                              docbook-xsl
@@ -99,7 +100,7 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala
 glib-networking                         glib, glibmm
@@ -117,8 +118,8 @@ graphviz                                libexif, llvm, gpgme, vala, wayland, lib
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk
-gtk+3                                   pinentry, ghostscript, cairo
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade
 gtk4                                    python3-pygobject3
 guile
@@ -132,10 +133,12 @@ hplip                                   cups
 htop
 http-parser                             nodejs
 hwloc                                   htop
+icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz
 imagemagick                             gnupg
 imlib2                                  w3m
 impacket                                curl
+inkscape                                adwaita-icon-theme
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau
 intel-gpu-tools                         libva
 iptables
@@ -192,7 +195,7 @@ libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
-librsvg                                 freetype, cairo, gdk-pixbuf
+librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme
 librtmp                                 curl
 libseccomp                              gnutls
 libsecret                               pinentry
@@ -659,7 +662,6 @@ zsh                                     elogind
 # aalib                               gst-plugins-good, sdl, gimp
 # adabas
 # adobe-source-code-pro-font
-# adwaita-icon-theme
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao
 # alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
@@ -793,12 +795,10 @@ zsh                                     elogind
 # i3                                  bumblebee-status
 # ibm-db2
 # ibus                                sdl2, qt5
-# icon-tools                          adwaita-icon-theme
 # id3lib
 # imake                               xxkb
 # imwheel
 # indic-fonts-ttf
-# inkscape                            adwaita-icon-theme, imagemagick
 # inxi
 # ipaex-fonts-ttf
 # jack                                mpg123, gst-plugins-good, alsa-plugins, pulseaudio
