@@ -35,7 +35,7 @@ make install
 cd .. || exit 1
 
 autoreconf -fi &&
-./configure
+./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
@@ -60,3 +60,7 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+
+echo -e "\n---------------\nRemoving *.la files..."
+remove-la-files.sh
+echo "---------------"
