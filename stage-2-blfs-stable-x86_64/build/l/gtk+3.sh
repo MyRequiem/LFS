@@ -63,10 +63,11 @@ INSTALLED_TESTS="false"
 WAYLAND_BACKEND="false"
 TRACKER="false"
 
+# shellcheck disable=SC2144
 [ -d /usr/share/xml/docbook/xsl-stylesheets-* ] && \
     command -v xslt-config &>/dev/null && MAN="true"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-[ -d /usr/share/wayland-protocols ] WAYLAND_BACKEND="true"
+[ -d /usr/share/wayland-protocols ] && WAYLAND_BACKEND="true"
 command -v tracker3 &>/dev/null && TRACKER="true"
 
 mkdir build
@@ -132,7 +133,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
