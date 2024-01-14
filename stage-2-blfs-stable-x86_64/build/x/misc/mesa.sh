@@ -49,20 +49,6 @@ patch --verbose -Np1 -i \
 mkdir build
 cd build || exit 1
 
-# полностью оптимизируем сборку
-#    -Dbuildtype=release
-# обеспечим поддержку игр MS Windows, требующие DirectX 9
-#    -Dgallium-nine=true
-# создавать библиотеку libOSMesa и обеспечивать поддержку Gallium3D в ней
-# (требуется gallium swrast)
-#    -Dosmesa=gallium
-# отключаем использование Valgrind во время сборки
-#    -Dvalgrind=false
-# отключаем сборку кода для тестов
-#    -Dbuild-tests=false
-GALLIUM_DRV="i915,iris,nouveau,r300,r600,radeonsi,svga,swrast,virgl"
-DRI_DRIVERS="i965,nouveau"
-
 if [ -d /usr/share/wayland-protocols ]; then
     PLATFORMS="x11,wayland"
 else
@@ -79,18 +65,13 @@ meson                                  \
     --prefix=${XORG_PREFIX}            \
     --buildtype=release                \
     -Dplatforms="${PLATFORMS}"         \
-    -Ddri-drivers="${DRI_DRIVERS}"     \
-    -Dgallium-drivers="${GALLIUM_DRV}" \
+    -Dgallium-drivers=auto             \
     -Dvulkan-drivers=""                \
-    -Dgallium-nine=true                \
-    -Dglx=dri                          \
-    -Dosmesa=gallium                   \
     -Dvalgrind="${VALGRIND}"           \
     -Dlibunwind="${LIBUNWIND}"         \
     -Dbuild-tests=false                \
     .. || exit 1
 
-unset GALLIUM_DRV DRI_DRIVERS
 ninja || exit 1
 
 ### тесты
