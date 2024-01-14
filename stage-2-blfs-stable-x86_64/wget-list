@@ -506,6 +506,9 @@ https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.38.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz
 https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
+https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
+https://github.com/sass/libsass/archive/3.6.5/libsass-3.6.5.tar.gz
+https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
 
 
 ================================================================================
@@ -681,7 +684,6 @@ https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
-https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.25.tar.xz
 https://download.gnome.org/sources/gcr/3.38/gcr-3.38.1.tar.xz
 https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.3.tar.xz
 https://download.gnome.org/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz

@@ -519,7 +519,6 @@ l/gdk-pixbuf.sh
 x/libs/wayland.sh
 x/libs/wayland-protocols.sh
 l/gtk+2.sh
-n/pinentry.sh
 n/w3m.sh
 x/libs/pixman.sh
 l/cairo.sh
@@ -539,6 +538,12 @@ x/libs/libva.sh
 x/libs/libepoxy.sh
 x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
+l/adwaita-icon-theme.sh
+d/sassc.sh
+l/gtk+3.sh
+n/pinentry.sh
+ap/ghostscript.sh
+l/cairo.sh
 l/adwaita-icon-theme.sh
 
 
@@ -615,7 +620,6 @@ l/adwaita-icon-theme.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # x/libs/glew.sh
-# l/gtk+3.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
@@ -631,7 +635,6 @@ l/adwaita-icon-theme.sh
 # l/libxklavier.sh
 # l/alsa-lib.sh
 # l/libcanberra.sh
-# l/gtk+3.sh
 # l/gstreamer.sh
 # l/libcanberra.sh
 # ap/opus.sh
@@ -718,7 +721,6 @@ l/adwaita-icon-theme.sh
 # l/libmpeg2.sh
 # l/sdl2.sh
 # l/json-glib.sh
-# l/gtk+3.sh
 # l/libseccomp.sh
 # l/babl.sh
 # l/gegl.sh
@@ -737,7 +739,6 @@ l/adwaita-icon-theme.sh
 # d/openjdk.sh
 # n/ntp.sh
 # n/traceroute.sh
-# l/gtk+3.sh
 # d/gjs.sh
 # l/gnome-keyring.sh
 # l/libsecret.sh
@@ -819,7 +820,6 @@ l/adwaita-icon-theme.sh
 # l/libosinfo.sh
 # n/tunctl.sh
 # a/fcron.sh
-# l/gtk+3.sh
 # ap/flac.sh
 # ap/postgresql.sh
 # s/virt-manager.sh

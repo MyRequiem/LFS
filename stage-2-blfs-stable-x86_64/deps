@@ -5,7 +5,7 @@
 Graphical Environments                  openssh, ghostscript
 acpid
 adns                                    gnupg
-adwaita-icon-theme
+adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
 apache-ant                              docbook-xsl
@@ -16,7 +16,7 @@ argon2                                  cryptsetup
 aspell                                  aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
-at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, atkmm
+at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, atkmm, gtk+3
 atkmm
 audit-userspace                         elogind
 autoconf213                             archivemount
@@ -42,11 +42,11 @@ clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
-colord                                  cups
+colord                                  cups, gtk+3
 cpio
 cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
-cups                                    ghostscript, gtk+2
+cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
 curlftpfs                               vifm
@@ -66,7 +66,7 @@ docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl
 docbook-utils                           libsigc++2, fontconfig, gtk+2
 docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland, libdrm
-docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm
+docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
@@ -97,7 +97,7 @@ gc                                      w3m, guile
 gcc                                     pth, cmake, python3-numpy
 gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
-gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2
+gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
@@ -109,7 +109,7 @@ glslang                                 mesa
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3
 gpgme                                   volume-key
 gpm
 graphite-font                           graphite2
@@ -120,14 +120,14 @@ gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3
 gtk4                                    python3-pygobject3
 guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
 hdparm
 help2man                                pango, vala
-hicolor-icon-theme                      gtk+2
+hicolor-icon-theme                      gtk+2, gtk+3
 highlight                               vifm
 hplip                                   cups
 htop
@@ -143,7 +143,7 @@ install-tl-unx                          libunistring, gnutls, libassuan, libgcry
 intel-gpu-tools                         libva
 iptables
 isl                                     gcc
-iso-codes
+iso-codes                               gtk+3
 itstool
 iw
 jansson                                 nghttp2
@@ -168,7 +168,7 @@ libbytesize
 libcap                                  bind-utils
 libdrm                                  cairo, libva, mesa
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
-libepoxy
+libepoxy                                gtk+3
 libev                                   nghttp2
 libevent                                tmux, nghttp2
 libexif
@@ -221,9 +221,9 @@ libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon
 libxdmcp                                libxcb
-libxkbcommon
+libxkbcommon                            gtk+3
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -283,8 +283,9 @@ openssh                                 sshfs, git, libssh2
 opie                                    sudo
 p11-kit                                 make-ca, gnutls, python3-requests, nss
 p7zip
-pango                                   pangomm, librsvg, gtk+2, python2-pygtk
+pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3
 pangomm
+papi                                    gtk+3
 parted
 passivetex                              xmlto
 passwdqc                                cryptsetup
@@ -527,7 +528,7 @@ python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm
 python3-py                              python3-pytest
-python3-pyatspi2
+python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3
 python3-pycodestyle                     python3-flake8
 python3-pycryptodome
@@ -584,6 +585,7 @@ rsync                                   llvm
 ruby                                    docbook-xsl
 rustc                                   mozjs, librsvg
 samba                                   curl
+sassc                                   gtk+3
 saxon6                                  docbook-xsl
 selinux                                 elogind
 sendmail                                gnupg, sudo
@@ -612,6 +614,7 @@ thin-provisioning-tools                 lvm2
 time
 tk                                      git, python2, python3
 tmux
+tracker                                 gtk+3
 translate-shell
 tree
 trousers                                gnutls
@@ -627,8 +630,8 @@ vdo                                     lvm2
 vifm
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
-wayland                                 wayland-protocols, libva, libxkbcommon
-wayland-protocols                       mesa, libxkbcommon
+wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3
+wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
@@ -962,7 +965,6 @@ zsh                                     elogind
 # pakchois                            neon
 # pamixer
 # pandoc                              openjdk
-# papi
 # password-store                      dmenu
 # pavucontrol
 # pcsc-lite                           libcacard
@@ -998,7 +1000,6 @@ zsh                                     elogind
 # rtmpdump                            gst-plugins-bad
 # rxvt-unicode
 # sane                                imagemagick
-# sassc
 # sazanami-fonts-ttf
 # sbc                                 gst-plugins-bad, pulseaudio
 # schroedinger                        ffmpeg

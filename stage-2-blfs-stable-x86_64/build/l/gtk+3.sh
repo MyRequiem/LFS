@@ -13,21 +13,21 @@ ARCH_NAME="gtk+"
 #              libepoxy
 #              pango
 # Recommended: adwaita-icon-theme    (для некоторых настроек gtk+3 и для тестов)
+#              docbook-xsl           (для создания man-страниц)
 #              hicolor-icon-theme    (для тестов)
 #              iso-codes
 #              libxkbcommon
+#              libxslt               (для создания man-страниц)
 #              sassc
 #              wayland
 #              wayland-protocols
 #              gobject-introspection
 # Optional:    colord
 #              cups
-#              docbook-utils
 #              gtk-doc
-#              json-glib
-#              pyatspi2 (для тестов)
-#              rest
-#              papi                  (http://icl.cs.utk.edu/papi/)
+#              python3-pyatspi2 (для тестов)
+#              tracker
+#              papi                  (https://icl.utk.edu/papi/)
 
 ###
 # Конфигурация
@@ -55,35 +55,44 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-WAYLAND="--disable-wayland-backend"
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+MAN="false"
+GTK_DOC="false"
+EXAMPLES="false"
+TESTS="false"
+INSTALLED_TESTS="false"
+WAYLAND_BACKEND="false"
+TRACKER="false"
 
-# включаем X11 GDK бэкэнд
-#    --enable-x11-backend
-# включаем GTK Broadway (HTML5) бэкэнд
-#    --enable-broadway-backend
-./configure              \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    "${WAYLAND}"         \
-    "${GTK_DOC}"         \
-    --enable-x11-backend \
-    --enable-broadway-backend || exit 1
+[ -d /usr/share/xml/docbook/xsl-stylesheets-* ] && \
+    command -v xslt-config &>/dev/null && MAN="true"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+[ -d /usr/share/wayland-protocols ] WAYLAND_BACKEND="true"
+command -v tracker3 &>/dev/null && TRACKER="true"
 
-make || exit 1
+mkdir build
+cd build || exit 1
 
-# тесты
-# сначала создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
-# (если в директории присутствуют файлы схем *.xml)
-# glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null
-#
-# запускать тесты нужно только в графической среде
-# make check
+meson setup                                \
+    --prefix=/usr                          \
+    --buildtype=release                    \
+    -Dman="${MAN}"                         \
+    -Dbroadway_backend=true                \
+    -Dgtk_doc="${GTK_DOC}"                 \
+    -Dexamples="${EXAMPLES}"               \
+    -Dtests="${TESTS}"                     \
+    -Dinstalled_tests="${INSTALLED_TESTS}" \
+    -Dwayland_backend="${WAYLAND_BACKEND}" \
+    -Dtracker3="${TRACKER}"                \
+    .. || exit 1
 
-make install DESTDIR="${TMP_DIR}"
+ninja || exit 1
 
-[[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
+# тесты проводятся в графической среде + установить переменную TESTS="true"
+# ninja test
+
+DESTDIR="${TMP_DIR}" ninja install
+
+[[ "x${GTK_DOC}" == "xfalse" ]] && \
     rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 IM_MULTIPRESS_CONF="/etc/gtk-3.0/im-multipress.conf"
@@ -97,16 +106,15 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 config_file_processing "${IM_MULTIPRESS_CONF}"
 
+# создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache и
+# скопируем его в ${TMP_DIR}
+gtk-query-immodules-3.0 --update-cache &>/dev/null
+IMMODULES_CACHE="$(find /usr/lib/gtk-3* -type f -name immodules\.cache)"
+cp "${IMMODULES_CACHE}" "${TMP_DIR}${IMMODULES_CACHE}"
+
 # создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
 # (если в директории присутствуют файлы схем *.xml)
 glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null
-
-# создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache
-gtk-query-immodules-3.0 --update-cache &>/dev/null
-
-# копируем созданный immodules.cache в ${TMP_DIR}
-IMMODULES_CACHE="$(find /usr/lib/gtk-3* -type f -name immodules\.cache)"
-cp "${IMMODULES_CACHE}" "${TMP_DIR}${IMMODULES_CACHE}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
