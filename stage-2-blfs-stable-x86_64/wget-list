@@ -510,6 +510,7 @@ https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
 https://github.com/sass/libsass/archive/3.6.5/libsass-3.6.5.tar.gz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
 https://download.gnome.org/sources/graphene/1.10/graphene-1.10.8.tar.xz
+https://github.com/webmproject/libvpx/archive/v1.13.0/libvpx-1.13.0.tar.gz
 
 
 ================================================================================
@@ -706,7 +707,6 @@ https://downloads.sourceforge.net/lame/lame-3.100.tar.gz
 https://download.gnome.org/sources/libdazzle/3.38/libdazzle-3.38.0.tar.xz
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
-https://github.com/webmproject/libvpx/archive/v1.9.0/libvpx-1.9.0.tar.gz
 https://downloads.sourceforge.net/mpg123/mpg123-1.26.4.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.3.tar.xz
 https://get.videolan.org/libdvdread/6.1.1/libdvdread-6.1.1.tar.bz2

@@ -10,11 +10,10 @@ PRGNAME="libvpx"
 # VP3, на котором был основан кодек Theora
 
 # Required:    yasm или nasm
-#              which (для поиска yasm или nasm)
+#              which            (для поиска yasm или nasm во время конфигурации)
 # Recommended: no
-# Optional:    curl    (для скачивания необходимых файлов для тестов)
-#              doxygen (для документации)
-#              php     (для документации)
+# Optional:    curl             (скачивает необходимые файлы для тестов)
+#              doxygen          (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,8 +22,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# сохраняем владельца и разрещения при копировании файлов (используем 'cp' с
-# параметром '-p')
+# сохраняем владельца и разрещения при копировании файлов
 sed -i 's/cp -p/cp/' build/make/Makefile || exit 1
 
 mkdir libvpx-build
@@ -41,7 +39,7 @@ make || exit 1
 
 # набор тестов загружает несколько файлов как часть процесса тестирования,
 # поэтому необходимо подключение к сети Internet
-# make test
+# D_LIBRARY_PATH=. make test
 
 make install DESTDIR="${TMP_DIR}"
 

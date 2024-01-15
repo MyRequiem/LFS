@@ -48,7 +48,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx
 curlftpfs                               vifm
 cyrus-sasl                              openldap
 dag                                     libpcap
@@ -71,7 +71,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -217,6 +217,7 @@ libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
 libvdpau                                mesa
+libvpx
 libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
@@ -254,7 +255,7 @@ mono                                    libidn
 mozjs
 mruby                                   nghttp2
 mysql                                   cyrus-sasl, openldap
-nasm                                    libjpeg-turbo
+nasm                                    libjpeg-turbo, libvpx
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa
@@ -635,7 +636,7 @@ wayland                                 wayland-protocols, libva, libxkbcommon, 
 wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype
+which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx
 whois
 wiredtiger                              openldap
 wireless-tools
@@ -653,7 +654,7 @@ xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gd
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
-yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5
+yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
 yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
@@ -898,7 +899,6 @@ zsh                                     elogind
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base
 # libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
-# libvpx                              gst-plugins-good, ffmpeg
 # libwacom                            libinput
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo

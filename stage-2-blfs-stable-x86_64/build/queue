@@ -546,6 +546,7 @@ ap/ghostscript.sh
 l/cairo.sh
 l/adwaita-icon-theme.sh
 l/graphene.sh
+l/libvpx.sh
 
 
 # a/fcron.sh
@@ -645,7 +646,6 @@ l/graphene.sh
 # l/lame.sh
 # l/libdazzle.sh
 # l/libsoup.sh
-# l/libvpx.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
 # l/libdvdread.sh
