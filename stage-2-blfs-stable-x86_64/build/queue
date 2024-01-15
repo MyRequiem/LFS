@@ -551,6 +551,8 @@ l/gstreamer.sh
 x/misc/glu.sh
 s/desktop-file-utils.sh
 l/alsa-lib.sh
+l/fltk.sh
+n/pinentry.sh
 
 
 # a/fcron.sh
@@ -658,7 +660,6 @@ l/alsa-lib.sh
 # ap/faad2.sh
 # l/fdk-aac.sh
 # l/libass.sh
-# l/fltk.sh
 # ap/alsa-tools.sh
 # l/alsa-oss.sh
 # l/gst-plugins-good.sh

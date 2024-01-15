@@ -47,6 +47,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 API_DOCS="false"
+# command -v doxygen &>/dev/null && API_DOCS="true"
 
 # man-страницы устанавливаем в /usr/share/man/ а не в /usr/share/man/cat*
 sed -i -e '/cat./d' documentation/Makefile || exit 1

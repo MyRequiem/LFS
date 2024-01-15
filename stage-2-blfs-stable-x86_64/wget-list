@@ -515,6 +515,7 @@ https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.22.0.tar.xz
 ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.2.tar.xz
 https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz
 https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.8.tar.bz2
+https://fltk.org/pub/fltk/1.3.8/fltk-1.3.8-source.tar.gz
 
 
 ================================================================================
@@ -720,7 +721,6 @@ https://github.com/knik0/faad2/archive/2_10_0/faad2-2_10_0.tar.gz
 http://www.nch.com.au/acm/sample.aac
 https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.1.tar.gz
 https://github.com/libass/libass/releases/download/0.15.0/libass-0.15.0.tar.xz
-http://fltk.org/pub/fltk/1.3.5/fltk-1.3.5-source.tar.gz
 https://www.alsa-project.org/files/pub/tools/alsa-tools-1.2.2.tar.bz2
 https://www.alsa-project.org/files/pub/oss-lib/alsa-oss-1.1.8.tar.bz2
 https://www.alsa-project.org/files/pub/firmware/alsa-firmware-1.2.4.tar.bz2

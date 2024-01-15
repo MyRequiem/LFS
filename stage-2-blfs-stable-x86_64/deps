@@ -8,7 +8,7 @@ adns                                    gnupg
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
-alsa-lib
+alsa-lib                                fltk
 alsa-ucm-conf                           alsa-lib
 apache-ant                              docbook-xsl
 apache-httpd                            curl
@@ -58,7 +58,7 @@ datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala
 dbus-glib
-desktop-file-utils                      wpa-supplicant, glib
+desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
 directfb                                cairo
 dmalloc                                 cyrus-sasl
@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -108,7 +108,7 @@ glib                                    sshfs, w3m, python3-dbus, dbus-glib, vol
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
-glu
+glu                                     fltk
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
@@ -133,7 +133,7 @@ gutenprint                              cups
 harfbuzz                                graphite2, freetype
 hdparm
 help2man                                pango, vala
-hicolor-icon-theme                      gtk+2, gtk+3
+hicolor-icon-theme                      gtk+2, gtk+3, fltk
 highlight                               vifm
 hplip                                   cups
 htop
@@ -145,7 +145,7 @@ imagemagick                             gnupg
 imlib2                                  w3m
 impacket                                curl
 inkscape                                adwaita-icon-theme
-install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau
+install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk
 intel-gpu-tools                         libva
 iptables
 isl                                     gcc
@@ -186,7 +186,7 @@ libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk
 libksba                                 gnupg
 liblinear                               nmap
 libmetalink                             curl
@@ -197,7 +197,7 @@ libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk
 libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
@@ -252,7 +252,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva, libepoxy, glu
+mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk
 mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
@@ -618,7 +618,7 @@ sudo
 swig                                    gpgme, volume-key
 sysprof                                 glib, pango
 sysstat                                 openssh
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk
 thin-provisioning-tools                 lvm2
 time
 tk                                      git, python2, python3
@@ -657,7 +657,7 @@ xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
