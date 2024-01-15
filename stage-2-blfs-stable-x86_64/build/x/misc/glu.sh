@@ -17,14 +17,21 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# shellcheck disable=SC2086
-./configure \
-    --prefix=${XORG_PREFIX} \
-    --disable-static || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+# shellcheck disable=SC2086
+meson                     \
+    --prefix=$XORG_PREFIX \
+    --buildtype=release   \
+    -Dgl_provider=gl      \
+    .. || exit 1
+
+ninja || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -f "${TMP_DIR}/usr/lib/libGLU.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

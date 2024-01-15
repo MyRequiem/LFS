@@ -548,6 +548,8 @@ l/adwaita-icon-theme.sh
 l/graphene.sh
 l/libvpx.sh
 l/gstreamer.sh
+x/misc/glu.sh
+s/desktop-file-utils.sh
 
 
 # a/fcron.sh
@@ -585,7 +587,6 @@ l/gstreamer.sh
 # x/fonts/tibmachuni-font-ttf.sh
 # x/fonts/indic-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
-# x/misc/glu.sh
 # x/misc/freeglut.sh
 # n/links.sh
 # l/jasper.sh
@@ -657,7 +658,6 @@ l/gstreamer.sh
 # ap/faad2.sh
 # l/fdk-aac.sh
 # l/libass.sh
-# s/desktop-file-utils.sh
 # l/fltk.sh
 # ap/alsa-tools.sh
 # l/alsa-oss.sh

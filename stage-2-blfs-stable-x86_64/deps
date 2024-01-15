@@ -76,7 +76,7 @@ ed
 efl                                     pinentry
 elinks                                  xmlto
 elogind                                 dbus, xorg-libraries
-emacs                                   libidn, pinentry, guile
+emacs                                   libidn, pinentry, guile, desktop-file-utils
 etc-issue
 exim                                    gnupg, sudo
 fftw
@@ -102,10 +102,11 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
+glu
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
@@ -249,7 +250,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva, libepoxy
+mesa                                    cairo, libvdpau, libva, libepoxy, glu
 mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
@@ -766,7 +767,6 @@ zsh                                     elogind
 # girara                              zathura
 # glew
 # glm                                 slop
-# glu                                 fltk, sdl
 # glusterfs
 # gnome-keyring                       libsecret
 # gnome-shell                         polkit
