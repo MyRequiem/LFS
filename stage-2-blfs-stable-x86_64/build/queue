@@ -556,6 +556,7 @@ n/pinentry.sh
 x/misc/freeglut.sh
 l/libtiff.sh
 x/libs/glew.sh
+l/libgsf.sh
 
 
 # a/fcron.sh
@@ -712,7 +713,6 @@ x/libs/glew.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# l/libgsf.sh
 # l/goffice.sh
 # l/gtk-engines.sh
 # l/aalib.sh
