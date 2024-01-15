@@ -553,6 +553,8 @@ s/desktop-file-utils.sh
 l/alsa-lib.sh
 l/fltk.sh
 n/pinentry.sh
+x/misc/freeglut.sh
+l/libtiff.sh
 
 
 # a/fcron.sh
@@ -590,7 +592,6 @@ n/pinentry.sh
 # x/fonts/tibmachuni-font-ttf.sh
 # x/fonts/indic-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
-# x/misc/freeglut.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh

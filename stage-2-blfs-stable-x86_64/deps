@@ -41,7 +41,7 @@ cairomm                                 pangomm
 cantarell-font-otf                      pango
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -108,7 +108,7 @@ glib                                    sshfs, w3m, python3-dbus, dbus-glib, vol
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
-glu                                     fltk
+glu                                     fltk, freeglut
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
@@ -252,7 +252,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk
+mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut
 mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups

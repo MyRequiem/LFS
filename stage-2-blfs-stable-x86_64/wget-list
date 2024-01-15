@@ -516,6 +516,7 @@ ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.2.tar.xz
 https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz
 https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.8.tar.bz2
 https://fltk.org/pub/fltk/1.3.8/fltk-1.3.8-source.tar.gz
+https://downloads.sourceforge.net/freeglut/freeglut-3.4.0.tar.gz
 
 
 ================================================================================
@@ -648,8 +649,6 @@ https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/sinhala_lklug-
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/tibmachuni-font-ttf/TibetanMachineUnicodeFont.zip
 https://mirrors.slackware.com/slackware/slackware64-14.2/source/x/ttf-indic-fonts/ttf-indic-fonts_0.5.14.tar.xz
 https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
-https://downloads.sourceforge.net/freeglut/freeglut-3.2.1.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/10.1/freeglut-3.2.1-gcc10_fix-1.patch
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
 https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
 https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz
