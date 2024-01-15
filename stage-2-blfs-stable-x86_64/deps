@@ -8,6 +8,8 @@ adns                                    gnupg
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
+alsa-lib
+alsa-ucm-conf                           alsa-lib
 apache-ant                              docbook-xsl
 apache-httpd                            curl
 apr
@@ -71,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -465,7 +467,7 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib
 python2-cython
 python2-libxml2                         docbook-xsl
 python2-pycairo                         python2-pygobject2, python2-pygtk
@@ -674,7 +676,6 @@ zsh                                     elogind
 # adobe-source-code-pro-font
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao
-# alsa-lib                            libcanberra, gst-plugins-base, libsndfile, mpg123, alsa-utils, fltk, alsa-tools, alsa-oss, alsa-plugins, sdl, libsamplerate, pulseaudio, sdl2, qt5, openjdk, gimp, ffmpeg, libao, qemu
 # alsa-oss                            gst-plugins-good, sdl, sdl2, libao
 # alsa-plugins                        sdl, sdl2, libao, qemu
 # alsa-tools                          alsa-firmware, sdl, sdl2, libao, qemu

@@ -9,6 +9,7 @@ PRGNAME="alsa-lib"
 # Recommended: no
 # Optional:    doxygen
 #              python2
+#              alsa-ucm-conf (https://www.alsa-project.org/files/pub/lib/)
 
 ### Конфигурация ядра
 #    CONFIG_SOUND=y|m
@@ -45,7 +46,6 @@ make install DESTDIR="${TMP_DIR}"
 if [[ "x${API_DOCS}" == "xtrue" ]]; then
     DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
     install -v -d -m755 "${TMP_DIR}${DOC_PATH}/html/search"
-
     install -v -m644 doc/doxygen/html/*.* \
         "${TMP_DIR}${DOC_PATH}/html"
     install -v -m644 doc/doxygen/html/search/* \

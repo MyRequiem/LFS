@@ -550,6 +550,7 @@ l/libvpx.sh
 l/gstreamer.sh
 x/misc/glu.sh
 s/desktop-file-utils.sh
+l/alsa-lib.sh
 
 
 # a/fcron.sh
@@ -637,7 +638,6 @@ s/desktop-file-utils.sh
 # s/notification-daemon.sh
 # l/libnotify.sh
 # l/libxklavier.sh
-# l/alsa-lib.sh
 # l/libcanberra.sh
 # l/libcanberra.sh
 # ap/opus.sh
