@@ -545,6 +545,7 @@ n/pinentry.sh
 ap/ghostscript.sh
 l/cairo.sh
 l/adwaita-icon-theme.sh
+l/graphene.sh
 
 
 # a/fcron.sh
