@@ -26,7 +26,7 @@ PRGNAME="gst-plugins-base"
 #              sdl
 #              sdl2
 #              valgrind
-#              hotdoc    (https://pypi.org/project/hotdoc/)
+#              python3-hotdoc    (https://pypi.org/project/hotdoc/)
 #              libvisual (http://libvisual.org/)
 #              orc       (https://gstreamer.freedesktop.org/src/orc/)
 #              tremor    (https://wiki.xiph.org/Tremor)

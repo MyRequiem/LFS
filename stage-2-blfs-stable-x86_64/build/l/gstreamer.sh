@@ -9,12 +9,12 @@ PRGNAME="gstreamer"
 
 # Required:    glib
 # Recommended: gobject-introspection
-# Optional:    gtk+3
+# Optional:    gtk+3           (для генерации примеров)
 #              gsl             (для одного из тестов)
 #              libunwind
 #              valgrind
 #              bash-completion (https://github.com/scop/bash-completion/)
-#              hotdoc          (https://pypi.org/project/hotdoc/)
+#              python3-hotdoc  (https://pypi.org/project/hotdoc/)
 #              libdw           (https://sourceware.org/elfutils/)
 
 ### NOTE:
@@ -39,20 +39,18 @@ mkdir -pv "${TMP_DIR}"
 
 EXAMPLES="disabled"
 DOCS="disabled"
-GTK_DOCS="disabled"
 
 mkdir build
 cd build || exit 1
 
 meson                                          \
     --prefix=/usr                              \
-    -Dbuildtype=release                        \
+    --buildtype=release                        \
     -Dgst_debug=false                          \
     -Dexamples="${EXAMPLES}"                   \
     -Ddoc="${DOCS}"                            \
-    -Dgtk_doc="${GTK_DOCS}"                    \
     -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin="http://www.linuxfromscratch.org/blfs/view/svn/" || exit 1
+    -Dpackage-origin="https://www.linuxfromscratch.org/blfs/view/11.3/"  || exit 1
 
 ninja || exit 1
 # ninja test

@@ -32,7 +32,7 @@ PRGNAME="gst-plugins-good"
 #              valgrind
 #              v4l-utils
 #              wayland
-#              hotdoc      (https://pypi.org/project/hotdoc/)
+#              python3-hotdoc (https://pypi.org/project/hotdoc/)
 #              jack        (https://jackaudio.org/)
 #              libcaca     (http://caca.zoy.org/wiki/libcaca)
 #              libavc1394  (https://sourceforge.net/projects/libavc1394/)

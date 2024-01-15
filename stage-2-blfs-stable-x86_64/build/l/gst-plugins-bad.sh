@@ -48,7 +48,7 @@ PRGNAME="gst-plugins-bad"
 #              fluidsynth           (https://www.fluidsynth.org/)
 #              game-music-emu       (https://bitbucket.org/mpyne/game-music-emu/wiki/Home)
 #              gsm                  (http://www.quut.com/gsm/)
-#              hotdoc               (https://pypi.org/project/hotdoc/)
+#              python3-hotdoc       (https://pypi.org/project/hotdoc/)
 #              ladspa               (https://www.ladspa.org/)
 #              libavtp              (https://github.com/AVnu/libavtp)
 #              libdc1394_2          (https://sourceforge.net/projects/libdc1394/files/libdc1394-2/)

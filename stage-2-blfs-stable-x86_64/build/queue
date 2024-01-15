@@ -547,6 +547,7 @@ l/cairo.sh
 l/adwaita-icon-theme.sh
 l/graphene.sh
 l/libvpx.sh
+l/gstreamer.sh
 
 
 # a/fcron.sh
@@ -637,7 +638,6 @@ l/libvpx.sh
 # l/libxklavier.sh
 # l/alsa-lib.sh
 # l/libcanberra.sh
-# l/gstreamer.sh
 # l/libcanberra.sh
 # ap/opus.sh
 # l/gst-plugins-base.sh

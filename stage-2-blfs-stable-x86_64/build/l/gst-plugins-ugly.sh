@@ -14,7 +14,7 @@ PRGNAME="gst-plugins-ugly"
 # Optional:    libmpeg2
 #              libcdio      (для доступа к CD-ROM)
 #              valgrind
-#              hotdoc       (https://pypi.org/project/hotdoc/)
+#              python3-hotdoc (https://pypi.org/project/hotdoc/)
 #              libsidplay   (https://packages.debian.org/source/sid/libsidplay)
 #              opencore-amr (https://sourceforge.net/projects/opencore-amr/)
 #              orc          (https://gstreamer.freedesktop.org/src/orc/)

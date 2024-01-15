@@ -22,7 +22,7 @@ audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
 avahi                                   cups
-bash-completion                         elogind
+bash-completion                         elogind, gstreamer
 bellagio-openmax                        mesa
 berkeley-db                             cyrus-sasl, openldap, python3
 bind-utils                              mit-kerberos-v5
@@ -102,14 +102,14 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer
 gpgme                                   volume-key
 gpm
 graphene
@@ -119,8 +119,10 @@ graphviz                                libexif, llvm, gpgme, vala, wayland, lib
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking
+gsl                                     gstreamer
+gstreamer
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3
 gtk4                                    python3-pygobject3
 guile
@@ -168,6 +170,7 @@ libatomic-ops                           gc, libdrm
 libbytesize
 libcap                                  bind-utils
 libdrm                                  cairo, libva, mesa
+libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libepoxy                                gtk+3
 libev                                   nghttp2
@@ -212,7 +215,7 @@ libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
 libtirpc                                libnsl, lsof
 libtizonia                              mesa
 libunistring                            libidn2, gnutls, guile
-libunwind                               mesa
+libunwind                               mesa, gstreamer
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
@@ -499,6 +502,7 @@ python3-gi-docgen                       pango, gdk-pixbuf, librsvg
 python3-greenlet                        python3-bpython
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
+python3-hotdoc                          gstreamer
 python3-httpbin                         python3-requests
 python3-hypothesis                      python3-attrs, python3-pytest, python3-numpy, python2-pycairo, python3-pycairo
 python3-idna                            python3-requests
@@ -627,7 +631,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto
 vala                                    librsvg
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer
 vdo                                     lvm2
 vifm
 volume-key
@@ -774,13 +778,11 @@ zsh                                     elogind
 # gptfdisk                            udisks
 # groonga
 # gsimplecal
-# gsl                                 gstreamer
 # gsm                                 gst-plugins-bad, ffmpeg
 # gst-plugins-bad
 # gst-plugins-base                    gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, qt5
 # gst-plugins-good
 # gst-plugins-ugly
-# gstreamer                           libcanberra, gst-plugins-base
 # gtick
 # gtk-engines
 # gtk-vnc                             virt-manager
@@ -788,7 +790,6 @@ zsh                                     elogind
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
 # heimdal-gssapi                      exim
-# hotdoc                              gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 # hp2xx                               imagemagick
 # hspell                              enchant
 # hstr
@@ -844,7 +845,6 @@ zsh                                     elogind
 # libdv                               gst-plugins-good
 # libdvdnav                           gst-plugins-bad, mpv
 # libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
-# libdw                               gstreamer
 # liberation-fonts-ttf
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               nginx
