@@ -555,6 +555,7 @@ l/fltk.sh
 n/pinentry.sh
 x/misc/freeglut.sh
 l/libtiff.sh
+x/libs/glew.sh
 
 
 # a/fcron.sh
@@ -627,7 +628,6 @@ l/libtiff.sh
 # x/fonts/ipaex-fonts-ttf.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
-# x/libs/glew.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh

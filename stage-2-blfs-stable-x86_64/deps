@@ -104,6 +104,7 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
+glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
@@ -252,7 +253,7 @@ make-ca                                 p11-kit, gnutls, wget, curl, python3-req
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut
+mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew
 mesa-demos                              mesa
 minisql                                 unixodbc
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
@@ -766,7 +767,6 @@ zsh                                     elogind
 # giflib                              imlib2, openjdk, feh
 # gimp                                imagemagick
 # girara                              zathura
-# glew
 # glm                                 slop
 # glusterfs
 # gnome-keyring                       libsecret

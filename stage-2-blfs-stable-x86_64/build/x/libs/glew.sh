@@ -29,7 +29,8 @@ sed -i -e '/glew.lib.static:/d' \
 make || exit 1
 # пакет не имеет набора тестов
 
-# install.all - устанавливаем библиотеку и утилиты 'glewinfo' и 'visualinfo'
+# install.all - устанавливаем библиотеку libGLEW.so и утилиты 'glewinfo' и
+# 'visualinfo'
 make install.all DESTDIR="${TMP_DIR}"
 
 chmod 755 "${TMP_DIR}/usr/lib/libGLEW.so"
