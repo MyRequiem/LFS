@@ -7,7 +7,7 @@ PRGNAME="gnome-keyring"
 # пользователей.
 
 # Required:    dbus
-#              gcr
+#              gcr3
 # Recommended: linux-pam
 #              libxslt
 #              openssh

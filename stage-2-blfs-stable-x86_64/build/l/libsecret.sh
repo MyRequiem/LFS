@@ -9,7 +9,7 @@ PRGNAME="libsecret"
 # Recommended: gobject-introspection
 #              libgcrypt
 #              vala
-# Optional:    gtk-doc            (для сборки документации)
+# Optional:    python3-gi-docgen  (для сборки документации)
 #              docbook-xml
 #              docbook-xsl
 #              libxslt            (для сборки man-страниц)
@@ -17,6 +17,7 @@ PRGNAME="libsecret"
 #              python3-dbus       (для тестов)
 #              gjs                (для тестов)
 #              python3-pygobject3 (для тестов)
+#              tpm2-tss           (https://github.com/tpm2-software/tpm2-tss)
 #              gnome-keyring
 
 ### NOTE:
@@ -36,7 +37,7 @@ GCRYPT="false"
 VALA="false"
 INTROSPECTION="false"
 
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
+# command -v gi-docgen     &>/dev/null && GTK_DOC="true"
 command -v xslt-config   &>/dev/null && MANPAGES="true"
 command -v dumpsexp      &>/dev/null && GCRYPT="true"
 command -v vala          &>/dev/null && VALA="true"
@@ -47,6 +48,7 @@ cd bld || exit 1
 
 meson                                  \
     --prefix=/usr                      \
+    --buildtype=release                \
     -Dgtk_doc="${GTK_DOC}"             \
     -Dmanpage="${MANPAGES}"            \
     -Dgcrypt="${GCRYPT}"               \
@@ -57,9 +59,13 @@ meson                                  \
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+DOC_DIR="/usr/share/doc/libsecret"
+[ -d "${TMP_DIR}${DOC_DIR}-1" ] && \
+    mv -v "${TMP_DIR}${DOC_DIR}-1" "${TMP_DIR}${DOC_DIR}-${VERSION}"
+
 # тестирование нужно проводить только после установки пакета в систему и при
 # запущенном сеансе Xorg с помощью dbus-launch
-# ninja test
+# dbus-run-session ninja test
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

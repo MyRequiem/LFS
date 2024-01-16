@@ -11,7 +11,7 @@ PRGNAME="pinentry"
 #           libgpg-error
 # Optional: emacs     (для сборки 'pinentry-emacs')
 #           fltk      (для сборки 'pinentry-fltk')
-#           gcr
+#           gcr3
 #           gtk+2
 #           gtk+3
 #           libsecret
