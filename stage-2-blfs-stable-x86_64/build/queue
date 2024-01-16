@@ -541,7 +541,6 @@ l/libxkbcommon.sh
 l/adwaita-icon-theme.sh
 d/sassc.sh
 l/gtk+3.sh
-n/pinentry.sh
 ap/ghostscript.sh
 l/libspectre.sh
 l/cairo.sh
@@ -553,7 +552,6 @@ x/misc/glu.sh
 s/desktop-file-utils.sh
 l/alsa-lib.sh
 l/fltk.sh
-n/pinentry.sh
 x/misc/freeglut.sh
 l/libtiff.sh
 x/libs/glew.sh
