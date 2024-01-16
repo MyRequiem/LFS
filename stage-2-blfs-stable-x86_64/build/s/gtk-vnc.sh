@@ -12,7 +12,6 @@ PRGNAME="gtk-vnc"
 #              gtk+3
 #              libgcrypt
 # Recommended: gobject-introspection
-#              python2
 #              vala
 # Optional:    cyrus-sasl
 #              pulseaudio
@@ -27,8 +26,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1

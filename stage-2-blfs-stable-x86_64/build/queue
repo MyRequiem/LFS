@@ -561,6 +561,7 @@ l/libgsf.sh
 l/goffice.sh
 l/gtk-engines.sh
 l/gtkmm.sh
+s/gtk-vnc.sh
 
 
 # a/fcron.sh
@@ -637,7 +638,6 @@ l/gtkmm.sh
 # ap/vim.sh
 # x/libs/libinput.sh
 # l/gcr.sh
-# s/gtk-vnc.sh
 # l/imlib2.sh
 # l/libogg.sh
 # l/libvorbis.sh
@@ -705,7 +705,6 @@ l/gtkmm.sh
 # l/libsamplerate.sh
 # ap/alsa-utils.sh
 # ap/pulseaudio.sh
-# s/gtk-vnc.sh
 # l/libcanberra.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
