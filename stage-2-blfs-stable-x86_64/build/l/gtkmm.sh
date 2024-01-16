@@ -1,7 +1,6 @@
 #! /bin/bash
 
-PRGNAME="gtkmm3"
-ARCH_NAME="gtkmm"
+PRGNAME="gtkmm"
 
 ### Gtkmm (C++ interface for GTK+3)
 # C++ интерфейс для популярной библиотеки графического интерфейса GTK+3.
@@ -16,33 +15,24 @@ ARCH_NAME="gtkmm"
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${ARCH_NAME}-${VERSION}" || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+DEMOS="false"
 TESTS="false"
 DOCS="false"
 # command -v doxygen &>/dev/null && DOCS="true"
 
-mkdir "${PRGNAME}-build"
-cd "${PRGNAME}-build" || exit 1
+mkdir "${PRGNAME}3-build"
+cd "${PRGNAME}3-build" || exit 1
 
 meson                               \
     --prefix=/usr                   \
+    --buildtype=release             \
     -Dbuild-x11-api=true            \
+    -Dbuild-demos="${DEMOS}"        \
     -Dbuild-tests="${TESTS}"        \
     -Dbuild-documentation="${DOCS}" \
     .. || exit 1
@@ -55,9 +45,9 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-if [[ "x${DOCS}" == "xtrue" ]]; then
-    mv "${TMP_DIR}/usr/share/doc/${ARCH_NAME}-3.0" \
-        "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+DOC_DIR="${TMP_DIR}/usr/share/doc/${PRGNAME}"
+if [ -d "${DOC_DIR}-3.0" ]; then
+    mv  "${DOC_DIR}-3.0" "${DOC_DIR}-${VERSION}"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -72,8 +62,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # 3. Highlights include typesafe callbacks, and a comprehensive set of widgets
 # that are easily extensible via inheritance.
 #
-# Home page: http://www.${ARCH_NAME}.org/
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Home page: http://www.${PRGNAME}.org/
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

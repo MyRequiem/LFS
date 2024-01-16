@@ -19,7 +19,7 @@ aspell                                  aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
 at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, atkmm, gtk+3
-atkmm
+atkmm                                   gtkmm
 audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm
 ed
 efl                                     pinentry
 elinks                                  xmlto
@@ -127,10 +127,11 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice
 gtk-engines
 gtk4                                    python3-pygobject3
+gtkmm
 guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
@@ -297,7 +298,7 @@ opie                                    sudo
 p11-kit                                 make-ca, gnutls, python3-requests, nss
 p7zip
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3
-pangomm
+pangomm                                 gtkmm
 papi                                    gtk+3
 parted
 passivetex                              xmlto
@@ -789,7 +790,6 @@ zsh                                     elogind
 # gst-plugins-ugly
 # gtick
 # gtk-vnc                             virt-manager
-# gtkmm3                              pavucontrol
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
 # heimdal-gssapi                      exim
