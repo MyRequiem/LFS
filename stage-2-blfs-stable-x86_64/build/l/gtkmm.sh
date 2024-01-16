@@ -62,7 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # 3. Highlights include typesafe callbacks, and a comprehensive set of widgets
 # that are easily extensible via inheritance.
 #
-# Home page: http://www.${PRGNAME}.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

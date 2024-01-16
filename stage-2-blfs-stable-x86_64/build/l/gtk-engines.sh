@@ -62,9 +62,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The GTK Engines package contains themes and engines for GTK2
 #
 # Home page: https://download.gnome.org/sources/${PRGNAME}/
-#            https://launchpad.net/murrine/
+#            https://launchpad.net/${MURRINE}/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.bz2
-#            http://ftp.acc.umu.se/pub/GNOME/sources/${MURRINE}/${MURRINE_MAJ_VERSION}/${MURRINE}-${MURRINE_VERSION}.tar.xz
+#            https://ftp.acc.umu.se/pub/GNOME/sources/${MURRINE}/${MURRINE_MAJ_VERSION}/${MURRINE}-${MURRINE_VERSION}.tar.xz
 #
 EOF
 

@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # C/C++ extension loading library. GLEW provides efficient run-time mechanisms
 # for determining which OpenGL extensions are supported on the target platform.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tgz
 #
 EOF

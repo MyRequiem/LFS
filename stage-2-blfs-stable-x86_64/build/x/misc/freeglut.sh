@@ -48,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and manage windows containing OpenGL contexts on a wide range of platforms
 # and also read the mouse, keyboard, and joystick functions.
 #
-# Home page: http://freeglut.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
