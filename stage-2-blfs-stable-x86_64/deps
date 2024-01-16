@@ -101,7 +101,7 @@ gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
 gdk-pixbuf-xlib                         w3m
-ghostscript                             cairo
+ghostscript                             cairo, goffice
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
 glew
@@ -113,7 +113,8 @@ glu                                     fltk, freeglut
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice
+goffice
 gpgme                                   volume-key
 gpm
 graphene
@@ -122,12 +123,12 @@ graphite2                               harfbuzz
 graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau
 grc
 gsasl                                   curl
-gsettings-desktop-schemas               at-spi2-core, glib-networking
+gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice
 gtk4                                    python3-pygobject3
 guile
 gutenprint                              cups
@@ -164,6 +165,7 @@ kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
 lapack                                  python3-numpy
+lasem                                   goffice
 lcms2                                   openjpeg, ghostscript
 lerc                                    libtiff
 libaio                                  lvm2
@@ -185,7 +187,7 @@ libgcrypt                               gnupg, libxslt, libssh2, mesa
 libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
-libgsf
+libgsf                                  goffice
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk
@@ -204,14 +206,14 @@ libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
 libressl                                openssh
-librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme
+librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice
 librtmp                                 curl
 libseccomp                              gnutls
 libsecret                               pinentry
 libsectok                               openssh
 libsigc++2                              cairomm, glibmm
 libsigsegv                              clisp
-libspectre                              cairo
+libspectre                              cairo, goffice
 libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
@@ -233,7 +235,7 @@ libxcb                                  xorg-libraries, libxkbcommon
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
@@ -645,7 +647,7 @@ wayland                                 wayland-protocols, libva, libxkbcommon, 
 wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx
+which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice
 whois
 wiredtiger                              openldap
 wireless-tools
@@ -773,7 +775,6 @@ zsh                                     elogind
 # gnome-keyring                       libsecret
 # gnome-shell                         polkit
 # gnuplot                             imagemagick
-# goffice
 # google-chrome
 # gpac                                x264
 # gperftools                          libmypaint, glusterfs
@@ -817,7 +818,6 @@ zsh                                     elogind
 # kytea
 # ladspa                              gst-plugins-bad
 # lame                                gst-plugins-good, ffmpeg
-# lasem                               goffice
 # lcms                                imagemagick
 # lcov                                libseccomp, gjs, gnome-keyring
 # lensfun                             gegl

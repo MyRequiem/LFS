@@ -557,6 +557,7 @@ x/misc/freeglut.sh
 l/libtiff.sh
 x/libs/glew.sh
 l/libgsf.sh
+l/goffice.sh
 
 
 # a/fcron.sh
@@ -713,7 +714,6 @@ l/libgsf.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# l/goffice.sh
 # l/gtk-engines.sh
 # l/aalib.sh
 # n/exim.sh
@@ -851,7 +851,6 @@ l/libgsf.sh
 # d/imake.sh
 # ap/xxkb.sh
 # l/libspectre.sh
-# l/goffice.sh
 # l/girara.sh
 # l/djvulibre.sh
 # xap/imagemagick.sh

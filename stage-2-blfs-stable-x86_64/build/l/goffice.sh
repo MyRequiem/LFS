@@ -34,7 +34,7 @@ GTK_DOC="--disable-gtk-doc"
 
 ./configure       \
     --prefix=/usr \
-    ${GTK_DOC} || exit 1
+    "${GTK_DOC}" || exit 1
 
 make || exit 1
 # make check
