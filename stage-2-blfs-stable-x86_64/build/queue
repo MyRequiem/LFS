@@ -562,6 +562,7 @@ l/goffice.sh
 l/gtk-engines.sh
 l/gtkmm.sh
 s/gtk-vnc.sh
+l/gtksourceview3.sh
 
 
 # a/fcron.sh

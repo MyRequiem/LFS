@@ -55,7 +55,7 @@ curlftpfs                               vifm
 cyrus-sasl                              openldap, gtk-vnc
 dag                                     libpcap
 datefudge                               gnutls
-dblatex                                 git, python3-asciidoc, xmlto, graphite2
+dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala
 dbus-glib
 desktop-file-utils                      wpa-supplicant, glib, fltk
@@ -85,7 +85,7 @@ fftw
 fig2dev                                 gnupg
 fltk                                    pinentry
 fontconfig                              xorg-libraries, ghostscript, cairo, pango
-fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries
+fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
 fribidi                                 pango
@@ -104,6 +104,7 @@ gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo, goffice, libspectre
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
+glade                                   gtksourceview3
 glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf
 glib-networking                         glib, glibmm
@@ -113,7 +114,7 @@ glu                                     fltk, freeglut
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3
 goffice
 gpgme                                   volume-key
 gpm
@@ -127,12 +128,13 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3
 gtkmm
+gtksourceview3
 guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
@@ -155,7 +157,7 @@ intel-gpu-tools                         libva
 iptables
 isl                                     gcc
 iso-codes                               gtk+3
-itstool
+itstool                                 gtksourceview3
 iw
 jansson                                 nghttp2
 jbig-kit                                libtiff
@@ -641,8 +643,8 @@ unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                             xorgproto
-vala                                    librsvg. gtk-vnc
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer
+vala                                    librsvg. gtk-vnc, gtksourceview3
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3
 vdo                                     lvm2
 vifm
 volume-key
