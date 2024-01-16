@@ -543,6 +543,7 @@ d/sassc.sh
 l/gtk+3.sh
 n/pinentry.sh
 ap/ghostscript.sh
+l/libspectre.sh
 l/cairo.sh
 l/adwaita-icon-theme.sh
 l/graphene.sh
@@ -558,6 +559,7 @@ l/libtiff.sh
 x/libs/glew.sh
 l/libgsf.sh
 l/goffice.sh
+l/gtk-engines.sh
 
 
 # a/fcron.sh
@@ -714,7 +716,6 @@ l/goffice.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# l/gtk-engines.sh
 # l/aalib.sh
 # n/exim.sh
 # ap/mc.sh
@@ -850,7 +851,6 @@ l/goffice.sh
 # x/utils/xorg-cf-files.sh
 # d/imake.sh
 # ap/xxkb.sh
-# l/libspectre.sh
 # l/girara.sh
 # l/djvulibre.sh
 # xap/imagemagick.sh

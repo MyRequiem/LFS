@@ -30,7 +30,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 ###
-# собираем murrine
+# собираем движок murrine
 ###
 SOURCES="${ROOT}/src"
 MURRINE_VERSION="$(find "${SOURCES}" -type f \

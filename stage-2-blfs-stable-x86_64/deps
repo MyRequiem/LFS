@@ -36,7 +36,7 @@ bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm
+cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines
 cairomm                                 pangomm
 cantarell-font-otf                      pango
 chronyd                                 dhcpcd
@@ -101,7 +101,7 @@ gcr                                     pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
 gdk-pixbuf-xlib                         w3m
-ghostscript                             cairo, goffice
+ghostscript                             cairo, goffice, libspectre
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection
 glew
@@ -126,9 +126,10 @@ gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice
+gtk-engines
 gtk4                                    python3-pygobject3
 guile
 gutenprint                              cups
@@ -246,7 +247,7 @@ lrzip
 lsb-tools
 lshw
 lsof
-lua                                     highlight, nmap
+lua                                     highlight, nmap, gtk-engines
 lvm2                                    parted, cryptsetup
 lynx                                    pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries
 lz4                                     lrzip, rsync
@@ -647,7 +648,7 @@ wayland                                 wayland-protocols, libva, libxkbcommon, 
 wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice
+which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines
 whois
 wiredtiger                              openldap
 wireless-tools
@@ -787,7 +788,6 @@ zsh                                     elogind
 # gst-plugins-good
 # gst-plugins-ugly
 # gtick
-# gtk-engines
 # gtk-vnc                             virt-manager
 # gtkmm3                              pavucontrol
 # gvfs                                gimp

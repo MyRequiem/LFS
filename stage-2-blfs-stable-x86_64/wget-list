@@ -520,6 +520,9 @@ https://downloads.sourceforge.net/freeglut/freeglut-3.4.0.tar.gz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/libgsf/1.14/libgsf-1.14.50.tar.xz
 https://download.gnome.org/sources/goffice/0.10/goffice-0.10.55.tar.xz
+https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2
+http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
+https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 
 
 ================================================================================
@@ -753,8 +756,6 @@ https://github.com/libsndfile/libsamplerate/releases/download/0.2.1/libsamplerat
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-14.2.tar.xz
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
-https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2
-http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
 https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
@@ -895,7 +896,6 @@ https://github.com/jcs/xbanish/archive/v1.8/xbanish-1.8.tar.gz
 https://www.x.org/archive/individual/util/xorg-cf-files-1.0.7.tar.gz
 https://www.x.org/archive/individual/util/imake-1.0.8.tar.gz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
-http://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
 https://github.com/pwmt/girara/archive/0.3.7/girara-0.3.7.tar.gz
 http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
