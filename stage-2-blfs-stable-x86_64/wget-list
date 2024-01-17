@@ -529,6 +529,7 @@ https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.
 https://download.gnome.org/sources/gjs/1.74/gjs-1.74.1.tar.xz
 https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
+https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz
 
 
 ================================================================================
@@ -838,7 +839,6 @@ https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
 https://archive.hadrons.org/software/libmd/libmd-1.0.4.tar.xz
 https://libbsd.freedesktop.org/releases/libbsd-0.11.5.tar.xz
 https://github.com/duncan-roe/netcat-openbsd/archive/refs/tags/1.217-1.tar.gz
-https://github.com/numactl/numactl/releases/download/v2.0.14/numactl-2.0.14.tar.gz
 https://fossies.org/linux/www/yajl-2.1.0.tar.gz
 https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
 https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2

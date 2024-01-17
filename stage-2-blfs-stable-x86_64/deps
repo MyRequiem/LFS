@@ -288,6 +288,7 @@ nspr                                    nss
 nss                                     p11-kit, make-ca, volume-key
 ntfs-3g
 ntp                                     dhcpcd
+numactl
 ocaml                                   llvm
 oniguruma                               slang
 open-mpi                                boost
@@ -950,7 +951,6 @@ zsh                                     elogind
 # notification-daemon                 libnotify
 # noto-fonts-ttf
 # noto-sans-cjk-fonts-otf
-# numactl                             x265
 # numlockx
 # nuspell                             enchant
 # openal                              mpg123, gst-plugins-bad, qt5, ffmpeg

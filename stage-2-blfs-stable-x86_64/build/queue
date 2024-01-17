@@ -565,6 +565,7 @@ d/gjs.sh
 l/libsecret.sh
 l/gcr3.sh
 n/pinentry.sh
+s/numactl.sh
 
 
 # l/gcr4.sh
@@ -807,7 +808,6 @@ n/pinentry.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh
-# s/numactl.sh
 # l/x265.sh
 # l/libyajl.sh
 # l/raptor.sh
