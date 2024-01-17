@@ -29,6 +29,7 @@ cd build || exit 1
 
 meson                             \
     --prefix=/usr                 \
+    --buildtype=release           \
     -Denable_tests="${TESTS}"     \
     -Dwith_vapi="${VALA_API}"     \
     -Denable_gtk_doc="${GTK_DOC}" \

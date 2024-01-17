@@ -534,6 +534,7 @@ https://anduin.linuxfromscratch.org/BLFS/x264/x264-20230215.tar.xz
 https://anduin.linuxfromscratch.org/BLFS/x265/x265-20230215.tar.xz
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 https://downloads.sourceforge.net/enlightenment/imlib2-1.9.1.tar.xz
+https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
 
 
 ================================================================================
@@ -718,7 +719,6 @@ https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.t
 https://downloads.xiph.org/releases/flac/flac-1.3.3.tar.xz
 https://github.com/libsndfile/libsndfile/releases/download/1.0.31/libsndfile-1.0.31.tar.bz2
 https://downloads.sourceforge.net/lame/lame-3.100.tar.gz
-https://download.gnome.org/sources/libdazzle/3.38/libdazzle-3.38.0.tar.xz
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
 https://downloads.sourceforge.net/mpg123/mpg123-1.26.4.tar.bz2
