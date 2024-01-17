@@ -104,6 +104,7 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo, goffice, libspectre
+giflib
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
@@ -676,7 +677,7 @@ xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk
 xorg-sgml-doctools                      libxdmcp
@@ -782,7 +783,6 @@ zsh                                     elogind
 # ggi                                 sdl
 # ghostpcl                            imagemagick
 # giblib                              scrot
-# giflib                              imlib2, openjdk, feh
 # gimp                                imagemagick
 # girara                              zathura
 # glm                                 slop

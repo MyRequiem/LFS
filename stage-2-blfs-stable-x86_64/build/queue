@@ -568,6 +568,7 @@ n/pinentry.sh
 s/numactl.sh
 l/x264.sh
 l/x265.sh
+l/giflib.sh
 
 
 # l/gcr4.sh
@@ -681,7 +682,6 @@ l/x265.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
 # n/links.sh
-# l/giflib.sh
 # l/imlib2.sh
 # l/libwebp.sh
 # l/libsoup.sh

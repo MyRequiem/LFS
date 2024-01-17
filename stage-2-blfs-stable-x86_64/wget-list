@@ -532,6 +532,7 @@ https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/x264/x264-20230215.tar.xz
 https://anduin.linuxfromscratch.org/BLFS/x265/x265-20230215.tar.xz
+https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 
 
 ================================================================================
@@ -738,7 +739,6 @@ https://www.alsa-project.org/files/pub/firmware/alsa-firmware-1.2.4.tar.bz2
 https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.2.tar.bz2
 https://www.libsdl.org/release/SDL-1.2.15.tar.gz
 http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
-https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
 https://www.kernel.org/pub/linux/bluetooth/sbc-1.5.tar.xz
