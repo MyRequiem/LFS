@@ -60,9 +60,11 @@ meson                   \
 ninja || exit 1
 
 # тесты запускаются только в графической среде
-ninja test
+# ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
+
+[ "x${DOCS}" == "xfalse" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -76,7 +78,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # stores. It also provides the viewer for crypto files on the GNOME desktop.
 #
 # Home page: https://www.gnome.org/
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
