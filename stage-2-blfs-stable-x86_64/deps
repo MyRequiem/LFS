@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis
 dtrace                                  gjs
 ed
 efl                                     pinentry
@@ -157,7 +157,7 @@ imagemagick                             gnupg
 imlib2                                  w3m
 impacket                                curl
 inkscape                                adwaita-icon-theme
-install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk
+install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis
 intel-gpu-tools                         libva
 iptables
 isl                                     gcc
@@ -213,7 +213,7 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
-libogg
+libogg                                  libvorbis
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2
@@ -242,6 +242,7 @@ libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
 libvdpau                                mesa
+libvorbis
 libvpx
 libvulkan                               mesa
 libwebp                                 libtiff
@@ -640,7 +641,7 @@ swig                                    gpgme, volume-key
 sysprof                                 glib, pango, gjs
 sysstat                                 openssh
 systemtap                               gjs
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis
 thin-provisioning-tools                 lvm2
 time
 tk                                      git, python2, python3
@@ -907,7 +908,6 @@ zsh                                     elogind
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base
-# libvorbis                           libcanberra, gst-plugins-base, libsndfile, libtheora, ffmpeg
 # libwacom                            libinput
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo

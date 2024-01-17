@@ -572,6 +572,7 @@ l/imlib2.sh
 n/w3m.sh
 l/libdazzle.sh
 l/libogg.sh
+l/libvorbis.sh
 
 
 # l/gcr4.sh
@@ -648,7 +649,6 @@ l/libogg.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
-# l/libvorbis.sh
 # l/libcanberra.sh
 # s/notification-daemon.sh
 # l/libnotify.sh
