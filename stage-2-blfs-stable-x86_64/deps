@@ -630,6 +630,7 @@ silgraphite                             graphite2
 skia                                    cairo
 slang
 smartmontools
+sound-theme-freedesktop
 spdylay                                 nghttp2
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3

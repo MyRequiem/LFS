@@ -573,6 +573,7 @@ n/w3m.sh
 l/libdazzle.sh
 l/libogg.sh
 l/libvorbis.sh
+s/sound-theme-freedesktop.sh
 
 
 # l/gcr4.sh
