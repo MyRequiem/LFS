@@ -575,6 +575,7 @@ l/libogg.sh
 l/libvorbis.sh
 s/sound-theme-freedesktop.sh
 ap/opus.sh
+ap/flac.sh
 
 
 # l/gcr4.sh
@@ -658,7 +659,6 @@ ap/opus.sh
 # l/libcanberra.sh
 # l/libcanberra.sh
 # l/gst-plugins-base.sh
-# ap/flac.sh
 # l/libsndfile.sh
 # l/lame.sh
 # l/libsoup.sh
@@ -823,7 +823,6 @@ ap/opus.sh
 # l/libosinfo.sh
 # n/tunctl.sh
 # a/fcron.sh
-# ap/flac.sh
 # ap/postgresql.sh
 # s/virt-manager.sh
 # l/libev.sh
