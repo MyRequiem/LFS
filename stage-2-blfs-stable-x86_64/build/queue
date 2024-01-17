@@ -519,7 +519,6 @@ l/gdk-pixbuf.sh
 x/libs/wayland.sh
 x/libs/wayland-protocols.sh
 l/gtk+2.sh
-n/w3m.sh
 x/libs/pixman.sh
 l/cairo.sh
 l/libglade.sh
@@ -569,6 +568,8 @@ s/numactl.sh
 l/x264.sh
 l/x265.sh
 l/giflib.sh
+l/imlib2.sh
+n/w3m.sh
 
 
 # l/gcr4.sh
@@ -645,7 +646,6 @@ l/giflib.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
-# l/imlib2.sh
 # l/libogg.sh
 # l/libvorbis.sh
 # l/libcanberra.sh
@@ -682,7 +682,6 @@ l/giflib.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
 # n/links.sh
-# l/imlib2.sh
 # l/libwebp.sh
 # l/libsoup.sh
 # l/neon.sh

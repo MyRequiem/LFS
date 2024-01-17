@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2
 dtrace                                  gjs
 ed
 efl                                     pinentry
@@ -104,7 +104,7 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
 gdk-pixbuf-xlib                         w3m
 ghostscript                             cairo, goffice, libspectre
-giflib
+giflib                                  imlib2
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
@@ -199,9 +199,10 @@ libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
+libid3tag                               imlib2
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
@@ -213,7 +214,7 @@ libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2
 libproxy                                glib-networking
 libpsl                                  wget, curl
 libpwquality                            cryptsetup
@@ -230,7 +231,7 @@ libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
-libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
+libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2
 libtirpc                                libnsl, lsof
 libtizonia                              mesa
 libunistring                            libidn2, gnutls, guile
@@ -670,7 +671,7 @@ wireless-tools
 wpa-supplicant
 wxwidgets                               p7zip
 x264
-x265
+x265                                    imlib2
 xcb-proto                               libxcb
 xdg-user-dirs
 xdg-utils                               cups
@@ -679,7 +680,7 @@ xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -863,7 +864,6 @@ zsh                                     elogind
 # libgxps                             imagemagick
 # libheif                             gimp, imagemagick
 # libical
-# libid3tag                           imlib2
 # libiec61883                         gst-plugins-good, ffmpeg
 # libilbc                             ffmpeg
 # libinput                            xorg-libinput-driver, qt5

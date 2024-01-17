@@ -7,11 +7,12 @@ PRGNAME="imlib2"
 # модификации изображений
 
 # Required:    xorg-libraries
-# Recommended: no
-# Optional:    libpng
+# Recommended: giflib
+# Optional:    doxygen
+#              libpng
 #              libjpeg-turbo
 #              libtiff
-#              giflib
+#              x265
 #              libid3tag (https://sourceforge.net/projects/mad/)
 
 ROOT="/root/src/lfs"
@@ -21,7 +22,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
+API_DOCS="false"
+# command -v doxygen &>/dev/null && API_DOCS="true"
 
 ./configure       \
     --prefix=/usr \
@@ -31,10 +33,10 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${DOCS}" == "xtrue" ]]; then
+if [[ "x${API_DOCS}" == "xtrue" ]]; then
     DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d                     "${TMP_DIR}${DOC_DIR}"
-    install -v -m644 doc/{*.gif,index.html} "${TMP_DIR}${DOC_DIR}"
+    install -v -m755 -d         "${TMP_DIR}${DOC_DIR}/html"
+    install -v -m644 doc/html/* "${TMP_DIR}${DOC_DIR}/html"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
