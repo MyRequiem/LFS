@@ -41,7 +41,7 @@ cairomm                                 pangomm
 cantarell-font-otf                      pango
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -82,6 +82,7 @@ elogind                                 dbus, xorg-libraries
 emacs                                   libidn, pinentry, guile, desktop-file-utils
 etc-issue
 exim                                    gnupg, sudo
+ffms2                                   x264
 fftw
 fig2dev                                 gnupg
 fltk                                    pinentry
@@ -118,6 +119,7 @@ gnupg                                   git, smartmontools, mit-kerberos-v5, lib
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3
 goffice
+gpac                                    x264
 gpgme                                   volume-key
 gpm
 graphene
@@ -201,6 +203,7 @@ libidn2                                 gnutls, libpsl, wget, curl, whois
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk
 libksba                                 gnupg
 liblinear                               nmap
+liblsmash                               x264
 libmetalink                             curl
 libmpdec                                python3
 libnetfilter-conntrack                  iptables
@@ -273,7 +276,7 @@ mono                                    libidn
 mozjs                                   gjs
 mruby                                   nghttp2
 mysql                                   cyrus-sasl, openldap
-nasm                                    libjpeg-turbo, libvpx
+nasm                                    libjpeg-turbo, libvpx, x264, x265
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa
@@ -288,7 +291,7 @@ nspr                                    nss
 nss                                     p11-kit, make-ca, volume-key
 ntfs-3g
 ntp                                     dhcpcd
-numactl
+numactl                                 x265
 ocaml                                   llvm
 oniguruma                               slang
 open-mpi                                boost
@@ -665,6 +668,8 @@ wiredtiger                              openldap
 wireless-tools
 wpa-supplicant
 wxwidgets                               p7zip
+x264
+x265
 xcb-proto                               libxcb
 xdg-user-dirs
 xdg-utils                               cups
@@ -756,7 +761,6 @@ zsh                                     elogind
 # fdk-aac                             gst-plugins-bad, ffmpeg
 # feh
 # ffmpeg                              alsa-plugins, gegl, imagemagick, cmus, mpv
-# ffms2                               x264
 # firebird                            qt5
 # flac                                libsndfile, gst-plugins-good
 # flameshot
@@ -786,7 +790,6 @@ zsh                                     elogind
 # gnome-shell                         polkit
 # gnuplot                             imagemagick
 # google-chrome
-# gpac                                x264
 # gperftools                          libmypaint, glusterfs
 # gptfdisk                            udisks
 # groonga
@@ -867,7 +870,6 @@ zsh                                     elogind
 # libiodbc                            redland
 # libiscsi                            udisks
 # libkate                             gst-plugins-bad
-# liblsmash                           x264
 # libmad
 # libmcrypt
 # libmd                               libbsd
@@ -1075,8 +1077,6 @@ zsh                                     elogind
 # wpe-webkit                          gst-plugins-bad
 # wpebackend-fdo                      gst-plugins-bad
 # wqy-zenhei-font-ttf
-# x264                                gst-plugins-ugly, ffmpeg, mpv
-# x265                                gst-plugins-bad, ffmpeg, mpv
 # xbanish
 # xbitmaps                            xorg-applications
 # xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification, i3

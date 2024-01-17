@@ -566,6 +566,8 @@ l/libsecret.sh
 l/gcr3.sh
 n/pinentry.sh
 s/numactl.sh
+l/x264.sh
+l/x265.sh
 
 
 # l/gcr4.sh
@@ -685,10 +687,8 @@ s/numactl.sh
 # l/libsoup.sh
 # l/neon.sh
 # l/sbc.sh
-# l/x265.sh
 # l/gst-plugins-bad.sh
 # l/liba52.sh
-# l/x264.sh
 # l/libcddb.sh
 # l/libcdio.sh
 # l/gst-plugins-ugly.sh
@@ -808,7 +808,6 @@ s/numactl.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh
-# l/x265.sh
 # l/libyajl.sh
 # l/raptor.sh
 # s/talloc.sh
