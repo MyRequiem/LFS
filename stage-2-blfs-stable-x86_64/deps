@@ -213,6 +213,7 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
+libogg
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2
@@ -885,7 +886,6 @@ zsh                                     elogind
 # libnotify                           ibus, zenity, girara
 # libnut                              ffmpeg
 # libofa                              gst-plugins-bad
-# libogg                              libvorbis, gst-plugins-base, flac, speex, libtheora
 # libopenmpt                          gst-plugins-bad
 # libopenni                           gst-plugins-bad
 # libopenraw                          gegl
