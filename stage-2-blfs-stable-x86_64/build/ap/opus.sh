@@ -9,7 +9,8 @@ PRGNAME="opus"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen
+# Optional:    --- для документации ---
+#              doxygen
 #              texlive or install-tl-unx
 
 ROOT="/root/src/lfs"

@@ -574,6 +574,7 @@ l/libdazzle.sh
 l/libogg.sh
 l/libvorbis.sh
 s/sound-theme-freedesktop.sh
+ap/opus.sh
 
 
 # l/gcr4.sh
@@ -656,7 +657,6 @@ s/sound-theme-freedesktop.sh
 # l/libxklavier.sh
 # l/libcanberra.sh
 # l/libcanberra.sh
-# ap/opus.sh
 # l/gst-plugins-base.sh
 # ap/flac.sh
 # l/libsndfile.sh
