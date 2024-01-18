@@ -8,7 +8,7 @@ adns                                    gnupg
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
-alsa-lib                                fltk, libsndfile
+alsa-lib                                fltk, libsndfile, libsamplerate
 alsa-ucm-conf                           alsa-lib
 apache-ant                              docbook-xsl
 apache-httpd                            curl
@@ -84,7 +84,7 @@ emacs                                   libidn, pinentry, guile, desktop-file-ut
 etc-issue
 exim                                    gnupg, sudo
 ffms2                                   x264
-fftw
+fftw                                    libsamplerate
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
@@ -226,12 +226,13 @@ libpwquality                            cryptsetup
 libressl                                openssh
 librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice
 librtmp                                 curl
+libsamplerate
 libseccomp                              gnutls
 libsecret                               pinentry, gcr3
 libsectok                               openssh
 libsigc++2                              cairomm, glibmm
 libsigsegv                              clisp
-libsndfile                              lame
+libsndfile                              lame, libsamplerate
 libspectre                              cairo, goffice
 libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
@@ -900,7 +901,6 @@ zsh                                     elogind
 # libraqm                             imagemagick
 # libraw                              imagemagick
 # libraw1394                          gst-plugins-good
-# libsamplerate                       alsa-utils, alsa-plugins,sdl2
 # libshout                            gst-plugins-good
 # libsidplay                          gst-plugins-ugly
 # libsoup                             gst-plugins-good

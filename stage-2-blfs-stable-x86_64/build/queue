@@ -580,6 +580,7 @@ l/lame.sh
 l/speex.sh
 l/libsndfile.sh
 l/lame.sh
+l/libsamplerate.sh
 
 
 # l/gcr4.sh
@@ -706,7 +707,6 @@ l/lame.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
-# l/libsamplerate.sh
 # ap/alsa-utils.sh
 # ap/pulseaudio.sh
 # l/libcanberra.sh

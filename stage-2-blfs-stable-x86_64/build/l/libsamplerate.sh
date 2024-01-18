@@ -30,12 +30,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${DOCS}" == "xfalse" ]]; then
-    (
-        cd "${TMP_DIR}/usr" || exit 1
-        rm -rf ./share
-    )
-fi
+[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -52,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # cost.
 #
 # Home page: http://www.mega-nerd.com/SRC/
-# Download:  https://github.com/libsndfile/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/libsndfile/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

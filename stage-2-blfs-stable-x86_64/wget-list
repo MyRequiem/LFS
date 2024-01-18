@@ -544,6 +544,7 @@ https://downloads.sourceforge.net/lame/lame-3.100.tar.gz
 https://downloads.xiph.org/releases/speex/speex-1.2.1.tar.gz
 https://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz
 https://github.com/libsndfile/libsndfile/releases/download/1.2.0/libsndfile-1.2.0.tar.xz
+https://github.com/libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
 
 
 ================================================================================
@@ -758,7 +759,6 @@ https://github.com/ibus/ibus/releases/download/1.5.23/ibus-1.5.23.tar.gz
 https://www.unicode.org/Public/zipped/13.0.0/UCD.zip
 https://archive.mariadb.org/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz
 http://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2
-https://github.com/libsndfile/libsamplerate/releases/download/0.2.1/libsamplerate-0.2.1.tar.bz2
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-14.2.tar.xz
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
