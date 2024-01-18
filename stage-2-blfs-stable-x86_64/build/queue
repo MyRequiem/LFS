@@ -578,6 +578,8 @@ ap/opus.sh
 ap/flac.sh
 l/lame.sh
 l/speex.sh
+l/libsndfile.sh
+l/lame.sh
 
 
 # l/gcr4.sh
@@ -661,7 +663,6 @@ l/speex.sh
 # l/libcanberra.sh
 # l/libcanberra.sh
 # l/gst-plugins-base.sh
-# l/libsndfile.sh
 # l/libsoup.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
@@ -703,7 +704,6 @@ l/speex.sh
 # ap/postgresql.sh
 # n/exim.sh
 # l/apr-util.sh
-# l/libsndfile.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
 # l/libsamplerate.sh

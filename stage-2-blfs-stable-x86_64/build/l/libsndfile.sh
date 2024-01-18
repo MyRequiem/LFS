@@ -11,6 +11,8 @@ PRGNAME="libsndfile"
 #              opus
 #              libvorbis
 # Optional:    alsa-lib
+#              lame
+#              mpg123
 #              speex
 #              sqlite
 
@@ -21,9 +23,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr    \
-    --disable-static \
+./configure       \
+    --prefix=/usr \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -41,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # audio data (such as MS Windows WAV and Apple/SGI AIFF format).
 #
 # Home page: http://www.mega-nerd.com/${PRGNAME}/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

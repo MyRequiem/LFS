@@ -543,6 +543,7 @@ https://downloads.xiph.org/releases/flac/flac-1.4.2.tar.xz
 https://downloads.sourceforge.net/lame/lame-3.100.tar.gz
 https://downloads.xiph.org/releases/speex/speex-1.2.1.tar.gz
 https://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz
+https://github.com/libsndfile/libsndfile/releases/download/1.2.0/libsndfile-1.2.0.tar.xz
 
 
 ================================================================================
@@ -721,7 +722,6 @@ https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-
 https://download.gnome.org/sources/libnotify/0.7/libnotify-0.7.9.tar.xz
 https://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.tar.xz
-https://github.com/libsndfile/libsndfile/releases/download/1.0.31/libsndfile-1.0.31.tar.bz2
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
 https://downloads.sourceforge.net/mpg123/mpg123-1.26.4.tar.bz2

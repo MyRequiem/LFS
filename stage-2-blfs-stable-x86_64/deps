@@ -8,7 +8,7 @@ adns                                    gnupg
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
-alsa-lib                                fltk
+alsa-lib                                fltk, libsndfile
 alsa-ucm-conf                           alsa-lib
 apache-ant                              docbook-xsl
 apache-httpd                            curl
@@ -86,7 +86,7 @@ exim                                    gnupg, sudo
 ffms2                                   x264
 fftw
 fig2dev                                 gnupg
-flac
+flac                                    libsndfile
 fltk                                    pinentry
 fontconfig                              xorg-libraries, ghostscript, cairo, pango
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
@@ -176,7 +176,7 @@ kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
 krb4                                    cyrus-sasl
-lame
+lame                                    libsndfile
 lapack                                  python3-numpy
 lasem                                   goffice
 lcms2                                   openjpeg, ghostscript
@@ -246,7 +246,7 @@ libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
 libvdpau                                mesa
-libvorbis
+libvorbis                               libsndfile
 libvpx
 libvulkan                               mesa
 libwebp                                 libtiff
@@ -283,6 +283,7 @@ mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirp
 mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs                                   gjs
+mpg123                                  libsndfile
 mruby                                   nghttp2
 mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
@@ -314,7 +315,7 @@ openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
 openssh                                 sshfs, git, libssh2
 opie                                    sudo
-opus
+opus                                    libsndfile
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3
 p7zip
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3
@@ -637,9 +638,9 @@ slang
 smartmontools
 sound-theme-freedesktop
 spdylay                                 nghttp2
-speex
+speex                                   libsndfile
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile
 sshfs                                   vifm
 stunnel                                 curl
 subversion                              git, cmake
@@ -828,7 +829,7 @@ zsh                                     elogind
 # indic-fonts-ttf
 # inxi
 # ipaex-fonts-ttf
-# jack                                mpg123, gst-plugins-good, alsa-plugins
+# jack                                gst-plugins-good, alsa-plugins
 # jasper                              qt5, gegl, imagemagick
 # jq
 # json-glib                           gegl
@@ -940,7 +941,6 @@ zsh                                     elogind
 # mjpeg-tools                         gst-plugins-bad
 # mnogosearch
 # monetra
-# mpg123                              gst-plugins-good
 # mpv
 # mrg                                 gegl
 # mtdev                               xorg-evdev-driver, libinput, qt5
@@ -958,7 +958,7 @@ zsh                                     elogind
 # noto-sans-cjk-fonts-otf
 # numlockx
 # nuspell                             enchant
-# openal                              mpg123, gst-plugins-bad, qt5, ffmpeg
+# openal                              gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
 # opencv                              gst-plugins-bad, ffmpeg
 # opendesktop-fonts-ttf
@@ -983,7 +983,7 @@ zsh                                     elogind
 # picogui                             sdl
 # polkit-gnome                        polkit
 # polkit-kde-agent                    polkit
-# portaudio                           mpg123
+# portaudio
 # pov-ray                             imagemagick
 # prelink
 # profiles                            imagemagick
@@ -1013,7 +1013,7 @@ zsh                                     elogind
 # sbc                                 gst-plugins-bad
 # schroedinger                        ffmpeg
 # scrot
-# sdl                                 gst-plugins-base, mpg123, libmpeg2, gst-plugins-bad, libtheora, qemu
+# sdl                                 gst-plugins-base, libmpeg2, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
 # sinhala-lklug-font-ttf
 # slop                                maim
