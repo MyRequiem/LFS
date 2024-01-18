@@ -13,7 +13,7 @@ PRGNAME="lame"
 # Optional:    dmalloc        (https://dmalloc.com/)
 #              electric-fence (https://linux.softpedia.com/get/Programming/Debuggers/Electric-Fence-3305.shtml/)
 #              libsndfile
-#              nasm
+#              nasm           (оптимизация сборки, но только для 32-bit x86)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,15 +22,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# если пакет nasm установлен включим использование NASM для оптимизации
-# компиляции
-NASM="--disable-nasm"
-command -v nasm &>/dev/null && NASM="--enable-nasm"
-
 ./configure          \
     --prefix=/usr    \
     --enable-mp3rtp  \
-    "${NASM}"        \
     --disable-static || exit 1
 
 make || exit 1

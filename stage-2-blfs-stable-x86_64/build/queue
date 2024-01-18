@@ -576,6 +576,7 @@ l/libvorbis.sh
 s/sound-theme-freedesktop.sh
 ap/opus.sh
 ap/flac.sh
+l/lame.sh
 
 
 # l/gcr4.sh
@@ -660,7 +661,6 @@ ap/flac.sh
 # l/libcanberra.sh
 # l/gst-plugins-base.sh
 # l/libsndfile.sh
-# l/lame.sh
 # l/libsoup.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
