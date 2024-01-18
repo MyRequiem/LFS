@@ -216,7 +216,7 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
-libogg                                  libvorbis, flac
+libogg                                  libvorbis, flac, speex
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2
@@ -637,6 +637,7 @@ slang
 smartmontools
 sound-theme-freedesktop
 spdylay                                 nghttp2
+speex
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3
 sshfs                                   vifm
@@ -664,7 +665,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex
 vdo                                     lvm2
 vifm
 volume-key
@@ -1021,7 +1022,6 @@ zsh                                     elogind
 # soxr
 # spandsp                             gst-plugins-bad
 # speech-dispatcher                   qt5
-# speex                               gst-plugins-good, alsa-plugins, ffmpeg
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager

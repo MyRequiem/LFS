@@ -577,6 +577,7 @@ s/sound-theme-freedesktop.sh
 ap/opus.sh
 ap/flac.sh
 l/lame.sh
+l/speex.sh
 
 
 # l/gcr4.sh
@@ -702,7 +703,6 @@ l/lame.sh
 # ap/postgresql.sh
 # n/exim.sh
 # l/apr-util.sh
-# l/speex.sh
 # l/libsndfile.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
