@@ -8,7 +8,7 @@ adns                                    gnupg
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
-alsa-lib                                fltk, libsndfile, libsamplerate
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio
 alsa-ucm-conf                           alsa-lib
 apache-ant                              docbook-xsl
 apache-httpd                            curl
@@ -23,14 +23,14 @@ atkmm                                   gtkmm
 audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
-avahi                                   cups
+avahi                                   cups, pulseaudio
 bash-completion                         elogind, gstreamer
 bellagio-openmax                        mesa
 berkeley-db                             cyrus-sasl, openldap, python3
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
-bluez                                   libpcap, python2, python3
+bluez                                   libpcap, python2, python3, pulseaudio
 boost                                   highlight, nghttp2, libsigc++2, swig, cairomm
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
@@ -56,7 +56,7 @@ cyrus-sasl                              openldap, gtk-vnc
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
-dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs
+dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio
 dbus-glib
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
@@ -73,18 +73,18 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio
 dtrace                                  gjs
 ed
 efl                                     pinentry
 electric-fence                          lame
 elinks                                  xmlto
-elogind                                 dbus, xorg-libraries
+elogind                                 dbus, xorg-libraries, pulseaudio
 emacs                                   libidn, pinentry, guile, desktop-file-utils
 etc-issue
 exim                                    gnupg, sudo
 ffms2                                   x264
-fftw                                    libsamplerate
+fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
@@ -111,7 +111,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
@@ -135,7 +135,7 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3
 gtk-engines
 gtk-vnc
@@ -166,6 +166,7 @@ isl                                     gcc
 iso-codes                               gtk+3
 itstool                                 gtksourceview3
 iw
+jack                                    pulseaudio
 jansson                                 nghttp2
 jbig-kit                                libtiff
 jbig2dec                                cairo
@@ -185,6 +186,7 @@ lerc                                    libtiff
 libaio                                  lvm2
 libarchive                              archivemount, cmake, ed
 libassuan                               pinentry, gnupg, gpgme
+libasyncns                              pulseaudio
 libatasmart
 libatomic-ops                           gc, libdrm
 libbytesize
@@ -226,13 +228,13 @@ libpwquality                            cryptsetup
 libressl                                openssh
 librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice
 librtmp                                 curl
-libsamplerate
+libsamplerate                           pulseaudio
 libseccomp                              gnutls
 libsecret                               pinentry, gcr3
 libsectok                               openssh
 libsigc++2                              cairomm, glibmm
 libsigsegv                              clisp
-libsndfile                              lame, libsamplerate
+libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libspectre                              cairo, goffice
 libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
@@ -260,6 +262,7 @@ libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups
+lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa
 lm-sensors                              htop, mesa
 lnav
@@ -317,6 +320,7 @@ opensp                                  openjade, docbook-dsssl
 openssh                                 sshfs, git, libssh2
 opie                                    sudo
 opus                                    libsndfile
+orc                                     pulseaudio
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3
 p7zip
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3
@@ -625,6 +629,7 @@ rustc                                   mozjs, librsvg
 samba                                   curl
 sassc                                   gtk+3
 saxon6                                  docbook-xsl
+sbc                                     pulseaudio
 selinux                                 elogind
 sendmail                                gnupg, sudo
 septel                                  libpcap
@@ -638,8 +643,9 @@ skia                                    cairo
 slang
 smartmontools
 sound-theme-freedesktop
+soxr                                    pulseaudio
 spdylay                                 nghttp2
-speex                                   libsndfile
+speex                                   libsndfile, pulseaudio
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile
 sshfs                                   vifm
@@ -650,6 +656,7 @@ swig                                    gpgme, volume-key
 sysprof                                 glib, pango, gjs
 sysstat                                 openssh
 systemtap                               gjs
+tdb                                     pulseaudio
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus
 thin-provisioning-tools                 lvm2
 time
@@ -667,7 +674,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio
 vdo                                     lvm2
 vifm
 volume-key
@@ -675,6 +682,7 @@ w3m                                     python3-asciidoc, xmlto, docbook-utils, 
 wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3
 wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
+webrtc-audio-processing                 pulseaudio
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak
 which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines
 whois
@@ -692,7 +700,7 @@ xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -830,7 +838,6 @@ zsh                                     elogind
 # indic-fonts-ttf
 # inxi
 # ipaex-fonts-ttf
-# jack                                gst-plugins-good, alsa-plugins
 # jasper                              qt5, gegl, imagemagick
 # jq
 # json-glib                           gegl
@@ -844,7 +851,6 @@ zsh                                     elogind
 # libaacplus                          ffmpeg
 # libao
 # libass                              gst-plugins-bad, ffmpeg, mpv
-# libasyncns
 # libavc1394                          gst-plugins-good
 # libavtp                             alsa-plugins, gst-plugins-bad
 # libbacktrace                        gimp
@@ -919,7 +925,6 @@ zsh                                     elogind
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # lilv                                gst-plugins-bad
 # liquid-rescale                      imagemagick
-# lirc
 # lmdb
 # lrdf                                gst-plugins-bad
 # lsscsi
@@ -967,7 +972,6 @@ zsh                                     elogind
 # openh264                            gst-plugins-bad
 # optipng
 # opusfile                            cmus
-# orc                                 gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
 # osinfo-db                           libosinfo, virt-manager
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm
@@ -1010,7 +1014,6 @@ zsh                                     elogind
 # rxvt-unicode
 # sane                                imagemagick
 # sazanami-fonts-ttf
-# sbc                                 gst-plugins-bad
 # schroedinger                        ffmpeg
 # scrot
 # sdl                                 gst-plugins-base, libmpeg2, gst-plugins-bad, libtheora, qemu
@@ -1019,7 +1022,6 @@ zsh                                     elogind
 # slop                                maim
 # snappy
 # soundtouch                          gst-plugins-bad
-# soxr
 # spandsp                             gst-plugins-bad
 # speech-dispatcher                   qt5
 # spice                               spice-gtk, virt-manager
@@ -1032,7 +1034,6 @@ zsh                                     elogind
 # t1lib
 # taglib                              gst-plugins-good
 # talloc
-# tdb                                 exim, libcanberra
 # tibmachuni-font-ttf
 # tidy-html5
 # tokudb
@@ -1072,7 +1073,6 @@ zsh                                     elogind
 # wavpack                             gst-plugins-good
 # wddx
 # webkitgtk                           zenity
-# webrtc-audio-processing
 # wgetpaste
 # wildmidi                            gst-plugins-bad
 # wpe-webkit                          gst-plugins-bad

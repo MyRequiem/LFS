@@ -581,6 +581,10 @@ l/speex.sh
 l/libsndfile.sh
 l/lame.sh
 l/libsamplerate.sh
+l/sbc.sh
+d/orc.sh
+ap/pulseaudio.sh
+s/gtk-vnc.sh
 
 
 # l/gcr4.sh
@@ -689,7 +693,6 @@ l/libsamplerate.sh
 # l/libwebp.sh
 # l/libsoup.sh
 # l/neon.sh
-# l/sbc.sh
 # l/gst-plugins-bad.sh
 # l/liba52.sh
 # l/libcddb.sh
@@ -708,7 +711,6 @@ l/libsamplerate.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
 # ap/alsa-utils.sh
-# ap/pulseaudio.sh
 # l/libcanberra.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
@@ -750,7 +752,6 @@ l/libsamplerate.sh
 # l/vte2.sh
 # l/vte3.sh
 # l/gconf.sh
-# ap/pulseaudio.sh
 # ap/zenity.sh
 # l/libmypaint.sh
 # l/mypaint-brushes.sh
@@ -794,12 +795,10 @@ l/libsamplerate.sh
 # l/libnfs.sh
 # d/snappy.sh
 # d/spice-protocol.sh
-# d/orc.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
-# ap/pulseaudio.sh
 # n/spice.sh
 # s/usbredir.sh
 # n/spice-gtk.sh
