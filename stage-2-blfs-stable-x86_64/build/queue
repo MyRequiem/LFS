@@ -583,8 +583,10 @@ l/lame.sh
 l/libsamplerate.sh
 l/sbc.sh
 d/orc.sh
+l/tdb.sh
 ap/pulseaudio.sh
 s/gtk-vnc.sh
+l/libcanberra.sh
 
 
 # l/gcr4.sh
@@ -661,12 +663,9 @@ s/gtk-vnc.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
-# l/libcanberra.sh
 # s/notification-daemon.sh
 # l/libnotify.sh
 # l/libxklavier.sh
-# l/libcanberra.sh
-# l/libcanberra.sh
 # l/gst-plugins-base.sh
 # l/libsoup.sh
 # ap/mpg123.sh
@@ -711,7 +710,6 @@ s/gtk-vnc.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
 # ap/alsa-utils.sh
-# l/libcanberra.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh

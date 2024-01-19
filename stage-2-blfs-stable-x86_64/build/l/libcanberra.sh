@@ -10,12 +10,13 @@ PRGNAME="libcanberra"
 # сконфигурированный звук.
 
 # Required:    libvorbis
-# Recommended: alsa-lib    (для сборки утилиты 'canberra-boot' и libcanberra-alsa.so)
+# Recommended: alsa-lib                 (для сборки утилиты 'canberra-boot' и libcanberra-alsa.so)
 #              gstreamer
 #              gtk+3
 # Optional:    gtk+2
 #              pulseaudio
-#              tdb (https://tdb.samba.org/)
+#              tdb                      (https://tdb.samba.org/)
+#              sound-theme-freedesktop
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -35,12 +36,11 @@ patch --verbose -Np1 -i \
 #    --disable-oss
 ./configure       \
     --prefix=/usr \
-    --disable-oss \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --disable-oss || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
 [[ "x${GTK_DOC}" != "xtrue" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
