@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # scale images, and more.
 #
 # Home page: https://www.enlightenment.org
-# Download:  https://downloads.sourceforge.net/enlightenment/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://downloads.sourceforge.net/enlightenment/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
