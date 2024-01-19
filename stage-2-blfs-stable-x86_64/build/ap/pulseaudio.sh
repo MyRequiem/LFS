@@ -67,6 +67,14 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+if [ -d "${TMP_DIR}/lib" ]; then
+    (
+        cd "${TMP_DIR}" || exit 1
+        mv lib/* usr/lib
+        rm -rf lib
+    )
+fi
+
 # запуск pulseaudio как общесистемного демона возможен, но не рекомендуется,
 # поэтому удалим файл конфигурации D-Bus для общесистемного демона, чтобы
 # избежать создания ненужных системных пользователей и групп:
