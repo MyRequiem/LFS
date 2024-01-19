@@ -19,8 +19,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -29,8 +27,6 @@ DOCS="false"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
