@@ -551,6 +551,7 @@ https://www.samba.org/ftp/tdb/tdb-1.4.9.tar.gz
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-16.1.tar.xz
 https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/libcanberra-0.30-wayland-1.patch
+https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
 
 
 ================================================================================
@@ -723,7 +724,6 @@ http://ponce.cc/slackware/sources/repo/ttf-arphic-uming_0.2.20080216.1.orig.tar.
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
-https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
 https://download.gnome.org/sources/libnotify/0.7/libnotify-0.7.9.tar.xz
 https://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.tar.xz

@@ -135,7 +135,7 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3
 gtk-engines
 gtk-vnc
@@ -190,7 +190,7 @@ libasyncns                              pulseaudio
 libatasmart
 libatomic-ops                           gc, libdrm
 libbytesize
-libcanberra
+libcanberra                             notification-daemon
 libcap                                  bind-utils
 libdazzle
 libdrm                                  cairo, libva, mesa
@@ -300,6 +300,7 @@ nghttp2                                 curl, cmake, bind-utils, nodejs
 ngtcp2                                  curl
 nmap                                    lsof
 nodejs
+notification-daemon
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
@@ -958,7 +959,6 @@ zsh                                     elogind
 # netcat-openbsd
 # nginx
 # nickle                              xorg-applications
-# notification-daemon                 libnotify
 # noto-fonts-ttf
 # noto-sans-cjk-fonts-otf
 # numlockx
