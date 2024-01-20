@@ -592,6 +592,7 @@ l/libnotify.sh
 l/libxklavier.sh
 x/xcb/xcb-util.sh
 x/libs/startup-notification.sh
+x/libs/libxcvt.sh
 
 
 # l/gcr4.sh

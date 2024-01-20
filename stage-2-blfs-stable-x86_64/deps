@@ -257,6 +257,7 @@ libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util
+libxcvt
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
