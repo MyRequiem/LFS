@@ -593,6 +593,7 @@ l/libxklavier.sh
 x/xcb/xcb-util.sh
 x/libs/startup-notification.sh
 x/libs/libxcvt.sh
+x/xcb/xcb-util-image.sh
 
 
 # l/gcr4.sh
@@ -614,7 +615,6 @@ x/libs/libxcvt.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/xcb/xcb-util-image.sh
 # x/xcb/xcb-util-keysyms.sh
 # x/xcb/xcb-util-renderutil.sh
 # x/xcb/xcb-util-wm.sh
