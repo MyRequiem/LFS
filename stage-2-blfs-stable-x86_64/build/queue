@@ -589,6 +589,7 @@ s/gtk-vnc.sh
 l/libcanberra.sh
 s/notification-daemon.sh
 l/libnotify.sh
+l/libxklavier.sh
 
 
 # l/gcr4.sh
@@ -665,7 +666,6 @@ l/libnotify.sh
 # l/gtk4.sh
 # ap/vim.sh
 # x/libs/libinput.sh
-# l/libxklavier.sh
 # l/gst-plugins-base.sh
 # l/libsoup.sh
 # ap/mpg123.sh
