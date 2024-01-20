@@ -594,6 +594,7 @@ x/xcb/xcb-util.sh
 x/libs/startup-notification.sh
 x/libs/libxcvt.sh
 x/xcb/xcb-util-image.sh
+x/xcb/xcb-util-wm.sh
 
 
 # l/gcr4.sh
@@ -617,7 +618,6 @@ x/xcb/xcb-util-image.sh
 # n/links.sh
 # x/xcb/xcb-util-keysyms.sh
 # x/xcb/xcb-util-renderutil.sh
-# x/xcb/xcb-util-wm.sh
 # x/xcb/xcb-util-cursor.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh

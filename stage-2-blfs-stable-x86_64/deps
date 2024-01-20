@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm
 dtrace                                  gjs
 ed
 efl                                     pinentry
@@ -256,7 +256,7 @@ libvpx
 libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
-libxcb                                  xorg-libraries, libxkbcommon, xcb-util
+libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm
 libxcvt
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
@@ -701,6 +701,7 @@ x265                                    imlib2
 xcb-proto                               libxcb
 xcb-util                                startup-notification, xcb-util-image
 xcb-util-image
+xcb-util-wm
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
@@ -1087,7 +1088,6 @@ zsh                                     elogind
 # xcb-util-cursor                     i3
 # xcb-util-keysyms                    xorg-server, qt5, i3
 # xcb-util-renderutil                 xorg-server, qt5
-# xcb-util-wm                         xorg-server, qt5, i3
 # xcb-util-xrm                        i3
 # xclip                               password-store
 # xcursor-themes                      sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
