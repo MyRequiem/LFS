@@ -25,30 +25,39 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-TESTS="false"
 GTK_DOC="false"
 MAN_PAGES="false"
+TESTS="false"
 DOCBOOK_DOCS="disabled"
 
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true" && MAN_PAGES="true"
+# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+command -v xmlto        &>/dev/null && MAN_PAGES="true"
 
 mkdir build
 cd build || exit 1
 
 meson                                \
     --prefix=/usr                    \
-    -Dtests="${TESTS}"               \
-    -Dman="${MAN_PAGES}"             \
+    --buildtype=release              \
     -Dgtk_doc="${GTK_DOC}"           \
+    -Dman="${MAN_PAGES}"             \
+    -Dtests="${TESTS}"               \
     -Ddocbook_docs="${DOCBOOK_DOCS}" \
     .. || exit 1
 
 ninja || exit 1
-
-# для запуска тестов изменяем переменную TESTS выше на 'true'
-# ninja test
-
+# пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
+
+DOCS="/usr/share/doc/libnotify"
+[ -d  "${TMP_DIR}${DOCS}" ] && mv "${TMP_DIR}${DOCS}"{,"-${VERSION}"}
+
+if [[ "x${GTK_DOC}" == "xfalse" ]]; then
+    (
+        cd "${TMP_DIR}/usr/share" || exit 1
+        rm -rf gtk-doc
+    )
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

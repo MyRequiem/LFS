@@ -120,7 +120,7 @@ gnome-keyring                           libsecret
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify
 goffice
 gpac                                    x264
 gpgme                                   volume-key
@@ -135,8 +135,8 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs
@@ -218,6 +218,7 @@ libmpdec                                python3
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
+libnotify
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
 libogg                                  libvorbis, flac, speex
 libpaper                                ghostscript, cups
@@ -300,7 +301,7 @@ nghttp2                                 curl, cmake, bind-utils, nodejs
 ngtcp2                                  curl
 nmap                                    lsof
 nodejs
-notification-daemon
+notification-daemon                     libnotify
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
@@ -698,9 +699,10 @@ xcb-proto                               libxcb
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
+xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio
 xorg-sgml-doctools                      libxdmcp
@@ -897,7 +899,6 @@ zsh                                     elogind
 # libmypaint                          mypaint-brushes, gimp
 # libnfs
 # libnice                             gst-plugins-bad
-# libnotify                           ibus, zenity, girara
 # libnut                              ffmpeg
 # libofa                              gst-plugins-bad
 # libopenmpt                          gst-plugins-bad
@@ -1089,7 +1090,6 @@ zsh                                     elogind
 # xcb-util-xrm                        i3
 # xclip                               password-store
 # xcursor-themes                      sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
-# xfce4-notifyd                       libnotify
 # xinit
 # xmlrpc-epi
 # xorg-amdgpu-driver
