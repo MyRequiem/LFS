@@ -590,6 +590,8 @@ l/libcanberra.sh
 s/notification-daemon.sh
 l/libnotify.sh
 l/libxklavier.sh
+x/xcb/xcb-util.sh
+x/libs/startup-notification.sh
 
 
 # l/gcr4.sh
@@ -611,7 +613,6 @@ l/libxklavier.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/xcb/xcb-util.sh
 # x/xcb/xcb-util-image.sh
 # x/xcb/xcb-util-keysyms.sh
 # x/xcb/xcb-util-renderutil.sh
@@ -644,7 +645,6 @@ l/libxklavier.sh
 # x/drivers/xorg-intel-driver.sh
 # x/drivers/xorg-nouveau-driver.sh
 # x/drivers/xorg-vmware-driver.sh
-# x/libs/startup-notification.sh
 # x/xcb/xcb-util-xrm.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh

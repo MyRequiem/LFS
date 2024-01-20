@@ -73,7 +73,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util
 dtrace                                  gjs
 ed
 efl                                     pinentry
@@ -256,7 +256,7 @@ libvpx
 libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
-libxcb                                  xorg-libraries, libxkbcommon
+libxcb                                  xorg-libraries, libxkbcommon, xcb-util
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
@@ -653,6 +653,7 @@ speex                                   libsndfile, pulseaudio
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile
 sshfs                                   vifm
+startup-notification
 stunnel                                 curl
 subversion                              git, cmake
 sudo
@@ -697,6 +698,7 @@ wxwidgets                               p7zip
 x264
 x265                                    imlib2
 xcb-proto                               libxcb
+xcb-util                                startup-notification
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
@@ -705,7 +707,7 @@ xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
 xorg-fonts                              librsvg
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
@@ -1029,7 +1031,6 @@ zsh                                     elogind
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
 # srt                                 gst-plugins-bad
-# startup-notification                rxvt-unicode, i3
 # svgalib                             links, sdl
 # svthevcenc                          gst-plugins-bad
 # t1lib
@@ -1081,7 +1082,6 @@ zsh                                     elogind
 # wqy-zenhei-font-ttf
 # xbanish
 # xbitmaps                            xorg-applications
-# xcb-util                            xcb-util-image, xcb-util-cursor, xorg-applications, xorg-intel-driver, startup-notification, i3
 # xcb-util-cursor                     i3
 # xcb-util-image                      xorg-server, qt5
 # xcb-util-keysyms                    xorg-server, qt5, i3
