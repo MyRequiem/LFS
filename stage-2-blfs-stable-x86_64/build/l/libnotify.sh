@@ -31,7 +31,6 @@ TESTS="false"
 DOCBOOK_DOCS="disabled"
 
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-command -v xmlto        &>/dev/null && MAN_PAGES="true"
 
 mkdir build
 cd build || exit 1
@@ -49,7 +48,7 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-DOCS="/usr/share/doc/libnotify"
+DOCS="/usr/share/doc/${PRGNAME}"
 [ -d  "${TMP_DIR}${DOCS}" ] && mv "${TMP_DIR}${DOCS}"{,"-${VERSION}"}
 
 if [[ "x${GTK_DOC}" == "xfalse" ]]; then
@@ -72,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # notifications can be used to inform the user about an event or display some
 # form of information without getting in the users way.
 #
-# Home page: https://developer.gnome.org/${PRGNAME}
+# Home page: https://gitlab.gnome.org/GNOME/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
