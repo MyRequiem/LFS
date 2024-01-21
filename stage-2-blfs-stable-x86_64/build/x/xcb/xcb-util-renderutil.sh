@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Render extension.
 #
 # Home page: https://xcb.freedesktop.org/
-# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

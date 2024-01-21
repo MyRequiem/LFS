@@ -595,6 +595,10 @@ x/libs/startup-notification.sh
 x/libs/libxcvt.sh
 x/xcb/xcb-util-image.sh
 x/xcb/xcb-util-wm.sh
+x/xcb/xcb-util-renderutil.sh
+x/xcb/xcb-util-keysyms.sh
+x/xcb/xcb-util-cursor.sh
+x/xcb/xcb-util-xrm.sh
 
 
 # l/gcr4.sh
@@ -616,9 +620,6 @@ x/xcb/xcb-util-wm.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/xcb/xcb-util-keysyms.sh
-# x/xcb/xcb-util-renderutil.sh
-# x/xcb/xcb-util-cursor.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh
@@ -646,7 +647,6 @@ x/xcb/xcb-util-wm.sh
 # x/drivers/xorg-intel-driver.sh
 # x/drivers/xorg-nouveau-driver.sh
 # x/drivers/xorg-vmware-driver.sh
-# x/xcb/xcb-util-xrm.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
 # x/fonts/caladea-font-ttf.sh
