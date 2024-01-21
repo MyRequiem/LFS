@@ -678,7 +678,7 @@ unixodbc                                openldap
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
-util-macros                             xorgproto
+util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio
 vdo                                     lvm2
@@ -698,6 +698,7 @@ wpa-supplicant
 wxwidgets                               p7zip
 x264
 x265                                    imlib2
+xbitmaps
 xcb-proto                               libxcb
 xcb-util                                startup-notification, xcb-util-image
 xcb-util-cursor
@@ -1088,7 +1089,6 @@ zsh                                     elogind
 # wpebackend-fdo                      gst-plugins-bad
 # wqy-zenhei-font-ttf
 # xbanish
-# xbitmaps                            xorg-applications
 # xclip                               password-store
 # xcursor-themes                      sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 # xinit
