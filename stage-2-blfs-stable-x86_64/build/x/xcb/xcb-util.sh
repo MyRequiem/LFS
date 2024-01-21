@@ -36,7 +36,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The xcb-util package provides additional extensions to the XCB library, many
 # that were previously found in Xlib, but are not part of core X protocol.
 #
-# Home page: https://xcb.freedesktop.org/
+# Home page: https://xcb.freedesktop.org/XcbUtil/
 # Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

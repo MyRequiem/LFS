@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # server.
 #
 # Home page: https://gitlab.freedesktop.org/xorg/lib/${PRGNAME}
-# Download: https://www.x.org/pub/individual/lib/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://www.x.org/pub/individual/lib/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
