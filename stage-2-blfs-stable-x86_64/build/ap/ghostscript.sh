@@ -84,11 +84,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индекс шрифтов (fonts.scale и fonts.dir)
-(
-    cd "${FONTS_PATH}" || exit 1
-    mkfontscale .
-    mkfontdir   .
-)
+if command -v mkfontscale &>/dev/null && command -v mkfontdir &>/dev/null; then
+    (
+            cd "${FONTS_PATH}" || exit 1
+            mkfontscale .
+            mkfontdir   .
+    )
+fi
 
 # обновим кэш для fontconfig (/var/cache/fontconfig/)
 fc-cache -vf
