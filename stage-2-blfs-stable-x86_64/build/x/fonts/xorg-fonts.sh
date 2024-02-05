@@ -43,10 +43,10 @@ FONTS="/usr/share/fonts"
 mkdir -pv "${TMP_PACKAGE}${FONTS}/X11/"{OTF,TTF}
 
 # нужно создать ссылки на директории с OTF и TTF шрифтами в /usr/share/fonts
-#    X11-OTF -> ./X11/OTF
-#    X11-TTF -> ./X11/TTF
 # чтобы Fontconfig мог найти шрифты TrueType, поскольку они находятся не по
 # стандартному пути /usr/share/fonts
+#    X11-OTF -> ./X11/OTF
+#    X11-TTF -> ./X11/TTF
 ln -svfn ./X11/OTF "${TMP_PACKAGE}${FONTS}/X11-OTF"
 ln -svfn ./X11/TTF "${TMP_PACKAGE}${FONTS}/X11-TTF"
 
@@ -72,41 +72,18 @@ PACKAGES="\
 font-util
 encodings
 font-alias
-font-adobe-100dpi
-font-adobe-75dpi
-font-adobe-utopia-100dpi
-font-adobe-utopia-75dpi
 font-adobe-utopia-type1
-font-arabic-misc
-font-bh-100dpi
-font-bh-75dpi
-font-bh-lucidatypewriter-100dpi
-font-bh-lucidatypewriter-75dpi
 font-bh-ttf
 font-bh-type1
-font-bitstream-100dpi
-font-bitstream-75dpi
-font-bitstream-speedo
-font-bitstream-type1
-font-cronyx-cyrillic
-font-cursor-misc
-font-daewoo-misc
-font-dec-misc
 font-ibm-type1
-font-isas-misc
-font-jis-misc
-font-micro-misc
-font-misc-cyrillic
 font-misc-ethiopic
-font-misc-meltho
-font-misc-misc
-font-mutt-misc
-font-schumacher-misc
-font-screen-cyrillic
-font-sony-misc
-font-sun-misc
-font-winitzki-cyrillic
 font-xfree86-type1
+font-adobe-100dpi
+font-adobe-75dpi
+font-jis-misc
+font-daewoo-misc
+font-isas-misc
+font-misc-misc
 "
 
 for PKGNAME in ${PACKAGES}; do
@@ -133,7 +110,7 @@ for PKGNAME in ${PACKAGES}; do
     cd "${PKGNAME}-${VERSION}" || exit 1
 
     # shellcheck disable=SC2086
-    ./configure        \
+    ./configure \
         ${XORG_CONFIG} || {
             show_error "'configure' for ${PKGNAME} package"
             exit 1

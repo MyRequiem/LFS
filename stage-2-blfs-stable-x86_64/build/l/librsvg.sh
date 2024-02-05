@@ -12,9 +12,9 @@ PRGNAME="librsvg"
 #              rustc
 # Recommended: gobject-introspection
 #              vala
-# Optional:    python3-docutils
-#              python3-gi-docgen
-#              xorg-fonts
+# Optional:    python3-docutils     (для генерации man-страниц)
+#              python3-gi-docgen    (для документации)
+#              xorg-fonts           (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

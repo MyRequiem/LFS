@@ -601,6 +601,8 @@ x/xcb/xcb-util-cursor.sh
 x/xcb/xcb-util-xrm.sh
 x/data/xbitmaps.sh
 x/apps/xorg-applications.sh
+x/data/xcursor-themes.sh
+x/fonts/xorg-fonts.sh
 
 
 # l/gcr4.sh
@@ -622,8 +624,6 @@ x/apps/xorg-applications.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/data/xcursor-themes.sh
-# x/fonts/xorg-fonts.sh
 # x/fonts/sazanami-fonts-ttf.sh
 # x/fonts/dejavu-fonts-ttf.sh
 # x/fonts/liberation-fonts-ttf.sh

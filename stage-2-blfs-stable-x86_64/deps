@@ -89,7 +89,7 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
@@ -709,6 +709,7 @@ xcb-util-keysyms
 xcb-util-renderutil                     xcb-util-cursor
 xcb-util-wm
 xcb-util-xrm
+xcursor-themes                          xorg-fonts
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
@@ -716,7 +717,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications
+xorg-applications                       xcursor-themes, xorg-fonts
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -1091,7 +1092,6 @@ zsh                                     elogind
 # wqy-zenhei-font-ttf
 # xbanish
 # xclip                               password-store
-# xcursor-themes                      sazanami-fonts-ttf, dejavu-fonts-ttf, liberation-fonts-ttf, sinhala-lklug-font-ttf, tibmachuni-font-ttf, indic-fonts-ttf, wqy-zenhei-font-ttf
 # xinit
 # xmlrpc-epi
 # xorg-amdgpu-driver
