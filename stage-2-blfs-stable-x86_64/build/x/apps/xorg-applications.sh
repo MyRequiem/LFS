@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-applications"
-PKG_VERSION="7"
+PKG_VERSION="11"
 
 ### Xorg Applications (Xorg Applications)
 # Основные приложения поставляемые с Xorg
@@ -217,8 +217,11 @@ for PKGNAME in ${PACKAGES}; do
     esac
 
     # shellcheck disable=SC2086
-    ./configure        \
-        ${XORG_CONFIG} || exit 1
+    ./configure \
+        ${XORG_CONFIG} || {
+        show_error "'configure' for ${PKGNAME} package"
+        exit 1
+    }
 
     # сборка
     make || {
@@ -289,8 +292,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # The Xorg applications provide the expected applications available in previous
 # X Window implementations.
 #
-# Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/app/
+# Home page: https://www.x.org/
+# Download:  https://www.x.org/archive/individual/app/
 #
 EOF
 
