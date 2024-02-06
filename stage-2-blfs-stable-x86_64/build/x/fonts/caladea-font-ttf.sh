@@ -32,6 +32,8 @@ mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
 
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Googles Caladea font)
 #
