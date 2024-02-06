@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Cambria and then return it to them.
 #
 # Home page: https://fonts.google.com/specimen/Caladea
-# Download:  http://gsdview.appspot.com/chromeos-localmirror/distfiles/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://gsdview.appspot.com/chromeos-localmirror/distfiles/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
