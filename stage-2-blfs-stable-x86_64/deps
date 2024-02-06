@@ -853,7 +853,6 @@ zsh                                     elogind
 # id3lib
 # imake                               xxkb
 # imwheel
-# indic-fonts-ttf
 # inxi
 # ipaex-fonts-ttf
 # jasper                              qt5, gegl, imagemagick
@@ -1026,12 +1025,10 @@ zsh                                     elogind
 # rtmpdump                            gst-plugins-bad
 # rxvt-unicode
 # sane                                imagemagick
-# sazanami-fonts-ttf
 # schroedinger                        ffmpeg
 # scrot
 # sdl                                 gst-plugins-base, libmpeg2, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
-# sinhala-lklug-font-ttf
 # slop                                maim
 # snappy
 # soundtouch                          gst-plugins-bad
@@ -1046,7 +1043,6 @@ zsh                                     elogind
 # t1lib
 # taglib                              gst-plugins-good
 # talloc
-# tibmachuni-font-ttf
 # tidy-html5
 # tokudb
 # traceroute

@@ -624,12 +624,8 @@ x/fonts/xorg-fonts.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/fonts/sazanami-fonts-ttf.sh
 # x/fonts/dejavu-fonts-ttf.sh
 # x/fonts/liberation-fonts-ttf.sh
-# x/fonts/sinhala-lklug-font-ttf.sh
-# x/fonts/tibmachuni-font-ttf.sh
-# x/fonts/indic-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
 # n/links.sh
 # l/jasper.sh
