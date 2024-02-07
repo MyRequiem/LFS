@@ -650,7 +650,6 @@ x/fonts/liberation-fonts-ttf.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
-# x/fonts/microsoft-webcore-fonts-ttf.sh
 # x/fonts/noto-fonts-ttf.sh
 # x/fonts/oxygen-fonts-ttf.sh
 # x/fonts/adobe-source-code-pro-font.sh
