@@ -604,6 +604,7 @@ x/apps/xorg-applications.sh
 x/data/xcursor-themes.sh
 x/fonts/xorg-fonts.sh
 x/fonts/caladea-font-ttf.sh
+x/fonts/cantarell-font-otf.sh
 
 
 # l/gcr4.sh
@@ -646,7 +647,6 @@ x/fonts/caladea-font-ttf.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
-# x/fonts/cantarell-font-otf.sh
 # x/fonts/carlito-font-ttf.sh
 # x/fonts/freefont.sh
 # x/fonts/gelasio-font-ttf.sh

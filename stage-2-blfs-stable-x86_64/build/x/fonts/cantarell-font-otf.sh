@@ -17,25 +17,15 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-OTF_FONT_DIR="/usr/share/fonts/X11/OTF"
-mkdir -pv "${TMP_DIR}${OTF_FONT_DIR}"
+INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
+mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
 
-mkdir -p build
-cd build || exit 1
-
-meson                            \
-    --prefix=/usr                \
-    -Duseprebuilt=true           \
-    -Dbuildappstream=false       \
-    -Dfontsdir="${OTF_FONT_DIR}" \
-    .. || exit 1
-
-DESTDIR="${TMP_DIR}" ninja install
+cp prebuilt/*.otf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индексы установленных шрифтов
-cd "${OTF_FONT_DIR}" || exit 1
+cd "${INSTALL_DIR}" || exit 1
 # создаем индекс файлов масштабируемых шрифтов
 mkfontscale .
 # создаем индекс файлов шрифтов в каталоге
@@ -43,6 +33,9 @@ mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
 
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
+
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (The Cantarell typeface family)
 #
@@ -50,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # since version 3.0, replacing Bitstream Vera and DejaVu
 #
 # Home page: https://gitlab.gnome.org/GNOME/${ARCH_NAME}/
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
