@@ -92,7 +92,7 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freefont
 freeglut                                libtiff
@@ -110,6 +110,7 @@ gcr3                                    pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
 gdk-pixbuf-xlib                         w3m
+gelasio-font-ttf
 ghostscript                             cairo, goffice, libspectre
 giflib                                  imlib2
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
@@ -721,7 +722,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -814,7 +815,6 @@ zsh                                     elogind
 # gcolor2
 # gconf
 # gegl                                libmypaint, gimp
-# gelasio-font-ttf
 # geoexpress                          imagemagick
 # gexiv2                              gegl, gimp
 # ggi                                 sdl

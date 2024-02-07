@@ -608,6 +608,7 @@ x/fonts/cantarell-font-otf.sh
 x/fonts/carlito-font-ttf.sh
 x/fonts/dejavu-fonts-ttf.sh
 x/fonts/freefont.sh
+x/fonts/gelasio-font-ttf.sh
 
 
 # l/gcr4.sh
@@ -649,7 +650,6 @@ x/fonts/freefont.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
-# x/fonts/gelasio-font-ttf.sh
 # x/fonts/microsoft-webcore-fonts-ttf.sh
 # x/fonts/noto-fonts-ttf.sh
 # x/fonts/oxygen-fonts-ttf.sh
