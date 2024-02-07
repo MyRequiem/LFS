@@ -92,7 +92,7 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freefont
 freeglut                                libtiff
@@ -203,6 +203,7 @@ libdrm                                  cairo, libva, mesa
 libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libepoxy                                gtk+3
+liberation-fonts-ttf
 libev                                   nghttp2
 libevent                                tmux, nghttp2
 libexif
@@ -714,7 +715,7 @@ xcb-util-keysyms
 xcb-util-renderutil                     xcb-util-cursor
 xcb-util-wm
 xcb-util-xrm
-xcursor-themes                          xorg-fonts, dejavu-fonts-ttf
+xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
@@ -722,7 +723,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -887,7 +888,6 @@ zsh                                     elogind
 # libdv                               gst-plugins-good
 # libdvdnav                           gst-plugins-bad, mpv
 # libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
-# liberation-fonts-ttf
 # libevdev                            xorg-evdev-driver, libinput, xorg-synaptics-driver
 # libgd                               nginx
 # libgudev                            upower, udisks, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gimp

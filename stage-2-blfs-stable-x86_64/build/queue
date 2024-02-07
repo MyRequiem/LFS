@@ -609,6 +609,7 @@ x/fonts/carlito-font-ttf.sh
 x/fonts/dejavu-fonts-ttf.sh
 x/fonts/freefont.sh
 x/fonts/gelasio-font-ttf.sh
+x/fonts/liberation-fonts-ttf.sh
 
 
 # l/gcr4.sh
@@ -630,7 +631,6 @@ x/fonts/gelasio-font-ttf.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/fonts/liberation-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
 # n/links.sh
 # l/jasper.sh

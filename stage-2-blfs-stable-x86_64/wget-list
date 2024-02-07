@@ -647,6 +647,7 @@ https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gelasio-font-ttf/gelasio-font-ttf-220922.tar.xz
+https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
 
 
 ================================================================================
@@ -666,7 +667,6 @@ http://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 http://links.twibright.com/download/links-2.21.tar.bz2
-https://github.com/liberationfonts/liberation-fonts/files/6418984/liberation-fonts-ttf-2.1.4.tar.gz
 https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
 https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
