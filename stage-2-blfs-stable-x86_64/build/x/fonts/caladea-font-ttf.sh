@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Cambria and then return it to them.
 #
 # Home page: https://fonts.google.com/specimen/Caladea
-# Download:  https://github.com/MyRequiem/LFS/blob/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
