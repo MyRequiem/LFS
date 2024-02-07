@@ -1,8 +1,6 @@
 #! /bin/bash
 
 PRGNAME="freefont"
-TTF_ARCH_NAME="freefont-ttf"
-OTF_ARCH_NAME="freefont-otf"
 
 ### GNU FreeFont (free family of scalable outline fonts)
 # Семейство масштабируемых контурных шрифтов, подходящих для общего
@@ -18,7 +16,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${OTF_ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${PRGNAME}-otf-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -26,27 +24,22 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-unzip -d "${TTF_ARCH_NAME}-${VERSION}" \
-    "${SOURCES}/${TTF_ARCH_NAME}-${VERSION}"*.zip
+unzip -d ttf "${SOURCES}/${PRGNAME}-ttf-${VERSION}"*.zip
 
-mkdir -p "${OTF_ARCH_NAME}-${VERSION}"
-tar -C "${OTF_ARCH_NAME}-${VERSION}" \
-    -xvf "${SOURCES}/${OTF_ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+mkdir -p otf
+tar -C otf -xvf "${SOURCES}/${PRGNAME}-otf-${VERSION}"*.tar.?z* || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
-OTF_FONT_DIR="/usr/share/fonts/X11/OTF/"
-mkdir -pv "${TMP_DIR}"{${TTF_FONT_DIR},${OTF_FONT_DIR}}
+INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
+mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
 
-cp "${TTF_ARCH_NAME}-${VERSION}/${PRGNAME}-${VERSION}"/*.ttf \
-    "${TMP_DIR}${TTF_FONT_DIR}"
-cp "${OTF_ARCH_NAME}-${VERSION}/${PRGNAME}-${VERSION}"/*.otf \
-    "${TMP_DIR}${OTF_FONT_DIR}"
+cp "ttf/${PRGNAME}-${VERSION}"/*.ttf "${TMP_DIR}${INSTALL_DIR}"
+cp "otf/${PRGNAME}-${VERSION}"/*.otf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индексы установленных шрифтов
-cd "${TTF_FONT_DIR}" || exit 1
+cd "${INSTALL_DIR}" || exit 1
 # создаем индекс файлов масштабируемых шрифтов
 mkfontscale .
 # создаем индекс файлов шрифтов в каталоге
@@ -54,10 +47,7 @@ mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
 
-cd "${OTF_FONT_DIR}" || exit 1
-mkfontscale .
-mkfontdir .
-fc-cache -f
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (free family of scalable outline fonts)
@@ -69,8 +59,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # symbol characters and characters from other writing systems.
 #
 # Home page: https://www.gnu.org/software/freefont/
-# Download:  https://mirror.tochlab.net/pub/gnu/freefont/${TTF_ARCH_NAME}-${VERSION}.zip
-#            https://mirror.tochlab.net/pub/gnu/freefont/${OTF_ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://mirror.tochlab.net/pub/gnu/freefont/${PRGNAME}-ttf-${VERSION}.zip
+#            https://mirror.tochlab.net/pub/gnu/freefont/${PRGNAME}-otf-${VERSION}.tar.gz
 #
 EOF
 

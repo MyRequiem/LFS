@@ -92,8 +92,9 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
+freefont
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
 fribidi                                 pango
@@ -720,7 +721,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -806,7 +807,6 @@ zsh                                     elogind
 # flif                                imagemagick
 # flite                               gst-plugins-bad, qt5, ffmpeg
 # fluidsynth                          gst-plugins-bad
-# freefont
 # freetds                             apr-util, qt5
 # frei0r-plugins                      ffmpeg
 # frontbase

@@ -644,6 +644,8 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/calad
 https://download.gnome.org/sources/cantarell-fonts/0.303/cantarell-fonts-0.303.1.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/carlito-font-ttf/carlito-font-ttf-030523.tar.xz
 https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
+https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
+https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 
 
 ================================================================================
@@ -681,8 +683,6 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
 https://invisible-mirror.net/archives/xterm/xterm-366.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.1.tar.bz2
-https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
-https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 https://fontlibrary.org/assets/downloads/gelasio/4d610887ff4d445cbc639aae7828d139/gelasio.zip
 http://avi.alkalay.net/software/webcore-fonts/webcore-fonts-3.0.tar.gz
 https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-hinted.zip
