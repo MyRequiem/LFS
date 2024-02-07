@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="caladea-font-ttf"
-ARCH_NAME="crosextrafonts"
 
 ### Caladea (Googles Caladea font)
 # TTF Шрифт от Google
@@ -12,8 +11,8 @@ ARCH_NAME="crosextrafonts"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
@@ -43,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Cambria and then return it to them.
 #
 # Home page: https://fonts.google.com/specimen/Caladea
-# Download:  https://gsdview.appspot.com/chromeos-localmirror/distfiles/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://github.com/MyRequiem/LFS/blob/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
