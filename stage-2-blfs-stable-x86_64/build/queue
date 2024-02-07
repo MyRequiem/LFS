@@ -606,6 +606,7 @@ x/fonts/xorg-fonts.sh
 x/fonts/caladea-font-ttf.sh
 x/fonts/cantarell-font-otf.sh
 x/fonts/carlito-font-ttf.sh
+x/fonts/dejavu-fonts-ttf.sh
 
 
 # l/gcr4.sh
@@ -627,7 +628,6 @@ x/fonts/carlito-font-ttf.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/fonts/dejavu-fonts-ttf.sh
 # x/fonts/liberation-fonts-ttf.sh
 # x/fonts/wqy-zenhei-font-ttf.sh
 # n/links.sh
