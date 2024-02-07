@@ -642,6 +642,7 @@ https://www.x.org/archive/individual/font/font-isas-misc-1.0.3.tar.bz2
 https://www.x.org/archive/individual/font/font-misc-misc-1.1.2.tar.bz2
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/caladea-font-ttf/caladea-font-ttf-220922.tar.xz
 https://download.gnome.org/sources/cantarell-fonts/0.303/cantarell-fonts-0.303.1.tar.xz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/carlito-font-ttf/carlito-font-ttf-030523.tar.xz
 
 
 ================================================================================
@@ -680,7 +681,6 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
 https://invisible-mirror.net/archives/xterm/xterm-366.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.1.tar.bz2
-http://gsdview.appspot.com/chromeos-localmirror/distfiles/crosextrafonts-carlito-20130920.tar.gz
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 https://fontlibrary.org/assets/downloads/gelasio/4d610887ff4d445cbc639aae7828d139/gelasio.zip
