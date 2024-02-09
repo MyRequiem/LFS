@@ -72,7 +72,7 @@ chown root:root "${TARBALL_NAME}"/*
 chmod 644       "${TARBALL_NAME}"/*
 
 # создаем архив
-tar -cJvf "${TARBALL_NAME}.tar.xz" "${TARBALL_NAME}"
+tar -cJvf "${TARBALL_NAME}.tar.xz" "${TARBALL_NAME}" || exit 1
 
 # очищаем
 rm -rf "v${VERSION}.tar.gz" fonts-to-skip.txt \
