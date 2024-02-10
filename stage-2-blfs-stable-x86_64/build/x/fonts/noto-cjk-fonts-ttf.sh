@@ -11,14 +11,14 @@ PRGNAME="noto-cjk-fonts-ttf"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
 mkdir -pv "${TMP_DIR}"{"${INSTALL_DIR}",/etc/fonts/conf.{d,avail}}
 
-cp fonts/*.ttc "${TMP_DIR}${INSTALL_DIR}"
+cp ./*.ttc "${TMP_DIR}${INSTALL_DIR}"
 
 NOTO_CJK_CONF="/etc/fonts/conf.avail/70-noto-cjk.conf"
 cp -a "${SOURCES}/70-noto-cjk.conf" "${TMP_DIR}/etc/fonts/conf.avail/"
