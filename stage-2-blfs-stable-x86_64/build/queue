@@ -612,6 +612,7 @@ x/fonts/gelasio-font-ttf.sh
 x/fonts/liberation-fonts-ttf.sh
 x/fonts/noto-fonts-ttf.sh
 x/fonts/noto-cjk-fonts-ttf.sh
+x/fonts/adobe-source-code-pro-font-otf.sh
 
 
 # l/gcr4.sh
@@ -652,7 +653,6 @@ x/fonts/noto-cjk-fonts-ttf.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
-# x/fonts/adobe-source-code-pro-font.sh
 # x/fonts/opendesktop-fonts-ttf.sh
 # x/fonts/uming-fonts-ttf.sh
 # x/fonts/ipaex-fonts-ttf.sh
