@@ -93,7 +93,7 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freefont
 freeglut                                libtiff
@@ -707,6 +707,7 @@ whois
 wiredtiger                              openldap
 wireless-tools
 wpa-supplicant
+wqy-zenhei-font-ttf
 wxwidgets                               p7zip
 x264
 x265                                    imlib2
@@ -719,7 +720,7 @@ xcb-util-keysyms
 xcb-util-renderutil                     xcb-util-cursor
 xcb-util-wm
 xcb-util-xrm
-xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf
+xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xdg-utils                               cups
 xerces2-java                            docbook-xsl
@@ -727,7 +728,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -1082,7 +1083,6 @@ zsh                                     elogind
 # wildmidi                            gst-plugins-bad
 # wpe-webkit                          gst-plugins-bad
 # wpebackend-fdo                      gst-plugins-bad
-# wqy-zenhei-font-ttf
 # xbanish
 # xclip                               password-store
 # xinit

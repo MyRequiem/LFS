@@ -614,6 +614,7 @@ x/fonts/noto-fonts-ttf.sh
 x/fonts/noto-cjk-fonts-ttf.sh
 x/fonts/adobe-source-code-pro-font-otf.sh
 x/fonts/opendesktop-fonts-ttf.sh
+x/fonts/wqy-zenhei-font-ttf.sh
 
 
 # l/gcr4.sh
@@ -635,7 +636,6 @@ x/fonts/opendesktop-fonts-ttf.sh
 # a/udisks.sh
 # l/apr-util.sh
 # n/links.sh
-# x/fonts/wqy-zenhei-font-ttf.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh

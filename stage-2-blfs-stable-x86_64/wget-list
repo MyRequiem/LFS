@@ -653,6 +653,7 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-cjk-fonts-ttf/70-noto-cjk.conf
 https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/1.026R-vf.tar.gz
 https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
+https://altushost-swe.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 
 
 ================================================================================
@@ -672,7 +673,6 @@ http://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.tar.xz
 http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 http://links.twibright.com/download/links-2.21.tar.bz2
-https://deac-riga.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
 https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
 https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz
