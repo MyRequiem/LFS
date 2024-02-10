@@ -92,7 +92,7 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
 freefont
 freeglut                                libtiff
@@ -312,6 +312,8 @@ nickle                                  xorg-applications
 nmap                                    lsof
 nodejs
 notification-daemon                     libnotify
+noto-cjk-fonts-ttf
+noto-fonts-ttf
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
@@ -723,7 +725,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf
 xorg-fonts                              librsvg
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-sgml-doctools                      libxdmcp
@@ -970,8 +972,6 @@ zsh                                     elogind
 # net-snmp
 # netcat-openbsd
 # nginx
-# noto-fonts-ttf
-# noto-sans-cjk-fonts-otf
 # numlockx
 # nuspell                             enchant
 # openal                              gst-plugins-bad, qt5, ffmpeg

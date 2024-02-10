@@ -648,6 +648,9 @@ https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
 https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gelasio-font-ttf/gelasio-font-ttf-220922.tar.xz
 https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-fonts-ttf/noto-fonts-ttf-20201206.tar.xz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-cjk-fonts-ttf/noto-cjk-fonts-ttf-20201206.tar.xz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-cjk-fonts-ttf/70-noto-cjk.conf
 
 
 ================================================================================
@@ -684,14 +687,7 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
 https://invisible-mirror.net/archives/xterm/xterm-366.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.1.tar.bz2
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-hinted.zip
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSymbols-hinted.zip
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSymbols2-unhinted.zip
 https://github.com/adobe-fonts/source-code-pro/archive/2.010R-ro/1.030R-it.tar.gz
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKkr-hinted.zip
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip
-https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKtc-hinted.zip
 https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
 http://ponce.cc/slackware/sources/repo/ttf-arphic-uming_0.2.20080216.1.orig.tar.gz
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
