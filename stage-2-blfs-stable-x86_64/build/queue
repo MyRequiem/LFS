@@ -615,6 +615,7 @@ x/fonts/noto-cjk-fonts-ttf.sh
 x/fonts/adobe-source-code-pro-font-otf.sh
 x/fonts/opendesktop-fonts-ttf.sh
 x/fonts/wqy-zenhei-font-ttf.sh
+x/fonts/ipaex-fonts-ttf.sh
 
 
 # l/gcr4.sh
@@ -654,7 +655,6 @@ x/fonts/wqy-zenhei-font-ttf.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh
-# x/fonts/ipaex-fonts-ttf.sh
 # x/fonts/kochi-substitute-fonts-ttf.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # l/gtk4.sh

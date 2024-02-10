@@ -28,22 +28,25 @@ unzip "${SOURCES}/${ARCH_NAME}${VERSION}".zip || exit 1
 cd "${ARCH_NAME}${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
-mkdir -pv "${TMP_DIR}${TTF_FONT_DIR}"
+INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
+mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
 
+chown root:root ./*
 chmod 644 ipaex{g,m}.ttf
-cp ipaex{g,m}.ttf "${TMP_DIR}${TTF_FONT_DIR}"
+cp ipaex{g,m}.ttf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индексы установленных шрифтов
-cd "${TTF_FONT_DIR}" || exit 1
+cd "${INSTALL_DIR}" || exit 1
 # создаем индекс файлов масштабируемых шрифтов
 mkfontscale .
 # создаем индекс файлов шрифтов в каталоге
 mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
+
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Japanese fonts by IPA)
@@ -52,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # proportional width glyphs for Western characters. They were designed as an
 # implementation of JIS X 0213:2004 standard.
 #
-# Home page: https://ipafont.ipa.go.jp
+# Home page: https://moji.or.jp/ipafont/
 # Download:  https://moji.or.jp/wp-content/ipafont/${ARCH_NAME}/${ARCH_NAME}${VERSION}.zip
 #
 EOF
