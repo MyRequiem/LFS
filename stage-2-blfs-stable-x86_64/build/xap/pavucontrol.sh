@@ -8,6 +8,7 @@ PRGNAME="pavucontrol"
 # устройств, так и громкость каждого потока воспроизведения в отдельности.
 
 # Required:    gtkmm
+#              json-glib
 #              libcanberra
 #              libsigc++2
 #              pulseaudio

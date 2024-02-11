@@ -618,6 +618,8 @@ x/fonts/wqy-zenhei-font-ttf.sh
 x/fonts/ipaex-fonts-ttf.sh
 x/fonts/kochi-substitute-fonts-ttf.sh
 x/fonts/vlgothic-fonts-ttf.sh
+l/json-glib.sh
+xap/pavucontrol.sh
 
 
 # l/gcr4.sh
@@ -721,7 +723,6 @@ x/fonts/vlgothic-fonts-ttf.sh
 # l/sdl.sh
 # l/libmpeg2.sh
 # l/sdl2.sh
-# l/json-glib.sh
 # l/libseccomp.sh
 # l/babl.sh
 # l/gegl.sh
@@ -768,7 +769,6 @@ x/fonts/vlgothic-fonts-ttf.sh
 # ap/xsel.sh
 # ap/xclip.sh
 # n/transmission.sh
-# xap/pavucontrol.sh
 # l/id3lib.sh
 # l/libao.sh
 # l/taglib.sh

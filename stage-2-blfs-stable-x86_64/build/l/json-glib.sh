@@ -10,6 +10,7 @@ PRGNAME="json-glib"
 # Recommended: no
 # Optional:    gobject-introspection
 #              gtk-doc
+#              libxslt (для сборки man-страниц)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,14 +20,17 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 GTK_DOC="disabled"
+MAN="false"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="enabled"
+command -v xsltproc &>/dev/null && MAN="true"
 
 mkdir build
 cd build || exit 1
 
 meson                      \
     --prefix=/usr          \
-    -Dman="true"           \
+    --buildtype=release    \
+    -Dman="${MAN}"         \
     -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
 

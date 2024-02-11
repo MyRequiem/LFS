@@ -118,7 +118,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
@@ -127,7 +127,7 @@ gnome-keyring                           libsecret
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib
 goffice
 gpac                                    x264
 gpgme                                   volume-key
@@ -143,11 +143,11 @@ gsl                                     gstreamer
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs
-gtkmm
+gtkmm                                   pavucontrol
 gtksourceview3
 guile
 gutenprint                              cups
@@ -181,6 +181,7 @@ jbig2dec                                cairo
 jemalloc                                nghttp2
 jing                                    vala
 json-c                                  bind-utils, cryptsetup, fontconfig
+json-glib                               pavucontrol
 kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
@@ -199,7 +200,7 @@ libasyncns                              pulseaudio
 libatasmart
 libatomic-ops                           gc, libdrm
 libbytesize
-libcanberra                             notification-daemon
+libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils
 libdazzle
 libdrm                                  cairo, libva, mesa
@@ -244,7 +245,7 @@ libsamplerate                           pulseaudio
 libseccomp                              gnutls
 libsecret                               pinentry, gcr3
 libsectok                               openssh
-libsigc++2                              cairomm, glibmm
+libsigc++2                              cairomm, glibmm, pavucontrol
 libsigsegv                              clisp
 libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libspectre                              cairo, goffice
@@ -272,7 +273,7 @@ libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications
@@ -349,6 +350,7 @@ parted
 passivetex                              xmlto
 passwdqc                                cryptsetup
 patchelf                                python3-meson, python3-dbus
+pavucontrol
 pciutils
 pcre                                    wget, git, slang, nmap
 pcre2                                   wget, glib, git, libbytesize, swig
@@ -517,7 +519,7 @@ popt                                    rsync, cryptsetup
 postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
-pulseaudio                              gtk-vnc, libcanberra
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib
 python2-cython
@@ -864,7 +866,6 @@ zsh                                     elogind
 # inxi
 # jasper                              qt5, gegl, imagemagick
 # jq
-# json-glib                           gegl
 # judy
 # kytea
 # ladspa                              gst-plugins-bad
@@ -992,7 +993,6 @@ zsh                                     elogind
 # pamixer
 # pandoc                              openjdk
 # password-store                      dmenu
-# pavucontrol
 # pcsc-lite                           libcacard
 # pgp                                 imagemagick
 # phodav                              spice-gtk

@@ -657,6 +657,8 @@ https://altushost-swe.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Figh
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/77450/VLGothic-20220612.tar.xz
+https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz
+https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 
 
 ================================================================================
@@ -730,7 +732,6 @@ https://archive.mariadb.org/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz
 http://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
-https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.28.tar.xz
@@ -779,7 +780,6 @@ https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboa
 http://www.vergenet.net/~conrad/software/xsel/download/xsel-1.2.0.tar.gz
 https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
 https://raw.githubusercontent.com/transmission/transmission-releases/master/transmission-3.00.tar.xz
-http://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-4.0.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
