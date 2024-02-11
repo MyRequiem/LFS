@@ -18,7 +18,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 SOURCES="${ROOT}/src"
 ARCH_NAME="$(find "${SOURCES}" -type f -name "*R-vf.tar.*" | rev | \
     cut -d / -f 1 | rev)"
-VERSION=$(echo ${ARCH_NAME} | cut -d R -f 1)
+VERSION=$(echo "${ARCH_NAME}" | cut -d R -f 1)
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
