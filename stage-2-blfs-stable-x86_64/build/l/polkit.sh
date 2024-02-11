@@ -1,8 +1,6 @@
 #! /bin/bash
 
 PRGNAME="polkit"
-DOCBOOK_XML_VERSION="4.5"
-DOCBOOK_XSL_VERSION="1.79.2"
 
 ### Polkit (PolicyKit authentication framework)
 # API библиотеки, которые используется для предоставления непривилегированным
@@ -12,20 +10,21 @@ DOCBOOK_XSL_VERSION="1.79.2"
 # точно контролировать, что разрешено, а что запрещено.
 
 # Required:    glib
-#              mozjs
-# Recommended: linux-pam
-#              elogind
-# Optional:    gobject-introspection
-#              python3-dbus
-#              python3-dbusmock
+#              duktape
+#              --- для сборки man-страниц ---
+#              libxslt
 #              docbook-xml
 #              docbook-xsl
-#              gtk-doc
-#              libxslt
-#              polkit-kde-agent
-#              gnome-shell
-#              polkit-gnome
-#              lxsession
+# Recommended: gobject-introspection
+#              linux-pam
+#              elogind
+# Optional:    gtk-doc
+#              mozjs
+#              python3-dbusmock (для тестов)
+#              Plasma5          (для KDE)
+#              gnome-shell      (для GNOME)
+#              polkit-gnome     (для XFCE)
+#              lxsession        (для LXDE)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -46,56 +45,36 @@ mkdir -pv "${TMP_DIR}"
             -g polkitd       \
             -s /bin/false polkitd
 
-# исправим ошибку, возникающую при использовании последних версий Polkit вместе
-# с elogind
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-fix_elogind_detection-1.patch" || exit 1
-
-# для построения man-страниц требуются опциональные зависимости libxslt,
-# docbook-xml и docbook-xsl
-MAN_PAGES="--disable-man-pages"
-LIBXSLT=""
-DOCBOOK_XML=""
-DOCBOOK_XSL=""
-GTK_DOC="--disable-gtk-doc"
 AUTHFW="shadow"
-LIBELOGIND="no"
-INTROSPECTION="no"
+INTROSPECTION="false"
+GTK_DOC="false"
+TESTS="false"
 
-command -v xslt-config &>/dev/null && LIBXSLT="true"
-[ -f "/usr/share/xml/docbook/xml-dtd-${DOCBOOK_XML_VERSION}/ent/README" ] && \
-    DOCBOOK_XML="true"
-[ -f "/usr/share/doc/docbook-xsl-${DOCBOOK_XSL_VERSION}/README" ] && \
-    DOCBOOK_XSL="true"
-[[ -n "${LIBXSLT}" && -n "${DOCBOOK_XML}" && -n "${DOCBOOK_XSL}" ]] && \
-    MAN_PAGES="--enable-man-pages"
+command -v faillock      &>/dev/null && AUTHFW="pam"
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
+# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
 
-# command -v gtkdoc-check    &>/dev/null && GTK_DOC="--enable-gtk-doc"
-command -v pam_tally       &>/dev/null && AUTHFW="pam"
-command -v elogind-inhibit &>/dev/null && LIBELOGIND="yes"
-command -v g-ir-compiler   &>/dev/null && INTROSPECTION="yes"
+mkdir build
+cd build || exit 1
 
-autoreconf -fv || exit 1
-./configure                             \
-    --prefix=/usr                       \
-    --sysconfdir=/etc                   \
-    --localstatedir=/var                \
-    --disable-static                    \
-    --with-os-type=LFS                  \
-    "${MAN_PAGES}"                      \
-    "${GTK_DOC}"                        \
-    --with-authfw=${AUTHFW}             \
-    --disable-libsystemd-login          \
-    --enable-libelogind="${LIBELOGIND}" \
-    --enable-introspection="${INTROSPECTION}" || exit 1
+meson                                  \
+    --prefix=/usr                      \
+    --buildtype=release                \
+    -Dman=true                         \
+    -Dauthfw="${AUTHFW}"               \
+    -Dsession_tracking=libelogind      \
+    -Dsystemdsystemunitdir=/tmp        \
+    -Dintrospection="${INTROSPECTION}" \
+    -Dtests=${TESTS}                   \
+    -Djs_engine=duktape                \
+    -Dgtk_doc="${GTK_DOC}"             \
+    .. || exit 1
 
-make || exit 1
+ninja || exit 1
+# meson test -t3
+DESTDIR="${TMP_DIR}" ninja install
 
-### тесты
-# для прохождения тестового набора должен быть запущен системный демон D-Bus
-# make check
-
-make install DESTDIR="${TMP_DIR}"
+rm -fv /tmp/*.service
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -621,6 +621,8 @@ x/fonts/vlgothic-fonts-ttf.sh
 l/json-glib.sh
 xap/pavucontrol.sh
 d/duktape.sh
+l/polkit.sh
+a/elogind.sh
 
 
 # l/gcr4.sh
@@ -637,7 +639,6 @@ d/duktape.sh
 # a/fcron.sh
 # ap/mc.sh
 # n/exim.sh
-# l/polkit.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
