@@ -55,8 +55,9 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # позволим собирать пакет без установленного polkit
-! command -v pkaction &>/dev/null && \
+if ! command -v pkaction &>/dev/null; then
     sed -i '/Disable polkit/,+8 d' meson.build || exit 1
+fi
 
 # позволим демону elogind завершить работу, когда он отключается от dbus
 # (например, когда dbus killed)
