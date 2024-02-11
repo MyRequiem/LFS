@@ -13,8 +13,20 @@ ARCH_NAME="wqy-zenhei"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
@@ -32,7 +44,6 @@ chmod 644       "${TMP_DIR}/etc/fonts/conf.avail"/*
     ln -svf ../conf.avail/43-wqy-zenhei-sharp.conf 43-wqy-zenhei-sharp.conf
     ln -svf ../conf.avail/44-wqy-zenhei.conf       44-wqy-zenhei.conf
 )
-
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
