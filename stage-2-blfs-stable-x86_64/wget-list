@@ -655,6 +655,8 @@ https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R
 https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
 https://altushost-swe.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
+https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
+https://dotsrc.dl.osdn.net/osdn/vlgothic/77450/VLGothic-20220612.tar.xz
 
 
 ================================================================================
@@ -690,8 +692,6 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
 https://invisible-mirror.net/archives/xterm/xterm-366.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.1.tar.bz2
-https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
-https://dotsrc.dl.osdn.net/osdn/vlgothic/73361/VLGothic-20200720.tar.xz
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.tar.xz
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
