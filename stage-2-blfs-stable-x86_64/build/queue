@@ -624,6 +624,7 @@ d/duktape.sh
 l/polkit.sh
 a/elogind.sh
 x/xserver/xorg-server.sh
+x/misc/mtdev.sh
 
 
 # l/gcr4.sh
@@ -648,7 +649,6 @@ x/xserver/xorg-server.sh
 # l/jasper.sh
 # ap/vim.sh
 # x/libs/libevdev.sh
-# x/misc/mtdev.sh
 # x/drivers/xorg-evdev-driver.sh
 # x/libs/libinput.sh
 # x/drivers/xorg-libinput-driver.sh

@@ -308,6 +308,7 @@ mono                                    libidn
 mozjs                                   gjs, polkit
 mpg123                                  libsndfile
 mruby                                   nghttp2
+mtdev
 mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
 ncompress                               xorg-libraries
@@ -974,7 +975,6 @@ zsh                                     elogind
 # monetra
 # mpv
 # mrg                                 gegl
-# mtdev                               xorg-evdev-driver, libinput, qt5
 # mujs                                mpv
 # musepack-tools                      cmus
 # mypaint-brushes                     gimp
