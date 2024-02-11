@@ -661,6 +661,7 @@ https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz
 https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 https://duktape.org/duktape-2.7.0.tar.xz
 https://gitlab.freedesktop.org/polkit/polkit/-/archive/122/polkit-122.tar.gz
+https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
 
 
 ================================================================================
@@ -679,7 +680,6 @@ http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 http://links.twibright.com/download/links-2.21.tar.bz2
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
-https://www.x.org/pub/individual/xserver/xorg-server-1.20.10.tar.bz2
 https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz
 http://bitmath.org/code/mtdev/mtdev-1.1.6.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.6.tar.bz2

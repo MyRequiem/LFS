@@ -4,7 +4,7 @@
 
 Graphical Environments                  openssh, ghostscript
 Plasma5                                 polkit
-acpid
+acpid                                   xorg-server
 adns                                    gnupg
 adobe-source-code-pro-font-otf
 adwaita-icon-theme                      gtk+3
@@ -79,14 +79,14 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server
 dtrace                                  gjs
 duktape                                 polkit
 ed
 efl                                     pinentry
 electric-fence                          lame
 elinks                                  xmlto
-elogind                                 dbus, xorg-libraries, pulseaudio, polkit
+elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server
 emacs                                   libidn, pinentry, guile, desktop-file-utils
 etc-issue
 exim                                    gnupg, sudo
@@ -96,7 +96,7 @@ fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
 fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
-fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3
+fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server
 freefont
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
@@ -209,13 +209,13 @@ libdazzle
 libdrm                                  cairo, libva, mesa
 libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
-libepoxy                                gtk+3
+libepoxy                                gtk+3, xorg-server
 liberation-fonts-ttf
 libev                                   nghttp2
 libevent                                tmux, nghttp2
 libexif
 libffcall                               clisp
-libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3
+libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server
 libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
@@ -257,10 +257,10 @@ libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2
-libtirpc                                libnsl, lsof
+libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libunistring                            libidn2, gnutls, guile
-libunwind                               mesa, gstreamer
+libunwind                               mesa, gstreamer, xorg-server
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
@@ -271,7 +271,7 @@ libvulkan                               mesa
 libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
-libxcvt
+libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
@@ -312,7 +312,7 @@ mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
-nettle                                  gnutls, libarchive, mesa
+nettle                                  gnutls, libarchive, mesa, xorg-server
 nftables                                iptables
 nghttp2                                 curl, cmake, bind-utils, nodejs
 ngtcp2                                  curl
@@ -515,9 +515,9 @@ perl-xml-simple
 perl-xml-writer
 php                                     cups
 pinentry                                gnupg
-pixman                                  cairo
+pixman                                  cairo, xorg-server
 pocketlint                              libbytesize
-polkit                                  elogind
+polkit                                  elogind, xorg-server
 polkit-gnome                            polkit
 poppler                                 cairo
 popt                                    rsync, cryptsetup
@@ -646,6 +646,7 @@ qt5                                     pinentry, wpa-supplicant, highlight, cma
 quiche                                  curl
 ragel                                   harfbuzz
 reiserfsprogs                           lvm2
+rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
 rhash                                   cmake
 rpcsvc-proto                            libnsl
@@ -726,10 +727,10 @@ xbitmaps                                xorg-applications
 xcb-proto                               libxcb
 xcb-util                                startup-notification, xcb-util-image, xorg-applications
 xcb-util-cursor
-xcb-util-image                          xcb-util-cursor
-xcb-util-keysyms
-xcb-util-renderutil                     xcb-util-cursor
-xcb-util-wm
+xcb-util-image                          xcb-util-cursor, xorg-server
+xcb-util-keysyms                        xorg-server
+xcb-util-renderutil                     xcb-util-cursor, xorg-server
+xcb-util-wm                             xorg-server
 xcb-util-xrm
 xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
@@ -737,12 +738,14 @@ xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
-xkeyboard-config                        libxkbcommon
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify
+xkeyboard-config                        libxkbcommon, xorg-server
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server
 xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
-xorg-fonts                              librsvg
+xorg-fonts                              librsvg, xorg-server
+xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
-xorg-sgml-doctools                      libxdmcp
+xorg-server
+xorg-sgml-doctools                      libxdmcp, xorg-server
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
 yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
@@ -907,7 +910,7 @@ zsh                                     elogind
 # libical
 # libiec61883                         gst-plugins-good, ffmpeg
 # libilbc                             ffmpeg
-# libinput                            xorg-libinput-driver, qt5
+# libinput                            qt5
 # libiodbc                            redland
 # libiscsi                            udisks
 # libkate                             gst-plugins-bad
@@ -1095,9 +1098,7 @@ zsh                                     elogind
 # xorg-evdev-driver
 # xorg-fbdev-driver
 # xorg-intel-driver
-# xorg-libinput-driver
 # xorg-nouveau-driver
-# xorg-server                         xorg-evdev-driver, xorg-libinput-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 # xorg-synaptics-driver
 # xorg-vmware-driver
 # xsel                                dmenu

@@ -623,6 +623,7 @@ xap/pavucontrol.sh
 d/duktape.sh
 l/polkit.sh
 a/elogind.sh
+x/xserver/xorg-server.sh
 
 
 # l/gcr4.sh
@@ -646,7 +647,6 @@ a/elogind.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh
-# x/xserver/xorg-server.sh
 # x/libs/libevdev.sh
 # x/misc/mtdev.sh
 # x/drivers/xorg-evdev-driver.sh
