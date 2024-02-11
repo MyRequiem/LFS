@@ -620,6 +620,7 @@ x/fonts/kochi-substitute-fonts-ttf.sh
 x/fonts/vlgothic-fonts-ttf.sh
 l/json-glib.sh
 xap/pavucontrol.sh
+d/duktape.sh
 
 
 # l/gcr4.sh
