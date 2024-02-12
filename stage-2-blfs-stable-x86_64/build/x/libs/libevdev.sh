@@ -13,8 +13,9 @@ PRGNAME="libevdev"
 ### Конфигурация ядра
 #    CONFIG_INPUT=y
 #    CONFIG_INPUT_EVDEV=y
+#    --- для тестов ---
 #    CONFIG_INPUT_MISC=y
-#    CONFIG_INPUT_UINPUT=y
+#    CONFIG_INPUT_UINPUT=y|m
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,19 +25,25 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# shellcheck disable=SC2086
-./configure \
-    ${XORG_CONFIG} || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+meson                         \
+    --prefix="${XORG_PREFIX}" \
+    --buildtype=release       \
+    -Dtests=disabled          \
+    -Ddocumentation=disabled  \
+    .. || exit 1
+
+ninja || exit 1
 
 # Тесты должны запускаться при запущенном X-сервере. В некоторых системах тесты
 # могут вызвать жесткую блокировку, что потребует перезагрузки машины. На
 # ноутбуках система перейдет в спящий режим, и ее необходимо разбудить, чтобы
 # завершить тестовые наборы.
-# make check
+# ninja test
 
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
