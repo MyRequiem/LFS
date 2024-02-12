@@ -626,6 +626,7 @@ a/elogind.sh
 x/xserver/xorg-server.sh
 x/misc/mtdev.sh
 x/libs/libevdev.sh
+x/libs/libinput.sh
 
 
 # l/gcr4.sh
@@ -650,7 +651,6 @@ x/libs/libevdev.sh
 # l/jasper.sh
 # ap/vim.sh
 # x/drivers/xorg-evdev-driver.sh
-# x/libs/libinput.sh
 # x/drivers/xorg-libinput-driver.sh
 # x/drivers/xorg-synaptics-driver.sh
 # x/drivers/xorg-amdgpu-driver.sh
@@ -663,7 +663,6 @@ x/libs/libevdev.sh
 # x/apps/xinit.sh
 # l/gtk4.sh
 # ap/vim.sh
-# x/libs/libinput.sh
 # l/gst-plugins-base.sh
 # l/libsoup.sh
 # ap/mpg123.sh

@@ -145,7 +145,7 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit
 gtk-engines
 gtk-vnc
@@ -212,7 +212,7 @@ libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libepoxy                                gtk+3, xorg-server
 liberation-fonts-ttf
 libev                                   nghttp2
-libevdev
+libevdev                                libinput
 libevent                                tmux, nghttp2
 libexif
 libffcall                               clisp
@@ -224,6 +224,7 @@ libgsf                                  goffice
 libid3tag                               imlib2
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
+libinput
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2
 libksba                                 gnupg
 liblinear                               nmap
@@ -261,7 +262,7 @@ libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libunistring                            libidn2, gnutls, guile
-libunwind                               mesa, gstreamer, xorg-server
+libunwind                               mesa, gstreamer, xorg-server, libinput
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa
@@ -269,6 +270,7 @@ libvdpau                                mesa
 libvorbis                               libsndfile, libcanberra
 libvpx
 libvulkan                               mesa
+libwacom                                libinput
 libwebp                                 libtiff
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
@@ -309,7 +311,7 @@ mono                                    libidn
 mozjs                                   gjs, polkit
 mpg123                                  libsndfile
 mruby                                   nghttp2
-mtdev
+mtdev                                   libinput
 mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
 ncompress                               xorg-libraries
@@ -609,7 +611,7 @@ python3-pygments                        python3-pytest, llvm, libbytesize, pytho
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret
 python3-pylint
 python3-pympler                         python3-attrs
-python3-pyparsing
+python3-pyparsing                       libinput
 python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
@@ -629,7 +631,7 @@ python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six                             libbytesize, python3-blessed, python3-urlgrabber
-python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff
+python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput
 python3-testpath                        python3-flit-core
 python3-tomli                           python3-pylint
 python3-tomlkit                         python3-pylint
@@ -705,7 +707,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput
 vdo                                     lvm2
 vifm
 vlgothic-fonts-ttf
@@ -911,7 +913,6 @@ zsh                                     elogind
 # libical
 # libiec61883                         gst-plugins-good, ffmpeg
 # libilbc                             ffmpeg
-# libinput                            qt5
 # libiodbc                            redland
 # libiscsi                            udisks
 # libkate                             gst-plugins-bad
@@ -948,7 +949,6 @@ zsh                                     elogind
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base
-# libwacom                            libinput
 # libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
