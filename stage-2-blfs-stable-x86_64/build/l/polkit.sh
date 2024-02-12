@@ -74,7 +74,7 @@ ninja || exit 1
 # meson test -t3
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -fv /tmp/*.service
+rm -rf "${TMP_DIR}/tmp"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -89,13 +89,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # on multi-user UNIX-like operating systems.
 #
 # Home page: http://www.freedesktop.org/wiki/Software/PolicyKit
-# Download:  https://www.freedesktop.org/software/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://gitlab.freedesktop.org/${PRGNAME}/${PRGNAME}/-/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
