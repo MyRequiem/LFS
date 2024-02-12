@@ -224,7 +224,7 @@ libgsf                                  goffice
 libid3tag                               imlib2
 libidn                                  gnutls, whois, ghostscript
 libidn2                                 gnutls, libpsl, wget, curl, whois
-libinput
+libinput                                xorg-libinput-driver
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2
 libksba                                 gnupg
 liblinear                               nmap
@@ -748,7 +748,7 @@ xorg-applications                       xcursor-themes, xorg-fonts, caladea-font
 xorg-fonts                              librsvg, xorg-server
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
-xorg-server
+xorg-server                             xorg-libinput-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
