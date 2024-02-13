@@ -37,16 +37,9 @@ source "${ROOT}/xorg_config.sh"                          || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# адаптируем drmmode_display.h к изменениям в GCC-10
-sed -i 's/^miPointerSpriteFuncRec/extern &/' src/drmmode_display.h
-
-GLAMOR="--disable-glamor"
-[ -x /usr/lib/xorg/modules/libglamoregl.so ] && GLAMOR="--enable-glamor"
-
 # shellcheck disable=SC2086
-./configure        \
-    ${XORG_CONFIG} \
-    "${GLAMOR}" || exit 1
+./configure \
+    ${XORG_CONFIG} || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -65,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # kernel.
 #
 # Home page: https://cgit.freedesktop.org/xorg/driver/${ARCH_NAME}/
-# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
