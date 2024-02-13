@@ -638,6 +638,7 @@ x/drivers/xorg-intel-driver.sh
 x/drivers/xorg-nouveau-driver.sh
 x/drivers/xorg-vmware-driver.sh
 x/drivers/libvdpau-va-gl.sh
+x/misc/xterm.sh
 
 
 # l/gcr4.sh
@@ -661,7 +662,6 @@ x/drivers/libvdpau-va-gl.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh
-# x/misc/xterm.sh
 # x/apps/xinit.sh
 # l/gtk4.sh
 # ap/vim.sh

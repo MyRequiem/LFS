@@ -676,6 +676,7 @@ https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
 https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.0/libvdpau-va-gl-0.4.0.tar.gz
+https://invisible-mirror.net/archives/xterm/xterm-379.tgz
 
 
 ================================================================================
@@ -694,7 +695,6 @@ http://anduin.linuxfromscratch.org/BLFS/vim/vim-8.2.2433.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 http://links.twibright.com/download/links-2.21.tar.bz2
 https://github.com/jasper-software/jasper/archive/version-2.0.25/jasper-2.0.25.tar.gz
-https://invisible-mirror.net/archives/xterm/xterm-366.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.1.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.tar.xz
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz

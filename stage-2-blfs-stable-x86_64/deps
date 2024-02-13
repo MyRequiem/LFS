@@ -63,7 +63,7 @@ datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio
 dbus-glib
-dejavu-fonts-ttf
+dejavu-fonts-ttf                        xterm
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
 directfb                                cairo
@@ -87,7 +87,7 @@ efl                                     pinentry
 electric-fence                          lame
 elinks                                  xmlto
 elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server
-emacs                                   libidn, pinentry, guile, desktop-file-utils
+emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 etc-issue
 exim                                    gnupg, sudo
 ffms2                                   x264
@@ -300,6 +300,7 @@ lz4                                     lrzip, rsync
 lzip                                    ed
 lzo                                     libarchive, cairo
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
+man2html                                xterm
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake
@@ -361,8 +362,8 @@ passwdqc                                cryptsetup
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils
-pcre                                    wget, git, slang, nmap
-pcre2                                   wget, glib, git, libbytesize, swig
+pcre                                    wget, git, slang, nmap, xterm
+pcre2                                   wget, glib, git, libbytesize, swig, xterm
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -708,7 +709,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm
 vdo                                     lvm2
 vifm
 vlgothic-fonts-ttf
@@ -746,7 +747,7 @@ xfsprogs                                lvm2
 xkeyboard-config                        libxkbcommon, xorg-server
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server
 xorg-amdgpu-driver
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
+xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xterm
 xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
@@ -760,6 +761,7 @@ xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
 xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
+xterm
 xxhash                                  rsync
 yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
 yelp-tools                              dbus
@@ -970,7 +972,6 @@ zsh                                     elogind
 # luajit                              gegl
 # maemo                               alsa-plugins
 # maim
-# man2html                            xterm
 # mc
 # mecab
 # megatools
@@ -1103,7 +1104,6 @@ zsh                                     elogind
 # xmlrpc-epi
 # xorg-cf-files                       imake
 # xsel                                dmenu
-# xterm                               imagemagick
 # xvid                                ffmpeg
 # xxkb
 # zathura

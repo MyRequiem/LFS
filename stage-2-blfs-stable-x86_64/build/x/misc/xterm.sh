@@ -8,7 +8,8 @@ PRGNAME="xterm"
 # Required:    xorg-applications
 #              dejavu-fonts-ttf
 # Recommended: no
-# Optional:    pcre или pcre2
+# Optional:    emacs
+#              pcre или pcre2
 #              valgrind
 #              man2html (http://www.nongnu.org/man2html/)
 
@@ -32,13 +33,10 @@ export TERMINFO=/usr/share/terminfo
 # shellcheck disable=SC2086
 ./configure         \
     ${XORG_CONFIG}  \
-    --with-utempter \
     --with-app-defaults=/etc/X11/app-defaults || exit 1
 
 make || exit 1
-
 # пакет не имеет набора тестов
-
 make install    DESTDIR="${TMP_DIR}"
 # устанавливаем исправленные файлы описания terminfo для использования с xterm
 make install-ti DESTDIR="${TMP_DIR}"
