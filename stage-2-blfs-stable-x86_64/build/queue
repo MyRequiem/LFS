@@ -635,6 +635,7 @@ x/drivers/xorg-amdgpu-driver.sh
 x/drivers/xorg-ati-driver.sh
 x/drivers/xorg-fbdev-driver.sh
 x/drivers/xorg-intel-driver.sh
+x/drivers/xorg-nouveau-driver.sh
 
 
 # l/gcr4.sh
@@ -658,7 +659,6 @@ x/drivers/xorg-intel-driver.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh
-# x/drivers/xorg-nouveau-driver.sh
 # x/drivers/xorg-vmware-driver.sh
 # x/misc/xterm.sh
 # x/apps/xinit.sh

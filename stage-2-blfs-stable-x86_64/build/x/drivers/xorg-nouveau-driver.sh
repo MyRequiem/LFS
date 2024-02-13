@@ -25,6 +25,9 @@ source "${ROOT}/xorg_config.sh"                          || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправления для сборки с последней версией xorg-server
+grep -rl slave | xargs sed -i s/slave/secondary/ || exit 1
+
 # shellcheck disable=SC2086
 ./configure \
     ${XORG_CONFIG} || exit 1
