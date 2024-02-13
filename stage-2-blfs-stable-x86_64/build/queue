@@ -629,6 +629,7 @@ x/libs/libevdev.sh
 x/libs/libinput.sh
 x/drivers/xorg-libinput-driver.sh
 x/xserver/xorg-server.sh
+x/drivers/xorg-evdev-driver.sh
 
 
 # l/gcr4.sh
@@ -652,7 +653,6 @@ x/xserver/xorg-server.sh
 # n/links.sh
 # l/jasper.sh
 # ap/vim.sh
-# x/drivers/xorg-evdev-driver.sh
 # x/drivers/xorg-synaptics-driver.sh
 # x/drivers/xorg-amdgpu-driver.sh
 # x/drivers/xorg-ati-driver.sh
