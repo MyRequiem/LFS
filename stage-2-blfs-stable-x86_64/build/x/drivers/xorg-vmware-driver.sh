@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # SVGA virtual video cards
 #
 # Home page: https://www.x.org/wiki/vmware/
-# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

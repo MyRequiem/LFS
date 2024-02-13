@@ -754,9 +754,10 @@ xorg-intel-driver
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
 xorg-nouveau-driver
-xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver
+xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
+xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
 yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
@@ -1100,7 +1101,6 @@ zsh                                     elogind
 # xinit
 # xmlrpc-epi
 # xorg-cf-files                       imake
-# xorg-vmware-driver
 # xsel                                dmenu
 # xterm                               imagemagick
 # xvid                                ffmpeg
