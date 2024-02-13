@@ -26,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
 
 # shellcheck disable=SC2086
 ./autogen.sh          \
-    $XORG_CONFIG      \
+    ${XORG_CONFIG}    \
     --enable-kms-only \
     --enable-uxa      \
     --mandir=/usr/share/man || exit 1
@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # graphics processors.
 #
 # Home page: https://cgit.freedesktop.org/xorg/driver/${ARCH_NAME}
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

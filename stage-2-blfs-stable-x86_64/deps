@@ -729,7 +729,7 @@ x264
 x265                                    imlib2
 xbitmaps                                xorg-applications
 xcb-proto                               libxcb
-xcb-util                                startup-notification, xcb-util-image, xorg-applications
+xcb-util                                startup-notification, xcb-util-image, xorg-applications, xorg-intel-driver
 xcb-util-cursor
 xcb-util-image                          xcb-util-cursor, xorg-server
 xcb-util-keysyms                        xorg-server
@@ -750,9 +750,10 @@ xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server
+xorg-intel-driver
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
-xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver
+xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
 xorgproto                               libxau, libxdmcp
@@ -1098,7 +1099,6 @@ zsh                                     elogind
 # xinit
 # xmlrpc-epi
 # xorg-cf-files                       imake
-# xorg-intel-driver
 # xorg-nouveau-driver
 # xorg-vmware-driver
 # xsel                                dmenu
