@@ -675,6 +675,7 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
+https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.0/libvdpau-va-gl-0.4.0.tar.gz
 
 
 ================================================================================

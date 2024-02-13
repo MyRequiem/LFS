@@ -637,6 +637,7 @@ x/drivers/xorg-fbdev-driver.sh
 x/drivers/xorg-intel-driver.sh
 x/drivers/xorg-nouveau-driver.sh
 x/drivers/xorg-vmware-driver.sh
+x/drivers/libvdpau-va-gl.sh
 
 
 # l/gcr4.sh
