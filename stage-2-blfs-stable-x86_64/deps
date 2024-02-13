@@ -212,7 +212,7 @@ libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libepoxy                                gtk+3, xorg-server
 liberation-fonts-ttf
 libev                                   nghttp2
-libevdev                                libinput, xorg-evdev-driver
+libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
 libevent                                tmux, nghttp2
 libexif
 libffcall                               clisp
@@ -749,8 +749,9 @@ xorg-evdev-driver
 xorg-fonts                              librsvg, xorg-server
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
-xorg-server                             xorg-libinput-driver, xorg-evdev-driver
+xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
+xorg-synaptics-driver
 xorgproto                               libxau, libxdmcp
 xxhash                                  rsync
 yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
@@ -1099,7 +1100,6 @@ zsh                                     elogind
 # xorg-fbdev-driver
 # xorg-intel-driver
 # xorg-nouveau-driver
-# xorg-synaptics-driver
 # xorg-vmware-driver
 # xsel                                dmenu
 # xterm                               imagemagick
