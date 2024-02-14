@@ -69,6 +69,11 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 config_file_processing "${XINITRC}"
 
+# shellcheck disable=SC2086
+chmod u+s ${XORG_PREFIX}/libexec/Xorg
+# shellcheck disable=SC2086
+sed -i '/$serverargs $vtarg/ s/serverargs/: #&/' ${XORG_PREFIX}/bin/startx
+
 ldconfig
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -79,7 +84,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # up X. The startx script is one such example.
 #
 # Home page: https://www.x.org/pub/individual/app/
-# Download:  https://www.x.org/pub/individual/app/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/app/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

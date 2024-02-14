@@ -744,6 +744,7 @@ xdg-utils                               cups
 xerces2-java                            docbook-xsl
 xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
+xinit
 xkeyboard-config                        libxkbcommon, xorg-server
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server
 xorg-amdgpu-driver
@@ -754,7 +755,7 @@ xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server
 xorg-intel-driver
 xorg-libinput-driver                    xorg-server
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit
 xorg-nouveau-driver
 xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
@@ -1100,7 +1101,6 @@ zsh                                     elogind
 # wpebackend-fdo                      gst-plugins-bad
 # xbanish
 # xclip                               password-store
-# xinit
 # xmlrpc-epi
 # xorg-cf-files                       imake
 # xsel                                dmenu
