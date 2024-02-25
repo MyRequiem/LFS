@@ -640,6 +640,10 @@ x/drivers/xorg-vmware-driver.sh
 x/drivers/libvdpau-va-gl.sh
 x/misc/xterm.sh
 x/apps/xinit.sh
+# Graphical Environments полностью установлено (кроме оконного менеджера i3),
+# пересоберем пакеты openssh и ghostscript
+n/openssh.sh
+ap/ghostscript.sh
 
 
 # l/gcr4.sh
