@@ -644,6 +644,7 @@ x/apps/xinit.sh
 # пересоберем пакеты openssh и ghostscript
 n/openssh.sh
 ap/ghostscript.sh
+ap/xclip.sh
 
 
 # l/gcr4.sh
@@ -774,7 +775,6 @@ ap/ghostscript.sh
 # ap/feh.sh
 # ap/rxvt-unicode.sh
 # ap/xsel.sh
-# ap/xclip.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
