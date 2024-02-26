@@ -645,6 +645,7 @@ x/apps/xinit.sh
 n/openssh.sh
 ap/ghostscript.sh
 ap/xclip.sh
+ap/xsel.sh
 
 
 # l/gcr4.sh
@@ -774,7 +775,6 @@ ap/xclip.sh
 # xap/imagemagick.sh
 # ap/feh.sh
 # ap/rxvt-unicode.sh
-# ap/xsel.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
