@@ -6,9 +6,10 @@ PRGNAME="rxvt-unicode"
 # Клон эмулятора терминала rxvt с поддержкой XFT, Unicode и Perl расширениями
 
 # Required:    Graphical Environments
+#              libptytty
+#              gdk-pixbuf (для возможности уставливать фоновые изображения)
 # Recommended: no
-# Optional:    gdk-pixbuf
-#              startup-notification
+# Optional:    startup-notification
 
 ### Конфигурация
 #    /etc/X11/app-defaults/URxvt
@@ -61,7 +62,8 @@ sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
     --enable-pointer-blank         \
     --enable-utmp                  \
     --enable-wtmp                  \
-    --enable-lastlog || exit 1
+    --enable-lastlog               \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -129,7 +131,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # full unicode and Xft support, does font antialiasing and italics, and has the
 # same transparency capabilities as ATerm. It can be extended using Perl.
 #
-# Home page: https://software.schmorp.de/pkg/${PRGNAME}/
+# Home page: https://github.com/exg/${PRGNAME}
 # Download:  https://ftp.osuosl.org/pub/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF

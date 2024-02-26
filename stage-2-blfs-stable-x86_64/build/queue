@@ -646,6 +646,8 @@ n/openssh.sh
 ap/ghostscript.sh
 ap/xclip.sh
 ap/xsel.sh
+l/libptytty.sh
+ap/rxvt-unicode.sh
 
 
 # l/gcr4.sh
@@ -774,7 +776,6 @@ ap/xsel.sh
 # l/gegl.sh
 # xap/imagemagick.sh
 # ap/feh.sh
-# ap/rxvt-unicode.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh

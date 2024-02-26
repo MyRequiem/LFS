@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript
+Graphical Environments                  openssh, ghostscript, rxvt-unicode
 Plasma5                                 polkit
 acpid                                   xorg-server
 adns                                    gnupg
@@ -46,7 +46,7 @@ cantarell-font-otf                      pango
 carlito-font-ttf
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -111,7 +111,7 @@ gc                                      w3m, guile
 gcc                                     pth, cmake, python3-numpy
 gcr3                                    pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
-gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf
+gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode
 gdk-pixbuf-xlib                         w3m
 gelasio-font-ttf
 ghostscript                             cairo, goffice, libspectre
@@ -242,6 +242,7 @@ libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications
 libproxy                                glib-networking
 libpsl                                  wget, curl
+libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
 libressl                                openssh
 librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice
@@ -660,6 +661,7 @@ rrdtool                                 lm-sensors
 rsync                                   llvm
 ruby                                    docbook-xsl
 rustc                                   mozjs, librsvg
+rxvt-unicode
 samba                                   curl
 sassc                                   gtk+3
 saxon6                                  docbook-xsl
@@ -683,7 +685,7 @@ speex                                   libsndfile, pulseaudio
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile
 sshfs                                   vifm
-startup-notification
+startup-notification                    rxvt-unicode
 stunnel                                 curl
 subversion                              git, cmake
 sudo
@@ -1041,7 +1043,6 @@ zsh                                     elogind
 # rpm                                 rpm2tgz
 # rpm2tgz
 # rtmpdump                            gst-plugins-bad
-# rxvt-unicode
 # sane                                imagemagick
 # schroedinger                        ffmpeg
 # scrot

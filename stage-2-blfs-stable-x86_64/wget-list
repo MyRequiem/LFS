@@ -680,6 +680,9 @@ https://invisible-mirror.net/archives/xterm/xterm-379.tgz
 https://www.x.org/pub/individual/app/xinit-1.4.2.tar.xz
 https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
 https://github.com/kfish/xsel/archive/1.2.1/xsel-1.2.1.tar.gz
+https://ftp.osuosl.org/pub/blfs/conglomeration/libptytty/libptytty-2.0.tar.gz
+https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.31.tar.bz2
+https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 
 
 ================================================================================
@@ -779,8 +782,6 @@ http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2
 http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
 https://www.imagemagick.org/download/releases/ImageMagick-7.0.11-0.tar.xz
 http://feh.finalrewind.org/feh-3.6.3.tar.bz2
-https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
-https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 https://raw.githubusercontent.com/transmission/transmission-releases/master/transmission-3.00.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/id3lib-3.8.3-consolidated_patches-1.patch
