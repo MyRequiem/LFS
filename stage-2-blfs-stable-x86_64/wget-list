@@ -686,6 +686,9 @@ https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboa
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
 https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.xz
+https://github.com/google/snappy/archive/1.1.10/snappy-1.1.10.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.10-gtest.patch
+https://downloads.mariadb.org/interstitial/mariadb-10.6.12/source/mariadb-10.6.12.tar.gz
 
 
 ================================================================================
@@ -737,7 +740,6 @@ https://download.gnome.org/sources/dconf/0.38/dconf-0.38.0.tar.xz
 https://download.gnome.org/sources/dconf-editor/3.38/dconf-editor-3.38.2.tar.xz
 https://github.com/ibus/ibus/releases/download/1.5.23/ibus-1.5.23.tar.gz
 https://www.unicode.org/Public/zipped/13.0.0/UCD.zip
-https://archive.mariadb.org/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
@@ -798,9 +800,6 @@ https://pcsclite.apdu.fr/files/pcsc-lite-1.9.4.tar.bz2
 https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz
 https://github.com/sahlberg/libiscsi/archive/1.19.0/libiscsi-1.19.0.tar.gz
 https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-5.0.1.tar.gz
-https://github.com/google/snappy/archive/1.1.9/snappy-1.1.9.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.9-attribute-always-inline.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.9-gtest.patch
 https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz
 https://www.spice-space.org/download/releases/spice-server/spice-0.15.0.tar.bz2
 https://www.spice-space.org/download/usbredir/usbredir-0.12.0.tar.xz

@@ -12,7 +12,7 @@ PRGNAME="mariadb"
 #              libxml2
 #              linux-pam
 #              mit-kerberos-v5
-#              pcre
+#              pcre2
 #              ruby
 #              unixodbc
 #              valgrind
@@ -24,7 +24,8 @@ PRGNAME="mariadb"
 #              messagepack      (https://msgpack.org/)
 #              mruby            (https://mruby.org/)
 #              python3-sphinx   (http://sphinxsearch.com/downloads/)
-#              tokudb           (https://mariadb.com/kb/en/tokudb/)
+#              myrocks          (https://mariadb.com/kb/en/myrocks/)
+#              snappy           (https://github.com/google/snappy)
 #              zeromq           (https://zeromq.org/)
 
 ### Конфигурация
@@ -68,22 +69,25 @@ mkdir -pv "${TMP_DIR}/etc/mysql"
 mkdir build
 cd build || exit 1
 
+# включаем поддержку сложных наборов символов
+#    -DWITH_EXTRA_CHARSETS=complex
 # включаем компиляцию библиотеки для встроенного сервера, необходимой некоторым
 # приложениям, например Amarok
 #    -DWITH_EMBEDDED_SERVER=ON
-# включаем поддержку сложных наборов символов
-#    -DWITH_EXTRA_CHARSETS=complex
 # отключаем тесты для MariaDB Connector/C, которые не поддерживаются без
 # дополнительной настройки
 #    -DSKIP_TESTS=ON
 cmake                                                        \
     -DCMAKE_BUILD_TYPE=Release                               \
     -DCMAKE_INSTALL_PREFIX=/usr                              \
+    -DGRN_LOG_PATH=/var/log/groonga.log                      \
     -DINSTALL_DOCDIR="share/doc/${PRGNAME}-${VERSION}"       \
     -DINSTALL_DOCREADMEDIR="share/doc/${PRGNAME}-${VERSION}" \
     -DINSTALL_MANDIR=share/man                               \
     -DINSTALL_MYSQLSHAREDIR=share/mysql                      \
     -DINSTALL_MYSQLTESTDIR=share/mysql/test                  \
+    -DINSTALL_PAMDIR=lib/security                            \
+    -DINSTALL_PAMDATADIR=/etc/security                       \
     -DINSTALL_PLUGINDIR=lib/mysql/plugin                     \
     -DINSTALL_SBINDIR=sbin                                   \
     -DINSTALL_SCRIPTDIR=bin                                  \
@@ -208,7 +212,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # the Aria storage engine.
 #
 # Home page: http://${PRGNAME}.org/
-# Download:  https://archive.${PRGNAME}.org/${PRGNAME}-${VERSION}/source/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://downloads.${PRGNAME}.org/interstitial/${PRGNAME}-${VERSION}/source/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

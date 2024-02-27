@@ -34,7 +34,7 @@ bindfs                                  glib
 blfs-bootscripts
 bluez                                   libpcap, python2, python3, pulseaudio
 bonjour                                 postgresql
-boost                                   highlight, nghttp2, libsigc++2, swig, cairomm
+boost                                   highlight, nghttp2, libsigc++2, swig, cairomm, mariadb
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
 c-ares                                  curl, nghttp2, nodejs
@@ -47,7 +47,7 @@ cantarell-font-otf                      pango
 carlito-font-ttf
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -141,6 +141,7 @@ graphite-font                           graphite2
 graphite2                               harfbuzz
 graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby
 grc
+groonga                                 mariadb
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
@@ -186,18 +187,20 @@ jemalloc                                nghttp2
 jing                                    vala
 json-c                                  bind-utils, cryptsetup, fontconfig
 json-glib                               pavucontrol
+judy                                    mariadb
 kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
 kochi-substitute-fonts-ttf
 krb4                                    cyrus-sasl
+kytea                                   mariadb
 lame                                    libsndfile
 lapack                                  python3-numpy
 lasem                                   goffice
 lcms2                                   openjpeg, ghostscript
 lcov                                    gjs
 lerc                                    libtiff
-libaio                                  lvm2
+libaio                                  lvm2, mariadb
 libarchive                              archivemount, cmake, ed
 libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
@@ -214,7 +217,7 @@ libepoxy                                gtk+3, xorg-server
 liberation-fonts-ttf
 libev                                   nghttp2
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
-libevent                                tmux, nghttp2
+libevent                                tmux, nghttp2, mariadb
 libexif
 libffcall                               clisp
 libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server
@@ -281,11 +284,11 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql
 libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries
-linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql
+linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace
 lm-sensors                              htop, mesa
@@ -298,24 +301,27 @@ lua                                     highlight, nmap, gtk-engines
 lvm2                                    parted, cryptsetup
 lxsession                               polkit
 lynx                                    pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries
-lz4                                     lrzip, rsync
+lz4                                     lrzip, rsync, mariadb
 lzip                                    ed
 lzo                                     libarchive, cairo
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
 man2html                                xterm
 mariadb                                 cyrus-sasl, openldap
 mdadm                                   lvm2
+mecab                                   mariadb
 mercurial                               python3-setuptools-scm, cmake
 mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl
 mesa-demos                              mesa
+messagepack                             mariadb
 minisql                                 unixodbc
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb
 mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs                                   gjs, polkit
 mpg123                                  libsndfile
-mruby                                   nghttp2
+mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
+myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
 ncompress                               xorg-libraries
@@ -365,7 +371,7 @@ patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils
 pcre                                    wget, git, slang, nmap, xterm
-pcre2                                   wget, glib, git, libbytesize, swig, xterm
+pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -636,7 +642,7 @@ python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six                             libbytesize, python3-blessed, python3-urlgrabber
-python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput
+python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-testpath                        python3-flit-core
 python3-tomli                           python3-pylint
 python3-tomlkit                         python3-pylint
@@ -661,7 +667,7 @@ rhash                                   cmake
 rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
 rsync                                   llvm
-ruby                                    docbook-xsl
+ruby                                    docbook-xsl, mariadb
 rustc                                   mozjs, librsvg, ruby
 rxvt-unicode
 samba                                   curl
@@ -680,6 +686,7 @@ silgraphite                             graphite2
 skia                                    cairo
 slang
 smartmontools
+snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
 soxr                                    pulseaudio
 spdylay                                 nghttp2
@@ -707,13 +714,13 @@ translate-shell
 tree
 trousers                                gnutls
 unbound                                 gnutls
-unixodbc                                openldap
+unixodbc                                openldap, mariadb
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
 usbutils
 util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb
 vdo                                     lvm2
 vifm
 vlgothic-fonts-ttf
@@ -774,6 +781,7 @@ yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, li
 yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
+zeromq                                  mariadb
 zip                                     docbook-xsl, llvm
 zsh                                     elogind
 
@@ -868,7 +876,6 @@ zsh                                     elogind
 # google-chrome
 # gperftools                          libmypaint, glusterfs
 # gptfdisk                            udisks
-# groonga
 # gsimplecal
 # gsm                                 gst-plugins-bad, ffmpeg
 # gst-plugins-bad
@@ -895,8 +902,6 @@ zsh                                     elogind
 # inxi
 # jasper                              qt5, gegl, imagemagick
 # jq
-# judy
-# kytea
 # ladspa                              gst-plugins-bad
 # lcms                                imagemagick
 # lensfun                             gegl
@@ -979,9 +984,7 @@ zsh                                     elogind
 # maemo                               alsa-plugins
 # maim
 # mc
-# mecab
 # megatools
-# messagepack
 # mhash
 # microdns                            gst-plugins-bad
 # mini-sql
@@ -1050,7 +1053,6 @@ zsh                                     elogind
 # sdl                                 gst-plugins-base, libmpeg2, gst-plugins-bad, libtheora, qemu
 # sdl2                                gst-plugins-base, qt5, gegl, ffmpeg, qemu, mpv
 # slop                                maim
-# snappy
 # soundtouch                          gst-plugins-bad
 # spandsp                             gst-plugins-bad
 # speech-dispatcher                   qt5
@@ -1111,7 +1113,6 @@ zsh                                     elogind
 # zathura
 # zbar                                gst-plugins-bad
 # zenity
-# zeromq
 # zvbi                                gst-plugins-bad, ffmpeg
 # zxing                               gst-plugins-bad
 

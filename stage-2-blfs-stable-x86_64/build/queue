@@ -651,6 +651,10 @@ ap/rxvt-unicode.sh
 ap/potrace.sh
 ap/postgresql.sh
 d/ruby.sh
+d/snappy.sh
+ap/mariadb.sh
+n/cyrus-sasl.sh
+n/openldap.sh
 
 
 # l/gcr4.sh
@@ -710,7 +714,6 @@ d/ruby.sh
 # l/dconf.sh
 # s/ibus.sh
 # l/apr-util.sh
-# ap/mariadb.sh
 # n/exim.sh
 # l/apr-util.sh
 # n/exim.sh
@@ -793,7 +796,6 @@ d/ruby.sh
 # n/libiscsi.sh
 # a/udisks.sh
 # l/libnfs.sh
-# d/snappy.sh
 # d/spice-protocol.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
@@ -882,7 +884,6 @@ d/ruby.sh
 # l/libplacebo.sh
 # d/mujs.sh
 # ap/mpv.sh
-# ap/mariadb.sh
 # l/cxxopts.sh
 # ap/pamixer.sh
 # ap/lsscsi.sh
