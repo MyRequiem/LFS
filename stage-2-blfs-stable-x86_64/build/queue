@@ -650,6 +650,7 @@ l/libptytty.sh
 ap/rxvt-unicode.sh
 ap/potrace.sh
 ap/postgresql.sh
+d/ruby.sh
 
 
 # l/gcr4.sh
@@ -660,7 +661,6 @@ ap/postgresql.sh
 # n/exim.sh
 # a/fcron.sh
 # ap/at.sh
-# d/ruby.sh
 # ap/mc.sh
 # ap/vim.sh
 # a/fcron.sh
@@ -749,7 +749,6 @@ ap/postgresql.sh
 # ap/vim.sh
 # n/apache-httpd.sh
 # n/php.sh
-# d/ruby.sh
 # d/openjdk.sh
 # n/ntp.sh
 # n/traceroute.sh

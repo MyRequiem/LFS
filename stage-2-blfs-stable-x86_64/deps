@@ -28,7 +28,7 @@ autogen                                 gnutls
 avahi                                   cups, pulseaudio
 bash-completion                         elogind, gstreamer
 bellagio-openmax                        mesa
-berkeley-db                             cyrus-sasl, openldap, python3
+berkeley-db                             cyrus-sasl, openldap, python3, ruby
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
@@ -80,8 +80,8 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl
-dtrace                                  gjs
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby
+dtrace                                  gjs, ruby
 duktape                                 polkit
 ed
 efl                                     pinentry
@@ -139,7 +139,7 @@ gpm
 graphene
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl
+graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
@@ -283,7 +283,7 @@ libxkbcommon                            gtk+3
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql
-libyaml                                 python3-pyyaml
+libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql
 lirc                                    pulseaudio
@@ -662,7 +662,7 @@ rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
 rsync                                   llvm
 ruby                                    docbook-xsl
-rustc                                   mozjs, librsvg
+rustc                                   mozjs, librsvg, ruby
 rxvt-unicode
 samba                                   curl
 sassc                                   gtk+3
@@ -699,7 +699,7 @@ tdb                                     pulseaudio, libcanberra
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl
 thin-provisioning-tools                 lvm2
 time
-tk                                      git, python2, python3
+tk                                      git, python2, python3, ruby
 tmux
 tpm2-tss                                libsecret
 tracker                                 gtk+3
@@ -713,7 +713,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby
 vdo                                     lvm2
 vifm
 vlgothic-fonts-ttf
