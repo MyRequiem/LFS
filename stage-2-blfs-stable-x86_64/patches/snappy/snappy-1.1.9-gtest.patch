@@ -1,9 +1,0 @@
-diff -U 1 -r snappy-1.1.9_orig/CMakeLists.txt snappy-1.1.9/CMakeLists.txt
---- snappy-1.1.9_orig/CMakeLists.txt	2021-05-05 02:53:34.000000000 +0400
-+++ snappy-1.1.9/CMakeLists.txt	2022-03-01 23:56:14.101030443 +0400
-@@ -267,2 +267,5 @@
- 
-+  if(HAVE_GTEST)
-+    target_link_libraries(snappy_unittest gtest)
-+  endif(HAVE_GTEST)
-   if(HAVE_LIBZ)
