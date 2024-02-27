@@ -286,7 +286,7 @@ libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit
 lirc                                    pulseaudio
-llvm                                    dhcpcd, icu, rustc, mesa
+llvm                                    dhcpcd, icu, rustc, mesa, potrace
 lm-sensors                              htop, mesa
 lnav
 lrzip
@@ -530,6 +530,7 @@ poppler                                 cairo
 popt                                    rsync, cryptsetup
 postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap
+potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol
 py3c

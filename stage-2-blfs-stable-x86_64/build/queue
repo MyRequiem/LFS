@@ -648,6 +648,7 @@ ap/xclip.sh
 ap/xsel.sh
 l/libptytty.sh
 ap/rxvt-unicode.sh
+ap/potrace.sh
 
 
 # l/gcr4.sh
