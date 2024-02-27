@@ -649,6 +649,7 @@ ap/xsel.sh
 l/libptytty.sh
 ap/rxvt-unicode.sh
 ap/potrace.sh
+ap/postgresql.sh
 
 
 # l/gcr4.sh
@@ -712,7 +713,6 @@ ap/potrace.sh
 # ap/mariadb.sh
 # n/exim.sh
 # l/apr-util.sh
-# ap/postgresql.sh
 # n/exim.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
@@ -823,7 +823,6 @@ ap/potrace.sh
 # l/libosinfo.sh
 # n/tunctl.sh
 # a/fcron.sh
-# ap/postgresql.sh
 # s/virt-manager.sh
 # l/libev.sh
 # s/clipnotify.sh

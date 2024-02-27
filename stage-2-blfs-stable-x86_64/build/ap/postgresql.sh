@@ -8,14 +8,14 @@ PRGNAME="postgresql"
 
 # Required:    no
 # Recommended: no
-# Optional:    python2
-#              icu
+# Optional:    icu
 #              libxml2
 #              libxslt
 #              openldap
 #              linux-pam
 #              mit-kerberos-v5
-#              bonjour (https://developer.apple.com/bonjour/)
+#              bonjour          (https://developer.apple.com/bonjour/)
+#              --- для документации ---
 #              fop
 #              docbook-dtd4
 #              docbook-dsssl
@@ -34,6 +34,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+DOCS="false"
 
 # создадим группу и пользователя postgres
 ! grep -qE "^postgres:" /etc/group  && \
@@ -74,11 +76,10 @@ make -C contrib
 # make check
 
 make install            DESTDIR="${TMP_DIR}"
-make install-docs       DESTDIR="${TMP_DIR}"
 make -C contrib install DESTDIR="${TMP_DIR}"
+[[ "x${DOCS}" == "xtrue" ]] && make install-docs DESTDIR="${TMP_DIR}"
 
-install -v -dm700 "${TMP_DIR}/srv/pgsql/data"
-chown -Rv postgres:postgres "${TMP_DIR}/srv/pgsql"
+mkdir -p "${TMP_DIR}/srv/pgsql/data"
 
 # для автозапуска PostgreSQL при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/postgresql
@@ -91,6 +92,9 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+install -v -dm700 /srv/pgsql/data
+chown -Rv postgres:postgres "/srv/pgsql"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (object-relational database management system)
 #
@@ -101,7 +105,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # solutions.
 #
 # Home page: https://www.${PRGNAME}.org
-# Download:  http://ftp.${PRGNAME}.org/pub/source/v${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://ftp.${PRGNAME}.org/pub/source/v${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

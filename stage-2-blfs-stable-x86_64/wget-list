@@ -684,6 +684,7 @@ https://ftp.osuosl.org/pub/blfs/conglomeration/libptytty/libptytty-2.0.tar.gz
 https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.31.tar.bz2
 https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
+https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
 
 
 ================================================================================
@@ -737,7 +738,6 @@ https://download.gnome.org/sources/dconf-editor/3.38/dconf-editor-3.38.2.tar.xz
 https://github.com/ibus/ibus/releases/download/1.5.23/ibus-1.5.23.tar.gz
 https://www.unicode.org/Public/zipped/13.0.0/UCD.zip
 https://archive.mariadb.org/mariadb-10.5.8/source/mariadb-10.5.8.tar.gz
-http://ftp.postgresql.org/pub/source/v13.2/postgresql-13.2.tar.bz2
 http://www.libsdl.org/release/SDL2-2.0.14.tar.gz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz

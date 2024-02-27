@@ -33,6 +33,7 @@ bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blfs-bootscripts
 bluez                                   libpcap, python2, python3, pulseaudio
+bonjour                                 postgresql
 boost                                   highlight, nghttp2, libsigc++2, swig, cairomm
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype
@@ -69,10 +70,10 @@ dhcpcd
 directfb                                cairo
 dmalloc                                 cyrus-sasl, lame
 dmidecode                               lm-sensors
-docbook-dsssl                           docbook-utils
+docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
-docbook-dtd4                            docbook-dsssl
-docbook-utils                           libsigc++2, fontconfig, gtk+2, flac
+docbook-dtd4                            docbook-dsssl, postgresql
+docbook-utils                           libsigc++2, fontconfig, gtk+2, flac, postgresql
 docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland, libdrm, libsecret, polkit
 docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3, libsecret, polkit
 docbook2x                               git
@@ -96,7 +97,7 @@ fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
 fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
-fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server
+fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server, postgresql
 freefont
 freeglut                                libtiff
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript
@@ -164,7 +165,7 @@ htop
 http-parser                             nodejs
 hwloc                                   htop
 icon-tools                              adwaita-icon-theme
-icu                                     libxml2, boost, nodejs, mozjs, harfbuzz
+icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql
 imagemagick                             gnupg
 imlib2                                  w3m
 impacket                                curl
@@ -280,11 +281,11 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql
 libyaml                                 python3-pyyaml
 links                                   xmlto, docbook-utils, xorg-libraries
-linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit
+linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace
 lm-sensors                              htop, mesa
@@ -308,7 +309,7 @@ mercurial                               python3-setuptools-scm, cmake
 mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl
 mesa-demos                              mesa
 minisql                                 unixodbc
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql
 mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs                                   gjs, polkit
@@ -341,10 +342,10 @@ oniguruma                               slang
 open-mpi                                boost
 openblas                                python3-numpy
 opendesktop-fonts-ttf
-openjade                                docbook-dsssl, docbook-utils
+openjade                                docbook-dsssl, docbook-utils, postgresql
 openjdk                                 libidn
 openjpeg                                ghostscript
-openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5
+openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
@@ -470,7 +471,7 @@ perl-pod-pom-view-restructured          cyrus-sasl
 perl-regexp-common
 perl-role-tiny                          perl-specio
 perl-scope-guard                        perl-test-file-sharedir, perl-test2-suite
-perl-sgmlspm                            docbook-utils, fontconfig
+perl-sgmlspm                            docbook-utils, fontconfig, postgresql
 perl-sort-key
 perl-specio                             perl-params-validationcompiler
 perl-sub-exporter-progressive           perl-b-hooks-endofscope
@@ -800,7 +801,6 @@ zsh                                     elogind
 # bibtex                              libtheora
 # birdstep
 # blender                             imagemagick
-# bonjour                             postgresql
 # bs2b                                gst-plugins-bad
 # btrfs-progs                         udisks, libblockdev
 # bviplus
