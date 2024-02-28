@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
     --enable-a4       \
     --enable-metric   \
     --with-libpotrace \
-    --docdir=/usr/share/doc/${PRGNAME}-${VERSION} || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
