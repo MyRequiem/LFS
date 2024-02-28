@@ -655,6 +655,9 @@ d/snappy.sh
 ap/mariadb.sh
 n/cyrus-sasl.sh
 n/openldap.sh
+n/exim.sh
+n/gnupg.sh
+ap/sudo.sh
 
 
 # l/gcr4.sh
@@ -662,14 +665,12 @@ n/openldap.sh
 # l/aalib.sh
 # a/libgudev.sh
 # l/libblockdev.sh
-# n/exim.sh
 # a/fcron.sh
 # ap/at.sh
 # ap/mc.sh
 # ap/vim.sh
 # a/fcron.sh
 # ap/mc.sh
-# n/exim.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
@@ -714,9 +715,7 @@ n/openldap.sh
 # l/dconf.sh
 # s/ibus.sh
 # l/apr-util.sh
-# n/exim.sh
 # l/apr-util.sh
-# n/exim.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
@@ -731,7 +730,6 @@ n/openldap.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # l/aalib.sh
-# n/exim.sh
 # ap/mc.sh
 # ap/vim.sh
 # n/links.sh

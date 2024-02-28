@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim
 Plasma5                                 polkit
 acpid                                   xorg-server
 adns                                    gnupg
@@ -58,7 +58,7 @@ cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx
 curlftpfs                               vifm
-cyrus-sasl                              openldap, gtk-vnc
+cyrus-sasl                              openldap, gtk-vnc, exim
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
@@ -130,7 +130,7 @@ gnome-keyring                           libsecret
 gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
-gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc
+gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit
 goffice
 gpac                                    x264
@@ -158,6 +158,7 @@ guile
 gutenprint                              cups
 harfbuzz                                graphite2, freetype
 hdparm
+heimdal-gssapi                          exim
 help2man                                pango, vala
 hicolor-icon-theme                      gtk+2, gtk+3, fltk
 highlight                               vifm
@@ -226,7 +227,7 @@ libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
 libid3tag                               imlib2
-libidn                                  gnutls, whois, ghostscript
+libidn                                  gnutls, whois, ghostscript, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libinput                                xorg-libinput-driver
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2
@@ -239,7 +240,7 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnotify
-libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3
+libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3, exim
 libogg                                  libvorbis, flac, speex
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
@@ -288,7 +289,7 @@ libxml2                                 wpa-supplicant, libxslt, libarchive, doc
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql
 libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries
-linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb
+linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace
 lm-sensors                              htop, mesa
@@ -306,7 +307,7 @@ lzip                                    ed
 lzo                                     libarchive, cairo
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
 man2html                                xterm
-mariadb                                 cyrus-sasl, openldap
+mariadb                                 cyrus-sasl, openldap, exim
 mdadm                                   lvm2
 mecab                                   mariadb
 mercurial                               python3-setuptools-scm, cmake
@@ -322,7 +323,7 @@ mpg123                                  libsndfile
 mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
 myrocks                                 mariadb
-mysql                                   cyrus-sasl, openldap
+mysql                                   cyrus-sasl, openldap, exim
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
@@ -348,10 +349,11 @@ oniguruma                               slang
 open-mpi                                boost
 openblas                                python3-numpy
 opendesktop-fonts-ttf
+opendmarc                               exim
 openjade                                docbook-dsssl, docbook-utils, postgresql
 openjdk                                 libidn
 openjpeg                                ghostscript
-openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql
+openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
@@ -370,7 +372,7 @@ passwdqc                                cryptsetup
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils
-pcre                                    wget, git, slang, nmap, xterm
+pcre                                    wget, git, slang, nmap, xterm, exim
 pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
@@ -536,7 +538,7 @@ polkit-gnome                            polkit
 poppler                                 cairo
 popt                                    rsync, cryptsetup
 postfix                                 gnupg, sudo
-postgresql                              cyrus-sasl, openldap
+postgresql                              cyrus-sasl, openldap, exim
 potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol
@@ -692,7 +694,7 @@ soxr                                    pulseaudio
 spdylay                                 nghttp2
 speex                                   libsndfile, pulseaudio
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim
 sshfs                                   vifm
 startup-notification                    rxvt-unicode
 stunnel                                 curl
@@ -702,7 +704,7 @@ swig                                    gpgme, volume-key
 sysprof                                 glib, pango, gjs
 sysstat                                 openssh
 systemtap                               gjs
-tdb                                     pulseaudio, libcanberra
+tdb                                     pulseaudio, libcanberra, exim
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl
 thin-provisioning-tools                 lvm2
 time
@@ -885,7 +887,6 @@ zsh                                     elogind
 # gtick
 # gvfs                                gimp
 # hddtemp                             bumblebee-status
-# heimdal-gssapi                      exim
 # hp2xx                               imagemagick
 # hspell                              enchant
 # hstr
@@ -1007,7 +1008,6 @@ zsh                                     elogind
 # openal                              gst-plugins-bad, qt5, ffmpeg
 # opencore-amr                        gst-plugins-ugly, ffmpeg
 # opencv                              gst-plugins-bad, ffmpeg
-# opendmarc                           exim
 # openexr                             gst-plugins-bad, gegl, imagemagick
 # openh264                            gst-plugins-bad
 # optipng
