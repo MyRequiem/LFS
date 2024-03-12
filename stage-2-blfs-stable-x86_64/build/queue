@@ -468,6 +468,7 @@ d/perl-modules/perl-text-bibtex.sh
 d/perl-modules/perl-test-differences.sh
 d/perl-modules/perl-perlio-utf8-strict.sh
 d/perl-modules/perl-lwp-protocol-https.sh
+d/perl-modules/perl-file-fcntllock.sh
 # собираем perl-anyevent-i3 (для оконного менеджера i3) + зависимости
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh
