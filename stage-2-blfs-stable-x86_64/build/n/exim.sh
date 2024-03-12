@@ -8,7 +8,8 @@ PRGNAME="exim"
 # другими инструментами для работы с электронной почтой.
 
 # Required:    libnsl
-#              pcre
+#              perl-file-fcntllock
+#              pcre2
 # Recommended: no
 # Optional:    tdb                      (https://sourceforge.net/projects/tdb/)
 #              cyrus-sasl
@@ -21,6 +22,7 @@ PRGNAME="exim"
 #              sqlite
 #              Graphical Environments
 #              heimdal-gssapi           (https://github.com/heimdal/heimdal)
+#              libspf2                  (https://github.com/shevek/libspf2/)
 #              opendmarc                (http://www.trusteddomain.org/opendmarc/)
 
 ### Конфиги
@@ -56,16 +58,10 @@ mkdir -pv "${TMP_DIR}${MAN}"
 sed -e 's,^BIN_DIR.*$,BIN_DIRECTORY=/usr/sbin,'    \
     -e 's,^CONF.*$,CONFIGURE_FILE=/etc/exim.conf,' \
     -e 's,^EXIM_USER.*$,EXIM_USER=exim,'           \
-    -e 's,^SUPPORT_DANE,# SUPPORT_DANE,'           \
-    -e 's,^EXIM_MONITOR,# EXIM_MONITOR,'           \
+    -e '/# USE_OPENSSL/s,^#,,'                     \
         src/EDITME > Local/Makefile || exit 1
 
-# используем gdbm если berkeley-db не установлен
-if command -v db_dump &>/dev/null; then
-    printf "\nUSE_DB = yes\nDBMLIB = -ldb\n"     >> Local/Makefile
-else
-    printf "\nUSE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile
-fi
+printf "\nUSE_GDBM = yes\nDBMLIB = -lgdbm\n" >> Local/Makefile
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -132,7 +128,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # can be integrated with other email tools.
 #
 # Home page: http://www.${PRGNAME}.org/
-# Download:  https://downloads.${PRGNAME}.org/${PRGNAME}4/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftp.${PRGNAME}.org/pub/${PRGNAME}/${PRGNAME}4/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

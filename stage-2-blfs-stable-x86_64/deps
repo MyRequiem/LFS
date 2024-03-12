@@ -260,6 +260,7 @@ libsigc++2                              cairomm, glibmm, pavucontrol
 libsigsegv                              clisp
 libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libspectre                              cairo, goffice
+libspf2                                 exim
 libssh                                  cryptsetup
 libssh2                                 curl, rustc, nmap
 libtasn1                                p11-kit, gnutls
@@ -372,8 +373,8 @@ passwdqc                                cryptsetup
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils
-pcre                                    wget, git, slang, nmap, xterm, exim
-pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb
+pcre                                    wget, git, slang, nmap, xterm
+pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -423,6 +424,7 @@ perl-extutils-libbuilder                perl-text-bibtex
 perl-ffi-checklib                       perl-alien-build
 perl-file-chdir                         perl-alien-build
 perl-file-copy-recursive                perl-test-file-sharedir
+perl-file-fcntllock                     exim
 perl-file-find-rule                     perl-data-compare
 perl-file-listing                       perl-libwww-perl
 perl-file-sharedir                      perl-test-file-sharedir, perl-datetime-locale
