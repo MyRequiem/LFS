@@ -662,6 +662,7 @@ ap/sudo.sh
 l/aalib.sh
 l/libass.sh
 l/fdk-aac.sh
+l/libtheora.sh
 
 
 # l/gcr4.sh
@@ -770,7 +771,6 @@ l/fdk-aac.sh
 # l/xvid.sh
 # d/apache-ant.sh
 # l/libmad.sh
-# l/libtheora.sh
 # l/gst-plugins-base.sh
 # l/ffmpeg.sh
 # l/alsa-plugins.sh
@@ -885,6 +885,8 @@ l/fdk-aac.sh
 # l/cxxopts.sh
 # ap/pamixer.sh
 # ap/lsscsi.sh
+# d/android-tools.sh [NEW]
+# l/qt6.sh [NEW] (взять с BLFS 12.1)
 # xap/google-chrome.sh
 # l/webkit2gtk4.1.sh [NEW]
 # n/telegram.sh
