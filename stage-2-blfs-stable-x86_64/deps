@@ -4,6 +4,7 @@
 
 Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim
 Plasma5                                 polkit
+aalib
 acpid                                   xorg-server
 adns                                    gnupg
 adobe-source-code-pro-font-otf
@@ -135,7 +136,7 @@ gobject-introspection                   glib, elogind, harfbuzz, gsettings-deskt
 goffice
 gpac                                    x264
 gpgme                                   volume-key
-gpm
+gpm                                     aalib
 graphene
 graphite-font                           graphite2
 graphite2                               harfbuzz
@@ -688,7 +689,7 @@ sharutils                               berkeley-db
 shellcheck
 silgraphite                             graphite2
 skia                                    cairo
-slang
+slang                                   aalib
 smartmontools
 snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
@@ -768,10 +769,10 @@ xorg-applications                       xcursor-themes, xorg-fonts, caladea-font
 xorg-ati-driver
 xorg-evdev-driver
 xorg-fbdev-driver
-xorg-fonts                              librsvg, xorg-server
+xorg-fonts                              librsvg, xorg-server, aalib
 xorg-intel-driver
 xorg-libinput-driver                    xorg-server
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib
 xorg-nouveau-driver
 xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
@@ -792,7 +793,6 @@ zsh                                     elogind
 
 # ==============================================================================
 # 3store                              redland
-# aalib                               gst-plugins-good, sdl, gimp
 # adabas
 # aka-mrsid-utilities                 imagemagick
 # alsa-firmware                       libao

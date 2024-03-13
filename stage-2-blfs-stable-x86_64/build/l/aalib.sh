@@ -9,7 +9,8 @@ DIR_VERSION="1.4.0"
 
 # Required:    no
 # Recommended: no
-# Optional:    Graphical Environments
+# Optional:    xorg-libraries
+#              xorg-fonts
 #              slang
 #              gpm
 
@@ -35,6 +36,7 @@ sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4
     --prefix=/usr             \
     --infodir=/usr/share/info \
     --mandir=/usr/share/man   \
+    --with-ncurses=/usr       \
     --disable-static || exit 1
 
 make || exit 1

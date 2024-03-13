@@ -659,11 +659,11 @@ n/openldap.sh
 n/exim.sh
 n/gnupg.sh
 ap/sudo.sh
+l/aalib.sh
 
 
 # l/gcr4.sh
 # a/fcron.sh
-# l/aalib.sh
 # a/libgudev.sh
 # l/libblockdev.sh
 # a/fcron.sh
@@ -730,7 +730,6 @@ ap/sudo.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# l/aalib.sh
 # ap/mc.sh
 # ap/vim.sh
 # n/links.sh
