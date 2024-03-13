@@ -92,6 +92,7 @@ elogind                                 dbus, xorg-libraries, pulseaudio, polkit
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 etc-issue
 exim                                    gnupg, sudo
+fdk-aac
 ffms2                                   x264
 fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
@@ -853,7 +854,6 @@ zsh                                     elogind
 # fcitx                               sdl2
 # fcron
 # fdf-toolkit
-# fdk-aac                             gst-plugins-bad, ffmpeg
 # feh
 # ffmpeg                              alsa-plugins, gegl, imagemagick, cmus, mpv
 # firebird                            qt5

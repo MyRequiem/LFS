@@ -661,6 +661,7 @@ n/gnupg.sh
 ap/sudo.sh
 l/aalib.sh
 l/libass.sh
+l/fdk-aac.sh
 
 
 # l/gcr4.sh
@@ -693,7 +694,6 @@ l/libass.sh
 # ap/alsa-utils.sh
 # ap/faac.sh
 # ap/faad2.sh
-# l/fdk-aac.sh
 # ap/alsa-tools.sh
 # l/alsa-oss.sh
 # l/gst-plugins-good.sh
