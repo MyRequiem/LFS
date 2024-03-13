@@ -11,6 +11,7 @@ PRGNAME="libass"
 #              nasm
 # Recommended: fontconfig
 # Optional:    harfbuzz
+#              libunibreak  (https://github.com/adah1972/libunibreak)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,12 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-FONTCONFIG="--disable-fontconfig"
-command -v fc-cache &>/dev/null && FONTCONFIG="--enable-fontconfig"
-
-./configure         \
-    --prefix=/usr   \
-    "${FONTCONFIG}" \
+./configure       \
+    --prefix=/usr \
     --disable-static || exit 1
 
 make || exit 1

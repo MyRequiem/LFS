@@ -97,12 +97,12 @@ fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
 flac                                    libsndfile
 fltk                                    pinentry
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server, postgresql
 freefont
 freeglut                                libtiff
-freetype                                graphite2, harfbuzz, fontconfig, ghostscript
-fribidi                                 pango
+freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass
+fribidi                                 pango, libass
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                                vifm
 fuse2                                   archivemount, ntfs-3g
@@ -157,7 +157,7 @@ gtkmm                                   pavucontrol
 gtksourceview3
 guile
 gutenprint                              cups
-harfbuzz                                graphite2, freetype
+harfbuzz                                graphite2, freetype, libass
 hdparm
 heimdal-gssapi                          exim
 help2man                                pango, vala
@@ -204,6 +204,7 @@ lcov                                    gjs
 lerc                                    libtiff
 libaio                                  lvm2, mariadb
 libarchive                              archivemount, cmake, ed
+libass
 libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
 libatasmart
@@ -269,6 +270,7 @@ libthai                                 perl-unicode-linebreak, pango
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
+libunibreak                             libass
 libunistring                            libidn2, gnutls, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput
 libusb                                  gnupg, usbutils, libpcap, cups
@@ -326,7 +328,7 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server
@@ -911,7 +913,6 @@ zsh                                     elogind
 # liba52                              gst-plugins-ugly
 # libaacplus                          ffmpeg
 # libao
-# libass                              gst-plugins-bad, ffmpeg, mpv
 # libavc1394                          gst-plugins-good
 # libavtp                             alsa-plugins, gst-plugins-bad
 # libbacktrace                        gimp
