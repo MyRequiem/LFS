@@ -664,6 +664,7 @@ l/libass.sh
 l/fdk-aac.sh
 l/libtheora.sh
 l/libcddb.sh
+l/libcdio.sh
 
 
 # l/gcr4.sh
@@ -711,7 +712,6 @@ l/libcddb.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
 # l/liba52.sh
-# l/libcdio.sh
 # l/gst-plugins-ugly.sh
 # l/libmng.sh
 # l/dconf.sh
