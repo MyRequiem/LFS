@@ -214,6 +214,7 @@ libatomic-ops                           gc, libdrm
 libbytesize
 libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils
+libcddb
 libdazzle
 libdrm                                  cairo, libva, mesa
 libdw                                   gstreamer
@@ -925,7 +926,6 @@ zsh                                     elogind
 # libcaca                             gst-plugins-good, ffmpeg
 # libcacard                           spice-gtk, qemu
 # libcap-ng                           qemu
-# libcddb                             libcdio
 # libcdio                             gst-plugins-ugly, ffmpeg, mpv
 # libcelt                             ffmpeg
 # libdc1394                           ffmpeg

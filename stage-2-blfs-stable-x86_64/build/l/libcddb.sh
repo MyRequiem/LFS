@@ -17,12 +17,22 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# по умолчанию этот пакет обращается к сайту freedb.org, который уже закрыт и
+# происходит переадресация на gnudb.org, поэтому изменим значение по умолчанию,
+# чтобы вместо него использовалось gnudb.org, а так же исправим два устаревших
+# файла тестовых данных:
+sed -e '/DEFAULT_SERVER/s/freedb.org/gnudb.gnudb.org/' \
+    -e '/DEFAULT_PORT/s/888/&0/'                       \
+    -i include/cddb/cddb_ni.h                                          || exit 1
+sed '/^Genre:/s/Trip-Hop/Electronic/' -i tests/testdata/920ef00b.txt   || exit 1
+sed '/DISCID/i# Revision: 42'         -i tests/testcache/misc/12340000 || exit 1
+
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
 
 make || exit 1
-# make check
+# make check -k
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
