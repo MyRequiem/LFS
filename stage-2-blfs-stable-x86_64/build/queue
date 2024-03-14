@@ -665,6 +665,7 @@ l/fdk-aac.sh
 l/libtheora.sh
 l/libcddb.sh
 l/libcdio.sh
+ap/vim.sh
 
 
 # l/gcr4.sh
@@ -674,7 +675,6 @@ l/libcdio.sh
 # a/fcron.sh
 # ap/at.sh
 # ap/mc.sh
-# ap/vim.sh
 # a/fcron.sh
 # ap/mc.sh
 # a/upower.sh
@@ -683,9 +683,7 @@ l/libcdio.sh
 # n/links.sh
 # n/links.sh
 # l/jasper.sh
-# ap/vim.sh
 # l/gtk4.sh
-# ap/vim.sh
 # l/gst-plugins-base.sh
 # l/libsoup.sh
 # ap/mpg123.sh
@@ -732,7 +730,6 @@ l/libcdio.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # ap/mc.sh
-# ap/vim.sh
 # n/links.sh
 # l/sdl.sh
 # l/libmpeg2.sh
@@ -748,7 +745,6 @@ l/libcdio.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
 # l/enchant.sh
-# ap/vim.sh
 # n/apache-httpd.sh
 # n/php.sh
 # d/openjdk.sh

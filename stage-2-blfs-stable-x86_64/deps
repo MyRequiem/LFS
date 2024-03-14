@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim
 Plasma5                                 polkit
 aalib
 acpid                                   xorg-server
@@ -138,7 +138,7 @@ gobject-introspection                   glib, elogind, harfbuzz, gsettings-deskt
 goffice
 gpac                                    x264
 gpgme                                   volume-key
-gpm                                     aalib
+gpm                                     aalib, vim
 graphene
 graphite-font                           graphite2
 graphite2                               harfbuzz
@@ -150,7 +150,7 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit
 gtk-engines
 gtk-vnc
@@ -307,7 +307,7 @@ lrzip
 lsb-tools
 lshw
 lsof
-lua                                     highlight, nmap, gtk-engines
+lua                                     highlight, nmap, gtk-engines, vim
 lvm2                                    parted, cryptsetup
 lxsession                               polkit
 lynx                                    pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries
@@ -553,7 +553,7 @@ potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib
+python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim
 python2-cython
 python2-libxml2                         docbook-xsl
 python2-pycairo                         python2-pygobject2, python2-pygtk
@@ -678,8 +678,8 @@ resolv-wrapper                          mit-kerberos-v5
 rhash                                   cmake
 rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
-rsync                                   llvm
-ruby                                    docbook-xsl, mariadb
+rsync                                   llvm, vim
+ruby                                    docbook-xsl, mariadb, vim
 rustc                                   mozjs, librsvg, ruby
 rxvt-unicode
 samba                                   curl
@@ -737,6 +737,7 @@ vala                                    librsvg. gtk-vnc, gtksourceview3, libsec
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora
 vdo                                     lvm2
 vifm
+vim
 vlgothic-fonts-ttf
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
@@ -1089,7 +1090,6 @@ zsh                                     elogind
 # utimer
 # v4l-utils                           gst-plugins-good, gegl, ffmpeg
 # vde2
-# vim                                 fcron
 # virglrenderer
 # virt-manager
 # virtuoso                            redland
