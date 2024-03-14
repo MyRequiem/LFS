@@ -30,6 +30,13 @@ mkdir "${PRGNAME}-${VERSION}"
 cd "${PRGNAME}-${VERSION}" || exit 1
 tar xvf "${ARCH}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 # конфигурация происходит в интерактивном режиме и требует ответы на кучу
 # вопросов, поэтому избегаем всех вопросов (-d) для генерации Makefile по
 # умолчанию, а потом приведем Makefile в соответствие требованиям LFS системы.
