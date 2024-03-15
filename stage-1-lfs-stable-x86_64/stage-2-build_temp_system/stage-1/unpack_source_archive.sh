@@ -13,7 +13,7 @@ rm -rf "${SRC_ARCH_NAME}-${VERSION}"
 tar xvf "${SOURCES}/${SRC_ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${SRC_ARCH_NAME}-${VERSION}" || exit 1
 
-chown -R root:root .
+chown -R lfs:lfs .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
     -o -perm 511 \) -exec chmod 755 {} \; -o \
