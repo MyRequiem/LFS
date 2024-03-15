@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc
 Plasma5                                 polkit
 aalib
 acpid                                   xorg-server
@@ -82,7 +82,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc
 dtrace                                  gjs, ruby
 duktape                                 polkit
 ed
@@ -124,7 +124,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
@@ -138,7 +138,7 @@ gobject-introspection                   glib, elogind, harfbuzz, gsettings-deskt
 goffice
 gpac                                    x264
 gpgme                                   volume-key
-gpm                                     aalib, vim
+gpm                                     aalib, vim, mc
 graphene
 graphite-font                           graphite2
 graphite2                               harfbuzz
@@ -268,7 +268,7 @@ libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libspectre                              cairo, goffice
 libspf2                                 exim
 libssh                                  cryptsetup
-libssh2                                 curl, rustc, nmap
+libssh2                                 curl, rustc, nmap, mc
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtheora
@@ -317,6 +317,7 @@ lzo                                     libarchive, cairo
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
 man2html                                xterm
 mariadb                                 cyrus-sasl, openldap, exim
+mc
 mdadm                                   lvm2
 mecab                                   mariadb
 mercurial                               python3-setuptools-scm, cmake
@@ -381,7 +382,7 @@ passwdqc                                cryptsetup
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils
-pcre                                    wget, git, slang, nmap, xterm
+pcre                                    wget, git, slang, nmap, xterm, mc
 pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
@@ -679,10 +680,10 @@ rhash                                   cmake
 rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
 rsync                                   llvm, vim
-ruby                                    docbook-xsl, mariadb, vim
+ruby                                    docbook-xsl, mariadb, vim, mc
 rustc                                   mozjs, librsvg, ruby
 rxvt-unicode
-samba                                   curl
+samba                                   curl, mc
 sassc                                   gtk+3
 saxon6                                  docbook-xsl
 sbc                                     pulseaudio
@@ -697,7 +698,7 @@ sharutils                               berkeley-db
 shellcheck
 silgraphite                             graphite2
 skia                                    cairo
-slang                                   aalib
+slang                                   aalib, mc
 smartmontools
 snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
@@ -730,7 +731,7 @@ trousers                                gnutls
 unbound                                 gnutls
 unixodbc                                openldap, mariadb
 unrar
-unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip
+unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
 usbutils
 util-macros                             xorgproto, xbitmaps
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier
@@ -797,7 +798,7 @@ yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
 zeromq                                  mariadb
-zip                                     docbook-xsl, llvm
+zip                                     docbook-xsl, llvm, mc
 zsh                                     elogind
 
 
@@ -990,7 +991,6 @@ zsh                                     elogind
 # luajit                              gegl
 # maemo                               alsa-plugins
 # maim
-# mc
 # megatools
 # mhash
 # microdns                            gst-plugins-bad

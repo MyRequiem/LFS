@@ -666,6 +666,7 @@ l/libtheora.sh
 l/libcddb.sh
 l/libcdio.sh
 ap/vim.sh
+ap/mc.sh
 
 
 # l/gcr4.sh
@@ -674,9 +675,7 @@ ap/vim.sh
 # l/libblockdev.sh
 # a/fcron.sh
 # ap/at.sh
-# ap/mc.sh
 # a/fcron.sh
-# ap/mc.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
@@ -729,7 +728,6 @@ ap/vim.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# ap/mc.sh
 # n/links.sh
 # l/sdl.sh
 # l/libmpeg2.sh
