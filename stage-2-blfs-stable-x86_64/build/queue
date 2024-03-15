@@ -668,6 +668,8 @@ l/libcdio.sh
 ap/vim.sh
 ap/mc.sh
 l/liba52.sh
+l/libwebp.sh
+l/libtiff.sh
 
 
 # l/gcr4.sh
@@ -705,7 +707,6 @@ l/liba52.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
 # n/links.sh
-# l/libwebp.sh
 # l/libsoup.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh

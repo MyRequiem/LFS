@@ -103,7 +103,7 @@ fltk                                    pinentry
 fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server, postgresql
 freefont
-freeglut                                libtiff
+freeglut                                libtiff, libwebp
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass
 fribidi                                 pango, libass
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
@@ -120,7 +120,7 @@ gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gt
 gdk-pixbuf-xlib                         w3m
 gelasio-font-ttf
 ghostscript                             cairo, goffice, libspectre
-giflib                                  imlib2
+giflib                                  imlib2, libwebp
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3
@@ -238,7 +238,7 @@ libid3tag                               imlib2
 libidn                                  gnutls, whois, ghostscript, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libinput                                xorg-libinput-driver
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
@@ -252,7 +252,7 @@ libnsl                                  pth, berkeley-db, clisp, opensp, python2
 libogg                                  libvorbis, flac, speex, libtheora
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp
 libproxy                                glib-networking
 libpsl                                  wget, curl
 libptytty                               rxvt-unicode
@@ -274,7 +274,7 @@ libssh2                                 curl, rustc, nmap, mc
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtheora
-libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2
+libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libunibreak                             libass
@@ -689,7 +689,7 @@ samba                                   curl, mc
 sassc                                   gtk+3
 saxon6                                  docbook-xsl
 sbc                                     pulseaudio
-sdl                                     libtheora
+sdl                                     libtheora, libwebp
 selinux                                 elogind
 sendmail                                gnupg, sudo
 septel                                  libpcap
