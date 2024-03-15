@@ -700,6 +700,7 @@ https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
 https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/vim/vim-9.0.1273.tar.xz
 http://ftp.midnight-commander.org/mc-4.8.29.tar.xz
+http://ftp.osuosl.org/pub/blfs/conglomeration/a52dec/a52dec-0.7.4.tar.gz
 
 
 ================================================================================
@@ -735,7 +736,6 @@ http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.2.0.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.18.3.tar.xz
-http://liba52.sourceforge.net/files/a52dec-0.7.4.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.18.3.tar.xz
 https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
 https://download.gnome.org/sources/dconf/0.38/dconf-0.38.0.tar.xz

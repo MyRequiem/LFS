@@ -667,6 +667,7 @@ l/libcddb.sh
 l/libcdio.sh
 ap/vim.sh
 ap/mc.sh
+l/liba52.sh
 
 
 # l/gcr4.sh
@@ -708,7 +709,6 @@ ap/mc.sh
 # l/libsoup.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
-# l/liba52.sh
 # l/gst-plugins-ugly.sh
 # l/libmng.sh
 # l/dconf.sh

@@ -70,6 +70,7 @@ dejavu-fonts-ttf                        xterm
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
 directfb                                cairo
+djbfft                                  liba52
 dmalloc                                 cyrus-sasl, lame
 dmidecode                               lm-sensors
 docbook-dsssl                           docbook-utils, postgresql
@@ -204,6 +205,7 @@ lasem                                   goffice
 lcms2                                   openjpeg, ghostscript
 lcov                                    gjs
 lerc                                    libtiff
+liba52
 libaio                                  lvm2, mariadb
 libarchive                              archivemount, cmake, ed
 libass
@@ -843,7 +845,6 @@ zsh                                     elogind
 # device-tree-compiler
 # dialog                              alsa-utils
 # distcache                           apache-httpd
-# djbfft                              liba52
 # djvulibre                           imagemagick, zathura
 # dmenu                               password-store, i3
 # dmraid                              libblockdev
@@ -917,7 +918,6 @@ zsh                                     elogind
 # ladspa                              gst-plugins-bad
 # lcms                                imagemagick
 # lensfun                             gegl
-# liba52                              gst-plugins-ugly
 # libaacplus                          ffmpeg
 # libao
 # libavc1394                          gst-plugins-good
