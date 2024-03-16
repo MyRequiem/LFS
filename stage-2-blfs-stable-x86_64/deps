@@ -336,7 +336,7 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server
@@ -794,8 +794,9 @@ xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
 xsel
 xterm
+xvid
 xxhash                                  rsync
-yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx
+yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx, xvid
 yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
@@ -1111,7 +1112,6 @@ zsh                                     elogind
 # xbanish
 # xmlrpc-epi
 # xorg-cf-files                       imake
-# xvid                                ffmpeg
 # xxkb
 # zathura
 # zbar                                gst-plugins-bad

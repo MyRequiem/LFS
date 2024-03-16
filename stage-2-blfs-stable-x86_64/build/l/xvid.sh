@@ -65,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # XviD is an MPEG-4 compliant video CODEC
 #
 # Home page: https://www.${PRGNAME}.com/
-# Download:  http://downloads.${PRGNAME}.com/downloads/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://downloads.${PRGNAME}.com/downloads/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

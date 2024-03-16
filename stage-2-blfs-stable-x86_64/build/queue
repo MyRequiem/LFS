@@ -670,6 +670,7 @@ ap/mc.sh
 l/liba52.sh
 l/libwebp.sh
 l/libtiff.sh
+l/xvid.sh
 
 
 # l/gcr4.sh
@@ -763,7 +764,6 @@ l/libtiff.sh
 # xap/gimp.sh
 # l/lcms.sh
 # l/libgxps.sh
-# l/xvid.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
