@@ -15,7 +15,7 @@ ARCH_NAME="gtksourceview"
 #              gtk-doc
 #              itstool
 #              fop или dblatex (https://sourceforge.net/projects/dblatex/)
-#              glade           (https://glade.gnome.org/)
+#              glade           (https://gitlab.gnome.org/GNOME/glade)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

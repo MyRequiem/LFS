@@ -671,6 +671,7 @@ l/liba52.sh
 l/libwebp.sh
 l/libtiff.sh
 l/xvid.sh
+l/libhandy.sh
 
 
 # l/gcr4.sh
