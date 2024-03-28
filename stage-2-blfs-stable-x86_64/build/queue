@@ -672,6 +672,7 @@ l/libwebp.sh
 l/libtiff.sh
 l/xvid.sh
 l/libhandy.sh
+l/dconf.sh
 
 
 # l/gcr4.sh
@@ -714,7 +715,6 @@ l/libhandy.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
 # l/libmng.sh
-# l/dconf.sh
 # s/ibus.sh
 # l/apr-util.sh
 # l/apr-util.sh
