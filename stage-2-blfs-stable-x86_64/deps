@@ -66,7 +66,7 @@ datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf
 dbus-glib
-dconf
+dconf                                   ibus
 dejavu-fonts-ttf                        xterm
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
@@ -93,6 +93,7 @@ electric-fence                          lame
 elinks                                  xmlto
 elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
+emojione                                ibus
 etc-issue
 exim                                    gnupg, sudo
 fdk-aac
@@ -136,7 +137,7 @@ gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus
 goffice
 gpac                                    x264
 gpgme                                   volume-key
@@ -151,12 +152,12 @@ gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gstreamer                               libcanberra
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus
 gtk-engines
 gtk-vnc
-gtk4                                    python3-pygobject3, gjs
+gtk4                                    python3-pygobject3, gjs, ibus
 gtkmm                                   pavucontrol
 gtksourceview3
 guile
@@ -171,6 +172,7 @@ hplip                                   cups
 htop
 http-parser                             nodejs
 hwloc                                   htop
+ibus
 icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql
 imagemagick                             gnupg
@@ -182,7 +184,7 @@ intel-gpu-tools                         libva
 ipaex-fonts-ttf
 iptables
 isl                                     gcc
-iso-codes                               gtk+3, libxklavier
+iso-codes                               gtk+3, libxklavier, ibus
 itstool                                 gtksourceview3
 iw
 jack                                    pulseaudio
@@ -249,7 +251,7 @@ libmpdec                                python3
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
-libnotify
+libnotify                               ibus
 libnsl                                  pth, berkeley-db, clisp, opensp, python2, python3, exim
 libogg                                  libvorbis, flac, speex, libtheora
 libpaper                                ghostscript, cups
@@ -296,7 +298,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server
 libxdmcp                                libxcb
-libxkbcommon                            gtk+3
+libxkbcommon                            gtk+3, ibus
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf
@@ -583,7 +585,7 @@ python3-cwcwidth                        python3-curtsies, python3-bpython
 python3-cython                          yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
-python3-dbus                            libsecret
+python3-dbus                            libsecret, ibus
 python3-dbusmock                        polkit
 python3-dill                            python3-pylint
 python3-docutils                        sshfs, gdk-pixbuf, librsvg, libdrm
@@ -636,7 +638,7 @@ python3-pycryptodome
 python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython
-python3-pygobject3                      dbus, python3-pyatspi2, libsecret
+python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus
 python3-pylint
 python3-pympler                         python3-attrs
 python3-pyparsing                       libinput
@@ -738,7 +740,7 @@ unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
 usbutils
 util-macros                             xorgproto, xbitmaps
-vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf
+vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora
 vdo                                     lvm2
 vifm
@@ -746,7 +748,7 @@ vim
 vlgothic-fonts-ttf
 volume-key
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries
-wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3
+wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3, ibus
 wayland-protocols                       mesa, libxkbcommon, gtk+3
 weasyprint                              vala
 webrtc-audio-processing                 pulseaudio
@@ -853,7 +855,6 @@ zsh                                     elogind
 # dnsmasq
 # dssim                               gst-plugins-bad
 # ebtables
-# emojione                            ibus
 # empress
 # enchant
 # enscript                            imagemagick
@@ -910,7 +911,6 @@ zsh                                     elogind
 # hyperwave
 # i3                                  bumblebee-status
 # ibm-db2
-# ibus                                sdl2, qt5
 # id3lib
 # imake                               xxkb
 # imwheel
