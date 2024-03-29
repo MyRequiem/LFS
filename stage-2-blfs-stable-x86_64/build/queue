@@ -674,6 +674,7 @@ l/xvid.sh
 l/libhandy.sh
 l/dconf.sh
 s/ibus.sh
+l/sdl2.sh
 
 
 # l/gcr4.sh
@@ -726,7 +727,6 @@ s/ibus.sh
 # l/gst-plugins-good.sh
 # l/alsa-plugins.sh
 # l/sdl.sh
-# l/sdl2.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
@@ -734,7 +734,6 @@ s/ibus.sh
 # n/links.sh
 # l/sdl.sh
 # l/libmpeg2.sh
-# l/sdl2.sh
 # l/libseccomp.sh
 # l/babl.sh
 # l/gegl.sh
