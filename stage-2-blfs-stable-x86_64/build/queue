@@ -677,6 +677,7 @@ l/dconf.sh
 s/ibus.sh
 l/sdl2.sh
 l/ffmpeg.sh
+l/alsa-plugins.sh
 
 
 # l/gcr4.sh
@@ -708,7 +709,6 @@ l/ffmpeg.sh
 # l/alsa-oss.sh
 # l/gst-plugins-good.sh
 # s/alsa-firmware.sh
-# l/alsa-plugins.sh
 # l/sdl.sh
 # l/gst-plugins-base.sh
 # ap/mpg123.sh
@@ -723,11 +723,9 @@ l/ffmpeg.sh
 # l/apr-util.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
-# l/alsa-plugins.sh
 # ap/alsa-utils.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
-# l/alsa-plugins.sh
 # l/sdl.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
@@ -769,7 +767,6 @@ l/ffmpeg.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
-# l/alsa-plugins.sh
 # l/gegl.sh
 # xap/imagemagick.sh
 # ap/feh.sh

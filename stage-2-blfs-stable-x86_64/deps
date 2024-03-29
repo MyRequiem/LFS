@@ -12,7 +12,7 @@ adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
 alsa-firmware                           sdl2
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins
 alsa-oss                                sdl2
 alsa-plugins                            sdl2
 alsa-tools                              sdl2
@@ -103,7 +103,7 @@ etc-issue
 exim                                    gnupg, sudo
 fcitx                                   sdl2
 fdk-aac                                 ffmpeg
-ffmpeg
+ffmpeg                                  alsa-plugins
 ffms2                                   x264
 fftw                                    libsamplerate, pulseaudio
 fig2dev                                 gnupg
@@ -197,7 +197,7 @@ isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus
 itstool                                 gtksourceview3
 iw
-jack                                    pulseaudio, sdl2
+jack                                    pulseaudio, sdl2, alsa-plugins
 jansson                                 nghttp2
 jbig-kit                                libtiff
 jbig2dec                                cairo
@@ -227,6 +227,7 @@ libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
 libatasmart
 libatomic-ops                           gc, libdrm
+libavtp                                 alsa-plugins
 libbluray                               ffmpeg
 libbytesize
 libcaca                                 ffmpeg
@@ -284,7 +285,7 @@ libpwquality                            cryptsetup
 libressl                                openssh
 librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice
 librtmp                                 curl, ffmpeg
-libsamplerate                           pulseaudio, sdl2
+libsamplerate                           pulseaudio, sdl2, alsa-plugins
 libseccomp                              gnutls
 libsecret                               pinentry, gcr3
 libsectok                               openssh
@@ -340,6 +341,7 @@ lynx                                    pciutils, smartmontools, python3-asciido
 lz4                                     lrzip, rsync, mariadb
 lzip                                    ed
 lzo                                     libarchive, cairo
+maemo                                   alsa-plugins
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking
 man2html                                xterm
 mariadb                                 cyrus-sasl, openldap, exim
@@ -582,7 +584,7 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap, exim
 potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
-pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim
 python2-cython
@@ -736,7 +738,7 @@ snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
 soxr                                    pulseaudio
 spdylay                                 nghttp2
-speex                                   libsndfile, pulseaudio, ffmpeg
+speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim
 srt                                     ffmpeg
@@ -944,7 +946,6 @@ zvbi                                    ffmpeg
 # lensfun                             gegl
 # libao
 # libavc1394                          gst-plugins-good
-# libavtp                             gst-plugins-bad
 # libbacktrace                        gimp
 # libblockdev                         udisks
 # libbsd                              netcat-openbsd
@@ -1003,7 +1004,6 @@ zvbi                                    ffmpeg
 # lsscsi
 # ltc-tools                           gst-plugins-bad
 # luajit                              gegl
-# maemo
 # maim
 # megatools
 # mhash

@@ -712,6 +712,7 @@ https://www.unicode.org/Public/zipped/15.0.0/UCD.zip
 https://www.libsdl.org/release/SDL2-2.26.3.tar.gz
 https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/ffmpeg-5.1.2-chromium_method-1.patch
+https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.7.1.tar.bz2
 
 
 ================================================================================
@@ -741,7 +742,6 @@ http://www.nch.com.au/acm/sample.aac
 https://www.alsa-project.org/files/pub/tools/alsa-tools-1.2.2.tar.bz2
 https://www.alsa-project.org/files/pub/oss-lib/alsa-oss-1.1.8.tar.bz2
 https://www.alsa-project.org/files/pub/firmware/alsa-firmware-1.2.4.tar.bz2
-https://www.alsa-project.org/files/pub/plugins/alsa-plugins-1.2.2.tar.bz2
 https://www.libsdl.org/release/SDL-1.2.15.tar.gz
 http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz

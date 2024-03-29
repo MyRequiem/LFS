@@ -13,7 +13,7 @@ PRGNAME="alsa-plugins"
 #              speex
 #              jack    (https://jackaudio.org/)
 #              libavtp (https://github.com/AVnu/libavtp/)
-#              maemo   (http://maemo.org/)
+#              maemo   (https://maemo.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
