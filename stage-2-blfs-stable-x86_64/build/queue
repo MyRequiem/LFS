@@ -678,6 +678,7 @@ s/ibus.sh
 l/sdl2.sh
 l/ffmpeg.sh
 l/alsa-plugins.sh
+ap/alsa-utils.sh
 
 
 # l/gcr4.sh
@@ -702,7 +703,6 @@ l/alsa-plugins.sh
 # l/libdvdnav.sh
 # l/soundtouch.sh
 # l/libical.sh
-# ap/alsa-utils.sh
 # ap/faac.sh
 # ap/faad2.sh
 # ap/alsa-tools.sh
@@ -723,7 +723,6 @@ l/alsa-plugins.sh
 # l/apr-util.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
-# ap/alsa-utils.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
 # l/sdl.sh
