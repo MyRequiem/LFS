@@ -34,7 +34,7 @@ GTK2="--disable-gtk2"
 GTK3="--disable-gtk3"
 GTK4="--disable-gtk4"
 WAYLAND="--disable-wayland"
-GTK_DOC="--disable-gtk-doc --disable-gtk-doc-html"
+GTK_DOC="--disable-gtk-doc"
 PYTHON_LIB="--disable-python-library"
 EMOJIONE="--disable-emoji-dict"
 
@@ -42,8 +42,7 @@ command -v gtk-demo        &>/dev/null && GTK2="--enable-gtk2"
 command -v gtk3-demo       &>/dev/null && GTK3="--enable-gtk3"
 command -v gtk4-demo       &>/dev/null && GTK4="--enable-gtk4"
 command -v wayland-scanner &>/dev/null && WAYLAND="--enable-wayland"
-# command -v gtkdoc-check    &>/dev/null && \
-#     GTK_DOC="--enable-gtk-doc --enable-gtk-doc-html"
+# command -v gtkdoc-check    &>/dev/null && GTK_DOC="--enable-gtk-doc"
 
 [ -f /usr/lib/pkgconfig/dbus-python.pc ]                && \
     [ -f /usr/lib/pkgconfig/pygobject-3.0.pc ]          && \
@@ -81,7 +80,7 @@ make || exit 1
 # make -k check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" == "x--disable-gtk-doc --disable-gtk-doc-html" ]] && \
+[[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
     rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 find "${TMP_DIR}/usr/share/man/" -type f -name "*.gz" -exec gunzip -v {} \;
