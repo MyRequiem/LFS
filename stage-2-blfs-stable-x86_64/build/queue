@@ -613,6 +613,7 @@ x/fonts/gelasio-font-ttf.sh
 x/fonts/liberation-fonts-ttf.sh
 x/fonts/noto-fonts-ttf.sh
 x/fonts/noto-cjk-fonts-ttf.sh
+x/fonts/noto-color-emoji-ttf.sh
 x/fonts/adobe-source-code-pro-font-otf.sh
 x/fonts/opendesktop-fonts-ttf.sh
 x/fonts/wqy-zenhei-font-ttf.sh
