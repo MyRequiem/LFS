@@ -680,6 +680,7 @@ l/ffmpeg.sh
 l/alsa-plugins.sh
 ap/alsa-utils.sh
 ap/alsa-tools.sh
+s/alsa-firmware.sh
 
 
 # l/gcr4.sh
@@ -708,7 +709,6 @@ ap/alsa-tools.sh
 # ap/faad2.sh
 # l/alsa-oss.sh
 # l/gst-plugins-good.sh
-# s/alsa-firmware.sh
 # l/sdl.sh
 # l/gst-plugins-base.sh
 # ap/mpg123.sh

@@ -15,7 +15,7 @@ alsa-firmware                           sdl2
 alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools
 alsa-oss                                sdl2
 alsa-plugins                            sdl2
-alsa-tools                              sdl2
+alsa-tools                              sdl2, alsa-firmware
 alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2
 apache-ant                              docbook-xsl
@@ -23,6 +23,7 @@ apache-httpd                            curl
 apr
 archivemount                            vifm
 argon2                                  cryptsetup
+as31                                    alsa-firmware
 aspell                                  aspell-dict-en, aspell-dict-ru
 aspell-dict-en
 aspell-dict-ru
@@ -853,7 +854,6 @@ zvbi                                    ffmpeg
 # apparmor
 # appstream-glib                      gimp
 # apr-util                            apache-httpd
-# as31
 # assimp                              qt5
 # autotrace                           imagemagick
 # babl                                gegl
