@@ -2,22 +2,22 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl
 Plasma5                                 polkit
-aalib
+aalib                                   sdl
 acpid                                   xorg-server
 adns                                    gnupg
 adobe-source-code-pro-font-otf
 adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
-alsa-firmware                           sdl2
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss
-alsa-oss                                sdl2
-alsa-plugins                            sdl2
-alsa-tools                              sdl2, alsa-firmware
+alsa-firmware                           sdl2, sdl
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl
+alsa-oss                                sdl2, sdl
+alsa-plugins                            sdl2, sdl
+alsa-tools                              sdl2, alsa-firmware, sdl
 alsa-ucm-conf                           alsa-lib
-alsa-utils                              sdl2
+alsa-utils                              sdl2, sdl
 apache-ant                              docbook-xsl
 apache-httpd                            curl
 apr
@@ -78,7 +78,7 @@ dejavu-fonts-ttf                        xterm
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
 dialog                                  alsa-utils
-directfb                                cairo, sdl2
+directfb                                cairo, sdl2, sdl
 djbfft                                  liba52
 dmalloc                                 cyrus-sasl, lame
 dmidecode                               lm-sensors
@@ -133,6 +133,7 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode
 gdk-pixbuf-xlib                         w3m
 gelasio-font-ttf
+ggi                                     sdl
 ghostscript                             cairo, goffice, libspectre
 giflib                                  imlib2, libwebp
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme
@@ -143,7 +144,7 @@ glib                                    sshfs, w3m, python3-dbus, dbus-glib, vol
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
-glu                                     fltk, freeglut
+glu                                     fltk, freeglut, sdl
 gnome-keyring                           libsecret
 gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
@@ -233,7 +234,7 @@ libatomic-ops                           gc, libdrm
 libavtp                                 alsa-plugins
 libbluray                               ffmpeg
 libbytesize
-libcaca                                 ffmpeg
+libcaca                                 ffmpeg, sdl
 libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils
 libcddb                                 libcdio
@@ -365,7 +366,7 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl
 ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server
@@ -577,6 +578,7 @@ perl-xml-sax-base                       perl-xml-sax
 perl-xml-simple
 perl-xml-writer
 php                                     cups
+picogui                                 sdl
 pinentry                                gnupg
 pixman                                  cairo, xorg-server
 pocketlint                              libbytesize
@@ -587,8 +589,8 @@ popt                                    rsync, cryptsetup
 postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap, exim
 potrace
-pth                                     libidn, libgcrypt, unixodbc, openldap, parted
-pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer
+pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, sdl
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim
 python2-cython
@@ -751,6 +753,7 @@ startup-notification                    rxvt-unicode
 stunnel                                 curl
 subversion                              git, cmake
 sudo
+svgalib                                 sdl
 swig                                    gpgme, volume-key
 sysprof                                 glib, pango, gjs
 sysstat                                 openssh
@@ -826,7 +829,7 @@ xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server, aalib
 xorg-intel-driver
 xorg-libinput-driver                    xorg-server
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, sdl
 xorg-nouveau-driver
 xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
@@ -908,7 +911,6 @@ zvbi                                    ffmpeg
 # gegl                                libmypaint, gimp
 # geoexpress                          imagemagick
 # gexiv2                              gegl, gimp
-# ggi
 # ghostpcl                            imagemagick
 # giblib                              scrot
 # gimp                                imagemagick
@@ -1039,7 +1041,6 @@ zvbi                                    ffmpeg
 # pcsc-lite                           libcacard
 # pgp                                 imagemagick
 # phodav                              spice-gtk
-# picogui
 # portaudio
 # pov-ray                             imagemagick
 # prelink
@@ -1073,7 +1074,6 @@ zvbi                                    ffmpeg
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
-# svgalib                             links
 # svthevcenc                          gst-plugins-bad
 # t1lib
 # taglib                              gst-plugins-good

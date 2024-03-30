@@ -684,6 +684,9 @@ s/alsa-firmware.sh
 l/alsa-oss.sh
 l/cxxopts.sh
 ap/pamixer.sh
+l/sdl.sh
+l/sdl2.sh
+l/libwebp.sh
 
 
 # l/gcr4.sh
@@ -711,7 +714,6 @@ ap/pamixer.sh
 # ap/faac.sh
 # ap/faad2.sh
 # l/gst-plugins-good.sh
-# l/sdl.sh
 # l/gst-plugins-base.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
@@ -727,13 +729,11 @@ ap/pamixer.sh
 # l/gst-plugins-good.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
-# l/sdl.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # n/links.sh
-# l/sdl.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
 # l/babl.sh
