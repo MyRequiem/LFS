@@ -12,7 +12,7 @@ adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
 alsa-firmware                           sdl2
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss
 alsa-oss                                sdl2
 alsa-plugins                            sdl2
 alsa-tools                              sdl2, alsa-firmware
