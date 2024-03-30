@@ -35,6 +35,8 @@ command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
 # используем библиотеки ncurses для расширенных символов
 #    --with-curses=ncursesw
 ./configure            \
+    --prefix=/usr      \
+    --sysconfdir=/etc  \
     --disable-alsaconf \
     "${FFTW}"          \
     "${XMLTO}"         \
