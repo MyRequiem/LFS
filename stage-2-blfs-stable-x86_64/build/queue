@@ -683,6 +683,7 @@ ap/alsa-tools.sh
 s/alsa-firmware.sh
 l/alsa-oss.sh
 l/cxxopts.sh
+ap/pamixer.sh
 
 
 # l/gcr4.sh
@@ -875,7 +876,6 @@ l/cxxopts.sh
 # l/libplacebo.sh
 # d/mujs.sh
 # ap/mpv.sh
-# ap/pamixer.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
 # l/qt6.sh [NEW] (взять с BLFS 12.1)

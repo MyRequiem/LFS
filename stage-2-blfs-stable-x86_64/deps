@@ -66,7 +66,7 @@ cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx
 curlftpfs                               vifm
-cxxopts
+cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim
 dag                                     libpcap
 datefudge                               gnutls
@@ -408,6 +408,7 @@ opus                                    libsndfile, ffmpeg
 orc                                     pulseaudio
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3
 p7zip
+pamixer
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3
 pangomm                                 gtkmm
 papi                                    gtk+3
@@ -587,7 +588,7 @@ postfix                                 gnupg, sudo
 postgresql                              cyrus-sasl, openldap, exim
 potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted
-pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim
 python2-cython
@@ -1033,7 +1034,6 @@ zvbi                                    ffmpeg
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm
 # pakchois                            neon
-# pamixer
 # pandoc                              openjdk
 # password-store                      dmenu
 # pcsc-lite                           libcacard
