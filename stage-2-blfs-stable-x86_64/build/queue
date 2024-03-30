@@ -679,6 +679,7 @@ l/sdl2.sh
 l/ffmpeg.sh
 l/alsa-plugins.sh
 ap/alsa-utils.sh
+ap/alsa-tools.sh
 
 
 # l/gcr4.sh
@@ -705,7 +706,6 @@ ap/alsa-utils.sh
 # l/libical.sh
 # ap/faac.sh
 # ap/faad2.sh
-# ap/alsa-tools.sh
 # l/alsa-oss.sh
 # l/gst-plugins-good.sh
 # s/alsa-firmware.sh
