@@ -717,6 +717,7 @@ https://www.alsa-project.org/files/pub/utils/alsa-utils-1.2.8.tar.bz2
 https://www.alsa-project.org/files/pub/tools/alsa-tools-1.2.5.tar.bz2
 https://www.alsa-project.org/files/pub/firmware/alsa-firmware-1.2.4.tar.bz2
 https://www.alsa-project.org/files/pub/oss-lib/alsa-oss-1.1.8.tar.bz2
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.2.0.tar.gz
 
 
 ================================================================================
@@ -928,7 +929,6 @@ https://code.videolan.org/videolan/libplacebo/-/archive/v4.208.0/libplacebo-v4.2
 https://mujs.com/downloads/mujs-1.2.0.tar.xz
 https://github.com/mpv-player/mpv/archive/v0.34.1/mpv-0.34.1.tar.gz
 https://waf.io/waf-2.0.20
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.0.0.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/pamixer/pamixer-1.6.tar.gz
 http://sg.danny.cz/scsi/lsscsi-0.32.tgz
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

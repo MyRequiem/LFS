@@ -55,7 +55,7 @@ cantarell-font-otf                      pango
 carlito-font-ttf
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -66,6 +66,7 @@ cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx
 curlftpfs                               vifm
+cxxopts
 cyrus-sasl                              openldap, gtk-vnc, exim
 dag                                     libpcap
 datefudge                               gnutls
@@ -873,7 +874,6 @@ zvbi                                    ffmpeg
 # cmus
 # corefonts                           imagemagick
 # cppcheck
-# cxxopts                             pamixer
 # dbmaker
 # deb2tgz
 # device-tree-compiler

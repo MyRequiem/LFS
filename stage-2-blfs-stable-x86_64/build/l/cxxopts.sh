@@ -6,7 +6,7 @@ PRGNAME="cxxopts"
 # Облегченная C++ библиотека для анализа параметров, поддерживающая стандартный
 # GNU синтаксис
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
 # Optional:    no
 
