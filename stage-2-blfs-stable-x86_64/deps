@@ -219,7 +219,7 @@ kytea                                   mariadb
 lame                                    libsndfile, ffmpeg
 lapack                                  python3-numpy
 lasem                                   goffice
-lcms2                                   openjpeg, ghostscript
+lcms2                                   openjpeg, ghostscript, libmng
 lcov                                    gjs
 lerc                                    libtiff
 liba52
@@ -265,11 +265,12 @@ libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg
 libilbc                                 ffmpeg
 libinput                                xorg-libinput-driver
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
 libmetalink                             curl
+libmng
 libmodplug                              ffmpeg
 libmpdec                                python3
 libnetfilter-conntrack                  iptables
@@ -972,7 +973,6 @@ zvbi                                    ffmpeg
 # libmd                               libbsd
 # libmfx                              gst-plugins-bad
 # libmms                              gst-plugins-bad
-# libmng                              qt5, gimp
 # libmp4v2                            cmus
 # libmpeg2                            gst-plugins-bad, gst-plugins-ugly
 # libmypaint                          mypaint-brushes, gimp

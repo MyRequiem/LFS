@@ -687,6 +687,7 @@ ap/pamixer.sh
 l/sdl.sh
 l/sdl2.sh
 l/libwebp.sh
+l/libmng.sh
 
 
 # l/gcr4.sh
@@ -722,7 +723,6 @@ l/libwebp.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
-# l/libmng.sh
 # l/apr-util.sh
 # l/apr-util.sh
 # l/apr-util.sh

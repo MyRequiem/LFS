@@ -720,6 +720,7 @@ https://www.alsa-project.org/files/pub/oss-lib/alsa-oss-1.1.8.tar.bz2
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.2.0.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/pamixer/pamixer-1.6.tar.gz
 https://www.libsdl.org/release/SDL-1.2.15.tar.gz
+https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
 
 
 ================================================================================
@@ -749,7 +750,6 @@ http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.18.3.tar.xz
 https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.18.3.tar.xz
-https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
 https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.84.tar.xz
