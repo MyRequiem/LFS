@@ -878,8 +878,7 @@ l/libmng.sh
 # ap/mpv.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
-# l/qt6.sh [NEW] (взять с BLFS 12.1)
-# xap/google-chrome.sh
+# xap/google-chrome.sh (убрать библиотеку libqt6_shim.so: rm -f opt/google/chrome/libqt6_shim.so)
 # n/telegram.sh
 
 # vim:ft=conf
