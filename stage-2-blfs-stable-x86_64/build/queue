@@ -688,6 +688,9 @@ l/sdl.sh
 l/sdl2.sh
 l/libwebp.sh
 l/libmng.sh
+n/links.sh
+x/apps/xdg-utils.sh
+ap/cups.sh
 
 
 # l/gcr4.sh
@@ -700,8 +703,6 @@ l/libmng.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
-# n/links.sh
-# n/links.sh
 # l/jasper.sh
 # l/gtk4.sh
 # l/gst-plugins-base.sh
@@ -718,7 +719,6 @@ l/libmng.sh
 # l/gst-plugins-base.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
-# n/links.sh
 # l/libsoup.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
@@ -733,7 +733,6 @@ l/libmng.sh
 # l/qt5.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
-# n/links.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
 # l/babl.sh
@@ -761,7 +760,6 @@ l/libmng.sh
 # l/exiv2.sh
 # l/gexiv2.sh
 # l/gegl.sh
-# x/apps/xdg-utils.sh
 # xap/gimp.sh
 # l/lcms.sh
 # l/libgxps.sh
