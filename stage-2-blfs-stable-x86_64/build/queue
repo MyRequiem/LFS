@@ -691,11 +691,11 @@ l/libmng.sh
 n/links.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
+a/libgudev.sh
 
 
 # l/gcr4.sh
 # a/fcron.sh
-# a/libgudev.sh
 # l/libblockdev.sh
 # a/fcron.sh
 # ap/at.sh
