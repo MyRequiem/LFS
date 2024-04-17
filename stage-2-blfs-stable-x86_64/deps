@@ -92,7 +92,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint
 dtrace                                  gjs, ruby
 duktape                                 polkit
 ed
@@ -140,7 +140,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3, libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint
 glib-networking                         glib, glibmm
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
@@ -150,9 +150,10 @@ gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint
 goffice
 gpac                                    x264
+gperftools                              libmypaint
 gpgme                                   volume-key
 gpm                                     aalib, vim, mc, links
 graphene
@@ -207,7 +208,7 @@ jbig-kit                                libtiff
 jbig2dec                                cairo
 jemalloc                                nghttp2
 jing                                    vala
-json-c                                  bind-utils, cryptsetup, fontconfig
+json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
 json-glib                               pavucontrol
 judy                                    mariadb
 kernel-firmware
@@ -274,6 +275,7 @@ libmetalink                             curl
 libmng
 libmodplug                              ffmpeg
 libmpdec                                python3
+libmypaint
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
@@ -912,7 +914,7 @@ zvbi                                    ffmpeg
 # game-music-emu                      gst-plugins-bad
 # gcolor2
 # gconf
-# gegl                                libmypaint, gimp
+# gegl                                gimp
 # geoexpress                          imagemagick
 # gexiv2                              gegl, gimp
 # ghostpcl                            imagemagick
@@ -923,7 +925,6 @@ zvbi                                    ffmpeg
 # glusterfs
 # gnuplot                             imagemagick
 # google-chrome
-# gperftools                          libmypaint, glusterfs
 # gptfdisk                            udisks
 # gsimplecal
 # gst-plugins-bad
@@ -977,7 +978,6 @@ zvbi                                    ffmpeg
 # libmms                              gst-plugins-bad
 # libmp4v2                            cmus
 # libmpeg2                            gst-plugins-bad, gst-plugins-ugly
-# libmypaint                          mypaint-brushes, gimp
 # libnfs
 # libnice                             gst-plugins-bad
 # libofa                              gst-plugins-bad

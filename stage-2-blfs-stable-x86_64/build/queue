@@ -693,6 +693,7 @@ x/apps/xdg-utils.sh
 ap/cups.sh
 a/libgudev.sh
 l/poppler.sh
+l/libmypaint.sh
 
 
 # l/gcr4.sh
@@ -755,7 +756,6 @@ l/poppler.sh
 # l/vte3.sh
 # l/gconf.sh
 # ap/zenity.sh
-# l/libmypaint.sh
 # l/mypaint-brushes.sh
 # l/exiv2.sh
 # l/gexiv2.sh
@@ -779,7 +779,6 @@ l/poppler.sh
 # d/device-tree-compiler.sh
 # l/liburcu.sh
 # l/gperftools.sh
-# l/libmypaint.sh
 # n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
