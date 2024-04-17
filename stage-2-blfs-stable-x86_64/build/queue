@@ -692,6 +692,7 @@ n/links.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
 a/libgudev.sh
+l/poppler.sh
 
 
 # l/gcr4.sh
@@ -737,7 +738,6 @@ a/libgudev.sh
 # l/libseccomp.sh
 # l/babl.sh
 # l/gegl.sh
-# l/poppler.sh
 # l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
