@@ -693,6 +693,7 @@ x/apps/xdg-utils.sh
 ap/cups.sh
 a/libgudev.sh
 l/poppler.sh
+l/gperftools.sh
 l/libmypaint.sh
 
 
@@ -778,7 +779,6 @@ l/libmypaint.sh
 # n/dnsmasq.sh
 # d/device-tree-compiler.sh
 # l/liburcu.sh
-# l/gperftools.sh
 # n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
