@@ -8,7 +8,8 @@ PRGNAME="exiv2"
 
 # Required:    cmake
 # Recommended: curl
-# Optional:    libssh (https://www.libssh.org/)
+# Optional:    libssh    (https://www.libssh.org/)
+#              --- для документации ---
 #              doxygen
 #              graphviz
 #              libxslt

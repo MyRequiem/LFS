@@ -55,7 +55,7 @@ cantarell-font-otf                      pango
 carlito-font-ttf
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -64,7 +64,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim
@@ -92,7 +92,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 dovecot                                 gnupg, sudo
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2
 dtrace                                  gjs, ruby
 duktape                                 polkit
 ed
@@ -104,6 +104,7 @@ emacs                                   libidn, pinentry, guile, desktop-file-ut
 emojione                                ibus
 etc-issue
 exim                                    gnupg, sudo
+exiv2                                   gexiv2
 fcitx                                   sdl2
 fdk-aac                                 ffmpeg
 ffmpeg                                  alsa-plugins
@@ -133,6 +134,7 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode, poppler
 gdk-pixbuf-xlib                         w3m
 gelasio-font-ttf
+gexiv2
 ggi                                     sdl
 ghostscript                             cairo, goffice, libspectre
 giflib                                  imlib2, libwebp
@@ -159,7 +161,7 @@ gpm                                     aalib, vim, mc, links
 graphene
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby
+graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby, exiv2
 grc
 groonga                                 mariadb
 gsasl                                   curl
@@ -169,7 +171,7 @@ gsm                                     ffmpeg
 gstreamer                               libcanberra
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs, ibus
@@ -302,7 +304,7 @@ libsigsegv                              clisp
 libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libspectre                              cairo, goffice
 libspf2                                 exim
-libssh                                  cryptsetup, ffmpeg
+libssh                                  cryptsetup, ffmpeg, exiv2
 libssh2                                 curl, rustc, nmap, mc
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
@@ -330,7 +332,7 @@ libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2
 libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim
@@ -785,7 +787,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbutils
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg
-vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus
+vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora
 vdo                                     lvm2
 vifm
@@ -899,7 +901,6 @@ zvbi                                    ffmpeg
 # enchant
 # enscript                            imagemagick
 # exfat                               udisks
-# exiv2                               gegl, gexiv2
 # faac                                faad2, gst-plugins-bad
 # faad2                               gst-plugins-bad, cmus
 # fcron
@@ -917,7 +918,6 @@ zvbi                                    ffmpeg
 # gconf
 # gegl                                gimp
 # geoexpress                          imagemagick
-# gexiv2                              gegl, gimp
 # ghostpcl                            imagemagick
 # giblib                              scrot
 # gimp                                imagemagick

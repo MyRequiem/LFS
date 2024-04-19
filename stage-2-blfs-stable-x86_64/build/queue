@@ -696,6 +696,8 @@ l/poppler.sh
 l/gperftools.sh
 l/libmypaint.sh
 l/mypaint-brushes.sh
+l/exiv2.sh
+l/gexiv2.sh
 
 
 # l/gcr4.sh
@@ -758,8 +760,6 @@ l/mypaint-brushes.sh
 # l/vte3.sh
 # l/gconf.sh
 # ap/zenity.sh
-# l/exiv2.sh
-# l/gexiv2.sh
 # l/gegl.sh
 # xap/gimp.sh
 # l/lcms.sh

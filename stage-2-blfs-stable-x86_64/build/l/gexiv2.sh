@@ -8,7 +8,6 @@ PRGNAME="gexiv2"
 # Required:    exiv2
 # Recommended: vala
 # Optional:    gtk-doc (для создания документации)
-#              python2 (для создания Python модуля)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,11 +16,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+GTK_DOC="false"
+INTROSPECTION="false"
+
+# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
+
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                                  \
+    --prefix=/usr                      \
+    --buildtype=release                \
+    -Dgtk_doc="${GTK_DOC}"             \
+    -Dintrospection="${INTROSPECTION}" \
     .. || exit 1
 
 ninja || exit 1
