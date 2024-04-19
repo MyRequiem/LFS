@@ -275,7 +275,7 @@ libmetalink                             curl
 libmng
 libmodplug                              ffmpeg
 libmpdec                                python3
-libmypaint
+libmypaint                              mypaint-brushes
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
@@ -368,6 +368,7 @@ mozjs                                   gjs, polkit
 mpg123                                  libsndfile
 mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
+mypaint-brushes
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl
@@ -1022,7 +1023,6 @@ zvbi                                    ffmpeg
 # mrg                                 gegl
 # mujs                                mpv
 # musepack-tools                      cmus
-# mypaint-brushes                     gimp
 # ndctl                               libblockdev
 # neon                                gst-plugins-bad
 # net-snmp
