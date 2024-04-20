@@ -33,6 +33,7 @@ audit-userspace                         elogind
 autoconf213                             archivemount
 autogen                                 gnutls
 avahi                                   cups, pulseaudio
+babl
 bash-completion                         elogind, gstreamer, dconf
 bellagio-openmax                        mesa
 berkeley-db                             cyrus-sasl, openldap, python3, ruby
@@ -152,7 +153,7 @@ gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl
 goffice
 gpac                                    x264
 gperftools                              libmypaint
@@ -222,7 +223,7 @@ kytea                                   mariadb
 lame                                    libsndfile, ffmpeg
 lapack                                  python3-numpy
 lasem                                   goffice
-lcms2                                   openjpeg, ghostscript, libmng, poppler
+lcms2                                   openjpeg, ghostscript, libmng, poppler, babl
 lcov                                    gjs
 lerc                                    libtiff
 liba52
@@ -293,7 +294,7 @@ libpsl                                  wget, curl
 libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
 libressl                                openssh
-librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links
+librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links, babl
 librtmp                                 curl, ffmpeg
 libsamplerate                           pulseaudio, sdl2, alsa-plugins, alsa-utils
 libseccomp                              gnutls
@@ -796,7 +797,7 @@ vlgothic-fonts-ttf
 vo-aaenc                                ffmpeg
 vo-amrwbenc                             ffmpeg
 volume-key
-w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils
+w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
 wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3, ibus
 wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2
 weasyprint                              vala
@@ -870,7 +871,6 @@ zvbi                                    ffmpeg
 # apr-util                            apache-httpd
 # assimp                              qt5
 # autotrace                           imagemagick
-# babl                                gegl
 # bcachefs                            libblockdev
 # birdstep
 # blender                             imagemagick

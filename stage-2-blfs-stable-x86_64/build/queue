@@ -698,6 +698,7 @@ l/libmypaint.sh
 l/mypaint-brushes.sh
 l/exiv2.sh
 l/gexiv2.sh
+l/babl.sh
 
 
 # l/gcr4.sh
@@ -741,7 +742,6 @@ l/gexiv2.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
-# l/babl.sh
 # l/gegl.sh
 # l/raptor.sh
 # l/rasqal.sh

@@ -20,13 +20,21 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 WITH_DOCS="false"
+INTROSPECTION="false"
+LCMS2="false"
+
+command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
+command -v jpgicc        &>/dev/null && LCMS2="true"
 
 mkdir _build
 cd _build || exit 1
 
-meson                          \
-    --prefix=/usr              \
-    -Dwith-docs="${WITH_DOCS}" \
+meson                               \
+    --prefix=/usr                   \
+    --buildtype=release             \
+    -Denable-gir="${INTROSPECTION}" \
+    -Dwith-lcms="${LCMS2}"          \
+    -Dwith-docs="${WITH_DOCS}"      \
     .. || exit 1
 
 ninja || exit 1
