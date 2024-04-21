@@ -699,6 +699,7 @@ l/mypaint-brushes.sh
 l/exiv2.sh
 l/gexiv2.sh
 l/babl.sh
+l/jasper.sh
 
 
 # l/gcr4.sh
@@ -710,7 +711,6 @@ l/babl.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
-# l/jasper.sh
 # l/gtk4.sh
 # l/gst-plugins-base.sh
 # l/libsoup.sh
