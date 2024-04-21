@@ -71,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # software-based reference implementation of the codec specified in the
 # JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1)
 #
-# Home page: http://www.ece.uvic.ca/~mdadams/${PRGNAME}/
+# Home page: https://www.ece.uvic.ca/~mdadams/${PRGNAME}/
 # Download:  https://github.com/${PRGNAME}-software/${PRGNAME}/archive/version-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
