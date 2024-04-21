@@ -96,7 +96,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # xpdf would have to be patched. By providing a centralized PDF library this
 # duplicated effort will be eliminated.
 #
-# Home page: http://${PRGNAME}.freedesktop.org
+# Home page: https://${PRGNAME}.freedesktop.org
 # Download:  https://${PRGNAME}.freedesktop.org/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
