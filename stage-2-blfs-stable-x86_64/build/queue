@@ -700,6 +700,7 @@ l/exiv2.sh
 l/gexiv2.sh
 l/babl.sh
 l/jasper.sh
+l/gegl.sh
 
 
 # l/gcr4.sh
@@ -742,7 +743,6 @@ l/jasper.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
-# l/gegl.sh
 # l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
@@ -760,14 +760,12 @@ l/jasper.sh
 # l/vte3.sh
 # l/gconf.sh
 # ap/zenity.sh
-# l/gegl.sh
 # xap/gimp.sh
 # l/lcms.sh
 # l/libgxps.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
-# l/gegl.sh
 # xap/imagemagick.sh
 # ap/feh.sh
 # n/transmission.sh
