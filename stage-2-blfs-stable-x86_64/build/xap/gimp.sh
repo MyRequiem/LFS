@@ -12,26 +12,26 @@ PRGNAME="gimp"
 # Required:    gegl
 #              gexiv2
 #              glib-networking
-#              gtk+3
+#              gtk+2
 #              harfbuzz
 #              libjpeg-turbo
 #              libmypaint
 #              librsvg
 #              libtiff
-#              python2-libxml2
+#              python2-libxml2 (для создания переведенных файлов справки)
 #              lcms2
 #              mypaint-brushes
 #              poppler
 #              Graphical Environments
 # Recommended: dbus-glib
 #              ghostscript
-#              gvfs
 #              iso-codes
 #              libgudev
-#              python2-pygtk
+#              python2-pygtk  (собранный с модулями gtk.so, pango.so и pangocairo.so)
 #              xdg-utils
 # Optional:    aalib
 #              alsa-lib
+#              gvfs           (для доступа к онлайн справке)
 #              libmng
 #              libunwind
 #              libwebp
@@ -42,7 +42,12 @@ PRGNAME="gimp"
 #              libbacktrace   (https://github.com/ianlancetaylor/libbacktrace)
 #              libheif        (https://github.com/strukturag/libheif/)
 #              libde265       (https://github.com/strukturag/libde265/)
-#              libwmf         (http://wvware.sourceforge.net/libwmf.html)
+#              libwmf         (https://wvware.sourceforge.net/libwmf.html)
+#              openexr        (https://www.openexr.com/)
+#              --- для создания справочной системы ---
+#              dblatex        (https://dblatex.sourceforge.net/)
+#              pngnq          (https://pngnq.sourceforge.net/)
+#              pngcrush       (https://pmt.sourceforge.io/pngcrush/)
 
 ### Конфиги:
 # /etc/gimp/2.x/*

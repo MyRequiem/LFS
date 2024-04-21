@@ -2,9 +2,9 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp
 Plasma5                                 polkit
-aalib                                   sdl
+aalib                                   sdl, gimp
 acpid                                   xorg-server
 adns                                    gnupg
 adobe-source-code-pro-font-otf
@@ -12,7 +12,7 @@ adwaita-icon-theme                      gtk+3
 afs                                     sudo
 ag
 alsa-firmware                           sdl2, sdl
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl, gimp
 alsa-oss                                sdl2, sdl
 alsa-plugins                            sdl2, sdl
 alsa-tools                              sdl2, alsa-firmware, sdl
@@ -20,6 +20,7 @@ alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, sdl
 apache-ant                              docbook-xsl
 apache-httpd                            curl
+appstream-glib                          gimp
 apr
 archivemount                            vifm
 argon2                                  cryptsetup
@@ -71,9 +72,9 @@ cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim
 dag                                     libpcap
 datefudge                               gnutls
-dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3
+dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3, gimp
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils
-dbus-glib
+dbus-glib                               gimp
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm
 desktop-file-utils                      wpa-supplicant, glib, fltk
@@ -92,7 +93,7 @@ docbook-xsl                             libxslt, glib, elogind, python3-asciidoc
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
-dovecot                                 gnupg, sudo
+dovecot                                 gnupg, sudo, gimp
 doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper
 dtrace                                  gjs, ruby
 duktape                                 polkit
@@ -104,7 +105,7 @@ elogind                                 dbus, xorg-libraries, pulseaudio, polkit
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
 etc-issue
-exim                                    gnupg, sudo
+exim                                    gnupg, sudo, gimp
 exiv2                                   gexiv2, gegl
 fcitx                                   sdl2
 fdk-aac                                 ffmpeg
@@ -134,18 +135,19 @@ gcr3                                    pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode, poppler, gegl
 gdk-pixbuf-xlib                         w3m
-gegl
+gegl                                    gimp
 gelasio-font-ttf
-gexiv2                                  gegl
+gexiv2                                  gegl, gimp
 ggi                                     sdl
-ghostscript                             cairo, goffice, libspectre
+ghostscript                             cairo, goffice, libspectre, gimp
 giflib                                  imlib2, libwebp
+gimp
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3, libhandy
 glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint
-glib-networking                         glib, glibmm
+glib-networking                         glib, glibmm, gimp
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
 glu                                     fltk, freeglut, sdl
@@ -171,9 +173,9 @@ gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
 gsl                                     gstreamer
 gsm                                     ffmpeg
 gstreamer                               libcanberra
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs, ibus
@@ -181,7 +183,8 @@ gtkmm                                   pavucontrol
 gtksourceview3
 guile
 gutenprint                              cups
-harfbuzz                                graphite2, freetype, libass
+gvfs                                    gimp
+harfbuzz                                graphite2, freetype, libass, gimp
 hdparm
 heimdal-gssapi                          exim
 help2man                                pango, vala
@@ -203,7 +206,7 @@ intel-gpu-tools                         libva
 ipaex-fonts-ttf
 iptables
 isl                                     gcc
-iso-codes                               gtk+3, libxklavier, ibus
+iso-codes                               gtk+3, libxklavier, ibus, gimp
 itstool                                 gtksourceview3
 iw
 jack                                    pulseaudio, sdl2, alsa-plugins
@@ -225,7 +228,7 @@ kytea                                   mariadb
 lame                                    libsndfile, ffmpeg
 lapack                                  python3-numpy
 lasem                                   goffice
-lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl
+lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl, gimp
 lcov                                    gjs
 lensfun                                 gegl
 lerc                                    libtiff
@@ -239,6 +242,7 @@ libasyncns                              pulseaudio
 libatasmart
 libatomic-ops                           gc, libdrm
 libavtp                                 alsa-plugins
+libbacktrace                            gimp
 libbluray                               ffmpeg
 libbytesize
 libcaca                                 ffmpeg, sdl
@@ -250,6 +254,7 @@ libcelt                                 ffmpeg
 libdazzle
 libdc1394                               ffmpeg
 libdca                                  ffmpeg
+libde265                                gimp
 libdrm                                  cairo, libva, mesa, ffmpeg
 libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
@@ -265,23 +270,24 @@ libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
-libgudev
+libgudev                                gimp
 libhandy                                dconf
+libheif                                 gimp
 libid3tag                               imlib2
 libidn                                  gnutls, whois, ghostscript, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg
 libilbc                                 ffmpeg
 libinput                                xorg-libinput-driver
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
 libmetalink                             curl
-libmng
+libmng                                  gimp
 libmodplug                              ffmpeg
 libmpdec                                python3
-libmypaint                              mypaint-brushes
+libmypaint                              mypaint-brushes, gimp
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnl                                   iw, wpa-supplicant, htop, libpcap
@@ -298,7 +304,7 @@ libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
 libraw                                  gegl
 libressl                                openssh
-librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links, babl, gegl
+librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links, babl, gegl, gimp
 librtmp                                 curl, ffmpeg
 libsamplerate                           pulseaudio, sdl2, alsa-plugins, alsa-utils
 libseccomp                              gnutls
@@ -315,13 +321,13 @@ libssh2                                 curl, rustc, nmap, mc
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtheora                               ffmpeg
-libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, links, poppler, gegl
+libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, links, poppler, gegl, gimp
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libumfpack                              gegl
 libunibreak                             libass
 libunistring                            libidn2, gnutls, guile
-libunwind                               mesa, gstreamer, xorg-server, libinput
+libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
 liburcu
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
@@ -332,7 +338,8 @@ libvorbis                               libsndfile, libcanberra, libtheora, ffmp
 libvpx                                  ffmpeg
 libvulkan                               mesa
 libwacom                                libinput
-libwebp                                 libtiff, ffmpeg, gegl
+libwebp                                 libtiff, ffmpeg, gegl, gimp
+libwmf                                  gimp
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server
@@ -380,7 +387,7 @@ mpg123                                  libsndfile
 mrg                                     gegl
 mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver
-mypaint-brushes
+mypaint-brushes                         gimp
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl
@@ -414,10 +421,10 @@ opencore-amr                            ffmpeg
 opencv                                  ffmpeg
 opendesktop-fonts-ttf
 opendmarc                               exim
-openexr                                 gegl
+openexr                                 gegl, gimp
 openjade                                docbook-dsssl, docbook-utils, postgresql
 openjdk                                 libidn
-openjpeg                                ghostscript, ffmpeg, poppler
+openjpeg                                ghostscript, ffmpeg, poppler, gimp
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim
 opensc                                  openssh
 openslp                                 openldap
@@ -600,12 +607,14 @@ php                                     cups
 picogui                                 sdl
 pinentry                                gnupg
 pixman                                  cairo, xorg-server
+pngcrush                                gimp
+pngnq                                   gimp
 pocketlint                              libbytesize
 polkit                                  elogind, xorg-server
 polkit-gnome                            polkit
-poppler                                 cairo, gegl
+poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
-postfix                                 gnupg, sudo
+postfix                                 gnupg, sudo, gimp
 postgresql                              cyrus-sasl, openldap, exim
 potrace
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl
@@ -613,10 +622,10 @@ pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2,
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim
 python2-cython
-python2-libxml2                         docbook-xsl
+python2-libxml2                         docbook-xsl, gimp
 python2-pycairo                         python2-pygobject2, python2-pygtk
 python2-pygobject2                      python2-pygtk
-python2-pygtk                           nmap
+python2-pygtk                           nmap, gimp
 python3
 python3-appdirs                         python3-platformdirs
 python3-argcomplete                     python3-pytest
@@ -749,7 +758,7 @@ schroedinger                            ffmpeg
 sdl                                     libtheora, libwebp
 sdl2                                    ffmpeg, gegl
 selinux                                 elogind
-sendmail                                gnupg, sudo
+sendmail                                gnupg, sudo, gimp
 septel                                  libpcap
 sg3-utils
 sgml-common                             docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
@@ -835,7 +844,7 @@ xcb-util-xrm
 xclip
 xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
-xdg-utils                               cups
+xdg-utils                               cups, gimp
 xerces2-java                            docbook-xsl
 xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
@@ -878,7 +887,6 @@ zvbi                                    ffmpeg
 # aom                                 gst-plugins-bad, mpv
 # apache-httpd                        libsoup
 # apparmor
-# appstream-glib                      gimp
 # apr-util                            apache-httpd
 # assimp                              qt5
 # autotrace                           imagemagick
@@ -930,7 +938,6 @@ zvbi                                    ffmpeg
 # geoexpress                          imagemagick
 # ghostpcl                            imagemagick
 # giblib                              scrot
-# gimp                                imagemagick
 # girara                              zathura
 # glm                                 slop
 # glusterfs
@@ -943,7 +950,6 @@ zvbi                                    ffmpeg
 # gst-plugins-good
 # gst-plugins-ugly
 # gtick
-# gvfs                                gimp
 # hddtemp                             bumblebee-status
 # hp2xx                               imagemagick
 # hspell                              enchant
@@ -963,19 +969,16 @@ zvbi                                    ffmpeg
 # lcms                                imagemagick
 # libao
 # libavc1394                          gst-plugins-good
-# libbacktrace                        gimp
 # libblockdev                         udisks
 # libbsd                              netcat-openbsd
 # libcacard                           spice-gtk, qemu
 # libcap-ng                           qemu
 # libdc1394_2                         gst-plugins-bad
-# libde265                            gst-plugins-bad, gimp, imagemagick
 # libdv                               gst-plugins-good
 # libdvdnav                           gst-plugins-bad, mpv
 # libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 # libgd                               nginx
 # libgxps                             imagemagick
-# libheif                             gimp, imagemagick
 # libical
 # libiodbc                            redland
 # libiscsi                            udisks
@@ -1003,7 +1006,6 @@ zvbi                                    ffmpeg
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base
-# libwmf                              gimp, imagemagick
 # libx86emu                           hwinfo
 # libyajl                             raptor, libvirt, python3-libvirt, libvirt-glib, virt-manager, i3
 # lilv                                gst-plugins-bad

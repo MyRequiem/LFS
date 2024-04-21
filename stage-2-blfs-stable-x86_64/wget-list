@@ -735,6 +735,7 @@ https://download.gimp.org/pub/babl/0.1/babl-0.1.98.tar.xz
 https://github.com/jasper-software/jasper/archive/version-4.0.0/jasper-4.0.0.tar.gz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.40.tar.xz
 https://lttng.org/files/urcu/userspace-rcu-0.14.0.tar.bz2
+https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.32.tar.bz2
 
 
 ================================================================================
@@ -783,7 +784,6 @@ https://download.gnome.org/sources/vte/0.28/vte-0.28.2.tar.xz
 https://download.gnome.org/sources/vte/0.62/vte-0.62.3.tar.xz
 https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz
 https://download.gnome.org/sources/zenity/3.32/zenity-3.32.0.tar.xz
-https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.22.tar.bz2
 https://downloads.sourceforge.net/lcms/lcms-1.19.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/lcms-1.19-cve_2013_4276-1.patch
 https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.1.tar.xz
