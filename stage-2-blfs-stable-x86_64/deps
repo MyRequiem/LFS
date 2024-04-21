@@ -322,6 +322,7 @@ libumfpack                              gegl
 libunibreak                             libass
 libunistring                            libidn2, gnutls, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput
+liburcu
 libusb                                  gnupg, usbutils, libpcap, cups
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa, libvdpau-va-gl, ffmpeg
@@ -999,7 +1000,6 @@ zvbi                                    ffmpeg
 # libsidplay                          gst-plugins-ugly
 # libsoup                             gst-plugins-good
 # libsrtp                             gst-plugins-bad
-# liburcu                             glusterfs
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libvisual                           gst-plugins-base

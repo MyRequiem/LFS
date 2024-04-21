@@ -701,6 +701,7 @@ l/gexiv2.sh
 l/babl.sh
 l/jasper.sh
 l/gegl.sh
+l/liburcu.sh
 
 
 # l/gcr4.sh
@@ -776,7 +777,6 @@ l/gegl.sh
 # n/ebtables.sh
 # n/dnsmasq.sh
 # d/device-tree-compiler.sh
-# l/liburcu.sh
 # n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh

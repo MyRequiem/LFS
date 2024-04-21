@@ -734,6 +734,7 @@ https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.0.tar.xz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.98.tar.xz
 https://github.com/jasper-software/jasper/archive/version-4.0.0/jasper-4.0.0.tar.gz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.40.tar.xz
+https://lttng.org/files/urcu/userspace-rcu-0.14.0.tar.bz2
 
 
 ================================================================================
@@ -799,7 +800,6 @@ https://taglib.github.io/releases/taglib-1.12.tar.gz
 https://nav.dl.sourceforge.net/project/ebtables/ebtables/ebtables-2-0-10-4/ebtables-v2.0.10-4.tar.gz
 https://thekelleys.org.uk/dnsmasq/dnsmasq-2.86.tar.xz
 https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-1.6.1.tar.gz
-https://lttng.org/files/urcu/userspace-rcu-latest-0.13.tar.bz2
 https://download.gluster.org/pub/gluster/glusterfs/LATEST/glusterfs-10.1.tar.gz
 https://pcsclite.apdu.fr/files/pcsc-lite-1.9.4.tar.bz2
 https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz
