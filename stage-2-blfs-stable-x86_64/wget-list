@@ -736,6 +736,7 @@ https://github.com/jasper-software/jasper/archive/version-4.0.0/jasper-4.0.0.tar
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.40.tar.xz
 https://lttng.org/files/urcu/userspace-rcu-0.14.0.tar.bz2
 https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.32.tar.bz2
+http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 
 
 ================================================================================
@@ -875,7 +876,6 @@ https://www.x.org/archive/individual/util/xorg-cf-files-1.0.7.tar.gz
 https://www.x.org/archive/individual/util/imake-1.0.8.tar.gz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 https://github.com/pwmt/girara/archive/0.3.7/girara-0.3.7.tar.gz
-http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathurarc.5
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.png

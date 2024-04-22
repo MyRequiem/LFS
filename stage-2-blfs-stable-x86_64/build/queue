@@ -703,6 +703,7 @@ l/jasper.sh
 l/gegl.sh
 l/liburcu.sh
 xap/gimp.sh
+l/djvulibre.sh
 
 
 # l/gcr4.sh
@@ -837,7 +838,6 @@ xap/gimp.sh
 # d/imake.sh
 # ap/xxkb.sh
 # l/girara.sh
-# l/djvulibre.sh
 # xap/imagemagick.sh
 # ap/zathura.sh
 # ap/bviplus.sh

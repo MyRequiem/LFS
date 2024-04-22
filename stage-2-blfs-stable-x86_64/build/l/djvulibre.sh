@@ -7,7 +7,7 @@ PRGNAME="djvulibre"
 # быстрее загружается, отображается и рендерится, выглядит лучше на экране и
 # потребляет меньше клиентских ресурсов, чем конкурирующие форматы.
 
-# Required:    no
+# Required:    libjpeg-turbo
 # Recommended: no
 # Optional:    no
 

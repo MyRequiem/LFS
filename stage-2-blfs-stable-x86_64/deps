@@ -82,6 +82,7 @@ dhcpcd
 dialog                                  alsa-utils
 directfb                                cairo, sdl2, sdla, links
 djbfft                                  liba52
+djvulibre
 dmalloc                                 cyrus-sasl, lame
 dmidecode                               lm-sensors
 docbook-dsssl                           docbook-utils, postgresql
@@ -279,7 +280,7 @@ libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg
 libilbc                                 ffmpeg
 libinput                                xorg-libinput-driver
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
@@ -910,7 +911,6 @@ zvbi                                    ffmpeg
 # deb2tgz
 # device-tree-compiler
 # distcache                           apache-httpd
-# djvulibre                           imagemagick, zathura
 # dmenu                               password-store, i3
 # dmraid                              libblockdev
 # dnsmasq
