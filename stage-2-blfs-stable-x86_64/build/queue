@@ -705,6 +705,7 @@ l/liburcu.sh
 xap/gimp.sh
 l/djvulibre.sh
 l/libgxps.sh
+l/lcms.sh
 
 
 # l/gcr4.sh
@@ -764,7 +765,6 @@ l/libgxps.sh
 # l/vte3.sh
 # l/gconf.sh
 # ap/zenity.sh
-# l/lcms.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
