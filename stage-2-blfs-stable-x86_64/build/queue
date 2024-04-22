@@ -706,6 +706,7 @@ xap/gimp.sh
 l/djvulibre.sh
 l/libgxps.sh
 l/lcms.sh
+xap/imagemagick.sh
 
 
 # l/gcr4.sh
@@ -768,7 +769,6 @@ l/lcms.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
-# xap/imagemagick.sh
 # ap/feh.sh
 # n/transmission.sh
 # l/id3lib.sh
@@ -838,7 +838,6 @@ l/lcms.sh
 # d/imake.sh
 # ap/xxkb.sh
 # l/girara.sh
-# xap/imagemagick.sh
 # ap/zathura.sh
 # ap/bviplus.sh
 # ap/cmus.sh

@@ -740,6 +740,7 @@ http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
 https://downloads.sourceforge.net/lcms/lcms-1.19.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/lcms-1.19-cve_2013_4276-1.patch
+https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 
 
 ================================================================================
@@ -791,7 +792,6 @@ https://download.gnome.org/sources/zenity/3.32/zenity-3.32.0.tar.xz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.9-src.tar.xz
 https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libmad-0.15.1b-fixes-1.patch
-https://www.imagemagick.org/download/releases/ImageMagick-7.0.11-0.tar.xz
 http://feh.finalrewind.org/feh-3.6.3.tar.bz2
 https://raw.githubusercontent.com/transmission/transmission-releases/master/transmission-3.00.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
