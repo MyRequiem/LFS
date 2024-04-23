@@ -707,6 +707,7 @@ l/djvulibre.sh
 l/libgxps.sh
 l/lcms.sh
 xap/imagemagick.sh
+ap/feh.sh
 
 
 # l/gcr4.sh
@@ -769,7 +770,6 @@ xap/imagemagick.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # l/gst-plugins-base.sh
-# ap/feh.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh

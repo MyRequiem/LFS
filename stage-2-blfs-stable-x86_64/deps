@@ -70,7 +70,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim
@@ -115,6 +115,7 @@ exim                                    gnupg, sudo, gimp
 exiv2                                   gexiv2, gegl
 fcitx                                   sdl2
 fdk-aac                                 ffmpeg
+feh
 ffmpeg                                  alsa-plugins, gegl, imagemagick
 ffms2                                   x264
 fftw                                    libsamplerate, pulseaudio, alsa-utils, imagemagick
@@ -208,8 +209,8 @@ hwloc                                   htop
 ibus                                    sdl2
 icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql
-imagemagick                             gnupg
-imlib2                                  w3m
+imagemagick                             gnupg, feh
+imlib2                                  w3m, feh
 impacket                                curl
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, imagemagick
@@ -275,7 +276,7 @@ liberation-fonts-ttf
 libev                                   nghttp2
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
 libevent                                tmux, nghttp2, mariadb, links
-libexif
+libexif                                 feh
 libffcall                               clisp
 libfpx                                  imagemagick
 libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server
@@ -293,7 +294,7 @@ libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg
 libilbc                                 ffmpeg
 libinput                                xorg-libinput-driver
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh
 libjxl                                  imagemagick
 libksba                                 gnupg
 liblinear                               nmap
@@ -312,7 +313,7 @@ libnut                                  ffmpeg
 libogg                                  libvorbis, flac, speex, libtheora
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh
 libproxy                                glib-networking
 libpsl                                  wget, curl
 libptytty                               rxvt-unicode
@@ -580,7 +581,7 @@ perl-sub-quote                          perl-specio
 perl-sub-uplevel                        perl-test-exception
 perl-super                              perl-test-mockmodule
 perl-term-table                         perl-test2-suite
-perl-test-command
+perl-test-command                       feh
 perl-test-deep                          perl-file-copy-recursive
 perl-test-differences
 perl-test-exception                     perl-perlio-utf8-strict
@@ -944,7 +945,6 @@ zvbi                                    ffmpeg
 # faad2                               gst-plugins-bad, cmus
 # fcron
 # fdf-toolkit
-# feh
 # firebird                            qt5
 # flameshot
 # fluidsynth                          gst-plugins-bad
