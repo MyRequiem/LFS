@@ -708,6 +708,7 @@ l/libgxps.sh
 l/lcms.sh
 xap/imagemagick.sh
 ap/feh.sh
+l/gst-plugins-base.sh
 
 
 # l/gcr4.sh
@@ -720,7 +721,6 @@ ap/feh.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/gtk4.sh
-# l/gst-plugins-base.sh
 # l/libsoup.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
@@ -731,7 +731,6 @@ ap/feh.sh
 # ap/faac.sh
 # ap/faad2.sh
 # l/gst-plugins-good.sh
-# l/gst-plugins-base.sh
 # ap/mpg123.sh
 # l/libmpeg2.sh
 # l/libsoup.sh
@@ -744,9 +743,7 @@ ap/feh.sh
 # l/gst-plugins-good.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
-# l/gst-plugins-base.sh
 # l/qt5.sh
-# l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
@@ -769,7 +766,6 @@ ap/feh.sh
 # ap/zenity.sh
 # d/apache-ant.sh
 # l/libmad.sh
-# l/gst-plugins-base.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
@@ -785,7 +781,6 @@ ap/feh.sh
 # a/udisks.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
-# l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh

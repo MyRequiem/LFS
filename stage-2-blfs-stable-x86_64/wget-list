@@ -742,6 +742,7 @@ https://downloads.sourceforge.net/lcms/lcms-1.19.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/lcms-1.19-cve_2013_4276-1.patch
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://feh.finalrewind.org/feh-3.9.1.tar.bz2
+https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.22.0.tar.xz
 
 
 ================================================================================
@@ -752,7 +753,6 @@ https://github.com/storaged-project/libblockdev/releases/download/2.25-1/libbloc
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.2/udisks-2.9.2.tar.bz2
 http://software.calhariz.com/at/at_3.2.1.orig.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
-https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.18.3.tar.xz
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
 https://downloads.sourceforge.net/mpg123/mpg123-1.26.4.tar.bz2
