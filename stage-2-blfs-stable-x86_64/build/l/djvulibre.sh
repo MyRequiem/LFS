@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # DjVu was originally developed at AT&T Labs-Research by Leon Bottou, Yann
 # LeCun, Patrick Haffner, and many others.
 #
-# Home page: http://djvu.sourceforge.net/
+# Home page: https://djvu.sourceforge.net/
 # Download:  http://downloads.sourceforge.net/djvu/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
