@@ -45,7 +45,7 @@ command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
 command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
 command -v curl         &>/dev/null && CURL="--system-curl"
 command -v bsdcat       &>/dev/null && LIBARCHIVE="--system-libarchive"
-command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
+# command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
 
 # заставляет CMake связываться с Zlib, Bzip2, cURL, Expat и libarchive которые
 # уже установлены в системе

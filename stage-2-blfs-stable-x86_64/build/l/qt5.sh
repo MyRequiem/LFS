@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="qt5"
-ARCH_NAME="qt-everywhere-src"
+ARCH_NAME="qt-everywhere-opensource-src"
 
 ### Qt (a multi-platform C++ graphical user interface toolkit)
 # Кроссплатформенный C++ фреймворк, широко использующийся для разработки
@@ -14,6 +14,7 @@ ARCH_NAME="qt-everywhere-src"
 # Recommended: alsa-lib
 #              make-ca
 #              cups
+#              double-conversion
 #              glib
 #              gst-plugins-base     (qtmultimedia backend)
 #              harfbuzz
@@ -26,7 +27,6 @@ ARCH_NAME="qt-everywhere-src"
 #              libwebp
 #              libxkbcommon
 #              mesa
-#              mit-kerberos-v5
 #              mtdev
 #              pcre2
 #              sqlite
@@ -41,14 +41,13 @@ ARCH_NAME="qt-everywhere-src"
 #              mariadb или mysql    (https://www.mysql.com/)
 #              pciutils             (требуется для сборки qtwebengine)
 #              postgresql
-#              python2              (требуется для сборки qtwebengine)
 #              pulseaudio
 #              sdl2
 #              unixodbc
 #              assimp               (https://www.assimp.org/)
-#              flite                (http://www.festvox.org/flite/)
-#              firebird             (http://www.firebirdsql.org/)
-#              freetds              (http://www.freetds.org/)
+#              flite                (https://github.com/festvox/flite)
+#              firebird             (https://www.firebirdsql.org/)
+#              freetds              (https://www.freetds.org/)
 #              libproxy             (https://libproxy.github.io/libproxy/)
 #              openal               (https://openal.org/)
 #              speech-dispatcher    (https://freebsoft.org/speechd/)
@@ -73,41 +72,43 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 # NOTE:
 # Qt5 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
 # устанавливать в /opt/qt5-${VERSION}
-export QT5PREFIX=/opt/${PRGNAME}-${VERSION}
+export QT5PREFIX="/opt/${PRGNAME}"
 
 PIXMAPS="/usr/share/pixmaps"
 APPLICATIONS="/usr/share/applications"
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d},usr/bin}
-mkdir -pv "${TMP_DIR}"{"${QT5PREFIX}","${PIXMAPS}","${APPLICATIONS}"}
+mkdir -pv "${TMP_DIR}"{"${QT5PREFIX}-${VERSION}","${PIXMAPS}","${APPLICATIONS}"}
 
 # создаем ссылку в /opt
 #    qt5 -> qt5-${VERSION}
 ln -sv "${PRGNAME}-${VERSION}" "${TMP_DIR}${QT5PREFIX}/../${PRGNAME}"
 
-./configure                                   \
-    -prefix "${QT5PREFIX}"                    \
-    -release                                  \
-    -sysconfdir "/etc/xdg"                    \
-    -confirm-license                          \
-    -opensource                               \
-    -dbus-linked                              \
-    -openssl-linked                           \
-    -system-harfbuzz                          \
-    -system-libpng                            \
-    -system-libjpeg                           \
-    -system-zlib                              \
-    -system-sqlite                            \
-    -accessibility                            \
-    -glib                                     \
-    -xcb                                      \
-    -qpa xcb                                  \
-    -icu                                      \
-    -no-separate-debug-info                   \
-    -reduce-relocations                       \
-    -nomake examples                          \
-    -strip                                    \
-    -no-rpath                                 \
-    -skip qtwebengine || exit 1
+# исправления, предложенные KDE
+patch -Np1 --verbose -i ${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch || exit 1
+
+# предполагается, что патч будет использоваться в git репозитории, поэтому
+# создадим в каталоге qmake каталог .git, в котором запускается скрипт
+# настройки
+mkdir -pv qtbase/.git
+
+./configure                \
+    -prefix "${QT5PREFIX}" \
+    -release               \
+    -sysconfdir "/etc/xdg" \
+    -confirm-license       \
+    -opensource            \
+    -dbus-linked           \
+    -openssl-linked        \
+    -system-harfbuzz       \
+    -system-sqlite         \
+    -nomake examples       \
+    -nomake tests          \
+    -no-rpath              \
+    -syslog                \
+    -skip qtwebengine      \
+    -system-libpng         \
+    -system-libjpeg        \
+    -system-zlib || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -200,11 +201,17 @@ for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
         "${TMP_DIR}/usr/bin/${FILE}-${PRGNAME}"
 done
 
+# QT5DIR также должен быть доступен пользователю root
+cat << EOF > "${TMP_DIR}/etc/sudoers.d/qt"
+Defaults env_keep += QT5DIR
+EOF
+chmod 440 "${TMP_DIR}/etc/sudoers.d/qt"
+
 QT5_SH="/etc/profile.d/qt5.sh"
 cat << EOF > "${TMP_DIR}${QT5_SH}"
 # Begin ${QT5_SH}
 
-QT5DIR=/opt/qt5
+QT5DIR=${QT5PREFIX}
 
 PATH="\${PATH}:\${QT5DIR}/bin"
 PKG_CONFIG_PATH="\${PKG_CONFIG_PATH}:\${QT5DIR}/lib/pkgconfig"
@@ -214,10 +221,6 @@ export QT5DIR PATH PKG_CONFIG_PATH
 # End ${QT5_SH}
 EOF
 chmod 755 "${TMP_DIR}${QT5_SH}"
-
-cat << EOF > "${TMP_DIR}/etc/sudoers.d/qt"
-Defaults env_keep += QT5DIR
-EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

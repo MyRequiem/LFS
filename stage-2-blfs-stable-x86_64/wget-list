@@ -743,6 +743,8 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/lcms-1.19-cve_2013_4276-1.pat
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://feh.finalrewind.org/feh-3.9.1.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.22.0.tar.xz
+https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch
 
 
 ================================================================================
@@ -768,7 +770,6 @@ http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://notroj.github.io/neon/neon-0.31.2.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.18.3.tar.xz
 https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.18.3.tar.xz
-https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 http://download.librdf.org/source/raptor2-2.0.15.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/raptor-2.0.15-security_fixes-1.patch

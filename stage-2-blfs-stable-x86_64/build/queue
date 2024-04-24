@@ -709,6 +709,10 @@ l/lcms.sh
 xap/imagemagick.sh
 ap/feh.sh
 l/gst-plugins-base.sh
+l/qt5.sh
+n/pinentry.sh
+n/gpgme.sh
+l/cairo.sh
 
 
 # l/gcr4.sh
@@ -743,7 +747,6 @@ l/gst-plugins-base.sh
 # l/gst-plugins-good.sh
 # ap/mpg123.sh
 # l/gst-plugins-good.sh
-# l/qt5.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
