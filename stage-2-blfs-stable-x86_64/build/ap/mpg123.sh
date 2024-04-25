@@ -9,9 +9,9 @@ PRGNAME="mpg123"
 # Recommended: alsa-lib
 # Optional:    pulseaudio
 #              sdl
-#              jack      (https://jackaudio.org/)
-#              openal    (https://openal.org/)
-#              portaudio (http://www.portaudio.com/)
+#              jack         (https://jackaudio.org/)
+#              openal       (https://openal.org/)
+#              portaudio    (https://www.portaudio.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -745,6 +745,7 @@ https://feh.finalrewind.org/feh-3.9.1.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.22.0.tar.xz
 https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch
+https://downloads.sourceforge.net/mpg123/mpg123-1.31.2.tar.bz2
 
 
 ================================================================================
@@ -757,7 +758,6 @@ http://software.calhariz.com/at/at_3.2.1.orig.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 https://download.gnome.org/sources/libsoup/2.72/libsoup-2.72.0.tar.xz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libsoup-2.72.0-testsuite_fix-1.patch
-https://downloads.sourceforge.net/mpg123/mpg123-1.26.4.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.3.tar.xz
 https://get.videolan.org/libdvdread/6.1.1/libdvdread-6.1.1.tar.bz2
 https://get.videolan.org/libdvdnav/6.1.0/libdvdnav-6.1.0.tar.bz2

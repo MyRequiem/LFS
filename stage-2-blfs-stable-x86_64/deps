@@ -13,7 +13,7 @@ afs                                     sudo
 ag
 aka-mrsid-utilities                     imagemagick
 alsa-firmware                           sdl2, sdl
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl, gimp, gst-plugins-base, qt5
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl, gimp, gst-plugins-base, qt5, mpg123
 alsa-oss                                sdl2, sdl
 alsa-plugins                            sdl2, sdl
 alsa-tools                              sdl2, alsa-firmware, sdl
@@ -227,7 +227,7 @@ isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus, gimp, gst-plugins-base
 itstool                                 gtksourceview3
 iw
-jack                                    pulseaudio, sdl2, alsa-plugins
+jack                                    pulseaudio, sdl2, alsa-plugins, mpg123
 jansson                                 nghttp2
 jasper                                  gegl, imagemagick, qt5
 jbig-kit                                libtiff, imagemagick
@@ -439,7 +439,7 @@ numactl                                 x265
 ocaml                                   llvm
 oniguruma                               slang
 open-mpi                                boost
-openal                                  ffmpeg, qt5
+openal                                  ffmpeg, qt5, mpg123
 openblas                                python3-numpy
 opencl                                  gegl
 opencore-amr                            ffmpeg
@@ -640,13 +640,14 @@ polkit                                  elogind, xorg-server
 polkit-gnome                            polkit
 poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
+portaudio                               mpg123
 postfix                                 gnupg, sudo, gimp
 postgresql                              cyrus-sasl, openldap, exim, qt5
 potrace                                 imagemagick
 pov-ray                                 imagemagick
 profiles                                imagemagick
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl
-pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, sdl, qt5
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, sdl, qt5, mpg123
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim, lcms
 python2-cython
@@ -786,7 +787,7 @@ sassc                                   gtk+3
 saxon6                                  docbook-xsl
 sbc                                     pulseaudio
 schroedinger                            ffmpeg
-sdl                                     libtheora, libwebp, gst-plugins-base
+sdl                                     libtheora, libwebp, gst-plugins-base, mpg123
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
 sendmail                                gnupg, sudo, gimp
@@ -1058,7 +1059,6 @@ zvbi                                    ffmpeg
 # password-store                      dmenu
 # pcsc-lite                           libcacard
 # phodav                              spice-gtk
-# portaudio
 # prelink
 # pspg
 # pwgen

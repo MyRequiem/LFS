@@ -713,6 +713,8 @@ l/qt5.sh
 n/pinentry.sh
 n/gpgme.sh
 l/cairo.sh
+ap/mpg123.sh
+l/libsndfile.sh
 
 
 # l/gcr4.sh
@@ -726,7 +728,6 @@ l/cairo.sh
 # l/apr-util.sh
 # l/gtk4.sh
 # l/libsoup.sh
-# ap/mpg123.sh
 # l/gst-plugins-good.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
@@ -735,7 +736,6 @@ l/cairo.sh
 # ap/faac.sh
 # ap/faad2.sh
 # l/gst-plugins-good.sh
-# ap/mpg123.sh
 # l/libmpeg2.sh
 # l/libsoup.sh
 # l/neon.sh
@@ -745,7 +745,6 @@ l/cairo.sh
 # l/apr-util.sh
 # l/apr-util.sh
 # l/gst-plugins-good.sh
-# ap/mpg123.sh
 # l/gst-plugins-good.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
