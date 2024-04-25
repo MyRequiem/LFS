@@ -66,7 +66,26 @@ if [ -n "${INSTALLED}" ]; then
     removepkg --no-color "${INSTALLED}"
 fi
 
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "qt-everywhere-src-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 
 # NOTE:
@@ -81,10 +100,11 @@ mkdir -pv "${TMP_DIR}"{"${QT5PREFIX}-${VERSION}","${PIXMAPS}","${APPLICATIONS}"}
 
 # создаем ссылку в /opt
 #    qt5 -> qt5-${VERSION}
-ln -sv "${PRGNAME}-${VERSION}" "${TMP_DIR}${QT5PREFIX}/../${PRGNAME}"
+ln -sv "${PRGNAME}-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../${PRGNAME}"
 
 # исправления, предложенные KDE
-patch -Np1 --verbose -i ${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch || exit 1
+patch -Np1 --verbose -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch" || exit 1
 
 # предполагается, что патч будет использоваться в git репозитории, поэтому
 # создадим в каталоге qmake каталог .git, в котором запускается скрипт
@@ -239,7 +259,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # developing non-GUI programs such as command-line tools and consoles for
 # servers. One of the major users of Qt is KDE Frameworks 5 (KF5).
 #
-# Home page: http://qt-project.org/
+# Home page: https://qt-project.org/
 # Download:  https://download.qt.io/archive/qt/${MAJ_VERSION}/${VERSION}/single/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
