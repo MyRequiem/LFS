@@ -280,7 +280,7 @@ libdrm                                  cairo, libva, mesa, ffmpeg
 libdv                                   gst-plugins-good
 libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
-libepoxy                                gtk+3, xorg-server
+libepoxy                                gtk+3, xorg-server, wpebackend-fdo
 liberation-fonts-ttf
 libev                                   nghttp2
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
@@ -371,11 +371,12 @@ libvulkan                               mesa
 libwacom                                libinput
 libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, qt5
 libwmf                                  gimp, imagemagick
+libwpe                                  wpebackend-fdo
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server
 libxdmcp                                libxcb
-libxkbcommon                            gtk+3, ibus, sdl2, qt5
+libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps
@@ -407,7 +408,7 @@ mc
 mdadm                                   lvm2
 mecab                                   mariadb
 mercurial                               python3-setuptools-scm, cmake
-mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5
+mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5, libwpe
 mesa-demos                              mesa
 messagepack                             mariadb
 minisql                                 unixodbc
@@ -697,7 +698,7 @@ python3-gi-docgen                       pango, gdk-pixbuf, librsvg, libsecret, g
 python3-greenlet                        python3-bpython
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
-python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good
+python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, libwpe
 python3-httpbin                         python3-requests
 python3-hypothesis                      python3-attrs, python3-pytest, python3-numpy, python2-pycairo, python3-pycairo
 python3-idna                            python3-requests
@@ -869,7 +870,7 @@ vulkan                                  qt5
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
 wavpack                                 gst-plugins-good
 wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3, ibus, qt5, gst-plugins-good
-wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2, gst-plugins-base
+wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2, gst-plugins-base, wpebackend-fdo
 weasyprint                              vala
 webrtc-audio-processing                 pulseaudio
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak, imagemagick
@@ -878,6 +879,7 @@ whois
 wiredtiger                              openldap
 wireless-tools
 wpa-supplicant
+wpebackend-fdo
 wqy-zenhei-font-ttf
 wxwidgets                               p7zip
 x264                                    ffmpeg
@@ -1115,7 +1117,6 @@ zvbi                                    ffmpeg
 # wgetpaste
 # wildmidi                            gst-plugins-bad
 # wpe-webkit                          gst-plugins-bad
-# wpebackend-fdo                      gst-plugins-bad
 # xbanish
 # xmlrpc-epi
 # xorg-cf-files                       imake

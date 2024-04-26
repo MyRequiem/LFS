@@ -720,6 +720,8 @@ l/libsoup.sh
 l/libsoup3.sh
 l/gst-plugins-good.sh
 l/neon.sh
+l/libwpe.sh
+l/wpebackend-fdo.sh
 
 
 # l/gcr4.sh
