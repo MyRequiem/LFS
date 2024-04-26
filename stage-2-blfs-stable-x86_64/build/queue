@@ -718,6 +718,7 @@ l/libsndfile.sh
 l/taglib.sh
 l/libsoup.sh
 l/libsoup3.sh
+l/gst-plugins-good.sh
 
 
 # l/gcr4.sh
@@ -730,14 +731,12 @@ l/libsoup3.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/gtk4.sh
-# l/gst-plugins-good.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
 # l/soundtouch.sh
 # l/libical.sh
 # ap/faac.sh
 # ap/faad2.sh
-# l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
@@ -745,9 +744,6 @@ l/libsoup3.sh
 # l/apr-util.sh
 # l/apr-util.sh
 # l/apr-util.sh
-# l/gst-plugins-good.sh
-# l/gst-plugins-good.sh
-# l/gst-plugins-good.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh
 # l/raptor.sh
@@ -772,7 +768,6 @@ l/libsoup3.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
-# l/gst-plugins-good.sh
 # n/ebtables.sh
 # n/dnsmasq.sh
 # d/device-tree-compiler.sh
@@ -783,7 +778,6 @@ l/libsoup3.sh
 # a/udisks.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
-# l/gst-plugins-good.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
 # n/spice.sh
