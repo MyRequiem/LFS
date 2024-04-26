@@ -716,6 +716,7 @@ l/cairo.sh
 ap/mpg123.sh
 l/libsndfile.sh
 l/taglib.sh
+l/libsoup.sh
 
 
 # l/gcr4.sh
@@ -728,7 +729,6 @@ l/taglib.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/gtk4.sh
-# l/libsoup.sh
 # l/gst-plugins-good.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
@@ -738,7 +738,6 @@ l/taglib.sh
 # ap/faad2.sh
 # l/gst-plugins-good.sh
 # l/libmpeg2.sh
-# l/libsoup.sh
 # l/neon.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
