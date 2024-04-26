@@ -62,7 +62,7 @@ carlito-font-ttf
 cdparanoia-III                          gst-plugins-base
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -820,6 +820,7 @@ swig                                    gpgme, volume-key, lcms
 sysprof                                 glib, pango, gjs
 sysstat                                 openssh
 systemtap                               gjs
+taglib
 tdb                                     pulseaudio, libcanberra, exim
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, jasper, imagemagick
 thin-provisioning-tools                 lvm2
@@ -1087,7 +1088,6 @@ zvbi                                    ffmpeg
 # spice-protocol                      spice, spice-gtk, virt-manager
 # svthevcenc                          gst-plugins-bad
 # t1lib
-# taglib                              gst-plugins-good
 # talloc
 # tidy-html5
 # tokudb

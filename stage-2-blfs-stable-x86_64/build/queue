@@ -715,6 +715,7 @@ n/gpgme.sh
 l/cairo.sh
 ap/mpg123.sh
 l/libsndfile.sh
+l/taglib.sh
 
 
 # l/gcr4.sh
@@ -771,7 +772,6 @@ l/libsndfile.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
-# l/taglib.sh
 # l/gst-plugins-good.sh
 # n/ebtables.sh
 # n/dnsmasq.sh
