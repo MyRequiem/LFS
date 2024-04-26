@@ -20,7 +20,7 @@ alsa-tools                              sdl2, alsa-firmware, sdl
 alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, sdl
 apache-ant                              docbook-xsl
-apache-httpd                            curl, libsoup
+apache-httpd                            curl, libsoup, libsoup3
 appstream-glib                          gimp
 apr
 archivemount                            vifm
@@ -50,7 +50,7 @@ bluez                                   libpcap, python2, python3, pulseaudio, q
 bonjour                                 postgresql
 boost                                   highlight, nghttp2, libsigc++2, swig, cairomm, mariadb, poppler
 bpf-utils                               iptables
-brotli                                  gnutls, curl, freetype, links, libsoup
+brotli                                  gnutls, curl, freetype, links, libsoup, libsoup3
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
 cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines, gjs, poppler, gegl
@@ -72,7 +72,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim
@@ -162,7 +162,7 @@ gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3, libhandy
 glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5
-glib-networking                         glib, glibmm, gimp, libsoup
+glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibmm                                  pangomm, atkmm
 glslang                                 mesa
 glu                                     fltk, freeglut, sdl
@@ -172,7 +172,7 @@ gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3, imagemagick
 gnuplot                                 imagemagick
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup, libsoup3
 goffice
 gpac                                    x264
 gperftools                              libmypaint
@@ -321,7 +321,7 @@ libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5
 libproxy                                glib-networking, qt5
-libpsl                                  wget, curl, libsoup
+libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
 libraqm                                 imagemagick
@@ -337,6 +337,7 @@ libsigc++2                              cairomm, glibmm, pavucontrol
 libsigsegv                              clisp
 libsndfile                              lame, libsamplerate, pulseaudio, sbc
 libsoup
+libsoup3
 libspectre                              cairo, goffice
 libspf2                                 exim
 libspiro                                gegl
@@ -371,7 +372,7 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps
 libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
@@ -405,7 +406,7 @@ mesa                                    cairo, libvdpau, libva, libepoxy, glu, f
 mesa-demos                              mesa
 messagepack                             mariadb
 minisql                                 unixodbc
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3
 mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs                                   gjs, polkit
@@ -421,7 +422,7 @@ ncompress                               xorg-libraries
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server
 nftables                                iptables
-nghttp2                                 curl, cmake, bind-utils, nodejs
+nghttp2                                 curl, cmake, bind-utils, nodejs, libsoup3
 ngtcp2                                  curl
 nickle                                  xorg-applications
 nmap                                    lsof
@@ -630,7 +631,7 @@ perl-xml-sax-base                       perl-xml-sax
 perl-xml-simple
 perl-xml-writer
 pgp                                     imagemagick
-php                                     cups, libsoup
+php                                     cups, libsoup, libsoup3
 picogui                                 sdl
 pinentry                                gnupg
 pixman                                  cairo, xorg-server
@@ -685,7 +686,7 @@ python3-flake8
 python3-flask                           python3-requests
 python3-flit-core                       python3-packaging, python3-typing-extensions, python3-installer, python3-pyproject-hooks, python3-build, python3-idna, python3-pyparsing, python3-tomli
 python3-fonttools                       graphite2, harfbuzz
-python3-gi-docgen                       pango, gdk-pixbuf, librsvg, libsecret, gcr3
+python3-gi-docgen                       pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3
 python3-greenlet                        python3-bpython
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
@@ -782,7 +783,7 @@ rsync                                   llvm, vim
 ruby                                    docbook-xsl, mariadb, vim, mc, gegl
 rustc                                   mozjs, librsvg, ruby
 rxvt-unicode
-samba                                   curl, mc, ffmpeg, libsoup
+samba                                   curl, mc, ffmpeg, libsoup, libsoup3
 sane                                    imagemagick
 sassc                                   gtk+3
 saxon6                                  docbook-xsl
@@ -809,7 +810,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3
 srt                                     ffmpeg
 sshfs                                   vifm
 startup-notification                    rxvt-unicode
@@ -818,7 +819,7 @@ subversion                              git, cmake
 sudo
 svgalib                                 sdl, links
 swig                                    gpgme, volume-key, lcms
-sysprof                                 glib, pango, gjs, libsoup
+sysprof                                 glib, pango, gjs, libsoup, libsoup3
 sysstat                                 openssh
 systemtap                               gjs
 taglib
@@ -848,7 +849,7 @@ usbutils
 utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg, gegl
-vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup
+vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora, gst-plugins-base
 vdo                                     lvm2
 vifm

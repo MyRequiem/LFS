@@ -717,6 +717,7 @@ ap/mpg123.sh
 l/libsndfile.sh
 l/taglib.sh
 l/libsoup.sh
+l/libsoup3.sh
 
 
 # l/gcr4.sh
