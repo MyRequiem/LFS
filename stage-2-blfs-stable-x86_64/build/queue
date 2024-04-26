@@ -719,6 +719,7 @@ l/taglib.sh
 l/libsoup.sh
 l/libsoup3.sh
 l/gst-plugins-good.sh
+l/neon.sh
 
 
 # l/gcr4.sh
@@ -738,11 +739,8 @@ l/gst-plugins-good.sh
 # ap/faac.sh
 # ap/faad2.sh
 # l/libmpeg2.sh
-# l/neon.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
-# l/apr-util.sh
-# l/apr-util.sh
 # l/apr-util.sh
 # l/libmpeg2.sh
 # l/libseccomp.sh

@@ -171,7 +171,7 @@ gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3, imagemagick
 gnuplot                                 imagemagick
-gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg
+gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg, neon
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup, libsoup3
 goffice
 gpac                                    x264
@@ -323,7 +323,7 @@ libogg                                  libvorbis, flac, speex, libtheora, gst-p
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5
-libproxy                                glib-networking, qt5
+libproxy                                glib-networking, qt5, neon
 libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
@@ -377,7 +377,7 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps
 libyaml                                 python3-pyyaml, ruby
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
@@ -411,7 +411,7 @@ mesa                                    cairo, libvdpau, libva, libepoxy, glu, f
 mesa-demos                              mesa
 messagepack                             mariadb
 minisql                                 unixodbc
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3, neon
 mm-common                               libsigc++2, glibmm
 mono                                    libidn
 mozjs                                   gjs, polkit
@@ -424,6 +424,7 @@ myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim, qt5
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good
 ncompress                               xorg-libraries
+neon
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server
 nftables                                iptables
@@ -439,7 +440,7 @@ noto-fonts-ttf
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
-nss                                     p11-kit, make-ca, volume-key, poppler
+nss                                     p11-kit, make-ca, volume-key, poppler, neon
 ntfs-3g
 ntp                                     dhcpcd
 numactl                                 x265
@@ -467,6 +468,7 @@ opus                                    libsndfile, ffmpeg, gst-plugins-base
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3
 p7zip                                   imagemagick
+pakchois                                neon
 pamixer
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3, gegl, imagemagick, gst-plugins-base
 pangomm                                 gtkmm
@@ -898,7 +900,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2
 xinit
 xkeyboard-config                        libxkbcommon, xorg-server
-xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils
+xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon
 xorg-amdgpu-driver
 xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xterm, xdg-utils
 xorg-ati-driver
@@ -1044,7 +1046,6 @@ zvbi                                    ffmpeg
 # mujs                                mpv
 # musepack-tools                      cmus
 # ndctl                               libblockdev
-# neon                                gst-plugins-bad
 # net-snmp
 # netcat-openbsd
 # nginx
@@ -1056,7 +1057,6 @@ zvbi                                    ffmpeg
 # osinfo-db                           libosinfo, virt-manager
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm
-# pakchois                            neon
 # pandoc                              openjdk
 # password-store                      dmenu
 # pcsc-lite                           libcacard

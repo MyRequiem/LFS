@@ -11,8 +11,10 @@ PRGNAME="neon"
 # Optional:    gnutls
 #              libxml2
 #              mit-kerberos-v5
-#              libproxy (https://github.com/libproxy/libproxy)
-#              pakchois (http://www.manyfish.co.uk/pakchois/)
+#              nss              (для некоторых тестов)
+#              xmlto            (для документации)
+#              libproxy         (https://github.com/libproxy/libproxy)
+#              pakchois         (http://www.manyfish.co.uk/pakchois/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
