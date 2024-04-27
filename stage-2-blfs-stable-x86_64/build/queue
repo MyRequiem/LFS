@@ -722,6 +722,8 @@ l/gst-plugins-good.sh
 l/neon.sh
 l/libwpe.sh
 l/wpebackend-fdo.sh
+ap/faad2.sh
+ap/faac.sh
 
 
 # l/gcr4.sh
@@ -738,8 +740,6 @@ l/wpebackend-fdo.sh
 # l/libdvdnav.sh
 # l/soundtouch.sh
 # l/libical.sh
-# ap/faac.sh
-# ap/faad2.sh
 # l/libmpeg2.sh
 # l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
