@@ -280,6 +280,8 @@ libdca                                  ffmpeg
 libde265                                gimp, imagemagick
 libdrm                                  cairo, libva, mesa, ffmpeg
 libdv                                   gst-plugins-good
+libdvdnav
+libdvdread                              libdvdnav
 libdw                                   gstreamer
 libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
 libepoxy                                gtk+3, xorg-server, wpebackend-fdo
@@ -1004,8 +1006,6 @@ zvbi                                    ffmpeg
 # libcacard                           spice-gtk, qemu
 # libcap-ng                           qemu
 # libdc1394_2                         gst-plugins-bad
-# libdvdnav                           gst-plugins-bad, mpv
-# libdvdread                          libdvdnav, gst-plugins-bad, gst-plugins-ugly
 # libgd                               nginx
 # libical
 # libiodbc                            redland
