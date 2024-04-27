@@ -815,6 +815,7 @@ slang                                   aalib, mc
 smartmontools
 snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
+soundtouch
 soxr                                    pulseaudio
 spdylay                                 nghttp2
 speech-dispatcher                       qt5
@@ -1084,7 +1085,6 @@ zvbi                                    ffmpeg
 # rtmpdump                            gst-plugins-bad
 # scrot
 # slop                                maim
-# soundtouch                          gst-plugins-bad
 # spandsp                             gst-plugins-bad
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager

@@ -724,6 +724,7 @@ l/libwpe.sh
 l/wpebackend-fdo.sh
 ap/faad2.sh
 ap/faac.sh
+l/soundtouch.sh
 
 
 # l/gcr4.sh
@@ -738,7 +739,6 @@ ap/faac.sh
 # l/gtk4.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
-# l/soundtouch.sh
 # l/libical.sh
 # l/libmpeg2.sh
 # l/gst-plugins-bad.sh

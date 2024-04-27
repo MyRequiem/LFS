@@ -756,6 +756,7 @@ https://wpewebkit.org/releases/wpebackend-fdo-1.14.0.tar.xz
 https://github.com/knik0/faad2/archive/2.10.1/faad2-2.10.1.tar.gz
 https://www.nch.com.au/acm/sample.aac
 https://github.com/knik0/faac/archive/1_30/faac-1_30.tar.gz
+https://www.surina.net/soundtouch/soundtouch-2.3.2.tar.gz
 
 
 ================================================================================
@@ -768,7 +769,6 @@ http://software.calhariz.com/at/at_3.2.1.orig.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 https://get.videolan.org/libdvdread/6.1.1/libdvdread-6.1.1.tar.bz2
 https://get.videolan.org/libdvdnav/6.1.0/libdvdnav-6.1.0.tar.bz2
-https://gitlab.com/soundtouch/soundtouch/-/archive/2.2/soundtouch-2.2.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz
 http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.18.3.tar.xz
