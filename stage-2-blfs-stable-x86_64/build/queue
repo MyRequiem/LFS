@@ -728,6 +728,7 @@ l/soundtouch.sh
 l/libdvdread.sh
 l/libdvdnav.sh
 l/aom.sh
+l/gst-plugins-bad.sh
 
 
 # l/gcr4.sh
@@ -742,7 +743,6 @@ l/aom.sh
 # l/gtk4.sh
 # l/libical.sh
 # l/libmpeg2.sh
-# l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
 # l/apr-util.sh
 # l/libmpeg2.sh
@@ -779,7 +779,6 @@ l/aom.sh
 # a/udisks.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
-# l/gst-plugins-bad.sh
 # l/gst-plugins-ugly.sh
 # n/spice.sh
 # s/usbredir.sh
@@ -857,7 +856,6 @@ l/aom.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
 # ap/scrot.sh
-# l/gst-plugins-bad.sh
 # l/libplacebo.sh
 # d/mujs.sh
 # ap/mpv.sh

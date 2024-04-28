@@ -18,15 +18,16 @@ PRGNAME="gst-plugins-bad"
 #              faad2
 #              fdk-aac
 #              gtk+3                (для сборки примеров)
+#              gst-plugins-good     (для одного теста)
 #              lcms2
 #              libass
 #              libexif              (для одного теста)
-#              libgudev
-#              libmpeg2
 #              librsvg
+#              libsoup              (для одного теста)
 #              libsndfile
 #              libssh2
 #              libusb
+#              libva
 #              libwebp
 #              libxkbcommon
 #              neon
@@ -38,16 +39,16 @@ PRGNAME="gst-plugins-bad"
 #              sdl
 #              valgrind
 #              wayland              (gtk+3 должен быть скомпилирован с поддержкой Wayland)
+#              wpebackend-fdo
 #              x265
-#              xorg-libraries       (для одного теста)
 #              aom                  (https://aomedia.googlesource.com/aom/)
-#              bs2b                 (http://bs2b.sourceforge.net/)
+#              bs2b                 (https://bs2b.sourceforge.net/)
 #              chromaprint          (https://acoustid.org/chromaprint)
 #              dssim                (https://github.com/kornelski/dssim)
-#              flite                (http://www.speech.cs.cmu.edu/flite/)
+#              flite                (https://github.com/festvox/flite)
 #              fluidsynth           (https://www.fluidsynth.org/)
-#              game-music-emu       (https://bitbucket.org/mpyne/game-music-emu/wiki/Home)
-#              gsm                  (http://www.quut.com/gsm/)
+#              game-music-emu       (https://bitbucket.org/mpyne/game-music-emu/)
+#              gsm                  (https://www.quut.com/gsm/)
 #              python3-hotdoc       (https://pypi.org/project/hotdoc/)
 #              ladspa               (https://www.ladspa.org/)
 #              libavtp              (https://github.com/AVnu/libavtp)
@@ -61,7 +62,7 @@ PRGNAME="gst-plugins-bad"
 #              libnice              (https://libnice.freedesktop.org/)
 #              libofa               (https://code.google.com/archive/p/musicip-libofa/)
 #              libopenmpt           (https://lib.openmpt.org/libopenmpt/)
-#              libopenni            (https://structure.io/openni)
+#              libopenni            (https://structure.io/openni/)
 #              libsrtp              (https://github.com/cisco/libsrtp)
 #              lilv                 (https://drobilla.net/software/lilv)
 #              lrdf                 (https://github.com/swh/LRDF)
@@ -74,16 +75,15 @@ PRGNAME="gst-plugins-bad"
 #              orc                  (https://gstreamer.freedesktop.org/src/orc/)
 #              rtmpdump             (https://rtmpdump.mplayerhq.hu/)
 #              spandsp              (https://github.com/jart/spandsp)
-#              srt                  (https://www.srtalliance.com/)
+#              srt                  (https://github.com/Haivision/srt)
 #              svthevcenc           (https://github.com/OpenVisualCloud/SVT-HEVC/)
 #              vo-aac               (https://sourceforge.net/projects/opencore-amr/files/vo-aacenc/)
 #              vo-amrwb             (https://sourceforge.net/projects/opencore-amr/files/vo-amrwbenc/)
 #              vulkan               (https://vulkan.lunarg.com/sdk/home/)
-#              wildmidi             (https://www.mindwerks.net/projects/wildmidi/)
+#              wildmidi             (https://github.com/Mindwerks/wildmidi/)
 #              wpe-webkit           (https://webkit.org/wpe/)
-#              wpebackend-fdo       (https://github.com/Igalia/WPEBackend-fdo)
-#              zbar                 (http://zbar.sourceforge.net/)
-#              zvbi                 (http://zapping.sourceforge.net/Zapping/index.html)
+#              zbar                 (https://zbar.sourceforge.net/)
+#              zvbi                 (https://zapping.sourceforge.net/Zapping/index.html)
 #              zxing                (https://github.com/zxing/zxing)
 
 ROOT="/root/src/lfs"
@@ -96,11 +96,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                                      \
-    --prefix=/usr                          \
-    -Dbuildtype=release                    \
-    -Dpackage-name="GStreamer 1.18.3 BLFS" \
-    -Dpackage-origin="http://www.linuxfromscratch.org/blfs/view/svn/" || exit 1
+# без этой опции плагины с зависимостями от библиотек под лицензией (A)GPL не
+# создаются
+#    -Dgpl=enabled
+meson                                          \
+    --prefix=/usr                              \
+    --buildtype=release                        \
+    -Dgpl=enabled                              \
+    -Dpackage-name="GStreamer ${VERSION} BLFS" \
+    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3/ || exit 1
 
 ninja || exit 1
 
