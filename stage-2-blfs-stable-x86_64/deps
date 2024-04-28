@@ -19,6 +19,7 @@ alsa-plugins                            sdl2, sdl
 alsa-tools                              sdl2, alsa-firmware, sdl
 alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, sdl, faad2, faac
+aom
 apache-ant                              docbook-xsl
 apache-httpd                            curl, libsoup, libsoup3
 appstream-glib                          gimp
@@ -62,7 +63,7 @@ carlito-font-ttf
 cdparanoia-III                          gst-plugins-base
 chronyd                                 dhcpcd
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3
@@ -427,7 +428,7 @@ mtdev                                   libinput, xorg-evdev-driver, qt5
 mypaint-brushes                         gimp
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim, qt5
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good, aom
 ncompress                               xorg-libraries
 neon
 net-tools                               gnutls, openssh
@@ -940,7 +941,6 @@ zvbi                                    ffmpeg
 # ==============================================================================
 # 3store                              redland
 # adabas
-# aom                                 gst-plugins-bad, mpv
 # apparmor
 # apr-util                            apache-httpd
 # bcachefs                            libblockdev

@@ -727,6 +727,7 @@ ap/faac.sh
 l/soundtouch.sh
 l/libdvdread.sh
 l/libdvdnav.sh
+l/aom.sh
 
 
 # l/gcr4.sh
@@ -856,7 +857,6 @@ l/libdvdnav.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
 # ap/scrot.sh
-# l/aom.sh
 # l/gst-plugins-bad.sh
 # l/libplacebo.sh
 # d/mujs.sh
