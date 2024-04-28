@@ -729,6 +729,7 @@ l/libdvdread.sh
 l/libdvdnav.sh
 l/aom.sh
 l/gst-plugins-bad.sh
+l/libmpeg2.sh
 
 
 # l/gcr4.sh
@@ -742,10 +743,8 @@ l/gst-plugins-bad.sh
 # l/apr-util.sh
 # l/gtk4.sh
 # l/libical.sh
-# l/libmpeg2.sh
 # l/gst-plugins-ugly.sh
 # l/apr-util.sh
-# l/libmpeg2.sh
 # l/libseccomp.sh
 # l/raptor.sh
 # l/rasqal.sh
