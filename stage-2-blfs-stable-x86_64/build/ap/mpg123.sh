@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The mpg123 package contains a console-based MP3 player. It claims to be the
 # fastest MP3 decoder for Unix.
 #
-# Home page: http://${PRGNAME}.org/
+# Home page: https://${PRGNAME}.org/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
