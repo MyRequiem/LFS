@@ -730,6 +730,7 @@ l/libdvdnav.sh
 l/aom.sh
 l/gst-plugins-bad.sh
 l/libmpeg2.sh
+l/gst-plugins-ugly.sh
 
 
 # l/gcr4.sh
@@ -743,7 +744,6 @@ l/libmpeg2.sh
 # l/apr-util.sh
 # l/gtk4.sh
 # l/libical.sh
-# l/gst-plugins-ugly.sh
 # l/apr-util.sh
 # l/libseccomp.sh
 # l/raptor.sh
@@ -778,7 +778,6 @@ l/libmpeg2.sh
 # a/udisks.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
-# l/gst-plugins-ugly.sh
 # n/spice.sh
 # s/usbredir.sh
 # n/spice-gtk.sh
