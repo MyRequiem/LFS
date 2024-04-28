@@ -94,7 +94,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and the glib main loop to integrate well with GTK+ applications, and has a
 # synchronous API suitable for use in threaded applications.
 #
-# Home page: https://github.com/GNOME/${PRGNAME}
+# Home page: https://github.com/GNOME/${ARCH_NAME}
 # Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
