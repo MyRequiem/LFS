@@ -62,8 +62,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # other. Using it it's possible to for example change the tempo of a song,
 # while the pitch stays the same.
 #
-# Home page: http://www.surina.net/${PRGNAME}
-# Download:  https://gitlab.com/${PRGNAME}/${PRGNAME}/-/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://www.surina.net/${PRGNAME}
+# Download:  https://www.surina.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
