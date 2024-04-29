@@ -60,6 +60,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 MAN="false"
+EXAMPLES="false"
 GTK_DOC="false"
 TESTS="false"
 
@@ -68,13 +69,17 @@ command -v docutils &>/dev/null && MAN="true"
 mkdir build
 cd build || exit 1
 
-meson setup                  \
-    --prefix=/usr            \
-    --buildtype=release      \
-    -Dbroadway-backend=true  \
-    -Dman-pages="${MAN}"     \
-    -Dgtk_doc="${GTK_DOC}"   \
-    -Dbuild-tests="${TESTS}" \
+meson setup                      \
+    --prefix=/usr                \
+    --buildtype=release          \
+    --sysconfdir=/etc            \
+    -Dbroadway-backend=true      \
+    -Dwayland-backend=true       \
+    -Dman-pages="${MAN}"         \
+    -Dbuild-examples=${EXAMPLES} \
+    -Dgtk_doc="${GTK_DOC}"       \
+    -Dbuild-tests="${TESTS}"     \
+    -Dinstall-tests="${TESTS}"   \
     .. || exit 1
 
 ninja ||exit 1
@@ -87,9 +92,36 @@ ninja ||exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+# Конфигурация:
+#    /usr/share/gtk-4.0/settings.ini (общесистемная)
+#    ~/.config/gtk-4.0/settings.ini
+cat << EOF > "${TMP_DIR}/usr/share/gtk-4.0/settings.ini"
+[Settings]
+gtk-theme-name = Adwaita
+gtk-icon-theme-name = oxygen
+gtk-font-name = DejaVu Sans 12
+gtk-cursor-theme-size = 18
+gtk-xft-antialias = 1
+gtk-xft-hinting = 1
+gtk-xft-hintstyle = hintslight
+gtk-xft-rgba = rgb
+gtk-cursor-theme-name = Adwaita
+EOF
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+# Если устанавливается в DESTDIR, то после установки выдает предупреждения:
+#    Skipping custom install script because DESTDIR is set '/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas'
+#    Skipping custom install script because DESTDIR is set '/usr/bin/gio-querymodules /usr/lib/gtk-4.0/4.0.0/printbackends'
+#    Skipping custom install script because DESTDIR is set '/usr/bin/gio-querymodules /usr/lib/gtk-4.0/4.0.0/media'
+#    Skipping custom install script because DESTDIR is set '/tmp/build-gtk4-${VERSION}/gtk-${VERSION}/build/tools/gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor'
+# поэтому запустим вручную:
+glib-compile-schemas         /usr/share/glib-2.0/schemas/ &>/dev/null
+gio-querymodules             /usr/lib/gtk-4.0/4.0.0/printbackends/
+gio-querymodules             /usr/lib/gtk-4.0/4.0.0/media/
+gtk4-update-icon-cache -t -f /usr/share/icons/hicolor/
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
