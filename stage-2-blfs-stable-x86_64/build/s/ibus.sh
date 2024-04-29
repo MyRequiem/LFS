@@ -11,10 +11,10 @@ PRGNAME="ibus"
 #              iso-codes
 #              vala
 # Recommended: gobject-introspection
-#              gtk+2         (to build IM module for it)
+#              gtk+2                  (to build IM module for it)
 #              libnotify
-# Optional:    gtk+3         (to build IM module for it)
-#              gtk4          (to build IM module for it)
+# Optional:    gtk+3                  (to build IM module for it)
+#              gtk4                   (to build IM module for it)
 #              python3-dbus
 #              python3-pygobject3
 #              gtk-doc

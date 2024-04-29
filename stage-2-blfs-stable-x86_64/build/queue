@@ -731,6 +731,9 @@ l/aom.sh
 l/gst-plugins-bad.sh
 l/libmpeg2.sh
 l/gst-plugins-ugly.sh
+l/gtk4.sh
+d/gjs.sh
+s/ibus.sh
 
 
 # l/gcr4.sh
@@ -742,7 +745,6 @@ l/gst-plugins-ugly.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
-# l/gtk4.sh
 # l/libical.sh
 # l/apr-util.sh
 # l/libseccomp.sh

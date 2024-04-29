@@ -16,7 +16,7 @@ ARCH_NAME="vte"
 #              vala
 # Optional:    fribidi
 #              gtk-doc
-#              gtk4    (https://wiki.gnome.org/Projects/GTK/Roadmap/GTK4)
+#              gtk4
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

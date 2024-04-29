@@ -4,8 +4,8 @@ PRGNAME="telegram"
 
 ### Telegram ()
 
-# Required:    gtk+3            (собранный с wayland и wayland-protocols)
-# Recommended: webkit2gtk4.1    (для открытия и рендеринга web-приложений)
+# Required:    gtk+3    (собранный с wayland и wayland-protocols)
+# Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
