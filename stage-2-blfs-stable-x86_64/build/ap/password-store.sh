@@ -28,13 +28,11 @@ cp contrib/importers/* "${TMP_DIR}/usr/bin/"
 command -v dmenu &>/dev/null && cp contrib/dmenu/passmenu "${TMP_DIR}/usr/bin/"
 
 # установка плагина для vim
-if command -v vim &>/dev/null; then
-    VIMVER="$(vim --version | head -n 1 | awk '{ print $5; }' | tr -d .)"
-    VIM_DIR="/usr/share/vim/vim${VIMVER}"
-    mkdir -p "${TMP_DIR}${VIM_DIR}"/{doc,plugin}
-    cp contrib/vim/*.vim "${TMP_DIR}${VIM_DIR}/plugin"
-    cp contrib/vim/*.txt "${TMP_DIR}${VIM_DIR}/doc"
-fi
+VIMVER="$(vim --version | head -n 1 | awk '{ print $5; }' | tr -d .)"
+VIM_DIR="/usr/share/vim/vim${VIMVER}"
+mkdir -p "${TMP_DIR}${VIM_DIR}"/{doc,plugin}
+cp contrib/vim/*.vim "${TMP_DIR}${VIM_DIR}/plugin"
+cp contrib/vim/*.txt "${TMP_DIR}${VIM_DIR}/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

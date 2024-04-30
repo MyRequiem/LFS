@@ -95,7 +95,7 @@ directfb                                cairo, sdl2, sdla, links
 djbfft                                  liba52
 djvulibre                               imagemagick
 dmalloc                                 cyrus-sasl, lame, imagemagick
-dmenu
+dmenu                                   password-store
 dmidecode                               lm-sensors
 docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
@@ -940,7 +940,7 @@ xcb-util-keysyms                        xorg-server, qt5
 xcb-util-renderutil                     xcb-util-cursor, xorg-server, qt5
 xcb-util-wm                             xorg-server, qt5
 xcb-util-xrm
-xclip
+xclip                                   password-store
 xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf, wqy-zenhei-font-ttf
 xdg-user-dirs
 xdg-utils                               cups, gimp, imagemagick
