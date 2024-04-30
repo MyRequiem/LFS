@@ -2,7 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp, libmpeg2
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp, libmpeg2, numlockx
 Plasma5                                 polkit
 aalib                                   sdl, gimp, gst-plugins-good
 acpid                                   xorg-server
@@ -216,7 +216,7 @@ gvfs                                    gimp
 harfbuzz                                graphite2, freetype, libass, gimp, qt5
 hdparm
 heimdal-gssapi                          exim
-help2man                                pango, vala
+help2man                                pango, vala, numlockx
 hicolor-icon-theme                      gtk+2, gtk+3, fltk, gtk4
 highlight                               vifm, gtk4
 hp2xx                                   imagemagick
@@ -477,6 +477,7 @@ nss                                     p11-kit, make-ca, volume-key, poppler, n
 ntfs-3g
 ntp                                     dhcpcd
 numactl                                 x265
+numlockx
 ocaml                                   llvm
 oniguruma                               slang
 open-mpi                                boost
@@ -1067,7 +1068,6 @@ zxing                                   gst-plugins-bad
 # net-snmp
 # netcat-openbsd
 # nginx
-# numlockx
 # nuspell                             enchant
 # optipng
 # opusfile                            cmus

@@ -739,6 +739,7 @@ ap/xbanish.sh
 x/utils/xorg-cf-files.sh
 d/imake.sh
 ap/xxkb.sh
+s/numlockx.sh
 
 
 # a/fcron.sh
@@ -821,7 +822,6 @@ ap/xxkb.sh
 # ap/imwheel.sh
 # ap/megatools.sh
 # ap/mirage.sh
-# s/numlockx.sh
 # s/prelink.sh
 # ap/pwgen.sh
 # n/uget.sh

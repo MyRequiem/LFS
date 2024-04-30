@@ -3,10 +3,11 @@
 PRGNAME="numlockx"
 
 ### numlockx (Start X with NumLock Turned On)
+# утилита позволяет запускать X с включенным NumLock
 
 # Required:    Graphical Environments
 # Recommended: no
-# Optional:    no
+# Optional:    help2man (для создания man-страницы)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,8 +29,8 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # man-страница
-# help2man --no-info numlockx > numlockx.1
-cp "${SOURCES}/${PRGNAME}.1" "${TMP_DIR}${MAN_DIR}/"
+command -v help2man &>/dev/null && \
+    help2man --no-info numlockx > "${TMP_DIR}${MAN_DIR}/numlockx.1"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
