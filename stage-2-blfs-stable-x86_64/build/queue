@@ -735,6 +735,10 @@ l/gtk4.sh
 d/gjs.sh
 s/ibus.sh
 l/gcr4.sh
+ap/xbanish.sh
+x/utils/xorg-cf-files.sh
+d/imake.sh
+ap/xxkb.sh
 
 
 # a/fcron.sh
@@ -824,10 +828,6 @@ l/gcr4.sh
 # s/ramdefrag.sh
 # ap/utimer.sh
 # n/wgetpaste.sh
-# ap/xbanish.sh
-# x/utils/xorg-cf-files.sh
-# d/imake.sh
-# ap/xxkb.sh
 # l/girara.sh
 # ap/zathura.sh
 # ap/bviplus.sh

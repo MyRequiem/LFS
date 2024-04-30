@@ -765,6 +765,10 @@ https://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
 https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.22.0.tar.xz
 https://download.gnome.org/sources/gtk/4.8/gtk-4.8.3.tar.xz
 https://download.gnome.org/sources/gcr/4.0/gcr-4.0.0.tar.xz
+https://github.com/jcs/xbanish/archive/v1.8/xbanish-1.8.tar.gz
+https://www.x.org/archive/individual/util/xorg-cf-files-1.0.8.tar.xz
+https://www.x.org/archive/individual/util/imake-1.0.10.tar.xz
+https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 
 
 ================================================================================
@@ -876,10 +880,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wgetpaste/wgetpaste.1
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wgetpaste/wgetpaste_info
 http://wgetpaste.zlin.dk/wgetpaste-2.30.tar.bz2
-https://github.com/jcs/xbanish/archive/v1.8/xbanish-1.8.tar.gz
-https://www.x.org/archive/individual/util/xorg-cf-files-1.0.7.tar.gz
-https://www.x.org/archive/individual/util/imake-1.0.8.tar.gz
-https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 https://github.com/pwmt/girara/archive/0.3.7/girara-0.3.7.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/zathura/zathurarc.5
