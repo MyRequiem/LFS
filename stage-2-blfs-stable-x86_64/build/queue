@@ -744,6 +744,7 @@ s/clipnotify.sh
 s/clipmenu.sh
 ap/dmenu.sh
 ap/password-store.sh
+l/libyajl.sh
 
 
 # a/fcron.sh
@@ -797,7 +798,6 @@ ap/password-store.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh
-# l/libyajl.sh
 # l/raptor.sh
 # s/talloc.sh
 # s/jemalloc.sh

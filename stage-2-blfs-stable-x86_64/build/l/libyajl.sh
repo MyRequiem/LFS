@@ -7,7 +7,7 @@ ARCH_NAME="yajl"
 # Небольшой анализатор JSON, управляемый событиями (в стиле SAX), написанный на
 # ANSI C, а так же JSON генератор
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
 # Optional:    no
 
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # small validating JSON generator. YAJL is released under the ISC license.
 #
 # Home page: https://lloyd.github.io/${ARCH_NAME}/
-# Download:  https://fossies.org/linux/www/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://fossies.org/linux/www/old/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
