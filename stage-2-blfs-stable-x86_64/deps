@@ -64,7 +64,7 @@ carlito-font-ttf
 cdparanoia-III                          gst-plugins-base
 chromaprint                             gst-plugins-bad
 chronyd                                 dhcpcd
-clipmenu
+clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom
@@ -95,6 +95,7 @@ directfb                                cairo, sdl2, sdla, links
 djbfft                                  liba52
 djvulibre                               imagemagick
 dmalloc                                 cyrus-sasl, lame, imagemagick
+dmenu
 dmidecode                               lm-sensors
 docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
@@ -513,6 +514,7 @@ papi                                    gtk+3
 parted
 passivetex                              xmlto
 passwdqc                                cryptsetup
+password-store                          dmenu
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt5
@@ -964,7 +966,7 @@ xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
 xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
-xsel
+xsel                                    dmenu
 xterm                                   imagemagick
 xvid                                    ffmpeg
 xxhash                                  rsync
@@ -999,7 +1001,6 @@ zxing                                   gst-plugins-bad
 # deb2tgz
 # device-tree-compiler
 # distcache                           apache-httpd
-# dmenu                               password-store, i3
 # dmraid                              libblockdev
 # dnsmasq
 # ebtables
@@ -1075,7 +1076,6 @@ zxing                                   gst-plugins-bad
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
 # ossp_mm
 # pandoc                              openjdk
-# password-store                      dmenu
 # pcsc-lite                           libcacard
 # phodav                              spice-gtk
 # prelink

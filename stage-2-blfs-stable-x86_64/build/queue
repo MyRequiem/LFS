@@ -742,6 +742,7 @@ ap/xxkb.sh
 s/numlockx.sh
 s/clipnotify.sh
 s/clipmenu.sh
+ap/dmenu.sh
 
 
 # a/fcron.sh
@@ -812,7 +813,6 @@ s/clipmenu.sh
 # a/fcron.sh
 # s/virt-manager.sh
 # l/libev.sh
-# ap/dmenu.sh
 # ap/password-store.sh
 # s/hddtemp.sh
 # x/apps/i3.sh
