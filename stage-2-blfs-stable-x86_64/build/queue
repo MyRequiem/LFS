@@ -734,9 +734,9 @@ l/gst-plugins-ugly.sh
 l/gtk4.sh
 d/gjs.sh
 s/ibus.sh
+l/gcr4.sh
 
 
-# l/gcr4.sh
 # a/fcron.sh
 # l/libblockdev.sh
 # a/fcron.sh

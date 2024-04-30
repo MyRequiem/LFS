@@ -46,13 +46,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 DOCS="false"
-GTK4="false"
-
 # command -v gi-docgen &>/dev/null && DOCS="true"
-command -v gtk4-demo &>/dev/null && GTK4="true"
-
-# исправим устаревшие записи в файлах схем
-sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
 mkdir build
 cd build || exit 1
@@ -61,7 +55,6 @@ meson                   \
     --prefix=/usr       \
     --buildtype=release \
     -Dgtk_doc="${DOCS}" \
-    -Dgtk4="${GTK4}"    \
     .. || exit 1
 
 ninja || exit 1
