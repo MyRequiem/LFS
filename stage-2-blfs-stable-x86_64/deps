@@ -64,6 +64,8 @@ carlito-font-ttf
 cdparanoia-III                          gst-plugins-base
 chromaprint                             gst-plugins-bad
 chronyd                                 dhcpcd
+clipmenu
+clipnotify                              clipmenu
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom
 cmocka                                  gnutls, mit-kerberos-v5
@@ -991,8 +993,6 @@ zxing                                   gst-plugins-bad
 # cantarell-fonts
 # caudium
 # cdb
-# clipmenu                            dmenu
-# clipnotify                          clipmenu
 # cmus
 # cppcheck
 # dbmaker

@@ -770,6 +770,10 @@ https://www.x.org/archive/individual/util/xorg-cf-files-1.0.8.tar.xz
 https://www.x.org/archive/individual/util/imake-1.0.10.tar.xz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 http://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipnotify/clipnotify-1.0.2.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clipmenu-6.2.0.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/clipmenu/set-cachedir-path-to-home-dir_cache-6.2.0.diff
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
 
 
 ================================================================================
@@ -842,10 +846,6 @@ http://downloads.sourceforge.net/tunctl/tunctl-1.5.tar.gz
 https://virt-manager.org/download/sources/virt-manager/virt-manager-4.0.0.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/virt-manager/add-slackware-to-os-choices-4.0.0.patch
 http://dist.schmorp.de/libev/libev-4.33.tar.gz
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipnotify/clipnotify-1.0.2.tar.gz
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clipmenu-6.2.0.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/clipmenu/set-cachedir-path-to-home-dir_cache-6.2.0.diff
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
 http://dl.suckless.org/tools/dmenu-5.1.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-border-5.1.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-xyw-5.1.diff

@@ -740,6 +740,8 @@ x/utils/xorg-cf-files.sh
 d/imake.sh
 ap/xxkb.sh
 s/numlockx.sh
+s/clipnotify.sh
+s/clipmenu.sh
 
 
 # a/fcron.sh
@@ -810,8 +812,6 @@ s/numlockx.sh
 # a/fcron.sh
 # s/virt-manager.sh
 # l/libev.sh
-# s/clipnotify.sh
-# s/clipmenu.sh
 # ap/dmenu.sh
 # ap/password-store.sh
 # s/hddtemp.sh
