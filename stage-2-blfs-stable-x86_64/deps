@@ -221,7 +221,7 @@ harfbuzz                                graphite2, freetype, libass, gimp, qt5
 hddtemp                                 bumblebee-status
 hdparm
 heimdal-gssapi                          exim
-help2man                                pango, vala, numlockx
+help2man                                pango, vala
 hicolor-icon-theme                      gtk+2, gtk+3, fltk, gtk4
 highlight                               vifm, gtk4
 hp2xx                                   imagemagick

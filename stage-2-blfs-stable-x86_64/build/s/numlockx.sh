@@ -7,15 +7,14 @@ PRGNAME="numlockx"
 
 # Required:    Graphical Environments
 # Recommended: no
-# Optional:    help2man (для создания man-страницы)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-MAN_DIR="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}${MAN_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure                      \
     --prefix=/usr                \
@@ -27,10 +26,6 @@ mkdir -pv "${TMP_DIR}${MAN_DIR}"
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
-
-# man-страница
-command -v help2man &>/dev/null && \
-    help2man --no-info numlockx > "${TMP_DIR}${MAN_DIR}/numlockx.1"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -44,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # achieve this).
 #
 # Home page: https://github.com/rg3/${PRGNAME}
-# Download:  http://ponce.cc/slackware/sources/repo/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ponce.cc/slackware/sources/repo/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
