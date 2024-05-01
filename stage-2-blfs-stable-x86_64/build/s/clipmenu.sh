@@ -6,6 +6,7 @@ PRGNAME="clipmenu"
 # простой менеджер буфера обмена, использующий dmenu или rofi
 
 # Required:    clipnotify
+#              xsel
 # Recommended: no
 # Optional:    no
 
@@ -32,7 +33,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # simple clipboard manager using dmenu (or rofi with CM_LAUNCHER=rofi) and xsel
 #
 # Home page: https://github.com/cdown/${PRGNAME}
-# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

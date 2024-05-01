@@ -970,7 +970,7 @@ xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
 xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
-xsel                                    dmenu
+xsel                                    dmenu, clipmenu
 xterm                                   imagemagick
 xvid                                    ffmpeg
 xxhash                                  rsync
