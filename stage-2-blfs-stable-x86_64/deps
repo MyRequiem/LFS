@@ -217,6 +217,7 @@ guile
 gutenprint                              cups
 gvfs                                    gimp
 harfbuzz                                graphite2, freetype, libass, gimp, qt5
+hddtemp
 hdparm
 heimdal-gssapi                          exim
 help2man                                pango, vala, numlockx
@@ -1023,7 +1024,6 @@ zxing                                   gst-plugins-bad
 # gptfdisk                            udisks
 # gsimplecal
 # gtick
-# hddtemp                             bumblebee-status
 # hspell                              enchant
 # hstr
 # hunspell                            enchant

@@ -748,6 +748,7 @@ l/libyajl.sh
 l/libev.sh
 n/nghttp2.sh
 x/apps/i3.sh
+s/hddtemp.sh
 
 
 # a/fcron.sh
@@ -816,7 +817,6 @@ x/apps/i3.sh
 # n/tunctl.sh
 # a/fcron.sh
 # s/virt-manager.sh
-# s/hddtemp.sh
 # x/apps/bumblebee-status.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh
