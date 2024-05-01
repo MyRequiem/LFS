@@ -52,7 +52,6 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 install -D -m 644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
-install -D -m 754 "${SOURCES}/${PRGNAME}"    "${TMP_DIR}/etc/rc.d/init.d/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
