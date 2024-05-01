@@ -53,6 +53,7 @@ boost                                   highlight, nghttp2, libsigc++2, swig, ca
 bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype, links, libsoup, libsoup3
 bs2b                                    gst-plugins-bad
+bumblebee-status
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
 cairo                                   gobject-introspection, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines, gjs, poppler, gegl, gst-plugins-good, i3
@@ -217,7 +218,7 @@ guile
 gutenprint                              cups
 gvfs                                    gimp
 harfbuzz                                graphite2, freetype, libass, gimp, qt5
-hddtemp
+hddtemp                                 bumblebee-status
 hdparm
 heimdal-gssapi                          exim
 help2man                                pango, vala, numlockx
@@ -228,7 +229,7 @@ hplip                                   cups
 htop
 http-parser                             nodejs
 hwloc                                   htop
-i3
+i3                                      bumblebee-status
 ibus                                    sdl2, qt5
 icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5
@@ -758,7 +759,7 @@ python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
 python3-mypy                            python3-attrs
-python3-netifaces
+python3-netifaces                       bumblebee-status
 python3-nose                            python3-pytest
 python3-numpy                           python2-pygtk
 python3-packaging                       python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
@@ -769,7 +770,7 @@ python3-pluggy                          python3-hatchling, python3-pytest, pytho
 python3-poetry-core                     python3-isort, python3-tomlkit
 python3-polib                           libbytesize
 python3-pretend                         python3-packaging
-python3-psutil                          llvm
+python3-psutil                          llvm, bumblebee-status
 python3-py                              python3-pytest
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3

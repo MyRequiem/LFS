@@ -785,6 +785,7 @@ https://i3wm.org/downloads/i3-4.23.tar.xz
 https://download.savannah.gnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/hddtemp/hddtemp-0.3-beta15.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/hddtemp/hddtemp.db
+https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.2.0/bumblebee-status-2.2.0.tar.gz
 
 
 ================================================================================
@@ -855,7 +856,6 @@ https://releases.pagure.org/libosinfo/libosinfo-1.10.0.tar.xz
 http://downloads.sourceforge.net/tunctl/tunctl-1.5.tar.gz
 https://virt-manager.org/download/sources/virt-manager/virt-manager-4.0.0.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/virt-manager/add-slackware-to-os-choices-4.0.0.patch
-https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.1.5/bumblebee-status-2.1.5.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-amd64_segfault.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-color_definition_path.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-fno-common.patch
