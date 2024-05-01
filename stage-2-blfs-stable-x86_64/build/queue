@@ -745,6 +745,8 @@ s/clipmenu.sh
 ap/dmenu.sh
 ap/password-store.sh
 l/libyajl.sh
+l/libev.sh
+n/nghttp2.sh
 
 
 # a/fcron.sh
@@ -813,7 +815,6 @@ l/libyajl.sh
 # n/tunctl.sh
 # a/fcron.sh
 # s/virt-manager.sh
-# l/libev.sh
 # s/hddtemp.sh
 # x/apps/i3.sh
 # x/apps/bumblebee-status.sh

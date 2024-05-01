@@ -17,7 +17,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-HEADER_SUBFOLDER="/usr/include/libev"
+HEADER_SUBFOLDER="/usr/include/${PRGNAME}"
 mkdir -pv "${TMP_DIR}${HEADER_SUBFOLDER}"
 
 ./configure       \
@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # but is faster, scales better and is more correct, and also more featureful.
 #
 # Home page: http://software.schmorp.de/pkg/${PRGNAME}.html
-# Download:  http://dist.schmorp.de/libev/libev-4.33.tar.gz
+# Download:  http://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
