@@ -36,7 +36,7 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKGVERSION}"
-mkdir -pv "${TMP_DIR}/etc/"{"${PRGNAME}",rc.d/init.d}
+mkdir -pv "${TMP_DIR}/etc/${PRGNAME}"
 
 patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-${VERSION}.patch" || exit 1
 
