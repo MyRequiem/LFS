@@ -774,9 +774,9 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipn
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clipmenu-6.2.0.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/clipmenu/set-cachedir-path-to-home-dir_cache-6.2.0.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
-http://dl.suckless.org/tools/dmenu-5.1.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-border-5.1.diff
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-xyw-5.1.diff
+http://dl.suckless.org/tools/dmenu-4.9.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-border-4.9.diff
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-xyw-4.9.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/dmenu/dmenu_pass
 https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
 https://fossies.org/linux/www/old/yajl-2.1.0.tar.gz
