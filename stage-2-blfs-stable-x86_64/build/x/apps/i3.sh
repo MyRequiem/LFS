@@ -36,16 +36,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                       \
-    --prefix /usr           \
-    --sysconfdir /etc       \
-    -Dmans=true             \
-    -Ddocs=false            \
+DOSC="false"
+
+meson                                               \
+    --prefix /usr                                   \
+    --sysconfdir /etc                               \
+    -Dmans=true                                     \
+    -Ddocs="${DOSC}"                                \
+    -Ddocdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+[ "x${DOSC}" == "xfalse" ] && rm -rf "${TMP_DIR}/usr/share/doc"
 
 # заменим терминал по умолчанию i3-sensible-terminal на xterm
 sed -i 's/i3-sensible-terminal/xterm/' "${TMP_DIR}/etc/i3/config" || exit 1
