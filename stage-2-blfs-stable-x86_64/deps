@@ -101,14 +101,14 @@ dmidecode                               lm-sensors
 docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl, postgresql
-docbook-utils                           libsigc++2, fontconfig, gtk+2, flac, postgresql
+docbook-utils                           libsigc++2, fontconfig, gtk+2, flac, postgresql, fcron
 docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland, libdrm, libsecret, polkit, i3
 docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3, libsecret, polkit
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
 double-conversion                       qt5
-dovecot                                 gnupg, sudo, gimp
+dovecot                                 gnupg, sudo, gimp, fcron
 doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
@@ -122,11 +122,12 @@ emacs                                   libidn, pinentry, guile, desktop-file-ut
 emojione                                ibus
 enscript                                imagemagick
 etc-issue
-exim                                    gnupg, sudo, gimp
+exim                                    gnupg, sudo, gimp, fcron
 exiv2                                   gexiv2, gegl, mirage
 faac                                    gst-plugins-bad
 faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
+fcron
 fdk-aac                                 ffmpeg, gst-plugins-bad
 feh
 ffmpeg                                  alsa-plugins, gegl, imagemagick, gtk4
@@ -418,7 +419,7 @@ libyajl                                 i3
 libyaml                                 python3-pyyaml, ruby
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
-linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim
+linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim, fcron
 liquid-rescale                          imagemagick
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace, imagemagick
@@ -695,7 +696,7 @@ polkit-gnome                            polkit
 poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
 portaudio                               mpg123
-postfix                                 gnupg, sudo, gimp
+postfix                                 gnupg, sudo, gimp, fcron
 postgresql                              cyrus-sasl, openldap, exim, qt5
 potrace                                 imagemagick
 pov-ray                                 imagemagick
@@ -845,7 +846,7 @@ schroedinger                            ffmpeg
 sdl                                     libtheora, libwebp, gst-plugins-base, mpg123, gst-plugins-bad, libmpeg2
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
-sendmail                                gnupg, sudo, gimp
+sendmail                                gnupg, sudo, gimp, fcron
 septel                                  libpcap
 sg3-utils
 sgml-common                             docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
@@ -909,7 +910,7 @@ vala                                    librsvg. gtk-vnc, gtksourceview3, libsec
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gcr4
 vdo                                     lvm2
 vifm
-vim
+vim                                     fcron
 vlgothic-fonts-ttf
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
@@ -1015,7 +1016,6 @@ zxing                                   gst-plugins-bad
 # empress
 # enchant
 # exfat                               udisks
-# fcron
 # fdf-toolkit
 # flameshot
 # frontbase

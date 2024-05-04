@@ -753,13 +753,11 @@ x/apps/bumblebee-status.sh
 l/libadwaita.sh
 ap/zenity.sh
 ap/mirage.sh
+a/fcron.sh
 
 
-# a/fcron.sh
 # l/libblockdev.sh
-# a/fcron.sh
 # ap/at.sh
-# a/fcron.sh
 # a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
@@ -818,7 +816,6 @@ ap/mirage.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh
 # n/tunctl.sh
-# a/fcron.sh
 # s/virt-manager.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh

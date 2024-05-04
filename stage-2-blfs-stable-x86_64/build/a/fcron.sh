@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="fcron"
-DOCBOOK_DSSSL_VERSION="1.79"
 
 ### Fcron (periodical command scheduler)
 # Периодическое выполнения заданий в определённое время (планировщик команд).
@@ -11,8 +10,8 @@ DOCBOOK_DSSSL_VERSION="1.79"
 
 # Required:    no
 # Recommended: no
-# Optional:    MTA (dovecot, exim, postfix или sendmail)
-#              text editor (vim или любой другой)
+# Optional:    MTA            (dovecot, exim, postfix или sendmail)
+#              vim            (или любой другой текстовый редактор)
 #              linux-pam
 #              docbook-utils
 
@@ -40,7 +39,7 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{etc/cron.{hourly,daily,weekly,monthly},var/spool/fcron}
+mkdir -pv "${TMP_DIR}/var/spool/fcron"
 
 ### должны существовать пользователь и группа fcron
 # добавим группу fcron, если не существует
@@ -55,9 +54,8 @@ mkdir -pv "${TMP_DIR}"/{etc/cron.{hourly,daily,weekly,monthly},var/spool/fcron}
             -s /bin/false   \
             -u 22 fcron
 
-DOCBOOK_UTILS=""
-DSSSL_PATH="/usr/share/sgml/docbook/dsssl-stylesheets-${DOCBOOK_DSSSL_VERSION}"
-command -v jw &>/dev/null && DOCBOOK_UTILS="--with-dsssl-dir=${DSSSL_PATH}"
+# исправим некоторые пути, жестко закодированные в документации
+find doc -type f -exec sed -i 's:/usr/local::g' {} \;
 
 # не отправлять результаты выполнения команд на почту
 #    --without-sendmail
@@ -66,16 +64,12 @@ command -v jw &>/dev/null && DOCBOOK_UTILS="--with-dsssl-dir=${DSSSL_PATH}"
 #    --with-boot-install=no
 # не собирать системные модули, которые не нужны для System V
 #    --with-systemdsystemunitdir=no
-# если установлен docbook-utils
-#    --with-dsssl-dir=/usr/share/sgml/docbook/dsssl-stylesheets-x.xx
 ./configure                    \
     --prefix=/usr              \
     --sysconfdir=/etc          \
     --localstatedir=/var       \
     --without-sendmail         \
     --with-boot-install=no     \
-    --with-editor=/usr/bin/vim \
-    ${DOCBOOK_UTILS}           \
     --with-systemdsystemunitdir=no || exit 1
 
 make || exit 1
@@ -137,15 +131,22 @@ done
 
 exit 0
 EOF
+chmod -v 755 "${TMP_DIR}${RUN_PARTS}"
 
-chmod -v 755 "${TMP_DIR}/usr/bin/run-parts"
+install -vdm754 "${TMP_DIR}/etc/"cron.{hourly,daily,weekly,monthly}
 
 SYSTAB="/var/spool/fcron/systab"
 cat << EOF > "${TMP_DIR}${SYSTAB}.orig"
-&bootrun 01 * * * * root run-parts /etc/cron.hourly
-&bootrun 02 4 * * * root run-parts /etc/cron.daily
-&bootrun 22 4 * * 0 root run-parts /etc/cron.weekly
-&bootrun 42 4 1 * * root run-parts /etc/cron.monthly
+
+### NOTE:
+# To create /var/spool/fcron/systab enter the following command after editing
+# current file:
+#    # fcrontab -z -u systab
+
+&bootrun 00 0,12,18 * * *    root run-parts /etc/cron.hourly
+&bootrun 02 12      * * *    root run-parts /etc/cron.daily
+&bootrun 22 12      * * 0    root run-parts /etc/cron.weekly
+&bootrun 42 12      1 * *    root run-parts /etc/cron.monthly
 EOF
 
 # для автозапуска fcron демона при загрузке системы установим скрипт
@@ -191,6 +192,7 @@ if ! [ -f /var/run/fcron.pid ]; then
     /etc/rc.d/init.d/fcron start
 fi
 
+# сгенерируем /var/spool/fcron/systab
 fcrontab -z -u systab
 touch "${TMP_DIR}/var/spool/fcron/systab"
 
