@@ -788,6 +788,7 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://github.com/tobi-wan-kenobi/bumblebee-status/archive/v2.2.0/bumblebee-status-2.2.0.tar.gz
 https://download.gnome.org/sources/libadwaita/1.2/libadwaita-1.2.2.tar.xz
 https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
+https://gitlab.com/thomasross/mirage/-/archive/0.11.2/mirage-0.11.2.tar.bz2
 
 
 ================================================================================
@@ -866,7 +867,6 @@ https://github.com/dmedvinsky/gsimplecal/archive/v2.3/gsimplecal-2.3.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/imwheel/imwheel-1.0.0pre12-noautoconfigurator.patch
 http://downloads.sourceforge.net/project/imwheel/imwheel-source/1.0.0pre12/imwheel-1.0.0pre12.tar.gz
 https://megatools.megous.com/builds/megatools-1.10.3.tar.gz
-https://gitlab.com/thomasross/mirage/-/archive/0.11.1/mirage-0.11.1.tar.bz2
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/prelink/prelink.conf
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
 https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz

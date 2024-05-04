@@ -752,6 +752,7 @@ s/hddtemp.sh
 x/apps/bumblebee-status.sh
 l/libadwaita.sh
 ap/zenity.sh
+ap/mirage.sh
 
 
 # a/fcron.sh
@@ -823,7 +824,6 @@ ap/zenity.sh
 # ap/gsimplecal.sh
 # ap/imwheel.sh
 # ap/megatools.sh
-# ap/mirage.sh
 # s/prelink.sh
 # ap/pwgen.sh
 # n/uget.sh

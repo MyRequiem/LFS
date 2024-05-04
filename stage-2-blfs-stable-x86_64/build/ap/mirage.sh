@@ -5,9 +5,11 @@ PRGNAME="mirage"
 ### Mirage (GTK+ Image Viewer)
 # Быстрая и легкая утилита для просмотра изображений основанная на GTK+
 
-# Required:    python3
-#              gtk+2
-#              python3-pygobject3
+# Required:    python3-pygobject3
+#              pycairo
+#              exiv2
+#              gexiv2
+#              gtk+3
 # Recommended: no
 # Optional:    no
 

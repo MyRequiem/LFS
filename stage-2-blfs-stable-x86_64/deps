@@ -123,7 +123,7 @@ emojione                                ibus
 enscript                                imagemagick
 etc-issue
 exim                                    gnupg, sudo, gimp
-exiv2                                   gexiv2, gegl
+exiv2                                   gexiv2, gegl, mirage
 faac                                    gst-plugins-bad
 faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
@@ -164,7 +164,7 @@ gdk-pixbuf-xlib                         w3m
 gegl                                    gimp
 gelasio-font-ttf
 geoexpress                              imagemagick
-gexiv2                                  gegl, gimp
+gexiv2                                  gegl, gimp, mirage
 ggi                                     sdl
 ghostpcl                                imagemagick
 ghostscript                             cairo, goffice, libspectre, gimp, imagemagick
@@ -207,7 +207,7 @@ gst-plugins-good                        gst-plugins-bad, gtk4
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad
+gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup
 gtk-engines
 gtk-vnc
@@ -451,6 +451,7 @@ mesa-demos                              mesa
 messagepack                             mariadb
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
+mirage
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3, neon
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, glibmm
@@ -774,13 +775,13 @@ python3-pretend                         python3-packaging
 python3-psutil                          llvm, bumblebee-status
 python3-py                              python3-pytest
 python3-pyatspi2                        gtk+3
-python3-pycairo                         python3-pygobject3
+python3-pycairo                         python3-pygobject3, mirage
 python3-pycodestyle                     python3-flake8
 python3-pycryptodome
 python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython, gegl
-python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4
+python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage
 python3-pylint
 python3-pympler                         python3-attrs
 python3-pyparsing                       libinput
@@ -1063,7 +1064,6 @@ zxing                                   gst-plugins-bad
 # megatools
 # mhash
 # mini-sql
-# mirage
 # mnogosearch
 # monetra
 # mpv
