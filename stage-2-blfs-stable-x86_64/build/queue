@@ -750,6 +750,8 @@ n/nghttp2.sh
 x/apps/i3.sh
 s/hddtemp.sh
 x/apps/bumblebee-status.sh
+l/libadwaita.sh
+ap/zenity.sh
 
 
 # a/fcron.sh
@@ -779,7 +781,6 @@ x/apps/bumblebee-status.sh
 # l/vte2.sh
 # l/vte3.sh
 # l/gconf.sh
-# ap/zenity.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh

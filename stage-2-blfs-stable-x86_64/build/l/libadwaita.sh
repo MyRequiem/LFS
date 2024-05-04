@@ -1,17 +1,13 @@
 #! /bin/bash
 
-PRGNAME="zenity"
+PRGNAME="libadwaita"
 
-### Zenity (display gtk dialog boxes from cli)
-# Инструмент, который позволяет отображать диалоговые окна Gtk+ из командной
-# строки и через сценарии оболочки.
+### libadwaita (GTK 4 library implementing the GNOME HIG)
+# Библиотека GTK4, реализующая GNOME HIG и дополняющая GTK
 
 # Required:    gtk4
-#              itstool
-#              libadwaita
-# Recommended: libnotify
-#              libxslt
-# Optional:    webkitgtk
+# Recommended: vala
+# Optional:    python3-gi-docgen (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,10 +19,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                 \
-    --prefix=/usr     \
-    -Dwebkitgtk=false \
-    -Dmanpage=true    \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
+    -Dgtk_doc=false     \
+    -Dtests=false       \
     .. || exit 1
 
 ninja || exit 1
@@ -39,13 +36,11 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (display gtk dialog boxes from cli)
+# Package: ${PRGNAME} (GTK 4 library implementing the GNOME HIG)
 #
-# Zenity is a tool that allows you to display Gtk+ dialog boxes from the
-# command line and through shell scripts. It is similar to gdialog, but is
-# intended to be saner.
+# Libadwaita is a GTK 4 library implementing the GNOME HIG, complementing GTK
 #
-# Home page: https://live.gnome.org/Zenity
+# Home page: https://gitlab.gnome.org/GNOME/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
