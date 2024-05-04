@@ -35,7 +35,7 @@ at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, 
 atkmm                                   gtkmm
 audit-userspace                         elogind
 autoconf213                             archivemount
-autogen                                 gnutls
+autogen                                 gnutls, ntp
 autotrace                               imagemagick
 avahi                                   cups, pulseaudio
 babl                                    gegl
@@ -289,7 +289,7 @@ libbluray                               ffmpeg
 libbytesize
 libcaca                                 ffmpeg, sdl, gst-plugins-good
 libcanberra                             notification-daemon, pavucontrol
-libcap                                  bind-utils
+libcap                                  bind-utils, ntp
 libcddb                                 libcdio
 libcdio                                 ffmpeg, gst-plugins-ugly
 libcelt                                 ffmpeg
@@ -304,12 +304,12 @@ libdv                                   gst-plugins-good
 libdvdnav                               gst-plugins-bad
 libdvdread                              libdvdnav, gst-plugins-bad, gst-plugins-ugly
 libdw                                   gstreamer
-libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5
+libedit                                 pcre2, openssh, sqlite, mit-kerberos-v5, ntp
 libepoxy                                gtk+3, xorg-server, wpebackend-fdo, gtk4
 liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
-libevent                                tmux, nghttp2, mariadb, links
+libevent                                tmux, nghttp2, mariadb, links, ntp
 libexif                                 feh, gst-plugins-bad
 libffcall                               clisp
 libfpx                                  imagemagick
@@ -592,7 +592,7 @@ perl-http-message                       perl-http-daemon, perl-html-parser, perl
 perl-http-negotiate                     perl-libwww-perl
 perl-importer                           perl-term-table, perl-sub-info
 perl-io-html                            perl-http-message
-perl-io-socket-ssl                      wget, git, perl-lwp-protocol-https
+perl-io-socket-ssl                      wget, git, perl-lwp-protocol-https, ntp
 perl-io-string
 perl-ipc-run3                           perl-test2-plugin-nowarnings
 perl-ipc-system-simple                  perl-datetime-locale

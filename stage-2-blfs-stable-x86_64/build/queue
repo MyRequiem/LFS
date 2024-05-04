@@ -754,6 +754,8 @@ l/libadwaita.sh
 ap/zenity.sh
 ap/mirage.sh
 a/fcron.sh
+n/ntp.sh
+n/dhcpcd.sh
 
 
 # l/libblockdev.sh
@@ -774,7 +776,6 @@ a/fcron.sh
 # n/apache-httpd.sh
 # n/php.sh
 # d/openjdk.sh
-# n/ntp.sh
 # n/traceroute.sh
 # l/gnome-keyring.sh
 # l/vte2.sh
