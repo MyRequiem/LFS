@@ -756,6 +756,7 @@ ap/mirage.sh
 a/fcron.sh
 n/ntp.sh
 n/dhcpcd.sh
+s/inxi.sh
 
 
 # l/libblockdev.sh
@@ -842,7 +843,6 @@ n/dhcpcd.sh
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
-# s/inxi.sh
 # ap/slop.sh
 # ap/maim.sh
 # l/libgd.sh

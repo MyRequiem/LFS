@@ -241,6 +241,7 @@ impacket                                curl
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, imagemagick
 intel-gpu-tools                         libva
+inxi
 ipaex-fonts-ttf
 iptables
 isl                                     gcc
@@ -1037,7 +1038,6 @@ zxing                                   gst-plugins-bad
 # ibm-db2
 # id3lib
 # imwheel
-# inxi
 # jq
 # libao
 # libblockdev                         udisks
