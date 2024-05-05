@@ -822,7 +822,6 @@ n/dhcpcd.sh
 # ap/gsimplecal.sh
 # ap/imwheel.sh
 # ap/megatools.sh
-# s/prelink.sh
 # ap/pwgen.sh
 # n/uget.sh
 # s/ramdefrag.sh
