@@ -701,6 +701,7 @@ postfix                                 gnupg, sudo, gimp, fcron
 postgresql                              cyrus-sasl, openldap, exim, qt5
 potrace                                 imagemagick
 pov-ray                                 imagemagick
+prelink
 profiles                                imagemagick
 pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, sdl, qt5, mpg123, gst-plugins-good

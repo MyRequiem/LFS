@@ -757,6 +757,7 @@ a/fcron.sh
 n/ntp.sh
 n/dhcpcd.sh
 s/inxi.sh
+s/prelink.sh
 
 
 # l/libblockdev.sh
