@@ -760,6 +760,7 @@ n/dhcpcd.sh
 s/inxi.sh
 s/prelink.sh
 xap/flameshot.sh
+s/jq.sh
 
 
 # l/libblockdev.sh
@@ -852,7 +853,6 @@ xap/flameshot.sh
 # n/php.sh
 # s/pspg.sh
 # ap/optipng.sh
-# s/jq.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
 # ap/scrot.sh

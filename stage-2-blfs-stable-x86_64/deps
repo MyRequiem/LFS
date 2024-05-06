@@ -256,6 +256,7 @@ jbig-kit                                libtiff, imagemagick
 jbig2dec                                cairo
 jemalloc                                nghttp2
 jing                                    vala
+jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
 json-glib                               pavucontrol, gegl
 judy                                    mariadb
@@ -491,7 +492,7 @@ ntp                                     dhcpcd
 numactl                                 x265
 numlockx
 ocaml                                   llvm
-oniguruma                               slang
+oniguruma                               slang, jq
 open-mpi                                boost
 openal                                  ffmpeg, qt5, mpg123, gst-plugins-bad
 openblas                                python3-numpy
@@ -1039,7 +1040,6 @@ zxing                                   gst-plugins-bad
 # ibm-db2
 # id3lib
 # imwheel
-# jq
 # libao
 # libblockdev                         udisks
 # libbsd                              netcat-openbsd

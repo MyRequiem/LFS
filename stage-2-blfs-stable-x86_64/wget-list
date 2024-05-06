@@ -795,6 +795,7 @@ https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
 https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.gz
 https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz
+https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz
 
 
 ================================================================================
@@ -921,7 +922,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 http://nginx.org/download/nginx-1.23.0.tar.gz
 https://github.com/okbob/pspg/archive/5.5.4/pspg-5.5.4.tar.gz
 http://prdownloads.sourceforge.net/optipng/optipng-0.7.7.tar.gz
-https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-build-against-Qt-5.15.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
