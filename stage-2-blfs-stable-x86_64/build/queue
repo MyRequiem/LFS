@@ -761,6 +761,7 @@ s/inxi.sh
 s/prelink.sh
 xap/flameshot.sh
 s/jq.sh
+d/glm.sh
 
 
 # l/libblockdev.sh
@@ -841,7 +842,6 @@ s/jq.sh
 # ap/rpm.sh
 # ap/rpm2tgz.sh
 # l/giblib.sh
-# d/glm.sh
 # xap/gtick.sh
 # s/hstr.sh
 # l/libx86emu.sh

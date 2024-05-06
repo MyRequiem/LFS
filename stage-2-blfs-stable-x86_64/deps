@@ -68,7 +68,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
@@ -179,6 +179,7 @@ glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibmm                                  pangomm, atkmm
+glm
 glslang                                 mesa
 glu                                     fltk, freeglut, sdl
 gnome-keyring                           libsecret
@@ -1026,7 +1027,6 @@ zxing                                   gst-plugins-bad
 # gconf
 # giblib                              scrot
 # girara                              zathura
-# glm                                 slop
 # glusterfs
 # google-chrome
 # gptfdisk                            udisks
