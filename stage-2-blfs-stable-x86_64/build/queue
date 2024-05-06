@@ -269,6 +269,7 @@ l/nspr.sh
 a/ed.sh
 a/lvm2.sh
 a/usbutils.sh
+d/oniguruma.sh
 l/slang.sh
 l/libatomic-ops.sh
 d/gc.sh
@@ -848,7 +849,6 @@ xap/flameshot.sh
 # ap/maim.sh
 # l/libgd.sh
 # n/nginx.sh
-# d/oniguruma.sh
 # n/php.sh
 # s/pspg.sh
 # ap/optipng.sh
