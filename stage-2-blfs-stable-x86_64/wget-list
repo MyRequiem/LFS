@@ -793,6 +793,7 @@ http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
 https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
+https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.gz
 
 
 ================================================================================
@@ -904,7 +905,6 @@ https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/pat
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0009-Add-c-option-just-as-makepkg-c-y.patch.gz
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0011-ignore-rpm2cpio-error-code.patch.gz
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/rpm2targz
-https://github.com/lupoDharkael/flameshot/archive/v12.0.0/flameshot-12.0.0.tar.gz
 http://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.4.tar.gz
 https://github.com/g-truc/glm/archive/0.9.9.5/glm-0.9.9.5.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gtick/gtick.png

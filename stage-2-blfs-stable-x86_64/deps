@@ -68,7 +68,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
@@ -136,6 +136,7 @@ fftw                                    libsamplerate, pulseaudio, alsa-utils, i
 fig2dev                                 gnupg
 firebird                                qt5
 flac                                    libsndfile, gst-plugins-good
+flameshot
 flif                                    imagemagick
 flite                                   ffmpeg, qt5, gst-plugins-bad
 fltk                                    pinentry, alsa-tools
@@ -365,7 +366,7 @@ libraqm                                 imagemagick
 libraw                                  gegl, imagemagick
 libraw1394                              gst-plugins-good
 libressl                                openssh
-librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links, babl, gegl, gimp, imagemagick, gst-plugins-bad, gtk4
+librsvg                                 freetype, cairo, gdk-pixbuf, adwaita-icon-theme, goffice, links, babl, gegl, gimp, imagemagick, gst-plugins-bad, gtk4, flameshot
 librtmp                                 curl, ffmpeg
 libsamplerate                           pulseaudio, sdl2, alsa-plugins, alsa-utils
 libseccomp                              gnutls
@@ -412,7 +413,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server
 libxdmcp                                libxcb
-libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3
+libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity
@@ -822,7 +823,7 @@ python3-xmlschema                       python3-pytest
 python3-zope-interface                  python3-attrs
 pytrash
 qt4                                     cairo
-qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good
+qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot
 qt6                                     poppler
 quiche                                  curl
 radiance                                imagemagick
@@ -1019,7 +1020,6 @@ zxing                                   gst-plugins-bad
 # enchant
 # exfat                               udisks
 # fdf-toolkit
-# flameshot
 # frontbase
 # gcolor2
 # gconf

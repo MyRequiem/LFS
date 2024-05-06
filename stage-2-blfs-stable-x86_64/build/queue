@@ -758,6 +758,7 @@ n/ntp.sh
 n/dhcpcd.sh
 s/inxi.sh
 s/prelink.sh
+xap/flameshot.sh
 
 
 # l/libblockdev.sh
@@ -837,7 +838,6 @@ s/prelink.sh
 # ap/deb2tgz.sh
 # ap/rpm.sh
 # ap/rpm2tgz.sh
-# xap/flameshot.sh
 # l/giblib.sh
 # d/glm.sh
 # xap/gtick.sh
