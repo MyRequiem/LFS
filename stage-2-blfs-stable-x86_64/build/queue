@@ -762,6 +762,7 @@ s/prelink.sh
 xap/flameshot.sh
 s/jq.sh
 d/glm.sh
+ap/slop.sh
 
 
 # l/libblockdev.sh
@@ -846,7 +847,6 @@ d/glm.sh
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
-# ap/slop.sh
 # ap/maim.sh
 # l/libgd.sh
 # n/nginx.sh
