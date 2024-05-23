@@ -170,6 +170,7 @@ gexiv2                                  gegl, gimp, mirage
 ggi                                     sdl
 ghostpcl                                imagemagick
 ghostscript                             cairo, goffice, libspectre, gimp, imagemagick
+giblib
 giflib                                  imlib2, libwebp
 gimp                                    imagemagick
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps
@@ -238,7 +239,7 @@ icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5
 imagemagick                             gnupg, feh
 imake                                   xxkb
-imlib2                                  w3m, feh
+imlib2                                  w3m, feh, giblib
 impacket                                curl
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, imagemagick
@@ -1026,7 +1027,6 @@ zxing                                   gst-plugins-bad
 # frontbase
 # gcolor2
 # gconf
-# giblib                              scrot
 # girara                              zathura
 # glusterfs
 # google-chrome

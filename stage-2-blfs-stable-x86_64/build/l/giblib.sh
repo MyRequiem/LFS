@@ -16,10 +16,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure           \
-    --prefix=/usr     \
-    --disable-static  \
-    --sysconfdir=/etc \
+./configure                   \
+    --prefix=/usr             \
+    --disable-static          \
+    --sysconfdir=/etc         \
+    --with-imlib2-prefix=/usr \
     --localstatedir=/var || exit 1
 
 make || exit 1
@@ -37,8 +38,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to the truetype renderer and supplies a generic doubly-linked list and some
 # string functions.
 #
-# Home page: http://freecode.com/projects/${PRGNAME}
-# Download:  http://sourceforge.net/projects/slackbuildsdirectlinks/files/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://sourceforge.net/projects/slackbuildsdirectlinks/files/${PRGNAME}/
+# Download:  https://sourceforge.net/projects/slackbuildsdirectlinks/files/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

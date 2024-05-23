@@ -763,6 +763,7 @@ xap/flameshot.sh
 s/jq.sh
 d/glm.sh
 ap/slop.sh
+l/giblib.sh
 
 
 # l/libblockdev.sh
@@ -842,7 +843,6 @@ ap/slop.sh
 # ap/deb2tgz.sh
 # ap/rpm.sh
 # ap/rpm2tgz.sh
-# l/giblib.sh
 # xap/gtick.sh
 # s/hstr.sh
 # l/libx86emu.sh

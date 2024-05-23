@@ -798,6 +798,7 @@ https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz
 https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz
 https://github.com/g-truc/glm/archive/1.0.1/glm-1.0.1.tar.gz
 https://github.com/naelstrof/slop/archive/v7.6/slop-7.6.tar.gz
+https://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.4.tar.gz
 
 
 ================================================================================
@@ -909,7 +910,6 @@ https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/pat
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0009-Add-c-option-just-as-makepkg-c-y.patch.gz
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/patches/0011-ignore-rpm2cpio-error-code.patch.gz
 https://mirrors.slackware.com/slackware/slackware64-current/source/a/rpm2tgz/rpm2targz
-http://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.4.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gtick/gtick.png
 http://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
 https://github.com/dvorka/hstr/archive/2.5/hstr-2.5.tar.gz
