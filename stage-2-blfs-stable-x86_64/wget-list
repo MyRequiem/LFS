@@ -799,6 +799,8 @@ https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz
 https://github.com/g-truc/glm/archive/1.0.1/glm-1.0.1.tar.gz
 https://github.com/naelstrof/slop/archive/v7.6/slop-7.6.tar.gz
 https://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.4.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/scrot/scrot-0.10.0.tar.xz
+https://github.com/naelstrof/maim/archive/v5.8.0/maim-5.8.0.tar.gz
 
 
 ================================================================================
@@ -915,7 +917,6 @@ http://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
 https://github.com/dvorka/hstr/archive/2.5/hstr-2.5.tar.gz
 https://github.com/wfeldt/libx86emu/archive/3.5/libx86emu-3.5.tar.gz
 https://github.com/openSUSE/hwinfo/archive/21.82/hwinfo-21.82.tar.gz
-https://github.com/naelstrof/maim/archive/v5.7.4/maim-5.7.4.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libgd/libgd-2.3.3.patch
 https://github.com/libgd/libgd/archive/refs/tags/gd-2.3.3.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/nginx/nginx
@@ -926,7 +927,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
 http://prdownloads.sourceforge.net/qt5ct/qt5ct-1.5.tar.bz2
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/scrot/scrot-0.10.0.tar.xz
 https://code.videolan.org/videolan/libplacebo/-/archive/v4.208.0/libplacebo-v4.208.0.tar.bz2
 https://mujs.com/downloads/mujs-1.2.0.tar.xz
 https://github.com/mpv-player/mpv/archive/v0.34.1/mpv-0.34.1.tar.gz

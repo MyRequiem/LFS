@@ -764,6 +764,8 @@ s/jq.sh
 d/glm.sh
 ap/slop.sh
 l/giblib.sh
+ap/scrot.sh
+ap/maim.sh
 
 
 # l/libblockdev.sh
@@ -847,7 +849,6 @@ l/giblib.sh
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
-# ap/maim.sh
 # l/libgd.sh
 # n/nginx.sh
 # n/php.sh
@@ -855,7 +856,6 @@ l/giblib.sh
 # ap/optipng.sh
 # l/qt5-styleplugins.sh
 # s/qt5ct.sh
-# ap/scrot.sh
 # l/libplacebo.sh
 # d/mujs.sh
 # ap/mpv.sh

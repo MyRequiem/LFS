@@ -170,7 +170,7 @@ gexiv2                                  gegl, gimp, mirage
 ggi                                     sdl
 ghostpcl                                imagemagick
 ghostscript                             cairo, goffice, libspectre, gimp, imagemagick
-giblib
+giblib                                  scrot
 giflib                                  imlib2, libwebp
 gimp                                    imagemagick
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps
@@ -239,7 +239,7 @@ icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5
 imagemagick                             gnupg, feh
 imake                                   xxkb
-imlib2                                  w3m, feh, giblib
+imlib2                                  w3m, feh, giblib, scrot, maim
 impacket                                curl
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, imagemagick
@@ -445,6 +445,7 @@ lz4                                     lrzip, rsync, mariadb
 lzip                                    ed
 lzo                                     libarchive, cairo
 maemo                                   alsa-plugins
+maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5
 man2html                                xterm
 mariadb                                 cyrus-sasl, openldap, exim, qt5
@@ -849,6 +850,7 @@ sassc                                   gtk+3, gtk4
 saxon6                                  docbook-xsl
 sbc                                     pulseaudio, gst-plugins-bad
 schroedinger                            ffmpeg
+scrot
 sdl                                     libtheora, libwebp, gst-plugins-base, mpg123, gst-plugins-bad, libmpeg2
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
@@ -862,7 +864,7 @@ shellcheck
 silgraphite                             graphite2
 skia                                    cairo
 slang                                   aalib, mc
-slop
+slop                                    maim
 smartmontools
 snappy                                  mariadb
 sound-theme-freedesktop                 libcanberra
@@ -1062,7 +1064,6 @@ zxing                                   gst-plugins-bad
 # libx86emu                           hwinfo
 # lmdb
 # lsscsi
-# maim
 # megatools
 # mhash
 # mini-sql
@@ -1101,7 +1102,6 @@ zxing                                   gst-plugins-bad
 # roxen-webserver
 # rpm                                 rpm2tgz
 # rpm2tgz
-# scrot
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
