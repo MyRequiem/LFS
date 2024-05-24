@@ -41,15 +41,22 @@ mkdir -pv "${TMP_DIR}"{"${INSTALL_DIR}",/etc/fonts/conf.{d,avail}}
 
 cp wqy-zenhei.ttc "${TMP_DIR}${INSTALL_DIR}"
 
-cp 43-wqy-zenhei-sharp.conf 44-wqy-zenhei.conf \
-    "${TMP_DIR}/etc/fonts/conf.avail/"
-chown root:root "${TMP_DIR}/etc/fonts/conf.avail"/*
-chmod 644       "${TMP_DIR}/etc/fonts/conf.avail"/*
+# конфиги
+cat "${SOURCES}/44-wqy-zenhei-upstream-orig.conf" > \
+    "${TMP_DIR}/etc/fonts/conf.avail/44-wqy-zenhei-upstream-orig.conf"
+
+cat "${SOURCES}/64-wqy-zenhei.conf" > \
+    "${TMP_DIR}/etc/fonts/conf.avail/64-wqy-zenhei.conf"
+
+cat "${SOURCES}/66-wqy-zenhei-sharp.conf" > \
+    "${TMP_DIR}/etc/fonts/conf.avail/66-wqy-zenhei-sharp.conf"
 
 (
     cd "${TMP_DIR}/etc/fonts/conf.d/" || exit 1
-    ln -svf ../conf.avail/43-wqy-zenhei-sharp.conf 43-wqy-zenhei-sharp.conf
-    ln -svf ../conf.avail/44-wqy-zenhei.conf       44-wqy-zenhei.conf
+    ln -svf ../conf.avail/44-wqy-zenhei-upstream-orig.conf \
+        44-wqy-zenhei-upstream-orig.conf
+    ln -svf ../conf.avail/64-wqy-zenhei.conf 64-wqy-zenhei.conf
+    ln -svf ../conf.avail/66-wqy-zenhei-sharp.conf 66-wqy-zenhei-sharp.conf
 )
 
 /bin/cp -vpR "${TMP_DIR}"/* /

@@ -656,6 +656,9 @@ https://github.com/googlei18n/noto-emoji/archive/v2.042/noto-emoji-2.042.tar.gz
 https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/1.026R-vf.tar.gz
 https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
 https://altushost-swe.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45%20%28Fighting-state%20RC1%29/wqy-zenhei-0.9.45.tar.gz
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wqy-zenhei-font-ttf/44-wqy-zenhei-upstream-orig.conf
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wqy-zenhei-font-ttf/64-wqy-zenhei.conf
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/wqy-zenhei-font-ttf/66-wqy-zenhei-sharp.conf
 https://moji.or.jp/wp-content/ipafont/IPAexfont/IPAexfont00401.zip
 https://jaist.dl.osdn.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 https://dotsrc.dl.osdn.net/osdn/vlgothic/77450/VLGothic-20220612.tar.xz
