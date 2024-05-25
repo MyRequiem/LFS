@@ -30,6 +30,9 @@ cat >> trust/trust-extract-compat << "EOF"
 
 # Update trust stores
 /usr/sbin/make-ca -r
+
+# Download ca-certificates needed for cURL
+wget -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem
 EOF
 
 GTK_DOC="false"
