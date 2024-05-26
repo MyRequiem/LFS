@@ -32,7 +32,12 @@ cat >> trust/trust-extract-compat << "EOF"
 /usr/sbin/make-ca -r
 
 # Download ca-certificates needed for cURL
-wget -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem
+echo -ne "\nDownload https://curl.haxx.se/ca/cacert.pem ... "
+wget -q -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem || {
+    echo "Error"
+    exit
+}
+echo "Ok"
 EOF
 
 GTK_DOC="false"

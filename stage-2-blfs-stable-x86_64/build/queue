@@ -766,9 +766,9 @@ ap/slop.sh
 l/giblib.sh
 ap/scrot.sh
 ap/maim.sh
+l/libblockdev.sh
 
 
-# l/libblockdev.sh
 # ap/at.sh
 # a/upower.sh
 # a/udisks.sh
