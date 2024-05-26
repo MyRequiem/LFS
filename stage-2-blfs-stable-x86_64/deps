@@ -107,7 +107,7 @@ docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl, postgresql
 docbook-utils                           libsigc++2, fontconfig, gtk+2, flac, postgresql, fcron
 docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, itstool, wayland, libdrm, libsecret, polkit, i3
-docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3, libsecret, polkit
+docbook-xsl                             libxslt, glib, elogind, python3-asciidoc, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3, libsecret, polkit, upower
 docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted
@@ -193,7 +193,7 @@ gnome-themes-extra                      gtk+2
 gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, volume-key, gcr3, imagemagick, gcr4
 gnuplot                                 imagemagick
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg, neon
-gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup, libsoup3, gtk4, gcr4, libblockdev
+gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup, libsoup3, gtk4, gcr4, libblockdev, upower
 goffice
 gpac                                    x264
 gperftools                              libmypaint
@@ -216,7 +216,7 @@ gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
 gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs, ibus, gcr4, libadwaita, zenity
@@ -328,7 +328,7 @@ libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
-libgudev                                gimp, gst-plugins-base
+libgudev                                gimp, gst-plugins-base, upower
 libgxps                                 imagemagick
 libhandy                                dconf
 libheif                                 gimp, imagemagick
@@ -337,6 +337,7 @@ libidn                                  gnutls, whois, ghostscript, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg, gst-plugins-good
 libilbc                                 ffmpeg
+libimobiledevice                        upower
 libinput                                xorg-libinput-driver, qt5
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5
 libjxl                                  imagemagick
@@ -404,7 +405,7 @@ libunibreak                             libass
 libunistring                            libidn2, gnutls, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
 liburcu
-libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad
+libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugins-bad
 libvdpau                                mesa, libvdpau-va-gl, ffmpeg
@@ -424,7 +425,7 @@ libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower
 libyajl                                 i3
 libyaml                                 python3-pyyaml, ruby, libblockdev
 lilv                                    gst-plugins-bad
@@ -703,7 +704,7 @@ pixman                                  cairo, xorg-server
 pngcrush                                gimp
 pngnq                                   gimp
 pocketlint                              libbytesize
-polkit                                  elogind, xorg-server
+polkit                                  elogind, xorg-server, upower
 polkit-gnome                            polkit
 poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
@@ -743,7 +744,7 @@ python3-cython                          yasm, python3-pyyaml, python3-msgpack, n
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus                            libsecret, ibus
-python3-dbusmock                        polkit
+python3-dbusmock                        polkit, upower
 python3-dill                            python3-pylint
 python3-docutils                        sshfs, gdk-pixbuf, librsvg, libdrm, alsa-utils, gtk4
 python3-ducktype                        dbus
@@ -795,7 +796,7 @@ python3-pycryptodome
 python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython, gegl
-python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage
+python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower
 python3-pylint
 python3-pympler                         python3-attrs
 python3-pyparsing                       libinput
@@ -911,12 +912,13 @@ trousers                                gnutls
 tslib                                   qt5
 twolame                                 ffmpeg, gst-plugins-good, gst-plugins-ugly
 ufraw                                   imagemagick
-umockdev                                libgudev
+umockdev                                libgudev, upower
 unbound                                 gnutls
 uniconvertor                            imagemagick
 unixodbc                                openldap, mariadb, qt5
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
+upower
 usbutils
 utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
@@ -1116,7 +1118,6 @@ zxing                                   gst-plugins-bad
 # udisks
 # uget
 # unittest-cpp                        enchant
-# upower
 # usbredir                            spice-gtk
 # utimer
 # vde2

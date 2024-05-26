@@ -768,9 +768,9 @@ ap/scrot.sh
 ap/maim.sh
 l/libblockdev.sh
 ap/at.sh
+a/upower.sh
 
 
-# a/upower.sh
 # a/udisks.sh
 # l/apr-util.sh
 # l/libical.sh
