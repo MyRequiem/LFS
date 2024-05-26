@@ -805,12 +805,12 @@ https://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/scrot/scrot-0.10.0.tar.xz
 https://github.com/naelstrof/maim/archive/v5.8.0/maim-5.8.0.tar.gz
 https://github.com/storaged-project/libblockdev/releases/download/2.28-1/libblockdev-2.28.tar.gz
+https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 
 
 ================================================================================
 https://gitlab.freedesktop.org/upower/upower/uploads/93cfe7c8d66ed486001c4f3f55399b7a/upower-0.99.11.tar.xz
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.2/udisks-2.9.2.tar.bz2
-http://software.calhariz.com/at/at_3.2.1.orig.tar.gz
 https://archive.apache.org/dist/apr/apr-util-1.6.1.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz

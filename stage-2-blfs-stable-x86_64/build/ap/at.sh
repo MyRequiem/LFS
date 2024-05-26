@@ -60,7 +60,7 @@ mkdir -pv "${TMP_DIR}${DOCS}"
 # пакет "не любит" сборку в несколько потоков
 make -j1 || exit 1
 # make test
-make install docdir="${DOCS}" atdocdir="${DOCS}" IROOT="${TMP_DIR}"
+make install docdir="${DOCS}" atdocdir="${DOCS}" DESTDIR="${TMP_DIR}"
 
 # скрипт /etc/init.d/atd для запуска демона atd при старте системы
 (
@@ -93,7 +93,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # required for Linux Standards Base (LSB) conformance.
 #
 # Home page: https://salsa.debian.org/debian/${PRGNAME}
-# Download:  http://software.calhariz.com/${PRGNAME}/${PRGNAME}_${VERSION}.orig.tar.gz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}_${VERSION}.orig.tar.gz
 #
 EOF
 
