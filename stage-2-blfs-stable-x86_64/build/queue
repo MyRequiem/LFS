@@ -769,9 +769,10 @@ ap/maim.sh
 l/libblockdev.sh
 ap/at.sh
 a/upower.sh
+n/libiscsi.sh
+a/udisks.sh
 
 
-# a/udisks.sh
 # l/apr-util.sh
 # l/libical.sh
 # l/apr-util.sh
@@ -802,8 +803,6 @@ a/upower.sh
 # n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
-# n/libiscsi.sh
-# a/udisks.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
 # n/spice.sh

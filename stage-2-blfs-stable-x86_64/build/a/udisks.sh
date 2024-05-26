@@ -11,19 +11,18 @@ PRGNAME="udisks"
 #              libgudev
 #              libxslt
 #              polkit
-# Recommended: elogind
-# Optional:    gtk-doc
-#              btrfs-progs
 #              dbus
 #              dosfstools
+# Recommended: elogind
+# Optional:    gobject-introspection (требуется при сборке GNOME)
+#              btrfs-progs
 #              gptfdisk
 #              mdadm
 #              xfsprogs
-#              gobject-introspection (требуется при сборке GNOME)
-#              python-d-bus          (для тестов)
+#              python3-dbus          (для тестов)
+#              gtk-doc
 #              lvm2
-#              ntfs-3g
-#              python3-pygobject3     (для тестов)
+#              python3-pygobject3    (для тестов)
 #              exfat                 (https://github.com/relan/exfat)
 #              libiscsi              (https://github.com/sahlberg/libiscsi)
 
@@ -41,8 +40,8 @@ LVM2="--disable-lvm2"
 ISCSI="--disable-iscsi"
 
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
-command -v btrfs        &>/dev/null && BTRFS="--enable-btrfs"
-command -v fsadm        &>/dev/null && LVM2="--enable-lvm2"
+command -v btrfs &>/dev/null && BTRFS="--enable-btrfs"
+command -v fsadm &>/dev/null && LVM2="--enable-lvm2"
 
 # не собирается с параметром --enable-iscsi и установленным libiscsi
 #    checking libiscsi.h usability... no
@@ -50,7 +49,7 @@ command -v fsadm        &>/dev/null && LVM2="--enable-lvm2"
 #    checking for libiscsi.h... no
 #    checking for libiscsi_init in -liscsi... no
 #    configure: error: iSCSI support requested but libraries not found
-# [ -x /usr/lib/libiscsi.so ]         && ISCSI="--enable-iscsi"
+# [ -x /usr/lib/libiscsi.so ] && ISCSI="--enable-iscsi"
 
 ./configure           \
     --prefix=/usr     \
