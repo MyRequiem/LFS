@@ -23,7 +23,8 @@ aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
 apache-httpd                            curl, libsoup, libsoup3
 appstream-glib                          gimp
-apr
+apr                                     apr-util
+apr-util
 archivemount                            vifm
 argon2                                  cryptsetup
 as31                                    alsa-firmware
@@ -43,7 +44,7 @@ babl                                    gegl
 bash-completion                         elogind, gstreamer, dconf
 bcachefs                                libblockdev
 bellagio-openmax                        mesa
-berkeley-db                             cyrus-sasl, openldap, python3, ruby
+berkeley-db                             cyrus-sasl, openldap, python3, ruby, apr-util
 bibtex                                  libtheora
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
@@ -150,7 +151,7 @@ fontconfig                              xorg-libraries, ghostscript, cairo, pang
 fop                                     python3-asciidoc, xmlto, xorgproto, libxdmcp, xorg-libraries, gtksourceview3, xorg-server, postgresql
 freefont
 freeglut                                libtiff, libwebp, jasper
-freetds                                 qt5
+freetds                                 qt5, apr-util
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass, ffmpeg
 frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4
@@ -457,7 +458,7 @@ maemo                                   alsa-plugins
 maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5
 man2html                                xterm
-mariadb                                 cyrus-sasl, openldap, exim, qt5
+mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util
 mc
 mdadm                                   lvm2, libblockdev, udisks
 mecab                                   mariadb
@@ -479,7 +480,7 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver, qt5
 mypaint-brushes                         gimp
 myrocks                                 mariadb
-mysql                                   cyrus-sasl, openldap, exim, qt5
+mysql                                   cyrus-sasl, openldap, exim, qt5, apr-util
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good, aom
 ncompress                               xorg-libraries
 ndctl                                   libblockdev
@@ -519,7 +520,7 @@ openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils, postgresql
 openjdk                                 libidn
 openjpeg                                ghostscript, ffmpeg, poppler, gimp, imagemagick, gst-plugins-bad
-openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim
+openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim, apr-util
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
@@ -713,7 +714,7 @@ poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
 portaudio                               mpg123
 postfix                                 gnupg, sudo, gimp, fcron, at
-postgresql                              cyrus-sasl, openldap, exim, qt5
+postgresql                              cyrus-sasl, openldap, exim, qt5, apr-util
 potrace                                 imagemagick
 pov-ray                                 imagemagick
 prelink
@@ -885,7 +886,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 startup-notification                    rxvt-unicode, i3
@@ -919,7 +920,7 @@ ufraw                                   imagemagick
 umockdev                                libgudev, upower
 unbound                                 gnutls
 uniconvertor                            imagemagick
-unixodbc                                openldap, mariadb, qt5
+unixodbc                                openldap, mariadb, qt5, apr-util
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
 upower
@@ -1017,7 +1018,6 @@ zxing                                   gst-plugins-bad
 # 3store                              redland
 # adabas
 # apparmor
-# apr-util                            apache-httpd
 # birdstep
 # bviplus
 # cantarell-fonts

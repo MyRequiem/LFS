@@ -771,11 +771,10 @@ ap/at.sh
 a/upower.sh
 n/libiscsi.sh
 a/udisks.sh
+l/apr-util.sh
 
 
-# l/apr-util.sh
 # l/libical.sh
-# l/apr-util.sh
 # l/libseccomp.sh
 # l/raptor.sh
 # l/rasqal.sh
