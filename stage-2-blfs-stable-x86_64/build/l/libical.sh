@@ -11,10 +11,11 @@ PRGNAME="libical"
 # Recommended: gobject-introspection
 #              vala
 # Optional:    berkeley-db
-#              doxygen           (для сборки API документации)
-#              gtk-doc           (для сборки API документации)
+#              doxygen             (для сборки API документации)
+#              graphviz            (для сборки API документации)
+#              gtk-doc             (для сборки API документации)
 #              icu
-#              python3-pygobject3 (для некоторых тестов)
+#              python3-pygobject3  (для некоторых тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,43 +24,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-VALA_API="false"
-INTROSPECTION="false"
-
-# command -v doxygen &>/dev/null && command -v gtkdoc-check &>/dev/null && \
-#     DOCS="true"
-
-command -v vala          &>/dev/null && VALA_API="true"
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
-
 mkdir build
 cd build || exit 1
 
-cmake                                        \
-    -DCMAKE_INSTALL_PREFIX=/usr              \
-    -DCMAKE_BUILD_TYPE=Release               \
-    -DSHARED_ONLY=yes                        \
-    -DICAL_BUILD_DOCS=${DOCS}                \
-    -DICAL_GLIB_VAPI=${VALA_API}             \
-    -DGOBJECT_INTROSPECTION=${INTROSPECTION} \
+cmake                            \
+    -DCMAKE_INSTALL_PREFIX=/usr  \
+    -DCMAKE_BUILD_TYPE=Release   \
+    -DSHARED_ONLY=yes            \
+    -DICAL_BUILD_DOCS=false      \
+    -DGOBJECT_INTROSPECTION=true \
+    -DICAL_GLIB_VAPI=true        \
+    -DUSE_BUILTIN_TZDATA=yes     \
     .. || exit 1
 
 # этот пакет может иногда давать сбой при сборке в несколько потоков, поэтому
 # явно указываем -j1
 make -j1 || exit 1
-
-[[ "x${DOCS}" == "xtrue" ]] && make -j1 docs
-
 # make test
-
 make install DESTDIR="${TMP_DIR}"
-
-if [[ "x${DOCS}" == "xtrue" ]]; then
-    DOC_PATH="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
-    install -vdm755 "${DOC_PATH}"
-    cp -vr apidocs/html/* "${DOC_PATH}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

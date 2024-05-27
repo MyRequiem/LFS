@@ -810,10 +810,10 @@ https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.0/upower-v1.90.0.ta
 https://github.com/sahlberg/libiscsi/archive/1.20.0/libiscsi-1.20.0.tar.gz
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2
 https://archive.apache.org/dist/apr/apr-util-1.6.3.tar.bz2
+https://github.com/libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
 
 
 ================================================================================
-https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz
 https://github.com/seccomp/libseccomp/releases/download/v2.5.1/libseccomp-2.5.1.tar.gz
 http://download.librdf.org/source/raptor2-2.0.15.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/raptor-2.0.15-security_fixes-1.patch
