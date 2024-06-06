@@ -281,7 +281,7 @@ lapack                                  python3-numpy
 lasem                                   goffice
 lcms                                    imagemagick
 lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad
-lcov                                    gjs
+lcov                                    gjs, libseccomp
 lensfun                                 gegl
 lerc                                    libtiff
 liba52                                  gst-plugins-ugly
@@ -930,7 +930,7 @@ utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3, gcr4, libadwaita, libical
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gcr4
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, libtheora, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gcr4, libseccomp
 vdo                                     lvm2
 vifm
 vim                                     fcron
@@ -949,7 +949,7 @@ weasyprint                              vala
 webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
 wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak, imagemagick
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines
+which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp
 whois
 wildmidi                                gst-plugins-bad
 wiredtiger                              openldap

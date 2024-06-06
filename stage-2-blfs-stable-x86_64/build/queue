@@ -16,6 +16,7 @@ n/npth.sh
 n/pth.sh
 l/libidn.sh
 l/libidn2.sh
+l/libseccomp.sh
 n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
@@ -775,7 +776,6 @@ l/apr-util.sh
 l/libical.sh
 
 
-# l/libseccomp.sh
 # l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
