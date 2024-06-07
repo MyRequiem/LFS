@@ -775,9 +775,9 @@ a/udisks.sh
 l/apr-util.sh
 l/libical.sh
 l/raptor.sh
+l/rasqal.sh
 
 
-# l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
 # ap/lmdb.sh

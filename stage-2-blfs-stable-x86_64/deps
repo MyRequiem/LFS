@@ -326,7 +326,7 @@ libevent                                tmux, nghttp2, mariadb, links, ntp
 libexif                                 feh, gst-plugins-bad
 libffcall                               clisp
 libfpx                                  imagemagick
-libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server, gst-plugins-bad, gcr4
+libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server, gst-plugins-bad, gcr4, rasqal
 libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
@@ -543,7 +543,7 @@ password-store                          dmenu
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt5
-pcre                                    wget, git, slang, nmap, xterm, mc, i3
+pcre                                    wget, git, slang, nmap, xterm, mc, i3, rasqal
 pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim, qt5
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
@@ -845,7 +845,8 @@ quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
 ralcgm                                  imagemagick
-raptor
+raptor                                  rasqal
+rasqal
 reiserfsprogs                           lvm2
 rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
@@ -1099,7 +1100,6 @@ zxing                                   gst-plugins-bad
 # qt5-styleplugins
 # qt5ct
 # ramdefrag
-# rasqal                              redland
 # re2c
 # redland
 # rest

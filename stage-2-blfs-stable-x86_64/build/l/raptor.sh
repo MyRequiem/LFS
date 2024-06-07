@@ -60,8 +60,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # including all versions of RSS, Atom 1.0 and 0.3, GRDDL and microformats for
 # HTML, XHTML and XML.
 #
-# Home page: http://librdf.org/
-# Download:  http://download.librdf.org/source/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://librdf.org/
+# Download:  https://download.librdf.org/source/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

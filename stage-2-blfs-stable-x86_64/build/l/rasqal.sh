@@ -43,8 +43,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # executing them and returning result formats. It currently handles the RDF
 # Data Query Language (RDQL) and SPARQL Query language.
 #
-# Home page: http://librdf.org/
-# Download:  http://download.librdf.org/source/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://librdf.org/
+# Download:  https://download.librdf.org/source/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
