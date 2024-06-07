@@ -774,9 +774,9 @@ n/libiscsi.sh
 a/udisks.sh
 l/apr-util.sh
 l/libical.sh
+l/raptor.sh
 
 
-# l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
@@ -812,7 +812,6 @@ l/libical.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh
-# l/raptor.sh
 # s/talloc.sh
 # s/jemalloc.sh
 # l/libcap-ng.sh

@@ -14,7 +14,7 @@ ARCH_NAME="${PRGNAME}2"
 # Recommended: no
 # Optional:    gtk-doc
 #              icu
-#              libyajl (https://lloyd.github.com/yajl/)
+#              libyajl (https://lloyd.github.io/yajl/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
