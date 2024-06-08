@@ -217,7 +217,7 @@ gst-plugins-base                        qt5, gst-plugins-good, gst-plugins-bad, 
 gst-plugins-good                        gst-plugins-bad, gtk4
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp
+gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp, libiodbc
 gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor
 gtk-engines
@@ -343,6 +343,7 @@ libiec61883                             ffmpeg, gst-plugins-good
 libilbc                                 ffmpeg
 libimobiledevice                        upower
 libinput                                xorg-libinput-driver, qt5
+libiodbc
 libiscsi                                udisks
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5
 libjxl                                  imagemagick
@@ -1058,7 +1059,6 @@ zxing                                   gst-plugins-bad
 # libcacard                           spice-gtk, qemu
 # libcap-ng                           qemu
 # libgd                               nginx
-# libiodbc                            redland
 # libmad
 # libmcrypt
 # libmd                               libbsd
