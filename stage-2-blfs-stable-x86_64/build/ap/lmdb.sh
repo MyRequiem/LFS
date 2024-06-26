@@ -37,7 +37,7 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-cd "./libraries/liblmdb" || exit 1
+cd libraries/liblmdb || exit 1
 
 make || exit 1
 # не устанавливаем статическую библиотеку liblmdb.a

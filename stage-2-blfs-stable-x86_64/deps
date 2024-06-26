@@ -442,6 +442,7 @@ liquid-rescale                          imagemagick
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace, imagemagick
 lm-sensors                              htop, mesa
+lmdb
 lnav
 lrdf                                    gst-plugins-bad
 lrzip
@@ -1071,7 +1072,6 @@ zxing                                   gst-plugins-bad
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager
 # libvirt-glib                        virt-manager
 # libx86emu                           hwinfo
-# lmdb
 # lsscsi
 # megatools
 # mhash
