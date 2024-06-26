@@ -2,6 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
+3store                                  redland
 Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp, libmpeg2, numlockx
 Plasma5                                 polkit
 aalib                                   sdl, gimp, gst-plugins-good
@@ -44,7 +45,7 @@ babl                                    gegl
 bash-completion                         elogind, gstreamer, dconf
 bcachefs                                libblockdev
 bellagio-openmax                        mesa
-berkeley-db                             cyrus-sasl, openldap, python3, ruby, apr-util, libical
+berkeley-db                             cyrus-sasl, openldap, python3, ruby, apr-util, libical, redland
 bibtex                                  libtheora
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
@@ -343,7 +344,7 @@ libiec61883                             ffmpeg, gst-plugins-good
 libilbc                                 ffmpeg
 libimobiledevice                        upower
 libinput                                xorg-libinput-driver, qt5
-libiodbc
+libiodbc                                redland
 libiscsi                                udisks
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5
 libjxl                                  imagemagick
@@ -460,7 +461,7 @@ maemo                                   alsa-plugins
 maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5
 man2html                                xterm
-mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util
+mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util, redland
 mc
 mdadm                                   lvm2, libblockdev, udisks
 mecab                                   mariadb
@@ -482,7 +483,7 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver, qt5
 mypaint-brushes                         gimp
 myrocks                                 mariadb
-mysql                                   cyrus-sasl, openldap, exim, qt5, apr-util
+mysql                                   cyrus-sasl, openldap, exim, qt5, apr-util, redland
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good, aom
 ncompress                               xorg-libraries
 ndctl                                   libblockdev
@@ -716,7 +717,7 @@ poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
 portaudio                               mpg123
 postfix                                 gnupg, sudo, gimp, fcron, at
-postgresql                              cyrus-sasl, openldap, exim, qt5, apr-util
+postgresql                              cyrus-sasl, openldap, exim, qt5, apr-util, redland
 potrace                                 imagemagick
 pov-ray                                 imagemagick
 prelink
@@ -847,7 +848,8 @@ radiance                                imagemagick
 ragel                                   harfbuzz
 ralcgm                                  imagemagick
 raptor                                  rasqal
-rasqal
+rasqal                                  redland
+redland
 reiserfsprogs                           lvm2
 rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
@@ -890,7 +892,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 startup-notification                    rxvt-unicode, i3
@@ -937,6 +939,7 @@ valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, l
 vdo                                     lvm2
 vifm
 vim                                     fcron
+virtuoso                                redland
 vlgothic-fonts-ttf
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
@@ -1019,7 +1022,6 @@ zxing                                   gst-plugins-bad
 
 
 # ==============================================================================
-# 3store                              redland
 # adabas
 # apparmor
 # birdstep
@@ -1101,7 +1103,6 @@ zxing                                   gst-plugins-bad
 # qt5ct
 # ramdefrag
 # re2c
-# redland
 # rest
 # roxen-webserver
 # rpm                                 rpm2tgz
@@ -1123,7 +1124,6 @@ zxing                                   gst-plugins-bad
 # vde2
 # virglrenderer
 # virt-manager
-# virtuoso                            redland
 # voikko                              enchant
 # vte2                                qemu
 # vte3                                qemu

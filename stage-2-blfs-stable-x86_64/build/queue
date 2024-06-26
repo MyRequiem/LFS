@@ -777,9 +777,9 @@ l/libical.sh
 l/raptor.sh
 l/rasqal.sh
 l/libiodbc.sh
+l/redland.sh
 
 
-# l/redland.sh
 # ap/lmdb.sh
 # d/tidy-html5.sh
 # l/enchant.sh

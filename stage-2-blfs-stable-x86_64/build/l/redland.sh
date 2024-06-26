@@ -13,7 +13,7 @@ PRGNAME="redland"
 #              sqlite
 #              mariadb или mysql (https://www.mysql.com/)
 #              postgresql
-#              virtuoso    (https://sourceforge.net/projects/virtuoso/files/)
+#              virtuoso    (https://downloads.sourceforge.net/virtuoso/)
 #              3store      (https://sourceforge.net/projects/threestore/)
 
 ROOT="/root/src/lfs"
@@ -48,8 +48,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # in its own class via an object based API, reflected into the language APIs,
 # currently C#, Java, Perl, PHP, Python, Ruby and Tcl.
 #
-# Home page: http://librdf.org/
-# Download:  http://download.librdf.org/source/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://librdf.org/
+# Download:  https://download.librdf.org/source/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
