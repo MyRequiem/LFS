@@ -29,7 +29,7 @@ apr-util
 archivemount                            vifm
 argon2                                  cryptsetup
 as31                                    alsa-firmware
-aspell                                  aspell-dict-en, aspell-dict-ru
+aspell                                  aspell-dict-en, aspell-dict-ru, enchant
 aspell-dict-en
 aspell-dict-ru
 assimp                                  qt5
@@ -91,7 +91,7 @@ dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3, gimp
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils, udisks
-dbus-glib                               gimp
+dbus-glib                               gimp, enchant
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, fltk
@@ -115,7 +115,7 @@ docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5
 dovecot                                 gnupg, sudo, gimp, fcron, at
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical
+doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
 duktape                                 polkit
@@ -126,6 +126,7 @@ elinks                                  xmlto
 elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server, udisks
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
+enchant
 enscript                                imagemagick
 etc-issue
 exfat                                   udisks
@@ -184,7 +185,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3, libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, gobject-introspection, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibmm                                  pangomm, atkmm
 glm                                     slop
@@ -238,8 +239,10 @@ hicolor-icon-theme                      gtk+2, gtk+3, fltk, gtk4
 highlight                               vifm, gtk4
 hp2xx                                   imagemagick
 hplip                                   cups
+hspell                                  enchant
 htop
 http-parser                             nodejs
+hunspell                                enchant
 hwloc                                   htop
 i3                                      bumblebee-status
 ibus                                    sdl2, qt5
@@ -509,6 +512,7 @@ ntfs-3g
 ntp                                     dhcpcd
 numactl                                 x265
 numlockx
+nuspell                                 enchant
 ocaml                                   llvm
 oniguruma                               slang, jq
 open-mpi                                boost
@@ -928,6 +932,7 @@ ufraw                                   imagemagick
 umockdev                                libgudev, upower
 unbound                                 gnutls
 uniconvertor                            imagemagick
+unittest-cpp                            enchant
 unixodbc                                openldap, mariadb, qt5, apr-util
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
@@ -947,6 +952,7 @@ vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
 vo-amrwb                                gst-plugins-bad
 vo-amrwbenc                             ffmpeg
+voikko                                  enchant
 volume-key                              libblockdev
 vulkan                                  qt5, gst-plugins-bad, gtk4
 w3m                                     python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
@@ -1040,7 +1046,6 @@ zxing                                   gst-plugins-bad
 # dnsmasq
 # ebtables
 # empress
-# enchant
 # fdf-toolkit
 # frontbase
 # gcolor2
@@ -1050,9 +1055,7 @@ zxing                                   gst-plugins-bad
 # google-chrome
 # gsimplecal
 # gtick
-# hspell                              enchant
 # hstr
-# hunspell                            enchant
 # hwinfo
 # hyperwave
 # ibm-db2
@@ -1085,7 +1088,6 @@ zxing                                   gst-plugins-bad
 # net-snmp
 # netcat-openbsd
 # nginx
-# nuspell                             enchant
 # optipng
 # opusfile                            cmus
 # osinfo-db                           libosinfo, virt-manager
@@ -1118,13 +1120,11 @@ zxing                                   gst-plugins-bad
 # transmission
 # tunctl                              virt-manager
 # uget
-# unittest-cpp                        enchant
 # usbredir                            spice-gtk
 # utimer
 # vde2
 # virglrenderer
 # virt-manager
-# voikko                              enchant
 # vte2                                qemu
 # vte3                                qemu
 # wddx

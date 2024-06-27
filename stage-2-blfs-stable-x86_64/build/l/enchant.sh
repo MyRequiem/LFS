@@ -11,7 +11,7 @@ PRGNAME="enchant"
 # Optional:    dbus-glib
 #              doxygen
 #              hspell       (http://hspell.ivrix.org.il/)
-#              hunspell     (http://hunspell.github.io/)
+#              hunspell     (https://hunspell.github.io/)
 #              nuspell      (https://nuspell.github.io/)
 #              voikko       (https://voikko.puimula.org/)
 #              unittest-cpp (требуется для тестов) https://github.com/unittest-cpp/unittest-cpp/releases
@@ -24,9 +24,9 @@ PRGNAME="enchant"
 #    EOF
 #
 # вывод всех слов с ошибками
-#    # enchant -d en_GB -l /tmp/test-enchant.txt
+#    # enchant-2 -d en_GB -l /tmp/test-enchant.txt
 # вывод всех альтернатив для слов с ошибками
-#    # enchant -d en_GB -a /tmp/test-enchant.txt
+#    # enchant-2 -d en_GB -a /tmp/test-enchant.txt
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -48,12 +48,6 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-# создадим ссылки, чтобы другие программы могли найти enchant по старому имени
-ln -sfv enchant-2       "${TMP_DIR}/usr/bin/enchant"
-ln -sfv enchant-2       "${TMP_DIR}/usr/include/enchant"
-ln -sfv libenchant-2.so "${TMP_DIR}/usr/lib/libenchant.so"
-ln -sfv enchant-2.pc    "${TMP_DIR}/usr/lib/pkgconfig/enchant.pc"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -71,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #    * Uspell (Yiddish, Hebrew and Eastern European languages)
 #    * Hspell (Hebrew) and others
 #
-# Home page: http://www.abisource.com/projects/${PRGNAME}/
+# Home page: https://github.com/AbiWord/${PRGNAME}
 # Download:  https://github.com/AbiWord/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
