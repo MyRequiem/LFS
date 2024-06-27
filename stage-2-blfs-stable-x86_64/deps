@@ -73,7 +73,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical
+cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
@@ -432,7 +432,7 @@ libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5
 libyajl                                 i3, raptor
 libyaml                                 python3-pyyaml, ruby, libblockdev
 lilv                                    gst-plugins-bad
@@ -910,6 +910,7 @@ taglib                                  gst-plugins-good
 tdb                                     pulseaudio, libcanberra, exim
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, jasper, imagemagick
 thin-provisioning-tools                 lvm2
+tidy-html5
 time
 tk                                      git, python2, python3, ruby
 tmux
@@ -1112,7 +1113,6 @@ zxing                                   gst-plugins-bad
 # spice-protocol                      spice, spice-gtk, virt-manager
 # t1lib
 # talloc
-# tidy-html5
 # tokudb
 # traceroute
 # transmission

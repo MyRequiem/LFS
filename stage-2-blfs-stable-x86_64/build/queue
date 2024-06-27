@@ -779,9 +779,9 @@ l/rasqal.sh
 l/libiodbc.sh
 l/redland.sh
 ap/lmdb.sh
+d/tidy-html5.sh
 
 
-# d/tidy-html5.sh
 # l/enchant.sh
 # n/apache-httpd.sh
 # n/php.sh
