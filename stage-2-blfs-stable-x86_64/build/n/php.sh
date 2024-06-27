@@ -9,22 +9,22 @@ PRGNAME="php"
 # Required:    apache-httpd
 #              libxml2
 # Recommended: no
-#              ---------------------------------------
-# Optional:    Optional System Utilities and Libraries
+# Optional:    ---------------------------------------
+#              Optional System Utilities and Libraries
 #              ---------------------------------------
 #              aspell
 #              enchant
 #              libxslt
 #              dovecot или exim или postfix или sendmail
-#              pcre
+#              pcre2
 #              pth
 #              apparmor          (https://wiki.ubuntu.com/AppArmor)
 #              dmalloc           (https://dmalloc.com/)
 #              net-snmp          (http://www.net-snmp.org/)
 #              oniguruma         (https://github.com/kkos/oniguruma)
-#              ossp_mm           (http://www.ossp.org/pkg/lib/mm/)
-#              re2c              (http://re2c.org/)
-#              xmlrpc-epi        (http://xmlrpc-epi.sourceforge.net/main.php)
+#              ossp-mm           (http://www.ossp.org/pkg/lib/mm/)
+#              re2c              (https://re2c.org/)
+#              xmlrpc-epi        (https://xmlrpc-epi.sourceforge.net/main.php)
 #              ---------------------------------------
 #              Optional Graphics Utilities and Libraries
 #              ---------------------------------------
@@ -47,7 +47,7 @@ PRGNAME="php"
 #              hyperwave         (https://www.hyperwave.com/en/)
 #              mnogosearch       (http://www.mnogosearch.org/)
 #              roxen-webserver   (https://download.roxen.com/6.1/)
-#              wddx              (https://wddxnet.codeplex.com/)
+#              wddx              (https://github.com/Bilal-S/WDDX.net)
 #              ---------------------------------------
 #              Optional Data Management Utilities and Libraries
 #              ---------------------------------------
@@ -59,13 +59,13 @@ PRGNAME="php"
 #              postgresql
 #              sqlite
 #              unixodbc
-#              adabas            (https://www.softwareag.com/en_corporate.html)
-#              birdstep          (http://www.birdstep.com/)
-#              cdb               (http://cr.yp.to/cdb.html)
+#              adabas            (https://www.softwareag.com/en_corporate/platform/adabas-natural.html)
+#              birdstep          (https://raima.com/product-overview/)
+#              cdb               (https://cr.yp.to/cdb.html)
 #              dbmaker           (https://www.dbmaker.com/)
 #              empress           (http://www.empress.com/)
 #              frontbase         (http://www.frontbase.com/cgi-bin/WebObjects/FBWebSite)
-#              ibm-db2           (https://www.ibm.com/analytics/db2)
+#              ibm-db2           (https://www.ibm.com/db2)
 #              mini-sql          (https://hughestech.com.au/products/msql/)
 #              monetra           (https://www.monetra.com/)
 #              qdbm              (https://sourceforge.net/projects/qdbm/)
@@ -74,8 +74,8 @@ PRGNAME="php"
 #              ---------------------------------------
 #              cyrus-sasl
 #              mit-kerberos-v5
-#              libmcrypt         (http://mcrypt.sourceforge.net/)
-#              mhash             (http://mhash.sourceforge.net/)
+#              libmcrypt         (https://mcrypt.sourceforge.net/)
+#              mhash             (https://mhash.sourceforge.net/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -85,61 +85,11 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# для сборки и установки во временной директории должен существовать файл
-# /etc/httpd/httpd.conf
-ORIGINAL_HTTPD_CONF="/etc/httpd/original/httpd.conf"
-if ! [ -r "${ORIGINAL_HTTPD_CONF}" ]; then
-    echo "============================================="
-    echo "Error:"
-    echo "${ORIGINAL_HTTPD_CONF} not found !!!"
-    echo "============================================="
-    exit 1
-fi
-
+# для сборки и установки во временной директории (DESTDIR) должен существовать
+# файл /etc/httpd/httpd.conf
 mkdir -p "${TMP_DIR}/etc/httpd"
-cat "${ORIGINAL_HTTPD_CONF}" > "${TMP_DIR}/etc/httpd/httpd.conf"
+cat /etc/httpd/original/httpd.conf > "${TMP_DIR}/etc/httpd/httpd.conf"
 
-MCRYPT=""
-LIBGD=""
-T1LIB=""
-NET_SNMP="--without-snmp"
-ONIGURUMA="--disable-mbregex"
-TIDY="--without-tidy"
-
-[ -x /usr/lib/libmcrypt.so ]  && MCRYPT="--with-mcrypt"
-[ -x /usr/lib/libgd.so ]      && LIBGD="--with-gd"
-[ -x /usr/lib/libt1.so ]      && T1LIB="--with-t1lib"
-[ -x /usr/lib/libnetsnmp.so ] && NET_SNMP="--with-snmp"
-[ -x /usr/lib/libonig.so ]    && ONIGURUMA="--enable-mbregex"
-[ -x /usr/lib/libtidy.so ]    && TIDY="--with-tidy=shared"
-
-# устраним ошибку сборки, которая устанавливает некоторые данные в неправильное
-# место
-#    --datadir=/usr/share/php
-# собираем встроенное программное обеспечения pear
-#    --with-pear
-# собираем FastCGI Process Manager
-#    --enable-fpm
-# конфиг php.ini в /etc
-#    --with-config-file-path=/etc
-# включаем точные математические функции в стиле bc
-#    --enable-bcmath
-# поддержка преобразования для календаря
-#    --enable-calendar
-# включаем поддержку функций уровня абстракции базы данных (в стиле dbm)
-#    --enable-dba=shared
-# включаем функции FTP
-#    --enable-ftp
-# включаем функции, использующие перевод текста Gettext
-#    --with-gettext
-# включаем поддержку многобайтовых строк (multibyte string)
-#    --enable-mbstring
-# включаем поддержку командной строки Readline
-#    --with-readline
-# включаем поддержку MySQLi
-#    --with-mysqli=shared
-# путь к сокету MySQL
-#    --with-mysql-sock=/run/mysqld/mysqld.sock
 ./configure                                \
     --prefix=/usr                          \
     --sysconfdir=/etc                      \
@@ -162,9 +112,10 @@ TIDY="--without-tidy"
     --enable-ftp                           \
     --with-gettext                         \
     --enable-mbstring                      \
+    --disable-mbregex                      \
+    --with-readline                        \
     --enable-tokenizer                     \
     --enable-pcntl                         \
-    --with-readline                        \
     --with-mysqli=shared                   \
     --with-layout=PHP                      \
     --disable-sigchild                     \
@@ -177,12 +128,6 @@ TIDY="--without-tidy"
     --with-openssl                         \
     --with-curl                            \
     --enable-ctype                         \
-    "${MCRYPT}"                            \
-    "${LIBGD}"                             \
-    "${T1LIB}"                             \
-    "${NET_SNMP}"                          \
-    "${ONIGURUMA}"                         \
-    "${TIDY}"                              \
     --with-db4                             \
     --enable-exif                          \
     --with-iconv                           \
@@ -230,19 +175,13 @@ rm -rf "${TMP_DIR}"/{.channels,.registry,.depdb,.depdblock,.filemap,.lock}
 # удалим ранее созданный /etc/httpd/httpd.conf во временном каталоге
 rm -f "${TMP_DIR}/etc/httpd/httpd.conf"*
 
-# раньше PHP устанавливал утилиту pear с какими-то странными разрешениями
-chmod 755 "${TMP_DIR}/usr/bin/pear"
+# удалим /run (монтируется в tmpfs) и /var во временной директории
+(
+    cd "${TMP_DIR}" || exit 1
+    rm -rf run var
+)
 
-# удалим /var/run во временной директории (монтируется в tmpfs)
-rm -rf "${TMP_DIR}"/var/run
-
-# документация
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -m755 -d "${TMP_DIR}${DOC_DIR}"
-install -v -m644    CODING_STANDARDS* EXTENSIONS NEWS README* UPGRADING* \
-    "${TMP_DIR}${DOC_DIR}"
-
-# init script: /etc/rc.d/init.d/php
+# init script: /etc/rc.d/init.d/php-fpm
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-php DESTDIR="${TMP_DIR}"
@@ -274,7 +213,6 @@ LoadModule php_module /usr/lib/httpd/modules/libphp.so
 <FilesMatch \.php$>
     SetHandler application/x-httpd-php
 </FilesMatch>
-
 EOF
 
 # добавим в /etc/php.ini директиву

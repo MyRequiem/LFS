@@ -783,9 +783,10 @@ d/tidy-html5.sh
 l/enchant.sh
 n/apache-httpd.sh
 n/curl.sh
+n/php.sh
+ap/cups.sh
 
 
-# n/php.sh
 # d/openjdk.sh
 # n/traceroute.sh
 # l/gnome-keyring.sh
@@ -849,7 +850,6 @@ n/curl.sh
 # s/hwinfo.sh
 # l/libgd.sh
 # n/nginx.sh
-# n/php.sh
 # s/pspg.sh
 # ap/optipng.sh
 # l/qt5-styleplugins.sh

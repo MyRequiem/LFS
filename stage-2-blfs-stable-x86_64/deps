@@ -3,10 +3,11 @@
 ###***###
 
 3store                                  redland
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp, libmpeg2, numlockx
+Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, sdl, links, gimp, libmpeg2, numlockx, php
 Plasma5                                 polkit
 aalib                                   sdl, gimp, gst-plugins-good
 acpid                                   xorg-server
+adabas                                  php
 adns                                    gnupg
 adobe-source-code-pro-font-otf
 adwaita-icon-theme                      gtk+3, gtk4
@@ -22,14 +23,15 @@ alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, sdl, faad2, faac
 aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
-apache-httpd                            curl, libsoup, libsoup3
+apache-httpd                            curl, libsoup, libsoup3, php
+apparmor                                php
 appstream-glib                          gimp
 apr                                     apr-util
 apr-util                                apache-httpd
 archivemount                            vifm
 argon2                                  cryptsetup
 as31                                    alsa-firmware
-aspell                                  aspell-dict-en, aspell-dict-ru, enchant
+aspell                                  aspell-dict-en, aspell-dict-ru, enchant, php
 aspell-dict-en
 aspell-dict-ru
 assimp                                  qt5
@@ -45,10 +47,11 @@ babl                                    gegl
 bash-completion                         elogind, gstreamer, dconf
 bcachefs                                libblockdev
 bellagio-openmax                        mesa
-berkeley-db                             cyrus-sasl, openldap, python3, ruby, apr-util, libical, redland, apache-httpd
+berkeley-db                             cyrus-sasl, openldap, python3, ruby, apr-util, libical, redland, apache-httpd, php
 bibtex                                  libtheora
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
+birdstep                                php
 blender                                 imagemagick
 blfs-bootscripts
 bluez                                   libpcap, python2, python3, pulseaudio, qt5, gst-plugins-bad
@@ -67,6 +70,8 @@ cairomm                                 pangomm
 caladea-font-ttf
 cantarell-font-otf                      pango
 carlito-font-ttf
+caudium                                 php
+cdb                                     php
 cdparanoia-III                          gst-plugins-base
 chromaprint                             gst-plugins-bad
 chronyd                                 dhcpcd
@@ -83,13 +88,14 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php
 curlftpfs                               vifm
 cxxopts                                 pamixer
-cyrus-sasl                              openldap, gtk-vnc, exim
+cyrus-sasl                              openldap, gtk-vnc, exim, php
 dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, python3-asciidoc, xmlto, graphite2, gtksourceview3, gimp
+dbmaker                                 php
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils, udisks
 dbus-glib                               gimp, enchant
 dconf                                   ibus
@@ -101,7 +107,7 @@ directfb                                cairo, sdl2, sdla, links
 distcache                               apache-httpd
 djbfft                                  liba52
 djvulibre                               imagemagick
-dmalloc                                 cyrus-sasl, lame, imagemagick
+dmalloc                                 cyrus-sasl, lame, imagemagick, php
 dmenu                                   password-store, i3
 dmidecode                               lm-sensors
 dmraid                                  libblockdev
@@ -115,7 +121,7 @@ docbook2x                               git
 docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5
-dovecot                                 gnupg, sudo, gimp, fcron, at
+dovecot                                 gnupg, sudo, gimp, fcron, at, php
 doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, libtheora, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, apache-httpd
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
@@ -127,16 +133,18 @@ elinks                                  xmlto, apache-httpd
 elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server, udisks
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
-enchant
+empress                                 php
+enchant                                 php
 enscript                                imagemagick
 etc-issue
 exfat                                   udisks
-exim                                    gnupg, sudo, gimp, fcron, at
+exim                                    gnupg, sudo, gimp, fcron, at, php
 exiv2                                   gexiv2, gegl, mirage
 faac                                    gst-plugins-bad
 faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
 fcron
+fdf-toolkit                             php
 fdk-aac                                 ffmpeg, gst-plugins-bad
 feh
 ffmpeg                                  alsa-plugins, gegl, imagemagick, gtk4
@@ -155,9 +163,10 @@ fop                                     python3-asciidoc, xmlto, xorgproto, libx
 freefont
 freeglut                                libtiff, libwebp, jasper
 freetds                                 qt5, apr-util
-freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass, ffmpeg
+freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass, ffmpeg, php
 frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4
+frontbase                               php
 fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                                vifm
 fuse2                                   archivemount, ntfs-3g
@@ -245,7 +254,9 @@ htop
 http-parser                             nodejs
 hunspell                                enchant
 hwloc                                   htop
+hyperwave                               php
 i3                                      bumblebee-status
+ibm-db2                                 php
 ibus                                    sdl2, qt5
 icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5, libical, raptor
@@ -328,10 +339,11 @@ liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
 libevent                                tmux, nghttp2, mariadb, links, ntp
-libexif                                 feh, gst-plugins-bad
+libexif                                 feh, gst-plugins-bad, php
 libffcall                               clisp
 libfpx                                  imagemagick
 libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server, gst-plugins-bad, gcr4, rasqal
+libgd                                   php
 libgit2                                 rustc
 libglade                                python2-pygtk
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
@@ -348,14 +360,15 @@ libiec61883                             ffmpeg, gst-plugins-good
 libilbc                                 ffmpeg
 libimobiledevice                        upower
 libinput                                xorg-libinput-driver, qt5
-libiodbc                                redland
+libiodbc                                redland, php
 libiscsi                                udisks
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5, php
 libjxl                                  imagemagick
 libkate                                 gst-plugins-bad
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
+libmcrypt                               php
 libmetalink                             curl
 libmfx                                  gst-plugins-bad
 libmms                                  gst-plugins-bad
@@ -377,7 +390,7 @@ libopenmpt                              gst-plugins-bad
 libopenni                               gst-plugins-bad
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5, php
 libproxy                                glib-networking, qt5, neon
 libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
@@ -408,7 +421,7 @@ libssh2                                 curl, rustc, nmap, mc, gst-plugins-bad
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtheora                               ffmpeg, gst-plugins-base
-libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, links, poppler, gegl, gimp, libgxps, lcms, imagemagick, qt5
+libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, links, poppler, gegl, gimp, libgxps, lcms, imagemagick, qt5, php
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libumfpack                              gegl
@@ -426,7 +439,7 @@ libvorbis                               libsndfile, libcanberra, libtheora, ffmp
 libvpx                                  ffmpeg, gst-plugins-good
 libvulkan                               mesa
 libwacom                                libinput
-libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, qt5, gst-plugins-bad
+libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, qt5, gst-plugins-bad, php
 libwmf                                  gimp, imagemagick
 libwpe                                  wpebackend-fdo
 libxau                                  libxcb
@@ -435,8 +448,8 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, apache-httpd
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, apache-httpd, php
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, python3-asciidoc, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5, php
 libyajl                                 i3, raptor
 libyaml                                 python3-pyyaml, ruby, libblockdev
 lilv                                    gst-plugins-bad
@@ -446,7 +459,7 @@ liquid-rescale                          imagemagick
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace, imagemagick
 lm-sensors                              htop, mesa
-lmdb
+lmdb                                    php
 lnav
 lrdf                                    gst-plugins-bad
 lrzip
@@ -466,7 +479,7 @@ maemo                                   alsa-plugins
 maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5
 man2html                                xterm
-mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util, redland
+mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util, redland, php
 mc
 mdadm                                   lvm2, libblockdev, udisks
 mecab                                   mariadb
@@ -474,12 +487,16 @@ mercurial                               python3-setuptools-scm, cmake
 mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5, libwpe
 mesa-demos                              mesa
 messagepack                             mariadb
+mhash                                   php
 microdns                                gst-plugins-bad
+mini-sql                                php
 minisql                                 unixodbc
 mirage
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3, neon
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3, neon, php
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, glibmm
+mnogosearch                             php
+monetra                                 php
 mono                                    libidn
 mozjs                                   gjs, polkit
 mpg123                                  libsndfile, gst-plugins-good
@@ -488,11 +505,12 @@ mruby                                   nghttp2, mariadb
 mtdev                                   libinput, xorg-evdev-driver, qt5
 mypaint-brushes                         gimp
 myrocks                                 mariadb
-mysql                                   cyrus-sasl, openldap, exim, qt5, apr-util, redland
+mysql                                   cyrus-sasl, openldap, exim, qt5, apr-util, redland, php
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, sdl, gst-plugins-good, aom
 ncompress                               xorg-libraries
 ndctl                                   libblockdev
 neon                                    gst-plugins-bad
+net-snmp                                php
 net-tools                               gnutls, openssh
 nettle                                  gnutls, libarchive, mesa, xorg-server, gst-plugins-bad
 nftables                                iptables
@@ -515,7 +533,7 @@ numactl                                 x265
 numlockx
 nuspell                                 enchant
 ocaml                                   llvm
-oniguruma                               slang, jq
+oniguruma                               slang, jq, php
 open-mpi                                boost
 openal                                  ffmpeg, qt5, mpg123, gst-plugins-bad
 openblas                                python3-numpy
@@ -529,7 +547,7 @@ openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils, postgresql
 openjdk                                 libidn
 openjpeg                                ghostscript, ffmpeg, poppler, gimp, imagemagick, gst-plugins-bad
-openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim, apr-util, apache-httpd
+openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim, apr-util, apache-httpd, php
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
@@ -537,6 +555,7 @@ openssh                                 sshfs, git, libssh2
 opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
+ossp-mm                                 php
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
 p7zip                                   imagemagick
 pakchois                                neon
@@ -552,7 +571,7 @@ patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt5
 pcre                                    wget, git, slang, nmap, xterm, mc, i3, rasqal
-pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd
+pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -722,13 +741,13 @@ polkit-gnome                            polkit
 poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
 portaudio                               mpg123
-postfix                                 gnupg, sudo, gimp, fcron, at
-postgresql                              cyrus-sasl, openldap, exim, qt5, apr-util, redland
+postfix                                 gnupg, sudo, gimp, fcron, at, php
+postgresql                              cyrus-sasl, openldap, exim, qt5, apr-util, redland, php
 potrace                                 imagemagick
 pov-ray                                 imagemagick
 prelink
 profiles                                imagemagick
-pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl
+pth                                     libidn, libgcrypt, unixodbc, openldap, parted, sdl, php
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, sdl, qt5, mpg123, gst-plugins-good
 py3c
 python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim, lcms
@@ -846,6 +865,7 @@ python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
 python3-zope-interface                  python3-attrs
 pytrash
+qdbm                                    php
 qt4                                     cairo
 qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot
 qt6                                     poppler
@@ -855,11 +875,13 @@ ragel                                   harfbuzz
 ralcgm                                  imagemagick
 raptor                                  rasqal
 rasqal                                  redland
+re2c                                    php
 redland
 reiserfsprogs                           lvm2
 rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
 rhash                                   cmake
+roxen-webserver                         php
 rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
 rsync                                   llvm, vim, apache-httpd
@@ -877,7 +899,7 @@ scrot
 sdl                                     libtheora, libwebp, gst-plugins-base, mpg123, gst-plugins-bad, libmpeg2
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
-sendmail                                gnupg, sudo, gimp, fcron, at
+sendmail                                gnupg, sudo, gimp, fcron, at, php
 septel                                  libpcap
 sg3-utils
 sgml-common                             docbook-xml, docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
@@ -898,7 +920,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland, php
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 startup-notification                    rxvt-unicode, i3
@@ -911,11 +933,12 @@ swig                                    gpgme, volume-key, lcms
 sysprof                                 glib, pango, gjs, libsoup, libsoup3
 sysstat                                 openssh
 systemtap                               gjs
+t1lib                                   php
 taglib                                  gst-plugins-good
 tdb                                     pulseaudio, libcanberra, exim
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, libtheora, ffmpeg, jasper, imagemagick
 thin-provisioning-tools                 lvm2
-tidy-html5
+tidy-html5                              php
 time
 tk                                      git, python2, python3, ruby
 tmux
@@ -934,7 +957,7 @@ umockdev                                libgudev, upower
 unbound                                 gnutls
 uniconvertor                            imagemagick
 unittest-cpp                            enchant
-unixodbc                                openldap, mariadb, qt5, apr-util
+unixodbc                                openldap, mariadb, qt5, apr-util, php
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
 upower
@@ -960,6 +983,7 @@ w3m                                     python3-asciidoc, xmlto, docbook-utils, 
 wavpack                                 gst-plugins-good
 wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3, ibus, qt5, gst-plugins-good, gst-plugins-bad
 wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2, gst-plugins-base, wpebackend-fdo, gtk4
+wddx                                    php
 weasyprint                              vala
 webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
@@ -995,6 +1019,7 @@ xfce4-notifyd                           libnotify
 xfsprogs                                lvm2, udisks
 xinit
 xkeyboard-config                        libxkbcommon, xorg-server
+xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
 xorg-amdgpu-driver
 xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xterm, xdg-utils
@@ -1031,23 +1056,14 @@ zxing                                   gst-plugins-bad
 
 
 # ==============================================================================
-# adabas
-# apparmor
-# birdstep
 # bviplus
 # cantarell-fonts
-# caudium
-# cdb
 # cmus
 # cppcheck
-# dbmaker
 # deb2tgz
 # device-tree-compiler
 # dnsmasq
 # ebtables
-# empress
-# fdf-toolkit
-# frontbase
 # gcolor2
 # gconf
 # girara                              zathura
@@ -1057,17 +1073,13 @@ zxing                                   gst-plugins-bad
 # gtick
 # hstr
 # hwinfo
-# hyperwave
-# ibm-db2
 # id3lib
 # imwheel
 # libao
 # libbsd                              netcat-openbsd
 # libcacard                           spice-gtk, qemu
 # libcap-ng                           qemu
-# libgd                               nginx
 # libmad
-# libmcrypt
 # libmd                               libbsd
 # libmp4v2                            cmus
 # libnfs
@@ -1078,21 +1090,15 @@ zxing                                   gst-plugins-bad
 # libx86emu                           hwinfo
 # lsscsi
 # megatools
-# mhash
-# mini-sql
-# mnogosearch
-# monetra
 # mpv
 # mujs                                mpv
 # musepack-tools                      cmus
-# net-snmp
 # netcat-openbsd
 # nginx
 # optipng
 # opusfile                            cmus
 # osinfo-db                           libosinfo, virt-manager
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
-# ossp_mm
 # pandoc                              openjdk
 # pcsc-lite                           libcacard
 # phodav                              spice-gtk
@@ -1100,20 +1106,16 @@ zxing                                   gst-plugins-bad
 # pwgen
 # pyatspi2
 # python3-libvirt                     virt-manager
-# qdbm
 # qemu
 # qt5-styleplugins
 # qt5ct
 # ramdefrag
-# re2c
 # rest
-# roxen-webserver
 # rpm                                 rpm2tgz
 # rpm2tgz
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # spice-protocol                      spice, spice-gtk, virt-manager
-# t1lib
 # talloc
 # tokudb
 # traceroute
@@ -1127,9 +1129,7 @@ zxing                                   gst-plugins-bad
 # virt-manager
 # vte2                                qemu
 # vte3                                qemu
-# wddx
 # wgetpaste
-# xmlrpc-epi
 # zathura
 
 # vim:ft=conf nowrap
