@@ -8,7 +8,7 @@ ARCH_NAME="httpd"
 # Windows, Novell NetWare, BeOS
 
 # Required:    apr-util
-#              pcre
+#              pcre2
 # Recommended: no
 # Optional:    brotli
 #              berkeley-db
@@ -42,10 +42,6 @@ mkdir -pv "${TMP_DIR}/usr/lib/httpd"
         -s /bin/false      \
         -u 25 apache
 
-# адаптируем модуль Lua к изменениям API в Lua-5.4
-sed -i 's/lua_resume(a, NULL, b)/lua_resume(a, NULL, b, NULL)/' \
-    modules/lua/mod_lua.h || exit 1
-
 # патч исправляет пути для специфики blfs и настраивает правильные разрешения
 # на установленные файлы и каталоги
 patch --verbose -Np1 -i \
@@ -54,84 +50,37 @@ patch --verbose -Np1 -i \
 # заставим утилиту apxs использовать абсолютные пути для модулей
 sed '/dir.*CFG_PREFIX/s@^@#@' -i support/apxs.in || exit 1
 
-LDAP="--disable-ldap"
-LDAP_AUTHNZ="--disable-authnz-ldap"
+sed -e '/HTTPD_ROOT/s:${ap_prefix}:/etc/httpd:'       \
+    -e '/SERVER_CONFIG_FILE/s:${rel_sysconfdir}/::'   \
+    -e '/AP_TYPES_CONFIG_FILE/s:${rel_sysconfdir}/::' \
+    -i configure || exit 1
 
-if command -v ldapadd &>/dev/null; then
-    LDAP="--enable-ldap"
-    LDAP_AUTHNZ="--enable-authnz-ldap"
-fi
-
-# аутентификация и авторизация на основе авторизатора FastCGI
-# (модуль mod_authnz_fcgi.so fast CGI)
-#    --enable-authnz-fcgi
-#
-# модули должны быть скомпилированы и использованы как динамические общие
-# объекты (DSO), чтобы их можно было включать и исключать из сервера с помощью
-# директив конфигурации во время выполнения
-#    --enable-mods-shared="all cgi"
-#
-# все MPM (многопроцессорные модули) компилирутся как динамические общие
-# объекты (DSO), поэтому пользователь может выбирать, какие из них использовать
-# во время выполнения
-#    --enable-mpms-shared=all
-#
-# включаем сборку модуля suEXEC, который можно использовать для разрешения
-# пользователям запускать сценарии CGI и SSI под идентификаторами
-# пользователей, отличными от ID пользователей вызывающего веб-сервера
-#    --enable-suexec
-#
-# управление поведением модуля suEXEC, например корневым каталогом документов
-# по умолчанию, минимальный UID, который можно использовать для запуска скрипта
-# под suEXEC
-#    --with-suexec-*
-#
-# помещаем оболочку suexec в нужное место
-#    --with-suexec-bin=/usr/lib/httpd/suexec
-./configure                                 \
-    --enable-authnz-fcgi                    \
-    --enable-layout=BLFS                    \
-    --enable-mods-shared="all cgi"          \
-    --enable-mpms-shared=all                \
-    --enable-suexec=shared                  \
-    --with-apr=/usr/bin/apr-1-config        \
-    --with-apr-util=/usr/bin/apu-1-config   \
-    --with-suexec-bin=/usr/lib/httpd/suexec \
-    --with-suexec-caller=apache             \
-    --with-suexec-docroot="/srv/www"        \
-    --with-suexec-uidmin=100                \
-    --with-suexec-userdir=public_html       \
-    --enable-so                             \
-    --enable-pie                            \
-    --enable-cgi                            \
-    --with-pcre                             \
-    --enable-ssl                            \
-    --enable-rewrite                        \
-    --enable-vhost-alias                    \
-    --enable-proxy                          \
-    --enable-proxy-http                     \
-    --enable-proxy-ftp                      \
-    --enable-cache                          \
-    --enable-mem-cache                      \
-    --enable-file-cache                     \
-    --enable-disk-cache                     \
-    --enable-dav                            \
-    --enable-dav-fs                         \
-    "${LDAP}"                               \
-    "${LDAP_AUTHNZ}"                        \
-    --enable-authn-anon                     \
-    --enable-authn-alias                    \
-    --with-suexec-logfile="/var/log/httpd/suexec.log" || exit 1
+./configure                                         \
+    --enable-authnz-fcgi                            \
+    --enable-layout=BLFS                            \
+    --enable-mods-shared="all cgi"                  \
+    --enable-mpms-shared=all                        \
+    --enable-suexec=shared                          \
+    --with-apr=/usr/bin/apr-1-config                \
+    --with-apr-util=/usr/bin/apu-1-config           \
+    --with-suexec-bin=/usr/lib/httpd/suexec         \
+    --with-suexec-caller=apache                     \
+    --with-suexec-docroot=/srv/www                  \
+    --with-suexec-logfile=/var/log/httpd/suexec.log \
+    --with-suexec-uidmin=100                        \
+    --with-suexec-userdir=public_html || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}"/var/run
+rm -rf "${TMP_DIR}"/{run,var/run}
 
-mv -v "${TMP_DIR}/usr/sbin/suexec" "${TMP_DIR}/usr/lib/httpd/"
+mv -v        "${TMP_DIR}/usr/sbin/suexec" "${TMP_DIR}/usr/lib/httpd/suexec"
 chgrp apache "${TMP_DIR}/usr/lib/httpd/suexec"
 chmod 4754   "${TMP_DIR}/usr/lib/httpd/suexec"
+
+chown -v -R apache:apache "${TMP_DIR}/srv/www"
 
 # мануал перемещаем в /srv/www/ и оставляем только английский язык
 mv "${TMP_DIR}/usr/share/httpd/manual" "${TMP_DIR}/srv/www/httpd-manual"
@@ -146,8 +95,6 @@ mv "${TMP_DIR}/usr/share/httpd/manual" "${TMP_DIR}/srv/www/httpd-manual"
     done
 )
 
-chown -vR apache:apache "${TMP_DIR}/srv/www"
-
 # init script: /etc/rc.d/init.d/httpd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -161,7 +108,6 @@ HTTPD_CONF="/etc/httpd/httpd.conf"
 cat << EOF >> "${TMP_DIR}${HTTPD_CONF}"
 # Uncomment the following line to enable PHP
 #Include /etc/httpd/mod_php.conf
-
 EOF
 
 if [ -f "${HTTPD_CONF}" ]; then
