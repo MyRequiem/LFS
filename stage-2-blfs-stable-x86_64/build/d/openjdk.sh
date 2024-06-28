@@ -1,7 +1,8 @@
 #! /bin/bash
 
 PRGNAME="openjdk"
-VERSION_BUILD="7"
+ARCH_NAME="jdk"
+BIN_ARCH_NAME="OpenJDK"
 
 ### OpenJDK (Open Implementation of Java Development Kit)
 # Реализация Oracle Java Standard Edition с открытым исходным кодом. OpenJDK
@@ -24,13 +25,12 @@ VERSION_BUILD="7"
 # Optional:    git
 #              graphviz
 #              mercurial
-#              pandoc (https://pandoc.org/)
+#              pandoc           (https://pandoc.org/)
+#              pigz             (https://zlib.net/pigz/)
 
 ### NOTE:
 # После установки пакета нужно обновить переменные окружения
 #    # source /etc/profile.d/openjdk.sh
-# или
-#    # source /etc/profile
 # или
 #    выйти и зайти в учетную запись
 #
@@ -56,9 +56,8 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-BIN_ARCH_NAME="jdk"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${BIN_ARCH_NAME}-*-ga.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-*-ga.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     cut -d - -f 2)"
 
 # для компиляции openjdk и создания JVM (Java Virtual Machine) из исходного
@@ -68,21 +67,22 @@ VERSION="$(find "${SOURCES}" -type f \
 # виде уже готовых бинарных файлов в /opt
 if ! command -v java &>/dev/null ; then
     (
-        echo "Install JDK-bin"
+        echo "Install ${BIN_ARCH_NAME}-bin"
         cd /opt || exit 1
-        rm -rf ./${BIN_ARCH_NAME}*
+        rm -rf "./${ARCH_NAME}" "./${PRGNAME}"* "./${BIN_ARCH_NAME}"*
         # распаковываем архив с бинарниками
-        #    openjdk-${VERSION}_linux-x64_bin.tar.gz -> jdk-${VERSION}
+        #    OpenJDK-${VERSION}+7-x86_64-bin.tar.xz ->
+        #       OpenJDK-${VERSION}+7-x86_64-bin
         tar xvf \
-            "${SOURCES}/${PRGNAME}-${VERSION}_linux-x64_bin".tar.?z* || exit 1
-        chown -R root:root "${BIN_ARCH_NAME}-${VERSION}"
+            "${SOURCES}/${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin".tar.?z* || exit 1
+        chown -R root:root "${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin"
         # ссылка в /opt
-        #    jdk -> jdk-${VERSION}
-        ln -svfn "${BIN_ARCH_NAME}-${VERSION}" "${BIN_ARCH_NAME}"
+        #    jdk -> OpenJDK-${VERSION}+7-x86_64-bin
+        ln -svfn "${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin" "${ARCH_NAME}"
     )
 
     # настроим окружение
-    PATH=${PATH}:/opt/${BIN_ARCH_NAME}/bin
+    PATH=${PATH}:/opt/${ARCH_NAME}/bin
     export PATH
 
     # проверим наличие команды java после распаковки бинарников и настройки
@@ -98,11 +98,11 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-# распаковываем исходники
-#    jdk-${VERSION}-ga.tar.gz -> jdk15u-jdk-${VERSION}-ga
-tar xvf "${SOURCES}/${BIN_ARCH_NAME}-${VERSION}-ga".tar.?z* || exit 1
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-cd "${BIN_ARCH_NAME}${MAJ_VERSION}u-${BIN_ARCH_NAME}-${VERSION}-ga" || exit 1
+# распаковываем исходники
+#    jdk-${VERSION}-ga.tar.gz -> jdk${MAJ_VERSION}u-jdk-${VERSION}-ga
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}-ga".tar.?z* || exit 1
+cd "${ARCH_NAME}${MAJ_VERSION}u-${ARCH_NAME}-${VERSION}-ga" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -118,45 +118,29 @@ APPLICATIONS="/usr/share/applications"
 mkdir -pv "${TMP_DIR}"{"${PROFILE_D}","${SUDOERS_D}","${APPLICATIONS}"}
 mkdir -pv "${TMP_DIR}/opt/${PRGNAME}-${VERSION}"
 
-# сохраняем все сертификаты в одном месте
-ln -sfvn /etc/pki/tls/java/cacerts /opt/jdk/lib/security/cacerts
-
-# Переменная PATH должна содержать путь к компилятору Java - это единственное
-# требование к среде окружения. Переменная JAVA_HOME не нужна, а CLASSPATH не
-# используется. Так же система сборки не допускает использование ключа -j в
-# MAKEFLAGS
-unset MAKEFLAGS
+# переменная PATH должна содержать путь к компилятору java - это единственное
+# требование к среде окружения. Переменная JAVA_HOME в современных версиях не
+# нужна и разработчики рекомендуют отключить ее при сборке
 unset JAVA_HOME
+# система сборки не допускает использования определения количества потоков
+# компиляции посредством переменной окружения MAKEFLAGS (-jX)
+# вместо этого используется параметр --with-jobs=<X> (по умолчанию = 1)
+unset MAKEFLAGS
 
-# отключаем использование -Werror в сборке
-#    --disable-warnings-as-errors
-# система сборки ссылается на динамический libstdc++.so, а не на статический
-# libstdc++.a
-#    --with-stdc++lib=dynamic
-# указываем количество потоков сборки вместо MAKEFLAGS и параметра -jX
-# (по умолчанию система сборки использует один поток)
-#    --with-jobs="$(nproc)"
-# используем системные версии библиотек
-#    --with-{giflib,lcms,libjpeg,libpng,zlib}=system
-# префикс, добавляемый к строке версии
-#    --with-version-pre
-# необязательное описание сборки, добавляемое в строку версии
-#    --with-version-opt
-# в настоящее время система сборки не включает номер сборки в строку версии (java -version)
-#    --with-version-build
-bash configure                              \
-    --enable-unlimited-crypto               \
-    --disable-warnings-as-errors            \
-    --with-stdc++lib=dynamic                \
-    --with-jobs="$(nproc)"                  \
-    --with-giflib=system                    \
-    --with-lcms=system                      \
-    --with-libjpeg=system                   \
-    --with-libpng=system                    \
-    --with-zlib=system                      \
-    --with-version-pre=""                   \
-    --with-version-opt=""                   \
-    --with-version-build="${VERSION_BUILD}" \
+JOBS="$(($(nproc) - 2))"
+bash configure                   \
+    --enable-unlimited-crypto    \
+    --disable-warnings-as-errors \
+    --with-stdc++lib=dynamic     \
+    --with-jobs="${JOBS}"        \
+    --with-giflib=system         \
+    --with-lcms=system           \
+    --with-libjpeg=system        \
+    --with-libpng=system         \
+    --with-zlib=system           \
+    --with-version-build="7"     \
+    --with-version-pre=""        \
+    --with-version-opt=""        \
     --with-cacerts-file=/etc/pki/tls/java/cacerts || exit 1
 
 make images || exit 1
@@ -165,16 +149,9 @@ make images || exit 1
 DIR_WITH_COMPILED_FILES="./build/linux-x86_64-server-release/images/jdk"
 find "${DIR_WITH_COMPILED_FILES}" -type f -name "*.debuginfo" -delete
 
-### устанавливаем пакет во временную директорию /opt
+# устанавливаем пакет во временную директорию
 cp -Rv "${DIR_WITH_COMPILED_FILES}"/* "${TMP_DIR}/opt/${PRGNAME}-${VERSION}"
 chown -R root:root "${TMP_DIR}/opt"
-
-# ссылка в /opt
-#    jdk -> openjdk-${VERSION}
-(
-    cd "${TMP_DIR}/opt" || exit 1
-    ln -svf "${PRGNAME}-${VERSION}" "${BIN_ARCH_NAME}"
-)
 
 # icons
 for ICON_SIZE in 16 24 32 48; do
@@ -185,6 +162,13 @@ for ICON_SIZE in 16 24 32 48; do
         "${TMP_DIR}${ICON_DIR}/java.png"
 done
 
+# ссылка в /opt
+#    jdk -> openjdk-${VERSION}
+(
+    cd "${TMP_DIR}/opt" || exit 1
+    ln -svf "${PRGNAME}-${VERSION}" "${ARCH_NAME}"
+)
+
 # сохраняем все сертификаты в одном месте
 (
     cd "${TMP_DIR}/opt/${PRGNAME}-${VERSION}/lib/security" || exit 1
@@ -192,7 +176,7 @@ done
 )
 
 # openjdk-java.desktop
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/openjdk-java.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/${PRGNAME}-java.desktop"
 [Desktop Entry]
 Name=OpenJDK Java ${VERSION} Runtime
 Comment=OpenJDK Java ${VERSION} Runtime
@@ -205,7 +189,7 @@ NoDisplay=true
 EOF
 
 # openjdk-jconsole.desktop
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/openjdk-jconsole.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/${PRGNAME}-jconsole.desktop"
 [Desktop Entry]
 Name=OpenJDK Java ${VERSION} Console
 Comment=OpenJDK Java ${VERSION} Console
@@ -223,7 +207,7 @@ cat << EOF > "${TMP_DIR}${OPENJDK_SH}"
 # Begin ${OPENJDK_SH}
 
 # set JAVA_HOME directory
-JAVA_HOME=/opt/${BIN_ARCH_NAME}
+JAVA_HOME=/opt/${ARCH_NAME}
 
 # adjust PATH
 PATH=\${PATH}:\${JAVA_HOME}/bin
@@ -253,32 +237,15 @@ EOF
 chmod 755 "${TMP_DIR}${OPENJDK_SH}"
 
 # настройки sudo: root должен иметь доступ к переменным JAVA_HOME и CLASSPATH
-SUDOERS_JAVA="/etc/sudoers.d/java"
+SUDOERS_JAVA="${SUDOERS_D}/java"
 cat << EOF > "${TMP_DIR}${SUDOERS_JAVA}"
 Defaults env_keep += JAVA_HOME
 Defaults env_keep += CLASSPATH
 EOF
-chmod 644 "${TMP_DIR}${SUDOERS_JAVA}"
-
-# настройка mandb (добавляем в конфиг man_db.conf пути для Java)
-MAN_DB_CONF="/etc/man_db.conf"
-if [ -r "${MAN_DB_CONF}" ]; then
-    if ! grep "/opt/${BIN_ARCH_NAME}" "${MAN_DB_CONF}" &>/dev/null; then
-        cat << EOF >> "${MAN_DB_CONF}"
-
-# Begin Java addition
-MANDATORY_MANPATH     /opt/${BIN_ARCH_NAME}/man
-MANPATH_MAP           /opt/${BIN_ARCH_NAME}/bin  /opt/${BIN_ARCH_NAME}/man
-MANDB_MAP             /opt/${BIN_ARCH_NAME}/man  /var/cache/man/${BIN_ARCH_NAME}
-# End Java addition
-EOF
-    fi
-fi
-
-mkdir -p "${TMP_DIR}/var/cache/man"
+chmod 440 "${TMP_DIR}${SUDOERS_JAVA}"
 
 # удаляем установленные бинарники, которые использовались для сборки
-rm -rf "/opt/${BIN_ARCH_NAME}"*
+rm -rf "/opt/${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin"
 
 # удалим директорию с пакетом, если такая версия уже установлена
 rm -rf "/opt/${PRGNAME}-${VERSION}"
@@ -294,8 +261,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # platform. OpenJDK is useful for developing Java programs, and provides a
 # complete runtime environment to run Java programs.
 #
-# Home page: http://${PRGNAME}.java.net/
-# Download:  https://github.com/${PRGNAME}/${BIN_ARCH_NAME}15u/archive/${BIN_ARCH_NAME}-${VERSION}-ga.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://github.com/${PRGNAME}/${ARCH_NAME}${MAJ_VERSION}u/archive/${ARCH_NAME}-${VERSION}-ga.tar.gz
 #
 EOF
 

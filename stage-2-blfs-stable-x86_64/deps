@@ -15,7 +15,7 @@ afs                                     sudo
 ag
 aka-mrsid-utilities                     imagemagick
 alsa-firmware                           sdl2, sdl
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl, gimp, gst-plugins-base, qt5, mpg123
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, sdl, gimp, gst-plugins-base, qt5, mpg123, openjdk
 alsa-oss                                sdl2, sdl, gst-plugins-good
 alsa-plugins                            sdl2, sdl
 alsa-tools                              sdl2, alsa-firmware, sdl
@@ -83,10 +83,10 @@ cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
-cpio
+cpio                                    openjdk
 cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
-cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4
+cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
 cups-filters                            cups
 curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php
 curlftpfs                               vifm
@@ -189,9 +189,9 @@ ggi                                     sdl
 ghostpcl                                imagemagick
 ghostscript                             cairo, goffice, libspectre, gimp, imagemagick
 giblib                                  scrot
-giflib                                  imlib2, libwebp
+giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps, openjdk
 gjs                                     gobject-introspection, libsecret
 glade                                   gtksourceview3, libhandy
 glew
@@ -217,7 +217,7 @@ gptfdisk                                udisks
 graphene                                gst-plugins-base, gtk4
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby, exiv2, gegl, imagemagick, libical
+graphviz                                libexif, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby, exiv2, gegl, imagemagick, libical, openjdk
 grc
 groonga                                 mariadb
 gsasl                                   curl
@@ -296,7 +296,7 @@ lame                                    libsndfile, ffmpeg, gst-plugins-good
 lapack                                  python3-numpy
 lasem                                   goffice
 lcms                                    imagemagick
-lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad
+lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, openjdk
 lcov                                    gjs, libseccomp
 lensfun                                 gegl
 lerc                                    libtiff
@@ -362,7 +362,7 @@ libimobiledevice                        upower
 libinput                                xorg-libinput-driver, qt5
 libiodbc                                redland, php
 libiscsi                                udisks
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5, php
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, lcms, imagemagick, feh, gst-plugins-base, qt5, php, openjdk
 libjxl                                  imagemagick
 libkate                                 gst-plugins-bad
 libksba                                 gnupg
@@ -390,7 +390,7 @@ libopenmpt                              gst-plugins-bad
 libopenni                               gst-plugins-bad
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5, php
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5, php, openjdk
 libproxy                                glib-networking, qt5, neon
 libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
@@ -477,13 +477,13 @@ lzip                                    ed
 lzo                                     libarchive, cairo
 maemo                                   alsa-plugins
 maim
-make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5
+make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, qt5, openjdk
 man2html                                xterm
 mariadb                                 cyrus-sasl, openldap, exim, qt5, apr-util, redland, php
 mc
 mdadm                                   lvm2, libblockdev, udisks
 mecab                                   mariadb
-mercurial                               python3-setuptools-scm, cmake
+mercurial                               python3-setuptools-scm, cmake, openjdk
 mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5, libwpe
 mesa-demos                              mesa
 messagepack                             mariadb
@@ -560,6 +560,7 @@ p11-kit                                 make-ca, gnutls, python3-requests, nss, 
 p7zip                                   imagemagick
 pakchois                                neon
 pamixer
+pandoc                                  openjdk
 pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3, gegl, imagemagick, gst-plugins-base, gtk4, i3
 pangomm                                 gtkmm
 papi                                    gtk+3
@@ -731,6 +732,7 @@ perl-xml-writer
 pgp                                     imagemagick
 php                                     cups, libsoup, libsoup3
 picogui                                 sdl
+pigz                                    openjdk
 pinentry                                gnupg
 pixman                                  cairo, xorg-server
 pngcrush                                gimp
@@ -959,7 +961,7 @@ uniconvertor                            imagemagick
 unittest-cpp                            enchant
 unixodbc                                openldap, mariadb, qt5, apr-util, php
 unrar
-unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc
+unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc, openjdk
 upower
 usbutils
 utah-raster-toolkit                     imagemagick
@@ -987,8 +989,8 @@ wddx                                    php
 weasyprint                              vala
 webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
-wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak, imagemagick
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp
+wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
+which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wiredtiger                              openldap
@@ -1030,7 +1032,7 @@ xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server, aalib
 xorg-intel-driver
 xorg-libinput-driver                    xorg-server
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, sdl, imagemagick, gst-plugins-base, qt5
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, sdl, imagemagick, gst-plugins-base, qt5, openjdk
 xorg-nouveau-driver
 xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
@@ -1049,7 +1051,7 @@ z3                                      llvm
 zbar                                    gst-plugins-bad
 zenity
 zeromq                                  mariadb
-zip                                     docbook-xsl, llvm, mc
+zip                                     docbook-xsl, llvm, mc, openjdk
 zsh                                     elogind
 zvbi                                    ffmpeg, gst-plugins-bad
 zxing                                   gst-plugins-bad
@@ -1099,7 +1101,6 @@ zxing                                   gst-plugins-bad
 # opusfile                            cmus
 # osinfo-db                           libosinfo, virt-manager
 # osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
-# pandoc                              openjdk
 # pcsc-lite                           libcacard
 # phodav                              spice-gtk
 # pspg

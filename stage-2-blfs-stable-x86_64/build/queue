@@ -785,9 +785,10 @@ n/apache-httpd.sh
 n/curl.sh
 n/php.sh
 ap/cups.sh
+d/openjdk.sh
+l/libidn.sh
 
 
-# d/openjdk.sh
 # n/traceroute.sh
 # l/gnome-keyring.sh
 # l/vte2.sh
