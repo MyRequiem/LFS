@@ -945,6 +945,7 @@ time
 tk                                      git, python2, python3, ruby
 tmux
 tpm2-tss                                libsecret
+traceroute
 tracker                                 gtk+3, gtk4
 transfig                                libtheora
 translate-shell
@@ -1119,7 +1120,6 @@ zxing                                   gst-plugins-bad
 # spice-protocol                      spice, spice-gtk, virt-manager
 # talloc
 # tokudb
-# traceroute
 # transmission
 # tunctl                              virt-manager
 # uget

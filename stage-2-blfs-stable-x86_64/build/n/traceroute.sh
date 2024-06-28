@@ -17,18 +17,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN_PAGE="/usr/share/man/man8"
-mkdir -pv "${TMP_DIR}"{/bin,"${MAN_PAGE}"}
+mkdir -pv "${TMP_DIR}"{/usr/bin,"${MAN_PAGE}"}
 
 make || exit 1
 
 # пакет не имеет набора тестов
 
-cp "${PRGNAME}/${PRGNAME}"   "${TMP_DIR}/bin"
+cp "${PRGNAME}/${PRGNAME}"   "${TMP_DIR}/usr/bin"
 cp "${PRGNAME}/${PRGNAME}.8" "${TMP_DIR}${MAN_PAGE}"
 (
-    # ссылка в /bin
+    # ссылка в /usr/bin
     #    traceroute6 -> traceroute
-    cd "${TMP_DIR}/bin" || exit 1
+    cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sv "${PRGNAME}" "${PRGNAME}6"
     # ссылка в /usr/share/man/man8
     #    traceroute6.8 -> traceroute.8
@@ -39,8 +39,8 @@ cp "${PRGNAME}/${PRGNAME}.8" "${TMP_DIR}${MAN_PAGE}"
 # этот пакет перезаписывает утилиту traceroute, установленную в LFS с пакетом
 # inetutils. Данная версия более мощная и имеет многие дополнительные опции.
 INETUTILS_PKG="/var/log/packages/inetutils"
-rm -rf /bin/traceroute
-sed '/\/bin\/traceroute/d' -i "${INETUTILS_PKG}"-*
+rm -fv /usr/bin/traceroute
+sed '/\/usr\/bin\/traceroute/d' -i "${INETUTILS_PKG}"-*
 
 # man-страница traceroute.1, установленная в LFS с пакетом inetutils, больше не
 # соответстветствует утилите traceroute, удалим ее

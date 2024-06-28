@@ -787,9 +787,9 @@ n/php.sh
 ap/cups.sh
 d/openjdk.sh
 l/libidn.sh
+n/traceroute.sh
 
 
-# n/traceroute.sh
 # l/gnome-keyring.sh
 # l/vte2.sh
 # l/vte3.sh
