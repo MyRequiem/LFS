@@ -15,7 +15,7 @@ ARCH_NAME="vte"
 #              gobject-introspection
 #              vala
 # Optional:    fribidi
-#              gtk-doc
+#              python3-gi-docgen
 #              gtk4
 
 ROOT="/root/src/lfs"
@@ -23,7 +23,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-0.6*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-0.7*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -65,6 +65,7 @@ cd build || exit 1
 
 meson                        \
     --prefix=/usr            \
+    --buildtype=release      \
     -Ddocs="${DOCS}"         \
     -Dgir="${INTROSPECTION}" \
     -Dfribidi="${FRIBIDI}"   \
@@ -87,7 +88,6 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (terminal emulator widget for use with GTK+3)
 #
@@ -96,7 +96,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # that uses libvte
 #
 # Home page: https://wiki.gnome.org/Apps/Terminal/VTE
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.gnome.org/GNOME/${ARCH_NAME}/-/archive/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

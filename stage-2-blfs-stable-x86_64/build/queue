@@ -790,10 +790,10 @@ l/libidn.sh
 n/traceroute.sh
 l/gnome-keyring.sh
 l/libsecret.sh
+l/vte2.sh
+l/vte3.sh
 
 
-# l/vte2.sh
-# l/vte3.sh
 # l/gconf.sh
 # d/apache-ant.sh
 # l/libmad.sh
