@@ -788,9 +788,10 @@ ap/cups.sh
 d/openjdk.sh
 l/libidn.sh
 n/traceroute.sh
+l/gnome-keyring.sh
+l/libsecret.sh
 
 
-# l/gnome-keyring.sh
 # l/vte2.sh
 # l/vte3.sh
 # l/gconf.sh
@@ -818,7 +819,6 @@ n/traceroute.sh
 # s/talloc.sh
 # s/jemalloc.sh
 # l/libcap-ng.sh
-# l/gnome-keyring.sh
 # s/qemu.sh
 # l/libvirt.sh
 # d/python-modules/python3-libvirt.sh
