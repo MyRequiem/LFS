@@ -792,9 +792,9 @@ l/gnome-keyring.sh
 l/libsecret.sh
 l/vte2.sh
 l/vte3.sh
+l/gconf.sh
 
 
-# l/gconf.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh

@@ -829,10 +829,10 @@ https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
 https://download.gnome.org/sources/gnome-keyring/42/gnome-keyring-42.1.tar.xz
 https://download.gnome.org/sources/vte/0.28/vte-0.28.2.tar.xz
 https://gitlab.gnome.org/GNOME/vte/-/archive/0.70.3/vte-0.70.3.tar.gz
+https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz
 
 
 ================================================================================
-https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.9-src.tar.xz
 https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/libmad-0.15.1b-fixes-1.patch
