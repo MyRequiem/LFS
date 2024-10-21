@@ -793,9 +793,9 @@ l/libsecret.sh
 l/vte2.sh
 l/vte3.sh
 l/gconf.sh
+d/apache-ant.sh
 
 
-# d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh
 # l/id3lib.sh
