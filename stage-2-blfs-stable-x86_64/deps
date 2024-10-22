@@ -370,6 +370,7 @@ libkate                                 gst-plugins-bad
 libksba                                 gnupg
 liblinear                               nmap
 liblsmash                               x264
+libmad
 libmcrypt                               php
 libmetalink                             curl
 libmfx                                  gst-plugins-bad
@@ -1084,7 +1085,6 @@ zxing                                   gst-plugins-bad
 # libao
 # libbsd                              netcat-openbsd
 # libcacard                           spice-gtk, qemu
-# libmad
 # libmd                               libbsd
 # libmp4v2                            cmus
 # libnfs

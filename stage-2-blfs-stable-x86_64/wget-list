@@ -831,11 +831,11 @@ https://download.gnome.org/sources/vte/0.28/vte-0.28.2.tar.xz
 https://gitlab.gnome.org/GNOME/vte/-/archive/0.70.3/vte-0.70.3.tar.gz
 https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
+https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/11.3/libmad-0.15.1b-fixes-1.patch
 
 
 ================================================================================
-https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
-http://www.linuxfromscratch.org/patches/blfs/10.1/libmad-0.15.1b-fixes-1.patch
 https://raw.githubusercontent.com/transmission/transmission-releases/master/transmission-3.00.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 http://www.linuxfromscratch.org/patches/blfs/10.1/id3lib-3.8.3-consolidated_patches-1.patch
