@@ -801,9 +801,9 @@ l/libao.sh
 n/dnsmasq.sh
 d/device-tree-compiler.sh
 n/glusterfs.sh
+s/pcsc-lite.sh
 
 
-# s/pcsc-lite.sh
 # l/libcacard.sh
 # l/libnfs.sh
 # d/spice-protocol.sh
