@@ -113,6 +113,7 @@ dmalloc                                 cyrus-sasl, lame, imagemagick, php
 dmenu                                   password-store, i3
 dmidecode                               lm-sensors
 dmraid                                  libblockdev
+dnsmasq
 docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl, postgresql
@@ -1080,7 +1081,6 @@ zxing                                   gst-plugins-bad
 # cppcheck
 # deb2tgz
 # device-tree-compiler
-# dnsmasq
 # gcolor2
 # girara                              zathura
 # glusterfs
