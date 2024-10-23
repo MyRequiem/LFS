@@ -102,6 +102,7 @@ dbus-glib                               gimp, enchant, gconf
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, fltk
+device-tree-compiler
 dhcpcd
 dht                                     transmission
 dialog                                  alsa-utils
@@ -1080,7 +1081,6 @@ zxing                                   gst-plugins-bad
 # cmus
 # cppcheck
 # deb2tgz
-# device-tree-compiler
 # gcolor2
 # girara                              zathura
 # glusterfs

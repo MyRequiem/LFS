@@ -799,9 +799,9 @@ n/transmission.sh
 l/id3lib.sh
 l/libao.sh
 n/dnsmasq.sh
+d/device-tree-compiler.sh
 
 
-# d/device-tree-compiler.sh
 # n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
