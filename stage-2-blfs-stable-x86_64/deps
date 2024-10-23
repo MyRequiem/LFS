@@ -206,6 +206,7 @@ glibmm                                  pangomm, atkmm
 glm                                     slop
 glslang                                 mesa
 glu                                     fltk, freeglut, sdl
+glusterfs
 gnome-keyring                           libsecret
 gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
@@ -215,7 +216,7 @@ gnutls                                  wget, curl, gnupg, openldap, glib-networ
 gobject-introspection                   glib, elogind, harfbuzz, gsettings-desktop-schemas, at-spi2-core, python2-pygobject2, python3-pygobject3, pango, gdk-pixbuf, librsvg, gtk+2, gtk+3, graphene, gstreamer, libgsf, goffice, gtk-vnc, gtksourceview3, gjs, libsecret, gcr3, libnotify, libxklavier, json-glib, polkit, ibus, libgudev, poppler, libmypaint, babl, gegl, gst-plugins-base, libsoup, libsoup3, gtk4, gcr4, libblockdev, upower, udisks, libical, vte2, vte3, gconf
 goffice
 gpac                                    x264
-gperftools                              libmypaint
+gperftools                              libmypaint, glusterfs
 gpgme                                   volume-key
 gpm                                     aalib, vim, mc, links
 gptfdisk                                udisks
@@ -440,7 +441,7 @@ libumfpack                              gegl
 libunibreak                             libass
 libunistring                            libidn2, gnutls, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
-liburcu
+liburcu                                 glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
 libutp                                  transmission
 libuv                                   cmake, bind-utils, nodejs
@@ -1083,7 +1084,6 @@ zxing                                   gst-plugins-bad
 # deb2tgz
 # gcolor2
 # girara                              zathura
-# glusterfs
 # google-chrome
 # gsimplecal
 # gtick

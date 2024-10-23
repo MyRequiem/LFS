@@ -800,9 +800,9 @@ l/id3lib.sh
 l/libao.sh
 n/dnsmasq.sh
 d/device-tree-compiler.sh
+n/glusterfs.sh
 
 
-# n/glusterfs.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
 # l/libnfs.sh
