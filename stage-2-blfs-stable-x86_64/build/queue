@@ -797,9 +797,9 @@ d/apache-ant.sh
 l/libmad.sh
 n/transmission.sh
 l/id3lib.sh
+l/libao.sh
 
 
-# l/libao.sh
 # n/ebtables.sh
 # n/dnsmasq.sh
 # d/device-tree-compiler.sh

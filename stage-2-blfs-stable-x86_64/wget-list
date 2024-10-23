@@ -836,10 +836,10 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/libmad-0.15.1b-fixes-1.patch
 https://github.com/transmission/transmission/releases/download/4.0.1/transmission-4.0.1.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
+https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 
 
 ================================================================================
-https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://nav.dl.sourceforge.net/project/ebtables/ebtables/ebtables-2-0-10-4/ebtables-v2.0.10-4.tar.gz
 https://thekelleys.org.uk/dnsmasq/dnsmasq-2.86.tar.xz
 https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-1.6.1.tar.gz
