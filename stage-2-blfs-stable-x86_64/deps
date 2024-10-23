@@ -25,6 +25,7 @@ aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
 apache-httpd                            curl, libsoup, libsoup3, php
 apparmor                                php
+appindicator                            transmission
 appstream-glib                          gimp
 apr                                     apr-util
 apr-util                                apache-httpd
@@ -88,7 +89,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php
+curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim, php
@@ -102,6 +103,7 @@ dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, fltk
 dhcpcd
+dht                                     transmission
 dialog                                  alsa-utils
 directfb                                cairo, sdl2, sdla, links
 distcache                               apache-httpd
@@ -236,7 +238,7 @@ gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libid
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, gjs, ibus, gcr4, libadwaita, zenity, vte3
-gtkmm                                   pavucontrol
+gtkmm                                   pavucontrol, transmission
 gtksourceview3
 guile
 gutenprint                              cups
@@ -313,6 +315,7 @@ libatasmart                             udisks
 libatomic-ops                           gc, libdrm
 libavc1394                              gst-plugins-good
 libavtp                                 alsa-plugins, gst-plugins-bad
+libb64                                  transmission
 libbacktrace                            gimp
 libblockdev                             udisks
 libbluray                               ffmpeg
@@ -330,6 +333,7 @@ libdc1394                               ffmpeg
 libdc1394_2                             gst-plugins-bad
 libdca                                  ffmpeg, gst-plugins-bad
 libde265                                gimp, imagemagick, gst-plugins-bad
+libdeflate                              transmission
 libdrm                                  cairo, libva, mesa, ffmpeg
 libdv                                   gst-plugins-good
 libdvdnav                               gst-plugins-bad
@@ -340,7 +344,7 @@ libepoxy                                gtk+3, xorg-server, wpebackend-fdo, gtk4
 liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
-libevent                                tmux, nghttp2, mariadb, links, ntp
+libevent                                tmux, nghttp2, mariadb, links, ntp, transmission
 libexif                                 feh, gst-plugins-bad, php
 libffcall                               clisp
 libfpx                                  imagemagick
@@ -380,6 +384,7 @@ libmodplug                              ffmpeg, gst-plugins-bad
 libmpdec                                python3
 libmpeg2                                gst-plugins-ugly
 libmypaint                              mypaint-brushes, gimp
+libnatpmp                               transmission
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnice                                 gst-plugins-bad
@@ -395,7 +400,7 @@ libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libtheora, libwebp, links, poppler, gegl, imagemagick, feh, gst-plugins-base, qt5, php, openjdk
 libproxy                                glib-networking, qt5, neon
-libpsl                                  wget, curl, libsoup, libsoup3
+libpsl                                  wget, curl, libsoup, libsoup3, transmission
 libptytty                               rxvt-unicode
 libpwquality                            cryptsetup
 libraqm                                 imagemagick
@@ -433,6 +438,7 @@ libunistring                            libidn2, gnutls, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
 liburcu
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
+libutp                                  transmission
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugins-bad
 libvdpau                                mesa, libvdpau-va-gl, ffmpeg
@@ -494,6 +500,7 @@ mhash                                   php
 microdns                                gst-plugins-bad
 mini-sql                                php
 minisql                                 unixodbc
+miniupnp                                transmission
 mirage
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, postgresql, mariadb, libsoup, libsoup3, neon, php
 mjpeg-tools                             gst-plugins-bad
@@ -521,7 +528,7 @@ nghttp2                                 curl, cmake, bind-utils, nodejs, libsoup
 ngtcp2                                  curl
 nickle                                  xorg-applications
 nmap                                    lsof
-nodejs
+nodejs                                  transmission
 notification-daemon                     libnotify
 noto-cjk-fonts-ttf
 noto-color-emoji-ttf
@@ -872,7 +879,7 @@ python3-zope-interface                  python3-attrs
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot
+qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
 qt6                                     poppler
 quiche                                  curl
 radiance                                imagemagick
@@ -952,6 +959,7 @@ traceroute
 tracker                                 gtk+3, gtk4
 transfig                                libtheora
 translate-shell
+transmission
 tree
 tremor                                  gst-plugins-base
 trousers                                gnutls
@@ -1122,7 +1130,6 @@ zxing                                   gst-plugins-bad
 # spice-protocol                      spice, spice-gtk, virt-manager
 # talloc
 # tokudb
-# transmission
 # tunctl                              virt-manager
 # uget
 # usbredir                            spice-gtk

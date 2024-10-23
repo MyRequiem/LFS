@@ -7,11 +7,20 @@ PRGNAME="transmission"
 # а так же консольный клиент.
 
 # Required:    curl
+# Recommended: --- для использования системных библиотек вместо встроенных ---
 #              libevent
-# Recommended: gtk+3 (для сборки GTK GUI)
-#              qt5   (для сборки QT GUI)
-# Optional:    doxygen
-#              gdb
+#              libpsl
+#              --- для сборки GTK и QT GUI ---
+#              gtkmm
+#              qt5
+# Optional:    nodejs        (для сборки web-клиента)
+#              appindicator  (https://github.com/ubuntu/gnome-shell-extension-appindicator)
+#              dht           (https://github.com/jech/dht)
+#              libb64        (https://github.com/libb64/libb64)
+#              libdeflate    (https://github.com/ebiggers/libdeflate)
+#              libnatpmp     (https://github.com/miniupnp/libnatpmp)
+#              libutp        (https://github.com/bittorrent/libutp)
+#              miniupnp      (https://github.com/miniupnp/miniupnp)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,39 +31,24 @@ APPLICATIONS="/usr/share/applications"
 PIXMAPS="/usr/share/pixmaps"
 mkdir -pv "${TMP_DIR}"{${APPLICATIONS},${PIXMAPS}}
 
-GTK3="--without-gtk"
-QT5="false"
+mkdir build
+cd build || exit 1
 
-command -v gtk3-demo          && GTK3="--with-gtk"
-[ -x /opt/qt5/bin/assistant ] && QT5="true"
-
-./configure       \
-    --prefix=/usr \
-    "${GTK3}"     \
-    --enable-cli || exit 1
+cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr                                   \
+    -DCMAKE_BUILD_TYPE=Release                                    \
+    -DENABLE_CLI=ON                                               \
+    -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    .. || exit 1
 
 make || exit 1
-
-# собираем QT GUI
-if [[ "x${QT5}" == "xtrue"  ]]; then
-    pushd qt || exit 1
-    qmake qtr.pro || exit 1
-    make          || exit 1
-    popd || exit 1
-fi
-
 # пакет не имеет набора тестов
-
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${QT5}" == "xtrue"  ]]; then
-    make INSTALL_ROOT="${TMP_DIR}/usr" -C qt install
-fi
-
-install -m644 qt/${PRGNAME}-qt.desktop \
-    "${TMP_DIR}${APPLICATIONS}/${PRGNAME}-qt.desktop"
-install -m644 qt/icons/${PRGNAME}.png  \
-    "${TMP_DIR}${PIXMAPS}/${PRGNAME}-qt.png"
+# поскольку файл transmission.png отсутствует, создадим его из svg:
+rsvg-convert                                               \
+   "${TMP_DIR}/usr/share/icons/hicolor/scalable/apps/transmission.svg" \
+   -o "${TMP_DIR}/usr/share/pixmaps/transmission.png"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -68,7 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # CLI client.
 #
 # Home page: https://${PRGNAME}bt.com/
-# Download:  https://raw.githubusercontent.com/${PRGNAME}/${PRGNAME}-releases/master/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
