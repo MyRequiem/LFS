@@ -800,7 +800,6 @@ l/id3lib.sh
 l/libao.sh
 
 
-# n/ebtables.sh
 # n/dnsmasq.sh
 # d/device-tree-compiler.sh
 # n/glusterfs.sh
