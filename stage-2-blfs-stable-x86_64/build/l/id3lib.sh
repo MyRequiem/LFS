@@ -48,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # id3lib is a library for reading, writing and manipulating id3v1 and id3v2
 # multimedia data containers.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -263,6 +263,7 @@ ibm-db2                                 php
 ibus                                    sdl2, qt5
 icon-tools                              adwaita-icon-theme
 icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5, libical, raptor, vte3
+id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
 imlib2                                  w3m, feh, giblib, scrot, maim
@@ -1088,7 +1089,6 @@ zxing                                   gst-plugins-bad
 # gtick
 # hstr
 # hwinfo
-# id3lib
 # imwheel
 # libao
 # libbsd                              netcat-openbsd
