@@ -845,10 +845,10 @@ https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz
 https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-5.0.3.tar.gz
 https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz
 https://www.spice-space.org/download/releases/spice-server/spice-0.15.2.tar.bz2
+https://www.spice-space.org/download/usbredir/usbredir-0.14.0.tar.xz
 
 
 ================================================================================
-https://www.spice-space.org/download/usbredir/usbredir-0.12.0.tar.xz
 https://www.spice-space.org/download/gtk/spice-gtk-0.40.tar.xz
 http://downloads.sourceforge.net/project/vde/vde2/2.3.2/vde2-2.3.2.tar.bz2
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/vde2/vde2-2.3.2-cryptcab.patch

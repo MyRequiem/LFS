@@ -985,6 +985,7 @@ unixodbc                                openldap, mariadb, qt5, apr-util, php
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc, openjdk
 upower
+usbredir
 usbutils
 utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
@@ -1131,7 +1132,6 @@ zxing                                   gst-plugins-bad
 # tokudb
 # tunctl                              virt-manager
 # uget
-# usbredir                            spice-gtk
 # utimer
 # vde2
 # virglrenderer
