@@ -393,6 +393,7 @@ libmypaint                              mypaint-brushes, gimp
 libnatpmp                               transmission
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
+libnfs
 libnice                                 gst-plugins-bad
 libnl                                   iw, wpa-supplicant, htop, libpcap
 libnotify                               ibus, zenity
@@ -1095,7 +1096,6 @@ zxing                                   gst-plugins-bad
 # libbsd                              netcat-openbsd
 # libmd                               libbsd
 # libmp4v2                            cmus
-# libnfs
 # libosinfo                           virt-manager
 # libplacebo                          mpv
 # libvirt                             python3-libvirt, libvirt-glib, virt-manager

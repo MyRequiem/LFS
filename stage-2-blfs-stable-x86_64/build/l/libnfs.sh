@@ -39,7 +39,7 @@ autoreconf -vif &&         \
 ./configure                \
     --prefix=/usr          \
     --enable-utils         \
-    --enable-examples      \
+    --disable-examples     \
     --enable-static=no     \
     --disable-silent-rules \
     --disable-dependency-tracking || exit 1
