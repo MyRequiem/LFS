@@ -326,6 +326,7 @@ libblockdev                             udisks
 libbluray                               ffmpeg
 libbytesize                             libblockdev
 libcaca                                 ffmpeg, sdl, gst-plugins-good
+libcacard
 libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils, ntp
 libcap-ng                               gnome-keyring
@@ -588,7 +589,7 @@ pavucontrol
 pciutils                                qt5
 pcre                                    wget, git, slang, nmap, xterm, mc, i3, rasqal
 pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php, vte3
-pcsc-lite
+pcsc-lite                               libcacard
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
 perl-alien-build-plugin-download-gitlab perl-alien-libxml2
@@ -1092,7 +1093,6 @@ zxing                                   gst-plugins-bad
 # hwinfo
 # imwheel
 # libbsd                              netcat-openbsd
-# libcacard                           spice-gtk, qemu
 # libmd                               libbsd
 # libmp4v2                            cmus
 # libnfs
