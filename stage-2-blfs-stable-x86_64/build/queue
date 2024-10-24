@@ -805,9 +805,9 @@ s/pcsc-lite.sh
 l/libcacard.sh
 l/libnfs.sh
 d/spice-protocol.sh
+n/spice.sh
 
 
-# n/spice.sh
 # s/usbredir.sh
 # n/spice-gtk.sh
 # n/vde2.sh

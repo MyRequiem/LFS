@@ -570,8 +570,8 @@ openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
 openssh                                 sshfs, git, libssh2, gnome-keyring
 opie                                    sudo
-opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad
-orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
+opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
+orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
 ossp-mm                                 php
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
 p7zip                                   imagemagick
@@ -851,7 +851,7 @@ python3-pygments                        python3-pytest, llvm, libbytesize, pytho
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pylint
 python3-pympler                         python3-attrs
-python3-pyparsing                       libinput
+python3-pyparsing                       libinput, spice
 python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
@@ -870,7 +870,7 @@ python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
-python3-six                             libbytesize, python3-blessed, python3-urlgrabber
+python3-six                             libbytesize, python3-blessed, python3-urlgrabber, spice
 python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-testpath                        python3-flit-core
 python3-tomli                           python3-pylint
@@ -939,7 +939,8 @@ spandsp                                 gst-plugins-bad
 spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
-spice-protocol
+spice
+spice-protocol                          spice
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland, php
 srt                                     ffmpeg, gst-plugins-bad
@@ -1125,7 +1126,6 @@ zxing                                   gst-plugins-bad
 # rest
 # rpm                                 rpm2tgz
 # rpm2tgz
-# spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
 # talloc
 # tokudb
