@@ -939,6 +939,7 @@ spandsp                                 gst-plugins-bad
 spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
+spice-protocol
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland, php
 srt                                     ffmpeg, gst-plugins-bad
@@ -1126,7 +1127,6 @@ zxing                                   gst-plugins-bad
 # rpm2tgz
 # spice                               spice-gtk, virt-manager
 # spice-gtk                           virt-manager
-# spice-protocol                      spice, spice-gtk, virt-manager
 # talloc
 # tokudb
 # tunctl                              virt-manager

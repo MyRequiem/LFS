@@ -804,9 +804,9 @@ n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
 l/libnfs.sh
+d/spice-protocol.sh
 
 
-# d/spice-protocol.sh
 # n/spice.sh
 # s/usbredir.sh
 # n/spice-gtk.sh
