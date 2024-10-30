@@ -5,10 +5,10 @@ Home:
     http://www.linuxfromscratch.org/blfs/index.html
 
 Book:
-    http://www.linuxfromscratch.org/blfs/view/11.3/index.html
+    http://www.linuxfromscratch.org/blfs/view/12.2/index.html
 
 ChangeLog:
-    http://www.linuxfromscratch.org/blfs/view/11.3/introduction/changelog.html
+    http://www.linuxfromscratch.org/blfs/view/12.2/introduction/changelog.html
 
 FAQ:
     http://www.linuxfromscratch.org/faq/
@@ -17,7 +17,7 @@ Wiki:
     http://wiki.linuxfromscratch.org/blfs/wiki
 
 Errata:
-    http://www.linuxfromscratch.org/blfs/errata/11.3/
+    http://www.linuxfromscratch.org/blfs/errata/12.2/
 
 Errors:
     http://www.linuxfromscratch.org/hints/downloads/files/errors.txt
@@ -27,4 +27,4 @@ Sources:
         http://www.linuxfromscratch.org/blfs/download.html#sources
 
 Patches:
-    http://www.linuxfromscratch.org/blfs/downloads/11.3/patches/
+    http://www.linuxfromscratch.org/blfs/downloads/12.2/patches/

@@ -90,7 +90,7 @@ docdir = "share/doc/${PRGNAME}-${VERSION}"
 
 [rust]
 channel = "stable"
-description = "for BLFS 11.3"
+description = "for BLFS 12.2"
 
 # BLFS used to not install the FileCheck executable from llvm, so disabled
 # codegen tests.  The assembly tests rely on FileCheck and cannot easily be

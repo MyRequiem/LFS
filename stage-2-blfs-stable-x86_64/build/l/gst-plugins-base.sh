@@ -56,7 +56,7 @@ meson                                          \
     -Ddoc="${DOCS}"                            \
     -Dtests="${TESTS}"                         \
     -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3/ || exit 1
+    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/12.2/ || exit 1
 
 ninja || exit 1
 
