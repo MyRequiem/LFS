@@ -18,9 +18,9 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/bin"
 
 gcc \
-    clipnotify.c -o clipnotify -lX11 -lXfixes || exit 1
+    "${PRGNAME}.c" -o "${PRGNAME}" -lX11 -lXfixes || exit 1
 
-cp clipnotify "${TMP_DIR}/usr/bin"
+cp "${PRGNAME}" "${TMP_DIR}/usr/bin"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # clipnotify.
 #
 # Home page: https://github.com/cdown/${PRGNAME}
-# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

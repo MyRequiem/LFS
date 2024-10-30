@@ -23,16 +23,15 @@ cd build || exit 1
 cmake                                  \
     -G "Unix Makefiles"                \
     -DCMAKE_INSTALL_PREFIX=/usr        \
-    -DCMAKE_INSTALL_INCLUDEDIR=include \
     -DCMAKE_BUILD_TYPE=Release         \
+    -DCMAKE_INSTALL_INCLUDEDIR=include \
     -DBUILD_SHARED_LIBS=1              \
     -DENABLE_TESTS=0                   \
     -DENABLE_NASM=1                    \
     -DENABLE_DOCS=0                    \
     ..
 
-# собираем в один поток, иначе ошибка
-make -j1 || exit 1
+make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -47,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://aomedia.googlesource.com/${PRGNAME}
 # Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
-#            http://www.andrews-corner.org/downloads/
+#            https://www.andrews-corner.org/downloads/
 #
 EOF
 

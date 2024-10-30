@@ -5,11 +5,10 @@ PRGNAME="bumblebee-status"
 ### bumblebee-status (status line generator for i3wm)
 # Модульный генератор строки состояния для оконного менеджера i3
 
-# Required:    python3
-#              i3
-# Recommended: python-psutil    (для модулей cpu и cpu2)
-#              python-netifaces (для модуля nic)
-#              hddtemp          (для модуля hddtemp)
+# Required:    i3
+# Recommended: python3-psutil    (для модулей cpu и cpu2)
+#              python3-netifaces (для модуля nic)
+#              hddtemp           (для модуля hddtemp)
 # Optional:    no
 
 ROOT="/root/src/lfs"

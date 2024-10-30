@@ -10,7 +10,7 @@ PRGNAME="swig"
 # создаёт файл с описанием экспортируемых функций, SWIG генерирует исходный код
 # для склеивания C/C++ и нужного языка, и затем создаёт исполняемый файл.
 
-# Required:    pcre
+# Required:    pcre2
 # Recommended: no
 # Optional:    boost (для тестов)
 
@@ -21,11 +21,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# отключаем сборку тестов и примеров для javascript
+#    --without-javascript
 # отключает принудительное соответствие компилятора ansi, что вызывает ошибки в
 # заголовках Lua >= 5.3
 #    --without-maximum-compile-warnings
-./configure       \
-    --prefix=/usr \
+./configure              \
+    --prefix=/usr        \
+    --without-javascript \
     --without-maximum-compile-warnings || exit 1
 
 make || exit 1
@@ -49,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # underlying C/C++ code. In addition, SWIG provides a variety of customization
 # features that let you tailor the wrapping process to suit your application.
 #
-# Home page: http://www.swig.org/
+# Home page: http://www.${PRGNAME}.org/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

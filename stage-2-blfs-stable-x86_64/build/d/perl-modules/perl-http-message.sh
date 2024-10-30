@@ -6,12 +6,14 @@ ARCH_NAME="HTTP-Message"
 ### HTTP::Message (HTTP style message)
 # HTTP::Message Perl модуль
 
-# Required:    perl-encode-locale
+# Required:    perl-clone
+#              perl-encode-locale
 #              perl-http-date
 #              perl-io-html
 #              perl-lwp-mediatypes
 #              perl-uri
-# Recommended: perl-try-tiny (для тестов)
+# Recommended: perl-test-needs
+#              perl-try-tiny (для тестов)
 # Optional:    no
 
 ROOT="/root/src/lfs"

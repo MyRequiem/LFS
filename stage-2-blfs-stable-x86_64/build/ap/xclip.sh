@@ -5,7 +5,7 @@ PRGNAME="xclip"
 ### xclip (command-line interface to the X clipboard)
 # Утилита командной строки, предоставляющая интерфейс для работы с X clipboard
 
-# Required:    X Window System
+# Required:    xorg-libraries
 # Recommended: no
 # Optional:    no
 

@@ -7,14 +7,14 @@ PRGNAME="gnome-keyring"
 # пользователей.
 
 # Required:    dbus
-#              gcr
+#              gcr3
 # Recommended: linux-pam
 #              libxslt
 #              openssh
 # Optional:    gnupg
 #              valgrind
-#              lcov      (http://ltp.sourceforge.net/coverage/lcov.php)
-#              libcap-ng (http://people.redhat.com/sgrubb/libcap-ng/)
+#              lcov         (http://ltp.sourceforge.net/coverage/lcov.php)
+#              libcap-ng    (https://people.redhat.com/sgrubb/libcap-ng/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,13 +26,9 @@ mkdir -pv "${TMP_DIR}"
 # исправим устаревшую запись в шаблоне xml схем
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
-# если установлен linux-pam (определяется автоматически), то указывается путь
-# для установки модулей PAM
-#    --with-pam-dir=/lib/security
 ./configure           \
     --prefix=/usr     \
-    --sysconfdir=/etc \
-    --with-pam-dir=/lib/security || exit 1
+    --sysconfdir=/etc || exit 1
 
 make || exit 1
 
@@ -45,7 +41,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a tool to handle security credentials)
 #

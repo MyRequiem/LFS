@@ -6,8 +6,9 @@ ARCH_NAME="Alien-Libxml2"
 ### Alien::Libxml2 (install the C libxml2 library on your system)
 # Alien::Libxml2 Perl модуль
 
-# Required:    perl-alien-build
+# Required:    alien-build-plugin-download-gitlab
 #              libxml2
+#              perl-path-tiny
 # Recommended: perl-test2-suite (для тестов)
 # Optional:    no
 

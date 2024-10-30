@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (https://imgur.com)
 #
 # Home page: https://${PRGNAME}.org
-# Download:  https://github.com/lupoDharkael/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}-org/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

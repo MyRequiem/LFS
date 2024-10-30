@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a command, detecting a library, etc.) in pure perl
 #
 # Home page: https://metacpan.org/pod/Config::AutoConf
-# Download:  https://cpan.metacpan.org/authors/id/R/RE/REHSACK/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://cpan.metacpan.org/authors/id/A/AM/AMBS/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

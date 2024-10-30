@@ -7,7 +7,7 @@ PRGNAME="cairomm"
 
 # Required:    cairo
 #              libsigc++2
-# Recommended: boost (для тестов)
+# Recommended: boost        (для тестов)
 # Optional:    doxygen
 
 ROOT="/root/src/lfs"
@@ -17,17 +17,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
 TESTS="false"
 EXAMPLES="false"
+DOCS="false"
 
-mkdir _build &&
-cd _build || exit 1
+mkdir bld &&
+cd bld || exit 1
 
 meson                               \
     --prefix=/usr                   \
-    -Dboost-shared=true             \
+    --buildtype=release             \
     -Dbuild-tests="${TESTS}"        \
+    -Dboost-shared=true             \
     -Dbuild-examples="${EXAMPLES}"  \
     -Dbuild-documentation="${DOCS}" \
       .. || exit 1

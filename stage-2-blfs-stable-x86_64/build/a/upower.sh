@@ -9,46 +9,67 @@ PRGNAME="upower"
 # шину сообщений. Некоторые операции (например приостановка системы) ограничены
 # использованием PolicyKit.
 
-# Required:    dbus-glib
-#              libgudev
+# Required:    libgudev
 #              libusb
 #              polkit
 # Recommended: no
 # Optional:    gobject-introspection
 #              gtk-doc
-#              python-pygobject3
+#              libxslt
+#              docbook-xsl
+#              python3-pygobject3
 #              python3-dbusmock
-#              umockdev (для тестов)
+#              umockdev             (для тестов)
+#              libimobiledevice     (https://libimobiledevice.org/)
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d v -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${PRGNAME}-v${VERSION}"*.tar.?z* || exit 1
+cd "${PRGNAME}-v${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# удалим ненужную зависимость из теста:
+sed '/parse_version/d' -i src/linux/integration-test.py || exit 1
 
-# включим устаревший функционал, который все еще требуется некоторым
-# приложениям
-#    --enable-deprecated
-./configure              \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    --localstatedir=/var \
-    --enable-deprecated  \
-    "${GTK_DOC}"         \
-    --disable-static || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+meson                                    \
+    --prefix=/usr                        \
+    --buildtype=release                  \
+    -Dgtk-doc=false                      \
+    -Dman=true                           \
+    -Dsystemdsystemunitdir=no            \
+    -Dudevrulesdir=/usr/lib/udev/rules.d \
+    .. || exit 1
+
+ninja || exit 1
 
 # тестовый набор должен запускаться из локальной GUI сессии с запущенным
 # dbus-launch
-#
-# make check
+# LC_ALL=C ninja test
 
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -63,14 +84,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # bus. Some operations (such as suspending the system) are restricted using
 # PolicyKit.
 #
-# Home page: http://upower.freedesktop.org/
-# Download:  https://gitlab.freedesktop.org/${PRGNAME}/${PRGNAME}/uploads/93cfe7c8d66ed486001c4f3f55399b7a/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://${PRGNAME}.freedesktop.org/
+# Download:  https://gitlab.freedesktop.org/${PRGNAME}/${PRGNAME}/-/archive/v${VERSION}/${PRGNAME}-v${VERSION}.tar.bz2
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

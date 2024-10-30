@@ -19,6 +19,13 @@ make mrproper || exit 1
 # установлен в LFS системе
 make headers || exit 1
 
+# если пакет уже установлен, удалим его перед обновлением
+if command -v removepkg &>/dev/null; then
+    KERNEL_HEADERS_OLD_PGK="$(find /var/log/packages/ -type f -name "kernel-headers-*")"
+    [ -n "${KERNEL_HEADERS_OLD_PGK}" ] &&
+        /usr/sbin/removepkg --backup "${KERNEL_HEADERS_OLD_PGK}"
+fi
+
 # удалим не нужные файлы и скопируем заголовки в /usr/include/
 find usr/include -type f ! -name '*.h' -delete
 cp -rv usr/include "${LFS}/usr"

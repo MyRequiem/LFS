@@ -30,7 +30,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 ###
-# собираем murrine
+# собираем движок murrine
 ###
 SOURCES="${ROOT}/src"
 MURRINE_VERSION="$(find "${SOURCES}" -type f \
@@ -40,6 +40,13 @@ MURRINE_VERSION="$(find "${SOURCES}" -type f \
 cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${MURRINE}-${MURRINE_VERSION}"*.tar.?z* || exit 1
 cd "${MURRINE}-${MURRINE_VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 ./configure            \
     --prefix=/usr      \
@@ -62,9 +69,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The GTK Engines package contains themes and engines for GTK2
 #
 # Home page: https://download.gnome.org/sources/${PRGNAME}/
-#            https://launchpad.net/murrine/
+#            https://launchpad.net/${MURRINE}/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.bz2
-#            http://ftp.acc.umu.se/pub/GNOME/sources/${MURRINE}/${MURRINE_MAJ_VERSION}/${MURRINE}-${MURRINE_VERSION}.tar.xz
+#            https://ftp.acc.umu.se/pub/GNOME/sources/${MURRINE}/${MURRINE_MAJ_VERSION}/${MURRINE}-${MURRINE_VERSION}.tar.xz
 #
 EOF
 

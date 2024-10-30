@@ -6,13 +6,11 @@ PRGNAME="libbytesize"
 # Библиотека для работы с общими операциями размеров в байтах
 
 # Required:    pcre2
-#              python3
 #              python3-pygments
-# Recommended: no
+# Recommended: python3-six    (для python bindings)
 # Optional:    gtk-doc
-#              python-six (для тестов и python bindings)
-#              pocketlint (python модуль для одного теста) https://github.com/rhinstaller/pocketlint/releases
-#              polib      (python модуль для одного теста) https://pypi.org/project/polib/
+#              pocketlint     (python модуль для одного теста) https://github.com/rhinstaller/pocketlint
+#              python3-polib  (python модуль для одного теста) https://pypi.org/project/polib/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

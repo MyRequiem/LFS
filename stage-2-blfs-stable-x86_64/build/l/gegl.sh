@@ -9,11 +9,13 @@ PRGNAME="gegl"
 
 # Required:    babl
 #              json-glib
+#              libjpeg-turbo
+#              libpng
 # Recommended: gobject-introspection
 #              graphviz
 #              python3-pygments
 #              python3-pygobject3
-# Optional:    asciidoc
+# Optional:    python3-asciidoc
 #              cairo
 #              exiv2
 #              ffmpeg
@@ -22,21 +24,21 @@ PRGNAME="gegl"
 #              gtk-doc
 #              jasper
 #              lcms2
-#              libjpeg-turbo
-#              libpng
+#              libraw
 #              librsvg
 #              libtiff
 #              libwebp
 #              pango
+#              poppler
 #              ruby
 #              sdl2
 #              v4l-utils
 #              vala
+#              libspiro
 #              lensfun       (https://lensfun.github.io/)
-#              libopenraw    (https://libopenraw.pages.freedesktop.org/)
-#              libspiro      (http://libspiro.sourceforge.net/)
 #              libumfpack    (https://people.engr.tamu.edu/davis/suitesparse.html)
-#              luajit        (http://luajit.org/luajit.html)
+#              luajit        (https://luajit.org/luajit.html)
+#              opencl        (https://www.khronos.org/opencl/) для тестов
 #              mrg           (https://github.com/hodefoting/mrg/releases)
 #              openexr       (https://www.openexr.com/)
 
@@ -46,20 +48,25 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 
-GTK_DOC="false"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+# при обновлении пакета на более позднюю версию, необходимо удалить библиотеку
+# vector-fill.so
+rm -f "/usr/lib/${PRGNAME}-${MAJ_VERSION}/vector-fill.so"
 
-# настроим некоторые тестовые сценарии для использования с Python 3, вместо
-# Python 2
-sed '1s@python@&3@' -i tests/python/*.py
+# если установлен libraw >= 0.21.0, сборка завершается сбоем из-за изменения в
+# ABI. Исправим проблему:
+sed -e '/shot_select/s/params/raw&/' -i operations/external/raw-load.c
 
 mkdir build
 cd build || exit 1
 
 meson                   \
     --prefix=/usr       \
-    -Ddocs="${GTK_DOC}" \
+    --buildtype=release \
+    -Ddocs="false" \
+    -Dgtk-doc="false" \
+    -Dintrospection="auto" \
     .. || exit 1
 
 ninja || exit 1
@@ -70,7 +77,6 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Generic Graphics Library)
 #

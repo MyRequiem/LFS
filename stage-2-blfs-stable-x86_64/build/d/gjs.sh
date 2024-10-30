@@ -9,12 +9,12 @@ PRGNAME="gjs"
 #              dbus
 #              gobject-introspection
 #              mozjs
-# Recommended: gtk+3     (для сборки GNOME)
+# Recommended: gtk+3
+#              gtk4
 # Optional:    sysprof
 #              valgrind  (для тестов)
 #              dtrace    (http://dtrace.org/blogs/about/)
-#              gtk+4     (https://wiki.gnome.org/Projects/GTK/Roadmap/GTK4)
-#              lcov      (http://ltp.sourceforge.net/coverage/lcov.php)
+#              lcov      (https://ltp.sourceforge.net/coverage/lcov.php)
 #              systemtap (https://sourceware.org/systemtap/)
 
 ROOT="/root/src/lfs"
@@ -27,8 +27,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir gjs-build
 cd gjs-build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson                      \
+    --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nofallback \
     .. || exit 1
 
 ninja || exit 1
@@ -37,13 +39,6 @@ ninja || exit 1
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
-
-# ссылка в /usr/bin
-#   gjs -> gjs-console
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -svf gjs-console gjs
-)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

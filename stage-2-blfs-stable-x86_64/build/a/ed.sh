@@ -9,7 +9,7 @@ PRGNAME="ed"
 # *.patch создан с помощью Ed.
 
 # Required: libarchive
-#           lzip (для распаковки архива с исходниками в формате .tar.lz)
+#           lzip        (для распаковки архива с исходниками в формате .tar.lz)
 # Optional: no
 
 ROOT="/root/src/lfs"
@@ -19,9 +19,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --bindir=/bin || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 # make check

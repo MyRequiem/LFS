@@ -19,7 +19,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # shellcheck disable=SC2086
-./configure        \
+./configure \
     ${XORG_CONFIG} || exit 1
 
 # пакет не имеет набора тестов
@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configure scripts with autoconf.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/util/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/util/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

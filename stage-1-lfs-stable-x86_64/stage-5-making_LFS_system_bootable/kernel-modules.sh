@@ -25,8 +25,7 @@ fi
 ! [ -d /usr/lib/modules ] && mkdir /usr/lib/modules
 cd "${SRC_DIR}" || exit 1
 
-NUMJOBS="$(nproc)"
-make -j"${NUMJOBS}" modules || exit 1
+make modules || exit 1
 
 # удалим модули текущей версии ядра, если уже установлены
 MODULE_DIR="/usr/lib/modules/${VERSION}"

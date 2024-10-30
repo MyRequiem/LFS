@@ -21,8 +21,6 @@ mkdir -pv "${TMP_DIR}"
 
 cd build/cmake || exit 1
 
-# создаем библиотеки Release-версий без какой-либо отладочной информации
-#    -DCMAKE_BUILD_TYPE=Release
 # собираем утилиту tab2space
 #    -DBUILD_TAB2SPACE=ON
 cmake                           \
@@ -35,6 +33,7 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -fv "${TMP_DIR}/usr/lib/libtidy.a"
 install -v -m755 tab2space "${TMP_DIR}/usr/bin"
 
 source "${ROOT}/stripping.sh"      || exit 1

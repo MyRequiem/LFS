@@ -20,27 +20,26 @@ PRGNAME="graphite2"
 #              harfbuzz (циклическая зависимость: сначала собираем graphite2 без harfbuzz, потом harfbuzz и пересобираем graphite2)
 #
 #              *** для создания документации
-#              asciidoc
+#              python3-asciidoc
 #              doxygen
 #              texlive или install-tl-unx
 #              dblatex (для создания pdf документации) http://dblatex.sourceforge.net/
 #
+#              *** для запуска 'cmp' теста ***
+#              python3-fonttools (https://pypi.org/project/fonttools/)
+#
 #              *** at runtime
 #              graphite-font (https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_fonts)
-#
-#              *** для тестов
-#              fonttools (python2 и python3 модули для тестов) https://pypi.org/project/fonttools/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
-# если не установлен python3 модуль для fonttools, то некоторые тесты не
-# проходят. Исправим:
+# если не установлен пакет python3-fonttools, то некоторые тесты не проходят.
+# Исправим:
 sed -i '/cmptest/d' tests/CMakeLists.txt || exit 1
 
 mkdir build &&
@@ -58,7 +57,7 @@ TEXLIVE=""
 DBLATEX=""
 BUILD_DOCS=""
 
-command -v asciidoc &>/dev/null && ASCIIDOC="true"
+# command -v asciidoc &>/dev/null && ASCIIDOC="true"
 # command -v doxygen  &>/dev/null && DOXYGEN="true"
 # command -v texdoc   &>/dev/null && TEXLIVE="true"
 # command -v dblatex  &>/dev/null && DBLATEX="true"
@@ -76,9 +75,11 @@ make install DESTDIR="${TMP_DIR}"
 
 # документация
 if [ -n "${BUILD_DOCS}" ]; then
-    cp -vf doc/{GTF,manual}.html  "${TMP_DIR}${DOCS}"
+    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+    mkdir -p "${TMP_DIR}${DOCS}"
+    cp -vf doc/{GTF,manual}.html    "${TMP_DIR}${DOCS}"
     if [ -n "${DBLATEX}" ]; then
-        cp -vf doc/{GTF,manual}.pdf  "${TMP_DIR}${DOCS}"
+        cp -vf doc/{GTF,manual}.pdf "${TMP_DIR}${DOCS}"
     fi
 fi
 

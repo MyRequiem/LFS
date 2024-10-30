@@ -8,7 +8,7 @@ ARCH_NAME="namespace-autoclean"
 
 # Required:    perl-namespace-clean
 #              perl-sub-identify
-# Recommended: perl-test-needs      (для тестов)
+# Recommended: perl-test-needs (для тестов)
 # Optional:    no
 
 ROOT="/root/src/lfs"

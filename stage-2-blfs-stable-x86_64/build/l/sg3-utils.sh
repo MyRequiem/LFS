@@ -42,8 +42,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Channel disks, IEEE 1394 storage devices (that use the "SBP" protocol), SAS,
 # iSCSI and FCoE devices (among others).
 #
-# Home page: http://sg.danny.cz/sg/${ARCH_NAME}.html
-# Download:  http://sg.danny.cz/sg/p/${ARCH_NAME}-${VERSION}.tar.xz
+# Home page: https://sg.danny.cz/sg/${ARCH_NAME}.html
+# Download:  https://sg.danny.cz/sg/p/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

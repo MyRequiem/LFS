@@ -26,6 +26,13 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-${VERSION}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}"
@@ -53,7 +60,7 @@ mkdir -pv "${TMP_DIR}${DOCS}"
 # пакет "не любит" сборку в несколько потоков
 make -j1 || exit 1
 # make test
-make install docdir="${DOCS}" atdocdir="${DOCS}" IROOT="${TMP_DIR}"
+make install docdir="${DOCS}" atdocdir="${DOCS}" DESTDIR="${TMP_DIR}"
 
 # скрипт /etc/init.d/atd для запуска демона atd при старте системы
 (
@@ -86,7 +93,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # required for Linux Standards Base (LSB) conformance.
 #
 # Home page: https://salsa.debian.org/debian/${PRGNAME}
-# Download:  http://software.calhariz.com/${PRGNAME}/${PRGNAME}_${VERSION}.orig.tar.gz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}_${VERSION}.orig.tar.gz
 #
 EOF
 

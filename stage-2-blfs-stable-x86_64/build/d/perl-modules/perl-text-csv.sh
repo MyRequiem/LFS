@@ -7,7 +7,7 @@ ARCH_NAME="Text-CSV"
 # Text::CSV Perl модуль
 
 # Required:    no
-# Recommended: perl-text-csv_xs (требуется для сборки biber)
+# Recommended: perl-text-csv-xs (требуется для сборки пакета biber)
 # Optional:    no
 
 ROOT="/root/src/lfs"

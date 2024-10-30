@@ -34,10 +34,7 @@ sed -i '/DG_DISABLE_DEPRECATED/d' glade/Makefile.in || exit 1
     --disable-static || exit 1
 
 make || exit 1
-
-# известно, что тест 'test-convert' завершается ошибкой
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
 [[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \

@@ -9,12 +9,16 @@ PRGNAME="parted"
 # использования диска, копирование данных между жесткими дисками и образами
 # дисков.
 
-# Required:    python2
+# Required:    no
 # Recommended: lvm2
 # Optional:    dosfstools
 #              pth
 #              texlive или install-tl-unx
-#              digest-crc (для тестов) https://metacpan.org/pod/Digest::CRC
+#              perl-digest-crc (для тестов) https://metacpan.org/pod/Digest::CRC
+
+### конфигурация ядра (для тестов)
+#    CONFIG_SCSI_LOW_LEVEL=y
+#    CONFIG_SCSI_DEBUG=m
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -21,7 +21,8 @@ cd bld || exit 1
 
 cmake                           \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    ../source || exit 1
+    -DGIT_ARCHETYPE=1           \
+    -Wno-dev ../source || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -41,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # the H.265/MPEG-H HEVC compression format.
 #
 # Home page: https://www.videolan.org/developers/${PRGNAME}.html
-# Download:  https://github.com/videolan/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

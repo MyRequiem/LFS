@@ -7,8 +7,11 @@ ARCH_NAME="URI"
 # URI Perl модуль
 
 # Required:    no
-# Recommended: perl-test-needs (для тестов)
-# Optional:    no
+# Recommended: --- для тестов ---
+#              perl-test-fatal
+#              perl-test-needs
+#              perl-test-warnings
+# Optional:    perl-business-isbn
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

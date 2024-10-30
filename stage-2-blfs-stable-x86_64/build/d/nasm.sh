@@ -9,7 +9,8 @@ PRGNAME="nasm"
 
 # Required:    no
 # Recommended: no
-# Optional:    asciidoc
+# Optional:    --- для документации ---
+#              python3-asciidoc
 #              xmlto
 
 ROOT="/root/src/lfs"
@@ -40,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # most popular assemblers for Linux.
 #
 # Home page: https://www.${PRGNAME}.us/
-# Download:  http://www.${PRGNAME}.us/pub/${PRGNAME}/releasebuilds/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://www.${PRGNAME}.us/pub/${PRGNAME}/releasebuilds/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

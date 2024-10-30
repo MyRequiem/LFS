@@ -7,9 +7,10 @@ ARCH_NAME="MIME-Charset"
 # MIME::Charset Perl модуль
 
 # Required:    no
-# Recommended: perl-encode-eucjpascii (требуется для сборки biber)
-#              perl-encode-hanextra   (требуется для сборки biber)
-#              perl-encode-jis2k      (требуется для сборки biber)
+# Recommended: --- требуются для сборки пакета biber ---
+#              perl-encode-eucjpascii
+#              perl-encode-hanextra
+#              perl-encode-jis2k
 # Optional:    no
 
 ROOT="/root/src/lfs"

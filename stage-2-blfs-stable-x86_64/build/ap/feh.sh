@@ -6,13 +6,12 @@ PRGNAME="feh"
 # Быстрый и легкий просмотрщик изображений, использующий Imlib2
 
 # Required:    libpng
-#              imlib2
-#              giflib
+#              imlib2 (собранный с giflib для тестов)
 # Recommended: curl
 # Optional:    libexif
 #              libjpeg-turbo
 #              imagemagick
-#              perl-test-command
+#              perl-test-command (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,7 +28,7 @@ CURL=0
 command -v curl &>/dev/null && CURL=1
 
 # добавим версию к названию каталога с документацией
-sed -i "s:doc/feh:&-${VERSION}:" config.mk &&
+sed -i "s:doc/feh:&-${VERSION}:" config.mk || exit 1
 
 make               \
     PREFIX=/usr    \
@@ -56,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # mouse wheel/keyboard control.
 #
 # Home page: https://${PRGNAME}.finalrewind.org
-# Download:  http://${PRGNAME}.finalrewind.org/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://${PRGNAME}.finalrewind.org/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

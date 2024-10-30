@@ -55,8 +55,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # network statistics collection, security monitoring, network debugging, etc.
 # The tcpdump utility uses libpcap.
 #
-# Home page: http://www.tcpdump.org
-# Download:  http://www.tcpdump.org/release/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.tcpdump.org/
+# Download:  https://www.tcpdump.org/release/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

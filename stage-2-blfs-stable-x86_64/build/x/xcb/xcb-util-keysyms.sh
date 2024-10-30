@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # constants and conversion to/from keycodes.
 #
 # Home page: https://xcb.freedesktop.org/
-# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -25,7 +25,7 @@ mkdir -pv "${TMP_DIR}"
 # программ
 #    --enable-compat-symlinks
 ./configure                  \
-    --prefix=/               \
+    --prefix=/usr            \
     --enable-compat-symlinks \
     --mandir=/usr/share/man  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -38,6 +38,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tools for working with FAT filesystems)
 #
@@ -46,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # checking and repairing them (dosfsck).
 #
 # Home page: https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

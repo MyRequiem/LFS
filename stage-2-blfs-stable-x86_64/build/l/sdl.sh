@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="sdl"
-ARCH_NAME="$(echo "${PRGNAME}" | awk '{print toupper($0)}')"
+ARCH_NAME="SDL"
 
 ### SDL (Simple DirectMedia Layer library)
 # Кроссплатформенная мультимедийная библиотека, реализующая единый программный
@@ -12,22 +12,23 @@ ARCH_NAME="$(echo "${PRGNAME}" | awk '{print toupper($0)}')"
 
 # Required:    no
 # Recommended: xorg-libraries
-# Optional:    alsa-lib
-#              alsa-tools
-#              alsa-utils
+# Optional:    aalib
+#              alsa-lib
 #              alsa-plugins
+#              alsa-utils
+#              alsa-tools
+#              alsa-firmware
 #              alsa-oss
-#              aalib
 #              glu
 #              nasm
 #              pulseaudio
 #              pth
-#              X Window System
-#              directfb        (https://src.fedoraproject.org/repo/pkgs/directfb/)
-#              ggi             (http://ibiblio.org/ggicore/)
-#              libcaca         (http://caca.zoy.org/wiki/libcaca)
-#              picogui         (http://picogui.org/)
-#              svgalib         (https://www.svgalib.org/)
+#              Graphical Environments
+#              directfb                (https://src.fedoraproject.org/repo/pkgs/directfb/)
+#              ggi                     (https://ibiblio.org/ggicore/)
+#              libcaca                 (https://github.com/cacalabs/libcaca)
+#              picogui                 (http://picogui.org/)
+#              svgalib                 (https://www.svgalib.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

@@ -3,6 +3,7 @@
 ###***###
 perl                                xml-parser, vim, git, all_packages_from_stage-2-blfs-stable-x86_64/build/d/perl-modules/
 kernel-generic                      iptables
+kernel-modules                      iptables
 python3                             meson
 tcl                                 tk
 

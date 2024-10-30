@@ -9,27 +9,30 @@ PRGNAME="gst-plugins-base"
 
 # Required:    gstreamer
 # Recommended: alsa-lib
-#              cdparanoia-III (для сборки cdda плагина)
+#              cdparanoia-III         (для сборки cdda плагина)
 #              gobject-introspection
 #              iso-codes
 #              libgudev
+#              libjpeg-turbo
 #              libogg
+#              libpng
 #              libtheora
 #              libvorbis
 #              mesa
+#              pango
 #              wayland-protocols
 #              xorg-libraries
 # Optional:    graphene
-#              gtk+3
+#              gtk+3                  (для сборки примеров)
 #              opus
-#              qt5
+#              qt5                    (для сборки примеров)
 #              sdl
 #              sdl2
 #              valgrind
-#              hotdoc    (https://pypi.org/project/hotdoc/)
-#              libvisual (http://libvisual.org/)
-#              orc       (https://gstreamer.freedesktop.org/src/orc/)
-#              tremor    (https://wiki.xiph.org/Tremor)
+#              python3-hotdoc         (https://pypi.org/project/hotdoc/)
+#              libvisual              (http://libvisual.org/)
+#              orc                    (https://gstreamer.freedesktop.org/src/orc/)
+#              tremor                 (https://wiki.xiph.org/Tremor)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -47,13 +50,13 @@ cd build || exit 1
 
 meson                                          \
     --prefix=/usr                              \
+    --buildtype=release                        \
     --wrap-mode=nodownload                     \
     -Dexamples="${EXAMPLES}"                   \
     -Ddoc="${DOCS}"                            \
     -Dtests="${TESTS}"                         \
-    -Dbuildtype=release                        \
     -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin=http://www.linuxfromscratch.org/blfs/view/svn/ || exit 1
+    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3/ || exit 1
 
 ninja || exit 1
 

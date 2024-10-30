@@ -35,16 +35,13 @@ source "${ROOT}/xorg_config.sh"                          || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# адаптируем drmmode_display.h к изменениям в GCC-10
-sed -e 's/miPointer/extern &/' -i src/drmmode_display.h
-
-GLAMOR="--disable-glamor"
-[ -x /usr/lib/xorg/modules/libglamoregl.so ] && GLAMOR="--enable-glamor"
+# исправим известные проблем с производительностью
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # shellcheck disable=SC2086
-./configure        \
-    ${XORG_CONFIG} \
-    "${GLAMOR}" || exit 1
+./configure \
+    ${XORG_CONFIG} || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

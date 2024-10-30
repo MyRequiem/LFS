@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-applications"
-PKG_VERSION="7"
+PKG_VERSION="11"
 
 ### Xorg Applications (Xorg Applications)
 # Основные приложения поставляемые с Xorg
@@ -207,6 +207,13 @@ for PKGNAME in ${PACKAGES}; do
 
     cd "${PKGNAME}-${VERSION}" || exit 1
 
+    chown -R root:root .
+    find -L . \
+        \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+        -o -perm 511 \) -exec chmod 755 {} \; -o \
+        \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+        -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
     case "${PKGNAME}" in
         luit)
             sed -i -e "/D_XOPEN/s/5/6/" configure || {
@@ -217,8 +224,11 @@ for PKGNAME in ${PACKAGES}; do
     esac
 
     # shellcheck disable=SC2086
-    ./configure        \
-        ${XORG_CONFIG} || exit 1
+    ./configure \
+        ${XORG_CONFIG} || {
+        show_error "'configure' for ${PKGNAME} package"
+        exit 1
+    }
 
     # сборка
     make || {
@@ -289,8 +299,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # The Xorg applications provide the expected applications available in previous
 # X Window implementations.
 #
-# Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/app/
+# Home page: https://www.x.org/
+# Download:  https://www.x.org/archive/individual/app/
 #
 EOF
 

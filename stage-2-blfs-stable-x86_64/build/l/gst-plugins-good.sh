@@ -12,36 +12,32 @@ PRGNAME="gst-plugins-good"
 #              flac
 #              gdk-pixbuf
 #              lame
-#              libgudev
-#              libjpeg-turbo
-#              libpng
 #              libsoup
+#              libsoup3
 #              libvpx
-#              mesa
 #              mpg123
 #              nasm
-#              xorg-libraries
+#              pulseaudio
 # Optional:    aalib
 #              alsa-oss
-#              gtk+3
+#              gtk+3             (для сборки примеров)
 #              libdv
-#              pulseaudio
 #              qt5
 #              speex
 #              taglib
 #              valgrind
 #              v4l-utils
 #              wayland
-#              hotdoc      (https://pypi.org/project/hotdoc/)
-#              jack        (https://jackaudio.org/)
-#              libcaca     (http://caca.zoy.org/wiki/libcaca)
-#              libavc1394  (https://sourceforge.net/projects/libavc1394/)
-#              libiec61883 (https://sourceforge.net/projects/libraw1394/)
-#              libraw1394  (https://sourceforge.net/projects/libraw1394/)
-#              libshout    (https://www.icecast.org/)
-#              orc         (https://gstreamer.freedesktop.org/src/orc/)
-#              twolame     (https://www.twolame.org/)
-#              wavpack     (https://www.wavpack.com/)
+#              python3-hotdoc    (https://pypi.org/project/hotdoc/)
+#              jack              (https://jackaudio.org/)
+#              libcaca           (https://github.com/cacalabs/libcaca)
+#              libavc1394        (https://sourceforge.net/projects/libavc1394/)
+#              libiec61883       (https://sourceforge.net/projects/libraw1394/)
+#              libraw1394        (https://sourceforge.net/projects/libraw1394/)
+#              libshout          (https://www.icecast.org/)
+#              orc               (https://gstreamer.freedesktop.org/src/orc/)
+#              twolame           (https://www.twolame.org/)
+#              wavpack           (https://www.wavpack.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -59,12 +55,12 @@ cd build || exit 1
 
 meson                                          \
     --prefix=/usr                              \
+    --buildtype=release                        \
+    -Dpackage-name="GStreamer ${VERSION} BLFS" \
     -Dexamples="${EXAMPLES}"                   \
     -Ddoc="${DOCS}"                            \
     -Dtests="${TESTS}"                         \
-    -Dbuildtype=release                        \
-    -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin=http://www.linuxfromscratch.org/blfs/view/svn/ || exit 1
+    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3/ || exit 1
 
 ninja || exit 1
 

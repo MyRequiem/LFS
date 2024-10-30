@@ -24,11 +24,13 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# make check
+# make check -k
 make install DESTDIR="${TMP_DIR}"
 
 # libcdio-paranoia зависит от libcdio, поэтому сразу устанавливаем в систему
-source "${ROOT}/stripping.sh" || exit 1
+# (пока не удаляем отладочную информацию из бинарников, т.к. поcле сборки и
+# установки libcdio-paranoia во временную директорию мы все это перезапишем)
+source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # собираем  и устанавливаем libcdio-paranoia
@@ -36,12 +38,15 @@ LIB_PARANOIA="$(find "${SOURCES}" -type f -name "${PRGNAME}-paranoia-*")"
 PARANOIA_VERSION="$(echo "${LIB_PARANOIA}" | rev | cut -d . -f 3- | \
     cut -d - -f 1 | rev)"
 
-TMP_DIR_PARANOIA="${BUILD_DIR}/package-${PRGNAME}-paranoia-${PARANOIA_VERSION}"
-mkdir -pv "${TMP_DIR_PARANOIA}"
-
-cd "${BUILD_DIR}" || exit 1
 tar -xvf "${LIB_PARANOIA}"
 cd "${PRGNAME}-paranoia-${PARANOIA_VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 ./configure       \
     --prefix=/usr \
@@ -49,22 +54,11 @@ cd "${PRGNAME}-paranoia-${PARANOIA_VERSION}" || exit 1
 
 make || exit 1
 # make check
-make install DESTDIR="${TMP_DIR_PARANOIA}"
+make install DESTDIR="${TMP_DIR}"
 
-# stripping
-BINARY="$(find "${TMP_DIR_PARANOIA}" -type f -print0 | \
-    xargs -0 file 2>/dev/null | /bin/grep -e "executable" -e "shared object" | \
-    /bin/grep ELF | /bin/grep -v "32-bit" | cut -f 1 -d :)"
-
-for BIN in ${BINARY}; do
-    strip --strip-unneeded "${BIN}"
-done
-
-/bin/cp -vpR "${TMP_DIR_PARANOIA}"/* /
-
-/bin/cp -vpR "${TMP_DIR_PARANOIA}"/* "${TMP_DIR}"/
-
+source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU Compact Disc Input and Control Library)

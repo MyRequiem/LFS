@@ -15,7 +15,7 @@ PRGNAME="libblockdev"
 # Optional:    btrfs-progs
 #              gtk-doc
 #              mdadm
-#              dmraid    (http://people.redhat.com/~heinzm/sw/dmraid/)
+#              dmraid    (https://people.redhat.com/~heinzm/sw/dmraid/)
 #              bcachefs  (https://bcachefs.org/)
 #              ndctl     (https://github.com/pmem/ndctl)
 
@@ -26,28 +26,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="--without-gtk-doc"
-PYTHON2="--without-python2"
-BTRFS="--without-btrfs"
-DMRAID="--without-dmraid"
-NDCTL="--without-nvdimm"
-
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--with-gtk-doc"
-command -v python2      &>/dev/null && PYTHON2="--with-python2"
-command -v btrfs        &>/dev/null && BTRFS="--with-btrfs"
-command -v dmraid       &>/dev/null && DMRAID="--with-dmraid"
-[ -x /usr/lib/libndctl.so ]         && NDCTL="--with-nvdimm"
-
-./configure        \
-    --prefix=/usr  \
-    --with-python3 \
-    "${GTK_DOC}"   \
-    "${PYTHON2}"   \
-    "${BTRFS}"     \
-    "${DMRAID}"    \
-    "${NDCTL}"     \
-    --without-dm   \
-    --sysconfdir=/etc || exit 1
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    --with-python3    \
+    --without-gtk-doc \
+    --without-btrfs   \
+    --without-dmraid  \
+    --without-nvdimm  \
+    --without-dm || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

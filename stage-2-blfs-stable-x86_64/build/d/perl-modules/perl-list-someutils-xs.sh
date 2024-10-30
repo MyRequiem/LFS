@@ -7,8 +7,9 @@ ARCH_NAME="List-SomeUtils-XS"
 # List::SomeUtils::XS Perl модуль
 
 # Required:    no
-# Recommended: perl-test-leaktrace (для тестов)
-#              perl-test-warnings  (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-leaktrace
+#              perl-test-warnings
 # Optional:    no
 
 ROOT="/root/src/lfs"

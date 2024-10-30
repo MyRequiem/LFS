@@ -8,7 +8,8 @@ ARCH_NAME="OpenSP"
 
 # Required:    sgml-common
 # Recommended: no
-# Optional:    xmlto
+# Optional:    libnsl
+#              xmlto
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -23,7 +24,7 @@ sed -i 's/LITLEN          240 /LITLEN          8092/' \
     unicode/{gensyntax.pl,unicode.syn}                  || exit 1
 
 XMLTO="--disable-doc-build"
-command -v xmlto &>/dev/null && XMLTO="--enable-doc-build"
+# command -v xmlto &>/dev/null && XMLTO="--enable-doc-build"
 
 ./configure                                    \
     --prefix=/usr                              \
@@ -33,17 +34,17 @@ command -v xmlto &>/dev/null && XMLTO="--enable-doc-build"
     --enable-default-catalog=/etc/sgml/catalog \
     --enable-default-search-path=/usr/share/sgml || exit 1
 
-make \
-    pkgdatadir="/usr/share/sgml/${PRGNAME}-${VERSION}" \
-    docdir="/usr/share/doc/${PRGNAME}-${VERSION}"      \
+make                                                     \
+    pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
+    docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
     mandir=/usr/share/man || exit 1
 
 # make check
 
-make \
-    pkgdatadir="/usr/share/sgml/${PRGNAME}-${VERSION}" \
-    docdir="/usr/share/doc/${PRGNAME}-${VERSION}"      \
-    mandir=/usr/share/man                              \
+make                                                     \
+    pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
+    docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
+    mandir=/usr/share/man                                \
     install  DESTDIR="${TMP_DIR}" || exit 1
 
 (
@@ -69,14 +70,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The OpenSP package contains a C++ library for using SGML/XML files. This is
 # useful for validating, parsing and manipulating SGML and XML documents.
 #
-# Home page: http://openjade.sourceforge.net/
+# Home page: https://openjade.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/openjade/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-# есть один *.la файл
-# /usr/lib/libosp.la
-# но он нужен для сборки пакета openjade

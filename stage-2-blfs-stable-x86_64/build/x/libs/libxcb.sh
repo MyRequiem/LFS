@@ -27,11 +27,11 @@ DOXYGEN="--without-doxygen"
 # command -v doxygen &>/dev/null && DOXYGEN="--with-doxygen"
 
 # shellcheck disable=SC2086
-CFLAGS="${CFLAGS:--O2 -g} -Wno-error=format-extra-args" \
+PYTHON=python3     \
 ./configure        \
     ${XORG_CONFIG} \
     "${DOXYGEN}"   \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --docdir="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check

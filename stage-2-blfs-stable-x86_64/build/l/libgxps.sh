@@ -26,6 +26,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+TESTS="false"
 GTK_DOC="false"
 DISABLE_INTROSPECTION="true"
 
@@ -34,8 +35,10 @@ command -v g-ir-compiler &>/dev/null && DISABLE_INTROSPECTION="false"
 
 meson                                                  \
     --prefix=/usr                                      \
-    -Denable-man=true                                  \
+    --buildtype=release                                \
+    -Denable-test="${TESTS}"                           \
     -Denable-gtk-doc="${GTK_DOC}"                      \
+    -Denable-man=true                                  \
     -Ddisable-introspection="${DISABLE_INTROSPECTION}" \
     .. || exit 1
 

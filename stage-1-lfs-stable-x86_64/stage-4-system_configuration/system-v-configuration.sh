@@ -99,7 +99,7 @@ l4:4:wait:/etc/rc.d/init.d/rc 4
 l5:5:wait:/etc/rc.d/init.d/rc 5
 l6:6:wait:/etc/rc.d/init.d/rc 6
 
-rc::bootwait:/etc/rc.d/rc.local
+rc:3:wait:/etc/rc.d/rc.local
 
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
@@ -156,7 +156,7 @@ EOF
 # уровень логирования сообщений ядра для консоли. Все эти параметры настройки
 # он берет из файла конфигурации /etc/sysconfig/console
 # Этот конфиг контролирует только текстовую консоль Linux и не имеет ничего
-# общего с настройкой графических терминалов в X Window System
+# общего с настройкой графических терминалов в X
 
 # Параметры для /etc/sysconfig/console
 # ------------------------------------

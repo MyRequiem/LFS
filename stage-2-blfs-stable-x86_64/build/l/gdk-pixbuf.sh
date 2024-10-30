@@ -11,10 +11,11 @@ PRGNAME="gdk-pixbuf"
 #              libjpeg-turbo
 #              libpng
 #              shared-mime-info
-# Recommended: librsvg
+# Recommended: python3-docutils
+#              librsvg
 #              libtiff
 # Optional:    gobject-introspection (требуется для сборки GNOME)
-#              gtk-doc
+#              python3-gi-docgen     (для генерации документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,10 +28,15 @@ mkdir build
 cd build || exit 1
 
 GTK_DOC="false"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
+# command -v gi-docgen &>/dev/null && GTK_DOC="true"
 
+# не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе
+#    --wrap-mode=nofallback
 meson                      \
     --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nofallback \
     -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
 

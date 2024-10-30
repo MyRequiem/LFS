@@ -3,8 +3,9 @@
 PRGNAME="numlockx"
 
 ### numlockx (Start X with NumLock Turned On)
+# утилита позволяет запускать X с включенным NumLock
 
-# Required:    X Window System
+# Required:    Graphical Environments
 # Recommended: no
 # Optional:    no
 
@@ -13,8 +14,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-MAN_DIR="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}${MAN_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure                      \
     --prefix=/usr                \
@@ -26,10 +26,6 @@ mkdir -pv "${TMP_DIR}${MAN_DIR}"
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
-
-# man-страница
-# help2man --no-info numlockx > numlockx.1
-cp "${SOURCES}/${PRGNAME}.1" "${TMP_DIR}${MAN_DIR}/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -43,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # achieve this).
 #
 # Home page: https://github.com/rg3/${PRGNAME}
-# Download:  http://ponce.cc/slackware/sources/repo/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ponce.cc/slackware/sources/repo/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

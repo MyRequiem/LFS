@@ -27,16 +27,15 @@ COMPILER_RT="compiler-rt"
 #              graphviz
 #              libxml2
 #              python3-pygments
-#              rsync           (для тестов)
+#              rsync                        (для тестов)
+#              python3-recommonmark         (для создания документации)
 #              texlive или install-tl-unx
 #              valgrind
-#              python-pyyaml
+#              python3-pyyaml
 #              zip
-#              ocaml           (https://ocaml.org/)
-#              python-psutil   (https://pypi.org/project/psutil/)
-#              recommonmark    (https://pypi.org/project/recommonmark/)
-#              sphinx          (https://pypi.org/project/Sphinx/)
-#              z3              (https://github.com/Z3Prover/z3)
+#              ocaml                 (https://ocaml.org/)
+#              python3-psutil        (https://pypi.org/project/psutil/)
+#              z3                    (https://github.com/Z3Prover/z3)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -49,26 +48,34 @@ MAN="/usr/share/man/man1"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"{"${MAN}","${DOCS}"}
 
-tar -xvf "${SOURCES}/${CLANG}-${VERSION}.src.tar.xz" -C tools          || exit 1
+tar -xvf "${SOURCES}/${PRGNAME}-cmake-${VERSION}.src.tar.xz"  || exit 1
+sed '/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-15.0.7.src@' \
+    -i CMakeLists.txt
+
+tar -xvf "${SOURCES}/${CLANG}-${VERSION}.src.tar.xz"       -C tools    || exit 1
 tar -xvf "${SOURCES}/${COMPILER_RT}-${VERSION}.src.tar.xz" -C projects || exit 1
 
-mv "tools/${CLANG}-${VERSION}.src" "tools/${CLANG}"
+mv "tools/${CLANG}-${VERSION}.src"          "tools/${CLANG}"
 mv "projects/${COMPILER_RT}-${VERSION}.src" "projects/${COMPILER_RT}"
 
 DOXYGEN="OFF"
-# SPHINX=""
-# RECOMMONMARK=""
+SPHINX=""
+RECOMMONMARK=""
 LLVM_DOCS=""
 
 # command -v doxygen      &>/dev/null          && DOXYGEN="ON"
 # command -v sphinx-build &>/dev/null          && SPHINX="true"
 # command -v cm2html      &>/dev/null          && RECOMMONMARK="true"
-# [[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
+[[ -n "${SPHINX}" && -n "${RECOMMONMARK}" ]] && LLVM_DOCS="true"
 
 # в исходниках лежит много Python-скриптов, которые используют shebang
 # /usr/bin/env python для доступа к системному Python, который в LFS -
 # Python-3.x.x. Исправим эти скрипты, чтобы shebang был /usr/bin/env python3
 grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+
+# включаем SSP по умолчанию в скомпилированных программах
+patch --verbose -Np2 -d "tools/${CLANG}" < \
+    "${SOURCES}/${CLANG}-${VERSION}-enable_default_ssp-1.patch" || exit 1
 
 mkdir -v build
 cd build || exit 1
@@ -105,20 +112,17 @@ cmake                                         \
     -DLLVM_BUILD_LLVM_DYLIB=ON                \
     -DLLVM_LINK_LLVM_DYLIB=ON                 \
     -DLLVM_ENABLE_RTTI=ON                     \
+    -DLLVM_INCLUDE_BENCHMARKS=OFF             \
     -DLLVM_BUILD_TESTS=OFF                    \
     -DLLVM_ENABLE_DOXYGEN="${DOXYGEN}"        \
     -DLLVM_BINUTILS_INCDIR=/usr/include       \
     -DLLVM_TARGETS_TO_BUILD="host;AMDGPU;BPF" \
     -Wno-dev -G Ninja .. || exit 1
 
-# берем количество потоков сборки равное количеству ядер процессора (по
-# умолчанию ninja берет количество ядер + 2)
-[ -z "${NINJAJOBS}" ] && NINJAJOBS="-j$(/usr/bin/nproc)"
+ninja || exit 1
 
-ninja "${NINJAJOBS}" || exit 1
-
-# если пакеты sphinx и recommonmark установлены, сгенерируем html документацию
-# и man-страницы для llvm и clang
+# если пакеты python3-sphinx и python3-recommonmark установлены, сгенерируем
+# html документацию и man-страницы для llvm и clang
 if [ -n "${LLVM_DOCS}" ]; then
     cmake                               \
         -DLLVM_BUILD_DOCS=ON            \
@@ -142,7 +146,7 @@ fi
 
 DESTDIR="${TMP_DIR}" ninja install
 
-chmod 644 "${TMP_DIR}${MAN}"
+chmod 644 "${TMP_DIR}${MAN}"/*
 
 # установка документации llvm
 cp -v ../LICENSE.TXT ../README.txt "${TMP_DIR}${DOCS}"

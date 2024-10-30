@@ -3,13 +3,10 @@
 PRGNAME="spice-gtk"
 
 ### spice-gtk (spice gtk client/libraries)
+# Gtk-клиент и библиотеки для удаленных рабочих столов Spice
 
-# Required:    opus
-#              vala
-#              python-six
-#              spice-protocol   (https://www.spice-space.org)
-#              spice            (https://www.spice-space.org/)
-#              python-pyparsing (https://pypi.org/project/pyparsing/)
+# Required:    vala
+#              spice             (https://www.spice-space.org/)
 # Recommended: gobject-introspection
 #              polkit
 # Optional:    libcacard        (https://www.spice-space.org/)

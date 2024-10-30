@@ -11,10 +11,15 @@ PRGNAME="xmlto"
 #              docbook-xsl
 #              libxslt
 # Recommended: no
-# Optional:    fop
-#              dblatex                https://sourceforge.net/projects/dblatex/files/dblatex/
-#              passivetex             http://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html
-#              links или lynx или w3m (http://w3m.sourceforge.net/) или elinks (http://elinks.or.cz/)
+# Optional:    --- для dvi, pdf и postscript backend ---
+#              fop
+#              dblatex      (https://sourceforge.net/projects/dblatex/files/dblatex/)
+#              passivetex   (https://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html)
+#              --- для text backend один из консольных браузеров ---
+#              links
+#              lynx
+#              w3m          (http://w3m.sourceforge.net/)
+#              elinks       (http://elinks.or.cz/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

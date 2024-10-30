@@ -9,8 +9,9 @@ ARCH_NAME="DateTime-TimeZone"
 # Required:    perl-class-singleton
 #              perl-module-runtime
 #              perl-params-validationcompiler
-# Recommended: perl-test-fatal    (для тестов)
-#              perl-test-requires (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-fatal
+#              perl-test-requires
 # Optional:    no
 
 ROOT="/root/src/lfs"

@@ -10,8 +10,7 @@ PRGNAME="libseccomp"
 # Recommended: no
 # Optional:    which    (для тестов)
 #              valgrind
-#              cython   (https://cython.org/)
-#              lcov     (http://ltp.sourceforge.net/coverage/lcov.php)
+#              lcov     (https://github.com/linux-test-project/lcov)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

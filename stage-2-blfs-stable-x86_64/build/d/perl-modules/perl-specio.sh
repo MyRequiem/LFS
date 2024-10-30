@@ -12,9 +12,10 @@ ARCH_NAME="Specio"
 #              perl-role-tiny
 #              perl-sub-quote
 #              perl-try-tiny
-# Recommended: perl-mro-compat          (для тестов)
-#              perl-test-fatal          (для тестов)
-#              perl-test-needs          (для тестов)
+# Recommended: --- для тестов ---
+#              perl-mro-compat
+#              perl-test-fatal
+#              perl-test-needs
 # Optional:    perl-namespace-autoclean (для тестов)
 
 ROOT="/root/src/lfs"

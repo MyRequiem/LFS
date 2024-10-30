@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 # удалим инструмент qlo10k1 (ему нужен Qt2 или Qt3) и два ненужных файла
 rm -rf qlo10k1 Makefile gitcompile
 
-for TOOL in *; do
+for TOOL in * ; do
     TOOL_DIR="${TOOL}"
     [[ "x${TOOL}" == "xseq" ]] && TOOL_DIR="${TOOL}/sbiload"
 

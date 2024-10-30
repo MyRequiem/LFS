@@ -16,8 +16,7 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}/html"
+mkdir -pv "${TMP_DIR}"
 
 ./configure \
     --prefix=/usr || exit 1
@@ -26,13 +25,10 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# ссылка в /usr/lib/ aspell -> aspell-0.60 (требуется при конфигурации других
-# приложений, например enchant)
+# ссылка в /usr/lib/
+# требуется при конфигурации других приложений, например enchant
+#    aspell -> aspell-0.60/
 ln -svfn aspell-0.60 "${TMP_DIR}/usr/lib/aspell"
-
-# документация
-cp -a COPYING README TODO             "${TMP_DIR}${DOCS}"
-install -v -m644 manual/aspell.html/* "${TMP_DIR}${DOCS}/html"
 
 # Spell и Ispell не устанавливаем, поэтому скопируем скрипт-обертку ispell и
 # spell в /usr/bin
@@ -48,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # GNU Aspell is a spell checker designed to eventually replace Ispell. It can
 # either be used as a library or as an independent spell checker.
 #
-# Home page: http://aspell.net/
+# Home page: http://${PRGNAME}.net/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

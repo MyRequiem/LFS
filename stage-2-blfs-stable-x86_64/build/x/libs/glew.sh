@@ -29,7 +29,8 @@ sed -i -e '/glew.lib.static:/d' \
 make || exit 1
 # пакет не имеет набора тестов
 
-# install.all - устанавливаем библиотеку и утилиты 'glewinfo' и 'visualinfo'
+# install.all - устанавливаем библиотеку libGLEW.so и утилиты 'glewinfo' и
+# 'visualinfo'
 make install.all DESTDIR="${TMP_DIR}"
 
 chmod 755 "${TMP_DIR}/usr/lib/libGLEW.so"
@@ -45,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # C/C++ extension loading library. GLEW provides efficient run-time mechanisms
 # for determining which OpenGL extensions are supported on the target platform.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tgz
 #
 EOF

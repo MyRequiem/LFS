@@ -7,7 +7,7 @@ ARCH_NAME="HTTP-Date"
 # HTTP::Date Perl модуль
 
 # Required:    no
-# Recommended: perl-timedate (для распознавания числовых зон и зон отличных от GMT)
+# Recommended: perl-timedate (для определения временных зон, нумерация которых отлична от GMT)
 # Optional:    no
 
 ROOT="/root/src/lfs"

@@ -9,7 +9,7 @@ PRGNAME="apr-util"
 # Required:    apr
 # Recommended: no
 # Optional:    berkeley-db
-#              freetds (http://www.freetds.org/)
+#              freetds          (https://www.freetds.org/)
 #              mariadb or mysql (https://www.mysql.com/)
 #              openldap
 #              postgresql
@@ -23,38 +23,27 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-BERKELEY_DB="--without-berkeley-db"
-SQLITE3="--without-sqlite3"
-NSS="--without-nss"
-LDAP="--without-ldap"
-POSTGRESQL="--without-pgsql"
-
-[ -x /usr/lib/libdb.so ]          && BERKELEY_DB="--with-berkeley-db"
-command -v sqlite3    &>/dev/null && SQLITE3="--with-sqlite3"
-command -v nss-config &>/dev/null && NSS="--with-nss"
-command -v ldapadd    &>/dev/null && LDAP="--with-ldap"
-command -v createdb   &>/dev/null && POSTGRESQL="--with-pgsql"
-
 # включает плагин apr_dbm_gdbm-1.so
 #    --with-gdbm=/usr
 # включают плагин apr_crypto_openssl-1.so и поддержку криптографии
 #    --with-openssl=/usr
 #    --with-crypto
+# включает плагин apr_ldap.so
+#    --with-ldap
+# включает плагин apr_dbm_db-1.so
+#    --with-berkeley-db=/usr
+
 ./configure             \
     --prefix=/usr       \
     --with-apr=/usr     \
     --with-gdbm=/usr    \
     --with-openssl=/usr \
     --with-crypto       \
-    --without-sqlite2   \
-    "${BERKELEY_DB}"    \
-    "${SQLITE3}"        \
-    "${NSS}"            \
-    "${LDAP}"           \
-    "${POSTGRESQL}" || exit 1
+    --with-ldap         \
+    --with-berkeley-db=/usr || exit 1
 
 make || exit 1
-# make test
+# make -j1 test
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -7,7 +7,8 @@ PRGNAME="pavucontrol"
 # микшеров, pavucontrol позволяет контролировать как громкость аппаратных
 # устройств, так и громкость каждого потока воспроизведения в отдельности.
 
-# Required:    gtkmm3
+# Required:    gtkmm
+#              json-glib
 #              libcanberra
 #              libsigc++2
 #              pulseaudio

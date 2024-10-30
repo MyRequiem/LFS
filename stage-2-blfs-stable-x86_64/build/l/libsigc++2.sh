@@ -10,9 +10,11 @@ ARCH_NAME="libsigc++"
 # Required:    no
 # Recommended: boost
 #              libxslt
-# Optional:    docbook-utils (для сборки документации)
-#              doxygen       (для сборки документации)
-#              mm-common     (http://download-fallback.gnome.org:8000/sources/mm-common/)
+# Optional:    --- для сборки документации ---
+#              docbook-utils
+#              docbook-xml
+#              doxygen
+#              mm-common (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -24,12 +26,13 @@ mkdir -pv "${TMP_DIR}"
 API_DOCS="false"
 # command -v doxygen &>/dev/null && API_DOCS="true"
 
-mkdir build_
-cd build_ || exit 1
+mkdir bld
+cd bld || exit 1
 
-meson                                   \
+meson setup                             \
     --prefix=/usr                       \
-    -Dbuild_documentation="${API_DOCS}" \
+    --buildtype=release                 \
+    -Dbuild-documentation="${API_DOCS}" \
     .. || exit 1
 
 ninja || exit 1

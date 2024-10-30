@@ -14,9 +14,10 @@ ARCH_NAME="libwww-perl"
 #              perl-net-http
 #              perl-try-tiny
 #              perl-www-robotrules
-# Recommended: perl-test-fatal            (для тестов)
-#              perl-test-needs            (для тестов)
-#              perl-test-requiresinternet (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-fatal
+#              perl-test-needs
+#              perl-test-requiresinternet
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -51,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # general use and even classes that help you implement simple HTTP servers.
 #
 # Home page: https://metacpan.org/pod/LWP
-# Download:  https://cpan.metacpan.org/authors/id/O/OA/OALDERS/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.cpan.org/authors/id/O/OA/OALDERS/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

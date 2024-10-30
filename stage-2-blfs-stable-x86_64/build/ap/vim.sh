@@ -6,16 +6,13 @@ PRGNAME="vim"
 # Powerful text editor
 
 # Required:    no
-# Recommended: X Window System
-#              gtk+2
+# Recommended: Graphical Environments
 #              gtk+3
 # Optional:    gpm
 #              lua
-#              perl
-#              python2
-#              python3
 #              rsync
 #              ruby
+#              python2
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -36,20 +33,18 @@ XORG_SERVER="--without-x"
 FONTSET="--disable-fontset"
 LUA="no"
 RUBY="no"
-PERL="no"
 PYTHON2="no"
 PYTHON3="no"
-GPM="dis"
+GPM="no"
 
 command -v gtk-demo  &>/dev/null && GUI="gtk2"
 command -v gtk3-demo &>/dev/null && GUI="gtk3"
 command -v Xorg      &>/dev/null && XORG_SERVER="--with-x"
 command -v lua       &>/dev/null && LUA="yes"
 command -v ruby      &>/dev/null && RUBY="yes"
-command -v perl      &>/dev/null && PERL="yes"
 command -v python2   &>/dev/null && PYTHON2="yes"
 command -v python3   &>/dev/null && PYTHON3="yes"
-command -v gpm       &>/dev/null && GPM="en"
+command -v gpm       &>/dev/null && GPM="yes"
 
 if [[ "x${XORG_SERVER}" == "x--with-x" ]]; then
     FONTSET="--enable-fontset"
@@ -70,7 +65,7 @@ fi
     --enable-luainterp=${LUA}         \
     --enable-mzschemeinterp           \
     --enable-rubyinterp=${RUBY}       \
-    --enable-perlinterp=${PERL}       \
+    --enable-perlinterp="yes"         \
     --enable-pythoninterp=${PYTHON2}  \
     --enable-python3interp=${PYTHON3} \
     --disable-gtktest                 \
@@ -85,7 +80,7 @@ fi
     --disable-arabic                  \
     --disable-farsi                   \
     --disable-xim                     \
-    "--${GPM}able-gpm"                \
+    --enable-gpm="${GPM}"             \
     --disable-sysmouse                \
     --disable-autoservername          \
     --with-compiledby="MyRequiem" || exit 1
@@ -139,19 +134,16 @@ EOF
     ln -s vimrc gvimrc
 )
 
-# установим ссылку в /usr/bin vi -> vim и создадим man-страницы для vi, т.е.
-# ссылки vi.1 -> vim.1 в /usr/share/man/*/man1/
+# установим ссылку в /usr/bin
+#    vi -> vim
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sv vim vi
-    cd "${TMP_DIR}" || exit 1
-    for MANPAGE in usr/share/man/{,*/}man1/vim.1; do
-        ln -sv vim.1 "$(dirname ${MANPAGE})/vi.1"
-    done
+    ln -sfv vim vi
 )
 
-# по умолчанию документация Vim устанавливается в /usr/share/vim, поэтому
-# установим ссылку в /usr/share/doc/ vim-${VERSION} -> ../vim/vimXX/doc
+# по умолчанию документация Vim устанавливается в /usr/share/vim/, поэтому
+# установим ссылку в /usr/share/doc/
+#    vim-${VERSION} -> ../vim/vimXX/doc
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 (
@@ -218,7 +210,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://www.vim.org/
 #            https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

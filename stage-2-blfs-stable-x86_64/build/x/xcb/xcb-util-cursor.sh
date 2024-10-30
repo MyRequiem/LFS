@@ -5,7 +5,8 @@ PRGNAME="xcb-util-cursor"
 ### xcb-util-cursor (XCB cursor management library)
 # Библиотека управления курсорами XCB, которая является заменой для libXcursor
 
-# Required:    xcb-util
+# Required:    xcb-util-image
+#              xcb-util-renderutil
 # Recommended: no
 # Optional:    doxygen (для сборки документации)
 
@@ -36,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # XCB replacement for libXcursor.
 #
 # Home page: https://xcb.freedesktop.org/
-# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

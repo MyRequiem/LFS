@@ -8,9 +8,11 @@ ARCH_NAME="DateTime"
 
 # Required:    perl-datetime-locale
 #              perl-datetime-timezone
-# Recommended: perl-cpan-meta-check (для тестов)
-#              perl-test-fatal      (для тестов)
-#              perl-test-warnings   (для тестов)
+# Recommended: --- для тестов ---
+#              perl-cpan-meta-check
+#              perl-test-fatal
+#              perl-test-warnings
+#              perl-test-without-module
 # Optional:    no
 
 ROOT="/root/src/lfs"

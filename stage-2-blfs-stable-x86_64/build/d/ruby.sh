@@ -5,47 +5,50 @@ PRGNAME="ruby"
 ### Ruby (Interpreted object-oriented scripting language)
 # Объектно-ориентированный, интерпретируемый язык программирования.
 
-# Required:    no
+# Required:    libyaml
 # Recommended: no
 # Optional:    berkeley-db
 #              doxygen
 #              graphviz
-#              libyaml
+#              rustc
 #              tk
 #              valgrind
-#              dtrace (http://dtrace.org/blogs/about/)
+#              dtrace    (https://dtrace.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
+DOCS="false"
 VALGRIND="--without-valgrind"
-DTRACE="--disable-dtrace"
+# command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
 
-command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
-command -v dtrace   &>/dev/null && DTRACE="--enable-dtrace"
-
-./configure \
+./configure         \
     --prefix=/usr   \
     --enable-shared \
     "${VALGRIND}"   \
-    "${DTRACE}"     \
-    --docdir="${DOCS}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 
-# C API документация
-# make capi || exit 1
+if [[ "x${DOCS}" == "xtrue" ]]; then
+    # C API документация
+    make capi || exit 1
+fi
 
 # make check
 
 make install DESTDIR="${TMP_DIR}"
 
-cp -a BSDL COPYING ChangeLog NEWS.md README.md "${TMP_DIR}${DOCS}"
+if [[ "x${DOCS}" == "xfalse" ]]; then
+    (
+        cd "${TMP_DIR}/usr/share/" || exit 1
+        rm -rf doc
+    )
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -60,8 +63,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # management tasks (as in Perl). It is simple, straight-forward, and
 # extensible.
 #
-# Home page: https://www.ruby-lang.org/
-# Download:  http://cache.ruby-lang.org/pub/${PRGNAME}/${MAJ_VER}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.${PRGNAME}-lang.org/
+# Download:  https://cache.${PRGNAME}-lang.org/pub/${PRGNAME}/${MAJ_VER}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

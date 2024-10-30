@@ -36,7 +36,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The xcb-util-image package provides additional extensions to the XCB library.
 #
 # Home page: https://xcb.freedesktop.org/
-# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://xcb.freedesktop.org/dist/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

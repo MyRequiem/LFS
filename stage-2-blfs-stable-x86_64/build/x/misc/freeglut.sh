@@ -20,10 +20,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему сборки с GCC-10
-patch --verbose -Np1 \
-    -i "${SOURCES}/${PRGNAME}-${VERSION}-gcc10_fix-1.patch" || exit 1
-
 mkdir build
 cd build || exit 1
 
@@ -52,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and manage windows containing OpenGL contexts on a wide range of platforms
 # and also read the mouse, keyboard, and joystick functions.
 #
-# Home page: http://freeglut.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

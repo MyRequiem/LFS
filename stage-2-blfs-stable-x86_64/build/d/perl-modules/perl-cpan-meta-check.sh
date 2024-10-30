@@ -7,7 +7,7 @@ ARCH_NAME="CPAN-Meta-Check"
 # CPAN::Meta::Check Perl модуль
 
 # Required:    no
-# Recommended: perl-test-deep (для тестов)
+# Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"

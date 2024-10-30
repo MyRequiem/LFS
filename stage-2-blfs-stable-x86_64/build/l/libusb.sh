@@ -32,9 +32,10 @@ DOXYGEN=""
 # command -v doxygen &>/dev/null && DOXYGEN="true"
 
 if [ -n "${DOXYGEN}" ]; then
-    # предотвращаем появление некоторых предупреждений при создании документации
-    sed -i "s/^TCL_SUBST/#&/; s/wide//" doc/doxygen.cfg || exit 1
-    make -C doc docs
+    pushd doc                  || exit 1
+        doxygen -u doxygen.cfg || exit 1
+        make docs              || exit 1
+    popd                       || exit 1
 fi
 
 # пакет не имеет набора тестов
@@ -44,7 +45,7 @@ make install DESTDIR="${TMP_DIR}"
 if [ -n "${DOXYGEN}" ]; then
     API_DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/apidocs"
     install -v -d -m755 "${TMP_DIR}${API_DOCS}"
-    install -v -m644 doc/html/* "${TMP_DIR}${API_DOCS}"
+    install -v -m644 doc/api-1.0/* "${TMP_DIR}${API_DOCS}"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -57,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The libusb package contains a library used by some applications for USB
 # device access.
 #
-# Home page: http://libusb.info
+# Home page: https://${PRGNAME}.info
 # Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF

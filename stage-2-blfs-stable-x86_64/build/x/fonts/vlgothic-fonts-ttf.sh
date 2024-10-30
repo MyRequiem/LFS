@@ -27,22 +27,31 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
-mkdir -pv "${TMP_DIR}${TTF_FONT_DIR}"
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-cp ./*.ttf "${TMP_DIR}${TTF_FONT_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
+mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
+
+cp ./*.ttf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индексы установленных шрифтов
-cd "${TTF_FONT_DIR}" || exit 1
+cd "${INSTALL_DIR}" || exit 1
 # создаем индекс файлов масштабируемых шрифтов
 mkfontscale .
 # создаем индекс файлов шрифтов в каталоге
 mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
+
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
 
 FONT_NAME="$(echo ${PRGNAME} | cut -d - -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -52,7 +61,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # or proportional spacing for the non-Japanese characters
 #
 # Home page: https://osdn.net/projects/${FONT_NAME}/releases/
-# Download:  https://dotsrc.dl.osdn.net/osdn/${FONT_NAME}/73361/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://dotsrc.dl.osdn.net/osdn/${FONT_NAME}/77450/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

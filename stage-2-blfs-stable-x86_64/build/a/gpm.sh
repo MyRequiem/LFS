@@ -39,10 +39,14 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+# удалим статическую библиотеку
+rm -f "${TMP_DIR}/usr/lib/libgpm.a"
+
 # создадим ссылку в /usr/lib libgpm.so -> libgpm.so.${LIBGPM_SO_VERSION}
 (
     cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -s "libgpm.so.${LIBGPM_SO_VERSION}" libgpm.so
+    ln -sf "libgpm.so.${LIBGPM_SO_VERSION}" libgpm.so
+    chmod 755 "libgpm.so.${LIBGPM_SO_VERSION}"
 )
 
 install -v -m644 conf/gpm-root.conf "${TMP_DIR}/etc"
@@ -70,7 +74,7 @@ cat << EOF > "${TMP_DIR}${MOUSE}"
 #    /dev/input/mice    - used for USB mice
 #                          (or link /dev/mouse -> /dev/input/mice)
 #
-MDEVICE="/dev/mouse"
+MDEVICE="/dev/input/mice"
 
 # A list of which protocol values are known can be found by running:
 #    # gpm -m <device> -t -help
@@ -110,8 +114,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # but its library component is used by various software such as Links to
 # provide mouse support to the application.
 #
-# Home page: http://freshmeat.sourceforge.net/projects/${PRGNAME}/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://github.com/telmich/${PRGNAME}
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

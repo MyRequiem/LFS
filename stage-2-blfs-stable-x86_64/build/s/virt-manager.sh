@@ -17,8 +17,8 @@ PRGNAME="virt-manager"
 #              gtk-vnc
 #              spice-gtk
 #              tunctl
-#              python-ipaddr
-#              python-requests
+#              python3-ipaddr
+#              python3-requests
 # Recommended: no
 # Optional:    no
 

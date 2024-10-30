@@ -9,9 +9,11 @@ ARCH_NAME="libXdmcp"
 
 # Required:    xorgproto
 # Recommended: no
-# Optional:    xmlto
+# Optional:    --- для сборки документации ---
+#              xmlto
 #              fop
-#              libxslt (для сборки документации)
+#              libxslt
+#              xorg-sgml-doctools  (https://gitlab.freedesktop.org/xorg/doc/xorg-sgml-doctools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -24,10 +26,10 @@ mkdir -pv "${TMP_DIR}"
 # shellcheck disable=SC2086
 ./configure        \
     ${XORG_CONFIG} \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+    --docdir="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -42,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Display Manager.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/lib/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/lib/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

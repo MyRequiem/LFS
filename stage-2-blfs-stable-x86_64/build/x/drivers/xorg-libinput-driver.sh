@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # This driver can be used as as drop-in replacement for evdev and synaptics.
 #
 # Home page: https://cgit.freedesktop.org/xorg/driver/${ARCH_NAME}/
-# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

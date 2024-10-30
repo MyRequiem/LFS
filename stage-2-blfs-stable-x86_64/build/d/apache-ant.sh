@@ -33,24 +33,31 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}-src".tar.?z* || exit 1
 cd "${PRGNAME}-${VERSION}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/{opt,/etc/profile.d}
 
-# устраним проблему несовместимости стандарта документации, используемого в
-# сборке openjdk
-sed -i 's/--add-modules java.activation/-html4/' build.xml || exit 1
-
 ./bootstrap.sh
 
-# загружает недостающии runtime-зависимости в домашнюю директорию, которые
-# затем копируются в дерево исходников lib/optional
+# исправим проблему, когда следующая команда bootstrap/bin/ant пытается
+# загрузить файл с проблемного сайта
+sed -e 's|ftp.software.ibm.com|anduin.linuxfromscratch.org|' \
+    -e 's|software/awdtools/netrexx|BLFS/apache-ant|'        \
+    -i fetch.xml
+
+# загружает недостающии runtime-зависимости в /root, которые затем копируются в
+# дерево исходников lib/optional
 bootstrap/bin/ant -f fetch.xml -Ddest=optional
 
-# собирает, тестирует, а затем устанавливает пакет в свой временный каталог
-./build.sh \
-    -Ddist.dir="${PWD}/ant-${VERSION}" dist
+# собирает, тестирует, а затем устанавливает пакет во временный каталог
+./build.sh -Ddist.dir="${PWD}/ant-${VERSION}" dist
 
-# устанавливаем
 cp -rv  "ant-${VERSION}" "${TMP_DIR}/opt/"
 ln -sfv "ant-${VERSION}" "${TMP_DIR}/opt/ant"
 chown -R root:root       "${TMP_DIR}/opt/"
@@ -67,7 +74,8 @@ EOF
 chmod 755 "${TMP_DIR}${ANT_SH}"
 
 rm -rf /root/.{ant/tempcache,m2}
-rm -f /opt/ant
+rm -f  /opt/ant
+rm -rf "${TMP_DIR}/opt/ant/manual"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

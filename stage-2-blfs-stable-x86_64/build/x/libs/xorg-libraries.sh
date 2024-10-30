@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-libraries"
-PKG_VERSION="7"
+PKG_VERSION="11"
 
 ### Xorg Libraries (Xorg libraries)
 # Библиотеки Xorg, которые используются во всех X Window приложения
@@ -9,18 +9,22 @@ PKG_VERSION="7"
 # Required:    fontconfig
 #              libxcb
 # Recommended: elogind
-# Optional:    xmlto
+# Optional:    --- для сборки документации ---
+#              python3-asciidoc
+#              xmlto
 #              fop
-#              links or lynx or w3m (для сборки документации пакета libXfont) http://w3m.sourceforge.net/
+#              links или lynx или w3m (http://w3m.sourceforge.net/)
+#              --- для некоторых тестов ---
+#              ncompress
 
 ###
 # NOTES:
 ###
-# *** /usr/bin ***
+# *** /usr/bin/ ***
 # cxpm               - проверка формата XPM файлов (синтаксический анализ X PixMap)
 # sxpm               - просмотр XPM файлов и/или конвертация XPM1 и XPM2 в XPM3
 #
-# *** /usr/lib ***
+# *** /usr/lib/ ***
 # libdmx.so          - DMX (Distributed Multihead X) extension library
 # libfontenc.so      - X11 font encoding library
 # libFS.so           - library interface to the X Font Server
@@ -81,22 +85,6 @@ SOURCES="${ROOT}/src"
 source "${ROOT}/check_environment.sh" || exit 1
 source "${ROOT}/xorg_config.sh"       || exit 1
 
-show_error() {
-    echo -e "\n***"
-    echo "* Error: $1"
-    echo "***"
-}
-
-get_pkg_version() {
-    # $1 - имя пакета, версию которого нужно найти
-    local TARBOL_VERSION
-    TARBOL_VERSION="$(find "${SOURCES}" -type f \
-        -name "${1}-[0-9]*.tar.?z*" 2>/dev/null | sort | \
-        head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-    echo "${TARBOL_VERSION}"
-}
-
 TMP="/tmp/build-${PRGNAME}-${PKG_VERSION}"
 rm -rf "${TMP}"
 
@@ -148,6 +136,22 @@ libxkbfile \
 libxshmfence \
 "
 
+show_error() {
+    echo -e "\n***"
+    echo "* Error: $1"
+    echo "***"
+}
+
+get_pkg_version() {
+    # $1 - имя пакета, версию которого нужно найти
+    local TARBOL_VERSION
+    TARBOL_VERSION="$(find "${SOURCES}" -type f \
+        -name "${1}-[0-9]*.tar.?z*" 2>/dev/null | sort | \
+        head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+    echo "${TARBOL_VERSION}"
+}
+
 for PKGNAME in ${PACKAGES}; do
     echo -e "\n***************** Building ${PKGNAME} package *****************"
     sleep 1
@@ -171,32 +175,25 @@ for PKGNAME in ${PACKAGES}; do
 
     cd "${PKGNAME}-${VERSION}" || exit 1
 
+    chown -R root:root .
+    find -L . \
+        \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+        -o -perm 511 \) -exec chmod 755 {} \; -o \
+        \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+        -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
     DOCDIR="--docdir=${XORG_PREFIX}/share/doc/${PKGNAME}-${VERSION}"
 
     # конфигурация
     case "${PKGNAME}" in
-        libICE)
-            # исправляем нарушение в работе pulseaudio во время выполнения
-            #    ICE_LIBS=-lpthread
-            #
-            # shellcheck disable=SC2086
-            ./configure        \
-                ${XORG_CONFIG} \
-                "${DOCDIR}"    \
-                ICE_LIBS=-lpthread || {
-                    show_error "'configure' for ${PKGNAME} package"
-                    exit 1
-                }
-            ;;
-
         libXfont2)
             XMLTO=""
-            command -v xmlto &>/dev/null && XMLTO="true"
+            # command -v xmlto &>/dev/null && XMLTO="true"
 
             TEXT_BROWSER=""
-            command -v w3m   &>/dev/null && TEXT_BROWSER="true"
-            command -v links &>/dev/null && TEXT_BROWSER="true"
-            command -v lynx  &>/dev/null && TEXT_BROWSER="true"
+            # command -v w3m   &>/dev/null && TEXT_BROWSER="true"
+            # command -v links &>/dev/null && TEXT_BROWSER="true"
+            # command -v lynx  &>/dev/null && TEXT_BROWSER="true"
 
             DEVEL_DOCS="--disable-devel-docs"
             [[ -n "${XMLTO}" && -n "${TEXT_BROWSER}" ]] && \
@@ -204,7 +201,7 @@ for PKGNAME in ${PACKAGES}; do
 
             # для создания pdf-документации
             FOP="--without-fop"
-            command -v fop &>/dev/null && FOP="--with-fop"
+            # command -v fop &>/dev/null && FOP="--with-fop"
 
             # shellcheck disable=SC2086
             ./configure        \
@@ -223,6 +220,23 @@ for PKGNAME in ${PACKAGES}; do
                 ${XORG_CONFIG} \
                 "${DOCDIR}"    \
                 --with-appdefaultdir="/etc/X11/app-defaults" || {
+                    show_error "'configure' for ${PKGNAME} package"
+                    exit 1
+                }
+            ;;
+
+        libXpm)
+            # исправим тесты, чтобы они работали без установленного
+            # опционального пакета ncompress
+            sed -i '/TestAll.*TRUE/s|^|//|' test/TestAllFiles.h
+            # разрешим сборку пакета без установленного опционального пакета
+            # ncompress
+            #    --disable-open-zfile
+            # shellcheck disable=SC2086
+            ./configure        \
+                ${XORG_CONFIG} \
+                "${DOCDIR}"    \
+                --disable-open-zfile || {
                     show_error "'configure' for ${PKGNAME} package"
                     exit 1
                 }
@@ -291,6 +305,10 @@ for PKGNAME in ${PACKAGES}; do
 #
 ###
 # This package is part of '${PRGNAME}' package
+#
+# INFO:
+#    https://www.x.org/wiki/ModuleDescriptions/
+#    https://lists.x.org/archives/xorg-modular/2005-November/000801.html
 ###
 #
 EOF
@@ -315,7 +333,11 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # Package: ${PRGNAME} (Xorg libraries)
 #
 # The Xorg libraries provide library routines that are used within all X Window
-# applications.
+# applications
+#
+# INFO:
+#    https://www.x.org/wiki/ModuleDescriptions/
+#    https://lists.x.org/archives/xorg-modular/2005-November/000801.html
 #
 # Home page: https://www.x.org
 # Download:  https://www.x.org/pub/individual/lib/

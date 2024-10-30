@@ -34,7 +34,7 @@ GTK_DOC="--disable-gtk-doc"
 
 ./configure       \
     --prefix=/usr \
-    ${GTK_DOC} || exit 1
+    "${GTK_DOC}" || exit 1
 
 make || exit 1
 # make check
@@ -57,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # for plugins, load/save routines for application documents and undo/redo
 # functions.
 #
-# Home page: http://ftp.gnome.org/pub/GNOME/sources/${PRGNAME}/
+# Home page: https://ftp.gnome.org/pub/GNOME/sources/${PRGNAME}/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

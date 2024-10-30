@@ -23,13 +23,15 @@ make || exit 1
 # make check
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
+# удалим не используемую в BLFS статическую библиотеку
+rm -f "${TMP_DIR}/usr/lib/libgif.a"
+
 if [[ "x${DOCS}" == "xtrue"  ]]; then
     find doc \( \
                 -name Makefile\* -o \
-                -name \*README\* -o \
-                -name \*.in      -o \
-                -name \*.xml     -o \
                 -name \*.1          \
+                -name \*.xml     -o \
+                -name \*.in      -o \
              \) \
         -exec rm {} \;
 

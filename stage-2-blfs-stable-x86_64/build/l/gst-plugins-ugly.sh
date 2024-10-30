@@ -8,17 +8,17 @@ PRGNAME="gst-plugins-ugly"
 # или поддерживающие библиотеки может быть не такой как нам нравится.
 
 # Required:    gst-plugins-base
-# Recommended: liba52       (для проигрывания DVD)
+# Recommended: liba52            (для проигрывания DVD)
 #              libdvdread
 #              x264
 # Optional:    libmpeg2
-#              libcdio      (для доступа к CD-ROM)
+#              libcdio           (для доступа к CD-ROM)
 #              valgrind
-#              hotdoc       (https://pypi.org/project/hotdoc/)
-#              libsidplay   (https://packages.debian.org/source/sid/libsidplay)
-#              opencore-amr (https://sourceforge.net/projects/opencore-amr/)
-#              orc          (https://gstreamer.freedesktop.org/src/orc/)
-#              twolame      (https://www.twolame.org/)
+#              python3-hotdoc    (https://pypi.org/project/hotdoc/)
+#              libsidplay        (https://packages.debian.org/source/sid/libsidplay)
+#              opencore-amr      (https://sourceforge.net/projects/opencore-amr/)
+#              orc               (https://gstreamer.freedesktop.org/src/orc/)
+#              twolame           (https://www.twolame.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,11 +30,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+# без этой опции плагины с зависимостями от библиотек под лицензией (A)GPL не
+# создаются
+#    -Dgpl=enabled
 meson                                          \
     --prefix=/usr                              \
-    -Dbuildtype=release                        \
+    --buildtype=release                        \
+    -Dgpl=enabled                              \
     -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin="http://www.linuxfromscratch.org/blfs/view/svn/" || exit 1
+    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3/ || exit 1
 
 ninja || exit 1
 # ninja test

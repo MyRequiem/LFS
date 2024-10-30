@@ -9,8 +9,12 @@ PRGNAME="fontconfig"
 # Required:    freetype
 # Recommended: no
 # Optional:    json-c
-#              docbook-utils
 #              libxml2
+#              --- для тестов ---
+#              curl
+#              unzip
+#              --- для сборки документации ---
+#              docbook-utils
 #              texlive или install-tl-unx
 #              perl-sgmlspm
 
@@ -46,11 +50,27 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+# если мы не устанавливали документацию (--disable-docs), то установим ее
+# вручную
+if [[ "x${INSTALL_DOCS}" == "x--disable-docs" ]]; then
+    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
+    MAN="/usr/share/man"
+
+    install -v -dm755 "${TMP_DIR}${DOCS}"
+    install -v -dm755 "${TMP_DIR}${MAN}"/man{1,3,5}
+
+    install -v -m644 doc/*.{txt,html} "${TMP_DIR}${DOCS}"
+    install -v -m644 fc-*/*.1         "${TMP_DIR}${MAN}/man1"
+    install -v -m644 doc/*.3          "${TMP_DIR}${MAN}/man3"
+    install -v -m644 doc/fonts-conf.5 "${TMP_DIR}${MAN}/man5"
+fi
+
 # Конфигурация Fontconfig
 # -----------------------
 #
 # конфиги:
-#    /etc/fonts/*
+#    /etc/fonts/fonts.conf
+#    /etc/fonts/conf.d/*
 #    /etc/fonts/conf.avail/*
 #    /usr/share/fontconfig/conf.avail/*
 #
@@ -65,29 +85,15 @@ make install DESTDIR="${TMP_DIR}"
 # /etc/fonts/local.conf
 #
 # По умолчанию шрифты располагаются в
-#    /usr/share/fonts
-#    ~/.local/share/fonts
-#    ~/.fonts (устарело, но все еще используется)
+#    /usr/share/fonts/
+#    ~/.local/share/fonts/
+#    ~/.fonts/ (устарело, но все еще используется)
 #
 # Fontconfig также содержит множество примеров конфигурационных файлов в
 # /usr/share/fontconfig/conf.avail/ Для включения файлов в этой директории
 # нужно установить ссылку на файл в /etc/fonts/conf.d/
 #
 # Описание файлов конфигурации: /etc/fonts/conf.d/README
-
-# если мы не устанавливали документацию, то установим ее вручную
-if [[ "x${INSTALL_DOCS}" == "x--disable-docs" ]]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    MAN="/usr/share/man"
-
-    install -v -dm755 "${TMP_DIR}${DOCS}"
-    install -v -dm755 "${TMP_DIR}${MAN}"/man{1,3,5}
-
-    install -v -m644 doc/*.{txt,html} "${TMP_DIR}${DOCS}"
-    install -v -m644 fc-*/*.1         "${TMP_DIR}${MAN}/man1"
-    install -v -m644 doc/*.3          "${TMP_DIR}${MAN}/man3"
-    install -v -m644 doc/fonts-conf.5 "${TMP_DIR}${MAN}/man5"
-fi
 
 # отключаем уродливые старые растровые (bitmap) шрифты Xorg
 NO_BITMAPS_CONF="/etc/fonts/conf.avail/70-no-bitmaps.conf"
@@ -164,7 +170,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configuration, customization, and application access.
 #
 # Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://www.freedesktop.org/software/${PRGNAME}/release/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://www.freedesktop.org/software/${PRGNAME}/release/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

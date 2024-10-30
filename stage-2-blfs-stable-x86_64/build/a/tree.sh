@@ -21,10 +21,7 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # пакет не содержит набора тестов
-
-MAN="${TMP_DIR}/usr/share/man/man1"
-make prefix="${TMP_DIR}/usr" MANDIR="${MAN}" install
-chmod -v 644 "${MAN}"/tree.1
+make PREFIX="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man" install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -38,8 +35,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # environment variable is set and output is to tty. With no arguments, tree
 # lists the files in the current directory.
 #
-# Home page: http://mama.indstate.edu/users/ice/${PRGNAME}/
-# Download:  ftp://mama.indstate.edu/linux/${PRGNAME}/${PRGNAME}-${VERSION}.tgz
+# Home page: https://mama.indstate.edu/users/ice/${PRGNAME}/
+# Download:  https://mama.indstate.edu/users/ice/${PRGNAME}/src/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 

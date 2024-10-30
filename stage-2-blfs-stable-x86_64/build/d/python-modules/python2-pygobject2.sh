@@ -11,7 +11,7 @@ ARCH_NAME="pygobject"
 #              python2
 # Recommended: no
 # Optional:    gobject-introspection
-#              libxslt (для сборки документации)
+#              libxslt                  (для сборки документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -31,6 +31,13 @@ mkdir -pv "${TMP_DIR}"
 
 tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 GTK_DOC="false"
 

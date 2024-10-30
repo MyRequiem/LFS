@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # DateTime::Calendar::Julian implements the Julian Calendar
 #
 # Home page: https://metacpan.org/pod/DateTime::Calendar::Julian
-# Download:  https://cpan.metacpan.org/authors/id/W/WY/WYANT/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.cpan.org/authors/id/W/WY/WYANT/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

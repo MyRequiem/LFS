@@ -8,7 +8,7 @@ PRGNAME="usbutils"
 
 # Required:    libusb
 #              wget    (для скачивания файла данных usb.ids после сборки)
-# Recommended: no
+# Recommended: git
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -20,8 +20,9 @@ HWDATA="/usr/share/hwdata"
 CRON_WEEKLY="/etc/cron.weekly"
 mkdir -pv "${TMP_DIR}"{"${HWDATA}","${CRON_WEEKLY}"}
 
-./autogen.sh      \
-    --prefix=/usr \
+autoreconf -fiv && \
+./configure        \
+    --prefix=/usr  \
     --datadir=/usr/share/hwdata || exit 1
 
 make || exit 1
@@ -52,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # USB buses in the system and the devices connected to them.
 #
 # Home page: https://github.com/gregkh/${PRGNAME}
-# Download:  https://www.kernel.org/pub/linux/utils/usb/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/gregkh/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

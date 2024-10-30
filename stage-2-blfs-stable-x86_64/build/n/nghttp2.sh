@@ -9,15 +9,15 @@ PRGNAME="nghttp2"
 # Recommended: libxml2
 # Optional:    boost
 #              c-ares
+#              python3-cython
 #              jansson
 #              libevent
-#              cunit     (требуется для тестов) http://cunit.sourceforge.net/
-#              cython    (https://cython.org/)
-#              jemalloc  (http://jemalloc.net/)
-#              libev     (http://software.schmorp.de/pkg/libev.html)
-#              mruby     (https://mruby.org/)
-#              spdylay   (https://tatsuhiro-t.github.io/spdylay/)
-#              sphinx    (https://www.sphinx-doc.org/en/master/)
+#              python3-sphinx
+#              jemalloc         (https://jemalloc.net/)
+#              libev            (software.schmorp.de/pkg/libev.html)
+#              mruby            (https://mruby.org/)
+#              spdylay          (https://tatsuhiro-t.github.io/spdylay/)
+#              cunit            (для тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,11 +38,16 @@ DOCS="false"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# для тестов необходим пакет cunit
+# make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${DOCS}" == "xfalse" ]] &&
-    rm -rf "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+if [[ "x${DOCS}" == "xfalse" ]]; then
+    (
+        cd "${TMP_DIR}/usr/share/" || exit 1
+        rm -rf doc
+    )
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

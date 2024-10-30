@@ -5,40 +5,26 @@ PRGNAME="poppler"
 ### Poppler (a library for rendering PDF documents)
 # Библиотека, основанная на программе просмотра PDF-файлов xpdf, которая не
 # предоставляет общую библиотеку. Осуществляет рендеринг PDF и предоставляет
-# инструменты командной строки для работы с PDF файлами:
-#    pdfattach   - добавляет новый встроенный файл к существующему файлу PDF
-#    pdfdetach   - отображает наличие и извлекает встроенные файлы
-#    pdffonts    - анализатор шрифтов
-#    pdfimages   - извлекает изображения
-#    pdfinfo     - отображает свойства документа
-#    pdfseparate - извлечение отдельных страниц
-#    pdfsig      - проверка цифровых подписей в PDF-документе
-#    pdftocairo  - конвертер в форматы PNG, JPEG, PDF, PS (PostScript), EPS,
-#                   SVG с использованием Cairo
-#    pdftohtml   - конвертер в HTML
-#    pdftoppm    - конвертер в изображения PPM, PNG, JPEG
-#    pdftops     - конвертер в PS
-#    pdftotext   - конвертер в текстовый файл
-#    pdfunite    - объединение документов
+# инструменты командной строки для работы с PDF файлами
 
 # Required:    cmake
 #              fontconfig
-# Recommended: cairo
+#              gobject-introspection
+# Recommended: boost
+#              cairo
 #              lcms2
 #              libjpeg-turbo
 #              libpng
 #              nss
 #              openjpeg
-# Optional:    boost
-#              curl
+# Optional:    curl
 #              gdk-pixbuf
 #              git          (для загрузки тестовых файлов)
-#              gobject-introspection
 #              gtk-doc
-#              python3-pygments
 #              gtk+3
 #              libtiff
-#              qt5          (для поддержки PDF в программе okular)
+#              qt5          (для поддержки PDF в KDE'шной утилите Okular)
+#              >= qt6.1     (https://download.qt.io/archive/qt/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -47,16 +33,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-TESTS="OFF"
-INSTALL_DOCS="false"
-GTK_DOC="OFF"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="ON"
-
 mkdir build
 cd build || exit 1
 
-# используем для применения более высокого уровня оптимизации компилятора
-#    -DCMAKE_BUILD_TYPE=Release
 # сообщаем тестовым программам, где находятся вспомогательные файлы
 #    -DTESTDATADIR="${PWD}/testfiles"
 # устанавливаем старые заголовки Xpdf, необходимые для некоторых программ
@@ -65,30 +44,20 @@ cmake                                    \
     -DCMAKE_BUILD_TYPE=Release           \
     -DCMAKE_INSTALL_PREFIX=/usr          \
     -DTESTDATADIR="${PWD}/testfiles"     \
-    -DBUILD_GTK_TESTS="${TESTS}"         \
-    -DENABLE_GTK_DOC="${GTK_DOC}"        \
+    -DENABLE_GTK_DOC=OFF                 \
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     .. || exit 1
 
 make || exit 1
 
 ### тесты
-# для запуска тестов нужно изменить переменную TESTS выше на 'ON'. Так же для
-# тестов необходимы некоторые тестовые наборы, которые можно получить только из
-# git-репозитория:
+# Для тестов необходимы некоторые тестовые наборы, которые можно получить
+# только из git-репозитория:
+# git clone --depth 1 https://gitlab.freedesktop.org/poppler/test.git testfiles
 #
-# git clone git://git.freedesktop.org/git/poppler/test testfiles
-# LC_ALL=en_US.UTF-8
-# make test
+# LC_ALL=en_US.UTF-8 make test
 
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-if [[ "x${INSTALL_DOCS}" == "xtrue" ]]; then
-    DOCS_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d           "${TMP_DIR}${DOCS_PATH}"
-    cp -vr ../glib/reference/html "${TMP_DIR}${DOCS_PATH}"
-fi
 
 ###
 # Poppler Data
@@ -100,8 +69,16 @@ POPPLER_DATA_ARCH="$(find "${SOURCES}" -type f -name "${PRGNAME}-data-*")"
 POPPLER_DATA_VERSION="$(echo "${POPPLER_DATA_ARCH}" | rev | \
     cut -d . -f 3- | cut -d - -f 1 | rev)"
 
+cd .. || exit 1
 tar -xvf "${POPPLER_DATA_ARCH}"              || exit 1
 cd "${PRGNAME}-data-${POPPLER_DATA_VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 make \
     prefix=/usr install DESTDIR="${TMP_DIR}" || exit 1
@@ -119,7 +96,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # xpdf would have to be patched. By providing a centralized PDF library this
 # duplicated effort will be eliminated.
 #
-# Home page: http://${PRGNAME}.freedesktop.org
+# Home page: https://${PRGNAME}.freedesktop.org
 # Download:  https://${PRGNAME}.freedesktop.org/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

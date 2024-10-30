@@ -7,12 +7,14 @@ ARCH_NAME="tiff"
 # Библиотеки и утилиты для работы с изображениями в формате TIFF (Tag Image
 # File Format)
 
-# Required:    no
-# Recommended: cmake
-# Optional:    freeglut (для сборки утилиты tiffgt)
+# Required:    cmake
+# Recommended: no
+# Optional:    freeglut       (для сборки утилиты tiffgt)
 #              libjpeg-turbo
+#              python3-sphinx
 #              libwebp
-#              jbig-kit (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
+#              jbig-kit       (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
+#              lerc           (https://www.osgeo.org/projects/lerc-limited-error-raster-compression/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

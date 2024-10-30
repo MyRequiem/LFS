@@ -9,6 +9,11 @@ ARCH_NAME="LWP-Protocol-https"
 # Required:    perl-io-socket-ssl
 #              perl-libwww-perl
 #              make-ca
+#              --------
+#              NOTE: в системе должны присутствовать системные сертификаты
+#                    /etc/pki/tls/certs/ca-bundle.crt после запуска команды
+#                    update-ca-certificates
+#              --------
 # Recommended: no
 # Optional:    no
 

@@ -15,15 +15,15 @@ ARCH_NAME="vte"
 #              gobject-introspection
 #              vala
 # Optional:    fribidi
-#              gtk-doc
-#              gtk+4 (https://wiki.gnome.org/Projects/GTK/Roadmap/GTK4)
+#              python3-gi-docgen
+#              gtk4
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-0.6*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-0.7*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -33,6 +33,13 @@ cd "${BUILD_DIR}" || exit 1
 
 tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -58,6 +65,7 @@ cd build || exit 1
 
 meson                        \
     --prefix=/usr            \
+    --buildtype=release      \
     -Ddocs="${DOCS}"         \
     -Dgir="${INTROSPECTION}" \
     -Dfribidi="${FRIBIDI}"   \
@@ -80,7 +88,6 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (terminal emulator widget for use with GTK+3)
 #
@@ -89,7 +96,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # that uses libvte
 #
 # Home page: https://wiki.gnome.org/Apps/Terminal/VTE
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.gnome.org/GNOME/${ARCH_NAME}/-/archive/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

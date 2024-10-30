@@ -14,7 +14,7 @@ PRGNAME="mpv"
 #              x264
 #              x265
 #              sdl2
-#              python-docutils
+#              python3-docutils
 #              ffmpeg
 #              libplacebo
 #              lua

@@ -6,16 +6,16 @@ ARCH_NAME="pygtk"
 ### PyGTK (GTK+ bindings for Python)
 # Набор оболочек Python для библиотеки графического интерфейса GTK+
 
-# Required:    python2
-#              gtk+2
-#              python2-pygobject2
-#              atk
+# Required:    python2-pygobject2
+#              python2
+#              at-spi2-core
 #              pango
 #              python2-pycairo
+#              gtk+2
 #              libglade
 # Recommended: no
-# Optional:    numpy   (https://numpy.org/)
-#              libxslt (для сборки документации)
+# Optional:    python3-numpy
+#              libxslt          (для сборки документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

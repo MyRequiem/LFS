@@ -8,8 +8,9 @@ ARCH_NAME="Module-Implementation"
 
 # Required:    perl-module-runtime
 #              perl-try-tiny
-# Recommended: perl-test-fatal    (для тестов)
-#              perl-test-requires (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-fatal
+#              perl-test-requires
 # Optional:    no
 
 ROOT="/root/src/lfs"

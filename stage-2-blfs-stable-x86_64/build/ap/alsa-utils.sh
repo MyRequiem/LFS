@@ -11,11 +11,11 @@ PRGNAME="alsa-utils"
 
 # Required:    alsa-lib
 # Recommended: no
-# Optional:    python-docutils
-#              fftw
+# Optional:    python3-docutils
+#              fftw              (для сборки Basic Audio Tester (BAT))
 #              libsamplerate
-#              xmlto
-#              dialog (https://hightek.org/dialog/)
+#              xmlto             (для создания man-страниц)
+#              dialog            (https://hightek.org/projects/dialog/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,9 +24,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# если установлен пакет 'fftw' собираем Basic Audio Tester (BAT)
 FFTW="--disable-bat"
-# для создания man-страниц
 XMLTO="--disable-xmlto"
 
 command -v fftw-wisdom &>/dev/null && FFTW="--enable-bat"
@@ -37,6 +35,8 @@ command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
 # используем библиотеки ncurses для расширенных символов
 #    --with-curses=ncursesw
 ./configure            \
+    --prefix=/usr      \
+    --sysconfdir=/etc  \
     --disable-alsaconf \
     "${FFTW}"          \
     "${XMLTO}"         \
@@ -53,6 +53,13 @@ make install DESTDIR="${TMP_DIR}"
 #
 #    - по умолчанию все каналы звуковой карты отключены. Для включения
 #       используем утилиту 'alsamixer'
+#
+#    - протестировать настройки звука (должен быть слышен шум в динамиках):
+#       $ speaker-test
+#
+#    - проигрывание звуков для тестирования динамиков
+#       (находятся в /usr/share/sounds/alsa)
+#       $ aplay /usr/share/sounds/alsa/Front_Left.wav
 
 # для автоматического сохранения и восстановления настроек громкости при
 # перезагрузке системы установим загрузочный скрипт /etc/rc.d/init.d/alsa
@@ -90,3 +97,7 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+
+echo -e "\n---------------\nRemoving *.la files..."
+remove-la-files.sh
+echo "---------------"

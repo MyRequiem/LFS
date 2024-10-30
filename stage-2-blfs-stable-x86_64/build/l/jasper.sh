@@ -28,6 +28,13 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-version-${VERSION}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
@@ -64,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # software-based reference implementation of the codec specified in the
 # JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1)
 #
-# Home page: http://www.ece.uvic.ca/~mdadams/${PRGNAME}/
+# Home page: https://www.ece.uvic.ca/~mdadams/${PRGNAME}/
 # Download:  https://github.com/${PRGNAME}-software/${PRGNAME}/archive/version-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 # пакет не содержит набота тестов
-make install DESTDIR="${TMP_DIR}"
+make binprefix=/usr install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

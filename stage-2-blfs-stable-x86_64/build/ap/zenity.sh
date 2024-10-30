@@ -6,8 +6,9 @@ PRGNAME="zenity"
 # Инструмент, который позволяет отображать диалоговые окна Gtk+ из командной
 # строки и через сценарии оболочки.
 
-# Required:    gtk+3
+# Required:    gtk4
 #              itstool
+#              libadwaita
 # Recommended: libnotify
 #              libxslt
 # Optional:    webkitgtk
@@ -19,12 +20,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
-# пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+meson                 \
+    --prefix=/usr     \
+    -Dwebkitgtk=false \
+    -Dmanpage=true    \
+    .. || exit 1
+
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

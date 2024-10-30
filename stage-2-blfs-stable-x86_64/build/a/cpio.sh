@@ -23,7 +23,7 @@ TEXLIVE=""
 # command -v texdoc &>/dev/null && TEXLIVE="true"
 
 # исправим ошибку сборки с GCC >=10
-sed -i '/The name/,+2 d' src/global.c
+sed -i '/The name/,+2 d' src/global.c || exit 1
 
 # собираем утилиту mt
 #    --enable-mt
@@ -31,7 +31,6 @@ sed -i '/The name/,+2 d' src/global.c
 #    --with-rmt=/usr/libexec/rmt
 ./configure \
     --prefix=/usr \
-    --bindir=/bin \
     --enable-mt   \
     --with-rmt=/usr/libexec/rmt || exit 1
 
@@ -82,7 +81,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # permissions. The archive can be another file on the disk, a magnetic tape, or
 # a pipe.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
+# Home page: https://www.gnu.org/software/${PRGNAME}/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF

@@ -19,26 +19,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/lib"
 
-autoreconf -fi || exit 1
-./configure \
-    --sysconfdir=/etc || exit 1
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    --disable-static || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# переместим библиотеку в /lib, чтобы она была доступна до монтирования /usr
-mv "${TMP_DIR}/usr/lib/libnsl.so".* "${TMP_DIR}/lib"
-
-# определим версию перемещенной библиотеки
-LIB_VERSION="$(find "${TMP_DIR}/lib" -type f -name "libnsl.so.*" | rev | \
-    cut -d / -f 1 | rev | cut -d . -f 3-)"
-
-# восстановим ссылку libnsl.so в /usr/lib
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf "../../lib/libnsl.so.${LIB_VERSION}" libnsl.so
-)
+if [ -d  "${TMP_DIR}/lib" ]; then
+    cd "${TMP_DIR}" || exit 1
+    rm -rf lib
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -8,10 +8,11 @@ PRGNAME="vala"
 # среды GNOME/GTK+
 
 # Required:    glib
-# Recommended: graphviz   (для документации и сборки утилиты 'valadoc')
+# Recommended: graphviz   (для сборки утилиты 'valadoc')
 # Optional:    dbus       (для тестов)
 #              libxslt    (для документации)
-#              help2man   (https://mirror.tochlab.net/pub/gnu/help2man/)
+#              help2man   (https://www.gnu.org/software/help2man/)
+#              jing       (https://github.com/relaxng/jing-trang)
 #              weasyprint (https://weasyprint.org/)
 
 ROOT="/root/src/lfs"
@@ -25,7 +26,7 @@ DOCS="--disable-valadoc"
 # документация собирается только при установленном пакете 'graphviz'
 # command -v acyclic &>/dev/null && DOCS="--enable-valadoc"
 
-./configure \
+./configure       \
     --prefix=/usr \
     "${DOCS}" || exit 1
 

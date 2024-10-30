@@ -10,8 +10,8 @@ PRGNAME="ntp"
 # Recommended: no
 # Optional:    libcap
 #              libevent
-#              libedit (https://www.thrysoee.dk/editline/)
-#              autogen (https://www.gnu.org/software/autogen/)
+#              libedit              (https://www.thrysoee.dk/editline/)
+#              autogen              (https://www.gnu.org/software/autogen/)
 
 ### NOTE:
 # После установки пакета можно проверить его работу
@@ -25,7 +25,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+CRON_HOURLY="/etc/cron.hourly"
+ROOT_BIN="/root/bin"
+mkdir -pv "${TMP_DIR}"{"${CRON_HOURLY}","${ROOT_BIN}"}
 
 DOCS="false"
 
@@ -45,16 +47,16 @@ DOCS="false"
 sed -e 's/"(\\S+)"/"?([^\\s"]+)"?/' \
     -i scripts/update-leap/update-leap.in || exit 1
 
-# переменная среды необходима для создания Position Independent Code, который
-# используется в библиотеках пакетов
-#    CFLAGS="-O2 -g -fPIC"
+# исправим проблему сборки, возникающую с glibc-2.34
+sed -e 's/#ifndef __sun/#if !defined(__sun) \&\& !defined(__GLIBC__)/' \
+    -i libntp/work_thread.c || exit 1
+
 # ntpd запускается от имени пользователя ntp, поэтому используем возможности
 # Linux для управления системным временем без полномочий root
 #    --enable-linuxcaps
 # включаем поддержку Readline для утилит ntpdc и ntpq
 #    --with-lineeditlibs=readline
 ./configure                                  \
-    CFLAGS="-O2 -g -fPIC -fcommon ${CFLAGS}" \
     --prefix=/usr                            \
     --bindir=/usr/sbin                       \
     --sysconfdir=/etc                        \
@@ -63,18 +65,12 @@ sed -e 's/"(\\S+)"/"?([^\\s"]+)"?/' \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# набор тестов для этого пакета не работает с gcc>=10
 make install DESTDIR="${TMP_DIR}"
 
 [[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
 
 install -v -o ntp -g ntp -d "${TMP_DIR}/var/lib/ntp/"
-
-# init script: /etc/rc.d/init.d/ntp
-(
-    cd "${ROOT}/blfs-bootscripts" || exit 1
-    make install-ntpd DESTDIR="${TMP_DIR}"
-)
 
 ### Конфигурация
 NTP_CONF="/etc/ntp.conf"
@@ -127,6 +123,44 @@ restrict ::1
 # End ${NTP_CONF}
 EOF
 
+# добавим синхронизацию системного времени в fcron (/etc/cron.hourly/)
+NTP_SH="${CRON_HOURLY}/ntp.sh"
+cat << EOF > "${TMP_DIR}${NTP_SH}"
+#!/bin/bash
+
+SERVERS="\\
+    0.pool.ntp.org   \\
+    1.pool.ntp.org   \\
+    2.pool.ntp.org   \\
+    ntp.mobatime.ru  \\
+    time1.google.com \\
+    time2.google.com \\
+    time3.google.com \\
+    time4.google.com \\
+"
+
+for SERVER in  \${SERVERS}; do
+	echo "NTP server: \${SERVER}"
+	/usr/sbin/ntpdate -u "\${SERVER}"
+    RET=\$?
+    [[ "x\${RET}" == "x0" ]] && exit 0
+done
+EOF
+chmod 754 "${TMP_DIR}${NTP_SH}"
+
+# добавим ссылку в /root/bin/ (для ручного запуска синхронизации времени)
+#    ntp.sh -> ../../etc/cron.hourly/ntp.sh
+(
+    cd "${TMP_DIR}${ROOT_BIN}" || exit 1
+    ln -s ../../etc/cron.hourly/ntp.sh ntp.sh
+)
+
+# init script: /etc/rc.d/init.d/ntp
+(
+    cd "${ROOT}/blfs-bootscripts" || exit 1
+    make install-ntpd DESTDIR="${TMP_DIR}"
+)
+
 if [ -f "${NTP_CONF}" ]; then
     mv "${NTP_CONF}" "${NTP_CONF}.old"
 fi
@@ -144,7 +178,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The ntp package contains a client and server to keep the time synchronized
 # between various computers over a network.
 #
-# Home page: http://www.${PRGNAME}.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://www.eecis.udel.edu/~${PRGNAME}/ntp_spool/${PRGNAME}4/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -13,7 +13,7 @@ PRGNAME="alsa-plugins"
 #              speex
 #              jack    (https://jackaudio.org/)
 #              libavtp (https://github.com/AVnu/libavtp/)
-#              maemo   (http://maemo.org/)
+#              maemo   (https://maemo.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,7 +22,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
+./configure       \
+    --prefix=/usr \
     --sysconfdir=/etc || exit 1
 
 make || exit 1

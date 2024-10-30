@@ -20,10 +20,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
-    --prefix=/usr       \
-    -Dorc-test=disabled \
-    -Dgtk_doc=disabled  \
+meson                     \
+    --prefix=/usr         \
+    -Dorc-test=disabled   \
+    -Dtests=disabled      \
+    -Dgtk_doc=disabled    \
+    -Dbenchmarks=disabled \
+    -Dexamples=disabled   \
     .. || exit 1
 
 ninja || exit 1
@@ -43,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # architectures, including saturated addition and subtraction, and many
 # arithmetic operations.
 #
-# Home page: http://code.entropywave.com/projects/${PRGNAME}/
+# Home page: https://gstreamer.freedesktop.org/src/${PRGNAME}/
 # Download:  https://gstreamer.freedesktop.org/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

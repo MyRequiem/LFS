@@ -7,11 +7,12 @@ ARCH_NAME="Python"
 # Язык программирования Python
 
 # Required:    no
-# Recommended: no
+# Recommended: sqlite   (для создания дополнительных модулей)
 # Optional:    bluez
 #              valgrind
-#              sqlite   (для создания дополнительных модулей)
-#              tk       (для создания дополнительных модулей)
+#              === для создания дополнительных модулей ===
+#              libnsl
+#              tk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -33,14 +34,24 @@ BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/Python-${VERSION}".tar.?z* || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# отключим установку утилиты 2to3
+# отключим установку утилиты 2to3, которая уже установлена с пакетом python3
 sed -i '/2to3/d' ./setup.py
+
+patch -Np1 --verbose -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-security_fixes-1.patch" || exit 1
 
 VALGRIND="--without-valgrind"
 command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
@@ -51,7 +62,6 @@ command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
     --with-system-expat   \
     --with-system-ffi     \
     "${VALGRIND}"         \
-    --with-ensurepip=yes  \
     --enable-unicode=ucs4 \
     --enable-optimization || exit 1
 
@@ -62,16 +72,10 @@ make altinstall DESTDIR="${TMP_DIR}"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 (
     cd "${TMP_DIR}/usr/bin" || exit 1
-    # /usr/bin/2to3 уже установлена с пакетом python3
-    rm -f 2to3
-    # python2        -> python2.7
-    ln -svf python2.7 python2
+    # python2 -> python2.7
+    ln -s "python${MAJ_VERSION}" python2
     # python2-config -> python2.7-config
-    ln -svf python2.7-config python2-config
-    # easy_install2  -> easy_install-2.7
-    ln -svf easy_install-2.7 easy_install2
-    # pip2           -> pip2.7
-    ln -svf pip2.7 pip2
+    ln -s "python${MAJ_VERSION}-config" python2-config
 )
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so.1.0"
@@ -89,7 +93,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # adaptable as an extension language for existing applications.
 #
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
+# Download:  https://www.python.org/ftp/python/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -7,9 +7,10 @@ ARCH_NAME="FFI-CheckLib"
 # FFI::CheckLib Perl модуль
 
 # Required:    no
-# Recommended: perl-capture-tiny (для тестов)
-#              perl-path-tiny    (для тестов)
-#              perl-test2-suite  (для тестов)
+# Recommended: --- для тестов ---
+#              perl-capture-tiny
+#              perl-path-tiny
+#              perl-test2-suite
 # Optional:    no
 
 ROOT="/root/src/lfs"

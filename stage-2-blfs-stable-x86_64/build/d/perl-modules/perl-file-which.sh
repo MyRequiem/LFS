@@ -37,8 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # File::Which provides a portable implementation of the 'which' utility
 #
 # Home page: https://metacpan.org/pod/File::Which
-# Download:  https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/${ARCH_NAME}-${VERSION}.tar.gz
-#
+# Download:  https://www.cpan.org/authors/id/P/PL/PLICEASE/${ARCH_NAME}-${VERSION}.tar.gz
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \

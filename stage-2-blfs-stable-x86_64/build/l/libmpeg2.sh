@@ -7,7 +7,7 @@ PRGNAME="libmpeg2"
 
 # Required:    no
 # Recommended: no
-# Optional:    X Window System
+# Optional:    Graphical Environments
 #              sdl
 
 ROOT="/root/src/lfs"
@@ -16,8 +16,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-DOCS="false"
 
 # устраним проблему сборки с GCC >=10.2.0
 sed -i 's/static const/static/' "${PRGNAME}/idct_mmx.c" || exit 1
@@ -30,12 +28,6 @@ sed -i 's/static const/static/' "${PRGNAME}/idct_mmx.c" || exit 1
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-if [[ "x${DOCS}" == "xtrue"  ]]; then
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d "${TMP_DIR}${DOC_PATH}"
-    install -v -m644 README "doc/${PRGNAME}.txt" "${TMP_DIR}${DOC_PATH}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -50,8 +42,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # for MPEG-2. This is useful for programs and applications needing to decode
 # MPEG-2 and MPEG-1 video streams.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
-# Download:  http://${PRGNAME}.sourceforge.net/files/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.sourceforge.net/
+# Download:  https://${PRGNAME}.sourceforge.net/files/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -16,7 +16,7 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 ###
-# создаем в директории dist дерева исходников пакет
+# создаем пакет в формате .whl в директории dist дерева исходников
 #    wheel-${VERSION}-py3-none-any.whl
 ###
 # позволяет пакету (еще не установленному) создавать для себя архив (пакет),
@@ -40,17 +40,10 @@ pip3 wheel               \
     ./ || exit 1
 
 # устанавливаем созданный пакет в "${TMP_DIR}"
-PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
-TARGET="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
-pip3 install                  \
-    --target="${TARGET}"      \
-    --find-links=./dist       \
-    --no-index                \
-    ${PRGNAME}
-
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
-# перемещаем ее в ${TMP_DIR}/usr/bin/
-[ -d "${TARGET}/bin" ] && mv "${TARGET}/bin" "${TMP_DIR}/usr/"
+pip3 install            \
+    --root="${TMP_DIR}" \
+    --find-links=./dist \
+    --no-index "${PRGNAME}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

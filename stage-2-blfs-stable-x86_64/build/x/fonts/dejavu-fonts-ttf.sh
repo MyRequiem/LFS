@@ -16,31 +16,35 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-TTF_FONT_DIR="/usr/share/fonts/X11/TTF/"
-ETC_FONTS="/etc/fonts"
-mkdir -pv "${TMP_DIR}"{"${TTF_FONT_DIR}","${ETC_FONTS}"/conf.{d,avail}}
+INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
+mkdir -pv "${TMP_DIR}"{"${INSTALL_DIR}",/etc/fonts/conf.{d,avail}}
 
-cp ./ttf/*.ttf "${TMP_DIR}${TTF_FONT_DIR}"
+cp ttf/*.ttf "${TMP_DIR}${INSTALL_DIR}"
 
 cd fontconfig || exit 1
 for CONF in *; do
-    cp -a "${CONF}" "${TMP_DIR}${ETC_FONTS}/conf.avail"
+    cp "${CONF}" "${TMP_DIR}/etc/fonts/conf.avail/"
     (
-        cd "${TMP_DIR}${ETC_FONTS}/conf.d" || exit 1
+        cd "${TMP_DIR}/etc/fonts/conf.d/" || exit 1
         ln -sf "../conf.avail/${CONF}" "${CONF}"
     )
 done
 
+chown root:root "${TMP_DIR}/etc/fonts/conf.avail"/*
+chmod 644       "${TMP_DIR}/etc/fonts/conf.avail"/*
+
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индексы установленных шрифтов
-cd "${TTF_FONT_DIR}" || exit 1
+cd "${INSTALL_DIR}" || exit 1
 # создаем индекс файлов масштабируемых шрифтов
 mkfontscale .
 # создаем индекс файлов шрифтов в каталоге
 mkfontdir .
 # создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
+
+cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (DejaVu fonts)

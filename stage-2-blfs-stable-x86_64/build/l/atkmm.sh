@@ -5,7 +5,7 @@ PRGNAME="atkmm"
 ### Atkmm (C++ bindings for ATK)
 # C++ bindings для ATK (accessibility toolkit library)
 
-# Required:    atk
+# Required:    at-spi2-core
 #              glibmm
 # Recommended: no
 # Optional:    no
@@ -19,11 +19,12 @@ mkdir -pv "${TMP_DIR}"
 
 DOCS="false"
 
-mkdir _build
-cd _build || exit 1
+mkdir build
+cd build || exit 1
 
 meson                               \
     --prefix=/usr                   \
+    --buildtype=release             \
     -Dbuild-documentation="${DOCS}" \
     .. || exit 1
 

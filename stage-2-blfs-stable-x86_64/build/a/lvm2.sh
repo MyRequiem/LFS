@@ -24,7 +24,11 @@ ARCH_NAME="LVM2"
 #    CONFIG_DM_CRYPT=m|y
 #    CONFIG_DM_SNAPSHOT=m|y
 #    CONFIG_DM_THIN_PROVISIONING=m|y
+#    CONFIG_DM_CACHE=m|y
 #    CONFIG_DM_MIRROR=m|y
+#    CONFIG_DM_ZERO=m|y
+#    CONFIG_DM_DELAY=m|y
+#    CONFIG_BLK_DEV_RAM=m|y
 #    CONFIG_MAGIC_SYSRQ=y
 
 ROOT="/root/src/lfs"
@@ -43,6 +47,13 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${ARCH_NAME}.${VERSION}".t?z || exit 1
 cd "${ARCH_NAME}.${VERSION}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
@@ -54,7 +65,6 @@ mkdir -pv "${TMP_DIR}"
 #    --enable-udev_sync
 ./configure                       \
     --prefix=/usr                 \
-    --exec-prefix=                \
     --enable-cmdlib               \
     --enable-pkgconfig            \
     --enable-udev_sync || exit 1
@@ -72,13 +82,13 @@ make || exit 1
 #     make -C libdm install
 # fi
 #
-### запускаем тесты
-# опция S=... позволяет пропускать тесты. Сообщается, что тест
-# shell/thin-flags.sh приводит к зависанию компьютера. Доступны и другие цели,
-# которые можно посмотреть с помощью команды 'make -C test help'
-# make S=shell/thin-flags.sh check_local
+# запускаем тесты
+# LC_ALL=en_US.UTF-8 make check_local
 
 make install DESTDIR="${TMP_DIR}"
+
+# удалим правило, которое выполняется в другом скрипте
+rm -f "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"
 
 # конфиг /etc/lvm/lvm.conf
 LVM_CONF="/etc/lvm/lvm.conf"

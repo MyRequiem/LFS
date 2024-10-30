@@ -12,8 +12,8 @@ PRGNAME="cryptsetup"
 #              popt
 # Recommended: no
 # Optional:    libpwquality
-#              python2
 #              argon2   (https://github.com/P-H-C/phc-winner-argon2)
+#              libssh   (https://www.libssh.org/)
 #              passwdqc (https://www.openwall.com/passwdqc/)
 
 ### Конфигурация ядра
@@ -33,16 +33,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+LIBSSH="--disable-ssh-token"
+[ -x /usr/lib/libssh.so ] && LIBSSH="--enable-ssh-token"
+
+./configure       \
+    --prefix=/usr \
+    "${LIBSSH}"|| exit 1
 
 make || exit 1
-
-# Некоторые тесты могут не пройти, если вышеуказанные параметры конфигурации
-# ядра не установлены. Известно, что один из 12 тестов не проходит.
-#
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

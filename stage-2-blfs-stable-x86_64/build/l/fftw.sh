@@ -34,7 +34,8 @@ mkdir -pv "${TMP_DIR}"
     --disable-static \
     --enable-threads \
     --enable-sse2    \
-    --enable-avx || exit 1
+    --enable-avx     \
+    --enable-avx2 || exit 1
 
 make || exit 1
 # make check
@@ -49,6 +50,7 @@ make clean &&        \
     --enable-threads \
     --enable-sse2    \
     --enable-avx     \
+    --enable-avx2    \
     --enable-float || exit 1
 
 make || exit 1
@@ -81,8 +83,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # efficiently. FFTW is typically faster than other publicly-available FFT
 # implementations, and is even competitive with vendor-tuned libraries.
 #
-# Home page: http://www.fftw.org/
-# Download:  http://www.fftw.org/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://www.${PRGNAME}.org/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

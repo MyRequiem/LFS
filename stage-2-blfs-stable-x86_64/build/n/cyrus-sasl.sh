@@ -11,14 +11,13 @@ PRGNAME="cyrus-sasl"
 # Optional:    linux-pam
 #              mit-kerberos-v5
 #              mariadb или mysql (https://www.mysql.com/)
-#              openjdk
 #              openldap
 #              postgresql
+#              python3-sphinx
 #              sqlite
 #              krb4                           (https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/)
 #              dmalloc                        (https://dmalloc.com/)
 #              perl-pod-pom-view-restructured (https://metacpan.org/pod/Pod::POM::View::Restructured)
-#              sphinx                         (https://pypi.org/project/Sphinx/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,31 +25,25 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
-
-# исправим ошибку сборки, если в системе установлен пакет sphinx или
-# python-docutils
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-doc_fixes-1.patch" || exit 1
+mkdir -pv "${TMP_DIR}"
 
 PAM="--without-pam"
 MYSQL="--without-mysql"
-OPENJDK="--disable-java"
 OPENLDAP="--without-ldap"
 POSTGRESQL="--without-pgsql"
 SQLITE3="--without-sqlite3"
 KRB4="--disable-krb4"
 DMALLOC="--without-dmalloc"
+SPHINX="no"
 
 command -v mkhomedir_helper &>/dev/null && PAM="--with-pam"
 command -v mysql            &>/dev/null && MYSQL="--with-mysql"
-command -v java             &>/dev/null && OPENJDK="--enable-java"
 command -v ldapadd          &>/dev/null && OPENLDAP="--with-ldap"
 command -v createdb         &>/dev/null && POSTGRESQL="--with-pgsql"
 command -v sqlite3          &>/dev/null && SQLITE3="--with-sqlite3"
 command -v krb4-config      &>/dev/null && KRB4="--enable-krb4"
 command -v dmalloc          &>/dev/null && DMALLOC="--with-dmalloc"
+# command -v sphinx-build     &>/dev/null && SPHINX="yes"
 
 # включает сервер аутентификации SASLDB
 #    --enable-auth-sasldb
@@ -63,10 +56,10 @@ command -v dmalloc          &>/dev/null && DMALLOC="--with-dmalloc"
     --sysconfdir=/etc                   \
     --enable-auth-sasldb                \
     --with-dbpath=/var/lib/sasl/sasldb2 \
+    --with-sphinx-build="${SPHINX}"     \
     --without-sqlite                    \
     "${PAM}"                            \
     "${MYSQL}"                          \
-    "${OPENJDK}"                        \
     "${OPENLDAP}"                       \
     "${POSTGRESQL}"                     \
     "${SQLITE3}"                        \
@@ -79,10 +72,7 @@ make -j1 || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-# документация
-install -v -m644  saslauthd/LDAP_SASLAUTHD "${TMP_DIR}${DOCS}"
-
-install -v -dm700 "${TMP_DIR}/var/lib/sasl"
+mkdir -p "${TMP_DIR}/var/lib/sasl"
 
 # init script: /etc/rc.d/init.d/saslauthd
 (
@@ -100,6 +90,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SASLAUTHD}"
+chmod 700 /var/lib/sasl
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Simple Authentication and Security Layer)

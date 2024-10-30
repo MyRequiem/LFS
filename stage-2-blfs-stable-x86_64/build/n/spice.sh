@@ -7,10 +7,10 @@ PRGNAME="spice"
 # мышь, аудио и т.д.)
 
 # Required:    opus
-#              python-six
-#              python-pyparsing (https://pypi.org/project/pyparsing/)
-#              spice-protocol   (https://www.spice-space.org)
-#              orc              (https://gstreamer.freedesktop.org/)
+#              python3-six
+#              python3-pyparsing (https://pypi.org/project/pyparsing/)
+#              spice-protocol    (https://www.spice-space.org)
+#              orc               (https://gstreamer.freedesktop.org/)
 # Recommended: no
 # Optional:    no
 

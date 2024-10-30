@@ -40,9 +40,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# предотвратим ошибку конфигурации пакета с текущей версией 'automake', потому
-# что определения AM_INIT_AUTOMAKE взяты из предыдущей версии
-autoreconf -fv || exit 1
+# адаптируем пакет для binutils версии 2.39 и более
+sed 's/PTR/void */' -i util/cairo-trace/lookup-symbol.c || exit 1
+
+# исправим pkg-config, который в последствии может вызывать ошибки
+sed -e "/@prefix@/a exec_prefix=@exec_prefix@" \
+    -i util/cairo-script/cairo-script-interpreter.pc.in || exit 1
 
 GTK_DOC="no"
 # command -v gtkdoc-check &>/dev/null && GTK_DOC="yes"
@@ -60,10 +63,16 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+if [ "x${GTK_DOC}" == "xno" ]; then
+    cd "${TMP_DIR}/usr/share/" || exit 1
+    rm -rf gtk-doc
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (graphics library used by GTK+)
 #
@@ -73,7 +82,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (eg. through the X Render Extension or OpenGL).
 #
 # Home page: https://www.cairographics.org/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -10,9 +10,10 @@ ARCH_NAME="DateTime-Locale"
 #              perl-file-sharedir
 #              perl-namespace-autoclean
 #              perl-params-validationcompiler
-# Recommended: perl-cpan-meta-check    (для тестов)
-#              perl-ipc-system-simple  (для тестов)
-#              perl-test-file-sharedir (для тестов)
+# Recommended: --- для тестов ---
+#              perl-cpan-meta-check
+#              perl-ipc-system-simple
+#              perl-test-file-sharedir
 # Optional:    no
 
 ROOT="/root/src/lfs"

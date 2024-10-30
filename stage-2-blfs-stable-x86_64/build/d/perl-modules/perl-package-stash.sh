@@ -8,9 +8,10 @@ ARCH_NAME="Package-Stash"
 
 # Required:    perl-dist-checkconflicts
 #              perl-module-implementation
-# Recommended: perl-cpan-meta-check (для тестов)
-#              perl-test-fatal      (для тестов)
-#              perl-test-needs      (для тестов)
+# Recommended: --- для тестов ---
+#              perl-cpan-meta-check
+#              perl-test-fatal
+#              perl-test-needs
 # Optional:    no
 
 ROOT="/root/src/lfs"

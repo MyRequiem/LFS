@@ -10,7 +10,7 @@ PRGNAME="libao"
 
 # Required:    no
 # Recommended: no
-# Optional:    X Window System
+# Optional:    Graphical Environments
 #              alsa-firmware
 #              alsa-lib
 #              alsa-oss

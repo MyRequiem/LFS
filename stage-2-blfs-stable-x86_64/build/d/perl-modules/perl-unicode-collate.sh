@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Unicode::Collate provides a Unicode collation algorithm
 #
 # Home page: https://metacpan.org/pod/Unicode::Collate
-# Download:  https://cpan.metacpan.org/authors/id/S/SA/SADAHIRO/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.cpan.org/authors/id/S/SA/SADAHIRO/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

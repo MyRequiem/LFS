@@ -6,7 +6,7 @@ PRGNAME="xsel"
 # Утилита командной строки для получения содержимого выделения в X и его
 # помещения/вставки в/из clipboard
 
-# Required:    X Window System
+# Required:    xorg-libraries
 # Recommended: no
 # Optional:    no
 
@@ -17,13 +17,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# по умолчанию все предупреждения в процессе компиляции считаются ошибками
-# (-Werror in released code), исправим это
-sed -i 's,-Werror,,g' configure || exit 1
+autoreconf -vif || exit 1
 
-./configure       \
-    --prefix=/usr \
-    --with-x || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 # make check
@@ -40,8 +37,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # selection. Normally this is only accessible by manually highlighting
 # information and pasting it with the middle mouse button.
 #
-# Home page: http://www.vergenet.net/~conrad/software/${PRGNAME}/
-# Download:  http://www.vergenet.net/~conrad/software/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://vergenet.net/~conrad/software/${PRGNAME}/
+# Download:  https://github.com/kfish/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

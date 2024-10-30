@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # extract information from HTML documents
 #
 # Home page: https://metacpan.org/pod/HTML::Parser
-# Download:  https://www.cpan.org/authors/id/C/CA/CAPOEIRAB/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.cpan.org/authors/id/O/OA/OALDERS/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

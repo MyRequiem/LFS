@@ -54,9 +54,9 @@ mkdir -pv "${LFS}"/{boot,etc,home,lib64,sources,tmp,tools,usr,var}
 mkdir -pv "${LFS}"/usr/{bin,lib,share,sbin}
 
 # ссылки в корневой файловой системе:
-#    /bin  -> /usr/bin
-#    /lib  -> /usr/lib
-#    /sbin -> /usr/sbin
+#    /bin  -> usr/bin
+#    /lib  -> usr/lib
+#    /sbin -> usr/sbin
 for ROOT_DIR in bin lib sbin; do
     ln -svf "usr/${ROOT_DIR}" "${LFS}/${ROOT_DIR}"
 done

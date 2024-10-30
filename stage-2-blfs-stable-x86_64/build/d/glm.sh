@@ -6,7 +6,7 @@ PRGNAME="glm"
 # C++ библиотека математических вычислений для OpenGL, предоставляющая
 # программисту структуры и функции, позволяющие использовать данные для OpenGL
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
 # Optional:    no
 

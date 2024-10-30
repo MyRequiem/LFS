@@ -3,8 +3,8 @@
 PRGNAME="gcc"
 
 ### GCC (GNU compiler collection)
-# Коллекция компиляторов для C, C++, D, Fortran, Go, Objective-C и
-# Objective-C++ кода
+# Коллекция компиляторов для C, C++, Fortran, Go, Objective-C и Objective-C++
+# кода
 
 # Required:    no
 # Recommended: no
@@ -29,7 +29,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 GDB="/usr/share/gdb/auto-load/usr/lib"
-mkdir -pv "${TMP_DIR}"{"${GDB}",/lib,/usr/lib/bfd-plugins}
+mkdir -pv "${TMP_DIR}"{"${GDB}",/usr/lib/bfd-plugins}
 
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
 sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 || exit 1
@@ -40,21 +40,20 @@ cd build || exit 1
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию
 #    --with-system-zlib
-# преднамеренно выполняем bootstrap (начальную загрузку) посколько это
-# необходимо для надежности и настоятельно рекомендуется при обновлении версии
-# компилятора
-#    --enable-bootstrap
-../configure           \
-    --prefix=/usr      \
-    --disable-multilib \
-    --with-system-zlib \
-    --enable-bootstrap \
-    --enable-languages=c,c++,d,fortran,go,objc,obj-c++ || exit 1
+# делает параметр -fpie параметром по умолчанию при компиляции программ
+#    --enable-default-pie
+# делает параметр -fstack-protector-strong параметром по умолчанию при
+# компиляции программ
+#    --enable-default-ssp
+../configure             \
+    --prefix=/usr        \
+    --disable-multilib   \
+    --with-system-zlib   \
+    --enable-default-pie \
+    --enable-default-ssp \
+    --enable-languages=c,c++,fortran,go,objc,obj-c++ || exit 1
 
-# собираем в количество потоков равных количеству ядер
-NUMJOBS="${MAKEFLAGS}"
-[ -z "${NUMJOBS}" ] && NUMJOBS="-j$(nproc)"
-make "${NUMJOBS}" || exit 1
+make || exit 1
 
 ###
 # Важно !!!
@@ -62,8 +61,8 @@ make "${NUMJOBS}" || exit 1
 # Набор тестов для GCC на данном этапе считается критическим. Нельзя пропускать
 # его ни при каких обстоятельствах. Если установлены опциональные пакеты gdb и
 # valgrind, то будет запущено больше тестов, часть из которых будут терпеть
-# неудачу и сообщать FAIL. Начиная с gcc-9.2.0 в среде LFS тестирование выдает
-# не менее 120 ошибок.
+# неудачу и сообщать FAIL. Начиная с gcc-12.2.0 в среде LFS тестирование выдает
+# не менее 80 ошибок.
 
 # известно, что один набор тестов в наборе тестов GCC переполняет стек, поэтому
 # увеличим размер стека
@@ -82,9 +81,13 @@ mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 LIB_GCC="/usr/lib/gcc/$(gcc -dumpmachine)/${VERSION}"
 chown -vR root:root "${TMP_DIR}${LIB_GCC}/include"{,-fixed}
 
-# удалим ненужную директорию
-# /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include-fixed/bits
-rm -rf "${TMP_DIR}${LIB_GCC}/include-fixed/bits/"
+# создадим символическую ссылку в /usr/lib/ требуемую FHS по историческим
+# причинам
+#    cpp -> ../bin/cpp
+(
+    cd "${TMP_DIR}/usr/lib" || exit 1
+    ln -sv ../bin/cpp cpp
+)
 
 # многие программы используют имя 'cc' для вызова компилятора C, поэтому
 # создадим символическую ссылку cc -> gcc в /usr/bin/
@@ -93,16 +96,9 @@ rm -rf "${TMP_DIR}${LIB_GCC}/include-fixed/bits/"
     ln -sv gcc cc
 )
 
-# создадим символическую ссылку в /lib/ требуемую FHS по историческим причинам
-# cpp -> ../usr/bin/cpp
-(
-    cd "${TMP_DIR}/lib" || exit 1
-    ln -sv ../usr/bin/cpp cpp
-)
-
 # добавим символическую ссылку в /usr/lib/bfd-plugins/
-# liblto_plugin.so ->
-#    ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
+#    liblto_plugin.so ->
+#       ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
 # для совместимости, чтобы разрешить сборку программ с помощью
 # Link Time Optimization (LTO)
 (
@@ -120,7 +116,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU compiler collection)
 #
 # The GCC package contains the GNU compiler collection, which includes the C,
-# C++, D, Fortran, Go, Objective-C and Objective-C++ compilers
+# C++, Fortran, Go, Objective-C and Objective-C++ compilers
 #
 # Home page: https://${PRGNAME}.gnu.org/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
@@ -196,16 +192,18 @@ echo "--------"
 echo "Step: 4"
 echo "--------"
 VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
-# проверим настройки для стартовых файлов
+# проверим настройки для стартовых файлов с glibc
 # /usr/lib/crt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
 echo "# make sure that we're setup to use the correct start files"
-echo "grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log"
-grep -o '/usr/lib.*/crt[1in].*succeeded' dummy.log
+echo "grep -o '/usr/lib.*/Scrt1.*succeeded' dummy.log"
+echo "grep -o '/usr/lib.*/crt[in].*succeeded' dummy.log"
+grep -o '/usr/lib.*/Scrt1.*succeeded' dummy.log
+grep -o '/usr/lib.*/crt[in].*succeeded' dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crt1.o succeeded"
+echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/Scrt1.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crti.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crtn.o succeeded"
 echo ""
@@ -287,7 +285,7 @@ echo "grep found dummy.log"
 grep found dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "found ld-linux-x86-64.so.2 at /lib/ld-linux-x86-64.so.2"
+echo "found ld-linux-x86-64.so.2 at /usr/lib/ld-linux-x86-64.so.2"
 echo ""
 echo -n "Press any key... "
 read -r JUNK

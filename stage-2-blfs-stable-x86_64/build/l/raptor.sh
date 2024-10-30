@@ -14,7 +14,7 @@ ARCH_NAME="${PRGNAME}2"
 # Recommended: no
 # Optional:    gtk-doc
 #              icu
-#              libyajl (https://lloyd.github.com/yajl/)
+#              libyajl (https://lloyd.github.io/yajl/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -60,8 +60,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # including all versions of RSS, Atom 1.0 and 0.3, GRDDL and microformats for
 # HTML, XHTML and XML.
 #
-# Home page: http://librdf.org/
-# Download:  http://download.librdf.org/source/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://librdf.org/
+# Download:  https://download.librdf.org/source/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

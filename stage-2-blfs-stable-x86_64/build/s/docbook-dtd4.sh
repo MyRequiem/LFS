@@ -14,23 +14,41 @@ ARCH_NAME="docbook"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-4*.zip" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 2- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+unzip -d "${ARCH_NAME}-${VERSION}" \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}".zip || exit 1
+
+cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 SHARE_SGML="/usr/share/sgml/docbook/sgml-dtd-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/sgml,"${SHARE_SGML}"}
 
-chown -R root:root .
+sed -i -e '/ISO 8879/d' \
+       -e '/gml/d'      \
+       docbook.cat || exit 1
 
-sed \
-    -e '/ISO 8879/d' \
-    -e '/gml/d' \
-    -i docbook.cat || exit 1
-
-install -v -d -m755       "${SHARE_SGML}"
-cp -avf ./*.{dtd,mod,dcl} "${SHARE_SGML}/"
-install -v docbook.cat    "${SHARE_SGML}/catalog"
+install -v -d -m755             "${SHARE_SGML}"
+cp -avf ./*.dtd ./*.mod ./*.dcl "${SHARE_SGML}/"
+install -v docbook.cat          "${SHARE_SGML}/catalog"
 chmod 644 "${SHARE_SGML}/catalog"
 
 ETC_SGML_CAT="/etc/sgml/sgml-docbook-dtd-${VERSION}.cat"
@@ -38,7 +56,6 @@ install-catalog --add "${ETC_SGML_CAT}" "${SHARE_SGML}/catalog"
 install-catalog --add "${ETC_SGML_CAT}" /etc/sgml/sgml-docbook.cat
 
 cat << EOF >> "${SHARE_SGML}/catalog"
-
   -- Begin Single Major Version catalog changes --
 
 PUBLIC "-//OASIS//DTD DocBook V4.4//EN" "docbook.dtd"

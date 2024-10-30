@@ -7,7 +7,7 @@ ARCH_NAME="Sub-Quote"
 # Sub::Quote Perl модуль
 
 # Required:    no
-# Recommended: perl-test-fatal (для тестов)
+# Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"

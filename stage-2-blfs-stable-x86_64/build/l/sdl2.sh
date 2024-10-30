@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="sdl2"
-ARCH_NAME="$(echo "${PRGNAME}" | awk '{print toupper($0)}')"
+ARCH_NAME="SDL2"
 
 ### SDL2 (Simple DirectMedia Layer Version 2)
 # Кроссплатформенная библиотека, предназначенная для обеспечения
@@ -16,14 +16,17 @@ ARCH_NAME="$(echo "${PRGNAME}" | awk '{print toupper($0)}')"
 #              alsa-plugins
 #              alsa-utils
 #              alsa-tools
+#              alsa-firmware
 #              alsa-oss
-#              doxygen
+#              doxygen                  (для генерации документации)
 #              ibus
 #              nasm
 #              pulseaudio
 #              libsamplerate
-#              directfb      (https://src.fedoraproject.org/repo/pkgs/directfb/)
-#              fcitx         (https://fcitx-im.org/wiki/Fcitx_5)
+#              Graphical Environment
+#              directfb                 (https://src.fedoraproject.org/repo/pkgs/directfb/)
+#              fcitx                    (https://fcitx-im.org/wiki/Fcitx_5)
+#              jack                     (https://jackaudio.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -69,7 +72,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # hardware via OpenGL
 #
 # Home page: https://libsdl.org/
-# Download:  http://www.libsdl.org/release/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.libsdl.org/release/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

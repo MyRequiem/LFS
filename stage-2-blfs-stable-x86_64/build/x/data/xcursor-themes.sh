@@ -18,9 +18,8 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# shellcheck disable=SC2086
-./configure        \
-    ${XORG_CONFIG} || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

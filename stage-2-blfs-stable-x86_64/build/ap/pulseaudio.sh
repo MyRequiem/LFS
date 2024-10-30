@@ -17,19 +17,18 @@ PRGNAME="pulseaudio"
 #              dbus
 #              elogind
 #              glib
-#              libcap
 #              speex
 #              xorg-libraries
 # Optional:    avahi
 #              bluez
+#              doxygen
 #              fftw
-#              gconf
 #              gtk+3
 #              libsamplerate
 #              sbc                     (поддержка bluetooth)
 #              valgrind
 #              jack                    (https://jackaudio.org/)
-#              libasyncns              (http://0pointer.de/lennart/projects/libasyncns/)
+#              libasyncns              (https://0pointer.de/lennart/projects/libasyncns/)
 #              lirc                    (https://www.lirc.org/)
 #              orc                     (https://gstreamer.freedesktop.org/src/orc/)
 #              soxr                    (https://sourceforge.net/projects/soxr/)
@@ -50,27 +49,36 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-BLUEZ="false"
-
-command -v dbus-daemon  &>/dev/null && \
-    command -v sbcdec   &>/dev/null && \
-    command -v bluemoon &>/dev/null && \
-    BLUEZ="true"
+DOXYGEN="false"
+BLUEZ="disabled"
 
 mkdir build
 cd build || exit 1
 
-meson               \
-    --prefix=/usr   \
-    -Ddatabase=gdbm \
-    -Dbluez5="${BLUEZ}" || exit 1
+meson                    \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -Ddatabase=gdbm      \
+    -Ddoxygen=${DOXYGEN} \
+    -Dbluez5="${BLUEZ}"  \
+    -Dhal-compat=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-# запуск pulseaudio как общесистемного демона возможен, но не рекомендуется
-rm -fv "${TMP_DIR}/etc/dbus-1/system.d/${PRGNAME}-system.conf"
+if [ -d "${TMP_DIR}/lib" ]; then
+    (
+        cd "${TMP_DIR}" || exit 1
+        mv lib/* usr/lib
+        rm -rf lib
+    )
+fi
+
+# запуск pulseaudio как общесистемного демона возможен, но не рекомендуется,
+# поэтому удалим файл конфигурации D-Bus для общесистемного демона, чтобы
+# избежать создания ненужных системных пользователей и групп:
+rm -f "${TMP_DIR}/etc/dbus-1/system.d/${PRGNAME}-system.conf"
 
 CLIENT_CONF="/etc/pulse/client.conf"
 if [ -f "${CLIENT_CONF}" ]; then

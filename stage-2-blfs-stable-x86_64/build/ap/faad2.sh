@@ -8,8 +8,7 @@ PRGNAME="faad2"
 
 # Required:    no
 # Recommended: no
-# Optional:    alsa-utils (для тестрования декодера)
-#              faac       (для тестрования декодера)
+# Optional:    alsa-utils (утилита aplay для тестрования декодера)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,6 +17,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 PKG_VERSION="${VERSION//_/.}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKG_VERSION}"
 mkdir -pv "${TMP_DIR}"
+
 ./bootstrap &&
 ./configure       \
     --prefix=/usr \
@@ -31,13 +31,8 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# пакет не имеет набора тестов однако базовая функциональность может быть
-# протестирована путем кодирования образца WAV-файла (который устанавливается с
-# пакетом alsa-utils) в формат MP4, декодированием его обратно в WAV-файл с
-# последующим воспроизведением
-#    # faac -o Front_Left.mp4 /usr/share/sounds/alsa/Front_Left.wav
-#    # faad Front_Left.mp4
-#    # aplay Front_Left.wav
+# базовая функциональность может быть протестирована путем декодирования .aac
+# файла в .wav формат и последующего его воспроизведения
 #
 #    # faad -o sample.wav "${SOURCES}/sample.aac"
 #       должно отобразиться сообщение об авторских правах и информация о файле:

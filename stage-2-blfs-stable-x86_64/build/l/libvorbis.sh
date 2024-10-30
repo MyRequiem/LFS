@@ -9,7 +9,8 @@ PRGNAME="libvorbis"
 
 # Required:    libogg
 # Recommended: no
-# Optional:    doxygen
+# Optional:    --- для документации ---
+#              doxygen
 #              texlive or install-tl-unx (для сборки документации в формате pdf)
 
 ROOT="/root/src/lfs"
@@ -25,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# make -j1 check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

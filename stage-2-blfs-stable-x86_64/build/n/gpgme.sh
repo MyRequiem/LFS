@@ -14,7 +14,6 @@ PRGNAME="gpgme"
 #              graphviz (для сборки API документации)
 #              gnupg    (если qt5 или swig установлены, используется для тестов)
 #              clisp
-#              python2
 #              qt5      (для языковых привязок и сборки библиотеки libqgpgme.so)
 #              swig     (для языковых привязок)
 
@@ -27,6 +26,15 @@ mkdir -pv "${TMP_DIR}"
 
 GNUPG="--disable-gpg-test"
 # command -v gpg &>/dev/null && GNUPG="--enable-gpg-test"
+
+# исправим проблему при сборке с Python 3.11
+sed -e 's/3\.9/3.11/' \
+    -e 's/:3/:4/'     \
+    -i configure || exit 1
+
+# исправим ошибку вместе c пакетом swig и libgpg-error>=1.46
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-gpg_error_1_46-1.patch" || exit 1
 
 ./configure       \
     --prefix=/usr \

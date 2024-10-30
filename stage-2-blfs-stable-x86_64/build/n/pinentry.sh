@@ -11,9 +11,9 @@ PRGNAME="pinentry"
 #           libgpg-error
 # Optional: emacs     (для сборки 'pinentry-emacs')
 #           fltk      (для сборки 'pinentry-fltk')
-#           gcr
-#           gtk+2
-#           gtk+3
+#           gcr3
+#           gtk+2     (для сборки pinentry-gtk-2)
+#           gtk+3     (для сборки pinentry-gnome3, должны быть установлены пакеты libsecret и gcr3)
 #           libsecret
 #           qt5       (для сборки 'pinentry-qt')
 #           efl       (https://www.enlightenment.org/about-efl)

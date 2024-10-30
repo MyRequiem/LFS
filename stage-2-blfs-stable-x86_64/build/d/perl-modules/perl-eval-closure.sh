@@ -7,8 +7,9 @@ ARCH_NAME="Eval-Closure"
 # Eval::Closure Perl модуль
 
 # Required:    no
-# Recommended: perl-test-fatal    (для тестов)
-#              perl-test-requires (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-fatal
+#              perl-test-requires
 # Optional:    no
 
 ROOT="/root/src/lfs"

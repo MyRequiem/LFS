@@ -9,15 +9,14 @@ PRGNAME="mc"
 
 # Required:    glib
 #              pcre
-#              slang
-# Recommended: no
+# Recommended: slang
 # Optional:    doxygen
 #              gpm
 #              libssh2
 #              ruby
 #              samba
 #              unzip
-#              X Window System
+#              Graphical Environments
 #              zip
 
 ROOT="/root/src/lfs"
@@ -27,31 +26,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-SAMBA="--disable-vfs-smb"
-GPM="--without-gpm-mouse"
-DOXYGEN_DOC="--disable-doxygen-doc"
-DOXYGEN_HTML="--disable-doxygen-html"
-DOXYGEN_PDF="--disable-doxygen-pdf"
-
-command -v samba    &>/dev/null && SAMBA="--enable-vfs-smb"
-command -v gpm      &>/dev/null && GPM="--with-gpm-mouse"
-# command -v doxygen  &>/dev/null &&       \
-#     DOXYGEN_DOC="--enable-doxygen-doc"   \
-#     DOXYGEN_HTML="--enable-doxygen-html" \
-#     DOXYGEN_PDF="--enable-doxygen-pdf"
-
 # добавим поддержку кодировок при редактировании файлов в mcedit отличных от
 # текущей локали
 #    --enable-charset
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    "${SAMBA}"        \
-    "${GPM}"          \
-    "${DOXYGEN_DOC}"  \
-    "${DOXYGEN_HTML}" \
-    "${DOXYGEN_PDF}"  \
-    --enable-charset  \
+./configure              \
+    --prefix=/usr        \
+    --sysconfdir=/etc    \
+    --enable-charset     \
+    --localstatedir=/var \
+    --runstatedir=/run   \
+    --disable-vfs-fish   \
+    --disable-tests      \
+    --disable-static     \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1

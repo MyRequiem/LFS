@@ -9,15 +9,17 @@ PRGNAME="libinput"
 # Required:    libevdev
 #              mtdev
 # Recommended: no
-# Optional:    valgrind         (для тестов)
-#              sphinx           (для создания документации)
-#              gtk+3            (для сборки GUI event viewer)
-#              libunwind        (для тестов) http://www.nongnu.org/libunwind/
-#              libwacom         (для тестов)
-#              python-pyparsing (для тестов) https://pypi.org/project/pyparsing/
+# Optional:    gtk+3             (для сборки GUI event viewer)
+#              --- для тестов ---
+#              valgrind
+#              libunwind
+#              python3-pyparsing
+#              --- для документации ---
+#              libwacom
+#              python3-sphinx
 
 # Конфигурация ядра
-#    CONFIG_INPUT_UINPUT=y|m
+#    CONFIG_INPUT_UINPUT=y|m (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,20 +32,18 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# shellcheck disable=SC2086
-meson                       \
-    --prefix=${XORG_PREFIX} \
-    -Dudev-dir=/lib/udev    \
-    -Ddebug-gui=false       \
-    -Dtests=false           \
-    -Ddocumentation=false   \
-    -Dlibwacom=false        \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
+    --buildtype=release       \
+    -Ddebug-gui=false         \
+    -Dtests=false             \
+    -Dlibwacom=false          \
+    -Dudev-dir=/usr/lib/udev  \
     .. || exit 1
 
 ninja || exit 1
 
-# для запуска тестов конфигурируем пакет без опции '-Dtests=false', а так же
-# должен быть установлен пакет 'python-pyparsing'
+# для запуска тестов конфигурируем пакет без опции '-Dtests=false'
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
@@ -62,7 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # functionality that users expect.
 #
 # Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://www.freedesktop.org/software/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.freedesktop.org/${PRGNAME}/${PRGNAME}/-/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

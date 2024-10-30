@@ -9,22 +9,25 @@ PRGNAME="links"
 
 # Required:    no
 # Recommended: libevent
-# Optional:    gpm             (для поддержики мыши в графическом режиме с фреймбуффером)
-#              svgalib         (http://www.svgalib.org/)
-#              directfb        (http://pkgs.fedoraproject.org/repo/pkgs/directfb/)
-#              X Window System
+# Optional:    --- графический режим требует один из ---
+#              gpm                      (для поддержики мыши в графическом режиме с фреймбуффером)
+#              svgalib                  (https://www.svgalib.org/)
+#              directfb                 (https://src.fedoraproject.org/repo/pkgs/directfb/)
+#              Graphical Environments
+#               --- для декодирования различных форматов изображений ---
 #              libpng
 #              libjpeg-turbo
 #              librsvg
 #              libtiff
+#              --- для распаковки веб-страниц, сжатых с помощью Brotli ---
+#              brotli
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure           \
     --prefix=/usr     \
@@ -34,9 +37,6 @@ mkdir -pv "${TMP_DIR}${DOCS}"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO "${TMP_DIR}${DOCS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

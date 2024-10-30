@@ -7,12 +7,12 @@ ARCH_NAME="${PRGNAME}-nons"
 # Таблицы стилей XSL, которые нужны для выполнения преобразований в файлах XML
 # DocBook
 
-# Required:    docbook-xml
-# Recommended: libxml2
+# Required:    libxml2
+# Recommended: no
 # Optional:    apache-ant       (для сборки "webhelp" документации)
 #              libxslt
-#              python2-libxml2  (для сборки "docbook" документации)
 #              python2          (runtime)
+#              python2-libxml2  (для сборки "docbook" документации)
 #              ruby             (для использования таблиц стилей "epub")
 #              zip              (для сборки "epub3" документации)
 #              saxon6           (используется вместе с apache-ant) https://sourceforge.net/projects/saxon/files/saxon6/

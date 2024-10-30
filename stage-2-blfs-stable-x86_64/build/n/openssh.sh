@@ -8,17 +8,17 @@ PRGNAME="openssh"
 
 # Required:    no
 # Recommended: no
-# Optional:    gdb          (для тестов)
+# Optional:    gdb                      (для тестов)
 #              linux-pam
-#              X Window System
+#              Graphical Environments
 #              mit-kerberos-v5
-#              which        (для тестов)
+#              which                    (для тестов)
 #              net-tools
 #              sysstat
-#              libedit      (https://www.thrysoee.dk/editline)
-#              libressl     (http://www.libressl.org/)
-#              opensc       (https://github.com/OpenSC/OpenSC/wiki)
-#              libsectok    (http://www.citi.umich.edu/projects/smartcard/sectok.html)
+#              libedit                  (https://www.thrysoee.dk/editline)
+#              libressl                 (http://www.libressl.org/)
+#              opensc                   (https://github.com/OpenSC/OpenSC/wiki)
+#              libsectok                (http://www.citi.umich.edu/projects/smartcard/sectok.html)
 
 ### Конфиги
 #    /.ssh/*

@@ -19,7 +19,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # shellcheck disable=SC2086
-./configure        \
+./configure \
     ${XORG_CONFIG} || exit 1
 
 make || exit 1
@@ -41,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # server-specific key called a "magic cookie."
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/lib/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/lib/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

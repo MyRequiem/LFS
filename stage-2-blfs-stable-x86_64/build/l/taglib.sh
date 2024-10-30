@@ -9,7 +9,7 @@ PRGNAME="taglib"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    boost
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # applications such as Amarok and VLC.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://${PRGNAME}.github.io/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://${PRGNAME}.org/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

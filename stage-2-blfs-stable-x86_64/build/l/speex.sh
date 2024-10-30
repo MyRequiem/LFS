@@ -26,7 +26,6 @@ DOCS="false"
 ./configure           \
     --prefix=/usr     \
     --disable-static  \
-    --enable-binaries \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -47,7 +46,6 @@ cd "${SPEEXDSP}-${SPEEXDSP_VERSION}" || exit 1
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}/speexdsp" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
 [[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"

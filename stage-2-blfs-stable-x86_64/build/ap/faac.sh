@@ -10,7 +10,9 @@ PRGNAME="faac"
 
 # Required:    no
 # Recommended: no
-# Optional:    alsa-utils (для тестирования кодировщика)
+# Optional:    --- для тестирования кодировщика ---
+#              alsa-utils (утилита aplay для тестрования декодера)
+#              faad2
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,10 +35,12 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# пакет не имеет набора тестов, однако базовая функциональность может быть
-# протестирована путем кодирования образца WAV-файла (устанавливается с пакетом
-# alsa-utils) в формат MP4
+# базовая функциональность может быть протестирована путем кодирования образца
+# WAV-файла (устанавливается с пакетом alsa-utils) в формат MP4, обратного
+# декодирования утилитой faad в .wav формат и последующего его воспроизведения
 #    # faac -o Front_Left.mp4 /usr/share/sounds/alsa/Front_Left.wav
+#    # faad Front_Left.mp4
+#    # aplay Front_Left.wav
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # Package: ${PRGNAME} (Freeware Advanced Audio Coder)

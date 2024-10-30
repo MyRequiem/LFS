@@ -5,16 +5,16 @@ Home:
     http://www.linuxfromscratch.org/lfs/index.html
 
 Book:
-    http://www.linuxfromscratch.org/lfs/view/stable/index.html
+    http://www.linuxfromscratch.org/lfs/view/11.3/index.html
 
 Changelog:
-    http://www.linuxfromscratch.org/lfs/view/stable/chapter01/changelog.html
+    http://www.linuxfromscratch.org/lfs/view/11.3/chapter01/changelog.html
 
 FAQ:
     http://www.linuxfromscratch.org/faq/
 
 Errata:
-    http://www.linuxfromscratch.org/lfs/errata/stable/
+    http://www.linuxfromscratch.org/lfs/errata/11.3/
     All packages:
         http://www.linuxfromscratch.org/lfs/view/development/chapter03/packages.html
 
@@ -23,12 +23,12 @@ Errors:
 
 Sources:
     Ссылки на все пакеты
-        http://www.linuxfromscratch.org/lfs/view/stable/chapter03/packages.html
+        http://www.linuxfromscratch.org/lfs/view/11.3/chapter03/packages.html
     wget-list
-        http://www.linuxfromscratch.org/lfs/downloads/stable/
+        http://www.linuxfromscratch.org/lfs/downloads/11.3/
     Список зеркал:
         http://www.linuxfromscratch.org/lfs/packages.html#packages
 
 Patches:
-    http://www.linuxfromscratch.org/lfs/view/stable/chapter03/patches.html
+    http://www.linuxfromscratch.org/lfs/view/11.3/chapter03/patches.html
     http://www.linuxfromscratch.org/lfs/view/development/chapter03/patches.html

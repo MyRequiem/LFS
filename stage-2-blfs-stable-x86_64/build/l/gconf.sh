@@ -53,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # applications based on GTK+. It is conceptually similar to the Windows
 # registry.
 #
-# Home page: https://projects.gnome.org/${PRGNAME}
+# Home page: https://www.gnome.org/
 # Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF

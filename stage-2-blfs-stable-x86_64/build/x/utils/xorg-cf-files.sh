@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libraries formerly delivered in the X.Org monolithic releases.
 #
 # Home page: https://www.x.org/archive/individual/util/
-# Download:  https://www.x.org/archive/individual/util/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.x.org/archive/individual/util/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

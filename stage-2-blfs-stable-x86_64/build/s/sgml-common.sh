@@ -22,7 +22,7 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-manpage-1.patch" || exit 1
 
-autoreconf -f -i
+autoreconf -f -i &&
 ./configure       \
     --prefix=/usr \
     --sysconfdir=/etc || exit 1

@@ -8,8 +8,7 @@ PRGNAME="libjpeg-turbo"
 # транскодирование изображений JPEG
 
 # Required:    cmake
-#              nasm или yasm
-# Recommended: no
+# Recommended: nasm или yasm (для оптимизации сборки)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -22,22 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
+# обеспевает совместимость с libjpeg версии 8
+#    -DWITH_JPEG8=ON
 cmake                                                             \
     -DCMAKE_INSTALL_PREFIX=/usr                                   \
     -DCMAKE_BUILD_TYPE=RELEASE                                    \
     -DENABLE_STATIC=FALSE                                         \
+    -DWITH_JPEG8=ON                                               \
     -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
     -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 
 make || exit 1
-
 # make test
-
-# при обновлении пакета не все ссылки на библиотеки в /usr/lib правильно
-# обновляются. Исправим это недоразумение:)
-rm -f /usr/lib/libjpeg.so*
-
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -52,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # baseline JPEG compression and decompression. libjpeg-turbo is generally 2-4x
 # as fast as the unmodified version of libjpeg, all else being equal.
 #
-# Home page: http://libjpeg-turbo.virtualgl.org
+# Home page: http://${PRGNAME}.virtualgl.org
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

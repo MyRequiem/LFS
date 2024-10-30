@@ -8,7 +8,7 @@ PRGNAME="libtirpc"
 
 # Required:    no
 # Recommended: no
-# Optional:    mit-kerberos-v5 (для gssapi)
+# Optional:    mit-kerberos-v5 (для GSSAPI)
 
 ### NOTE:
 # при обновлении этого пакета также необходимо обновить/пересобрать любую
@@ -20,7 +20,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/lib"
+mkdir -pv "${TMP_DIR}"
 
 GSSAPI="--disable-gssapi"
 command -v kadmin &>/dev/null && GSSAPI="--enable-gssapi"
@@ -34,17 +34,6 @@ command -v kadmin &>/dev/null && GSSAPI="--enable-gssapi"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
-
-# переместим библиотеки из /usr/lib в /lib, чтобы они были доступны до
-# монтирования /usr
-mv -v "${TMP_DIR}/usr/lib/libtirpc.so".* "${TMP_DIR}/lib"
-
-# восстановим ссылку
-#    /usr/lib/libtirpc.so -> ../../lib/libtirpc.so.x.x.x
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf "../../lib/$(readlink libtirpc.so)" libtirpc.so
-)
 
 NETCONFIG="/etc/netconfig"
 if [ -f "${NETCONFIG}" ]; then

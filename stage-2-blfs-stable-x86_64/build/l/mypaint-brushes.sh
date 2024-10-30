@@ -10,28 +10,12 @@ PRGNAME="mypaint-brushes"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev | cut -d v -f 2)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}-v${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION}" || exit 1
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-automake_1.16-1.patch" || exit 1
-
-./autogen.sh &&
 ./configure \
     --prefix=/usr || exit 1
 
@@ -50,7 +34,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libmypaint.
 #
 # Home page: https://github.com/Jehan/${PRGNAME}
-# Download:  https://github.com/Jehan/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
+# Download:  https://github.com/mypaint/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

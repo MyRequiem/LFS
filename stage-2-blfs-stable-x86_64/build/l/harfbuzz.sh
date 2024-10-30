@@ -15,7 +15,8 @@ PRGNAME="harfbuzz"
 # Optional:    cairo (для сборки утилиты 'hb-view')
 #              git
 #              gtk-doc
-#              fonttools (python2 и python3 модули для тестов) https://pypi.org/project/fonttools/
+#              python3-fonttools (для тестов) https://pypi.org/project/fonttools/
+#              ragel             (https://www.colm.net/open-source/ragel/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,11 +34,12 @@ command -v gr2fonttest  &>/dev/null && GRAPHITE2="enabled"
 mkdir build
 cd build || exit 1
 
-meson                         \
-    --prefix=/usr             \
-    -Dgraphite="${GRAPHITE2}" \
-    -Dtests=disabled          \
-    -Ddocs="${GTK_DOC}"       \
+meson                          \
+    --prefix=/usr              \
+    --buildtype=release        \
+    -Dgraphite2="${GRAPHITE2}" \
+    -Dtests=disabled           \
+    -Ddocs="${GTK_DOC}"        \
     -Dbenchmark=disabled || exit 1
 
 ninja || exit 1

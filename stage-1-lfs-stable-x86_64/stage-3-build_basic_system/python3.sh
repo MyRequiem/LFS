@@ -28,7 +28,7 @@ mkdir -pv "${TMP_DIR}/etc"
 make || make -j1 || exit 1
 
 # тесты на данном этапе не запускаем, т.к. они требуют сконфигурированного
-# сетевого подключения и установленных TK и X Window System
+# сетевого подключения и установленных TK и Graphical Environments
 # make test
 
 make install DESTDIR="${TMP_DIR}"

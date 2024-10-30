@@ -15,6 +15,8 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
@@ -27,7 +29,7 @@ make || exit 1
 # если мы устанавливаем пакет поверх предыдущей установленной версии,
 # 'make install' потерпит неудачу при создании некоторых символических ссылок.
 # Обновим эти ссылки так как нужно:
-if [ -d /usr/share/iso-codes ]; then
+if [ -d "/usr/share/${PRGNAME}" ]; then
     sed -i '/^LN_S/s/s/sfvn/' */Makefile
 fi
 
@@ -45,8 +47,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # many programs throughout the system. It is used as a central database for
 # accessing this data.
 #
-# Home page: http://pkg-isocodes.alioth.debian.org/
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://salsa.debian.org/${PRGNAME}-team/${PRGNAME}
+# Download:  https://salsa.debian.org/${PRGNAME}-team/${PRGNAME}/-/archive/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
 #
 EOF
 

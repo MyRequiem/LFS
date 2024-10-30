@@ -18,7 +18,9 @@ VERSION="$(find "${SOURCES}" -type f \
     -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1,2 | rev)"
 
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+PKGVERSION="${VERSION//-/_}"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${PKGVERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
@@ -26,8 +28,15 @@ cd "${BUILD_DIR}" || exit 1
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
 cd "${PRGNAME}-${VERSION}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/etc/"{"${PRGNAME}",rc.d/init.d}
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKGVERSION}"
+mkdir -pv "${TMP_DIR}/etc/${PRGNAME}"
 
 patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-${VERSION}.patch" || exit 1
 
@@ -43,13 +52,17 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 install -D -m 644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
-install -D -m 754 "${SOURCES}/${PRGNAME}"    "${TMP_DIR}/etc/rc.d/init.d/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+# для разрешения доступа к данным о температуре жесткого диска простым
+# пользователям, нужно установить suid-бит для /usr/sbin/hddtemp
+#    rwsr-xr-x или 4755
+chmod u+s /usr/sbin/hddtemp
+
+cat << EOF > "/var/log/packages/${PRGNAME}-${PKGVERSION}"
 # Package: ${PRGNAME} (reads hard disk S.M.A.R.T. info and reports temperature)
 #
 # hddtemp is a small and daemonizable utility designed to read the S.M.A.R.T.
@@ -61,4 +74,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+    "${TMP_DIR}" "${PRGNAME}-${PKGVERSION}"

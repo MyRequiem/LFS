@@ -8,9 +8,10 @@ ARCH_NAME="Params-ValidationCompiler"
 
 # Required:    perl-exception-class
 #              perl-specio
-# Recommended: no
-# Optional:    perl-test-without-module       (для тестов)
-#              perl-test2-plugin-nowarnings   (для тестов)
+# Recommended: --- для тестов ---
+#              perl-test-without-module
+#              perl-test2-plugin-nowarnings
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

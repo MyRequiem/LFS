@@ -46,6 +46,7 @@ command -v icuinfo &>/dev/null && ICU="system-icu"
     ${LIBUV}         \
     ${NGHTTP2}       \
     ${NPM}           \
+    --ninja          \
     --with-intl="${ICU}"|| exit 1
 
 make || exit 1
@@ -53,7 +54,8 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # по умолчанию документация устанавливается в /usr/share/doc/node/
-# создадим ссылку в /usr/share/doc/ ${PRGNAME}-${VERSION} -> node
+# создадим ссылку в /usr/share/doc/
+#    ${PRGNAME}-${VERSION} -> node
 (
     cd "${TMP_DIR}/usr/share/doc/" || exit 1
     ln -sfv node "${PRGNAME}-${VERSION}"

@@ -14,6 +14,7 @@ GNU_GS_FONTS_OTHER_VERSION="6.0"
 # Recommended: cups
 #              fontconfig
 #              freetype
+#              lcms2
 #              libjpeg-turbo
 #              libpng
 #              libtiff
@@ -22,7 +23,7 @@ GNU_GS_FONTS_OTHER_VERSION="6.0"
 #              gtk+3
 #              libidn
 #              libpaper
-#              X Window System
+#              Graphical Environments
 
 # NOTE:
 #    В запущенной X-сессии можно потестировать работу пакета (должна открыться
@@ -39,10 +40,6 @@ mkdir -pv "${TMP_DIR}"
 # удалим из исходников копии freetype, lcms2, libjpeg, libpng, zlib и openjpeg,
 # т.к. они уже должны быть установлены в системе
 rm -rf freetype lcms2mt jpeg libpng openjpeg zlib
-
-# исправим проблему, вызванную изменениями в freetype >= 2.10.3
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-freetype_fix-1.patch" || exit 1
 
 # опция немного уменьшает размеры файлов gs и libgs.so
 #    --disable-compile-inits
@@ -61,24 +58,21 @@ make soinstall DESTDIR="${TMP_DIR}"
 
 # некоторым пакетам (например, imagemagick) требуются заголовки интерфейса
 # ghostscript
-install -v -m644 base/*.h "${TMP_DIR}/usr/include/ghostscript"
+install -v -m644 base/*.h "${TMP_DIR}/usr/include/${PRGNAME}"
 
-# некоторые пакеты производят поиск заголовков интерфейса в другом месте
-# ссылка в /usr/include/
+# некоторые пакеты производят поиск заголовков интерфейса в другом месте,
+# поэтому создадим ссылку в /usr/include/
 #    ps -> ghostscript
-ln -sfvn ghostscript "${TMP_DIR}/usr/include/ps"
+ln -sfvn "${PRGNAME}" "${TMP_DIR}/usr/include/ps"
 
-# исправим путь к документации
-DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-mv -v "${TMP_DIR}/usr/share/doc/ghostscript/${VERSION}" "${TMP_DIR}${DOC_PATH}"
-rm -rf "${TMP_DIR}/usr/share/doc/ghostscript"
-cp -r examples/ "${TMP_DIR}${DOC_PATH}"
+# удалим документацию
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 # установим шрифты
 FONTS_PATH="/usr/share/fonts/X11/Type1/"
 mkdir -p "${TMP_DIR}${FONTS_PATH}"
 tar -xvf \
-    "${SOURCES}/ghostscript-fonts-std-${GHOSTSCRIPT_FONTS_STD_VERSION}.tar.gz" \
+    "${SOURCES}/${PRGNAME}-fonts-std-${GHOSTSCRIPT_FONTS_STD_VERSION}.tar.gz" \
     -C "${TMP_DIR}${FONTS_PATH}" --no-same-owner --strip-components=1 || exit 1
 tar -xvf "${SOURCES}/gnu-gs-fonts-other-${GNU_GS_FONTS_OTHER_VERSION}.tar.gz" \
     -C "${TMP_DIR}${FONTS_PATH}" --no-same-owner --strip-components=1 || exit 1
@@ -90,11 +84,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим индекс шрифтов (fonts.scale и fonts.dir)
-(
-    cd "${FONTS_PATH}" || exit 1
-    mkfontscale .
-    mkfontdir   .
-)
+if command -v mkfontscale &>/dev/null && command -v mkfontdir &>/dev/null; then
+    (
+            cd "${FONTS_PATH}" || exit 1
+            mkfontscale .
+            mkfontdir   .
+    )
+fi
 
 # обновим кэш для fontconfig (/var/cache/fontconfig/)
 fc-cache -vf

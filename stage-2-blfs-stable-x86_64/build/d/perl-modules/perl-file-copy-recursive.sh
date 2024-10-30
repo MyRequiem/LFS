@@ -7,11 +7,12 @@ ARCH_NAME="File-Copy-Recursive"
 # File::Copy::Recursive Perl модуль
 
 # Required:    no
-# Recommended: perl-path-tiny     (для тестов)
-#              perl-test-deep     (для тестов)
-#              perl-test-fatal    (для тестов)
-#              perl-test-file     (для тестов)
-#              perl-test-warnings (для тестов)
+# Recommended: --- для тестов ---
+#              perl-path-tiny
+#              perl-test-deep
+#              perl-test-fatal
+#              perl-test-file
+#              perl-test-warnings
 # Optional:    no
 
 ROOT="/root/src/lfs"

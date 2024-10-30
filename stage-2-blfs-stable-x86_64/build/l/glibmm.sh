@@ -14,7 +14,7 @@ PRGNAME="glibmm"
 #              glib-networking (для тестов)
 #              gnutls          (для тестов)
 #              libxslt
-#              mm-common       (https://download-fallback.gnome.org/sources/mm-common/)
+#              mm-common       (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,11 +26,12 @@ mkdir -pv "${TMP_DIR}"
 DOCS="false"
 EXAMPLES="false"
 
-mkdir _build
-cd _build || exit 1
+mkdir bld
+cd bld || exit 1
 
 meson                               \
     --prefix=/usr                   \
+    --buildtype=release             \
     -Dbuild-documentation="${DOCS}" \
     -Dbuild-examples="${EXAMPLES}"  \
     .. || exit 1

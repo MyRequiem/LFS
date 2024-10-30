@@ -7,8 +7,8 @@ PRGNAME="glib-networking"
 
 # Required:    glib
 #              gnutls
-#              gsettings-desktop-schemas
-# Recommended: make-ca
+# Recommended: gsettings-desktop-schemas
+#              make-ca
 # Optional:    libproxy (https://github.com/libproxy/libproxy)
 
 ROOT="/root/src/lfs"
@@ -18,15 +18,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBPROXY="disabled"
-command -v proxy &>/dev/null && LIBPROXY="enabled"
-
 mkdir build
 cd build || exit 1
 
-meson                        \
-    --prefix=/usr            \
-    -Dlibproxy="${LIBPROXY}" \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
     ..  || exit 1
 
 ninja || exit 1

@@ -39,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # of about a single object)
 #
 # Home page: https://metacpan.org/pod/Class::Data::Inheritable
-# Download:  https://cpan.metacpan.org/authors/id/T/TM/TMTM/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://cpan.metacpan.org/authors/id/R/RS/RSHERER/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

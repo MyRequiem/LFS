@@ -7,11 +7,9 @@ ARCH_NAME="${PRGNAME}_ntfsprogs"
 ALLOW_USER_MOUNT="false"
 
 ### ntfs-3g (NTFS read-write filesystem driver)
-# Свободный драйвер файловой системы NTFS. В противоположность драйверу NTFS,
-# включённому в само ядро Linux, ntfs-3g поддерживает больше операций с
-# файлами, например создание/переименование/перемещение/удаление файлов любого
-# размера. Разделы NTFS монтируются, используя Filesystem in Userspace (FUSE) в
-# структуру пользовательского пространства FHS.
+# Свободный драйвер файловой системы NTFS. Разделы NTFS монтируются используя
+# Filesystem in Userspace (FUSE) в структуру пользовательского пространства
+# FHS.
 
 # Required:    no
 # Recommended: no
@@ -29,6 +27,7 @@ mkdir -pv "${TMP_DIR}"/{bin,lib,sbin,usr/lib}
 
 ./configure              \
     --prefix=/usr        \
+    --exec_prefix=/usr   \
     --disable-static     \
     --with-fuse=internal \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -38,24 +37,35 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 (
-    # ссылка в /sbin
-    #    mount.ntfs -> /bin/ntfs-3g
-    cd "${TMP_DIR}/sbin" || exit 1
-    ln -sv /bin/${PRGNAME} mount.ntfs
+    cd "${TMP_DIR}" || exit 1
+    rm -rf  ./bin ./lib ./sbin
+)
+
+(
+    # ссылки в /usr/sbin
+    #    mount.ntfs       -> ../bin/ntfs-3g
+    #    mount.ntfs-3g    -> ../bin/ntfs-3g
+    #    mount.lowntfs-3g -> ../bin/lowntfs-3g
+    #    mkfs.ntfs        -> mkntfs
+    cd "${TMP_DIR}/usr/sbin/" || exit 1
+    ln -sv  ../bin/${PRGNAME} mount.ntfs
+    ln -sv  ../bin/${PRGNAME} mount.ntfs-3g
+    ln -sv  ../bin/lowntfs-3g mount.lowntfs-3g
+    ln -svf mkntfs mkfs.ntfs
 
     # ссылка в /usr/share/man/man8
     #    mount.ntfs.8 -> ntfs-3g.8
     cd "${TMP_DIR}/usr/share/man/man8" || exit 1
-    ln -sv ntfs-3g.8 mount.ntfs.8
+    ln -sv "${PRGNAME}.8" mount.ntfs.8
 )
-
-if [[ "x${ALLOW_USER_MOUNT}" == "xtrue" ]]; then
-    chmod -v 4755 "${TMP_DIR}/bin/ntfs-3g"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+if [[ "x${ALLOW_USER_MOUNT}" == "xtrue" ]]; then
+    chmod -v 4755 "/usr/bin/${PRGNAME}"
+fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (NTFS read-write filesystem driver)
@@ -67,7 +77,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # support in user space. The package also contains various utilities useful for
 # manipulating NTFS partitions.
 #
-# Home page: http://www.tuxera.com/community/open-source-${PRGNAME}/
+# Home page: https://github.com/tuxera/${PRGNAME}
 # Download:  https://tuxera.com/opensource/${ARCH_NAME}-${VERSION}.tgz
 #
 EOF

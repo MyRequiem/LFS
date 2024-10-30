@@ -14,17 +14,17 @@ PRGNAME="gnutls"
 #              p11-kit
 # Optional:    brotli
 #              doxygen
-#              gtk-doc (для сборки API документации, см. опции ниже)
-#              libidn or libidn2
+#              gtk-doc                      (для сборки API документации)
+#              libidn или libidn2
 #              libseccomp
-#              net-tools   (для тестов)
-#              texlive or install-tl-unx
-#              unbound     (для создания libgnutls-dane.so и утилиты danetool)
-#              valgrind    (для тестов)
-#              autogen     (https://ftp.gnu.org/gnu/autogen/)
-#              cmocka      (для тестов библиотеки DANE) https://cmocka.org/
-#              datefudge   (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
-#              trousers    (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
+#              net-tools                    (для тестов)
+#              texlive или install-tl-unx
+#              unbound                      (для создания libgnutls-dane.so и утилиты danetool)
+#              valgrind                     (для тестов)
+#              autogen                      (https://ftp.gnu.org/gnu/autogen/)
+#              cmocka                       (для тестов библиотеки DANE) https://cmocka.org/
+#              datefudge                    (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
+#              trousers                     (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

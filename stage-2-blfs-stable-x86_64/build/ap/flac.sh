@@ -13,7 +13,6 @@ PRGNAME="flac"
 # Required:    no
 # Recommended: no
 # Optional:    libogg
-#              nasm
 #              docbook-utils
 #              doxygen
 #              valgrind

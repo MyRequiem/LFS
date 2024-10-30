@@ -30,7 +30,7 @@ cmake                           \
     .. || exit 1
 
 make || exit 1
-# make check
+# make test
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

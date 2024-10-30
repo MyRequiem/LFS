@@ -14,8 +14,9 @@ PRGNAME="yasm"
 
 # Required:    no
 # Recommended: no
-# Optional:    python2
-#              cython (для создания модуля /usr/lib/python2.7/site-packages/yasm.so) https://cython.org/
+# Optional:    --- для создания /usr/lib/python2.7/site-packages/yasm.so ---
+#              python2
+#              python2-cython
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,9 +31,11 @@ sed -i 's#) ytasm.*#)#' Makefile.in
 PYTHON="--disable-python"
 PYTHON_BINDINGS="--disable-python-bindings"
 
-command -v cython &>/dev/null && \
-    PYTHON="--enable-python" && \
-    PYTHON_BINDINGS="--enable-python-bindings"
+if command -v python2 &>/dev/null; then
+    command -v cython2 &>/dev/null && \
+        PYTHON="--enable-python" && \
+        PYTHON_BINDINGS="--enable-python-bindings"
+fi
 
 ./configure       \
     --prefix=/usr \

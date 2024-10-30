@@ -4,16 +4,18 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### Python3 (object-oriented interpreted programming language)
-# Язык программирования Python 3
+# Язык программирования Python3
 
 # Required:    no
-# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox)
+# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox или thunderbird)
 # Optional:    bluez
 #              gdb         (для некоторых тестов)
 #              valgrind
 #              libmpdec    (http://www.bytereef.org/mpdecimal/)
-#              berkeley-db (для создания дополнительных модулей)
-#              tk          (для создания дополнительных модулей)
+#              --- для создания дополнительных модулей ---
+#              berkeley-db
+#              libnsl
+#              tk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -35,8 +37,15 @@ BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/Python-${VERSION}".tar.?z* || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -51,63 +60,33 @@ command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
 
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
-# связываться с уже установленной системной версией Expat
-#    --with-system-expat
-# связываться с уже установленной системной версией libffi
-#    --with-system-ffi
-# создавать утилиты pip и setuptools
-#    --with-ensurepip=yes
-# включить оптимизацию по профилю (увеличивает время компиляции, но может
-# немного ускорить выполнение скриптов Python3)
-#    --enable-optimization
-CXX="/usr/bin/g++"       \
-./configure              \
-    --prefix=/usr        \
-    --enable-shared      \
-    --with-system-expat  \
-    --with-system-ffi    \
-    "${VALGRIND}"        \
-    "${LIBMPDEC}"        \
-    "${SQLITE}"          \
-    --with-ensurepip=yes \
+CXX="/usr/bin/g++"      \
+./configure             \
+    --prefix=/usr       \
+    --enable-shared     \
+    --with-system-expat \
+    --with-system-ffi   \
+    "${VALGRIND}"       \
+    "${LIBMPDEC}"       \
+    "${SQLITE}"         \
     --enable-optimization || exit 1
 
 make || exit 1
-
-### Для запуска тестов требуется:
-# > установленные пакеты tk и X Window System Environment
-# > запускать с использованием X-терминала
-# > интернет соединение
-# > запускать нужно либо до, либо после сборки и установки пакета python3, т.е.
-#    НЕЛЬЗЯ запускать 'make install' после запуска набора тестов
-# > ТОЛЬКО чистый исходный код либо после 'make clean'. Затем снова
-#    сконфигурировать добавив опцию '--with-pydebug', потом собрать 'make' и
-#    только потом запустить тесты 'make test'
-# > известно, что тест test_sqlite не проходит
-
+# make test
 make install DESTDIR="${TMP_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython${MAJ_VERSION}.so"
-chmod -v 755 "${TMP_DIR}/usr/lib/libpython3.so"
+# pip3 и pip${MAJ_VERSION} одинаковые скрипты, создадим ссылку
+#    pip3 -> pip${MAJ_VERSION}
+ln -sfv "pip${MAJ_VERSION}" "${TMP_DIR}/usr/bin/pip3"
 
-# ссылки в /usr/bin
-# python        -> python3
-# pip           -> pip3
-# pip3          -> pip${MAJ_VERSION}
-# easy_install  -> easy_install3
-# easy_install3 -> easy_install-${MAJ_VERSION}
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -svf python3             python
-    ln -svf "pip${MAJ_VERSION}" pip3
-    ln -svf pip3                pip
-    ln -svf "easy_install-${MAJ_VERSION}" easy_install3
-    ln -svf "easy_install3"               easy_install
-)
+# исправим shebang в скрипте pip${MAJ_VERSION}
+#    #!/usr/bin/python -> #!/usr/bin/python3
+sed 's/\/usr\/bin\/python$/\/usr\/bin\/python3/' \
+    -i "${TMP_DIR}/usr/bin/pip${MAJ_VERSION}" || exit 1
 
 # устанавливаем документацию
-DOCS="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/html"
+DOCS="${TMP_DIR}/usr/share/doc/python-${VERSION}/html"
 install -v -dm755 "${DOCS}"
 tar                       \
     --strip-components=1  \
@@ -119,12 +98,10 @@ tar                       \
 # чтобы python3 мог найти установленную документацию, создадим не зависимую от
 # версии Python3 ссылку в /usr/share/doc/
 #    python-3 -> python3-${VERSION}
-(
-    cd "${TMP_DIR}/usr/share/doc/" || exit 1
-    ln -svfn "${PRGNAME}-${VERSION}" python-3
-)
+ln -svfn "python-${VERSION}" "${TMP_DIR}/usr/share/doc/python-3"
 
-# добавим переменную окружения PYTHONDOCS в профиль системы
+# добавим переменную окружения PYTHONDOCS содержащую путь к документации
+# Python3
 PROFILE_D="/etc/profile.d"
 install -v -dm755 "${TMP_DIR}${PROFILE_D}"
 PYTHON3_PYTHONDOCS_SH="${PROFILE_D}/python3-pythondocs.sh"
@@ -139,6 +116,23 @@ export PYTHONDOCS=/usr/share/doc/python-3/html
 EOF
 chmod 755 "${TMP_DIR}${PYTHON3_PYTHONDOCS_SH}"
 
+# make-ca уже установлен, и корневые системные сертификаты обновлены командой
+#    # update-ca-certificates
+# добавим переменную окружения _PIP_STANDALONE_CERT содержащую путь к системным
+# сертификатам, которые будет использовать 'pip' (по умолчанию он устанавливает
+# собственные сертификаты)
+PYTHON3_CERTS_SH="${PROFILE_D}/python3-certs.sh"
+cat << EOF > "${TMP_DIR}${PYTHON3_CERTS_SH}"
+#! /bin/bash
+
+# Begin ${PYTHON3_CERTS_SH}
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End ${PYTHON3_CERTS_SH}
+EOF
+chmod 755 "${TMP_DIR}${PYTHON3_CERTS_SH}"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -152,7 +146,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # adaptable as an extension language for existing applications.
 #
 # Home page: https://www.python.org/
-# Download:  https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
+# Download:  https://www.python.org/ftp/python/${VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

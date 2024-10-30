@@ -9,9 +9,9 @@ PRGNAME="mpg123"
 # Recommended: alsa-lib
 # Optional:    pulseaudio
 #              sdl
-#              jack      (https://jackaudio.org/)
-#              openal    (https://openal.org/)
-#              portaudio (http://www.portaudio.com/)
+#              jack         (https://jackaudio.org/)
+#              openal       (https://openal.org/)
+#              portaudio    (https://www.portaudio.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -37,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The mpg123 package contains a console-based MP3 player. It claims to be the
 # fastest MP3 decoder for Unix.
 #
-# Home page: http://${PRGNAME}.org/
+# Home page: https://${PRGNAME}.org/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
