@@ -72,7 +72,7 @@ cd build || exit 1
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.37 \
+    --with-glibc-version=2.40 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \
