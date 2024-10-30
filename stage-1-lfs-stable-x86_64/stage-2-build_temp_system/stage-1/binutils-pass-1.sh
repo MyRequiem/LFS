@@ -38,7 +38,9 @@ cd build || exit 1
     --target="${LFS_TGT}"   \
     --disable-nls           \
     --enable-gprofng=no     \
-    --disable-werror || exit 1
+    --disable-werror        \
+    --enable-new-dtags      \
+    --enable-default-hash-style=gnu || exit 1
 
 make || make -j1 || exit 1
 make install
