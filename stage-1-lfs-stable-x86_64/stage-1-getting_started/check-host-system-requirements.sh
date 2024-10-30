@@ -40,7 +40,7 @@ fi
 
 ### Coreutils
 echo "Coreutils: $(chown --version | head -n 1 | cut -d ' '  -f 4)"
-echo -e "Required: >=6.9\n"
+echo -e "Required: >=8.1\n"
 
 ### Diffutils
 echo "Diffutils: $(diff --version | head -n 1 | cut -d ' '  -f 4)"
@@ -66,7 +66,7 @@ fi
 ### GCC, G++
 echo "GCC: $(gcc --version | head -n 1 | cut -d ' ' -f 3)"
 echo "G++: $(g++ --version | head -n 1 | cut -d ' ' -f 3)"
-echo "Required: >=5.1"
+echo "Required: >=5.2"
 echo -e "Version >12.2.0 not recommended\n"
 
 ### Grep
@@ -79,7 +79,7 @@ echo -e "Required: >=1.3.12\n"
 
 ### Linux Kernel
 echo "Linux Kernel: $(uname -r)"
-echo -e "Required: >=3.2\n"
+echo -e "Required: >=4.19\n"
 
 ### M4
 echo "M4: $(m4 --version | head -n 1 | cut -d ' ' -f 4)"
@@ -111,7 +111,7 @@ echo -e "Required: >=1.22\n"
 
 ### Texinfo
 echo "Texinfo: $(makeinfo --version | head -n1 | cut -d ' ' -f 4)"
-echo -e "Required: >=4.7\n"
+echo -e "Required: >=5.0\n"
 
 ### Xz
 echo "Xz: $(xz --version | head -n 1 | cut -d ' ' -f 4)"
