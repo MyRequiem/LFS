@@ -44,9 +44,6 @@ fi
 mkdir -pv "${LFS}"
 
 # монтируем раздел ${PART} в /mnt/lfs
-# Если бы мы использовали несколько разделов для LFS, например отдельный раздел
-# для /home, то нужно будет создать директорию ${LFS}/home и туда смонтировать
-# другой раздел /dev/sdaXX, и т.д.
 mount -vt ext4 "${PART}" "${LFS}"
 
 # создаем нужные директории и монтируем остальные разделы
@@ -60,6 +57,13 @@ mkdir -pv "${LFS}"/usr/{bin,lib,share,sbin}
 for ROOT_DIR in bin lib sbin; do
     ln -svf "usr/${ROOT_DIR}" "${LFS}/${ROOT_DIR}"
 done
+
+# если мы использyем несколько разделов для LFS, например отдельный раздел для
+# /home, то нужно будет его отформатировать создавая файловую систему ext4 и
+# смонтировать /dev/sdaXX в /home
+mkfs.ext4 -v "${BOOT}"
+mkfs.ext4 -v "${HOME}"
+mkfs.ext4 -v "${TMP}"
 
 mount -vt ext4 "${BOOT}" "${LFS}/boot"
 mount -vt ext4 "${HOME}" "${LFS}/home"
