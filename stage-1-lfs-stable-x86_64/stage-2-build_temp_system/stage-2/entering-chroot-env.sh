@@ -23,9 +23,9 @@ RESETCOLOR="\[\033[0;0m\]"
 chroot "${LFS}" /usr/bin/env -i                                           \
     HOME="/root"                                                          \
     TERM="${TERM}"                                                        \
-    PATH=/usr/bin:/usr/sbin                                               \
     PS1="\u ${MAGENTA}[LFS chroot]${RESETCOLOR}:${RED}\w\$${RESETCOLOR} " \
-    /bin/bash --login +h
+    PATH=/usr/bin:/usr/sbin                                               \
+    /bin/bash --login
 
 # с этого момента больше нет необходимости использовать переменную ${LFS},
 # потому что вся работа будет ограничена файловой системой LFS, т.е. ${LFS}
