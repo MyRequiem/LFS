@@ -36,16 +36,18 @@ echo "rootsbindir=/usr/sbin" > configparms
 # и кросс-компилятор в /mnt/lfs/tools
 #    --host="${LFS_TGT}"
 #    --build="$(../scripts/config.guess)"
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=3.2
+# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=4.19
 # (более ранние версии поддерживаться не будут)
-#    --enable-kernel=3.2
+#    --enable-kernel=4.19
 # сообщим Glibc о необходимости скомпилироваться с заголовками, установленными
 # в /mnt/lfs/usr/include, чтобы он точно знал, какие функции имеет ядро, и мог
 # соответствующим образом оптимизировать себя
 #    --with-headers="${LFS}/usr/include"
-# устанавливать библиотеки в /mnt/lfs/lib вместо /mnt/lfs/lib64 по умолчанию
-# для 64-битных машин
-#    libc_cv_slibdir=/lib
+# не создавать name service cache daemon (nscd), который больше не используется
+#    --disable-nscd
+# устанавливать библиотеки в /mnt/lfs/usr/lib вместо /mnt/lfs/lib64 по
+# умолчанию для 64-битных машин
+#    libc_cv_slibdir=/usr/lib
 
 ###
 # NOTE: на этапе сборки могут появлятся следующие предупреждения:
@@ -63,12 +65,13 @@ echo "rootsbindir=/usr/sbin" > configparms
     --prefix=/usr                        \
     --host="${LFS_TGT}"                  \
     --build="$(../scripts/config.guess)" \
-    --enable-kernel=3.2                  \
+    --enable-kernel=4.19                 \
     --with-headers="${LFS}/usr/include"  \
+    --disable-nscd                       \
     libc_cv_slibdir=/usr/lib || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # исправим жестко запрограммированный путь к исполняемому загрузчику в скрипте
 # ldd

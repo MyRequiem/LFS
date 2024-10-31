@@ -52,11 +52,3 @@ echo ""
 # значит что-то не так.
 
 rm -f dummy.c a.out
-
-# теперь, когда наша начальная кросс-инструментальная цепочка инструментов
-# сборки (binutils+gcc+glibc) собрана и установлена, завершим установку
-# заголовка limits.h. Для этого запустим утилиту mkheaders, предоставленную
-# разработчиками GCC
-GCC_VERSION="$("${LFS}"/tools/bin/x86_64-lfs-linux-gnu-gcc --version | \
-    head -n 1 | rev | cut -d " " -f 1 | rev)"
-"${LFS}/tools/libexec/gcc/${LFS_TGT}/${GCC_VERSION}"/install-tools/mkheaders
