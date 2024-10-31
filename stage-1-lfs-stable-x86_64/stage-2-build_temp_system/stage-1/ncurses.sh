@@ -36,10 +36,6 @@ popd              || exit 1
 # запретим использовать утилиту strip хоста. Использование инструментов хоста в
 # кросс-компилируемых программах может привести к сбою
 #    --disable-stripping
-# вызываем сборку wide-character libraries (например, libncursesw.so.6.1)
-# вместо обычных (libncurses.so.6.1). Эти библиотеки можно использовать как в
-# многобайтовых, так и в традиционных 8-битных локалях
-#    --enable-widec
 ./configure                      \
     --prefix=/usr                \
     --host="${LFS_TGT}"          \
@@ -51,8 +47,7 @@ popd              || exit 1
     --with-cxx-shared            \
     --without-debug              \
     --without-ada                \
-    --disable-stripping          \
-    --enable-widec || exit 1
+    --disable-stripping || exit 1
 
 make || make -j1 || exit 1
 
@@ -60,8 +55,17 @@ make || make -j1 || exit 1
 # которая уже способна запускаться в LFS системе и создать базу данных
 # терминала без ошибок
 #    TIC_PATH="$(pwd)/build/progs/tic"
-make TIC_PATH="$(pwd)/build/progs/tic" install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" TIC_PATH="$(pwd)/build/progs/tic" install
 
-# библиотека libncurses.so необходима для сборки нескольких пакетов, которые мы
-# будем собирать позже
-echo "INPUT(-lncursesw)" > "${LFS}/usr/lib/libncurses.so"
+# библиотека libncurses.so необходима для нескольких пакетов в LFS, поэтому
+# создадим ссылку, чтобы использовать libncursesw.so в качестве замены
+ln -sv libncursesw.so "${LFS}/usr/lib/libncurses.so"
+
+# заголовочный файл curs.h содержит определения различных структур данных
+# ncurses. с разными определениями макросов препроцессора могут использоваться
+# два разных набора определений структуры данных: 8-битное определение
+# совместимо с libncurses.so, а определение расширенных символов совместимо с
+# libncursesw.so. поскольку мы используем libncursesw.so вместо libncurses.so,
+# отредактируем заголовок curses.h, чтобы он всегда использовал определение
+# структуры данных расширенных символов, совместимое с libncursesw.so
+sed -e 's/^#if.*XOPEN.*$/#if 1/' -i "${LFS}/usr/include/curses.h"
