@@ -62,26 +62,27 @@ cd build || exit 1
 # вместо статической версии, созданной при первой сборке GCC. Это необходимо
 # для поддержки обработки исключений C++
 #    LDFLAGS_FOR_TARGET=...
-../configure                      \
-    --host="${LFS_TGT}"           \
-    --target="${LFS_TGT}"         \
-    --prefix=/usr                 \
-    --enable-default-pie          \
-    --enable-default-ssp          \
-    --disable-nls                 \
-    --disable-multilib            \
-    --disable-libatomic           \
-    --disable-libgomp             \
-    --disable-libquadmath         \
-    --disable-libssp              \
-    --disable-libvtv              \
-    --build="$(../config.guess)"  \
-    --enable-languages=c,c++      \
-    --with-build-sysroot="${LFS}" \
-    LDFLAGS_FOR_TARGET=-L"${PWD}/${LFS_TGT}/libgcc" || exit 1
+../configure                                        \
+    --build="$(../config.guess)"                    \
+    --host="${LFS_TGT}"                             \
+    --target="${LFS_TGT}"                           \
+    LDFLAGS_FOR_TARGET=-L"${PWD}/${LFS_TGT}/libgcc" \
+    --prefix=/usr                                   \
+    --with-build-sysroot="${LFS}"                   \
+    --enable-default-pie                            \
+    --enable-default-ssp                            \
+    --disable-nls                                   \
+    --disable-multilib                              \
+    --disable-libatomic                             \
+    --disable-libgomp                               \
+    --disable-libquadmath                           \
+    --disable-libsanitizer                          \
+    --disable-libssp                                \
+    --disable-libvtv                                \
+    --enable-languages=c,c++ || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # создадим ссылку cc -> gcc в /usr/bin/ для универсальности и совместимости со
 # всеми UNIX-системами, т.к. многие программы и скрипты запускают 'cc' вместо
