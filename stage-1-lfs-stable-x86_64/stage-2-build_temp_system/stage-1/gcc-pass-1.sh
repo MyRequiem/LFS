@@ -102,7 +102,5 @@ make install
 # подходит для сборки glibc, но полный внутренний заголовок понадобится позже,
 # поэтому создадим полную версию внутреннего заголовка:
 cd ..
-GCC_DIR_NAME="$(dirname "$("${LFS_TGT}"-gcc -print-libgcc-file-name)")"
-cat gcc/limitx.h  \
-    gcc/glimits.h \
-    gcc/limity.h > "${GCC_DIR_NAME}/install-tools/include/limits.h"
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+    "$(dirname "$("${LFS_TGT}"-gcc -print-libgcc-file-name)")"/include/limits.h
