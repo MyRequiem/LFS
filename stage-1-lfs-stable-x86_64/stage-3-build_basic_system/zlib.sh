@@ -20,6 +20,9 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+# удалим бесполезную статическую библиотеку
+rm -fv "${TMP_DIR}/usr/lib/libz.a"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /

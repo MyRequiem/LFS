@@ -1,14 +1,14 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2022g"
+TZDATA_VERSION="2024a"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
 # Пакет Glibc содержит основную библиотеку C. Эта библиотека предоставляет
 # основные процедуры для выделения памяти, поиска в каталогах, открытия и
 # закрытия файлов, чтения и записи файлов, обработки строк, сопоставления с
-# образцом, арифметики и так далее.
+# образцом, арифметики и т.д.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -30,10 +30,6 @@ mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 patch --verbose -Nvp1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 
-# исправим проблему безопасности, обнаруженную в upstream
-sed '/width -=/s/workend - string/number_length/' \
-    -i stdio-common/vfprintf-process-arg.c || exit 1
-
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
 cd build || exit 1
@@ -45,23 +41,21 @@ echo "rootsbindir=/usr/sbin" > configparms
 # отключает параметр -Werror, передаваемый в GCC. Это необходимо для запуска
 # набора тестов.
 #    --disable-werror
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=3.2
+# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=4.19
 # (более ранние версии поддерживаться не будут)
-#    --enable-kernel=3.2
+#    --enable-kernel=4.19
 # повышает безопасность системы, добавляя дополнительный код для проверки
 # переполнения буфера, такого как атаки с разбивкой стека
 #    --enable-stack-protector=strong
-# где искать заголовки API ядра
-#    --with-headers=/usr/include
 # устанавливать библиотеки в /lib вместо /lib64 по умолчанию для x86-64
 # архитектуры
 #    libc_cv_slibdir=/lib
 ../configure                        \
     --prefix=/usr                   \
     --disable-werror                \
-    --enable-kernel=3.2             \
+    --enable-kernel=4.19            \
     --enable-stack-protector=strong \
-    --with-headers=/usr/include     \
+    --disable-nscd                  \
     libc_cv_slibdir=/usr/lib || exit 1
 
 make || make -j1 || exit 1
@@ -72,8 +66,8 @@ make || make -j1 || exit 1
 LD_SO_CONFIG="/etc/ld.so.conf"
 ! [ -r "${LD_SO_CONFIG}" ] && touch "${LD_SO_CONFIG}"
 
-# исправим сгенерированный Makefile, чтобы пропустить ненужную проверку
-# работоспособности Glibc, которая в среде LFS выполняется с ошибкой
+# исправим Makefile, чтобы пропустить устаревшую проверку работоспособности
+# Glibc, которая не работает в современной конфигурации
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 
 make install
@@ -91,7 +85,7 @@ sed '/RTLDLIST=/s@/usr@@g' -i "${TMP_DIR}/usr/bin/ldd" || exit 1
 # файл
 #    /usr/lib/locale/locale-archive
 mkdir -pv /usr/lib/locale
-localedef -i POSIX -f UTF-8 C.UTF-8 2> /dev/null || true
+localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
 localedef -i de_DE -f ISO-8859-1 de_DE
 localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro
@@ -145,6 +139,26 @@ cp /usr/lib/locale/locale-archive "${TMP_DIR}/usr/lib/locale/"
 sed -i 's/^russian.*$/russian         ru_RU.UTF-8\nru_RU           ru_RU.UTF-8\nru              ru_RU.UTF-8/' \
     "${TMP_DIR}/usr/share/locale/locale.alias"
 
+### создаем файл конфигурации для name service switch /etc/nsswitch.conf
+NSSWITCH_CONFIG="/etc/nsswitch.conf"
+cat << EOF > "${TMP_DIR}${NSSWITCH_CONFIG}"
+# Begin ${NSSWITCH_CONFIG}
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End ${NSSWITCH_CONFIG}
+EOF
+
 ### Установка и настройка данных часового пояса
 ZONEINFO_DIR="${TMP_DIR}${ZONEINFO}"
 # компилируем файлы временных зон и помещаем их в /usr/share/zoneinfo
@@ -173,41 +187,10 @@ zic -d "${ZONEINFO_DIR}" -p America/New_York
 #    /etc/localtime -> ../usr/share/zoneinfo/${TIMEZONE}
 ln -sfv "../usr/share/zoneinfo/${TIMEZONE}" "${TMP_DIR}/etc/localtime"
 
-### Создаем файл конфигурации для Name Service Cache /etc/nscd.conf
-NSCD_CONFIG="/etc/nscd.conf"
-# бэкапим его, если он существует в системе
-if [ -f "${NSCD_CONFIG}" ]; then
-    mv -v "${NSCD_CONFIG}" "${NSCD_CONFIG}.old"
-fi
+### копируем файл конфигурации для name service cache
+cp -v ../nscd/nscd.conf "${TMP_DIR}/etc/nscd.conf"
 
-cp -v ../nscd/nscd.conf "${TMP_DIR}${NSCD_CONFIG}"
-
-### Создаем файл конфигурации для Name Service Switch /etc/nsswitch.conf
-NSSWITCH_CONFIG="/etc/nsswitch.conf"
-# бэкапим его, если он существует в системе
-if [ -f "${NSSWITCH_CONFIG}" ]; then
-    mv "${NSSWITCH_CONFIG}" "${NSSWITCH_CONFIG}.old"
-fi
-
-cat << EOF > "${TMP_DIR}${NSSWITCH_CONFIG}"
-# Begin ${NSSWITCH_CONFIG}
-
-passwd: files
-group: files
-shadow: files
-
-hosts: files dns
-networks: files
-
-protocols: files
-services: files
-ethers: files
-rpc: files
-
-# End ${NSSWITCH_CONFIG}
-EOF
-
-### Конфигурация динамического загрузчика
+### конфигурация динамического загрузчика
 # По умолчанию поиск динамического загрузчика ld-linux-x86-64.so.2, который
 # нужен программам при их запуске, происходит в /lib и /usr/lib. Однако если в
 # каталогах, отличных от /lib и /usr/lib, есть дополнительные библиотеки, их
@@ -242,9 +225,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/usr/share /usr
 /bin/cp -vR "${TMP_DIR}"/var       /
 
-# обрабатываем созданные нами и установленные конфиги
-config_file_processing "${NSCD_CONFIG}"
-config_file_processing "${NSSWITCH_CONFIG}"
 config_file_processing "${LD_SO_CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
