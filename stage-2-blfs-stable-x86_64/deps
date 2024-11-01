@@ -488,7 +488,6 @@ luajit                                  gegl
 lvm2                                    parted, cryptsetup, udisks
 lxsession                               polkit
 lynx                                    pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, apache-httpd
-lz4                                     lrzip, rsync, mariadb
 lzip                                    ed
 lzo                                     libarchive, cairo
 maemo                                   alsa-plugins

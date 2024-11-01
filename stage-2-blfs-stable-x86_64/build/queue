@@ -78,7 +78,6 @@ a/unzip.sh
 ap/unrar.sh
 ap/lzip.sh
 ap/p7zip.sh
-l/lz4.sh
 a/lrzip.sh
 ap/sudo.sh
 
