@@ -2,7 +2,7 @@
 
 PRGNAME="zstd"
 
-### Zstandard (fast lossless real-time compression algorithm)
+### Zstd (Zstandard - fast lossless real-time compression algorithm)
 # Real-time алгоритм сжатия, обеспечивающий относительно высокую степень сжатия
 # и поддерживается очень быстрым декодером
 

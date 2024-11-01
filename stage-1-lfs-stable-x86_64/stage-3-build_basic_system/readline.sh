@@ -20,8 +20,11 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/MV.*old/d'    Makefile.in           || exit 1
 sed -i '/{OLDSUFF}/c:' support/shlib-install || exit 1
 
-# исправим проблему, обнаруженную в upstream
-patch -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch" || exit 1
+# запретим жестко кодировать пути поиска библиотек (rpath) в общие библиотеки,
+# т.к. этому пакету не требуется rpath для установки в стандартное
+# расположение, и rpath может иногда вызывать нежелательные эффекты или даже
+# проблемы безопасности
+sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 
 # сообщает Readline, что он может найти функции библиотеки termcap в библиотеке
 # curses, а не в отдельной библиотеке termcap, что позволяет создать правильный
