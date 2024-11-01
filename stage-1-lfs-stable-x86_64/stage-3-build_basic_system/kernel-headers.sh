@@ -5,6 +5,12 @@ ARCH_NAME="linux"
 
 ### Linux Headers (Linux kernel include files)
 
+###
+# WARNINIG !!!
+# удалять пакет перед переустановкой/обновлением нельзя, иначе собрать его
+# заново будет невозможно
+###
+
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
@@ -19,16 +25,9 @@ make mrproper || exit 1
 # установлен в LFS системе
 make headers || exit 1
 
-# если пакет уже установлен, удалим его перед обновлением
-if command -v removepkg &>/dev/null; then
-    KERNEL_HEADERS_OLD_PGK="$(find /var/log/packages/ -type f -name "kernel-headers-*")"
-    [ -n "${KERNEL_HEADERS_OLD_PGK}" ] &&
-        /usr/sbin/removepkg --backup "${KERNEL_HEADERS_OLD_PGK}"
-fi
-
-# удалим не нужные файлы и скопируем заголовки в /usr/include/
+# удалим ненужные файлы и скопируем заголовки в /usr/include/
 find usr/include -type f ! -name '*.h' -delete
-cp -rv usr/include "${LFS}/usr"
+cp -rv usr/include /usr
 
 LOG="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
