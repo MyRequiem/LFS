@@ -23,36 +23,16 @@ find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
 
 # вместо использования DES метода шифрования паролей (по умолчанию) будем
-# использовать более безопасный метод SHA-512, который также позволяет
+# использовать более безопасный метод YESCRYPT, который также позволяет
 # использовать пароли длиной более 8 символов. Также необходимо изменить
 # устаревшее местоположение /var/spool/mail для пользовательских почтовых
 # ящиков, которые Shadow использует по умолчанию, на /var/mail, используемое в
-# LFS
-sed -e 's:#ENCRYPT_METHOD.*:ENCRYPT_METHOD SHA512:'        \
-    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'            \
-    -e 's:MAIL_DIR.*:MAIL_DIR /var/mail:'                  \
-    -e 's:/var/spool/mail:/var/mail:'                      \
-    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                     \
-    -e 's:FAIL_DELAY.*:FAIL_DELAY 0:'                      \
-    -e 's:FAILLOG_ENAB.*:FAILLOG_ENAB no:'                 \
-    -e 's:LASTLOG_ENAB.*:LASTLOG_ENAB no:'                 \
-    -e 's:MAIL_CHECK_ENAB.*:MAIL_CHECK_ENAB no:'           \
-    -e 's:OBSCURE_CHECKS_ENAB.*:OBSCURE_CHECKS_ENAB no:'   \
-    -e 's:PORTTIME_CHECKS_ENAB.*:PORTTIME_CHECKS_ENAB no:' \
-    -e 's:QUOTAS_ENAB.*:QUOTAS_ENAB no:'                   \
-    -e 's:SYSLOG_SU_ENAB.*:SYSLOG_SU_ENAB no:'             \
-    -e 's:SYSLOG_SG_ENAB.*:SYSLOG_SG_ENAB no:'             \
-    -e 's:PASS_ALWAYS_WARN.*:PASS_ALWAYS_WARN no:'         \
-    -i etc/login.defs || exit 1
-
-### Примечание
-# Если мы хотим принудительно использовать надежные пароли, то в системе должен
-# быть установлен пакет cracklib, который описан в blfs:
-#    http://www.linuxfromscratch.org/blfs/view/stable/postlfs/cracklib.html
-# После его установки нужно пересобрать shadow с параметром конфигурации
-#    --with-libcrack
-# а так же внести изменения в etc/login.defs
-# sed -i 's:DICTPATH.*:DICTPATH\t/lib/cracklib/pw_dict:' etc/login.defs
+# LFS. Еще удалим /bin и /sbin из PATH, поскольку они являются символическими
+# ссылками на свои аналоги в /usr
+sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:' \
+    -e 's:/var/spool/mail:/var/mail:'                   \
+    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                  \
+    -i etc/login.defs
 
 # /usr/bin/passwd должен существовать перед сборкой, потому что его
 # расположение жестко закодировано в некоторых утилитах пакета
@@ -61,9 +41,11 @@ PASSWD="/usr/bin/passwd"
 
 # максимальная длина имени пользователя или группы 32 символа
 #    --with-group-name-max-length=32
-./configure           \
-    --sysconfdir=/etc \
-    --disable-static  \
+./configure             \
+    --sysconfdir=/etc   \
+    --disable-static    \
+    --with-{b,yes}crypt \
+    --without-libbsd    \
     --with-group-name-max-length=32 || exit 1
 
 make || make -j1 || exit 1

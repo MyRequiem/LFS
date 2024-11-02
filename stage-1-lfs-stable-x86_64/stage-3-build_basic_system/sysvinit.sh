@@ -27,8 +27,8 @@ mkdir -pv "${TMP_DIR}"
 #
 # применим патч, предотвращающий создание этих утилит и ссылок, а так же
 # исправляет предупреждение компилятора
-patch --verbose -Np1 \
-    -i "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
 # исправим пути установки
 #    /bin  -> /usr/bin
