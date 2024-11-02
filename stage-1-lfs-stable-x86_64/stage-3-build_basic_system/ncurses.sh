@@ -21,11 +21,6 @@ mkdir -pv "${TMP_DIR}"
 #    --without-normal
 # ключ генерирует и устанавливает файлы .pc для pkg-config
 #    --enable-pc-files
-# заставляет собирать wide-character библиотеки (например, libncursesw.so)
-# вместо обычных (libncurses.so). Такие wide-character библиотеки можно
-# использовать как в многобайтовых, так и в традиционных 8-битных локалях,
-# тогда как обычные библиотеки правильно работают только в 8-битных локалях
-#    --enable-widec
 ./configure                 \
     --prefix=/usr           \
     --mandir=/usr/share/man \
@@ -34,7 +29,6 @@ mkdir -pv "${TMP_DIR}"
     --without-normal        \
     --with-cxx-shared       \
     --enable-pc-files       \
-    --enable-widec          \
     --with-pkg-config-libdir=/usr/lib/pkgconfig || exit 1
 
 make || make -j1 || exit 1
@@ -46,8 +40,8 @@ make || make -j1 || exit 1
 # libncursesw.so.${VERSION} Это может привести к сбою настроек терминала и
 # ошибки оболочки (Segmentation fault), которая будет пытаться использовать код
 # и данные из прежней библиотеки. Установим пакет с помощью DESTDIR правильно
-# заменив файл библиотеки:
-make install DESTDIR="${PWD}/dest"
+# заменив библиотеку libncursesw.so.${VERSION}
+make DESTDIR="${PWD}/dest" install
 
 # stripping
 BINARY="$(find ./dest -type f -print0 | xargs -0 file 2>/dev/null | \
@@ -63,40 +57,23 @@ cp -vR dest/* "${TMP_DIR}"/
 LIBNCURSESW="dest/usr/lib/libncursesw.so.${VERSION}"
 install -vm755 "${LIBNCURSESW}" /usr/lib
 rm -v  "${LIBNCURSESW}"
+
+sed -e 's/^#if.*XOPEN.*$/#if 1/' -i dest/usr/include/curses.h
 cp -av dest/* /
 
 # многие приложения все еще ожидают, что компоновщик сможет найти обычные
 # libncurses.so, а не wide-character libncursesw.so библиотеки. Обманем такие
-# приложения:
+# приложения
 for LIB in ncurses form panel menu ; do
-    rm -vf                    "/usr/lib/lib${LIB}.so"
-    echo "INPUT(-l${LIB}w)" > "/usr/lib/lib${LIB}.so"
-    ln -sfv "${LIB}w.pc"      "/usr/lib/pkgconfig/${LIB}.pc"
-    chmod 755 "/usr/lib/lib${LIB}.so"
+    ln -sfv "lib${LIB}w.so" "/usr/lib/lib${LIB}.so"
+    ln -sfv "${LIB}w.pc"    "/usr/lib/pkgconfig/${LIB}.pc"
 
-    rm -fv                    "${TMP_DIR}/usr/lib/lib${LIB}.so"
-    echo "INPUT(-l${LIB}w)" > "${TMP_DIR}/usr/lib/lib${LIB}.so"
-    chmod 755 "${TMP_DIR}/usr/lib/lib${LIB}.so"
-    (
-        cd "${TMP_DIR}/usr/lib/pkgconfig" || exit 1
-        ln -sfv "${LIB}w.pc" "${LIB}.pc"
-
-    )
+    ln -sfv "lib${LIB}w.so" "${TMP_DIR}/usr/lib/lib${LIB}.so"
+    ln -sfv "${LIB}w.pc"    "${TMP_DIR}/usr/lib/pkgconfig/${LIB}.pc"
 done
 
-# то же самое для старых приложений, которые ищут -lcurses, а не -lncurses
-rm -vf                     /usr/lib/libcursesw.so
-echo "INPUT(-lncursesw)" > /usr/lib/libcursesw.so
-ln -sfv libncurses.so      /usr/lib/libcurses.so
-chmod 755 /usr/lib/libcursesw.so
-
-rm -vf                     "${TMP_DIR}/usr/lib/libcursesw.so"
-echo "INPUT(-lncursesw)" > "${TMP_DIR}/usr/lib/libcursesw.so"
-chmod 755 "${TMP_DIR}/usr/lib/libcursesw.so"
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv libncurses.so libcurses.so
-)
+ln -sfv libncursesw.so /usr/lib/libcurses.so
+ln -sfv libncursesw.so "${TMP_DIR}/usr/lib/libcurses.so"
 
 # снова соберем пакет для построения 5 версии библиотеки, которая все еще
 # требуется некоторым программам
