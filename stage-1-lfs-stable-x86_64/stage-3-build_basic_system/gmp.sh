@@ -33,17 +33,15 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# собираем html-документацию
-# make html || exit 1
 
 # Набор тестов для Gmp на данном этапе считается критическим. Нельзя пропускать
 # его ни при каких обстоятельствах
 # make check 2>&1 | tee gmp-check-log
 
-# убедимся, что все 190 тестов в наборе пройдены
+# убедимся, что все 199 тестов в наборе пройдены
 # echo ""
 # echo "======================= Test results ======================="
-# echo "There must be 190 tests passed:"
+# echo "There must be 199 tests passed:"
 # awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
 # echo    "============================================================"
 # echo -n "View the results and then press any key... "
@@ -51,7 +49,6 @@ make || make -j1 || exit 1
 # echo "${JUNK}" > /dev/null
 
 make install DESTDIR="${TMP_DIR}"
-# make install-html DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

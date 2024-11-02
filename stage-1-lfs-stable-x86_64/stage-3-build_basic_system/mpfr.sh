@@ -14,11 +14,6 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим тест для старых выпусков glibc
-sed -e 's/+01,234,567/+1,234,567 /' \
-    -e 's/13.10Pd/13Pd/'            \
-    -i tests/tsprintf.c
-
 ./configure              \
     --prefix=/usr        \
     --disable-static     \
@@ -26,15 +21,12 @@ sed -e 's/+01,234,567/+1,234,567 /' \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# сборка html-документации
-# make html || exit 1
 
-# набор тестов для Mpfr на данном этапе считается критическим. Нельзя
-# пропускать его ни при каких обстоятельствах
+# набор тестов для Mpfr на данном этапе считается критичным, нельзя пропускать
+# его ни при каких обстоятельствах
 # make check
 
 make install DESTDIR="${TMP_DIR}"
-# make install-html DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
