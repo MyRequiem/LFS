@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="pkg-config"
+PRGNAME="pkgconf"
 
 ### Pkg-config (system for managing library compile/link flags)
 # Инструмент для передачи путей include и/или путей к библиотекам для создания
@@ -14,20 +14,16 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# указывает pkg-config использовать свою внутреннюю версию Glib, потому что
-# внешняя версия недоступна в сборке LFS
-#    --with-internal-glib
-# опция отключает создание нежелательной жесткой ссылки на утилиту pkg-config
-#    --disable-host-tool
-./configure                    \
-    --prefix=/usr              \
-    --with-internal-glib       \
-    --disable-host-tool        \
+./configure          \
+    --prefix=/usr    \
+    --disable-static \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# make check
 make install DESTDIR="${TMP_DIR}"
+
+ln -sv "${PRGNAME}"   "${TMP_DIR}/usr/bin/pkg-config"
+ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/pkg-config.1"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -42,8 +38,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # include path and/or library paths to build tools during the configure and
 # make file execution.
 #
-# Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}
-# Download:  https://pkg-config.freedesktop.org/releases/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.freedesktop.org/wiki/Software/pkg-config
+# Download:  https://distfiles.ariadne.space/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
