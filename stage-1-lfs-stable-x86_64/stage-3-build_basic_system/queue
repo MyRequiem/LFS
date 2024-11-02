@@ -25,6 +25,7 @@ flex.sh
 tcl.sh
 expect.sh
 dejagnu.sh
+pkgconf.sh
 binutils.sh
 gmp.sh
 mpfr.sh
@@ -32,10 +33,10 @@ mpc.sh
 attr.sh
 acl.sh
 libcap.sh
+libxcrypt.sh
 shadow.sh
 gcc.sh
 check-compiling-and-linking.sh
-pkg-config.sh
 ncurses.sh
 sed.sh
 psmisc.sh
