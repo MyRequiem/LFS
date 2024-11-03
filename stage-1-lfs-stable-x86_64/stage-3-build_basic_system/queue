@@ -64,7 +64,7 @@ less.sh
 #    # mv /sources/{perl-5.38.2.tar.xz,__perl-5.38.2.tar.xz__}
 perl.sh
 
-xml-parser.sh
+perl-xml-parser.sh
 intltool.sh
 autoconf.sh
 automake.sh
