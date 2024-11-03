@@ -19,6 +19,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr             \
     --without-bash-malloc     \
     --with-installed-readline \
+    bash_cv_strtold_broken=no \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

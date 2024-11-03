@@ -17,7 +17,7 @@ mkdir -pv "${TMP_DIR}"
 # приводят к сбою тестов некоторых пакетов
 sed -i "s/echo/#echo/" src/egrep.sh || exit 1
 
-./configure       \
+./configure \
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1

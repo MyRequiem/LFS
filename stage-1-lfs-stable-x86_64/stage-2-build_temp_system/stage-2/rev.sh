@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="rev"
-echo "Building ${PRGNAME}"
 ARCH_NAME="util-linux"
 
 ### rev

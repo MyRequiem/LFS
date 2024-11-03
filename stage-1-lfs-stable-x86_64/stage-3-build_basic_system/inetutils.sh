@@ -42,6 +42,7 @@ mkdir -pv "${TMP_DIR}/usr/sbin"
     --disable-rexec      \
     --disable-rlogin     \
     --disable-rsh        \
+    --disable-telnet     \
     --disable-servers || exit 1
 
 make || make -j1 || exit 1
