@@ -22,9 +22,14 @@ make || make -j1 || exit 1
 # здесь можно запускать тесты в несколько потоков (это ускорит тестирование
 # даже в системах с одним процессором (ядром), из-за внутренних задержек в
 # отдельных тестах)
-# make -j4 check
+# make -j$(($(nproc)>4?$(nproc):4)) check
 
 make install DESTDIR="${TMP_DIR}"
+
+(
+    cd "${TMP_DIR}/usr/share/" || exit 1
+    rm -rf doc
+)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

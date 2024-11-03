@@ -24,7 +24,7 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# make test
+# HARNESS_JOBS=$(nproc) make test
 
 # устанавливаем пакет
 sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile || exit 1
