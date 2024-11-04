@@ -9,7 +9,7 @@ ARCH_NAME="pyparsing"
 # Модуль pyparsing предоставляет библиотеку классов, которые клиент использует
 # для построения грамматики непосредственно в коде Python
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # optional:    python3-jinja2
 #              python3-railroad-diagrams    (https://pypi.org/project/railroad-diagrams/)

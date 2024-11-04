@@ -8,7 +8,7 @@ ARCH_NAME="idna"
 # также обеспечивает поддержку Unicode Technical Standard 46 и обработку
 # совместимости с Unicode IDNA
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # Optional:    python3-pytest (для тестов)
 

@@ -73,6 +73,7 @@ kmod.sh
 libelf.sh
 libffi.sh
 python3.sh
+python3-flit-core.sh
 wheel.sh
 ninja.sh
 meson.sh

@@ -26,7 +26,7 @@ make || make -j1 || exit 1
 
 # устанавливаем только libelf
 make -C libelf install DESTDIR="${TMP_DIR}"
-install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig"
+install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig/"
 
 ### WARNING !!!
 # == НЕ == удаляем статическую библиотеку libelf.a, как описано в официальной

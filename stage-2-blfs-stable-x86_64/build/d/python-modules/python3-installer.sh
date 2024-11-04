@@ -7,7 +7,7 @@ ARCH_NAME="installer"
 # низкоуровневая библиотека, предоставляющая базовую функциональность для
 # установки пакетов Python из wheel архивов
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # Optional:    no
 

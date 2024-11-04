@@ -6,8 +6,7 @@ ARCH_NAME="build"
 ### Build (A simple, correct Python build frontend)
 # инструмент для сборки Python пакетов в соответствии с PEP517 спецификацией
 
-# Required:    python3-flit-core
-#              python3-installer
+# Required:    python3-installer
 #              python3-pyproject-hooks
 # Recommended: no
 # Optional:    no

@@ -7,17 +7,12 @@ ARCH_NAME="flit_core"
 # Модуль Flit_core является ключевым компонентом системы Flit, обеспечивающим
 # простой способ разместить пакеты и модули Python на PyPi
 
-# Required:    no
-# Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-testpath  (https://pypi.org/project/testpath/)
-
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 ###
@@ -28,31 +23,28 @@ mkdir -pv "${TMP_DIR}"
 #    wheel
 # инструктирует pip поместить созданный пакет в указанный каталог dist
 #    --wheel-dir=./dist
-# не устанавливать зависимости для пакета
-#    --no-deps
 # предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
 # пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
 # какие-либо файлы
 #    --no-build-isolation
+# не устанавливать зависимости для пакета
+#    --no-deps
 pip3 wheel               \
     --wheel-dir=./dist   \
-    --no-deps            \
+    --no-cache-dir       \
     --no-build-isolation \
+    --no-deps            \
     ./ || exit 1
 
-### устанавливаем созданный пакет в "${TMP_DIR}"
-# отключает кеш, чтобы предотвратить предупреждение при установке от
-# пользователя root
-#    --no-cache-dir
 # предотвращает ошибочный запуск команды установки от имени обычного
 # пользователя без полномочий root
 #    --no-user
 pip3 install            \
     --root="${TMP_DIR}" \
     --find-links=./dist \
-    --no-cache-dir      \
+    --no-index          \
     --no-user           \
-    --no-index "${ARCH_NAME}" || exit 1
+    "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/

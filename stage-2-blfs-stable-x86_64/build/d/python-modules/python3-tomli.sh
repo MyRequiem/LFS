@@ -6,7 +6,7 @@ ARCH_NAME="tomli"
 ### tomli (a lil' TOML parser)
 # Парсер TOML
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # Optional:    no
 
