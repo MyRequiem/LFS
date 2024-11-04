@@ -1,6 +1,7 @@
 #! /bin/bash
 
-PRGNAME="wheel"
+PRGNAME="python3-wheel"
+ARCH_NAME="wheel"
 
 ###  Wheel (a built-package format for Python)
 # Python библиотека, которая является эталонной реализацией стандарта создания
@@ -8,8 +9,8 @@ PRGNAME="wheel"
 # wheel-архивов
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                    || exit 1
+source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -19,9 +20,6 @@ mkdir -pv "${TMP_DIR}"
 # создаем пакет в формате .whl в директории dist дерева исходников
 #    wheel-${VERSION}-py3-none-any.whl
 ###
-# позволяет пакету (еще не установленному) создавать для себя архив (пакет),
-# чтобы избежать проблемы "курица или яйцо"
-#    PYTHONPATH=./src
 # команда создает архив для этого пакета
 #    wheel
 # инструктирует pip поместить созданный пакет в указанный каталог dist
@@ -32,18 +30,18 @@ mkdir -pv "${TMP_DIR}"
 # пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
 # какие-либо файлы
 #    --no-build-isolation
-PYTHONPATH=./src         \
 pip3 wheel               \
     --wheel-dir=./dist   \
-    --no-deps            \
+    --no-cache-dir       \
     --no-build-isolation \
+    --no-deps            \
     ./ || exit 1
 
 # устанавливаем созданный пакет в "${TMP_DIR}"
 pip3 install            \
     --root="${TMP_DIR}" \
     --find-links=./dist \
-    --no-index "${PRGNAME}" || exit 1
+    --no-index "${ARCH_NAME}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -74,7 +74,7 @@ libelf.sh
 libffi.sh
 python3.sh
 python3-flit-core.sh
-wheel.sh
+python3-wheel.sh
 ninja.sh
 meson.sh
 coreutils.sh
