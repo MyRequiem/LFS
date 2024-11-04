@@ -75,6 +75,7 @@ libffi.sh
 python3.sh
 python3-flit-core.sh
 python3-wheel.sh
+python3-setuptools.sh
 ninja.sh
 meson.sh
 coreutils.sh
