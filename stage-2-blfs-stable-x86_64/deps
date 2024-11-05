@@ -820,7 +820,6 @@ python3-kdcproxy                        mit-kerberos-v5
 python3-lxml                            elogind
 python3-mako                            gobject-introspection, mesa
 python3-markdown                        gobject-introspection
-python3-markupsafe                      python3-requests, python3-jinja2, python3-mako
 python3-mccabe                          python3-pylint, python3-flake8
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
@@ -854,7 +853,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse, python3-attrs, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-markupsafe, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse, python3-attrs, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3

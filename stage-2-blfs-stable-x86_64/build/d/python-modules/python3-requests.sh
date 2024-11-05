@@ -16,7 +16,6 @@ ARCH_NAME="requests"
 #              python3-pysocks                      (https://pypi.org/project/PySocks/)
 #              python3-flask           version<2    (https://pypi.org/project/Flask/)
 #              python3-httpbin                      (https://pypi.org/project/httpbin/)
-#              python3-markupsafe      version<2.1  (https://pypi.org/project/MarkupSafe/)
 #              python3-pytest-mock                  (https://pypi.org/project/pytest-mock/)
 #              python3-pytest-httpbin               (https://pypi.org/project/pytest-httpbin/)
 #              python3-sphinx          version<5    (https://pypi.org/project/Sphinx/)

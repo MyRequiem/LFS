@@ -94,6 +94,7 @@ patch.sh
 tar.sh
 texinfo.sh
 vim.sh
+python3-markupsafe.sh
 eudev.sh
 man-db.sh
 procps-ng.sh

@@ -11,11 +11,12 @@ ARCH_NAME="MarkupSafe"
 # Recommended: no
 # Optional:    python3-pytest (для тестов)
 
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 ###
@@ -34,8 +35,9 @@ mkdir -pv "${TMP_DIR}"
 #    --no-build-isolation
 pip3 wheel               \
     --wheel-dir=./dist   \
-    --no-deps            \
+    --no-cache-dir       \
     --no-build-isolation \
+    --no-deps            \
     ./ || exit 1
 
 ### устанавливаем созданный пакет в "${TMP_DIR}"
@@ -48,7 +50,6 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --find-links=./dist \
-    --no-cache-dir      \
     --no-user           \
     --no-index "${ARCH_NAME}" || exit 1
 

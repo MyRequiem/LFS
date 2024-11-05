@@ -9,7 +9,7 @@ ARCH_NAME="Jinja2"
 # использовать чистые Python выражения и поддерживает гибкую систему
 # расширений.
 
-# Required:    python3-markupsafe
+# Required:    no
 # Recommended: no
 # Optional:    no
 
