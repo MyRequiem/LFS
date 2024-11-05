@@ -18,7 +18,7 @@ mkdir -pv "${TMP_DIR}${DOC_DIR}"
 # пакете Kbd. Следующий патч исправляет эту проблему для i386 раскладки:
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-backspace-1.patch" || exit 1
-# после применения патча клавиши Backspace и Backspace генерируют символ с
+# после применения патча клавиши <Backspace> и <Delete> генерируют символ с
 # кодом 127
 
 # не будем создавать утилиту resizecons, для которой требуется более
@@ -38,7 +38,10 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+(
+    cd "${TMP_DIR}" || exit 1
+    rm -rf usr/share/doc
+)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

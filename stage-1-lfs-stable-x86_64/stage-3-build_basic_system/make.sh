@@ -13,16 +13,15 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим некоторые проблемы, выявленные в upstream
-sed -e '/ifdef SIGPIPE/,+2 d' \
-    -e '/undef  FATAL_SIG/i FATAL_SIG (SIGPIPE);' \
-    -i src/main.c || exit 1
-
 ./configure \
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# make check
+
+# chown -R tester .
+# su tester -c "PATH=${PATH} make check"
+# chown -R root:root
+
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
