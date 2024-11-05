@@ -197,7 +197,6 @@ d/python-modules/python3-msgpack.sh
 d/python-modules/python3-cachecontrol.sh
 d/python-modules/python3-markdown.sh
 d/python-modules/python3-chardet.sh
-d/python-modules/python3-jinja2.sh
 d/python-modules/python3-pyparsing.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-pyproject-metadata.sh

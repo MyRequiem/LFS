@@ -11,8 +11,7 @@ ARCH_NAME="pyparsing"
 
 # Required:    no
 # Recommended: no
-# optional:    python3-jinja2
-#              python3-railroad-diagrams    (https://pypi.org/project/railroad-diagrams/)
+# optional:    python3-railroad-diagrams    (https://pypi.org/project/railroad-diagrams/)
 #              python3-pytest (для тестов)
 
 ROOT="/root/src/lfs"

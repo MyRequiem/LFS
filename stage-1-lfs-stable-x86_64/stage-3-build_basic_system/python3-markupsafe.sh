@@ -7,10 +7,6 @@ ARCH_NAME="MarkupSafe"
 # Python2/3 модуль реализующий текстовый объект для безопасного использования в
 # HTML и XML
 
-# Required:    no
-# Recommended: no
-# Optional:    python3-pytest (для тестов)
-
 ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
