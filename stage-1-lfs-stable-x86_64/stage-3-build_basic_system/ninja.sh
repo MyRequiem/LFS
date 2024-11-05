@@ -22,9 +22,8 @@ mkdir -pv "${TMP_DIR}/usr"/{bin,"${BASH_COMPL}","${ZSH_COMPL}"}
 # потоков, то можно ограничить количество параллельных процессов, но некоторые
 # пакеты при сборке не передают параметр -jN. Можно установить переменную
 # окружения NINJAJOBS, для принудительного ограничения количества потоков
-# сборки. Установим -j2 для сборки самого пакета ninja в данный момент
-NINJAJOBS="-j2"
-export NINJAJOBS
+# сборки, например:
+#    # export NINJAJOBS="-j4"
 
 # добавим возможность использовать переменную окружения NINJAJOBS
 sed -i "/int Guess/a \\
@@ -52,10 +51,7 @@ sed -i "/int Guess/a \\
 python3 configure.py \
     --bootstrap || exit 1
 
-# тесты
-# ./ninja ninja_test
-# ./ninja_test \
-#     --gtest_filter=-SubprocessTest.SetWithLots
+# тесты не могут выполняться в среде chroot, а также требуется cmake
 
 # устанавливаем пакет
 install -vm755  "${PRGNAME}"         "${TMP_DIR}/usr/bin/"
