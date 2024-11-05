@@ -1,14 +1,15 @@
 #! /bin/bash
 
-PRGNAME="meson"
+PRGNAME="python3-meson"
+ARCH_NAME="meson"
 
 ### Meson (A high performance build system)
 # Система сборки, ориентированная на скорость и на максимальное удобство для
 # пользователя
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                    || exit 1
+source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -20,6 +21,7 @@ mkdir -pv "${TMP_DIR}${SITE_PACKAGES}"
 # исходников
 pip3 wheel               \
     --wheel-dir=./dist   \
+    --no-cache-dir       \
     --no-build-isolation \
     --no-deps            \
     ./ || exit 1
@@ -29,19 +31,17 @@ pip3 wheel               \
 # устанавливаем созданный пакет в "${TMP_DIR}"
 pip3 install                  \
     --target="${TMP_DIR}/usr" \
-    --find-links=./dist       \
     --no-index                \
-    "${PRGNAME}"
+    --find-links=./dist       \
+    "${ARCH_NAME}"
 
-# перемещаем директории
-mv "${TMP_DIR}/usr/mesonbuild"                      "${TMP_DIR}${SITE_PACKAGES}"
-mv "${TMP_DIR}/usr/${PRGNAME}-${VERSION}.dist-info" "${TMP_DIR}${SITE_PACKAGES}"
+mv "${TMP_DIR}/usr"/{"${ARCH_NAME}-${VERSION}.dist-info",mesonbuild} \
+    "${TMP_DIR}${SITE_PACKAGES}"
 
-BASH_COMPL="/usr/share/bash-completion/completions"
-ZSH_COMPL="/usr/share/zsh/site-functions"
-mkdir -pv "${TMP_DIR}"{"${BASH_COMPL}","${ZSH_COMPL}"}
-cp data/shell-completions/bash/${PRGNAME} "${TMP_DIR}${BASH_COMPL}/"
-cp data/shell-completions/zsh/_${PRGNAME} "${TMP_DIR}${ZSH_COMPL}/"
+install -vDm644 "data/shell-completions/bash/${ARCH_NAME}" \
+    "${TMP_DIR}/usr/share/bash-completion/completions/${ARCH_NAME}"
+install -vDm644 "data/shell-completions/zsh/_${ARCH_NAME}" \
+    "${TMP_DIR}/usr/share/zsh/site-functions/_${ARCH_NAME}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -56,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non-turing complete domain specific language.
 #
 # Home page: https://mesonbuild.com
-# Download:  https://github.com/mesonbuild/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/mesonbuild/${ARCH_NAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
