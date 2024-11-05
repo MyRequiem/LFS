@@ -28,7 +28,8 @@ make || make -j1 || exit 1
 # набор тестов выводит много двоичных данных в stdout, что может привести к
 # проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
 # файл
-# su tester -c "LANG=en_US.UTF-8 make -j1 test" &> vim-test.log
+# su tester -c "TERM=xterm-256color LANG=en_US.UTF-8 make -j1 test" \
+#    &> vim-test.log
 # chown -Rv root:root .
 
 make install DESTDIR="${TMP_DIR}"
@@ -98,7 +99,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://www.${PRGNAME}.org/
 #            https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  https://anduin.linuxfromscratch.org/LFS/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
