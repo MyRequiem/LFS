@@ -12,16 +12,18 @@ source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -p "${TMP_DIR}"/{etc,usr/sbin,usr/share/man/{man5,man8}}
+mkdir -p "${TMP_DIR}/etc"
 
-# исправим проблему, которая вызывает segmentation fault в некоторых ситуациях
-# в klogd, а так же исправим устаревшую конструкцию в исходном коде syslogd.c
-sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c || exit 1
-sed -i 's/union wait/int/' syslogd.c                      || exit 1
+./configure            \
+    --prefix=/usr      \
+    --sysconfdir=/etc  \
+    --runstatedir=/run \
+    --without-logger   \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
-make BINDIR="${TMP_DIR}/usr/sbin" MANDIR="${TMP_DIR}/usr/share/man" install
+make install DESTDIR="${TMP_DIR}"
 
 ### конфиг /etc/syslog.conf
 SYSLOG_CONF="/etc/syslog.conf"
@@ -69,6 +71,9 @@ mail.*                      -/var/log/mail
 
 daemon.*                    -/var/log/daemon
 user.*                      -/var/log/user
+
+# do not open any internet ports
+secure_mode 2
 
 # End ${SYSLOG_CONF}
 EOF

@@ -22,7 +22,11 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# make check
+
+# chown -R tester .
+# su tester -c "PATH=${PATH} make check"
+# chown -R root:root
+
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
