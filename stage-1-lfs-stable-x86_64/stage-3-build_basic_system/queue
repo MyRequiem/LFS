@@ -96,7 +96,7 @@ texinfo.sh
 vim.sh
 python3-markupsafe.sh
 python3-jinja2.sh
-eudev.sh
+udev.sh
 man-db.sh
 procps-ng.sh
 util-linux.sh
