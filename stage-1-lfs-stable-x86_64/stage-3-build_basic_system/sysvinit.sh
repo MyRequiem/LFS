@@ -38,7 +38,7 @@ sed -i 's/)\/sbin/)\/usr\/sbin/' src/Makefile || exit 1
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
-make ROOT="${TMP_DIR}" install
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

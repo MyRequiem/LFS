@@ -103,7 +103,7 @@ util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
-# устанавливаем скрипт /usr/sbin/remove-la-files.sh  и затем запускаем его для
+# устанавливаем скрипт /usr/sbin/remove-la-files.sh и затем запускаем его для
 # очистки системы от libtool-архивов (*.la)
 set-remove-la-files.sh
 strip.sh
