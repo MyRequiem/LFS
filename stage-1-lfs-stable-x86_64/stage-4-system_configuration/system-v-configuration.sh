@@ -31,8 +31,9 @@ mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 #    6 -  reboot
 
 # уровень запуска по умолчанию
-# запускаются все скрипты в /etc/rc.d/rc?.d/, где '?' - уровень запуска
-# id:3:initdefault:
+# запускаются все скрипты в /etc/rc.d/rc?.d/, где '?' - уровень запуска,
+# определенный в /etc/inittab
+#    id:3:initdefault:
 
 # запускаются все скрипты в /etc/rc.d/rcS.d
 # si::sysinit:/etc/rc.d/init.d/rc S
@@ -44,7 +45,7 @@ mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 # ...
 
 # Для удобства скрипт /etc/rc.d/init.d/rc читает библиотеку функций
-# /lib/lsb/init-functions. В свою очередь эта библиотека читает файл
+# /usr/lib/lsb/init-functions. В свою очередь эта библиотека читает файл
 # конфигурации опциональных параметров запуска /etc/sysconfig/rc.site (имя
 # дистрибутива, формат и цвета загрузочных сообщений, очистка /tmp, параметры
 # консоли и т.д.). Так же скрипт сохраняет весь вывод загрузочных сообщений в
@@ -55,8 +56,8 @@ mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 # В /etc/rc.d/ находятся каталоги вида rc?.d, где '?' это уровень запуска.
 # Каждый такой каталог содержит ссылки на скрипты в /etc/rc.d/init.d/
 # Формат имен ссылок: <S|K><00-99>script_name
-#    К                  - остановить (kill)
-#    S                  - запуск службы (start).
+#    К                  - остановить    (kill)
+#    S                  - запуск службы (start)
 #    число от 00 до 99  - определяет порядок запуска скриптов - чем меньше
 #                           число, тем раньше скрипт исполняется
 # Когда init переключается на другой уровень запуска, соответствующие службы
@@ -76,13 +77,17 @@ cat << EOF > "${TMP_DIR}${RC_LOCAL}"
 #
 # /etc/rc.d/rc.local:  Local system initialization script.
 #
-# Put any local startup commands in here
+# Put any local startup commands in here:
 
 EOF
 
 INITTAB="/etc/inittab"
 cat << EOF > "${TMP_DIR}${INITTAB}"
 # Begin ${INITTAB}
+
+###
+# $ man inittab
+###
 
 # default run-level
 # run all scripts in /etc/rc.d/rc?.d, where '?' is the run level
@@ -91,28 +96,25 @@ id:3:initdefault:
 # run all scripts in /etc/rc.d/rcS.d
 si::sysinit:/etc/rc.d/init.d/rc S
 
-l0:0:wait:/etc/rc.d/init.d/rc 0
+l0:0:wait:/etc/rc.d/init.d/rc  0
 l1:S1:wait:/etc/rc.d/init.d/rc 1
-l2:2:wait:/etc/rc.d/init.d/rc 2
-l3:3:wait:/etc/rc.d/init.d/rc 3
-l4:4:wait:/etc/rc.d/init.d/rc 4
-l5:5:wait:/etc/rc.d/init.d/rc 5
-l6:6:wait:/etc/rc.d/init.d/rc 6
-
-rc:3:wait:/etc/rc.d/rc.local
-
-ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+l2:2:wait:/etc/rc.d/init.d/rc  2
+l3:3:wait:/etc/rc.d/init.d/rc  3
+l4:4:wait:/etc/rc.d/init.d/rc  4
+l5:5:wait:/etc/rc.d/init.d/rc  5
+l6:6:wait:/etc/rc.d/init.d/rc  6
 
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
-# three virtual consoles are more than enough :)
-c1:12345:respawn:/sbin/agetty --noclear 38400 tty1 linux
-c2:12345:respawn:/sbin/agetty 38400 tty2 linux
-c3:12345:respawn:/sbin/agetty 38400 tty3 linux
-# c4:12345:respawn:/sbin/agetty 38400 tty4 linux
-# c5:12345:respawn:/sbin/agetty 38400 tty5 linux
-# c6:12345:respawn:/sbin/agetty 38400 tty6 linux
+rc:3:wait:/etc/rc.d/rc.local
+
+1:2345:respawn:/sbin/agetty --noclear tty1 9600
+2:2345:respawn:/sbin/agetty tty2 9600
+3:2345:respawn:/sbin/agetty tty3 9600
+4:2345:respawn:/sbin/agetty tty4 9600
+5:2345:respawn:/sbin/agetty tty5 9600
+6:2345:respawn:/sbin/agetty tty6 9600
 
 # End ${INITTAB}
 EOF
@@ -221,10 +223,10 @@ EOF
 # скрипте конфигурации /etc/sysconfig/createfiles. Этот файл уже установлен с
 # пакетом lfs-bootscripts и его синтаксис описан в нем.
 
-# удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
 CREATEFILES="/etc/sysconfig/createfiles"
+# удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
 sed -i '$ d' "${CREATEFILES}"
-# и допишем в конец файла
+# допишем в конец файла
 cat << EOF >> "${CREATEFILES}"
 /tmp/.ICE-unix    dir    1777    root    root
 /tmp/.X11-unix    dir    1777    root    root
