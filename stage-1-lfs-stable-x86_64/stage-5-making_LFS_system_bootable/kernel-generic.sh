@@ -7,10 +7,6 @@ VERSION="$1"
 ### Linux kernel generic (a general purpose SMP Linux kernel)
 # Ядро linux
 
-# LFS рекомендует использовать последнюю стабильную версию ядра.
-# Конфигурация ядра для BLFS:
-#    http://www.linuxfromscratch.org/blfs/view/stable/longindex.html#kernel-config-index
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 

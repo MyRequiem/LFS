@@ -6,8 +6,6 @@ ARCH_NAME="linux"
 ### Linux kernel source (Source code for Linus Torvalds Linux kernel)
 # Исходный код ядра linux
 
-# LFS рекомендует использовать последнюю стабильную версию ядра.
-
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
@@ -43,8 +41,8 @@ make mrproper || exit 1
 
 # ссылка в /usr/src
 #    linux -> linux-${VERSION}
-cd /usr/src || exit 1
-ln -svf "linux-${VERSION}" linux
+cd "${USR_SRC}" || exit 1
+ln -svf "${ARCH_NAME}-${VERSION}" linux
 
 TARGET="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
