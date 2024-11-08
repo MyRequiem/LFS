@@ -1,810 +1,808 @@
-s/lsb-tools.sh
-s/bash-completion.sh
-a/kernel-firmware.sh
-a/blfs-bootscripts.sh
-s/etc-issue.sh
-a/which.sh
-l/libtasn1.sh
-n/p11-kit.sh
-n/make-ca.sh
-n/p11-kit.sh
-l/pcre2.sh
-l/pcre.sh
-l/libunistring.sh
-n/nettle.sh
-n/npth.sh
-n/pth.sh
-l/libidn.sh
-l/libidn2.sh
-l/libseccomp.sh
-n/gnutls.sh
-l/libpsl.sh
-n/wget.sh
-n/curl.sh
-a/pciutils.sh
-n/libgpg-error.sh
-n/libassuan.sh
-n/libksba.sh
-n/libgcrypt.sh
-n/pinentry.sh
-ap/sysstat.sh
-n/net-tools.sh
-n/openssh.sh
-ap/dmidecode.sh
-ap/lm-sensors.sh
-n/dhcpcd.sh
-n/wireless-tools.sh
-l/libnl.sh
-ap/htop.sh
-n/iw.sh
-n/wpa-supplicant.sh
-l/libevent.sh
-d/yasm.sh
-ap/tmux.sh
-l/fuse2.sh
-l/libxml2.sh
-l/libxslt.sh
-n/p11-kit.sh
-l/fuse.sh
-ap/sqlite.sh
-l/libusb.sh
-n/gnupg.sh
-l/glib.sh
-d/python-modules/python3-docutils.sh
-n/sshfs.sh
-d/lua.sh
-l/boost.sh
-ap/highlight.sh
-l/lzo.sh
-l/libarchive.sh
-d/autoconf213.sh
-s/archivemount.sh
-s/fuseiso.sh
-n/curlftpfs.sh
-ap/vifm.sh
-s/pytrash.sh
-d/gc.sh
-n/w3m.sh
-d/git.sh
-n/whois.sh
-s/ag.sh
-n/translate-shell.sh
-ap/lnav.sh
-s/lshw.sh
-s/grc.sh
-d/shellcheck.sh
-a/zip.sh
-a/unzip.sh
-ap/unrar.sh
-ap/lzip.sh
-ap/p7zip.sh
-a/lrzip.sh
-ap/sudo.sh
-
-# На данный момент установлены все необходимые пакеты для более-менее
-# комфортной работы в чистой linux-консоли:
-#    - терминальный мультиплексор Tmux
-#    - файловый менеджер Vifm
-#    - curl
-#    - wget
-#    - gnupg
-#    - openssh
-#    - WiFi (wpa-supplicant)
-#    - консольный браузер w3m
-#    - git
-#    - htop
-# поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
+# s/lsb-tools.sh
+# s/bash-completion.sh
+# a/kernel-firmware.sh
+# a/blfs-bootscripts.sh
+# s/etc-issue.sh
+# a/which.sh
+# l/libtasn1.sh
+# n/p11-kit.sh
+# n/make-ca.sh
+# n/p11-kit.sh
+# l/pcre2.sh
+# l/pcre.sh
+# l/libunistring.sh
+# n/nettle.sh
+# n/npth.sh
+# n/pth.sh
+# l/libidn.sh
+# l/libidn2.sh
+# l/libseccomp.sh
+# n/gnutls.sh
+# l/libpsl.sh
+# n/wget.sh
+# n/curl.sh
+# a/pciutils.sh
+# n/libgpg-error.sh
+# n/libassuan.sh
+# n/libksba.sh
+# n/libgcrypt.sh
+# n/pinentry.sh
+# ap/sysstat.sh
+# n/net-tools.sh
+# n/openssh.sh
+# ap/dmidecode.sh
+# ap/lm-sensors.sh
+# n/dhcpcd.sh
+# n/wireless-tools.sh
+# l/libnl.sh
+# ap/htop.sh
+# n/iw.sh
+# n/wpa-supplicant.sh
+# l/libevent.sh
+# d/yasm.sh
+# ap/tmux.sh
+# l/fuse2.sh
+# l/libxml2.sh
+# l/libxslt.sh
+# n/p11-kit.sh
+# l/fuse.sh
+# ap/sqlite.sh
+# l/libusb.sh
+# n/gnupg.sh
+# l/glib.sh
+# d/python-modules/python3-docutils.sh
+# n/sshfs.sh
+# d/lua.sh
+# l/boost.sh
+# ap/highlight.sh
+# l/lzo.sh
+# l/libarchive.sh
+# d/autoconf213.sh
+# s/archivemount.sh
+# s/fuseiso.sh
+# n/curlftpfs.sh
+# ap/vifm.sh
+# s/pytrash.sh
+# d/gc.sh
+# n/w3m.sh
+# d/git.sh
+# n/whois.sh
+# s/ag.sh
+# n/translate-shell.sh
+# ap/lnav.sh
+# s/lshw.sh
+# s/grc.sh
+# d/shellcheck.sh
+# a/zip.sh
+# a/unzip.sh
+# ap/unrar.sh
+# ap/lzip.sh
+# ap/p7zip.sh
+# a/lrzip.sh
+# ap/sudo.sh
 #
-# NOTE:
-#    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
-#    строки, которые отвечают за проверку chroot среды:
+# # На данный момент установлены все необходимые пакеты для более-менее
+# # комфортной работы в чистой linux-консоли:
+# #    - терминальный мультиплексор Tmux
+# #    - файловый менеджер Vifm
+# #    - curl
+# #    - wget
+# #    - gnupg
+# #    - openssh
+# #    - WiFi (wpa-supplicant)
+# #    - консольный браузер w3m
+# #    - git
+# #    - htop
+# # поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
+# #
+# # NOTE:
+# #    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
+# #    строки, которые отвечают за проверку chroot среды:
+# #
+# # ==================== /root/src/lfs/check_environment.sh ======================
+# #       # мы в chroot окружении?
+# #       # ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
+# #       # ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
+# #       # if [[ "${ID1}" == "${ID2}" ]]; then
+# #       # ......
+# #       # fi
+# # ==============================================================================
+# #
+# # После настройки сети Internet для корректной работы консольного браузера
+# # необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
+# # отсутствие: unable to get local issuer certificate
+# #
+# #    # update-ca-certificates
+# #    ......
+# #    ......
+# #    ......
+# #    Extracting OpenSSL certificates to:
+# #    /etc/ssl/certs...Done!
+# #    Extracting GNUTLS server auth certificates to:
+# #    /etc/pki/tls/certs/ca-bundle.crt...Done!
+# #    Extracting GNUTLS S-Mime certificates to:
+# #    /etc/pki/tls/certs/email-ca-bundle.crt...Done!
+# #    Extracting GNUTLS code signing certificates to:
+# #    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
+# #    Extracting Java cacerts (JKS) to:
+# #    /etc/pki/tls/java/cacerts...Done!
 #
-# ==================== /root/src/lfs/check_environment.sh ======================
-#       # мы в chroot окружении?
-#       # ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
-#       # ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
-#       # if [[ "${ID1}" == "${ID2}" ]]; then
-#       # ......
-#       # fi
-# ==============================================================================
-#
-# После настройки сети Internet для корректной работы консольного браузера
-# необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
-# отсутствие: unable to get local issuer certificate
-#
-#    # update-ca-certificates
-#    ......
-#    ......
-#    ......
-#    Extracting OpenSSL certificates to:
-#    /etc/ssl/certs...Done!
-#    Extracting GNUTLS server auth certificates to:
-#    /etc/pki/tls/certs/ca-bundle.crt...Done!
-#    Extracting GNUTLS S-Mime certificates to:
-#    /etc/pki/tls/certs/email-ca-bundle.crt...Done!
-#    Extracting GNUTLS code signing certificates to:
-#    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
-#    Extracting Java cacerts (JKS) to:
-#    /etc/pki/tls/java/cacerts...Done!
-
-a/time.sh
-d/python-modules/python3-lxml.sh
-a/tree.sh
-a/dosfstools.sh
-a/gpm.sh
-a/hdparm.sh
-a/smartmontools.sh
-a/ntfs-3g.sh
-a/sharutils.sh
-l/berkeley-db.sh
-a/cpio.sh
-a/acpid.sh
-a/dbus.sh
-s/sgml-common.sh
-s/docbook-xml.sh
-s/docbook-xsl.sh
-l/libxslt.sh
-l/glib.sh
-a/elogind.sh
-a/dbus.sh
-l/libsigsegv.sh
-d/c2man.sh
-d/python-modules/python3-cython.sh
-l/apr.sh
-l/aspell.sh
-l/aspell-dict-en.sh
-l/aspell-dict-ru.sh
-l/fftw.sh
-l/fribidi.sh
-l/libuv.sh
-l/rpcsvc-proto.sh
-l/iso-codes.sh
-l/libaio.sh
-l/libatasmart.sh
-l/libexif.sh
-l/libpng.sh
-l/libyaml.sh
-d/python-modules/python3-asciidoc.sh
-d/patchelf.sh
-d/gcc.sh
-n/pth.sh
-d/py3c.sh
-d/python-modules/python3-pycryptodome.sh
-d/python-modules/python3-pygments.sh
-d/python-modules/python3-pyxdg.sh
-d/python-modules/python3-pyyaml.sh
-d/python-modules/python3-six.sh
-d/python-modules/python3-attrs.sh
-d/python-modules/python3-editables.sh
-d/python-modules/python3-packaging.sh
-d/python-modules/python3-typing-extensions.sh
-d/python-modules/python3-installer.sh
-d/python-modules/python3-pyproject-hooks.sh
-d/python-modules/python3-build.sh
-d/python-modules/python3-setuptools-scm.sh
-d/python-modules/python3-pluggy.sh
-d/python-modules/python3-pathspec.sh
-d/python-modules/python3-hatchling.sh
-d/python-modules/python3-hatch-vcs.sh
-d/python-modules/python3-iniconfig.sh
-d/python-modules/python3-py.sh
-d/python-modules/python3-pytest.sh
-d/python-modules/python3-urllib3.sh
-d/python-modules/python3-idna.sh
-d/python-modules/python3-charset-normalizer.sh
-d/python-modules/python3-requests.sh
-d/python-modules/python3-msgpack.sh
-d/python-modules/python3-cachecontrol.sh
-d/python-modules/python3-markdown.sh
-d/python-modules/python3-chardet.sh
-d/python-modules/python3-pyparsing.sh
-d/python-modules/python3-mako.sh
-d/python-modules/python3-pyproject-metadata.sh
-d/python-modules/python3-meson.sh
-d/python-modules/python3-dbus.sh
-d/python-modules/python3-psutil.sh
-d/python-modules/python3-numpy.sh
-d/python-modules/python3-appdirs.sh
-d/python-modules/python3-platformdirs.sh
-d/python-modules/python3-astroid.sh
-d/python-modules/python3-poetry-core.sh
-d/python-modules/python3-isort.sh
-d/python-modules/python3-mccabe.sh
-d/python-modules/python3-tomlkit.sh
-d/python-modules/python3-dill.sh
-d/python-modules/python3-tomli.sh
-d/python-modules/python3-pylint.sh
-d/python-modules/python3-wcwidth.sh
-d/python-modules/python3-cwcwidth.sh
-d/python-modules/python3-greenlet.sh
-d/python-modules/python3-blessed.sh
-d/python-modules/python3-curtsies.sh
-d/python-modules/python3-bpython.sh
-d/python-modules/python3-pycodestyle.sh
-d/python-modules/python3-pyflakes.sh
-d/python-modules/python3-flake8.sh
-d/python-modules/python3-netifaces.sh
-d/python-modules/python3-ipaddr.sh
-d/python-modules/python3-pycurl.sh
-d/python-modules/python3-urlgrabber.sh
-l/jansson.sh
-n/nghttp2.sh
-n/curl.sh
-d/cmake.sh
-l/popt.sh
-n/rsync.sh
-d/llvm.sh
-n/dhcpcd.sh
-l/icu.sh
-l/libxml2.sh
-l/boost.sh
-l/json-c.sh
-s/xmlto.sh
-d/nasm.sh
-l/libjpeg-turbo.sh
-l/unixodbc.sh
-n/cyrus-sasl.sh
-n/openldap.sh
-n/gnupg.sh
-ap/sudo.sh
-n/cyrus-sasl.sh
-l/c-ares.sh
-n/curl.sh
-n/nghttp2.sh
-n/bind-utils.sh
-n/mit-kerberos-v5.sh
-n/curl.sh
-n/openssh.sh
-ap/sudo.sh
-n/cyrus-sasl.sh
-n/libtirpc.sh
-l/libnsl.sh
-n/pth.sh
-l/berkeley-db.sh
-d/clisp.sh
-l/nspr.sh
-a/ed.sh
-a/lvm2.sh
-a/usbutils.sh
-d/oniguruma.sh
-l/slang.sh
-l/libatomic-ops.sh
-d/gc.sh
-d/guile.sh
-d/nodejs.sh
-s/docbook-dtd3.sh
-s/docbook-dtd4.sh
-l/opensp.sh
-l/openjade.sh
-s/docbook-dsssl.sh
-d/perl-modules/perl-sgmlspm.sh
-ap/docbook-utils.sh
-x/misc/xdg-user-dirs.sh
-l/libsigc++2.sh
-l/parted.sh
-l/sg3-utils.sh
-l/libpcap.sh
-n/iptables.sh
-l/dbus-glib.sh
-a/cryptsetup.sh
-l/libbytesize.sh
-l/nss.sh
-n/p11-kit.sh
-n/make-ca.sh
-d/swig.sh
-ap/itstool.sh
-l/libssh2.sh
-d/brotli.sh
-n/gnutls.sh
-n/curl.sh
-d/rustc.sh
-n/nmap.sh
-ap/lsof.sh
-n/gpgme.sh
-l/volume-key.sh
-d/mozjs.sh
-ap/graphite2.sh
-x/utils/util-macros.sh
-x/proto/xorgproto.sh
-x/libs/libxau.sh
-x/libs/libxdmcp.sh
-x/xcb/xcb-proto.sh
-x/libs/libxcb.sh
-l/gobject-introspection.sh
-l/glib.sh
-l/freetype.sh
-l/harfbuzz.sh
-l/freetype.sh
-ap/graphite2.sh
-x/misc/fontconfig.sh
-a/ncompress.sh
-x/libs/xorg-libraries.sh
-a/dbus.sh
-# BLFS Perl модули
-d/perl-modules/perl-test-warnings.sh
-d/perl-modules/perl-module-build.sh
-d/perl-modules/perl-sub-identify.sh
-d/perl-modules/perl-super.sh
-d/perl-modules/perl-test-mockmodule.sh
-d/perl-modules/perl-archive-zip.sh
-d/perl-modules/perl-data-uniqid.sh
-d/perl-modules/perl-data-dump.sh
-d/perl-modules/perl-text-glob.sh
-d/perl-modules/perl-number-compare.sh
-d/perl-modules/perl-file-find-rule.sh
-d/perl-modules/perl-b-cow.sh
-d/perl-modules/perl-clone.sh
-d/perl-modules/perl-data-compare.sh
-d/perl-modules/perl-class-accessor.sh
-d/perl-modules/perl-business-issn.sh
-d/perl-modules/perl-tie-cycle.sh
-d/perl-modules/perl-business-ismn.sh
-d/perl-modules/perl-business-isbn-data.sh
-d/perl-modules/perl-business-isbn.sh
-d/perl-modules/perl-autovivification.sh
-d/perl-modules/perl-test-without-module.sh
-d/perl-modules/perl-capture-tiny.sh
-d/perl-modules/perl-try-tiny.sh
-d/perl-modules/perl-test-fatal.sh
-d/perl-modules/perl-cpan-meta-check.sh
-d/perl-modules/perl-scope-guard.sh
-d/perl-modules/perl-path-tiny.sh
-d/perl-modules/perl-file-sharedir-install.sh
-d/perl-modules/perl-class-inspector.sh
-d/perl-modules/perl-file-sharedir.sh
-d/perl-modules/perl-test-utf8.sh
-d/perl-modules/perl-test-file.sh
-d/perl-modules/perl-test-deep.sh
-d/perl-modules/perl-file-copy-recursive.sh
-d/perl-modules/perl-class-tiny.sh
-d/perl-modules/perl-test-file-sharedir.sh
-d/perl-modules/perl-ipc-system-simple.sh
-d/perl-modules/perl-ipc-run3.sh
-d/perl-modules/perl-importer.sh
-d/perl-modules/perl-term-table.sh
-d/perl-modules/perl-sub-info.sh
-d/perl-modules/perl-module-pluggable.sh
-d/perl-modules/perl-test2-suite.sh
-d/perl-modules/perl-test2-plugin-nowarnings.sh
-d/perl-modules/perl-module-runtime.sh
-d/perl-modules/perl-test-requires.sh
-d/perl-modules/perl-module-implementation.sh
-d/perl-modules/perl-dist-checkconflicts.sh
-d/perl-modules/perl-test-needs.sh
-d/perl-modules/perl-package-stash.sh
-d/perl-modules/perl-variable-magic.sh
-d/perl-modules/perl-sub-exporter-progressive.sh
-d/perl-modules/perl-b-hooks-endofscope.sh
-d/perl-modules/perl-namespace-clean.sh
-d/perl-modules/perl-namespace-autoclean.sh
-d/perl-modules/perl-mro-compat.sh
-d/perl-modules/perl-sub-quote.sh
-d/perl-modules/perl-role-tiny.sh
-d/perl-modules/perl-eval-closure.sh
-d/perl-modules/perl-devel-stacktrace.sh
-d/perl-modules/perl-specio.sh
-d/perl-modules/perl-class-data-inheritable.sh
-d/perl-modules/perl-exception-class.sh
-d/perl-modules/perl-params-validationcompiler.sh
-d/perl-modules/perl-datetime-locale.sh
-d/perl-modules/perl-class-singleton.sh
-d/perl-modules/perl-datetime-timezone.sh
-d/perl-modules/perl-datetime.sh
-d/perl-modules/perl-datetime-calendar-julian.sh
-d/perl-modules/perl-json.sh
-d/perl-modules/perl-io-string.sh
-d/perl-modules/perl-uri.sh
-d/perl-modules/perl-net-ssleay.sh
-d/perl-modules/perl-io-socket-ssl.sh
-d/perl-modules/perl-lwp-mediatypes.sh
-d/perl-modules/perl-io-html.sh
-d/perl-modules/perl-timedate.sh
-d/perl-modules/perl-http-date.sh
-d/perl-modules/perl-encode-locale.sh
-d/perl-modules/perl-http-message.sh
-d/perl-modules/perl-http-daemon.sh
-d/perl-modules/perl-html-tagset.sh
-d/perl-modules/perl-html-parser.sh
-d/perl-modules/perl-file-which.sh
-d/perl-modules/perl-file-slurper.sh
-d/perl-modules/perl-encode-jis2k.sh
-d/perl-modules/perl-encode-hanextra.sh
-d/perl-modules/perl-encode-eucjpascii.sh
-d/perl-modules/perl-params-validate.sh
-d/perl-modules/perl-datetime-format-strptime.sh
-d/perl-modules/perl-datetime-format-builder.sh
-d/perl-modules/perl-lingua-translit.sh
-d/perl-modules/perl-log-log4perl.sh
-d/perl-modules/perl-net-dns.sh
-d/perl-modules/perl-parse-recdescent.sh
-d/perl-modules/perl-parse-yapp.sh
-d/perl-modules/perl-regexp-common.sh
-d/perl-modules/perl-sort-key.sh
-d/perl-modules/perl-test-command.sh
-d/perl-modules/perl-text-roman.sh
-d/perl-modules/perl-unicode-collate.sh
-d/perl-modules/perl-xml-writer.sh
-d/perl-modules/perl-algorithm-diff.sh
-d/perl-modules/perl-config-autoconf.sh
-d/perl-modules/perl-exporter-tiny.sh
-d/perl-modules/perl-extutils-libbuilder.sh
-d/perl-modules/perl-ffi-checklib.sh
-d/perl-modules/perl-file-chdir.sh
-d/perl-modules/perl-file-listing.sh
-d/perl-modules/perl-http-cookies.sh
-d/perl-modules/perl-http-negotiate.sh
-d/perl-modules/perl-list-moreutils-xs.sh
-d/perl-modules/perl-list-moreutils.sh
-d/perl-modules/perl-list-utilsby.sh
-d/perl-modules/perl-mime-charset.sh
-d/perl-modules/perl-net-http.sh
-d/perl-modules/perl-sub-uplevel.sh
-d/perl-modules/perl-test-exception.sh
-d/perl-modules/perl-test-leaktrace.sh
-d/perl-modules/perl-test-requiresinternet.sh
-d/perl-modules/perl-text-csv-xs.sh
-d/perl-modules/perl-text-csv.sh
-d/perl-modules/perl-text-diff.sh
-d/perl-modules/perl-xml-namespacesupport.sh
-d/perl-modules/perl-xml-sax-base.sh
-d/perl-modules/perl-xml-sax.sh
-d/perl-modules/perl-libwww-perl.sh
-d/perl-modules/perl-www-robotrules.sh
-d/perl-modules/perl-libwww-perl.sh
-d/perl-modules/perl-list-someutils-xs.sh
-d/perl-modules/perl-list-someutils.sh
-d/perl-modules/perl-list-allutils.sh
-d/perl-modules/perl-alien-build.sh
-d/perl-modules/perl-alien-build-plugin-download-gitlab.sh
-d/perl-modules/perl-alien-libxml2.sh
-d/perl-modules/perl-xml-libxml.sh
-d/perl-modules/perl-xml-libxml-simple.sh
-d/perl-modules/perl-xml-simple.sh
-d/perl-modules/perl-xml-libxslt.sh
-d/perl-modules/perl-unicode-linebreak.sh
-d/perl-modules/perl-text-bibtex.sh
-d/perl-modules/perl-test-differences.sh
-d/perl-modules/perl-perlio-utf8-strict.sh
-d/perl-modules/perl-lwp-protocol-https.sh
-d/perl-modules/perl-file-fcntllock.sh
-# собираем perl-anyevent-i3 (для оконного менеджера i3) + зависимости
-d/perl-modules/perl-common-sense.sh
-d/perl-modules/perl-canary-stability.sh
-d/perl-modules/perl-types-serialiser.sh
-d/perl-modules/perl-json-xs.sh
-d/perl-modules/perl-anyevent.sh
-d/perl-modules/perl-anyevent-i3.sh
-ap/tk.sh
-d/python2.sh
-d/python-modules/python2-cython.sh
-d/yasm.sh
-n/nmap.sh
-d/python-modules/python2-libxml2.sh
-d/python3.sh
-l/gsettings-desktop-schemas.sh
-l/at-spi2-core.sh
-l/libtiff.sh
-l/lcms2.sh
-l/openjpeg.sh
-ap/ghostscript.sh
-x/libs/pixman.sh
-l/cairo.sh
-l/harfbuzz.sh
-ap/ghostscript.sh
-d/python-modules/python2-pycairo.sh
-d/python-modules/python3-pycairo.sh
-l/cairomm.sh
-d/python-modules/python2-pygobject2.sh
-d/python-modules/python3-pygobject3.sh
-d/python-modules/python3-pyatspi2.sh
-d/help2man.sh
-l/pango.sh
-l/glib-networking.sh
-l/glib.sh
-l/glibmm.sh
-l/pangomm.sh
-ap/cups.sh
-ap/ghostscript.sh
-l/hicolor-icon-theme.sh
-l/shared-mime-info.sh
-l/glib.sh
-l/gdk-pixbuf.sh
-l/gdk-pixbuf-xlib.sh
-d/vala.sh
-l/librsvg.sh
-l/freetype.sh
-l/cairo.sh
-l/gdk-pixbuf.sh
-x/libs/wayland.sh
-x/libs/wayland-protocols.sh
-l/gtk+2.sh
-x/libs/pixman.sh
-l/cairo.sh
-l/libglade.sh
-d/python-modules/python2-pygtk.sh
-n/nmap.sh
-l/atkmm.sh
-x/libs/libdrm.sh
-l/cairo.sh
-l/libunwind.sh
-x/libs/libvdpau.sh
-x/libs/libva.sh
-x/misc/mesa.sh
-l/cairo.sh
-x/libs/libvdpau.sh
-x/libs/libva.sh
-x/libs/libepoxy.sh
-x/data/xkeyboard-config.sh
-l/libxkbcommon.sh
-l/adwaita-icon-theme.sh
-d/sassc.sh
-l/gtk+3.sh
-ap/ghostscript.sh
-l/libspectre.sh
-l/cairo.sh
-l/adwaita-icon-theme.sh
-l/graphene.sh
-l/libvpx.sh
-l/gstreamer.sh
-x/misc/glu.sh
-s/desktop-file-utils.sh
-l/alsa-lib.sh
-l/fltk.sh
-x/misc/freeglut.sh
-l/libtiff.sh
-x/libs/glew.sh
-l/libgsf.sh
-l/goffice.sh
-l/gtk-engines.sh
-l/gtkmm.sh
-s/gtk-vnc.sh
-l/gtksourceview3.sh
-d/gjs.sh
-l/libsecret.sh
-l/gcr3.sh
-n/pinentry.sh
-s/numactl.sh
-l/x264.sh
-l/x265.sh
-l/giflib.sh
-l/imlib2.sh
-n/w3m.sh
-l/libdazzle.sh
-l/libogg.sh
-l/libvorbis.sh
-s/sound-theme-freedesktop.sh
-ap/opus.sh
-ap/flac.sh
-l/lame.sh
-l/speex.sh
-l/libsndfile.sh
-l/lame.sh
-l/libsamplerate.sh
-l/sbc.sh
-d/orc.sh
-l/tdb.sh
-ap/pulseaudio.sh
-s/gtk-vnc.sh
-l/libcanberra.sh
-s/notification-daemon.sh
-l/libnotify.sh
-l/libxklavier.sh
-x/xcb/xcb-util.sh
-x/libs/startup-notification.sh
-x/libs/libxcvt.sh
-x/xcb/xcb-util-image.sh
-x/xcb/xcb-util-wm.sh
-x/xcb/xcb-util-renderutil.sh
-x/xcb/xcb-util-keysyms.sh
-x/xcb/xcb-util-cursor.sh
-x/xcb/xcb-util-xrm.sh
-x/data/xbitmaps.sh
-x/apps/xorg-applications.sh
-x/data/xcursor-themes.sh
-x/fonts/xorg-fonts.sh
-x/fonts/caladea-font-ttf.sh
-x/fonts/cantarell-font-otf.sh
-x/fonts/carlito-font-ttf.sh
-x/fonts/dejavu-fonts-ttf.sh
-x/fonts/freefont.sh
-x/fonts/gelasio-font-ttf.sh
-x/fonts/liberation-fonts-ttf.sh
-x/fonts/noto-fonts-ttf.sh
-x/fonts/noto-cjk-fonts-ttf.sh
-x/fonts/noto-color-emoji-ttf.sh
-x/fonts/adobe-source-code-pro-font-otf.sh
-x/fonts/opendesktop-fonts-ttf.sh
-x/fonts/wqy-zenhei-font-ttf.sh
-x/fonts/ipaex-fonts-ttf.sh
-x/fonts/kochi-substitute-fonts-ttf.sh
-x/fonts/vlgothic-fonts-ttf.sh
-l/json-glib.sh
-xap/pavucontrol.sh
-d/duktape.sh
-l/polkit.sh
-a/elogind.sh
-x/xserver/xorg-server.sh
-x/misc/mtdev.sh
-x/libs/libevdev.sh
-x/libs/libinput.sh
-x/drivers/xorg-libinput-driver.sh
-x/xserver/xorg-server.sh
-x/drivers/xorg-evdev-driver.sh
-x/drivers/xorg-synaptics-driver.sh
-x/drivers/xorg-amdgpu-driver.sh
-x/drivers/xorg-ati-driver.sh
-x/drivers/xorg-fbdev-driver.sh
-x/drivers/xorg-intel-driver.sh
-x/drivers/xorg-nouveau-driver.sh
-x/drivers/xorg-vmware-driver.sh
-x/drivers/libvdpau-va-gl.sh
-x/misc/xterm.sh
-x/apps/xinit.sh
-# Graphical Environments полностью установлено (кроме оконного менеджера i3),
-# пересоберем пакеты openssh и ghostscript
-n/openssh.sh
-ap/ghostscript.sh
-ap/xclip.sh
-ap/xsel.sh
-l/libptytty.sh
-ap/rxvt-unicode.sh
-ap/potrace.sh
-ap/postgresql.sh
-d/ruby.sh
-d/snappy.sh
-ap/mariadb.sh
-n/cyrus-sasl.sh
-n/openldap.sh
-n/exim.sh
-n/gnupg.sh
-ap/sudo.sh
-l/aalib.sh
-l/libass.sh
-l/fdk-aac.sh
-l/libtheora.sh
-l/libcddb.sh
-l/libcdio.sh
-ap/vim.sh
-ap/mc.sh
-l/liba52.sh
-l/libwebp.sh
-l/libtiff.sh
-l/xvid.sh
-l/libhandy.sh
-l/dconf.sh
-s/ibus.sh
-l/sdl2.sh
-l/ffmpeg.sh
-l/alsa-plugins.sh
-ap/alsa-utils.sh
-ap/alsa-tools.sh
-s/alsa-firmware.sh
-l/alsa-oss.sh
-l/cxxopts.sh
-ap/pamixer.sh
-l/sdl.sh
-l/sdl2.sh
-l/libwebp.sh
-l/libmng.sh
-n/links.sh
-x/apps/xdg-utils.sh
-ap/cups.sh
-a/libgudev.sh
-l/poppler.sh
-l/gperftools.sh
-l/libmypaint.sh
-l/mypaint-brushes.sh
-l/exiv2.sh
-l/gexiv2.sh
-l/babl.sh
-l/jasper.sh
-l/gegl.sh
-l/liburcu.sh
-xap/gimp.sh
-l/djvulibre.sh
-l/libgxps.sh
-l/lcms.sh
-xap/imagemagick.sh
-ap/feh.sh
-l/gst-plugins-base.sh
-l/qt5.sh
-n/pinentry.sh
-n/gpgme.sh
-l/cairo.sh
-ap/mpg123.sh
-l/libsndfile.sh
-l/taglib.sh
-l/libsoup.sh
-l/libsoup3.sh
-l/gst-plugins-good.sh
-l/neon.sh
-l/libwpe.sh
-l/wpebackend-fdo.sh
-ap/faad2.sh
-ap/faac.sh
-l/soundtouch.sh
-l/libdvdread.sh
-l/libdvdnav.sh
-l/aom.sh
-l/gst-plugins-bad.sh
-l/libmpeg2.sh
-l/gst-plugins-ugly.sh
-l/gtk4.sh
-d/gjs.sh
-s/ibus.sh
-l/gcr4.sh
-ap/xbanish.sh
-x/utils/xorg-cf-files.sh
-d/imake.sh
-ap/xxkb.sh
-s/numlockx.sh
-s/clipnotify.sh
-s/clipmenu.sh
-ap/dmenu.sh
-ap/password-store.sh
-l/libyajl.sh
-l/libev.sh
-n/nghttp2.sh
-x/apps/i3.sh
-s/hddtemp.sh
-x/apps/bumblebee-status.sh
-l/libadwaita.sh
-ap/zenity.sh
-ap/mirage.sh
-a/fcron.sh
-n/ntp.sh
-n/dhcpcd.sh
-s/inxi.sh
-s/prelink.sh
-xap/flameshot.sh
-s/jq.sh
-d/glm.sh
-ap/slop.sh
-l/giblib.sh
-ap/scrot.sh
-ap/maim.sh
-l/libblockdev.sh
-ap/at.sh
-a/upower.sh
-n/libiscsi.sh
-a/udisks.sh
-l/apr-util.sh
-l/libical.sh
-l/raptor.sh
-l/rasqal.sh
-l/libiodbc.sh
-l/redland.sh
-ap/lmdb.sh
-d/tidy-html5.sh
-l/enchant.sh
-n/apache-httpd.sh
-n/curl.sh
-n/php.sh
-ap/cups.sh
-d/openjdk.sh
-l/libidn.sh
-n/traceroute.sh
-l/gnome-keyring.sh
-l/libsecret.sh
-l/vte2.sh
-l/vte3.sh
-l/gconf.sh
-d/apache-ant.sh
-l/libmad.sh
-n/transmission.sh
-l/id3lib.sh
-l/libao.sh
-n/dnsmasq.sh
-d/device-tree-compiler.sh
-n/glusterfs.sh
-s/pcsc-lite.sh
-l/libcacard.sh
-l/libnfs.sh
-d/spice-protocol.sh
-n/spice.sh
-s/usbredir.sh
-
-
+# a/time.sh
+# d/python-modules/python3-lxml.sh
+# a/tree.sh
+# a/dosfstools.sh
+# a/gpm.sh
+# a/hdparm.sh
+# a/smartmontools.sh
+# a/ntfs-3g.sh
+# a/sharutils.sh
+# l/berkeley-db.sh
+# a/cpio.sh
+# a/acpid.sh
+# a/dbus.sh
+# s/sgml-common.sh
+# s/docbook-xml.sh
+# s/docbook-xsl.sh
+# l/libxslt.sh
+# l/glib.sh
+# a/elogind.sh
+# a/dbus.sh
+# l/libsigsegv.sh
+# d/c2man.sh
+# d/python-modules/python3-cython.sh
+# l/apr.sh
+# l/aspell.sh
+# l/aspell-dict-en.sh
+# l/aspell-dict-ru.sh
+# l/fftw.sh
+# l/fribidi.sh
+# l/libuv.sh
+# l/rpcsvc-proto.sh
+# l/iso-codes.sh
+# l/libaio.sh
+# l/libatasmart.sh
+# l/libexif.sh
+# l/libpng.sh
+# l/libyaml.sh
+# d/python-modules/python3-asciidoc.sh
+# d/patchelf.sh
+# d/gcc.sh
+# n/pth.sh
+# d/py3c.sh
+# d/python-modules/python3-pycryptodome.sh
+# d/python-modules/python3-pygments.sh
+# d/python-modules/python3-pyxdg.sh
+# d/python-modules/python3-pyyaml.sh
+# d/python-modules/python3-six.sh
+# d/python-modules/python3-attrs.sh
+# d/python-modules/python3-editables.sh
+# d/python-modules/python3-packaging.sh
+# d/python-modules/python3-typing-extensions.sh
+# d/python-modules/python3-installer.sh
+# d/python-modules/python3-pyproject-hooks.sh
+# d/python-modules/python3-build.sh
+# d/python-modules/python3-setuptools-scm.sh
+# d/python-modules/python3-pluggy.sh
+# d/python-modules/python3-pathspec.sh
+# d/python-modules/python3-hatchling.sh
+# d/python-modules/python3-hatch-vcs.sh
+# d/python-modules/python3-iniconfig.sh
+# d/python-modules/python3-py.sh
+# d/python-modules/python3-pytest.sh
+# d/python-modules/python3-urllib3.sh
+# d/python-modules/python3-idna.sh
+# d/python-modules/python3-charset-normalizer.sh
+# d/python-modules/python3-requests.sh
+# d/python-modules/python3-msgpack.sh
+# d/python-modules/python3-cachecontrol.sh
+# d/python-modules/python3-markdown.sh
+# d/python-modules/python3-chardet.sh
+# d/python-modules/python3-pyparsing.sh
+# d/python-modules/python3-mako.sh
+# d/python-modules/python3-pyproject-metadata.sh
+# d/python-modules/python3-meson.sh
+# d/python-modules/python3-dbus.sh
+# d/python-modules/python3-psutil.sh
+# d/python-modules/python3-numpy.sh
+# d/python-modules/python3-appdirs.sh
+# d/python-modules/python3-platformdirs.sh
+# d/python-modules/python3-astroid.sh
+# d/python-modules/python3-poetry-core.sh
+# d/python-modules/python3-isort.sh
+# d/python-modules/python3-mccabe.sh
+# d/python-modules/python3-tomlkit.sh
+# d/python-modules/python3-dill.sh
+# d/python-modules/python3-tomli.sh
+# d/python-modules/python3-pylint.sh
+# d/python-modules/python3-wcwidth.sh
+# d/python-modules/python3-cwcwidth.sh
+# d/python-modules/python3-greenlet.sh
+# d/python-modules/python3-blessed.sh
+# d/python-modules/python3-curtsies.sh
+# d/python-modules/python3-bpython.sh
+# d/python-modules/python3-pycodestyle.sh
+# d/python-modules/python3-pyflakes.sh
+# d/python-modules/python3-flake8.sh
+# d/python-modules/python3-netifaces.sh
+# d/python-modules/python3-ipaddr.sh
+# d/python-modules/python3-pycurl.sh
+# d/python-modules/python3-urlgrabber.sh
+# l/jansson.sh
+# n/nghttp2.sh
+# n/curl.sh
+# d/cmake.sh
+# l/popt.sh
+# n/rsync.sh
+# d/llvm.sh
+# n/dhcpcd.sh
+# l/icu.sh
+# l/libxml2.sh
+# l/boost.sh
+# l/json-c.sh
+# s/xmlto.sh
+# d/nasm.sh
+# l/libjpeg-turbo.sh
+# l/unixodbc.sh
+# n/cyrus-sasl.sh
+# n/openldap.sh
+# n/gnupg.sh
+# ap/sudo.sh
+# n/cyrus-sasl.sh
+# l/c-ares.sh
+# n/curl.sh
+# n/nghttp2.sh
+# n/bind-utils.sh
+# n/mit-kerberos-v5.sh
+# n/curl.sh
+# n/openssh.sh
+# ap/sudo.sh
+# n/cyrus-sasl.sh
+# n/libtirpc.sh
+# l/libnsl.sh
+# n/pth.sh
+# l/berkeley-db.sh
+# d/clisp.sh
+# l/nspr.sh
+# a/ed.sh
+# a/lvm2.sh
+# a/usbutils.sh
+# d/oniguruma.sh
+# l/slang.sh
+# l/libatomic-ops.sh
+# d/gc.sh
+# d/guile.sh
+# d/nodejs.sh
+# s/docbook-dtd3.sh
+# s/docbook-dtd4.sh
+# l/opensp.sh
+# l/openjade.sh
+# s/docbook-dsssl.sh
+# d/perl-modules/perl-sgmlspm.sh
+# ap/docbook-utils.sh
+# x/misc/xdg-user-dirs.sh
+# l/libsigc++2.sh
+# l/parted.sh
+# l/sg3-utils.sh
+# l/libpcap.sh
+# n/iptables.sh
+# l/dbus-glib.sh
+# a/cryptsetup.sh
+# l/libbytesize.sh
+# l/nss.sh
+# n/p11-kit.sh
+# n/make-ca.sh
+# d/swig.sh
+# ap/itstool.sh
+# l/libssh2.sh
+# d/brotli.sh
+# n/gnutls.sh
+# n/curl.sh
+# d/rustc.sh
+# n/nmap.sh
+# ap/lsof.sh
+# n/gpgme.sh
+# l/volume-key.sh
+# d/mozjs.sh
+# ap/graphite2.sh
+# x/utils/util-macros.sh
+# x/proto/xorgproto.sh
+# x/libs/libxau.sh
+# x/libs/libxdmcp.sh
+# x/xcb/xcb-proto.sh
+# x/libs/libxcb.sh
+# l/gobject-introspection.sh
+# l/glib.sh
+# l/freetype.sh
+# l/harfbuzz.sh
+# l/freetype.sh
+# ap/graphite2.sh
+# x/misc/fontconfig.sh
+# a/ncompress.sh
+# x/libs/xorg-libraries.sh
+# a/dbus.sh
+# # BLFS Perl модули
+# d/perl-modules/perl-test-warnings.sh
+# d/perl-modules/perl-module-build.sh
+# d/perl-modules/perl-sub-identify.sh
+# d/perl-modules/perl-super.sh
+# d/perl-modules/perl-test-mockmodule.sh
+# d/perl-modules/perl-archive-zip.sh
+# d/perl-modules/perl-data-uniqid.sh
+# d/perl-modules/perl-data-dump.sh
+# d/perl-modules/perl-text-glob.sh
+# d/perl-modules/perl-number-compare.sh
+# d/perl-modules/perl-file-find-rule.sh
+# d/perl-modules/perl-b-cow.sh
+# d/perl-modules/perl-clone.sh
+# d/perl-modules/perl-data-compare.sh
+# d/perl-modules/perl-class-accessor.sh
+# d/perl-modules/perl-business-issn.sh
+# d/perl-modules/perl-tie-cycle.sh
+# d/perl-modules/perl-business-ismn.sh
+# d/perl-modules/perl-business-isbn-data.sh
+# d/perl-modules/perl-business-isbn.sh
+# d/perl-modules/perl-autovivification.sh
+# d/perl-modules/perl-test-without-module.sh
+# d/perl-modules/perl-capture-tiny.sh
+# d/perl-modules/perl-try-tiny.sh
+# d/perl-modules/perl-test-fatal.sh
+# d/perl-modules/perl-cpan-meta-check.sh
+# d/perl-modules/perl-scope-guard.sh
+# d/perl-modules/perl-path-tiny.sh
+# d/perl-modules/perl-file-sharedir-install.sh
+# d/perl-modules/perl-class-inspector.sh
+# d/perl-modules/perl-file-sharedir.sh
+# d/perl-modules/perl-test-utf8.sh
+# d/perl-modules/perl-test-file.sh
+# d/perl-modules/perl-test-deep.sh
+# d/perl-modules/perl-file-copy-recursive.sh
+# d/perl-modules/perl-class-tiny.sh
+# d/perl-modules/perl-test-file-sharedir.sh
+# d/perl-modules/perl-ipc-system-simple.sh
+# d/perl-modules/perl-ipc-run3.sh
+# d/perl-modules/perl-importer.sh
+# d/perl-modules/perl-term-table.sh
+# d/perl-modules/perl-sub-info.sh
+# d/perl-modules/perl-module-pluggable.sh
+# d/perl-modules/perl-test2-suite.sh
+# d/perl-modules/perl-test2-plugin-nowarnings.sh
+# d/perl-modules/perl-module-runtime.sh
+# d/perl-modules/perl-test-requires.sh
+# d/perl-modules/perl-module-implementation.sh
+# d/perl-modules/perl-dist-checkconflicts.sh
+# d/perl-modules/perl-test-needs.sh
+# d/perl-modules/perl-package-stash.sh
+# d/perl-modules/perl-variable-magic.sh
+# d/perl-modules/perl-sub-exporter-progressive.sh
+# d/perl-modules/perl-b-hooks-endofscope.sh
+# d/perl-modules/perl-namespace-clean.sh
+# d/perl-modules/perl-namespace-autoclean.sh
+# d/perl-modules/perl-mro-compat.sh
+# d/perl-modules/perl-sub-quote.sh
+# d/perl-modules/perl-role-tiny.sh
+# d/perl-modules/perl-eval-closure.sh
+# d/perl-modules/perl-devel-stacktrace.sh
+# d/perl-modules/perl-specio.sh
+# d/perl-modules/perl-class-data-inheritable.sh
+# d/perl-modules/perl-exception-class.sh
+# d/perl-modules/perl-params-validationcompiler.sh
+# d/perl-modules/perl-datetime-locale.sh
+# d/perl-modules/perl-class-singleton.sh
+# d/perl-modules/perl-datetime-timezone.sh
+# d/perl-modules/perl-datetime.sh
+# d/perl-modules/perl-datetime-calendar-julian.sh
+# d/perl-modules/perl-json.sh
+# d/perl-modules/perl-io-string.sh
+# d/perl-modules/perl-uri.sh
+# d/perl-modules/perl-net-ssleay.sh
+# d/perl-modules/perl-io-socket-ssl.sh
+# d/perl-modules/perl-lwp-mediatypes.sh
+# d/perl-modules/perl-io-html.sh
+# d/perl-modules/perl-timedate.sh
+# d/perl-modules/perl-http-date.sh
+# d/perl-modules/perl-encode-locale.sh
+# d/perl-modules/perl-http-message.sh
+# d/perl-modules/perl-http-daemon.sh
+# d/perl-modules/perl-html-tagset.sh
+# d/perl-modules/perl-html-parser.sh
+# d/perl-modules/perl-file-which.sh
+# d/perl-modules/perl-file-slurper.sh
+# d/perl-modules/perl-encode-jis2k.sh
+# d/perl-modules/perl-encode-hanextra.sh
+# d/perl-modules/perl-encode-eucjpascii.sh
+# d/perl-modules/perl-params-validate.sh
+# d/perl-modules/perl-datetime-format-strptime.sh
+# d/perl-modules/perl-datetime-format-builder.sh
+# d/perl-modules/perl-lingua-translit.sh
+# d/perl-modules/perl-log-log4perl.sh
+# d/perl-modules/perl-net-dns.sh
+# d/perl-modules/perl-parse-recdescent.sh
+# d/perl-modules/perl-parse-yapp.sh
+# d/perl-modules/perl-regexp-common.sh
+# d/perl-modules/perl-sort-key.sh
+# d/perl-modules/perl-test-command.sh
+# d/perl-modules/perl-text-roman.sh
+# d/perl-modules/perl-unicode-collate.sh
+# d/perl-modules/perl-xml-writer.sh
+# d/perl-modules/perl-algorithm-diff.sh
+# d/perl-modules/perl-config-autoconf.sh
+# d/perl-modules/perl-exporter-tiny.sh
+# d/perl-modules/perl-extutils-libbuilder.sh
+# d/perl-modules/perl-ffi-checklib.sh
+# d/perl-modules/perl-file-chdir.sh
+# d/perl-modules/perl-file-listing.sh
+# d/perl-modules/perl-http-cookies.sh
+# d/perl-modules/perl-http-negotiate.sh
+# d/perl-modules/perl-list-moreutils-xs.sh
+# d/perl-modules/perl-list-moreutils.sh
+# d/perl-modules/perl-list-utilsby.sh
+# d/perl-modules/perl-mime-charset.sh
+# d/perl-modules/perl-net-http.sh
+# d/perl-modules/perl-sub-uplevel.sh
+# d/perl-modules/perl-test-exception.sh
+# d/perl-modules/perl-test-leaktrace.sh
+# d/perl-modules/perl-test-requiresinternet.sh
+# d/perl-modules/perl-text-csv-xs.sh
+# d/perl-modules/perl-text-csv.sh
+# d/perl-modules/perl-text-diff.sh
+# d/perl-modules/perl-xml-namespacesupport.sh
+# d/perl-modules/perl-xml-sax-base.sh
+# d/perl-modules/perl-xml-sax.sh
+# d/perl-modules/perl-libwww-perl.sh
+# d/perl-modules/perl-www-robotrules.sh
+# d/perl-modules/perl-libwww-perl.sh
+# d/perl-modules/perl-list-someutils-xs.sh
+# d/perl-modules/perl-list-someutils.sh
+# d/perl-modules/perl-list-allutils.sh
+# d/perl-modules/perl-alien-build.sh
+# d/perl-modules/perl-alien-build-plugin-download-gitlab.sh
+# d/perl-modules/perl-alien-libxml2.sh
+# d/perl-modules/perl-xml-libxml.sh
+# d/perl-modules/perl-xml-libxml-simple.sh
+# d/perl-modules/perl-xml-simple.sh
+# d/perl-modules/perl-xml-libxslt.sh
+# d/perl-modules/perl-unicode-linebreak.sh
+# d/perl-modules/perl-text-bibtex.sh
+# d/perl-modules/perl-test-differences.sh
+# d/perl-modules/perl-perlio-utf8-strict.sh
+# d/perl-modules/perl-lwp-protocol-https.sh
+# d/perl-modules/perl-file-fcntllock.sh
+# # собираем perl-anyevent-i3 (для оконного менеджера i3) + зависимости
+# d/perl-modules/perl-common-sense.sh
+# d/perl-modules/perl-canary-stability.sh
+# d/perl-modules/perl-types-serialiser.sh
+# d/perl-modules/perl-json-xs.sh
+# d/perl-modules/perl-anyevent.sh
+# d/perl-modules/perl-anyevent-i3.sh
+# ap/tk.sh
+# d/python2.sh
+# d/python-modules/python2-cython.sh
+# d/yasm.sh
+# n/nmap.sh
+# d/python-modules/python2-libxml2.sh
+# d/python3.sh
+# l/gsettings-desktop-schemas.sh
+# l/at-spi2-core.sh
+# l/libtiff.sh
+# l/lcms2.sh
+# l/openjpeg.sh
+# ap/ghostscript.sh
+# x/libs/pixman.sh
+# l/cairo.sh
+# l/harfbuzz.sh
+# ap/ghostscript.sh
+# d/python-modules/python2-pycairo.sh
+# d/python-modules/python3-pycairo.sh
+# l/cairomm.sh
+# d/python-modules/python2-pygobject2.sh
+# d/python-modules/python3-pygobject3.sh
+# d/python-modules/python3-pyatspi2.sh
+# d/help2man.sh
+# l/pango.sh
+# l/glib-networking.sh
+# l/glib.sh
+# l/glibmm.sh
+# l/pangomm.sh
+# ap/cups.sh
+# ap/ghostscript.sh
+# l/hicolor-icon-theme.sh
+# l/shared-mime-info.sh
+# l/glib.sh
+# l/gdk-pixbuf.sh
+# l/gdk-pixbuf-xlib.sh
+# d/vala.sh
+# l/librsvg.sh
+# l/freetype.sh
+# l/cairo.sh
+# l/gdk-pixbuf.sh
+# x/libs/wayland.sh
+# x/libs/wayland-protocols.sh
+# l/gtk+2.sh
+# x/libs/pixman.sh
+# l/cairo.sh
+# l/libglade.sh
+# d/python-modules/python2-pygtk.sh
+# n/nmap.sh
+# l/atkmm.sh
+# x/libs/libdrm.sh
+# l/cairo.sh
+# l/libunwind.sh
+# x/libs/libvdpau.sh
+# x/libs/libva.sh
+# x/misc/mesa.sh
+# l/cairo.sh
+# x/libs/libvdpau.sh
+# x/libs/libva.sh
+# x/libs/libepoxy.sh
+# x/data/xkeyboard-config.sh
+# l/libxkbcommon.sh
+# l/adwaita-icon-theme.sh
+# d/sassc.sh
+# l/gtk+3.sh
+# ap/ghostscript.sh
+# l/libspectre.sh
+# l/cairo.sh
+# l/adwaita-icon-theme.sh
+# l/graphene.sh
+# l/libvpx.sh
+# l/gstreamer.sh
+# x/misc/glu.sh
+# s/desktop-file-utils.sh
+# l/alsa-lib.sh
+# l/fltk.sh
+# x/misc/freeglut.sh
+# l/libtiff.sh
+# x/libs/glew.sh
+# l/libgsf.sh
+# l/goffice.sh
+# l/gtk-engines.sh
+# l/gtkmm.sh
+# s/gtk-vnc.sh
+# l/gtksourceview3.sh
+# d/gjs.sh
+# l/libsecret.sh
+# l/gcr3.sh
+# n/pinentry.sh
+# s/numactl.sh
+# l/x264.sh
+# l/x265.sh
+# l/giflib.sh
+# l/imlib2.sh
+# n/w3m.sh
+# l/libdazzle.sh
+# l/libogg.sh
+# l/libvorbis.sh
+# s/sound-theme-freedesktop.sh
+# ap/opus.sh
+# ap/flac.sh
+# l/lame.sh
+# l/speex.sh
+# l/libsndfile.sh
+# l/lame.sh
+# l/libsamplerate.sh
+# l/sbc.sh
+# d/orc.sh
+# l/tdb.sh
+# ap/pulseaudio.sh
+# s/gtk-vnc.sh
+# l/libcanberra.sh
+# s/notification-daemon.sh
+# l/libnotify.sh
+# l/libxklavier.sh
+# x/xcb/xcb-util.sh
+# x/libs/startup-notification.sh
+# x/libs/libxcvt.sh
+# x/xcb/xcb-util-image.sh
+# x/xcb/xcb-util-wm.sh
+# x/xcb/xcb-util-renderutil.sh
+# x/xcb/xcb-util-keysyms.sh
+# x/xcb/xcb-util-cursor.sh
+# x/xcb/xcb-util-xrm.sh
+# x/data/xbitmaps.sh
+# x/apps/xorg-applications.sh
+# x/data/xcursor-themes.sh
+# x/fonts/xorg-fonts.sh
+# x/fonts/caladea-font-ttf.sh
+# x/fonts/cantarell-font-otf.sh
+# x/fonts/carlito-font-ttf.sh
+# x/fonts/dejavu-fonts-ttf.sh
+# x/fonts/freefont.sh
+# x/fonts/gelasio-font-ttf.sh
+# x/fonts/liberation-fonts-ttf.sh
+# x/fonts/noto-fonts-ttf.sh
+# x/fonts/noto-cjk-fonts-ttf.sh
+# x/fonts/noto-color-emoji-ttf.sh
+# x/fonts/adobe-source-code-pro-font-otf.sh
+# x/fonts/opendesktop-fonts-ttf.sh
+# x/fonts/wqy-zenhei-font-ttf.sh
+# x/fonts/ipaex-fonts-ttf.sh
+# x/fonts/kochi-substitute-fonts-ttf.sh
+# x/fonts/vlgothic-fonts-ttf.sh
+# l/json-glib.sh
+# xap/pavucontrol.sh
+# d/duktape.sh
+# l/polkit.sh
+# a/elogind.sh
+# x/xserver/xorg-server.sh
+# x/misc/mtdev.sh
+# x/libs/libevdev.sh
+# x/libs/libinput.sh
+# x/drivers/xorg-libinput-driver.sh
+# x/xserver/xorg-server.sh
+# x/drivers/xorg-evdev-driver.sh
+# x/drivers/xorg-synaptics-driver.sh
+# x/drivers/xorg-amdgpu-driver.sh
+# x/drivers/xorg-ati-driver.sh
+# x/drivers/xorg-fbdev-driver.sh
+# x/drivers/xorg-intel-driver.sh
+# x/drivers/xorg-nouveau-driver.sh
+# x/drivers/xorg-vmware-driver.sh
+# x/drivers/libvdpau-va-gl.sh
+# x/misc/xterm.sh
+# x/apps/xinit.sh
+# # Graphical Environments полностью установлено (кроме оконного менеджера i3),
+# # пересоберем пакеты openssh и ghostscript
+# n/openssh.sh
+# ap/ghostscript.sh
+# ap/xclip.sh
+# ap/xsel.sh
+# l/libptytty.sh
+# ap/rxvt-unicode.sh
+# ap/potrace.sh
+# ap/postgresql.sh
+# d/ruby.sh
+# d/snappy.sh
+# ap/mariadb.sh
+# n/cyrus-sasl.sh
+# n/openldap.sh
+# n/exim.sh
+# n/gnupg.sh
+# ap/sudo.sh
+# l/aalib.sh
+# l/libass.sh
+# l/fdk-aac.sh
+# l/libtheora.sh
+# l/libcddb.sh
+# l/libcdio.sh
+# ap/vim.sh
+# ap/mc.sh
+# l/liba52.sh
+# l/libwebp.sh
+# l/libtiff.sh
+# l/xvid.sh
+# l/libhandy.sh
+# l/dconf.sh
+# s/ibus.sh
+# l/sdl2.sh
+# l/ffmpeg.sh
+# l/alsa-plugins.sh
+# ap/alsa-utils.sh
+# ap/alsa-tools.sh
+# s/alsa-firmware.sh
+# l/alsa-oss.sh
+# l/cxxopts.sh
+# ap/pamixer.sh
+# l/sdl.sh
+# l/sdl2.sh
+# l/libwebp.sh
+# l/libmng.sh
+# n/links.sh
+# x/apps/xdg-utils.sh
+# ap/cups.sh
+# a/libgudev.sh
+# l/poppler.sh
+# l/gperftools.sh
+# l/libmypaint.sh
+# l/mypaint-brushes.sh
+# l/exiv2.sh
+# l/gexiv2.sh
+# l/babl.sh
+# l/jasper.sh
+# l/gegl.sh
+# l/liburcu.sh
+# xap/gimp.sh
+# l/djvulibre.sh
+# l/libgxps.sh
+# l/lcms.sh
+# xap/imagemagick.sh
+# ap/feh.sh
+# l/gst-plugins-base.sh
+# l/qt5.sh
+# n/pinentry.sh
+# n/gpgme.sh
+# l/cairo.sh
+# ap/mpg123.sh
+# l/libsndfile.sh
+# l/taglib.sh
+# l/libsoup.sh
+# l/libsoup3.sh
+# l/gst-plugins-good.sh
+# l/neon.sh
+# l/libwpe.sh
+# l/wpebackend-fdo.sh
+# ap/faad2.sh
+# ap/faac.sh
+# l/soundtouch.sh
+# l/libdvdread.sh
+# l/libdvdnav.sh
+# l/aom.sh
+# l/gst-plugins-bad.sh
+# l/libmpeg2.sh
+# l/gst-plugins-ugly.sh
+# l/gtk4.sh
+# d/gjs.sh
+# s/ibus.sh
+# l/gcr4.sh
+# ap/xbanish.sh
+# x/utils/xorg-cf-files.sh
+# d/imake.sh
+# ap/xxkb.sh
+# s/numlockx.sh
+# s/clipnotify.sh
+# s/clipmenu.sh
+# ap/dmenu.sh
+# ap/password-store.sh
+# l/libyajl.sh
+# l/libev.sh
+# n/nghttp2.sh
+# x/apps/i3.sh
+# s/hddtemp.sh
+# x/apps/bumblebee-status.sh
+# l/libadwaita.sh
+# ap/zenity.sh
+# ap/mirage.sh
+# a/fcron.sh
+# n/ntp.sh
+# n/dhcpcd.sh
+# s/inxi.sh
+# s/prelink.sh
+# xap/flameshot.sh
+# s/jq.sh
+# d/glm.sh
+# ap/slop.sh
+# l/giblib.sh
+# ap/scrot.sh
+# ap/maim.sh
+# l/libblockdev.sh
+# ap/at.sh
+# a/upower.sh
+# n/libiscsi.sh
+# a/udisks.sh
+# l/apr-util.sh
+# l/libical.sh
+# l/raptor.sh
+# l/rasqal.sh
+# l/libiodbc.sh
+# l/redland.sh
+# ap/lmdb.sh
+# d/tidy-html5.sh
+# l/enchant.sh
+# n/apache-httpd.sh
+# n/curl.sh
+# n/php.sh
+# ap/cups.sh
+# d/openjdk.sh
+# l/libidn.sh
+# n/traceroute.sh
+# l/gnome-keyring.sh
+# l/libsecret.sh
+# l/vte2.sh
+# l/vte3.sh
+# l/gconf.sh
+# d/apache-ant.sh
+# l/libmad.sh
+# n/transmission.sh
+# l/id3lib.sh
+# l/libao.sh
+# n/dnsmasq.sh
+# d/device-tree-compiler.sh
+# n/glusterfs.sh
+# s/pcsc-lite.sh
+# l/libcacard.sh
+# l/libnfs.sh
+# d/spice-protocol.sh
+# n/spice.sh
+# s/usbredir.sh
 # n/spice-gtk.sh
 # n/vde2.sh
 # l/virglrenderer.sh
