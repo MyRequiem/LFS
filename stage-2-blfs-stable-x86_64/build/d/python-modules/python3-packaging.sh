@@ -6,7 +6,7 @@ ARCH_NAME="packaging"
 ### Packaging (core utilities for Python packages)
 # утилиты, реализующие совместимость спецификаций пакетов Python
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest

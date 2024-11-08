@@ -27,8 +27,8 @@ mkdir -pv "${TMP_DIR}"
 #
 # применим патч, предотвращающий создание этих утилит и ссылок, а так же
 # исправляет предупреждение компилятора
-patch --verbose -Np1 \
-    -i "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
 # исправим пути установки
 #    /bin  -> /usr/bin
@@ -38,7 +38,7 @@ sed -i 's/)\/sbin/)\/usr\/sbin/' src/Makefile || exit 1
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов
-make ROOT="${TMP_DIR}" install
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

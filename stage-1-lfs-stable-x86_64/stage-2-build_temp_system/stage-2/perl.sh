@@ -16,16 +16,17 @@ MAJ_MIN_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
 #     -d    - использовать значения по умолчанию для всех элементов
 #     -e    - обеспечивает выполнение всех заданий
 #     -s    - заставляет "замолчать" несущественный вывод
-sh Configure                                                         \
-    -des                                                             \
-    -Dprefix=/usr                                                    \
-    -Dvendorprefix=/usr                                              \
-    -Dprivlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/core_perl"     \
-    -Darchlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/core_perl"     \
-    -Dsitelib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/site_perl"     \
-    -Dsitearch="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/site_perl"    \
-    -Dvendorlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/vendor_perl" \
-    -Dvendorarch="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/vendor_perl" || exit 1
+sh Configure                                                          \
+    -des                                                              \
+    -D prefix=/usr                                                    \
+    -D vendorprefix=/usr                                              \
+    -D useshrplib                                                     \
+    -D privlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/core_perl"     \
+    -D archlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/core_perl"     \
+    -D sitelib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/site_perl"     \
+    -D sitearch="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/site_perl"    \
+    -D vendorlib="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/vendor_perl" \
+    -D vendorarch="/usr/lib/perl${MAJ_VER}/${MAJ_MIN_VER}/vendor_perl" || exit 1
 
 make || make -j1 || exit 1
 make install

@@ -31,33 +31,33 @@ export BUILD_BZIP2=0
 # где Perl ищет установленные модули
 #    -Dsitelib,-Dprivlib,-Darchlib, ...
 # man-страниц
-#    -Dman1dir=/usr/share/man/man1
-#    -Dman3dir=/usr/share/man/man3
+#    -D man1dir=/usr/share/man/man1
+#    -D man3dir=/usr/share/man/man3
 # используем 'less' вместо 'more'
-#    -Dpager="/usr/bin/less -isR"
+#    -D pager="/usr/bin/less -isR"
 # создадим общий libperl, необходимый для некоторых модулей perl
-#    -Duseshrplib
+#    -D useshrplib
 # сборка Perl с поддержкой потоков
 #    -Dusethreads
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
 sh Configure                                             \
     -des                                                 \
-    -Dprefix=/usr                                        \
-    -Dvendorprefix=/usr                                  \
-    -Dprivlib="/usr/lib/perl5/${MAJ_VER}/core_perl"      \
-    -Darchlib="/usr/lib/perl5/${MAJ_VER}/core_perl"      \
-    -Dsitelib="/usr/lib/perl5/${MAJ_VER}/site_perl"      \
-    -Dsitearch="/usr/lib/perl5/${MAJ_VER}/site_perl"     \
-    -Dvendorlib="/usr/lib/perl5/${MAJ_VER}/vendor_perl"  \
-    -Dvendorarch="/usr/lib/perl5/${MAJ_VER}/vendor_perl" \
-    -Dman1dir=/usr/share/man/man1                        \
-    -Dman3dir=/usr/share/man/man3                        \
-    -Dpager="/usr/bin/less -isR"                         \
-    -Duseshrplib                                         \
-    -Dusethreads || exit 1
+    -D prefix=/usr                                        \
+    -D vendorprefix=/usr                                  \
+    -D privlib="/usr/lib/perl5/${MAJ_VER}/core_perl"      \
+    -D archlib="/usr/lib/perl5/${MAJ_VER}/core_perl"      \
+    -D sitelib="/usr/lib/perl5/${MAJ_VER}/site_perl"      \
+    -D sitearch="/usr/lib/perl5/${MAJ_VER}/site_perl"     \
+    -D vendorlib="/usr/lib/perl5/${MAJ_VER}/vendor_perl"  \
+    -D vendorarch="/usr/lib/perl5/${MAJ_VER}/vendor_perl" \
+    -D man1dir=/usr/share/man/man1                        \
+    -D man3dir=/usr/share/man/man3                        \
+    -D pager="/usr/bin/less -isR"                         \
+    -D useshrplib                                         \
+    -D usethreads || exit 1
 
 make || make -j1 || exit 1
-# make test
+# TEST_JOBS=$(nproc) make test_harness
 make install DESTDIR="${TMP_DIR}"
 
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать

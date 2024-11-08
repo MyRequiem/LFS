@@ -19,9 +19,7 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 # make check
-make                                              \
-    docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    install DESTDIR="${TMP_DIR}"
+make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

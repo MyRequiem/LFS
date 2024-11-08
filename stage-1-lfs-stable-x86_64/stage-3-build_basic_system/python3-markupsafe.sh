@@ -1,23 +1,18 @@
 #! /bin/bash
 
-PRGNAME="python3-jinja2"
-ARCH_NAME="Jinja2"
+PRGNAME="python3-markupsafe"
+ARCH_NAME="MarkupSafe"
 
-### Jinja2 (template engine for Python)
-# Самый популярный шаблонизатор в языке программирования Python. Синтаксис
-# Jinja2 сильно похож на Django-шаблонизатор, но при этом дает возможность
-# использовать чистые Python выражения и поддерживает гибкую систему
-# расширений.
+### MarkupSafe (unicode subclass that supports HTML/XML strings)
+# Python2/3 модуль реализующий текстовый объект для безопасного использования в
+# HTML и XML
 
-# Required:    python3-markupsafe
-# Recommended: no
-# Optional:    no
-
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 ###
@@ -36,8 +31,9 @@ mkdir -pv "${TMP_DIR}"
 #    --no-build-isolation
 pip3 wheel               \
     --wheel-dir=./dist   \
-    --no-deps            \
+    --no-cache-dir       \
     --no-build-isolation \
+    --no-deps            \
     ./ || exit 1
 
 ### устанавливаем созданный пакет в "${TMP_DIR}"
@@ -50,7 +46,6 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --find-links=./dist \
-    --no-cache-dir      \
     --no-user           \
     --no-index "${ARCH_NAME}" || exit 1
 
@@ -71,14 +66,15 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (template engine for Python)
+# Package: ${PRGNAME} (unicode subclass that supports HTML/XML strings)
 #
-# Jinja2 is a template engine that implements a simple pythonic template
-# language written in pure Python. It provides a Django inspired non-XML syntax
-# but supports inline expressions and an optional sandboxed  environment
+# MarkupSafe implements a text object that escapes characters so it is safe to
+# use in HTML and XML. Characters that have special meanings are replaced so
+# that they display as the actual characters. This mitigates injection attacks,
+# meaning untrusted user input can safely be displayed on a page.
 #
-# Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/J/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://pypi.python.org/pypi/${ARCH_NAME}/
+# Download:  https://files.pythonhosted.org/packages/source/M/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

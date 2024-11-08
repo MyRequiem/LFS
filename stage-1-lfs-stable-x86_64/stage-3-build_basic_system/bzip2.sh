@@ -15,8 +15,8 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr"/{bin,lib}
 
 # применим патч для установки документации
-patch -Np1 --verbose \
-    -i "${SOURCES}/${PRGNAME}-${VERSION}-install_docs-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-install_docs-1.patch" || exit 1
 
 # обеспечим правильную установку путей для относительных символических ссылок
 sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile || exit 1

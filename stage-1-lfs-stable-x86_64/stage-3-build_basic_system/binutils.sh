@@ -9,8 +9,8 @@ PRGNAME="binutils"
 ###
 # NOTE:
 ###
-# При обновлении binutils, пакет пересобираем и устанавливаем дважды, и только
-# потом удаляем библиотеки передыдущей версии
+# При обновлении binutils на другую версию, пакет пересобираем и устанавливаем
+# дважды, и только потом удаляем библиотеки передыдущей версии
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -19,20 +19,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
-
-# убедимся, что PTY работают правильно в среде chroot выполнив простой тест
-echo ""
-echo "# Checking PTY settings..."
-echo 'expect -c "spawn ls"'
-expect -c "spawn ls"
-echo -ne "\nYou see the message \"spawn ls\" above [y/N]? "
-read -r JUNK
-[[ "x${JUNK}" != "xy" && "x${JUNK}" != "xY" ]] && exit 1
-# Если вместо "spawn ls" вывод примерно такой:
-#    The system has no more ptys.
-#    Ask your system administrator to create more.
-# то среда настроена НЕ правильно для работы PTY. Эту проблему необходимо
-# решить перед запуском тестовых пакетов для Binutils и GCC
 
 # документация Binutils рекомендует собирать binutils в отдельном каталоге
 mkdir build
@@ -62,7 +48,9 @@ cd build || exit 1
     --enable-shared     \
     --disable-werror    \
     --enable-64-bit-bfd \
-    --with-system-zlib || exit 1
+    --enable-new-dtags  \
+    --with-system-zlib  \
+    --enable-default-hash-style=gnu || exit 1
 
 # обычно tooldir, т.е. каталог, где в конечном итоге будут находиться
 # исполняемые файлы, устанавливается в $(exec_prefix)/$(target_alias)
@@ -83,8 +71,7 @@ make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
 # удалим бесполезные статические библиотеки
-rm -fv "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
-rm -fv /usr/share/man/man1/{gprofng,gp-*}.1
+rm -fv "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

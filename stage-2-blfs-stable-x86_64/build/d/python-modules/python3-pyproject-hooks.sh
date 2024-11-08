@@ -7,8 +7,7 @@ ARCH_NAME="pyproject_hooks"
 # низкоуровневая библиотека для вызова бэкэндов сборки в проект на основе
 # pyproject.toml
 
-# Required:    python3-flit-core
-#              python3-installer
+# Required:    python3-installer
 # Recommended: no
 # Optional:    no
 

@@ -20,13 +20,8 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# сборка html-документации
-# make html || exit 1
-
 # make check
-
 make install DESTDIR="${TMP_DIR}"
-# make install-html DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

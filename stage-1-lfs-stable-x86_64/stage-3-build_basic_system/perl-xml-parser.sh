@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="xml-parser"
+PRGNAME="perl-xml-parser"
 ARCH_NAME="XML-Parser"
 
 ### XML::Parser (XML::Parser perl module)

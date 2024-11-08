@@ -19,7 +19,7 @@ mkdir -pv "${TMP_DIR}"{/usr/sbin,"${MAN8}"}
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
 # это несоответствия и другие ошибки, связанные с интернационализацией
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-2.patch" || exit 1
 
 # применение патча модифицировало систему сборки, поэтому файлы конфигурации
 # необходимо сгенерировать заново
@@ -53,11 +53,11 @@ make || make -j1 || exit 1
 
 # указывает тестовому набору выполнить некоторые дополнительные тесты
 #    RUN_EXPENSIVE_TESTS=yes
-# su tester -c "PATH=${PATH} make RUN_EXPENSIVE_TESTS=yes check"
+# su tester -c "PATH=${PATH} make -k RUN_EXPENSIVE_TESTS=yes check" < /dev/null
 # известно, что тест 'test-getlogin' не проходит в среде chroot LFS
 
 # удалим созданную нами временную группу dummy
-# sed -i '/dummy/d' /etc/group
+# groupdel dummy
 
 # восстановим владельца и группу дерева исходников
 # chown -Rv root:root .

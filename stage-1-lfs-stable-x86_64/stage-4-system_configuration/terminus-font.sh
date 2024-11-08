@@ -54,8 +54,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Weights: normal and bold (except for 6x12), plus CRT VGA-bold for 8x14 and
 # 8x16.
 #
-# Home page: http://${PRGNAME}.sourceforge.net
-# Download:  https://nav.dl.sourceforge.net/project/${PRGNAME}/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.sourceforge.net/
+# Download:  https://sourceforge.net/projects/${PRGNAME}/files/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

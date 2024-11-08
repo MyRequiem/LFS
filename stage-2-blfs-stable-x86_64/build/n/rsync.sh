@@ -10,7 +10,6 @@ PRGNAME="rsync"
 # Required:    no
 # Recommended: popt
 # Optional:    doxygen
-#              lz4     (https://lz4.org/)
 #              xxhash  (https://xxhash.com/)
 
 ROOT="/root/src/lfs"
@@ -35,21 +34,15 @@ mkdir -pv "${TMP_DIR}"
             -u 48 rsyncd
 
 DOXYGEN="false"
-LZ4="--disable-lz4"
 XXHASH="--disable-xxhash"
 
-# поддержку внешнего lz4 лучше отключить, т.к. используется улучшенный алгоритм
-# zstd, который предоставляется в LFS
-
 # command -v doxygen &>/dev/null && DOXYGEN="true"
-command -v lz4     &>/dev/null && LZ4="--enable-lz4"
 command -v xxhsum  &>/dev/null && XXHASH="--enable-xxhash"
 
 # используем zlib установленный в системе
 #    --without-included-zlib
 ./configure       \
     --prefix=/usr \
-    "${LZ4}"      \
     "${XXHASH}"   \
     --without-included-zlib || exit 1
 

@@ -26,47 +26,54 @@ rm -rf "${PRGNAME}${VERSION}"
 tar xvf "${SOURCES}/${PRGNAME}"*-src.tar.?z* || exit 1
 cd "${PRGNAME}${VERSION}" || exit 1
 
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
 SRCDIR="$(pwd)"
 cd unix || exit 1
-./configure        \
-    --prefix=/usr  \
-    --mandir=/usr/share/man || exit 1
+./configure                 \
+    --prefix=/usr           \
+    --mandir=/usr/share/man \
+    --disable-rpath || exit 1
 
 make || make -j1 || exit 1
 
 # удаляем ссылки на каталог сборки из файлов конфигурации и заменяем их на
 # каталог установки
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-sed -e "s|${SRCDIR}/unix|/usr/lib|" \
-    -e "s|${SRCDIR}|/usr/include|"  \
-    -i tclConfig.sh || exit 1
+sed -e "s|$SRCDIR/unix|/usr/lib|" \
+    -e "s|$SRCDIR|/usr/include|"  \
+    -i tclConfig.sh
 
-sed -e "s|${SRCDIR}/unix/pkgs/tdbc1.1.5|/usr/lib/tdbc1.1.5|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.5/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.5/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|${SRCDIR}/pkgs/tdbc1.1.5|/usr/include|"            \
-    -i pkgs/tdbc1.1.5/tdbcConfig.sh || exit 1
+sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.7|/usr/lib/tdbc1.1.7|"            \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.7/generic|/usr/include|"               \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.7/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.7|/usr/include|"                       \
+    -i pkgs/tdbc1.1.7/tdbcConfig.sh
 
-sed -e "s|${SRCDIR}/unix/pkgs/itcl4.2.3|/usr/lib/itcl4.2.3|" \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.3/generic|/usr/include|"    \
-    -e "s|${SRCDIR}/pkgs/itcl4.2.3|/usr/include|"            \
-    -i pkgs/itcl4.2.3/itclConfig.sh || exit 1
+sed -e "s|$SRCDIR/unix/pkgs/itcl4.2.4|/usr/lib/itcl4.2.4|" \
+    -e "s|$SRCDIR/pkgs/itcl4.2.4/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/itcl4.2.4|/usr/include|"            \
+    -i pkgs/itcl4.2.4/itclConfig.sh
 
-# запускаем тестовый набор Tcl
 # make test
 
 make install DESTDIR="${TMP_DIR}"
 
 # сделаем установленную библиотеку доступной для записи, чтобы позже можно было
 # удалить отладочную информацию (debugging symbols)
-chmod -v u+w "${TMP_DIR}/usr/lib/libtcl${MAJ_VERSION}".so
+chmod -v u+w "${TMP_DIR}/usr/lib/libtcl${MAJ_VERSION}.so"
 
 # устанавливаем заголовки, которые требуются для сборки пакета Expect
 make install-private-headers DESTDIR="${TMP_DIR}"
 
 # создаем символическую ссылку в /usr/bin/
 #    tclsh -> tclsh${MAJ_VERSION}
-ln -sv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
+ln -sfv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 
 # переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
 # устанавливается с пакетом Perl

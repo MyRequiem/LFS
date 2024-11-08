@@ -27,19 +27,21 @@ cd build || exit 1
 # включает поддержку 64-битной версии (на хостах с более узким размером слова).
 # Может не понадобиться для 64-битных система, но вреда не причинит
 #    --enable-64-bit-bfd
-../configure                   \
-    --prefix=/usr              \
-    --host="${LFS_TGT}"        \
-    --disable-nls              \
-    --enable-shared            \
-    --enable-gprofng=no        \
-    --disable-werror           \
-    --enable-64-bit-bfd        \
-    --build="$(../config.guess)" || exit 1
+../configure                     \
+    --prefix=/usr                \
+    --build="$(../config.guess)" \
+    --host="${LFS_TGT}"          \
+    --disable-nls                \
+    --enable-shared              \
+    --enable-gprofng=no          \
+    --disable-werror             \
+    --enable-64-bit-bfd          \
+    --enable-new-dtags           \
+    --enable-default-hash-style=gnu || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # удалим libtool архивы, поскольку они вредны для кросс-компиляции, а так же
 # удалим ненужные статические библиотеки
-rm -fv "${LFS}/usr/lib"/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
+rm -fv "${LFS}/usr/lib"/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}

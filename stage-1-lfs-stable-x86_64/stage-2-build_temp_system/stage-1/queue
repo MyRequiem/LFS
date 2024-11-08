@@ -33,5 +33,6 @@ tar.sh
 xz.sh
 binutils-pass-2.sh
 gcc-pass-2.sh
+check-compiling-and-linking.sh
 
 # vim:ft=conf

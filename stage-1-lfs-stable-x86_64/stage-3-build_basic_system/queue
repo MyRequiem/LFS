@@ -15,6 +15,7 @@ glibc.sh
 zlib.sh
 bzip2.sh
 xz.sh
+lz4.sh
 zstd.sh
 file.sh
 readline.sh
@@ -24,6 +25,7 @@ flex.sh
 tcl.sh
 expect.sh
 dejagnu.sh
+pkgconf.sh
 binutils.sh
 gmp.sh
 mpfr.sh
@@ -31,10 +33,10 @@ mpc.sh
 attr.sh
 acl.sh
 libcap.sh
+libxcrypt.sh
 shadow.sh
 gcc.sh
 check-compiling-and-linking.sh
-pkg-config.sh
 ncurses.sh
 sed.sh
 psmisc.sh
@@ -48,8 +50,21 @@ gperf.sh
 expat.sh
 inetutils.sh
 less.sh
+
+###
+# NOTE:
+###
+# при сборке временной системы stage-2-build_temp_system мы установили perl
+# версии 5.38.2 (см. NOTE в ../stage-2-build_temp_system/stage-2/queue)
+# Сейчас удалим пакет perl-5.38.2 и установим текущую версию perl-5.40.0 (для
+# LFS-12.2)
+#    # removepkg --backup /var/log/packages/perl-5.38.2
+#    # rm -rf /usr/lib/perl5/5.38
+#    # mv /sources/{__perl-5.40.0.tar.xz__,perl-5.40.0.tar.xz}
+#    # mv /sources/{perl-5.38.2.tar.xz,__perl-5.38.2.tar.xz__}
 perl.sh
-xml-parser.sh
+
+perl-xml-parser.sh
 intltool.sh
 autoconf.sh
 automake.sh
@@ -58,9 +73,11 @@ kmod.sh
 libelf.sh
 libffi.sh
 python3.sh
-wheel.sh
+python3-flit-core.sh
+python3-wheel.sh
+python3-setuptools.sh
 ninja.sh
-meson.sh
+python3-meson.sh
 coreutils.sh
 check.sh
 diffutils.sh
@@ -77,14 +94,16 @@ patch.sh
 tar.sh
 texinfo.sh
 vim.sh
-eudev.sh
+python3-markupsafe.sh
+python3-jinja2.sh
+udev.sh
 man-db.sh
 procps-ng.sh
 util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
-# устанавливаем скрипт /usr/sbin/remove-la-files.sh  и затем запускаем его для
+# устанавливаем скрипт /usr/sbin/remove-la-files.sh и затем запускаем его для
 # очистки системы от libtool-архивов (*.la)
 set-remove-la-files.sh
 strip.sh

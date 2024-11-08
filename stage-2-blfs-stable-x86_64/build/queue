@@ -78,7 +78,6 @@ a/unzip.sh
 ap/unrar.sh
 ap/lzip.sh
 ap/p7zip.sh
-l/lz4.sh
 a/lrzip.sh
 ap/sudo.sh
 
@@ -177,7 +176,6 @@ d/python-modules/python3-pyyaml.sh
 d/python-modules/python3-six.sh
 d/python-modules/python3-attrs.sh
 d/python-modules/python3-editables.sh
-d/python-modules/python3-flit-core.sh
 d/python-modules/python3-packaging.sh
 d/python-modules/python3-typing-extensions.sh
 d/python-modules/python3-installer.sh
@@ -199,8 +197,6 @@ d/python-modules/python3-msgpack.sh
 d/python-modules/python3-cachecontrol.sh
 d/python-modules/python3-markdown.sh
 d/python-modules/python3-chardet.sh
-d/python-modules/python3-markupsafe.sh
-d/python-modules/python3-jinja2.sh
 d/python-modules/python3-pyparsing.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-pyproject-metadata.sh

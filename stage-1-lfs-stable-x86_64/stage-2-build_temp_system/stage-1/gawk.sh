@@ -17,4 +17,4 @@ sed -i 's/extras//' Makefile.in
     --build="$(build-aux/config.guess)" || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install

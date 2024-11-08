@@ -13,7 +13,8 @@ alias vh='v --human-readable'
 JOBS="-j$(/usr/bin/nproc)"
 MAKEFLAGS="\${JOBS}"
 NINJAJOBS="\${JOBS}"
-export MAKEFLAGS NINJAJOBS
+TESTSUITEFLAGS="\${JOBS}"
+export MAKEFLAGS NINJAJOBS TESTSUITEFLAGS
 EOF
 
 ln -svf .bashrc /root/.bash_profile
@@ -21,13 +22,18 @@ ln -svf .bashrc /root/.bash_profile
 # создадим /etc/inputrc и настроим автодополнение путей в консоли по <TAB>
 cat << EOF > "/etc/inputrc"
 set bell-style none
+
 set meta-flag On
 set input-meta On
 set convert-meta Off
 set output-meta On
-set echo-control-characters off
 
 TAB: menu-complete
+
+set echo-control-characters off
+
+# disable highlighted pasted text in the terminal
+set enable-bracketed-paste off
 
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
@@ -36,8 +42,12 @@ TAB: menu-complete
 "\e[3~": delete-char
 "\e[2~": quoted-insert
 
+# for xterm (\e - Alt, \C - Ctrl)
+# предыдущая команда из истории (by default: previous-history)
 "\C-p": history-search-backward
+# следующая команда из истории (by default: next-history)
 "\C-n": history-search-forward
+# удалить символ перед курсором
 "\C-h": backward-delete-char
 EOF
 
@@ -90,7 +100,7 @@ kvm:x:61:
 uuidd:x:80:
 wheel:x:97:
 users:x:999:
-nogroup:x:99:
+nogroup:x:65534:
 EOF
 
 # для некоторых дальнейших тестов нам понадобится обычный пользователь (позже

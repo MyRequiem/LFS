@@ -15,6 +15,10 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# удалим две man-страницы для функций хеширования паролей, libxcrypt
+# предоставит лучшую версию этих страниц руководства
+rm -fv man3/crypt*
+
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
 /bin/cp -vR "${TMP_DIR}"/* /

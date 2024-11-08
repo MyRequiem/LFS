@@ -42,7 +42,9 @@ case "$1" in
 esac
 
 # смонтируем LFS раздел
-mount "${PART}" "${LFS}" &>/dev/null
+if ! mountpoint "${LFS}" &>/dev/null; then
+    mount "${PART}" "${LFS}" &>/dev/null
+fi
 
 ! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/{pts,shm},proc,run,sys}
 
@@ -83,12 +85,12 @@ mount --bind /dev "${LFS}/dev" &>/dev/null
 # ------------------------------------------------
 # Устройства в /dev/pts - это устройства псевдотерминалов (pty). Монтируем
 # /dev/pts хоста в /mnt/lfs/dev/pts
-mount --bind /dev/pts "${LFS}/dev/pts" &>/dev/null
+mount -t devpts devpts -o gid=5,mode=0620 "${LFS}/dev/pts" &>/dev/null
 
 # в некоторых хост-системах /dev/shm является символической ссылкой на
 # /run/shm, поэтому в таком случае необходимо создать каталог /run/shm
 if [ -h "${LFS}/dev/shm" ]; then
-    mkdir -pv "${LFS}/$(readlink ${LFS}/dev/shm)"
+    install -v -d -m 1777 "${LFS}$(realpath /dev/shm)"
 else
     mount -t tmpfs -o nosuid,nodev tmpfs "${LFS}/dev/shm" &>/dev/null
 fi

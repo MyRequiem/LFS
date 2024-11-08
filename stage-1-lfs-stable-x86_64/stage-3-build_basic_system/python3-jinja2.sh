@@ -1,23 +1,20 @@
 #! /bin/bash
 
-PRGNAME="python3-flit-core"
-ARCH_NAME="flit_core"
+PRGNAME="python3-jinja2"
+ARCH_NAME="jinja2"
 
-### Flit_core (a PEP517 build backend for packages using Flit)
-# Модуль Flit_core является ключевым компонентом системы Flit, обеспечивающим
-# простой способ разместить пакеты и модули Python на PyPi
+### Jinja2 (template engine for Python)
+# Самый популярный шаблонизатор в языке программирования Python. Синтаксис
+# Jinja2 сильно похож на Django-шаблонизатор, но при этом дает возможность
+# использовать чистые Python выражения и поддерживает гибкую систему
+# расширений.
 
-# Required:    no
-# Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-testpath  (https://pypi.org/project/testpath/)
-
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 ###
@@ -36,8 +33,9 @@ mkdir -pv "${TMP_DIR}"
 #    --no-build-isolation
 pip3 wheel               \
     --wheel-dir=./dist   \
-    --no-deps            \
+    --no-cache-dir       \
     --no-build-isolation \
+    --no-deps            \
     ./ || exit 1
 
 ### устанавливаем созданный пакет в "${TMP_DIR}"
@@ -50,7 +48,6 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --find-links=./dist \
-    --no-cache-dir      \
     --no-user           \
     --no-index "${ARCH_NAME}" || exit 1
 
@@ -71,13 +68,14 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (a PEP517 build backend for packages using Flit)
+# Package: ${PRGNAME} (template engine for Python)
 #
-# The Flit_core module is the key component of the Flit system, which provides
-# a simple way to put Python packages and modules on PyPi
+# Jinja2 is a template engine that implements a simple pythonic template
+# language written in pure Python. It provides a Django inspired non-XML syntax
+# but supports inline expressions and an optional sandboxed  environment
 #
-# Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/f/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://pypi.org/project/Jinja2/
+# Download:  https://pypi.org/packages/source/J/Jinja2/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

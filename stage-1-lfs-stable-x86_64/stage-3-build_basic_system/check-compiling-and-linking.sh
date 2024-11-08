@@ -60,7 +60,7 @@ echo "Step: 4"
 echo "--------"
 VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
 # проверим настройки для стартовых файлов
-# /usr/lib/crt1.o
+# /usr/lib/Scrt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
 echo "# make sure that we're setup to use the correct start files"
@@ -161,4 +161,4 @@ echo ""
 # прежде чем продолжить процесс сборки.
 
 # очистим созданные нами тестовые файлы
-rm -v dummy.c a.out dummy.log
+rm -fv dummy.c a.out dummy.log

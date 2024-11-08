@@ -20,7 +20,7 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
     --enable-no-install-program=kill,uptime || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # утилита chroot в /usr/sbin
 mv -v "${LFS}/usr/bin/chroot" "${LFS}/usr/sbin"

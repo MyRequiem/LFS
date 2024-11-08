@@ -15,7 +15,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# задает расположение базы данных locate в соответствии со стандартом FHS
+# задает расположение базы данных locatedb в соответствии со стандартом FHS
 #    --localstatedir=/var/lib/locate
 ./configure       \
     --prefix=/usr \

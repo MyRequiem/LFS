@@ -25,15 +25,17 @@ cd build || exit 1
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию
 #    --with-system-zlib
-../configure             \
-    --prefix=/usr        \
-    LD=ld                \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --disable-multilib   \
-    --disable-bootstrap  \
-    --with-system-zlib   \
-    --enable-languages=c,c++ || exit 1
+../configure                 \
+    --prefix=/usr            \
+    LD=ld                    \
+    --enable-languages=c,c++ \
+    --enable-default-pie     \
+    --enable-default-ssp     \
+    --enable-host-pie        \
+    --disable-multilib       \
+    --disable-bootstrap      \
+    --disable-fixincludes    \
+    --with-system-zlib || exit 1
 
 make || make -j1 || exit 1
 
@@ -43,8 +45,18 @@ make || make -j1 || exit 1
 ###
 #
 # известно, что один набор тестов в наборе тестов GCC переполняет стек, поэтому
-# увеличим размер стека
-# ulimit -s 32768
+# размер стека установим бесконечный
+# ulimit -s -H unlimited
+#
+# удалим/исправим несколько известных ошибок при тестировании
+# sed -e '/cpython/d' -i \
+#     ../gcc/testsuite/gcc.dg/plugin/plugin.exp
+# sed -e 's/no-pic /&-no-pie /' -i \
+#     ../gcc/testsuite/gcc.target/i386/pr113689-1.c
+# sed -e 's/300000/(1|300000)/' -i \
+#     ../libgomp/testsuite/libgomp.c-c++-common/pr109062.c
+# sed -e 's/{ target nonpic } //' -e '/GOTPCREL/d' -i \
+#     ../gcc/testsuite/gcc.target/i386/fentryname3.c
 #
 # тесты будем запускать как непривилегированный пользователь tester, поэтому
 # изменим владельца в директории сборки
@@ -79,11 +91,13 @@ make install DESTDIR="${TMP_DIR}"
     ln -svf "${PRGNAME}" cc
 )
 
+ln -sv gcc.1 "${TMP_DIR}/usr/share/man/man1/cc.1"
+
 # добавим символическую ссылку в  /usr/lib/bfd-plugins/ для совместимости,
 # чтобы включить сборку программ с оптимизацией компоновки LTO (Link Time
 # Optimization)
 #    liblto_plugin.so -> \
-    #    ../../libexec/gcc/x86_64-lfs-linux-gnu/${VERSION}/liblto_plugin.so
+#    ../../libexec/gcc/x86_64-lfs-linux-gnu/${VERSION}/liblto_plugin.so
 DUMPMACHINE="$("${TMP_DIR}/usr/bin/${PRGNAME}" -dumpmachine)"
 ln -sfv "../../libexec/${PRGNAME}/${DUMPMACHINE}/${VERSION}/liblto_plugin.so" \
     "${TMP_DIR}/usr/lib/bfd-plugins/"
@@ -101,7 +115,7 @@ if [ -d /usr/x86_64-lfs-linux-gnu ]; then
     rm -rf /usr/lib/gcc/x86_64-lfs-linux-gnu
     rm -rf /usr/libexec/gcc/x86_64-lfs-linux-gnu
     rm -rf /usr/x86_64-lfs-linux-gnu
-    rm -f  /usr/lib/libstdc++.so.6.0.30-gdb.py
+    rm -f  /usr/lib/libstdc++.so.6.0.33-gdb.py
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -115,7 +129,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and C++ compilers.
 #
 # Home page: https://${PRGNAME}.gnu.org/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

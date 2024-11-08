@@ -20,11 +20,17 @@ sed -i 's/extras//' Makefile.in || exit 1
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# make check
+
+# chown -R tester .
+# su tester -c "PATH=${PATH} make check"
+# chown -R root:root .
+
+# жесткая ссылка gawk-${VERSION} не будет создана, если она уже существует,
+# поэтому удалим эту ссылку из системы
+rm -f "/usr/bin/${PRGNAME}-${VERSION}"
 make install DESTDIR="${TMP_DIR}"
 
-# заменим жесткую ссылку gawk -> gawk-${VERSION} в /usr/bin на символическую
-ln -svf "gawk-${VERSION}" /usr/bin/gawk
+ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/awk.1"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

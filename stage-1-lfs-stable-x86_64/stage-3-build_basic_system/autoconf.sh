@@ -14,17 +14,11 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим несколько проблем с тестами, вызванных bash-5.2 и более поздними
-# версиями
-sed -e 's/SECONDS|/&SHLVL|/'               \
-    -e '/BASH_ARGV=/a\        /^SHLVL=/ d' \
-    -i.orig tests/local.at || exit 1
-
 ./configure \
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# make TESTSUITEFLAGS=-j"$(nproc)" check
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -33,7 +33,7 @@ cd build || exit 1
     --with-gxx-include-dir="/tools/${LFS_TGT}/include/c++/${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # удалим libtool архивы (.la), так как они вредны для кросс-компиляции
-rm -fv "${LFS}/usr/lib"/lib{stdc++,stdc++fs,supc++}.la
+rm -fv "${LFS}/usr/lib"/lib{stdc++{,exp,fs},supc++}.la

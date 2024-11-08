@@ -21,18 +21,8 @@ cd build || exit 1
 ../configure \
     --prefix=/usr || exit 1
 
-# создаем txt и html документацию
-makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi
-makeinfo --plaintext       -o doc/dejagnu.txt  ../doc/dejagnu.texi
-
-make install DESTDIR="${TMP_DIR}"
-
-# устанавливаем документацию
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-install -v -dm755 "${TMP_DIR}${DOC_DIR}"
-install -v -m644  doc/dejagnu.{html,txt} "${TMP_DIR}${DOC_DIR}"
-
 # make check
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

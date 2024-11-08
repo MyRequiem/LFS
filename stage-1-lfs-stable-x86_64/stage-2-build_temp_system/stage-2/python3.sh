@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="python3"
-echo "Building ${PRGNAME}"
 ARCH_NAME="Python"
 
 ### Python

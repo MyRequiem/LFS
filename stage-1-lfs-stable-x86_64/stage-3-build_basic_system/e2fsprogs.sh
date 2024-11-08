@@ -9,7 +9,6 @@ PRGNAME="e2fsprogs"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -52,26 +51,14 @@ gunzip -v "${TMP_DIR}/usr/share/info/libext2fs.info.gz" || exit 1
 makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
 install -v -m644 doc/com_err.info "${TMP_DIR}/usr/share/info"
 
-# бэкапим конфиги
-#    /etc/e2scrub.conf
-#    /etc/mke2fs.conf
-# перед установкой пакета, если они существуют
-E2SCRUB_CONF="/etc/e2scrub.conf"
-if [ -f "${E2SCRUB_CONF}" ]; then
-    mv "${E2SCRUB_CONF}" "${E2SCRUB_CONF}.old"
-fi
-
-MKE2FS_CONF="/etc/mke2fs.conf"
-if [ -f "${MKE2FS_CONF}" ]; then
-    mv "${MKE2FS_CONF}" "${MKE2FS_CONF}.old"
-fi
+# некоторые утилиты, не входящие в LFS и BLFS, не могут распознать файловую
+# систему ext4 с включенной функцией Metadata_csum_seed, поэтому удалим эту
+# функцию из списка функций ext4 по умолчанию
+sed 's/metadata_csum_seed,//' -i "${TMP_DIR}/etc/mke2fs.conf"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
-
-config_file_processing "${E2SCRUB_CONF}"
-config_file_processing "${MKE2FS_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (ext2 and ext3 filesystems utilities)

@@ -14,10 +14,16 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-make install DESTDIR="${TMP_DIR}"
-mv "${TMP_DIR}"/{lib,sbin} "${TMP_DIR}/usr/"
+# исправим пути установки в Makefile:
+#    /lib  ->  /usr/lib
+#    /sbin -> /usr/sbin
+sed -e 's|LIBDIR=${DESTDIR}/lib|LIBDIR=${DESTDIR}/usr/lib|' \
+    -e 's|SBIN=${DESTDIR}/sbin|SBIN=${DESTDIR}/usr/sbin|'   \
+    -i Makefile || exit 1
 
-/bin/cp -vR "${TMP_DIR}"/* /
+make install DESTDIR="${TMP_DIR}"
+
+cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (scripts to start/stop the LFS system)

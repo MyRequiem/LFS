@@ -14,13 +14,13 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 #    --without-bash-malloc
 ./configure                              \
     --prefix=/usr                        \
+    --build="$(sh support/config.guess)" \
     --host="${LFS_TGT}"                  \
     --without-bash-malloc                \
-    --build="$(sh support/config.guess)" \
-    --docdir="/usr/share/doc/bash-${VERSION}" || exit 1
+    bash_cv_strtold_broken=no || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
-# создадим ссылку sh -> bash в /bin/
+# создадим ссылку sh -> bash в ${LFS}/bin/
 ln -svf bash "${LFS}/bin/sh"

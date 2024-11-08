@@ -18,7 +18,7 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-make install DESTDIR="${LFS}"
+make DESTDIR="${LFS}" install
 
 # удалим libtool архив (.la), т.к. он вреден для кросс-компиляции
 rm -fv "${LFS}/usr/lib/liblzma.la"

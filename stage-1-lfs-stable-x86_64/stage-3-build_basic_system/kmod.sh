@@ -25,12 +25,13 @@ mkdir -pv "${TMP_DIR}/usr/sbin"
     --with-openssl    \
     --with-xz         \
     --with-zstd       \
-    --with-zlib || exit 1
+    --with-zlib       \
+    -disable-manpages || exit 1
 
 make || make -j1 || exit 1
 
 # для набора тестов этого пакета требуются необработанные заголовки ядра (а не
-# «продезинфицированные», которые были установленные ранее), что выходит за
+# "продезинфицированные", которые были установленные ранее), что выходит за
 # рамки LFS
 
 make install DESTDIR="${TMP_DIR}"
@@ -43,10 +44,6 @@ make install DESTDIR="${TMP_DIR}"
 for TARGET in depmod insmod modinfo modprobe rmmod; do
     ln -sfv ../bin/kmod "${TMP_DIR}/usr/sbin/${TARGET}"
 done
-
-# ссылка в /usr/bin/
-#    lsmod -> kmod
-ln -sfv kmod "${TMP_DIR}/usr/bin/lsmod"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

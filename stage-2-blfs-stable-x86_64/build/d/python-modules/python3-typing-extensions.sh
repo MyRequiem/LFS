@@ -10,7 +10,7 @@ ARCH_NAME="typing_extensions"
 # будут иметь возможность использовать новые типы, добавленные в модуль typing,
 # например typing.Text или typing.Coroutine
 
-# Required:    python3-flit-core
+# Required:    no
 # Recommended: no
 # Optional:    no
 

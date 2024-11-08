@@ -14,13 +14,11 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# утилита arpd зависит от пакета Berkeley DB, поэтому если он не установлен
-# (blfs еще не собирали), создавать arpd не будем
-if ! [ -f /usr/lib/libdb.so ]; then
-    sed -i /ARPD/d Makefile || exit 1
-    # тем не менее man-страницы для arpd все равно будут установлены, удалим их
-    rm -fv man/man8/arpd.8
-fi
+# утилита 'arpd' не будет собрана, поскольку она зависит от пакета Berkeley DB,
+# который устанавливается в BLFS, но каталог и man-страница для arpd все равно
+# будут установлены. Предотвратим это:
+sed -i /ARPD/d Makefile
+rm -fv man/man8/arpd.8
 
 make NETNS_RUN_DIR=/run/netns || make -j1 NETNS_RUN_DIR=/run/netns || exit 1
 # пакет не содержит набора тестов

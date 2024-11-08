@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
-LFS_VERSION="11.3"
+LFS_VERSION="12.2"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
@@ -55,7 +55,7 @@ else
 fi
 
 # set the default system \$PATH
-export PATH="/usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin"
+export PATH="/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # if exist \$HOME/bin directory add it to the \$PATH
 if [ -d "\${HOME}/bin" ]; then
@@ -105,7 +105,7 @@ PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
     PKG_CONFIG_PATH=\${PKG_CONFIG_PATH}:/usr/local/share/pkgconfig
 export PKG_CONFIG_PATH
 
-# append any additional bash scripts found in /etc/profile.d directory
+# append any additional bash scripts found in /etc/profile.d/ directory
 for PROFILE_SCRIPT in /etc/profile.d/*.sh; do
     if [ -x "\${PROFILE_SCRIPT}" ]; then
         source "\${PROFILE_SCRIPT}"
@@ -159,7 +159,7 @@ cat << EOF > "${TMP_DIR}${DIRCOLORS_SH}"
 
 # Begin ${DIRCOLORS_SH}
 
-# Setup for /bin/ls and /bin/grep to support color
+### Setup for /bin/ls and /bin/grep to support color
 
 LS_OPTIONS="-F -b -T 0 --group-directories-first --color=auto"
 export LS_OPTIONS
@@ -191,18 +191,59 @@ cat << EOF > "${TMP_DIR}${DIRCOLORS}"
 # LS_COLORS environment variable used by GNU ls with the --color option
 
 # below, there should be one TERM entry for each termtype that is colorizable
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM jfbterm
 TERM konsole
+TERM kterm
 TERM linux
+TERM linux-c
+TERM mach-color
+TERM mlterm
+TERM putty
 TERM rxvt
 TERM rxvt-256color
+TERM rxvt-cygwin
+TERM rxvt-cygwin-native
 TERM rxvt-unicode
 TERM rxvt-unicode-256color
 TERM rxvt-unicode256
 TERM screen
 TERM screen-256color
+TERM screen-256color-bce
+TERM screen-bce
+TERM screen-w
+TERM screen.linux
+TERM screen.rxvt
+TERM terminator
+TERM tmux
+TERM tmux-256color
 TERM vt100
 TERM xterm
+TERM xterm-16color
 TERM xterm-256color
+TERM xterm-88color
+TERM xterm-color
+TERM xterm-debian
+TERM xterm-new
 
 # below are the color init strings for the basic file types
 NORMAL                00
@@ -268,12 +309,12 @@ EXEC                  01;32
 .odp    00
 
 # temporary files
-.tmp  01;30
+.tmp     01;30
 .\$\$\$  01;30
-.bak  01;30
-.back 01;30
+.bak     01;30
+.back    01;30
 
-# DOS-style executables
+# DOS-style executables (bright green)
 .bat  01;32
 .btm  01;32
 .cmd  01;32

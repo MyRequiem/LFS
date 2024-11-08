@@ -21,7 +21,7 @@ PAGE=A4 ./configure \
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# пакет не содержит набора тестов
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

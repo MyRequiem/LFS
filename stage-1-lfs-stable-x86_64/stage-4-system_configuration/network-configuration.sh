@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-LFS_VERSION="11.3"
+LFS_VERSION="12.2"
 
 ### Network Configuration (network configuration files)
 
@@ -31,9 +31,9 @@ source "${ROOT}check_environment.sh" || exit 1
 # -------------------------------------------------
 # Какие интерфейсы запускаются и отключаются сетевыми скриптами, обычно зависит
 # от файлов в /etc/sysconfig/ Этот каталог должен содержать файл для каждого
-# настраиваемого интерфейса вида ifconfig.xyz, где "xyz" - имя интерфейса
-# (eth0, eth1, wlan0 и т.д). Эти файлы содержат атрибуты интерфейса, такие как
-# IP-адрес, маску подсети и т.д.
+# настраиваемого интерфейса вида ifconfig.<interface_name>, где
+# <interface_name> - имя интерфейса (eth0, eth1, wlan0 и т.д). Эти файлы
+# содержат атрибуты интерфейса, такие как IP-адрес, маску подсети и т.д.
 
 ### Создадим конфиг для устройства eth0 со статическим IP-адресом
 # ONBOOT    - интерфейс будет подниматься при загрузке системы, если значение
@@ -94,6 +94,9 @@ cat << EOF > "${RESOLV_CONF}"
 # nameserver 8.8.8.8
 # nameserver 8.8.4.4
 
+# DNS from internet provider (login.beeline.ru)
+# nameserver 83.102.180.175
+
 # End ${RESOLV_CONF}
 EOF
 
@@ -115,7 +118,7 @@ cat << EOF > "${HOSTS}"
 # End ${HOSTS}
 EOF
 
-# пишем список файлов в /var/log/packages/network-configuration
+# пишем список файлов в /var/log/packages/network-configuration-${VERSION}
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (network configuration files)
 #

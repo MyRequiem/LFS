@@ -22,8 +22,8 @@ mkdir -pv /var/lib/hwclock
 # отключаем создание python bindings
 #    --without-python
 ./configure                               \
-    ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --libdir=/usr/lib                     \
+    --runstatedir=/run                    \
     --disable-chfn-chsh                   \
     --disable-login                       \
     --disable-nologin                     \
@@ -32,8 +32,9 @@ mkdir -pv /var/lib/hwclock
     --disable-runuser                     \
     --disable-pylibmount                  \
     --disable-static                      \
+    --disable-liblastlog2                 \
     --without-python                      \
-    runstatedir=/run                      \
+    ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="kernel-headers"
-echo "Building ${PRGNAME}"
 ARCH_NAME="linux"
 
 ### Linux Headers

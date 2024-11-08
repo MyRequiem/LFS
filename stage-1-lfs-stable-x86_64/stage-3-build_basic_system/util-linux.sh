@@ -14,14 +14,10 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/var/lib/hwclock"
 
-# FHS рекомендует использовать каталог /var/lib/hwclock вместо /etc для файла
-# adjtime, в котором хранится величина отклонения аппаратных часов
-mkdir -pv /var/lib/hwclock
-
 ./configure                               \
-    ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --bindir=/usr/bin                     \
     --libdir=/usr/lib                     \
+    --runstatedir=/run                    \
     --sbindir=/usr/sbin                   \
     --disable-chfn-chsh                   \
     --disable-login                       \
@@ -30,10 +26,12 @@ mkdir -pv /var/lib/hwclock
     --disable-setpriv                     \
     --disable-runuser                     \
     --disable-pylibmount                  \
+    --disable-liblastlog2                 \
     --disable-static                      \
     --without-python                      \
     --without-systemd                     \
     --without-systemdsystemunitdir        \
+    ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
@@ -43,10 +41,14 @@ make || make -j1 || exit 1
 # CONFIG_SCSI_DEBUG как модуль
 #
 # запуск набора тестов от имени пользователя root может быть не безопасным для
-# системы, поэтому будем запускать от имени пользователя tester
-# chown -Rv tester .
+# системы, поэтому будем запускать от пользователя tester, также требуется файл
+# /etc/fstab (создадим фиктивный)
+#
+# touch /etc/fstab
+# chown -R tester .
 # su tester -c "make -k check"
-# chown -Rv root:root .
+# chown -R root:root .
+# rm -f /etc/fstab
 
 make install DESTDIR="${TMP_DIR}"
 

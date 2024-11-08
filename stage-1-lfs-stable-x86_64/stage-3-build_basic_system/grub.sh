@@ -23,10 +23,8 @@ unset {C,CPP,CXX,LD}FLAGS
 # низкоуровневые операции в исходном коде могут быть нарушены агрессивной
 # оптимизацией
 
-# устраним проблему, приводившую к сбою grub-install, когда раздел /boot не
-# является отдельным разделом
-patch -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+# добавим файл extra_deps.lst, отсутствующий в архиве исходников релиза
+echo depends bli part_gpt > "${PRGNAME}-core/extra_deps.lst"
 
 # минимизирует сборку, отключая некоторые особенности и тестирование программ,
 # которые не нужны для LFS
@@ -47,7 +45,8 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-mv -v  "${TMP_DIR}/etc/bash_completion.d/grub" "${TMP_DIR}${BASH_COMPLETION}"
+mv -v  "${TMP_DIR}/etc/bash_completion.d/${PRGNAME}" \
+    "${TMP_DIR}${BASH_COMPLETION}"
 rm -rf "${TMP_DIR}/etc/bash_completion.d"
 
 source "${ROOT}/stripping.sh"      || exit 1

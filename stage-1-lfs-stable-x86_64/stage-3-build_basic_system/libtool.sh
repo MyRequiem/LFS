@@ -19,11 +19,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-
-### запуск набора тестов
-# для сокращения времени тестирования можно указать переменную TESTSUITEFLAGS
-# make TESTSUITEFLAGS="-j$(nproc)" -k check
-
+# make -k check
 make install DESTDIR="${TMP_DIR}"
 
 # удалим бесполезную статическую библиотеку

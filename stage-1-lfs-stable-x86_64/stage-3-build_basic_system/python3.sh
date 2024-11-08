@@ -22,27 +22,19 @@ mkdir -pv "${TMP_DIR}/etc"
     --prefix=/usr       \
     --enable-shared     \
     --with-system-expat \
-    --with-system-ffi   \
     --enable-optimizations || exit 1
 
 make || make -j1 || exit 1
-
-# тесты на данном этапе не запускаем, т.к. они требуют сконфигурированного
-# сетевого подключения и установленных TK и Graphical Environments
-# make test
-
+# make test TESTOPTS="--timeout 120"
 make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "${TMP_DIR}/etc/pip.conf"
 [global]
+# do not display warnings when running from root
 root-user-action = ignore
+# do not display warnings about the presence of a newer pip3 version
 disable-pip-version-check = true
 EOF
-
-# ссылка в /usr/bin
-#    pip3 -> pip${MAJ_VERSION}
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-ln -sfv "pip${MAJ_VERSION}" "${TMP_DIR}/usr/bin/pip3"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

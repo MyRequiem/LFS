@@ -6,7 +6,7 @@ ARCH_NAME="Mako"
 ### Mako (A python templating language)
 # Python модуль, реализующий сверхбыстрое и легкое создание шаблонов
 
-# Required:    python3-markupsafe
+# Required:    no
 # Recommended: no
 # Optional:    python3-pytest (для тестов)
 
