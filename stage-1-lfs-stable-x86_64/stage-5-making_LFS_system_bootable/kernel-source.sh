@@ -42,7 +42,8 @@ make mrproper || exit 1
 # ссылка в /usr/src
 #    linux -> linux-${VERSION}
 cd "${USR_SRC}" || exit 1
-ln -svf "${ARCH_NAME}-${VERSION}" linux
+rm -f linux
+ln -sv "${ARCH_NAME}-${VERSION}" linux
 
 TARGET="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
