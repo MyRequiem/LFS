@@ -5,21 +5,19 @@ LFS_VERSION="12.2"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
-#    /etc/profile
 #    /etc/dircolors
-#    /etc/bash_completion.d/
-#    /etc/profile.d/i18n.sh
-#    /etc/profile.d/umask.sh
-#    /etc/profile.d/readline.sh
+#    /etc/profile
 #    /etc/profile.d/dircolors.sh
-#    /etc/profile.d/bash_completion.sh
+#    /etc/profile.d/i18n.sh
+#    /etc/profile.d/readline.sh
+#    /etc/profile.d/umask.sh
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/etc/{profile.d,bash_completion.d}
+mkdir -pv "${TMP_DIR}/etc/profile.d"
 
 # =============================== /etc/profile =================================
 PROFILE="/etc/profile"
@@ -117,40 +115,6 @@ HOST_NAME TIME CURR_DIR
 
 # End ${PROFILE}
 EOF
-
-# ==================== /etc/profile.d/bash_completion.sh =======================
-BASH_COMPLETION="/etc/profile.d/bash_completion.sh"
-cat << EOF > "${TMP_DIR}${BASH_COMPLETION}"
-#! /bin/bash
-
-# Begin ${BASH_COMPLETION}
-
-# Import bash completion scripts
-
-# if bash-completion package is installed, use its configuration instead
-if [ -r /usr/share/bash-completion/bash_completion ]; then
-    # check for interactive bash and that we haven't already been sourced
-    if [[ -n "\${BASH_VERSION}" && -n "\${PS1}" && \\
-            -z "\${BASH_COMPLETION_VERSINFO}" ]]; then
-
-        [ -r "\${XDG_CONFIG_HOME:-\$HOME/.config}/bash_completion" ] && \\
-            source "\${XDG_CONFIG_HOME:-\$HOME/.config}/bash_completion"
-
-        # source completion code
-        source /usr/share/bash-completion/bash_completion
-    fi
-fi
-
-for SCRIPT in /etc/bash_completion.d/*; do
-    if [ -r "\${SCRIPT}" ] ; then
-        source "\${SCRIPT}"
-    fi
-done
-
-# End ${BASH_COMPLETION}
-EOF
-
-chmod 755 "${TMP_DIR}${BASH_COMPLETION}"
 
 # ======================= /etc/profile.d/dircolors.sh ==========================
 DIRCOLORS_SH="/etc/profile.d/dircolors.sh"
@@ -658,14 +622,12 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 #
 # System-wide shell settings
 #
-# /etc/profile
 # /etc/dircolors
-# /etc/bash_completion.d/
-# /etc/profile.d/i18n.sh
-# /etc/profile.d/umask.sh
-# /etc/profile.d/readline.sh
+# /etc/profile
 # /etc/profile.d/dircolors.sh
-# /etc/profile.d/bash_completion.sh
+# /etc/profile.d/i18n.sh
+# /etc/profile.d/readline.sh
+# /etc/profile.d/umask.sh
 #
 EOF
 
