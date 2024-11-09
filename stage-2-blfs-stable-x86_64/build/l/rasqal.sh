@@ -9,8 +9,7 @@ PRGNAME="rasqal"
 
 # Required:    raptor
 # Recommended: no
-# Optional:    pcre
-#              libgcrypt
+# Optional:    libgcrypt
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

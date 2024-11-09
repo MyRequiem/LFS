@@ -9,7 +9,7 @@ PRGNAME="xterm"
 #              dejavu-fonts-ttf
 # Recommended: no
 # Optional:    emacs
-#              pcre или pcre2
+#              pcre2
 #              valgrind
 #              man2html (http://www.nongnu.org/man2html/)
 

@@ -13,7 +13,7 @@ PRGNAME="git"
 # Recommended: curl
 # Optional:    gnupg
 #              openssh
-#              pcre2 или pcre
+#              pcre2
 #              subversion           (собранный с perl bindings для git svn)
 #              tk                   (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
 #              valgrind

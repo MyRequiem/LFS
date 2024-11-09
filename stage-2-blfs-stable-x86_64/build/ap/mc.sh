@@ -8,7 +8,6 @@ PRGNAME="mc"
 # GPM.
 
 # Required:    glib
-#              pcre
 # Recommended: slang
 # Optional:    doxygen
 #              gpm

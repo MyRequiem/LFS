@@ -14,7 +14,7 @@ PRGNAME="wget"
 #              perl-io-socket-ssl (для тестов)
 #              libidn2
 #              libpsl
-#              pcre или pcre2
+#              pcre2
 #              valgrind           (для тестов)
 
 ROOT="/root/src/lfs"
