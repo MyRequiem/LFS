@@ -1,12 +1,12 @@
 https://github.com/lfs-book/LSB-Tools/releases/download/v0.12/LSB-Tools-0.12.tar.gz
 https://github.com/scop/bash-completion/releases/download/2.14.0/bash-completion-2.14.0.tar.xz
 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-20241017.tar.gz
+https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20240416.tar.xz
+https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
+https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 
 
 ================================================================================
-https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20230101.tar.xz
-https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
-https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz
 https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
 https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
