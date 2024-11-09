@@ -6,15 +6,13 @@ PRGNAME="make-ca"
 # Инфраструктура открытых ключей (PKI) и методы проверки их подлинности в
 # ненадежных сетях.
 
-# Required:    p11-kit (требуется во время выполнения для создания хранилищ
-#                       сертификатов из якорей доверия)
+# Required:    p11-kit (собранный с уже установленным libtasn1)
 # Recommended: no
-# Optional:    nss     (для создания общей NSSDB)
+# Optional:    nss
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/"{ssl/local,cron.weekly}
@@ -24,7 +22,7 @@ make install DESTDIR="${TMP_DIR}"
 # скрипт 'make-ca' загрузит в /etc/ssl/ файл certdata.txt, затем загрузит в
 # /etc/pki/ и обработает сертификаты включенные в него, для использования в
 # качестве якорей доверия модуля p11-kit
-# "${TMP_DIR}"/usr/sbin/make-ca --get --destdir "${TMP_DIR}"
+# "${TMP_DIR}/usr/sbin/make-ca" --get --destdir "${TMP_DIR}"
 #    --get    - загрузить файл certdata.txt
 #
 # чтобы не использовать утилиту make-ca при установке пакета, мы сразу скачали
@@ -32,8 +30,7 @@ make install DESTDIR="${TMP_DIR}"
 cp "${SOURCES}/certdata.txt" "${TMP_DIR}/etc/ssl/" || exit 1
 
 # копируем /etc/make-ca/make-ca.conf.dist в make-ca.conf
-MAKE_CA_CONF="/etc/${PRGNAME}/${PRGNAME}.conf"
-cp "${TMP_DIR}${MAKE_CA_CONF}"{.dist,} || exit 1
+cp "${TMP_DIR}/etc/${PRGNAME}/${PRGNAME}.conf"{.dist,} || exit 1
 
 UPDATE_PKI="/etc/cron.weekly/update-pki.sh"
 cat << EOF > "${TMP_DIR}${UPDATE_PKI}"
@@ -60,15 +57,9 @@ openssl x509 -in "${SOURCES}/class3.crt" \
     -addtrust emailProtection            \
     -addtrust codeSigning > "${TMP_DIR}/etc/ssl/local/CAcert_Class_3_root.pem"
 
-if [ -f "${MAKE_CA_CONF}" ]; then
-    mv "${MAKE_CA_CONF}" "${MAKE_CA_CONF}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${MAKE_CA_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (deliver and manage a complete PKI configuration)
@@ -82,7 +73,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # enough for any Linux distribution.
 #
 # Home page: https://github.com/djlucas/${PRGNAME}/
-# Download:  https://github.com/lfs-book/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/lfs-book/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -5,13 +5,13 @@ https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20240
 https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
 https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz
-
-
-================================================================================
-https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
+https://github.com/lfs-book/make-ca/archive/v1.14/make-ca-1.14.tar.gz
 https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt
+
+
+================================================================================
 https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
 https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
