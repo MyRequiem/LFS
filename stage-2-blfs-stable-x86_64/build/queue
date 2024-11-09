@@ -8,9 +8,9 @@ l/libtasn1.sh
 n/p11-kit.sh
 n/make-ca.sh
 l/pcre2.sh
+l/libunistring.sh
+n/nettle.sh
 
-# l/libunistring.sh
-# n/nettle.sh
 # n/npth.sh
 # n/pth.sh
 # l/libidn.sh
