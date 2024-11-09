@@ -16,7 +16,7 @@ PRGNAME="i3"
 #              python3-asciidoc
 #              xmlto
 #              docbook-xml
-#              pcre
+#              pcre2
 #              startup-notification
 #              pango
 #              cairo
