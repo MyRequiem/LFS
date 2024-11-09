@@ -14,7 +14,6 @@ PRGNAME="ffmpeg"
 #              lame
 #              opus
 #              pulseaudio
-#              libtheora
 #              libvorbis
 #              libvpx
 #              libdrm

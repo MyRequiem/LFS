@@ -16,7 +16,6 @@ PRGNAME="gst-plugins-base"
 #              libjpeg-turbo
 #              libogg
 #              libpng
-#              libtheora
 #              libvorbis
 #              mesa
 #              pango
