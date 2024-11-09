@@ -7,9 +7,8 @@ a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh
 n/make-ca.sh
+l/pcre2.sh
 
-
-# l/pcre2.sh
 # l/pcre.sh
 # l/libunistring.sh
 # n/nettle.sh

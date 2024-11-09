@@ -9,10 +9,10 @@ https://github.com/lfs-book/make-ca/archive/v1.14/make-ca-1.14.tar.gz
 https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt
 http://www.cacert.org/certs/class3.crt
+https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.tar.bz2
 
 
 ================================================================================
-https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
 https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
 https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz

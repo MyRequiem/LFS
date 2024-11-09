@@ -20,12 +20,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALGRIND="--disable-valgrind"
-LIBEDIT="--disable-pcre2test-libedit"
-
-# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
-[ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-pcre2test-libedit"
-
 # включает поддержку Unicode и функции для обработки UTF-8/16/32 символов
 #    --enable-unicode
 # "Just-in-time" компиляция, что может значительно ускорить сопоставление
@@ -50,8 +44,6 @@ LIBEDIT="--disable-pcre2test-libedit"
     --enable-pcre2grep-libz        \
     --enable-pcre2grep-libbz2      \
     --enable-pcre2test-libreadline \
-    "${LIBEDIT}"                   \
-    "${VALGRIND}"                  \
     --disable-static               \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
