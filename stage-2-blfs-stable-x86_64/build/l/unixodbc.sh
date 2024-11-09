@@ -9,8 +9,7 @@ ARCH_NAME="unixODBC"
 
 # Required:    no
 # Recommended: no
-# Optional:    pth
-#              minisql (https://hughestech.com.au/products/msql/)
+# Optional:    minisql (https://hughestech.com.au/products/msql/)
 
 ### Конфигурация
 #    /etc/unixODBC/*

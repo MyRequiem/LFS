@@ -17,7 +17,6 @@ PRGNAME="php"
 #              libxslt
 #              dovecot или exim или postfix или sendmail
 #              pcre2
-#              pth
 #              apparmor          (https://wiki.ubuntu.com/AppArmor)
 #              dmalloc           (https://dmalloc.com/)
 #              net-snmp          (http://www.net-snmp.org/)

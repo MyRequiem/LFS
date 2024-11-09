@@ -11,8 +11,7 @@ PRGNAME="libidn"
 
 # Required:    no
 # Recommended: no
-# Optional:    pth
-#              emacs
+# Optional:    emacs
 #              gtk-doc  (для сборки API документации)
 #              openjdk
 #              valgrind
@@ -25,13 +24,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-THREADS="posix"
 GTK_DOC="--disable-gtk-doc"
 OPENJDK="--disable-java"
 VALGRIND="--disable-valgrind-tests"
 MONO="--disable-csharp"
 
-command -v pth-config   &>/dev/null && THREADS="pth"
 command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
 command -v java         &>/dev/null && OPENJDK="--enable-java"
 command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
@@ -39,7 +36,6 @@ command -v mono         &>/dev/null && MONO="--enable-csharp"
 
 ./configure                       \
     --prefix=/usr                 \
-    --enable-threads="${THREADS}" \
     "${GTK_DOC}"                  \
     "${OPENJDK}"                  \
     "${VALGRIND}"                 \
