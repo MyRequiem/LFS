@@ -11,12 +11,11 @@ PRGNAME="p11-kit"
 #             make-ca
 # Optional:   gtk-doc
 #             libxslt
-#             nss (runtime)
+#             nss
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 CRON_WEEKLY="/etc/cron.weekly"
@@ -34,29 +33,25 @@ cat >> trust/trust-extract-compat << "EOF"
 # Download ca-certificates needed for cURL
 echo -ne "\nDownload https://curl.haxx.se/ca/cacert.pem ... "
 wget -q -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem || {
-    echo "Error"
-    exit
+    echo "Error download ..."
+    exit 1
 }
 echo "Ok"
 EOF
 
-GTK_DOC="false"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-
 mkdir p11-build
-cd    p11-build || exit 1
+cd p11-build || exit 1
 
 meson                   \
     --prefix=/usr       \
     --buildtype=release \
-    -Dgtk_doc="false"   \
     -Dtrust_paths=/etc/pki/anchors || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-[[ "x${GTK_DOC}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 # ссылка
 #    /usr/bin/update-ca-certificates -> ../libexec/p11-kit/trust-extract-compat
@@ -84,18 +79,9 @@ cat << EOF > "${TMP_DIR}${UPDATE_CERTIFICATES}"
 EOF
 chmod 754 "${TMP_DIR}${UPDATE_CERTIFICATES}"
 
-CONFIG="/etc/pkcs11/pkcs11.conf"
-cp "${TMP_DIR}${CONFIG}.example" "${TMP_DIR}${CONFIG}"
-
-if [ -f "${CONFIG}" ]; then
-    mv "${CONFIG}" "${CONFIG}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (PKCS#11 toolkit)

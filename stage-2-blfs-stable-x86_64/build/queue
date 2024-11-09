@@ -5,11 +5,10 @@ a/blfs-bootscripts.sh
 s/etc-issue.sh
 a/which.sh
 l/libtasn1.sh
+n/p11-kit.sh
 
 
-# n/p11-kit.sh
 # n/make-ca.sh
-# n/p11-kit.sh
 # l/pcre2.sh
 # l/pcre.sh
 # l/libunistring.sh
@@ -46,7 +45,6 @@ l/libtasn1.sh
 # l/fuse2.sh
 # l/libxml2.sh
 # l/libxslt.sh
-# n/p11-kit.sh
 # l/fuse.sh
 # ap/sqlite.sh
 # l/libusb.sh

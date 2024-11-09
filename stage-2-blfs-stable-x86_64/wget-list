@@ -4,10 +4,10 @@ https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snap
 https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/blfs-bootscripts-20240416.tar.xz
 https://ftp.gnu.org/gnu/which/which-2.21.tar.gz
 https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.19.0.tar.gz
+https://github.com/p11-glue/p11-kit/releases/download/0.25.5/p11-kit-0.25.5.tar.xz
 
 
 ================================================================================
-https://github.com/p11-glue/p11-kit/releases/download/0.24.1/p11-kit-0.24.1.tar.xz
 https://github.com/lfs-book/make-ca/releases/download/v1.12/make-ca-1.12.tar.xz
 https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
 http://www.cacert.org/certs/root.crt
