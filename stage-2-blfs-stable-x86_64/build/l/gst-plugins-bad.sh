@@ -36,7 +36,6 @@ PRGNAME="gst-plugins-bad"
 #              openjpeg
 #              opus
 #              sbc
-#              sdl
 #              valgrind
 #              wayland              (gtk+3 должен быть скомпилирован с поддержкой Wayland)
 #              wpebackend-fdo

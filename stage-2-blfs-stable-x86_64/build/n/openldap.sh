@@ -12,7 +12,6 @@ PRGNAME="openldap"
 # Required:    no
 # Recommended: cyrus-sasl
 # Optional:    gnutls
-#              pth
 #              unixodbc
 #              mariadb или postgresql или mysql (http://www.mysql.com/)
 #              openslp                          (http://www.openslp.org/)

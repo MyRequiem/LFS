@@ -9,7 +9,6 @@ PRGNAME="libtheora"
 # Required:    libogg
 # Recommended: libvorbis
 # Optional:    -- для сборки примеров --
-#              sdl
 #              libpng
 #              -- для сборки API документации --
 #              doxygen

@@ -12,7 +12,6 @@ PRGNAME="parted"
 # Required:    no
 # Recommended: lvm2
 # Optional:    dosfstools
-#              pth
 #              texlive или install-tl-unx
 #              perl-digest-crc (для тестов) https://metacpan.org/pod/Digest::CRC
 

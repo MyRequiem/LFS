@@ -10,9 +10,8 @@ n/make-ca.sh
 l/pcre2.sh
 l/libunistring.sh
 n/nettle.sh
+n/npth.sh
 
-# n/npth.sh
-# n/pth.sh
 # l/libidn.sh
 # l/libidn2.sh
 # l/libseccomp.sh
@@ -165,7 +164,6 @@ n/nettle.sh
 # d/python-modules/python3-asciidoc.sh
 # d/patchelf.sh
 # d/gcc.sh
-# n/pth.sh
 # d/py3c.sh
 # d/python-modules/python3-pycryptodome.sh
 # d/python-modules/python3-pygments.sh
@@ -257,7 +255,6 @@ n/nettle.sh
 # n/cyrus-sasl.sh
 # n/libtirpc.sh
 # l/libnsl.sh
-# n/pth.sh
 # l/berkeley-db.sh
 # d/clisp.sh
 # l/nspr.sh
@@ -680,7 +677,6 @@ n/nettle.sh
 # l/alsa-oss.sh
 # l/cxxopts.sh
 # ap/pamixer.sh
-# l/sdl.sh
 # l/sdl2.sh
 # l/libwebp.sh
 # l/libmng.sh
