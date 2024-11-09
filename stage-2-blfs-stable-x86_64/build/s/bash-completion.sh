@@ -27,9 +27,7 @@ autoreconf -vif || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-# скрипт /etc/profile.d/bash_completion.sh уже установлен с пакетом
-# 'etc-profile'
-rm -f "${TMP_DIR}/etc/profile.d/bash_completion.sh"
+chmod 755 "${TMP_DIR}/etc/profile.d/bash_completion.sh"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
