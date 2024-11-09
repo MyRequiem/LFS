@@ -18,25 +18,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALGRIND="--disable-valgrind-tests"
-GTK_DOC="--disable-gtk-doc"
-
-# command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
-
 ./configure       \
     --prefix=/usr \
-    "${GTK_DOC}"  \
-    "${VALGRIND}" \
     --disable-static || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
-
-# установим документацию
-[[  "x${GTK_DOC}" == "x--enable-gtk-doc" ]] && \
-    make -C doc/reference install-data-local DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
