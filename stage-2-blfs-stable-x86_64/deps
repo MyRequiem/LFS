@@ -440,7 +440,7 @@ libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
 libumfpack                              gegl
 libunibreak                             libass
-libunistring                            libidn2, gnutls, guile
+libunistring                            libidn2, gnutls, libpsl, guile
 libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
 liburcu                                 glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
