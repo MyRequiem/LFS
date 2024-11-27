@@ -9,8 +9,8 @@ PRGNAME="libidn2"
 # преобразуя Unicode строки в строки ASCII, позволяющие приложениям
 # использовать определенное доменное имя в ASCII формате.
 
-# Required:    libunistring
-# Recommended: no
+# Required:    no
+# Recommended: libunistring
 # Optional:    git
 #              gtk-doc (для создания API документации)
 
@@ -21,20 +21,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+GTK_DOC="false"
 
 ./configure       \
     --prefix=/usr \
-    "${GTK_DOC}"  \
     --disable-static || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
-    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+[[ "x${GTK_DOC}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
