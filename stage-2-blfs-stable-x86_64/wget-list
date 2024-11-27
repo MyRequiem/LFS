@@ -15,10 +15,11 @@ https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz
 https://www.gnupg.org/ftp/gcrypt/npth/npth-1.7.tar.bz2
 https://ftp.gnu.org/gnu/libidn/libidn-1.42.tar.gz
 https://ftp.gnu.org/gnu/libidn/libidn2-2.3.7.tar.gz
+https://github.com/seccomp/libseccomp/releases/download/v2.5.5/libseccomp-2.5.5.tar.gz
+https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.7.1.tar.xz
 
 
 ================================================================================
-https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz
 https://github.com/rockdaboot/libpsl/releases/download/0.21.2/libpsl-0.21.2.tar.gz
 https://ftp.gnu.org/gnu/wget/wget-1.21.3.tar.gz
 https://curl.se/download/curl-8.1.0.tar.xz
@@ -807,7 +808,6 @@ https://github.com/sahlberg/libiscsi/archive/1.20.0/libiscsi-1.20.0.tar.gz
 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2
 https://archive.apache.org/dist/apr/apr-util-1.6.3.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
-https://github.com/seccomp/libseccomp/releases/download/v2.5.4/libseccomp-2.5.4.tar.gz
 https://download.librdf.org/source/raptor2-2.0.15.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/raptor-2.0.15-security_fixes-1.patch
 https://download.librdf.org/source/rasqal-0.9.33.tar.gz
