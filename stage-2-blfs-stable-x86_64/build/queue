@@ -15,8 +15,8 @@ l/libidn.sh
 l/libidn2.sh
 l/libseccomp.sh
 n/gnutls.sh
+l/libpsl.sh
 
-# l/libpsl.sh
 # n/wget.sh
 # n/curl.sh
 # a/pciutils.sh

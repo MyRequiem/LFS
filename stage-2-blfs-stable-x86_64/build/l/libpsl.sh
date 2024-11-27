@@ -12,6 +12,7 @@ PRGNAME="libpsl"
 # gTLDs
 
 # Required:    libidn2
+#              libunistring
 # Recommended: no
 # Optional:    gtk-doc  (для сборки документации)
 #              valgrind (для тестов)
@@ -26,19 +27,17 @@ mkdir -pv "${TMP_DIR}"
 # принудительно используем Python3
 sed -i 's/env python/&3/' src/psl-make-dafsa || exit 1
 
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
+mkdir build
+cd build || exit 1
 
-./configure          \
-    PYTHON=python3   \
-    --prefix=/usr    \
-    "${GTK_DOC}"     \
-    --disable-static \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+meson setup       \
+    --prefix=/usr \
+    -Dtests=false \
+    --buildtype=release || exit 1
 
-make || exit 1
-# make check
-make install DESTDIR="${TMP_DIR}"
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -61,7 +60,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
