@@ -30,6 +30,10 @@ VERSION="12.2"
 # \v   version of the OS, e.g., the build-date etc, e.g.
 #       #2 SMP Fri Jun 24 13:38:27 CDT 2016
 
+# Required:    no
+# Recommended: no
+# Optional:    no
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
 

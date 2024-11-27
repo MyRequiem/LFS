@@ -24,29 +24,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="--disable-gtk-doc"
 OPENJDK="--disable-java"
-VALGRIND="--disable-valgrind-tests"
 MONO="--disable-csharp"
 
-command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
-command -v java         &>/dev/null && OPENJDK="--enable-java"
-command -v valgrind     &>/dev/null && VALGRIND="--enable-valgrind-tests"
-command -v mono         &>/dev/null && MONO="--enable-csharp"
+command -v java &>/dev/null && OPENJDK="--enable-java"
+command -v mono &>/dev/null && MONO="--enable-csharp"
 
 ./configure                       \
     --prefix=/usr                 \
-    "${GTK_DOC}"                  \
+    --disable-valgrind-tests      \
     "${OPENJDK}"                  \
-    "${VALGRIND}"                 \
     "${MONO}"                     \
     --disable-static || exit 1
 
 make || exit 1
 
 # pushd tests || exit 1
-# make check
-# popd tests  || exit 1
+# make check  || exit 1
+# popd        || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 

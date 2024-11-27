@@ -11,8 +11,8 @@ l/pcre2.sh
 l/libunistring.sh
 n/nettle.sh
 n/npth.sh
+l/libidn.sh
 
-# l/libidn.sh
 # l/libidn2.sh
 # l/libseccomp.sh
 # n/gnutls.sh
