@@ -14,6 +14,10 @@ PRGNAME="blfs-bootscripts"
 
 # Home page: https://anduin.linuxfromscratch.org/BLFS/blfs-bootscripts/
 
+# Required:    no
+# Recommended: no
+# Optional:    no
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
