@@ -26,9 +26,9 @@ n/libksba.sh
 n/libgcrypt.sh
 n/pinentry.sh
 ap/sysstat.sh
+n/net-tools.sh
+n/openssh.sh
 
-# n/net-tools.sh
-# n/openssh.sh
 # ap/dmidecode.sh
 # ap/lm-sensors.sh
 # n/dhcpcd.sh
@@ -248,7 +248,6 @@ ap/sysstat.sh
 # n/nghttp2.sh
 # n/bind-utils.sh
 # n/mit-kerberos-v5.sh
-# n/openssh.sh
 # ap/sudo.sh
 # n/cyrus-sasl.sh
 # n/libtirpc.sh
