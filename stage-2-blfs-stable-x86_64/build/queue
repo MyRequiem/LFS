@@ -20,9 +20,9 @@ n/wget.sh
 n/curl.sh
 a/hwdata.sh
 a/pciutils.sh
+n/libgpg-error.sh
+n/libassuan.sh
 
-# n/libgpg-error.sh
-# n/libassuan.sh
 # n/libksba.sh
 # n/libgcrypt.sh
 # n/pinentry.sh
