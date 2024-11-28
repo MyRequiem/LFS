@@ -182,7 +182,7 @@ gc                                      w3m, guile
 gcc                                     cmake, python3-numpy
 gconf
 gcr3                                    pinentry, gnome-keyring
-gcr4
+gcr4                                    pinentry
 gdb                                     openssh, glib, gcc, guile, rustc, python3
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode, poppler, gegl, gst-plugins-good, gtk4
 gdk-pixbuf-xlib                         w3m
@@ -235,8 +235,8 @@ gst-plugins-base                        qt5, gst-plugins-good, gst-plugins-bad, 
 gst-plugins-good                        gst-plugins-bad, gtk4
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
-gtk+2                                   pinentry, w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp, libiodbc, vte2
-gtk+3                                   pinentry, ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf
+gtk+2                                   w3m, pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp, libiodbc, vte2
+gtk+3                                   ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, gobject-introspection, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, vte2
 gtk-engines
 gtk-vnc
@@ -293,11 +293,13 @@ jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
 json-glib                               pavucontrol, gegl
 judy                                    mariadb
+kde-frameworks                          pinentry
 kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
 kochi-substitute-fonts-ttf
 krb4                                    cyrus-sasl
+kwayland                                pinentry
 kytea                                   mariadb
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
@@ -881,7 +883,8 @@ python3-zope-interface                  python3-attrs
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     pinentry, wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5                                     wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5-components                          pinentry
 qt6                                     poppler
 quiche                                  curl
 radiance                                imagemagick
