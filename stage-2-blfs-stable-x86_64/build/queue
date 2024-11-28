@@ -16,9 +16,9 @@ l/libidn2.sh
 l/libseccomp.sh
 n/gnutls.sh
 l/libpsl.sh
+n/wget.sh
+n/curl.sh
 
-# n/wget.sh
-# n/curl.sh
 # a/pciutils.sh
 # n/libgpg-error.sh
 # n/libassuan.sh
@@ -225,7 +225,6 @@ l/libpsl.sh
 # d/python-modules/python3-urlgrabber.sh
 # l/jansson.sh
 # n/nghttp2.sh
-# n/curl.sh
 # d/cmake.sh
 # l/popt.sh
 # n/rsync.sh
@@ -245,11 +244,9 @@ l/libpsl.sh
 # ap/sudo.sh
 # n/cyrus-sasl.sh
 # l/c-ares.sh
-# n/curl.sh
 # n/nghttp2.sh
 # n/bind-utils.sh
 # n/mit-kerberos-v5.sh
-# n/curl.sh
 # n/openssh.sh
 # ap/sudo.sh
 # n/cyrus-sasl.sh
@@ -291,7 +288,6 @@ l/libpsl.sh
 # l/libssh2.sh
 # d/brotli.sh
 # n/gnutls.sh
-# n/curl.sh
 # d/rustc.sh
 # n/nmap.sh
 # ap/lsof.sh

@@ -8,12 +8,12 @@ PRGNAME="curl"
 # SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
 
 # Required:    no
-# Recommended: make-ca (runtime)
+# Recommended: libpsl
+#              make-ca (runtime)
 # Optional:    brotli
 #              c-ares
 #              gnutls
 #              libidn2
-#              libpsl
 #              libssh2
 #              mit-kerberos-v5
 #              nghttp2
@@ -26,8 +26,10 @@ PRGNAME="curl"
 #              ngtcp2       (https://github.com/ngtcp2/ngtcp2/)
 #              quiche       (https://github.com/cloudflare/quiche)
 #              spnego       (http://spnego.sourceforge.net/)
+#              --- для тестов ---
 #              apache-httpd
 #              stunnel      (для HTTPS and FTPS тестов)
+#              openssh
 #              valgrind
 
 ROOT="/root/src/lfs"
@@ -37,40 +39,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-C_ARES="--disable-ares"
-LIBIDN2="--without-libidn2"
-LIBPSL="--without-libpsl"
 LIBSSH2="--without-libssh2"
-NGHTTP2="--without-nghttp2"
-GNUTLS="--without-gnutls"
-OPENLDAP="--disable-ldap"
-SAMBA="--disable-smb"
-LIBRTMP="--without-librtmp"
-
-[ -x /usr/lib/libcares.so ]       && C_ARES="--enable-ares"
-[ -x /usr/lib/libidn2.so ]        && LIBIDN2="--with-libidn2=/usr"
-[ -x /usr/lib/libpsl.so ]         && LIBPSL="--with-libpsl"
-[ -x /usr/lib/libssh2.so ]        && LIBSSH2="--with-libssh2"
-[ -x /usr/lib/libnghttp2.so ]     && NGHTTP2="--with-nghttp2=/usr"
-command -v gnutls-cli &>/dev/null && GNUTLS="--with-gnutls=/usr"
-command -v ldapadd    &>/dev/null && OPENLDAP="--enable-ldap"
-command -v samba      &>/dev/null && SAMBA="--enable-smb"
-command -v rtmpdump   &>/dev/null && LIBRTMP="--with-librtmp=/usr"
+[ -x /usr/lib/libssh2.so ] && LIBSSH2="--with-libssh2"
 
 ./configure                    \
     --prefix=/usr              \
     --disable-static           \
     --with-openssl             \
     --enable-threaded-resolver \
-    "${C_ARES}"                \
-    "${LIBIDN2}"               \
-    "${LIBPSL}"                \
     "${LIBSSH2}"               \
-    "${NGHTTP2}"               \
-    "${GNUTLS}"                \
-    "${OPENLDAP}"              \
-    "${SAMBA}"                 \
-    "${LIBRTMP}"               \
     --with-ca-path=/etc/ssl/certs || exit 1
 
 make || exit 1

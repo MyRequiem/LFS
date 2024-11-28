@@ -566,7 +566,7 @@ openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerbe
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
-openssh                                 sshfs, git, libssh2, gnome-keyring
+openssh                                 curl, sshfs, git, libssh2, gnome-keyring
 opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice

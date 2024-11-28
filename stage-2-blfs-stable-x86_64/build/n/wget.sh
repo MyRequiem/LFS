@@ -8,12 +8,12 @@ PRGNAME="wget"
 # продолжать егу работу после выхода из системы.
 
 # Required:    no
-# Recommended: make-ca            (runtime)
+# Recommended: libpsl
+#              make-ca            (runtime)
 # Optional:    gnutls
 #              perl-http-daemon   (для тестов)
 #              perl-io-socket-ssl (для тестов)
 #              libidn2
-#              libpsl
 #              pcre2
 #              valgrind           (для тестов)
 
@@ -24,22 +24,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALGRIND_TESTS="--disable-valgrind-tests"
-
 # wget бует использовать OpenSSL вместо GnuTLS
 #    --with-ssl=openssl
 ./configure             \
     --prefix=/usr       \
     --sysconfdir=/etc   \
-    "${VALGRIND_TESTS}" \
     --with-ssl=openssl || exit 1
 
 make || exit 1
-
-# Для выполнения тестов с Valgrind добавляем опцию конфигурации
-#    --enable-valgrind-tests
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
