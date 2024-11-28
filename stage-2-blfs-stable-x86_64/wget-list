@@ -31,10 +31,10 @@ https://sysstat.github.io/sysstat-packages/sysstat-12.7.6.tar.xz
 https://downloads.sourceforge.net/project/net-tools/net-tools-2.10.tar.xz
 https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.8p1.tar.gz
 http://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.6.tar.xz
+https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
 
 
 ================================================================================
-https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
 https://roy.marples.name/downloads/dhcpcd/dhcpcd-9.4.1.tar.xz
 https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/wireless_tools-29-fix_iwlist_scanning-1.patch
