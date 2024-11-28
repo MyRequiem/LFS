@@ -89,7 +89,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
 cups-filters                            cups
-curl                                    pciutils, gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
+curl                                    gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim, php
@@ -259,6 +259,7 @@ hspell                                  enchant
 htop
 http-parser                             nodejs
 hunspell                                enchant
+hwdata                                  pciutils
 hwloc                                   htop
 hyperwave                               php
 i3                                      bumblebee-status
@@ -486,7 +487,7 @@ lua                                     highlight, nmap, gtk-engines, vim, apach
 luajit                                  gegl
 lvm2                                    parted, cryptsetup, udisks
 lxsession                               polkit
-lynx                                    pciutils, smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, apache-httpd
+lynx                                    smartmontools, python3-asciidoc, xmlto, docbook-utils, xorg-libraries, xdg-utils, apache-httpd
 lzip                                    ed
 lzo                                     libarchive, cairo
 maemo                                   alsa-plugins
@@ -1006,8 +1007,8 @@ wddx                                    php
 weasyprint                              vala
 webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
-wget                                    pciutils, smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
-which                                   pciutils, openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
+wget                                    smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
+which                                   openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wiredtiger                              openldap

@@ -20,10 +20,11 @@ https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.7.1.tar.xz
 https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.gz
 https://ftp.gnu.org/gnu/wget/wget-1.24.5.tar.gz
 https://curl.se/download/curl-8.9.1.tar.xz
+https://github.com/vcrhonek/hwdata/archive/v0.385/hwdata-0.385.tar.gz
+https://mj.ucw.cz/download/linux/pci/pciutils-3.13.0.tar.gz
 
 
 ================================================================================
-https://mj.ucw.cz/download/linux/pci/pciutils-3.9.0.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.46.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.3.tar.bz2

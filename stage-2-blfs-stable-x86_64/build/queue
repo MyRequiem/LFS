@@ -18,8 +18,9 @@ n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
 n/curl.sh
+a/hwdata.sh
+a/pciutils.sh
 
-# a/pciutils.sh
 # n/libgpg-error.sh
 # n/libassuan.sh
 # n/libksba.sh
