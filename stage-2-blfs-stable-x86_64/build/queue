@@ -22,10 +22,10 @@ a/hwdata.sh
 a/pciutils.sh
 n/libgpg-error.sh
 n/libassuan.sh
+n/libksba.sh
+n/libgcrypt.sh
+n/pinentry.sh
 
-# n/libksba.sh
-# n/libgcrypt.sh
-# n/pinentry.sh
 # ap/sysstat.sh
 # n/net-tools.sh
 # n/openssh.sh
@@ -554,7 +554,6 @@ n/libassuan.sh
 # d/gjs.sh
 # l/libsecret.sh
 # l/gcr3.sh
-# n/pinentry.sh
 # s/numactl.sh
 # l/x264.sh
 # l/x265.sh
@@ -698,7 +697,6 @@ n/libassuan.sh
 # ap/feh.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
-# n/pinentry.sh
 # n/gpgme.sh
 # l/cairo.sh
 # ap/mpg123.sh
