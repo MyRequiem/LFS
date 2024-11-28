@@ -29,8 +29,8 @@ ap/sysstat.sh
 n/net-tools.sh
 n/openssh.sh
 ap/dmidecode.sh
+ap/lm-sensors.sh
 
-# ap/lm-sensors.sh
 # n/dhcpcd.sh
 # n/wireless-tools.sh
 # l/libnl.sh

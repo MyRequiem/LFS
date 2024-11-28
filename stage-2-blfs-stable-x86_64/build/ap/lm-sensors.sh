@@ -13,17 +13,16 @@ PRGNAME="lm-sensors"
 #              dmidecode  https://www.nongnu.org/dmidecode/
 
 ### Конфигурация ядра
-#    CONFIG_MODULES=y
-#    CONFIG_PCI=y
-#    CONFIG_I2C_CHARDEV=y|m
+#    CONFIG_ACPI=y
+#    CONFIG_ACPI_BATTERY=y|m
+#    CONFIG_ACPI_THERMAL=y|m
+#    CONFIG_BLK_DEV_NVME=y
+#    CONFIG_NVME_HWMON=y
 #    CONFIG_HWMON=y|m
-#
-#    Device Drivers  --->
-#       I2C support --->
-#           I2C Hardware Bus support  --->
-#               <M> (выбрать нужные модули, см. sensors-detect ниже)
-#       Hardware Monitoring support  --->
-#           <M> (выбрать нужные модули, см. sensors-detect ниже)
+#    CONFIG_SENSORS_K8TEMP=y|m
+#    CONFIG_SENSORS_K10TEMP=y|m
+#    CONFIG_SENSORS_FAM15H_POWER=y|m
+#    CONFIG_SENSORS_CORETEMP=y|m
 
 ### Конфигурация:
 #    /etc/sensors3.conf
@@ -61,9 +60,10 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-make                      \
-    PREFIX=/usr           \
-    BUILD_STATIC_LIB=0    \
+make                   \
+    PREFIX=/usr        \
+    BUILD_STATIC_LIB=0 \
+    EXLDFLAGS=         \
     MANDIR=/usr/share/man || exit 1
 
 # пакет не имеет набора тестов
