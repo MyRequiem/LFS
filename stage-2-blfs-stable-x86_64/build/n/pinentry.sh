@@ -25,9 +25,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+FLTK="--disable-pinentry-fltk"
+command -v fluid &>/dev/null && FLTK="--enable-pinentry-fltk"
+
 ./configure               \
     --prefix=/usr         \
     --enable-pinentry-tty \
+    "${FLTK}"             \
     --disable-pinentry-qt5 || exit 1
 
 make || exit 1
