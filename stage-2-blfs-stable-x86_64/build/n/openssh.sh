@@ -31,9 +31,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}"{"${DOCS}",${MAN}}
+mkdir -pv "${TMP_DIR}${MAN}"
 
 # каталог /var/lib/sshd должен существовать в системе
 install -v -m700 -d /var/lib/sshd
@@ -73,25 +72,13 @@ command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
     "${KERBEROS5}" || exit 1
 
 make || exit 1
-
-# для выполнения тестов требуется установленная утилита 'scp', поэтому
-# скопируем ее в /usr/bin, предварительно сохранив старую копию scp, если она
-# существует
-if [ -e /usr/bin/scp ]; then
-    mv /usr/bin/scp /tmp
-fi
-cp scp /usr/bin
-
 # make -j1 tests
-
 make install DESTDIR="${TMP_DIR}"
 
 # /usr/bin/ssh-copy-id
 install -v -m755 contrib/ssh-copy-id "${TMP_DIR}/usr/bin"
 # man-страницы
 install -v -m644 contrib/ssh-copy-id.1 "${TMP_DIR}${MAN}"
-# документация
-install -v -m644 INSTALL LICENCE OVERVIEW README* "${TMP_DIR}${DOCS}"
 
 # для запуска SSH сервера при старте системы добавим скрипт инициализации в
 # /etc/rc.d/init.d/ и ссылки в /etc/rc.d/rc{0-6}.d/

@@ -22,6 +22,7 @@ mkdir -pv "${TMP_DIR}"
 # устанавливаем в /usr/bin/
 export BINDIR='/usr/bin' SBINDIR='/usr/bin' && \
 yes "" |  make -j1 || exit 1
+# пакет не имеет набора тестов
 make -j1 install DESTDIR="${TMP_DIR}"
 unset BINDIR SBINDIR
 
