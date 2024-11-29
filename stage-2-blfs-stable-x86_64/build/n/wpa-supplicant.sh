@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="wpa-supplicant"
-ARCH_NAME="${PRGNAME//-/_}"
+ARCH_NAME="wpa_supplicant"
 
 ### WPA Supplicant (WPA/WPA2/IEEE 802.1X Supplicant)
 # Клиент Wi-Fi Protected Access (WPA) и IEEE 802.1X supplicant. Применяется для
@@ -10,15 +10,15 @@ ARCH_NAME="${PRGNAME//-/_}"
 # Required:    no
 # Recommended: desktop-file-utils (для запуска update-desktop-database)
 #              libnl
-# Optional:    dbus    (для использвания с NetworkManager) см. DBUS ниже
-#              libxml2 (для использвания с NetworkManager)
-#              qt5     (для использвания с NetworkManager) см. QT5_GUI ниже
+# Optional:    --- для использвания с NetworkManager (GUI) ---
+#              dbus
+#              libxml2
+#              qt5-components
 
 ### Конфигурация ядра
 #    CONFIG_NET=y
 #    CONFIG_WIRELESS=y
 #    CONFIG_CFG80211=m|y
-#    CONFIG_CFG80211_WEXT=y
 #    CONFIG_MAC80211=m|y
 #    CONFIG_NETDEVICES=y
 #    CONFIG_WLAN=y
@@ -53,11 +53,8 @@ source "${ROOT}/config_file_processing.sh"               || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
-mkdir -pv "${TMP_DIR}/etc"/{dbus-1/system.d,sysconfig}
-mkdir -pv "${TMP_DIR}/usr/share"/{dbus-1/system-services,man/man{5,8}}
-
-QT5_GUI="false"
-DBUS="false"
+mkdir -pv "${TMP_DIR}/etc/sysconfig"
+mkdir -pv "${TMP_DIR}/usr/share/man"/man{5,8}
 
 cd "${ARCH_NAME}" || exit 1
 
@@ -118,26 +115,7 @@ CONFIG_DPP=y
 CFLAGS += -I/usr/include/libnl3
 EOF
 
-if [ "${DBUS}" == "true" ]; then
-    cat << EOF >> .config
-CONFIG_CTRL_IFACE_DBUS=y
-CONFIG_CTRL_IFACE_DBUS_NEW=y
-CONFIG_CTRL_IFACE_DBUS_INTRO=y
-EOF
-fi
-
 make BINDIR=/usr/sbin LIBDIR=/usr/lib
-
-# если установлен Qt5 соберем графический интерфейс WPA Supplicant
-# (имя каталога wpa_gui-qt4, но совместимо с Qt5)
-if [ "${QT5_GUI}" == "true" ]; then
-    if command -v qmake &>/dev/null; then
-        pushd wpa_gui-qt4 || exit 1
-        qmake wpa_gui.pro || exit 1
-        make              || exit 1
-        popd              || exit 1
-    fi
-fi
 
 # пакет не имеет набора тестов
 
@@ -147,29 +125,7 @@ fi
 #    wpa_supplicant
 install -v -m755 wpa_{cli,passphrase,supplicant} "${TMP_DIR}/usr/sbin/"
 
-# QT5_GUI
-if [ -e wpa_gui-qt4/wpa_gui ]; then
-    mkdir -p "${TMP_DIR}/usr/bin"
-    install -v -m755 wpa_gui-qt4/wpa_gui   "${TMP_DIR}/usr/bin/"
-
-    # man
-    install -v -m644 doc/docbook/wpa_gui.8 "${TMP_DIR}/usr/share/man/man8/"
-
-    # .desktop and pixmaps
-    mkdir -p "${TMP_DIR}/usr/share"/{applications,pixmaps}
-    install -v -m644 wpa_gui-qt4/wpa_gui.desktop \
-        "${TMP_DIR}/usr/share/applications/"
-    install -v -m644 wpa_gui-qt4/icons/wpa_gui.svg \
-        "${TMP_DIR}/usr/share/pixmaps/"
-fi
-
-# файлы конфигурации D-Bus
-install -v -m644 dbus/fi.w1.wpa_supplicant1.service \
-    "${TMP_DIR}/usr/share/dbus-1/system-services/"
-install -v -m644 dbus/dbus-wpa_supplicant.conf \
-    "${TMP_DIR}/etc/dbus-1/system.d/wpa_supplicant.conf"
-
-# man
+# man страницы
 install -v -m644 doc/docbook/wpa_supplicant.conf.5 \
     "${TMP_DIR}/usr/share/man/man5/"
 install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 \
@@ -238,12 +194,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 config_file_processing "${WPA_SUPPLICANT_WLAN0_CONF}"
 config_file_processing "${IFCONFIG_WLAN0}"
-
-# обновим /usr/share/applications/mimeinfo.cache
-if [ -e /usr/share/applications/wpa_gui.desktop ]; then
-    command -v update-desktop-database &>/dev/null && \
-        update-desktop-database -q
-fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (WPA/WPA2/IEEE 802.1X Supplicant)

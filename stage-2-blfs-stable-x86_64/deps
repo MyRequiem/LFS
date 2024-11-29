@@ -398,7 +398,7 @@ libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnfs
 libnice                                 gst-plugins-bad
-libnl                                   iw, wpa-supplicant, htop, libpcap
+libnl                                   htop, iw, wpa-supplicant, libpcap
 libnotify                               ibus, zenity
 libnsl                                  berkeley-db, clisp, opensp, python2, python3, exim
 libnut                                  ffmpeg
@@ -883,8 +883,8 @@ python3-zope-interface                  python3-attrs
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     wpa-supplicant, highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
-qt5-components                          pinentry
+qt5                                     highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5-components                          pinentry, wpa-supplicant
 qt6                                     poppler
 quiche                                  curl
 radiance                                imagemagick
