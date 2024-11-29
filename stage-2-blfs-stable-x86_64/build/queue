@@ -30,8 +30,8 @@ n/net-tools.sh
 n/openssh.sh
 ap/dmidecode.sh
 ap/lm-sensors.sh
+n/dhcpcd.sh
 
-# n/dhcpcd.sh
 # n/wireless-tools.sh
 # l/libnl.sh
 # ap/htop.sh
@@ -230,7 +230,6 @@ ap/lm-sensors.sh
 # l/popt.sh
 # n/rsync.sh
 # d/llvm.sh
-# n/dhcpcd.sh
 # l/icu.sh
 # l/libxml2.sh
 # l/boost.sh

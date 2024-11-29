@@ -40,10 +40,6 @@ fi
             -s /bin/false            \
             -u 52 dhcpcd
 
-# исправим runtime error, вызванную изменениями в glibc-2.36
-sed '/Deny everything else/i SECCOMP_ALLOW(__NR_getrandom),' \
-    -i src/privsep-linux.c
-
 # по умолчанию /var/db не соответствует FHS
 #    --dbdir=/var/lib/dhcpcd
 ./configure                      \
@@ -65,12 +61,6 @@ make install DESTDIR="${TMP_DIR}"
     # /usr/lib/services/
     make install-service-dhcpcd DESTDIR="${TMP_DIR}/usr"
 )
-
-# исправим скрипт запуска сервиса:
-#    pidfile_old="/run/dhcpcd-$1.pid"
-#    ->
-#    pidfile_old="/run/dhcpcd/$1.pid"
-sed -i "s;/run/dhcpcd-;/run/dhcpcd/;g" "${TMP_DIR}/usr/lib/services/dhcpcd"
 
 # файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0
 # устанавливается в LFS вместе с пакетом network-configuration
@@ -127,7 +117,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # lightweight DHCP client.
 #
 # Home page: https://roy.marples.name/projects/${PRGNAME}/
-# Download:  https://roy.marples.name/downloads/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/NetworkConfiguration/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
