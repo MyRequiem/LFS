@@ -22,7 +22,9 @@ mkdir -pv "${TMP_DIR}"
     --sysconfdir=/etc \
     --disable-static || exit 1
 
-make || exit 1
+# если команда make выполняется в несколько потоков, то это может нарушить
+# работу терминала и вызвать некоторые «забавные» визуальные эффекты
+make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 

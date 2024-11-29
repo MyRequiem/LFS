@@ -13,8 +13,10 @@ PRGNAME="wireless-tools"
 ###
 # Конфигурация ядра
 ###
-#    CONFIG_PCCARD=m
-#    CONFIG_YENTA=m
+#    NET=y
+#    WIRELESS=y
+#    CFG80211=y|m
+#    CFG80211_WEXT=y
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -72,7 +74,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #  iwpriv   - configures private parameters of a wireless network interface
 #  iwspy    - gets wireless statistics from specific node
 #
-# Home page: https://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
+# Home page: https://hewlettpackard.github.io/${PRGNAME}/
 # Download:  https://hewlettpackard.github.io/${PRGNAME}/${ARCH_NAME}.${VERSION}.tar.gz
 #
 EOF

@@ -31,9 +31,9 @@ n/openssh.sh
 ap/dmidecode.sh
 ap/lm-sensors.sh
 n/dhcpcd.sh
+n/wireless-tools.sh
+l/libnl.sh
 
-# n/wireless-tools.sh
-# l/libnl.sh
 # ap/htop.sh
 # n/iw.sh
 # n/wpa-supplicant.sh
