@@ -33,9 +33,9 @@ ap/lm-sensors.sh
 n/dhcpcd.sh
 n/wireless-tools.sh
 l/libnl.sh
+ap/htop.sh
+n/iw.sh
 
-# ap/htop.sh
-# n/iw.sh
 # n/wpa-supplicant.sh
 # l/libevent.sh
 # d/yasm.sh
@@ -78,53 +78,53 @@ l/libnl.sh
 # ap/p7zip.sh
 # a/lrzip.sh
 # ap/sudo.sh
+
+# На данный момент установлены все необходимые пакеты для более-менее
+# комфортной работы в чистой linux-консоли:
+#    - терминальный мультиплексор Tmux
+#    - файловый менеджер Vifm
+#    - curl
+#    - wget
+#    - gnupg
+#    - openssh
+#    - WiFi (wpa-supplicant)
+#    - консольный браузер w3m
+#    - git
+#    - htop
+# поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
 #
-# # На данный момент установлены все необходимые пакеты для более-менее
-# # комфортной работы в чистой linux-консоли:
-# #    - терминальный мультиплексор Tmux
-# #    - файловый менеджер Vifm
-# #    - curl
-# #    - wget
-# #    - gnupg
-# #    - openssh
-# #    - WiFi (wpa-supplicant)
-# #    - консольный браузер w3m
-# #    - git
-# #    - htop
-# # поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
-# #
-# # NOTE:
-# #    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
-# #    строки, которые отвечают за проверку chroot среды:
-# #
-# # ==================== /root/src/lfs/check_environment.sh ======================
-# #       # мы в chroot окружении?
-# #       # ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
-# #       # ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
-# #       # if [[ "${ID1}" == "${ID2}" ]]; then
-# #       # ......
-# #       # fi
-# # ==============================================================================
-# #
-# # После настройки сети Internet для корректной работы консольного браузера
-# # необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
-# # отсутствие: unable to get local issuer certificate
-# #
-# #    # update-ca-certificates
-# #    ......
-# #    ......
-# #    ......
-# #    Extracting OpenSSL certificates to:
-# #    /etc/ssl/certs...Done!
-# #    Extracting GNUTLS server auth certificates to:
-# #    /etc/pki/tls/certs/ca-bundle.crt...Done!
-# #    Extracting GNUTLS S-Mime certificates to:
-# #    /etc/pki/tls/certs/email-ca-bundle.crt...Done!
-# #    Extracting GNUTLS code signing certificates to:
-# #    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
-# #    Extracting Java cacerts (JKS) to:
-# #    /etc/pki/tls/java/cacerts...Done!
+# NOTE:
+#    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
+#    строки, которые отвечают за проверку chroot среды:
 #
+# ==================== /root/src/lfs/check_environment.sh ======================
+#       # мы в chroot окружении?
+#       # ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
+#       # ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
+#       # if [[ "${ID1}" == "${ID2}" ]]; then
+#       # ......
+#       # fi
+# ==============================================================================
+#
+# После настройки сети Internet для корректной работы консольного браузера
+# необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
+# отсутствие: unable to get local issuer certificate
+#
+#    # update-ca-certificates
+#    ......
+#    ......
+#    ......
+#    Extracting OpenSSL certificates to:
+#    /etc/ssl/certs...Done!
+#    Extracting GNUTLS server auth certificates to:
+#    /etc/pki/tls/certs/ca-bundle.crt...Done!
+#    Extracting GNUTLS S-Mime certificates to:
+#    /etc/pki/tls/certs/email-ca-bundle.crt...Done!
+#    Extracting GNUTLS code signing certificates to:
+#    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
+#    Extracting Java cacerts (JKS) to:
+#    /etc/pki/tls/java/cacerts...Done!
+
 # a/time.sh
 # d/python-modules/python3-lxml.sh
 # a/tree.sh
