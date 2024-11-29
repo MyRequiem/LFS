@@ -33,12 +33,12 @@ https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.8p1.tar.gz
 http://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.6.tar.xz
 https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
 https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.0.8/dhcpcd-10.0.8.tar.xz
+https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.2/wireless_tools-29-fix_iwlist_scanning-1.patch
+https://github.com/thom311/libnl/releases/download/libnl3_10_0/libnl-3.10.0.tar.gz
 
 
 ================================================================================
-https://hewlettpackard.github.io/wireless-tools/wireless_tools.29.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/11.3/wireless_tools-29-fix_iwlist_scanning-1.patch
-https://github.com/thom311/libnl/releases/download/libnl3_7_0/libnl-3.7.0.tar.gz
 https://github.com/htop-dev/htop/releases/download/3.2.2/htop-3.2.2.tar.xz
 https://www.kernel.org/pub/software/network/iw/iw-5.19.tar.xz
 https://w1.fi/releases/wpa_supplicant-2.10.tar.gz
