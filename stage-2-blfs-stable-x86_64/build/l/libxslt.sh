@@ -23,22 +23,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-GTK_DOC="false"
 DOC_DIR="/usr/share/doc"
-
 ./configure                 \
     --prefix=/usr           \
     --disable-static        \
-    PYTHON=/usr/bin/python3 \
     --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[ "${DOCS}" == "false" ]    && rm -rf "${TMP_DIR}${DOC_DIR}"
-[ "${GTK_DOC}" == "false" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}${DOC_DIR}"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -42,8 +42,8 @@ d/yasm.sh
 ap/tmux.sh
 l/fuse2.sh
 l/libxml2.sh
+l/libxslt.sh
 
-# l/libxslt.sh
 # l/fuse.sh
 # ap/sqlite.sh
 # l/libusb.sh
@@ -142,7 +142,6 @@ l/libxml2.sh
 # s/sgml-common.sh
 # s/docbook-xml.sh
 # s/docbook-xsl.sh
-# l/libxslt.sh
 # l/glib.sh
 # a/elogind.sh
 # a/dbus.sh
