@@ -6,9 +6,8 @@ PRGNAME="libxml2"
 # Библиотеки и утилиты для анализа XML файлов
 
 # Required:    no
-# Recommended: no
-# Optional:    icu      (для лучшей поддержки UNICODE)
-#              valgrind (для тестов)
+# Recommended: icu      (для лучшей поддержки UNICODE)
+# Optional:    valgrind (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,12 +16,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему, из-за которой xmlcatalog выдает ложные предупреждения при
+# создании нового файла каталога
+patch --verbose -Np1 \
+    -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-2.patch" || exit 1
+
 ICU="--without-icu"
 command -v icuinfo &>/dev/null && ICU="--with-icu"
-
-DOCS="false"
-GTK_DOC="false"
-DOC_DIR="/usr/share/doc"
 
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
@@ -35,13 +35,16 @@ DOC_DIR="/usr/share/doc"
     --with-history          \
     "${ICU}"                \
     PYTHON=/usr/bin/python3 \
-    --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-[ "${DOCS}" == "false" ]    && rm -rf "${TMP_DIR}${DOC_DIR}"
-[ "${GTK_DOC}" == "false" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+# предотвратим ненужное связывание некоторых пакетов с ICU
+rm -vf "${TMP_DIR}/usr/lib/libxml2.la"
+sed '/libs=/s/xml2.*/xml2"/' -i "${TMP_DIR}/usr/bin/xml2-config"
+
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
