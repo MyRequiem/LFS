@@ -14,9 +14,8 @@ PRGNAME="yasm"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для создания /usr/lib/python2.7/site-packages/yasm.so ---
-#              python2
-#              python2-cython
+# Optional:    python3-cython
+#              python2          (https://www.python.org/downloads/release/python-2718/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,22 +27,11 @@ mkdir -pv "${TMP_DIR}"
 # исключаем сборку vsyasm и ytasm, которые используются только в Windows
 sed -i 's#) ytasm.*#)#' Makefile.in
 
-PYTHON="--disable-python"
-PYTHON_BINDINGS="--disable-python-bindings"
-
-if command -v python2 &>/dev/null; then
-    command -v cython2 &>/dev/null && \
-        PYTHON="--enable-python" && \
-        PYTHON_BINDINGS="--enable-python-bindings"
-fi
-
-./configure       \
-    --prefix=/usr \
-    "${PYTHON}"   \
-    "${PYTHON_BINDINGS}" || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
-# make check
+# make -j1 check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

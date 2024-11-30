@@ -39,35 +39,20 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOXYGEN="--disable-doxygen-doc"
-API_DOCS=""
-# command -v doxygen &>/dev/null && \
-#     DOXYGEN="--enable-doxygen-doc" && API_DOCS="true"
-
-# устраним проблему, из-за которой не работает event_rpcgen.py
-sed -i 's/python/&3/' event_rpcgen.py
+# исправим shebang для event_rpcgen.py
+#    #!/usr/bin/env python -> #!/usr/bin/env python3
+sed -i 's/python/&3/' event_rpcgen.py || exit 1
 
 ./configure       \
     --prefix=/usr \
-    "${DOXYGEN}"  \
     --disable-static || exit 1
 
 make || exit 1
-
-if [ -n "${API_DOCS}" ]; then
-    doxygen Doxyfile || exit 1
-fi
 
 # тесты
 # make verify
 
 make install DESTDIR="${TMP_DIR}"
-
-if [ -n "${API_DOCS}" ]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/api"
-    install -v -m755 -d "${TMP_DIR}${DOCS}"
-    cp -v -R doxygen/html/* "${TMP_DIR}${DOCS}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
