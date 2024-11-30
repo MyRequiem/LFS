@@ -36,9 +36,10 @@ l/libnl.sh
 ap/htop.sh
 n/iw.sh
 n/wpa-supplicant.sh
+l/libevent.sh
+d/python-modules/python3-cython.sh
+d/yasm.sh
 
-# l/libevent.sh
-# d/yasm.sh
 # ap/tmux.sh
 # l/fuse2.sh
 # l/libxml2.sh
@@ -147,7 +148,6 @@ n/wpa-supplicant.sh
 # a/dbus.sh
 # l/libsigsegv.sh
 # d/c2man.sh
-# d/python-modules/python3-cython.sh
 # l/apr.sh
 # l/aspell.sh
 # l/aspell-dict-en.sh
@@ -467,7 +467,6 @@ n/wpa-supplicant.sh
 # ap/tk.sh
 # d/python2.sh
 # d/python-modules/python2-cython.sh
-# d/yasm.sh
 # n/nmap.sh
 # d/python-modules/python2-libxml2.sh
 # d/python3.sh
