@@ -9,7 +9,6 @@ PRGNAME="poppler"
 
 # Required:    cmake
 #              fontconfig
-#              gobject-introspection
 # Recommended: boost
 #              cairo
 #              lcms2

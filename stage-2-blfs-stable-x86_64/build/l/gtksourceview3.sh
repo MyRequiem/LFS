@@ -9,7 +9,7 @@ ARCH_NAME="gtksourceview"
 # выделение, отмена/повтор, поиск, замена и т.д.
 
 # Required:    gtk+3
-# Recommended: gobject-introspection
+# Recommended: no
 # Optional:    vala
 #              valgrind
 #              gtk-doc

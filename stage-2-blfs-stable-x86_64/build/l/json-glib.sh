@@ -8,8 +8,7 @@ PRGNAME="json-glib"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 #              libxslt (для сборки man-страниц)
 
 ROOT="/root/src/lfs"

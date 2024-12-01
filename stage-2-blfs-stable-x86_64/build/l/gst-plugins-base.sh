@@ -10,7 +10,6 @@ PRGNAME="gst-plugins-base"
 # Required:    gstreamer
 # Recommended: alsa-lib
 #              cdparanoia-III         (для сборки cdda плагина)
-#              gobject-introspection
 #              iso-codes
 #              libgudev
 #              libjpeg-turbo

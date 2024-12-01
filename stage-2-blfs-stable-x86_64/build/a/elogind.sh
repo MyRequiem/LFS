@@ -18,7 +18,6 @@ PRGNAME="elogind"
 #              libxslt
 # Optional:    --- для тестов ---
 #              lxml
-#              gobject-introspection
 #              zsh
 #              valgrind
 #              audit-userspace (https://github.com/linux-audit/audit-userspace)

@@ -8,7 +8,6 @@ PRGNAME="libmypaint"
 
 # Required:    json-c
 # Recommended: glib
-#              gobject-introspection
 # Optional:    doxygen                  (для создания XML документации)
 #              gegl                     https://download.gimp.org/pub/gegl/0.3/ (только версии 0.3.xx)
 #              gperftools               (https://github.com/gperftools/gperftools)

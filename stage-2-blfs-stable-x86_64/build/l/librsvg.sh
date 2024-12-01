@@ -10,8 +10,7 @@ PRGNAME="librsvg"
 #              gdk-pixbuf
 #              pango
 #              rustc
-# Recommended: gobject-introspection
-#              vala
+# Recommended: vala
 # Optional:    python3-docutils     (для генерации man-страниц)
 #              python3-gi-docgen    (для документации)
 #              xorg-fonts           (для тестов)

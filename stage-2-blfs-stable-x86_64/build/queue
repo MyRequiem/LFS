@@ -52,8 +52,8 @@ n/openldap.sh
 n/gnupg.sh
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-packaging.sh
+l/glib.sh
 
-# l/glib.sh
 # n/sshfs.sh
 # d/lua.sh
 # l/boost.sh
@@ -146,7 +146,6 @@ d/python-modules/python3-packaging.sh
 # s/sgml-common.sh
 # s/docbook-xml.sh
 # s/docbook-xsl.sh
-# l/glib.sh
 # a/elogind.sh
 # a/dbus.sh
 # l/libsigsegv.sh
@@ -297,8 +296,6 @@ d/python-modules/python3-packaging.sh
 # x/libs/libxdmcp.sh
 # x/xcb/xcb-proto.sh
 # x/libs/libxcb.sh
-# l/gobject-introspection.sh
-# l/glib.sh
 # l/freetype.sh
 # l/harfbuzz.sh
 # l/freetype.sh
@@ -485,14 +482,12 @@ d/python-modules/python3-packaging.sh
 # d/help2man.sh
 # l/pango.sh
 # l/glib-networking.sh
-# l/glib.sh
 # l/glibmm.sh
 # l/pangomm.sh
 # ap/cups.sh
 # ap/ghostscript.sh
 # l/hicolor-icon-theme.sh
 # l/shared-mime-info.sh
-# l/glib.sh
 # l/gdk-pixbuf.sh
 # l/gdk-pixbuf-xlib.sh
 # d/vala.sh

@@ -1,28 +1,33 @@
 #! /bin/bash
 
 PRGNAME="glib"
-DOCBOOK_XML_VER="4.5"
-DOCBOOK_XSL_VER="1.79.2"
 
 ### GLib (library of C routines)
 # Библиотеки низкого уровня, которые включают подпрограммы поддержки C, такие
 # как списки, деревья, хэши, распределение памяти и многое другое.
 
-# Required:    no
-# Recommended: libxslt
+# Required:    python3-packaging
+# Recommended: python3-docutils
+#              libxslt
 #              pcre2
-# Optional:    dbus        (для некоторых тестов)
+# Optional:    gdb
+#              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
+#              --- для тестов ---
+#              cairo
+#              dbus
 #              fuse3
-#              bindfs      (для некоторых тестов) https://bindfs.org/
-#              gdb
-#              docbook-xml (для сборки man-страниц)
-#              docbook-xsl (для сборки man-страниц)
-#              gtk-doc     (для сборки API документации, см. конфигурацию ниже)
+#              bindfs               (https://bindfs.org/)
+#              gjs
 #              glib-networking
-#              sysprof
-#              gobject-introspection
 #              shared-mime-info
 #              desktop-file-utils
+#              --- для сборки документации и man-страниц ---
+#              gtk-doc
+#              docbook-xml
+#              docbook-xsl
+#              python3-gi-docgen
+#              python3-mako
+#              python3-markdown
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,53 +49,53 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 #    5 - Notice
 # Например, не выводить сообщения Warning и Notice
 #    export GLIB_LOG_LEVEL=4
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-skip_warnings-1.patch" || exit 1
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-skip_warnings-1.patch" || exit 1
 
 mkdir build
 cd build || exit 1
 
-GTK_DOC="false"
-MAN="false"
-
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-[ -d "/usr/share/xml/docbook/xml-dtd-${DOCBOOK_XML_VER}" ] && \
-    [ -d "/usr/share/xml/docbook/xsl-stylesheets-nons-${DOCBOOK_XSL_VER}" ] && \
-    MAN="true"
-
-# устанавливать man-страницы
-#    -Dman=true
-# отключить поддержку selinux
-#    -Dselinux=disabled
-meson                      \
-    --prefix=/usr          \
-    --buildtype=release    \
-    -Dman="${MAN}"         \
-    -Dselinux=disabled     \
-    -Dgtk_doc="${GTK_DOC}" \
+meson setup                   \
+    --prefix=/usr             \
+    --buildtype=release       \
+    -D introspection=disabled \
+    -D man-pages=enabled      \
     .. || exit 1
 
 ninja || exit 1
-# в конце сборки в консоль могут выводится ошибки типа:
-#    Error: no ID for constraint linkend: ...
-# Такие ошибки допустимы и безвредны.
 
+# сразу устанавливаем в систему для последующей сборки gobject-introspection
+ninja install
 DESTDIR=${TMP_DIR} ninja install
 
-# для запуска тестов требуются 2 установленных пакета:
-#    shared-mime-info
-#    desktop-file-utils
-#
-### WARNING:
-# Не запускайте набор тестов от имени пользователя root, иначе некоторые тесты
-# неожиданно завершатся ошибкой и оставят некоторые несовместимые с FHS
-# каталоги в каталоге /usr
-#
-# LC_ALL=C ninja test
+###
+# собираем gobject-introspection
+###
+GI=$(find "${SOURCES}" -type f -name "gobject-introspection-*.tar.?z*")
+GI_VER=$(echo "${GI}" | rev | cut -d . -f 3- | cut -d - -f 1 | rev)
+
+tar xvf "${GI}"
+meson setup "gobject-introspection-${GI_VER}" gi-build \
+    --prefix=/usr                                      \
+    --buildtype=release || exit 1
+
+ninja -C gi-build || exit 1
+
+ninja -C gi-build install
+DESTDIR=${TMP_DIR} ninja -C gi-build install
+
+###
+# создадим introspection data
+###
+meson configure \
+    -D introspection=enabled || exit 1
+
+ninja || exit 1
+
+ninja install
+DESTDIR=${TMP_DIR} ninja install
 
 # устанавливаем переменные среды GLIB_LOG_LEVEL (см. выше), G_FILENAME_ENCODING
 # и G_BROKEN_FILENAMES в /etc/profile.d/glib.sh
-
 GLIB_SH="/etc/profile.d/glib.sh"
 cat << EOF > "${TMP_DIR}${GLIB_SH}"
 #! /bin/bash

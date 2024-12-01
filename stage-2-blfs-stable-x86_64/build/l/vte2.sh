@@ -9,8 +9,7 @@ ARCH_NAME="vte"
 
 # Required:    gtk+2
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 #              python2-pygtk
 
 ROOT="/root/src/lfs"

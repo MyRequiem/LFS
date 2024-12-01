@@ -6,8 +6,7 @@ PRGNAME="libsecret"
 # Библиотека на основе GObject для доступа к Secret Service API
 
 # Required:    glib
-# Recommended: gobject-introspection
-#              libgcrypt
+# Recommended: libgcrypt
 #              vala
 # Optional:    python3-gi-docgen  (для сборки документации)
 #              docbook-xml

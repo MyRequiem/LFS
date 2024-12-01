@@ -12,7 +12,6 @@ ARCH_NAME="gcr"
 #              libgcrypt
 #              p11-kit
 # Recommended: gnupg
-#              gobject-introspection
 #              gtk4
 #              libsecret
 #              libxslt

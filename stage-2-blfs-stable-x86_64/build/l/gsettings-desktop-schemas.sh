@@ -6,7 +6,6 @@ PRGNAME="gsettings-desktop-schemas"
 # Набор схем GSettings для настройки различных компонентов рабочего стола
 
 # Required:    glib
-#              gobject-introspection
 # Recommended: no
 # Optional:    no
 

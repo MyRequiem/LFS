@@ -13,15 +13,14 @@ ARCH_NAME="libsoup"
 #              libxml2
 #              nghttp2
 #              sqlite
-# Recommended: gobject-introspection
-#              vala
-# Optional:    apache-httpd         (для тестов)
+# Recommended: vala
+# Optional:    apache-httpd      (для тестов)
 #              brotli
-#              curl                 (для тестов)
-#              python3-gi-docgen    (для документации)
-#              mit-kerberos-v5      (для тестов)
-#              php                  (собранный с поддержкой xmlrpc-epi для тестов)
-#              samba                (для тестов)
+#              curl              (для тестов)
+#              python3-gi-docgen (для документации)
+#              mit-kerberos-v5   (для тестов)
+#              php               (собранный с поддержкой xmlrpc-epi для тестов)
+#              samba             (для тестов)
 #              sysprof
 
 ROOT="/root/src/lfs"

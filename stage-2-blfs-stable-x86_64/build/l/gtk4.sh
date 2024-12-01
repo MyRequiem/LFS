@@ -21,7 +21,6 @@ ARCH_NAME="gtk"
 #              gst-plugins-good      (собранный с libvpx)
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
 #              librsvg
-#              gobject-introspection
 # Optional:    colord
 #              cups
 #              python3-docutils      (для сборки man-страниц)
