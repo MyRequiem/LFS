@@ -45,8 +45,8 @@ l/libxml2.sh
 l/libxslt.sh
 l/fuse3.sh
 ap/sqlite.sh
+l/libusb.sh
 
-# l/libusb.sh
 # n/gnupg.sh
 # l/glib.sh
 # d/python-modules/python3-docutils.sh
