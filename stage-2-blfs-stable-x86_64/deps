@@ -126,7 +126,7 @@ docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5
 dovecot                                 gnupg, sudo, gimp, fcron, at, php
-doxygen                                 gnutls, libevent, fuse, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, apache-httpd
+doxygen                                 gnutls, libevent, fuse3, dbus, libexif, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, apache-httpd
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
 duktape                                 polkit
@@ -171,9 +171,9 @@ freetype                                graphite2, harfbuzz, fontconfig, ghostsc
 frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4, vte3
 frontbase                               php
-fuse                                    gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fuse-zip                                vifm
-fuse2                                   archivemount, ntfs-3g
+fuse2                                   archivemount, vifm, ntfs-3g
+fuse3                                   gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fusefat                                 vifm
 fuseiso                                 vifm
 fwtk                                    sudo
@@ -816,6 +816,7 @@ python3-installer                       python3-pyproject-hooks, python3-build
 python3-ipaddr
 python3-isort                           python3-pylint
 python3-kdcproxy                        mit-kerberos-v5
+python3-looseversion                    fuse3
 python3-lxml                            elogind
 python3-mako                            gobject-introspection, mesa
 python3-markdown                        gobject-introspection
@@ -852,7 +853,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse, python3-attrs, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-attrs, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3

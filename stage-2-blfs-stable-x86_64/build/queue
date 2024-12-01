@@ -43,8 +43,8 @@ ap/tmux.sh
 l/fuse2.sh
 l/libxml2.sh
 l/libxslt.sh
+l/fuse3.sh
 
-# l/fuse.sh
 # ap/sqlite.sh
 # l/libusb.sh
 # n/gnupg.sh

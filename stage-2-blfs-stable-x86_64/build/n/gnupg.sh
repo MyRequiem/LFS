@@ -13,7 +13,7 @@ PRGNAME="gnupg"
 # Recommended: gnutls
 #              pinentry
 # Optional:    curl
-#              fuse
+#              fuse3
 #              imagemagick  (для создания документации)
 #              libusb
 #              MTA          (dovecot или exim или postfix или sendmail)

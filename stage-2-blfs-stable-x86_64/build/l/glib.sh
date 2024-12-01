@@ -12,7 +12,7 @@ DOCBOOK_XSL_VER="1.79.2"
 # Recommended: libxslt
 #              pcre2
 # Optional:    dbus        (для некоторых тестов)
-#              fuse
+#              fuse3
 #              bindfs      (для некоторых тестов) https://bindfs.org/
 #              gdb
 #              docbook-xml (для сборки man-страниц)

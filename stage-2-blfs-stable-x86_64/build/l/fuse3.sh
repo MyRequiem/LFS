@@ -1,6 +1,7 @@
 #! /bin/bash
 
-PRGNAME="fuse"
+PRGNAME="fuse3"
+ARCH_NAME="fuse"
 
 ### Fuse (Filesystem in Userspace)
 # FUSE (File system in userspace, файловая система в пространстве пользователя)
@@ -10,8 +11,10 @@ PRGNAME="fuse"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen         (для сборки API документации)
-#              python3-pytest  (для тестов)
+# Optional:    doxygen               (для сборки API документации)
+#              --- для тестов ---
+#              python3-pytest
+#              python3-looseversion  (https://pypi.org/project/looseversion/)
 
 ### Конфигурация ядра
 #    CONFIG_FUSE_FS=y|m
@@ -23,7 +26,7 @@ source "${ROOT}/config_file_processing.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -31,8 +34,8 @@ rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION}" || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -43,10 +46,6 @@ find -L . \
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
-
-DOCS="false"
-DOXYGEN="false"
-# command -v doxygen &>/dev/null && DOXYGEN="true"
 
 # отключим установку ненужного загрузочного скрипта и правила udev
 sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
@@ -61,31 +60,21 @@ meson                   \
 
 ninja || exit 1
 
-if [ "${DOCS}" == "true" ]; then
-    if [ "${DOXYGEN}" == "true" ]; then
-        doxygen doc/Doxyfile || exit 1
-    fi
-fi
-
-# тесты (требуется модуль 'pytest')
-# python3 -m pytest test/
+### тесты (требуется пакет python3-pytest)
+# python3 -m venv --system-site-packages testenv &&
+# source testenv/bin/activate                    &&
+# pip3 install looseversion                      &&
+# python3 -m pytest
+# deactivate
 
 DESTDIR="${TMP_DIR}" ninja install
 
 chmod u+s "${TMP_DIR}/usr/bin/fusermount3"
 
-# документация
-if [ "${DOCS}" == "true" ]; then
-    DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -d -m755 "${TMP_DIR}${DOC_DIR}"
-    install -v -m644 ../doc/{README.NFS,kernel.txt} "${TMP_DIR}${DOC_DIR}"
-    cp -Rv ../doc/html "${TMP_DIR}${DOC_DIR}"
-fi
-
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
-FUSE_CONF="/etc/${PRGNAME}.conf"
+FUSE_CONF="/etc/${ARCH_NAME}.conf"
 if [ -f "${FUSE_CONF}" ]; then
     mv "${FUSE_CONF}" "${FUSE_CONF}.old"
 fi
@@ -128,7 +117,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # implementations.
 #
 # Home page: https://github.com/libfuse/libfuse
-# Download:  https://github.com/libfuse/libfuse/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/libfuse/libfuse/releases/download/${ARCH_NAME}-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
