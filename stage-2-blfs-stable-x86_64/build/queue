@@ -46,6 +46,8 @@ l/libxslt.sh
 l/fuse3.sh
 ap/sqlite.sh
 l/libusb.sh
+ap/lmdb.sh
+n/cyrus-sasl.sh
 
 # n/gnupg.sh
 # l/glib.sh
@@ -237,17 +239,14 @@ l/libusb.sh
 # d/nasm.sh
 # l/libjpeg-turbo.sh
 # l/unixodbc.sh
-# n/cyrus-sasl.sh
 # n/openldap.sh
 # n/gnupg.sh
 # ap/sudo.sh
-# n/cyrus-sasl.sh
 # l/c-ares.sh
 # n/nghttp2.sh
 # n/bind-utils.sh
 # n/mit-kerberos-v5.sh
 # ap/sudo.sh
-# n/cyrus-sasl.sh
 # n/libtirpc.sh
 # l/libnsl.sh
 # l/berkeley-db.sh
@@ -759,7 +758,6 @@ l/libusb.sh
 # l/rasqal.sh
 # l/libiodbc.sh
 # l/redland.sh
-# ap/lmdb.sh
 # d/tidy-html5.sh
 # l/enchant.sh
 # n/apache-httpd.sh

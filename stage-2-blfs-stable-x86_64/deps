@@ -477,7 +477,7 @@ liquid-rescale                          imagemagick
 lirc                                    pulseaudio
 llvm                                    dhcpcd, icu, rustc, mesa, potrace, imagemagick
 lm-sensors                              htop, mesa
-lmdb                                    php
+lmdb                                    cyrus-sasl, php
 lnav
 lrdf                                    gst-plugins-bad
 lrzip
