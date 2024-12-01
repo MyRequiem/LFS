@@ -11,8 +11,7 @@ PRGNAME="libsoup"
 #              libpsl
 #              libxml2
 #              sqlite
-# Recommended: gobject-introspection
-#              vala
+# Recommended: vala
 # Optional:    apache-httpd     (для тестов)
 #              brotli
 #              curl             (для тестов)

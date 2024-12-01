@@ -10,8 +10,7 @@ PRGNAME="libgsf"
 # Required:    glib
 #              libxml2
 # Recommended: gdk-pixbuf (для сборки gsf-office-thumbnailer)
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

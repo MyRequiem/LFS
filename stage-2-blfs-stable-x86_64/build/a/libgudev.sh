@@ -9,8 +9,7 @@ PRGNAME="libgudev"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc                (для сборки API документации)
+# Optional:    gtk-doc                (для сборки API документации)
 #              umockdev               (для тестов)
 
 ROOT="/root/src/lfs"

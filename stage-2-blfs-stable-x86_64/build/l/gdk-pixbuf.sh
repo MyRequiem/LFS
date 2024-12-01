@@ -14,8 +14,7 @@ PRGNAME="gdk-pixbuf"
 # Recommended: python3-docutils
 #              librsvg
 #              libtiff
-# Optional:    gobject-introspection (требуется для сборки GNOME)
-#              python3-gi-docgen     (для генерации документации)
+# Optional:    python3-gi-docgen  (для генерации документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

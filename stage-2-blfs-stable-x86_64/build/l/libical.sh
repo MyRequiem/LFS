@@ -8,8 +8,7 @@ PRGNAME="libical"
 # компонентов.
 
 # Required:    cmake
-# Recommended: gobject-introspection
-#              vala
+# Recommended: vala
 # Optional:    berkeley-db
 #              doxygen             (для сборки API документации)
 #              graphviz            (для сборки API документации)

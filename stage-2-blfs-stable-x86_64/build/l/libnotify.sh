@@ -11,8 +11,7 @@ PRGNAME="libnotify"
 # Required:    gtk+3
 #              notification-daemon или xfce4-notifyd
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 #              xmlto
 
 ### NOTE:

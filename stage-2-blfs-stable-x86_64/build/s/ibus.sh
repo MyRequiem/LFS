@@ -10,8 +10,7 @@ PRGNAME="ibus"
 # Required:    dconf
 #              iso-codes
 #              vala
-# Recommended: gobject-introspection
-#              gtk+2                  (to build IM module for it)
+# Recommended: gtk+2                  (to build IM module for it)
 #              libnotify
 # Optional:    gtk+3                  (to build IM module for it)
 #              gtk4                   (to build IM module for it)

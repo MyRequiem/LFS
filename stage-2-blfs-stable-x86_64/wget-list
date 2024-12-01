@@ -58,11 +58,12 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/openldap-2.6.8-consolidated-1
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2
 https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.21.2.tar.gz
 https://files.pythonhosted.org/packages/source/p/packaging/packaging-24.1.tar.gz
+https://download.gnome.org/sources/glib/2.80/glib-2.80.4.tar.xz
+https://download.gnome.org/sources/gobject-introspection/1.80/gobject-introspection-1.80.1.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.2/glib-skip_warnings-1.patch
 
 
 ================================================================================
-https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
 https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.xz
 https://www.lua.org/ftp/lua-5.4.4.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/lua-5.4.4-shared_library-2.patch
@@ -269,7 +270,6 @@ https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz
 https://www.x.org/pub/individual/lib/libXdmcp-1.1.4.tar.xz
 https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz
 https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.15.tar.xz
-https://download.gnome.org/sources/gobject-introspection/1.74/gobject-introspection-1.74.0.tar.xz
 https://downloads.sourceforge.net/freetype/freetype-2.13.0.tar.xz
 https://github.com/harfbuzz/harfbuzz/releases/download/7.0.0/harfbuzz-7.0.0.tar.xz
 https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.2.tar.xz

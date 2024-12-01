@@ -11,8 +11,7 @@ PRGNAME="gtk-vnc"
 # Required:    gnutls
 #              gtk+3
 #              libgcrypt
-# Recommended: gobject-introspection
-#              vala
+# Recommended: vala
 # Optional:    cyrus-sasl
 #              pulseaudio
 

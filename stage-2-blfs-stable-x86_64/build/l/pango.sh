@@ -12,7 +12,6 @@ PRGNAME="pango"
 #              fribidi
 #              glib
 # Recommended: cairo
-#              gobject-introspection (требуется для сборки GNOME)
 #              xorg-libraries
 # Optional:    cantarell-font-otf    (для тестов)
 #              sysprof

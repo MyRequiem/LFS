@@ -13,8 +13,7 @@ PRGNAME="upower"
 #              libusb
 #              polkit
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 #              libxslt
 #              docbook-xsl
 #              python3-pygobject3

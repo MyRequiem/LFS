@@ -13,8 +13,7 @@ PRGNAME="at-spi2-core"
 #              gsettings-desktop-schemas
 #              xorg-libraries
 # Recommended: no
-# Optional:    gobject-introspection
-#              gtk-doc
+# Optional:    gtk-doc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

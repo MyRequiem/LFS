@@ -11,8 +11,7 @@ PRGNAME="gegl"
 #              json-glib
 #              libjpeg-turbo
 #              libpng
-# Recommended: gobject-introspection
-#              graphviz
+# Recommended: graphviz
 #              python3-pygments
 #              python3-pygobject3
 # Optional:    python3-asciidoc
