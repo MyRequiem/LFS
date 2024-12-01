@@ -51,6 +51,8 @@ https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.42.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.16.2/fuse-3.16.2.tar.gz
 https://sqlite.org/2024/sqlite-autoconf-3460100.tar.gz
 https://github.com/libusb/libusb/releases/download/v1.0.27/libusb-1.0.27.tar.bz2
+https://github.com/LMDB/lmdb/archive/LMDB_0.9.31.tar.gz
+https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
 
 
 ================================================================================
@@ -211,7 +213,6 @@ https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.bz2
 https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.xz
 https://downloads.sourceforge.net/libjpeg-turbo/libjpeg-turbo-2.1.5.1.tar.gz
 https://github.com/lurcher/unixODBC/releases/download/2.3.11/unixODBC-2.3.11.tar.gz
-https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
 https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.4.tgz
 https://www.linuxfromscratch.org/patches/blfs/11.3/openldap-2.6.4-consolidated-1.patch
 https://c-ares.haxx.se/download/c-ares-1.19.0.tar.gz
@@ -814,7 +815,6 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/raptor-2.0.15-security_fixes-
 https://download.librdf.org/source/rasqal-0.9.33.tar.gz
 https://downloads.sourceforge.net/iodbc/libiodbc-3.52.15.tar.gz
 https://download.librdf.org/source/redland-1.0.17.tar.gz
-https://github.com/LMDB/lmdb/archive/LMDB_0.9.29.tar.gz
 https://github.com/htacg/tidy-html5/archive/5.8.0/tidy-html5-5.8.0.tar.gz
 https://github.com/AbiWord/enchant/releases/download/v2.3.3/enchant-2.3.3.tar.gz
 https://archive.apache.org/dist/httpd/httpd-2.4.55.tar.bz2
