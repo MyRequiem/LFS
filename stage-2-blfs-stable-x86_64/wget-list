@@ -50,10 +50,10 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/libxml2-2.13.3-upstream_fix-2
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.42.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.16.2/fuse-3.16.2.tar.gz
 https://sqlite.org/2024/sqlite-autoconf-3460100.tar.gz
+https://github.com/libusb/libusb/releases/download/v1.0.27/libusb-1.0.27.tar.bz2
 
 
 ================================================================================
-https://github.com/libusb/libusb/releases/download/v1.0.26/libusb-1.0.26.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
 https://download.gnome.org/sources/glib/2.74/glib-2.74.5.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/glib-2.74.5-skip_warnings-1.patch
