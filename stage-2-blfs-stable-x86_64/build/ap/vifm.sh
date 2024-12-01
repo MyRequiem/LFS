@@ -9,7 +9,8 @@ PRGNAME="vifm"
 # Recommended: no
 # Optional:    sshfs
 #              curlftpfs
-#              fuse
+#              fuse2
+#              fuse3
 #              fuse-zip
 #              fusefat
 #              fuseiso

@@ -8,7 +8,7 @@ PRGNAME="sshfs"
 # расширению SFTP) таким образом, как будто они находятся на локальном
 # компьютере.
 
-# Required:    fuse
+# Required:    fuse3
 #              glib
 #              openssh
 # Recommended: no
