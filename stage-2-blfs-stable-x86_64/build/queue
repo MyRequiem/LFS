@@ -44,8 +44,8 @@ l/fuse2.sh
 l/libxml2.sh
 l/libxslt.sh
 l/fuse3.sh
+ap/sqlite.sh
 
-# ap/sqlite.sh
 # l/libusb.sh
 # n/gnupg.sh
 # l/glib.sh
