@@ -769,8 +769,7 @@ prelink
 profiles                                imagemagick
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, qt5, mpg123, gst-plugins-good, libao
 py3c
-python2                                 yasm, docbook-xsl, nmap, python2-cython, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim, lcms
-python2-cython
+python2                                 yasm, docbook-xsl, nmap, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim, lcms
 python2-libxml2                         docbook-xsl, gimp
 python2-pycairo                         python2-pygobject2, python2-pygtk
 python2-pygobject2                      python2-pygtk
@@ -853,7 +852,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-attrs, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-attrs, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
