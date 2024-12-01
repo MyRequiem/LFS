@@ -48,8 +48,9 @@ ap/sqlite.sh
 l/libusb.sh
 ap/lmdb.sh
 n/cyrus-sasl.sh
+n/openldap.sh
+n/gnupg.sh
 
-# n/gnupg.sh
 # l/glib.sh
 # d/python-modules/python3-docutils.sh
 # n/sshfs.sh
@@ -239,8 +240,6 @@ n/cyrus-sasl.sh
 # d/nasm.sh
 # l/libjpeg-turbo.sh
 # l/unixodbc.sh
-# n/openldap.sh
-# n/gnupg.sh
 # ap/sudo.sh
 # l/c-ares.sh
 # n/nghttp2.sh
