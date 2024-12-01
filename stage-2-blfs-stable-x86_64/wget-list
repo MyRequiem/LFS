@@ -56,6 +56,8 @@ https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyru
 https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.8.tgz
 https://www.linuxfromscratch.org/patches/blfs/12.2/openldap-2.6.8-consolidated-1.patch
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2
+https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.21.2.tar.gz
+https://files.pythonhosted.org/packages/source/p/packaging/packaging-24.1.tar.gz
 
 
 ================================================================================
@@ -136,7 +138,6 @@ https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.39-apng.pat
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
 https://files.pythonhosted.org/packages/source/a/asciidoc/asciidoc-10.2.0.tar.gz
 https://github.com/NixOS/patchelf/releases/download/0.17.2/patchelf-0.17.2.tar.gz
-https://downloads.sourceforge.net/docutils/docutils-0.19.tar.gz
 https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
 https://github.com/encukou/py3c/archive/v1.4/py3c-1.4.tar.gz
 https://github.com/Legrandin/pycryptodome/archive/v3.17.0/pycryptodome-3.17.0.tar.gz
@@ -147,7 +148,6 @@ https://files.pythonhosted.org/packages/source/s/six/six-1.16.0.tar.gz
 https://files.pythonhosted.org/packages/source/a/attrs/attrs-22.2.0.tar.gz
 https://files.pythonhosted.org/packages/source/e/editables/editables-0.3.tar.gz
 https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-3.8.0.tar.gz
-https://files.pythonhosted.org/packages/source/p/packaging/packaging-23.0.tar.gz
 https://files.pythonhosted.org/packages/source/t/typing_extensions/typing_extensions-4.4.0.tar.gz
 https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-7.1.0.tar.gz
 https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-1.0.0.tar.gz

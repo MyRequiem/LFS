@@ -50,9 +50,10 @@ ap/lmdb.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 n/gnupg.sh
+d/python-modules/python3-docutils.sh
+d/python-modules/python3-packaging.sh
 
 # l/glib.sh
-# d/python-modules/python3-docutils.sh
 # n/sshfs.sh
 # d/lua.sh
 # l/boost.sh
@@ -175,7 +176,6 @@ n/gnupg.sh
 # d/python-modules/python3-six.sh
 # d/python-modules/python3-attrs.sh
 # d/python-modules/python3-editables.sh
-# d/python-modules/python3-packaging.sh
 # d/python-modules/python3-typing-extensions.sh
 # d/python-modules/python3-installer.sh
 # d/python-modules/python3-pyproject-hooks.sh
@@ -463,7 +463,6 @@ n/gnupg.sh
 # d/perl-modules/perl-anyevent-i3.sh
 # ap/tk.sh
 # d/python2.sh
-# d/python-modules/python2-cython.sh
 # n/nmap.sh
 # d/python-modules/python2-libxml2.sh
 # d/python3.sh
