@@ -10,6 +10,7 @@ PRGNAME="gnupg"
 #              libgcrypt
 #              libksba
 #              npth
+#              openldap
 # Recommended: gnutls
 #              pinentry
 # Optional:    curl
@@ -17,11 +18,10 @@ PRGNAME="gnupg"
 #              imagemagick  (для создания документации)
 #              libusb
 #              MTA          (dovecot или exim или postfix или sendmail)
-#              openldap
 #              sqlite
 #              texlive или install-tl-unx
-#              fig2dev     (для создания документации) http://mcj.sourceforge.net/
-#              adns        (http://www.chiark.greenend.org.uk/~ian/adns/)
+#              fig2dev      (для создания документации) http://mcj.sourceforge.net/
+#              adns         (http://www.chiark.greenend.org.uk/~ian/adns/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,7 +31,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir build
-cd    build || exit 1
+cd build || exit 1
 
 # создаем утилитy g13
 #    --enable-g13
