@@ -24,11 +24,11 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -p "${TMP_DIR}"
 
 make || exit 1
+make install
 make install DESTDIR="${TMP_DIR}"
 
-rm -f "${TMP_DIR}/usr/sbin/lsbinstall"
-
-/bin/cp -vpR "${TMP_DIR}"/* /
+rm /usr/sbin/lsbinstall
+rm "${TMP_DIR}/usr/sbin/lsbinstall"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tools for Linux Standards Base conformance)
