@@ -61,12 +61,12 @@ https://files.pythonhosted.org/packages/source/p/packaging/packaging-24.1.tar.gz
 https://download.gnome.org/sources/glib/2.80/glib-2.80.4.tar.xz
 https://download.gnome.org/sources/gobject-introspection/1.80/gobject-introspection-1.80.1.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.2/glib-skip_warnings-1.patch
+https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.xz
+https://www.lua.org/ftp/lua-5.4.7.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.2/lua-5.4.7-shared_library-1.patch
 
 
 ================================================================================
-https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.xz
-https://www.lua.org/ftp/lua-5.4.4.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/11.3/lua-5.4.4-shared_library-2.patch
 https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
 http://www.andre-simon.de/zip/highlight-4.4.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
