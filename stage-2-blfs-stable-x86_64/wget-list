@@ -64,10 +64,11 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/glib-skip_warnings-1.patch
 https://github.com/libfuse/sshfs/releases/download/sshfs-3.7.3/sshfs-3.7.3.tar.xz
 https://www.lua.org/ftp/lua-5.4.7.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.2/lua-5.4.7-shared_library-1.patch
+https://github.com/boostorg/boost/releases/download/boost-1.86.0/boost-1.86.0-b2-nodocs.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.2/boost-1.86.0-upstream_fixes-1.patch
 
 
 ================================================================================
-https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
 http://www.andre-simon.de/zip/highlight-4.4.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/v3.6.2/libarchive-3.6.2.tar.xz
