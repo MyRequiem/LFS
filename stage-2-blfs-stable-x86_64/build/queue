@@ -53,9 +53,9 @@ n/gnupg.sh
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-packaging.sh
 l/glib.sh
+n/sshfs.sh
+d/lua.sh
 
-# n/sshfs.sh
-# d/lua.sh
 # l/boost.sh
 # ap/highlight.sh
 # l/lzo.sh

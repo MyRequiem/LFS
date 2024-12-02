@@ -46,7 +46,7 @@ Cflags: -I\${includedir}
 EOF
 
 patch -Np1 --verbose -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-shared_library-2.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-shared_library-1.patch" || exit 1
 
 make linux
 
