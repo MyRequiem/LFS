@@ -6,30 +6,41 @@ PRGNAME="archivemount"
 # Виртуальная файловая система, основанная на FUSE для файловых архивов tar,
 # pax, cpio, образы iso9660 (CD-ROM), zip, shar, rar 7z
 
-# Required:    autoconf213
-#              libarchive
-#              fuse2        (https://github.com/libfuse/libfuse)
+# Required:    libarchive
+#              fuse3
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    cut -d _ -f 2 | cut -d . -f 1)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
+cd "${PRGNAME}-ng-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-${VERSION}-manpage.diff" || exit 1
-rm -f "${PRGNAME}.1"
+sed -i '/^\.Li.*umount/s,umount,fusermount Fl u,' "${PRGNAME}.1.in" || exit 1
 
-./configure              \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    --localstatedir=/var \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
-
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
+make VERSION="${VERSION}"
+make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -45,8 +56,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Supported archive formats: tar, pax, cpio, iso9660 (CD-ROM) images, zip,
 # shar. Other archive types such as rar and 7z may also work.
 #
-# Home page: https://www.cybernoia.de/software/${PRGNAME}.html
-# Download:  https://www.cybernoia.de/software/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://sr.ht/~nabijaczleweli/${PRGNAME}-ng/
+# Download:  https://deb.debian.org/debian/pool/main/a/${PRGNAME}/${PRGNAME}_1.orig.tar.gz
 #
 EOF
 

@@ -59,9 +59,8 @@ l/boost.sh
 ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
+s/archivemount.sh
 
-# d/autoconf213.sh
-# s/archivemount.sh
 # s/fuseiso.sh
 # n/curlftpfs.sh
 # ap/vifm.sh

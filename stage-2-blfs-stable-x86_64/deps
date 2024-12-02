@@ -40,7 +40,6 @@ at
 at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, atkmm, gtk+3
 atkmm                                   gtkmm
 audit-userspace                         elogind
-autoconf213                             archivemount
 autogen                                 gnutls, ntp
 autotrace                               imagemagick
 avahi                                   cups, pulseaudio
@@ -172,8 +171,8 @@ frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4, vte3
 frontbase                               php
 fuse-zip                                vifm
-fuse2                                   archivemount, vifm, ntfs-3g
-fuse3                                   gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
+fuse2                                   vifm, ntfs-3g
+fuse3                                   archivemount, gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fusefat                                 vifm
 fuseiso                                 vifm
 fwtk                                    sudo
