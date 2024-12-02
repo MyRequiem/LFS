@@ -55,8 +55,8 @@ d/python-modules/python3-packaging.sh
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
+l/boost.sh
 
-# l/boost.sh
 # ap/highlight.sh
 # l/lzo.sh
 # l/libarchive.sh

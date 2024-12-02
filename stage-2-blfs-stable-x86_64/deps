@@ -825,7 +825,7 @@ python3-msgpack                         python3-cachecontrol
 python3-mypy                            python3-attrs
 python3-netifaces                       bumblebee-status
 python3-nose                            python3-pytest
-python3-numpy                           python2-pygtk
+python3-numpy                           boost, python2-pygtk
 python3-packaging                       glib, python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3

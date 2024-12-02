@@ -11,23 +11,23 @@ PRGNAME="boost"
 # Required:    no
 # Recommended: which
 # Optional:    icu
-#              open-mpi (https://www.open-mpi.org/)
+#              python3-numpy
+#              open-mpi      (https://www.open-mpi.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-ARCH_VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}*.tar.?z*" \
-    2>/dev/null | head -n 1 | rev | cut -d . -f 3- | rev | cut -d _ -f 2-)"
-VERSION="$(echo "${ARCH_VERSION}" | tr _ .)"
+VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}-*.tar.?z*" \
+    2>/dev/null | head -n 1 | rev | cut -d - -f 3 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${PRGNAME}_${ARCH_VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}_${ARCH_VERSION}" || exit 1
+tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${PRGNAME}-${VERSION}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -39,9 +39,9 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
 
-# изменения в boost-1.81.0 ломают несколько пакетов, использующих модуль
-# phoenix при компиляции с GCC. В BLFS это пакет libreoffice. Исправим:
-sed -i '/#include.*phoenix.*tuple.hpp.*/d' boost/phoenix/stl.hpp || exit 1
+# исправим проблему сборки boost с python3-numpy
+patch --verbose -Np1 \
+    -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # пакет лучше собирать в несколько потоков
 NUMJOBS="${MAKEFLAGS}"
@@ -90,7 +90,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # image processing, regular expressions and unit testing.
 #
 # Home page: http://www.${PRGNAME}.org/
-# Download:  https://boostorg.jfrog.io/artifactory/main/release/${VERSION}/source/${PRGNAME}_${ARCH_VERSION}.tar.bz2
+# Download:  https://github.com/boostorg/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}-b2-nodocs.tar.xz
 #
 EOF
 
