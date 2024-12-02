@@ -1,15 +1,14 @@
 #! /bin/bash
 
-PRGNAME="python3-meson"
-ARCH_NAME="meson"
+PRGNAME="meson"
 
 ### Meson (A high performance build system)
 # Система сборки, ориентированная на скорость и на максимальное удобство для
 # пользователя
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                    || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -33,15 +32,15 @@ pip3 install                  \
     --target="${TMP_DIR}/usr" \
     --no-index                \
     --find-links=./dist       \
-    "${ARCH_NAME}"
+    "${PRGNAME}"
 
-mv "${TMP_DIR}/usr"/{"${ARCH_NAME}-${VERSION}.dist-info",mesonbuild} \
+mv "${TMP_DIR}/usr"/{"${PRGNAME}-${VERSION}.dist-info",mesonbuild} \
     "${TMP_DIR}${SITE_PACKAGES}"
 
-install -vDm644 "data/shell-completions/bash/${ARCH_NAME}" \
-    "${TMP_DIR}/usr/share/bash-completion/completions/${ARCH_NAME}"
-install -vDm644 "data/shell-completions/zsh/_${ARCH_NAME}" \
-    "${TMP_DIR}/usr/share/zsh/site-functions/_${ARCH_NAME}"
+install -vDm644 "data/shell-completions/bash/${PRGNAME}" \
+    "${TMP_DIR}/usr/share/bash-completion/completions/${PRGNAME}"
+install -vDm644 "data/shell-completions/zsh/_${PRGNAME}" \
+    "${TMP_DIR}/usr/share/zsh/site-functions/_${PRGNAME}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -56,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non-turing complete domain specific language.
 #
 # Home page: https://mesonbuild.com
-# Download:  https://github.com/mesonbuild/${ARCH_NAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://github.com/mesonbuild/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

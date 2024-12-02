@@ -77,7 +77,7 @@ python3-flit-core.sh
 python3-wheel.sh
 python3-setuptools.sh
 ninja.sh
-python3-meson.sh
+meson.sh
 coreutils.sh
 check.sh
 diffutils.sh
