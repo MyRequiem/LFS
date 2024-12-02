@@ -56,10 +56,10 @@ l/glib.sh
 n/sshfs.sh
 d/lua.sh
 l/boost.sh
+ap/highlight.sh
+l/lzo.sh
+l/libarchive.sh
 
-# ap/highlight.sh
-# l/lzo.sh
-# l/libarchive.sh
 # d/autoconf213.sh
 # s/archivemount.sh
 # s/fuseiso.sh
