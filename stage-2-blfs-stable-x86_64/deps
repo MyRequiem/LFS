@@ -588,7 +588,7 @@ password-store                          dmenu
 patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt5
-pcre2                                   wget, glib, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php, vte3
+pcre2                                   wget, glib, libarchive, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php, vte3
 pcsc-lite                               libcacard
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
@@ -882,9 +882,9 @@ python3-zope-interface                  python3-attrs
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     highlight, cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5                                     cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
 qt5-components                          pinentry, wpa-supplicant
-qt6                                     poppler
+qt6                                     highlight, poppler
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
