@@ -69,13 +69,10 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/boost-1.86.0-upstream_fixes-1
 http://www.andre-simon.de/zip/highlight-4.13.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/v3.7.4/libarchive-3.7.4.tar.xz
+https://deb.debian.org/debian/pool/main/a/archivemount/archivemount_1.orig.tar.gz
 
 
 ================================================================================
-https://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/11.3/autoconf-2.13-consolidated_fixes-1.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/archivemount/archivemount-0.9.1-manpage.diff
-https://www.cybernoia.de/software/archivemount/archivemount-0.9.1.tar.gz
 https://downloads.sourceforge.net/fuseiso/fuseiso-20070708.tar.bz2
 https://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz
 https://prdownloads.sourceforge.net/vifm/vifm-0.13.tar.bz2
