@@ -60,7 +60,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # collector may be used as a leak detector for C or C++ programs, though that
 # is not its primary goal.
 #
-# Home page: https://www.hboehm.info/${PRGNAME}/
+# Home page: https://github.com/ivmai/bdwgc/
 # Download:  https://github.com/ivmai/bdwgc/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

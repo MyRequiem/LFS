@@ -63,9 +63,9 @@ s/archivemount.sh
 s/fuseiso.sh
 n/curlftpfs.sh
 ap/vifm.sh
+s/pytrash.sh
+d/gc.sh
 
-# s/pytrash.sh
-# d/gc.sh
 # n/w3m.sh
 # d/git.sh
 # n/whois.sh
