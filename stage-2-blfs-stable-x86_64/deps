@@ -23,7 +23,7 @@ alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, faad2, faac, libao
 aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
-apache-httpd                            curl, libsoup, libsoup3, php
+apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
 appindicator                            transmission
 appstream-glib                          gimp
@@ -146,7 +146,7 @@ exiv2                                   gexiv2, gegl, mirage
 faac                                    gst-plugins-bad
 faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
-fcron
+fcron                                   git
 fdf-toolkit                             php
 fdk-aac                                 ffmpeg, gst-plugins-bad
 feh
