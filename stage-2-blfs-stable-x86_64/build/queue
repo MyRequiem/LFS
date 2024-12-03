@@ -67,9 +67,10 @@ s/pytrash.sh
 d/gc.sh
 n/w3m.sh
 d/git.sh
+n/whois.sh
+l/pcre.sh
+s/ag.sh
 
-# n/whois.sh
-# s/ag.sh
 # n/translate-shell.sh
 # ap/lnav.sh
 # s/lshw.sh

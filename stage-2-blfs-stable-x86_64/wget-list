@@ -78,11 +78,12 @@ https://github.com/ivmai/bdwgc/releases/download/v8.2.6/gc-8.2.6.tar.gz
 https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-2.46.0.tar.xz
 https://www.kernel.org/pub/software/scm/git/git-manpages-2.46.0.tar.xz
+https://github.com/rfc1036/whois/archive/v5.4.3/whois-5.4.3.tar.gz
+https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
+https://github.com/ggreer/the_silver_searcher/archive/2.2.0/the_silver_searcher-2.2.0.tar.gz
 
 
 ================================================================================
-https://github.com/rfc1036/whois/archive/v5.4.3/whois-5.4.3.tar.gz
-https://github.com/ggreer/the_silver_searcher/archive/2.2.0/the_silver_searcher-2.2.0.tar.gz
 https://github.com/soimort/translate-shell/archive/v0.9.7.1/translate-shell-0.9.7.1.tar.gz
 https://github.com/tstack/lnav/releases/download/v0.11.1/lnav-0.11.1.tar.gz
 https://www.ezix.org/software/files/lshw-B.02.19.2.tar.gz
