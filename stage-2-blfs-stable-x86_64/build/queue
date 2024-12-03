@@ -70,9 +70,9 @@ d/git.sh
 n/whois.sh
 l/pcre.sh
 s/ag.sh
+n/translate-shell.sh
+ap/lnav.sh
 
-# n/translate-shell.sh
-# ap/lnav.sh
 # s/lshw.sh
 # s/grc.sh
 # d/shellcheck.sh
