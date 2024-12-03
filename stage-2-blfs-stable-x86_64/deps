@@ -88,7 +88,7 @@ cryptsetup                              volume-key
 cunit                                   nghttp2, libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
+curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim, php
@@ -313,7 +313,7 @@ libaacplus                              ffmpeg
 libadwaita                              zenity
 libaio                                  lvm2, mariadb
 libao
-libarchive                              archivemount, cmake, ed, libgxps
+libarchive                              archivemount, lnav, cmake, ed, libgxps
 libass                                  ffmpeg, gst-plugins-bad
 libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
@@ -588,7 +588,7 @@ patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt5
 pcre                                    ag
-pcre2                                   wget, glib, libarchive, git, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php, vte3
+pcre2                                   wget, glib, libarchive, git, lnav, libbytesize, swig, xterm, mariadb, exim, qt5, apache-httpd, php, vte3
 pcsc-lite                               libcacard
 perl-algorithm-diff                     perl-text-diff
 perl-alien-build                        perl-alien-build-plugin-download-gitlab
