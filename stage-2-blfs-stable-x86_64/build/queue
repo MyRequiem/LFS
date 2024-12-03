@@ -74,10 +74,10 @@ n/translate-shell.sh
 ap/lnav.sh
 s/lshw.sh
 s/grc.sh
+d/shellcheck.sh
+a/zip.sh
+a/unzip.sh
 
-# d/shellcheck.sh
-# a/zip.sh
-# a/unzip.sh
 # ap/unrar.sh
 # ap/lzip.sh
 # ap/p7zip.sh
