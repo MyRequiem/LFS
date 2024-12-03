@@ -8,7 +8,7 @@ ARCH_NAME="the_silver_searcher"
 # скорость. Ag ищет примерно в 3-5 раз быстрее, чем ack. Игнорирует шаблоны
 # файлов из .gitignore и .hgignore в git-репозиториях.
 
-# Required:    no
+# Required:    pcre
 # Recommended: no
 # Optional:    no
 
