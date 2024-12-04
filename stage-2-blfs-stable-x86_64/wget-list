@@ -96,11 +96,11 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 http://download.savannah.gnu.org/releases/lzip/lzip-1.24.tar.gz
 https://github.com/p7zip-project/p7zip/archive/v17.04/p7zip-17.04.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.2/p7zip-17.04-consolidated_fixes-1.patch
+http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
+https://www.sudo.ws/dist/sudo-1.9.15p5.tar.gz
 
 
 ================================================================================
-http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
-https://www.sudo.ws/dist/sudo-1.9.13p1.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://files.pythonhosted.org/packages/source/l/lxml/lxml-4.9.2.tar.gz
 https://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz
