@@ -41,7 +41,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/"{bin,lib,"include/${PRGNAME}"}
 
 # изменим имя библитеки libunrar.so (by default) на libunrar.so.${VERSION}
-patch -p1 --verbose < "${SOURCES}/${PRGNAME}-${VERSION}-soname.patch"
+patch -p1 --verbose < "${SOURCES}/${PRGNAME}-${VERSION}-soname.patch" || exit 1
 
 # копируем дерево исходников в директорию libunrar для сборки библиотеки
 cp -av . ../libunrar
