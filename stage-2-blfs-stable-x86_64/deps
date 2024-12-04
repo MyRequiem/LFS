@@ -861,7 +861,7 @@ python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six                             libbytesize, python3-blessed, python3-urlgrabber, spice
-python3-sphinx                          python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
+python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-testpath
 python3-tomli                           python3-pylint
 python3-tomlkit                         python3-pylint

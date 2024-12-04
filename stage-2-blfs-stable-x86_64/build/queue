@@ -130,6 +130,7 @@ ap/sudo.sh
 #    /etc/pki/tls/java/cacerts...Done!
 
 l/fribidi.sh
+l/libuv.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -151,7 +152,6 @@ l/fribidi.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 
-# l/libuv.sh
 # l/rpcsvc-proto.sh
 # l/iso-codes.sh
 # l/libaio.sh
