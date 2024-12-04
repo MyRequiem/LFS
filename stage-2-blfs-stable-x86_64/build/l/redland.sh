@@ -8,13 +8,13 @@ PRGNAME="redland"
 
 # Required:    rasqal
 # Recommended: no
-# Optional:    berkeley-db
-#              libiodbc
-#              sqlite
+# Optional:    sqlite
 #              mariadb или mysql (https://www.mysql.com/)
 #              postgresql
-#              virtuoso    (https://downloads.sourceforge.net/virtuoso/)
-#              3store      (https://sourceforge.net/projects/threestore/)
+#              berkeley-db       (https://www.oracle.com/database/technologies/related/berkeleydb.html)
+#              libiodbc          (https://sourceforge.net/projects/iodbc/files/)
+#              virtuoso          (https://downloads.sourceforge.net/virtuoso/)
+#              3store            (https://sourceforge.net/projects/threestore/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

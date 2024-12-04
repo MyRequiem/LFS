@@ -9,12 +9,12 @@ PRGNAME="libical"
 
 # Required:    cmake
 # Recommended: vala
-# Optional:    berkeley-db
-#              doxygen             (для сборки API документации)
+# Optional:    doxygen             (для сборки API документации)
 #              graphviz            (для сборки API документации)
 #              gtk-doc             (для сборки API документации)
 #              icu
 #              python3-pygobject3  (для некоторых тестов)
+#              berkeley-db         (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

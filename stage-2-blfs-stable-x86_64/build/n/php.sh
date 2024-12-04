@@ -50,7 +50,7 @@ PRGNAME="php"
 #              ---------------------------------------
 #              Optional Data Management Utilities and Libraries
 #              ---------------------------------------
-#              berkeley-db
+#              berkeley-db       (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 #              libiodbc
 #              lmdb
 #              mariadb или mysql (https://www.mysql.com/)

@@ -7,13 +7,14 @@ PRGNAME="ruby"
 
 # Required:    libyaml
 # Recommended: no
-# Optional:    berkeley-db
+# Optional:
 #              doxygen
 #              graphviz
 #              rustc
 #              tk
 #              valgrind
-#              dtrace    (https://dtrace.org/)
+#              berkeley-db  (https://www.oracle.com/database/technologies/related/berkeleydb.html)
+#              dtrace       (https://dtrace.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

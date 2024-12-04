@@ -133,12 +133,10 @@ ap/sudo.sh
 # d/python-modules/python3-lxml.sh
 # a/tree.sh
 # a/dosfstools.sh
-# a/gpm.sh
 # a/hdparm.sh
 # a/smartmontools.sh
 # a/ntfs-3g.sh
 # a/sharutils.sh
-# l/berkeley-db.sh
 # a/cpio.sh
 # a/acpid.sh
 # a/dbus.sh
@@ -146,13 +144,10 @@ ap/sudo.sh
 # s/docbook-xml.sh
 # s/docbook-xsl.sh
 # a/elogind.sh
-# a/dbus.sh
-# l/libsigsegv.sh
-# d/c2man.sh
-# l/apr.sh
 # l/aspell.sh
 # l/aspell-dict-en.sh
 # l/aspell-dict-ru.sh
+
 # l/fftw.sh
 # l/fribidi.sh
 # l/libuv.sh
@@ -244,8 +239,6 @@ ap/sudo.sh
 # n/mit-kerberos-v5.sh
 # n/libtirpc.sh
 # l/libnsl.sh
-# l/berkeley-db.sh
-# d/clisp.sh
 # l/nspr.sh
 # a/ed.sh
 # a/lvm2.sh
@@ -300,7 +293,6 @@ ap/sudo.sh
 # x/misc/fontconfig.sh
 # a/ncompress.sh
 # x/libs/xorg-libraries.sh
-# a/dbus.sh
 # # BLFS Perl модули
 # d/perl-modules/perl-test-warnings.sh
 # d/perl-modules/perl-module-build.sh
@@ -598,7 +590,6 @@ ap/sudo.sh
 # xap/pavucontrol.sh
 # d/duktape.sh
 # l/polkit.sh
-# a/elogind.sh
 # x/xserver/xorg-server.sh
 # x/misc/mtdev.sh
 # x/libs/libevdev.sh
@@ -742,7 +733,6 @@ ap/sudo.sh
 # a/upower.sh
 # n/libiscsi.sh
 # a/udisks.sh
-# l/apr-util.sh
 # l/libical.sh
 # l/raptor.sh
 # l/rasqal.sh
@@ -750,7 +740,6 @@ ap/sudo.sh
 # l/redland.sh
 # d/tidy-html5.sh
 # l/enchant.sh
-# n/apache-httpd.sh
 # n/curl.sh
 # n/php.sh
 # ap/cups.sh

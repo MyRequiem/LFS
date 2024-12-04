@@ -13,9 +13,9 @@ ARCH_NAME="Python"
 #              valgrind
 #              libmpdec    (http://www.bytereef.org/mpdecimal/)
 #              --- для создания дополнительных модулей ---
-#              berkeley-db
 #              libnsl
 #              tk
+#              berkeley-db (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
