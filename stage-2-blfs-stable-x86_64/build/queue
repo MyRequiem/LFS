@@ -132,6 +132,8 @@ ap/sudo.sh
 l/fribidi.sh
 l/libuv.sh
 l/iso-codes.sh
+l/libaio.sh
+a/lvm2.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -153,7 +155,6 @@ l/iso-codes.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 
-# l/libaio.sh
 # l/libatasmart.sh
 # l/libexif.sh
 # l/libpng.sh
@@ -241,7 +242,6 @@ l/iso-codes.sh
 # l/libnsl.sh
 # l/nspr.sh
 # a/ed.sh
-# a/lvm2.sh
 # a/usbutils.sh
 # d/oniguruma.sh
 # l/slang.sh

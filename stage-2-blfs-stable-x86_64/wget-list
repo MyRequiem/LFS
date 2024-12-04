@@ -101,6 +101,8 @@ https://www.sudo.ws/dist/sudo-1.9.15p5.tar.gz
 https://github.com/fribidi/fribidi/releases/download/v1.0.15/fribidi-1.0.15.tar.xz
 https://dist.libuv.org/dist/v1.48.0/libuv-v1.48.0.tar.gz
 https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.16.0/iso-codes-v4.16.0.tar.gz
+https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
+https://sourceware.org/ftp/lvm2/LVM2.2.03.26.tgz
 
 
 ================================================================================
@@ -125,7 +127,6 @@ https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
 https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://www.fftw.org/fftw-3.3.10.tar.gz
-https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2
 https://downloads.sourceforge.net/libpng/libpng-1.6.39.tar.xz
@@ -217,7 +218,6 @@ https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.3.tar.bz2
 https://github.com/thkukuk/libnsl/releases/download/v2.0.0/libnsl-2.0.0.tar.xz
 https://archive.mozilla.org/pub/nspr/releases/v4.35/src/nspr-4.35.tar.gz
 https://ftp.gnu.org/gnu/ed/ed-1.19.tar.lz
-https://sourceware.org/ftp/lvm2/LVM2.2.03.18.tgz
 https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://github.com/ivmai/libatomic_ops/releases/download/v7.6.14/libatomic_ops-7.6.14.tar.gz
