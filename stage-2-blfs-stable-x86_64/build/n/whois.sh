@@ -9,8 +9,7 @@ PRGNAME="whois"
 
 # Required:    no
 # Recommended: no
-# Optional:    libidn
-#              libidn2
+# Optional:    libidn или libidn2
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,7 +26,7 @@ make prefix=/usr install-mkpasswd     BASEDIR="${TMP_DIR}"
 # файлы локали
 make prefix=/usr install-pos          BASEDIR="${TMP_DIR}"
 
-# команда mkpasswd уже была установлена в LFS с пакетом expect, удалим ее
+# утилита mkpasswd уже была установлена в LFS с пакетом expect, удалим ее
 EXPECT_PKG="/var/log/packages/expect"
 rm -rf /usr/bin/mkpasswd
 rm -rf /usr/share/man/man1/mkpasswd.1

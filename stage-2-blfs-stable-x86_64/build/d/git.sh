@@ -11,16 +11,19 @@ PRGNAME="git"
 
 # Required:    no
 # Recommended: curl
-# Optional:    gnupg
+# Optional:    apache-httpd         (для некоторых тестов)
+#              fcron                (для планирования заданий обслуживания git)
+#              gnupg
 #              openssh
-#              pcre2 или pcre
+#              pcre2
 #              subversion           (собранный с perl bindings для git svn)
 #              tk                   (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
 #              valgrind
-#              perl-authen-sasl     (https://metacpan.org/pod/Authen::SASL) для команды 'git send-email'
-#              perl-mime-base64     (https://metacpan.org/pod/MIME::Base64) для команды 'git send-email'
-#              perl-io-socket-ssl   (для команды 'git send-email')
-#              --- для сборки html, pdf и info документации ---
+#              --- для команды 'git send-email' ---
+#              perl-authen-sasl     (https://metacpan.org/pod/Authen::SASL)
+#              perl-mime-base64     (https://metacpan.org/pod/MIME::Base64)
+#              perl-io-socket-ssl
+#              --- для сборки man-страниц и документации ---
 #              xmlto                (для сборки man-страниц)
 #              python3-asciidoc
 #              dblatex              (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
@@ -35,21 +38,18 @@ BASH_COMPLETION="/etc/bash_completion.d"
 MAN="/usr/share/man"
 mkdir -pv "${TMP_DIR}"{"${BASH_COMPLETION}","${MAN}"}
 
-CURL="--without-curl"
 PCRE2="--without-libpcre2"
-command -v curl         &>/dev/null && CURL="--with-curl"
 command -v pcre2-config &>/dev/null && PCRE2="--with-libpcre2"
 
 ./configure               \
     --prefix=/usr         \
     --with-python=python3 \
-    "${CURL}"             \
     "${PCRE2}"            \
     --with-gitconfig=/etc/gitconfig || exit 1
 
 make || exit 1
 
-# make test
+# make test -k |& tee test.log
 
 # устанавливаем пакет
 PERL_MAJ_VERSION="$(perl --version | grep -oE '\(v.*\)' | cut -d v -f 2 | \
@@ -59,7 +59,7 @@ make perllibdir="/usr/lib/perl5/${PERL_MAJ_VERSION}/site_perl" install \
 
 # устанавливаем man-страницы
 tar -xf "${SOURCES}/${PRGNAME}-manpages-${VERSION}.tar.xz" \
-    -C "${TMP_DIR}/${MAN}" --no-same-owner --no-overwrite-dir
+    -C "${TMP_DIR}/${MAN}" --no-same-owner --no-overwrite-dir || exit 1
 
 # /etc/bash_completion.d/
 #    git-completion.bash

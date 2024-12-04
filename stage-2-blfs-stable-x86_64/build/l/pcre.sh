@@ -18,9 +18,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALGRIND="--disable-valgrind"
-# command -v valgrind &>/dev/null && VALGRIND="--enable-valgrind"
-
 # включает поддержку Unicode и код для обработки UTF-8/16/32 символов
 #    --enable-unicode-properties
 # включает поддержку 16-битных символов
@@ -46,7 +43,7 @@ VALGRIND="--disable-valgrind"
     --enable-pcretest-libreadline \
     --disable-static              \
     --enable-jit                  \
-    "${VALGRIND}"                 \
+    --disable-valgrind            \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1

@@ -12,7 +12,6 @@ ARCH_NAME="vte"
 #              pcre2
 # Recommended: icu
 #              gnutls
-#              gobject-introspection
 #              vala
 # Optional:    fribidi
 #              python3-gi-docgen

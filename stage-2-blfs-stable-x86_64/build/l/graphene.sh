@@ -6,7 +6,6 @@ PRGNAME="graphene"
 # Тонкий слой типов для графических библиотек.
 
 # Required:    glib
-#              gobject-introspection
 # Recommended: no
 # Optional:    no
 

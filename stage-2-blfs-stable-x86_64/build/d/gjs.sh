@@ -7,7 +7,6 @@ PRGNAME="gjs"
 
 # Required:    cairo
 #              dbus
-#              gobject-introspection
 #              mozjs
 # Recommended: gtk+3
 #              gtk4

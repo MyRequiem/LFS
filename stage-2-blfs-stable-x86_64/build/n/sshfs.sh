@@ -8,7 +8,7 @@ PRGNAME="sshfs"
 # расширению SFTP) таким образом, как будто они находятся на локальном
 # компьютере.
 
-# Required:    fuse
+# Required:    fuse3
 #              glib
 #              openssh
 # Recommended: no
@@ -24,7 +24,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1

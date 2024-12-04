@@ -8,7 +8,7 @@ PRGNAME="libxklavier"
 #              iso-codes
 #              libxml2
 #              xorg-libraries
-# Recommended: gobject-introspection
+# Recommended: no
 # Optional:    gtk-doc
 #              vala
 

@@ -21,14 +21,14 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -p "${TMP_DIR}"
 
-python3 setup.py build || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+make || exit 1
+make install
+make install DESTDIR="${TMP_DIR}"
 
-mv "${TMP_DIR}/usr/share/doc"/{"${ARCH_NAME}","${PRGNAME}"}-"${VERSION}"
-
-/bin/cp -vpR "${TMP_DIR}"/* /
+rm /usr/sbin/lsbinstall
+rm "${TMP_DIR}/usr/sbin/lsbinstall"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tools for Linux Standards Base conformance)

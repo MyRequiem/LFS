@@ -9,12 +9,13 @@ PRGNAME="vifm"
 # Recommended: no
 # Optional:    sshfs
 #              curlftpfs
-#              fuse
-#              fuse-zip
-#              fusefat
+#              fuse2
+#              fuse3
 #              fuseiso
 #              archivemount
 #              highlight
+#              fusefat      (https://github.com/alanswx/fusefat)
+#              fuse-zip     (https://github.com/ralic/fuse-zip)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # sits in ~/.vifm
 #
 # Home page: https://${PRGNAME}.info/
-# Download:  https://prdownloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

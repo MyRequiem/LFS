@@ -8,7 +8,7 @@ PRGNAME="gstreamer"
 # потоковые серверы и медиапроигрыватели.
 
 # Required:    glib
-# Recommended: gobject-introspection
+# Recommended: no
 # Optional:    gtk+3           (для генерации примеров)
 #              gsl             (для одного из тестов)
 #              libunwind

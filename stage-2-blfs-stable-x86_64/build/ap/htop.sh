@@ -9,8 +9,8 @@ PRGNAME="htop"
 # Required:    no
 # Recommended: no
 # Optional:    lm-sensors
-#              hwloc (https://www.open-mpi.org/projects/hwloc/)
 #              libnl
+#              hwloc       (https://www.open-mpi.org/projects/hwloc/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

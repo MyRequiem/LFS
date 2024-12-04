@@ -21,7 +21,6 @@ ARCH_NAME="gtk+"
 #              sassc
 #              wayland
 #              wayland-protocols
-#              gobject-introspection
 # Optional:    colord
 #              cups
 #              gtk-doc

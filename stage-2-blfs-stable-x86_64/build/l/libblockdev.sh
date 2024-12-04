@@ -6,8 +6,7 @@ PRGNAME="libblockdev"
 # C-библиотека, поддерживающая GObject Introspection для управления блочными
 # устройствами.
 
-# Required:    gobject-introspection
-#              libbytesize
+# Required:    libbytesize
 #              libyaml
 #              parted
 #              volume-key

@@ -10,13 +10,11 @@ PRGNAME="gst-plugins-base"
 # Required:    gstreamer
 # Recommended: alsa-lib
 #              cdparanoia-III         (для сборки cdda плагина)
-#              gobject-introspection
 #              iso-codes
 #              libgudev
 #              libjpeg-turbo
 #              libogg
 #              libpng
-#              libtheora
 #              libvorbis
 #              mesa
 #              pango
@@ -26,7 +24,6 @@ PRGNAME="gst-plugins-base"
 #              gtk+3                  (для сборки примеров)
 #              opus
 #              qt5                    (для сборки примеров)
-#              sdl
 #              sdl2
 #              valgrind
 #              python3-hotdoc         (https://pypi.org/project/hotdoc/)

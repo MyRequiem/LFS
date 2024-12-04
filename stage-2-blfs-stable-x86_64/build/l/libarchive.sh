@@ -8,10 +8,10 @@ PRGNAME="libarchive"
 # инструментов командной строки tar, cpio и zcat
 
 # Required:    no
-# Recommended: no
-# Optional:    libxml2
-#              lzo
+# Recommended: libxml2
+# Optional:    lzo
 #              nettle
+#              pcre2
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,26 +21,21 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 LZO2="--without-lzo2"
-XML2="--without-xml2"
 NETTLE="--without-nettle"
 
 [ -x /usr/lib/liblzo2.so ]         && LZO2="--with-lzo2"
-command -v xmllint     &>/dev/null && XML2="--with-xml2"
 command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
 
 ./configure       \
     --prefix=/usr \
     "${LZO2}"     \
-    "${XML2}"     \
     "${NETTLE}"   \
-    --disable-static || exit 1
+    --disable-static \
+    --without-expat || exit 1
 
 make || exit 1
-# LC_ALL=C make check
+# LC_ALL=C.UTF-8 make check
 make install DESTDIR="${TMP_DIR}"
-
-# удалим недопустимую запись в /usr/lib/pkgconfig/libarchive.pc
-sed -i "s/iconv //" "${TMP_DIR}/usr/lib/pkgconfig/libarchive.pc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

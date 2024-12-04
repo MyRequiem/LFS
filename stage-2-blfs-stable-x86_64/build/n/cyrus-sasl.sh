@@ -7,7 +7,7 @@ PRGNAME="cyrus-sasl"
 # серверной стороне для предоставления услуг аутентификации и авторизации.
 
 # Required:    no
-# Recommended: berkeley-db
+# Recommended: lmdb
 # Optional:    linux-pam
 #              mit-kerberos-v5
 #              mariadb или mysql (https://www.mysql.com/)
@@ -15,6 +15,7 @@ PRGNAME="cyrus-sasl"
 #              postgresql
 #              python3-sphinx
 #              sqlite
+#              berkeley-db                    (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 #              krb4                           (https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/)
 #              dmalloc                        (https://dmalloc.com/)
 #              perl-pod-pom-view-restructured (https://metacpan.org/pod/Pod::POM::View::Restructured)
@@ -27,27 +28,14 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-PAM="--without-pam"
-MYSQL="--without-mysql"
-OPENLDAP="--without-ldap"
-POSTGRESQL="--without-pgsql"
-SQLITE3="--without-sqlite3"
-KRB4="--disable-krb4"
-DMALLOC="--without-dmalloc"
-SPHINX="no"
+# исправим проблему при сборке с gcc-14
+sed '/saslint/a #include <time.h>'       -i lib/saslutil.c || exit 1
+sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 
-command -v mkhomedir_helper &>/dev/null && PAM="--with-pam"
-command -v mysql            &>/dev/null && MYSQL="--with-mysql"
-command -v ldapadd          &>/dev/null && OPENLDAP="--with-ldap"
-command -v createdb         &>/dev/null && POSTGRESQL="--with-pgsql"
-command -v sqlite3          &>/dev/null && SQLITE3="--with-sqlite3"
-command -v krb4-config      &>/dev/null && KRB4="--enable-krb4"
-command -v dmalloc          &>/dev/null && DMALLOC="--with-dmalloc"
-# command -v sphinx-build     &>/dev/null && SPHINX="yes"
+OPENLDAP="--disable-ldapdb"
+command -v ldapadd &>/dev/null && OPENLDAP="--enable-ldapdb"
 
-# включает сервер аутентификации SASLDB
-#    --enable-auth-sasldb
-# база данных sasldb создается в /var/lib/sasl вместо /etc
+# база данных sasldb создается в /var/lib/sasl (по умолчанию в /etc)
 #    --with-dbpath=/var/lib/sasl/sasldb2
 # saslauthd использует FHS-совместимый каталог /var/run/saslauthd
 #    --with-saslauthd=/var/run/saslauthd
@@ -55,17 +43,11 @@ command -v dmalloc          &>/dev/null && DMALLOC="--with-dmalloc"
     --prefix=/usr                       \
     --sysconfdir=/etc                   \
     --enable-auth-sasldb                \
+    --with-dblib=lmdb                   \
     --with-dbpath=/var/lib/sasl/sasldb2 \
-    --with-sphinx-build="${SPHINX}"     \
-    --without-sqlite                    \
-    "${PAM}"                            \
-    "${MYSQL}"                          \
-    "${OPENLDAP}"                       \
-    "${POSTGRESQL}"                     \
-    "${SQLITE3}"                        \
-    "${KRB4}"                           \
-    "${DMALLOC}"                        \
-    --with-saslauthd=/var/run/saslauthd || exit 1
+    --with-sphinx-build=no              \
+    --with-saslauthd=/var/run/saslauthd \
+    "${OPENLDAP}" || exit 1
 
 # пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
 make -j1 || exit 1

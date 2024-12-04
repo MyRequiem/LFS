@@ -12,7 +12,6 @@ PRGNAME="slang"
 # Required:    no
 # Recommended: no
 # Optional:    libpng
-#              pcre
 #              oniguruma (https://github.com/kkos/oniguruma)
 
 ROOT="/root/src/lfs"

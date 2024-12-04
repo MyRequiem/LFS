@@ -9,7 +9,7 @@ PRGNAME="nmap"
 # Required:    no
 # Recommended: libpcap
 #              lua
-#              pcre
+#              pcre2
 #              liblinear
 # Optional:    python2-pygtk  (для сборки утилиты zenmap)
 #              python2        (для сборки утилиты ndiff)

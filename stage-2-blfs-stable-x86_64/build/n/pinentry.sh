@@ -7,16 +7,16 @@ PRGNAME="pinentry"
 # которые использует протокол Assuan. Утилиты ввода PIN-кода обычно запускаются
 # демоном gpg-agent, но также могут быть запущены и из командной строки.
 
-# Required: libassuan
-#           libgpg-error
-# Optional: emacs     (для сборки 'pinentry-emacs')
-#           fltk      (для сборки 'pinentry-fltk')
-#           gcr3
-#           gtk+2     (для сборки pinentry-gtk-2)
-#           gtk+3     (для сборки pinentry-gnome3, должны быть установлены пакеты libsecret и gcr3)
-#           libsecret
-#           qt5       (для сборки 'pinentry-qt')
-#           efl       (https://www.enlightenment.org/about-efl)
+# Required:    libassuan
+#              libgpg-error
+# Recommended: no
+# Optional:    emacs                         (для сборки 'pinentry-emacs')
+#              fltk                          (для сборки 'pinentry-fltk')
+#              gcr4 или gcr3
+#              kde-frameworks или kwayland
+#              libsecret
+#              qt5-components                (для сборки 'pinentry-qt')
+#              efl                           (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,31 +26,13 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 FLTK="--disable-pinentry-fltk"
-GTK2="--disable-pinentry-gtk2"
-GTK3="--disable-pinentry-gnome3"
-LIBSECRET="--disable-libsecret"
-QT="--disable-pinentry-qt"
-EMACS_PIN="--disable-pinentry-emacs"
-EMACS_HACK="--disable-inside-emacs"
+command -v fluid &>/dev/null && FLTK="--enable-pinentry-fltk"
 
-command -v fltk-config &>/dev/null && FLTK="--enable-pinentry-fltk"
-command -v gtk-demo    &>/dev/null && GTK2="--enable-pinentry-gtk2"
-command -v gtk3-demo   &>/dev/null && GTK3="--enable-pinentry-gnome3"
-command -v secret-tool &>/dev/null && LIBSECRET="--enable-libsecret"
-command -v assistant   &>/dev/null && QT="--enable-pinentry-qt"
-command -v emacs       &>/dev/null && EMACS_PIN="--enable-pinentry-emacs" && \
-    EMACS_HACK="--enable-inside-emacs"
-
-./configure         \
-    --prefix=/usr   \
-    "${FLTK}"       \
-    "${GTK2}"       \
-    "${GTK3}"       \
-    "${LIBSECRET}"  \
-    "${QT}"         \
-    "${EMACS_PIN}"  \
-    "${EMACS_HACK}" \
-    --enable-pinentry-tty || exit 1
+./configure               \
+    --prefix=/usr         \
+    --enable-pinentry-tty \
+    "${FLTK}"             \
+    --disable-pinentry-qt5 || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

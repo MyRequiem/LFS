@@ -10,7 +10,6 @@ PRGNAME="w3m"
 # Required:    gc
 # Recommended: no
 # Optional:    glib
-#              gtk+2
 #              imlib2
 #              gdk-pixbuf
 #              gdk-pixbuf-xlib
@@ -42,11 +41,6 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-MOUSE="--disable-mouse"
-MAILER="--disable-w3mmailer"
-EDITOR="/usr/bin/vim"
-BROWSER="/usr/bin/firefox"
-
 ./configure                                   \
     --prefix=/usr                             \
     --sysconfdir=/etc                         \
@@ -58,13 +52,13 @@ BROWSER="/usr/bin/firefox"
     --enable-gopher                           \
     --enable-unicode                          \
     --enable-image="x11,fb"                   \
-    --enable-keymap="${PRGNAME}"              \
-    "${MOUSE}"                                \
-    "${MAILER}"                               \
-    --with-editor="${EDITOR}"                 \
-    --with-browser="${BROWSER}"               \
+    --enable-keymap="w3m"                     \
+    --disable-mouse                           \
+    --disable-w3mmailer                       \
+    --with-editor=/usr/bin/vim                \
+    --with-browser=/usr/bin/firefox           \
     --with-termlib="terminfo ncurses"         \
-    --with-imagelib="gtk2 gdk-pixbuf2 imlib2" \
+    --with-imagelib="gdk-pixbuf2 imlib2"      \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -85,7 +79,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # files residing on remote systems. It can display HTML tables, frames, and
 # images, and supports tabbed browsing.
 #
-# Hom page: http://${PRGNAME}.sourceforge.net/
+# Hom page: https://${PRGNAME}.sourceforge.net/
 # Download: https://deb.debian.org/debian/pool/main/w/${PRGNAME}/${PRGNAME}_${ARCH_VERSION}.orig.tar.xz
 #
 EOF

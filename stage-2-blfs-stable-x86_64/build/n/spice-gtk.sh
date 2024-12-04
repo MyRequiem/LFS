@@ -7,8 +7,7 @@ PRGNAME="spice-gtk"
 
 # Required:    vala
 #              spice             (https://www.spice-space.org/)
-# Recommended: gobject-introspection
-#              polkit
+# Recommended: polkit
 # Optional:    libcacard        (https://www.spice-space.org/)
 #              usbredir         (https://www.spice-space.org)
 #              phodav           (https://wiki.gnome.org/phodav)

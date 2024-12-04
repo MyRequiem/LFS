@@ -44,7 +44,7 @@ mkdir -pv "${TMP_DIR}"
 #    --disable-file-attr
 sa_lib_dir=/usr/lib/sa  \
 sa_dir=/var/log/sa      \
-conf_dir=/etc/sysconfig \
+conf_dir=/etc/sysstat   \
 ./configure             \
     --prefix=/usr       \
     --disable-file-attr || exit 1
@@ -89,8 +89,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # historize performance and activity data (iostat, mpstat, pidstat, sadf,
 # tapestat, cifsiostat).
 #
-# Home page: http://pagesperso-orange.fr/sebastien.godard/
-# Download:  http://sebastien.godard.pagesperso-orange.fr/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://${PRGNAME}.github.io/
+# Download:  https://${PRGNAME}.github.io/${PRGNAME}-packages/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

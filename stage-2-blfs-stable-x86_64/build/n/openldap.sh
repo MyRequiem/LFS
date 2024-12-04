@@ -12,12 +12,11 @@ PRGNAME="openldap"
 # Required:    no
 # Recommended: cyrus-sasl
 # Optional:    gnutls
-#              pth
 #              unixodbc
 #              mariadb или postgresql или mysql (http://www.mysql.com/)
 #              openslp                          (http://www.openslp.org/)
 #              wiredtiger                       (https://www.mongodb.com/docs/manual/core/wiredtiger/)
-#              berkeley-db (для сборки slapd, но эта утилита устарела)
+#              berkeley-db                      (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -40,8 +39,7 @@ autoconf || exit 1
     --disable-static  \
     --enable-dynamic  \
     --disable-debug   \
-    --disable-slapd   \
-    --enable-versioning=yes || exit 1
+    --disable-slapd || exit 1
 
 make depend || exit 1
 make        || exit 1
@@ -67,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # It uses the TCP/IP stack versus the overly complex OSI stack. LDAP is often
 # used to provide authentication (such as for email)
 #
-# Home page: http://www.${PRGNAME}.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://www.${PRGNAME}.org/software/download/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
 #
 EOF

@@ -6,8 +6,10 @@ PRGNAME="lnav"
 # Усовершенствованная утилита для просмотра лог-файлов
 
 # Required:    sqlite
+#              pcre2
 # Recommended: no
-# Optional:    no
+# Optional:    curl
+#              libarchive
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

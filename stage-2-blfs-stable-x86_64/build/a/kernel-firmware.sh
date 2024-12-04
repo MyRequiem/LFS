@@ -6,6 +6,10 @@ ARCH_NAME="linux-firmware"
 ### Firmware for the linux kernel
 # Файлы прошивки для ядра Linux которые используются для аппаратных драйверов.
 
+# Required:    no
+# Recommended: no
+# Optional:    no
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1

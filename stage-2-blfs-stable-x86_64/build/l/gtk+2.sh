@@ -15,7 +15,6 @@ ARCH_NAME="gtk+"
 # Optional:    cups
 #              docbook-utils
 #              gnome-themes-extra (для создания adwaita и highcontrast icon themes)
-#              gobject-introspection
 #              gtk-doc
 
 ROOT="/root/src/lfs"

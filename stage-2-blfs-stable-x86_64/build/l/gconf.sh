@@ -9,8 +9,7 @@ ARCH_NAME="GConf"
 
 # Required:    dbus-glib
 #              libxml2
-# Recommended: gobject-introspection
-#              gtk+3
+# Recommended: gtk+3
 #              polkit
 # Optional:    openldap
 

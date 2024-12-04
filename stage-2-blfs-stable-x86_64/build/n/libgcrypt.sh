@@ -9,8 +9,7 @@ PRGNAME="libgcrypt"
 
 # Required:    libgpg-error
 # Recommended: no
-# Optional:    pth
-#              texlive или install-tl-unx (для создания pdf и ps документации)
+# Optional:    texlive или install-tl-unx (для создания pdf и ps документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

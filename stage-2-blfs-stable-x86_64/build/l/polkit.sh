@@ -15,8 +15,7 @@ PRGNAME="polkit"
 #              libxslt
 #              docbook-xml
 #              docbook-xsl
-# Recommended: gobject-introspection
-#              linux-pam
+# Recommended: linux-pam
 #              elogind
 # Optional:    gtk-doc
 #              mozjs

@@ -7,8 +7,7 @@ PRGNAME="babl"
 # фреймворк для добавления новых цветовых моделей и типов данных.
 
 # Required:    no
-# Recommended: gobject-introspection
-#              librsvg
+# Recommended: librsvg
 # Optional:    lcms2
 #              w3m    (http://w3m.sourceforge.net/)
 

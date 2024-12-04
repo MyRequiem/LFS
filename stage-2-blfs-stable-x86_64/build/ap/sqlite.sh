@@ -27,21 +27,15 @@ mkdir -pv "${TMP_DIR}"
 LIBEDIT="--disable-editline"
 [ -x /usr/lib/libedit.so ] && LIBEDIT="--enable-editline"
 
-# включить 5 версию расширения полнотекстового поиска
-#    --enable-fts5
-./configure                           \
-    --prefix=/usr                     \
-    --disable-static                  \
-    --enable-fts5                     \
-    "${LIBEDIT}"                      \
-    CFLAGS="-g -O2                    \
-    -DSQLITE_ENABLE_FTS3=1            \
-    -DSQLITE_ENABLE_FTS4=1            \
-    -DSQLITE_ENABLE_COLUMN_METADATA=1 \
-    -DSQLITE_ENABLE_UNLOCK_NOTIFY=1   \
-    -DSQLITE_ENABLE_DBSTAT_VTAB=1     \
-    -DSQLITE_SECURE_DELETE=1          \
-    -DSQLITE_ENABLE_FTS3_TOKENIZER=1" || exit 1
+./configure           \
+    --prefix=/usr     \
+    --disable-static  \
+    --enable-fts{4,5} \
+    "${LIBEDIT}"      \
+    CPPFLAGS="-D SQLITE_ENABLE_COLUMN_METADATA=1 \
+              -D SQLITE_ENABLE_UNLOCK_NOTIFY=1   \
+              -D SQLITE_ENABLE_DBSTAT_VTAB=1     \
+              -D SQLITE_SECURE_DELETE=1" || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов
@@ -61,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"
 # the SQLite library.
 #
 # Home page: https://${PRGNAME}.org
-# Download:  https://${PRGNAME}.org/2022/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://${PRGNAME}.org/2024/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

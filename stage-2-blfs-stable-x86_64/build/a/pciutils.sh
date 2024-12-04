@@ -7,8 +7,7 @@ PRGNAME="pciutils"
 # проверки их состояния и настройки их регистров конфигурации (setpci)
 
 # Required:    no
-# Recommended: which                  (для корректной работы скрипта update-pciids)
-#              curl или wget или lynx (для корректной работы скрипта update-pciids)
+# Recommended: hwdata
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -16,37 +15,27 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-CRON_WEEKLY="/etc/cron.weekly"
-mkdir -pv "${TMP_DIR}${CRON_WEEKLY}"
+mkdir -pv "${TMP_DIR}"
 
-make            \
-    PREFIX=/usr \
-    SHARED=yes  \
-    SHAREDIR=/usr/share/hwdata || exit 1
+# запретим установку файла pci.ids, т.к. он устанавливается с пакетом hwdata
+sed -r '/INSTALL/{/PCI_IDS|update-pciids /d; s/update-pciids.8//}' \
+    -i Makefile
+
+make PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes || exit 1
 
 # пакет не содержит набора тестов
 
-make                           \
-    PREFIX=/usr                \
-    SHARED=yes                 \
-    SHAREDIR=/usr/share/hwdata \
-    DESTDIR="${TMP_DIR}" install install-lib
+make PREFIX=/usr                \
+     SHAREDIR=/usr/share/hwdata \
+     SHARED=yes                 \
+     DESTDIR="${TMP_DIR}" install install-lib
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpci.so"
 
-### Конфигурация:
-# Файл данных pci.ids находится в /usr/share/hwdata/ и должен периодически
-# обновляться. Чтобы получить его текущую версию в состав пакета входит скрипт
-# update-pciids, запуск которого настроим через fcron
-
-UPDATE_PCIIDS="${TMP_DIR}${CRON_WEEKLY}/update-pciids.sh"
-cat << EOF > "${UPDATE_PCIIDS}"
-#!/bin/bash
-
-/usr/sbin/update-pciids
-EOF
-
-chmod 754 "${UPDATE_PCIIDS}"
+# удалим пустую директорию ${TMP_DIR}/usr/share/hwdata
+rm -rf "${TMP_DIR}/usr/share/hwdata"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

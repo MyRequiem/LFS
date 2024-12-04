@@ -14,8 +14,7 @@ PRGNAME="udisks"
 #              dbus
 #              dosfstools
 # Recommended: elogind
-# Optional:    gobject-introspection (требуется при сборке GNOME)
-#              btrfs-progs
+# Optional:    btrfs-progs
 #              gptfdisk
 #              mdadm
 #              xfsprogs
@@ -64,8 +63,7 @@ command -v fsadm &>/dev/null && LVM2="--enable-lvm2"
 make || exit 1
 
 # Перед запуском тестов должны быть установлены опциональные пакеты
-# gobject-introspection, python-d-bus и python3-pygobject3, а также должны
-# существовать каталоги:
+# python-d-bus и python3-pygobject3, а также должны существовать каталоги:
 #    /var/run/udisks2
 #    /var/lib/udisks2
 #

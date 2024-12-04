@@ -12,7 +12,11 @@ PRGNAME="libusb"
 
 ### Конфигурация ядра
 #    CONFIG_USB_SUPPORT=y
-#    CONFIG_USB=m|y
+#    CONFIG_USB=y|m
+#    CONFIG_USB_PCI=y
+#    CONFIG_USB_XHCI_HCD=y|m
+#    CONFIG_USB_EHCI_HCD=y|m
+#    CONFIG_USB_OHCI_HCD=y|m
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,27 +30,8 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-
-# если doxygen установлен, то собираем документацию
-DOXYGEN=""
-# command -v doxygen &>/dev/null && DOXYGEN="true"
-
-if [ -n "${DOXYGEN}" ]; then
-    pushd doc                  || exit 1
-        doxygen -u doxygen.cfg || exit 1
-        make docs              || exit 1
-    popd                       || exit 1
-fi
-
 # пакет не имеет набора тестов
-
 make install DESTDIR="${TMP_DIR}"
-
-if [ -n "${DOXYGEN}" ]; then
-    API_DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/apidocs"
-    install -v -d -m755 "${TMP_DIR}${API_DOCS}"
-    install -v -m644 doc/api-1.0/* "${TMP_DIR}${API_DOCS}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

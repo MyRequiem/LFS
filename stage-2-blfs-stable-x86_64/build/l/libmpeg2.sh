@@ -8,7 +8,6 @@ PRGNAME="libmpeg2"
 # Required:    no
 # Recommended: no
 # Optional:    Graphical Environments
-#              sdl
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

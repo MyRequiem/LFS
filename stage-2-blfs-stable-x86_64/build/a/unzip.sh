@@ -35,6 +35,8 @@ mkdir -pv "${TMP_DIR}"
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated_fixes-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-gcc14-1.patch" || exit 1
 
 make -f unix/Makefile generic || exit 1
 

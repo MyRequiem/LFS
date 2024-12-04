@@ -33,7 +33,7 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-make -f unix/Makefile generic_gcc || exit 1
+make -f unix/Makefile generic CC="gcc -std=gnu89" || exit 1
 # пакет не содержит набора тестов
 make prefix="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man/man1" \
     -f unix/Makefile install

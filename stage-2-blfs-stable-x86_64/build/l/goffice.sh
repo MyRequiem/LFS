@@ -14,8 +14,7 @@ PRGNAME="goffice"
 #              libxslt
 #              which
 # Recommended: no
-# Optional:    gobject-introspection
-#              ghostscript
+# Optional:    ghostscript
 #              gsettings-desktop-schemas
 #              gtk-doc
 #              lasem      (https://download.gnome.org/sources/lasem/)

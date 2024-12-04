@@ -9,12 +9,11 @@ PRGNAME="highlight"
 # Required:    boost
 #              lua
 # Recommended: no
-# Optional:    qt5 (для сборки GUI интерфейса)
+# Optional:    qt6    (для сборки GUI интерфейса)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -22,34 +21,14 @@ mkdir -pv "${TMP_DIR}"
 # не сжимаем man-страницы
 sed -i '/GZIP/s/^/#/' makefile || exit 1
 
-GUI=""
-# command -v assistant &>/dev/null && GUI="true"
-
 make || exit 1
-
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}/"
-if [ -n "${GUI}" ]; then
-    make doc_dir="${DOCS}" gui || exit 1
-fi
-
 # пакет не содержит набора тестов
-
-make doc_dir="${DOCS}/" install DESTDIR="${TMP_DIR}"
-
-if [ -n "${GUI}" ]; then
-    make install-gui DESTDIR="${TMP_DIR}"
-fi
-
-CONFIG="/etc/highlight/filetypes.conf"
-if [ -f "${CONFIG}" ]; then
-    mv "${CONFIG}" "${CONFIG}.old"
-fi
+make doc_dir="/usr/share/doc/${PRGNAME}-${VERSION}/" install \
+    DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (converts sources to text with syntax highlighting)

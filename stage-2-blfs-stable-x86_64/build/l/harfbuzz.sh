@@ -7,8 +7,7 @@ PRGNAME="harfbuzz"
 # type") - движок формирования текста OpenType
 
 # Required:    no
-# Recommended: gobject-introspection (требуется для сборки GNOME)
-#              glib
+# Recommended: glib
 #              graphite2 (нужен для сборки texlive или libreoffice с системным harfbuzz)
 #              icu
 #              freetype

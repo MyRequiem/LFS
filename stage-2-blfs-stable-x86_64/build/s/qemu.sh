@@ -30,7 +30,6 @@ PRGNAME="qemu"
 #              lzo
 #              nettle
 #              mesa
-#              sdl
 #              vte3 или vte2
 #              libcacard
 
