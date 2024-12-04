@@ -20,25 +20,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GUI="false"
+# исправим несколько уязвимостей безопасности
+patch -Np1 \
+    -i "${SOURCES}/${PRGNAME}-${VERSION}-consolidated_fixes-1.patch" || exit 1
 
 # не позволяем p7zip устанавливать сжатые (gzip) man-страницы
 sed '/^gzip/d' -i install.sh
 
-# устраним уязвимость в системе безопасности
-sed -i '160a if(_buffer == nullptr || _size == _pos) return E_FAIL;' \
-    CPP/7zip/Common/StreamObjects.cpp || exit 1
-
 make all3
 
 # make test
-
-if command -v wxrc &>/dev/null; then
-    if [[ "${GUI}" == "true" ]]; then
-        make 7zG
-        # make test_7zG
-    fi
-fi
 
 make                        \
     DEST_HOME=/usr          \
