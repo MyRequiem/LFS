@@ -131,6 +131,7 @@ ap/sudo.sh
 
 l/fribidi.sh
 l/libuv.sh
+l/iso-codes.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -152,8 +153,6 @@ l/libuv.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 
-# l/rpcsvc-proto.sh
-# l/iso-codes.sh
 # l/libaio.sh
 # l/libatasmart.sh
 # l/libexif.sh

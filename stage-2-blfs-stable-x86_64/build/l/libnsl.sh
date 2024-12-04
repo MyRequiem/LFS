@@ -7,8 +7,7 @@ PRGNAME="libnsl"
 # клиенткий интерфейс для NIS(YP) и NIS+. Ранее данный код был частью glibc, но
 # теперь существует отдельно для связи с TI-RPC и поддержки IPv6
 
-# Required:    rpcsvc-proto
-#              libtirpc
+# Required:    libtirpc
 # Recommended: no
 # Optional:    no
 

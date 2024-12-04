@@ -100,6 +100,7 @@ http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
 https://www.sudo.ws/dist/sudo-1.9.15p5.tar.gz
 https://github.com/fribidi/fribidi/releases/download/v1.0.15/fribidi-1.0.15.tar.xz
 https://dist.libuv.org/dist/v1.48.0/libuv-v1.48.0.tar.gz
+https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.16.0/iso-codes-v4.16.0.tar.gz
 
 
 ================================================================================
@@ -124,8 +125,6 @@ https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
 https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://www.fftw.org/fftw-3.3.10.tar.gz
-https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.3/rpcsvc-proto-1.4.3.tar.xz
-https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.12.0/iso-codes-v4.12.0.tar.gz
 https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2

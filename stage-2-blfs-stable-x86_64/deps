@@ -893,7 +893,6 @@ rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
 rhash                                   cmake
 roxen-webserver                         php
-rpcsvc-proto                            libnsl
 rrdtool                                 lm-sensors
 rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad
