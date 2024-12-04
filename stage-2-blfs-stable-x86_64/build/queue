@@ -78,9 +78,9 @@ d/shellcheck.sh
 a/zip.sh
 a/unzip.sh
 ap/unrar.sh
+ap/lzip.sh
+ap/p7zip.sh
 
-# ap/lzip.sh
-# ap/p7zip.sh
 # a/lrzip.sh
 # ap/sudo.sh
 

@@ -93,11 +93,12 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/unzip-6.0-consolidated_fixes-
 https://www.linuxfromscratch.org/patches/blfs/12.2/unzip-6.0-gcc14-1.patch
 https://www.rarlab.com/rar/unrarsrc-7.0.9.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/unrar/unrar-7.0.9-soname.patch
+http://download.savannah.gnu.org/releases/lzip/lzip-1.24.tar.gz
+https://github.com/p7zip-project/p7zip/archive/v17.04/p7zip-17.04.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.2/p7zip-17.04-consolidated_fixes-1.patch
 
 
 ================================================================================
-http://download.savannah.gnu.org/releases/lzip/lzip-1.23.tar.gz
-https://github.com/p7zip-project/p7zip/archive/v17.04/p7zip-17.04.tar.gz
 http://ck.kolivas.org/apps/lrzip/lrzip-0.651.tar.xz
 https://www.sudo.ws/dist/sudo-1.9.13p1.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
