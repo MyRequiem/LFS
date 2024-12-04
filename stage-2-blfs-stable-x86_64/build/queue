@@ -80,9 +80,8 @@ a/unzip.sh
 ap/unrar.sh
 ap/lzip.sh
 ap/p7zip.sh
-
-# a/lrzip.sh
-# ap/sudo.sh
+a/lrzip.sh
+ap/sudo.sh
 
 # На данный момент установлены все необходимые пакеты для более-менее
 # комфортной работы в чистой linux-консоли:
@@ -239,12 +238,10 @@ ap/p7zip.sh
 # d/nasm.sh
 # l/libjpeg-turbo.sh
 # l/unixodbc.sh
-# ap/sudo.sh
 # l/c-ares.sh
 # n/nghttp2.sh
 # n/bind-utils.sh
 # n/mit-kerberos-v5.sh
-# ap/sudo.sh
 # n/libtirpc.sh
 # l/libnsl.sh
 # l/berkeley-db.sh

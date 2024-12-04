@@ -13,10 +13,11 @@ PRGNAME="sudo"
 # Optional:    linux-pam
 #              mit-kerberos-v5
 #              openldap
-#              MTA  (dovecot или exim или postfix или sendmail)
-#              afs  (http://www.openafs.org/)
-#              fwtk (http://www.fwtk.org/)
-#              opie (https://sourceforge.net/projects/opie/files/)
+#              MTA              (dovecot или exim или postfix или sendmail)
+#              afs              (http://www.openafs.org/)
+#              libaudit         (https://github.com/linux-audit/audit-userspace)
+#              opie             (https://sourceforge.net/projects/opie/files/)
+#              sssd             (https://sssd.io/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,11 +27,8 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-PAM="--without-pam"
 OPENLDAP="--without-ldap"
-
-command -v pam_tally &>/dev/null && PAM="--with-pam"
-command -v ldapadd   &>/dev/null && OPENLDAP="--with-ldap"
+command -v ldapadd &>/dev/null && OPENLDAP="--with-ldap"
 
 # использовать переменную окружения EDITOR для visudo
 #    --with-env-editor
@@ -38,9 +36,7 @@ command -v ldapadd   &>/dev/null && OPENLDAP="--with-ldap"
     --prefix=/usr                                   \
     --libexecdir=/usr/lib                           \
     --with-secure-path                              \
-    --with-all-insults                              \
     --with-env-editor                               \
-    "${PAM}"                                        \
     "${OPENLDAP}"                                   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     --with-passprompt="[sudo] password for %p: " || exit 1
@@ -48,18 +44,11 @@ command -v ldapadd   &>/dev/null && OPENLDAP="--with-ldap"
 make || exit 1
 
 # тесты
-#    # env LC_ALL=C make check 2>&1 | tee ../make-check.log
+#    # env LC_ALL=C make check |& tee make-check.log
 # проверим результаты
 #    # grep failed ../make-check.log
 
 make install DESTDIR="${TMP_DIR}"
-
-# ссылка в /usr/lib/sudo/
-#    libsudo_util.so.0 -> libsudo_util.so.0.0.0
-(
-    cd "${TMP_DIR}/usr/lib/sudo/" || exit 1
-    ln -sfv libsudo_util.so.0.0.0 libsudo_util.so.0
-)
 
 # закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
 SUDOERS="/etc/sudoers"
@@ -113,7 +102,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # /var/log/ so the system administrator can keep an eye on things
 #
 # Home page: https://www.sudo.ws/
-# Download:  http://www.sudo.ws/dist/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.sudo.ws/dist/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

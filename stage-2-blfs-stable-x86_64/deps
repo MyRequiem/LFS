@@ -175,7 +175,6 @@ fuse2                                   vifm, ntfs-3g
 fuse3                                   archivemount, gnupg, glib, sshfs, fuseiso, curlftpfs, vifm
 fusefat                                 vifm
 fuseiso                                 vifm
-fwtk                                    sudo
 game-music-emu                          gst-plugins-bad
 gc                                      w3m, guile
 gcc                                     cmake, python3-numpy
@@ -319,6 +318,7 @@ libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
 libatasmart                             udisks
 libatomic-ops                           gc, libdrm
+libaudit                                sudo
 libavc1394                              gst-plugins-good
 libavtp                                 alsa-plugins, gst-plugins-bad
 libb64                                  transmission
@@ -940,6 +940,7 @@ spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, apr-util, redland, php
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
+sssd                                    sudo
 startup-notification                    rxvt-unicode, i3
 stunnel                                 curl
 subversion                              git, cmake
