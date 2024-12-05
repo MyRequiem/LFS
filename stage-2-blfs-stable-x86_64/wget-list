@@ -133,9 +133,7 @@ https://www.fftw.org/fftw-3.3.10.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
 https://github.com/NixOS/patchelf/releases/download/0.17.2/patchelf-0.17.2.tar.gz
-https://github.com/Legrandin/pycryptodome/archive/v3.17.0/pycryptodome-3.17.0.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.14.0.tar.gz
-https://files.pythonhosted.org/packages/b0/25/7998cd2dec731acbd438fbf91bc619603fc5188de0a9a17699a781840452/pyxdg-0.28.tar.gz
 https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-6.0.tar.gz
 https://files.pythonhosted.org/packages/source/s/six/six-1.16.0.tar.gz
 https://files.pythonhosted.org/packages/source/a/attrs/attrs-22.2.0.tar.gz
@@ -184,7 +182,6 @@ https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-3.0.2.tar.gz
 https://files.pythonhosted.org/packages/source/c/cwcwidth/cwcwidth-0.1.9.tar.gz
 https://files.pythonhosted.org/packages/source/b/blessed/blessed-1.20.0.tar.gz
 https://files.pythonhosted.org/packages/source/c/curtsies/curtsies-0.4.2.tar.gz
-https://files.pythonhosted.org/packages/source/b/bpython/bpython-0.24.tar.gz
 https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-2.11.1.tar.gz
 https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-3.1.0.tar.gz
 https://files.pythonhosted.org/packages/source/f/flake8/flake8-6.1.0.tar.gz

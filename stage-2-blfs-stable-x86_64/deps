@@ -774,15 +774,14 @@ python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-li
 python3-astroid                         python3-pylint
 python3-attrs                           python3-pytest, python3-numpy
 python3-blessed                         python3-curtsies
-python3-bpython
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
 python3-charset-normalizer              python3-requests
 python3-cloudpickle                     python3-attrs
 python3-coverage                        python3-attrs, python3-markdown
-python3-curtsies                        python3-bpython
-python3-cwcwidth                        python3-curtsies, python3-bpython
+python3-curtsies
+python3-cwcwidth                        python3-curtsies
 python3-cython                          yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
@@ -796,7 +795,7 @@ python3-flake8
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
 python3-gi-docgen                       glib, pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3, gtk4, gcr4, libadwaita, vte3
-python3-greenlet                        python3-bpython
+python3-greenlet
 python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, libwpe, gst-plugins-bad, gst-plugins-ugly
@@ -833,10 +832,9 @@ python3-py                              python3-pytest
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3, mirage
 python3-pycodestyle                     python3-flake8
-python3-pycryptodome
 python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-flake8, python3-pygobject3
-python3-pygments                        python3-pytest, llvm, libbytesize, python3-bpython, gegl
+python3-pygments                        python3-pytest, llvm, libbytesize, gegl
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pylint
 python3-pympler                         python3-attrs
@@ -853,11 +851,10 @@ python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests
 python3-pytest-mypy-plugins             python3-attrs
 python3-pytest-timeout                  python3-urllib3
-python3-pyxdg                           python3-bpython
 python3-pyyaml                          python3-markdown, llvm
 python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    llvm
-python3-requests                        python3-pytest, python3-cachecontrol, python3-bpython
+python3-requests                        python3-pytest, python3-cachecontrol
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
 python3-six                             libbytesize, python3-blessed, python3-urlgrabber, spice
 python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb

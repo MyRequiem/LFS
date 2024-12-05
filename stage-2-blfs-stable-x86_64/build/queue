@@ -160,21 +160,23 @@ d/gcc.sh
 # l/libyaml.sh
 # d/patchelf.sh
 
-# d/python-modules/python3-pycryptodome.sh
+# === python3-pygments ===
+# d/python-modules/python3-trove-classifiers.sh [NEW]
+# d/python-modules/python3-setuptools-scm.sh
+# d/python-modules/python3-pluggy.sh
+# d/python-modules/python3-pathspec.sh
+# d/python-modules/python3-editables.sh
+# d/python-modules/python3-hatchling.sh
 # d/python-modules/python3-pygments.sh
-# d/python-modules/python3-pyxdg.sh
+# ========================
+
 # d/python-modules/python3-pyyaml.sh
 # d/python-modules/python3-six.sh
 # d/python-modules/python3-attrs.sh
-# d/python-modules/python3-editables.sh
 # d/python-modules/python3-typing-extensions.sh
 # d/python-modules/python3-installer.sh
 # d/python-modules/python3-pyproject-hooks.sh
 # d/python-modules/python3-build.sh
-# d/python-modules/python3-setuptools-scm.sh
-# d/python-modules/python3-pluggy.sh
-# d/python-modules/python3-pathspec.sh
-# d/python-modules/python3-hatchling.sh
 # d/python-modules/python3-hatch-vcs.sh
 # d/python-modules/python3-iniconfig.sh
 # d/python-modules/python3-py.sh
@@ -209,7 +211,6 @@ d/gcc.sh
 # d/python-modules/python3-greenlet.sh
 # d/python-modules/python3-blessed.sh
 # d/python-modules/python3-curtsies.sh
-# d/python-modules/python3-bpython.sh
 # d/python-modules/python3-pycodestyle.sh
 # d/python-modules/python3-pyflakes.sh
 # d/python-modules/python3-flake8.sh
