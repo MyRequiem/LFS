@@ -462,7 +462,7 @@ libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5, php, gnome-keyring
 libyajl                                 i3, raptor
-libyaml                                 python3-pyyaml, ruby, libblockdev
+libyaml                                 ruby, libblockdev
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim, fcron, at, gnome-keyring
@@ -564,8 +564,8 @@ openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
 openssh                                 curl, sshfs, git, libssh2, gnome-keyring
 opie                                    sudo
-opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
-orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
+opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad
+orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 ossp-mm                                 php
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
 p7zip                                   imagemagick
@@ -773,16 +773,14 @@ python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-astroid                         python3-pylint
 python3-attrs                           python3-pytest, python3-numpy
-python3-blessed                         python3-curtsies
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
 python3-charset-normalizer              python3-requests
 python3-cloudpickle                     python3-attrs
-python3-coverage                        python3-attrs, python3-markdown
-python3-curtsies
-python3-cwcwidth                        python3-curtsies
-python3-cython                          yasm, python3-pyyaml, python3-msgpack, nghttp2, python3-numpy
+python3-coverage                        python3-attrs
+python3-cwcwidth
+python3-cython                          yasm, python3-msgpack, nghttp2, python3-numpy
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus                            libsecret, ibus, udisks
@@ -832,18 +830,18 @@ python3-py                              python3-pytest
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3, mirage
 python3-pycodestyle                     python3-flake8
-python3-pycurl                          python3-urlgrabber
+python3-pycurl
 python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, gegl
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pylint
 python3-pympler                         python3-attrs
-python3-pyparsing                       libinput, spice
+python3-pyparsing                       libinput
 python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-attrs, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-markdown, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-attrs, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
@@ -851,12 +849,11 @@ python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests
 python3-pytest-mypy-plugins             python3-attrs
 python3-pytest-timeout                  python3-urllib3
-python3-pyyaml                          python3-markdown, llvm
+python3-pyyaml                          llvm
 python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    llvm
 python3-requests                        python3-pytest, python3-cachecontrol
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-py, python3-pytest, python3-msgpack
-python3-six                             libbytesize, python3-blessed, python3-urlgrabber, spice
 python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-testpath
 python3-tomli                           python3-pylint
@@ -864,9 +861,8 @@ python3-tomlkit                         python3-pylint
 python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
 python3-typing-extensions               python3-setuptools-scm, python3-platformdirs, python3-astroid
-python3-urlgrabber
 python3-urllib3                         python3-requests
-python3-wcwidth                         python3-blessed
+python3-wcwidth
 python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
 python3-zope-interface                  python3-attrs
@@ -924,8 +920,6 @@ spandsp                                 gst-plugins-bad
 spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
-spice
-spice-protocol                          spice
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, redland, php
 srt                                     ffmpeg, gst-plugins-bad
@@ -971,7 +965,6 @@ unixodbc                                openldap, mariadb, qt5, php
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc, openjdk
 upower
-usbredir
 usbutils
 utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
@@ -1085,10 +1078,8 @@ zxing                                   gst-plugins-bad
 # libbsd                              netcat-openbsd
 # libmd                               libbsd
 # libmp4v2                            cmus
-# libosinfo                           virt-manager
+# libosinfo
 # libplacebo                          mpv
-# libvirt                             python3-libvirt, libvirt-glib, virt-manager
-# libvirt-glib                        virt-manager
 # libx86emu                           hwinfo
 # lsscsi
 # megatools
@@ -1099,13 +1090,12 @@ zxing                                   gst-plugins-bad
 # nginx
 # optipng
 # opusfile                            cmus
-# osinfo-db                           libosinfo, virt-manager
-# osinfo-db-tools                     osinfo-db, libosinfo, virt-manager
-# phodav                              spice-gtk
+# osinfo-db                           libosinfo
+# osinfo-db-tools                     osinfo-db, libosinfo
+# phodav
 # pspg
 # pwgen
 # pyatspi2
-# python3-libvirt                     virt-manager
 # qemu
 # qt5-styleplugins
 # qt5ct
@@ -1113,15 +1103,13 @@ zxing                                   gst-plugins-bad
 # rest
 # rpm                                 rpm2tgz
 # rpm2tgz
-# spice-gtk                           virt-manager
 # talloc
 # tokudb
-# tunctl                              virt-manager
+# tunctl
 # uget
 # utimer
 # vde2
 # virglrenderer
-# virt-manager
 # wgetpaste
 # zathura
 

@@ -170,8 +170,6 @@ d/gcc.sh
 # d/python-modules/python3-pygments.sh
 # ========================
 
-# d/python-modules/python3-pyyaml.sh
-# d/python-modules/python3-six.sh
 # d/python-modules/python3-attrs.sh
 # d/python-modules/python3-typing-extensions.sh
 # d/python-modules/python3-installer.sh
@@ -187,7 +185,6 @@ d/gcc.sh
 # d/python-modules/python3-requests.sh
 # d/python-modules/python3-msgpack.sh
 # d/python-modules/python3-cachecontrol.sh
-# d/python-modules/python3-markdown.sh
 # d/python-modules/python3-chardet.sh
 # d/python-modules/python3-pyparsing.sh
 # d/python-modules/python3-mako.sh
@@ -209,15 +206,12 @@ d/gcc.sh
 # d/python-modules/python3-wcwidth.sh
 # d/python-modules/python3-cwcwidth.sh
 # d/python-modules/python3-greenlet.sh
-# d/python-modules/python3-blessed.sh
-# d/python-modules/python3-curtsies.sh
 # d/python-modules/python3-pycodestyle.sh
 # d/python-modules/python3-pyflakes.sh
 # d/python-modules/python3-flake8.sh
 # d/python-modules/python3-netifaces.sh
 # d/python-modules/python3-ipaddr.sh
 # d/python-modules/python3-pycurl.sh
-# d/python-modules/python3-urlgrabber.sh
 
 # l/jansson.sh
 # n/nghttp2.sh
@@ -761,10 +755,6 @@ d/gcc.sh
 # s/pcsc-lite.sh
 # l/libcacard.sh
 # l/libnfs.sh
-# d/spice-protocol.sh
-# n/spice.sh
-# s/usbredir.sh
-# n/spice-gtk.sh
 # n/vde2.sh
 # l/virglrenderer.sh
 # l/libmd.sh
@@ -774,14 +764,10 @@ d/gcc.sh
 # s/jemalloc.sh
 # l/libcap-ng.sh
 # s/qemu.sh
-# l/libvirt.sh
-# d/python-modules/python3-libvirt.sh
-# l/libvirt-glib.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh
 # n/tunctl.sh
-# s/virt-manager.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh
 # ap/imwheel.sh

@@ -7,7 +7,7 @@ PRGNAME="libbytesize"
 
 # Required:    pcre2
 #              python3-pygments
-# Recommended: python3-six    (для python bindings)
+# Recommended: no
 # Optional:    gtk-doc
 #              pocketlint     (python модуль для одного теста) https://github.com/rhinstaller/pocketlint
 #              python3-polib  (python модуль для одного теста) https://pypi.org/project/polib/
