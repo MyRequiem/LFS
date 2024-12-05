@@ -134,6 +134,7 @@ l/libuv.sh
 l/iso-codes.sh
 l/libaio.sh
 a/lvm2.sh
+l/libpng.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -154,10 +155,8 @@ a/lvm2.sh
 # l/aspell-dict-en.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
-
 # l/libatasmart.sh
-# l/libexif.sh
-# l/libpng.sh
+
 # l/libyaml.sh
 # d/python-modules/python3-asciidoc.sh
 # d/patchelf.sh

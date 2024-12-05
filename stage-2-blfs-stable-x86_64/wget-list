@@ -103,6 +103,8 @@ https://dist.libuv.org/dist/v1.48.0/libuv-v1.48.0.tar.gz
 https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.16.0/iso-codes-v4.16.0.tar.gz
 https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
 https://sourceware.org/ftp/lvm2/LVM2.2.03.26.tgz
+https://downloads.sourceforge.net/libpng/libpng-1.6.43.tar.xz
+https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
 
 
 ================================================================================
@@ -128,9 +130,6 @@ https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://www.fftw.org/fftw-3.3.10.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
-https://github.com/libexif/libexif/releases/download/v0.6.24/libexif-0.6.24.tar.bz2
-https://downloads.sourceforge.net/libpng/libpng-1.6.39.tar.xz
-https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.39-apng.patch.gz
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
 https://files.pythonhosted.org/packages/source/a/asciidoc/asciidoc-10.2.0.tar.gz
 https://github.com/NixOS/patchelf/releases/download/0.17.2/patchelf-0.17.2.tar.gz
