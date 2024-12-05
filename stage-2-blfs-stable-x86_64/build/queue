@@ -170,7 +170,7 @@ d/gcc.sh
 # d/python-modules/python3-pygments.sh
 # ========================
 
-# d/python-modules/python3-typing-extensions.sh
+
 # d/python-modules/python3-installer.sh
 # d/python-modules/python3-pyproject-hooks.sh
 # d/python-modules/python3-build.sh
@@ -191,16 +191,7 @@ d/gcc.sh
 # d/python-modules/python3-meson.sh
 # d/python-modules/python3-dbus.sh
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-appdirs.sh
-# d/python-modules/python3-platformdirs.sh
-# d/python-modules/python3-astroid.sh
-# d/python-modules/python3-poetry-core.sh
-# d/python-modules/python3-isort.sh
 # d/python-modules/python3-mccabe.sh
-# d/python-modules/python3-tomlkit.sh
-# d/python-modules/python3-dill.sh
-# d/python-modules/python3-tomli.sh
-# d/python-modules/python3-pylint.sh
 # d/python-modules/python3-wcwidth.sh
 # d/python-modules/python3-cwcwidth.sh
 # d/python-modules/python3-greenlet.sh
