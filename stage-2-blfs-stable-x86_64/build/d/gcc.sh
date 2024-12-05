@@ -3,19 +3,16 @@
 PRGNAME="gcc"
 
 ### GCC (GNU compiler collection)
-# Коллекция компиляторов для C, C++, Fortran, Go, Objective-C и Objective-C++
-# кода
+# Коллекция компиляторов для C, C++, Fortran, Go, Objective-C, Objective-C++ и
+# m2 кода
 
 # Required:    no
 # Recommended: no
-# Optional:    gdb      (для тестов)
-#              valgrind (для тестов)
+# Optional:    --- для тестов ---
+#              gdb
+#              graphviz
+#              valgrind
 #              isl      (для включения оптимизации graphite) https://repo.or.cz/isl.git
-
-### NOTE
-# Для сборки версии 10.2.0 требуется минимум 12G свободного места + 1.1G для
-# тестов
-###
 
 ### NOTE
 # Если в системе присутствуют сторонние модули ядра (например, nvidia.ko и
@@ -45,13 +42,15 @@ cd build || exit 1
 # делает параметр -fstack-protector-strong параметром по умолчанию при
 # компиляции программ
 #    --enable-default-ssp
-../configure             \
-    --prefix=/usr        \
-    --disable-multilib   \
-    --with-system-zlib   \
-    --enable-default-pie \
-    --enable-default-ssp \
-    --enable-languages=c,c++,fortran,go,objc,obj-c++ || exit 1
+../configure              \
+    --prefix=/usr         \
+    --disable-multilib    \
+    --with-system-zlib    \
+    --enable-default-pie  \
+    --enable-default-ssp  \
+    --enable-host-pie     \
+    --disable-fixincludes \
+    --enable-languages=c,c++,fortran,go,objc,obj-c++,m2 || exit 1
 
 make || exit 1
 
@@ -64,9 +63,16 @@ make || exit 1
 # неудачу и сообщать FAIL. Начиная с gcc-12.2.0 в среде LFS тестирование выдает
 # не менее 80 ошибок.
 
-# известно, что один набор тестов в наборе тестов GCC переполняет стек, поэтому
-# увеличим размер стека
-# ulimit -s 32768
+# удалим/исправим несколько известных ошибок тестирования
+# sed -e '/cpython/d'               \
+#     -i ../gcc/testsuite/gcc.dg/plugin/plugin.exp
+# sed -e 's/no-pic /&-no-pie /'     \
+#     -i ../gcc/testsuite/gcc.target/i386/pr113689-1.c
+# sed -e 's/300000/(1|300000)/'     \
+#     -i ../libgomp/testsuite/libgomp.c-c++-common/pr109062.c
+# sed -e 's/{ target nonpic } //'   \
+#     -e '/GOTPCREL/d'              \
+#     -i ../gcc/testsuite/gcc.target/i386/fentryname3.c
 
 # запускаем тесты
 # make -k check
@@ -116,7 +122,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU compiler collection)
 #
 # The GCC package contains the GNU compiler collection, which includes the C,
-# C++, Fortran, Go, Objective-C and Objective-C++ compilers
+# C++, Fortran, Go, Objective-C, Objective-C++ and m2 compilers
 #
 # Home page: https://${PRGNAME}.gnu.org/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
@@ -186,21 +192,19 @@ read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
 # если вывод не такой, как указано выше, или вывод не был получен вообще,
-# значит что-то не так
+# значит что-то не так.
 
 echo "--------"
 echo "Step: 4"
 echo "--------"
 VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
-# проверим настройки для стартовых файлов с glibc
-# /usr/lib/crt1.o
+# проверим настройки для стартовых файлов
+# /usr/lib/Scrt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
 echo "# make sure that we're setup to use the correct start files"
-echo "grep -o '/usr/lib.*/Scrt1.*succeeded' dummy.log"
-echo "grep -o '/usr/lib.*/crt[in].*succeeded' dummy.log"
-grep -o '/usr/lib.*/Scrt1.*succeeded' dummy.log
-grep -o '/usr/lib.*/crt[in].*succeeded' dummy.log
+echo "grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log"
+grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
 echo ""
 echo "# The output should be something like this:"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/Scrt1.o succeeded"
@@ -269,7 +273,7 @@ echo 'grep "/lib.*/libc.so.6 " dummy.log'
 grep "/lib.*/libc.so.6 " dummy.log
 echo ""
 echo "# The output should be something like this:"
-echo "attempt to open /lib/libc.so.6 succeeded"
+echo "attempt to open /usr/lib/libc.so.6 succeeded"
 echo ""
 echo -n "Press any key... "
 read -r JUNK
@@ -296,5 +300,4 @@ echo ""
 # прежде чем продолжить процесс сборки.
 
 # очистим созданные нами тестовые файлы
-echo "Cleaning:"
-rm -v dummy.c a.out dummy.log
+rm -fv dummy.c a.out dummy.log

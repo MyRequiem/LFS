@@ -135,6 +135,7 @@ l/iso-codes.sh
 l/libaio.sh
 a/lvm2.sh
 l/libpng.sh
+d/gcc.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -156,12 +157,9 @@ l/libpng.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 # l/libatasmart.sh
-
 # l/libyaml.sh
-# d/python-modules/python3-asciidoc.sh
 # d/patchelf.sh
-# d/gcc.sh
-# d/py3c.sh
+
 # d/python-modules/python3-pycryptodome.sh
 # d/python-modules/python3-pygments.sh
 # d/python-modules/python3-pyxdg.sh
@@ -219,6 +217,7 @@ l/libpng.sh
 # d/python-modules/python3-ipaddr.sh
 # d/python-modules/python3-pycurl.sh
 # d/python-modules/python3-urlgrabber.sh
+
 # l/jansson.sh
 # n/nghttp2.sh
 # d/cmake.sh

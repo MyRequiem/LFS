@@ -105,6 +105,7 @@ https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
 https://sourceware.org/ftp/lvm2/LVM2.2.03.26.tgz
 https://downloads.sourceforge.net/libpng/libpng-1.6.43.tar.xz
 https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
+https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz
 
 
 ================================================================================
@@ -131,10 +132,7 @@ https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://www.fftw.org/fftw-3.3.10.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
-https://files.pythonhosted.org/packages/source/a/asciidoc/asciidoc-10.2.0.tar.gz
 https://github.com/NixOS/patchelf/releases/download/0.17.2/patchelf-0.17.2.tar.gz
-https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
-https://github.com/encukou/py3c/archive/v1.4/py3c-1.4.tar.gz
 https://github.com/Legrandin/pycryptodome/archive/v3.17.0/pycryptodome-3.17.0.tar.gz
 https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.14.0.tar.gz
 https://files.pythonhosted.org/packages/b0/25/7998cd2dec731acbd438fbf91bc619603fc5188de0a9a17699a781840452/pyxdg-0.28.tar.gz
