@@ -54,8 +54,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 cd python || exit 1
-    # python2 исключен как устаревший
-    python3 setup.py install --root="${TMP_DIR}" || exit 1
+python3 setup.py install --root="${TMP_DIR}" || exit 1
 cd - || exit 1
 
 # раньше rpm был в /bin, поэтому создадим ссылку

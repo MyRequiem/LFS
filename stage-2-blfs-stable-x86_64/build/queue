@@ -170,7 +170,6 @@ d/gcc.sh
 # d/python-modules/python3-pygments.sh
 # ========================
 
-# d/python-modules/python3-attrs.sh
 # d/python-modules/python3-typing-extensions.sh
 # d/python-modules/python3-installer.sh
 # d/python-modules/python3-pyproject-hooks.sh
@@ -192,7 +191,6 @@ d/gcc.sh
 # d/python-modules/python3-meson.sh
 # d/python-modules/python3-dbus.sh
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-numpy.sh
 # d/python-modules/python3-appdirs.sh
 # d/python-modules/python3-platformdirs.sh
 # d/python-modules/python3-astroid.sh
@@ -441,9 +439,7 @@ d/gcc.sh
 # d/perl-modules/perl-anyevent.sh
 # d/perl-modules/perl-anyevent-i3.sh
 # ap/tk.sh
-# d/python2.sh
 # n/nmap.sh
-# d/python-modules/python2-libxml2.sh
 # d/python3.sh
 # l/gsettings-desktop-schemas.sh
 # l/at-spi2-core.sh
@@ -455,10 +451,8 @@ d/gcc.sh
 # l/cairo.sh
 # l/harfbuzz.sh
 # ap/ghostscript.sh
-# d/python-modules/python2-pycairo.sh
 # d/python-modules/python3-pycairo.sh
 # l/cairomm.sh
-# d/python-modules/python2-pygobject2.sh
 # d/python-modules/python3-pygobject3.sh
 # d/python-modules/python3-pyatspi2.sh
 # d/help2man.sh
@@ -483,7 +477,6 @@ d/gcc.sh
 # x/libs/pixman.sh
 # l/cairo.sh
 # l/libglade.sh
-# d/python-modules/python2-pygtk.sh
 # n/nmap.sh
 # l/atkmm.sh
 # x/libs/libdrm.sh

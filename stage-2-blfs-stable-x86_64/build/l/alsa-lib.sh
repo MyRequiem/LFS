@@ -8,7 +8,7 @@ PRGNAME="alsa-lib"
 # Required:    no
 # Recommended: no
 # Optional:    doxygen
-#              python2
+#              python2       (https://www.python.org/downloads/release/python-2718/)
 #              alsa-ucm-conf (https://www.alsa-project.org/files/pub/lib/)
 
 ### Конфигурация ядра

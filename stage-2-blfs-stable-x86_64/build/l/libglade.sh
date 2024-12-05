@@ -11,7 +11,7 @@ PRGNAME="libglade"
 # Required:    libxml2
 #              gtk+2
 # Recommended: no
-# Optional:    python2 (требуется для работы утилиты 'libglade-convert')
+# Optional:    python2 (требуется для работы утилиты 'libglade-convert') https://www.python.org/downloads/release/python-2718/
 #              gtk-doc
 
 ROOT="/root/src/lfs"

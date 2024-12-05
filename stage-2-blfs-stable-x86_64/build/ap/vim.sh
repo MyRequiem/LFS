@@ -12,7 +12,7 @@ PRGNAME="vim"
 #              lua
 #              rsync
 #              ruby
-#              python2
+#              python2    (https://www.python.org/downloads/release/python-2718/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

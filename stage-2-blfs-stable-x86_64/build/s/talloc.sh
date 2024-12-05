@@ -11,7 +11,7 @@ PRGNAME="talloc"
 # Optional:    docbook-xml (для генерации man-страниц)
 #              docbook-xsl (для генерации man-страниц)
 #              libxslt     (для генерации man-страниц)
-#              python2     (для сборки python-2 модуля)
+#              python2     (для сборки python-2 модуля) https://www.python.org/downloads/release/python-2718/
 #              gdb
 #              git
 #              libnsl

@@ -18,7 +18,6 @@ PRGNAME="gimp"
 #              libmypaint
 #              librsvg
 #              libtiff
-#              python2-libxml2 (для создания переведенных файлов справки)
 #              lcms2
 #              mypaint-brushes
 #              poppler
@@ -27,7 +26,6 @@ PRGNAME="gimp"
 #              ghostscript
 #              iso-codes
 #              libgudev
-#              python2-pygtk  (собранный с модулями gtk.so, pango.so и pangocairo.so)
 #              xdg-utils
 # Optional:    aalib
 #              alsa-lib

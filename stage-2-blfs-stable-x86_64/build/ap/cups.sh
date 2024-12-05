@@ -24,7 +24,7 @@ PRGNAME="cups"
 #              libpaper
 #              mit-kerberos-v5
 #              php
-#              python2
+#              python2          (https://www.python.org/downloads/release/python-2718/)
 #              cups-filters
 #              gutenprint
 #              hplip            (для принтеров HP - https://developers.hp.com/hp-linux-imaging-and-printing)

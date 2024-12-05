@@ -10,7 +10,6 @@ ARCH_NAME="vte"
 # Required:    gtk+2
 # Recommended: no
 # Optional:    gtk-doc
-#              python2-pygtk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

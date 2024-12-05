@@ -11,7 +11,7 @@ PRGNAME="lcms"
 # Recommended: no
 # Optional:    libtiff
 #              libjpeg-turbo
-#              python2
+#              python2        (https://www.python.org/downloads/release/python-2718/)
 #              swig
 
 ROOT="/root/src/lfs"

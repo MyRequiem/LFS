@@ -35,7 +35,7 @@ aspell-dict-en
 aspell-dict-ru
 assimp                                  qt5
 at
-at-spi2-core                            python3-pyatspi2, gtk+2, python2-pygtk, atkmm, gtk+3
+at-spi2-core                            python3-pyatspi2, gtk+2, atkmm, gtk+3
 atkmm                                   gtkmm
 audit-userspace                         elogind
 autogen                                 gnutls, ntp
@@ -52,7 +52,7 @@ bindfs                                  glib
 birdstep                                php
 blender                                 imagemagick
 blfs-bootscripts
-bluez                                   libpcap, python2, python3, pulseaudio, qt5, gst-plugins-bad
+bluez                                   libpcap, python3, pulseaudio, qt5, gst-plugins-bad
 bonjour                                 postgresql
 boost                                   highlight, nghttp2, libsigc++2, swig, cairomm, mariadb, poppler
 bpf-utils                               iptables
@@ -62,7 +62,7 @@ btrfs-progs                             libblockdev, udisks
 bumblebee-status
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   glib, harfbuzz, ghostscript, python2-pycairo, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines, gjs, poppler, gegl, gst-plugins-good, i3
+cairo                                   glib, harfbuzz, ghostscript, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines, gjs, poppler, gegl, gst-plugins-good, i3
 cairo-5c                                xorg-applications
 cairomm                                 pangomm
 caladea-font-ttf
@@ -174,7 +174,7 @@ fusefat                                 vifm
 fuseiso                                 vifm
 game-music-emu                          gst-plugins-bad
 gc                                      w3m, guile
-gcc                                     cmake, python3-numpy
+gcc                                     cmake
 gconf
 gcr3                                    pinentry, gnome-keyring
 gcr4                                    pinentry
@@ -195,7 +195,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     glib, libsecret
 glade                                   gtksourceview3, libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, python2-pygobject2, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, volume-key, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibmm                                  pangomm, atkmm
 glm                                     slop
@@ -229,7 +229,7 @@ gst-plugins-base                        qt5, gst-plugins-good, gst-plugins-bad, 
 gst-plugins-good                        gst-plugins-bad, gtk4
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
-gtk+2                                   pixman, cairo, libglade, python2-pygtk, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp, libiodbc, vte2
+gtk+2                                   pixman, cairo, libglade, adwaita-icon-theme, gtk-engines, libcanberra, ibus, alsa-tools, gimp, libiodbc, vte2
 gtk+3                                   ghostscript, cairo, adwaita-icon-theme, gstreamer, goffice, gtkmm, gtk-vnc, gtksourceview3, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, at-spi2-core, cairo, gdk-pixbuf-xlib, gtk+2, libglade, gtk+3, libgsf, goffice, gtksourceview3, libnotify, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, vte2
 gtk-engines
@@ -297,7 +297,6 @@ kwayland                                pinentry
 kytea                                   mariadb
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
-lapack                                  python3-numpy
 lasem                                   goffice
 lcms                                    imagemagick
 lcms2                                   openjpeg, ghostscript, libmng, poppler, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, openjdk
@@ -354,7 +353,7 @@ libfpx                                  imagemagick
 libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server, gst-plugins-bad, gcr4, rasqal
 libgd                                   php
 libgit2                                 rustc
-libglade                                python2-pygtk
+libglade
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
 libgudev                                gimp, gst-plugins-base, upower, udisks
@@ -394,7 +393,7 @@ libnfs
 libnice                                 gst-plugins-bad
 libnl                                   htop, iw, wpa-supplicant, libpcap
 libnotify                               ibus, zenity
-libnsl                                  opensp, python2, python3, exim
+libnsl                                  opensp, python3, exim
 libnut                                  ffmpeg
 libofa                                  gst-plugins-bad
 libogg                                  libvorbis, flac, speex, gst-plugins-base
@@ -459,8 +458,8 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, python2-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, python2-pygobject2, glibmm, vala, wayland, python2-pygtk, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5, php, gnome-keyring
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, zenity, upower, udisks, raptor, tidy-html5, php, gnome-keyring
 libyajl                                 i3, raptor
 libyaml                                 ruby, libblockdev
 lilv                                    gst-plugins-bad
@@ -547,7 +546,6 @@ ocaml                                   llvm
 oniguruma                               slang, jq, php
 open-mpi                                boost
 openal                                  ffmpeg, qt5, mpg123, gst-plugins-bad
-openblas                                python3-numpy
 opencl                                  gegl
 opencore-amr                            ffmpeg, gst-plugins-ugly
 opencv                                  ffmpeg, gst-plugins-bad
@@ -572,7 +570,7 @@ p7zip                                   imagemagick
 pakchois                                neon
 pamixer
 pandoc                                  openjdk
-pango                                   pangomm, librsvg, gtk+2, python2-pygtk, gtk+3, gegl, imagemagick, gst-plugins-base, gtk4, i3
+pango                                   pangomm, librsvg, gtk+2, gtk+3, gegl, imagemagick, gst-plugins-base, gtk4, i3
 pangomm                                 gtkmm
 papi                                    gtk+3
 parted                                  libblockdev
@@ -762,25 +760,20 @@ pov-ray                                 imagemagick
 prelink
 profiles                                imagemagick
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, qt5, mpg123, gst-plugins-good, libao
-python2                                 yasm, docbook-xsl, nmap, python2-libxml2, python2-pycairo, python2-pygobject2, cups, libglade, python2-pygtk, alsa-lib, vim, lcms
-python2-libxml2                         docbook-xsl, gimp
-python2-pycairo                         python2-pygobject2, python2-pygtk
-python2-pygobject2                      python2-pygtk
-python2-pygtk                           nmap, gimp, vte2
+python2                                 yasm, docbook-xsl, nmap, cups, libglade, alsa-lib, vim, lcms
 python3
 python3-appdirs                         python3-platformdirs
 python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-astroid                         python3-pylint
-python3-attrs                           python3-pytest, python3-numpy
+python3-attrs                           python3-pytest
 python3-build                           python3-setuptools-scm, python3-hatchling, python3-hatch-vcs
 python3-cachecontrol
 python3-chardet
 python3-charset-normalizer              python3-requests
-python3-cloudpickle                     python3-attrs
-python3-coverage                        python3-attrs
+python3-cloudpickle
 python3-cwcwidth
-python3-cython                          yasm, python3-msgpack, nghttp2, python3-numpy
+python3-cython                          yasm, python3-msgpack, nghttp2
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus                            libsecret, ibus, udisks
@@ -798,7 +791,7 @@ python3-hatch-vcs                       python3-iniconfig, python3-platformdirs
 python3-hatchling                       python3-hatch-vcs, python3-platformdirs
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, libwpe, gst-plugins-bad, gst-plugins-ugly
 python3-httpbin                         python3-requests
-python3-hypothesis                      python3-attrs, python3-pytest, python3-numpy, python2-pycairo, python3-pycairo
+python3-hypothesis                      python3-pytest, python3-pycairo
 python3-idna                            python3-requests
 python3-iniconfig                       python3-pytest
 python3-installer                       python3-pyproject-hooks, python3-build
@@ -813,10 +806,9 @@ python3-mccabe                          python3-pylint, python3-flake8
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-msgpack                         python3-cachecontrol
-python3-mypy                            python3-attrs
 python3-netifaces                       bumblebee-status
 python3-nose                            python3-pytest
-python3-numpy                           boost, python2-pygtk
+python3-numpy                           boost
 python3-packaging                       glib, python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
@@ -835,19 +827,17 @@ python3-pyflakes                        python3-flake8, python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, gegl
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pylint
-python3-pympler                         python3-attrs
 python3-pyparsing                       libinput
 python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-attrs, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-chardet, python3-pyparsing, python3-mako, python3-numpy, python3-platformdirs, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-chardet, python3-pyparsing, python3-mako, python3-platformdirs, python3-pycairo, python3-pygobject3
 python3-pytest-benchmark                python3-pluggy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests
-python3-pytest-mypy-plugins             python3-attrs
 python3-pytest-timeout                  python3-urllib3
 python3-pyyaml                          llvm
 python3-railroad-diagrams               python3-pyparsing
@@ -865,7 +855,6 @@ python3-urllib3                         python3-requests
 python3-wcwidth
 python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
-python3-zope-interface                  python3-attrs
 pytrash
 qdbm                                    php
 qt4                                     cairo
@@ -921,7 +910,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python2, python3, libsndfile, exim, qt5, libsoup, libsoup3, redland, php
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python3, libsndfile, exim, qt5, libsoup, libsoup3, redland, php
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 sssd                                    sudo
@@ -942,7 +931,7 @@ texlive                                 libunistring, gnutls, libassuan, libgcry
 thin-provisioning-tools                 lvm2
 tidy-html5                              php
 time
-tk                                      git, python2, python3, ruby
+tk                                      git, python3, ruby
 tmux
 tpm2-tss                                libsecret
 traceroute
@@ -970,7 +959,7 @@ utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
 vala                                    librsvg. gtk-vnc, gtksourceview3, libsecret, gcr3, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3, gcr4, libadwaita, libical, vte3
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gcr4, libseccomp, gnome-keyring
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python3, cairo, libdrm, mesa, gstreamer, gtksourceview3, gjs, libsecret, gcr3, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, mariadb, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, gcr4, libseccomp, gnome-keyring
 vdo                                     lvm2
 vifm
 vim                                     fcron

@@ -11,8 +11,7 @@ PRGNAME="nmap"
 #              lua
 #              pcre2
 #              liblinear
-# Optional:    python2-pygtk  (для сборки утилиты zenmap)
-#              python2        (для сборки утилиты ndiff)
+# Optional:    python2    (для сборки утилиты ndiff) https://www.python.org/downloads/release/python-2718/
 #              libssh2
 
 ROOT="/root/src/lfs"
