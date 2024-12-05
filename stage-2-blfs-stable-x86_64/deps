@@ -766,12 +766,10 @@ python3-argcomplete                     python3-pytest
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-attrs                           python3-pytest
 python3-build                           python3-setuptools-scm
-python3-cachecontrol
-python3-chardet
 python3-charset-normalizer              python3-requests
 python3-cloudpickle
 python3-cwcwidth
-python3-cython                          yasm, python3-msgpack, nghttp2
+python3-cython                          yasm, nghttp2
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
 python3-dbus                            libsecret, ibus, udisks
@@ -800,14 +798,13 @@ python3-markdown                        glib
 python3-mccabe                          python3-flake8
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
-python3-msgpack                         python3-cachecontrol
 python3-netifaces                       bumblebee-status
 python3-nose                            python3-pytest
 python3-numpy                           boost
 python3-packaging                       glib, python3-setuptools-scm, python3-hatchling, python3-pytest, python3-pyproject-metadata
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
-python3-pluggy                          python3-hatchling, python3-pytest, python3-msgpack
+python3-pluggy                          python3-hatchling, python3-pytest
 python3-polib                           libbytesize
 python3-pretend                         python3-packaging
 python3-psutil                          llvm, bumblebee-status
@@ -823,7 +820,7 @@ python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-msgpack, python3-chardet, python3-pyparsing, python3-mako, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyparsing, python3-mako, python3-pycairo, python3-pygobject3
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-freezegun                python3-urllib3
 python3-pytest-httpbin                  python3-requests
@@ -832,8 +829,8 @@ python3-pytest-timeout                  python3-urllib3
 python3-pyyaml                          llvm
 python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    llvm
-python3-requests                        python3-pytest, python3-cachecontrol
-python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-pytest, python3-msgpack
+python3-requests                        python3-pytest
+python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-pytest
 python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-testpath
 python3-tornado                         python3-urllib3

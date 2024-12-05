@@ -166,26 +166,27 @@ d/gcc.sh
 # d/python-modules/python3-pluggy.sh
 # d/python-modules/python3-pathspec.sh
 # d/python-modules/python3-editables.sh
-# d/python-modules/python3-hatchling.sh
 # d/python-modules/python3-pygments.sh
 # ========================
 
-
-# d/python-modules/python3-cachecontrol.sh
-# d/python-modules/python3-chardet.sh
+# === python3-requests ===
+# d/python-modules/python3-hatchling.sh
+# d/python-modules/python3-urllib3.sh
+# d/python-modules/python3-idna.sh
 # d/python-modules/python3-charset-normalizer.sh
+# d/python-modules/python3-requests.sh
+# ========================
+
 # d/python-modules/python3-cwcwidth.sh
 # d/python-modules/python3-dbus.sh
 # d/python-modules/python3-flake8.sh
 # d/python-modules/python3-greenlet.sh
 # d/python-modules/python3-hatch-vcs.sh
-# d/python-modules/python3-idna.sh
 # d/python-modules/python3-iniconfig.sh
 # d/python-modules/python3-ipaddr.sh
 # d/python-modules/python3-mako.sh
 # d/python-modules/python3-mccabe.sh
 # d/python-modules/python3-meson.sh
-# d/python-modules/python3-msgpack.sh
 # d/python-modules/python3-netifaces.sh
 # d/python-modules/python3-psutil.sh
 # d/python-modules/python3-pycodestyle.sh
@@ -194,8 +195,6 @@ d/gcc.sh
 # d/python-modules/python3-pyparsing.sh
 # d/python-modules/python3-pyproject-metadata.sh
 # d/python-modules/python3-pytest.sh
-# d/python-modules/python3-requests.sh
-# d/python-modules/python3-urllib3.sh
 # d/python-modules/python3-wcwidth.sh
 
 # l/jansson.sh
