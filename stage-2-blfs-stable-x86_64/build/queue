@@ -178,14 +178,11 @@ d/gcc.sh
 # ========================
 
 
-# d/python-modules/python3-greenlet.sh
 # d/python-modules/python3-hatch-vcs.sh
 # d/python-modules/python3-iniconfig.sh
-# d/python-modules/python3-ipaddr.sh
 # d/python-modules/python3-mako.sh
 # d/python-modules/python3-netifaces.sh
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-pycurl.sh
 # d/python-modules/python3-pyparsing.sh
 # d/python-modules/python3-pytest.sh
 
