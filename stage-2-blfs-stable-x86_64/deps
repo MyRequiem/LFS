@@ -808,7 +808,7 @@ python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-mako, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-mako, python3-pycairo, python3-pygobject3
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests
@@ -819,6 +819,7 @@ python3-requests
 python3-setuptools-scm                  python3-pluggy
 python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-tornado                         python3-urllib3
+python3-trove-classifiers
 python3-trustme                         python3-urllib3, python3-requests
 python3-urllib3                         python3-requests
 python3-werkzeug                        python3-requests
