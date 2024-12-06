@@ -136,6 +136,8 @@ l/libaio.sh
 a/lvm2.sh
 l/libpng.sh
 d/gcc.sh
+n/nghttp2.sh
+d/cmake.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -182,9 +184,6 @@ d/gcc.sh
 # d/python-modules/python3-mako.sh
 # ========================
 
-# l/jansson.sh
-# n/nghttp2.sh
-# d/cmake.sh
 # l/popt.sh
 # n/rsync.sh
 # d/llvm.sh
@@ -197,7 +196,6 @@ d/gcc.sh
 # l/libjpeg-turbo.sh
 # l/unixodbc.sh
 # l/c-ares.sh
-# n/nghttp2.sh
 # n/bind-utils.sh
 # n/mit-kerberos-v5.sh
 # n/libtirpc.sh
@@ -667,7 +665,6 @@ d/gcc.sh
 # ap/password-store.sh
 # l/libyajl.sh
 # l/libev.sh
-# n/nghttp2.sh
 # x/apps/i3.sh
 # s/hddtemp.sh
 # x/apps/bumblebee-status.sh
@@ -698,7 +695,6 @@ d/gcc.sh
 # l/redland.sh
 # d/tidy-html5.sh
 # l/enchant.sh
-# n/curl.sh
 # n/php.sh
 # ap/cups.sh
 # d/openjdk.sh

@@ -11,12 +11,16 @@ PRGNAME="cmake"
 #              libuv
 #              nghttp2
 # Optional:    gcc            (для gfortran)
-#              git            (используется во время тестов)
-#              mercurial      (используется во время тестов)
-#              qt5            (для Qt-based GUI, см. опцию конфигурации ниже)
+#              --- для тестов ---
+#              git
+#              mercurial
+#              subversion
+#              openjdk
+#              qt6            (для сборки Qt-based GUI)
 #              python3-sphinx (для сборки документации) https://pypi.org/project/Sphinx/
-#              subversion     (для тестов)
-#              rhash          (http://rhash.sourceforge.net/)
+#              cppdap         (https://github.com/google/cppdap/)
+#              jsoncpp        (https://github.com/open-source-parsers/jsoncpp/)
+#              rhash          (https://rhash.sourceforge.io/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -36,11 +40,9 @@ EXPAT="--no-system-expat"
 CURL="--no-system-curl"
 LIBARCHIVE="--no-system-libarchive"
 QT_GUI="--no-qt-gui"
-RHASH="--no-system-librhash"
 
 [ -x /usr/lib/libz.so ]             && ZLIB="--system-zlib"
 [ -x /usr/lib/libnghttp2.so ]       && NGHTTP2="--system-nghttp2"
-[ -x /usr/lib/librhash.so ]         && RHASH="--system-librhash"
 command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
 command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
 command -v curl         &>/dev/null && CURL="--system-curl"
@@ -50,14 +52,18 @@ command -v bsdcat       &>/dev/null && LIBARCHIVE="--system-libarchive"
 # заставляет CMake связываться с Zlib, Bzip2, cURL, Expat и libarchive которые
 # уже установлены в системе
 #    --system-libs
-# использовать внутреннюю версию библиотеки JSON-C++ вместо системной
+# использовать внутренние версии библиотек JSON-C++, cppdap и rhash вместо
+# системных
 #    --no-system-jsoncpp
+#    --no-system-cppdap
+#    --no-system-librhash
 ./bootstrap              \
     --prefix=/usr        \
     --system-libs        \
     --mandir=/share/man  \
     --no-system-jsoncpp  \
-    "${RHASH}"           \
+    --no-system-cppdap   \
+    --no-system-librhash \
     "${ZLIB}"            \
     "${NGHTTP2}"         \
     "${BZIP2}"           \

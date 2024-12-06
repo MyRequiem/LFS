@@ -106,6 +106,8 @@ https://sourceware.org/ftp/lvm2/LVM2.2.03.26.tgz
 https://downloads.sourceforge.net/libpng/libpng-1.6.43.tar.xz
 https://downloads.sourceforge.net/sourceforge/libpng-apng/libpng-1.6.43-apng.patch.gz
 https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz
+https://github.com/nghttp2/nghttp2/releases/download/v1.62.1/nghttp2-1.62.1.tar.xz
+https://cmake.org/files/v3.30/cmake-3.30.2.tar.gz
 
 
 ================================================================================
@@ -151,9 +153,6 @@ https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-0.12.
 https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.3.2.tar.gz
 https://files.pythonhosted.org/packages/source/p/psutil/psutil-5.9.5.tar.gz
 https://files.pythonhosted.org/packages/source/n/netifaces/netifaces-0.11.0.tar.gz
-https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
-https://github.com/nghttp2/nghttp2/releases/download/v1.52.0/nghttp2-1.52.0.tar.xz
-https://cmake.org/files/v3.25/cmake-3.25.2.tar.gz
 http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.19.tar.gz
 https://www.samba.org/ftp/rsync/src/rsync-3.2.7.tar.gz
 https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz

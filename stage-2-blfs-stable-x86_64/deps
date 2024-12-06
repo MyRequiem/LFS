@@ -82,8 +82,9 @@ cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
 cpio                                    openjdk
+cppdap                                  cmake
 cryptsetup                              volume-key
-cunit                                   nghttp2, libdrm
+cunit                                   libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
 cups-filters                            cups
 curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
@@ -286,6 +287,7 @@ jing                                    vala
 jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
 json-glib                               pavucontrol, gegl
+jsoncpp                                 cmake
 judy                                    mariadb
 kde-frameworks                          pinentry
 kernel-firmware
@@ -554,7 +556,7 @@ opendmarc                               exim
 openexr                                 gegl, gimp, imagemagick, gst-plugins-bad
 openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils, postgresql
-openjdk                                 libidn, apache-ant
+openjdk                                 libidn, cmake, apache-ant
 openjpeg                                ghostscript, ffmpeg, poppler, gimp, imagemagick, gst-plugins-bad
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, postgresql, exim, php, gconf
 opensc                                  openssh
@@ -824,9 +826,9 @@ python3-xmlschema
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     cmake, gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5                                     gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
 qt5-components                          pinentry, wpa-supplicant
-qt6                                     highlight, poppler
+qt6                                     highlight, cmake, poppler
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
