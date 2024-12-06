@@ -768,7 +768,6 @@ python3-attrs                           python3-pytest
 python3-build                           python3-setuptools-scm
 python3-charset-normalizer              python3-requests
 python3-cloudpickle
-python3-cwcwidth
 python3-cython                          yasm, nghttp2
 python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
@@ -777,7 +776,6 @@ python3-dbusmock                        polkit, upower
 python3-docutils                        glib, sshfs, gdk-pixbuf, librsvg, libdrm, alsa-utils, gtk4
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
-python3-flake8
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
 python3-gi-docgen                       glib, pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3, gtk4, gcr4, libadwaita, vte3
@@ -795,7 +793,6 @@ python3-looseversion                    fuse3
 python3-lxml                            elogind
 python3-mako                            glib, mesa
 python3-markdown                        glib
-python3-mccabe                          python3-flake8
 python3-meson                           python3-dbus
 python3-mock                            python3-pytest, python3-urllib3
 python3-netifaces                       bumblebee-status
@@ -811,9 +808,8 @@ python3-psutil                          llvm, bumblebee-status
 python3-py
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3, mirage
-python3-pycodestyle                     python3-flake8
 python3-pycurl
-python3-pyflakes                        python3-flake8, python3-pygobject3
+python3-pyflakes                        python3-pygobject3
 python3-pygments                        python3-pytest, llvm, libbytesize, gegl
 python3-pygobject3                      dbus, python3-pyatspi2, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pyparsing                       libinput
@@ -836,7 +832,6 @@ python3-testpath
 python3-tornado                         python3-urllib3
 python3-trustme                         python3-urllib3, python3-requests
 python3-urllib3                         python3-requests
-python3-wcwidth
 python3-werkzeug                        python3-requests
 python3-xmlschema                       python3-pytest
 pytrash

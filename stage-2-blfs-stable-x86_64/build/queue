@@ -147,7 +147,6 @@ d/gcc.sh
 # a/sharutils.sh
 # a/cpio.sh
 # a/acpid.sh
-# a/dbus.sh
 # s/sgml-common.sh
 # s/docbook-xml.sh
 # s/docbook-xsl.sh
@@ -158,44 +157,37 @@ d/gcc.sh
 # l/fftw.sh
 # l/libatasmart.sh
 # l/libyaml.sh
-# d/patchelf.sh
-
 # === python3-pygments ===
 # d/python-modules/python3-trove-classifiers.sh [NEW]
-# d/python-modules/python3-setuptools-scm.sh
 # d/python-modules/python3-pluggy.sh
 # d/python-modules/python3-pathspec.sh
 # d/python-modules/python3-editables.sh
-# d/python-modules/python3-pygments.sh
-# ========================
-
-# === python3-requests ===
 # d/python-modules/python3-hatchling.sh
+# d/python-modules/python3-setuptools-scm.sh
+# d/python-modules/python3-pygments.sh
+# === python3-requests ===
 # d/python-modules/python3-urllib3.sh
 # d/python-modules/python3-idna.sh
 # d/python-modules/python3-charset-normalizer.sh
 # d/python-modules/python3-requests.sh
+#=== python3-dbus ========
+# d/patchelf.sh
+# d/python-modules/python3-pyproject-metadata.sh
+# d/python-modules/python3-meson.sh
+# d/python-modules/python3-dbus.sh
 # ========================
 
-# d/python-modules/python3-cwcwidth.sh
-# d/python-modules/python3-dbus.sh
-# d/python-modules/python3-flake8.sh
+
 # d/python-modules/python3-greenlet.sh
 # d/python-modules/python3-hatch-vcs.sh
 # d/python-modules/python3-iniconfig.sh
 # d/python-modules/python3-ipaddr.sh
 # d/python-modules/python3-mako.sh
-# d/python-modules/python3-mccabe.sh
-# d/python-modules/python3-meson.sh
 # d/python-modules/python3-netifaces.sh
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-pycodestyle.sh
 # d/python-modules/python3-pycurl.sh
-# d/python-modules/python3-pyflakes.sh
 # d/python-modules/python3-pyparsing.sh
-# d/python-modules/python3-pyproject-metadata.sh
 # d/python-modules/python3-pytest.sh
-# d/python-modules/python3-wcwidth.sh
 
 # l/jansson.sh
 # n/nghttp2.sh
@@ -270,6 +262,7 @@ d/gcc.sh
 # x/misc/fontconfig.sh
 # a/ncompress.sh
 # x/libs/xorg-libraries.sh
+# a/dbus.sh
 # # BLFS Perl модули
 # d/perl-modules/perl-test-warnings.sh
 # d/perl-modules/perl-module-build.sh
