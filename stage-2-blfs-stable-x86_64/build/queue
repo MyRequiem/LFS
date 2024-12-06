@@ -138,15 +138,15 @@ l/libpng.sh
 d/gcc.sh
 n/nghttp2.sh
 d/cmake.sh
-d/python-modules/python3-trove-classifiers.sh
-
 # === python3-pygments ===
-# d/python-modules/python3-pluggy.sh
+d/python-modules/python3-trove-classifiers.sh
+d/python-modules/python3-setuptools-scm.sh
+d/python-modules/python3-pluggy.sh
 # d/python-modules/python3-pathspec.sh
 # d/python-modules/python3-editables.sh
 # d/python-modules/python3-hatchling.sh
-# d/python-modules/python3-setuptools-scm.sh
 # d/python-modules/python3-pygments.sh
+# ========================
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh

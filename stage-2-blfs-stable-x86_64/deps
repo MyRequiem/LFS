@@ -886,7 +886,7 @@ sssd                                    sudo
 startup-notification                    rxvt-unicode, i3
 stunnel                                 curl
 subversion                              git, cmake
-sudo
+sudo                                    python3-setuptools-scm
 svgalib                                 links
 svthevcenc                              gst-plugins-bad
 swig                                    gpgme, volume-key, lcms
