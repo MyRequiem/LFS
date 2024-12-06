@@ -140,15 +140,11 @@ https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-7
 https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-1.0.0.tar.gz
 https://files.pythonhosted.org/packages/source/p/pathspec/pathspec-0.10.3.tar.gz
 https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-1.12.2.tar.gz
-https://files.pythonhosted.org/packages/source/h/hatch-vcs/hatch_vcs-0.3.0.tar.gz
-https://files.pythonhosted.org/packages/source/i/iniconfig/iniconfig-2.0.0.tar.gz
-https://files.pythonhosted.org/packages/source/p/pytest/pytest-7.2.1.tar.gz
 https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-1.26.14.tar.gz
 https://files.pythonhosted.org/packages/source/i/idna/idna-3.4.tar.gz
 https://files.pythonhosted.org/packages/source/c/charset-normalizer/charset-normalizer-3.0.1.tar.gz
 https://files.pythonhosted.org/packages/source/r/requests/requests-2.28.2.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/requests-2.28.2-use_system_certs-1.patch
-https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-3.0.9.tar.gz
 https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.2.4.tar.gz
 https://files.pythonhosted.org/packages/source/p/pyproject-metadata/pyproject-metadata-0.7.0.tar.gz
 https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-0.12.0.tar.gz

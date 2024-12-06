@@ -175,16 +175,12 @@ d/gcc.sh
 # d/python-modules/python3-pyproject-metadata.sh
 # d/python-modules/python3-meson.sh
 # d/python-modules/python3-dbus.sh
-# ========================
-
-
-# d/python-modules/python3-hatch-vcs.sh
-# d/python-modules/python3-iniconfig.sh
-# d/python-modules/python3-mako.sh
-# d/python-modules/python3-netifaces.sh
+# === bumblebee-status ===
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-pyparsing.sh
-# d/python-modules/python3-pytest.sh
+# d/python-modules/python3-netifaces.sh
+# === mesa ===============
+# d/python-modules/python3-mako.sh
+# ========================
 
 # l/jansson.sh
 # n/nghttp2.sh
