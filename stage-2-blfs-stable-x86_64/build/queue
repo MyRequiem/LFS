@@ -152,6 +152,9 @@ d/python-modules/python3-idna.sh
 d/python-modules/python3-charset-normalizer.sh
 d/python-modules/python3-requests.sh
 # ========================
+l/popt.sh
+n/rsync.sh
+d/llvm.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -185,9 +188,6 @@ d/python-modules/python3-requests.sh
 # d/python-modules/python3-mako.sh
 # ========================
 
-# l/popt.sh
-# n/rsync.sh
-# d/llvm.sh
 # l/icu.sh
 # l/libxml2.sh
 # l/boost.sh
@@ -674,7 +674,6 @@ d/python-modules/python3-requests.sh
 # ap/mirage.sh
 # a/fcron.sh
 # n/ntp.sh
-# n/dhcpcd.sh
 # s/inxi.sh
 # s/prelink.sh
 # xap/flameshot.sh
