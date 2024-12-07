@@ -778,7 +778,7 @@ python3-editables                       python3-hatchling
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
 python3-gi-docgen                       glib, pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3, gtk4, gcr4, libadwaita, vte3
-python3-hatchling
+python3-hatchling                       python3-pygments
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, libwpe, gst-plugins-bad, gst-plugins-ugly
 python3-httpbin                         python3-requests
 python3-hypothesis                      python3-pycairo
@@ -808,7 +808,7 @@ python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-mako, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-mako, python3-pycairo, python3-pygobject3
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests
@@ -819,9 +819,10 @@ python3-requests
 python3-setuptools-scm                  python3-pluggy
 python3-sphinx                          libuv, python3-requests, nghttp2, cmake, cyrus-sasl, bind-utils, libtiff, libinput, mariadb
 python3-tornado                         python3-urllib3
-python3-trove-classifiers
+python3-trove-classifiers               python3-hatchling
 python3-trustme                         python3-urllib3, python3-requests
 python3-urllib3                         python3-requests
+python3-wcag-contrast-ratio             python3-pygments
 python3-werkzeug                        python3-requests
 python3-xmlschema
 pytrash
