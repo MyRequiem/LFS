@@ -146,6 +146,11 @@ d/python-modules/python3-pathspec.sh
 d/python-modules/python3-editables.sh
 d/python-modules/python3-hatchling.sh
 d/python-modules/python3-pygments.sh
+# === python3-requests ===
+d/python-modules/python3-urllib3.sh
+d/python-modules/python3-idna.sh
+d/python-modules/python3-charset-normalizer.sh
+d/python-modules/python3-requests.sh
 # ========================
 
 # a/time.sh
@@ -168,11 +173,6 @@ d/python-modules/python3-pygments.sh
 # l/fftw.sh
 # l/libatasmart.sh
 # l/libyaml.sh
-# === python3-requests ===
-# d/python-modules/python3-urllib3.sh
-# d/python-modules/python3-idna.sh
-# d/python-modules/python3-charset-normalizer.sh
-# d/python-modules/python3-requests.sh
 #=== python3-dbus ========
 # d/patchelf.sh
 # d/python-modules/python3-pyproject-metadata.sh
