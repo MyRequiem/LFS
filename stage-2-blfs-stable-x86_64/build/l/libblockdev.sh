@@ -9,14 +9,14 @@ PRGNAME="libblockdev"
 # Required:    libbytesize
 #              libyaml
 #              parted
-#              volume-key
+#              volume-key    (https://github.com/felixonmars/volume_key)
 # Recommended: no
 # Optional:    btrfs-progs
 #              gtk-doc
 #              mdadm
-#              dmraid    (https://people.redhat.com/~heinzm/sw/dmraid/)
-#              bcachefs  (https://bcachefs.org/)
-#              ndctl     (https://github.com/pmem/ndctl)
+#              dmraid        (https://people.redhat.com/~heinzm/sw/dmraid/)
+#              bcachefs      (https://bcachefs.org/)
+#              ndctl         (https://github.com/pmem/ndctl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

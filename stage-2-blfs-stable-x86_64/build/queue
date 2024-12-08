@@ -160,6 +160,8 @@ l/libxml2.sh
 l/json-c.sh
 d/nasm.sh
 l/libjpeg-turbo.sh
+l/liburcu.sh
+n/bind-utils.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -193,13 +195,12 @@ l/libjpeg-turbo.sh
 # d/python-modules/python3-mako.sh
 # ========================
 # s/xmlto.sh
-
 # l/unixodbc.sh
 # l/c-ares.sh
-# n/bind-utils.sh
 # n/mit-kerberos-v5.sh
 # n/libtirpc.sh
 # l/libnsl.sh
+
 # l/nspr.sh
 # a/ed.sh
 # a/usbutils.sh
@@ -237,7 +238,6 @@ l/libjpeg-turbo.sh
 # n/nmap.sh
 # ap/lsof.sh
 # n/gpgme.sh
-# l/volume-key.sh
 # d/mozjs.sh
 # ap/graphite2.sh
 # x/utils/util-macros.sh
@@ -620,7 +620,6 @@ l/libjpeg-turbo.sh
 # l/babl.sh
 # l/jasper.sh
 # l/gegl.sh
-# l/liburcu.sh
 # xap/gimp.sh
 # l/djvulibre.sh
 # l/libgxps.sh

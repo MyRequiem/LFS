@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # synchronization library provides read-side access which scales linearly with
 # the number of cores.
 #
-# Home page: http://${PRGNAME}.org/
+# Home page: https://${PRGNAME}.org/
 # Download:  https://lttng.org/files/urcu/${ARCH_NAME}-${VERSION}.tar.bz2
 #
 EOF

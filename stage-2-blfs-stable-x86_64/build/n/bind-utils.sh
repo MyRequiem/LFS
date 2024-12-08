@@ -6,10 +6,11 @@ ARCH_NAME="$(echo "${PRGNAME}" | cut -d - -f 1)"
 ### bind-utils (collection client side programs from BIND)
 # Набор клиентских утилит, входящих в состав BIND: nslookup, dig и host
 
-# Required:    libuv
+# Required:    liburcu
+#              libuv
 # Recommended: json-c
 #              nghttp2
-# Optional:    libcap (собранный с PAM)
+# Optional:    libcap           (собранный с PAM)
 #              libxml2
 #              python3-sphinx
 
@@ -28,8 +29,6 @@ make -C lib/isc    && \
 make -C lib/dns    && \
 make -C lib/ns     && \
 make -C lib/isccfg && \
-make -C lib/bind9  && \
-make -C lib/irs    && \
 make -C bin/dig    && \
 make -C doc || exit 1
 
@@ -39,8 +38,6 @@ make -C lib/isc    install DESTDIR="${TMP_DIR}" && \
 make -C lib/dns    install DESTDIR="${TMP_DIR}" && \
 make -C lib/ns     install DESTDIR="${TMP_DIR}" && \
 make -C lib/isccfg install DESTDIR="${TMP_DIR}" && \
-make -C lib/bind9  install DESTDIR="${TMP_DIR}" && \
-make -C lib/irs    install DESTDIR="${TMP_DIR}" && \
 make -C bin/dig    install DESTDIR="${TMP_DIR}" || exit 1
 
 cp -v doc/man/{dig.1,host.1,nslookup.1} "${TMP_DIR}${MAN_DIR}"
