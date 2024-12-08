@@ -162,7 +162,10 @@ d/nasm.sh
 l/libjpeg-turbo.sh
 l/liburcu.sh
 n/bind-utils.sh
+l/libsigc++2.sh
+l/libsigc++3.sh
 
+# ==============================================================================
 # a/time.sh
 # d/python-modules/python3-lxml.sh
 # a/tree.sh
@@ -200,14 +203,12 @@ n/bind-utils.sh
 # n/mit-kerberos-v5.sh
 # n/libtirpc.sh
 # l/libnsl.sh
-
 # l/nspr.sh
+# l/nss.sh
 # a/ed.sh
 # a/usbutils.sh
-# d/oniguruma.sh
 # l/slang.sh
 # l/libatomic-ops.sh
-# d/gc.sh
 # d/guile.sh
 # d/nodejs.sh
 # s/docbook-dtd3.sh
@@ -218,7 +219,9 @@ n/bind-utils.sh
 # d/perl-modules/perl-sgmlspm.sh
 # ap/docbook-utils.sh
 # x/misc/xdg-user-dirs.sh
-# l/libsigc++2.sh
+
+# ==============================================================================
+
 # l/parted.sh
 # l/sg3-utils.sh
 # l/libpcap.sh
@@ -226,7 +229,6 @@ n/bind-utils.sh
 # l/dbus-glib.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
-# l/nss.sh
 # n/p11-kit.sh
 # n/make-ca.sh
 # d/swig.sh

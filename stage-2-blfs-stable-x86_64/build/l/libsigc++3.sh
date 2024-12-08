@@ -1,8 +1,8 @@
 #! /bin/bash
 
-PRGNAME="libsigc++2"
+PRGNAME="libsigc++3"
 
-### libsigc++ version 2 (typesafe callback system for standard C++)
+### libsigc++ version 3 (typesafe callback system for standard C++)
 # Библиотека реализует систему безопасных обратных вызовов (callbacks) для
 # стандарта C++
 
@@ -22,7 +22,7 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 SOURCES="${ROOT}/src"
 ARCH_NAME="libsigc++"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-2*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${ARCH_NAME}-${VERSION}"
@@ -66,7 +66,7 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (typesafe callback system for standard C++)
 #
-# libsigc++ (version 2) implements a typesafe callback system for standard C++.
+# libsigc++ (version 3) implements a typesafe callback system for standard C++.
 # It allows you to define signals and to connect those signals to any callback
 # function, either global or a member function, regardless of whether it is
 # static or virtual. It also contains adaptor classes for connection of
