@@ -155,6 +155,11 @@ d/python-modules/python3-requests.sh
 l/popt.sh
 n/rsync.sh
 d/llvm.sh
+l/icu.sh
+l/libxml2.sh
+l/json-c.sh
+d/nasm.sh
+l/libjpeg-turbo.sh
 
 # a/time.sh
 # d/python-modules/python3-lxml.sh
@@ -187,14 +192,8 @@ d/llvm.sh
 # === mesa ===============
 # d/python-modules/python3-mako.sh
 # ========================
-
-# l/icu.sh
-# l/libxml2.sh
-# l/boost.sh
-# l/json-c.sh
 # s/xmlto.sh
-# d/nasm.sh
-# l/libjpeg-turbo.sh
+
 # l/unixodbc.sh
 # l/c-ares.sh
 # n/bind-utils.sh

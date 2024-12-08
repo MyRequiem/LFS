@@ -23,13 +23,20 @@ cd build || exit 1
 
 # обеспевает совместимость с libjpeg версии 8
 #    -DWITH_JPEG8=ON
-cmake                                                             \
-    -DCMAKE_INSTALL_PREFIX=/usr                                   \
-    -DCMAKE_BUILD_TYPE=RELEASE                                    \
-    -DENABLE_STATIC=FALSE                                         \
-    -DWITH_JPEG8=ON                                               \
-    -DCMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
-    -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+# заставляет cmake удалять жестко закодированные пути поиска библиотеки (rpath)
+# при установке двоичного исполняемого файла или общей библиотеки, но для этого
+# пакета не требуется rpath после его установки в стандартное расположение, и
+# rpath иногда может вызывать нежелательные эффекты или даже проблемы с
+# безопасностью
+#    -D CMAKE_SKIP_INSTALL_RPATH=ON
+cmake                                                              \
+    -D CMAKE_INSTALL_PREFIX=/usr                                   \
+    -D CMAKE_BUILD_TYPE=RELEASE                                    \
+    -D ENABLE_STATIC=FALSE                                         \
+    -D WITH_JPEG8=ON                                               \
+    -D CMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
+    -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 
 make || exit 1
@@ -48,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # baseline JPEG compression and decompression. libjpeg-turbo is generally 2-4x
 # as fast as the unmodified version of libjpeg, all else being equal.
 #
-# Home page: http://${PRGNAME}.virtualgl.org
+# Home page: https://${PRGNAME}.virtualgl.org
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

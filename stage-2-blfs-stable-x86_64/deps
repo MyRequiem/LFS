@@ -123,7 +123,7 @@ docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5
 dovecot                                 gnupg, sudo, gimp, fcron, at, php
-doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant
+doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, gpgme, graphite2, libxcb, openjpeg, cairomm, glibmm, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
 duktape                                 polkit
@@ -218,7 +218,7 @@ gptfdisk                                udisks
 graphene                                gst-plugins-base, gtk4
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                gcc, llvm, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby, exiv2, gegl, imagemagick, libical, openjdk
+graphviz                                gcc, llvm, json-c, gpgme, vala, wayland, libvdpau, libvdpau-va-gl, ruby, exiv2, gegl, imagemagick, libical, openjdk
 grc
 groonga                                 mariadb
 gsasl                                   curl

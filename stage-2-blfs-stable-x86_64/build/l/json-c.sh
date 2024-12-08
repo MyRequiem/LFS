@@ -9,7 +9,9 @@ PRGNAME="json-c"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    no
+# Optional:    --- для документации ---
+#              doxygen
+#              graphviz
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # easily construct JSON objects in C, output them as JSON formatted strings and
 # parse JSON formatted strings back into the C representation of JSON objects.
 #
-# Home page: https://github.com/json-c/${PRGNAME}
+# Home page: https://github.com/${PRGNAME}/${PRGNAME}
 # Download:  https://s3.amazonaws.com/${PRGNAME}_releases/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
