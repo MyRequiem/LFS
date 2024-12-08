@@ -219,20 +219,20 @@ l/libsigc++3.sh
 # d/perl-modules/perl-sgmlspm.sh
 # ap/docbook-utils.sh
 # x/misc/xdg-user-dirs.sh
-
-# ==============================================================================
-
 # l/parted.sh
 # l/sg3-utils.sh
 # l/libpcap.sh
 # n/iptables.sh
+# l/enchant.sh
+# l/gconf.sh
 # l/dbus-glib.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
-# n/p11-kit.sh
-# n/make-ca.sh
 # d/swig.sh
 # ap/itstool.sh
+
+# ==============================================================================
+
 # l/libssh2.sh
 # d/brotli.sh
 # n/gnutls.sh
@@ -485,7 +485,6 @@ l/libsigc++3.sh
 # l/gtk-engines.sh
 # l/gtkmm.sh
 # s/gtk-vnc.sh
-# l/gtksourceview3.sh
 # d/gjs.sh
 # l/libsecret.sh
 # l/gcr3.sh
@@ -625,7 +624,6 @@ l/libsigc++3.sh
 # xap/gimp.sh
 # l/djvulibre.sh
 # l/libgxps.sh
-# l/lcms.sh
 # xap/imagemagick.sh
 # ap/feh.sh
 # l/gst-plugins-base.sh
@@ -694,7 +692,6 @@ l/libsigc++3.sh
 # l/libiodbc.sh
 # l/redland.sh
 # d/tidy-html5.sh
-# l/enchant.sh
 # n/php.sh
 # ap/cups.sh
 # d/openjdk.sh
@@ -704,7 +701,6 @@ l/libsigc++3.sh
 # l/libsecret.sh
 # l/vte2.sh
 # l/vte3.sh
-# l/gconf.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh

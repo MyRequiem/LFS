@@ -26,7 +26,7 @@ ARCH_NAME="ImageMagick"
 #              profiles            (https://imagemagick.org/archive/delegates/)
 #              --- Графические библиотеки ---
 #              jasper
-#              lcms или lcms2
+#              lcms2
 #              libgxps
 #              libjpeg-turbo
 #              libpng
