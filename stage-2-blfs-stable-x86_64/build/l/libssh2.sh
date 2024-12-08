@@ -9,10 +9,11 @@ PRGNAME="libssh2"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              gnupg
-#              libgcrypt
+# Optional:    cmake                (можно использовать вместо скрипта configure)
+#              libgcrypt            (можно использовать вместо openssl)
+#              --- для тестов ---
 #              openssh
+#              docker               (https://www.docker.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,10 +22,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch"
+patch --verbose -Np1 \
+    -i "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch"
 
-./configure       \
-    --prefix=/usr \
+# исключим тесты, требующие статической библиотеки, и удалим ссылку на
+# небезопасный алгоритм, удаленный начиная с OpenSSH 9.8
+sed -E '/^DOCKER_TEST/,/^SSHD_TEST/s/test_(auth_keyboard_info.* |hostkey |simple)/$(NOTHING)/' \
+    -i tests/Makefile.inc &&
+
+autoreconf -fi                                         || exit 1
+sed 's/ssh-dss,//' -i tests/openssh_server/sshd_config || exit 1
+
+./configure                \
+    --prefix=/usr          \
+    --disable-docker-tests \
     --disable-static || exit 1
 
 make || exit 1

@@ -164,6 +164,7 @@ l/liburcu.sh
 n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
+l/libssh2.sh
 
 # ==============================================================================
 # a/time.sh
@@ -230,17 +231,14 @@ l/libsigc++3.sh
 # l/libbytesize.sh
 # d/swig.sh
 # ap/itstool.sh
+# d/brotli.sh
 
 # ==============================================================================
 
-# l/libssh2.sh
-# d/brotli.sh
-# n/gnutls.sh
 # d/rustc.sh
 # n/nmap.sh
 # ap/lsof.sh
 # n/gpgme.sh
-# d/mozjs.sh
 # ap/graphite2.sh
 # x/utils/util-macros.sh
 # x/proto/xorgproto.sh

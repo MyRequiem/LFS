@@ -76,7 +76,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5
 cmocka                                  gnutls, mit-kerberos-v5
 cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
@@ -119,6 +119,7 @@ docbook-utils                           libsigc++2, libsigc++3, fontconfig, gtk+
 docbook-xml                             libxslt, glib, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, itstool, wayland, libdrm, libsecret, polkit, i3
 docbook-xsl                             libxslt, glib, elogind, xmlto, xdg-user-dirs, wayland, libdrm, gtk+3, libsecret, polkit, upower
 docbook2x                               git
+docker                                  libssh2
 docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5
@@ -206,7 +207,7 @@ glusterfs
 gnome-keyring                           libsecret
 gnome-shell                             polkit
 gnome-themes-extra                      gtk+2
-gnupg                                   git, smartmontools, mit-kerberos-v5, libssh2, gpgme, gcr3, imagemagick, gcr4, gnome-keyring
+gnupg                                   git, smartmontools, mit-kerberos-v5, gpgme, gcr3, imagemagick, gcr4, gnome-keyring
 gnuplot                                 imagemagick
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm, cups, gtk-vnc, exim, ffmpeg, neon, vte3
 goffice
@@ -260,7 +261,7 @@ i3                                      bumblebee-status
 ibm-db2                                 php
 ibus                                    sdl2, qt5
 icon-tools                              adwaita-icon-theme
-icu                                     libxml2, boost, nodejs, mozjs, harfbuzz, postgresql, qt5, libical, raptor, vte3
+icu                                     libxml2, boost, nodejs, harfbuzz, postgresql, qt5, libical, raptor, vte3
 id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
@@ -509,7 +510,6 @@ mm-common                               libsigc++2, libsigc++3, glibmm
 mnogosearch                             php
 monetra                                 php
 mono                                    libidn
-mozjs                                   gjs, polkit
 mpg123                                  libsndfile, gst-plugins-good
 mrg                                     gegl
 mruby                                   nghttp2, mariadb
@@ -853,7 +853,7 @@ rrdtool                                 lm-sensors
 rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad
 ruby                                    docbook-xsl, mariadb, vim, mc, gegl
-rustc                                   mozjs, librsvg, ruby
+rustc                                   librsvg, ruby
 rxvt-unicode
 samba                                   curl, mc, ffmpeg, libsoup, libsoup3
 sane                                    imagemagick
@@ -958,7 +958,7 @@ weasyprint                              vala
 webkit2gtk                              zenity
 webrtc-audio-processing                 pulseaudio
 wget                                    smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
-which                                   openssh, lm-sensors, boost, aspell, lvm2, nodejs, mozjs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
+which                                   openssh, lm-sensors, boost, aspell, lvm2, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wiredtiger                              openldap

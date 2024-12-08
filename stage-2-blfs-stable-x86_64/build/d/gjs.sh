@@ -7,7 +7,6 @@ PRGNAME="gjs"
 
 # Required:    cairo
 #              dbus
-#              mozjs
 # Recommended: gtk+3
 #              gtk4
 # Optional:    sysprof

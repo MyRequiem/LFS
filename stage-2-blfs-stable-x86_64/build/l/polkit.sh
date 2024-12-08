@@ -18,7 +18,6 @@ PRGNAME="polkit"
 # Recommended: linux-pam
 #              elogind
 # Optional:    gtk-doc
-#              mozjs
 #              python3-dbusmock (для тестов)
 #              Plasma5          (для KDE)
 #              gnome-shell      (для GNOME)
