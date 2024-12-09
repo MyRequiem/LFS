@@ -83,6 +83,7 @@ colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
 cpio                                    openjdk
 cppdap                                  cmake
+cranelift                               rustc
 cryptsetup
 cunit                                   libdrm
 cups                                    ghostscript, gtk+2, gtk+3, imagemagick, qt5, gtk4, openjdk
@@ -193,7 +194,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps, openjdk
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps, openjdk
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
@@ -282,7 +283,7 @@ jansson                                 nghttp2
 jasper                                  gegl, imagemagick, qt5
 jbig-kit                                libtiff, imagemagick
 jbig2dec                                cairo
-jemalloc                                nghttp2
+jemalloc                                nghttp2, rustc
 jing                                    vala
 jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
@@ -351,6 +352,7 @@ libevdev                                libinput, xorg-evdev-driver, xorg-synapt
 libevent                                tmux, nghttp2, mariadb, links, ntp, transmission
 libexif                                 feh, gst-plugins-bad, php
 libfpx                                  imagemagick
+libgccjit                               rustc
 libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, libsecret, gcr3, xorg-server, gst-plugins-bad, gcr4, rasqal
 libgd                                   php
 libgit2                                 rustc
@@ -885,7 +887,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt5
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, nss, python3, libsndfile, exim, qt5, libsoup, libsoup3, redland, php
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, rustc, nss, python3, libsndfile, exim, qt5, libsoup, libsoup3, redland, php
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 sssd                                    sudo

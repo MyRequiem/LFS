@@ -137,6 +137,7 @@ https://download.gnome.org/sources/libsigc++/2.12/libsigc++-2.12.1.tar.xz
 https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz
 https://www.libssh2.org/download/libssh2-1.11.0.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.2/libssh2-1.11.0-security_fixes-1.patch
+https://static.rust-lang.org/dist/rustc-1.80.1-src.tar.xz
 
 
 ================================================================================
@@ -207,7 +208,6 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/nss-3.88.1-standalone-1.patch
 https://downloads.sourceforge.net/swig/swig-4.1.1.tar.gz
 https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://github.com/google/brotli/archive/v1.0.9/brotli-1.0.9.tar.gz
-https://static.rust-lang.org/dist/rustc-1.67.1-src.tar.xz
 https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.18.0.tar.bz2
