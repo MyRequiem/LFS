@@ -166,6 +166,9 @@ l/libsigc++2.sh
 l/libsigc++3.sh
 l/libssh2.sh
 d/rustc.sh
+n/gpgme.sh
+x/utils/util-macros.sh
+x/proto/xorgproto.sh
 
 # ==============================================================================
 # a/time.sh
@@ -233,15 +236,12 @@ d/rustc.sh
 # d/swig.sh
 # ap/itstool.sh
 # d/brotli.sh
+# n/nmap.sh
+# ap/lsof.sh
+# ap/graphite2.sh
 
 # ==============================================================================
 
-# n/nmap.sh
-# ap/lsof.sh
-# n/gpgme.sh
-# ap/graphite2.sh
-# x/utils/util-macros.sh
-# x/proto/xorgproto.sh
 # x/libs/libxau.sh
 # x/libs/libxdmcp.sh
 # x/xcb/xcb-proto.sh

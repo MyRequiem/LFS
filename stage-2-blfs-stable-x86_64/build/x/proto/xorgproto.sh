@@ -26,12 +26,12 @@ cd build || exit 1
 
 # устанавим устаревшие заголовки, необходимые для старых программ, например,
 # LessTif
-#    -Dlegacy=true
+#    -D legacy=true
 #
 # shellcheck disable=SC2086
 meson                       \
     --prefix=${XORG_PREFIX} \
-    -Dlegacy=true           \
+    -D legacy=true          \
     .. || exit 1
 
 ninja || exit 1
@@ -40,7 +40,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 DOCS="${TMP_DIR}${XORG_PREFIX}/share/doc"
 [ -d "${DOCS}/${PRGNAME}" ] && \
-    mv "${DOCS}"/{"${PRGNAME}","${PRGNAME}-${VERSION}"}
+    mv "${DOCS}/${PRGNAME}"{,"-${VERSION}"}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

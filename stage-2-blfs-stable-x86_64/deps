@@ -835,8 +835,8 @@ python3-xmlschema
 pytrash
 qdbm                                    php
 qt4                                     cairo
-qt5                                     gpgme, cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
-qt5-components                          pinentry, wpa-supplicant
+qt5                                     cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5-components                          pinentry, wpa-supplicant, gpgme
 qt6                                     highlight, cmake, poppler
 quiche                                  curl
 radiance                                imagemagick

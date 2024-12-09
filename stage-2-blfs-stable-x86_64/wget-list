@@ -138,6 +138,9 @@ https://download.gnome.org/sources/libsigc++/3.6/libsigc++-3.6.0.tar.xz
 https://www.libssh2.org/download/libssh2-1.11.0.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.2/libssh2-1.11.0-security_fixes-1.patch
 https://static.rust-lang.org/dist/rustc-1.80.1-src.tar.xz
+https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.23.2.tar.bz2
+https://www.x.org/pub/individual/util/util-macros-1.20.1.tar.xz
+https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2024.1.tar.xz
 
 
 ================================================================================
@@ -210,11 +213,7 @@ https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://github.com/google/brotli/archive/v1.0.9/brotli-1.0.9.tar.gz
 https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
-https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.18.0.tar.bz2
-https://www.linuxfromscratch.org/patches/blfs/11.3/gpgme-1.18.0-gpg_error_1_46-1.patch
 https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz
-https://www.x.org/pub/individual/util/util-macros-1.20.0.tar.xz
-https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz
 https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz
 https://www.x.org/pub/individual/lib/libXdmcp-1.1.4.tar.xz
 https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.15.2.tar.xz
