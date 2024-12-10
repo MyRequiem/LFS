@@ -952,6 +952,7 @@ vte2
 vte3
 vulkan                                  qt5, gst-plugins-bad, gtk4
 w3m                                     xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
+wasm-micro-runtime                      harfbuzz
 wavpack                                 gst-plugins-good
 wayland                                 wayland-protocols, libva, libxkbcommon, gtk+3, ibus, qt5, gst-plugins-good, gst-plugins-bad
 wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2, gst-plugins-base, wpebackend-fdo, gtk4

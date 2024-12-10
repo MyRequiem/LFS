@@ -173,6 +173,11 @@ x/libs/libxau.sh
 x/libs/libxdmcp.sh
 x/xcb/xcb-proto.sh
 x/libs/libxcb.sh
+ap/graphite2.sh
+l/freetype.sh
+l/harfbuzz.sh
+l/freetype.sh
+ap/graphite2.sh
 
 # ==============================================================================
 # a/time.sh
@@ -242,14 +247,9 @@ x/libs/libxcb.sh
 # d/brotli.sh
 # n/nmap.sh
 # ap/lsof.sh
-# ap/graphite2.sh
 
 # ==============================================================================
 
-# l/freetype.sh
-# l/harfbuzz.sh
-# l/freetype.sh
-# ap/graphite2.sh
 # x/misc/fontconfig.sh
 # a/ncompress.sh
 # x/libs/xorg-libraries.sh
@@ -438,7 +438,6 @@ x/libs/libxcb.sh
 # l/gdk-pixbuf-xlib.sh
 # d/vala.sh
 # l/librsvg.sh
-# l/freetype.sh
 # l/cairo.sh
 # l/gdk-pixbuf.sh
 # x/libs/wayland.sh
@@ -578,7 +577,6 @@ x/libs/libxcb.sh
 # n/cyrus-sasl.sh
 # n/openldap.sh
 # n/exim.sh
-# n/gnupg.sh
 # ap/sudo.sh
 # l/aalib.sh
 # l/libass.sh
@@ -626,7 +624,6 @@ x/libs/libxcb.sh
 # ap/feh.sh
 # l/gst-plugins-base.sh
 # l/qt5.sh
-# n/gpgme.sh
 # l/cairo.sh
 # ap/mpg123.sh
 # l/libsndfile.sh

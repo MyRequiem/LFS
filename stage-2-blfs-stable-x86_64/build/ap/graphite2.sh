@@ -12,24 +12,17 @@ PRGNAME="graphite2"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    *** для создания утилиты benchmark-тестирования 'comparerender'
-#              freetype
-#              silgraphite (https://sourceforge.net/projects/silgraphite/files/silgraphite)
-#
-#              *** для более полного функционала
-#              harfbuzz (циклическая зависимость: сначала собираем graphite2 без harfbuzz, потом harfbuzz и пересобираем graphite2)
-#
-#              *** для создания документации
+# Optional:    freetype
+#              silgraphite                  (для сборки утилиты comparerender - test and benchmarking tool) https://sourceforge.net/projects/silgraphite/files/silgraphite
+#              harfbuzz                     (для более полного функционала)
+#              graphite-font                (https://graphite.sil.org/)
+#              --- для документации ---
 #              python3-asciidoc
 #              doxygen
 #              texlive или install-tl-unx
-#              dblatex (для создания pdf документации) http://dblatex.sourceforge.net/
-#
-#              *** для запуска 'cmp' теста ***
-#              python3-fonttools (https://pypi.org/project/fonttools/)
-#
-#              *** at runtime
-#              graphite-font (https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_fonts)
+#              dblatex                      (http://dblatex.sourceforge.net/)
+#              --- для тестов ---
+#              python3-fonttools            (https://pypi.org/project/fonttools/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -45,43 +38,13 @@ sed -i '/cmptest/d' tests/CMakeLists.txt || exit 1
 mkdir build &&
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     .. || exit 1
 
 make || exit 1
-
-ASCIIDOC=""
-DOXYGEN=""
-TEXLIVE=""
-DBLATEX=""
-BUILD_DOCS=""
-
-# command -v asciidoc &>/dev/null && ASCIIDOC="true"
-# command -v doxygen  &>/dev/null && DOXYGEN="true"
-# command -v texdoc   &>/dev/null && TEXLIVE="true"
-# command -v dblatex  &>/dev/null && DBLATEX="true"
-
-# собираем документацию
-if [[ -n "${ASCIIDOC}" || -n "${DOXYGEN}" || \
-        -n "${TEXLIVE}" || -n "${DBLATEX}" ]]; then
-    BUILD_DOCS="true"
-    make docs || exit 1
-fi
-
 # make test
-
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-if [ -n "${BUILD_DOCS}" ]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    mkdir -p "${TMP_DIR}${DOCS}"
-    cp -vf doc/{GTF,manual}.html    "${TMP_DIR}${DOCS}"
-    if [ -n "${DBLATEX}" ]; then
-        cp -vf doc/{GTF,manual}.pdf "${TMP_DIR}${DOCS}"
-    fi
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -98,7 +61,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # which often need to be written according to slightly different rules than
 # well-known languages that use the same script.
 #
-# Home page: http://graphite.sil.org/
+# Home page: https://graphite.sil.org/
 # Download:  https://github.com/silnrsi/graphite/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tgz
 #
 EOF

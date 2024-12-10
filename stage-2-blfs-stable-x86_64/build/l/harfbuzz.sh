@@ -8,14 +8,15 @@ PRGNAME="harfbuzz"
 
 # Required:    no
 # Recommended: glib
-#              graphite2 (нужен для сборки texlive или libreoffice с системным harfbuzz)
+#              graphite2            (нужен для сборки texlive или libreoffice с системным harfbuzz)
 #              icu
-#              freetype
-# Optional:    cairo (для сборки утилиты 'hb-view')
+#              freetype             (пересобрать данную зависимость после сборки harfbuzz)
+# Optional:    cairo                (для сборки утилиты 'hb-view')
 #              git
 #              gtk-doc
-#              python3-fonttools (для тестов) https://pypi.org/project/fonttools/
-#              ragel             (https://www.colm.net/open-source/ragel/)
+#              python3-fonttools    (для тестов) https://pypi.org/project/fonttools/
+#              ragel                (https://www.colm.net/open-source/ragel/)
+#              wasm-micro-runtime   (https://github.com/bytecodealliance/wasm-micro-runtime)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,21 +26,17 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 GRAPHITE2="disabled"
-GTK_DOC="disabled"
-
-command -v gr2fonttest  &>/dev/null && GRAPHITE2="enabled"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="enabled"
+command -v gr2fonttest &>/dev/null && GRAPHITE2="enabled"
 
 mkdir build
 cd build || exit 1
 
-meson                          \
-    --prefix=/usr              \
-    --buildtype=release        \
-    -Dgraphite2="${GRAPHITE2}" \
-    -Dtests=disabled           \
-    -Ddocs="${GTK_DOC}"        \
-    -Dbenchmark=disabled || exit 1
+meson setup                     \
+    --prefix=/usr               \
+    --buildtype=release         \
+    -D graphite2="${GRAPHITE2}" \
+    -D docs=disabled            \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 
@@ -57,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # HarfBuzz is an OpenType text shaping engine.
 #
-# Home page: https://www.freedesktop.org/wiki/Software/HarfBuzz/
+# Home page: https://github.com/${PRGNAME}/${PRGNAME}
 # Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

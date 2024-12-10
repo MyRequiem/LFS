@@ -38,8 +38,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # programs to be compiled with NLS (Native Language Support), enabling them to
 # output messages in the user's native language.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
