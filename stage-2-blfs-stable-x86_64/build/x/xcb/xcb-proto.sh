@@ -8,7 +8,7 @@ PRGNAME="xcb-proto"
 
 # Required:    no
 # Recommended: no
-# Optional:    libxml2 (для запуска тестов)
+# Optional:    libxml2 (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,7 +26,7 @@ PYTHON=python3 \
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# при обновлении пакета до версии >1.15.1 нужно удалить
+# при обновлении пакета с версии <=1.15.1 нужно удалить
 # ${XORG_PREFIX}/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
 # ${XORG_PREFIX}/share/pkgconfig
 rm -f "${XORG_PREFIX}/lib/pkgconfig/${PRGNAME}.pc"

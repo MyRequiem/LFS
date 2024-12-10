@@ -12,7 +12,7 @@ PRGNAME="libxcb"
 # Required:    libxau
 #              xcb-proto
 # Recommended: libxdmcp
-# Optional:    doxygen (для сборки документации)
+# Optional:    doxygen    (для сборки документации)
 #              libxslt
 
 ROOT="/root/src/lfs"
@@ -23,18 +23,14 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOXYGEN="--without-doxygen"
-# command -v doxygen &>/dev/null && DOXYGEN="--with-doxygen"
-
 # shellcheck disable=SC2086
-PYTHON=python3     \
-./configure        \
-    ${XORG_CONFIG} \
-    "${DOXYGEN}"   \
+./configure           \
+    ${XORG_CONFIG}    \
+    --without-doxygen \
     --docdir="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# LC_ALL=en_US.UTF-8 make
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

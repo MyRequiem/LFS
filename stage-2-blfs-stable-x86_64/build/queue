@@ -169,6 +169,10 @@ d/rustc.sh
 n/gpgme.sh
 x/utils/util-macros.sh
 x/proto/xorgproto.sh
+x/libs/libxau.sh
+x/libs/libxdmcp.sh
+x/xcb/xcb-proto.sh
+x/libs/libxcb.sh
 
 # ==============================================================================
 # a/time.sh
@@ -242,10 +246,6 @@ x/proto/xorgproto.sh
 
 # ==============================================================================
 
-# x/libs/libxau.sh
-# x/libs/libxdmcp.sh
-# x/xcb/xcb-proto.sh
-# x/libs/libxcb.sh
 # l/freetype.sh
 # l/harfbuzz.sh
 # l/freetype.sh
