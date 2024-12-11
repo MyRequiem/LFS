@@ -59,6 +59,7 @@ bpf-utils                               iptables
 brotli                                  gnutls, curl, freetype, links, libsoup, libsoup3
 bs2b                                    gst-plugins-bad
 btrfs-progs                             libblockdev, udisks
+bubblewrap                              fontconfig
 bumblebee-status
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi

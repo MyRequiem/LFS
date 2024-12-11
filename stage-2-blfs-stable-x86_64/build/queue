@@ -178,6 +178,7 @@ l/freetype.sh
 l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
+x/misc/fontconfig.sh
 
 # ==============================================================================
 # a/time.sh
@@ -249,7 +250,6 @@ ap/graphite2.sh
 
 # ==============================================================================
 
-# x/misc/fontconfig.sh
 # a/ncompress.sh
 # x/libs/xorg-libraries.sh
 # a/dbus.sh
