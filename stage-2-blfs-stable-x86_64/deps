@@ -134,7 +134,7 @@ ed
 efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
-elogind                                 dbus, xorg-libraries, pulseaudio, polkit, xorg-server, udisks
+elogind                                 dbus, pulseaudio, polkit, xorg-server, udisks
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
 empress                                 php

@@ -179,6 +179,7 @@ l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
 x/misc/fontconfig.sh
+X/libs/xorg-libraries.sh
 
 # ==============================================================================
 # a/time.sh
@@ -250,8 +251,6 @@ x/misc/fontconfig.sh
 
 # ==============================================================================
 
-# a/ncompress.sh
-# x/libs/xorg-libraries.sh
 # a/dbus.sh
 # # BLFS Perl модули
 # d/perl-modules/perl-test-warnings.sh

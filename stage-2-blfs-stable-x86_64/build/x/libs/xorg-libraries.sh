@@ -8,76 +8,14 @@ PKG_VERSION="11"
 
 # Required:    fontconfig
 #              libxcb
-# Recommended: elogind
+# Recommended: no
 # Optional:    --- для сборки документации ---
 #              python3-asciidoc
 #              xmlto
 #              fop
 #              links или lynx или w3m (http://w3m.sourceforge.net/)
 #              --- для некоторых тестов ---
-#              ncompress
-
-###
-# NOTES:
-###
-# *** /usr/bin/ ***
-# cxpm               - проверка формата XPM файлов (синтаксический анализ X PixMap)
-# sxpm               - просмотр XPM файлов и/или конвертация XPM1 и XPM2 в XPM3
-#
-# *** /usr/lib/ ***
-# libdmx.so          - DMX (Distributed Multihead X) extension library
-# libfontenc.so      - X11 font encoding library
-# libFS.so           - library interface to the X Font Server
-# libICE.so          - X Inter Client Exchange Library
-# libpciaccess.so    - generic PCI Access library for X
-# libSM.so           - X Session Management Library
-# libX11.so          - Xlib Library
-# libXaw6.so         - X Athena Widgets Library, version 6
-# libXaw7.so         - X Athena Widgets Library, version 7
-# libXaw.so          - link to libXaw7.so
-# libXcomposite.so   - X Composite Library
-# libXcursor.so      - X Cursor management library
-# libXdamage.so      - X Damage Library
-# libXext.so         - Misc X Extension Library
-# libXfixes.so       - provides augmented versions of core protocol requests
-# libXfont2.so       - X font library
-# libXft.so          - X FreeType interface library
-# libXinerama.so     - Xinerama Library
-# libXi.so           - X Input Extension Library
-# libxkbfile.so      - xkbfile Library
-# libXmu.so          - X interface library for miscellaneous utilities no part of the Xlib standard
-# libXmuu.so         - Mini Xmu Library
-# libXpm.so          - X Pixmap Library
-# libXrandr.so       - X Resize, Rotate and Reflection extension library
-# libXrender.so      - X Render Library
-# libXRes.so         - X-Resource extension client library
-# libxshmfence.so    - exposes an event API on top of Linux futexes
-# libXss.so          - X11 Screen Saver extension client library
-# libXt.so           - X Toolkit Library
-# libXtst.so         - Xtst Library
-# libXvMC.so         - X-Video Motion Compensation Library
-# libXvMCW.so        - XvMC Wrapper including the Nonstandard VLD extension
-# libXv.so           - X Window System video extension library
-# libXxf86dga.so     - client library for the XFree86-DGA extension
-# libXxf86vm.so      - client library for the XFree86-VidMode X extension
-#
-# *** Устанавливаемые директории ***
-# /usr/include/X11/Xtrans
-# /usr/include/X11/fonts
-# /usr/share/X11/locale
-# /usr/share/doc/libFS
-# /usr/share/doc/libICE
-# /usr/share/doc/libSM
-# /usr/share/doc/libX11
-# /usr/share/doc/libXaw
-# /usr/share/doc/libXext
-# /usr/share/doc/libXi
-# /usr/share/doc/libXmu
-# /usr/share/doc/libXrender
-# /usr/share/doc/libXt
-# /usr/share/doc/libXtst
-# /usr/share/doc/libXvMC
-# /usr/share/doc/xtrans
+#              ncompress              (https://github.com/vapier/ncompress)
 
 ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"
@@ -130,10 +68,10 @@ libXv \
 libXvMC \
 libXxf86dga \
 libXxf86vm \
-libdmx \
 libpciaccess \
 libxkbfile \
 libxshmfence \
+libXpresent \
 "
 
 show_error() {
@@ -187,28 +125,11 @@ for PKGNAME in ${PACKAGES}; do
     # конфигурация
     case "${PKGNAME}" in
         libXfont2)
-            XMLTO=""
-            # command -v xmlto &>/dev/null && XMLTO="true"
-
-            TEXT_BROWSER=""
-            # command -v w3m   &>/dev/null && TEXT_BROWSER="true"
-            # command -v links &>/dev/null && TEXT_BROWSER="true"
-            # command -v lynx  &>/dev/null && TEXT_BROWSER="true"
-
-            DEVEL_DOCS="--disable-devel-docs"
-            [[ -n "${XMLTO}" && -n "${TEXT_BROWSER}" ]] && \
-                DEVEL_DOCS="--enable-devel-docs"
-
-            # для создания pdf-документации
-            FOP="--without-fop"
-            # command -v fop &>/dev/null && FOP="--with-fop"
-
             # shellcheck disable=SC2086
             ./configure        \
                 ${XORG_CONFIG} \
                 "${DOCDIR}"    \
-                "${FOP}"       \
-                "${DEVEL_DOCS}" || {
+                --disable-devel-docs || {
                     show_error "'configure' for ${PKGNAME} package"
                     exit 1
                 }
@@ -226,9 +147,6 @@ for PKGNAME in ${PACKAGES}; do
             ;;
 
         libXpm)
-            # исправим тесты, чтобы они работали без установленного
-            # опционального пакета ncompress
-            sed -i '/TestAll.*TRUE/s|^|//|' test/TestAllFiles.h
             # разрешим сборку пакета без установленного опционального пакета
             # ncompress
             #    --disable-open-zfile
@@ -241,7 +159,19 @@ for PKGNAME in ${PACKAGES}; do
                     exit 1
                 }
             ;;
+        libpciaccess)
+            mkdir build
+            cd build || exit 1
 
+            # shellcheck disable=SC2086
+            meson setup                 \
+                --prefix=${XORG_PREFIX} \
+                --buildtype=release     \
+                .. || {
+                    show_error "'meson configure' for ${PKGNAME} package"
+                    exit 1
+                }
+            ;;
         *)
             # shellcheck disable=SC2086
             ./configure        \
@@ -254,23 +184,36 @@ for PKGNAME in ${PACKAGES}; do
     esac
 
     # сборка
-    make || {
-        show_error "'make' for ${PKGNAME} package"
-        exit 1
-    }
-
-    # тесты
-    # make check 2>&1 | tee make_check.log
-    # grep -A9 summary make_check.log
+    if [ "${PKGNAME}" == "libpciaccess" ]; then
+        ninja || {
+            show_error "'make (ninja)' for ${PKGNAME} package"
+            exit 1
+        }
+    else
+        make || {
+            show_error "'make' for ${PKGNAME} package"
+            exit 1
+        }
+    fi
 
     # директория для установки собранного пакета
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
     mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
-    make install DESTDIR="${PKG_INSTALL_DIR}" || {
-        show_error "'make install' for ${PKGNAME} package"
-        exit 1
-    }
+    if [ "${PKGNAME}" == "libpciaccess" ]; then
+        DESTDIR="${PKG_INSTALL_DIR}" ninja install || {
+            show_error "'ninja install' for ${PKGNAME} package"
+            exit 1
+        }
+
+        cd .. || exit 1
+
+    else
+        make install DESTDIR="${PKG_INSTALL_DIR}" || {
+            show_error "'make install' for ${PKGNAME} package"
+            exit 1
+        }
+    fi
 
     # stripping
     BINARY="$(find "${PKG_INSTALL_DIR}" -type f -print0 | \
