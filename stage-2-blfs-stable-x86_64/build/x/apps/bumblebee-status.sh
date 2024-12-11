@@ -7,7 +7,6 @@ PRGNAME="bumblebee-status"
 
 # Required:    i3
 # Recommended: python3-psutil    (для модулей cpu и cpu2)
-#              python3-netifaces (для модуля nic)
 #              hddtemp           (для модуля hddtemp)
 # Optional:    no
 

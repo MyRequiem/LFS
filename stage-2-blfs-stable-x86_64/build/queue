@@ -207,7 +207,6 @@ ap/graphite2.sh
 # d/python-modules/python3-dbus.sh
 # === bumblebee-status ===
 # d/python-modules/python3-psutil.sh
-# d/python-modules/python3-netifaces.sh
 # === mesa ===============
 # d/python-modules/python3-mako.sh
 # ========================
@@ -722,13 +721,10 @@ ap/graphite2.sh
 # n/tunctl.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh
-# ap/imwheel.sh
-# ap/megatools.sh
 # ap/pwgen.sh
 # n/uget.sh
 # s/ramdefrag.sh
 # ap/utimer.sh
-# n/wgetpaste.sh
 # l/girara.sh
 # ap/zathura.sh
 # ap/bviplus.sh
