@@ -181,7 +181,7 @@ ap/graphite2.sh
 x/misc/fontconfig.sh
 x/libs/xorg-libraries.sh
 a/dbus.sh
-# l/dbus-glib.sh
+l/dbus-glib.sh
 #=== python3-dbus ========
 # d/patchelf.sh
 # d/python-modules/python3-pyproject-metadata.sh

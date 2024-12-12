@@ -19,6 +19,14 @@ PRGNAME="dbus"
 #              python3-ducktype     (https://pypi.org/project/mallard-ducktype/)
 #              yelp-tools           (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
+###
+# WARNING:
+# Пакет собирать в чистой LFS по двум причинам:
+#   - на хосте уже запущен DBus, а при установке данного пакета в chroot среде
+#     запустится еще один экземпляр, что нам не нужно
+#   - для корректной генерации UUID D-Bus (/var/lib/dbus/machine-id)
+###
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -139,12 +147,10 @@ HELPER="/usr/libexec/dbus-daemon-launch-helper"
 chown -v root:messagebus "${HELPER}"
 chmod -v 4750            "${HELPER}"
 
-# сгенерируем UUID D-Bus
-dbus-uuidgen --ensure
-cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
-
 # остановим D-Bus сервис (если запущен), и запустим заново
 /etc/rc.d/init.d/dbus restart
+
+cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (D-Bus message bus system)
