@@ -183,10 +183,10 @@ x/libs/xorg-libraries.sh
 a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
-# d/patchelf.sh
-# d/python-modules/python3-pyproject-metadata.sh
-# d/python-modules/python3-meson.sh
-# d/python-modules/python3-dbus.sh
+d/patchelf.sh
+d/python-modules/python3-pyproject-metadata.sh
+d/python-modules/python3-meson.sh
+d/python-modules/python3-dbus.sh
 # ========================
 # a/acpid.sh
 # d/python-modules/python3-lxml.sh

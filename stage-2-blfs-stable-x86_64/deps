@@ -195,7 +195,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, usbutils, harfbuzz, adwaita-icon-theme, poppler, libgxps, openjdk
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, poppler, libgxps, openjdk
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
@@ -765,11 +765,11 @@ prelink
 profiles                                imagemagick
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, qt5, mpg123, gst-plugins-good, libao
 python2                                 yasm, docbook-xsl, nmap, cups, libglade, alsa-lib, vim
-python3 (пересобранный в BLFS)          python3-charset-normalizer
+python3 (пересобранный в BLFS)          python3-charset-normalizer, python3-meson
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
-python3-build                           python3-setuptools-scm
+python3-build                           python3-setuptools-scm, python3-meson
 python3-charset-normalizer              python3-requests
-python3-cython                          yasm, nghttp2
+python3-cython                          yasm, nghttp2, python3-meson
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, libsecret, ibus, udisks
 python3-dbusmock                        polkit, upower
@@ -812,10 +812,10 @@ python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-mako, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, python3-pycairo, python3-pygobject3
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
-python3-pytest-mock                     python3-requests
+python3-pytest-mock                     python3-requests, python3-meson
 python3-pytest-timeout                  python3-urllib3
 python3-pyyaml                          llvm
 python3-quart                           python3-urllib3
