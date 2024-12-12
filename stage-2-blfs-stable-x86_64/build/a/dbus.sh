@@ -9,22 +9,15 @@ PRGNAME="dbus"
 
 # Required:    no
 # Recommended: xorg-libraries
-#              elogind
-#              ---
-#              Note:
-#              Эти две зависимости кольцевые, т.е. сначала собираем без них,
-#              затем пересобираем dbus после установки elogind, и затем
-#              после установки xorg-libraries
-#              ---
-# Optional:    *** для тестов ***
-#              python-d-bus
+# Optional:    --- для тестов ---
+#              python3-dbus
 #              python3-pygobject3
 #              valgrind
-#              *** для документации ***
+#              --- для документации ---
 #              doxygen
-#              xmlto             (для сборки man-страниц)
-#              python3-ducktype  (https://pypi.org/project/mallard-ducktype/)
-#              yelp-tools        (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
+#              xmlto                (для сборки man-страниц)
+#              python3-ducktype     (https://pypi.org/project/mallard-ducktype/)
+#              yelp-tools           (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,30 +27,18 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-DOXYGEN="--disable-doxygen-docs"
-XMLTO="--disable-xml-docs"
-DUCKTYPE="--disable-ducktype-docs"
-
-# command -v doxygen  &>/dev/null && DOXYGEN="--enable-doxygen-docs"
-command -v xmlto    &>/dev/null && XMLTO="--enable-xml-docs"
-# command -v ducktype &>/dev/null && DUCKTYPE="--enable-ducktype-docs"
-
 DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 ./configure                              \
     --prefix=/usr                        \
     --sysconfdir=/etc                    \
     --localstatedir=/var                 \
     --runstatedir=/run                   \
-    --enable-user-session                \
+    --disable-doxygen-docs               \
+    --disable-xml-docs                   \
     --disable-static                     \
     --with-systemduserunitdir=no         \
     --with-systemdsystemunitdir=no       \
-    --with-system-pid-file=/run/dbus/pid \
     --docdir="${DOC_DIR}"                \
-    "${DOXYGEN}"                         \
-    "${XMLTO}"                           \
-    "${DUCKTYPE}"                        \
-    --disable-tests                      \
     --with-system-socket=/run/dbus/system_bus_socket || exit 1
 
 make || exit 1
@@ -65,37 +46,19 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/var/run"
 
+# создадим ссылку в /etc/
+#    machine-id -> /var/lib/dbus/machine-id
+(
+    cd "${TMP_DIR}/etc" || exit 1
+    ln -svf ../var/lib/dbus/machine-id machine-id
+)
+
 # почистим документацию:
 find "${TMP_DIR}${DOC_DIR}" -type f -a \( \
     -name '*.html' -o \
     -name '*.png'  -o \
     -name "*.svg"  -o \
     -name "*.py" \) -delete
-
-# если установлен elogind создадим ссылку в /etc/
-#    machine-id -> /var/lib/dbus/machine-id
-if command -v busctl &>/dev/null; then
-    (
-        cd "${TMP_DIR}/etc" || exit 1
-        ln -svf ../var/lib/dbus/machine-id machine-id
-    )
-fi
-
-###
-# Тесты
-###
-# тесты dbus не могут быть запущены до тех пор, пока не будут установлены
-# пакеты python-d-bus и python3-pygobject3, а так же должны запускаться от
-# непривилегированного пользователя:
-# make distclean &&
-# PYTHON=python3 ./configure  \
-#     --enable-tests          \
-#     --enable-asserts        \
-#     --disable-doxygen-docs  \
-#     --disable-ducktype-docs \
-#     --disable-xml-docs || exit 1
-# make || exit 1
-# make check
 
 ###
 # Конфигурация D-Bus
@@ -170,16 +133,18 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 config_file_processing "${SESSION_LOCAL_CONF}"
 
-# если установка первоначально производится во временный каталог (DESTDIR), то
-# нужно исправить владельца и разрешения для dbus-daemon-launch-helper
+# если сначала устанавливали во временный каталог (DESTDIR), то нужно исправить
+# владельца и разрешения для dbus-daemon-launch-helper
 HELPER="/usr/libexec/dbus-daemon-launch-helper"
 chown -v root:messagebus "${HELPER}"
 chmod -v 4750            "${HELPER}"
 
+# сгенерируем UUID D-Bus
+dbus-uuidgen --ensure
+cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
+
 # остановим D-Bus сервис (если запущен), и запустим заново
 /etc/rc.d/init.d/dbus restart
-
-cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (D-Bus message bus system)

@@ -9,15 +9,16 @@ PRGNAME="elogind"
 # информацию демон предоставляет через стандартный org.freedesktop.login1 D-Bus
 # интерфейс.
 
-# Required:    dbus
-# Recommended: linux-pam
+# Required:    no
+# Recommended: dbus
+#              linux-pam
 #              polkit
 #              --- для сборки man-страниц ---
 #              docbook-xml
 #              docbook-xsl
 #              libxslt
 # Optional:    --- для тестов ---
-#              lxml
+#              python3-lxml
 #              zsh
 #              valgrind
 #              audit-userspace (https://github.com/linux-audit/audit-userspace)

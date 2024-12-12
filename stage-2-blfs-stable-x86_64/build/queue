@@ -179,11 +179,23 @@ l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
 x/misc/fontconfig.sh
-X/libs/xorg-libraries.sh
+x/libs/xorg-libraries.sh
+a/dbus.sh
+# l/dbus-glib.sh
+#=== python3-dbus ========
+# d/patchelf.sh
+# d/python-modules/python3-pyproject-metadata.sh
+# d/python-modules/python3-meson.sh
+# d/python-modules/python3-dbus.sh
+# ========================
+# a/acpid.sh
+# d/python-modules/python3-lxml.sh
+# a/elogind.sh
+# d/duktape.sh
+# l/polkit.sh
 
 # ==============================================================================
 # a/time.sh
-# d/python-modules/python3-lxml.sh
 # a/tree.sh
 # a/dosfstools.sh
 # a/hdparm.sh
@@ -191,22 +203,15 @@ X/libs/xorg-libraries.sh
 # a/ntfs-3g.sh
 # a/sharutils.sh
 # a/cpio.sh
-# a/acpid.sh
 # s/sgml-common.sh
 # s/docbook-xml.sh
 # s/docbook-xsl.sh
-# a/elogind.sh
 # l/aspell.sh
 # l/aspell-dict-en.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 # l/libatasmart.sh
 # l/libyaml.sh
-#=== python3-dbus ========
-# d/patchelf.sh
-# d/python-modules/python3-pyproject-metadata.sh
-# d/python-modules/python3-meson.sh
-# d/python-modules/python3-dbus.sh
 # === bumblebee-status ===
 # d/python-modules/python3-psutil.sh
 # === mesa ===============
@@ -240,7 +245,6 @@ X/libs/xorg-libraries.sh
 # n/iptables.sh
 # l/enchant.sh
 # l/gconf.sh
-# l/dbus-glib.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
 # d/swig.sh
@@ -251,7 +255,6 @@ X/libs/xorg-libraries.sh
 
 # ==============================================================================
 
-# a/dbus.sh
 # # BLFS Perl модули
 # d/perl-modules/perl-test-warnings.sh
 # d/perl-modules/perl-module-build.sh
@@ -540,8 +543,6 @@ X/libs/xorg-libraries.sh
 # x/fonts/vlgothic-fonts-ttf.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
-# d/duktape.sh
-# l/polkit.sh
 # x/xserver/xorg-server.sh
 # x/misc/mtdev.sh
 # x/libs/libevdev.sh

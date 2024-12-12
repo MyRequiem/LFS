@@ -134,7 +134,7 @@ ed
 efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
-elogind                                 dbus, pulseaudio, polkit, xorg-server, udisks
+elogind                                 pulseaudio, polkit, xorg-server, udisks
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
 empress                                 php
@@ -770,9 +770,8 @@ python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-li
 python3-build                           python3-setuptools-scm
 python3-charset-normalizer              python3-requests
 python3-cython                          yasm, nghttp2
-python3-d-bus                           dbus
 python3-dateutil                        python3-urllib3
-python3-dbus                            libsecret, ibus, udisks
+python3-dbus                            dbus, libsecret, ibus, udisks
 python3-dbusmock                        polkit, upower
 python3-docutils                        glib, sshfs, gdk-pixbuf, librsvg, libdrm, alsa-utils, gtk4
 python3-ducktype                        dbus

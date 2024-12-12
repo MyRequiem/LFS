@@ -63,7 +63,7 @@ command -v fsadm &>/dev/null && LVM2="--enable-lvm2"
 make || exit 1
 
 # Перед запуском тестов должны быть установлены опциональные пакеты
-# python-d-bus и python3-pygobject3, а также должны существовать каталоги:
+# python3-dbus и python3-pygobject3, а также должны существовать каталоги:
 #    /var/run/udisks2
 #    /var/lib/udisks2
 #
