@@ -188,9 +188,10 @@ d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
-# a/acpid.sh
-# d/python-modules/python3-lxml.sh
-# a/elogind.sh
+a/pm-utils.sh
+a/acpid.sh
+d/python-modules/python3-lxml.sh
+a/elogind.sh
 # d/duktape.sh
 # l/polkit.sh
 

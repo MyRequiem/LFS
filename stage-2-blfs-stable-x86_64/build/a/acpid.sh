@@ -40,7 +40,7 @@ cp -vr samples "${TMP_DIR}${DOCS}"
 
 ### Конфигурация
 # будем кидать машину в suspend при закрытии крышки ноутбука
-# (требуется пакет elogind)
+# (требуется утилита pm-suspend - пакет pm-utils)
 cat << EOF > "${TMP_DIR}${EVENTS}/lid"
 # suspend the system when the laptop lid is closed
 event=button/lid
@@ -54,13 +54,13 @@ cat << EOF > "${TMP_DIR}/etc/acpi/suspend.sh"
 # suspend the system when the laptop lid is closed
 ###
 
-# 'elogind' package required
-! command -v loginctl &>/dev/null && exit 0
+# 'pm-utils' package required
+! command -v pm-suspend &>/dev/null && exit 0
 
 # laptop lid state (open/close)
 # cat /proc/acpi/button/lid/*/state
 /bin/grep -q open /proc/acpi/button/lid/*/state && exit 0
-loginctl suspend
+/usr/sbin/pm-suspend
 EOF
 
 chmod 755 "${TMP_DIR}/etc/acpi/suspend.sh"
