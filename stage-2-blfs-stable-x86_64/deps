@@ -486,7 +486,7 @@ ltc-tools                               gst-plugins-bad
 lua                                     highlight, nmap, gtk-engines, vim
 luajit                                  gegl
 lvm2                                    parted, cryptsetup, udisks
-lxsession                               polkit
+lxqt-policykit                          polkit
 lynx                                    smartmontools, xmlto, docbook-utils, xorg-libraries, xdg-utils
 lzip                                    ed
 lzo                                     libarchive, cairo

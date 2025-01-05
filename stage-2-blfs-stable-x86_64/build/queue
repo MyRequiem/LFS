@@ -192,8 +192,8 @@ a/pm-utils.sh
 a/acpid.sh
 d/python-modules/python3-lxml.sh
 a/elogind.sh
-# d/duktape.sh
-# l/polkit.sh
+d/duktape.sh
+l/polkit.sh
 
 # ==============================================================================
 # a/time.sh
