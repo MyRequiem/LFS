@@ -213,11 +213,6 @@ l/polkit.sh
 # l/fftw.sh
 # l/libatasmart.sh
 # l/libyaml.sh
-# === bumblebee-status ===
-# d/python-modules/python3-psutil.sh
-# === mesa ===============
-# d/python-modules/python3-mako.sh
-# ========================
 # s/xmlto.sh
 # l/unixodbc.sh
 # l/c-ares.sh
@@ -308,7 +303,10 @@ l/polkit.sh
 # l/libunwind.sh
 # x/libs/libvdpau.sh
 # x/libs/libva.sh
+# === mesa ===============
+# d/python-modules/python3-mako.sh
 # x/misc/mesa.sh
+# ========================
 # l/cairo.sh
 # x/libs/libvdpau.sh
 # x/libs/libva.sh
@@ -379,22 +377,13 @@ l/polkit.sh
 # x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh
 # x/fonts/xorg-fonts.sh
-# x/fonts/caladea-font-ttf.sh
-# x/fonts/cantarell-font-otf.sh
-# x/fonts/carlito-font-ttf.sh
 # x/fonts/dejavu-fonts-ttf.sh
 # x/fonts/freefont.sh
-# x/fonts/gelasio-font-ttf.sh
 # x/fonts/liberation-fonts-ttf.sh
 # x/fonts/noto-fonts-ttf.sh
-# x/fonts/noto-cjk-fonts-ttf.sh
 # x/fonts/noto-color-emoji-ttf.sh
 # x/fonts/adobe-source-code-pro-font-otf.sh
 # x/fonts/opendesktop-fonts-ttf.sh
-# x/fonts/wqy-zenhei-font-ttf.sh
-# x/fonts/ipaex-fonts-ttf.sh
-# x/fonts/kochi-substitute-fonts-ttf.sh
-# x/fonts/vlgothic-fonts-ttf.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
 # x/xserver/xorg-server.sh
@@ -514,7 +503,10 @@ l/polkit.sh
 # l/libev.sh
 # x/apps/i3.sh
 # s/hddtemp.sh
+# === bumblebee-status ===
+# d/python-modules/python3-psutil.sh
 # x/apps/bumblebee-status.sh
+# ========================
 # l/libadwaita.sh
 # ap/zenity.sh
 # ap/mirage.sh

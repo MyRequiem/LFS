@@ -66,9 +66,7 @@ c2man                                   fribidi
 cairo                                   glib, harfbuzz, ghostscript, python3-pycairo, cairomm, pango, librsvg, libdrm, gtk-engines, gjs, poppler, gegl, gst-plugins-good, i3
 cairo-5c                                xorg-applications
 cairomm                                 pangomm
-caladea-font-ttf
 cantarell-font-otf                      pango
-carlito-font-ttf
 caudium                                 php
 cdb                                     php
 cdparanoia-III                          gst-plugins-base
@@ -163,7 +161,7 @@ flif                                    imagemagick
 flite                                   ffmpeg, qt5, gst-plugins-bad
 fltk                                    pinentry, alsa-tools
 fluidsynth                              gst-plugins-bad
-fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, libass, ffmpeg, poppler
+fontconfig                              xorg-libraries, ghostscript, cairo, pango, xorg-fonts, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, libass, ffmpeg, poppler
 fop                                     libsigc++2, libsigc++3, xmlto, xorgproto, libxdmcp, xorg-libraries, xorg-server, postgresql
 freefont
 freeglut                                libtiff, libwebp, jasper
@@ -187,7 +185,6 @@ gdb                                     openssh, glib, gcc, guile, rustc, python
 gdk-pixbuf                              w3m, gdk-pixbuf-xlib, librsvg, gtk+2, gtk+3, libgsf, rxvt-unicode, poppler, gegl, gst-plugins-good, gtk4
 gdk-pixbuf-xlib                         w3m
 gegl                                    gimp
-gelasio-font-ttf
 geoexpress                              imagemagick
 gexiv2                                  gegl, gimp, mirage
 ggi
@@ -274,7 +271,6 @@ inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, imagemagick
 intel-gpu-tools                         libva
 inxi
-ipaex-fonts-ttf
 iptables
 isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus, gimp, gst-plugins-base, gtk4
@@ -296,7 +292,6 @@ kde-frameworks                          pinentry
 kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5
-kochi-substitute-fonts-ttf
 krb4                                    cyrus-sasl
 kwayland                                pinentry
 kytea                                   mariadb
@@ -535,7 +530,6 @@ nickle                                  xorg-applications
 nmap                                    lsof
 nodejs                                  transmission
 notification-daemon                     libnotify
-noto-cjk-fonts-ttf
 noto-color-emoji-ttf
 noto-fonts-ttf
 npm                                     nodejs
@@ -787,7 +781,6 @@ vdo                                     lvm2
 vifm
 vim                                     fcron
 virtuoso                                redland
-vlgothic-fonts-ttf
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
 vo-amrwb                                gst-plugins-bad
@@ -815,7 +808,6 @@ wireless-tools                          pm-utils
 wpa-supplicant
 wpe-webkit                              gst-plugins-bad
 wpebackend-fdo                          gst-plugins-bad
-wqy-zenhei-font-ttf
 wxwidgets                               p7zip
 x264                                    ffmpeg, gst-plugins-ugly
 x265                                    imlib2, ffmpeg, gst-plugins-bad
@@ -830,7 +822,7 @@ xcb-util-renderutil                     xcb-util-cursor, xorg-server, qt5
 xcb-util-wm                             xorg-server, qt5, i3
 xcb-util-xrm                            i3
 xclip                                   password-store
-xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf, wqy-zenhei-font-ttf
+xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf
 xdg-user-dirs
 xdg-utils                               cups, gimp, imagemagick
 xerces2-java                            docbook-xsl
@@ -841,7 +833,7 @@ xkeyboard-config                        libxkbcommon, xorg-server
 xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, pm-utils, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
 xorg-amdgpu-driver
-xorg-applications                       xcursor-themes, xorg-fonts, caladea-font-ttf, cantarell-font-otf, carlito-font-ttf, dejavu-fonts-ttf, freefont, gelasio-font-ttf, liberation-fonts-ttf, noto-fonts-ttf, noto-cjk-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, wqy-zenhei-font-ttf, ipaex-fonts-ttf, kochi-substitute-fonts-ttf, vlgothic-fonts-ttf, xterm, xdg-utils
+xorg-applications                       xcursor-themes, xorg-fonts, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils
 xorg-ati-driver
 xorg-cf-files                           imake
 xorg-evdev-driver
@@ -876,7 +868,6 @@ zxing                                   gst-plugins-bad
 
 # ==============================================================================
 # bviplus
-# cantarell-fonts
 # cmus
 # cppcheck
 # deb2tgz
