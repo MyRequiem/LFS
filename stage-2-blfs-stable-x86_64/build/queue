@@ -195,8 +195,8 @@ a/elogind.sh
 d/duktape.sh
 l/polkit.sh
 l/libyaml.sh
-# ap/tk.sh
-# d/ruby.sh
+ap/tk.sh
+d/ruby.sh
 
 # ==============================================================================
 # a/time.sh

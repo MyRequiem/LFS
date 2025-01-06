@@ -195,6 +195,8 @@ https://github.com/elogind/elogind/archive/v255.5/elogind-255.5.tar.gz
 https://duktape.org/duktape-2.7.0.tar.xz
 https://github.com/polkit-org/polkit/archive/125/polkit-125.tar.gz
 https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+https://downloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
+https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.4.tar.xz
 
 
 ================================================================================
@@ -408,7 +410,6 @@ https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Types-Serialiser-1.01.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.03.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.17.tar.gz
-https://downloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
@@ -625,7 +626,6 @@ https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.31.ta
 https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
-https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.1.tar.xz
 https://github.com/google/snappy/archive/1.1.10/snappy-1.1.10.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.10-gtest.patch
 https://downloads.mariadb.org/interstitial/mariadb-10.6.12/source/mariadb-10.6.12.tar.gz
