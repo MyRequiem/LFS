@@ -194,6 +194,9 @@ d/python-modules/python3-lxml.sh
 a/elogind.sh
 d/duktape.sh
 l/polkit.sh
+l/libyaml.sh
+# ap/tk.sh
+# d/ruby.sh
 
 # ==============================================================================
 # a/time.sh
@@ -212,7 +215,6 @@ l/polkit.sh
 # l/aspell-dict-ru.sh
 # l/fftw.sh
 # l/libatasmart.sh
-# l/libyaml.sh
 # s/xmlto.sh
 # l/unixodbc.sh
 # l/c-ares.sh
@@ -258,7 +260,6 @@ l/polkit.sh
 # d/perl-modules/perl-json-xs.sh
 # d/perl-modules/perl-anyevent.sh
 # d/perl-modules/perl-anyevent-i3.sh
-# ap/tk.sh
 # n/nmap.sh
 # d/python3.sh
 # l/gsettings-desktop-schemas.sh
@@ -413,7 +414,6 @@ l/polkit.sh
 # ap/rxvt-unicode.sh
 # ap/potrace.sh
 # ap/postgresql.sh
-# d/ruby.sh
 # d/snappy.sh
 # ap/mariadb.sh
 # n/cyrus-sasl.sh
