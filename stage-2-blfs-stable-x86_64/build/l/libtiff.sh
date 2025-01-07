@@ -26,9 +26,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p libtiff-build
 cd libtiff-build || exit 1
 
-cmake                                                             \
-    -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    -DCMAKE_INSTALL_PREFIX=/usr                                   \
+cmake                                                              \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    -D CMAKE_INSTALL_PREFIX=/usr                                   \
     -G Ninja .. || exit 1
 
 ninja || exit 1
@@ -47,8 +47,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # reading and writing TIFF files), and a collection of tools for working with
 # TIFF images.
 #
-# Home page: http://simplesystems.org/${PRGNAME}/
-# Download:  http://download.osgeo.org/${PRGNAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.gitlab.io/${PRGNAME}/
+# Download:  https://download.osgeo.org/${PRGNAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

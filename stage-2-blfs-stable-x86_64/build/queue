@@ -202,7 +202,7 @@ l/at-spi2-core.sh
 l/shared-mime-info.sh
 x/libs/pixman.sh
 l/cairo.sh
-# l/libtiff.sh
+l/libtiff.sh
 # l/gdk-pixbuf.sh
 # l/pango.sh
 # d/vala.sh
@@ -215,6 +215,9 @@ l/cairo.sh
 # x/libs/wayland-protocols.sh
 # x/misc/mesa.sh
 # l/cairo.sh
+# x/misc/glu.sh
+# x/misc/freeglut.sh
+# l/libtiff.sh
 # l/harfbuzz.sh
 # x/libs/libva.sh
 # x/libs/libvdpau.sh
@@ -336,10 +339,8 @@ l/cairo.sh
 # l/libunwind.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
-# x/misc/glu.sh
 # s/desktop-file-utils.sh
 # l/fltk.sh
-# x/misc/freeglut.sh
 # x/libs/glew.sh
 # l/libgsf.sh
 # l/goffice.sh

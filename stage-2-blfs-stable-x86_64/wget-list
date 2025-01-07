@@ -202,6 +202,7 @@ https://download.gnome.org/sources/at-spi2-core/2.52/at-spi2-core-2.52.0.tar.xz
 https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz
 https://www.cairographics.org/releases/pixman-0.43.4.tar.gz
 https://www.cairographics.org/releases/cairo-1.18.0.tar.xz
+https://download.osgeo.org/libtiff/tiff-4.6.0.tar.gz
 
 
 ================================================================================
@@ -419,7 +420,6 @@ https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
-https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz
 https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
