@@ -207,6 +207,7 @@ https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.12.tar.xz
 https://download.gnome.org/sources/pango/1.54/pango-1.54.0.tar.xz
 https://ftp.gnu.org/gnu/help2man/help2man-1.49.3.tar.xz
 https://download.gnome.org/sources/vala/0.56/vala-0.56.17.tar.xz
+https://download.gnome.org/sources/librsvg/2.58/librsvg-2.58.3.tar.xz
 
 
 ================================================================================
@@ -441,7 +442,6 @@ https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
-https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.21.0/downloads/wayland-1.21.0.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.31/downloads/wayland-protocols-1.31.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz

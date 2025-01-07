@@ -196,7 +196,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibavif                                gdk-pixbuf
 glibmm                                  pangomm, atkmm
