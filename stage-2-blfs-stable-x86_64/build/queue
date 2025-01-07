@@ -204,7 +204,8 @@ x/libs/pixman.sh
 l/cairo.sh
 l/libtiff.sh
 l/gdk-pixbuf.sh
-# l/pango.sh
+d/help2man.sh
+l/pango.sh
 # d/vala.sh
 # l/librsvg.sh
 # x/libs/libdrm.sh
@@ -325,7 +326,6 @@ l/gdk-pixbuf.sh
 # d/python-modules/python3-pycairo.sh
 # l/cairomm.sh
 # d/python-modules/python3-pyatspi2.sh
-# d/help2man.sh
 # l/glib-networking.sh
 # l/glibmm.sh
 # l/pangomm.sh

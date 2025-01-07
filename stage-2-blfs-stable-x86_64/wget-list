@@ -204,6 +204,8 @@ https://www.cairographics.org/releases/pixman-0.43.4.tar.gz
 https://www.cairographics.org/releases/cairo-1.18.0.tar.xz
 https://download.osgeo.org/libtiff/tiff-4.6.0.tar.gz
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.12.tar.xz
+https://download.gnome.org/sources/pango/1.54/pango-1.54.0.tar.xz
+https://ftp.gnu.org/gnu/help2man/help2man-1.49.3.tar.xz
 
 
 ================================================================================
@@ -432,8 +434,6 @@ https://www.cairographics.org/releases/cairomm-1.14.0.tar.xz
 https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
 https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
-https://ftp.gnu.org/gnu/help2man/help2man-1.49.3.tar.xz
-https://download.gnome.org/sources/pango/1.50/pango-1.50.12.tar.xz
 https://download.gnome.org/sources/glib-networking/2.74/glib-networking-2.74.0.tar.xz
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
 https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz

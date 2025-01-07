@@ -8,16 +8,16 @@ PRGNAME="pango"
 # работает во многих операционных системах и является основой обработки текста
 # и шрифтов в GTK+2
 
-# Required:    fontconfig (должен быть собран с freetype и harfbuzz)
+# Required:    fontconfig            (должен быть собран с freetype и harfbuzz)
 #              fribidi
 #              glib
-# Recommended: cairo
+# Recommended: cairo                 (собранный после harfbuzz)
 #              xorg-libraries
 # Optional:    cantarell-font-otf    (для тестов)
-#              sysprof
 #              python3-gi-docgen     (для генерации документации)
 #              help2man              (https://www.gnu.org/software/help2man/) для генерации man-страниц
 #              libthai               (https://linux.thai.net/projects/libthai)
+#              sysprof
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,17 +29,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-GTK_DOC="false"
-# command -v gi-docgen &>/dev/null && GTK_DOC="true"
-
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе
 #    --wrap-mode=nofallback
-meson                      \
+meson setup                \
     --prefix=/usr          \
     --buildtype=release    \
     --wrap-mode=nofallback \
-    -Dgtk_doc="${GTK_DOC}" \
     .. || exit 1
 
 ninja || exit 1
@@ -59,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # however, most of the work on Pango was done using the GTK+ widget toolkit as
 # a test platform. Pango forms the core of text and font handling for GTK+-2.
 #
-# Home page: https://pango.gnome.org/
+# Home page: https://www.gtk.org/docs/architecture/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
