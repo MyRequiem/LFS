@@ -27,9 +27,6 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALGRIND="disabled"
-# command -v valgrind &>/dev/null && VALGRIND="enabled"
-
 mkdir build
 cd build || exit 1
 
@@ -40,8 +37,9 @@ cd build || exit 1
 meson setup                 \
     --prefix=${XORG_PREFIX} \
     --buildtype=release     \
-    -Dudev=true             \
-    -Dvalgrind="${VALGRIND}" || exit 1
+    -D udev=true            \
+    -D valgrind=disabled    \
+    .. || exit 1
 
 ninja || exit 1
 # ninja test

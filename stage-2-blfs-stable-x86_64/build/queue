@@ -208,8 +208,8 @@ d/help2man.sh
 l/pango.sh
 d/vala.sh
 l/librsvg.sh
-# x/libs/libdrm.sh
-# d/python-modules/python3-mako.sh
+x/libs/libdrm.sh
+d/python-modules/python3-mako.sh
 # x/libs/libva.sh
 # x/libs/libvdpau.sh
 # x/libs/wayland.sh
