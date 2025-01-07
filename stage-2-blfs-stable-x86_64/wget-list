@@ -198,6 +198,7 @@ https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
 https://downloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
 https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.4.tar.xz
 https://download.gnome.org/sources/gsettings-desktop-schemas/46/gsettings-desktop-schemas-46.1.tar.xz
+https://download.gnome.org/sources/at-spi2-core/2.52/at-spi2-core-2.52.0.tar.xz
 
 
 ================================================================================
@@ -415,7 +416,6 @@ https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
-https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
 https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 https://github.com/mm2/Little-CMS/releases/download/lcms2.14/lcms2-2.14.tar.gz
 https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz

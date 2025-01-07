@@ -198,7 +198,7 @@ l/libyaml.sh
 ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
-# l/at-spi2-core.sh
+l/at-spi2-core.sh
 # l/shared-mime-info.sh
 # x/libs/pixman.sh
 # l/cairo.sh
