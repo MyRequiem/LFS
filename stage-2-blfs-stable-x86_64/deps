@@ -77,7 +77,6 @@ clipnotify                              clipmenu
 clisp                                   gpgme
 cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5
 cmocka                                  gnutls, mit-kerberos-v5
-cogl                                    cairo
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
 cpio                                    openjdk
@@ -104,7 +103,7 @@ device-tree-compiler
 dhcpcd
 dht                                     transmission
 dialog                                  alsa-utils
-directfb                                cairo, sdl2, links
+directfb                                sdl2, links
 djbfft                                  liba52
 djvulibre                               imagemagick
 dmalloc                                 cyrus-sasl, lame, imagemagick, php
@@ -673,8 +672,7 @@ python3-werkzeug                        python3-requests
 python3-xmlschema
 pytrash
 qdbm                                    php
-qt4                                     cairo
-qt5                                     cairo, poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
+qt5                                     poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
 qt5-components                          pinentry, wpa-supplicant, gpgme
 qt6                                     highlight, cmake, poppler
 quiche                                  curl

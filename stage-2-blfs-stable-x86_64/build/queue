@@ -199,9 +199,9 @@ ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
-# l/shared-mime-info.sh
-# x/libs/pixman.sh
-# l/cairo.sh
+l/shared-mime-info.sh
+x/libs/pixman.sh
+l/cairo.sh
 # l/libtiff.sh
 # l/gdk-pixbuf.sh
 # l/pango.sh
@@ -214,6 +214,8 @@ l/at-spi2-core.sh
 # x/libs/wayland.sh
 # x/libs/wayland-protocols.sh
 # x/misc/mesa.sh
+# l/cairo.sh
+# l/harfbuzz.sh
 # x/libs/libva.sh
 # x/libs/libvdpau.sh
 # x/drivers/libvdpau-va-gl.sh
@@ -316,7 +318,6 @@ l/at-spi2-core.sh
 # l/lcms2.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
-# l/harfbuzz.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pycairo.sh
 # l/cairomm.sh

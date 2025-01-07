@@ -199,6 +199,9 @@ https://downloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
 https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.4.tar.xz
 https://download.gnome.org/sources/gsettings-desktop-schemas/46/gsettings-desktop-schemas-46.1.tar.xz
 https://download.gnome.org/sources/at-spi2-core/2.52/at-spi2-core-2.52.0.tar.xz
+https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz
+https://www.cairographics.org/releases/pixman-0.43.4.tar.gz
+https://www.cairographics.org/releases/cairo-1.18.0.tar.xz
 
 
 ================================================================================
@@ -422,8 +425,6 @@ https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
 https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
-https://www.cairographics.org/releases/pixman-0.42.2.tar.gz
-https://download.gnome.org/sources/cairo/1.17/cairo-1.17.6.tar.xz
 https://github.com/pygobject/pycairo/releases/download/v1.18.2/pycairo-1.18.2.tar.gz
 https://github.com/pygobject/pycairo/releases/download/v1.23.0/pycairo-1.23.0.tar.gz
 https://www.cairographics.org/releases/cairomm-1.14.0.tar.xz
@@ -437,7 +438,6 @@ https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
 https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
-https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.2/shared-mime-info-2.2.tar.gz
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 https://download.gnome.org/sources/vala/0.56/vala-0.56.4.tar.xz

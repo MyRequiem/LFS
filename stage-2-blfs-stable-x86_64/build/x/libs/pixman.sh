@@ -9,8 +9,9 @@ PRGNAME="pixman"
 
 # Required:    no
 # Recommended: no
-# Optional:    gtk+2
-#              libpng (для тестов и демо)
+# Optional:    --- для тестов и демо ---
+#              libpng
+#              gtk+2  (https://download.gnome.org/sources/gtk+/2.24/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
+meson setup       \
     --prefix=/usr \
     --buildtype=release || exit 1
 
@@ -41,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # manipulation features such as image compositing and trapezoid rasterization.
 # It's used by both xorg and cairo.
 #
-# Home page: http://www.pixman.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://www.cairographics.org/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
