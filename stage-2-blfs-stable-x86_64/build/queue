@@ -203,7 +203,7 @@ l/shared-mime-info.sh
 x/libs/pixman.sh
 l/cairo.sh
 l/libtiff.sh
-# l/gdk-pixbuf.sh
+l/gdk-pixbuf.sh
 # l/pango.sh
 # d/vala.sh
 # l/librsvg.sh

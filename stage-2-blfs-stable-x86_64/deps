@@ -198,6 +198,7 @@ glade                                   libhandy
 glew
 glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, glib-networking, glibmm. shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
+glibavif                                gdk-pixbuf
 glibmm                                  pangomm, atkmm
 glm                                     slop
 glslang                                 mesa
@@ -370,7 +371,7 @@ libinput                                xorg-libinput-driver, qt5
 libiodbc                                redland, php
 libiscsi                                udisks
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, links, poppler, jasper, gegl, gimp, djvulibre, libgxps, imagemagick, feh, gst-plugins-base, qt5, php, openjdk
-libjxl                                  imagemagick
+libjxl                                  gdk-pixbuf, imagemagick
 libkate                                 gst-plugins-bad
 libksba                                 gnupg
 liblinear                               nmap
@@ -796,6 +797,7 @@ wayland-protocols                       mesa, libxkbcommon, gtk+3, sdl2, gst-plu
 wddx                                    php
 weasyprint                              vala
 webkit2gtk                              zenity
+webp-pixbuf-loader                      gdk-pixbuf
 webrtc-audio-processing                 pulseaudio
 wget                                    smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
 which                                   openssh, lm-sensors, boost, aspell, lvm2, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk

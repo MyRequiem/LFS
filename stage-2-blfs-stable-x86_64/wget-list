@@ -203,6 +203,7 @@ https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-in
 https://www.cairographics.org/releases/pixman-0.43.4.tar.gz
 https://www.cairographics.org/releases/cairo-1.18.0.tar.xz
 https://download.osgeo.org/libtiff/tiff-4.6.0.tar.gz
+https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.12.tar.xz
 
 
 ================================================================================
@@ -438,7 +439,6 @@ https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
 https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
-https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.10.tar.xz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 https://download.gnome.org/sources/vala/0.56/vala-0.56.4.tar.xz
 https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
