@@ -21,16 +21,12 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
+meson setup       \
     --prefix=/usr \
-    -Dtests=false \
     --buildtype=release || exit 1
 
 ninja || exit 1
-
-# для тестов устанавливаем параметр конфигурации -Dtests=true
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

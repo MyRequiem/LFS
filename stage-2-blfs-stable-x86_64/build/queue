@@ -211,9 +211,9 @@ l/librsvg.sh
 x/libs/libdrm.sh
 d/python-modules/python3-mako.sh
 x/libs/libva.sh
-# x/libs/libvdpau.sh
-# x/libs/wayland.sh
-# x/libs/wayland-protocols.sh
+x/libs/libvdpau.sh
+x/libs/wayland.sh
+x/libs/wayland-protocols.sh
 # x/misc/mesa.sh
 # l/cairo.sh
 # x/misc/glu.sh
