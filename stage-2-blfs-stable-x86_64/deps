@@ -68,6 +68,7 @@ cairo-5c                                xorg-applications
 cairomm                                 pangomm
 cantarell-font-otf                      pango
 caudium                                 php
+cbindgen                                mesa
 cdb                                     php
 cdparanoia-III                          gst-plugins-base
 chromaprint                             gst-plugins-bad
@@ -329,6 +330,7 @@ libcap-ng                               gnome-keyring
 libcddb                                 libcdio
 libcdio                                 ffmpeg, gst-plugins-ugly
 libcelt                                 ffmpeg
+libclc                                  mesa
 libcloudproviders                       gtk4
 libdazzle
 libdc1394                               ffmpeg
@@ -448,7 +450,6 @@ libvdpau-va-gl                          libvdpau
 libvisual                               gst-plugins-base
 libvorbis                               libsndfile, libcanberra, ffmpeg, gst-plugins-base
 libvpx                                  ffmpeg, gst-plugins-good
-libvulkan                               mesa
 libwacom                                libinput
 libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, qt5, gst-plugins-bad, php
 libwmf                                  gimp, imagemagick
@@ -588,6 +589,7 @@ picogui
 pigz                                    openjdk
 pinentry                                gnupg
 pixman                                  cairo, xorg-server
+ply                                     mesa
 pm-utils
 pngcrush                                gimp
 pngnq                                   gimp
@@ -693,6 +695,7 @@ rrdtool                                 lm-sensors
 rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad
 ruby                                    docbook-xsl, mariadb, vim, mc, gegl
+rust-bindgen                            mesa
 rustc                                   librsvg, ruby
 rxvt-unicode
 samba                                   curl, mc, ffmpeg, libsoup, libsoup3
@@ -789,6 +792,7 @@ volume-key                              libblockdev
 vte2
 vte3
 vulkan                                  qt5, gst-plugins-bad, gtk4
+vulkan-loader                           mesa
 w3m                                     xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
 wasm-micro-runtime                      harfbuzz
 wavpack                                 gst-plugins-good

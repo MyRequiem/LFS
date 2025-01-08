@@ -214,7 +214,7 @@ x/libs/libva.sh
 x/libs/libvdpau.sh
 x/libs/wayland.sh
 x/libs/wayland-protocols.sh
-# x/misc/mesa.sh
+x/misc/mesa.sh
 # l/cairo.sh
 # x/misc/glu.sh
 # x/misc/freeglut.sh

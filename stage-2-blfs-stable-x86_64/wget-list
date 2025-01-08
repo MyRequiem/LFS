@@ -214,6 +214,8 @@ https://github.com/intel/libva/archive/2.22.0/libva-2.22.0.tar.gz
 https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2
 https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.23.0/downloads/wayland-1.23.0.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.36/downloads/wayland-protocols-1.36.tar.xz
+https://mesa.freedesktop.org/archive/mesa-24.1.5.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.2/mesa-add_xdemos-2.patch
 
 
 ================================================================================
@@ -453,8 +455,6 @@ https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 https://download.savannah.nongnu.org/releases/libunwind/libunwind-1.6.2.tar.gz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
-https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/11.3/mesa-22.3.5-add_xdemos-1.patch
 https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.38.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz

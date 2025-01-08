@@ -9,7 +9,8 @@ PRGNAME="mesa"
 # Required:    xorg-libraries
 #              libdrm
 #              python3-mako
-# Recommended: libva (для поддержки gallium drivers) Циклическая зависимость.
+# Recommended: glslang (для поддержки vulkan)
+#              libva (для поддержки gallium drivers) Циклическая зависимость.
 #                     Сначала собираем libva без поддержки egl и glx, т.е. без
 #                     пакета mesa, и после установки mesa пересобираем libva
 #              libvdpau (для сборки vdpau драйвера) Циклическая зависимость.
@@ -20,6 +21,10 @@ PRGNAME="mesa"
 #                    а так же для swrast - программный растеризатор)
 #              wayland-protocols (для сборки plasma5, gnome, а так же
 #                                 рекомендуется для gtk+3)
+#              libclc                         (для intel iris gallium driver)
+#              vulkan-loader                  (для zink gallium driver)
+#              ply                            (для intel vulkan driver)
+#              cbindgen и rust-bindgen        (для nouveau vulkan driver)
 # Optional:    libgcrypt
 #              libunwind
 #              lm-sensors
@@ -30,9 +35,19 @@ PRGNAME="mesa"
 #                                 (glxinfo и glxgears), поэтому при его использовании в
 #                                 пакете mesa-demos нет необходимости
 #              bellagio-openmax (https://omxil.sourceforge.net/) для мобильных платформ
-#              glslang          (https://github.com/KhronosGroup/glslang) для драйвера vulkan
 #              libtizonia       (https://github.com/tizonia/tizonia-openmax-il/wiki/Tizonia-OpenMAX-IL/)
 #              libvulkan        (https://www.vulkan.org/)
+
+###
+# NOTE:
+#    Для сборки пакета нужен интернет, поэтому собираем в "живом" LFS (не в
+#    среде chroot на хосте)
+###
+
+# Конфигурация ядра
+#    DRM_NOUVEAU=y|m    - для nouveau (NVidia)
+#    DRM_I915=y|m       - для i915, crocus, or iris
+#    DRM_VGEM=y|m       - для swrast
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -43,42 +58,39 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # применим патч для включения сборки утилит 'glxinfo' и 'glxgears' (mesa-demos)
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-add_xdemos-1.patch" || exit 1
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-add_xdemos-2.patch" || exit 1
 
 mkdir build
 cd build || exit 1
 
-if [ -d /usr/share/wayland-protocols ]; then
-    PLATFORMS="x11,wayland"
-else
-    PLATFORMS="x11"
-fi
-
-VALGRIND="disabled"
-LIBUNWIND="disabled"
-# command -v valgrind &>/dev/null && VALGRIND="enabled"
-[ -x /usr/lib/libunwind.so ] && LIBUNWIND="enabled"
+# параметр определяет, какие Gallium3D драйверы следует создавать
+#    -D gallium-drivers=...
+#
+#    * auto         создаются все Gallium3D драйвера
+#    * r300         для ATI Radeon 9000 или Radeon X серии
+#    * r600         для AMD/ATI Radeon HD 2000-6000 сериий
+#    * radeonsi     для AMD Radeon HD 7000 или более новых AMD GPU моделей
+#    * nouveau      универсальный драйвер для NVidia Gpus
+#    * virgl        для QEMU virtual GPU с поддержкой virglrender
+#    * svga         для VMWare virtual GPU
+#    * swrast       используется как fallback если GPU не поддерживает другие драйвера
+#    * iris         для Intel, поставляемых с процессорами Broadwell или более новыми
+#    * crocus       для Intel GMA 3000, серии X3000, 4000 или серии X4000
+#    * i915         для Intel GMA 900, 950, 3100 или 3150, поставляемых с наборами микросхем или процессорами Atom D/N 4xx/5xx
+GALLIUM_DRV="nouveau,i915,virgl,swrast"
 
 # shellcheck disable=SC2086
-meson                                  \
-    --prefix=${XORG_PREFIX}            \
-    --buildtype=release                \
-    -Dplatforms="${PLATFORMS}"         \
-    -Dgallium-drivers=auto             \
-    -Dvulkan-drivers=""                \
-    -Dvalgrind="${VALGRIND}"           \
-    -Dlibunwind="${LIBUNWIND}"         \
-    -Dbuild-tests=false                \
-    .. || exit 1
+meson setup ..                          \
+    --prefix=${XORG_PREFIX}             \
+    --buildtype=release                 \
+    -D platforms=x11                    \
+    -D gallium-drivers="${GALLIUM_DRV}" \
+    -D vulkan-drivers=""                \
+    -D valgrind=disabled                \
+    -D libunwind=disabled || exit 1
 
 ninja || exit 1
-
-### тесты
-# для запуска тестов необходимо конфигурировать mesa с параметром
-#    -Dbuild-tests=true
-# ninja test
-
+# meson configure -D build-tests=true && ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
