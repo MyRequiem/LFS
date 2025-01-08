@@ -228,7 +228,7 @@ l/hicolor-icon-theme.sh
 x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
 d/sassc.sh
-# l/gtk+3.sh
+l/gtk+3.sh
 # l/graphene.sh
 # d/python-modules/python3-pygobject3.sh
 # l/adwaita-icon-theme.sh
@@ -254,6 +254,7 @@ d/sassc.sh
 # l/gst-plugins-ugly.sh
 # l/gtk4.sh
 
+# s/oxygen-icons.sh [NEW]
 
 # ==============================================================================
 # a/time.sh
