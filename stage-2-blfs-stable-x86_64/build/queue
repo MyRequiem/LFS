@@ -210,7 +210,7 @@ d/vala.sh
 l/librsvg.sh
 x/libs/libdrm.sh
 d/python-modules/python3-mako.sh
-# x/libs/libva.sh
+x/libs/libva.sh
 # x/libs/libvdpau.sh
 # x/libs/wayland.sh
 # x/libs/wayland-protocols.sh
@@ -392,6 +392,8 @@ d/python-modules/python3-mako.sh
 # x/libs/libevdev.sh
 # x/libs/libinput.sh
 # x/drivers/xorg-libinput-driver.sh
+# x/drivers/xorg-intel-vaapi-driver.sh [NEW]
+# x/drivers/xorg-intel-media.sh        [NEW]
 # x/xserver/xorg-server.sh
 # x/drivers/xorg-evdev-driver.sh
 # x/drivers/xorg-synaptics-driver.sh
