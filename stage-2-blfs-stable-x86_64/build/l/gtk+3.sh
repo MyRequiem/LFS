@@ -26,7 +26,7 @@ ARCH_NAME="gtk+"
 #              cups
 #              gtk-doc
 #              libcloudproviders
-#              python3-pyatspi2 (для тестов)
+#              python3-pyatspi2      (для тестов)
 #              tracker
 #              papi                  (https://icl.utk.edu/papi/)
 

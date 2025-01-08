@@ -226,6 +226,9 @@ https://xkbcommon.org/download/libxkbcommon-1.7.0.tar.xz
 https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
 https://github.com/sass/libsass/archive/3.6.6/libsass-3.6.6.tar.gz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.43.tar.xz
+https://download.gnome.org/sources/graphene/1.10/graphene-1.10.8.tar.xz
+https://github.com/pygobject/pycairo/releases/download/v1.26.1/pycairo-1.26.1.tar.gz
+https://download.gnome.org/sources/pygobject/3.48/pygobject-3.48.2.tar.xz
 
 
 ================================================================================
@@ -447,11 +450,7 @@ https://github.com/uclouvain/openjpeg/archive/v2.5.0/openjpeg-2.5.0.tar.gz
 https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
 https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
-https://github.com/pygobject/pycairo/releases/download/v1.18.2/pycairo-1.18.2.tar.gz
-https://github.com/pygobject/pycairo/releases/download/v1.23.0/pycairo-1.23.0.tar.gz
 https://www.cairographics.org/releases/cairomm-1.14.0.tar.xz
-https://download.gnome.org/sources/pygobject/2.28/pygobject-2.28.7.tar.xz
-https://download.gnome.org/sources/pygobject/3.42/pygobject-3.42.2.tar.xz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
 https://download.gnome.org/sources/glib-networking/2.74/glib-networking-2.74.0.tar.xz
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
@@ -465,7 +464,6 @@ https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 https://download.savannah.nongnu.org/releases/libunwind/libunwind-1.6.2.tar.gz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
 https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
-https://download.gnome.org/sources/graphene/1.10/graphene-1.10.8.tar.xz
 https://github.com/webmproject/libvpx/archive/v1.13.0/libvpx-1.13.0.tar.gz
 https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.22.0.tar.xz
 https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz

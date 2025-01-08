@@ -16,24 +16,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-TESTS="false"
-
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Dgtk_doc="${DOCS}" \
-    -Dtests="${TESTS}"  \
     .. || exit 1
 
 ninja || exit 1
-
-# для запуска тестов установить переменную TESTS="true"
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
