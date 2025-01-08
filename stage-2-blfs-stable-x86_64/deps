@@ -458,7 +458,7 @@ libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server
 libxdmcp                                libxcb
-libxkbcommon                            gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
+libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, qt5, libwpe, gst-plugins-bad, gtk4, i3, flameshot
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring
@@ -654,7 +654,7 @@ python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson
@@ -837,7 +837,7 @@ xkeyboard-config                        libxkbcommon, xorg-server
 xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, pm-utils, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
 xorg-amdgpu-driver
-xorg-applications                       xcursor-themes, xorg-fonts, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils
+xorg-applications                       xkeyboard-config, xcursor-themes, xorg-fonts, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils
 xorg-ati-driver
 xorg-cf-files                           imake
 xorg-evdev-driver

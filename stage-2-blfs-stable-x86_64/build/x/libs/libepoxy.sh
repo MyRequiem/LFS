@@ -19,22 +19,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-DOCS="false"
-TESTS="false"
-# command -v doxygen &>/dev/null && DOCS="true"
-
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Ddocs="${DOCS}"    \
-    -Dtests="${TESTS}"  \
     .. || exit 1
 
 ninja || exit 1
-
-# для запуска тестов установить переменную TESTS="true"
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

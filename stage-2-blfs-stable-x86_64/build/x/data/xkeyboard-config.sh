@@ -7,7 +7,10 @@ PRGNAME="xkeyboard-config"
 
 # Required:    xorg-libraries
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              libxkbcommon
+#              python3-pytest
+#              xorg-applications
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,13 +24,13 @@ mkdir build
 cd build || exit 1
 
 # shellcheck disable=SC2086
-meson                          \
-    --prefix=$XORG_PREFIX      \
-    --buildtype=release        \
+meson setup               \
+    --prefix=$XORG_PREFIX \
+    --buildtype=release   \
     .. || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

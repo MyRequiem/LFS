@@ -219,6 +219,9 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/mesa-add_xdemos-2.patch
 https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
 https://downloads.sourceforge.net/freeglut/freeglut-3.6.0.tar.gz
 https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2/libvdpau-va-gl-0.4.2.tar.gz
+https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
+https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
+https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.42.tar.xz
 
 
 ================================================================================
@@ -450,7 +453,6 @@ https://download.gnome.org/sources/glib-networking/2.74/glib-networking-2.74.0.t
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.5.tar.xz
 https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.3.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
-https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
 https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
@@ -458,8 +460,6 @@ https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 https://download.savannah.nongnu.org/releases/libunwind/libunwind-1.6.2.tar.gz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
-https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
-https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.38.tar.xz
 https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz
 https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
 https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
