@@ -226,8 +226,8 @@ x/drivers/libvdpau-va-gl.sh
 x/libs/libepoxy.sh
 l/hicolor-icon-theme.sh
 x/data/xkeyboard-config.sh
-# l/libxkbcommon.sh
-# d/sassc.sh
+l/libxkbcommon.sh
+d/sassc.sh
 # l/gtk+3.sh
 # l/graphene.sh
 # d/python-modules/python3-pygobject3.sh

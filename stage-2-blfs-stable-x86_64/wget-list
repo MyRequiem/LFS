@@ -222,6 +222,9 @@ https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2/libvdpau-va-gl-0.4.2.ta
 https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz
 https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz
 https://www.x.org/pub/individual/data/xkeyboard-config/xkeyboard-config-2.42.tar.xz
+https://xkbcommon.org/download/libxkbcommon-1.7.0.tar.xz
+https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
+https://github.com/sass/libsass/archive/3.6.6/libsass-3.6.6.tar.gz
 
 
 ================================================================================
@@ -460,10 +463,7 @@ https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 https://download.savannah.nongnu.org/releases/libunwind/libunwind-1.6.2.tar.gz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
-https://xkbcommon.org/download/libxkbcommon-1.5.0.tar.xz
 https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
-https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz
-https://github.com/sass/libsass/archive/3.6.5/libsass-3.6.5.tar.gz
 https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
 https://download.gnome.org/sources/graphene/1.10/graphene-1.10.8.tar.xz
 https://github.com/webmproject/libvpx/archive/v1.13.0/libvpx-1.13.0.tar.gz
