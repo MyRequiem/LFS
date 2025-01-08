@@ -21,11 +21,10 @@ mkdir build
 cd build || exit 1
 
 # shellcheck disable=SC2086
-meson                     \
+meson setup ..            \
     --prefix=$XORG_PREFIX \
-    --buildtype=release   \
-    -Dgl_provider=gl      \
-    .. || exit 1
+    -D gl_provider=gl     \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
@@ -42,8 +41,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # glu is the Mesa OpenGL Utility library (libGLU)
 #
-# Home page: http://cgit.freedesktop.org/mesa/glu/
-# Download:  ftp://ftp.freedesktop.org/pub/mesa/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://cgit.freedesktop.org/mesa/${PRGNAME}/
+# Download:  https://archive.mesa3d.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

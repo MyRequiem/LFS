@@ -25,12 +25,12 @@ cd build || exit 1
 
 # отключим создание дополнительных демонстрационных программ (рекомендуется)
 #    -DFREEGLUT_BUILD_DEMOS=OFF
-cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr       \
-    -DCMAKE_BUILD_TYPE=Release        \
-    -DFREEGLUT_BUILD_DEMOS=OFF        \
-    -DFREEGLUT_BUILD_STATIC_LIBS=OFF  \
-    -Wno-dev .. || exit 1
+cmake                                 \
+    -D CMAKE_INSTALL_PREFIX=/usr      \
+    -D CMAKE_BUILD_TYPE=Release       \
+    -D FREEGLUT_BUILD_DEMOS=OFF       \
+    -D FREEGLUT_BUILD_STATIC_LIBS=OFF \
+    -W no-dev .. || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

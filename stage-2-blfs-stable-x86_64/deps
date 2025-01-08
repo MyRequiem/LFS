@@ -495,7 +495,7 @@ mc
 mdadm                                   lvm2, libblockdev, udisks
 mecab                                   mariadb
 mercurial                               python3-setuptools-scm, cmake, openjdk
-mesa                                    cairo, libvdpau, libva, libepoxy, glu, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5, libwpe
+mesa                                    cairo, libvdpau, libva, glu, libepoxy, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5, libwpe
 mesa-demos                              mesa
 messagepack                             mariadb
 mhash                                   php
