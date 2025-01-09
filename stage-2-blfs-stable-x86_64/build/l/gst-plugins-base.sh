@@ -10,6 +10,7 @@ PRGNAME="gst-plugins-base"
 # Required:    gstreamer
 # Recommended: alsa-lib
 #              cdparanoia-III         (для сборки cdda плагина)
+#              glib
 #              iso-codes
 #              libgudev
 #              libjpeg-turbo
@@ -23,10 +24,11 @@ PRGNAME="gst-plugins-base"
 # Optional:    graphene
 #              gtk+3                  (для сборки примеров)
 #              opus
-#              qt5                    (для сборки примеров)
+#              qt5-components         (для сборки примеров)
 #              sdl2
 #              valgrind
 #              python3-hotdoc         (https://pypi.org/project/hotdoc/)
+#              libtheora              (https://www.theora.org/)
 #              libvisual              (http://libvisual.org/)
 #              orc                    (https://gstreamer.freedesktop.org/src/orc/)
 #              tremor                 (https://wiki.xiph.org/Tremor)
@@ -38,28 +40,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-EXAMPLES="disabled"
-DOCS="disabled"
-TESTS="disabled"
-
 mkdir build
 cd build || exit 1
 
-meson                                          \
-    --prefix=/usr                              \
-    --buildtype=release                        \
-    --wrap-mode=nodownload                     \
-    -Dexamples="${EXAMPLES}"                   \
-    -Ddoc="${DOCS}"                            \
-    -Dtests="${TESTS}"                         \
-    -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/12.2/ || exit 1
+meson setup ..             \
+    --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nodownload \
+    -D examples=disabled   \
+    -D doc=disabled        \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 
-### тесты
-#    - устанавливаем переменную TESTS выше в 'enabled'
-#    - тесты проводятся в графической среде
+# тесты проводятся в графической среде
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

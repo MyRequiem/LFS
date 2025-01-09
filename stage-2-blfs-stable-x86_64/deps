@@ -3,7 +3,7 @@
 ###***###
 
 3store                                  redland
-Graphical Environments                  openssh, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, links, gimp, libmpeg2, numlockx, php, libao
+Graphical Environments                  openssh, libmpeg2, ghostscript, rxvt-unicode, exim, vim, mc, sdl2, ffmpeg, links, gimp, numlockx, php, libao
 Plasma5                                 polkit
 aalib                                   gimp, gst-plugins-good
 acpid                                   xorg-server
@@ -20,7 +20,6 @@ alsa-oss                                sdl2, gst-plugins-good, libao
 alsa-plugins                            sdl2, libao
 alsa-tools                              sdl2, alsa-firmware, libao
 alsa-utils                              sdl2, faad2, faac, libao
-aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
@@ -196,12 +195,13 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, glib-networking, glibmm, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, glib-networking, glibmm, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, qt5, gcr4, enchant, apache-ant
 glib-networking                         glib, glibmm, gimp, libsoup, libsoup3
 glibavif                                gdk-pixbuf
 glibmm                                  pangomm, atkmm
 glm                                     slop
 glslang                                 mesa
+glslc                                   gst-plugins-bad
 glu                                     fltk, freeglut
 glusterfs
 gnome-keyring                           libsecret
@@ -285,7 +285,7 @@ jemalloc                                nghttp2, rustc
 jing                                    vala
 jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
-json-glib                               pavucontrol, gegl
+json-glib                               gst-plugins-bad, pavucontrol, gegl
 jsoncpp                                 cmake
 judy                                    mariadb
 kde-frameworks                          pinentry
@@ -307,6 +307,7 @@ libaacplus                              ffmpeg
 libadwaita                              zenity
 libaio                                  lvm2, mariadb
 libao
+libaom                                  gst-plugins-bad
 libarchive                              archivemount, lnav, cmake, ed, libgxps
 libass                                  ffmpeg, gst-plugins-bad
 libassuan                               pinentry, gnupg, gpgme
@@ -432,6 +433,7 @@ libssh                                  cryptsetup, ffmpeg, exiv2
 libssh2                                 curl, rustc, nmap, mc, gst-plugins-bad
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
+libtheora                               gst-plugins-base
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, links, poppler, gegl, gimp, libgxps, imagemagick, qt5, php
 libtirpc                                libnsl, lsof, xorg-server
 libtizonia                              mesa
@@ -546,7 +548,7 @@ oniguruma                               slang, jq, php
 open-mpi                                boost
 openal                                  ffmpeg, qt5, mpg123, gst-plugins-bad
 opencl                                  gegl
-opencore-amr                            ffmpeg, gst-plugins-ugly
+opencore-amr                            ffmpeg
 opencv                                  ffmpeg, gst-plugins-bad
 opendesktop-fonts-ttf
 opendmarc                               exim
@@ -674,9 +676,10 @@ python3-werkzeug                        python3-requests
 python3-xmlschema
 pytrash
 qdbm                                    php
-qt5                                     poppler, gst-plugins-base, gst-plugins-good, flameshot, transmission
-qt5-components                          pinentry, wpa-supplicant, gpgme
-qt6                                     highlight, cmake, poppler
+qrencode                                gst-plugins-bad
+qt5                                     poppler, flameshot, transmission
+qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme
+qt6                                     highlight, cmake, gst-plugins-good, poppler
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
@@ -704,7 +707,7 @@ saxon6                                  docbook-xsl
 sbc                                     pulseaudio, gst-plugins-bad
 schroedinger                            ffmpeg
 scrot
-sdl12-compat                            mpg123
+sdl12-compat                            mpg123, libmpeg2, gst-plugins-bad
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
 sendmail                                gnupg, sudo, gimp, fcron, at, php
@@ -761,7 +764,7 @@ tree
 tremor                                  gst-plugins-base
 trousers                                gnutls
 tslib                                   qt5
-twolame                                 ffmpeg, gst-plugins-good, gst-plugins-ugly
+twolame                                 ffmpeg, gst-plugins-good
 udisks
 ufraw                                   imagemagick
 umockdev                                libgudev, upower
@@ -791,8 +794,8 @@ voikko                                  enchant
 volume-key                              libblockdev
 vte2
 vte3
-vulkan                                  qt5, gst-plugins-bad, gtk4
-vulkan-loader                           mesa
+vulkan                                  qt5, gtk4
+vulkan-loader                           mesa, gst-plugins-bad
 w3m                                     xmlto, docbook-utils, xorg-libraries, xdg-utils, babl
 wasm-micro-runtime                      harfbuzz
 wavpack                                 gst-plugins-good
@@ -870,6 +873,11 @@ zip                                     docbook-xsl, llvm, mc, openjdk
 zsh                                     elogind
 zvbi                                    ffmpeg, gst-plugins-bad
 zxing                                   gst-plugins-bad
+ldacbt
+libajantv2
+mplex2
+musepack
+onnxruntime
 
 
 # ==============================================================================
