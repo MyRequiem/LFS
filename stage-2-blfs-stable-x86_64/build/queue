@@ -242,9 +242,9 @@ l/libvorbis.sh
 ap/flac.sh
 l/lame.sh
 l/speex.sh
-# ap/opus.sh
-# l/libsndfile.sh
-# ap/pulseaudio.sh
+ap/opus.sh
+l/libsndfile.sh
+ap/pulseaudio.sh
 # ap/mpg123.sh
 # l/x264.sh
 # l/x265.sh
