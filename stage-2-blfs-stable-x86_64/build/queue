@@ -253,7 +253,7 @@ l/gst-plugins-base.sh
 l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
-# l/gtk4.sh
+l/gtk4.sh
 
 # s/oxygen-icons.sh [NEW]
 
