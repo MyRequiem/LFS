@@ -19,7 +19,6 @@ alsa-lib                                fltk, libsndfile, libsamplerate, pulseau
 alsa-oss                                sdl2, gst-plugins-good, libao
 alsa-plugins                            sdl2, libao
 alsa-tools                              sdl2, alsa-firmware, libao
-alsa-ucm-conf                           alsa-lib
 alsa-utils                              sdl2, faad2, faac, libao
 aom                                     gst-plugins-bad
 apache-ant                              docbook-xsl
@@ -132,7 +131,7 @@ ed
 efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
-elogind                                 pulseaudio, polkit, xorg-server, udisks
+elogind                                 alsa-lib, pulseaudio, polkit, xorg-server, udisks
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
 empress                                 php

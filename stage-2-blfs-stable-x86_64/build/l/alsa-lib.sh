@@ -6,10 +6,9 @@ PRGNAME="alsa-lib"
 # Библиотеки обеспечивающие аудио и MIDI функциональность в Linux
 
 # Required:    no
-# Recommended: no
+# Recommended: elogind
 # Optional:    doxygen
 #              python2       (https://www.python.org/downloads/release/python-2718/)
-#              alsa-ucm-conf (https://www.alsa-project.org/files/pub/lib/)
 
 ### Конфигурация ядра
 #    CONFIG_SOUND=y|m
@@ -24,33 +23,18 @@ PRGNAME="alsa-lib"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-API_DOCS="false"
-# command -v doxygen &>/dev/null && API_DOCS="true"
-
 ./configure || exit 1
-make || exit 1
-
-if [[ "x${API_DOCS}" == "xtrue" ]]; then
-    make doc || exit 1
-fi
-
+make        || exit 1
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${API_DOCS}" == "xtrue" ]]; then
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -d -m755 "${TMP_DIR}${DOC_PATH}/html/search"
-    install -v -m644 doc/doxygen/html/*.* \
-        "${TMP_DIR}${DOC_PATH}/html"
-    install -v -m644 doc/doxygen/html/search/* \
-        "${TMP_DIR}${DOC_PATH}/html/search"
-fi
+# конфигурационные файлы
+tar -C "${TMP_DIR}/usr/share/alsa" --strip-components=1 \
+    -xf "${SOURCES}/alsa-ucm-conf-${VERSION}.tar.bz2" || exit 1
 
 ASOUND_CONF="/etc/asound.conf"
 cat << EOF > "${TMP_DIR}${ASOUND_CONF}"
@@ -60,15 +44,9 @@ pcm.default pulse
 ctl.default pulse
 EOF
 
-if [ -f "${ASOUND_CONF}" ]; then
-    mv "${ASOUND_CONF}" "${ASOUND_CONF}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${ASOUND_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Advanced Linux Sound Architecture library)
@@ -78,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # library (libasound) used by programs (including ALSA Utilities) requiring
 # access to the ALSA sound interface.
 #
-# Home page: http://alsa-project.org
+# Home page: https://alsa-project.org
 # Download:  https://www.alsa-project.org/files/pub/lib/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
