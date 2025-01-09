@@ -239,9 +239,9 @@ l/alsa-lib.sh
 a/libgudev.sh
 l/libogg.sh
 l/libvorbis.sh
-# ap/flac.sh
-# l/lame.sh
-# l/speex.sh
+ap/flac.sh
+l/lame.sh
+l/speex.sh
 # ap/opus.sh
 # l/libsndfile.sh
 # ap/pulseaudio.sh

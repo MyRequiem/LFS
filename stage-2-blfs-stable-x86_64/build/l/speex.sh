@@ -19,8 +19,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
 # собираем утилиты 'speexenc' и 'speexdec'
 #    --enable-binaries
 ./configure           \
@@ -48,7 +46,7 @@ cd "${SPEEXDSP}-${SPEEXDSP_VERSION}" || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
