@@ -232,7 +232,7 @@ l/gtk+3.sh
 l/graphene.sh
 d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
-# l/adwaita-icon-theme.sh
+l/adwaita-icon-theme.sh
 # l/libvpx.sh
 # l/gstreamer.sh
 # l/alsa-lib.sh
