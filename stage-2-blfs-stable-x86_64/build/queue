@@ -245,9 +245,9 @@ l/speex.sh
 ap/opus.sh
 l/libsndfile.sh
 ap/pulseaudio.sh
-# ap/mpg123.sh
-# l/x264.sh
-# l/x265.sh
+ap/mpg123.sh
+l/x264.sh
+l/x265.sh
 # l/libmpeg2.sh
 # l/gst-plugins-base.sh
 # l/gst-plugins-good.sh

@@ -704,6 +704,7 @@ saxon6                                  docbook-xsl
 sbc                                     pulseaudio, gst-plugins-bad
 schroedinger                            ffmpeg
 scrot
+sdl12-compat                            mpg123
 sdl2                                    ffmpeg, gegl, gst-plugins-base, qt5
 selinux                                 elogind
 sendmail                                gnupg, sudo, gimp, fcron, at, php

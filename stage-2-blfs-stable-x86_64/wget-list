@@ -244,6 +244,9 @@ https://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz
 https://downloads.xiph.org/releases/opus/opus-1.5.2.tar.gz
 https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
 https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz
+https://downloads.sourceforge.net/mpg123/mpg123-1.32.7.tar.bz2
+https://anduin.linuxfromscratch.org/BLFS/x264/x264-20240812.tar.xz
+https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.6.tar.gz
 
 
 ================================================================================
@@ -492,8 +495,6 @@ https://download.gnome.org/sources/gjs/1.74/gjs-1.74.1.tar.xz
 https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz
-https://anduin.linuxfromscratch.org/BLFS/x264/x264-20230215.tar.xz
-https://anduin.linuxfromscratch.org/BLFS/x265/x265-20230215.tar.xz
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 https://downloads.sourceforge.net/enlightenment/imlib2-1.9.1.tar.xz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
@@ -677,7 +678,6 @@ https://feh.finalrewind.org/feh-3.9.1.tar.bz2
 https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.22.0.tar.xz
 https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch
-https://downloads.sourceforge.net/mpg123/mpg123-1.31.2.tar.bz2
 https://taglib.org/releases/taglib-1.13.tar.gz
 https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
 https://download.gnome.org/sources/libsoup/3.2/libsoup-3.2.2.tar.xz
