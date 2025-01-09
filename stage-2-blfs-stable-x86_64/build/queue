@@ -236,9 +236,9 @@ l/adwaita-icon-theme.sh
 l/libvpx.sh
 l/gstreamer.sh
 l/alsa-lib.sh
-# a/libgudev.sh
-# l/libogg.sh
-# l/libvorbis.sh
+a/libgudev.sh
+l/libogg.sh
+l/libvorbis.sh
 # ap/flac.sh
 # l/lame.sh
 # l/speex.sh
