@@ -269,11 +269,27 @@ l/libunwind.sh
 x/libs/libinput.sh
 n/mit-kerberos-v5.sh
 l/unixodbc.sh
-
 l/qt5-components.sh
-=== qt6 ===
-
-# l/qt6
+# === qt6 ===
+# s/docbook-xml.sh
+# s/docbook-xsl.sh
+# s/xmlto.sh
+# l/libnotify.sh
+# l/libhandy.sh
+# l/dconf.sh
+# s/ibus.sh
+# l/fftw.sh
+# l/libsamplerate.sh
+# l/sdl2.sh
+# l/giflib.sh
+# l/sdl12-compat [NEW]
+# l/libwebp.sh
+# l/lcms2.sh
+# l/libmng.sh
+# l/jasper.sh
+# l/qt6.sh
+# ===========
+# d/extra-cmake-modules [NEW]
 # s/oxygen-icons.sh
 
 # ==============================================================================
@@ -286,14 +302,10 @@ l/qt5-components.sh
 # a/sharutils.sh
 # a/cpio.sh
 # s/sgml-common.sh
-# s/docbook-xml.sh
-# s/docbook-xsl.sh
 # l/aspell.sh
 # l/aspell-dict-en.sh
 # l/aspell-dict-ru.sh
-# l/fftw.sh
 # l/libatasmart.sh
-# s/xmlto.sh
 # l/c-ares.sh
 # n/libtirpc.sh
 # l/libnsl.sh
@@ -338,7 +350,6 @@ l/qt5-components.sh
 # d/perl-modules/perl-anyevent-i3.sh
 # n/nmap.sh
 # d/python3.sh
-# l/lcms2.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
 # ap/ghostscript.sh
@@ -358,6 +369,7 @@ l/qt5-components.sh
 # l/libspectre.sh
 # s/desktop-file-utils.sh
 # l/fltk.sh
+# n/pinentry.sh
 # x/libs/glew.sh
 # l/libgsf.sh
 # l/goffice.sh
@@ -368,19 +380,16 @@ l/qt5-components.sh
 # l/libsecret.sh
 # l/gcr3.sh
 # s/numactl.sh
-# l/giflib.sh
 # l/imlib2.sh
 # n/w3m.sh
 # l/libdazzle.sh
 # s/sound-theme-freedesktop.sh
-# l/libsamplerate.sh
 # l/sbc.sh
 # d/orc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
 # l/libcanberra.sh
 # s/notification-daemon.sh
-# l/libnotify.sh
 # l/libxklavier.sh
 # x/libs/startup-notification.sh
 # x/libs/libxcvt.sh
@@ -434,12 +443,7 @@ l/qt5-components.sh
 # ap/vim.sh
 # ap/mc.sh
 # l/liba52.sh
-# l/libwebp.sh
 # l/xvid.sh
-# l/libhandy.sh
-# l/dconf.sh
-# s/ibus.sh
-# l/sdl2.sh
 # l/ffmpeg.sh
 # l/alsa-plugins.sh
 # ap/alsa-utils.sh
@@ -448,9 +452,6 @@ l/qt5-components.sh
 # l/alsa-oss.sh
 # l/cxxopts.sh
 # ap/pamixer.sh
-# l/sdl2.sh
-# l/libwebp.sh
-# l/libmng.sh
 # n/links.sh
 # x/apps/xdg-utils.sh
 # l/poppler.sh
@@ -460,7 +461,6 @@ l/qt5-components.sh
 # l/exiv2.sh
 # l/gexiv2.sh
 # l/babl.sh
-# l/jasper.sh
 # l/gegl.sh
 # xap/gimp.sh
 # l/djvulibre.sh
@@ -480,9 +480,7 @@ l/qt5-components.sh
 # l/libdvdnav.sh
 # l/aom.sh
 # d/gjs.sh
-# s/ibus.sh
 # l/gcr4.sh
-# n/pinentry.sh
 # ap/xbanish.sh
 # x/utils/xorg-cf-files.sh
 # d/imake.sh
@@ -584,7 +582,7 @@ l/qt5-components.sh
 # ap/mpv.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
-# xap/google-chrome.sh (убрать библиотеку libqt6_shim.so: rm -f opt/google/chrome/libqt6_shim.so)
+# xap/google-chrome.sh
 # n/telegram.sh
 
 # vim:ft=conf

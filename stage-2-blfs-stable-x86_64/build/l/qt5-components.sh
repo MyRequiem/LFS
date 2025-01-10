@@ -37,19 +37,8 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              postgresql
 #              unixodbc
 
-=== 27 + 1 ===
-
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
-
-# удаляем пакет qt5-components, если он уже установлен в системе
-INSTALLED="$(find /var/log/packages/ -type f -name "qt5-components-5.*")"
-if [ -n "${INSTALLED}" ]; then
-    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
-    echo "${INSTALLED_VERSION} already installed. Before building Qt5 "
-    echo "package, you need to remove it."
-    removepkg --no-color "${INSTALLED}"
-fi
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -76,80 +65,81 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 # NOTE:
 # Qt5 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
 # устанавливать в /opt/qt5-${VERSION}
-export QT5PREFIX="/opt/${PRGNAME}"
+export QT5PREFIX=/opt/qt5
 
-PIXMAPS="/usr/share/pixmaps"
-APPLICATIONS="/usr/share/applications"
+# /etc
+#     |
+#     profile.d/qt5.sh
+#     sudoers.d/qt
+# /usr
+#     |
+#     bin/
+# /opt
+#     |
+#     qt5               (ссылка на qt5-${VERSION}/)
+#     qt5-${VERSION}/
+
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d},usr/bin}
-mkdir -pv "${TMP_DIR}"{"${QT5PREFIX}-${VERSION}","${PIXMAPS}","${APPLICATIONS}"}
-
-# создаем ссылку в /opt
-#    qt5 -> qt5-${VERSION}
-ln -sv "${PRGNAME}-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../${PRGNAME}"
+mkdir -pv "${TMP_DIR}${QT5PREFIX}-${VERSION}"
+# qt5 -> qt5-${VERSION}
+ln -sv "qt5-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../qt5"
 
 # исправления, предложенные KDE
 patch -Np1 --verbose -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch" || exit 1
 
-# предполагается, что патч будет использоваться в git репозитории, поэтому
-# создадим в каталоге qmake каталог .git, в котором запускается скрипт
-# настройки
+# патч предполагает наличие git репозитория
 mkdir -pv qtbase/.git
 
-================================================================================
-At this point we want to set up skipping most components. Do that with:
-
-ls -Fd qt* | grep / | sed 's/^/-skip /;s@/@@' > tempconf &&
+# список компонентов в файле tempconf, которые будут пропущены при компиляции
+# shellcheck disable=SC2010
+ls -Fd qt* | grep / | sed 's/^/-skip /;s@/@@' > tempconf || exit 1
 sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
 
-В итоге получаем в файле tempconf те компоненты, которые не будут собираться
-----------------------------------------------------------------------------
--skip qt3d
--skip qtactiveqt
--skip qtandroidextras
--skip qtcharts
--skip qtconnectivity
--skip qtdatavis3d
--skip qtdoc
--skip qtgamepad
--skip qtgraphicaleffects
--skip qtimageformats
--skip qtlocation
--skip qtlottie
--skip qtmacextras
--skip qtmultimedia
--skip qtnetworkauth
--skip qtpurchasing
--skip qtquick3d
--skip qtquickcontrols
--skip qtquickcontrols2
--skip qtquicktimeline
--skip qtremoteobjects
--skip qtscript
--skip qtscxml
--skip qtsensors
--skip qtserialbus
--skip qtserialport
--skip qtspeech
--skip qttranslations
--skip qtvirtualkeyboard
--skip qtwebchannel
--skip qtwebengine
--skip qtwebglplugin
--skip qtwebsockets
--skip qtwebview
--skip qtwinextras
--skip qtxmlpatterns
-================================================================================
+# -----------
+# ./tempconf
+# -----------
+# -skip qt3d
+# -skip qtactiveqt
+# -skip qtandroidextras
+# -skip qtcharts
+# -skip qtconnectivity
+# -skip qtdatavis3d
+# -skip qtdoc
+# -skip qtgamepad
+# -skip qtgraphicaleffects
+# -skip qtimageformats
+# -skip qtlocation
+# -skip qtlottie
+# -skip qtmacextras
+# -skip qtmultimedia
+# -skip qtnetworkauth
+# -skip qtpurchasing
+# -skip qtquick3d
+# -skip qtquickcontrols
+# -skip qtquickcontrols2
+# -skip qtquicktimeline
+# -skip qtremoteobjects
+# -skip qtscript
+# -skip qtscxml
+# -skip qtsensors
+# -skip qtserialbus
+# -skip qtserialport
+# -skip qtspeech
+# -skip qttranslations
+# -skip qtvirtualkeyboard
+# -skip qtwebchannel
+# -skip qtwebengine
+# -skip qtwebglplugin
+# -skip qtwebsockets
+# -skip qtwebview
+# -skip qtwinextras
+# -skip qtxmlpatterns
 
-
-
-
-
+# shellcheck disable=SC2046
 ./configure                \
     -prefix "${QT5PREFIX}" \
-    -release               \
-    -sysconfdir "/etc/xdg" \
+    -sysconfdir /etc/xdg   \
     -confirm-license       \
     -opensource            \
     -dbus-linked           \
@@ -160,10 +150,7 @@ sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
     -nomake tests          \
     -no-rpath              \
     -syslog                \
-    -skip qtwebengine      \
-    -system-libpng         \
-    -system-libjpeg        \
-    -system-zlib || exit 1
+    $(cat tempconf) || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -176,84 +163,14 @@ make install INSTALL_ROOT="${TMP_DIR}"
 find "${TMP_DIR}${QT5PREFIX}"/ -name "*.prl" \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
-# устанавливаем .desktop и .png файлы в /usr/share/{applications,pixmaps}
 QT5BINDIR="${QT5PREFIX}/bin"
-install -v -Dm644                                            \
-    qttools/src/assistant/assistant/images/assistant-128.png \
-    "${TMP_DIR}${PIXMAPS}/assistant-qt5.png"
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/assistant-qt5.desktop"
-[Desktop Entry]
-Name=Qt5 Assistant
-Comment=Shows Qt5 documentation and examples
-Exec=${QT5BINDIR}/assistant
-Icon=assistant-qt5.png
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;Documentation;
-EOF
-
-install -v -Dm644                                         \
-    qttools/src/designer/src/designer/images/designer.png \
-    "${TMP_DIR}${PIXMAPS}/designer-qt5.png"
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/designer-qt5.desktop"
-[Desktop Entry]
-Name=Qt5 Designer
-GenericName=Interface Designer
-Comment=Design GUIs for Qt5 applications
-Exec=${QT5BINDIR}/designer
-Icon=designer-qt5.png
-MimeType=application/x-designer;
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;
-EOF
-
-install -v -Dm644                                                  \
-    qttools/src/linguist/linguist/images/icons/linguist-128-32.png \
-    "${TMP_DIR}${PIXMAPS}/linguist-qt5.png"
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/linguist-qt5.desktop"
-[Desktop Entry]
-Name=Qt5 Linguist
-Comment=Add translations to Qt5 applications
-Exec=${QT5BINDIR}/linguist
-Icon=linguist-qt5.png
-MimeType=text/vnd.trolltech.linguist;application/x-linguist;
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;
-EOF
-
-install -v -Dm644                                            \
-    qttools/src/qdbus/qdbusviewer/images/qdbusviewer-128.png \
-    "${TMP_DIR}${PIXMAPS}/qdbusviewer-qt5.png"
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/qdbusviewer-qt5.desktop"
-[Desktop Entry]
-Name=Qt5 QDbusViewer
-GenericName=D-Bus Debugger
-Comment=Debug D-Bus applications
-Exec=${QT5BINDIR}/qdbusviewer
-Icon=qdbusviewer-qt5.png
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;Debugger;
-EOF
-
 # некоторые пакеты, например vlc, ищут определенные исполняемые файлы в
 # /usr/bin с суффиксом -qt5, поэтому создадим необходимые ссылки
 #    /usr/bin/qmake-qt5 -> /opt/qt5-${VERSION}/bin/qmake
 #    /usr/bin/moc-qt5   -> /opt/qt5-${VERSION}/bin/moc
 #    ...
 for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
-    ln -sfv "../..${QT5BINDIR}/${FILE}" \
-        "${TMP_DIR}/usr/bin/${FILE}-${PRGNAME}"
+    ln -sfv "../..${QT5BINDIR}/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
 done
 
 # QT5DIR также должен быть доступен пользователю root
