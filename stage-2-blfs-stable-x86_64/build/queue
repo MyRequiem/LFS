@@ -254,6 +254,7 @@ l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
 l/gtk4.sh
+l/double-conversion.sh
 
 # l/qt5-components.sh
 # l/qt6
@@ -451,7 +452,6 @@ l/gtk4.sh
 # l/libmng.sh
 # n/links.sh
 # x/apps/xdg-utils.sh
-# ap/cups.sh
 # l/poppler.sh
 # l/gperftools.sh
 # l/libmypaint.sh
@@ -525,7 +525,6 @@ l/gtk4.sh
 # l/redland.sh
 # d/tidy-html5.sh
 # n/php.sh
-# ap/cups.sh
 # d/openjdk.sh
 # l/libidn.sh
 # n/traceroute.sh
