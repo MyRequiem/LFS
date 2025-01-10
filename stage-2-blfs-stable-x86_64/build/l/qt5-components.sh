@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="qt5"
+PRGNAME="qt5-components"
 ARCH_NAME="qt-everywhere-opensource-src"
 
 ### Qt (a multi-platform C++ graphical user interface toolkit)
@@ -57,8 +57,8 @@ ARCH_NAME="qt-everywhere-opensource-src"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
-# удаляем пакет qt5, если он уже установлен в системе
-INSTALLED="$(find /var/log/packages/ -type f -name "qt5-5.*")"
+# удаляем пакет qt5-components, если он уже установлен в системе
+INSTALLED="$(find /var/log/packages/ -type f -name "qt5-components-5.*")"
 if [ -n "${INSTALLED}" ]; then
     INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
     echo "${INSTALLED_VERSION} already installed. Before building Qt5 "
@@ -110,6 +110,56 @@ patch -Np1 --verbose -i \
 # создадим в каталоге qmake каталог .git, в котором запускается скрипт
 # настройки
 mkdir -pv qtbase/.git
+
+================================================================================
+At this point we want to set up skipping most components. Do that with:
+
+ls -Fd qt* | grep / | sed 's/^/-skip /;s@/@@' > tempconf &&
+sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
+
+В итоге получаем в файле tempconf те компоненты, которые не будут собираться
+----------------------------------------------------------------------------
+-skip qt3d
+-skip qtactiveqt
+-skip qtandroidextras
+-skip qtcharts
+-skip qtconnectivity
+-skip qtdatavis3d
+-skip qtdoc
+-skip qtgamepad
+-skip qtgraphicaleffects
+-skip qtimageformats
+-skip qtlocation
+-skip qtlottie
+-skip qtmacextras
+-skip qtmultimedia
+-skip qtnetworkauth
+-skip qtpurchasing
+-skip qtquick3d
+-skip qtquickcontrols
+-skip qtquickcontrols2
+-skip qtquicktimeline
+-skip qtremoteobjects
+-skip qtscript
+-skip qtscxml
+-skip qtsensors
+-skip qtserialbus
+-skip qtserialport
+-skip qtspeech
+-skip qttranslations
+-skip qtvirtualkeyboard
+-skip qtwebchannel
+-skip qtwebengine
+-skip qtwebglplugin
+-skip qtwebsockets
+-skip qtwebview
+-skip qtwinextras
+-skip qtxmlpatterns
+================================================================================
+
+
+
+
 
 ./configure                \
     -prefix "${QT5PREFIX}" \

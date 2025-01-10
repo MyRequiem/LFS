@@ -18,12 +18,12 @@ PRGNAME="poppler"
 #              openjpeg
 # Optional:    curl
 #              gdk-pixbuf
-#              git          (для загрузки тестовых файлов)
+#              git              (для загрузки тестовых файлов)
 #              gtk-doc
 #              gtk+3
 #              libtiff
-#              qt5          (для поддержки PDF в KDE'шной утилите Okular)
-#              >= qt6.1     (https://download.qt.io/archive/qt/)
+#              qt5-components   (для поддержки PDF в KDE'шной утилите Okular)
+#              >= qt6.1         (https://download.qt.io/archive/qt/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

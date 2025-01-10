@@ -12,7 +12,7 @@ PRGNAME="gpgme"
 # Recommended: no
 # Optional:    doxygen          (для сборки API документации)
 #              graphviz         (для сборки API документации)
-#              gnupg            (если qt5 или swig установлены, используется для тестов)
+#              gnupg            (если qt5-components или swig установлены, используется для тестов)
 #              clisp
 #              qt5-components
 #              swig

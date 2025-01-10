@@ -8,7 +8,7 @@ PRGNAME="flameshot"
 # интерфейс, загрузка на Imgur (https://imgur.com)
 
 # Required:    cmake
-#              qt5
+#              qt5-components
 #              librsvg
 #              libxkbcommon
 # Recommended: no

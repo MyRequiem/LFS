@@ -681,8 +681,6 @@ http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://feh.finalrewind.org/feh-3.9.1.tar.bz2
-https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch
 https://taglib.org/releases/taglib-1.13.tar.gz
 https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
 https://download.gnome.org/sources/libsoup/3.2/libsoup-3.2.2.tar.xz
@@ -828,10 +826,6 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 http://nginx.org/download/nginx-1.23.0.tar.gz
 https://github.com/okbob/pspg/archive/5.5.4/pspg-5.5.4.tar.gz
 http://prdownloads.sourceforge.net/optipng/optipng-0.7.7.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-build-against-Qt-5.15.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/qt5-styleplugins/qt5-styleplugins-5.0.0.335dbec.20170111-fix-gtk2-background.patch
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/qt5-styleplugins/qtstyleplugins-5.0.0.335dbec.20170111.tar.gz
-http://prdownloads.sourceforge.net/qt5ct/qt5ct-1.5.tar.bz2
 https://code.videolan.org/videolan/libplacebo/-/archive/v4.208.0/libplacebo-v4.208.0.tar.bz2
 https://mujs.com/downloads/mujs-1.2.0.tar.xz
 https://github.com/mpv-player/mpv/archive/v0.34.1/mpv-0.34.1.tar.gz

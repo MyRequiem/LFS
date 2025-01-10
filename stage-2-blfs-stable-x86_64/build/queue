@@ -255,7 +255,9 @@ l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
 l/gtk4.sh
 
-# s/oxygen-icons.sh [NEW]
+# l/qt5-components.sh
+# l/qt6
+# s/oxygen-icons.sh
 
 # ==============================================================================
 # a/time.sh
@@ -464,7 +466,6 @@ l/gtk4.sh
 # l/libgxps.sh
 # xap/imagemagick.sh
 # ap/feh.sh
-# l/qt5.sh
 # l/taglib.sh
 # l/libsoup.sh
 # l/libsoup3.sh
@@ -578,8 +579,6 @@ l/gtk4.sh
 # n/nginx.sh
 # s/pspg.sh
 # ap/optipng.sh
-# l/qt5-styleplugins.sh
-# s/qt5ct.sh
 # l/libplacebo.sh
 # d/mujs.sh
 # ap/mpv.sh
