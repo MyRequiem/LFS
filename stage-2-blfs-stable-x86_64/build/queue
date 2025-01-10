@@ -271,9 +271,9 @@ n/mit-kerberos-v5.sh
 l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
-# s/docbook-xml.sh
-# s/docbook-xsl.sh
-# s/xmlto.sh
+s/docbook-xml.sh
+s/docbook-xsl.sh
+s/xmlto.sh
 # l/libnotify.sh
 # l/libhandy.sh
 # l/dconf.sh

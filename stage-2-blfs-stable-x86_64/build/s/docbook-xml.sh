@@ -8,8 +8,7 @@ PRGNAME="docbook-xml"
 # программного обеспечения в соответствии со стандартом.
 
 # Required:    libxml2
-#              sgml-common
-#              unzip        (для распаковки архива с исходниками)
+#              unzip или libarchive    (для распаковки архива с исходниками)
 # Recommended: no
 # Optional:    no
 
