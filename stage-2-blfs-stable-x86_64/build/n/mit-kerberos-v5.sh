@@ -14,6 +14,7 @@ ARCH_NAME="krb5"
 # Required:    no
 # Recommended: no
 # Optional:    bind-utils
+#              cracklib
 #              gnupg
 #              keyutils
 #              openldap
@@ -41,15 +42,10 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-INSTALL_DOCS="false"
-LDAP="--without-ldap"
-command -v ldapadd &>/dev/null && LDAP="--with-ldap"
-
 cd src || exit 1
 
-# удалим два заведомо неудачных теста
+# удалим заведомо неудачный тест
 sed -i -e '/eq 0/{N;s/12 //}' plugins/kdb/db2/libdb2/test/run.test || exit 1
-sed -i '/t_kadm5.py/d'        lib/kadm5/Makefile.in                || exit 1
 
 ./configure                  \
     --prefix=/usr            \
@@ -58,22 +54,15 @@ sed -i '/t_kadm5.py/d'        lib/kadm5/Makefile.in                || exit 1
     --runstatedir=/run       \
     --with-system-et         \
     --with-system-ss         \
-    "${LDAP}"                \
     --with-system-verto=no   \
-    --enable-dns-for-realm || exit 1
+    --enable-dns-for-realm   \
+    --disable-rpath || exit 1
 
 make || exit 1
-# make -k -j1 check
+# make -j1 -k check
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
-
-# документация
-if [[ "x${INSTALL_DOCS}" == "xtrue" ]]; then
-    DOC_PATH="${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -dm755 "${DOC_PATH}"
-    cp -vfr ../doc/*  "${DOC_PATH}"
-fi
 
 KRB5_CONF="/etc/krb5.conf"
 cat << EOF > "${TMP_DIR}${KRB5_CONF}.example"

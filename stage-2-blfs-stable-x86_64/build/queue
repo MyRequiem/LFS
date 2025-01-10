@@ -254,6 +254,7 @@ l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
 l/gtk4.sh
+# === qt5-components ===
 l/double-conversion.sh
 x/xcb/xcb-util.sh
 x/xcb/xcb-util-image.sh
@@ -266,8 +267,12 @@ x/misc/mtdev.sh
 x/libs/libevdev.sh
 l/libunwind.sh
 x/libs/libinput.sh
+n/mit-kerberos-v5.sh
+l/unixodbc.sh
 
-# l/qt5-components.sh
+l/qt5-components.sh
+=== qt6 ===
+
 # l/qt6
 # s/oxygen-icons.sh
 
@@ -289,9 +294,7 @@ x/libs/libinput.sh
 # l/fftw.sh
 # l/libatasmart.sh
 # s/xmlto.sh
-# l/unixodbc.sh
 # l/c-ares.sh
-# n/mit-kerberos-v5.sh
 # n/libtirpc.sh
 # l/libnsl.sh
 # l/nspr.sh
@@ -421,8 +424,6 @@ x/libs/libinput.sh
 # ap/postgresql.sh
 # d/snappy.sh
 # ap/mariadb.sh
-# n/cyrus-sasl.sh
-# n/openldap.sh
 # n/exim.sh
 # ap/sudo.sh
 # l/aalib.sh

@@ -12,47 +12,32 @@ ARCH_NAME="qt-everywhere-opensource-src"
 
 # Required:    xorg-libraries
 # Recommended: alsa-lib
-#              make-ca
+#              at-spi2-core
 #              cups
+#              dbus
 #              double-conversion
 #              glib
-#              gst-plugins-base     (qtmultimedia backend)
 #              harfbuzz
 #              icu
-#              jasper
-#              libjpeg-turbo
-#              libmng
-#              libpng
-#              libtiff
-#              libwebp
-#              libxkbcommon
+#              hicolor-icon-theme
 #              mesa
-#              mtdev
-#              pcre2
+#              libjpeg-turbo
+#              libxkbcommon
 #              sqlite
-#              wayland              (пакет mesa должен быть собран с wayland egl backend)
+#              wayland
 #              xcb-util-image
 #              xcb-util-keysyms
 #              xcb-util-renderutil
 #              xcb-util-wm
-# Optional:    bluez                (для сборки sdpscanner и для модуля qtconnectivity)
-#              ibus
+# Optional:    gtk+3
 #              libinput
-#              mariadb или mysql    (https://www.mysql.com/)
-#              pciutils             (требуется для сборки qtwebengine)
+#              mariadb или mysql (https://www.mysql.com/)
+#              mit-kerberos-v5
+#              mtdev
 #              postgresql
-#              pulseaudio
-#              sdl2
 #              unixodbc
-#              assimp               (https://www.assimp.org/)
-#              flite                (https://github.com/festvox/flite)
-#              firebird             (https://www.firebirdsql.org/)
-#              freetds              (https://www.freetds.org/)
-#              libproxy             (https://libproxy.github.io/libproxy/)
-#              openal               (https://openal.org/)
-#              speech-dispatcher    (https://freebsoft.org/speechd/)
-#              tslib                (http://www.tslib.org/)
-#              vulkan               (https://vulkan.lunarg.com/sdk/home/)
+
+=== 27 + 1 ===
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

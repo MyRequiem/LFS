@@ -80,6 +80,7 @@ corefonts                               imagemagick
 cpdb                                    gtk4
 cpio                                    openjdk
 cppdap                                  cmake
+cracklib                                mit-kerberos-v5
 cranelift                               rustc
 cryptsetup
 cunit                                   libdrm
