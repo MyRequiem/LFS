@@ -273,6 +273,11 @@ https://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
 https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/12.2/docbook-xsl-nons-1.79.2-stack_fix-1.patch
 https://pagure.io/xmlto/archive/0.0.29/xmlto-0.0.29.tar.gz
+https://people.freedesktop.org/~mccann/dist/sound-theme-freedesktop-0.8.tar.bz2
+https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.2/libcanberra-0.30-wayland-1.patch
+https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
+https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.3.tar.xz
 
 
 ================================================================================
@@ -517,15 +522,10 @@ https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.
 https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 https://downloads.sourceforge.net/enlightenment/imlib2-1.9.1.tar.xz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
-https://people.freedesktop.org/~mccann/dist/sound-theme-freedesktop-0.8.tar.bz2
 https://github.com/libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
 https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz
 https://gstreamer.freedesktop.org/src/orc/orc-0.4.34.tar.xz
 https://www.samba.org/ftp/tdb/tdb-1.4.9.tar.gz
-https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/11.3/libcanberra-0.30-wayland-1.patch
-https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
-https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.1.tar.xz
 https://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 https://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz
 https://www.x.org/pub/individual/lib/libxcvt-0.1.2.tar.xz

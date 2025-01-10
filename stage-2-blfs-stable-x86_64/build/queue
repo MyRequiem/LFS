@@ -274,7 +274,10 @@ l/qt5-components.sh
 s/docbook-xml.sh
 s/docbook-xsl.sh
 s/xmlto.sh
-# l/libnotify.sh
+s/sound-theme-freedesktop.sh
+l/libcanberra.sh
+s/notification-daemon.sh
+l/libnotify.sh
 # l/libhandy.sh
 # l/dconf.sh
 # s/ibus.sh
@@ -361,7 +364,6 @@ s/xmlto.sh
 # ap/cups.sh
 # ap/ghostscript.sh
 # l/gdk-pixbuf-xlib.sh
-# l/gtk+2.sh
 # l/libglade.sh
 # n/nmap.sh
 # l/atkmm.sh
@@ -383,13 +385,10 @@ s/xmlto.sh
 # l/imlib2.sh
 # n/w3m.sh
 # l/libdazzle.sh
-# s/sound-theme-freedesktop.sh
 # l/sbc.sh
 # d/orc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
-# l/libcanberra.sh
-# s/notification-daemon.sh
 # l/libxklavier.sh
 # x/libs/startup-notification.sh
 # x/libs/libxcvt.sh
