@@ -32,14 +32,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup                   \
+meson setup ..                \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
-    -Ddebug-gui=false         \
-    -Dtests=false             \
-    -Dlibwacom=false          \
-    -Dudev-dir=/usr/lib/udev  \
-    .. || exit 1
+    -D debug-gui=false        \
+    -D tests=false            \
+    -D libwacom=false         \
+    -D udev-dir=/usr/lib/udev || exit 1
 
 ninja || exit 1
 

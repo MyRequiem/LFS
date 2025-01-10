@@ -262,6 +262,10 @@ x/xcb/xcb-util-cursor.sh
 x/xcb/xcb-util-keysyms.sh
 x/xcb/xcb-util-wm.sh
 x/xcb/xcb-util-xrm.sh
+x/misc/mtdev.sh
+x/libs/libevdev.sh
+l/libunwind.sh
+x/libs/libinput.sh
 
 # l/qt5-components.sh
 # l/qt6
@@ -347,7 +351,6 @@ x/xcb/xcb-util-xrm.sh
 # l/libglade.sh
 # n/nmap.sh
 # l/atkmm.sh
-# l/libunwind.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
 # s/desktop-file-utils.sh
@@ -392,9 +395,6 @@ x/xcb/xcb-util-xrm.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
 # x/xserver/xorg-server.sh
-# x/misc/mtdev.sh
-# x/libs/libevdev.sh
-# x/libs/libinput.sh
 # x/drivers/xorg-libinput-driver.sh
 # x/drivers/xorg-intel-vaapi-driver.sh [NEW]
 # x/drivers/xorg-intel-media.sh        [NEW]
