@@ -255,6 +255,13 @@ l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
 l/gtk4.sh
 l/double-conversion.sh
+x/xcb/xcb-util.sh
+x/xcb/xcb-util-image.sh
+x/xcb/xcb-util-renderutil.sh
+x/xcb/xcb-util-cursor.sh
+x/xcb/xcb-util-keysyms.sh
+x/xcb/xcb-util-wm.sh
+x/xcb/xcb-util-xrm.sh
 
 # l/qt5-components.sh
 # l/qt6
@@ -369,15 +376,8 @@ l/double-conversion.sh
 # s/notification-daemon.sh
 # l/libnotify.sh
 # l/libxklavier.sh
-# x/xcb/xcb-util.sh
 # x/libs/startup-notification.sh
 # x/libs/libxcvt.sh
-# x/xcb/xcb-util-image.sh
-# x/xcb/xcb-util-wm.sh
-# x/xcb/xcb-util-renderutil.sh
-# x/xcb/xcb-util-keysyms.sh
-# x/xcb/xcb-util-cursor.sh
-# x/xcb/xcb-util-xrm.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh
