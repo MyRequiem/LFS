@@ -291,7 +291,7 @@ l/libwebp.sh
 l/lcms2.sh
 l/libmng.sh
 l/jasper.sh
-# l/qt6.sh
+l/qt6.sh
 # ===========
 # d/extra-cmake-modules [NEW]
 # s/oxygen-icons.sh
