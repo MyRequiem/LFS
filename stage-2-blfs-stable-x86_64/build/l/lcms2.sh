@@ -19,11 +19,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему при использовании вместе с пакетом colord
-sed '/BufferSize < TagSize/,+1 s/goto Error/TagSize = BufferSize/' \
-    -i src/cmsio0.c || exit 1
-
-./configure \
+./configure       \
     --prefix=/usr \
     --disable-static || exit 1
 

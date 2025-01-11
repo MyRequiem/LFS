@@ -287,10 +287,10 @@ l/libsamplerate.sh
 l/sdl2.sh
 l/giflib.sh
 l/sdl12-compat.sh
-# l/libwebp.sh
-# l/lcms2.sh
-# l/libmng.sh
-# l/jasper.sh
+l/libwebp.sh
+l/lcms2.sh
+l/libmng.sh
+l/jasper.sh
 # l/qt6.sh
 # ===========
 # d/extra-cmake-modules [NEW]

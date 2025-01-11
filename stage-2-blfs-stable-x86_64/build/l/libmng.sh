@@ -19,8 +19,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
@@ -28,13 +26,6 @@ DOCS="false"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
-
-# документация
-if [[ "x${DOCS}" == "xtrue" ]]; then
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d "${TMP_DIR}${DOC_PATH}"
-    install -v -m644 doc/libmng.txt "${TMP_DIR}${DOC_PATH}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

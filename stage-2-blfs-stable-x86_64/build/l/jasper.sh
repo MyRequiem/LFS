@@ -41,19 +41,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir BUILD || exit 1
 cd BUILD || exit 1
 
-# если установлен пакет doxygen и/или texlive, то собираем документацию
-ENABLE_DOC="NO"
-# command -v doxygen &>/dev/null && ENABLE_DOC="YES"
-# command -v texdoc  &>/dev/null && ENABLE_DOC="YES"
-
 # удаляем пути поиска встроенной библиотеки
 #    -DCMAKE_SKIP_INSTALL_RPATH=YES
-cmake                                                             \
-    -DCMAKE_INSTALL_PREFIX=/usr                                   \
-    -DCMAKE_BUILD_TYPE=Release                                    \
-    -DCMAKE_SKIP_INSTALL_RPATH=YES                                \
-    -DJAS_ENABLE_DOC="${ENABLE_DOC}"                              \
-    -DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+cmake                                                              \
+    -D CMAKE_INSTALL_PREFIX=/usr                                   \
+    -D CMAKE_BUILD_TYPE=Release                                    \
+    -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
+    -D JAS_ENABLE_DOC=NO                                           \
+    -D ALLOW_IN_SOURCE_BUILD=YES                                   \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 
 make || exit 1
