@@ -1,13 +1,12 @@
 #! /bin/bash
 
-PRGNAME="pangomm"
+PRGNAME="atkmm22"
 
-### Pangomm (C++ API for Pango)
-# C++ интерфейс для Pango
+### Atkmm (C++ bindings for ATK)
+# C++ bindings для ATK (accessibility toolkit library)
 
-# Required:    cairomm
-#              glibmm
-#              pango
+# Required:    at-spi2-core
+#              glibmm26
 # Recommended: no
 # Optional:    no
 
@@ -39,11 +38,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (C++ API for Pango)
+# Package: ${PRGNAME} (C++ bindings for ATK)
 #
-# The Pangomm package provides a C++ interface to Pango
+# Atkmm is the official C++ interface for the ATK (accessibility toolkit
+# library)
 #
-# Home page: http://gtkmm.org
+# Home page: http://www.gtkmm.org/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

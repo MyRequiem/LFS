@@ -1,15 +1,15 @@
 #! /bin/bash
 
-PRGNAME="gtkmm"
+PRGNAME="gtkmm3"
 
-### Gtkmm (C++ interface for GTK+3)
+### GTKmm3 (C++ interface for GTK+3)
 # C++ интерфейс для популярной библиотеки графического интерфейса GTK+3.
 # Основные моменты это безопасные обратные вызовы и полный набор виджетов,
 # которые легко расширяются с помощью наследования.
 
-# Required:    atkmm
+# Required:    atkmm22
 #              gtk+3
-#              pangomm
+#              pangomm24
 # Recommended: no
 # Optional:    doxygen (для сборки документации)
 
@@ -58,8 +58,8 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (C++ interface for GTK+3)
 #
-# gtkmm is the official C++ interface for the popular GUI library GTK+ version
-# 3. Highlights include typesafe callbacks, and a comprehensive set of widgets
+# gtkmm3 is the official C++ interface for the popular GUI library GTK+3.
+# Highlights include typesafe callbacks, and a comprehensive set of widgets
 # that are easily extensible via inheritance.
 #
 # Home page: https://www.${PRGNAME}.org/

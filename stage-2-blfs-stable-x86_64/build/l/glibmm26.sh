@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="glibmm"
+PRGNAME="glibmm26"
 
 ### GLibmm (C++ bindings for glib)
 # Набор C++ bindings для GLib, включая кроссплатформенные API, такие как

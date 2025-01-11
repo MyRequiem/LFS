@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="cairomm"
+PRGNAME="cairomm114"
 
 ### cairomm (C++ wrapper for the cairo graphics library)
 # C++ интерфейс для графической библиотеки cairo

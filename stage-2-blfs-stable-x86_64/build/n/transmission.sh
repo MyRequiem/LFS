@@ -11,7 +11,7 @@ PRGNAME="transmission"
 #              libevent
 #              libpsl
 #              --- для сборки GTK и QT GUI ---
-#              gtkmm
+#              gtkmm3
 #              qt5-components
 # Optional:    nodejs        (для сборки web-клиента)
 #              appindicator  (https://github.com/ubuntu/gnome-shell-extension-appindicator)
