@@ -278,9 +278,10 @@ s/sound-theme-freedesktop.sh
 l/libcanberra.sh
 s/notification-daemon.sh
 l/libnotify.sh
-# l/libhandy.sh
-# l/dconf.sh
-# s/ibus.sh
+l/libhandy.sh
+s/desktop-file-utils.sh
+l/dconf.sh
+s/ibus.sh
 # l/fftw.sh
 # l/libsamplerate.sh
 # l/sdl2.sh
@@ -369,7 +370,6 @@ l/libnotify.sh
 # l/atkmm.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
-# s/desktop-file-utils.sh
 # l/fltk.sh
 # n/pinentry.sh
 # x/libs/glew.sh

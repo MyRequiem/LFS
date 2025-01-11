@@ -278,6 +278,12 @@ https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.2/libcanberra-0.30-wayland-1.patch
 https://download.gnome.org/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
 https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.3.tar.xz
+https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz
+https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.27.tar.xz
+https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz
+https://download.gnome.org/sources/dconf-editor/45/dconf-editor-45.0.1.tar.xz
+https://github.com/ibus/ibus/archive/1.5.30/ibus-1.5.30.tar.gz
+https://www.unicode.org/Public/zipped/15.1.0/UCD.zip
 
 
 ================================================================================
@@ -505,7 +511,6 @@ https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
-https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz
 https://fltk.org/pub/fltk/1.3.8/fltk-1.3.8-source.tar.gz
 https://downloads.sourceforge.net/glew/glew-2.2.0.tgz
 https://download.gnome.org/sources/libgsf/1.14/libgsf-1.14.50.tar.xz
@@ -651,11 +656,6 @@ http://ftp.midnight-commander.org/mc-4.8.29.tar.xz
 http://ftp.osuosl.org/pub/blfs/conglomeration/a52dec/a52dec-0.7.4.tar.gz
 http://downloads.webmproject.org/releases/webp/libwebp-1.3.0.tar.gz
 https://downloads.xvid.com/downloads/xvidcore-1.3.7.tar.gz
-https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.1.tar.xz
-https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz
-https://download.gnome.org/sources/dconf-editor/43/dconf-editor-43.0.tar.xz
-https://github.com/ibus/ibus/releases/download/1.5.27/ibus-1.5.27.tar.gz
-https://www.unicode.org/Public/zipped/15.0.0/UCD.zip
 https://www.libsdl.org/release/SDL2-2.26.3.tar.gz
 https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/ffmpeg-5.1.2-chromium_method-1.patch
