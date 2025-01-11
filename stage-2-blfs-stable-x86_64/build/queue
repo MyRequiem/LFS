@@ -282,9 +282,9 @@ l/libhandy.sh
 s/desktop-file-utils.sh
 l/dconf.sh
 s/ibus.sh
-# l/fftw.sh
-# l/libsamplerate.sh
-# l/sdl2.sh
+l/fftw.sh
+l/libsamplerate.sh
+l/sdl2.sh
 # l/giflib.sh
 # l/sdl12-compat [NEW]
 # l/libwebp.sh

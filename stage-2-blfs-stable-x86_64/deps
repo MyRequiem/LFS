@@ -14,12 +14,12 @@ adwaita-icon-theme                      gtk+3, gtk4
 afs                                     sudo
 ag
 aka-mrsid-utilities                     imagemagick
-alsa-firmware                           sdl2, libao
+alsa-firmware                           libao
 alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, gimp, gst-plugins-base, mpg123, openjdk, libao, qt5-components
-alsa-oss                                sdl2, gst-plugins-good, libao
-alsa-plugins                            sdl2, libao
-alsa-tools                              sdl2, alsa-firmware, libao
-alsa-utils                              sdl2, faad2, faac, libao
+alsa-oss                                gst-plugins-good, libao
+alsa-plugins                            libao
+alsa-tools                              alsa-firmware, libao
+alsa-utils                              faad2, faac, libao
 apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
@@ -441,7 +441,7 @@ libtizonia                              mesa
 libumfpack                              gegl
 libunibreak                             libass
 libunistring                            libidn2, gnutls, libpsl, guile
-libunwind                               mesa, gstreamer, xorg-server, libinput, gimp
+libunwind                               mesa, gstreamer, sdl2, xorg-server, libinput, gimp
 liburcu                                 bind-utils, glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
 libutp                                  transmission
@@ -594,6 +594,7 @@ php                                     cups, libsoup, libsoup3
 picogui
 pigz                                    openjdk
 pinentry                                gnupg
+pipewire                                sdl2
 pixman                                  cairo, xorg-server
 ply                                     mesa
 pm-utils
@@ -727,6 +728,7 @@ slang                                   aalib, mc
 slop                                    maim
 smartmontools
 snappy                                  mariadb
+sndio                                   sdl2
 sound-theme-freedesktop                 libcanberra
 soundtouch                              gst-plugins-bad
 soxr                                    pulseaudio

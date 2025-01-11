@@ -54,7 +54,6 @@ make clean &&        \
     --enable-float || exit 1
 
 make || exit 1
-# make check
 make install DESTDIR="${TMP_DIR}"
 
 # для long double
@@ -67,7 +66,6 @@ make clean &&        \
     --enable-long-double || exit 1
 
 make || exit 1
-# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
