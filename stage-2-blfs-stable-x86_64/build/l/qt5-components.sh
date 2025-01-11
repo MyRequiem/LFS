@@ -37,6 +37,13 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              postgresql
 #              unixodbc
 
+###
+# NOTE:
+#    перед сборкой и установкой пакета сразу вручную добавляем в
+#    /etc/ld.so.conf строку:
+#       /opt/qt5/lib
+###
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
