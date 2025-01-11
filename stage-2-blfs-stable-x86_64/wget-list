@@ -287,6 +287,9 @@ https://www.unicode.org/Public/zipped/15.1.0/UCD.zip
 https://www.fftw.org/fftw-3.3.10.tar.gz
 https://github.com/libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
 https://www.libsdl.org/release/SDL2-2.30.6.tar.gz
+https://sourceforge.net/projects/giflib/files/giflib-5.2.2.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.2/giflib-5.2.2-upstream_fixes-1.patch
+https://github.com/libsdl-org/sdl12-compat/archive/release-1.2.68/sdl12-compat-release-1.2.68.tar.gz
 
 
 ================================================================================
@@ -526,7 +529,6 @@ https://download.gnome.org/sources/gjs/1.74/gjs-1.74.1.tar.xz
 https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz
-https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
 https://downloads.sourceforge.net/enlightenment/imlib2-1.9.1.tar.xz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
 https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz

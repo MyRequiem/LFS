@@ -73,7 +73,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5, double-conversion
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5, double-conversion
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -201,7 +201,7 @@ glibmm                                  pangomm, atkmm
 glm                                     slop
 glslang                                 mesa
 glslc                                   gst-plugins-bad, gtk4
-glu                                     fltk, freeglut
+glu                                     fltk, freeglut, sdl12-compat
 glusterfs
 gnome-keyring                           libsecret
 gnome-shell                             polkit
@@ -713,7 +713,7 @@ sbc                                     pulseaudio, gst-plugins-bad
 schroedinger                            ffmpeg
 scrot
 sdl12-compat                            mpg123, libmpeg2, gst-plugins-bad
-sdl2                                    ffmpeg, gegl, gst-plugins-base
+sdl2                                    ffmpeg, gegl, gst-plugins-base, sdl12-compat
 selinux                                 elogind
 sendmail                                gnupg, sudo, gimp, fcron, at, php
 septel                                  libpcap

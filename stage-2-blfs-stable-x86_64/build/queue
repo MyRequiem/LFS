@@ -285,8 +285,8 @@ s/ibus.sh
 l/fftw.sh
 l/libsamplerate.sh
 l/sdl2.sh
-# l/giflib.sh
-# l/sdl12-compat [NEW]
+l/giflib.sh
+l/sdl12-compat.sh
 # l/libwebp.sh
 # l/lcms2.sh
 # l/libmng.sh

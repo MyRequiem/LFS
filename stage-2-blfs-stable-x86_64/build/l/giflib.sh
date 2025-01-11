@@ -17,28 +17,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
+# удалим ненужную зависимость от ImageMagick
+cp pic/gifgrid.gif doc/giflib-logo.gif
 
 make || exit 1
-# make check
+# пакет не имеет набора тестов
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
-# удалим не используемую в BLFS статическую библиотеку
+# удалим статическую библиотеку
 rm -f "${TMP_DIR}/usr/lib/libgif.a"
-
-if [[ "x${DOCS}" == "xtrue"  ]]; then
-    find doc \( \
-                -name Makefile\* -o \
-                -name \*.1          \
-                -name \*.xml     -o \
-                -name \*.in      -o \
-             \) \
-        -exec rm {} \;
-
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -dm755 "${TMP_DIR}${DOC_PATH}"
-    cp -R doc/*    "${TMP_DIR}${DOC_PATH}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -51,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Interchange Format) as well as programs for converting and working with GIF
 # files
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://sourceforge.net/projects/${PRGNAME}/files/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
