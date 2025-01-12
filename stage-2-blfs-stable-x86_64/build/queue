@@ -295,6 +295,9 @@ l/qt6.sh
 # ===========
 d/extra-cmake-modules.sh
 s/oxygen-icons.sh
+l/libxklavier.sh
+x/libs/startup-notification.sh
+x/libs/glew.sh
 
 # ==============================================================================
 # a/time.sh
@@ -372,7 +375,6 @@ s/oxygen-icons.sh
 # l/libspectre.sh
 # l/fltk.sh
 # n/pinentry.sh
-# x/libs/glew.sh
 # l/libgsf.sh
 # l/goffice.sh
 # l/gtk-engines.sh
@@ -389,8 +391,6 @@ s/oxygen-icons.sh
 # d/orc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
-# l/libxklavier.sh
-# x/libs/startup-notification.sh
 # x/libs/libxcvt.sh
 # x/data/xbitmaps.sh
 # x/apps/xorg-applications.sh

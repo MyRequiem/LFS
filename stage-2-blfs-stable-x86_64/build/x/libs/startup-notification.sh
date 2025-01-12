@@ -25,9 +25,6 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-install -v -m644 -D "doc/${PRGNAME}.txt" \
-    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}/${PRGNAME}.txt"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
