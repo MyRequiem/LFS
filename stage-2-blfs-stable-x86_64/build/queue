@@ -298,6 +298,10 @@ s/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
+l/fltk.sh
+n/pinentry.sh
+l/imlib2.sh
+l/libgsf.sh
 
 # ==============================================================================
 # a/time.sh
@@ -373,9 +377,6 @@ x/libs/glew.sh
 # l/atkmm22.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
-# l/fltk.sh
-# n/pinentry.sh
-# l/libgsf.sh
 # l/goffice.sh
 # l/gtk-engines.sh
 # l/gtkmm3.sh
@@ -384,7 +385,6 @@ x/libs/glew.sh
 # l/libsecret.sh
 # l/gcr3.sh
 # s/numactl.sh
-# l/imlib2.sh
 # n/w3m.sh
 # l/libdazzle.sh
 # l/sbc.sh

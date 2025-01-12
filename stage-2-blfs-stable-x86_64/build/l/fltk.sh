@@ -53,9 +53,6 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-API_DOCS="false"
-# command -v doxygen &>/dev/null && API_DOCS="true"
-
 # man-страницы устанавливаем в /usr/share/man/ а не в /usr/share/man/cat*
 sed -i -e '/cat./d' documentation/Makefile || exit 1
 
@@ -65,8 +62,6 @@ sed -i -e '/cat./d' documentation/Makefile || exit 1
 
 make || exit 1
 
-[[ "x${API_DOCS}" == "xtrue" ]] && make -C documentation html
-
 # NOTE: тесты для пакета интерактивны
 # ./test/unittests
 #
@@ -74,7 +69,7 @@ make || exit 1
 # которые можно запускать индивидуально
 
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
-[[ "x${API_DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -91,7 +86,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # across the world with a central repository in the US.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  http://${PRGNAME}.org/pub/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
+# Download:  https://${PRGNAME}.org/pub/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
 #
 EOF
 

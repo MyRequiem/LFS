@@ -15,7 +15,8 @@ PRGNAME="pinentry"
 #              gcr4 или gcr3
 #              kde-frameworks или kwayland
 #              libsecret
-#              qt5-components                (для сборки 'pinentry-qt')
+#              qt5-components                (для сборки 'pinentry-qt5')
+#              qt6                           (для сборки 'pinentry-qt')
 #              efl                           (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
