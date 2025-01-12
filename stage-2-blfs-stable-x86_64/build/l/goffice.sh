@@ -14,11 +14,12 @@ PRGNAME="goffice"
 #              libxslt
 #              which
 # Recommended: no
-# Optional:    ghostscript
+# Optional:    glib
+#              ghostscript
 #              gsettings-desktop-schemas
 #              gtk-doc
-#              lasem      (https://download.gnome.org/sources/lasem/)
-#              libspectre (https://www.freedesktop.org/wiki/Software/libspectre/)
+#              lasem         (https://download.gnome.org/sources/lasem/)
+#              libspectre    (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,19 +28,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-INSTALL_GTK_DOC="false"
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
-
-./configure       \
-    --prefix=/usr \
-    "${GTK_DOC}" || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${INSTALL_GTK_DOC}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibmm26"
+ARCH_NAME="glibmm"
 
 ### GLibmm (C++ bindings for glib)
 # Набор C++ bindings для GLib, включая кроссплатформенные API, такие как
@@ -17,23 +18,39 @@ PRGNAME="glibmm26"
 #              mm-common       (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-2.6*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-EXAMPLES="false"
-
 mkdir bld
 cd bld || exit 1
 
-meson                               \
-    --prefix=/usr                   \
-    --buildtype=release             \
-    -Dbuild-documentation="${DOCS}" \
-    -Dbuild-examples="${EXAMPLES}"  \
+meson setup                      \
+    --prefix=/usr                \
+    --buildtype=release          \
+    -D build-documentation=false \
+    -D build-examples=false      \
     .. || exit 1
 
 ninja || exit 1
@@ -53,8 +70,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # utility methods, such as a text encoding converter API, file access, and
 # threads.
 #
-# Home page: http://www.gtkmm.org/
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gtkmm.org/
+# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
