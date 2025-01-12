@@ -305,6 +305,9 @@ l/libgsf.sh
 l/goffice.sh
 l/glibmm26.sh
 l/atkmm22.sh
+l/cairomm114.sh
+l/pangomm24.sh
+l/gtkmm3.sh
 
 # ==============================================================================
 # a/time.sh
@@ -367,10 +370,8 @@ l/atkmm22.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
 # ap/ghostscript.sh
-# l/cairomm114.sh
 # d/python-modules/python3-pyatspi2.sh
 # l/glib-networking.sh
-# l/pangomm24.sh
 # ap/cups.sh
 # ap/ghostscript.sh
 # l/gdk-pixbuf-xlib.sh
@@ -379,7 +380,6 @@ l/atkmm22.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
 # l/gtk-engines.sh
-# l/gtkmm3.sh
 # s/gtk-vnc.sh
 # d/gjs.sh
 # l/libsecret.sh
