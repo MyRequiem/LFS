@@ -74,7 +74,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5, double-conversion
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5, double-conversion, extra-cmake-modules
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -143,6 +143,7 @@ ethtool                                 pm-utils
 exfat                                   udisks
 exim                                    gnupg, sudo, gimp, fcron, at, php
 exiv2                                   gexiv2, gegl, mirage
+extra-cmake-modules                     oxygen-icons
 faac                                    gst-plugins-bad
 faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
@@ -574,6 +575,7 @@ opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 ossp-mm                                 php
+oxygen-icons
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
 p7zip                                   imagemagick
 pakchois                                neon
@@ -662,6 +664,7 @@ python3-pygments                        llvm, libbytesize, gegl
 python3-pygobject3                      dbus, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
 python3-pyparsing                       libinput
 python3-pyproject-metadata              python3-meson
+python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
 python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3
@@ -674,7 +677,7 @@ python3-quart                           python3-urllib3
 python3-quart-trio                      python3-urllib3
 python3-requests
 python3-setuptools-scm                  python3-pluggy
-python3-sphinx                          libuv, python3-requests, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, libinput, mariadb
+python3-sphinx                          libuv, python3-requests, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, libinput, mariadb, extra-cmake-modules
 python3-tornado                         python3-urllib3
 python3-trio                            python3-urllib3
 python3-trove-classifiers               python3-hatchling
@@ -687,7 +690,7 @@ pytrash
 qdbm                                    php
 qrencode                                gst-plugins-bad
 qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler, flameshot, transmission
-qt6                                     highlight, cmake, gst-plugins-good, poppler
+qt6                                     highlight, cmake, gst-plugins-good, poppler, oxygen-icons
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
@@ -699,6 +702,7 @@ redland
 reiserfsprogs                           lvm2
 rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
+reusetool                               extra-cmake-modules
 rhash                                   cmake
 roxen-webserver                         php
 rrdtool                                 lm-sensors

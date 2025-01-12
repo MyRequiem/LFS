@@ -293,8 +293,8 @@ l/libmng.sh
 l/jasper.sh
 l/qt6.sh
 # ===========
-# d/extra-cmake-modules [NEW]
-# s/oxygen-icons.sh
+d/extra-cmake-modules.sh
+s/oxygen-icons.sh
 
 # ==============================================================================
 # a/time.sh
