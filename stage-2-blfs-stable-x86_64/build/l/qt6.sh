@@ -59,39 +59,37 @@ ARCH_NAME="qt-everywhere-src"
 
 ###
 # NOTE:
+###
 #    перед сборкой и установкой пакета сразу вручную добавляем в
 #    /etc/ld.so.conf строку:
 #       /opt/qt6/lib
-###
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
-# SOURCES="${ROOT}/src"
-# VERSION="$(find "${SOURCES}" -type f \
-#     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
-#     cut -d . -f 3- | cut -d - -f 1 | rev)"
-# echo $VERSION; exit
-# BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-# rm -rf "${BUILD_DIR}"
-# mkdir -pv "${BUILD_DIR}"
-# cd "${BUILD_DIR}" || exit 1
-#
-# tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
-# cd "qt-everywhere-src-${VERSION}" || exit 1
-#
-# chown -R root:root .
-# find -L . \
-#     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-#     -o -perm 511 \) -exec chmod 755 {} \; -o \
-#     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-#     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-# TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+# для сборки требуется ~37Gb дискового пространства, поэтому собираем не в /tmp
+# а в директории, которая находится в корневом разделе
+BUILD_DIR="${ROOT}/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
 
 # NOTE:
 # Qt6 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
@@ -102,9 +100,6 @@ export QT6PREFIX=/opt/qt6
 #     |
 #     profile.d/qt6.sh
 #     sudoers.d/qt6
-# /usr
-#     |
-#     bin/
 # /opt
 #     |
 #     qt6               (ссылка на qt6-${VERSION}/)
@@ -131,11 +126,7 @@ ln -sv "qt6-${VERSION}" "${TMP_DIR}${QT6PREFIX}-${VERSION}/../qt6"
 
 ninja || exit 1
 # пакет не имеет набора тестов
-
-###
-# make install INSTALL_ROOT="${TMP_DIR}"
-###
-ninja install
+DESTDIR="${TMP_DIR}" ninja install
 
 # удалим ссылки на каталог сборки из установленных библиотек
 #    /opt/qt6/lib/libQt5Purchasing.prl
@@ -145,10 +136,11 @@ find "${TMP_DIR}${QT6PREFIX}"/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
 # QT6DIR также должен быть доступен пользователю root
-cat > "${TMP_DIR}/etc/sudoers.d/qt6" << "EOF"
+SUDOERS="/etc/sudoers.d/qt6"
+cat > "${TMP_DIR}${SUDOERS}" << "EOF"
 Defaults env_keep += QT6DIR
 EOF
-chmod 440 "${TMP_DIR}/etc/sudoers.d/qt"
+chmod 440 "${TMP_DIR}${SUDOERS}"
 
 QT6_SH="/etc/profile.d/qt6.sh"
 cat << EOF > "${TMP_DIR}${QT6_SH}"
@@ -189,7 +181,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
