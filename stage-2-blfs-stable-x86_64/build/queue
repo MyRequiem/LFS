@@ -315,6 +315,7 @@ l/cairomm118.sh
 l/pangomm25.sh
 l/gtkmm4.sh
 x/data/xbitmaps.sh
+x/apps/xorg-applications.sh
 
 # ==============================================================================
 # a/time.sh
@@ -398,7 +399,6 @@ x/data/xbitmaps.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
 # x/libs/libxcvt.sh
-# x/apps/xorg-applications.sh
 # x/data/xcursor-themes.sh
 # x/fonts/xorg-fonts.sh
 # x/fonts/dejavu-fonts-ttf.sh

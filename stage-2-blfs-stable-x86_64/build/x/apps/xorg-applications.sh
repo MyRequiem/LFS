@@ -19,7 +19,6 @@ PKG_VERSION="11"
 # NOTES:
 ###
 # iceauth         - is the ICE authority file utility
-# luit            - provides locale and ISO 2022 support for Unicode terminals
 # mkfontdir       - creates an index of X font files in a directory
 # mkfontscale     - creates an index of scalable font files for X
 # sessreg         - manages utmp/wtmp entries for non-init clients
@@ -123,7 +122,6 @@ mkdir -p "${TMP_PKGS}"
 # список всех пакетов
 PACKAGES="\
 iceauth \
-luit \
 mkfontscale \
 sessreg \
 setxkbmap \
@@ -213,15 +211,6 @@ for PKGNAME in ${PACKAGES}; do
         -o -perm 511 \) -exec chmod 755 {} \; -o \
         \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
         -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-    case "${PKGNAME}" in
-        luit)
-            sed -i -e "/D_XOPEN/s/5/6/" configure || {
-                show_error "'sed' for ${PKGNAME} package"
-                exit 1
-            }
-            ;;
-    esac
 
     # shellcheck disable=SC2086
     ./configure \
