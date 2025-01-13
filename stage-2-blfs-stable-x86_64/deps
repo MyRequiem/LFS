@@ -492,6 +492,7 @@ lsof
 ltc-tools                               gst-plugins-bad
 lua                                     highlight, nmap, gtk-engines, vim
 luajit                                  gegl
+luit
 lvm2                                    parted, cryptsetup, udisks
 lxqt-notificationd                      libnotify
 lxqt-policykit                          polkit
@@ -858,7 +859,7 @@ xkeyboard-config                        libxkbcommon, xorg-server
 xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, pm-utils, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
 xorg-amdgpu-driver
-xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils
+xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils, luit
 xorg-ati-driver
 xorg-cf-files                           imake
 xorg-evdev-driver

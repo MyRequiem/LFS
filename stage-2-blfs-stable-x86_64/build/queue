@@ -325,6 +325,8 @@ x/fonts/liberation-fonts-ttf.sh
 x/fonts/noto-color-emoji-ttf.sh
 x/fonts/noto-fonts-ttf.sh
 x/fonts/opendesktop-fonts-ttf.sh
+x/libs/libxcvt.sh
+x/apps/luit.sh
 
 # ==============================================================================
 # a/time.sh
@@ -407,7 +409,6 @@ x/fonts/opendesktop-fonts-ttf.sh
 # d/orc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
-# x/libs/libxcvt.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
 # x/xserver/xorg-server.sh

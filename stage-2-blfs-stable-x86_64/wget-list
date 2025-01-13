@@ -394,6 +394,8 @@ https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fon
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-fonts-ttf/noto-fonts-ttf-20201206.tar.xz
 https://github.com/googlei18n/noto-emoji/archive/v2.047/noto-emoji-2.047.tar.gz
 https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
+https://www.x.org/pub/individual/lib/libxcvt-0.1.2.tar.xz
+https://invisible-mirror.net/archives/luit/luit-20240102.tgz
 
 
 ================================================================================
@@ -626,8 +628,6 @@ https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
 https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz
 https://gstreamer.freedesktop.org/src/orc/orc-0.4.34.tar.xz
 https://www.samba.org/ftp/tdb/tdb-1.4.9.tar.gz
-https://www.x.org/pub/individual/lib/libxcvt-0.1.2.tar.xz
-https://www.x.org/archive/individual/app/luit-1.1.1.tar.bz2
 https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz
 https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
