@@ -386,6 +386,14 @@ https://www.x.org/archive/individual/font/font-bh-type1-1.0.4.tar.xz
 https://www.x.org/archive/individual/font/font-ibm-type1-1.0.4.tar.xz
 https://www.x.org/archive/individual/font/font-misc-ethiopic-1.0.5.tar.xz
 https://www.x.org/archive/individual/font/font-xfree86-type1-1.0.5.tar.xz
+https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/1.026R-vf.tar.gz
+https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
+https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
+https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
+https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-fonts-ttf/noto-fonts-ttf-20201206.tar.xz
+https://github.com/googlei18n/noto-emoji/archive/v2.047/noto-emoji-2.047.tar.gz
+https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
 
 
 ================================================================================
@@ -620,14 +628,6 @@ https://gstreamer.freedesktop.org/src/orc/orc-0.4.34.tar.xz
 https://www.samba.org/ftp/tdb/tdb-1.4.9.tar.gz
 https://www.x.org/pub/individual/lib/libxcvt-0.1.2.tar.xz
 https://www.x.org/archive/individual/app/luit-1.1.1.tar.bz2
-https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
-https://mirror.tochlab.net/pub/gnu/freefont/freefont-ttf-20120503.zip
-https://mirror.tochlab.net/pub/gnu/freefont/freefont-otf-20120503.tar.gz
-https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/noto-fonts-ttf/noto-fonts-ttf-20201206.tar.xz
-https://github.com/googlei18n/noto-emoji/archive/v2.042/noto-emoji-2.042.tar.gz
-https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/1.026R-vf.tar.gz
-https://sources.archlinux.org/other/opendesktop-fonts/opendesktop-fonts-1.4.2.tar.gz
 https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz
 https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz

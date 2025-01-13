@@ -65,9 +65,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # characters for writing systems based on the Latin alphabet, FreeFont contains
 # symbol characters and characters from other writing systems.
 #
-# Home page: https://www.gnu.org/software/freefont/
-# Download:  https://mirror.tochlab.net/pub/gnu/freefont/${PRGNAME}-ttf-${VERSION}.zip
-#            https://mirror.tochlab.net/pub/gnu/freefont/${PRGNAME}-otf-${VERSION}.tar.gz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://mirror.tochlab.net/pub/gnu/${PRGNAME}/${PRGNAME}-ttf-${VERSION}.zip
+#            https://mirror.tochlab.net/pub/gnu/${PRGNAME}/${PRGNAME}-otf-${VERSION}.tar.gz
 #
 EOF
 

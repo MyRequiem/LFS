@@ -318,6 +318,13 @@ x/data/xbitmaps.sh
 x/apps/xorg-applications.sh
 x/data/xcursor-themes.sh
 x/fonts/xorg-fonts.sh
+x/fonts/adobe-source-code-pro-font-otf.sh
+x/fonts/dejavu-fonts-ttf.sh
+x/fonts/freefont.sh
+x/fonts/liberation-fonts-ttf.sh
+x/fonts/noto-color-emoji-ttf.sh
+x/fonts/noto-fonts-ttf.sh
+x/fonts/opendesktop-fonts-ttf.sh
 
 # ==============================================================================
 # a/time.sh
@@ -401,13 +408,6 @@ x/fonts/xorg-fonts.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
 # x/libs/libxcvt.sh
-# x/fonts/dejavu-fonts-ttf.sh
-# x/fonts/freefont.sh
-# x/fonts/liberation-fonts-ttf.sh
-# x/fonts/noto-fonts-ttf.sh
-# x/fonts/noto-color-emoji-ttf.sh
-# x/fonts/adobe-source-code-pro-font-otf.sh
-# x/fonts/opendesktop-fonts-ttf.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
 # x/xserver/xorg-server.sh
