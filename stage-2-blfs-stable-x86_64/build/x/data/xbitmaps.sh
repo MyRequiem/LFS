@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # built in Xorg chapter.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/data/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/data/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
