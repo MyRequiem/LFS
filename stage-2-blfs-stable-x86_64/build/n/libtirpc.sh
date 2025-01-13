@@ -17,7 +17,6 @@ PRGNAME="libtirpc"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -35,22 +34,9 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-NETCONFIG="/etc/netconfig"
-if [ -f "${NETCONFIG}" ]; then
-    mv "${NETCONFIG}" "${NETCONFIG}.old"
-fi
-
-BINDRESVPORT="/etc/bindresvport.blacklist"
-if [ -f "${BINDRESVPORT}" ]; then
-    mv "${BINDRESVPORT}" "${BINDRESVPORT}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${NETCONFIG}"
-config_file_processing "${BINDRESVPORT}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Transport-Independent RPC library)
@@ -62,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (RPC) API. It replaces the RPC, but not the NIS library entries that used to
 # be in glibc.
 #
-# Home page: http://sourceforge.net/projects/${PRGNAME}/
+# Home page: https://sourceforge.net/projects/${PRGNAME}/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF

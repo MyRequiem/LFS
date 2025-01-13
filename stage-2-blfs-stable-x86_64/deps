@@ -97,7 +97,7 @@ dag                                     libpcap
 datefudge                               gnutls
 dblatex                                 git, xmlto, graphite2, gimp
 dbmaker                                 php
-dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils, udisks, gnome-keyring, qt5-components, qt6
+dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils, udisks, gnome-keyring, qt5-components, qt6, xorg-server
 dbus-glib                               gimp, enchant, gconf
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
@@ -277,6 +277,7 @@ impacket                                curl
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, imagemagick
 intel-gpu-tools                         libva
+intel-media                             libva
 inxi
 iptables
 isl                                     gcc
@@ -492,7 +493,7 @@ lsof
 ltc-tools                               gst-plugins-bad
 lua                                     highlight, nmap, gtk-engines, vim
 luajit                                  gegl
-luit
+luit                                    xterm
 lvm2                                    parted, cryptsetup, udisks
 lxqt-notificationd                      libnotify
 lxqt-policykit                          polkit
@@ -613,7 +614,7 @@ pm-utils
 pngcrush                                gimp
 pngnq                                   gimp
 pocketlint                              libbytesize
-polkit                                  elogind, xorg-server, upower, udisks, gconf
+polkit                                  elogind, upower, udisks, gconf
 polkit-gnome                            polkit
 poppler                                 cairo, gegl, gimp
 popt                                    rsync, cryptsetup
@@ -784,6 +785,7 @@ tree
 tremor                                  gst-plugins-base
 trousers                                gnutls
 tslib                                   qt6
+twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good
 udisks
 ufraw                                   imagemagick
@@ -848,6 +850,7 @@ xcb-util-renderutil                     xcb-util-cursor, xorg-server, qt5-compon
 xcb-util-wm                             xorg-server, i3, qt5-components, qt6
 xcb-util-xrm                            i3
 xclip                                   password-store
+xclock                                  xinit
 xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf
 xdg-user-dirs
 xdg-utils                               cups, gimp, imagemagick
@@ -859,14 +862,13 @@ xkeyboard-config                        libxkbcommon, xorg-server
 xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, pm-utils, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
 xorg-amdgpu-driver
-xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xterm, xdg-utils, luit
+xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xdg-utils, luit
 xorg-ati-driver
 xorg-cf-files                           imake
 xorg-evdev-driver
 xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server, aalib
 xorg-intel-driver
-xorg-intel-media                        libva
 xorg-intel-vaapi-driver                 libva
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6
@@ -877,7 +879,7 @@ xorg-synaptics-driver
 xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
 xsel                                    dmenu, clipmenu
-xterm                                   imagemagick
+xterm                                   xinit, imagemagick
 xvid                                    ffmpeg
 xxhash                                  rsync
 xxkb

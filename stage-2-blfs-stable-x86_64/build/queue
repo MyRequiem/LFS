@@ -327,6 +327,10 @@ x/fonts/noto-fonts-ttf.sh
 x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
+x/misc/xterm.sh
+n/libtirpc.sh
+x/xserver/xorg-server.sh
+x/apps/xinit.sh
 
 # ==============================================================================
 # a/time.sh
@@ -343,7 +347,6 @@ x/apps/luit.sh
 # l/aspell-dict-ru.sh
 # l/libatasmart.sh
 # l/c-ares.sh
-# n/libtirpc.sh
 # l/libnsl.sh
 # l/nspr.sh
 # l/nss.sh
@@ -411,11 +414,8 @@ x/apps/luit.sh
 # s/gtk-vnc.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
-# x/xserver/xorg-server.sh
 # x/drivers/xorg-libinput-driver.sh
-# x/drivers/xorg-intel-vaapi-driver.sh [NEW]
-# x/drivers/xorg-intel-media.sh        [NEW]
-# x/xserver/xorg-server.sh
+# x/drivers/intel-vaapi-driver.sh [NEW]
 # x/drivers/xorg-evdev-driver.sh
 # x/drivers/xorg-synaptics-driver.sh
 # x/drivers/xorg-amdgpu-driver.sh
@@ -424,8 +424,6 @@ x/apps/luit.sh
 # x/drivers/xorg-intel-driver.sh
 # x/drivers/xorg-nouveau-driver.sh
 # x/drivers/xorg-vmware-driver.sh
-# x/misc/xterm.sh
-# x/apps/xinit.sh
 # # Graphical Environments полностью установлено (кроме оконного менеджера i3),
 # # пересоберем пакеты openssh и ghostscript
 # n/openssh.sh

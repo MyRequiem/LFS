@@ -8,18 +8,20 @@ PRGNAME="xorg-server"
 
 # Required:    libxcvt
 #              pixman
-#              xorg-fonts
-#              xkeyboard-config
-# Recommended: elogind
-#              libepoxy            (для glamor и xwayland)
+#              xorg-fonts           (только утилита font-util)
+#              xkeyboard-config     (runtime)
+# Recommended: dbus
+#              elogind              (runtime)
+#              libepoxy             (для glamor и xwayland)
 #              libtirpc
-#              polkit
-#              xorg-libinput-driver
-# Optional:    acpid
+#              xorg-libinput-driver (runtime)
+# Optional:    acpid                (runtime)
 #              libunwind
-#              --- для сборки документации ---
+#              --- для документации ---
 #              doxygen
 #              fop
+#              xmlto
+#              xorg-sgml-doctools   (https://www.x.org/archive/individual/doc/)
 #              --- для сборки xephyr ---
 #              nettle
 #              libgcrypt
@@ -27,11 +29,19 @@ PRGNAME="xorg-server"
 #              xcb-util-image
 #              xcb-util-renderutil
 #              xcb-util-wm
-#              --- для сборки документации ---
-#              xmlto
-#              xorg-sgml-doctools  (https://www.x.org/archive/individual/doc/)
 #              --- для тестов ---
-#              rendercheck         (https://gitlab.freedesktop.org/xorg/test/rendercheck)
+#              rendercheck          (https://gitlab.freedesktop.org/xorg/test/rendercheck)
+
+###
+# Конфигурация ядра
+###
+# традиционные драйверы Device Dependent X (DDX), такие как xf86-video-nouveau,
+# xf86-video-intel и т.д.  были удалены из BLFS в пользу драйвера
+# modesetting_drv, который будет создан как часть этого пакета. Чтобы
+# использовать этот драйвер, ядро должно предоставить драйвер Direct Rendering
+# Manager (DRM) для графического процессора
+#
+# CONFIG_DRM=y|m
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -41,15 +51,22 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/X11/xorg.conf.d"
 
+# после удаления драйверов xf86-video-* опция TearFree больше не работает.
+# Чтобы обойти эту проблему добавили параметр TearFree в modesetting (драйвер
+# по умолчанию). Применим этот патч, если будем использовать Xorg в среде без
+# композитора (i3, TWM, IceWM, Openbox, Fluxbox и т.д.)
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-tearfree_backport-2.patch" || exit 1
+
 mkdir build
 cd build || exit 1
 
-meson                             \
-    --prefix="${XORG_PREFIX}"     \
-    --localstatedir=/var          \
-    -Dsuid_wrapper=true           \
-    -Dxkb_output_dir=/var/lib/xkb \
-    .. || exit 1
+meson setup ..                     \
+    --prefix="${XORG_PREFIX}"      \
+    --localstatedir=/var           \
+    -D glamor=true                 \
+    -D systemd_logind=true         \
+    -D xkb_output_dir=/var/lib/xkb || exit 1
 
 ninja || exit 1
 # ninja test
