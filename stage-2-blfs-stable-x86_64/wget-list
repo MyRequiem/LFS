@@ -305,11 +305,17 @@ https://downloads.sourceforge.net/enlightenment/imlib2-1.12.3.tar.xz
 https://download.gnome.org/sources/libgsf/1.14/libgsf-1.14.52.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.2/libgsf-1.14.52-upstream_fixes-1.patch
 https://download.gnome.org/sources/goffice/0.10/goffice-0.10.57.tar.xz
+https://download.gnome.org/sources/glib-networking/2.80/glib-networking-2.80.0.tar.xz
 https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.7.tar.xz
 https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.4.tar.xz
 https://www.cairographics.org/releases/cairomm-1.14.5.tar.xz
 https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.4.tar.xz
 https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.9.tar.xz
+https://download.gnome.org/sources/glibmm/2.80/glibmm-2.80.0.tar.xz
+https://download.gnome.org/sources/atkmm/2.36/atkmm-2.36.3.tar.xz
+https://www.cairographics.org/releases/cairomm-1.18.0.tar.xz
+https://download.gnome.org/sources/pangomm/2.54/pangomm-2.54.0.tar.xz
+https://download.gnome.org/sources/gtkmm/4.14/gtkmm-4.14.0.tar.xz
 
 
 ================================================================================
@@ -524,7 +530,6 @@ https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/g
 https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
-https://download.gnome.org/sources/glib-networking/2.74/glib-networking-2.74.0.tar.xz
 https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
 https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz

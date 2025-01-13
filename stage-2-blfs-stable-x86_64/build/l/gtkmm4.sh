@@ -1,25 +1,26 @@
 #! /bin/bash
 
-PRGNAME="gtkmm3"
+PRGNAME="gtkmm4"
 ARCH_NAME="gtkmm"
 
-### GTKmm3 (C++ interface for GTK+3)
-# C++ интерфейс для популярной библиотеки графического интерфейса GTK+3.
+### GTKmm4 (C++ interface for GTK+4)
+# C++ интерфейс для популярной библиотеки графического интерфейса GTK+4.
 # Основные моменты это безопасные обратные вызовы и полный набор виджетов,
 # которые легко расширяются с помощью наследования.
 
-# Required:    atkmm22
-#              gtk+3
-#              pangomm24
+# Required:    atkmm23
+#              gtk4
+#              pangomm25
 # Recommended: no
-# Optional:    doxygen    (для сборки документации)
+# Optional:    doxygen          (для сборки документации)
+#              vulkan-loader
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-4*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -46,7 +47,6 @@ cd "${PRGNAME}-build" || exit 1
 meson setup                      \
     --prefix=/usr                \
     --buildtype=release          \
-    -D build-x11-api=true        \
     -D build-tests=false         \
     -D build-documentation=false \
     .. || exit 1
@@ -67,9 +67,9 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (C++ interface for GTK+3)
+# Package: ${PRGNAME} (C++ interface for GTK+4)
 #
-# gtkmm3 is the official C++ interface for the popular GUI library GTK+3.
+# GTKmm4 is the official C++ interface for the popular GUI library GTK+4.
 # Highlights include typesafe callbacks, and a comprehensive set of widgets
 # that are easily extensible via inheritance.
 #

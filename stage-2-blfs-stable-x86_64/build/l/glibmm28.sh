@@ -1,25 +1,28 @@
 #! /bin/bash
 
-PRGNAME="gtkmm3"
-ARCH_NAME="gtkmm"
+PRGNAME="glibmm28"
+ARCH_NAME="glibmm"
 
-### GTKmm3 (C++ interface for GTK+3)
-# C++ интерфейс для популярной библиотеки графического интерфейса GTK+3.
-# Основные моменты это безопасные обратные вызовы и полный набор виджетов,
-# которые легко расширяются с помощью наследования.
+### GLibmm (C++ bindings for glib)
+# Набор C++ bindings для GLib, включая кроссплатформенные API, такие как
+# std::string-like (UTF8 строковый класс), строковые служебные методы для
+# доступа к файлам и потокам
 
-# Required:    atkmm22
-#              gtk+3
-#              pangomm24
+# Required:    glib
+#              libsigc++3
 # Recommended: no
-# Optional:    doxygen    (для сборки документации)
+# Optional:    doxygen
+#              glib-networking (для тестов)
+#              gnutls          (для тестов)
+#              libxslt
+#              mm-common       (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-2.8*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -40,26 +43,19 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-mkdir "${PRGNAME}-build"
-cd "${PRGNAME}-build" || exit 1
+mkdir bld
+cd bld || exit 1
 
 meson setup                      \
     --prefix=/usr                \
     --buildtype=release          \
-    -D build-x11-api=true        \
-    -D build-tests=false         \
     -D build-documentation=false \
+    -D build-examples=false      \
     .. || exit 1
 
 ninja || exit 1
-# тесты нужно запускать в графической среде
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
-
-DOC_DIR="${TMP_DIR}/usr/share/doc/${PRGNAME}"
-if [ -d "${DOC_DIR}-3.0" ]; then
-    mv  "${DOC_DIR}-3.0" "${DOC_DIR}-${VERSION}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -67,13 +63,14 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (C++ interface for GTK+3)
+# Package: ${PRGNAME} (C++ bindings for glib)
 #
-# gtkmm3 is the official C++ interface for the popular GUI library GTK+3.
-# Highlights include typesafe callbacks, and a comprehensive set of widgets
-# that are easily extensible via inheritance.
+# The GLibmm package is a set of C++ bindings for GLib, including
+# cross-platform APIs such as a std::string-like UTF8 string class, string
+# utility methods, such as a text encoding converter API, file access, and
+# threads.
 #
-# Home page: https://www.${ARCH_NAME}.org/
+# Home page: https://www.gtkmm.org/
 # Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF

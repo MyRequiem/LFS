@@ -1,13 +1,13 @@
 #! /bin/bash
 
-PRGNAME="cairomm114"
+PRGNAME="cairomm118"
 ARCH_NAME="cairomm"
 
 ### cairomm (C++ wrapper for the cairo graphics library)
 # C++ интерфейс для графической библиотеки cairo
 
 # Required:    cairo
-#              libsigc++2
+#              libsigc++3
 # Recommended: boost        (для тестов)
 # Optional:    doxygen
 
@@ -16,7 +16,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-1.14*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${ARCH_NAME}-1.18*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"

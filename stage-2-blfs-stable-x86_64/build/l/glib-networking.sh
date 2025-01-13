@@ -9,7 +9,7 @@ PRGNAME="glib-networking"
 #              gnutls
 # Recommended: gsettings-desktop-schemas
 #              make-ca
-# Optional:    libproxy (https://github.com/libproxy/libproxy)
+# Optional:    libproxy    (https://github.com/libproxy/libproxy)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,9 +21,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
-    --prefix=/usr       \
-    --buildtype=release \
+meson setup              \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D libproxy=disabled \
     ..  || exit 1
 
 ninja || exit 1

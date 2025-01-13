@@ -303,11 +303,17 @@ n/pinentry.sh
 l/imlib2.sh
 l/libgsf.sh
 l/goffice.sh
+l/glib-networking.sh
 l/glibmm26.sh
 l/atkmm22.sh
 l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
+l/glibmm28.sh
+l/atkmm23.sh
+l/cairomm118.sh
+l/pangomm25.sh
+l/gtkmm4.sh
 
 # ==============================================================================
 # a/time.sh
@@ -371,7 +377,6 @@ l/gtkmm3.sh
 # ap/ghostscript.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
-# l/glib-networking.sh
 # ap/cups.sh
 # ap/ghostscript.sh
 # l/gdk-pixbuf-xlib.sh
