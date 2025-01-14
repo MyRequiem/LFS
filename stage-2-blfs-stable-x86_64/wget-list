@@ -405,6 +405,9 @@ https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-
 https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.2.tar.xz
 https://www.x.org/pub/individual/driver/xf86-input-libinput-1.4.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.6.tar.bz2
+https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
+https://github.com/kfish/xsel/archive/1.2.1/xsel-1.2.1.tar.gz
+http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
 
 
 ================================================================================
@@ -644,9 +647,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
-https://github.com/kfish/xsel/archive/1.2.1/xsel-1.2.1.tar.gz
-https://ftp.osuosl.org/pub/blfs/conglomeration/libptytty/libptytty-2.0.tar.gz
 https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.31.tar.bz2
 https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
