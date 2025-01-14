@@ -332,6 +332,10 @@ n/libtirpc.sh
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
+x/drivers/xorg-synaptics-driver.sh
+x/drivers/xorg-libinput-driver.sh
+x/drivers/xorg-evdev-driver.sh
+# Graphical Environments полностью установлено (кроме оконного менеджера i3)
 
 # ==============================================================================
 # a/time.sh
@@ -415,16 +419,12 @@ x/drivers/intel-vaapi-driver.sh
 # s/gtk-vnc.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
-# x/drivers/xorg-libinput-driver.sh
-# x/drivers/xorg-evdev-driver.sh
-# x/drivers/xorg-synaptics-driver.sh
 # x/drivers/xorg-amdgpu-driver.sh
 # x/drivers/xorg-ati-driver.sh
 # x/drivers/xorg-fbdev-driver.sh
 # x/drivers/xorg-intel-driver.sh
 # x/drivers/xorg-nouveau-driver.sh
 # x/drivers/xorg-vmware-driver.sh
-# # Graphical Environments полностью установлено (кроме оконного менеджера i3),
 # # пересоберем пакеты openssh и ghostscript
 # n/openssh.sh
 # ap/ghostscript.sh

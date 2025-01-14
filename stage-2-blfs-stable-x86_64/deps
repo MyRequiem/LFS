@@ -278,6 +278,7 @@ inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, imagemagick
 intel-gpu-tools                         libva
 intel-media                             libva
+intel-vaapi-driver                      libva
 inxi
 iptables
 isl                                     gcc
@@ -869,7 +870,6 @@ xorg-evdev-driver
 xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server, aalib
 xorg-intel-driver
-intel-vaapi-driver                      libva
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6
 xorg-nouveau-driver
