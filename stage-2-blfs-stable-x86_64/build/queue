@@ -339,6 +339,9 @@ x/drivers/xorg-evdev-driver.sh
 ap/xclip.sh
 ap/xsel.sh
 l/libptytty.sh
+ap/rxvt-unicode.sh
+s/numlockx.sh
+x/utils/xorg-cf-files.sh
 
 # ==============================================================================
 # a/time.sh
@@ -419,7 +422,6 @@ l/libptytty.sh
 # s/gtk-vnc.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
-# ap/rxvt-unicode.sh
 # ap/potrace.sh
 # ap/postgresql.sh
 # d/snappy.sh
@@ -473,10 +475,8 @@ l/libptytty.sh
 # d/gjs.sh
 # l/gcr4.sh
 # ap/xbanish.sh
-# x/utils/xorg-cf-files.sh
 # d/imake.sh
 # ap/xxkb.sh
-# s/numlockx.sh
 # s/clipnotify.sh
 # s/clipmenu.sh
 # ap/dmenu.sh

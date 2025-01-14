@@ -408,6 +408,10 @@ https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.6.tar.bz2
 https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
 https://github.com/kfish/xsel/archive/1.2.1/xsel-1.2.1.tar.gz
 http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
+http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.31.tar.bz2
+https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
+http://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
+https://www.x.org/archive/individual/util/xorg-cf-files-1.0.8.tar.xz
 
 
 ================================================================================
@@ -647,8 +651,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://ftp.osuosl.org/pub/blfs/conglomeration/rxvt-unicode/rxvt-unicode-9.31.tar.bz2
-https://raw.githubusercontent.com/muennich/urxvt-perls/master/deprecated/clipboard
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
 https://github.com/google/snappy/archive/1.1.10/snappy-1.1.10.tar.gz
@@ -705,10 +707,8 @@ https://get.videolan.org/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/aom/aom-3.9.0.tar.xz
 https://download.gnome.org/sources/gcr/4.0/gcr-4.0.0.tar.xz
 https://github.com/jcs/xbanish/archive/v1.8/xbanish-1.8.tar.gz
-https://www.x.org/archive/individual/util/xorg-cf-files-1.0.8.tar.xz
 https://www.x.org/archive/individual/util/imake-1.0.10.tar.xz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
-http://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipnotify/clipnotify-1.0.2.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clipmenu-6.2.0.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/clipmenu/set-cachedir-path-to-home-dir_cache-6.2.0.diff
