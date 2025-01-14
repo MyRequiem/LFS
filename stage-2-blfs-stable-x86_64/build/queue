@@ -396,14 +396,11 @@ x/drivers/xorg-evdev-driver.sh
 # d/python3.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
-# ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
 # ap/cups.sh
-# ap/ghostscript.sh
 # l/gdk-pixbuf-xlib.sh
 # l/libglade.sh
 # n/nmap.sh
-# ap/ghostscript.sh
 # l/libspectre.sh
 # l/gtk-engines.sh
 # s/gtk-vnc.sh
@@ -419,15 +416,6 @@ x/drivers/xorg-evdev-driver.sh
 # s/gtk-vnc.sh
 # l/json-glib.sh
 # xap/pavucontrol.sh
-# x/drivers/xorg-amdgpu-driver.sh
-# x/drivers/xorg-ati-driver.sh
-# x/drivers/xorg-fbdev-driver.sh
-# x/drivers/xorg-intel-driver.sh
-# x/drivers/xorg-nouveau-driver.sh
-# x/drivers/xorg-vmware-driver.sh
-# # пересоберем пакеты openssh и ghostscript
-# n/openssh.sh
-# ap/ghostscript.sh
 # ap/xclip.sh
 # ap/xsel.sh
 # l/libptytty.sh

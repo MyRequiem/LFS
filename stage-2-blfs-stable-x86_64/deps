@@ -843,7 +843,7 @@ x265                                    imlib2, ffmpeg, gst-plugins-bad
 xbanish
 xbitmaps                                xorg-applications
 xcb-proto                               libxcb
-xcb-util                                startup-notification, xcb-util-image, xorg-applications, xorg-intel-driver, i3
+xcb-util                                startup-notification, xcb-util-image, xorg-applications, i3
 xcb-util-cursor                         i3, qt6
 xcb-util-image                          xcb-util-cursor, xorg-server, qt5-components, qt6
 xcb-util-keysyms                        xorg-server, i3, qt5-components, qt6
@@ -862,21 +862,15 @@ xinit
 xkeyboard-config                        libxkbcommon, xorg-server
 xmlrpc-epi                              php
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, pm-utils, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xdg-utils, neon, i3
-xorg-amdgpu-driver
 xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, xdg-utils, luit
-xorg-ati-driver
 xorg-cf-files                           imake
 xorg-evdev-driver
-xorg-fbdev-driver
 xorg-fonts                              librsvg, xorg-server, aalib
-xorg-intel-driver
 xorg-libinput-driver                    xorg-server
 xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, gdk-pixbuf-xlib, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6
-xorg-nouveau-driver
-xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver, xorg-amdgpu-driver, xorg-ati-driver, xorg-fbdev-driver, xorg-intel-driver, xorg-nouveau-driver, xorg-vmware-driver
+xorg-server                             xorg-libinput-driver, xorg-evdev-driver, xorg-synaptics-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
-xorg-vmware-driver
 xorgproto                               libxau, libxdmcp
 xsel                                    dmenu, clipmenu
 xterm                                   xinit, imagemagick
