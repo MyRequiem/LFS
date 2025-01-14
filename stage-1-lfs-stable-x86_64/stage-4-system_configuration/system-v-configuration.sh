@@ -104,10 +104,12 @@ l4:4:wait:/etc/rc.d/init.d/rc  4
 l5:5:wait:/etc/rc.d/init.d/rc  5
 l6:6:wait:/etc/rc.d/init.d/rc  6
 
+rc:3:wait:/etc/rc.d/rc.local
+
+ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
-
-rc:3:wait:/etc/rc.d/rc.local
 
 1:2345:respawn:/sbin/agetty --noclear tty1 9600
 2:2345:respawn:/sbin/agetty tty2 9600
