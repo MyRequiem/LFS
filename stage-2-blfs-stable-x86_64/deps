@@ -110,7 +110,7 @@ directfb                                sdl2, links
 djbfft                                  liba52
 djvulibre                               imagemagick
 dmalloc                                 cyrus-sasl, lame, imagemagick, php
-dmenu                                   password-store, i3
+dmenu                                   clipmenu, password-store, i3
 dmidecode                               lm-sensors
 dmraid                                  libblockdev
 dnsmasq

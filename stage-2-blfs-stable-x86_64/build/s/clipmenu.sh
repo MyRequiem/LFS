@@ -6,6 +6,7 @@ PRGNAME="clipmenu"
 # простой менеджер буфера обмена, использующий dmenu или rofi
 
 # Required:    clipnotify
+#              dmenu
 #              xsel
 # Recommended: no
 # Optional:    no

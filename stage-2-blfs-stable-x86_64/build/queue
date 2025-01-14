@@ -345,6 +345,9 @@ x/utils/xorg-cf-files.sh
 d/imake.sh
 ap/xxkb.sh
 ap/xbanish.sh
+ap/dmenu.sh
+s/clipnotify.sh
+s/clipmenu.sh
 
 # ==============================================================================
 # a/time.sh
@@ -477,9 +480,6 @@ ap/xbanish.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# s/clipnotify.sh
-# s/clipmenu.sh
-# ap/dmenu.sh
 # ap/password-store.sh
 # l/libyajl.sh
 # l/libev.sh
