@@ -342,6 +342,9 @@ l/libptytty.sh
 ap/rxvt-unicode.sh
 s/numlockx.sh
 x/utils/xorg-cf-files.sh
+d/imake.sh
+ap/xxkb.sh
+ap/xbanish.sh
 
 # ==============================================================================
 # a/time.sh
@@ -474,9 +477,6 @@ x/utils/xorg-cf-files.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# ap/xbanish.sh
-# d/imake.sh
-# ap/xxkb.sh
 # s/clipnotify.sh
 # s/clipmenu.sh
 # ap/dmenu.sh
