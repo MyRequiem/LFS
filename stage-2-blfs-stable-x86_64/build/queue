@@ -359,7 +359,7 @@ d/perl-modules/perl-types-serialiser.sh
 d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
-# x/apps/i3.sh
+x/apps/i3.sh
 # === bumblebee-status ===
 # d/python-modules/python3-psutil.sh
 # x/apps/bumblebee-status.sh
