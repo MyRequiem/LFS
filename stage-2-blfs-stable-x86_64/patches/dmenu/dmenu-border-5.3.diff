@@ -1,0 +1,57 @@
+diff -U 1 -Naur dmenu-5.3_orig/config.def.h dmenu-5.3/config.def.h
+--- dmenu-5.3_orig/config.def.h	2024-03-19 15:25:09.000000000 +0400
++++ dmenu-5.3/config.def.h	2025-01-15 15:58:25.584647829 +0400
+@@ -21,3 +21,6 @@
+  * for example: " /?\"&[]"
+  */
+ static const char worddelimiters[] = " ";
++
++/* Size of the window border */
++static unsigned int border_width = 0;
+diff -U 1 -Naur dmenu-5.3_orig/dmenu.1 dmenu-5.3/dmenu.1
+--- dmenu-5.3_orig/dmenu.1	2024-03-19 15:25:09.000000000 +0400
++++ dmenu-5.3/dmenu.1	2025-01-15 15:56:43.556654575 +0400
+@@ -6,6 +6,8 @@
+ .RB [ \-bfiv ]
+ .RB [ \-l
+ .IR lines ]
++.RB [ \-bw
++.IR width ]
+ .RB [ \-m
+ .IR monitor ]
+ .RB [ \-p
+@@ -50,6 +52,9 @@
+ .BI \-l " lines"
+ dmenu lists items vertically, with the given number of lines.
+ .TP
++.BI \-bw " width"
++set border width
++.TP
+ .BI \-m " monitor"
+ dmenu is displayed on the monitor number supplied. Monitor numbers are starting
+ from 0.
+diff -U 1 -Naur dmenu-5.3_orig/dmenu.c dmenu-5.3/dmenu.c
+--- dmenu-5.3_orig/dmenu.c	2024-03-19 15:25:09.000000000 +0400
++++ dmenu-5.3/dmenu.c	2025-01-15 16:01:29.017635700 +0400
+@@ -684,9 +684,11 @@
+ 	swa.override_redirect = True;
+ 	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+-	win = XCreateWindow(dpy, root, x, y, mw, mh, 0,
++	win = XCreateWindow(dpy, root, x, y, mw, mh, border_width,
+ 	                    CopyFromParent, CopyFromParent, CopyFromParent,
+ 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
++	if (border_width)
++		XSetWindowBorder(dpy, win, scheme[SchemeSel][ColBg].pixel);
+ 	XSetClassHint(dpy, win, &ch);
+ 
+ 
+@@ -758,6 +760,8 @@
+ 			colors[SchemeSel][ColFg] = argv[++i];
+ 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
+ 			embed = argv[++i];
++		else if (!strcmp(argv[i], "-bw"))
++			border_width = atoi(argv[++i]); /* border width */
+ 		else
+ 			usage();
+ 
