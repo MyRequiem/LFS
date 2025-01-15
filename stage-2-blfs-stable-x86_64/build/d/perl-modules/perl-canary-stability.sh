@@ -1,12 +1,12 @@
 #! /bin/bash
 
-PRGNAME="perl-types-serialiser"
-ARCH_NAME="Types-Serialiser"
+PRGNAME="perl-canary-stability"
+ARCH_NAME="Canary-Stability"
 
-### Types::Serialiser (simple data types for serialisation formats)
+### Canary::Stability (Canary::Stability perl module)
 # Perl модуль
 
-# Required:    perl-common-sense
+# Required:    no
 # Recommended: no
 # Optional:    no
 
@@ -17,7 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test
@@ -33,14 +32,11 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (simple data types for serialisation formats)
+# Package: ${PRGNAME} (Canary::Stability perl module)
 #
-# This module provides some extra datatypes that are used by common
-# serialisation formats such as JSON or CBOR. The idea is to have a shared
-# repository of simple/small constants and containers that can be shared by
-# different implementations so they become interoperable between each other.
+# canary to check perl compatibility for schmorp's modules
 #
-# Home page: https://metacpan.org/pod/Types::Serialiser
+# Home page: https://metacpan.org/pod/Canary::Stability
 # Download:  https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

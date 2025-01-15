@@ -604,7 +604,10 @@ pciutils                                qt6
 pcre                                    ag
 pcre2                                   wget, glib, libarchive, git, lnav, libbytesize, swig, xterm, mariadb, exim, php, vte3, qt6
 pcsc-lite                               libcacard
+perl-canary-stability
+perl-common-sense
 perl-test-command                       feh
+perl-types-serialiser
 pgp                                     imagemagick
 php                                     cups, libsoup, libsoup3
 picogui

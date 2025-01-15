@@ -1,12 +1,12 @@
 #! /bin/bash
 
-PRGNAME="perl-common-sense"
-ARCH_NAME="common-sense"
+PRGNAME="perl-types-serialiser"
+ARCH_NAME="Types-Serialiser"
 
-### common::sense (perl common defaults with lower memory usage)
+### Types::Serialiser (simple data types for serialisation formats)
 # Perl модуль
 
-# Required:    no
+# Required:    perl-common-sense
 # Recommended: no
 # Optional:    no
 
@@ -17,7 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test
@@ -33,13 +32,14 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (perl common defaults with lower memory usage)
+# Package: ${PRGNAME} (simple data types for serialisation formats)
 #
-# common::sense module implements some sane defaults for Perl programs, as
-# defined by two typical, (or not so typical - use your common sense) specimens
-# of Perl coders.
+# This module provides some extra datatypes that are used by common
+# serialisation formats such as JSON or CBOR. The idea is to have a shared
+# repository of simple/small constants and containers that can be shared by
+# different implementations so they become interoperable between each other.
 #
-# Home page: https://metacpan.org/pod/common::sense
+# Home page: https://metacpan.org/pod/Types::Serialiser
 # Download:  https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

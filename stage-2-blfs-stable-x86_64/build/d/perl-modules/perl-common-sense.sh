@@ -1,9 +1,9 @@
 #! /bin/bash
 
-PRGNAME="perl-canary-stability"
-ARCH_NAME="Canary-Stability"
+PRGNAME="perl-common-sense"
+ARCH_NAME="common-sense"
 
-### Canary::Stability (Canary::Stability perl module)
+### common::sense (perl common defaults with lower memory usage)
 # Perl модуль
 
 # Required:    no
@@ -17,7 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test
@@ -33,11 +32,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Canary::Stability perl module)
+# Package: ${PRGNAME} (perl common defaults with lower memory usage)
 #
-# canary to check perl compatibility for schmorp's modules
+# common::sense module implements some sane defaults for Perl programs, as
+# defined by two typical, (or not so typical - use your common sense) specimens
+# of Perl coders.
 #
-# Home page: https://metacpan.org/pod/Canary::Stability
+# Home page: https://metacpan.org/pod/common::sense
 # Download:  https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

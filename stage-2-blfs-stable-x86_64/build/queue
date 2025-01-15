@@ -351,6 +351,11 @@ s/clipmenu.sh
 ap/feh.sh
 ap/password-store.sh
 l/libev.sh
+l/libyajl.sh
+# === i3 ===
+d/perl-modules/perl-common-sense.sh
+d/perl-modules/perl-canary-stability.sh
+d/perl-modules/perl-types-serialiser.sh
 
 # ==============================================================================
 # a/time.sh
@@ -400,10 +405,6 @@ l/libev.sh
 
 # ==============================================================================
 
-# # собираем perl-anyevent-i3 (для оконного менеджера i3) + зависимости
-# d/perl-modules/perl-common-sense.sh
-# d/perl-modules/perl-canary-stability.sh
-# d/perl-modules/perl-types-serialiser.sh
 # d/perl-modules/perl-json-xs.sh
 # d/perl-modules/perl-anyevent.sh
 # d/perl-modules/perl-anyevent-i3.sh
@@ -482,7 +483,6 @@ l/libev.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# l/libyajl.sh
 # x/apps/i3.sh
 # s/hddtemp.sh
 # === bumblebee-status ===
