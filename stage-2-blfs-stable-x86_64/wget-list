@@ -421,6 +421,8 @@ https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_6
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
 https://dl.suckless.org/tools/dmenu-5.3.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/dmenu/dmenu_pass
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-border-5.3.diff
+https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/dmenu/dmenu-xyw-5.3.diff
 https://feh.finalrewind.org/feh-3.10.3.tar.bz2
 https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
 https://dist.schmorp.de/libev/libev-4.33.tar.gz
