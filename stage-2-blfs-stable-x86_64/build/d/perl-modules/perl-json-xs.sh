@@ -6,9 +6,7 @@ ARCH_NAME="JSON-XS"
 ### JSON::XS (JSON serialising/deserialising, done correctly and fast)
 # JSON::XS Perl модуль
 
-# Required:    perl-common-sense
-#              perl-canary-stability
-#              perl-types-serialiser
+# Required:    perl-types-serialiser
 # Recommended: no
 # Optional:    no
 

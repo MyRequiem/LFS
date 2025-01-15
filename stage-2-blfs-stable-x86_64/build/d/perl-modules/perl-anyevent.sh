@@ -1,13 +1,12 @@
 #! /bin/bash
 
-PRGNAME="perl-anyevent-i3"
-ARCH_NAME="AnyEvent-I3"
+PRGNAME="perl-anyevent"
+ARCH_NAME="AnyEvent"
 
-### AnyEvent::I3 (communicate with the i3 window manager)
-# AnyEvent::I3 Perl модуль
+### AnyEvent (the DBI of event loop programming)
+# AnyEvent Perl модуль
 
-# Required:    perl-anyevent
-#              perl-json-xs
+# Required:    perl-canary-stability
 # Recommended: no
 # Optional:    no
 
@@ -18,9 +17,8 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
-perl Makefile.PL || exit 1
-make             || exit 1
+yes | perl Makefile.PL || exit 1
+make                   || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
@@ -34,14 +32,15 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (communicate with the i3 window manager)
+# Package: ${PRGNAME} (the DBI of event loop programming)
 #
-# This module connects to the i3 window manager using the UNIX socket based IPC
-# interface it provides (if enabled in the configuration file). You can then
-# subscribe to events or send messages and receive their replies.
+# AnyEvent provides a uniform interface to various event loops. This allows
+# module authors to use event loop functionality without forcing module users
+# to use a specific event loop implementation (since more than one event loop
+# cannot coexist peacefully).
 #
-# Home page: https://metacpan.org/pod/AnyEvent::I3
-# Download:  https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://metacpan.org/pod/${ARCH_NAME}
+# Download:  https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

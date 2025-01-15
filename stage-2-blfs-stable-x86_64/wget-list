@@ -430,6 +430,9 @@ https://fossies.org/linux/www/old/yajl-2.1.0.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/common-sense-3.75.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Canary-Stability-2013.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Types-Serialiser-1.01.tar.gz
+https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.03.tar.gz
+https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
+https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.19.tar.gz
 
 
 ================================================================================
@@ -628,9 +631,6 @@ https://www.cpan.org/authors/id/L/LE/LEONT/PerlIO-utf8_strict-0.010.tar.gz
 https://www.cpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/LWP-Protocol-https-6.10-system_certs-2.patch
 https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
-https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.03.tar.gz
-https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
-https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.17.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/3.11.2/Python-3.11.2.tar.xz
