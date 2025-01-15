@@ -348,6 +348,8 @@ ap/xbanish.sh
 ap/dmenu.sh
 s/clipnotify.sh
 s/clipmenu.sh
+ap/feh.sh
+ap/password-store.sh
 
 # ==============================================================================
 # a/time.sh
@@ -465,7 +467,6 @@ s/clipmenu.sh
 # l/djvulibre.sh
 # l/libgxps.sh
 # xap/imagemagick.sh
-# ap/feh.sh
 # l/taglib.sh
 # l/libsoup.sh
 # l/libsoup3.sh
@@ -480,7 +481,6 @@ s/clipmenu.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# ap/password-store.sh
 # l/libyajl.sh
 # l/libev.sh
 # x/apps/i3.sh

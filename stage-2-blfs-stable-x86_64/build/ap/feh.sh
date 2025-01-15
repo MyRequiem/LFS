@@ -9,9 +9,12 @@ PRGNAME="feh"
 #              imlib2 (собранный с giflib для тестов)
 # Recommended: curl
 # Optional:    libexif
+#              --- runtime ---
 #              libjpeg-turbo
 #              imagemagick
-#              perl-test-command (для тестов)
+#              --- для тестов ---
+#              perl-test-command
+#              mandoc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,22 +23,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-HELP=1
-EXIF=0
-CURL=0
-
-[ -x /usr/lib/libexif.so ]  && EXIF=1
-command -v curl &>/dev/null && CURL=1
-
 # добавим версию к названию каталога с документацией
 sed -i "s:doc/feh:&-${VERSION}:" config.mk || exit 1
 
-make               \
-    PREFIX=/usr    \
-    help=${HELP}   \
-    exif="${EXIF}" \
-    curl="${CURL}"
-
+make PREFIX=/usr || exit 1
 # make test
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 

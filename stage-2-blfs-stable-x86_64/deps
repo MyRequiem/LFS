@@ -505,6 +505,7 @@ maemo                                   alsa-plugins
 maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, openjdk, qt6
 man2html                                xterm
+mandoc                                  feh
 mariadb                                 cyrus-sasl, openldap, exim, redland, php, qt5-components, qt6
 mc
 mdadm                                   lvm2, libblockdev, udisks
@@ -603,6 +604,7 @@ pciutils                                qt6
 pcre                                    ag
 pcre2                                   wget, glib, libarchive, git, lnav, libbytesize, swig, xterm, mariadb, exim, php, vte3, qt6
 pcsc-lite                               libcacard
+perl-test-command                       feh
 pgp                                     imagemagick
 php                                     cups, libsoup, libsoup3
 picogui
