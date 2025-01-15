@@ -1,10 +1,22 @@
-diff --git a/dmenu.1 b/dmenu.1
-index d3ab805..5301910 100644
---- a/dmenu.1
-+++ b/dmenu.1
-@@ -53,6 +53,24 @@ dmenu matches menu items case insensitively.
- .BI \-h " height"
- dmenu uses a menu line of at least 'height' pixels tall, but no less than 8.
+diff -U 1 -Naur dmenu-5.3_orig/dmenu.1 dmenu-5.3/dmenu.1
+--- dmenu-5.3_orig/dmenu.1	2024-03-19 15:25:09.000000000 +0400
++++ dmenu-5.3/dmenu.1	2025-01-15 15:22:09.001791751 +0400
+@@ -8,6 +8,12 @@
+ .IR lines ]
+ .RB [ \-m
+ .IR monitor ]
++.RB [ \-x
++.IR xoffset ]
++.RB [ \-y
++.IR yoffset ]
++.RB [ \-z
++.IR width ]
+ .RB [ \-p
+ .IR prompt ]
+ .RB [ \-fn
+@@ -54,6 +60,24 @@
+ dmenu is displayed on the monitor number supplied. Monitor numbers are starting
+ from 0.
  .TP
 +.BI \-x " xoffset"
 +dmenu is placed at this offset measured from the left side of the monitor.
@@ -21,17 +33,16 @@ index d3ab805..5301910 100644
 +.B \-m
 +is present, the measurement will use the given monitor.
 +.TP
-+.BI \-w " width"
++.BI \-z " width"
 +sets the width of the dmenu window.
 +.TP
- .BI \-m " monitor"
- dmenu is displayed on the monitor number supplied. Monitor numbers are starting
- from 0.
-diff --git a/dmenu.c b/dmenu.c
-index a07f8e3..9e0c51c 100644
---- a/dmenu.c
-+++ b/dmenu.c
-@@ -36,6 +36,9 @@ struct item {
+ .BI \-p " prompt"
+ defines the prompt to be displayed to the left of the input field.
+ .TP
+diff -U 1 -Naur dmenu-5.3_orig/dmenu.c dmenu-5.3/dmenu.c
+--- dmenu-5.3_orig/dmenu.c	2024-03-19 15:25:09.000000000 +0400
++++ dmenu-5.3/dmenu.c	2025-01-15 15:26:40.937773770 +0400
+@@ -36,6 +36,9 @@
  static char text[BUFSIZ] = "";
  static char *embed;
  static int bh, mw, mh;
@@ -41,8 +52,8 @@ index a07f8e3..9e0c51c 100644
  static int inputw = 0, promptw;
  static int lrpad; /* sum of left and right padding */
  static size_t cursor;
-@@ -705,19 +708,19 @@ setup(void)
- 				if (INTERSECT(x, y, 1, 1, info[i]))
+@@ -662,9 +665,9 @@
+ 				if (INTERSECT(x, y, 1, 1, info[i]) != 0)
  					break;
  
 -		x = info[i].x_org;
@@ -50,11 +61,11 @@ index a07f8e3..9e0c51c 100644
 -		mw = info[i].width;
 +		x = info[i].x_org + dmx;
 +		y = info[i].y_org + (topbar ? dmy : info[i].height - mh - dmy);
-+		mw = (dmw>0 ? dmw : info[i].width);
++		mw = (dmw>0 ? dmw : info[i].width);;
  		XFree(info);
  	} else
  #endif
- 	{
+@@ -672,9 +675,9 @@
  		if (!XGetWindowAttributes(dpy, parentwin, &wa))
  			die("could not get embedding window attributes: 0x%lx",
  			    parentwin);
@@ -65,9 +76,9 @@ index a07f8e3..9e0c51c 100644
 +		y = topbar ? dmy : wa.height - mh - dmy;
 +		mw = (dmw>0 ? dmw : wa.width);
  	}
- 	promptw = (prompt && *prompt) ? TEXTW(prompt) : 0;
- 	inputw = MIN(inputw, mw/3);
-@@ -783,6 +786,12 @@ main(int argc, char *argv[])
+ 	promptw = (prompt && *prompt) ? TEXTW(prompt) - lrpad / 4 : 0;
+ 	inputw = mw / 3; /* input width: ~33% of monitor width */
+@@ -742,6 +745,12 @@
  		/* these options take one argument */
  		else if (!strcmp(argv[i], "-l"))   /* number of lines in vertical list */
  			lines = atoi(argv[++i]);
@@ -75,7 +86,7 @@ index a07f8e3..9e0c51c 100644
 +			dmx = atoi(argv[++i]);
 +		else if (!strcmp(argv[i], "-y"))   /* window y offset (from bottom up if -b) */
 +			dmy = atoi(argv[++i]);
-+		else if (!strcmp(argv[i], "-w"))   /* make dmenu this wide */
++		else if (!strcmp(argv[i], "-z"))   /* make dmenu this wide */
 +			dmw = atoi(argv[++i]);
  		else if (!strcmp(argv[i], "-m"))
  			mon = atoi(argv[++i]);
