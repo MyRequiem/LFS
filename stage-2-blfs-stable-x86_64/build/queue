@@ -360,9 +360,13 @@ d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 x/apps/i3.sh
+# ==========
+l/libnsl.sh
+d/python3.sh
 # === bumblebee-status ===
-# d/python-modules/python3-psutil.sh
-# x/apps/bumblebee-status.sh
+d/python-modules/python3-psutil.sh
+s/hddtemp.sh
+x/apps/bumblebee-status.sh
 # ========================
 
 
@@ -381,7 +385,6 @@ x/apps/i3.sh
 # l/aspell-dict-ru.sh
 # l/libatasmart.sh
 # l/c-ares.sh
-# l/libnsl.sh
 # l/nspr.sh
 # l/nss.sh
 # a/ed.sh
@@ -415,7 +418,6 @@ x/apps/i3.sh
 # ==============================================================================
 
 # n/nmap.sh
-# d/python3.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
@@ -489,7 +491,6 @@ x/apps/i3.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# s/hddtemp.sh
 # l/libadwaita.sh
 # ap/zenity.sh
 # ap/mirage.sh

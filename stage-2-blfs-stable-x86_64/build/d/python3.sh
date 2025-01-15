@@ -48,15 +48,7 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
-
-VALGRIND="--without-valgrind"
-SQLITE="--disable-loadable-sqlite-extensions"
-LIBMPDEC="--without-system-libmpdec"
-
-command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
-command -v sqlite3  &>/dev/null && SQLITE="--enable-loadable-sqlite-extensions"
-[ -x /usr/lib/libmpdec.so ]     && LIBMPDEC="--with-system-libmpdec"
+mkdir -pv "${TMP_DIR}/etc"
 
 # избегаем назойливых сообщений во время конфигурации
 #    CXX="/usr/bin/g++"
@@ -65,25 +57,19 @@ CXX="/usr/bin/g++"      \
     --prefix=/usr       \
     --enable-shared     \
     --with-system-expat \
-    --with-system-ffi   \
-    "${VALGRIND}"       \
-    "${LIBMPDEC}"       \
-    "${SQLITE}"         \
-    --enable-optimization || exit 1
+    --enable-optimizations || exit 1
 
 make || exit 1
-# make test
+# make test TESTOPTS="--timeout 120"
 make install DESTDIR="${TMP_DIR}"
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
-# pip3 и pip${MAJ_VERSION} одинаковые скрипты, создадим ссылку
-#    pip3 -> pip${MAJ_VERSION}
-ln -sfv "pip${MAJ_VERSION}" "${TMP_DIR}/usr/bin/pip3"
-
-# исправим shebang в скрипте pip${MAJ_VERSION}
-#    #!/usr/bin/python -> #!/usr/bin/python3
-sed 's/\/usr\/bin\/python$/\/usr\/bin\/python3/' \
-    -i "${TMP_DIR}/usr/bin/pip${MAJ_VERSION}" || exit 1
+cat << EOF > "${TMP_DIR}/etc/pip.conf"
+[global]
+# do not display warnings when running from root
+root-user-action = ignore
+# do not display warnings about the presence of a newer pip3 version
+disable-pip-version-check = true
+EOF
 
 # устанавливаем документацию
 DOCS="${TMP_DIR}/usr/share/doc/python-${VERSION}/html"
@@ -108,11 +94,7 @@ PYTHON3_PYTHONDOCS_SH="${PROFILE_D}/python3-pythondocs.sh"
 cat << EOF > "${TMP_DIR}${PYTHON3_PYTHONDOCS_SH}"
 #! /bin/bash
 
-# Begin ${PYTHON3_PYTHONDOCS_SH}
-
 export PYTHONDOCS=/usr/share/doc/python-3/html
-
-# End ${PYTHON3_PYTHONDOCS_SH}
 EOF
 chmod 755 "${TMP_DIR}${PYTHON3_PYTHONDOCS_SH}"
 
@@ -125,11 +107,7 @@ PYTHON3_CERTS_SH="${PROFILE_D}/python3-certs.sh"
 cat << EOF > "${TMP_DIR}${PYTHON3_CERTS_SH}"
 #! /bin/bash
 
-# Begin ${PYTHON3_CERTS_SH}
-
 export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
-
-# End ${PYTHON3_CERTS_SH}
 EOF
 chmod 755 "${TMP_DIR}${PYTHON3_CERTS_SH}"
 
