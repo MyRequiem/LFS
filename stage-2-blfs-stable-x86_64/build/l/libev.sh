@@ -32,7 +32,7 @@ make install DESTDIR="${TMP_DIR}"
 # вложенную директорию /usr/include/libev/ Затем, если для сборки какого-либо
 # софта требуется этот заголовок, нужно явно указать его местоположение
 #    CPPFLAGS="-I/usr/include/libev"
-# Например для сборки пакетов 'lighttpd2' и 'i3' этот заголовок не нужен
+# Например для сборки пакетов 'nghttp2' и 'i3' этот заголовок не нужен
 mv "${TMP_DIR}/usr/include/event.h" "${TMP_DIR}${HEADER_SUBFOLDER}/"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -45,8 +45,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Libev is modelled (very loosely) after libevent and the Event perl module,
 # but is faster, scales better and is more correct, and also more featureful.
 #
-# Home page: http://software.schmorp.de/pkg/${PRGNAME}.html
-# Download:  http://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://software.schmorp.de/pkg/${PRGNAME}.html
+# Download:  https://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

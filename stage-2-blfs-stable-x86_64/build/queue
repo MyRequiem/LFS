@@ -350,6 +350,7 @@ s/clipnotify.sh
 s/clipmenu.sh
 ap/feh.sh
 ap/password-store.sh
+l/libev.sh
 
 # ==============================================================================
 # a/time.sh
@@ -482,7 +483,6 @@ ap/password-store.sh
 # d/gjs.sh
 # l/gcr4.sh
 # l/libyajl.sh
-# l/libev.sh
 # x/apps/i3.sh
 # s/hddtemp.sh
 # === bumblebee-status ===
