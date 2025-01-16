@@ -635,7 +635,7 @@ pov-ray                                 imagemagick
 prelink
 profiles                                imagemagick
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, mpg123, gst-plugins-good, libao, qt6
-python2                                 yasm, nmap, cups, libglade, alsa-lib, vim
+python2                                 yasm, nmap, cups, libglade, alsa-lib
 python3 (пересобранный в BLFS)          python3-charset-normalizer, python3-meson
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-build                           python3-setuptools-scm, python3-meson

@@ -359,10 +359,13 @@ d/perl-modules/perl-types-serialiser.sh
 d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
+l/cxxopts.sh
+ap/pamixer.sh
 x/apps/i3.sh
 # ==========
 l/libnsl.sh
 d/python3.sh
+ap/vim.sh
 # === bumblebee-status ===
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
@@ -451,7 +454,6 @@ x/apps/bumblebee-status.sh
 # l/fdk-aac.sh
 # l/libcddb.sh
 # l/libcdio.sh
-# ap/vim.sh
 # ap/mc.sh
 # l/liba52.sh
 # l/xvid.sh
@@ -461,8 +463,6 @@ x/apps/bumblebee-status.sh
 # ap/alsa-tools.sh
 # s/alsa-firmware.sh
 # l/alsa-oss.sh
-# l/cxxopts.sh
-# ap/pamixer.sh
 # n/links.sh
 # x/apps/xdg-utils.sh
 # l/poppler.sh
