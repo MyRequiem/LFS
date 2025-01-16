@@ -6,7 +6,8 @@ ARCH_NAME="${PRGNAME}-stable_current_amd64.deb"
 ### Google Chrome (Google Chrome web browser)
 # Веб-браузер от Google
 
-# Required:    no
+# Required:    nss
+#              cups
 # Recommended: no
 # Optional:    no
 
@@ -16,6 +17,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 SOURCES="${ROOT}/src"
 ! [ -e "${SOURCES}/${ARCH_NAME}" ] && {
     echo "Archive ${SOURCES}/${ARCH_NAME} not found..."
+    echo "Download: https://dl.google.com/linux/direct/${ARCH_NAME}"
     exit 1
 }
 

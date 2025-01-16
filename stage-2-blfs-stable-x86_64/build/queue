@@ -371,6 +371,11 @@ d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 x/apps/bumblebee-status.sh
 # ========================
+l/nspr.sh
+l/nss.sh
+x/apps/xdg-utils.sh
+ap/cups.sh
+xap/google-chrome.sh
 
 
 # ==============================================================================
@@ -388,8 +393,6 @@ x/apps/bumblebee-status.sh
 # l/aspell-dict-ru.sh
 # l/libatasmart.sh
 # l/c-ares.sh
-# l/nspr.sh
-# l/nss.sh
 # a/ed.sh
 # a/usbutils.sh
 # l/slang.sh
@@ -424,7 +427,6 @@ x/apps/bumblebee-status.sh
 # l/openjpeg.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
-# ap/cups.sh
 # l/gdk-pixbuf-xlib.sh
 # l/libglade.sh
 # n/nmap.sh
@@ -464,7 +466,6 @@ x/apps/bumblebee-status.sh
 # s/alsa-firmware.sh
 # l/alsa-oss.sh
 # n/links.sh
-# x/apps/xdg-utils.sh
 # l/poppler.sh
 # l/gperftools.sh
 # l/libmypaint.sh
@@ -575,7 +576,6 @@ x/apps/bumblebee-status.sh
 # ap/mpv.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
-# xap/google-chrome.sh
 # n/telegram.sh
 
 # vim:ft=conf

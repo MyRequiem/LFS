@@ -87,7 +87,7 @@ cracklib                                mit-kerberos-v5
 cranelift                               rustc
 cryptsetup
 cunit                                   libdrm
-cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6
+cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
 curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
 curlftpfs                               vifm
@@ -216,6 +216,7 @@ gnupg                                   git, smartmontools, mit-kerberos-v5, gpg
 gnuplot                                 imagemagick
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm26, cups, gtk-vnc, exim, ffmpeg, neon, vte3, glibmm28
 goffice
+google-chrome
 gpac                                    x264
 gperftools                              libmypaint, glusterfs
 gpgme
@@ -554,7 +555,7 @@ noto-fonts-ttf
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
-nss                                     p11-kit, make-ca, poppler, neon
+nss                                     p11-kit, make-ca, poppler, neon, google-chrome
 ntfs-3g
 ntp                                     dhcpcd
 numactl                                 x265
@@ -905,7 +906,6 @@ zxing                                   gst-plugins-bad
 # deb2tgz
 # gcolor2
 # girara                              zathura
-# google-chrome
 # gsimplecal
 # gtick
 # hstr
