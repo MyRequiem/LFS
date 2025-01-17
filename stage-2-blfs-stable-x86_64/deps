@@ -55,7 +55,7 @@ bluez                                   libpcap, python3, pulseaudio, gst-plugin
 bonjour                                 postgresql
 boost                                   highlight, nghttp2, libsigc++2, libsigc++3, swig, cairomm114, cairomm118, mariadb, poppler
 bpf-utils                               iptables
-brotli                                  gnutls, curl, freetype, links, libsoup, libsoup3
+brotli                                  gnutls, curl, freetype, links, libsoup, libsoup3, exiv2
 bs2b                                    gst-plugins-bad
 btrfs-progs                             libblockdev, udisks
 bubblewrap                              fontconfig
@@ -275,6 +275,7 @@ imagemagick                             gnupg, feh
 imake                                   xxkb
 imlib2                                  w3m, feh, giblib, scrot, maim
 impacket                                curl
+inih                                    exiv2
 inkscape                                adwaita-icon-theme, imagemagick
 install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, imagemagick
 intel-gpu-tools                         libva
@@ -685,7 +686,7 @@ python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson

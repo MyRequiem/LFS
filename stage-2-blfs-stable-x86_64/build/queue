@@ -376,8 +376,13 @@ l/nss.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
 xap/google-chrome.sh
+# ==== mirage ============
+a/inih.sh
+l/brotli.sh
+l/exiv2.sh
+l/gexiv2.sh
+ap/mirage.sh
 # ========================
-
 
 # ==============================================================================
 # a/time.sh
@@ -418,7 +423,6 @@ xap/google-chrome.sh
 # l/libbytesize.sh
 # d/swig.sh
 # ap/itstool.sh
-# d/brotli.sh
 # n/nmap.sh
 # ap/lsof.sh
 
@@ -471,8 +475,6 @@ xap/google-chrome.sh
 # l/gperftools.sh
 # l/libmypaint.sh
 # l/mypaint-brushes.sh
-# l/exiv2.sh
-# l/gexiv2.sh
 # l/babl.sh
 # l/gegl.sh
 # xap/gimp.sh
@@ -495,7 +497,6 @@ xap/google-chrome.sh
 # l/gcr4.sh
 # l/libadwaita.sh
 # ap/zenity.sh
-# ap/mirage.sh
 # a/fcron.sh
 # n/ntp.sh
 # s/inxi.sh

@@ -1,17 +1,19 @@
 #! /bin/bash
 
-PRGNAME="gexiv2"
+PRGNAME="inih"
 
-### gexiv2 (GObject wrapper around Exiv2 library)
-# GObject обертка для библиотеки Exiv2
+### inih.sh (INI Not Invented Here)
+# Простой парсер .INI файлов, написанный на C
 
-# Required:    exiv2
-# Recommended: vala
-# Optional:    gtk-doc (для создания документации)
+# Required:    no
+# Recommended: no
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+VERSION="$(echo "${VERSION}" | cut -d r -f 2)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -25,24 +27,20 @@ meson setup             \
     .. || exit 1
 
 ninja || exit 1
-
-# meson configure -D tests=true || exit 1
-# ninja test
-
+# пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (GObject wrapper around Exiv2 library)
+# Package: ${PRGNAME} (INI Not Invented Here)
 #
-# gexiv2 is a GObject-based wrapper around the Exiv2 library
+# Simple .INI file parser written in C
 #
-# Home page: https://wiki.gnome.org/${PRGNAME}
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://github.com/benhoyt/${PRGNAME}
+# Download:  https://github.com/benhoyt/${PRGNAME}/archive/r${VERSION}/${PRGNAME}-r${VERSION}.tar.gz
 #
 EOF
 

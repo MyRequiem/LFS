@@ -9,7 +9,7 @@ PRGNAME="brotli"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    no
+# Optional:    python3-pytest (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,36 +18,45 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему в файлах pkg-config
-sed -i 's@-R..libdir.@@' scripts/*.pc.in
+mkdir build
+cd build || exit 1
 
-mkdir out
-cd out || exit 1
-
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release  \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
     .. || exit 1
 
 make || exit 1
 # make test
+
+# сразу устанавливаем пакет в систему для сборки Python3 bindings
+make install
 make install DESTDIR="${TMP_DIR}"
 
 cd .. || exit 1
 
 # Python3 bindings
+# не позволяем скрипту setup.py заново собирать весь пакет, вместо этого
+# используем уже установленные библиотеки
+sed "/c\/.*\.[ch]'/d;\
+     /include_dirs=\[/\
+     i libraries=['brotlicommon','brotlidec','brotlienc']," \
+    -i setup.py || exit 1
+
 pip3 wheel               \
-    --wheel-dir=./dist   \
-    --no-deps            \
+    -w dist              \
     --no-build-isolation \
-    ./ || exit 1
+    --no-deps            \
+    --no-cache-dir       \
+    "${PWD}" || exit 1
 
 pip3 install            \
     --root="${TMP_DIR}" \
+    --no-index          \
     --find-links=./dist \
     --no-cache-dir      \
     --no-user           \
-    --no-index Brotli || exit 1
+    Brotli || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
