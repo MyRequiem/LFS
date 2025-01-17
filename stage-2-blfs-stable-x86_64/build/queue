@@ -370,12 +370,13 @@ ap/vim.sh
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 x/apps/bumblebee-status.sh
-# ========================
+# ==== google-chrome =====
 l/nspr.sh
 l/nss.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
 xap/google-chrome.sh
+# ========================
 
 
 # ==============================================================================
