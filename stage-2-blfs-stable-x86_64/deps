@@ -24,6 +24,7 @@ apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
 appindicator                            transmission
+appstream
 appstream-glib                          gimp
 archivemount                            vifm
 argon2                                  cryptsetup
@@ -89,11 +90,12 @@ cryptsetup
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission
+curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission, appstream
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, gtk-vnc, exim, php
 dag                                     libpcap
+daps                                    appstream
 datefudge                               gnutls
 dblatex                                 git, xmlto, graphite2, gimp
 dbmaker                                 php
@@ -134,7 +136,7 @@ ed
 efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
-elogind                                 alsa-lib, pulseaudio, polkit, xorg-server, udisks
+elogind                                 alsa-lib, pulseaudio, polkit, xorg-server, udisks, appstream
 emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
 emojione                                ibus
 empress                                 php
@@ -200,7 +202,7 @@ git                                     libidn2, python3-setuptools-scm, cmake, 
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb
 glib-networking                         glib, glibmm26, gimp, libsoup, libsoup3, glibmm28
 glibavif                                gdk-pixbuf
 glibmm26                                pangomm24, atkmm22
@@ -239,7 +241,7 @@ gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
 gtk+2                                   pixman, cairo, libglade, gtk-engines, libcanberra, alsa-tools, gimp, libiodbc, vte2
 gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf, qt5-components, qt6
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, vte2
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, vte2, libxmlb
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, adwaita-icon-theme, gjs, ibus, gcr4, libadwaita, zenity, vte3, gtkmm4
@@ -285,7 +287,7 @@ inxi
 iptables
 isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus, gimp, gst-plugins-base, gtk4
-itstool
+itstool                                 appstream
 iw
 jack                                    pulseaudio, sdl2, alsa-plugins, mpg123, gst-plugins-good
 jansson                                 nghttp2
@@ -445,6 +447,7 @@ libspiro                                gegl
 libsrtp                                 gst-plugins-bad
 libssh                                  cryptsetup, ffmpeg, exiv2
 libssh2                                 curl, rustc, nmap, mc, gst-plugins-bad
+libstemmer                              libxmlb, appstream
 libtasn1                                p11-kit, gnutls
 libthai                                 perl-unicode-linebreak, pango
 libtheora                               gst-plugins-base
@@ -475,10 +478,11 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, libwpe, gst-plugins-bad, gtk4, i3, flameshot, qt5-components, qt6
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf, appstream
+libxmlb                                 appstream
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring, glibmm28
 libyajl                                 i3, raptor
-libyaml                                 ruby, libblockdev
+libyaml                                 ruby, libblockdev, appstream
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim, fcron, at, gnome-keyring
@@ -651,7 +655,7 @@ python3-ducktype                        dbus
 python3-editables                       python3-hatchling
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
-python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3, gtk4, gcr4, libadwaita, vte3, libnotify
+python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsecret, gcr3, libsoup3, gtk4, gcr4, libadwaita, vte3, libnotify, appstream
 python3-hatchling                       python3-pygments, python3-urllib3
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, libwpe, gst-plugins-bad, gst-plugins-ugly
 python3-httpbin                         python3-requests
@@ -709,7 +713,7 @@ pytrash
 qdbm                                    php
 qrencode                                gst-plugins-bad
 qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler, flameshot, transmission
-qt6                                     highlight, cmake, gst-plugins-good, poppler, oxygen-icons
+qt6                                     highlight, cmake, gst-plugins-good, poppler, oxygen-icons, appstream
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz

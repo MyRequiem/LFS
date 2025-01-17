@@ -18,6 +18,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим некоторые проблемы совместимости с Python-3.12
+sed -i 's/re.sub(/re.sub(r/'         itstool.in || exit 1
+sed -i 's/re.compile(/re.compile(r/' itstool.in || exit 1
+
 PYTHON=/usr/bin/python3 \
 ./configure             \
     --prefix=/usr || exit 1

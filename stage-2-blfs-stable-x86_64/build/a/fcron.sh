@@ -10,7 +10,7 @@ PRGNAME="fcron"
 
 # Required:    no
 # Recommended: no
-# Optional:    MTA            (dovecot, exim, postfix или sendmail)
+# Optional:    MTA            dovecot, exim, postfix или sendmail
 #              vim            (или любой другой текстовый редактор)
 #              linux-pam
 #              docbook-utils

@@ -457,6 +457,9 @@ https://github.com/google/brotli/archive/v1.1.0/brotli-1.1.0.tar.gz
 https://github.com/Exiv2/exiv2/archive/v0.28.3/exiv2-0.28.3.tar.gz
 https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.3.tar.xz
 https://gitlab.com/thomasross/mirage/-/archive/0.11.2/mirage-0.11.2.tar.bz2
+https://github.com/hughsie/libxmlb/releases/download/0.3.19/libxmlb-0.3.19.tar.xz
+https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
+https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.3.tar.xz
 
 
 ================================================================================
@@ -500,7 +503,6 @@ https://www.netfilter.org/projects/iptables/files/iptables-1.8.9.tar.xz
 https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
 https://github.com/storaged-project/libbytesize/releases/download/2.7/libbytesize-2.7.tar.gz
 https://downloads.sourceforge.net/swig/swig-4.1.1.tar.gz
-https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
 https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-Warnings-0.031.tar.gz

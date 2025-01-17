@@ -382,6 +382,13 @@ l/brotli.sh
 l/exiv2.sh
 l/gexiv2.sh
 ap/mirage.sh
+# === zenity, fcron ======
+l/libxmlb.sh
+ap/itstool.sh
+l/appstream.sh
+# l/libadwaita.sh
+# ap/zenity.sh
+# a/fcron.sh
 # ========================
 
 # ==============================================================================
@@ -422,7 +429,6 @@ ap/mirage.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
 # d/swig.sh
-# ap/itstool.sh
 # n/nmap.sh
 # ap/lsof.sh
 
@@ -495,9 +501,6 @@ ap/mirage.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# l/libadwaita.sh
-# ap/zenity.sh
-# a/fcron.sh
 # n/ntp.sh
 # s/inxi.sh
 # s/prelink.sh
