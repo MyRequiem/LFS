@@ -221,6 +221,7 @@ x/misc/freeglut.sh
 l/libtiff.sh
 l/harfbuzz.sh
 x/libs/libva.sh
+x/utils/libva-utils.sh
 x/libs/libvdpau.sh
 x/drivers/libvdpau-va-gl.sh
 x/libs/libepoxy.sh
@@ -382,14 +383,28 @@ l/brotli.sh
 l/exiv2.sh
 l/gexiv2.sh
 ap/mirage.sh
-# === zenity, fcron ======
+# === zenity, ntp, fcron ======
 l/libxmlb.sh
 ap/itstool.sh
 l/appstream.sh
-# l/libadwaita.sh
-# ap/zenity.sh
-# a/fcron.sh
+l/libadwaita.sh
+ap/zenity.sh
+d/perl-modules/perl-net-ssleay.sh
+d/perl-modules/perl-business-isbn-data.sh
+d/perl-modules/perl-business-isbn.sh
+d/perl-modules/perl-uri.sh
+d/perl-modules/perl-io-socket-ssl.sh
+n/ntp.sh
+a/fcron.sh
 # ========================
+
+# l/alsa-plugins.sh
+# ap/alsa-utils.sh
+# ap/alsa-tools.sh
+# s/alsa-firmware.sh
+# l/alsa-oss.sh
+# l/ffmpeg.sh
+# ap/mpv.sh
 
 # ==============================================================================
 # a/time.sh
@@ -470,12 +485,6 @@ l/appstream.sh
 # ap/mc.sh
 # l/liba52.sh
 # l/xvid.sh
-# l/ffmpeg.sh
-# l/alsa-plugins.sh
-# ap/alsa-utils.sh
-# ap/alsa-tools.sh
-# s/alsa-firmware.sh
-# l/alsa-oss.sh
 # n/links.sh
 # l/poppler.sh
 # l/gperftools.sh
@@ -501,7 +510,6 @@ l/appstream.sh
 # l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
-# n/ntp.sh
 # s/inxi.sh
 # s/prelink.sh
 # xap/flameshot.sh
@@ -578,7 +586,6 @@ l/appstream.sh
 # ap/optipng.sh
 # l/libplacebo.sh
 # d/mujs.sh
-# ap/mpv.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
 # n/telegram.sh

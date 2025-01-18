@@ -1,12 +1,12 @@
 #! /bin/bash
 
-PRGNAME="perl-business-isbn"
-ARCH_NAME="Business-ISBN"
+PRGNAME="perl-business-isbn-data"
+ARCH_NAME="Business-ISBN-Data"
 
-### Business::ISBN (work with International Standard Book Numbers)
-# Модуль Perl Business::ISBN
+### Business::ISBN::Data (data pack for Business::ISBN)
+# Пакет данных для Perl модуля Business::ISBN
 
-# Required:    perl-business-isbn-data
+# Required:    no
 # Recommended: no
 # Optional:    no
 
@@ -32,13 +32,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (work with International Standard Book Numbers)
+# Package: ${PRGNAME} (data pack for Business::ISBN)
 #
-# The Business::ISBN module is for work with International Standard Book
-# Numbers
+# Business-ISBN-Data is a data pack for Business::ISBN
 #
-# Home page: https://metacpan.org/pod/Business::ISBN
-# Download:  https://www.cpan.org/authors/id/B/BD/BDFOY/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://metacpan.org/pod/Business::ISBN::Data
+# Download:  https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

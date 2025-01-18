@@ -9,7 +9,7 @@ PRGNAME="zenity"
 # Required:    gtk4
 #              libadwaita
 # Recommended: no
-# Optional:    webkit2gtk
+# Optional:    webkit2gtk-6.0 (для поддежки HTML)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,10 +21,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                 \
-    --prefix=/usr     \
-    -Dwebkitgtk=false \
-    -Dmanpage=true    \
+meson             \
+    --prefix=/usr \
     .. || exit 1
 
 ninja || exit 1
@@ -43,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # command line and through shell scripts. It is similar to gdialog, but is
 # intended to be saner.
 #
-# Home page: https://download.gnome.org/sources/${PRGNAME}/
+# Home page: https://help.gnome.org/users/${PRGNAME}/stable/
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

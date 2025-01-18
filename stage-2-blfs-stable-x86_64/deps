@@ -24,7 +24,7 @@ apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
 appindicator                            transmission
-appstream
+appstream                               libadwaita
 appstream-glib                          gimp
 archivemount                            vifm
 argon2                                  cryptsetup
@@ -462,7 +462,8 @@ liburcu                                 bind-utils, glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, upower
 libutp                                  transmission
 libuv                                   cmake, bind-utils, nodejs
-libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugins-bad, intel-vaapi-driver
+libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugins-bad, intel-vaapi-driver, libva-utils
+libva-utils
 libvdpau                                mesa, libvdpau-va-gl, ffmpeg
 libvdpau-va-gl                          libvdpau
 libvisual                               gst-plugins-base
@@ -612,11 +613,19 @@ pcre2                                   wget, glib, libarchive, git, lnav, libby
 pcsc-lite                               libcacard
 perl-anyevent                           perl-anyevent-i3
 perl-anyevent-i3
+perl-business-isbn                      perl-uri
+perl-business-isbn-data                 perl-business-isbn
 perl-canary-stability                   perl-anyevent
 perl-common-sense
+perl-io-socket-ssl                      ntp
 perl-json-xs                            perl-anyevent-i3
+perl-net-ssleay                         perl-io-socket-ssl
 perl-test-command                       feh
+perl-test-fatal                         perl-uri
+perl-test-needs                         perl-uri
+perl-test-warnings                      perl-uri
 perl-types-serialiser                   perl-json-xs
+perl-uri                                perl-io-socket-ssl
 pgp                                     imagemagick
 php                                     cups, libsoup, libsoup3
 picogui

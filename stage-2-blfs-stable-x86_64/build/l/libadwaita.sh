@@ -5,7 +5,8 @@ PRGNAME="libadwaita"
 ### libadwaita (GTK 4 library implementing the GNOME HIG)
 # Библиотека GTK4, реализующая GNOME HIG и дополняющая GTK
 
-# Required:    gtk4
+# Required:    appstream
+#              gtk4
 # Recommended: vala
 # Optional:    python3-gi-docgen (для документации)
 
@@ -19,11 +20,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Dgtk_doc=false     \
-    -Dtests=false       \
+    -D tests=false      \
     .. || exit 1
 
 ninja || exit 1

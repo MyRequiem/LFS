@@ -211,6 +211,7 @@ https://download.gnome.org/sources/librsvg/2.58/librsvg-2.58.3.tar.xz
 https://dri.freedesktop.org/libdrm/libdrm-2.4.122.tar.xz
 https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.3.5.tar.gz
 https://github.com/intel/libva/archive/2.22.0/libva-2.22.0.tar.gz
+https://github.com/intel/libva-utils/archive/2.22.0/libva-utils-2.22.0.tar.gz
 https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2
 https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.23.0/downloads/wayland-1.23.0.tar.xz
 https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.36/downloads/wayland-protocols-1.36.tar.xz
@@ -460,6 +461,15 @@ https://gitlab.com/thomasross/mirage/-/archive/0.11.2/mirage-0.11.2.tar.bz2
 https://github.com/hughsie/libxmlb/releases/download/0.3.19/libxmlb-0.3.19.tar.xz
 https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.3.tar.xz
+https://download.gnome.org/sources/libadwaita/1.5/libadwaita-1.5.3.tar.xz
+https://download.gnome.org/sources/zenity/4.0/zenity-4.0.3.tar.xz
+http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
+https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
+https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-Data-20240807.001.tar.gz
+https://www.cpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-3.009.tar.gz
+https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.28.tar.gz
+https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.088.tar.gz
+https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p18.tar.gz
 
 
 ================================================================================
@@ -523,8 +533,6 @@ https://www.cpan.org/authors/id/K/KA/KASEI/Class-Accessor-0.51.tar.gz
 https://www.cpan.org/authors/id/B/BD/BDFOY/Business-ISSN-1.005.tar.gz
 https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Tie-Cycle-1.227.tar.gz
 https://www.cpan.org/authors/id/B/BD/BDFOY/Business-ISMN-1.202.tar.gz
-https://cpan.metacpan.org/authors/id/B/BD/BDFOY/Business-ISBN-Data-20210112.006.tar.gz
-https://www.cpan.org/authors/id/B/BD/BDFOY/Business-ISBN-3.007.tar.gz
 https://www.cpan.org/authors/id/V/VP/VPIT/autovivification-0.18.tar.gz
 https://cpan.metacpan.org/authors/id/C/CO/CORION/Test-Without-Module-0.21.tar.gz
 https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz
@@ -577,9 +585,6 @@ https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/DateTime-1.59.tar.gz
 https://www.cpan.org/authors/id/W/WY/WYANT/DateTime-Calendar-Julian-0.107.tar.gz
 https://www.cpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz
 https://www.cpan.org/authors/id/G/GA/GAAS/IO-String-1.08.tar.gz
-https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.17.tar.gz
-https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz
-https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.081.tar.gz
 https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-MediaTypes-6.04.tar.gz
 https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz
 https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.33.tar.gz
@@ -732,10 +737,6 @@ https://get.videolan.org/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
 https://get.videolan.org/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/aom/aom-3.9.0.tar.xz
 https://download.gnome.org/sources/gcr/4.0/gcr-4.0.0.tar.xz
-https://download.gnome.org/sources/libadwaita/1.2/libadwaita-1.2.2.tar.xz
-https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
-http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz
-https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
 https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.gz
