@@ -14,12 +14,11 @@ adwaita-icon-theme                      gtk+3, gtk4
 afs                                     sudo
 ag
 aka-mrsid-utilities                     imagemagick
-alsa-firmware                           libao
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, alsa-oss, gimp, gst-plugins-base, mpg123, openjdk, libao, qt5-components, qt6
-alsa-oss                                gst-plugins-good, libao
-alsa-plugins                            libao
-alsa-tools                              alsa-firmware, libao
-alsa-utils                              faad2, faac, libao
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, gimp, gst-plugins-base, mpg123, openjdk, libao, qt5-components, qt6
+alsa-oss                                gst-plugins-good
+alsa-plugins
+alsa-tools
+alsa-utils                              faad2, faac
 apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3, php
 apparmor                                php
@@ -28,7 +27,6 @@ appstream                               libadwaita
 appstream-glib                          gimp
 archivemount                            vifm
 argon2                                  cryptsetup
-as31                                    alsa-firmware
 aspell                                  aspell-dict-en, aspell-dict-ru, enchant, php
 aspell-dict-en
 aspell-dict-ru

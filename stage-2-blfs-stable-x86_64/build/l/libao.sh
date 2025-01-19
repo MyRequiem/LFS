@@ -11,12 +11,7 @@ PRGNAME="libao"
 # Required:    no
 # Recommended: no
 # Optional:    Graphical Environments
-#              alsa-firmware
 #              alsa-lib
-#              alsa-oss
-#              alsa-plugins
-#              alsa-tools
-#              alsa-utils
 #              pulseaudio
 
 ROOT="/root/src/lfs"
