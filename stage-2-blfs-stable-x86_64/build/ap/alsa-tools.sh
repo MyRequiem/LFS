@@ -7,9 +7,9 @@ PRGNAME="alsa-tools"
 
 # Required:    alsa-lib
 # Recommended: no
-# Optional:    gtk+2 (для сборки echomixer, envy24control и rmedigicontrol)
-#              gtk+3 (для сборки hdajackretask)
-#              fltk  (для сборки hdspconf и hdspmixer)
+#              gtk+3    (для сборки hdajackretask)
+#              fltk     (для сборки hdspconf и hdspmixer)
+# Optional:    gtk+2    (https://download.gnome.org/sources/gtk+/2.24/) для сборки echomixer, envy24control и rmedigicontrol
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,8 +18,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим инструмент qlo10k1 (ему нужен Qt2 или Qt3) и два ненужных файла
-rm -rf qlo10k1 Makefile gitcompile
+# удалим некоторые инструменты, которым нужен Qt2 или Qt3 или GTK+2, а также
+# два ненужных файла
+rm -rf qlo10k1 echomixer envy24control rmedigicontrol Makefile gitcompile
 
 for TOOL in * ; do
     TOOL_DIR="${TOOL}"
@@ -38,10 +39,18 @@ for TOOL in * ; do
         exit 1
     }
 
+    # сразу уставливаем в систему
+    make install || {
+        echo "Error install tool ${TOOL} !!!"
+        exit 1
+    }
+
     make install DESTDIR="${TMP_DIR}" || {
         echo "Error install tool ${TOOL} !!!"
         exit 1
     }
+
+    /sbin/ldconfig
 
     popd || exit 1
 done
@@ -52,8 +61,6 @@ chmod 644 "${TMP_DIR}/etc/hotplug/usb/tascam_fw.usermap"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-/sbin/ldconfig
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (advanced tools for various soundcards)

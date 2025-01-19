@@ -24,10 +24,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-FFTW="--disable-bat"
 XMLTO="--disable-xmlto"
 
-command -v fftw-wisdom &>/dev/null && FFTW="--enable-bat"
 command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
 
 # отключаем создание конфигурации alsaconf, которая не совместима с Udev
@@ -36,10 +34,7 @@ command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
 #    --with-curses=ncursesw
 ./configure            \
     --prefix=/usr      \
-    --sysconfdir=/etc  \
     --disable-alsaconf \
-    "${FFTW}"          \
-    "${XMLTO}"         \
     --with-curses=ncursesw || exit 1
 
 make || exit 1
