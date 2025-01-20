@@ -396,12 +396,19 @@ d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 n/ntp.sh
 a/fcron.sh
-# ========================
-
+# === ffmpeg, mpv ===============
 l/alsa-plugins.sh
 ap/alsa-utils.sh
 ap/alsa-tools.sh
+l/libaom.sh
+# l/libass.sh
+# l/fdk-aac.sh
+# l/openjpeg.sh
+# l/xvid.sh
 # l/ffmpeg.sh
+# l/uchardet.sh [NEW]
+# d/python-modules/python3-glad.sh [NEW]
+# l/libplacebo.sh
 # ap/mpv.sh
 
 # ==============================================================================
@@ -448,7 +455,6 @@ ap/alsa-tools.sh
 # ==============================================================================
 
 # n/nmap.sh
-# l/openjpeg.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
 # l/gdk-pixbuf-xlib.sh
@@ -476,13 +482,10 @@ ap/alsa-tools.sh
 # n/exim.sh
 # ap/sudo.sh
 # l/aalib.sh
-# l/libass.sh
-# l/fdk-aac.sh
 # l/libcddb.sh
 # l/libcdio.sh
 # ap/mc.sh
 # l/liba52.sh
-# l/xvid.sh
 # n/links.sh
 # l/poppler.sh
 # l/gperftools.sh
@@ -505,7 +508,6 @@ ap/alsa-tools.sh
 # l/soundtouch.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
-# l/aom.sh
 # d/gjs.sh
 # l/gcr4.sh
 # s/inxi.sh
@@ -582,7 +584,6 @@ ap/alsa-tools.sh
 # n/nginx.sh
 # s/pspg.sh
 # ap/optipng.sh
-# l/libplacebo.sh
 # d/mujs.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]

@@ -75,7 +75,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, aom, libyajl, flameshot, glm, libical, tidy-html5, double-conversion, extra-cmake-modules
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, libyajl, flameshot, glm, libical, tidy-html5, double-conversion, extra-cmake-modules
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -126,7 +126,7 @@ docwriter                               freetype
 dosfstools                              parted, udisks
 double-conversion                       qt5-components, qt6
 dovecot                                 gnupg, sudo, gimp, fcron, at, php
-doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, glibmm28, cairomm118, gtkmm4
+doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, glibmm28, cairomm118, gtkmm4, libaom
 dssim                                   gst-plugins-bad
 dtrace                                  gjs, ruby
 duktape                                 polkit
@@ -540,7 +540,7 @@ musepack                                gst-plugins-bad
 mypaint-brushes                         gimp
 myrocks                                 mariadb
 mysql                                   cyrus-sasl, openldap, exim, redland, php, qt5-components, qt6
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, gst-plugins-good, aom
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, gst-plugins-good, libaom
 ncompress                               xorg-libraries
 ndctl                                   libblockdev
 neon                                    gst-plugins-bad
@@ -898,7 +898,7 @@ xterm                                   xinit, imagemagick
 xvid                                    ffmpeg
 xxhash                                  rsync
 xxkb
-yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx, xvid, ffmpeg
+yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, libvpx, xvid, ffmpeg, libaom
 yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
