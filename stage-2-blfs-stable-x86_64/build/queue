@@ -401,10 +401,10 @@ l/alsa-plugins.sh
 ap/alsa-utils.sh
 ap/alsa-tools.sh
 l/libaom.sh
-# l/libass.sh
-# l/fdk-aac.sh
-# l/openjpeg.sh
-# l/xvid.sh
+l/libass.sh
+l/fdk-aac.sh
+l/openjpeg.sh
+l/xvid.sh
 # l/ffmpeg.sh
 # l/uchardet.sh [NEW]
 # d/python-modules/python3-glad.sh [NEW]

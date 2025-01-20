@@ -9,7 +9,8 @@ PRGNAME="openjpeg"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    lcms2
+# Optional:    git
+#              lcms2
 #              libpng
 #              libtiff
 #              doxygen (для сборки API документации)
@@ -19,30 +20,30 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
-
-DOCS="OFF"
-# command -v doxygen &>/dev/null && DOCS="ON"
+mkdir -pv "${TMP_DIR}/usr/share"
 
 mkdir build
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_BUILD_TYPE=Release  \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_STATIC_LIBS=OFF     \
-    -DBUILD_DOC="${DOCS}"  \
+cmake                            \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_STATIC_LIBS=OFF     \
+    -D BUILD_DOC=OFF             \
     .. || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+
+#тесты
+# git clone https://github.com/uclouvain/openjpeg-data.git --depth 1 || exit 1
+# OPJ_DATA_ROOT="${PWD}/openjpeg-data" cmake -D BUILD_TESTING=ON ..  || exit 1
+# make                                                               || exit 1
+# make test
+
 make install DESTDIR="${TMP_DIR}"
 
 # если не собирали документацию, то и man-страницы не устанавливаются, исправим
-if [[ "x${DOCS}" == "xOFF" ]]; then
-    mkdir -p "${TMP_DIR}/usr/share"
-    cp -vR ../doc/man "${TMP_DIR}/usr/share"
-fi
+cp -rv ../doc/man -T "${TMP_DIR}/usr/share/man"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -55,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # fully respects the JPEG-2000 specifications and can compress/decompress
 # lossless 16-bit images.
 #
-# Home page: http://www.${PRGNAME}.org
+# Home page: https://www.${PRGNAME}.org
 # Download:  https://github.com/uclouvain/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

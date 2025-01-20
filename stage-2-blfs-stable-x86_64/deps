@@ -151,7 +151,7 @@ faad2                                   faac, gst-plugins-bad
 fcitx                                   sdl2
 fcron                                   git
 fdf-toolkit                             php
-fdk-aac                                 ffmpeg, gst-plugins-bad
+fdk-aac                                 gst-plugins-bad, ffmpeg 
 feh
 ffmpeg                                  alsa-plugins, gegl, imagemagick
 ffms2                                   x264
@@ -196,7 +196,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, poppler, libgxps, openjdk
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, poppler, libgxps, openjdk, openjpeg
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
