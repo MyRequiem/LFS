@@ -240,9 +240,9 @@ gst-plugins-base                        gst-plugins-good, gst-plugins-bad, gst-p
 gst-plugins-good                        gst-plugins-bad, gtk4
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base
-gtk+2                                   pixman, cairo, libglade, gtk-engines, libcanberra, alsa-tools, gimp, libiodbc, vte2
+gtk+2                                   pixman, cairo, libglade, gtk-engines, libcanberra, alsa-tools, gimp, libiodbc
 gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf, qt5-components, qt6
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, vte2, libxmlb
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, libxmlb
 gtk-engines
 gtk-vnc
 gtk4                                    python3-pygobject3, adwaita-icon-theme, gjs, ibus, gcr4, libadwaita, zenity, vte3, gtkmm4
@@ -847,7 +847,6 @@ vo-amrwb                                gst-plugins-bad
 vo-amrwbenc                             ffmpeg
 voikko                                  enchant
 volume-key                              libblockdev
-vte2
 vte3
 vulkan-headers                          vulkan-loader
 vulkan-loader                           mesa, gst-plugins-bad, gtk4, gtkmm4, ffmpeg, libplacebo, mpv

@@ -543,7 +543,6 @@ ap/mpv.sh
 # n/traceroute.sh
 # l/gnome-keyring.sh
 # l/libsecret.sh
-# l/vte2.sh
 # l/vte3.sh
 # d/apache-ant.sh
 # l/libmad.sh
