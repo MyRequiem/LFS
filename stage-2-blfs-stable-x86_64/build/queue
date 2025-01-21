@@ -214,7 +214,13 @@ x/libs/libva.sh
 x/libs/libvdpau.sh
 x/libs/wayland.sh
 x/libs/wayland-protocols.sh
+d/vulkan-headers.sh
+x/libs/vulkan-loader.sh
+d/spirv-headers.sh
+l/spirv-tools.sh
+x/misc/glslang.sh
 x/misc/mesa.sh
+x/libs/vulkan-loader.sh
 l/cairo.sh
 x/misc/glu.sh
 x/misc/freeglut.sh
@@ -405,11 +411,12 @@ l/libass.sh
 l/fdk-aac.sh
 l/openjpeg.sh
 l/xvid.sh
-# l/ffmpeg.sh
-# l/uchardet.sh [NEW]
-# d/python-modules/python3-glad.sh [NEW]
-# l/libplacebo.sh
-# ap/mpv.sh
+l/ffmpeg.sh
+l/uchardet.sh
+d/python-modules/python3-glad.sh
+l/gst-plugins-bad.sh
+l/libplacebo.sh
+ap/mpv.sh
 
 # ==============================================================================
 # a/time.sh
@@ -584,7 +591,6 @@ l/xvid.sh
 # n/nginx.sh
 # s/pspg.sh
 # ap/optipng.sh
-# d/mujs.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
 # n/telegram.sh
