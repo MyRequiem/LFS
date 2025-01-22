@@ -417,7 +417,7 @@ d/python-modules/python3-glad.sh
 l/gst-plugins-bad.sh
 l/libplacebo.sh
 ap/mpv.sh
-# === qemu ===
+# === qemu, libvirt, virt-manager ===
 d/swig.sh
 d/dtc.sh
 l/vte3.sh
@@ -429,10 +429,10 @@ s/pcsc-lite.sh
 l/libcacard.sh
 l/libcap-ng.sh
 n/libiscsi.sh
+l/libnfs.sh
+s/numactl.sh
+d/snappy.sh
 
-# l/libnfs.sh
-# s/numactl.sh
-# d/snappy.sh
 # d/spice-protocol.sh [в удаленных]
 # n/spice-gtk.sh      [в удаленных]
 # n/spice.sh          [в удаленных]
@@ -440,7 +440,7 @@ n/libiscsi.sh
 # n/vde2.sh
 
 s/qemu.sh
-# ============
+# ===================================
 
 # ==============================================================================
 # a/time.sh

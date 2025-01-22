@@ -500,6 +500,9 @@ https://pcsclite.apdu.fr/files/pcsc-lite-2.3.0.tar.xz
 https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz
 https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.8.5.tar.gz
 https://github.com/sahlberg/libiscsi/archive/1.20.0/libiscsi-1.20.0.tar.gz
+https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-6.0.2.tar.gz
+https://github.com/numactl/numactl/releases/download/v2.0.19/numactl-2.0.19.tar.gz
+https://github.com/google/snappy/archive/1.2.1/snappy-1.2.1.tar.gz
 
 
 ================================================================================
@@ -703,7 +706,6 @@ https://download.gnome.org/sources/gtk-vnc/1.3/gtk-vnc-1.3.1.tar.xz
 https://download.gnome.org/sources/gjs/1.74/gjs-1.74.1.tar.xz
 https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
-https://github.com/numactl/numactl/releases/download/v2.0.16/numactl-2.0.16.tar.gz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
 https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz
 https://gstreamer.freedesktop.org/src/orc/orc-0.4.34.tar.xz
@@ -719,8 +721,6 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://ftp.postgresql.org/pub/source/v15.2/postgresql-15.2.tar.bz2
-https://github.com/google/snappy/archive/1.1.10/snappy-1.1.10.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/snappy/snappy-1.1.10-gtest.patch
 https://downloads.mariadb.org/interstitial/mariadb-10.6.12/source/mariadb-10.6.12.tar.gz
 https://ftp.exim.org/pub/exim/exim4/exim-4.97.1.tar.xz
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
@@ -788,7 +788,6 @@ https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://thekelleys.org.uk/dnsmasq/dnsmasq-2.90.tar.xz
-https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-5.0.3.tar.gz
 http://downloads.sourceforge.net/project/vde/vde2/2.3.2/vde2-2.3.2.tar.bz2
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/vde2/vde2-2.3.2-cryptcab.patch
 https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
