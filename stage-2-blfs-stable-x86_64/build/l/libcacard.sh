@@ -6,7 +6,8 @@ PRGNAME="libcacard"
 # Пакет предназначен для эмуляции реальных смарт-карт в виртуальном картридере,
 # работающем на гостевой виртуальной машине.
 
-# Required:    pcsc-lite
+# Required:    glib
+#              pcsc-lite
 # Recommended: no
 # Optional:    no
 
@@ -20,18 +21,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir _build &&
 cd _build || exit 1
 
-meson                    \
+meson setup              \
     --prefix=/usr        \
-    -Dpcsc=enabled       \
-    -Ddisable_tests=true \
+    -D pcsc=enabled       \
+    -D disable_tests=true \
     .. || exit 1
 
 ninja || exit 1
-
-# для тестирования указываем значение параметра конфигурации
-#    -Ddisable_tests=false
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

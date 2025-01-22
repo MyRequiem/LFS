@@ -426,10 +426,10 @@ l/gperftools.sh
 d/rpcsvc-proto.sh
 n/glusterfs.sh
 s/pcsc-lite.sh
+l/libcacard.sh
+l/libcap-ng.sh
+n/libiscsi.sh
 
-# l/libcacard.sh
-# l/libcap-ng.sh
-# n/libiscsi.sh
 # l/libnfs.sh
 # s/numactl.sh
 # d/snappy.sh
