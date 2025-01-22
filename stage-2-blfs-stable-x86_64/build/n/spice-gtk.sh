@@ -6,7 +6,7 @@ PRGNAME="spice-gtk"
 # Gtk-клиент и библиотеки для удаленных рабочих столов Spice
 
 # Required:    vala
-#              spice             (https://www.spice-space.org/)
+#              spice            (https://www.spice-space.org/)
 # Recommended: polkit
 # Optional:    libcacard        (https://www.spice-space.org/)
 #              usbredir         (https://www.spice-space.org)

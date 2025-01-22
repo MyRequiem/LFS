@@ -432,14 +432,22 @@ n/libiscsi.sh
 l/libnfs.sh
 s/numactl.sh
 d/snappy.sh
+d/spice-protocol.sh
+d/python-modules/python3-six.sh
+d/python-modules/python3-pyparsing.sh
+d/orc.sh
+n/spice.sh
 
-# d/spice-protocol.sh [в удаленных]
-# n/spice-gtk.sh      [в удаленных]
-# n/spice.sh          [в удаленных]
-# s/usbredir.sh       [в удаленных]
+# n/spice-gtk.sh
+# s/usbredir.sh
 # n/vde2.sh
+# s/qemu.sh
 
-s/qemu.sh
+# d/python-modules/python3-libvirt.sh
+# d/python-modules/python3-urlgrabber.sh
+# l/libvirt-glib.sh
+# l/libvirt.sh
+# s/virt-manager.sh
 # ===================================
 
 # ==============================================================================
@@ -499,7 +507,6 @@ s/qemu.sh
 # n/w3m.sh
 # l/libdazzle.sh
 # l/sbc.sh
-# d/orc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
 # l/json-glib.sh

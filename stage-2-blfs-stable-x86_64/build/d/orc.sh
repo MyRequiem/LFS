@@ -20,13 +20,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                     \
-    --prefix=/usr         \
-    -Dorc-test=disabled   \
-    -Dtests=disabled      \
-    -Dgtk_doc=disabled    \
-    -Dbenchmarks=disabled \
-    -Dexamples=disabled   \
+meson setup                \
+    --prefix=/usr          \
+    -D orc-test=disabled   \
+    -D tests=disabled      \
+    -D orc-test=disabled   \
+    -D gtk_doc=disabled    \
+    -D benchmarks=disabled \
+    -D examples=disabled   \
     .. || exit 1
 
 ninja || exit 1
