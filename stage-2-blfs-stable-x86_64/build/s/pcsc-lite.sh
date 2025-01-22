@@ -34,10 +34,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                  \
-    --prefix=/usr      \
-    -Dlibsystemd=false \
-    -Dlibudev=true     \
+meson setup             \
+    --prefix=/usr       \
+    -D libsystemd=false \
+    -D libudev=true     \
     .. || exit 1
 
 ninja || exit 1

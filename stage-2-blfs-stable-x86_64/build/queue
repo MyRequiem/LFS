@@ -423,8 +423,10 @@ d/dtc.sh
 l/vte3.sh
 l/libslirp.sh
 l/gperftools.sh
+d/rpcsvc-proto.sh
+n/glusterfs.sh
+s/pcsc-lite.sh
 
-# n/glusterfs.sh
 # l/libcacard.sh
 # l/libcap-ng.sh
 # n/libiscsi.sh
@@ -566,7 +568,6 @@ s/qemu.sh
 # l/id3lib.sh
 # l/libao.sh
 # n/dnsmasq.sh
-# s/pcsc-lite.sh
 # l/virglrenderer.sh
 # l/libmd.sh
 # l/libbsd.sh

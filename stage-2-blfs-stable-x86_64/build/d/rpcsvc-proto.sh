@@ -19,8 +19,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --sysconfdir=/etc || exit 1
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    --disable-static || exit 1
 
 make || exit 1
 # пакет не содержит набота тестов
