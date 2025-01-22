@@ -437,9 +437,10 @@ d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
 d/orc.sh
 n/spice.sh
+s/usbredir.sh
+l/json-glib.sh
+n/spice-gtk.sh
 
-# n/spice-gtk.sh
-# s/usbredir.sh
 # n/vde2.sh
 # s/qemu.sh
 
@@ -509,7 +510,6 @@ n/spice.sh
 # l/sbc.sh
 # l/tdb.sh
 # s/gtk-vnc.sh
-# l/json-glib.sh
 # xap/pavucontrol.sh
 # ap/potrace.sh
 # ap/postgresql.sh

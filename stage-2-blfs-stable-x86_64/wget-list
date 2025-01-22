@@ -508,6 +508,9 @@ https://files.pythonhosted.org/packages/source/s/six/six-1.16.0.tar.gz
 https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-3.1.2.tar.gz
 https://gstreamer.freedesktop.org/src/orc/orc-0.4.40.tar.xz
 https://www.spice-space.org/download/releases/spice-0.15.2.tar.bz2
+https://www.spice-space.org/download/usbredir/usbredir-0.14.0.tar.xz
+https://download.gnome.org/sources/json-glib/1.8/json-glib-1.8.0.tar.xz
+https://www.spice-space.org/download/gtk/spice-gtk-0.42.tar.xz
 
 
 ================================================================================
@@ -714,7 +717,6 @@ https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
 https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz
 https://www.samba.org/ftp/tdb/tdb-1.4.9.tar.gz
-https://download.gnome.org/sources/json-glib/1.6/json-glib-1.6.6.tar.xz
 https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-amdgpu-23.0.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-ati-19.1.0.tar.bz2

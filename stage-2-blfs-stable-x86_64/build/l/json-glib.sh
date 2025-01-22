@@ -9,7 +9,6 @@ PRGNAME="json-glib"
 # Required:    glib
 # Recommended: no
 # Optional:    gtk-doc
-#              libxslt (для сборки man-страниц)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,24 +17,22 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="disabled"
-MAN="false"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="enabled"
-command -v xsltproc &>/dev/null && MAN="true"
-
 mkdir build
 cd build || exit 1
 
-meson                      \
-    --prefix=/usr          \
-    --buildtype=release    \
-    -Dman="${MAN}"         \
-    -Dgtk_doc="${GTK_DOC}" \
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D man=true         \
+    -D gtk_doc=disabled \
+    -D tests=false      \
     .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+chmod 644 "${TMP_DIR}/usr/share/man/man1"/*
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
