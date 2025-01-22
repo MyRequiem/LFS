@@ -34,7 +34,7 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 
 # тесты
-# PY3=1 make -k check TCL_INCLUDE=.
+# PY3=1 make TCL_INCLUDE= -k check
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -52,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # underlying C/C++ code. In addition, SWIG provides a variety of customization
 # features that let you tailor the wrapping process to suit your application.
 #
-# Home page: http://www.${PRGNAME}.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

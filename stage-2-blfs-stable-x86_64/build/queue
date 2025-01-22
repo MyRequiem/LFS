@@ -417,6 +417,28 @@ d/python-modules/python3-glad.sh
 l/gst-plugins-bad.sh
 l/libplacebo.sh
 ap/mpv.sh
+# === qemu ===
+d/swig.sh
+d/dtc.sh
+l/vte3.sh
+l/libslirp.sh
+l/gperftools.sh
+
+# n/glusterfs.sh
+# l/libcacard.sh
+# l/libcap-ng.sh
+# n/libiscsi.sh
+# l/libnfs.sh
+# s/numactl.sh
+# d/snappy.sh
+# d/spice-protocol.sh [в удаленных]
+# n/spice-gtk.sh      [в удаленных]
+# n/spice.sh          [в удаленных]
+# s/usbredir.sh       [в удаленных]
+# n/vde2.sh
+
+s/qemu.sh
+# ============
 
 # ==============================================================================
 # a/time.sh
@@ -455,7 +477,6 @@ ap/mpv.sh
 # l/gconf.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh
-# d/swig.sh
 # n/nmap.sh
 # ap/lsof.sh
 
@@ -473,7 +494,6 @@ ap/mpv.sh
 # d/gjs.sh
 # l/libsecret.sh
 # l/gcr3.sh
-# s/numactl.sh
 # n/w3m.sh
 # l/libdazzle.sh
 # l/sbc.sh
@@ -484,7 +504,6 @@ ap/mpv.sh
 # xap/pavucontrol.sh
 # ap/potrace.sh
 # ap/postgresql.sh
-# d/snappy.sh
 # ap/mariadb.sh
 # n/exim.sh
 # ap/sudo.sh
@@ -495,7 +514,6 @@ ap/mpv.sh
 # l/liba52.sh
 # n/links.sh
 # l/poppler.sh
-# l/gperftools.sh
 # l/libmypaint.sh
 # l/mypaint-brushes.sh
 # l/babl.sh
@@ -529,7 +547,6 @@ ap/mpv.sh
 # l/libblockdev.sh
 # ap/at.sh
 # a/upower.sh
-# n/libiscsi.sh
 # a/udisks.sh
 # l/libical.sh
 # l/raptor.sh
@@ -543,27 +560,19 @@ ap/mpv.sh
 # n/traceroute.sh
 # l/gnome-keyring.sh
 # l/libsecret.sh
-# l/vte3.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
 # n/dnsmasq.sh
-# d/device-tree-compiler.sh
-# n/glusterfs.sh
 # s/pcsc-lite.sh
-# l/libcacard.sh
-# l/libnfs.sh
-# n/vde2.sh
 # l/virglrenderer.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh
 # s/talloc.sh
 # s/jemalloc.sh
-# l/libcap-ng.sh
-# s/qemu.sh
 # s/osinfo-db-tools.sh
 # s/osinfo-db.sh
 # l/libosinfo.sh

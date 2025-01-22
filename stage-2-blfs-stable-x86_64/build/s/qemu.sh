@@ -8,30 +8,59 @@ PRGNAME="qemu"
 # расширенную виртуализацию (Intel VT или AMD-V)
 
 # Required:    glib
-#              Graphical Environments
+#              pixman
 # Recommended: alsa-lib
+#              dtc
+#              libslirp
 #              sdl2
-#              jemalloc  (http://jemalloc.net/)
-#              libcap-ng (http://people.redhat.com/sgrubb/libcap-ng/)
-# Optional:    alsa-plugins
-#              alsa-utils
-#              alsa-tools
-#              python3
-#              pulseaudio
+# Optional:    pipewire или pulseaudio
 #              bluez
 #              curl
 #              cyrus-sasl
+#              fuse3
 #              gnutls
-#              gcurlltk+2
 #              gtk+3
+#              keyutils
+#              libaio
 #              libusb
 #              libgcrypt
+#              libjpeg-turbo
+#              libseccomp
 #              libssh2
+#              libpng
+#              libtasn1
+#              linux-pam
 #              lzo
 #              nettle
 #              mesa
-#              vte3 или vte2
-#              libcacard
+#              vte3
+#              elogind
+#              python3-sphinx-rtd-theme
+
+capstone (https://www.capstone-engine.org/)
+ceph (https://github.com/ceph/ceph/)
+daxctl (https://pmem.io/daxctl/)
+jack (https://jackaudio.org/)
+glusterfs (https://github.com/gluster/glusterfs)
+libbpf (https://github.com/libbpf/libbpf)
+libcacard (https://gitlab.freedesktop.org/spice/libcacard)
+libcap-ng (https://people.redhat.com/sgrubb/libcap-ng/)
+libdw (https://sourceware.org/elfutils/)
+libiscsi (https://github.com/sahlberg/libiscsi)
+libnfs (https://github.com/sahlberg/libnfs)
+libpmem (https://pmem.io/pmdk/libpmem/)
+libssh (https://www.libssh.org/)
+libu2f-emu (https://github.com/Agnoctopus/libu2f-emu)
+lzfse (https://github.com/lzfse/lzfse)
+netmap (https://github.com/luigirizzo/netmap)
+numactl (https://github.com/numactl/numactl)
+rdma-core (https://github.com/linux-rdma/rdma-core)
+selinux (https://selinuxproject.org/page/Main_Page)
+snappy (https://google.github.io/snappy/)
+spice (https://gitlab.freedesktop.org/spice/spice)
+usbredir (https://gitlab.freedesktop.org/spice/usbredir)
+vde (https://github.com/virtualsquare/vde-2)
+
 
 ### Конфигурация ядра
 #    CONFIG_VIRTUALIZATION=y
@@ -120,7 +149,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # extensions (Intel VT or AMD-V)
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  http://download.${PRGNAME}-project.org/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.${PRGNAME}.org/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

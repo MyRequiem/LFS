@@ -103,7 +103,6 @@ dbus-glib                               gimp, enchant, gconf
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, dconf, fltk
-device-tree-compiler
 dhcpcd
 dht                                     transmission
 dialog                                  alsa-utils
@@ -130,6 +129,7 @@ dovecot                                 gnupg, sudo, gimp, fcron, at, php
 dovi_tool                               libplacebo
 doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, glibmm28, cairomm118, gtkmm4, libaom
 dssim                                   gst-plugins-bad
+dtc
 dtrace                                  gjs, ruby
 duktape                                 polkit
 ed
@@ -173,7 +173,7 @@ freeglut                                libtiff, libwebp, jasper
 freetds                                 qt6
 freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass, ffmpeg, php
 frei0r-plugins                          ffmpeg
-fribidi                                 pango, libass, ffmpeg, gtk4, vte3
+fribidi                                 pango, libass, ffmpeg, gtk4
 frontbase                               php
 fuse-zip                                vifm
 fuse2                                   vifm, ntfs-3g
@@ -203,7 +203,7 @@ gjs                                     glib, libsecret
 glade                                   libhandy
 glew
 glfw                                    python3-glad
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, qemu
 glib-networking                         glib, glibmm26, gimp, libsoup, libsoup3, glibmm28
 glibavif                                gdk-pixbuf
 glibmm26                                pangomm24, atkmm22
@@ -245,7 +245,7 @@ gtk+3                                   cairo, adwaita-icon-theme, ghostscript, 
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, libxmlb
 gtk-engines
 gtk-vnc
-gtk4                                    python3-pygobject3, adwaita-icon-theme, gjs, ibus, gcr4, libadwaita, zenity, vte3, gtkmm4
+gtk4                                    python3-pygobject3, adwaita-icon-theme, gjs, ibus, gcr4, libadwaita, zenity, gtkmm4, vte3
 gtkmm3                                  pavucontrol, transmission
 gtkmm4
 guile
@@ -441,6 +441,7 @@ libshout                                gst-plugins-good
 libsidplay                              gst-plugins-ugly
 libsigc++2                              cairomm114, glibmm26, pavucontrol
 libsigc++3                              glibmm28, cairomm118
+libslirp
 libsndfile                              lame, libsamplerate, pulseaudio, sbc, gst-plugins-bad
 libsoup                                 gst-plugins-good, gst-plugins-bad
 libsoup3                                gst-plugins-good
@@ -486,7 +487,7 @@ libxml2                                 wpa-supplicant, libxslt, libarchive, doc
 libxmlb                                 appstream
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, json-glib, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring, glibmm28
 libyajl                                 i3, raptor
-libyaml                                 ruby, libblockdev, appstream
+libyaml                                 ruby, libblockdev, appstream, dtc
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, postgresql, mariadb, exim, fcron, at, gnome-keyring
@@ -637,7 +638,7 @@ picogui
 pigz                                    openjdk
 pinentry                                gnupg
 pipewire                                sdl2, mpv
-pixman                                  cairo, xorg-server
+pixman                                  cairo, xorg-server, qemu
 ply                                     mesa
 pm-utils
 pngcrush                                gimp
@@ -726,6 +727,7 @@ python3-werkzeug                        python3-requests
 python3-xmlschema
 pytrash
 qdbm                                    php
+qemu
 qrencode                                gst-plugins-bad
 qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler, flameshot, transmission
 qt6                                     highlight, cmake, gst-plugins-good, poppler, oxygen-icons, appstream
@@ -794,14 +796,14 @@ subversion                              git, cmake
 sudo                                    python3-setuptools-scm
 svgalib                                 links, mpv
 svthevcenc                              gst-plugins-bad
-swig                                    gpgme
+swig                                    gpgme, dtc
 sysprof                                 glib, pango, gtk4, gjs, libsoup, libsoup3
 sysstat                                 openssh
 systemtap                               gjs
 t1lib                                   php
 taglib                                  gst-plugins-good
 tdb                                     pulseaudio, libcanberra, exim
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, jasper, imagemagick
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, parted, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, jasper, imagemagick, dtc
 thin-provisioning-tools                 lvm2
 tidy-html5                              php
 time
@@ -951,7 +953,6 @@ zxing                                   gst-plugins-bad
 # pspg
 # pwgen
 # pyatspi2
-# qemu
 # ramdefrag
 # rest
 # rpm                                 rpm2tgz
