@@ -500,7 +500,6 @@ https://pcsclite.apdu.fr/files/pcsc-lite-2.3.0.tar.xz
 https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz
 https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.8.5.tar.gz
 https://github.com/sahlberg/libiscsi/archive/1.20.0/libiscsi-1.20.0.tar.gz
-https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-6.0.2.tar.gz
 https://github.com/numactl/numactl/releases/download/v2.0.19/numactl-2.0.19.tar.gz
 https://github.com/google/snappy/archive/1.2.1/snappy-1.2.1.tar.gz
 https://www.spice-space.org/download/releases/spice-protocol-0.14.4.tar.xz
@@ -511,6 +510,8 @@ https://www.spice-space.org/download/releases/spice-0.15.2.tar.bz2
 https://www.spice-space.org/download/usbredir/usbredir-0.14.0.tar.xz
 https://download.gnome.org/sources/json-glib/1.8/json-glib-1.8.0.tar.xz
 https://www.spice-space.org/download/gtk/spice-gtk-0.42.tar.xz
+https://github.com/virtualsquare/vde-2/archive/v2.3.3/vde-2.3.3.tar.gz
+https://download.qemu.org/qemu-9.0.2.tar.xz
 
 
 ================================================================================
@@ -794,8 +795,6 @@ https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://thekelleys.org.uk/dnsmasq/dnsmasq-2.90.tar.xz
-http://downloads.sourceforge.net/project/vde/vde2/2.3.2/vde2-2.3.2.tar.bz2
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/vde2/vde2-2.3.2-cryptcab.patch
 https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
 https://archive.hadrons.org/software/libmd/libmd-1.0.4.tar.xz
 https://libbsd.freedesktop.org/releases/libbsd-0.11.5.tar.xz

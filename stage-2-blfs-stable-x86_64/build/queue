@@ -429,7 +429,6 @@ s/pcsc-lite.sh
 l/libcacard.sh
 l/libcap-ng.sh
 n/libiscsi.sh
-l/libnfs.sh
 s/numactl.sh
 d/snappy.sh
 d/spice-protocol.sh
@@ -440,9 +439,8 @@ n/spice.sh
 s/usbredir.sh
 l/json-glib.sh
 n/spice-gtk.sh
-
-# n/vde2.sh
-# s/qemu.sh
+n/vde2.sh
+s/qemu.sh
 
 # d/python-modules/python3-libvirt.sh
 # d/python-modules/python3-urlgrabber.sh
