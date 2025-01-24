@@ -13,15 +13,19 @@ ARCH_NAME="libsoup"
 #              libxml2
 #              nghttp2
 #              sqlite
-# Recommended: vala
-# Optional:    apache-httpd      (для тестов)
+# Recommended: glib
+#              vala
+# Optional:    --- для тестов ---
+#              apache-httpd
 #              brotli
-#              curl              (для тестов)
-#              python3-gi-docgen (для документации)
-#              mit-kerberos-v5   (для тестов)
-#              php               (собранный с поддержкой xmlrpc-epi для тестов)
-#              samba             (для тестов)
-#              sysprof
+#              curl
+#              mit-kerberos-v5
+#              php                  (собранный с поддержкой xmlrpc-epi)
+#              samba
+#              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
+#              wstest               (https://github.com/posener/wstest)
+#              --- для документации ---
+#              python3-gi-docgen
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -51,34 +55,22 @@ mkdir -pv "${TMP_DIR}"
 # исправим путь установки API документации:
 sed 's/apiversion/soup_version/' -i docs/reference/meson.build || exit 1
 
-VALA_API="disabled"
-GSSAPI="disabled"
-TESTS="false"
-DOCS="disabled"
-
-command -v vala        &>/dev/null && VALA_API="enabled"
-command -v krb5-config &>/dev/null && GSSAPI="enabled"
-# command -v gi-docgen   &>/dev/null && DOCS="enabled"
-
 mkdir build
 cd build || exit 1
 
-meson                      \
+meson setup                \
     --prefix=/usr          \
     --buildtype=release    \
-    -Dvapi="${VALA_API}"   \
-    -Dgssapi="${GSSAPI}"   \
-    -Dsysprof=disabled     \
+    -D vapi=enabled        \
+    -D gssapi=disabled     \
+    -D sysprof=disabled    \
     --wrap-mode=nofallback \
-    -Dtests="${TESTS}"     \
-    -Ddocs="${DOCS}"       \
+    -D tests=false         \
+    -D docs=disabled       \
     .. || exit 1
 
 ninja || exit 1
-
-# для тестов устанавливаем переменнут TESTS выше в 'true'
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

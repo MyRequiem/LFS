@@ -90,7 +90,7 @@ cryptsetup
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission, appstream, qemu
+curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, php, transmission, appstream, qemu, python3-pycurl
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim, php
@@ -206,7 +206,7 @@ gjs                                     glib, libsecret
 glade                                   libhandy
 glew
 glfw                                    python3-glad
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, qemu
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, qemu, osinfo-db-tools, libsoup, libsoup3
 glib-networking                         glib, glibmm26, gimp, libsoup, libsoup3, glibmm28
 glibavif                                gdk-pixbuf
 glibmm26                                pangomm24, atkmm22
@@ -302,7 +302,7 @@ jemalloc                                nghttp2, rustc
 jing                                    vala
 jq
 json-c                                  bind-utils, cryptsetup, fontconfig, libmypaint
-json-glib                               gst-plugins-bad, spice-gtk, pavucontrol, gegl
+json-glib                               gst-plugins-bad, spice-gtk, pavucontrol, gegl, osinfo-db-tools
 jsoncpp                                 cmake
 judy                                    mariadb
 kde-frameworks                          pinentry
@@ -327,7 +327,7 @@ libaio                                  lvm2, qemu, mariadb
 libajantv2                              gst-plugins-bad
 libao
 libaom                                  gst-plugins-bad, ffmpeg
-libarchive                              archivemount, lnav, cmake, ed, libgxps, docbook-xml
+libarchive                              archivemount, lnav, cmake, ed, libgxps, docbook-xml, osinfo-db-tools
 libass                                  ffmpeg, gst-plugins-bad, mpv
 libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
@@ -423,6 +423,7 @@ libofa                                  gst-plugins-bad
 libogg                                  libvorbis, flac, speex, gst-plugins-base
 libopenmpt                              gst-plugins-bad
 libopenni                               gst-plugins-bad
+libosinfo
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libplacebo                              mpv
@@ -489,9 +490,9 @@ libxcvt                                 xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, libwpe, gst-plugins-bad, gtk4, i3, flameshot, qt5-components, qt6
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf, appstream
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf, appstream, osinfo-db-tools
 libxmlb                                 appstream
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring, glibmm28
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring, glibmm28, osinfo-db-tools
 libyajl                                 i3, raptor
 libyaml                                 ruby, libblockdev, appstream, dtc
 lilv                                    gst-plugins-bad
@@ -604,6 +605,8 @@ openssh                                 curl, sshfs, git, libssh2, gnome-keyring
 opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
+osinfo-db                               libosinfo
+osinfo-db-tools                         osinfo-db
 ossp-mm                                 php
 oxygen-icons
 p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
@@ -707,6 +710,7 @@ python3-pretend                         python3-packaging
 python3-psutil                          llvm, bumblebee-status
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3, mirage
+python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-pygobject3
 python3-pygments                        llvm, libbytesize, gegl
 python3-pygobject3                      dbus, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
@@ -715,7 +719,7 @@ python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson
@@ -724,15 +728,16 @@ python3-pyyaml                          llvm
 python3-quart                           python3-urllib3
 python3-quart-trio                      python3-urllib3
 python3-railroad-diagrams               python3-pyparsing
-python3-requests
+python3-requests                        osinfo-db-tools
 python3-setuptools-scm                  python3-pluggy
-python3-six                             spice
+python3-six                             spice, python3-urlgrabber
 python3-sphinx                          libuv, python3-requests, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, libinput, mariadb, extra-cmake-modules
 python3-sphinx-rtd-theme                qemu
 python3-tornado                         python3-urllib3
 python3-trio                            python3-urllib3
 python3-trove-classifiers               python3-hatchling
 python3-trustme                         python3-urllib3, python3-requests
+python3-urlgrabber
 python3-urllib3                         python3-requests
 python3-wcag-contrast-ratio             python3-pygments
 python3-werkzeug                        python3-requests
@@ -891,6 +896,7 @@ wireless-tools                          pm-utils
 wpa-supplicant
 wpe-webkit                              gst-plugins-bad
 wpebackend-fdo                          gst-plugins-bad
+wstest                                  libsoup3
 wxwidgets                               p7zip
 x264                                    ffmpeg, gst-plugins-ugly
 x265                                    imlib2, ffmpeg, gst-plugins-bad
@@ -958,7 +964,6 @@ zxing                                   gst-plugins-bad
 # libbsd                              netcat-openbsd
 # libmd                               libbsd
 # libmp4v2                            cmus
-# libosinfo
 # libx86emu                           hwinfo
 # lsscsi
 # musepack-tools                      cmus
@@ -966,8 +971,6 @@ zxing                                   gst-plugins-bad
 # nginx
 # optipng
 # opusfile                            cmus
-# osinfo-db                           libosinfo
-# osinfo-db-tools                     osinfo-db, libosinfo
 # pspg
 # pwgen
 # pyatspi2

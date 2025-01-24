@@ -11,15 +11,17 @@ PRGNAME="libsoup"
 #              libpsl
 #              libxml2
 #              sqlite
-# Recommended: vala
-# Optional:    apache-httpd     (для тестов)
+# Recommended: glib
+#              vala
+# Optional:    --- для тестов ---
+#              apache-httpd
 #              brotli
-#              curl             (для тестов)
-#              sysprof
-#              mit-kerberos-v5  (для тестов)
+#              curl
+#              mit-kerberos-v5
 #              gtk-doc
-#              php              (собранный с поддержкой xmlrpc-epi для тестов)
-#              samba            (для тестов)
+#              php              (собранный с поддержкой xmlrpc-epi)
+#              samba
+#              sysprof          (https://wiki.gnome.org/Apps/Sysprof)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -46,33 +48,21 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-VALA_API="disabled"
-GSSAPI="disabled"
-TESTS="false"
-GTK_DOC="false"
-
-command -v vala         &>/dev/null && VALA_API="enabled"
-command -v krb5-config  &>/dev/null && GSSAPI="enabled"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-
 mkdir build
 cd build || exit 1
 
-meson                      \
-    --prefix=/usr          \
-    --buildtype=release    \
-    -Dvapi="${VALA_API}"   \
-    -Dgssapi="${GSSAPI}"   \
-    -Dsysprof=disabled     \
-    -Dtests="${TESTS}"     \
-    -Dgtk_doc="${GTK_DOC}" \
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D vapi=enabled     \
+    -D gssapi=disabled  \
+    -D sysprof=disabled \
+    -D tests=false      \
+    -D gtk_doc=false    \
     .. || exit 1
 
 ninja || exit 1
-
-# для тестов устанавливаем переменнут TESTS выше в 'true'
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

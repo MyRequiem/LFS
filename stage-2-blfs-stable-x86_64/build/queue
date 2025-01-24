@@ -441,11 +441,18 @@ l/json-glib.sh
 n/spice-gtk.sh
 n/vde2.sh
 s/qemu.sh
+d/python-modules/python3-pycurl.sh
+d/python-modules/python3-urlgrabber.sh
+l/libsoup.sh
+l/libsoup3.sh
+s/osinfo-db-tools.sh
+s/osinfo-db.sh
+l/libosinfo.sh
 
-# d/python-modules/python3-libvirt.sh
-# d/python-modules/python3-urlgrabber.sh
-# l/libvirt-glib.sh
+# l/gtksourceview3.sh [в удаленных]
 # l/libvirt.sh
+# l/libvirt-glib.sh
+# d/python-modules/python3-libvirt.sh
 # s/virt-manager.sh
 # ===================================
 
@@ -530,8 +537,6 @@ s/qemu.sh
 # l/libgxps.sh
 # xap/imagemagick.sh
 # l/taglib.sh
-# l/libsoup.sh
-# l/libsoup3.sh
 # l/neon.sh
 # l/libwpe.sh
 # l/wpebackend-fdo.sh
@@ -579,9 +584,6 @@ s/qemu.sh
 # n/netcat-openbsd.sh
 # s/talloc.sh
 # s/jemalloc.sh
-# s/osinfo-db-tools.sh
-# s/osinfo-db.sh
-# l/libosinfo.sh
 # n/tunctl.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh

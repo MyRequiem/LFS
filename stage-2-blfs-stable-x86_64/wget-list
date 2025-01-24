@@ -512,6 +512,13 @@ https://download.gnome.org/sources/json-glib/1.8/json-glib-1.8.0.tar.xz
 https://www.spice-space.org/download/gtk/spice-gtk-0.42.tar.xz
 https://github.com/virtualsquare/vde-2/archive/v2.3.3/vde-2.3.3.tar.gz
 https://download.qemu.org/qemu-9.0.2.tar.xz
+https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-7.45.4.tar.gz
+https://files.pythonhosted.org/packages/source/u/urlgrabber/urlgrabber-4.1.0.tar.gz
+https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
+https://download.gnome.org/sources/libsoup/3.4/libsoup-3.4.4.tar.xz
+https://releases.pagure.org/libosinfo/osinfo-db-tools-1.12.0.tar.xz
+https://releases.pagure.org/libosinfo/osinfo-db-20240701.tar.xz
+https://releases.pagure.org/libosinfo/libosinfo-1.12.0.tar.xz
 
 
 ================================================================================
@@ -748,8 +755,6 @@ http://downloads.sourceforge.net/djvu/djvulibre-3.5.28.tar.gz
 https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://taglib.org/releases/taglib-1.13.tar.gz
-https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
-https://download.gnome.org/sources/libsoup/3.2/libsoup-3.2.2.tar.xz
 https://notroj.github.io/neon/neon-0.32.5.tar.gz
 https://wpewebkit.org/releases/libwpe-1.14.1.tar.xz
 https://wpewebkit.org/releases/wpebackend-fdo-1.14.0.tar.xz
@@ -801,9 +806,6 @@ https://libbsd.freedesktop.org/releases/libbsd-0.11.5.tar.xz
 https://github.com/duncan-roe/netcat-openbsd/archive/refs/tags/1.217-1.tar.gz
 https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
 https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2
-https://releases.pagure.org/libosinfo/osinfo-db-tools-1.10.0.tar.xz
-https://releases.pagure.org/libosinfo/osinfo-db-20220214.tar.xz
-https://releases.pagure.org/libosinfo/libosinfo-1.10.0.tar.xz
 http://downloads.sourceforge.net/tunctl/tunctl-1.5.tar.gz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-amd64_segfault.patch
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-color_definition_path.patch

@@ -11,6 +11,17 @@ PRGNAME="libvirt"
 # Recommended: no
 # Optional:    no
 
+# -----------------------------------
+# depends from src code (INSTALL.md)
+# -----------------------------------
+# gettext
+# python3
+# gtk+3
+# python3-libvirt
+# python3-pygobject3
+# libosinfo
+# gtksourceview3
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1

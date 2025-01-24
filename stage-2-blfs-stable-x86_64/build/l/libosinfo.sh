@@ -9,9 +9,7 @@ PRGNAME="libosinfo"
 # устройств и предоставляет API для сопоставления/идентификации оптимальных
 # устройств для развертывания операционной системы на гипервизоре.
 
-# Required:    glib
-#              sinfo-db-tools
-#              osinfo-db
+# Required:    osinfo-db
 # Recommended: no
 # Optional:    no
 
@@ -22,20 +20,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-PCI_IDS="/usr/share/hwdata/pci.ids.gz"
+PCI_IDS="/usr/share/hwdata/pci.ids"
 USB_IDS="/usr/share/hwdata/usb.ids"
 
 mkdir build
 cd build || exit 1
 
-meson                                \
-    --prefix=/usr                    \
-    --sysconfdir=/etc                \
-    --localstatedir=/var             \
-    --buildtype=release              \
-    -Denable-gtk-doc=false           \
-    -Dwith-pci-ids-path="${PCI_IDS}" \
-    -Dwith-usb-ids-path="${USB_IDS}" \
+meson setup                           \
+    --prefix=/usr                     \
+    --buildtype=release               \
+    --sysconfdir=/etc                 \
+    --localstatedir=/var              \
+    -D enable-gtk-doc=false           \
+    -D enable-tests=false             \
+    -D with-pci-ids-path="${PCI_IDS}" \
+    -D with-usb-ids-path="${USB_IDS}" \
     .. || exit 1
 
 ninja || exit 1
