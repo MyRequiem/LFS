@@ -522,6 +522,7 @@ https://releases.pagure.org/libosinfo/libosinfo-1.12.0.tar.xz
 https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz
 https://www.netfilter.org/projects/iptables/files/iptables-1.8.10.tar.xz
 https://thekelleys.org.uk/dnsmasq/dnsmasq-2.90.tar.xz
+https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
 https://download.libvirt.org/libvirt-11.0.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libvirt/use-virtgroup-in-polkit-rules.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
@@ -803,7 +804,6 @@ https://github.com/transmission/transmission/releases/download/4.0.1/transmissio
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
-https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
 https://archive.hadrons.org/software/libmd/libmd-1.0.4.tar.xz
 https://libbsd.freedesktop.org/releases/libbsd-0.11.5.tar.xz
 https://github.com/duncan-roe/netcat-openbsd/archive/refs/tags/1.217-1.tar.gz

@@ -451,8 +451,7 @@ l/libosinfo.sh
 l/libpcap.sh
 n/iptables.sh
 n/dnsmasq.sh
-
-# l/virglrenderer.sh
+l/virglrenderer.sh
 l/libvirt.sh
 
 # l/libnfs.sh

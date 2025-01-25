@@ -867,6 +867,7 @@ vde2                                    qemu
 vdo                                     lvm2
 vifm
 vim                                     fcron
+virglrenderer
 virtuoso                                redland
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
@@ -984,7 +985,6 @@ zxing                                   gst-plugins-bad
 # tunctl
 # uget
 # utimer
-# virglrenderer
 # zathura
 
 # vim:ft=conf nowrap
