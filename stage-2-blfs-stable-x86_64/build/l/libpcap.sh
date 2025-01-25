@@ -11,8 +11,8 @@ PRGNAME="libpcap"
 # Optional:    bluez
 #              libnl
 #              libusb
-#              dag    (https://www.endace.com/)
-#              septel (https://www.intel.ru/content/www/ru/ru/homepage.html)
+#              dag      (https://www.endace.com/)
+#              septel   (https://www.intel.ru/content/www/ru/ru/homepage.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,19 +21,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBNL="--without-libnl"
-BLUETOOTH="no"
-LIBUSB="no"
-
-command -v genl-ctrl-list     &>/dev/null && LIBNL="--with-libnl"
-command -v bluemoon           &>/dev/null && BLUETOOTH="yes"
-[ -x /usr/lib/libusb-1.0.so ] && LIBUSB="yes"
-
-./configure                  \
-    --prefix=/usr            \
-    "${LIBNL}"               \
-    --enable-usb="${LIBUSB}" \
-    --enable-bluetooth="${BLUETOOTH}" || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 

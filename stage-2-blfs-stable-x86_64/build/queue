@@ -448,9 +448,14 @@ l/libsoup3.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
 l/libosinfo.sh
+l/libpcap.sh
+n/iptables.sh
+n/dnsmasq.sh
 
-# l/gtksourceview3.sh [в удаленных]
-# l/libvirt.sh
+# l/virglrenderer.sh
+l/libvirt.sh
+
+# l/libnfs.sh
 # l/libvirt-glib.sh
 # d/python-modules/python3-libvirt.sh
 # s/virt-manager.sh
@@ -487,8 +492,6 @@ l/libosinfo.sh
 # x/misc/xdg-user-dirs.sh
 # l/parted.sh
 # l/sg3-utils.sh
-# l/libpcap.sh
-# n/iptables.sh
 # l/enchant.sh
 # l/gconf.sh
 # a/cryptsetup.sh
@@ -577,8 +580,6 @@ l/libosinfo.sh
 # n/transmission.sh
 # l/id3lib.sh
 # l/libao.sh
-# n/dnsmasq.sh
-# l/virglrenderer.sh
 # l/libmd.sh
 # l/libbsd.sh
 # n/netcat-openbsd.sh

@@ -116,7 +116,7 @@ dmalloc                                 cyrus-sasl, lame, imagemagick, php
 dmenu                                   clipmenu, password-store, i3
 dmidecode                               lm-sensors
 dmraid                                  libblockdev
-dnsmasq
+dnsmasq                                 libvirt
 docbook-dsssl                           docbook-utils, postgresql
 docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl, postgresql
@@ -244,7 +244,7 @@ gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base, spice, spice-gtk
 gtk+2                                   pixman, cairo, libglade, gtk-engines, libcanberra, alsa-tools, gimp, libiodbc
-gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf, qt5-components, qt6, spice-gtk, qemu
+gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, gjs, gcr3, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, gconf, qt5-components, qt6, spice-gtk, qemu, libvirt
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, libbytesize, harfbuzz, cairo, gdk-pixbuf-xlib, libglade, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, libblockdev, upower, udisks, libical, raptor, libxmlb
 gtk-engines
 gtk-vnc
@@ -288,7 +288,7 @@ intel-gpu-tools                         libva
 intel-media                             libva
 intel-vaapi-driver                      libva
 inxi
-iptables
+iptables                                libvirt
 isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus, gimp, gst-plugins-base, gtk4
 itstool                                 appstream
@@ -423,7 +423,7 @@ libofa                                  gst-plugins-bad
 libogg                                  libvorbis, flac, speex, gst-plugins-base
 libopenmpt                              gst-plugins-bad
 libopenni                               gst-plugins-bad
-libosinfo
+libosinfo                               libvirt
 libpaper                                ghostscript, cups
 libpcap                                 iptables, nmap
 libplacebo                              mpv
@@ -477,6 +477,7 @@ libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugin
 libva-utils
 libvdpau                                mesa, libvdpau-va-gl, ffmpeg, mpv
 libvdpau-va-gl                          libvdpau, ffmpeg
+libvirt
 libvisual                               gst-plugins-base
 libvorbis                               libsndfile, libcanberra, ffmpeg, gst-plugins-base
 libvpx                                  ffmpeg, gst-plugins-good
@@ -493,7 +494,7 @@ libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libglade, libgsf, libxklavier, postgresql, mariadb, dconf, libsoup, libsoup3, neon, php, vte3, gconf, appstream, osinfo-db-tools
 libxmlb                                 appstream
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, xdg-user-dirs, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, libsecret, gcr3, polkit, postgresql, dconf, exiv2, libgxps, gcr4, upower, udisks, raptor, tidy-html5, php, gnome-keyring, glibmm28, osinfo-db-tools
-libyajl                                 i3, raptor
+libyajl                                 i3, libvirt, raptor
 libyaml                                 ruby, libblockdev, appstream, dtc
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
@@ -713,7 +714,7 @@ python3-pycairo                         python3-pygobject3, mirage
 python3-pycurl                          python3-urlgrabber
 python3-pyflakes                        python3-pygobject3
 python3-pygments                        llvm, libbytesize, gegl
-python3-pygobject3                      dbus, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical
+python3-pygobject3                      dbus, libsecret, ibus, gegl, gtk4, mirage, upower, udisks, libical, libvirt
 python3-pyparsing                       libinput, spice
 python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
@@ -737,7 +738,7 @@ python3-tornado                         python3-urllib3
 python3-trio                            python3-urllib3
 python3-trove-classifiers               python3-hatchling
 python3-trustme                         python3-urllib3, python3-requests
-python3-urlgrabber
+python3-urlgrabber                      libvirt
 python3-urllib3                         python3-requests
 python3-wcag-contrast-ratio             python3-pygments
 python3-werkzeug                        python3-requests
