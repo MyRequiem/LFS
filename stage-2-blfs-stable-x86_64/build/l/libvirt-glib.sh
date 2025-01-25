@@ -6,10 +6,13 @@ PRGNAME="libvirt-glib"
 # Обертка для libvirt, которая обеспечивает высокоуровневое
 # объектно-ориентированное API для GLib
 
-# Required:    libyajl
+# Required:    glib
+#              python3-pygobject3
+#              libxml2
+#              libyajl
 #              libvirt
 # Recommended: no
-# Optional:    no
+# Optional:    vala
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,7 +27,8 @@ cd build || exit 1
 meson ..                \
     --prefix=/usr       \
     --buildtype=release \
-    -Ddocs=disabled || exit 1
+    -D docs=disabled    \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
@@ -43,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #    - libvirt-gobject - GObjects for managing libvirt objects
 #
 # Home page: https://libvirt.org
-# Download:  https://libvirt.org/sources/glib/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.libvirt.org/glib/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

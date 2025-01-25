@@ -528,6 +528,8 @@ https://thekelleys.org.uk/dnsmasq/dnsmasq-2.90.tar.xz
 https://download.libvirt.org/libvirt-11.0.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libvirt/use-virtgroup-in-polkit-rules.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
+https://download.libvirt.org/glib/libvirt-glib-5.0.0.tar.xz
+https://download.libvirt.org/python/libvirt-python-11.0.0.tar.gz
 
 
 ================================================================================

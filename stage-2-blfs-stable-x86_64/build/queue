@@ -455,9 +455,9 @@ l/libpcap.sh
 n/iptables.sh
 n/dnsmasq.sh
 l/libvirt.sh
+l/libvirt-glib.sh
+d/python-modules/python3-libvirt.sh
 
-# l/libvirt-glib.sh
-# d/python-modules/python3-libvirt.sh
 # s/virt-manager.sh
 # ===================================
 
