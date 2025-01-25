@@ -440,6 +440,9 @@ s/usbredir.sh
 l/json-glib.sh
 n/spice-gtk.sh
 n/vde2.sh
+l/virglrenderer.sh
+l/libnfs.sh
+s/gtk-vnc.sh
 s/qemu.sh
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
@@ -451,9 +454,7 @@ l/libosinfo.sh
 l/libpcap.sh
 n/iptables.sh
 n/dnsmasq.sh
-l/virglrenderer.sh
 l/libvirt.sh
-l/libnfs.sh
 
 # l/libvirt-glib.sh
 # d/python-modules/python3-libvirt.sh
@@ -508,7 +509,6 @@ l/libnfs.sh
 # n/nmap.sh
 # l/libspectre.sh
 # l/gtk-engines.sh
-# s/gtk-vnc.sh
 # d/gjs.sh
 # l/libsecret.sh
 # l/gcr3.sh
@@ -516,7 +516,6 @@ l/libnfs.sh
 # l/libdazzle.sh
 # l/sbc.sh
 # l/tdb.sh
-# s/gtk-vnc.sh
 # xap/pavucontrol.sh
 # ap/potrace.sh
 # ap/postgresql.sh

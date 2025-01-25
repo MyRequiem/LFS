@@ -20,6 +20,7 @@ PRGNAME="qemu"
 #              fuse3
 #              gnutls
 #              gtk+3
+#              gtk-vnc
 #              keyutils
 #              libaio
 #              libusb
@@ -97,8 +98,13 @@ cd build || exit 1
 
 ###
 # NOTE:
-#    если установлен опциональный пакет libnfs, то сборка приводит к ошибке,
-#    поэтому в этом случае указываем параметр:
+#    если установлен опциональный пакет libnfs, то сборка приводит к ошибке:
+#
+#       [981/2961] Compiling C object libblock.fa.p/block_iscsi.c.o
+#       ninja: build stopped: subcommand failed.
+#       make: *** [Makefile:167: run-ninja] Error 1
+#
+#    в этом случае указываем параметр:
 #       --disable-libnfs
 ###
 TARGETS="x86_64-softmmu,x86_64-linux-user"
@@ -108,6 +114,7 @@ TARGETS="x86_64-softmmu,x86_64-linux-user"
     --localstatedir=/var       \
     --target-list="${TARGETS}" \
     --audio-drv-list=alsa,pa   \
+    --disable-libnfs           \
     --disable-debug-info       \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
