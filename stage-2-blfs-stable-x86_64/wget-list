@@ -526,6 +526,7 @@ https://www.freedesktop.org/software/virgl/virglrenderer-0.7.0.tar.bz2
 https://download.libvirt.org/libvirt-11.0.0.tar.xz
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libvirt/use-virtgroup-in-polkit-rules.diff
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/init-scripts/libvirt/rc.libvirt
+https://github.com/sahlberg/libnfs/archive/refs/tags/libnfs-6.0.2.tar.gz
 
 
 ================================================================================
