@@ -18,29 +18,24 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-gcc14-1.patch" || exit 1
+
 # предотвратим некоторые надоедливые сообщения во время работы openjade
 sed -i 's/32,/253,/' lib/Syntax.cxx                     || exit 1
 sed -i 's/LITLEN          240 /LITLEN          8092/' \
     unicode/{gensyntax.pl,unicode.syn}                  || exit 1
 
-XMLTO="--disable-doc-build"
-# command -v xmlto &>/dev/null && XMLTO="--enable-doc-build"
-
 ./configure                                    \
     --prefix=/usr                              \
     --disable-static                           \
-    --enable-http                              \
-    "${XMLTO}"                                 \
+    --disable-doc-build                        \
     --enable-default-catalog=/etc/sgml/catalog \
+    --enable-http                              \
     --enable-default-search-path=/usr/share/sgml || exit 1
 
-make                                                     \
-    pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
-    docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
-    mandir=/usr/share/man || exit 1
-
+make pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}"
 # make check
-
 make                                                     \
     pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
     docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
@@ -70,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The OpenSP package contains a C++ library for using SGML/XML files. This is
 # useful for validating, parsing and manipulating SGML and XML documents.
 #
-# Home page: https://openjade.sourceforge.net/
+# Home page: https://openjade.sourceforge.net/doc/index.htm
 # Download:  https://downloads.sourceforge.net/openjade/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

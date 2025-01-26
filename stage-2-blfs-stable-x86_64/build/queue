@@ -457,9 +457,26 @@ n/dnsmasq.sh
 l/libvirt.sh
 l/libvirt-glib.sh
 d/python-modules/python3-libvirt.sh
-
-# s/virt-manager.sh
+d/python-modules/python3-installer.sh
+d/python-modules/python3-pyproject-hooks.sh
+d/python-modules/python3-ipaddr.sh
+d/python-modules/python3-typing-extensions.sh
+d/python-modules/python3-zipp.sh
+d/python-modules/python3-importlib-metadata.sh
+d/python-modules/python3-tomli.sh
+d/python-modules/python3-build.sh
+d/perl-modules/perl-sgmlspm.sh
+s/sgml-common.sh
+l/opensp.sh
+l/openjade.sh
+s/docbook-dtd3.sh
+s/docbook-dtd4.sh
+s/docbook-dsssl.sh
+ap/docbook-utils.sh
+n/tunctl.sh
+s/virt-manager.sh
 # ===================================
+
 
 # ==============================================================================
 # a/time.sh
@@ -470,7 +487,6 @@ d/python-modules/python3-libvirt.sh
 # a/ntfs-3g.sh
 # a/sharutils.sh
 # a/cpio.sh
-# s/sgml-common.sh
 # l/aspell.sh
 # l/aspell-dict-en.sh
 # l/aspell-dict-ru.sh
@@ -482,13 +498,6 @@ d/python-modules/python3-libvirt.sh
 # l/libatomic-ops.sh
 # d/guile.sh
 # d/nodejs.sh
-# s/docbook-dtd3.sh
-# s/docbook-dtd4.sh
-# l/opensp.sh
-# l/openjade.sh
-# s/docbook-dsssl.sh
-# d/perl-modules/perl-sgmlspm.sh
-# ap/docbook-utils.sh
 # x/misc/xdg-user-dirs.sh
 # l/parted.sh
 # l/sg3-utils.sh
@@ -583,7 +592,6 @@ d/python-modules/python3-libvirt.sh
 # n/netcat-openbsd.sh
 # s/talloc.sh
 # s/jemalloc.sh
-# n/tunctl.sh
 # ap/gcolor2.sh
 # ap/gsimplecal.sh
 # ap/pwgen.sh

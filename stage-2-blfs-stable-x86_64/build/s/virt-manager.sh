@@ -5,20 +5,19 @@ PRGNAME="virt-manager"
 ### virt-manager (a gtk interface for libvirt)
 # GTK интерфейс для libvirt
 
-# Required:    spice-protocol
-#              spice
-#              libyajl
-#              libvirt
-#              osinfo-db-tools
-#              osinfo-db
-#              libosinfo
+# Required:    libvirt
 #              libvirt-glib
 #              python3-libvirt
-#              gtk-vnc
-#              spice-gtk
-#              tunctl
+#              python3-installer
+#              python3-pyproject-hooks
+#              python3-pygobject3
 #              python3-ipaddr
 #              python3-requests
+#              python3-build
+#              gtk+3
+#              spice-gtk
+#              gtk-vnc
+#              tunctl
 # Recommended: no
 # Optional:    no
 
@@ -29,11 +28,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/share/"{icons/hicolor,glib-2.0/schemas}
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/add-slackware-to-os-choices-${VERSION}.patch" || exit 1
+mkdir build
+cd build || exit 1
 
-python3 setup.py build || exit 1
-python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    --localstatedir=/var \
+    --sysconfdir=/etc    \
+    -D tests=disabled    \
+    -D default-hvs=qemu,lxc || exit 1
+
+ninja || exit 1
+DESTDIR=${TMP_DIR} ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -56,7 +63,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # console to the guest domain.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://${PRGNAME}.org/download/sources/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://releases.pagure.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

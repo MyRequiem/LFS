@@ -10,7 +10,7 @@ VERSION="3.1"
 # программного обеспечения в соответствии с DocBook стандартом.
 
 # Required:    sgml-common
-#              unzip
+#              unzip или libarchive
 # Recommended: no
 # Optional:    no
 
