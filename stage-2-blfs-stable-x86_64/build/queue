@@ -476,6 +476,14 @@ ap/docbook-utils.sh
 n/tunctl.sh
 s/virt-manager.sh
 # ===================================
+l/giblib.sh
+# ap/scrot.sh
+# d/glm.sh
+# ap/slop.sh
+# ap/maim.sh
+# l/oniguruma.sh
+# s/jq.sh
+# xap/flameshot.sh
 
 
 # ==============================================================================
@@ -559,13 +567,6 @@ s/virt-manager.sh
 # l/gcr4.sh
 # s/inxi.sh
 # s/prelink.sh
-# xap/flameshot.sh
-# s/jq.sh
-# d/glm.sh
-# ap/slop.sh
-# l/giblib.sh
-# ap/scrot.sh
-# ap/maim.sh
 # l/libblockdev.sh
 # ap/at.sh
 # a/upower.sh
