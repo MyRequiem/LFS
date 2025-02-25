@@ -6,8 +6,7 @@ PRGNAME="scrot"
 # scrot (SCReenshOT) - утилита захвата экрана из командной строки, использующая
 # библиотеку imlib2
 
-# Required:    imlib2
-#              giblib
+# Required:    giblib
 # Recommended: no
 # Optional:    no
 
@@ -21,7 +20,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson \
+meson setup \
     --prefix=/usr || exit 1
 
 ninja || exit 1

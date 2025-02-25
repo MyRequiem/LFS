@@ -279,7 +279,7 @@ icu                                     libxml2, boost, nodejs, harfbuzz, postgr
 id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
-imlib2                                  w3m, feh, giblib, scrot, maim
+imlib2                                  w3m, feh, giblib, maim
 impacket                                curl
 inih                                    exiv2
 inkscape                                adwaita-icon-theme, imagemagick

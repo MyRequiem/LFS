@@ -477,7 +477,7 @@ n/tunctl.sh
 s/virt-manager.sh
 # ===================================
 l/giblib.sh
-# ap/scrot.sh
+ap/scrot.sh
 # d/glm.sh
 # ap/slop.sh
 # ap/maim.sh
