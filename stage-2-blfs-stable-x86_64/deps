@@ -77,7 +77,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, libyajl, flameshot, glm, libical, tidy-html5, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, c-ares, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, mariadb, cxxopts, poppler, exiv2, jasper, taglib, libyajl, flameshot, libical, tidy-html5, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -585,7 +585,7 @@ numactl                                 x265, qemu
 numlockx
 nuspell                                 enchant
 ocaml                                   llvm
-oniguruma                               slang, jq, php
+oniguruma                               jq, slang, php
 onnxruntime                             gst-plugins-bad
 open-mpi                                boost
 openal                                  ffmpeg, mpg123, gst-plugins-bad, qt6, mpv

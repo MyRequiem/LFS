@@ -6,7 +6,7 @@ PRGNAME="glm"
 # C++ библиотека математических вычислений для OpenGL, предоставляющая
 # программисту структуры и функции, позволяющие использовать данные для OpenGL
 
-# Required:    cmake
+# Required:    no
 # Recommended: no
 # Optional:    no
 
@@ -15,25 +15,12 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr/include"
 
-mkdir -p build
-cd build || exit 1
+# пакет содержит только заголовочные файлы, поэтому просто скопируем их
+rm -f glm/CMakeLists.txt
+cp -r glm "${TMP_DIR}/usr/include/"
 
-# по умолчанию устанавливает в /usr/lib64
-#    -DCMAKE_INSTALL_LIBDIR=lib
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib  \
-    -DGLM_TEST_ENABLE=ON        \
-    -DGLM_TEST_ENABLE_CXX_11=ON \
-    .. || exit 1
-
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
-
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -17,8 +17,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# ошибка сборки с новыми версиями icu, поэтому отключим поддержку ICU, удалив
+# диапозон строк 70-81 в CMakeLists.txt
+sed '70,81 d;' -i CMakeLists.txt
+
 cmake \
-    -DCMAKE_INSTALL_PREFIX="/usr" ./
+    -D CMAKE_INSTALL_PREFIX=/usr
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

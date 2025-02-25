@@ -16,8 +16,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-cmake ./ || exit 1
-make     || exit 1
+# ошибка сборки с новыми версиями icu, поэтому отключим поддержку ICU, удалив
+# диапозон строк 102-112 в CMakeLists.txt
+sed '102,112 d;' -i CMakeLists.txt
+
+cmake \
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
+
+make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
