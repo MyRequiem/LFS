@@ -489,21 +489,11 @@ xap/flameshot.sh
 # a/cpio.sh
 # a/usbutils.sh
 # l/slang.sh
-
-
-# ==============================================================================
 # d/guile.sh
-# x/misc/xdg-user-dirs.sh
-# l/parted.sh
-# l/sg3-utils.sh
-# l/gconf.sh
-# a/cryptsetup.sh
-# l/libbytesize.sh
+
+
 # n/nmap.sh
 # ap/lsof.sh
-
-# ==============================================================================
-
 # n/nmap.sh
 # ap/ghostscript.sh
 # d/python-modules/python3-pyatspi2.sh
@@ -551,7 +541,6 @@ xap/flameshot.sh
 # l/gcr4.sh
 # s/inxi.sh
 # s/prelink.sh
-# l/libblockdev.sh
 # ap/at.sh
 # a/upower.sh
 # l/libical.sh

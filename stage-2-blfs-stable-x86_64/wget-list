@@ -572,11 +572,6 @@ https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz
 https://www.cpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz
-https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz
-https://ftp.gnu.org/gnu/parted/parted-3.5.tar.xz
-https://sg.danny.cz/sg/p/sg3_utils-1.47.tar.xz
-https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
-https://github.com/storaged-project/libbytesize/releases/download/2.7/libbytesize-2.7.tar.gz
 https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
 https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-Warnings-0.031.tar.gz
@@ -780,7 +775,6 @@ https://get.videolan.org/libdvdnav/6.1.1/libdvdnav-6.1.1.tar.bz2
 https://download.gnome.org/sources/gcr/4.0/gcr-4.0.0.tar.xz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
-https://github.com/storaged-project/libblockdev/releases/download/2.28-1/libblockdev-2.28.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.0/upower-v1.90.0.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
@@ -794,7 +788,6 @@ https://anduin.linuxfromscratch.org/BLFS/OpenJDK/OpenJDK-19.0.2/OpenJDK-19.0.2+7
 https://github.com/openjdk/jdk19u/archive/jdk-19.0.2-ga.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
 https://download.gnome.org/sources/gnome-keyring/42/gnome-keyring-42.1.tar.xz
-https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
 https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/libmad-0.15.1b-fixes-1.patch
