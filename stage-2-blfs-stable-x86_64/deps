@@ -201,7 +201,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, poppler, libgxps, openjdk, openjpeg
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, poppler, libgxps, openjdk, openjpeg, flameshot
 gjs                                     glib, libsecret
 glade                                   libhandy
 glew
@@ -603,7 +603,7 @@ openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerbe
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
-openssh                                 curl, sshfs, git, libssh2, gnome-keyring
+openssh                                 curl, sshfs, git, libssh2, gnome-keyring, flameshot
 opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
@@ -611,7 +611,7 @@ osinfo-db                               libosinfo
 osinfo-db-tools                         osinfo-db
 ossp-mm                                 php
 oxygen-icons
-p11-kit                                 make-ca, gnutls, python3-requests, nss, gcr3, gcr4
+p11-kit                                 make-ca, gnutls, python3-requests, nss, flameshot, gcr3, gcr4
 p7zip                                   imagemagick, libgsf
 pakchois                                neon
 pamixer

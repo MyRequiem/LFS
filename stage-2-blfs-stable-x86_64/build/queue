@@ -483,7 +483,7 @@ ap/slop.sh
 ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
-# xap/flameshot.sh
+xap/flameshot.sh
 
 
 # ==============================================================================

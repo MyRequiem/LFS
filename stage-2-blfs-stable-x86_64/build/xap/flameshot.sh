@@ -12,7 +12,9 @@ PRGNAME="flameshot"
 #              librsvg
 #              libxkbcommon
 # Recommended: no
-# Optional:    no
+# Optional:    git
+#              openssh
+#              p11-kit
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
