@@ -25,9 +25,6 @@ appstream                               libadwaita
 appstream-glib                          gimp
 archivemount                            vifm
 argon2                                  cryptsetup
-aspell                                  aspell-dict-en, aspell-dict-ru, enchant
-aspell-dict-en
-aspell-dict-ru
 assimp                                  qt6
 at
 at-spi2-core                            gtk+3, atkmm22, qt5-components, atkmm23
@@ -84,7 +81,7 @@ cryptsetup
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, smartmontools, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, transmission, appstream, qemu, python3-pycurl
+curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, poppler, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, transmission, appstream, qemu, python3-pycurl
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim
@@ -95,7 +92,7 @@ dav1d                                   ffmpeg
 daxctl                                  qemu
 dblatex                                 git, xmlto, graphite2, gimp
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, gjs, pulseaudio, dconf, xdg-utils, udisks, gnome-keyring, qt5-components, qt6, xorg-server
-dbus-glib                               gimp, enchant, gconf
+dbus-glib                               gimp, gconf
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, dconf, fltk
@@ -123,7 +120,7 @@ dosfstools                              parted, udisks
 double-conversion                       qt5-components, qt6
 dovecot                                 gnupg, sudo, gimp, fcron, at
 dovi_tool                               libplacebo
-doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, enchant, glibmm28, cairomm118, gtkmm4, libaom
+doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, mc, sdl2, ffmpeg, libmypaint, exiv2, jasper, libical, glibmm28, cairomm118, gtkmm4, libaom
 dssim                                   gst-plugins-bad
 dtc                                     qemu
 dtrace                                  gjs, ruby
@@ -168,7 +165,7 @@ freetype                                graphite2, harfbuzz, fontconfig, ghostsc
 frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4
 fuse-zip                                vifm
-fuse2                                   vifm, ntfs-3g
+fuse2                                   vifm
 fuse3                                   archivemount, gnupg, glib, sshfs, fuseiso, curlftpfs, vifm, qemu
 fusefat                                 vifm
 fuseiso                                 vifm
@@ -195,7 +192,7 @@ gjs                                     glib, libsecret
 glade                                   libhandy
 glew
 glfw                                    python3-glad
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, enchant, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, gtk-vnc, qemu, osinfo-db-tools, libsoup, libsoup3, libvirt-glib
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, libsecret, gcr3, pulseaudio, libxklavier, json-glib, polkit, mc, dconf, libgudev, libmypaint, gcr4, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, gtk-vnc, qemu, osinfo-db-tools, libsoup, libsoup3, libvirt-glib
 glib-networking                         glib, glibmm26, gimp, libsoup, libsoup3, glibmm28
 glibavif                                gdk-pixbuf
 glibmm26                                pangomm24, atkmm22
@@ -207,7 +204,7 @@ glu                                     fltk, freeglut, sdl12-compat
 glusterfs                               qemu
 gnome-keyring                           libsecret
 gnome-shell                             polkit
-gnupg                                   git, smartmontools, mit-kerberos-v5, gpgme, gcr3, imagemagick, gcr4, gnome-keyring
+gnupg                                   git, mit-kerberos-v5, gpgme, gcr3, imagemagick, gcr4, gnome-keyring
 gnuplot                                 imagemagick
 gnutls                                  wget, curl, gnupg, openldap, glib-networking, glibmm26, cups, gtk-vnc, exim, ffmpeg, neon, vte3, glibmm28, qemu
 goffice
@@ -252,10 +249,8 @@ highlight                               vifm, gtk4
 highway                                 imlib2
 hp2xx                                   imagemagick
 hplip                                   cups
-hspell                                  enchant
 htop
 http-parser                             nodejs
-hunspell                                enchant
 hwdata                                  pciutils
 hwloc                                   htop
 i3                                      bumblebee-status
@@ -500,7 +495,7 @@ luit                                    xterm
 lvm2                                    parted, cryptsetup, udisks
 lxqt-notificationd                      libnotify
 lxqt-policykit                          polkit
-lynx                                    smartmontools, xmlto, docbook-utils, xorg-libraries, xdg-utils
+lynx                                    xmlto, docbook-utils, xorg-libraries, xdg-utils
 lzfse                                   qemu
 lzip                                    ed
 lzo                                     libarchive, cairo, qemu
@@ -552,12 +547,10 @@ npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
 nss                                     p11-kit, make-ca, poppler, neon, google-chrome
-ntfs-3g
 ntp                                     dhcpcd
 nuklear                                 libplacebo
 numactl                                 x265, qemu
 numlockx
-nuspell                                 enchant
 ocaml                                   llvm
 oniguruma                               jq, slang
 onnxruntime                             gst-plugins-bad
@@ -767,13 +760,11 @@ septel                                  libpcap
 sg3-utils
 sgml-common                             docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
 shared-mime-info                        glib, gdk-pixbuf
-sharutils
 shellcheck
 silgraphite                             graphite2
 skia                                    cairo
 slang                                   aalib, mc
 slop                                    maim
-smartmontools
 snappy                                  qemu
 sndio                                   sdl2
 sound-theme-freedesktop                 libcanberra
@@ -829,7 +820,6 @@ ufraw                                   imagemagick
 umockdev                                libgudev, upower
 unbound                                 gnutls
 uniconvertor                            imagemagick
-unittest-cpp                            enchant
 unixodbc                                openldap, qt5-components, qt6
 unrar
 unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, mc, openjdk, libgsf
@@ -852,7 +842,6 @@ vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
 vo-amrwb                                gst-plugins-bad
 vo-amrwbenc                             ffmpeg
-voikko                                  enchant
 volume-key                              libblockdev
 vte3                                    qemu
 vulkan-headers                          vulkan-loader
@@ -866,8 +855,8 @@ weasyprint                              vala
 webkit2gtk                              zenity
 webp-pixbuf-loader                      gdk-pixbuf
 webrtc-audio-processing                 pulseaudio
-wget                                    smartmontools, usbutils, perl-unicode-linebreak, imagemagick, openjdk
-which                                   openssh, lm-sensors, boost, aspell, lvm2, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
+wget                                    usbutils, perl-unicode-linebreak, imagemagick, openjdk
+which                                   openssh, lm-sensors, boost, lvm2, nodejs, freetype, libvpx, goffice, gtk-engines, libseccomp, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wine                                    python3-glad

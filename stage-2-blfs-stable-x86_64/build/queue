@@ -484,20 +484,12 @@ ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
+# a/time.sh
+# a/tree.sh
+# a/cpio.sh
 
 
 # ==============================================================================
-# a/time.sh
-# a/tree.sh
-# a/dosfstools.sh
-# a/hdparm.sh
-# a/smartmontools.sh
-# a/ntfs-3g.sh
-# a/sharutils.sh
-# a/cpio.sh
-# l/aspell.sh
-# l/aspell-dict-en.sh
-# l/aspell-dict-ru.sh
 # l/libatasmart.sh
 # l/c-ares.sh
 # a/ed.sh
@@ -509,7 +501,6 @@ xap/flameshot.sh
 # x/misc/xdg-user-dirs.sh
 # l/parted.sh
 # l/sg3-utils.sh
-# l/enchant.sh
 # l/gconf.sh
 # a/cryptsetup.sh
 # l/libbytesize.sh

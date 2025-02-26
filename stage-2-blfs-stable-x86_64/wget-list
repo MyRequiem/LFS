@@ -565,15 +565,7 @@ https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.
 ================================================================================
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz
-https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
-https://downloads.sourceforge.net/hdparm/hdparm-9.65.tar.gz
-https://downloads.sourceforge.net/smartmontools/smartmontools-7.3.tar.gz
-https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2022.10.3.tgz
-https://ftp.gnu.org/gnu/sharutils/sharutils-4.15.2.tar.xz
 https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.bz2
-https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz
-https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
-https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-3.8.0.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/clang-15.0.7-enable_default_ssp-1.patch
@@ -804,7 +796,6 @@ https://download.librdf.org/source/rasqal-0.9.33.tar.gz
 https://downloads.sourceforge.net/iodbc/libiodbc-3.52.15.tar.gz
 https://download.librdf.org/source/redland-1.0.17.tar.gz
 https://github.com/htacg/tidy-html5/archive/5.8.0/tidy-html5-5.8.0.tar.gz
-https://github.com/AbiWord/enchant/releases/download/v2.3.3/enchant-2.3.3.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/OpenJDK/OpenJDK-19.0.2/OpenJDK-19.0.2+7-x86_64-bin.tar.xz
 https://github.com/openjdk/jdk19u/archive/jdk-19.0.2-ga.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
