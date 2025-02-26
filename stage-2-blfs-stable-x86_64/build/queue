@@ -490,19 +490,11 @@ xap/flameshot.sh
 # a/usbutils.sh
 # l/slang.sh
 # d/guile.sh
-
-
-# n/nmap.sh
 # ap/lsof.sh
-# n/nmap.sh
 # ap/ghostscript.sh
-# d/python-modules/python3-pyatspi2.sh
-# l/gdk-pixbuf-xlib.sh
-# l/libglade.sh
-# n/nmap.sh
 # l/libspectre.sh
-# l/gtk-engines.sh
-# d/gjs.sh
+
+
 # l/libsecret.sh
 # l/gcr3.sh
 # n/w3m.sh
@@ -537,7 +529,6 @@ xap/flameshot.sh
 # l/soundtouch.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
-# d/gjs.sh
 # l/gcr4.sh
 # s/inxi.sh
 # s/prelink.sh
@@ -586,6 +577,6 @@ xap/flameshot.sh
 # ap/optipng.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
-# n/telegram.sh
+# ap/openoffice.sh [NEW]
 
 # vim:ft=conf

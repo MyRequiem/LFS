@@ -571,8 +571,6 @@ https://www.linuxfromscratch.org/patches/blfs/11.3/clang-15.0.7-enable_default_s
 https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz
-https://www.cpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz
-https://nmap.org/dist/nmap-7.93.tar.bz2
 https://github.com/lsof-org/lsof/releases/download/4.95.0/lsof_4.95.0.linux.tar.bz2
 https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-Warnings-0.031.tar.gz
 https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4232.tar.gz
@@ -722,14 +720,8 @@ https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/g
 https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
-https://download.gnome.org/sources/gdk-pixbuf-xlib/2.40/gdk-pixbuf-xlib-2.40.2.tar.xz
-https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
-https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
-https://download.gnome.org/sources/gtk-engines/2.20/gtk-engines-2.20.2.tar.bz2
-http://ftp.acc.umu.se/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
 https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
-https://download.gnome.org/sources/gjs/1.74/gjs-1.74.1.tar.xz
 https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 https://download.gnome.org/sources/gcr/3.41/gcr-3.41.1.tar.xz
 https://download.gnome.org/sources/libdazzle/3.44/libdazzle-3.44.0.tar.xz
