@@ -535,8 +535,6 @@ xap/flameshot.sh
 # l/tdb.sh
 # xap/pavucontrol.sh
 # ap/potrace.sh
-# ap/postgresql.sh
-# ap/mariadb.sh
 # n/exim.sh
 # ap/sudo.sh
 # l/aalib.sh
@@ -577,7 +575,6 @@ xap/flameshot.sh
 # l/libiodbc.sh
 # l/redland.sh
 # d/tidy-html5.sh
-# n/php.sh
 # d/openjdk.sh
 # l/libidn.sh
 # n/traceroute.sh
@@ -612,8 +609,6 @@ xap/flameshot.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
 # l/libgd.sh
-# n/nginx.sh
-# s/pspg.sh
 # ap/optipng.sh
 # ap/lsscsi.sh
 # d/android-tools.sh [NEW]
