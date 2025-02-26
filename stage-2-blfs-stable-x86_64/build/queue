@@ -487,17 +487,12 @@ xap/flameshot.sh
 # a/time.sh
 # a/tree.sh
 # a/cpio.sh
+# a/usbutils.sh
+# l/slang.sh
 
 
 # ==============================================================================
-# l/libatasmart.sh
-# l/c-ares.sh
-# a/ed.sh
-# a/usbutils.sh
-# l/slang.sh
-# l/libatomic-ops.sh
 # d/guile.sh
-# d/nodejs.sh
 # x/misc/xdg-user-dirs.sh
 # l/parted.sh
 # l/sg3-utils.sh
@@ -559,7 +554,6 @@ xap/flameshot.sh
 # l/libblockdev.sh
 # ap/at.sh
 # a/upower.sh
-# a/udisks.sh
 # l/libical.sh
 # l/raptor.sh
 # l/rasqal.sh

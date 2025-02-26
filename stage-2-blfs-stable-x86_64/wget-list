@@ -566,16 +566,11 @@ https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://mama.indstate.edu/users/ice/tree/src/tree-2.1.0.tgz
 https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.bz2
-https://0pointer.de/public/libatasmart-0.19.tar.xz
 https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-3.8.0.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/clang-15.0.7-enable_default_ssp-1.patch
-https://c-ares.haxx.se/download/c-ares-1.19.0.tar.gz
-https://ftp.gnu.org/gnu/ed/ed-1.19.tar.lz
 https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
-https://github.com/ivmai/libatomic_ops/releases/download/v7.6.14/libatomic_ops-7.6.14.tar.gz
 https://ftp.gnu.org/gnu/guile/guile-3.0.9.tar.xz
-https://nodejs.org/dist/v18.14.1/node-v18.14.1.tar.xz
 https://www.cpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz
 https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz
 https://ftp.gnu.org/gnu/parted/parted-3.5.tar.xz
@@ -788,7 +783,6 @@ http://people.redhat.com/jakub/prelink/prelink-20130503.tar.bz2
 https://github.com/storaged-project/libblockdev/releases/download/2.28-1/libblockdev-2.28.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.0/upower-v1.90.0.tar.bz2
-https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2
 https://github.com/libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
 https://download.librdf.org/source/raptor2-2.0.15.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/raptor-2.0.15-security_fixes-1.patch
