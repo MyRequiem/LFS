@@ -19,7 +19,6 @@ alsa-tools
 alsa-utils
 apache-ant                              docbook-xsl
 apache-httpd                            curl, git, libsoup, libsoup3
-appindicator                            transmission
 appstream                               libadwaita
 appstream-glib                          gimp
 archivemount                            vifm
@@ -76,7 +75,7 @@ cranelift                               rustc
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, transmission, appstream, qemu, python3-pycurl
+curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim
@@ -92,7 +91,6 @@ dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, dconf, fltk
 dhcpcd
-dht                                     transmission
 dialog                                  alsa-utils
 directfb                                sdl2
 djvulibre                               imagemagick
@@ -220,7 +218,7 @@ gtk+3                                   cairo, adwaita-icon-theme, ghostscript, 
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, gimp, libgxps, libsoup, libxmlb
 gtk-vnc                                 qemu
 gtk4                                    python3-pygobject3, adwaita-icon-theme, ibus, libadwaita, zenity, gtkmm4, vte3
-gtkmm3                                  pavucontrol, transmission
+gtkmm3                                  pavucontrol
 gtkmm4
 guile
 gutenprint                              cups
@@ -299,7 +297,6 @@ libatomic-ops                           gc, libdrm
 libaudit                                sudo
 libavc1394                              gst-plugins-good
 libavtp                                 alsa-plugins, gst-plugins-bad
-libb64                                  transmission
 libbacktrace                            gimp
 libbluray                               ffmpeg, mpv
 libbpf                                  qemu
@@ -317,7 +314,6 @@ libdc1394                               ffmpeg
 libdc1394_2                             gst-plugins-bad
 libdca                                  ffmpeg, gst-plugins-bad
 libde265                                gimp, imagemagick, gst-plugins-bad
-libdeflate                              transmission
 libdrm                                  cairo, libva, mesa, ffmpeg
 libdv                                   gst-plugins-good
 libdvdcss                               mpv
@@ -329,7 +325,7 @@ libepoxy                                gtk+3, xorg-server, gtk4
 liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, xorg-evdev-driver, xorg-synaptics-driver
-libevent                                tmux, nghttp2, ntp, transmission
+libevent                                tmux, nghttp2, ntp
 libexif                                 feh, gst-plugins-bad
 libfpx                                  imagemagick
 libgccjit                               rustc
@@ -353,7 +349,6 @@ libjxl                                  gdk-pixbuf, imagemagick, imlib2, ffmpeg
 libkate                                 gst-plugins-bad
 libksba                                 gnupg
 liblsmash                               x264
-libmad
 libmetalink                             curl
 libmfx                                  gst-plugins-bad
 libmms                                  gst-plugins-bad
@@ -361,7 +356,6 @@ libmng                                  gimp, qt6
 libmodplug                              ffmpeg, gst-plugins-bad
 libmpdec                                python3
 libmpeg2                                gst-plugins-ugly
-libnatpmp                               transmission
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnfs                                  qemu
@@ -381,7 +375,7 @@ libplacebo                              mpv
 libpmem                                 qemu
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libwebp, gegl, imagemagick, feh, gst-plugins-base, openjdk, qt6, qemu
 libproxy                                glib-networking, qt6
-libpsl                                  wget, curl, libsoup, libsoup3, transmission
+libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
 libraqm                                 imagemagick
 libraw                                  gegl, imagemagick
@@ -421,7 +415,6 @@ libunistring                            libidn2, gnutls, libpsl, guile
 libunwind                               mesa, gstreamer, sdl2, xorg-server, libinput, libplacebo, gimp
 liburcu                                 bind-utils, glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, usbredir, qemu
-libutp                                  transmission
 libuv                                   cmake, bind-utils
 libva                                   mesa, libvdpau-va-gl, ffmpeg, gst-plugins-bad, intel-vaapi-driver, libva-utils, mpv
 libva-utils
@@ -483,7 +476,6 @@ mesa                                    cairo, libvdpau, libva, glu, libepoxy, f
 mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
-miniupnp                                transmission
 mirage
 mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, libsoup, libsoup3, qt5-components, qt6
 mjpeg-tools                             gst-plugins-bad
@@ -508,7 +500,6 @@ nghttp2                                 curl, cmake, bind-utils, libsoup3
 ngtcp2                                  curl
 nickle                                  xorg-applications
 nmap                                    lsof
-nodejs                                  transmission
 notification-daemon                     libnotify
 noto-color-emoji-ttf
 noto-fonts-ttf
@@ -684,7 +675,7 @@ python3-zipp                            python3-importlib-metadata
 pytrash
 qemu
 qrencode                                gst-plugins-bad
-qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, flameshot, transmission
+qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, flameshot
 qt6                                     highlight, cmake, gst-plugins-good, oxygen-icons, appstream
 quiche                                  curl
 radiance                                imagemagick
@@ -762,7 +753,6 @@ traceroute
 tracker                                 gtk+3, gtk4
 transfig
 translate-shell
-transmission
 tree
 tremor                                  gst-plugins-base
 trousers                                gnutls
@@ -878,13 +868,10 @@ zxing                                   gst-plugins-bad
 # gtick
 # hstr
 # hwinfo
-# libbsd                              netcat-openbsd
-# libmd                               libbsd
 # libmp4v2
 # libx86emu                           hwinfo
 # lsscsi
 # musepack-tools
-# netcat-openbsd
 # optipng
 # opusfile
 # pwgen

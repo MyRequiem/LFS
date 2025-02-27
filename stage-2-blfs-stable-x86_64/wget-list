@@ -748,15 +748,9 @@ https://anduin.linuxfromscratch.org/BLFS/OpenJDK/OpenJDK-19.0.2/OpenJDK-19.0.2+7
 https://github.com/openjdk/jdk19u/archive/jdk-19.0.2-ga.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
-https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/11.3/libmad-0.15.1b-fixes-1.patch
-https://github.com/transmission/transmission/releases/download/4.0.1/transmission-4.0.1.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
-https://archive.hadrons.org/software/libmd/libmd-1.0.4.tar.xz
-https://libbsd.freedesktop.org/releases/libbsd-0.11.5.tar.xz
-https://github.com/duncan-roe/netcat-openbsd/archive/refs/tags/1.217-1.tar.gz
 https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
 https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2
 https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-amd64_segfault.patch
