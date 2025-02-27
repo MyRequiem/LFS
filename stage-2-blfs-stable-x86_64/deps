@@ -862,7 +862,6 @@ zxing                                   gst-plugins-bad
 # bviplus
 # cppcheck
 # deb2tgz
-# gcolor2
 # girara                              zathura
 # gsimplecal
 # gtick
@@ -880,7 +879,6 @@ zxing                                   gst-plugins-bad
 # rest
 # rpm                                 rpm2tgz
 # rpm2tgz
-# talloc
 # tokudb
 # uget
 # utimer

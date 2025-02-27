@@ -516,10 +516,6 @@ xap/flameshot.sh
 # l/id3lib.sh
 # l/libao.sh
 
-
-# s/talloc.sh
-# s/jemalloc.sh
-# ap/gcolor2.sh
 # ap/gsimplecal.sh
 # ap/pwgen.sh
 # n/uget.sh

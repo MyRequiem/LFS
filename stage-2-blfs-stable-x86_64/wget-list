@@ -751,13 +751,6 @@ https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
-https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
-https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-amd64_segfault.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-color_definition_path.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/gcolor2/gcolor2-0.4-fno-common.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/gcolor2/gcolor2.svg
-http://downloads.sourceforge.net/gcolor2/gcolor2-0.4.tar.gz
 https://github.com/dmedvinsky/gsimplecal/archive/v2.3/gsimplecal-2.3.tar.gz
 https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
 https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz

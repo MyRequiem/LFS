@@ -68,8 +68,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # specific desktop environment. It provides the color wheel method, input box
 # method, color-picker method, and the ability to save user-defined colors.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
-# Download:  http://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.sourceforge.net/
+# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
