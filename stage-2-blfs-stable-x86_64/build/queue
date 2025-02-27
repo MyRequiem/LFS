@@ -500,8 +500,8 @@ xap/flameshot.sh
 # ap/at.sh
 # l/aalib.sh
 # l/poppler.sh
-
-
+# l/libmypaint.sh
+# l/mypaint-brushes.sh
 # l/babl.sh
 # l/gegl.sh
 # xap/gimp.sh
@@ -509,11 +509,8 @@ xap/flameshot.sh
 # l/libgxps.sh
 # xap/imagemagick.sh
 # l/taglib.sh
-# l/neon.sh
-# l/libwpe.sh
-# l/wpebackend-fdo.sh
-# ap/faad2.sh
-# ap/faac.sh
+
+
 # l/soundtouch.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
@@ -548,7 +545,6 @@ xap/flameshot.sh
 # l/girara.sh
 # ap/zathura.sh
 # ap/bviplus.sh
-# ap/cmus.sh
 # d/cppcheck.sh
 # ap/deb2tgz.sh
 # ap/rpm.sh
