@@ -509,15 +509,9 @@ xap/flameshot.sh
 # l/libgxps.sh
 # xap/imagemagick.sh
 # l/taglib.sh
-
-
-# l/soundtouch.sh
-# l/libdvdread.sh
-# l/libdvdnav.sh
 # s/inxi.sh
-# s/prelink.sh
-# a/upower.sh
-# l/libical.sh
+
+
 # l/raptor.sh
 # l/rasqal.sh
 # l/libiodbc.sh
