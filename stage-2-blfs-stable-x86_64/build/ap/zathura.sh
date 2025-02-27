@@ -13,6 +13,7 @@ PRGNAME="zathura"
 
 # Required:    glib
 #              girara
+#              poppler
 #              djvulibre   (для сборки плагина zathura-djvu) https://djvu.sourceforge.net/
 #              libspectre  (для сборки плагина zathura-ps)
 # Recommended: no

@@ -499,14 +499,9 @@ xap/flameshot.sh
 # n/exim.sh
 # ap/at.sh
 # l/aalib.sh
-
-
-# ap/mc.sh
-# l/liba52.sh
-# n/links.sh
 # l/poppler.sh
-# l/libmypaint.sh
-# l/mypaint-brushes.sh
+
+
 # l/babl.sh
 # l/gegl.sh
 # xap/gimp.sh
