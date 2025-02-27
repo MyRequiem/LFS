@@ -5,11 +5,11 @@
 Описание, сборочные скрипты. Все на русском языке.
 
 ![vifm][3]
-
-
+<br>
+<br>
 ![vim][4]
-
-
+<br>
+<br>
 ![browser][5]
 
 [1]: http://www.linuxfromscratch.org/lfs/view/12.2/index.html
