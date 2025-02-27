@@ -2,7 +2,6 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
-3store                                  redland
 Graphical Environments                  openssh, libmpeg2, ghostscript, rxvt-unicode, exim, vim, sdl2, ffmpeg, gimp, numlockx, libao
 Plasma5                                 polkit
 aalib                                   gimp, gst-plugins-good
@@ -36,7 +35,7 @@ avahi                                   cups, pulseaudio
 babl                                    gegl
 bash-completion                         elogind, gstreamer, dconf
 bellagio-openmax                        mesa
-berkeley-db                             cyrus-sasl, openldap, python3, ruby, redland
+berkeley-db                             cyrus-sasl, openldap, python3, ruby
 bibtex
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
@@ -65,7 +64,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, tidy-html5, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -77,7 +76,7 @@ cranelift                               rustc
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, raptor, transmission, appstream, qemu, python3-pycurl
+curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, exiv2, imagemagick, feh, libsoup, libsoup3, gst-plugins-bad, transmission, appstream, qemu, python3-pycurl
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim
@@ -216,9 +215,9 @@ gst-plugins-base                        gst-plugins-good, gst-plugins-bad, gst-p
 gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base, spice, spice-gtk
-gtk+2                                   pixman, cairo, libcanberra, alsa-tools, gimp, libiodbc
+gtk+2                                   pixman, cairo, libcanberra, alsa-tools, gimp
 gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, gimp, libgxps, libsoup, raptor, libxmlb
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, gimp, libgxps, libsoup, libxmlb
 gtk-vnc                                 qemu
 gtk4                                    python3-pygobject3, adwaita-icon-theme, ibus, libadwaita, zenity, gtkmm4, vte3
 gtkmm3                                  pavucontrol, transmission
@@ -242,7 +241,7 @@ hwloc                                   htop
 i3                                      bumblebee-status
 ibus                                    sdl2, qt6
 icon-tools                              adwaita-icon-theme
-icu                                     libxml2, boost, harfbuzz, raptor, vte3, qt5-components, qt6
+icu                                     libxml2, boost, harfbuzz, vte3, qt5-components, qt6
 id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
@@ -334,7 +333,7 @@ libevent                                tmux, nghttp2, ntp, transmission
 libexif                                 feh, gst-plugins-bad
 libfpx                                  imagemagick
 libgccjit                               rustc
-libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, xorg-server, gst-plugins-bad, qemu, rasqal
+libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, xorg-server, gst-plugins-bad, qemu
 libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
@@ -348,7 +347,6 @@ libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg, gst-plugins-good
 libilbc                                 ffmpeg
 libinput                                xorg-libinput-driver, qt5-components, qt6
-libiodbc                                redland
 libiscsi                                qemu
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, jasper, gegl, gimp, djvulibre, libgxps, imagemagick, feh, gst-plugins-base, openjdk, qt5-components, qt6, mpv, spice, spice-gtk, qemu
 libjxl                                  gdk-pixbuf, imagemagick, imlib2, ffmpeg
@@ -445,8 +443,8 @@ libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, gst
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libgsf, libxklavier, dconf, libsoup, libsoup3, vte3, appstream, osinfo-db-tools, libvirt-glib
 libxmlb                                 appstream
-libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, raptor, tidy-html5, glibmm28, osinfo-db-tools
-libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt, raptor
+libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, osinfo-db-tools
+libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
 libyaml                                 ruby, appstream, dtc
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
@@ -478,7 +476,7 @@ maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, openjdk, qt6
 man2html                                xterm
 mandoc                                  feh
-mariadb                                 cyrus-sasl, openldap, exim, redland, qt5-components, qt6
+mariadb                                 cyrus-sasl, openldap, exim, qt5-components, qt6
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake, openjdk
 mesa                                    cairo, libvdpau, libva, glu, libepoxy, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5-components, qt6, vulkan-loader, mpv, qemu
@@ -498,7 +496,7 @@ mrg                                     gegl
 mruby                                   nghttp2
 mtdev                                   libinput, xorg-evdev-driver, qt5-components, qt6
 musepack                                gst-plugins-bad
-mysql                                   cyrus-sasl, openldap, exim, redland, qt5-components, qt6
+mysql                                   cyrus-sasl, openldap, exim, qt5-components, qt6
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, gst-plugins-good, libaom
 ncompress                               xorg-libraries
 neon                                    gst-plugins-bad
@@ -597,7 +595,7 @@ poppler                                 cairo, gegl, gimp
 popt                                    rsync
 portaudio                               mpg123
 postfix                                 gnupg, sudo, gimp, fcron, at
-postgresql                              cyrus-sasl, openldap, exim, redland, qt5-components, qt6
+postgresql                              cyrus-sasl, openldap, exim, qt5-components, qt6
 potrace                                 imagemagick
 pov-ray                                 imagemagick
 profiles                                imagemagick
@@ -692,10 +690,7 @@ quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
 ralcgm                                  imagemagick
-raptor                                  rasqal
-rasqal                                  redland
 rdma-core                               qemu
-redland
 reiserfsprogs                           lvm2
 rendercheck                             xorg-server
 resolv-wrapper                          mit-kerberos-v5
@@ -743,7 +738,7 @@ spice-protocol                          spice
 spirv-headers                           spirv-tools
 spirv-tools                             glslang
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, rustc, nss, python3, libsndfile, exim, libsoup, libsoup3, redland, qt5-components, qt6
+sqlite                                  gnupg, lnav, lshw, cyrus-sasl, rustc, nss, python3, libsndfile, exim, libsoup, libsoup3, qt5-components, qt6
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 sssd                                    sudo
@@ -796,7 +791,6 @@ vdo                                     lvm2
 vifm
 vim                                     fcron
 virglrenderer
-virtuoso                                redland
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
 vo-amrwb                                gst-plugins-bad

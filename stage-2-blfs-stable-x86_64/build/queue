@@ -511,12 +511,6 @@ xap/flameshot.sh
 # l/taglib.sh
 # s/inxi.sh
 
-
-# l/raptor.sh
-# l/rasqal.sh
-# l/libiodbc.sh
-# l/redland.sh
-# d/tidy-html5.sh
 # d/openjdk.sh
 # l/libidn.sh
 # n/traceroute.sh
