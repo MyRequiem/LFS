@@ -495,8 +495,6 @@ xap/flameshot.sh
 # l/libspectre.sh
 
 
-# l/libsecret.sh
-# l/gcr3.sh
 # n/w3m.sh
 # l/libdazzle.sh
 # l/sbc.sh
@@ -529,7 +527,6 @@ xap/flameshot.sh
 # l/soundtouch.sh
 # l/libdvdread.sh
 # l/libdvdnav.sh
-# l/gcr4.sh
 # s/inxi.sh
 # s/prelink.sh
 # ap/at.sh
@@ -543,8 +540,6 @@ xap/flameshot.sh
 # d/openjdk.sh
 # l/libidn.sh
 # n/traceroute.sh
-# l/gnome-keyring.sh
-# l/libsecret.sh
 # d/apache-ant.sh
 # l/libmad.sh
 # n/transmission.sh
