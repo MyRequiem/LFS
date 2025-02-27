@@ -218,7 +218,7 @@ gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base, spice, spice-gtk
 gtk+2                                   pixman, cairo, libcanberra, alsa-tools, gimp, libiodbc
-gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, libdazzle, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt
+gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, poppler, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, poppler, gexiv2, gegl, gimp, libgxps, libsoup, upower, libical, raptor, libxmlb
 gtk-vnc                                 qemu
 gtk4                                    python3-pygobject3, adwaita-icon-theme, ibus, libadwaita, zenity, gtkmm4, vte3
@@ -310,12 +310,10 @@ libcacard                               spice, spice-gtk, qemu
 libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils, ntp
 libcap-ng                               qemu
-libcddb                                 libcdio
 libcdio                                 ffmpeg, gst-plugins-ugly
 libcelt                                 ffmpeg
 libclc                                  mesa
 libcloudproviders                       gtk4
-libdazzle
 libdbusmenu                             ibus
 libdc1394                               ffmpeg
 libdc1394_2                             gst-plugins-bad
@@ -406,7 +404,7 @@ libsidplay                              gst-plugins-ugly
 libsigc++2                              cairomm114, glibmm26, pavucontrol
 libsigc++3                              glibmm28, cairomm118
 libslirp                                qemu
-libsndfile                              lame, libsamplerate, pulseaudio, sbc, gst-plugins-bad
+libsndfile                              lame, libsamplerate, pulseaudio, gst-plugins-bad
 libsoup                                 gst-plugins-good, gst-plugins-bad
 libsoup3                                gst-plugins-good
 libspectre                              cairo, goffice, imlib2
@@ -800,7 +798,7 @@ usbutils
 utah-raster-toolkit                     imagemagick
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
-vala                                    librsvg, gtk-vnc, libdazzle, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3, libadwaita, libical, vte3, spice-gtk, libvirt-glib
+vala                                    librsvg, gtk-vnc, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3, libadwaita, libical, vte3, spice-gtk, libvirt-glib
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python3, cairo, libdrm, mesa, gstreamer, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libseccomp, libgsf
 vbetool                                 pm-utils
 vde2                                    qemu

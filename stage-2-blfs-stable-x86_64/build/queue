@@ -484,6 +484,7 @@ ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
+# xap/pavucontrol.sh
 # a/time.sh
 # a/tree.sh
 # a/cpio.sh
@@ -493,19 +494,13 @@ xap/flameshot.sh
 # ap/lsof.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
-
-
-# n/w3m.sh
-# l/libdazzle.sh
-# l/sbc.sh
-# l/tdb.sh
-# xap/pavucontrol.sh
 # ap/potrace.sh
+# d/perl-modules/perl-file-fcntllock.sh
 # n/exim.sh
-# ap/sudo.sh
+# ap/at.sh
 # l/aalib.sh
-# l/libcddb.sh
-# l/libcdio.sh
+
+
 # ap/mc.sh
 # l/liba52.sh
 # n/links.sh
@@ -529,7 +524,6 @@ xap/flameshot.sh
 # l/libdvdnav.sh
 # s/inxi.sh
 # s/prelink.sh
-# ap/at.sh
 # a/upower.sh
 # l/libical.sh
 # l/raptor.sh
