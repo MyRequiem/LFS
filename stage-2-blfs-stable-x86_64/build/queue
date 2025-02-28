@@ -484,7 +484,7 @@ ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
-# xap/pavucontrol.sh
+xap/pavucontrol.sh
 # a/time.sh
 # a/tree.sh
 # a/cpio.sh

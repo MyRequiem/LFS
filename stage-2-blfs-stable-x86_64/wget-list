@@ -560,6 +560,7 @@ https://github.com/naelstrof/maim/archive/v5.8.0/maim-5.8.0.tar.gz
 https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz
 https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz
 https://github.com/flameshot-org/flameshot/archive/v12.1.0/flameshot-12.1.0.tar.gz
+https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.1.tar.xz
 
 
 ================================================================================
@@ -722,7 +723,6 @@ https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
 https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
-https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-5.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-amdgpu-23.0.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-ati-19.1.0.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/11.3/xf86-video-ati-19.1.0-upstream_fixes-1.patch

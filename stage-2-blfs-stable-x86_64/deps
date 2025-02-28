@@ -221,8 +221,8 @@ gtk+3                                   cairo, adwaita-icon-theme, ghostscript, 
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, gimp, libgxps, libsoup, libxmlb
 gtk-vnc                                 qemu
 gtk4                                    python3-pygobject3, adwaita-icon-theme, ibus, libadwaita, zenity, gtkmm4, vte3
-gtkmm3                                  pavucontrol
-gtkmm4
+gtkmm3
+gtkmm4                                  pavucontrol
 guile
 gutenprint                              cups
 gvfs                                    gimp
@@ -467,7 +467,7 @@ luit                                    xterm
 lvm2
 lxqt-notificationd                      libnotify
 lxqt-policykit                          polkit
-lynx                                    xmlto, docbook-utils, xorg-libraries, xdg-utils
+lynx                                    xmlto, docbook-utils, xorg-libraries, xdg-utils, pavucontrol
 lzfse                                   qemu
 lzip
 lzo                                     libarchive, cairo, qemu
