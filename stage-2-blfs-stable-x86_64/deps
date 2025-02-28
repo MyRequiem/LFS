@@ -859,9 +859,6 @@ zxing                                   gst-plugins-bad
 
 
 # ==============================================================================
-# bviplus
-# cppcheck
-# deb2tgz
 # girara                              zathura
 # gsimplecal
 # gtick
@@ -875,12 +872,8 @@ zxing                                   gst-plugins-bad
 # opusfile
 # pwgen
 # pyatspi2
-# ramdefrag
 # rest
-# rpm                                 rpm2tgz
-# rpm2tgz
 # tokudb
-# uget
 # utimer
 # zathura
 

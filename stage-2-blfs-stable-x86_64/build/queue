@@ -484,6 +484,12 @@ ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
+# === gpick ===
+# d/colm.sh
+# d/kelbt.sh
+# d/ragel.sh
+# ap/gpick.sh
+# =============
 # xap/pavucontrol.sh
 # a/time.sh
 # a/tree.sh
@@ -515,27 +521,22 @@ xap/flameshot.sh
 # d/apache-ant.sh
 # l/id3lib.sh
 # l/libao.sh
-
 # ap/gsimplecal.sh
 # ap/pwgen.sh
-# n/uget.sh
-# s/ramdefrag.sh
 # ap/utimer.sh
 # l/girara.sh
 # ap/zathura.sh
-# ap/bviplus.sh
-# d/cppcheck.sh
-# ap/deb2tgz.sh
-# ap/rpm.sh
-# ap/rpm2tgz.sh
-# xap/gtick.sh
+
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
 # l/libgd.sh
 # ap/optipng.sh
 # ap/lsscsi.sh
+# xap/gtick.sh
+# ap/timidity.sh     [NEW]
+# ap/tuxguitar.sh    [NEW] + зависимости
 # d/android-tools.sh [NEW]
-# ap/openoffice.sh [NEW]
+# ap/openoffice.sh   [NEW]
 
 # vim:ft=conf

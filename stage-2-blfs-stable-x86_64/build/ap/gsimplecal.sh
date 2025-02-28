@@ -5,7 +5,7 @@ PRGNAME="gsimplecal"
 ### Gsimplecal (Simple and lightweight GTK calendar)
 # Простой апплет-календарь, написанный на C++ с использованием GTK
 
-# Required:    gtk+2
+# Required:    gtk+3
 # Recommended: no
 # Optional:    no
 
