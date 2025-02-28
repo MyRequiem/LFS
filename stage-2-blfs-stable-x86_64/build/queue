@@ -485,9 +485,10 @@ l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
 xap/pavucontrol.sh
-# a/time.sh
-# a/tree.sh
-# a/cpio.sh
+a/time.sh
+a/tree.sh
+a/cpio.sh
+# d/openjdk.sh
 # a/usbutils.sh
 # l/slang.sh
 # d/guile.sh
@@ -510,7 +511,6 @@ xap/pavucontrol.sh
 # xap/imagemagick.sh
 # l/taglib.sh
 # s/inxi.sh
-# d/openjdk.sh
 # n/traceroute.sh
 # d/apache-ant.sh
 # l/id3lib.sh

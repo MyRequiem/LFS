@@ -18,6 +18,7 @@ BIN_ARCH_NAME="OpenJDK"
 #              zip
 # Recommended: make-ca
 #              giflib
+#              harfbuzz
 #              lcms2
 #              libjpeg-turbo
 #              libpng
@@ -25,6 +26,7 @@ BIN_ARCH_NAME="OpenJDK"
 # Optional:    git
 #              graphviz
 #              mercurial
+#              ccache           (https://ccache.dev/)
 #              pandoc           (https://pandoc.org/)
 #              pigz             (https://zlib.net/pigz/)
 

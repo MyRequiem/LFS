@@ -56,6 +56,7 @@ cairomm118                              pangomm25
 cantarell-font-otf                      pango
 capstone                                qemu
 cbindgen                                mesa
+ccache                                  openjdk
 cdparanoia-III                          gst-plugins-base
 ceph                                    qemu
 chromaprint                             gst-plugins-bad
@@ -226,7 +227,7 @@ gtkmm4                                  pavucontrol
 guile
 gutenprint                              cups
 gvfs                                    gimp
-harfbuzz                                graphite2, freetype, libass, gimp, qt5-components, qt6
+harfbuzz                                graphite2, freetype, libass, gimp, qt5-components, qt6, openjdk
 hddtemp                                 bumblebee-status
 hdparm                                  pm-utils
 heimdal-gssapi                          exim
