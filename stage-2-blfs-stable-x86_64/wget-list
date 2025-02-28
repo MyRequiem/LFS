@@ -564,6 +564,8 @@ https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.1.tar.
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.1.3/unix-tree-2.1.3.tar.bz2
 https://ftp.gnu.org/gnu/cpio/cpio-2.15.tar.bz2
+https://anduin.linuxfromscratch.org/BLFS/OpenJDK/OpenJDK-22.0.2/OpenJDK-22.0.2+9-x86_64-bin.tar.xz
+https://github.com/openjdk/jdk22u/archive/jdk-22.0.2-ga.tar.gz
 
 
 ================================================================================
@@ -744,8 +746,6 @@ https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://taglib.org/releases/taglib-1.13.tar.gz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
-https://anduin.linuxfromscratch.org/BLFS/OpenJDK/OpenJDK-19.0.2/OpenJDK-19.0.2+7-x86_64-bin.tar.xz
-https://github.com/openjdk/jdk19u/archive/jdk-19.0.2-ga.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz

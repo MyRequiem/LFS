@@ -488,7 +488,7 @@ xap/pavucontrol.sh
 a/time.sh
 a/tree.sh
 a/cpio.sh
-# d/openjdk.sh
+d/openjdk.sh
 # a/usbutils.sh
 # l/slang.sh
 # d/guile.sh

@@ -73,14 +73,15 @@ if ! command -v java &>/dev/null ; then
         cd /opt || exit 1
         rm -rf "./${ARCH_NAME}" "./${PRGNAME}"* "./${BIN_ARCH_NAME}"*
         # распаковываем архив с бинарниками
-        #    OpenJDK-${VERSION}+7-x86_64-bin.tar.xz ->
-        #       OpenJDK-${VERSION}+7-x86_64-bin
+        #    OpenJDK-${VERSION}+9-x86_64-bin.tar.xz ->
+        #       OpenJDK-${VERSION}+9-x86_64-bin
         tar xvf \
-            "${SOURCES}/${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin".tar.?z* || exit 1
-        chown -R root:root "${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin"
+            "${SOURCES}/${BIN_ARCH_NAME}-${VERSION}+9-x86_64-bin".tar.?z* \
+                || exit 1
+        chown -R root:root "${BIN_ARCH_NAME}-${VERSION}+9-x86_64-bin"
         # ссылка в /opt
-        #    jdk -> OpenJDK-${VERSION}+7-x86_64-bin
-        ln -svfn "${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin" "${ARCH_NAME}"
+        #    jdk -> OpenJDK-${VERSION}+9-x86_64-bin
+        ln -svfn "${BIN_ARCH_NAME}-${VERSION}+9-x86_64-bin" "${ARCH_NAME}"
     )
 
     # настроим окружение
@@ -115,9 +116,8 @@ find -L . \
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 PROFILE_D="/etc/profile.d"
-SUDOERS_D="/etc/sudoers.d"
 APPLICATIONS="/usr/share/applications"
-mkdir -pv "${TMP_DIR}"{"${PROFILE_D}","${SUDOERS_D}","${APPLICATIONS}"}
+mkdir -pv "${TMP_DIR}"{"${PROFILE_D}","${APPLICATIONS}"}
 mkdir -pv "${TMP_DIR}/opt/${PRGNAME}-${VERSION}"
 
 # переменная PATH должна содержать путь к компилятору java - это единственное
@@ -136,11 +136,12 @@ bash configure                   \
     --with-stdc++lib=dynamic     \
     --with-jobs="${JOBS}"        \
     --with-giflib=system         \
+    --with-harfbuzz=system       \
     --with-lcms=system           \
     --with-libjpeg=system        \
     --with-libpng=system         \
     --with-zlib=system           \
-    --with-version-build="7"     \
+    --with-version-build="9"     \
     --with-version-pre=""        \
     --with-version-opt=""        \
     --with-cacerts-file=/etc/pki/tls/java/cacerts || exit 1
@@ -152,7 +153,7 @@ DIR_WITH_COMPILED_FILES="./build/linux-x86_64-server-release/images/jdk"
 find "${DIR_WITH_COMPILED_FILES}" -type f -name "*.debuginfo" -delete
 
 # устанавливаем пакет во временную директорию
-cp -Rv "${DIR_WITH_COMPILED_FILES}"/* "${TMP_DIR}/opt/${PRGNAME}-${VERSION}"
+cp -Rv "${DIR_WITH_COMPILED_FILES}"/* "${TMP_DIR}/opt/${PRGNAME}-${VERSION}/"
 chown -R root:root "${TMP_DIR}/opt"
 
 # icons
@@ -238,16 +239,8 @@ unset AUTO_CLASSPATH_DIR JDIR JDIRS JJAR JJARS
 EOF
 chmod 755 "${TMP_DIR}${OPENJDK_SH}"
 
-# настройки sudo: root должен иметь доступ к переменным JAVA_HOME и CLASSPATH
-SUDOERS_JAVA="${SUDOERS_D}/java"
-cat << EOF > "${TMP_DIR}${SUDOERS_JAVA}"
-Defaults env_keep += JAVA_HOME
-Defaults env_keep += CLASSPATH
-EOF
-chmod 440 "${TMP_DIR}${SUDOERS_JAVA}"
-
 # удаляем установленные бинарники, которые использовались для сборки
-rm -rf "/opt/${BIN_ARCH_NAME}-${VERSION}+7-x86_64-bin"
+rm -rf "/opt/${BIN_ARCH_NAME}-${VERSION}+9-x86_64-bin"
 
 # удалим директорию с пакетом, если такая версия уже установлена
 rm -rf "/opt/${PRGNAME}-${VERSION}"
