@@ -769,9 +769,6 @@ http://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
 https://github.com/dvorka/hstr/archive/2.5/hstr-2.5.tar.gz
 https://github.com/wfeldt/libx86emu/archive/3.5/libx86emu-3.5.tar.gz
 https://github.com/openSUSE/hwinfo/archive/21.82/hwinfo-21.82.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/libgd/libgd-2.3.3.patch
-https://github.com/libgd/libgd/archive/refs/tags/gd-2.3.3.tar.gz
-http://prdownloads.sourceforge.net/optipng/optipng-0.7.7.tar.gz
 https://waf.io/waf-2.0.20
 http://sg.danny.cz/scsi/lsscsi-0.32.tgz
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

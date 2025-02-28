@@ -526,12 +526,9 @@ xap/flameshot.sh
 # ap/utimer.sh
 # l/girara.sh
 # ap/zathura.sh
-
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
-# l/libgd.sh
-# ap/optipng.sh
 # ap/lsscsi.sh
 # xap/gtick.sh
 # ap/timidity.sh     [NEW]
