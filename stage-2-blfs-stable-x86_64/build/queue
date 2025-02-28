@@ -484,12 +484,6 @@ ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
 xap/flameshot.sh
-# === gpick ===
-# d/colm.sh
-# d/kelbt.sh
-# d/ragel.sh
-# ap/gpick.sh
-# =============
 # xap/pavucontrol.sh
 # a/time.sh
 # a/tree.sh
