@@ -489,9 +489,9 @@ a/time.sh
 a/tree.sh
 a/cpio.sh
 d/openjdk.sh
-# a/usbutils.sh
-# l/slang.sh
-# d/guile.sh
+a/usbutils.sh
+l/slang.sh
+d/guile.sh
 # ap/lsof.sh
 # ap/ghostscript.sh
 # l/libspectre.sh

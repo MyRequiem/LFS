@@ -120,7 +120,7 @@ efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
 elogind                                 alsa-lib, pulseaudio, polkit, xorg-server, appstream, qemu
-emacs                                   libidn, pinentry, guile, desktop-file-utils, xterm
+emacs                                   libidn, pinentry, desktop-file-utils, xterm, guile
 emojione                                ibus
 enscript                                imagemagick
 etc-issue
@@ -163,7 +163,7 @@ gc                                      w3m, guile
 gcc                                     cmake
 gcr3                                    pinentry
 gcr4                                    pinentry
-gdb                                     openssh, glib, gcc, guile, rustc, python3
+gdb                                     openssh, glib, gcc, rustc, python3, guile
 gdk-pixbuf                              w3m, librsvg, gtk+3, libgsf, rxvt-unicode, gegl, gst-plugins-good, gtk4
 gdk-pixbuf-xlib                         w3m
 gegl                                    gimp
@@ -176,7 +176,7 @@ giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
 girara
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, usbutils, adwaita-icon-theme, libgxps, openjdk, openjpeg, flameshot
+git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, adwaita-icon-theme, libgxps, openjdk, openjpeg, flameshot
 gjs                                     glib
 glade                                   libhandy
 glew
@@ -239,7 +239,7 @@ hp2xx                                   imagemagick
 hplip                                   cups
 hstr
 htop
-hwdata                                  pciutils
+hwdata                                  pciutils, usbutils
 hwinfo
 hwloc                                   htop
 i3                                      bumblebee-status
@@ -809,7 +809,7 @@ weasyprint                              vala
 webkit2gtk                              zenity
 webp-pixbuf-loader                      gdk-pixbuf
 webrtc-audio-processing                 pulseaudio
-wget                                    usbutils, perl-unicode-linebreak, imagemagick, openjdk
+wget                                    perl-unicode-linebreak, imagemagick, openjdk
 which                                   openssh, lm-sensors, boost, lvm2, freetype, libvpx, goffice, libseccomp, openjdk
 whois
 wildmidi                                gst-plugins-bad
