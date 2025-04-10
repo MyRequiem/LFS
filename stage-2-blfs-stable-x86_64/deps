@@ -412,7 +412,7 @@ libtasn1                                p11-kit, gnutls, qemu
 libthai                                 perl-unicode-linebreak, pango
 libtheora                               gst-plugins-base, ffmpeg
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, gegl, gimp, libgxps, imagemagick, qt6
-libtirpc                                libnsl, lsof, xorg-server
+libtirpc                                libnsl, xorg-server, lsof
 libtizonia                              mesa
 libu2f-emu                              qemu
 libumfpack                              gegl

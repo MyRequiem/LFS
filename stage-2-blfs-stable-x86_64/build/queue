@@ -492,7 +492,7 @@ d/openjdk.sh
 a/usbutils.sh
 l/slang.sh
 d/guile.sh
-# ap/lsof.sh
+ap/lsof.sh
 # ap/ghostscript.sh
 # l/libspectre.sh
 # ap/potrace.sh
