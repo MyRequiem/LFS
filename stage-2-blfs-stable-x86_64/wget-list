@@ -570,6 +570,7 @@ https://kernel.org/pub/linux/utils/usb/usbutils/usbutils-017.tar.xz
 https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://ftp.gnu.org/gnu/guile/guile-3.0.10.tar.xz
 https://github.com/lsof-org/lsof/releases/download/4.99.0/lsof-4.99.0.tar.gz
+https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.xz
 
 
 ================================================================================
@@ -719,8 +720,6 @@ https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
-https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
-https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2

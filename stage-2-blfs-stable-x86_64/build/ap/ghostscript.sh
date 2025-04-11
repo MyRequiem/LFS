@@ -1,8 +1,6 @@
 #! /bin/bash
 
 PRGNAME="ghostscript"
-GHOSTSCRIPT_FONTS_STD_VERSION="8.11"
-GNU_GS_FONTS_OTHER_VERSION="6.0"
 
 ### ghostscript (Postscript and PDF interpreter)
 # Универсальный интерпретатор (процессор) Adobe Systems PostScript и Portable
@@ -23,6 +21,7 @@ GNU_GS_FONTS_OTHER_VERSION="6.0"
 #              gtk+3
 #              libidn
 #              libpaper
+#              libwebp
 #              Graphical Environments
 
 # NOTE:
@@ -38,19 +37,24 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # удалим из исходников копии freetype, lcms2, libjpeg, libpng, zlib и openjpeg,
-# т.к. они уже должны быть установлены в системе
+# т.к. они уже установлены в системе
 rm -rf freetype lcms2mt jpeg libpng openjpeg zlib
+
+# исправим сборку пакета с GCC-14 и Libidn
+sed -e '186 s/NewPassword =/*NewPassword =/' \
+    -e '187 s/NewLen =/*NewLen =/'           \
+    -i pdf/pdf_sec.c
 
 # опция немного уменьшает размеры файлов gs и libgs.so
 #    --disable-compile-inits
 ./configure                 \
     --prefix=/usr           \
     --disable-compile-inits \
-    --enable-dynamic        \
+    --disable-cups          \
     --with-system-libtiff || exit 1
 
 make || exit 1
-# скомпилируем расшаренную библиотеку libgs.so
+# скомпилируем библиотеку libgs.so
 make so
 # пакет не имеет набора тестов
 make install   DESTDIR="${TMP_DIR}"
@@ -68,32 +72,9 @@ ln -sfvn "${PRGNAME}" "${TMP_DIR}/usr/include/ps"
 # удалим документацию
 rm -rf "${TMP_DIR}/usr/share/doc"
 
-# установим шрифты
-FONTS_PATH="/usr/share/fonts/X11/Type1/"
-mkdir -p "${TMP_DIR}${FONTS_PATH}"
-tar -xvf \
-    "${SOURCES}/${PRGNAME}-fonts-std-${GHOSTSCRIPT_FONTS_STD_VERSION}.tar.gz" \
-    -C "${TMP_DIR}${FONTS_PATH}" --no-same-owner --strip-components=1 || exit 1
-tar -xvf "${SOURCES}/gnu-gs-fonts-other-${GNU_GS_FONTS_OTHER_VERSION}.tar.gz" \
-    -C "${TMP_DIR}${FONTS_PATH}" --no-same-owner --strip-components=1 || exit 1
-
-rm -f "${TMP_DIR}${FONTS_PATH}"/{COPYING,ChangeLog,README*,TODO,fonts*}
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-# обновим индекс шрифтов (fonts.scale и fonts.dir)
-if command -v mkfontscale &>/dev/null && command -v mkfontdir &>/dev/null; then
-    (
-            cd "${FONTS_PATH}" || exit 1
-            mkfontscale .
-            mkfontdir   .
-    )
-fi
-
-# обновим кэш для fontconfig (/var/cache/fontconfig/)
-fc-cache -vf
 
 MOD_VERSION="${VERSION//./}"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

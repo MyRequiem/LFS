@@ -432,7 +432,7 @@ libvisual                               gst-plugins-base
 libvorbis                               libsndfile, libcanberra, ffmpeg, gst-plugins-base
 libvpx                                  ffmpeg, gst-plugins-good
 libwacom                                libinput
-libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, gst-plugins-bad, qt6, imlib2
+libwebp                                 libtiff, ffmpeg, gegl, gimp, imagemagick, gst-plugins-bad, qt6, imlib2, ghostscript
 libwmf                                  gimp, imagemagick
 libx86emu
 libxau                                  libxcb
