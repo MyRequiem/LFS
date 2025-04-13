@@ -568,7 +568,7 @@ perl-business-isbn                      perl-uri
 perl-business-isbn-data                 perl-business-isbn
 perl-canary-stability                   perl-anyevent
 perl-common-sense
-perl-file-fcntllock
+perl-file-fcntllock                     exim
 perl-io-socket-ssl                      ntp
 perl-json-xs                            perl-anyevent-i3
 perl-net-ssleay                         perl-io-socket-ssl

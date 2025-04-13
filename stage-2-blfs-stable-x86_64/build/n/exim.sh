@@ -11,7 +11,7 @@ PRGNAME="exim"
 #              perl-file-fcntllock
 #              pcre2
 # Recommended: no
-# Optional:    tdb                      (https://sourceforge.net/projects/tdb/)
+# Optional:    tdb                      альтернатива gdbm установленного в LFS (https://sourceforge.net/projects/tdb/)
 #              cyrus-sasl
 #              libidn
 #              linux-pam
@@ -119,6 +119,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 config_file_processing "${ALIASES}"
 config_file_processing "${EXIM_CONF}"
 
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (the Exim MTA - Mail Transfer Agent)
 #
@@ -127,8 +128,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # flexible mailer with extensive facilities for checking incoming e-mail and
 # can be integrated with other email tools.
 #
-# Home page: http://www.${PRGNAME}.org/
-# Download:  https://ftp.${PRGNAME}.org/pub/${PRGNAME}/${PRGNAME}4/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://downloads.${PRGNAME}.org/${PRGNAME}${MAJ_VERSION}/old/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

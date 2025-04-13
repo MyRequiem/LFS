@@ -497,7 +497,7 @@ ap/ghostscript.sh
 l/libspectre.sh
 ap/potrace.sh
 d/perl-modules/perl-file-fcntllock.sh
-# n/exim.sh
+n/exim.sh
 # ap/at.sh
 # l/aalib.sh
 # l/poppler.sh

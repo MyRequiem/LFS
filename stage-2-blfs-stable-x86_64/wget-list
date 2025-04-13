@@ -574,6 +574,7 @@ https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/
 https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
+https://downloads.exim.org/exim4/old/exim-4.98.tar.xz
 
 
 ================================================================================
@@ -732,7 +733,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://ftp.exim.org/pub/exim/exim4/exim-4.97.1.tar.xz
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
 https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
