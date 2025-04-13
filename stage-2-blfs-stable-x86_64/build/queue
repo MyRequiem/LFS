@@ -494,9 +494,9 @@ l/slang.sh
 d/guile.sh
 ap/lsof.sh
 ap/ghostscript.sh
-# l/libspectre.sh
-# ap/potrace.sh
-# d/perl-modules/perl-file-fcntllock.sh
+l/libspectre.sh
+ap/potrace.sh
+d/perl-modules/perl-file-fcntllock.sh
 # n/exim.sh
 # ap/at.sh
 # l/aalib.sh

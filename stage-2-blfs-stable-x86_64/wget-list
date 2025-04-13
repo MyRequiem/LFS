@@ -571,6 +571,9 @@ https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2
 https://ftp.gnu.org/gnu/guile/guile-3.0.10.tar.xz
 https://github.com/lsof-org/lsof/releases/download/4.99.0/lsof-4.99.0.tar.gz
 https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.xz
+https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
+https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
+https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
 
 
 ================================================================================
@@ -716,14 +719,12 @@ https://www.cpan.org/authors/id/D/DC/DCANTRELL/Test-Differences-0.69.tar.gz
 https://www.cpan.org/authors/id/L/LE/LEONT/PerlIO-utf8_strict-0.010.tar.gz
 https://www.cpan.org/authors/id/O/OA/OALDERS/LWP-Protocol-https-6.10.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/LWP-Protocol-https-6.10-system_certs-2.patch
-https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
 https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/11.3/Python-2.7.18-security_fixes-1.patch
 https://www.python.org/ftp/python/doc/3.11.2/python-3.11.2-docs-html.tar.bz2
 https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz
 https://download.gnome.org/sources/pyatspi/2.46/pyatspi-2.46.0.tar.xz
 https://download.gnome.org/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
-https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 https://www.x.org/pub/individual/driver/xf86-video-amdgpu-23.0.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-ati-19.1.0.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/11.3/xf86-video-ati-19.1.0-upstream_fixes-1.patch
@@ -731,7 +732,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://ftp.exim.org/pub/exim/exim4/exim-4.97.1.tar.xz
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
 https://poppler.freedesktop.org/poppler-23.02.0.tar.xz

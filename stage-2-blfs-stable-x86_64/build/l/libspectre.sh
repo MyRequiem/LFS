@@ -41,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Postscript documents.
 #
 # Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  http://${PRGNAME}.freedesktop.org/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://${PRGNAME}.freedesktop.org/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
