@@ -501,10 +501,10 @@ n/exim.sh
 ap/at.sh
 l/aalib.sh
 l/poppler.sh
-# l/libmypaint.sh
-# l/mypaint-brushes.sh
-# l/babl.sh
-# l/gegl.sh
+l/babl.sh
+l/gegl.sh
+l/libmypaint.sh
+l/mypaint-brushes.sh
 # xap/gimp.sh
 # l/djvulibre.sh
 # l/libgxps.sh
