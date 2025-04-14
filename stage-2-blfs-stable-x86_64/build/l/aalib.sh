@@ -37,8 +37,30 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # исправим небольшую проблему с aalib.m4
-sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4
+sed -i -e '/AM_PATH_AALIB,/s/AM_PATH_AALIB/[&]/' aalib.m4 || exit 1
 
+# изменим шрифты с Xorg Legacy на шрифты Xorg Fonts:
+sed -e 's/8x13bold/-*-luxi mono-bold-r-normal--13-120-*-*-m-*-*-*/' \
+    -i src/aax.c || exit 1
+
+# исправим чрезмерное использование некоторых внутренних структур данных,
+# позволяющих создавать этот пакет с Ncurses-6.5 или более поздней версии:
+sed 's/stdscr->_max\([xy]\) + 1/getmax\1(stdscr)/' -i src/aacurses.c || exit 1
+
+# для сборки пакета с GCC>=14, добавим несколько отсутствующих директив
+# #include и исправим некорректный оператор return, чтобы сделать код
+# совместимым с C99. Затем восстановим скрипт configure, чтобы код C был также
+# совместим с C99:
+sed -i '1i#include <stdlib.h>'                   \
+    src/aa{fire,info,lib,linuxkbd,savefont,test,regist}.c || exit 1
+sed -i '1i#include <string.h>'                   \
+    src/aa{kbdreg,moureg,test,regist}.c                   || exit 1
+sed -i '/X11_KBDDRIVER/a#include <X11/Xutil.h>'  \
+    src/aaxkbd.c                                          || exit 1
+sed -i '/rawmode_init/,/^}/s/return;/return 0;/' \
+    src/aalinuxkbd.c                                      || exit 1
+
+autoconf || exit 1
 ./configure                   \
     --prefix=/usr             \
     --infodir=/usr/share/info \
@@ -61,7 +83,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Art. Internally, the AA-lib API is similar to other graphics libraries, but
 # it renders the the output into ASCII art.
 #
-# Home page: http://aa-project.sourceforge.net/${PRGNAME}/
+# Home page: https://aa-project.sourceforge.net/${PRGNAME}/
 # Download:  https://downloads.sourceforge.net/aa-project/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

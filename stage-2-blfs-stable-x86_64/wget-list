@@ -575,6 +575,10 @@ https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
 https://downloads.exim.org/exim4/old/exim-4.98.tar.xz
+https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
+https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
+https://poppler.freedesktop.org/poppler-24.08.0.tar.xz
+https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
 
 
 ================================================================================
@@ -733,9 +737,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
-https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
-https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
 https://download.gimp.org/pub/babl/0.1/babl-0.1.98.tar.xz
 https://download.gimp.org/pub/gegl/0.4/gegl-0.4.40.tar.xz
 https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.32.tar.bz2
@@ -744,7 +745,6 @@ https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.0-61.tar.xz
 https://taglib.org/releases/taglib-1.13.tar.gz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
-https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
 https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz

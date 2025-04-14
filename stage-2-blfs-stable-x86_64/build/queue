@@ -498,9 +498,9 @@ l/libspectre.sh
 ap/potrace.sh
 d/perl-modules/perl-file-fcntllock.sh
 n/exim.sh
-# ap/at.sh
-# l/aalib.sh
-# l/poppler.sh
+ap/at.sh
+l/aalib.sh
+l/poppler.sh
 # l/libmypaint.sh
 # l/mypaint-brushes.sh
 # l/babl.sh
