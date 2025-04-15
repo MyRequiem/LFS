@@ -782,7 +782,6 @@ tunctl
 twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good
 uchardet                                mpv
-ufraw                                   imagemagick
 umockdev                                libgudev
 unbound                                 gnutls
 uniconvertor                            imagemagick

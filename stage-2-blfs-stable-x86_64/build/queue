@@ -509,7 +509,7 @@ l/appstream-glib.sh
 xap/gimp.sh
 l/djvulibre.sh
 l/libgxps.sh
-# xap/imagemagick.sh
+xap/imagemagick.sh
 # l/taglib.sh
 # s/inxi.sh
 # n/traceroute.sh
