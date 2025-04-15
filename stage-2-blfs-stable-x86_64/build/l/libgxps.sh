@@ -26,25 +26,18 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-TESTS="false"
-GTK_DOC="false"
-DISABLE_INTROSPECTION="true"
-
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
-command -v g-ir-compiler &>/dev/null && DISABLE_INTROSPECTION="false"
-
-meson                                                  \
-    --prefix=/usr                                      \
-    --buildtype=release                                \
-    -Denable-test="${TESTS}"                           \
-    -Denable-gtk-doc="${GTK_DOC}"                      \
-    -Denable-man=true                                  \
-    -Ddisable-introspection="${DISABLE_INTROSPECTION}" \
+meson                             \
+    --prefix=/usr                 \
+    --buildtype=release           \
+    -D enable-test=false          \
+    -D enable-man=true            \
     .. || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
+
+chmod 644 "${TMP_DIR}/usr/share/man/man1/"*
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

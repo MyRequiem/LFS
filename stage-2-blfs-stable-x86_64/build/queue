@@ -507,8 +507,8 @@ l/libmypaint.sh
 l/mypaint-brushes.sh
 l/appstream-glib.sh
 xap/gimp.sh
-# l/djvulibre.sh
-# l/libgxps.sh
+l/djvulibre.sh
+l/libgxps.sh
 # xap/imagemagick.sh
 # l/taglib.sh
 # s/inxi.sh
@@ -526,9 +526,10 @@ xap/gimp.sh
 # s/hwinfo.sh
 # ap/lsscsi.sh
 # xap/gtick.sh
-# ap/timidity.sh     [NEW]
-# ap/tuxguitar.sh    [NEW] + зависимости
-# d/android-tools.sh [NEW]
-# ap/openoffice.sh   [NEW]
+# ap/openoffice.sh          [NEW]
+# d/android-tools.sh        [NEW]
+# ap/timidity.sh            [NEW]
+# ap/fluid-soundtont.sh     [NEW]
+# ap/tuxguitar.sh           [NEW] + зависимости
 
 # vim:ft=conf
