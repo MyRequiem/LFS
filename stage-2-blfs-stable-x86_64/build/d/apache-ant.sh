@@ -41,17 +41,11 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"/{opt,/etc/profile.d}
+mkdir -pv "${TMP_DIR}"/{opt,etc/profile.d}
 
 ./bootstrap.sh
 
-# исправим проблему, когда следующая команда bootstrap/bin/ant пытается
-# загрузить файл с проблемного сайта
-sed -e 's|ftp.software.ibm.com|anduin.linuxfromscratch.org|' \
-    -e 's|software/awdtools/netrexx|BLFS/apache-ant|'        \
-    -i fetch.xml
-
-# загружает недостающии runtime-зависимости в /root, которые затем копируются в
+# загружаем недостающии runtime-зависимости в /root, которые затем копируются в
 # дерево исходников lib/optional
 bootstrap/bin/ant -f fetch.xml -Ddest=optional
 

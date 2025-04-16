@@ -590,6 +590,9 @@ https://download.gnome.org/sources/libgxps/0.3/libgxps-0.3.2.tar.xz
 https://www.imagemagick.org/archive/releases/ImageMagick-7.1.1-36.tar.xz
 https://github.com/nemtrif/utfcpp/archive/v4.0.5/utfcpp-4.0.5.tar.gz
 https://taglib.org/releases/taglib-2.0.1.tar.gz
+https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
+https://downloads.sourceforge.net/traceroute/traceroute-2.1.5.tar.gz
+https://archive.apache.org/dist/ant/source/apache-ant-1.10.14-src.tar.xz
 
 
 ================================================================================
@@ -748,9 +751,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
-https://downloads.sourceforge.net/traceroute/traceroute-2.1.2.tar.gz
-https://archive.apache.org/dist/ant/source/apache-ant-1.10.13-src.tar.xz
 https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
