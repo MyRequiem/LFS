@@ -510,7 +510,8 @@ xap/gimp.sh
 l/djvulibre.sh
 l/libgxps.sh
 xap/imagemagick.sh
-# l/taglib.sh
+l/utfcpp.sh
+l/taglib.sh
 # s/inxi.sh
 # n/traceroute.sh
 # d/apache-ant.sh

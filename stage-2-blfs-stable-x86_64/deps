@@ -65,13 +65,14 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler
+cmake                                   llvm, json-c, libjpeg-turbo, libssh2, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
 cpdb                                    gtk4
 cpio                                    openjdk
 cppdap                                  cmake
+cppunit                                 taglib
 cracklib                                mit-kerberos-v5
 cranelift                               rustc
 cunit                                   libdrm
@@ -791,6 +792,7 @@ unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4,
 usbredir                                spice-gtk, qemu
 usbutils
 utah-raster-toolkit                     imagemagick
+utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
 utimer
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
