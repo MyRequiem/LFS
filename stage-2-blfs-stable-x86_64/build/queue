@@ -516,9 +516,9 @@ s/inxi.sh
 n/traceroute.sh
 d/apache-ant.sh
 ap/rpm.sh
-# l/id3lib.sh
-# l/libao.sh
-# ap/gsimplecal.sh
+l/id3lib.sh
+l/libao.sh
+ap/gsimplecal.sh
 # ap/pwgen.sh
 # ap/utimer.sh
 # s/hstr.sh
