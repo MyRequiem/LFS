@@ -177,7 +177,6 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-girara
 git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, adwaita-icon-theme, libgxps, openjdk, openjpeg, flameshot, poppler
 gjs                                     glib, gimp
 glade                                   libhandy
@@ -710,6 +709,7 @@ resolv-wrapper                          mit-kerberos-v5
 reusetool                               extra-cmake-modules
 rhash                                   cmake
 rpcsvc-proto                            glusterfs
+rpm
 rrdtool                                 lm-sensors
 rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad
@@ -873,7 +873,6 @@ yasm                                    tmux, libjpeg-turbo, mit-kerberos-v5, li
 yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
-zathura
 zbar                                    gst-plugins-bad
 zenity
 zip                                     docbook-xsl, llvm, openjdk

@@ -515,19 +515,17 @@ l/taglib.sh
 s/inxi.sh
 n/traceroute.sh
 d/apache-ant.sh
+ap/rpm.sh
 # l/id3lib.sh
 # l/libao.sh
 # ap/gsimplecal.sh
 # ap/pwgen.sh
 # ap/utimer.sh
-# l/girara.sh
-# ap/zathura.sh
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh
 # ap/lsscsi.sh
 # xap/gtick.sh
-# ap/openoffice.sh          [NEW]
 # d/android-tools.sh        [NEW]
 # ap/timidity.sh            [NEW]
 # ap/fluid-soundtont.sh     [NEW]
