@@ -519,8 +519,7 @@ ap/rpm.sh
 l/id3lib.sh
 l/libao.sh
 ap/gsimplecal.sh
-# ap/pwgen.sh
-# ap/utimer.sh
+ap/pwgen.sh
 # s/hstr.sh
 # l/libx86emu.sh
 # s/hwinfo.sh

@@ -794,7 +794,6 @@ usbutils
 utah-raster-toolkit                     imagemagick
 utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
-utimer
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
 vala                                    librsvg, gtk-vnc, libxklavier, libhandy, dconf, ibus, gexiv2, gegl, libsoup, libsoup3, libadwaita, vte3, spice-gtk, libvirt-glib
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, python3, cairo, libdrm, mesa, gstreamer, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libseccomp, libgsf

@@ -3,7 +3,7 @@
 PRGNAME="pwgen"
 
 ### pwgen (semi-random password generator)
-# Утилита для генерации "полуслучайных" паролей
+# Утилита для генерации "псевдослучайных" паролей
 
 # Required:    no
 # Recommended: no

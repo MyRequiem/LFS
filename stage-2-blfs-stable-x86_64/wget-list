@@ -598,6 +598,7 @@ https://downloads.sourceforge.net/id3lib/id3lib-3.8.3.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.2/id3lib-3.8.3-consolidated_patches-1.patch
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://github.com/dmedvinsky/gsimplecal/archive/v2.5/gsimplecal-2.5.1.tar.gz
+https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
 
 
 ================================================================================
@@ -756,10 +757,6 @@ https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 https://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/xf86-video-intel-20230223.tar.xz
 https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
-https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/utimer/utimer-0.4-locale.patch
-https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/patches/utimer/utimer-0.4-fno-common.patch
-https://sourceforge.net/projects/utimer/files/utimer-0.4.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gtick/gtick.png
 http://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
 https://github.com/dvorka/hstr/archive/2.5/hstr-2.5.tar.gz
