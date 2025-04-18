@@ -520,9 +520,9 @@ l/id3lib.sh
 l/libao.sh
 ap/gsimplecal.sh
 ap/pwgen.sh
-# s/hstr.sh
-# l/libx86emu.sh
-# s/hwinfo.sh
+s/hstr.sh
+l/libx86emu.sh
+s/hwinfo.sh
 # ap/lsscsi.sh
 # xap/gtick.sh
 # d/android-tools.sh        [NEW]

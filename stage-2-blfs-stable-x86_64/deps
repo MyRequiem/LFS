@@ -439,7 +439,7 @@ libvpx                                  ffmpeg, gst-plugins-good
 libwacom                                libinput
 libwebp                                 libtiff, ffmpeg, imagemagick, gst-plugins-bad, qt6, imlib2, ghostscript, gegl, gimp
 libwmf                                  gimp, imagemagick
-libx86emu
+libx86emu                               hwinfo
 libxau                                  libxcb
 libxcb                                  xorg-libraries, libxkbcommon, xcb-util, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-xrm
 libxcvt                                 xorg-server

@@ -599,6 +599,9 @@ https://www.linuxfromscratch.org/patches/blfs/12.2/id3lib-3.8.3-consolidated_pat
 https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://github.com/dmedvinsky/gsimplecal/archive/v2.5/gsimplecal-2.5.1.tar.gz
 https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
+https://github.com/dvorka/hstr/archive/3.1/hstr-3.1.0.tar.gz
+https://github.com/wfeldt/libx86emu/archive/3.7/libx86emu-3.7.tar.gz
+https://github.com/openSUSE/hwinfo/archive/24.0/hwinfo-24.0.tar.gz
 
 
 ================================================================================
@@ -759,9 +762,6 @@ https://www.x.org/pub/individual/driver/xf86-video-nouveau-1.0.17.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/gtick/gtick.png
 http://www.antcom.de/gtick/download/gtick-0.5.5.tar.gz
-https://github.com/dvorka/hstr/archive/2.5/hstr-2.5.tar.gz
-https://github.com/wfeldt/libx86emu/archive/3.5/libx86emu-3.5.tar.gz
-https://github.com/openSUSE/hwinfo/archive/21.82/hwinfo-21.82.tar.gz
 https://waf.io/waf-2.0.20
 http://sg.danny.cz/scsi/lsscsi-0.32.tgz
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

@@ -28,11 +28,6 @@ echo "${VERSION}" > VERSION
 make -j1 LIBDIR=/usr/lib                              || exit 1
 make -j1 LIBDIR=/usr/lib install DESTDIR="${TMP_DIR}" || exit 1
 
-(
-    cd "${TMP_DIR}" || exit 1
-    rm -rf sbin
-)
-
 # man-страницы
 install -m 644 "doc/${PRGNAME}.8" "${TMP_DIR}${MANDIR}/man8/"
 install -m 644 doc/*.1            "${TMP_DIR}${MANDIR}/man1/"
