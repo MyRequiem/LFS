@@ -43,8 +43,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and speeds ranging from 10 to 1000 bpm. It utilizes GTK+ and OSS (ALSA
 # compatible). It is part of the GNU Project (http://www.gnu.org/)
 #
-# Home page: http://www.antcom.de/${PRGNAME}/
-# Download:  http://www.antcom.de/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.antcom.de/${PRGNAME}/
+# Download:  https://www.antcom.de/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

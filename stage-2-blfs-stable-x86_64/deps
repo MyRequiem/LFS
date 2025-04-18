@@ -217,7 +217,6 @@ gst-plugins-base                        gst-plugins-good, gst-plugins-bad, gst-p
 gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base, spice, spice-gtk
-gtick
 gtk+2                                   pixman, cairo, libcanberra, alsa-tools
 gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt, poppler, gimp, gsimplecal
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup, libxmlb, poppler, appstream-glib, gimp

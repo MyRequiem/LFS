@@ -50,19 +50,16 @@ mkdir -pv "${TMP_DIR}"
 sed -e 's#l \(gtk-.*\).sgml#& -o \1#' \
     -i docs/{faq,tutorial}/Makefile.in || exit 1
 
-GTK_DOC="no"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="yes"
-
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
-    --enable-gtk-doc="${GTK_DOC}" || exit 1
+    --enable-gtk-doc=no || exit 1
 
 make || exit 1
 # make -k check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" == "xno" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 IM_MULTIPRESS_CONF="/etc/gtk-2.0/im-multipress.conf"
 if [ -f "${IM_MULTIPRESS_CONF}" ]; then
