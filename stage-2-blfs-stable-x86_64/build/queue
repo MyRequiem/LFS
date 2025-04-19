@@ -526,7 +526,9 @@ s/hwinfo.sh
 ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
-# d/android-tools.sh        [NEW]
+d/abseil-cpp.sh
+d/protobuf.sh
+d/android-tools.sh
 # ap/timidity.sh            [NEW]
 # ap/fluid-soundtont.sh     [NEW]
 # ap/tuxguitar.sh           [NEW] + зависимости

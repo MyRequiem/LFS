@@ -605,6 +605,9 @@ https://github.com/openSUSE/hwinfo/archive/24.0/hwinfo-24.0.tar.gz
 https://sg.danny.cz/scsi/lsscsi-0.32.tgz
 https://github.com/google/googletest/releases/download/v1.16.0/googletest-1.16.0.tar.gz
 https://github.com/fmtlib/fmt/archive/11.0.2/fmt-11.0.2.tar.gz
+https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz
+https://github.com/protocolbuffers/protobuf/releases/download/v27.3/protobuf-27.3.tar.gz
+https://github.com/nmeum/android-tools/releases/download/35.0.2/android-tools-35.0.2.tar.xz
 
 
 ================================================================================
