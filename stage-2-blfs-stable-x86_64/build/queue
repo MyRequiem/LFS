@@ -524,6 +524,8 @@ s/hstr.sh
 l/libx86emu.sh
 s/hwinfo.sh
 ap/lsscsi.sh
+d/gtest.sh
+l/fmt.sh
 # d/android-tools.sh        [NEW]
 # ap/timidity.sh            [NEW]
 # ap/fluid-soundtont.sh     [NEW]
