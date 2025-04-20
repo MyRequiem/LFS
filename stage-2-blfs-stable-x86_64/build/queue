@@ -538,7 +538,5 @@ l/sratom.sh
 l/lilv.sh
 xap/tuxguitar.sh
 # =====================
-# ap/timidity.sh            [NEW]
-# ap/fluid-soundtont.sh     [NEW]
 
 # vim:ft=conf
