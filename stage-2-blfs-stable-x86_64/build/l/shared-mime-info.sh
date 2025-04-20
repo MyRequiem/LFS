@@ -22,10 +22,10 @@ cd build || exit 1
 
 # указываем системе сборки запускать update-mime-database во время установки
 #    -Dupdate-mimedb=true
-meson                    \
-    --prefix=/usr        \
-    --buildtype=release  \
-    -Dupdate-mimedb=true \
+meson setup               \
+    --prefix=/usr         \
+    --buildtype=release   \
+    -D update-mimedb=true \
     .. || exit 1
 
 ninja || exit 1

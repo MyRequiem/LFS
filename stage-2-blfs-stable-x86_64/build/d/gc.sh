@@ -12,9 +12,9 @@ PRGNAME="gc"
 # вариант, может использоваться как детектор утечек памяти для программ на C
 # или C ++, хотя это не является его основной целью.
 
-# Required:    libatomic-ops
+# Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    libatomic-ops
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

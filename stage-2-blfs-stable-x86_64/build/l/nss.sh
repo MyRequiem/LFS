@@ -26,11 +26,6 @@ patch -Np1 --verbose -i \
 
 cd "${PRGNAME}" || exit 1
 
-SQLITE=0
-# если в системе установлен пакет sqlite, то libsoftokn3.so будет связываться
-# имеено с системной версией sqlite
-[ -f /usr/include/sqlite3.h ] && SQLITE=1
-
 # не включать в бинарники отладочную информацию и использовать оптимизацию
 # компилятора по умолчанию
 #    BUILD_OPT=1
@@ -41,22 +36,16 @@ SQLITE=0
 #    ZLIB_LIBS=-lz
 # расположение заголовочных файлов nspr
 #    NSPR_INCLUDE_DIR=/usr/include/nspr
-make                                \
-    BUILD_OPT=1                     \
-    USE_SYSTEM_ZLIB=1               \
-    ZLIB_LIBS=-lz                   \
-    NSS_ENABLE_WERROR=0             \
-    USE_64=1                        \
-    NSS_DISABLE_GTESTS=1            \
-    NSS_USE_SYSTEM_SQLITE=${SQLITE} \
-    NSPR_INCLUDE_DIR=/usr/include/nspr || exit 1
+make                                   \
+    BUILD_OPT=1                        \
+    NSPR_INCLUDE_DIR=/usr/include/nspr \
+    USE_SYSTEM_ZLIB=1                  \
+    ZLIB_LIBS=-lz                      \
+    NSS_ENABLE_WERROR=0                \
+    USE_64=1                           \
+    NSS_USE_SYSTEM_SQLITE=1 || exit 1
 
-###
 # тесты
-###
-# NOTE:
-#    для запуска тестов нужно удалить NSS_DISABLE_GTESTS=1 из команды 'make'
-#
 # cd tests || exit 1
 # HOST=localhost DOMSUF=localdomain ./all.sh || exit 1
 # cd ../ || exit 1

@@ -14,6 +14,7 @@ PRGNAME="libwebp"
 # Recommended: libjpeg-turbo
 #              libpng
 #              libtiff
+#              sdl12-compat
 # Optional:    freeglut
 #              giflib
 
@@ -52,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # encode and decode images in WebP format.
 #
 # Home page: https://developers.google.com/speed/webp/
-# Download:  http://downloads.webmproject.org/releases/webp/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://storage.googleapis.com/downloads.webmproject.org/releases/webp/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

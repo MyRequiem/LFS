@@ -21,10 +21,12 @@ ARCH_NAME="gtk+"
 #              sassc
 #              wayland
 #              wayland-protocols
+#              glib
 # Optional:    colord
 #              cups
 #              gtk-doc
-#              python3-pyatspi2 (для тестов)
+#              libcloudproviders
+#              python3-pyatspi2      (для тестов)
 #              tracker
 #              papi                  (https://icl.utk.edu/papi/)
 
@@ -35,8 +37,7 @@ ARCH_NAME="gtk+"
 #    /etc/gtk-3.0/settings.ini
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -61,67 +62,33 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-MAN="false"
-GTK_DOC="false"
-EXAMPLES="false"
-TESTS="false"
-INSTALLED_TESTS="false"
-WAYLAND_BACKEND="false"
-TRACKER="false"
-
-# shellcheck disable=SC2144
-[ -d /usr/share/xml/docbook/xsl-stylesheets-* ] && \
-    command -v xslt-config &>/dev/null && MAN="true"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-[ -d /usr/share/wayland-protocols ] && WAYLAND_BACKEND="true"
-command -v tracker3 &>/dev/null && TRACKER="true"
-
 mkdir build
 cd build || exit 1
 
-meson setup                                \
-    --prefix=/usr                          \
-    --buildtype=release                    \
-    -Dman="${MAN}"                         \
-    -Dbroadway_backend=true                \
-    -Dgtk_doc="${GTK_DOC}"                 \
-    -Dexamples="${EXAMPLES}"               \
-    -Dtests="${TESTS}"                     \
-    -Dinstalled_tests="${INSTALLED_TESTS}" \
-    -Dwayland_backend="${WAYLAND_BACKEND}" \
-    -Dtracker3="${TRACKER}"                \
-    .. || exit 1
+meson setup ..               \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D broadway_backend=true \
+    -D examples=false        \
+    -D tests=false           \
+    -D wayland_backend=false || exit 1
 
 ninja || exit 1
-
-# тесты проводятся в графической среде + установить переменную TESTS="true"
-# ninja test
-
+# тесты нужно запускать в графической среде
+# dbus-run-session ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-[[ "x${GTK_DOC}" == "xfalse" ]] && \
-    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
-
-IM_MULTIPRESS_CONF="/etc/gtk-3.0/im-multipress.conf"
-if [ -f "${IM_MULTIPRESS_CONF}" ]; then
-    mv "${IM_MULTIPRESS_CONF}" "${IM_MULTIPRESS_CONF}.old"
-fi
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-config_file_processing "${IM_MULTIPRESS_CONF}"
-
-# создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache и
-# скопируем его в ${TMP_DIR}
-gtk-query-immodules-3.0 --update-cache &>/dev/null
-IMMODULES_CACHE="$(find /usr/lib/gtk-3* -type f -name immodules\.cache)"
-cp "${IMMODULES_CACHE}" "${TMP_DIR}${IMMODULES_CACHE}"
+# создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache
+gtk-query-immodules-3.0 --update-cache
 
 # создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
-# (если в директории присутствуют файлы схем *.xml)
-glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null
+glib-compile-schemas /usr/share/glib-2.0/schemas
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

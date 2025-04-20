@@ -9,8 +9,8 @@ PRGNAME="libgudev"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gtk-doc                (для сборки API документации)
-#              umockdev               (для тестов)
+# Optional:    gtk-doc      (для сборки API документации)
+#              umockdev     (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,10 +22,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Dtests=disabled    \
     .. || exit 1
 
 ninja || exit 1
@@ -42,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # This is libgudev, a library providing GObject bindings for libudev. It used
 # to be part of udev, but it's now a project on its own.
 #
-# Home page: http://wiki.gnome.org/Projects/${PRGNAME}
+# Home page: https://wiki.gnome.org/Projects/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

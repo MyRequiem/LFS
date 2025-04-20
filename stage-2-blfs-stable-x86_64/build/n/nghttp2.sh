@@ -7,7 +7,8 @@ PRGNAME="nghttp2"
 
 # Required:    no
 # Recommended: libxml2
-# Optional:    boost
+# Optional:    --- используются только при сборке полного пакета, а не только основных библиотек ---
+#              boost
 #              c-ares
 #              python3-cython
 #              jansson
@@ -17,7 +18,6 @@ PRGNAME="nghttp2"
 #              libev            (software.schmorp.de/pkg/libev.html)
 #              mruby            (https://mruby.org/)
 #              spdylay          (https://tatsuhiro-t.github.io/spdylay/)
-#              cunit            (для тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,7 +38,6 @@ DOCS="false"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# для тестов необходим пакет cunit
 # make check
 make install DESTDIR="${TMP_DIR}"
 

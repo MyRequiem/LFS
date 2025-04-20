@@ -8,8 +8,9 @@ PRGNAME="glusterfs"
 # пропускания. GlusterFS работает в пользовательском пространстве при помощи
 # технологии FUSE, поэтому не требует поддержки со стороны ядра.
 
-# Required:    liburcu    (http://liburcu.org/)
-#              gperftools (https://github.com/gperftools/gperftools/)
+# Required:    liburcu
+#              rpcsvc-proto
+#              gperftools    (https://github.com/gperftools/gperftools/)
 # Recommended: no
 # Optional:    no
 
@@ -23,6 +24,7 @@ mkdir -pv "${TMP_DIR}"
 ./autogen.sh &&                     \
 ./configure                         \
     --prefix=/usr                   \
+    --sbindir=/usr/sbin             \
     --sysconfdir=/etc               \
     --localstatedir=/var            \
     --disable-linux-io_uring        \
@@ -34,18 +36,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 (
-    # поправим ссылки с абсолютного пути на относительный
-    cd "${TMP_DIR}/usr/sbin" || exit 1
-    ln -svf ../libexec/glusterfs/gfevents/glustereventsd.py glustereventsd
-    ln -svf ../libexec/glusterfs/gfind_missing_files/gfind_missing_files.sh gfind_missing_files
-    ln -svf ../libexec/glusterfs/peer_eventsapi.py peer_eventsapi
-    ln -svf ../libexec/glusterfs/peer_georep-sshkey.py peer_georep-sshkey
-    ln -svf ../libexec/glusterfs/peer_mountbroker.py peer_mountbroker
-    ln -svf ../libexec/glusterfs/peer_eventsapi.py gluster-eventsapi
-    ln -svf ../libexec/glusterfs/peer_georep-sshkey.py gluster-georep-sshkey
-    ln -svf ../libexec/glusterfs/peer_mountbroker.py gluster-mountbroker
-
-    # переместим /sbin в /usr/sbin
+    # переместим утилиты из /sbin в /usr/sbin
     cd "${TMP_DIR}" || exit 1
     if [ -d sbin ]; then
         mv sbin/* usr/sbin/

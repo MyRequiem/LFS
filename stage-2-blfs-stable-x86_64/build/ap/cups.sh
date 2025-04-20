@@ -24,7 +24,7 @@ PRGNAME="cups"
 #              libpaper
 #              mit-kerberos-v5
 #              php
-#              python2
+#              python2          (https://www.python.org/downloads/release/python-2718/)
 #              cups-filters
 #              gutenprint
 #              hplip            (для принтеров HP - https://developers.hp.com/hp-linux-imaging-and-printing)
@@ -82,18 +82,14 @@ mkdir -pv "${TMP_DIR}"
             -s /bin/false              \
             -u 9 lp
 
-LIBPAPER="--disable-libpaper"
-command -v paperconf &>/dev/null && LIBPAPER="--enable-libpaper"
-
 # устанавливаем поставляемый с пакетом загрузочный скрипт в /tmp вместо
 # /etc/rc.d, а затем его удалим. Позже мы установим свой загрузочный скрипт в
 # /etc/rc.d
 #    --with-rcdir=/tmp/cupsinit
 ./configure                      \
     --libdir=/usr/lib            \
-    --disable-systemd            \
-    "${LIBPAPER}"                \
     --with-rcdir=/tmp/cupsinit   \
+    --with-rundir=/run/cups      \
     --with-system-groups=lpadmin \
     --with-docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
@@ -107,8 +103,8 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}"/{tmp,var/run}
 
 # создадим базовый файл конфигурации клиента cups
-CLIENT_CONF="/etc/${PRGNAME}/client.conf"
-echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > "${TMP_DIR}${CLIENT_CONF}"
+echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \
+    "${TMP_DIR}/etc/${PRGNAME}/client.conf"
 
 # установим загрузочный скрипт для запуска cups при старте системы
 (
@@ -116,15 +112,9 @@ echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > "${TMP_DIR}${CLIENT_CONF}"
     make install-cups DESTDIR="${TMP_DIR}"
 )
 
-if [ -f "${CLIENT_CONF}" ]; then
-    mv "${CLIENT_CONF}" "${CLIENT_CONF}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${CLIENT_CONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Common UNIX Printing System)

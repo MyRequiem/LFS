@@ -10,20 +10,19 @@ PRGNAME="polkit"
 # точно контролировать, что разрешено, а что запрещено.
 
 # Required:    glib
-#              duktape
+# Recommended: duktape
 #              --- для сборки man-страниц ---
 #              libxslt
 #              docbook-xml
 #              docbook-xsl
-# Recommended: linux-pam
+#              linux-pam
 #              elogind
 # Optional:    gtk-doc
-#              mozjs
-#              python3-dbusmock (для тестов)
-#              Plasma5          (для KDE)
-#              gnome-shell      (для GNOME)
-#              polkit-gnome     (для XFCE)
-#              lxsession        (для LXDE)
+#              python3-dbusmock     (для тестов)
+#              Plasma5              (для KDE)
+#              gnome-shell          (для GNOME)
+#              polkit-gnome         (для XFCE)
+#              lxqt-policykit       (для LXQt)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,36 +43,23 @@ mkdir -pv "${TMP_DIR}"
             -g polkitd       \
             -s /bin/false polkitd
 
-AUTHFW="shadow"
-INTROSPECTION="false"
-GTK_DOC="false"
-TESTS="false"
-
-command -v faillock      &>/dev/null && AUTHFW="pam"
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
+# исправим проблему сборки для систем на базе sysV
+sed -i '/systemd_sysusers_dir/s/^/#/' meson.build
 
 mkdir build
 cd build || exit 1
 
-meson                                  \
-    --prefix=/usr                      \
-    --buildtype=release                \
-    -Dman=true                         \
-    -Dauthfw="${AUTHFW}"               \
-    -Dsession_tracking=libelogind      \
-    -Dsystemdsystemunitdir=/tmp        \
-    -Dintrospection="${INTROSPECTION}" \
-    -Dtests=${TESTS}                   \
-    -Djs_engine=duktape                \
-    -Dgtk_doc="${GTK_DOC}"             \
-    .. || exit 1
+meson setup ..                    \
+      --prefix=/usr               \
+      --buildtype=release         \
+      -D man=false                \
+      -D session_tracking=elogind \
+      -D authfw=shadow            \
+      -D tests=false
 
 ninja || exit 1
-# meson test -t3
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
-
-rm -rf "${TMP_DIR}/tmp"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -87,8 +73,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # PolicyKit is specifically targeting applications in rich desktop environments
 # on multi-user UNIX-like operating systems.
 #
-# Home page: http://www.freedesktop.org/wiki/Software/PolicyKit
-# Download:  https://gitlab.freedesktop.org/${PRGNAME}/${PRGNAME}/-/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.freedesktop.org/wiki/Software/PolicyKit/
+# Download:  https://github.com/${PRGNAME}-org/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

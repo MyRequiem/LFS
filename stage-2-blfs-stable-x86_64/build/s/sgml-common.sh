@@ -13,7 +13,6 @@ PRGNAME="sgml-common"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -22,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-manpage-1.patch" || exit 1
 
-autoreconf -f -i &&
+autoreconf -f -i || exit 1
 ./configure       \
     --prefix=/usr \
     --sysconfdir=/etc || exit 1
@@ -40,16 +39,9 @@ if command -v install-catalog &>/dev/null; then
         /etc/sgml/sgml-ent.cat
 fi
 
-SGML_CONF="/etc/sgml/sgml.conf"
-if [ -f "${SGML_CONF}" ]; then
-    mv "${SGML_CONF}" "${SGML_CONF}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${SGML_CONF}"
 
 install-catalog --add /etc/sgml/sgml-ent.cat \
     /usr/share/sgml/sgml-iso-entities-8879.1986/catalog

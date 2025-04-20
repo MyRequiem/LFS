@@ -13,8 +13,8 @@ PRGNAME="libcanberra"
 # Recommended: alsa-lib                 (для сборки утилиты 'canberra-boot' и libcanberra-alsa.so)
 #              gstreamer
 #              gtk+3
-# Optional:    gtk+2
-#              pulseaudio
+# Optional:    pulseaudio
+#              gtk+2                    (https://download.gnome.org/sources/gtk+/2.24/)
 #              tdb                      (https://tdb.samba.org/)
 #              sound-theme-freedesktop
 
@@ -24,8 +24,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-GTK_DOC="false"
 
 # исправим проблему, вызывающую сбой некоторых приложений в окружение рабочего
 # стола на основе wayland
@@ -42,7 +40,7 @@ make || exit 1
 # пакет не имеет набора тестов
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" != "xtrue" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -55,8 +53,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Specifications, for generating event sounds on free desktops. It comes with
 # several backends for several audio systems and is designed to be portable.
 #
-# Home page: http://0pointer.de/lennart/projects/${PRGNAME}/
-# Download:  http://0pointer.de/lennart/projects/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://0pointer.de/lennart/projects/${PRGNAME}/
+# Download:  https://0pointer.de/lennart/projects/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

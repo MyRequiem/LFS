@@ -25,9 +25,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="${XORG_PREFIX}" \
+cmake                                        \
+    -D CMAKE_BUILD_TYPE=Release              \
+    -D CMAKE_INSTALL_PREFIX="${XORG_PREFIX}" \
     .. || exit 1
 
 make || exit 1

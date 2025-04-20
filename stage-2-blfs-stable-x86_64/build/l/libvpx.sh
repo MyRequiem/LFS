@@ -39,7 +39,7 @@ make || exit 1
 
 # набор тестов загружает несколько файлов как часть процесса тестирования,
 # поэтому необходимо подключение к сети Internet
-# D_LIBRARY_PATH=. make test
+# LD_LIBRARY_PATH=. make test
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -56,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # source by Google Inc. It is the successor of the VP3 codec, on which the
 # Theora codec was based.
 #
-# Home page: http://www.webmproject.org/
+# Home page: https://www.webmproject.org/
 # Download:  https://github.com/webmproject/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

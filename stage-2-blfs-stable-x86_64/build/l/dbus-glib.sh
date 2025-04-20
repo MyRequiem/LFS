@@ -17,23 +17,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="no"
-GTK_DOC_HTML="no"
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="yes" && GTK_DOC_HTML="yes"
-
-./configure                       \
-    --prefix=/usr                 \
-    --sysconfdir=/etc             \
-    --disable-static              \
-    --enable-gtk-doc="${GTK_DOC}" \
-    --enable-gtk-doc-html="${GTK_DOC_HTML}" || exit 1
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    --disable-static || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" == "xno" && "x${GTK_DOC_HTML}" == "xno" ]] && \
-    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

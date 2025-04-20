@@ -17,16 +17,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-NASM="--disable-asm"
-command -v nasm &>/dev/null && NASM="--enable-asm"
-
 # отключаем создание кодировщика командной строки, который является избыточным,
 # поскольку для большинства форматов требуется FFmpeg
 #    --disable-cli
 ./configure         \
     --prefix=/usr   \
     --enable-shared \
-    "${NASM}"       \
     --disable-cli || exit 1
 
 make || exit 1
@@ -43,8 +39,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # x264 package provides a library for encoding video streams into the
 # H.264/MPEG-4 AVC format
 #
-# Home page: http://www.videolan.org/developers/${PRGNAME}.html
-# Download:  http://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.videolan.org/developers/${PRGNAME}.html
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

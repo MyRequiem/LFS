@@ -22,13 +22,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="--disable-valadoc"
-# документация собирается только при установленном пакете 'graphviz'
-# command -v acyclic &>/dev/null && DOCS="--enable-valadoc"
-
 ./configure       \
     --prefix=/usr \
-    "${DOCS}" || exit 1
+    --disable-valadoc || exit 1
 
 make || exit 1
 # make check

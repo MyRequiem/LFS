@@ -10,12 +10,12 @@ PRGNAME="gpgme"
 
 # Required:    libassuan
 # Recommended: no
-# Optional:    doxygen  (для сборки API документации)
-#              graphviz (для сборки API документации)
-#              gnupg    (если qt5 или swig установлены, используется для тестов)
+# Optional:    doxygen          (для сборки API документации)
+#              graphviz         (для сборки API документации)
+#              gnupg            (если qt5-components или swig установлены, используется для тестов)
 #              clisp
-#              qt5      (для языковых привязок и сборки библиотеки libqgpgme.so)
-#              swig     (для языковых привязок)
+#              qt5-components
+#              swig
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,29 +24,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GNUPG="--disable-gpg-test"
-# command -v gpg &>/dev/null && GNUPG="--enable-gpg-test"
-
-# исправим проблему при сборке с Python 3.11
-sed -e 's/3\.9/3.11/' \
-    -e 's/:3/:4/'     \
-    -i configure || exit 1
-
-# исправим ошибку вместе c пакетом swig и libgpg-error>=1.46
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-gpg_error_1_46-1.patch" || exit 1
-
 ./configure       \
     --prefix=/usr \
-    "${GNUPG}" || exit 1
+    --disable-gpg-test || exit 1
 
-make || exit 1
-
-# для тестов переменная GNUPG при конфигурации должна иметь значение
-# --enable-gpg-test
-# make -k check
-
-make install DESTDIR="${TMP_DIR}"
+make PYTHONS= || exit 1
+make install PYTHONS= DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

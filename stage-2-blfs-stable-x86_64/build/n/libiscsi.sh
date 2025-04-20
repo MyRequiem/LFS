@@ -4,7 +4,7 @@ PRGNAME="libiscsi"
 
 ### Libiscsi (iSCSI client-side library)
 # Клиентская библиотека для реализации протокола iSCSI, которую можно
-# использовать для доступа к iSCSI ресурсам.
+# использовать для доступа к iSCSI ресурсам
 
 # Required:    no
 # Recommended: no

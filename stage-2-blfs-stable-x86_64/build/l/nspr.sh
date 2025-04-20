@@ -20,9 +20,9 @@ mkdir -pv "${TMP_DIR}"
 cd "${PRGNAME}" || exit 1
 
 # отключаем установку двух ненужных скриптов
-sed -ri '/^RELEASE/s/^/#/' pr/src/misc/Makefile.in || exit 1
+sed -i '/^RELEASE/s|^|#|' pr/src/misc/Makefile.in || exit 1
 # отключаем установку статических библиотек
-sed -i 's#$(LIBRARY) ##'   config/rules.mk         || exit 1
+sed -i 's|$(LIBRARY) ||'  config/rules.mk         || exit 1
 
 # добавляем поддержку библиотек Mozilla (обязательно, если мы будем собирать
 # какие-либо другие продукты Mozilla)

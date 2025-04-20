@@ -41,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # though for touchpad and wacom advanced handling, additional drivers are
 # required.
 #
-# Home page: http://www.x.org
+# Home page: https://www.x.org
 # Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.bz2
 #
 EOF

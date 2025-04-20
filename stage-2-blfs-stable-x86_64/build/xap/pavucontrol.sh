@@ -7,13 +7,13 @@ PRGNAME="pavucontrol"
 # микшеров, pavucontrol позволяет контролировать как громкость аппаратных
 # устройств, так и громкость каждого потока воспроизведения в отдельности.
 
-# Required:    gtkmm
+# Required:    gtkmm4
 #              json-glib
-#              libcanberra
 #              libsigc++2
 #              pulseaudio
 # Recommended: no
-# Optional:    no
+# Optional:    libcanberra
+#              lynx
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,13 +22,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D lynx=false       \
+    .. || exit 1
+
+ninja || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
+
+mv "${TMP_DIR}/usr/share/doc/${PRGNAME}" \
+    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -42,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # both the volume of hardware devices and of each playback stream separately.
 #
 # Home page: https://freedesktop.org/software/pulseaudio/${PRGNAME}/
-# Download:  http://freedesktop.org/software/pulseaudio/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://www.freedesktop.org/software/pulseaudio/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

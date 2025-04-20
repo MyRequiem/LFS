@@ -7,9 +7,9 @@ PRGNAME="rxvt-unicode"
 
 # Required:    Graphical Environments
 #              libptytty
-#              gdk-pixbuf (для возможности уставливать фоновые изображения)
 # Recommended: no
-# Optional:    startup-notification
+# Optional:    gdk-pixbuf           (для возможности уставливать фоновые изображения)
+#              startup-notification
 
 ### Конфигурация
 #    /etc/X11/app-defaults/URxvt
@@ -60,9 +60,6 @@ sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
     --enable-smart-resize          \
     --enable-text-blink            \
     --enable-pointer-blank         \
-    --enable-utmp                  \
-    --enable-wtmp                  \
-    --enable-lastlog               \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -132,7 +129,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # same transparency capabilities as ATerm. It can be extended using Perl.
 #
 # Home page: https://github.com/exg/${PRGNAME}
-# Download:  https://ftp.osuosl.org/pub/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  http://dist.schmorp.de/${PRGNAME}/Attic/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

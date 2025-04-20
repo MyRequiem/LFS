@@ -27,19 +27,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-DOCS="false"
-
-meson                   \
-    --prefix=/usr       \
-    --buildtype=release \
-    -Dtests=false       \
-    -Ddocumentation="${DOCS}" || exit 1
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D tests=false       \
+    -D documentation=false || exit 1
 
 ninja || exit 1
-
-# для тестов устанавливаем параметр конфигурации -Dtests=true
 # env -u XDG_RUNTIME_DIR ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -8,12 +8,18 @@ PRGNAME="imlib2"
 
 # Required:    xorg-libraries
 # Recommended: giflib
+#              librsvg
 # Optional:    doxygen
-#              libpng
+#              highway
 #              libjpeg-turbo
+#              libjxl
+#              libpng
 #              libtiff
+#              libwebp
 #              x265
-#              libid3tag (https://sourceforge.net/projects/mad/)
+#              libheif      (https://github.com/strukturag/libheif)
+#              libid3tag    (https://sourceforge.net/projects/mad/)
+#              libspectre   (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,9 +28,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-API_DOCS="false"
-# command -v doxygen &>/dev/null && API_DOCS="true"
-
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
@@ -32,12 +35,6 @@ API_DOCS="false"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
-
-if [[ "x${API_DOCS}" == "xtrue" ]]; then
-    DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d         "${TMP_DIR}${DOC_DIR}/html"
-    install -v -m644 doc/html/* "${TMP_DIR}${DOC_DIR}/html"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

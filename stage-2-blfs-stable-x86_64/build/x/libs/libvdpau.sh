@@ -10,7 +10,8 @@ PRGNAME="libvdpau"
 
 # Required:    xorg-libraries
 # Recommended: no
-# Optional:    mesa (циклическая зависимость: сначала собираем libvdpau без
+# Optional:    libvdpau-va-gl
+#              mesa (циклическая зависимость: сначала собираем libvdpau без
 #                    поддержки egl и glx, т.е. без пакета mesa, и после
 #                    установки mesa пересобираем libvdpau)
 #              doxygen
@@ -26,13 +27,11 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/profile.d"
 
-DOCS="false"
-
 mkdir build
 cd build || exit 1
 
 # shellcheck disable=SC2086
-meson                       \
+meson setup                 \
     --prefix=${XORG_PREFIX} \
     .. || exit 1
 
@@ -40,7 +39,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 VDPAU_SH="/etc/profile.d/vdpau.sh"
 cat << EOF > "${TMP_DIR}${VDPAU_SH}"
@@ -79,7 +78,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # video programs to offload portions of the video decoding process and video
 # post-processing to the GPU video-hardware.
 #
-# Home page: http://cgit.freedesktop.org/~aplattner/${PRGNAME}
+# Home page: https://cgit.freedesktop.org/~aplattner/${PRGNAME}
 # Download:  https://gitlab.freedesktop.org/vdpau/${PRGNAME}/-/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF

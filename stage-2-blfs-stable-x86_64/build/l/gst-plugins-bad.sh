@@ -11,6 +11,7 @@ PRGNAME="gst-plugins-bad"
 # Required:    gst-plugins-base
 # Recommended: libdvdread
 #              libdvdnav
+#              libva
 #              soundtouch
 # Optional:    bluez
 #              curl
@@ -19,7 +20,9 @@ PRGNAME="gst-plugins-bad"
 #              fdk-aac
 #              gtk+3                (для сборки примеров)
 #              gst-plugins-good     (для одного теста)
+#              json-glib
 #              lcms2
+#              libaom
 #              libass
 #              libexif              (для одного теста)
 #              librsvg
@@ -27,7 +30,6 @@ PRGNAME="gst-plugins-bad"
 #              libsndfile
 #              libssh2
 #              libusb
-#              libva
 #              libwebp
 #              libxkbcommon
 #              neon
@@ -35,12 +37,14 @@ PRGNAME="gst-plugins-bad"
 #              opencv               (с дополнительными модулями)
 #              openjpeg
 #              opus
+#              qrencode
 #              sbc
+#              sdl12-compat
 #              valgrind
+#              vulkan-loader
+#              glslc
 #              wayland              (gtk+3 должен быть скомпилирован с поддержкой Wayland)
-#              wpebackend-fdo
 #              x265
-#              aom                  (https://aomedia.googlesource.com/aom/)
 #              bs2b                 (https://bs2b.sourceforge.net/)
 #              chromaprint          (https://acoustid.org/chromaprint)
 #              dssim                (https://github.com/kornelski/dssim)
@@ -50,6 +54,8 @@ PRGNAME="gst-plugins-bad"
 #              gsm                  (https://www.quut.com/gsm/)
 #              python3-hotdoc       (https://pypi.org/project/hotdoc/)
 #              ladspa               (https://www.ladspa.org/)
+#              ldacbt               (https://github.com/EHfive/ldacBT)
+#              libajantv2           (https://github.com/aja-video/libajantv2)
 #              libavtp              (https://github.com/AVnu/libavtp)
 #              libdc1394_2          (https://sourceforge.net/projects/libdc1394/files/libdc1394-2/)
 #              libdca               (https://www.videolan.org/developers/libdca.html)
@@ -68,6 +74,9 @@ PRGNAME="gst-plugins-bad"
 #              ltc-tools            (https://github.com/x42/ltc-tools)
 #              microdns             (https://github.com/videolabs/libmicrodns)
 #              mjpeg-tools          (https://mjpeg.sourceforge.io/)
+#              mplex2               (https://snyk.io/advisor/npm-package/mplex2)
+#              musepack             (https://www.musepack.net/)
+#              onnxruntime          (https://github.com/microsoft/onnxruntime)
 #              openal               (https://openal.org/)
 #              openexr              (https://www.openexr.com/)
 #              openh264             (https://www.openh264.org/)
@@ -78,9 +87,9 @@ PRGNAME="gst-plugins-bad"
 #              svthevcenc           (https://github.com/OpenVisualCloud/SVT-HEVC/)
 #              vo-aac               (https://sourceforge.net/projects/opencore-amr/files/vo-aacenc/)
 #              vo-amrwb             (https://sourceforge.net/projects/opencore-amr/files/vo-amrwbenc/)
-#              vulkan               (https://vulkan.lunarg.com/sdk/home/)
 #              wildmidi             (https://github.com/Mindwerks/wildmidi/)
 #              wpe-webkit           (https://webkit.org/wpe/)
+#              wpebackend-fdo       (https://github.com/Igalia/WPEBackend-fdo)
 #              zbar                 (https://zbar.sourceforge.net/)
 #              zvbi                 (https://zapping.sourceforge.net/Zapping/index.html)
 #              zxing                (https://github.com/zxing/zxing)
@@ -98,18 +107,13 @@ cd build || exit 1
 # без этой опции плагины с зависимостями от библиотек под лицензией (A)GPL не
 # создаются
 #    -Dgpl=enabled
-meson                                          \
-    --prefix=/usr                              \
-    --buildtype=release                        \
-    -Dgpl=enabled                              \
-    -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/12.2/ || exit 1
+meson                   \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D gpl=enabled || exit 1
 
 ninja || exit 1
-
-# для некоторых тестов нужен эмулятор терминала в графическом сеансе
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

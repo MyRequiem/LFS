@@ -16,24 +16,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="false"
-INTROSPECTION="false"
-
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="true"
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
-
 mkdir build
 cd build || exit 1
 
-meson                                  \
-    --prefix=/usr                      \
-    --buildtype=release                \
-    -Dgtk_doc="${GTK_DOC}"             \
-    -Dintrospection="${INTROSPECTION}" \
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
     .. || exit 1
 
 ninja || exit 1
+
+# meson configure -D tests=true || exit 1
 # ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

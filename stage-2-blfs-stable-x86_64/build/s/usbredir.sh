@@ -6,7 +6,7 @@ PRGNAME="usbredir"
 # Протокол для перенаправления USB-трафика с одного USB-устройства на другую
 # (виртуальную) машину (не на ту, к которой подключено USB-устройство)
 
-# Required:    no
+# Required:    libusb
 # Recommended: no
 # Optional:    no
 
@@ -20,8 +20,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson             \
-    --prefix=/usr \
+meson setup           \
+    --prefix=/usr     \
+    -D tests=disabled \
     .. || exit 1
 
 ninja || exit 1

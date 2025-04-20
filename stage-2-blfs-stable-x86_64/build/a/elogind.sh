@@ -9,15 +9,16 @@ PRGNAME="elogind"
 # информацию демон предоставляет через стандартный org.freedesktop.login1 D-Bus
 # интерфейс.
 
-# Required:    dbus
-# Recommended: linux-pam
-#              polkit
+# Required:    no
+# Recommended: dbus         (runtime)
+#              linux-pam
+#              polkit       (runtime)
 #              --- для сборки man-страниц ---
 #              docbook-xml
 #              docbook-xsl
 #              libxslt
 # Optional:    --- для тестов ---
-#              lxml
+#              python3-lxml
 #              zsh
 #              valgrind
 #              audit-userspace (https://github.com/linux-audit/audit-userspace)
@@ -28,6 +29,7 @@ PRGNAME="elogind"
 ### Конфигурация ядра
 #    CONFIG_CGROUPS=y
 #    CONFIG_INOTIFY_USER=y
+#    CONFIG_TMPFS=y
 #    CONFIG_TMPFS_POSIX_ACL=y
 #
 # кроме того, для некоторых тестов требуется криптографическое API ядра
@@ -40,10 +42,11 @@ PRGNAME="elogind"
 # NOTE:
 # для автозапуска демона добавляем в /etc/rc.d/rc.local
 ###
-#    if [ -x /usr/lib/elogind/elogind ]; then
-#       echo "Starting elogind..."
-#       /usr/lib/elogind/elogind --daemon
-#    fi
+# start elogind
+# if [ -x /usr/libexec/elogind ]; then
+#     echo -n "  *   Starting elogind: /usr/libexec/elogind --daemon ..."
+#     /usr/libexec/elogind --daemon && echo " [  OK  ]"
+# fi
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -53,50 +56,25 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# позволим собирать пакет без установленного polkit
-if ! command -v pkaction &>/dev/null; then
-    sed -i '/Disable polkit/,+8 d' meson.build || exit 1
-fi
-
-# позволим демону elogind завершить работу, когда он отключается от dbus
-# (например, когда dbus killed)
-sed '/request_name/i\
-r = sd_bus_set_exit_on_disconnect(m->bus, true);\
-if (r < 0)\
-    return log_error_errno(r, "Failed to set exit on disconnect: %m");' \
-    -i src/login/logind.c || exit 1
-
 mkdir build
 cd build || exit 1
-
-MAN="false"
-if [ -d /usr/share/xml/docbook/xml-dtd-* ]; then
-    if [ -d /usr/share/xml/docbook/xsl-stylesheets-nons-* ]; then
-        command -v xslt-config &>/dev/null && MAN="true"
-    fi
-fi
-
-PAM="false"
-[ -x /usr/lib/libpam.so ] && PAM="true"
 
 # определяет, убиваются ли процессы пользователя, если он выходит из системы.
 # Значение по умолчанию 'true', но это не соответствует традиционному
 # использованию мультиплексоров screen или tmux
 #    -Ddefault-kill-user-processes=false
-meson                                               \
+meson setup                                         \
     --prefix=/usr                                   \
     --buildtype=release                             \
-    -Dcgroup-controller=elogind                     \
-    -Ddbuspolicydir=/etc/dbus-1/system.d            \
-    -Ddefault-kill-user-processes=false             \
-    -Dpam="${PAM}"                                  \
-    -Dacl=true                                      \
-    -Dman="${MAN}"                                  \
-    -Dhtml=false                                    \
+    -D man=disabled                                 \
+    -D cgroup-controller=elogind                    \
+    -D dev-kvm-mode=0660                            \
+    -D dbuspolicydir=/etc/dbus-1/system.d           \
+    -D default-kill-user-processes=false            \
     -Ddocdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     .. || exit 1
 
-ninja
+ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
@@ -113,42 +91,6 @@ ln -sfvn elogind "${TMP_DIR}/usr/include/systemd"
 LOGIND_CONF="/etc/elogind/logind.conf"
 # не убиваем пользовательские процессы, если он выходит из системы
 sed -e '/\[Login\]/a KillUserProcesses=no' -i "${TMP_DIR}${LOGIND_CONF}"
-
-# если используется Linux PAM
-if [[ "${PAM}" == "true" ]]; then
-    PAM_SYSTEM_SESSION="/etc/pam.d/system-session"
-    if ! grep -q "elogind addition" "${PAM_SYSTEM_SESSION}"; then
-        cat << EOF >> "${PAM_SYSTEM_SESSION}"
-
-# Begin elogind addition
-
-session  required    pam_loginuid.so
-session  optional    pam_elogind.so
-
-# End elogind addition
-EOF
-    fi
-
-    ELOGIND_USER="/etc/pam.d/elogind-user"
-    cat << EOF > "${TMP_DIR}${ELOGIND_USER}"
-# Begin ${ELOGIND_USER}
-
-account  required    pam_access.so
-account  include     system-account
-
-session  required    pam_env.so
-session  required    pam_limits.so
-session  required    pam_unix.so
-session  required    pam_loginuid.so
-session  optional    pam_keyinit.so force revoke
-session  optional    pam_elogind.so
-
-auth     required    pam_deny.so
-password required    pam_deny.so
-
-# End ${ELOGIND_USER}
-EOF
-fi
 
 if [ -f "${LOGIND_CONF}" ]; then
     mv "${LOGIND_CONF}" "${LOGIND_CONF}.old"

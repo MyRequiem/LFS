@@ -17,53 +17,21 @@ ARCH_NAME="unixODBC"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"               || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
-# создаем драйверы, которые были установлены по умолчанию в предыдущих версиях,
-# а так же библиотеки их конфигурации
-#    --enable-drivers
-#    --enable-drivers-conf
-./configure               \
-    --prefix=/usr         \
-    --enable-drivers      \
-    --enable-drivers-conf \
+./configure       \
+    --prefix=/usr \
     --sysconfdir=/etc/unixODBC || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${DOCS}" == "xtrue" ]]; then
-    find doc/ -name "Makefile*" -delete
-    find doc/ -type f -exec chmod 644 {} \;
-
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d "${TMP_DIR}${DOC_PATH}"
-    cp      -vR doc/*   "${TMP_DIR}${DOC_PATH}"
-fi
-
-ODBC_INI="/etc/unixODBC/odbc.ini"
-ODBCINST_INI="/etc/unixODBC/odbcinst.ini"
-
-if [ -f "${ODBC_INI}" ]; then
-    mv "${ODBC_INI}" "${ODBC_INI}.old"
-fi
-
-if [ -f "${ODBCINST_INI}" ]; then
-    mv "${ODBCINST_INI}" "${ODBCINST_INI}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${ODBC_INI}"
-config_file_processing "${ODBCINST_INI}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Open DataBase Connectivity for Unix platforms)

@@ -10,14 +10,13 @@ PRGNAME="fcron"
 
 # Required:    no
 # Recommended: no
-# Optional:    MTA            (dovecot, exim, postfix или sendmail)
+# Optional:    MTA            dovecot, exim, postfix или sendmail
 #              vim            (или любой другой текстовый редактор)
 #              linux-pam
 #              docbook-utils
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | \
@@ -70,6 +69,7 @@ find doc -type f -exec sed -i 's:/usr/local::g' {} \;
     --localstatedir=/var       \
     --without-sendmail         \
     --with-boot-install=no     \
+    --with-editor=/usr/bin/vim \
     --with-systemdsystemunitdir=no || exit 1
 
 make || exit 1
@@ -137,14 +137,13 @@ install -vdm754 "${TMP_DIR}/etc/"cron.{hourly,daily,weekly,monthly}
 
 SYSTAB="/var/spool/fcron/systab"
 cat << EOF > "${TMP_DIR}${SYSTAB}.orig"
-
 ### NOTE:
 # To create /var/spool/fcron/systab enter the following command after editing
 # current file:
 #    # fcrontab -z -u systab
 
 &bootrun 00 0,12,18 * * *    root run-parts /etc/cron.hourly
-&bootrun 02 12      * * *    root run-parts /etc/cron.daily
+&bootrun 59 23      * * *    root run-parts /etc/cron.daily
 &bootrun 22 12      * * 0    root run-parts /etc/cron.weekly
 &bootrun 42 12      1 * *    root run-parts /etc/cron.monthly
 EOF
@@ -156,45 +155,16 @@ EOF
     make install-fcron DESTDIR="${TMP_DIR}"
 )
 
-FCRON_CONF="/etc/fcron.conf"
-if [ -f "${FCRON_CONF}" ]; then
-    mv "${FCRON_CONF}" "${FCRON_CONF}.old"
-fi
-
-FCRON_ALLOW="/etc/fcron.allow"
-if [ -f "${FCRON_ALLOW}" ]; then
-    mv "${FCRON_ALLOW}" "${FCRON_ALLOW}.old"
-fi
-
-FCRON_DENY="/etc/fcron.deny"
-if [ -f "${FCRON_DENY}" ]; then
-    mv "${FCRON_DENY}" "${FCRON_DENY}.old"
-fi
-
-if [ -f "${SYSTAB}.orig" ]; then
-    mv "${SYSTAB}.orig" "${SYSTAB}.orig.old"
-fi
-
 rm -rf "${TMP_DIR}/var/run"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-config_file_processing "${FCRON_CONF}"
-config_file_processing "${FCRON_ALLOW}"
-config_file_processing "${FCRON_DENY}"
-config_file_processing "${SYSTAB}.orig"
-
-# запустим fcron демон (если не запущен) и сгенерируем файл
-# /var/spool/fcron/systab
-if ! [ -f /var/run/fcron.pid ]; then
-    /etc/rc.d/init.d/fcron start
-fi
-
+# запустим fcron демон
+/etc/rc.d/init.d/fcron start
 # сгенерируем /var/spool/fcron/systab
 fcrontab -z -u systab
-touch "${TMP_DIR}/var/spool/fcron/systab"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (periodical command scheduler)
@@ -205,8 +175,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # powered on, Fcron can start jobs that were skipped while the machine was
 # powered off
 #
-# Home page: http://fcron.free.fr
-# Download:  http://fcron.free.fr/archives/${PRGNAME}-${VERSION}.src.tar.gz
+# Home page: http://${PRGNAME}.free.fr/
+# Download:  http://${PRGNAME}.free.fr/archives/${PRGNAME}-${VERSION}.src.tar.gz
 #
 EOF
 

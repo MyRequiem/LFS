@@ -22,24 +22,8 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-
-# для создания API документации требуется пакет doxygen
-DOXYGEN=""
-# command -v doxygen &>/dev/null && DOXYGEN="true"
-
-if [ -n "${DOXYGEN}" ]; then
-    sed -i 's@\./@src/@' Doxyfile && doxygen
-fi
-
 # make check
-
 make install DESTDIR="${TMP_DIR}"
-
-if [ -n "${DOXYGEN}" ]; then
-    DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d             "${TMP_DIR}${DOCS}"
-    install -v -m644 doxygen/html/* "${TMP_DIR}${DOCS}"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -58,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configuration files and includes utility popt: functions for parsing
 # arbitrary strings into argv[] arrays using popt: shell-like rules.
 #
-# Home page: http://freshmeat.sourceforge.net/projects/${PRGNAME}
+# Home page: http://ftp.rpm.org/${PRGNAME}/releases/
 # Download:  http://ftp.rpm.org/${PRGNAME}/releases/${PRGNAME}-${MAJ_VER}.x/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

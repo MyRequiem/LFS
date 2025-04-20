@@ -22,13 +22,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим жестко запрограммированый в исходном коде путь поиска библиотек в
+# установленных программах
+sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure
+
 ./configure          \
     --prefix=/usr    \
     --enable-mp3rtp  \
     --disable-static || exit 1
 
 make || exit 1
-# make test
+# LD_LIBRARY_PATH=libmp3lame/.libs make test
 make pkghtmldir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     install DESTDIR="${TMP_DIR}"
 

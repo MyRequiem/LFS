@@ -41,8 +41,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # package, finger tracking and seamless MT protocol handling is available under
 # a free license.
 #
-# Home page: http://bitmath.org/code/${PRGNAME}/
-# Download:  http://bitmath.org/code/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://bitmath.org/code/${PRGNAME}/
+# Download:  https://bitmath.org/code/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

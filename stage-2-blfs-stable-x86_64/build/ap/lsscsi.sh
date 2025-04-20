@@ -36,8 +36,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to the system. Options can be used to control the amount and form of
 # information provided for each device.
 #
-# Home page: http://sg.danny.cz/scsi/${PRGNAME}.html
-# Download:  http://sg.danny.cz/scsi/${PRGNAME}-${VERSION}.tgz
+# Home page: https://sg.danny.cz/scsi/${PRGNAME}.html
+# Download:  https://sg.danny.cz/scsi/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 

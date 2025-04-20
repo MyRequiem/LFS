@@ -13,20 +13,18 @@ ARCH_NAME="SDL2"
 #              wayland-protocols
 #              xorg-libraries
 # Optional:    alsa-lib
-#              alsa-plugins
-#              alsa-utils
-#              alsa-tools
-#              alsa-firmware
-#              alsa-oss
-#              doxygen                  (для генерации документации)
+#              doxygen
 #              ibus
-#              nasm
-#              pulseaudio
 #              libsamplerate
+#              libunwind
+#              nasm
+#              pipewire
+#              pulseaudio
 #              Graphical Environment
 #              directfb                 (https://src.fedoraproject.org/repo/pkgs/directfb/)
 #              fcitx                    (https://fcitx-im.org/wiki/Fcitx_5)
 #              jack                     (https://jackaudio.org/)
+#              sndio                    (https://sndio.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -35,30 +33,14 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOXYGEN="false"
-# command -v doxygen &>/dev/null && DOXYGEN="true"
-
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
-
-if [[ "x${DOXYGEN}" == "xtrue" ]]; then
-    pushd docs || exit 1
-    doxygen    || exit 1
-    popd       || exit 1
-fi
-
 make install DESTDIR="${TMP_DIR}"
 
 # удалим статическую библиотеку
 rm -v "${TMP_DIR}/usr/lib/libSDL2"*.a
-
-if [[ "x${DOXYGEN}" == "xtrue" ]]; then
-    DOC_PATH="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d        "${TMP_DIR}${DOC_PATH}/html"
-    cp -Rv  docs/output/html/* "${TMP_DIR}${DOC_PATH}/html"
-fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

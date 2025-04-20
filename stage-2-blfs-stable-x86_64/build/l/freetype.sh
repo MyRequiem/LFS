@@ -7,12 +7,12 @@ PRGNAME="freetype"
 # рендерить шрифты TrueType, OpenType и Type 1
 
 # Required:    no
-# Recommended: harfbuzz (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
+# Recommended: harfbuzz    (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
 #              libpng
 #              which
 # Optional:    brotli
 #              librsvg
-#              docwriter (для сборки документации) https://pypi.org/project/docwriter/
+#              docwriter   (для сборки документации) https://pypi.org/project/docwriter/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,12 +31,12 @@ sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg || exit 1
 sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     -i include/freetype/config/ftoption.h || exit 1
 
-# устанавливать man-страницы для freetype-config
+# устанавливаем man-страницы для freetype-config
 #    --enable-freetype-config
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
-    --enable-freetype-config || exit 1
+./configure                  \
+    --prefix=/usr            \
+    --enable-freetype-config \
+    --disable-static || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов
@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and OpenType, and is designed to be small, efficient, highly customizable,
 # and portable while capable of producing high-quality output.
 #
-# Home page: http://www.freetype.org
+# Home page: https://www.freetype.org
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

@@ -8,37 +8,43 @@ PRGNAME="ffmpeg"
 # фильтровать и воспроизводить практически все форматы аудио и видео. Также
 # поддерживает самые неизвестные и древние форматы.
 
-# Required:    libass
+# Required:    no
+# Recommended: libaom
+#              libass
 #              fdk-aac
 #              freetype
 #              lame
-#              opus
-#              pulseaudio
 #              libvorbis
 #              libvpx
-#              libdrm
+#              opus
 #              x264
 #              x265
-# Recommended: nasm или yasm
+#              nasm или yasm
 #              alsa-lib
 #              libva
-#              libvdpau (вместе с драйвером libvdpau-va-gl)
 #              sdl2
+#              libvdpau
+#              libvdpau-va-gl
 # Optional:    doxygen
 #              fontconfig
 #              fribidi
 #              frei0r-plugins
 #              libcdio
+#              libdrm
+#              libjxl
 #              libwebp
 #              opencv
 #              openjpeg
 #              gnutls
+#              pulseaudio
 #              samba
 #              speex
 #              texlive или install-tl-unx (для документации в формате pdf и ps)
 #              v4l-utils
+#              vulkan-loader
 #              xvid
 #              Graphical Environments
+#              dav1d                      (https://code.videolan.org/videolan/dav1d)
 #              flite                      (https://github.com/festvox/flite)
 #              gsm                        (https://www.quut.com/gsm/)
 #              libaacplus                 (https://tipok.org.ua/node/17j)
@@ -53,6 +59,7 @@ PRGNAME="ffmpeg"
 #              libnut                     (https://github.com/Distrotech/libnut)
 #              librtmp                    (https://rtmpdump.mplayerhq.hu/)
 #              libssh                     (https://www.libssh.org/)
+#              libtheora                  (https://www.theora.org/)
 #              openal                     (https://openal.org/)
 #              opencore-amr               (https://sourceforge.net/projects/opencore-amr/)
 #              srt                        (https://github.com/Haivision/srt)
@@ -78,27 +85,26 @@ patch --verbose -Np1 -i \
 # добавляем библиотеку ALSA в переменную LDFLAGS и включаем обнаружение Flite
 sed -i 's/-lflite"/-lflite -lasound"/' configure || exit 1
 
-./configure              \
-    --prefix=/usr        \
-    --enable-gpl         \
-    --enable-version3    \
-    --enable-nonfree     \
-    --disable-static     \
-    --enable-shared      \
-    --disable-debug      \
-    --enable-libass      \
-    --enable-libfdk-aac  \
-    --enable-libfreetype \
-    --enable-libmp3lame  \
-    --enable-libopus     \
-    --enable-libpulse    \
-    --enable-libtheora   \
-    --enable-libvorbis   \
-    --enable-libvpx      \
-    --enable-libdrm      \
-    --enable-libx264     \
-    --enable-libx265     \
-    --enable-openssl     \
+./configure                         \
+    --prefix=/usr                   \
+    --enable-gpl                    \
+    --enable-version3               \
+    --enable-nonfree                \
+    --disable-static                \
+    --enable-shared                 \
+    --disable-debug                 \
+    --enable-libaom                 \
+    --enable-libass                 \
+    --enable-libfdk-aac             \
+    --enable-libfreetype            \
+    --enable-libmp3lame             \
+    --enable-libopus                \
+    --enable-libvorbis              \
+    --enable-libvpx                 \
+    --enable-libx264                \
+    --enable-libx265                \
+    --enable-openssl                \
+    --ignore-tests=enhanced-flv-av1 \
     --docdir="${DOC_DIR}" || exit 1
 
 make || exit 1
@@ -107,13 +113,10 @@ make || exit 1
 # QuickTime (.mov или .mp4), для того, чтобы заголовочная информация находилася
 # в начале файла, а не в конце. Это позволяет начать воспроизведение файла
 # фильма до того, как весь файл будет прочитан.
-gcc tools/qt-faststart.c -o tools/qt-faststart
+gcc tools/qt-faststart.c -o tools/qt-faststart || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 install -v -m755 tools/qt-faststart "${TMP_DIR}/usr/bin"
-
-# txt документация
-install -v -m644 doc/*.txt "${TMP_DIR}${DOC_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -6,84 +6,76 @@ PRGNAME="libvirt"
 # Набор инструментов для взаимодействия с возможностями виртуализации ядра
 # Linux
 
-# Required:    libyajl
+# Required:    gtk+3
+#              libyajl
+#              iptables
+#              dnsmasq
+#              python3-pygobject3
 #              python3-urlgrabber
+#              libosinfo
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar -xvJf "${SOURCES}/${PRGNAME}-${VERSION}".tar.xz* || exit 1
+cd "${PRGNAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/rc.d/"
 
 # sysctld файлы в /etc/sysctl.d/ вместо /usr/lib/sysctl
-sed "s|%{_prefix}/lib/sysctl|%{_sysconfdir}/sysctl|" \
-    -i libvirt.spec* || exit 1
 sed "s|prefix / 'lib' / 'sysctl.d'|sysconfdir / 'sysctl.d'|" \
-    -i src/remote/meson.build || exit 1
+    -i src/remote/meson.build
 
-VIRTUSER="root"
+# разрешим любому пользователю состоящему в группе 'kvm' подключаться к
+# System Libvirtd без ввода пароля
+patch --verbose -p1 < "${SOURCES}/use-virtgroup-in-polkit-rules.diff" || exit 1
+
 VIRTGROUP="kvm"
-BASH_COMPLETION=""
-BASH_COMPLETION_DIR=""
-BASH_COMPLETION_DIR_PATH="/usr/share/bash-completion/completions"
-AUDIT="disabled"
-LIBISCSI="disabled"
-
-if pkg-config --exists bash-completion; then
-    BASH_COMPLETION="-Dbash_completion=enabled"
-    BASH_COMPLETION_DIR="-Dbash_completion_dir=${BASH_COMPLETION_DIR_PATH}"
-fi
-
-pkg-config --exists audit    && AUDIT="enabled"
-pkg-config --exists libiscsi && LIBISCSI="enabled"
+sed -e "s,@VIRTGROUP@,$VIRTGROUP,g" \
+    -i src/remote/libvirtd.rules
 
 mkdir build
 cd build || exit 1
 
-meson                              \
-    --prefix=/usr                  \
-    --buildtype=release            \
-    --sysconfdir=/etc              \
-    --localstatedir=/var           \
-    -Dtests=disabled               \
-    -Dqemu_user="${VIRTUSER}"      \
-    -Dqemu_group="${VIRTGROUP}"    \
-    -Dexpensive_tests=disabled     \
-    "${BASH_COMPLETION}"           \
-    "${BASH_COMPLETION_DIR}"       \
-    -Daudit="${AUDIT}"             \
-    -Dlibiscsi="${LIBISCSI}"       \
-    -Dopenwsman=disabled           \
-    -Dapparmor=disabled            \
-    -Dselinux=disabled             \
-    -Dwireshark_dissector=disabled \
-    -Ddriver_bhyve=disabled        \
-    -Ddriver_hyperv=disabled       \
-    -Ddriver_libxl=disabled        \
-    -Ddriver_vz=disabled           \
-    -Dsecdriver_apparmor=disabled  \
-    -Dsecdriver_selinux=disabled   \
-    -Dstorage_sheepdog=disabled    \
-    -Dstorage_vstorage=disabled    \
-    -Ddtrace=disabled              \
-    -Dinit_script=none             \
-    -Ddocs=enabled                 \
-    -Ddocdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+meson setup ..                  \
+    --prefix=/usr               \
+    --buildtype=release         \
+    --sysconfdir=/etc           \
+    --localstatedir=/var        \
+    -D qemu_user=root           \
+    -D qemu_group=kvm           \
+    -D tests=disabled           \
+    -D expensive_tests=disabled \
+    -D init_script=none         \
+    -D docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
-
-# для тестов устанавливаем параметр -Dtests=enabled
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/etc/logrotate.d"
 rm -rf "${TMP_DIR}/var/run"
-
-# add an rc.libvirt to start/stop/restart the daemon
-# install -D -m 0755 $CWD/rc.libvirt $PKG/etc/rc.d/rc.libvirt.new
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 # используем группу kvm, исправляем права авторизации и учитываем тот факт, что
 # по умолчанию у нас нет сертификатов
@@ -95,17 +87,18 @@ sed \
     -e "s|^\#listen_tls|listen_tls|" \
     -i "${TMP_DIR}/etc/libvirt/libvirtd.conf" || exit 1
 
+# раскомментируем строку
+#    #group = "root" или #group = "kvm"
+# в group = "kvm"
 sed \
     -e "s|^\#group\ =\ \"root\"|group = \"$VIRTGROUP\"|" \
+    -e "s|^\#group\ =\ \"$VIRTGROUP\"|group = \"$VIRTGROUP\"|" \
     -i "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
 
 # отключим поддержку seccomp, иначе виртуальные машины не запустятся с новой
 # комбинацией libvirt/qemu combo 20220212 bkw
-if [ -e "${TMP_DIR}/etc/libvirt/qemu.conf" ]; then
-    sed \
-        "s|^\#seccomp_sandbox = 1|seccomp_sandbox = 0|" \
-        -i "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
-fi
+sed -i  "s|^\#seccomp_sandbox = 1|seccomp_sandbox = 0|" \
+        "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
 
 RC_LIBVIRT="/etc/rc.d/rc.libvirt"
 cp "${SOURCES}/rc.libvirt" "${TMP_DIR}${RC_LIBVIRT}"

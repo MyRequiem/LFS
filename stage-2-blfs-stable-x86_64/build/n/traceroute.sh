@@ -20,21 +20,16 @@ MAN_PAGE="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{/usr/bin,"${MAN_PAGE}"}
 
 make || exit 1
-
 # пакет не имеет набора тестов
-
 cp "${PRGNAME}/${PRGNAME}"   "${TMP_DIR}/usr/bin"
 cp "${PRGNAME}/${PRGNAME}.8" "${TMP_DIR}${MAN_PAGE}"
-(
-    # ссылка в /usr/bin
-    #    traceroute6 -> traceroute
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sv "${PRGNAME}" "${PRGNAME}6"
-    # ссылка в /usr/share/man/man8
-    #    traceroute6.8 -> traceroute.8
-    cd "${TMP_DIR}/usr/share/man/man8" || exit 1
-    ln -sv "${PRGNAME}.8" "${PRGNAME}6.8"
-)
+
+# ссылка в /usr/bin
+#    traceroute6 -> traceroute
+ln -svf traceroute   "${TMP_DIR}/usr/bin/traceroute6"
+# ссылка в /usr/share/man/man8
+#    traceroute6.8 -> traceroute.8
+ln -svf traceroute.8 "${TMP_DIR}${MAN_PAGE}/traceroute6.8"
 
 # этот пакет перезаписывает утилиту traceroute, установленную в LFS с пакетом
 # inetutils. Данная версия более мощная и имеет многие дополнительные опции.

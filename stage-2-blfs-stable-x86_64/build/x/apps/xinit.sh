@@ -6,14 +6,16 @@ PRGNAME="xinit"
 # Скрипты для запуска X-сервера
 
 # Required:    xorg-libraries
-# Recommended: no
+# Recommended: --- runtime (используются по умолчанию в файле xinitrc) ---
+#              twm
+#              xclock
+#              xterm
 # Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/xorg_config.sh"                        || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 XINITRC_D="/etc/X11/app-defaults/xinitrc.d"
@@ -59,22 +61,45 @@ else
 fi
 EOF
 
-if [ -f "${XINITRC}" ]; then
-    mv "${XINITRC}" "${XINITRC}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-config_file_processing "${XINITRC}"
-
-# shellcheck disable=SC2086
-chmod u+s ${XORG_PREFIX}/libexec/Xorg
-# shellcheck disable=SC2086
-sed -i '/$serverargs $vtarg/ s/serverargs/: #&/' ${XORG_PREFIX}/bin/startx
-
 ldconfig
+
+# если Xorg запускается из командной строки, то он по умолчанию запускается на
+# текущем виртуальном терминале. Может быть удобно просмотреть сообщения Xorg
+# на текущем виртуальном терминале (обычно tty1) и запустить графическую среду
+# на первом доступном неиспользуемом виртуальном терминале, обычно tty7. Для
+# этого установим suid-бит для Xorg
+chmod u+s "${XORG_PREFIX}/bin/Xorg"
+# на этом этапе мы можем запустить Xorg на виртуальном терминале tty7 с помощью
+# команды:
+#    $ startx [clieng_arguments] -- vt7
+# теперь можно переключаться между tty1 и tty7 по Ctrl-Alt-F1 и Ctrl-Alt-F7
+
+# чтобы автоматически запускать Xorg на первом доступном неиспользуемом
+# виртуальном терминале, изменим сценарий startx
+#
+# if [ "$have_vtarg" = "no" ]; then      if [ "$have_vtarg" = "no" ]; then
+#     serverargs="$serverargs $vtarg" ->     : #serverargs="$serverargs $vtarg"
+# fi                                     fi
+
+sed -i                                        \
+    '/$serverargs $vtarg/ s/serverargs/: #&/' \
+    "${XORG_PREFIX}/bin/startx" || exit 1
+
+# Например, если в /etc/inittab указано:
+#    1:2345:respawn:/sbin/agetty --noclear tty1 9600
+#    2:2345:respawn:/sbin/agetty tty2 9600
+#    3:2345:respawn:/sbin/agetty tty3 9600
+#    4:2345:respawn:/sbin/agetty tty4 9600
+#    5:2345:respawn:/sbin/agetty tty5 9600
+#    6:2345:respawn:/sbin/agetty tty6 9600
+#
+# то Xorg будет запускаться на tty7 без указания параметров в командной строке,
+# просто запустив
+#    $ startx
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (scripts to start X11 server)

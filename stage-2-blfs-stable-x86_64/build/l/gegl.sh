@@ -9,14 +9,12 @@ PRGNAME="gegl"
 
 # Required:    babl
 #              json-glib
-#              libjpeg-turbo
-#              libpng
-# Recommended: graphviz
+# Recommended: glib
+#              graphviz
 #              python3-pygments
 #              python3-pygobject3
 # Optional:    python3-asciidoc
 #              cairo
-#              exiv2
 #              ffmpeg
 #              gdk-pixbuf
 #              gexiv2
@@ -25,6 +23,7 @@ PRGNAME="gegl"
 #              lcms2
 #              libraw
 #              librsvg
+#              libspiro
 #              libtiff
 #              libwebp
 #              pango
@@ -33,13 +32,17 @@ PRGNAME="gegl"
 #              sdl2
 #              v4l-utils
 #              vala
-#              libspiro
-#              lensfun       (https://lensfun.github.io/)
-#              libumfpack    (https://people.engr.tamu.edu/davis/suitesparse.html)
-#              luajit        (https://luajit.org/luajit.html)
-#              opencl        (https://www.khronos.org/opencl/) для тестов
-#              mrg           (https://github.com/hodefoting/mrg/releases)
-#              openexr       (https://www.openexr.com/)
+#              luajit              (https://luajit.org/luajit.html)
+#              lensfun             (https://lensfun.github.io/)
+#              libnsgif            (https://www.netsurf-browser.org/projects/libnsgif/)
+#              libumfpack          (https://people.engr.tamu.edu/davis/suitesparse.html)
+#              maxflow             (https://github.com/gerddie/maxflow)
+#              mrg                 (https://github.com/hodefoting/mrg/releases)
+#              opencl              (https://www.khronos.org/opencl/) для тестов
+#              openexr             (https://www.openexr.com/)
+#              poly2tri-c          (https://github.com/KyleLink/poly2tri-c)
+#              source-highlight    (https://www.gnu.org/software/src-highlite/)
+#              w3m                 (https://w3m.sourceforge.net/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -53,19 +56,14 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 # vector-fill.so
 rm -f "/usr/lib/${PRGNAME}-${MAJ_VERSION}/vector-fill.so"
 
-# если установлен libraw >= 0.21.0, сборка завершается сбоем из-за изменения в
-# ABI. Исправим проблему:
-sed -e '/shot_select/s/params/raw&/' -i operations/external/raw-load.c
-
 mkdir build
 cd build || exit 1
 
 meson                   \
     --prefix=/usr       \
     --buildtype=release \
-    -Ddocs="false" \
-    -Dgtk-doc="false" \
-    -Dintrospection="auto" \
+    -D libav=disabled   \
+    -D docs="false"     \
     .. || exit 1
 
 ninja || exit 1

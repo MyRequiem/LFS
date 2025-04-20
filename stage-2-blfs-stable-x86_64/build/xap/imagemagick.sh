@@ -26,9 +26,10 @@ ARCH_NAME="ImageMagick"
 #              profiles            (https://imagemagick.org/archive/delegates/)
 #              --- Графические библиотеки ---
 #              jasper
-#              lcms или lcms2
+#              lcms2
 #              libgxps
 #              libjpeg-turbo
+#              libjxl
 #              libpng
 #              libraw
 #              librsvg
@@ -42,7 +43,6 @@ ARCH_NAME="ImageMagick"
 #              jbig-kit            (https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
 #              libheif             (https://github.com/strukturag/libheif/)
 #              libde265            (https://github.com/strukturag/libde265/)
-#              libjxl              (https://github.com/libjxl/libjxl/)
 #              libraqm             (https://github.com/HOST-Oman/libraqm/)
 #              liquid-rescale      (https://liblqr.wikidot.com/en:download-page)
 #              openexr             (https://www.openexr.com/)
@@ -69,7 +69,6 @@ ARCH_NAME="ImageMagick"
 #              hp2xx               (https://www.gnu.org/software/hp2xx/)
 #              libwmf              (https://wvware.sourceforge.net/)
 #              uniconvertor        (https://sk1project.net/uc2/)
-#              ufraw               (https://ufraw.sourceforge.net/)
 #              utah-raster-toolkit (https://www.cs.utah.edu/gdc/projects/urt/)
 
 ROOT="/root/src/lfs"

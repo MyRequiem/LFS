@@ -13,7 +13,8 @@ PRGNAME="at-spi2-core"
 #              gsettings-desktop-schemas
 #              xorg-libraries
 # Recommended: no
-# Optional:    gtk-doc
+# Optional:    python3-gi-docgen
+#              python3-sphinx
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,23 +23,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
 mkdir build
 cd build || exit 1
 
 # помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
 # System V не может использовать этот файл
 #    -Dsystemd_user_dir=/tmp
-meson                       \
-    --prefix=/usr           \
-    --buildtype=release     \
-    -Ddocs="${DOCS}"        \
-    -Dsystemd_user_dir=/tmp \
+meson                        \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D systemd_user_dir=/tmp \
     .. || exit 1
 
 ninja || exit 1
-# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/tmp"
@@ -46,6 +43,10 @@ rm -rf "${TMP_DIR}/tmp"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+# тесты нужно запускать в графическом окружении с уже установленным пакетом
+# at-spi2-core
+# dbus-run-session ninja test
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

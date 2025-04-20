@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="gimp"
+ARCH_NAME="gimp3"
 
 ### Gimp (The GNU Image Manipulation Program)
 # Мощный инструмент для обработки цифровых изображений. GIMP предоставляет
@@ -9,71 +10,78 @@ PRGNAME="gimp"
 # делают его очень удобным инструментом для ретуши фотографий и изображений,
 # веб-графики, дизайна или цифровой иллюстрации.
 
-# Required:    gegl
+# Required:    appstream-glib
+#              gegl
 #              gexiv2
 #              glib-networking
-#              gtk+2
+#              gtk+3
 #              harfbuzz
-#              libjpeg-turbo
 #              libmypaint
 #              librsvg
 #              libtiff
-#              python2-libxml2 (для создания переведенных файлов справки)
+#              libxml2
 #              lcms2
 #              mypaint-brushes
 #              poppler
-#              Graphical Environments
-# Recommended: dbus-glib
+# Recommended: graphviz
 #              ghostscript
+#              gvfs           (для доступа к онлайн справке)
 #              iso-codes
 #              libgudev
-#              python2-pygtk  (собранный с модулями gtk.so, pango.so и pangocairo.so)
+#              python3-pygobject3
 #              xdg-utils
 # Optional:    aalib
 #              alsa-lib
-#              gvfs           (для доступа к онлайн справке)
+#              gjs
+#              libjxl
 #              libmng
 #              libunwind
 #              libwebp
+#              lua
 #              openjpeg
-#              dovecot или exim или postfix или sendmail
 #              gtk-doc
-#              appstream-glib (https://people.freedesktop.org/~hughsient/appstream-glib/)
+#              cfitsio        (https://github.com/HEASARC/cfitsio)
 #              libbacktrace   (https://github.com/ianlancetaylor/libbacktrace)
+#              libiff         (https://github.com/svanderburg/libiff)
+#              libilbm        (https://github.com/svanderburg/libilbm)
 #              libheif        (https://github.com/strukturag/libheif/)
 #              libde265       (https://github.com/strukturag/libde265/)
 #              libwmf         (https://wvware.sourceforge.net/libwmf.html)
 #              openexr        (https://www.openexr.com/)
+#              qoi            (https://github.com/phoboslab/qoi)
 #              --- для создания справочной системы ---
 #              dblatex        (https://dblatex.sourceforge.net/)
 #              pngnq          (https://pngnq.sourceforge.net/)
 #              pngcrush       (https://pmt.sourceforge.io/pngcrush/)
 
 ### Конфиги:
-# /etc/gimp/2.x/*
-# ~/.gimp-2.x/gimprc
+# /etc/gimp/3.x/*
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
+mkdir gimp-build
+cd gimp-build || exit 1
 
-./configure       \
-    --prefix=/usr \
-    --sysconfdir=/etc || exit 1
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    .. || exit 1
 
-make || exit 1
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
 
-# тесты требуют запущенной X-сессии
-# make check
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
-make install DESTDIR="${TMP_DIR}"
-
-[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+(
+    cd "${TMP_DIR}/usr/bin" || exit 1
+    ln -svf gimp-2.99 gimp
+)
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -96,13 +104,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # image retouching, web graphics design, or digital illustration.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://download.${PRGNAME}.org/pub/${PRGNAME}/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${ARCH_NAME}-20240711.tar.xz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

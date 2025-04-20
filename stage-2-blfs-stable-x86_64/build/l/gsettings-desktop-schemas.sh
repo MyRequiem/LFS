@@ -38,7 +38,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 # создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GSettings schemas)
 #

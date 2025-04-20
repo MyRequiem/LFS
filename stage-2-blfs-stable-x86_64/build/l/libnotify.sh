@@ -9,9 +9,11 @@ PRGNAME="libnotify"
 # или отображения некоторой информации, не мешая пользователю.
 
 # Required:    gtk+3
-#              notification-daemon или xfce4-notifyd
+#              --- runtime ---
+#              notification-daemon или xfce4-notifyd или lxqt-notificationd
 # Recommended: no
-# Optional:    gtk-doc
+# Optional:    glib
+#              python3-gi-docgen
 #              xmlto
 
 ### NOTE:
@@ -24,38 +26,23 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="false"
-MAN_PAGES="false"
-TESTS="false"
-DOCBOOK_DOCS="disabled"
-
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-
 mkdir build
 cd build || exit 1
 
-meson                                \
-    --prefix=/usr                    \
-    --buildtype=release              \
-    -Dgtk_doc="${GTK_DOC}"           \
-    -Dman="${MAN_PAGES}"             \
-    -Dtests="${TESTS}"               \
-    -Ddocbook_docs="${DOCBOOK_DOCS}" \
+meson setup                  \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D gtk_doc=false         \
+    -D man=false             \
+    -D tests=false           \
+    -D docbook_docs=disabled \
     .. || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-DOCS="/usr/share/doc/${PRGNAME}"
-[ -d  "${TMP_DIR}${DOCS}" ] && mv "${TMP_DIR}${DOCS}"{,"-${VERSION}"}
-
-if [[ "x${GTK_DOC}" == "xfalse" ]]; then
-    (
-        cd "${TMP_DIR}/usr/share" || exit 1
-        rm -rf gtk-doc
-    )
-fi
+rm -rf "${TMP_DIR}/usr/share"/{doc, gtk-doc}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -5,12 +5,21 @@ PRGNAME="spice-gtk"
 ### spice-gtk (spice gtk client/libraries)
 # Gtk-клиент и библиотеки для удаленных рабочих столов Spice
 
-# Required:    vala
-#              spice             (https://www.spice-space.org/)
+# Required:    gtk+3
+#              json-glib
+#              spice                (https://www.spice-space.org/)
+#              vala
 # Recommended: polkit
-# Optional:    libcacard        (https://www.spice-space.org/)
-#              usbredir         (https://www.spice-space.org)
-#              phodav           (https://wiki.gnome.org/phodav)
+#              pulseaudio
+#              libjpeg-turbo
+#              cyrus-sasl
+#              gstreamer
+#              gst-plugins-base
+#              gst-plugins-good
+#              gst-plugins-bad
+# Optional:    libcacard            (https://www.spice-space.org/)
+#              usbredir             (https://www.spice-space.org)
+#              phodav               (https://wiki.gnome.org/phodav)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,29 +28,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="disabled"
-SMARTCARD="disabled"
-INTROSPECTION="disabled"
-POLKIT="disabled"
-USBREDIR="disabled"
-
-[ -x /usr/lib/libcacard.so ]         && SMARTCARD="enabled"
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="enabled"
-command -v pkaction      &>/dev/null && POLKIT="enabled"
-command -v usbredirect   &>/dev/null && USBREDIR="enabled"
-
 mkdir build
 cd build || exit 1
 
-meson                                  \
-    --prefix=/usr                      \
-    -Dopus=enabled                     \
-    -Dvapi=enabled                     \
-    -Dgtk_doc="${GTK_DOC}"             \
-    -Dsmartcard="${SMARTCARD}"         \
-    -Dpolkit="${POLKIT}"               \
-    -Dusbredir="${USBREDIR}"           \
-    -Dintrospection="${INTROSPECTION}" \
+meson setup                  \
+    --prefix=/usr            \
+    -D gtk=enabled           \
+    -D polkit=enabled        \
+    -D vapi=enabled          \
+    -D introspection=enabled \
+    -D libcap-ng=enabled     \
+    -D usbredir=enabled      \
+    -D opus=enabled          \
+    -D gtk_doc=disabled      \
     .. || exit 1
 
 ninja || exit 1

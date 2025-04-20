@@ -15,7 +15,8 @@ PRGNAME="pinentry"
 #              gcr4 или gcr3
 #              kde-frameworks или kwayland
 #              libsecret
-#              qt5-components                (для сборки 'pinentry-qt')
+#              qt5-components                (для сборки 'pinentry-qt5')
+#              qt6                           (для сборки 'pinentry-qt')
 #              efl                           (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
@@ -25,14 +26,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+QT5="--disable-pinentry-qt5"
 FLTK="--disable-pinentry-fltk"
+
+[ -x /opt/qt5/bin/assistant ] && QT5="--enable-pinentry-qt5"
 command -v fluid &>/dev/null && FLTK="--enable-pinentry-fltk"
 
 ./configure               \
     --prefix=/usr         \
     --enable-pinentry-tty \
-    "${FLTK}"             \
-    --disable-pinentry-qt5 || exit 1
+    "${QT5}"              \
+    "${FLTK}" || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

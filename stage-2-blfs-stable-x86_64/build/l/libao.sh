@@ -4,19 +4,14 @@ PRGNAME="libao"
 
 ### Libao (Audio Output library)
 # Кроссплатформенная аудиобиблиотека, которая требуется многим программам и
-# другим библиотекам, которые используют аудио форматов ogg123, GAIM, Ogg и др.
+# другим библиотекам, которые используют аудио форматы ogg123, GAIM, Ogg и др.
 # Пакет содержит плагины для файлов WAV, OSS, ESD, NAS, aRts, ALSA и
 # PulseAudio.
 
 # Required:    no
 # Recommended: no
 # Optional:    Graphical Environments
-#              alsa-firmware
 #              alsa-lib
-#              alsa-oss
-#              alsa-plugins
-#              alsa-tools
-#              alsa-utils
 #              pulseaudio
 
 ROOT="/root/src/lfs"
@@ -25,6 +20,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим ошибку сборки с GCC-14
+sed -i '/limits.h/a #include <time.h>' src/plugins/pulse/ao_pulse.c || exit 1
 
 ./configure \
     --prefix=/usr || exit 1

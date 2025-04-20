@@ -41,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # LeCun, Patrick Haffner, and many others.
 #
 # Home page: https://djvu.sourceforge.net/
-# Download:  http://downloads.sourceforge.net/djvu/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://downloads.sourceforge.net/djvu/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

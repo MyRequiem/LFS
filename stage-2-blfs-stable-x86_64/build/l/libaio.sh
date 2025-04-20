@@ -22,11 +22,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/install.*libaio.a/s/^/#/' src/Makefile || exit 1
 
 make || exit 1
-
-# для запуска тестов необходимо исправить проблему с glibc >=2.34
-# sed 's/-Werror//' -i harness/Makefile
 # make partcheck
-
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

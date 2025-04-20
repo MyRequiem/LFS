@@ -24,13 +24,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-API_DOCS="--disable-doxygen-docs"
-# command -v doxygen &>/dev/null && API_DOCS="--enable-doxygen-docs"
-
 ./configure                  \
     --prefix=/usr            \
     --disable-thorough-tests \
-    "${API_DOCS}"            \
+    --disable-doxygen-docs   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1

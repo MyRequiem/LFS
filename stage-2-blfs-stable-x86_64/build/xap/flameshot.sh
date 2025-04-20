@@ -8,11 +8,13 @@ PRGNAME="flameshot"
 # интерфейс, загрузка на Imgur (https://imgur.com)
 
 # Required:    cmake
-#              qt5
+#              qt5-components
 #              librsvg
 #              libxkbcommon
 # Recommended: no
-# Optional:    no
+# Optional:    git
+#              openssh
+#              p11-kit
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

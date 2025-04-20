@@ -7,7 +7,8 @@ PRGNAME="dmenu"
 
 # Required:    no
 # Recommended: no
-# Optional:    password-store
+# Optional:    --- runtime ---
+#              password-store
 #              clipmenu
 #              xsel
 
@@ -18,10 +19,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# добавим рамку вокруг окна dmenu
+# добавляет параметр -bw (ширина рамки окна)
 patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-border-${VERSION}.diff" || exit 1
-# добавим параметры -x, -y и -w для настройки положения и ширины окна
-patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-xyw-${VERSION}.diff"    || exit 1
+# добавляет параметры -x -y -z (настройка местоположения и ширины окна)
+patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-xyw-${VERSION}.diff" || exit 1
 
 make install PREFIX=/usr DESTDIR="${TMP_DIR}"
 
@@ -38,8 +39,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # dmenu is a generic and efficient menu for X
 #
-# Home page: http://tools.suckless.org/${PRGNAME}/
-# Download:  http://dl.suckless.org/tools/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://tools.suckless.org/${PRGNAME}/
+# Download:  https://dl.suckless.org/tools/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -9,21 +9,23 @@ PRGNAME="poppler"
 
 # Required:    cmake
 #              fontconfig
+#              glib
 # Recommended: boost
 #              cairo
+#              gpgme
 #              lcms2
 #              libjpeg-turbo
 #              libpng
+#              libtiff
 #              nss
 #              openjpeg
+#              qt6              (для поддержки PDF в KDE'шной утилите Okular)
 # Optional:    curl
 #              gdk-pixbuf
-#              git          (для загрузки тестовых файлов)
+#              git              (для загрузки тестовых файлов)
 #              gtk-doc
 #              gtk+3
-#              libtiff
-#              qt5          (для поддержки PDF в KDE'шной утилите Okular)
-#              >= qt6.1     (https://download.qt.io/archive/qt/)
+#              qt5-components
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -39,24 +41,23 @@ cd build || exit 1
 #    -DTESTDATADIR="${PWD}/testfiles"
 # устанавливаем старые заголовки Xpdf, необходимые для некоторых программ
 #    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
-cmake                                    \
-    -DCMAKE_BUILD_TYPE=Release           \
-    -DCMAKE_INSTALL_PREFIX=/usr          \
-    -DTESTDATADIR="${PWD}/testfiles"     \
-    -DENABLE_GTK_DOC=OFF                 \
-    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-    .. || exit 1
+cmake                                     \
+    -D CMAKE_BUILD_TYPE=Release           \
+    -D CMAKE_INSTALL_PREFIX=/usr          \
+    -D TESTDATADIR=$PWD/testfiles         \
+    -D ENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+    -G Ninja .. || exit 1
 
-make || exit 1
+ninja || exit 1
 
 ### тесты
 # Для тестов необходимы некоторые тестовые наборы, которые можно получить
 # только из git-репозитория:
 # git clone --depth 1 https://gitlab.freedesktop.org/poppler/test.git testfiles
 #
-# LC_ALL=en_US.UTF-8 make test
+# LC_ALL=en_US.UTF-8 ninja test
 
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
 ###
 # Poppler Data

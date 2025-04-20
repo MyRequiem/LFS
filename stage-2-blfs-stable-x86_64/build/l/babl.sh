@@ -7,9 +7,10 @@ PRGNAME="babl"
 # фреймворк для добавления новых цветовых моделей и типов данных.
 
 # Required:    no
-# Recommended: librsvg
+# Recommended: glib
+#              librsvg
 # Optional:    lcms2
-#              w3m    (http://w3m.sourceforge.net/)
+#              w3m      (http://w3m.sourceforge.net/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,22 +19,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-WITH_DOCS="false"
-INTROSPECTION="false"
-LCMS2="false"
+mkdir bld
+cd bld || exit 1
 
-command -v g-ir-compiler &>/dev/null && INTROSPECTION="true"
-command -v jpgicc        &>/dev/null && LCMS2="true"
-
-mkdir _build
-cd _build || exit 1
-
-meson                               \
-    --prefix=/usr                   \
-    --buildtype=release             \
-    -Denable-gir="${INTROSPECTION}" \
-    -Dwith-lcms="${LCMS2}"          \
-    -Dwith-docs="${WITH_DOCS}"      \
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D with-docs=false  \
     .. || exit 1
 
 ninja || exit 1

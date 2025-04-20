@@ -7,7 +7,6 @@ PKG_VERSION="7"
 # Масштабируемые шрифты и вспомогательные утилиты для приложений Xorg
 
 # Required:    xcursor-themes
-#              xorg-applications
 #              fontconfig
 # Recommended: no
 # Optional:    no
@@ -78,12 +77,6 @@ font-bh-type1
 font-ibm-type1
 font-misc-ethiopic
 font-xfree86-type1
-font-adobe-100dpi
-font-adobe-75dpi
-font-jis-misc
-font-daewoo-misc
-font-isas-misc
-font-misc-misc
 "
 
 for PKGNAME in ${PACKAGES}; do

@@ -7,13 +7,13 @@ PRGNAME="ruby"
 
 # Required:    libyaml
 # Recommended: no
-# Optional:    berkeley-db
-#              doxygen
+# Optional:    doxygen
 #              graphviz
 #              rustc
 #              tk
 #              valgrind
-#              dtrace    (https://dtrace.org/)
+#              berkeley-db  (https://www.oracle.com/database/technologies/related/berkeleydb.html)
+#              dtrace       (https://dtrace.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,33 +22,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-VALGRIND="--without-valgrind"
-# command -v valgrind &>/dev/null && VALGRIND="--with-valgrind"
-
-./configure         \
-    --prefix=/usr   \
-    --enable-shared \
-    "${VALGRIND}"   \
+./configure            \
+    --prefix=/usr      \
+    --enable-shared    \
+    --without-valgrind \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-
-if [[ "x${DOCS}" == "xtrue" ]]; then
-    # C API документация
-    make capi || exit 1
-fi
-
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${DOCS}" == "xfalse" ]]; then
-    (
-        cd "${TMP_DIR}/usr/share/" || exit 1
-        rm -rf doc
-    )
-fi
+# удалим бесполезную документацию
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

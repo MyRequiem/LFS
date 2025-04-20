@@ -11,6 +11,10 @@ PRGNAME="libgsf"
 #              libxml2
 # Recommended: gdk-pixbuf (для сборки gsf-office-thumbnailer)
 # Optional:    gtk-doc
+#              --- для тестов ---
+#              p7zip
+#              unzip
+#              valgrind
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,20 +23,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-INSTALL_GTK_DOC="false"
-GTK_DOC="--disable-gtk-doc"
-# command -v gtkdoc-check  &>/dev/null && GTK_DOC="--enable-gtk-doc"
+# исправим сборку с libxml2-2.13
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
+autoreconf || exit 1
 ./configure       \
     --prefix=/usr \
-    "${GTK_DOC}"  \
     --disable-static || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "${INSTALL_GTK_DOC}" == "false" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -7,7 +7,7 @@ PRGNAME="libuv"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    python3-sphinx
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,7 +17,7 @@ VERSION=$(echo "${VERSION}" | cut -d v -f 2)
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-sh autogen.sh
+sh autogen.sh || exit 1
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1

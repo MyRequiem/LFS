@@ -39,29 +39,25 @@ PRGNAME="pulseaudio"
 #    /etc/pulse/daemon.conf
 #    /etc/pulse/client.conf
 #    /etc/pulse/default.pa
-#    ~/.config/pulse
+#    ~/.config/pulse/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOXYGEN="false"
-BLUEZ="disabled"
-
 mkdir build
 cd build || exit 1
 
-meson                    \
-    --prefix=/usr        \
-    --buildtype=release  \
-    -Ddatabase=gdbm      \
-    -Ddoxygen=${DOXYGEN} \
-    -Dbluez5="${BLUEZ}"  \
-    -Dhal-compat=false || exit 1
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D database=gdbm    \
+    -D doxygen=false    \
+    -D bluez5=disabled  \
+    .. || exit 1
 
 ninja || exit 1
 # ninja test
@@ -77,37 +73,12 @@ fi
 
 # запуск pulseaudio как общесистемного демона возможен, но не рекомендуется,
 # поэтому удалим файл конфигурации D-Bus для общесистемного демона, чтобы
-# избежать создания ненужных системных пользователей и групп:
-rm -f "${TMP_DIR}/etc/dbus-1/system.d/${PRGNAME}-system.conf"
-
-CLIENT_CONF="/etc/pulse/client.conf"
-if [ -f "${CLIENT_CONF}" ]; then
-    mv "${CLIENT_CONF}" "${CLIENT_CONF}.old"
-fi
-
-DAEMON_CONF="/etc/pulse/daemon.conf"
-if [ -f "${DAEMON_CONF}" ]; then
-    mv "${DAEMON_CONF}" "${DAEMON_CONF}.old"
-fi
-
-DEFAULT_PA="/etc/pulse/default.pa"
-if [ -f "${DEFAULT_PA}" ]; then
-    mv "${DEFAULT_PA}" "${DEFAULT_PA}.old"
-fi
-
-SYSTEM_PA="/etc/pulse/system.pa"
-if [ -f "${SYSTEM_PA}" ]; then
-    mv "${SYSTEM_PA}" "${SYSTEM_PA}.old"
-fi
+# избежать создания ненужных системных пользователей и групп
+rm -f "${TMP_DIR}/usr/share/dbus-1/system.d/pulseaudio-system.conf"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${CLIENT_CONF}"
-config_file_processing "${DAEMON_CONF}"
-config_file_processing "${DEFAULT_PA}"
-config_file_processing "${SYSTEM_PA}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (PulseAudio sound server)

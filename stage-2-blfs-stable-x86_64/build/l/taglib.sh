@@ -8,8 +8,9 @@ PRGNAME="taglib"
 # MP3, Ogg Vorbis, FLAC. Используется такими приложениями как Amarok и VLC.
 
 # Required:    cmake
+#              utfcpp
 # Recommended: no
-# Optional:    no
+# Optional:    cppunit    (https://freedesktop.org/wiki/Software/cppunit/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,10 +22,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release  \
-    -DBUILD_SHARED_LIBS=ON      \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -D BUILD_SHARED_LIBS=ON      \
     .. || exit 1
 
 make || exit 1

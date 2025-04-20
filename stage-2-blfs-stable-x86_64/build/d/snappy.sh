@@ -9,7 +9,7 @@ PRGNAME="snappy"
 # библиотеками не ставилось. Является хорошо переносимой, не использует
 # ассемблерные вставки.
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
 # Optional:    no
 
@@ -20,19 +20,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим ошибку, возникающую если установлен пакет 'gtest'
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-gtest.patch" || exit 1
-
 mkdir -p build
 cd build || exit 1
 
-cmake                           \
-  -DCMAKE_INSTALL_PREFIX=/usr   \
-  -DCMAKE_BUILD_TYPE="Release"  \
-  -DBUILD_SHARED_LIBS=ON        \
-  -DSNAPPY_BUILD_TESTS=OFF      \
-  -DSNAPPY_BUILD_BENCHMARKS=OFF \
+cmake                            \
+  -D CMAKE_INSTALL_PREFIX=/usr   \
+  -D CMAKE_BUILD_TYPE="Release"  \
+  -D BUILD_SHARED_LIBS=ON        \
+  -D SNAPPY_BUILD_TESTS=OFF      \
+  -D SNAPPY_BUILD_BENCHMARKS=OFF \
   .. || exit 1
 
 make || exit 1
@@ -52,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # inputs, but the resulting compressed files are anywhere from 20% to 100%
 # bigger.
 #
-# Home page: https://github.com/google/${PRGNAME}
+# Home page: https://google.github.io/${PRGNAME}/
 # Download:  https://github.com/google/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

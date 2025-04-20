@@ -10,62 +10,37 @@ PRGNAME="libva"
 # Recommended: mesa (циклическая зависимость: сначала собираем libva без
 #                    поддержки egl и glx, т.е. без пакета mesa, и после
 #                    установки mesa пересобираем libva)
+#              --- runtime ---
+#              intel-vaapi-driver
+#              intel-media
 # Optional:    doxygen
 #              wayland
-#              intel-gpu-tools (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
+#              intel-gpu-tools    (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-# NOTE:
-# Если мы переустанавливаем этот пакет, нужно обязательно удалить установленную
-# версию пакета
-if [ -x /usr/lib/libva.so ]; then
-    echo -en "***\n* Before reinstalling 'libva' package, you need "
-    echo -e "to remove the installed version\n***"
-    exit 1
-fi
-
+source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/xorg_config.sh"                        || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# shellcheck disable=SC2086
-./configure        \
-    ${XORG_CONFIG} || exit 1
+cd build || exit 1
 
-make || exit 1
+# shellcheck disable=SC2086
+meson setup                 \
+    --prefix=${XORG_PREFIX} \
+    --buildtype=release || exit 1
+
+ninja || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-/sbin/ldconfig
-
-# Установка intel-vaapi-driver
-# ----------------------------------
-# Intel-vaapi-driver разработан специально для видеокарт на базе графического
-# процессора Intel
-
-IVAAPIDR="intel-vaapi-driver"
-tar -xvf "${SOURCES}/${IVAAPIDR}"-*.tar.bz2 || exit 1
-cd ${IVAAPIDR}-* || exit 1
-
-# shellcheck disable=SC2086
-./configure        \
-    ${XORG_CONFIG} || exit 1
-
-make || exit 1
-# пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
-
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vpR "${TMP_DIR}"/* /
+/usr/sbin/ldconfig
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Video Acceleration API)
@@ -80,14 +55,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Accelerated processing includes support for video decoding, video encoding,
 # subpicture blending, and rendering.
 #
-# Home page: http://www.freedesktop.org/wiki/Software/vaapi
-# Download:  https://github.com/intel/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://www.freedesktop.org/wiki/Software/vaapi
+# Download:  https://github.com/intel/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

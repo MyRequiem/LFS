@@ -18,7 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
 
 # по соображениям безопасности запуск сервера rsync в качестве демона должен
 # производиться от пользователя rsyncd входящего в группу rsyncd
@@ -33,40 +33,16 @@ mkdir -pv "${TMP_DIR}"
             -s /bin/false      \
             -u 48 rsyncd
 
-DOXYGEN="false"
-XXHASH="--disable-xxhash"
-
-# command -v doxygen &>/dev/null && DOXYGEN="true"
-command -v xxhsum  &>/dev/null && XXHASH="--enable-xxhash"
-
 # используем zlib установленный в системе
 #    --without-included-zlib
-./configure       \
-    --prefix=/usr \
-    "${XXHASH}"   \
+./configure          \
+    --prefix=/usr    \
+    --disable-xxhash \
     --without-included-zlib || exit 1
 
 make || exit 1
-
-if [[ "x${DOXYGEN}" == "xtrue" ]]; then
-    doxygen || exit 1
-fi
-
 # make check
-
 make install DESTDIR="${TMP_DIR}"
-
-if [[ "x${DOXYGEN}" == "xtrue" ]]; then
-    DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-    install -v -m755 -d         "${TMP_DIR}/${DOC_DIR}/api"
-    install -v -m644 dox/html/* "${TMP_DIR}/${DOC_DIR}/api"
-fi
-
-# init script: /etc/rc.d/init.d/rsyncd
-(
-    cd "${ROOT}/blfs-bootscripts" || exit 1
-    make install-rsyncd DESTDIR="${TMP_DIR}"
-)
 
 # конфиг
 RSYNCD_CONF="/etc/rsyncd.conf"
@@ -84,8 +60,13 @@ use chroot = yes
     list = yes
     uid = rsyncd
     gid = rsyncd
-
 EOF
+
+# init script: /etc/rc.d/init.d/rsyncd
+(
+    cd "${ROOT}/blfs-bootscripts" || exit 1
+    make install-rsyncd DESTDIR="${TMP_DIR}"
+)
 
 if [ -f "${RSYNCD_CONF}" ]; then
     mv "${RSYNCD_CONF}" "${RSYNCD_CONF}.old"
@@ -107,7 +88,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # just the differences in the files across the link, without requiring that
 # both sets of files are present at one of the ends of the link beforehand.
 #
-# Home page: http://${PRGNAME}.samba.org
+# Home page: https://${PRGNAME}.samba.org
 # Download:  https://www.samba.org/ftp/${PRGNAME}/src/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

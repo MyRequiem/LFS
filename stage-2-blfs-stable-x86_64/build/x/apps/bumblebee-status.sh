@@ -7,7 +7,6 @@ PRGNAME="bumblebee-status"
 
 # Required:    i3
 # Recommended: python3-psutil    (для модулей cpu и cpu2)
-#              python3-netifaces (для модуля nic)
 #              hddtemp           (для модуля hddtemp)
 # Optional:    no
 
@@ -17,6 +16,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-2.2.0-with-python-3.12.5.patch" || exit 1
 
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"

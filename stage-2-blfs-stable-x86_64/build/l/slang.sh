@@ -24,17 +24,18 @@ mkdir -pv "${TMP_DIR}${DOCS}/slsh"
 
 # используем системную версию Readline вместо содержащейся в пакете slang
 #    --with-readline=gnu
-./configure             \
-    --prefix=/usr       \
-    --sysconfdir=/etc   \
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
     --with-readline=gnu || exit 1
 
 # пакет не поддерживает сборку и установку в несколько потоков
-make -j1 || exit 1
-# make check
+make -j1 RPATH=
+# LC_ALL=C make check
 make -j1                        \
     install_doc_dir="${DOCS}"   \
     SLSH_DOC_DIR="${DOCS}/slsh" \
+    RPATH=                      \
     install DESTDIR="${TMP_DIR}"
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so"*

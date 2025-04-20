@@ -28,12 +28,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                         \
+meson setup ..                \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
-    -Dtests=disabled          \
-    -Ddocumentation=disabled  \
-    .. || exit 1
+    -D documentation=disabled || exit 1
 
 ninja || exit 1
 

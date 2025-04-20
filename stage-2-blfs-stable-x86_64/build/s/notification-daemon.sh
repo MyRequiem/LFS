@@ -52,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # must close. Passive popups can automatically disappear after a short period
 # of time.
 #
-# Home page: http://www.galago-project.org/specs/notification/index.php
+# Home page: https://www.galago-project.org/specs/notification/index.php
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

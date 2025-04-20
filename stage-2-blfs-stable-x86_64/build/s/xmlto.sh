@@ -28,9 +28,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# xmlto думает что команда links тоже самое что и команда elinks, исправим это
-# установив переменную LINKS
-LINKS="/usr/bin/links" \
+autoreconf -fiv || exit 1
+LINKS="/usr/bin/w3m" \
 ./configure            \
     --prefix=/usr || exit 1
 
@@ -50,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # external XSLT processor. It also performs any necessary post-processing.
 #
 # Home page: https://pagure.io/${PRGNAME}
-# Download:  https://releases.pagure.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://pagure.io/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

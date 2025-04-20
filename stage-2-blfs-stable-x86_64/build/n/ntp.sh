@@ -8,7 +8,7 @@ PRGNAME="ntp"
 
 # Required:    perl-io-socket-ssl
 # Recommended: no
-# Optional:    libcap
+# Optional:    libcap               (собранный с PAM)
 #              libevent
 #              libedit              (https://www.thrysoee.dk/editline/)
 #              autogen              (https://www.gnu.org/software/autogen/)
@@ -29,8 +29,6 @@ CRON_HOURLY="/etc/cron.hourly"
 ROOT_BIN="/root/bin"
 mkdir -pv "${TMP_DIR}"{"${CRON_HOURLY}","${ROOT_BIN}"}
 
-DOCS="false"
-
 # добавим группу ntp, если не существует
 ! grep -qE "^ntp:" /etc/group  && \
     groupadd -g 87 ntp
@@ -43,13 +41,10 @@ DOCS="false"
             -s /bin/false              \
             -u 87 ntp
 
-# исправим команду update-leap для правильной работы
-sed -e 's/"(\\S+)"/"?([^\\s"]+)"?/' \
-    -i scripts/update-leap/update-leap.in || exit 1
-
-# исправим проблему сборки, возникающую с glibc-2.34
-sed -e 's/#ifndef __sun/#if !defined(__sun) \&\& !defined(__GLIBC__)/' \
-    -i libntp/work_thread.c || exit 1
+# исправим проблему при запуске
+sed -e "s;pthread_detach(NULL);pthread_detach(0);" \
+    -i configure \
+       sntp/configure
 
 # ntpd запускается от имени пользователя ntp, поэтому используем возможности
 # Linux для управления системным временем без полномочий root
@@ -65,10 +60,10 @@ sed -e 's/#ifndef __sun/#if !defined(__sun) \&\& !defined(__GLIBC__)/' \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# набор тестов для этого пакета не работает с gcc>=10
+# make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${DOCS}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 install -v -o ntp -g ntp -d "${TMP_DIR}/var/lib/ntp/"
 

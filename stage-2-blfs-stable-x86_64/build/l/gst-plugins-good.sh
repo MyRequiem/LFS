@@ -19,15 +19,16 @@ PRGNAME="gst-plugins-good"
 #              nasm
 #              pulseaudio
 # Optional:    aalib
-#              alsa-oss
 #              gtk+3             (для сборки примеров)
 #              libdv
-#              qt5
+#              qt5-components
+#              qt6
 #              speex
 #              taglib
 #              valgrind
 #              v4l-utils
 #              wayland
+#              alsa-oss          (https://www.alsa-project.org/files/pub/oss-lib/)
 #              python3-hotdoc    (https://pypi.org/project/hotdoc/)
 #              jack              (https://jackaudio.org/)
 #              libcaca           (https://github.com/cacalabs/libcaca)
@@ -46,29 +47,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-EXAMPLES="disabled"
-DOCS="disabled"
-TESTS="disabled"
-
 mkdir build
 cd build || exit 1
 
-meson                                          \
-    --prefix=/usr                              \
-    --buildtype=release                        \
-    -Dpackage-name="GStreamer ${VERSION} BLFS" \
-    -Dexamples="${EXAMPLES}"                   \
-    -Ddoc="${DOCS}"                            \
-    -Dtests="${TESTS}"                         \
-    -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/12.2/ || exit 1
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D examples=disabled \
+    -D doc=disabled      \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
-
-### тесты
-#    - устанавливаем переменную TESTS выше в 'enabled'
-#    - тесты проводятся в графической среде
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

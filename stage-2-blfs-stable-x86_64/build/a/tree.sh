@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="tree"
+ARCH_NAME="unix-tree"
 
 ### tree (a program to display a directory tree)
 # Рекурсивная программа для отображения дерева каталогов и файлов. Вывод
@@ -13,8 +14,8 @@ PRGNAME="tree"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -35,8 +36,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # environment variable is set and output is to tty. With no arguments, tree
 # lists the files in the current directory.
 #
-# Home page: https://mama.indstate.edu/users/ice/${PRGNAME}/
-# Download:  https://mama.indstate.edu/users/ice/${PRGNAME}/src/${PRGNAME}-${VERSION}.tgz
+# Home page: https://gitlab.com/OldManProgrammer/${ARCH_NAME}/
+# Download:  https://gitlab.com/OldManProgrammer/${ARCH_NAME}/-/archive/${VERSION}/${ARCH_NAME}-${VERSION}.tar.bz2
 #
 EOF
 

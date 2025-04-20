@@ -8,7 +8,7 @@ PRGNAME="jq"
 # преобразования структурированных данных так же легко, как это позволяют sed,
 # awk, grep и т.д.
 
-# Required:    oniguruma
+# Required:    oniguruma    (https://github.com/kkos/oniguruma)
 # Recommended: no
 # Optional:    no
 

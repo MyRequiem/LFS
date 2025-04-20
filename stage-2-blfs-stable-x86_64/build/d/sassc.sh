@@ -34,6 +34,7 @@ make install
 
 cd .. || exit 1
 
+# теперь собираем оболочку командной строки
 autoreconf -fi &&
 ./configure \
     --prefix=/usr || exit 1

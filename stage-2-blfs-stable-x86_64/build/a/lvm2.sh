@@ -11,14 +11,16 @@ ARCH_NAME="LVM2"
 # Required:    libaio
 # Recommended: no
 # Optional:    mdadm
-#              reiserfsprogs
 #              valgrind
 #              which
 #              xfsprogs
+#              reiserfsprogs
 #              thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
 #              vdo                     (https://github.com/dm-vdo/vdo)
 
 ### Конфигурация ядра
+#    CONFIG_BLK_DEV=y
+#    CONFIG_BLK_DEV_RAM=m|y
 #    CONFIG_MD=y
 #    CONFIG_BLK_DEV_DM=m|y
 #    CONFIG_DM_CRYPT=m|y
@@ -28,7 +30,6 @@ ARCH_NAME="LVM2"
 #    CONFIG_DM_MIRROR=m|y
 #    CONFIG_DM_ZERO=m|y
 #    CONFIG_DM_DELAY=m|y
-#    CONFIG_BLK_DEV_RAM=m|y
 #    CONFIG_MAGIC_SYSRQ=y
 
 ROOT="/root/src/lfs"

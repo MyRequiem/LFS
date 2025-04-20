@@ -15,6 +15,9 @@ PRGNAME="gdk-pixbuf"
 #              librsvg
 #              libtiff
 # Optional:    python3-gi-docgen  (для генерации документации)
+#              glibavif           (runtime, для загрузки изображений AVIF)
+#              libjxl             (runtime, для загрузки изображений jpeg xl)
+#              webp-pixbuf-loader (runtime, для загрузки изображений webp)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,18 +29,16 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-GTK_DOC="false"
-# command -v gi-docgen &>/dev/null && GTK_DOC="true"
-
+# включаем загрузчики для различных форматов изображений, например BMP и XPM
+#    -D others=enabled
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе
 #    --wrap-mode=nofallback
-meson                      \
+meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \
-    --wrap-mode=nofallback \
-    -Dgtk_doc="${GTK_DOC}" \
-    .. || exit 1
+    -D others=enabled      \
+    --wrap-mode=nofallback || exit 1
 
 ninja || exit 1
 # ninja test
@@ -49,14 +50,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 # создаем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache
 gdk-pixbuf-query-loaders --update-cache
-
-# копируем созданный loaders.cache в ${TMP_DIR}
-# в loaders.cache указана директория:
-#    # LoaderDir = /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders
-# извлечем путь /usr/lib/gdk-pixbuf-x.x/x.x.x
-LOADERS_CACHE_DIR="$(dirname "$(grep LoaderDir "$(find /usr/lib/${PRGNAME}* \
-    -type f -name loaders.cache)" | awk '{ print $4 }')")"
-cp "${LOADERS_CACHE_DIR}/loaders.cache" "${TMP_DIR}${LOADERS_CACHE_DIR}"
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

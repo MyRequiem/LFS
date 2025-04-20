@@ -8,6 +8,7 @@ PRGNAME="dconf"
 
 # Required:    dbus
 #              glib
+#              desktop-file-utils
 #              --- для сборки dconf-editor ---
 #              gtk+3
 #              libhandy
@@ -24,23 +25,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="false"
-BASH_COMPLETION="false"
-
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="true"
-[ -f /usr/share/pkgconfig/bash-completion.pc ] && BASH_COMPLETION="true"
-
 # предотвратим установку ненужных модулей systemd
 sed -i 's/install_dir: systemd_userunitdir,//' service/meson.build || exit 1
 
 mkdir build
 cd build || exit 1
 
-meson                                    \
+meson setup                              \
     --prefix=/usr                        \
     --buildtype=release                  \
-    -Dgtk_doc="${GTK_DOC}"               \
-    -Dbash_completion=${BASH_COMPLETION} \
     .. || exit 1
 
 ninja || exit 1
@@ -70,7 +63,7 @@ find -L . \
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1
@@ -94,7 +87,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # optional, because gsettings from GLib-2.66.7 provides similar functionality
 # on the commandline.
 #
-# Home page: http://live.gnome.org/${PRGNAME}
+# Home page: https://live.gnome.org/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #            https://download.gnome.org/sources/${PRGNAME}-editor/${MAJ_VERSION_EDITOR}/${PRGNAME}-editor-${EDITOR_VERSION}.tar.xz
 #

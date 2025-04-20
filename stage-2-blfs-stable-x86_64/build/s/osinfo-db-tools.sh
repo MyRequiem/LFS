@@ -6,9 +6,16 @@ PRGNAME="osinfo-db-tools"
 # Инструменты для управления базой данных osinfo об операционных системах для
 # использования с виртуализацией
 
-# Required:    no
+# Required:    glib
+#              json-glib
+#              libarchive
+#              libxml2
+#              libxslt
+#              libsoup
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3-requests
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,11 +27,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson ..                 \
+meson setup ..           \
     --prefix=/usr        \
+    --buildtype=release  \
     --sysconfdir=/etc    \
-    --localstatedir=/var \
-    --buildtype=release || exit 1
+    --localstatedir=/var || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install

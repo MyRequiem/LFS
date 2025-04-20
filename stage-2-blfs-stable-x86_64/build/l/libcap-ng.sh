@@ -20,7 +20,6 @@ mkdir -pv "${TMP_DIR}"
 
 ./configure          \
     --prefix=/usr    \
-    --with-python    \
     --with-python3   \
     --disable-static \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1

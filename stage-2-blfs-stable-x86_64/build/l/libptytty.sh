@@ -19,10 +19,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                               \
-    -DCMAKE_INSTALL_PREFIX=/usr     \
-    -DCMAKE_BUILD_TYPE=Release      \
-    -DPT_UTMP_FILE:STRING=/run/utmp \
+cmake                                \
+    -D CMAKE_INSTALL_PREFIX=/usr     \
+    -D CMAKE_BUILD_TYPE=Release      \
+    -D PT_UTMP_FILE:STRING=/run/utmp \
     .. || exit 1
 
 make || exit 1
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # secure pty/tty and utmp/wtmp/lastlog handling.
 #
 # Home page: https://github.com/yusiwen/${PRGNAME}
-# Download:  https://ftp.osuosl.org/pub/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  http://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

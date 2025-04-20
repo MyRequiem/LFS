@@ -35,7 +35,7 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-autoreconf -vif &&         \
+autoreconf -vif || exit 1
 ./configure                \
     --prefix=/usr          \
     --enable-utils         \
