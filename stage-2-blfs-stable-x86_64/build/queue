@@ -529,8 +529,16 @@ l/fmt.sh
 d/abseil-cpp.sh
 d/protobuf.sh
 d/android-tools.sh
+# === tuxguitar =======
+d/python-modules/python3-numpy.sh
+l/serd.sh
+l/sord.sh
+l/lv2.sh
+l/sratom.sh
+l/lilv.sh
+xap/tuxguitar.sh
+# =====================
 # ap/timidity.sh            [NEW]
 # ap/fluid-soundtont.sh     [NEW]
-# ap/tuxguitar.sh           [NEW] + зависимости
 
 # vim:ft=conf
