@@ -13,7 +13,6 @@ TIMEZONE="Europe/Astrakhan"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -63,8 +62,8 @@ make || make -j1 || exit 1
 
 # если конфиг динамического загрузчика /etc/ld.so.conf не существует, то на
 # этапе установки Glibc будет жаловаться на его отсутствие
-LD_SO_CONFIG="/etc/ld.so.conf"
-! [ -r "${LD_SO_CONFIG}" ] && touch "${LD_SO_CONFIG}"
+LD_SO_CONF="/etc/ld.so.conf"
+! [ -r "${LD_SO_CONF}" ] && touch "${LD_SO_CONF}"
 
 # исправим Makefile, чтобы пропустить устаревшую проверку работоспособности
 # Glibc, которая не работает в современной конфигурации
@@ -200,22 +199,16 @@ cp -v ../nscd/nscd.conf "${TMP_DIR}/etc/nscd.conf"
 # указаны в конфигурационных файлах в /etc/ld.so.conf.d/ Добавим эти каталоги в
 # пути поиска для динамического загрузчика
 
-# бэкапим /etc/ld.so.conf, если он уже существует
-if [ -f "${LD_SO_CONFIG}" ]; then
-    mv "${LD_SO_CONFIG}" "${LD_SO_CONFIG}.old"
-fi
-
-cat << EOF > "${TMP_DIR}${LD_SO_CONFIG}"
-# Begin ${LD_SO_CONFIG}
+cat << EOF > "${TMP_DIR}${LD_SO_CONF}"
+# Begin ${LD_SO_CONF}
 
 # Add an include directory
 include /etc/ld.so.conf.d/*.conf
 
 /usr/local/lib
 /opt/lib
-/opt/qt5/lib
 
-# End ${LD_SO_CONFIG}
+# End ${LD_SO_CONF}
 EOF
 
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -224,8 +217,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/etc       /
 /bin/cp -vR "${TMP_DIR}"/usr/share /usr
 /bin/cp -vR "${TMP_DIR}"/var       /
-
-config_file_processing "${LD_SO_CONFIG}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU C libraries)
