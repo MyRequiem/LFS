@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # secure pty/tty and utmp/wtmp/lastlog handling.
 #
 # Home page: https://github.com/yusiwen/${PRGNAME}
-# Download:  http://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
