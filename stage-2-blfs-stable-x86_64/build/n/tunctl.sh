@@ -37,8 +37,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # useful for VPN software, virtualization, emulation, simulation, and a number
 # of other applications.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
-# Download:  http://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.sourceforge.net/
+# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

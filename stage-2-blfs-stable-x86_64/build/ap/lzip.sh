@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # data archiving. Lzip is a clean implementation of the LZMA algorithm.
 #
 # Home page: https://www.nongnu.org/${PRGNAME}/${PRGNAME}.html
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

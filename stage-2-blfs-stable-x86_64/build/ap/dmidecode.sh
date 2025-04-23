@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # such as serial numbers and BIOS revision.
 #
 # Home page: https://www.nongnu.org/${PRGNAME}/
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
