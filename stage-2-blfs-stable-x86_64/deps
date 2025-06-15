@@ -96,6 +96,7 @@ dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      wpa-supplicant, glib, dconf, fltk
 dhcpcd
+dialog
 dialog                                  alsa-utils
 directfb                                sdl2
 djvulibre                               imagemagick
@@ -315,7 +316,7 @@ libcaca                                 ffmpeg, gst-plugins-good, mpv
 libcacard                               spice, spice-gtk, qemu
 libcanberra                             notification-daemon, pavucontrol
 libcap                                  bind-utils, ntp
-libcap-ng                               qemu
+libcap-ng                               qemu, openvpn
 libcdio                                 ffmpeg, gst-plugins-ugly
 libcelt                                 ffmpeg
 libclc                                  mesa
@@ -421,7 +422,7 @@ libtasn1                                p11-kit, gnutls, qemu
 libthai                                 perl-unicode-linebreak, pango
 libtheora                               gst-plugins-base, ffmpeg
 libtiff                                 lcms2, openjpeg, ghostscript, gdk-pixbuf, imlib2, libwebp, gegl, gimp, libgxps, imagemagick, qt6, poppler
-libtirpc                                libnsl, xorg-server, lsof
+libtirpc                                libnsl, xorg-server, lsof, openvpn
 libtizonia                              mesa
 libu2f-emu                              qemu
 libumfpack                              gegl
@@ -481,7 +482,7 @@ lxqt-policykit                          polkit
 lynx                                    xmlto, docbook-utils, xorg-libraries, xdg-utils, pavucontrol
 lzfse                                   qemu
 lzip
-lzo                                     libarchive, cairo, qemu
+lzo                                     libarchive, cairo, qemu, openvpn
 maemo                                   alsa-plugins
 maim
 make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, openjdk, qt6
@@ -496,7 +497,7 @@ mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
 mirage
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, libsoup, libsoup3, qt5-components, qt6
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, libsoup, libsoup3, qt5-components, qt6, openvpn
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, libsigc++3, glibmm26, glibmm28
 mono                                    libidn
@@ -513,7 +514,7 @@ mysql                                   cyrus-sasl, openldap, exim, qt5-componen
 nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, gst-plugins-good, libaom
 ncompress                               xorg-libraries
 neon                                    gst-plugins-bad
-net-tools                               gnutls, openssh
+net-tools                               gnutls, openssh, openvpn
 netmap                                  qemu
 nettle                                  gnutls, libarchive, mesa, xorg-server, gst-plugins-bad, qemu
 nftables                                iptables
@@ -552,6 +553,7 @@ opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
 openssh                                 curl, sshfs, git, libssh2, flameshot
+openvpn
 opie                                    sudo
 opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice
 opusfile
