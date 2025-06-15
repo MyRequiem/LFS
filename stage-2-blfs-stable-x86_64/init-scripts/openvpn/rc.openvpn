@@ -1,8 +1,8 @@
-#!/bin/sh 
-# 
-# /etc/rc.d/rc.openvpn 
-# 
-# Start/stop/restart the openvpn daemon. 
+#!/bin/sh
+#
+# /etc/rc.d/rc.openvpn
+#
+# Start/stop/restart the openvpn daemon.
 #
 # By default, this script will start/stop/restart a daemon for every *.conf
 # file found in /etc/openvpn.
@@ -18,8 +18,8 @@
 # the name of any config file present in the /etc/openvpn directory.
 
 LOG=/var/log/openvpn
- 
-ovpn_start() { 
+
+ovpn_start() {
   if [ -x /usr/sbin/openvpn ]; then
     if [ -z "$1" ]; then # start OpenVPN for all config files:
       if /bin/ls /etc/openvpn/*.conf 1> /dev/null 2> /dev/null ; then
@@ -39,9 +39,9 @@ ovpn_start() {
       fi
     fi
   fi
-} 
+}
 
-ovpn_stop() { 
+ovpn_stop() {
   # Note: OpenVPN has a bad habit of leaving stale pid files around when exiting.
   # Maybe it would be better to just use killall unless called for one config?
   if [ -z "$1" ]; then # stop OpenVPN for all pid files:
@@ -85,7 +85,7 @@ ovpn_status() {
       echo "  $(basename $pid) ($(cat $pid))"
     done
   else
-    echo "No .pid files found in /run/openvpn." 
+    echo "No .pid files found in /run/openvpn."
   fi
 }
 
