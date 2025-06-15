@@ -428,6 +428,8 @@ n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
 l/libcap-ng.sh
+a/dialog.sh
+n/openvpn.sh
 n/libiscsi.sh
 s/numactl.sh
 d/snappy.sh
