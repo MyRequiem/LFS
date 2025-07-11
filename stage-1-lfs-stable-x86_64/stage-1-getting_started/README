@@ -11,16 +11,18 @@
     ### Важно ###
     # Диск при сборке был разбит таким образом:
     sda
-    |-sda1  100M   /boot
-    |-sda2    1G   [SWAP]
-    |-sda3    1K   [Extended]
-    |  -sda5  100G /
-    |  -sda6  150G /home
-    |  -sda7   25G /tmp
-    |  -sda8   22G [HOST]
+    |-sda1      100M    /boot    *
+    |-sda2      1G      [SWAP]
+    |-sda3      1K      [Extended]
+    |  -sda5    70G     /
+    |  -sda6    150G    /home
+    |  -sda7    30G     /tmp
+    |  -sda8    20G     [HOST]
+    |  -sda9    27G     [empty]
 
     sda{1,7} - LFS
-    sda8     - Host система (Slackware 15.0)
+    sda8     - Host система (Slackware_x86-64)
+    sda9     - пустой резервный раздел
 
     В скрипте ./partitions-init.sh устанавливаем переменную PART - корневой
     раздел для сборки LFS системы. Данный раздел будет монтироваться в /mnt/lfs
