@@ -1,13 +1,14 @@
 #! /bin/bash
 
 # sda
-# |-sda1  100M   /boot
-# |-sda2    1G   [SWAP]
-# |-sda3    1K   [Extended]
-# |  -sda5  100G /
-# |  -sda6  150G /home
-# |  -sda7   25G /tmp
-# |  -sda8   22G [HOST Slackware 15.0]
+#    |-sda1      100M    /boot    *
+#    |-sda2      1G      [SWAP]
+#    |-sda3      1K      [Extended]
+#    |  -sda5    70G     /
+#    |  -sda6    150G    /home
+#    |  -sda7    30G     /tmp
+#    |  -sda8    20G     [HOST]
+#    |  -sda9    27G     [empty]
 
 # корневой раздел LFS
 PART="/dev/sda5"

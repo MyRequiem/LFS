@@ -3,14 +3,11 @@
 LFS="/mnt/lfs"
 
 # создаем группу lfs если не существует
-GROUP_EXISTS=$(grep lfs < /etc/group)
-if [ -z "${GROUP_EXISTS}" ]; then
+! grep -qE "^lfs:" /etc/group  && \
     groupadd lfs
-fi
 
 # создаем пользователя lfs если не существует
-USER_EXISTS=$(grep lfs < /etc/passwd)
-if [ -z "${USER_EXISTS}" ]; then
+if ! grep -qE "^lfs:" /etc/passwd ; then
     useradd -s /bin/bash -g lfs -m -k /dev/null lfs
     # -s    - оболочка по умолчанию
     # -g    - добавления пользователя в группу
@@ -19,7 +16,7 @@ if [ -z "${USER_EXISTS}" ]; then
     #           /dev/null
     # lfs   - имя пользователя
 
-    # устанавливаем пароль для пользователя
+    # устанавливаем пароль для пользователя lfs
     passwd lfs
 fi
 
