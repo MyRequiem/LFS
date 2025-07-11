@@ -23,7 +23,7 @@ unset MYSH
 ### Binutils
 echo "Binutils: $(ld --version | head -n 1 | cut -d ' ' -f 4)"
 echo "Required: >=2.13.1"
-echo -e "Version >2.40 not recommended\n"
+echo -e "Version >2.44 not recommended\n"
 
 ### Bison
 echo "Bison: $(bison --version | head -n 1 | cut -d ' ' -f 4)"
@@ -79,7 +79,7 @@ echo -e "Required: >=1.3.12\n"
 
 ### Linux Kernel
 echo "Linux Kernel: $(uname -r)"
-echo -e "Required: >=4.19\n"
+echo -e "Required: >=5.4\n"
 
 ### M4
 echo "M4: $(m4 --version | head -n 1 | cut -d ' ' -f 4)"
