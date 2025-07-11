@@ -11,7 +11,7 @@ source "${ROOT}check_environment.sh" || exit 1
 
 mkdir -pv           /boot
 mkdir -pv           /dev/pts
-mkdir -pv           /etc/{opt,profile.d,skel,sysconfig}
+mkdir -pv           /etc/{profile.d,skel,sysconfig}
 mkdir -pv           /home
 mkdir -pv           /usr/lib/firmware
 mkdir -pv           /lib64
@@ -129,7 +129,6 @@ cat << EOF > "/var/log/packages/${PKGNAME}"
 /etc
 /etc/group
 /etc/mtab
-/etc/opt
 /etc/passwd
 /etc/profile.d
 /etc/skel
