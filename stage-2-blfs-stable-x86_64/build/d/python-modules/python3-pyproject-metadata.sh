@@ -7,7 +7,7 @@ ARCH_NAME="pyproject_metadata"
 # модуль проверяет входные данные и генерирует файл метаданных, совместимый с
 # PEP 643 (например, PKG-INFO)
 
-# Required:    python3-packaging
+# Required:    no
 # Recommended: no
 # Optional:    python3-pytest    (длЯ тестов)
 

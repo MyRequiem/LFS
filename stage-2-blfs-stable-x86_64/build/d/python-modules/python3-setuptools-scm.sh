@@ -8,7 +8,7 @@ ARCH_NAME="setuptools_scm"
 # объявлять их в качестве аргумента версии или в файле, управляемом scm. Также
 # обрабатывает средства поиска файлов поддерживаемых scms
 
-# Required:    python3-packaging
+# Required:    no
 # Recommended: no
 # Optional:    --- для тестов ---
 #              git
