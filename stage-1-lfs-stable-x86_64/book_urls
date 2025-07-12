@@ -1,36 +1,20 @@
-Linux From Scratch Stable
--------------------------
-
-Home:
-    https://www.linuxfromscratch.org/lfs/index.html
+Linux From Scratch 12.2
+-----------------------
 
 Book:
     https://www.linuxfromscratch.org/lfs/view/12.2/index.html
 
-Changelog:
+ChangeLog:
     https://www.linuxfromscratch.org/lfs/view/12.2/chapter01/changelog.html
-
-FAQ:
-    https://www.linuxfromscratch.org/faq/
+    https://www.linuxfromscratch.org/lfs/view/12.2/chapter01/whatsnew.html
 
 Errata:
     https://www.linuxfromscratch.org/lfs/errata/12.2/
     https://www.linuxfromscratch.org/lfs/advisories/12.2.html
 
-    All packages:
-        https://www.linuxfromscratch.org/lfs/view/development/chapter03/packages.html
-
-Errors:
-    https://www.linuxfromscratch.org/hints/downloads/files/errors.txt
-
-Sources:
-    Ссылки на все пакеты
-        https://www.linuxfromscratch.org/lfs/view/12.2/chapter03/packages.html
-    wget-list
-        https://www.linuxfromscratch.org/lfs/downloads/12.2/
-    Список зеркал:
-        https://www.linuxfromscratch.org/lfs/packages.html#packages
-
-Patches:
+Sources and patches:
+    https://www.linuxfromscratch.org/lfs/view/12.2/chapter03/packages.html
     https://www.linuxfromscratch.org/lfs/view/12.2/chapter03/patches.html
-    https://www.linuxfromscratch.org/lfs/view/development/chapter03/patches.html
+
+wget-list
+    https://www.linuxfromscratch.org/lfs/downloads/12.2/

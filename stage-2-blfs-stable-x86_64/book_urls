@@ -1,8 +1,5 @@
-Beyond Linux From Scratch Stable
---------------------------------
-
-Home:
-    https://www.linuxfromscratch.org/blfs/index.html
+Beyond Linux From Scratch 12.2
+------------------------------
 
 Book:
     https://www.linuxfromscratch.org/blfs/view/12.2/index.html
@@ -10,22 +7,6 @@ Book:
 ChangeLog:
     https://www.linuxfromscratch.org/blfs/view/12.2/introduction/changelog.html
 
-FAQ:
-    https://www.linuxfromscratch.org/faq/
-
-Wiki:
-    https://wiki.linuxfromscratch.org/blfs/wiki
-
 Errata:
     https://www.linuxfromscratch.org/blfs/errata/12.2/
     https://www.linuxfromscratch.org/blfs/advisories/12.2.html
-
-Errors:
-    https://www.linuxfromscratch.org/hints/downloads/files/errors.txt
-
-Sources:
-    Список зеркал:
-        https://www.linuxfromscratch.org/blfs/download.html#sources
-
-Patches:
-    https://www.linuxfromscratch.org/blfs/downloads/12.2/patches/
