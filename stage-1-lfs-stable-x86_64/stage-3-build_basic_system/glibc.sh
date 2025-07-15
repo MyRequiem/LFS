@@ -10,6 +10,30 @@ TIMEZONE="Europe/Astrakhan"
 # закрытия файлов, чтения и записи файлов, обработки строк, сопоставления с
 # образцом, арифметики и т.д.
 
+### NOTE:
+# При обновлении Glibc до новой minor версии (например, с версии 2.36 до 2.41)
+# на рабочей системе LFS, необходимо принять дополнительные меры
+# предосторожности, чтобы избежать нарушений работы системы.
+#
+# ДО СБОРКИ обновленного Glibc:
+#    - rm -f /usr/sbin/nscd
+#    - обновить ядро (kernel-source, kernel-headers, kernel-modules,
+#       kernel-generic) до новой версии и перезагрузить систему
+#
+# Сборка Glibc:
+#    ../configure \
+#       .....
+#    make ......
+#    ......
+#
+#    cp /var/log/packages/glibc-* /tmp/
+#    make install DESTDIR="${TMP_DIR}"
+#    install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
+#    make install
+#
+# После установки нового Glibc перезагрузить систему
+###
+
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -69,8 +93,8 @@ LD_SO_CONF="/etc/ld.so.conf"
 # Glibc, которая не работает в современной конфигурации
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 
-make install
 make install DESTDIR="${TMP_DIR}"
+make install
 
 # исправим жестко закодированный путь к динамическому загрузчику в скрипте ldd
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd             || exit 1
