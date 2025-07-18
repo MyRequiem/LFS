@@ -6,7 +6,7 @@ PRGNAME="terminus-font"
 # Растровый шрифт с фиксированной шириной для чистой консоли linux
 
 # Пакет упоминается в BLFS:
-#    http://www.linuxfromscratch.org/blfs/view/stable/postlfs/console-fonts.html
+#    https://www.linuxfromscratch.org/blfs/view/12.2/postlfs/console-fonts.html
 # Установим его сейчас для настройки шрифта ter-v14n в чистом терминале после
 # установки System-V-configuration в файле /etc/sysconfig/console
 
