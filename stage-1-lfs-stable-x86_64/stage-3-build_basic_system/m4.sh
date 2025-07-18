@@ -39,8 +39,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # ways, recursion, etc... Macros can also be user- defined, and can take any
 # number of arguments.
 #
-# Home page: http://www.gnu.org/software/m4/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

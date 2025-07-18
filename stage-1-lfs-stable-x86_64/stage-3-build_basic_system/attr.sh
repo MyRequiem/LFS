@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Control Lists (ACLs) are implemented using extended attributes.
 #
 # Home page: https://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -61,8 +61,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # integers, rational numbers, and floating point numbers. It has a rich set of
 # functions, and the functions have a regular interface.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

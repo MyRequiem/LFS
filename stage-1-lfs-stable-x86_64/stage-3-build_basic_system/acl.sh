@@ -40,8 +40,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # draft standard 17) are used to define more fine-grained discretionary access
 # rights for files and directories.
 #
-# Home page: http://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://savannah.nongnu.org/projects/${PRGNAME}
+# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

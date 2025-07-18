@@ -63,8 +63,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # incorporates useful features from the Korn and C shells (ksh and csh). Bash
 # must be present for the system to boot properly.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

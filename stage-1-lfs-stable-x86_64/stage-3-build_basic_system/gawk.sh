@@ -46,8 +46,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # also provides more recent Bell Labs awk extensions, and some GNU-specific
 # extensions.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

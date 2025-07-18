@@ -89,7 +89,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Tcl is a simple to use text-based script language with many built-in features
 # which make it especially nice for writing interactive scripts.
 #
-# Home page: http://www.tcl.tk/
+# Home page: https://www.tcl.tk/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}${VERSION}-src.tar.gz
 #
 EOF

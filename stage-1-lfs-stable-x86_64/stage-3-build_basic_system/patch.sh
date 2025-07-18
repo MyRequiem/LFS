@@ -32,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # usually source code.
 #
 # Home page: https://savannah.gnu.org/projects/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

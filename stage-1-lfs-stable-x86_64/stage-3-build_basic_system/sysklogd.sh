@@ -95,8 +95,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The Sysklogd package contains programs for logging system messages, such as
 # those given by the kernel when unusual things happen.
 #
-# Home page: http://www.infodrom.org/projects/${PRGNAME}/
-# Download:  http://www.infodrom.org/projects/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.infodrom.org/projects/${PRGNAME}/
+# Download:  https://github.com/troglobit/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

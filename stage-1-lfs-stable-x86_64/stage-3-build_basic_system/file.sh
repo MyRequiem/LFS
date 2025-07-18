@@ -30,7 +30,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # This is utility, used to identify files.
 #
 # Home page: https://www.darwinsys.com/file/
-# Download:  ftp://ftp.astron.com/pub/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://astron.com/pub/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

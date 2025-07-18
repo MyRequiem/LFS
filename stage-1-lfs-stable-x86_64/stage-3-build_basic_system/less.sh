@@ -33,8 +33,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # entire input file before starting, so with large input files it starts up
 # faster than text editors like vi.
 #
-# Home page: http://www.greenwoodsoftware.com/${PRGNAME}/
-# Download:  http://www.greenwoodsoftware.com/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.greenwoodsoftware.com/${PRGNAME}/
+# Download:  https://www.greenwoodsoftware.com/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

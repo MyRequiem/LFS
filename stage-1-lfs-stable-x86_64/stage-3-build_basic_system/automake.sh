@@ -47,8 +47,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # certain things to be done in your configure.in. You must install the "m4" and
 # "perl" packages to be able to use automake.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

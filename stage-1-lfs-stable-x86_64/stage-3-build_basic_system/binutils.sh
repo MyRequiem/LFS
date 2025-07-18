@@ -85,8 +85,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # working with binary programs. These utilities are REQUIRED to compile C, C++,
 # Objective-C, Fortran, and most other programming languages.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

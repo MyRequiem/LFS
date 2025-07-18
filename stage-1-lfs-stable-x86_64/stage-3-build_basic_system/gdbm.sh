@@ -43,8 +43,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # pairs, searching and retrieving the data by its key and deleting a key along
 # with its data.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

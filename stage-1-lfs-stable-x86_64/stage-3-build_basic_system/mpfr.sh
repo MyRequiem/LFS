@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # efficient and has well-defined semantics.
 #
 # Home page: https://www.mpfr.org/
-# Download:  http://www.mpfr.org/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://www.mpfr.org/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

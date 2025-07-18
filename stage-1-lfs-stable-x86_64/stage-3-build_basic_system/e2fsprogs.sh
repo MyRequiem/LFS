@@ -66,9 +66,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The E2fsprogs package contains the utilities for handling the ext2 file
 # system. It also supports the ext3 and ext4 journaling file systems.
 #
-# Home page: http://e2fsprogs.sourceforge.net/
+# Home page: https://e2fsprogs.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/project/${PRGNAME}/${PRGNAME}/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
-#            http://kernel.org/pub/linux/kernel/people/tytso/${PRGNAME}/
+#            https://kernel.org/pub/linux/kernel/people/tytso/${PRGNAME}/
 #
 EOF
 

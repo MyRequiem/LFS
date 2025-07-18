@@ -32,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The Psmisc package contains programs for displaying information about running
 # processes: fuser, killall, peekfd, prtstat, pslog, pstree, pstree.x11
 #
-# Home page: http://psmisc.sourceforge.net/
+# Home page: https://psmisc.sourceforge.net/
 # Download:  https://sourceforge.net/projects/${PRGNAME}/files/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

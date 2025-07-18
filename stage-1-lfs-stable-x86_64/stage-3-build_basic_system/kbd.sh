@@ -58,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # font. A new default font can be chosen at any time by typing
 # 'setconsolefont'.
 #
-# Home page: http://ftp.altlinux.org/pub/people/legion/${PRGNAME}
+# Home page: https://ftp.altlinux.org/pub/people/legion/${PRGNAME}
 # Download:  https://www.kernel.org/pub/linux/utils/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
