@@ -24,6 +24,6 @@ kernel-source.sh
 kernel-generic.sh <kernel-version>
 kernel-modules.sh <kernel-version>
 set-grub-config.sh
-
+creating-regular-user.sh
 
 # vim:ft=conf
