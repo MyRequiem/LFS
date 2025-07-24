@@ -2,6 +2,9 @@
 
 # создание обычного пользователя LFS системы
 
+ROOT="/"
+source "${ROOT}check_environment.sh" || exit 1
+
 USERNAME="$1"
 
 if [ -z "${USERNAME}" ]; then
