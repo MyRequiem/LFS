@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2024a"
+TZDATA_VERSION="2025b"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -10,14 +10,16 @@ TIMEZONE="Europe/Astrakhan"
 # закрытия файлов, чтения и записи файлов, обработки строк, сопоставления с
 # образцом, арифметики и т.д.
 
-### NOTE:
+###
+# IMPORTANT:
+###
 # При обновлении Glibc до новой minor версии (например, с версии 2.36 до 2.41)
 # на рабочей системе LFS, необходимо принять дополнительные меры
 # предосторожности, чтобы избежать нарушений работы системы.
 #
 # ДО СБОРКИ обновленного Glibc:
-#    - rm -f /usr/sbin/nscd
-#    - обновить ядро (kernel-source, kernel-headers, kernel-modules,
+#    - если обновляем LFS до более новой версии или версия ядра <5.4, то нужно
+#       обновить ядро (kernel-source, kernel-headers, kernel-modules,
 #       kernel-generic) до новой версии и перезагрузить систему
 #
 # Сборка Glibc:
@@ -31,7 +33,7 @@ TIMEZONE="Europe/Astrakhan"
 #    install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 #    make install
 #
-# После установки нового Glibc перезагрузить систему
+# После установки нового Glibc >> НЕМЕДЛЕННО << перезагрузить систему
 ###
 
 ROOT="/"
@@ -64,22 +66,24 @@ echo "rootsbindir=/usr/sbin" > configparms
 # отключает параметр -Werror, передаваемый в GCC. Это необходимо для запуска
 # набора тестов.
 #    --disable-werror
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=4.19
-# (более ранние версии поддерживаться не будут)
-#    --enable-kernel=4.19
-# повышает безопасность системы, добавляя дополнительный код для проверки
-# переполнения буфера, такого как атаки с разбивкой стека
-#    --enable-stack-protector=strong
+# не создавать nscd (name service cache daemon), который больше не используется
+#    --disable-nscd
 # устанавливать библиотеки в /lib вместо /lib64 по умолчанию для x86-64
 # архитектуры
 #    libc_cv_slibdir=/lib
+# повышает безопасность системы, добавляя дополнительный код для проверки
+# переполнения буфера, например при атаках с разрушением стека
+#    --enable-stack-protector=strong
+# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.4
+# (более ранние версии поддерживаться не будут)
+#    --enable-kernel=5.4
 ../configure                        \
     --prefix=/usr                   \
     --disable-werror                \
-    --enable-kernel=4.19            \
-    --enable-stack-protector=strong \
     --disable-nscd                  \
-    libc_cv_slibdir=/usr/lib || exit 1
+    libc_cv_slibdir=/usr/lib        \
+    --enable-stack-protector=strong \
+    --enable-kernel=5.4 || exit 1
 
 make || make -j1 || exit 1
 # make check
@@ -184,7 +188,7 @@ EOF
 
 ### Установка и настройка данных часового пояса
 ZONEINFO_DIR="${TMP_DIR}${ZONEINFO}"
-# компилируем файлы временных зон и помещаем их в /usr/share/zoneinfo
+# компилируем файлы Time Zone Data и помещаем их в /usr/share/zoneinfo
 tar -xvf "${SOURCES}/tzdata${TZDATA_VERSION}.tar.gz" || exit 1
 for TZ in etcetera southamerica northamerica europe africa antarctica \
         asia australasia backward; do
