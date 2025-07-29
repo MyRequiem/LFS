@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-fstab"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 SWAP_PART="/dev/sda2"
 ROOT_PART="/dev/sda5"

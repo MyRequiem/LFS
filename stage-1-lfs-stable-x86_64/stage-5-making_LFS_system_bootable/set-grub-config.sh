@@ -93,7 +93,7 @@ set default=0
 set timeout=7
 
 # LFS
-menuentry "GNU/Linux LFS-12.2       Linux-6.1.15" {
+menuentry "GNU/Linux LFS-12.3       Linux-6.1.15" {
     set root=(hd0,1)
     linux /vmlinuz      root=${HD}5 ro net.ifnames=0 vt.default_utf8=1
 }

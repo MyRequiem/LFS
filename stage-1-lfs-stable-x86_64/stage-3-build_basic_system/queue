@@ -57,7 +57,7 @@ less.sh
 # при сборке временной системы stage-2-build_temp_system мы установили perl
 # версии 5.38.2 (см. NOTE в ../stage-2-build_temp_system/stage-2/queue)
 # Сейчас удалим пакет perl-5.38.2 и установим текущую версию perl-5.40.0 (для
-# LFS-12.2)
+# LFS-12.3)
 #    # removepkg --backup /var/log/packages/perl-5.38.2
 #    # rm -rf /usr/lib/perl5/5.38
 #    # mv /sources/{__perl-5.40.0.tar.xz__,perl-5.40.0.tar.xz}

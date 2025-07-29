@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="system-v-configuration"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 ### System V configuration
 # Конфигурация SysVinit. В Linux используется специальная схема загрузки

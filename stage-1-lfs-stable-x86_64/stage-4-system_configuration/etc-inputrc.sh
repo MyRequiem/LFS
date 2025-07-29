@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-inputrc"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 ### /etc/inputrc (configures keyboard input for programs using readline)
 # /etc/inputrc - файл конфигурации библиотеки Readline, который предоставляет
