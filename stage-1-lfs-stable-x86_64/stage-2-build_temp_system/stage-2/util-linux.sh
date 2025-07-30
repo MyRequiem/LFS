@@ -13,14 +13,14 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 # создадим каталог для хранения данных утилиты hwclock
 mkdir -pv /var/lib/hwclock
 
-# устанавливаем местоположение файла для записи информации об аппаратных часах
-# в соответствии с FHS
-#    ADJTIME_PATH=/var/lib/hwclock/adjtime
 # предотвращают появление предупреждений о создании компонентов, для которых
 # отсутствуют зависимости в нашей временной системе
 #    --disable-*
 # отключаем создание python bindings
 #    --without-python
+# устанавливаем местоположение файла для записи информации об аппаратных часах
+# в соответствии с FHS
+#    ADJTIME_PATH=/var/lib/hwclock/adjtime
 ./configure                               \
     --libdir=/usr/lib                     \
     --runstatedir=/run                    \

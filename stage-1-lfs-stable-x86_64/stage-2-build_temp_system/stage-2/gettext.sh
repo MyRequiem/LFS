@@ -19,6 +19,6 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 make || make -j1 || exit 1
 
-# для временного набора инструментов нам нужно установить только три программы
-# из Gettext: msgfmt, msgmerge и xgettext
+# для временного набора инструментов нам нужно установить только три утилиты:
+# msgfmt, msgmerge и xgettext
 cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin

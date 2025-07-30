@@ -12,9 +12,5 @@
         - check_environment.sh
         - unpack_source_archive.sh
         - <pkg_name>.sh
-    2) заходим в chroot окружение
-        # entering-chroot-env.sh
-    3) запускаем сборочный скрипт для пакета
-        # ./<pkg_name>.sh
 
 # vim:ft=conf
