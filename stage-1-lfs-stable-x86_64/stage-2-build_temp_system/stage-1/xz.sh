@@ -13,8 +13,8 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 ./configure                             \
     --prefix=/usr                       \
     --host="${LFS_TGT}"                 \
-    --disable-static                    \
     --build="$(build-aux/config.guess)" \
+    --disable-static                    \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

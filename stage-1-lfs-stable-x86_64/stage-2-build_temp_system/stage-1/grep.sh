@@ -3,7 +3,7 @@
 PRGNAME="grep"
 
 ### Grep
-# Программы для поиска по файлам
+# Утилиты для поиска по файлам
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

@@ -3,7 +3,7 @@
 PRGNAME="gzip"
 
 ### Gzip
-# Программы для сжатия и распаковки файлов
+# Утилиты для сжатия и распаковки файлов
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

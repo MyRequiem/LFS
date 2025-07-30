@@ -10,7 +10,7 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 # утилита 'file' на хосте должна быть той же версии, что и та, которую мы
 # создаем для LFS (для создания файла подписи). Создадим утилиту на хосте:
-mkdir -p build
+mkdir build
 pushd build || exit 1
 
 ../configure             \

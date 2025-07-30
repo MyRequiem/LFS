@@ -6,12 +6,14 @@
 
 source "$(pwd)/check_environment.sh" || exit 1
 
+clear
+
 echo ""
 echo "--------"
 echo "Step: 1"
 echo "--------"
 echo "# creating a.out"
-echo "echo 'int main(){}' | $LFS_TGT-gcc -xc -"
+echo "echo 'int main(){}' | ${LFS_TGT}-gcc -xc -"
 echo 'int main(){}' | "${LFS_TGT}-gcc" -xc -
 echo "ls -l a.out"
 ls -l a.out

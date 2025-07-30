@@ -12,27 +12,25 @@ PRGNAME="ncurses"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# во время конфигурации gawk должен быть обнаружен первым, вместо mawk
-sed -i s/mawk// configure
-
 # соберем утилиту 'tic'
 mkdir build
 pushd build       || exit 1
-../configure      || exit 1
+../configure \
+    AWK=gawk      || exit 1
 make -C include   || exit 1
 make -C progs tic || exit 1
 popd              || exit 1
 
 # не сжимать man-страницы в .gz
 #    --with-manpage-format=normal
-# Ncurses не должен создавать поддержку для компилятора Ada, который может
-# присутствовать на хосте, но не будет доступен после входа в среду chroot
-#    --without-ada
 # отключаем сборку и установку большинства статических библиотек
 #    --without-normal
 # ncurses будет создавать и устанавливать общие привязки C++. это также
 # предотвращает создание и установку статических привязок С++
 #    --with-cxx-shared
+# Ncurses не должен создавать поддержку для компилятора Ada, который может
+# присутствовать на хосте, но не будет доступен после входа в среду chroot
+#    --without-ada
 # запретим использовать утилиту strip хоста. Использование инструментов хоста в
 # кросс-компилируемых программах может привести к сбою
 #    --disable-stripping
@@ -47,7 +45,8 @@ popd              || exit 1
     --with-cxx-shared            \
     --without-debug              \
     --without-ada                \
-    --disable-stripping || exit 1
+    --disable-stripping          \
+    AWK=gawk || exit 1
 
 make || make -j1 || exit 1
 
@@ -58,14 +57,16 @@ make || make -j1 || exit 1
 make DESTDIR="${LFS}" TIC_PATH="$(pwd)/build/progs/tic" install
 
 # библиотека libncurses.so необходима для нескольких пакетов в LFS, поэтому
-# создадим ссылку, чтобы использовать libncursesw.so в качестве замены
+# создадим ссылку в /usr/lib/
+#    libncurses.so -> libncursesw.so
+# чтобы использовать libncursesw.so в качестве замены
 ln -sv libncursesw.so "${LFS}/usr/lib/libncurses.so"
 
 # заголовочный файл curs.h содержит определения различных структур данных
 # ncurses. с разными определениями макросов препроцессора могут использоваться
 # два разных набора определений структуры данных: 8-битное определение
 # совместимо с libncurses.so, а определение расширенных символов совместимо с
-# libncursesw.so. поскольку мы используем libncursesw.so вместо libncurses.so,
+# libncursesw.so. Поскольку мы используем libncursesw.so вместо libncurses.so,
 # отредактируем заголовок curses.h, чтобы он всегда использовал определение
 # структуры данных расширенных символов, совместимое с libncursesw.so
 sed -e 's/^#if.*XOPEN.*$/#if 1/' -i "${LFS}/usr/include/curses.h"

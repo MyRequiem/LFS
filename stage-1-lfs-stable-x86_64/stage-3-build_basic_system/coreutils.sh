@@ -15,11 +15,15 @@ rm -rf "${TMP_DIR}"
 MAN8="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{/usr/sbin,"${MAN8}"}
 
+# устраненим проблему безопасности, выявленную в upstream
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch"
+
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
 # это несоответствия и другие ошибки, связанные с интернационализацией
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-2.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
 
 # применение патча модифицировало систему сборки, поэтому файлы конфигурации
 # необходимо сгенерировать заново
