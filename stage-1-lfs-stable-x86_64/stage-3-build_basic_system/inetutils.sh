@@ -13,6 +13,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
+# исправим сборку с gcc>=14.1
+sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c || exit 1
+
 # по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
 # логирование. Мы не будем его устанавливать, т.к. пакет Util-Linux содержит
 # более продвинутую версию
@@ -42,7 +45,6 @@ mkdir -pv "${TMP_DIR}/usr/sbin"
     --disable-rexec      \
     --disable-rlogin     \
     --disable-rsh        \
-    --disable-telnet     \
     --disable-servers || exit 1
 
 make || make -j1 || exit 1
@@ -57,7 +59,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 # добавим suid-бит утилите ping для ее запуска от обычного пользователя
-chmod 4755 /usr/bin/ping
+chmod 4711 /usr/bin/ping
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programs for basic networking)

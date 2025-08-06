@@ -18,16 +18,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# создаем общие библиотеки, которые используются некоторыми программами в этом
-# пакете
+# создаем общие библиотеки (shared), которые используются некоторыми
+# программами в этом пакете
 #    --enable-elf-shlibs
 # не будем собирать и устанавливать libuuid, библиотеки libblkid, демон uuidd и
-# оболочку fsck, т.к. в пакете Util-Linux содержатся более свежие версии этих
-# утилит
-#    --disable-libblkid
-#    --disable-libuuid
-#    --disable-uuidd
-#    --disable-fsck
+# оболочку fsck, т.к. в уже установленном пакете util-linux содержатся более
+# свежие версии этих утилит
+#    --disable-*
 ../configure              \
     --prefix=/usr         \
     --sysconfdir=/etc     \

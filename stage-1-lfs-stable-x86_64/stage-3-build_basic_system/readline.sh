@@ -40,7 +40,7 @@ sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 #    SHLIB_LIBS="-lncursesw"
 make SHLIB_LIBS="-lncursesw" || make -j1 SHLIB_LIBS="-lncursesw" || exit 1
 # пакет не имеет набора тестов
-make SHLIB_LIBS="-lncursesw" install DESTDIR="${TMP_DIR}"
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -20,9 +20,9 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# установим компоненты, используемые пакетом tetex (texlive), который будет
-# установлен в BLFS
-make TEXMF="${TMP_DIR}/usr/share/texmf" install-tex
+# установим компоненты, используемые пакетом tetex (texlive), который входит в
+# состав BLFS
+make TEXMF="/usr/share/texmf" install-tex DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

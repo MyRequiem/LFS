@@ -19,6 +19,7 @@ mkdir -p "${TMP_DIR}/etc"
     --sysconfdir=/etc  \
     --runstatedir=/run \
     --without-logger   \
+    --disable-static   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

@@ -19,7 +19,6 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr             \
     --without-bash-malloc     \
     --with-installed-readline \
-    bash_cv_strtold_broken=no \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
@@ -41,6 +40,10 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+# создадим ссылку в /usr/bin/
+#    sh -> bash
+ln -svf bash "${TMP_DIR}/usr/bin/sh"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
@@ -48,12 +51,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 # ${TMP_DIR}/usr/bin/bash в /usr/bin/ будет невозможно:
 #    cannot create regular file '/usr/bin/bash': Text file busy
 install -vm755 "${TMP_DIR}/usr/bin/bash" /usr/bin || exit 1
-
-# создадим ссылку sh -> bash в /usr/bin/
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -svf bash sh
-)
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Bourne-Again SHell - sh-compatible shell)

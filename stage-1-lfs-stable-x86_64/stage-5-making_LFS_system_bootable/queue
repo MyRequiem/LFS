@@ -21,6 +21,7 @@
 etc-fstab.sh
 etc-lfs-release.sh
 kernel-source.sh
+kernel-headers.sh <kernel-version>
 kernel-generic.sh <kernel-version>
 kernel-modules.sh <kernel-version>
 set-grub-config.sh

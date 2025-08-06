@@ -25,9 +25,13 @@ patch --verbose -Np1 -i \
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
 
-# применение патча модифицировало систему сборки, поэтому файлы конфигурации
+# применение патчей модифицировало систему сборки, поэтому файлы конфигурации
 # необходимо сгенерировать заново
-autoreconf -fiv
+autoreconf -fv
+
+# без опции -i autoreconf не обновляет вспомогательные файлы automake, поэтому
+# обновим их для предотващения сбоя сборки
+automake -af
 
 # позволяет собирать пакет от имени пользователя root
 #    FORCE_UNSAFE_CONFIGURE=1
@@ -81,7 +85,7 @@ sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
-# утилиту 'cp' переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
+# /usr/bin/cp переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
 # только что собранного пакета
 mv /usr/bin/cp /tmp
 /tmp/cp -vR "${TMP_DIR}"/* /

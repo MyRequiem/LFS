@@ -31,7 +31,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The Libpipeline package contains a library for manipulating pipelines of
 # subprocesses in a flexible and convenient way.
 #
-# Home page: https://libpipeline.nongnu.org/
+# Home page: https://${PRGNAME}.nongnu.org/
 # Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -41,8 +41,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # library for multiple-precision floating-point computation which is both
 # efficient and has well-defined semantics.
 #
-# Home page: https://www.mpfr.org/
-# Download:  https://www.mpfr.org/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

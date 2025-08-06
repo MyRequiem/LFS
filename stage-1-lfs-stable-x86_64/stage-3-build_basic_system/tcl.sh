@@ -49,16 +49,16 @@ sed -e "s|$SRCDIR/unix|/usr/lib|" \
     -e "s|$SRCDIR|/usr/include|"  \
     -i tclConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.7|/usr/lib/tdbc1.1.7|"            \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.7/generic|/usr/include|"               \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.7/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.7|/usr/include|"                       \
-    -i pkgs/tdbc1.1.7/tdbcConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.10|/usr/lib/tdbc1.1.10|"           \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.10/generic|/usr/include|"               \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.10/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.10|/usr/include|"                       \
+    -i pkgs/tdbc1.1.10/tdbcConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/itcl4.2.4|/usr/lib/itcl4.2.4|" \
-    -e "s|$SRCDIR/pkgs/itcl4.2.4/generic|/usr/include|"    \
-    -e "s|$SRCDIR/pkgs/itcl4.2.4|/usr/include|"            \
-    -i pkgs/itcl4.2.4/itclConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.2|/usr/lib/itcl4.3.2|" \
+    -e "s|$SRCDIR/pkgs/itcl4.3.2/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/itcl4.3.2|/usr/include|"            \
+    -i pkgs/itcl4.3.2/itclConfig.sh
 
 # make test
 
@@ -89,7 +89,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Tcl is a simple to use text-based script language with many built-in features
 # which make it especially nice for writing interactive scripts.
 #
-# Home page: https://www.tcl.tk/
+# Home page: https://www.${PRGNAME}.tk/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}${VERSION}-src.tar.gz
 #
 EOF

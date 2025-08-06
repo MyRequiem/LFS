@@ -57,7 +57,6 @@ cp -vR dest/* "${TMP_DIR}"/
 LIBNCURSESW="dest/usr/lib/libncursesw.so.${VERSION}"
 install -vm755 "${LIBNCURSESW}" /usr/lib
 rm -v  "${LIBNCURSESW}"
-
 sed -e 's/^#if.*XOPEN.*$/#if 1/' -i dest/usr/include/curses.h
 cp -av dest/* /
 
@@ -111,7 +110,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # curses.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://invisible-mirror.net/archives/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

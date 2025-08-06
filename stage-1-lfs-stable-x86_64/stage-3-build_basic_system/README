@@ -11,20 +11,13 @@
 # файле ./queue
 ###
 
-- копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
+- копируем скрипты для сборки в корень LFS системы (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
     ./stripping.sh
     ./unpack_source_archive.sh
     ./update-info-db.sh
     ./write_to_var_log_packages.sh
-
-- копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
-
-- переходим в chroot окружение
-    # ./entering-chroot-env.sh
-
-- запускаем сборочный скрипт
-    # /pkg_name.sh
+    ./<pkg_name.sh>
 
 # vim:ft=conf

@@ -23,9 +23,4 @@ texinfo.sh
 util-linux.sh
 cleaning-up-temporary-system.sh
 
-###
-# Выходим из chroot окружения и запускаем от пользователя root
-###
-./mount-virtual-kernel-file-systems.sh --umount
-
 #vim:ft=conf

@@ -5,44 +5,32 @@ ARCH_NAME="packaging"
 
 ### Packaging (core utilities for Python packages)
 # утилиты, реализующие совместимость спецификаций пакетов Python
-#
 
-ROOT="/"
+# Required:    no
+# Recommended: no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3-pretend    (https://pypi.org/project/pretend/)
+
+ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
-rm -rf "${TMP_DIR}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-###
-# сборка средствами модуля wheel
-# создаем пакет в формате .whl в директории dist дерева исходников
-###
-# команда создает архив для этого пакета
-#    wheel
-# инструктирует pip поместить созданный пакет в указанный каталог dist
-#    --wheel-dir=./dist
-# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
-# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
-# какие-либо файлы
-#    --no-build-isolation
-# не устанавливать зависимости для пакета
-#    --no-deps
 pip3 wheel               \
-    --wheel-dir=./dist   \
-    --no-cache-dir       \
+    -w dist              \
     --no-build-isolation \
     --no-deps            \
-    ./ || exit 1
+    --no-cache-dir       \
+    "${PWD}" || exit 1
 
-# предотвращает ошибочный запуск команды установки от имени обычного
-# пользователя без полномочий root
-#    --no-user
 pip3 install            \
     --root="${TMP_DIR}" \
-    --find-links=./dist \
     --no-index          \
+    --find-links dist   \
+    --no-user           \
     "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2025b"
+TZDATA_VERSION="2025a"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -28,7 +28,6 @@ TIMEZONE="Europe/Astrakhan"
 #    make ......
 #    ......
 #
-#    cp /var/log/packages/glibc-* /tmp/
 #    make install DESTDIR="${TMP_DIR}"
 #    install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 #    make install
@@ -42,8 +41,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"/{etc/ld.so.conf.d,usr/lib/locale}
-mkdir -pv "${TMP_DIR}/var"/{lib/nss_db,cache/nscd}
+mkdir -pv "${TMP_DIR}"/{etc/ld.so.conf.d,usr/lib/locale,var/lib/nss_db}
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 
@@ -80,10 +78,10 @@ echo "rootsbindir=/usr/sbin" > configparms
 ../configure                        \
     --prefix=/usr                   \
     --disable-werror                \
-    --disable-nscd                  \
-    libc_cv_slibdir=/usr/lib        \
+    --enable-kernel=5.4             \
     --enable-stack-protector=strong \
-    --enable-kernel=5.4 || exit 1
+    --disable-nscd                  \
+    libc_cv_slibdir=/usr/lib || exit 1
 
 make || make -j1 || exit 1
 # make check
@@ -98,11 +96,11 @@ LD_SO_CONF="/etc/ld.so.conf"
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 
 make install DESTDIR="${TMP_DIR}"
+install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 make install
 
 # исправим жестко закодированный путь к динамическому загрузчику в скрипте ldd
-sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd             || exit 1
-sed '/RTLDLIST=/s@/usr@@g' -i "${TMP_DIR}/usr/bin/ldd" || exit 1
+sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd || exit 1
 
 # ни одна из локалей не требуется на данный момент, но если некоторые из них
 # отсутствуют, тестовые наборы пакетов, которые мы будет устанавливать позже,
@@ -213,9 +211,6 @@ zic -d "${ZONEINFO_DIR}" -p America/New_York
 # создадим сслыку
 #    /etc/localtime -> ../usr/share/zoneinfo/${TIMEZONE}
 ln -sfv "../usr/share/zoneinfo/${TIMEZONE}" "${TMP_DIR}/etc/localtime"
-
-### копируем файл конфигурации для name service cache
-cp -v ../nscd/nscd.conf "${TMP_DIR}/etc/nscd.conf"
 
 ### конфигурация динамического загрузчика
 # По умолчанию поиск динамического загрузчика ld-linux-x86-64.so.2, который

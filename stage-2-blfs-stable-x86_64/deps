@@ -658,9 +658,11 @@ python3-meson                           python3-dbus, python3-numpy
 python3-mock                            python3-urllib3
 python3-myst-parser                     llvm
 python3-numpy                           boost, lilv
+python3-packaging
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
 python3-pluggy                          python3-hatchling
+python3-pretend                         python3-packaging
 python3-psutil                          llvm, bumblebee-status
 python3-pyatspi2                        gtk+3
 python3-pycairo                         python3-pygobject3, mirage
@@ -674,7 +676,7 @@ python3-pyproject-metadata              python3-meson, python3-numpy
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-numpy
+python3-pytest                          fuse3, python3-packaging, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-numpy
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson

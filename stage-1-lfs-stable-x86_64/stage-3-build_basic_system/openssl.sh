@@ -46,8 +46,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # for providing cryptographic functions to other packages, such as OpenSSH,
 # email applications and web browsers (for accessing HTTPS sites).
 #
-# Home page: https://www.openssl.org/
-# Download:  https://www.openssl.org/source/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

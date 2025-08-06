@@ -25,6 +25,8 @@ make || make -j1 || exit 1
 
 # тесты будем запускать от пользователя tester
 # chown -Rv tester .
+# sed '/test_plugin_glvs/d' -i src/testdir/Make_all.mak
+#
 # набор тестов выводит много двоичных данных в stdout, что может привести к
 # проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
 # файл
@@ -33,6 +35,10 @@ make || make -j1 || exit 1
 # chown -Rv root:root .
 
 make install DESTDIR="${TMP_DIR}"
+
+# ссылка в /usr/bin
+#    vi -> vim
+ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
 # мы же не будем пользоватся GUI-версией редактора, правда? :) Поэтому удаляем
 # не нужные нам *.desktop файлы и иконки, которые устанавливаются только когда

@@ -26,7 +26,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
+    --find-links dist   \
     --no-cache-dir      \
     --no-user           \
     "${ARCH_NAME}" || exit 1

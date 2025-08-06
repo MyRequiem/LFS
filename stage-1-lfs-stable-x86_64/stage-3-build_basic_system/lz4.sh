@@ -31,8 +31,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # decoder, with speed in multiple GB/s per core, typically reaching RAM speed
 # limits on multi-core systems.
 #
-# Home page: https://${PRGNAME}.github.io/${PRGNAME}/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

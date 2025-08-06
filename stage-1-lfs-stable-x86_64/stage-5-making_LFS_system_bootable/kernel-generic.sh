@@ -37,6 +37,8 @@ make mrproper
 # копируем заранее приготовленный конфиг
 cp "${CONFIG}" .config || exit 1
 
+make oldconfig
+
 # собираем ядро
 make bzImage || exit 1
 

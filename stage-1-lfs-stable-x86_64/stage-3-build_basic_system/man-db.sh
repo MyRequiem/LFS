@@ -27,6 +27,9 @@ mkdir -pv "${TMP_DIR}"
 # не позволяем устанавливать ненужные системные каталоги и файлы
 #    --with-systemdtmpfilesdir=
 #    --with-systemdsystemunitdir=
+# NOTE:
+# утилиты vgrind и grap обычно не требуются для просмотра man-страниц и не
+# входят в состав LFS и BLFS, w3m установим в BLFS
 ./configure                       \
     --prefix=/usr                 \
     --sysconfdir=/etc             \
