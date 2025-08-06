@@ -96,21 +96,23 @@ id:3:initdefault:
 # run all scripts in /etc/rc.d/rcS.d
 si::sysinit:/etc/rc.d/init.d/rc S
 
+# runlevel 0 halts the system
 l0:0:wait:/etc/rc.d/init.d/rc  0
 l1:S1:wait:/etc/rc.d/init.d/rc 1
 l2:2:wait:/etc/rc.d/init.d/rc  2
 l3:3:wait:/etc/rc.d/init.d/rc  3
 l4:4:wait:/etc/rc.d/init.d/rc  4
 l5:5:wait:/etc/rc.d/init.d/rc  5
+# runlevel 6 reboot the system
 l6:6:wait:/etc/rc.d/init.d/rc  6
 
+# runlevel 3 run rc.local
 rc:3:wait:/etc/rc.d/rc.local
-
-ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
+# these are the standard console login getties in multiuser mode
 1:2345:respawn:/sbin/agetty --noclear tty1 9600
 2:2345:respawn:/sbin/agetty tty2 9600
 3:2345:respawn:/sbin/agetty tty3 9600
