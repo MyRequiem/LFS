@@ -54,8 +54,8 @@ cat << EOF > "${TARGET}"
 # This is the complete and unmodified source code for the Linux kernel
 #
 # Home page:    https://www.kernel.org/
-# Download:     https://www.kernel.org/pub/linux/kernel/v${MAJ_VER}.x/${ARCH_NAME}-${VERSION}.tar.xz
-# All versions: https://mirrors.edge.kernel.org/pub/linux/kernel/
+# Download:     https://www.kernel.org/pub/${ARCH_NAME}/kernel/v${MAJ_VER}.x/${ARCH_NAME}-${VERSION}.tar.xz
+# All versions: https://mirrors.edge.kernel.org/pub/${ARCH_NAME}/kernel/
 #
 /usr/src/linux
 EOF
