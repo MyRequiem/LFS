@@ -45,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to C, but differs in many substantial areas. It supports interactive
 # execution of statements.
 #
-# Home page: https://github.com/gavinhoward/bc
+# Home page: https://github.com/gavinhoward/${PRGNAME}
 # Download:  https://github.com/gavinhoward/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

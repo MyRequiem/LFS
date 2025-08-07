@@ -13,37 +13,22 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-# позволяет Kmod обрабатывать подписи PKCS7 для модулей ядра
-#    --with-openssl
-# опции позволяют Kmod обрабатывать сжатые модули ядра
-#    --with-xz
-#    --with-zstd
-#    --with-zlib
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    --with-openssl    \
-    --with-xz         \
-    --with-zstd       \
-    --with-zlib       \
-    -disable-manpages || exit 1
+mkdir -p build
+cd build || exit 1
 
-make || make -j1 || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --sbindir=/usr/sbin \
+    --buildtype=release \
+    -D manpages=false || exit 1
+
+ninja || exit 1
 
 # для набора тестов этого пакета требуются необработанные заголовки ядра (а не
 # "продезинфицированные", которые были установленные ранее), что выходит за
 # рамки LFS
 
-make install DESTDIR="${TMP_DIR}"
-
-# для совместимости с Module-Init-Tools (пакет, который ранее работал с
-# модулями ядра) создадим символические ссылки в /usr/sbin/
-#    depmod -> ../bin/kmod
-#    insmod -> ../bin/kmod
-#    и т.д.
-for TARGET in depmod insmod modinfo modprobe rmmod; do
-    ln -sfv ../bin/kmod "${TMP_DIR}/usr/sbin/${TARGET}"
-done
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

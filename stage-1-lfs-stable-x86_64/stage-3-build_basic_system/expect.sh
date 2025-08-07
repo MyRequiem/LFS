@@ -76,7 +76,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # structures to direct the dialogue.
 #
 # Home page: https://core.tcl.tk/${PRGNAME}/
-# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}${VERSION}.tar.gz
+# Download:  https://prdownloads.sourceforge.net/${PRGNAME}/${PRGNAME}${VERSION}.tar.gz
 #
 EOF
 

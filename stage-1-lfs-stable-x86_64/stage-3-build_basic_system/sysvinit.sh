@@ -13,28 +13,30 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# по умолчанию пакет sysvinit устанавливает в том числе:
-#    - ссылку в /bin pidof -> /sbin/killall5, но утилита /usr/bin/pidof уже
-#       установлена с пакетом procps-ng
+# по умолчанию пакет sysvinit устанавливает (в том числе):
+#    - ссылку в /usr/bin/
+#       pidof -> /usr/sbin/killall5
+#       но утилита /usr/bin/pidof уже установлена с пакетом procps-ng
 #    - /usr/sbin/logsave (уже установлена с пакетом e2fsprogs)
 #    - /usr/bin/readbootlog
 #    уже установленые с пакетом util-linux:
-#    - /sbin/sulogin
+#    - /usr/sbin/sulogin
 #    - /usr/bin/last + ссылка lastb
 #    - /usr/bin/mesg
 #    - /usr/bin/utmpdump
 #    - /usr/bin/wall
 #
 # применим патч, предотвращающий создание этих утилит и ссылок, а так же
-# исправляет предупреждение компилятора
+# исправляющий предупреждение компилятора
 patch --verbose -Np1 -i \
     "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
 # исправим пути установки
 #    /bin  -> /usr/bin
 #    /sbin -> /usr/sbin
-sed -i 's/)\/bin/)\/usr\/bin/'   src/Makefile || exit 1
-sed -i 's/)\/sbin/)\/usr\/sbin/' src/Makefile || exit 1
+sed -e 's/ \/bin/ \/usr\/bin/' \
+    -e 's/\/sbin/\/usr\/sbin/' \
+    -i src/Makefile || exit 1
 
 make || make -j1 || exit 1
 # пакет не содержит набора тестов

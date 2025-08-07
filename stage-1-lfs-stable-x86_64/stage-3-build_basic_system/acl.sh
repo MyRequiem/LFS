@@ -23,8 +23,11 @@ make || make -j1 || exit 1
 
 # тесты Acl должны выполняться в файловой системе, которая поддерживает
 # контроль доступа после того, как был собран пакет Coreutils с библиотеками
-# Acl. На данный момент Coreutils еще не установлен, поэтому тесты мы
-# пропускаем
+# Acl. На данный момент Coreutils был собран без Acl при построении временной
+# системы LFS:
+#    stage-2-build_temp_system/stage-1/coreutils.sh
+# поэтому тесты мы пропускаем (можно запустить после сборки пакета coreutils)
+# make check
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -40,8 +43,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # draft standard 17) are used to define more fine-grained discretionary access
 # rights for files and directories.
 #
-# Home page: http://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  http://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://savannah.nongnu.org/projects/${PRGNAME}
+# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

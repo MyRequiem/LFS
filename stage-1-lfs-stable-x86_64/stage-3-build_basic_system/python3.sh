@@ -18,11 +18,12 @@ mkdir -pv "${TMP_DIR}/etc"
 #    --with-system-expat
 # связываться с уже установленной системной версией libffi
 #    --with-system-ffi
-./configure             \
-    --prefix=/usr       \
-    --enable-shared     \
-    --with-system-expat \
-    --enable-optimizations || exit 1
+./configure                \
+    --prefix=/usr          \
+    --enable-shared        \
+    --with-system-expat    \
+    --enable-optimizations \
+    --without-static-libpython || exit 1
 
 make || make -j1 || exit 1
 # make test TESTOPTS="--timeout 120"

@@ -7,8 +7,8 @@ ARCH_NAME="systemd"
 # Утилиты для динамического создания узлов устройств
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                    || exit 1
-source "${ROOT}config_file_processing.sh"               || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 SOURCES="/sources"
 VERSION="$(echo "${SOURCES}/${ARCH_NAME}"-*.tar.?z* | rev |  cut -d . -f 3- | \
@@ -23,6 +23,11 @@ tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
 cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -39,7 +44,8 @@ sed '/systemd-sysctl/s/^/#/' -i rules.d/99-systemd.rules.in || exit 1
 
 # настроим жестко запрограммированные пути к файлам конфигурации сети для
 # автономной установки udev
-sed '/NETWORK_DIRS/s/systemd/udev/' -i src/basic/path-lookup.h || exit 1
+sed -e '/NETWORK_DIRS/s/systemd/udev/' -i \
+    src/libsystemd/sd-network/network-util.h || exit 1
 
 mkdir -p build
 cd build || exit 1

@@ -6,7 +6,7 @@ PRGNAME="glib"
 # Библиотеки низкого уровня, которые включают подпрограммы поддержки C, такие
 # как списки, деревья, хэши, распределение памяти и многое другое.
 
-# Required:    python3-packaging
+# Required:    no
 # Recommended: python3-docutils
 #              libxslt
 #              pcre2

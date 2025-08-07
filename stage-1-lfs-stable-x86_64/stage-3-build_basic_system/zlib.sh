@@ -32,8 +32,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Zlib is a general purpose thread safe data compression library.
 #
-# Home page: https://www.zlib.net/
-# Download:  https://zlib.net/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.${PRGNAME}.net/
+# Download:  https://${PRGNAME}.net/fossils/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

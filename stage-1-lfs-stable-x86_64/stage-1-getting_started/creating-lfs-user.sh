@@ -3,25 +3,30 @@
 LFS="/mnt/lfs"
 
 # создаем группу lfs если не существует
-GROUP_EXISTS=$(grep lfs < /etc/group)
-if [ -z "${GROUP_EXISTS}" ]; then
+! grep -qE "^lfs:" /etc/group  && \
     groupadd lfs
-fi
 
 # создаем пользователя lfs если не существует
-USER_EXISTS=$(grep lfs < /etc/passwd)
-if [ -z "${USER_EXISTS}" ]; then
-    useradd -s /bin/bash -g lfs -m -k /dev/null lfs
-    # -s    - оболочка по умолчанию
-    # -g    - добавления пользователя в группу
-    # -m    - создает домашний каталог пользователя
-    # -k    - не копировать файлы/директории из /etc/skel, т.к. указываем
-    #           /dev/null
-    # lfs   - имя пользователя
+if ! grep -qE "^lfs:" /etc/passwd ; then
+    # -d    - домашний каталог
+    # -m    - создать домашний каталог
+    # -g    - группа
+    # -k    - не копировать файлы/директории из /etc/skel (/dev/null)
+    # -s    - оболочка
+    useradd          \
+        -d /home/lfs \
+        -m           \
+        -g lfs       \
+        -k /dev/null \
+        -s /bin/bash \
+        lfs
 
-    # устанавливаем пароль для пользователя
+    # устанавливаем пароль для пользователя lfs
     passwd lfs
 fi
+
+chown lfs:lfs /home/lfs
+chmod 711 /home/lfs
 
 # предоставим пользователю lfs полный доступ ко всем каталогам в LFS системе
 chown -vR lfs:lfs "${LFS}"/*
@@ -34,10 +39,10 @@ cat << EOF > "${BASH_PROFILE}"
 # рабочее окружение командой env -i за исключением переменных HOME, TERM, и PS1
 # Это гарантирует, что нежелательные и потенциально опасные переменные среды из
 # хост-системы не попадут в среду сборки
-exec env -i                \\
-    HOME="\${HOME}"         \\
-    TERM="\${TERM}" \\
-    PS1="\u:\w\$ "          \\
+exec env -i          \\
+    HOME="\${HOME}"   \\
+    TERM="\${TERM}"   \\
+    PS1="\u@\h:\w\$ " \\
     /bin/bash
 
 # теперь у пользователя lfs существует ~/.bash_profile, поэтому при его логине

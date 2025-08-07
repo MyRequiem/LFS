@@ -658,7 +658,7 @@ python3-meson                           python3-dbus, python3-numpy
 python3-mock                            python3-urllib3
 python3-myst-parser                     llvm
 python3-numpy                           boost, lilv
-python3-packaging                       glib, python3-setuptools-scm, python3-hatchling, python3-pyproject-metadata, python3-build
+python3-packaging
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
 python3-pluggy                          python3-hatchling

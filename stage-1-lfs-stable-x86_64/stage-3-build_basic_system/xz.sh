@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # on free (as in freedom) operating systems.
 #
 # Home page: https://tukaani.org/${PRGNAME}
-# Download:  https://tukaani.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/tukaani-project/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

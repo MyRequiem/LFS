@@ -8,7 +8,6 @@ ARCH_NAME="build"
 
 # Required:    python3-installer
 #              python3-pyproject-hooks
-#              python3-packaging
 #              python3-importlib-metadata
 #              python3-tomli
 # Recommended: no

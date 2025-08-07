@@ -7,7 +7,6 @@ ARCH_NAME="pytest"
 # Полнофункциональный инструмент для тестирования Python программ.
 
 # Required:    python3-iniconfig
-#              python3-packaging
 #              python3-pluggy
 # Recommended: python3-setuptools-scm
 # Optional:    --- для тестов ---

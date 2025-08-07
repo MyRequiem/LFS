@@ -15,35 +15,17 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-###
-# сборка средствами модуля wheel
-# создаем пакет в формате .whl в директории dist дерева исходников
-###
-# команда создает архив для этого пакета
-#    wheel
-# инструктирует pip поместить созданный пакет в указанный каталог dist
-#    --wheel-dir=./dist
-# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
-# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
-# какие-либо файлы
-#    --no-build-isolation
-# не устанавливать зависимости для пакета
-#    --no-deps
 pip3 wheel               \
-    --wheel-dir=./dist   \
+    -w dist              \
     --no-cache-dir       \
     --no-build-isolation \
     --no-deps            \
-    ./ || exit 1
+    "${PWD}" || exit 1
 
-# предотвращает ошибочный запуск команды установки от имени обычного
-# пользователя без полномочий root
-#    --no-user
 pip3 install            \
     --root="${TMP_DIR}" \
-    --find-links=./dist \
     --no-index          \
-    --no-user           \
+    --find-links dist   \
     "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
@@ -69,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a simple way to put Python packages and modules on PyPi
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/f/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://pypi.org/packages/source/f/flit-core/${ARCH_NAME}-${ARCH_NAME}.tar.gz
 #
 EOF
 

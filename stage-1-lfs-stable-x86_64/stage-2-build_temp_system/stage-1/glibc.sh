@@ -36,9 +36,9 @@ echo "rootsbindir=/usr/sbin" > configparms
 # и кросс-компилятор в /mnt/lfs/tools
 #    --host="${LFS_TGT}"
 #    --build="$(../scripts/config.guess)"
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=4.19
+# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.4
 # (более ранние версии поддерживаться не будут)
-#    --enable-kernel=4.19
+#    --enable-kernel=5.4
 # сообщим Glibc о необходимости скомпилироваться с заголовками, установленными
 # в /mnt/lfs/usr/include, чтобы он точно знал, какие функции имеет ядро, и мог
 # соответствующим образом оптимизировать себя
@@ -65,7 +65,7 @@ echo "rootsbindir=/usr/sbin" > configparms
     --prefix=/usr                        \
     --host="${LFS_TGT}"                  \
     --build="$(../scripts/config.guess)" \
-    --enable-kernel=4.19                 \
+    --enable-kernel=5.4                  \
     --with-headers="${LFS}/usr/include"  \
     --disable-nscd                       \
     libc_cv_slibdir=/usr/lib || exit 1

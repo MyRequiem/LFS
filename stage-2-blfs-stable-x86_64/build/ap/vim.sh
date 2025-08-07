@@ -69,6 +69,10 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+# ссылка в /usr/bin
+#    vi -> vim
+ln -sv vim "${TMP_DIR}/usr/bin/vi"
+
 # конфигурация по умолчанию
 cat << EOF > "${TMP_DIR}/etc/vimrc"
 " ensure defaults are set before customizing settings,

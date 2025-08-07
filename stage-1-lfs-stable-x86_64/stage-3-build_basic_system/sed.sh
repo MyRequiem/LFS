@@ -37,8 +37,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # pipeline). It is sed's ability to filter text in a pipeline which
 # distinguishes it from other types of editors.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

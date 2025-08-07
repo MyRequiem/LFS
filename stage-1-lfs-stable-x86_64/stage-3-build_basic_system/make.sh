@@ -36,8 +36,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # recompiled, and issue the commands to recompile them. This is needed to
 # compile just about any major C program, including the Linux kernel.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -32,8 +32,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # possible, each file is replaced by one with the extension .gz, while keeping
 # the same ownership modes, access and modification times.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

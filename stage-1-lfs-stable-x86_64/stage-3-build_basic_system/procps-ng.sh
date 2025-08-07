@@ -15,10 +15,14 @@ mkdir -pv "${TMP_DIR}"
 
 # отключаем сборку утилиты kill, которая будет установлена с пакетом util-linux
 #    --disable-kill
-./configure           \
-    --prefix=/usr     \
-    --disable-static  \
-    --disable-kill    \
+# включаем поддержку ncursesw для команды watch, чтобы она могла обрабатывать
+# 8-битные символы
+#    --enable-watch8bit
+./configure            \
+    --prefix=/usr      \
+    --disable-static   \
+    --disable-kill     \
+    --enable-watch8bit \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

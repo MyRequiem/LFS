@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 ### Network Configuration (network configuration files)
 

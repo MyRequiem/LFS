@@ -37,9 +37,8 @@ sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
 mkdir build
 cd build || exit 1
 
-# пакет гарантированно будет совместим с версией Glibc хоста, т.е.
-# устанавливаем минимальные требования к версии
-#    --with-glibc-version=2.37
+# версия Glibc, которая будет использоваться в LFS
+#    --with-glibc-version=2.41
 # поскольку рабочая библиотека C еще не доступна, это гарантирует, что при
 # сборке libgcc определена константа injit_libc. Это предотвращает компиляцию
 # любого кода, который требует поддержки libc.
@@ -72,7 +71,7 @@ cd build || exit 1
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.40 \
+    --with-glibc-version=2.41 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \

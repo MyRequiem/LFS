@@ -22,7 +22,7 @@ if ! [ -d "${SRC_DIR}" ]; then
     exit 1
 fi
 
-! [ -d /usr/lib/modules ] && mkdir /usr/lib/modules
+! [ -d /usr/lib/modules ] && mkdir -p /usr/lib/modules
 cd "${SRC_DIR}" || exit 1
 
 make modules || exit 1

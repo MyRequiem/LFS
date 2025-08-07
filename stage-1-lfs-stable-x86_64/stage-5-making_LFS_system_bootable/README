@@ -30,7 +30,7 @@
     ./check_environment.sh
     ./config_file_processing.sh
     ./write_to_var_log_packages.sh
-    ./lfs-kernel-config-x.x.x
+    ./kernel-configs/lfs-kernel-config-x.x.x
 
 - копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
 

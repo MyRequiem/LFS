@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки

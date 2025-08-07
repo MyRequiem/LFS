@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="lfs-bootscripts"
+LFS_VERSION="12.3"
 
 ### LFS-Bootscripts (scripts to start/stop the LFS system)
 # Пакет содержит набор скриптов для запуска/остановки системы LFS при
@@ -31,7 +32,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The LFS-Bootscripts package contains a set of scripts to start/stop the LFS
 # system at bootup/shutdown.
 #
-# Download: http://www.linuxfromscratch.org/lfs/downloads/stable/${PRGNAME}-${VERSION}.tar.xz
+# Download: https://www.linuxfromscratch.org/lfs/downloads/${LFS_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

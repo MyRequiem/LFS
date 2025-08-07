@@ -49,7 +49,8 @@ sed -i "/int Guess/a \\
 # заставляет ninja пересобрать себя под текущую систему
 #    --bootstrap
 python3 configure.py \
-    --bootstrap || exit 1
+    --bootstrap      \
+    --verbose || exit 1
 
 # тесты не могут выполняться в среде chroot, а также требуется cmake
 

@@ -35,8 +35,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # through textual input for lines which contain a match to a specified pattern
 # and then prints the matching lines.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

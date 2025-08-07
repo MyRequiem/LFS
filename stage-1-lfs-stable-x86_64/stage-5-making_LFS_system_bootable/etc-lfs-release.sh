@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-lfs-release"
-LFS_VERSION="12.2"
+LFS_VERSION="12.3"
 
 ### /etc/lfs-release (system info)
 # /etc/lfs-release - содержит версию LFS системы
@@ -31,6 +31,8 @@ VERSION="${LFS_VERSION}"
 ID=lfs
 PRETTY_NAME="Linux From Scratch ${LFS_VERSION}"
 VERSION_CODENAME="MyRequiem"
+HOME_URL="https://www.linuxfromscratch.org/lfs/"
+RELEASE_TYPE="stable"
 EOF
 
 /bin/cp -vpR "${TMP_DIR}"/* /

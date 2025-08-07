@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # library. Package contains a library for the arithmetic of complex numbers
 # with arbitrarily high precision and correct rounding of the result.
 #
-# Home page: http://www.multiprecision.org/
+# Home page: https://www.multiprecision.org/
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

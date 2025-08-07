@@ -36,8 +36,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # use, in the form of m4 macro calls. You must install the "m4" package to be
 # able to use autoconf.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

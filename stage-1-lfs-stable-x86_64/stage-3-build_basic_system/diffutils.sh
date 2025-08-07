@@ -30,8 +30,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The GNU diff utilities finds differences between files. A major use
 # diffutils: for this package is to make source code patches.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

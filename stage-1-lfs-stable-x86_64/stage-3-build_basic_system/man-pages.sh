@@ -17,9 +17,14 @@ mkdir -pv "${TMP_DIR}"
 
 # удалим две man-страницы для функций хеширования паролей, libxcrypt
 # предоставит лучшую версию этих страниц руководства
-rm -fv man3/crypt*
+rm -vf man3/crypt*
 
-make prefix=/usr install DESTDIR="${TMP_DIR}"
+# предотвратим создание любых встроенных переменных
+#    -R
+make          \
+    -R        \
+    GIT=false \
+    prefix=/usr install DESTDIR="${TMP_DIR}"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 

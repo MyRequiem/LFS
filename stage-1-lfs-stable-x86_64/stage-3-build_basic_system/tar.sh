@@ -39,8 +39,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # on a tape drive, however, it is also common to write a tarfile to a normal
 # file.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

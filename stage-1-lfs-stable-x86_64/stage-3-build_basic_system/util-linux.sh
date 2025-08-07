@@ -64,7 +64,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # essential to run a Linux system. Among them are utilities for handling file
 # systems, consoles, partitions, and messages.
 #
-# Home page: http://freecode.com/projects/${PRGNAME}
+# Home page: https://git.kernel.org/pub/scm/utils/${PRGNAME}/${PRGNAME}.git
 # Download:  https://www.kernel.org/pub/linux/utils/${PRGNAME}/v${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

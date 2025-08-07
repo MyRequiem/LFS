@@ -14,32 +14,30 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-###
-# создаем пакет в формате .whl в директории dist дерева исходников
-#    wheel-${VERSION}-py3-none-any.whl
-###
-# команда создает архив для этого пакета
-#    wheel
-# инструктирует pip поместить созданный пакет в указанный каталог dist
-#    --wheel-dir=./dist
-# не устанавливать зависимости для пакета
-#    --no-deps
-# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
-# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
-# какие-либо файлы
-#    --no-build-isolation
 pip3 wheel               \
-    --wheel-dir=./dist   \
+    -w dist              \
     --no-cache-dir       \
     --no-build-isolation \
     --no-deps            \
-    ./ || exit 1
+    "${PWD}" || exit 1
 
-# устанавливаем созданный пакет в "${TMP_DIR}"
 pip3 install            \
     --root="${TMP_DIR}" \
-    --find-links=./dist \
-    --no-index "${ARCH_NAME}" || exit 1
+    --no-index          \
+    --find-links dist   \
+    "${ARCH_NAME}" || exit 1
+
+# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# перемещаем ее в ${TMP_DIR}/usr/
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+[ -d "${TMP_SITE_PACKAGES}/bin" ] && \
+    mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
+
+# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
+# имеются
+PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
+[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

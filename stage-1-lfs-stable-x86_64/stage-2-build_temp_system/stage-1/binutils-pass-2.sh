@@ -16,7 +16,7 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 # Binutils поставляет устаревшую копию libtool в архиве, в которой не хватает
 # поддержки sysroot, поэтому созданные двоичные файлы будут ошибочно связаны с
 # библиотеками хоста. Обойдем эту проблему:
-sed '6009s/$add_dir//' -i ltmain.sh
+sed '6031s/$add_dir//' -i ltmain.sh
 
 # документация Binutils рекомендует собирать binutils в отдельном каталоге
 mkdir build

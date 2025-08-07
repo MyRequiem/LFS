@@ -7,7 +7,7 @@ PRGNAME="binutils"
 # объектными файлами
 
 ###
-# NOTE:
+# IMPORTANT:
 ###
 # При обновлении binutils на другую версию, пакет пересобираем и устанавливаем
 # дважды, и только потом удаляем библиотеки передыдущей версии
@@ -25,9 +25,6 @@ mkdir build
 cd build || exit 1
 
 ### Конфигурация
-# создать "gold linker" и установить его как ld.gold рядом с компоновщиком по
-# умолчанию
-#    --enable-gold
 # создать оригинальный компоновщик bdf и установить его как ld (компоновщик по
 # умолчанию) и ld.bfd
 #    --enable-ld=default
@@ -42,7 +39,6 @@ cd build || exit 1
 ../configure            \
     --prefix=/usr       \
     --sysconfdir=/etc   \
-    --enable-gold       \
     --enable-ld=default \
     --enable-plugins    \
     --enable-shared     \
@@ -85,8 +81,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # working with binary programs. These utilities are REQUIRED to compile C, C++,
 # Objective-C, Fortran, and most other programming languages.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://sourceware.org/pub/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -40,7 +40,7 @@ sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 #    SHLIB_LIBS="-lncursesw"
 make SHLIB_LIBS="-lncursesw" || make -j1 SHLIB_LIBS="-lncursesw" || exit 1
 # пакет не имеет набора тестов
-make SHLIB_LIBS="-lncursesw" install DESTDIR="${TMP_DIR}"
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -57,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # previous commands.
 #
 # Home page: https://tiswww.case.edu/php/chet/readline/rltop.html
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

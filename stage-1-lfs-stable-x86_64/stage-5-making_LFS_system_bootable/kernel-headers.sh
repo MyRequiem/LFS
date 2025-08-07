@@ -2,8 +2,10 @@
 
 PRGNAME="kernel-headers"
 ARCH_NAME="linux"
+VERSION="$1"
 
 ### Linux Headers (Linux kernel include files)
+# заголовочные файлы ядра
 
 ###
 # WARNINIG !!!
@@ -12,8 +14,21 @@ ARCH_NAME="linux"
 ###
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                    || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
+
+if [ -z "${VERSION}" ]; then
+    echo "Usage: $0 <kernel-version>"
+    exit 1
+fi
+
+SRC_DIR="/usr/src/${ARCH_NAME}-${VERSION}"
+if ! [ -d "${SRC_DIR}" ]; then
+    echo "Directory ${SRC_DIR} not found !!!"
+    echo "You need to install 'kernel-source-${VERSION}' package"
+    exit 1
+fi
+
+cd "${SRC_DIR}" || exit 1
 
 # очищаем дерево исходников ядра
 make mrproper || exit 1
@@ -21,12 +36,12 @@ make mrproper || exit 1
 # извлечем заголовки из исходного кода ядра в ./usr/include/
 # Рекомендованный
 #    make target "headers_install"
-# не может быть использован, поскольку он требует rsync, который пока не
-# установлен в LFS системе
+# не может быть использован, поскольку он требует rsync, который
+# устанавливается в BLFS
 make headers || exit 1
 
 # удалим ненужные файлы и скопируем заголовки в /usr/include/
-find usr/include -type f ! -name '*.h' -delete
+find usr/include/ -type f ! -name '*.h' -delete
 cp -rv usr/include /usr
 
 LOG="/var/log/packages/${PRGNAME}-${VERSION}"

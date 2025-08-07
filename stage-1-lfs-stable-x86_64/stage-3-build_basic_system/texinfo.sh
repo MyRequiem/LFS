@@ -20,9 +20,9 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# установим компоненты, используемые пакетом tetex (texlive), который будет
-# установлен в BLFS
-make TEXMF="${TMP_DIR}/usr/share/texmf" install-tex
+# установим компоненты, используемые пакетом tetex (texlive), который входит в
+# состав BLFS
+make TEXMF="/usr/share/texmf" install-tex DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -39,8 +39,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # references, and indices. This package is needed to read the documentation
 # files in /usr/info
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

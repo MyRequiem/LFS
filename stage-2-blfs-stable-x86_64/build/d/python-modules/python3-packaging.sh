@@ -10,7 +10,7 @@ ARCH_NAME="packaging"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
-#              python3-pretend  (https://pypi.org/project/pretend/)
+#              python3-pretend    (https://pypi.org/project/pretend/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -29,8 +29,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 

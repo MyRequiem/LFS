@@ -18,16 +18,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# создаем общие библиотеки, которые используются некоторыми программами в этом
-# пакете
+# создаем общие библиотеки (shared), которые используются некоторыми
+# программами в этом пакете
 #    --enable-elf-shlibs
 # не будем собирать и устанавливать libuuid, библиотеки libblkid, демон uuidd и
-# оболочку fsck, т.к. в пакете Util-Linux содержатся более свежие версии этих
-# утилит
-#    --disable-libblkid
-#    --disable-libuuid
-#    --disable-uuidd
-#    --disable-fsck
+# оболочку fsck, т.к. в уже установленном пакете util-linux содержатся более
+# свежие версии этих утилит
+#    --disable-*
 ../configure              \
     --prefix=/usr         \
     --sysconfdir=/etc     \
@@ -66,9 +63,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The E2fsprogs package contains the utilities for handling the ext2 file
 # system. It also supports the ext3 and ext4 journaling file systems.
 #
-# Home page: http://e2fsprogs.sourceforge.net/
+# Home page: https://e2fsprogs.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/project/${PRGNAME}/${PRGNAME}/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
-#            http://kernel.org/pub/linux/kernel/people/tytso/${PRGNAME}/
+#            https://kernel.org/pub/linux/kernel/people/tytso/${PRGNAME}/
 #
 EOF
 

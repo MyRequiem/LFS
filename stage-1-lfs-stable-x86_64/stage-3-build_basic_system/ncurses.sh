@@ -57,7 +57,6 @@ cp -vR dest/* "${TMP_DIR}"/
 LIBNCURSESW="dest/usr/lib/libncursesw.so.${VERSION}"
 install -vm755 "${LIBNCURSESW}" /usr/lib
 rm -v  "${LIBNCURSESW}"
-
 sed -e 's/^#if.*XOPEN.*$/#if 1/' -i dest/usr/include/curses.h
 cp -av dest/* /
 
@@ -110,8 +109,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # function-key mapping, and has all the other SYSV-curses enhancements over BSD
 # curses.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://invisible-mirror.net/archives/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

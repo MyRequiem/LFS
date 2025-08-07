@@ -34,7 +34,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #                       internet services, and their underlying assigned port
 #                       numbers and protocol types
 #
-# Home page: http://freecode.com/projects/${PRGNAME}
+# Home page: https://github.com/Mic92/${PRGNAME}
 # Download:  https://github.com/Mic92/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

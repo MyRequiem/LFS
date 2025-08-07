@@ -58,13 +58,13 @@ fi
 # ---------------------
 # |-sda1  /boot [LFS]
 #           |
-#           vmlinuz -> vmlinuz-generic-6.1.15
+#           vmlinuz -> vmlinuz-generic-6.13.12
 # |-sda5  /     [корень LFS]
 # |-sda8  /     [корень Slackware]
 #         |
 #         boot
 #           |
-#           vmlinuz-4.4.276.generic
+#           vmlinuz-generic-5.15.161
 
 # пункт меню по умолчанию
 #    set default=0
@@ -93,13 +93,13 @@ set default=0
 set timeout=7
 
 # LFS
-menuentry "GNU/Linux LFS-12.2       Linux-6.1.15" {
+menuentry "GNU/Linux LFS-12.3       Linux-6.13.12" {
     set root=(hd0,1)
     linux /vmlinuz      root=${HD}5 ro net.ifnames=0 vt.default_utf8=1
 }
 
 # Slackware
-menuentry "GNU/Linux Slackware-15.0 Linux-5.15.19" {
+menuentry "GNU/Linux Slackware-15.0 Linux-5.15.161" {
     set root=(hd0,8)
     linux /boot/vmlinuz root=${HD}8 ro net.ifnames=0 vt.default_utf8=1
 }

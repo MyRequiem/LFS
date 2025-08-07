@@ -15,15 +15,23 @@ rm -rf "${TMP_DIR}"
 MAN8="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{/usr/sbin,"${MAN8}"}
 
+# устраненим проблему безопасности, выявленную в upstream
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch"
+
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
 # это несоответствия и другие ошибки, связанные с интернационализацией
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-2.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-i18n-1.patch" || exit 1
 
-# применение патча модифицировало систему сборки, поэтому файлы конфигурации
+# применение патчей модифицировало систему сборки, поэтому файлы конфигурации
 # необходимо сгенерировать заново
-autoreconf -fiv
+autoreconf -fv
+
+# без опции -i autoreconf не обновляет вспомогательные файлы automake, поэтому
+# обновим их для предотващения сбоя сборки
+automake -af
 
 # позволяет собирать пакет от имени пользователя root
 #    FORCE_UNSAFE_CONFIGURE=1
@@ -77,7 +85,7 @@ sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
-# утилиту 'cp' переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
+# /usr/bin/cp переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
 # только что собранного пакета
 mv /usr/bin/cp /tmp
 /tmp/cp -vR "${TMP_DIR}"/* /
@@ -92,8 +100,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # these programs have significant advantages over their Unix counterparts, such
 # as greater speed, additional options, and fewer arbitrary limits.
 #
-# Home page: http://www.gnu.org/software/${PRGNAME}/
-# Download:  http://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://www.gnu.org/software/${PRGNAME}/
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

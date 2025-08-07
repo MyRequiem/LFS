@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # passwords
 #
 # Home page: https://github.com/besser82/${PRGNAME}/
-# Download:  https://github.com/besser82/${PRGNAME}/releases/download/v4.4.36/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/besser82/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

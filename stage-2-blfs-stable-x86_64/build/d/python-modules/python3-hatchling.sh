@@ -7,7 +7,6 @@ ARCH_NAME="hatchling"
 # расширяемый, совместимый со стандартами сервер сборки, используемый Hatch
 
 # Required:    python3-editables
-#              python3-packaging
 #              python3-pathspec
 #              python3-pluggy
 #              python3-trove-classifiers

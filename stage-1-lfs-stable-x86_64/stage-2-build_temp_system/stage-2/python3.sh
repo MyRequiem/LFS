@@ -14,10 +14,13 @@ source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 #    --enable-shared
 # утилита pip - 'Python package installer' на данном этапе нам не нужна
 #    --without-ensurepip
-./configure         \
-    --prefix=/usr   \
-    --enable-shared \
-    --without-ensurepip || exit 1
+# предотвращает создание большой и ненужной статической библиотеки
+#    --without-static-libpython
+./configure             \
+    --prefix=/usr       \
+    --enable-shared     \
+    --without-ensurepip \
+    --without-static-libpython || exit 1
 
 make || make -j1 || exit 1
 make install
