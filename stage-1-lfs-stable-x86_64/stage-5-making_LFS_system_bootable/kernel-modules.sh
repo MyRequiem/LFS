@@ -69,7 +69,6 @@ cat << EOF > "${TARGET}"
 /etc/modprobe.d
 /etc/modprobe.d/usb.conf
 /usr/lib/modules
-${MODULE_DIR}
 EOF
 
 find "${MODULE_DIR}" | sort >> "${TARGET}"
