@@ -4,8 +4,7 @@
 # (MBR) жесткого диска.
 
 ROOT="/"
-source "${ROOT}check_environment.sh"      || exit 1
-source "${ROOT}config_file_processing.sh" || exit 1
+source "${ROOT}check_environment.sh" || exit 1
 
 ###
 # Данные GRUB находятся в /boot/grub. Главный файл конфигурации:
@@ -80,9 +79,6 @@ fi
 #    net.ifnames=0 vt.default_utf8=1
 
 GRUB_MENU="${GRUB_DIR}/menu.cfg"
-if [ -f "${GRUB_MENU}" ]; then
-    mv "${GRUB_MENU}" "${GRUB_MENU}.old"
-fi
 
 echo "Creating ${GRUB_MENU} ..."
 echo ""
@@ -106,8 +102,6 @@ menuentry "GNU/Linux Slackware-15.0 Linux-5.15.161" {
 
 # End ${GRUB_MENU}
 EOF
-
-config_file_processing "${GRUB_MENU}"
 
 # Установим файлы GRUB и перезапишем загрузочную запись (MBR), после чего можно
 # перезапускать систему
