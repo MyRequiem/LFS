@@ -2,7 +2,6 @@ s/lsb-tools.sh
 s/bash-completion.sh
 a/kernel-firmware.sh
 a/blfs-bootscripts.sh
-s/etc-issue.sh
 a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh

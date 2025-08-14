@@ -128,7 +128,6 @@ elogind                                 alsa-lib, pulseaudio, polkit, xorg-serve
 emacs                                   libidn, pinentry, desktop-file-utils, xterm, guile
 emojione                                ibus
 enscript                                imagemagick
-etc-issue
 ethtool                                 pm-utils
 exim                                    gnupg, sudo, fcron, at
 exiv2                                   gexiv2, mirage

@@ -9,6 +9,7 @@ system-v-configuration.sh
 etc-profile.sh
 etc-inputrc.sh
 etc-shells.sh
+etc-issue.sh
 
 
 # vim:ft=conf
