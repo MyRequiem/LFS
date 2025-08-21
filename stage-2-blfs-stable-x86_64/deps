@@ -706,8 +706,8 @@ pytz                                    python3-numpy
 qemu
 qoi                                     gimp
 qrencode                                gst-plugins-bad
-qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler
-qt6                                     highlight, cmake, gst-plugins-good, oxygen-icons, appstream, poppler, flameshot
+qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler, google-chrome
+qt6                                     highlight, cmake, gst-plugins-good, oxygen-icons, appstream, poppler, google-chrome, flameshot
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
