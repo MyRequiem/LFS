@@ -57,7 +57,6 @@ https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.
 https://www.linuxfromscratch.org/patches/blfs/12.2/openldap-2.6.8-consolidated-1.patch
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.5.tar.bz2
 https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.21.2.tar.gz
-https://files.pythonhosted.org/packages/source/p/packaging/packaging-24.2.tar.gz
 https://download.gnome.org/sources/glib/2.80/glib-2.80.4.tar.xz
 https://download.gnome.org/sources/gobject-introspection/1.80/gobject-introspection-1.80.1.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.2/glib-skip_warnings-1.patch

@@ -50,7 +50,6 @@ n/cyrus-sasl.sh
 n/openldap.sh
 n/gnupg.sh
 d/python-modules/python3-docutils.sh
-d/python-modules/python3-packaging.sh
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
