@@ -6,7 +6,9 @@ ARCH_NAME="${PRGNAME}-stable_current_amd64.deb"
 ### Google Chrome (Google Chrome web browser)
 # Веб-браузер от Google
 
-# Required:    nss
+# Required:    qt5-components
+#              qt6
+#              nss
 #              cups
 # Recommended: no
 # Optional:    no

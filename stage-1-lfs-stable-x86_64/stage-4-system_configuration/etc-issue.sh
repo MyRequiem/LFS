@@ -8,6 +8,23 @@ VERSION="12.3"
 # в систему. Он может содержать различные последовательности @char и \char,
 # которые читает утилита agetty
 
+# в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
+# LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
+# пройден. Проверим окружение явно:
+if [[ "$(id -u)" != "0" ]]; then
+    echo "Only superuser (root) can run this script"
+    exit 1
+fi
+
+# мы в chroot окружении?
+ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
+ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
+if [[ "${ID1}" == "${ID2}" ]]; then
+    echo "You must enter chroot environment."
+    echo "Run 003_entering_chroot.sh script in this directory."
+    exit 1
+fi
+
 # Очистка экрана - escape-последовательность '[H[J'
 #     - Esc
 # [H    - помещает курсор в верхний левый угол экрана
@@ -29,13 +46,6 @@ VERSION="12.3"
 # \U   string "N user" where N is the number of current users logged in
 # \v   version of the OS, e.g., the build-date etc, e.g.
 #       #2 SMP Fri Jun 24 13:38:27 CDT 2016
-
-# Required:    no
-# Recommended: no
-# Optional:    no
-
-ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"      || exit 1
 
 ISSUE="/etc/issue"
 # Вид устанавливаемого приглашения:

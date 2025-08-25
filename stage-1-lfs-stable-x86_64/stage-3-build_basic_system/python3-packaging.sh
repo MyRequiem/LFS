@@ -6,31 +6,25 @@ ARCH_NAME="packaging"
 ### Packaging (core utilities for Python packages)
 # утилиты, реализующие совместимость спецификаций пакетов Python
 
-# Required:    no
-# Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-pretend    (https://pypi.org/project/pretend/)
-
-ROOT="/root/src/lfs"
+ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 pip3 wheel               \
     -w dist              \
+    --no-cache-dir       \
     --no-build-isolation \
     --no-deps            \
-    --no-cache-dir       \
     "${PWD}" || exit 1
 
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
     --find-links dist   \
-    --no-user           \
     "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
