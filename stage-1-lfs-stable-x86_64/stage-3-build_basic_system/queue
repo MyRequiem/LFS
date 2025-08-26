@@ -97,7 +97,6 @@ sysvinit.sh
 # очистки системы от libtool-архивов (*.la)
 set-remove-la-files.sh
 strip.sh
-cleaning-up.sh
 
 
 # vim:ft=conf
