@@ -37,13 +37,6 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              postgresql
 #              unixodbc
 
-###
-# NOTE:
-#    перед сборкой и установкой пакета сразу вручную добавляем в
-#    /etc/ld.so.conf строку:
-#       /opt/qt5/lib
-###
-
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
@@ -86,7 +79,7 @@ export QT5PREFIX=/opt/qt5
 #     qt5               (ссылка на qt5-${VERSION}/)
 #     qt5-${VERSION}/
 
-mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d},usr/bin}
+mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d,ld.so.conf.d},usr/bin}
 mkdir -pv "${TMP_DIR}${QT5PREFIX}-${VERSION}"
 # qt5 -> qt5-${VERSION}
 ln -sv "qt5-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../qt5"
@@ -179,6 +172,11 @@ QT5BINDIR="${QT5PREFIX}/bin"
 for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
     ln -sfv "../..${QT5BINDIR}/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
 done
+
+# добавим путь поиска библиотек для динамического загрузчика
+cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/qt5.conf"
+/opt/qt5/lib
+EOF
 
 # QT5DIR также должен быть доступен пользователю root
 cat << EOF > "${TMP_DIR}/etc/sudoers.d/qt"
