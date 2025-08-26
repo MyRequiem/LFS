@@ -89,10 +89,15 @@ util-linux.sh
 e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
+# ========================================================
+# если обновляем LFS до новой версии, очищаем директорию
+#    /var/log/removed_la_files/
+# ========================================================
 # устанавливаем скрипт /usr/sbin/remove-la-files.sh и затем запускаем его для
 # очистки системы от libtool-архивов (*.la)
 set-remove-la-files.sh
 strip.sh
+cleaning-up.sh
 
 
 # vim:ft=conf

@@ -1,0 +1,113 @@
+Обновление установленной и рабочей LFS системы до новой версии
+--------------------------------------------------------------
+
+###
+# INFO
+#    Обновления LFS выходят раз в полгода, обычно 1 марта и 1 сентября
+###
+
+1) Сначала обновим ядро до актуальной версии
+    ./stage-5-making_LFS_system_bootable/
+
+    -------------
+    Kernel Source
+    -------------
+        # удаляем пакет kernel-source-${CURRENT_KERNEL_VERSION}
+            rm -f  /usr/src/linux
+            rm -rf /usr/src/linux-${CURRENT_KERNEL_VERSION}
+            rm -f  /var/log/packages/kernel-source-${CURRENT_KERNEL_VERSION}
+        # устанавливаем исходники нового ядра
+            ./kernel-source.sh
+
+    --------------
+    Kernel Headers
+    --------------
+        # обновляем заголовки ядра
+            ./kernel-headers.sh ${NEW_KERNEL_VERSION}
+
+        # чистим систему от старых заголовков, не присутствующих в новой версии
+        # ядра на основе анализа разницы файлов
+            /var/log/packages/kernel-headers-{${CURRENT_KERNEL_VERSION},${NEW_KERNEL_VERSION}}
+
+        # удаляем файл /var/log/packages/kernel-headers-${CURRENT_KERNEL_VERSION}
+
+    ------------
+    Linux Kernel
+    ------------
+        # собираем и устанавливаем новое ядро
+            ./kernel-generic.sh ${NEW_KERNEL_VERSION}
+
+        # чистим систему от старого ядра на основе анализа разницы файлов
+            /var/log/packages/kernel-generic-{${CURRENT_KERNEL_VERSION},${NEW_KERNEL_VERSION}}
+
+        # удаляем файл /var/log/packages/kernel-generic-${CURRENT_KERNEL_VERSION}
+
+    --------------
+    Kernel Modules
+    --------------
+        # собираем и устанавливаем модули для нового ядра
+            ./kernel-modules.sh ${NEW_KERNEL_VERSION}
+
+        # удаляем старые модули
+            removepkg /var/log/packages/kernel-modules-${CURRENT_KERNEL_VERSION}
+
+    -------------------------
+    Обновляем загрузчик GRUB
+    -------------------------
+        # сначала обновляем версию LFS и ядра в скрипте set-grub-config.sh
+        #    menuentry "GNU/Linux LFS-<lfs_version>        Linux-${NEW_KERNEL_VERSION}" {
+        # затем запускаем:
+        ./set-grub-config.sh
+
+
+    ---------------------
+    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+    ---------------------
+
+
+2) Обновление Glibc
+    stage-3-build_basic_system/
+        # описание в скрипте glibc.sh, сам скрипт уже адаптирован к обновлениям
+        ./glibc.sh
+
+    ---------------------
+    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+    ---------------------
+
+        # чистим систему от старого пакета glibc на основе анализа разницы
+        # файлов
+            /var/log/packages/glibc-{old_version,new_version}
+
+        # удаляем файл /var/log/packages/glibc-<old_version>
+
+    ---------------------
+    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+    ---------------------
+
+
+3) Пересобираем разделы сборки LFS - 3, 4, 5
+    stage-3-build_basic_system/
+        removepkg                       * уже установлено
+        main-directory-tree             * уже установлено
+        man-pages                       * если изменилась версия
+        iana-etc                        * если изменилась версия
+        glibc                           * уже обновлено
+        ###
+        # ВАЖНО:
+        #    пакет binutils пересобираем и устанавливаем дважды, и только потом
+        #    удаляем библиотеки передыдущей версии
+        ###
+        set-remove-la-files.sh          * уже установлено
+
+
+    stage-4-system_configuration/
+    stage-5-making_LFS_system_bootable/
+        etc-fstab                       * изменить версию в /var/log/packages/
+        kernel-source                   * уже установлено
+        kernel-headers                  * уже установлено
+        kernel-generic                  * уже установлено
+        kernel-modules                  * уже установлено
+        set-grub-config.sh              * GRUB конфиг уже установлен
+        creating-regular-user.sh        * обычный пользователь уже существует
+
+# vim:ft=conf
