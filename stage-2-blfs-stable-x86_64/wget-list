@@ -613,12 +613,5 @@ https://github.com/fmtlib/fmt/archive/11.0.2/fmt-11.0.2.tar.gz
 https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz
 https://github.com/protocolbuffers/protobuf/releases/download/v27.3/protobuf-27.3.tar.gz
 https://github.com/nmeum/android-tools/releases/download/35.0.2/android-tools-35.0.2.tar.xz
-https://files.pythonhosted.org/packages/source/n/numpy/numpy-2.1.0.tar.gz
-https://download.drobilla.net/serd-0.32.4.tar.xz
-https://download.drobilla.net/sord-0.16.14.tar.xz
-https://lv2plug.in/spec/lv2-1.18.10.tar.xz
-https://download.drobilla.net/sratom-0.6.14.tar.xz
-https://download.drobilla.net/lilv-0.24.20.tar.xz
-https://github.com/helge17/tuxguitar/releases/download/1.6.6/tuxguitar-1.6.6-linux-swt-amd64.tar.gz
 
 # vim:ft=conf nowrap

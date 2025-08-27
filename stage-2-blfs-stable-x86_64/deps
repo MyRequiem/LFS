@@ -165,7 +165,7 @@ fusefat                                 vifm
 fuseiso                                 vifm
 game-music-emu                          gst-plugins-bad
 gc                                      w3m, guile
-gcc                                     cmake, python3-numpy
+gcc                                     cmake
 gcr3                                    pinentry
 gcr4                                    pinentry
 gdb                                     openssh, glib, gcc, rustc, python3, guile
@@ -286,7 +286,6 @@ krb4                                    cyrus-sasl
 kwayland                                pinentry
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
-lapack                                  python3-numpy
 lasem                                   goffice
 lcms2                                   openjpeg, ghostscript, libmng, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, openjdk, libplacebo, poppler
 lcov                                    libseccomp
@@ -455,7 +454,7 @@ libxmlb                                 appstream
 libxslt                                 p11-kit, glib, python3-lxml, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, osinfo-db-tools, appstream-glib
 libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
 libyaml                                 ruby, appstream, dtc, appstream-glib
-lilv                                    gst-plugins-bad, tuxguitar
+lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, exim, fcron, at, qemu
 liquid-rescale                          imagemagick
@@ -474,7 +473,6 @@ ltc-tools                               gst-plugins-bad
 lua                                     highlight, vim, mpv, gimp
 luajit                                  gegl
 luit                                    xterm
-lv2                                     sratom
 lvm2
 lxqt-notificationd                      libnotify
 lxqt-policykit                          polkit
@@ -536,7 +534,6 @@ oniguruma                               jq, slang
 onnxruntime                             gst-plugins-bad
 open-mpi                                boost
 openal                                  ffmpeg, mpg123, gst-plugins-bad, qt6, mpv
-openblas                                python3-numpy
 opencl                                  gegl
 opencore-amr                            ffmpeg
 opencv                                  ffmpeg, gst-plugins-bad
@@ -545,7 +542,7 @@ opendmarc                               exim
 openexr                                 gst-plugins-bad, gegl, gimp, imagemagick
 openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils
-openjdk                                 libidn, cmake, apache-ant, tuxguitar
+openjdk                                 libidn, cmake, apache-ant
 openjpeg                                ghostscript, ffmpeg, imagemagick, gst-plugins-bad, poppler, gimp
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, exim
 opensc                                  openssh
@@ -622,10 +619,9 @@ pwgen
 python2                                 yasm, cups, alsa-lib
 python3 (пересобранный в BLFS)          python3-charset-normalizer, python3-meson
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
-python3-attrs                           python3-numpy
 python3-build                           python3-setuptools-scm, python3-meson
 python3-charset-normalizer              python3-requests
-python3-cython                          yasm, nghttp2, python3-meson, python3-numpy
+python3-cython                          yasm, nghttp2, python3-meson
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, ibus
 python3-dbusmock                        polkit
@@ -641,7 +637,7 @@ python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins
 python3-httpbin                         python3-requests
 python3-httpx                           python3-urllib3
 python3-hypercorn                       python3-urllib3
-python3-hypothesis                      python3-pycairo, python3-numpy
+python3-hypothesis                      python3-pycairo
 python3-idna                            python3-requests
 python3-importlib-metadata              python3-build
 python3-installer                       python3-build
@@ -653,10 +649,10 @@ python3-lxml                            elogind
 python3-mako                            glib, mesa
 python3-markdown                        glib
 python3-markupsafe                      python3-requests
-python3-meson                           python3-dbus, python3-numpy
+python3-meson                           python3-dbus
 python3-mock                            python3-urllib3
 python3-myst-parser                     llvm
-python3-numpy                           boost, lilv
+python3-numpy                           boost
 python3-pathspec                        python3-hatchling
 python3-pep8                            python3-pygobject3
 python3-pluggy                          python3-hatchling
@@ -669,11 +665,11 @@ python3-pygments                        llvm, gegl
 python3-pygobject3                      dbus, ibus, gtk4, mirage, libvirt, libvirt-glib, gegl, gimp
 python3-pyparsing                       libinput, spice
 python3-pyproject-hooks                 python3-build
-python3-pyproject-metadata              python3-meson, python3-numpy
+python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-numpy
+python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson
@@ -700,7 +696,6 @@ python3-werkzeug                        python3-requests
 python3-xmlschema
 python3-zipp                            python3-importlib-metadata
 pytrash
-pytz                                    python3-numpy
 qemu
 qoi                                     gimp
 qrencode                                gst-plugins-bad
@@ -737,7 +732,6 @@ sdl2                                    ffmpeg, gegl, gst-plugins-base, sdl12-co
 selinux                                 elogind, qemu
 sendmail                                gnupg, sudo, fcron, at
 septel                                  libpcap
-serd                                    sord
 sgml-common                             docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
 shared-mime-info                        glib, gdk-pixbuf
 shellcheck
@@ -747,7 +741,6 @@ slang                                   aalib
 slop                                    maim
 snappy                                  qemu
 sndio                                   sdl2
-sord                                    lv2
 sound-theme-freedesktop                 libcanberra
 soundtouch                              gst-plugins-bad
 soxr                                    pulseaudio
@@ -762,7 +755,6 @@ spirv-headers                           spirv-tools
 spirv-tools                             glslang
 spnego                                  curl
 sqlite                                  gnupg, lnav, lshw, cyrus-sasl, rustc, nss, python3, libsndfile, exim, libsoup, libsoup3, qt5-components, qt6
-sratom                                  lilv
 srt                                     ffmpeg, gst-plugins-bad
 sshfs                                   vifm
 sssd                                    sudo
@@ -791,7 +783,6 @@ tremor                                  gst-plugins-base
 trousers                                gnutls
 tslib                                   qt6
 tunctl
-tuxguitar
 twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good
 uchardet                                mpv
