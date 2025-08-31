@@ -68,33 +68,15 @@ fi
 export TERM
 
 # bash prompt
-if [[ "\${EUID}" == "0" ]]; then
-    CYAN="\\[\\033[0;36m\\]"
-    LBLUE="\\[\\033[1;34m\\]"
-    LRED="\\[\\033[1;31m\\]"
-    BROWN="\\[\\033[0;33m\\]"
-    LMAGENTA="\\[\\033[1;35m\\]"
-    COLORRESET="\\[\\033[0;0m\\]"
-
-    USERNAME="\\u"
-    HOST_NAME="\\h"
-    TIME="\\A"
-    CURR_DIR="\\w"
-
-    PS1="\${USERNAME}\${CYAN}@\${BROWN}\${HOST_NAME}"
-    PS1="\${PS1}\${LBLUE}[\${TIME}]\${COLORRESET}:"
-
-    if [[ -n "\${SSH_CLIENT}" || -n "\${SSH_CONNECTION}" ]]; then
-        PS1="\${PS1}\${LMAGENTA}[SSH]"
-    fi
-
-    export PS1="\${PS1}\${LRED}\${CURR_DIR}\\$\${COLORRESET} "
-else
-    PS1='\\u@\\h:\\w\\$ '
-fi
-
+# \\u - username
+# \\h - hostname
+# \\A - time
+# \\w - current directory
+# \\$ - symbol $
+PS1='\\u@\\h[\\A]:\\w\\$ '
 PS2='> '
-export PS1 PS2
+PS4='+ '
+export PS1 PS2 PS4
 
 PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
 [ -d  /usr/local/lib/pkgconfig ] &&
@@ -110,8 +92,7 @@ for PROFILE_SCRIPT in /etc/profile.d/*.sh; do
     fi
 done
 
-unset PROFILE_SCRIPT CYAN LBLUE LRED BROWN LMAGENTA COLORRESET USERNAME \\
-HOST_NAME TIME CURR_DIR
+unset PROFILE_SCRIPT
 
 # End ${PROFILE}
 EOF
