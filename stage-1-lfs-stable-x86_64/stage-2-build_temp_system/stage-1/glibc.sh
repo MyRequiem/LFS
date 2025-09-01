@@ -36,18 +36,14 @@ echo "rootsbindir=/usr/sbin" > configparms
 # и кросс-компилятор в /mnt/lfs/tools
 #    --host="${LFS_TGT}"
 #    --build="$(../scripts/config.guess)"
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.4
-# (более ранние версии поддерживаться не будут)
-#    --enable-kernel=5.4
-# сообщим Glibc о необходимости скомпилироваться с заголовками, установленными
-# в /mnt/lfs/usr/include, чтобы он точно знал, какие функции имеет ядро, и мог
-# соответствующим образом оптимизировать себя
-#    --with-headers="${LFS}/usr/include"
 # не создавать name service cache daemon (nscd), который больше не используется
 #    --disable-nscd
 # устанавливать библиотеки в /mnt/lfs/usr/lib вместо /mnt/lfs/lib64 по
 # умолчанию для 64-битных машин
 #    libc_cv_slibdir=/usr/lib
+# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.4
+# (более ранние версии поддерживаться не будут)
+#    --enable-kernel=5.4
 
 ###
 # NOTE: на этапе сборки могут появлятся следующие предупреждения:
@@ -65,10 +61,9 @@ echo "rootsbindir=/usr/sbin" > configparms
     --prefix=/usr                        \
     --host="${LFS_TGT}"                  \
     --build="$(../scripts/config.guess)" \
-    --enable-kernel=5.4                  \
-    --with-headers="${LFS}/usr/include"  \
     --disable-nscd                       \
-    libc_cv_slibdir=/usr/lib || exit 1
+    libc_cv_slibdir=/usr/lib             \
+    --enable-kernel=5.4 || exit 1
 
 make || make -j1 || exit 1
 make DESTDIR="${LFS}" install

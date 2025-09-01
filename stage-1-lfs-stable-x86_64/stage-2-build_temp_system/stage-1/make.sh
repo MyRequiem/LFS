@@ -10,12 +10,8 @@ PRGNAME="make"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# Make не будет ссылаться на библиотеки Guile, которые могут присутствовать в
-# хост-системе, но не доступны в нашей временной среде
-#    --without-guile
 ./configure             \
     --prefix=/usr       \
-    --without-guile     \
     --host="${LFS_TGT}" \
     --build="$(build-aux/config.guess)" || exit 1
 

@@ -15,7 +15,8 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 # соберем утилиту 'tic'
 mkdir build
 pushd build       || exit 1
-../configure \
+../configure            \
+    --prefix=$LFS/tools \
     AWK=gawk      || exit 1
 make -C include   || exit 1
 make -C progs tic || exit 1
@@ -50,11 +51,7 @@ popd              || exit 1
 
 make || make -j1 || exit 1
 
-# при установке нам нужно передать путь к только что собранной утилите 'tic',
-# которая уже способна запускаться в LFS системе и создать базу данных
-# терминала без ошибок
-#    TIC_PATH="$(pwd)/build/progs/tic"
-make DESTDIR="${LFS}" TIC_PATH="$(pwd)/build/progs/tic" install
+make DESTDIR="${LFS}" install
 
 # библиотека libncurses.so необходима для нескольких пакетов в LFS, поэтому
 # создадим ссылку в /usr/lib/
