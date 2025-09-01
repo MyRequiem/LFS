@@ -30,7 +30,7 @@ clear_console
 ### Binutils
 echo "Binutils: $(ld --version | head -n 1 | cut -d ' ' -f 4)"
 echo "Required: >=2.13.1"
-echo "Version >2.44 not recommended"
+echo "Version >2.45 not recommended"
 clear_console
 
 ### Bison
@@ -79,8 +79,8 @@ clear_console
 ### GCC, G++
 echo "GCC: $(gcc --version | head -n 1 | cut -d ' ' -f 3)"
 echo "G++: $(g++ --version | head -n 1 | cut -d ' ' -f 3)"
-echo "Required: >=5.2"
-echo "Version >12.2.0 not recommended"
+echo "Required: >=5.4"
+echo "Version >15.2.0 not recommended"
 clear_console
 
 ### Grep
