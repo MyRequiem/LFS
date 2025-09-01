@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
-LFS_VERSION="12.3"
+LFS_VERSION="12.4"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
@@ -13,7 +13,8 @@ LFS_VERSION="12.3"
 #    /etc/profile.d/umask.sh
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
@@ -21,6 +22,10 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 
 # =============================== /etc/profile =================================
 PROFILE="/etc/profile"
+if [ -f "${PROFILE}" ]; then
+    mv "${PROFILE}" "${PROFILE}.old"
+fi
+
 cat << EOF > "${TMP_DIR}${PROFILE}"
 #! /bin/bash
 
@@ -67,7 +72,7 @@ if [[ "\${TERM}" == "" || "\${TERM}" == "unknown" ]]; then
 fi
 export TERM
 
-# bash prompt
+# Bash prompt
 # \\u - username
 # \\h - hostname
 # \\A - time
@@ -129,6 +134,10 @@ chmod 755 "${TMP_DIR}${DIRCOLORS_SH}"
 
 # ============================== /etc/dircolors ================================
 DIRCOLORS="/etc/dircolors"
+if [ -f "${DIRCOLORS}" ]; then
+    mv "${DIRCOLORS}" "${DIRCOLORS}.old"
+fi
+
 cat << EOF > "${TMP_DIR}${DIRCOLORS}"
 # Begin ${DIRCOLORS}
 
@@ -597,6 +606,11 @@ chmod 755 "${TMP_DIR}${I18N}"
 # ==============================================================================
 
 /bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${DIRCOLORS}"
+config_file_processing "${PROFILE}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (system-wide defaults)
