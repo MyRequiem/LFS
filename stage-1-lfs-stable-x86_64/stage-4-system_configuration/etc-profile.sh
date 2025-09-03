@@ -22,10 +22,6 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 
 # =============================== /etc/profile =================================
 PROFILE="/etc/profile"
-if [ -f "${PROFILE}" ]; then
-    mv "${PROFILE}" "${PROFILE}.old"
-fi
-
 cat << EOF > "${TMP_DIR}${PROFILE}"
 #! /bin/bash
 
@@ -130,14 +126,8 @@ fi
 # End ${DIRCOLORS_SH}
 EOF
 
-chmod 755 "${TMP_DIR}${DIRCOLORS_SH}"
-
 # ============================== /etc/dircolors ================================
 DIRCOLORS="/etc/dircolors"
-if [ -f "${DIRCOLORS}" ]; then
-    mv "${DIRCOLORS}" "${DIRCOLORS}.old"
-fi
-
 cat << EOF > "${TMP_DIR}${DIRCOLORS}"
 # Begin ${DIRCOLORS}
 
@@ -536,8 +526,6 @@ export INPUTRC
 # End ${READLINE}
 EOF
 
-chmod 755 "${TMP_DIR}${READLINE}"
-
 # ========================= /etc/profile.d/umask.sh ============================
 UMASK="/etc/profile.d/umask.sh"
 cat << EOF > "${TMP_DIR}${UMASK}"
@@ -557,9 +545,6 @@ fi
 
 # End ${UMASK}
 EOF
-
-chmod 755 "${TMP_DIR}${UMASK}"
-
 # ========================== /etc/profile.d/i18n.sh ============================
 I18N="/etc/profile.d/i18n.sh"
 cat << EOF > "${TMP_DIR}${I18N}"
@@ -600,12 +585,22 @@ export LC_ALL=
 
 # End ${I18N}
 EOF
-
-chmod 755 "${TMP_DIR}${I18N}"
-
 # ==============================================================================
 
+if [ -f "${PROFILE}" ]; then
+    mv "${PROFILE}" "${PROFILE}.old"
+fi
+
+if [ -f "${DIRCOLORS}" ]; then
+    mv "${DIRCOLORS}" "${DIRCOLORS}.old"
+fi
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+chmod 755 "${READLINE}"
+chmod 755 "${UMASK}"
+chmod 755 "${I18N}"
+chmod 755 "${DIRCOLORS_SH}"
 
 config_file_processing "${DIRCOLORS}"
 config_file_processing "${PROFILE}"

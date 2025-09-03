@@ -10,7 +10,8 @@ LFS_VERSION="12.4"
 # SysVinit
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
@@ -238,9 +239,30 @@ cat << EOF >> "${CREATEFILES}"
 # End ${CREATEFILES}
 EOF
 
+if [ -f "${RC_LOCAL}" ]; then
+    mv "${RC_LOCAL}" "${RC_LOCAL}.old"
+fi
+
+if [ -f "${INITTAB}" ]; then
+    mv "${INITTAB}" "${INITTAB}.old"
+fi
+
+if [ -f "${ETC_CLOCK}" ]; then
+    mv "${ETC_CLOCK}" "${ETC_CLOCK}.old"
+fi
+
+if [ -f "${CONSOLE}" ]; then
+    mv "${CONSOLE}" "${CONSOLE}.old"
+fi
+
 /bin/cp -vR "${TMP_DIR}"/* /
 
 chmod 754 "${RC_LOCAL}"
+
+config_file_processing "${RC_LOCAL}"
+config_file_processing "${INITTAB}"
+config_file_processing "${ETC_CLOCK}"
+config_file_processing "${CONSOLE}"
 
 ###
 # Настройка сценариев загрузки и завершения работы
@@ -279,6 +301,8 @@ sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 #    # shutdown -t0 -r now
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (System V configuration)

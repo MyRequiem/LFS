@@ -103,6 +103,8 @@
 
 
     stage-4-system_configuration/
+        terminus-font                   * если есть более новая версия
+
     stage-5-making_LFS_system_bootable/
         kernel-source                   * уже обновлено
         kernel-headers                  * уже обновлено

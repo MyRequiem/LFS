@@ -7,31 +7,15 @@ LFS_VERSION="12.4"
 # Файл /etc/shells содержит список оболочек для входа в систему. Приложения
 # используют этот файл, чтобы определить, является ли оболочка действительной.
 
-# в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
-# LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
-# пройден. Проверим окружение явно:
-if [[ "$(id -u)" != "0" ]]; then
-    echo "Only superuser (root) can run this script"
-    exit 1
-fi
-
-# мы в chroot окружении?
-ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
-ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
-if [[ "${ID1}" == "${ID2}" ]]; then
-    echo "You must enter chroot environment."
-    echo "Run 003_entering_chroot.sh script in this directory."
-    exit 1
-fi
-
 ROOT="/"
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
 SHELLS="/etc/shells"
-# оболочки записываются как полный путь к исполняемому файлу в отдельной строке
 cat << EOF > "${TMP_DIR}${SHELLS}"
 # Begin ${SHELLS}
 
@@ -41,7 +25,15 @@ cat << EOF > "${TMP_DIR}${SHELLS}"
 # End ${SHELLS}
 EOF
 
+if [ -f "${SHELLS}" ]; then
+    mv "${SHELLS}" "${SHELLS}.old"
+fi
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${SHELLS}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (login shell list)
