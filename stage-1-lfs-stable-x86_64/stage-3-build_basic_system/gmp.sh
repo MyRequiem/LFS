@@ -24,6 +24,9 @@ mkdir -pv "${TMP_DIR}"
 # с параметром --build=x86_64-unknown-linux-gnu, где unknown это slackware, lfs
 # и т.д., а затем пересобрать
 
+# корректируем для совместимости с gcc>=15
+sed -i '/long long t1;/,+1s/()/(...)/' configure
+
 # включаем поддержку C++
 #    --enable-cxx
 ./configure          \
@@ -43,7 +46,7 @@ make || make -j1 || exit 1
 # echo "======================= Test results ======================="
 # echo "There must be 199 tests passed:"
 # awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
-# echo    "============================================================"
+# echo "============================================================"
 # echo -n "View the results and then press any key... "
 # read -r JUNK
 # echo "${JUNK}" > /dev/null

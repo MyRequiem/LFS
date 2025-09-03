@@ -10,9 +10,29 @@ PRGNAME="ncurses"
 # писать переносимый код
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+SOURCES="${ROOT}sources"
+source "${ROOT}check_environment.sh" || exit 1
 
+ARCH_VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}-*.t?z" 2>/dev/null | sort | head -n 1 | rev | \
+    cut -d . -f 2- | cut -d - -f 1,2 | rev)"
+
+BUILD_DIR="${SOURCES}/build"
+mkdir -p "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+rm -rf "${PRGNAME}-${ARCH_VERSION}"
+
+tar xvf "${SOURCES}/${PRGNAME}-${ARCH_VERSION}"*.t?z || exit 1
+cd "${PRGNAME}-${ARCH_VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+VERSION="$(echo "${ARCH_VERSION}" | tr - .)"
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
@@ -36,11 +56,12 @@ make || make -j1 || exit 1
 # в состав пакета входят наборы тестов, но их можно запустить только после
 # того, как пакет будет установлен
 
+LIB_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 # установка пакета сразу в корень системы командой 'make install' перезапишет
-# libncursesw.so.${VERSION} Это может привести к сбою настроек терминала и
+# libncursesw.so.${LIB_VERSION} Это может привести к сбою настроек терминала и
 # ошибки оболочки (Segmentation fault), которая будет пытаться использовать код
 # и данные из прежней библиотеки. Установим пакет с помощью DESTDIR правильно
-# заменив библиотеку libncursesw.so.${VERSION}
+# заменив библиотеку libncursesw.so.${LIB_VERSION}
 make DESTDIR="${PWD}/dest" install
 
 # stripping
@@ -54,9 +75,9 @@ done
 
 cp -vR dest/* "${TMP_DIR}"/
 
-LIBNCURSESW="dest/usr/lib/libncursesw.so.${VERSION}"
+LIBNCURSESW="dest/usr/lib/libncursesw.so.${LIB_VERSION}"
 install -vm755 "${LIBNCURSESW}" /usr/lib
-rm -v  "${LIBNCURSESW}"
+rm -v "${LIBNCURSESW}"
 sed -e 's/^#if.*XOPEN.*$/#if 1/' -i dest/usr/include/curses.h
 cp -av dest/* /
 
@@ -110,7 +131,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # curses.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://invisible-mirror.net/archives/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://invisible-mirror.net/archives/${PRGNAME}/current/${PRGNAME}-${ARCH_VERSION}.tgz
 #
 EOF
 

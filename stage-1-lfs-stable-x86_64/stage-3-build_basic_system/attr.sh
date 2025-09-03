@@ -23,6 +23,11 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+# установим библиотеку libattr.so командой 'install' или если пакет уже
+# установлен при копировании в корень системы выдаст ошибку:
+#    ./attr.sh: Ошибка сегментирования /bin/cp -vR "${TMP_DIR}"/* /
+install -vm755 "${TMP_DIR}/usr/lib/libattr".so* /usr/lib
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /

@@ -13,6 +13,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим предупреждения, которые выдает Perl>=5.42
+sed 's/! $output_file eq/$output_file ne/' -i tp/Texinfo/Convert/*.pm || exit 1
+
 ./configure \
     --prefix=/usr || exit 1
 

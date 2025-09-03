@@ -85,29 +85,29 @@
     ---------------------
 
 
-3) Пересобираем разделы сборки LFS - 3, 4, 5
+3) Пересобираем разделы сборки LFS: stage-{3,4,5}-...
     stage-3-build_basic_system/
         removepkg                       * уже установлено
         main-directory-tree             * уже установлено
-        man-pages                       * если изменилась версия
-        iana-etc                        * если изменилась версия
         glibc                           * уже обновлено
         ###
         # ВАЖНО:
         #    пакет binutils пересобираем и устанавливаем дважды, и только потом
         #    удаляем библиотеки передыдущей версии
-        ###
         set-remove-la-files.sh          * уже установлено
+        ###
+        # перед запуском скрипта remove-la-files.sh чистим директорию
+        # /var/log/removed_la_files/
+        ###
+        remove-la-files.sh
 
 
     stage-4-system_configuration/
     stage-5-making_LFS_system_bootable/
-        etc-fstab                       * изменить версию в /var/log/packages/
-        kernel-source                   * уже установлено
-        kernel-headers                  * уже установлено
-        kernel-generic                  * уже установлено
-        kernel-modules                  * уже установлено
-        set-grub-config.sh              * GRUB конфиг уже установлен
+        kernel-source                   * уже обновлено
+        kernel-headers                  * уже обновлено
+        kernel-generic                  * уже обновлено
+        kernel-modules                  * уже обновлено
         creating-regular-user.sh        * обычный пользователь уже существует
 
 # vim:ft=conf

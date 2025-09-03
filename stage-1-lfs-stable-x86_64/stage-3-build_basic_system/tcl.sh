@@ -83,6 +83,8 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
+chmod 644 "/usr/lib/libtclstub${MAJ_VERSION}.a"
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Tool Command Language)
 #

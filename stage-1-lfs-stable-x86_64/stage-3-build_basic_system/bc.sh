@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
 # включаем использование readline, чтобы улучшить функцию редактирования строк
 # в bc
 #    -r
-CC=gcc            \
+CC='gcc -std=c99' \
 ./configure       \
     --prefix=/usr \
     -G            \

@@ -33,7 +33,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим две ненужные группы, render и sgx, из правил udev по умолчанию
+# удалим две ненужные группы (render и sgx) из правил udev по умолчанию
 sed                                      \
     -e 's/GROUP="render"/GROUP="video"/' \
     -e 's/GROUP="sgx", //'               \

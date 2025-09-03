@@ -40,15 +40,14 @@ make || make -j1 || exit 1
 # для запуска тестов в конфигурации ядра хоста должен быть установлен параметр
 # CONFIG_SCSI_DEBUG как модуль
 #
-# запуск набора тестов от имени пользователя root может быть не безопасным для
+# запуск набора тестов от пользователя root может быть небезопасным для
 # системы, поэтому будем запускать от пользователя tester, также требуется файл
-# /etc/fstab (создадим фиктивный)
+# /etc/fstab (создадим фиктивный если не существует)
 #
-# touch /etc/fstab
+# ! [ -r /etc/fstab ] && touch /etc/fstab
 # chown -R tester .
 # su tester -c "make -k check"
 # chown -R root:root .
-# rm -f /etc/fstab
 
 make install DESTDIR="${TMP_DIR}"
 

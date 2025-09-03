@@ -49,14 +49,7 @@ make || make -j1 || exit 1
 # ulimit -s -H unlimited
 #
 # удалим/исправим несколько известных ошибок при тестировании
-# sed -e '/cpython/d' -i \
-#     ../gcc/testsuite/gcc.dg/plugin/plugin.exp
-# sed -e 's/no-pic /&-no-pie /' -i \
-#     ../gcc/testsuite/gcc.target/i386/pr113689-1.c
-# sed -e 's/300000/(1|300000)/' -i \
-#     ../libgomp/testsuite/libgomp.c-c++-common/pr109062.c
-# sed -e 's/{ target nonpic } //' -e '/GOTPCREL/d' -i \
-#     ../gcc/testsuite/gcc.target/i386/fentryname3.c
+# sed -e '/cpython/d' -i ../gcc/testsuite/gcc.dg/plugin/plugin.exp
 #
 # тесты будем запускать как непривилегированный пользователь tester, поэтому
 # изменим владельца в директории сборки
@@ -105,8 +98,6 @@ ln -sfv "../../libexec/${PRGNAME}/${DUMPMACHINE}/${VERSION}/liblto_plugin.so" \
 # переместим некоторые файлы
 mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib"
 
-chmod 755 "${TMP_DIR}/usr/lib/libgcc_s.so"{,.1}
-
 # если мы устанавливаем пакет в первый раз, удалим директории и файлы, которые
 # были установлены GCC, построенным во временной системе
 if [ -d /usr/x86_64-lfs-linux-gnu ]; then
@@ -121,6 +112,8 @@ fi
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
+
+chmod 755 /usr/lib/libgcc_s.so{,.1}
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Base GCC package with C support)

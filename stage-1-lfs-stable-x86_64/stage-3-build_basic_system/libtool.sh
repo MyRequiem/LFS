@@ -22,7 +22,7 @@ make || make -j1 || exit 1
 # make -k check
 make install DESTDIR="${TMP_DIR}"
 
-# удалим бесполезную статическую библиотеку
+# удалим статическую библиотеку, которая нужна только для тестов
 rm -fv "${TMP_DIR}/usr/lib/libltdl.a"
 
 source "${ROOT}/stripping.sh"      || exit 1

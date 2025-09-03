@@ -39,7 +39,7 @@ python3 -c 'from pty import spawn; spawn(["echo", "ok"])' || exit 1
 
 # вносим некоторые изменения, чтобы разрешить gcc >= 14.1
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-gcc14-1.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-gcc15-1.patch" || exit 1
 
 # указывает где находится конфигурационный скрипт tclConfig.sh из пакета tcl
 #    --with-tcl=/usr/lib

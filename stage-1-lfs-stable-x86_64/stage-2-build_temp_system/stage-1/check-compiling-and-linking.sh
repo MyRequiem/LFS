@@ -4,6 +4,12 @@
 # функции (компиляция и компоновка) новой цепочки инструментов сборки работают
 # должным образом
 
+# вывод сообщений всех последующих команд должен быть на английском языке
+LC_MESSAGES=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
+LANG=en_US.UTF-8
+export LANG LC_CTYPE LC_MESSAGES
+
 source "$(pwd)/check_environment.sh" || exit 1
 
 clear

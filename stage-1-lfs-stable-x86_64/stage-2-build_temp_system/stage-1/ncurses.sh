@@ -9,8 +9,27 @@ PRGNAME="ncurses"
 # абстракции, позволяющий не беспокоиться об аппаратных различиях терминалов и
 # писать переносимый код
 
-source "$(pwd)/check_environment.sh"                  || exit 1
-source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "$(pwd)/check_environment.sh" || exit 1
+
+SOURCES="${LFS}/sources"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}-*.t?z" 2>/dev/null | sort | head -n 1 | rev | \
+    cut -d . -f 2- | cut -d - -f 1,2 | rev)"
+
+BUILD_DIR="${SOURCES}/build"
+mkdir -p "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+rm -rf "${PRGNAME}-${VERSION}"
+
+tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.t?z || exit 1
+cd "${PRGNAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # соберем утилиту 'tic'
 mkdir build

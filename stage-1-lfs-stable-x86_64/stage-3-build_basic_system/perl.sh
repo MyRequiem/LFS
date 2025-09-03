@@ -40,8 +40,8 @@ export BUILD_BZIP2=0
 # сборка Perl с поддержкой потоков
 #    -Dusethreads
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
-sh Configure                                             \
-    -des                                                 \
+sh Configure                                              \
+    -des                                                  \
     -D prefix=/usr                                        \
     -D vendorprefix=/usr                                  \
     -D privlib="/usr/lib/perl5/${MAJ_VER}/core_perl"      \

@@ -26,6 +26,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
+VER_MODE="$(echo "${VERSION}" | tr . _)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (C library for parsing XML)
 #
@@ -33,7 +34,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # parser used by Python, GNOME, Xft2, and other things.
 #
 # Home page: https://libexpat.github.io/
-# Download:  https://prdownloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/libexpat/libexpat/releases/download/R_${VER_MODE}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

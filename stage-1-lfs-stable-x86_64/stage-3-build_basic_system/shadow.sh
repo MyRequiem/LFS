@@ -73,7 +73,7 @@ cp "${ETC_DEFAULT}/useradd" "${TMP_DIR}${ETC_DEFAULT}"
 # на утилиту 'passwd' установим suid бит, чтобы любой пользователь мог ее
 # запустить с правами владельца (root). Необходимо, чтобы пользователь сам мог
 # менять свой пароль.
-chmod 4711 "/usr/bin/passwd"
+chmod 4711 /usr/bin/passwd
 
 # включим теневые пароли
 pwconv

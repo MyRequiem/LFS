@@ -29,6 +29,11 @@ pip3 install            \
     --find-links dist   \
     "${PRGNAME}" || exit 1
 
+install -vDm644 data/shell-completions/bash/meson \
+    "${TMP_DIR}/usr/share/bash-completion/completions/meson"
+install -vDm644 data/shell-completions/zsh/_meson \
+    "${TMP_DIR}/usr/share/zsh/site-functions/_meson"
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
