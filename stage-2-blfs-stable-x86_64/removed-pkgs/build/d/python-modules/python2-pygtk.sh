@@ -14,7 +14,7 @@ ARCH_NAME="pygtk"
 #              gtk+2
 #              libglade
 # Recommended: no
-# Optional:    python3-numpy
+# Optional:    python2-numpy
 #              libxslt          (для сборки документации)
 
 ROOT="/root/src/lfs"

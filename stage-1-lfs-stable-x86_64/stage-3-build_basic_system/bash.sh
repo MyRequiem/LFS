@@ -29,7 +29,7 @@ make || make -j1 || exit 1
 # используя Expect, и запустим тесты от имени пользователя tester
 #
 # chown -Rv tester .
-# su -s /usr/bin/expect tester << EOF
+# LC_ALL=C.UTF-8 su -s /usr/bin/expect tester << "EOF"
 # set timeout -1
 # spawn make tests
 # expect eof

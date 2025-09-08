@@ -18,7 +18,8 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# make check
+# тесты требуют пакет 'check' (фреймворк для тестов на C), который был удален
+# из LFS начиная с версии 12.4
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

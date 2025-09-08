@@ -13,12 +13,3 @@ if [[ "${ID1}" == "${ID2}" ]]; then
     echo "Run ./entering-chroot-env.sh"
     exit 1
 fi
-
-if [[ "${PATH}" != "/usr/bin:/usr/sbin" ]]; then
-    echo "Environment variable PATH musb be: /usr/bin:/usr/sbin"
-    echo ""
-    echo "Now PATH=${PATH}"
-    echo ""
-    echo "Check script ./entering-chroot-env.sh"
-    exit 1
-fi

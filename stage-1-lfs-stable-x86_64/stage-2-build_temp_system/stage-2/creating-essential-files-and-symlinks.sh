@@ -103,8 +103,8 @@ users:x:999:
 nogroup:x:65534:
 EOF
 
-# для некоторых дальнейших тестов нам понадобится обычный пользователь (позже
-# мы его удалим)
+# для некоторых дальнейших тестов нам понадобится обычный пользователь, назовем
+# его tester
 echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
 echo "tester:x:101:" >> /etc/group
 install -o tester -d /home/tester

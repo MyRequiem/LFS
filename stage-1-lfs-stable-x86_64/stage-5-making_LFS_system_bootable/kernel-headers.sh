@@ -33,12 +33,14 @@ cd "${SRC_DIR}" || exit 1
 # очищаем дерево исходников ядра
 make mrproper || exit 1
 
-# извлечем заголовки из исходного кода ядра в ./usr/include/
+# извлечем заголовки из исходного кода ядра в <kernel_src_dir>/usr/include/
 # Рекомендованный
 #    make target "headers_install"
 # не может быть использован, поскольку он требует rsync, который
 # устанавливается в BLFS
 make headers || exit 1
+
+cp -r usr/{include,include_orig}
 
 # удалим ненужные файлы и скопируем заголовки в /usr/include/
 find usr/include/ -type f ! -name '*.h' -delete
@@ -65,3 +67,6 @@ find usr/include | sort >> "${LOG}"
 sed -i 's/^usr\//\/usr\//' "${LOG}"
 # удалим пустые строки в файле
 sed -i '/^$/d' "${LOG}"
+
+rm -rf usr/include
+mv usr/{include_orig,include}

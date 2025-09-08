@@ -66,8 +66,9 @@ make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
-# удалим бесполезные статические библиотеки
-rm -fv "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a
+# удалим бесполезные статические библиотеки и документацию
+rm -rfv "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a \
+    "${TMP_DIR}/usr/share/doc/gprofng"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

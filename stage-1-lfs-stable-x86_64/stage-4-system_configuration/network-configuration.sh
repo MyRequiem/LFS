@@ -1,12 +1,21 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-LFS_VERSION="12.3"
+LFS_VERSION="12.4"
 
-### Network Configuration (network configuration files)
+### Network Configuration (Network configuration files)
+#    /etc/hostname
+#    /etc/hosts
+#    /etc/resolv.conf
+#    /etc/sysconfig/ifconfig.eth0
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
+
+TMP_DIR="/tmp/pkg-${PRGNAME}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc/sysconfig"
 
 # Именование сетевых устройств
 # ----------------------------
@@ -56,7 +65,7 @@ source "${ROOT}check_environment.sh" || exit 1
 #               ее значение по умолчанию равно 24
 
 IFCONFIG_ETH0="/etc/sysconfig/ifconfig.eth0"
-cat << EOF > "${IFCONFIG_ETH0}"
+cat << EOF > "${TMP_DIR}${IFCONFIG_ETH0}"
 # Begin ${IFCONFIG_ETH0}
 
 ONBOOT=yes
@@ -84,7 +93,7 @@ EOF
 # /etc/resolv.conf
 
 RESOLV_CONF="/etc/resolv.conf"
-cat << EOF > "${RESOLV_CONF}"
+cat << EOF > "${TMP_DIR}${RESOLV_CONF}"
 # Begin ${RESOLV_CONF}
 
 # router
@@ -102,11 +111,12 @@ EOF
 
 ### Конфигурация имени хоста
 # В процессе загрузки файл /etc/hostname используется для установки имени хоста
-echo "lfs" > /etc/hostname
+ETC_HOSTNAME="/etc/hostname"
+echo "lfs" > "${TMP_DIR}${ETC_HOSTNAME}"
 
 ### Настройка файла /etc/hosts
 HOSTS="/etc/hosts"
-cat << EOF > "${HOSTS}"
+cat << EOF > "${TMP_DIR}${HOSTS}"
 # Begin ${HOSTS}
 
 # IP-address        Fully Qualified Domain Name     Alias
@@ -118,7 +128,31 @@ cat << EOF > "${HOSTS}"
 # End ${HOSTS}
 EOF
 
-# пишем список файлов в /var/log/packages/network-configuration-${VERSION}
+if [ -f "${IFCONFIG_ETH0}" ]; then
+    mv "${IFCONFIG_ETH0}" "${IFCONFIG_ETH0}.old"
+fi
+
+if [ -f "${RESOLV_CONF}" ]; then
+    mv "${RESOLV_CONF}" "${RESOLV_CONF}.old"
+fi
+
+if [ -f "${ETC_HOSTNAME}" ]; then
+    mv "${ETC_HOSTNAME}" "${ETC_HOSTNAME}.old"
+fi
+
+if [ -f "${HOSTS}" ]; then
+    mv "${HOSTS}" "${HOSTS}.old"
+fi
+
+/bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${IFCONFIG_ETH0}"
+config_file_processing "${RESOLV_CONF}"
+config_file_processing "${ETC_HOSTNAME}"
+config_file_processing "${HOSTS}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
+
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (network configuration files)
 #
@@ -127,8 +161,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 #    /etc/resolv.conf
 #    /etc/sysconfig/ifconfig.eth0
 #
-/etc/hostname
-/etc/hosts
-/etc/resolv.conf
-/etc/sysconfig/ifconfig.eth0
 EOF
+
+source "${ROOT}write_to_var_log_packages.sh" \
+    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"

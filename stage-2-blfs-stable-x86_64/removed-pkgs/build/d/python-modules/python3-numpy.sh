@@ -16,7 +16,7 @@ ARCH_NAME="numpy"
 #              --- для тестов ---
 #              python3-attrs
 #              python3-pytest
-#              pytz
+#              python3-pytz
 #              python3-hypothesis    (https://pypi.org/project/hypothesis/)
 
 ROOT="/root/src/lfs"

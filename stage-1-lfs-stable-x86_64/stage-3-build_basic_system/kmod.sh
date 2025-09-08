@@ -18,7 +18,6 @@ cd build || exit 1
 
 meson setup ..          \
     --prefix=/usr       \
-    --sbindir=/usr/sbin \
     --buildtype=release \
     -D manpages=false || exit 1
 

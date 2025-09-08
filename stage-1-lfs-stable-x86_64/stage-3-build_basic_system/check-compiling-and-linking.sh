@@ -1,11 +1,17 @@
 #! /bin/bash
 
-# ROOT="/"
-# source "${ROOT}check_environment.sh" || exit 1
-
 # Теперь, когда наша конечная цепочка инструментов (binutils+glibc+gcc)
 # полностью готова, важно снова убедиться, что компиляция и компоновка будут
 # работать должным образом.
+
+# вывод сообщений всех последующих команд должен быть на английском языке
+LC_MESSAGES=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
+LANG=en_US.UTF-8
+export LANG LC_CTYPE LC_MESSAGES
+
+ROOT="/"
+source "${ROOT}check_environment.sh" || exit 1
 
 echo ""
 echo "--------"

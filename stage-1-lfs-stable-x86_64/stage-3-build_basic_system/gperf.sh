@@ -18,10 +18,7 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-
-# тесты Gperf не проходят в несколько потоков, поэтому явно укажем -j1
-# make -j1 check
-
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

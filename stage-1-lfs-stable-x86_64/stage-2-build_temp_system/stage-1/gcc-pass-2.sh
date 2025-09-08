@@ -42,10 +42,6 @@ sed '/thread_header =/s/@.*@/gthr-posix.h/' \
 mkdir build
 cd build || exit 1
 
-# разрешить libstdc++ использовать общий libgcc, созданный на этом этапе,
-# вместо статической версии, созданной при первой сборке GCC. Это необходимо
-# для поддержки обработки исключений C++
-#    LDFLAGS_FOR_TARGET=...
 # отключаем локализацию, поскольку i18n на данном этапе нам не требуется
 #    --disable-nls
 # для x86_64 архитектуры LFS пока не поддерживает мультибиблиотечную
@@ -60,26 +56,34 @@ cd build || exit 1
 #    --disable-libquadmath
 #    --disable-libssp
 #    --disable-libvtv
+# отключаем runtime библиотеки GCC sanitizer, которые не нужны для временной
+# установки. В gcc-pass-1.sh мы это делали с помощью параметра
+# --disable-libstdcxx, теперь мы можем явно указать
+#    --disable-libsanitizer
 # собираем только необходимые на данный момент компиляторы C и C++
 #    --enable-languages=c,c++
-../configure                                        \
-    --build="$(../config.guess)"                    \
-    --host="${LFS_TGT}"                             \
-    --target="${LFS_TGT}"                           \
-    LDFLAGS_FOR_TARGET=-L"${PWD}/${LFS_TGT}/libgcc" \
-    --prefix=/usr                                   \
-    --with-build-sysroot="${LFS}"                   \
-    --enable-default-pie                            \
-    --enable-default-ssp                            \
-    --disable-nls                                   \
-    --disable-multilib                              \
-    --disable-libatomic                             \
-    --disable-libgomp                               \
-    --disable-libquadmath                           \
-    --disable-libsanitizer                          \
-    --disable-libssp                                \
-    --disable-libvtv                                \
-    --enable-languages=c,c++ || exit 1
+# разрешить libstdc++ использовать общий libgcc, созданный на этом этапе,
+# вместо статической версии, созданной при первой сборке GCC. Это необходимо
+# для поддержки обработки исключений C++
+#    LDFLAGS_FOR_TARGET=...
+../configure                      \
+    --build="$(../config.guess)"  \
+    --host="${LFS_TGT}"           \
+    --target="${LFS_TGT}"         \
+    --prefix=/usr                 \
+    --with-build-sysroot="${LFS}" \
+    --enable-default-pie          \
+    --enable-default-ssp          \
+    --disable-nls                 \
+    --disable-multilib            \
+    --disable-libatomic           \
+    --disable-libgomp             \
+    --disable-libquadmath         \
+    --disable-libsanitizer        \
+    --disable-libssp              \
+    --disable-libvtv              \
+    --enable-languages=c,c++      \
+    LDFLAGS_FOR_TARGET=-L"${PWD}/${LFS_TGT}/libgcc" || exit 1
 
 make || make -j1 || exit 1
 make DESTDIR="${LFS}" install

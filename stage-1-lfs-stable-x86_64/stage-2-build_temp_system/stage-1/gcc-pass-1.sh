@@ -38,7 +38,7 @@ mkdir build
 cd build || exit 1
 
 # версия Glibc, которая будет использоваться в LFS
-#    --with-glibc-version=2.41
+#    --with-glibc-version=2.42
 # поскольку рабочая библиотека C еще не доступна, это гарантирует, что при
 # сборке libgcc определена константа injit_libc. Это предотвращает компиляцию
 # любого кода, который требует поддержки libc.
@@ -71,7 +71,7 @@ cd build || exit 1
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.41 \
+    --with-glibc-version=2.42 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \

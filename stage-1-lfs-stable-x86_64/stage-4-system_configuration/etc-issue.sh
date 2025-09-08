@@ -1,29 +1,20 @@
 #! /bin/bash
 
 PRGNAME="etc-issue"
-VERSION="12.3"
+LFS_VERSION="12.4"
 
 ### /etc/issue (pre-login message)
 # Файл /etc/issue содержит сообщения, которые выводятся до приглашения на вход
 # в систему. Он может содержать различные последовательности @char и \char,
 # которые читает утилита agetty
 
-# в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
-# LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
-# пройден. Проверим окружение явно:
-if [[ "$(id -u)" != "0" ]]; then
-    echo "Only superuser (root) can run this script"
-    exit 1
-fi
+ROOT="/"
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
-# мы в chroot окружении?
-ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
-ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
-if [[ "${ID1}" == "${ID2}" ]]; then
-    echo "You must enter chroot environment."
-    echo "Run 003_entering_chroot.sh script in this directory."
-    exit 1
-fi
+TMP_DIR="/tmp/pkg-${PRGNAME}"
+rm -rf "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc"
 
 # Очистка экрана - escape-последовательность '[H[J'
 #     - Esc
@@ -51,9 +42,19 @@ ISSUE="/etc/issue"
 # Вид устанавливаемого приглашения:
 # Linux 5.9.3 x86_64 (tty1)
 # Fri Apr 10 [23:23:26]
-printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${ISSUE}"
+printf " \\\s \\\r \\\m (\\\l)\\n \\\d [\\\t]\\n\\n" > "${TMP_DIR}${ISSUE}"
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
+if [ -f "${ISSUE}" ]; then
+    mv "${ISSUE}" "${ISSUE}.old"
+fi
+
+/bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${ISSUE}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
+
+cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (pre-login message)
 #
 # /etc/issue is a text file which contains a message or system identification
@@ -61,6 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # \\char sequences, if supported by the getty-type program employed on the
 # system
 #
-/etc
-${ISSUE}
 EOF
+
+source "${ROOT}write_to_var_log_packages.sh" \
+    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"

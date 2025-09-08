@@ -1,31 +1,17 @@
 #! /bin/bash
 
 PRGNAME="etc-inputrc"
-LFS_VERSION="12.3"
+LFS_VERSION="12.4"
 
 ### /etc/inputrc (configures keyboard input for programs using readline)
 # /etc/inputrc - файл конфигурации библиотеки Readline, который предоставляет
 # возможности редактирования во время ввода в терминал. Переопределить
 # конфигурацию /etc/inputrc можно в файле ~/.inputrc для каждого пользователя.
 
-# в файле /etc/profile мы изменили $PATH и этот файл уже установлен в систему
-# LFS, поэтому тест скрипта check_environment.sh в этой директории не будет
-# пройден. Проверим окружение явно:
-if [[ "$(id -u)" != "0" ]]; then
-    echo "Only superuser (root) can run this script"
-    exit 1
-fi
-
-# мы в chroot окружении?
-ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
-ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
-if [[ "${ID1}" == "${ID2}" ]]; then
-    echo "You must enter chroot environment."
-    echo "Run 003_entering_chroot.sh script in this directory."
-    exit 1
-fi
-
 ROOT="/"
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
+
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
@@ -73,7 +59,15 @@ set enable-bracketed-paste off
 # End ${INPUTRC}
 EOF
 
+if [ -f "${INPUTRC}" ]; then
+    mv "${INPUTRC}" "${INPUTRC}.old"
+fi
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${INPUTRC}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (configures keyboard input for programs using readline)

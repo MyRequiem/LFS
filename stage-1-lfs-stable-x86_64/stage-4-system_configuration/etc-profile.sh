@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
-LFS_VERSION="12.3"
+LFS_VERSION="12.4"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
@@ -13,7 +13,8 @@ LFS_VERSION="12.3"
 #    /etc/profile.d/umask.sh
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
@@ -67,34 +68,16 @@ if [[ "\${TERM}" == "" || "\${TERM}" == "unknown" ]]; then
 fi
 export TERM
 
-# bash prompt
-if [[ "\${EUID}" == "0" ]]; then
-    CYAN="\\[\\033[0;36m\\]"
-    LBLUE="\\[\\033[1;34m\\]"
-    LRED="\\[\\033[1;31m\\]"
-    BROWN="\\[\\033[0;33m\\]"
-    LMAGENTA="\\[\\033[1;35m\\]"
-    COLORRESET="\\[\\033[0;0m\\]"
-
-    USERNAME="\\u"
-    HOST_NAME="\\h"
-    TIME="\\A"
-    CURR_DIR="\\w"
-
-    PS1="\${USERNAME}\${CYAN}@\${BROWN}\${HOST_NAME}"
-    PS1="\${PS1}\${LBLUE}[\${TIME}]\${COLORRESET}:"
-
-    if [[ -n "\${SSH_CLIENT}" || -n "\${SSH_CONNECTION}" ]]; then
-        PS1="\${PS1}\${LMAGENTA}[SSH]"
-    fi
-
-    export PS1="\${PS1}\${LRED}\${CURR_DIR}\\$\${COLORRESET} "
-else
-    PS1='\\u@\\h:\\w\\$ '
-fi
-
+# Bash prompt
+# \\u - username
+# \\h - hostname
+# \\A - time
+# \\w - current directory
+# \\$ - symbol $
+PS1='\\u@\\h[\\A]:\\w\\$ '
 PS2='> '
-export PS1 PS2
+PS4='+ '
+export PS1 PS2 PS4
 
 PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
 [ -d  /usr/local/lib/pkgconfig ] &&
@@ -110,8 +93,7 @@ for PROFILE_SCRIPT in /etc/profile.d/*.sh; do
     fi
 done
 
-unset PROFILE_SCRIPT CYAN LBLUE LRED BROWN LMAGENTA COLORRESET USERNAME \\
-HOST_NAME TIME CURR_DIR
+unset PROFILE_SCRIPT
 
 # End ${PROFILE}
 EOF
@@ -143,8 +125,6 @@ fi
 
 # End ${DIRCOLORS_SH}
 EOF
-
-chmod 755 "${TMP_DIR}${DIRCOLORS_SH}"
 
 # ============================== /etc/dircolors ================================
 DIRCOLORS="/etc/dircolors"
@@ -546,8 +526,6 @@ export INPUTRC
 # End ${READLINE}
 EOF
 
-chmod 755 "${TMP_DIR}${READLINE}"
-
 # ========================= /etc/profile.d/umask.sh ============================
 UMASK="/etc/profile.d/umask.sh"
 cat << EOF > "${TMP_DIR}${UMASK}"
@@ -567,9 +545,6 @@ fi
 
 # End ${UMASK}
 EOF
-
-chmod 755 "${TMP_DIR}${UMASK}"
-
 # ========================== /etc/profile.d/i18n.sh ============================
 I18N="/etc/profile.d/i18n.sh"
 cat << EOF > "${TMP_DIR}${I18N}"
@@ -610,12 +585,27 @@ export LC_ALL=
 
 # End ${I18N}
 EOF
-
-chmod 755 "${TMP_DIR}${I18N}"
-
 # ==============================================================================
 
+if [ -f "${PROFILE}" ]; then
+    mv "${PROFILE}" "${PROFILE}.old"
+fi
+
+if [ -f "${DIRCOLORS}" ]; then
+    mv "${DIRCOLORS}" "${DIRCOLORS}.old"
+fi
+
 /bin/cp -vR "${TMP_DIR}"/* /
+
+chmod 755 "${READLINE}"
+chmod 755 "${UMASK}"
+chmod 755 "${I18N}"
+chmod 755 "${DIRCOLORS_SH}"
+
+config_file_processing "${DIRCOLORS}"
+config_file_processing "${PROFILE}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (system-wide defaults)

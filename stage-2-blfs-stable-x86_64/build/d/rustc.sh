@@ -102,7 +102,7 @@ docdir = "share/doc/${PRGNAME}-${VERSION}"
 
 [rust]
 channel = "stable"
-description = "for BLFS 12.3"
+description = "for BLFS 12.4"
 
 # Enable the same optimizations as the official upstream build.
 lto = "thin"

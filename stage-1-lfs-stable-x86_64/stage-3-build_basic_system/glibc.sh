@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2025a"
+TZDATA_VERSION="2025b"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -18,9 +18,9 @@ TIMEZONE="Europe/Astrakhan"
 # предосторожности, чтобы избежать нарушений работы системы.
 #
 # ДО СБОРКИ обновленного Glibc:
-#    - если обновляем LFS до более новой версии или версия ядра <5.4, то нужно
-#       обновить ядро (kernel-source, kernel-headers, kernel-modules,
-#       kernel-generic) до новой версии и перезагрузить систему
+#    - если обновляем LFS до более новой версии, то нужно обновить ядро
+#       (kernel-source, kernel-headers, kernel-generic, kernel-modules) до
+#       новой версии и перезагрузить систему
 #
 # Сборка Glibc:
 #    ../configure \
@@ -28,7 +28,7 @@ TIMEZONE="Europe/Astrakhan"
 #    make ......
 #    ......
 #
-#    make install DESTDIR="${TMP_DIR}"
+#    make DESTDIR="${TMP_DIR}" install
 #    install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 #    make install
 #
@@ -53,6 +53,13 @@ mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 patch --verbose -Nvp1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
 
+# исправим проблему сборки Valgrind в BLFS
+sed -e '/unistd.h/i #include <string.h>' \
+    -e '/libc_rwlock_init/c\
+  __libc_rwlock_define_initialized (, reset_lock);\
+  memcpy (&lock, &reset_lock, sizeof (lock));' \
+    -i stdlib/abort.c || exit 1
+
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
 cd build || exit 1
@@ -66,9 +73,9 @@ echo "rootsbindir=/usr/sbin" > configparms
 #    --disable-werror
 # не создавать nscd (name service cache daemon), который больше не используется
 #    --disable-nscd
-# устанавливать библиотеки в /lib вместо /lib64 по умолчанию для x86-64
+# устанавливать библиотеки в /usr/lib вместо /lib64 по умолчанию для x86-64
 # архитектуры
-#    libc_cv_slibdir=/lib
+#    libc_cv_slibdir=/usr/lib
 # повышает безопасность системы, добавляя дополнительный код для проверки
 # переполнения буфера, например при атаках с разрушением стека
 #    --enable-stack-protector=strong
@@ -78,10 +85,10 @@ echo "rootsbindir=/usr/sbin" > configparms
 ../configure                        \
     --prefix=/usr                   \
     --disable-werror                \
-    --enable-kernel=5.4             \
-    --enable-stack-protector=strong \
     --disable-nscd                  \
-    libc_cv_slibdir=/usr/lib || exit 1
+    libc_cv_slibdir=/usr/lib        \
+    --enable-stack-protector=strong \
+    --enable-kernel=5.4 || exit 1
 
 make || make -j1 || exit 1
 # make check
@@ -95,7 +102,7 @@ LD_SO_CONF="/etc/ld.so.conf"
 # Glibc, которая не работает в современной конфигурации
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 
-make install DESTDIR="${TMP_DIR}"
+make DESTDIR="${TMP_DIR}" install
 install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 make install
 
@@ -208,24 +215,28 @@ zic -d "${ZONEINFO_DIR}" -p America/New_York
 # перечислены также некоторые другие возможные часовые пояса, которые не
 # определены сценарием, но могут использоваться
 
-# создадим сслыку
+# создадим ссылку
 #    /etc/localtime -> ../usr/share/zoneinfo/${TIMEZONE}
 ln -sfv "../usr/share/zoneinfo/${TIMEZONE}" "${TMP_DIR}/etc/localtime"
 
-### конфигурация динамического загрузчика
-# По умолчанию поиск динамического загрузчика ld-linux-x86-64.so.2, который
-# нужен программам при их запуске, происходит в /lib и /usr/lib. Однако если в
-# каталогах, отличных от /lib и /usr/lib, есть дополнительные библиотеки, их
-# необходимо добавить в файл /etc/ld.so.conf, чтобы динамический загрузчик мог
-# их найти. Например, две дополнительные директории могут содержать библиотеки:
-# /usr/local/lib и /opt/lib, а так же другие пути к библиотекам могут быть
-# указаны в конфигурационных файлах в /etc/ld.so.conf.d/ Добавим эти каталоги в
-# пути поиска для динамического загрузчика
+###
+# Конфигурация динамического загрузчика
+###
+# По умолчанию динамический загрузчик ld-linux-x86-64.so.2 при запуске программ
+# ищет нужные динамические библиотеки в /usr/lib/ Однако если в каталогах
+# отличных от /usr/lib есть дополнительные библиотеки, их необходимо добавить в
+# файл /etc/ld.so.conf, чтобы динамический загрузчик мог их найти. Например,
+# две дополнительные директории могут содержать библиотеки: /usr/local/lib и
+# /opt/lib Добавим эти каталоги в пути поиска для динамического загрузчика.
+# Также динамический загрузчик будет искать библиотеки, указанные в *.conf
+# файлах каталога /etc/ld.so.conf.d/ Как правило, файлы в этом каталоге
+# содержат одну строку - путь поиска библиотек. Например, файл
+# /etc/ld.so.conf.d/qt6.conf будет содержать строку /opt/qt6/lib
 
 cat << EOF > "${TMP_DIR}${LD_SO_CONF}"
 # Begin ${LD_SO_CONF}
 
-# Add an include directory
+# add an include directory
 include /etc/ld.so.conf.d/*.conf
 
 /usr/local/lib

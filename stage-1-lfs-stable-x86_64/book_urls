@@ -1,20 +1,20 @@
-Linux From Scratch 12.3
+Linux From Scratch 12.4
 -----------------------
 
 Book:
-    https://www.linuxfromscratch.org/lfs/view/12.3/index.html
+    https://www.linuxfromscratch.org/lfs/view/12.4/index.html
 
 ChangeLog:
-    https://www.linuxfromscratch.org/lfs/view/12.3/chapter01/changelog.html
-    https://www.linuxfromscratch.org/lfs/view/12.3/chapter01/whatsnew.html
+    https://www.linuxfromscratch.org/lfs/view/12.4/chapter01/changelog.html
+    https://www.linuxfromscratch.org/lfs/view/12.4/chapter01/whatsnew.html
 
 Errata:
-    https://www.linuxfromscratch.org/lfs/errata/12.3/
-    https://www.linuxfromscratch.org/lfs/advisories/12.3.html
+    https://www.linuxfromscratch.org/lfs/errata/12.4/
+    https://www.linuxfromscratch.org/lfs/advisories/12.4.html
 
 Sources and patches:
-    https://www.linuxfromscratch.org/lfs/view/12.3/chapter03/packages.html
-    https://www.linuxfromscratch.org/lfs/view/12.3/chapter03/patches.html
+    https://www.linuxfromscratch.org/lfs/view/12.4/chapter03/packages.html
+    https://www.linuxfromscratch.org/lfs/view/12.4/chapter03/patches.html
 
 wget-list
-    https://www.linuxfromscratch.org/lfs/downloads/12.3/
+    https://www.linuxfromscratch.org/lfs/downloads/12.4/

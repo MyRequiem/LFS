@@ -57,13 +57,6 @@ ARCH_NAME="qt-everywhere-src"
 #              speech-dispatcher (https://freebsoft.org/speechd/)
 #              tslib             (http://www.tslib.org/)
 
-###
-# NOTE:
-###
-#    перед сборкой и установкой пакета сразу вручную добавляем в
-#    /etc/ld.so.conf строку:
-#       /opt/qt6/lib
-
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
@@ -105,7 +98,7 @@ export QT6PREFIX=/opt/qt6
 #     qt6               (ссылка на qt6-${VERSION}/)
 #     qt6-${VERSION}/
 
-mkdir -pv "${TMP_DIR}/etc"/{profile.d,sudoers.d}
+mkdir -pv "${TMP_DIR}/etc"/{profile.d,sudoers.d,ld.so.conf.d}
 mkdir -pv "${TMP_DIR}${QT6PREFIX}-${VERSION}"
 # qt6 -> qt6-${VERSION}
 ln -sv "qt6-${VERSION}" "${TMP_DIR}${QT6PREFIX}-${VERSION}/../qt6"
@@ -134,6 +127,11 @@ DESTDIR="${TMP_DIR}" ninja install
 #    ...
 find "${TMP_DIR}${QT6PREFIX}"/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+# добавим путь поиска библиотек для динамического загрузчика
+cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/${PRGNAME}.conf"
+/opt/qt6/lib
+EOF
 
 # QT6DIR также должен быть доступен пользователю root
 SUDOERS="/etc/sudoers.d/qt6"

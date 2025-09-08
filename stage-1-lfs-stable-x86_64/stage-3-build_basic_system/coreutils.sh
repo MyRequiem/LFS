@@ -85,8 +85,8 @@ sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
-# /usr/bin/cp переместим в /tmp, т.к. ее нужно будет скопировать в /usr/bin из
-# только что собранного пакета
+# утилиту /usr/bin/cp переместим в /tmp, т.к. ее нужно будет скопировать в
+# /usr/bin из только что собранного пакета
 mv /usr/bin/cp /tmp
 /tmp/cp -vR "${TMP_DIR}"/* /
 rm -f /tmp/cp

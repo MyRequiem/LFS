@@ -41,7 +41,7 @@ make install DESTDIR="${TMP_DIR}"
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
 # мы же не будем пользоватся GUI-версией редактора, правда? :) Поэтому удаляем
-# не нужные нам *.desktop файлы и иконки, которые устанавливаются только когда
+# ненужные нам *.desktop файлы и иконки, которые устанавливаются только когда
 # команде 'make install' передается параметр DESTDIR (см. src/Makefile в дереве
 # исходников, цель install-icons)
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}

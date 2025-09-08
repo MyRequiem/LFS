@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="lfs-bootscripts"
-LFS_VERSION="12.3"
+LFS_VERSION="12.4"
 
 ### LFS-Bootscripts (scripts to start/stop the LFS system)
 # Пакет содержит набор скриптов для запуска/остановки системы LFS при

@@ -13,4 +13,7 @@ wget                              \
     --wait=2                      \
     --directory-prefix="${SOURCES}"/
 
-chown lfs:lfs "${SOURCES}"/*
+# если устанавливаем LFS с нуля (пакет binutils еще не установлен)
+if ! [ -x "${LFS}/usr/bin/ld" ] ; then
+    chown lfs:lfs "${SOURCES}"/*
+fi

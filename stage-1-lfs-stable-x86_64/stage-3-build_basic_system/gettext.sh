@@ -24,11 +24,11 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-chmod -v 0755 "${TMP_DIR}/usr/lib/preloadable_libintl.so"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
+
+chmod -v 0755 /usr/lib/preloadable_libintl.so
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (internationalization framework)

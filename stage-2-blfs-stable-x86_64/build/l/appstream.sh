@@ -75,14 +75,14 @@ cat > "${TMP_DIR}${METAINFO}/org.linuxfromscratch.lfs.xml" << EOF
   </developer>
 
   <releases>
-    <release version="12.3" type="release" date="2025-03-05">
+    <release version="12.4" type="release" date="2025-09-01">
       <description>
         <p>Now contains Binutils 2.44, GCC-14.2.0, Glibc-2.41,
         and Linux kernel 6.13.12</p>
       </description>
     </release>
 
-    <release version="12.1" type="stable" date="2024-03-01">
+    <release version="12.3" type="stable" date="2025-03-05">
       <description>
         <p>Now contains Binutils 2.42, GCC-13.2.0, Glibc-2.39,
         and Linux kernel 6.7.</p>
