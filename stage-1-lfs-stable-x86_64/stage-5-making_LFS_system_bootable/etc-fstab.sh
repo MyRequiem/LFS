@@ -14,7 +14,8 @@ TMP_PART="/dev/sda7"
 # разделов, включая корень и swap
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"      || exit 1
+source "${ROOT}config_file_processing.sh" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}"
 rm -rf "${TMP_DIR}"
@@ -42,7 +43,15 @@ cgroup2         /sys/fs/cgroup  cgroup2     nosuid,noexec,nodev  0       0
 # End ${FSTAB}
 EOF
 
+if [ -f "${FSTAB}" ]; then
+    mv "${FSTAB}" "${FSTAB}.old"
+fi
+
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${FSTAB}"
+
+rm -f "/var/log/packages/${PRGNAME}"-*
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (partition mount settings)
