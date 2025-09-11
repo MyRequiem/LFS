@@ -24,6 +24,7 @@ PRGNAME="gnutls"
 #              autogen                      (https://ftp.gnu.org/gnu/autogen/)
 #              cmocka                       (для тестов библиотеки DANE) https://cmocka.org/
 #              datefudge                    (для тестов библиотеки DANE) http://ftp.debian.org/debian/pool/main/d/datefudge/
+#              leancrypto                   (https://github.com/smuellerDD/leancrypto)
 #              trousers                     (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
 ROOT="/root/src/lfs"
@@ -54,15 +55,15 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -p "${TMP_DIR}"
 
-# включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
-#    --enable-openssl-compatibility
 # указываем GnuTLS использовать хранилище доверия PKCS#11 по умолчанию
 #    --with-default-trust-store-pkcs11="pkcs11:"
-./configure                                     \
-    --prefix=/usr                               \
-    --enable-openssl-compatibility              \
-    --with-default-trust-store-pkcs11="pkcs11:" \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+# включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
+#    --enable-openssl-compatibility
+./configure                                         \
+    --prefix=/usr                                   \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    --with-default-trust-store-pkcs11="pkcs11:"     \
+    --enable-openssl-compatibility || exit 1
 
 make || exit 1
 # make check

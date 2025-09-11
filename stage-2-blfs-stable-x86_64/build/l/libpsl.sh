@@ -11,11 +11,13 @@ PRGNAME="libpsl"
 # собственный домен верхнего уровня, который существует на том же уровне что и
 # gTLDs
 
-# Required:    libidn2
+# Required:    no
+# Recommended: libidn2
 #              libunistring
-# Recommended: no
-# Optional:    gtk-doc  (для сборки документации)
-#              valgrind (для тестов)
+# Optional:    gtk-doc          (для сборки документации)
+#              icu              (может использоваться вместо libidn2)
+#              libidn           (может использоваться вместо libidn2)
+#              valgrind         (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,10 +32,10 @@ sed -i 's/env python/&3/' src/psl-make-dafsa || exit 1
 mkdir build
 cd build || exit 1
 
-meson setup       \
-    --prefix=/usr \
-    -Dtests=false \
-    --buildtype=release || exit 1
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D tests=false || exit 1
 
 ninja || exit 1
 # ninja test

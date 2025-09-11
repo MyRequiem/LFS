@@ -24,8 +24,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему при сборке с gcc-15
+sed -e \
+    's/def __cplusplus/ defined(__cplusplus) || __STDC_VERSION__ >= 202311L/' \
+    -i libyasm/bitvect.h
+
 # исключаем сборку vsyasm и ytasm, которые используются только в Windows
-sed -i 's#) ytasm.*#)#' Makefile.in
+sed -i 's#) ytasm.*#)#' Makefile.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
@@ -48,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # RDOFF2, COFF, Win32, and Win64 object formats, and generates source debugging
 # information in STABS, DWARF 2, and CodeView 8 formats.
 #
-# Home page: http://www.tortall.net/projects/${PRGNAME}/
+# Home page: https://github.com/yasm/yasm
 # Download:  https://www.tortall.net/projects/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

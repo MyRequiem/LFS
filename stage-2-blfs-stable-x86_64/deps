@@ -67,7 +67,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp                                   gpgme
-cmake                                   llvm, json-c, libjpeg-turbo, libssh2, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -94,7 +94,7 @@ dbus                                    wpa-supplicant, glib, elogind, python3-d
 dbus-glib
 dconf                                   ibus
 dejavu-fonts-ttf                        xterm, imagemagick
-desktop-file-utils                      wpa-supplicant, glib, dconf, fltk
+desktop-file-utils                      glib, dconf, fltk
 dhcpcd
 dialog
 dialog                                  alsa-utils
@@ -116,7 +116,7 @@ docwriter                               freetype
 double-conversion                       qt5-components, qt6
 dovecot                                 gnupg, sudo, fcron, at
 dovi_tool                               libplacebo
-doxygen                                 gnutls, libevent, fuse3, dbus, libusb, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, sdl2, ffmpeg, exiv2, jasper, glibmm28, cairomm118, gtkmm4, libaom, libmypaint
+doxygen                                 gnutls, libevent, fuse3, libusb, dbus, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xcb-util-image, xcb-util-wm, xcb-util-renderutil, xcb-util-keysyms, xcb-util-cursor, xorg-server, libevdev, libvdpau-va-gl, ruby, sdl2, ffmpeg, exiv2, jasper, glibmm28, cairomm118, gtkmm4, libaom, libmypaint
 dssim                                   gst-plugins-bad
 dtc                                     qemu
 dtrace                                  ruby
@@ -249,7 +249,7 @@ hwloc                                   htop
 i3                                      bumblebee-status
 ibus                                    sdl2, qt6
 icon-tools                              adwaita-icon-theme
-icu                                     libxml2, boost, harfbuzz, vte3, qt5-components, qt6
+icu                                     libpsl, libxml2, boost, harfbuzz, vte3, qt5-components, qt6
 id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
@@ -283,13 +283,13 @@ kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5, qemu
 krb4                                    cyrus-sasl
-kwayland                                pinentry
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
 lasem                                   goffice
 lcms2                                   openjpeg, ghostscript, libmng, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, openjdk, libplacebo, poppler
 lcov                                    libseccomp
 ldacbt                                  gst-plugins-bad
+leancrypto                              gnutls
 lensfun                                 gegl
 lerc                                    libtiff
 liba52                                  gst-plugins-ugly
@@ -339,7 +339,7 @@ libevent                                tmux, nghttp2, ntp
 libexif                                 feh, gst-plugins-bad
 libfpx                                  imagemagick
 libgccjit                               rustc
-libgcrypt                               gnupg, libxslt, libssh2, mesa, gtk-vnc, xorg-server, gst-plugins-bad, qemu
+libgcrypt                               libssh2, gnupg, libxslt, mesa, gtk-vnc, xorg-server, gst-plugins-bad, qemu
 libgit2                                 rustc
 libgpg-error                            libassuan, libksba, libgcrypt, pinentry
 libgsf                                  goffice
@@ -348,7 +348,7 @@ libgxps                                 imagemagick
 libhandy                                dconf
 libheif                                 imlib2, gimp, imagemagick
 libid3tag                               imlib2
-libidn                                  gnutls, whois, ghostscript, exim
+libidn                                  libpsl, gnutls, whois, ghostscript, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             ffmpeg, gst-plugins-good
 libiff                                  gimp
@@ -388,7 +388,7 @@ libpcap                                 iptables
 libplacebo                              mpv
 libpmem                                 qemu
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libwebp, imagemagick, feh, gst-plugins-base, openjdk, qt6, qemu, poppler
-libproxy                                glib-networking, qt6
+libproxy                                wget, glib-networking, qt6
 libpsl                                  wget, curl, libsoup, libsoup3
 libptytty                               rxvt-unicode
 libraqm                                 imagemagick
@@ -580,9 +580,11 @@ perl-business-isbn-data                 perl-business-isbn
 perl-canary-stability                   perl-anyevent
 perl-common-sense
 perl-file-fcntllock                     exim
-perl-io-socket-ssl                      ntp
+perl-http-daemon                        wget
+perl-io-socket-ssl                      wget, ntp
 perl-json-xs                            perl-anyevent-i3
 perl-net-ssleay                         perl-io-socket-ssl
+perl-pod-pom-view-restructured          cyrus-sasl
 perl-sgmlspm                            docbook-utils
 perl-test-command                       feh
 perl-test-fatal                         perl-uri
@@ -621,7 +623,7 @@ python3 (пересобранный в BLFS)          python3-charset-normalizer
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-build                           python3-setuptools-scm, python3-meson
 python3-charset-normalizer              python3-requests
-python3-cython                          yasm, nghttp2, python3-meson
+python3-cython                          libseccomp, yasm, nghttp2, python3-meson
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, ibus
 python3-dbusmock                        polkit
@@ -699,8 +701,8 @@ pytrash
 qemu
 qoi                                     gimp
 qrencode                                gst-plugins-bad
-qt5-components                          gst-plugins-base, gst-plugins-good, pinentry, wpa-supplicant, gpgme, poppler, google-chrome
-qt6                                     highlight, cmake, gst-plugins-good, oxygen-icons, appstream, poppler, google-chrome, flameshot
+qt5-components                          gst-plugins-base, gst-plugins-good, gpgme, poppler, google-chrome
+qt6                                     pinentry, highlight, cmake, gst-plugins-good, oxygen-icons, appstream, poppler, google-chrome, flameshot
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz

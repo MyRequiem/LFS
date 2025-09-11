@@ -13,7 +13,7 @@ PRGNAME="acpid"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    elogind
 
 ### Конфигурация ядра
 # ACPI должен быть вкомпилен в ядро

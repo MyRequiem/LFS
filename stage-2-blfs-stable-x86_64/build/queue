@@ -1,3 +1,4 @@
+# ================================== PART 1 ====================================
 s/lsb-tools.sh
 s/bash-completion.sh
 a/kernel-firmware.sh
@@ -6,16 +7,19 @@ a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh
 n/make-ca.sh
+l/pcre.sh
 l/pcre2.sh
 l/libunistring.sh
 n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
+d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
+l/libssh2.sh
 n/curl.sh
 a/hwdata.sh
 a/pciutils.sh
@@ -36,12 +40,30 @@ ap/htop.sh
 n/iw.sh
 n/wpa-supplicant.sh
 l/libevent.sh
-d/python-modules/python3-cython.sh
 d/yasm.sh
 ap/tmux.sh
-l/fuse2.sh
+
+
+# =========================
+l/fuse2.sh Удалить?????
+
+Если да, то изменяем fuse3.sh:
+
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+и распаковываем обычным способом
+
+делаем ссылки:
+    # mount.fuse -> mount.fuse3
+    ln -sf mount.fuse3 ${TMP_DIR}/usr/sbin/mount.fuse
+
+    # fusermount -> fusermount3
+    ln -sf fusermount3 ${TMP_DIR}/usr/bin/fusermount
+# =========================
+
+
 l/libxml2.sh
 l/libxslt.sh
+
 l/fuse3.sh
 ap/sqlite.sh
 l/libusb.sh
@@ -49,6 +71,7 @@ ap/lmdb.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 n/gnupg.sh
+
 d/python-modules/python3-docutils.sh
 l/glib.sh
 n/sshfs.sh
@@ -66,7 +89,6 @@ d/gc.sh
 n/w3m.sh
 d/git.sh
 n/whois.sh
-l/pcre.sh
 s/ag.sh
 n/translate-shell.sh
 ap/lnav.sh
@@ -127,6 +149,7 @@ ap/sudo.sh
 #    Extracting Java cacerts (JKS) to:
 #    /etc/pki/tls/java/cacerts...Done!
 
+# ================================== PART 2 ====================================
 l/fribidi.sh
 l/libuv.sh
 l/iso-codes.sh
@@ -162,7 +185,6 @@ l/liburcu.sh
 n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
-l/libssh2.sh
 d/rustc.sh
 n/gpgme.sh
 x/utils/util-macros.sh
@@ -187,9 +209,9 @@ d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
 d/python-modules/python3-lxml.sh
+a/acpid.sh
 a/elogind.sh
 a/pm-utils.sh
-a/acpid.sh
 d/duktape.sh
 l/polkit.sh
 l/libyaml.sh
@@ -400,6 +422,8 @@ d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 n/ntp.sh
 a/fcron.sh
+
+# ================================== PART 3 ====================================
 # === ffmpeg, mpv ===============
 l/alsa-plugins.sh
 ap/alsa-utils.sh

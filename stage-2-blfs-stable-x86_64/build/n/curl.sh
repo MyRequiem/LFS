@@ -9,7 +9,7 @@ PRGNAME="curl"
 
 # Required:    no
 # Recommended: libpsl
-#              make-ca (runtime)
+#              make-ca          (runtime)
 # Optional:    brotli
 #              c-ares
 #              gnutls
@@ -19,16 +19,16 @@ PRGNAME="curl"
 #              nghttp2
 #              openldap
 #              samba
-#              gsasl        (https://www.gnu.org/software/gsasl/)
-#              impacket     (https://www.secureauth.com/labs/open-source-tools/impacket)
-#              libmetalink  (https://launchpad.net/libmetalink/)
-#              librtmp      (http://rtmpdump.mplayerhq.hu/)
-#              ngtcp2       (https://github.com/ngtcp2/ngtcp2/)
-#              quiche       (https://github.com/cloudflare/quiche)
-#              spnego       (http://spnego.sourceforge.net/)
+#              gsasl            (https://www.gnu.org/software/gsasl/)
+#              impacket         (https://www.secureauth.com/labs/open-source-tools/impacket)
+#              libmetalink      (https://launchpad.net/libmetalink/)
+#              librtmp          (http://rtmpdump.mplayerhq.hu/)
+#              ngtcp2           (https://github.com/ngtcp2/ngtcp2/)
+#              quiche           (https://github.com/cloudflare/quiche)
+#              spnego           (http://spnego.sourceforge.net/)
 #              --- для тестов ---
 #              apache-httpd
-#              stunnel      (для HTTPS and FTPS тестов)
+#              stunnel          (для HTTPS and FTPS тестов)
 #              openssh
 #              valgrind
 
@@ -40,14 +40,13 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 LIBSSH2="--without-libssh2"
-[ -x /usr/lib/libssh2.so ] && LIBSSH2="--with-libssh2"
+pkg-config libssh2 && LIBSSH2="--with-libssh2"
 
-./configure                    \
-    --prefix=/usr              \
-    --disable-static           \
-    --with-openssl             \
-    --enable-threaded-resolver \
-    "${LIBSSH2}"               \
+./configure          \
+    --prefix=/usr    \
+    --disable-static \
+    --with-openssl   \
+    "${LIBSSH2}"     \
     --with-ca-path=/etc/ssl/certs || exit 1
 
 make || exit 1

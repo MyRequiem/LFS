@@ -29,7 +29,6 @@ pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
     --find-links=dist   \
-    --no-cache-dir      \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
@@ -57,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # makes writing C extensions for Python as easy as Python itself.
 #
 # Home page: https://${ARCH_NAME}.org/
-# Download:  https://github.com/${ARCH_NAME}/${ARCH_NAME}/releases/download/${VERSION}-1/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${ARCH_NAME}/${ARCH_NAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

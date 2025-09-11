@@ -24,8 +24,9 @@ if [ -d carl9170fw ]; then
     rm -rf carl9170fw
 fi
 
-cp -vpR ./* /usr/lib/firmware/
 cp -vpR ./* "${TMP_DIR}/usr/lib/firmware/"
+
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Firmware for the kernel)
@@ -34,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # certain hardware drivers with Linux.
 #
 # Home page: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${ARCH_NAME}.git
-# Download:  https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${ARCH_NAME}.git/snapshot/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://www.kernel.org/pub/linux/kernel/firmware/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

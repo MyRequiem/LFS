@@ -10,8 +10,8 @@ PRGNAME="dhcpcd"
 # Recommended: no
 # Optional:    llvm
 #              ntp
-#              chronyd (https://chrony.tuxfamily.org/)
-#              ypbind  (https://github.com/thkukuk/ypbind-mt/)
+#              chronyd   (https://chrony.tuxfamily.org/)
+#              ypbind    (https://github.com/thkukuk/ypbind-mt/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

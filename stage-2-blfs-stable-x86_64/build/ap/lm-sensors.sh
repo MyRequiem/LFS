@@ -63,7 +63,6 @@ mkdir -pv "${TMP_DIR}"
 make                   \
     PREFIX=/usr        \
     BUILD_STATIC_LIB=0 \
-    EXLDFLAGS=         \
     MANDIR=/usr/share/man || exit 1
 
 # пакет не имеет набора тестов
@@ -86,8 +85,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libsensors. It also contains tools for sensor hardware identification and I2C
 # bus probing.
 #
-# Home page: https://github.com/${PRGNAME}/${PRGNAME}/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/V${ARCH_VERSION}/${PRGNAME}-${ARCH_VERSION}.tar.gz
+# Home page: https://github.com/hramrach/${PRGNAME}/
+# Download:  https://github.com/hramrach/${PRGNAME}/archive/V${ARCH_VERSION}/${PRGNAME}-${ARCH_VERSION}.tar.gz
 #
 EOF
 

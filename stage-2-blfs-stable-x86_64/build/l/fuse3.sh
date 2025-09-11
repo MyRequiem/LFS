@@ -75,10 +75,6 @@ chmod u+s "${TMP_DIR}/usr/bin/fusermount3"
 # некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
 FUSE_CONF="/etc/${ARCH_NAME}.conf"
-if [ -f "${FUSE_CONF}" ]; then
-    mv "${FUSE_CONF}" "${FUSE_CONF}.old"
-fi
-
 cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 # Begin ${FUSE_CONF}
 
@@ -101,6 +97,10 @@ cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 
 # End ${FUSE_CONF}
 EOF
+
+if [ -f "${FUSE_CONF}" ]; then
+    mv "${FUSE_CONF}" "${FUSE_CONF}.old"
+fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

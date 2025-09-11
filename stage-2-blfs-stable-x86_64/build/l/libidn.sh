@@ -24,17 +24,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-OPENJDK="--disable-java"
-MONO="--disable-csharp"
-
-command -v java &>/dev/null && OPENJDK="--enable-java"
-command -v mono &>/dev/null && MONO="--enable-csharp"
-
-./configure                       \
-    --prefix=/usr                 \
-    --disable-valgrind-tests      \
-    "${OPENJDK}"                  \
-    "${MONO}"                     \
+./configure       \
+    --prefix=/usr \
     --disable-static || exit 1
 
 make || exit 1

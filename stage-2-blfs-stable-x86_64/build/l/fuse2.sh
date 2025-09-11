@@ -44,10 +44,10 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-patch -Np1 --verbose -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || exit 1
+zcat "${SOURCES}/${PRGNAME}-build-with-glibc-2.34.patch.gz" | \
+    patch -Esp1 --verbose || exit 1
 
-autoreconf -fv || exit 1
+autoreconf -vif
 ./configure                   \
     --prefix=/usr             \
     --bindir=/usr/bin         \
