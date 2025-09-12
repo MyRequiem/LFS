@@ -8,8 +8,9 @@ PRGNAME="libarchive"
 # инструментов командной строки tar, cpio и zcat
 
 # Required:    no
-# Recommended: libxml2
-# Optional:    lzo
+# Recommended: no
+# Optional:    libxml2
+#              lzo
 #              nettle
 #              pcre2
 
@@ -21,21 +22,21 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 LZO2="--without-lzo2"
-NETTLE="--without-nettle"
+pkg-config lzo2 &>/dev/null && LZO2="--with-lzo2"
 
-[ -x /usr/lib/liblzo2.so ]         && LZO2="--with-lzo2"
-command -v nettle-hash &>/dev/null && NETTLE="--with-nettle"
-
-./configure       \
-    --prefix=/usr \
-    "${LZO2}"     \
-    "${NETTLE}"   \
+./configure          \
+    --prefix=/usr    \
     --disable-static \
-    --without-expat || exit 1
+    "${LZO2}" || exit 1
 
 make || exit 1
-# LC_ALL=C.UTF-8 make check
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+# создадим ссылку
+#    unzip -> bsdunzip
+# т.к. пакет unzip больше не поддерживается (unmaintained)
+ln -sfv bsdunzip "${TMP_DIR}/usr/bin/unzip"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -48,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # different streaming archive formats, including most popular TAR variants and
 # several CPIO formats. It can also write SHAR archives.
 #
-# Home page: http://${PRGNAME}.org
+# Home page: https://${PRGNAME}.org
 # Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

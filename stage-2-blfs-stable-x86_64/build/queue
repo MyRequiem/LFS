@@ -43,35 +43,19 @@ l/libevent.sh
 d/yasm.sh
 ap/tmux.sh
 
-
-# =========================
-l/fuse2.sh Удалить?????
-
-Если да, то изменяем fuse3.sh:
-
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
-и распаковываем обычным способом
-
-делаем ссылки:
-    # mount.fuse -> mount.fuse3
-    ln -sf mount.fuse3 ${TMP_DIR}/usr/sbin/mount.fuse
-
-    # fusermount -> fusermount3
-    ln -sf fusermount3 ${TMP_DIR}/usr/bin/fusermount
-# =========================
-
+l/fuse2.sh
 
 l/libxml2.sh
 l/libxslt.sh
 
 l/fuse3.sh
+
 ap/sqlite.sh
 l/libusb.sh
 ap/lmdb.sh
 n/cyrus-sasl.sh
 n/openldap.sh
 n/gnupg.sh
-
 d/python-modules/python3-docutils.sh
 l/glib.sh
 n/sshfs.sh
@@ -81,8 +65,8 @@ ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
 s/archivemount.sh
-s/fuseiso.sh
 n/curlftpfs.sh
+
 ap/vifm.sh
 s/pytrash.sh
 d/gc.sh
@@ -96,7 +80,7 @@ s/lshw.sh
 s/grc.sh
 d/shellcheck.sh
 a/zip.sh
-a/unzip.sh
+a/unzip.sh (удалить, см. libarchive.sh)
 ap/unrar.sh
 ap/lzip.sh
 ap/p7zip.sh

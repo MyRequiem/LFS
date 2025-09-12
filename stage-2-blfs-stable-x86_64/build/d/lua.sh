@@ -82,7 +82,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # result is a fast language engine with small footprint, making it ideal in
 # embedded systems too.
 #
-# Home page: http://www.lua.org/
+# Home page: https://www.lua.org/
 # Download:  https://www.lua.org/ftp/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

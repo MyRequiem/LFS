@@ -160,9 +160,8 @@ frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4
 fuse-zip                                vifm
 fuse2                                   vifm
-fuse3                                   archivemount, gnupg, glib, sshfs, fuseiso, curlftpfs, vifm, qemu
+fuse3                                   archivemount, gnupg, glib, sshfs, curlftpfs, vifm, qemu
 fusefat                                 vifm
-fuseiso                                 vifm
 game-music-emu                          gst-plugins-bad
 gc                                      w3m, guile
 gcc                                     cmake

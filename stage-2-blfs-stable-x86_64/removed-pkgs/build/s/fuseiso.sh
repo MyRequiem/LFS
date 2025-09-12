@@ -5,7 +5,7 @@ PRGNAME="fuseiso"
 ### fuseiso (FUSE module to mount ISO filesystem images)
 # Модуль FUSE для монтирования образов .iso, .nrg, .bin, .mdf и .img
 
-# Required:    fuse3
+# Required:    fuse2 (https://github.com/libfuse/libfuse)
 # Recommended: no
 # Optional:    no
 

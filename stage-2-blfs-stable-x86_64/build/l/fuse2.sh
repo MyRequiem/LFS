@@ -44,10 +44,15 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-zcat "${SOURCES}/${PRGNAME}-build-with-glibc-2.34.patch.gz" | \
-    patch -Esp1 --verbose || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || \
+        exit 1
 
-autoreconf -vif
+# исправим ошибку, которую в данном случае выдает autoreconf
+#    possibly undefined macro: AM_ICONV
+sed 's/AM_ICONV/#AM_ICONV/' -i configure.ac || exit 1
+autoreconf -vif || exit 1
+
 ./configure                   \
     --prefix=/usr             \
     --bindir=/usr/bin         \
@@ -65,13 +70,15 @@ make install DESTDIR="${TMP_DIR}"
 (
     cd "${TMP_DIR}" || exit 1
     # /sbin все равно остается, переместим в /usr/
-    if [ -d ./sbin ]; then
-        mv ./sbin/* ./usr/sbin/
-        rm -rf ./sbin
+    if [ -d sbin ]; then
+        mv sbin/* usr/sbin/
+        rm -rf sbin
     fi
 
-    rm -rf ./etc/init.d ./dev
+    rm -rf etc/init.d dev
 )
+
+exit
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
