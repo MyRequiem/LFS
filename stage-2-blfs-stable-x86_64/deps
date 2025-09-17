@@ -159,8 +159,8 @@ freetype                                graphite2, harfbuzz, fontconfig, ghostsc
 frei0r-plugins                          ffmpeg
 fribidi                                 pango, libass, ffmpeg, gtk4
 fuse-zip                                vifm
-fuse2                                   vifm
-fuse3                                   archivemount, gnupg, glib, sshfs, curlftpfs, vifm, qemu
+fuse2                                   curlftpfs, vifm
+fuse3                                   archivemount, gnupg, glib, sshfs, vifm, qemu
 fusefat                                 vifm
 game-music-emu                          gst-plugins-bad
 gc                                      w3m, guile
@@ -169,7 +169,6 @@ gcr3                                    pinentry
 gcr4                                    pinentry
 gdb                                     openssh, glib, gcc, rustc, python3, guile
 gdk-pixbuf                              w3m, librsvg, gtk+3, libgsf, rxvt-unicode, gegl, gst-plugins-good, gtk4, poppler, appstream-glib
-gdk-pixbuf-xlib                         w3m
 gegl                                    gimp, libmypaint
 geoexpress                              imagemagick
 gexiv2                                  gegl, gimp, mirage
@@ -557,7 +556,7 @@ osinfo-db                               libosinfo
 osinfo-db-tools                         osinfo-db
 oxygen-icons
 p11-kit                                 make-ca, gnutls, python3-requests, nss, flameshot
-p7zip                                   imagemagick, libgsf
+7zip                                    imagemagick, libgsf
 pamixer
 pandoc                                  openjdk
 pango                                   pangomm24, pangomm25, librsvg, gtk+3, gegl, imagemagick, gst-plugins-base, gtk4, i3
@@ -574,13 +573,14 @@ pcre2                                   wget, glib, libarchive, git, lnav, swig,
 pcsc-lite                               libcacard
 perl-anyevent                           perl-anyevent-i3
 perl-anyevent-i3
+perl-authen-sasl                        git
 perl-business-isbn                      perl-uri
 perl-business-isbn-data                 perl-business-isbn
 perl-canary-stability                   perl-anyevent
 perl-common-sense
 perl-file-fcntllock                     exim
 perl-http-daemon                        wget
-perl-io-socket-ssl                      wget, ntp
+perl-io-socket-ssl                      wget, git, ntp
 perl-json-xs                            perl-anyevent-i3
 perl-net-ssleay                         perl-io-socket-ssl
 perl-pod-pom-view-restructured          cyrus-sasl
@@ -792,7 +792,6 @@ unbound                                 gnutls
 uniconvertor                            imagemagick
 unixodbc                                openldap, qt5-components, qt6
 unrar
-unzip                                   docbook-xml, docbook-dtd3, docbook-dtd4, fontconfig, perl-archive-zip, openjdk, libgsf
 usbredir                                spice-gtk, qemu
 usbutils
 utah-raster-toolkit                     imagemagick
@@ -834,7 +833,7 @@ wpa-supplicant
 wpe-webkit                              gst-plugins-bad
 wpebackend-fdo                          gst-plugins-bad
 wstest                                  libsoup3
-wxwidgets                               p7zip
+uasm                                    7zip
 x264                                    ffmpeg, gst-plugins-ugly
 x265                                    imlib2, ffmpeg, gst-plugins-bad
 xbanish

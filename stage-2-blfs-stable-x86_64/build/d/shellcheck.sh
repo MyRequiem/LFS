@@ -38,9 +38,6 @@ MANDIR="/usr/share/man/man1"
 mkdir -pv "${TMP_DIR}"{/usr/bin,"${MANDIR}"}
 
 cp "${PRGNAME}" "${TMP_DIR}/usr/bin/"
-
-# man-страница взята с deb-пакета
-# http://deb.debian.org/debian/pool/main/s/shellcheck/shellcheck_${VERSION}-2_amd64.deb
 cp "${SOURCES}/${PRGNAME}.1" "${TMP_DIR}${MANDIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -51,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh
 # shell scripts.
 #
-# Home page: https://www.${PRGNAME}.net
+# Home page: https://github.com/koalaman/${PRGNAME}/
 # Download:  https://github.com/koalaman/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-v${VERSION}.linux.x86_64.tar.xz
 #
 EOF

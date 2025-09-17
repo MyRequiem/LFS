@@ -69,8 +69,6 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-chmod u+s "${TMP_DIR}/usr/bin/fusermount3"
-
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
@@ -105,6 +103,8 @@ fi
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod u+s /usr/bin/fusermount3
 
 config_file_processing "${FUSE_CONF}"
 

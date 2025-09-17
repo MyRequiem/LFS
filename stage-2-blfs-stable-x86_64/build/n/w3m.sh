@@ -12,7 +12,6 @@ PRGNAME="w3m"
 # Optional:    glib
 #              imlib2
 #              gdk-pixbuf
-#              gdk-pixbuf-xlib
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -41,24 +40,28 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure                                   \
-    --prefix=/usr                             \
-    --sysconfdir=/etc                         \
-    --localstatedir=/var                      \
-    --with-gc                                 \
-    --with-ssl                                \
-    --enable-nls                              \
-    --enable-m17n                             \
-    --enable-gopher                           \
-    --enable-unicode                          \
-    --enable-image="x11,fb"                   \
-    --enable-keymap="w3m"                     \
-    --disable-mouse                           \
-    --disable-w3mmailer                       \
-    --with-editor=/usr/bin/vim                \
-    --with-browser=/usr/bin/firefox           \
-    --with-termlib="terminfo ncurses"         \
-    --with-imagelib="gdk-pixbuf2 imlib2"      \
+# для gcc>11
+SLKCFLAGS="-std=gnu17"
+CFLAGS="${SLKCFLAGS}"                    \
+CXXFLAGS="${SLKCFLAGS}"                  \
+./configure                              \
+    --prefix=/usr                        \
+    --sysconfdir=/etc                    \
+    --localstatedir=/var                 \
+    --with-gc                            \
+    --with-ssl                           \
+    --enable-nls                         \
+    --enable-m17n                        \
+    --enable-gopher                      \
+    --enable-unicode                     \
+    --enable-image="x11,fb"              \
+    --enable-keymap="w3m"                \
+    --disable-mouse                      \
+    --disable-w3mmailer                  \
+    --with-editor=/usr/bin/vim           \
+    --with-browser=google-chrome         \
+    --with-termlib="terminfo ncurses"    \
+    --with-imagelib="gdk-pixbuf2 imlib2" \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1

@@ -13,7 +13,6 @@ PRGNAME="fontconfig"
 #              --- для тестов ---
 #              bubblewrap
 #              curl
-#              unzip
 #              --- для сборки документации ---
 #              docbook-utils
 #              texlive или install-tl-unx

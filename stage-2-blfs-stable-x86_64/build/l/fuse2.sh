@@ -50,7 +50,7 @@ patch --verbose -Np1 -i \
 
 # исправим ошибку, которую в данном случае выдает autoreconf
 #    possibly undefined macro: AM_ICONV
-sed 's/AM_ICONV/#AM_ICONV/' -i configure.ac || exit 1
+sed 's/^AM_ICONV/#AM_ICONV/' -i configure.ac || exit 1
 autoreconf -vif || exit 1
 
 ./configure                   \
@@ -78,8 +78,6 @@ make install DESTDIR="${TMP_DIR}"
     rm -rf etc/init.d dev
 )
 
-exit
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -92,7 +90,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non privileged users to create and mount their own filesystem
 # implementations.
 #
-# Home page: https://github.com/libfuse/libfuse
+# Home page: https://github.com/libfuse/libfuse/
 # Download:  https://github.com/libfuse/libfuse/releases/download/${ARCH_NAME}-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

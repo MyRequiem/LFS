@@ -14,7 +14,6 @@ PRGNAME="mc"
 #              libssh2
 #              ruby
 #              samba
-#              unzip
 #              Graphical Environments
 #              zip
 

@@ -12,7 +12,6 @@ BIN_ARCH_NAME="OpenJDK"
 # Required:    alsa-lib
 #              cpio
 #              cups
-#              unzip
 #              which
 #              xorg-libraries
 #              zip

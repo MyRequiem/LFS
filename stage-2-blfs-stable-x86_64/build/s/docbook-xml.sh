@@ -7,8 +7,8 @@ PRGNAME="docbook-xml"
 # набору правил DocBook. Применяется для структурирования книг и документации
 # программного обеспечения в соответствии со стандартом.
 
-# Required:    libxml2
-#              unzip или libarchive    (для распаковки архива с исходниками)
+# Required:    libarchive    (для распаковки архива с исходниками)
+#              libxml2
 # Recommended: no
 # Optional:    no
 

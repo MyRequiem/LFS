@@ -15,7 +15,7 @@ ARCH_NAME="ImageMagick"
 #              curl
 #              ffmpeg
 #              fftw
-#              p7zip
+#              7zip
 #              sane
 #              wget
 #              xdg-utils

@@ -12,8 +12,7 @@ PRGNAME="libgsf"
 # Recommended: gdk-pixbuf (для сборки gsf-office-thumbnailer)
 # Optional:    gtk-doc
 #              --- для тестов ---
-#              p7zip
-#              unzip
+#              7zip
 #              valgrind
 
 ROOT="/root/src/lfs"

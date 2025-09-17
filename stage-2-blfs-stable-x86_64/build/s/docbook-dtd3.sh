@@ -9,8 +9,8 @@ VERSION="3.1"
 # набору правил DocBook. Применяется для структурирования книг и документации
 # программного обеспечения в соответствии с DocBook стандартом.
 
-# Required:    sgml-common
-#              unzip или libarchive
+# Required:    libarchive
+#              sgml-common
 # Recommended: no
 # Optional:    no
 

@@ -11,8 +11,8 @@ PRGNAME="docbook-utils"
 #              docbook-dsssl
 #              docbook-dtd3
 # Recommended: no
-# Optional:    perl-sgmlspm           (для конвертации в man и texinfo)
-#              lynx или links или w3m (для конвертации в ASCII text)
+# Optional:    perl-sgmlspm             (для конвертации в man и texinfo)
+#              lynx или links или w3m   (http://w3m.sourceforge.net/) для конвертации в ASCII text
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

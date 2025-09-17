@@ -42,14 +42,10 @@ n/wpa-supplicant.sh
 l/libevent.sh
 d/yasm.sh
 ap/tmux.sh
-
 l/fuse2.sh
-
 l/libxml2.sh
 l/libxslt.sh
-
 l/fuse3.sh
-
 ap/sqlite.sh
 l/libusb.sh
 ap/lmdb.sh
@@ -66,7 +62,6 @@ l/lzo.sh
 l/libarchive.sh
 s/archivemount.sh
 n/curlftpfs.sh
-
 ap/vifm.sh
 s/pytrash.sh
 d/gc.sh
@@ -80,10 +75,9 @@ s/lshw.sh
 s/grc.sh
 d/shellcheck.sh
 a/zip.sh
-a/unzip.sh (удалить, см. libarchive.sh)
 ap/unrar.sh
 ap/lzip.sh
-ap/p7zip.sh
+ap/7zip.sh
 a/lrzip.sh
 ap/sudo.sh
 
@@ -252,7 +246,7 @@ l/libogg.sh
 l/libvorbis.sh
 ap/flac.sh
 l/lame.sh
-l/speex.sh
+l/speex.sh (удалить)
 ap/opus.sh
 l/libsndfile.sh
 ap/pulseaudio.sh
@@ -311,7 +305,12 @@ x/libs/startup-notification.sh
 x/libs/glew.sh
 l/fltk.sh
 n/pinentry.sh
+a/dialog.sh
+l/alsa-plugins.sh
+ap/alsa-utils.sh
+ap/alsa-tools.sh
 l/imlib2.sh
+n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
 l/glib-networking.sh
@@ -409,9 +408,6 @@ a/fcron.sh
 
 # ================================== PART 3 ====================================
 # === ffmpeg, mpv ===============
-l/alsa-plugins.sh
-ap/alsa-utils.sh
-ap/alsa-tools.sh
 l/libaom.sh
 l/libass.sh
 l/fdk-aac.sh
@@ -434,7 +430,6 @@ n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
 l/libcap-ng.sh
-a/dialog.sh
 n/openvpn.sh
 n/libiscsi.sh
 s/numactl.sh

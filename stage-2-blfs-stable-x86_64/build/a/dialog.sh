@@ -73,7 +73,12 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # using dialog boxes from a shell script
 #
 # Home page: https://invisible-island.net/${PRGNAME}/
-# Download:  https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION_ORIG}.tar.lz
+# Download:  исходник (+ 3 патча) есть у меня в репозитории, но есть и более новые версии тут:
+#               https://invisible-island.net/archives/dialog/ (может потребоватся VPN)
+#
+#               Проверить после установки на скрипте /root/bin/vpngate.sh
+#
+# https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION_ORIG}.tar.lz
 #
 EOF
 

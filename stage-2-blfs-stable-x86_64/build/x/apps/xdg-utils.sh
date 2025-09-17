@@ -9,7 +9,7 @@ PRGNAME="xdg-utils"
 # сосредоточена на интеграции со средой рабочего стола во время их работы.
 
 # Required:    xmlto
-#              lynx или links или w3m
+#              lynx или links или w3m    (http://w3m.sourceforge.net/)
 #              xorg-applications
 # Recommended: no
 # Optional:    dbus
