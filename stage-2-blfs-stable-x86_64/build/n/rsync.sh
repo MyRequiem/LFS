@@ -41,7 +41,11 @@ mkdir -pv "${TMP_DIR}/etc"
     --without-included-zlib || exit 1
 
 make || exit 1
+
+# тесты
+# sed -i '/typedef/d' wildtest.c
 # make check
+
 make install DESTDIR="${TMP_DIR}"
 
 # конфиг

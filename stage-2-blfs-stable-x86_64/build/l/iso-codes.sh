@@ -27,13 +27,9 @@ make || exit 1
 # make check
 
 # если мы устанавливаем пакет поверх предыдущей установленной версии,
-# 'make install' потерпит неудачу при создании некоторых символических ссылок.
-# Обновим эти ссылки так как нужно:
-if [ -d "/usr/share/${PRGNAME}" ]; then
-    sed -i '/^LN_S/s/s/sfvn/' */Makefile
-fi
-
-make install DESTDIR="${TMP_DIR}"
+# 'make install' потерпит неудачу при создании некоторых символических ссылок,
+# поэтому добавим параметр 'LN_S' для принудительного обновления ссылок
+make install LN_S='ln -sfn' DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

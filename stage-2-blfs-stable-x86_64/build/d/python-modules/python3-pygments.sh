@@ -14,7 +14,7 @@ ARCH_NAME="pygments"
 # Required:    python3-hatchling
 # Recommended: no
 # Optional:    python3-pytest
-#              python3-wcag-contrast-ratio
+#              python3-wcag-contrast-ratio (https://pypi.org/project/wcag-contrast-ratio/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -33,8 +33,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     Pygments || exit 1
 

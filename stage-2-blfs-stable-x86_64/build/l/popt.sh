@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # arbitrary strings into argv[] arrays using popt: shell-like rules.
 #
 # Home page: http://ftp.rpm.org/${PRGNAME}/releases/
-# Download:  http://ftp.rpm.org/${PRGNAME}/releases/${PRGNAME}-${MAJ_VER}.x/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftp.osuosl.org/pub/rpm/${PRGNAME}/releases/${PRGNAME}-1.x/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

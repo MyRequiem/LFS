@@ -55,8 +55,7 @@ if command -v swig &>/dev/null; then
     pip3 install            \
         --root="${TMP_DIR}" \
         --no-index          \
-        --find-links=dist   \
-        --no-cache-dir      \
+        --find-links dist   \
         --no-user           \
         libfdt
 fi

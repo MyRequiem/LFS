@@ -1,15 +1,17 @@
 #! /bin/bash
 
-PRGNAME="python3-pluggy"
-ARCH_NAME="pluggy"
+PRGNAME="python3-hatch-vcs"
+ARCH_NAME="hatch_vcs"
 
-### Pluggy (mechanisms for python)
-# Менеджер плагинов, используемый pytest, но лишенный специфичных для pytest
-# деталей.
+### Hatch_vcs (Hatch plugin for versioning)
+# Плагин для некоторых систем управления версиями (Version Control Systems)
 
-# Required:    no
-# Recommended: python3-setuptools-scm
-# Optional:    python3-pytest
+# Required:    python3-hatchling
+#              python3-setuptools-scm
+# Recommended: no
+# Optional:    --- для тестов ---
+#              git
+#              python3-pytest
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -49,13 +51,13 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (mechanisms for python)
+# Package: ${PRGNAME} (Hatch plugin for versioning)
 #
-# This is the plugin manager as used by pytest but stripped of pytest specific
-# details.
+# Hatch_vcs is a Hatch plugin for versioning with several Version Control
+# Systems
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/p/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/h/hatch-vcs/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

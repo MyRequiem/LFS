@@ -10,11 +10,12 @@ ARCH_NAME="LVM2"
 
 # Required:    libaio
 # Recommended: no
-# Optional:    mdadm
+# Optional:    libnvme
+#              mdadm
 #              valgrind
 #              which
 #              xfsprogs
-#              reiserfsprogs
+#              reiserfsprogs           (https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/)
 #              thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
 #              vdo                     (https://github.com/dm-vdo/vdo)
 
@@ -89,7 +90,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # удалим правило, которое выполняется в другом скрипте
-rm -f "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"
+rm -fv "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"
 
 # конфиг /etc/lvm/lvm.conf
 LVM_CONF="/etc/lvm/lvm.conf"

@@ -2,6 +2,7 @@
 # Пакет ............................... Зависимые пакеты
 ###***###
 
+7zip                                    imagemagick, libgsf
 Graphical Environments                  openssh, libmpeg2, ghostscript, rxvt-unicode, exim, vim, sdl2, ffmpeg, numlockx, libao
 Plasma5                                 polkit
 aalib                                   gst-plugins-good, gimp
@@ -178,7 +179,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, python3-setuptools-scm, cmake, llvm, rustc, harfbuzz, python3-meson, adwaita-icon-theme, libgxps, openjdk, openjpeg, flameshot, poppler
+git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, adwaita-icon-theme, libgxps, openjdk, openjpeg, flameshot, poppler
 gjs                                     glib, gimp
 glade                                   libhandy
 glew
@@ -376,6 +377,7 @@ libnotify                               ibus
 libnsgif                                gegl
 libnsl                                  opensp, python3, exim
 libnut                                  ffmpeg
+libnvme                                 lvm2
 libofa                                  gst-plugins-bad
 libogg                                  libvorbis, flac, speex, gst-plugins-base
 libopenmpt                              gst-plugins-bad
@@ -424,7 +426,7 @@ libu2f-emu                              qemu
 libumfpack                              gegl
 libunibreak                             libass
 libunistring                            libidn2, gnutls, libpsl, guile
-libunwind                               mesa, gstreamer, sdl2, xorg-server, libinput, libplacebo, gimp
+libunwind                               llvm, mesa, gstreamer, sdl2, xorg-server, libinput, libplacebo, gimp
 liburcu                                 bind-utils, glusterfs
 libusb                                  gnupg, usbutils, libpcap, cups, gst-plugins-bad, usbredir, qemu
 libuv                                   cmake, bind-utils
@@ -556,7 +558,6 @@ osinfo-db                               libosinfo
 osinfo-db-tools                         osinfo-db
 oxygen-icons
 p11-kit                                 make-ca, gnutls, python3-requests, nss, flameshot
-7zip                                    imagemagick, libgsf
 pamixer
 pandoc                                  openjdk
 pango                                   pangomm24, pangomm25, librsvg, gtk+3, gegl, imagemagick, gst-plugins-base, gtk4, i3
@@ -633,7 +634,8 @@ python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
 python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsoup3, gtk4, libadwaita, vte3, libnotify, appstream
 python3-glad                            libplacebo
-python3-hatchling                       python3-pygments, python3-urllib3
+python3-hatch-vcs                       python3-urllib3
+python3-hatchling                       python3-pygments, python3-hatch-vcs
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
 python3-httpbin                         python3-requests
 python3-httpx                           python3-urllib3
@@ -670,7 +672,7 @@ python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
+python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson
@@ -680,9 +682,9 @@ python3-quart                           python3-urllib3
 python3-quart-trio                      python3-urllib3
 python3-railroad-diagrams               python3-pyparsing
 python3-requests                        osinfo-db-tools
-python3-setuptools-scm                  python3-pluggy
+python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-charset-normalizer
 python3-six                             spice, python3-urlgrabber
-python3-sphinx                          libuv, python3-requests, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, libinput, extra-cmake-modules
+python3-sphinx                          libuv, python3-requests, llvm, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, libinput, extra-cmake-modules
 python3-sphinx-rtd-theme                qemu
 python3-tomli                           python3-build
 python3-tornado                         python3-urllib3
@@ -786,6 +788,7 @@ tslib                                   qt6
 tunctl
 twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good
+uasm                                    7zip
 uchardet                                mpv
 umockdev                                libgudev
 unbound                                 gnutls
@@ -833,7 +836,6 @@ wpa-supplicant
 wpe-webkit                              gst-plugins-bad
 wpebackend-fdo                          gst-plugins-bad
 wstest                                  libsoup3
-uasm                                    7zip
 x264                                    ffmpeg, gst-plugins-ugly
 x265                                    imlib2, ffmpeg, gst-plugins-bad
 xbanish

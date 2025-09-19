@@ -23,8 +23,8 @@ cd build || exit 1
 meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Ddocs=false        \
-    -Dtests=false       \
+    -D docs=false       \
+    -D tests=false      \
     .. || exit 1
 
 ninja || exit 1
@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # needed in order to support right-to-left languages such as Arabic and Hebrew.
 # It is used in display software like KDE's SVG modules.
 #
-# Home page: http://${PRGNAME}.org
+# Home page: https://github.com/${PRGNAME}/${PRGNAME}/
 # Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

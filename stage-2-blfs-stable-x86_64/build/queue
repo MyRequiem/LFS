@@ -146,6 +146,7 @@ d/python-modules/python3-editables.sh
 d/python-modules/python3-hatchling.sh
 d/python-modules/python3-pygments.sh
 # === python3-requests ===
+d/python-modules/python3-hatch-vcs.sh
 d/python-modules/python3-urllib3.sh
 d/python-modules/python3-idna.sh
 d/python-modules/python3-charset-normalizer.sh

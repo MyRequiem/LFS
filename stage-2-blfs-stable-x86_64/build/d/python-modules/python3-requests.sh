@@ -35,7 +35,7 @@ mkdir -pv "${TMP_DIR}"
 # устанавливается после пересборки Python3 в BLFS (см. build/d/python3.sh),
 # также могла использоваться этим модулем
 patch --verbose -Np1 -i \
-    "${SOURCES}/${ARCH_NAME}-${VERSION}-use_system_certs-1.patch" || exit 1
+    "${SOURCES}/${ARCH_NAME}-use_system_certs-1.patch" || exit 1
 
 pip3 wheel               \
     -w dist              \
@@ -47,8 +47,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 

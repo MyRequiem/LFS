@@ -1,13 +1,13 @@
 #! /bin/bash
 
 PRGNAME="python3-charset-normalizer"
-ARCH_NAME="charset-normalizer"
+ARCH_NAME="charset_normalizer"
 
 ### Charset-normalizer (charset detection for python)
 # Python-библиотека, которая помогает читать текст в неизвестной кодировке
 # символов
 
-# Required:    no
+# Required:    python3-setuptools-scm
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
@@ -31,10 +31,9 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
-    "${ARCH_NAME}" || exit 1
+    charset-normalizer || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
@@ -59,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # alternative to the Universal Charset Encoding Detector, also known as Chardet
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://files.pythonhosted.org/packages/source/c/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://files.pythonhosted.org/packages/source/c/charset-normalizer/charset_normalizer-${VERSION}.tar.gz
 #
 EOF
 

@@ -25,11 +25,13 @@ COMPILER_RT="compiler-rt"
 # Optional:    doxygen
 #              git
 #              graphviz
+#              libunwind
 #              libxml2
 #              python3-psutil
 #              python3-pygments
 #              python3-pyyaml
 #              rsync
+#              python3-sphinx
 #              texlive или install-tl-unx
 #              valgrind
 #              zip
@@ -46,32 +48,45 @@ VERSION="$(echo "${VERSION}" | rev | cut -d . -f 2- | rev)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -p "${TMP_DIR}/etc/clang"
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
+# распакуем в дерево исходников два дополнительных архива, требуемых для сборки
+# пакета:
+# llvm-cmake-${VERSION}.src.tar.xz        -> cmake-${VERSION}.src
+# llvm-third-party-${VERSION}.src.tar.xz  -> third-party-${VERSION}.src
+tar -xvf "${SOURCES}/${PRGNAME}-cmake-${VERSION}.src.tar.xz"       || exit 1
+tar -xvf "${SOURCES}/${PRGNAME}-third-party-${VERSION}.src.tar.xz" || exit 1
 
-# llvm-cmake
-tar -xvf "${SOURCES}/${PRGNAME}-cmake-${MAJ_VERSION}.src.tar.xz"       || exit 1
-sed '/LLVM_COMMON_CMAKE_UTILS/s@../cmake@llvm-cmake-18.src@' \
+# система сборки предполагает, что распакованные каталоги находятся рядом с
+# директорией дерева исходников LLVM, поэтому изменим ./CMakeLists.txt
+#
+# ./CMakeLists.txt diff:
+# -set(LLVM_COMMON_CMAKE_UTILS ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
+# +set(LLVM_COMMON_CMAKE_UTILS ${CMAKE_CURRENT_SOURCE_DIR}/cmake-${VERSION}.src)
+#
+# cmake/modules/HandleLLVMOptions.cmake diff:
+# -set(LLVM_THIRD_PARTY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/../third-party CACHE STRING
+# +set(LLVM_THIRD_PARTY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/third-party-20.1.8.src CACHE STRING
+sed "/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-${VERSION}.src@" \
     -i CMakeLists.txt || exit 1
-
-# llvm-third-party
-tar -xvf "${SOURCES}/${PRGNAME}-third-party-${MAJ_VERSION}.src.tar.xz" || exit 1
-sed '/LLVM_THIRD_PARTY_DIR/s@../third-party@llvm-third-party-18.src@' \
+sed "/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-${VERSION}.src@" \
     -i cmake/modules/HandleLLVMOptions.cmake || exit 1
 
-# clang
+# распакуем clang и compiler-rt
+# clang-${VERSION}.src.tar.xz       -> tools/clang
+# compiler-rt-${VERSION}.src.tar.xz -> projects/compiler-rt
 tar -xvf "${SOURCES}/${CLANG}-${VERSION}.src.tar.xz"       -C tools    || exit 1
-mv "tools/${CLANG}-${VERSION}.src"          "tools/${CLANG}"
-
-# compiler-rt
+mv "tools/${CLANG}-${VERSION}.src" "tools/${CLANG}"
 tar -xvf "${SOURCES}/${COMPILER_RT}-${VERSION}.src.tar.xz" -C projects || exit 1
 mv "projects/${COMPILER_RT}-${VERSION}.src" "projects/${COMPILER_RT}"
 
-# в исходниках лежит много Python-скриптов, которые используют shebang
-# /usr/bin/env python для доступа к системному Python, который в LFS -
-# Python-3.x.x. Исправим эти скрипты, чтобы shebang был /usr/bin/env python3
+# в исходниках лежит много Python скриптов, которые используют shebang
+# /usr/bin/env python
+# исправим на:
+# /usr/bin/env python3
 grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
 
-sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt
+# будем устанавливать утилиту filecheck, которая требуется для тестирования
+# некоторых пакетов (например rustc)
+sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt || exit 1
 
 mkdir build
 cd build || exit 1
@@ -97,8 +112,11 @@ cmake                                          \
 ninja || exit 1
 
 # тесты
-#    rm -f ../projects/compiler-rt/test/tsan/getline_nohang.cpp
-#    sh -c 'ulimit -c 0 && ninja check-all'
+# sed -e 's/config.has_no_default_config_flag/True/' \
+#     -e 's/"-fuse-ld=gold"//'                       \
+#     -i ../projects/compiler-rt/test/lit.common.cfg.py
+#
+# sh -c 'ulimit -c 0 && ninja check-all'
 
 DESTDIR="${TMP_DIR}" ninja install
 
