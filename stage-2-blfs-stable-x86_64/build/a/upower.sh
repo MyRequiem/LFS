@@ -11,9 +11,9 @@ PRGNAME="upower"
 
 # Required:    libgudev
 #              libusb
-#              polkit
 # Recommended: no
-# Optional:    gtk-doc
+# Optional:    glib
+#              gtk-doc
 #              libxslt
 #              docbook-xsl
 #              python3-pygobject3
@@ -53,18 +53,17 @@ sed '/parse_version/d' -i src/linux/integration-test.py || exit 1
 mkdir build
 cd build || exit 1
 
-meson                                    \
-    --prefix=/usr                        \
-    --buildtype=release                  \
-    -Dgtk-doc=false                      \
-    -Dman=true                           \
-    -Dsystemdsystemunitdir=no            \
-    -Dudevrulesdir=/usr/lib/udev/rules.d \
-    .. || exit 1
+meson setup ..                \
+    --prefix=/usr             \
+    --buildtype=release       \
+    -D gtk-doc=false          \
+    -D man=true               \
+    -Dsystemdsystemunitdir=no \
+    -Dudevrulesdir=/usr/lib/udev/rules.d || exit 1
 
 ninja || exit 1
 
-# тестовый набор должен запускаться из локальной GUI сессии с запущенным
+# тестовый набор должен запускаться из локальной GUI сессии, запущенной с
 # dbus-launch
 # LC_ALL=C ninja test
 

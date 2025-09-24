@@ -65,7 +65,7 @@ VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
     cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-# для сборки требуется ~37Gb дискового пространства, поэтому собираем не в /tmp
+# для сборки требуется ~47Gb дискового пространства, поэтому собираем не в /tmp
 # а в директории, которая находится в корневом разделе
 BUILD_DIR="${ROOT}/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -137,6 +137,8 @@ EOF
 SUDOERS="/etc/sudoers.d/qt6"
 cat > "${TMP_DIR}${SUDOERS}" << "EOF"
 Defaults env_keep += QT6DIR
+Defaults env_keep += QT_PLUGIN_PATH
+Defaults env_keep += QML2_IMPORT_PATH
 EOF
 chmod 440 "${TMP_DIR}${SUDOERS}"
 
@@ -145,11 +147,12 @@ cat << EOF > "${TMP_DIR}${QT6_SH}"
 # Begin ${QT6_SH}
 
 QT6DIR=${QT6PREFIX}
-
 PATH="\${PATH}:\${QT6DIR}/bin"
 PKG_CONFIG_PATH="\${PKG_CONFIG_PATH}:\${QT6DIR}/lib/pkgconfig"
+QT_PLUGIN_PATH=\${QT6DIR}/plugins
+QML2_IMPORT_PATH=\${QT6DIR}/qml
 
-export QT6DIR PATH PKG_CONFIG_PATH
+export QT6DIR PATH PKG_CONFIG_PATH QT_PLUGIN_PATH QML2_IMPORT_PATH
 
 # End ${QT6_SH}
 EOF

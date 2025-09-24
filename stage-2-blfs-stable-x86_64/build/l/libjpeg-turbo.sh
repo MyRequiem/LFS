@@ -21,22 +21,25 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-# обеспевает совместимость с libjpeg версии 8
-#    -DWITH_JPEG8=ON
+# разрешаем сборку с CMake>=4.0
+#    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 # заставляет cmake удалять жестко закодированные пути поиска библиотеки (rpath)
 # при установке двоичного исполняемого файла или общей библиотеки, но для этого
 # пакета не требуется rpath после его установки в стандартное расположение, и
 # rpath иногда может вызывать нежелательные эффекты или даже проблемы с
 # безопасностью
 #    -D CMAKE_SKIP_INSTALL_RPATH=ON
+# обеспевает совместимость с libjpeg версии 8
+#    -D WITH_JPEG8=ON
 cmake                                                              \
     -D CMAKE_INSTALL_PREFIX=/usr                                   \
     -D CMAKE_BUILD_TYPE=RELEASE                                    \
     -D ENABLE_STATIC=FALSE                                         \
-    -D WITH_JPEG8=ON                                               \
     -D CMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5                            \
     -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
     -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
+    -D WITH_JPEG8=ON                                               \
     .. || exit 1
 
 make || exit 1

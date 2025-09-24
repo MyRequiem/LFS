@@ -15,7 +15,7 @@ PRGNAME="xmlto"
 #              fop
 #              dblatex      (https://sourceforge.net/projects/dblatex/files/dblatex/)
 #              passivetex   (https://www.garshol.priv.no/download/xmltools/prod/PassiveTeX.html)
-#              --- для text backend один из консольных браузеров ---
+#              --- один из консольных браузеров для text backend ---
 #              links
 #              lynx
 #              w3m          (http://w3m.sourceforge.net/)
@@ -29,7 +29,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 autoreconf -fiv || exit 1
-LINKS="/usr/bin/w3m" \
+LINKS="/usr/bin/w3m"   \
 ./configure            \
     --prefix=/usr || exit 1
 

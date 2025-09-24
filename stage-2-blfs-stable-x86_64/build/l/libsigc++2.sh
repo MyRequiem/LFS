@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="libsigc++2"
+ARCH_NAME="libsigc++"
 
 ### libsigc++ version 2 (typesafe callback system for standard C++)
 # Библиотека реализует систему безопасных обратных вызовов (callbacks) для
@@ -17,10 +18,9 @@ PRGNAME="libsigc++2"
 #              mm-common (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-ARCH_NAME="libsigc++"
 VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-2*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"

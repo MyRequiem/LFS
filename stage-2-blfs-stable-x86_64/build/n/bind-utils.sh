@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="bind-utils"
-ARCH_NAME="$(echo "${PRGNAME}" | cut -d - -f 1)"
+ARCH_NAME="bind"
 
 ### bind-utils (collection client side programs from BIND)
 # Набор клиентских утилит, входящих в состав BIND: nslookup, dig и host
@@ -19,28 +19,36 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-MAN_DIR="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}${MAN_DIR}"
+MAN1="/usr/share/man/man1"
+MAN8="/usr/share/man/man8"
+mkdir -pv "${TMP_DIR}"{"${MAN1}","${MAN8}"}
 
 ./configure \
     --prefix=/usr || exit 1
 
-make -C lib/isc    && \
-make -C lib/dns    && \
-make -C lib/ns     && \
-make -C lib/isccfg && \
-make -C bin/dig    && \
+make -C lib/isc      && \
+make -C lib/dns      && \
+make -C lib/ns       && \
+make -C lib/isccfg   && \
+make -C lib/isccc    && \
+make -C bin/dig      && \
+make -C bin/nsupdate && \
+make -C bin/rndc     && \
 make -C doc || exit 1
 
 # пакет не имеет набора тестов
 
-make -C lib/isc    install DESTDIR="${TMP_DIR}" && \
-make -C lib/dns    install DESTDIR="${TMP_DIR}" && \
-make -C lib/ns     install DESTDIR="${TMP_DIR}" && \
-make -C lib/isccfg install DESTDIR="${TMP_DIR}" && \
-make -C bin/dig    install DESTDIR="${TMP_DIR}" || exit 1
+make -C lib/isc      install DESTDIR="${TMP_DIR}" && \
+make -C lib/dns      install DESTDIR="${TMP_DIR}" && \
+make -C lib/ns       install DESTDIR="${TMP_DIR}" && \
+make -C lib/isccfg   install DESTDIR="${TMP_DIR}" && \
+make -C lib/isccc    install DESTDIR="${TMP_DIR}" && \
+make -C bin/dig      install DESTDIR="${TMP_DIR}" && \
+make -C bin/nsupdate install DESTDIR="${TMP_DIR}" && \
+make -C bin/rndc     install DESTDIR="${TMP_DIR}" || exit 1
 
-cp -v doc/man/{dig.1,host.1,nslookup.1} "${TMP_DIR}${MAN_DIR}"
+cp -v doc/man/{dig.1,host.1,nslookup.1,nsupdate.1} "${TMP_DIR}${MAN1}"
+cp -v doc/man/rndc.8                               "${TMP_DIR}${MAN8}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

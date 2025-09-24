@@ -7,7 +7,7 @@ PRGNAME="docbook-xml"
 # набору правил DocBook. Применяется для структурирования книг и документации
 # программного обеспечения в соответствии со стандартом.
 
-# Required:    libarchive    (для распаковки архива с исходниками)
+# Required:    libarchive  (для распаковки архива с исходниками)
 #              libxml2
 # Recommended: no
 # Optional:    no
@@ -20,74 +20,88 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 XML_DTD="/usr/share/xml/docbook/xml-dtd-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/xml,"${XML_DTD}"}
 
-cp -vaf docbook.cat ./*.dtd ent/ ./*.mod "${TMP_DIR}${XML_DTD}"
+cp -v -af --no-preserve=ownership docbook.cat *.dtd ent/ *.mod \
+    "${TMP_DIR}${XML_DTD}"
 
-### /etc/xml/docbook
-xmlcatalog --noout --create "${TMP_DIR}/etc/xml/docbook"
+XML_DOCBOOK="/etc/xml/docbook"
+xmlcatalog --noout --create "${TMP_DIR}${XML_DOCBOOK}"
 
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML V${VERSION}//EN" \
-    "http://www.oasis-open.org/docbook/xml/${VERSION}/docbookx.dtd" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD DocBook XML CALS Table Model V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/calstblx.dtd" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//DTD XML Exchange Table Model 19990315//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/soextblx.dtd" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Information Pool V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/dbpoolx.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/dbhierx.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ELEMENTS DocBook XML HTML Tables V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/htmltblx.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Notations V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/dbnotnx.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Character Entities V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/dbcentx.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "public" \
-    "-//OASIS//ENTITIES DocBook XML Additional General Entities V${VERSION}//EN" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}/dbgenent.mod" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "rewriteSystem" \
-    "http://www.oasis-open.org/docbook/xml/${VERSION}" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}" \
-    "${TMP_DIR}/etc/xml/docbook" &&
-xmlcatalog --noout --add "rewriteURI" \
-    "http://www.oasis-open.org/docbook/xml/${VERSION}" \
-    "file:///usr/share/xml/docbook/xml-dtd-${VERSION}" \
-    "${TMP_DIR}/etc/xml/docbook"
+xmlcatalog --noout --add "public"                            \
+    "-//OASIS//DTD DocBook XML V4.5//EN"                     \
+    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                            \
+    "-//OASIS//DTD DocBook XML CALS Table Model V4.5//EN"    \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/calstblx.dtd" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                            \
+    "-//OASIS//DTD XML Exchange Table Model 19990315//EN"    \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/soextblx.dtd" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                              \
+    "-//OASIS//ELEMENTS DocBook XML Information Pool V4.5//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbpoolx.mod"    \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                                \
+    "-//OASIS//ELEMENTS DocBook XML Document Hierarchy V4.5//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbhierx.mod"      \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                            \
+    "-//OASIS//ELEMENTS DocBook XML HTML Tables V4.5//EN"    \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/htmltblx.mod" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                           \
+    "-//OASIS//ENTITIES DocBook XML Notations V4.5//EN"     \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbnotnx.mod" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                                \
+    "-//OASIS//ENTITIES DocBook XML Character Entities V4.5//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbcentx.mod"      \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "public"                                         \
+    "-//OASIS//ENTITIES DocBook XML Additional General Entities V4.5//EN" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5/dbgenent.mod"              \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "rewriteSystem"        \
+    "http://www.oasis-open.org/docbook/xml/4.5" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \
+    "${TMP_DIR}${XML_DOCBOOK}" &&
+
+xmlcatalog --noout --add "rewriteURI"           \
+    "http://www.oasis-open.org/docbook/xml/4.5" \
+    "file:///usr/share/xml/docbook/xml-dtd-4.5" \
+    "${TMP_DIR}${XML_DOCBOOK}"
 
 ### /etc/xml/catalog
 xmlcatalog --noout --create "${TMP_DIR}/etc/xml/catalog"
 
 xmlcatalog --noout --add "delegatePublic" \
-    "-//OASIS//ENTITIES DocBook XML" \
-    "file:///etc/xml/docbook" \
+    "-//OASIS//ENTITIES DocBook XML"      \
+    "file:///etc/xml/docbook"             \
     "${TMP_DIR}/etc/xml/catalog" &&
+
 xmlcatalog --noout --add "delegatePublic" \
-    "-//OASIS//DTD DocBook XML" \
-    "file:///etc/xml/docbook" \
+    "-//OASIS//DTD DocBook XML"           \
+    "file:///etc/xml/docbook"             \
     "${TMP_DIR}/etc/xml/catalog" &&
+
 xmlcatalog --noout --add "delegateSystem" \
-    "http://www.oasis-open.org/docbook/" \
-    "file:///etc/xml/docbook" \
+    "http://www.oasis-open.org/docbook/"  \
+    "file:///etc/xml/docbook"             \
     "${TMP_DIR}/etc/xml/catalog" &&
-xmlcatalog --noout --add "delegateURI" \
-    "http://www.oasis-open.org/docbook/" \
-    "file:///etc/xml/docbook" \
+
+xmlcatalog --noout --add "delegateURI"    \
+    "http://www.oasis-open.org/docbook/"  \
+    "file:///etc/xml/docbook"             \
     "${TMP_DIR}/etc/xml/catalog"
 
 # будем использовать docbook-xml-${VERSION} при запросе любой версии 4.x

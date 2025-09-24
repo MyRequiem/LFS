@@ -10,12 +10,12 @@ ARCH_NAME="meson_python"
 # Required:    python3-pyproject-metadata
 # Recommended: patchelf
 # Optional:    --- для тестов ---
+#              python3-build
 #              python3-cython
 #              git
 #              python3-pytest
-#              python3                  (после пересборки в BLFS с пакетом sqlite)
-#              python3-build            (https://pypi.org/project/build/)
-#              python3-pytest-mock      (https://pypi.org/project/pytest-mock/)
+#              python3              (после пересборки в BLFS с пакетом sqlite)
+#              python3-pytest-mock  (https://pypi.org/project/pytest-mock/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

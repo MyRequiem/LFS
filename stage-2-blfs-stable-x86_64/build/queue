@@ -156,7 +156,12 @@ l/popt.sh
 n/rsync.sh
 d/llvm.sh
 l/icu.sh
+# ====================================
+# пересоберем собранные ранее пакеты, зависящие от icu
+l/libpsl.sh
 l/libxml2.sh
+l/boost.sh
+# ====================================
 l/json-c.sh
 d/nasm.sh
 l/libjpeg-turbo.sh
@@ -165,6 +170,7 @@ n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
 d/rustc.sh
+d/cargo-c.sh
 n/gpgme.sh
 x/utils/util-macros.sh
 x/proto/xorgproto.sh
@@ -187,13 +193,18 @@ d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
+n/wpa-supplicant.sh
 d/python-modules/python3-lxml.sh
 a/acpid.sh
 a/elogind.sh
-a/pm-utils.sh
 d/duktape.sh
+s/docbook-xml.sh
+s/docbook-xsl.sh
+s/xmlto.sh
 l/polkit.sh
+
 l/libyaml.sh
+d/python-modules/python3-pyyaml.sh (есть в удаленных)
 ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
@@ -247,7 +258,7 @@ l/libogg.sh
 l/libvorbis.sh
 ap/flac.sh
 l/lame.sh
-l/speex.sh (удалить)
+l/speex.sh
 ap/opus.sh
 l/libsndfile.sh
 ap/pulseaudio.sh
@@ -277,9 +288,6 @@ n/mit-kerberos-v5.sh
 l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
-s/docbook-xml.sh
-s/docbook-xsl.sh
-s/xmlto.sh
 s/sound-theme-freedesktop.sh
 l/libcanberra.sh
 s/notification-daemon.sh
@@ -299,6 +307,7 @@ l/libmng.sh
 l/jasper.sh
 l/qt6.sh
 # ===========
+a/upower.sh
 d/extra-cmake-modules.sh
 s/oxygen-icons.sh
 l/libxklavier.sh

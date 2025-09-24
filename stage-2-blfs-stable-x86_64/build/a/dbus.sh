@@ -35,38 +35,34 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-./configure                              \
-    --prefix=/usr                        \
-    --sysconfdir=/etc                    \
-    --localstatedir=/var                 \
-    --runstatedir=/run                   \
-    --disable-doxygen-docs               \
-    --disable-xml-docs                   \
-    --disable-static                     \
-    --with-systemduserunitdir=no         \
-    --with-systemdsystemunitdir=no       \
-    --docdir="${DOC_DIR}"                \
-    --with-system-socket=/run/dbus/system_bus_socket || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
+meson setup                \
+    --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nofallback \
+    -D systemd=disabled    \
+    .. || exit 1
 
+ninja || exit 1
+
+# тесты проводятся после установки пакета в систему и запуска DBus сервиса
+# meson configure     \
+#     -D asserts=true \
+#     -D intrusive_tests=true || exit 1
+#
+# ninja test
+
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/var/run"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 # создадим ссылку в /etc/
 #    machine-id -> /var/lib/dbus/machine-id
-(
-    cd "${TMP_DIR}/etc" || exit 1
-    ln -svf ../var/lib/dbus/machine-id machine-id
-)
-
-# почистим документацию:
-find "${TMP_DIR}${DOC_DIR}" -type f -a \( \
-    -name '*.html' -o \
-    -name '*.png'  -o \
-    -name "*.svg"  -o \
-    -name "*.py" \) -delete
+ln -svf ../var/lib/dbus/machine-id "${TMP_DIR}/etc/machine-id"
 
 ###
 # Конфигурация D-Bus
@@ -169,7 +165,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

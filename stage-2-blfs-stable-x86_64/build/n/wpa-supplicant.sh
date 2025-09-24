@@ -111,6 +111,14 @@ CONFIG_DPP=y
 CFLAGS += -I/usr/include/libnl3
 EOF
 
+if [ -x /usr/bin/dbus-daemon ]; then
+    cat << EOF >> .config
+CONFIG_CTRL_IFACE_DBUS=y
+CONFIG_CTRL_IFACE_DBUS_NEW=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y
+EOF
+fi
+
 make BINDIR=/usr/sbin LIBDIR=/usr/lib
 
 # пакет не имеет набора тестов

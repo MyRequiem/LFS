@@ -10,8 +10,7 @@ ARCH_NAME="${PRGNAME}4c"
 
 # Required:    no
 # Recommended: no
-# Optional:    llvm    (собранный с clang)
-#              doxygen (для сборки документации)
+# Optional:    doxygen (для сборки документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

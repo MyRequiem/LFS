@@ -29,7 +29,7 @@ cd build || exit 1
 #    -D legacy=true
 #
 # shellcheck disable=SC2086
-meson                       \
+meson setup                 \
     --prefix=${XORG_PREFIX} \
     -D legacy=true          \
     .. || exit 1

@@ -9,13 +9,8 @@ PRGNAME="gpgme"
 # ключами. В настоящее время библиотека служит интерфейсом к GnuPG
 
 # Required:    libassuan
-# Recommended: no
-# Optional:    doxygen          (для сборки API документации)
-#              graphviz         (для сборки API документации)
-#              gnupg            (если qt5-components или swig установлены, используется для тестов)
-#              clisp
-#              qt5-components
-#              swig
+# Recommended: gnupg
+# Optional:    doxygen
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,12 +19,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-gpg-test || exit 1
+mkdir build
+cd build || exit 1
 
-make PYTHONS= || exit 1
-make install PYTHONS= DESTDIR="${TMP_DIR}"
+../configure      \
+    --prefix=/usr \
+    --disable-static || exit 1
+
+make || exit 1
+# make -k check
+make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

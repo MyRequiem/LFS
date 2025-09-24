@@ -12,7 +12,7 @@ PRGNAME="libxcb"
 # Required:    libxau
 #              xcb-proto
 # Recommended: libxdmcp
-# Optional:    doxygen    (для сборки документации)
+# Optional:    doxygen
 #              libxslt
 
 ROOT="/root/src/lfs"
@@ -29,8 +29,8 @@ mkdir -pv "${TMP_DIR}"
     --without-doxygen \
     --docdir="${XORG_PREFIX}/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
-make || exit 1
-# LC_ALL=en_US.UTF-8 make
+LC_ALL=en_US.UTF-8 make || exit 1
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

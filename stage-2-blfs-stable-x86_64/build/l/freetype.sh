@@ -12,7 +12,7 @@ PRGNAME="freetype"
 #              which
 # Optional:    brotli
 #              librsvg
-#              docwriter   (для сборки документации) https://pypi.org/project/docwriter/
+#              python3-docwriter   (для сборки документации) https://pypi.org/project/docwriter/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -20,11 +20,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с CMake-4.0
+sed -i 's/VERSION 2.8/VERSION 4.0/' apps/CMakeLists.txt  || exit 1
+sed -i 's/VERSION 3.9/VERSION 4.0/' tests/CMakeLists.txt || exit 1
+
 mkdir build
 cd build || exit 1
 
-# применяем более высокий уровень оптимизации компилятора
-#    -DCMAKE_BUILD_TYPE=Release
 cmake                           \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release  \

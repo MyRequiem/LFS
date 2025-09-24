@@ -31,7 +31,7 @@ command -v gr2fonttest &>/dev/null && GRAPHITE2="enabled"
 mkdir build
 cd build || exit 1
 
-meson setup                     \
+meson setup ..                  \
     --prefix=/usr               \
     --buildtype=release         \
     -D graphite2="${GRAPHITE2}" \
