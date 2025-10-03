@@ -8,16 +8,15 @@ PRGNAME="pango"
 # работает во многих операционных системах и является основой обработки текста
 # и шрифтов в GTK+2
 
-# Required:    fontconfig            (должен быть собран с freetype и harfbuzz)
+# Required:    fontconfig          (должен быть собран с freetype и harfbuzz)
 #              fribidi
 #              glib
-# Recommended: cairo                 (собранный после harfbuzz)
+# Recommended: cairo               (собранный после harfbuzz)
 #              xorg-libraries
-# Optional:    cantarell-font-otf    (для тестов)
-#              python3-gi-docgen     (для генерации документации)
-#              help2man              (https://www.gnu.org/software/help2man/) для генерации man-страниц
-#              libthai               (https://linux.thai.net/projects/libthai)
-#              sysprof
+# Optional:    python3-gi-docgen   (для генерации документации)
+#              help2man            (https://www.gnu.org/software/help2man/) для генерации man-страниц
+#              libthai             (https://linux.thai.net/projects/libthai)
+#              sysprof             (https://wiki.gnome.org/Apps/Sysprof)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -32,10 +31,11 @@ cd build || exit 1
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе
 #    --wrap-mode=nofallback
-meson setup                \
-    --prefix=/usr          \
-    --buildtype=release    \
-    --wrap-mode=nofallback \
+meson setup                  \
+    --prefix=/usr            \
+    --buildtype=release      \
+    --wrap-mode=nofallback   \
+    -D introspection=enabled \
     .. || exit 1
 
 ninja || exit 1

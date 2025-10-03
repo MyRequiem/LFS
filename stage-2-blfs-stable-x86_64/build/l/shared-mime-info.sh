@@ -17,6 +17,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# если будем запускать тесты
+# tar -xf "${SOURCES}/xdgmime.tar.xz" || exit 1
+# make -C xdgmime
+
 mkdir build
 cd build || exit 1
 
@@ -29,7 +33,7 @@ meson setup               \
     .. || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

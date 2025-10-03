@@ -22,17 +22,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure            \
-    --prefix=/usr      \
-    --enable-shared    \
-    --without-valgrind \
+./configure               \
+    --prefix=/usr         \
+    --disable-rpath       \
+    --enable-shared       \
+    --without-valgrind    \
+    --without-baseruby    \
+    ac_cv_func_qsort_r=no \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# make -k check
 make install DESTDIR="${TMP_DIR}"
 
-# удалим бесполезную документацию
+# удалим документацию
 rm -rf "${TMP_DIR}/usr/share/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1

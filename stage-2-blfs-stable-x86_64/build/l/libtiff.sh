@@ -26,10 +26,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p libtiff-build
 cd libtiff-build || exit 1
 
-cmake                                                              \
-    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    -D CMAKE_INSTALL_PREFIX=/usr                                   \
-    -G Ninja .. || exit 1
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr ..     \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -G Ninja                            \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
 # ninja test

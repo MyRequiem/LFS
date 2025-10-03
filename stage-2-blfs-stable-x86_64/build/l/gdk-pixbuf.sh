@@ -12,7 +12,7 @@ PRGNAME="gdk-pixbuf"
 #              libpng
 #              shared-mime-info
 # Recommended: python3-docutils
-#              librsvg
+#              librsvg            (runtime)
 #              libtiff
 # Optional:    python3-gi-docgen  (для генерации документации)
 #              glibavif           (runtime, для загрузки изображений AVIF)
@@ -34,10 +34,10 @@ cd build || exit 1
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе
 #    --wrap-mode=nofallback
-meson setup ..             \
-    --prefix=/usr          \
-    --buildtype=release    \
-    -D others=enabled      \
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D others=enabled   \
     --wrap-mode=nofallback || exit 1
 
 ninja || exit 1

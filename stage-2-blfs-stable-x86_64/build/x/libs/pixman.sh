@@ -11,7 +11,7 @@ PRGNAME="pixman"
 # Recommended: no
 # Optional:    --- для тестов и демо ---
 #              libpng
-#              gtk+2  (https://download.gnome.org/sources/gtk+/2.24/)
+#              gtk+3
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,9 +23,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup       \
-    --prefix=/usr \
-    --buildtype=release || exit 1
+meson setup             \
+    --prefix=/usr       \
+    --buildtype=release \
+    .. || exit 1
 
 ninja || exit 1
 # ninja test

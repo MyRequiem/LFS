@@ -56,9 +56,8 @@ cairo                                   glib, harfbuzz, ghostscript, python3-pyc
 cairo-5c                                xorg-applications
 cairomm114                              pangomm24
 cairomm118                              pangomm25
-cantarell-font-otf                      pango
 capstone                                qemu
-cargo-c
+cargo-c                                 librsvg
 cbindgen                                mesa
 ccache                                  openjdk
 cdparanoia-III                          gst-plugins-base
@@ -219,8 +218,8 @@ gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
 gstreamer                               libcanberra, gst-plugins-base, spice, spice-gtk
 gtest                                   protobuf, android-tools
-gtk+2                                   pixman, cairo, libcanberra, alsa-tools
-gtk+3                                   cairo, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt, poppler, gimp, gsimplecal
+gtk+2                                   cairo, libcanberra, alsa-tools
+gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, vim, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, spice-gtk, qemu, libvirt, poppler, gimp, gsimplecal
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, upower, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup, libxmlb, poppler, appstream-glib, gimp
 gtk-vnc                                 qemu
 gtk4                                    python3-pygobject3, adwaita-icon-theme, ibus, libadwaita, zenity, gtkmm4, vte3
@@ -268,7 +267,6 @@ jack                                    pulseaudio, sdl2, alsa-plugins, mpg123, 
 jansson                                 nghttp2
 jasper                                  gegl, imagemagick, qt6
 jbig-kit                                libtiff, imagemagick
-jbig2dec                                cairo
 jemalloc                                nghttp2, rustc
 jing                                    vala
 jq
@@ -452,7 +450,7 @@ libxml2                                 wpa-supplicant, libxslt, libarchive, doc
 libxmlb                                 appstream
 libxslt                                 p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, osinfo-db-tools, appstream-glib
 libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
-libyaml                                 ruby, appstream, dtc, appstream-glib
+libyaml                                 python3-pyyaml, ruby, appstream, dtc, appstream-glib
 lilv                                    gst-plugins-bad
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, exim, fcron, at, qemu
@@ -488,7 +486,7 @@ mariadb                                 cyrus-sasl, openldap, exim, qt5-componen
 maxflow                                 gegl
 mdadm                                   lvm2
 mercurial                               python3-setuptools-scm, cmake, openjdk
-mesa                                    cairo, libvdpau, libva, glu, libepoxy, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5-components, qt6, vulkan-loader, mpv, qemu
+mesa                                    libvdpau, libva, glu, libepoxy, fltk, freeglut, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5-components, qt6, vulkan-loader, mpv, qemu
 mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
@@ -621,7 +619,7 @@ python3 (пересобранный в BLFS)          python3-charset-normalizer
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-build                           python3-setuptools-scm, python3-meson
 python3-charset-normalizer              python3-requests
-python3-cython                          libseccomp, yasm, nghttp2, python3-meson
+python3-cython                          libseccomp, yasm, nghttp2, python3-meson, python3-pyyaml
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, ibus
 python3-dbusmock                        upower, polkit
@@ -671,7 +669,7 @@ python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
+python3-pytest                          fuse3, python3-pyyaml, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
 python3-pytest-cov                      python3-charset-normalizer
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson
@@ -720,7 +718,7 @@ rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad
 ruby                                    docbook-xsl, vim, gegl
 rust-bindgen                            mesa
-rustc                                   cargo-c, librsvg, ruby, python3-glad
+rustc                                   cargo-c, ruby, python3-glad
 rxvt-unicode
 samba                                   curl, ffmpeg, libsoup, libsoup3
 sane                                    imagemagick
@@ -738,7 +736,6 @@ sgml-common                             docbook-dtd3, docbook-dtd4, opensp, docb
 shared-mime-info                        glib, gdk-pixbuf
 shellcheck
 silgraphite                             graphite2
-skia                                    cairo
 slang                                   aalib
 slop                                    maim
 snappy                                  qemu

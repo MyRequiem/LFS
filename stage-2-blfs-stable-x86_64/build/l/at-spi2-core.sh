@@ -26,16 +26,24 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+# отключим сборку GTK+2 модуля
+#    -D gtk2_atk_adaptor=false
 # помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
 # System V не может использовать этот файл
-#    -Dsystemd_user_dir=/tmp
-meson                        \
-    --prefix=/usr            \
-    --buildtype=release      \
-    -D systemd_user_dir=/tmp \
+#    -D systemd_user_dir=/tmp
+meson                         \
+    --prefix=/usr             \
+    --buildtype=release       \
+    -D gtk2_atk_adaptor=false \
+    -D systemd_user_dir=/tmp  \
     .. || exit 1
 
 ninja || exit 1
+
+# тесты нужно запускать в графическом окружении с уже установленным пакетом
+# at-spi2-core
+# dbus-run-session ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/tmp"
@@ -43,10 +51,6 @@ rm -rf "${TMP_DIR}/tmp"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-# тесты нужно запускать в графическом окружении с уже установленным пакетом
-# at-spi2-core
-# dbus-run-session ninja test
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -202,9 +202,8 @@ s/docbook-xml.sh
 s/docbook-xsl.sh
 s/xmlto.sh
 l/polkit.sh
-
 l/libyaml.sh
-d/python-modules/python3-pyyaml.sh (есть в удаленных)
+d/python-modules/python3-pyyaml.sh
 ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
@@ -218,6 +217,7 @@ d/help2man.sh
 l/pango.sh
 d/vala.sh
 l/librsvg.sh
+
 x/libs/libdrm.sh
 d/python-modules/python3-mako.sh
 x/libs/libva.sh
