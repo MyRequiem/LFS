@@ -22,7 +22,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# сохраняем владельца и разрещения при копировании файлов
+# при обновлении пакета до новой версии, обновим временные метки всех файлов,
+# чтобы система сборки не сохранила файлы из старого пакета
+# shellcheck disable=SC2038,SC2185
+find -type f | xargs touch
+
+# сохраняем владельца и разрешения при копировании файлов
 sed -i 's/cp -p/cp/' build/make/Makefile || exit 1
 
 mkdir libvpx-build
@@ -30,8 +35,6 @@ cd libvpx-build || exit 1
 
 ../configure        \
     --prefix=/usr   \
-    --enable-vp8    \
-    --enable-vp9    \
     --enable-shared \
     --disable-static || exit 1
 

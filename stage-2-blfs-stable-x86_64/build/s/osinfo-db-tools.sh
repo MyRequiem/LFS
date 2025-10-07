@@ -11,7 +11,7 @@ PRGNAME="osinfo-db-tools"
 #              libarchive
 #              libxml2
 #              libxslt
-#              libsoup
+#              libsoup2    (https://download.gnome.org/sources/libsoup/2.74/)
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest

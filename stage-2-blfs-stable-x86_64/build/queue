@@ -169,8 +169,11 @@ l/liburcu.sh
 n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
+# ==============================
+# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
 d/rustc.sh
 d/cargo-c.sh
+# ==============================
 n/gpgme.sh
 x/utils/util-macros.sh
 x/proto/xorgproto.sh
@@ -217,7 +220,6 @@ d/help2man.sh
 l/pango.sh
 d/vala.sh
 l/librsvg.sh
-
 x/libs/libdrm.sh
 d/python-modules/python3-mako.sh
 x/libs/libva.sh
@@ -229,8 +231,15 @@ x/libs/vulkan-loader.sh
 d/spirv-headers.sh
 l/spirv-tools.sh
 x/misc/glslang.sh
+d/python-modules/python3-ply.sh
+d/spirv-llvm-translator.sh
+l/libclc.sh
+# ==============================
+# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
+d/cbindgen.sh
+d/rust-bindgen.sh
 x/misc/mesa.sh
-x/libs/vulkan-loader.sh
+# ==============================
 l/cairo.sh
 x/misc/glu.sh
 x/misc/freeglut.sh
@@ -270,7 +279,9 @@ l/gst-plugins-base.sh
 l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
+d/glslc.sh
 l/gtk4.sh
+l/libgstgtk4.sh
 # === qt5-components ===
 l/double-conversion.sh
 x/xcb/xcb-util.sh
@@ -349,6 +360,10 @@ x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
 n/libtirpc.sh
+d/python-modules/python3-hatch-fancy-pypi-readme.sh [NEW]
+d/python-modules/python3-attrs.sh (есть в удаленных)
+l/libei.sh [NEW]
+x/xserver/xwayland.sh [NEW]
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
@@ -459,7 +474,7 @@ s/gtk-vnc.sh
 s/qemu.sh
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-l/libsoup.sh
+l/libsoup2.sh
 l/libsoup3.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh

@@ -30,7 +30,6 @@ cd build || exit 1
 meson setup ..           \
     --prefix=/usr        \
     --buildtype=release  \
-    -D tests=false       \
     -D documentation=false || exit 1
 
 ninja || exit 1

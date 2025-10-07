@@ -24,7 +24,7 @@ mkdir -pv "${TMP_DIR}"
 
 # исправим жестко запрограммированый в исходном коде путь поиска библиотек в
 # установленных программах
-sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure
+sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure || exit 1
 
 ./configure          \
     --prefix=/usr    \

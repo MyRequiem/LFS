@@ -8,9 +8,7 @@ PRGNAME="adwaita-icon-theme"
 # Required:    gtk+3 или gtk4
 #              librsvg
 # Recommended: no
-# Optional:    git
-#              inkscape
-#              icon-tools (https://launchpad.net/icontool/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,6 +26,9 @@ meson setup       \
 
 ninja || exit 1
 # пакет не имеет набора тестов
+
+# перед установкой удалим старые иконки
+rm -rf /usr/share/icons/Adwaita/
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

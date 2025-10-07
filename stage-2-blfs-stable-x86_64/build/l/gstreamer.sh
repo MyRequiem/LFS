@@ -11,24 +11,20 @@ PRGNAME="gstreamer"
 # Recommended: no
 # Optional:    gtk+3           (для генерации примеров)
 #              gsl             (для одного из тестов)
+#              libnsl
 #              libunwind
+#              rustc
 #              valgrind
 #              bash-completion (https://github.com/scop/bash-completion/)
 #              python3-hotdoc  (https://pypi.org/project/hotdoc/)
 #              libdw           (https://sourceware.org/elfutils/)
 
-### NOTE:
-# Если мы обновляем пакет, то сначала нужно удалить пакеты:
-#    - gstreamer
-#    - phonon-backend-gstreamer
-#    - gst-plugins-base
-#    - gst-plugins-good
-#    - gst-plugins-bad
-#    - gst-plugins-ugly
-#    - clutter-gst
-#    - gst-libav
-#    - gstreamer-vaapi
-# а затем заново их пересобрать
+###
+# WARNINGS:
+###
+# Если мы обновляем пакет, то сначала нужно удалить все его плагины
+# (gst-plugins-*, и другие пакеты, касающиеся директории
+# /usr/lib/gstreamer-1.0/) и сам пакет gstreamer, а затем заново пересобрать
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

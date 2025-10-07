@@ -20,16 +20,23 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему сборки с GCC-15
+sed -e '/Context/s/()/(SFG_PlatformDisplay, SFG_WindowContextType)/' \
+    -i src/egl/fg_init_egl.h || exit 1
+
 mkdir build
 cd build || exit 1
 
+# позволяет сборку с CMake>=4.0
+#    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 # отключим создание дополнительных демонстрационных программ (рекомендуется)
-#    -DFREEGLUT_BUILD_DEMOS=OFF
-cmake                                 \
-    -D CMAKE_INSTALL_PREFIX=/usr      \
-    -D CMAKE_BUILD_TYPE=Release       \
-    -D FREEGLUT_BUILD_DEMOS=OFF       \
-    -D FREEGLUT_BUILD_STATIC_LIBS=OFF \
+#    -D FREEGLUT_BUILD_DEMOS=OFF
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D CMAKE_BUILD_TYPE=Release         \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -D FREEGLUT_BUILD_DEMOS=OFF         \
+    -D FREEGLUT_BUILD_STATIC_LIBS=OFF   \
     -W no-dev .. || exit 1
 
 make || exit 1

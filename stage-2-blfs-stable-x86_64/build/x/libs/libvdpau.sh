@@ -9,12 +9,12 @@ PRGNAME="libvdpau"
 # декодирования и постобработки видео средствами GPU.
 
 # Required:    xorg-libraries
-# Recommended: no
-# Optional:    libvdpau-va-gl
+# Recommended: --- runtime ---
+#              libvdpau-va-gl
 #              mesa (циклическая зависимость: сначала собираем libvdpau без
 #                    поддержки egl и glx, т.е. без пакета mesa, и после
 #                    установки mesa пересобираем libvdpau)
-#              doxygen
+# Optional:    doxygen
 #              graphviz
 #              texlive или install-tl-unx
 

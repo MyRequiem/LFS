@@ -26,18 +26,19 @@ PRGNAME="gst-plugins-bad"
 #              libass
 #              libexif              (для одного теста)
 #              librsvg
-#              libsoup              (для одного теста)
 #              libsndfile
 #              libssh2
 #              libusb
 #              libwebp
 #              libxkbcommon
+#              libxml2
 #              neon
 #              nettle или libgcrypt (для поддержки ssl в плагине hls, если оба не установлены, вместо этого будет использоваться openssl)
 #              opencv               (с дополнительными модулями)
 #              openjpeg
 #              opus
-#              qrencode
+#              pango
+#              libqrencode
 #              sbc
 #              sdl12-compat
 #              valgrind
@@ -45,6 +46,7 @@ PRGNAME="gst-plugins-bad"
 #              glslc
 #              wayland              (gtk+3 должен быть скомпилирован с поддержкой Wayland)
 #              x265
+#              zxing-cpp
 #              bs2b                 (https://bs2b.sourceforge.net/)
 #              chromaprint          (https://acoustid.org/chromaprint)
 #              dssim                (https://github.com/kornelski/dssim)
@@ -68,6 +70,7 @@ PRGNAME="gst-plugins-bad"
 #              libofa               (https://code.google.com/archive/p/musicip-libofa/)
 #              libopenmpt           (https://lib.openmpt.org/libopenmpt/)
 #              libopenni            (https://structure.io/openni/)
+#              libsoup2             (https://download.gnome.org/sources/libsoup/2.74/)
 #              libsrtp              (https://github.com/cisco/libsrtp)
 #              lilv                 (https://drobilla.net/software/lilv)
 #              lrdf                 (https://github.com/swh/LRDF)
@@ -92,7 +95,6 @@ PRGNAME="gst-plugins-bad"
 #              wpebackend-fdo       (https://github.com/Igalia/WPEBackend-fdo)
 #              zbar                 (https://zbar.sourceforge.net/)
 #              zvbi                 (https://zapping.sourceforge.net/Zapping/index.html)
-#              zxing                (https://github.com/zxing/zxing)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -107,7 +109,7 @@ cd build || exit 1
 # без этой опции плагины с зависимостями от библиотек под лицензией (A)GPL не
 # создаются
 #    -Dgpl=enabled
-meson                   \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D gpl=enabled || exit 1

@@ -22,10 +22,12 @@ mkdir build
 cd build || exit 1
 
 # shellcheck disable=SC2086
-meson setup                 \
+meson setup ..              \
     --prefix=${XORG_PREFIX} \
     --buildtype=release     \
-    .. || exit 1
+    -D drm=true             \
+    -D x11=true             \
+    -D wayland=true || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов

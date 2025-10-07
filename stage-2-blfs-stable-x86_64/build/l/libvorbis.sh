@@ -20,10 +20,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+./configure       \
+    --prefix=/usr \
+    --disable-static || exit 1
 
 make || exit 1
 # make -j1 check

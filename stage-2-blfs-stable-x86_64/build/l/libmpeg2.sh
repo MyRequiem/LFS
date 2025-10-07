@@ -17,7 +17,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устраним проблему сборки с GCC >=10.2.0
+# устраним проблему сборки с gcc>=15.0
 sed -i 's/static const/static/' "${PRGNAME}/idct_mmx.c" || exit 1
 
 ./configure         \
@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # MPEG-2 and MPEG-1 video streams.
 #
 # Home page: https://${PRGNAME}.sourceforge.net/
-# Download:  https://${PRGNAME}.sourceforge.net/files/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.videolan.org/contrib/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
