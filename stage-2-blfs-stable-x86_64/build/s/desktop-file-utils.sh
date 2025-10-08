@@ -19,6 +19,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# если мы обновляем пакет с предыдущей версии, необходимо удалить ссылку
+#    /usr/bin/desktop-file-edit -> desktop-file-install
+rm -fv /usr/bin/desktop-file-edit
+
 mkdir build
 cd build || exit 1
 
@@ -36,10 +40,11 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 ### Конфигурация
-# Спецификация XDG Base Directory определяет стандартные месторасположения
-# данных и файлов конфигурации для приложений. Эти файлы могут быть
-# использованы, например, чтобы определить структуру меню и пункты меню на
-# рабочем столе и в рабочей среде.
+# Спецификация XDG Base Directory
+#    https://specifications.freedesktop.org/basedir-spec/latest/
+# определяет стандартные месторасположения данных и файлов конфигурации для
+# приложений. Эти файлы могут быть использованы, например, чтобы определить
+# структуру меню и пункты меню на рабочем столе и в рабочей среде.
 #
 # файлы конфигурации: $XDG_CONFIG_DIRS
 #                     по умолчанию /etc/xdg

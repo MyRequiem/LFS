@@ -316,6 +316,8 @@ l/libwebp.sh
 l/lcms2.sh
 l/libmng.sh
 l/jasper.sh
+d/abseil-cpp.sh
+d/protobuf.sh
 l/qt6.sh
 # ===========
 a/upower.sh
@@ -554,8 +556,6 @@ s/hwinfo.sh
 ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
-d/abseil-cpp.sh
-d/protobuf.sh
 d/android-tools.sh
 
 # vim:ft=conf

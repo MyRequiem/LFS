@@ -9,17 +9,22 @@ PRGNAME="libinput"
 # Required:    libevdev
 #              mtdev
 # Recommended: no
-# Optional:    gtk+3             (для сборки GUI event viewer)
-#              --- для тестов ---
-#              valgrind
+# Optional:    valgrind
+#              gtk+3                      (для сборки GUI event viewer)
 #              libunwind
-#              python3-pyparsing
-#              --- для документации ---
 #              libwacom
-#              python3-sphinx
+#              doxygen
+#              graphviz
+#              python3-recommonmark
+#              python3-sphinx-rtd-theme
+#              python3-pyparsing
+#              python3-pytest
+#              check                      (https://libcheck.github.io/check/)
 
 # Конфигурация ядра
-#    CONFIG_INPUT_UINPUT=y|m (для тестов)
+#    CONFIG_INPUT=y|m
+#    CONFIG_INPUT_MISC=y|m      (для тестов)
+#    CONFIG_INPUT_UINPUT=y|m    (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -41,10 +46,7 @@ meson setup ..                \
     -D udev-dir=/usr/lib/udev || exit 1
 
 ninja || exit 1
-
-# для запуска тестов конфигурируем пакет без опции '-Dtests=false'
-# ninja test
-
+# meson configure -D tests=true && ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

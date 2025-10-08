@@ -9,7 +9,7 @@ PRGNAME="libhandy"
 # Required:    gtk+3
 # Recommended: vala
 # Optional:    gtk-doc
-#              glade    (https://gitlab.gnome.org/GNOME/glade)
+#              glade    (https://glade.gnome.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1

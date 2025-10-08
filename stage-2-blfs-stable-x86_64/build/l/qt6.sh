@@ -41,10 +41,13 @@ ARCH_NAME="qt-everywhere-src"
 # Optional:    bluez
 #              gtk+3
 #              ibus
+#              llvm
+#              libproxy
 #              mariadb или mysql (https://www.mysql.com/)
 #              mit-kerberos-v5
 #              pciutils
 #              postgresql
+#              protobuf
 #              pulseaudio
 #              sdl2
 #              unixodbc
@@ -52,7 +55,6 @@ ARCH_NAME="qt-everywhere-src"
 #              flite             (https://github.com/festvox/flite)
 #              firebird          (https://www.firebirdsql.org/)
 #              freetds           (https://www.freetds.org/)
-#              libproxy          (https://libproxy.github.io/libproxy/)
 #              openal            (https://openal.org/)
 #              speech-dispatcher (https://freebsoft.org/speechd/)
 #              tslib             (http://www.tslib.org/)
@@ -82,8 +84,6 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-
 # NOTE:
 # Qt6 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
 # устанавливать в /opt/qt6-${VERSION}
@@ -93,29 +93,31 @@ export QT6PREFIX=/opt/qt6
 #     |
 #     profile.d/qt6.sh
 #     sudoers.d/qt6
+#     ld.so.conf.d/qt6.conf
 # /opt
 #     |
 #     qt6               (ссылка на qt6-${VERSION}/)
 #     qt6-${VERSION}/
 
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"/{profile.d,sudoers.d,ld.so.conf.d}
 mkdir -pv "${TMP_DIR}${QT6PREFIX}-${VERSION}"
 # qt6 -> qt6-${VERSION}
 ln -sv "qt6-${VERSION}" "${TMP_DIR}${QT6PREFIX}-${VERSION}/../qt6"
 
-./configure                 \
-    -prefix "${QT6PREFIX}"  \
-    -sysconfdir /etc/xdg    \
-    -dbus-linked            \
-    -openssl-linked         \
-    -system-sqlite          \
-    -nomake examples        \
-    -no-rpath               \
-    -syslog                 \
-    -skip qt3d              \
-    -skip qtquick3dphysics  \
-    -skip qtwebengine       \
-    -W no-dev || exit 1
+./configure                \
+    -prefix "${QT6PREFIX}" \
+    -sysconfdir /etc/xdg   \
+    -dbus-linked           \
+    -openssl-linked        \
+    -system-sqlite         \
+    -nomake examples       \
+    -no-rpath              \
+    -no-sbom               \
+    -syslog                \
+    -skip qt3d             \
+    -skip qtquick3dphysics \
+    -skip qtwebengine || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
@@ -128,19 +130,86 @@ DESTDIR="${TMP_DIR}" ninja install
 find "${TMP_DIR}${QT6PREFIX}"/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
-# добавим путь поиска библиотек для динамического загрузчика
-cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/${PRGNAME}.conf"
-/opt/qt6/lib
+PIXMAPS="/usr/share/pixmaps"
+mkdir -p "${TMP_DIR}${PIXMAPS}"
+
+pushd qttools/src || exit 1
+install -v -Dm644 assistant/assistant/images/assistant-128.png       \
+    "${TMP_DIR}${PIXMAPS}/assistant-qt6.png"                         &&
+install -v -Dm644 designer/src/designer/images/designer.png          \
+    "${TMP_DIR}${PIXMAPS}/designer-qt6.png"                          &&
+install -v -Dm644 linguist/linguist/images/icons/linguist-128-32.png \
+    "${TMP_DIR}${PIXMAPS}/linguist-qt6.png"                          &&
+install -v -Dm644 qdbus/qdbusviewer/images/qdbusviewer-128.png       \
+    "${TMP_DIR}${PIXMAPS}/qdbusviewer-qt6.png"                       &&
+popd || exit 1
+
+APPLICATIONS="/usr/share/applications"
+mkdir -p "${TMP_DIR}${APPLICATIONS}"
+
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/assistant-qt6.desktop"
+[Desktop Entry]
+Name=Qt6 Assistant
+Comment=Shows Qt6 documentation and examples
+Exec=${QT6PREFIX}/bin/assistant
+Icon=assistant-qt6.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Documentation;
+EOF
+
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/designer-qt6.desktop"
+[Desktop Entry]
+Name=Qt6 Designer
+GenericName=Interface Designer
+Comment=Design GUIs for Qt6 applications
+Exec=${QT6PREFIX}/bin/designer
+Icon=designer-qt6.png
+MimeType=application/x-designer;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/linguist-qt6.desktop"
+[Desktop Entry]
+Name=Qt6 Linguist
+Comment=Add translations to Qt6 applications
+Exec=${QT6PREFIX}/bin/linguist
+Icon=linguist-qt6.png
+MimeType=text/vnd.trolltech.linguist;application/x-linguist;
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;
+EOF
+
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/qdbusviewer-qt6.desktop"
+[Desktop Entry]
+Name=Qt6 QDbusViewer
+GenericName=D-Bus Debugger
+Comment=Debug D-Bus applications
+Exec=${QT6PREFIX}/bin/qdbusviewer
+Icon=qdbusviewer-qt6.png
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Qt;Development;Debugger;
 EOF
 
 # QT6DIR также должен быть доступен пользователю root
 SUDOERS="/etc/sudoers.d/qt6"
 cat > "${TMP_DIR}${SUDOERS}" << "EOF"
 Defaults env_keep += QT6DIR
-Defaults env_keep += QT_PLUGIN_PATH
-Defaults env_keep += QML2_IMPORT_PATH
 EOF
 chmod 440 "${TMP_DIR}${SUDOERS}"
+
+# добавим путь поиска библиотек для динамического загрузчика
+cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/${PRGNAME}.conf"
+/opt/qt6/lib
+EOF
 
 QT6_SH="/etc/profile.d/qt6.sh"
 cat << EOF > "${TMP_DIR}${QT6_SH}"
@@ -149,10 +218,8 @@ cat << EOF > "${TMP_DIR}${QT6_SH}"
 QT6DIR=${QT6PREFIX}
 PATH="\${PATH}:\${QT6DIR}/bin"
 PKG_CONFIG_PATH="\${PKG_CONFIG_PATH}:\${QT6DIR}/lib/pkgconfig"
-QT_PLUGIN_PATH=\${QT6DIR}/plugins
-QML2_IMPORT_PATH=\${QT6DIR}/qml
 
-export QT6DIR PATH PKG_CONFIG_PATH QT_PLUGIN_PATH QML2_IMPORT_PATH
+export QT6DIR PATH PKG_CONFIG_PATH
 
 # End ${QT6_SH}
 EOF

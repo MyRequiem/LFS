@@ -15,7 +15,6 @@ ARCH_NAME="krb5"
 # Recommended: no
 # Optional:    bind-utils
 #              cracklib
-#              gnupg
 #              keyutils
 #              openldap
 #              valgrind          (для тестов)

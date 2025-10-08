@@ -70,7 +70,8 @@ export QT5PREFIX=/opt/qt5
 # /etc
 #     |
 #     profile.d/qt5.sh
-#     sudoers.d/qt
+#     sudoers.d/qt5
+#     ld.so.conf.d/qt5.conf
 # /usr
 #     |
 #     bin/
@@ -179,10 +180,10 @@ cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/qt5.conf"
 EOF
 
 # QT5DIR также должен быть доступен пользователю root
-cat << EOF > "${TMP_DIR}/etc/sudoers.d/qt"
+cat << EOF > "${TMP_DIR}/etc/sudoers.d/qt5"
 Defaults env_keep += QT5DIR
 EOF
-chmod 440 "${TMP_DIR}/etc/sudoers.d/qt"
+chmod 440 "${TMP_DIR}/etc/sudoers.d/qt5"
 
 QT5_SH="/etc/profile.d/qt5.sh"
 cat << EOF > "${TMP_DIR}${QT5_SH}"

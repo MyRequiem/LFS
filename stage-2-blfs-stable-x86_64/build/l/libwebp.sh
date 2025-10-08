@@ -14,7 +14,7 @@ PRGNAME="libwebp"
 # Recommended: libjpeg-turbo
 #              libpng
 #              libtiff
-#              sdl12-compat
+#              sdl2
 # Optional:    freeglut
 #              giflib
 

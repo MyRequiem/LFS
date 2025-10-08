@@ -5,10 +5,9 @@ PRGNAME="xcb-util-cursor"
 ### xcb-util-cursor (XCB cursor management library)
 # Библиотека управления курсорами XCB, которая является заменой для libXcursor
 
-# Required:    xcb-util-image
-#              xcb-util-renderutil
+# Required:    xcb-util
 # Recommended: no
-# Optional:    doxygen (для сборки документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,7 +18,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # shellcheck disable=SC2086
-./configure        \
+./configure \
     ${XORG_CONFIG} || exit 1
 
 make || exit 1

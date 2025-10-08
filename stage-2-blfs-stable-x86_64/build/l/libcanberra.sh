@@ -25,7 +25,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему, вызывающую сбой некоторых приложений в окружение рабочего
+# исправим проблему, вызывающую сбой некоторых приложений в окружении рабочего
 # стола на основе wayland
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-wayland-1.patch" || exit 1
