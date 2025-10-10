@@ -10,13 +10,14 @@ PRGNAME="pinentry"
 # Required:    libassuan
 #              libgpg-error
 # Recommended: no
-# Optional:    emacs                         (для сборки 'pinentry-emacs')
-#              fltk                          (для сборки 'pinentry-fltk')
-#              qt6                           (для сборки 'pinentry-qt')
-#              gcr4 или gcr3
+# Optional:    emacs             (для сборки pinentry-emacs)
+#              fltk              (для сборки pinentry-fltk)
+#              qt5-components    (для сборки pinentry-qt5)
+#              qt6               (для сборки pinentry-qt)
+#              gcr4 или gcr3     (для сборки pinentry-gnome3)
 #              kde-frameworks
 #              libsecret
-#              efl                           (https://www.enlightenment.org/about-efl)
+#              efl               (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,22 +26,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# установим совместимость с fltk-1.4.1
+# установим совместимость с fltk-1.4.4
 sed -i "/FLTK 1/s/3/4/"   configure || exit 1
-sed -i '14456 s/1.3/1.4/' configure || exit 1
+sed -i '14466 s/1.3/1.4/' configure || exit 1
 
-QT6="--disable-pinentry-qt"
-FLTK="--disable-pinentry-fltk"
-
-[ -x /opt/qt6/bin/assistant ] && QT6="--enable-pinentry-qt"
-command -v fluid &>/dev/null && FLTK="--enable-pinentry-fltk"
-
-./configure                \
-    --prefix=/usr          \
-    --enable-pinentry-tty  \
-    --disable-pinentry-qt5 \
-    "${QT6}"               \
-    "${FLTK}" || exit 1
+./configure       \
+    --prefix=/usr \
+    --enable-pinentry-tty || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

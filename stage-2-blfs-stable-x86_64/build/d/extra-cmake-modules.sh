@@ -6,7 +6,7 @@ PRGNAME="extra-cmake-modules"
 # дополнительные модули CMake, необходимые для компиляции KDE Frameworks 5
 
 # Required:    cmake
-# Recommended: no
+# Recommended: qt6
 # Optional:    python3-sphinx
 #              python3-pyqt    (https://pypi.org/project/PyQt5/)
 #              reusetool       (https://github.com/fsfe/reuse-tool/)
@@ -23,6 +23,7 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/"lib64"/s/64//' kde-modules/KDEInstallDirsCommon.cmake || exit 1
 
 # защитим глобальную переменную cmake PACKAGE_PREFIX_DIR от изменений
+# shellcheck disable=SC2016
 sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")' \
     -e '/^include/a set(PACKAGE_PREFIX_DIR "${SAVE_PACKAGE_PREFIX_DIR}")'     \
     -i ECMConfig.cmake.in || exit 1
@@ -32,6 +33,7 @@ cd build || exit 1
 
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_WITH_QT6=ON         \
     .. || exit 1
 
 make || exit 1

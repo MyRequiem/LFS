@@ -24,7 +24,7 @@ rm -rf qlo10k1 echomixer envy24control rmedigicontrol Makefile gitcompile
 
 for TOOL in * ; do
     TOOL_DIR="${TOOL}"
-    [[ "x${TOOL}" == "xseq" ]] && TOOL_DIR="${TOOL}/sbiload"
+    [[ "${TOOL}" == "seq" ]] && TOOL_DIR="${TOOL}/sbiload"
 
     pushd "${TOOL_DIR}" || exit 1
 

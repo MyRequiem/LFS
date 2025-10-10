@@ -327,7 +327,14 @@ l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
 l/fltk.sh
+l/libsecret.sh
+l/gcr3.sh
+l/gcr4.sh
+l/gnome-keyring.sh
 n/pinentry.sh
+n/libtirpc.sh
+l/libcap-ng.sh
+n/openvpn.sh
 a/dialog.sh
 l/alsa-plugins.sh
 ap/alsa-utils.sh
@@ -339,6 +346,7 @@ l/goffice.sh
 l/glib-networking.sh
 l/glibmm26.sh
 l/atkmm22.sh
+
 l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
@@ -361,7 +369,6 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
-n/libtirpc.sh
 d/python-modules/python3-hatch-fancy-pypi-readme.sh [NEW]
 d/python-modules/python3-attrs.sh (есть в удаленных)
 l/libei.sh [NEW]
@@ -456,8 +463,6 @@ d/rpcsvc-proto.sh
 n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
-l/libcap-ng.sh
-n/openvpn.sh
 n/libiscsi.sh
 s/numactl.sh
 d/snappy.sh

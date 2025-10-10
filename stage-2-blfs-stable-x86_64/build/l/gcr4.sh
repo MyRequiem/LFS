@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PRGNAME="gcr3"
+PRGNAME="gcr4"
 ARCH_NAME="gcr"
 
 ### Gcr (crypto library and ui for gnome-keyring)
@@ -12,11 +12,13 @@ ARCH_NAME="gcr"
 #              libgcrypt
 #              p11-kit
 # Recommended: gnupg
-#              gtk+3
+#              gtk4
 #              libsecret
 #              libxslt
 #              vala
 # Optional:    python3-gi-docgen
+#              gnutls
+#              openssh
 #              valgrind
 
 ROOT="/root/src/lfs"
@@ -24,7 +26,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f \
-    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | \
+    -name "${ARCH_NAME}-4*.tar.?z*" 2>/dev/null | sort | \
     head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -44,23 +46,14 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-GTK3="false"
-
-# command -v gi-docgen &>/dev/null && DOCS="true"
-command -v gtk3-demo &>/dev/null && GTK3="true"
-
-# исправим устаревшие записи в файлах схем
-sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
-
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -Dgtk_doc="${DOCS}" \
-    -Dgtk="${GTK3}"     \
+    -D gtk_doc=false    \
+    -D ssh_agent=false  \
     .. || exit 1
 
 ninja || exit 1
@@ -70,7 +63,7 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-[ "x${DOCS}" == "xfalse" ] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

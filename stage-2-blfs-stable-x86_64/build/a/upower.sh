@@ -47,19 +47,16 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим ненужную зависимость из теста:
-sed '/parse_version/d' -i src/linux/integration-test.py || exit 1
-
 mkdir build
 cd build || exit 1
 
-meson setup ..                \
-    --prefix=/usr             \
-    --buildtype=release       \
-    -D gtk-doc=false          \
-    -D man=true               \
-    -Dsystemdsystemunitdir=no \
-    -Dudevrulesdir=/usr/lib/udev/rules.d || exit 1
+meson setup ..                 \
+    --prefix=/usr              \
+    --buildtype=release        \
+    -D gtk-doc=false           \
+    -D man=true                \
+    -D systemdsystemunitdir=no \
+    -D udevrulesdir=/usr/lib/udev/rules.d || exit 1
 
 ninja || exit 1
 
