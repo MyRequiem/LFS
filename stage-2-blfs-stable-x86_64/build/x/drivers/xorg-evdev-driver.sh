@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # required.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://www.x.org/pub/individual/driver/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

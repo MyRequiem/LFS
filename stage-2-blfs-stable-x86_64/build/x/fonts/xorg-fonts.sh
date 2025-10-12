@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-fonts"
-PKG_VERSION="7"
+PKG_VERSION="11"
 
 ### xorg-fonts (Xorg Fonts)
 # Масштабируемые шрифты и вспомогательные утилиты для приложений Xorg
@@ -205,7 +205,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # for Xorg applications.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/archive/individual/font/
+# Download:  https://www.x.org/pub/individual/font/
 #
 EOF
 

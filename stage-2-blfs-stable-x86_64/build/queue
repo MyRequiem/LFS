@@ -346,7 +346,6 @@ l/goffice.sh
 l/glib-networking.sh
 l/glibmm26.sh
 l/atkmm22.sh
-
 l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
@@ -369,10 +368,10 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
-d/python-modules/python3-hatch-fancy-pypi-readme.sh [NEW]
-d/python-modules/python3-attrs.sh (есть в удаленных)
-l/libei.sh [NEW]
-x/xserver/xwayland.sh [NEW]
+d/python-modules/python3-hatch-fancy-pypi-readme.sh
+d/python-modules/python3-attrs.sh
+l/libei.sh
+x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="noto-fonts-ttf"
+ARCH_NAME="noto-fonts-subset"
 
 ### Noto fonts (Googles Noto fonts)
 # TTF шрифты от Google
@@ -11,17 +12,32 @@ PRGNAME="noto-fonts-ttf"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}/"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}/${PRGNAME}-${VERSION}"
+cd "${BUILD_DIR}/${PRGNAME}-${VERSION}" || exit 1
+
+tar -xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
 mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
 
-cp ./*.ttf "${TMP_DIR}${INSTALL_DIR}"
+cp fonts/*.ttf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
@@ -48,7 +64,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # available for your text.
 #
 # Home page: https://github.com/googlefonts/noto-fonts/
-# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirrors.slackware.com/slackware/slackware64-current/source/x/${PRGNAME}/${ARCH_NAME}-${VERSION}.tar.lz
 #
 EOF
 

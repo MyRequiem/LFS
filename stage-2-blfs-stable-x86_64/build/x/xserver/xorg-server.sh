@@ -8,29 +8,27 @@ PRGNAME="xorg-server"
 
 # Required:    libxcvt
 #              pixman
-#              xorg-fonts           (только утилита font-util)
-#              xkeyboard-config     (runtime)
+#              xorg-fonts           (только пакет font-util)
+#              xkeyboard-config     (runtime и для тестов)
 # Recommended: dbus
 #              elogind              (runtime)
 #              libepoxy             (для glamor и xwayland)
 #              libtirpc
 #              xorg-libinput-driver (runtime)
 # Optional:    acpid                (runtime)
+#              doxygen              (для документации)
+#              fop                  (для документации)
 #              libunwind
-#              --- для документации ---
-#              doxygen
-#              fop
-#              xmlto
-#              xorg-sgml-doctools   (https://www.x.org/archive/individual/doc/)
-#              --- для сборки xephyr ---
 #              nettle
 #              libgcrypt
-#              xcb-util-keysyms
-#              xcb-util-image
-#              xcb-util-renderutil
-#              xcb-util-wm
-#              --- для тестов ---
-#              rendercheck          (https://gitlab.freedesktop.org/xorg/test/rendercheck)
+#              xcb-util-image       (для сборки Xephyr)
+#              xcb-util-keysyms     (для сборки Xephyr)
+#              xcb-util-renderutil  (для сборки Xephyr)
+#              xcb-util-wm          (для сборки Xephyr)
+#              xcb-util-cursor      (для сборки Xephyr)
+#              xmlto                (для документации)
+#              rendercheck          (для тестов)          https://gitlab.freedesktop.org/xorg/test/rendercheck
+#              xorg-sgml-doctools   (для документации)    https://www.x.org/archive/individual/doc/
 
 ###
 # Конфигурация ядра
@@ -56,16 +54,17 @@ mkdir -pv "${TMP_DIR}/etc/X11/xorg.conf.d"
 # по умолчанию). Применим этот патч, если будем использовать Xorg в среде без
 # композитора (i3, TWM, IceWM, Openbox, Fluxbox и т.д.)
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-tearfree_backport-2.patch" || exit 1
+    "${SOURCES}/${PRGNAME}-${VERSION}-tearfree_backport-1.patch" || exit 1
 
 mkdir build
 cd build || exit 1
 
-meson setup ..                     \
-    --prefix="${XORG_PREFIX}"      \
-    --localstatedir=/var           \
-    -D glamor=true                 \
-    -D systemd_logind=true         \
+meson setup ..                \
+    --prefix="${XORG_PREFIX}" \
+    --localstatedir=/var      \
+    -D glamor=true            \
+    -D systemd_logind=true    \
+    -D xephyr=true            \
     -D xkb_output_dir=/var/lib/xkb || exit 1
 
 ninja || exit 1

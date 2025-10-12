@@ -8,8 +8,7 @@ ARCH_NAME="gtkmm"
 # Основные моменты это безопасные обратные вызовы и полный набор виджетов,
 # которые легко расширяются с помощью наследования.
 
-# Required:    atkmm23
-#              gtk4
+# Required:    gtk4
 #              pangomm25
 # Recommended: no
 # Optional:    doxygen          (для сборки документации)

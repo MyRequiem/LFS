@@ -140,6 +140,7 @@ xinput \
 xkbcomp \
 xkbevd \
 xkbutils \
+xkill \
 xlsatoms \
 xlsclients \
 xmessage \
@@ -289,7 +290,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # X Window implementations.
 #
 # Home page: https://www.x.org/
-# Download:  https://www.x.org/archive/individual/app/
+# Download:  https://www.x.org/pub/individual/app/
 #
 EOF
 
