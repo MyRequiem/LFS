@@ -1,23 +1,24 @@
-diff -U 1 -ru clipmenu-6.2.0_orig/clipmenu clipmenu-6.2.0/clipmenu
+diff -U 1 -Naur clipmenu-6.2.0_orig/clipmenu clipmenu-6.2.0/clipmenu
 --- clipmenu-6.2.0_orig/clipmenu	2020-10-14 17:13:09.000000000 +0400
-+++ clipmenu-6.2.0/clipmenu	2022-04-04 14:22:15.250373488 +0400
-@@ -1,14 +1,13 @@
++++ clipmenu-6.2.0/clipmenu	2025-10-04 12:18:34.028032413 +0400
+@@ -1,14 +1,14 @@
  #!/usr/bin/env bash
  
  : "${CM_LAUNCHER=dmenu}"
 -: "${CM_DIR="${XDG_RUNTIME_DIR-"${TMPDIR-/tmp}"}"}"
  : "${CM_HISTLENGTH=8}"
  
++# shellcheck disable=SC2034
  major_version=6
  
  shopt -s nullglob
  
 -cache_dir=$CM_DIR/clipmenu.$major_version.$USER
-+cache_dir=$HOME/.cache/clipmenu/
++cache_dir=$HOME/.cache/clipmenu
  cache_file=$cache_dir/line_cache
  
  if [[ $1 == --help ]] || [[ $1 == -h ]]; then
-@@ -20,7 +19,6 @@
+@@ -20,7 +20,6 @@
  
  Environment variables:
  
@@ -25,9 +26,31 @@ diff -U 1 -ru clipmenu-6.2.0_orig/clipmenu clipmenu-6.2.0/clipmenu
  - $CM_HISTLENGTH: specify the number of lines to show in dmenu/rofi (default: 8)
  - $CM_LAUNCHER: specify a dmenu-compatible launcher (default: dmenu)
  - $CM_OUTPUT_CLIP: if set, output clip selection to stdout
-diff -U 1 -ru clipmenu-6.2.0_orig/clipmenud clipmenu-6.2.0/clipmenud
+@@ -28,7 +27,6 @@
+     exit 0
+ fi
+ 
+-
+ # Blacklist of non-dmenu launchers
+ launcher_args=(-l "${CM_HISTLENGTH}")
+ if [[ "$CM_LAUNCHER" == fzf ]]; then
+@@ -50,7 +48,12 @@
+         exit
+     fi
+ else
+-    chosen_line=$(list_clips | "$CM_LAUNCHER" "${launcher_args[@]}" "$@")
++    chosen_line=$(list_clips | "$CM_LAUNCHER" "${launcher_args[@]}" "$@" \
++        2>"${cache_dir}/error_chosen_line")
++    # delete the last cache line if dmenu starts with an error
++    if grep -i error "${cache_dir}/error_chosen_line"; then
++        sed '$d' -i "${cache_file}"
++    fi
+ fi
+ 
+ [[ $chosen_line ]] || exit 1
+diff -U 1 -Naur clipmenu-6.2.0_orig/clipmenud clipmenu-6.2.0/clipmenud
 --- clipmenu-6.2.0_orig/clipmenud	2020-10-14 17:13:09.000000000 +0400
-+++ clipmenu-6.2.0/clipmenud	2022-04-04 14:22:15.250373488 +0400
++++ clipmenu-6.2.0/clipmenud	2025-10-04 12:18:40.741032780 +0400
 @@ -3,7 +3,6 @@
  : "${CM_ONESHOT=0}"
  : "${CM_OWN_CLIPBOARD=0}"
@@ -36,16 +59,18 @@ diff -U 1 -ru clipmenu-6.2.0_orig/clipmenud clipmenu-6.2.0/clipmenud
  
  : "${CM_MAX_CLIPS:=1000}"
  # Buffer to batch to avoid calling too much. Only used if CM_MAX_CLIPS >0.
-@@ -13,7 +12,7 @@
+@@ -12,8 +11,9 @@
+ : "${CM_SELECTIONS:=clipboard primary}"
  read -r -a selections <<< "$CM_SELECTIONS"
  
++# shellcheck disable=SC2034
  major_version=6
 -cache_dir=$CM_DIR/clipmenu.$major_version.$USER/
-+cache_dir=$HOME/.cache/clipmenu/
++cache_dir=$HOME/.cache/clipmenu
  cache_file=$cache_dir/line_cache
  
  # lock_file: lock for *one* iteration of clipboard capture/propagation
-@@ -99,7 +98,6 @@
+@@ -99,7 +99,6 @@
  Environment variables:
  
  - $CM_DEBUG: turn on debugging output (default: 0)
