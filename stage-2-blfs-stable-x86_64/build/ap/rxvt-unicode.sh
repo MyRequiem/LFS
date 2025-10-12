@@ -5,10 +5,10 @@ PRGNAME="rxvt-unicode"
 ### rxvt-unicode (enhanced version of rxvt terminal emulator)
 # Клон эмулятора терминала rxvt с поддержкой XFT, Unicode и Perl расширениями
 
-# Required:    Graphical Environments
-#              libptytty
+# Required:    libptytty
+#              Graphical Environments
 # Recommended: no
-# Optional:    gdk-pixbuf           (для возможности уставливать фоновые изображения)
+# Optional:    gdk-pixbuf               (для возможности уставливать фоновые изображения)
 #              startup-notification
 
 ### Конфигурация
@@ -43,7 +43,7 @@ sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
     --enable-xft                   \
     --enable-font-styles           \
     --enable-pixbuf                \
-    --disable-startup-notification \
+    --enable-startup-notification  \
     --enable-transparency          \
     --enable-fading                \
     --enable-rxvt-scroll           \
@@ -111,7 +111,7 @@ Terminal=false
 Type=Application
 Icon=utilities-terminal
 Categories=GTK;Utility;TerminalEmulator;
-StartupNotify=false
+StartupNotify=true
 Keywords=console;command line;execute;
 EOF
 

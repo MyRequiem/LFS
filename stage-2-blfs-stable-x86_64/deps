@@ -3,7 +3,7 @@
 ###***###
 
 7zip                                    imagemagick, libgsf
-Graphical Environments                  openssh, libmpeg2, ghostscript, rxvt-unicode, exim, vim, sdl2, ffmpeg, numlockx, libao
+Graphical Environments                  openssh, libmpeg2, rxvt-unicode, ghostscript, exim, vim, sdl2, ffmpeg, numlockx, libao
 aalib                                   gst-plugins-good, gimp
 abseil-cpp                              protobuf
 accesskit-c                             gtk4
