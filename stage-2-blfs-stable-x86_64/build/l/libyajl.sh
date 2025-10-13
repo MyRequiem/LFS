@@ -18,13 +18,20 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}-patches.tar.xz" || exit 1
+
+for PATCH in "${ARCH_NAME}-${VERSION}-patches"/* ; do
+    patch --verbose -p1 < "${PATCH}" || exit 1
+done
+
 mkdir build
 cd build || exit 1
 
-cmake                                \
-    -DCMAKE_INSTALL_PREFIX=/usr      \
-    -DCMAKE_BUILD_TYPE=Release       \
-    -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D CMAKE_BUILD_TYPE=Release         \
+    -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON   \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     .. || exit 1
 
 make install DESTDIR="${TMP_DIR}"
@@ -39,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a
 # small validating JSON generator. YAJL is released under the ISC license.
 #
-# Home page: https://lloyd.github.io/${ARCH_NAME}/
+# Home page: https://lloyd.github.io/yajl/
 # Download:  https://fossies.org/linux/www/old/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

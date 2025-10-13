@@ -389,7 +389,6 @@ d/imake.sh
 ap/xxkb.sh
 ap/xbanish.sh
 ap/dmenu.sh
-
 s/clipnotify.sh
 s/clipmenu.sh
 ap/feh.sh

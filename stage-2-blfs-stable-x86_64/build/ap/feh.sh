@@ -6,7 +6,7 @@ PRGNAME="feh"
 # Быстрый и легкий просмотрщик изображений, использующий Imlib2
 
 # Required:    libpng
-#              imlib2 (собранный с giflib для тестов)
+#              imlib2               (собранный с giflib для тестов)
 # Recommended: curl
 # Optional:    libexif
 #              --- runtime ---
@@ -14,7 +14,7 @@ PRGNAME="feh"
 #              imagemagick
 #              --- для тестов ---
 #              perl-test-command
-#              mandoc
+#              mandoc               (https://mandoc.bsd.lv/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

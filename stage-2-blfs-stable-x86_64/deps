@@ -82,7 +82,7 @@ cranelift                               rustc
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
 cups-filters                            cups
-curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, exiv2, imagemagick, feh, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib
+curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib
 curlftpfs                               vifm
 cxxopts                                 pamixer
 cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim
@@ -333,7 +333,7 @@ liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, libei, xorg-synaptics-driver, xorg-evdev-driver
 libevent                                tmux, nghttp2, ntp
-libexif                                 feh, gst-plugins-bad
+libexif                                 gst-plugins-bad, feh
 libfpx                                  imagemagick
 libgccjit                               rustc
 libgcrypt                               libssh2, gnupg, libxslt, mesa, libsecret, gcr3, gcr4, gtk-vnc, xorg-server, gst-plugins-bad, xwayland, qemu
@@ -355,7 +355,7 @@ libilbm                                 gimp
 libimobiledevice                        upower
 libinput                                qt5-components, qt6, xorg-libinput-driver
 libiscsi                                qemu
-libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, jasper, djvulibre, libgxps, imagemagick, feh, gst-plugins-base, openjdk, qt5-components, qt6, mpv, spice, spice-gtk, qemu, poppler, gegl
+libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, jasper, feh, djvulibre, libgxps, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, mpv, spice, spice-gtk, qemu, poppler, gegl
 libjxl                                  gdk-pixbuf, imlib2, ffmpeg, gimp, imagemagick
 libkate                                 gst-plugins-bad
 libksba                                 gnupg
@@ -387,7 +387,7 @@ libpaper                                ghostscript, cups
 libpcap                                 iptables
 libplacebo                              mpv
 libpmem                                 qemu
-libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libwebp, imagemagick, feh, gst-plugins-base, openjdk, qt6, qemu, poppler
+libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libwebp, feh, imagemagick, gst-plugins-base, openjdk, qt6, qemu, poppler
 libproxy                                wget, glib-networking, qt6
 libpsl                                  wget, curl, libsoup2, libsoup3
 libptytty                               rxvt-unicode

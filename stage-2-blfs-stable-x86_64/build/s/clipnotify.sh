@@ -4,7 +4,7 @@ PRGNAME="clipnotify"
 
 ### clipnotify (waits until a new selection is available)
 # Простая утилита, которая, используя расширение XFIXES для X11, ожидает пока
-# не будет доступен новый выбор для выделения, а затем выходит
+# не будет доступен новый выбор для выделения, а затем завершает работу
 
 # Required:    no
 # Recommended: no
