@@ -18,9 +18,9 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}-patches.tar.xz" || exit 1
+tar xvf "${SOURCES}/${PRGNAME}-${VERSION}-patches.tar.xz" || exit 1
 
-for PATCH in "${ARCH_NAME}-${VERSION}-patches"/* ; do
+for PATCH in "${PRGNAME}-${VERSION}-patches"/* ; do
     patch --verbose -p1 < "${PATCH}" || exit 1
 done
 
@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a
 # small validating JSON generator. YAJL is released under the ISC license.
 #
-# Home page: https://lloyd.github.io/yajl/
+# Home page: https://lloyd.github.io/${ARCH_NAME}/
 # Download:  https://fossies.org/linux/www/old/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

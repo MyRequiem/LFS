@@ -403,6 +403,7 @@ d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 l/cxxopts.sh
+
 ap/pamixer.sh
 x/apps/i3.sh
 # ==========
@@ -412,6 +413,7 @@ ap/vim.sh
 # === bumblebee-status ===
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
+ap/gsimplecal.sh
 x/apps/bumblebee-status.sh
 # ==== google-chrome =====
 l/nspr.sh
@@ -552,7 +554,6 @@ d/apache-ant.sh
 ap/rpm.sh
 l/id3lib.sh
 l/libao.sh
-ap/gsimplecal.sh
 ap/pwgen.sh
 s/hstr.sh
 l/libx86emu.sh

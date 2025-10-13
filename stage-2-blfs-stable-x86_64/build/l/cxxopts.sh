@@ -20,8 +20,9 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
     .. || exit 1
 
 make || exit 1

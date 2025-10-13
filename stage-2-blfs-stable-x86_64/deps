@@ -574,12 +574,12 @@ pcre                                    ag
 pcre2                                   wget, glib, libarchive, git, lnav, swig, xterm, exim, vte3, qt6
 pcsc-lite                               libcacard
 perl-anyevent                           perl-anyevent-i3
-perl-anyevent-i3
+perl-anyevent-i3                        i3
 perl-authen-sasl                        git
 perl-business-isbn                      perl-uri
 perl-business-isbn-data                 perl-business-isbn
 perl-canary-stability                   perl-anyevent
-perl-common-sense
+perl-common-sense                       perl-types-serialiser
 perl-file-fcntllock                     exim
 perl-http-daemon                        wget
 perl-io-socket-ssl                      wget, git, ntp
