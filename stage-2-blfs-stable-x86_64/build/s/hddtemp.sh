@@ -57,8 +57,8 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# для разрешения доступа к данным о температуре жесткого диска простым
-# пользователям, нужно установить suid-бит для /usr/sbin/hddtemp
+# для разрешения доступа к данным о температуре жесткого диска обычным
+# пользователям, установим suid-бит для /usr/sbin/hddtemp
 #    rwsr-xr-x или 4755
 chmod u+s /usr/sbin/hddtemp
 

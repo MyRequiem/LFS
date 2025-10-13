@@ -403,7 +403,6 @@ d/perl-modules/perl-json-xs.sh
 d/perl-modules/perl-anyevent.sh
 d/perl-modules/perl-anyevent-i3.sh
 l/cxxopts.sh
-
 ap/pamixer.sh
 x/apps/i3.sh
 # ==========

@@ -12,7 +12,10 @@ ARCH_NAME="psutil"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3-requests
+#              python3-pypinfo    (https://pypi.org/project/pyinfo/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
