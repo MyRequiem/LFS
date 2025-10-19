@@ -17,9 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-fix-build-with-python-3.12.5.patch" || exit 1
-
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
 

@@ -8,8 +8,9 @@ PRGNAME="zenity"
 
 # Required:    gtk4
 #              libadwaita
+#              help2man      (для генерации man-страниц)
 # Recommended: no
-# Optional:    webkit2gtk-6.0 (для поддежки HTML)
+# Optional:    webkit2gtk    (для поддежки webkitgtk и HTML)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

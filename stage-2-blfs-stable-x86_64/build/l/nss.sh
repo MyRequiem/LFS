@@ -21,21 +21,20 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 NSS_INCLUDE_DIR="/usr/include/${PRGNAME}"
 mkdir -pv "${TMP_DIR}"{/usr/{bin,lib/pkgconfig},"${NSS_INCLUDE_DIR}"}
 
-patch -Np1 --verbose -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-standalone-1.patch" || exit 1
+patch -Np1 --verbose -i "${SOURCES}/${PRGNAME}-standalone-1.patch" || exit 1
 
 cd "${PRGNAME}" || exit 1
 
 # не включать в бинарники отладочную информацию и использовать оптимизацию
 # компилятора по умолчанию
 #    BUILD_OPT=1
-# связывать libssl3.so с zlib установленной в системе, а не с той, которая
-# присутствует в дереве исходников
+# расположение заголовочных файлов nspr
+#    NSPR_INCLUDE_DIR=/usr/include/nspr
+# связываем библиотеку libssl3.so с установленной в системе zlib, а не с
+# версией, которая имеется в дереве исходников
 #    USE_SYSTEM_ZLIB=1
 # указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
-# расположение заголовочных файлов nspr
-#    NSPR_INCLUDE_DIR=/usr/include/nspr
 make                                   \
     BUILD_OPT=1                        \
     NSPR_INCLUDE_DIR=/usr/include/nspr \

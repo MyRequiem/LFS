@@ -7,8 +7,10 @@ PRGNAME="libadwaita"
 
 # Required:    appstream
 #              gtk4
+#              sassc
 # Recommended: vala
-# Optional:    python3-gi-docgen (для документации)
+# Optional:    python3-gi-docgen    (для документации)
+#              xdg-desktop-portal   (для двух тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

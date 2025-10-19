@@ -51,12 +51,12 @@ sed -e "s;pthread_detach(NULL);pthread_detach(0);" \
 #    --enable-linuxcaps
 # включаем поддержку Readline для утилит ntpdc и ntpq
 #    --with-lineeditlibs=readline
-./configure                                  \
-    --prefix=/usr                            \
-    --bindir=/usr/sbin                       \
-    --sysconfdir=/etc                        \
-    --enable-linuxcaps                       \
-    --with-lineeditlibs=readline             \
+./configure                      \
+    --prefix=/usr                \
+    --bindir=/usr/sbin           \
+    --sysconfdir=/etc            \
+    --enable-linuxcaps           \
+    --with-lineeditlibs=readline \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -111,7 +111,7 @@ leapfile  /var/lib/ntp/ntp.leapseconds
 restrict    default limited kod nomodify notrap nopeer noquery
 restrict -6 default limited kod nomodify notrap nopeer noquery
 
-# Trust ourselves.  :-)
+# Trust only ourselves :-)
 restrict 127.0.0.1
 restrict ::1
 
@@ -145,10 +145,7 @@ chmod 754 "${TMP_DIR}${NTP_SH}"
 
 # добавим ссылку в /root/bin/ (для ручного запуска синхронизации времени)
 #    ntp.sh -> ../../etc/cron.hourly/ntp.sh
-(
-    cd "${TMP_DIR}${ROOT_BIN}" || exit 1
-    ln -s ../../etc/cron.hourly/ntp.sh ntp.sh
-)
+ln -sf "../..${CRON_HOURLY}/ntp.sh" "${TMP_DIR}${ROOT_BIN}/ntp.sh"
 
 # init script: /etc/rc.d/init.d/ntp
 (

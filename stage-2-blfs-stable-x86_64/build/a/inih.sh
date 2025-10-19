@@ -27,7 +27,7 @@ meson setup             \
     .. || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

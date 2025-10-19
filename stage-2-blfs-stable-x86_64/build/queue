@@ -414,19 +414,20 @@ d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 ap/gsimplecal.sh
 x/apps/bumblebee-status.sh
-# ==== google-chrome =====
+# === google-chrome, zen-browser ====
 l/nspr.sh
 l/nss.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
 xap/google-chrome.sh
-# ==== mirage ============
+xap/zen-browser.sh
+# ======= mirage =======
 a/inih.sh
 l/brotli.sh
 l/exiv2.sh
 l/gexiv2.sh
 ap/mirage.sh
-# === zenity, ntp, fcron ======
+# === zenity, ntp, fcron ===
 l/libxmlb.sh
 ap/itstool.sh
 l/appstream.sh
@@ -435,6 +436,7 @@ ap/zenity.sh
 d/perl-modules/perl-net-ssleay.sh
 d/perl-modules/perl-business-isbn-data.sh
 d/perl-modules/perl-business-isbn.sh
+d/perl-modules/perl-mime-base32.sh
 d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 n/ntp.sh

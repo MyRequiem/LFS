@@ -63,13 +63,12 @@ find doc -type f -exec sed -i 's:/usr/local::g' {} \;
 #    --with-boot-install=no
 # не собирать системные модули, которые не нужны для System V
 #    --with-systemdsystemunitdir=no
-./configure                    \
-    --prefix=/usr              \
-    --sysconfdir=/etc          \
-    --localstatedir=/var       \
-    --without-sendmail         \
-    --with-boot-install=no     \
-    --with-editor=/usr/bin/vim \
+./configure                \
+    --prefix=/usr          \
+    --sysconfdir=/etc      \
+    --localstatedir=/var   \
+    --without-sendmail     \
+    --with-boot-install=no \
     --with-systemdsystemunitdir=no || exit 1
 
 make || exit 1

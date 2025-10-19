@@ -10,7 +10,7 @@ PRGNAME="xdg-utils"
 
 # Required:    xmlto
 #              lynx или links или w3m    (http://w3m.sourceforge.net/)
-#              xorg-applications
+#              xorg-applications         (runtime)
 # Recommended: no
 # Optional:    dbus
 
@@ -24,8 +24,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
-    --prefix=/usr \
-    --mandir=/usr/share/man || exit 1
+    --prefix=/usr || exit 1
 
 make || exit 1
 

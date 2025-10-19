@@ -69,7 +69,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, brotli, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -80,7 +80,7 @@ cppunit                                 taglib
 cracklib                                mit-kerberos-v5
 cranelift                               rustc
 cunit                                   libdrm
-cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome
+cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome, zen-browser
 cups-filters                            cups
 curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, vim, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib
 curlftpfs                               vifm
@@ -171,7 +171,7 @@ gdb                                     openssh, glib, gcc, rustc, python3, guil
 gdk-pixbuf                              w3m, librsvg, gtk+3, libgsf, rxvt-unicode, gegl, gst-plugins-good, gtk4, poppler, appstream-glib
 gegl                                    gimp, libmypaint
 geoexpress                              imagemagick
-gexiv2                                  gegl, gimp, mirage
+gexiv2                                  mirage, gegl, gimp
 ggi
 ghostpcl                                imagemagick
 ghostscript                             cairo, goffice, libspectre, gimp, imagemagick
@@ -224,7 +224,7 @@ gtk+2                                   cairo, libcanberra, alsa-tools
 gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, gcr3, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, vim, gsimplecal, spice-gtk, qemu, libvirt, poppler, gimp
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, upower, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup2, libxmlb, poppler, appstream-glib, gimp
 gtk-vnc                                 qemu
-gtk4                                    python3-pygobject3, adwaita-icon-theme, libgstgtk4, ibus, gcr4, libadwaita, zenity, gtkmm4, vte3
+gtk4                                    python3-pygobject3, adwaita-icon-theme, libgstgtk4, ibus, gcr4, gtkmm4, libadwaita, zenity, vte3
 gtkmm3
 gtkmm4                                  pavucontrol
 guile
@@ -233,7 +233,7 @@ gvfs                                    gimp
 harfbuzz                                graphite2, freetype, libass, gimp, qt5-components, qt6, openjdk
 hddtemp                                 bumblebee-status
 heimdal-gssapi                          exim
-help2man                                pango, vala
+help2man                                pango, vala, zenity
 hicolor-icon-theme                      gtk+3, fltk, gtk4, qt5-components
 highlight                               vifm, gtk4
 highway                                 imlib2
@@ -452,7 +452,7 @@ libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, gst
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, spirv-llvm-translator, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libgsf, libxklavier, dconf, libei, libsoup2, libsoup3, vte3, appstream, osinfo-db-tools, libvirt-glib, gimp, gst-plugins-bad
 libxmlb                                 appstream
-libxslt                                 p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, libsecret, gcr3, gcr4, gnome-keyring, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, osinfo-db-tools, appstream-glib
+libxslt                                 p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, libsecret, gcr3, gcr4, gnome-keyring, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, appstream, osinfo-db-tools, appstream-glib
 libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
 libyaml                                 python3-pyyaml, ruby, appstream, dtc, appstream-glib
 lilv                                    gst-plugins-bad
@@ -495,7 +495,7 @@ mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
 mirage
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, cups, libsoup2, libsoup3, qt5-components, qt6, openvpn
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, libsoup2, libsoup3, qt5-components, qt6, openvpn
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, libsigc++3, glibmm26, glibmm28
 mono                                    libidn
@@ -526,7 +526,7 @@ noto-color-emoji-ttf
 noto-fonts-ttf
 npth                                    gnupg
 nspr                                    nss
-nss                                     p11-kit, make-ca, google-chrome, poppler
+nss                                     p11-kit, make-ca, google-chrome, zen-browser, poppler
 ntp                                     dhcpcd
 nuklear                                 libplacebo
 numactl                                 x265, qemu
@@ -584,6 +584,7 @@ perl-file-fcntllock                     exim
 perl-http-daemon                        wget
 perl-io-socket-ssl                      wget, git, ntp
 perl-json-xs                            perl-anyevent-i3
+perl-mime-base32                        perl-uri
 perl-net-ssleay                         perl-io-socket-ssl
 perl-pod-pom-view-restructured          cyrus-sasl
 perl-pod-simple                         i3
@@ -716,8 +717,8 @@ python3-zope-interface                  python3-attrs
 pytrash
 qemu
 qoi                                     gimp
-qt5-components                          pinentry, poppler, google-chrome
-qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, flameshot
+qt5-components                          pinentry, poppler, google-chrome, zen-browser
+qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, zen-browser, flameshot
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
@@ -739,8 +740,7 @@ rustc                                   cargo-c, ruby, cbindgen, rust-bindgen, g
 rxvt-unicode
 samba                                   curl, ffmpeg, libsoup2, libsoup3
 sane                                    imagemagick
-sassc                                   gtk+3
-sassc                                   gtk+3, gtk4
+sassc                                   gtk+3, gtk4, libadwaita
 saxon6                                  docbook-xsl
 sbc                                     pulseaudio, gst-plugins-bad
 schroedinger                            ffmpeg
@@ -818,7 +818,7 @@ utah-raster-toolkit                     imagemagick
 utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               ffmpeg, gegl, gst-plugins-good
-vala                                    librsvg, gtk-vnc, libxklavier, libhandy, dconf, ibus, libsecret, gcr3, gcr4, gexiv2, gegl, libsoup2, libsoup3, libadwaita, vte3, spice-gtk, libvirt-glib
+vala                                    librsvg, gtk-vnc, libxklavier, libhandy, dconf, ibus, libsecret, gcr3, gcr4, gexiv2, libadwaita, gegl, libsoup2, libsoup3, vte3, spice-gtk, libvirt-glib
 valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, libsecret, gcr3, gcr4, python3, cairo, libdrm, mesa, gstreamer, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libseccomp, libgsf
 vde2                                    qemu
 vdo                                     lvm2
@@ -868,6 +868,7 @@ xcb-util-xrm                            i3
 xclip                                   password-store
 xclock                                  xinit
 xcursor-themes                          xorg-fonts, dejavu-fonts-ttf, liberation-fonts-ttf
+xdg-desktop-portal                      libadwaita
 xdg-utils                               cups, gimp, imagemagick
 xerces2-java                            docbook-xsl
 xfce4-notifyd                           libnotify
@@ -896,6 +897,7 @@ yelp-tools                              dbus
 ypbind                                  dhcpcd
 z3                                      llvm
 zbar                                    gst-plugins-bad
+zen-browser
 zenity
 zip                                     docbook-xsl, llvm, openjdk
 zsh                                     elogind
