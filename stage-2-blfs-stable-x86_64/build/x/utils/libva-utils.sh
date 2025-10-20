@@ -21,12 +21,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# shellcheck disable=SC2086
-meson setup ..              \
-    --prefix=${XORG_PREFIX} \
-    --buildtype=release     \
-    -D drm=true             \
-    -D x11=true             \
+meson setup ..                \
+    --prefix="${XORG_PREFIX}" \
+    --buildtype=release       \
+    -D drm=true               \
+    -D x11=true               \
     -D wayland=true || exit 1
 
 ninja || exit 1

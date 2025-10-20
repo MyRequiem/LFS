@@ -27,9 +27,8 @@ mkdir -pv "${TMP_DIR}"
 
 cd build || exit 1
 
-# shellcheck disable=SC2086
-meson setup                 \
-    --prefix=${XORG_PREFIX} \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
     --buildtype=release || exit 1
 
 ninja || exit 1

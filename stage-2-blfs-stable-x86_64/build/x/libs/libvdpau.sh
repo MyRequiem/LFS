@@ -30,9 +30,8 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 mkdir build
 cd build || exit 1
 
-# shellcheck disable=SC2086
-meson setup                 \
-    --prefix=${XORG_PREFIX} \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
     .. || exit 1
 
 ninja || exit 1

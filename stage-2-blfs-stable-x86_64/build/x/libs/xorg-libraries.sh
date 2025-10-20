@@ -163,10 +163,9 @@ for PKGNAME in ${PACKAGES}; do
             mkdir build
             cd build || exit 1
 
-            # shellcheck disable=SC2086
-            meson setup                 \
-                --prefix=${XORG_PREFIX} \
-                --buildtype=release     \
+            meson setup                   \
+                --prefix="${XORG_PREFIX}" \
+                --buildtype=release       \
                 .. || {
                     show_error "'meson configure' for ${PKGNAME} package"
                     exit 1

@@ -69,33 +69,31 @@ patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-add_xdemos-4.patch" || exit 1
 mkdir build
 cd build || exit 1
 
-# параметр определяет, какие Gallium3D драйверы следует создавать
+# Gallium3D и Vulkan драйверы (см. meson.options в дереве исходников)
 #    -D gallium-drivers=...
-#
-#    * auto         создаются все Gallium3D драйвера
-#    * r300         для ATI Radeon 9000 или Radeon X серии
-#    * r600         для AMD/ATI Radeon HD 2000-6000 сериий
-#    * radeonsi     для AMD Radeon HD 7000 или более новых AMD GPU моделей
-#    * nouveau      универсальный драйвер для NVidia Gpus
-#    * virgl        для QEMU virtual GPU с поддержкой virglrender
-#    * svga         для VMWare virtual GPU
-#    * swrast       используется как fallback если GPU не поддерживает другие драйвера
-#    * iris         для Intel, поставляемых с процессорами Broadwell или более новыми
-#    * crocus       для Intel GMA 3000, серии X3000, 4000 или серии X4000
-#    * i915         для Intel GMA 900, 950, 3100 или 3150, поставляемых с наборами микросхем или процессорами Atom D/N 4xx/5xx
-GALLIUM_DRV="nouveau,i915,virgl"
-VULKAN_DRIVERS="nouveau,intel,swrast,virtio"
+#    -D vulkan-drivers=...
 
-# shellcheck disable=SC2086
-meson setup ..                            \
-    --prefix=${XORG_PREFIX}               \
-    --buildtype=release                   \
-    -D platforms=x11,wayland              \
-    -D gallium-drivers="${GALLIUM_DRV}"   \
-    -D vulkan-drivers="${VULKAN_DRIVERS}" \
-    -D valgrind=disabled                  \
-    -D video-codecs=all                   \
-    -D libunwind=disabled                 \
+GDRV="i915,nouveau,softpipe,svga,virgl"
+VDRV="intel,intel_hasvk,swrast,virtio,nouveau,gfxstream"
+LAYERS="device-select,intel-nullhw,overlay"
+
+meson setup ..                   \
+    --prefix="${XORG_PREFIX}"    \
+    --buildtype=release          \
+    -D platforms=x11,wayland     \
+    -D gallium-drivers="${GDRV}" \
+    -D vulkan-drivers="${VDRV}"  \
+    -D valgrind=disabled         \
+    -D video-codecs=all          \
+    -D libunwind=disabled        \
+    -D vulkan-layers="${LAYERS}" \
+    -D llvm=enabled              \
+    -D shared-llvm=enabled       \
+    -D egl=enabled               \
+    -D opengl=true               \
+    -D glx=dri                   \
+    -D gles1=enabled             \
+    -D gles2=enabled             \
     -D legacy-x11=dri2 || exit 1
 
 ninja || exit 1
