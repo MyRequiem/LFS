@@ -31,6 +31,13 @@ PRGNAME="xorg-server"
 #              xorg-sgml-doctools   (для документации)    https://www.x.org/archive/individual/doc/
 
 ###
+# WARNING:
+#    Если мы пересобираем/обновляем пакет, то делать это нужно в ЧИСТОЙ КОНСОЛИ
+#    (без запущенного Xorg), иначе после пересборки и установки темный экран и
+#    Xorg виснет
+###
+
+###
 # Конфигурация ядра
 ###
 # традиционные драйверы Device Dependent X (DDX), такие как xf86-video-nouveau,
@@ -74,6 +81,8 @@ DESTDIR="${TMP_DIR}" ninja install
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod u+s /usr/bin/Xorg
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (The Xorg server, the core of the X Window System)

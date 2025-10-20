@@ -43,8 +43,8 @@ PRGNAME="mesa"
 ###
 # WARNING:
 #    * Если мы пересобираем пакет, то делать это нужно в ЧИСТОЙ КОНСОЛИ (без
-#       запущенного Xorg), иначе после пересборки и установки темный экран и Xorg
-#       виснет
+#       запущенного Xorg), иначе после пересборки и установки темный экран и
+#       Xorg виснет
 #    * Для сборки Nouveau Vulkan driver (libvulkan_nouveau.so) требуется сеть
 #       Internet, поэтому СОБИРАЕМ ТОЛЬКО В ЧИСТОЙ LFS системе
 #       (не в chroot хоста)
@@ -95,7 +95,8 @@ meson setup ..                            \
     -D vulkan-drivers="${VULKAN_DRIVERS}" \
     -D valgrind=disabled                  \
     -D video-codecs=all                   \
-    -D libunwind=disabled || exit 1
+    -D libunwind=disabled                 \
+    -D legacy-x11=dri2 || exit 1
 
 ninja || exit 1
 
