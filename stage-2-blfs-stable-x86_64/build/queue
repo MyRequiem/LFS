@@ -483,7 +483,6 @@ l/virglrenderer.sh
 l/libnfs.sh
 s/gtk-vnc.sh
 s/qemu.sh
-
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
 l/libsoup2.sh
@@ -491,6 +490,7 @@ l/libsoup3.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
 l/libosinfo.sh
+
 l/libpcap.sh
 n/iptables.sh
 n/dnsmasq.sh

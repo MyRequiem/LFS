@@ -11,7 +11,7 @@ PRGNAME="osinfo-db-tools"
 #              libarchive
 #              libxml2
 #              libxslt
-#              libsoup2    (https://download.gnome.org/sources/libsoup/2.74/)
+#              libsoup2             (https://download.gnome.org/sources/libsoup/2.74/)
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
@@ -27,10 +27,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..           \
-    --prefix=/usr        \
-    --buildtype=release  \
-    --sysconfdir=/etc    \
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    --sysconfdir=/etc   \
     --localstatedir=/var || exit 1
 
 ninja || exit 1

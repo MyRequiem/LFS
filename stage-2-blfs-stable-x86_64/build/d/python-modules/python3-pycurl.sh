@@ -31,6 +31,7 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+# shellcheck disable=SC2115
 rm -rf "${TMP_DIR}/usr/share"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/

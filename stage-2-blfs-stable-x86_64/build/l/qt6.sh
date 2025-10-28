@@ -67,9 +67,9 @@ VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
     cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-# для сборки требуется ~47Gb дискового пространства, поэтому собираем не в /tmp
-# а в директории, которая находится в корневом разделе
-BUILD_DIR="${ROOT}/build-${PRGNAME}-${VERSION}"
+# для сборки требуется ~47Gb дискового пространства, поэтому собираем не в
+# разделе /tmp (30Gb), а в разделе где хватает места
+BUILD_DIR="/home/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1

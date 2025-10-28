@@ -10,6 +10,7 @@ ARCH_NAME="urlgrabber"
 
 # Required:    python3-six
 #              python3-pycurl
+#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 
@@ -34,6 +35,10 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+# исправим shebang
+sed 's/\/python/\/python3/' -i "${TMP_DIR}/usr/libexec/urlgrabber-ext-down"
+
+# shellcheck disable=SC2115
 rm -rf "${TMP_DIR}/usr/share"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/

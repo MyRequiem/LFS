@@ -50,7 +50,7 @@ mkdir -pv "${TMP_DIR}${DOCS}"
             -s /bin/false         \
             -u 17 atd
 
-./configure \
+./configure                           \
     --with-daemon_username=atd        \
     --with-daemon_groupname=atd       \
     --with-jobdir=/var/spool/atjobs   \

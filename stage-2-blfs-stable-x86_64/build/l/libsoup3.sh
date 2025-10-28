@@ -61,10 +61,10 @@ cd build || exit 1
 meson setup                \
     --prefix=/usr          \
     --buildtype=release    \
+    --wrap-mode=nofallback \
     -D vapi=enabled        \
     -D gssapi=disabled     \
     -D sysprof=disabled    \
-    --wrap-mode=nofallback \
     -D tests=false         \
     -D docs=disabled       \
     .. || exit 1
