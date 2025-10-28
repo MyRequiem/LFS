@@ -28,12 +28,12 @@ PRGNAME="ffmpeg"
 # Optional:    doxygen
 #              fontconfig
 #              fribidi
-#              frei0r-plugins
+#              frei0r
 #              libcdio
 #              libdrm
 #              libjxl
+#              libplacebo
 #              libwebp
-#              opencv
 #              openjpeg
 #              gnutls
 #              pulseaudio
@@ -74,16 +74,12 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOC_DIR}"
+mkdir -pv "${TMP_DIR}"
 
 # применим патч, который добавляет API, необходимый для сборки некоторых
 # пакетов (например chromium)
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-chromium_method-1.patch" || exit 1
-
-# добавляем библиотеку ALSA в переменную LDFLAGS и включаем обнаружение Flite
-sed -i 's/-lflite"/-lflite -lasound"/' configure || exit 1
 
 ./configure                         \
     --prefix=/usr                   \
@@ -105,11 +101,11 @@ sed -i 's/-lflite"/-lflite -lasound"/' configure || exit 1
     --enable-libx265                \
     --enable-openssl                \
     --ignore-tests=enhanced-flv-av1 \
-    --docdir="${DOC_DIR}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 
-# создает утилиту qt-faststart, которая умеет изменять фильмы в формате
+# создаем утилиту qt-faststart, которая умеет изменять фильмы в формате
 # QuickTime (.mov или .mp4), для того, чтобы заголовочная информация находилася
 # в начале файла, а не в конце. Это позволяет начать воспроизведение файла
 # фильма до того, как весь файл будет прочитан.

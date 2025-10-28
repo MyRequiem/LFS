@@ -11,7 +11,7 @@ PRGNAME="dtc"
 # Required:    no
 # Recommended: no
 # Optional:    libyaml
-#              swig     (для сборки Python3 модуля)
+#              swig         (для сборки Python3 модуля)
 #              texlive
 
 ROOT="/root/src/lfs"
@@ -35,7 +35,8 @@ meson setup             \
 
 ninja || exit 1
 
-# meson test -v
+# тесты
+# CC='gcc -Wl,-z,noexecstack' meson test -v
 
 # сразу устанавливаем в систему для дальнейшей сборки Python3 модуля
 ninja install

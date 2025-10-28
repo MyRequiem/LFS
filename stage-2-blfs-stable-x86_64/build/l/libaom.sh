@@ -31,6 +31,7 @@ cmake                            \
     .. || exit 1
 
 ninja || exit 1
+# для тестов нужна сеть Internet
 # ninja runtests
 DESTDIR="${TMP_DIR}" ninja install
 

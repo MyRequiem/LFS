@@ -56,6 +56,7 @@ d/python-modules/python3-docutils.sh
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
+d/luajit.sh
 l/boost.sh
 ap/highlight.sh
 l/lzo.sh
@@ -458,6 +459,7 @@ ap/mpv.sh
 # === qemu, libvirt, virt-manager ===
 d/swig.sh
 d/dtc.sh
+d/fast-float.sh
 l/vte3.sh
 l/libslirp.sh
 l/gperftools.sh
@@ -481,6 +483,7 @@ l/virglrenderer.sh
 l/libnfs.sh
 s/gtk-vnc.sh
 s/qemu.sh
+
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
 l/libsoup2.sh

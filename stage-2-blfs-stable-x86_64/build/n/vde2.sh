@@ -16,7 +16,7 @@ ARCH_NAME="vde"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -42,6 +42,9 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 autoreconf -vif || exit 1
+
+export CFLAGS="-std=gnu17"
+export SLKCFLAGS="-std=gnu17"
 ./configure              \
     --prefix=/usr        \
     --sysconfdir=/etc    \

@@ -69,7 +69,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
@@ -85,7 +85,7 @@ cups-filters                            cups
 curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, vim, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib
 curlftpfs                               vifm
 cxxopts                                 pamixer
-cyrus-sasl                              openldap, spice, spice-gtk, qemu, gtk-vnc, exim
+cyrus-sasl                              openldap, spice, spice-gtk, gtk-vnc, qemu, exim
 dag                                     libpcap
 daps                                    appstream
 datefudge                               gnutls
@@ -116,7 +116,7 @@ docbook2x                               git
 docker                                  libssh2
 double-conversion                       qt5-components, qt6
 dovecot                                 gnupg, sudo, fcron, at
-dovi_tool                               libplacebo
+dovi-tool                               libplacebo
 doxygen                                 gnutls, libevent, fuse3, libusb, dbus, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, libinput, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xorg-server, libevdev, libvdpau-va-gl, ruby, sdl2, ffmpeg, exiv2, jasper, glibmm28, cairomm118, gtkmm4, libaom, libmypaint
 dssim                                   gst-plugins-bad
 dtc                                     qemu
@@ -134,11 +134,12 @@ exiv2                                   gexiv2, mirage
 extra-cmake-modules                     oxygen-icons
 faac                                    gst-plugins-bad
 faad2                                   gst-plugins-bad
+fast-float                              vte3
 fcitx                                   sdl2
 fcron                                   git
 fdk-aac                                 gst-plugins-bad, ffmpeg
 feh
-ffmpeg                                  alsa-plugins, libplacebo, mpv, gegl, imagemagick
+ffmpeg                                  alsa-plugins, mpv, gegl, imagemagick
 ffms2                                   x264
 fftw                                    libsamplerate, pulseaudio, alsa-utils, imagemagick
 fig2dev                                 gnupg
@@ -155,8 +156,8 @@ fop                                     libsigc++2, libsigc++3, xmlto, xorgproto
 freefont
 freeglut                                libtiff, libwebp, jasper
 freetds                                 qt6
-freetype                                graphite2, harfbuzz, fontconfig, ghostscript, libass, ffmpeg
-frei0r-plugins                          ffmpeg
+freetype                                graphite2, harfbuzz, fontconfig, libass, ffmpeg, ghostscript
+frei0r                                  ffmpeg
 fribidi                                 pango, libass, ffmpeg
 fuse-zip                                vifm
 fuse2                                   curlftpfs, vifm
@@ -178,7 +179,7 @@ ghostscript                             cairo, goffice, libspectre, gimp, imagem
 giblib                                  scrot
 giflib                                  imlib2, libwebp, openjdk
 gimp                                    imagemagick
-git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, vulkan-loader, libgstgtk4, xwayland, libgxps, openjdk, openjpeg, flameshot, poppler
+git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, vulkan-loader, libgstgtk4, xwayland, fast-float, vte3, libgxps, openjdk, openjpeg, flameshot, poppler
 gjs                                     glib, libsecret, gimp
 glade                                   libhandy
 glew
@@ -222,15 +223,15 @@ gstreamer                               gst-plugins-base, libcanberra, spice, sp
 gtest                                   protobuf, android-tools
 gtk+2                                   cairo, libcanberra, alsa-tools
 gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, gcr3, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, vim, gsimplecal, spice-gtk, qemu, libvirt, poppler, gimp
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, upower, cairo, gtk+3, libgsf, goffice, libxklavier, json-glib, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup2, libxmlb, poppler, appstream-glib, gimp
-gtk-vnc                                 qemu
+gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, upower, cairo, gtk+3, libgsf, goffice, libxklavier, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup2, libxmlb, poppler, appstream-glib, gimp
+gtk-vnc
 gtk4                                    python3-pygobject3, adwaita-icon-theme, libgstgtk4, ibus, gcr4, gtkmm4, libadwaita, zenity, vte3
 gtkmm3
 gtkmm4                                  pavucontrol
 guile
 gutenprint                              cups
 gvfs                                    gimp
-harfbuzz                                graphite2, freetype, libass, gimp, qt5-components, qt6, openjdk
+harfbuzz                                graphite2, freetype, qt5-components, qt6, libass, openjdk, gimp
 hddtemp                                 bumblebee-status
 heimdal-gssapi                          exim
 help2man                                pango, vala, zenity
@@ -282,7 +283,7 @@ krb4                                    cyrus-sasl
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
 lasem                                   goffice
-lcms2                                   libmng, openjpeg, ghostscript, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, openjdk, libplacebo, poppler
+lcms2                                   libmng, openjpeg, ghostscript, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, libplacebo, openjdk, poppler
 lcov                                    libseccomp
 ldacbt                                  gst-plugins-bad
 leancrypto                              gnutls
@@ -296,7 +297,7 @@ libajantv2                              gst-plugins-bad
 libao
 libaom                                  gst-plugins-bad, ffmpeg
 libarchive                              archivemount, lnav, cmake, fontconfig, libgxps, docbook-xml, ibus, osinfo-db-tools, docbook-dtd3, docbook-dtd4, appstream-glib
-libass                                  ffmpeg, gst-plugins-bad, mpv
+libass                                  gst-plugins-bad, ffmpeg, mpv
 libassuan                               pinentry, gnupg, gpgme
 libasyncns                              pulseaudio
 libatomic-ops                           gc, libdrm
@@ -385,7 +386,7 @@ libopenni                               gst-plugins-bad
 libosinfo                               libvirt
 libpaper                                ghostscript, cups
 libpcap                                 iptables
-libplacebo                              mpv
+libplacebo                              ffmpeg, mpv
 libpmem                                 qemu
 libpng                                  slang, freetype, openjpeg, ghostscript, pixman, cairo, gdk-pixbuf, fltk, imlib2, xorg-applications, libwebp, feh, imagemagick, gst-plugins-base, openjdk, qt6, qemu, poppler
 libproxy                                wget, glib-networking, qt6
@@ -471,8 +472,8 @@ lshw
 lsof
 lsscsi
 ltc-tools                               gst-plugins-bad
-lua                                     highlight, vim, mpv, gimp
-luajit                                  gegl
+lua                                     highlight, vim, gimp
+luajit                                  mpv, gegl
 luit                                    xterm
 lvm2
 lxqt-notificationd                      libnotify
@@ -483,7 +484,7 @@ lzip
 lzo                                     libarchive, cairo, openvpn, qemu
 maemo                                   alsa-plugins
 maim
-make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, mesa, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, openjdk, qt6
+make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, mesa, perl-io-socket-ssl, perl-lwp-protocol-https, glib-networking, openjdk, qt6, vte3
 man2html                                xterm
 mandoc                                  feh
 mariadb                                 cyrus-sasl, openldap, exim, qt5-components, qt6
@@ -510,7 +511,7 @@ musepack                                gst-plugins-bad
 musepack-tools
 mypaint-brushes                         gimp
 mysql                                   cyrus-sasl, openldap, exim, qt5-components, qt6
-nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, libass, xvid, sdl2, ffmpeg, gst-plugins-good, libaom
+nasm                                    libjpeg-turbo, libvpx, x264, x265, lame, gst-plugins-good, sdl2, libaom, libass, xvid, ffmpeg
 ncompress                               xorg-libraries
 neon                                    gst-plugins-bad
 net-tools                               gnutls, openssh, openvpn
@@ -538,14 +539,14 @@ open-mpi                                boost
 openal                                  ffmpeg, mpg123, gst-plugins-bad, qt6, mpv
 opencl                                  gegl
 opencore-amr                            ffmpeg
-opencv                                  ffmpeg, gst-plugins-bad
+opencv                                  gst-plugins-bad
 opendesktop-fonts-ttf
 opendmarc                               exim
 openexr                                 gst-plugins-bad, gegl, gimp, imagemagick
 openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn, cmake, apache-ant
-openjpeg                                ghostscript, ffmpeg, imagemagick, gst-plugins-bad, poppler, gimp
+openjpeg                                gst-plugins-bad, ffmpeg, ghostscript, poppler, gimp, imagemagick
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, exim
 opensc                                  openssh
 openslp                                 openldap
@@ -571,7 +572,7 @@ patchelf                                python3-meson, python3-dbus
 pavucontrol
 pciutils                                qt6
 pcre                                    ag
-pcre2                                   wget, glib, libarchive, git, lnav, swig, xterm, exim, vte3, qt6, i3
+pcre2                                   wget, glib, libarchive, git, lnav, swig, xterm, exim, qt6, i3, vte3
 pcsc-lite                               libcacard
 perl-anyevent                           perl-anyevent-i3
 perl-anyevent-i3                        i3
@@ -631,13 +632,13 @@ python3-cython                          libseccomp, yasm, nghttp2, python3-meson
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, ibus, libsecret
 python3-dbusmock                        upower, polkit
-python3-docutils                        glib, sshfs, gdk-pixbuf, librsvg, libdrm, alsa-utils, gtk4, mpv
+python3-docutils                        glib, sshfs, gdk-pixbuf, librsvg, libdrm, alsa-utils, gtk4, mpv, json-glib
 python3-docwriter                       freetype
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
-python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsoup3, gtk4, libsecret, gcr3, gcr4, libadwaita, vte3, libnotify, appstream
+python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsoup3, gtk4, libsecret, gcr3, gcr4, libadwaita, vte3, libnotify, appstream, json-glib, gtk-vnc
 python3-glad                            libplacebo
 python3-hatch-fancy-pypi-readme         python3-attrs
 python3-hatch-vcs                       python3-urllib3, python3-attrs
@@ -787,7 +788,7 @@ sysprof                                 glib, pango, gtk4, libsoup2, libsoup3
 sysstat                                 openssh
 taglib                                  gst-plugins-good
 tdb                                     pulseaudio, libcanberra, exim
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, graphite2, fontconfig, libunwind, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, jasper, imagemagick, dtc
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, cpio, llvm, graphite2, fontconfig, libunwind, libvdpau, libvorbis, fltk, libvdpau-va-gl, opus, ffmpeg, jasper, dtc, imagemagick
 thin-provisioning-tools                 lvm2
 time
 tinysparql                              gtk4

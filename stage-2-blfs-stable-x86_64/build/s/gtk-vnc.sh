@@ -13,8 +13,9 @@ PRGNAME="gtk-vnc"
 #              libgcrypt
 # Recommended: glib
 #              vala
-# Optional:    cyrus-sasl
 #              pulseaudio
+# Optional:    cyrus-sasl
+#              python3-gi-docgen    (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

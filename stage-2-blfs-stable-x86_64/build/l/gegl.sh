@@ -32,7 +32,7 @@ PRGNAME="gegl"
 #              sdl2
 #              v4l-utils
 #              vala
-#              luajit              (https://luajit.org/luajit.html)
+#              luajit
 #              lensfun             (https://lensfun.github.io/)
 #              libnsgif            (https://www.netsurf-browser.org/projects/libnsgif/)
 #              libumfpack          (https://people.engr.tamu.edu/davis/suitesparse.html)

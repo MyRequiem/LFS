@@ -20,7 +20,6 @@ PRGNAME="qemu"
 #              fuse3
 #              gnutls
 #              gtk+3
-#              gtk-vnc
 #              keyutils
 #              libaio
 #              libusb
@@ -89,6 +88,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/{usr/lib/udev/rules.d,etc/qemu}
 
+# исправим несовместимост с pip>=25.2
+patch -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-python_fixes-1.patch" || exit 1
+
 # добавим группу kvm, если не существует
 ! grep -qE "^kvm:" /etc/group  && \
     groupadd -g 61 kvm
@@ -114,6 +116,7 @@ TARGETS="x86_64-softmmu,x86_64-linux-user"
     --localstatedir=/var       \
     --target-list="${TARGETS}" \
     --audio-drv-list=alsa,pa   \
+    --enable-slirp             \
     --disable-libnfs           \
     --disable-debug-info       \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -134,7 +137,7 @@ EOF
 # необходимые разрешения для использование bridge обычным пользователем
 chgrp kvm  "${TMP_DIR}/usr/libexec/qemu-bridge-helper"
 chmod 4750 "${TMP_DIR}/usr/libexec/qemu-bridge-helper"
-echo allow br0 > "${TMP_DIR}/etc/qemu/bridge.conf"
+echo "allow br0" > "${TMP_DIR}/etc/qemu/bridge.conf"
 
 # ссылка в /usr/bin
 #    qemu -> qemu-system-x86_64

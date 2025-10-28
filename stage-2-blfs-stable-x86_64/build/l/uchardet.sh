@@ -22,10 +22,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_STATIC=OFF          \
-    -W no-dev                    \
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D BUILD_STATIC=OFF                 \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -W no-dev                           \
     .. || exit 1
 
 make || exit 1

@@ -22,9 +22,7 @@ cd build || exit 1
 
 meson setup                \
     --prefix=/usr          \
-    -D orc-test=disabled   \
     -D tests=disabled      \
-    -D orc-test=disabled   \
     -D gtk_doc=disabled    \
     -D benchmarks=disabled \
     -D examples=disabled   \

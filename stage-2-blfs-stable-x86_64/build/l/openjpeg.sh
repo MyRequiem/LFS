@@ -9,11 +9,11 @@ PRGNAME="openjpeg"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    git
+# Optional:    git      (для тестов)
 #              lcms2
 #              libpng
 #              libtiff
-#              doxygen (для сборки API документации)
+#              doxygen  (для сборки API документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,7 +34,7 @@ cmake                            \
 
 make || exit 1
 
-#тесты
+# тесты
 # git clone https://github.com/uclouvain/openjpeg-data.git --depth 1 || exit 1
 # OPJ_DATA_ROOT="${PWD}/openjpeg-data" cmake -D BUILD_TESTING=ON ..  || exit 1
 # make                                                               || exit 1
