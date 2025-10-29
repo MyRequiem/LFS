@@ -39,21 +39,20 @@ make pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}"
 make                                                     \
     pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
     docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
-    mandir=/usr/share/man                                \
     install  DESTDIR="${TMP_DIR}" || exit 1
 
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sfv onsgmls   nsgmls
-    ln -sfv osgmlnorm sgmlnorm
-    ln -sfv ospam     spam
-    ln -sfv ospcat    spcat
-    ln -sfv ospent    spent
-    ln -sfv osx       sx
-    ln -sfv osx       sgml2xml
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sfv libosp.so libsp.so
-)
+ln -v -sf onsgmls   "${TMP_DIR}/usr/bin/nsgmls"
+ln -v -sf osgmlnorm "${TMP_DIR}/usr/bin/sgmlnorm"
+ln -v -sf ospam     "${TMP_DIR}/usr/bin/spam"
+ln -v -sf ospcat    "${TMP_DIR}/usr/bin/spcat"
+ln -v -sf ospent    "${TMP_DIR}/usr/bin/spent"
+ln -v -sf osx       "${TMP_DIR}/usr/bin/sx"
+ln -v -sf osx       "${TMP_DIR}/usr/bin/sgml2xml"
+ln -v -sf libosp.so "${TMP_DIR}/usr/lib/libsp.so"
+
+# /usr/lib/libosp.la скриптом remove-la-files.sh не удаляется (прописано в коде
+# скрита), т.к. данный libtool-архив требуется для сборки некоторых сторонних
+# пакетов
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

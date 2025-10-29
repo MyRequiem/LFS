@@ -25,8 +25,8 @@ sed -i -e '/getopts/{N;s#&G#g#;s#do .getopts.pl.;##;}' \
        -e '/use POSIX/ause Getopt::Std;' msggen.pl || exit 1
 
 # устанавливаем CXXFLAGS для предотвращения ошибок сегментации
-export CXXFLAGS="-O2 -g -fno-lifetime-dse" &&
-./configure \
+export CXXFLAGS="${CXXFLAGS:--O2 -g} -fno-lifetime-dse" &&
+./configure                                      \
     --prefix=/usr                                \
     --mandir=/usr/share/man                      \
     --enable-http                                \

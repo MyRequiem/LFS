@@ -222,9 +222,9 @@ gst-plugins-ugly
 gstreamer                               gst-plugins-base, libcanberra, spice, spice-gtk
 gtest                                   protobuf, android-tools
 gtk+2                                   cairo, libcanberra, alsa-tools
-gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, gcr3, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, vim, gsimplecal, spice-gtk, qemu, libvirt, poppler, gimp
+gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, gcr3, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, vim, gsimplecal, spice-gtk, qemu, libvirt, virt-manager, poppler, gimp
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, dbus-glib, harfbuzz, upower, cairo, gtk+3, libgsf, goffice, libxklavier, polkit, libhandy, dconf, ibus, libgudev, gexiv2, gegl, libgxps, libsoup2, libxmlb, poppler, appstream-glib, gimp
-gtk-vnc
+gtk-vnc                                 virt-manager
 gtk4                                    python3-pygobject3, adwaita-icon-theme, libgstgtk4, ibus, gcr4, gtkmm4, libadwaita, zenity, vte3
 gtkmm3
 gtkmm4                                  pavucontrol
@@ -436,8 +436,8 @@ libva                                   mesa, libva-utils, libvdpau-va-gl, ffmpe
 libva-utils
 libvdpau                                mesa, libvdpau-va-gl, ffmpeg, mpv
 libvdpau-va-gl                          libvdpau, ffmpeg
-libvirt                                 libvirt-glib, python3-libvirt
-libvirt-glib
+libvirt                                 libvirt-glib, python3-libvirt, virt-manager
+libvirt-glib                            virt-manager
 libvisual                               gst-plugins-base
 libvorbis                               libsndfile, libcanberra, ffmpeg, gst-plugins-base
 libvpx                                  ffmpeg, gst-plugins-good
@@ -622,10 +622,10 @@ protobuf                                qt6, android-tools
 pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, mpg123, gst-plugins-good, libao, qt6, mpv, spice-gtk, qemu
 pwgen
 python2                                 yasm, cups, alsa-lib
-python3                                 python3-charset-normalizer, python3-meson
+python3                                 python3-charset-normalizer, python3-meson, python3-build
 python3-asciidoc                        git, nasm, graphite2, xorgproto, xorg-libraries, gegl, i3
 python3-attrs                           libei
-python3-build                           python3-setuptools-scm, python3-meson, python3-hatch-fancy-pypi-readme
+python3-build                           python3-setuptools-scm, python3-meson, python3-hatch-fancy-pypi-readme, virt-manager
 python3-charset-normalizer              python3-requests
 python3-cloudpickle                     python3-attrs
 python3-cython                          libseccomp, yasm, nghttp2, python3-meson, python3-pyyaml
@@ -636,6 +636,7 @@ python3-docutils                        glib, sshfs, gdk-pixbuf, librsvg, libdrm
 python3-docwriter                       freetype
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
+python3-filelock                        python3-build
 python3-flask                           python3-requests
 python3-fonttools                       graphite2, harfbuzz
 python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, libsoup3, gtk4, libsecret, gcr3, gcr4, libadwaita, vte3, libnotify, appstream, json-glib, gtk-vnc
@@ -650,10 +651,10 @@ python3-hypercorn                       python3-urllib3
 python3-hypothesis                      python3-attrs
 python3-idna                            python3-requests
 python3-importlib-metadata              python3-build
-python3-installer                       python3-build
-python3-ipaddr
+python3-installer                       python3-build, virt-manager
+python3-ipaddr                          virt-manager
 python3-kdcproxy                        mit-kerberos-v5
-python3-libvirt
+python3-libvirt                         virt-manager
 python3-looseversion                    fuse3
 python3-lxml                            elogind
 python3-mako                            glib, mesa
@@ -675,33 +676,35 @@ python3-pycurl                          python3-urlgrabber
 python3-pydbus                          gtk4
 python3-pyflakes                        python3-pygobject3
 python3-pygments                        llvm, gegl
-python3-pygobject3                      dbus, python3-dbus, upower, ibus, gtk4, libsecret, mirage, libvirt, libvirt-glib, gegl, gimp
+python3-pygobject3                      dbus, python3-dbus, upower, ibus, gtk4, libsecret, mirage, libvirt, libvirt-glib, virt-manager, gegl, gimp
 python3-pympler                         python3-attrs
 python3-pyparsing                       libinput, spice
 python3-pypinfo                         python3-psutil
-python3-pyproject-hooks                 python3-build
+python3-pyproject-hooks                 python3-build, virt-manager
 python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-pyyaml, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, brotli, python3-glad, python3-pyparsing, osinfo-db-tools
-python3-pytest-cov                      python3-charset-normalizer
+python3-pytest                          fuse3, python3-pyyaml, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-pyproject-hooks, python3-build
+python3-pytest-cov                      python3-charset-normalizer, python3-build
 python3-pytest-httpbin                  python3-requests
-python3-pytest-mock                     python3-requests, python3-meson
+python3-pytest-mock                     python3-requests, python3-meson, python3-build
 python3-pytest-mypy-plugins             python3-attrs
+python3-pytest-rerunfailures            python3-build
 python3-pytest-timeout                  python3-urllib3
-python3-pytest-xdist                    python3-attrs
+python3-pytest-xdist                    python3-attrs, python3-build
 python3-pyyaml                          llvm, mesa
 python3-quart                           python3-urllib3
 python3-quart-trio                      python3-urllib3
 python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    libinput
-python3-requests                        python3-psutil, osinfo-db-tools
-python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-charset-normalizer, python3-urlgrabber
+python3-requests                        python3-psutil, osinfo-db-tools, virt-manager
+python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-charset-normalizer, python3-zipp, python3-importlib-metadata
 python3-six                             spice, python3-urlgrabber
 python3-sphinx                          libuv, python3-requests, llvm, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, extra-cmake-modules
 python3-sphinx-rtd-theme                libinput, qemu
 python3-structlog                       libei
+python3-testpath                        python3-pyproject-hooks
 python3-tomli                           python3-build
 python3-tornado                         python3-urllib3
 python3-trio                            python3-urllib3
@@ -710,6 +713,7 @@ python3-trustme                         python3-urllib3, python3-requests
 python3-typing-extensions               python3-importlib-metadata
 python3-urlgrabber                      libvirt
 python3-urllib3                         python3-requests
+python3-uv                              python3-build
 python3-wcag-contrast-ratio             python3-pygments
 python3-werkzeug                        python3-requests
 python3-xmlschema
@@ -751,7 +755,7 @@ sdl2                                    mpg123, libwebp, ffmpeg, gegl, gst-plugi
 selinux                                 elogind, qemu
 sendmail                                gnupg, sudo, fcron, at
 septel                                  libpcap
-sgml-common                             docbook-dtd3, docbook-dtd4, opensp, docbook-dsssl
+sgml-common                             opensp, docbook-dtd3, docbook-dtd4, docbook-dsssl
 shared-mime-info                        glib, gdk-pixbuf
 shellcheck
 silgraphite                             graphite2
@@ -767,7 +771,7 @@ spdylay                                 nghttp2
 speech-dispatcher                       qt6
 speex                                   libsndfile, pulseaudio, ffmpeg, alsa-plugins, gst-plugins-good
 spice                                   spice-gtk, qemu
-spice-gtk
+spice-gtk                               virt-manager
 spice-protocol                          spice
 spirv-headers                           spirv-tools
 spirv-llvm-translator                   libclc
@@ -802,7 +806,7 @@ tree
 tremor                                  gst-plugins-base
 trousers                                gnutls
 tslib                                   qt6
-tunctl
+tunctl                                  virt-manager
 twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good
 uasm                                    7zip
@@ -826,6 +830,7 @@ vdo                                     lvm2
 vifm
 vim                                     fcron
 virglrenderer
+virt-manager
 vo-aac                                  gst-plugins-bad
 vo-aaenc                                ffmpeg
 vo-amrwb                                gst-plugins-bad

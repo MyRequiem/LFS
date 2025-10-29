@@ -9,7 +9,9 @@ ARCH_NAME="pyproject_hooks"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3-testpath    (https://pypi.org/project/testpath/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

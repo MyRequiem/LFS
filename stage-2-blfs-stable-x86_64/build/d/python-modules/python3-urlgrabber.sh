@@ -10,7 +10,6 @@ ARCH_NAME="urlgrabber"
 
 # Required:    python3-six
 #              python3-pycurl
-#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 

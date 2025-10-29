@@ -8,6 +8,7 @@ ARCH_NAME="importlib_metadata"
 
 # Required:    python3-typing-extensions
 #              python3-zipp
+#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 

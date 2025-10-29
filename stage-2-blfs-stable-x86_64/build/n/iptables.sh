@@ -38,26 +38,13 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBNETFILTER="--disable-connlabel"
-LIBPCAP="--disable-nfsynproxy"
-BPF_COMPILER="--disable-bpf-compiler"
-NFTABLES="--disable-nftables"
-
-[ -x /usr/lib/libnetfilter_conntrack.so ] &&  LIBNETFILTER="--enable-connlabel"
-command -v pcap-config &>/dev/null && LIBPCAP="--enable-nfsynproxy"
-command -v bpf-test    &>/dev/null && BPF_COMPILER="--enable-bpf-compiler"
-command -v nft         &>/dev/null && NFTABLES="--enable-nftables"
-
 # собирать библиотеку libipq.so, которая используется некоторыми пакетами за
 # пределами BLFS
 #    --enable-libipq
 ./configure            \
     --prefix=/usr      \
-    --enable-libipq    \
-    "${LIBNETFILTER}"  \
-    "${LIBPCAP}"       \
-    "${BPF_COMPILER}"  \
-    "${NFTABLES}" || exit 1
+    --disable-nftables \
+    --enable-libipq || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов

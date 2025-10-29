@@ -26,7 +26,7 @@ patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-grep_fix-1.patch" || exit 1
 
 # изменим каталог установки HTML-документов
-sed -i 's:/html::' doc/HTML/Makefile.in
+sed -i 's:/html::' doc/HTML/Makefile.in || exit 1
 
 ./configure       \
     --prefix=/usr \

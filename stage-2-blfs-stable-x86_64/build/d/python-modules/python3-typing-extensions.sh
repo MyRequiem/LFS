@@ -60,7 +60,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # able to take advantage of new types added to the typing module, such as
 # typing.Text or typing.Coroutine
 #
-# Home page: https://pypi.org/project/typing-extensions/
+# Home page: https://pypi.org/project/${ARCH_NAME}/
 # Download:  https://files.pythonhosted.org/packages/source/t/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

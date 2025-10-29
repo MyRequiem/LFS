@@ -47,8 +47,8 @@ sed -i -e '/ISO 8879/d' \
        docbook.cat || exit 1
 
 install -v -d -m755             "${SHARE_SGML}"
-cp -avf ./*.dtd ./*.mod ./*.dcl "${SHARE_SGML}/"
 install -v docbook.cat          "${SHARE_SGML}/catalog"
+cp -avf ./*.dtd ./*.mod ./*.dcl "${SHARE_SGML}/"
 chmod 644 "${SHARE_SGML}/catalog"
 
 ETC_SGML_CAT="/etc/sgml/sgml-docbook-dtd-${VERSION}.cat"
@@ -79,7 +79,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # allowing you to utilize transformations already written for that standard.
 #
 # Home page: https://${ARCH_NAME}.org/
-# Download:  http://www.${ARCH_NAME}.org/sgml/${VERSION}/${ARCH_NAME}-${VERSION}.zip
+# Download:  https://www.${ARCH_NAME}.org/sgml/${VERSION}/${ARCH_NAME}-${VERSION}.zip
 #
 EOF
 

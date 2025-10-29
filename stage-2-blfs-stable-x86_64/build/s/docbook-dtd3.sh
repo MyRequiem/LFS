@@ -71,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # allowing you to utilize transformations already written for that standard.
 #
 # Home page: https://docbook.org/
-# Download:  http://www.docbook.org/sgml/${VERSION}/${ARCH_NAME}.zip
+# Download:  https://www.docbook.org/sgml/${VERSION}/${ARCH_NAME}.zip
 #
 EOF
 

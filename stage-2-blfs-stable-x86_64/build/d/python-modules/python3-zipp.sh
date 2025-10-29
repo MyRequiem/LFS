@@ -6,7 +6,7 @@ ARCH_NAME="zipp"
 ### zipp (Zipfile object wrapper)
 # Оболочка для объекта Zipfile, совместимая с pathlib
 
-# Required:    no
+# Required:    python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 

@@ -6,12 +6,20 @@ ARCH_NAME="build"
 ### Build (A simple, correct Python build frontend)
 # инструмент для сборки Python пакетов в соответствии с PEP517 спецификацией
 
-# Required:    python3-installer
-#              python3-pyproject-hooks
+# Required:    python3-pyproject-hooks
+#              python3-installer
 #              python3-importlib-metadata
 #              python3-tomli
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              python3                      (собранный с sqlite)
+#              python3-filelock             (https://pypi.org/project/filelock/)
+#              python3-pytest-cov           (https://pypi.org/project/pytest-cov/)
+#              python3-pytest-mock          (https://pypi.org/project/pytest-mock/)
+#              python3-pytest-rerunfailures (https://pypi.org/project/pytest-rerunfailures/)
+#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
+#              python3-uv                   (https://pypi.org/project/uv/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
