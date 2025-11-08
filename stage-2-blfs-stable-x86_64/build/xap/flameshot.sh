@@ -5,9 +5,14 @@ PRGNAME="flameshot"
 ### Flameshot (screenshot software)
 # Мощное, но простое в использовании программное обеспечение для создания
 # скриншотов. Настраиваемый внешний вид, редактирование скриншотов, DBus
-# интерфейс, загрузка на Imgur (https://imgur.com)
+# интерфейс.
 
 # Required:    cmake
+#              python3-webencodings
+#              python3-html5lib
+#              md4c
+#              nodejs
+#              double-conversion
 #              qt6
 #              librsvg
 #              libxkbcommon
@@ -26,9 +31,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release  \
+cmake                                       \
+    -D CMAKE_INSTALL_PREFIX=/usr            \
+    -D CMAKE_BUILD_TYPE=Release             \
+    -D BUILD_SHARED_LIBS=ON                 \
+    -D BUILD_STATIC_LIBS=OFF                \
+    -D KDSingleApplication_STATIC=OFF       \
+    -D QTCOLORWIDGETS_BUILD_STATIC_LIBS=OFF \
+    -W no-dev                               \
     .. || exit 1
 
 make || exit 1
@@ -42,8 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (screenshot software)
 #
 # Powerful yet simple to use screenshot software. Features: Customizable
-# appearance. In-app screenshot edition. DBus interface. Upload to Imgur
-# (https://imgur.com)
+# appearance. In-app screenshot edition. DBus interface.
 #
 # Home page: https://${PRGNAME}.org
 # Download:  https://github.com/${PRGNAME}-org/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz

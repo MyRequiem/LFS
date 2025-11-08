@@ -322,8 +322,8 @@ d/protobuf.sh
 l/qt6.sh
 # ===========
 a/upower.sh
-d/extra-cmake-modules.sh
-s/oxygen-icons.sh
+kde/d/extra-cmake-modules.sh
+kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
@@ -515,6 +515,7 @@ ap/docbook-utils.sh
 n/tunctl.sh
 s/virt-manager.sh
 # ===================================
+xap/pavucontrol.sh
 l/giblib.sh
 ap/scrot.sh
 d/glm.sh
@@ -522,12 +523,17 @@ ap/slop.sh
 ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
+d/python-modules/python3-webencodings.sh
+d/python-modules/python3-html5lib.sh
+l/md4c.sh
+l/c-ares.sh
+d/nodejs.sh
 xap/flameshot.sh
-xap/pavucontrol.sh
 a/time.sh
 a/tree.sh
 a/cpio.sh
 d/openjdk.sh
+
 a/usbutils.sh
 l/slang.sh
 d/guile.sh
@@ -565,5 +571,7 @@ ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
 d/android-tools.sh
+ap/zathura.sh    (есть в удаленных)
+ap/openoffice.sh [NEW]
 
 # vim:ft=conf

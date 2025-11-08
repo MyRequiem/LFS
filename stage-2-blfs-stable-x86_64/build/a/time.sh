@@ -20,6 +20,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим ошибку сборки с gcc-15
+sed -i 's/sighandler interrupt_signal/__sighandler_t interrupt_signal/' \
+    src/time.c || exit 1
+
 ./configure \
     --prefix=/usr || exit 1
 

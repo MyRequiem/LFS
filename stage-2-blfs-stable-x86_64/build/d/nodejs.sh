@@ -10,12 +10,13 @@ ARCH_NAME="node"
 # Manager), является крупнейшей системой библиотек с открытым исходным кодом.
 
 # Required:    which
-# Recommended: c-ares
+# Recommended: brotli
+#              c-ares
 #              icu
 #              libuv
 #              nghttp2
-# Optional:    http-parser (https://github.com/nodejs/http-parser)
-#              npm         (если не установлен, будет собрана внутренняя копия npm) https://www.npmjs.com/
+# Optional:    http-parser    (https://github.com/nodejs/http-parser)
+#              npm            (если не установлен, будет собрана внутренняя копия npm) https://www.npmjs.com/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -25,40 +26,24 @@ VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-C_ARES=""
-LIBUV=""
-NGHTTP2=""
-ICU="small-icu"
-NPM=""
-NPM_PKG="$(find /var/log/packages/ -type f -name "npm-[0-9]*")"
-
-[ -x /usr/lib/libcares.so ]    && C_ARES="--shared-cares"
-[ -x /usr/lib/libuv.so ]       && LIBUV="--shared-libuv"
-[ -x /usr/lib/libnghttp2.so ]  && NGHTTP2="--shared-nghttp2"
-[ -n "${NPM_PKG}" ]            && NPM="--without-npm"
-command -v icuinfo &>/dev/null && ICU="system-icu"
-
 ./configure          \
     --prefix=/usr    \
+    --shared-brotli  \
+    --shared-cares   \
+    --shared-libuv   \
     --shared-openssl \
+    --shared-nghttp2 \
     --shared-zlib    \
-    ${C_ARES}        \
-    ${LIBUV}         \
-    ${NGHTTP2}       \
-    ${NPM}           \
-    --ninja          \
-    --with-intl="${ICU}"|| exit 1
+    --with-intl=system-icu || exit 1
 
 make || exit 1
 # make test-only
 make install DESTDIR="${TMP_DIR}"
 
-# по умолчанию документация устанавливается в /usr/share/doc/node/
-# создадим ссылку в /usr/share/doc/
-#    ${PRGNAME}-${VERSION} -> node
+# удалим документацию
 (
-    cd "${TMP_DIR}/usr/share/doc/" || exit 1
-    ln -sfv node "${PRGNAME}-${VERSION}"
+    cd "${TMP_DIR}/usr/share/" || exit 1
+    rm -rf doc
 )
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -73,8 +58,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # lightweight and efficient. Node.js' package ecosystem, npm, is the largest
 # ecosystem of open source libraries in the world.
 #
-# Home page: https://nodejs.org/
-# Download:  https://nodejs.org/dist/v${VERSION}/${ARCH_NAME}-v${VERSION}.tar.xz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://${PRGNAME}.org/dist/v${VERSION}/${ARCH_NAME}-v${VERSION}.tar.xz
 #
 EOF
 

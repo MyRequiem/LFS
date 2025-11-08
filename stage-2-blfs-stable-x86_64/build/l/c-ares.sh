@@ -37,8 +37,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # c-ares is a C library that performs DNS requests and name resolves
 # asynchronously
 #
-# Home page: https://${PRGNAME}.haxx.se/
-# Download:  https://${PRGNAME}.haxx.se/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://github.com/${PRGNAME}/${PRGNAME}/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
