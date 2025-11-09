@@ -31,12 +31,11 @@ cd build || exit 1
 # помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
 # System V не может использовать этот файл
 #    -D systemd_user_dir=/tmp
-meson                         \
+meson setup ..                \
     --prefix=/usr             \
     --buildtype=release       \
     -D gtk2_atk_adaptor=false \
-    -D systemd_user_dir=/tmp  \
-    .. || exit 1
+    -D systemd_user_dir=/tmp || exit 1
 
 ninja || exit 1
 

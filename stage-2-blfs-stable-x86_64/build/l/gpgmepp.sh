@@ -1,11 +1,12 @@
 #! /bin/bash
 
-PRGNAME="utfcpp"
+PRGNAME="gpgmepp"
 
-### utfcpp (UTF-8 in C++)
-# Набор заголовочных файлов для предоставления UTF-8 в C++
+### gpgmepp (C++ wrapper to gpgme)
+# C++ оболочка (библиотека) для gpgme
 
 # Required:    cmake
+#              gpgme
 # Recommended: no
 # Optional:    no
 
@@ -23,6 +24,7 @@ cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     .. || exit 1
 
+make || exit
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
@@ -31,13 +33,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (UTF-8 in C++)
+# Package: ${PRGNAME} (C++ wrapper to gpgme)
 #
-# The utfcpp package contains a set of include files to provide UTF-8 with C++
-# in a Portable Way
+# The gpgmepp package provides a C++ wrapper to gpgme
 #
-# Home page: https://github.com/nemtrif/${PRGNAME}
-# Download:  https://github.com/nemtrif/${PRGNAME}/archive/v${VERSION}/${PRGNAME-}${VERSION}.tar.gz
+# Home page: https://www.gnupg.org/ftp/gcrypt/${PRGNAME}
+# Download:  https://www.gnupg.org/ftp/gcrypt/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

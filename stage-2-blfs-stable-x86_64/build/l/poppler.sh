@@ -12,7 +12,7 @@ PRGNAME="poppler"
 #              glib
 # Recommended: boost
 #              cairo
-#              gpgme
+#              gpgmepp
 #              lcms2
 #              libjpeg-turbo
 #              libpng
@@ -25,7 +25,6 @@ PRGNAME="poppler"
 #              git              (для загрузки тестовых файлов)
 #              gtk-doc
 #              gtk+3
-#              qt5-components
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,7 +43,8 @@ cd build || exit 1
 cmake                                     \
     -D CMAKE_BUILD_TYPE=Release           \
     -D CMAKE_INSTALL_PREFIX=/usr          \
-    -D TESTDATADIR=$PWD/testfiles         \
+    -D TESTDATADIR="${PWD}/testfiles"     \
+    -D ENABLE_QT5=OFF                     \
     -D ENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -G Ninja .. || exit 1
 

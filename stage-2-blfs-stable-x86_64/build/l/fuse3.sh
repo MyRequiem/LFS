@@ -53,7 +53,7 @@ sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1

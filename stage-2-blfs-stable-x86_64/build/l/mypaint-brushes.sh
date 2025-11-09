@@ -5,7 +5,7 @@ PRGNAME="mypaint-brushes"
 ### mypaint-brushes (brushes for use with libmypaint)
 # Кисти, используемые с libmypaint
 
-# Required:    libmypaint
+# Required:    libmypaint    (runtime)
 # Recommended: no
 # Optional:    no
 

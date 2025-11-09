@@ -533,7 +533,6 @@ a/time.sh
 a/tree.sh
 a/cpio.sh
 d/openjdk.sh
-
 a/usbutils.sh
 l/slang.sh
 d/guile.sh
@@ -545,6 +544,7 @@ d/perl-modules/perl-file-fcntllock.sh
 n/exim.sh
 ap/at.sh
 l/aalib.sh
+l/gpgmepp.sh
 l/poppler.sh
 l/babl.sh
 l/gegl.sh
@@ -560,7 +560,6 @@ l/taglib.sh
 s/inxi.sh
 n/traceroute.sh
 d/apache-ant.sh
-ap/rpm.sh
 l/id3lib.sh
 l/libao.sh
 ap/pwgen.sh
@@ -571,7 +570,13 @@ ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
 d/android-tools.sh
-ap/zathura.sh    (есть в удаленных)
-ap/openoffice.sh [NEW]
+
+ap/zathura.sh
+ap/openoffice.sh
+l/liba52.sh
+l/libmad.sh
+l/v4l-utils.sh
+l/faad2.sh
+xap/vlc.sh
 
 # vim:ft=conf

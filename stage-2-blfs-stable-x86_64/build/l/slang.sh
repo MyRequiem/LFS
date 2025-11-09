@@ -12,7 +12,11 @@ PRGNAME="slang"
 # Required:    no
 # Recommended: no
 # Optional:    libpng
-#              oniguruma (https://github.com/kkos/oniguruma)
+#              oniguruma    (https://github.com/kkos/oniguruma)
+
+### Конфигурация:
+#    /etc/slsh.rc
+#    ~/.slshrc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -21,7 +21,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим ошибку сборки с GCC-14
+# исправим ошибку сборки с gcc>=14
 sed -i '/limits.h/a #include <time.h>' src/plugins/pulse/ao_pulse.c || exit 1
 
 ./configure \
