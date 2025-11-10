@@ -570,8 +570,9 @@ ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
 d/android-tools.sh
-
+l/girara.sh
 ap/zathura.sh
+
 ap/openoffice.sh
 l/liba52.sh
 l/libmad.sh

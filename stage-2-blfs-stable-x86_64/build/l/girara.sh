@@ -10,8 +10,7 @@ PRGNAME="girara"
 # Required:    glib
 #              gtk+3
 # Recommended: no
-# Optional:    libnotify
-#              json-c
+# Optional:    json-glib
 #              doxygen
 
 ROOT="/root/src/lfs"
@@ -21,24 +20,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LANG=C
-LC_ALL=C
-export LANG LC_ALL
-
 mkdir build
 cd build || exit 1
 
-DOCS="disabled"
-NOTIFY="disabled"
-TESTS="disabled"
-# [ -x /usr/lib/libnotify.so ] && NOTIFY="enabled"
-
-meson                    \
-    --prefix=/usr        \
-    -Ddocs="${DOCS}"     \
-    -Dtests="${TESTS}"   \
-    -Dnotify="${NOTIFY}" \
-    .. || exit 1
+meson setup ..       \
+    --prefix=/usr    \
+    -D docs=disabled \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
