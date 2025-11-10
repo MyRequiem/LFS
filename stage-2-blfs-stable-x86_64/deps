@@ -68,12 +68,12 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools, rpm
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  cups, gtk+3, gtk4
 corefonts                               imagemagick
 cpdb                                    gtk4
-cpio                                    openjdk
+cpio                                    openjdk, openoffice
 cppdap                                  cmake
 cppunit                                 taglib
 cracklib                                mit-kerberos-v5
@@ -94,6 +94,7 @@ dblatex                                 git, xmlto, graphite2, gimp
 dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, pulseaudio, dconf, xdg-utils, qt5-components, qt6, gnome-keyring, xorg-server
 dbus-glib
 dconf                                   ibus
+deb2tgz
 dejavu-fonts-ttf                        xterm, imagemagick
 desktop-file-utils                      glib, fltk
 dhcpcd
@@ -552,6 +553,7 @@ openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn, cmake, apache-ant
 openjpeg                                gst-plugins-bad, ffmpeg, ghostscript, poppler, gimp, imagemagick
 openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, exim
+openoffice
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
@@ -741,6 +743,7 @@ resolv-wrapper                          mit-kerberos-v5
 reusetool                               extra-cmake-modules
 rhash                                   cmake
 rpcsvc-proto                            glusterfs
+rpm                                     openoffice
 rrdtool                                 lm-sensors
 rsync                                   llvm, vim
 rtmpdump                                gst-plugins-bad

@@ -572,8 +572,10 @@ l/fmt.sh
 d/android-tools.sh
 l/girara.sh
 ap/zathura.sh
+ap/deb2tgz.sh
+ap/rpm.sh
+xap/openoffice.sh
 
-ap/openoffice.sh
 l/liba52.sh
 l/libmad.sh
 l/v4l-utils.sh

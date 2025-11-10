@@ -660,5 +660,12 @@ https://pwmt.org/projects/zathura-ps/download/zathura-ps-0.2.9.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathura/zathurarc.5
 # =======================
+https://github.com/vborrego/deb2tgz/archive/0.3/deb2tgz-0.3.tar.gz
+http://ftp.rpm.org/releases/rpm-4.20.x/rpm-4.20.1.tar.bz2
+# ===== openoffice =====
+https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.15/binaries/ru/Apache_OpenOffice_4.1.15_Linux_x86-64_install-rpm_ru.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.directory
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.menu
+# ======================
 
 # vim:ft=conf nowrap
