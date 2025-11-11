@@ -12,7 +12,7 @@ PRGNAME="gcc"
 #              gdb
 #              graphviz
 #              valgrind
-#              isl      (для включения оптимизации graphite) https://repo.or.cz/isl.git
+#              isl          (для включения оптимизации graphite) https://repo.or.cz/isl.git
 
 ### NOTE
 # Если в системе присутствуют сторонние модули ядра (например, nvidia.ko и
@@ -62,19 +62,7 @@ make || exit 1
 # valgrind, то будет запущено больше тестов, часть из которых будут терпеть
 # неудачу и сообщать FAIL. Начиная с gcc-12.2.0 в среде LFS тестирование выдает
 # не менее 80 ошибок.
-
-# удалим/исправим несколько известных ошибок тестирования
-# sed -e '/cpython/d'               \
-#     -i ../gcc/testsuite/gcc.dg/plugin/plugin.exp
-# sed -e 's/no-pic /&-no-pie /'     \
-#     -i ../gcc/testsuite/gcc.target/i386/pr113689-1.c
-# sed -e 's/300000/(1|300000)/'     \
-#     -i ../libgomp/testsuite/libgomp.c-c++-common/pr109062.c
-# sed -e 's/{ target nonpic } //'   \
-#     -e '/GOTPCREL/d'              \
-#     -i ../gcc/testsuite/gcc.target/i386/fentryname3.c
-
-# запускаем тесты
+#
 # make -k check
 # пишем результаты тестов в gcc-test.log
 # ../contrib/test_summary 2>&1 | grep -A7 Summ > gcc-test.log
@@ -101,6 +89,8 @@ chown -vR root:root "${TMP_DIR}${LIB_GCC}/include"{,-fixed}
     cd "${TMP_DIR}/usr/bin" || exit 1
     ln -sv gcc cc
 )
+
+ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/cc.1"
 
 # добавим символическую ссылку в /usr/lib/bfd-plugins/
 #    liblto_plugin.so ->

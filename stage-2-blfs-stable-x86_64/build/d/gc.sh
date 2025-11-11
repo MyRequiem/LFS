@@ -36,10 +36,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-(
-    cd "${TMP_DIR}${MAN}" || exit 1
-    ln -svf "${PRGNAME}.3" "${PRGNAME}_malloc.3"
-)
+install -v -m644 "doc/${PRGNAME}.man" "${TMP_DIR}${MAN}/${PRGNAME}_malloc.3"
+ln -svf "${PRGNAME}_malloc.3" "${TMP_DIR}${MAN}/${PRGNAME}.3"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

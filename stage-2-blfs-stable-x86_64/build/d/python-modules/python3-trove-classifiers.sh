@@ -21,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 # жестко закодируем версию пакета в файле setup.py, чтобы обойти проблему,
 # из-за которой сгенерированное wheel содержит неверную версию, если модуль
 # python3-calver (не входит в BLFS) не установлен
-sed -i '/calver/s/^/#/;$iversion="2024.7.2"' setup.py
+sed -i "/calver/s/^/#/;\$iversion=\"${VERSION}\"" setup.py || exit 1
 
 pip3 wheel               \
     -w dist              \
@@ -33,8 +33,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     trove-classifiers || exit 1
 

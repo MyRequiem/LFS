@@ -9,11 +9,10 @@ PRGNAME="vifm"
 # Recommended: no
 # Optional:    sshfs
 #              curlftpfs
-#              fuse2
 #              fuse3
-#              fuseiso
 #              archivemount
 #              highlight
+#              fuse2        (https://github.com/libfuse/libfuse)
 #              fusefat      (https://github.com/alanswx/fusefat)
 #              fuse-zip     (https://github.com/ralic/fuse-zip)
 

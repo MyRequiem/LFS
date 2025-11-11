@@ -8,7 +8,8 @@ PRGNAME="json-glib"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gtk-doc
+# Optional:    python3-docutils
+#              python3-gi-docgen
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,7 +21,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     -D man=true         \
@@ -45,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # JSON-GLib is a library providing serialization and deserialization support
 # for the JavaScript Object Notation (JSON) format described by RFC 4627.
 #
-# Home page: http://live.gnome.org/JsonGlib
+# Home page: https://live.gnome.org/JsonGlib
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

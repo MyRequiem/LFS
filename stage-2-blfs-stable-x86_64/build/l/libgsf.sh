@@ -10,11 +10,11 @@ PRGNAME="libgsf"
 # Required:    glib
 #              libxml2
 # Recommended: gdk-pixbuf (для сборки gsf-office-thumbnailer)
-# Optional:    gtk-doc
+# Optional:    7zip
+#              gtk-doc
 #              --- для тестов ---
-#              p7zip
-#              unzip
 #              valgrind
+#              unzip      (https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,11 +23,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с libxml2-2.13
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
-
-autoreconf || exit 1
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1

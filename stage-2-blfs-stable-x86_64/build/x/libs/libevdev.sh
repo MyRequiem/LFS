@@ -9,6 +9,7 @@ PRGNAME="libevdev"
 # Recommended: no
 # Optional:    doxygen
 #              valgrind
+#              check        (https://libcheck.github.io/check/)
 
 ### Конфигурация ядра
 #    CONFIG_INPUT=y
@@ -31,14 +32,15 @@ cd build || exit 1
 meson setup ..                \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
-    -D documentation=disabled || exit 1
+    -D documentation=disabled \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 
 # Тесты должны запускаться при запущенном X-сервере. В некоторых системах тесты
 # могут вызвать жесткую блокировку, что потребует перезагрузки машины. На
 # ноутбуках система перейдет в спящий режим, и ее необходимо разбудить, чтобы
-# завершить тестовые наборы.
+# завершить тестовые наборы. Должен быть установлен пакет 'check'
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

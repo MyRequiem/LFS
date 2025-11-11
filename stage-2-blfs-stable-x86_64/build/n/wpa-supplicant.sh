@@ -8,12 +8,10 @@ ARCH_NAME="wpa_supplicant"
 # подключения к защищенным паролем беспроводным точкам доступа.
 
 # Required:    no
-# Recommended: desktop-file-utils (для запуска update-desktop-database)
-#              libnl
+# Recommended: libnl
 # Optional:    --- для использвания с NetworkManager (GUI) ---
 #              dbus
 #              libxml2
-#              qt5-components
 
 ### Конфигурация ядра
 #    CONFIG_NET=y
@@ -52,9 +50,7 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"               || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/usr/sbin"
-mkdir -pv "${TMP_DIR}/etc/sysconfig"
-mkdir -pv "${TMP_DIR}/usr/share/man"/man{5,8}
+mkdir -pv "${TMP_DIR}"/{etc/sysconfig,usr/sbin,usr/share/man/man{5,8}}
 
 cd "${ARCH_NAME}" || exit 1
 
@@ -114,6 +110,14 @@ CONFIG_BGSCAN_SIMPLE=y
 CONFIG_DPP=y
 CFLAGS += -I/usr/include/libnl3
 EOF
+
+if [ -x /usr/bin/dbus-daemon ]; then
+    cat << EOF >> .config
+CONFIG_CTRL_IFACE_DBUS=y
+CONFIG_CTRL_IFACE_DBUS_NEW=y
+CONFIG_CTRL_IFACE_DBUS_INTRO=y
+EOF
+fi
 
 make BINDIR=/usr/sbin LIBDIR=/usr/lib
 

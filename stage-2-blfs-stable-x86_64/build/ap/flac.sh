@@ -27,7 +27,6 @@ mkdir -pv "${TMP_DIR}"
 ./configure                  \
     --prefix=/usr            \
     --disable-thorough-tests \
-    --disable-doxygen-docs   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -51,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # GPL.
 #
 # Home page: https://xiph.org/${PRGNAME}/
-# Download:  https://downloads.xiph.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/xiph/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

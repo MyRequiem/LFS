@@ -18,8 +18,8 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # сначала соберем библиотеку libsass
-tar -xf ${SOURCES}/libsass-*.tar.gz || exit 1
-cd libsass-* || exit 1
+tar -xf "${SOURCES}/libsass"-*.tar.gz || exit 1
+pushd libsass-* || exit 1
 
 autoreconf -fi &&
 ./configure       \
@@ -32,9 +32,8 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 make install
 
-cd .. || exit 1
-
 # теперь собираем оболочку командной строки
+popd &&
 autoreconf -fi &&
 ./configure \
     --prefix=/usr || exit 1

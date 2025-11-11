@@ -12,7 +12,7 @@ PRGNAME="archivemount"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -57,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # shar. Other archive types such as rar and 7z may also work.
 #
 # Home page: https://sr.ht/~nabijaczleweli/${PRGNAME}-ng/
-# Download:  https://deb.debian.org/debian/pool/main/a/${PRGNAME}/${PRGNAME}_1.orig.tar.gz
+# Download:  https://deb.debian.org/debian/pool/main/a/${PRGNAME}/${PRGNAME}_${VERSION}.orig.tar.gz
 #
 EOF
 

@@ -13,6 +13,7 @@ PRGNAME="libxkbcommon"
 #              wayland
 #              wayland-protocols
 # Optional:    doxygen
+#              xorg-server или xwayland (только утилита Xvfb для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -48,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # client toolkits, window systems, and other system applications.
 #
 # Home page: https://xkbcommon.org/
-# Download:  https://xkbcommon.org/download/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/lfs-book/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

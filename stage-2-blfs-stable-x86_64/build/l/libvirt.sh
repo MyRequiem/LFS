@@ -21,7 +21,7 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    -name "${PRGNAME}-[0-9]*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
@@ -51,8 +51,7 @@ sed "s|prefix / 'lib' / 'sysctl.d'|sysconfdir / 'sysctl.d'|" \
 patch --verbose -p1 < "${SOURCES}/use-virtgroup-in-polkit-rules.diff" || exit 1
 
 VIRTGROUP="kvm"
-sed -e "s,@VIRTGROUP@,$VIRTGROUP,g" \
-    -i src/remote/libvirtd.rules
+sed -e "s,@VIRTGROUP@,$VIRTGROUP,g" -i src/remote/libvirtd.rules || exit 1
 
 mkdir build
 cd build || exit 1
@@ -73,9 +72,10 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/etc/logrotate.d"
-rm -rf "${TMP_DIR}/var/run"
-rm -rf "${TMP_DIR}/usr/share/doc"
+(
+    cd "${TMP_DIR}" || exit 1
+    rm -rf {etc/logrotate.d,run,usr/share/doc}
+)
 
 # используем группу kvm, исправляем права авторизации и учитываем тот факт, что
 # по умолчанию у нас нет сертификатов

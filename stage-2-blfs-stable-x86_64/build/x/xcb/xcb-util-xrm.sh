@@ -6,7 +6,7 @@ PRGNAME="xcb-util-xrm"
 # Библиотека использующаяся поверх libxcb и предоставляющая удобные функции и
 # интерфейсы, которые делают необработанный протокол X более удобным.
 
-# Required:    libxcb
+# Required:    xcb-util
 # Recommended: no
 # Optional:    no
 

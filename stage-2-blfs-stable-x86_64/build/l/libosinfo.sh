@@ -20,12 +20,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-PCI_IDS="/usr/share/hwdata/pci.ids"
-USB_IDS="/usr/share/hwdata/usb.ids"
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-libxml2-2.14.patch" || exit 1
 
 mkdir build
 cd build || exit 1
 
+PCI_IDS="/usr/share/hwdata/pci.ids"
+USB_IDS="/usr/share/hwdata/usb.ids"
 meson setup                           \
     --prefix=/usr                     \
     --buildtype=release               \

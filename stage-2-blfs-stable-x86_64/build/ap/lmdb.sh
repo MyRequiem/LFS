@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="lmdb"
-ARCH_NAME="LMDB"
+ARCH_NAME="openldap-LMDB"
 
 ### LMDB (Lightning Memory-Mapped Database)
 # Сверхбыстрое и сверхкомпактное встроенное хранилище данных 'ключ-значение'.
@@ -15,9 +15,12 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d _ -f 1 | rev)"
+TARBALL="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
+    cut -d / -f 1 | rev)"
+
+VERSION="$(echo "${TARBALL}" | cut -d _ -f 2- | cut -d - -f 1)"
+HASH_COMMIT="$(echo "${TARBALL}" | cut -d - -f 3- | cut -d . -f 1)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -27,8 +30,8 @@ cd "${BUILD_DIR}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-tar xvf "${SOURCES}/${ARCH_NAME}_${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${ARCH_NAME}_${VERSION}"               || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}_${VERSION}-${HASH_COMMIT}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}_${VERSION}-${HASH_COMMIT}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -59,7 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Developed for the OpenLDAP Project.
 #
 # Home page: https://www.symas.com/symas-embedded-database-${PRGNAME}
-# Download:  https://github.com/${ARCH_NAME}/${PRGNAME}/archive/${ARCH_NAME}_${VERSION}.tar.gz
+# Download:  https://git.openldap.org/openldap/openldap/-/archive/LMDB_${VERSION}.tar.bz2
 #
 EOF
 

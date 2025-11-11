@@ -28,10 +28,9 @@ cd build || exit 1
 # LessTif
 #    -D legacy=true
 #
-# shellcheck disable=SC2086
-meson                       \
-    --prefix=${XORG_PREFIX} \
-    -D legacy=true          \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
+    -D legacy=true            \
     .. || exit 1
 
 ninja || exit 1

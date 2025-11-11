@@ -5,7 +5,8 @@ PRGNAME="slop"
 ### slop (selection query)
 # Утилита, запрашивающая выбор прямоугольной области экрана мышью
 
-# Required:    glm
+# Required:    cmake
+#              glm
 # Recommended: no
 # Optional:    no
 
@@ -16,12 +17,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# ошибка сборки с новыми версиями icu, поэтому отключим поддержку ICU, удалив
-# диапозон строк 102-112 в CMakeLists.txt
-sed '102,112 d;' -i CMakeLists.txt
+mkdir build
+cd build || exit 1
 
-cmake \
-    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
+cmake ..                                \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -W no-dev || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

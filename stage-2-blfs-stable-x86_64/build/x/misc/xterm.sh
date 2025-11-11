@@ -39,12 +39,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-cp -v ./*.desktop "${TMP_DIR}${APPLICATIONS}"
+cp -v ./*.desktop "${TMP_DIR}${APPLICATIONS}/"
 
 # общесистемная конфигурация xterm
 # (конфиги для каждого пользователя находятся в ~/.Xresources)
-XTERM_CONFIG="${APP_DEFAULTS}/XTerm"
-cat << EOF > "${TMP_DIR}${XTERM_CONFIG}"
+cat << EOF > "${TMP_DIR}${APP_DEFAULTS}/XTerm"
 *VT100*locale:        true
 *VT100*faceName:      Monospace
 *VT100*faceSize:      10

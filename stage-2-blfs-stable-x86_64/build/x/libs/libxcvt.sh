@@ -22,7 +22,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                         \
+meson setup                   \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
     .. || exit 1

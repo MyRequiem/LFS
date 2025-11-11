@@ -44,10 +44,15 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-patch -Np1 --verbose -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || \
+        exit 1
 
-autoreconf -fv || exit 1
+# исправим ошибку, которую в данном случае выдает autoreconf
+#    possibly undefined macro: AM_ICONV
+sed 's/^AM_ICONV/#AM_ICONV/' -i configure.ac || exit 1
+autoreconf -vif || exit 1
+
 ./configure                   \
     --prefix=/usr             \
     --bindir=/usr/bin         \
@@ -65,12 +70,12 @@ make install DESTDIR="${TMP_DIR}"
 (
     cd "${TMP_DIR}" || exit 1
     # /sbin все равно остается, переместим в /usr/
-    if [ -d ./sbin ]; then
-        mv ./sbin/* ./usr/sbin/
-        rm -rf ./sbin
+    if [ -d sbin ]; then
+        mv sbin/* usr/sbin/
+        rm -rf sbin
     fi
 
-    rm -rf ./etc/init.d ./dev
+    rm -rf etc/init.d dev
 )
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -85,7 +90,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # non privileged users to create and mount their own filesystem
 # implementations.
 #
-# Home page: https://github.com/libfuse/libfuse
+# Home page: https://github.com/libfuse/libfuse/
 # Download:  https://github.com/libfuse/libfuse/releases/download/${ARCH_NAME}-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF

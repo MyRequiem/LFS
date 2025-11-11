@@ -13,7 +13,7 @@ PRGNAME="fontconfig"
 #              --- для тестов ---
 #              bubblewrap
 #              curl
-#              unzip
+#              libarchive
 #              --- для сборки документации ---
 #              docbook-utils
 #              texlive или install-tl-unx
@@ -34,7 +34,10 @@ mkdir -pv "${TMP_DIR}/etc/fonts/conf.avail"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
+
+# для некоторых тестов необходимо интернет соединение
 # make check
+
 make install DESTDIR="${TMP_DIR}"
 
 # man-страницы
@@ -84,7 +87,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # configuration, customization, and application access.
 #
 # Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://www.freedesktop.org/software/${PRGNAME}/release/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -23,13 +23,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                            \
-  -D CMAKE_INSTALL_PREFIX=/usr   \
-  -D CMAKE_BUILD_TYPE="Release"  \
-  -D BUILD_SHARED_LIBS=ON        \
-  -D SNAPPY_BUILD_TESTS=OFF      \
-  -D SNAPPY_BUILD_BENCHMARKS=OFF \
-  .. || exit 1
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D CMAKE_BUILD_TYPE="Release"       \
+    -D BUILD_SHARED_LIBS=ON             \
+    -D SNAPPY_BUILD_TESTS=OFF           \
+    -D SNAPPY_BUILD_BENCHMARKS=OFF      \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    .. || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

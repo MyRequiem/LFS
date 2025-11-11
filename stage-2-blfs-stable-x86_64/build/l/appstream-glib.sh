@@ -1,4 +1,3 @@
-
 #! /bin/bash
 
 PRGNAME="appstream-glib"
@@ -9,6 +8,7 @@ PRGNAME="appstream-glib"
 
 # Required:    curl
 #              gdk-pixbuf
+#              gtk+3
 #              libarchive
 # Recommended: no
 # Optional:    docbook-xml
@@ -35,9 +35,6 @@ meson setup ..          \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
-
-chmod 644 "${TMP_DIR}/usr/share/man/man1/"*
-rm -rf "${TMP_DIR}/usr/share/installed-tests"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -7,15 +7,15 @@ ARCH_NAME="Python"
 # Язык программирования Python3
 
 # Required:    no
-# Recommended: sqlite      (для создания дополнительных модулей и сборки firefox или thunderbird)
+# Recommended: sqlite           (для создания дополнительных модулей и сборки firefox или thunderbird)
 # Optional:    bluez
-#              gdb         (для некоторых тестов)
+#              gdb              (для некоторых тестов)
 #              valgrind
-#              libmpdec    (http://www.bytereef.org/mpdecimal/)
+#              libmpdec         (http://www.bytereef.org/mpdecimal/)
 #              --- для создания дополнительных модулей ---
 #              libnsl
 #              tk
-#              berkeley-db (https://www.oracle.com/database/technologies/related/berkeleydb.html)
+#              berkeley-db      (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -50,14 +50,12 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# избегаем назойливых сообщений во время конфигурации
-#    CXX="/usr/bin/g++"
-CXX="/usr/bin/g++"      \
-./configure             \
-    --prefix=/usr       \
-    --enable-shared     \
-    --with-system-expat \
-    --enable-optimizations || exit 1
+./configure                \
+    --prefix=/usr          \
+    --enable-shared        \
+    --with-system-expat    \
+    --enable-optimizations \
+    --without-static-libpython || exit 1
 
 make || exit 1
 # make test TESTOPTS="--timeout 120"
@@ -81,7 +79,7 @@ tar                       \
     -C "${DOCS}"          \
     -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2" || exit 1
 
-# чтобы python3 мог найти установленную документацию, создадим не зависимую от
+# чтобы python3 мог найти установленную документацию, создадим независимую от
 # версии Python3 ссылку в /usr/share/doc/
 #    python-3 -> python3-${VERSION}
 ln -svfn "python-${VERSION}" "${TMP_DIR}/usr/share/doc/python-3"

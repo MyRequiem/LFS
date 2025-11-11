@@ -41,7 +41,7 @@ libdir=\${exec_prefix}/lib
 includedir=\${prefix}/include
 
 Name: mad
-Description: high-quality MPEG audio decoder
+Description: MPEG audio decoder
 Requires:
 Version: ${VERSION}
 Libs: -L\${libdir} -lmad

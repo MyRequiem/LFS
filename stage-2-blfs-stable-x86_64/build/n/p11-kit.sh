@@ -42,13 +42,13 @@ EOF
 mkdir p11-build
 cd p11-build || exit 1
 
-meson                   \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -Dtrust_paths=/etc/pki/anchors || exit 1
+    -D trust_paths=/etc/pki/anchors || exit 1
 
 ninja || exit 1
-# ninja test
+# LC_ALL=C ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
@@ -77,11 +77,12 @@ cat << EOF > "${TMP_DIR}${UPDATE_CERTIFICATES}"
 
 /usr/bin/update-ca-certificates
 EOF
-chmod 754 "${TMP_DIR}${UPDATE_CERTIFICATES}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod 754 "${UPDATE_CERTIFICATES}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (PKCS#11 toolkit)

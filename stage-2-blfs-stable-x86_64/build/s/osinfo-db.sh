@@ -12,16 +12,21 @@ PRGNAME="osinfo-db"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
+SRC_ARCH="$(find "${ROOT}/src" -type f -name "${PRGNAME}-[0-9]*.tar.?z*")"
+VERSION="$(echo "${SRC_ARCH}" | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# команда osinfo-db-import - пакет osinfo-db-tools
 osinfo-db-import            \
     --root "${TMP_DIR}"     \
     --dir /usr/share/osinfo \
-    "${SOURCES}/${PRGNAME}-${VERSION}.tar.xz" || exit 1
+    "${SRC_ARCH}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

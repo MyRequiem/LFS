@@ -7,17 +7,18 @@ ARCH_NAME="attrs"
 # Декораторы классов Python, упрощающие рутинную работу по реализации наиболее
 # распространенных объектных протоколов, связанных с атрибутами.
 
-# Required:    no
+# Required:    python3-hatch-fancy-pypi-readme
+#              python3-hatch-vcs
 # Recommended: no
-# Optional:    === для тестов ===
+# Optional:    --- для тестов ---
 #              python3-pytest
-#              python3-coverage             (https://pypi.org/project/coverage/)
+#              python3-cloudpickle          (https://pypi.org/project/cloudpickle/)
 #              python3-hypothesis           (https://pypi.org/project/hypothesis/)
 #              python3-pympler              (https://pypi.org/project/Pympler/)
 #              python3-mypy                 (https://pypi.org/project/mypy/)
 #              python3-pytest-mypy-plugins  (https://pypi.org/project/pytest-mypy-plugins/)
+#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
 #              python3-zope-interface       (https://pypi.org/project/zope.interface/)
-#              python3-cloudpickle          (https://pypi.org/project/cloudpickle/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -26,39 +27,19 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-###
-# сборка средствами модуля wheel
-# создаем пакет в формате .whl в директории dist дерева исходников
-###
-# команда создает архив для этого пакета
-#    wheel
-# инструктирует pip поместить созданный пакет в указанный каталог dist
-#    --wheel-dir=./dist
-# не устанавливать зависимости для пакета
-#    --no-deps
-# предотвращаем получение файлов из онлайн-репозитория пакетов (PyPI). Если
-# пакеты установлены в правильном порядке, pip вообще не нужно будет извлекать
-# какие-либо файлы
-#    --no-build-isolation
 pip3 wheel               \
-    --wheel-dir=./dist   \
-    --no-deps            \
+    -w dist              \
     --no-build-isolation \
-    ./ || exit 1
+    --no-deps            \
+    --no-cache-dir       \
+    "${PWD}" || exit 1
 
-### устанавливаем созданный пакет в "${TMP_DIR}"
-# отключает кеш, чтобы предотвратить предупреждение при установке от
-# пользователя root
-#    --no-cache-dir
-# предотвращает ошибочный запуск команды установки от имени обычного
-# пользователя без полномочий root
-#    --no-user
 pip3 install            \
     --root="${TMP_DIR}" \
-    --find-links=./dist \
-    --no-cache-dir      \
+    --no-index          \
+    --find-links dist   \
     --no-user           \
-    --no-index "${ARCH_NAME}" || exit 1
+    "${ARCH_NAME}" || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/

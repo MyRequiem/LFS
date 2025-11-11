@@ -7,7 +7,7 @@ PRGNAME="pciutils"
 # проверки их состояния и настройки их регистров конфигурации (setpci)
 
 # Required:    no
-# Recommended: hwdata
+# Recommended: hwdata (runtime)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -33,9 +33,6 @@ make PREFIX=/usr                \
      DESTDIR="${TMP_DIR}" install install-lib
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpci.so"
-
-# удалим пустую директорию ${TMP_DIR}/usr/share/hwdata
-rm -rf "${TMP_DIR}/usr/share/hwdata"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

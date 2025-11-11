@@ -18,8 +18,8 @@ PRGNAME="goffice"
 #              ghostscript
 #              gsettings-desktop-schemas
 #              gtk-doc
-#              lasem         (https://download.gnome.org/sources/lasem/)
-#              libspectre    (https://www.freedesktop.org/wiki/Software/libspectre/)
+#              lasem                        (https://download.gnome.org/sources/lasem/)
+#              libspectre                   (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

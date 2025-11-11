@@ -6,7 +6,7 @@ ARCH_NAME="zipp"
 ### zipp (Zipfile object wrapper)
 # Оболочка для объекта Zipfile, совместимая с pathlib
 
-# Required:    no
+# Required:    python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 
@@ -27,8 +27,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 

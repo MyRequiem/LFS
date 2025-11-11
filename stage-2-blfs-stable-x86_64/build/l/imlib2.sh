@@ -16,7 +16,6 @@ PRGNAME="imlib2"
 #              libpng
 #              libtiff
 #              libwebp
-#              x265
 #              libheif      (https://github.com/strukturag/libheif)
 #              libid3tag    (https://sourceforge.net/projects/mad/)
 #              libspectre   (https://www.freedesktop.org/wiki/Software/libspectre/)

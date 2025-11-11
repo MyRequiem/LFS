@@ -7,8 +7,8 @@ ARCH_NAME="Archive-Zip"
 # Perl модуль, позволяющий создавать, изменять, читать Zip-архивы
 
 # Required:    no
-# Recommended: unzip (для тестов)
-# Optional:    perl-test-mockmodule
+# Recommended: libarchive    (для тестов)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

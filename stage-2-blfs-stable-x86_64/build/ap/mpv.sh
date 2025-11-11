@@ -14,7 +14,7 @@ PRGNAME="mpv"
 # Recommended: libjpeg-turbo
 #              libva
 #              libvdpau
-#              lua
+#              luajit
 #              uchardet
 #              vulkan-loader
 # Optional:    libdvdcss
@@ -38,7 +38,8 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим сборку с ffmpeg > 7.0
-sed -i 's/AV_OPT_TYPE_CHANNEL_LAYOUT/AV_OPT_TYPE_CHLAYOUT/' filters/f_lavfi.c
+sed -i 's/AV_OPT_TYPE_CHANNEL_LAYOUT/AV_OPT_TYPE_CHLAYOUT/' \
+    filters/f_lavfi.c || exit 1
 
 mkdir build
 cd build || exit 1

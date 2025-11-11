@@ -18,7 +18,7 @@ MANDIR="/usr/share/man"
 mkdir -pv "${TMP_DIR}${MANDIR}/"{man1,man8}
 
 # исправим CFLAGS
-sed -i "s/?= -O2/?= -O2 -fPIC/" Makefile.common
+sed -i "s/?= -O2/?= -O2 -fPIC/" Makefile.common || exit 1
 
 # отключаем генерацию файлов changelog и VERSION
 chmod -x ./git2log

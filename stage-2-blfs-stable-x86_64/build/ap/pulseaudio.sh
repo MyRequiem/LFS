@@ -23,10 +23,12 @@ PRGNAME="pulseaudio"
 #              bluez
 #              doxygen
 #              fftw
+#              gst-plugins-base
 #              gtk+3
 #              libsamplerate
 #              sbc                     (поддержка bluetooth)
 #              valgrind
+#              check                   (https://libcheck.github.io/check/)
 #              jack                    (https://jackaudio.org/)
 #              libasyncns              (https://0pointer.de/lennart/projects/libasyncns/)
 #              lirc                    (https://www.lirc.org/)
@@ -57,6 +59,7 @@ meson setup             \
     -D database=gdbm    \
     -D doxygen=false    \
     -D bluez5=disabled  \
+    -D tests=false      \
     .. || exit 1
 
 ninja || exit 1

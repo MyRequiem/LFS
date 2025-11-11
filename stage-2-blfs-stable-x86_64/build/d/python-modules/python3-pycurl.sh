@@ -27,11 +27,11 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+# shellcheck disable=SC2115
 rm -rf "${TMP_DIR}/usr/share"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/

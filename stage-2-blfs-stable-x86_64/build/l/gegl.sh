@@ -26,13 +26,13 @@ PRGNAME="gegl"
 #              libspiro
 #              libtiff
 #              libwebp
+#              luajit
 #              pango
 #              poppler
 #              ruby
 #              sdl2
 #              v4l-utils
 #              vala
-#              luajit              (https://luajit.org/luajit.html)
 #              lensfun             (https://lensfun.github.io/)
 #              libnsgif            (https://www.netsurf-browser.org/projects/libnsgif/)
 #              libumfpack          (https://people.engr.tamu.edu/davis/suitesparse.html)
@@ -59,10 +59,9 @@ rm -f "/usr/lib/${PRGNAME}-${MAJ_VERSION}/vector-fill.so"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -D libav=disabled   \
     -D docs="false"     \
     .. || exit 1
 

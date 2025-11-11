@@ -25,6 +25,7 @@ mkdir -pv "${TMP_DIR}"
 # external sites [Y/n]
 yes | perl Makefile.PL || exit 1
 make                   || exit 1
+# для тестов требуется сеть Internet
 # make test
 make install DESTDIR="${TMP_DIR}"
 

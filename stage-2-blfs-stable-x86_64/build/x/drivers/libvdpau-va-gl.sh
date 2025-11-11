@@ -26,8 +26,10 @@ mkdir build
 cd build || exit 1
 
 cmake                                        \
-    -D CMAKE_BUILD_TYPE=Release              \
     -D CMAKE_INSTALL_PREFIX="${XORG_PREFIX}" \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5      \
+    -D CMAKE_BUILD_TYPE=Release              \
+    -W no-dev                                \
     .. || exit 1
 
 make || exit 1

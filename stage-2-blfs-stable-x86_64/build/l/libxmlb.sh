@@ -20,10 +20,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup \
-    --prefix=/usr \
+meson setup             \
+    --prefix=/usr       \
     --buildtype=release \
-    -D gtkdoc=false \
+    -D gtkdoc=false     \
     .. || exit 1
 
 ninja || exit 1

@@ -33,12 +33,11 @@ cd build || exit 1
 # включаем поддержку Udev вместо mknod
 #    -Dudev=true
 #
-# shellcheck disable=SC2086
-meson setup                 \
-    --prefix=${XORG_PREFIX} \
-    --buildtype=release     \
-    -D udev=true            \
-    -D valgrind=disabled    \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
+    --buildtype=release       \
+    -D udev=true              \
+    -D valgrind=disabled      \
     .. || exit 1
 
 ninja || exit 1

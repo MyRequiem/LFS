@@ -9,10 +9,10 @@ ARCH_NAME="Vulkan-Loader"
 
 # Required:    cmake
 #              vulkan-headers
-#              wayland
 #              xorg-libraries
-# Recommended: mesa
-# Optional:    no
+# Recommended: wayland
+#              mesa             (runtime)
+# Optional:    git              (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -32,7 +32,21 @@ cmake                              \
     .. || exit 1
 
 ninja|| exit 1
-# пакет не имеет набора тестов
+
+### тесты
+# необходима сеть Internet и установленный пакет git
+#
+# sed "s/'git', 'clone'/&, '--depth=1', '-b', self.commit/" \
+#     -i ../scripts/update_deps.py || exit 1
+#
+# cmake                 \
+#     -D BUILD_TESTS=ON \
+#     -D UPDATE_DEPS=ON \
+#     .. || exit 1
+#
+# ninja || exit
+# ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1

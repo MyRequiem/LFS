@@ -40,22 +40,21 @@ mkdir -pv "${TMP_DIR}"
 # т.к. они уже установлены в системе
 rm -rf freetype lcms2mt jpeg libpng openjpeg zlib
 
-# исправим сборку пакета с GCC-14 и Libidn
-sed -e '186 s/NewPassword =/*NewPassword =/' \
-    -e '187 s/NewLen =/*NewLen =/'           \
-    -i pdf/pdf_sec.c
+# исправим сборку с gcc-15
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
 
 # опция немного уменьшает размеры файлов gs и libgs.so
 #    --disable-compile-inits
 ./configure                 \
     --prefix=/usr           \
     --disable-compile-inits \
-    --disable-cups          \
-    --with-system-libtiff || exit 1
+    --with-system-libtiff   \
+    --disable-cups || exit 1
 
 make || exit 1
 # скомпилируем библиотеку libgs.so
-make so
+make so || exit 1
 # пакет не имеет набора тестов
 make install   DESTDIR="${TMP_DIR}"
 make soinstall DESTDIR="${TMP_DIR}"

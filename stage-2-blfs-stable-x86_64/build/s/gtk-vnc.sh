@@ -13,8 +13,9 @@ PRGNAME="gtk-vnc"
 #              libgcrypt
 # Recommended: glib
 #              vala
-# Optional:    cyrus-sasl
 #              pulseaudio
+# Optional:    cyrus-sasl
+#              python3-gi-docgen    (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,7 +27,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1

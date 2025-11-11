@@ -11,7 +11,7 @@ ARCH_NAME="dbus-python"
 #              python3-meson
 #              patchelf
 # Recommended: no
-# Optional:    no
+# Optional:    python3-pygobject3  (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -30,8 +30,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
@@ -69,7 +68,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # D-Bus Python provides Python bindings to the D-Bus API interface
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://dbus.freedesktop.org/releases/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://dbus.freedesktop.org/releases/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -69,6 +69,8 @@ make || exit 1
 # которые можно запускать индивидуально
 
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+
+rm -vf "${TMP_DIR}/usr/lib/libfltk"*.a
 rm -rf "${TMP_DIR}/usr/share/doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -86,7 +88,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # across the world with a central repository in the US.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://${PRGNAME}.org/pub/${PRGNAME}/${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/release-${VERSION}/${PRGNAME}-${VERSION}-source.tar.gz
 #
 EOF
 

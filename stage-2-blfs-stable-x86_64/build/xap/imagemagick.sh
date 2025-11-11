@@ -10,12 +10,12 @@ ARCH_NAME="ImageMagick"
 # Required:    no
 # Recommended: xorg-libraries
 # Optional:    --- Системные утилиты ---
+#              7zip
 #              llvm
 #              cups
 #              curl
 #              ffmpeg
 #              fftw
-#              p7zip
 #              sane
 #              wget
 #              xdg-utils
@@ -65,7 +65,6 @@ ARCH_NAME="ImageMagick"
 #              texlive или install-tl-unx
 #              autotrace           (https://autotrace.sourceforge.net/)
 #              geoexpress          (https://www.extensis.com/)
-#              aka-mrsid-utilities (https://www.extensis.com/)
 #              hp2xx               (https://www.gnu.org/software/hp2xx/)
 #              libwmf              (https://wvware.sourceforge.net/)
 #              uniconvertor        (https://sk1project.net/uc2/)

@@ -11,11 +11,11 @@ ARCH_NAME="setuptools_scm"
 # Required:    no
 # Recommended: no
 # Optional:    --- для тестов ---
+#              python3-build
 #              git
 #              mercurial
 #              python3-pytest
 #              sudo
-#              python3-build    (https://pypi.org/project/build/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -34,8 +34,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 

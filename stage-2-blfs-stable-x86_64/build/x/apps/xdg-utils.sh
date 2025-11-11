@@ -9,8 +9,8 @@ PRGNAME="xdg-utils"
 # сосредоточена на интеграции со средой рабочего стола во время их работы.
 
 # Required:    xmlto
-#              lynx или links или w3m
-#              xorg-applications
+#              lynx или links или w3m    (http://w3m.sourceforge.net/)
+#              xorg-applications         (runtime)
 # Recommended: no
 # Optional:    dbus
 
@@ -24,8 +24,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ./configure \
-    --prefix=/usr \
-    --mandir=/usr/share/man || exit 1
+    --prefix=/usr || exit 1
 
 make || exit 1
 

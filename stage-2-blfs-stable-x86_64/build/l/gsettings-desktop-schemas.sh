@@ -22,7 +22,7 @@ sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in || exit 1
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1

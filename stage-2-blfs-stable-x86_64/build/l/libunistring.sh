@@ -3,7 +3,7 @@
 PRGNAME="libunistring"
 
 ### libunistring (GNU Unicode string library)
-# Библиотека, предоставляющая функции для работы со строками в формате Unicode
+# Библиотека, предоставляющая функции для работы со строками в формате Unicode,
 # a так же для работы со строками C в соответствии со стандартом Unicode
 
 # Required:    no
@@ -36,7 +36,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # This library provides functions for manipulating Unicode strings and for
 # manipulating C strings according to the Unicode standard.
 #
-# Home page: http://www.gnu.org/s/${PRGNAME}
+# Home page: https://www.gnu.org/s/${PRGNAME}
 # Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

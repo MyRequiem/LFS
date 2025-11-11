@@ -18,11 +18,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-mkdir _build &&
-cd _build || exit 1
+mkdir build
+cd build || exit 1
 
-meson setup              \
-    --prefix=/usr        \
+meson setup               \
+    --prefix=/usr         \
     -D pcsc=enabled       \
     -D disable_tests=true \
     .. || exit 1

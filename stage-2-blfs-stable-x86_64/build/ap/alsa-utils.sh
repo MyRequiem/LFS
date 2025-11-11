@@ -25,8 +25,9 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 XMLTO="--disable-xmlto"
-
+BAT="--disable-bat"
 command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
+command -v fftw-wisdom &>/dev/null && BAT="--enable-bat"
 
 # отключаем создание конфигурации alsaconf, которая не совместима с Udev
 #    --disable-alsaconf
@@ -35,10 +36,12 @@ command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
 ./configure            \
     --prefix=/usr      \
     --disable-alsaconf \
+    "${XMLTO}"         \
+    "${BAT}"           \
     --with-curses=ncursesw || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 # ### Конфигурация:

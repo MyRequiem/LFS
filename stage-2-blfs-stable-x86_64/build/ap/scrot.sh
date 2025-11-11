@@ -20,7 +20,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup \
+meson setup .. \
     --prefix=/usr || exit 1
 
 ninja || exit 1

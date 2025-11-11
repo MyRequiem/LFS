@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="libxml2"
+XMLTS_VER="20130923"
 
 ### libxml2 (XML parser library)
 # Библиотеки и утилиты для анализа XML файлов
@@ -16,13 +17,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему, из-за которой xmlcatalog выдает ложные предупреждения при
-# создании нового файла каталога
-patch --verbose -Np1 \
-    -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-2.patch" || exit 1
-
 ICU="--without-icu"
-command -v icuinfo &>/dev/null && ICU="--with-icu"
+command -v icu-config &>/dev/null && ICU="--with-icu"
 
 # включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
 #    --with-history
@@ -38,10 +34,16 @@ command -v icuinfo &>/dev/null && ICU="--with-icu"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
+
+### тесты
+# tar xf "${SOURCES}/xmlts${XMLTS_VER}.tar.gz"
+# make check > check.log
+# grep -E '^Total|expected|Ran' check.log
+
 make install DESTDIR="${TMP_DIR}"
 
 # предотвратим ненужное связывание некоторых пакетов с ICU
-rm -vf "${TMP_DIR}/usr/lib/libxml2.la"
+rm -vf "${TMP_DIR}/usr/lib/${PRGNAME}.la"
 sed '/libs=/s/xml2.*/xml2"/' -i "${TMP_DIR}/usr/bin/xml2-config"
 
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
@@ -61,7 +63,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # written in C, a variety of language bindings make it available in other
 # environments.
 #
-# Home page: http://xmlsoft.org/
+# Home page: https://gitlab.gnome.org/GNOME/${PRGNAME}/-/wikis/home
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

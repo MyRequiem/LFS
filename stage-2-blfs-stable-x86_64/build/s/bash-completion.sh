@@ -27,9 +27,9 @@ autoreconf -vif || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-chmod 755 "${TMP_DIR}/etc/profile.d/bash_completion.sh"
-
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod 755 "/etc/profile.d/bash_completion.sh"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (programmable completion for the bash shell)

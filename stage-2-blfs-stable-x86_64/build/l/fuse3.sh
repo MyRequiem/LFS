@@ -53,7 +53,7 @@ sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 mkdir build
 cd build || exit 1
 
-meson                   \
+meson setup             \
     --prefix=/usr       \
     --buildtype=release \
     .. || exit 1
@@ -69,16 +69,10 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-chmod u+s "${TMP_DIR}/usr/bin/fusermount3"
-
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
 FUSE_CONF="/etc/${ARCH_NAME}.conf"
-if [ -f "${FUSE_CONF}" ]; then
-    mv "${FUSE_CONF}" "${FUSE_CONF}.old"
-fi
-
 cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 # Begin ${FUSE_CONF}
 
@@ -102,9 +96,15 @@ cat << EOF > "${TMP_DIR}${FUSE_CONF}"
 # End ${FUSE_CONF}
 EOF
 
+if [ -f "${FUSE_CONF}" ]; then
+    mv "${FUSE_CONF}" "${FUSE_CONF}.old"
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod u+s /usr/bin/fusermount3
 
 config_file_processing "${FUSE_CONF}"
 

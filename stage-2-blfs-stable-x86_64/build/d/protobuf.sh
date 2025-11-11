@@ -27,8 +27,6 @@ cmake                                 \
     -D CMAKE_BUILD_TYPE=Release       \
     -D CMAKE_SKIP_INSTALL_RPATH=ON    \
     -D protobuf_BUILD_TESTS=OFF       \
-    -D protobuf_ABSL_PROVIDER=package \
-    -D protobuf_BUILD_LIBUPB=OFF      \
     -D protobuf_BUILD_SHARED_LIBS=ON  \
     -D utf8_range_ENABLE_INSTALL=ON   \
     -G Ninja                          \

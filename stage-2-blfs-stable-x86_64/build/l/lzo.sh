@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # offers pretty fast compression and very fast decompression. This means it
 # favors speed over compression ratio.
 #
-# Home page: http://www.oberhumer.com/opensource/${PRGNAME}/
+# Home page: https://www.oberhumer.com/opensource/${PRGNAME}/
 # Download:  https://www.oberhumer.com/opensource/${PRGNAME}/download/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

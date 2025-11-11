@@ -63,16 +63,15 @@ cd build || exit 1
 # Значение по умолчанию 'true', но это не соответствует традиционному
 # использованию мультиплексоров screen или tmux
 #    -Ddefault-kill-user-processes=false
-meson setup                                         \
-    --prefix=/usr                                   \
-    --buildtype=release                             \
-    -D man=disabled                                 \
-    -D cgroup-controller=elogind                    \
-    -D dev-kvm-mode=0660                            \
-    -D dbuspolicydir=/etc/dbus-1/system.d           \
-    -D default-kill-user-processes=false            \
-    -Ddocdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    .. || exit 1
+meson setup ..                            \
+    --prefix=/usr                         \
+    --buildtype=release                   \
+    -D man=disabled                       \
+    -D cgroup-controller=elogind          \
+    -D dev-kvm-mode=0660                  \
+    -D dbuspolicydir=/etc/dbus-1/system.d \
+    -D default-kill-user-processes=false  \
+    -D docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
 # ninja test
@@ -81,6 +80,7 @@ DESTDIR="${TMP_DIR}" ninja install
 # /usr/lib/pkgconfig/
 #    libsystemd.pc -> libelogind.pc
 ln -sfv  libelogind.pc "${TMP_DIR}/usr/lib/pkgconfig/libsystemd.pc"
+
 # /usr/include/
 #    systemd -> elogind/
 ln -sfvn elogind "${TMP_DIR}/usr/include/systemd"

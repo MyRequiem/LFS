@@ -8,9 +8,9 @@ PRGNAME="libmypaint"
 
 # Required:    json-c
 # Recommended: glib
-# Optional:    doxygen                  для создания XML документации
-#              gegl                     https://download.gimp.org/pub/gegl/0.3/ (только версии 0.3.xx)
-#              gperftools               https://github.com/gperftools/gperftools
+# Optional:    doxygen          (для создания XML документации)
+#              gegl             (только версии 0.3.xx) https://download.gimp.org/pub/gegl/0.3/
+#              gperftools       (https://github.com/gperftools/gperftools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

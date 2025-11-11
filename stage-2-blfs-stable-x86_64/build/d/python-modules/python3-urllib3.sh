@@ -6,7 +6,7 @@ ARCH_NAME="urllib3"
 ### Urllib3 (Powerful, sanity-friendly HTTP client for Python)
 # Мощный и удобный HTTP-клиент для Python
 
-# Required:    python3-hatchling
+# Required:    python3-hatch-vcs
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
@@ -39,8 +39,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 

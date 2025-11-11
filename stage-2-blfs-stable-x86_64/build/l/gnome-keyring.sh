@@ -3,18 +3,15 @@
 PRGNAME="gnome-keyring"
 
 ### GNOME Keyring (a tool to handle security credentials)
-# Демон, который хранит и предоставляет доступ к паролям и другим секретам
-# пользователей.
+# Демон, который хранит и предоставляет доступ к паролям и другим закрытым
+# данным пользователей
 
 # Required:    dbus
 #              gcr3
 # Recommended: linux-pam
 #              libxslt
 #              openssh
-# Optional:    gnupg
-#              valgrind
-#              lcov         (http://ltp.sourceforge.net/coverage/lcov.php)
-#              libcap-ng    (https://people.redhat.com/sgrubb/libcap-ng/)
+# Optional:    libcap-ng    (https://people.redhat.com/sgrubb/libcap-ng/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,16 +23,25 @@ mkdir -pv "${TMP_DIR}"
 # исправим устаревшую запись в шаблоне xml схем
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc || exit 1
+PAM="false"
+command -v pam_namespace_helper &>/dev/null && PAM="true"
 
-make || exit 1
+mkdir build-gkr
+cd build-gkr || exit 1
+
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D systemd=disabled \
+    -D ssh-agent=true   \
+    -D pam="${PAM}" || exit 1
+
+ninja || exit 1
 
 # для запуска тестов необходима запущенная сессия DBus
-# make check
+# ninja test
 
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -57,7 +63,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

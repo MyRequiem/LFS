@@ -13,7 +13,7 @@ PRGNAME="acpid"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    elogind
 
 ### Конфигурация ядра
 # ACPI должен быть вкомпилен в ядро
@@ -24,46 +24,42 @@ source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 EVENTS="/etc/acpi/events"
-mkdir -pv "${TMP_DIR}"{"${EVENTS}","${DOCS}"}
+mkdir -pv "${TMP_DIR}${EVENTS}"
 
 ./configure       \
     --prefix=/usr \
-    --docdir="${DOCS}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-cp -vr samples "${TMP_DIR}${DOCS}"
+rm -rf "${TMP_DIR}/usr/share/doc"
 
 ### Конфигурация
 # будем кидать машину в suspend при закрытии крышки ноутбука
-# (требуется утилита pm-suspend - пакет pm-utils)
 cat << EOF > "${TMP_DIR}${EVENTS}/lid"
-# suspend the system when the laptop lid is closed
-event=button/lid
-action=/etc/acpi/suspend.sh %e
+# Suspend the system when the laptop lid is closed
+event=button/lid LID close
+action=/etc/acpi/suspend.sh
 EOF
 
 cat << EOF > "${TMP_DIR}/etc/acpi/suspend.sh"
 #!/bin/sh
 
-###
-# suspend the system when the laptop lid is closed
-###
-
-# 'pm-utils' package required
-! command -v pm-suspend &>/dev/null && exit 0
-
-# laptop lid state (open/close)
-# cat /proc/acpi/button/lid/*/state
-/bin/grep -q open /proc/acpi/button/lid/*/state && exit 0
-/usr/sbin/pm-suspend
+# Suspend the system when the laptop lid is closed (elogind package required)
+command -v loginctl &>/dev/null && loginctl suspend
 EOF
 
 chmod 755 "${TMP_DIR}/etc/acpi/suspend.sh"
+
+# отключим обработку по умолчанию события закрытия крышки ноутбука модулем
+# elogind, когда система работает от батареи и не подключена к внешнему
+# монитору, чтобы избежать конфликта
+LOGIND_CONF_D="/etc/elogind/logind.conf.d"
+mkdir -pv "${TMP_DIR}${LOGIND_CONF_D}"
+echo HandleLidSwitch=ignore > "${TMP_DIR}${LOGIND_CONF_D}/acpi.conf"
 
 # для автозапуска acpid при загрузке системы установим скрипт инициализации
 # /etc/rc.d/init.d/acpid

@@ -20,7 +20,7 @@ mkdir -pv "${TMP_DIR}"
 
 # патч для включения функций анимации png (apng) в libpng (используется в
 # Firefox, Seamonkey и Thunderbird)
-gzip -cd "${SOURCES}/${PRGNAME}-${VERSION}-apng.patch.gz" | \
+gzip -cd "${SOURCES}/${PRGNAME}-1.6.47-apng.patch.gz" | \
     patch -p1 --verbose || exit 1
 
 ./configure       \
@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # TIFF. Indexed-color, grayscale, and truecolor images are supported, plus an
 # optional alpha channel. Sample depths range from 1 to 16 bits.
 #
-# Home page: http://libpng.org/pub/png/${PRGNAME}.html
+# Home page: https://libpng.org/pub/png/${PRGNAME}.html
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

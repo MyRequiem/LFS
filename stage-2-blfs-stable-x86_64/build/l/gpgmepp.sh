@@ -1,11 +1,12 @@
 #! /bin/bash
 
-PRGNAME="c-ares"
+PRGNAME="gpgmepp"
 
-### c-ares (C library for asynchronous DNS requests)
-# C-библиотека, которая выполняет асинхронные DNS-запросы и разрешает имена
+### gpgmepp (C++ wrapper to gpgme)
+# C++ оболочка (библиотека) для gpgme
 
 # Required:    cmake
+#              gpgme
 # Recommended: no
 # Optional:    no
 
@@ -19,11 +20,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                           \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
     .. || exit 1
 
-make || exit 1
+make || exit
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
@@ -32,13 +33,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (C library for asynchronous DNS requests)
+# Package: ${PRGNAME} (C++ wrapper to gpgme)
 #
-# c-ares is a C library that performs DNS requests and name resolves
-# asynchronously
+# The gpgmepp package provides a C++ wrapper to gpgme
 #
-# Home page: https://${PRGNAME}.haxx.se/
-# Download:  https://${PRGNAME}.haxx.se/download/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.gnupg.org/ftp/gcrypt/${PRGNAME}
+# Download:  https://www.gnupg.org/ftp/gcrypt/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

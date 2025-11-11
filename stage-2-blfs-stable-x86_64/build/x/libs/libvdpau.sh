@@ -9,12 +9,12 @@ PRGNAME="libvdpau"
 # декодирования и постобработки видео средствами GPU.
 
 # Required:    xorg-libraries
-# Recommended: no
-# Optional:    libvdpau-va-gl
+# Recommended: --- runtime ---
+#              libvdpau-va-gl
 #              mesa (циклическая зависимость: сначала собираем libvdpau без
 #                    поддержки egl и glx, т.е. без пакета mesa, и после
 #                    установки mesa пересобираем libvdpau)
-#              doxygen
+# Optional:    doxygen
 #              graphviz
 #              texlive или install-tl-unx
 
@@ -30,9 +30,8 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 mkdir build
 cd build || exit 1
 
-# shellcheck disable=SC2086
-meson setup                 \
-    --prefix=${XORG_PREFIX} \
+meson setup                   \
+    --prefix="${XORG_PREFIX}" \
     .. || exit 1
 
 ninja || exit 1

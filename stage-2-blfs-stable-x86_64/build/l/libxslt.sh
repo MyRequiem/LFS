@@ -24,9 +24,9 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 DOC_DIR="/usr/share/doc"
-./configure                 \
-    --prefix=/usr           \
-    --disable-static        \
+./configure          \
+    --prefix=/usr    \
+    --disable-static \
     --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -47,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # XSLT support for libxml2 (XSLT is a language used for transforming XML
 # documents)
 #
-# Home page: http://xmlsoft.org/XSLT/
+# Home page: https://gitlab.gnome.org/GNOME/${PRGNAME}/-/wikis/home
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

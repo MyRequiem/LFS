@@ -20,6 +20,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 LIBS="/usr/share/gdb/auto-load/usr/lib"
 mkdir -pv "${TMP_DIR}${LIBS}"
 
+CC="gcc -std=gnu17"  \
 ./configure          \
     --prefix=/usr    \
     --disable-static \

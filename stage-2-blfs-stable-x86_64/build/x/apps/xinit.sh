@@ -6,7 +6,9 @@ PRGNAME="xinit"
 # Скрипты для запуска X-сервера
 
 # Required:    xorg-libraries
-# Recommended: --- runtime (используются по умолчанию в файле xinitrc) ---
+# Recommended: --- runtime ---
+#              --- используются по умолчанию в /etc/X11/app-defaults/xinitrc
+#              --- при запуске xorg-server, если не существует ~/.xinitrc
 #              twm
 #              xclock
 #              xterm
@@ -18,8 +20,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/xorg_config.sh"                        || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-XINITRC_D="/etc/X11/app-defaults/xinitrc.d"
-mkdir -pv "${TMP_DIR}${XINITRC_D}"
+mkdir -pv "${TMP_DIR}/etc/X11/app-defaults/xinitrc.d"
 
 # shellcheck disable=SC2086
 ./configure        \
@@ -29,37 +30,6 @@ mkdir -pv "${TMP_DIR}${XINITRC_D}"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
-
-XINITRC="/etc/X11/app-defaults/xinitrc"
-cat << EOF > "${TMP_DIR}${XINITRC}"
-#!/bin/sh
-
-userresources=\$HOME/.Xresources
-usermodmap=\$HOME/.Xmodmap
-sysresources=/etc/X11/app-defaults/.Xresources
-sysmodmap=/etc/X11/app-defaults/.Xmodmap
-
-# merge in defaults and keymaps
-[ -f \$sysresources ]  && /usr/bin/xrdb -merge \$sysresources
-[ -f \$sysmodmap ]     && /usr/bin/xmodmap     \$sysmodmap
-[ -f \$userresources ] && /usr/bin/xrdb -merge \$userresources
-[ -f \$usermodmap ]    && /usr/bin/xmodmap     \$usermodmap
-
-if [ -d ${XINITRC_D} ] ; then
-    for f in ${XINITRC_D}/?*.sh ; do
-        [ -x "\$f" ] && . "\$f"
-    done
-
-    unset f
-fi
-
-# start i3
-if [ -x /usr/bin/dbus-launch ]; then
-    exec dbus-launch /usr/bin/i3
-else
-    exec /usr/bin/i3
-fi
-EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -85,6 +55,7 @@ chmod u+s "${XORG_PREFIX}/bin/Xorg"
 #     serverargs="$serverargs $vtarg" ->     : #serverargs="$serverargs $vtarg"
 # fi                                     fi
 
+# shellcheck disable=SC2016
 sed -i                                        \
     '/$serverargs $vtarg/ s/serverargs/: #&/' \
     "${XORG_PREFIX}/bin/startx" || exit 1

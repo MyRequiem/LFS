@@ -66,8 +66,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # symbol characters and characters from other writing systems.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://mirror.tochlab.net/pub/gnu/${PRGNAME}/${PRGNAME}-ttf-${VERSION}.zip
-#            https://mirror.tochlab.net/pub/gnu/${PRGNAME}/${PRGNAME}-otf-${VERSION}.tar.gz
+# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-ttf-${VERSION}.zip
+#            https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-otf-${VERSION}.tar.gz
 #
 EOF
 

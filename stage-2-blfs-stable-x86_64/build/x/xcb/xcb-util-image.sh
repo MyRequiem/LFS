@@ -8,7 +8,7 @@ PRGNAME="xcb-util-image"
 
 # Required:    xcb-util
 # Recommended: no
-# Optional:    doxygen (для создания документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,11 +19,11 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # shellcheck disable=SC2086
-./configure        \
+./configure \
     ${XORG_CONFIG} || exit 1
 
 make || exit 1
-# LD_LIBRARY_PATH="${XORG_PREFIX}/lib" make check
+# пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

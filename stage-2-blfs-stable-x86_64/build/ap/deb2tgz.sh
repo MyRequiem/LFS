@@ -3,7 +3,7 @@
 PRGNAME="deb2tgz"
 
 ### deb2tgz (convert Debian packages)
-# Конвертирует пакеты Debian (.deb) в пакеты Slackware
+# Конвертирует пакеты Debian (.deb) в .tgz, .txz
 
 # Required:    no
 # Recommended: no
@@ -20,7 +20,6 @@ cp "${PRGNAME}" "${TMP_DIR}/usr/bin"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (convert Debian packages)
 #
@@ -29,7 +28,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # exists in https://code.google.com/archive/p/deb2tgz/
 #
 # Home page: https://github.com/vborrego/${PRGNAME}
-# Download:  https://github.com/vborrego/${PRGNAME}/archive/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/vborrego/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

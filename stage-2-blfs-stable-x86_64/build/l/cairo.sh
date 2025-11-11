@@ -15,19 +15,15 @@ PRGNAME="cairo"
 #              glib
 #              xorg-libraries
 # Optional:    ghostscript
-#              gtk+3
 #              gtk-doc
 #              libdrm
 #              librsvg
 #              libxml2
 #              lzo
-#              mesa
 #              poppler
 #              valgrind
 #              gtk+2       (https://download.gnome.org/sources/gtk+/2.24/)
-#              jbig2dec    (https://github.com/rillian/jbig2dec/)
 #              libspectre  (https://www.freedesktop.org/wiki/Software/libspectre/)
-#              skia        (https://skia.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

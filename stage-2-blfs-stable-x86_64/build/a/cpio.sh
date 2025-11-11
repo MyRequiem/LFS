@@ -17,6 +17,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# обходим проблему сборки с gcc-15
+sed -e "/^extern int (\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/" \
+    -i src/extern.h || exit 1
+
+sed -e "/^int (\*xstat)/s/()/(const char * restrict,  struct stat * restrict)/" \
+    -i src/global.c || exit 1
+
 # собираем утилиту mt
 #    --enable-mt
 # запрещаем сборку программы rmt, так как она уже установлена с пакетом tar

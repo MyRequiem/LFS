@@ -9,22 +9,26 @@ PRGNAME="dialog"
 # Recommended: no
 # Optional:    no
 
+### NOTE:
+#    После установки работу утилиты можно проверить так:
+#       $ dialog --msgbox "Welcome to the script!" 7 40
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-VERSION_ORIG="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1,2 | rev)"
+ARCH_VERSION="$(find "${SOURCES}" -type f \
+    -name "${PRGNAME}-*.t?z" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 2- | cut -d - -f 1,2 | rev)"
 
-VERSION=${VERSION_ORIG/-/.}
+VERSION=${ARCH_VERSION/-/_}
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION_ORIG}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION_ORIG}" || exit 1
+tar xvf "${SOURCES}/${PRGNAME}-${ARCH_VERSION}"*.t?z || exit 1
+cd "${PRGNAME}-${ARCH_VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
@@ -55,12 +59,9 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 # удалим статическую библиотеку
-if [ -f "${TMP_DIR}/usr/lib/libdialog.a" ]; then
-    rm -f "${TMP_DIR}/usr/lib/libdialog.a"
-    rmdir "${TMP_DIR}/usr/lib" 2>/dev/null
-fi
+rm -rf "${TMP_DIR}/usr/lib"
 
-cat samples/slackware.rc > "${TMP_DIR}/etc/dialogrc"
+cat "${SOURCES}/dialogrc" > "${TMP_DIR}/etc/dialogrc" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -72,8 +73,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Dialog is a program to present a variety of questions or display messages
 # using dialog boxes from a shell script
 #
-# Home page: https://invisible-island.net/${PRGNAME}/
-# Download:  https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION_ORIG}.tar.lz
+# Home page: https://hightek.org/projects/${PRGNAME}/
+# Download:  https://invisible-island.net/archives/${PRGNAME}/${PRGNAME}-${ARCH_VERSION}.tgz
 #
 EOF
 

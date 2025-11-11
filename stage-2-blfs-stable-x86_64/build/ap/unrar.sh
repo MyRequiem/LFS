@@ -38,7 +38,8 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/usr/"{bin,lib,"include/${PRGNAME}"}
+MAN="/usr/share/man/man1"
+mkdir -pv "${TMP_DIR}"{/usr/{bin,lib,"include/${PRGNAME}"},"${MAN}"}
 
 # изменим имя библитеки libunrar.so (by default) на libunrar.so.${VERSION}
 patch -p1 --verbose < "${SOURCES}/${PRGNAME}-${VERSION}-soname.patch" || exit 1
@@ -55,16 +56,12 @@ install -vm 755 "../libunrar/libunrar.so.${VERSION}" \
     "${TMP_DIR}/usr/lib/libunrar.so.${VERSION}"
 
 # ссылки в /usr/lib/
-#    libunrar.so.6 -> libunrar.so.6.2.6
-#    libunrar.so   -> libunrar.so.6
-#    libunrar.so.5 -> libunrar.so.6 (для совместимости)
-(
-  cd "${TMP_DIR}/usr/lib" || exit 1
-  MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-  ln -sv "libunrar.so.${VERSION}" "libunrar.so.${MAJ_VERSION}"
-  ln -sv "libunrar.so.${MAJ_VERSION}" libunrar.so
-  ln -sv "libunrar.so.${MAJ_VERSION}" libunrar.so.5
-)
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
+ln -sv "libunrar.so.${VERSION}" "${TMP_DIR}/usr/lib/libunrar.so.${MAJ_VERSION}"
+ln -sv "libunrar.so.${MAJ_VERSION}" "${TMP_DIR}/usr/lib/libunrar.so"
+
+# man-страница
+cp "${SOURCES}/${PRGNAME}.1" "${TMP_DIR}${MAN}" || exit 1
 
 install -vm 644 dll.hpp "${TMP_DIR}/usr/include/${PRGNAME}/dll.hpp"
 

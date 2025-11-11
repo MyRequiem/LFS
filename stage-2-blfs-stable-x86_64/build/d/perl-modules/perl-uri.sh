@@ -6,7 +6,7 @@ ARCH_NAME="URI"
 ### URI (absolute and relative Uniform Resource Identifiers)
 # URI Perl модуль
 
-# Required:    no
+# Required:    perl-mime-base32
 # Recommended: --- для тестов ---
 #              perl-test-fatal
 #              perl-test-needs

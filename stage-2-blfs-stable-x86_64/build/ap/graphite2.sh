@@ -35,6 +35,17 @@ mkdir -pv "${TMP_DIR}"
 # Исправим:
 sed -i '/cmptest/d' tests/CMakeLists.txt || exit 1
 
+# исправим проблему сборки путем обновления синтаксиса в соответствии с
+# CMake>=4.0.0
+sed -i '/cmake_policy(SET CMP0012 NEW)/d' CMakeLists.txt || exit 1
+sed -i 's/PythonInterp/Python3/'          CMakeLists.txt || exit 1
+find . -name CMakeLists.txt | \
+    xargs sed -i 's/VERSION 2.8.0 FATAL_ERROR/VERSION 4.0.0/'
+
+# исправим проблему сборки с GCC-15
+sed -i '/Font.h/i #include <cstdint>' \
+    tests/featuremap/featuremaptest.cpp || exit 1
+
 mkdir build &&
 cd build || exit 1
 

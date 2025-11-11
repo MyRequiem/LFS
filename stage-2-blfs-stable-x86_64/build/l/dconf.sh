@@ -8,7 +8,6 @@ PRGNAME="dconf"
 
 # Required:    dbus
 #              glib
-#              desktop-file-utils
 #              --- для сборки dconf-editor ---
 #              gtk+3
 #              libhandy
@@ -31,13 +30,17 @@ sed -i 's/install_dir: systemd_userunitdir,//' service/meson.build || exit 1
 mkdir build
 cd build || exit 1
 
-meson setup                              \
-    --prefix=/usr                        \
-    --buildtype=release                  \
+meson setup                 \
+    --prefix=/usr           \
+    --buildtype=release     \
+    -D bash_completion=true \
     .. || exit 1
 
 ninja || exit 1
-# ninja test
+
+# тесты проводятся в графической среде
+# dbus-run-session ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 # сразу установим, т.к. dconf нужен для сборки dconf-editor

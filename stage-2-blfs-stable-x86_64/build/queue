@@ -1,3 +1,4 @@
+# ================================== PART 1 ====================================
 s/lsb-tools.sh
 s/bash-completion.sh
 a/kernel-firmware.sh
@@ -6,16 +7,19 @@ a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh
 n/make-ca.sh
+l/pcre.sh
 l/pcre2.sh
 l/libunistring.sh
 n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
+d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
 l/libpsl.sh
 n/wget.sh
+l/libssh2.sh
 n/curl.sh
 a/hwdata.sh
 a/pciutils.sh
@@ -36,7 +40,6 @@ ap/htop.sh
 n/iw.sh
 n/wpa-supplicant.sh
 l/libevent.sh
-d/python-modules/python3-cython.sh
 d/yasm.sh
 ap/tmux.sh
 l/fuse2.sh
@@ -53,12 +56,12 @@ d/python-modules/python3-docutils.sh
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
+d/luajit.sh
 l/boost.sh
 ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
 s/archivemount.sh
-s/fuseiso.sh
 n/curlftpfs.sh
 ap/vifm.sh
 s/pytrash.sh
@@ -66,7 +69,6 @@ d/gc.sh
 n/w3m.sh
 d/git.sh
 n/whois.sh
-l/pcre.sh
 s/ag.sh
 n/translate-shell.sh
 ap/lnav.sh
@@ -74,10 +76,9 @@ s/lshw.sh
 s/grc.sh
 d/shellcheck.sh
 a/zip.sh
-a/unzip.sh
 ap/unrar.sh
 ap/lzip.sh
-ap/p7zip.sh
+ap/7zip.sh
 a/lrzip.sh
 ap/sudo.sh
 
@@ -127,6 +128,7 @@ ap/sudo.sh
 #    Extracting Java cacerts (JKS) to:
 #    /etc/pki/tls/java/cacerts...Done!
 
+# ================================== PART 2 ====================================
 l/fribidi.sh
 l/libuv.sh
 l/iso-codes.sh
@@ -145,6 +147,7 @@ d/python-modules/python3-editables.sh
 d/python-modules/python3-hatchling.sh
 d/python-modules/python3-pygments.sh
 # === python3-requests ===
+d/python-modules/python3-hatch-vcs.sh
 d/python-modules/python3-urllib3.sh
 d/python-modules/python3-idna.sh
 d/python-modules/python3-charset-normalizer.sh
@@ -154,7 +157,12 @@ l/popt.sh
 n/rsync.sh
 d/llvm.sh
 l/icu.sh
+# ====================================
+# пересоберем собранные ранее пакеты, зависящие от icu
+l/libpsl.sh
 l/libxml2.sh
+l/boost.sh
+# ====================================
 l/json-c.sh
 d/nasm.sh
 l/libjpeg-turbo.sh
@@ -162,8 +170,11 @@ l/liburcu.sh
 n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
-l/libssh2.sh
+# ==============================
+# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
 d/rustc.sh
+d/cargo-c.sh
+# ==============================
 n/gpgme.sh
 x/utils/util-macros.sh
 x/proto/xorgproto.sh
@@ -186,13 +197,17 @@ d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
+n/wpa-supplicant.sh
 d/python-modules/python3-lxml.sh
-a/elogind.sh
-a/pm-utils.sh
 a/acpid.sh
+a/elogind.sh
 d/duktape.sh
+s/docbook-xml.sh
+s/docbook-xsl.sh
+s/xmlto.sh
 l/polkit.sh
 l/libyaml.sh
+d/python-modules/python3-pyyaml.sh
 ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
@@ -217,8 +232,15 @@ x/libs/vulkan-loader.sh
 d/spirv-headers.sh
 l/spirv-tools.sh
 x/misc/glslang.sh
+d/python-modules/python3-ply.sh
+d/spirv-llvm-translator.sh
+l/libclc.sh
+# ==============================
+# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
+d/cbindgen.sh
+d/rust-bindgen.sh
 x/misc/mesa.sh
-x/libs/vulkan-loader.sh
+# ==============================
 l/cairo.sh
 x/misc/glu.sh
 x/misc/freeglut.sh
@@ -258,7 +280,9 @@ l/gst-plugins-base.sh
 l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
+d/glslc.sh
 l/gtk4.sh
+l/libgstgtk4.sh
 # === qt5-components ===
 l/double-conversion.sh
 x/xcb/xcb-util.sh
@@ -276,9 +300,6 @@ n/mit-kerberos-v5.sh
 l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
-s/docbook-xml.sh
-s/docbook-xsl.sh
-s/xmlto.sh
 s/sound-theme-freedesktop.sh
 l/libcanberra.sh
 s/notification-daemon.sh
@@ -296,16 +317,31 @@ l/libwebp.sh
 l/lcms2.sh
 l/libmng.sh
 l/jasper.sh
+d/abseil-cpp.sh
+d/protobuf.sh
 l/qt6.sh
 # ===========
-d/extra-cmake-modules.sh
-s/oxygen-icons.sh
+a/upower.sh
+kde/d/extra-cmake-modules.sh
+kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
 l/fltk.sh
+l/libsecret.sh
+l/gcr3.sh
+l/gcr4.sh
+l/gnome-keyring.sh
 n/pinentry.sh
+n/libtirpc.sh
+l/libcap-ng.sh
+n/openvpn.sh
+a/dialog.sh
+l/alsa-plugins.sh
+ap/alsa-utils.sh
+ap/alsa-tools.sh
 l/imlib2.sh
+n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
 l/glib-networking.sh
@@ -333,7 +369,10 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
-n/libtirpc.sh
+d/python-modules/python3-hatch-fancy-pypi-readme.sh
+d/python-modules/python3-attrs.sh
+l/libei.sh
+x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
@@ -374,20 +413,22 @@ ap/vim.sh
 # === bumblebee-status ===
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
+ap/gsimplecal.sh
 x/apps/bumblebee-status.sh
-# ==== google-chrome =====
+# === google-chrome, zen-browser ====
 l/nspr.sh
 l/nss.sh
 x/apps/xdg-utils.sh
 ap/cups.sh
 xap/google-chrome.sh
-# ==== mirage ============
+xap/zen-browser.sh
+# ======= mirage =======
 a/inih.sh
 l/brotli.sh
 l/exiv2.sh
 l/gexiv2.sh
 ap/mirage.sh
-# === zenity, ntp, fcron ======
+# === zenity, ntp, fcron ===
 l/libxmlb.sh
 ap/itstool.sh
 l/appstream.sh
@@ -396,14 +437,14 @@ ap/zenity.sh
 d/perl-modules/perl-net-ssleay.sh
 d/perl-modules/perl-business-isbn-data.sh
 d/perl-modules/perl-business-isbn.sh
+d/perl-modules/perl-mime-base32.sh
 d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 n/ntp.sh
 a/fcron.sh
+
+# ================================== PART 3 ====================================
 # === ffmpeg, mpv ===============
-l/alsa-plugins.sh
-ap/alsa-utils.sh
-ap/alsa-tools.sh
 l/libaom.sh
 l/libass.sh
 l/fdk-aac.sh
@@ -418,6 +459,7 @@ ap/mpv.sh
 # === qemu, libvirt, virt-manager ===
 d/swig.sh
 d/dtc.sh
+d/fast-float.sh
 l/vte3.sh
 l/libslirp.sh
 l/gperftools.sh
@@ -425,9 +467,6 @@ d/rpcsvc-proto.sh
 n/glusterfs.sh
 s/pcsc-lite.sh
 l/libcacard.sh
-l/libcap-ng.sh
-a/dialog.sh
-n/openvpn.sh
 n/libiscsi.sh
 s/numactl.sh
 d/snappy.sh
@@ -446,7 +485,7 @@ s/gtk-vnc.sh
 s/qemu.sh
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-l/libsoup.sh
+l/libsoup2.sh
 l/libsoup3.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
@@ -476,6 +515,7 @@ ap/docbook-utils.sh
 n/tunctl.sh
 s/virt-manager.sh
 # ===================================
+xap/pavucontrol.sh
 l/giblib.sh
 ap/scrot.sh
 d/glm.sh
@@ -483,8 +523,12 @@ ap/slop.sh
 ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
+d/python-modules/python3-webencodings.sh
+d/python-modules/python3-html5lib.sh
+l/md4c.sh
+l/c-ares.sh
+d/nodejs.sh
 xap/flameshot.sh
-xap/pavucontrol.sh
 a/time.sh
 a/tree.sh
 a/cpio.sh
@@ -500,6 +544,7 @@ d/perl-modules/perl-file-fcntllock.sh
 n/exim.sh
 ap/at.sh
 l/aalib.sh
+l/gpgmepp.sh
 l/poppler.sh
 l/babl.sh
 l/gegl.sh
@@ -515,10 +560,8 @@ l/taglib.sh
 s/inxi.sh
 n/traceroute.sh
 d/apache-ant.sh
-ap/rpm.sh
 l/id3lib.sh
 l/libao.sh
-ap/gsimplecal.sh
 ap/pwgen.sh
 s/hstr.sh
 l/libx86emu.sh
@@ -526,8 +569,16 @@ s/hwinfo.sh
 ap/lsscsi.sh
 d/gtest.sh
 l/fmt.sh
-d/abseil-cpp.sh
-d/protobuf.sh
 d/android-tools.sh
+l/girara.sh
+ap/zathura.sh
+ap/deb2tgz.sh
+ap/rpm.sh
+xap/openoffice.sh
+l/liba52.sh
+l/libmad.sh
+l/v4l-utils.sh
+ap/faad2.sh
+xap/vlc.sh
 
 # vim:ft=conf

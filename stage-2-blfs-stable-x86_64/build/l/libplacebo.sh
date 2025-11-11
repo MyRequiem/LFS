@@ -5,13 +5,12 @@ PRGNAME="libplacebo"
 ### libplacebo (GPU-accelerated video/image rendering primitives library)
 # Основные алгоритмы рендеринга и идеи mpv, которые превратились в библиотеку
 
-# Required:    ffmpeg
-#              python3-glad
+# Required:    python3-glad
 # Recommended: glslang
 #              vulkan-loader
 # Optional:    lcms2
 #              libunwind
-#              dovi_tool        (https://github.com/quietvoid/dovi_tool/)
+#              dovi-tool        (https://github.com/quietvoid/dovi_tool/)
 #              nuklear          (https://github.com/Immediate-Mode-UI/Nuklear)
 #              xxhash           (https://github.com/Cyan4973/xxHash)
 
@@ -21,6 +20,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим несовместимость с python>=3.13.6
+sed -e '204a\    tree = ET.parse(xmlfile)'                 \
+    -e 's/VkXML(ET.parse(xmlfile))/VkXML(tree.getroot())/' \
+    -i src/vulkan/utils_gen.py || exit 1
 
 mkdir build
 cd build || exit 1

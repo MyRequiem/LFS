@@ -8,7 +8,7 @@ PRGNAME="mpg123"
 # Required:    no
 # Recommended: alsa-lib
 # Optional:    pulseaudio
-#              sdl12-compat
+#              sdl2
 #              jack         (https://jackaudio.org/)
 #              openal       (https://openal.org/)
 #              portaudio    (https://www.portaudio.com/)

@@ -8,7 +8,8 @@ PRGNAME="vim"
 # Required:    no
 # Recommended: Graphical Environments
 #              gtk+3
-# Optional:    gpm
+# Optional:    curl или wget            (для некоторых тестов)
+#              gpm
 #              lua
 #              ruby
 #              rsync
@@ -26,45 +27,31 @@ mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 echo '#define SYS_VIMRC_FILE  "/etc/vimrc"'  >> src/feature.h
 echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
 
-./configure                           \
-    --prefix=/usr                     \
-    --with-features=huge              \
-    --enable-gui=gtk3                 \
-    --with-tlib=ncursesw              \
-    --enable-fail-if-missing          \
-    --with-x                          \
-    --enable-fontset                  \
-    --enable-multibyte                \
-    --enable-terminal                 \
-    --enable-cscope                   \
-    --enable-tclinterp=yes            \
-    --enable-luainterp=yes            \
-    --enable-mzschemeinterp           \
-    --enable-rubyinterp=yes           \
-    --enable-perlinterp=yes           \
-    --enable-python3interp=yes        \
-    --disable-gtktest                 \
-    --disable-icon-cache-update       \
-    --disable-desktop-database-update \
-    --disable-canberra                \
-    --disable-darwin                  \
-    --disable-smack                   \
-    --disable-selinux                 \
-    --disable-netbeans                \
-    --disable-rightleft               \
-    --disable-arabic                  \
-    --disable-farsi                   \
-    --disable-xim                     \
-    --enable-gpm=no                   \
-    --disable-sysmouse                \
-    --disable-autoservername          \
+./configure                    \
+    --prefix=/usr              \
+    --with-features=huge       \
+    --enable-gui=gtk3          \
+    --with-tlib=ncursesw       \
+    --enable-fail-if-missing   \
+    --with-x                   \
+    --enable-fontset           \
+    --enable-multibyte         \
+    --enable-terminal          \
+    --enable-cscope            \
+    --enable-luainterp=yes     \
+    --enable-mzschemeinterp    \
+    --enable-perlinterp=yes    \
+    --enable-python3interp=yes \
+    --enable-tclinterp=yes     \
+    --enable-rubyinterp=yes    \
+    --disable-darwin           \
+    --disable-netbeans         \
     --with-compiledby="MyRequiem" || exit 1
 
 make || exit 1
 
 # набор тестов выводит много двоичных данных в stdout, что может привести к
-# проблемам с настройками текущего терминала. Этого можно избежать, если
-# перенаправить вывод в лог файл
+# проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
 # make -j1 test &> vim-test.log
 
 make install DESTDIR="${TMP_DIR}"
@@ -101,22 +88,16 @@ set expandtab
 set helplang=en
 EOF
 
-# удаляем /etc/gvimrc и делаем ссылку в /etc gvimrc -> vimrc
-(
-    cd "${TMP_DIR}/etc" || exit 1
-    rm -f gvimrc
-    ln -s vimrc gvimrc
-)
+# /etc/gvimrc будет ссылкой на /etc/vimrc
+ln -svf vimrc "${TMP_DIR}/etc/gvimrc"
 
 # по умолчанию документация Vim устанавливается в /usr/share/vim/, поэтому
 # установим ссылку в /usr/share/doc/
 #    vim-${VERSION} -> ../vim/vimXX/doc
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
-(
-    cd "${TMP_DIR}${DOCS}" || exit 1
-    ln -sn "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
-)
+ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
+    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
 APPL="/usr/share/applications"
 mkdir -pv "${TMP_DIR}${APPL}"

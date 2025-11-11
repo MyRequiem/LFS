@@ -27,7 +27,7 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-if [ -d  "${TMP_DIR}/lib" ]; then
+if [ -d "${TMP_DIR}/lib" ]; then
     cd "${TMP_DIR}" || exit 1
     rm -rf lib
 fi

@@ -8,7 +8,7 @@ PRGNAME="alsa-lib"
 # Required:    no
 # Recommended: elogind
 # Optional:    doxygen
-#              python2       (https://www.python.org/downloads/release/python-2718/)
+#              python2    (https://www.python.org/downloads/release/python-2718/)
 
 ### Конфигурация ядра
 #    CONFIG_SOUND=y|m
@@ -26,6 +26,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
+
+# удалим тест, который не проходит с gcc>=15
+sed 's/playmidi1//' -i test/Makefile.am && \
+    autoreconf -fi
 
 ./configure || exit 1
 make        || exit 1

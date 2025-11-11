@@ -28,7 +28,11 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему при сборке с gcc-14
+# исправим сборку с gcc-15
+patch -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
+autoreconf -fiv || exit 1
+
+# исправим сборку с gcc>=14
 sed '/saslint/a #include <time.h>'       -i lib/saslutil.c || exit 1
 sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 
@@ -72,6 +76,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SASLAUTHD}"
+
 chmod 700 /var/lib/sasl
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

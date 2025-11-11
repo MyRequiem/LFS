@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="gtk+3"
-ARCH_NAME="gtk+"
+ARCH_NAME="gtk"
 
 ### GTK+3 (multi-platform GUI toolkit)
 # GTK (GIMP ToolKit) - кроссплатформенная библиотека элементов интерфейса
@@ -18,7 +18,6 @@ ARCH_NAME="gtk+"
 #              iso-codes
 #              libxkbcommon
 #              libxslt               (для создания man-страниц)
-#              sassc
 #              wayland
 #              wayland-protocols
 #              glib
@@ -27,7 +26,8 @@ ARCH_NAME="gtk+"
 #              gtk-doc
 #              libcloudproviders
 #              python3-pyatspi2      (для тестов)
-#              tracker
+#              sassc
+#              tinysparql
 #              papi                  (https://icl.utk.edu/papi/)
 
 ###
@@ -68,10 +68,10 @@ cd build || exit 1
 meson setup ..               \
     --prefix=/usr            \
     --buildtype=release      \
+    -D man=true              \
     -D broadway_backend=true \
     -D examples=false        \
-    -D tests=false           \
-    -D wayland_backend=false || exit 1
+    -D tests=false || exit 1
 
 ninja || exit 1
 # тесты нужно запускать в графической среде
@@ -99,7 +99,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # suitable for projects ranging from small one-off projects to complete
 # application suites.
 #
-# Home page: https://www.gtk.org/
+# Home page: https://www.${ARCH_NAME}.org/
 # Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF

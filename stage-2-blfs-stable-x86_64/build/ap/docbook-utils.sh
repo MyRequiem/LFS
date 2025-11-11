@@ -11,8 +11,8 @@ PRGNAME="docbook-utils"
 #              docbook-dsssl
 #              docbook-dtd3
 # Recommended: no
-# Optional:    perl-sgmlspm           (для конвертации в man и texinfo)
-#              lynx или links или w3m (для конвертации в ASCII text)
+# Optional:    perl-sgmlspm             (для конвертации в man и texinfo)
+#              lynx или links или w3m   (http://w3m.sourceforge.net/) для конвертации в ASCII text
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,7 +26,7 @@ patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-grep_fix-1.patch" || exit 1
 
 # изменим каталог установки HTML-документов
-sed -i 's:/html::' doc/HTML/Makefile.in
+sed -i 's:/html::' doc/HTML/Makefile.in || exit 1
 
 ./configure       \
     --prefix=/usr \

@@ -6,9 +6,9 @@ PRGNAME="giflib"
 # Библиотека для чтения и записи изображений в формате GIF (Graphics
 # Interchange Format), а также программы для конвертации и работы с GIF файлами
 
-# Required:    xmlto
+# Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    xmlto
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,6 +19,10 @@ mkdir -pv "${TMP_DIR}"
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
+# исправим несколько уязвимостей безопасности в утилите 'gif2rgb'
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
 
 # удалим ненужную зависимость от ImageMagick
 cp pic/gifgrid.gif doc/giflib-logo.gif

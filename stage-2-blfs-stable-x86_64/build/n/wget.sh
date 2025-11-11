@@ -14,6 +14,7 @@ PRGNAME="wget"
 #              perl-http-daemon   (для тестов)
 #              perl-io-socket-ssl (для тестов)
 #              libidn2
+#              libproxy
 #              pcre2
 #              valgrind           (для тестов)
 
@@ -24,12 +25,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+LIBPROXY="--disable-libproxy"
+command -v proxy &>/dev/null && LIBPROXY="--enable-libproxy"
+
 # wget бует использовать OpenSSL вместо GnuTLS
 #    --with-ssl=openssl
-./configure             \
-    --prefix=/usr       \
-    --sysconfdir=/etc   \
-    --with-ssl=openssl || exit 1
+./configure            \
+    --prefix=/usr      \
+    --sysconfdir=/etc  \
+    --with-ssl=openssl \
+    "${LIBPROXY}" || exit 1
 
 make || exit 1
 # make check

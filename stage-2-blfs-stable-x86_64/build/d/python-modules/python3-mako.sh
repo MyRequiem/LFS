@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="python3-mako"
-ARCH_NAME="Mako"
+ARCH_NAME="mako"
 
 ### Mako (A python templating language)
 # Python модуль, реализующий сверхбыстрое и легкое создание шаблонов
@@ -27,10 +27,9 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
-    "${ARCH_NAME}" || exit 1
+    Mako || exit 1
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/

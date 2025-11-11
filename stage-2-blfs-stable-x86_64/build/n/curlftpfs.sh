@@ -6,7 +6,7 @@ PRGNAME="curlftpfs"
 # Файловая система для доступа к ftp-хостам, основанная на FUSE и libcurl
 
 # Required:    curl
-#              fuse3
+#              fuse2
 # Recommended: no
 # Optional:    no
 

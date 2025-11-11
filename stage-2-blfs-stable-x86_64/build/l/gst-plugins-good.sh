@@ -12,7 +12,6 @@ PRGNAME="gst-plugins-good"
 #              flac
 #              gdk-pixbuf
 #              lame
-#              libsoup
 #              libsoup3
 #              libvpx
 #              mpg123
@@ -21,7 +20,6 @@ PRGNAME="gst-plugins-good"
 # Optional:    aalib
 #              gtk+3             (для сборки примеров)
 #              libdv
-#              qt5-components
 #              qt6
 #              speex
 #              taglib
@@ -36,6 +34,7 @@ PRGNAME="gst-plugins-good"
 #              libiec61883       (https://sourceforge.net/projects/libraw1394/)
 #              libraw1394        (https://sourceforge.net/projects/libraw1394/)
 #              libshout          (https://www.icecast.org/)
+#              libsoup2          (https://download.gnome.org/sources/libsoup/2.74/)
 #              orc               (https://gstreamer.freedesktop.org/src/orc/)
 #              twolame           (https://www.twolame.org/)
 #              wavpack           (https://www.wavpack.com/)

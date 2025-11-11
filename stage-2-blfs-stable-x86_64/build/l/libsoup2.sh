@@ -1,6 +1,7 @@
 #! /bin/bash
 
-PRGNAME="libsoup"
+PRGNAME="libsoup2"
+ARCH_NAME="libsoup"
 
 ### libsoup (an HTTP client/server library)
 # Реализация HTTP клиент/сервер библиотеки на C, использующей GObjects и glib
@@ -28,15 +29,15 @@ source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f \
-    -name "${PRGNAME}-2*.tar.?z*" 2>/dev/null | sort | \
+    -name "${ARCH_NAME}-2*.tar.?z*" 2>/dev/null | sort | \
     head -n 1 | rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION}" || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -71,14 +72,14 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (an HTTP client/server library)
+# Package: ${ARCH_NAME} (an HTTP client/server library)
 #
 # Soup is an HTTP client/server library implementation in C. It uses GObjects
 # and the glib main loop to integrate well with GTK+ applications, and has a
 # synchronous API suitable for use in threaded applications.
 #
-# Home page: https://github.com/GNOME/${PRGNAME}
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://github.com/GNOME/${ARCH_NAME}
+# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

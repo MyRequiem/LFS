@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="xorg-fonts"
-PKG_VERSION="7"
+PKG_VERSION="11"
 
 ### xorg-fonts (Xorg Fonts)
 # Масштабируемые шрифты и вспомогательные утилиты для приложений Xorg
@@ -39,24 +39,7 @@ rm -rf "${TMP}"
 # директория для сборки всего пакета
 TMP_PACKAGE="${TMP}/package-${PRGNAME}-${PKG_VERSION}"
 FONTS="/usr/share/fonts"
-mkdir -pv "${TMP_PACKAGE}${FONTS}/X11/"{OTF,TTF}
-
-# нужно создать ссылки на директории с OTF и TTF шрифтами в /usr/share/fonts
-# чтобы Fontconfig мог найти шрифты TrueType, поскольку они находятся не по
-# стандартному пути /usr/share/fonts
-#    X11-OTF -> ./X11/OTF
-#    X11-TTF -> ./X11/TTF
-ln -svfn ./X11/OTF "${TMP_PACKAGE}${FONTS}/X11-OTF"
-ln -svfn ./X11/TTF "${TMP_PACKAGE}${FONTS}/X11-TTF"
-
-# сразу создадим эти ссылки в корневой системе
-(
-    mkdir -p "${FONTS}"
-    cd "${FONTS}" || exit 1
-    rm -f X11-OTF X11-TTF
-    ln -svfn ./X11/OTF X11-OTF
-    ln -svfn ./X11/TTF X11-TTF
-)
+mkdir -pv "${TMP_PACKAGE}${FONTS}/X11"
 
 # директория для распаковки исходников
 TMP_SRC="${TMP}/src"
@@ -77,6 +60,13 @@ font-bh-type1
 font-ibm-type1
 font-misc-ethiopic
 font-xfree86-type1
+font-adobe-100dpi
+font-adobe-75dpi
+font-jis-misc
+font-daewoo-misc
+font-isas-misc
+font-misc-misc
+font-bitstream-speedo
 "
 
 for PKGNAME in ${PACKAGES}; do
@@ -183,8 +173,8 @@ EOF
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* /
 done
 
-# обновим индексы установленных шрифтов (создадим fonts.dir и fonts.scale в
-# каждой директории со шрифтами)
+# обновим индексы установленных шрифтов (fonts.dir и fonts.scale) , а так же
+# создадим ссылки на директории в /usr/share/fonts
 for FONTDIR in "${FONTS}/X11"/*; do
     (
         cd "${FONTDIR}" || exit 1
@@ -192,6 +182,14 @@ for FONTDIR in "${FONTS}/X11"/*; do
         mkfontscale .
         # создаем индекс файлов шрифтов в каталоге
         mkfontdir .
+
+        cp fonts.dir fonts.scale "${TMP_PACKAGE}${FONTDIR}"
+
+        CURRDIR="$(pwd | rev | cut -d / -f 1 | rev)"
+
+        cd "${FONTS}" || exit 1
+        ln -sf "X11/${CURRDIR}" "${CURRDIR}"
+        touch "${TMP_PACKAGE}${FONTS}/${CURRDIR}"
     )
 done
 
@@ -205,7 +203,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 # for Xorg applications.
 #
 # Home page: https://www.x.org
-# Download:  https://www.x.org/archive/individual/font/
+# Download:  https://www.x.org/pub/individual/font/
 #
 EOF
 

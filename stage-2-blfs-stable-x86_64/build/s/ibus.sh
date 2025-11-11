@@ -7,14 +7,15 @@ PRGNAME="ibus"
 # полнофункциональный и удобный пользовательский интерфейс (всплывающие
 # подсказки, в которых предлагаются варианты символов, языковые панели и т.д.)
 
-# Required:    dconf
-#              iso-codes
+# Required:    iso-codes
+#              libarchive
 #              vala
-# Recommended: glib
+# Recommended: dconf
+#              glib
 #              gtk+3                  (для сборки IM модуля)
+#              gtk4
 #              libnotify
-# Optional:    gtk4                   (для сборки IM модуля)
-#              gtk-doc
+# Optional:    gtk-doc
 #              python3-dbus
 #              python3-pygobject3
 #              libxkbcommon
@@ -31,8 +32,8 @@ UNICODE_UCD="/usr/share/unicode/ucd"
 mkdir -pv "${TMP_DIR}${UNICODE_UCD}"
 
 mkdir -pv "${UNICODE_UCD}"
-unzip -uo "${SOURCES}/UCD.zip" -d "${UNICODE_UCD}"
-unzip -uo "${SOURCES}/UCD.zip" -d "${TMP_DIR}${UNICODE_UCD}"
+unzip -o "${SOURCES}/UCD.zip" -d "${UNICODE_UCD}"           || exit 1
+unzip -o "${SOURCES}/UCD.zip" -d "${TMP_DIR}${UNICODE_UCD}" || exit 1
 
 # исправим проблему с устаревшими записями схем
 sed -e 's@/desktop/ibus@/org/freedesktop/ibus@g' \

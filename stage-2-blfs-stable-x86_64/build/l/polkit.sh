@@ -9,17 +9,18 @@ PRGNAME="polkit"
 # sudo, но не наделяет процесс пользователя правами администратора, а позволяет
 # точно контролировать, что разрешено, а что запрещено.
 
-# Required:    glib
-# Recommended: duktape
+# Required:    duktape
+#              glib
+# Recommended: linux-pam
+#              elogind
 #              --- для сборки man-страниц ---
 #              libxslt
 #              docbook-xml
 #              docbook-xsl
-#              linux-pam
-#              elogind
-# Optional:    gtk-doc
-#              python3-dbusmock     (для тестов)
-#              Plasma5              (для KDE)
+# Optional:    --- для тестов ---
+#              gtk-doc
+#              python3-dbusmock
+#              polkit-kde-agent     (Plasma для KDE)
 #              gnome-shell          (для GNOME)
 #              polkit-gnome         (для XFCE)
 #              lxqt-policykit       (для LXQt)
@@ -43,23 +44,29 @@ mkdir -pv "${TMP_DIR}"
             -g polkitd       \
             -s /bin/false polkitd
 
-# исправим проблему сборки для систем на базе sysV
-sed -i '/systemd_sysusers_dir/s/^/#/' meson.build
-
 mkdir build
 cd build || exit 1
 
-meson setup ..                    \
-      --prefix=/usr               \
-      --buildtype=release         \
-      -D man=false                \
-      -D session_tracking=elogind \
-      -D authfw=shadow            \
-      -D tests=false
+# если не установлен пакет linux-pam
+#    -D authfw=shadow
+meson setup ..                   \
+    --prefix=/usr                \
+    --buildtype=release          \
+    -D man=true                  \
+    -D session_tracking=elogind  \
+    -D systemdsystemunitdir=/tmp \
+    -D tests=false               \
+    -D authfw=shadow || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+
+# удалим директории, которые не нужны в SysV системе
+rm -rf "${TMP_DIR}/tmp"
+rm -rf "${TMP_DIR}/usr/lib"/{sysusers,tmpfiles}.d
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

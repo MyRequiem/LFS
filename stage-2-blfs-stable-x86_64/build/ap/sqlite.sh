@@ -55,13 +55,9 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"
 # the SQLite library.
 #
 # Home page: https://${PRGNAME}.org
-# Download:  https://${PRGNAME}.org/2024/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://${PRGNAME}.org/2025/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${PRG_VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

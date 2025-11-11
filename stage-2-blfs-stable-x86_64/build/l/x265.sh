@@ -7,7 +7,7 @@ PRGNAME="x265"
 
 # Required:    cmake
 # Recommended: nasm
-# Optional:    numactl (https://github.com/numactl/numactl)
+# Optional:    numactl    (https://github.com/numactl/numactl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -35,12 +35,18 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# удалим некоторые настройки политики CMake, которые больше не совместимы с
+# CMake-4.0
+sed -r '/cmake_policy.*(0025|0054)/d' -i source/CMakeLists.txt
+
 mkdir bld
 cd bld || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -W no-dev ../source || exit 1
+cmake -D CMAKE_INSTALL_PREFIX=/usr        \
+      -D GIT_ARCHETYPE=1                  \
+      -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      -W no-dev                           \
+      ../source || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

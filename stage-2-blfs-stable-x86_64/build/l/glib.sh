@@ -10,7 +10,9 @@ PRGNAME="glib"
 # Recommended: python3-docutils
 #              libxslt
 #              pcre2
-# Optional:    gdb
+# Optional:    shared-mime-info     (runtime)
+#              desktop-file-utils   (runtime)
+#              gdb
 #              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
 #              --- для тестов ---
 #              cairo
@@ -19,8 +21,6 @@ PRGNAME="glib"
 #              bindfs               (https://bindfs.org/)
 #              gjs
 #              glib-networking
-#              shared-mime-info
-#              desktop-file-utils
 #              --- для сборки документации и man-страниц ---
 #              gtk-doc
 #              docbook-xml
@@ -54,12 +54,13 @@ patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-skip_warnings-1.patch" || exit 1
 mkdir build
 cd build || exit 1
 
-meson setup                   \
+meson setup ..                \
     --prefix=/usr             \
     --buildtype=release       \
     -D introspection=disabled \
+    -D glib_debug=disabled    \
     -D man-pages=enabled      \
-    .. || exit 1
+    -D sysprof=disabled || exit 1
 
 ninja || exit 1
 
@@ -73,7 +74,7 @@ DESTDIR=${TMP_DIR} ninja install
 GI=$(find "${SOURCES}" -type f -name "gobject-introspection-*.tar.?z*")
 GI_VER=$(echo "${GI}" | rev | cut -d . -f 3- | cut -d - -f 1 | rev)
 
-tar xvf "${GI}"
+tar xvf "${GI}" || exit 1
 meson setup "gobject-introspection-${GI_VER}" gi-build \
     --prefix=/usr                                      \
     --buildtype=release || exit 1

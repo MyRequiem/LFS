@@ -22,7 +22,6 @@ PRGNAME="cups"
 #              xdg-utils
 # Optional:    avahi
 #              libpaper
-#              mit-kerberos-v5
 #              php
 #              python2          (https://www.python.org/downloads/release/python-2718/)
 #              cups-filters
@@ -115,6 +114,9 @@ echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+command -v gtk-update-icon-cache &>/dev/null && \
+    gtk-update-icon-cache -qtf /usr/share/icons/hicolor
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Common UNIX Printing System)

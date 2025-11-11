@@ -8,9 +8,10 @@ PRGNAME="libseccomp"
 
 # Required:    no
 # Recommended: no
-# Optional:    which    (для тестов)
+# Optional:    which            (для тестов)
 #              valgrind
-#              lcov     (https://github.com/linux-test-project/lcov)
+#              python3-cython   (для python bindings)
+#              lcov             (https://github.com/linux-test-project/lcov)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,12 +20,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# если установлен пакет 'python3-cython' указываем параметр --enable-python и
+# НЕ указываем параметр --disable-static
+
 ./configure       \
     --prefix=/usr \
-    --disable-static || exit 1
+    --enable-python || exit 1
 
 make || exit 1
+
+# если установлен пакет 'python3-cython' перед запуском тестов выполняем:
+#    sed 's/env python/&3/' -i tests/regression
+#
 # make check
+
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

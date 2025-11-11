@@ -10,7 +10,7 @@ ARCH_NAME="a52dec"
 
 # Required:    no
 # Recommended: no
-# Optional:    djbfft (https://cr.yp.to/djbfft.html)
+# Optional:    djbfft    (https://cr.yp.to/djbfft.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -24,7 +24,7 @@ mkdir -pv "${TMP_DIR}"
     --mandir=/usr/share/man \
     --enable-shared         \
     --disable-static        \
-    CFLAGS="-g -O2 -fPIC" || exit 1
+    CFLAGS="-g -O3 -fPIC" || exit 1
 
 make || exit 1
 # make check
@@ -47,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # television and DVD.
 #
 # Home page: https://${PRGNAME}.sourceforge.net/
-# Download:  http://ftp.osuosl.org/pub/blfs/conglomeration/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://distfiles.adelielinux.org/source/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

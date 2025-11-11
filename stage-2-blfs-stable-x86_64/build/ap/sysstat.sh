@@ -62,23 +62,9 @@ find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \;
     make install-sysstat DESTDIR="${TMP_DIR}"
 )
 
-SYSSTAT="/etc/sysconfig/sysstat"
-SYSSTAT_IOCONF="/etc/sysconfig/sysstat.ioconf"
-
-if [ -f "${SYSSTAT}" ]; then
-    mv "${SYSSTAT}" "${SYSSTAT}.old"
-fi
-
-if [ -f "${SYSSTAT_IOCONF}" ]; then
-    mv "${SYSSTAT_IOCONF}" "${SYSSTAT_IOCONF}.old"
-fi
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${SYSSTAT}"
-config_file_processing "${SYSSTAT_IOCONF}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (System performance monitoring tools)

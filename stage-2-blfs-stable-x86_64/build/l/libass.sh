@@ -8,10 +8,10 @@ PRGNAME="libass"
 
 # Required:    freetype
 #              fribidi
-#              nasm
 # Recommended: fontconfig
+#              nasm
 # Optional:    harfbuzz
-#              libunibreak  (https://github.com/adah1972/libunibreak)
+#              libunibreak    (https://github.com/adah1972/libunibreak)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,7 +25,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# make check
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

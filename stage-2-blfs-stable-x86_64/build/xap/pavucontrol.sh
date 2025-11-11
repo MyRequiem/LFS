@@ -9,7 +9,7 @@ PRGNAME="pavucontrol"
 
 # Required:    gtkmm4
 #              json-glib
-#              libsigc++2
+#              libsigc++3
 #              pulseaudio
 # Recommended: no
 # Optional:    libcanberra
@@ -28,7 +28,7 @@ cd build || exit 1
 meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -D lynx=false       \
+    -D lynx=disabled    \
     .. || exit 1
 
 ninja || exit 1

@@ -7,9 +7,9 @@ PRGNAME="alsa-tools"
 
 # Required:    alsa-lib
 # Recommended: no
-#              gtk+3    (для сборки hdajackretask)
+# Optional:    gtk+3    (для сборки hdajackretask)
 #              fltk     (для сборки hdspconf и hdspmixer)
-# Optional:    gtk+2    (https://download.gnome.org/sources/gtk+/2.24/) для сборки echomixer, envy24control и rmedigicontrol
+#              gtk+2    (https://download.gnome.org/sources/gtk+/2.24/) для сборки echomixer, envy24control и rmedigicontrol
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,7 +24,7 @@ rm -rf qlo10k1 echomixer envy24control rmedigicontrol Makefile gitcompile
 
 for TOOL in * ; do
     TOOL_DIR="${TOOL}"
-    [[ "x${TOOL}" == "xseq" ]] && TOOL_DIR="${TOOL}/sbiload"
+    [[ "${TOOL}" == "seq" ]] && TOOL_DIR="${TOOL}/sbiload"
 
     pushd "${TOOL_DIR}" || exit 1
 

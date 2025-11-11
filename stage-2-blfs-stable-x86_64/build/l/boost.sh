@@ -12,14 +12,14 @@ PRGNAME="boost"
 # Recommended: which
 # Optional:    icu
 #              python3-numpy
-#              open-mpi      (https://www.open-mpi.org/)
+#              open-mpi         (https://www.open-mpi.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}-*.tar.?z*" \
-    2>/dev/null | head -n 1 | rev | cut -d - -f 3 | rev)"
+    2>/dev/null | head -n 1 | cut -d - -f 2)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -38,10 +38,6 @@ find -L . \
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
-
-# исправим проблему сборки boost с python3-numpy
-patch --verbose -Np1 \
-    -i "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # пакет лучше собирать в несколько потоков
 NUMJOBS="${MAKEFLAGS}"
@@ -89,7 +85,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libraries for linear algebra, pseudorandom number generation, multithreading,
 # image processing, regular expressions and unit testing.
 #
-# Home page: http://www.${PRGNAME}.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://github.com/boostorg/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}-b2-nodocs.tar.xz
 #
 EOF

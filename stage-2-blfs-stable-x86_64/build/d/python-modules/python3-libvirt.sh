@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="python3-libvirt"
-ARCH_NAME="libvirt-python"
+ARCH_NAME="libvirt_python"
 
 ### python3-libvirt (python bindings for libvirt)
 # Привязки Python3 для libvirt
@@ -28,8 +28,7 @@ pip3 wheel               \
 pip3 install            \
     --root="${TMP_DIR}" \
     --no-index          \
-    --find-links=dist   \
-    --no-cache-dir      \
+    --find-links dist   \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
@@ -55,8 +54,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # This package provides a python binding to the libvirt.so, libvirt-qemu.so,
 # and libvirt-lxc.so library API's
 #
-# Home page: https://libvirt.org
-# Download:  https://download.libvirt.org/python/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://pypi.org/project/${ARCH_NAME}/
+# Download:  https://files.pythonhosted.org/packages/source/l/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

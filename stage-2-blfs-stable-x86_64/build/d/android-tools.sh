@@ -5,7 +5,8 @@ PRGNAME="android-tools"
 ### android-tools (adb and fastboot tools)
 # Инструменты ADB и Fastboot от Android SDK
 
-# Required:    protobuf
+# Required:    cmake
+#              protobuf
 #              fmt
 #              gtest
 # Recommended: no
@@ -18,17 +19,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+patch --verbose -Np1 -d "vendor/extras" -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-fix-protobuf-3x.x-build.patch" || exit 1
+
 mkdir -p build
 cd build || exit 1
 
-cmake                                     \
-    -DCMAKE_INSTALL_PREFIX=/usr           \
-    -GNinja -Wno-dev                      \
-    -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-    -Dprotobuf_MODULE_COMPATIBLE=ON       \
-    -DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
-    -DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
-    -DCMAKE_BUILD_TYPE=Release            \
+cmake                                      \
+    -D CMAKE_INSTALL_PREFIX=/usr           \
+    -D CMAKE_BUILD_TYPE=Release            \
+    -D CMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+    -D protobuf_MODULE_COMPATIBLE=ON       \
+    -D ANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
+    -D ANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
+    -G Ninja -Wno-dev                      \
     .. || exit 1
 
 ninja || exit 1

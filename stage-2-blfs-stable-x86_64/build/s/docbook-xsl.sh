@@ -21,9 +21,8 @@ source "${ROOT}/check_environment.sh"                    || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 XSL_STYLESHEETS="/usr/share/xml/docbook/xsl-stylesheets-nons-${VERSION}"
-mkdir -pv "${TMP_DIR}"{"${XSL_STYLESHEETS}","${DOCS}"}
+mkdir -pv "${TMP_DIR}${XSL_STYLESHEETS}"
 
 # исправим проблему переполнения стека при выполнении рекурсии
 patch --verbose -Np1 -i \
@@ -34,40 +33,51 @@ cp -vR VERSION assembly common eclipse epub epub3 extensions fo        \
        profiling roundtrip slides template tests tools webhelp website \
        xhtml xhtml-1_1 xhtml5 "${TMP_DIR}${XSL_STYLESHEETS}"
 
-(
-    cd "${TMP_DIR}${XSL_STYLESHEETS}" || exit 1
-    ln -s VERSION VERSION.xsl
-)
-
-install -v -m644 README RELEASE-NOTES* NEWS* "${TMP_DIR}${DOCS}"
+ln -s VERSION "${TMP_DIR}${XSL_STYLESHEETS}/VERSION.xsl"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# удалим старые записи в /etc/xml/catalog
-# (файл устанавливается с пакетом docbook-xml)
-XML_CATALOG="/etc/xml/catalog"
-sed -i '/rewrite/d' "${XML_CATALOG}" || exit 1
+xmlcatalog --noout --add "rewriteSystem"                         \
+           "http://cdn.docbook.org/release/xsl-nons/${VERSION}"  \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
 
-xmlcatalog --noout --add "rewriteSystem" \
-        "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}" &&
-xmlcatalog --noout --add "rewriteURI" \
-        "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}" &&
-xmlcatalog --noout --add "rewriteSystem" \
-        "https://cdn.docbook.org/release/xsl-nons/current" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}" &&
-xmlcatalog --noout --add "rewriteURI" \
-        "https://cdn.docbook.org/release/xsl-nons/current" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}" &&
-xmlcatalog --noout --add "rewriteSystem" \
-        "http://docbook.sourceforge.net/release/xsl/current" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}" &&
-xmlcatalog --noout --add "rewriteURI" \
-        "http://docbook.sourceforge.net/release/xsl/current" \
-        "${XSL_STYLESHEETS}" "${XML_CATALOG}"
+xmlcatalog --noout --add "rewriteSystem"                         \
+           "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteURI"                            \
+           "http://cdn.docbook.org/release/xsl-nons/${VERSION}"  \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteURI"                            \
+           "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteSystem"                         \
+           "http://cdn.docbook.org/release/xsl-nons/current"     \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteSystem"                         \
+           "https://cdn.docbook.org/release/xsl-nons/current"    \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteURI"                            \
+           "http://cdn.docbook.org/release/xsl-nons/current"     \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteURI"                            \
+           "https://cdn.docbook.org/release/xsl-nons/current"    \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteSystem"                         \
+           "http://docbook.sourceforge.net/release/xsl/current"  \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
+
+xmlcatalog --noout --add "rewriteURI"                            \
+           "http://docbook.sourceforge.net/release/xsl/current"  \
+           "${XSL_STYLESHEETS}" /etc/xml/catalog
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Stylesheets package)

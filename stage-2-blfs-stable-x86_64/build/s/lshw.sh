@@ -21,7 +21,8 @@ mkdir -pv "${TMP_DIR}"
 ENABLE_SQLITE=0
 [ -x /usr/lib/libsqlite3.so ] && ENABLE_SQLITE=1
 
-VERSION="${VERSION}" make ZLIB=1 SQLITE="${ENABLE_SQLITE}" || exit 1
+VERSION="${VERSION}" \
+    make ZLIB=1 SQLITE="${ENABLE_SQLITE}" || exit 1
 
 VERSION="${VERSION}" \
     make ZLIB=1 SQLITE="${ENABLE_SQLITE}" install DESTDIR="${TMP_DIR}"

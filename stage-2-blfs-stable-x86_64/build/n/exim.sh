@@ -43,10 +43,10 @@ mkdir -pv "${TMP_DIR}${MAN}"
     groupadd -g 31 exim
 
 ! grep -qE "^exim:" /etc/passwd && \
-    useradd -c "Exim Daemon" \
-            -d /dev/null \
-            -g exim \
-            -s /bin/false \
+    useradd -c "Exim Daemon"       \
+            -d /dev/null           \
+            -g exim                \
+            -s /bin/false          \
             -u 31 exim
 
 # параметры конфигурации exim определяются в Local/Makefile, который мы
@@ -74,14 +74,11 @@ install -v -m644 "doc/${PRGNAME}.8" "${TMP_DIR}${MAN}"
 #    sendmail -> exim
 # для приложений, которым это необходимо, а exim принимает большинство
 # параметров командной строки sendmail
-(
-    cd "${TMP_DIR}/usr/sbin" || exit
-    ln -svf "${PRGNAME}" sendmail
-)
+ln -sfv exim "${TMP_DIR}/usr/sbin/sendmail"
 
 install -v -d -m750 -o exim -g exim "${TMP_DIR}/var/spool/${PRGNAME}"
 
-# писать в каталог /var/mail могут все (он уже установлен с lfs пакетом
+# писать в каталог /var/mail могут все (он уже установлен в lfs, пакет
 # main-directory-tree)
 chmod -v a+wt /var/mail
 

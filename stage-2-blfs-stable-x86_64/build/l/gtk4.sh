@@ -7,8 +7,7 @@ ARCH_NAME="gtk"
 # Библиотеки, используемые для создания графических пользовательских
 # интерфейсов приложений, предлагающие полный набор виджетов
 
-# Required:    fribidi
-#              gdk-pixbuf
+# Required:    gdk-pixbuf
 #              graphene
 #              iso-codes
 #              libepoxy
@@ -18,21 +17,24 @@ ARCH_NAME="gtk"
 #              wayland-protocols
 # Recommended: adwaita-icon-theme    (по умолчанию для некоторых ключей настроек gtk4)
 #              gst-plugins-bad       (собранный с libvpx)
+#              glslc
 #              gst-plugins-good      (собранный с libvpx)
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
 #              librsvg
+#              vulkan-loader
 #              glib
-# Optional:    colord
+# Optional:    avahi                 (для некоторых тестов)
+#              colord
 #              cups
 #              python3-docutils      (для сборки man-страниц)
 #              python3-gi-docgen     (для сборки документации)
 #              highlight             (используется gtk4-demo для подсветки синтаксиса исходного кода)
 #              libcloudproviders
 #              sassc
-#              tracker
-#              vulkan-loader
+#              tinysparql
+#              accesskit-c           (https://github.com/AccessKit/accesskit-c)
 #              cpdb                  (https://github.com/OpenPrinting/cpdb-libs)
-#              glslc                 (https://github.com/google/shaderc)
+#              python3-pydbus        (https://pypi.org/project/pydbus/)
 #              sysprof               (https://wiki.gnome.org/Apps/Sysprof)
 
 ### Конфигурация:
@@ -40,11 +42,35 @@ ARCH_NAME="gtk"
 #    ~/.config/gtk-4.0/settings.ini
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                    || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
+
+SOURCES="${ROOT}/src"
+VERSION="$(find "${SOURCES}" -type f \
+    -name "${ARCH_NAME}-4*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
+    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
+rm -rf "${BUILD_DIR}"
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
+
+tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_NAME}-${VERSION}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим проблему сборки с gcc-15
+sed -e '939 s/= { 0, }//'                                       \
+    -e '940 a memset (&transform, 0, sizeof(GtkCssTransform));' \
+    -i gtk/gtkcsstransformvalue.c || exit 1
 
 mkdir build
 cd build || exit 1
@@ -54,16 +80,22 @@ meson setup                  \
     --buildtype=release      \
     -D broadway-backend=true \
     -D introspection=enabled \
-    -D vulkan=disabled       \
-    -D wayland-backend=false \
+    -D vulkan=enabled        \
     -D build-examples=false  \
     -D build-tests=false     \
     .. || exit 1
 
 ninja || exit 1
 
+###
 # тесты проводятся в графической среде
-# dbus-run-session meson test --setup x11
+# если запущена сессия wayland, то вместо x11 указываем wayland
+#    --setup wayland
+###
+# env -u{GALLIUM_DRIVER,MESA_LOADER_DRIVER_OVERRIDE}          \
+#     LIBGL_ALWAYS_SOFTWARE=1 VK_LOADER_DRIVERS_SELECT='lvp*' \
+#     dbus-run-session meson test --setup x11                 \
+#                                 --no-suite={headless,needs-udmabuf}
 
 DESTDIR="${TMP_DIR}" ninja install
 

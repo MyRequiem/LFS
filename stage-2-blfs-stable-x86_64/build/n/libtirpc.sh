@@ -21,8 +21,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# сделаем сборку совместимой с GCC-15
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch"
+
 GSSAPI="--disable-gssapi"
-command -v kadmin &>/dev/null && GSSAPI="--enable-gssapi"
+command -v gss-client &>/dev/null && GSSAPI="--enable-gssapi"
 
 ./configure           \
     --prefix=/usr     \

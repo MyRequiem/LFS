@@ -24,7 +24,6 @@ PRGNAME="gst-plugins-base"
 # Optional:    graphene
 #              gtk+3                  (для сборки примеров)
 #              opus
-#              qt5-components         (для сборки примеров)
 #              sdl2
 #              valgrind
 #              python3-hotdoc         (https://pypi.org/project/hotdoc/)

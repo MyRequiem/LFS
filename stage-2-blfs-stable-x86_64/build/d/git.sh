@@ -21,7 +21,6 @@ PRGNAME="git"
 #              valgrind
 #              --- для команды 'git send-email' ---
 #              perl-authen-sasl     (https://metacpan.org/pod/Authen::SASL)
-#              perl-mime-base64     (https://metacpan.org/pod/MIME::Base64)
 #              perl-io-socket-ssl
 #              --- для сборки man-страниц и документации ---
 #              xmlto                (для сборки man-страниц)
@@ -49,7 +48,9 @@ command -v pcre2-config &>/dev/null && PCRE2="--with-libpcre2"
 
 make || exit 1
 
-# make test -k |& tee test.log
+# тесты
+# GIT_UNZIP=nonexist make test -k |& tee test.log
+# grep '^not ok' test.log | grep -v TODO
 
 # устанавливаем пакет
 PERL_MAJ_VERSION="$(perl --version | grep -oE '\(v.*\)' | cut -d v -f 2 | \

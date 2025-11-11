@@ -21,9 +21,11 @@ mkdir -pv "${TMP_DIR}"
 
 autoreconf -ivf || exit 1
 
-CFLAGS="-O2 -fPIC -fcommon" \
-./configure                 \
-    --prefix=/usr           \
+SLKCFLAGS="-O2 -fPIC -fcommon -std=gnu17"
+CFLAGS="${SLKCFLAGS}"   \
+CXXFLAGS="${SLKCFLAGS}" \
+./configure             \
+    --prefix=/usr       \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make install DESTDIR="${TMP_DIR}"

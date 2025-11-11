@@ -9,8 +9,8 @@ DIR_VERSION="1.4.0"
 
 # Required:    no
 # Recommended: no
-# Optional:    xorg-libraries
-#              xorg-fonts
+# Optional:    xorg-libraries   (runtime)
+#              xorg-fonts       (runtime)
 #              slang
 #              gpm
 
