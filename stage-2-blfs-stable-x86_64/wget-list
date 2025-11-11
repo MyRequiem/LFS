@@ -666,6 +666,7 @@ http://ftp.rpm.org/releases/rpm-4.20.x/rpm-4.20.1.tar.bz2
 https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.15/binaries/ru/Apache_OpenOffice_4.1.15_Linux_x86-64_install-rpm_ru.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.directory
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.menu
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/libcrypt-2.33.so
 # ======================
 
 # vim:ft=conf nowrap
