@@ -107,6 +107,16 @@ sed -i "s:Categories:#Categories:" usr/share/applications/*.desktop
 # удалим бесполезную документацию
 rm -rf "opt/${PRGNAME}${MAJVER}"/{readmes,share/readme}
 
+### Вот такой костыль :)
+# при запуске OpenOffice хочет libcrypt.so.1, у нас в системе libcrypt.so.2
+#    libcrypt.so.2 -> libcrypt.so.2.0.0 (пакет libxcrypt)
+# пришлось взять со Slackware-15.0
+#    /usr/lib/libcrypt.so.1 -> libcrypt-2.33.so
+mkdir -p "${TMP_DIR}/usr/lib"
+cp "${SOURCES}/libcrypt-2.33.so" "${TMP_DIR}/usr/lib/"
+ln -s libcrypt-2.33.so "${TMP_DIR}/usr/lib/libcrypt.so.1"
+chmod 755 "${TMP_DIR}/usr/lib/libcrypt-2.33.so"
+
 # fix permissions
 find "${TMP_DIR}" '(' -name "*.so" -o -name "*.so.*" ')' -exec chmod +x {} \;
 chmod -R u+rw,go+r-w,a-s .
