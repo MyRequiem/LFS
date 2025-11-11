@@ -6,9 +6,9 @@ PRGNAME="faad2"
 # Декодер для схемы сжатия звука с потерями, указанной в MPEG-2 Part 7 и MPEG-4
 # Part 3, известной как Advanced Audio Coding (AAC)
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
-# Optional:    alsa-utils (утилита aplay для тестрования декодера)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -18,10 +18,14 @@ PKG_VERSION="${VERSION//_/.}"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKG_VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./bootstrap &&
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+mkdir build
+cd build || exit 1
+
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -D BUILD_SHARED_LIBS=ON      \
+    .. || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -65,7 +69,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${PKG_VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

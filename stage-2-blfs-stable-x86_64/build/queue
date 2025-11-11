@@ -575,11 +575,10 @@ ap/zathura.sh
 ap/deb2tgz.sh
 ap/rpm.sh
 xap/openoffice.sh
-
 l/liba52.sh
 l/libmad.sh
 l/v4l-utils.sh
-l/faad2.sh
+ap/faad2.sh
 xap/vlc.sh
 
 # vim:ft=conf

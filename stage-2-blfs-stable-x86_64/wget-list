@@ -668,5 +668,15 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openo
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.menu
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/libcrypt-2.33.so
 # ======================
+https://distfiles.adelielinux.org/source/a52dec/a52dec-0.8.0.tar.gz
+https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.4/libmad-0.15.1b-fixes-1.patch
+https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-1.30.1.tar.xz
+https://github.com/knik0/faad2/archive/2.11.2/faad2-2.11.2.tar.gz
+https://www.nch.com.au/acm/sample.aac
+# ======== VLC ========
+https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-taglib-1.patch
+https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-fedora_ffmpeg7-1.patch
 
 # vim:ft=conf nowrap
