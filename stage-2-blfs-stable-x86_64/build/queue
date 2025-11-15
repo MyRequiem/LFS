@@ -271,6 +271,7 @@ l/lame.sh
 l/speex.sh
 ap/opus.sh
 l/libsndfile.sh
+l/sbc.sh
 ap/pulseaudio.sh
 ap/mpg123.sh
 l/x264.sh
@@ -580,5 +581,13 @@ l/libmad.sh
 l/v4l-utils.sh
 ap/faad2.sh
 xap/vlc.sh
+
+# =================================== KDE ======================================
+#
+# === QtWebEngine ===
+l/pipewire.sh
+l/wireplumber.sh
+kde/l/qtwebengine.sh
+# ===================
 
 # vim:ft=conf

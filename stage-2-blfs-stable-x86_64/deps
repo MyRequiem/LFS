@@ -13,7 +13,7 @@ adobe-source-code-pro-font-otf
 adwaita-icon-theme                      gtk+3, gtk4
 afs                                     sudo
 ag
-alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, gimp, gst-plugins-base, mpg123, openjdk, libao, qt5-components, qt6, mpv, qemu, v4l-utils, vlc
+alsa-lib                                fltk, libsndfile, libsamplerate, pulseaudio, libcanberra, sdl2, ffmpeg, alsa-plugins, alsa-utils, alsa-tools, gimp, gst-plugins-base, mpg123, openjdk, libao, qt5-components, qt6, mpv, qemu, v4l-utils, vlc, pipewire, qtwebengine
 alsa-oss                                gst-plugins-good
 alsa-plugins
 alsa-tools
@@ -34,7 +34,7 @@ atmolight                               vlc
 audit-userspace                         elogind
 autogen                                 gnutls, ntp
 autotrace                               imagemagick
-avahi                                   cups, pulseaudio, gtk4, vlc
+avahi                                   cups, pulseaudio, gtk4, vlc, pipewire
 babl                                    gegl
 bash-completion                         elogind, gstreamer, dconf
 bellagio-openmax                        mesa
@@ -44,9 +44,10 @@ bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blender                                 imagemagick
 blfs-bootscripts
-bluez                                   libpcap, python3, pulseaudio, gst-plugins-bad, qt6, qemu
+bluez                                   libpcap, python3, pulseaudio, gst-plugins-bad, qt6, qemu, pipewire
 boost                                   highlight, nghttp2, libsigc++2, libsigc++3, swig, cairomm114, cairomm118, poppler
 bpf-utils                               iptables
+breathe                                 wireplumber
 brotli                                  gnutls, curl, freetype, libsoup2, libsoup3, exiv2, nodejs
 bs2b                                    gst-plugins-bad
 bubblewrap                              fontconfig
@@ -81,7 +82,7 @@ cppunit                                 taglib
 cracklib                                mit-kerberos-v5
 cranelift                               rustc
 cunit                                   libdrm
-cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome, zen-browser
+cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome, zen-browser, qtwebengine
 cups-filters                            cups
 curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, vim, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib
 curlftpfs                               vifm
@@ -93,7 +94,7 @@ datefudge                               gnutls
 dav1d                                   ffmpeg, vlc
 daxctl                                  qemu
 dblatex                                 git, xmlto, graphite2, gimp
-dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, pulseaudio, dconf, xdg-utils, qt5-components, qt6, gnome-keyring, xorg-server, vlc
+dbus                                    wpa-supplicant, glib, elogind, python3-dbus, dbus-glib, at-spi2-core, cups, vala, pulseaudio, dconf, xdg-utils, qt5-components, qt6, gnome-keyring, xorg-server, vlc, pipewire
 dbus-glib
 dconf                                   ibus
 deb2tgz
@@ -121,7 +122,7 @@ docker                                  libssh2
 double-conversion                       qt5-components, qt6, flameshot
 dovecot                                 gnupg, sudo, fcron, at
 dovi-tool                               libplacebo
-doxygen                                 gnutls, libevent, fuse3, libusb, dbus, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, libinput, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xorg-server, libevdev, libvdpau-va-gl, ruby, sdl2, ffmpeg, exiv2, jasper, glibmm28, cairomm118, gtkmm4, libaom, libmypaint, girara, zathura, v4l-utils
+doxygen                                 gnutls, libevent, fuse3, libusb, dbus, libyaml, popt, rsync, llvm, icu, json-c, libsigc++2, libsigc++3, gpgme, graphite2, libxcb, libinput, openjpeg, cairomm114, glibmm26, wayland, libvdpau, libva, libepoxy, libxkbcommon, libvpx, alsa-lib, fltk, gtkmm3, imlib2, libvorbis, opus, flac, pulseaudio, xcb-util, xorg-server, libevdev, libvdpau-va-gl, ruby, sdl2, ffmpeg, exiv2, jasper, glibmm28, cairomm118, gtkmm4, libaom, libmypaint, girara, zathura, v4l-utils, pipewire, wireplumber
 dssim                                   gst-plugins-bad
 dtc                                     qemu
 dtrace                                  ruby
@@ -129,7 +130,7 @@ duktape                                 polkit
 efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
-elogind                                 acpid, alsa-lib, pulseaudio, polkit, libei, xorg-server, appstream, qemu
+elogind                                 acpid, alsa-lib, pulseaudio, polkit, libei, xorg-server, appstream, qemu, wireplumber
 emacs                                   libidn, pinentry, desktop-file-utils, xterm, guile
 emojione                                ibus
 enscript                                imagemagick
@@ -141,9 +142,10 @@ faad2                                   gst-plugins-bad, vlc
 fast-float                              vte3
 fcitx                                   sdl2
 fcron                                   git
-fdk-aac                                 gst-plugins-bad, ffmpeg
+fdk-aac                                 gst-plugins-bad, ffmpeg, pipewire
 feh
-ffmpeg                                  alsa-plugins, mpv, gegl, imagemagick, vlc
+ffado                                   pipewire
+ffmpeg                                  alsa-plugins, mpv, gegl, imagemagick, vlc, pipewire, qtwebengine
 ffms2                                   x264
 fftw                                    libsamplerate, pulseaudio, alsa-utils, imagemagick
 fig2dev                                 gnupg
@@ -191,7 +193,7 @@ gjs                                     glib, libsecret, gimp
 glade                                   libhandy
 glew
 glfw                                    python3-glad
-glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, upower, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, libsecret, gcr3, gcr4, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, pulseaudio, libxklavier, json-glib, polkit, dconf, libgudev, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, gtk-vnc, qemu, osinfo-db-tools, libsoup2, libsoup3, libvirt-glib, poppler, libmypaint, babl, gegl, girara, zathura
+glib                                    sshfs, w3m, python3-dbus, dbus-glib, harfbuzz, upower, gsettings-desktop-schemas, at-spi2-core, cairo, pango, librsvg, gtk+3, python3-pygobject3, gst-plugins-base, gtk4, libnotify, ibus, libsecret, gcr3, gcr4, glib-networking, glibmm26, shared-mime-info, gdk-pixbuf, vala, graphene, gstreamer, desktop-file-utils, libgsf, pulseaudio, libxklavier, json-glib, polkit, dconf, libgudev, apache-ant, qt5-components, qt6, goffice, glibmm28, libxmlb, vte3, libslirp, libcacard, spice, gtk-vnc, qemu, osinfo-db-tools, libsoup2, libsoup3, libvirt-glib, poppler, libmypaint, babl, gegl, girara, zathura, wireplumber
 glib-networking                         glib, glibmm26, gimp, libsoup2, libsoup3, glibmm28
 glibavif                                gdk-pixbuf
 glibmm26                                atkmm22, pangomm24
@@ -217,7 +219,7 @@ gpm                                     aalib, vim
 graphene                                gst-plugins-base, gtk4
 graphite-font                           graphite2
 graphite2                               harfbuzz
-graphviz                                gcc, llvm, json-c, vala, wayland, libvdpau, libvdpau-va-gl, ruby, libinput, exiv2, openjdk, gegl, gimp, imagemagick
+graphviz                                gcc, llvm, json-c, vala, wayland, libvdpau, libvdpau-va-gl, ruby, libinput, exiv2, openjdk, gegl, gimp, imagemagick, pipewire
 grc
 gsasl                                   curl
 gsettings-desktop-schemas               at-spi2-core, glib-networking, goffice
@@ -225,10 +227,10 @@ gsimplecal
 gsl                                     gstreamer
 gsm                                     ffmpeg, gst-plugins-bad
 gst-plugins-bad                         gtk4, spice-gtk
-gst-plugins-base                        pulseaudio, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libgstgtk4, qt6, spice-gtk
+gst-plugins-base                        pulseaudio, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libgstgtk4, qt6, spice-gtk, pipewire
 gst-plugins-good                        gst-plugins-bad, gtk4, spice-gtk
 gst-plugins-ugly
-gstreamer                               gst-plugins-base, libcanberra, spice, spice-gtk
+gstreamer                               gst-plugins-base, libcanberra, spice, spice-gtk, pipewire
 gtest                                   protobuf, android-tools
 gtk+2                                   cairo, libcanberra, alsa-tools
 gtk+3                                   pixman, adwaita-icon-theme, ghostscript, gstreamer, gcr3, goffice, gtkmm3, gtk-vnc, pulseaudio, libcanberra, notification-daemon, libnotify, libinput, libhandy, dconf, ibus, alsa-tools, libgxps, gst-plugins-base, gst-plugins-good, gst-plugins-bad, mirage, vte3, qt5-components, qt6, vim, gsimplecal, spice-gtk, qemu, libvirt, virt-manager, poppler, appstream-glib, gimp, girara, zathura
@@ -256,7 +258,7 @@ hwinfo
 hwloc                                   htop
 i3                                      bumblebee-status
 ibus                                    sdl2, qt6
-icu                                     libpsl, libxml2, boost, harfbuzz, vte3, qt5-components, qt6, nodejs
+icu                                     libpsl, libxml2, boost, harfbuzz, vte3, qt5-components, qt6, nodejs, qtwebengine
 id3lib
 imagemagick                             gnupg, feh
 imake                                   xxkb
@@ -274,7 +276,7 @@ isl                                     gcc
 iso-codes                               gtk+3, libxklavier, ibus, gst-plugins-base, gtk4, gimp
 itstool                                 appstream
 iw
-jack                                    pulseaudio, sdl2, alsa-plugins, mpg123, gst-plugins-good, mpv, qemu, vlc
+jack                                    pulseaudio, sdl2, alsa-plugins, mpg123, gst-plugins-good, mpv, qemu, vlc, pipewire
 jansson                                 nghttp2
 jasper                                  gegl, imagemagick, qt6
 jbig-kit                                libtiff, imagemagick
@@ -283,7 +285,7 @@ jing                                    vala
 jq
 json-c                                  bind-utils, fontconfig, libmypaint
 json-glib                               gst-plugins-bad, spice-gtk, pavucontrol, gegl, osinfo-db-tools, girara, zathura
-jsoncpp                                 cmake
+jsoncpp                                 cmake, qtwebengine
 kde-frameworks                          pinentry
 kernel-firmware
 kexec                                   elogind
@@ -292,9 +294,10 @@ krb4                                    cyrus-sasl
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
 lasem                                   goffice
+lc3plus                                 pipewire
 lcms2                                   libmng, openjpeg, ghostscript, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, libplacebo, openjdk, poppler
 lcov                                    libseccomp
-ldacbt                                  gst-plugins-bad
+ldacbt                                  gst-plugins-bad, pipewire
 leancrypto                              gnutls
 lensfun                                 gegl
 lerc                                    libtiff
@@ -318,7 +321,8 @@ libbluray                               ffmpeg, mpv, vlc
 libbpf                                  qemu, v4l-utils
 libcaca                                 ffmpeg, gst-plugins-good, mpv, vlc
 libcacard                               spice, spice-gtk, qemu
-libcanberra                             notification-daemon, pavucontrol
+libcamera                               pipewire
+libcanberra                             notification-daemon, pavucontrol, pipewire
 libcap                                  bind-utils, ntp
 libcap-ng                               gnome-keyring, openvpn, qemu
 libcddb                                 vlc
@@ -331,7 +335,7 @@ libdc1394                               ffmpeg, vlc
 libdc1394_2                             gst-plugins-bad
 libdca                                  ffmpeg, gst-plugins-bad, vlc
 libde265                                gst-plugins-bad, gimp, imagemagick
-libdrm                                  cairo, libva, mesa, ffmpeg
+libdrm                                  cairo, libva, mesa, ffmpeg, pipewire
 libdv                                   gst-plugins-good, vlc
 libdvbpsi                               vlc
 libdvdcss                               mpv, vlc
@@ -344,7 +348,7 @@ libepoxy                                gtk+3, gtk4, xwayland, xorg-server
 liberation-fonts-ttf
 libev                                   nghttp2, i3
 libevdev                                libinput, libei, xorg-synaptics-driver, xorg-evdev-driver
-libevent                                tmux, nghttp2, ntp
+libevent                                tmux, nghttp2, ntp, qtwebengine
 libexif                                 gst-plugins-bad, feh
 libfpx                                  imagemagick
 libgccjit                               rustc
@@ -384,6 +388,7 @@ libmpdec                                python3
 libmpeg2                                gst-plugins-ugly, vlc
 libmtp                                  vlc
 libmypaint                              mypaint-brushes, gimp
+libmysofa                               pipewire
 libnetfilter-conntrack                  iptables
 libnfnetlink                            iptables
 libnfs                                  qemu, vlc
@@ -423,13 +428,13 @@ libsidplay                              gst-plugins-ugly
 libsigc++2                              cairomm114, glibmm26
 libsigc++3                              glibmm28, cairomm118, pavucontrol
 libslirp                                qemu
-libsndfile                              lame, libsamplerate, pulseaudio, gst-plugins-bad
+libsndfile                              lame, libsamplerate, pulseaudio, gst-plugins-bad, sbc, pipewire
 libsoup2                                gst-plugins-good, gst-plugins-bad, osinfo-db-tools
 libsoup3                                gst-plugins-good
 libspectre                              cairo, goffice, imlib2, zathura
 libspf2                                 exim
 libspiro                                gegl
-libsrtp                                 gst-plugins-bad
+libsrtp                                 gst-plugins-bad, qtwebengine
 libssh                                  ffmpeg, exiv2, qemu
 libssh2                                 curl, rustc, cargo-c, gst-plugins-bad, qemu, vlc
 libstemmer                              libxmlb, appstream
@@ -447,7 +452,7 @@ libunistring                            libidn2, gnutls, libpsl, guile
 libunwind                               llvm, mesa, gstreamer, sdl2, xorg-server, libinput, libplacebo, gimp
 libupnp                                 vlc
 liburcu                                 bind-utils, glusterfs
-libusb                                  gnupg, upower, usbutils, libpcap, cups, gst-plugins-bad, usbredir, qemu
+libusb                                  gnupg, upower, usbutils, libpcap, cups, gst-plugins-bad, usbredir, qemu, pipewire
 libuv                                   cmake, bind-utils, nodejs
 libva                                   mesa, libva-utils, libvdpau-va-gl, ffmpeg, gst-plugins-bad, intel-vaapi-driver, mpv, vlc
 libva-utils
@@ -461,21 +466,21 @@ libvorbis                               libsndfile, libcanberra, ffmpeg, gst-plu
 libvpx                                  ffmpeg, gst-plugins-good, vlc
 libvsxu                                 vlc
 libwacom                                libinput
-libwebp                                 libtiff, ffmpeg, imagemagick, gst-plugins-bad, qt6, imlib2, maim, ghostscript, gegl, gimp
+libwebp                                 libtiff, ffmpeg, imagemagick, gst-plugins-bad, qt6, imlib2, maim, ghostscript, gegl, gimp, qtwebengine
 libwmf                                  gimp, imagemagick
 libx86emu                               hwinfo
 libxau                                  libxcb
-libxcb                                  xorg-libraries, libxkbcommon, xcb-util
+libxcb                                  xorg-libraries, libxkbcommon, xcb-util, pipewire
 libxcvt                                 xwayland, xorg-server
 libxdmcp                                libxcb
 libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, gst-plugins-bad, gtk4, i3, flameshot, qt5-components, qt6, libei
 libxklavier
 libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, spirv-llvm-translator, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libgsf, libxklavier, dconf, libei, libsoup2, libsoup3, vte3, appstream, osinfo-db-tools, libvirt-glib, gimp, gst-plugins-bad, vlc
 libxmlb                                 appstream
-libxslt                                 p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, libsecret, gcr3, gcr4, gnome-keyring, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, appstream, osinfo-db-tools, appstream-glib
+libxslt                                 p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, libsecret, gcr3, gcr4, gnome-keyring, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, appstream, osinfo-db-tools, appstream-glib, qtwebengine
 libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
 libyaml                                 python3-pyyaml, ruby, appstream, dtc, appstream-glib
-lilv                                    gst-plugins-bad
+lilv                                    gst-plugins-bad, pipewire
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
 linux-pam                               openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, gnome-keyring, exim, fcron, at, qemu
 liquid-rescale                          imagemagick
@@ -492,7 +497,7 @@ lshw
 lsof
 lsscsi
 ltc-tools                               gst-plugins-bad
-lua                                     highlight, vim, gimp, vlc
+lua                                     highlight, vim, gimp, vlc, wireplumber
 luajit                                  mpv, gegl
 luit                                    xterm
 lvm2
@@ -517,7 +522,7 @@ mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
 mirage
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, libsoup2, libsoup3, qt5-components, qt6, openvpn
+mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libtirpc, libsoup2, libsoup3, qt5-components, qt6, openvpn, qtwebengine
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, libsigc++3, glibmm26, glibmm28
 mono                                    libidn
@@ -543,14 +548,14 @@ nghttp2                                 curl, cmake, bind-utils, libsoup3, nodej
 ngtcp2                                  curl
 nickle                                  xorg-applications
 nmap                                    lsof
-nodejs                                  flameshot
+nodejs                                  flameshot, qtwebengine
 notification-daemon                     libnotify
 noto-color-emoji-ttf
 noto-fonts-ttf
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
-nss                                     p11-kit, make-ca, google-chrome, zen-browser, poppler
+nss                                     p11-kit, make-ca, google-chrome, zen-browser, poppler, qtwebengine
 ntp                                     dhcpcd
 nuklear                                 libplacebo
 numactl                                 x265, qemu
@@ -579,7 +584,7 @@ opensp                                  openjade, docbook-dsssl
 openssh                                 curl, sshfs, git, libssh2, gcr4, gnome-keyring, flameshot
 openvpn
 opie                                    sudo
-opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice, vlc
+opus                                    libsndfile, ffmpeg, gst-plugins-base, gst-plugins-bad, spice, vlc, pipewire, qtwebengine
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
 osinfo-db                               libosinfo
 osinfo-db-tools                         osinfo-db
@@ -595,7 +600,7 @@ passivetex                              xmlto
 password-store                          dmenu
 patchelf                                python3-meson, python3-dbus
 pavucontrol
-pciutils                                qt6
+pciutils                                qt6, qtwebengine
 pcre                                    ag
 pcre2                                   wget, glib, libarchive, git, lnav, swig, xterm, exim, qt6, i3, vte3
 pcsc-lite                               libcacard
@@ -627,7 +632,7 @@ php                                     cups, libsoup2, libsoup3
 picogui
 pigz                                    openjdk
 pinentry                                gnupg
-pipewire                                sdl2, mpv, qemu
+pipewire                                sdl2, mpv, qemu, wireplumber, qtwebengine
 pixman                                  cairo, xwayland, xorg-server, spice, qemu
 pngcrush                                gimp
 pngnq                                   gimp
@@ -635,7 +640,7 @@ polkit                                  elogind, spice-gtk
 polkit-gnome                            polkit
 polkit-kde-agent                        polkit
 poly2tri-c                              gegl
-poppler                                 cairo, gegl, gimp, zathura
+poppler                                 cairo, gegl, gimp, zathura, qtwebengine
 popt                                    rsync
 portaudio                               mpg123
 postfix                                 gnupg, sudo, fcron, at
@@ -645,7 +650,7 @@ pov-ray                                 imagemagick
 profiles                                imagemagick
 projectm                                vlc
 protobuf                                qt6, android-tools, vlc
-pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, mpg123, gst-plugins-good, libao, qt6, mpv, spice-gtk, qemu, vlc
+pulseaudio                              gtk-vnc, libcanberra, pavucontrol, sdl2, ffmpeg, alsa-plugins, pamixer, mpg123, gst-plugins-good, libao, qt6, mpv, spice-gtk, qemu, vlc, pipewire, qtwebengine
 pwgen
 python2                                 yasm, cups, alsa-lib
 python3                                 python3-charset-normalizer, python3-meson, python3-build
@@ -671,7 +676,7 @@ python3-hatch-fancy-pypi-readme         python3-attrs
 python3-hatch-vcs                       python3-urllib3, python3-attrs
 python3-hatchling                       python3-pygments, python3-hatch-vcs, python3-hatch-fancy-pypi-readme
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
-python3-html5lib                        flameshot
+python3-html5lib                        flameshot, qtwebengine
 python3-httpbin                         python3-requests
 python3-httpx                           python3-urllib3
 python3-hypercorn                       python3-urllib3
@@ -683,7 +688,7 @@ python3-ipaddr                          virt-manager
 python3-kdcproxy                        mit-kerberos-v5
 python3-libvirt                         virt-manager
 python3-looseversion                    fuse3
-python3-lxml                            elogind
+python3-lxml                            elogind, wireplumber
 python3-mako                            glib, mesa
 python3-markdown                        glib
 python3-markupsafe                      python3-requests
@@ -728,8 +733,8 @@ python3-recommonmark                    libinput
 python3-requests                        python3-psutil, osinfo-db-tools, virt-manager
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-charset-normalizer, python3-zipp, python3-importlib-metadata
 python3-six                             spice, python3-urlgrabber, python3-html5lib
-python3-sphinx                          libuv, python3-requests, llvm, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, extra-cmake-modules, zathura
-python3-sphinx-rtd-theme                libinput, qemu
+python3-sphinx                          libuv, python3-requests, llvm, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, extra-cmake-modules, zathura, wireplumber
+python3-sphinx-rtd-theme                libinput, qemu, wireplumber
 python3-structlog                       libei
 python3-testpath                        python3-pyproject-hooks
 python3-tomli                           python3-build
@@ -751,7 +756,8 @@ pytrash
 qemu
 qoi                                     gimp
 qt5-components                          pinentry, google-chrome, zen-browser
-qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, zen-browser, flameshot, v4l-utils
+qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, zen-browser, flameshot, v4l-utils, qtwebengine
+qtwebengine
 quiche                                  curl
 radiance                                imagemagick
 ragel                                   harfbuzz
@@ -775,11 +781,11 @@ samba                                   curl, ffmpeg, libsoup2, libsoup3, vlc
 sane                                    imagemagick
 sassc                                   gtk+3, gtk4, libadwaita
 saxon6                                  docbook-xsl
-sbc                                     pulseaudio, gst-plugins-bad
+sbc                                     pulseaudio, gst-plugins-bad, pipewire
 schroedinger                            ffmpeg, vlc
 scrot
 sdl12-compat                            libmpeg2, gst-plugins-bad, vlc
-sdl2                                    mpg123, libwebp, ffmpeg, gegl, gst-plugins-base, sdl12-compat, qt6, mpv, qemu, v4l-utils
+sdl2                                    mpg123, libwebp, ffmpeg, gegl, gst-plugins-base, sdl12-compat, qt6, mpv, qemu, v4l-utils, pipewire
 sdl_image                               v4l-utils
 selinux                                 elogind, qemu
 sendmail                                gnupg, sudo, fcron, at
@@ -792,7 +798,7 @@ sidplay-libs                            vlc
 silgraphite                             graphite2
 slang                                   aalib
 slop                                    maim
-snappy                                  qemu
+snappy                                  qemu, qtwebengine
 sndio                                   sdl2
 sound-theme-freedesktop                 libcanberra
 soundtouch                              gst-plugins-bad
@@ -855,9 +861,9 @@ usbutils
 utah-raster-toolkit                     imagemagick
 utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
-v4l-utils                               ffmpeg, gegl, gst-plugins-good, vlc
+v4l-utils                               ffmpeg, gegl, gst-plugins-good, vlc, pipewire
 vala                                    librsvg, gtk-vnc, libxklavier, libhandy, dconf, ibus, libsecret, gcr3, gcr4, gexiv2, libadwaita, gegl, libsoup2, libsoup3, vte3, spice-gtk, libvirt-glib
-valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, libsecret, gcr3, gcr4, python3, cairo, libdrm, mesa, gstreamer, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libseccomp, libgsf
+valgrind                                libtasn1, pcre2, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, libxml2, git, dbus, elogind, gcc, llvm, mit-kerberos-v5, lvm2, libsecret, gcr3, gcr4, python3, cairo, libdrm, mesa, gstreamer, flac, speex, pulseaudio, libevdev, libinput, xterm, ruby, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libseccomp, libgsf, pipewire
 vcdimager                               vlc
 vde2                                    qemu
 vdo                                     lvm2
@@ -871,7 +877,7 @@ vo-amrwb                                gst-plugins-bad
 vo-amrwbenc                             ffmpeg
 vte3                                    qemu
 vulkan-headers                          vulkan-loader
-vulkan-loader                           mesa, gst-plugins-bad, gtk4, gtkmm4, ffmpeg, libplacebo, mpv
+vulkan-loader                           mesa, gst-plugins-bad, gtk4, gtkmm4, ffmpeg, libplacebo, mpv, pipewire
 w3m                                     xmlto, docbook-utils, xorg-libraries, xdg-utils, babl, gegl
 wasm-micro-runtime                      harfbuzz
 wavpack                                 gst-plugins-good
@@ -889,6 +895,7 @@ wildmidi                                gst-plugins-bad
 wine                                    python3-glad
 wiredtiger                              openldap
 wireless-tools
+wireplumber                             pipewire
 wpa-supplicant
 wpe-webkit                              gst-plugins-bad
 wpebackend-fdo                          gst-plugins-bad
@@ -916,12 +923,13 @@ xfsprogs                                lvm2
 xinit
 xkeyboard-config                        libxkbcommon, xorg-server
 xmlto                                   git, dbus, nasm, opensp, xorgproto, libxdmcp, xorg-libraries, shared-mime-info, wayland, giflib, libnotify, xorg-server, alsa-utils, xwayland, xdg-utils, i3
+xmltoman                                pipewire
 xorg-applications                       xkeyboard-config, xcursor-themes, dejavu-fonts-ttf, freefont, liberation-fonts-ttf, noto-fonts-ttf, noto-color-emoji-ttf, adobe-source-code-pro-font-otf, opendesktop-fonts-ttf, luit, xwayland, xdg-utils
 xorg-cf-files                           imake
 xorg-evdev-driver
 xorg-fonts                              librsvg, xwayland, xorg-server, aalib
 xorg-libinput-driver                    xorg-server
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim, pipewire
 xorg-server                             libxkbcommon, xorg-libinput-driver, xorg-synaptics-driver, xorg-evdev-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
