@@ -589,5 +589,42 @@ l/pipewire.sh
 l/wireplumber.sh
 kde/l/qtwebengine.sh
 # ===================
+kde/l/phonon.sh
+kde/l/phonon-backend-vlc.sh
+kde/l/polkit-qt.sh
+kde/s/plasma-wayland-protocols.sh
+l/keyutils.sh
+l/libnvme.sh
+a/smartmontools.sh
+l/libbytesize.sh
+l/libatasmart.sh
+a/cryptsetup.sh
+l/libblockdev.sh
+a/udisks.sh
+l/libraw.sh
+l/libavif.sh
+l/highway.sh
+l/libjxl.sh
+l/zxing-cpp.sh
+l/libical.sh
+n/libmbim.sh
+n/libqmi.sh
+n/modemmanager.sh
+l/jansson.sh
+n/bluez.sh
+a/gpm.sh
+l/newt.sh
+n/libndp.sh
+n/networkmanager.sh
+l/libdaemon.sh
+n/avahi.sh
+l/aspell.sh
+l/libqrencode.sh
+l/qca.sh
+kde/icons/breeze-icons.sh
+d/python-modules/python3-chardet.sh
+d/python-modules/python3-doxypypy.sh
+d/python-modules/python3-doxyqml.sh
+kde/frameworks/kde-frameworks.sh
 
 # vim:ft=conf

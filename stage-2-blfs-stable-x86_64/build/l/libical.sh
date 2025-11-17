@@ -8,7 +8,9 @@ PRGNAME="libical"
 # компонентов.
 
 # Required:    cmake
-# Recommended: vala
+# Recommended: glib
+#              libxml2
+#              vala
 # Optional:    doxygen             (для сборки API документации)
 #              graphviz            (для сборки API документации)
 #              gtk-doc             (для сборки API документации)
@@ -26,19 +28,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -DCMAKE_INSTALL_PREFIX=/usr  \
-    -DCMAKE_BUILD_TYPE=Release   \
-    -DSHARED_ONLY=yes            \
-    -DICAL_BUILD_DOCS=false      \
-    -DGOBJECT_INTROSPECTION=true \
-    -DICAL_GLIB_VAPI=true        \
-    -DUSE_BUILTIN_TZDATA=yes     \
+cmake                             \
+    -D CMAKE_INSTALL_PREFIX=/usr  \
+    -D CMAKE_BUILD_TYPE=Release   \
+    -D SHARED_ONLY=yes            \
+    -D ICAL_BUILD_DOCS=false      \
+    -D GOBJECT_INTROSPECTION=true \
+    -D ICAL_GLIB_VAPI=true        \
+    -D USE_BUILTIN_TZDATA=yes     \
     .. || exit 1
 
 # этот пакет может иногда давать сбой при сборке в несколько потоков, поэтому
 # явно указываем -j1
-make -j1 || exit 1
+make -j1 || exit
 # make test
 make install DESTDIR="${TMP_DIR}"
 

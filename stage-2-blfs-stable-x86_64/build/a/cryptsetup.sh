@@ -11,10 +11,12 @@ PRGNAME="cryptsetup"
 #              lvm2
 #              popt
 # Recommended: no
-# Optional:    libpwquality
-#              argon2   (https://github.com/P-H-C/phc-winner-argon2)
-#              libssh   (https://www.libssh.org/)
-#              passwdqc (https://www.openwall.com/passwdqc/)
+# Optional:    asciidoctor
+#              libpwquality
+#              argon2           (https://github.com/P-H-C/phc-winner-argon2)
+#              libssh           (https://www.libssh.org/)
+#              mbedtls          (https://github.com/Mbed-TLS/mbedtls)
+#              passwdqc         (https://www.openwall.com/passwdqc/)
 
 ### Конфигурация ядра
 #    CONFIG_MD=y
@@ -33,12 +35,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBSSH="--disable-ssh-token"
-[ -x /usr/lib/libssh.so ] && LIBSSH="--enable-ssh-token"
-
-./configure       \
-    --prefix=/usr \
-    "${LIBSSH}"|| exit 1
+./configure             \
+    --prefix=/usr       \
+    --disable-ssh-token \
+    --disable-asciidoc || exit 1
 
 make || exit 1
 # make check

@@ -9,21 +9,23 @@ PRGNAME="udisks"
 # Required:    libatasmart
 #              libblockdev
 #              libgudev
-#              libxslt
 #              polkit
-#              dbus
-#              dosfstools
 # Recommended: elogind
-# Optional:    btrfs-progs
-#              gptfdisk
-#              mdadm
-#              xfsprogs
+# Optional:    glib
 #              python3-dbus          (для тестов)
 #              gtk-doc
+#              libxslt
 #              lvm2
 #              python3-pygobject3    (для тестов)
 #              exfat                 (https://github.com/relan/exfat)
 #              libiscsi              (https://github.com/sahlberg/libiscsi)
+#              --- runtime ---
+#              btrfs-progs
+#              dbus
+#              dosfstools
+#              gptfdisk
+#              mdadm
+#              xfsprogs
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,32 +35,12 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="--disable-gtk-doc"
-BTRFS="--disable-btrfs"
-LVM2="--disable-lvm2"
-ISCSI="--disable-iscsi"
-
-# command -v gtkdoc-check &>/dev/null && GTK_DOC="--enable-gtk-doc"
-command -v btrfs &>/dev/null && BTRFS="--enable-btrfs"
-command -v fsadm &>/dev/null && LVM2="--enable-lvm2"
-
-# не собирается с параметром --enable-iscsi и установленным libiscsi
-#    checking libiscsi.h usability... no
-#    checking libiscsi.h presence... no
-#    checking for libiscsi.h... no
-#    checking for libiscsi_init in -liscsi... no
-#    configure: error: iSCSI support requested but libraries not found
-# [ -x /usr/lib/libiscsi.so ] && ISCSI="--enable-iscsi"
-
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    --disable-static  \
-    "${GTK_DOC}"      \
-    "${BTRFS}"        \
-    "${LVM2}"         \
-    "${ISCSI}"        \
-    --localstatedir=/var || exit 1
+./configure              \
+    --prefix=/usr        \
+    --sysconfdir=/etc    \
+    --localstatedir=/var \
+    --disable-static     \
+    --enable-available-modules || exit 1
 
 make || exit 1
 
@@ -75,9 +57,7 @@ make || exit 1
 # make ci
 
 make install DESTDIR="${TMP_DIR}"
-
-[[ "x${GTK_DOC}" == "x--disable-gtk-doc" ]] && \
-    rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 MOUNT_OPTIONS_CONF="/etc/udisks2/mount_options.conf"
 cp "${TMP_DIR}${MOUNT_OPTIONS_CONF}.example" "${TMP_DIR}${MOUNT_OPTIONS_CONF}"
@@ -99,7 +79,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # that can be used to query and manipulate storage devices. It also includes a
 # command-line tool, that can be used to query and control the daemon.
 #
-# Home page: http://www.freedesktop.org/wiki/Software/${PRGNAME}
+# Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
 # Download:  https://github.com/storaged-project/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
