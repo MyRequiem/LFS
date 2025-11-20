@@ -1,8 +1,14 @@
 # ================================== PART 1 ====================================
+a/blfs-bootscripts.sh
 s/lsb-tools.sh
+# === linux-pam ===
+a/cracklib.sh
+a/linux-pam.sh
+a/shadow.sh
+l/libpwquality.sh
+# =================
 s/bash-completion.sh
 a/kernel-firmware.sh
-a/blfs-bootscripts.sh
 a/which.sh
 l/libtasn1.sh
 n/p11-kit.sh
@@ -271,6 +277,7 @@ l/lame.sh
 l/speex.sh
 ap/opus.sh
 l/libsndfile.sh
+l/sbc.sh
 ap/pulseaudio.sh
 ap/mpg123.sh
 l/x264.sh
@@ -578,7 +585,79 @@ xap/openoffice.sh
 l/liba52.sh
 l/libmad.sh
 l/v4l-utils.sh
+l/xapian.sh
 ap/faad2.sh
 xap/vlc.sh
+
+# =================================== KDE ======================================
+#
+# === QtWebEngine ===
+l/pipewire.sh
+l/wireplumber.sh
+kde/l/qtwebengine.sh
+# === kde-frameworks ===
+kde/l/phonon.sh
+kde/l/phonon-backend-vlc.sh
+kde/l/polkit-qt.sh
+kde/s/plasma-wayland-protocols.sh
+l/keyutils.sh
+l/libnvme.sh
+a/smartmontools.sh
+l/libbytesize.sh
+l/libatasmart.sh
+a/cryptsetup.sh
+l/libblockdev.sh
+a/udisks.sh
+l/libraw.sh
+l/libavif.sh
+l/highway.sh
+l/libjxl.sh
+l/zxing-cpp.sh
+l/libical.sh
+n/libmbim.sh
+n/libqmi.sh
+n/modemmanager.sh
+l/jansson.sh
+n/bluez.sh
+a/gpm.sh
+l/newt.sh
+n/libndp.sh
+n/networkmanager.sh
+l/libdaemon.sh
+n/avahi.sh
+l/aspell.sh
+l/libqrencode.sh
+l/qca.sh
+kde/icons/breeze-icons.sh
+d/python-modules/python3-chardet.sh
+d/python-modules/python3-doxypypy.sh
+d/python-modules/python3-doxyqml.sh
+kde/frameworks/kde-frameworks.sh
+# === plasma ===
+kde/l/libkexiv2.sh
+kde/plasma/pulseaudio-qt.sh
+kde/plasma/kirigami-addons.sh
+d/python-modules/python3-certifi.sh
+d/python-modules/python3-sentry-sdk.sh
+d/python-modules/python3-pygdbmi.sh
+s/power-profiles-daemon.sh
+s/xdotool.sh
+kde/l/qcoro.sh
+l/opencv.sh
+kde/l/libqalculate.sh
+d/doxygen.sh
+s/libdisplay-info.sh
+kde/plasma/plasma-activities.sh
+kde/plasma/plasma-activities-stats.sh
+l/libproxy.sh
+n/kdsoap.sh
+n/kdsoap-ws-discovery-client.sh
+kde/l/kio-extras.sh
+kde/s/accountsservice.sh
+kde/plasma/plasma.sh
+# ===  Simple Desktop Display Manager ===
+kde/s/sddm.sh
+# === plasma applications ===
+kde/apps/plasma-applications.sh
 
 # vim:ft=conf

@@ -6,17 +6,22 @@ PRGNAME="libblockdev"
 # C-библиотека, поддерживающая GObject Introspection для управления блочными
 # устройствами.
 
-# Required:    libbytesize
-#              libyaml
-#              parted
-#              volume-key    (https://github.com/felixonmars/volume_key)
-# Recommended: no
+# Required:    glib
+# Recommended: cryptsetup
+#              keyutils
+#              libatasmart
+#              libbytesize
+#              libnvme
+#              lvm2
 # Optional:    btrfs-progs
 #              gtk-doc
+#              json-glib
 #              mdadm
-#              dmraid        (https://people.redhat.com/~heinzm/sw/dmraid/)
-#              bcachefs      (https://bcachefs.org/)
-#              ndctl         (https://github.com/pmem/ndctl)
+#              parted
+#              smartmontools
+#              volume-key       (https://github.com/felixonmars/volume_key)
+#              ndctl            (https://github.com/pmem/ndctl)
+#              targetcli        (https://github.com/Datera/targetcli)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,18 +30,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    --with-python3    \
-    --without-gtk-doc \
-    --without-btrfs   \
-    --without-dmraid  \
-    --without-nvdimm  \
-    --without-dm || exit 1
+./configure            \
+    --prefix=/usr      \
+    --sysconfdir=/etc  \
+    --with-python3     \
+    --without-escrow   \
+    --without-gtk-doc  \
+    --without-lvm      \
+    --without-lvm_dbus \
+    --without-nvdimm   \
+    --without-tools || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -53,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # DBus API).
 #
 # Home page: https://github.com/storaged-project/${PRGNAME}/
-# Download:  https://github.com/storaged-project/${PRGNAME}/releases/download/${VERSION}-1/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/storaged-project/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

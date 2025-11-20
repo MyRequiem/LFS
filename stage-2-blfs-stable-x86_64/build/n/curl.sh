@@ -9,7 +9,7 @@ PRGNAME="curl"
 
 # Required:    no
 # Recommended: libpsl
-#              make-ca          (runtime)
+#              make-ca              (runtime)
 # Optional:    brotli
 #              c-ares
 #              gnutls
@@ -19,13 +19,13 @@ PRGNAME="curl"
 #              nghttp2
 #              openldap
 #              samba
-#              gsasl            (https://www.gnu.org/software/gsasl/)
-#              impacket         (https://www.secureauth.com/labs/open-source-tools/impacket)
-#              libmetalink      (https://launchpad.net/libmetalink/)
-#              librtmp          (http://rtmpdump.mplayerhq.hu/)
-#              ngtcp2           (https://github.com/ngtcp2/ngtcp2/)
-#              quiche           (https://github.com/cloudflare/quiche)
-#              spnego           (http://spnego.sourceforge.net/)
+#              gsasl                (https://www.gnu.org/software/gsasl/)
+#              impacket             (https://www.secureauth.com/labs/open-source-tools/impacket)
+#              libmetalink          (https://launchpad.net/libmetalink/)
+#              librtmp              (http://rtmpdump.mplayerhq.hu/)
+#              ngtcp2               (https://github.com/ngtcp2/ngtcp2/)
+#              quiche               (https://github.com/cloudflare/quiche)
+#              spnego               (http://spnego.sourceforge.net/)
 #              --- для тестов ---
 #              apache-httpd
 #              stunnel          (для HTTPS and FTPS тестов)

@@ -52,6 +52,10 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим несколько уязвимостей безопасности
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch"
+
 # исправим путь установки API документации:
 sed 's/apiversion/soup_version/' -i docs/reference/meson.build || exit 1
 

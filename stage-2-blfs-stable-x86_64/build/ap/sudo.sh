@@ -19,16 +19,19 @@ PRGNAME="sudo"
 #              opie             (https://sourceforge.net/projects/opie/files/)
 #              sssd             (https://sssd.io/)
 
+###
+# WARNING
+###
+# Перед переустановкой/обновлением пакета, его сначала нужно удалить из
+# системы, сохранив /etc/sudoers и /etc/sudoers.d/myrequiem
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
-
-OPENLDAP="--without-ldap"
-command -v ldapadd &>/dev/null && OPENLDAP="--with-ldap"
+mkdir -pv "${TMP_DIR}/etc/pam.d"
 
 # использовать переменную окружения EDITOR для visudo
 #    --with-env-editor
@@ -37,7 +40,6 @@ command -v ldapadd &>/dev/null && OPENLDAP="--with-ldap"
     --libexecdir=/usr/lib                           \
     --with-secure-path                              \
     --with-env-editor                               \
-    "${OPENLDAP}"                                   \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" \
     --with-passprompt="[sudo] password for %p: " || exit 1
 
@@ -49,6 +51,8 @@ make || exit 1
 #    # grep failed ../make-check.log
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/run"
 
 # закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
 SUDOERS="/etc/sudoers"
@@ -85,7 +89,21 @@ if [ -f "${SUDOERS_D_MYREQUIEM}" ]; then
     mv "${SUDOERS_D_MYREQUIEM}" "${SUDOERS_D_MYREQUIEM}.old"
 fi
 
-rm -rf "${TMP_DIR}/run"
+### Конфигурация Linux PAM
+cat << EOF > "${TMP_DIR}/etc/pam.d/sudo"
+# include the default auth settings
+auth      include     system-auth
+
+# include the default account settings
+account   include     system-account
+
+# Set default environment variables for the service user
+session   required    pam_env.so
+
+# include system session defaults
+session   include     system-session
+EOF
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /

@@ -36,9 +36,6 @@ autoreconf -fiv || exit 1
 sed '/saslint/a #include <time.h>'       -i lib/saslutil.c || exit 1
 sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 
-OPENLDAP="--disable-ldapdb"
-command -v ldapadd &>/dev/null && OPENLDAP="--enable-ldapdb"
-
 # база данных sasldb создается в /var/lib/sasl (по умолчанию в /etc)
 #    --with-dbpath=/var/lib/sasl/sasldb2
 # saslauthd использует FHS-совместимый каталог /var/run/saslauthd
@@ -51,7 +48,7 @@ command -v ldapadd &>/dev/null && OPENLDAP="--enable-ldapdb"
     --with-dbpath=/var/lib/sasl/sasldb2 \
     --with-sphinx-build=no              \
     --with-saslauthd=/var/run/saslauthd \
-    "${OPENLDAP}" || exit 1
+    --without-pam || exit 1
 
 # пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
 make -j1 || exit 1

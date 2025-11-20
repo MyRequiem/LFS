@@ -47,16 +47,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# если не установлен пакет linux-pam
-#    -D authfw=shadow
 meson setup ..                   \
     --prefix=/usr                \
     --buildtype=release          \
     -D man=true                  \
     -D session_tracking=elogind  \
     -D systemdsystemunitdir=/tmp \
-    -D tests=false               \
-    -D authfw=shadow || exit 1
+    -D tests=false || exit 1
 
 ninja || exit 1
 # ninja test

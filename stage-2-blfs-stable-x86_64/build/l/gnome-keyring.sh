@@ -23,9 +23,6 @@ mkdir -pv "${TMP_DIR}"
 # исправим устаревшую запись в шаблоне xml схем
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
-PAM="false"
-command -v pam_namespace_helper &>/dev/null && PAM="true"
-
 mkdir build-gkr
 cd build-gkr || exit 1
 
@@ -34,7 +31,7 @@ meson setup ..          \
     --buildtype=release \
     -D systemd=disabled \
     -D ssh-agent=true   \
-    -D pam="${PAM}" || exit 1
+    -D pam=false || exit 1
 
 ninja || exit 1
 

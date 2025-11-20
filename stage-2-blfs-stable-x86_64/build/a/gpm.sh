@@ -12,7 +12,7 @@ LIBGPM_SO_VERSION="2.1.0"
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    texlive    (для документации)
 
 ### Kernel Configuration
 #    CONFIG_INPUT=y
@@ -24,16 +24,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
+mkdir -pv "${TMP_DIR}/etc"
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
 
 ./autogen.sh &&
-./configure       \
-    --prefix=/usr \
-    --sysconfdir=/etc || exit 1
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    ac_cv_path_emacs=no || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -43,14 +45,9 @@ make install DESTDIR="${TMP_DIR}"
 rm -f "${TMP_DIR}/usr/lib/libgpm.a"
 
 # создадим ссылку в /usr/lib libgpm.so -> libgpm.so.${LIBGPM_SO_VERSION}
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sf "libgpm.so.${LIBGPM_SO_VERSION}" libgpm.so
-    chmod 755 "libgpm.so.${LIBGPM_SO_VERSION}"
-)
+ln -sfv "libgpm.so.${LIBGPM_SO_VERSION}" "${TMP_DIR}/usr/lib/libgpm.so"
 
 install -v -m644 conf/gpm-root.conf "${TMP_DIR}/etc"
-install -v -m644 doc/{FAQ,HACK_GPM,README*} "${TMP_DIR}${DOCS}"
 
 # для автозапуска gpm сервера при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/gpm

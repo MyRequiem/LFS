@@ -214,11 +214,13 @@ for PKGNAME in ${PACKAGES}; do
         -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
     # shellcheck disable=SC2086
-    ./configure \
-        ${XORG_CONFIG} || {
-        show_error "'configure' for ${PKGNAME} package"
-        exit 1
-    }
+    ./configure        \
+        ${XORG_CONFIG} \
+        --without-pam  \
+        --disable-pam || {
+            show_error "'configure' for ${PKGNAME} package"
+            exit 1
+        }
 
     # сборка
     make || {

@@ -13,9 +13,10 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
+./configure           \
+    --prefix=/usr     \
+    --disable-static  \
+    --without-docbook \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1

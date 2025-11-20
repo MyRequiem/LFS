@@ -1,0 +1,45 @@
+--------------------
+Further KDE packages
+https://download.kde.org/stable/release-service/25.08.0/src/
+--------------------
+# Дополнительные пакеты могут требовать дополнительные зависимости. Проверяем в
+# корне исходников так:
+#    # cmake -W no-dev -LAH .
+#           -W no-dev    - не выводить сообщения от разработчиков
+#           -L           - вывод списка всех переменных (без расширенных),
+#                           хранящихся в кэше CMake (CMakeCache.txt), который
+#                           генерируется после запуска CMake
+#           -A           - вывод всех переменных включая расширенные, т.е с
+#                           более техническими и менее часто настраиваимыми
+#                           параметрами
+#           -H           - добавляет к каждой переменной краткое описание из
+#                           документации
+#
+#    Например получить переменные (без расширенных) с их описанием, записать их
+#    в файл и просмотреть с подсветкой синтаксиса в Vim
+#       $ cmake -W no-dev -LH . &> CMAKE_PARAMETERS
+#       $ echo -e "\n# vim:ft=cmakecache" >> CMAKE_PARAMETERS
+#       $ vim CMAKE_PARAMETERS
+#
+# Большинство этих пакетов можно собрать с помощью следующих инструкций:
+#
+# mkdir build
+# cd build || exit 1
+#
+# cmake                                                         \
+#     -D CMAKE_INSTALL_PREFIX=/usr                              \
+#     -D CMAKE_BUILD_TYPE=Release                               \
+#     -D CMAKE_INSTALL_LIBEXECDIR=libexec                       \
+#     -D FORCE_NOT_REQUIRED_DEPENDENCIES='Discount;EPub;LibZip' \
+#     -D BUILD_QT5=OFF                                          \
+#     -D BUILD_WITH_QT6=ON                                      \
+#     -D BUILD_SHARED_LIBS=ON                                   \
+#     -D BUILD_TESTING=OFF                                      \
+#     -D BUILD_KCM_TABLET=OFF                                   \
+#     -W no-dev                                                 \
+#     .. || exit 1
+#
+# make || exit 1
+# make install DESTDIR="..."
+
+# vim:ft=conf

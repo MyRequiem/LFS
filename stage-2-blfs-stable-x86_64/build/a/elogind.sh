@@ -54,7 +54,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/etc/pam.d"
 
 mkdir build
 cd build || exit 1
@@ -66,7 +66,7 @@ cd build || exit 1
 meson setup ..                            \
     --prefix=/usr                         \
     --buildtype=release                   \
-    -D man=disabled                       \
+    -D man=auto                           \
     -D cgroup-controller=elogind          \
     -D dev-kvm-mode=0660                  \
     -D dbuspolicydir=/etc/dbus-1/system.d \
@@ -95,6 +95,30 @@ sed -e '/\[Login\]/a KillUserProcesses=no' -i "${TMP_DIR}${LOGIND_CONF}"
 if [ -f "${LOGIND_CONF}" ]; then
     mv "${LOGIND_CONF}" "${LOGIND_CONF}.old"
 fi
+
+### Конфигурация Linux PAM
+cp /etc/pam.d/system-session "${TMP_DIR}/etc/pam.d/"
+cat << EOF >> "${TMP_DIR}/etc/pam.d/system-session"
+session   required    pam_loginuid.so
+session   optional    pam_elogind.so
+
+EOF
+
+cat << EOF > "${TMP_DIR}/etc/pam.d/elogind-user"
+account  required    pam_access.so
+account  include     system-account
+
+session  required    pam_env.so
+session  required    pam_limits.so
+session  required    pam_unix.so
+session  required    pam_loginuid.so
+session  optional    pam_keyinit.so force revoke
+session  optional    pam_elogind.so
+
+auth     required    pam_deny.so
+password required    pam_deny.so
+
+EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
