@@ -90,6 +90,7 @@ mkdir -pv "${TMP_DIR}"
     --with-rcdir=/tmp/cupsinit   \
     --with-rundir=/run/cups      \
     --with-system-groups=lpadmin \
+    --disable-pam                \
     --with-docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1

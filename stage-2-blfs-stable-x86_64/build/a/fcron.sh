@@ -38,7 +38,7 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/var/spool/fcron"
+mkdir -pv "${TMP_DIR}"/{etc/pam.d,var/spool/fcron}
 
 ### должны существовать пользователь и группа fcron
 # добавим группу fcron, если не существует

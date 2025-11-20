@@ -1,12 +1,12 @@
 #! /bin/bash
 
-PRGNAME="libkexiv2"
+PRGNAME="plasma-activities"
 
-### libkexiv2 (wrapper library for exiv2)
-# Оболочка для управления метаданными изображений посредством библиотеки Exiv2
+### plasma-activities (Core components for KDE Activities)
+# Основные компоненты для KDE Activities
 
-# Required:    kde-frameworks
-#              exiv2
+# Required:    boost
+#              kde-frameworks
 # Recommended: no
 # Optional:    no
 
@@ -23,7 +23,6 @@ cd build || exit 1
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D BUILD_WITH_QT6=ON         \
     -D BUILD_TESTING=OFF         \
     -W no-dev                    \
     .. || exit 1
@@ -37,13 +36,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (wrapper library for exiv2)
+# Package: ${PRGNAME} (Core components for KDE Activities)
 #
-# Libkexiv2 is a KDE wrapper around the Exiv2 library for manipulating image
-# metadata
+# Core components for KDE Activities
 #
-# Home page: https://invent.kde.org/graphics/${PRGNAME}
-# Download:  https://download.kde.org/stable/release-service/${VERSION}/src/${PRGNAME}-${VERSION}.tar.xz
+# Home page: https://download.kde.org/stable/plasma/
+# Download:  https://download.kde.org/stable/plasma/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

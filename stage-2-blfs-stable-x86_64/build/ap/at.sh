@@ -23,7 +23,7 @@ BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
-tar xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
+tar -xvf "${SOURCES}/${PRGNAME}_${VERSION}"*.tar.?z* || exit 1
 cd "${PRGNAME}-${VERSION}" || exit 1
 
 chown -R root:root .
@@ -35,7 +35,7 @@ find -L . \
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}${DOCS}"
+mkdir -pv "${TMP_DIR}"{/etc/pam.d,"${DOCS}"}
 
 # перед сборкой пакета должны существовать группа и пользователь atd, который
 # будет запускать демон atd
@@ -77,6 +77,14 @@ AT_DENY="/etc/at.deny"
 if [ -f "${AT_DENY}" ]; then
     mv "${AT_DENY}" "${AT_DENY}.old"
 fi
+
+### Конфигурация Linux PAM
+cat << EOF > "${TMP_DIR}/etc/pam.d/atd"
+auth     required pam_unix.so
+account  required pam_unix.so
+password required pam_unix.so
+session  required pam_unix.so
+EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

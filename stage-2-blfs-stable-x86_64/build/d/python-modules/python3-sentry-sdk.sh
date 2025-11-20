@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The sentry-sdk module is the official Python SDK for Sentr.io
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://github.com/getsentry/sentry-python/releases/download/${VERSION}/sentry_sdk-${VERSION}.tar.gz
+# Download:  https://github.com/getsentry/sentry-python/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

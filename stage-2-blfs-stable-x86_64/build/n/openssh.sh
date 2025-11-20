@@ -52,14 +52,6 @@ chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
             -s /bin/false     \
             -u 50 sshd
 
-LIBEDIT="--without-libedit"
-PAM="--without-pam"
-KERBEROS5="--without-kerberos5"
-
-[ -x /usr/lib/libedit.so ] && LIBEDIT="--with-libedit"
-command -v pam_tally   &>/dev/null && PAM="--with-pam"
-command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
-
 ./configure                                  \
     --prefix=/usr                            \
     --sysconfdir=/etc/ssh                    \
@@ -67,9 +59,7 @@ command -v krb5-config &>/dev/null && KERBEROS5="--with-kerberos5=/usr"
     --with-default-path=/usr/bin             \
     --with-superuser-path=/usr/sbin:/usr/bin \
     --with-pid-dir=/run                      \
-    "${LIBEDIT}"                             \
-    "${PAM}"                                 \
-    "${KERBEROS5}" || exit 1
+    --without-pam || exit 1
 
 make || exit 1
 # make -j1 tests

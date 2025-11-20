@@ -3,7 +3,7 @@
 PRGNAME="kde-frameworks"
 PKG_VERSION="6.17.0"
 
-### DE Frameworks (KDE Frameworks)
+### KDE Frameworks (KDE Frameworks)
 # Набор библиотек, основанных на Qt6 и QML
 
 # Required:    extra-cmake-modules
@@ -60,7 +60,6 @@ ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"
 
 source "${ROOT}/check_environment.sh" || exit 1
-source "${ROOT}/xorg_config.sh"       || exit 1
 
 TMP="/tmp/build-${PRGNAME}-${PKG_VERSION}"
 rm -rf "${TMP}"
@@ -83,8 +82,8 @@ mkdir -p "${TMP_PKGS}"
 #     build-kde-frameworks-x.x.x/         ${TMP}
 #         |
 #         package-kde-frameworks-x.x.x/   ${TMP_PACKAGE}
-#         src/                            ${TMP_SRC}
 #         pkgs/                           ${TMP_PKGS}
+#         src/                            ${TMP_SRC}
 
 # список всех пакетов
 PACKAGES="\
@@ -264,6 +263,8 @@ for PKGNAME in ${PACKAGES}; do
             exit 1
         }
     fi
+
+    rm -rf "${PKG_INSTALL_DIR}/usr/share/doc"
 
     # stripping
     BINARY="$(find "${PKG_INSTALL_DIR}" -type f -print0 | \

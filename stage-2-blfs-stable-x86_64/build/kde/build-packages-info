@@ -19,19 +19,24 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 #    в файл и просмотреть с подсветкой синтаксиса в Vim
 #       $ cmake -W no-dev -LH . &> CMAKE_PARAMETERS
 #       $ echo -e "\n# vim:ft=cmakecache" >> CMAKE_PARAMETERS
-#       vim CMAKE_PARAMETERS
+#       $ vim CMAKE_PARAMETERS
 #
-# Большинство этих пакетов можно собрать с помощью стандартных инструкций для
-# KDE6:
+# Большинство этих пакетов можно собрать с помощью следующих инструкций:
 #
 # mkdir build
 # cd build || exit 1
 #
-# cmake                            \
-#     -D CMAKE_INSTALL_PREFIX=/usr \
-#     -D CMAKE_BUILD_TYPE=Release  \
-#     -D BUILD_TESTING=OFF         \
-#     -W no-dev                    \
+# cmake                                                         \
+#     -D CMAKE_INSTALL_PREFIX=/usr                              \
+#     -D CMAKE_BUILD_TYPE=Release                               \
+#     -D CMAKE_INSTALL_LIBEXECDIR=libexec                       \
+#     -D FORCE_NOT_REQUIRED_DEPENDENCIES='Discount;EPub;LibZip' \
+#     -D BUILD_QT5=OFF                                          \
+#     -D BUILD_WITH_QT6=ON                                      \
+#     -D BUILD_SHARED_LIBS=ON                                   \
+#     -D BUILD_TESTING=OFF                                      \
+#     -D BUILD_KCM_TABLET=OFF                                   \
+#     -W no-dev                                                 \
 #     .. || exit 1
 #
 # make || exit 1
