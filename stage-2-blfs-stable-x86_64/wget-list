@@ -670,7 +670,7 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathu
 https://github.com/vborrego/deb2tgz/archive/0.3/deb2tgz-0.3.tar.gz
 http://ftp.rpm.org/releases/rpm-4.20.x/rpm-4.20.1.tar.bz2
 # ===== openoffice =====
-https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.15/binaries/ru/Apache_OpenOffice_4.1.15_Linux_x86-64_install-rpm_ru.tar.gz
+https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.16/binaries/ru/Apache_OpenOffice_4.1.16_Linux_x86-64_install-rpm_ru.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.directory
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.menu
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/libcrypt-2.33.so
@@ -911,5 +911,19 @@ https://download.kde.org/stable/release-service/25.08.0/src/ksystemlog-25.08.0.t
 https://download.kde.org/stable/release-service/25.08.0/src/kweathercore-25.08.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/kweather-25.08.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/yakuake-25.08.0.tar.xz
+
+###
+# ================================== GNOME =====================================
+###
+
+# ================================ webkitgtk ===================================
+https://github.com/google/woff2/archive/v1.0.2/woff2-1.0.2.tar.gz
+https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz
+https://github.com/rrthomas/enchant/releases/download/v2.8.12/enchant-2.8.12.tar.gz
+https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.bz2
+https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
+https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz
+https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
+# ==============================================================================
 
 # vim:ft=conf nowrap

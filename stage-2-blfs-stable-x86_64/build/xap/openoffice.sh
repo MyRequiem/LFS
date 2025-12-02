@@ -2,7 +2,10 @@
 
 PRGNAME="openoffice"
 ARCH_NAME="Apache_OpenOffice"
-BUILD_ID="9813"
+# смотрим файл в исходном архиве и устанавливаем переменную BUILD_ID:
+#     ru/RPMS/desktop-integration/
+#         openoffice${VERSION}-freedesktop-menus-${VERSION}-9816.noarch.rpm
+BUILD_ID="9816"
 
 ### OpenOffice (a full-featured open-source office suite)
 # Бесплатный кроссплатформенный офисный пакет с открытым исходным кодом,

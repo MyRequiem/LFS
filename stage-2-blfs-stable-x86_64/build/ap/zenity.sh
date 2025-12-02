@@ -10,7 +10,7 @@ PRGNAME="zenity"
 #              libadwaita
 #              help2man      (для генерации man-страниц)
 # Recommended: no
-# Optional:    webkit2gtk    (для поддежки webkitgtk и HTML)
+# Optional:    webkitgtk     (для поддежки webkitgtk и HTML)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

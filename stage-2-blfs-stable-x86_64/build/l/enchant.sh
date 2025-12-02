@@ -6,15 +6,17 @@ PRGNAME="enchant"
 # Общий интерфейс для различных библиотек проверки орфографии (Aspell/Pspell,
 # Ispell и др.)
 
-# Required:    glib
-# Recommended: aspell
+# Required:    aspell
+#              glib
+#              vala
+# Recommended: no
 # Optional:    dbus-glib
 #              doxygen
-#              hspell       (http://hspell.ivrix.org.il/)
-#              hunspell     (https://hunspell.github.io/)
-#              nuspell      (https://nuspell.github.io/)
-#              voikko       (https://voikko.puimula.org/)
-#              unittest-cpp (требуется для тестов) https://github.com/unittest-cpp/unittest-cpp/releases
+#              hspell           (http://hspell.ivrix.org.il/)
+#              hunspell         (https://hunspell.github.io/)
+#              nuspell          (https://nuspell.github.io/)
+#              voikko           (https://voikko.puimula.org/)
+#              unittest-cpp     (требуется для тестов) https://github.com/unittest-cpp/unittest-cpp/releases
 
 # NOTE:
 # после установки пакета можно проверить его работу создав файл:
@@ -35,9 +37,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+./configure          \
+    --prefix=/usr    \
+    --disable-static \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 
@@ -65,8 +68,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #    * Uspell (Yiddish, Hebrew and Eastern European languages)
 #    * Hspell (Hebrew) and others
 #
-# Home page: https://github.com/AbiWord/${PRGNAME}
-# Download:  https://github.com/AbiWord/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://github.com/rrthomas/${PRGNAME}/
+# Download:  https://github.com/rrthomas/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

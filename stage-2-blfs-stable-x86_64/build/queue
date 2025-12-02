@@ -660,4 +660,16 @@ kde/s/sddm.sh
 # === plasma applications ===
 kde/apps/plasma-applications.sh
 
+# ================================== GNOME =====================================
+#
+# ================= webkitgtk =============
+l/woff2.sh
+n/xdg-dbus-proxy.sh
+l/enchant.sh
+n/geoclue.sh
+s/bubblewrap.sh
+d/unifdef.sh
+l/webkitgtk.sh
+# =========================================
+
 # vim:ft=conf
