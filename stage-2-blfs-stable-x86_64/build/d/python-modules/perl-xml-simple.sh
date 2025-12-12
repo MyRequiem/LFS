@@ -8,7 +8,7 @@ ARCH_NAME="XML-Simple"
 
 # Required:    no
 # Recommended: no
-# Optional:    perl-xml-sax
+# Optional:    perl-xml-sax (альтернативный парсер, если не установлен будет использоваться perl-xml-parser, установленный в LFS)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -17,7 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test

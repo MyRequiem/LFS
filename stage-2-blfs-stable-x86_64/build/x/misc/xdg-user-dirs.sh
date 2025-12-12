@@ -2,16 +2,17 @@
 
 PRGNAME="xdg-user-dirs"
 
-### Xdg-user-dirs (manage XDG user directories)
-# Инструмент, используемый различными XDG-совместимыми окружениями рабочего
-# стола (DE), такими как KDE, GNOME, Xfce и т.д., для поиска пользовательских
-# каталогов (папки рабочего стола, музыки, документов и т.д.) Также
-# обрабатывает локализацию/перевод имен файлов и каталогов.
+### Xdg-user-dirs.sh (manage XDG user directories)
+# Инструмент, помогающий управлять известными пользовательскими каталогами,
+# такими как папка рабочего стола, папка музыки, документов и т.д. Также
+# обрабатывает локализацию (т.е. перевод) имен файлов
 
-# Required:    libxslt
+# Required:    no
 # Recommended: no
-# Optional:    docbook-xml (для создания man-страниц)
-#              docbook-xsl (для создания man-страниц)
+# Optional:    --- для создания man-страниц ---
+#              docbook-xml
+#              docbook-xsl
+#              libxslt
 
 ###
 # Конфигурация
@@ -64,19 +65,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCUMENTATION="--disable-documentation"
-[ -d /usr/share/xml/docbook/xml-* ] && \
-    [ -d /usr/share/xml/docbook/xsl-* ] && \
-        DOCUMENTATION="--enable-documentation"
-
-./configure           \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    "${DOCUMENTATION}" || exit 1
+./configure                \
+    --prefix=/usr          \
+    --sysconfdir=/etc      \
+    --enable-documentation \
+    .. || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -85,11 +85,11 @@ source "${ROOT}/update-info-db.sh" || exit 1
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (manage XDG user directories)
 #
-# xdg-user-dirs is a tool used by various XDG compliant desktop environments to
-# locate user well-known user directories such as the Desktop folder. It also
-# handles localization/translation of the filenames.
+# Xdg-user-dirs is a tool to help manage "well known" user directories like the
+# desktop folder and the music folder. It also handles localization (i.e.
+# translation) of the filenames
 #
-# Home page: http://freedesktop.org/wiki/Software/${PRGNAME}
+# Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
 # Download:  https://user-dirs.freedesktop.org/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -12,8 +12,9 @@ PRGNAME="libexif"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen  (для создания документации)
-#              graphviz (для создания документации)
+# Optional:    --- для создания документации ---
+#              doxygen
+#              graphviz
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,18 +23,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOXYGEN="--disable-internal-docs"
-# command -v doxygen &>/dev/null && DOXYGEN="--enable-internal-docs"
-
 ./configure          \
     --prefix=/usr    \
     --disable-static \
-    "${DOXYGEN}"     \
     --with-doc-dir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

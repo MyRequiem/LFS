@@ -416,6 +416,7 @@ x/apps/i3.sh
 # ==========
 l/libnsl.sh
 d/python3.sh
+a/gpm.sh
 ap/vim.sh
 # === bumblebee-status ===
 d/python-modules/python3-psutil.sh
@@ -588,14 +589,28 @@ l/v4l-utils.sh
 l/xapian.sh
 ap/faad2.sh
 xap/vlc.sh
-
-# =================================== KDE ======================================
-#
 # === QtWebEngine ===
 l/pipewire.sh
 l/wireplumber.sh
 kde/l/qtwebengine.sh
-# === kde-frameworks ===
+# === webkitgtk ===
+l/woff2.sh
+n/xdg-dbus-proxy.sh
+l/aspell.sh
+l/enchant.sh
+n/libmbim.sh
+n/libqmi.sh
+n/modemmanager.sh
+n/geoclue.sh
+s/bubblewrap.sh
+d/unifdef.sh
+l/webkitgtk.sh
+
+###
+# =================================== KDE ======================================
+###
+#
+# === kde-frameworks + зависимости ===
 kde/l/phonon.sh
 kde/l/phonon-backend-vlc.sh
 kde/l/polkit-qt.sh
@@ -614,18 +629,13 @@ l/highway.sh
 l/libjxl.sh
 l/zxing-cpp.sh
 l/libical.sh
-n/libmbim.sh
-n/libqmi.sh
-n/modemmanager.sh
 l/jansson.sh
 n/bluez.sh
-a/gpm.sh
 l/newt.sh
 n/libndp.sh
 n/networkmanager.sh
 l/libdaemon.sh
 n/avahi.sh
-l/aspell.sh
 l/libqrencode.sh
 l/qca.sh
 kde/icons/breeze-icons.sh
@@ -633,7 +643,7 @@ d/python-modules/python3-chardet.sh
 d/python-modules/python3-doxypypy.sh
 d/python-modules/python3-doxyqml.sh
 kde/frameworks/kde-frameworks.sh
-# === plasma ===
+# === plasma + зависимости ===
 kde/l/libkexiv2.sh
 kde/plasma/pulseaudio-qt.sh
 kde/plasma/kirigami-addons.sh
@@ -660,16 +670,97 @@ kde/s/sddm.sh
 # === plasma applications ===
 kde/apps/plasma-applications.sh
 
+###
 # ================================== GNOME =====================================
-#
-# ================= webkitgtk =============
-l/woff2.sh
-n/xdg-dbus-proxy.sh
-l/enchant.sh
-n/geoclue.sh
-s/bubblewrap.sh
-d/unifdef.sh
-l/webkitgtk.sh
-# =========================================
+###
+
+# =================== Libraries and Desktop + зависимости ======================
+
+
+
+gnome/s/polkit-gnome.sh
+d/perl-modules/perl-xml-simple.sh
+l/icon-naming-utils.sh
+gnome/icons/gnome-icon-theme.sh
+gnome/icons/gnome-icon-theme-extras.sh
+gnome/icons/gnome-icon-theme-symbolic.sh
+gnome/themes/gnome-themes-extra.sh
+l/gtksourceview3.sh
+l/gtksourceview4.sh
+l/gtksourceview5.sh
+gnome/l/rest.sh
+gnome/s/gnome-online-accounts.sh
+gnome/l/gvfs.sh
+gnome/l/totem-pl-parser.sh
+gnome/l/geocode-glib.sh
+l/spidermonkey-js-engine.sh
+gnome/l/gjs.sh
+gnome/l/gnome-autoar.sh
+gnome/l/gnome-desktop.sh
+gnome/l/gnome-menus.sh
+gnome/l/libgee.sh
+gnome/l/libgtop.sh
+gnome/l/libgweather.sh
+gnome/l/libpeas.sh
+l/protobuf-c.sh
+gnome/l/libshumate.sh
+gnome/s/blocaled.sh
+gnome/l/evolution-data-server.sh
+d/perl-modules/perl-parse-yapp.sh
+n/samba.sh
+gnome/l/tinysparql.sh
+l/libexif.sh
+l/exempi.sh
+gnome/l/localsearch.sh
+gnome/l/gsound.sh
+l/libportal.sh
+l/xdg-desktop-portal.sh
+l/xdg-desktop-portal-gtk.sh
+gnome/l/xdg-desktop-portal-gnome.sh
+# ===================== Desktop Components + зависимости =======================
+gnome/desktop_components/gnome-backgrounds.sh
+l/libcloudproviders.sh
+gnome/apps/nautilus.sh
+gnome/n/gnome-bluetooth.sh
+gnome/s/gnome-session.sh
+l/libgusb.sh
+s/colord.sh
+l/colord-gtk.sh
+l/libwacom.sh
+gnome/desktop_components/gnome-settings-daemon.sh
+gnome/desktop_components/tecla.sh
+n/libnma.sh
+gnome/desktop_components/gnome-control-center.sh
+gnome/desktop_components/mutter.sh
+gnome/s/gdm.sh
+gnome/desktop_components/gnome-shell.sh
+gnome/desktop_components/gnome-shell-extensions.sh
+gnome/desktop_components/gnome-tweaks.sh
+# ============================ GNOME Applications ==============================
+s/xdg-user-dirs.sh      !!! Поставить перед upower.sh !!!
+gnome/apps/snapshot.sh
+gnome/apps/gnome-weather.sh
+gnome/apps/gnome-terminal.sh
+gnome/apps/gnome-system-monitor.sh
+gnome/apps/gnome-screenshot.sh
+l/liblinear.sh          !!! поставить в конце PART 3, перед KDE, после xap/vlc.sh !!!
+n/nmap.sh               !!! поставить после l/liblinear.sh !!!
+gnome/apps/gnome-nettool.sh
+gnome/apps/gnome-maps.sh
+xap/freerdp.sh          !!! поставить в конце PART 3 !!!
+gnome/apps/gnome-connections.sh
+gnome/apps/gnome-color-manager.sh
+gnome/apps/gnome-calculator.sh
+gnome/apps/file-roller.sh
+gnome/apps/seahorse.sh
+l/gsl.sh
+ap/bogofilter.sh
+l/gspell.sh
+gnome/apps/evolution.sh
+gnome/apps/evince.sh
+l/webp-pixbuf-loader.sh
+gnome/apps/eog.sh
+gnome/xap/epiphany.sh
+gnome/apps/gedit.sh
 
 # vim:ft=conf
