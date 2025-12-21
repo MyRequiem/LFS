@@ -24,7 +24,7 @@ PRGNAME="xdg-desktop-portal"
 #              libportal
 #              --- для тестов ---
 #              python3-dbusmock
-#              python3-umockdev
+#              umockdev
 #              --- для документации ---
 #              python3-sphinx
 #              python3-sphinxext-opengraph      (https://pypi.org/project/sphinxext-opengraph/)

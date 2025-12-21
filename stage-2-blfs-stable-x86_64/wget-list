@@ -629,6 +629,9 @@ https://www.linuxfromscratch.org/patches/blfs/12.4/ghostscript-10.05.1-gcc15_fix
 https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
 https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
+https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
+https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
+https://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.bz2
 https://downloads.exim.org/exim4/old/exim-4.98.2.tar.xz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 https://downloads.sourceforge.net/aa-project/aalib-1.4rc5.tar.gz
@@ -689,6 +692,37 @@ https://www.nch.com.au/acm/sample.aac
 https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-taglib-1.patch
 https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-fedora_ffmpeg7-1.patch
+# === для KDE, GNOME и др. ===
+https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz
+https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz
+https://download.gnome.org/sources/gtksourceview/5.16/gtksourceview-5.16.0.tar.xz
+https://download.samba.org/pub/samba/stable/samba-4.22.4.tar.gz
+https://archive.mozilla.org/pub/firefox/releases/140.2.0esr/source/firefox-140.2.0esr.source.tar.xz
+https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.2/protobuf-c-1.5.2.tar.gz
+https://github.com/libexif/libexif/releases/download/v0.6.25/libexif-0.6.25.tar.bz2
+https://libopenraw.freedesktop.org/download/exempi-2.6.6.tar.xz
+https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz
+https://www.linuxfromscratch.org/patches/blfs/12.4/libportal-0.9.1-qt6.9_fixes-1.patch
+https://github.com/flatpak/xdg-desktop-portal/releases/download/1.20.3/xdg-desktop-portal-1.20.3.tar.xz
+https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.3/xdg-desktop-portal-gtk-1.15.3.tar.xz
+https://download.gnome.org/sources/libcloudproviders/0.3/libcloudproviders-0.3.6.tar.xz
+https://github.com/hughsie/libgusb/releases/download/0.4.9/libgusb-0.4.9.tar.xz
+https://www.freedesktop.org/software/colord/releases/colord-1.4.8.tar.xz
+https://www.freedesktop.org/software/colord/releases/colord-gtk-0.3.1.tar.xz
+https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.16.1/libwacom-2.16.1.tar.xz
+https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/1.32.0/libmbim-1.32.0.tar.gz
+https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/archive/1.36.0/libqmi-1.36.0.tar.gz
+https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz
+http://libndp.org/files/libndp-1.9.tar.gz
+https://releases.pagure.org/newt/newt-0.52.25.tar.gz
+https://github.com/libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz
+https://www.kernel.org/pub/linux/bluetooth/bluez-5.83.tar.xz
+https://github.com/akheron/jansson/releases/download/v2.14.1/jansson-2.14.1.tar.bz2
+https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz
+https://github.com/linux-nvme/libnvme/archive/v1.15/libnvme-1.15.tar.gz
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.54.0/downloads/NetworkManager-1.54.0.tar.xz
+https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz
+
 # ======== QtWebEngine ========
 https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
 https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
@@ -700,25 +734,17 @@ https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.1.tar.gz
 https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://github.com/rrthomas/enchant/releases/download/v2.8.12/enchant-2.8.12.tar.gz
-https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/1.32.0/libmbim-1.32.0.tar.gz
-https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/archive/1.36.0/libqmi-1.36.0.tar.gz
-https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz
 https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.bz2
 https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
 https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz
 https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
-
 ###
 # =================================== KDE ======================================
 ###
-
-# ==============================================================================
 https://download.kde.org/stable/phonon/4.12.0/phonon-4.12.0.tar.xz
 https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz
 https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
 https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.18.0.tar.xz
-https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz
-https://github.com/linux-nvme/libnvme/archive/v1.15/libnvme-1.15.tar.gz
 https://downloads.sourceforge.net/smartmontools/smartmontools-7.5.tar.gz
 https://github.com/storaged-project/libbytesize/releases/download/2.11/libbytesize-2.11.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
@@ -730,12 +756,6 @@ https://github.com/AOMediaCodec/libavif/archive/v1.3.0/libavif-1.3.0.tar.gz
 https://github.com/google/highway/archive/1.3.0/highway-1.3.0.tar.gz
 https://github.com/libjxl/libjxl/archive/v0.11.1/libjxl-0.11.1.tar.gz
 https://github.com/zxing-cpp/zxing-cpp/archive/v2.3.0/zxing-cpp-2.3.0.tar.gz
-https://github.com/libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz
-https://github.com/akheron/jansson/releases/download/v2.14.1/jansson-2.14.1.tar.bz2
-https://www.kernel.org/pub/linux/bluetooth/bluez-5.83.tar.xz
-https://releases.pagure.org/newt/newt-0.52.25.tar.gz
-http://libndp.org/files/libndp-1.9.tar.gz
-https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.54.0/downloads/NetworkManager-1.54.0.tar.xz
 https://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz
 https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.4/avahi-0.8-ipv6_race_condition_fix-1.patch
@@ -838,58 +858,58 @@ https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-c
 https://download.kde.org/stable/release-service/25.08.0/src/kio-extras-25.08.0.tar.xz
 https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz
 # ================================= plasma 6 ===================================
-https://download.kde.org/stable/plasma/6.4.4/kdecoration-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/libkscreen-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/libksysguard-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/breeze-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/breeze-gtk-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/layer-shell-qt-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/libplasma-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kscreenlocker-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kinfocenter-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kglobalacceld-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kwayland-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/aurorae-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kwin-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma5support-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kpipewire-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-workspace-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-disks-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/bluedevil-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kde-gtk-config-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kmenuedit-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kscreen-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kwallet-pam-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kwrited-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/milou-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-nm-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-pa-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-workspace-wallpapers-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/polkit-kde-agent-1-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/powerdevil-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-desktop-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kgamma-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/ksshaskpass-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/sddm-kcm-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kactivitymanagerd-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-integration-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/xdg-desktop-portal-kde-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/drkonqi-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-vault-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kde-cli-tools-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/systemsettings-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-thunderbolt-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-firewall-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-systemmonitor-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/qqc2-breeze-style-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/ksystemstats-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/oxygen-sounds-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/kdeplasma-addons-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/plasma-welcome-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/ocean-sound-theme-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/print-manager-6.4.4.tar.xz &&
-https://download.kde.org/stable/plasma/6.4.4/oxygen-6.4.4.tar.xz &&
+https://download.kde.org/stable/plasma/6.4.4/kdecoration-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/libkscreen-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/libksysguard-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/breeze-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/breeze-gtk-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/layer-shell-qt-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/libplasma-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kscreenlocker-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kinfocenter-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kglobalacceld-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kwayland-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/aurorae-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kwin-x11-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kwin-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma5support-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kpipewire-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-workspace-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-disks-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/bluedevil-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kde-gtk-config-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kmenuedit-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kscreen-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kwallet-pam-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kwrited-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/milou-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-nm-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-pa-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-workspace-wallpapers-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/polkit-kde-agent-1-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/powerdevil-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-desktop-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kgamma-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/ksshaskpass-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/sddm-kcm-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kactivitymanagerd-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-integration-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/xdg-desktop-portal-kde-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/drkonqi-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-vault-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kde-cli-tools-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/systemsettings-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-thunderbolt-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-firewall-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-systemmonitor-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/qqc2-breeze-style-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/ksystemstats-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/oxygen-sounds-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/kdeplasma-addons-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/plasma-welcome-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/ocean-sound-theme-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/print-manager-6.4.4.tar.xz
+https://download.kde.org/stable/plasma/6.4.4/oxygen-6.4.4.tar.xz
 https://download.kde.org/stable/plasma/6.4.4/spectacle-6.4.4.tar.xz
 # ==============================================================================
 https://github.com/sddm/sddm/archive/v0.21.0/sddm-0.21.0.tar.gz
@@ -919,30 +939,20 @@ https://download.kde.org/stable/release-service/25.08.0/src/ksystemlog-25.08.0.t
 https://download.kde.org/stable/release-service/25.08.0/src/kweathercore-25.08.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/kweather-25.08.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/yakuake-25.08.0.tar.xz
-
 ###
 # ================================== GNOME =====================================
 ###
-
-
-
 https://download.gnome.org/sources/polkit-gnome/0.105/polkit-gnome-0.105.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/polkit-gnome-0.105-consolidated_fixes-1.patch
-https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
-https://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.bz2
 https://download.gnome.org/sources/gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz
 https://download.gnome.org/sources/gnome-icon-theme-extras/3.12/gnome-icon-theme-extras-3.12.0.tar.xz
 https://download.gnome.org/sources/gnome-icon-theme-symbolic/3.12/gnome-icon-theme-symbolic-3.12.0.tar.xz
 https://download.gnome.org/sources/gnome-themes-extra/3.28/gnome-themes-extra-3.28.tar.xz
-https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz
-https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz
-https://download.gnome.org/sources/gtksourceview/5.16/gtksourceview-5.16.0.tar.xz
 https://download.gnome.org/sources/rest/0.9/rest-0.9.1.tar.xz
 https://download.gnome.org/sources/gnome-online-accounts/3.54/gnome-online-accounts-3.54.5.tar.xz
 https://download.gnome.org/sources/gvfs/1.56/gvfs-1.56.1.tar.xz
 https://download.gnome.org/sources/totem-pl-parser/3.26/totem-pl-parser-3.26.6.tar.xz
 https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-3.26.4.tar.xz
-https://archive.mozilla.org/pub/firefox/releases/140.2.0esr/source/firefox-140.2.0esr.source.tar.xz
 https://download.gnome.org/sources/gjs/1.84/gjs-1.84.2.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/gjs-1.84.2-spidermonkey_140-1.patch
 https://download.gnome.org/sources/gnome-autoar/0.4/gnome-autoar-0.4.5.tar.xz
@@ -953,38 +963,25 @@ https://download.gnome.org/sources/libgtop/2.41/libgtop-2.41.3.tar.xz
 https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.4.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/libgweather-4.4.4-upstream_fix-1.patch
 https://download.gnome.org/sources/libpeas/1.36/libpeas-1.36.0.tar.xz
-https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.2/protobuf-c-1.5.2.tar.gz
 https://download.gnome.org/sources/libshumate/1.4/libshumate-1.4.0.tar.xz
 https://github.com/lfs-book/blocaled/releases/download/v0.7/blocaled-0.7.tar.xz
 https://download.gnome.org/sources/evolution-data-server/3.56/evolution-data-server-3.56.2.tar.xz
-https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
-https://download.samba.org/pub/samba/stable/samba-4.22.4.tar.gz
 https://download.gnome.org/sources/tinysparql/3.9/tinysparql-3.9.2.tar.xz
-https://github.com/libexif/libexif/releases/download/v0.6.25/libexif-0.6.25.tar.bz2
-https://libopenraw.freedesktop.org/download/exempi-2.6.6.tar.xz
 https://download.gnome.org/sources/localsearch/3.9/localsearch-3.9.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/localsearch-3.9.0-libxml2_2_14-1.patch
 https://download.gnome.org/sources/gsound/1.0/gsound-1.0.3.tar.xz
-https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/12.4/libportal-0.9.1-qt6.9_fixes-1.patch
-https://github.com/flatpak/xdg-desktop-portal/releases/download/1.20.3/xdg-desktop-portal-1.20.3.tar.xz
-https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.3/xdg-desktop-portal-gtk-1.15.3.tar.xz
 https://download.gnome.org/sources/xdg-desktop-portal-gnome/48/xdg-desktop-portal-gnome-48.0.tar.xz
 https://download.gnome.org/sources/gnome-backgrounds/48/gnome-backgrounds-48.2.1.tar.xz
-https://download.gnome.org/sources/libcloudproviders/0.3/libcloudproviders-0.3.6.tar.xz
 https://download.gnome.org/sources/nautilus/48/nautilus-48.3.tar.xz
 https://download.gnome.org/sources/gnome-bluetooth/47/gnome-bluetooth-47.1.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/gnome-bluetooth-47.1-build_fix-1.patch
 https://download.gnome.org/sources/gnome-session/48/gnome-session-48.0.tar.xz
-https://github.com/hughsie/libgusb/releases/download/0.4.9/libgusb-0.4.9.tar.xz
-https://www.freedesktop.org/software/colord/releases/colord-1.4.8.tar.xz
-https://www.freedesktop.org/software/colord/releases/colord-gtk-0.3.1.tar.xz
-https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.16.1/libwacom-2.16.1.tar.xz
 https://download.gnome.org/sources/gnome-settings-daemon/48/gnome-settings-daemon-48.1.tar.xz
 https://download.gnome.org/sources/tecla/48/tecla-48.0.2.tar.xz
-https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz
 https://download.gnome.org/sources/gnome-control-center/48/gnome-control-center-48.4.tar.xz
 https://download.gnome.org/sources/mutter/48/mutter-48.4.tar.xz
+
+
 https://download.gnome.org/sources/gdm/48/gdm-48.0.tar.xz
 https://download.gnome.org/sources/gnome-shell/48/gnome-shell-48.4.tar.xz
 https://download.gnome.org/sources/gnome-shell-extensions/48/gnome-shell-extensions-48.3.tar.xz
@@ -1019,6 +1016,5 @@ https://gitlab.gnome.org/World/gedit/libgedit-amtk/-/archive/5.9.1/libgedit-amtk
 https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview/-/archive/299.5.0/libgedit-gtksourceview-299.5.0.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/archive/0.3.0/libgedit-gfls-0.3.0.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-tepl/-/archive/6.13.0/libgedit-tepl-6.13.0.tar.bz2
-
 
 # vim:ft=conf nowrap

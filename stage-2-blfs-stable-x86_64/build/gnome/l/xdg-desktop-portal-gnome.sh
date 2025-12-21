@@ -37,7 +37,7 @@ ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
 # удалим файлы systemd, которые в нашей системе бесполезны
-rm -vf ${TMP_DIR}/tmp
+rm -rf "${TMP_DIR}/tmp"
 
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"

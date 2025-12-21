@@ -6,7 +6,7 @@ PRGNAME="libgweather"
 # Библиотека, используемая для доступа к информации о погоде из онлайн-сервисов
 
 # Required:    geocode-glib
-#              gtk3
+#              gtk+3
 #              libsoup3
 #              python3-pygobject3
 # Recommended: glib
@@ -61,7 +61,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

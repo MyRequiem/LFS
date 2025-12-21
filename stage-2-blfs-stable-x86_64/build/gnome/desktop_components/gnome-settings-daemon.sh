@@ -27,13 +27,13 @@ PRGNAME="gnome-settings-daemon"
 #              modemmanager
 #              nss
 #              wayland
-#              blocaled             (runtime)
+#              blocaled                    (runtime)
 # Optional:    gnome-session
 #              mutter
 #              --- для тестов ---
 #              python3-dbusmock
 #              umockdev
-#              xorg-server          (утилита Xvfb)
+#              xorg-server или xwayland    (утилита Xvfb для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -83,7 +83,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

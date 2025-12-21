@@ -24,7 +24,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# разрешим сборку SpiderMonkey-140
+# разрешим сборку c пакетом spidermonkey-js-engine-140
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-spidermonkey_140-1.patch" || exit 1
 

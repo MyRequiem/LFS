@@ -15,8 +15,7 @@ PRGNAME="libpeas"
 #              glade                (https://glade.gnome.org/)
 #              embed                (https://pypi.org/project/embed)
 #              lgi                  (https://github.com/pavouk/lgi)
-#              luajit
-#              lua                  =5.1 (https://www.lua.org/ftp/lua-5.1.5.tar.gz)
+#              luajit или lua       =5.1 (https://www.lua.org/ftp/lua-5.1.5.tar.gz)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -60,7 +59,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

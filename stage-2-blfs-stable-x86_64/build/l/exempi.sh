@@ -5,9 +5,9 @@ PRGNAME="exempi"
 ### Exempi (an implementation of Adobe's XMP)
 # Реализация XMP (расширяемая платформа метаданных Adobe)
 
-# Required:    boost
+# Required:    ^boost
 # Recommended: no
-# Optional:    valgrind
+# Optional:    ^valgrind
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

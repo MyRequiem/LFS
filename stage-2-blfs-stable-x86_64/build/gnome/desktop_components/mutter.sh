@@ -52,12 +52,15 @@ sed "/c_args:/a '-U', 'G_DISABLE_ASSERT'," -i \
 mkdir build
 cd build || exit 1
 
-meson setup                 \
-    --prefix=/usr           \
-    --buildtype=release     \
-    -D tests=disabled       \
-    -D profiler=false       \
-    -D bash_completion=true \
+# для сборки с bash_completion
+#    -D bash_completion=true
+# требуется модуль python3-argcomplete, который не входит в состав LFS-BLFS
+meson setup                  \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D tests=disabled        \
+    -D profiler=false        \
+    -D bash_completion=false \
     .. || exit 1
 
 ninja || exit 1
@@ -87,7 +90,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

@@ -73,10 +73,11 @@ DESTDIR="${TMP_DIR}" ninja install
 # нужны для менеджеров запуска графических сеансов (sddm, gdm и др.)
 #
 # NOTE:
-#    В каждом каталоге системы BLFS необходим ТОЛЬКО ОДИН файл
+#    В каждом каталоге системы BLFS необходим ТОЛЬКО ОДИН файл для каждого
+#    графического сеанса
 
 # пакет создает два файла .desktop на основе Xorg
-#    /usr/share/xsessions/gnome{,-x11}.desktop
+#    /usr/share/xsessions/gnome{,-xorg}.desktop
 # и два файла на основе Wayland
 #    /usr/share/wayland-sessions/gnome{,-wayland}.desktop
 #
@@ -85,7 +86,7 @@ rm -f "${TMP_DIR}/usr/share/xsessions/gnome.desktop"
 rm -f "${TMP_DIR}/usr/share/wayland-sessions/gnome.desktop"
 
 # удалим модули systemd, которые бесполезны в нашей SysV системе
-rm -rv "${TMP_DIR}/tmp"
+rm -rf "${TMP_DIR}/tmp"
 
 # последовательность запуска gnome-wayland требует создания сеанса DBus. В
 # нашей SysV системе это необходимо добавить в поставляемый файл

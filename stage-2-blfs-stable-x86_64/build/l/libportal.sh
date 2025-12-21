@@ -37,17 +37,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --version -Np1 -i \
+patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-qt6.9_fixes-1.patch" || exit 1
 
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    -D vapi=false       \
-    -D docs=false       \
+meson setup                 \
+    --prefix=/usr           \
+    --buildtype=release     \
+    -D docs=false           \
+    -D backend-qt5=disabled \
     .. || exit 1
 
 ninja || exit 1
@@ -74,7 +74,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

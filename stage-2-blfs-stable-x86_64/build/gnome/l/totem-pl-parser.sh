@@ -15,7 +15,6 @@ PRGNAME="totem-pl-parser"
 #              gvfs                 (для некоторых тестов)
 #              lcov                 (https://github.com/linux-test-project/lcov)
 #              libquvi              >= 0.9.1 (https://sourceforge.net/projects/quvi)
-#              libquvi-scripts      (https://sourceforge.net/projects/quvi)
 #              lua-socket           (для тестов) https://github.com/diegonehab/luasocket
 
 ROOT="/root/src/lfs"
@@ -58,7 +57,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

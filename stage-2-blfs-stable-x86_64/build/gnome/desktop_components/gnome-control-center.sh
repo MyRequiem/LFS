@@ -30,8 +30,8 @@ PRGNAME="gnome-control-center"
 # Recommended: ibus
 #              blocaled                     (runtime)
 # Optional:    --- для тестов ---
-#              xorg-server                  (утилита Xvfb)
-#              python3-dbusmock             (both for tests)
+#              xorg-server или xwayland     (утилита Xvfb)
+#              python3-dbusmock
 #              --- runtime ---
 #              cups-pk-helper               (панель для принтеров)
 #              gnome-color-manager          (цветовая панель)

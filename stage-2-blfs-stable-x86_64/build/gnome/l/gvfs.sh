@@ -17,7 +17,7 @@ PRGNAME="gvfs"
 #              libsoup3
 #              elogind
 #              udisks
-# Optional:    apache
+# Optional:    apache-httpd
 #              avahi
 #              bluez
 #              fuse3
@@ -55,11 +55,12 @@ meson setup                  \
     -D onedrive=false        \
     -D fuse=true             \
     -D gphoto2=false         \
+    -D cdda=false            \
     -D afc=false             \
     -D bluray=false          \
     -D nfs=false             \
     -D mtp=false             \
-    -D smb=false             \
+    -D smb=true              \
     -D tmpfilesdir=no        \
     -D dnssd=true            \
     -D goa=false             \
@@ -94,7 +95,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

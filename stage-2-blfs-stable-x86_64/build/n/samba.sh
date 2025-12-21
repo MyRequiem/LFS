@@ -12,7 +12,7 @@ PRGNAME="samba"
 
 # Required:    gnutls
 #              libtirpc
-#              parse-yapp
+#              perl-parse-yapp
 #              rpcsvc-proto
 # Recommended: dbus
 #              fuse3
@@ -45,30 +45,30 @@ PRGNAME="samba"
 #              vala
 #              valgrind
 #              xfsprogs
-#              cmocka
-#              cryptography
-#              ctdb
-#              cwrap
-#              dnspython
-#              fam
-#              gamin
-#              glusterfs
-#              heimdal
-#              iso8601
-#              ldb
-#              openafs
-#              poetry-core
-#              pyasn1
-#              tevent
-#              tdb
-#              tracker-2
+#              cmocka                   (https://cmocka.org/)
+#              cryptography             (https://cryptography.io/en/latest/)
+#              ctdb                     (https://ctdb.samba.org/)
+#              cwrap                    (https://cwrap.org/)
+#              python3-dnspython        (https://pypi.python.org/pypi/dnspython/)
+#              fam                      (https://packages.debian.org/bullseye/fam)
+#              gamin                    (https://packages.debian.org/sid/gamin)
+#              glusterfs                (https://www.gluster.org/)
+#              heimdal                  (https://github.com/heimdal/)
+#              iso8601                  (https://pypi.org/project/iso8601/)
+#              ldb                      (https://ldb.samba.org/)
+#              openafs                  (https://www.openafs.org/)
+#              poetry-core              (https://github.com/python-poetry/poetry-core)
+#              python3-pyasn1           (https://pypi.org/project/pyasn1/)
+#              tevent                   (https://tevent.samba.org/)
+#              tdb                      (https://tdb.samba.org/)
+#              tracker2                 (https://download.gnome.org/sources/tracker/2.3/)
 #              --- для тестов при разработке ---
 #              python3-six
 #              python3-pytest
-#              python3-argparse
-#              python3-testtools
-#              python3-testscenarios
-#              python3-python-subunit
+#              python3-argparse         (https://pypi.python.org/pypi/argparse/)
+#              python3-testtools        (https://pypi.python.org/pypi/testtools/)
+#              python3-testscenarios    (https://pypi.python.org/pypi/testscenarios/)
+#              python3-python-subunit   (https://pypi.python.org/pypi/python-subunit/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -113,6 +113,9 @@ sed '1s@^.*$@#!/usr/bin/python3@' \
 rm -rf /usr/lib/python3.13/site-packages/samba
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/run"
+rm -rf "${TMP_DIR}/var/run"
 
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
@@ -181,7 +184,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

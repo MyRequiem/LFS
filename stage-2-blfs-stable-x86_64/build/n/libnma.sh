@@ -9,7 +9,7 @@ PRGNAME="libnma"
 # которая позволяет утилитам получать доступ к настройкам Wi-Fi, Ethernet и
 # другим сетевым службам.
 
-# Required:    gcr
+# Required:    gcr3
 #              gtk+3
 #              iso-codes
 #              networkmanager
@@ -59,7 +59,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

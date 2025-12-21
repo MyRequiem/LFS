@@ -32,13 +32,19 @@ PRGNAME="localsearch"
 ###
 # Конфигурация ядра
 ###
+# NOTE:
+#  - Обязательно, иначе ошибка конфигурации:
+#    ../meson.build:160:4: ERROR: Problem encountered:
+#    Landlock was auto-enabled in build options, but is disabled in the kernel
+#    Либо собирать с параметром:
+#    # Disable landlock sandboxing support in Tracker metadata extractor
+#    -D landlock=disabled (не рекомендуется)
+#
 #    CONFIG_SECURITY=y
 #    CONFIG_SECURITY_LANDLOCK=y
-#    CONFIG_LSM="упорядоченный список включенных LSM"
-###
-
-### NOTE
-# Перед обновлением установленный пакет следует удалить из системы
+#    CONFIG_LSM="landlock,lockdown,smack,yama,loadpin,safesetid,integrity"
+#
+#  - Перед обновлением установленный пакет следует удалить из системы
 ###
 
 ROOT="/root/src/lfs"
@@ -94,7 +100,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"
