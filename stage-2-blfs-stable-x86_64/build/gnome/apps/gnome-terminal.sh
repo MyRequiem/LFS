@@ -40,6 +40,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -fv "${TMP_DIR}/usr/lib/systemd/user/gnome-terminal-server.service"
 
+rm -rf "${TMP_DIR}/usr/share/help"
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
@@ -59,7 +60,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

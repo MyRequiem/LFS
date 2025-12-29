@@ -65,11 +65,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure                \
-    --prefix=/usr          \
-    --sysconfdir=/etc      \
-    --enable-documentation \
-    .. || exit 1
+./configure       \
+    --prefix=/usr \
+    --sysconfdir=/etc || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

@@ -315,6 +315,7 @@ https://github.com/jasper-software/jasper/archive/version-4.2.8/jasper-version-4
 https://github.com/abseil/abseil-cpp/releases/download/20250814.1/abseil-cpp-20250814.1.tar.gz
 https://github.com/protocolbuffers/protobuf/releases/download/v32.0/protobuf-32.0.tar.gz
 https://download.qt.io/archive/qt/6.9/6.9.2/single/qt-everywhere-src-6.9.2.tar.xz
+https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz
 https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.9/upower-v1.90.9.tar.bz2
 https://download.kde.org/stable/frameworks/6.17/extra-cmake-modules-6.17.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/extra-cmake-modules-6.17.0-upstream_fix-1.patch
@@ -722,29 +723,19 @@ https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/k
 https://github.com/linux-nvme/libnvme/archive/v1.15/libnvme-1.15.tar.gz
 https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.54.0/downloads/NetworkManager-1.54.0.tar.xz
 https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz
-
-# ======== QtWebEngine ========
-https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
-https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
-https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtwebengine-everywhere-src-6.9.3.tar.xz
-# ======== WebkitGTK ========
-https://github.com/google/woff2/archive/v1.0.2/woff2-1.0.2.tar.gz
-https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz
+https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz
+https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.30/power-profiles-daemon-0.30.tar.gz
+https://github.com/cjlin1/liblinear/archive/v249/liblinear-249.tar.gz
+https://nmap.org/dist/nmap-7.98.tar.bz2
+https://github.com/freerdp/freerdp/archive/3.17.0/FreeRDP-3.17.0.tar.gz
+https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz
+https://downloads.sourceforge.net/bogofilter/bogofilter-1.2.5.tar.xz
 https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.1.tar.gz
 https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
 https://github.com/rrthomas/enchant/releases/download/v2.8.12/enchant-2.8.12.tar.gz
-https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.bz2
-https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
-https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz
-https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
-###
-# =================================== KDE ======================================
-###
-https://download.kde.org/stable/phonon/4.12.0/phonon-4.12.0.tar.xz
-https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz
-https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
-https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.18.0.tar.xz
+https://download.gnome.org/sources/gspell/1.14/gspell-1.14.0.tar.xz
+https://github.com/aruiz/webp-pixbuf-loader/archive/0.2.7/webp-pixbuf-loader-0.2.7.tar.gz
 https://downloads.sourceforge.net/smartmontools/smartmontools-7.5.tar.gz
 https://github.com/storaged-project/libbytesize/releases/download/2.11/libbytesize-2.11.tar.gz
 https://0pointer.de/public/libatasmart-0.19.tar.xz
@@ -761,10 +752,38 @@ https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.4/avahi-0.8-ipv6_race_condition_fix-1.patch
 https://github.com/fukuchi/libqrencode/archive/v4.1.1/libqrencode-4.1.1.tar.gz
 https://download.kde.org/stable/qca/2.3.10/qca-2.3.10.tar.xz
-https://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
 https://files.pythonhosted.org/packages/source/c/chardet/chardet-5.2.0.tar.gz
 https://files.pythonhosted.org/packages/source/d/doxypypy/doxypypy-0.8.8.7.tar.gz
 https://files.pythonhosted.org/packages/source/d/doxyqml/doxyqml-0.5.3.tar.gz
+https://files.pythonhosted.org/packages/source/c/certifi/certifi-2025.8.3.tar.gz
+https://github.com/getsentry/sentry-python/releases/download/2.35.0/sentry_sdk-2.35.0.tar.gz
+https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.11.0.0.tar.gz
+https://github.com/jordansissel/xdotool/releases/download/v3.20211022.1/xdotool-3.20211022.1.tar.gz
+https://github.com/opencv/opencv/archive/4.12.0/opencv-4.12.0.tar.gz
+https://doxygen.nl/files/doxygen-1.14.0.src.tar.gz
+https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.3.0/downloads/libdisplay-info-0.3.0.tar.xz
+https://github.com/libproxy/libproxy/archive/0.5.10/libproxy-0.5.10.tar.gz
+https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz
+https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.4.0.tar.xz
+# ======== QtWebEngine ========
+https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
+https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtwebengine-everywhere-src-6.9.3.tar.xz
+# ======== WebkitGTK ========
+https://github.com/google/woff2/archive/v1.0.2/woff2-1.0.2.tar.gz
+https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz
+https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.bz2
+https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
+https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz
+https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
+###
+# =================================== KDE ======================================
+###
+https://download.kde.org/stable/phonon/4.12.0/phonon-4.12.0.tar.xz
+https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz
+https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
+https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.18.0.tar.xz
+https://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
 # ============================== kde-frameworks ================================
 https://download.kde.org/stable/frameworks/6.17/attica-6.17.0.tar.xz
 https://download.kde.org/stable/frameworks/6.17/kapidox-6.17.0.tar.xz
@@ -840,23 +859,11 @@ https://download.kde.org/stable/frameworks/6.17/kuserfeedback-6.17.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/libkexiv2-25.08.0.tar.xz
 https://download.kde.org/stable/pulseaudio-qt/pulseaudio-qt-1.7.0.tar.xz
 https://download.kde.org/stable/kirigami-addons/kirigami-addons-1.9.0.tar.xz
-https://files.pythonhosted.org/packages/source/c/certifi/certifi-2025.8.3.tar.gz
-https://github.com/getsentry/sentry-python/releases/download/2.35.0/sentry_sdk-2.35.0.tar.gz
-https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.11.0.0.tar.gz
-https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.30/power-profiles-daemon-0.30.tar.gz
-https://github.com/jordansissel/xdotool/releases/download/v3.20211022.1/xdotool-3.20211022.1.tar.gz
 https://github.com/danvratil/qcoro/archive/v0.12.0/qcoro-0.12.0.tar.gz
-https://github.com/opencv/opencv/archive/4.12.0/opencv-4.12.0.tar.gz
 https://github.com/Qalculate/libqalculate/releases/download/v5.7.0/libqalculate-5.7.0.tar.gz
-https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.3.0/downloads/libdisplay-info-0.3.0.tar.xz
 https://download.kde.org/stable/plasma/6.4.4/plasma-activities-6.4.4.tar.xz
 https://download.kde.org/stable/plasma/6.4.4/plasma-activities-stats-6.4.4.tar.xz
-https://github.com/libproxy/libproxy/archive/0.5.10/libproxy-0.5.10.tar.gz
-https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz
-https://doxygen.nl/files/doxygen-1.14.0.src.tar.gz
-https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.4.0.tar.xz
 https://download.kde.org/stable/release-service/25.08.0/src/kio-extras-25.08.0.tar.xz
-https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz
 # ================================= plasma 6 ===================================
 https://download.kde.org/stable/plasma/6.4.4/kdecoration-6.4.4.tar.xz
 https://download.kde.org/stable/plasma/6.4.4/libkscreen-6.4.4.tar.xz
@@ -980,41 +987,31 @@ https://download.gnome.org/sources/gnome-settings-daemon/48/gnome-settings-daemo
 https://download.gnome.org/sources/tecla/48/tecla-48.0.2.tar.xz
 https://download.gnome.org/sources/gnome-control-center/48/gnome-control-center-48.4.tar.xz
 https://download.gnome.org/sources/mutter/48/mutter-48.4.tar.xz
-
-
 https://download.gnome.org/sources/gdm/48/gdm-48.0.tar.xz
 https://download.gnome.org/sources/gnome-shell/48/gnome-shell-48.4.tar.xz
 https://download.gnome.org/sources/gnome-shell-extensions/48/gnome-shell-extensions-48.3.tar.xz
 https://download.gnome.org/sources/gnome-tweaks/46/gnome-tweaks-46.1.tar.xz
-https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz !!! Поставить перед upower.sh !!!
 https://download.gnome.org/sources/snapshot/48/snapshot-48.0.1.tar.xz
 https://download.gnome.org/sources/gnome-weather/48/gnome-weather-48.0.tar.xz
 https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.56.0/gnome-terminal-3.56.0.tar.gz
 https://download.gnome.org/sources/gnome-system-monitor/48/gnome-system-monitor-48.1.tar.xz
 https://download.gnome.org/sources/gnome-screenshot/41/gnome-screenshot-41.0.tar.xz
-https://github.com/cjlin1/liblinear/archive/v249/liblinear-249.tar.gz !!! поставить в конце PART 3, перед KDE, после xap/vlc.sh !!!
-https://nmap.org/dist/nmap-7.98.tar.bz2 !!! поставить после l/liblinear.sh !!!
 https://download.gnome.org/sources/gnome-nettool/42/gnome-nettool-42.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/gnome-nettool-42.0-ping_and_netstat_fixes-1.patch
 https://download.gnome.org/sources/gnome-maps/48/gnome-maps-48.6.tar.xz
-https://github.com/freerdp/freerdp/archive/3.17.0/FreeRDP-3.17.0.tar.gz !!! поставить в конце PART 3 !!!
 https://download.gnome.org/sources/gnome-connections/48/gnome-connections-48.0.tar.xz
 https://download.gnome.org/sources/gnome-color-manager/3.36/gnome-color-manager-3.36.2.tar.xz
 https://download.gnome.org/sources/gnome-calculator/48/gnome-calculator-48.1.tar.xz
 https://download.gnome.org/sources/file-roller/44/file-roller-44.5.tar.xz
 https://download.gnome.org/sources/seahorse/47/seahorse-47.0.1.tar.xz
-https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz
-https://downloads.sourceforge.net/bogofilter/bogofilter-1.2.5.tar.xz
-https://download.gnome.org/sources/gspell/1.14/gspell-1.14.0.tar.xz
 https://download.gnome.org/sources/evolution/3.56/evolution-3.56.2.tar.xz
 https://download.gnome.org/sources/evince/48/evince-48.1.tar.xz
-https://github.com/aruiz/webp-pixbuf-loader/archive/0.2.7/webp-pixbuf-loader-0.2.7.tar.gz
 https://download.gnome.org/sources/eog/47/eog-47.0.tar.xz
 https://download.gnome.org/sources/epiphany/48/epiphany-48.5.tar.xz
-https://download.gnome.org/sources/gedit/48/gedit-48.1.tar.xz
 https://gitlab.gnome.org/World/gedit/libgedit-amtk/-/archive/5.9.1/libgedit-amtk-5.9.1.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview/-/archive/299.5.0/libgedit-gtksourceview-299.5.0.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/archive/0.3.0/libgedit-gfls-0.3.0.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-tepl/-/archive/6.13.0/libgedit-tepl-6.13.0.tar.bz2
+https://download.gnome.org/sources/gedit/48/gedit-48.1.tar.xz
 
 # vim:ft=conf nowrap

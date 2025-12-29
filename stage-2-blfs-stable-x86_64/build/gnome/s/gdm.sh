@@ -70,6 +70,7 @@ ninja || exit 1
 # для тестов нужна утилита 'check', которая была удалена из LFS
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share/help"
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
@@ -108,15 +109,6 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# GDM приостанавливает работу системы, если экран приветствия некоторое время
-# работает без какого-либо интерактивного ввода (Auto-Suspend). Отключим такое
-# поведение:
-su gdm -s /bin/bash                                                \
-       -c "dbus-run-session                                        \
-             gsettings set org.gnome.settings-daemon.plugins.power \
-                           sleep-inactive-ac-type                  \
-                           nothing"
-
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNOME Display Manager)
@@ -131,7 +123,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

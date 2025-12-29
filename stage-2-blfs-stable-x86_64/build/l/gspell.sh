@@ -15,7 +15,7 @@ PRGNAME="gspell"
 #              gtk-doc
 #              vala
 #              valgrind
-#              hunspell    (для тестов) https://hunspell.github.io/
+#              hunspell     (для тестов) https://hunspell.github.io/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -59,7 +59,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

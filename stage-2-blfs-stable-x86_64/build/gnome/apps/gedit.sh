@@ -39,6 +39,9 @@ mkdir -pv "${TMP_DIR}"
 #    libgedit-gfls              - File loading and saving
 #    libgedit-tepl              - Text editor product line
 
+### WARNING
+# порядок сборки библиотек ВАЖЕН
+###
 LIBS="\
 libgedit-amtk \
 libgedit-gtksourceview \
@@ -61,31 +64,31 @@ for LIB in ${LIBS}; do
 
     tar -xvf "${SOURCES}/${LIBARCH}" || exit 1
 
-    pushd "${PKGDIR}"
+    pushd "${PKGDIR}" || exit 1
+
     # директория build уже существует в архиве (с одним файлом .gitignore)
-    cd build
+    cd build || exit 1
 
     meson setup ..          \
         --prefix=/usr       \
         --buildtype=release \
-        -D gtk_doc=false || exit 1
+        -D gtk_doc=false    \
+        -D tests=false || exit 1
 
     ninja || exit 1
-    # ninja test 2>&1 | tee ../../$packagedir-test.log
+    # ninja test 2>&1 | tee "../../${PKGDIR}-test.log"
     DESTDIR="${TMP_DIR}" ninja install
 
-    popd
+    rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+    source "${ROOT}/stripping.sh"      || exit 1
+    source "${ROOT}/update-info-db.sh" || exit 1
+    /bin/cp -vpR "${TMP_DIR}"/* /
+
+    popd || exit 1
 
     rm -rf "${PKGDIR}"
 done
-
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
-
-# устанавливаем библиотеки в систему
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vpR "${TMP_DIR}"/* /
 
 # собираем gedit
 cd build || exit 1
@@ -93,14 +96,14 @@ cd build || exit 1
 meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D gtk_doc=false || exit 1
+    -D gtk_doc=false    \
+    -D user_documentation=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -124,7 +127,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

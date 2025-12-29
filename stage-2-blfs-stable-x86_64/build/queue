@@ -87,7 +87,6 @@ ap/lzip.sh
 ap/7zip.sh
 a/lrzip.sh
 ap/sudo.sh
-
 # На данный момент установлены все необходимые пакеты для более-менее
 # комфортной работы в чистой linux-консоли:
 #    - терминальный мультиплексор Tmux
@@ -133,7 +132,6 @@ ap/sudo.sh
 #    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
 #    Extracting Java cacerts (JKS) to:
 #    /etc/pki/tls/java/cacerts...Done!
-
 # ================================== PART 2 ====================================
 l/fribidi.sh
 l/libuv.sh
@@ -328,6 +326,7 @@ d/abseil-cpp.sh
 d/protobuf.sh
 l/qt6.sh
 # ===========
+x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
 kde/icons/oxygen-icons.sh
@@ -591,7 +590,7 @@ l/v4l-utils.sh
 l/xapian.sh
 ap/faad2.sh
 xap/vlc.sh
-# === для KDE, GNOME и др. ===
+# === зависимости для KDE, GNOME и др. ===
 l/gtksourceview3.sh
 l/gtksourceview4.sh
 l/gtksourceview5.sh
@@ -620,29 +619,17 @@ l/keyutils.sh
 l/libnvme.sh
 n/networkmanager.sh
 n/libnma.sh
-
-# === QtWebEngine ===
-l/pipewire.sh
-l/wireplumber.sh
-kde/l/qtwebengine.sh
-# === webkitgtk ===
-l/woff2.sh
-n/xdg-dbus-proxy.sh
+s/accountsservice.sh
+s/power-profiles-daemon.sh
+l/liblinear.sh
+n/nmap.sh
+xap/freerdp.sh
+l/gsl.sh
+ap/bogofilter.sh
 l/aspell.sh
 l/enchant.sh
-n/geoclue.sh
-s/bubblewrap.sh
-d/unifdef.sh
-l/webkitgtk.sh
-###
-# =================================== KDE ======================================
-###
-#
-# === kde-frameworks + зависимости ===
-kde/l/phonon.sh
-kde/l/phonon-backend-vlc.sh
-kde/l/polkit-qt.sh
-kde/s/plasma-wayland-protocols.sh
+l/gspell.sh
+l/webp-pixbuf-loader.sh
 a/smartmontools.sh
 l/libbytesize.sh
 l/libatasmart.sh
@@ -658,41 +645,54 @@ l/libdaemon.sh
 n/avahi.sh
 l/libqrencode.sh
 l/qca.sh
-kde/icons/breeze-icons.sh
 d/python-modules/python3-chardet.sh
 d/python-modules/python3-doxypypy.sh
 d/python-modules/python3-doxyqml.sh
-kde/frameworks/kde-frameworks.sh
-# === plasma + зависимости ===
-kde/l/libkexiv2.sh
-kde/plasma/pulseaudio-qt.sh
-kde/plasma/kirigami-addons.sh
 d/python-modules/python3-certifi.sh
 d/python-modules/python3-sentry-sdk.sh
 d/python-modules/python3-pygdbmi.sh
-s/power-profiles-daemon.sh
 s/xdotool.sh
-kde/l/qcoro.sh
 l/opencv.sh
-kde/l/libqalculate.sh
 d/doxygen.sh
 s/libdisplay-info.sh
-kde/plasma/plasma-activities.sh
-kde/plasma/plasma-activities-stats.sh
 l/libproxy.sh
 n/kdsoap.sh
 n/kdsoap-ws-discovery-client.sh
+# === QtWebEngine ===
+l/pipewire.sh
+l/wireplumber.sh
+kde/l/qtwebengine.sh
+# === webkitgtk ===
+l/woff2.sh
+n/xdg-dbus-proxy.sh
+n/geoclue.sh
+s/bubblewrap.sh
+d/unifdef.sh
+l/webkitgtk.sh
+# =================================== KDE ======================================
+# === kde-frameworks ===
+kde/l/phonon.sh
+kde/l/phonon-backend-vlc.sh
+kde/l/polkit-qt.sh
+kde/s/plasma-wayland-protocols.sh
+kde/icons/breeze-icons.sh
+kde/frameworks/kde-frameworks.sh
+# === plasma ===
+kde/l/libkexiv2.sh
+kde/plasma/pulseaudio-qt.sh
+kde/plasma/kirigami-addons.sh
+kde/l/qcoro.sh
+kde/l/libqalculate.sh
+kde/plasma/plasma-activities.sh
+kde/plasma/plasma-activities-stats.sh
 kde/l/kio-extras.sh
-kde/s/accountsservice.sh
 kde/plasma/plasma.sh
 # ===  Simple Desktop Display Manager ===
 kde/s/sddm.sh
 # === plasma applications ===
 kde/apps/plasma-applications.sh
-###
 # ================================== GNOME =====================================
-###
-# =================== Libraries and Desktop + зависимости ======================
+# ============ Libraries and Desktop ============
 gnome/s/polkit-gnome.sh
 gnome/icons/gnome-icon-theme.sh
 gnome/icons/gnome-icon-theme-extras.sh
@@ -718,7 +718,7 @@ gnome/l/tinysparql.sh
 gnome/l/localsearch.sh
 gnome/l/gsound.sh
 gnome/l/xdg-desktop-portal-gnome.sh
-# ===================== Desktop Components + зависимости =======================
+# ============== Desktop Components ==============
 gnome/desktop_components/gnome-backgrounds.sh
 gnome/apps/nautilus.sh
 gnome/n/gnome-bluetooth.sh
@@ -727,35 +727,25 @@ gnome/desktop_components/gnome-settings-daemon.sh
 gnome/desktop_components/tecla.sh
 gnome/desktop_components/gnome-control-center.sh
 gnome/desktop_components/mutter.sh
-
-
 gnome/s/gdm.sh
 gnome/desktop_components/gnome-shell.sh
 gnome/desktop_components/gnome-shell-extensions.sh
 gnome/desktop_components/gnome-tweaks.sh
-# ============================ GNOME Applications ==============================
-x/misc/xdg-user-dirs.sh      !!! Поставить перед upower.sh !!!
+# =============== GNOME Applications ===============
 gnome/apps/snapshot.sh
 gnome/apps/gnome-weather.sh
 gnome/apps/gnome-terminal.sh
 gnome/apps/gnome-system-monitor.sh
 gnome/apps/gnome-screenshot.sh
-l/liblinear.sh          !!! поставить в конце PART 3, перед KDE, после xap/vlc.sh !!!
-n/nmap.sh               !!! поставить после l/liblinear.sh !!!
 gnome/apps/gnome-nettool.sh
 gnome/apps/gnome-maps.sh
-xap/freerdp.sh          !!! поставить в конце PART 3 !!!
 gnome/apps/gnome-connections.sh
 gnome/apps/gnome-color-manager.sh
 gnome/apps/gnome-calculator.sh
 gnome/apps/file-roller.sh
 gnome/apps/seahorse.sh
-l/gsl.sh
-ap/bogofilter.sh
-l/gspell.sh
 gnome/apps/evolution.sh
 gnome/apps/evince.sh
-l/webp-pixbuf-loader.sh
 gnome/apps/eog.sh
 gnome/xap/epiphany.sh
 gnome/apps/gedit.sh

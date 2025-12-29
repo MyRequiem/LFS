@@ -49,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # updated forecasts provided by various internet services
 #
 # Home page:  https://github.com/GNOME/${PRGNAME}
-# Download:   https://download.gnome.org/sources/${PRGNAME}/48/${PRGNAME}-${VERSION}.tar.xz
+# Download:   https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

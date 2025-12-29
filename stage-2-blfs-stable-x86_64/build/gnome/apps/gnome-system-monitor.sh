@@ -29,6 +29,7 @@ mkdir -pv "${TMP_DIR}"
 
 # удалим жесткую зависимость от catch2, которая используется только при
 # выполнении модульных тестов
+# shellcheck disable=SC2038
 find . -name meson.build | xargs sed -i -e '/catch2/d' || exit 1
 sed -i '152,162d' src/meson.build                      || exit 1
 
@@ -45,6 +46,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share/help"
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
