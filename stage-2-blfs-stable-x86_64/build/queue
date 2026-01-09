@@ -590,6 +590,7 @@ l/libmad.sh
 l/v4l-utils.sh
 l/xapian.sh
 ap/faad2.sh
+s/conky.sh
 xap/vlc.sh
 # === зависимости для KDE, GNOME, LXQt и др. ===
 l/gtksourceview3.sh

@@ -68,7 +68,7 @@ bubblewrap                              fontconfig, webkitgtk, gnome-desktop, xd
 bumblebee-status
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   glib, harfbuzz, ghostscript, python3-pycairo, cairomm114, cairomm118, pango, librsvg, libdrm, gegl, gst-plugins-good, i3, poppler, zathura, webkitgtk, gjs, freerdp
+cairo                                   glib, harfbuzz, ghostscript, python3-pycairo, cairomm114, cairomm118, pango, librsvg, libdrm, gegl, gst-plugins-good, i3, poppler, zathura, webkitgtk, gjs, freerdp, conky
 cairo-5c                                xorg-applications
 cairomm114                              pangomm24
 cairomm118                              pangomm25
@@ -88,11 +88,12 @@ clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
 clutter-gtk                             evolution
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, phonon, polkit-qt, highway, libjxl, zxing-cpp, libical, qca, opencv, doxygen, sddm, woff2, webkitgtk, totem-pl-parser, localsearch, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, phonon, polkit-qt, highway, libjxl, zxing-cpp, libical, qca, opencv, doxygen, sddm, woff2, webkitgtk, totem-pl-parser, localsearch, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt, conky
 cmark                                   evolution
 cmocka                                  gnutls, mit-kerberos-v5, samba
 colord                                  cups, gtk+3, gtk4, colord-gtk, gnome-settings-daemon, gnome-color-manager
 colord-gtk                              colord, gnome-control-center
+conky
 corefonts                               imagemagick
 cpdb                                    gtk4
 cpio                                    openjdk, openoffice, plasma-applications, file-roller
@@ -108,7 +109,7 @@ cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome, zen-browser, samba, qtwebengine, gnome-settings-daemon, gnome-control-center, freerdp, evince
 cups-filters                            cups
 cups-pk-helper                          gnome-control-center
-curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, vim, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib, smartmontools, networkmanager, libqalculate, libproxy
+curl                                    gnupg, curlftpfs, git, lnav, cmake, rustc, fontconfig, libvpx, feh, vim, exiv2, imagemagick, libsoup2, libsoup3, gst-plugins-bad, appstream, qemu, python3-pycurl, poppler, appstream-glib, smartmontools, networkmanager, libqalculate, libproxy, conky
 curlftpfs                               vifm
 cwrap                                   samba
 cxxopts                                 pamixer
@@ -352,7 +353,7 @@ icu                                     libpsl, libxml2, boost, harfbuzz, vte3, 
 id3lib
 imagemagick                             gnupg, feh, openbox
 imake                                   xxkb
-imlib2                                  w3m, feh, giblib, maim, openbox
+imlib2                                  w3m, feh, giblib, maim, openbox, conky
 impacket                                curl
 inih                                    exiv2
 inkscape                                imagemagick, gnome-icon-theme-extras, gnome-icon-theme-symbolic
@@ -630,7 +631,7 @@ libxcvt                                 xwayland, xorg-server, plasma, mutter
 libxdmcp                                libxcb
 libxkbcommon                            xkeyboard-config, gtk+3, ibus, sdl2, gst-plugins-bad, gtk4, i3, flameshot, qt5-components, qt6, libei, plasma, tecla, mutter, freerdp, lxqt-panel
 libxklavier
-libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, spirv-llvm-translator, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libgsf, libxklavier, dconf, libei, libsoup2, libsoup3, vte3, appstream, osinfo-db-tools, libvirt-glib, gimp, gst-plugins-bad, vlc, libical, breeze-icons, libqalculate, doxygen, plasma-applications, gtksourceview4, gtksourceview5, gvfs, gnome-desktop, libgweather, libpeas, libwacom, bogofilter, evince, gedit
+libxml2                                 wpa-supplicant, libxslt, libarchive, docbook-xml, docbook-xsl, nghttp2, llvm, bind-utils, xcb-proto, fontconfig, spirv-llvm-translator, perl-xml-sax, perl-alien-libxml2, cairo, shared-mime-info, wayland, libgsf, libxklavier, dconf, libei, libsoup2, libsoup3, vte3, appstream, osinfo-db-tools, libvirt-glib, gimp, gst-plugins-bad, vlc, libical, breeze-icons, libqalculate, doxygen, plasma-applications, gtksourceview4, gtksourceview5, gvfs, gnome-desktop, libgweather, libpeas, libwacom, bogofilter, evince, gedit, conky
 libxmlb                                 appstream
 libxslt                                 linux-pam, p11-kit, glib, python3-lxml, upower, docbook-xsl, elogind, xmlto, libsigc++2, libsigc++3, xorgproto, libxdmcp, libxcb, libsecret, gcr3, gcr4, gnome-keyring, perl-xml-libxslt, glibmm26, vala, wayland, libdrm, gtk+3, goffice, polkit, dconf, exiv2, libgxps, glibmm28, appstream, osinfo-db-tools, appstream-glib, qtwebengine, udisks, kde-frameworks, bubblewrap, samba, gvfs, gnome-session, colord, colord-gtk, xdg-user-dirs, gtk-doc
 libyajl                                 i3, libvirt, libvirt-glib, python3-libvirt
@@ -657,7 +658,7 @@ lshw
 lsof
 lsscsi
 ltc-tools                               gst-plugins-bad
-lua                                     highlight, vim, gimp, vlc, wireplumber, libpeas, nmap
+lua                                     highlight, vim, gimp, vlc, wireplumber, libpeas, nmap, conky
 lua-socket                              totem-pl-parser
 luajit                                  mpv, gegl, libpeas
 luit                                    xterm
@@ -1225,7 +1226,7 @@ xorg-cf-files                           imake
 xorg-evdev-driver                       plasma
 xorg-fonts                              librsvg, xwayland, xorg-server, aalib
 xorg-libinput-driver                    xorg-server, lxqt-config
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim, pipewire, xdotool, libgtop, freerdp
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim, pipewire, xdotool, libgtop, freerdp, conky
 xorg-server                             libxkbcommon, xorg-libinput-driver, xorg-synaptics-driver, xorg-evdev-driver, gnome-settings-daemon, gnome-control-center, mutter
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
