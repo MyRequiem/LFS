@@ -49,5 +49,5 @@
 [6]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/004.png
 [7]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/005.png
 [8]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/006.jpg
-[9]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/007.jpg
-[10]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/008.jpg
+[9]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/007.png
+[10]: https://raw.githubusercontent.com/MyRequiem/LFS/master/stage-2-blfs-stable-x86_64/imgs/008.png
