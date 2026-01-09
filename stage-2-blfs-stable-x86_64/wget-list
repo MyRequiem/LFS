@@ -319,6 +319,7 @@ https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz
 https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.9/upower-v1.90.9.tar.bz2
 https://download.kde.org/stable/frameworks/6.17/extra-cmake-modules-6.17.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/extra-cmake-modules-6.17.0-upstream_fix-1.patch
+https://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
 https://download.kde.org/stable/oxygen-icons/oxygen-icons-6.0.0.tar.xz
 https://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 https://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz
@@ -765,6 +766,15 @@ https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.3.0/downloa
 https://github.com/libproxy/libproxy/archive/0.5.10/libproxy-0.5.10.tar.gz
 https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz
 https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.4.0.tar.xz
+https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
+https://github.com/beltoforion/muparser/archive/v2.3.5/muparser-2.3.5.tar.gz
+https://download.gnome.org/sources/gtk-doc/1.34/gtk-doc-1.34.0.tar.xz
+https://github.com/log4cplus/log4cplus/releases/download/REL_2_1_2/log4cplus-2.1.2.tar.xz
+https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-0.92.1.tar.gz
+https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-0.28.tar.gz
+http://openbox.org/dist/openbox/openbox-3.6.1.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.4/openbox-3.6.1-py3-1.patch
+https://www.jwz.org/xscreensaver/xscreensaver-6.12.tar.gz
 # ======== QtWebEngine ========
 https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
 https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
@@ -781,9 +791,7 @@ https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
 ###
 https://download.kde.org/stable/phonon/4.12.0/phonon-4.12.0.tar.xz
 https://download.kde.org/stable/phonon/phonon-backend-vlc/0.12.0/phonon-backend-vlc-0.12.0.tar.xz
-https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
 https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.18.0.tar.xz
-https://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
 # ============================== kde-frameworks ================================
 https://download.kde.org/stable/frameworks/6.17/attica-6.17.0.tar.xz
 https://download.kde.org/stable/frameworks/6.17/kapidox-6.17.0.tar.xz
@@ -1013,5 +1021,44 @@ https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview/-/archive/299.5.0/li
 https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/archive/0.3.0/libgedit-gfls-0.3.0.tar.bz2
 https://gitlab.gnome.org/World/gedit/libgedit-tepl/-/archive/6.13.0/libgedit-tepl-6.13.0.tar.bz2
 https://download.gnome.org/sources/gedit/48/gedit-48.1.tar.xz
+###
+# =================================== LXQt =====================================
+###
+# ========================= LXQt Desktop Components ============================
+https://github.com/lxqt/lxqt-build-tools/releases/download/2.2.1/lxqt-build-tools-2.2.1.tar.xz
+https://github.com/lxqt/libdbusmenu-lxqt/releases/download/0.3.0/libdbusmenu-lxqt-0.3.0.tar.xz
+https://github.com/lxqt/libqtxdg/releases/download/4.2.0/libqtxdg-4.2.0.tar.xz
+https://github.com/lxqt/lxqt-menu-data/releases/download/2.2.0/lxqt-menu-data-2.2.0.tar.xz
+https://github.com/lxqt/liblxqt/releases/download/2.2.0/liblxqt-2.2.0.tar.xz
+https://github.com/lxqt/libsysstat/releases/download/1.1.0/libsysstat-1.1.0.tar.xz
+https://github.com/lxqt/qtxdg-tools/releases/download/4.2.0/qtxdg-tools-4.2.0.tar.xz
+https://downloads.sourceforge.net/pcmanfm/libfm-1.3.2.tar.xz
+https://github.com/lxde/menu-cache/archive/1.1.1/menu-cache-1.1.1.tar.gz
+https://github.com/lxqt/libfm-qt/releases/download/2.2.0/libfm-qt-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-globalkeys/releases/download/2.2.0/lxqt-globalkeys-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-qtplugin/releases/download/2.2.0/lxqt-qtplugin-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-panel/releases/download/2.2.2/lxqt-panel-2.2.2.tar.xz
+https://github.com/lxqt/pcmanfm-qt/releases/download/2.2.0/pcmanfm-qt-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-powermanagement/releases/download/2.2.1/lxqt-powermanagement-2.2.1.tar.xz
+https://github.com/lxqt/lxqt-runner/releases/download/2.2.0/lxqt-runner-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-themes/releases/download/2.2.0/lxqt-themes-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-admin/releases/download/2.2.0/lxqt-admin-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-about/releases/download/2.2.0/lxqt-about-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-config/releases/download/2.2.0/lxqt-config-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-policykit/releases/download/2.2.0/lxqt-policykit-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-sudo/releases/download/2.2.0/lxqt-sudo-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-openssh-askpass/releases/download/2.2.0/lxqt-openssh-askpass-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-session/releases/download/2.2.0/lxqt-session-2.2.0.tar.xz
+https://github.com/lxqt/xdg-desktop-portal-lxqt/releases/download/1.2.0/xdg-desktop-portal-lxqt-1.2.0.tar.xz
+https://github.com/lxqt/obconf-qt/releases/download/0.16.5/obconf-qt-0.16.5.tar.xz
+# ============================ LXQt Applications ===============================
+https://github.com/lxqt/lximage-qt/releases/download/2.2.0/lximage-qt-2.2.0.tar.xz
+https://github.com/lxqt/lxqt-archiver/releases/download/1.2.0/lxqt-archiver-1.2.0.tar.xz
+https://github.com/lxqt/lxqt-notificationd/releases/download/2.2.0/lxqt-notificationd-2.2.0.tar.xz
+https://github.com/lxqt/pavucontrol-qt/releases/download/2.2.0/pavucontrol-qt-2.2.0.tar.xz
+https://github.com/lxqt/qps/releases/download/2.11.1/qps-2.11.1.tar.xz
+https://github.com/lxqt/qtermwidget/releases/download/2.2.0/qtermwidget-2.2.0.tar.xz
+https://github.com/lxqt/qterminal/releases/download/2.2.1/qterminal-2.2.1.tar.xz
+https://github.com/lxqt/screengrab/releases/download/3.0.0/screengrab-3.0.0.tar.xz
 
 # vim:ft=conf nowrap

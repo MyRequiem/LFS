@@ -329,6 +329,7 @@ l/qt6.sh
 x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
+kde/icons/breeze-icons.sh
 kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
@@ -590,7 +591,7 @@ l/v4l-utils.sh
 l/xapian.sh
 ap/faad2.sh
 xap/vlc.sh
-# === зависимости для KDE, GNOME и др. ===
+# === зависимости для KDE, GNOME, LXQt и др. ===
 l/gtksourceview3.sh
 l/gtksourceview4.sh
 l/gtksourceview5.sh
@@ -658,6 +659,14 @@ s/libdisplay-info.sh
 l/libproxy.sh
 n/kdsoap.sh
 n/kdsoap-ws-discovery-client.sh
+kde/l/polkit-qt.sh
+l/muparser.sh
+s/gtk-doc.sh
+l/log4cplus.sh
+l/libstatgrab.sh
+d/python-modules/python3-pyxdg.sh
+s/openbox.sh
+xap/xscreensaver.sh
 # === QtWebEngine ===
 l/pipewire.sh
 l/wireplumber.sh
@@ -673,9 +682,7 @@ l/webkitgtk.sh
 # === kde-frameworks ===
 kde/l/phonon.sh
 kde/l/phonon-backend-vlc.sh
-kde/l/polkit-qt.sh
 kde/s/plasma-wayland-protocols.sh
-kde/icons/breeze-icons.sh
 kde/frameworks/kde-frameworks.sh
 # === plasma ===
 kde/l/libkexiv2.sh
@@ -749,5 +756,60 @@ gnome/apps/evince.sh
 gnome/apps/eog.sh
 gnome/xap/epiphany.sh
 gnome/apps/gedit.sh
+# =================================== LXQt =====================================
+###
+# NOTE:
+###
+#    Должны быть установлены KDE пакеты:
+#       kde-frameworks
+#       plasma
+#       sddm (или другой Display Manager, опционально)
+#
+#    либо собирать указанные в сборочных скритах зависимости (модули
+#    kde-frameworks и plasma) отдельно:
+#       kwindowsystem-6.17.0 for lxqt
+#       kconfig-6.17.0 for lxqt
+#       solid-6.17.0 for lxqt
+#       kidletime-6.17.0 for lxqt
+#       kwayland-6.4.4 for lxqt
+#       libkscreen-6.4.4 for lxqt
+#       layer-shell-qt-6.4.4 for lxqt
+#
+# =============== LXQt Desktop Components ===============
+lxqt/desktop/lxqt-build-tools.sh
+lxqt/desktop/libdbusmenu-lxqt.sh
+lxqt/desktop/libqtxdg.sh
+lxqt/desktop/lxqt-menu-data.sh
+lxqt/desktop/liblxqt.sh
+lxqt/desktop/libsysstat.sh
+lxqt/desktop/qtxdg-tools.sh
+lxqt/desktop/libfm-extra.sh
+lxqt/desktop/menu-cache.sh
+lxqt/desktop/libfm-qt.sh
+lxqt/desktop/lxqt-globalkeys.sh
+lxqt/desktop/lxqt-qtplugin.sh
+lxqt/desktop/lxqt-panel.sh
+lxqt/desktop/pcmanfm-qt.sh
+lxqt/desktop/lxqt-powermanagement.sh
+lxqt/desktop/lxqt-runner.sh
+lxqt/desktop/lxqt-themes.sh
+lxqt/desktop/lxqt-admin.sh
+lxqt/desktop/lxqt-about.sh
+lxqt/desktop/lxqt-config.sh
+lxqt/desktop/lxqt-policykit.sh
+lxqt/desktop/lxqt-sudo.sh
+lxqt/desktop/lxqt-openssh-askpass.sh
+lxqt/desktop/lxqt-session.sh
+lxqt/desktop/xdg-desktop-portal-lxqt.sh
+lxqt/desktop/obconf-qt.sh
+# =============== LXQt Applications ===============
+lxqt/apps/lximage-qt.sh
+lxqt/apps/lxqt-archiver.sh
+lxqt/apps/lxqt-notificationd.sh
+lxqt/apps/pavucontrol-qt.sh
+lxqt/apps/qps.sh
+lxqt/apps/qtermwidget.sh
+lxqt/apps/qterminal.sh
+lxqt/apps/screengrab.sh
 
 # vim:ft=conf
