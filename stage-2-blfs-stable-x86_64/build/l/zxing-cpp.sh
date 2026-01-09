@@ -7,7 +7,7 @@ PRGNAME="zxing-cpp"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    googletest
+# Optional:    googletest    (https://github.com/google/googletest)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -87,7 +87,6 @@ ap/lzip.sh
 ap/7zip.sh
 a/lrzip.sh
 ap/sudo.sh
-
 # На данный момент установлены все необходимые пакеты для более-менее
 # комфортной работы в чистой linux-консоли:
 #    - терминальный мультиплексор Tmux
@@ -133,7 +132,6 @@ ap/sudo.sh
 #    /etc/pki/tls/certs/objsign-ca-bundle.crt...Done!
 #    Extracting Java cacerts (JKS) to:
 #    /etc/pki/tls/java/cacerts...Done!
-
 # ================================== PART 2 ====================================
 l/fribidi.sh
 l/libuv.sh
@@ -328,8 +326,10 @@ d/abseil-cpp.sh
 d/protobuf.sh
 l/qt6.sh
 # ===========
+x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
+kde/icons/breeze-icons.sh
 kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
@@ -416,6 +416,7 @@ x/apps/i3.sh
 # ==========
 l/libnsl.sh
 d/python3.sh
+a/gpm.sh
 ap/vim.sh
 # === bumblebee-status ===
 d/python-modules/python3-psutil.sh
@@ -449,7 +450,6 @@ d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 n/ntp.sh
 a/fcron.sh
-
 # ================================== PART 3 ====================================
 # === ffmpeg, mpv ===============
 l/libaom.sh
@@ -548,6 +548,9 @@ ap/ghostscript.sh
 l/libspectre.sh
 ap/potrace.sh
 d/perl-modules/perl-file-fcntllock.sh
+d/perl-modules/perl-xml-simple.sh
+d/perl-modules/perl-parse-yapp.sh
+l/icon-naming-utils.sh
 n/exim.sh
 ap/at.sh
 l/aalib.sh
@@ -588,20 +591,46 @@ l/v4l-utils.sh
 l/xapian.sh
 ap/faad2.sh
 xap/vlc.sh
-
-# =================================== KDE ======================================
-#
-# === QtWebEngine ===
-l/pipewire.sh
-l/wireplumber.sh
-kde/l/qtwebengine.sh
-# === kde-frameworks ===
-kde/l/phonon.sh
-kde/l/phonon-backend-vlc.sh
-kde/l/polkit-qt.sh
-kde/s/plasma-wayland-protocols.sh
+# === зависимости для KDE, GNOME, LXQt и др. ===
+l/gtksourceview3.sh
+l/gtksourceview4.sh
+l/gtksourceview5.sh
+n/samba.sh
+l/spidermonkey-js-engine.sh
+l/protobuf-c.sh
+l/libexif.sh
+l/exempi.sh
+l/libportal.sh
+l/xdg-desktop-portal.sh
+l/xdg-desktop-portal-gtk.sh
+l/libcloudproviders.sh
+l/libgusb.sh
+s/colord.sh
+l/colord-gtk.sh
+l/libwacom.sh
+n/libmbim.sh
+n/libqmi.sh
+n/modemmanager.sh
+n/libndp.sh
+l/newt.sh
+l/libical.sh
+n/bluez.sh
+l/jansson.sh
 l/keyutils.sh
 l/libnvme.sh
+n/networkmanager.sh
+n/libnma.sh
+s/accountsservice.sh
+s/power-profiles-daemon.sh
+l/liblinear.sh
+n/nmap.sh
+xap/freerdp.sh
+l/gsl.sh
+ap/bogofilter.sh
+l/aspell.sh
+l/enchant.sh
+l/gspell.sh
+l/webp-pixbuf-loader.sh
 a/smartmontools.sh
 l/libbytesize.sh
 l/libatasmart.sh
@@ -613,51 +642,174 @@ l/libavif.sh
 l/highway.sh
 l/libjxl.sh
 l/zxing-cpp.sh
-l/libical.sh
-n/libmbim.sh
-n/libqmi.sh
-n/modemmanager.sh
-l/jansson.sh
-n/bluez.sh
-a/gpm.sh
-l/newt.sh
-n/libndp.sh
-n/networkmanager.sh
 l/libdaemon.sh
 n/avahi.sh
-l/aspell.sh
 l/libqrencode.sh
 l/qca.sh
-kde/icons/breeze-icons.sh
 d/python-modules/python3-chardet.sh
 d/python-modules/python3-doxypypy.sh
 d/python-modules/python3-doxyqml.sh
+d/python-modules/python3-certifi.sh
+d/python-modules/python3-sentry-sdk.sh
+d/python-modules/python3-pygdbmi.sh
+s/xdotool.sh
+l/opencv.sh
+d/doxygen.sh
+s/libdisplay-info.sh
+l/libproxy.sh
+n/kdsoap.sh
+n/kdsoap-ws-discovery-client.sh
+kde/l/polkit-qt.sh
+l/muparser.sh
+s/gtk-doc.sh
+l/log4cplus.sh
+l/libstatgrab.sh
+d/python-modules/python3-pyxdg.sh
+s/openbox.sh
+xap/xscreensaver.sh
+# === QtWebEngine ===
+l/pipewire.sh
+l/wireplumber.sh
+kde/l/qtwebengine.sh
+# === webkitgtk ===
+l/woff2.sh
+n/xdg-dbus-proxy.sh
+n/geoclue.sh
+s/bubblewrap.sh
+d/unifdef.sh
+l/webkitgtk.sh
+# =================================== KDE ======================================
+# === kde-frameworks ===
+kde/l/phonon.sh
+kde/l/phonon-backend-vlc.sh
+kde/s/plasma-wayland-protocols.sh
 kde/frameworks/kde-frameworks.sh
 # === plasma ===
 kde/l/libkexiv2.sh
 kde/plasma/pulseaudio-qt.sh
 kde/plasma/kirigami-addons.sh
-d/python-modules/python3-certifi.sh
-d/python-modules/python3-sentry-sdk.sh
-d/python-modules/python3-pygdbmi.sh
-s/power-profiles-daemon.sh
-s/xdotool.sh
 kde/l/qcoro.sh
-l/opencv.sh
 kde/l/libqalculate.sh
-d/doxygen.sh
-s/libdisplay-info.sh
 kde/plasma/plasma-activities.sh
 kde/plasma/plasma-activities-stats.sh
-l/libproxy.sh
-n/kdsoap.sh
-n/kdsoap-ws-discovery-client.sh
 kde/l/kio-extras.sh
-kde/s/accountsservice.sh
 kde/plasma/plasma.sh
 # ===  Simple Desktop Display Manager ===
 kde/s/sddm.sh
 # === plasma applications ===
 kde/apps/plasma-applications.sh
+# ================================== GNOME =====================================
+# ============ Libraries and Desktop ============
+gnome/s/polkit-gnome.sh
+gnome/icons/gnome-icon-theme.sh
+gnome/icons/gnome-icon-theme-extras.sh
+gnome/icons/gnome-icon-theme-symbolic.sh
+gnome/themes/gnome-themes-extra.sh
+gnome/l/rest.sh
+gnome/s/gnome-online-accounts.sh
+gnome/l/gvfs.sh
+gnome/l/totem-pl-parser.sh
+gnome/l/geocode-glib.sh
+gnome/l/gjs.sh
+gnome/l/gnome-autoar.sh
+gnome/l/gnome-desktop.sh
+gnome/l/gnome-menus.sh
+gnome/l/libgee.sh
+gnome/l/libgtop.sh
+gnome/l/libgweather.sh
+gnome/l/libpeas.sh
+gnome/l/libshumate.sh
+gnome/s/blocaled.sh
+gnome/l/evolution-data-server.sh
+gnome/l/tinysparql.sh
+gnome/l/localsearch.sh
+gnome/l/gsound.sh
+gnome/l/xdg-desktop-portal-gnome.sh
+# ============== Desktop Components ==============
+gnome/desktop_components/gnome-backgrounds.sh
+gnome/apps/nautilus.sh
+gnome/n/gnome-bluetooth.sh
+gnome/s/gnome-session.sh
+gnome/desktop_components/gnome-settings-daemon.sh
+gnome/desktop_components/tecla.sh
+gnome/desktop_components/gnome-control-center.sh
+gnome/desktop_components/mutter.sh
+gnome/s/gdm.sh
+gnome/desktop_components/gnome-shell.sh
+gnome/desktop_components/gnome-shell-extensions.sh
+gnome/desktop_components/gnome-tweaks.sh
+# =============== GNOME Applications ===============
+gnome/apps/snapshot.sh
+gnome/apps/gnome-weather.sh
+gnome/apps/gnome-terminal.sh
+gnome/apps/gnome-system-monitor.sh
+gnome/apps/gnome-screenshot.sh
+gnome/apps/gnome-nettool.sh
+gnome/apps/gnome-maps.sh
+gnome/apps/gnome-connections.sh
+gnome/apps/gnome-color-manager.sh
+gnome/apps/gnome-calculator.sh
+gnome/apps/file-roller.sh
+gnome/apps/seahorse.sh
+gnome/apps/evolution.sh
+gnome/apps/evince.sh
+gnome/apps/eog.sh
+gnome/xap/epiphany.sh
+gnome/apps/gedit.sh
+# =================================== LXQt =====================================
+###
+# NOTE:
+###
+#    Должны быть установлены KDE пакеты:
+#       kde-frameworks
+#       plasma
+#       sddm (или другой Display Manager, опционально)
+#
+#    либо собирать указанные в сборочных скритах зависимости (модули
+#    kde-frameworks и plasma) отдельно:
+#       kwindowsystem-6.17.0 for lxqt
+#       kconfig-6.17.0 for lxqt
+#       solid-6.17.0 for lxqt
+#       kidletime-6.17.0 for lxqt
+#       kwayland-6.4.4 for lxqt
+#       libkscreen-6.4.4 for lxqt
+#       layer-shell-qt-6.4.4 for lxqt
+#
+# =============== LXQt Desktop Components ===============
+lxqt/desktop/lxqt-build-tools.sh
+lxqt/desktop/libdbusmenu-lxqt.sh
+lxqt/desktop/libqtxdg.sh
+lxqt/desktop/lxqt-menu-data.sh
+lxqt/desktop/liblxqt.sh
+lxqt/desktop/libsysstat.sh
+lxqt/desktop/qtxdg-tools.sh
+lxqt/desktop/libfm-extra.sh
+lxqt/desktop/menu-cache.sh
+lxqt/desktop/libfm-qt.sh
+lxqt/desktop/lxqt-globalkeys.sh
+lxqt/desktop/lxqt-qtplugin.sh
+lxqt/desktop/lxqt-panel.sh
+lxqt/desktop/pcmanfm-qt.sh
+lxqt/desktop/lxqt-powermanagement.sh
+lxqt/desktop/lxqt-runner.sh
+lxqt/desktop/lxqt-themes.sh
+lxqt/desktop/lxqt-admin.sh
+lxqt/desktop/lxqt-about.sh
+lxqt/desktop/lxqt-config.sh
+lxqt/desktop/lxqt-policykit.sh
+lxqt/desktop/lxqt-sudo.sh
+lxqt/desktop/lxqt-openssh-askpass.sh
+lxqt/desktop/lxqt-session.sh
+lxqt/desktop/xdg-desktop-portal-lxqt.sh
+lxqt/desktop/obconf-qt.sh
+# =============== LXQt Applications ===============
+lxqt/apps/lximage-qt.sh
+lxqt/apps/lxqt-archiver.sh
+lxqt/apps/lxqt-notificationd.sh
+lxqt/apps/pavucontrol-qt.sh
+lxqt/apps/qps.sh
+lxqt/apps/qtermwidget.sh
+lxqt/apps/qterminal.sh
+lxqt/apps/screengrab.sh
 
 # vim:ft=conf

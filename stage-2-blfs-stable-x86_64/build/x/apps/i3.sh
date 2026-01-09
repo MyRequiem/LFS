@@ -52,6 +52,14 @@ sed -i 's/i3-sensible-terminal/xterm/' "${TMP_DIR}/etc/i3/config" || exit 1
 
 chmod 644 "${TMP_DIR}/usr/share/man/man1"/*
 
+# Пакет создает два файла .desktop в каталоге /usr/share/xsessions/ которые
+# нужны для менеджеров запуска окружения, таких как sddm, gdm и др.
+#    i3.desktop               (обычный запуск)
+#    i3-with-shmlog.desktop   (i3 with debug log)
+# В системе BLFS необходим только один файл для каждого рабочего окружения,
+# поэтому удалим i3-with-shmlog.desktop
+rm -f "${TMP_DIR}/usr/share/xsessions/i3-with-shmlog.desktop"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /

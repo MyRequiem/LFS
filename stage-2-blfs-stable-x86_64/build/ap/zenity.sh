@@ -10,7 +10,7 @@ PRGNAME="zenity"
 #              libadwaita
 #              help2man      (для генерации man-страниц)
 # Recommended: no
-# Optional:    webkit2gtk    (для поддежки webkitgtk и HTML)
+# Optional:    webkitgtk     (для поддежки webkitgtk и HTML)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,6 +29,8 @@ meson setup       \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share/help"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

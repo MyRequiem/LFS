@@ -100,7 +100,7 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}"/{tmp,var/run}
+rm -rf "${TMP_DIR}"/{tmp,run,var/run}
 
 # создадим базовый файл конфигурации клиента cups
 echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \

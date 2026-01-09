@@ -21,6 +21,9 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 #       $ echo -e "\n# vim:ft=cmakecache" >> CMAKE_PARAMETERS
 #       $ vim CMAKE_PARAMETERS
 #
+#    Второй вариант вывести все параметры CMake
+#       $ cmake -L CMakeLists.txt
+#
 # Большинство этих пакетов можно собрать с помощью следующих инструкций:
 #
 # mkdir build
