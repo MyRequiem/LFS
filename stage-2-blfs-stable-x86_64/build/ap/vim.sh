@@ -22,6 +22,45 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc"
 mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
+# ctags когда-то входил в состав редактора Vim, добавим сами:
+CTAGSVER="$(find "${SOURCES}" -type f -name "ctags-*.tar.?z" | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev )"
+
+if [ -z "${CTAGSVER}" ]; then
+    echo "Error:"
+    echo "ctags source arhive not found in ${SOURCES}"
+    exit 1
+fi
+
+tar xvf "${SOURCES}/ctags-${CTAGSVER}".tar.?z || exit 1
+cd "ctags-${CTAGSVER}" || exit 1
+
+chown -R root:root .
+find -L . \
+    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+if [ ! -r configure ]; then
+    if [ -x ./autogen.sh ]; then
+        NOCONFIGURE=1 ./autogen.sh
+    else
+        autoreconf -vif
+    fi
+fi
+
+./configure           \
+    --prefix=/usr     \
+    --sysconfdir=/etc \
+    --localstatedir=/var || exit 1
+
+make || exit 1
+make install DESTDIR="${TMP_DIR}" || exit 1
+
+cd .. || exit 1
+rm -rf "ctags-${CTAGSVER}"
+
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
 echo '#define SYS_VIMRC_FILE  "/etc/vimrc"'  >> src/feature.h
@@ -29,23 +68,33 @@ echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
 
 ./configure                    \
     --prefix=/usr              \
-    --with-features=huge       \
-    --enable-gui=gtk3          \
-    --with-tlib=ncursesw       \
-    --enable-fail-if-missing   \
-    --with-x                   \
-    --enable-fontset           \
-    --enable-multibyte         \
-    --enable-terminal          \
-    --enable-cscope            \
-    --enable-luainterp=yes     \
-    --enable-mzschemeinterp    \
     --enable-perlinterp=yes    \
     --enable-python3interp=yes \
-    --enable-tclinterp=yes     \
     --enable-rubyinterp=yes    \
+    --enable-tclinterp=yes     \
+    --enable-luainterp=yes     \
+    --enable-mzschemeinterp    \
+    --disable-canberra         \
+    --enable-multibyte         \
+    --enable-fail-if-missing   \
+    --with-x                   \
+    --enable-gui=gtk3          \
+    --enable-fontset           \
+    --enable-terminal          \
+    --enable-cscope            \
+    --disable-motif-check      \
+    --disable-gtktest          \
     --disable-darwin           \
+    --disable-smack            \
     --disable-netbeans         \
+    --disable-rightleft        \
+    --disable-arabic           \
+    --disable-farsi            \
+    --disable-xim              \
+    --disable-sysmouse         \
+    --disable-autoservername   \
+    --with-features=huge       \
+    --with-tlib=ncursesw       \
     --with-compiledby="MyRequiem" || exit 1
 
 make || exit 1
@@ -99,33 +148,7 @@ MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
-APPL="/usr/share/applications"
-mkdir -pv "${TMP_DIR}${APPL}"
-rm -f "${TMP_DIR}${APPL}/vim.desktop"
-
-cat > "${TMP_DIR}${APPL}/gvim.desktop" << "EOF"
-[Desktop Entry]
-GenericName=GVim
-GenericName[en]=GVim
-GenericName[ru]=GVim
-Name=GVim Text Editor
-Name[en]=GVim Text Editor
-Name[ru]=GVim Текстовый Редактор
-Comment=Edit text files
-Comment[en]=Edit text files
-Comment[ru]=Редактирование текстовых файлов
-TryExec=gvim
-Exec=gvim -f %F
-Terminal=false
-Type=Application
-Keywords=Text;editor;
-Keywords[en]=Text;editor;
-Keywords[ru]=текст;текстовый редактор;
-Icon=gvim
-StartupNotify=true
-Categories=Utility;TextEditor;
-MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
-EOF
+rm -f "${TMP_DIR}/usr/share/applications/vim.desktop"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
