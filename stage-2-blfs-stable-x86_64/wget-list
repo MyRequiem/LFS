@@ -495,7 +495,7 @@ https://anduin.linuxfromscratch.org/BLFS/gpm/gpm-1.20.7.tar.bz2
 https://www.linuxfromscratch.org/patches/blfs/12.4/gpm-1.20.7-consolidated-1.patch
 https://www.linuxfromscratch.org/patches/blfs/12.4/gpm-1.20.7-gcc15_fixes-1.patch
 https://github.com/vim/vim/archive/v9.1.2072/vim-9.1.2072.tar.gz
-https://mirrors.slackware.com/slackware/slackware64-15.0/patches/source/vim/ctags-6.2.0.tar.lz
+https://download.dlackware.com/hosted-sources/universal-ctags/ctags-6.2.0.tar.gz
 https://files.pythonhosted.org/packages/source/p/psutil/psutil-7.0.0.tar.gz
 https://download.savannah.gnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/hddtemp/hddtemp-0.3-beta15.patch
