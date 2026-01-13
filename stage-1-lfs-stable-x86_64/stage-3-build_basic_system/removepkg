@@ -2,44 +2,22 @@
 
 # Written for Linux From Scratch by MyRequiem <mrvladislavovich@gmail.com>
 
-# install this script:
-# --------------------
-#    # cp 005_sbin_removepkg /mnt/lfs/sbin/removepkg
-#    # chown root:root /mnt/lfs/sbin/removepkg
-#    # chmod 744 /mnt/lfs/sbin/removepkg
-
-# Usage: removepkg [--no-color] [--fake|--backup|--copy] [/var/log/packages/]pkgname-version
-#
-#    --no-color
-#       Do not colorize output
-#    --fake
-#       Generate a report to the standard output about which files and
-#       directories would be removed, but does not actually remove the package.
-#    --backup
-#       The complete package subtree is reconstructed in
-#       /var/log/setup/tmp/preserved/pkgname-version
-#       and then package will be deleted from system
-#    --copy
-#       The complete package subtree is reconstructed in
-#       /var/log/setup/tmp/preserved/pkgname-version
-#       but the package is not removed from the system
-#
-# Example:
-#    # removepkg /var/log/packages/terminus-font-4.48
-#    # removepkg terminus-font-4.48
+if test "${EUID}" -ne 0; then
+    echo "$(basename "$0") must be run as the root user! "
+    exit 1
+fi
 
 PACKAGES_DIR="/var/log/packages"
 REMOVED_PACKAGES_DIR="/var/log/removed_packages"
 PRESERVED_DIR="/var/log/setup/tmp/preserved"
+DATE_TIME="$(date "+%d.%m.%y_%H:%M:%S")"
 
 usage() {
 cat << EOF
+
 Usage: removepkg [params] [/var/log/packages/]pkgname-version
 
 Params:
-  --no-color        do not colorize output
-
-  [--fake|--backup|--copy]
   --fake            generate a report to the standard output about which files
                     and directories would be removed, but does not actually
                     remove the package
@@ -52,24 +30,23 @@ Params:
                     /var/log/setup/tmp/preserved/pkgname-version
                     but the package is not removed from the system
 
-Example:
-    # removepkg /var/log/packages/terminus-font-4.48
-    # removepkg terminus-font-4.48
+  --no-color        do not colorize output
+
 EOF
 }
 
 confirm_continuation() {
     echo -en "${LGREEN}Continue?${COLORRESET} [y/N]: "
     read -r JUNK
-    [[ "x${JUNK}" != "xy" && "x${JUNK}" != "xY" ]] && exit 0
+    [[ "${JUNK}" != "y" && "${JUNK}" != "Y" ]] && exit 1
     echo ""
 }
 
 backup() {
     ITEM="$1"
 
-    if  [[ -L "${ITEM}" || -f "${ITEM}"  ]]; then
-        DIRNAME="${PRESERVED_DIR}/${PKG}$(dirname "${ITEM}")"
+    if  [[ -L "${ITEM}" || -f "${ITEM}" ]]; then
+        DIRNAME="${PRESERVED_DIR}/${PKG}_${DATE_TIME}$(dirname "${ITEM}")"
         if ! [ -d "${DIRNAME}" ]; then
             echo -en "${MAGENTA}Creating directory "
             echo -e "${BROWN}${DIRNAME}${COLORRESET}"
@@ -88,10 +65,10 @@ backup() {
             ln -sf "${TARGET}" "${LINKNAME}"
         )
     elif [ -d "${ITEM}" ]; then
-        if ! [ -d "${PRESERVED_DIR}/${PKG}${ITEM}" ]; then
+        if ! [ -d "${PRESERVED_DIR}/${PKG}_${DATE_TIME}${ITEM}" ]; then
             echo -en "${MAGENTA}Creating directory "
-            echo -e "${BROWN}${PRESERVED_DIR}/${PKG}${ITEM}${COLORRESET}"
-            mkdir -p "${PRESERVED_DIR}/${PKG}${ITEM}"
+            echo -e "${BROWN}${PRESERVED_DIR}/${PKG}_${DATE_TIME}${ITEM}${COLORRESET}"
+            mkdir -p "${PRESERVED_DIR}/${PKG}_${DATE_TIME}${ITEM}"
         fi
     else
         echo -en "${GREEN}Copy ${CYAN}${LINE}${GREEN} to "
@@ -101,15 +78,10 @@ backup() {
 }
 
 remove_package() {
+# при удалении файлов removepkg будет анализировать содержимое других
+# пакетов, установленных в вашей системе, и удалит только те файлы, которые
+# уникальны для удаляемого пакета
     if [ -n "${BACKUP}" ]; then
-        # delete old backup if it exists
-        if [ -d "${PRESERVED_DIR}/${PKG}" ]; then
-            (
-                cd "${PRESERVED_DIR}" || exit 1
-                rm -rf "${PKG}"
-            )
-        fi
-
         {
             while read -r LINE; do
                 if ! [[ "${LINE}" =~ ^# ]]; then
@@ -117,6 +89,14 @@ remove_package() {
                 fi
             done
         } < "${PACKAGES_DIR}/${PKG}"
+
+        mkdir -p "${PRESERVED_DIR}/${PKG}_${DATE_TIME}/var/log/packages"
+        cp "/var/log/packages/${PKG}" \
+            "${PRESERVED_DIR}/${PKG}_${DATE_TIME}/var/log/packages/"
+
+        if [ -n "${FAKE}" ]; then
+            exit 0
+        fi
     fi
 
     # removing files
@@ -142,6 +122,7 @@ remove_package() {
             # real removal
             if [ -z "${FAKE}" ]; then
                 # if directory is empty
+                # shellcheck disable=SC2012
                 if [ "$(ls -a "${LINE}" | wc -l)" ==  "2" ]; then
                     echo -en "${MAGENTA}Removing ${BROWN}[D]${COLORRESET} "
                     echo "${LINE}"
@@ -186,15 +167,9 @@ remove_package() {
             mkdir -p "${REMOVED_PACKAGES_DIR}"
         fi
 
-        rm -f "${REMOVED_PACKAGES_DIR}/${PKG}"
-        mv "${PACKAGES_DIR}/${PKG}" "${REMOVED_PACKAGES_DIR}/"
+        mv "${PACKAGES_DIR}/${PKG}" "${REMOVED_PACKAGES_DIR}/${PKG}_${DATE_TIME}"
     fi
 }
-
-if [[ "$#" = "0" ]]; then
-    usage
-    exit 1
-fi
 
 NO_COLOR=""
 FAKE=""
@@ -246,18 +221,10 @@ if [ -z "${NO_COLOR}" ]; then
     COLORRESET="\033[0;0m"
 fi
 
-if [[ "x${PKG}" == "xmain-directory-tree" ]]; then
-    if [ -z "${FAKE}" ]; then
-        echo -en "${RED}Package ${LBLUE}${PKG}${RED} "
-        echo -e "cannot be deleted !!!${COLORRESET}"
-        exit 0
-    fi
-fi
-
-if test "${EUID}" -ne 0; then
-    echo -ne "${RED}Error: $(basename "$0") must be run as the root user! "
-    echo -e "Exiting...${COLORRESET}"
-    exit 1
+if [[ "${PKG}" == "main-directory-tree" ]]; then
+    echo -en "${RED}Package ${LBLUE}${PKG}${RED} "
+    echo -e "cannot be deleted !!!${COLORRESET}"
+    exit 0
 fi
 
 if ! [ -f "${PACKAGES_DIR}/${PKG}" ]; then
@@ -278,7 +245,6 @@ if [ "${FAKE}" = "true" ]; then
         echo -e "removed the package${COLORRESET}"
         confirm_continuation
     fi
-
 else
     if [ "${BACKUP}" = "true" ]; then
         echo -en "${MAGENTA}Contents of package ${LBLUE}${PKG}${MAGENTA} "
