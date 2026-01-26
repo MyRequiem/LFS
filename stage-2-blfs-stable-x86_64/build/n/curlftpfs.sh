@@ -17,6 +17,60 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# ===============================
+### Apply patch from Gentoo
+# https://sourceforge.net/p/curlftpfs/bugs/65/
+# May also fix these:
+# https://sourceforge.net/p/curlftpfs/bugs/34/
+# https://sourceforge.net/p/curlftpfs/bugs/74/
+patch -p1 -i \
+    "${SOURCES}/curlftpfs-0.9.2-fix-escaping.patch"          || exit 1
+# ===============================
+### Apply patches from Fedora
+# https://bugzilla.redhat.com/show_bug.cgi?id=962015
+patch -p1 -i \
+    "${SOURCES}/curlftpfs-0.9.2-create-fix.patch"            || exit 1
+# https://sourceforge.net/p/curlftpfs/bugs/52/
+patch -p1 -i \
+    "${SOURCES}/curlftpfs-0.9.2-memleak-591298.patch"        || exit 1
+# https://sourceforge.net/p/curlftpfs/bugs/58/
+patch -p1 -i \
+    "${SOURCES}/curlftpfs-0.9.2-memleak-cached-591299.patch" || exit 1
+# https://sourceforge.net/p/curlftpfs/bugs/50/
+patch -p1 -i \
+    "${SOURCES}/curlftpfs-0.9.2-offset_64_another.patch"     || exit 1
+# ===============================
+### Apply patch from Arch
+# https://bugs.archlinux.org/task/47906
+# https://sourceforge.net/p/curlftpfs/bugs/67/
+patch -p1 -i \
+    "${SOURCES}/no-verify-hostname.patch"                    || exit 1
+# ===============================
+### Apply patches from Debian
+# https://sources.debian.org/patches/curlftpfs/0.9.2-10/
+patch -p1 -i \
+    "${SOURCES}/consistent-feature-flag.patch"               || exit 1
+patch -p1 -i \
+    "${SOURCES}/fix_bashism_in_test_script.patch"            || exit 1
+patch -p1 -i \
+    "${SOURCES}/getpass-prototype.patch"                     || exit 1
+# ===============================
+### Apply patches from MyRequiem
+patch -p1 -i \
+    "${SOURCES}/fix_for_curl_8.17_and_later.patch"           || exit 1
+
+# configure script may hangs on checking for mktime
+# (for a very long time or indefinitely)
+# ...
+# ...
+# checking for working mktime...
+#
+# we'll fix it
+patch -p1 -i \
+    "${SOURCES}/fix-check-mktime.patch"                      || exit 1
+
+# для сборки с GCC-15
+export CFLAGS="-Wno-implicit-function-declaration -Wno-int-conversion"
 ./configure           \
     --prefix=/usr     \
     --disable-static  \

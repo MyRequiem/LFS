@@ -78,7 +78,20 @@ http://www.andre-simon.de/zip/highlight-4.16.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
 https://github.com/libarchive/libarchive/releases/download/v3.8.2/libarchive-3.8.2.tar.xz
 https://deb.debian.org/debian/pool/main/a/archivemount/archivemount_1b.orig.tar.gz
+# === curlftpfs ===
 https://downloads.sourceforge.net/curlftpfs/curlftpfs-0.9.2.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/consistent-feature-flag.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/curlftpfs-0.9.2-create-fix.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/curlftpfs-0.9.2-fix-escaping.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/curlftpfs-0.9.2-memleak-591298.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/curlftpfs-0.9.2-memleak-cached-591299.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/curlftpfs-0.9.2-offset_64_another.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/fix-check-mktime.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/fix_bashism_in_test_script.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/fix_for_curl_8.17_and_later.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/getpass-prototype.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/curlftpfs/no-verify-hostname.patch
+# =================
 https://github.com/vifm/vifm/releases/download/v0.14.3/vifm-0.14.3.tar.bz2
 https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
 https://github.com/ivmai/bdwgc/releases/download/v8.2.8/gc-8.2.8.tar.gz
