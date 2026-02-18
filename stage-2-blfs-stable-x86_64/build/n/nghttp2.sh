@@ -7,7 +7,7 @@ PRGNAME="nghttp2"
 
 # Required:    no
 # Recommended: libxml2
-# Optional:    --- используются только при сборке полного пакета, а не только основных библиотек ---
+# Optional:    --- используются при сборке полного пакета, а не только основных библиотек ---
 #              boost
 #              c-ares
 #              python3-cython

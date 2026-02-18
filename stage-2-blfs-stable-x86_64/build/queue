@@ -589,6 +589,8 @@ xap/vlc.sh
 # ======= Misc Dependencies =======
 l/libexif.sh
 l/libportal.sh
+l/libical.sh
+n/bluez.sh
 l/pipewire.sh
 l/wireplumber.sh
 s/bubblewrap.sh
@@ -599,8 +601,7 @@ l/log4cplus.sh
 l/libstatgrab.sh
 s/gtk-doc.sh
 kde/l/polkit-qt.sh
-
-# ========== KF6, Plasma ==========
+# ======= KF6, Plasma =======
 kde/s/plasma-wayland-protocols.sh
 lxqt/KF6_plasma/kwindowsystem.sh    [NEW]
 lxqt/KF6_plasma/kconfig.sh          [NEW]
@@ -610,7 +611,7 @@ lxqt/KF6_plasma/kwayland.sh         [NEW]
 lxqt/KF6_plasma/libkscreen.sh       [NEW]
 lxqt/KF6_plasma/layer-shell-qt.sh   [NEW]
 l/muparser.sh
-# =============== LXQt Desktop Components ===============
+# ======= LXQt Desktop Components =======
 lxqt/desktop/lxqt-build-tools.sh
 lxqt/desktop/libdbusmenu-lxqt.sh
 lxqt/desktop/libqtxdg.sh
@@ -637,7 +638,7 @@ lxqt/desktop/lxqt-openssh-askpass.sh
 lxqt/desktop/lxqt-session.sh
 lxqt/desktop/xdg-desktop-portal-lxqt.sh
 lxqt/desktop/obconf-qt.sh
-# =============== LXQt Applications ====================
+# ======= LXQt Applications =======
 lxqt/apps/lximage-qt.sh
 lxqt/apps/lxqt-notificationd.sh
 lxqt/apps/pavucontrol-qt.sh
@@ -647,34 +648,10 @@ lxqt/apps/qterminal.sh
 lxqt/apps/screengrab.sh
 # ==============================================================================
 
-l/libcloudproviders.sh
-l/libgusb.sh
-s/colord.sh
-l/colord-gtk.sh
-l/libwacom.sh
-n/libmbim.sh
-n/libqmi.sh
-n/modemmanager.sh
-n/libndp.sh
-l/newt.sh
-l/libical.sh
-n/bluez.sh
-l/jansson.sh
-l/keyutils.sh
-l/libnvme.sh
-n/networkmanager.sh
-n/libnma.sh
-s/accountsservice.sh
-s/power-profiles-daemon.sh
-l/liblinear.sh
 
-# =================================== KDE ======================================
-# === kde-frameworks ===
 kde/l/phonon.sh
 kde/l/phonon-backend-vlc.sh
-kde/s/plasma-wayland-protocols.sh
 kde/frameworks/kde-frameworks.sh
-# === plasma ===
 kde/l/libkexiv2.sh
 kde/plasma/pulseaudio-qt.sh
 kde/plasma/kirigami-addons.sh
@@ -684,12 +661,8 @@ kde/plasma/plasma-activities.sh
 kde/plasma/plasma-activities-stats.sh
 kde/l/kio-extras.sh
 kde/plasma/plasma.sh
-# ===  Simple Desktop Display Manager ===
 kde/s/sddm.sh
-# === plasma applications ===
 kde/apps/plasma-applications.sh
-# ================================== GNOME =====================================
-# ============ Libraries and Desktop ============
 gnome/s/polkit-gnome.sh
 gnome/icons/gnome-icon-theme.sh
 gnome/icons/gnome-icon-theme-extras.sh
@@ -715,7 +688,6 @@ gnome/l/tinysparql.sh
 gnome/l/localsearch.sh
 gnome/l/gsound.sh
 gnome/l/xdg-desktop-portal-gnome.sh
-# ============== Desktop Components ==============
 gnome/desktop_components/gnome-backgrounds.sh
 gnome/apps/nautilus.sh
 gnome/n/gnome-bluetooth.sh
@@ -728,7 +700,6 @@ gnome/s/gdm.sh
 gnome/desktop_components/gnome-shell.sh
 gnome/desktop_components/gnome-shell-extensions.sh
 gnome/desktop_components/gnome-tweaks.sh
-# =============== GNOME Applications ===============
 gnome/apps/snapshot.sh
 gnome/apps/gnome-weather.sh
 gnome/apps/gnome-terminal.sh
