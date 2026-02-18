@@ -332,7 +332,7 @@ https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.18.tar.gz
 https://gitlab.freedesktop.org/upower/upower/-/archive/v1.90.9/upower-v1.90.9.tar.bz2
 https://download.kde.org/stable/frameworks/6.17/extra-cmake-modules-6.17.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/extra-cmake-modules-6.17.0-upstream_fix-1.patch
-https://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
+rttps://download.kde.org/stable/frameworks/6.17/breeze-icons-6.17.0.tar.xz
 https://download.kde.org/stable/oxygen-icons/oxygen-icons-6.0.0.tar.xz
 https://people.freedesktop.org/~svu/libxklavier-5.4.tar.bz2
 https://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz
@@ -688,6 +688,7 @@ https://pwmt.org/projects/zathura-djvu/download/zathura-djvu-0.2.11.tar.xz
 https://pwmt.org/projects/zathura-ps/download/zathura-ps-0.2.9.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.1
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathura/zathurarc.5
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/zathura/zathura.png
 # =======================
 https://github.com/vborrego/deb2tgz/archive/0.3/deb2tgz-0.3.tar.gz
 http://ftp.rpm.org/releases/rpm-4.20.x/rpm-4.20.1.tar.bz2
@@ -710,19 +711,23 @@ https://slackbuilds.org/slackbuilds/15.0/system/conky/conky.1.gz
 https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-taglib-1.patch
 https://www.linuxfromscratch.org/patches/blfs/12.4/vlc-3.0.21-fedora_ffmpeg7-1.patch
-# === для KDE, GNOME и др. ===
-https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.11.tar.xz
-https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz
-https://download.gnome.org/sources/gtksourceview/5.16/gtksourceview-5.16.0.tar.xz
-https://download.samba.org/pub/samba/stable/samba-4.22.4.tar.gz
-https://archive.mozilla.org/pub/firefox/releases/140.2.0esr/source/firefox-140.2.0esr.source.tar.xz
-https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.2/protobuf-c-1.5.2.tar.gz
+# =================================== LXQt =====================================
 https://github.com/libexif/libexif/releases/download/v0.6.25/libexif-0.6.25.tar.bz2
-https://libopenraw.freedesktop.org/download/exempi-2.6.6.tar.xz
 https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/libportal-0.9.1-qt6.9_fixes-1.patch
+https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
+https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
 https://github.com/flatpak/xdg-desktop-portal/releases/download/1.20.3/xdg-desktop-portal-1.20.3.tar.xz
-https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.3/xdg-desktop-portal-gtk-1.15.3.tar.xz
+https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-0.28.tar.gz
+http://openbox.org/dist/openbox/openbox-3.6.1.tar.gz
+https://www.linuxfromscratch.org/patches/blfs/12.4/openbox-3.6.1-py3-1.patch
+https://github.com/log4cplus/log4cplus/releases/download/REL_2_1_2/log4cplus-2.1.2.tar.xz
+https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-0.92.1.tar.gz
+https://download.gnome.org/sources/gtk-doc/1.34/gtk-doc-1.34.0.tar.xz
+https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
+
+
 https://download.gnome.org/sources/libcloudproviders/0.3/libcloudproviders-0.3.6.tar.xz
 https://github.com/hughsie/libgusb/releases/download/0.4.9/libgusb-0.4.9.tar.xz
 https://www.freedesktop.org/software/colord/releases/colord-1.4.8.tar.xz
@@ -743,65 +748,7 @@ https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz
 https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz
 https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.30/power-profiles-daemon-0.30.tar.gz
 https://github.com/cjlin1/liblinear/archive/v249/liblinear-249.tar.gz
-https://nmap.org/dist/nmap-7.98.tar.bz2
-https://github.com/freerdp/freerdp/archive/3.17.0/FreeRDP-3.17.0.tar.gz
-https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz
-https://downloads.sourceforge.net/bogofilter/bogofilter-1.2.5.tar.xz
-https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.1.tar.gz
-https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
-https://ftp.gnu.org/gnu/aspell/dict/ru/aspell6-ru-0.99f7-1.tar.bz2
-https://github.com/rrthomas/enchant/releases/download/v2.8.12/enchant-2.8.12.tar.gz
-https://download.gnome.org/sources/gspell/1.14/gspell-1.14.0.tar.xz
-https://github.com/aruiz/webp-pixbuf-loader/archive/0.2.7/webp-pixbuf-loader-0.2.7.tar.gz
-https://downloads.sourceforge.net/smartmontools/smartmontools-7.5.tar.gz
-https://github.com/storaged-project/libbytesize/releases/download/2.11/libbytesize-2.11.tar.gz
-https://0pointer.de/public/libatasmart-0.19.tar.xz
-https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.1.tar.xz
-https://github.com/storaged-project/libblockdev/releases/download/3.3.1/libblockdev-3.3.1.tar.gz
-https://github.com/storaged-project/udisks/releases/download/udisks-2.10.2/udisks-2.10.2.tar.bz2
-https://www.libraw.org/data/LibRaw-0.21.4.tar.gz
-https://github.com/AOMediaCodec/libavif/archive/v1.3.0/libavif-1.3.0.tar.gz
-https://github.com/google/highway/archive/1.3.0/highway-1.3.0.tar.gz
-https://github.com/libjxl/libjxl/archive/v0.11.1/libjxl-0.11.1.tar.gz
-https://github.com/zxing-cpp/zxing-cpp/archive/v2.3.0/zxing-cpp-2.3.0.tar.gz
-https://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz
-https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/12.4/avahi-0.8-ipv6_race_condition_fix-1.patch
-https://github.com/fukuchi/libqrencode/archive/v4.1.1/libqrencode-4.1.1.tar.gz
-https://download.kde.org/stable/qca/2.3.10/qca-2.3.10.tar.xz
-https://files.pythonhosted.org/packages/source/c/chardet/chardet-5.2.0.tar.gz
-https://files.pythonhosted.org/packages/source/d/doxypypy/doxypypy-0.8.8.7.tar.gz
-https://files.pythonhosted.org/packages/source/d/doxyqml/doxyqml-0.5.3.tar.gz
-https://files.pythonhosted.org/packages/source/c/certifi/certifi-2025.8.3.tar.gz
-https://github.com/getsentry/sentry-python/releases/download/2.35.0/sentry_sdk-2.35.0.tar.gz
-https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.11.0.0.tar.gz
-https://github.com/jordansissel/xdotool/releases/download/v3.20211022.1/xdotool-3.20211022.1.tar.gz
-https://github.com/opencv/opencv/archive/4.12.0/opencv-4.12.0.tar.gz
-https://doxygen.nl/files/doxygen-1.14.0.src.tar.gz
-https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.3.0/downloads/libdisplay-info-0.3.0.tar.xz
-https://github.com/libproxy/libproxy/archive/0.5.10/libproxy-0.5.10.tar.gz
-https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz
-https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.4.0.tar.xz
-https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
-https://github.com/beltoforion/muparser/archive/v2.3.5/muparser-2.3.5.tar.gz
-https://download.gnome.org/sources/gtk-doc/1.34/gtk-doc-1.34.0.tar.xz
-https://github.com/log4cplus/log4cplus/releases/download/REL_2_1_2/log4cplus-2.1.2.tar.xz
-https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-0.92.1.tar.gz
-https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-0.28.tar.gz
-http://openbox.org/dist/openbox/openbox-3.6.1.tar.gz
-https://www.linuxfromscratch.org/patches/blfs/12.4/openbox-3.6.1-py3-1.patch
-https://www.jwz.org/xscreensaver/xscreensaver-6.12.tar.gz
-# ======== QtWebEngine ========
-https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.4.7/pipewire-1.4.7.tar.bz2
-https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.10/wireplumber-0.5.10.tar.bz2
-https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtwebengine-everywhere-src-6.9.3.tar.xz
-# ======== WebkitGTK ========
-https://github.com/google/woff2/archive/v1.0.2/woff2-1.0.2.tar.gz
-https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz
-https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.7.2/geoclue-2.7.2.tar.bz2
-https://github.com/containers/bubblewrap/releases/download/v0.11.0/bubblewrap-0.11.0.tar.xz
-https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz
-https://webkitgtk.org/releases/webkitgtk-2.50.2.tar.xz
+
 ###
 # =================================== KDE ======================================
 ###
@@ -1069,7 +1016,6 @@ https://github.com/lxqt/xdg-desktop-portal-lxqt/releases/download/1.2.0/xdg-desk
 https://github.com/lxqt/obconf-qt/releases/download/0.16.5/obconf-qt-0.16.5.tar.xz
 # ============================ LXQt Applications ===============================
 https://github.com/lxqt/lximage-qt/releases/download/2.2.0/lximage-qt-2.2.0.tar.xz
-https://github.com/lxqt/lxqt-archiver/releases/download/1.2.0/lxqt-archiver-1.2.0.tar.xz
 https://github.com/lxqt/lxqt-notificationd/releases/download/2.2.0/lxqt-notificationd-2.2.0.tar.xz
 https://github.com/lxqt/pavucontrol-qt/releases/download/2.2.0/pavucontrol-qt-2.2.0.tar.xz
 https://github.com/lxqt/qps/releases/download/2.11.1/qps-2.11.1.tar.xz

@@ -33,7 +33,7 @@ PRGNAME="pulseaudio"
 #              libasyncns              (https://0pointer.de/lennart/projects/libasyncns/)
 #              lirc                    (https://www.lirc.org/)
 #              orc                     (https://gstreamer.freedesktop.org/src/orc/)
-#              soxr                    (https://sourceforge.net/projects/soxr/)
+#              soxr                    (https://sourceforge.net/p/soxr/wiki/Home/)
 #              tdb                     (https://tdb.samba.org/)
 #              webrtc-audio-processing (https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/)
 

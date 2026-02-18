@@ -56,6 +56,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 cp "${SOURCES}/${PRGNAME}.1"   "${TMP_DIR}${MAN_DIR}/man1/"
 cp "${SOURCES}/${PRGNAME}rc.5" "${TMP_DIR}${MAN_DIR}/man5/"
+cp "${SOURCES}/${PRGNAME}.png" "${TMP_DIR}${PIXMAPS}/"
 
 cd .. || exit 1
 

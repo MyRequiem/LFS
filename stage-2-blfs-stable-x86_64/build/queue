@@ -305,14 +305,6 @@ n/mit-kerberos-v5.sh
 l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
-s/sound-theme-freedesktop.sh
-l/libcanberra.sh
-s/notification-daemon.sh
-l/libnotify.sh
-l/libhandy.sh
-s/desktop-file-utils.sh
-l/dconf.sh
-s/ibus.sh
 l/fftw.sh
 l/libsamplerate.sh
 l/sdl2.sh
@@ -329,11 +321,11 @@ l/qt6.sh
 x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
-kde/icons/breeze-icons.sh
 kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
+s/desktop-file-utils.sh
 l/fltk.sh
 l/libsecret.sh
 l/gcr3.sh
@@ -549,7 +541,6 @@ l/libspectre.sh
 ap/potrace.sh
 d/perl-modules/perl-file-fcntllock.sh
 d/perl-modules/perl-xml-simple.sh
-d/perl-modules/perl-parse-yapp.sh
 l/icon-naming-utils.sh
 n/exim.sh
 ap/at.sh
@@ -592,18 +583,70 @@ l/xapian.sh
 ap/faad2.sh
 s/conky.sh
 xap/vlc.sh
-# === зависимости для KDE, GNOME, LXQt и др. ===
-l/gtksourceview3.sh
-l/gtksourceview4.sh
-l/gtksourceview5.sh
-n/samba.sh
-l/spidermonkey-js-engine.sh
-l/protobuf-c.sh
+###
+# =================================== LXQt =====================================
+###
+# ======= Misc Dependencies =======
 l/libexif.sh
-l/exempi.sh
 l/libportal.sh
+l/pipewire.sh
+l/wireplumber.sh
+s/bubblewrap.sh
 l/xdg-desktop-portal.sh
-l/xdg-desktop-portal-gtk.sh
+d/python-modules/python3-pyxdg.sh
+s/openbox.sh
+l/log4cplus.sh
+l/libstatgrab.sh
+s/gtk-doc.sh
+kde/l/polkit-qt.sh
+
+# ========== KF6, Plasma ==========
+kde/s/plasma-wayland-protocols.sh
+lxqt/KF6_plasma/kwindowsystem.sh    [NEW]
+lxqt/KF6_plasma/kconfig.sh          [NEW]
+lxqt/KF6_plasma/solid.sh            [NEW]
+lxqt/KF6_plasma/kidletime.sh        [NEW]
+lxqt/KF6_plasma/kwayland.sh         [NEW]
+lxqt/KF6_plasma/libkscreen.sh       [NEW]
+lxqt/KF6_plasma/layer-shell-qt.sh   [NEW]
+l/muparser.sh
+# =============== LXQt Desktop Components ===============
+lxqt/desktop/lxqt-build-tools.sh
+lxqt/desktop/libdbusmenu-lxqt.sh
+lxqt/desktop/libqtxdg.sh
+lxqt/desktop/lxqt-menu-data.sh
+lxqt/desktop/liblxqt.sh
+lxqt/desktop/libsysstat.sh
+lxqt/desktop/qtxdg-tools.sh
+lxqt/desktop/libfm-extra.sh
+lxqt/desktop/menu-cache.sh
+lxqt/desktop/libfm-qt.sh
+lxqt/desktop/lxqt-globalkeys.sh
+lxqt/desktop/lxqt-qtplugin.sh
+lxqt/desktop/lxqt-panel.sh
+lxqt/desktop/pcmanfm-qt.sh
+lxqt/desktop/lxqt-powermanagement.sh
+lxqt/desktop/lxqt-runner.sh
+lxqt/desktop/lxqt-themes.sh
+lxqt/desktop/lxqt-admin.sh
+lxqt/desktop/lxqt-about.sh
+lxqt/desktop/lxqt-config.sh
+lxqt/desktop/lxqt-policykit.sh
+lxqt/desktop/lxqt-sudo.sh
+lxqt/desktop/lxqt-openssh-askpass.sh
+lxqt/desktop/lxqt-session.sh
+lxqt/desktop/xdg-desktop-portal-lxqt.sh
+lxqt/desktop/obconf-qt.sh
+# =============== LXQt Applications ====================
+lxqt/apps/lximage-qt.sh
+lxqt/apps/lxqt-notificationd.sh
+lxqt/apps/pavucontrol-qt.sh
+lxqt/apps/qps.sh
+lxqt/apps/qtermwidget.sh
+lxqt/apps/qterminal.sh
+lxqt/apps/screengrab.sh
+# ==============================================================================
+
 l/libcloudproviders.sh
 l/libgusb.sh
 s/colord.sh
@@ -624,61 +667,7 @@ n/libnma.sh
 s/accountsservice.sh
 s/power-profiles-daemon.sh
 l/liblinear.sh
-n/nmap.sh
-xap/freerdp.sh
-l/gsl.sh
-ap/bogofilter.sh
-l/aspell.sh
-l/enchant.sh
-l/gspell.sh
-l/webp-pixbuf-loader.sh
-a/smartmontools.sh
-l/libbytesize.sh
-l/libatasmart.sh
-a/cryptsetup.sh
-l/libblockdev.sh
-a/udisks.sh
-l/libraw.sh
-l/libavif.sh
-l/highway.sh
-l/libjxl.sh
-l/zxing-cpp.sh
-l/libdaemon.sh
-n/avahi.sh
-l/libqrencode.sh
-l/qca.sh
-d/python-modules/python3-chardet.sh
-d/python-modules/python3-doxypypy.sh
-d/python-modules/python3-doxyqml.sh
-d/python-modules/python3-certifi.sh
-d/python-modules/python3-sentry-sdk.sh
-d/python-modules/python3-pygdbmi.sh
-s/xdotool.sh
-l/opencv.sh
-d/doxygen.sh
-s/libdisplay-info.sh
-l/libproxy.sh
-n/kdsoap.sh
-n/kdsoap-ws-discovery-client.sh
-kde/l/polkit-qt.sh
-l/muparser.sh
-s/gtk-doc.sh
-l/log4cplus.sh
-l/libstatgrab.sh
-d/python-modules/python3-pyxdg.sh
-s/openbox.sh
-xap/xscreensaver.sh
-# === QtWebEngine ===
-l/pipewire.sh
-l/wireplumber.sh
-kde/l/qtwebengine.sh
-# === webkitgtk ===
-l/woff2.sh
-n/xdg-dbus-proxy.sh
-n/geoclue.sh
-s/bubblewrap.sh
-d/unifdef.sh
-l/webkitgtk.sh
+
 # =================================== KDE ======================================
 # === kde-frameworks ===
 kde/l/phonon.sh
@@ -757,60 +746,5 @@ gnome/apps/evince.sh
 gnome/apps/eog.sh
 gnome/xap/epiphany.sh
 gnome/apps/gedit.sh
-# =================================== LXQt =====================================
-###
-# NOTE:
-###
-#    Должны быть установлены KDE пакеты:
-#       kde-frameworks
-#       plasma
-#       sddm (или другой Display Manager, опционально)
-#
-#    либо собирать указанные в сборочных скритах зависимости (модули
-#    kde-frameworks и plasma) отдельно:
-#       kwindowsystem-6.17.0 for lxqt
-#       kconfig-6.17.0 for lxqt
-#       solid-6.17.0 for lxqt
-#       kidletime-6.17.0 for lxqt
-#       kwayland-6.4.4 for lxqt
-#       libkscreen-6.4.4 for lxqt
-#       layer-shell-qt-6.4.4 for lxqt
-#
-# =============== LXQt Desktop Components ===============
-lxqt/desktop/lxqt-build-tools.sh
-lxqt/desktop/libdbusmenu-lxqt.sh
-lxqt/desktop/libqtxdg.sh
-lxqt/desktop/lxqt-menu-data.sh
-lxqt/desktop/liblxqt.sh
-lxqt/desktop/libsysstat.sh
-lxqt/desktop/qtxdg-tools.sh
-lxqt/desktop/libfm-extra.sh
-lxqt/desktop/menu-cache.sh
-lxqt/desktop/libfm-qt.sh
-lxqt/desktop/lxqt-globalkeys.sh
-lxqt/desktop/lxqt-qtplugin.sh
-lxqt/desktop/lxqt-panel.sh
-lxqt/desktop/pcmanfm-qt.sh
-lxqt/desktop/lxqt-powermanagement.sh
-lxqt/desktop/lxqt-runner.sh
-lxqt/desktop/lxqt-themes.sh
-lxqt/desktop/lxqt-admin.sh
-lxqt/desktop/lxqt-about.sh
-lxqt/desktop/lxqt-config.sh
-lxqt/desktop/lxqt-policykit.sh
-lxqt/desktop/lxqt-sudo.sh
-lxqt/desktop/lxqt-openssh-askpass.sh
-lxqt/desktop/lxqt-session.sh
-lxqt/desktop/xdg-desktop-portal-lxqt.sh
-lxqt/desktop/obconf-qt.sh
-# =============== LXQt Applications ===============
-lxqt/apps/lximage-qt.sh
-lxqt/apps/lxqt-archiver.sh
-lxqt/apps/lxqt-notificationd.sh
-lxqt/apps/pavucontrol-qt.sh
-lxqt/apps/qps.sh
-lxqt/apps/qtermwidget.sh
-lxqt/apps/qterminal.sh
-lxqt/apps/screengrab.sh
 
 # vim:ft=conf

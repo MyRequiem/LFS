@@ -7,8 +7,8 @@ PRGNAME="libqrencode"
 
 # Required:    no
 # Recommended: libpng
-# Optional:    doxygen    (документация)
-#              sdl2       (тесты)
+# Optional:    doxygen
+#              sdl2         (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

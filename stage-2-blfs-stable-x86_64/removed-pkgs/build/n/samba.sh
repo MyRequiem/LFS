@@ -116,6 +116,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/var/run"
+rm -rf "${TMP_DIR}/var/lock"
 
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"

@@ -15,7 +15,7 @@ PRGNAME="gdk-pixbuf"
 #              librsvg            (runtime)
 #              libtiff
 # Optional:    python3-gi-docgen  (для генерации документации)
-#              glibavif           (runtime, для загрузки изображений AVIF)
+#              libavif            (runtime, для загрузки изображений AVIF)
 #              libjxl             (runtime, для загрузки изображений jpeg xl)
 #              webp-pixbuf-loader (runtime, для загрузки изображений webp)
 
