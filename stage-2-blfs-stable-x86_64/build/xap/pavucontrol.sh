@@ -28,7 +28,7 @@ cd build || exit 1
 meson setup             \
     --prefix=/usr       \
     --buildtype=release \
-    -D lynx=disabled    \
+    -D lynx=false       \
     .. || exit 1
 
 ninja || exit 1
