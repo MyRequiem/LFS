@@ -6,7 +6,8 @@ PRGNAME="lxqt-powermanagement"
 # Модуль управления питанием для LXQt
 
 # Required:    liblxqt
-#              kde-frameworks    (модули kidletime и solid)
+#              kidletime или kde-frameworks
+#              solid     или kde-frameworks
 #              upower
 # Recommended: no
 # Optional:    no

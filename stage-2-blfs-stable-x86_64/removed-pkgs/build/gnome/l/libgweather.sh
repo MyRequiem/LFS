@@ -14,7 +14,7 @@ PRGNAME="libgweather"
 #              vala
 # Optional:    python3-gi-docgen
 #              llvm
-#              pylint               (https://pypi.org/project/pylint/)
+#              python3-pylint           (https://pypi.org/project/pylint/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

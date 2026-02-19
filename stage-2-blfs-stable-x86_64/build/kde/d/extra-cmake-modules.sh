@@ -18,6 +18,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch" || exit 1
+
 # запретим приложениям, использующих cmake, пытаться установить файлы в
 # [/usr]/lib64
 sed -i '/"lib64"/s/64//' kde-modules/KDEInstallDirsCommon.cmake || exit 1

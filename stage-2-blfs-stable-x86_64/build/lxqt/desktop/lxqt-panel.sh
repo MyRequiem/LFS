@@ -5,12 +5,12 @@ PRGNAME="lxqt-panel"
 ### lxqt-panel (lightweight X11 desktop panel)
 # Легковесная панель рабочего стола X11
 
-# Required:    plasma               (пакет layer-shell-qt)
+# Required:    layer-shell-qt       или plasma
 #              libdbusmenu-lxqt
 #              liblxqt
 #              lxqt-globalkeys
 #              lxqt-menu-data
-#              kde-frameworks       (пакет solid)
+#              solid                или kde-frameworks
 #              menu-cache
 # Recommended: pulseaudio
 #              libstatgrab          (плагины network monitor и cpu load)

@@ -6,8 +6,8 @@ PRGNAME="xdg-desktop-portal-lxqt"
 # Бэкэнд для xdg-desktop-portal, использующий библиотеку Qt
 
 # Required:    libfm-qt
-#              kde-frameworks        (пакет kwindowsystem)
-#              xdg-desktop-portal    (runtime)
+#              kwindowsystem или kde-frameworks
+#              xdg-desktop-portal                   (runtime)
 # Recommended: no
 # Optional:    no
 
