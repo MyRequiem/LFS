@@ -35,7 +35,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-mv -v "${TMP_DIR}/usr/share/doc"/wireplumber{,-"${VERSION}"}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 PIPEWIRE_LAUNCHER="/usr/bin/pipewire-launcher.sh"
 cat << EOF > "${TMP_DIR}${PIPEWIRE_LAUNCHER}"
@@ -78,7 +78,7 @@ cat << EOF > "${TMP_DIR}${AUTOSTART}/pipewire.desktop"
 Version=1.0
 Name=Pipewire
 Comment=Starts the Pipewire and Wireplumber daemons
-# Exec=${PIPEWIRE_LAUNCHER}
+Exec=${PIPEWIRE_LAUNCHER}
 Terminal=false
 Type=Application
 EOF

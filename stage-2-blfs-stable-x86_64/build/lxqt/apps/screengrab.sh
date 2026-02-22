@@ -6,7 +6,7 @@ PRGNAME="screengrab"
 # Кроссплатформенный инструмент для создания скриншотов
 
 # Required:    lxqt-build-tools
-#              kde-frameworks       (модуль kwindowsystem)
+#              kwindowsystem    или kde-frameworks
 #              libqtxdg
 # Recommended: no
 # Optional:    no

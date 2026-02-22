@@ -67,7 +67,7 @@ PRGNAME="vlc"
 #              openmax                  (https://www.khronos.org/openmax/)
 #              schroedinger             (https://sourceforge.net/projects/schrodinger/)
 #              shine                    (https://github.com/toots/shine)
-#              sox                      (https://sourceforge.net/p/soxr/wiki/Home/)
+#              soxr                     (https://sourceforge.net/p/soxr/wiki/Home/)
 #              tremor                   (https://wiki.xiph.org/Tremor)
 #              twolame                  (https://www.twolame.org/)
 #              zapping-vbi              (https://sourceforge.net/projects/zapping/)

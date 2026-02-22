@@ -55,6 +55,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # /usr/sbin/bluetoothd -> ../libexec/bluetooth/bluetoothd
 ln -svf ../libexec/bluetooth/bluetoothd "${TMP_DIR}/usr/sbin/"
 

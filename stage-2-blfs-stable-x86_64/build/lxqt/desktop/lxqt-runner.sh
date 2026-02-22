@@ -7,7 +7,7 @@ PRGNAME="lxqt-runner"
 # поле ввода, вызываемом по сочетанию клавиш Alt-F2
 
 # Required:    lxqt-globalkeys
-#              kde-frameworks       (пакет kwindowsystem)
+#              kwindowsystem или kde-frameworks
 #              muparser
 # Recommended: no
 # Optional:    no

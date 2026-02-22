@@ -6,8 +6,8 @@ PRGNAME="lxqt-config"
 # Пакет предоставляет Центр конфигурации LXQt
 
 # Required:    liblxqt
-#              kde-frameworks           (модуль kconfig)
-#              plasma                   (модуль libkscreen)
+#              kconfig    или kde-frameworks
+#              libkscreen или plasma
 #              xorg-libinput-driver
 # Recommended: no
 # Optional:    no

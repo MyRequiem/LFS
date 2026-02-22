@@ -42,10 +42,8 @@ cd "${TMP_DIR}" || exit 1
 
 DESTDIR="${TMP_DIR}" npm install -g "${MODULE}" || exit 1
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
-rm -rf "${TMP_DIR}/usr/share/help"
-rm -rf "${TMP_DIR}/usr/share/info"
+# shellcheck disable=SC3009
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,info}
 
 sudo chown -R root:root .
 sudo find -L . \

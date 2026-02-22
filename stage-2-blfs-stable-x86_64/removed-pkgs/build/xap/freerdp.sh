@@ -35,9 +35,9 @@ DOCBOOK_XSL_VER="1.79.2"
 #              ocl-icd              (https://github.com/OCL-dev/ocl-icd)
 #              mbedtls              (https://github.com/Mbed-TLS/mbedtls)
 #              openh264             (https://www.openh264.org/)
-#              pcsclite             (https://pcsclite.apdu.fr/)
+#              pcsc-lite            (https://pcsclite.apdu.fr/)
 #              sdl-ttf              (https://github.com/libsdl-org/SDL_ttf)
-#              soxr                 (https://github.com/chirlu/soxr)
+#              soxr                 (https://sourceforge.net/p/soxr/wiki/Home/)
 #              uriparser            (https://github.com/uriparser/uriparser)
 
 ROOT="/root/src/lfs"

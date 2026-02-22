@@ -6,7 +6,7 @@ PRGNAME="liblxqt"
 # Основная служебная библиотека для всех компонентов LXQt
 
 # Required:    libqtxdg
-#              kde-frameworks    (пакет kwindowsystem)
+#              kwindowsystem или kde-frameworks
 #              polkit
 # Recommended: no
 # Optional:    no

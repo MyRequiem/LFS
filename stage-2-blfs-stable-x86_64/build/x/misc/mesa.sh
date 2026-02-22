@@ -19,8 +19,7 @@ PRGNAME="mesa"
 #                                               без пакета mesa, и после установки mesa пересобираем
 #                                               libvdpau
 #              llvm                         (для сборки llvmpipe, r300, r600 и radeonsi драйверов)
-#              wayland-protocols            (для сборки plasma5, gnome, а так же
-#                                               рекомендуется для gtk+3)
+#              wayland-protocols            (для сборки KDE Plasma, GNOME, а так же рекомендуется для gtk+3)
 #              libclc                       (для intel iris gallium driver)
 #              vulkan-loader                (для zink gallium driver)
 #              python3-ply                  (для Intel vulkan driver)

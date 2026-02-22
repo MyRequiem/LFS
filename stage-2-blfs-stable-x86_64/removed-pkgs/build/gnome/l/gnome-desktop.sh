@@ -1,26 +1,21 @@
 #! /bin/bash
 
-PRGNAME="eog"
+PRGNAME="gnome-desktop"
 
-### EOG (This is the Eye of GNOME)
-# Стандартный, простой и быстрый просмотрщик изображений для среды рабочего
-# стола GNOME, позволяющий открывать, масштабировать, вращать картинки,
-# просматривать их в виде слайд-шоу и видеть метаданные (EXIF)
+### GNOME Desktop (libgnome-desktop library)
+# Библиотеки, предоставляющие общий API для приложений рабочего стола GNOME
 
-# Required:    adwaita-icon-theme
-#              exempi
-#              gnome-desktop
-#              libhandy
-#              libjpeg-turbo
-#              libpeas
-#              shared-mime-info
-# Recommended: glib
-#              lcms2
-#              libexif
-#              librsvg
-#              webp-pixbuf-loader
+# Required:    gsettings-desktop-schemas
+#              gtk+3
+#              gtk4
+#              iso-codes
+#              itstool
+#              libseccomp
+#              libxml2
+#              xkeyboard-config
+# Recommended: bubblewrap           (для thumbnailers в nautilus)
+#              glib
 # Optional:    gtk-doc
-#              libportal
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -47,15 +42,12 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим MIME кэш
-update-desktop-database
-
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (This is the Eye of GNOME)
+# Package: ${PRGNAME} (libgnome-desktop library)
 #
-# EOG is an application used for viewing and cataloging image files on the
-# GNOME Desktop. It also has basic editing capabilities
+# The GNOME Desktop package contains a library that provides an API shared by
+# several applications on the GNOME Desktop
 #
 # Home page: https://github.com/GNOME/${PRGNAME}
 # Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz

@@ -116,9 +116,13 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/var/run"
+rm -rf "${TMP_DIR}/var/lock"
 
 rm -rf "${TMP_DIR}/usr/share/doc"
 rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+
+ln -s samba/libtalloc-private-samba.so \
+    "${TMP_DIR}/usr/lib/libtalloc-private-samba.so"
 
 # установим пример конфигурационного файла и исправим в нем директивы
 # log file и path

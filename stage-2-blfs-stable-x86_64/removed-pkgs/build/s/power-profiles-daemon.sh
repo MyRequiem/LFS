@@ -14,8 +14,8 @@ PRGNAME="power-profiles-daemon"
 # Optional:    gtk-doc
 #              python3-dbusmock
 #              umockdev
-#              isort                    (https://github.com/PyCQA/isort)
-#              mccabe                   (https://github.com/PyCQA/mccabe)
+#              python3-isort                (https://github.com/PyCQA/isort)
+#              python3-mccabe               (https://github.com/PyCQA/mccabe)
 
 ### Конфигурация ядра
 #    CPU_FREQ=y

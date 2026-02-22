@@ -6,12 +6,12 @@ PRGNAME="pcmanfm-qt"
 # Файловый менеджер и менеджер значков на рабочем столе (Qt порт pcmanfm и
 # libfm)
 
-# Required:    plasma           (пакет layer-shell-qt)
+# Required:    layer-shell-qt или plasma
 #              liblxqt
 #              libfm-qt
 #              lxqt-menu-data
 # Recommended: gvfs             (runtime)
-#              oxygen-icons     (или другая тема на выбор, т.к.в некоторых случаях могут отсутствовать иконки)
+#              oxygen-icons     (или другая тема на выбор, т.к. в некоторых случаях могут отсутствовать иконки)
 # Optional:    no
 
 ROOT="/root/src/lfs"

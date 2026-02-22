@@ -39,10 +39,16 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 # это последний пакет из раздела LXQt Desktop Components, поэтому обновим
 # некоторые базы
-ldconfig                             &&
-update-mime-database /usr/share/mime &&
-xdg-icon-resource forceupdate        &&
-update-desktop-database -q           || exit 1
+echo "-------------------------------------"
+echo "ldconfig ..."
+ldconfig
+echo "update-mime-database /usr/share/mime ..."
+update-mime-database /usr/share/mime
+echo "xdg-icon-resource forceupdate ..."
+xdg-icon-resource forceupdate
+echo "update-desktop-database -q ..."
+update-desktop-database -q
+echo "-------------------------------------"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Qt-based configuration tool for Openbox)

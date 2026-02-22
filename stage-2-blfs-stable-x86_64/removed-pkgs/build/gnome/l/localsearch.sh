@@ -79,8 +79,12 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
+MICRO_VERSION="$(echo "${VERSION}" | cut -d . -f 3)"
+ln -s "localsearch-${MAJ_VERSION}.${MICRO_VERSION}/libtracker-extract.so" \
+    "${TMP_DIR}/usr/lib/libtracker-extract.so"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
