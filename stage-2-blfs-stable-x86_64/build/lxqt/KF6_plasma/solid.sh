@@ -1,16 +1,19 @@
 #! /bin/bash
 
-PRGNAME="kwindowsystem"
+PRGNAME="solid"
 
-### kwindowsystem (windowing system high level API)
-# Предоставляет API высокого уровня который и является оконной системой.
+### solid (device integration framework)
+# Платформа интеграции устройств. Обеспечивает способ запроса и взаимодействие
+# с оборудованием независимо от базовой операционной системы
 
 # Required:    extra-cmake-modules
-#              plasma-wayland-protocols
 #              qt6
-#              xorg-libraries
 # Recommended: no
-# Optional:    no
+# Optional:    --- runtime ---
+#              udisks
+#              upower
+#              libimobiledevice         (https://libimobiledevice.org/)
+#              media-player-info        (http://www.freedesktop.org/wiki/Software/media-player-info)
 
 ###
 # NOTE:
@@ -27,11 +30,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    -D BUILD_TESTING=OFF         \
-    -W no-dev                    \
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D CMAKE_BUILD_TYPE=Release         \
+    -D CMAKE_INSTALL_LIBEXECDIR=libexec \
+    -D KDE_INSTALL_USE_QT_SYS_PATHS=ON  \
+    -D BUILD_TESTING=OFF                \
+    -W no-dev                           \
     .. || exit 1
 
 make || exit 1
@@ -46,11 +51,10 @@ source "${ROOT}/update-info-db.sh" || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (windowing system high level API)
+# Package: ${PRGNAME} (device integration framework)
 #
-# The kwindowsystem provides information about, and allows interaction with,
-# the windowing system. It provides a high level API that is windowing system
-# independent and has platform specific implementations.
+# Solid is a device integration framework. It provides a way of querying and
+# interacting with hardware independently of the underlying operating system
 #
 # Home page: https://kde.org/
 # Download:  https://download.kde.org/stable/frameworks/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz

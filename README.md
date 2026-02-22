@@ -25,21 +25,21 @@
 
 ![virtual machines with virt-manager][6]
 
-* **KDE**
-
-![KDE][7]
-
-* **GNOME**
-
-![GNOME][8]
-
 * **OpenBox**
 
-![OpenBox][9]
+![OpenBox][7]
 
 * **LXQt**
 
-![LXQt][10]
+![LXQt][8]
+
+* **KDE**
+
+![KDE][9]
+
+* **GNOME**
+
+![GNOME][10]
 
 [1]: https://www.linuxfromscratch.org/lfs/view/12.4/index.html
 [2]: https://www.linuxfromscratch.org/blfs/view/12.4/index.html

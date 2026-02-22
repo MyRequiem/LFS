@@ -63,11 +63,10 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-# Удалим файлы systemd, которые в нашей системе бесполезны
-rm -rf "${TMP_DIR}/usr/lib/systemd"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+# удалим файлы systemd, которые в нашей System V системе бесполезны
+rm -rf "${TMP_DIR}/usr/lib/systemd"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

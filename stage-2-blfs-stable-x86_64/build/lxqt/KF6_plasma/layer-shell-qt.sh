@@ -1,20 +1,19 @@
 #! /bin/bash
 
-PRGNAME="kwindowsystem"
+PRGNAME="layer-shell-qt"
 
-### kwindowsystem (windowing system high level API)
-# Предоставляет API высокого уровня который и является оконной системой.
+### layer-shell-qt (easily use clients based on a "wlr-layer-shell" protocol)
+# Компонент позволяющий приложениям легко использовать клиентов на основе
+# протокола wlr-layer-shell
 
 # Required:    extra-cmake-modules
-#              plasma-wayland-protocols
 #              qt6
-#              xorg-libraries
 # Recommended: no
 # Optional:    no
 
 ###
 # NOTE:
-#    Нет необходимости в этом пакете, если установлен пакет kde-frameworks
+#    Нет необходимости в этом пакете, если установлен пакет plasma (KDE)
 ###
 
 ROOT="/root/src/lfs"
@@ -30,7 +29,6 @@ cd build || exit 1
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D BUILD_TESTING=OFF         \
     -W no-dev                    \
     .. || exit 1
 
@@ -44,16 +42,17 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (windowing system high level API)
+# Package: ${PRGNAME} (easily use clients based on a "wlr-layer-shell" protocol)
 #
-# The kwindowsystem provides information about, and allows interaction with,
-# the windowing system. It provides a high level API that is windowing system
-# independent and has platform specific implementations.
+# This component is meant for applications to be able to easily use clients
+# based on a "wlr-layer-shell" protocol. Clients can use this interface to
+# assign the surface_layer role to wl_surfaces. Such surfaces are assigned to a
+# "layer" of the output and rendered with a defined z-depth respective to each
+# other
 #
 # Home page: https://kde.org/
-# Download:  https://download.kde.org/stable/frameworks/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://download.kde.org/stable/plasma/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

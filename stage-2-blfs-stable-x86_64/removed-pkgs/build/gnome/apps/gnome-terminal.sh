@@ -38,11 +38,9 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -fv "${TMP_DIR}/usr/lib/systemd/user/gnome-terminal-server.service"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
-rm -rf "${TMP_DIR}/usr/share/help"
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -fv "${TMP_DIR}/usr/lib/systemd/user/gnome-terminal-server.service"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

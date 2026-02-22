@@ -70,9 +70,7 @@ ninja || exit 1
 # для тестов нужна утилита 'check', которая была удалена из LFS
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/help"
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 ###
 # Конфигурация

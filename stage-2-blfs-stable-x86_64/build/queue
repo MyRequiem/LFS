@@ -596,19 +596,20 @@ s/bubblewrap.sh
 l/xdg-desktop-portal.sh
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh
+s/tint2.sh
 l/log4cplus.sh
 l/libstatgrab.sh
 s/gtk-doc.sh
 kde/l/polkit-qt.sh
 # ======= KF6, Plasma =======
 kde/s/plasma-wayland-protocols.sh
-lxqt/KF6_plasma/kwindowsystem.sh    [NEW]
-lxqt/KF6_plasma/kconfig.sh          [NEW]
-lxqt/KF6_plasma/solid.sh            [NEW]
-lxqt/KF6_plasma/kidletime.sh        [NEW]
-lxqt/KF6_plasma/kwayland.sh         [NEW]
-lxqt/KF6_plasma/libkscreen.sh       [NEW]
-lxqt/KF6_plasma/layer-shell-qt.sh   [NEW]
+lxqt/KF6_plasma/kwindowsystem.sh
+lxqt/KF6_plasma/kconfig.sh
+lxqt/KF6_plasma/solid.sh
+lxqt/KF6_plasma/kidletime.sh
+lxqt/KF6_plasma/kwayland.sh
+lxqt/KF6_plasma/libkscreen.sh
+lxqt/KF6_plasma/layer-shell-qt.sh
 l/muparser.sh
 # ======= LXQt Desktop Components =======
 lxqt/desktop/lxqt-build-tools.sh

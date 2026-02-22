@@ -71,7 +71,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, polkit-qt, libical, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt, conky
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libtiff, openjpeg, libdrm, freeglut, x265, glslc, sdl12-compat, libvdpau-va-gl, libptytty, cxxopts, brotli, exiv2, jasper, taglib, libyajl, flameshot, double-conversion, extra-cmake-modules, uchardet, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, fast-float, snappy, poppler, utfcpp, gtest, fmt, abseil-cpp, protobuf, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, tint2, polkit-qt, libical, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt, conky
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  gtk+3, gtk4, cups
 conky
@@ -135,7 +135,7 @@ emacs                                   libidn, pinentry, desktop-file-utils, xt
 enscript                                imagemagick
 exim                                    gnupg, sudo, fcron, at
 exiv2                                   gexiv2, mirage
-extra-cmake-modules                     oxygen-icons, plasma-wayland-protocols
+extra-cmake-modules                     oxygen-icons, plasma-wayland-protocols, kwindowsystem, kconfig, solid, kidletime, kwayland, layer-shell-qt
 faac                                    gst-plugins-bad
 faad2                                   gst-plugins-bad, vlc
 fast-float                              vte3
@@ -263,7 +263,7 @@ icu                                     libpsl, libxml2, boost, harfbuzz, vte3, 
 id3lib
 imagemagick                             gnupg, feh, openbox
 imake                                   xxkb
-imlib2                                  w3m, feh, giblib, maim, openbox, conky
+imlib2                                  w3m, feh, giblib, maim, openbox, conky, tint2
 impacket                                curl
 inih                                    exiv2
 inkscape                                imagemagick
@@ -287,14 +287,19 @@ jq
 json-c                                  bind-utils, fontconfig, libmypaint
 json-glib                               gst-plugins-bad, spice-gtk, pavucontrol, gegl, osinfo-db-tools, girara, zathura, xdg-desktop-portal
 jsoncpp                                 cmake
+kconfig                                 lxqt-config
 kde-frameworks                          pinentry, liblxqt, lxqt-panel, lxqt-powermanagement, lxqt-runner, lxqt-config, xdg-desktop-portal-lxqt, screengrab
 kernel-firmware
 kexec                                   elogind
 keyutils                                mit-kerberos-v5, qemu
+kidletime                               lxqt-powermanagement
 krb4                                    cyrus-sasl
+kwayland                                libkscreen
+kwindowsystem                           lxqt-runner, xdg-desktop-portal-lxqt, liblxqt, screengrab
 ladspa                                  gst-plugins-bad
 lame                                    libsndfile, ffmpeg, gst-plugins-good
 lasem                                   goffice
+layer-shell-qt                          lxqt-panel, pcmanfm-qt
 lc3plus                                 pipewire
 lcms2                                   libmng, openjpeg, ghostscript, babl, gegl, gimp, libgxps, imagemagick, gst-plugins-bad, libplacebo, openjdk, poppler
 lcov                                    libseccomp
@@ -374,13 +379,14 @@ libiec61883                             ffmpeg, gst-plugins-good
 libiff                                  gimp
 libilbc                                 ffmpeg
 libilbm                                 gimp
-libimobiledevice                        upower
+libimobiledevice                        upower, solid
 libinput                                qt5-components, qt6, xorg-libinput-driver
 libiscsi                                qemu
 libjpeg-turbo                           libtiff, lcms2, ghostscript, gdk-pixbuf, fltk, imlib2, libwebp, libmng, jasper, feh, djvulibre, libgxps, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, mpv, spice, spice-gtk, qemu, maim, poppler, gegl, v4l-utils
 libjxl                                  gdk-pixbuf, imlib2, ffmpeg, gimp, imagemagick
 libkate                                 gst-plugins-bad, vlc
 libksba                                 gnupg
+libkscreen                              lxqt-config
 liblsmash                               x264
 liblxqt                                 lxqt-globalkeys, lxqt-qtplugin, lxqt-panel, pcmanfm-qt, lxqt-powermanagement, lxqt-admin, lxqt-about, lxqt-config, lxqt-policykit, lxqt-sudo, lxqt-openssh-askpass, lxqt-session, lxqt-notificationd, pavucontrol-qt, qps
 libmad                                  vlc
@@ -544,9 +550,10 @@ mariadb                                 cyrus-sasl, openldap, exim, qt5-componen
 maxflow                                 gegl
 md4c                                    flameshot
 mdadm                                   lvm2
+media-player-info                       solid
 menu-cache                              libfm-qt, lxqt-panel
 mercurial                               python3-setuptools-scm, cmake, openjdk
-mesa                                    libvdpau, libva, glu, freeglut, libepoxy, fltk, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5-components, qt6, vulkan-loader, xwayland, mpv, qemu
+mesa                                    libvdpau, libva, glu, freeglut, libepoxy, fltk, glew, xorg-applications, libvdpau-va-gl, gst-plugins-base, qt5-components, qt6, vulkan-loader, xwayland, mpv, qemu, kwayland
 mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
@@ -670,7 +677,7 @@ pinentry                                gnupg
 pipewire                                sdl2, mpv, qemu, wireplumber, xdg-desktop-portal
 pixman                                  cairo, xwayland, xorg-server, spice, qemu
 plasma                                  polkit, lxqt-panel, pcmanfm-qt, lxqt-config
-plasma-wayland-protocols
+plasma-wayland-protocols                kwindowsystem, kidletime, kwayland, libkscreen
 pngcrush                                gimp
 pngnq                                   gimp
 polkit                                  elogind, spice-gtk, polkit-qt, liblxqt, lxqt-admin
@@ -800,7 +807,7 @@ qjson                                   libdbusmenu-lxqt
 qoi                                     gimp
 qps
 qt5-components                          pinentry, google-chrome, zen-browser
-qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, zen-browser, flameshot, v4l-utils, polkit-qt, libportal, lxqt-build-tools, libqtxdg, libfm-qt, obconf-qt, qtermwidget
+qt6                                     pinentry, highlight, cmake, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, poppler, google-chrome, zen-browser, flameshot, v4l-utils, libportal, polkit-qt, kwindowsystem, kconfig, solid, kidletime, kwayland, libkscreen, layer-shell-qt, lxqt-build-tools, libqtxdg, libfm-qt, obconf-qt, qtermwidget
 qterminal
 qtermwidget                             qterminal
 qtxdg-tools                             lxqt-session
@@ -848,6 +855,7 @@ slang                                   aalib
 slop                                    maim
 snappy                                  qemu
 sndio                                   sdl2
+solid                                   lxqt-panel, lxqt-powermanagement
 soundtouch                              gst-plugins-bad
 soxr                                    pulseaudio, vlc
 spandsp                                 gst-plugins-bad
@@ -881,6 +889,7 @@ tdb                                     pulseaudio, exim
 texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, llvm, graphite2, fontconfig, libunwind, libvdpau, libvorbis, fltk, libvdpau-va-gl, opus, ffmpeg, jasper, dtc, cpio, imagemagick, zathura, gpm
 thin-provisioning-tools                 lvm2
 time
+tint2
 tinysparql                              gtk+3, gtk4
 tk                                      git, python3, ruby
 tmux
@@ -897,12 +906,13 @@ twm                                     xinit
 twolame                                 ffmpeg, gst-plugins-good, vlc
 uasm                                    7zip
 uchardet                                mpv
+udisks                                  solid
 umockdev                                upower, libgudev, xdg-desktop-portal
 unbound                                 gnutls
 uniconvertor                            imagemagick
 unixodbc                                openldap, qt5-components, qt6
 unrar
-upower                                  lxqt-powermanagement
+upower                                  solid, lxqt-powermanagement
 usbredir                                spice-gtk, qemu
 usbutils
 utah-raster-toolkit                     imagemagick
@@ -980,7 +990,7 @@ xorg-cf-files                           imake
 xorg-evdev-driver
 xorg-fonts                              librsvg, xwayland, xorg-server, aalib
 xorg-libinput-driver                    xorg-server, lxqt-config
-xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim, pipewire, conky
+xorg-libraries                          dbus, tk, at-spi2-core, cairo, pango, libdrm, libvdpau, mesa, xkeyboard-config, fltk, imlib2, pulseaudio, libxklavier, startup-notification, xinit, xclip, xsel, aalib, sdl2, imagemagick, gst-plugins-base, openjdk, qt5-components, qt6, vulkan-loader, python3-glad, maim, conky, pipewire, kwindowsystem
 xorg-server                             libxkbcommon, xorg-libinput-driver, xorg-synaptics-driver, xorg-evdev-driver
 xorg-sgml-doctools                      libxdmcp, xorg-server
 xorg-synaptics-driver
