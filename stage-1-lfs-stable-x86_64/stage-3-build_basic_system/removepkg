@@ -17,6 +17,15 @@ cat << EOF
 
 Usage: removepkg [params] [/var/log/packages/]pkgname-version
 
+### NOTE:
+    Packages that can only be updated and copied, but cannot be completely
+    remove from the system:
+        main-directory-tree
+        glibc
+        binutils
+        gcc
+        kernel-headers
+
 Params:
   --fake            generate a report to the standard output about which files
                     and directories would be removed, but does not actually
@@ -208,7 +217,6 @@ if [ -z "${PKG}" ]; then
 fi
 
 if [ -z "${NO_COLOR}" ]; then
-    RED="\033[0;31m"
     LRED="\033[1;31m"
     LBLUE="\033[1;34m"
     GREEN="\033[0;32m"
@@ -221,15 +229,27 @@ if [ -z "${NO_COLOR}" ]; then
     COLORRESET="\033[0;0m"
 fi
 
-if [[ "${PKG}" == "main-directory-tree" ]]; then
-    echo -en "${RED}Package ${LBLUE}${PKG}${RED} "
-    echo -e "cannot be deleted !!!${COLORRESET}"
-    exit 0
-fi
+STRICT_PKGS="main-directory-tree glibc binutils gcc kernel-headers"
+for STRICT_PKG in ${STRICT_PKGS} ; do
+    [[ "${FAKE}" == "true" ]] &&  break
+
+    if [[ ${PKG} == "main-directory-tree" ]]; then
+        STRICT_PKG_NAME="${PKG}"
+    else
+        STRICT_PKG_NAME="$(echo "${PKG}" | rev | cut -d / -f 1 | \
+            cut -d - -f 2- | rev)"
+    fi
+
+    if [[ "${STRICT_PKG_NAME}" == "${STRICT_PKG}" ]]; then
+        echo -en "${LRED}Package ${BROWN}${STRICT_PKG_NAME}${LRED} "
+        echo -e "cannot be deleted !!!${COLORRESET}"
+        exit 0
+    fi
+done
 
 if ! [ -f "${PACKAGES_DIR}/${PKG}" ]; then
-    echo -en "${RED}Package ${LBLUE}${PKG}${RED} not found in "
-    echo -e "${BROWN}${PACKAGES_DIR}/${COLORRESET}"
+    echo -en "${LRED}Package ${BROWN}${PKG}${LRED} not found in "
+    echo -e "${LBLUE}${PACKAGES_DIR}/${COLORRESET}"
     exit 1
 fi
 
