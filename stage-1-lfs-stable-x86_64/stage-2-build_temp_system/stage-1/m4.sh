@@ -3,7 +3,8 @@
 PRGNAME="m4"
 
 ### M4
-# Пакет M4 содержит макропроцессор
+# Мощный макропроцессор, используемый другими инструментами разработки для
+# автоматической генерации программного кода.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

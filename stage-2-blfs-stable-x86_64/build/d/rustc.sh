@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="rustc"
-BLFS_VER="12.4"
+BLFS_VER="13.0"
 
 ### Rustc (The Rust programming language)
 # Язык программирования Rust

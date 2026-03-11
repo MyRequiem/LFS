@@ -3,7 +3,8 @@
 PRGNAME="file"
 
 ### File (a utility to determine file type)
-# Утилита для определения типа файла
+# Утилита, которая определяет тип любого файла (картинка, текст, программа),
+# анализируя его содержимое, а не только расширение.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

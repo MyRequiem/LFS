@@ -3,9 +3,8 @@
 PRGNAME="gettext"
 
 ### Gettext (internationalization framework)
-# Утилиты для интернационализации и локализации, позволяющие программам
-# компилироваться с NLS (Native Language Support), т.е. с поддержкой родного
-# языка
+# Система перевода интерфейса программ на разные языки, позволяющая
+# Linux-приложениям «общаться» с пользователем на его родном языке.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

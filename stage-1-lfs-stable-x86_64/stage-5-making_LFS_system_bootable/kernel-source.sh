@@ -4,7 +4,8 @@ PRGNAME="kernel-source"
 ARCH_NAME="linux"
 
 ### Linux kernel source (Source code for Linus Torvalds Linux kernel)
-# Исходный код ядра linux
+# Исходный программный код ядра Linux, используемый для изучения работы системы
+# или сборки собственной версии ядра.
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1

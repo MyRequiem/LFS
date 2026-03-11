@@ -3,7 +3,8 @@
 PRGNAME="make"
 
 ### Make (GNU make utility to maintain groups of programs)
-# Программы для компиляции
+# Программа, которая управляет процессом сборки программ из исходного кода,
+# следя за тем, чтобы пересобирались только изменившиеся части.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

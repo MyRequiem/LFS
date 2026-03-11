@@ -3,7 +3,8 @@
 PRGNAME="automake"
 
 ### Automake (a Makefile generator)
-# Пакет содержит программы создания Make-файлов для использования с Autoconf
+# Программа, которая помогает разработчикам автоматически создавать инструкции
+# (Makefile) для сборки сложных проектов, упрощая процесс компиляции.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

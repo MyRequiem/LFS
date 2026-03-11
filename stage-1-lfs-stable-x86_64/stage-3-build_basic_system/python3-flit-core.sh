@@ -4,8 +4,8 @@ PRGNAME="python3-flit-core"
 ARCH_NAME="flit_core"
 
 ### Flit_core (a PEP517 build backend for packages using Flit)
-# Модуль Flit_core является ключевым компонентом системы Flit, обеспечивающим
-# простой способ разместить пакеты и модули Python на PyPi
+# Базовый компонент для сборки и упаковки современных проектов на языке Python
+# в готовые пакеты.
 
 ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1

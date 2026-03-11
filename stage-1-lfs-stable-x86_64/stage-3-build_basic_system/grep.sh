@@ -3,7 +3,8 @@
 PRGNAME="grep"
 
 ### Grep (print lines matching a pattern)
-# Программы для поиска по файлам
+# Незаменимая утилита для поиска нужного текста или строк внутри файлов по
+# заданным ключевым словам.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

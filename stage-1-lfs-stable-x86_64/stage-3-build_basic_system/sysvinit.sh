@@ -3,7 +3,8 @@
 PRGNAME="sysvinit"
 
 ### Sysvinit (init, the parent of all processes)
-# Программы для контроля запуска и выключение системы
+# Классическая система инициализации, которая управляет запуском всех служб и
+# программ при включении компьютера.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

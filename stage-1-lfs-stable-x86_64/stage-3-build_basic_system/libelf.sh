@@ -4,8 +4,8 @@ PRGNAME="libelf"
 ARCH_NAME="elfutils"
 
 ### Libelf from Elfutils (library for handling ELF)
-# Libelf - это библиотека для работы с файлами в формате ELF (Executable and
-# Linkable Format)
+# Библиотека для работы с исполняемыми файлами формата ELF (Executable and
+# Linkable Format), используемая системными инструментами для анализа программ.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1

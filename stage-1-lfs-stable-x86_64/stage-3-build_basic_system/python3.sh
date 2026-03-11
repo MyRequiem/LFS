@@ -4,11 +4,20 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### python3 (object-oriented interpreted programming language)
-# Python 3 интерпретатор
+# Современный и популярный язык программирования, на котором работает огромная
+# часть пользовательских приложений и сервисов.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+
+INSTALLED="$(find /var/log/packages/ -type f -name "python3-3.*")"
+if [ -n "${INSTALLED}" ]; then
+    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${INSTALLED_VERSION} already installed. Before building Python3 "
+    echo "package, you need to remove it."
+    removepkg --no-color "${INSTALLED}"
+fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"

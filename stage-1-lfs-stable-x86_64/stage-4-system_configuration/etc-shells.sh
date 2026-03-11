@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-shells"
-LFS_VERSION="12.4"
+LFS_VERSION="13.0"
 
 ### /etc/shells (login shell list)
 # Файл /etc/shells содержит список оболочек для входа в систему. Приложения

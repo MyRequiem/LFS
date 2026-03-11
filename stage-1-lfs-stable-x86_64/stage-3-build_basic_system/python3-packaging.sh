@@ -4,7 +4,8 @@ PRGNAME="python3-packaging"
 ARCH_NAME="packaging"
 
 ### Packaging (core utilities for Python packages)
-# утилиты, реализующие совместимость спецификаций пакетов Python
+# Инструмент для корректной работы с версиями и зависимостями пакетов в
+# экосистеме языка Python.
 
 ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1

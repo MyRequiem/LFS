@@ -3,7 +3,8 @@
 PRGNAME="libxcrypt"
 
 ### libxcrypt (library for one-way hashing of passwords)
-# современная библиотека для одностороннего хеширования паролей
+# Современная библиотека для шифрования и проверки паролей пользователей при
+# входе в систему.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

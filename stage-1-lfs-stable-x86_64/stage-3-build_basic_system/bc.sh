@@ -3,7 +3,8 @@
 PRGNAME="bc"
 
 ### Bc (An arbitrary precision numeric processing language)
-# Язык обработки чисел произвольной точности
+# Мощный консольный калькулятор, поддерживающий вычисления с высокой точностью
+# и выполнение математических сценариев
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

@@ -3,7 +3,8 @@
 PRGNAME="ninja"
 
 ### Ninja (build system with a focus on speed)
-# небольшая система сборки, ориентированная на скорость
+# Маленькая и очень быстрая утилита для сборки программ, которая работает в
+# паре с Meson для ускорения компиляции.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

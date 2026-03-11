@@ -3,7 +3,8 @@
 PRGNAME="inetutils"
 
 ### Inetutils (programs for basic networking)
-# Пакет содержит базовые сетевые утилиты
+# Набор базовых сетевых программ (ping, telnet, hostname и др.), используемых
+# для проверки связи и настройки сети.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

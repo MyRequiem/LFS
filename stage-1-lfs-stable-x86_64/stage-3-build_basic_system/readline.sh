@@ -3,8 +3,8 @@
 PRGNAME="readline"
 
 ### Readline (line input library with editing features)
-# Набор библиотек для редактирование из командной строки и возможности ведения
-# истории
+# Библиотека, позволяющая пользователю редактировать вводимые команды и
+# просматривать историю команд в терминале.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

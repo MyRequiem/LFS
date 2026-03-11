@@ -3,7 +3,8 @@
 PRGNAME="findutils"
 
 ### Findutils
-# Пакет содержит программы для поиска файлов
+# Мощные инструменты для поиска файлов в системе по их имени, дате создания,
+# размеру или другим параметрам.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

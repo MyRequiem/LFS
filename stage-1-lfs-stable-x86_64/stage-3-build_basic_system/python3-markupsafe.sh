@@ -4,8 +4,8 @@ PRGNAME="python3-markupsafe"
 ARCH_NAME="markupsafe"
 
 ### MarkupSafe (unicode subclass that supports HTML/XML strings)
-# Python2/3 модуль реализующий текстовый объект для безопасного использования в
-# HTML и XML
+# Вспомогательная библиотека для Python, которая делает работу с текстом в
+# шаблонах HTML и XML безопасной, предотвращая ошибки и взломы.
 
 ROOT="/"
 source "${ROOT}/check_environment.sh"                    || exit 1

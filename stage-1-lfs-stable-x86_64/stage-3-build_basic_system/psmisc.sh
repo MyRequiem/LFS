@@ -3,9 +3,8 @@
 PRGNAME="psmisc"
 
 ### Psmisc (displaying information about running processes)
-# Программы для отображения информации о защенных процессах, а так же для
-# управления этими процессами: fuser, killall, peekfd, prtstat, pslog, pstree,
-# pstree.x11
+# Маленькие, но полезные утилиты для управления процессами, такие как killall,
+# peekfd, prtstat, pslog, pstree и др.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

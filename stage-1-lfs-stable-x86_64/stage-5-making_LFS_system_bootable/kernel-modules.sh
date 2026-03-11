@@ -4,7 +4,8 @@ PRGNAME="kernel-modules"
 VERSION="$1"
 
 ### Linux kernel modules
-# Модули ядра linux
+# Дополнительные компоненты ядра (модули, драйверы), которые загружаются только
+# при необходимости для поддержки конкретных устройств.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1

@@ -3,7 +3,8 @@
 PRGNAME="tar"
 
 ### Tar
-# Программа архивации файлов и каталогов
+# Главный инструмент для создания архивов, объединяющий множество файлов и
+# папок в один большой файл без потери структуры.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

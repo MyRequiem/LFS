@@ -3,7 +3,8 @@
 PRGNAME="gawk"
 
 ### Gawk (pattern scanning and processing language)
-# Программы для работы с текстовыми файлами
+# Язык обработки текстовых строк, позволяющий быстро находить и изменять
+# информацию в больших списках или логах системы.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

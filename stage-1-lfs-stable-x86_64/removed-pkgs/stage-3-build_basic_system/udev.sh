@@ -4,7 +4,8 @@ PRGNAME="udev"
 ARCH_NAME="systemd"
 
 ### Udev (dynamic creation of device nodes)
-# Утилиты для динамического создания узлов устройств
+# Интеллектуальная подсистема управления оборудованием, которая создает файлы в
+# папке /dev при подключении новых устройств.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1

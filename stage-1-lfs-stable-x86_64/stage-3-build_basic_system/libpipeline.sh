@@ -3,8 +3,8 @@
 PRGNAME="libpipeline"
 
 ### Libpipeline (library for manipulating pipelines)
-# Пакет содержит библиотеку для управления конвейерами подпроцессов гибким и
-# удобным способом
+# Библиотека для удобного соединения программ в цепочки (конвейеры), чтобы
+# результат работы одной программы сразу передавался на вход другой программы.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -18,8 +18,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# тесты требуют пакет 'check' (фреймворк для тестов на C), который был удален
-# из LFS начиная с версии 12.4
+# тесты требуют пакет 'check', который был удален из LFS
 make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1

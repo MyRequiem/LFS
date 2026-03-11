@@ -89,7 +89,7 @@ set default=0
 set timeout=7
 
 # LFS
-menuentry "GNU/Linux LFS-12.4       Linux-6.16.3" {
+menuentry "GNU/Linux LFS-13.0       Linux-6.18.16" {
     set root=(hd0,1)
     linux /vmlinuz      root=${HD}5 ro net.ifnames=0 vt.default_utf8=1 video=nouveau:modeset=1 video=i915:modeset=1
 }

@@ -3,7 +3,8 @@
 PRGNAME="man-db"
 
 ### Man-DB (database-driven manual pager suite)
-# Программы для поиска и просмотра man-страниц
+# Система управления справочными страницами (man-страницами), позволяющая
+# быстро находить и просматривать инструкции к нужной команде Linux.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
