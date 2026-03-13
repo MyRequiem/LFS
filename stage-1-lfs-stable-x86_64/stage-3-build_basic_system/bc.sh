@@ -3,7 +3,8 @@
 PRGNAME="bc"
 
 ### Bc (An arbitrary precision numeric processing language)
-# Язык обработки чисел произвольной точности
+# Мощный консольный калькулятор, поддерживающий вычисления с высокой точностью
+# и выполнение математических сценариев
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -33,6 +34,8 @@ CC='gcc -std=c99' \
 make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

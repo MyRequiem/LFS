@@ -3,7 +3,8 @@
 PRGNAME="vim"
 
 ### Vim (Vi IMproved)
-# Powerful text editor
+# Продвинутый текстовый редактор, любимый профессионалами за скорость работы и
+# мощные функции правки кода.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

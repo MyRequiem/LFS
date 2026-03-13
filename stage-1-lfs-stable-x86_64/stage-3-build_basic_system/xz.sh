@@ -3,9 +3,8 @@
 PRGNAME="xz"
 
 ### Xz (compression utility based on the LZMA algorithm)
-# Программы для сжатия и распаковки файлов (lzma и более новых форматов сжатия
-# xz). Сжатие текстовых файлов с помощью xz дает лучший процент сжатия, чем при
-# использовании традиционных команд gzip или bzip2.
+# Современная утилита для сжатия данных, обеспечивающая один из самых высоких
+# уровней уменьшения размера файлов.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -23,6 +22,8 @@ mkdir -pv "${TMP_DIR}"
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

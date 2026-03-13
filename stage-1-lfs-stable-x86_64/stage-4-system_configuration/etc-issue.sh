@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-issue"
-LFS_VERSION="12.4"
+LFS_VERSION="13.0"
 
 ### /etc/issue (pre-login message)
 # Файл /etc/issue содержит сообщения, которые выводятся до приглашения на вход

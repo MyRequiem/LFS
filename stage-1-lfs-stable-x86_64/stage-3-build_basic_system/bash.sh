@@ -3,7 +3,13 @@
 PRGNAME="bash"
 
 ### Bash (Bourne-Again SHell - sh-compatible shell)
-# Командная оболочка UNIX
+# Bourne Again SHell - это основная программа для взаимодействия пользователя с
+# системой через командную строку в Linux. Она служит командным
+# интерпретатором, который понимает ваши текстовые команды, запускает нужные
+# программы и позволяет автоматизировать задачи с помощью скриптов. По сути,
+# это стандартный «пульт управления» и фундамент для работы большинства
+# инструментов в операционной системе.
+
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -40,6 +46,8 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # создадим ссылку в /usr/bin/
 #    sh -> bash
 ln -svf bash "${TMP_DIR}/usr/bin/sh"
@@ -47,10 +55,21 @@ ln -svf bash "${TMP_DIR}/usr/bin/sh"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
-# /usr/bin/bash сразу уставливаем в систему, т.к. скопировать
-# ${TMP_DIR}/usr/bin/bash в /usr/bin/ будет невозможно:
+###
+# ${TMP_DIR}/usr/bin/bash сразу уставливаем в систему командой install, т.к.
+# скопировать его будет невозможно:
 #    cannot create regular file '/usr/bin/bash': Text file busy
+###
+# «Text file busy» возникает потому, что мы пытаемся перезаписать файл
+# /usr/bin/bash в тот момент, когда он запущен и используется системой (как
+# минимум данным скриптом). Linux запрещает прямую модификацию исполняемого
+# файла, если он находится в памяти
 install -vm755 "${TMP_DIR}/usr/bin/bash" /usr/bin || exit 1
+
+# копируем все остальное в корень системы (без /usr/bin/bash)
+mv "${TMP_DIR}/usr/bin/bash" /tmp/
+/bin/cp -vR "${TMP_DIR}"/* /
+mv /tmp/bash "${TMP_DIR}/usr/bin/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Bourne-Again SHell - sh-compatible shell)
@@ -67,6 +86,3 @@ EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-rm -vf "${TMP_DIR}/usr/bin/bash"
-/bin/cp -vR "${TMP_DIR}"/* /

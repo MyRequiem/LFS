@@ -3,7 +3,8 @@
 PRGNAME="zlib"
 
 ### Zlib (compression library)
-# Универсальная многопоточная библиотека сжатия данных
+# Популярная многопоточная библиотека для сжатия данных в оперативной памяти,
+# которую используют тысячи других программ для скорости и экономии места.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,6 +23,8 @@ make install DESTDIR="${TMP_DIR}"
 
 # удалим бесполезную статическую библиотеку
 rm -fv "${TMP_DIR}/usr/lib/libz.a"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

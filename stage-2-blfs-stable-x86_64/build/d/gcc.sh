@@ -4,7 +4,7 @@ PRGNAME="gcc"
 
 ### GCC (GNU compiler collection)
 # Коллекция компиляторов для C, C++, Fortran, Go, Objective-C, Objective-C++ и
-# m2 кода
+# Modula2 кода.
 
 # Required:    no
 # Recommended: no
@@ -34,6 +34,16 @@ sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 || exit 1
 mkdir build
 cd build || exit 1
 
+###
+# NOTE:
+###
+#    Так же поддерживаются языки COBOL (только x86_64), Ada, D. Поддержка
+#    языков Ada и D по умолчанию отключена. Эти фронтенды написаны на самих
+#    себе, т.е. Аda написана на Ada, D написан на D, поэтому для их сборки в
+#    системе уже должен присутствовать рабочий компилятор Ada (GNAT) или D
+#    (GDC). В нашей системе LFS эти компиляторы отсутствуют, а только базового
+#    C/C++ недостаточно для сборки этих специфических компонентов.
+#
 # сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
 # а не на собственную внутреннюю копию
 #    --with-system-zlib
@@ -78,31 +88,22 @@ chown -vR root:root "${TMP_DIR}${LIB_GCC}/include"{,-fixed}
 # создадим символическую ссылку в /usr/lib/ требуемую FHS по историческим
 # причинам
 #    cpp -> ../bin/cpp
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -sv ../bin/cpp cpp
-)
+ln -svf ../bin/cpp "${TMP_DIR}/usr/lib"
 
 # многие программы используют имя 'cc' для вызова компилятора C, поэтому
 # создадим символическую ссылку cc -> gcc в /usr/bin/
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sv gcc cc
-)
+ln -svf gcc "${TMP_DIR}/usr/bin/cc"
 
 ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/cc.1"
 
-# добавим символическую ссылку в /usr/lib/bfd-plugins/
-#    liblto_plugin.so ->
-#       ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
-# для совместимости, чтобы разрешить сборку программ с помощью
-# Link Time Optimization (LTO)
-(
-    cd "${TMP_DIR}/usr/lib/bfd-plugins" || exit 1
-    ln -sfv \
-        "../../libexec/gcc/$(gcc -dumpmachine)/${VERSION}/liblto_plugin.so" \
-        liblto_plugin.so
-)
+# добавим символическую ссылку в  /usr/lib/bfd-plugins/ для совместимости,
+# чтобы включить сборку программ с оптимизацией компоновки LTO (Link Time
+# Optimization)
+#    liblto_plugin.so -> \
+#    ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
+DUMPMACHINE="$("${TMP_DIR}/usr/bin/${PRGNAME}" -dumpmachine)"
+ln -sfv "../../libexec/${PRGNAME}/${DUMPMACHINE}/${VERSION}/liblto_plugin.so" \
+    "${TMP_DIR}/usr/lib/bfd-plugins/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

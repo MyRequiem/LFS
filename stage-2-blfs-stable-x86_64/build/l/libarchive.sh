@@ -12,7 +12,6 @@ PRGNAME="libarchive"
 # Optional:    libxml2
 #              lzo
 #              nettle
-#              pcre2
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

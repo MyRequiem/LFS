@@ -4,7 +4,8 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### Python
-# Язык программирования Python v3
+# Современный и популярный язык программирования, на котором работает огромная
+# часть пользовательских приложений и сервисов.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1

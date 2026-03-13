@@ -3,9 +3,8 @@
 PRGNAME="expect"
 
 ### Expect (program that talks to other interactive programs)
-# Пакет содержит утилиту для ведения диалоговых сценариев с другими
-# интерактивными программами такими как telnet, ftp, passwd, fsck, rlogin, tip
-# и т.д. Пакет также полезен для тестирования приложений.
+# Инструмент для автоматизации интерактивных программ, который может сам
+# «отвечать» на вопросы системы (например, при вводе паролей в скриптах)
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -56,6 +55,8 @@ patch --verbose -Np1 -i \
 make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so

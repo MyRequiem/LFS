@@ -5,7 +5,8 @@ ARCH_NAME="linux"
 VERSION="$1"
 
 ### Linux kernel generic (a general purpose SMP Linux kernel)
-# Ядро linux
+# Само ядро Linux - «сердце» системы, которое управляет процессором, памятью и
+# обеспечивает работу всего оборудования.
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1

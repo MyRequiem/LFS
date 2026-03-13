@@ -4,6 +4,9 @@ PRGNAME="perl-xml-parser"
 ARCH_NAME="XML-Parser"
 
 ### XML::Parser (XML::Parser perl module)
+# Perl модуль, позволяющий программам написанным на Perl легко читать и
+# обрабатывать данные в формате XML.
+
 # Модуль XML::Parser является Perl-интерфейсом для синтаксического анализатора
 # XML документов Expat
 

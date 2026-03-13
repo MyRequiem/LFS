@@ -49,6 +49,7 @@ sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD YESCRYPT@' \
     --sysconfdir=/etc \
     --disable-static  \
     --without-libbsd  \
+    --disable-logind  \
     --with-{b,yes}crypt || exit 1
 
 make || exit 1
@@ -69,6 +70,10 @@ make -C man install-man DESTDIR="${TMP_DIR}"
 #    /etc/login.defs
 #    /etc/security/*
 
+# программа входа в систему в настоящее время выполняет множество функций,
+# которые теперь должны обрабатывать модули Linux-PAM. Следующая команда sed
+# закомментирует соответствующие строки в файле /etc/login.defs и запретит
+# пользователю выполнять эти функции
 LOGIN_DEFS="/etc/login.defs"
 for FUNCTION in FAIL_DELAY               \
                 FAILLOG_ENAB             \

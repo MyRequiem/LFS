@@ -9,7 +9,6 @@ PRGNAME="exim"
 
 # Required:    libnsl
 #              perl-file-fcntllock
-#              pcre2
 # Recommended: no
 # Optional:    tdb                      альтернатива gdbm установленного в LFS (https://sourceforge.net/projects/tdb/)
 #              cyrus-sasl

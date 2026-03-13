@@ -3,8 +3,8 @@
 PRGNAME="bzip2"
 
 ### Bzip2 (a block-sorting file compressor)
-# Программы для сжатия и распаковки файлов. Сжатие текстовых файлов с помощью
-# bzip2 дает гораздо лучший процент сжатия чем с традиционным Gzip.
+# Популярная утилита для сжатия файлов, обеспечивающая высокую степень упаковки
+# данных.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -34,11 +34,15 @@ make || make -j1 || exit 1
 
 make PREFIX="${TMP_DIR}/usr" install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # установим libbz2.so.* в /usr/lib
 cp -av libbz2.so.*   "${TMP_DIR}/usr/lib"
 # ссылка в /usr/lib
-#    libbz2.so -> libbz2.so.${VERSION}
-ln -sv "libbz2.so.${VERSION}" "${TMP_DIR}/usr/lib/libbz2.so"
+#    libbz2.so   -> libbz2.so.${VERSION}
+#    libbz2.so.1 -> libbz2.so.${VERSION}
+ln -sfv "libbz2.so.${VERSION}" "${TMP_DIR}/usr/lib/libbz2.so"
+ln -sfv "libbz2.so.${VERSION}" "${TMP_DIR}/usr/lib/libbz2.so.1"
 
 # установим /usr/bin/bzip2
 cp -v bzip2-shared "${TMP_DIR}/usr/bin/bzip2"

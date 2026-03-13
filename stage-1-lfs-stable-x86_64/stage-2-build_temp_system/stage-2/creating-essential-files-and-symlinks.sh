@@ -94,6 +94,7 @@ usb:x:14:
 cdrom:x:15:
 adm:x:16:
 messagebus:x:18:
+plugdev:x:83:
 input:x:24:
 mail:x:34:
 kvm:x:61:

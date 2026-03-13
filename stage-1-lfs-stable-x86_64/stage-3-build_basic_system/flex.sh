@@ -3,8 +3,8 @@
 PRGNAME="flex"
 
 ### Flex (fast lexical analyzer generator)
-# Пакет содержит утилиту для генерации программ, которые распознают шаблоны в
-# тексте
+# Программа для быстрого поиска шаблонов в тексте, используемая разработчиками
+# для создания инструментов анализа данных.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,6 +22,8 @@ mkdir -pv "${TMP_DIR}"
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # некоторые программы еще не знают о flex и пытаются запустить его
 # предшественника lex. Для поддержки этих программ создадим символическую

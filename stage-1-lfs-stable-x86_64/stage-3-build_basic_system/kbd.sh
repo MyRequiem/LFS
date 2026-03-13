@@ -3,7 +3,8 @@
 PRGNAME="kbd"
 
 ### Kbd (keyboard maps and console fonts)
-# Пакет содержит файлы раскладки (key-table), шрифты и утилиты для клавиатуры
+# Пакет для настройки клавиатуры в текстовой консоли Linux (TTY), включая выбор
+# раскладки языков и установку экранных шрифтов.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

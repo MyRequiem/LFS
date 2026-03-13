@@ -3,8 +3,12 @@
 PRGNAME="coreutils"
 
 ### Coreutils
-# Утилиты для отображения и настройки основных характеристик системы: basename,
-# cat, chmod, chown, chroot, cp, cut, date и т.д.
+# GNU Coreutils - это набор самых востребованных инструментов, которые
+# составляют основу повседневной работы в Linux. В него входят такие базовые
+# утилиты, как ls, cp, rm, cat, cut, date, chmod, chown, chroot и еще много
+# других, без которых управление файлами и системой было бы невозможным. По
+# сути, это «швейцарский нож» системы, обеспечивающий выполнение всех
+# элементарных операций.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

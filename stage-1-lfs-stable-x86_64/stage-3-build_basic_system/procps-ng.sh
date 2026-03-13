@@ -3,7 +3,9 @@
 PRGNAME="procps-ng"
 
 ### Procps-ng (utilities for displaying process information)
-# Программы для мониторинга процессов
+# Набор программ для мониторинга системы (ps, top, free, pkill, uptime и др),
+# показывающие запущенные процессы, потребление памяти и другие параметры для
+# мониторинга процессов, запущенных в системе.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

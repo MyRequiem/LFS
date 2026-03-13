@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-LFS_VERSION="12.4"
+LFS_VERSION="13.0"
 
 ### Network Configuration (Network configuration files)
 #    /etc/hostname

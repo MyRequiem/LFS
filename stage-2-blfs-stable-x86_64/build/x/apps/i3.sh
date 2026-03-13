@@ -13,7 +13,6 @@ PRGNAME="i3"
 #              xcb-util-xrm
 #              libev
 #              libyajl
-#              pcre2
 #              pango
 #              cairo
 #              startup-notification

@@ -3,8 +3,9 @@
 PRGNAME="gcc"
 
 ### GCC
-# Пакет содержит коллекцию компиляторов GNU, который на данный момент будет
-# включать только компиляторы C и C++
+# Набор компиляторов GNU, который превращает исходный код на C, C++ и других
+# языках в готовые к работе программы. На данный момент пакет будет включать
+# только компиляторы C и C++
 
 ###
 # Это первый проход gcc
@@ -38,7 +39,7 @@ mkdir build
 cd build || exit 1
 
 # версия Glibc, которая будет использоваться в LFS
-#    --with-glibc-version=2.42
+#    --with-glibc-version=2.43
 # поскольку рабочая библиотека C еще не доступна, это гарантирует, что при
 # сборке libgcc определена константа injit_libc. Это предотвращает компиляцию
 # любого кода, который требует поддержки libc.
@@ -56,22 +57,24 @@ cd build || exit 1
 # конфигурацию
 #    --disable-multilib
 # отключачаем поддержку десятичного расширения с плавающей запятой, потоков
-# libatomic, libgomp, libquadmath, libssp, libvtv и стандартной библиотеки C++
-# соответственно, т.к. эти функции не нужны для кросс-компиляции временного
-# libc
+# libatomic, libgomp, libquadmath, libssp, libvtv соответственно, т.к. эти
+# функции не нужны для кросс-компиляции временного libc
 #    --disable-threads
 #    --disable-libatomic
 #    --disable-libgomp
 #    --disable-libquadmath
 #    --disable-libssp
 #    --disable-libvtv
+# отключаем создание libstdc++ (стандартная библиотека для C++), т.к. эта
+# библиотека зависит от glibc, который еще не установлен. Позже, после
+# установки glibc, мы установим libstdc++ отдельно
 #    --disable-libstdcxx
 # собираем только необходимые на данный момент компиляторы C и C++
 #    --enable-languages=c,c++
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.42 \
+    --with-glibc-version=2.43 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \

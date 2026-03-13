@@ -3,8 +3,8 @@
 PRGNAME="mpfr"
 
 ### Mpfr (Multiple-Precision Floating-Point Reliable Library)
-# Библиотека содержит подпрограммы для математических вычислений с
-# множественной точностью.
+# Библиотека для высокоточных расчетов с плавающей запятой, гарантирующая
+# одинаковый результат на любых типах процессоров.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -28,6 +28,8 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
@@ -42,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # efficient and has well-defined semantics.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

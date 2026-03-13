@@ -3,7 +3,8 @@
 PRGNAME="sysklogd"
 
 ### Sysklogd (Linux system logging utilities)
-# Программы для регистрации системных сообщений (логирования)
+# Системная служба, которая ведет «бортовой журнал» (регистрацию системных
+# сообщений в логи) всех важных событий и ошибок в работе Linux.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

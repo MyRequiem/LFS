@@ -3,10 +3,8 @@
 PRGNAME="dejagnu"
 
 ### DejaGnu (program tester)
-# Фреймворк для тестирования других программ, предоставляющий единый интерфейс
-# для всех тестов. Так же можно рассматривать как пользовательскую библиотеку
-# процедур Tcl, созданную для поддержки написания программных тестов. DejaGnu
-# написан на Expect, который  использует командный язык Tcl
+# Фреймворк для автоматического тестирования программ, помогающий разработчикам
+# убедиться, что их софт работает корректно в разных условиях.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -24,6 +22,8 @@ cd build || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # language.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

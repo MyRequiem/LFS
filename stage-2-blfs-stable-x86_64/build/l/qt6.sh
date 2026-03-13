@@ -30,7 +30,6 @@ ARCH_NAME="qt-everywhere-src"
 #              libxkbcommon
 #              mesa
 #              mtdev
-#              pcre2
 #              sqlite
 #              wayland
 #              xcb-util-cursor

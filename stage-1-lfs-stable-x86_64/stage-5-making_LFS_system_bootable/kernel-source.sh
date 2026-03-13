@@ -4,7 +4,8 @@ PRGNAME="kernel-source"
 ARCH_NAME="linux"
 
 ### Linux kernel source (Source code for Linus Torvalds Linux kernel)
-# Исходный код ядра linux
+# Исходный программный код ядра Linux, используемый для изучения работы системы
+# или сборки собственной версии ядра.
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -41,9 +42,7 @@ make mrproper || exit 1
 
 # ссылка в /usr/src
 #    linux -> linux-${VERSION}
-cd "${USR_SRC}" || exit 1
-rm -f linux
-ln -sv "${ARCH_NAME}-${VERSION}" linux
+ln -svf "${ARCH_NAME}-${VERSION}" "${USR_SRC}/linux"
 
 TARGET="/var/log/packages/${PRGNAME}-${VERSION}"
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"

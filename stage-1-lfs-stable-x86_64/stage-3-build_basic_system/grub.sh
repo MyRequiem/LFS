@@ -3,7 +3,8 @@
 PRGNAME="grub"
 
 ### GRUB (the GRand Unified Bootloader)
-# Загрузчик GRand Unified Bootloader
+# Системный загрузчик, который запускается первым при включении компьютера и
+# позволяет выбрать и загрузить операционную систему для работы.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

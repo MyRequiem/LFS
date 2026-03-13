@@ -3,7 +3,9 @@
 PRGNAME="perl"
 
 ### Perl
-# Practical Extraction and Report Language
+# Practical Extraction and Report Language (Perl) - мощный язык
+# программирования, на котором написано множество системных инструментов и
+# скриптов администрирования в Linux.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

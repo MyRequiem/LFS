@@ -3,8 +3,8 @@
 PRGNAME="readline"
 
 ### Readline (line input library with editing features)
-# Набор библиотек для редактирование из командной строки и возможности ведения
-# истории
+# Библиотека, позволяющая пользователю редактировать вводимые команды и
+# просматривать историю команд в терминале.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -26,6 +26,13 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install || exit 1
 # проблемы безопасности
 sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 
+# исправим проблему, обнаруженную в исходниках
+sed -e '270a\
+     else\
+       chars_avail = 1;'      \
+    -e '288i\   result = -1;' \
+    -i.orig input.c
+
 # сообщает Readline, что он может найти функции библиотеки termcap в библиотеке
 # curses, а не в отдельной библиотеке termcap, что позволяет создать правильный
 # /usr/lib/pkgconfig/readline.pc
@@ -40,11 +47,10 @@ sed -i 's/-Wl,-rpath,[^ ]*//' support/shobj-conf
 #    SHLIB_LIBS="-lncursesw"
 make SHLIB_LIBS="-lncursesw" || make -j1 SHLIB_LIBS="-lncursesw" || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vR "${TMP_DIR}"/* /
+# сразу устанавливаем в систему, иначе отвалится консоль
+make install
+make install DESTDIR="${TMP_DIR}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (line input library with editing features)
@@ -56,8 +62,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and perhaps edit those lines, and perform csh-like history expansion on
 # previous commands.
 #
-# Home page: https://tiswww.case.edu/php/chet/readline/rltop.html
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://tiswww.case.edu/php/chet/${PRGNAME}/rltop.html
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

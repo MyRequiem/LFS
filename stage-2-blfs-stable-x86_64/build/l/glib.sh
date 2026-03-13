@@ -9,7 +9,6 @@ PRGNAME="glib"
 # Required:    no
 # Recommended: python3-docutils
 #              libxslt
-#              pcre2
 # Optional:    shared-mime-info     (runtime)
 #              desktop-file-utils   (runtime)
 #              gdb

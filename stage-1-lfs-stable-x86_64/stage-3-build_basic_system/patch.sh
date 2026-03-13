@@ -3,8 +3,8 @@
 PRGNAME="patch"
 
 ### Patch (apply a diff file to an original file or files)
-# Программа для изменения или создания файлов путем применения файлов *.patch,
-# обычно создаваемых программой diff
+# Программа для автоматического внесения изменений в текстовые файлы на основе
+# специальных файлов различий (.patch, .diff) обычно создаваемых утилитой diff
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

@@ -3,7 +3,8 @@
 PRGNAME="file"
 
 ### File (a utility to determine file type)
-# Утилита для определения типа файла
+# Утилита, которая определяет тип любого файла (картинка, текст, программа),
+# анализируя его содержимое, а не только расширение.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -19,6 +20,8 @@ mkdir -pv "${TMP_DIR}"
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

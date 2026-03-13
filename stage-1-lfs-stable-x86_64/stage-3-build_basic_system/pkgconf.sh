@@ -3,8 +3,8 @@
 PRGNAME="pkgconf"
 
 ### Pkg-config (system for managing library compile/link flags)
-# Инструмент для передачи путей include и/или путей к библиотекам для создания
-# инструментов во время настройки и выполнения файлов
+# Утилита, помогающая компилятору находить нужные библиотеки в системе для
+# правильной сборки программ и их выполнения.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -21,6 +21,8 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 ln -sv "${PRGNAME}"   "${TMP_DIR}/usr/bin/pkg-config"
 ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/pkg-config.1"

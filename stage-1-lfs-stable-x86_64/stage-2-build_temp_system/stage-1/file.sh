@@ -3,7 +3,8 @@
 PRGNAME="file"
 
 ### File
-# Утилита для определения типа файла
+# Утилита, которая определяет тип любого файла (картинка, текст, программа),
+# анализируя его содержимое, а не только расширение.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

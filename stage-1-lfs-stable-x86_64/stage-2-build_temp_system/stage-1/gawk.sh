@@ -3,7 +3,8 @@
 PRGNAME="gawk"
 
 ### Gawk
-# Программы для работы с текстовыми файлами
+# Язык обработки текстовых строк, позволяющий быстро находить и изменять
+# информацию в больших списках или логах системы.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

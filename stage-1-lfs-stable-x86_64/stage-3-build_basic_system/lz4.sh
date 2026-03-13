@@ -3,9 +3,8 @@
 PRGNAME="lz4"
 
 ### Lz4 (fast lossless compression algorithm)
-# Алгоритм сжатия без потерь, обеспечивающий скорость сжатия > 500 МБ/с на одно
-# ядро процессора. Отличается чрезвычайно быстрым декодером со скоростью в
-# несколько ГБ/с на ядро.
+# Алгоритм сжатия данных без потерь, обеспечивающий высокую скорость и спепень
+# сжатия.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -18,6 +17,8 @@ mkdir -pv "${TMP_DIR}"
 make BUILD_STATIC=no PREFIX=/usr || exit 1
 # make -j1 check
 make BUILD_STATIC=no PREFIX=/usr install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

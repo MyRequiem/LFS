@@ -8,7 +8,6 @@ ARCH_NAME="vte"
 
 # Required:    gtk+3
 #              libxml2
-#              pcre2
 # Recommended: fast-float           (если не установлен, то будет скачан с Internet)
 #              icu
 #              gnutls

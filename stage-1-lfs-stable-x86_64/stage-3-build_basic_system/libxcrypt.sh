@@ -3,7 +3,8 @@
 PRGNAME="libxcrypt"
 
 ### libxcrypt (library for one-way hashing of passwords)
-# современная библиотека для одностороннего хеширования паролей
+# Современная библиотека для шифрования и проверки паролей пользователей при
+# входе в систему.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -13,6 +14,21 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с glibc >=2.43
+sed -i '/strchr/s/const//' lib/crypt-{sm3,gost}-yescrypt.c || exit 1
+
+# создаем надежные алгоритмы хеширования, рекомендуемые для случаев
+# использования в целях безопасности, а также алгоритмы хеширования,
+# предоставляемые традиционной Glibc libcrypt для обеспечения совместимости
+#    --enable-hashes=strong,glibc
+# отключим устаревшие функции API, которые не нужны для современной системы
+# Linux, собранной из исходного кода
+#    --enable-obsolete-api=no
+# заставляет libxcrypt возвращать ошибку вместо «токена неудачи» - специальной
+# зашифрованной строки, если при хешировании пароля произошел сбой или
+# использован неизвестный алгоритм (в системе Linux на базе Glibc этот токен не
+# требуется)
+#    --disable-failure-tokens
 ./configure                      \
     --prefix=/usr                \
     --enable-hashes=strong,glibc \
@@ -23,6 +39,8 @@ mkdir -pv "${TMP_DIR}"
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

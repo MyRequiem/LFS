@@ -15,7 +15,6 @@ https://hg.mozilla.org/projects/nss/raw-file/tip/lib/ckfw/builtins/certdata.txt
 https://www.cacert.org/certs/root.crt
 https://www.cacert.org/certs/class3.crt
 https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
-https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.46/pcre2-10.46.tar.bz2
 https://ftp.gnu.org/gnu/libunistring/libunistring-1.3.tar.xz
 https://ftp.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz
 https://www.gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2
@@ -66,6 +65,8 @@ https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.
 https://www.linuxfromscratch.org/patches/blfs/12.4/openldap-2.6.10-consolidated-1.patch
 https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.8.tar.bz2
 https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.21.2.tar.gz
+https://files.pythonhosted.org/packages/source/M/Mako/mako-1.3.10.tar.gz
+https://files.pythonhosted.org/packages/source/l/lxml/lxml-6.0.2.tar.gz
 https://download.gnome.org/sources/glib/2.84/glib-2.84.4.tar.xz
 https://download.gnome.org/sources/gobject-introspection/1.84/gobject-introspection-1.84.0.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/glib-skip_warnings-1.patch
@@ -203,7 +204,6 @@ https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.g
 https://files.pythonhosted.org/packages/source/p/pyproject-metadata/pyproject_metadata-0.9.1.tar.gz
 https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-0.18.0.tar.gz
 https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.4.0.tar.xz
-https://files.pythonhosted.org/packages/source/l/lxml/lxml-6.0.0.tar.gz
 https://downloads.sourceforge.net/acpid2/acpid-2.0.34.tar.xz
 https://github.com/elogind/elogind/archive/v255.17/elogind-255.17.tar.gz
 https://duktape.org/duktape-2.7.0.tar.xz
@@ -229,7 +229,6 @@ https://download.gnome.org/sources/pango/1.56/pango-1.56.4.tar.xz
 https://download.gnome.org/sources/vala/0.56/vala-0.56.18.tar.xz
 https://download.gnome.org/sources/librsvg/2.61/librsvg-2.61.0.tar.xz
 https://dri.freedesktop.org/libdrm/libdrm-2.4.125.tar.xz
-https://files.pythonhosted.org/packages/source/M/Mako/mako-1.3.10.tar.gz
 https://github.com/intel/libva/archive/2.22.0/libva-2.22.0.tar.gz
 https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2
 https://gitlab.freedesktop.org/wayland/wayland/-/releases/1.24.0/downloads/wayland-1.24.0.tar.xz
@@ -239,11 +238,11 @@ https://github.com/KhronosGroup/Vulkan-Loader/archive/v1.4.321/Vulkan-Loader-1.4
 https://github.com/KhronosGroup/SPIRV-Headers/archive/vulkan-sdk-1.4.321.0/SPIRV-Headers-vulkan-sdk-1.4.321.0.tar.gz
 https://github.com/KhronosGroup/SPIRV-Tools/archive/vulkan-sdk-1.4.321.0/SPIRV-Tools-vulkan-sdk-1.4.321.0.tar.gz
 https://github.com/KhronosGroup/glslang/archive/15.4.0/glslang-15.4.0.tar.gz
-https://files.pythonhosted.org/packages/source/p/ply/ply-3.11.tar.gz
 https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v20.1.5/SPIRV-LLVM-Translator-20.1.5.tar.gz
 https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/libclc-20.1.8.src.tar.xz
 https://github.com/mozilla/cbindgen/archive/v0.29.0/cbindgen-0.29.0.tar.gz
 https://github.com/rust-lang/rust-bindgen/archive/v0.72.0/rust-bindgen-0.72.0.tar.gz
+https://files.pythonhosted.org/packages/source/p/ply/ply-3.11.tar.gz
 https://mesa.freedesktop.org/archive/mesa-25.1.8.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/mesa-add_xdemos-4.patch
 https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
@@ -490,6 +489,15 @@ https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Types-Serialiser-1.01.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.04.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.19.tar.gz
+https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
+https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-Data-20260214.001.tar.gz
+https://www.cpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-3.012.tar.gz
+https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz
+https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.34.tar.gz
+https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.098.tar.gz
+https://www.cpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz
+https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
+https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.3.1.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/pamixer/pamixer-1.6.tar.gz
 https://i3wm.org/downloads/i3-4.25.tar.xz
@@ -524,12 +532,6 @@ https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
 https://www.freedesktop.org/software/appstream/releases/AppStream-1.0.6.tar.xz
 https://download.gnome.org/sources/libadwaita/1.7/libadwaita-1.7.6.tar.xz
 https://download.gnome.org/sources/zenity/4.2/zenity-4.2.0.tar.xz
-https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
-https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-Data-20250815.001.tar.gz
-https://www.cpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-3.012.tar.gz
-https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz
-https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.32.tar.gz
-https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.095.tar.gz
 https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p18.tar.gz
 http://fcron.free.fr/archives/fcron-3.4.0.src.tar.gz
 https://storage.googleapis.com/aom-releases/libaom-3.13.1.tar.gz
@@ -595,7 +597,6 @@ https://files.pythonhosted.org/packages/source/z/zipp/zipp-3.23.0.tar.gz
 https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-8.7.0.tar.gz
 https://files.pythonhosted.org/packages/source/t/tomli/tomli-2.3.0.tar.gz
 https://files.pythonhosted.org/packages/source/b/build/build-1.3.0.tar.gz
-https://www.cpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz
 https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
 https://www.linuxfromscratch.org/patches/blfs/12.4/sgml-common-0.6.3-manpage-1.patch
 https://downloads.sourceforge.net/openjade/OpenSP-1.5.2.tar.gz
@@ -636,9 +637,6 @@ https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/
 https://www.linuxfromscratch.org/patches/blfs/12.4/ghostscript-10.05.1-gcc15_fixes-1.patch
 https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 https://downloads.sourceforge.net/potrace/potrace-1.16.tar.gz
-https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
-https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
-https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
 https://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.bz2
 https://downloads.exim.org/exim4/old/exim-4.98.2.tar.xz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz

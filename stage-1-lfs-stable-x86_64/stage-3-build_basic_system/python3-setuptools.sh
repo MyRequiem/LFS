@@ -4,7 +4,8 @@ PRGNAME="python3-setuptools"
 ARCH_NAME="setuptools"
 
 ### python3-setuptools (a collection of enhancements to Python distutils)
-# Python3 библиотека, предназначенная для облегчения упаковки проектов в пакеты
+# Стандартный набор инструментов для установки и распространения сторонних
+# библиотек и программ на языке Python.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1

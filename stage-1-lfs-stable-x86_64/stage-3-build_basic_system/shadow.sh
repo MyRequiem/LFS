@@ -3,7 +3,8 @@
 PRGNAME="shadow"
 
 ### Shadow (shadow password suite)
-# Пакет содержит программы для безопасной работы с паролями
+# Набор утилит для безопасного управления учетными записями пользователей,
+# группами и их зашифрованными паролями.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -46,12 +47,15 @@ PASSWD="/usr/bin/passwd"
     --disable-static    \
     --with-{b,yes}crypt \
     --without-libbsd    \
+    --disable-logind    \
     --with-group-name-max-length=32 || exit 1
 
 make || make -j1 || exit 1
 # пакет не имеет тестового набора
 make exec_prefix=/usr install DESTDIR="${TMP_DIR}"
 make -C man install-man DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

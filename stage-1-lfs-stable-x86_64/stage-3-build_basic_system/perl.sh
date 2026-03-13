@@ -3,11 +3,21 @@
 PRGNAME="perl"
 
 ### Perl (Practical Extraction and Report Language)
-# Язык программирования Perl
+# Practical Extraction and Report Language (Perl) - мощный язык
+# программирования, на котором написано множество системных инструментов и
+# скриптов администрирования в Linux.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+INSTALLED="$(find /var/log/packages/ -type f -name "perl-5.*")"
+if [ -n "${INSTALLED}" ]; then
+    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${INSTALLED_VERSION} already installed. Before building perl "
+    echo "package, you need to remove it."
+    removepkg --no-color "${INSTALLED}"
+fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"

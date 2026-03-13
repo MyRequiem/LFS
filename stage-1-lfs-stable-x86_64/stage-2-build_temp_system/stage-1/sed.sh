@@ -3,7 +3,8 @@
 PRGNAME="sed"
 
 ### Sed
-# Потоковый редактор
+# Мощный потоковый редактор, позволяющий автоматически изменять текст в файлах
+# по заданным правилам без их открытия.
 
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1

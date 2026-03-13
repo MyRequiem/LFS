@@ -3,7 +3,8 @@
 PRGNAME="groff"
 
 ### Groff (document formatting system)
-# Программы для обработки и форматирования текста
+# Система форматирования текста, которая в основном используется для
+# отображения справочных страниц (man) в консоли.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1

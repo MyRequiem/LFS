@@ -3,13 +3,8 @@
 PRGNAME="m4"
 
 ### M4 (an implementation of the UNIX macro processor)
-# Макропроцессор. Копирует ввод на вывод, используя макросы. Макросы могут быть
-# как встроеными, так и пользовательскими и могут иметь несколько аргументов.
-# Помимо макро-преобразований, m4 имеет встроеные функции для включения
-# именованых файлов, запуска команд Unix, целочисленной арифметики,
-# разносторонними манипуляциями с текстом, рекурсию и др. M4 может
-# использоваться в качестве front-end для компиляторов или как макропроцессор
-# на усмотрение пользователя.
+# Мощный макропроцессор, используемый другими инструментами разработки для
+# автоматической генерации программного кода.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -26,6 +21,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
@@ -40,7 +37,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # number of arguments.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
