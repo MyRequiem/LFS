@@ -23,7 +23,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
-cp services protocols "${TMP_DIR}/etc"
+cp -v services protocols "${TMP_DIR}/etc"
 
 /bin/cp -vR "${TMP_DIR}"/* /
 

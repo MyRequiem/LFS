@@ -23,6 +23,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # некоторые программы еще не знают о flex и пытаются запустить его
 # предшественника lex. Для поддержки этих программ создадим символическую
 # ссылку lex -> flex в /usr/bin, которая запускает flex в режиме эмуляции lex

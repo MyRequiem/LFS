@@ -32,8 +32,10 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-# установим библиотеку libacl.so командой 'install' или если пакет уже
-# установлен при копировании в корень системы выдаст ошибку:
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# установим библиотеку libacl.so командой 'install', иначе, если пакет уже
+# установлен, при копировании в корень системы выдаст ошибку:
 #    ./acl.sh: Ошибка сегментирования /bin/cp -vR "${TMP_DIR}"/* /
 install -vm755 "${TMP_DIR}/usr/lib/libacl".so* /usr/lib
 

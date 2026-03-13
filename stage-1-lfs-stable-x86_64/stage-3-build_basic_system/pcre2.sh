@@ -3,21 +3,18 @@
 PRGNAME="pcre2"
 
 ### PCRE2 (Perl-compatible regular expression library)
-# Совместимые с Perl библиотеки регулярных выражений нового поколения (в
-# отличие от pcre), которые используются для реализации сопоставления с
-# шаблоном регулярного выражения, используя тот же синтаксис и семантику что и
-# в Perl 5
+# Современная библиотека на языке C для работы с регулярными выражениями,
+# синтаксис которых максимально приближен к стандарту языка Perl. Она является
+# переработанным и более производительным преемником оригинальной библиотеки
+# PCRE, предлагая улучшенную безопасность и поддержку Just-In-Time (JIT)
+# компиляции.
 
-# Required:    no
-# Recommended: no
-# Optional:    valgrind
-#              libedit    (https://www.cs.utah.edu/~bigler/code/libedit.html)
+ROOT="/"
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
 # включает поддержку Unicode и функции для обработки UTF-8/16/32 символов
@@ -51,9 +48,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vpR "${TMP_DIR}"/* /
+/bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Perl-compatible regular expression library)
@@ -65,13 +64,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Home page: https://www.pcre.org/
 # Download:  https://github.com/PCRE2Project/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.bz2
-
 #
 EOF
 
-source "${ROOT}/write_to_var_log_packages.sh" \
+source "${ROOT}write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

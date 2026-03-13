@@ -14,6 +14,12 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
+# если этот пакет обновляется в существующей системе и установлен компилятор GO
+# в BLFS (пакет gcc)
+#    --enable-languages=c,c++,fortran,go,objc,obj-c++,m2
+# предотвратим ошибку сборки, отключив GO
+export GOLANG=no
+
 # запретим установку статической библиотеки
 sed -i '/install -m.*STA/d' libcap/Makefile
 
@@ -22,6 +28,10 @@ sed -i '/install -m.*STA/d' libcap/Makefile
 make prefix=/usr lib=lib || make -j1 prefix=/usr lib=lib || exit 1
 # make test
 make prefix=/usr lib=lib install DESTDIR="${TMP_DIR}"
+
+unset GOLANG
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -4,7 +4,7 @@ PRGNAME="zstd"
 
 ### Zstd (Zstandard - fast lossless real-time compression algorithm)
 # Real-time алгоритм сжатия, обеспечивающий относительно высокую степень сжатия
-# и поддерживается очень быстрым декодером
+# и поддерживается очень быстрым декодером.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -20,6 +20,8 @@ make prefix=/usr install DESTDIR="${TMP_DIR}"
 
 # удалим статическую библиотеку
 rm -fv "${TMP_DIR}/usr/lib/libzstd.a"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -25,6 +25,10 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
         binutils
         gcc
         kernel-headers
+        zlib
+        xz
+        zstd
+        readline
 
 Params:
   --fake            generate a report to the standard output about which files
@@ -229,7 +233,16 @@ if [ -z "${NO_COLOR}" ]; then
     COLORRESET="\033[0;0m"
 fi
 
-STRICT_PKGS="main-directory-tree glibc binutils gcc kernel-headers"
+STRICT_PKGS="\
+main-directory-tree \
+glibc \
+binutils \
+gcc \
+kernel-headers \
+zlib \
+xz \
+zstd \
+readline"
 for STRICT_PKG in ${STRICT_PKGS} ; do
     [[ "${FAKE}" == "true" ]] &&  break
 

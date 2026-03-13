@@ -48,20 +48,22 @@ sed -e "s|$SRCDIR/unix|/usr/lib|" \
     -e "s|$SRCDIR|/usr/include|"  \
     -i tclConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.10|/usr/lib/tdbc1.1.10|"           \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.10/generic|/usr/include|"               \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.10/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.10|/usr/include|"                       \
-    -i pkgs/tdbc1.1.10/tdbcConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.12|/usr/lib/tdbc1.1.12|"           \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.12/generic|/usr/include|"               \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.12/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.12|/usr/include|"                       \
+    -i pkgs/tdbc1.1.12/tdbcConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.2|/usr/lib/itcl4.3.2|" \
-    -e "s|$SRCDIR/pkgs/itcl4.3.2/generic|/usr/include|"    \
-    -e "s|$SRCDIR/pkgs/itcl4.3.2|/usr/include|"            \
-    -i pkgs/itcl4.3.2/itclConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.4|/usr/lib/itcl4.3.4|" \
+    -e "s|$SRCDIR/pkgs/itcl4.3.4/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/itcl4.3.4|/usr/include|"            \
+    -i pkgs/itcl4.3.4/itclConfig.sh
 
-# make test
+# LC_ALL=C.UTF-8 make test
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # сделаем установленную библиотеку доступной для записи, чтобы позже можно было
 # удалить отладочную информацию (debugging symbols)
@@ -76,7 +78,7 @@ ln -sfv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 
 # переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
 # устанавливается с пакетом Perl
-mv "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
+mv -v "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

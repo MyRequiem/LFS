@@ -18,6 +18,7 @@ lz4.sh
 zstd.sh
 file.sh
 readline.sh
+pcre2.sh
 m4.sh
 bc.sh
 flex.sh
@@ -33,6 +34,13 @@ attr.sh
 acl.sh
 libcap.sh
 libxcrypt.sh
+###
+# ATTENTION !!!
+#    УСТАНОВКА ПАКЕТА shadow: если мы обновляем существующую систему и
+#    установлен пакет linux-pam из BLFS, то обновляем shadow скриптом:
+#    ../../stage-2-blfs-stable-x86_64/build/a/shadow.sh
+#    а shadow.sh в этом списке пропускаем !!!
+###
 shadow.sh
 gcc.sh
 check-compiling-and-linking.sh
@@ -82,6 +90,9 @@ texinfo.sh
 vim.sh
 python3-markupsafe.sh
 python3-jinja2.sh
+# пакет udev удален в моем репозитории LFS, и заменен на eudev. Если вы
+# обновляете LFS до версии 13.0, то нужно удалить пакет udev
+#    # removepkg --backup /var/log/packages/udev-<version>
 eudev.sh
 man-db.sh
 procps-ng.sh

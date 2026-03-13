@@ -18,6 +18,8 @@ make BUILD_STATIC=no PREFIX=/usr || exit 1
 # make -j1 check
 make BUILD_STATIC=no PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /

@@ -16,6 +16,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"/{usr/lib/bfd-plugins,usr/share/gdb/auto-load/usr/lib}
 
+# исправим сборку с glibc >=2.43
+sed -i 's/char [*]q/const &/' libgomp/affinity-fmt.c || exit 1
+
 # изменим каталог для установки библиотек с lib64 на lib
 sed -e '/m64=/s/lib64/lib/' -i.orig "${PRGNAME}/config/i386/t-linux64" || exit 1
 
@@ -74,32 +77,31 @@ make || make -j1 || exit 1
 # установим пакет
 make install DESTDIR="${TMP_DIR}"
 
-# создадим символическую ссылку в /usr/lib, требуемую FHS по "историческим"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# создадим символическую ссылку в /usr/lib/, требуемую FHS по "историческим"
 # причинам
-#    cpp -> /usr/bin/cpp
+#    cpp -> ../bin/cpp
+ln -svf ../bin/cpp "${TMP_DIR}/usr/lib"
+
 # многие программы используют имя 'cc' для вызова C-компилятора, поэтому
 # создадим символическую ссылку в /usr/bin/
 #    cc -> gcc
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf /usr/bin/cpp cpp
-    cd ../bin || exit 1
-    ln -svf "${PRGNAME}" cc
-)
+ln -svf gcc "${TMP_DIR}/usr/bin/cc"
 
-ln -sv gcc.1 "${TMP_DIR}/usr/share/man/man1/cc.1"
+ln -svf gcc.1 "${TMP_DIR}/usr/share/man/man1/cc.1"
 
 # добавим символическую ссылку в  /usr/lib/bfd-plugins/ для совместимости,
 # чтобы включить сборку программ с оптимизацией компоновки LTO (Link Time
 # Optimization)
 #    liblto_plugin.so -> \
-#    ../../libexec/gcc/x86_64-lfs-linux-gnu/${VERSION}/liblto_plugin.so
+#    ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
 DUMPMACHINE="$("${TMP_DIR}/usr/bin/${PRGNAME}" -dumpmachine)"
 ln -sfv "../../libexec/${PRGNAME}/${DUMPMACHINE}/${VERSION}/liblto_plugin.so" \
     "${TMP_DIR}/usr/lib/bfd-plugins/"
 
 # переместим некоторые файлы
-mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib"
+mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}/usr/share/gdb/auto-load/usr/lib/"
 
 # если мы устанавливаем пакет в первый раз, удалим директории и файлы, которые
 # были установлены GCC, построенным во временной системе
@@ -125,7 +127,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and C++ compilers.
 #
 # Home page: https://${PRGNAME}.gnu.org/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

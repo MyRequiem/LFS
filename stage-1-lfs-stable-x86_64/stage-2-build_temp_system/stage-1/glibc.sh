@@ -23,7 +23,7 @@ ln -sfv ../lib/ld-linux-x86-64.so.2 "${LFS}/lib64/ld-lsb-x86-64.so.3"
 # некоторые программы Glibc используют несовместимый с FHS каталог /var/db для
 # хранения своих run-time данных. Применим патч, чтобы такие программы
 # сохраняли свои run-time данные в FHS-совместимых каталогах
-patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-fhs-1.patch" || exit 1
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir build

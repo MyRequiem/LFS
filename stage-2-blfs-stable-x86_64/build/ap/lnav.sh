@@ -6,7 +6,6 @@ PRGNAME="lnav"
 # Усовершенствованная утилита для просмотра лог-файлов
 
 # Required:    sqlite
-#              pcre2
 # Recommended: no
 # Optional:    curl
 #              libarchive

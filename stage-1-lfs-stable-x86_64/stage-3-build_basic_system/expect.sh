@@ -56,6 +56,8 @@ make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so
 ln -svf "expect${VERSION}/libexpect${VERSION}.so" "${TMP_DIR}/usr/lib"

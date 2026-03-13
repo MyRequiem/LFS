@@ -15,7 +15,6 @@ PRGNAME="git"
 #              fcron                (для планирования заданий обслуживания git)
 #              gnupg
 #              openssh
-#              pcre2
 #              subversion           (собранный с perl bindings для git svn)
 #              tk                   (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
 #              valgrind
@@ -37,13 +36,10 @@ BASH_COMPLETION="/etc/bash_completion.d"
 MAN="/usr/share/man"
 mkdir -pv "${TMP_DIR}"{"${BASH_COMPLETION}","${MAN}"}
 
-PCRE2="--without-libpcre2"
-command -v pcre2-config &>/dev/null && PCRE2="--with-libpcre2"
-
 ./configure               \
     --prefix=/usr         \
     --with-python=python3 \
-    "${PCRE2}"            \
+    --with-libpcre2       \
     --with-gitconfig=/etc/gitconfig || exit 1
 
 make || exit 1

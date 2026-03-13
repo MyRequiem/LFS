@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2025b"
+TZDATA_VERSION="2026a"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -46,20 +46,17 @@ mkdir -pv "${TMP_DIR}"/{etc/ld.so.conf.d,usr/lib/locale,var/lib/nss_db}
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv "${TMP_DIR}${ZONEINFO}"/{posix,right}
 
+if [ ! -f "${SOURCES}/tzdata${TZDATA_VERSION}.tar.gz" ]; then
+    echo "tzdata${TZDATA_VERSION}.tar.gz not found in ${SOURCES}"
+    exit 1
+fi
+
 # некоторые из программ Glibc используют не FHS-совместимый каталог /var/db для
 # хранения run-time данных. Применим патч, который удаляет ссылки на каталог
 # /var/db и заменяет их на
 #    /var/cache/nscd    - для nscd
 #    /var/lib/nss_db    - для nss_db
-patch --verbose -Nvp1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-fhs-1.patch" || exit 1
-
-# исправим проблему сборки Valgrind в BLFS
-sed -e '/unistd.h/i #include <string.h>' \
-    -e '/libc_rwlock_init/c\
-  __libc_rwlock_define_initialized (, reset_lock);\
-  memcpy (&lock, &reset_lock, sizeof (lock));' \
-    -i stdlib/abort.c || exit 1
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-fhs-1.patch" || exit 1
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir -v build
