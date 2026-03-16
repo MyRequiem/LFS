@@ -14,7 +14,6 @@ PRGNAME="libsndfile"
 #              lame
 #              mpg123
 #              speex
-#              sqlite
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -31,6 +31,8 @@ make || make -j1 || exit 1
 rm -f "/usr/bin/${PRGNAME}-${VERSION}"
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/awk.1"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -48,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # extensions.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

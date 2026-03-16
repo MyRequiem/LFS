@@ -21,6 +21,8 @@ make || make -j1 || exit 1
 # make -k check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # удалим статическую библиотеку, которая нужна только для тестов
 rm -fv "${TMP_DIR}/usr/lib/libltdl.a"
 
@@ -37,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # your Makefile, Makefile.in, or Makefile.am.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

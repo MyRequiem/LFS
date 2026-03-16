@@ -65,6 +65,7 @@ automake.sh
 openssl.sh
 libelf.sh
 libffi.sh
+sqlite.sh
 python3.sh
 python3-flit-core.sh
 python3-packaging.sh
@@ -79,6 +80,12 @@ gawk.sh
 findutils.sh
 groff.sh
 grub.sh
+###
+# ATTENTION:
+#    После переустановки/обновления Grub, нужно обновить его конфиги и
+#    загрузучную запись:
+#    ../stage-5-making_LFS_system_bootable/set-grub-config.sh
+###
 gzip.sh
 iproute2.sh
 kbd.sh

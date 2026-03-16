@@ -14,9 +14,6 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим предупреждения, которые выдает Perl>=5.42
-sed 's/! $output_file eq/$output_file ne/' -i tp/Texinfo/Convert/*.pm || exit 1
-
 ./configure \
     --prefix=/usr || exit 1
 
@@ -24,9 +21,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# установим компоненты, используемые пакетом tetex (texlive), который входит в
-# состав BLFS
-make TEXMF="/usr/share/texmf" install-tex DESTDIR="${TMP_DIR}"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -44,7 +39,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # files in /usr/info
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

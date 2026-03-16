@@ -11,7 +11,6 @@ ARCH_NAME="libsoup"
 # Required:    glib-networking
 #              libpsl
 #              libxml2
-#              sqlite
 # Recommended: glib
 #              vala
 # Optional:    --- для тестов ---

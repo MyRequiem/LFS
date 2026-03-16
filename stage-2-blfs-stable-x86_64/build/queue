@@ -51,7 +51,6 @@ l/fuse2.sh
 l/libxml2.sh
 l/libxslt.sh
 l/fuse3.sh
-ap/sqlite.sh
 l/libusb.sh
 ap/lmdb.sh
 n/cyrus-sasl.sh
@@ -523,8 +522,6 @@ ap/slop.sh
 ap/maim.sh
 l/oniguruma.sh
 s/jq.sh
-d/python-modules/python3-webencodings.sh
-d/python-modules/python3-html5lib.sh
 l/md4c.sh
 l/c-ares.sh
 d/nodejs.sh

@@ -351,7 +351,7 @@ libdvdnav                               gst-plugins-bad, mpv, vlc
 libdvdread                              gst-plugins-bad, gst-plugins-ugly, mpv, vlc
 libdw                                   gstreamer, qemu
 libeconf                                linux-pam
-libedit                                 openssh, sqlite, mit-kerberos-v5, ntp
+libedit                                 openssh, mit-kerberos-v5, ntp
 libei                                   xwayland
 libepoxy                                gtk+3, gtk4, xwayland, xorg-server
 liberation-fonts-ttf
@@ -720,7 +720,6 @@ python3-hatch-fancy-pypi-readme         python3-attrs
 python3-hatch-vcs                       python3-urllib3, python3-attrs
 python3-hatchling                       python3-pygments, python3-hatch-vcs, python3-hatch-fancy-pypi-readme
 python3-hotdoc                          gstreamer, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly
-python3-html5lib                        flameshot
 python3-httpbin                         python3-requests
 python3-httpx                           python3-urllib3
 python3-hypercorn                       python3-urllib3
@@ -778,7 +777,7 @@ python3-railroad-diagrams               python3-pyparsing
 python3-recommonmark                    libinput
 python3-requests                        python3-psutil, osinfo-db-tools, virt-manager
 python3-setuptools-scm                  python3-pluggy, python3-hatch-vcs, python3-charset-normalizer, python3-zipp, python3-importlib-metadata
-python3-six                             spice, python3-urlgrabber, python3-html5lib
+python3-six                             spice, python3-urlgrabber
 python3-sphinx                          libuv, python3-requests, llvm, libtiff, nghttp2, cmake, cyrus-sasl, bind-utils, at-spi2-core, extra-cmake-modules, zathura, wireplumber, xdg-desktop-portal
 python3-sphinx-copybutton               xdg-desktop-portal
 python3-sphinx-rtd-theme                libinput, qemu, wireplumber
@@ -795,7 +794,6 @@ python3-urlgrabber                      libvirt
 python3-urllib3                         python3-requests
 python3-uv                              python3-build
 python3-wcag-contrast-ratio             python3-pygments
-python3-webencodings                    python3-html5lib, flameshot
 python3-werkzeug                        python3-requests
 python3-xmlschema
 python3-zipp                            python3-importlib-metadata
@@ -869,7 +867,6 @@ spirv-headers                           spirv-tools
 spirv-llvm-translator                   libclc
 spirv-tools                             glslang, spirv-llvm-translator, glslc
 spnego                                  curl
-sqlite                                  gnupg, lnav, lshw, cyrus-sasl, rustc, cargo-c, nss, python3, libsndfile, exim, libsoup2, libsoup3, qt5-components, qt6, zathura
 srt                                     ffmpeg, gst-plugins-bad, vlc
 sshfs                                   vifm
 sssd                                    sudo

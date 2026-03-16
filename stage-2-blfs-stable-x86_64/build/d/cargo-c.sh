@@ -8,7 +8,6 @@ PRGNAME="cargo-c"
 
 # Required:    rustc
 # Recommended: libssh2
-#              sqlite
 # Optional:    no
 
 ###
@@ -29,8 +28,8 @@ mkdir -pv "${TMP_DIR}/usr/bin/"
 HOME_PAGE="https://github.com/lu-zero/${PRGNAME}"
 curl -fLO "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock"
 
-[ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1
-[ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+export LIBSSH2_SYS_USE_PKG_CONFIG=1
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
 cargo build --release
 # cargo test --release

@@ -56,7 +56,6 @@ https://download.gnome.org/sources/libxml2/2.14/libxml2-2.14.5.tar.xz
 https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.43.tar.xz
 https://github.com/libfuse/libfuse/releases/download/fuse-3.17.4/fuse-3.17.4.tar.gz
-https://sqlite.org/2025/sqlite-autoconf-3500400.tar.gz
 https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.tar.bz2
 https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.33.tar.bz2
 https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
@@ -618,7 +617,6 @@ https://github.com/naelstrof/maim/archive/v5.8.1/maim-5.8.1.tar.gz
 https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz
 https://github.com/stedolan/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
 https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-0.5.1.tar.gz
-https://files.pythonhosted.org/packages/source/h/html5lib/html5lib-1.1.tar.gz
 https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.1.tar.xz
 https://github.com/mity/md4c/archive/release-0.5.2/md4c-release-0.5.2.tar.gz
 https://github.com/c-ares/c-ares/releases/download/v1.34.5/c-ares-1.34.5.tar.gz

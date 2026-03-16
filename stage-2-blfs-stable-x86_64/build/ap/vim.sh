@@ -109,6 +109,23 @@ make install DESTDIR="${TMP_DIR}"
 #    vi -> vim
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
+# /etc/gvimrc будет ссылкой на /etc/vimrc
+ln -svf vimrc "${TMP_DIR}/etc/gvimrc"
+
+for MAN_PATH in  "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
+    ln -sv vim.1 "$(dirname "${MAN_PATH}")/vi.1"
+done
+
+# по умолчанию документация устанавливается в /usr/share/vim/, поэтому
+# установим ссылку в /usr/share/doc/
+#    vim-${VERSION} -> ../vim/vimXX/doc
+MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
+MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
+ln -snvf "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
+    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+
+rm -f "${TMP_DIR}/usr/share/applications/vim.desktop"
+
 # конфигурация по умолчанию
 cat << EOF > "${TMP_DIR}/etc/vimrc"
 " ensure defaults are set before customizing settings,
@@ -136,19 +153,6 @@ set shiftround
 set expandtab
 set helplang=en
 EOF
-
-# /etc/gvimrc будет ссылкой на /etc/vimrc
-ln -svf vimrc "${TMP_DIR}/etc/gvimrc"
-
-# по умолчанию документация Vim устанавливается в /usr/share/vim/, поэтому
-# установим ссылку в /usr/share/doc/
-#    vim-${VERSION} -> ../vim/vimXX/doc
-MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
-MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
-ln -snfv "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
-    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
-
-rm -f "${TMP_DIR}/usr/share/applications/vim.desktop"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

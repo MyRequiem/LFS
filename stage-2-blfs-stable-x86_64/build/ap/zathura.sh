@@ -16,7 +16,6 @@ PRGNAME="zathura"
 #              cairo
 #              girara
 #              json-glib
-#              sqlite
 #              poppler          (для сборки плагина zathura-pdf-poppler)
 #              djvulibre        (для сборки плагина zathura-djvu) https://djvu.sourceforge.net/
 #              libspectre       (для сборки плагина zathura-ps)   https://www.freedesktop.org/wiki/Software/libspectre/

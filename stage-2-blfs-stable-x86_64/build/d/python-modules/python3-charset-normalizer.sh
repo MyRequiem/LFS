@@ -11,7 +11,6 @@ ARCH_NAME="charset_normalizer"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
-#              python3            (пересобранный в BLFS с sqlite)
 #              python3-pytest-cov (https://pypi.org/project/pytest-cov/)
 
 ROOT="/root/src/lfs"

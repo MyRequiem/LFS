@@ -41,6 +41,10 @@ make install DESTDIR="${TMP_DIR}"
 #    vi -> vim
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
+for MAN_PATH in  "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
+    ln -sv vim.1 "$(dirname "${MAN_PATH}")/vi.1"
+done
+
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 
 # по умолчанию документация устанавливается в /usr/share/vim/, поэтому
@@ -48,10 +52,8 @@ rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 #    vim-${VERSION} -> ../vim/vimXX/doc
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
-(
-    cd "${TMP_DIR}${DOCS}" || exit 1
-    ln -sv "../vim/vim${MAJ_VER}${MIN_VER}/doc" "${PRGNAME}-${VERSION}"
-)
+ln -snvf "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
+    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
 # конфигурация по умолчанию
 VIMRC="/etc/vimrc"

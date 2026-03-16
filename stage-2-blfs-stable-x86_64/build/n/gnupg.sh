@@ -18,7 +18,6 @@ PRGNAME="gnupg"
 #              imagemagick  (для создания документации)
 #              libusb
 #              MTA          (dovecot или exim или postfix или sendmail)
-#              sqlite
 #              texlive или install-tl-unx
 #              fig2dev      (для создания документации) http://mcj.sourceforge.net/
 #              adns         (http://www.chiark.greenend.org.uk/~ian/adns/)

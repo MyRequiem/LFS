@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a simple way to put Python packages and modules on PyPi
 #
 # Home page: https://pypi.org/project/${ARCH_NAME}/
-# Download:  https://pypi.org/packages/source/f/flit-core/${ARCH_NAME}-${ARCH_NAME}.tar.gz
+# Download:  https://pypi.org/packages/source/f/flit-core/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

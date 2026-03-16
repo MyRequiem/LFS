@@ -8,8 +8,6 @@ PRGNAME="flameshot"
 # интерфейс.
 
 # Required:    cmake
-#              python3-webencodings
-#              python3-html5lib
 #              md4c
 #              nodejs
 #              double-conversion

@@ -18,7 +18,6 @@ PRGNAME="exim"
 #              openldap
 #              gnutls
 #              postgresql
-#              sqlite
 #              Graphical Environments
 #              heimdal-gssapi           (https://github.com/heimdal/heimdal)
 #              libspf2                  (https://github.com/shevek/libspf2/)

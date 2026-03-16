@@ -12,7 +12,6 @@ ARCH_NAME="libsoup"
 #              libpsl
 #              libxml2
 #              nghttp2
-#              sqlite
 # Recommended: glib
 #              vala
 # Optional:    --- для тестов ---

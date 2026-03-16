@@ -8,7 +8,7 @@ PRGNAME="lshw"
 # т.д.)
 
 # Required:    no
-# Recommended: sqlite
+# Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -18,14 +18,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-ENABLE_SQLITE=0
-[ -x /usr/lib/libsqlite3.so ] && ENABLE_SQLITE=1
-
-VERSION="${VERSION}" \
-    make ZLIB=1 SQLITE="${ENABLE_SQLITE}" || exit 1
-
-VERSION="${VERSION}" \
-    make ZLIB=1 SQLITE="${ENABLE_SQLITE}" install DESTDIR="${TMP_DIR}"
+VERSION="${VERSION}" make ZLIB=1 SQLITE=1 || exit 1
+VERSION="${VERSION}" make ZLIB=1 SQLITE=1 install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

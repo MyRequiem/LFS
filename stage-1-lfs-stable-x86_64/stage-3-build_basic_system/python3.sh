@@ -38,6 +38,8 @@ make || make -j1 || exit 1
 # make test TESTOPTS="--timeout 120"
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 cat << EOF > "${TMP_DIR}/etc/pip.conf"
 [global]
 # do not display warnings when running from root
