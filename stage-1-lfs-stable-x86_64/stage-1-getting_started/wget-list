@@ -39,6 +39,8 @@ https://www.kernel.org/pub/linux/utils/kbd/kbd-2.9.0.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.xz
 https://www.greenwoodsoftware.com/less/less-692.tar.gz
 https://www.linuxfromscratch.org/lfs/downloads/development/lfs-bootscripts-20250827.tar.xz
+https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-fix-install-path.diff
+https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-from-udev-to-eudev.diff
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz
 https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-3.5.2.tar.gz
 https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.8.tar.gz
@@ -79,6 +81,7 @@ https://downloads.sourceforge.net/tcl/tcl8.6.17-src.tar.gz
 https://ftpmirror.gnu.org/texinfo/texinfo-7.3.tar.xz
 https://www.iana.org/time-zones/repository/releases/tzdata2026a.tar.gz
 https://github.com/eudev-project/eudev/releases/download/v3.2.14/eudev-3.2.14.tar.gz
+https://anduin.linuxfromscratch.org/LFS/udev-lfs-20230818.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-2.41.3.tar.xz
 https://github.com/vim/vim/archive/v9.2.0173/vim-9.2.0173.tar.gz
 https://pypi.org/packages/source/w/wheel/wheel-0.46.3.tar.gz

@@ -97,8 +97,9 @@ texinfo.sh
 vim.sh
 python3-markupsafe.sh
 python3-jinja2.sh
-# пакет udev удален в моем репозитории LFS, и заменен на eudev. Если вы
-# обновляете LFS до версии 13.0, то нужно удалить пакет udev
+# начиная с версии LFS 13.0 пакет udev заменен на eudev. Если вы обновляете LFS
+# c версии < 13.x до версии >=13.x, то перед установкой eudev нужно
+# >>>ОБЯЗАТЕЛЬНО<<< удалить пакет udev
 #    # removepkg --backup /var/log/packages/udev-<version>
 eudev.sh
 man-db.sh
