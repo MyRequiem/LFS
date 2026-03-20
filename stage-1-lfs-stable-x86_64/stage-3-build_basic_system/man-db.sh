@@ -47,6 +47,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует
 MAN_DB_CONF="/etc/man_db.conf"
 if [ -f "${MAN_DB_CONF}" ]; then

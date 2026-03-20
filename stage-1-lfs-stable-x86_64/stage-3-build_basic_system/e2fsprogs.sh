@@ -38,6 +38,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # удалим бесполезные статические библиотеки
 rm -fv "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
 
