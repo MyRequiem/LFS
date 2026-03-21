@@ -38,7 +38,7 @@ https://pypi.org/packages/source/J/Jinja2/jinja2-3.1.6.tar.gz
 https://www.kernel.org/pub/linux/utils/kbd/kbd-2.9.0.tar.xz
 https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.xz
 https://www.greenwoodsoftware.com/less/less-692.tar.gz
-https://www.linuxfromscratch.org/lfs/downloads/development/lfs-bootscripts-20250827.tar.xz
+https://www.linuxfromscratch.org/lfs/downloads/12.4/lfs-bootscripts-20250827.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-fix-install-path.diff
 https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-from-udev-to-eudev.diff
 https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz

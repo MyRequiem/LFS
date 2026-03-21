@@ -3,10 +3,10 @@
 PRGNAME="dtc"
 
 ### dtc (Device Tree Compiler for Flat Device Trees)
-# Device Tree Compiler, dtc, takes as input a device-tree in a given format and
-# outputs a device-tree in another format for booting kernels on embedded
-# systems, transforms a textual description of a device tree (DTS) into a
-# binary object (DTB).
+# Инструмент, который переводит текстовое описание компьютерного железа в
+# специальный бинарный файл, понятный ядру Linux. Он помогает операционной
+# системе узнать, какие компоненты установлены в устройстве и как с ними
+# правильно работать.
 
 # Required:    no
 # Recommended: no
@@ -21,17 +21,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с glibc >=2.43
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-glibc_fixes-1.patch" || exit 1
+
 mkdir build
 cd build || exit 1
 
 # предотвращаем создание Python3 модуля с помощью устаревшего метода setup.py
 # Далее мы создадим модуль с помощью pip3 wheel
 #    -D python=disabled
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D python=disabled  \
-    .. || exit 1
+    -D python=disabled || exit 1
 
 ninja || exit 1
 
@@ -60,6 +63,8 @@ if command -v swig &>/dev/null; then
         --no-user           \
         libfdt
 fi
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
