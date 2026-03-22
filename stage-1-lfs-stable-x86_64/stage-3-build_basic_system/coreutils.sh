@@ -19,10 +19,6 @@ rm -rf "${TMP_DIR}"
 MAN8="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{/usr/sbin,"${MAN8}"}
 
-# устраненим проблему безопасности, выявленную в upstream
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch"
-
 # стандарт POSIX требует, чтобы программы из Coreutils распознавали границы
 # символов правильно даже в многобайтовых локалях. Применим патч исправляющий
 # это несоответствия и другие ошибки, связанные с интернационализацией
@@ -39,13 +35,9 @@ automake -af
 
 # позволяет собирать пакет от имени пользователя root
 #    FORCE_UNSAFE_CONFIGURE=1
-# запретим установку утилит kill и uptime ('kill' будет установлена с пакетом
-# util-linux, 'uptime' с пакетом procps-ng)
-#    --enable-no-install-program=kill,uptime
 FORCE_UNSAFE_CONFIGURE=1 \
 ./configure              \
-    --prefix=/usr        \
-    --enable-no-install-program=kill,uptime || exit 1
+    --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
 
@@ -58,7 +50,7 @@ make || make -j1 || exit 1
 # чтобы пользователь tester был членом более чем одной группы. Чтобы эти тесты
 # не были пропущены мы добавим временную группу dummy и сделаем пользователя
 # tester членом этой группы
-# echo "dummy:x:102:tester" >> /etc/group
+# groupadd -g 102 dummy -U tester
 
 # сделаем владельцем дерева исходников пользователя tester
 # chown -Rv tester .
@@ -79,6 +71,8 @@ make || make -j1 || exit 1
 # устанавливаем пакет
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # утилита chroot в /usr/sbin
 mv -v "${TMP_DIR}/usr/bin/chroot" "${TMP_DIR}/usr/sbin"
 
@@ -89,11 +83,12 @@ sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 
-# утилиту /usr/bin/cp переместим в /tmp, т.к. ее нужно будет скопировать в
-# /usr/bin из только что собранного пакета
-mv /usr/bin/cp /tmp
-/tmp/cp -vR "${TMP_DIR}"/* /
-rm -f /tmp/cp
+# утилиту 'cp' устанавливаем командой install, т.к. скопировать ее из DESTDIR
+# будет не возможно по понятным причинам
+install -vm755 "${TMP_DIR}/usr/bin/cp" /usr/bin
+rm -f "${TMP_DIR}/usr/bin/cp"
+cp -vR "${TMP_DIR}"/* /
+cp /usr/bin/cp "${TMP_DIR}/usr/bin/"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (core GNU utilities)
@@ -105,7 +100,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # as greater speed, additional options, and fewer arbitrary limits.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -1,5 +1,5 @@
 ###
-# Переходим в chroot окружение
+# Переходим в chroot окружение (если устанавливаем систему с нуля)
 ./entering-chroot-env.sh
 ###
 lfs-bootscripts.sh

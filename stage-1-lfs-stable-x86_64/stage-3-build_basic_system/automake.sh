@@ -27,10 +27,7 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-(
-    cd "${TMP_DIR}/usr/share/" || exit 1
-    rm -rf doc
-)
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -49,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # "perl" packages to be able to use automake.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

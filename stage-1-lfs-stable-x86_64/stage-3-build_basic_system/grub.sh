@@ -12,20 +12,19 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-BASH_COMPLETION="/usr/share/bash-completion/completions"
-mkdir -pv "${TMP_DIR}${BASH_COMPLETION}"
+mkdir -pv "${TMP_DIR}"
 
 ###
 # WARNING
 ###
-# удалим все переменные среды, которые могут повлиять на сборку
-unset {C,CPP,CXX,LD}FLAGS
-# при сборке пакета Grub нельзя применять специальные флаги компиляции, т.к.
+# Удалим все переменные среды, которые могут повлиять на сборку. При сборке
+# пакета Grub нельзя применять специальные флаги компиляции, т.к.
 # низкоуровневые операции в исходном коде могут быть нарушены агрессивной
-# оптимизацией
+# оптимизацией.
+unset {C,CPP,CXX,LD}FLAGS
 
-# добавим файл extra_deps.lst, отсутствующий в архиве исходников релиза
-echo depends bli part_gpt > "${PRGNAME}-core/extra_deps.lst"
+# исправим ошибку, появившуюся в grub-2.14
+sed 's/--image-base/--nonexist-linker-option/' -i configure || exit 1
 
 # минимизирует сборку, отключая некоторые особенности и тестирование программ,
 # которые не нужны для LFS
@@ -46,9 +45,7 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-mv -v  "${TMP_DIR}/etc/bash_completion.d/${PRGNAME}" \
-    "${TMP_DIR}${BASH_COMPLETION}"
-rm -rf "${TMP_DIR}/etc/bash_completion.d"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -60,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The GRand Unified Bootloader (GNU GRUB) is a multiboot boot loader.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

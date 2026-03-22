@@ -10,9 +10,12 @@ source "${ROOT}check_environment.sh" || exit 1
 
 BINARY="$(find /usr/bin /usr/lib /usr/libexec /usr/sbin \
     -type f -print0 | xargs -0 file 2>/dev/null | \
-    /bin/grep -e "executable" -e "shared object" | /bin/grep "ELF" | \
-    /bin/grep -e "with debug_info" -e "not stripped" | \
-    /bin/grep -v "32-bit" | cut -f 1 -d :)"
+    /usr/bin/grep -e "executable" -e "shared object" | \
+    /usr/bin/grep "ELF" | \
+    /usr/bin/grep -e "with debug_info" -e "not stripped" | \
+    /usr/bin/grep -v "unknown arch" | \
+    /usr/bin/grep -v "32-bit" | \
+    /usr/bin/grep -v "no machine" | cut -f 1 -d :)"
 
 for BIN in ${BINARY}; do
     DESTDIR="$(dirname "${BIN}")"

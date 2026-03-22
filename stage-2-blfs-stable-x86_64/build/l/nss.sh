@@ -9,8 +9,7 @@ PRGNAME="nss"
 # безопасности.
 
 # Required:    nspr
-# Recommended: sqlite
-#              p11-kit
+# Recommended: p11-kit
 # Optional:    no
 
 ROOT="/root/src/lfs"

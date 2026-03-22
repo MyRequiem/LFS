@@ -29,10 +29,10 @@ pip3 install            \
     --find-links dist   \
     "${PRGNAME}" || exit 1
 
-install -vDm644 data/shell-completions/bash/meson \
-    "${TMP_DIR}/usr/share/bash-completion/completions/meson"
-install -vDm644 data/shell-completions/zsh/_meson \
-    "${TMP_DIR}/usr/share/zsh/site-functions/_meson"
+install -vDm644 "data/shell-completions/bash/${PRGNAME}" \
+    "${TMP_DIR}/usr/share/bash-completion/completions/${PRGNAME}"
+install -vDm644 "data/shell-completions/zsh/_${PRGNAME}" \
+    "${TMP_DIR}/usr/share/zsh/site-functions/_${PRGNAME}"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
@@ -45,11 +45,6 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 # имеются
 PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
 [ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
-
-install -vDm644 "data/shell-completions/bash/${PRGNAME}" \
-    "${TMP_DIR}/usr/share/bash-completion/completions/${PRGNAME}"
-install -vDm644 "data/shell-completions/zsh/_${PRGNAME}" \
-    "${TMP_DIR}/usr/share/zsh/site-functions/_${PRGNAME}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

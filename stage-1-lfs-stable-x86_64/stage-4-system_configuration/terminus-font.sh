@@ -3,12 +3,14 @@
 PRGNAME="terminus-font"
 
 ### Terminus Font (clean, fixed width bitmap font for linux console)
-# Растровый шрифт с фиксированной шириной для чистой консоли linux
+# Растровый шрифт с фиксированной шириной для чистой консоли linux (TTY)
 
 # Пакет упоминается в BLFS:
 #    https://www.linuxfromscratch.org/blfs/view/stable/postlfs/console-fonts.html
-# Установим его сейчас для настройки шрифта ter-v14n в чистом терминале после
-# установки System-V-configuration в файле /etc/sysconfig/console
+#
+# Установим его сейчас для настройки шрифта ter-v14n в чистом терминале (TTY)
+# после установки System-V-configuration (system-v-configuration.sh) в файле
+# /etc/sysconfig/console
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -22,9 +24,7 @@ mkdir -pv "${TMP_DIR}${FONTS}"
 ./configure \
     --prefix=/usr || exit 1
 
-# собираем только PSF шрифты для чистого терминала. В пакете присутствуют еще
-# PCF шрифты для X, но для их сборки нужна утилита bdftopcf входящая в состав
-# иксов, которые пока не установлены
+# собираем только PSF шрифты для чистого терминала (TTY)
 make psf || make -j1 psf || exit 1
 
 # для установки всех собранных PSF шрифтов (~250 шт) запускаем:

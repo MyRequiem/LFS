@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-# исправим сборку с gcc>=14.1
+# исправим сборку с gcc >=14.1
 sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c || exit 1
 
 # по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
@@ -52,6 +52,8 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # переместим утилиту 'ifconfig' из /usr/bin в /usr/sbin
 mv -v "${TMP_DIR}/usr"/{,s}bin/ifconfig
 
@@ -70,7 +72,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # traceroute
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

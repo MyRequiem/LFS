@@ -23,7 +23,6 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              mesa
 #              libjpeg-turbo
 #              libxkbcommon
-#              sqlite
 #              wayland
 #              xcb-util-image
 #              xcb-util-keysyms

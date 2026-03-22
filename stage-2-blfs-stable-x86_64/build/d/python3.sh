@@ -7,7 +7,7 @@ ARCH_NAME="Python"
 # Язык программирования Python3
 
 # Required:    no
-# Recommended: sqlite           (для создания дополнительных модулей и сборки firefox или thunderbird)
+# Recommended: no
 # Optional:    bluez
 #              gdb              (для некоторых тестов)
 #              valgrind

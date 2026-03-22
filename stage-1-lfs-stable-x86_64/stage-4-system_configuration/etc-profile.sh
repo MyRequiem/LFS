@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="etc-profile"
-LFS_VERSION="13.0"
 
 ### /etc/profile (system-wide defaults)
 # Общесистемные настройки оболочки
@@ -602,12 +601,10 @@ chmod 755 "${UMASK}"
 chmod 755 "${I18N}"
 chmod 755 "${DIRCOLORS_SH}"
 
-config_file_processing "${DIRCOLORS}"
 config_file_processing "${PROFILE}"
+config_file_processing "${DIRCOLORS}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (system-wide defaults)
 #
 # System-wide shell settings
@@ -622,4 +619,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"

@@ -5,7 +5,7 @@ PRGNAME="lnav"
 ### lnav (The Log File Navigator)
 # Усовершенствованная утилита для просмотра лог-файлов
 
-# Required:    sqlite
+# Required:    no
 # Recommended: no
 # Optional:    curl
 #              libarchive

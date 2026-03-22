@@ -16,11 +16,10 @@ rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}${DOC_DIR}"
 
 # поведение клавиш <Backspace> и <Delete> не одинаково для всех раскладок в
-# пакете Kbd. Следующий патч исправляет эту проблему для i386 раскладки:
+# пакете Kbd. Следующий патч исправляет эту проблему для i386 раскладки - после
+# его применения клавиши <Backspace> и <Delete> генерируют символ с кодом 127
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-backspace-1.patch" || exit 1
-# после применения патча клавиши <Backspace> и <Delete> генерируют символ с
-# кодом 127
 
 # не будем создавать утилиту resizecons, для которой требуется более
 # неиспользуемая библиотека svgalib, a так же отключим созданием man-страницы
@@ -28,8 +27,10 @@ patch --verbose -Np1 -i \
 sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure      || exit 1
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in || exit 1
 
-# предотвращает сборку утилиты vlock, так как она требует библиотеку PAM,
-# которая не установлена в системе LFS
+# vlock - утилита блокирует виртуальную консоль (TTY), требуя пароль текущего
+# пользователя для возврата к работе. Для сборки требуется libpam.so (пакет
+# linux-pam из BLFS). Не будем ее компилировать за ненадобностью, есть много
+# других способов заблокировать консоль.
 #    --disable-vlock
 ./configure       \
     --prefix=/usr \
@@ -39,10 +40,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-(
-    cd "${TMP_DIR}" || exit 1
-    rm -rf usr/share/doc
-)
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -59,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # font. A new default font can be chosen at any time by typing
 # 'setconsolefont'.
 #
-# Home page: https://ftp.altlinux.org/pub/people/legion/${PRGNAME}
+# Home page: https://www.kernel.org/pub/linux/utils/${PRGNAME}/
 # Download:  https://www.kernel.org/pub/linux/utils/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

@@ -57,7 +57,7 @@ fi
 # ---------------------
 # |-sda1  /boot [LFS]
 #           |
-#           vmlinuz -> vmlinuz-generic-6.13.12
+#           vmlinuz -> vmlinuz-generic-6.18.16
 # |-sda5  /     [корень LFS]
 # |-sda8  /     [корень Slackware]
 #         |

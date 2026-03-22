@@ -13,7 +13,6 @@ ARCH_NAME="build"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
-#              python3                      (собранный с sqlite)
 #              python3-filelock             (https://pypi.org/project/filelock/)
 #              python3-pytest-cov           (https://pypi.org/project/pytest-cov/)
 #              python3-pytest-mock          (https://pypi.org/project/pytest-mock/)

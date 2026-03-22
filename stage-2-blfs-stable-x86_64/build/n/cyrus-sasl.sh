@@ -14,7 +14,6 @@ PRGNAME="cyrus-sasl"
 #              openldap
 #              postgresql
 #              python3-sphinx
-#              sqlite
 #              berkeley-db                    (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 #              krb4                           (https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/)
 #              dmalloc                        (https://dmalloc.com/)

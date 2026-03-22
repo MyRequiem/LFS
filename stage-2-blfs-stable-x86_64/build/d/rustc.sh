@@ -10,9 +10,7 @@ BLFS_VER="13.0"
 #              curl
 # Recommended: libssh2
 #              llvm
-#              sqlite
-# Optional:    ---  ---
-#              gdb          (для тестов)
+# Optional:    gdb          (для тестов)
 #              git          (для тестов)
 #              cranelift    (https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)
 #              jemalloc     (https://jemalloc.net/)
@@ -121,8 +119,8 @@ llvm-config = "/usr/bin/llvm-config"
 EOF
 
 ### сборка
-[ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1
-[ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+export LIBSSH2_SYS_USE_PKG_CONFIG=1
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
 ./x.py build
 

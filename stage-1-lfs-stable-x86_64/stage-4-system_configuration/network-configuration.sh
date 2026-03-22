@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="network-configuration"
-LFS_VERSION="13.0"
 
 ### Network Configuration (Network configuration files)
 #    /etc/hostname
@@ -151,9 +150,7 @@ config_file_processing "${RESOLV_CONF}"
 config_file_processing "${ETC_HOSTNAME}"
 config_file_processing "${HOSTS}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (network configuration files)
 #
 #    /etc/hostname
@@ -164,4 +161,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"

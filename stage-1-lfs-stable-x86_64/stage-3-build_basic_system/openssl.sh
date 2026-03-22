@@ -29,8 +29,7 @@ make || make -j1 || exit 1
 sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile || exit 1
 make MANSUFFIX=ssl install DESTDIR="${TMP_DIR}"
 
-# удалим директорию с документацией
-rm -rf "${TMP_DIR}/usr/share/doc/${PRGNAME}"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

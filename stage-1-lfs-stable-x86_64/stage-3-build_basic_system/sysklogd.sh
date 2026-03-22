@@ -27,6 +27,8 @@ make || make -j1 || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ### конфиг /etc/syslog.conf
 SYSLOG_CONF="/etc/syslog.conf"
 cat << EOF > "${TMP_DIR}${SYSLOG_CONF}"
@@ -85,9 +87,16 @@ if [ -f "${SYSLOG_CONF}" ]; then
     mv "${SYSLOG_CONF}" "${SYSLOG_CONF}.old"
 fi
 
+# если собираем на живой системе, то /usr/sbin/syslogd будет занят, поэтому
+# сразу установим его командой install
+install -vm755 "${TMP_DIR}/usr/sbin/syslogd" /usr/sbin || exit 1
+mv "${TMP_DIR}/usr/sbin/syslogd" /tmp/
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
+
+mv /tmp/syslogd "${TMP_DIR}/usr/sbin/"
 
 config_file_processing "${SYSLOG_CONF}"
 
