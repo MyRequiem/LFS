@@ -21,6 +21,10 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
     Packages that can only be updated and copied, but cannot be completely
     remove from the system:
         main-directory-tree
+        lfs-bootscripts
+        network-configuration
+        system-v-configuration
+        etc-profile
         glibc
         binutils
         gcc
@@ -91,12 +95,12 @@ backup() {
 }
 
 remove_package() {
-# при удалении файлов removepkg будет анализировать содержимое других
-# пакетов, установленных в вашей системе, и удалит только те файлы, которые
-# уникальны для удаляемого пакета
+# when removing files, removepkg analyzes other installed packages and deletes
+# only those files unique to the package being removed
     if [ -n "${BACKUP}" ]; then
         {
             while read -r LINE; do
+                # skip comments
                 if ! [[ "${LINE}" =~ ^# ]]; then
                     backup "${LINE}"
                 fi
@@ -233,8 +237,18 @@ if [ -z "${NO_COLOR}" ]; then
     COLORRESET="\033[0;0m"
 fi
 
+if ! [ -f "${PACKAGES_DIR}/${PKG}" ]; then
+    echo -en "${LRED}Package ${BROWN}${PKG}${LRED} not found in "
+    echo -e "${LBLUE}${PACKAGES_DIR}/${COLORRESET}"
+    exit 1
+fi
+
 STRICT_PKGS="\
 main-directory-tree \
+lfs-bootscripts \
+network-configuration \
+system-v-configuration \
+etc-profile \
 glibc \
 binutils \
 gcc \
@@ -246,7 +260,7 @@ readline"
 for STRICT_PKG in ${STRICT_PKGS} ; do
     [[ "${FAKE}" == "true" ]] &&  break
 
-    if [[ ${PKG} == "main-directory-tree" ]]; then
+    if [[ ${PKG} == "${STRICT_PKG}" ]]; then
         STRICT_PKG_NAME="${PKG}"
     else
         STRICT_PKG_NAME="$(echo "${PKG}" | rev | cut -d / -f 1 | \
@@ -259,12 +273,6 @@ for STRICT_PKG in ${STRICT_PKGS} ; do
         exit 0
     fi
 done
-
-if ! [ -f "${PACKAGES_DIR}/${PKG}" ]; then
-    echo -en "${LRED}Package ${BROWN}${PKG}${LRED} not found in "
-    echo -e "${LBLUE}${PACKAGES_DIR}/${COLORRESET}"
-    exit 1
-fi
 
 if [ "${FAKE}" = "true" ]; then
     if [ "${BACKUP}" = "true" ]; then
@@ -294,9 +302,8 @@ if [[ -z "${FAKE}" && -z "${BACKUP}" ]]; then
         confirm_continuation
 fi
 
-# when  deleting  files,  removepkg will analyze the contents of the other
-# packages installed on your system, and will only delete the files that are
-# unique to the package being removed
+# when removing files, removepkg analyzes other installed packages and deletes
+# only those files unique to the package being removed
 FILES_TO_DELETE="/tmp/removepkg_files_to_delete"
 DIRS_TO_DELETE="/tmp/removepkg_dirs_to_delete"
 rm -f "${FILES_TO_DELETE}"
