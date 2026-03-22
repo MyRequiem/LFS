@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="etc-fstab"
-LFS_VERSION="13.0"
 
 SWAP_PART="/dev/sda2"
 ROOT_PART="/dev/sda5"
@@ -51,9 +50,7 @@ fi
 
 config_file_processing "${FSTAB}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (partition mount settings)
 #
 # /etc/fstab
@@ -61,4 +58,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"

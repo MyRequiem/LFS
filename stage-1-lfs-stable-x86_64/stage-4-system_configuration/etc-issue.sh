@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="etc-issue"
-LFS_VERSION="13.0"
 
 ### /etc/issue (pre-login message)
 # Файл /etc/issue содержит сообщения, которые выводятся до приглашения на вход
@@ -52,9 +51,7 @@ fi
 
 config_file_processing "${ISSUE}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (pre-login message)
 #
 # /etc/issue is a text file which contains a message or system identification
@@ -65,4 +62,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"

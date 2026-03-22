@@ -25,6 +25,7 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
         network-configuration
         system-v-configuration
         etc-profile
+        etc-fstab
         glibc
         binutils
         gcc
@@ -249,6 +250,7 @@ lfs-bootscripts \
 network-configuration \
 system-v-configuration \
 etc-profile \
+etc-fstab \
 glibc \
 binutils \
 gcc \
@@ -269,7 +271,7 @@ for STRICT_PKG in ${STRICT_PKGS} ; do
 
     if [[ "${STRICT_PKG_NAME}" == "${STRICT_PKG}" ]]; then
         echo -en "${LRED}Package ${BROWN}${STRICT_PKG_NAME}${LRED} "
-        echo -e "cannot be deleted !!!${COLORRESET}"
+        echo -e "cannot be deleted!${COLORRESET}"
         exit 0
     fi
 done

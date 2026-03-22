@@ -57,8 +57,6 @@ config_file_processing "${LFS_RELEASE}"
 config_file_processing "${LSB_RELEASE}"
 config_file_processing "${OS_RELEASE}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
 cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 # Package: ${PRGNAME} (system info)
 #

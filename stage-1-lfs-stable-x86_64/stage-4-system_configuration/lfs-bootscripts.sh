@@ -8,6 +8,7 @@ PRGNAME="lfs-bootscripts"
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}config_file_processing.sh"             || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -31,7 +32,32 @@ patch --verbose -Np1 -i \
 
 make install DESTDIR="${TMP_DIR}"
 
+CREATEFILES="/etc/sysconfig/createfiles"
+if [ -f "${CREATEFILES}" ]; then
+    mv "${CREATEFILES}" "${CREATEFILES}.old"
+fi
+
+MODULES="/etc/sysconfig/modules"
+if [ -f "${MODULES}" ]; then
+    mv "${MODULES}" "${MODULES}.old"
+fi
+
+RC_SITE="/etc/sysconfig/rc.site"
+if [ -f "${RC_SITE}" ]; then
+    mv "${RC_SITE}" "${RC_SITE}.old"
+fi
+
+UDEV_RETRY="/etc/sysconfig/udev_retry"
+if [ -f "${UDEV_RETRY}" ]; then
+    mv "${UDEV_RETRY}" "${UDEV_RETRY}.old"
+fi
+
 cp -vR "${TMP_DIR}"/* /
+
+config_file_processing "${CREATEFILES}"
+config_file_processing "${MODULES}"
+config_file_processing "${RC_SITE}"
+config_file_processing "${UDEV_RETRY}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (scripts to start/stop the LFS system)
@@ -39,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The LFS-Bootscripts package contains a set of scripts to start/stop the LFS
 # system at bootup/shutdown.
 #
-# Download: https://www.linuxfromscratch.org/lfs/downloads/development/${PRGNAME}-${VERSION}.tar.xz
+# Download: https://www.linuxfromscratch.org/lfs/downloads/12.4/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

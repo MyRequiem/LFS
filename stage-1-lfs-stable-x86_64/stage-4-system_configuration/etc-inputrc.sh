@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="etc-inputrc"
-LFS_VERSION="13.0"
 
 ### /etc/inputrc (configures keyboard input for programs using readline)
 # /etc/inputrc - файл конфигурации библиотеки Readline, который предоставляет
@@ -67,9 +66,7 @@ fi
 
 config_file_processing "${INPUTRC}"
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (configures keyboard input for programs using readline)
 #
 # /etc/inputrc
@@ -77,4 +74,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"

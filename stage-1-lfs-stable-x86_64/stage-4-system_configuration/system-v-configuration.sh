@@ -1,7 +1,6 @@
 #! /bin/bash
 
 PRGNAME="system-v-configuration"
-LFS_VERSION="13.0"
 
 ### System V configuration
 # Конфигурация SysVinit. В Linux используется специальная схема загрузки
@@ -90,36 +89,35 @@ cat << EOF > "${TMP_DIR}${INITTAB}"
 # $ man inittab
 ###
 
-# default run-level
-# run all scripts in /etc/rc.d/rc?.d, where '?' is the run level
+# default run-level (Multi-user, console only)
 id:3:initdefault:
 
-# run all scripts in /etc/rc.d/rcS.d
+# system initialization (runs all scripts in /etc/rc.d/rcS.d)
 si::sysinit:/etc/rc.d/init.d/rc S
 
-# runlevel 0 halts the system
+# runlevel scripts (halt, single-user, multi-user, and reboot)
 l0:0:wait:/etc/rc.d/init.d/rc  0
 l1:S1:wait:/etc/rc.d/init.d/rc 1
 l2:2:wait:/etc/rc.d/init.d/rc  2
 l3:3:wait:/etc/rc.d/init.d/rc  3
 l4:4:wait:/etc/rc.d/init.d/rc  4
 l5:5:wait:/etc/rc.d/init.d/rc  5
-# runlevel 6 reboot the system
 l6:6:wait:/etc/rc.d/init.d/rc  6
 
-# runlevel 3 run rc.local
+# execute local startup script for runlevel 3
 rc:3:wait:/etc/rc.d/rc.local
 
+# single-user mode and maintenance logins
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
-# these are the standard console login getties in multiuser mode
-1:2345:respawn:/sbin/agetty --noclear tty1 9600
-2:2345:respawn:/sbin/agetty tty2 9600
-3:2345:respawn:/sbin/agetty tty3 9600
-4:2345:respawn:/sbin/agetty tty4 9600
-5:2345:respawn:/sbin/agetty tty5 9600
-6:2345:respawn:/sbin/agetty tty6 9600
+# standard virtual consoles (getty) in multi-user mode
+1:2345:respawn:/sbin/agetty --noclear tty1 38400
+2:2345:respawn:/sbin/agetty tty2 38400
+3:2345:respawn:/sbin/agetty tty3 38400
+4:2345:respawn:/sbin/agetty tty4 38400
+5:2345:respawn:/sbin/agetty tty5 38400
+6:2345:respawn:/sbin/agetty tty6 38400
 
 # End ${INITTAB}
 EOF
@@ -257,12 +255,12 @@ fi
 
 /bin/cp -vR "${TMP_DIR}"/* /
 
-chmod 754 "${RC_LOCAL}"
-
 config_file_processing "${RC_LOCAL}"
 config_file_processing "${INITTAB}"
 config_file_processing "${ETC_CLOCK}"
 config_file_processing "${CONSOLE}"
+
+chmod 754 "${RC_LOCAL}"
 
 ###
 # Настройка сценариев загрузки и завершения работы
@@ -302,9 +300,7 @@ sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
 
-rm -f "/var/log/packages/${PRGNAME}"-*
-
-cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}"
 # Package: ${PRGNAME} (System V configuration)
 #
 # /etc/inittab
@@ -315,4 +311,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${LFS_VERSION}"
 EOF
 
 source "${ROOT}write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${LFS_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}"
