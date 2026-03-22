@@ -1,7 +1,7 @@
 diff -U 1 -U 1 -Naur lfs-bootscripts_orig/lfs/init.d/udev lfs-bootscripts/lfs/init.d/udev
 --- lfs-bootscripts_orig/lfs/init.d/udev	2026-03-12 11:08:06.000000000 +0400
-+++ lfs-bootscripts/lfs/init.d/udev	2026-03-17 01:57:58.909409271 +0400
-@@ -1,77 +1,62 @@
++++ lfs-bootscripts/lfs/init.d/udev	2026-03-20 18:13:32.374505294 +0400
+@@ -1,77 +1,61 @@
  #!/bin/sh
 +
  ########################################################################
@@ -73,7 +73,7 @@ diff -U 1 -U 1 -Naur lfs-bootscripts_orig/lfs/init.d/udev lfs-bootscripts/lfs/in
 -      log_success_msg2
 -      ;;
 +    start)
-+        # sanity check: udev requires sysfs to function
++        # Sanity check: udev requires sysfs to function
 +        log_info_msg "Populating /dev with device nodes... "
 +        if ! grep -q '[[:space:]]sysfs' /proc/mounts; then
 +            log_failure_msg2
@@ -87,25 +87,24 @@ diff -U 1 -U 1 -Naur lfs-bootscripts_orig/lfs/init.d/udev lfs-bootscripts/lfs/in
 +            /etc/rc.d/init.d/halt start
 +        fi
 +
-+        # create parent directories for static nodes (e.g. /dev/net/ for
++        # Create parent directories for static nodes (e.g. /dev/net/ for
 +        # TUN/TAP). This ensures critical paths exist before the daemon starts
 +        /usr/bin/mkdir -p -m 755 /dev/net 2>/dev/null
 +
-+        # start the udev daemon to continually watch for, and act on, uevents
++        # Start the udev daemon to continually watch for, and act on, uevents
 +        /usr/sbin/udevd --daemon
-+        evaluate_retval
 +
-+        # now traverse /sys in order to "coldplug" devices
++        # Now traverse /sys in order to "coldplug" devices
 +        /usr/bin/udevadm trigger --action=add    --type=subsystems
 +        /usr/bin/udevadm trigger --action=add    --type=devices
 +        /usr/bin/udevadm trigger --action=change --type=devices
 +
-+        # now wait for udevd to process the uevents we triggered
++        # Now wait for udevd to process the uevents we triggered
 +        if ! is_true ${OMIT_UDEV_SETTLE}; then
 +            /usr/bin/udevadm settle
 +        fi
 +
-+        # if any LVM based partitions are on the system, ensure they are
++        # If any LVM based partitions are on the system, ensure they are
 +        # activated so they can be used
 +        if [ -x /usr/sbin/vgchange ]; then
 +            /usr/sbin/vgchange -a y >/dev/null;
