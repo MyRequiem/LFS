@@ -1,13 +1,25 @@
-# устанавливаем утилиту 'removepkg' от пользователя root
-cp -v removepkg /mnt/lfs/usr/sbin/
-chown root:root /mnt/lfs/usr/sbin/removepkg
-chmod 744       /mnt/lfs/usr/sbin/removepkg
-
 ###
 # Переходим в chroot окружение (если LFS система еще не установлена)
 ./entering-chroot-env.sh
 ###
 main-directory-tree.sh
+
+# Установим пакет 'syshealth-utils' с системными утилитами:
+#    check-rc-duplicates
+#    check-system-deps
+#    check-system-health
+#    find-new-config
+#    remove-la-files.sh
+#    removepkg
+#
+###
+# NOTE:
+#    все эти 6 утилит (перечисленные выше) нужно положить в корень системы
+#    вместе со скриптом syshealth-utils.sh, т.к. он будет их копировать в
+#    /usr/sbin/
+###
+syshealth-utils.sh
+
 man-pages.sh
 iana-etc.sh
 glibc.sh
@@ -112,9 +124,7 @@ sysvinit.sh
 # если обновляем LFS до новой версии, очищаем директорию
 #    /var/log/removed_la_files/
 # ========================================================
-# устанавливаем скрипт /usr/sbin/remove-la-files.sh и затем запускаем его для
-# очистки системы от libtool-архивов (*.la)
-set-remove-la-files.sh
+remove-la-files.sh
 strip.sh
 
 

@@ -1,0 +1,179 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Author:  MyRequiem <mrvladislavovich@gmail.com>
+
+Performs a deep audit of ELF binaries and shared libraries to find missing
+dependencies. Uses 'ldd' to verify that all required libraries are present and
+that there are no symbol versioning conflicts, calculating an overall system
+integrity score.
+"""
+
+import os
+import sys
+import subprocess
+import argparse
+import math
+
+class CheckSystemDeps:
+    def __init__(self):
+        # ensure root privileges for system-wide access
+        if os.geteuid() != 0:
+            sys.exit("Error: Root privileges are required to run this script.")
+
+        # list of paths to skip during scanning
+        self.blacklist = [
+            '/opt/google/',
+            '/opt/openoffice4/',
+            '/opt/zen-browser/',
+            '/usr/bin/shellcheck',
+            '/usr/lib/firmware/',
+            '/usr/lib/grub/'
+        ]
+
+        # default directories to check if no target is provided
+        self.default_dirs = [
+            '/opt',
+            '/usr/bin',
+            '/usr/lib',
+            '/usr/libexec',
+            '/usr/sbin'
+        ]
+
+        self.log_path = f"/tmp/{os.path.basename(__file__)}.log"
+        self.has_issues = False
+        self.total_checked = 0
+        self.missing_deps_count = 0
+
+        # ANSI color codes for terminal output
+        self.colors = {
+            'lred': '\x1b[1;31m',
+            'lgreen': '\x1b[1;32m',
+            'yellow': '\x1b[0;33m',
+            'blue': '\x1b[1;34m',
+            'reset': '\x1b[0m'
+        }
+
+        # initialize (truncate) log file
+        try:
+            open(self.log_path, 'w').close()
+        except IOError as e:
+            sys.exit(f"Error: Cannot write to {self.log_path}: {e}")
+
+    def parse_arguments(self):
+        parser = argparse.ArgumentParser(
+            description="Check ELF files for missing dependencies using ldd.",
+            formatter_class=argparse.RawTextHelpFormatter
+        )
+        parser.add_argument(
+            "target",
+            nargs="*",
+            help="Optional: Specific files or directories to check.\n"
+                 "Example: /usr/bin/python3\n"
+                 "If omitted, default system directories are used."
+        )
+        return parser.parse_args()
+
+    def is_blacklisted(self, path):
+        """ Check if the current path should be ignored """
+        return any(bl in path for bl in self.blacklist)
+
+    def is_elf(self, path):
+        """ Quick check for ELF Magic Number """
+        try:
+            with open(path, 'rb') as f:
+                return f.read(4) == b'\x7fELF'
+        except:
+            return False
+
+    def check_ldd(self, file_path):
+        """ Run ldd on a file and parse results for missing dependencies """
+        try:
+            self.total_checked += 1
+            # run ldd and capture output, ignoring encoding errors
+            result = subprocess.run(['ldd', file_path], capture_output=True, text=True, errors='ignore')
+
+            issues = []
+            # look for 'not found' or symbol versioning issues in stdout
+            if "not found" in result.stdout or "no version information" in result.stdout:
+                for line in result.stdout.splitlines():
+                    if "not found" in line or "no version information" in line:
+                        issues.append(line.strip())
+
+            # capture any ldd errors from stderr
+            if result.stderr:
+                issues.append(result.stderr.strip())
+
+            if issues:
+                self.has_issues = True
+                self.missing_deps_count += 1
+                print(f"    {self.colors['lred']}{file_path}{self.colors['reset']}")
+                # append issues to the log file
+                with open(self.log_path, 'a') as f:
+                    f.write(f"{file_path}\n------------------\n")
+                    f.write("\n".join(issues) + "\n\n")
+        except Exception as e:
+            print(f"Error checking {file_path}: {e}")
+
+    def main(self):
+        args = self.parse_arguments()
+        # use provided targets or fall back to default directories
+        targets_to_check = args.target if args.target else self.default_dirs
+
+        print(f"Starting dependency check...")
+
+        for item in targets_to_check:
+            if os.path.isfile(item):
+                if self.is_elf(item):
+                    self.check_ldd(item)
+            elif os.path.isdir(item):
+                print(f"{self.colors['yellow']}{item}/{self.colors['reset']}")
+                # recursive walk through the directory
+                for root, _, files in os.walk(item):
+                    for name in files:
+                        # skip static libraries
+                        if name.endswith(('.a', )):
+                            continue
+
+                        full_path = os.path.join(root, name)
+                        if self.is_blacklisted(full_path):
+                            continue
+
+                        # check if file is executable and is an ELF file
+                        if os.access(full_path, os.X_OK) and self.is_elf(full_path):
+                            self.check_ldd(full_path)
+            else:
+                print(f"{self.colors['lred']}Warning: {item} is not a valid file or directory.{colors['reset']}")
+
+        # calculate system integrity percentage
+        integrity = 100.0
+        if self.total_checked > 0:
+            if self.missing_deps_count > 0:
+                val = ((self.total_checked - self.missing_deps_count) / self.total_checked) * 100
+                integrity = math.floor(val * 100) / 100.0
+            else:
+                integrity = 100.0
+
+        # display final statistics
+        print("-" * 30)
+        print(f"Total ELF files checked: {self.total_checked}")
+        res_color = self.colors['lred'] if self.has_issues else self.colors['lgreen']
+        print(f"Dependency integrity: {res_color}{integrity:.2f}%{self.colors['reset']}")
+        print("-" * 30)
+
+        if self.has_issues:
+            print(f"{self.colors['lred']}ldd found dependency issues")
+            print(f"{self.colors['blue']}Log file: {self.log_path}{self.colors['reset']}\n")
+        else:
+            # remove empty log if no issues were found
+            if os.path.exists(self.log_path):
+                os.remove(self.log_path)
+            print(f"{self.colors['lgreen']}Congratulations! No dependency problems were found.{self.colors['reset']}\n")
+
+if __name__ == "__main__":
+    try:
+        CheckSystemDeps().main()
+    except KeyboardInterrupt:
+        print("\nInterrupted. Exiting...")
+        sys.exit(1)

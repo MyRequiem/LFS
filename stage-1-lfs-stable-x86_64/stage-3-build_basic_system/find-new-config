@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# Scans the /etc directory for configuration files with .new and .old
+# extensions. These files are typically created during package updates to
+# prevent overwriting existing user configurations.
+#
+# Helps the administrator decide whether to keep, merge, or remove redundant
+# config files.
+
+find /etc -type f -name "*.new"
+find /etc -type f -name "*.old"
