@@ -3,8 +3,8 @@
 PRGNAME="hwdata"
 
 ### hwdata (hardware identification and configuration data)
-# пакет содержит различные данные идентификации и конфигурации оборудования,
-# такие как базы данных pci.ids и MonitorsDB
+# Справочные базы данных об идентификаторах оборудования, необходимых для
+# правильного распознавания видеокарт, мониторов и USB-устройств.
 
 # Required:    no
 # Recommended: no

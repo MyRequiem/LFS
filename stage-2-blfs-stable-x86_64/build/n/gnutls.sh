@@ -3,9 +3,8 @@
 PRGNAME="gnutls"
 
 ### GnuTLS (GNU Transport Layer Security Library)
-# Реализация протоколов TLS и SSL предназначенная для предоставления
-# приложениям API для обеспечения надежной связи по протоколам транспортного
-# уровня
+# Библиотека для создания защищенных сетевых соединений по протоколам
+# транспортного уровня (SSL/TLS), используемая во множестве приложений.
 
 # Required:    nettle
 # Recommended: make-ca
@@ -68,6 +67,8 @@ mkdir -p "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

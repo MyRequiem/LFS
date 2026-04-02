@@ -3,8 +3,8 @@
 PRGNAME="libpwquality"
 
 ### libpwquality (password quality checking library)
-# Общие функции для проверки качества паролей и их оценки на основе очевидной
-# случайности
+# Библиотека для контроля качества паролей, помогающая создавать сложные и
+# устойчивые к взлому коды доступа.
 
 # Required:    cracklib
 # Recommended: linux-pam
@@ -18,6 +18,9 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/pam.d"
 
+# отключаем создание python модуля с помощью устаревшей команды сборки setup.py
+# и далее создадим его с помощью команды  pip3 wheel
+#    --disable-python-bindings
 ./configure                            \
     --prefix=/usr                      \
     --disable-static                   \
@@ -44,24 +47,32 @@ pip3 install            \
     --no-user           \
     pwquality
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ###
 # Конфигурация PAM
 ###
-# libpwquality является заменой устаревшего модуля PAM pam_cracklib.so
+# libpwquality является заменой устаревшего модуля PAM pam_cracklib.so -
 # настроим систему на использование модуля pam_pwquality
 
 SYSTEM_PASSWORD="/etc/pam.d/system-password"
 cp "${SYSTEM_PASSWORD}" "${TMP_DIR}${SYSTEM_PASSWORD}"
-cat << EOF >> "${TMP_DIR}${SYSTEM_PASSWORD}"
+cat << EOF > "${TMP_DIR}${SYSTEM_PASSWORD}"
 # check new passwords for strength (man pam_pwquality)
-password  required    pam_pwquality.so   authtok_type=UNIX retry=1 difok=1 \\
-                                         minlen=8 dcredit=0 ucredit=0      \\
-                                         lcredit=0 ocredit=0 minclass=1    \\
-                                         maxrepeat=0 maxsequence=0         \\
-                                         maxclassrepeat=0 gecoscheck=0     \\
-                                         dictcheck=1 usercheck=1           \\
-                                         enforcing=1 badwords=""           \\
-                                         dictpath=/usr/lib/cracklib/pw_dict
+password  required    pam_pwquality.so  authtok_type=UNIX retry=1 difok=1 \\
+                                        minlen=8 dcredit=0 ucredit=0      \\
+                                        lcredit=0 ocredit=0 minclass=1    \\
+                                        maxrepeat=0 maxsequence=0         \\
+                                        maxclassrepeat=0 gecoscheck=0     \\
+                                        dictcheck=1 usercheck=1           \\
+                                        enforcing=1 badwords=""           \\
+                                        dictpath=/usr/lib/cracklib/pw_dict
+
+# - use yescrypt hash for encryption
+# - use shadow
+# - try to use any previously defined authentication token (chosen password)
+#    set by any prior module
+password  required    pam_unix.so       yescrypt shadow try_first_pass
 
 EOF
 

@@ -3,15 +3,15 @@
 PRGNAME="p11-kit"
 
 ### p11-kit (PKCS#11 toolkit)
-# Пакет p11-kit предоставляет способ загрузки и перечисления PKCS#11 (Модулей
-# криптографического интерфейса Token Standard)
+# Инструмент для координации работы с криптографическими модулями
+# (смарт-картами, токенами) и управления сертификатами.
 
 # Required:   no
 # Recommended libtasn1
-#             make-ca
+#             make-ca       (runtime)
 # Optional:   gtk-doc
 #             libxslt
-#             nss
+#             nss           (runtime)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,8 +21,10 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 CRON_WEEKLY="/etc/cron.weekly"
 mkdir -pv "${TMP_DIR}${CRON_WEEKLY}"
 
+# удалим строки с 20 и до конца файла
 sed '20,$ d' -i trust/trust-extract-compat || exit 1
 
+# добавим в конец файла
 cat >> trust/trust-extract-compat << "EOF"
 # Copy existing anchor modifications to /etc/ssl/local
 /usr/libexec/make-ca/copy-trust-modifications
@@ -33,7 +35,7 @@ cat >> trust/trust-extract-compat << "EOF"
 # Download ca-certificates needed for cURL
 echo -ne "\nDownload https://curl.haxx.se/ca/cacert.pem ... "
 wget -q -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem || {
-    echo "Error download ..."
+    echo "Error download cacert.pem!"
     exit 1
 }
 echo "Ok"
@@ -48,27 +50,22 @@ meson setup ..          \
     -D trust_paths=/etc/pki/anchors || exit 1
 
 ninja || exit 1
-# LC_ALL=C ninja test
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # ссылка
 #    /usr/bin/update-ca-certificates -> ../libexec/p11-kit/trust-extract-compat
-(
-    cd "${TMP_DIR}/usr/bin" || exit 1
-    ln -sfv ../libexec/${PRGNAME}/trust-extract-compat update-ca-certificates
-)
+ln -sfv "../libexec/${PRGNAME}/trust-extract-compat" \
+    "${TMP_DIR}/usr/bin/update-ca-certificates"
 
 # чтобы сделать систему прозрачной для центров сертификации при использовании
 # приложений поддерживающих NSS, модуль /usr/lib/pkcs11/p11-kit-trust.so можно
 # использовать как замену для /usr/lib/libnssckbi.so из пакета nss
 #
 # создадим ссылку /usr/lib/libnssckbi.so -> pkcs11/p11-kit-trust.so
-(
-    cd "${TMP_DIR}/usr/lib" || exit 1
-    ln -svf ./pkcs11/${PRGNAME}-trust.so libnssckbi.so
-)
+ln -svf pkcs11/${PRGNAME}-trust.so "${TMP_DIR}/usr/lib/libnssckbi.so"
 
 # будем периодически обновлять сертификаты (раз в неделю), настроим через fcron
 UPDATE_CERTIFICATES="${CRON_WEEKLY}/update-ca-certificates.sh"
@@ -82,6 +79,7 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+chmod 754 "${CRON_WEEKLY}"
 chmod 754 "${UPDATE_CERTIFICATES}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

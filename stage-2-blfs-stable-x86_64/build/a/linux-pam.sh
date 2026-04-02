@@ -4,9 +4,8 @@ PRGNAME="linux-pam"
 ARCH_NAME="Linux-PAM"
 
 ### Linux PAM (Pluggable Authentication Modules)
-# Модульный фреймворк, который позволяет системным администраторам гибко
-# настраивать и централизованно управлять методами аутентификации пользователей
-# в Linux
+# Модульная система аутентификации, позволяющая гибко настраивать правила входа
+# пользователей в систему и программы.
 
 # Required:    no
 # Recommended: no
@@ -36,8 +35,8 @@ ARCH_NAME="Linux-PAM"
 # может стать совершенно непригодной для использования
 #
 # Переустановка/обновление данного пакета перезаписывает файлы конфигурации:
-#    /etc/security/
-#    /etc/environment
+#    /usr/share/pam/environment
+#    /usr/share/pam/security/
 # Нужно ОБЯЗАТЕЛЬНО сделать их резервные копии
 
 ROOT="/root/src/lfs"
@@ -59,6 +58,8 @@ meson setup ..          \
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 chmod -v 4755 "${TMP_DIR}/usr/sbin/unix_chkpwd"
 
 # удалим бесполезный каталог
@@ -69,18 +70,10 @@ rm -rf "${TMP_DIR}/usr/lib/systemd"
 ###
 
 # Конфиги:
-#    /etc/security/*
 #    /etc/pam.d/*
-
-SYSTEM_AUTH="/etc/pam.d/system-auth"
-cat << EOF > "${TMP_DIR}${SYSTEM_AUTH}"
-auth      required    pam_unix.so
-
-EOF
-
-if [ -f "${SYSTEM_AUTH}" ]; then
-    mv "${SYSTEM_AUTH}" "${SYSTEM_AUTH}.old"
-fi
+#    /etc/security/*
+#    /usr/share/pam/security/*
+#    /usr/share/pam/environment
 
 SYSTEM_ACCOUNT="/etc/pam.d/system-account"
 cat << EOF > "${TMP_DIR}${SYSTEM_ACCOUNT}"
@@ -90,6 +83,16 @@ EOF
 
 if [ -f "${SYSTEM_ACCOUNT}" ]; then
     mv "${SYSTEM_ACCOUNT}" "${SYSTEM_ACCOUNT}.old"
+fi
+
+SYSTEM_AUTH="/etc/pam.d/system-auth"
+cat << EOF > "${TMP_DIR}${SYSTEM_AUTH}"
+auth      required    pam_unix.so
+
+EOF
+
+if [ -f "${SYSTEM_AUTH}" ]; then
+    mv "${SYSTEM_AUTH}" "${SYSTEM_AUTH}.old"
 fi
 
 SYSTEM_SESSION="/etc/pam.d/system-session"
@@ -140,8 +143,8 @@ source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-config_file_processing "${SYSTEM_AUTH}"
 config_file_processing "${SYSTEM_ACCOUNT}"
+config_file_processing "${SYSTEM_AUTH}"
 config_file_processing "${SYSTEM_SESSION}"
 config_file_processing "${SYSTEM_PASSWORD}"
 config_file_processing "${OTHER}"

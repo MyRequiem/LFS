@@ -3,8 +3,8 @@
 PRGNAME="libnl"
 
 ### libnl (Netlink Protocol Library Suite)
-# Набор библиотек, предоставляющих API для протокола netlink интерфейса ядра
-# Linux
+# Библиотека для взаимодействия приложений с ядром Linux по сетевым вопросам
+# через специальный протокол Netlink.
 
 # Required:    no
 # Recommended: no
@@ -27,6 +27,8 @@ mkdir -pv "${TMP_DIR}"
 make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

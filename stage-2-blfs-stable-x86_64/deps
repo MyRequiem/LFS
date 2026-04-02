@@ -80,7 +80,7 @@ cpdb                                    gtk4
 cpio                                    openjdk, openoffice
 cppdap                                  cmake
 cppunit                                 taglib
-cracklib                                mit-kerberos-v5, libpwquality
+cracklib                                libpwquality, mit-kerberos-v5
 cranelift                               rustc
 cunit                                   libdrm
 cups                                    ghostscript, gtk+3, imagemagick, gtk4, openjdk, qt5-components, qt6, google-chrome, zen-browser
@@ -176,7 +176,7 @@ gc                                      w3m, guile
 gcc                                     cmake
 gcr3                                    pinentry, gnome-keyring
 gcr4                                    pinentry
-gdb                                     openssh, glib, gcc, rustc, python3, guile
+gdb                                     python3-cython, openssh, glib, gcc, rustc, python3, guile
 gdk-pixbuf                              w3m, librsvg, gtk+3, libgsf, rxvt-unicode, gegl, gst-plugins-good, gtk4, poppler, appstream-glib, xdg-desktop-portal
 gegl                                    gimp, libmypaint
 geoclue                                 xdg-desktop-portal
@@ -267,7 +267,7 @@ imlib2                                  w3m, feh, giblib, maim, openbox, conky, 
 impacket                                curl
 inih                                    exiv2
 inkscape                                imagemagick
-install-tl-unx                          libunistring, gnutls, libassuan, libgcrypt, gnupg, llvm, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, cpio, imagemagick
+install-tl-unx                          libunistring, gnutls, libgcrypt, libassuan, gnupg, llvm, graphite2, fontconfig, libvdpau, fltk, libvorbis, opus, libvdpau-va-gl, ffmpeg, cpio, imagemagick
 intel-gpu-tools                         libva
 intel-media                             libva
 intel-vaapi-driver                      libva
@@ -365,7 +365,7 @@ libfpx                                  imagemagick
 libgccjit                               rustc
 libgcrypt                               libssh2, gnupg, libxslt, mesa, libsecret, gcr3, gcr4, gtk-vnc, xorg-server, gst-plugins-bad, xwayland, qemu, vlc
 libgit2                                 rustc
-libgpg-error                            libassuan, libksba, libgcrypt, pinentry
+libgpg-error                            libgcrypt, libassuan, libksba, pinentry
 libgsf                                  goffice
 libgstgtk4
 libgudev                                upower, gst-plugins-base, gimp
@@ -500,7 +500,7 @@ libyajl                                 i3, libvirt, libvirt-glib, python3-libvi
 libyaml                                 python3-pyyaml, ruby, appstream, dtc, appstream-glib
 lilv                                    gst-plugins-bad, pipewire
 links                                   xmlto, docbook-utils, xorg-libraries, xdg-utils
-linux-pam                               shadow, openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, gnome-keyring, exim, fcron, at, qemu, libpwquality
+linux-pam                               shadow, libpwquality, openssh, sudo, elogind, cyrus-sasl, cups, xorg-applications, polkit, gnome-keyring, exim, fcron, at, qemu
 liquid-rescale                          imagemagick
 lirc                                    pulseaudio, vlc
 live555                                 vlc
@@ -761,7 +761,7 @@ python3-pyproject-metadata              python3-meson
 python3-pyqt                            extra-cmake-modules
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          fuse3, python3-pyyaml, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-pyproject-hooks, python3-build, libportal, xdg-desktop-portal
+python3-pytest                          python3-cython, fuse3, python3-pyyaml, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyproject-metadata, python3-meson, python3-mako, xkeyboard-config, python3-pycairo, python3-pygobject3, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, brotli, python3-glad, python3-pyparsing, osinfo-db-tools, python3-pyproject-hooks, python3-build, libportal, xdg-desktop-portal
 python3-pytest-cov                      python3-charset-normalizer, python3-build
 python3-pytest-httpbin                  python3-requests
 python3-pytest-mock                     python3-requests, python3-meson, python3-build

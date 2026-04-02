@@ -3,9 +3,8 @@
 PRGNAME="dmidecode"
 
 ### dmidecode (DMI table decoder)
-# Инструмент для создания дампа содержимого DMI таблиц (SMBIOS) в удобочитаемом
-# формате, которые содержат описание аппаратных компонентов системы, а также
-# другую полезную информацию, такую как серийный номер и версию BIOS
+# Утилита, которая извлекает подробную информацию о «железе» компьютера (модель
+# материнской платы, серийные номера, BIOS) из системных таблиц.
 
 # Required:    no
 # Recommended: no
@@ -21,6 +20,8 @@ mkdir -pv "${TMP_DIR}"
 DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 make prefix=/usr docdir="${DOC_DIR}"                              || exit 1
 make prefix=/usr docdir="${DOC_DIR}" install DESTDIR="${TMP_DIR}" || exit 1
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

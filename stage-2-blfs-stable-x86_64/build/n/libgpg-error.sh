@@ -3,9 +3,8 @@
 PRGNAME="libgpg-error"
 
 ### libgpg-error (GnuPG Error Definitions Library)
-# Библиотека, которая определяет общие значения ошибок для всех компонентов
-# GnuPG. Среди них GPG, GPGSM, GPGME, GPG-Agent, libgcrypt, Libksba, DirMngr,
-# Pinentry, SmartCard Daemon и многое другое.
+# Общая библиотека для обработки кодов ошибок в различных криптографических
+# компонентах проекта GnuPG.
 
 # Required:    no
 # Recommended: no
@@ -18,12 +17,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
-    --prefix=/usr || exit 1
+./configure       \
+    --prefix=/usr \
+    --sysconfdir=/etc || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

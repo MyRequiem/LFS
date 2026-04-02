@@ -3,11 +3,8 @@
 PRGNAME="libidn2"
 
 ### libidn2 (GNU Internationalized Domain Name library version 2)
-# Пакет, разработанный для интернационализированной обработки строк на основе
-# спецификации Stringprep, Punycode и IDNA, определенные в Интернете.
-# Применяется для конвертации данных из системного представления в UTF-8,
-# преобразуя Unicode строки в строки ASCII, позволяющие приложениям
-# использовать определенное доменное имя в ASCII формате.
+# Библиотека для поддержки интернациональных доменных имен, позволяющая
+# использовать в адресах сайтов символы национальных алфавитов.
 
 # Required:    no
 # Recommended: libunistring
@@ -21,8 +18,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-GTK_DOC="false"
-
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
@@ -31,7 +26,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-[[ "x${GTK_DOC}" == "xfalse" ]] && rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -51,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (ACE) form.
 #
 # Home page: https://www.gnu.org/software/libidn/
-# Download:  https://ftp.gnu.org/gnu/libidn/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/libidn/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -3,8 +3,8 @@
 PRGNAME="openssh"
 
 ### OpenSSH (Secure Shell daemon and clients)
-# Набор программ, предоставляющих шифрование сеансов связи по компьютерным
-# сетям с использованием протокола SSH
+# Основной инструмент для безопасного удаленного управления компьютером и
+# передачи файлов по шифрованным каналам.
 
 # Required:    no
 # Recommended: no
@@ -13,8 +13,8 @@ PRGNAME="openssh"
 #              Graphical Environments
 #              mit-kerberos-v5
 #              which                    (для тестов)
-#              net-tools
-#              sysstat
+#              net-tools                (runtime)
+#              sysstat                  (runtime)
 #              libedit                  (https://www.thrysoee.dk/editline)
 #              libressl                 (http://www.libressl.org/)
 #              opensc                   (https://github.com/OpenSC/OpenSC/wiki)
@@ -35,10 +35,8 @@ MAN="/usr/share/man/man1"
 mkdir -pv "${TMP_DIR}${MAN}"
 
 # каталог /var/lib/sshd должен существовать в системе
-install -v -m700 -d /var/lib/sshd
-install -v -m700 -d "${TMP_DIR}/var/lib/sshd"
-chown   -v root:sys /var/lib/sshd
-chown   -v root:sys "${TMP_DIR}/var/lib/sshd"
+install -v -g sys -m700 -d /var/lib/sshd
+install -v -g sys -m700 -d "${TMP_DIR}/var/lib/sshd"
 
 # добавим группу sshd, если не существует
 ! grep -qE "^sshd:" /etc/group  && \
@@ -65,9 +63,11 @@ make || exit 1
 # make -j1 tests
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # /usr/bin/ssh-copy-id
 install -v -m755 contrib/ssh-copy-id "${TMP_DIR}/usr/bin"
-# man-страницы
+# man-страница
 install -v -m644 contrib/ssh-copy-id.1 "${TMP_DIR}${MAN}"
 
 # для запуска SSH сервера при старте системы добавим скрипт инициализации в
@@ -88,12 +88,19 @@ if [ -f "${SSHD_CONFIG}" ]; then
     mv "${SSHD_CONFIG}" "${SSHD_CONFIG}.old"
 fi
 
+# остановим демон, если запущен (переустанавливаем пакет)
+if [ -x /etc/rc.d/init.d/sshd ]; then
+    /etc/rc.d/init.d/sshd stop
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SSH_CONFIG}"
 config_file_processing "${SSHD_CONFIG}"
+
+/etc/rc.d/init.d/sshd start
 
 # создадим новые ключи хоста в /etc/ssh/, если они еще не существуют
 # ssh_host_dsa_key

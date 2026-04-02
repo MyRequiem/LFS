@@ -3,8 +3,8 @@
 PRGNAME="libseccomp"
 
 ### libseccomp (Enhanced Seccomp library)
-# Библиотека, обеспечивающая простой в использовании, платформонезависимый
-# интерфейс механизма фильтрации системных вызовов ядра Linux
+# Средство безопасности (библиотека), которое ограничивает список системных
+# вызовов ядра Linux для программ, защищая систему от вредоносного кода.
 
 # Required:    no
 # Recommended: no
@@ -35,6 +35,8 @@ make || exit 1
 # make check
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

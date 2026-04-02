@@ -3,19 +3,16 @@
 PRGNAME="libidn"
 
 ### libidn (GNU Internationalized Domain Name library)
-# Пакет, разработанный для интернационализированной обработки строк на основе
-# спецификации Stringprep, Punycode и IDNA, определенные в Интернете.
-# Применяется для конвертации данных из системного представления в UTF-8,
-# преобразуя Unicode строки в строки ASCII, позволяющие приложениям
-# использовать определенное доменное имя в ASCII формате.
+# Библиотека для поддержки интернациональных доменных имен, позволяющая
+# использовать в адресах сайтов символы национальных алфавитов.
 
 # Required:    no
 # Recommended: no
 # Optional:    emacs
-#              gtk-doc  (для сборки API документации)
+#              gtk-doc      (для сборки API документации)
 #              openjdk
 #              valgrind
-#              mono     (https://www.mono-project.com/)
+#              mono         (https://www.mono-project.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -36,6 +33,8 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -54,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (ACE) form.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

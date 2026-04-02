@@ -3,8 +3,8 @@
 PRGNAME="libunistring"
 
 ### libunistring (GNU Unicode string library)
-# Библиотека, предоставляющая функции для работы со строками в формате Unicode,
-# a так же для работы со строками C в соответствии со стандартом Unicode
+# Библиотека для обработки строк в кодировке Unicode, позволяющая программам
+# корректно работать с любыми языками мира.
 
 # Required:    no
 # Recommended: no
@@ -17,6 +17,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с glibc >=2.43
+# shellcheck disable=SC2046
+# shellcheck disable=SC2185
+sed -r '/_GL_EXTERN_C/s/w?memchr|bsearch/(&)/' \
+    -i $(find -name \*.in.h) || exit 1
+
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -25,6 +31,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -37,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # manipulating C strings according to the Unicode standard.
 #
 # Home page: https://www.gnu.org/s/${PRGNAME}
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

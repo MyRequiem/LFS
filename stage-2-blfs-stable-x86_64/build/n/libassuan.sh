@@ -3,9 +3,9 @@
 PRGNAME="libassuan"
 
 ### libassuan (Interprocess Communication Library for GPG)
-# Небольшая библиотека, реализующая так называемый протокол Assuan. Этот
-# протокол используется для IPC между большинством компонентов GnuPG.
-# Представлена как серверная, так и клиентская часть.
+# Библиотека для обеспечения взаимодействия между различными частями защитного
+# ПО (используется в GnuPG). Представлена как серверная, так и клиентская
+# часть.
 
 # Required:    libgpg-error
 # Recommended: no
@@ -24,6 +24,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

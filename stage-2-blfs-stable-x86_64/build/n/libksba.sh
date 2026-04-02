@@ -3,7 +3,7 @@
 PRGNAME="libksba"
 
 ### libksba (X.509 & CMS library for S/MIME and TLS)
-# Библиотека для работы с сертификатами X.509
+# Библиотека для работы с сертификатами X.509 и защищенными сообщениями CMS.
 
 # Required:    libgpg-error
 # Recommended: no
@@ -22,6 +22,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

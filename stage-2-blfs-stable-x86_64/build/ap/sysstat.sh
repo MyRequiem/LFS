@@ -3,19 +3,16 @@
 PRGNAME="sysstat"
 
 ### Sysstat (System performance monitoring tools)
-# Утилиты для мониторинга производительности системы и активности использования
-# OS Linux. Sysstat содержит служебную программу 'sar', общую для многих
-# коммерческих дистрибутивов Linux и инструменты (iostat, mpstat, pidstat,
-# sadf, tapestat, cifsiostat), выполнение которых обычно планируется через cron
-# для сбора данных.
+# Набор инструментов для мониторинга производительности системы, отслеживающий
+# нагрузку на процессор, память и диски.
 
 # Required:    no
 # Recommended: no
 # Optional:    no
 
 # Конфигурация
-#    /etc/sysconfig/sysstat
-#    /etc/sysconfig/sysstat.ioconf
+#    /etc/sysstat/sysstat
+#    /etc/sysstat/sysstat.ioconf
 #
 # Примеры сбора информации истории Sysstat по расписанию с помощью fcron
 # (см. $ man sa1 и $ man sa2)
@@ -53,6 +50,8 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # man страницы запакованы в *.xz, распакуем их
 find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \;
 
@@ -62,9 +61,16 @@ find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \;
     make install-sysstat DESTDIR="${TMP_DIR}"
 )
 
+SYSSTAT="/etc/sysstat/sysstat"
+if [ -f "${SYSSTAT}" ]; then
+    mv "${SYSSTAT}" "${SYSSTAT}.old"
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+config_file_processing "${SYSSTAT}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (System performance monitoring tools)

@@ -1,9 +1,10 @@
 #! /bin/bash
 
 PRGNAME="wireless-tools"
+ARCH_NAME="wireless_tools"
 
 ### wireless-tools (utilities for wireless networking)
-# Набор инструментов, позволяющих управлять беспроводными соединениями:
+# Набор базовых утилит для настройки и диагностики беспроводных сетей Wi-Fi:
 # ifrename, iwconfig, iwevent, iwgetid, iwlist, iwpriv, iwspy
 
 # Required:    no
@@ -13,16 +14,15 @@ PRGNAME="wireless-tools"
 ###
 # Конфигурация ядра
 ###
-#    NET=y
-#    WIRELESS=y
-#    CFG80211=y|m
-#    CFG80211_WEXT=y
+#    CONFIG_NET=y
+#    CONFIG_WIRELESS=y
+#    CONFIG_CFG80211=y|m
+#    CONFIG_CFG80211_WEXT=y
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-ARCH_NAME="${PRGNAME//-/_}"
 VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}.*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     cut -d . -f 2)"
@@ -54,6 +54,8 @@ make || exit 1
 make                        \
     PREFIX="${TMP_DIR}/usr" \
     INSTALL_MAN="${TMP_DIR}/usr/share/man" install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

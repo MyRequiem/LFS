@@ -3,9 +3,8 @@
 PRGNAME="wget"
 
 ### Wget (a non-interactive network retriever)
-# Сетевая утилита для скачивания файлов с удаленных серверов интернета по
-# протоколам HTTP и FTP. Работает в не интерактивном режиме, что позволяет
-# продолжать егу работу после выхода из системы.
+# Мощная консольная утилита для скачивания файлов из интернета по протоколам
+# HTTP, HTTPS и FTP.
 
 # Required:    no
 # Recommended: libpsl
@@ -24,20 +23,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBPROXY="--disable-libproxy"
-command -v proxy &>/dev/null && LIBPROXY="--enable-libproxy"
-
 # wget бует использовать OpenSSL вместо GnuTLS
 #    --with-ssl=openssl
 ./configure            \
     --prefix=/usr      \
     --sysconfdir=/etc  \
-    --with-ssl=openssl \
-    "${LIBPROXY}" || exit 1
+    --with-ssl=openssl || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -52,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # off.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

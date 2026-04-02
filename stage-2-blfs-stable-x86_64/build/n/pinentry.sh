@@ -3,18 +3,17 @@
 PRGNAME="pinentry"
 
 ### pinentry (PIN Entry dialogs)
-# Набор простых диалоговых утилит для ввода ввода ПИН-кода или парольной фразы,
-# которые использует протокол Assuan. Утилиты ввода PIN-кода обычно запускаются
-# демоном gpg-agent, но также могут быть запущены и из командной строки.
+# Небольшая программа для безопасного ввода паролей или PIN-кодов в графическом
+# или текстовом режиме.
 
 # Required:    libassuan
 #              libgpg-error
 # Recommended: no
 # Optional:    emacs             (для сборки pinentry-emacs)
 #              fltk              (для сборки pinentry-fltk)
+#              gcr4 или gcr3     (для сборки pinentry-gnome3)
 #              qt5-components    (для сборки pinentry-qt5)
 #              qt6               (для сборки pinentry-qt)
-#              gcr4 или gcr3     (для сборки pinentry-gnome3)
 #              kde-frameworks
 #              libsecret
 #              efl               (https://www.enlightenment.org/about-efl)
@@ -37,6 +36,8 @@ sed -i '14466 s/1.3/1.4/' configure || exit 1
 make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

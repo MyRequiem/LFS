@@ -4,12 +4,14 @@ PRGNAME="python3-cython"
 ARCH_NAME="cython"
 
 ### Cython (static compiler for Python)
-# Оптимизированный статический компилятор для Python и язык программирования
-# Cython (на основе Pyrex)
+# Инструмент (статический компилятор для Python), позволяющий писать расширения
+# для Python на языке C для значительного ускорения работы программ.
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              gdb
+#              python3-pytest
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -43,6 +45,8 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 # имеются
 PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
 [ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

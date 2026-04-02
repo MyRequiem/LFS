@@ -7,7 +7,8 @@ PRGNAME="vifm"
 
 # Required:    no
 # Recommended: no
-# Optional:    sshfs
+# Optional:    --- runtime ---
+#              sshfs
 #              curlftpfs
 #              fuse3
 #              archivemount

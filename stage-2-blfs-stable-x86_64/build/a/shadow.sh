@@ -3,7 +3,8 @@
 PRGNAME="shadow"
 
 ### Shadow (shadow password suite)
-# Пакет содержит программы для безопасной работы с паролями.
+# Набор базовых утилит для безопасного управления учетными записями
+# пользователей, группами и их паролями.
 
 # Required:    linux-pam
 # Recommended: no
@@ -61,12 +62,15 @@ make || exit 1
 make exec_prefix=/usr pamddir= install DESTDIR="${TMP_DIR}"
 make -C man install-man DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ###
 # Конфигурация для работы с Linux-PAM
 ###
 
 # Конфиги:
-#    /etc/pam.d/* или как альтернатива /etc/pam.conf
+#    /etc/pam.d/*
+#    /etc/pam.conf
 #    /etc/login.defs
 #    /etc/security/*
 

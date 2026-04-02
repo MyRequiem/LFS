@@ -3,9 +3,8 @@
 PRGNAME="pcre"
 
 ### PCRE (Perl-compatible regular expression library)
-# Совместимые с Perl библиотеки регулярных выражений, которые используются для
-# реализации сопоставления с шаблоном регулярного выражения, используя тот же
-# синтаксис и семантику что и в Perl 5
+# Библиотека для поиска и обработки текста с помощью мощных регулярных
+# выражений в стиле языка Perl
 
 # Required:    no
 # Recommended: no
@@ -49,6 +48,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,9 +3,8 @@
 PRGNAME="curl"
 
 ### cURL (command line URL data transfer tool)
-# Утилита командной строки, позволяющая взаимодействовать с множеством
-# различных серверов по множеству различных протоколов: FTP, FTPS, HTTP, HTTPS,
-# SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS, FILE
+# Универсальный инструмент и библиотека для передачи данных между серверами,
+# поддерживающий почти все современные протоколы.
 
 # Required:    no
 # Recommended: libpsl
@@ -28,7 +27,7 @@ PRGNAME="curl"
 #              spnego               (http://spnego.sourceforge.net/)
 #              --- для тестов ---
 #              apache-httpd
-#              stunnel          (для HTTPS and FTPS тестов)
+#              stunnel              (для HTTPS and FTPS тестов)
 #              openssh
 #              valgrind
 
@@ -52,6 +51,8 @@ pkg-config libssh2 && LIBSSH2="--with-libssh2"
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

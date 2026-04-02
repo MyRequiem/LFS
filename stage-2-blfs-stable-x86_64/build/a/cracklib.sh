@@ -3,7 +3,8 @@
 PRGNAME="cracklib"
 
 ### CrackLib (password checking library)
-# Библиотека для проверки стойкости/надежности паролей
+# Библиотека для проверки стойкости/надежности паролей, предотвращающая
+# использование слишком простых и легко предсказуемых комбинаций.
 
 # Required:    no
 # Recommended: no
@@ -27,7 +28,6 @@ LIB_CRACKLIB="/usr/lib/cracklib"
 DICT="/usr/share/dict"
 mkdir -pv "${TMP_DIR}"{"${LIB_CRACKLIB}","${DICT}"}
 
-CPPFLAGS+=' -I /usr/include/python3.13' \
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -36,7 +36,9 @@ CPPFLAGS+=' -I /usr/include/python3.13' \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-# создадим список нежелательных слов для установления в качестве паролей
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# создадим список нежелательных слов для выбора в качестве паролей
 # cracklib-words-2.10.3.xz
 # можно скачать и установить сколько угодно таких списков
 #    https://www.skullsecurity.org/wiki/Passwords
@@ -50,19 +52,28 @@ ln -v -sf cracklib-words "${TMP_DIR}${DICT}/words"
 # имя хоста
 hostname >> "${TMP_DIR}${DICT}/cracklib-extra-words"
 
-# тест python-модуля
-# python3 -c 'import cracklib; cracklib.test()'
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# создадим словарь CrackLib в /usr/lib/cracklib/
+# создадим словарь /usr/lib/cracklib/pw_dict.{hwm,pwd,pwi}
 create-cracklib-dict               \
     /usr/share/dict/cracklib-words \
     /usr/share/dict/cracklib-extra-words
 
 cp "${LIB_CRACKLIB}"/* "${TMP_DIR}${LIB_CRACKLIB}"/
+
+# тест python-модуля (только после установки пакета)
+#    $ python3 -c 'import cracklib; cracklib.test()'
+#    cracklib is installed in: /usr/lib/python3.14/site-packages
+#    cracklib is installed in: /usr/lib/python3.14/site-packages
+#    cracklib version: 2.8.19
+#    3.14.3 (main, Mar 15 2026, 03:27:09) [GCC 15.2.0]
+#    ...........
+#    ----------------------------------------------------------------------
+#    Ran 11 tests in 0.008s
+#
+#    OK
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (password checking library)

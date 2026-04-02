@@ -3,14 +3,13 @@
 PRGNAME="lm-sensors"
 
 ### lm-sensors (hardware monitoring package)
-# Инструменты для контроля температуры ЦП, напряжения и регулировки
-# производительности некоторых аппаратных средств (например, вентиляторов
-# охлаждения)
+# Средство для мониторинга показателей датчиков материнской платы: температуры
+# процессора, скорости вентиляторов и напряжения.
 
 # Required:    which
 # Recommended: no
-# Optional:    rrdtool    (для сборки sensord) https://oss.oetiker.ch/rrdtool/
-#              dmidecode  https://www.nongnu.org/dmidecode/
+# Optional:    rrdtool    https://oss.oetiker.ch/rrdtool/    (для сборки sensord)
+#              dmidecode  https://www.nongnu.org/dmidecode/  (runtime)
 
 ### Конфигурация ядра
 #    CONFIG_ACPI=y

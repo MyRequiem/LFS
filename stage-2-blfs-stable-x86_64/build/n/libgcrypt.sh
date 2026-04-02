@@ -3,9 +3,8 @@
 PRGNAME="libgcrypt"
 
 ### libgcrypt (General purpose crypto library)
-# Криптобиблиотека общего назначения, основанная на коде, используемом в GnuPG.
-# Библиотека предоставляет интерфейс высокого уровня для криптографии с
-# использованием расширяемого и гибкого API
+# Универсальная криптографическая библиотека, предоставляющая функции
+# шифрования, хеширования и создания цифровых подписей.
 
 # Required:    libgpg-error
 # Recommended: no
@@ -24,6 +23,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
