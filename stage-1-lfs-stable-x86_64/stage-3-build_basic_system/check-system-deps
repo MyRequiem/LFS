@@ -27,6 +27,7 @@ class CheckSystemDeps:
             '/opt/google/',
             '/opt/openoffice4/',
             '/opt/zen-browser/',
+            '/usr/bin/rclone',
             '/usr/bin/shellcheck',
             '/usr/lib/firmware/',
             '/usr/lib/grub/'
