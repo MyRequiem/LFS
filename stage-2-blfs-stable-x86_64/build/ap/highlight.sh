@@ -3,8 +3,8 @@
 PRGNAME="highlight"
 
 ### Highlight (converts sources to text with syntax highlighting)
-# утилита для преобразования исходного кода в форматированный текст с
-# подсветкой синтаксиса
+# Программа для преобразования исходного кода в красивые цветные документы с
+# подсветкой синтаксиса.
 
 # Required:    boost
 #              lua
@@ -25,6 +25,8 @@ make || exit 1
 # пакет не содержит набора тестов
 make doc_dir="/usr/share/doc/${PRGNAME}-${VERSION}/" install \
     DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

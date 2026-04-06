@@ -3,11 +3,8 @@
 PRGNAME="libevent"
 
 ### libevent (event loop library)
-# Библиотека обеспечивающая асинхронное уведомление о событиях. Libevent API
-# предоставляет механизм выполнения функции callback, когда конкретное событие
-# происходит в файловом дескрипторе или по истечении времени ожидания. libevent
-# также поддерживает обратные вызовы, запускаемые сигналами и регулярными
-# тайм-аутами.
+# Библиотека для эффективной обработки сетевых событий, позволяющая программам
+# быстро обслуживать тысячи одновременных соединений.
 
 # Required:    no
 # Recommended: no
@@ -53,6 +50,8 @@ make || exit 1
 # make verify
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

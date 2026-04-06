@@ -3,9 +3,7 @@
 PRGNAME="whois"
 
 ### Whois (whois directory client)
-# Клиентское приложение, которое запрашивает службу каталогов whois для
-# получения информации, относящейся к конкретному доменному имени. Так же
-# устанавливается утилита mkpasswd
+# Клиент для получения информации о владельцах доменных имен и IP-адресов.
 
 # Required:    no
 # Recommended: no
@@ -21,17 +19,14 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 
 # whois и mkpasswd
-make prefix=/usr install-"${PRGNAME}" BASEDIR="${TMP_DIR}"
-make prefix=/usr install-mkpasswd     BASEDIR="${TMP_DIR}"
+make prefix=/usr install-whois    BASEDIR="${TMP_DIR}"
+make prefix=/usr install-mkpasswd BASEDIR="${TMP_DIR}"
 # файлы локали
-make prefix=/usr install-pos          BASEDIR="${TMP_DIR}"
+make prefix=/usr install-pos      BASEDIR="${TMP_DIR}"
 
 # утилита mkpasswd уже была установлена в LFS с пакетом expect, удалим ее
-EXPECT_PKG="/var/log/packages/expect"
-rm -rf /usr/bin/mkpasswd
-rm -rf /usr/share/man/man1/mkpasswd.1
-sed '/\/usr\/bin\/mkpasswd/d'                -i "${EXPECT_PKG}"-*
-sed '/\/usr\/share\/man\/man1\/mkpasswd.1/d' -i "${EXPECT_PKG}"-*
+rm -f /usr/bin/mkpasswd /usr/share/man/man1/mkpasswd.1
+sed '/mkpasswd/d' -i /var/log/packages/expect-*
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

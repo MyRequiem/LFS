@@ -4,10 +4,8 @@ PRGNAME="fuse2"
 ARCH_NAME="fuse"
 
 ### Fuse (Filesystem in Userspace)
-# FUSE (File system in userspace, файловая система в пространстве пользователя)
-# это механизм, позволяющий обычному пользователю подключать различные объекты
-# как специфичные файловые системы в собственном пространстве, например на
-# жёстком диске.
+# Технология, позволяющая программам создавать свои виртуальные диски и
+# файловые системы без вмешательства в глубокие настройки ядра системы.
 
 # Required:    no
 # Recommended: no
@@ -16,6 +14,25 @@ ARCH_NAME="fuse"
 ### Конфигурация ядра
 #    CONFIG_FUSE_FS=y|m
 #    CONFIG_CUSE=y|m
+
+###
+# Тесты
+###
+#    Можно сразу очень быстро проверить работоспособность fuse2 вот таким
+#    смешным способом:). В исходниках лежит <path_to_src_dir>/example/hello.c,
+#    после компиляции данного пакета генерируется бинарник hello
+#    $ mkdir -p /tmp/fuse2-test
+#    $ <path_to_src_dir>/example/hello /tmp/fuse2-test
+#    Монтируется директория /tmp/fuse2-test и в ней должен лежать текстовый
+#    файл hellow содержащий текст "Hello World!"
+#    $ ls /tmp/fuse2-test/
+#    hello
+#    $ cat /tmp/fuse2-test/hello
+#    Hello World!
+#
+#    Все Ok, отмонтируем:
+#    $ fusermount -u /tmp/fuse2-test
+###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
@@ -42,7 +59,7 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/usr/sbin"
+mkdir -pv "${TMP_DIR}"
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-fix-build-with-glibc-2.34.patch" || \
@@ -53,15 +70,13 @@ patch --verbose -Np1 -i \
 sed 's/^AM_ICONV/#AM_ICONV/' -i configure.ac || exit 1
 autoreconf -vif || exit 1
 
-./configure                   \
-    --prefix=/usr             \
-    --bindir=/usr/bin         \
-    --sbindir=/usr/sbin       \
-    --libdir=/usr/lib         \
-    --localstatedir=/var      \
-    --enable-lib              \
-    --enable-util             \
-    --disable-static          \
+./configure              \
+    --prefix=/usr        \
+    --sysconfdir=/etc    \
+    --localstatedir=/var \
+    --enable-lib         \
+    --enable-util        \
+    --disable-static     \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -69,13 +84,10 @@ make install DESTDIR="${TMP_DIR}"
 
 (
     cd "${TMP_DIR}" || exit 1
-    # /sbin все равно остается, переместим в /usr/
-    if [ -d sbin ]; then
-        mv sbin/* usr/sbin/
-        rm -rf sbin
-    fi
+    rm -rf dev etc usr/share/{doc,gtk-doc,help}
 
-    rm -rf etc/init.d dev
+    # /sbin все равно остается, переместим в /usr/
+    [ -d sbin ] && mv sbin usr/
 )
 
 source "${ROOT}/stripping.sh"      || exit 1

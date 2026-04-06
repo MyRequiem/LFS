@@ -4,8 +4,8 @@ PRGNAME="wpa-supplicant"
 ARCH_NAME="wpa_supplicant"
 
 ### WPA Supplicant (WPA/WPA2/IEEE 802.1X Supplicant)
-# Клиент Wi-Fi Protected Access (WPA) и IEEE 802.1X supplicant. Применяется для
-# подключения к защищенным паролем беспроводным точкам доступа.
+# Важнейшая программа для подключения к Wi-Fi сетям с использованием
+# современных протоколов безопасности (WPA/WPA2/WPA3).
 
 # Required:    no
 # Recommended: libnl
@@ -54,8 +54,8 @@ mkdir -pv "${TMP_DIR}"/{etc/sysconfig,usr/sbin,usr/share/man/man{5,8}}
 
 cd "${ARCH_NAME}" || exit 1
 
-# создадим файл конфигурации для сборки
-# (см. описание опций в исходном коде wpa_supplicant/defconfig)
+# создадим файл конфигурации для сборки (см. описание опций в исходном коде
+# wpa_supplicant/defconfig)
 cat << EOF > .config
 CONFIG_BACKEND=file
 CONFIG_CTRL_IFACE=y
@@ -135,6 +135,17 @@ install -v -m644 doc/docbook/wpa_supplicant.conf.5 \
 install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 \
     "${TMP_DIR}/usr/share/man/man8/"
 
+if [ -x /usr/bin/dbus-daemon ]; then
+    SYSTEM_SERVICES="/usr/share/dbus-1/system-services"
+    install -v -d -m755  "${TMP_DIR}${SYSTEM_SERVICES}"
+    install -v -m644 "dbus/fi.w1.wpa_supplicant1.service" \
+        "${TMP_DIR}${SYSTEM_SERVICES}/"
+
+    install -v -d -m755 "${TMP_DIR}/etc/dbus-1/system.d"
+    install -v -m644 "dbus/dbus-wpa_supplicant.conf" \
+        "${TMP_DIR}/etc/dbus-1/system.d/wpa_supplicant.conf"
+fi
+
 WPA_SUPPLICANT_WLAN0_CONF="/etc/sysconfig/wpa_supplicant-wlan0.conf"
 cat << EOF > "${TMP_DIR}${WPA_SUPPLICANT_WLAN0_CONF}"
 ctrl_interface=/run/wpa_supplicant
@@ -192,12 +203,21 @@ fi
     make install-service-wpa DESTDIR="${TMP_DIR}/usr"
 )
 
+# если wpa_supplicant запущен, то при копировании с DESTDIR будет ошибка,
+# установим корректно:
+install -vm755 "${TMP_DIR}/usr/sbin/wpa_supplicant" /usr/sbin/ || exit 1
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${WPA_SUPPLICANT_WLAN0_CONF}"
 config_file_processing "${IFCONFIG_WLAN0}"
+
+# перезапустим интерфейс, если запущен
+if pgrep -l wpa_supplicant &>/dev/null; then
+    ifdown wlan0 && sleep 3 && ifup wlan0
+fi
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (WPA/WPA2/IEEE 802.1X Supplicant)

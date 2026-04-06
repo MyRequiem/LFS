@@ -3,8 +3,9 @@
 PRGNAME="lrzip"
 
 ### lrzip (Long Range ZIP)
-# Утилита для сжатия файлов, разработанная специально для очень больших файлов.
-# Чем больше файл и чем больше RAM, тем лучше сжатие.
+# Специальный инструмент для упаковки очень больших файлов (сотни мегабайт и
+# гигабайты). Он анализирует весь объём данных целиком, достигая феноменальной
+# степени сжатия там, где другие пасуют.
 
 # Required:    no
 # Recommended: no
@@ -27,10 +28,11 @@ mkdir -pv "${TMP_DIR}/etc"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 LRZIP_CONF="/etc/lrzip.conf"
-cp -a doc/lrzip.conf.example "${TMP_DIR}${LRZIP_CONF}"
-chown root:root              "${TMP_DIR}${LRZIP_CONF}"
-chmod 644                    "${TMP_DIR}${LRZIP_CONF}"
+install -m644 -o root -g root -D doc/lrzip.conf.example \
+    "${TMP_DIR}${LRZIP_CONF}"
 
 if [ -f "${LRZIP_CONF}" ]; then
     mv "${LRZIP_CONF}" "${LRZIP_CONF}.old"

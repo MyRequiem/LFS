@@ -3,11 +3,8 @@
 PRGNAME="lua"
 
 ### Lua (a powerful, fast, lightweight, embeddable scripting language)
-# Мощный и легкий язык программирования, предназначенный для расширения
-# приложений. Также часто используется в качестве универсального и автономного
-# языка. Lua реализован в виде небольшой библиотеки функций C, написанных на
-# ANSI С, и компилируется на всех известных платформах. Цели реализации это
-# простота, эффективность, портативность, встраиваимость.
+# Мощный, легкий и быстрый язык программирования, который часто встраивают в
+# другие программы (игры, редакторы) для расширения их функционала.
 
 # Required:    no
 # Recommended: no
@@ -66,6 +63,8 @@ make                                                                 \
     install || exit 1
 
 install -v -m644 -D lua.pc "${TMP_DIR}/usr/lib/pkgconfig/lua.pc"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

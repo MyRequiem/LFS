@@ -1,14 +1,11 @@
 #! /bin/bash
 
 PRGNAME="unrar"
-ARCH_NAME="${PRGNAME}src"
+ARCH_NAME="unrarsrc"
 
 ### UnRar (Extract, test and view RAR archives)
-# Бесплатная утилита, распространяемая с исходным кодом, предназначенная для
-# извлечения, тестирования и просмотра содержимого архивов, созданных с помощью
-# архиватора RAR версии 1.50 и выше. Библиотека UnRAR является второстепенной
-# частью архиватора RAR и содержит алгоритм сжатия RAR. Библиотека UnRAR также
-# может использоваться другими программами для извлечения RAR-архивов.
+# Утилита, необходимая исключительно для извлечения файлов из архивов формата
+# .rar. Полезно для работы с файлами, пришедшими из среды Windows.
 
 # Required:    no
 # Recommended: no
@@ -38,35 +35,13 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-MAN="/usr/share/man/man1"
-mkdir -pv "${TMP_DIR}"{/usr/{bin,lib,"include/${PRGNAME}"},"${MAN}"}
+mkdir -pv "${TMP_DIR}"
 
-# изменим имя библитеки libunrar.so (by default) на libunrar.so.${VERSION}
-patch -p1 --verbose < "${SOURCES}/${PRGNAME}-${VERSION}-soname.patch" || exit 1
+make -f makefile
+# пакет не имеет набора тестов
+install -v -m755 -D unrar "${TMP_DIR}/usr/bin/unrar"
 
-# копируем дерево исходников в директорию libunrar для сборки библиотеки
-cp -av . ../libunrar
-
-# собираем и устанавливаем unrar и libunrar.so.${VERSION}
-make -f makefile                                || exit 1
-make -C ../libunrar lib libversion="${VERSION}" || exit 1
-
-install -vm 755 "${PRGNAME}" "${TMP_DIR}/usr/bin/${PRGNAME}"
-install -vm 755 "../libunrar/libunrar.so.${VERSION}" \
-    "${TMP_DIR}/usr/lib/libunrar.so.${VERSION}"
-
-# ссылки в /usr/lib/
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
-ln -sv "libunrar.so.${VERSION}" "${TMP_DIR}/usr/lib/libunrar.so.${MAJ_VERSION}"
-ln -sv "libunrar.so.${MAJ_VERSION}" "${TMP_DIR}/usr/lib/libunrar.so"
-
-# man-страница
-cp "${SOURCES}/${PRGNAME}.1" "${TMP_DIR}${MAN}" || exit 1
-
-install -vm 644 dll.hpp "${TMP_DIR}/usr/include/${PRGNAME}/dll.hpp"
-
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/stripping.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -74,10 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # The UnRAR utility is a freeware program, distributed with source code and
 # developed for extracting, testing and viewing the contents of archives
-# created with the RAR archiver version 1.50 and above. The UnRAR library is a
-# minor part of the RAR archiver and contains the RAR uncompression algorithm.
-# UnRAR requires very small volume of memory to operate. The UnRAR library can
-# also be used by other programs to extract RAR archives.
+# created with the RAR archiver version 1.50 and above.
 #
 # Home page: https://www.rarlab.com/rar_add.htm
 # Download:  https://www.rarlab.com/rar/${ARCH_NAME}-${VERSION}.tar.gz

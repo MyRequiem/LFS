@@ -3,14 +3,14 @@
 PRGNAME="cyrus-sasl"
 
 ### Cyrus SASL (Simple Authentication and Security Layer)
-# Библиотека Cyrus SASL используется почтовыми программами на клиентской или
-# серверной стороне для предоставления услуг аутентификации и авторизации.
+# Библиотека для реализации различных механизмов проверки подлинности
+# (аутентификации) в сетевых протоколах.
 
 # Required:    no
 # Recommended: lmdb
 # Optional:    linux-pam
 #              mit-kerberos-v5
-#              mariadb или mysql (https://www.mysql.com/)
+#              mariadb или mysql              (https://www.mysql.com/)
 #              openldap
 #              postgresql
 #              python3-sphinx
@@ -28,10 +28,12 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим сборку с gcc-15
-patch -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
+
 autoreconf -fiv || exit 1
 
-# исправим сборку с gcc>=14
+# исправим сборку с gcc >=14
 sed '/saslint/a #include <time.h>'       -i lib/saslutil.c || exit 1
 sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 
@@ -53,6 +55,8 @@ sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 make -j1 || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 mkdir -p "${TMP_DIR}/var/lib/sasl"
 

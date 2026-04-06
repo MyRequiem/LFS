@@ -4,7 +4,8 @@ PRGNAME="python3-lxml"
 ARCH_NAME="lxml"
 
 ### python3-lxml (Python bindings for libxml2 and libxslt)
-# Python bindings для библиотек libxml2 и libxslt
+# Одна из самых быстрых и мощных библиотек для работы с форматами XML и HTML.
+# Позволяет программам легко читать и изменять содержимое сложных документов.
 
 # Required:    libxslt
 # Recommended: no

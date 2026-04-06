@@ -3,10 +3,8 @@
 PRGNAME="sudo"
 
 ### Sudo (give limited root privileges to certain users)
-# Программа для системного администрирования UNIX-систем, позволяющая
-# делегировать те или иные привилегированные ресурсы пользователям с ведением
-# протокола работы, т.е. предоставляет возможность пользователям выполнять
-# команды от имени суперпользователя root либо других пользователей.
+# Программа, позволяющая обычным пользователям запускать команды с правами
+# администратора системы (root).
 
 # Required:    no
 # Recommended: no
@@ -53,6 +51,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
 SUDOERS="/etc/sudoers"
@@ -67,14 +66,10 @@ cat << EOF > "${TMP_DIR}${SUDOERS_D_MYREQUIEM}"
 User_Alias TRUSTED = myrequiem
 TRUSTED ALL = (ALL:ALL) NOPASSWD: ALL
 
-%users ALL = NOPASSWD: /bin/mount,             \\
-                       /bin/umount,            \\
-                       /usr/bin/mkisofs,       \\
-                       /usr/bin/cdrecord,      \\
-                       /usr/bin/cdda2wav,      \\
-                       /usr/bin/cdrdao,        \\
-                       /usr/bin/dvd+rw-format, \\
-                       /bin/kill
+%users ALL = NOPASSWD: /usr/bin/mount,  \\
+                       /usr/bin/umount, \\
+                       /usr/bin/kill,   \\
+                       /usr/bin/rclone
 
 # End ${SUDOERS_D_MYREQUIEM}
 EOF

@@ -3,10 +3,8 @@
 PRGNAME="iw"
 
 ### iw (tool for configuring Linux wireless devices)
-# Утилита для настройки беспроводных устройств на основе nl80211 и mac80211 с
-# интерфейсом командной строки. Поддерживает все новые драйверы, недавно
-# добавленные в ядро. Старый инструмент iwconfig, использующий интерфейс
-# Wireless Extensions, устарел и настоятельно рекомендуется перейти на iw
+# Современная утилита для настройки параметров беспроводных сетей, пришедшая на
+# смену старым wireless-tools.
 
 # Required:    libnl
 # Recommended: no
@@ -15,8 +13,12 @@ PRGNAME="iw"
 ###
 # Конфигурация ядра
 ###
-#    CONFIG_PCCARD=m
-#    CONFIG_YENTA=m
+#    CONFIG_NET=y
+#    CONFIG_WIRELESS=y
+#    CONFIG_CFG80211=y|m
+#    CONFIG_MAC80211=y|m
+#    CONFIG_NETDEVICES=y
+#    CONFIG_WLAN=y
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,7 +32,9 @@ sed -i "/INSTALL.*gz/s/.gz//" Makefile || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
-make SBINDIR=/usr/sbin install DESTDIR="${TMP_DIR}"
+make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

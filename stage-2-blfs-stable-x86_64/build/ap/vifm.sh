@@ -3,35 +3,34 @@
 PRGNAME="vifm"
 
 ### Vifm (a ncurses-based file manager with vi-like keybindings)
-# Файловый менеджер на основе ncurses с сочетаниями клавиш в стиле Vi
+# Двухпанельный файловый менеджер для консоли на основе ncurses с управлением в
+# стиле редактора Vim.
 
-# Required:    no
-# Recommended: no
-# Optional:    --- runtime ---
+# Required:    glib
+# Recommended: --- runtime ---
 #              sshfs
-#              curlftpfs
 #              fuse3
+#              rclone
 #              archivemount
 #              highlight
-#              fuse2        (https://github.com/libfuse/libfuse)
-#              fusefat      (https://github.com/alanswx/fusefat)
-#              fuse-zip     (https://github.com/ralic/fuse-zip)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/${DOCS}"
+mkdir -pv "${TMP_DIR}"
 
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
-    --docdir="${DOCS}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

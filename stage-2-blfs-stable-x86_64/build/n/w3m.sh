@@ -3,15 +3,15 @@
 PRGNAME="w3m"
 
 ### w3m (text based web browser and pager)
-# Консольный клиент World Wide Web (браузер) с возможностью отображения
-# HTML-таблиц, фреймов и изображений, а так же поддерживает просмотр с
-# вкладками.
+# Текстовый веб-браузер и просмотрщик документов, работающий прямо внутри
+# консоли с возможностью отображения HTML-таблиц, фреймов и изображений, а так
+# же поддерживает просмотр с вкладками.
 
 # Required:    gc
-# Recommended: no
-# Optional:    glib
+# Recommended: glib
 #              imlib2
 #              gdk-pixbuf
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -68,6 +68,8 @@ make || exit 1
 # пакет не имеет наборат тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -82,7 +84,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # files residing on remote systems. It can display HTML tables, frames, and
 # images, and supports tabbed browsing.
 #
-# Hom page: https://${PRGNAME}.sourceforge.net/
+# Hom page: https://sourceforge.net/projects/${PRGNAME}/
 # Download: https://deb.debian.org/debian/pool/main/w/${PRGNAME}/${PRGNAME}_${ARCH_VERSION}.orig.tar.xz
 #
 EOF

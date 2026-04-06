@@ -3,9 +3,10 @@
 PRGNAME="lnav"
 
 ### lnav (The Log File Navigator)
-# Усовершенствованная утилита для просмотра лог-файлов
+# Продвинутый просмотрщик системных журналов (логов), который автоматически
+# подсвечивает важное и объединяет сообщения из разных файлов.
 
-# Required:    no
+# Required:    rustc
 # Recommended: no
 # Optional:    curl
 #              libarchive
@@ -17,6 +18,29 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+###
+# NOTE
+# Во время сборки скачиваются Rust зависимости. Подготовим их сразу во
+# избежании Download ERROR во время сборки.
+###
+
+cd src/third-party/prqlc-c/ || exit 1
+# скачает и распакует все зависимости в директорию vendor
+cargo vendor || exit 1
+
+# настройка cargo для использования локальных (vendored) зависимостей без сети
+# (мы уже их скачали и распаковали)
+mkdir -pv .cargo
+cat << EOF > .cargo/config.toml
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+
+cd - || exit 1
+
 ./configure              \
     --prefix=/usr        \
     --sysconfdir=/etc    \
@@ -25,6 +49,9 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+# очистим rust кэш, мусор не нужен
+rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,8 +3,8 @@
 PRGNAME="gnupg"
 
 ### GnuPG (The GNU Privacy Guard)
-# Программа для шифрования информации, создания электронных цифровых подписей и
-# управления ключами шифрования.
+# Популярный инструмент для шифрования переписки, создания цифровых подписей и
+# надежной защиты личных данных.
 
 # Required:    libassuan
 #              libgcrypt
@@ -15,12 +15,12 @@ PRGNAME="gnupg"
 #              pinentry
 # Optional:    curl
 #              fuse3
-#              imagemagick  (для создания документации)
+#              imagemagick                  (для создания документации)
 #              libusb
-#              MTA          (dovecot или exim или postfix или sendmail)
+#              MTA                          (dovecot или exim или postfix или sendmail)
 #              texlive или install-tl-unx
-#              fig2dev      (для создания документации) http://mcj.sourceforge.net/
-#              adns         (http://www.chiark.greenend.org.uk/~ian/adns/)
+#              fig2dev                      (для создания документации) http://mcj.sourceforge.net/
+#              adns                         (http://www.chiark.greenend.org.uk/~ian/adns/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,6 +44,8 @@ cd build || exit 1
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

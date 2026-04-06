@@ -4,21 +4,43 @@ PRGNAME="fuse3"
 ARCH_NAME="fuse"
 
 ### Fuse (Filesystem in Userspace)
-# FUSE (File system in userspace, файловая система в пространстве пользователя)
-# это механизм, позволяющий обычному пользователю подключать различные объекты
-# как специфичные файловые системы в собственном пространстве, например на
-# жёстком диске.
+# Технология, позволяющая программам создавать свои виртуальные диски и
+# файловые системы без вмешательства в глубокие настройки ядра Linux. Fuse v3 -
+# это обновленное поколение этой технологии, которое делает работу таких
+# виртуальных систем быстрее и стабильнее, исправляя внутренние ошибки и
+# ограничения, которые были в Fuse v2
 
 # Required:    no
 # Recommended: no
 # Optional:    doxygen               (для сборки API документации)
 #              --- для тестов ---
 #              python3-pytest
+#              which
 #              python3-looseversion  (https://pypi.org/project/looseversion/)
 
 ### Конфигурация ядра
 #    CONFIG_FUSE_FS=y|m
-#    CONFIG_CUSE=y|m
+#    CONFIG_CUSE=y|m        (для тестов)
+
+###
+# Тесты
+###
+#    Можно сразу очень быстро проверить работоспособность fuse3 вот таким
+#    смешным способом:). В исходниках лежит <path_to_src_dir>/example/hello.c,
+#    после компиляции данного пакета генерируется бинарник
+#    <path_to_src_dir>/build/example/hello
+#    $ mkdir -p /tmp/fuse3-test
+#    $ <path_to_src_dir>/build/example/hello /tmp/fuse3-test
+#    Монтируется директория /tmp/fuse3-test и в ней должен лежать текстовый
+#    файл hellow содержащий текст "Hello World!"
+#    $ ls /tmp/fuse3-test/
+#    hello
+#    $ cat /tmp/fuse3-test/hello
+#    Hello World!
+#
+#    Все Ok, отмонтируем:
+#    $ fusermount3 -u /tmp/fuse3-test
+###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"      || exit 1
@@ -53,14 +75,13 @@ sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 
-### тесты (требуется пакет python3-pytest)
+### тесты
 # python3 -m venv --system-site-packages testenv &&
 # source testenv/bin/activate                    &&
 # pip3 install looseversion                      &&
@@ -68,6 +89,8 @@ ninja || exit 1
 # deactivate
 
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 ### Конфигурация Fuse
 # некоторые параметры политики монтирования могут быть установлены в файле

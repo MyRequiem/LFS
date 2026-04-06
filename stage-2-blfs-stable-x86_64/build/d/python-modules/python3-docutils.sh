@@ -4,9 +4,9 @@ PRGNAME="python3-docutils"
 ARCH_NAME="docutils"
 
 ### docutils (Python Documentation Utilities)
-# Модульная система для преобразования документации в другие форматы, такие как
-# HTML, XML и LaTeX. Для ввода Docutils поддерживает reStructuredText, простой
-# для чтения текст в формате "что видишь, то и получаешь"
+# Набор инструментов для обработки текстовых документов. Умеет превращать
+# простые текстовые файлы в красивые HTML-страницы, PDF-файлы, XML или
+# программную документацию.
 
 # Required:    no
 # Recommended: no

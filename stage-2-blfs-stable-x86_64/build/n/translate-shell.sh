@@ -3,9 +3,8 @@
 PRGNAME="translate-shell"
 
 ### translate-shell (a command-line translator)
-# Translate Shell (ранее Google Translate CLI) - это переводчик командной
-# строки. Работает с Google Translate (по умолчанию), Bing Translator,
-# Yandex.Translate и Apertium
+# Удобный инструмент для перевода слов и текстов через командную строку,
+# использующий популярные онлайн-переводчики.
 
 # Required:    no
 # Recommended: no

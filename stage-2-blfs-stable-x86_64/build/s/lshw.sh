@@ -3,9 +3,8 @@
 PRGNAME="lshw"
 
 ### lshw (Hardware Lister)
-# инструмент для предоставления подробной информации об аппаратной конфигурации
-# машины (память, процессор, материнская плата, прошивка, конфигурация кэша и
-# т.д.)
+# Утилита, выдающая максимально детальный отчет обо всем «железе» компьютера в
+# одном списке.
 
 # Required:    no
 # Recommended: no
@@ -20,6 +19,8 @@ mkdir -pv "${TMP_DIR}"
 
 VERSION="${VERSION}" make ZLIB=1 SQLITE=1 || exit 1
 VERSION="${VERSION}" make ZLIB=1 SQLITE=1 install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

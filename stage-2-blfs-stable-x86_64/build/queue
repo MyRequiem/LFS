@@ -20,6 +20,7 @@ n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
@@ -43,11 +44,14 @@ n/dhcpcd.sh
 n/wireless-tools.sh
 l/libnl.sh
 ap/htop.sh
-
 n/iw.sh
 n/wpa-supplicant.sh
+# если libevent уже установлен (обновляем систему), то собирать в чистой
+# консоли (TTY) при НЕ запущенном tmux
 l/libevent.sh
 d/yasm.sh
+# если tmux уже установлен (обновляем систему) и запущен, выгрузить его из
+# памяти при переустановке
 ap/tmux.sh
 l/libxml2.sh
 l/libxslt.sh
@@ -57,9 +61,12 @@ n/cyrus-sasl.sh
 n/openldap.sh
 l/fuse3.sh
 n/gnupg.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-lxml.sh
+# если пакет уже установлен (обновляем систему), glib сначала нужно удалить
+# ($ removepkg glib-<version>), и только потом пересобрать и установить новый
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
@@ -69,16 +76,16 @@ ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
 s/archivemount.sh
-l/fuse2.sh
-n/curlftpfs.sh
+n/rclone.sh
 ap/vifm.sh
 s/pytrash.sh
+# если обновляем систему, пакет gc перед обновлением НЕ удалять. При компиляции
+# ранее пакет make с ним связывается и без gc сборка будет невозможной.
 d/gc.sh
 n/w3m.sh
 d/git.sh
 n/whois.sh
 n/translate-shell.sh
-ap/lnav.sh
 s/lshw.sh
 s/grc.sh
 d/shellcheck.sh
@@ -87,6 +94,9 @@ ap/unrar.sh
 ap/lzip.sh
 ap/7zip.sh
 a/lrzip.sh
+# перед переустановкой/обновлением пакета sudo, его сначала нужно удалить из
+# системы:
+#    $ removepkg --backup /var/log/packages/sudo-<version>
 ap/sudo.sh
 # На данный момент установлены все необходимые пакеты для более-менее
 # комфортной работы в чистой linux-консоли:
@@ -144,6 +154,7 @@ d/gcc.sh
 n/nghttp2.sh
 d/cmake.sh
 # === python3-pygments ===
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-trove-classifiers.sh
 d/python-modules/python3-setuptools-scm.sh
 d/python-modules/python3-pluggy.sh
@@ -161,6 +172,7 @@ d/python-modules/python3-requests.sh
 l/popt.sh
 n/rsync.sh
 l/libyaml.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-pyyaml.sh
 d/llvm.sh
 l/icu.sh
@@ -178,9 +190,11 @@ n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
 # ==============================
-# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
+# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet для загрузки Rust
+# зависимостей во время сборки)
 d/rustc.sh
 d/cargo-c.sh
+ap/lnav.sh
 # ==============================
 n/gpgme.sh
 x/utils/util-macros.sh
@@ -200,6 +214,7 @@ a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
 d/patchelf.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
@@ -241,6 +256,7 @@ l/libclc.sh
 # cbindgen собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
 d/cbindgen.sh
 d/rust-bindgen.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-ply.sh
 x/misc/mesa.sh
 # ====================
@@ -260,6 +276,7 @@ l/libxkbcommon.sh
 d/sassc.sh
 l/gtk+3.sh
 l/graphene.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
 l/adwaita-icon-theme.sh
@@ -367,6 +384,7 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
 l/libei.sh
@@ -419,6 +437,7 @@ d/python3.sh
 a/gpm.sh
 ap/vim.sh
 # === bumblebee-status ===
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 ap/gsimplecal.sh
@@ -453,6 +472,7 @@ l/openjpeg.sh
 l/xvid.sh
 l/ffmpeg.sh
 l/uchardet.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-glad.sh
 l/gst-plugins-bad.sh
 l/libplacebo.sh
@@ -472,6 +492,7 @@ n/libiscsi.sh
 s/numactl.sh
 d/snappy.sh
 d/spice-protocol.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
 d/orc.sh
@@ -484,6 +505,7 @@ l/virglrenderer.sh
 l/libnfs.sh
 s/gtk-vnc.sh
 s/qemu.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
 l/libsoup2.sh
@@ -496,6 +518,7 @@ n/iptables.sh
 n/dnsmasq.sh
 l/libvirt.sh
 l/libvirt-glib.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-libvirt.sh
 d/python-modules/python3-installer.sh
 d/python-modules/python3-pyproject-hooks.sh
@@ -591,6 +614,7 @@ l/pipewire.sh
 l/wireplumber.sh
 s/bubblewrap.sh
 l/xdg-desktop-portal.sh
+# python3 модули удаляем из системы перед обновлением ($ removepkg <pkg_name>)
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh
 s/tint2.sh

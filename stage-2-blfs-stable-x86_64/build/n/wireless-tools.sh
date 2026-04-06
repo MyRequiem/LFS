@@ -18,6 +18,9 @@ ARCH_NAME="wireless_tools"
 #    CONFIG_WIRELESS=y
 #    CONFIG_CFG80211=y|m
 #    CONFIG_CFG80211_WEXT=y
+#    CONFIG_MAC80211=y|m
+#    CONFIG_NETDEVICES=y
+#    CONFIG_WLAN=y
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

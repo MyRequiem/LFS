@@ -3,15 +3,13 @@
 PRGNAME="7zip"
 
 ### 7zip (file archiver with high compression rates)
-# Архиватор с высокой степенью сжатия данных. Поддерживает несколько алгоритмов
-# сжатия и множество форматов данных, включая собственный формат 7z c
-# высокоэффективным алгоритмом сжатия LZMA: 7z, ZIP, GZIP, BZIP2, XZ, TAR, APM,
-# ARJ, CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, LZMA2, MBR,
-# MSI, MSLZ, NSIS, NTFS, RAR RPM, SquashFS, UDF, VHD, WIM, XAR и Z
+# Один из самых эффективных архиваторов в мире. Обеспечивает максимально
+# возможное сжатие файлов и поддерживает работу почти со всеми известными
+# форматами архивов.
 
 # Required:    no
 # Recommended: no
-# Optional:    uasm (https://github.com/Terraspace/UASM)
+# Optional:    uasm    (https://github.com/Terraspace/UASM)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

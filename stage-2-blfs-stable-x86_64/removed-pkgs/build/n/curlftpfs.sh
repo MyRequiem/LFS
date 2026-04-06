@@ -3,7 +3,8 @@
 PRGNAME="curlftpfs"
 
 ### CurlFtpFS (Mount FTP/SFTP via fuse)
-# Файловая система для доступа к ftp-хостам, основанная на FUSE и libcurl
+# Инструмент, основанный на FUSE и libcurl, для подключения удаленных
+# FTP-директорий к вашей системе в виде обычного диска (директории).
 
 # Required:    curl
 #              fuse2

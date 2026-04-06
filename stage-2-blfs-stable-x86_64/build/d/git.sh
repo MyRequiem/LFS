@@ -3,29 +3,26 @@
 PRGNAME="git"
 
 ### Git (distributed version control system)
-# Распределенная система контроля версий для отслеживания изменений в исходном
-# коде во время разработки программного обеспечения. Предназначен для
-# координации работы программистов, но его можно использовать для отслеживания
-# изменений в любом наборе файлов. Система ориентирована на скорость,
-# целостность данных и поддержку распределенных, нелинейных рабочих процессов.
+# Самая популярная система контроля версий, необходимая для разработки программ
+# и совместной работы над кодом.
 
 # Required:    no
 # Recommended: curl
-# Optional:    apache-httpd         (для некоторых тестов)
-#              fcron                (для планирования заданий обслуживания git)
+# Optional:    apache-httpd             (для некоторых тестов)
+#              fcron                    (для планирования заданий обслуживания git)
 #              gnupg
 #              openssh
-#              subversion           (собранный с perl bindings для git svn)
-#              tk                   (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
+#              subversion               (собранный с perl bindings для git svn)
+#              tk                       (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
 #              valgrind
 #              --- для команды 'git send-email' ---
-#              perl-authen-sasl     (https://metacpan.org/pod/Authen::SASL)
+#              perl-authen-sasl         (https://metacpan.org/pod/Authen::SASL)
 #              perl-io-socket-ssl
 #              --- для сборки man-страниц и документации ---
-#              xmlto                (для сборки man-страниц)
+#              xmlto                    (для сборки man-страниц)
 #              python3-asciidoc
-#              dblatex              (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
-#              docbook2x            (для создания страниц info) http://docbook2x.sourceforge.net/
+#              dblatex                  (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
+#              docbook2x                (для создания страниц info) http://docbook2x.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -46,13 +43,15 @@ make || exit 1
 
 # тесты
 # GIT_UNZIP=nonexist make test -k |& tee test.log
-# grep '^not ok' test.log | grep -v TODO
+# make -C t aggregate-results
 
 # устанавливаем пакет
 PERL_MAJ_VERSION="$(perl --version | grep -oE '\(v.*\)' | cut -d v -f 2 | \
     cut -d . -f 1,2)"
 make perllibdir="/usr/lib/perl5/${PERL_MAJ_VERSION}/site_perl" install \
     DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # устанавливаем man-страницы
 tar -xf "${SOURCES}/${PRGNAME}-manpages-${VERSION}.tar.xz" \
