@@ -82,6 +82,7 @@ sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 
 # утилиту 'cp' устанавливаем командой install, т.к. скопировать ее из DESTDIR
 # будет не возможно по понятным причинам

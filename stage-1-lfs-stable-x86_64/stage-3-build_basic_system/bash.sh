@@ -54,6 +54,7 @@ ln -svf bash "${TMP_DIR}/usr/bin/sh"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 
 ###
 # ${TMP_DIR}/usr/bin/bash сразу уставливаем в систему командой install, т.к.

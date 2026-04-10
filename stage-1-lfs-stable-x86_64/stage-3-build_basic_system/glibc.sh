@@ -244,6 +244,7 @@ include /etc/ld.so.conf.d/*.conf
 EOF
 
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 
 # устанавливаем конфиги и директории в корень системы
 /bin/cp -vR "${TMP_DIR}"/etc       /

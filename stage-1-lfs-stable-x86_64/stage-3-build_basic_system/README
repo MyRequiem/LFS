@@ -15,6 +15,7 @@
 - копируем скрипты для сборки в корень LFS системы (/mnt/lfs/ или / если
   система уже установлена, загружена и мы ее обновляем)
     ./check_environment.sh
+    ./clean-locales.sh
     ./config_file_processing.sh
     ./stripping.sh
     ./unpack_source_archive.sh

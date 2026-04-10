@@ -116,6 +116,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 chmod 755 /usr/lib/libgcc_s.so{,.1}
