@@ -9,12 +9,13 @@ main-directory-tree.sh
 #    check-system-deps
 #    check-system-health
 #    find-new-config
+#    find-orphans
 #    remove-la-files.sh
 #    removepkg
 #
 ###
 # NOTE:
-#    все эти 6 утилит (перечисленные выше) нужно положить в корень системы
+#    все эти 7 утилит (перечисленные выше) нужно положить в корень системы
 #    вместе со скриптом syshealth-utils.sh, т.к. он будет их копировать в
 #    /usr/sbin/
 ###

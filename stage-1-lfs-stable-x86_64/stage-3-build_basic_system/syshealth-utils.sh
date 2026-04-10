@@ -139,6 +139,17 @@ PRGNAME="syshealth-utils"
 #       /etc/ssh/ssh_config.new
 ###
 # --------------------
+# find-orphans
+# --------------------
+#    Инструмент для очистки системы от «мусора». Находит файлы и папки, которые
+#    не принадлежат ни одному установленному пакету.
+#
+#    Вывод в виде:
+#       $ ./find-orphans
+#       Comparing system objects (files + dirs) with logs...
+#       /usr/bin/000_asdf.sh
+###
+# --------------------
 # remove-la-files.sh
 # --------------------
 #    Находит и перемещает файлы архивов libtool (.la) в директорию
@@ -178,6 +189,7 @@ check-rc-duplicates \
 check-system-deps \
 check-system-health \
 find-new-config \
+find-orphans \
 remove-la-files.sh \
 removepkg \
 "
@@ -211,6 +223,10 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 #    * check-system-health - Validates files against package logs.
 #    * find-new-config     - Searches for .new and .old configuration files in
 #                               the /etc directory.
+#    * find-orphans        - Scans for files and directories not tracked by the
+#                               package manager. Cross-references the live
+#                               filesystem against installed package logs in
+#                               /var/log/packages.
 #    * remove-la-files.sh  - Strips libtool archives (.la) from the system.
 #    * removepkg           - Properly uninstalls packages from the system.
 #
@@ -218,6 +234,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 /usr/sbin/check-system-deps
 /usr/sbin/check-system-health
 /usr/sbin/find-new-config
+/usr/sbin/find-orphans
 /usr/sbin/remove-la-files.sh
 /usr/sbin/removepkg
 EOF

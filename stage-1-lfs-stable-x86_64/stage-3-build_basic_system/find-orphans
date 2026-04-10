@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# find-orphans - Scans for files and directories not tracked by the package
+# manager. Cross-references the live filesystem against installed package logs
+# in /var/log/packages.
+
+LOGS_DIR="/var/log/packages"
+
+echo "Comparing system objects (files + dirs) with logs..."
+
+EXCLUDE_PATTERN="\.cache$|\.compiled$|/usr/share/info/dir|/usr/src|__pycache__|/usr/share/vim/vim92/spell|/usr/share/mime/.*\.xml$|bumblebee_status/modules/contrib/|/usr/share/terminfo/r/rxvt-unicode|/usr/lib/girepository-1.0/GtkSource-3.0.typelib|/usr/share/gir-1.0/GtkSource-3.0.gir|/etc/.pwd.lock|/etc/X11/xorg.conf.d/xorg.conf|/etc/bashrc|/etc/group-|/etc/passwd-|etc/shadow|/etc/gshadow|/etc/libvirt/qemu/|/etc/libvirt/storage/|/etc/pki|/etc/pki/tls|/etc/profile.d/makeflags.sh|/etc/rc.d/rc|/etc/ssl/certs/|/etc/sysctl.conf|/etc/udev/rules.d/"
+
+comm -23 \
+    <(find /etc /opt /usr | sort) \
+    <(cat "${LOGS_DIR}"/* | grep -Ev "^(#|$)" | sort -u) | \
+        grep -Ev "${EXCLUDE_PATTERN}"
