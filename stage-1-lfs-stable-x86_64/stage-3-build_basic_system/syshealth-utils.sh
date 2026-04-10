@@ -15,6 +15,7 @@ PRGNAME="syshealth-utils"
 #    check-system-deps
 #    check-system-health
 #    find-new-config
+#    find-orphans
 #    remove-la-files.sh
 #    removepkg
 #
