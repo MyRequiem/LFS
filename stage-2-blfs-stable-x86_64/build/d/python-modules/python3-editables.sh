@@ -4,8 +4,9 @@ PRGNAME="python3-editables"
 ARCH_NAME="editables"
 
 ### Editables (A Python library for creating "editable wheels")
-# Python библиотека для создания "editable wheels". Другими словами изменения в
-# исходниках Python пакета будут отражены в пакете visible без переустановки
+# Специальный инструмент для разработчиков на Python. Он позволяет
+# устанавливать библиотеки так, чтобы любые изменения в их коде применялись
+# мгновенно без переустановки.
 
 # Required:    no
 # Recommended: no

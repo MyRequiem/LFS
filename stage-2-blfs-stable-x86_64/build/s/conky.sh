@@ -58,7 +58,7 @@ cd .. || exit 1
 rm -rf "${TMP_DIR}"/{vim,nano,usr/share/doc}
 
 # удалим статическую библиотеку
-find "${TMP_DIR}" -type f -name "*.a" -exec rm -f {} \;
+find "${TMP_DIR}" -type f -name "*.a" -exec rm -f {} \+
 
 # man страница
 MAN="/usr/share/man/man1"

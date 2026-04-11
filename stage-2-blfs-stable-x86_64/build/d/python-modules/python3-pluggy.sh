@@ -4,8 +4,9 @@ PRGNAME="python3-pluggy"
 ARCH_NAME="pluggy"
 
 ### Pluggy (mechanisms for python)
-# Менеджер плагинов, используемый pytest, но лишенный специфичных для pytest
-# деталей.
+# Удобный механизм для создания плагинов и дополнений. С его помощью
+# разработчики могут легко расширять возможности своих программ, не переписывая
+# их основной код.
 
 # Required:    no
 # Recommended: python3-setuptools-scm

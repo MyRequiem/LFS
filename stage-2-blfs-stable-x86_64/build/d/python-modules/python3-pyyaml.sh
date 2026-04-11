@@ -4,13 +4,12 @@ PRGNAME="python3-pyyaml"
 ARCH_NAME="pyyaml"
 
 ### PyYAML (YAML parser and emitter for Python)
-# Полнофункциональный YAML-фреймворк для Python. Включает анализатор YAML,
-# поддержку Unicode, поддержку pickle, совместимый API расширений, анализатор
-# сообщений об ошибках и т.д.
+# Переводчик, который позволяет программам на Python легко понимать и создавать
+# файлы настроек в удобном формате YAML.
 
-# Required:    python3-cython
+# Required:    no
+# Recommended: python3-cython
 #              libyaml
-# Recommended: no
 # Optional:    python3-pytest
 
 ROOT="/root/src/lfs"

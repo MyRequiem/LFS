@@ -4,7 +4,8 @@ PRGNAME="python3-hatch-vcs"
 ARCH_NAME="hatch_vcs"
 
 ### Hatch_vcs (Hatch plugin for versioning)
-# Плагин для некоторых систем управления версиями (Version Control Systems)
+# Дополнение, которое связывает систему сборки Hatchling с историей правок Git
+# для автоматического управления версиями программ.
 
 # Required:    python3-hatchling
 #              python3-setuptools-scm

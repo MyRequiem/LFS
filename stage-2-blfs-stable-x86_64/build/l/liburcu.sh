@@ -4,8 +4,8 @@ PRGNAME="liburcu"
 ARCH_NAME="userspace-rcu"
 
 ### liburcu (Read-Copy-Update Library)
-# Библиотека обеспечивающая механизм синхронизации для реализации параллельного
-# чтения и записи
+# Инструмент для продвинутых разработчиков, помогающий программам работать на
+# многоядерных процессорах без лишних задержек и «тормозов».
 
 # Required:    no
 # Recommended: no
@@ -26,6 +26,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

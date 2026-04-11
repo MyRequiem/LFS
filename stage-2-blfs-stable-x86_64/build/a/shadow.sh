@@ -27,12 +27,12 @@ mkdir -pv "${TMP_DIR}/etc/pam.d"
 # является предпочтительной)
 # shellcheck disable=SC2016
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in                     || exit 1
-find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \; || exit 1
+find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \+ || exit 1
 
 # не устанавливаем man-страницы getspnam.3 и passwd.5 (уже установлены с
 # пакетом 'man-pages')
-find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \; || exit 1
-find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \; || exit 1
+find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \+ || exit 1
+find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \+ || exit 1
 
 # вместо использования DES метода шифрования паролей (по умолчанию) будем
 # использовать более безопасный метод YESCRYPT, который также позволяет
@@ -254,6 +254,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LOGIN_DEFS}"

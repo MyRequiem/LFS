@@ -4,8 +4,8 @@ PRGNAME="wpa-supplicant"
 ARCH_NAME="wpa_supplicant"
 
 ### WPA Supplicant (WPA/WPA2/IEEE 802.1X Supplicant)
-# Важнейшая программа для подключения к Wi-Fi сетям с использованием
-# современных протоколов безопасности (WPA/WPA2/WPA3).
+# Главный диспетчер Wi-Fi. Он ищет доступные сети, вводит пароли и следит за
+# тем, чтобы беспроводное соединение не разрывалось.
 
 # Required:    no
 # Recommended: libnl

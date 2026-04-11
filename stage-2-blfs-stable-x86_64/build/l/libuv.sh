@@ -3,7 +3,9 @@
 PRGNAME="libuv"
 
 ### libuv (Unicorn Velociraptor Library)
-# Многоплатформенная библиотека поддержки с акцентом на асинхронный ввод/вывод
+# Мощный «движок» для одновременной работы со множеством сетевых соединений и
+# файлов. Это фундамент для таких программ, как Node.js, позволяющий им
+# работать быстро и не зависать.
 
 # Required:    no
 # Recommended: no
@@ -25,6 +27,8 @@ sh autogen.sh || exit 1
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,12 +3,12 @@
 PRGNAME="libjpeg-turbo"
 
 ### libjpeg-turbo (high-speed version of libjpeg)
-# Форк оригинального libjpeg, который использует SIMD для ускоренного сжатия и
-# распаковки JPEG. Библиотека реализует кодирование, декодирование и
-# транскодирование изображений JPEG
+# Турбо-версия стандартной библиотеки libjpeg для работы с картинками JPEG. Она
+# использует специальные инструкции процессора, чтобы открывать фотографии
+# мгновенно.
 
 # Required:    cmake
-# Recommended: nasm или yasm (для оптимизации сборки)
+# Recommended: nasm или yasm    (для оптимизации сборки)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -21,8 +21,6 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-# разрешаем сборку с CMake>=4.0
-#    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 # заставляет cmake удалять жестко закодированные пути поиска библиотеки (rpath)
 # при установке двоичного исполняемого файла или общей библиотеки, но для этого
 # пакета не требуется rpath после его установки в стандартное расположение, и
@@ -36,7 +34,6 @@ cmake                                                              \
     -D CMAKE_BUILD_TYPE=RELEASE                                    \
     -D ENABLE_STATIC=FALSE                                         \
     -D CMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5                            \
     -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
     -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
     -D WITH_JPEG8=ON                                               \
@@ -45,6 +42,8 @@ cmake                                                              \
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -59,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # as fast as the unmodified version of libjpeg, all else being equal.
 #
 # Home page: https://${PRGNAME}.virtualgl.org
-# Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

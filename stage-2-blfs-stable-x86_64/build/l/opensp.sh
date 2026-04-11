@@ -50,12 +50,9 @@ ln -v -sf osx       "${TMP_DIR}/usr/bin/sx"
 ln -v -sf osx       "${TMP_DIR}/usr/bin/sgml2xml"
 ln -v -sf libosp.so "${TMP_DIR}/usr/lib/libsp.so"
 
-# /usr/lib/libosp.la скриптом remove-la-files.sh не удаляется (прописано в коде
-# скрита), т.к. данный libtool-архив требуется для сборки некоторых сторонних
-# пакетов
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -71,3 +68,7 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
+
+echo -e "\n---------------\nRemoving *.la files..."
+remove-la-files.sh
+echo "---------------"

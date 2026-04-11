@@ -4,14 +4,15 @@ PRGNAME="python3-charset-normalizer"
 ARCH_NAME="charset_normalizer"
 
 ### Charset-normalizer (charset detection for python)
-# Python-библиотека, которая помогает читать текст в неизвестной кодировке
-# символов
+# Умный определитель кодировок. Он изучает текст и угадывает, в какой кодировке
+# он написан, чтобы программа не вывела «кракозябры», т.е. помогает читать
+# текст в неизвестной кодировке.
 
-# Required:    python3-setuptools-scm
+# Required:    no
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
-#              python3-pytest-cov (https://pypi.org/project/pytest-cov/)
+#              python3-pytest-cov    (https://pypi.org/project/pytest-cov/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

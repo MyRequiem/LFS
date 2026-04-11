@@ -18,11 +18,11 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-! [ -e "${SOURCES}/${ARCH_NAME}.tar.xz" ] && {
-    echo "Archive ${SOURCES}/${ARCH_NAME} not found..."
-    echo "Download: https://github.com/${PRGNAME}/desktop/releases/latest/download/${ARCH_NAME}.tar.xz"
-    exit 1
-}
+rm -f "${SOURCES}/${ARCH_NAME}.tar.xz"
+
+GIT_HOME_PAGE="https://github.com/${PRGNAME}/desktop"
+wget -P "${SOURCES}" \
+    "${GIT_HOME_PAGE}/releases/latest/download/${ARCH_NAME}.tar.xz" || exit 1
 
 INSTALLED_VER=$(find /var/log/packages/ -type f -name "${PRGNAME}-*" | \
     rev |  cut -f 1 -d - | rev)
@@ -40,7 +40,8 @@ read -r YESNO
 
 # удаляем установленную версию
 [ -n "${INSTALLED_VER}" ] && \
-    yes | /sbin/removepkg "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
+    yes | /sbin/removepkg --backup \
+        "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
 
 TMP_DIR="/tmp/package-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -54,9 +55,9 @@ mv "${PRGNAME}" "${TMP_DIR}/opt"
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 ln -s "../../opt/${PRGNAME}/zen" "${TMP_DIR}/usr/bin/${PRGNAME}"
 

@@ -4,8 +4,9 @@ PRGNAME="python3-trove-classifiers"
 ARCH_NAME="trove_classifiers"
 
 ### Trove-Classifiers (Canonical source for classifiers on PyPI)
-# Библиотека Python, охватывающая все допустимые классификаторы PyPI  согласно
-# PEP 301
+# Вспомогательный пакет для Python, который содержит стандартные
+# метки-категории (классификаторы PyPI). Они помогают правильно
+# классифицировать программы при их публикации.
 
 # Required:    no
 # Recommended: no

@@ -4,7 +4,9 @@ PRGNAME="rustc"
 BLFS_VER="13.0"
 
 ### Rustc (The Rust programming language)
-# Язык программирования Rust
+# Компилятор современного языка программирования Rust. Он славится тем, что
+# помогает создавать очень быстрые и максимально защищенные от ошибок
+# программы.
 
 # Required:    cmake
 #              curl
@@ -52,44 +54,46 @@ cd "${PRGNAME}-${VERSION}-src" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # конфиг для сборки
 cat << EOF > config.toml
-# See bootstrap.toml.example for more possible options,
-# and see src/bootstrap/defaults/bootstrap.dist.toml for a few options
-# automatically set when building from a release tarball
-# (unfortunately, we have to override many of them).
+# See bootstrap.toml.example for more possible options, and see
+# src/bootstrap/defaults/bootstrap.dist.toml for a few options automatically
+# set when building from a release tarball (unfortunately, we have to override
+# many of them).
 
-# Tell x.py the editors have reviewed the content of this file
-# and updated it to follow the major changes of the building system,
-# so x.py will not warn us to do such a review.
-change-id = 142379
+# Tell x.py that the editors have reviewed the content of this file and updated
+# it to follow the major changes of the building system, so x.py will not warn
+# users to review that information.
+change-id = 148671
 
 [llvm]
-# When using system llvm prefer shared libraries
+# When using the system installed copy of LLVM, prefer the shared libraries
 link-shared = true
 
-# If building the shipped LLVM source, only enable the x86 target
-# instead of all the targets supported by LLVM.
+# If building the shipped LLVM source, only enable the x86 target instead of
+# all the targets supported by LLVM.
 targets = "X86"
 
 [build]
 description = "for BLFS ${BLFS_VER}"
 
-# Omit docs to save time and space (default is to build them).
+# Omit the documentation to save time and space (the default is to build them).
 docs = false
 
-# Do not query new versions of dependencies online.
+# Do not look for new versions of the dependencies online.
 locked-deps = true
 
-# Specify which extended tools (those from the default install).
-tools = ["cargo", "clippy", "rustdoc", "rustfmt"]
+# Only install these extended tools. Cargo, clippy, rustdoc, and rustfmt are
+# installed by a default rustup installation, and rust-src is needed to build
+# the Rust code in Linux kernel (in case you need such a kernel feature).
+tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
 
 [install]
 prefix = "/usr"
@@ -102,13 +106,8 @@ channel = "stable"
 lto = "thin"
 codegen-units = 1
 
-# Don't build lld which does not belong to this package and seems not
-# so useful for BLFS.  Even if it turns out to be really useful we'd build
-# it as a part of the LLVM package instead.
-lld = false
-
-# Don't build llvm-bitcode-linker which is only useful for the NVPTX
-# backend that we don't enable.
+# Don't build llvm-bitcode-linker which is only useful for the NVPTX backend
+# that we don't enable.
 llvm-bitcode-linker = false
 
 [target.x86_64-unknown-linux-gnu]
@@ -121,14 +120,13 @@ EOF
 ### сборка
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-
-./x.py build
+./x.py build || exit 1
 
 ### тесты
 # SSL_CERT_DIR=/etc/ssl/certs \
 # ./x.py test --verbose --no-fail-fast | tee rustc-testlog
-
-# проверка тестов:
+#
+# проверка результатов:
 # grep '^test result:' rustc-testlog | \
 #     awk '{sum1 += $4; sum2 += $6} END { print sum1 " passed; " sum2 " failed" }'
 
@@ -136,7 +134,7 @@ DESTDIR="${TMP_DIR}" ./x.py install
 
 unset LIB{SSH2,SQLITE3}_SYS_USE_PKG_CONFIG
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

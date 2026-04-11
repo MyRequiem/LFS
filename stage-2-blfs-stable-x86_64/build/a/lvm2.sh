@@ -4,14 +4,17 @@ PRGNAME="lvm2"
 ARCH_NAME="LVM2"
 
 ### LVM2 (Logical Volume Manager version 2)
-# Подсистема, добавляющая уровень абстракции между физическими/логическими
-# дисками и файловой системой и позволяющая использовать разные области одного
-# жёсткого диска и/или области с разных жёстких дисков как один логический том.
+# Набор инструментов для гибкого управления дисковым пространством. Он
+# позволяет объединять несколько жестких дисков в один или менять размер
+# разделов прямо во время работы системы.
 
 # Required:    libaio
 # Recommended: no
-# Optional:    libnvme
+# Optional:    btrfs-progs
+#              dosfstools
+#              jfsutils
 #              mdadm
+#              parted
 #              valgrind
 #              which
 #              xfsprogs
@@ -52,9 +55,9 @@ cd "${ARCH_NAME}.${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -84,10 +87,16 @@ make || exit 1
 #     make -C libdm install
 # fi
 #
+# тестам необходима возможность создавать и удалять узлы устройств в каталоге
+# /tmp
+# mount -o remount,dev /tmp
+#
 # запускаем тесты
 # LC_ALL=en_US.UTF-8 make check_local
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # удалим правило, которое выполняется в другом скрипте
 rm -fv "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"

@@ -97,7 +97,7 @@ mv "${TMP_DIR}/usr/html" "${TMP_DIR}/var/www/"
 # нужно устанавливать
 find "${TMP_DIR}/usr/lib/" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
-    -exec rm {} \;
+    -exec rm {} \+
 
 # /etc/nginx/conf.d/
 mkdir -p "${TMP_DIR}/etc/${PRGNAME}/conf.d"
@@ -106,8 +106,8 @@ mkdir -p "${TMP_DIR}/etc/${PRGNAME}/conf.d"
 install -m 0644 "objs/${PRGNAME}.8" "${TMP_DIR}/usr/share/man/man8/"
 
 # исправим некоторые разрешения
-find "${TMP_DIR}" -perm 444 -exec chmod 0644 {} \;
-find "${TMP_DIR}" -perm 555 -exec chmod 0755 {} \;
+find "${TMP_DIR}" -perm 444 -exec chmod 0644 {} \+
+find "${TMP_DIR}" -perm 555 -exec chmod 0755 {} \+
 
 chmod 0700   "${TMP_DIR}/var/lib/${PRGNAME}"
 chown nobody "${TMP_DIR}/var/lib/${PRGNAME}"

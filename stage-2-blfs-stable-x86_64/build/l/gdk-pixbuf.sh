@@ -46,6 +46,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # создаем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache

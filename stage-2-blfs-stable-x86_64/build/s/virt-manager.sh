@@ -44,6 +44,7 @@ DESTDIR=${TMP_DIR} ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим кэш иконок приложений и схемы для Glib

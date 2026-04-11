@@ -4,6 +4,6 @@ CACHE_DIR="${HOME}/.cache/clipmenu"
 ! [ -d "${CACHE_DIR}" ] && exit
 
 find "${CACHE_DIR}" -type f  ! \( -name "lock" -o -name "line_cache" \) \
-    -exec rm {} \;
+    -exec rm {} \+
 
 cat /dev/null > "${CACHE_DIR}/line_cache"

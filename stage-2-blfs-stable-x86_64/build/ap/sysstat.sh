@@ -53,7 +53,7 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # man страницы запакованы в *.xz, распакуем их
-find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \;
+find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \+
 
 # автозапуск очистки счетчиков ядра для sysstat при запуске системы
 (
@@ -68,6 +68,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SYSSTAT}"

@@ -26,9 +26,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -163,7 +163,7 @@ sed 's|lib.*udevd|sbin/udevd|'                                \
         "${TMP_DIR}/usr/share/man/man8/udevd.8" || exit 1
 
 rm "${TMP_DIR}"/usr/share/man/man*/systemd*
-find "${TMP_DIR}/usr/share/man" ! -type d -exec chmod 644 {} \;
+find "${TMP_DIR}/usr/share/man" ! -type d -exec chmod 644 {} \+
 
 # бэкапим конфиг /etc/udev/udev.conf перед установкой пакета
 UDEV_CONF="/etc/udev/udev.conf"

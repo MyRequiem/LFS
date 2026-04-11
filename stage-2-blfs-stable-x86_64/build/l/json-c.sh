@@ -3,9 +3,8 @@
 PRGNAME="json-c"
 
 ### JSON-C (JSON library in C)
-# Реализует объектную модель подсчета ссылок, которая позволяет легко
-# конструировать объекты JSON в C, выводить их как строки в формате JSON и
-# анализировать строки в JSON-формате обратно в C-представление объектов JSON
+# Легкая и быстрая библиотека для работы с данными в формате JSON. Это основной
+# «язык», на котором обмениваются информацией сайты и современные приложения.
 
 # Required:    cmake
 # Recommended: no
@@ -36,6 +35,8 @@ cmake                           \
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

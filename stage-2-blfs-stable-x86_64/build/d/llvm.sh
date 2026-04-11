@@ -1,24 +1,12 @@
 #! /bin/bash
 
 PRGNAME="llvm"
-CLANG="clang"
-COMPILER_RT="compiler-rt"
+ARCH_NAME="llvm-project"
 
 ### LLVM (Low Level Virtual Machine compiler toolkit)
-# Набор компиляторов из языков высокого уровня, системы оптимизации,
-# интерпретации и компиляции в машинный код. В основе инфраструктуры
-# используется RISC-подобная платформонезависимая система кодирования машинных
-# инструкций (байткод LLVM IR), которая представляет собой высокоуровневый
-# ассемблер, с которым работают различные преобразования. Написан на C++,
-# обеспечивает оптимизации на этапах компиляции, компоновки и исполнения.
-# Изначально в проекте были реализованы компиляторы для языков Си и C++ при
-# помощи фронтенда Clang, позже появились фронтенды для множества языков, в том
-# числе: ActionScript, Ада, C#, Common Lisp, Crystal, CUDA, D, Delphi, Dylan,
-# Fortran, Graphical G Programming Language, Halide, Haskell, Java (байткод),
-# JavaScript, Julia, Kotlin, Lua, Objective-C, OpenGL Shading Language, Ruby,
-# Rust, Scala, Swift, Xojo. LLVM создает машинный код для множества архитектур,
-# в том числе ARM, x86, x86-64, PowerPC, MIPS, SPARC, RISC-V и других (включая
-# GPU от Nvidia и AMD).
+# Громадный каркас для построения компиляторов и инструментов анализа кода. Без
+# него не смогут работать современные видеодрайверы и сложные языки
+# программирования.
 
 # Required:    cmake
 # Recommended: no
@@ -40,56 +28,24 @@ COMPILER_RT="compiler-rt"
 #              z3                           (https://github.com/Z3Prover/z3)
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 VERSION="$(echo "${VERSION}" | rev | cut -d . -f 2- | rev)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -p "${TMP_DIR}/etc/clang"
 
-# распакуем в дерево исходников два дополнительных архива, требуемых для сборки
-# пакета:
-# llvm-cmake-${VERSION}.src.tar.xz        -> cmake-${VERSION}.src
-# llvm-third-party-${VERSION}.src.tar.xz  -> third-party-${VERSION}.src
-tar -xvf "${SOURCES}/${PRGNAME}-cmake-${VERSION}.src.tar.xz"       || exit 1
-tar -xvf "${SOURCES}/${PRGNAME}-third-party-${VERSION}.src.tar.xz" || exit 1
-
-# система сборки предполагает, что распакованные каталоги находятся рядом с
-# директорией дерева исходников LLVM, поэтому изменим ./CMakeLists.txt
-#
-# ./CMakeLists.txt diff:
-# -set(LLVM_COMMON_CMAKE_UTILS ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
-# +set(LLVM_COMMON_CMAKE_UTILS ${CMAKE_CURRENT_SOURCE_DIR}/cmake-${VERSION}.src)
-#
-# cmake/modules/HandleLLVMOptions.cmake diff:
-# -set(LLVM_THIRD_PARTY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/../third-party CACHE STRING
-# +set(LLVM_THIRD_PARTY_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/third-party-20.1.8.src CACHE STRING
-sed "/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-${VERSION}.src@" \
-    -i CMakeLists.txt || exit 1
-sed "/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-${VERSION}.src@" \
-    -i cmake/modules/HandleLLVMOptions.cmake || exit 1
-
-# распакуем clang и compiler-rt
-# clang-${VERSION}.src.tar.xz       -> tools/clang
-# compiler-rt-${VERSION}.src.tar.xz -> projects/compiler-rt
-tar -xvf "${SOURCES}/${CLANG}-${VERSION}.src.tar.xz"       -C tools    || exit 1
-mv "tools/${CLANG}-${VERSION}.src" "tools/${CLANG}"
-tar -xvf "${SOURCES}/${COMPILER_RT}-${VERSION}.src.tar.xz" -C projects || exit 1
-mv "projects/${COMPILER_RT}-${VERSION}.src" "projects/${COMPILER_RT}"
-
-# в исходниках лежит много Python скриптов, которые используют shebang
-# /usr/bin/env python
-# исправим на:
-# /usr/bin/env python3
-grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+# исправим shebang для python-скриптов:
+#    #! /usr/bin/env python -> #! /usr/bin/env python3
+grep -rl '#!.*python$' | xargs sed -i '1s/python$/python3/'
 
 # будем устанавливать утилиту filecheck, которая требуется для тестирования
 # некоторых пакетов (например rustc)
-sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt || exit 1
+sed 's/utility/tool/' -i llvm/utils/FileCheck/CMakeLists.txt || exit 1
 
-mkdir build
-cd build || exit 1
+mkdir -v llvm/build
+cd llvm/build || exit 1
 
 CC=gcc CXX=g++                                 \
 cmake                                          \
@@ -101,24 +57,24 @@ cmake                                          \
     -D LLVM_LINK_LLVM_DYLIB=ON                 \
     -D LLVM_ENABLE_RTTI=ON                     \
     -D LLVM_TARGETS_TO_BUILD="host;AMDGPU"     \
+    -D LLVM_ENABLE_PROJECTS=clang              \
+    -D LLVM_ENABLE_RUNTIMES=compiler-rt        \
     -D LLVM_BINUTILS_INCDIR=/usr/include       \
     -D LLVM_INCLUDE_BENCHMARKS=OFF             \
     -D CLANG_DEFAULT_PIE_ON_LINUX=ON           \
     -D CLANG_CONFIG_FILE_SYSTEM_DIR=/etc/clang \
-    -D LLVM_BUILD_TESTS=OFF                    \
-    -D LLVM_ENABLE_DOXYGEN=OFF                 \
-    -W no-dev -G Ninja .. || exit 1
+    -W no-dev                                  \
+    -G Ninja                                   \
+    .. || exit 1
 
 ninja || exit 1
 
 # тесты
-# sed -e 's/config.has_no_default_config_flag/True/' \
-#     -e 's/"-fuse-ld=gold"//'                       \
-#     -i ../projects/compiler-rt/test/lit.common.cfg.py
-#
 # sh -c 'ulimit -c 0 && ninja check-all'
 
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 for CFG in clang clang++; do
     echo -fstack-protector-strong > "${TMP_DIR}/etc/clang/${CFG}.cfg"
@@ -142,7 +98,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # packages which use Rust, for example Mozilla Firefox.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-${VERSION}/${PRGNAME}-${VERSION}.src.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-${VERSION}/${PRGNAME}-project-${VERSION}.src.tar.xz
 #
 EOF
 

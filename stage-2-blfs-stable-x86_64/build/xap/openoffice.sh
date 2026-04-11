@@ -42,9 +42,9 @@ cd "${SOURCEDIR}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 # нам не нужен onlineupdate
 rm -vf ./*onlineupdate*.rpm
@@ -121,7 +121,7 @@ ln -s libcrypt-2.33.so "${TMP_DIR}/usr/lib/libcrypt.so.1"
 chmod 755 "${TMP_DIR}/usr/lib/libcrypt-2.33.so"
 
 # fix permissions
-find "${TMP_DIR}" '(' -name "*.so" -o -name "*.so.*" ')' -exec chmod +x {} \;
+find "${TMP_DIR}" '(' -name "*.so" -o -name "*.so.*" ')' -exec chmod +x {} \+
 chmod -R u+rw,go+r-w,a-s .
 
 source "${ROOT}/stripping.sh"      || exit 1

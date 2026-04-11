@@ -4,7 +4,8 @@ PRGNAME="python3-urllib3"
 ARCH_NAME="urllib3"
 
 ### Urllib3 (Powerful, sanity-friendly HTTP client for Python)
-# Мощный и удобный HTTP-клиент для Python
+# Надежный, мощный и удобный HTTP-клиент для Python. Он умеет правильно
+# обрабатывать соединения, повторы при ошибках и защищенные каналы связи.
 
 # Required:    python3-hatch-vcs
 # Recommended: no

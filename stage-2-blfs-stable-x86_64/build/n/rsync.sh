@@ -3,14 +3,14 @@
 PRGNAME="rsync"
 
 ### rsync (remote file sync)
-# Утилита для синхронизации больших файловых архивов по сети с минимизированием
-# трафика (отправляются только различия в файлах) и кодированием данных при
-# необходимости.
+# Эталонный инструмент для копирования и синхронизации файлов. Он передает
+# только измененные части данных, что делает его невероятно быстрым при работе
+# по сети.
 
 # Required:    no
 # Recommended: popt
 # Optional:    doxygen
-#              xxhash  (https://xxhash.com/)
+#              xxhash    (https://xxhash.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,6 +33,10 @@ mkdir -pv "${TMP_DIR}/etc"
             -s /bin/false      \
             -u 48 rsyncd
 
+# исправим проблему безопасности
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
+
 # используем zlib установленный в системе
 #    --without-included-zlib
 ./configure          \
@@ -47,6 +51,8 @@ make || exit 1
 # make check
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # конфиг
 RSYNCD_CONF="/etc/rsyncd.conf"

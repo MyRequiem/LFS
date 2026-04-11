@@ -3,14 +3,14 @@
 PRGNAME="nghttp2"
 
 ### nghttp2 (HTTP/2 implementation)
-# Реализация HTTP/2 и его алгоритма сжатия заголовков
+# Современная реализация протокола HTTP/2. Она ускоряет загрузку данных из
+# интернета, позволяя передавать множество файлов по одному соединению
+# одновременно со ждатием заголовков пакетов.
 
 # Required:    no
 # Recommended: libxml2
 # Optional:    --- используются при сборке полного пакета, а не только основных библиотек ---
-#              boost
 #              c-ares
-#              python3-cython
 #              jansson
 #              libevent
 #              python3-sphinx
@@ -26,8 +26,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOCS="false"
-
 # собираем только libnghttp2 (без этого параметра создаются примеры приложений,
 # привязки Python и библиотека C++ asio)
 #    --enable-lib-only
@@ -41,12 +39,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-if [[ "x${DOCS}" == "xfalse" ]]; then
-    (
-        cd "${TMP_DIR}/usr/share/" || exit 1
-        rm -rf doc
-    )
-fi
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

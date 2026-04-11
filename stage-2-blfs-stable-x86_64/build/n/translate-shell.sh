@@ -28,7 +28,7 @@ sed                                  \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-find "${TMP_DIR}/usr/share/man" -type f -exec chmod 644 {} \;
+find "${TMP_DIR}/usr/share/man" -type f -exec chmod 644 {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

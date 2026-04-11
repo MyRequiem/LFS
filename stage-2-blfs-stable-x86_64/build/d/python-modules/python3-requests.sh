@@ -4,7 +4,9 @@ PRGNAME="python3-requests"
 ARCH_NAME="requests"
 
 ### Requests (HTTP request library for python)
-# Python-библиотека HTTP-запросов
+# Пожалуй, самая популярная библиотека для работы с интернетом в Python. Она
+# делает отправку запросов к сайтам максимально простой и понятной даже
+# новичку.
 
 # Required:    python3-charset-normalizer
 #              python3-idna
@@ -14,14 +16,11 @@ ARCH_NAME="requests"
 # Optional:    --- для тестов ---
 #              python3-pytest
 #              python3-pysocks                      (https://pypi.org/project/PySocks/)
-#              python3-flask           version<2    (https://pypi.org/project/Flask/)
-#              python3-httpbin                      (https://pypi.org/project/httpbin/)
-#              python3-markupsafe      version<2.1  (https://pypi.org/project/MarkupSafe/)
 #              python3-pytest-mock                  (https://pypi.org/project/pytest-mock/)
 #              python3-pytest-httpbin               (https://pypi.org/project/pytest-httpbin/)
-#              python3-sphinx          version<5    (https://pypi.org/project/Sphinx/)
+#              python3-pytest-cov                   (https://pypi.org/project/pytest-cov/)
+#              python3-pytest-xdist                 (https://pypi.org/project/pytest-xdist/)
 #              python3-trustme                      (https://pypi.org/project/trustme/)
-#              python3-werkzeug        version<2    (https://pypi.org/project/Werkzeug/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

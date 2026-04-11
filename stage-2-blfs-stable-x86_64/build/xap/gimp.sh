@@ -87,6 +87,7 @@ rm -rf "${TMP_DIR}/usr/share/gtk-doc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # обновим кэш иконок и базу desktop-файлов

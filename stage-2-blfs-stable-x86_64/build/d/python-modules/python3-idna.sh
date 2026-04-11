@@ -4,9 +4,9 @@ PRGNAME="python3-idna"
 ARCH_NAME="idna"
 
 ### Idna (Internationalized Domain Names for Python)
-# Поддержка Internationalised Domain Names (IDNA) в приложениях. Библиотека
-# также обеспечивает поддержку Unicode Technical Standard 46 и обработку
-# совместимости с Unicode IDNA
+# Библиотека для поддержки «необычных» адресов сайтов. Она позволяет
+# использовать в браузерах и программах доменные имена с буквами национальных
+# алфавитов (например, .рф).
 
 # Required:    no
 # Recommended: no

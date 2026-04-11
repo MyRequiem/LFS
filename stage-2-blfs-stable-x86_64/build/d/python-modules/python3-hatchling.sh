@@ -4,7 +4,8 @@ PRGNAME="python3-hatchling"
 ARCH_NAME="hatchling"
 
 ### Hatchling (Hatch build backend)
-# расширяемый, совместимый со стандартами сервер сборки, используемый Hatch
+# Современная система для «упаковки» программ на Python. Она берет исходный код
+# и превращает его в готовый пакет, который легко установить в систему.
 
 # Required:    python3-editables
 #              python3-pathspec

@@ -3,9 +3,9 @@
 PRGNAME="libpng"
 
 ### libpng (Portable Network Graphics library)
-# Библиотеки, используемые другими программами для чтения и создания файлов
-# PNG. Формат PNG был разработан в качестве замены формата GIF и TIFF, со
-# многими улучшениями и расширениями.
+# Официальный инструмент для работы с изображениями в формате PNG. Он отвечает
+# за то, чтобы изображения открывались без искажений и сохраняли свою
+# прозрачность.
 
 # Required:    no
 # Recommended: no
@@ -30,6 +30,8 @@ gzip -cd "${SOURCES}/${PRGNAME}-1.6.47-apng.patch.gz" | \
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

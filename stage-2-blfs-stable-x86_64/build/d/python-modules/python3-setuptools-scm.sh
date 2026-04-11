@@ -4,9 +4,8 @@ PRGNAME="python3-setuptools-scm"
 ARCH_NAME="setuptools_scm"
 
 ### Setuptools_scm (manage versions by scm tags)
-# Управляет версиями пакетов python в метаданных scm вместо того, чтобы
-# объявлять их в качестве аргумента версии или в файле, управляемом scm. Также
-# обрабатывает средства поиска файлов поддерживаемых scms
+# Утилита, которая автоматически определяет номер версии программы на Python,
+# просто заглядывая в историю изменений Git.
 
 # Required:    no
 # Recommended: no
@@ -16,6 +15,12 @@ ARCH_NAME="setuptools_scm"
 #              mercurial
 #              python3-pytest
 #              sudo
+#              python3-pytest-timeout
+#              python3-rich
+#              python3-ruff
+#              python3-mypy
+#              python3-griffe
+#              python3-flake8
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

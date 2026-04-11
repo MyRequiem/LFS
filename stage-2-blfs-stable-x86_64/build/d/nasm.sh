@@ -3,9 +3,9 @@
 PRGNAME="nasm"
 
 ### NASM (Netwide Assembler)
-# Портативный ассемблер и дизассемблер для микропроцессоров Intel 80x86 с
-# традиционным синтаксисом Intel. NASM считается одним из самых популярных
-# ассемблеров для Linux.
+# Портативный ассемблер и дизассемблер - инструмент для написания программ на
+# самом низком уровне с традиционным синтаксисом Intel. NASM считается одним из
+# самых популярных ассемблеров для Linux.
 
 # Required:    no
 # Recommended: no
@@ -26,6 +26,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

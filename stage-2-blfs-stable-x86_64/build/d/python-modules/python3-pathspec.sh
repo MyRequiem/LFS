@@ -4,10 +4,9 @@ PRGNAME="python3-pathspec"
 ARCH_NAME="pathspec"
 
 ### Pathspec (library for gitignore style matching of file paths)
-# служебная библиотека для сопоставления путей к файлам с образцом. Включает
-# только сопоставление с шаблоном wildmatch Git, которое, в свою очередь,
-# получено из подстановочных символов Rsync. Git использует wildmatch для своих
-# файлов gitignore.
+# Библиотека для работы с путями файлов по шаблонам. Она помогает программам
+# понимать, какие файлы нужно обрабатывать, а какие - игнорировать (как правила
+# в .gitignore).
 
 # Required:    no
 # Recommended: no

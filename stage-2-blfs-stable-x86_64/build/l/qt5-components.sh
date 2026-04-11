@@ -55,9 +55,9 @@ cd "qt-everywhere-src-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 
@@ -161,7 +161,7 @@ make install INSTALL_ROOT="${TMP_DIR}"
 #    /opt/qt5/lib/libQt5MultimediaQuick.prl
 #    ...
 find "${TMP_DIR}${QT5PREFIX}"/ -name "*.prl" \
-    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
 
 QT5BINDIR="${QT5PREFIX}/bin"
 # некоторые пакеты, например vlc, ищут определенные исполняемые файлы в

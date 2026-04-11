@@ -38,6 +38,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
