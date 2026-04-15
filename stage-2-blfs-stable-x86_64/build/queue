@@ -68,7 +68,7 @@ d/python-modules/python3-docutils.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-lxml.sh
 # если пакет уже установлен (обновляем систему), glib сначала нужно удалить
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    # removepkg --backup /var/log/packages/glib-<version>
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
@@ -77,14 +77,29 @@ l/boost.sh
 ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
-s/archivemount.sh
-n/rclone.sh
-ap/vifm.sh
-s/pytrash.sh
 # если обновляем систему, пакет gc перед обновлением НЕ удалять. При компиляции
 # ранее пакет make с ним связывается и без gc сборка будет невозможной.
 d/gc.sh
 n/w3m.sh
+# === Документация, XML, SGML, man ====
+s/docbook-xml.sh
+s/docbook-xsl.sh
+s/xmlto.sh
+d/perl-modules/perl-sgmlspm.sh
+s/sgml-common.sh
+l/opensp.sh
+l/openjade.sh
+d/help2man.sh
+s/docbook-dtd3.sh
+s/docbook-dtd4.sh
+s/docbook-dsssl.sh
+ap/docbook-utils.sh
+ap/itstool.sh
+# =====================================
+s/archivemount.sh
+n/rclone.sh
+ap/vifm.sh
+s/pytrash.sh
 d/git.sh
 n/whois.sh
 n/translate-shell.sh
@@ -214,8 +229,14 @@ l/freetype.sh
 l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
+# если обновляем систему, fontconfig лучше собирать в чистом TTY (без иксов),
+# иначе отвалится vim, tmux, bumblebee-status и т.д.
 x/misc/fontconfig.sh
+# в чистом TTY сначала удаляем пакет xorg-libraries, затем собираем и
+# устанавливаем
 x/libs/xorg-libraries.sh
+# пакет dbus НЕ удалять перед пересборкой/обновлением, собирать в чистой TTY
+# (без иксов)
 a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
@@ -226,29 +247,42 @@ d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
+# wpa-supplicant пересобираем только если устанавливаем систему с нуля для
+# интеграции с dbus
 n/wpa-supplicant.sh
-a/acpid.sh
+# пакет elogind
+#    * пересобирать/обновлять в чистой TTY (без иксов)
+#    * дописывает 2 строки в /etc/pam.d/system-session , который принадлежит
+#       пакету linux-pam. После пересборки/обновления elogind проверить чтобы
+#       не было дубликатов этих 2-х строк.
 a/elogind.sh
 d/duktape.sh
-s/docbook-xml.sh
-s/docbook-xsl.sh
-s/xmlto.sh
 l/polkit.sh
 ap/tk.sh
 d/ruby.sh
 l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
 l/shared-mime-info.sh
+# ====================
+# Все остальное до пакета bumblebee-status (включительно) обновлять в чистой
+# TTY удалив пакеты mesа, qt5 и qt6
+#    # removepkg --backup /var/log/packages/mesa-<version>
 x/libs/pixman.sh
 l/cairo.sh
-l/libtiff.sh
-l/gdk-pixbuf.sh
-d/help2man.sh
 l/pango.sh
 d/vala.sh
+l/gdk-pixbuf.sh
+l/librsvg.sh
+x/libs/libdrm.sh
+# пересоберем cairo
+l/cairo.sh
+s/bubblewrap.sh
+l/libtiff.sh
+l/lcms2.sh
+l/glycin.sh
+l/gdk-pixbuf.sh
 l/librsvg.sh
 # ======= mesa =======
-x/libs/libdrm.sh
 x/libs/libva.sh
 x/libs/libvdpau.sh
 x/libs/wayland.sh
@@ -257,8 +291,8 @@ d/vulkan-headers.sh
 x/libs/vulkan-loader.sh
 d/spirv-headers.sh
 l/spirv-tools.sh
-x/misc/glslang.sh
 d/spirv-llvm-translator.sh
+x/misc/glslang.sh
 l/libclc.sh
 # cbindgen собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
 d/cbindgen.sh
@@ -268,10 +302,8 @@ d/rust-bindgen.sh
 d/python-modules/python3-ply.sh
 x/misc/mesa.sh
 # ====================
-l/cairo.sh
 x/misc/glu.sh
 x/misc/freeglut.sh
-l/libtiff.sh
 l/harfbuzz.sh
 x/libs/libva.sh
 x/utils/libva-utils.sh
@@ -336,7 +368,8 @@ l/sdl2.sh
 l/giflib.sh
 l/sdl12-compat.sh
 l/libwebp.sh
-l/lcms2.sh
+# пересоберем libtiff
+l/libtiff.sh
 l/libmng.sh
 l/jasper.sh
 d/abseil-cpp.sh
@@ -435,7 +468,6 @@ d/perl-modules/perl-business-isbn.sh
 d/perl-modules/perl-mime-base32.sh
 d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
-d/perl-modules/perl-sgmlspm.sh
 d/perl-modules/perl-file-fcntllock.sh
 d/perl-modules/perl-xml-simple.sh
 l/cxxopts.sh
@@ -445,6 +477,8 @@ x/apps/i3.sh
 l/libnsl.sh
 d/python3.sh
 a/gpm.sh
+# пакет vim перед обновлением удалить из системы
+#    # removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
 # === bumblebee-status ===
 # python3 модули удаляем из системы перед обновлением
@@ -468,7 +502,6 @@ l/gexiv2.sh
 ap/mirage.sh
 # === zenity, ntp, fcron ===
 l/libxmlb.sh
-ap/itstool.sh
 l/appstream.sh
 l/libadwaita.sh
 ap/zenity.sh
@@ -543,13 +576,6 @@ d/python-modules/python3-zipp.sh
 d/python-modules/python3-importlib-metadata.sh
 d/python-modules/python3-tomli.sh
 d/python-modules/python3-build.sh
-s/sgml-common.sh
-l/opensp.sh
-l/openjade.sh
-s/docbook-dtd3.sh
-s/docbook-dtd4.sh
-s/docbook-dsssl.sh
-ap/docbook-utils.sh
 n/tunctl.sh
 s/virt-manager.sh
 # ===================================
@@ -627,7 +653,6 @@ l/libical.sh
 n/bluez.sh
 l/pipewire.sh
 l/wireplumber.sh
-s/bubblewrap.sh
 l/xdg-desktop-portal.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>

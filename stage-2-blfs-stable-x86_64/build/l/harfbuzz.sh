@@ -3,17 +3,21 @@
 PRGNAME="harfbuzz"
 
 ### HarfBuzz (OpenType text shaping engine)
-# HarfBuzz (свободная транслитерация персидского harf-baz, что означает "open
-# type") - движок формирования текста OpenType
+# Важнейшая библиотека для формирования текста OpenType. Она соединяет
+# отдельные буквы в красивые слоги и лигатуры, что критично для многих мировых
+# языков.
 
 # Required:    no
-# Recommended: glib
+# Recommended: freetype             (пересобрать данную зависимость после сборки harfbuzz)
+#              glib
 #              graphite2            (нужен для сборки texlive или libreoffice с системным harfbuzz)
 #              icu
-#              freetype             (пересобрать данную зависимость после сборки harfbuzz)
 # Optional:    cairo                (для сборки утилиты 'hb-view')
 #              git
 #              gtk-doc
+#              glew
+#              mesa
+#              glfw                 (https://linuxfromscratch.org/slfs/view/dev/graph/glfw.html)
 #              python3-fonttools    (для тестов) https://pypi.org/project/fonttools/
 #              ragel                (https://www.colm.net/open-source/ragel/)
 #              wasm-micro-runtime   (https://github.com/bytecodealliance/wasm-micro-runtime)
@@ -39,14 +43,14 @@ meson setup ..                  \
     -D tests=disabled || exit 1
 
 ninja || exit 1
-
-# для тестов убираем параметр -Dtests из конфигурации meson
 # ninja test
-
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

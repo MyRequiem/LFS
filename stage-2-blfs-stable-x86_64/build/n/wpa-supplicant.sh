@@ -209,6 +209,7 @@ install -vm755 "${TMP_DIR}/usr/sbin/wpa_supplicant" /usr/sbin/ || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${WPA_SUPPLICANT_WLAN0_CONF}"

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="vim"
+CTAGS_ARCH_NAME="universal-ctags"
 
 ### Vim (Vi IMproved)
 # Powerful text editor
@@ -23,17 +24,17 @@ DOCS="/usr/share/doc"
 mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
 # ctags когда-то входил в состав редактора Vim, добавим сами:
-CTAGSVER="$(find "${SOURCES}" -type f -name "ctags-*.tar.?z" | rev | \
-    cut -d . -f 3- | cut -d - -f 1 | rev )"
+CTAGSVER="$(find "${SOURCES}" -type f -name "${CTAGS_ARCH_NAME}-*.tar.?z" \
+    | rev | cut -d . -f 3- | cut -d - -f 1 | rev )"
 
 if [ -z "${CTAGSVER}" ]; then
     echo "Error:"
-    echo "ctags source arhive not found in ${SOURCES}"
+    echo "${CTAGS_ARCH_NAME} source arhive not found in ${SOURCES}"
     exit 1
 fi
 
-tar xvf "${SOURCES}/ctags-${CTAGSVER}".tar.?z || exit 1
-cd "ctags-${CTAGSVER}" || exit 1
+tar xvf "${SOURCES}/${CTAGS_ARCH_NAME}-${CTAGSVER}".tar.?z || exit 1
+cd "${CTAGS_ARCH_NAME}-${CTAGSVER}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -59,7 +60,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}" || exit 1
 
 cd .. || exit 1
-rm -rf "ctags-${CTAGSVER}"
+rm -rf "${CTAGS_ARCH_NAME}-${CTAGSVER}"
 
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc

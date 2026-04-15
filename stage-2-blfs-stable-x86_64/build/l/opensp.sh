@@ -4,7 +4,9 @@ PRGNAME="opensp"
 ARCH_NAME="OpenSP"
 
 ### OpenSP (C++ library for using SGML/XML files)
-# C++ библиотека для проверки, анализа и управления SGML/XML документами
+# Набор инструментов (C++ библиотека) для проверки и обработки документов в
+# форматах SGML и XML. Он работает как «корректор», который следит, чтобы файлы
+# были написаны без ошибок и строго соответствовали правилам разметки.
 
 # Required:    sgml-common
 # Recommended: no
@@ -40,6 +42,8 @@ make                                                     \
     pkgdatadir="/usr/share/sgml/${ARCH_NAME}-${VERSION}" \
     docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
     install  DESTDIR="${TMP_DIR}" || exit 1
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 ln -v -sf onsgmls   "${TMP_DIR}/usr/bin/nsgmls"
 ln -v -sf osgmlnorm "${TMP_DIR}/usr/bin/sgmlnorm"

@@ -3,16 +3,14 @@
 PRGNAME="elogind"
 
 ### elogind (logind extracted from systemd)
-# elogind проекта systemd, извлеченный в отдельный автономный демон.
-# Интегрируется с Linux PAM для отслеживания всех пользователей, вошедших в
-# систему, и вошли ли они в систему графически, на консоли или удаленно. Эту
-# информацию демон предоставляет через стандартный org.freedesktop.login1 D-Bus
-# интерфейс.
+# Мастер управления сеансами. Он следит за тем, кто зашел в систему, и дает
+# программам разрешение на работу с оборудованием (звуком, видео) без участия
+# громоздких систем.
 
 # Required:    no
-# Recommended: dbus         (runtime)
+# Recommended: dbus               (runtime)
 #              linux-pam
-#              polkit       (runtime)
+#              polkit             (runtime)
 #              --- для сборки man-страниц ---
 #              docbook-xml
 #              docbook-xsl
@@ -21,10 +19,10 @@ PRGNAME="elogind"
 #              python3-lxml
 #              zsh
 #              valgrind
-#              audit-userspace (https://github.com/linux-audit/audit-userspace)
-#              bash-completion (https://github.com/scop/bash-completion)
-#              kexec           (https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kexec/)
-#              selinux         (https://selinuxproject.org/page/Main_Page)
+#              audit-userspace    (https://github.com/linux-audit/audit-userspace)
+#              bash-completion    (https://github.com/scop/bash-completion)
+#              kexec              (https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kexec/)
+#              selinux            (https://selinuxproject.org/page/Main_Page)
 
 ### Конфигурация ядра
 #    CONFIG_CGROUPS=y
@@ -77,6 +75,8 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # /usr/lib/pkgconfig/
 #    libsystemd.pc -> libelogind.pc
 ln -sfv  libelogind.pc "${TMP_DIR}/usr/lib/pkgconfig/libsystemd.pc"
@@ -89,7 +89,7 @@ ln -sfvn elogind "${TMP_DIR}/usr/include/systemd"
 #    /etc/elogind/logind.conf
 
 LOGIND_CONF="/etc/elogind/logind.conf"
-# не убиваем пользовательские процессы, если он выходит из системы
+# не убиваем пользовательские процессы, если юзер выходит из системы
 sed -e '/\[Login\]/a KillUserProcesses=no' -i "${TMP_DIR}${LOGIND_CONF}"
 
 if [ -f "${LOGIND_CONF}" ]; then
@@ -138,7 +138,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # /run/systemd layout.
 #
 # Home page: https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/V${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

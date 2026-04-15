@@ -3,16 +3,17 @@
 PRGNAME="freetype"
 
 ### FreeType (A free, high-quality, and portable font engine)
-# Библиотека (портативный движок рендеринга), которая позволяет приложениям
-# рендерить шрифты TrueType, OpenType и Type 1
+# Главный «художник» шрифтов в системе. Она отвечает за то, чтобы символы на
+# экране выглядели гладкими, четкими и легко читались при любом размере, т.е.
+# за рендеринг шрифтов TrueType, OpenType, Type 1.
 
 # Required:    no
-# Recommended: harfbuzz    (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
+# Recommended: harfbuzz             (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
 #              libpng
 #              which
 # Optional:    brotli
 #              librsvg
-#              python3-docwriter   (для сборки документации) https://pypi.org/project/docwriter/
+#              python3-docwriter    (для сборки документации) https://pypi.org/project/docwriter/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -35,15 +36,19 @@ sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
 #    --enable-freetype-config
 ./configure                  \
     --prefix=/usr            \
+    --disable-static         \
     --enable-freetype-config \
-    --disable-static || exit 1
+    --with-harfbuzz=dynamic || exit 1
 
 make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

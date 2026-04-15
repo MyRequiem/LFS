@@ -66,13 +66,44 @@ patch --verbose -Np1 -i \
 mkdir build
 cd build || exit 1
 
-meson setup ..                \
-    --prefix="${XORG_PREFIX}" \
-    --localstatedir=/var      \
-    -D glamor=true            \
-    -D systemd_logind=true    \
-    -D xephyr=true            \
-    -D xkb_output_dir=/var/lib/xkb || exit 1
+# Универсальный драйвер 2D-ускорения для X-сервера, который выполняет
+# графические операции через OpenGL. В большинстве современных конфигурациях он
+# крайне полезен или даже необходим, особенно для универсального драйвера
+# modesetting.
+#    -D glamor=true
+# Xvfb (X Virtual Framebuffer) - виртуальный X-сервер, который выполняет все
+# графические операции в оперативной памяти, не выводя ничего на реальный
+# монитор. Крайне полезен в специфических сценариях, например окрытие браузера,
+# создание скриншота без участия пользователя, запуск старых игр/программ.
+#    -D xvfb=true
+# Интеграция с elogind (logind без systemd)
+#    -D systemd_logind=true
+# Xephyr - вложенный X-сервер, который запускается как обычное окно внутри
+# текущей графической сессии. Создает изолированную графическую среду, где
+# можно запускать другие оконные менеджеры или приложения, например для их
+# тестов.
+#    -D xephyr=false
+# Xnest - предшественник Xephyr
+#    -D xnest=false
+# Для очень старых видеокарт (антиквариат)
+#    -D dri1=false
+# Только для Windows и MacOS
+#    -D xwin=false
+#    -D xquartz=false
+FONT_PATH="/usr/share/fonts/X11/misc,/usr/share/fonts/X11/75dpi,/usr/share/fonts/X11/100dpi,/usr/share/fonts/X11/OTF,/usr/share/fonts/X11/Speedo,/usr/share/fonts/X11/TTF,/usr/share/fonts/X11/Type1,/usr/share/fonts/X11/cyrillic,/usr/share/fonts/util"
+meson setup ..                     \
+    --prefix="${XORG_PREFIX}"      \
+    --localstatedir=/var           \
+    -D glamor=true                 \
+    -D xvfb=true                   \
+    -D systemd_logind=true         \
+    -D xephyr=false                \
+    -D xnest=false                 \
+    -D dri1=false                  \
+    -D xwin=false                  \
+    -D xquartz=false               \
+    -D xkb_output_dir=/var/lib/xkb \
+    -D default_font_path="${FONT_PATH}" || exit 1
 
 ninja || exit 1
 # ninja test

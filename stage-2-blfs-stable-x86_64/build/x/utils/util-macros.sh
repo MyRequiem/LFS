@@ -3,8 +3,9 @@
 PRGNAME="util-macros"
 
 ### util-macros (autoconf support for X11)
-# Набор m4 макросов, которые используются скриптами configure.ac для всех
-# пакетов Xorg
+# Набор стандартных правил (m4 макросов, которые используются скриптами
+# configure.ac) для сборки графической системы X.Org. Они следят за тем, чтобы
+# все детали «иксов» собирались правильно и единообразно.
 
 # Required:    no
 # Recommended: no
@@ -27,6 +28,7 @@ make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

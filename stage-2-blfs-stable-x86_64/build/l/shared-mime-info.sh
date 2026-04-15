@@ -3,7 +3,10 @@
 PRGNAME="shared-mime-info"
 
 ### shared-mime-info (Freedesktop common MIME database)
-# База данных MIME
+# Общая база данных, которая учит систему определять типы файлов (например,
+# картинка это, текст или видео) по их расширению или содержимому. Она служит
+# единым «словарем», благодаря которому все программы и файловые менеджеры
+# одинаково понимают, каким приложением открыть тот или иной файл.
 
 # Required:    glib
 #              libxml2
@@ -17,15 +20,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# если будем запускать тесты
-# tar -xf "${SOURCES}/xdgmime.tar.xz" || exit 1
-# make -C xdgmime
-
 mkdir build
 cd build || exit 1
 
 # указываем системе сборки запускать update-mime-database во время установки
-#    -Dupdate-mimedb=true
+#    -D update-mimedb=true
 meson setup               \
     --prefix=/usr         \
     --buildtype=release   \
@@ -35,6 +34,8 @@ meson setup               \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -4,8 +4,8 @@ PRGNAME="python3-meson"
 ARCH_NAME="meson_python"
 
 ### Meson_python (Python build backend for Meson projects)
-# серверная часть сборки Python, построенная на основе системы сборки Meson,
-# что позволяет использовать Meson для настройки и сборки пакетов Python
+# Pyton-модуль для быстрой и современной системы сборки meson, написанной на
+# Python.
 
 # Required:    python3-pyproject-metadata
 # Recommended: patchelf

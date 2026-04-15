@@ -3,9 +3,10 @@
 PRGNAME="docbook-utils"
 
 ### DocBook-utils (scripts collection to convert and analyze SGML documents)
-# Набор служебных скриптов для преобразования из DocBook или других форматов
-# SGML в HTML, man, info, RTF и многие другие форматы. Так же используется для
-# анализа SGML документов в целом и файлов DocBook в частности.
+# Набор  служебных скриптов, которые упрощают работу с документами в форматах
+# DocBook SGML и XML. С их помощью можно одной короткой командой превратить
+# исходный текст в готовый файл, например в HTML, PDF или обычный текст, не
+# вникая в сложные настройки программ-обработчиков.
 
 # Required:    openjade
 #              docbook-dsssl
@@ -36,6 +37,8 @@ make || exit 1
 # пакет не имет набора тестов
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # установим некоторые ссылки для совместимости
 for DOCTYPE in html ps dvi man pdf rtf tex texi txt; do
     ln -svf "docbook2${DOCTYPE}" "${TMP_DIR}/usr/bin/db2${DOCTYPE}"
@@ -43,6 +46,7 @@ done
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

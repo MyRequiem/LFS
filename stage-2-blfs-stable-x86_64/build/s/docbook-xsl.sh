@@ -4,10 +4,13 @@ PRGNAME="docbook-xsl"
 ARCH_NAME="${PRGNAME}-nons"
 
 ### docbook-xsl (Stylesheets package)
-# Таблицы стилей XSL, которые нужны для выполнения преобразований в файлах XML
-# DocBook
+# Набор готовых стилей и правил, которые превращают скучный код DocBook в
+# готовые красивые файлы: PDF, HTML или man-страницы. Если сам DocBook - это
+# только текст и структура, то этот пакет отвечает за то, как именно этот текст
+# будет выглядеть в итоге (шрифты, отступы, таблицы).
 
 # Required:    libxml2
+#              docbook-xml
 # Recommended: no
 # Optional:    apache-ant       (для сборки "webhelp" документации)
 #              libxslt
@@ -31,53 +34,27 @@ patch --verbose -Np1 -i \
 cp -vR VERSION assembly common eclipse epub epub3 extensions fo        \
        highlighting html htmlhelp images javahelp lib manpages params  \
        profiling roundtrip slides template tests tools webhelp website \
-       xhtml xhtml-1_1 xhtml5 "${TMP_DIR}${XSL_STYLESHEETS}"
+       xhtml xhtml-1_1 xhtml5                                          \
+       "${TMP_DIR}${XSL_STYLESHEETS}" || exit 1
 
-ln -s VERSION "${TMP_DIR}${XSL_STYLESHEETS}/VERSION.xsl"
+ln -svf VERSION "${TMP_DIR}${XSL_STYLESHEETS}/VERSION.xsl"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-xmlcatalog --noout --add "rewriteSystem"                         \
-           "http://cdn.docbook.org/release/xsl-nons/${VERSION}"  \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteSystem"                         \
-           "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteURI"                            \
-           "http://cdn.docbook.org/release/xsl-nons/${VERSION}"  \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteURI"                            \
-           "https://cdn.docbook.org/release/xsl-nons/${VERSION}" \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteSystem"                         \
-           "http://cdn.docbook.org/release/xsl-nons/current"     \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteSystem"                         \
-           "https://cdn.docbook.org/release/xsl-nons/current"    \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteURI"                            \
-           "http://cdn.docbook.org/release/xsl-nons/current"     \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteURI"                            \
-           "https://cdn.docbook.org/release/xsl-nons/current"    \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteSystem"                         \
-           "http://docbook.sourceforge.net/release/xsl/current"  \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog &&
-
-xmlcatalog --noout --add "rewriteURI"                            \
-           "http://docbook.sourceforge.net/release/xsl/current"  \
-           "${XSL_STYLESHEETS}" /etc/xml/catalog
+# /etc/xml/catalog установлен с пакетом docbook-xml, поэтому его включил в
+# Required зависимость. Дополним его:
+for URI in http{,s}://cdn.docbook.org/release/xsl-nons/{${VERSION},current} \
+        http://docbook.sourceforge.net/release/xsl/current; do
+    for REWRITE in System URI; do
+        xmlcatalog --noout --add "rewrite${REWRITE}" \
+        "${URI}"                                     \
+        "${XSL_STYLESHEETS}"                         \
+        /etc/xml/catalog
+    done
+done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Stylesheets package)

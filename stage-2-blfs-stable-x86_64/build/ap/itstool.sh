@@ -3,11 +3,13 @@
 PRGNAME="itstool"
 
 ### ITS Tool (Translate XML documents with PO files)
-# Позволяет переводить XML-документы с PO-файлами, используя правила из набора
-# тегов интернационализации W3C (ITS) для определения того, что перевести и как
-# разделить его на сообщения.
+# Специальный инструмент, который помогает переводить XML-документы (например,
+# документацию к программам) на разные языки. Он извлекает текст из файлов
+# разметки в стандартные файлы перевода (.po) и вставляет переведенный текст
+# обратно, сохраняя всю структуру документа нетронутой.
 
 # Required:    docbook-xml
+#              python3-lxml
 # Recommended: no
 # Optional:    no
 
@@ -18,20 +20,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим некоторые проблемы совместимости с Python-3.12
-sed -i 's/re.sub(/re.sub(r/'         itstool.in || exit 1
-sed -i 's/re.compile(/re.compile(r/' itstool.in || exit 1
+# применим патч, чтобы использовать python3-lxml для обработки файлов XML
+# вместо устаревшего (отключенного по умолчанию) модуля Python из libxml2
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-lxml-1.patch" || exit 1
 
 PYTHON=/usr/bin/python3 \
-./configure             \
+./autogen.sh \
     --prefix=/usr || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# python3 tests/run_tests.py
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -41,8 +47,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # rules from the W3C Internationalization Tag Set (ITS) to determine what to
 # translate and how to separate it into PO file messages.
 #
-# Home page: https://itstool.org/
-# Download:  https://files.itstool.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Home page: https://${PRGNAME}.org/
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

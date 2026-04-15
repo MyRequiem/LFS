@@ -64,7 +64,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 # NOTE:
 # Qt5 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
 # устанавливать в /opt/qt5-${VERSION}
-export QT5PREFIX=/opt/qt5
+export QT5PREFIX="/opt/qt5-${VERSION}"
 
 # /etc
 #     |
@@ -76,13 +76,10 @@ export QT5PREFIX=/opt/qt5
 #     bin/
 # /opt
 #     |
-#     qt5               (ссылка на qt5-${VERSION}/)
 #     qt5-${VERSION}/
 
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d,ld.so.conf.d},usr/bin}
-mkdir -pv "${TMP_DIR}${QT5PREFIX}-${VERSION}"
-# qt5 -> qt5-${VERSION}
-ln -sv "qt5-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../qt5"
+mkdir -pv "${TMP_DIR}${QT5PREFIX}"
 
 # исправления, предложенные KDE
 patch -Np1 --verbose -i \
@@ -175,7 +172,7 @@ done
 
 # добавим путь поиска библиотек для динамического загрузчика
 cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/qt5.conf"
-/opt/qt5/lib
+${QT5PREFIX}/lib
 EOF
 
 # QT5DIR также должен быть доступен пользователю root

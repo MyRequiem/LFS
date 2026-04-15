@@ -3,10 +3,9 @@
 PRGNAME="patchelf"
 
 ### Patchelf (tool to modify ELF binaries/libraries)
-# Утилита для изменения существующего исполняемого файла или ELF библиотеки. С
-# ее помощью можно изменить динамический загрузчик (интерпретатор ELF)
-# исполняемого файла, RPATH и добавлять/изменять/удалять объявленные
-# зависимости от динамических библиотек.
+# Маленькая утилита для «хирургического» вмешательства в готовые программы
+# (исполняемые файлы или ELF библиотеки). Она позволяет изменить пути поиска
+# библиотек без пересборки всего пакета.
 
 # Required:    no
 # Recommended: no
@@ -27,8 +26,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

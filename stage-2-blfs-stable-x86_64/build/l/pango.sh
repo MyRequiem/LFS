@@ -3,17 +3,18 @@
 PRGNAME="pango"
 
 ### Pango (library for layout and rendering of text)
-# Библиотека для отображения текста на разных языках в высоком качестве.
-# Поддерживает три различных способа отображения шрифтов, благодаря чему
-# работает во многих операционных системах и является основой обработки текста
-# и шрифтов в GTK+2
+# Библиотека для отрисовки текста и управления шрифтами, которая умеет
+# правильно обрабатывать сложные языки и символы. Она отвечает за то, чтобы
+# текст выглядел аккуратно, имел нужный размер и корректно отображался в
+# графических интерфейсах.
 
 # Required:    fontconfig          (должен быть собран с freetype и harfbuzz)
 #              fribidi
 #              glib
 # Recommended: cairo               (собранный после harfbuzz)
 #              xorg-libraries
-# Optional:    python3-gi-docgen   (для генерации документации)
+# Optional:    python3-docutils    (для man-страниц)
+#              python3-gi-docgen   (для документации)
 #              help2man            (https://www.gnu.org/software/help2man/) для генерации man-страниц
 #              libthai             (https://linux.thai.net/projects/libthai)
 #              sysprof             (https://wiki.gnome.org/Apps/Sysprof)
@@ -42,8 +43,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

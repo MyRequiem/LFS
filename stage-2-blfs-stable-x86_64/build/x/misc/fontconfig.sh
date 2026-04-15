@@ -3,8 +3,8 @@
 PRGNAME="fontconfig"
 
 ### Fontconfig (Font library and tools)
-# Библиотека и инструменты, разработанные для конфигурации общесистемных
-# шрифтов
+# Система управления шрифтами. Она помогает программам находить нужные шрифты и
+# заменять недостающие символы похожими из других начертаний.
 
 # Required:    freetype
 # Recommended: no
@@ -34,11 +34,10 @@ mkdir -pv "${TMP_DIR}/etc/fonts/conf.avail"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-
-# для некоторых тестов необходимо интернет соединение
-# make check
-
+# make check    (для некоторых тестов необходимо интернет соединение)
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # man-страницы
 install -v -dm755                 "${TMP_DIR}/usr/share/man"/man{1,3,5}

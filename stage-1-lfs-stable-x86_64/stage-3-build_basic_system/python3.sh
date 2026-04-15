@@ -16,7 +16,7 @@ if [ -n "${INSTALLED}" ]; then
     INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
     echo "${INSTALLED_VERSION} already installed. Before building Python3 "
     echo "package, you need to remove it."
-    removepkg --no-color "${INSTALLED}"
+    removepkg --backup --no-color "${INSTALLED}"
 fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"

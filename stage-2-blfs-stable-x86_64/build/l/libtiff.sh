@@ -4,17 +4,17 @@ PRGNAME="libtiff"
 ARCH_NAME="tiff"
 
 ### LibTIFF (a library for reading and writing TIFF files)
-# Библиотеки и утилиты для работы с изображениями в формате TIFF (Tag Image
-# File Format)
+# Библиотеки и утилиты для работы с «тяжелыми» изображениями формата TIFF (Tag
+# Image File Format), который часто используется в полиграфии и науке.
 
-# Required:    cmake
+# Required:    cmake            (в BLFS указано как Recommended, но это же Required :)
 # Recommended: no
-# Optional:    freeglut       (для сборки утилиты tiffgt)
+# Optional:    freeglut         (для сборки утилиты tiffgt)
 #              libjpeg-turbo
 #              python3-sphinx
 #              libwebp
-#              jbig-kit       (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
-#              lerc           (https://www.osgeo.org/projects/lerc-limited-error-raster-compression/)
+#              jbig-kit         (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
+#              lerc             (https://www.osgeo.org/projects/lerc-limited-error-raster-compression/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -26,18 +26,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p libtiff-build
 cd libtiff-build || exit 1
 
-cmake                                   \
-    -D CMAKE_INSTALL_PREFIX=/usr ..     \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -G Ninja                            \
-    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -W no-dev                    \
+    -G Ninja .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

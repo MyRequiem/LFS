@@ -3,8 +3,11 @@
 PRGNAME="sgml-common"
 
 ### sgml-common (SGML Common package)
-# Общий пакет SGML содержит утилиту 'install-catalog', необходимую для создания
-# и поддержки централизованных каталогов SGML и XML
+# Базовый набор общих правил и файлов, которые нужны системе, чтобы правильно
+# читать любые документы в формате SGML и XML. Он служит фундаментом
+# (каталогом), без которого программы для обработки этих текстов просто не
+# будут знать, как их расшифровать. Содержит утилиту 'install-catalog',
+# необходимую для создания и поддержки централизованных каталогов SGML и XML.
 
 # Required:    no
 # Recommended: no
@@ -30,6 +33,8 @@ make || exit 1
 # пакет не содержит набора тестов
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # перед обновлением пакета нужно удалить некоторые файлы
 if command -v install-catalog &>/dev/null; then
     install-catalog --remove /etc/sgml/sgml-ent.cat \
@@ -41,13 +46,14 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 install-catalog --add /etc/sgml/sgml-ent.cat \
-    /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
+    /usr/share/sgml/sgml-iso-entities-8879.1986/catalog || exit 1
 
 install-catalog --add /etc/sgml/sgml-docbook.cat \
-    /etc/sgml/sgml-ent.cat
+    /etc/sgml/sgml-ent.cat                              || exit 1
 
 cp -vR /etc/sgml/{catalog,sgml-docbook.cat,sgml-ent.cat} "${TMP_DIR}/etc/sgml/"
 

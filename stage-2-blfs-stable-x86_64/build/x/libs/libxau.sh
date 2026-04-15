@@ -4,7 +4,9 @@ PRGNAME="libxau"
 ARCH_NAME="libXau"
 
 ### libXau (Sample Authorization Protocol for X)
-# Библиотека, реализующая авторизацию X11
+# Маленький, но важный страж безопасности графического стола (авторизация X11).
+# Библиотека проверяет права доступа, чтобы никто посторонний не мог
+# подключиться к вашему экрану.
 
 # Required:    xorgproto
 # Recommended: no
@@ -26,8 +28,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

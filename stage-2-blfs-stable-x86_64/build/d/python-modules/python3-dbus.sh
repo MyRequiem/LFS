@@ -4,7 +4,8 @@ PRGNAME="python3-dbus"
 ARCH_NAME="dbus-python"
 
 ### D-Bus Python (Python bindings for dbus)
-# Обеспечивает привязку Python к API D-Bus интерфейса
+# Библиотека, открывающая программам на Python доступ к системной шине
+# сообщений D-Bus для управления оборудованием и софтом.
 
 # Required:    dbus
 #              glib

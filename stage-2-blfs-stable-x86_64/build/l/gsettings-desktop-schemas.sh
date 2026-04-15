@@ -3,7 +3,10 @@
 PRGNAME="gsettings-desktop-schemas"
 
 ### gsettings-desktop-schemas (GSettings schemas)
-# Набор схем GSettings для настройки различных компонентов рабочего стола
+# Набор общих настроек и правил, которые определяют внешний вид и поведение
+# рабочего стола (например, шрифты, обои, темы или горячие клавиши). Он служит
+# единым «справочником» для разных программ, чтобы они знали, какие стандартные
+# параметры сейчас установлены в системе.
 
 # Required:    glib
 # Recommended: no
@@ -30,6 +33,8 @@ meson setup             \
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

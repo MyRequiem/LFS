@@ -3,8 +3,10 @@
 PRGNAME="tk"
 
 ### Tk (Tk toolkit for Tcl)
-# Расширение Tcl (TCL GUI Toolkit), позволяющее быстро и легко создавать
-# X11-приложения, с внешним видом приложений Motif
+# Набор готовых графических элементов (кнопок, окон, меню), который позволяет
+# программистам быстро создавать визуальный интерфейс для своих программ. Часто
+# используется вместе с языками Python, Perl или Tcl, чтобы превратить
+# текстовый скрипт в полноценное оконное приложение.
 
 # Required:    xorg-libraries
 # Recommended: no
@@ -48,7 +50,7 @@ make || exit 1
 # удаляем ссылки на каталог сборки
 sed -e "s@^\(TK_SRC_DIR='\).*@\1/usr/include'@" \
     -e "/TK_B/s@='\(-L\)\?.*unix@='\1/usr/lib@" \
-    -i tkConfig.sh
+    -i tkConfig.sh || exit 1
 
 # тесты запускать не рекомендуется, т.к. они могут привести к сбою X-сервера
 # или просто зависнуть
@@ -57,6 +59,8 @@ make install DESTDIR="${TMP_DIR}"
 # устанавливаем заголовки интерфейса библиотеки Tk, которые используются
 # другими пакетами, если они связаны с библиотекой Tk
 make install-private-headers DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # ссылка в /usr/bin
 #    wish -> wishX.X
@@ -67,6 +71,7 @@ chmod -v 755 "${TMP_DIR}/usr/lib/libtk${MAJ_VERSION}.so"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

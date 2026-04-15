@@ -4,12 +4,14 @@ PRGNAME="python3-pyproject-metadata"
 ARCH_NAME="pyproject_metadata"
 
 ### Pyproject-Metadata (Dataclass for PEP 621 metadata)
-# модуль проверяет входные данные и генерирует файл метаданных, совместимый с
-# PEP 643 (например, PKG-INFO)
+# Инструмент для чтения стандартных описаний (метаданных) Python-проектов. Он
+# помогает другим программам узнать имя, версию и зависимости устанавливаемого
+# пакета.
 
 # Required:    no
 # Recommended: no
-# Optional:    python3-pytest    (длЯ тестов)
+# Optional:    python3-pytest            (для тестов)
+#              python3-exceptiongroup    (https://pypi.org/project/exceptiongroup/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

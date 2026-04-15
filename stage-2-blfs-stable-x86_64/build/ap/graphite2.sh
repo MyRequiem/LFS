@@ -3,19 +3,16 @@
 PRGNAME="graphite2"
 
 ### Graphite2 (rendering engine for graphite fonts)
-# Технология создания Юникод-совместимого смарт-шрифта и система рендеринга.
-# Graphite основана на формате TrueType, и создаёт дополнительно три
-# собственные таблицы данных, описывающие особенности системы письменности, а
-# также создаёт правила изменения символов в зависимости от контекста,
-# например, лигатур, замены или вставки глифов, диакритики, кернинга и
-# выключки.
+# Умный движок для отображения сложных шрифтов, основаный на формате TrueType.
+# Он умеет правильно расставлять символы в языках со специфическими правилами
+# письма.
 
 # Required:    cmake
 # Recommended: no
 # Optional:    freetype
 #              silgraphite                  (для сборки утилиты comparerender - test and benchmarking tool) https://sourceforge.net/projects/silgraphite/files/silgraphite
 #              harfbuzz                     (для более полного функционала)
-#              graphite-font                (https://graphite.sil.org/)
+#              graphite-font                (runtime) https://graphite.sil.org/
 #              --- для документации ---
 #              python3-asciidoc
 #              doxygen
@@ -36,9 +33,10 @@ mkdir -pv "${TMP_DIR}"
 sed -i '/cmptest/d' tests/CMakeLists.txt || exit 1
 
 # исправим проблему сборки путем обновления синтаксиса в соответствии с
-# CMake>=4.0.0
+# CMake >=4.0.0
 sed -i '/cmake_policy(SET CMP0012 NEW)/d' CMakeLists.txt || exit 1
 sed -i 's/PythonInterp/Python3/'          CMakeLists.txt || exit 1
+# shellcheck disable=SC2038
 find . -name CMakeLists.txt | \
     xargs sed -i 's/VERSION 2.8.0 FATAL_ERROR/VERSION 4.0.0/'
 
@@ -46,7 +44,7 @@ find . -name CMakeLists.txt | \
 sed -i '/Font.h/i #include <cstdint>' \
     tests/featuremap/featuremaptest.cpp || exit 1
 
-mkdir build &&
+mkdir build
 cd build || exit 1
 
 cmake                            \
@@ -57,8 +55,11 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

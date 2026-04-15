@@ -4,7 +4,8 @@ PRGNAME="xorg-libraries"
 PKG_VERSION="11"
 
 ### Xorg Libraries (Xorg libraries)
-# Библиотеки Xorg, которые используются во всех X Window приложения
+# Базовый комплект библиотек, на которых «стоит» вся графическая оболочка X
+# Window System. Это фундамент для любого рабочего стола в Linux.
 
 # Required:    fontconfig
 #              libxcb
@@ -13,9 +14,9 @@ PKG_VERSION="11"
 #              python3-asciidoc
 #              xmlto
 #              fop
-#              links или lynx или w3m (http://w3m.sourceforge.net/)
+#              links или lynx или w3m       (http://w3m.sourceforge.net/)
 #              --- для некоторых тестов ---
-#              ncompress              (https://github.com/vapier/ncompress)
+#              ncompress                    (https://github.com/vapier/ncompress)
 
 ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"
@@ -159,7 +160,7 @@ for PKGNAME in ${PACKAGES}; do
                     exit 1
                 }
             ;;
-        libpciaccess)
+        libpciaccess|libxkbfile)
             mkdir build
             cd build || exit 1
 
@@ -183,7 +184,8 @@ for PKGNAME in ${PACKAGES}; do
     esac
 
     # сборка
-    if [ "${PKGNAME}" == "libpciaccess" ]; then
+    if [[ "${PKGNAME}" == "libpciaccess" || \
+            "${PKGNAME}" == "libxkbfile" ]]; then
         ninja || {
             show_error "'make (ninja)' for ${PKGNAME} package"
             exit 1
@@ -199,7 +201,8 @@ for PKGNAME in ${PACKAGES}; do
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
     mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
-    if [ "${PKGNAME}" == "libpciaccess" ]; then
+    if [[ "${PKGNAME}" == "libpciaccess" || \
+            "${PKGNAME}" == "libxkbfile" ]]; then
         DESTDIR="${PKG_INSTALL_DIR}" ninja install || {
             show_error "'ninja install' for ${PKGNAME} package"
             exit 1
@@ -232,6 +235,26 @@ for PKGNAME in ${PACKAGES}; do
         for FILE in *; do
             install-info --dir-file="${INFO}/dir" "${FILE}" 2>/dev/null
         done
+    fi
+
+    # удалим документацию
+    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help}
+
+    # удалим лишние локали
+    LOCALEDIR="${PKG_INSTALL_DIR}/usr/share/X11/locale"
+    # оставляем только нужные локали
+    KEEP_LOCALES="ru ru_RU ru_RU.UTF-8 en en_US en_US.UTF-8 en_GB en_GB.UTF-8"
+    if [ -d "${LOCALEDIR}" ]; then
+        # формируем аргументы для find: ! -name 'ru' ! -name 'en' ...
+        FIND_ARGS=""
+        for LOC in ${KEEP_LOCALES}; do
+            FIND_ARGS="${FIND_ARGS} ! -name ${LOC}"
+        done
+
+        # удаляем всё, что не входит в список (только директории 1-го уровня)
+        # shellcheck disable=SC2086
+        find "${LOCALEDIR}" -mindepth 1 -maxdepth 1 \
+            -type d ${FIND_ARGS} -exec rm -rf {} +
     fi
 
     # имя пакета в нижний регистр
@@ -268,7 +291,7 @@ EOF
     # для сборки следующих пакетов, которые могут быть зависимы от текущего,
     # нужно найти установленные библиотеки текущего пакета и кэшировать их в
     # /etc/ld.so.cache
-    /sbin/ldconfig
+    ldconfig
 done
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"

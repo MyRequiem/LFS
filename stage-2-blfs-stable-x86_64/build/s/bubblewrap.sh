@@ -4,9 +4,8 @@ PRGNAME="bubblewrap"
 
 ### Bubblewrap (unprivileged sandboxing tool)
 # Инструмент для создания изолированных сред (песочниц), который используется
-# для запуска приложений, что повышает безопасность системы. Создает такие
-# среды как пространства имён (namespaces), позволяющие ограничить доступ к
-# файловой системе, сети и другим ресурсам
+# для запуска приложений. Позволяет создать безопасную среду, где программа
+# видит только те ресурсы, которые вы ей явно разрешили использовать.
 
 # Required:    no
 # Recommended: no
@@ -47,6 +46,7 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

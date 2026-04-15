@@ -3,9 +3,9 @@
 PRGNAME="vala"
 
 ### Vala (Compiler for the GObject type system)
-# Язык программирования, предназначенный для прикладного и системного
-# программирования на основе библиотек GLib Object System (GObject) рабочей
-# среды GNOME/GTK+
+# Современный язык программирования на основе библиотек GLib Object System
+# (GObject), который позволяет писать быстрые системные приложения, используя
+# простой и понятный синтаксис.
 
 # Required:    glib
 # Recommended: graphviz   (для сборки утилиты 'valadoc')
@@ -30,8 +30,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

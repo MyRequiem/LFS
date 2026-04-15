@@ -3,7 +3,9 @@
 PRGNAME="help2man"
 
 ### help2man (automatic man page generator)
-# Инструмент для автоматического создания man-страниц
+# Удобный инструмент, который автоматически создает стандартную man-страницу на
+# основе вывода команды --help. Он избавляет разработчика от необходимости
+# писать документацию вручную, просто копируя текст справки из самой программы.
 
 # Required:    no
 # Recommended: no
@@ -25,8 +27,11 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

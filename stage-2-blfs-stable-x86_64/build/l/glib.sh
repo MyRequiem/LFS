@@ -68,9 +68,15 @@ meson setup ..                \
 
 ninja || exit 1
 
-# сразу устанавливаем в систему для последующей сборки gobject-introspection
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# сразу устанавливаем в систему для последующей сборки gobject-introspection
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 ###
 # собираем gobject-introspection
@@ -90,8 +96,14 @@ ninja -C gi-build || exit 1
 # unset GLIB_LOG_LEVEL
 # ninja -C gi-build test
 
-ninja -C gi-build install
 DESTDIR="${TMP_DIR}" ninja -C gi-build install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 ###
 # создадим introspection data
@@ -101,7 +113,6 @@ meson configure \
 
 ninja || exit 1
 
-ninja install
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}

@@ -3,12 +3,13 @@
 PRGNAME="dbus"
 
 ### D-Bus (D-Bus message bus system)
-# Системный демон событий (добавление нового оборудования, изменение очереди
-# печати, вход пользователя и т.д.), а так же сеансовый демон для общих
-# потребностей IPC пользовательских приложений.
+# Системная шина сообщений (демон событий). Это «почтовый сервис» внутри
+# компьютера, через который программы сообщают друг другу важные новости,
+# например, о вставленной флешке, входе пользователя, изменении очереди печати
+# и т.д.
 
 # Required:    no
-# Recommended: xorg-libraries
+# Recommended: xorg-libraries       (для утилиты dbus-launch)
 # Optional:    --- для тестов ---
 #              python3-dbus
 #              python3-pygobject3
@@ -38,12 +39,11 @@ mkdir -pv "${TMP_DIR}/etc"
 mkdir build
 cd build || exit 1
 
-meson setup                \
+meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \
     --wrap-mode=nofallback \
-    -D systemd=disabled    \
-    .. || exit 1
+    -D systemd=disabled || exit 1
 
 ninja || exit 1
 
@@ -58,7 +58,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/var/run"
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # создадим ссылку в /etc/
 #    machine-id -> /var/lib/dbus/machine-id
@@ -127,12 +127,18 @@ EOF
 #  * другие примеры для KDM с KDE
 #       http://www.linuxfromscratch.org/hints/downloads/files/starting-and-stopping-dbus-with-kdm.txt
 
+# остановим D-Bus сервис (если запущен)
+if pgrep dbus &>/dev/null; then
+    /etc/rc.d/init.d/dbus stop
+fi
+
 if [ -f "${SESSION_LOCAL_CONF}" ]; then
     mv "${SESSION_LOCAL_CONF}" "${SESSION_LOCAL_CONF}.old"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SESSION_LOCAL_CONF}"
@@ -143,8 +149,8 @@ HELPER="/usr/libexec/dbus-daemon-launch-helper"
 chown -v root:messagebus "${HELPER}"
 chmod -v 4750            "${HELPER}"
 
-# остановим D-Bus сервис (если запущен), и запустим заново
-/etc/rc.d/init.d/dbus restart
+# запустим D-Bus
+/etc/rc.d/init.d/dbus start
 
 cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"
 

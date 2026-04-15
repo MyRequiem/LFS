@@ -3,9 +3,10 @@
 PRGNAME="lcms2"
 
 ### Little CMS v2 (Little Color Management System engine, version 2)
-# Компактный движок управления цветом. Особое внимание уделяется точности и
-# производительности. Использует современный стандарт International Color
-# Consortium standard (ICC)
+# Библиотека для управления цветом, которая следит за тем, чтобы изображения
+# выглядели одинаково правильно на мониторе, принтере и в разных программах.
+# Она пересчитывает цветовые значения (например, из профиля камеры в профиль
+# экрана), чтобы избежать искажений цветов.
 
 # Required:    no
 # Recommended: no
@@ -27,8 +28,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 REPO_NAME="$(echo "${PRGNAME}" | cut -d 2 -f 1)"

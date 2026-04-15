@@ -4,11 +4,14 @@ PRGNAME="docbook-dtd4"
 ARCH_NAME="docbook"
 
 ### docbook-4.5-dtd (document type definitions for verification of SGML data)
-# Определения типов документов для проверки файлов данных SGML на соответствие
-# набору правил DocBook. Применяется для структурирования книг и документации
+# Обновлённая и самая популярная версия «словаря» (каталога) правил для
+# DocBook, которая позволяет использовать как старый формат SGML, так и
+# современный XML. Она определяет, какие теги (например, «заголовок», «абзац»,
+# «список») можно использовать, чтобы документ считался правильным и
+# стандартным. Применяется для структурирования книг и документации
 # программного обеспечения в соответствии с DocBook стандартом.
 
-# Required:    libarchive
+# Required:    libarchive    (для распаковки архива)
 #              sgml-common
 # Recommended: no
 # Optional:    no
@@ -42,13 +45,15 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 SHARE_SGML="/usr/share/sgml/docbook/sgml-dtd-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/sgml,"${SHARE_SGML}"}
 
+# удалим некоторые определения из файла-каталога
 sed -i -e '/ISO 8879/d' \
        -e '/gml/d'      \
        docbook.cat || exit 1
 
-install -v -d -m755             "${SHARE_SGML}"
-install -v docbook.cat          "${SHARE_SGML}/catalog"
-cp -avf ./*.dtd ./*.mod ./*.dcl "${SHARE_SGML}/"
+install -v -d -m755       "${SHARE_SGML}"
+install -v docbook.cat    "${SHARE_SGML}/catalog"
+# shellcheck disable=SC2035
+cp -avf *.dtd *.mod *.dcl "${SHARE_SGML}/"
 chmod 644 "${SHARE_SGML}/catalog"
 
 ETC_SGML_CAT="/etc/sgml/sgml-docbook-dtd-${VERSION}.cat"
@@ -79,7 +84,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # allowing you to utilize transformations already written for that standard.
 #
 # Home page: https://${ARCH_NAME}.org/
-# Download:  https://www.${ARCH_NAME}.org/sgml/${VERSION}/${ARCH_NAME}-${VERSION}.zip
+# Download:  https://archive.${ARCH_NAME}.org/sgml/${VERSION}/${ARCH_NAME}-${VERSION}.zip
 #
 EOF
 

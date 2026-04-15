@@ -4,7 +4,9 @@ PRGNAME="perl-sgmlspm"
 ARCH_NAME="SGMLSpm"
 
 ### SGMLSpm (Perl library for parsing the output SGMLS and NSGMLS)
-# Perl-библиотека, используемая для анализа SGMLS и NSGMLS файлов
+# Набор инструментов, для обработки документов в форматах SGML и HTML. С его
+# помощью можно преобразовывать сложные текстовые файлы в другие форматы,
+# например, в готовые печатные документы или веб-страницы.
 
 # Required:    no
 # Recommended: no
@@ -23,6 +25,8 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ln -sv sgmlspl.pl "${TMP_DIR}/usr/bin/sgmlspl"
 
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
@@ -32,6 +36,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

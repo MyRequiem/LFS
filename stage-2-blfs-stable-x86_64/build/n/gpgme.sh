@@ -3,10 +3,9 @@
 PRGNAME="gpgme"
 
 ### GPGME (GnuPG Made Easy)
-# C-библиотека, предназначенная для упрощения доступа приложений к функциям
-# GnuPG. Она предлагает высокоуровневый криптографический API для функций
-# шифрования/дешифрования, цифровых подписей, их верификации и управления
-# ключами. В настоящее время библиотека служит интерфейсом к GnuPG
+# Прослойка (библиотека), которая упрощает программам использование шифрования
+# GnuPG. С её помощью приложения могут легко подписывать письма или шифровать
+# файлы. В настоящее время служит интерфейсом к GnuPG.
 
 # Required:    libassuan
 # Recommended: gnupg
@@ -30,8 +29,11 @@ make || exit 1
 # make -k check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
