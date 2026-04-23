@@ -4,15 +4,22 @@ PRGNAME="vulkan-loader"
 ARCH_NAME="Vulkan-Loader"
 
 ### Vulkan-Loader (library which provides the Vulkan API)
-# Библиотека, предоставляющая API Vulkan и обеспечивающая основную поддержку
-# графических драйверов для Vulkan
+# Системный «диспетчер», который находит доступные в системе видеокарты и их
+# драйверы, а затем связывает их с запущенной игрой или программой. Он
+# выступает связующим звеном, которое направляет команды от приложения к
+# конкретному графическому железу.
 
 # Required:    cmake
 #              vulkan-headers
 #              xorg-libraries
 # Recommended: wayland
-#              mesa             (runtime)
-# Optional:    git              (для тестов)
+#              mesa                 (runtime)
+# Optional:    git                  (для тестов)
+
+###
+# NOTE:
+#    Для сборки требуется интернет.
+###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -49,8 +56,11 @@ ninja|| exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,8 +3,11 @@
 PRGNAME="wayland"
 
 ### Wayland (Wayland display server)
-# Протокол, по которому оконный менеджер может общаться со своими клиентами.
-# Клиентами могут быть традиционные приложения, X-серверы или другие серверы.
+# Современный протокол для управления графическим интерфейсом в Linux, который
+# пришел на смену старому X11. Отвечает за то, как окна программ отрисовываются
+# на экране и как система обрабатывает пользовательские действия (клики мышью,
+# изменение размера/перетаскивание окон и т.д), делая это более плавно и
+# безопасно.
 
 # Required:    libxml2
 # Recommended: no
@@ -36,8 +39,11 @@ ninja || exit 1
 # env -u XDG_RUNTIME_DIR ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

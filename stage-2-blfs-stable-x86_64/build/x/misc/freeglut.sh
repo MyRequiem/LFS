@@ -3,10 +3,11 @@
 PRGNAME="freeglut"
 
 ### Freeglut (alternative GLUT library)
-# Полностью открытый и 100% совместимый клон библиотеки OpenGL Utility Toolkit
-# (GLUT). GLUT - это независимый от Window System инструментарий для написания
-# OpenGL-программ, реализующий простой оконный API, что делает достаточно
-# легким обучение OpenGL-программированию.
+# Библиотека для быстрого создания окон и обработки ввода (мышь, клавиатура) в
+# программах на OpenGL. Она является современной и свободной заменой старой
+# библиотеки GLUT (OpenGL Utility Toolkit), позволяя запустить графическое
+# приложение буквально парой строчек кода без глубокого погружения в системные
+# дебри.
 
 # Required:    cmake
 #              mesa
@@ -20,21 +21,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему сборки с GCC-15
-sed -e '/Context/s/()/(SFG_PlatformDisplay, SFG_WindowContextType)/' \
-    -i src/egl/fg_init_egl.h || exit 1
-
 mkdir build
 cd build || exit 1
 
-# позволяет сборку с CMake>=4.0
-#    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 # отключим создание дополнительных демонстрационных программ (рекомендуется)
 #    -D FREEGLUT_BUILD_DEMOS=OFF
 cmake                                   \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D CMAKE_BUILD_TYPE=Release         \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -D FREEGLUT_BUILD_DEMOS=OFF         \
     -D FREEGLUT_BUILD_STATIC_LIBS=OFF   \
     -W no-dev .. || exit 1
@@ -43,8 +37,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

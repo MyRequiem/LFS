@@ -3,28 +3,30 @@
 PRGNAME="gstreamer"
 
 ### GStreamer (streaming multimedia framework)
-# Мультимедийный фреймворк, использующий систему типов GObject. GStreamer
-# является "ядром" мультимедийных приложений, таких, как видеоредакторы,
-# потоковые серверы и медиапроигрыватели.
+# Универсальный мультимедийный комбайн (фреймворк). Является "ядром"
+# мультимедийных приложений, таких, как видеоредакторы, потоковые серверы и
+# медиапроигрыватели. Позволяет системе играть музыку, показывать видео и
+# записывать звук из любых источников.
 
 # Required:    glib
 # Recommended: no
-# Optional:    gtk+3           (для генерации примеров)
-#              gsl             (для одного из тестов)
+# Optional:    gtk+3              (для генерации примеров)
+#              gsl                (для одного из тестов)
 #              libnsl
 #              libunwind
 #              rustc
 #              valgrind
-#              bash-completion (https://github.com/scop/bash-completion/)
-#              python3-hotdoc  (https://pypi.org/project/hotdoc/)
-#              libdw           (https://sourceware.org/elfutils/)
+#              bash-completion    (https://github.com/scop/bash-completion/)
+#              python3-hotdoc     (https://pypi.org/project/hotdoc/)
+#              libdw              (https://sourceware.org/elfutils/)
 
 ###
 # WARNINGS:
 ###
-# Если мы обновляем пакет, то сначала нужно удалить все его плагины
-# (gst-plugins-*, и другие пакеты, касающиеся директории
-# /usr/lib/gstreamer-1.0/) и сам пакет gstreamer, а затем заново пересобрать
+# Если мы обновляем пакет, то сначала нужно удалить все его плагины (пакеты
+# gst-plugins-*), и другие пакеты, касающиеся /usr/bin/gst-*,
+# /usr/{lib,libexec}/gstreamer-1.0 и сам пакет gstreamer, а затем все заново
+# пересобрать.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -46,6 +48,8 @@ meson setup ..           \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

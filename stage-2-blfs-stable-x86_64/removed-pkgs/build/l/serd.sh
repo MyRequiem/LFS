@@ -20,7 +20,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson ..                 \
+meson setup ..           \
     --prefix=/usr        \
     --localstatedir=/var \
     --sysconfdir=/etc    \

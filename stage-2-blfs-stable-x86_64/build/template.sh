@@ -47,11 +47,11 @@ source "${ROOT}/write_to_var_log_packages.sh" \
 
 # mkdir build
 # cd build || exit 1
-# meson             \
-#     --prefix=/usr \
-#     -D<param>     \
-#     ...
-#     .. || exit 1
+# meson setup ..          \
+#     --prefix=/usr       \
+#     --buildtype=release \
+#     -D<param1>          \
+#     -D<paramX> || exit 1
 #
 # ninja || exit 1
 

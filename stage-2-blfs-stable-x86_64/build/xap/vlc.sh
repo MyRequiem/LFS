@@ -78,7 +78,6 @@ PRGNAME="vlc"
 #              fribidi
 #              libplacebo
 #              librsvg
-#              libvdpau
 #              sdl12-compat
 #              libcaca                  (https://github.com/cacalabs/libcaca)
 #              libmfx                   (https://github.com/Intel-Media-SDK/MediaSDK)

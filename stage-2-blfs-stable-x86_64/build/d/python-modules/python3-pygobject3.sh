@@ -4,15 +4,18 @@ PRGNAME="python3-pygobject3"
 ARCH_NAME="pygobject"
 
 ### PyGObject3 (GObject bindings for Python3)
-# Python3 bindings для GObject
+# Библиотека, которая позволяет использовать возможности GTK 4, GTK 3 и других
+# технологий GNOME внутри программ на Python. Она автоматически создает «мост»,
+# благодаря которому огромные системные библиотеки на языке Си становятся
+# доступны для написания современных приложений с графическим интерфейсом.
 
 # Required:    glib
 # Recommended: python3-pycairo
 # Optional:    --- для тестов ---
 #              gtk4
 #              python3-pytest
-#              python3-pep8     (https://pypi.org/project/pep8/)
-#              python3-pyflakes (https://pypi.org/project/pyflakes/)
+#              python3-pep8         (https://pypi.org/project/pep8/)
+#              python3-pyflakes     (https://pypi.org/project/pyflakes/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -28,18 +31,20 @@ mv -v tests/test_overrides_gtk.py{,.nouse}
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # тесты необходимо проводить в графической среде
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

@@ -19,7 +19,7 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 mkdir build
 cd build || exit 1
 
-meson ..                          \
+meson setup ..                    \
     --prefix=/usr                 \
     --buildtype=release           \
     --localstatedir=/var          \

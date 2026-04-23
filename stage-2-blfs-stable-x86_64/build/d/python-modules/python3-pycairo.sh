@@ -4,7 +4,10 @@ PRGNAME="python3-pycairo"
 ARCH_NAME="pycairo"
 
 ### PyCairo (PyCairo Python3 Module)
-# Python3 bindings для Cairo
+# Набор привязок (bindings) для языка Python к графической библиотеке Cairo,
+# которая отвечает за отрисовку качественной 2D-графики. Она позволяет рисовать
+# линии, фигуры и текст в форматах SVG, PDF или обычных картинках, используя
+# простой и понятный Python-код.
 
 # Required:    cairo
 # Recommended: no
@@ -20,16 +23,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,13 +3,15 @@
 PRGNAME="xkeyboard-config"
 
 ### XKeyboardConfig (X Keyboard Extension config files)
-# База данных конфигурации клавиатуры для X
+# Огромный атлас раскладок клавиатуры. В нем хранятся настройки для всех языков
+# и типов клавиатур, существующих в мире.
 
 # Required:    xorg-libraries
 # Recommended: no
 # Optional:    --- для тестов ---
 #              libxkbcommon
 #              python3-pytest
+#              python3-xdist                (https://pypi.org/project/pytest-xdist/)
 #              xorg-applications
 
 ROOT="/root/src/lfs"
@@ -23,14 +25,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup                   \
+meson setup ..                \
     --prefix="${XORG_PREFIX}" \
-    --buildtype=release       \
-    .. || exit 1
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,7 +3,10 @@
 PRGNAME="glu"
 
 ### GLU (Mesa OpenGL Utility library)
-# Служебная библиотека Mesa OpenGL (libGLU)
+# GLU (OpenGL Utility Library) — стандартная надстройка над OpenGL, которая
+# упрощает решение типовых задач: рисование сложных фигур (сфер, цилиндров) и
+# настройку камеры. Она берет на себя сложные математические расчеты, чтобы
+# программисту не приходилось вручную вычислять матрицы проекции.
 
 # Required:    mesa
 # Recommended: no
@@ -22,17 +25,21 @@ cd build || exit 1
 
 meson setup ..                \
     --prefix="${XORG_PREFIX}" \
+    --buildtype=release       \
     -D gl_provider=gl         \
-    --buildtype=release || exit 1
+    -D default_library=shared || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 rm -f "${TMP_DIR}/usr/lib/libGLU.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

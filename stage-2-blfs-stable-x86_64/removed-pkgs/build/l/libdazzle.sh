@@ -27,13 +27,12 @@ command -v vala &>/dev/null && VALA_API="true"
 mkdir build
 cd build || exit 1
 
-meson                             \
+meson setup ..                    \
     --prefix=/usr                 \
     --buildtype=release           \
     -Denable_tests="${TESTS}"     \
     -Dwith_vapi="${VALA_API}"     \
-    -Denable_gtk_doc="${GTK_DOC}" \
-    .. || exit 1
+    -Denable_gtk_doc="${GTK_DOC}" || exit 1
 
 ninja || exit 1
 

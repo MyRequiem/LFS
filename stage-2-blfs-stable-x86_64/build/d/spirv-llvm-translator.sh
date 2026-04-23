@@ -4,7 +4,11 @@ PRGNAME="spirv-llvm-translator"
 ARCH_NAME="SPIRV-LLVM-Translator"
 
 ### SPIRV-LLVM-Translator (converting between LLVM IR and SPIR-V code)
-# библиотека и утилита для преобразования между LLVM IR и SPIR-V-кодом
+# Инструмент, который переводит программный код между форматом LLVM
+# (используется во многих компиляторах) и SPIR-V (понятным для видеокарт через
+# Vulkan или OpenCL). Он позволяет разработчикам использовать мощные
+# инструменты программирования для создания сложных вычислений на графическом
+# процессоре.
 
 # Required:    libxml2
 #              llvm
@@ -35,8 +39,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

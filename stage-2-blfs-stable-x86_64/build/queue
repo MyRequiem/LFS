@@ -267,6 +267,7 @@ l/shared-mime-info.sh
 # Все остальное до пакета bumblebee-status (включительно) обновлять в чистой
 # TTY удалив пакеты mesа, qt5 и qt6
 #    # removepkg --backup /var/log/packages/mesa-<version>
+#    # removepkg --backup /var/log/packages/qt6-<version>
 x/libs/pixman.sh
 l/cairo.sh
 l/pango.sh
@@ -284,7 +285,6 @@ l/gdk-pixbuf.sh
 l/librsvg.sh
 # ======= mesa =======
 x/libs/libva.sh
-x/libs/libvdpau.sh
 x/libs/wayland.sh
 x/libs/wayland-protocols.sh
 d/vulkan-headers.sh
@@ -294,12 +294,8 @@ l/spirv-tools.sh
 d/spirv-llvm-translator.sh
 x/misc/glslang.sh
 l/libclc.sh
-# cbindgen собираем в ЧИСТОЙ LFS системе (требуется сеть Internet)
 d/cbindgen.sh
 d/rust-bindgen.sh
-# python3 модули удаляем из системы перед обновлением
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
-d/python-modules/python3-ply.sh
 x/misc/mesa.sh
 # ====================
 x/misc/glu.sh
@@ -307,10 +303,12 @@ x/misc/freeglut.sh
 l/harfbuzz.sh
 x/libs/libva.sh
 x/utils/libva-utils.sh
-x/libs/libvdpau.sh
-x/drivers/libvdpau-va-gl.sh
 x/libs/libepoxy.sh
 l/hicolor-icon-theme.sh
+# пакет xkeyboard-config удалить перед обновлением версии
+#    # removepkg --backup /var/log/packages/xkeyboard-config-<version>
+# если изменяли /usr/share/X11/xkb/symbols/capslock, например добавляли
+# какие-то свои секции, то сохраните его перед удалением пакета
 x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
 d/sassc.sh
@@ -323,6 +321,7 @@ d/python-modules/python3-pygobject3.sh
 l/adwaita-icon-theme.sh
 l/libvpx.sh
 l/gstreamer.sh
+
 l/alsa-lib.sh
 a/libgudev.sh
 l/libogg.sh
@@ -435,7 +434,6 @@ x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
-x/drivers/xorg-synaptics-driver.sh
 x/drivers/xorg-libinput-driver.sh
 x/drivers/xorg-evdev-driver.sh
 # Graphical Environments полностью установлено (кроме оконного менеджера i3)

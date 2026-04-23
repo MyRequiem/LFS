@@ -23,8 +23,6 @@ PRGNAME="ffmpeg"
 #              alsa-lib
 #              libva
 #              sdl2
-#              libvdpau
-#              libvdpau-va-gl
 # Optional:    doxygen
 #              fontconfig
 #              fribidi

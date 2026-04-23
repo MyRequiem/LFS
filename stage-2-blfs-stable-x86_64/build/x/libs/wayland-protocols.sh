@@ -3,9 +3,11 @@
 PRGNAME="wayland-protocols"
 
 ### Wayland-Protocols (extended Wayland protocols)
-# Дополнительные протоколы Wayland, которые добавляют функциональность
-# недоступную в основном протоколе Wayland. Такие протоколы либо добавляют
-# совершенно новый функционал, либо расширяют функционал других протоколов.
+# Набор стандартов и технических описаний, которые определяют, как приложения и
+# графическая оболочка должны взаимодействовать друг с другом (например, как
+# разворачивать/сворачивать окна, работать с буфером обмена или вводом текста).
+# Это своего рода «дополнительный свод правил», который расширяет базовые
+# возможности Wayland для поддержки современных функций рабочего стола.
 
 # Required:    wayland
 # Recommended: no
@@ -29,8 +31,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

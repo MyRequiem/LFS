@@ -4,7 +4,8 @@ PRGNAME="vulkan-headers"
 ARCH_NAME="Vulkan-Headers"
 
 ### Vulkan-Headers (set of header files for build and link Vulkan API)
-# Набор заголовочных файлов для сборки и связывания Vulkan API
+# Набор заголовочных файлов с описанием правил и команд, которые нужны
+# программистам для написания приложений на базе Vulkan.
 
 # Required:    cmake
 # Recommended: no
@@ -29,8 +30,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

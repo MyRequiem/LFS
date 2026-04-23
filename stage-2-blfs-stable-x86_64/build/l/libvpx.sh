@@ -3,15 +3,12 @@
 PRGNAME="libvpx"
 
 ### libvpx (VP8/VP9 video codec)
-# Пакет из проекта WebM представляющий собой реализации открытого видеокодека
-# VP8, используемого в большинстве современных html5 видео, и кодека следующего
-# поколения VP9. Данные кодеки первоначально разработаны On2 и выпущены как
-# открытый исходный код от Google Inc. VP8 и VP9 являются преемниками кодека
-# VP3, на котором был основан кодек Theora
+# Видеокодеки для интернета. Отвечают за сжатие и воспроизведение популярных
+# форматов видео, используемых на сайтах (WebM).
 
-# Required:    yasm или nasm
+# Required:    no
+# Recommended: yasm или nasm
 #              which            (для поиска yasm или nasm во время конфигурации)
-# Recommended: no
 # Optional:    curl             (скачивает необходимые файлы для тестов)
 #              doxygen          (для документации)
 
@@ -26,6 +23,10 @@ mkdir -pv "${TMP_DIR}"
 # чтобы система сборки не сохранила файлы из старого пакета
 # shellcheck disable=SC2038,SC2185
 find -type f | xargs touch
+
+# обновление безопасности
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
 
 # сохраняем владельца и разрешения при копировании файлов
 sed -i 's/cp -p/cp/' build/make/Makefile || exit 1
@@ -46,8 +47,11 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

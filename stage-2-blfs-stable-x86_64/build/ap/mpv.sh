@@ -13,7 +13,6 @@ PRGNAME="mpv"
 #              pulseaudio
 # Recommended: libjpeg-turbo
 #              libva
-#              libvdpau
 #              luajit
 #              uchardet
 #              vulkan-loader

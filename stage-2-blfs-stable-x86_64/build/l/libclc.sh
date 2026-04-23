@@ -1,56 +1,85 @@
 #! /bin/bash
 
 PRGNAME="libclc"
+ARCH_NAME="llvm-project"
 
 ### libclc (implementation of the library requirements OpenCL C)
-# реализация библиотечных требований языка программирования OpenCl C, как
-# указано в спецификации OpenCl 1.1
+# Набор функций для выполнения сложных математических вычислений прямо на
+# видеокарте (OpenCL).
 
 # Required:    spirv-llvm-translator
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 4- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-${VERSION}.src" || exit 1
-
-chown -R root:root .
-find -L . \
-    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \+ -o \
-    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+VERSION="$(echo "${VERSION}" | rev | cut -d . -f 2- | rev)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr"/{include/clc,lib/pkgconfig}
 
-mkdir build
-cd build || exit 1
+mkdir -pv "${PRGNAME}/build"
+cd "${PRGNAME}/build" || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    -G Ninja                     \
+# Конфигурация TARGETS для драйверов:
+#    * Intel и универсальной поддержки OpenCL в Mesa
+#       spirv-mesa3d-
+#       spirv64-mesa3d-
+#    * NVIDIA
+#       nvptx64--
+#       nvptx64--nvidiacl
+#       nvptx64-nvidia-cuda
+#    * AMD
+#       amdgcn--
+#       amdgcn-amd-amdhsa
+#       amdgcn-mesa-mesa3d
+#       r600--
+#    * clspv - это специальный компилятор от Google, который переводит код
+#      OpenCL C в шейдеры Vulkan (SPIR-V). В 99% случаев он не нужен. В Mesa
+#      для OpenCL используется либо старый драйвер Clover, либо новый Rusticl,
+#      и они полагаются на таргеты spirv-mesa3d-, а не на clspv
+#       clspv--
+#       clspv64--
+TRGTS="spirv-mesa3d-;spirv64-mesa3d-;nvptx64--;nvptx64--nvidiacl;nvptx64-nvidia-cuda"
+cmake                                     \
+    -D CMAKE_INSTALL_PREFIX=/usr          \
+    -D CMAKE_BUILD_TYPE=Release           \
+    -D LIBCLC_TARGETS_TO_BUILD="${TRGTS}" \
+    -G Ninja                              \
     .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# Разработчики llvm-project, зачем вы кидаете заголовки куда попало? Наведем
+# порядок:
+cp -vpR ../clc/include/clc/*          "${TMP_DIR}/usr/include/clc/"
+cp -vpR ../clc/include/clc/internal/* "${TMP_DIR}/usr/include/clc/"
+rm -rf "${TMP_DIR}/usr/include/clc/internal"
+
+cp -vpR ../opencl/include/* "${TMP_DIR}/usr/include/"
+
+rm -rf "${TMP_DIR}/usr/share/pkgconfig"
+cat << EOF > "${TMP_DIR}/usr/lib/pkgconfig/libclc.pc"
+prefix=/usr
+includedir=\${prefix}/include
+libexecdir=\${prefix}/share/clc
+
+Name: libclc
+Description: Library requirements of the OpenCL C programming language
+Version: 0.2.0
+Cflags: -I\${includedir}
+Libs: -L\${libexecdir}
+EOF
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -61,7 +90,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Specification
 #
 # Home page: https://libclc.llvm.org/
-# Download:  https://github.com/llvm/llvm-project/releases/download/llvmorg-${VERSION}/${PRGNAME}-${VERSION}.src.tar.xz
+# Download:  https://github.com/llvm/${ARCH_NAME}/releases/download/llvmorg-${VERSION}/${ARCH_NAME}-${VERSION}.src.tar.xz
 #
 EOF
 

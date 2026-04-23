@@ -4,9 +4,10 @@ PRGNAME="gtk+3"
 ARCH_NAME="gtk"
 
 ### GTK+3 (multi-platform GUI toolkit)
-# GTK (GIMP ToolKit) - кроссплатформенная библиотека элементов интерфейса
-# (фреймворк). Наряду с библиотекой Qt является одной из наиболее популярных на
-# сегодняшний день библиотек для X
+# Популярный набор инструментов (фреймворк) для создания графических
+# интерфейсов пользователя: окон, кнопок, меню и текстовых полей. Это «лицо»
+# рабочего стола GNOME и сотен программ (таких как GIMP или Inkscape), которое
+# отвечает за то, как приложение выглядит и реагирует на клики.
 
 # Required:    at-spi2-core
 #              gdk-pixbuf
@@ -23,6 +24,7 @@ ARCH_NAME="gtk"
 #              glib
 # Optional:    colord
 #              cups
+#              evince
 #              gtk-doc
 #              libcloudproviders
 #              python3-pyatspi2      (для тестов)
@@ -78,7 +80,7 @@ ninja || exit 1
 # dbus-run-session ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -86,10 +88,10 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache
-gtk-query-immodules-3.0 --update-cache
+gtk-query-immodules-3.0 --update-cache || exit 1
 
 # создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
-glib-compile-schemas /usr/share/glib-2.0/schemas
+glib-compile-schemas /usr/share/glib-2.0/schemas || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

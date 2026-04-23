@@ -257,6 +257,26 @@ for PKGNAME in ${PACKAGES}; do
         done
     fi
 
+    # удалим документацию
+    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help}
+
+    # удалим лишние локали
+    LOCALEDIR="${PKG_INSTALL_DIR}/usr/share/X11/locale"
+    # оставляем только нужные локали
+    KEEP_LOCALES="ru ru_RU ru_RU.UTF-8 en en_US en_US.UTF-8 en_GB en_GB.UTF-8"
+    if [ -d "${LOCALEDIR}" ]; then
+        # формируем аргументы для find: ! -name 'ru' ! -name 'en' ...
+        FIND_ARGS=""
+        for LOC in ${KEEP_LOCALES}; do
+            FIND_ARGS="${FIND_ARGS} ! -name ${LOC}"
+        done
+
+        # удаляем всё, что не входит в список (только директории 1-го уровня)
+        # shellcheck disable=SC2086
+        find "${LOCALEDIR}" -mindepth 1 -maxdepth 1 \
+            -type d ${FIND_ARGS} -exec rm -rf {} +
+    fi
+
     # имя пакета в нижний регистр
     PKGNAME="$(echo "${PKGNAME}" | tr '[:upper:]' '[:lower:]')"
 

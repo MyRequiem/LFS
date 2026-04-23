@@ -3,7 +3,8 @@
 PRGNAME="adwaita-icon-theme"
 
 ### Adwaita Icon Theme (default icons used by GTK+)
-# Тема иконок для GTK+ приложений
+# Набор стандартных, красивых иконок для GTK+ приложений, которые придают
+# системе современный и законченный вид.
 
 # Required:    gtk+3 или gtk4
 #              librsvg
@@ -20,9 +21,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup       \
-    --prefix=/usr \
-    .. || exit 1
+meson setup .. \
+    --prefix=/usr || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
@@ -31,8 +31,11 @@ ninja || exit 1
 rm -rf /usr/share/icons/Adwaita/
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # создадим/обновим /usr/share/icons/Adwaita/icon-theme.cache

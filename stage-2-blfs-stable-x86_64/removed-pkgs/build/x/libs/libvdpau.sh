@@ -3,10 +3,11 @@
 PRGNAME="libvdpau"
 
 ### libvdpau (VDPAU wrapper library)
-# VDPAU - Video Decode and Presentation API for Unix. Библиотека и API,
-# изначально разработанные Nvidia для серии GeForce >= 8 и ориентированные на X
-# Window System. Это API позволяет видео программам разгрузжать процесс
-# декодирования и постобработки видео средствами GPU.
+# VDPAU - Video Decode and Presentation API for Unix - библиотека-посредник,
+# позволяющая видеокартам (изначально NVIDIA) аппаратно ускорять
+# воспроизведение видео, чтобы снизить нагрузку на процессор. Она выполняет ту
+# же роль, что и libva, но использует другой стандарт вызовов, популярный в
+# основном в экосистеме NVIDIA.
 
 # Required:    xorg-libraries
 # Recommended: --- runtime ---

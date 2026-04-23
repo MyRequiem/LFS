@@ -42,10 +42,11 @@ grep -rl '#!.*python$' | xargs sed -i '1s/python$/python3/'
 
 # будем устанавливать утилиту filecheck, которая требуется для тестирования
 # некоторых пакетов (например rustc)
-sed 's/utility/tool/' -i llvm/utils/FileCheck/CMakeLists.txt || exit 1
+sed 's/utility/tool/' -i \
+    "${PRGNAME}/utils/FileCheck/CMakeLists.txt" || exit 1
 
-mkdir -v llvm/build
-cd llvm/build || exit 1
+mkdir -pv "${PRGNAME}/build"
+cd "${PRGNAME}/build" || exit 1
 
 CC=gcc CXX=g++                                 \
 cmake                                          \
@@ -98,7 +99,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # packages which use Rust, for example Mozilla Firefox.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-${VERSION}/${PRGNAME}-project-${VERSION}.src.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}-project/releases/download/${PRGNAME}org-${VERSION}/${ARCH_NAME}-${VERSION}.src.tar.xz
 #
 EOF
 

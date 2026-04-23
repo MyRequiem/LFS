@@ -4,8 +4,11 @@ PRGNAME="spirv-headers"
 ARCH_NAME="SPIRV-Headers-vulkan-sdk"
 
 ### SPIRV-Headers (headers that allow for applications to use the SPIR-V language)
-# Заголовки, позволяющие приложениям использовать язык SPIR-V и наборы
-# инструкций с Vulkan
+# Набор заголовочных файлов с определениями и константами для SPIR-V,
+# универсального языка (промежуточного представления), на котором пишутся
+# шейдеры для Vulkan. Они служат  «справочником» для компиляторов и
+# инструментов, чтобы те могли правильно переводить графический код эффектов
+# (шейдеров) в понятные видеокарте инструкции.
 
 # Required:    cmake
 # Recommended: no
@@ -30,8 +33,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,7 +3,11 @@
 PRGNAME="glslang"
 
 ### Glslang (frontend and validator for OpenGL, OpenGL ES and Vulkan shaders)
-# Интерфейс и валидатор для OpenGL, OpenGL ES и Vulkan шейдеров
+# Официальный компилятор и валидатор для OpenGL, OpenGL ES и Vulkan шейдеров,
+# который переводит человекочитаемый код шейдеров (написанный на языке GLSL или
+# HLSL) в бинарный формат SPIR-V, понятный видеокарте. Он проверяет код на
+# ошибки и гарантирует, что графика в играх или программах будет корректно
+# отображаться через Vulkan или OpenGL.
 
 # Required:    cmake
 #              spirv-tools
@@ -33,8 +37,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
