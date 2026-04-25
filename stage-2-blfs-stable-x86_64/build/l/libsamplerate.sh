@@ -3,8 +3,9 @@
 PRGNAME="libsamplerate"
 
 ### libsamplerate (a Sample Rate Converter for audio)
-# Конвертер частоты дискретизации для аудио. Например, преобразование частоты
-# дискретизации CD 44,1 кГц в 48 кГц для DAT-плееров
+# Библиотека для качественного изменения частоты дискретизации аудио
+# (ресемплинга) в реальном времени. Позволяет конвертировать звук между разными
+# частотами (например из 44,1 кГц в 48 кГц) с минимальными искажениями.
 
 # Required:    no
 # Recommended: no
@@ -28,8 +29,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

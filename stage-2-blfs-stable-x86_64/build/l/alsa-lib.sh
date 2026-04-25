@@ -3,22 +3,27 @@
 PRGNAME="alsa-lib"
 
 ### alsa-lib (Advanced Linux Sound Architecture library)
-# Библиотеки обеспечивающие аудио и MIDI функциональность в Linux
+# Базовая звуковая система. Это мостик между вашими колонками и всеми
+# остальными программами в Linux, обеспечивающими аудио и MIDI
+# функциональность.
 
 # Required:    no
-# Recommended: elogind
+# Recommended: elogind    (runtime)
 # Optional:    doxygen
 #              python2    (https://www.python.org/downloads/release/python-2718/)
 
 ### Конфигурация ядра
 #    CONFIG_SOUND=y|m
 #    CONFIG_SND=y|m
+#    Device Drivers ⇒ Sound card support ⇒ Advanced Linux Sound Architecture ->
+#    выбираем свои драйвера
 
 ### Конфиги
 #    /etc/asound.conf
 #    ~/.asoundrc
 #
-# см. http://www.alsa-project.org/main/index.php/
+# см. https://www.alsa-project.org/main/index.php/
+#     https://www.alsa-project.org/main/index.php/Asoundrc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,14 +32,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# удалим тест, который не проходит с gcc>=15
-sed 's/playmidi1//' -i test/Makefile.am && \
-    autoreconf -fi
-
 ./configure || exit 1
 make        || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # конфигурационные файлы
 tar -C "${TMP_DIR}/usr/share/alsa" --strip-components=1 \
@@ -50,6 +53,7 @@ EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

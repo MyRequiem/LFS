@@ -3,9 +3,11 @@
 PRGNAME="opus"
 
 ### Opus (Audio Codec)
-# Универсальный аудиокодек, стандартизированный Internet Engineering Task Force
-# (IETF). Кодек особенно подходит для интерактивной передачи речи и звука через
-# Интернет.
+# Современная и универсальная библиотека для сжатия звука, которая одинаково
+# хорошо справляется и с передачей голоса в реальном времени, и с
+# прослушиванием музыки в высоком качестве. Она объединила в себе лучшие
+# технологии (включая наработки Speex), став самым эффективным бесплатным
+# кодеком в интернете.
 
 # Required:    no
 # Recommended: no
@@ -32,8 +34,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

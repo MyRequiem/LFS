@@ -321,17 +321,17 @@ d/python-modules/python3-pygobject3.sh
 l/adwaita-icon-theme.sh
 l/libvpx.sh
 l/gstreamer.sh
-
 l/alsa-lib.sh
 a/libgudev.sh
 l/libogg.sh
 l/libvorbis.sh
 ap/flac.sh
 l/lame.sh
-l/speex.sh
 ap/opus.sh
 l/libsndfile.sh
+l/libsamplerate.sh
 l/sbc.sh
+
 ap/pulseaudio.sh
 ap/mpg123.sh
 l/x264.sh
@@ -362,7 +362,6 @@ l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
 l/fftw.sh
-l/libsamplerate.sh
 l/sdl2.sh
 l/giflib.sh
 l/sdl12-compat.sh
@@ -517,6 +516,7 @@ l/uchardet.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-glad.sh
+# пересобираем gst-plugins-bad
 l/gst-plugins-bad.sh
 l/libplacebo.sh
 ap/mpv.sh

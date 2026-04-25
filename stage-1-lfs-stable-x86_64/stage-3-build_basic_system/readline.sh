@@ -47,10 +47,24 @@ sed -e '270a\
 #    SHLIB_LIBS="-lncursesw"
 make SHLIB_LIBS="-lncursesw" || make -j1 SHLIB_LIBS="-lncursesw" || exit 1
 # пакет не имеет набора тестов
-
-# сразу устанавливаем в систему, иначе отвалится консоль
-make install
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+
+# сразу устанавливаем библиотеки в систему командой install, иначе при
+# копировании из DESTDIR отвалится консоль
+install -vm755 "${TMP_DIR}/usr/lib"/{libhistory,libreadline}."so.${VERSION}" \
+    /usr/lib || exit 1
+
+mv "${TMP_DIR}/usr/lib"/{libhistory,libreadline}."so.${VERSION}" /tmp
+
+/bin/cp -vR "${TMP_DIR}"/* /
+
+mv /tmp/{libhistory,libreadline}."so.${VERSION}" "${TMP_DIR}/usr/lib"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (line input library with editing features)

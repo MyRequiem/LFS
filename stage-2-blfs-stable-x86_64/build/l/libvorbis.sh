@@ -3,9 +3,10 @@
 PRGNAME="libvorbis"
 
 ### libvorbis (Ogg Vorbis library)
-# General Audio Compression Codec, широко известный как Ogg Vorbis.
-# Используется для создания (кодирования) и воспроизведения (декодирования)
-# звуковых файлов.
+# Библиотека для сжатия и воспроизведения звука в формате Vorbis, который
+# является качественной и свободной альтернативой MP3. Она отвечает за сам
+# процесс превращения аудио в цифровой поток (кодирование) и обратно в звук
+# (декодирование).
 
 # Required:    libogg
 # Recommended: no
@@ -28,8 +29,11 @@ make || exit 1
 # make -j1 check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
