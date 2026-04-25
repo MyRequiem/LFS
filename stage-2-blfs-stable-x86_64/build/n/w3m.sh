@@ -40,7 +40,13 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# для gcc>11
+# уберем строку status info с глупой и ненужной информацией внизу окна браузера
+# типа:
+#    Viewing[SSL] <LFS Patches Project Homepage>
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-hide-status-info.patch" || exit 1
+
+# для GCC >11
 SLKCFLAGS="-std=gnu17"
 CFLAGS="${SLKCFLAGS}"                    \
 CXXFLAGS="${SLKCFLAGS}"                  \
@@ -59,7 +65,7 @@ CXXFLAGS="${SLKCFLAGS}"                  \
     --disable-mouse                      \
     --disable-w3mmailer                  \
     --with-editor=/usr/bin/vim           \
-    --with-browser=google-chrome         \
+    --with-browser=zen-browser           \
     --with-termlib="terminfo ncurses"    \
     --with-imagelib="gdk-pixbuf2 imlib2" \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1

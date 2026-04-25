@@ -1,0 +1,129 @@
+diff -U 1 -U 1 -Naur w3m-0.5.3+git20230121_orig/display.c w3m-0.5.3+git20230121/display.c
+--- w3m-0.5.3+git20230121_orig/display.c	2023-01-21 06:01:52.000000000 +0400
++++ w3m-0.5.3+git20230121/display.c	2026-04-25 16:12:35.304471450 +0400
+@@ -21,15 +21,15 @@
+ #define EFFECT_MARK_END           effect_mark_end()
+ 
+ /*-
+- * color: 
+- *     0  black 
+- *     1  red 
+- *     2  green 
++ * color:
++ *     0  black
++ *     1  red
++ *     2  green
+  *     3  yellow
+- *     4  blue 
+- *     5  magenta 
+- *     6  cyan 
+- *     7  white 
++ *     4  blue
++ *     5  magenta
++ *     6  cyan
++ *     7  white
+  */
+ 
+ #define EFFECT_ANCHOR_START_C       setfcolor(anchor_color)
+@@ -179,7 +179,7 @@
+ }
+ 
+ 
+-/* 
++/*
+  * Initialize routine.
+  */
+ void
+@@ -197,7 +197,7 @@
+     fmInitialized = TRUE;
+ }
+ 
+-/* 
++/*
+  * Display some lines.
+  */
+ static Line *cline = NULL;
+@@ -249,7 +249,7 @@
+ 		*p = ' ';
+ 	}
+ 	if (url)
+-	    Strcat_charp(s, " ");
++	    Strcat_charp(s, "");
+ 	l -= get_Str_strwidth(s);
+ 	if (l <= 0)
+ 	    return s;
+@@ -277,13 +277,13 @@
+ 	i--;
+ #endif
+     Strcat_charp_n(s, u->ptr, i);
+-    Strcat_charp(s, "..");
++    Strcat_charp(s, "");
+     i = get_Str_strwidth(u) - (COLS - 1 - get_Str_strwidth(s));
+ #ifdef USE_M17N
+     while (i < u->length && pr[i] & PC_WCHAR2)
+ 	i++;
+ #endif
+-    Strcat_charp(s, &u->ptr[i]);
++    Strcat_charp(s, "");
+     return s;
+ }
+ 
+@@ -334,13 +334,13 @@
+     }
+     else
+ 	/* FIXME: gettextize? */
+-	Strcat_charp(msg, "Viewing");
++	Strcat_charp(msg, "");
+ #ifdef USE_SSL
+     if (buf->ssl_certificate)
+-	Strcat_charp(msg, "[SSL]");
++	Strcat_charp(msg, "");
+ #endif
+-    Strcat_charp(msg, " <");
+-    Strcat_charp(msg, buf->buffername);
++    Strcat_charp(msg, "");
++    Strcat_charp(msg, "");
+ 
+     if (s) {
+ 	int l = COLS - 3 - sl;
+@@ -356,11 +356,11 @@
+ #endif
+ 	    Strtruncate(msg, l);
+ 	}
+-	Strcat_charp(msg, "> ");
++	Strcat_charp(msg, "");
+ 	Strcat(msg, s);
+     }
+     else {
+-	Strcat_charp(msg, ">");
++	Strcat_charp(msg, "");
+     }
+     return msg;
+ }
+@@ -476,7 +476,7 @@
+     msg = make_lastline_message(buf);
+     if (buf->firstLine == NULL) {
+ 	/* FIXME: gettextize? */
+-	Strcat_charp(msg, "\tNo Line");
++	Strcat_charp(msg, "");
+     }
+     if (delayed_msg != NULL) {
+ 	disp_message(delayed_msg, FALSE);
+@@ -1200,7 +1200,7 @@
+     }
+ }
+ 
+-/* 
++/*
+  * List of error messages
+  */
+ Buffer *
+@@ -1458,7 +1458,7 @@
+ }
+ 
+ 
+-/* 
++/*
+  * Arrange line,column and cursor position according to current line and
+  * current position.
+  */
