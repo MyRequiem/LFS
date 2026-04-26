@@ -3,12 +3,13 @@
 PRGNAME="mpg123"
 
 ### mpg123 (a command-line mp3 player)
-# Консольный MP3-плеер
+# Консольный MP3-плеер - один из самых быстрых и надежных инструментов для
+# воспроизведения музыки в формате MP3.
 
 # Required:    no
 # Recommended: alsa-lib
 # Optional:    pulseaudio
-#              sdl2
+#              sdl2-compat
 #              jack         (https://jackaudio.org/)
 #              openal       (https://openal.org/)
 #              portaudio    (https://www.portaudio.com/)
@@ -27,8 +28,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

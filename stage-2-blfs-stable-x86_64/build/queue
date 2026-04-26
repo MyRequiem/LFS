@@ -331,12 +331,14 @@ ap/opus.sh
 l/libsndfile.sh
 l/libsamplerate.sh
 l/sbc.sh
-
 ap/pulseaudio.sh
+l/sdl3.sh
+l/sdl2-compat.sh
 ap/mpg123.sh
 l/x264.sh
 l/x265.sh
 l/libmpeg2.sh
+
 l/gst-plugins-base.sh
 l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
@@ -362,9 +364,7 @@ l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
 l/fftw.sh
-l/sdl2.sh
 l/giflib.sh
-l/sdl12-compat.sh
 l/libwebp.sh
 # пересоберем libtiff
 l/libtiff.sh

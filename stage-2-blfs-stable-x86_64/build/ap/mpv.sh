@@ -21,7 +21,7 @@ PRGNAME="mpv"
 #              libdvdnav
 #              libbluray        (https://www.videolan.org/developers/libbluray.html)
 #              pipewire
-#              sdl2
+#              sdl2-compat
 #              jack             (https://jackaudio.org/)
 #              openal           (https://openal.org/)
 #              libcaca          (https://github.com/cacalabs/libcaca)

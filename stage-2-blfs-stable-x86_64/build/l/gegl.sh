@@ -30,7 +30,7 @@ PRGNAME="gegl"
 #              pango
 #              poppler
 #              ruby
-#              sdl2
+#              sdl2-compat
 #              v4l-utils
 #              vala
 #              lensfun             (https://lensfun.github.io/)

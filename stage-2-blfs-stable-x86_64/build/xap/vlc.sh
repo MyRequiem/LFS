@@ -78,9 +78,9 @@ PRGNAME="vlc"
 #              fribidi
 #              libplacebo
 #              librsvg
-#              sdl12-compat
 #              libcaca                  (https://github.com/cacalabs/libcaca)
 #              libmfx                   (https://github.com/Intel-Media-SDK/MediaSDK)
+#              sdl12-compat             (https://github.com/libsdl-org/sdl12-compat)
 #              --- Дополнительные аудио плагины ---
 #              pulseaudio
 #              libsamplerate

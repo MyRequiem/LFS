@@ -48,6 +48,12 @@ DESTDIR="${TMP_DIR}" ninja install
 rm -rf "${TMP_DIR}/tmp"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
+# запретим запускать at-spi-bus-launcher при старте системы (скроем .desktop,
+# для системы как будто его нет)
+sed -i '$a Hidden=true' \
+    "${TMP_DIR}/etc/xdg/autostart/at-spi-dbus-bus.desktop" || exit 1
+rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1

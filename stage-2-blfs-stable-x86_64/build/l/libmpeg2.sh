@@ -3,12 +3,13 @@
 PRGNAME="libmpeg2"
 
 ### libmpeg2 (mpeg-video decoding library)
-# Библиотека для декодирования видео MPEG-2 и MPEG-1 потоков
+# Библиотека для поддержки классического цифрового видео, которое раньше
+# использовалось на DVD-дисках (декодирование видео MPEG-2 и MPEG-1 потоков).
 
 # Required:    no
 # Recommended: no
 # Optional:    Graphical Environments
-#              sdl12-compat
+#              sdl12-compat             (https://github.com/libsdl-org/sdl12-compat)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,7 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устраним проблему сборки с gcc>=15.0
+# устраним проблему сборки с GCC >=15.0
 sed -i 's/static const/static/' "${PRGNAME}/idct_mmx.c" || exit 1
 
 ./configure         \
@@ -29,8 +30,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

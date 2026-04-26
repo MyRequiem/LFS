@@ -25,7 +25,7 @@ PRGNAME="pipewire"
 #              libsndfile
 #              libusb
 #              opus
-#              sdl2
+#              sdl2-compat
 #              valgrind
 #              vulkan-loader
 #              xorg-libraries

@@ -3,7 +3,10 @@
 PRGNAME="x264"
 
 ### x264 (free h264/avc encoder)
-# Библиотека для кодирования видеопотоков в формат H.264/MPEG-4 AVC
+# Самая популярная библиотека для сжатия видео в формат H.264 (MPEG-4 AVC),
+# которая позволяет делать видеофайлы компактными при сохранении высокого
+# качества. Она признана стандартом индустрии и используется почти везде: от
+# стриминга на YouTube до видеозвонков и записи экрана.
 
 # Required:    no
 # Recommended: nasm
@@ -29,8 +32,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

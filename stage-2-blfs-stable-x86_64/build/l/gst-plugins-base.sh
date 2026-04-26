@@ -24,7 +24,7 @@ PRGNAME="gst-plugins-base"
 # Optional:    graphene
 #              gtk+3                  (для сборки примеров)
 #              opus
-#              sdl2
+#              sdl2-compat
 #              valgrind
 #              python3-hotdoc         (https://pypi.org/project/hotdoc/)
 #              libtheora              (https://www.theora.org/)

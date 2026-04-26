@@ -47,7 +47,7 @@ ARCH_NAME="qt-everywhere-src"
 #              postgresql
 #              protobuf
 #              pulseaudio
-#              sdl2
+#              sdl2-compat
 #              unixodbc
 #              assimp            (https://www.assimp.org/)
 #              flite             (https://github.com/festvox/flite)

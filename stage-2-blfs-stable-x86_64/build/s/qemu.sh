@@ -12,7 +12,7 @@ PRGNAME="qemu"
 # Recommended: alsa-lib
 #              dtc
 #              libslirp
-#              sdl2
+#              sdl2-compat
 # Optional:    pipewire или pulseaudio
 #              bluez
 #              curl

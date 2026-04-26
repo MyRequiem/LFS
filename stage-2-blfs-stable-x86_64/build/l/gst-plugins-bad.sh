@@ -40,7 +40,6 @@ PRGNAME="gst-plugins-bad"
 #              pango
 #              libqrencode
 #              sbc
-#              sdl12-compat
 #              valgrind
 #              vulkan-loader
 #              glslc

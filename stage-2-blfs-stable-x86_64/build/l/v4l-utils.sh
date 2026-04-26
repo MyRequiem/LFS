@@ -12,7 +12,7 @@ PRGNAME="v4l-utils"
 #              libjpeg-turbo
 # Optional:    doxygen
 #              qt6              (для сборки qv4l2 и qvidcap)
-#              sdl2
+#              sdl2-compat
 #              llvm
 #              libbpf           (https://github.com/libbpf/libbpf)
 #              sdl_image        (https://github.com/libsdl-org/SDL_image)

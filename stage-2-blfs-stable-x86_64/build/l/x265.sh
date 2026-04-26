@@ -3,7 +3,10 @@
 PRGNAME="x265"
 
 ### x265 (H265/HEVC video encoder)
-# Библиотека и утилита для кодирования видеопотоков в формат H.265/MPEG-H HEVC
+# Библиотека для сжатия видео в современный формат MPEG-H HEVC (H.265), который
+# позволяет уменьшить размер файла в два раза по сравнению с x264 при том же
+# качестве. Она идеально подходит для видео высокого разрешения (4K и HDR),
+# обеспечивая отличную картинку при заметной экономии места на диске.
 
 # Required:    cmake
 # Recommended: nasm
@@ -37,26 +40,30 @@ mkdir -pv "${TMP_DIR}"
 
 # удалим некоторые настройки политики CMake, которые больше не совместимы с
 # CMake-4.0
-sed -r '/cmake_policy.*(0025|0054)/d' -i source/CMakeLists.txt
+sed -r '/cmake_policy.*(0025|0054)/d' -i source/CMakeLists.txt || exit 1
 
 mkdir bld
 cd bld || exit 1
 
-cmake -D CMAKE_INSTALL_PREFIX=/usr        \
-      -D GIT_ARCHETYPE=1                  \
-      -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-      -W no-dev                           \
-      ../source || exit 1
+cmake                                   \
+    -D CMAKE_INSTALL_PREFIX=/usr        \
+    -D GIT_ARCHETYPE=1                  \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -W no-dev                           \
+    ../source || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # не используем статическую библиотеку
 rm -vf "${TMP_DIR}/usr/lib/lib${PRGNAME}.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

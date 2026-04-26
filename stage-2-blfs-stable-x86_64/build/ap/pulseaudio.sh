@@ -3,14 +3,11 @@
 PRGNAME="pulseaudio"
 
 ### PulseAudio (PulseAudio sound server)
-# Кроссплатформенный звуковой сервер, созданный в качестве улучшенной замены
-# таких серверов как ESD (Enlightened Sound Daemon), ARts. Сервер принимает
-# звук от одного или нескольких источников (процессов или устройств) и
-# направляет одному или нескольким приёмникам (звуковым платам, серверам
-# PulseAudio или процессам). Одной из основных целей проекта является
-# предоставление возможности перенаправления любых звуковых потоков, включая и
-# потоки от процессов, требующих прямого доступа к аудиоустройствам (например,
-# старая OSS)
+# Продвинутый звуковой сервер. Позволяет регулировать громкость в каждой
+# программе отдельно и переключать звук между наушниками и колонками на лету.
+# Одной из основных целей проекта является предоставление возможности
+# перенаправления любых звуковых потоков, включая и потоки от процессов,
+# требующих прямого доступа к аудиоустройствам (например, старая OSS).
 
 # Required:    libsndfile
 # Recommended: alsa-lib
@@ -53,18 +50,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D database=gdbm    \
     -D doxygen=false    \
     -D bluez5=disabled  \
-    -D tests=false      \
-    .. || exit 1
+    -D tests=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 if [ -d "${TMP_DIR}/lib" ]; then
     (
@@ -74,10 +72,12 @@ if [ -d "${TMP_DIR}/lib" ]; then
     )
 fi
 
-# запуск pulseaudio как общесистемного демона возможен, но не рекомендуется,
-# поэтому удалим файл конфигурации D-Bus для общесистемного демона, чтобы
-# избежать создания ненужных системных пользователей и групп
-rm -f "${TMP_DIR}/usr/share/dbus-1/system.d/pulseaudio-system.conf"
+# не нужны никакие общесистемные автостарты и загрузки модулей для PulseAudio
+# (скроем .desktop для системы, как будто его нет)
+sed -i '$a Hidden=true' \
+    "${TMP_DIR}/etc/xdg/autostart/pulseaudio.desktop" || exit 1
+rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
+rm -f  "${TMP_DIR}/usr/share/dbus-1/system.d/pulseaudio-system.conf"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

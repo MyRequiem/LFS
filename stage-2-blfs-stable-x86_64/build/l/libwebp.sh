@@ -14,7 +14,7 @@ PRGNAME="libwebp"
 # Recommended: libjpeg-turbo
 #              libpng
 #              libtiff
-#              sdl2
+#              sdl2-compat    (для улучшения 3D-ускорения)
 # Optional:    freeglut
 #              giflib
 

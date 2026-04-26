@@ -19,10 +19,10 @@ PRGNAME="ffmpeg"
 #              opus
 #              x264
 #              x265
-#              nasm или yasm
+#              nasm
 #              alsa-lib
 #              libva
-#              sdl2
+#              sdl2-compat
 # Optional:    doxygen
 #              fontconfig
 #              fribidi
