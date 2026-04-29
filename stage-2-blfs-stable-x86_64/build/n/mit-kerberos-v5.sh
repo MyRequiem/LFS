@@ -4,12 +4,10 @@ PRGNAME="mit-kerberos-v5"
 ARCH_NAME="krb5"
 
 ### MIT Kerberos V5 (Kerberos 5 network authentication protocol)
-# Свободная реализация сетевого протокола аутентификации Kerberos 5 . Протокол
-# предлагает механизм взаимной аутентификации клиента и сервера перед
-# установлением связи между ними, причём в протоколе учтён тот факт, что
-# начальный обмен информацией между клиентом и сервером происходит в
-# незащищенной среде, а передаваемые пакеты могут быть перехвачены и
-# модифицированы.
+# Набор инструментов для безопасной проверки подлинности пользователей в сети,
+# который позволяет подтверждать личность без передачи паролей в открытом виде.
+# Он использует систему специальных «билетов», чтобы один раз войти в сеть и
+# затем получать доступ к разным сервисам без повторного ввода пароля.
 
 # Required:    no
 # Recommended: no
@@ -41,6 +39,10 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
+# исправим проблему, выявленную при сборке с glibc >=2.43
+patch --verbose -Np1 -i \
+    "${SOURCES}/mitkrb-${VERSION}-upstream_fix-1.patch" || exit 1
+
 cd src || exit 1
 
 # удалим заведомо неудачный тест
@@ -61,6 +63,7 @@ make || exit 1
 # make -j1 -k check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 rm -rf "${TMP_DIR}/run"
 
 KRB5_CONF="/etc/krb5.conf"

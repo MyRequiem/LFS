@@ -3,18 +3,15 @@
 PRGNAME="libwebp"
 
 ### libwebp (WebP photo compression library)
-# WebP - метод сжатия, который обычно используется для фотографий. Степень
-# сжатия регулируется, поэтому пользователь может выбрать компромисс между
-# размером файла и качеством изображения. WebP обычно достигает в среднем на
-# 39% больше сжатия, чем у JPEG и JPEG 2000, без потери качества. Пакет libwebp
-# содержит библиотеки и вспомогательные утилиты для кодирования и декодирования
-# изображений в этом формате.
+# Современный движок для работы с форматом WebP от компании Google. Эта
+# библиотека обеспечивает отличное сжатие изображений без потери качества, что
+# делает работу интернета и приложений быстрее за счет малого размера файлов.
 
 # Required:    no
 # Recommended: libjpeg-turbo
 #              libpng
 #              libtiff
-#              sdl2-compat    (для улучшения 3D-ускорения)
+#              sdl2-compat      (для улучшения 3D-ускорения)
 # Optional:    freeglut
 #              giflib
 
@@ -38,8 +35,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

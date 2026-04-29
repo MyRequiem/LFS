@@ -3,9 +3,9 @@
 PRGNAME="mtdev"
 
 ### mtdev (Multitouch Protocol Translation Library)
-# Отдельная библиотека, которая преобразует все варианты события ядра MT.
-# Основная часть кода mtdev существует с 2008 года как часть драйвера
-# Multitouch X.
+# Библиотека-посредник, которая собирает данные от различных сенсорных панелей
+# и экранов мультитач. Она преобразует «сырые» сигналы от железа в единый
+# формат, понятный для драйверов и приложений.
 
 # Required:    no
 # Recommended: no
@@ -26,8 +26,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

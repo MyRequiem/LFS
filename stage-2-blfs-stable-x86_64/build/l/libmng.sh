@@ -3,9 +3,10 @@
 PRGNAME="libmng"
 
 ### libmng (Multiple-image Network Graphics library)
-# Библиотека MNG (Multiple-image Network Graphics) разработана с той же
-# модульной философией что и PNG и предназначеная для предоставления тех
-# анимационных возможностей, которые не имеются в PNG
+# Программный модуль для поддержки формата MNG (Multiple-image Network
+# Graphics) - продвинутого аналога анимированных GIF, основанного на
+# технологиях PNG. Он позволяет работать со сложной многослойной анимацией и
+# полупрозрачностью в графике.
 
 # Required:    libjpeg-turbo
 #              lcms2
@@ -27,8 +28,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

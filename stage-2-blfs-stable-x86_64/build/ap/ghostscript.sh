@@ -9,7 +9,7 @@ PRGNAME="ghostscript"
 # соответствующий формат для принтера или дисплея.
 
 # Required:    no
-# Recommended: cups
+# Recommended: libcups или cups
 #              fontconfig
 #              freetype
 #              lcms2

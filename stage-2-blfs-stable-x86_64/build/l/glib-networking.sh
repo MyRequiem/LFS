@@ -3,13 +3,16 @@
 PRGNAME="glib-networking"
 
 ### glib-networking (network-related giomodules for glib)
-# Пакет содержит сетевые gio-модули для GLib
+# Набор сетевых расширений для библиотеки GLib, который обеспечивает безопасную
+# передачу данных через защищенные соединения (TLS/SSL). Он выступает
+# «прослойкой», позволяющей программам (например, браузерам или почтовым
+# клиентам) шифровать трафик и проверять сертификаты безопасности.
 
 # Required:    glib
 #              gnutls
 # Recommended: gsettings-desktop-schemas
 #              make-ca
-# Optional:    libproxy    (https://github.com/libproxy/libproxy)
+# Optional:    libproxy                     (https://github.com/libproxy/libproxy)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,15 +24,16 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup              \
-    --prefix=/usr        \
-    --buildtype=release  \
-    -D libproxy=disabled \
-    ..  || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D libproxy=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

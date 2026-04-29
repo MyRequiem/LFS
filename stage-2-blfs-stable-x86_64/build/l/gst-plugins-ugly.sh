@@ -3,9 +3,10 @@
 PRGNAME="gst-plugins-ugly"
 
 ### GStreamer Ugly Plug-ins (ugly set of GStreamer plugins)
-# Набор GStreamer плагинов хорошего качества и правильной функциональности, но
-# их распространение может вызвать проблемы. Лицензия на подключаемые модули
-# или поддерживающие библиотеки может быть не такой как нам нравится.
+# Набор качественных и стабильных плагинов для GStreamer, которые не вошли в
+# основной состав только из-за юридических сложностей или лицензионных
+# ограничений. Именно этот пакет добавляет поддержку таких популярных, но
+# защищенных патентами технологий, как воспроизведение DVD и формат MP3.
 
 # Required:    gst-plugins-base
 # Recommended: liba52            (для проигрывания DVD)
@@ -30,7 +31,7 @@ cd build || exit 1
 
 # без этой опции плагины с зависимостями от библиотек под лицензией (A)GPL не
 # создаются
-#    -Dgpl=enabled
+#    -D gpl=enabled
 meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
@@ -39,6 +40,8 @@ meson setup ..          \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

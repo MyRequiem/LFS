@@ -3,8 +3,9 @@
 PRGNAME="libinput"
 
 ### libinput (Input device library)
-# Библиотека для работы с устройствами ввода в X.Org и Wayland, обеспечивающая
-# обнаружение/обработку устройств, обработку событий ввода и т.д.
+# Универсальный современный драйвер, который управляет всеми устройствами ввода
+# в системе. Он отвечает за плавность движений мыши, распознавание сложных
+# жестов на тачпаде и предотвращение случайных нажатий ладонью.
 
 # Required:    libevdev
 #              mtdev
@@ -15,16 +16,18 @@ PRGNAME="libinput"
 #              libwacom
 #              doxygen
 #              graphviz
+#              lua
 #              python3-recommonmark
 #              python3-sphinx-rtd-theme
 #              python3-pyparsing
 #              python3-pytest
 #              check                      (https://libcheck.github.io/check/)
 
-# Конфигурация ядра
-#    CONFIG_INPUT=y|m
-#    CONFIG_INPUT_MISC=y|m      (для тестов)
-#    CONFIG_INPUT_UINPUT=y|m    (для тестов)
+### Конфигурация ядра
+#    CONFIG_INPUT=y
+#    --- для тестов ---
+#    CONFIG_INPUT_MISC=y
+#    CONFIG_INPUT_UINPUT=y|m
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -49,8 +52,11 @@ ninja || exit 1
 # meson configure -D tests=true && ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

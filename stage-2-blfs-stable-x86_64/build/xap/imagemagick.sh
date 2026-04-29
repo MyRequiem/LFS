@@ -12,7 +12,7 @@ ARCH_NAME="ImageMagick"
 # Optional:    --- Системные утилиты ---
 #              7zip
 #              llvm
-#              cups
+#              libcups или cups
 #              curl
 #              ffmpeg
 #              fftw
@@ -42,7 +42,6 @@ ARCH_NAME="ImageMagick"
 #              flif                (https://github.com/FLIF-hub/FLIF/releases)
 #              jbig-kit            (https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
 #              libheif             (https://github.com/strukturag/libheif/)
-#              libde265            (https://github.com/strukturag/libde265/)
 #              libraqm             (https://github.com/HOST-Oman/libraqm/)
 #              liquid-rescale      (https://liblqr.wikidot.com/en:download-page)
 #              openexr             (https://www.openexr.com/)

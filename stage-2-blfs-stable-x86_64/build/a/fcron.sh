@@ -147,6 +147,17 @@ cat << EOF > "${TMP_DIR}${SYSTAB}.orig"
 &bootrun 42 12      1 * *    root run-parts /etc/cron.monthly
 EOF
 
+=================================================================
+Добавить в /etc/cron.hourly/
+
+---------
+upddb.sh
+---------
+#! /bin/bash
+
+ionice -c3 nice -n 19 /usr/bin/updatedb
+=================================================================
+
 # для автозапуска fcron демона при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/fcron
 (
@@ -161,6 +172,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # запустим fcron демон
+/etc/rc.d/init.d/fcron stop &>/dev/null
 /etc/rc.d/init.d/fcron start
 # сгенерируем /var/spool/fcron/systab
 fcrontab -z -u systab

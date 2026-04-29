@@ -9,7 +9,7 @@ ARCH_NAME="${PRGNAME}-stable_current_amd64.deb"
 # Required:    qt5-components
 #              qt6
 #              nss
-#              cups
+#              libcups или cups
 # Recommended: no
 # Optional:    no
 

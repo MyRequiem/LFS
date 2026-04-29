@@ -3,10 +3,9 @@
 PRGNAME="fftw"
 
 ### fftw (Fastest Fourier Transform in the West)
-# Набор C подпрограмм для вычисления дискретных преобразований Фурье. Включает
-# в себя сложные, реальные, симметричные и параллельные преобразования, а так
-# же подпрограммы для эффективной обработки массивов произвольных размеров.
-# FFTW обычно быстрее, чем другие общедоступные FFT.
+# Сверхбыстрая математическая библиотека, предназначенная для выполнения
+# дискретного преобразования Фурье. Программы используют её для сложной
+# обработки сигналов, фильтрации звука, анализа изображений и научных расчетов.
 
 # Required:    no
 # Recommended: no
@@ -68,8 +67,11 @@ make clean &&        \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

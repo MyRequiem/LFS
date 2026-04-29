@@ -4,20 +4,22 @@ PRGNAME="qt6"
 ARCH_NAME="qt-everywhere-src"
 
 ### Qt (a multi-platform C++ graphical user interface toolkit)
-# Кроссплатформенный C++ фреймворк, широко использующийся для разработки
-# прикладного программного обеспечения с графическим пользовательским
-# интерфейсом (GUI), а также для разработки программ без графического
-# интерфейса (инструменты командной строки и консоли для серверов). Одним из
-# основных пользователей Qt является KDE Frameworks 5 (KF5)
+# Самая современная версия графического фреймворка, на котором строятся
+# интерфейсы будущего. Она предлагает улучшенную скорость работы, поддержку
+# новейших видеокарт и современные инструменты для создания красивых программ.
+# Одним из основных пользователей Qt является KDE Frameworks 6 (KF6)
 
 # Required:    xorg-libraries
 # Recommended: alsa-lib
 #              make-ca
-#              cups
+#              libcups или cups
 #              dbus
 #              double-conversion
 #              glib
-#              gst-plugins-base
+#              ffmpeg                       (для qtmultimedia backend)
+#              gst-plugins-base             (для qtmultimedia backend)
+#              gst-plugins-good             (для qtmultimedia backend)
+#              gst-plugins-bad              (для qtmultimedia backend)
 #              harfbuzz
 #              icu
 #              jasper
@@ -41,7 +43,7 @@ ARCH_NAME="qt-everywhere-src"
 #              ibus
 #              llvm
 #              libproxy
-#              mariadb или mysql (https://www.mysql.com/)
+#              mariadb или mysql            (https://www.mysql.com/)
 #              mit-kerberos-v5
 #              pciutils
 #              postgresql
@@ -49,13 +51,13 @@ ARCH_NAME="qt-everywhere-src"
 #              pulseaudio
 #              sdl2-compat
 #              unixodbc
-#              assimp            (https://www.assimp.org/)
-#              flite             (https://github.com/festvox/flite)
-#              firebird          (https://www.firebirdsql.org/)
-#              freetds           (https://www.freetds.org/)
-#              openal            (https://openal.org/)
-#              speech-dispatcher (https://freebsoft.org/speechd/)
-#              tslib             (http://www.tslib.org/)
+#              assimp                       (https://www.assimp.org/)
+#              flite                        (https://github.com/festvox/flite)
+#              firebird                     (https://www.firebirdsql.org/)
+#              freetds                      (https://www.freetds.org/)
+#              openal                       (https://openal.org/)
+#              speech-dispatcher            (https://freebsoft.org/speechd/)
+#              tslib                        (http://www.tslib.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -65,8 +67,9 @@ VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
     cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-# для сборки требуется ~47Gb дискового пространства, поэтому собираем не в
-# разделе /tmp (30Gb), а в разделе где хватает места
+# для сборки версии 6.11.0 требуется ~60Gb дискового пространства (~59Gb сборка
+# и ~550M сам пакет), поэтому собираем не в разделе /tmp (30Gb), а в разделе
+# где хватает места
 BUILD_DIR="/home/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
@@ -82,26 +85,15 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
+
 # NOTE:
 # Qt6 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
-# устанавливать в /opt/qt6-${VERSION}
-export QT6PREFIX=/opt/qt6
+# устанавливать в /opt/${PRGNAME}-${VERSION}
+export QT6PREFIX="/opt/${PRGNAME}-${VERSION}"
 
-# /etc
-#     |
-#     profile.d/qt6.sh
-#     sudoers.d/qt6
-#     ld.so.conf.d/qt6.conf
-# /opt
-#     |
-#     qt6               (ссылка на qt6-${VERSION}/)
-#     qt6-${VERSION}/
-
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"/{profile.d,sudoers.d,ld.so.conf.d}
-mkdir -pv "${TMP_DIR}${QT6PREFIX}-${VERSION}"
-# qt6 -> qt6-${VERSION}
-ln -sv "qt6-${VERSION}" "${TMP_DIR}${QT6PREFIX}-${VERSION}/../qt6"
+mkdir -pv "${TMP_DIR}${QT6PREFIX}"
 
 ./configure                \
     -prefix "${QT6PREFIX}" \
@@ -122,8 +114,8 @@ ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
 # удалим ссылки на каталог сборки из установленных библиотек
-#    /opt/qt6/lib/libQt5Purchasing.prl
-#    /opt/qt6/lib/libQt5MultimediaQuick.prl
+#    /opt/${PRGNAME}/lib/libQt6Purchasing.prl
+#    /opt/${PRGNAME}/lib/libQt6MultimediaQuick.prl
 #    ...
 find "${TMP_DIR}${QT6PREFIX}"/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
@@ -133,37 +125,37 @@ mkdir -p "${TMP_DIR}${PIXMAPS}"
 
 pushd qttools/src || exit 1
 install -v -Dm644 assistant/assistant/images/assistant-128.png       \
-    "${TMP_DIR}${PIXMAPS}/assistant-qt6.png"                         &&
+    "${TMP_DIR}${PIXMAPS}/assistant-${PRGNAME}.png"                  &&
 install -v -Dm644 designer/src/designer/images/designer.png          \
-    "${TMP_DIR}${PIXMAPS}/designer-qt6.png"                          &&
+    "${TMP_DIR}${PIXMAPS}/designer-${PRGNAME}.png"                   &&
 install -v -Dm644 linguist/linguist/images/icons/linguist-128-32.png \
-    "${TMP_DIR}${PIXMAPS}/linguist-qt6.png"                          &&
+    "${TMP_DIR}${PIXMAPS}/linguist-${PRGNAME}.png"                   &&
 install -v -Dm644 qdbus/qdbusviewer/images/qdbusviewer-128.png       \
-    "${TMP_DIR}${PIXMAPS}/qdbusviewer-qt6.png"                       &&
+    "${TMP_DIR}${PIXMAPS}/qdbusviewer-${PRGNAME}.png"                &&
 popd || exit 1
 
 APPLICATIONS="/usr/share/applications"
 mkdir -p "${TMP_DIR}${APPLICATIONS}"
 
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/assistant-qt6.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/assistant-${PRGNAME}.desktop"
 [Desktop Entry]
 Name=Qt6 Assistant
 Comment=Shows Qt6 documentation and examples
 Exec=${QT6PREFIX}/bin/assistant
-Icon=assistant-qt6.png
+Icon=assistant-${PRGNAME}.png
 Terminal=false
 Encoding=UTF-8
 Type=Application
 Categories=Qt;Development;Documentation;
 EOF
 
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/designer-qt6.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/designer-${PRGNAME}.desktop"
 [Desktop Entry]
 Name=Qt6 Designer
 GenericName=Interface Designer
 Comment=Design GUIs for Qt6 applications
 Exec=${QT6PREFIX}/bin/designer
-Icon=designer-qt6.png
+Icon=designer-${PRGNAME}.png
 MimeType=application/x-designer;
 Terminal=false
 Encoding=UTF-8
@@ -171,12 +163,12 @@ Type=Application
 Categories=Qt;Development;
 EOF
 
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/linguist-qt6.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/linguist-${PRGNAME}.desktop"
 [Desktop Entry]
 Name=Qt6 Linguist
 Comment=Add translations to Qt6 applications
 Exec=${QT6PREFIX}/bin/linguist
-Icon=linguist-qt6.png
+Icon=linguist-${PRGNAME}.png
 MimeType=text/vnd.trolltech.linguist;application/x-linguist;
 Terminal=false
 Encoding=UTF-8
@@ -184,13 +176,13 @@ Type=Application
 Categories=Qt;Development;
 EOF
 
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/qdbusviewer-qt6.desktop"
+cat << EOF > "${TMP_DIR}${APPLICATIONS}/qdbusviewer-${PRGNAME}.desktop"
 [Desktop Entry]
 Name=Qt6 QDbusViewer
 GenericName=D-Bus Debugger
 Comment=Debug D-Bus applications
 Exec=${QT6PREFIX}/bin/qdbusviewer
-Icon=qdbusviewer-qt6.png
+Icon=qdbusviewer-${PRGNAME}.png
 Terminal=false
 Encoding=UTF-8
 Type=Application
@@ -198,7 +190,7 @@ Categories=Qt;Development;Debugger;
 EOF
 
 # QT6DIR также должен быть доступен пользователю root
-SUDOERS="/etc/sudoers.d/qt6"
+SUDOERS="/etc/sudoers.d/${PRGNAME}"
 cat > "${TMP_DIR}${SUDOERS}" << "EOF"
 Defaults env_keep += QT6DIR
 EOF
@@ -206,14 +198,15 @@ chmod 440 "${TMP_DIR}${SUDOERS}"
 
 # добавим путь поиска библиотек для динамического загрузчика
 cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/${PRGNAME}.conf"
-/opt/qt6/lib
+${QT6PREFIX}/lib
 EOF
 
-QT6_SH="/etc/profile.d/qt6.sh"
+QT6_SH="/etc/profile.d/${PRGNAME}.sh"
 cat << EOF > "${TMP_DIR}${QT6_SH}"
 # Begin ${QT6_SH}
 
 QT6DIR=${QT6PREFIX}
+
 PATH="\${PATH}:\${QT6DIR}/bin"
 PKG_CONFIG_PATH="\${PKG_CONFIG_PATH}:\${QT6DIR}/lib/pkgconfig"
 QT_PLUGIN_PATH=\${QT6DIR}/plugins
@@ -236,11 +229,11 @@ MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a multi-platform C++ graphical user interface toolkit)
 #
-# Qt5 is a cross-platform C++ application framework that is widely used for
+# Qt6 is a cross-platform C++ application framework that is widely used for
 # developing application software with a graphical user interface (GUI) (in
-# which cases Qt5 is classified as a widget toolkit), and also used for
+# which cases Qt6 is classified as a widget toolkit), and also used for
 # developing non-GUI programs such as command-line tools and consoles for
-# servers. One of the major users of Qt is KDE Frameworks 5 (KF5).
+# servers. One of the major users of Qt is KDE Frameworks 6 (KF6).
 #
 # Home page: https://qt-project.org/
 # Download:  https://download.qt.io/archive/qt/${MAJ_VERSION}/${VERSION}/single/${ARCH_NAME}-${VERSION}.tar.xz

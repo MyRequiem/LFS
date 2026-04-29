@@ -4,14 +4,15 @@ PRGNAME="jasper"
 ARCH_NAME="jasper-version"
 
 ### JasPer (free implementation of the JPEG-2000 standard)
-# програмная реализация кодека, указанного в стандарте JPEG-2000 Part-1, т. е.
-# ISO/IEC 15444-1
+# Специализированная библиотека для обработки формата JPEG 2000, который
+# отличается от обычного JPEG отсутствием потерь качества. Часто применяется в
+# цифровом кино, медицине и картографии для хранения очень четких снимков.
 
 # Required:    cmake
 # Recommended: libjpeg-turbo
-# Optional:    freeglut (для создания утилиты jiv)
-#              doxygen  (для создания html документации)
-#              texlive  (для создания pdf документации)
+# Optional:    freeglut         (для создания утилиты jiv)
+#              doxygen          (для создания html документации)
+#              texlive          (для создания pdf документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -38,8 +39,11 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

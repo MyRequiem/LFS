@@ -4,12 +4,13 @@ PRGNAME="unixodbc"
 ARCH_NAME="unixODBC"
 
 ### unixODBC (Open DataBase Connectivity for Unix platforms)
-# Open DataBase Connectivity (ODBC) API для доступа к источникам данных
-# (сервера SQL и любые другие с драйвером ODBC)
+# Стандартная прослойка, позволяющая программам в Linux общаться с самыми
+# разными базами данных по единому протоколу. Она избавляет разработчиков от
+# необходимости писать отдельный код для каждого типа хранилища данных.
 
 # Required:    no
 # Recommended: no
-# Optional:    minisql (https://hughestech.com.au/products/msql/)
+# Optional:    minisql    (https://hughestech.com.au/products/msql/)
 
 ### Конфигурация
 #    /etc/unixODBC/*
@@ -21,6 +22,7 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+autoreconf -fiv || exit 1
 ./configure       \
     --prefix=/usr \
     --sysconfdir=/etc/unixODBC || exit 1
@@ -29,8 +31,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -46,8 +51,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # tools to help install a driver and work with SQL, drivers and driver setup
 # libraries.
 #
-# Home page: http://www.${PRGNAME}.org/
-# Download:  https://github.com/lurcher/${ARCH_NAME}/releases/download/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://www.${PRGNAME}.org/
+# Download:  https://github.com/lurcher/${ARCH_NAME}/archive/v${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

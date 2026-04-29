@@ -194,6 +194,7 @@ l/libyaml.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyyaml.sh
+l/libunwind.sh
 d/llvm.sh
 l/icu.sh
 # ====================================
@@ -265,8 +266,9 @@ l/at-spi2-core.sh
 l/shared-mime-info.sh
 # ====================
 # Все остальное до пакета bumblebee-status (включительно) обновлять в чистой
-# TTY удалив пакеты mesа, qt5 и qt6
+# TTY удалив пакеты mesа, qt5-components и qt6
 #    # removepkg --backup /var/log/packages/mesa-<version>
+#    # removepkg --backup /var/log/packages/qt5-components-<version>
 #    # removepkg --backup /var/log/packages/qt6-<version>
 x/libs/pixman.sh
 l/cairo.sh
@@ -338,14 +340,20 @@ ap/mpg123.sh
 l/x264.sh
 l/x265.sh
 l/libmpeg2.sh
-
+n/mit-kerberos-v5.sh
+l/glib-networking.sh
+# пакет brotli перед обновлением НЕ удаляем из системы
+l/brotli.sh
+l/libsoup2.sh
+l/libsoup3.sh
+l/libaom.sh
+l/liba52.sh
+d/glslc.sh
 l/gst-plugins-base.sh
 l/gst-plugins-good.sh
 l/gst-plugins-bad.sh
 l/gst-plugins-ugly.sh
-d/glslc.sh
 l/gtk4.sh
-l/libgstgtk4.sh
 # === qt5-components ===
 l/double-conversion.sh
 x/xcb/xcb-util.sh
@@ -357,9 +365,7 @@ x/xcb/xcb-util-wm.sh
 x/xcb/xcb-util-xrm.sh
 x/misc/mtdev.sh
 x/libs/libevdev.sh
-l/libunwind.sh
 x/libs/libinput.sh
-n/mit-kerberos-v5.sh
 l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
@@ -374,6 +380,7 @@ d/abseil-cpp.sh
 d/protobuf.sh
 l/qt6.sh
 # ===========
+
 x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
@@ -399,7 +406,6 @@ l/imlib2.sh
 n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
-l/glib-networking.sh
 l/glibmm26.sh
 l/atkmm22.sh
 l/cairomm114.sh
@@ -488,12 +494,26 @@ x/apps/bumblebee-status.sh
 l/nspr.sh
 l/nss.sh
 x/apps/xdg-utils.sh
-ap/cups.sh
+# пакет libcups - это урезанный пакет cups (только основная библиотека и
+# заголовки):
+#    /usr/lib/libcups.so
+#    /usr/include/cups/*
+# Нужен для сборки/запуска программ, для которых cups является жесткой
+# зависимостью (google-chrome, openjdk и др.) без установки тяжелого
+# принт-сервера. По сути это заглушка для удовлетворения зависимостей без
+# развертывания полной инфраструктуры CUPS.
+#
+# ВНИМАНИЕ: пакеты libcups и cups ВЗАИМОИСКЛЮЧАЕМЫ
+# - если нужен сервер печати (демон): ставьте ap/cups.sh
+# - если принтера нет и нужна только компиляция/запуск зависимого софта:
+#    ставьте l/libcups.sh
+# - если cups уже установлен в системе: ПРОПУСТИТЕ установку libcups или
+#    удалите cups и соберите libcups
+l/libcups.sh ИЛИ ap/cups.sh
 xap/google-chrome.sh
 xap/zen-browser.sh
 # ======= mirage =======
 a/inih.sh
-l/brotli.sh
 l/exiv2.sh
 l/gexiv2.sh
 ap/mirage.sh
@@ -506,7 +526,6 @@ n/ntp.sh
 a/fcron.sh
 # ================================== PART 3 ====================================
 # === ffmpeg, mpv ===============
-l/libaom.sh
 l/libass.sh
 l/fdk-aac.sh
 l/openjpeg.sh
@@ -553,8 +572,6 @@ s/qemu.sh
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-l/libsoup2.sh
-l/libsoup3.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
 l/libosinfo.sh
@@ -635,7 +652,6 @@ ap/zathura.sh
 ap/deb2tgz.sh
 ap/rpm.sh
 xap/openoffice.sh
-l/liba52.sh
 l/libmad.sh
 l/v4l-utils.sh
 ap/faad2.sh

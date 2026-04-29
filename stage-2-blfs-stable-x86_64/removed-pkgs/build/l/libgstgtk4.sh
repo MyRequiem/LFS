@@ -4,6 +4,7 @@ PRGNAME="libgstgtk4"
 ARCH_NAME="gst-plugins-rs-gstreamer"
 
 ### libgstgtk4 (GTK-4 Gstreamer Multimedia Framework)
+Специальное дополнение, которое позволяет программам нового поколения (на базе GTK4) без труда показывать видео внутри своих окон.
 # Библиотека для связывания Gstreamer Multimedia Framework с GTK-4
 
 # Required:    git

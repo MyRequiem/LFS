@@ -5,7 +5,9 @@ ARCH_NAME="llvm-project"
 
 ### libclc (implementation of the library requirements OpenCL C)
 # Набор функций для выполнения сложных математических вычислений прямо на
-# видеокарте (OpenCL).
+# видеокарте (OpenCL). Это своего рода «библиотека стандартных процедур»,
+# которая учит графический процессор понимать и исполнять код, написанный для
+# научных и инженерных расчетов.
 
 # Required:    spirv-llvm-translator
 # Recommended: no

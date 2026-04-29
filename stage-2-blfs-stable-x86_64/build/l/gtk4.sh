@@ -4,13 +4,16 @@ PRGNAME="gtk4"
 ARCH_NAME="gtk"
 
 ### GTK-4 (multi-platform GUI toolkit v4)
-# Библиотеки, используемые для создания графических пользовательских
-# интерфейсов приложений, предлагающие полный набор виджетов
+# Современное поколение фреймворка для создания графических интерфейсов,
+# которое стало быстрее и плавнее благодаря полной отрисовке через видеокарту
+# (GPU). В отличие от GTK 3, здесь пересмотрены механизмы работы с виджетами и
+# макетами, что делает интерфейсы более современными и отзывчивыми.
 
 # Required:    gdk-pixbuf
 #              graphene
 #              iso-codes
 #              libepoxy
+#              librsvg
 #              libxkbcommon
 #              pango
 #              python3-pygobject3
@@ -18,15 +21,15 @@ ARCH_NAME="gtk"
 # Recommended: adwaita-icon-theme    (по умолчанию для некоторых ключей настроек gtk4)
 #              gst-plugins-bad       (собранный с libvpx)
 #              glslc
-#              gst-plugins-good      (собранный с libvpx)
+#              gst-plugins-good      (собранный с libvpx, runtime)
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
-#              librsvg
 #              vulkan-loader
 #              glib
 # Optional:    avahi                 (для некоторых тестов)
 #              colord
-#              cups
+#              libcups или cups
 #              python3-docutils      (для сборки man-страниц)
+#              evince                (runtime, для среств просмотра печати)
 #              python3-gi-docgen     (для сборки документации)
 #              highlight             (используется gtk4-demo для подсветки синтаксиса исходного кода)
 #              libcloudproviders
@@ -36,6 +39,11 @@ ARCH_NAME="gtk"
 #              cpdb                  (https://github.com/OpenPrinting/cpdb-libs)
 #              python3-pydbus        (https://pypi.org/project/pydbus/)
 #              sysprof               (https://wiki.gnome.org/Apps/Sysprof)
+
+### Конфигурация ядра:
+#    CONFIG_UDMABUF=y    (если X11+<i3wm|LXQt> - данная опция в конфиге ядра
+#                           необязательна, разницы в выводе картинки на экран
+#                           не будет)
 
 ### Конфигурация:
 #    /usr/share/gtk-4.0/settings.ini
@@ -67,37 +75,37 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему сборки с gcc-15
-sed -e '939 s/= { 0, }//'                                       \
-    -e '940 a memset (&transform, 0, sizeof(GtkCssTransform));' \
-    -i gtk/gtkcsstransformvalue.c || exit 1
-
 mkdir build
 cd build || exit 1
 
-meson setup                  \
+meson setup ..               \
     --prefix=/usr            \
     --buildtype=release      \
     -D broadway-backend=true \
     -D introspection=enabled \
     -D vulkan=enabled        \
     -D build-examples=false  \
-    -D build-tests=false     \
-    .. || exit 1
+    -D build-tests=false || exit 1
 
 ninja || exit 1
 
 ###
-# тесты проводятся в графической среде
+# Тесты проводятся в графической среде
 # если запущена сессия wayland, то вместо x11 указываем wayland
 #    --setup wayland
 ###
-# env -u{GALLIUM_DRIVER,MESA_LOADER_DRIVER_OVERRIDE}          \
-#     LIBGL_ALWAYS_SOFTWARE=1 VK_LOADER_DRIVERS_SELECT='lvp*' \
-#     dbus-run-session meson test --setup x11                 \
-#                                 --no-suite={headless,needs-udmabuf}
+# sed "s@'oc'@& / 'gtk-4.22.3'@" -i ../docs/reference/meson.build
+# meson configure -D documentation=true || exit 1
+# ninja || exit 1
+# запуск тестов
+# env -u{GALLIUM_DRIVER,MESA_LOADER_DRIVER_OVERRIDE}              \
+#         LIBGL_ALWAYS_SOFTWARE=1 VK_LOADER_DRIVERS_SELECT='lvp*' \
+#             dbus-run-session meson test --setup x11             \
+#                                         --no-suite=headless'
 
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

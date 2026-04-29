@@ -3,9 +3,9 @@
 PRGNAME="xcb-util-wm"
 
 ### xcb-util-wm (XCB libraries for EWMH and ICCCM)
-# Библиотеки XCB ewmh и iccm, которые включают клиент и вспомогательные функции
-# для стандартов EWMH (Extended Window Manager Hints) и ICCCM (Inter-Client
-# Communication Conventions Manual)
+# Набор стандартов и функций, необходимых для создания оконных менеджеров. Он
+# определяет правила, по которым окна взаимодействуют друг с другом: как они
+# сворачиваются, перемещаются и перекрываются.
 
 # Required:    xcb-util
 # Recommended: no
@@ -27,8 +27,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

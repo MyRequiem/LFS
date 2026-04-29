@@ -3,8 +3,9 @@
 PRGNAME="xcb-util-xrm"
 
 ### xcb-util-xrm (XCB utility functions for the X resource manager)
-# Библиотека использующаяся поверх libxcb и предоставляющая удобные функции и
-# интерфейсы, которые делают необработанный протокол X более удобным.
+# Утилита для работы с базой данных ресурсов X-сервера, где хранятся глобальные
+# настройки внешнего вида. Она позволяет программам автоматически подхватывать
+# пользовательские цвета, шрифты и темы оформления.
 
 # Required:    xcb-util
 # Recommended: no
@@ -26,8 +27,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,9 +3,12 @@
 PRGNAME="gst-plugins-base"
 
 ### GStreamer Base Plugins (base set of GStreamer plugins)
-# Плагины GStreamer Base - это хорошо поддерживаемая коллекция подключаемых
-# модулей и элементов GStreamer. Включает в себя широкий выбор видео и аудио
-# кодеков, декодеров и фильтров.
+# Базовый набор инструментов для мультимедийного движка GStreamer, который
+# обеспечивает фундаментальные функции: воспроизведение звука, обработку видео
+# и поддержку популярных форматов вроде Ogg или Vorbis. Это обязательный
+# «фундамент», без которого большинство программ не смогут даже просто открыть
+# аудио- или видеофайл. Включает в себя широкий выбор видео и аудио кодеков,
+# декодеров и фильтров.
 
 # Required:    gstreamer
 # Recommended: alsa-lib
@@ -39,9 +42,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# удалим нерабочий тест
+sed -i '/tcase_add_test (tc_chain, test_reorder_buffer);/d' \
+    tests/check/libs/gstglcolorconvert.c || exit 1
+
 mkdir build
 cd build || exit 1
 
+# не позволяем мезону загружать любые дополнительные зависимости, которые не
+# установлены в системе
+#    --wrap-mode=nodownload
 meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \
@@ -56,6 +66,8 @@ ninja || exit 1
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

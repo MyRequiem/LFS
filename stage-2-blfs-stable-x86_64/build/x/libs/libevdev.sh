@@ -3,13 +3,15 @@
 PRGNAME="libevdev"
 
 ### libevdev (wrapper library for evdev devices)
-# Пакет содержит общие функции для Xorg input drivers
+# Низкоуровневый «переводчик» для всех устройств ввода, от мышек до джойстиков.
+# Обеспечивает безопасный и надежный способ передачи сигналов от оборудования в
+# программную часть системы.
 
 # Required:    no
 # Recommended: no
 # Optional:    doxygen
 #              valgrind
-#              check        (https://libcheck.github.io/check/)
+#              check        (для тестов) https://libcheck.github.io/check/
 
 ### Конфигурация ядра
 #    CONFIG_INPUT=y
@@ -37,16 +39,20 @@ meson setup ..                \
 
 ninja || exit 1
 
-# Тесты должны запускаться при запущенном X-сервере. В некоторых системах тесты
-# могут вызвать жесткую блокировку, что потребует перезагрузки машины. На
-# ноутбуках система перейдет в спящий режим, и ее необходимо разбудить, чтобы
-# завершить тестовые наборы. Должен быть установлен пакет 'check'
+# Для тестов обязательно должен быть установлен пакет check и они должны
+# запускаться графическом окружении. В некоторых системах тесты могут вызвать
+# жесткую блокировку, что потребует перезагрузки машины. На ноутбуках система
+# перейдет в спящий режим, и ее необходимо разбудить, чтобы завершить тестовые
+# наборы.
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,7 +3,10 @@
 PRGNAME="protobuf"
 
 ### protobuf (Google's data interchange format)
-# Механизм для сериализации структурированных данных Google
+# Продвинутая система для обмена данными, которая упаковывает сложную
+# информацию в очень компактный двоичный код. Это позволяет программам
+# обмениваться сообщениями по сети или сохранять настройки мгновенно и
+# экономно.
 
 # Required:    abseil-cpp
 #              cmake
@@ -29,14 +32,16 @@ cmake                                 \
     -D protobuf_BUILD_TESTS=OFF       \
     -D protobuf_BUILD_SHARED_LIBS=ON  \
     -D utf8_range_ENABLE_INSTALL=ON   \
-    -G Ninja                          \
-    .. || exit 1
+    -G Ninja .. || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

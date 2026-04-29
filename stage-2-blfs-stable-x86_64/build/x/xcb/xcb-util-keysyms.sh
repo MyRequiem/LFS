@@ -3,8 +3,9 @@
 PRGNAME="xcb-util-keysyms"
 
 ### xcb-util-keysyms (keysyms library for XCB)
-# Библиотека, обрабатывающая стандартные X key constants и преобразующая их в
-# коды клавиш и наоборот.
+# Технический модуль XCB, который переводит физические коды клавиш клавиатуры в
+# понятные программе символы. Это необходимо, чтобы система корректно
+# распознавала нажатия кнопок вне зависимости от модели устройства.
 
 # Required:    xcb-util
 # Recommended: no
@@ -26,8 +27,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

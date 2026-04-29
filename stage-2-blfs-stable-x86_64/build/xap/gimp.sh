@@ -44,7 +44,6 @@ PRGNAME="gimp"
 #              libiff               (https://github.com/svanderburg/libiff)
 #              libilbm              (https://github.com/svanderburg/libilbm)
 #              libheif              (https://github.com/strukturag/libheif/)
-#              libde265             (https://github.com/strukturag/libde265/)
 #              libwmf               (https://wvware.sourceforge.net/libwmf.html)
 #              openexr              (https://www.openexr.com/)
 #              qoi                  (https://github.com/phoboslab/qoi)

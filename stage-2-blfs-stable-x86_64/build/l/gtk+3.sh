@@ -23,8 +23,8 @@ ARCH_NAME="gtk"
 #              wayland-protocols
 #              glib
 # Optional:    colord
-#              cups
-#              evince
+#              libcups или cups
+#              evince                (runtime, для среств просмотра печати)
 #              gtk-doc
 #              libcloudproviders
 #              python3-pyatspi2      (для тестов)
@@ -67,11 +67,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+# по молчанию "cups,file,lpr,papi,test" - нам это не нужно
+#    -D print_backends="file"
 meson setup ..               \
     --prefix=/usr            \
     --buildtype=release      \
     -D man=true              \
     -D broadway_backend=true \
+    -D print_backends="file" \
     -D examples=false        \
     -D tests=false || exit 1
 

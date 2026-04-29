@@ -4,16 +4,14 @@ PRGNAME="qt5-components"
 ARCH_NAME="qt-everywhere-opensource-src"
 
 ### Qt (a multi-platform C++ graphical user interface toolkit)
-# Кроссплатформенный C++ фреймворк, широко использующийся для разработки
-# прикладного программного обеспечения с графическим пользовательским
-# интерфейсом (GUI), а также для разработки программ без графического
-# интерфейса (инструменты командной строки и консоли для серверов). Одним из
-# основных пользователей Qt является KDE Frameworks 5 (KF5)
+# Набор ключевых библиотек пятого поколения Qt, которые служат каркасом для
+# множества графических приложений. Эти компоненты отвечают за отрисовку
+# кнопок, работу с сетью и мультимедиа в программах, еще не перешедших на Qt6.
 
 # Required:    xorg-libraries
 # Recommended: alsa-lib
 #              at-spi2-core
-#              cups
+#              libcups или cups
 #              dbus
 #              double-conversion
 #              glib
@@ -30,7 +28,7 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              xcb-util-wm
 # Optional:    gtk+3
 #              libinput
-#              mariadb или mysql (https://www.mysql.com/)
+#              mariadb или mysql        (https://www.mysql.com/)
 #              mit-kerberos-v5
 #              mtdev
 #              postgresql
@@ -66,27 +64,8 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 # устанавливать в /opt/qt5-${VERSION}
 export QT5PREFIX="/opt/qt5-${VERSION}"
 
-# /etc
-#     |
-#     profile.d/qt5.sh
-#     sudoers.d/qt5
-#     ld.so.conf.d/qt5.conf
-# /usr
-#     |
-#     bin/
-# /opt
-#     |
-#     qt5-${VERSION}/
-
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d,ld.so.conf.d},usr/bin}
 mkdir -pv "${TMP_DIR}${QT5PREFIX}"
-
-# исправления, предложенные KDE
-patch -Np1 --verbose -i \
-    "${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch" || exit 1
-
-# патч предполагает наличие git репозитория
-mkdir -pv qtbase/.git
 
 # список компонентов в файле tempconf, которые будут пропущены при компиляции
 # shellcheck disable=SC2010
@@ -160,12 +139,12 @@ make install INSTALL_ROOT="${TMP_DIR}"
 find "${TMP_DIR}${QT5PREFIX}"/ -name "*.prl" \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
 
-QT5BINDIR="${QT5PREFIX}/bin"
 # некоторые пакеты, например vlc, ищут определенные исполняемые файлы в
 # /usr/bin с суффиксом -qt5, поэтому создадим необходимые ссылки
 #    /usr/bin/qmake-qt5 -> /opt/qt5-${VERSION}/bin/qmake
 #    /usr/bin/moc-qt5   -> /opt/qt5-${VERSION}/bin/moc
 #    ...
+QT5BINDIR="${QT5PREFIX}/bin"
 for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
     ln -sfv "../..${QT5BINDIR}/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
 done

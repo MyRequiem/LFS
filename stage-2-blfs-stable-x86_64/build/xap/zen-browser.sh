@@ -10,7 +10,7 @@ ARCH_NAME="zen.linux-x86_64"
 # Required:    qt5-components
 #              qt6
 #              nss
-#              cups
+#              libcups или cups
 # Recommended: no
 # Optional:    no
 

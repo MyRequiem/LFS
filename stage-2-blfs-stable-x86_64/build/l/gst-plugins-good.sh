@@ -3,9 +3,10 @@
 PRGNAME="gst-plugins-good"
 
 ### GStreamer Good Plug-ins (good set of GStreamer plugins)
-# Набор подключаемых модулей для GStreamer. Модули имеют хороший качественный
-# код и правильный функционал. Содержит широкий спектр видео и аудиодекодеров,
-# кодировщиков и фильтров.
+# Коллекция высококачественных и свободных плагинов для GStreamer, которые
+# отвечают за поддержку популярных форматов и эффектов без лицензионных
+# проблем. В этот набор входят проверенные временем инструменты для работы с
+# видеокамерами, звуком и форматами вроде FLAC, JPEG и AVI.
 
 # Required:    gst-plugins-base
 # Recommended: cairo
@@ -59,6 +60,8 @@ meson setup ..           \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

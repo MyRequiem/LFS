@@ -3,15 +3,18 @@
 PRGNAME="gst-plugins-bad"
 
 ### GStreamer Bad Plug-ins (bad set of GStreamer plugins)
-# Набор плагинов, которые не соответствуют требованиям в полной мере. Они могут
-# быть близки к хорошему качеству, но им чего-то не хватает, например код не
-# всегда хорошо читаем, отсутствует документация, наборы тестов, maintainer или
-# что-то другое.
+# Набор плагинов для GStreamer, которые либо еще находятся в разработке, либо
+# не прошли строгую проверку качества, либо требуют редких библиотек. Несмотря
+# на название, внутри находятся очень важные и современные инструменты
+# (например, поддержка протоколов SRT или видеокодеков нового поколения),
+# которые просто пока не считаются идеально стабильными.
 
 # Required:    gst-plugins-base
-# Recommended: libdvdread
+# Recommended: libaom
+#              libdvdread
 #              libdvdnav
 #              libva
+#              svt-av1
 #              soundtouch
 # Optional:    bluez
 #              curl
@@ -22,8 +25,8 @@ PRGNAME="gst-plugins-bad"
 #              gst-plugins-good     (для одного теста)
 #              json-glib
 #              lcms2
-#              libaom
 #              libass
+#              libde265
 #              libexif              (для одного теста)
 #              librsvg
 #              libsndfile
@@ -60,7 +63,6 @@ PRGNAME="gst-plugins-bad"
 #              libavtp              (https://github.com/AVnu/libavtp)
 #              libdc1394_2          (https://sourceforge.net/projects/libdc1394/files/libdc1394-2/)
 #              libdca               (https://www.videolan.org/developers/libdca.html)
-#              libde265             (https://www.libde265.org/)
 #              libkate              (https://code.google.com/archive/p/libkate/)
 #              libmfx               (https://github.com/Intel-Media-SDK/MediaSDK)
 #              libmms               (https://sourceforge.net/projects/libmms/)
@@ -116,6 +118,8 @@ meson setup ..          \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

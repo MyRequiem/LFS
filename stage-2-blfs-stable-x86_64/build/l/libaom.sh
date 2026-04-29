@@ -3,11 +3,12 @@
 PRGNAME="libaom"
 
 ### libaom (reference version of the Alliance for Open Media video codec)
-# Пакет содержит эталонную версию Alliance for Open Media video codec. Кодек
-# является незапатентованной альтернативой H.265 и начинает использоваться в
-# Интернете
+# Открытая библиотека для кодирования и декодирования видео в современном
+# формате AV1. Позволяет сжимать видео высокого качества без потерь в деталях,
+# при этом файлы получаются значительно меньше по размеру, чем в старых
+# форматах.
 
-# Required:    no
+# Required:    cmake
 # Recommended: yasm или nasm
 # Optional:    doxygen
 
@@ -27,18 +28,20 @@ cmake                            \
     -D BUILD_SHARED_LIBS=1       \
     -D ENABLE_DOCS=no            \
     -D ENABLE_NASM=yes           \
-    -G Ninja \
-    .. || exit 1
+    -G Ninja .. || exit 1
 
 ninja || exit 1
-# для тестов нужна сеть Internet
-# ninja runtests
+# пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# удалим статическую библиотеку
 rm -fv "${TMP_DIR}/usr/lib/libaom.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

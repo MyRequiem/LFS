@@ -4,24 +4,26 @@ PRGNAME="libsoup2"
 ARCH_NAME="libsoup"
 
 ### libsoup (an HTTP client/server library)
-# Реализация HTTP клиент/сервер библиотеки на C, использующей GObjects и glib
-# для интеграции с приложениями GTK+, а также синхронный API, подходящий для
-# использования в многопоточных приложениях
+# Библиотека, которая позволяет GTK+ приложениям легко обмениваться данными по
+# сети (HTTP). Она работает в фоновом режиме, помогая программам скачивать
+# файлы или подключаться к веб-сервисам.
 
 # Required:    glib-networking
 #              libpsl
 #              libxml2
+#              nghttp2
 # Recommended: glib
 #              vala
 # Optional:    --- для тестов ---
 #              apache-httpd
 #              brotli
-#              curl
+#              curl                 (для тестов)
+#              python3-gi-docgen
 #              mit-kerberos-v5
-#              gtk-doc
-#              php              (собранный с поддержкой xmlrpc-epi)
+#              php                  (собранный с поддержкой xmlrpc-epi)
 #              samba
-#              sysprof          (https://wiki.gnome.org/Apps/Sysprof)
+#              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
+#              wstest               (https://github.com/posener/wstest)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -64,6 +66,8 @@ meson setup             \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

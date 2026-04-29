@@ -11,7 +11,7 @@ BIN_VERSION="26"
 
 # Required:    alsa-lib
 #              cpio
-#              cups
+#              libcups или cups
 #              libarchive
 #              which
 #              xorg-libraries
@@ -26,9 +26,9 @@ BIN_VERSION="26"
 # Optional:    git
 #              graphviz
 #              mercurial
-#              ccache           (https://ccache.dev/)
-#              pandoc           (https://pandoc.org/)
-#              pigz             (https://zlib.net/pigz/)
+#              ccache               (https://ccache.dev/)
+#              pandoc               (https://pandoc.org/)
+#              pigz                 (https://zlib.net/pigz/)
 
 ### NOTE:
 # После установки пакета нужно обновить переменные окружения
