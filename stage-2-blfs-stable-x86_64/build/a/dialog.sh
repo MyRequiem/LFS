@@ -3,7 +3,9 @@
 PRGNAME="dialog"
 
 ### dialog (display dialog boxes from shell scripts)
-# утилита для создания диалоговых окон из сценариев оболочки
+# Удобная программка, которая позволяет разработчикам легко встраивать красивые
+# текстовые меню и окна вопросов прямо в командную строку. Это делает
+# управление системой через терминал гораздо нагляднее.
 
 # Required:    no
 # Recommended: no
@@ -58,8 +60,10 @@ zcat "${SOURCES}/${PRGNAME}.no.aspect.ratio.autoajust.patch.gz" | \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим статическую библиотеку
-rm -rf "${TMP_DIR}/usr/lib"
+rm -rf "${TMP_DIR}/usr/lib/lib${PRGNAME}.a"
 
 cat "${SOURCES}/dialogrc" > "${TMP_DIR}/etc/dialogrc" || exit 1
 

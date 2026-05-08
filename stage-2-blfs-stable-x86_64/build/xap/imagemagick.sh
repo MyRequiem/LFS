@@ -28,6 +28,7 @@ ARCH_NAME="ImageMagick"
 #              jasper
 #              lcms2
 #              libgxps
+#              libheif
 #              libjpeg-turbo
 #              libjxl
 #              libpng
@@ -41,7 +42,6 @@ ARCH_NAME="ImageMagick"
 #              libfpx              (https://imagemagick.org/archive/delegates/)
 #              flif                (https://github.com/FLIF-hub/FLIF/releases)
 #              jbig-kit            (https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
-#              libheif             (https://github.com/strukturag/libheif/)
 #              libraqm             (https://github.com/HOST-Oman/libraqm/)
 #              liquid-rescale      (https://liblqr.wikidot.com/en:download-page)
 #              openexr             (https://www.openexr.com/)

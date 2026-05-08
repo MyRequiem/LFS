@@ -3,8 +3,9 @@
 PRGNAME="gnome-keyring"
 
 ### GNOME Keyring (a tool to handle security credentials)
-# Демон, который хранит и предоставляет доступ к паролям и другим закрытым
-# данным пользователей
+# Централизованная служба «связки ключей», которая автоматически запоминает
+# пароли от Wi - Fi, сайтов и сетевых папок. Вам достаточно ввести один главный
+# пароль при входе, чтобы система сама открыла остальные.
 
 # Required:    dbus
 #              gcr3
@@ -29,9 +30,7 @@ cd build-gkr || exit 1
 meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D systemd=disabled \
-    -D ssh-agent=true   \
-    -D pam=false || exit 1
+    -D systemd=disabled || exit 1
 
 ninja || exit 1
 
@@ -39,6 +38,8 @@ ninja || exit 1
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

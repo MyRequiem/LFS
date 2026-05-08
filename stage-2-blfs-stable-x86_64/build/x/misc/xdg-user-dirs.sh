@@ -3,9 +3,9 @@
 PRGNAME="xdg-user-dirs"
 
 ### Xdg-user-dirs.sh (manage XDG user directories)
-# Инструмент, помогающий управлять известными пользовательскими каталогами,
-# такими как папка рабочего стола, папка музыки, документов и т.д. Также
-# обрабатывает локализацию (т.е. перевод) имен файлов
+# Утилита, которая наводит порядок в домашней директории пользователя, создавая
+# стандартные директории вроде «Документы» или «Видео». Она помогает программам
+# всегда знать, куда по умолчанию сохранять файлы.
 
 # Required:    no
 # Recommended: no
@@ -62,19 +62,30 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+# Живут в другом измерении? Зачем так именовать директорию с исходниками и сам
+# архив ???
+#    xdg-user-dirs-vX.XX.tar.gz
+# Ясен хрен что это версия.
+VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --sysconfdir=/etc || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
+# если не установлены ВСЕ опциональные зависимости, делаем -D docs=false
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D docs=true || exit 1
+
+ninja || exit 1
 # пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+rm -rf "${TMP_DIR}/usr/lib/systemd"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -89,7 +100,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # translation) of the filenames
 #
 # Home page: https://www.freedesktop.org/wiki/Software/${PRGNAME}/
-# Download:  https://user-dirs.freedesktop.org/releases/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://gitlab.freedesktop.org/xdg/${PRGNAME}/-/archive/v${VERSION}/${PRGNAME}-v${VERSION}.tar.gz
 #
 EOF
 

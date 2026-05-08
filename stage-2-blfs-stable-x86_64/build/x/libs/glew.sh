@@ -3,9 +3,9 @@
 PRGNAME="glew"
 
 ### GLEW (the OpenGL Extension Wrangler Library)
-# Кроссплатформенная C++ библиотека OpenGL Extension Wrangler (GLEW),
-# предоставляющая эффективные механизмы для определения поддерживаемых
-# расширений OpenGL и их загрузки
+# Инструмент, который помогает графическим программам определять возможности
+# видеокарты и использовать современные расширения OpenGL. Это фундамент для
+# игр и 3D - редакторов, позволяющий им работать на полную мощность.
 
 # Required:    mesa
 # Recommended: no
@@ -21,10 +21,13 @@ mkdir -pv "${TMP_DIR}"
 # библиотеку устанавливаем в /usr/lib/
 sed -i 's%lib64%lib%g' config/Makefile.linux || exit 1
 
-# не создаем статическую библиотеку
-sed -i -e '/glew.lib.static:/d' \
-       -e '/0644 .*STATIC/d'    \
-       -e 's/glew.lib.static//' Makefile || exit 1
+# 's%lib64%lib%g'       - библиотеки устанавливаем в /usr/lib
+# '/glew.lib.static:/d' - не устанавлиаваем статическую библиотеку
+# 's|/local||'          - пакет устанавливаем в /usr
+sed -e '/glew.lib.static:/d' \
+    -e '/0644 .*STATIC/d'    \
+    -e 's/glew.lib.static//' \
+    -e 's|/local||' -i Makefile || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
@@ -33,10 +36,13 @@ make || exit 1
 # 'visualinfo'
 make install.all DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 chmod 755 "${TMP_DIR}/usr/lib/libGLEW.so"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -28,7 +28,6 @@ INSTALLED_VER=$(find /var/log/packages/ -type f -name "${PRGNAME}-*" | \
     rev |  cut -f 1 -d - | rev)
 echo -en "Installed version: ${INSTALLED_VER}\nTarball version:   "
 
-# shellcheck disable=SC2002
 VERSION=$(tar -xJf ${SOURCES}/${ARCH_NAME}.tar.xz zen/application.ini && \
     cat zen/application.ini | grep -e '^Version' | cut -d = -f 2)
 rm -rf ./zen/

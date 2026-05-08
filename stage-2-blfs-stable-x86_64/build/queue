@@ -266,10 +266,8 @@ l/at-spi2-core.sh
 l/shared-mime-info.sh
 # ====================
 # Все остальное до пакета bumblebee-status (включительно) обновлять в чистой
-# TTY удалив пакеты mesа, qt5-components и qt6
-#    # removepkg --backup /var/log/packages/mesa-<version>
-#    # removepkg --backup /var/log/packages/qt5-components-<version>
-#    # removepkg --backup /var/log/packages/qt6-<version>
+# TTY удалив пакеты mesа, qt5-components, qt6 и другие пакеты со сломанными
+# зависимостями (проверяем утилитой check-system-deps)
 x/libs/pixman.sh
 l/cairo.sh
 l/pango.sh
@@ -380,7 +378,6 @@ d/abseil-cpp.sh
 d/protobuf.sh
 l/qt6.sh
 # ===========
-
 x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
@@ -393,19 +390,21 @@ l/fltk.sh
 l/libsecret.sh
 l/gcr3.sh
 l/gcr4.sh
+l/libcap-ng.sh
 l/gnome-keyring.sh
+# пересоберем pinentry уже со всеми зависимостями
 n/pinentry.sh
 n/libtirpc.sh
-l/libcap-ng.sh
-n/openvpn.sh
 a/dialog.sh
 l/alsa-plugins.sh
 ap/alsa-utils.sh
 ap/alsa-tools.sh
 l/imlib2.sh
+# пересоберем w3m уже со всеми зависимостями
 n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
+
 l/glibmm26.sh
 l/atkmm22.sh
 l/cairomm114.sh

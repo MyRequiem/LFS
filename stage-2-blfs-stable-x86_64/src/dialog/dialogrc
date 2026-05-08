@@ -1,4 +1,4 @@
-# $Id: slackware.rc,v 1.12 2022/12/29 12:22:15 tom Exp $
+# $Id: slackware.rc,v 1.13 2025/12/22 22:25:56 tom Exp $
 # vile:confmode
 # Run-time configuration file for dialog, matches Slackware color scheme.
 #
@@ -9,7 +9,7 @@
 # Boolean    -  <ON|OFF>
 # Attribute  -  (foreground,background,highlight?)
 
-# Set aspect-ration.
+# Set aspect-ratio.
 aspect = 0
 
 # Set separator (for multiple widgets output).

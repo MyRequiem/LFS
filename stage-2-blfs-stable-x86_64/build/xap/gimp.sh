@@ -33,6 +33,7 @@ PRGNAME="gimp"
 #              appstream            (для одного теста)
 #              python3-gi-docgen
 #              gjs
+#              libheif
 #              libjxl
 #              libmng
 #              libunwind
@@ -43,7 +44,6 @@ PRGNAME="gimp"
 #              libbacktrace         (https://github.com/ianlancetaylor/libbacktrace)
 #              libiff               (https://github.com/svanderburg/libiff)
 #              libilbm              (https://github.com/svanderburg/libilbm)
-#              libheif              (https://github.com/strukturag/libheif/)
 #              libwmf               (https://wvware.sourceforge.net/libwmf.html)
 #              openexr              (https://www.openexr.com/)
 #              qoi                  (https://github.com/phoboslab/qoi)

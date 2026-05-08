@@ -3,8 +3,9 @@
 PRGNAME="libtirpc"
 
 ### libtirpc (Transport-Independent RPC library)
-# Библиотеки поддерживающие программы, которые используют API процедур
-# удаленного вызова (RPC).
+# Библиотека для поддержки сетевых вызовов, которая обеспечивает совместимость
+# современных систем со старыми сетевыми протоколами. Необходима для работы
+# общих папок и некоторых специфических сервисов.
 
 # Required:    no
 # Recommended: no
@@ -21,24 +22,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# сделаем сборку совместимой с GCC-15
-patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch"
-
-GSSAPI="--disable-gssapi"
-command -v gss-client &>/dev/null && GSSAPI="--enable-gssapi"
-
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
     --disable-static  \
-    "${GSSAPI}" || exit 1
+    --disable-gssapi || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

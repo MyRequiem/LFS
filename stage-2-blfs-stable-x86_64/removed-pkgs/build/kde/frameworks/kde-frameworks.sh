@@ -39,9 +39,9 @@ PKG_VERSION="6.17.0"
 #              python3-requests
 #              --- дополнительные форматы изображений для KImageFormats ---
 #              libavif
+#              libheif
 #              libjxl
 #              libraw
-#              libheif                      (https://github.com/strukturag/libheif)
 #              openexr                      (https://github.com/AcademySoftwareFoundation/openexr)
 #              --- для KDE Solid ---
 #              udisks

@@ -3,18 +3,14 @@
 PRGNAME="libgsf"
 
 ### libgsf (structured file I/O library)
-# Библиотека предоставляющая эффективную расширяемую абстракцию ввода-вывода
-# для работы с различными форматами структурированных файлов. Например,
-# различные текстовые редакторы используют ее для импорта файлов в формате .doc
+# Библиотека для чтения и записи файлов со сложной внутренней структурой
+# (например, старых документов Microsoft Office). Она позволяет программам
+# корректно извлекать данные из таких «архивов».
 
 # Required:    glib
 #              libxml2
-# Recommended: gdk-pixbuf (для сборки gsf-office-thumbnailer)
-# Optional:    7zip
-#              gtk-doc
-#              --- для тестов ---
-#              valgrind
-#              unzip      (https://sourceforge.net/projects/infozip/files/UnZip%206.x%20%28latest%29/)
+# Recommended: gdk-pixbuf    (для сборки gsf-office-thumbnailer)
+# Optional:    gtk-doc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,10 +24,10 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# make check
+# пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

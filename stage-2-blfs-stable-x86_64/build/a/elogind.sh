@@ -60,7 +60,7 @@ cd build || exit 1
 # определяет, убиваются ли процессы пользователя, если он выходит из системы.
 # Значение по умолчанию 'true', но это не соответствует традиционному
 # использованию мультиплексоров screen или tmux
-#    -Ddefault-kill-user-processes=false
+#    -D default-kill-user-processes=false
 meson setup ..                            \
     --prefix=/usr                         \
     --buildtype=release                   \

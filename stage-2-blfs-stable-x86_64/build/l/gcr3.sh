@@ -4,9 +4,9 @@ PRGNAME="gcr3"
 ARCH_NAME="gcr"
 
 ### Gcr (crypto library and ui for gnome-keyring)
-# Библиотеки для отображения сертификатов и доступа к криптографическому
-# интерфейсу ключей. Также предоставляет средство просмотра зашифрованных
-# файлов в GNOME
+# Модуль для управления сертификатами безопасности и криптографическими ключами
+# в графической среде (версия 3). Он отвечает за показ окон выбора сертификатов
+# и проверку подлинности при работе в сети.
 
 # Required:    glib
 #              libgcrypt
@@ -44,21 +44,20 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку если openssh не установлен
+sed '/ssh.add/d; /ssh.agent/d' -i meson.build || exit 1
+
 # исправим устаревшие записи в файлах схем
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
-
-# исправим сборку если openssh не установлен
-sed '/ssh.add/d; /ssh.agent/d' -i meson.build
 
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D gtk_doc=false    \
-    -D ssh_agent=false  \
-    .. || exit 1
+    -D ssh_agent=false || exit 1
 
 ninja || exit 1
 
@@ -67,7 +66,7 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

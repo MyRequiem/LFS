@@ -93,8 +93,9 @@ meson setup ..                   \
     -D microsoft-clc=disabled    \
     -D build-tests=false || exit 1
 
-# ninja || exit 1
-ninja > mesa-errors 2>&1
+ninja || exit 1
+# с выводом ошибок сборки в файл
+# ninja > mesa-ERRORS 2>&1 || exit 1
 
 ### тесты
 # meson configure \
