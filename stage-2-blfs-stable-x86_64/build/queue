@@ -404,14 +404,13 @@ l/imlib2.sh
 n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
-
 l/glibmm26.sh
+
 l/atkmm22.sh
 l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
 l/glibmm28.sh
-l/atkmm23.sh
 l/cairomm118.sh
 l/pangomm25.sh
 l/gtkmm4.sh

@@ -4,18 +4,18 @@ PRGNAME="glibmm26"
 ARCH_NAME="glibmm"
 
 ### GLibmm (C++ bindings for glib)
-# Набор C++ bindings для GLib, включая кроссплатформенные API, такие как
-# std::string-like (UTF8 строковый класс), строковые служебные методы для
-# доступа к файлам и потокам
+# Прослойка для языка C++, которая адаптирует возможности системной библиотеки
+# GLib под современный стиль программирования. Это делает код программ более
+# читаемым и надежным (версия 2.6).
 
 # Required:    glib
 #              libsigc++2
 # Recommended: no
 # Optional:    doxygen
-#              glib-networking (для тестов)
-#              gnutls          (для тестов)
+#              glib-networking      (для тестов)
+#              gnutls               (для тестов)
 #              libxslt
-#              mm-common       (https://download.gnome.org/sources/mm-common/)
+#              mm-common            (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -46,19 +46,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir bld
 cd bld || exit 1
 
-meson setup                      \
+meson setup ..                   \
     --prefix=/usr                \
     --buildtype=release          \
     -D build-documentation=false \
-    -D build-examples=false      \
-    .. || exit 1
+    -D build-examples=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
