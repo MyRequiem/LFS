@@ -11,12 +11,14 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-INSTALLED="$(find /var/log/packages/ -type f -name "python3-3.*")"
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-3.*")"
 if [ -n "${INSTALLED}" ]; then
-    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
-    echo "${INSTALLED_VERSION} already installed. Before building Python3 "
-    echo "package, you need to remove it."
-    removepkg --backup --no-color "${INSTALLED}"
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
 fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"

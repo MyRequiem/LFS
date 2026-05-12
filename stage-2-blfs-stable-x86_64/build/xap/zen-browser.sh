@@ -39,8 +39,7 @@ read -r YESNO
 
 # удаляем установленную версию
 [ -n "${INSTALLED_VER}" ] && \
-    yes | /sbin/removepkg --backup \
-        "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
+    yes | removepkg --backup "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
 
 TMP_DIR="/tmp/package-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"

@@ -3,8 +3,9 @@
 PRGNAME="xwayland"
 
 ### Xwayland (X Clients under Wayland)
-# xorg-сервер, работающий поверх сервера Wayland и позволяющий запускать
-# X-клиентов внутри сеанса Wayland
+# Специальная прослойка, которая служит мостом в будущее. Она позволяет
+# запускать старые приложения, созданные для X11, внутри современной и быстрой
+# графической среды Wayland.
 
 # Required:    libxcvt
 #              pixman
@@ -30,8 +31,13 @@ source "${ROOT}/xorg_config.sh"                        || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+###
+# Следующий 'sed' описан в BLFS, но не работает. В версии Xwayland >=24.1.11
+# meson.build не содержит 'install_man', поэтому удалим файлы вручную после
+# сборки пакета.
+#
 # не устанавливаем man-страницу для xorg-server
-sed -i '/install_man/,$d' meson.build || exit 1
+# sed -i '/install_man/,$d' meson.build || exit 1
 
 mkdir build
 cd build || exit 1
@@ -68,8 +74,16 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# удалим man-страницу и protocol.txt, которые устанавливаются с пакетом
+# xorg-server
+rm -f "${TMP_DIR}/usr/share/man/man1/Xserver.1"
+rm -f "${TMP_DIR}/usr/lib/xorg/protocol.txt"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -85,7 +99,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # of KMS
 #
 # Home page: https://www.x.org/pub/individual/xserver/
-# Download:  https://www.x.org/pub/individual/xserver/xwayland-24.1.8.tar.xz
+# Download:  https://www.x.org/pub/individual/xserver/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -3,8 +3,9 @@
 PRGNAME="xcursor-themes"
 
 ### xcursor-themes (X11 cursor themes)
-# Анимированные redglass и whiteglass темы курсора для использования с
-# libXcursor
+# Пакет, содержащий различные стили оформления для указателя мыши. Он позволяет
+# выбрать, как будет выглядеть стрелочка, рука или индикатор ожидания в вашей
+# графической сессии.
 
 # Required:    xorg-applications
 # Recommended: no
@@ -25,8 +26,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

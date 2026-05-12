@@ -3,8 +3,9 @@
 PRGNAME="liberation-fonts-ttf"
 
 ### liberation-fonts-ttf (Liberation TTF Fonts)
-# Шрифты Liberation Sans, Liberation Serif и Liberation Mono. Предназначены для
-# обеспечения совместимости со шрифтами Times New Roman, Arial и Courier New
+# Набор шрифтов, которые по размеру и форме в точности повторяют популярные
+# шрифты из Windows (Arial, Times New Roman). Это нужно, чтобы документы
+# выглядели одинаково в разных системах.
 
 # Required:    xcursor-themes
 #              xorg-applications

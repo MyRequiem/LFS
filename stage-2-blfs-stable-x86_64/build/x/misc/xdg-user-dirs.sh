@@ -87,6 +87,11 @@ DESTDIR="${TMP_DIR}" ninja install
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 rm -rf "${TMP_DIR}/usr/lib/systemd"
 
+# будет виден в GUI настройках системы (например в lxqt-config-session), не
+# нужно ничего прятать
+sed -i 's/NoDisplay=true/NoDisplay=false/g' \
+    "${TMP_DIR}/etc/xdg/autostart/xdg-user-dirs.desktop" || exit 1
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1

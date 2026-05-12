@@ -4,7 +4,9 @@ PRGNAME="cairomm118"
 ARCH_NAME="cairomm"
 
 ### cairomm (C++ wrapper for the cairo graphics library)
-# C++ интерфейс для графической библиотеки cairo
+# Последнее поколение графического интерфейса на C++ для библиотеки Cairo.
+# Позволяет создавать высококачественную графику с аппаратным ускорением и
+# безупречной четкостью (версия 1.18).
 
 # Required:    cairo
 #              libsigc++3
@@ -52,8 +54,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

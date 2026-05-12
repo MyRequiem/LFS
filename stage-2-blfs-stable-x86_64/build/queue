@@ -405,11 +405,16 @@ n/w3m.sh
 l/libgsf.sh
 l/goffice.sh
 l/glibmm26.sh
-
 l/atkmm22.sh
 l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
+###
+# ATTENTION
+#    major.minor версия пакета glib должна быть == major.minor версии пакета
+#    glibmm28. Например:
+#       <pkg-name>-<major>.<minor>.<micro>
+#       glib-2.86.4 => glibmm28-2.86.0
 l/glibmm28.sh
 l/cairomm118.sh
 l/pangomm25.sh
@@ -433,8 +438,10 @@ x/misc/xterm.sh
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
 l/libei.sh
+x/apps/xdg-utils.sh
 x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
+
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
 x/drivers/xorg-libinput-driver.sh
@@ -491,7 +498,6 @@ x/apps/bumblebee-status.sh
 # === google-chrome, zen-browser ====
 l/nspr.sh
 l/nss.sh
-x/apps/xdg-utils.sh
 # пакет libcups - это урезанный пакет cups (только основная библиотека и
 # заголовки):
 #    /usr/lib/libcups.so

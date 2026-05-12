@@ -30,12 +30,14 @@ BLFS_VER="13.0"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
-INSTALLED="$(find /var/log/packages/ -type f -name "rustc-*")"
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-*")"
 if [ -n "${INSTALLED}" ]; then
-    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
-    echo "${PRGNAME} version ${INSTALLED_VERSION} already installed."
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${PKGNAME_VERSION} already installed."
     echo "Before building ${PRGNAME} package, you need to remove it."
-    removepkg --no-color "${INSTALLED}"
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
 fi
 
 SOURCES="${ROOT}/src"

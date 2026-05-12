@@ -45,14 +45,18 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
 rm -rf "${TMP_DIR}/tmp"
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+AUTOSTART="/etc/xdg/autostart/at-spi-dbus-bus.desktop"
+# сервис будет виден в GUI настройках системы (например в lxqt-config-session),
+# не нужно ничего прятать
+sed -i 's/NoDisplay=true/NoDisplay=false/g' "${TMP_DIR}${AUTOSTART}" || exit 1
 
 # запретим запускать at-spi-bus-launcher при старте системы (скроем .desktop,
 # для системы как будто его нет)
-sed -i '$a Hidden=true' \
-    "${TMP_DIR}/etc/xdg/autostart/at-spi-dbus-bus.desktop" || exit 1
-rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
+sed -i '$a Hidden=true' "${TMP_DIR}${AUTOSTART}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

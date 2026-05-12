@@ -4,7 +4,9 @@ PRGNAME="opendesktop-fonts-ttf"
 ARCH_NAME="opendesktop-fonts"
 
 ### Opendesktop fonts  (opendesktop odokai font)
-# Шрифт Opendesktop
+# Подборка качественных шрифтов от сообщества разработчиков свободного ПО
+# (Opendesktop). Они подходят для повседневного оформления рабочего стола,
+# веб-серфинга и создания простых документов.
 
 # Required:    xorg-applications
 #              fontconfig

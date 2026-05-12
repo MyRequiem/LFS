@@ -4,7 +4,9 @@ PRGNAME="noto-fonts-ttf"
 ARCH_NAME="noto-fonts-subset"
 
 ### Noto fonts (Googles Noto fonts)
-# TTF шрифты от Google
+# Глобальный проект шрифтов, название которого расшифровывается как «No Tofu»
+# (нет квадратикам). Его цель - сделать так, чтобы любой текст на любом языке
+# мира отображался корректно.
 
 # Required:    xorg-applications
 #              fontconfig

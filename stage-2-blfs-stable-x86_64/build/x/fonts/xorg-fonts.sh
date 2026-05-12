@@ -4,7 +4,9 @@ PRGNAME="xorg-fonts"
 PKG_VERSION="11"
 
 ### xorg-fonts (Xorg Fonts)
-# Масштабируемые шрифты и вспомогательные утилиты для приложений Xorg
+# Фундаментальный набор системных шрифтов и вспомогательные утилиты, без
+# которых графическая оболочка не смогла бы отобразить ни одного слова. Они
+# обеспечивают читаемость текста в самых простых элементах интерфейса.
 
 # Required:    xcursor-themes
 #              fontconfig
@@ -120,6 +122,8 @@ for PKGNAME in ${PACKAGES}; do
         show_error "'make install' for ${PKGNAME} package"
         exit 1
     }
+
+    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
     # удаляем файлы fonts.dir и fonts.scale
     find "${PKG_INSTALL_DIR}${FONTS}" \

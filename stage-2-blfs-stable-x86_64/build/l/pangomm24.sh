@@ -4,7 +4,9 @@ PRGNAME="pangomm24"
 ARCH_NAME="pangomm"
 
 ### Pangomm (C++ API for Pango)
-# C++ интерфейс для Pango
+# Инструмент на C++ для верстки текста, который умеет правильно располагать
+# символы любых языков мира, учитывая шрифты и переносы. Незаменим для создания
+# многоязычных интерфейсов (версия 2.4).
 
 # Required:    cairomm114
 #              glibmm26
@@ -41,18 +43,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup                      \
-    --prefix=/usr                \
-    --buildtype=release          \
-    -D build-documentation=false \
-    .. || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D build-documentation=false || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

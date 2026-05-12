@@ -41,6 +41,14 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
+AUTOSTART="/etc/xdg/autostart"
+# сервисы будут видны в GUI настройках системы (например в lxqt-config-session),
+# не нужно ничего прятать
+sed -i 's/NoDisplay=true/NoDisplay=false/g' \
+    "${TMP_DIR}${AUTOSTART}/gnome-keyring-pkcs11.desktop" || exit 1
+sed -i 's/NoDisplay=true/NoDisplay=false/g' \
+    "${TMP_DIR}${AUTOSTART}/gnome-keyring-secrets.desktop" || exit 1
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1

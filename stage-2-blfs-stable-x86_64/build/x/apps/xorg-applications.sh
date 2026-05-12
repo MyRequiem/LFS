@@ -4,7 +4,9 @@ PRGNAME="xorg-applications"
 PKG_VERSION="11"
 
 ### Xorg Applications (Xorg Applications)
-# Основные приложения поставляемые с Xorg
+# Набор стандартных служебных программ для графической среды X11. Сюда входят
+# базовые часы, калькулятор, утилиты для настройки монитора и другие полезные
+# инструменты первой необходимости.
 
 # Required:    libpng
 #              mesa
@@ -12,8 +14,8 @@ PKG_VERSION="11"
 #              xcb-util
 # Recommended: no
 # Optional:    linux-pam
-#              cairo-5c  (https://www.cairographics.org/releases/)
-#              nickle    (только для запуска не документированного скрипта xkeyhost) http://nickle.org/
+#              cairo-5c     (https://www.cairographics.org/releases/)
+#              nickle       (только для запуска не документированного скрипта xkeyhost) http://nickle.org/
 
 ###
 # NOTES:

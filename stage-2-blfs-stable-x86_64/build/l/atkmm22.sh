@@ -4,7 +4,9 @@ PRGNAME="atkmm22"
 ARCH_NAME="atkmm"
 
 ### Atkmm (C++ bindings for ATK)
-# C++ bindings для ATK (accessibility toolkit library)
+# Специализированный модуль на C++, помогающий создавать приложения, которыми
+# удобно пользоваться людям с нарушениями зрения или моторики, используя
+# вспомогательные технологии (версия 2.2).
 
 # Required:    at-spi2-core
 #              glibmm26
@@ -40,18 +42,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup                      \
-    --prefix=/usr                \
-    --buildtype=release          \
-    -D build-documentation=false \
-    .. || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D build-documentation=false || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

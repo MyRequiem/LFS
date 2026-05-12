@@ -4,7 +4,9 @@ PRGNAME="python3-hatch-fancy-pypi-readme"
 ARCH_NAME="hatch_fancy_pypi_readme"
 
 ### Hatch-Fancy-Pypi-Readme (help you to have fancy PyPI readmes)
-# Создание красивых файлов Readme из метаданных Python-модулей
+# Удобное дополнение для разработчиков на Python, которое позволяет
+# автоматически превращать технические описания программ в красивые страницы с
+# картинками и ссылками (файлы Readme из метаданных Python-модулей).
 
 # Required:    python3-hatchling
 # Recommended: no

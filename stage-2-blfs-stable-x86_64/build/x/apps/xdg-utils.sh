@@ -3,10 +3,9 @@
 PRGNAME="xdg-utils"
 
 ### xdg-utils (command line tools that assist applications)
-# Набор инструментов командной строки, которые помогают приложениям
-# интегрироваться с рабочим столом. Около половины инструментов сосредоточены
-# на задачах, обычно требуемых во время установки приложений, а другая половина
-# сосредоточена на интеграции со средой рабочего стола во время их работы.
+# Коллекция системных команд, которые помогают программам интегрироваться в
+# рабочий стол. Например, они отвечают за открытие ссылки в «браузере по
+# умолчанию» или выбор нужного приложения для файла.
 
 # Required:    xmlto
 #              lynx или links или w3m    (http://w3m.sourceforge.net/)
@@ -34,8 +33,11 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
