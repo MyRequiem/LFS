@@ -4,7 +4,9 @@ PRGNAME="perl-mime-base32"
 ARCH_NAME="MIME-Base32"
 
 ### MIME::Base32 (Encoding/Decoding data)
-# Perl модуль
+# Библиотека для кодирования данных в формат Base32. Этот метод часто
+# используется в системах двухфакторной аутентификации и специальных сетевых
+# адресах для передачи данных в текстовом виде.
 
 # Required:    no
 # Recommended: no
@@ -22,6 +24,8 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
@@ -29,6 +33,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

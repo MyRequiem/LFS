@@ -3,7 +3,8 @@
 PRGNAME="xxkb"
 
 ### xxkb (simple X keyboard layout switcher)
-# Переключатель и индикатор раскладки клавиатуры
+# Индикатор раскладки клавиатуры в трее. Умеет запоминать язык для каждого окна
+# отдельно: например, в браузере - русский, а в терминале - английский.
 
 # Required:    imake
 # Recommended: no
@@ -40,11 +41,14 @@ xmkmf                          || exit 1
 make EXTRA_DEFINES=-USHAPE_EXT || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 cp "${PRGNAME}.man" "${TMP_DIR}${MAN_DIR}/${PRGNAME}.1"
 rm -rf "${TMP_DIR}/usr/lib"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -4,7 +4,9 @@ PRGNAME="perl-business-isbn"
 ARCH_NAME="Business-ISBN"
 
 ### Business::ISBN (work with International Standard Book Numbers)
-# Модуль Perl Business::ISBN
+# Инструмент для работы с книжными кодами ISBN. Он умеет проверять их
+# правильность, преобразовывать старые 10-значные номера в новые 13-значные и
+# извлекать из них информацию об издателе.
 
 # Required:    perl-business-isbn-data
 # Recommended: no
@@ -22,6 +24,8 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
@@ -29,6 +33,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

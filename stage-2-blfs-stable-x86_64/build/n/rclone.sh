@@ -31,13 +31,12 @@ mkdir -pv "${BUILD_DIR}/${PRGNAME}-${VERSION}"
 cd "${BUILD_DIR}/${PRGNAME}-${VERSION}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr/bin"
 
 ar x "${SOURCES}/${PRGNAME}-v${VERSION}-linux-amd64.deb"
 tar -xvf data.tar.gz
 
-install -m 755 -D "usr/bin/${PRGNAME}" "${TMP_DIR}/usr/bin/${PRGNAME}"
-chown root:root "${TMP_DIR}/usr/bin/${PRGNAME}"
+install -m755 -o root -g root "usr/bin/${PRGNAME}" "${TMP_DIR}/usr/bin/"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 

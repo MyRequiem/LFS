@@ -3,7 +3,9 @@
 PRGNAME="xinit"
 
 ### xinit (scripts to start X11 server)
-# Скрипты для запуска X-сервера
+# Маленькая утилита, которая дает команду на запуск графического сервера.
+# Обычно она срабатывает сразу после загрузки системы, превращая черный
+# текстовый экран в полноценный рабочий стол.
 
 # Required:    xorg-libraries
 # Recommended: --- runtime ---
@@ -31,13 +33,16 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 ldconfig
 
-# если Xorg запускается из командной строки, то он по умолчанию запускается на
+# Если Xorg запускается из командной строки, то он по умолчанию запускается на
 # текущем виртуальном терминале. Может быть удобно просмотреть сообщения Xorg
 # на текущем виртуальном терминале (обычно tty1) и запустить графическую среду
 # на первом доступном неиспользуемом виртуальном терминале, обычно tty7. Для
@@ -48,7 +53,7 @@ chmod u+s "${XORG_PREFIX}/bin/Xorg"
 #    $ startx [clieng_arguments] -- vt7
 # теперь можно переключаться между tty1 и tty7 по Ctrl-Alt-F1 и Ctrl-Alt-F7
 
-# чтобы автоматически запускать Xorg на первом доступном неиспользуемом
+# Чтобы автоматически запускать Xorg на первом доступном неиспользуемом
 # виртуальном терминале, изменим сценарий startx
 #
 # if [ "$have_vtarg" = "no" ]; then      if [ "$have_vtarg" = "no" ]; then
@@ -56,8 +61,7 @@ chmod u+s "${XORG_PREFIX}/bin/Xorg"
 # fi                                     fi
 
 # shellcheck disable=SC2016
-sed -i                                        \
-    '/$serverargs $vtarg/ s/serverargs/: #&/' \
+sed -i '/$serverargs $vtarg/ s/serverargs/: #&/' \
     "${XORG_PREFIX}/bin/startx" || exit 1
 
 # Например, если в /etc/inittab указано:

@@ -51,7 +51,9 @@ patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-${VERSION}.patch" || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-install -D -m 644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+install -m644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

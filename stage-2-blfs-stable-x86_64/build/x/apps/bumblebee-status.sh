@@ -6,8 +6,9 @@ PRGNAME="bumblebee-status"
 # Модульный генератор строки состояния для оконного менеджера i3
 
 # Required:    i3
-# Recommended: python3-psutil    (для модулей cpu и cpu2)
-#              hddtemp           (для модуля hddtemp)
+# Recommended: python3-psutil       (для модулей cpu и cpu2)
+#              hddtemp              (для модуля hddtemp)
+#              pavucontrol          (для модуля pulseaudio)
 # Optional:    no
 
 ROOT="/root/src/lfs"

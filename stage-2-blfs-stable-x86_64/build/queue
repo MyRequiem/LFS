@@ -441,7 +441,6 @@ l/libei.sh
 x/apps/xdg-utils.sh
 x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
-
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
 x/drivers/xorg-libinput-driver.sh
@@ -449,6 +448,7 @@ x/drivers/xorg-evdev-driver.sh
 # Graphical Environments полностью установлено (кроме оконного менеджера i3)
 ap/xclip.sh
 ap/xsel.sh
+l/openjpeg.sh
 l/libptytty.sh
 ap/rxvt-unicode.sh
 s/numlockx.sh
@@ -461,8 +461,6 @@ s/clipnotify.sh
 s/clipmenu.sh
 ap/feh.sh
 ap/password-store.sh
-l/libev.sh
-l/libyajl.sh
 # === perl + i3 ===
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh
@@ -478,10 +476,15 @@ d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 d/perl-modules/perl-file-fcntllock.sh
 d/perl-modules/perl-xml-simple.sh
+l/libev.sh
+l/libyajl.sh
 l/cxxopts.sh
 ap/pamixer.sh
+l/json-glib.sh
+xap/pavucontrol.sh
 x/apps/i3.sh
 # ==========
+
 l/libnsl.sh
 d/python3.sh
 a/gpm.sh
@@ -532,7 +535,6 @@ a/fcron.sh
 # === ffmpeg, mpv ===============
 l/libass.sh
 l/fdk-aac.sh
-l/openjpeg.sh
 l/xvid.sh
 l/ffmpeg.sh
 l/uchardet.sh
@@ -565,7 +567,6 @@ d/python-modules/python3-pyparsing.sh
 d/orc.sh
 n/spice.sh
 s/usbredir.sh
-l/json-glib.sh
 n/spice-gtk.sh
 n/vde2.sh
 l/virglrenderer.sh
@@ -598,7 +599,6 @@ d/python-modules/python3-build.sh
 n/tunctl.sh
 s/virt-manager.sh
 # ===================================
-xap/pavucontrol.sh
 l/giblib.sh
 ap/scrot.sh
 d/glm.sh

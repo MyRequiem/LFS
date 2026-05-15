@@ -28,10 +28,10 @@ mkdir -pv "${TMP_DIR}/etc"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 LRZIP_CONF="/etc/lrzip.conf"
-install -m644 -o root -g root -D doc/lrzip.conf.example \
+install -m644 -o root -g root doc/lrzip.conf.example \
     "${TMP_DIR}${LRZIP_CONF}"
 
 if [ -f "${LRZIP_CONF}" ]; then
@@ -40,6 +40,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LRZIP_CONF}"

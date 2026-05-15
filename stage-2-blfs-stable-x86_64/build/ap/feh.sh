@@ -3,7 +3,9 @@
 PRGNAME="feh"
 
 ### feh (image viewer)
-# Быстрый и легкий просмотрщик изображений, использующий Imlib2
+# Один из самых быстрых просмотрщиков изображений в Linux. Его часто используют
+# не только для просмотра фото, но и для того, чтобы красиво установить фоновую
+# картинку на рабочий стол.
 
 # Required:    libpng
 #              imlib2               (собранный с giflib для тестов)
@@ -30,8 +32,11 @@ make PREFIX=/usr || exit 1
 # make test
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

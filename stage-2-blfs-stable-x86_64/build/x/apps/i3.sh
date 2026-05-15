@@ -3,14 +3,18 @@
 PRGNAME="i3"
 
 ### i3 (an improved dynamic tiling window manager)
-# Тайловый оконный менеджер.
+# Популярный тайловый оконный менеджер, который автоматически располагает окна
+# на экране так, чтобы они не перекрывали друг друга. Идеален для тех, кто
+# предпочитает управлять системой с клавиатуры.
 
-# Required:    xcb-util
-#              libxkbcommon
+# Required:    libxkbcommon
 #              xcb-util-cursor
-#              xcb-util-wm
+#              xcb-util-image.sh
 #              xcb-util-keysyms
+#              xcb-util-renderutil.sh
+#              xcb-util-wm
 #              xcb-util-xrm
+#              pcre
 #              libev
 #              libyajl
 #              pango
@@ -22,7 +26,7 @@ PRGNAME="i3"
 #              python3-asciidoc
 #              xmlto
 #              docbook-xml
-#              perl-pod-simple
+#              perl-pod-simple              (http://search.cpan.org/dist/Pod-Simple/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,33 +38,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..        \
-    --prefix=/usr     \
-    --sysconfdir=/etc \
-    -D mans=false     \
-    -D docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --sysconfdir=/etc || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses,xsessions}
 
-# заменим терминал по умолчанию i3-sensible-terminal на xterm
-sed -i 's/i3-sensible-terminal/xterm/' "${TMP_DIR}/etc/i3/config" || exit 1
-
-chmod 644 "${TMP_DIR}/usr/share/man/man1"/*
-
-# Пакет создает два файла .desktop в каталоге /usr/share/xsessions/ которые
-# нужны для менеджеров запуска окружения, таких как sddm, gdm и др.
-#    i3.desktop               (обычный запуск)
-#    i3-with-shmlog.desktop   (i3 with debug log)
-# В системе BLFS необходим только один файл для каждого рабочего окружения,
-# поэтому удалим i3-with-shmlog.desktop
-rm -f "${TMP_DIR}/usr/share/xsessions/i3-with-shmlog.desktop"
+# заменим терминал по умолчанию i3-sensible-terminal на uxterm
+sed -i 's/i3-sensible-terminal/uxterm/' "${TMP_DIR}/etc/i3/config" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

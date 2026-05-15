@@ -3,7 +3,11 @@
 PRGNAME="rxvt-unicode"
 
 ### rxvt-unicode (enhanced version of rxvt terminal emulator)
-# Клон эмулятора терминала rxvt с поддержкой XFT, Unicode и Perl расширениями
+# Современная версия легендарного терминала rxvt, которая потребляет крошечное
+# количество памяти, но при этом отлично работает с любыми языками и сложными
+# шрифтами, поддерживает XFT (использование FreeType для отображения шрифтов с
+# применением расширения X Rendering Extention - XRender), Unicode и Perl
+# расширения.
 
 # Required:    libptytty
 #              Graphical Environments
@@ -43,8 +47,8 @@ sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
 # который понимают все современные программы.
 #
 ###
-# Два sed ниже - это моя переделка оригинального патча от Патрика (Patrick J.
-# Volkerding, Slackware)
+# Две команды sed ниже - это моя переделка оригинального патча от Патрика
+# (Patrick J. Volkerding, Slackware)
 ###
 # Index: src/command.C
 # --- src/command.C.orig
@@ -104,31 +108,20 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 cat << EOF > "${TMP_DIR}${ETC_APP_DEFAULTS}/URxvt"
-! ------------
-! $ man urxvt
-! ------------
+#define MAIN_FONT xft:Liberation Mono:size=10:antialias=true
 
-! Use the specified colour as the windows background colour [default white]
-URxvt*background: black
-
-! Use the specified colour as the windows foreground colour [default black]
-URxvt*foreground: yellow
-
-! Select the fonts to be used. This is a comma separated list of font names
-URxvt*font: xft:Monospace:pixelsize=18
-
-! Comma-separated list(s) of perl extension scripts (default: "default")
-URxvt*perl-ext: matcher
-
-! Specifies the program to be started with a URL argument. Used by
-URxvt*url-launcher: firefox
-
-! When clicked with the mouse button specified in the "matcher.button" resource
-! (default 2, or middle), the program specified in the "matcher.launcher"
-! resource (default, the "url-launcher" resource, "sensible-browser") will be
-! started with the matched text as first argument.
-! Below, default modified to mouse left button.
-URxvt*matcher.button: 1
+URxvt.background: black
+URxvt.foreground: white
+URxvt.cursorBlink: true
+URxvt.cursorUnderline:true
+URxvt.scrollBar: false
+URxvt.font: MAIN_FONT
+URxvt.boldFont: MAIN_FONT
+! Fix input prompt centering glitch on startup (bug introduced in
+! rxvt-unicode-9.31). Setting a negative height (-1) disables rigid grid
+! initialization, forcing the window manager to dynamically size the window
+! and properly anchor the prompt to the top.
+URxvt.geometry: 80x-1
 EOF
 
 cat << EOF > "${TMP_DIR}${APPLICATIONS}/urxvt.desktop"

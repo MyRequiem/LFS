@@ -3,9 +3,10 @@
 PRGNAME="password-store"
 
 ### password-store (password manager using GnuPG)
-# Простой менеджер паролей, который использует GnuPG2 для безопасного
-# шифрования и извлечения паролей. Утилита pass предоставляет ряд команд для
-# управления хранилищем паролей, позволяющая добавлять, удалять, редактировать,
+# Система хранения паролей, созданная по принципу «всё гениальное - просто».
+# Она шифрует ваши секреты с помощью GnuPG ключей и хранит их в виде обычных
+# файлов, которые легко переносить. Предоставляет ряд команд для управления
+# хранилищем паролей, позволяющая добавлять, удалять, редактировать,
 # синхронизировать и генерировать пароли.
 
 # Required:    xclip
@@ -22,20 +23,20 @@ mkdir -pv "${TMP_DIR}"
 PREFIX=/usr DESTDIR="${TMP_DIR}" make
 PREFIX=/usr DESTDIR="${TMP_DIR}" make install
 
-cp contrib/importers/* "${TMP_DIR}/usr/bin/"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# dmenu
-command -v dmenu &>/dev/null && cp contrib/dmenu/passmenu "${TMP_DIR}/usr/bin/"
+install -m755 contrib/importers/*    "${TMP_DIR}/usr/bin/" || exit 1
+install -m755 contrib/dmenu/passmenu "${TMP_DIR}/usr/bin/" || exit 1
 
 # установка плагина для vim
 VIMVER="$(vim --version | head -n 1 | awk '{ print $5; }' | tr -d .)"
 VIM_DIR="/usr/share/vim/vim${VIMVER}"
-mkdir -p "${TMP_DIR}${VIM_DIR}"/{doc,plugin}
-cp contrib/vim/*.vim "${TMP_DIR}${VIM_DIR}/plugin"
-cp contrib/vim/*.txt "${TMP_DIR}${VIM_DIR}/doc"
+install -m755 -D -t "${TMP_DIR}${VIM_DIR}/plugin" contrib/vim/*.vim || exit 1
+install -m755 -D -t "${TMP_DIR}${VIM_DIR}/doc"    contrib/vim/*.txt || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

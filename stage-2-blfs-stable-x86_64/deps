@@ -3,7 +3,7 @@
 ###***###
 
 7zip                                    imagemagick
-Graphical Environments                  openssh, libmpeg2, rxvt-unicode, ghostscript, exim, vim, ffmpeg, numlockx, libao, vlc, openbox
+Graphical Environments                  openssh, libmpeg2, rxvt-unicode, numlockx, ghostscript, exim, vim, ffmpeg, libao, vlc, openbox
 aalib                                   gst-plugins-good, gimp, vlc
 abseil-cpp                              protobuf
 accesskit-c                             gtk4
@@ -54,7 +54,7 @@ bubblewrap                              fontconfig, glycin, xdg-desktop-portal
 bumblebee-status
 c-ares                                  curl, nghttp2, nodejs
 c2man                                   fribidi
-cairo                                   glib, harfbuzz, pango, librsvg, libdrm, python3-pycairo, gst-plugins-good, cairomm114, cairomm118, ghostscript, gegl, i3, poppler, zathura, conky
+cairo                                   glib, harfbuzz, pango, librsvg, libdrm, python3-pycairo, gst-plugins-good, cairomm114, cairomm118, i3, ghostscript, gegl, poppler, zathura, conky
 cairo-5c                                xorg-applications
 cairomm114                              pangomm24
 cairomm118                              pangomm25
@@ -71,7 +71,7 @@ chronyd                                 dhcpcd
 clipmenu                                dmenu
 clipnotify                              clipmenu
 clisp
-cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libdrm, libtiff, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, freeglut, sdl3, sdl2-compat, x265, brotli, libaom, double-conversion, jasper, abseil-cpp, protobuf, extra-cmake-modules, openjpeg, glslc, libptytty, cxxopts, exiv2, taglib, libyajl, flameshot, uchardet, fast-float, snappy, poppler, utfcpp, gtest, fmt, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, tint2, polkit-qt, libical, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt, conky
+cmake                                   libssh2, llvm, json-c, libjpeg-turbo, rustc, graphite2, libdrm, libtiff, vulkan-headers, vulkan-loader, spirv-headers, spirv-tools, glslang, freeglut, sdl3, sdl2-compat, x265, brotli, libaom, glslc, double-conversion, jasper, abseil-cpp, protobuf, extra-cmake-modules, openjpeg, libptytty, libyajl, cxxopts, exiv2, taglib, flameshot, uchardet, fast-float, snappy, poppler, utfcpp, gtest, fmt, slop, maim, c-ares, gpgmepp, android-tools, rpm, faad2, tint2, polkit-qt, libical, muparser, lxqt-build-tools, libdbusmenu-lxqt, libqtxdg, libfm-qt, conky
 cmocka                                  gnutls, mit-kerberos-v5
 colord                                  gtk+3, gtk4, cups
 conky
@@ -184,7 +184,7 @@ giblib                                  scrot
 giflib                                  libwebp, imlib2, openjdk
 gimp                                    imagemagick
 girara                                  zathura
-git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, vulkan-loader, xwayland, fast-float, vte3, libgxps, openjdk, openjpeg, flameshot, poppler
+git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, vulkan-loader, xwayland, openjpeg, fast-float, vte3, libgxps, openjdk, flameshot, poppler
 gjs                                     glib, libsecret, gimp
 glew                                    harfbuzz
 glfw                                    harfbuzz, python3-glad
@@ -282,7 +282,7 @@ jfsutils                                lvm2
 jing                                    vala
 jq
 json-c                                  bind-utils, fontconfig, libmypaint
-json-glib                               gst-plugins-bad, spice-gtk, pavucontrol, gegl, osinfo-db-tools, girara, zathura, xdg-desktop-portal
+json-glib                               gst-plugins-bad, pavucontrol, spice-gtk, gegl, osinfo-db-tools, girara, zathura, xdg-desktop-portal
 jsoncpp                                 cmake
 kconfig                                 lxqt-config
 kde-frameworks                          pinentry, liblxqt, lxqt-panel, lxqt-powermanagement, lxqt-runner, lxqt-config, xdg-desktop-portal-lxqt, screengrab
@@ -381,7 +381,7 @@ libilbm                                 gimp
 libimobiledevice                        upower, solid
 libinput                                qt5-components, qt6, xorg-libinput-driver
 libiscsi                                qemu
-libjpeg-turbo                           gdk-pixbuf, libtiff, lcms2, gst-plugins-base, qt5-components, libwebp, libmng, jasper, qt6, fltk, imlib2, ghostscript, feh, djvulibre, libgxps, imagemagick, openjdk, mpv, spice, spice-gtk, qemu, maim, poppler, gegl, v4l-utils
+libjpeg-turbo                           gdk-pixbuf, libtiff, lcms2, gst-plugins-base, qt5-components, libwebp, libmng, jasper, qt6, fltk, imlib2, feh, ghostscript, djvulibre, libgxps, imagemagick, openjdk, mpv, spice, spice-gtk, qemu, maim, poppler, gegl, v4l-utils
 libjxl                                  gdk-pixbuf, glycin, imlib2, ffmpeg, gimp, imagemagick
 libkate                                 gst-plugins-bad, vlc
 libksba                                 gnupg
@@ -420,7 +420,7 @@ libpaper                                cups, ghostscript
 libpcap                                 iptables
 libplacebo                              ffmpeg, mpv, vlc
 libpmem                                 qemu
-libpng                                  gcc, freetype, pixman, cairo, gdk-pixbuf, gst-plugins-base, libwebp, qt6, fltk, imlib2, xorg-applications, openjpeg, slang, ghostscript, feh, imagemagick, openjdk, qemu, maim, poppler, vlc
+libpng                                  gcc, freetype, pixman, cairo, gdk-pixbuf, gst-plugins-base, libwebp, qt6, fltk, imlib2, xorg-applications, openjpeg, feh, slang, ghostscript, imagemagick, openjdk, qemu, maim, poppler, vlc
 libportal                               xdg-desktop-portal
 libproxy                                wget, glib-networking, qt6, vlc
 libpsl                                  wget, curl, libsoup2, libsoup3
@@ -471,7 +471,7 @@ libupnp                                 vlc
 liburcu                                 bind-utils, glusterfs
 libusb                                  gnupg, sdl3, gst-plugins-bad, upower, cups, usbutils, libpcap, usbredir, qemu, pipewire
 libuv                                   cmake, bind-utils, nodejs
-libva                                   mesa, libva-utils, gst-plugins-bad, ffmpeg, intel-vaapi-driver, mpv, vlc
+libva                                   mesa, libva-utils, gst-plugins-bad, intel-vaapi-driver, ffmpeg, mpv, vlc
 libva-utils
 libvirt                                 libvirt-glib, python3-libvirt, virt-manager
 libvirt-glib                            virt-manager
@@ -539,7 +539,7 @@ lzfse                                   qemu
 lzip
 lzo                                     libarchive, cairo, qemu
 maim
-make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, mesa, glib-networking, qt6, perl-io-socket-ssl, perl-lwp-protocol-https, openjdk, vte3
+make-ca                                 p11-kit, gnutls, wget, curl, python3-requests, mesa, glib-networking, qt6, perl-io-socket-ssl, openjdk, vte3
 man2html                                xterm
 mandoc                                  feh
 mariadb                                 cyrus-sasl, openldap, qt5-components, qt6, exim
@@ -625,7 +625,7 @@ oxygen-icons                            pcmanfm-qt
 p11-kit                                 make-ca, gnutls, python3-requests, gcr3, gcr4, nss, flameshot
 pamixer
 pandoc                                  openjdk
-pango                                   librsvg, gtk+3, gst-plugins-base, gst-plugins-bad, gtk4, pangomm24, pangomm25, gegl, imagemagick, i3, openbox
+pango                                   librsvg, gtk+3, gst-plugins-base, gst-plugins-bad, gtk4, pangomm24, pangomm25, i3, gegl, imagemagick, openbox
 pangomm24                               gtkmm3
 pangomm25                               gtkmm4
 papi                                    gtk+3
@@ -633,11 +633,11 @@ parted                                  lvm2
 passivetex                              xmlto
 password-store                          dmenu
 patchelf                                python3-meson, python3-dbus
-pavucontrol
+pavucontrol                             bumblebee-status
 pavucontrol-qt
 pciutils                                qt6
 pcmanfm-qt
-pcre                                    ag
+pcre                                    ag, i3
 pcsc-lite                               libcacard
 perl-anyevent                           perl-anyevent-i3
 perl-anyevent-i3                        i3
@@ -689,11 +689,11 @@ pov-ray                                 imagemagick
 profiles                                imagemagick
 projectm                                vlc
 protobuf                                qt6, android-tools, vlc
-pulseaudio                              sdl3, mpg123, gst-plugins-good, qt6, alsa-plugins, gtk-vnc, pavucontrol, ffmpeg, pamixer, libao, mpv, spice-gtk, qemu, vlc, pipewire, lxqt-panel, pavucontrol-qt
+pulseaudio                              sdl3, mpg123, gst-plugins-good, qt6, alsa-plugins, pamixer, pavucontrol, gtk-vnc, ffmpeg, libao, mpv, spice-gtk, qemu, vlc, pipewire, lxqt-panel, pavucontrol-qt
 pwgen
 python2                                 yasm, alsa-lib, cups
 python3
-python3-asciidoc                        git, nasm, xorgproto, graphite2, xorg-libraries, gegl, i3
+python3-asciidoc                        git, nasm, xorgproto, graphite2, xorg-libraries, i3, gegl
 python3-attrs
 python3-build                           python3-setuptools-scm, python3-meson, python3-hatch-fancy-pypi-readme, virt-manager
 python3-charset-normalizer              python3-requests
@@ -702,7 +702,7 @@ python3-cython                          libseccomp, yasm, python3-pyyaml, python
 python3-dateutil                        python3-urllib3
 python3-dbus                            dbus, libsecret
 python3-dbusmock                        polkit, upower, libportal, xdg-desktop-portal
-python3-docutils                        glib, sshfs, pango, gdk-pixbuf, librsvg, libdrm, gtk4, alsa-utils, mpv, json-glib, bluez, xdg-desktop-portal
+python3-docutils                        glib, sshfs, pango, gdk-pixbuf, librsvg, libdrm, gtk4, alsa-utils, json-glib, mpv, bluez, xdg-desktop-portal
 python3-docwriter                       freetype
 python3-ducktype                        dbus
 python3-editables                       python3-hatchling
@@ -711,7 +711,7 @@ python3-filelock                        python3-build
 python3-flake8                          python3-setuptools-scm
 python3-fonttools                       graphite2, harfbuzz
 python3-furo                            xdg-desktop-portal
-python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, glycin, libsoup2, libsoup3, gtk4, libsecret, gcr3, gcr4, libadwaita, vte3, appstream, json-glib, gtk-vnc, gimp, libportal
+python3-gi-docgen                       glib, at-spi2-core, pango, gdk-pixbuf, librsvg, glycin, libsoup2, libsoup3, gtk4, libsecret, gcr3, gcr4, json-glib, libadwaita, vte3, appstream, gtk-vnc, gimp, libportal
 python3-glad                            libplacebo
 python3-griffe                          python3-setuptools-scm
 python3-hatch-fancy-pypi-readme         python3-attrs
@@ -957,11 +957,11 @@ x265                                    gst-plugins-bad, ffmpeg
 xbanish
 xbitmaps                                xorg-applications
 xcb-proto                               libxcb
-xcb-util                                xcb-util-image, xcb-util-renderutil, xcb-util-cursor, xcb-util-keysyms, xcb-util-wm, xcb-util-xrm, startup-notification, xorg-applications, i3
+xcb-util                                xcb-util-image, xcb-util-renderutil, xcb-util-cursor, xcb-util-keysyms, xcb-util-wm, xcb-util-xrm, startup-notification, xorg-applications
 xcb-util-cursor                         qt6, xorg-server, i3
-xcb-util-image                          qt5-components, qt6, xorg-server
+xcb-util-image                          qt5-components, qt6, xorg-server, i3
 xcb-util-keysyms                        qt5-components, qt6, xorg-server, i3
-xcb-util-renderutil                     qt5-components, qt6, xorg-server
+xcb-util-renderutil                     qt5-components, qt6, xorg-server, i3
 xcb-util-wm                             qt5-components, qt6, xorg-server, i3
 xcb-util-xrm                            i3
 xclip                                   password-store

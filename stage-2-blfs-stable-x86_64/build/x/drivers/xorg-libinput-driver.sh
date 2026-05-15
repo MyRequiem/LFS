@@ -4,10 +4,10 @@ PRGNAME="xorg-libinput-driver"
 ARCH_NAME="xf86-input-libinput"
 
 ### Xorg Libinput Driver (Xorg X11 libinput input driver)
-# Универсальный драйвер ввода для X на основе libinput. Служит оболочкой,
-# необходимой libinput для общения с X. Может использоваться как замена для
-# evdev и synaptics. Поддерживает мышь, клавиатуру, тачпад, сенсорный экран и
-# планшеты.
+# Связующее звено между графическим сервером и универсальной системой ввода. Он
+# позволяет серверу X.org использовать все преимущества современных тачпадов,
+# многокнопочных мышей, клавиатур, сенсорных экранов. планшетов. Может
+# использоваться как замена для evdev и synaptics.
 
 # Required:    libinput
 #              xorg-server
@@ -30,8 +30,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

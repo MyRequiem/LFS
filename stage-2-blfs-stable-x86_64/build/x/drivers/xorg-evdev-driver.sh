@@ -4,8 +4,9 @@ PRGNAME="xorg-evdev-driver"
 ARCH_NAME="xf86-input-evdev"
 
 ### xorg-evdev-driver (Generic Linux input driver for the Xorg X server)
-# Универсальный драйвер ввода для работы с клавиатурой, мышью, сенсорными
-# панелями и устройствами Wacom.
+# Традиционный драйвер, проверенный десятилетиями, который обеспечивает
+# поддержку самого разного оборудования ввода: клавиатура, мышь, сенсорные
+# экраны, устройства Wacom (планшеты), специфические игровые контроллеры.
 
 # Required:    libevdev
 #              mtdev
@@ -29,8 +30,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

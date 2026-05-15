@@ -3,8 +3,9 @@
 PRGNAME="cxxopts"
 
 ### cxxopts (lightweight C++ option parser library)
-# Облегченная C++ библиотека для анализа параметров, поддерживающая стандартный
-# GNU синтаксис
+# Удобная и легкая библиотека для разработчиков на C++, которая помогает
+# программам понимать параметры командной строки. С ней создание программ с
+# множеством настроек запуска становится намного проще.
 
 # Required:    cmake
 # Recommended: no
@@ -28,8 +29,11 @@ cmake                            \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

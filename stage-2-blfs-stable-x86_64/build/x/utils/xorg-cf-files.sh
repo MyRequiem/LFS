@@ -3,8 +3,9 @@
 PRGNAME="xorg-cf-files"
 
 ### xorg-cf-files (X11 config files for imake)
-# Файлы данных для утилиты imake, определяющие настройки для самых разных
-# платформ и библиотек.
+# Набор старых конфигурационных файлов, которые необходимы для сборки
+# классического софта c помощью системы сборки imake. Это своего рода «архив
+# чертежей», без которых не соберутся некоторые старые программы.
 
 # Required:    no
 # Recommended: no
@@ -17,17 +18,22 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure              \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    --localstatedir=/var \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
+
+ninja || exit 1
+# пакет не имеет набора тестов
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

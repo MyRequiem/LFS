@@ -4,11 +4,13 @@ PRGNAME="perl-xml-simple"
 ARCH_NAME="XML-Simple"
 
 ### XML::Simple (API for simple XML files)
-# XML::Simple Perl модуль
+# Библиотека, которая максимально упрощает чтение и запись файлов в формате
+# XML. Она превращает сложные структуры данных в обычные списки Perl, с
+# которыми легко работать.
 
 # Required:    no
 # Recommended: no
-# Optional:    perl-xml-sax (альтернативный парсер, если не установлен будет использоваться perl-xml-parser, установленный в LFS)
+# Optional:    perl-xml-sax    (альтернативный парсер, если не установлен будет использоваться perl-xml-parser, установленный в LFS)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -22,6 +24,8 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
@@ -29,6 +33,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

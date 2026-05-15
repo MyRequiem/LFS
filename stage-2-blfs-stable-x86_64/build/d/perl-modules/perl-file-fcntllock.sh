@@ -4,7 +4,9 @@ PRGNAME="perl-file-fcntllock"
 ARCH_NAME="File-FcntlLock"
 
 ### File::FcntlLock (file locking with fcntl)
-# File::FcntlLock Perl модуль
+# Модуль для надежной блокировки файлов в системе. Он гарантирует, что две
+# программы не будут одновременно записывать данные в один и тот же файл,
+# предотвращая их повреждение.
 
 # Required:    no
 # Recommended: no
@@ -23,6 +25,8 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
@@ -30,6 +34,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

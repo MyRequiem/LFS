@@ -4,11 +4,13 @@ PRGNAME="perl-io-socket-ssl"
 ARCH_NAME="IO-Socket-SSL"
 
 ### IO::Socket::SSL (SSL sockets with IO::Socket interface)
-# IO::Socket::SSL Perl модуль
+# Важное расширение, которое добавляет поддержку зашифрованных соединений в
+# стандартные сетевые инструменты Perl. Оно делает работу с сетью прозрачной и
+# безопасной для программ.
 
 # Required:    make-ca
 #              perl-net-ssleay
-# Recommended: perl-uri         (для доступа к international domain names)
+# Recommended: perl-uri             (для доступа к international domain names)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -29,6 +31,8 @@ make                   || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
@@ -36,6 +40,7 @@ find "${TMP_DIR}" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

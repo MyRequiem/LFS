@@ -3,9 +3,9 @@
 PRGNAME="pavucontrol"
 
 ### pavucontrol (PulseAudio Volume Controller)
-# Звуковой микшер для PulseAudio на основе GTK. В отличие от классических
-# микшеров, pavucontrol позволяет контролировать как громкость аппаратных
-# устройств, так и громкость каждого потока воспроизведения в отдельности.
+# Графический звуковой микшер для PulseAudio на основе GTK. Позволяет отдельно
+# настраивать громкость для каждого приложения, перенаправлять звук на разные
+# колонки или наушники, а также управлять микрофонами.
 
 # Required:    gtkmm4
 #              json-glib
@@ -13,7 +13,7 @@ PRGNAME="pavucontrol"
 #              pulseaudio
 # Recommended: no
 # Optional:    libcanberra
-#              lynx
+#              lynx             (для создания README файла)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,18 +25,16 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D lynx=false       \
-    .. || exit 1
+    -D lynx=disabled || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-mv "${TMP_DIR}/usr/share/doc/${PRGNAME}" \
-    "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

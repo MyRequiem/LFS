@@ -442,19 +442,18 @@ https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.t
 https://www.x.org/pub/individual/xserver/xwayland-24.1.11.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-21.1.22.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/svn/xorg-server-21.1.22-tearfree_backport-1.patch
-
-
 https://www.x.org/pub/individual/app/xinit-1.4.4.tar.xz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-input-libinput-1.5.0.tar.xz
 https://www.x.org/pub/individual/driver/xf86-input-evdev-2.11.0.tar.xz
 https://github.com/astrand/xclip/archive/0.13/xclip-0.13.tar.gz
 https://github.com/kfish/xsel/archive/1.2.1/xsel-1.2.1.tar.gz
+https://github.com/uclouvain/openjpeg/archive/v2.5.4/openjpeg-2.5.4.tar.gz
 https://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz
 https://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.31.tar.bz2
 https://ponce.cc/slackware/sources/repo/numlockx-1.2.tar.gz
-https://www.x.org/pub/individual/util/xorg-cf-files-1.0.8.tar.xz
-https://www.x.org/pub/individual/util/imake-1.0.10.tar.xz
+https://www.x.org/pub/individual/util/xorg-cf-files-1.0.9.tar.xz
+https://www.x.org/pub/individual/util/imake-1.0.11.tar.xz
 https://downloads.sourceforge.net/project/xxkb/xxkb-1.11.1-src.tar.gz
 https://github.com/jcs/xbanish/archive/v1.8/xbanish-1.8.tar.gz
 https://dl.suckless.org/tools/dmenu-5.4.tar.gz
@@ -465,7 +464,7 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipn
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clipmenu-6.2.0.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/clipmenu/set-cachedir-path-to-home-dir_cache-6.2.0.diff
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
-https://feh.finalrewind.org/feh-3.10.3.tar.bz2
+https://feh.finalrewind.org/feh-3.12.1.tar.bz2
 https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
 https://dist.schmorp.de/libev/libev-4.33.tar.gz
 https://fossies.org/linux/www/old/yajl-2.1.0.tar.gz
@@ -477,8 +476,8 @@ https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/JSON-XS-4.04.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 https://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/AnyEvent-I3-0.19.tar.gz
 https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
-https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-Data-20260214.001.tar.gz
-https://www.cpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-3.012.tar.gz
+https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-Data-20260311.001.tar.gz
+https://www.cpan.org/authors/id/B/BR/BRIANDFOY/Business-ISBN-3.013.tar.gz
 https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz
 https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.34.tar.gz
 https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.098.tar.gz
@@ -486,7 +485,11 @@ https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
 https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.3.1.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/pamixer/pamixer-1.6.tar.gz
-https://i3wm.org/downloads/i3-4.25.tar.xz
+https://download.gnome.org/sources/json-glib/1.10/json-glib-1.10.8.tar.xz
+https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.2.tar.xz
+https://i3wm.org/downloads/i3-4.25.1.tar.xz
+
+
 https://github.com/thkukuk/libnsl/releases/download/v2.0.1/libnsl-2.0.1.tar.xz
 https://www.python.org/ftp/python/3.13.7/Python-3.13.7.tar.xz
 https://www.python.org/ftp/python/doc/3.13.7/python-3.13.7-docs-html.tar.bz2
@@ -520,7 +523,6 @@ http://fcron.free.fr/archives/fcron-3.4.0.src.tar.gz
 # ================================== PART 3 ====================================
 https://github.com/libass/libass/releases/download/0.17.4/libass-0.17.4.tar.xz
 https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.3.tar.gz
-https://github.com/uclouvain/openjpeg/archive/v2.5.4/openjpeg-2.5.4.tar.gz
 https://downloads.xvid.com/downloads/xvidcore-1.3.7.tar.gz
 https://ffmpeg.org/releases/ffmpeg-7.1.2.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1.2-chromium_method-1.patch
@@ -548,7 +550,6 @@ https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-3.2.3.tar.g
 https://gstreamer.freedesktop.org/src/orc/orc-0.4.41.tar.xz
 https://www.spice-space.org/download/releases/spice-0.16.0.tar.bz2
 https://www.spice-space.org/download/usbredir/usbredir-0.15.0.tar.xz
-https://download.gnome.org/sources/json-glib/1.10/json-glib-1.10.6.tar.xz
 https://www.spice-space.org/download/gtk/spice-gtk-0.42.tar.xz
 https://github.com/virtualsquare/vde-2/archive/v2.3.3/vde-2.3.3.tar.gz
 https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.2.0/virglrenderer-1.2.0.tar.bz2
@@ -588,7 +589,6 @@ https://github.com/naelstrof/maim/archive/v5.8.1/maim-5.8.1.tar.gz
 https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz
 https://github.com/stedolan/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
 https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-0.5.1.tar.gz
-https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.1.tar.xz
 https://github.com/mity/md4c/archive/release-0.5.2/md4c-release-0.5.2.tar.gz
 https://github.com/c-ares/c-ares/releases/download/v1.34.5/c-ares-1.34.5.tar.gz
 https://nodejs.org/dist/v22.18.0/node-v22.18.0.tar.xz

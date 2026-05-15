@@ -3,17 +3,17 @@
 PRGNAME="openjpeg"
 
 ### OpenJPEG (JPEG2000 Codec)
-# Реализация стандарта JPEG-2000 с открытым исходным кодом. OpenJPEG полностью
-# соответствует спецификациям JPEG-2000 и может сжимать/распаковывать 16-битные
-# изображения без потерь качества.
+# Библиотека, предназначенная для кодирования/декодирования изображений формата
+# JPEG-2000. Используется программами для корректного чтения, сжатия и
+# обработки данного стандарта изображений без потерь качества.
 
 # Required:    cmake
 # Recommended: no
-# Optional:    git      (для тестов)
+# Optional:    git          (для тестов)
 #              lcms2
 #              libpng
 #              libtiff
-#              doxygen  (для сборки API документации)
+#              doxygen      (для сборки API документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,8 +29,7 @@ cmake                            \
     -D CMAKE_BUILD_TYPE=Release  \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_STATIC_LIBS=OFF     \
-    -D BUILD_DOC=OFF             \
-    .. || exit 1
+    -D BUILD_DOC=OFF .. || exit 1
 
 make || exit 1
 
@@ -42,11 +41,14 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если не собирали документацию, то и man-страницы не устанавливаются, исправим
 cp -rv ../doc/man -T "${TMP_DIR}/usr/share/man"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
