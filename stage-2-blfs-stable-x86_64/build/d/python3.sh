@@ -4,7 +4,9 @@ PRGNAME="python3"
 ARCH_NAME="Python"
 
 ### Python3 (object-oriented interpreted programming language)
-# Язык программирования Python3
+# Полная сборка языка программирования Python со всеми встроенными модулями.
+# Она включает расширенную поддержку математики, шифрования и сетевых
+# протоколов, что необходимо для запуска сложного софта.
 
 # Required:    no
 # Recommended: no
@@ -15,11 +17,11 @@ ARCH_NAME="Python"
 #              --- для создания дополнительных модулей ---
 #              libnsl
 #              tk
-#              berkeley-db      (https://www.oracle.com/database/technologies/related/berkeleydb.html)
+#              berkeley-db      (устаревшее) https://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                   || exit 1
-source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-3.*")"
 if [ -n "${INSTALLED}" ]; then
@@ -33,6 +35,9 @@ fi
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
+
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-security_fixes-2.patch" || exit 1
 
 ./configure                \
     --prefix=/usr          \
@@ -95,6 +100,7 @@ chmod 755 "${TMP_DIR}${PYTHON3_CERTS_SH}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

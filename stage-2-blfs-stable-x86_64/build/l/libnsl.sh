@@ -3,9 +3,10 @@
 PRGNAME="libnsl"
 
 ### libnsl (the public client interface for NIS(YP) and NIS+)
-# Пакет содержит библиотеку libnsl, которая включает в себя общедоступный
-# клиенткий интерфейс для NIS(YP) и NIS+. Ранее данный код был частью glibc, но
-# теперь существует отдельно для связи с TI-RPC и поддержки IPv6
+# Системная библиотека для работы с сетевыми службами имен. Она обеспечивает
+# совместимость с некоторыми старыми сетевыми протоколами и функциями, которые
+# все еще требуются современным программам. Ранее данный код был частью GLibc,
+# но теперь существует отдельно для связи с TI-RPC и поддержки IPv6.
 
 # Required:    libtirpc
 # Recommended: no
@@ -27,6 +28,8 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 if [ -d "${TMP_DIR}/lib" ]; then
     cd "${TMP_DIR}" || exit 1
     rm -rf lib
@@ -34,6 +37,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -4,24 +4,37 @@ PRGNAME="vim"
 CTAGS_ARCH_NAME="universal-ctags"
 
 ### Vim (Vi IMproved)
-# Powerful text editor
+# Легендарный текстовый редактор, ориентированный на максимально быструю работу
+# с кодом и текстом. Обладает огромным количеством функций и позволяет
+# выполнять сложные правки парой нажатий клавиш.
 
 # Required:    no
 # Recommended: Graphical Environments
 #              gtk+3
 # Optional:    curl или wget            (для некоторых тестов)
 #              gpm
+#              libcanberra
 #              lua
 #              ruby
 #              rsync
+#              libsodium                (https://libsodium.gitbook.io/doc/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-9.*")"
+if [ -n "${INSTALLED}" ]; then
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
+fi
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc"
-mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
+mkdir -pv "${TMP_DIR}/"{etc,usr/share/doc}
 
 # ctags когда-то входил в состав редактора Vim, добавим сами:
 CTAGSVER="$(find "${SOURCES}" -type f -name "${CTAGS_ARCH_NAME}-*.tar.?z" \
@@ -157,6 +170,7 @@ EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -6,9 +6,10 @@ PRGNAME="bumblebee-status"
 # Модульный генератор строки состояния для оконного менеджера i3
 
 # Required:    i3
-# Recommended: python3-psutil       (для модулей cpu и cpu2)
+# Recommended: python3-psutil       (для модулей cpu, cpu2 и др.)
 #              hddtemp              (для модуля hddtemp)
-#              pavucontrol          (для модуля pulseaudio)
+#              pavucontrol          (для модуля pulseaudio: pasink.right-click="pavucontrol")
+#              zenity               (для модуля date: date_custom.click_cmd="zenity --calendar")
 # Optional:    no
 
 ROOT="/root/src/lfs"

@@ -3,7 +3,7 @@
 ###***###
 
 7zip                                    imagemagick
-Graphical Environments                  openssh, libmpeg2, rxvt-unicode, numlockx, ghostscript, exim, vim, ffmpeg, libao, vlc, openbox
+Graphical Environments                  openssh, libmpeg2, rxvt-unicode, numlockx, vim, ghostscript, exim, ffmpeg, libao, vlc, openbox
 aalib                                   gst-plugins-good, gimp, vlc
 abseil-cpp                              protobuf
 accesskit-c                             gtk4
@@ -43,7 +43,7 @@ bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blender                                 imagemagick
 blfs-bootscripts
-bluez                                   pulseaudio, gst-plugins-bad, qt6, libpcap, python3, qemu, pipewire
+bluez                                   pulseaudio, gst-plugins-bad, qt6, python3, libpcap, qemu, pipewire
 boost                                   highlight, libsigc++2, libsigc++3, cairomm114, cairomm118, swig, poppler
 bpf-utils                               iptables
 breathe                                 wireplumber
@@ -210,7 +210,7 @@ gpac                                    x264
 gperftools                              glusterfs, libmypaint
 gpgme                                   gpgmepp
 gpgmepp                                 poppler
-gpm                                     aalib, vim
+gpm                                     vim, aalib
 graphene                                gst-plugins-base, gtk4
 graphite-font                           graphite2
 graphite2                               harfbuzz
@@ -228,7 +228,7 @@ gst-plugins-ugly
 gstreamer                               gst-plugins-base, spice, spice-gtk, pipewire
 gtest                                   protobuf, android-tools
 gtk+2                                   cairo, alsa-tools
-gtk+3                                   pixman, adwaita-icon-theme, gstreamer, pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, libinput, qt5-components, qt6, gcr3, alsa-tools, goffice, gtkmm3, ghostscript, gtk-vnc, libgxps, mirage, vte3, vim, gsimplecal, spice-gtk, qemu, libvirt, virt-manager, poppler, appstream-glib, gimp, girara, zathura, libportal, libqtxdg
+gtk+3                                   pixman, adwaita-icon-theme, gstreamer, pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, libinput, qt5-components, qt6, gcr3, alsa-tools, goffice, gtkmm3, vim, ghostscript, gtk-vnc, libgxps, mirage, vte3, gsimplecal, spice-gtk, qemu, libvirt, virt-manager, poppler, appstream-glib, gimp, girara, zathura, libportal, libqtxdg
 gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, harfbuzz, dbus-glib, polkit, cairo, gtk+3, libgudev, upower, libxklavier, libgsf, goffice, gexiv2, gegl, libgxps, libxmlb, poppler, appstream-glib, libical, menu-cache
 gtk-vnc                                 virt-manager
 gtk4                                    glycin, python3-pygobject3, adwaita-icon-theme, gcr4, alsa-tools, gtkmm4, libadwaita, zenity, vte3, libportal
@@ -327,7 +327,7 @@ libbsd                                  shadow
 libcaca                                 gst-plugins-good, ffmpeg, mpv, vlc
 libcacard                               spice, spice-gtk, qemu
 libcamera                               pipewire
-libcanberra                             pavucontrol, pipewire
+libcanberra                             pavucontrol, vim, pipewire
 libcap                                  bind-utils, ntp
 libcap-ng                               gnome-keyring, qemu
 libcddb                                 vlc
@@ -444,6 +444,7 @@ libsigc++2                              glibmm26, cairomm114
 libsigc++3                              glibmm28, cairomm118, pavucontrol
 libslirp                                qemu
 libsndfile                              lame, libsamplerate, sbc, pulseaudio, gst-plugins-bad, pipewire
+libsodium                               vim
 libsoup2                                gst-plugins-good, gst-plugins-bad, osinfo-db-tools
 libsoup3                                gst-plugins-good
 libspectre                              cairo, imlib2, goffice, zathura
@@ -881,7 +882,7 @@ sysstat                                 openssh
 taglib                                  gst-plugins-good, vlc
 tcb                                     shadow
 tdb                                     pulseaudio, exim
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, llvm, graphite2, fontconfig, libvorbis, opus, libunwind, jasper, fltk, ffmpeg, dtc, cpio, imagemagick, zathura, gpm
+texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, llvm, graphite2, fontconfig, libvorbis, opus, libunwind, jasper, fltk, ffmpeg, dtc, cpio, imagemagick, zathura
 thin-provisioning-tools                 lvm2
 time
 tint2
@@ -915,7 +916,7 @@ utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               gst-plugins-good, ffmpeg, gegl, vlc, pipewire
 vala                                    librsvg, glycin, libsoup2, libsoup3, libxklavier, libsecret, gcr3, gcr4, gtk-vnc, gexiv2, libadwaita, gegl, vte3, spice-gtk, libvirt-glib, libical, libportal
-valgrind                                libtasn1, pcre, nettle, gnutls, libidn, libpsl, wget, curl, libksba, git, lvm2, gcc, llvm, dbus, elogind, ruby, cairo, libdrm, mesa, gstreamer, flac, pulseaudio, mit-kerberos-v5, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libevdev, libinput, libsecret, gcr3, gcr4, xterm, python3, libseccomp, pipewire
+valgrind                                libtasn1, pcre, nettle, libseccomp, gnutls, libidn, libpsl, wget, curl, libksba, git, lvm2, gcc, llvm, dbus, elogind, ruby, cairo, libdrm, mesa, gstreamer, flac, pulseaudio, mit-kerberos-v5, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libevdev, libinput, libsecret, gcr3, gcr4, xterm, python3, pipewire
 vcdimager                               vlc
 vde2                                    qemu
 vdo                                     lvm2
