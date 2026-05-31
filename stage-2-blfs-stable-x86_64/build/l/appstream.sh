@@ -4,17 +4,19 @@ PRGNAME="appstream"
 ARCH_NAME="AppStream"
 
 ### AppStream (library for retrieving software metadata)
-# библиотека и утилита, полезные для получение метаданных программного
-# обеспечения и легкого доступа к ним для программ, которым это необходимо
+# Библиотека и утилита для получения метаданных о программном обеспечении в
+# Linux. Позволяет центрам приложений (таким как GNOME Software или Discover)
+# красиво отображать иконки, читать переведенные описания, искать и удобно
+# устанавливать программы из разных источников.
 
 # Required:    curl
 #              elogind
 #              itstool
+#              libfyaml
 #              libxml2
 #              libxmlb
 #              libxslt
-#              libyaml
-# Recommended: no
+# Recommended: docbook-xsl
 # Optional:    python3-gi-docgen
 #              qt6
 #              daps                 (https://github.com/openSUSE/daps)
@@ -31,74 +33,26 @@ mkdir -pv "${TMP_DIR}${METAINFO}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    -D apidocs=false    \
-    -D stemming=false   \
-    -D qt=true          \
-    .. || exit 1
+meson setup ..               \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D apidocs=false         \
+    -D bash-completion=false \
+    -D stemming=false        \
+    -D systemd=false         \
+    -D compose=false         \
+    -D svg-support=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
-find   "${TMP_DIR}/usr/share/man/" -type f -exec chmod 644 {} \+
-
-###
-# Конфигурация
-###
-
-# конфиг
-#    /usr/share/metainfo/org.linuxfromscratch.lfs.xml
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # Пакет AppStream ожидает наличие файла метаинформации операционной системы,
-# описывающий дистрибутив GNU/Linux:
-
-cat > "${TMP_DIR}${METAINFO}/org.linuxfromscratch.lfs.xml" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="operating-system">
-  <id>org.linuxfromscratch.lfs</id>
-  <name>Linux From Scratch</name>
-  <summary>A customized Linux system built entirely from source</summary>
-  <description>
-    <p>
-      Linux From Scratch (LFS) is a project that provides you with
-      step-by-step instructions for building your own customized Linux
-      system entirely from source.
-    </p>
-  </description>
-  <url type="homepage">https://www.linuxfromscratch.org/lfs/</url>
-  <metadata_license>MIT</metadata_license>
-  <developer id='linuxfromscratch.org'>
-    <name>The Linux From Scratch Editors</name>
-  </developer>
-
-  <releases>
-    <release version="13.0" type="stable" date="2026-03-05">
-      <description>
-        <p>Now contains Binutils 2.46.0, GCC-15.2.0, Glibc-2.43,
-        Linux kernel 6.18, and six security updates.</p>
-      </description>
-    </release>
-
-    <release version="12.4" type="stable" date="2025-09-01">
-      <description>
-        <p>Now contains Binutils 2.45, GCC-15.2.0, Glibc-2.42,
-        Linux kernel 6.16, and twelve security updates.</p>
-      </description>
-    </release>
-
-    <release version="12.3" type="stable" date="2025-03-05">
-      <description>
-        <p>Now contains Binutils 2.44, GCC-14.2.0, Glibc-2.41, and
-        Linux Kernel 6.13, and three security updates.</p>
-      </description>
-    </release>
-  </releases>
-</component>
-EOF
+# описывающий дистрибутив GNU/Linux, как описано в официальной сборке BLFS, но
+# нам это нахрен не нужно в i3 или LXQt и никаких центров приложений мы не
+# используем.
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

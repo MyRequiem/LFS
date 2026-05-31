@@ -1,41 +1,43 @@
 #! /bin/bash
 
 PRGNAME="zen-browser"
-ARCH_NAME="zen.linux-x86_64"
+TARBALL="zen.linux-x86_64.tar.xz"
 
 ### Zen Browser (web browser)
-# Красиво оформленный, ориентированный на конфиденциальность и оснащенный
-# множеством функций веб-браузер.
+# Современный и быстрый браузер, построенный на базе Firefox, но с упором на
+# приватность и удобный интерфейс. Предлагает новые способы управления
+# вкладками и настройки внешнего вида.
 
-# Required:    qt5-components
-#              qt6
-#              nss
+# Required:    nss
 #              libcups или cups
 # Recommended: no
-# Optional:    no
+# Optional:    qt5-components
+#              qt6
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-rm -f "${SOURCES}/${ARCH_NAME}.tar.xz"
+rm -f "${SOURCES}/${TARBALL}"
 
 GIT_HOME_PAGE="https://github.com/${PRGNAME}/desktop"
 wget -P "${SOURCES}" \
-    "${GIT_HOME_PAGE}/releases/latest/download/${ARCH_NAME}.tar.xz" || exit 1
+    "${GIT_HOME_PAGE}/releases/latest/download/${TARBALL}" || exit 1
 
 INSTALLED_VER=$(find /var/log/packages/ -type f -name "${PRGNAME}-*" | \
     rev |  cut -f 1 -d - | rev)
 echo -en "Installed version: ${INSTALLED_VER}\nTarball version:   "
 
-VERSION=$(tar -xJf ${SOURCES}/${ARCH_NAME}.tar.xz zen/application.ini && \
-    cat zen/application.ini | grep -e '^Version' | cut -d = -f 2)
-rm -rf ./zen/
+VERSION="$(tar -xJf "${SOURCES}/${TARBALL}" -O zen/application.ini | \
+    grep -e '^Version' | cut -d = -f 2)"
 echo "${VERSION}"
 
 echo -ne "\nContinue? [y/N]: "
 read -r YESNO
-[ "${YESNO}" != "y" ] && exit 0
+[ "${YESNO}" != "y" ] && {
+    rm -f "${SOURCES}/${TARBALL}"
+    exit 0
+}
 
 # удаляем установленную версию
 [ -n "${INSTALLED_VER}" ] && \
@@ -43,12 +45,11 @@ read -r YESNO
 
 TMP_DIR="/tmp/package-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}/"{opt,usr/{bin,share/{applications,pixmaps}}}
+mkdir -p "${TMP_DIR}/"{opt,usr/{bin,share/{applications,pixmaps}}}
 cd "${TMP_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${ARCH_NAME}.tar.xz" || exit 1
-mv zen "${PRGNAME}"
-mv "${PRGNAME}" "${TMP_DIR}/opt"
+tar xvf "${SOURCES}/${TARBALL}" || exit 1
+mv zen "${TMP_DIR}/opt/${PRGNAME}"
 
 chown -R root:root .
 find -L . \
@@ -65,7 +66,7 @@ Comment=Zen Web Browser
 Name=Zen Browser
 GenericName=Zen Browser
 Exec=${PRGNAME}
-Categories=Network;X-XFCE;X-Xfce-Toplevel;
+Categories=Network;
 Icon=${PRGNAME}
 StartupNotify=true
 Terminal=false
@@ -76,8 +77,6 @@ EOF
 cp "${TMP_DIR}/opt/${PRGNAME}/browser/chrome/icons/default/default128.png" \
     "${TMP_DIR}/usr/share/pixmaps/${PRGNAME}.png"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -87,7 +86,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # about your experience, not your data.
 #
 # Home page: https://${PRGNAME}.app/
-# Download:  https://github.com/${PRGNAME}/desktop/releases/latest/download/${ARCH_NAME}.tar.xz
+# Download:  https://github.com/${PRGNAME}/desktop/releases/latest/download/${TARBALL}
 #
 EOF
 

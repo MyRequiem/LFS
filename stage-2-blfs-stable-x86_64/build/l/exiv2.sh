@@ -3,14 +3,15 @@
 PRGNAME="exiv2"
 
 ### Exiv2 (Exif and IPTC metadata library and tools)
-# C++ библиотека и утилита командной строки для чтения и записи Exif и IPTC
-# метаданных изображений и видео
+# Мощный инструмент для работы с метаданными в фотографиях. Он позволяет
+# программам читать и изменять скрытую информацию внутри снимков: дату съемки,
+# модель камеры, настройки объектива, GPS-координаты и др.
 
 # Required:    cmake
 # Recommended: brotli
 #              curl
 #              inih
-# Optional:    libssh    (https://www.libssh.org/)
+# Optional:    libssh                       (https://www.libssh.org/)
 #              --- для документации ---
 #              doxygen
 #              graphviz
@@ -34,15 +35,17 @@ cmake                              \
     -D EXIV2_ENABLE_CURL=yes       \
     -D EXIV2_BUILD_SAMPLES=no      \
     -D CMAKE_SKIP_INSTALL_RPATH=ON \
-    -G Ninja                       \
-    .. || exit 1
+    -G Ninja .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

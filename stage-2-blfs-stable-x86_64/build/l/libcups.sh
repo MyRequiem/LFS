@@ -4,11 +4,12 @@ PRGNAME="libcups"
 ARCH_NAME="cups"
 
 ### libcups (Common UNIX Printing System client libraries)
-# Набор системных библиотек, который выступает в роли связующего звена между
-# прикладным софтом и функциями печати. Он необходим для запуска многих
-# современных программ (вроде Google Chrome), так как предоставляет им
-# стандартные инструменты для работы с документами, без которых они технически
-# не могут инициализироваться и стартовать.
+# Системная библиотека libcups.so + набор залоговочных файлов, которая
+# выступает в роли связующего звена между прикладным софтом и функциями печати.
+# Она необходима для запуска многих современных программ (например Google
+# Chrome), так как предоставляет им стандартные инструменты для работы с
+# документами, без которых они технически не могут инициализироваться и
+# стартовать.
 
 # Required:    gnutls
 # Recommended: no
@@ -41,6 +42,11 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему во время выполнения (runtime), вызванную повреждением
+# указателя при использовании IPP
+sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
+    || exit 1
+
 ./configure                \
     --prefix=/usr          \
     --disable-pam          \
@@ -54,10 +60,11 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses,locale}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

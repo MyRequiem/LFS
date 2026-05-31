@@ -3,8 +3,9 @@
 PRGNAME="nspr"
 
 ### NSPR (Netscape Portable Runtime)
-# Абстрактная платформо-независимая библиотека для не GUI объектов операционных
-# систем.
+# Набор базовых инструментов от Mozilla, которые обеспечивают независимость
+# программ от операционной системы. Помогает софту работать с потоками,
+# временем и вводом-выводом одинаково на разных платформах.
 
 # Required:    no
 # Recommended: no
@@ -37,10 +38,16 @@ sed -i 's|$(LIBRARY) ||'  config/rules.mk         || exit 1
     --enable-64bit || exit 1
 
 make || exit 1
+# набор тестов предназначен для тестирования изменений в nss или nspr и не
+# особенно полезен для проверки выпущенной версии (например, его необходимо
+# запускать на неоптимизированной сборке).
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

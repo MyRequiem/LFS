@@ -42,8 +42,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # structured data with the same ease that sed, awk, grep and friends let you
 # play with text.
 #
-# Home page: https://stedolan.github.io/${PRGNAME}/
-# Download:  https://github.com/stedolan/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://jqlang.github.io/${PRGNAME}/
+# Download:  https://github.com/${PRGNAME}lang/${PRGNAME}/releases/download/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

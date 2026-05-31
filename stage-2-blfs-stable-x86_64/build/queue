@@ -265,9 +265,9 @@ l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
 l/shared-mime-info.sh
 # ====================
-# Все остальное до пакета bumblebee-status (включительно) обновлять в чистой
-# TTY удалив пакеты mesа, qt5-components, qt6 и другие пакеты со сломанными
-# зависимостями (проверяем утилитой check-system-deps)
+# Все остальное до пакета fcron (включительно) обновлять в чистой TTY удалив
+# пакеты mesа, qt5-components, qt6 и другие пакеты со сломанными зависимостями
+# (проверяем утилитой check-system-deps)
 x/libs/pixman.sh
 l/cairo.sh
 l/pango.sh
@@ -282,7 +282,6 @@ l/libtiff.sh
 l/lcms2.sh
 l/glycin.sh
 l/gdk-pixbuf.sh
-l/librsvg.sh
 # ======= mesa =======
 x/libs/libva.sh
 x/libs/wayland.sh
@@ -489,7 +488,6 @@ d/python3.sh
 # пакет vim перед обновлением удалить из системы
 #    # removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
-
 # === bumblebee-status ===
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
@@ -497,6 +495,7 @@ d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 ap/gsimplecal.sh
 l/libxmlb.sh
+l/libfyaml.sh
 l/appstream.sh
 l/libadwaita.sh
 ap/zenity.sh
@@ -531,6 +530,10 @@ ap/mirage.sh
 n/ntp.sh
 a/fcron.sh
 # ================================== PART 3 ====================================
+
+###
+# Переходим в иксы (графическую сессию i3)
+###
 # === ffmpeg, mpv ===============
 l/libass.sh
 l/fdk-aac.sh

@@ -3,11 +3,12 @@
 PRGNAME="mirage"
 
 ### Mirage (GTK+ Image Viewer)
-# Быстрая и легкая утилита для просмотра изображений основанная на GTK+
+# Простой и очень быстрый просмотрщик изображений основанный на GTK, и
+# написанный на Python. Умеет базово редактировать изображения (обрезка,
+# поворот) и мгновенно перелистывать даже большие коллекции.
 
-# Required:    python3-pygobject3 (собранный с cairo)
+# Required:    python3-pygobject3    (собранный с cairo)
 #              python3-pycairo
-#              exiv2
 #              gexiv2
 #              gtk+3
 # Recommended: no
@@ -20,8 +21,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с gexiv2-0.16.0
+sed -i 's/0.10/0.16/' mirage/__init__.py
+
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

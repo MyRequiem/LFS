@@ -3,8 +3,8 @@
 PRGNAME="hddtemp"
 
 ### hddtemp (reads hard disk S.M.A.R.T. info and reports temperature)
-# Утилита, предназначенная для чтения S.M.A.R.T. параметров жесткого диска и
-# отчета о его температуре.
+# Утилита для считывания данных со встроенных датчиков жестких дисков и SSD,
+# показывая их текущую температуру для предотвращения перегрева.
 
 # Required:    no
 # Recommended: no
@@ -55,6 +55,9 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 install -m644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
 
+# остановим демон (если запущен) перед обновлением
+pkill --full "hddtemp --daemon" &>/dev/null
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
@@ -64,6 +67,20 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 # пользователям, установим suid-бит для /usr/sbin/hddtemp
 #    rwsr-xr-x или 4755
 chmod u+s /usr/sbin/hddtemp
+
+# запустим hddtemp как демон
+hddtemp --daemon /dev/sda || {
+echo "Error start hddtemp:"
+echo "# hddtemp --daemon /dev/sda"
+exit 1
+}
+
+echo ""
+echo "----------------------------------------"
+echo "TEST hddtemp: $ hddtemp /dev/sda"
+hddtemp /dev/sda
+echo "----------------------------------------"
+echo ""
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKGVERSION}"
 # Package: ${PRGNAME} (reads hard disk S.M.A.R.T. info and reports temperature)

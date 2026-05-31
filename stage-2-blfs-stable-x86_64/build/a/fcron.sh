@@ -3,10 +3,10 @@
 PRGNAME="fcron"
 
 ### Fcron (periodical command scheduler)
-# Периодическое выполнения заданий в определённое время (планировщик команд).
-# Fcron хорошо работает на системах, которые не запущены постоянно (ноутбуки,
-# десктопы). В отличие от Dcron, Fcron может запускать пропущенные во время
-# выключения машины задания.
+# Продвинутый планировщик задач, который запускает нужные вам программы в
+# определенное время. Хорошо работает на системах, которые не запущены
+# постоянно (ноутбуки, десктопы). В отличие от Dcron, Fcron может запускать
+# пропущенные во время выключения машины задания.
 
 # Required:    no
 # Recommended: no
@@ -74,6 +74,8 @@ find doc -type f -exec sed -i 's:/usr/local::g' {} \+
 make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # скрипт run-parts from Slackware
 RUN_PARTS="/usr/bin/run-parts"
@@ -147,16 +149,14 @@ cat << EOF > "${TMP_DIR}${SYSTAB}.orig"
 &bootrun 42 12      1 * *    root run-parts /etc/cron.monthly
 EOF
 
-=================================================================
-Добавить в /etc/cron.hourly/
-
----------
-upddb.sh
----------
+# добавим обновление базы данных пакета findutils
+UPDDB="/etc/cron.hourly/upddb.sh"
+cat <<  EOF > "${TMP_DIR}${UPDDB}"
 #! /bin/bash
 
 ionice -c3 nice -n 19 /usr/bin/updatedb
-=================================================================
+EOF
+chmod 755 "${TMP_DIR}${UPDDB}"
 
 # для автозапуска fcron демона при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/fcron
@@ -167,12 +167,17 @@ ionice -c3 nice -n 19 /usr/bin/updatedb
 
 rm -rf "${TMP_DIR}/var/run"
 
+# остановим fcron перед установкой (если запущен)
+if pgrep -x fcron &>/dev/null; then
+    /etc/rc.d/init.d/fcron stop
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # запустим fcron демон
-/etc/rc.d/init.d/fcron stop &>/dev/null
 /etc/rc.d/init.d/fcron start
 # сгенерируем /var/spool/fcron/systab
 fcrontab -z -u systab

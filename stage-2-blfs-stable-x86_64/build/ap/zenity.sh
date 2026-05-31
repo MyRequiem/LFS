@@ -3,8 +3,9 @@
 PRGNAME="zenity"
 
 ### Zenity (display gtk dialog boxes from cli)
-# Инструмент, который позволяет отображать диалоговые окна Gtk+ из командной
-# строки и через сценарии оболочки.
+# Утилита, позволяющая простым скриптам открывать красивые графические окна:
+# сообщения, запросы файлов, календари, формы ввода, индикаторы прогресса,
+# делая работу в терминале нагляднее.
 
 # Required:    gtk4
 #              libadwaita
@@ -22,15 +23,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup       \
+meson setup ..    \
     --prefix=/usr \
-    .. || exit 1
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

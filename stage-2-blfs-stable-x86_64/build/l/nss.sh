@@ -3,13 +3,12 @@
 PRGNAME="nss"
 
 ### NSS (Network Security Services)
-# Набор библиотек, предназначенных для поддержки кроссплатформенной разработки
-# защищенных клиент-серверных приложений c поддержкой SSL v2 и v3, TLS, PKCS#5,
-# PKCS#7, PKCS#11, PKCS#12, сертификатов S/MIME, X.509 v3 и других стандартов
-# безопасности.
+# Огромная библиотека функций безопасности, которая отвечает за шифрование,
+# проверку сертификатов и защиту передаваемых данных в таких программах, как
+# браузеры или почтовые клиенты.
 
 # Required:    nspr
-# Recommended: p11-kit
+# Recommended: p11-kit    (runtime)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -40,8 +39,8 @@ make                                   \
     USE_SYSTEM_ZLIB=1                  \
     ZLIB_LIBS=-lz                      \
     NSS_ENABLE_WERROR=0                \
-    USE_64=1                           \
-    NSS_USE_SYSTEM_SQLITE=1 || exit 1
+    NSS_USE_SYSTEM_SQLITE=1            \
+    USE_64=1 || exit 1
 
 # тесты
 # cd tests || exit 1
@@ -51,8 +50,8 @@ make                                   \
 cd ../dist || exit 1
 
 # /usr/lib/
-install -v -m755 Linux*/lib/*.so              "${TMP_DIR}/usr/lib"
-install -v -m644 Linux*/lib/{*.chk,libcrmf.a} "${TMP_DIR}/usr/lib"
+install -v -m755 Linux*/lib/*.so  "${TMP_DIR}/usr/lib"
+install -v -m644 Linux*/lib/*.chk "${TMP_DIR}/usr/lib"
 
 # /usr/include/nss/
 cp -vRL {public,private}/"${PRGNAME}"/* "${TMP_DIR}${NSS_INCLUDE_DIR}/"
@@ -70,8 +69,11 @@ install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig/"
 # временной директории пакета nss
 rm -f "${TMP_DIR}/usr/lib/libnssckbi.so"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 VER="${VERSION//./_}"

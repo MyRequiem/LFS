@@ -4,24 +4,24 @@ PRGNAME="google-chrome"
 ARCH_NAME="${PRGNAME}-stable_current_amd64.deb"
 
 ### Google Chrome (Google Chrome web browser)
-# Веб-браузер от Google
+# Самый популярный в мире веб-браузер, известный своей скоростью и поддержкой
+# новейших интернет-технологий. Включает встроенные средства защиты и
+# синхронизацию с сервисами Google.
 
-# Required:    qt5-components
-#              qt6
-#              nss
+# Required:    nss
 #              libcups или cups
 # Recommended: no
-# Optional:    no
+# Optional:    qt5-components
+#              qt6
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-! [ -e "${SOURCES}/${ARCH_NAME}" ] && {
-    echo "Archive ${SOURCES}/${ARCH_NAME} not found..."
-    echo "Download: https://dl.google.com/linux/direct/${ARCH_NAME}"
-    exit 1
-}
+rm -f "${SOURCES}/${ARCH_NAME}"
+
+wget -P "${SOURCES}" \
+    "https://dl.google.com/linux/direct/${ARCH_NAME}" || exit 1
 
 INSTALLED_VER=$(find /var/log/packages/ -type f -name "${PRGNAME}-*" | \
     rev |  cut -f 1 -d - | rev)
@@ -33,7 +33,10 @@ echo "${VERSION}"
 
 echo -ne "\nContinue? [y/N]: "
 read -r YESNO
-[ "${YESNO}" != "y" ] && exit 0
+[ "${YESNO}" != "y" ] && {
+    rm -f "${SOURCES}/${ARCH_NAME}"
+    exit 0
+}
 
 # удаляем установленную версию
 [ -n "${INSTALLED_VER}" ] && \
@@ -50,6 +53,8 @@ chmod -R u+w,go+r-w,a-s .
 
 # расписание cron предназначено только для Debian/Ubuntu
 rm -rf etc
+rm -rf "${TMP_DIR}/opt/google/chrome/cron"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gnome-control-center,gtk-doc,help,licenses}
 
 chmod 0755 .
 chmod 4711 opt/google/chrome/chrome-sandbox
@@ -69,10 +74,7 @@ mv usr/bin/{"${PRGNAME}-stable","${PRGNAME}"} || exit 1
 # .desktop
 sed -e "s#Icon=${PRGNAME}#Icon=/opt/google/chrome/product_logo_256.png#" \
     -e "s#${PRGNAME}-stable#${PRGNAME}#"                                 \
-           -i usr/share/applications/${PRGNAME}.desktop || exit 1
-
-# удалим документацию и menu
-rm -rf "${TMP_DIR}/usr/share/"{doc,menu}
+    -i usr/share/applications/{${PRGNAME},com.google.Chrome}.desktop || exit 1
 
 # man-страница
 (

@@ -3,9 +3,9 @@
 PRGNAME="cups"
 
 ### Cups (Common UNIX Printing System)
-# Сервер печати для UNIX-подобных операционных систем. Компьютер с запущенным
-# сервером CUPS представляет собой сетевой узел, который принимает задания на
-# печать от клиентов, обрабатывает их и отправляет на соответствующий принтер.
+# Стандартная система печати для Linux. Управляет очередью печати документов,
+# содержит драйверы для тысяч моделей принтеров и позволяет печатать как через
+# USB, так и по сети.
 #
 # Состав CUPS:
 #    - диспетчер печати
@@ -68,6 +68,11 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим проблему во время выполнения (runtime), вызванную повреждением
+# указателя при использовании IPP
+sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
+    || exit 1
+
 # создадим группу lpadmin и пользователя lp (группа lp уже создана с пакетом
 # 'main-directory-tree')
 ! grep -qE "^lpadmin:" /etc/group  && \
@@ -85,6 +90,7 @@ mkdir -pv "${TMP_DIR}"
 # /etc/rc.d
 #    --with-rcdir=/tmp/cupsinit
 ./configure                      \
+    --prefix=/usr                \
     --libdir=/usr/lib            \
     --with-rcdir=/tmp/cupsinit   \
     --with-rundir=/run/cups      \
@@ -100,6 +106,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}"/{tmp,run,var/run}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # создадим базовый файл конфигурации клиента cups
 echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \

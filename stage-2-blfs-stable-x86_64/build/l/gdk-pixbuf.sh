@@ -29,35 +29,28 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/lib/gdk-pixbuf-2.0/2.10.0"
 
-GLYCIN="disabled"
-pkgconf glycin-2 &>/dev/null && GLYCIN="enabled"
-
 mkdir build
 cd build || exit 1
 
-# Не создаем компоненты, которые устарели и заменены на glycin. Эти компоненты
-# автоматически отключаются при сборке этого пакета с установленным glycin, но
-# когда собираем первый раз (без glycin) явно указываем их отключение.
-#    -D *=disabled
-# Не позволяем meson загружать любые дополнительные зависимости, которые не
-# установлены в системе
-#    --wrap-mode=nofallback
+# Выключаем glycin (он нахрен не нужен, принудительно изолирует процессы через
+# bwrap и падает на LFS). Возвращаем стандартные нативные загрузчики
+# изображений напрямую в процесс GTK:
 meson setup ..              \
     --prefix=/usr           \
     --buildtype=release     \
-    -D png=disabled         \
-    -D gif=disabled         \
-    -D jpeg=disabled        \
-    -D tiff=disabled        \
+    -D png=enabled          \
+    -D gif=enabled          \
+    -D jpeg=enabled         \
+    -D tiff=enabled         \
     -D thumbnailer=disabled \
     --wrap-mode=nofallback  \
-    -D glycin="${GLYCIN}" || exit 1
+    -D glycin=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
