@@ -4,7 +4,9 @@ PRGNAME="xvid"
 ARCH_NAME="xvidcore"
 
 ### XviD (MPEG-4 compliant video CODEC)
-# Видеокодек, совместимый с MPEG-4
+# Программная библиотека для работы с видеоформатом MPEG-4, известным по
+# расширению файлов AVI. Позволяет сжимать видео до компактных размеров для
+# экономии места на диске.
 
 # Required:    no
 # Recommended: no
@@ -55,10 +57,13 @@ make || exit 1
 sed -i '/libdir.*STATIC_LIB/ s/^/#/' Makefile || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 chmod -v 755 "${TMP_DIR}/usr/lib/lib${ARCH_NAME}.so."*
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

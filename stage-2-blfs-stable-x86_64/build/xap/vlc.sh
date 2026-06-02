@@ -3,7 +3,9 @@
 PRGNAME="vlc"
 
 ### VLC (VLC media player)
-# Медиаплеер, стример и кодер/декодер
+# Популярнейший универсальный медиаплеер, способный воспроизводить любые аудио
+# и видеофайлы благодаря огромному набору встроенных кодеков. Также умеет
+# транслировать и принимать потоковое вещание из интернета.
 
 # Required:    no
 # Recommended: alsa-lib
@@ -13,6 +15,7 @@ PRGNAME="vlc"
 #              libgcrypt
 #              libmad
 #              lua
+#              qt6
 #              Graphical Environments
 # Optional:    dbus
 #              libidn
@@ -25,7 +28,6 @@ PRGNAME="vlc"
 #              libdvdread
 #              libdvdnav
 #              libproxy
-#              opencv
 #              samba
 #              v4l-utils
 #              libbluray                (https://www.videolan.org/developers/libbluray.html)
@@ -33,17 +35,18 @@ PRGNAME="vlc"
 #              libnfs                   (https://github.com/sahlberg/libnfs)
 #              libraw1394               (https://sourceforge.net/projects/libraw1394/)
 #              live555                  (http://www.live555.com/)
-#              vcdimager                (https://www.gnu.org/software/vcdimager/)
+#              vcdimager                (требует libcdio) https://www.gnu.org/software/vcdimager/
 #              --- Дополнительные плагины мультиплексора/демультиплексора ---
 #              libogg
 #              game-music-emu           (https://github.com/kode54/Game_Music_Emu)
 #              libdvbpsi                (https://www.videolan.org/developers/libdvbpsi.html)
 #              libshout                 (https://downloads.xiph.org/releases/libshout/)
-#              libmatroska              (https://dl.matroska.org/downloads/libmatroska/)
+#              libmatroska              (требует libebml https://dl.matroska.org/downloads/libebml/) https://dl.matroska.org/downloads/libmatroska/
 #              libmodplug               (https://sourceforge.net/projects/modplug-xmms/)
 #              musepack                 (https://www.musepack.net/)
 #              sidplay-libs             (https://sourceforge.net/projects/sidplay2/)
 #              --- Дополнительные плагины кодеков ---
+#              dav1d
 #              faad2
 #              flac
 #              libaom
@@ -57,7 +60,6 @@ PRGNAME="vlc"
 #              libvpx
 #              x264
 #              aribb24                  (https://github.com/nkoriyama/aribb24)
-#              dav1d                    (https://code.videolan.org/videolan/dav1d)
 #              dirac                    (https://sourceforge.net/projects/dirac/)
 #              fluidlite                (https://github.com/divideconcept/FluidLite)
 #              fluidsynth               (https://sourceforge.net/projects/fluidsynth/)
@@ -76,7 +78,8 @@ PRGNAME="vlc"
 #              fontconfig
 #              freetype
 #              fribidi
-#              libplacebo
+#              gst-plugins-base
+#              libplacebo               (в текущей версии не работает, сломан)
 #              librsvg
 #              libcaca                  (https://github.com/cacalabs/libcaca)
 #              libmfx                   (https://github.com/Intel-Media-SDK/MediaSDK)
@@ -117,19 +120,61 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему сборки с taglib>=2.0 и ffmpeg>=7
-patch -Np1 -i "${SOURCES}/vlc-3.0.21-taglib-1.patch"         || exit 1
-patch -Np1 -i "${SOURCES}/vlc-3.0.21-fedora_ffmpeg7-1.patch" || exit 1
+# исправим ошибку сборки с последней версией gst-plugins-base
+sed -i 's/gstvideopool.h/video.h/' \
+    modules/codec/gstreamer/gstvlcvideopool.h || exit 1
 
-BUILDCC=gcc       \
-./configure       \
-    --prefix=/usr \
-    --disable-nfs \
-    --disable-libplacebo || exit 1
+# --enable-aa
+#    включаем aalib, смотрим фильмы прям в консоли в виде ASCII-символов (^_^)
+#    $ vlc -V aa /path/to/film.mp4 - в Иксах
+#    $ vlc -I dummy -V aa /path/to/film.mp4 - в TTY
+#    (пример см. $ aafire)
+# --disable-nfs
+#    отключаем Network File System (сетевая файловая система)
+# --disable-live555
+#    отключаем RTSP и камеры
+# --disable-vcd
+#    забыли про видеодиски из 90-х
+# --disable-libcddb
+#    отключаем поиск названий треков для аудио-CD
+# --disable-vnc
+#    отключаем ненужный VNC-клиент
+# --disable-freerdp
+#    отключаем Remote Desktop Protocol, подключаться к рабочему столу Windows
+#    не собираюсь
+# --disable-asdcp
+#    убираем поддержку кинотеатральных пакетов
+# --disable-dvbpsi
+#    отключаем декодер спутниковых/эфирных таблиц
+# --disable-libplacebo
+#    обходим стороной сломанную библиотеку libplacebo
+# --disable-postproc
+#    отключаем программную постобработку изображений, в современных форматах
+#    (H.264, H.265/HEVC, VP9, AV1) алгоритмы сглаживания уже встроены прямо
+#    внутрь самого кодека на аппаратном уровне
+# --disable-addonmanagermodules
+#    отключаем встроенный магазин расширений
+BUILDCC=gcc              \
+./configure              \
+    --prefix=/usr        \
+    --enable-aa          \
+    --disable-nfs        \
+    --disable-live555    \
+    --disable-vcd        \
+    --disable-libcddb    \
+    --disable-vnc        \
+    --disable-freerdp    \
+    --disable-asdcp      \
+    --disable-dvbpsi     \
+    --disable-libplacebo \
+    --disable-postproc   \
+    --disable-addonmanagermodules || exit 1
 
 make || exit 1
 # make check
 make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

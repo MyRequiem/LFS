@@ -22,7 +22,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим сборку с gexiv2-0.16.0
-sed -i 's/0.10/0.16/' mirage/__init__.py
+sed -i 's/0.10/0.16/' mirage/__init__.py || exit 1
 
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"

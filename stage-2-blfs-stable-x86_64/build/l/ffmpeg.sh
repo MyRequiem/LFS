@@ -3,13 +3,13 @@
 PRGNAME="ffmpeg"
 
 ### FFmpeg (software to record, convert and stream audio and video)
-# Ведущий мультимедийный фреймворк, способный декодировать, кодировать,
-# перекодировать, мультиплексировать, демультиплексировать, транслировать,
-# фильтровать и воспроизводить практически все форматы аудио и видео. Также
-# поддерживает самые неизвестные и древние форматы.
+# Мощный универсальный набор инструментов для записи, конвертации и потоковой
+# передачи практически всех форматов аудио и видео. Это главный цифровой
+# комбайн системы, на котором держится работа большинства медиаплееров.
 
 # Required:    no
-# Recommended: libaom
+# Recommended: dav1d
+#              libaom
 #              libass
 #              fdk-aac
 #              freetype
@@ -17,9 +17,11 @@ PRGNAME="ffmpeg"
 #              libvorbis
 #              libvpx
 #              opus
+#              svt-av1
 #              x264
 #              x265
 #              nasm
+#              --- for desktop use ---
 #              alsa-lib
 #              libva
 #              sdl2-compat
@@ -42,7 +44,6 @@ PRGNAME="ffmpeg"
 #              vulkan-loader
 #              xvid
 #              Graphical Environments
-#              dav1d                      (https://code.videolan.org/videolan/dav1d)
 #              flite                      (https://github.com/festvox/flite)
 #              gsm                        (https://www.quut.com/gsm/)
 #              libaacplus                 (https://tipok.org.ua/node/17j)
@@ -60,6 +61,7 @@ PRGNAME="ffmpeg"
 #              libtheora                  (https://www.theora.org/)
 #              openal                     (https://openal.org/)
 #              opencore-amr               (https://sourceforge.net/projects/opencore-amr/)
+#              rubberband                 (https://github.com/breakfastquay/rubberband)
 #              srt                        (https://github.com/Haivision/srt)
 #              schroedinger               (https://sourceforge.net/projects/schrodinger/)
 #              twolame                    (https://www.twolame.org/)
@@ -79,26 +81,28 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-chromium_method-1.patch" || exit 1
 
-./configure                         \
-    --prefix=/usr                   \
-    --enable-gpl                    \
-    --enable-version3               \
-    --enable-nonfree                \
-    --disable-static                \
-    --enable-shared                 \
-    --disable-debug                 \
-    --enable-libaom                 \
-    --enable-libass                 \
-    --enable-libfdk-aac             \
-    --enable-libfreetype            \
-    --enable-libmp3lame             \
-    --enable-libopus                \
-    --enable-libvorbis              \
-    --enable-libvpx                 \
-    --enable-libx264                \
-    --enable-libx265                \
-    --enable-openssl                \
-    --ignore-tests=enhanced-flv-av1 \
+./configure                                                 \
+    --prefix=/usr                                           \
+    --enable-gpl                                            \
+    --enable-version3                                       \
+    --enable-nonfree                                        \
+    --disable-static                                        \
+    --enable-shared                                         \
+    --disable-debug                                         \
+    --enable-libaom                                         \
+    --enable-libass                                         \
+    --enable-libfdk-aac                                     \
+    --enable-libfreetype                                    \
+    --enable-libmp3lame                                     \
+    --enable-libopus                                        \
+    --enable-libvorbis                                      \
+    --enable-libvpx                                         \
+    --enable-libx264                                        \
+    --enable-libx265                                        \
+    --enable-openssl                                        \
+    --enable-libdav1d                                       \
+    --disable-libsvtav1                                     \
+    --ignore-tests=enhanced-flv-av1,enhanced-flv-multitrack \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -112,8 +116,11 @@ gcc tools/qt-faststart.c -o tools/qt-faststart || exit 1
 make install DESTDIR="${TMP_DIR}"
 install -v -m755 tools/qt-faststart "${TMP_DIR}/usr/bin"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

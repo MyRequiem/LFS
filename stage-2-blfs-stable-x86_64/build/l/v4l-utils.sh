@@ -3,19 +3,20 @@
 PRGNAME="v4l-utils"
 
 ### v4l-utils (libraries and utilities for video4linux)
-# набор утилит для мультимедийных устройств, позволяющих работать с
-# проприетарными форматами, доступными для большинства веб-камер (libv4l)
+# Набор сервисных утилит и библиотек для настройки и управления видеокамерами,
+# ТВ-тюнерами и веб-камерами в Linux (libv4l-устройствами). Обеспечивают
+# правильный захват видеопотока приложениями.
 
 # Required:    no
 # Recommended: alsa-lib
 #              glu
 #              libjpeg-turbo
 # Optional:    doxygen
-#              qt6              (для сборки qv4l2 и qvidcap)
+#              qt6              (для сборки qv4l2 и qvidcap - тестовые утилыты для видеокамер)
 #              sdl2-compat
 #              llvm
 #              libbpf           (https://github.com/libbpf/libbpf)
-#              sdl_image        (https://github.com/libsdl-org/SDL_image)
+#              sdl-image        (https://github.com/libsdl-org/SDL_image)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,6 +39,8 @@ meson setup ..          \
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 for PROG in v4l2gl v4l2grab ; do
     cp -v "contrib/test/${PROG}" "${TMP_DIR}/usr/bin"

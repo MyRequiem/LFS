@@ -3,14 +3,14 @@
 PRGNAME="taglib"
 
 ### Taglib (audio meta-data library)
-# Библиотека для чтения и редактирования метаданных нескольких популярных
-# аудиоформатов. В настоящее время он поддерживает ID3v1 и ID3v2 для файлов
-# MP3, Ogg Vorbis, FLAC. Используется такими приложениями как Amarok и VLC.
+# Удобная аудиобиблиотека, предназначенная для чтения и редактирования
+# метаданных и тегов внутри музыкальных файлов. Поддерживает все популярные
+# форматы вроде MP3, FLAC и OGG. Используется такими приложениями как VLC.
 
 # Required:    cmake
 #              utfcpp
 # Recommended: no
-# Optional:    cppunit    (https://freedesktop.org/wiki/Software/cppunit/)
+# Optional:    cppunit    (для тестов) https://freedesktop.org/wiki/Software/cppunit/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,11 +29,14 @@ cmake                            \
     .. || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# для тестов требуется пакет cppunit
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

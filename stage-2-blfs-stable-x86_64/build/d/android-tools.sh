@@ -6,6 +6,7 @@ PRGNAME="android-tools"
 # Инструменты ADB и Fastboot от Android SDK
 
 # Required:    cmake
+#              python3-build
 #              protobuf
 #              fmt
 #              gtest

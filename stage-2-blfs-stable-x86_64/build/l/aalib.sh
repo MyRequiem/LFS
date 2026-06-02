@@ -5,12 +5,14 @@ VERSION="1.4rc5"
 DIR_VERSION="1.4.0"
 
 ### AAlib (ASCII Art library)
-# Библиотека, которая отображает любую графику в ASCII символах.
+# Необычная библиотека, которая умеет преобразовывать обычную графику и видео в
+# текстовые символы ASCII прямо на экране терминала. Позволяет смотреть
+# картинки даже без графической оболочки.
 
 # Required:    no
 # Recommended: no
-# Optional:    xorg-libraries   (runtime)
-#              xorg-fonts       (runtime)
+# Optional:    xorg-libraries    (runtime)
+#              xorg-fonts        (runtime)
 #              slang
 #              gpm
 
@@ -47,10 +49,10 @@ sed -e 's/8x13bold/-*-luxi mono-bold-r-normal--13-120-*-*-m-*-*-*/' \
 # позволяющих создавать этот пакет с Ncurses-6.5 или более поздней версии:
 sed 's/stdscr->_max\([xy]\) + 1/getmax\1(stdscr)/' -i src/aacurses.c || exit 1
 
-# для сборки пакета с GCC>=14, добавим несколько отсутствующих директив
+# для сборки пакета с GCC >=14, добавим несколько отсутствующих директив
 # #include и исправим некорректный оператор return, чтобы сделать код
-# совместимым с C99. Затем восстановим скрипт configure, чтобы код C был также
-# совместим с C99:
+# совместимым с C99. Затем восстановим скрипт configure (autoconf), чтобы код C
+# был также совместим с C99:
 sed -i '1i#include <stdlib.h>'                   \
     src/aa{fire,info,lib,linuxkbd,savefont,test,regist}.c || exit 1
 sed -i '1i#include <string.h>'                   \
@@ -72,8 +74,11 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

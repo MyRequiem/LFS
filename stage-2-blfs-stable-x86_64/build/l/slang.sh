@@ -3,11 +3,9 @@
 PRGNAME="slang"
 
 ### S-Lang (S-Lang interpreter)
-# Встраиваемый в программы интерпретируемый язык для обеспечения поддержки
-# мощных расширений. Содержит библиотеки для разработки сложного, независимого
-# от платформы программного кода, которые предоставляют возможности для
-# управления экранами, обработки нажатия клавиш и низкоуровневого терминального
-# ввода-вывода для интерактивных приложений.
+# Мощная библиотека для создания текстовых интерфейсов в консольных программах.
+# Предоставляет разработчикам удобные инструменты для управления экраном,
+# цветом и ввода данных с клавиатуры.
 
 # Required:    no
 # Recommended: no
@@ -34,19 +32,19 @@ mkdir -pv "${TMP_DIR}${DOCS}/slsh"
     --with-readline=gnu || exit 1
 
 # пакет не поддерживает сборку и установку в несколько потоков
-make -j1 RPATH=
+make -j1 RPATH= || exit 1
 # LC_ALL=C make check
 make -j1                        \
     install_doc_dir="${DOCS}"   \
     SLSH_DOC_DIR="${DOCS}/slsh" \
     RPATH=                      \
-    install DESTDIR="${TMP_DIR}"
+    install DESTDIR="${TMP_DIR}" || exit 1
 
-chmod -v 755 "${TMP_DIR}/usr/lib/libslang.so"*
-chmod -v 755 "${TMP_DIR}/usr/lib/slang/v2/modules"/*.so
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
