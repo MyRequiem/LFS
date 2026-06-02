@@ -145,9 +145,15 @@ class CheckSystemDeps:
                         if os.access(full_path, os.X_OK) and self.is_elf(full_path):
                             self.check_ldd(full_path)
             else:
-                print(f"{self.colors['lred']}Warning: {item} is not a valid file or directory.{colors['reset']}")
+                print(f"{self.colors['lred']}Warning: {item} is not a valid file or directory.{self.colors['reset']}")
 
         # calculate system integrity percentage
+        if self.total_checked == 0:
+            print(f"{self.colors['yellow']}No ELF binaries were scanned. Exiting.{self.colors['reset']}\n")
+            if os.path.exists(self.log_path):
+                os.remove(self.log_path)
+            return
+
         integrity = 100.0
         if self.total_checked > 0:
             if self.missing_deps_count > 0:
