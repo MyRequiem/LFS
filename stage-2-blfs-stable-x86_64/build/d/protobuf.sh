@@ -11,7 +11,7 @@ PRGNAME="protobuf"
 # Required:    abseil-cpp
 #              cmake
 # Recommended: no
-# Optional:    gtest        (для тестов)
+# Optional:    gtest        для тестов (https://github.com/google/googletest)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

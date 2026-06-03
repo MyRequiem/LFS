@@ -3,8 +3,10 @@
 PRGNAME="fmt"
 
 ### fmt (A modern formatting library)
-# Библиотека форматирования для C++. Можно использовать в качестве безопасной и
-# быстрой альтернативы C stdio, printf и C++ iostreams
+# Современная и невероятно быстрая библиотека для безопасного форматирования
+# текстовых строк и вывода данных в C++. Является удобной и надежной
+# альтернативой классическим инструментам старого стандарта (stdio, printf и
+# C++ iostreams).
 
 # Required:    cmake
 # Recommended: no
@@ -29,11 +31,19 @@ cmake                                \
     -G Ninja .. || exit 1
 
 ninja || exit 1
+
+# тесты
+# cmake -D FMT_TEST=ON .. &&
+# ninja                   &&
 # ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

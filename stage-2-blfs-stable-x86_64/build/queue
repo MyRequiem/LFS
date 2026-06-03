@@ -556,6 +556,9 @@ l/uchardet.sh
 l/gst-plugins-bad.sh
 ap/mpv.sh
 xap/vlc.sh
+# === android-tools ===
+l/fmt.sh
+d/android-tools.sh
 # === qemu, libvirt, virt-manager ===
 d/swig.sh
 d/dtc.sh
@@ -655,9 +658,6 @@ s/hstr.sh
 l/libx86emu.sh
 s/hwinfo.sh
 ap/lsscsi.sh
-d/gtest.sh
-l/fmt.sh
-d/android-tools.sh
 l/girara.sh
 ap/zathura.sh
 ap/deb2tgz.sh
