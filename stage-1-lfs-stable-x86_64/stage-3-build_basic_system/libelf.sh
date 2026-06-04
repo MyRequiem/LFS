@@ -31,8 +31,8 @@ install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig/"
 
 rm -f "${TMP_DIR}/usr/lib/libelf.a"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

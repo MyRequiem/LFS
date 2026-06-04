@@ -25,16 +25,16 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # установим библиотеку libattr.so командой 'install', иначе, если пакет уже
 # установлен, при копировании в корень системы выдаст ошибку:
 #    ./attr.sh: Ошибка сегментирования /bin/cp -vR "${TMP_DIR}"/* /
 install -vm755 "${TMP_DIR}/usr/lib/libattr".so* /usr/lib
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-source "${ROOT}/clean-locales.sh"  || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -45,13 +45,14 @@ mkdir -pv "${TMP_DIR}"
 # проблемы с безопасностью
 #    LDFLAGS.rpath=""
 make LDFLAGS.rpath="" || exit 1
-
 # пакет не содержит набора тестов
-
 make install DESTDIR="${TMP_DIR}"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PRG_VERSION}"

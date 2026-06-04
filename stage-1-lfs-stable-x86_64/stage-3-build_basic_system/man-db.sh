@@ -47,7 +47,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует
 MAN_DB_CONF="/etc/man_db.conf"
@@ -55,9 +55,9 @@ if [ -f "${MAN_DB_CONF}" ]; then
     mv "${MAN_DB_CONF}" "${MAN_DB_CONF}.old"
 fi
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-source "${ROOT}/clean-locales.sh"  || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 config_file_processing "${MAN_DB_CONF}"

@@ -34,7 +34,7 @@ make || make -j1 || exit 1
 
 make PREFIX="${TMP_DIR}/usr" install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # установим libbz2.so.* в /usr/lib
 cp -av libbz2.so.*   "${TMP_DIR}/usr/lib"
@@ -56,8 +56,9 @@ done
 # удалим бесполезную статическую библиотеку
 rm -fv "${TMP_DIR}/usr/lib/libbz2.a"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -40,7 +40,7 @@ make || make -j1 || exit 1
 # make test TESTOPTS="--timeout 120"
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 cat << EOF > "${TMP_DIR}/etc/pip.conf"
 [global]
@@ -50,8 +50,9 @@ root-user-action = ignore
 disable-pip-version-check = true
 EOF
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

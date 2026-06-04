@@ -63,7 +63,7 @@ sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.4|/usr/lib/itcl4.3.4|" \
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # сделаем установленную библиотеку доступной для записи, чтобы позже можно было
 # удалить отладочную информацию (debugging symbols)
@@ -80,8 +80,9 @@ ln -sfv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 # устанавливается с пакетом Perl
 mv -v "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 chmod 644 "/usr/lib/libtclstub${MAJ_VERSION}.a"
