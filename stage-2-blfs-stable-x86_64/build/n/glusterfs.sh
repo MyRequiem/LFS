@@ -3,14 +3,15 @@
 PRGNAME="glusterfs"
 
 ### GlusterFS (scalable network filesystem)
-# Распределённая, параллельная, линейно масштабируемая сетевая файловая система
-# для задач, требующих обработки больших объемов данных и широкой полосы
-# пропускания. GlusterFS работает в пользовательском пространстве при помощи
-# технологии FUSE, поэтому не требует поддержки со стороны ядра.
+# Мощная распределенная файловая система, которая позволяет объединить диски
+# разных серверов в одно общее виртуальное хранилище. Обеспечивает высокую
+# надежность и сохранность файлов при поломках оборудования. GlusterFS работает
+# в пользовательском пространстве при помощи технологии FUSE, поэтому не
+# требует поддержки со стороны ядра.
 
 # Required:    liburcu
 #              rpcsvc-proto
-#              gperftools    (https://github.com/gperftools/gperftools/)
+#              gperftools       (https://github.com/gperftools/gperftools/)
 # Recommended: no
 # Optional:    no
 
@@ -35,6 +36,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 (
     # переместим утилиты из /sbin в /usr/sbin
     cd "${TMP_DIR}" || exit 1
@@ -49,6 +52,7 @@ rm -rf "${TMP_DIR}/var/run"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

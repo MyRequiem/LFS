@@ -4,12 +4,14 @@ PRGNAME="fast-float"
 ARCH_NAME="fast_float"
 
 ### fast_float (header files for efficient string to float operations)
-# Набор C++ заголовочных файлов для более эффективных математических операций с
-# плавающей точкой.
+# Специализированный набор кода (заголовочных файлов) для моментальной
+# обработки и преобразования чисел с плавающей запятой из текста в компьютерный
+# формат. Это маленькая, но очень важная деталь для ускорения работы программ.
 
 # Required:    cmake
 # Recommended: no
-# Optional:    git    (для скачивания некоторых тестов)
+# Optional:    git          (для скачивания некоторых тестов)
+#              doctest      (https://github.com/doctest/doctest)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -27,18 +29,16 @@ cmake                            \
     -G Ninja                     \
     .. || exit 1
 
-### тесты (нужна сеть Internet):
-# cmake ..                 \
-#     -D FASTFLOAT_TEST=ON \
-#     -D CMAKE_POLICY_VERSION_MINIMUM=3.5 || exit 1
-#
-# ninja || exit 1
-# ninja test
+### тесты (нужна сеть Internet)
+# cmake .. -D FASTFLOAT_TEST=ON && ninja && ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

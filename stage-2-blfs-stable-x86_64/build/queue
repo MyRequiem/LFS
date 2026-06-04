@@ -562,13 +562,14 @@ d/android-tools.sh
 # === qemu, libvirt, virt-manager ===
 d/swig.sh
 d/dtc.sh
-
 d/fast-float.sh
+l/simdutf.sh
 l/vte3.sh
 l/libslirp.sh
 l/gperftools.sh
 d/rpcsvc-proto.sh
 n/glusterfs.sh
+
 s/pcsc-lite.sh
 l/libcacard.sh
 n/libiscsi.sh

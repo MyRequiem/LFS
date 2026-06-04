@@ -4,18 +4,23 @@ PRGNAME="vte3"
 ARCH_NAME="vte"
 
 ### VTE (terminal emulator widget for use with GTK+3)
-# Виджет эмулятора терминала для GTK приложений.
+# Программный компонент (виджет) для создания встроенных окон терминала внутри
+# обычных программ, основанных на графических библиотеках GTK+3 и GTK4. Именно
+# благодаря ему работают вкладки терминала в таких приложениях, как текстовые
+# редакторы или файловые менеджеры.
 
-# Required:    gtk+3
-#              libxml2
+# Required:    libxml2
 # Recommended: fast-float           (если не установлен, то будет скачан с Internet)
+#              fmt                  (если не установлен, то будет скачан с Internet)
 #              icu
 #              gnutls
 #              glib
+#              gtk+3
 #              gtk4
+#              simdutf              (если не установлен, то будет скачан с Internet)
 #              vala
 # Optional:    python3-gi-docgen
-#              git и make-ca        (для скачивания fast-float если не установлен)
+#              git и make-ca        (оба сразу, для скачивания fast-float, fmt и simdutf если не установлены)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -36,11 +41,10 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-# удалим 2 скрипта /etc/profile.d/vte.{csh,sh}, которые не используются в LFS
-(
-    cd "${TMP_DIR}" || exit 1
-    rm -rf "etc"
-)
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# удалим 2 скрипта в /etc/profile.d/, которые не используются в LFS
+rm -f "${TMP_DIR}/etc/profile.d"/vte.{csh,sh}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

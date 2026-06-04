@@ -3,10 +3,11 @@
 PRGNAME="rpcsvc-proto"
 
 ### rpcsvc-proto (rpcsvc protocol.x files and headers)
-# Пакет содержит файлы rpcsvc proto.x из glibc, которые отсутствуют в libtirpc.
-# Дополнительно он содержит rpcgen, который необходим для создания заголовочных
-# файлов и исходников из прото файлов. Этот пакет необходим только если glibc
-# компилировалась без устаревшего sunrpc
+# Набор заголовочных файлов для настройки удаленного вызова процедур в сети
+# (которые отсутствуют в пакете libtirpc). Они нужны для правильной сборки
+# старых сетевых служб и обмена данными между компьютерами. Дополнительно пакет
+# содержит rpcgen, который необходим для создания заголовочных файлов и
+# исходников из прото файлов.
 
 # Required:    no
 # Recommended: no
@@ -27,8 +28,11 @@ make || exit 1
 # пакет не содержит набота тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
