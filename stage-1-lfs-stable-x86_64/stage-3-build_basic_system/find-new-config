@@ -7,5 +7,5 @@
 # Helps the administrator decide whether to keep, merge, or remove redundant
 # config files.
 
-find /etc -type f -name "*.new"
-find /etc -type f -name "*.old"
+find /etc /usr/share -type f -name "*.new"
+find /etc /usr/share -type f -name "*.old"
