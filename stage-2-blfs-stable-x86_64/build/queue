@@ -331,6 +331,13 @@ ap/opus.sh
 l/libsndfile.sh
 l/libsamplerate.sh
 l/sbc.sh
+d/orc.sh
+# ==========================
+# удалить при следующем обновлении qt6/LFS - qt6 его зацепила как зависимость,
+# но сам пакет в системе не нужен
+# !!!
+s/pcsc-lite.sh
+# ==========================
 ap/pulseaudio.sh
 l/sdl3.sh
 l/sdl2-compat.sh
@@ -566,40 +573,29 @@ d/fast-float.sh
 l/simdutf.sh
 l/vte3.sh
 l/libslirp.sh
-l/gperftools.sh
-d/rpcsvc-proto.sh
-n/glusterfs.sh
-
-s/pcsc-lite.sh
-l/libcacard.sh
-n/libiscsi.sh
-s/numactl.sh
-d/snappy.sh
-d/spice-protocol.sh
+s/usbredir.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
-d/orc.sh
+d/spice-protocol.sh
 n/spice.sh
-s/usbredir.sh
-n/spice-gtk.sh
-n/vde2.sh
-l/virglrenderer.sh
-l/libnfs.sh (УДАЛИТЬ)
-s/gtk-vnc.sh
 s/qemu.sh
+n/libmnl.sh
+n/libnftnl.sh
+n/iptables.sh
+n/dnsmasq.sh
+l/libvirt.sh
+
+s/osinfo-db-tools.sh
+s/osinfo-db.sh
+l/libosinfo.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-s/osinfo-db-tools.sh
-s/osinfo-db.sh
-l/libosinfo.sh
-l/libpcap.sh
-n/iptables.sh
-n/dnsmasq.sh
-l/libvirt.sh
+n/spice-gtk.sh
+s/gtk-vnc.sh
 l/libvirt-glib.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>

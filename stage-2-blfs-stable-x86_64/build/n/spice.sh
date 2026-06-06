@@ -3,8 +3,9 @@
 PRGNAME="spice"
 
 ### Spice (remote computing solution)
-# Обеспечивает клиентский доступ к удаленным машинам и устройствам (клавиатура,
-# мышь, аудио и т.д.)
+# Программный комплекс для связи с виртуальными машинами, обеспечивающий
+# высокое качество передачи графики и звука. Он создает ощущение, что вы
+# работаете за реальным физическим компьютером.
 
 # Required:    glib
 #              spice-protocol       (https://www.spice-space.org)
@@ -14,10 +15,10 @@ PRGNAME="spice"
 #              python3-pyparsing
 # Recommended: no
 # Optional:    cyrus-sasl
-#              libcacard
 #              opus
 #              gstreamer
-#              orc                  (https://gstreamer.freedesktop.org/)
+#              orc                  (https://gstreamer.freedesktop.org/src/orc/)
+#              libcacard            (https://gitlab.freedesktop.org/spice/libcacard)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,17 +30,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D tests=false      \
-    .. || exit 1
+    -D tests=false || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

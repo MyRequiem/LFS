@@ -5,7 +5,8 @@ PRGNAME="virt-manager"
 ### virt-manager (a gtk interface for libvirt)
 # GTK интерфейс для libvirt
 
-# Required:    libvirt
+# Required:    gtk+3
+#              libvirt
 #              libvirt-glib
 #              python3-libvirt
 #              python3-installer
@@ -14,11 +15,11 @@ PRGNAME="virt-manager"
 #              python3-ipaddr
 #              python3-requests
 #              python3-build
-#              gtk+3
+#              python3-urlgrabber
 #              spice-gtk
 #              gtk-vnc
 #              tunctl
-# Recommended: no
+# Recommended: libosinfo
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -31,13 +32,14 @@ mkdir -pv "${TMP_DIR}/usr/share/"{icons/hicolor,glib-2.0/schemas}
 mkdir build
 cd build || exit 1
 
-meson setup ..           \
-    --prefix=/usr        \
-    --buildtype=release  \
-    --localstatedir=/var \
-    --sysconfdir=/etc    \
-    -D tests=disabled    \
-    -D default-hvs=qemu,lxc || exit 1
+meson setup ..              \
+    --prefix=/usr           \
+    --buildtype=release     \
+    --localstatedir=/var    \
+    --sysconfdir=/etc       \
+    -D tests=disabled       \
+    -D default-hvs=qemu,lxc \
+    -D compile-schemas=disabled || exit 1
 
 ninja || exit 1
 DESTDIR=${TMP_DIR} ninja install

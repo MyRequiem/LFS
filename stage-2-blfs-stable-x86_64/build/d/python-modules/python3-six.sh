@@ -4,12 +4,12 @@ PRGNAME="python3-six"
 ARCH_NAME="six"
 
 ### six (Python3 compatibility utilities)
-# Python библиотека совместимости Python2 и Python3. Обеспечивает функции
-# сглаживания различий между версиями Python с целью написания Python2/3 кода
+# Сервисный модуль для языка Python, который сглаживает различия между 2 и 3
+# версиями языка. Помогает запускать старые скрипты без их полной переработки.
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    python3-pytest
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

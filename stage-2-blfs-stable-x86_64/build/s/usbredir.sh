@@ -3,8 +3,9 @@
 PRGNAME="usbredir"
 
 ### usbredir (usb redirection protocol)
-# Протокол для перенаправления USB-трафика с одного USB-устройства на другую
-# (виртуальную) машину (не на ту, к которой подключено USB-устройство)
+# Протокол для передачи сигналов USB-устройств по компьютерной сети на
+# удаленный сервер. Он позволяет вставить флешку в свой ПК и открыть ее внутри
+# изолированной виртуальной машины.
 
 # Required:    libusb
 # Recommended: no
@@ -20,17 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup           \
-    --prefix=/usr     \
-    -D tests=disabled \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    -D tests=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

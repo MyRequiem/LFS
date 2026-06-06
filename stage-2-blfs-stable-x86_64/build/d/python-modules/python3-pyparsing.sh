@@ -4,15 +4,15 @@ PRGNAME="python3-pyparsing"
 ARCH_NAME="pyparsing"
 
 ### pyparsing (parsing module for python)
-# Альтернативный подход к созданию и выполнению простой грамматики (синтаксиса)
-# вместо традиционного подхода lex/yacc или использования обычных выражений.
-# Модуль pyparsing предоставляет библиотеку классов, которые клиент использует
-# для построения грамматики непосредственно в коде Python
+# Удобная Python библиотека, которая помогает программам разбирать сложный
+# текст, конфигурационные файлы и команды. Она превращает хаотичные строки
+# данных в понятную для кода структуру.
 
 # Required:    no
 # Recommended: no
 # optional:    --- для тестов ---
 #              python3-railroad-diagrams    (https://pypi.org/project/railroad-diagrams/)
+#              matplotlib                   (https://matplotlib.org/)
 #              python3-pytes
 
 ROOT="/root/src/lfs"
