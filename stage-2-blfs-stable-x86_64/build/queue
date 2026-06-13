@@ -604,6 +604,7 @@ d/python-modules/python3-ipaddr.sh
 d/python-modules/python3-zipp.sh
 d/python-modules/python3-importlib-metadata.sh
 d/python-modules/python3-build.sh
+l/gtksourceview4.sh
 s/virt-manager.sh
 # ===================================
 

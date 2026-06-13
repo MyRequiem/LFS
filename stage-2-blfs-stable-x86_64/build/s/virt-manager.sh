@@ -8,18 +8,19 @@ PRGNAME="virt-manager"
 # запускать гостевые операционные системы в средах виртуализации KVM и QEMU
 # через libvirt.
 
-# Required:    libxml2              (runtime, собранный с python-модулями)
-#              spice-gtk
+# Required:    spice-gtk
 #              libosinfo
 #              gtk-vnc
 #              libvirt-glib
 #              tunctl
+#              python3-lxml
 #              python3-libvirt
 #              python3-pygobject3
 #              python3-ipaddr
 #              python3-requests
 #              python3-build
 #              python3-urlgrabber
+#              gtksourceview4       (runtime)
 # Recommended: no
 # Optional:    no
 
@@ -29,6 +30,26 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/share/"{icons/hicolor,glib-2.0/schemas}
+
+# ==============================================================================
+# Описание патча libxml2-compat.patch (Бэкпорт из апстрима, Pull Request #927)
+#    xmlapi: rewrite the code to use lxml instead of libxml2
+# ==============================================================================
+# Патч устраняет несовместимость с libxml2 >= 2.15.x и готовит пакет к
+# libxml2-2.16
+#
+#    - вырезает использование устаревших Python-биндингов libxml2, что
+#       избавляет от AttributeError на методах keepBlanksDefault, parseDoc, ...
+#    - переводит внутренний движок парсинга (virtinst/xmlapi.py) на библиотеку
+#       lxml
+#    - сохраняет многопоточную безопасность при работе с libvirt-python API
+#
+# Требования (Runtime):
+#    - необходим установленный пакет python-lxml в системе
+# Преимущества:
+#    - позволяет собирать сам системный libxml2 с флагом -D python=disabled
+# ==============================================================================
+patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-libxml2-compat.patch" || exit 1
 
 mkdir build
 cd build || exit 1
