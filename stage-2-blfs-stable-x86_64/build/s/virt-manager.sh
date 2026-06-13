@@ -2,24 +2,25 @@
 
 PRGNAME="virt-manager"
 
-### virt-manager (a gtk interface for libvirt)
-# GTK интерфейс для libvirt
+### virt-manager (A GTK interface for libvirt)
+# Графическое приложение (GUI) для удобного управления виртуальными машинами,
+# сетями и хранилищами. Позволяет в один клик создавать, настраивать и
+# запускать гостевые операционные системы в средах виртуализации KVM и QEMU
+# через libvirt.
 
-# Required:    gtk+3
-#              libvirt
+# Required:    libxml2              (runtime, собранный с python-модулями)
+#              spice-gtk
+#              libosinfo
+#              gtk-vnc
 #              libvirt-glib
+#              tunctl
 #              python3-libvirt
-#              python3-installer
-#              python3-pyproject-hooks
 #              python3-pygobject3
 #              python3-ipaddr
 #              python3-requests
 #              python3-build
 #              python3-urlgrabber
-#              spice-gtk
-#              gtk-vnc
-#              tunctl
-# Recommended: libosinfo
+# Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -39,10 +40,12 @@ meson setup ..              \
     --sysconfdir=/etc       \
     -D tests=disabled       \
     -D default-hvs=qemu,lxc \
-    -D compile-schemas=disabled || exit 1
+    -D compile-schemas=false || exit 1
 
 ninja || exit 1
 DESTDIR=${TMP_DIR} ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -54,7 +57,7 @@ gtk-update-icon-cache -q -t /usr/share/icons/hicolor
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (a gtk interface for libvirt)
+# Package: ${PRGNAME} (A GTK interface for libvirt)
 #
 # The virt-manager application is a desktop user interface for managing virtual
 # machines through libvirt. It primarily targets KVM VMs, but also manages Xen,

@@ -4,7 +4,9 @@ PRGNAME="python3-zipp"
 ARCH_NAME="zipp"
 
 ### zipp (Zipfile object wrapper)
-# Оболочка для объекта Zipfile, совместимая с pathlib
+# Модуль, позволяющий программам работать с файлами внутри ZIP-архивов так,
+# будто это обычные папки на диске. В системе он необходим как обязательная
+# базовая зависимость для работы пакета python3-importlib-metadata.
 
 # Required:    python3-setuptools-scm
 # Recommended: no

@@ -3,11 +3,13 @@
 PRGNAME="python3-libvirt"
 ARCH_NAME="libvirt_python"
 
-### python3-libvirt (python bindings for libvirt)
-# Привязки Python3 для libvirt
+### python3-libvirt (Python bindings for libvirt)
+# Набор модулей, позволяющий Python-программам управлять виртуализацией через
+# libvirt. В системе необходим как связующее звено между графическим
+# интерфейсом virt-manager и системной службой управления виртуальными машинами
+# (libvirt).
 
-# Required:    libyajl
-#              libvirt
+# Required:    libvirt
 # Recommended: no
 # Optional:    no
 
@@ -51,7 +53,7 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (python bindings for libvirt)
+# Package: ${PRGNAME} (Python bindings for libvirt)
 #
 # This package provides a python binding to the libvirt.so, libvirt-qemu.so,
 # and libvirt-lxc.so library API's

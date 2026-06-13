@@ -3,15 +3,16 @@
 PRGNAME="osinfo-db-tools"
 
 ### osinfo-db-tools (operating systems database tools)
-# Инструменты для управления базой данных osinfo об операционных системах для
-# использования с виртуализацией
+# Набор утилит для управления информационной базой данных об операционных
+# системах. Эти инструменты помогают обновлять и проверять сведения,
+# необходимые для правильной настройки виртуальных машин.
 
 # Required:    glib
 #              json-glib
 #              libarchive
 #              libxml2
 #              libxslt
-#              libsoup2             (https://download.gnome.org/sources/libsoup/2.74/)
+#              libsoup2         (https://download.gnome.org/sources/libsoup/2.74/)
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
@@ -35,6 +36,8 @@ meson setup ..          \
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

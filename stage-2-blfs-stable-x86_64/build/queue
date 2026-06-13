@@ -586,31 +586,27 @@ n/libnftnl.sh
 n/iptables.sh
 n/dnsmasq.sh
 l/libvirt.sh
-
+n/spice-gtk.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
 l/libosinfo.sh
+s/gtk-vnc.sh
+l/libvirt-glib.sh
+n/tunctl.sh
 # python3 модули удаляем из системы перед обновлением
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
-n/spice-gtk.sh
-s/gtk-vnc.sh
-l/libvirt-glib.sh
-# python3 модули удаляем из системы перед обновлением
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-libvirt.sh
 d/python-modules/python3-installer.sh
 d/python-modules/python3-pyproject-hooks.sh
 d/python-modules/python3-ipaddr.sh
-d/python-modules/python3-typing-extensions.sh
 d/python-modules/python3-zipp.sh
 d/python-modules/python3-importlib-metadata.sh
-d/python-modules/python3-tomli.sh
 d/python-modules/python3-build.sh
-n/tunctl.sh
 s/virt-manager.sh
 # ===================================
+
 l/giblib.sh
 ap/scrot.sh
 d/glm.sh

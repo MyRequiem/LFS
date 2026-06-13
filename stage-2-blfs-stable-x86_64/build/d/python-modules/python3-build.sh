@@ -4,12 +4,14 @@ PRGNAME="python3-build"
 ARCH_NAME="build"
 
 ### Build (A simple, correct Python build frontend)
-# инструмент для сборки Python пакетов в соответствии с PEP517 спецификацией
+# Простой и стандартный инструмент (фронтенд) для сборки Python-пакетов из
+# исходного кода. Он автоматически превращает исходники программ в готовые к
+# установке архивы (wheel), избавляя систему от устаревшего вызова скриптов
+# setup.py.
 
-# Required:    python3-pyproject-hooks
-#              python3-installer
+# Required:    python3-installer
+#              python3-pyproject-hooks
 #              python3-importlib-metadata
-#              python3-tomli
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest

@@ -4,8 +4,10 @@ PRGNAME="python3-pyproject-hooks"
 ARCH_NAME="pyproject_hooks"
 
 ### pyproject_hooks (wrappers to call PEP 517 build backend hooks)
-# низкоуровневая библиотека для вызова бэкэндов сборки в проект на основе
-# pyproject.toml
+# Низкоуровневая библиотека, предоставляющая единый интерфейс (хуки) для вызова
+# сборочных бэкендов Python. Она стандартизирует и изолирует процесс сборки,
+# позволяя фронтендам вроде python3-build компилировать любые современные
+# пакеты.
 
 # Required:    no
 # Recommended: no

@@ -4,7 +4,9 @@ PRGNAME="python3-pycurl"
 ARCH_NAME="pycurl"
 
 ### pycurl (Python interface to cURL library)
-# Python интерфейс для libcurl
+# Библиотека, которая позволяет Python-программам отправлять сетевые запросы,
+# скачивать файлы и обмениваться данными с веб-сайтами. Она представляет собой
+# быструю Python-обертку над мощной системной утилитой cURL (libcurl).
 
 # Required:    curl
 # Recommended: no

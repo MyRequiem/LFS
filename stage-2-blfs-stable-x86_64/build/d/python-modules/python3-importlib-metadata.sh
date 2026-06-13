@@ -3,12 +3,14 @@
 PRGNAME="python3-importlib-metadata"
 ARCH_NAME="importlib_metadata"
 
-### importlib-metadata (Python library to access the metadata)
-# Библиотека для доступа к метаданным пакетов Python
+### importlib_metadata (Read metadata from Python packages)
+# Системная библиотека, которая позволяет программам читать метаданные (версии,
+# авторов, зависимости) установленных в систему Python-пакетов. Она необходима
+# для корректной работы пакетных менеджеров, утилит автоматизации, а также
+# пакета python3-build.
 
-# Required:    python3-typing-extensions
+# Required:    python3-setuptools-scm
 #              python3-zipp
-#              python3-setuptools-scm
 # Recommended: no
 # Optional:    no
 
@@ -52,7 +54,7 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (Python library to access the metadata)
+# Package: ${PRGNAME} (Read metadata from Python packages)
 #
 # Library to access the metadata for a Python package
 #
