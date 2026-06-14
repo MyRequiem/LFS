@@ -581,6 +581,12 @@ https://files.pythonhosted.org/packages/source/b/build/build-1.5.0.tar.gz
 https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz
 https://releases.pagure.org/virt-manager/virt-manager-5.1.0.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/virt-manager/virt-manager-libxml2-compat.patch
+https://github.com/c-ares/c-ares/releases/download/v1.34.6/c-ares-1.34.6.tar.gz
+https://nodejs.org/dist/v24.16.0/node-v24.16.0.tar.xz
+https://ftpmirror.gnu.org/cpio/cpio-2.15.tar.bz2
+https://github.com/openjdk/jdk25u/archive/refs/tags/jdk-25.0.2-ga.tar.gz
+https://download.java.net/java/GA/jdk25.0.2/b1e0dfa218384cb9959bdcb897162d4e/10/GPL/openjdk-25.0.2_linux-x64_bin.tar.gz
+
 
 
 https://sourceforge.net/projects/slackbuildsdirectlinks/files/giblib/giblib-1.2.4.tar.gz
@@ -591,14 +597,9 @@ https://github.com/naelstrof/maim/archive/v5.8.1/maim-5.8.1.tar.gz
 https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
 https://files.pythonhosted.org/packages/source/w/webencodings/webencodings-0.5.1.tar.gz
 https://github.com/mity/md4c/archive/release-0.5.2/md4c-release-0.5.2.tar.gz
-https://github.com/c-ares/c-ares/releases/download/v1.34.5/c-ares-1.34.5.tar.gz
-https://nodejs.org/dist/v22.18.0/node-v22.18.0.tar.xz
 https://github.com/flameshot-org/flameshot/archive/v13.3.0/flameshot-13.3.0.tar.gz
 https://ftp.gnu.org/gnu/time/time-1.9.tar.gz
 https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.2.1/unix-tree-2.2.1.tar.bz2
-https://ftp.gnu.org/gnu/cpio/cpio-2.15.tar.bz2
-https://github.com/openjdk/jdk/archive/refs/tags/jdk-26+23.tar.gz
-https://download.java.net/java/early_access/jdk26/23/GPL/openjdk-26-ea+23_linux-x64_bin.tar.gz
 https://kernel.org/pub/linux/utils/usb/usbutils/usbutils-018.tar.xz
 https://ftp.gnu.org/gnu/guile/guile-3.0.10.tar.xz
 https://github.com/lsof-org/lsof/releases/download/4.99.5/lsof-4.99.5.tar.gz

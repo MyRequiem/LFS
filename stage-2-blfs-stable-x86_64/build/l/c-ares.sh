@@ -3,7 +3,9 @@
 PRGNAME="c-ares"
 
 ### c-ares (C library for asynchronous DNS requests)
-# C-библиотека, которая выполняет асинхронные DNS-запросы и разрешает имена
+# Специализированная библиотека для выполнения асинхронных DNS-запросов в сеть
+# без остановки работы основной программы. Она помогает приложениям быстро
+# узнавать сетевые адреса сайтов.
 
 # Required:    cmake
 # Recommended: no
@@ -27,8 +29,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

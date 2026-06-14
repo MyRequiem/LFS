@@ -607,6 +607,10 @@ d/python-modules/python3-build.sh
 l/gtksourceview4.sh
 s/virt-manager.sh
 # ===================================
+l/c-ares.sh
+d/nodejs.sh
+a/cpio.sh
+d/openjdk.sh
 
 l/giblib.sh
 ap/scrot.sh
@@ -615,13 +619,9 @@ ap/slop.sh
 ap/maim.sh
 s/jq.sh
 l/md4c.sh
-l/c-ares.sh
-d/nodejs.sh
 xap/flameshot.sh
 a/time.sh
 a/tree.sh
-a/cpio.sh
-d/openjdk.sh
 a/usbutils.sh
 d/guile.sh
 ap/lsof.sh
