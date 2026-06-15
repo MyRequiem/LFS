@@ -4,10 +4,10 @@ PRGNAME="tree"
 ARCH_NAME="unix-tree"
 
 ### tree (a program to display a directory tree)
-# Рекурсивная программа для отображения дерева каталогов и файлов. Вывод
-# производится в терминал с отступами и раскраской "аля" dircolors, если
-# установлена переменная окружения LS_COLORS (устанавливается в
-# /etc/profile.d/dircolors.sh командой dircolors)
+# Удобная утилита командной строки, которая выводит структуру папок и файлов на
+# диске в виде наглядного графического дерева. Вывод производится в терминал с
+# отступами и раскраской "аля" dircolors, если установлена переменная окружения
+# LS_COLORS (устанавливается в /etc/profile.d/dircolors.sh командой dircolors).
 
 # Required:    no
 # Recommended: no
@@ -24,8 +24,11 @@ make || exit 1
 # пакет не содержит набора тестов
 make PREFIX="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man" install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

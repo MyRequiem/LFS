@@ -3,15 +3,15 @@
 PRGNAME="flameshot"
 
 ### Flameshot (screenshot software)
-# Мощное, но простое в использовании программное обеспечение для создания
-# скриншотов. Настраиваемый внешний вид, редактирование скриншотов, DBus
-# интерфейс.
+# Мощная и функциональная графическая программа для создания скриншотов с
+# возможностью мгновенного редактирования. Она позволяет рисовать стрелки,
+# размывать текст, добавлять надписи и др. прямо перед сохранением.
 
-# Required:    cmake
-#              md4c
+# Required:    md4c
 #              nodejs
 #              double-conversion
 #              qt6
+#              llvm
 #              librsvg
 #              libxkbcommon
 # Recommended: no
@@ -42,8 +42,11 @@ cmake                                       \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

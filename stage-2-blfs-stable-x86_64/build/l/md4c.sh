@@ -4,9 +4,11 @@ PRGNAME="md4c"
 ARCH_NAME="md4c-release"
 
 ### md4c (Markdown for C)
-# Парсер для Markdown на C, соответствующий спецификации CommonMark
+# Очень быстрый программный модуль для разбора и перевода текста из разметки
+# Markdown в формат HTML. Он ценится разработчиками за высокую скорость работы
+# и полное соответствие стандартам CommonMark.
 
-# Required:    no
+# Required:    cmake
 # Recommended: no
 # Optional:    no
 
@@ -20,17 +22,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

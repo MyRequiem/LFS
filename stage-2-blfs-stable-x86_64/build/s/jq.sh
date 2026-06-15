@@ -3,10 +3,10 @@
 PRGNAME="jq"
 
 ### jq (command-line JSON processor)
-# Легкий и гибкий процессор JSON для командной строки. jq похож на sed, только
-# для данных JSON. Можно использовать для нарезки, фильтрации, сопоставления и
-# преобразования структурированных данных так же легко, как это позволяют sed,
-# awk, grep и т.д.
+# Гибкий и очень легкий консольный инструмент для разбора, фильтрации и
+# преобразования данных в формате JSON. Он позволяет одной короткой командой
+# извлекать нужную информацию из сложных файлов. Его можно сравнить с sed, awk
+# и grep, но для JSON.
 
 # Required:    oniguruma    (https://github.com/kkos/oniguruma)
 # Recommended: no
@@ -28,10 +28,11 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-mv "${TMP_DIR}/usr/share/doc/"{"${PRGNAME}","${PRGNAME}-${VERSION}"}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

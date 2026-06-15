@@ -417,8 +417,6 @@ ap/alsa-tools.sh
 l/imlib2.sh
 # пересоберем w3m уже со всеми зависимостями
 n/w3m.sh
-l/libgsf.sh
-l/goffice.sh
 l/glibmm26.sh
 l/atkmm22.sh
 l/cairomm114.sh
@@ -611,9 +609,6 @@ l/c-ares.sh
 d/nodejs.sh
 a/cpio.sh
 d/openjdk.sh
-
-l/giblib.sh
-ap/scrot.sh
 d/glm.sh
 ap/slop.sh
 ap/maim.sh
@@ -623,11 +618,44 @@ xap/flameshot.sh
 a/time.sh
 a/tree.sh
 a/usbutils.sh
+###
+# ВНИМАНИЕ !!!
+# Если мы обновляем систему, то скорее всего make был собран с guile, cмотрим:
+# $ ldd /usr/bin/make
+#    ...
+#    libguile-3.0.so.1 => /usr/lib/libguile-3.0.so.1 (0x00007ff2ea955000)
+#    ...
+# Если это так, то перед обновлением guile его НЕ УДАЛЯТЬ ИЗ СИСТЕМЫ по
+# понятным причинам :))
+#
+# После сборки новой версии в /var/log/packages/ будет 2 лога пакетов старой и
+# новой версии. Удалим старые библиотеки и лог (от root):
+#    $ rm /var/log/packages/guile-<old_version>    - не перепутайте :)
+#    $ find-orphans
+#    /usr/include/guile/3.0/libguile/srfi-1.h
+#    /usr/lib/libguile-3.0.so.1.7.0
+#    /usr/share/gdb/auto-load/usr/lib/libguile-3.0.so.1.7.0-gdb.scm
+#    /usr/share/guile/3.0/srfi/srfi-64/testing.scm
+# Вот эти 4 файла выше и удаляем из системы, они остались от старой версии
+# guile и больше не принадлежат ни одному из пакетов.
+#
+# Проверяем:
+#    $ ls -l /usr/lib/libguile*
+#    /usr/lib/libguile-3.0.so -> libguile-3.0.so.1.7.1*
+#    /usr/lib/libguile-3.0.so.1 -> libguile-3.0.so.1.7.1*
+#    /usr/lib/libguile-3.0.so.1.7.1*
+#    $ find-orphans
+#
+# Проверим, как там поживает make:
+#    $ ldd /usr/bin/make
+#    ...
+#    libguile-3.0.so.1 => /usr/lib/libguile-3.0.so.1 (0x00007f06664a0000)
+#    ...
+#
+#    Все Ok :)
 d/guile.sh
 ap/lsof.sh
-ap/ghostscript.sh
-l/libspectre.sh
-ap/potrace.sh
+
 l/icon-naming-utils.sh
 n/exim.sh
 ap/at.sh
@@ -639,22 +667,16 @@ l/libmypaint.sh
 l/mypaint-brushes.sh
 l/appstream-glib.sh
 xap/gimp.sh
-l/djvulibre.sh
-l/libgxps.sh
 xap/imagemagick.sh
 s/inxi.sh
 n/traceroute.sh
 d/apache-ant.sh
-l/id3lib.sh (УДАЛИТЬ)
 l/libao.sh
 ap/pwgen.sh
 s/hstr.sh
 l/libx86emu.sh
 s/hwinfo.sh
 ap/lsscsi.sh
-l/girara.sh
-ap/zathura.sh
-ap/deb2tgz.sh
 ap/rpm.sh
 xap/openoffice.sh
 s/conky.sh

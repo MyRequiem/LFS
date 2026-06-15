@@ -3,7 +3,9 @@
 PRGNAME="maim"
 
 ### maim (make image)
-# Утилита для создания скриншотов
+# Современная утилита командной строки для создания качественных снимков
+# экрана, призванная заменить старый софт (например, scrot). Она умеет точно
+# захватывать регионы экрана, выделенные с помощью утилиты slop.
 
 # Required:    cmake
 #              glm
@@ -35,8 +37,11 @@ cmake ..                                \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
