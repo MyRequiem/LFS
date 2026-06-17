@@ -477,9 +477,6 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/c
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/clipmenu/clearclipmenu
 https://feh.finalrewind.org/feh-3.12.1.tar.bz2
 https://git.zx2c4.com/password-store/snapshot/password-store-1.7.4.tar.xz
-https://dist.schmorp.de/libev/libev-4.33.tar.gz
-https://fossies.org/linux/www/old/yajl-2.1.0.tar.gz
-https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/libyajl/libyajl-2.1.0-patches.tar.xz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/common-sense-3.75.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Canary-Stability-2013.tar.gz
 https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/Types-Serialiser-1.01.tar.gz
@@ -493,7 +490,9 @@ https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz
 https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.34.tar.gz
 https://www.cpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.098.tar.gz
 https://www.cpan.org/authors/id/J/JT/JTT/File-FcntlLock-0.22.tar.gz
-https://www.cpan.org/authors/id/G/GR/GRANTM/XML-Simple-2.25.tar.gz
+https://dist.schmorp.de/libev/libev-4.33.tar.gz
+https://fossies.org/linux/www/old/yajl-2.1.0.tar.gz
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/libyajl/libyajl-2.1.0-patches.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/cxxopts/cxxopts-3.3.1.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/pamixer/pamixer-1.6.tar.gz
 https://download.gnome.org/sources/json-glib/1.10/json-glib-1.10.8.tar.xz
@@ -597,7 +596,6 @@ https://ftpmirror.gnu.org/guile/guile-3.0.11.tar.xz
 https://github.com/lsof-org/lsof/releases/download/4.99.6/lsof-4.99.6.tar.gz
 
 
-https://tango.freedesktop.org/releases/icon-naming-utils-0.8.90.tar.bz2
 https://downloads.exim.org/exim4/old/exim-4.98.2.tar.xz
 https://anduin.linuxfromscratch.org/BLFS/at/at_3.2.5.orig.tar.gz
 https://www.gnupg.org/ftp/gcrypt/gpgmepp/gpgmepp-2.0.0.tar.xz

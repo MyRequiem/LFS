@@ -252,7 +252,6 @@ hwinfo
 hwloc                                   htop
 i3                                      bumblebee-status
 ibus                                    sdl3, qt6
-icon-naming-utils
 icu                                     libpsl, libxml2, boost, harfbuzz, qt5-components, qt6, vte3, nodejs, libical
 imagemagick                             gnupg, feh, openbox
 imake                                   xxkb
@@ -661,8 +660,6 @@ perl-test-needs                         perl-uri
 perl-test-warnings                      perl-uri
 perl-types-serialiser                   perl-json-xs
 perl-uri                                perl-io-socket-ssl
-perl-xml-sax                            perl-xml-simple
-perl-xml-simple                         icon-naming-utils
 pgp                                     imagemagick
 phodav                                  spice-gtk
 php                                     libsoup2, libsoup3, cups

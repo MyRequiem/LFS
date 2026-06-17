@@ -488,7 +488,6 @@ d/perl-modules/perl-mime-base32.sh
 d/perl-modules/perl-uri.sh
 d/perl-modules/perl-io-socket-ssl.sh
 d/perl-modules/perl-file-fcntllock.sh
-d/perl-modules/perl-xml-simple.sh
 l/libev.sh
 l/libyajl.sh
 l/cxxopts.sh
@@ -656,7 +655,6 @@ a/usbutils.sh
 d/guile.sh
 ap/lsof.sh
 
-l/icon-naming-utils.sh
 n/exim.sh
 ap/at.sh
 l/gpgmepp.sh
