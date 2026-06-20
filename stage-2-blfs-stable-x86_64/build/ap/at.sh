@@ -3,9 +3,10 @@
 PRGNAME="at"
 
 ### at (delayed command execution)
-# Обеспечивает пакетное чтение команд оболочки из стандартного ввода или файла,
-# сохраняя их как задание, которое будет запланировано для отложенного
-# выполнения. Пакет требуется для соответствия LSB (Linux Standards Base)
+# Системная служба, которая позволяет пользователю запланировать однократный
+# запуск любой команды на конкретное время в будущем. Она удобна для
+# автоматизации отложенных задач. Пакет требуется для соответствия LSB (Linux
+# Standards Base).
 
 # Required:    MTA (dovecot или exim или postfix или sendmail)
 # Recommended: no
@@ -39,7 +40,6 @@ mkdir -pv "${TMP_DIR}"{/etc/pam.d,"${DOCS}"}
 
 # перед сборкой пакета должны существовать группа и пользователь atd, который
 # будет запускать демон atd
-
 ! grep -qE "^atd:" /etc/group  && \
     groupadd -g 17 atd
 
@@ -61,6 +61,8 @@ mkdir -pv "${TMP_DIR}"{/etc/pam.d,"${DOCS}"}
 make -j1 || exit 1
 # make test
 make install docdir="${DOCS}" atdocdir="${DOCS}" DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # скрипт /etc/init.d/atd для запуска демона atd при старте системы
 (
@@ -88,6 +90,7 @@ EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${AT_ALLOW}"

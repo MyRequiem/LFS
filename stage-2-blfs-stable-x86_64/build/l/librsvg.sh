@@ -60,9 +60,10 @@ EOF
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
+meson setup                  \
+    --prefix=/usr            \
+    --buildtype=release      \
+    -D pixbuf-loader=enabled \
     .. || exit 1
 
 ninja || exit 1

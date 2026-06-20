@@ -35,16 +35,16 @@ cd build || exit 1
 # Выключаем glycin (он нахрен не нужен, принудительно изолирует процессы через
 # bwrap и падает на LFS). Возвращаем стандартные нативные загрузчики
 # изображений напрямую в процесс GTK:
-meson setup ..              \
-    --prefix=/usr           \
-    --buildtype=release     \
-    -D png=enabled          \
-    -D gif=enabled          \
-    -D jpeg=enabled         \
-    -D tiff=enabled         \
-    -D thumbnailer=disabled \
-    --wrap-mode=nofallback  \
-    -D glycin=disabled || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D png=enabled      \
+    -D gif=enabled      \
+    -D jpeg=enabled     \
+    -D tiff=enabled     \
+    -D glycin=disabled  \
+    -D man=false        \
+    -D gtk_doc=false || exit 1
 
 ninja || exit 1
 # ninja test

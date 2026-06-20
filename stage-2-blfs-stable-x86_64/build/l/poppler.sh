@@ -3,9 +3,9 @@
 PRGNAME="poppler"
 
 ### Poppler (a library for rendering PDF documents)
-# Библиотека, основанная на программе просмотра PDF-файлов xpdf, которая не
-# предоставляет общую библиотеку. Осуществляет рендеринг PDF и предоставляет
-# инструменты командной строки для работы с PDF файлами
+# Популярная библиотека для качественного рендеринга и просмотра документов в
+# формате PDF. На ее основе построена работа большинства современных программ
+# для чтения электронных книг в Linux.
 
 # Required:    cmake
 #              fontconfig
@@ -82,6 +82,8 @@ find -L . \
 
 make \
     prefix=/usr install DESTDIR="${TMP_DIR}" || exit 1
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

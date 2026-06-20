@@ -3,19 +3,21 @@
 PRGNAME="appstream-glib"
 
 ### appstream-glib (library for reading and writing AppStream metadata)
-# библиотека, предоставляющая Gobjects и вспомогательные утилиты, для
-# облегчения чтения и записи метаданных
+# Набор инструментов для работы с метаданными AppStream, которые описывают
+# установленные в системе приложения. Он используется графическими магазинами
+# софта для показа скриншотов и описаний.
 
 # Required:    curl
 #              gdk-pixbuf
 #              gtk+3
+#              json-glib
 #              libarchive
+#              libyaml
 # Recommended: no
 # Optional:    docbook-xml
 #              docbook-xsl
 #              gtk-doc
 #              libxslt
-#              libyaml
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -35,6 +37,8 @@ meson setup ..          \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -281,7 +281,6 @@ l/cairo.sh
 s/bubblewrap.sh
 l/libtiff.sh
 l/lcms2.sh
-l/glycin.sh
 l/gdk-pixbuf.sh
 # ======= mesa =======
 x/libs/libva.sh
@@ -654,7 +653,6 @@ a/usbutils.sh
 #    Все Ok :)
 d/guile.sh
 ap/lsof.sh
-
 n/exim.sh
 ap/at.sh
 l/gpgmepp.sh
@@ -663,8 +661,8 @@ l/babl.sh
 l/gegl.sh
 l/libmypaint.sh
 l/mypaint-brushes.sh
-l/appstream-glib.sh
 xap/gimp.sh
+
 xap/imagemagick.sh
 s/inxi.sh
 n/traceroute.sh
@@ -676,6 +674,7 @@ l/libx86emu.sh
 s/hwinfo.sh
 ap/lsscsi.sh
 ap/rpm.sh
+l/libxcrypt-compat.sh
 xap/openoffice.sh
 s/conky.sh
 ###
