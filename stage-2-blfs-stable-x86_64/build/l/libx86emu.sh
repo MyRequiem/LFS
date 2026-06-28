@@ -3,7 +3,10 @@
 PRGNAME="libx86emu"
 
 ### libx86emu (x86 emulation library)
-# Библиотека x86 эмуляции
+# Специализированная библиотека для точной эмуляции инструкций процессоров x86
+# в изолированной программной среде. Она используется системными утилитами для
+# безопасного тестирования кода видеокарт и BIOS без риска для реального
+# железа.
 
 # Required:    no
 # Recommended: no
@@ -26,8 +29,11 @@ echo "${VERSION}" > VERSION
 make LIBDIR=/usr/lib                              || exit 1
 make LIBDIR=/usr/lib install DESTDIR="${TMP_DIR}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

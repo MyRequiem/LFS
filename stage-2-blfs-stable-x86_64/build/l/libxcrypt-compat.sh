@@ -9,12 +9,6 @@ ARCH_NAME="libxcrypt"
 # как SHA-512, bcrypt или Argon2) для защиты учетных записей от
 # несанкционированного доступа.
 
-
-
-https://github.com/besser82/libxcrypt/releases/download/v4.5.2/libxcrypt-4.5.2.tar.xz
-
-
-
 # Required:    no
 # Recommended: no
 # Optional:    no
@@ -73,7 +67,7 @@ make || exit 1
 install -v -m755 .libs/libcrypt.so.1.1.0 "${TMP_DIR}/usr/lib/"
 ln -s libcrypt.so.1.1.0 "${TMP_DIR}/usr/lib/libcrypt.so.1"
 
-source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/stripping.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

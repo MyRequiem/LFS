@@ -11,7 +11,7 @@ BUILD_ID="9816"
 # Бесплатный кроссплатформенный офисный пакет с открытым исходным кодом,
 # включающий текстовый процессор, редактор электронных таблиц, программу для
 # создания презентаций, векторный редактор, систему управления базами данных и
-# редактор формул
+# редактор формул.
 
 # Required:    libxcrypt-compat    (runtime)
 #              --- для сборки ---
@@ -21,7 +21,7 @@ BUILD_ID="9816"
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -110,16 +110,7 @@ sed -i "s:Categories:#Categories:" usr/share/applications/*.desktop
 
 # удалим бесполезную документацию
 rm -rf "opt/${PRGNAME}${MAJVER}"/{readmes,share/readme}
-
-### Вот такой костыль :)
-# при запуске OpenOffice хочет libcrypt.so.1, у нас в системе libcrypt.so.2
-#    libcrypt.so.2 -> libcrypt.so.2.0.0 (пакет libxcrypt)
-# пришлось взять со Slackware-15.0
-#    /usr/lib/libcrypt.so.1 -> libcrypt-2.33.so
-mkdir -p "${TMP_DIR}/usr/lib"
-cp "${SOURCES}/libcrypt-2.33.so" "${TMP_DIR}/usr/lib/"
-ln -s libcrypt-2.33.so "${TMP_DIR}/usr/lib/libcrypt.so.1"
-chmod 755 "${TMP_DIR}/usr/lib/libcrypt-2.33.so"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # fix permissions
 find "${TMP_DIR}" '(' -name "*.so" -o -name "*.so.*" ')' -exec chmod +x {} \+
@@ -127,6 +118,7 @@ chmod -R u+rw,go+r-w,a-s .
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

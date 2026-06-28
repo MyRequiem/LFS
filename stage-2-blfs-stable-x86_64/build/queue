@@ -662,12 +662,9 @@ l/gegl.sh
 l/libmypaint.sh
 l/mypaint-brushes.sh
 xap/gimp.sh
-
 xap/imagemagick.sh
 s/inxi.sh
 n/traceroute.sh
-d/apache-ant.sh
-l/libao.sh
 ap/pwgen.sh
 s/hstr.sh
 l/libx86emu.sh
@@ -681,6 +678,7 @@ s/conky.sh
 # =================================== LXQt =====================================
 ###
 # ======= Misc Dependencies =======
+
 l/libexif.sh
 l/libportal.sh
 l/libical.sh

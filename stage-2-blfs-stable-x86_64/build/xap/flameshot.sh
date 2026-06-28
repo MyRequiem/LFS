@@ -14,7 +14,13 @@ PRGNAME="flameshot"
 #              llvm
 #              librsvg
 #              libxkbcommon
-# Recommended: no
+# Recommended: xdg-desktop-portal    - если не установлен, то после сборки
+#                                       запускаем flameshot: Settings ->
+#                                       General -> "Use legacy X11 screenshot
+#                                       method" или в
+#                                       ~/.config/flameshot/flameshot.ini
+#                                       добавляем параметр:
+#                                       useX11LegacyScreenshot=true
 # Optional:    git
 #              openssh
 #              p11-kit

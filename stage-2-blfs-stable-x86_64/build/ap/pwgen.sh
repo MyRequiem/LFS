@@ -3,7 +3,9 @@
 PRGNAME="pwgen"
 
 ### pwgen (semi-random password generator)
-# Утилита для генерации "псевдослучайных" паролей
+# Удобная консольная утилита, которая за долю секунды генерирует случайные, но
+# при этом легко читаемые человеком безопасные пароли. Она помогает быстро
+# создавать надежную защиту для учетных записей.
 
 # Required:    no
 # Recommended: no
@@ -25,8 +27,11 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

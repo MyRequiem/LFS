@@ -587,7 +587,7 @@ https://github.com/naelstrof/slop/archive/v7.7/slop-7.7.tar.gz
 https://github.com/naelstrof/maim/archive/v5.8.2/maim-5.8.2.tar.gz
 https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-1.8.1.tar.gz
 https://github.com/mity/md4c/archive/release-0.5.3/md4c-release-0.5.3.tar.gz
-https://github.com/flameshot-org/flameshot/archive/v13.3.0/flameshot-13.3.0.tar.gz
+https://github.com/flameshot-org/flameshot/archive/v14.0.0/flameshot-14.0.0.tar.gz
 https://ftpmirror.gnu.org/time/time-1.10.tar.gz
 https://gitlab.com/OldManProgrammer/unix-tree/-/archive/2.3.2/unix-tree-2.3.2.tar.bz2
 https://kernel.org/pub/linux/utils/usb/usbutils/usbutils-019.tar.xz
@@ -603,28 +603,26 @@ https://download.gimp.org/pub/gegl/0.4/gegl-0.4.70.tar.xz
 https://github.com/mypaint/libmypaint/releases/download/v1.6.1/libmypaint-1.6.1.tar.xz
 https://github.com/mypaint/mypaint-brushes/releases/download/v2.0.2/mypaint-brushes-2.0.2.tar.xz
 https://download.gimp.org/gimp/v3.0/gimp-3.2.4.tar.xz
-
-
-https://www.imagemagick.org/archive/releases/ImageMagick-7.1.2-8.tar.xz
+https://www.imagemagick.org/archive/releases/ImageMagick-7.1.2-13.tar.xz
 https://github.com/smxi/inxi/archive/3.3.31-2/inxi-3.3.31-2.tar.gz
 https://downloads.sourceforge.net/traceroute/traceroute-2.1.6.tar.gz
-https://archive.apache.org/dist/ant/source/apache-ant-1.10.15-src.tar.xz
-https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
 https://downloads.sourceforge.net/pwgen/pwgen-2.08.tar.gz
-https://github.com/dvorka/hstr/archive/3.1/hstr-3.1.0.tar.gz
+https://github.com/dvorka-oss/hstr/archive/refs/tags/v3.2/hstr-3.2.tar.gz
 https://github.com/wfeldt/libx86emu/archive/3.7/libx86emu-3.7.tar.gz
-https://github.com/openSUSE/hwinfo/archive/25.0/hwinfo-25.0.tar.gz
+https://github.com/openSUSE/hwinfo/archive/25.4/hwinfo-25.4.tar.gz
 https://sg.danny.cz/scsi/lsscsi-0.32.tgz
 http://ftp.rpm.org/releases/rpm-4.20.x/rpm-4.20.1.tar.bz2
+https://github.com/besser82/libxcrypt/releases/download/v4.5.2/libxcrypt-4.5.2.tar.xz
 # ===== openoffice =====
 https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.16/binaries/ru/Apache_OpenOffice_4.1.16_Linux_x86-64_install-rpm_ru.tar.gz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.directory
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openoffice/submenus/openoffice.menu
 # ======================
-https://github.com/brndnmtthws/conky/archive/v1.22.2/conky-1.22.2.tar.gz
+https://github.com/brndnmtthws/conky/archive/v1.24.2/conky-1.24.2.tar.gz
 https://slackbuilds.org/slackbuilds/15.0/system/conky/conky.1.gz
 # =================================== LXQt =====================================
 # ======= Misc Dependencies =======
+
 https://github.com/libexif/libexif/releases/download/v0.6.25/libexif-0.6.25.tar.bz2
 https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/12.4/libportal-0.9.1-qt6.9_fixes-1.patch
