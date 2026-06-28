@@ -3,10 +3,10 @@
 PRGNAME="xdg-desktop-portal"
 
 ### xdg-desktop-portal (XDG portal frontend service)
-# Служба на основе D-Bus, которая позволяет изолированным приложениям (таким
-# как Flatpak и Snap) безопасно взаимодействовать с настольной средой и
-# получать доступ к её функциям, например, к диалогу выбора файлов, скриншотам
-# обмену экраном и т.д.
+# Системная служба на основе D-Bus, которая создает безопасные шлюзы для
+# взаимодействия изолированных программ с основным рабочим столом. Она
+# запрашивает у пользователя явное разрешение на запись экрана или открытие
+# файлов.
 
 # Required:    fuse3
 #              gdk-pixbuf
@@ -15,6 +15,7 @@ PRGNAME="xdg-desktop-portal"
 #              --- runtime ---
 #              dbus
 #              xdg-desktop-portal-gtk           (runtime для GNOME)
+#              xdg-desktop-portal-wlr           (runtime для Wayland)
 #              xdg-desktop-portal-gnome         (runtime для GNOME)
 #              xdg-desktop-portal-lxqt          (runtime для LXQt)
 # Recommended: bubblewrap
@@ -49,11 +50,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
+    -D systemd=disabled \
+    -D geoclue=disabled \
     -D tests=disabled   \
-    .. || exit 1
+    -D documentation=disabled || exit 1
 
 ninja || exit 1
 
@@ -63,9 +66,10 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим файлы systemd, которые в нашей System V системе бесполезны
+# удалим файлы systemd (если все равно собрались с флагом -D systemd=disabled),
+# которые в нашей System V системе бесполезны
 rm -rf "${TMP_DIR}/usr/lib/systemd"
 
 source "${ROOT}/stripping.sh"      || exit 1

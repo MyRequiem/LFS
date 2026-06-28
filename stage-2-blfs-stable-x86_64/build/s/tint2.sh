@@ -3,8 +3,10 @@
 PRGNAME="tint2"
 
 ### tint2 (panel/taskbar for modern X window managers)
-# Легкая, минималистичная панель задач для современных оконных менеджеров X, но
-# специально созданная для Openbox3
+# Простая, но очень гибкая в настройке панель задач для рабочего стола,
+# созданная специально для легких оконных менеджеров, например, Openbox. Она
+# выводит список запущенных программ, системный трей, часы, индикатор батареи и
+# т.д.
 
 # Required:    cmake
 #              imlib2
@@ -21,11 +23,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# решим проблему с libm.so (glibc) и ошибкой "DSO missing" на стадии линковки
+# Решим проблему с libm.so (glibc) и ошибкой "DSO missing" на стадии линковки
 #    LDFLAGS="-lm"
-# обеспечим совместимость со свежим CMake 4.x.x
+# Обеспечим совместимость со свежим CMake 4.x.x
 #    CMAKE_POLICY_VERSION_MINIMUM=3.5
-# не нужно мусорить в логе/выводе предупреждениями для разработчиков :)
+# Не нужно мусорить в логе/выводе предупреждениями для разработчиков :)
 #    -W no-dev
 LDFLAGS="-lm" \
 cmake                                   \
@@ -39,7 +41,7 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

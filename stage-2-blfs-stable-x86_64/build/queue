@@ -678,11 +678,8 @@ s/conky.sh
 # =================================== LXQt =====================================
 ###
 # ======= Misc Dependencies =======
-
 l/libexif.sh
 l/libportal.sh
-l/libical.sh
-n/bluez.sh
 l/pipewire.sh
 l/wireplumber.sh
 l/xdg-desktop-portal.sh
@@ -691,9 +688,7 @@ l/xdg-desktop-portal.sh
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh
 s/tint2.sh
-l/log4cplus.sh
 l/libstatgrab.sh
-s/gtk-doc.sh
 kde/l/polkit-qt.sh
 # ======= KF6, Plasma =======
 kde/s/plasma-wayland-protocols.sh
@@ -706,6 +701,7 @@ lxqt/KF6_plasma/libkscreen.sh
 lxqt/KF6_plasma/layer-shell-qt.sh
 l/muparser.sh
 # ======= LXQt Desktop Components =======
+
 lxqt/desktop/lxqt-build-tools.sh
 lxqt/desktop/libdbusmenu-lxqt.sh
 lxqt/desktop/libqtxdg.sh
@@ -714,7 +710,8 @@ lxqt/desktop/liblxqt.sh
 lxqt/desktop/libsysstat.sh
 lxqt/desktop/qtxdg-tools.sh
 lxqt/desktop/libfm-extra.sh
-lxqt/desktop/menu-cache.sh
+lxqt/desktop/menu-cache.sh    [СОБРАТЬ БЕЗ gtk-doc И ВЫПИЛИТЬ ЕГО]
+s/gtk-doc.sh
 lxqt/desktop/libfm-qt.sh
 lxqt/desktop/lxqt-globalkeys.sh
 lxqt/desktop/lxqt-qtplugin.sh

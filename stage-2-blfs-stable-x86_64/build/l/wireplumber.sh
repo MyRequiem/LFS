@@ -3,7 +3,9 @@
 PRGNAME="wireplumber"
 
 ### Wireplumber (session/policy manager for Pipewire)
-# менеджер сессий для Pipewire
+# Мощный диспетчер сессий для звукового сервера PipeWire, который берет на себя
+# автоматическое управление аудиоустройствами. Он решает, куда именно
+# направлять звук при подключении наушников или колонок.
 
 # Required:    elogind
 #              glib
@@ -13,7 +15,7 @@ PRGNAME="wireplumber"
 #              python3-lxml
 #              python3-sphinx
 #              python3-sphinx-rtd-theme
-#              breathe              (https://pypi.org/project/breathe/)
+#              breathe                      (https://pypi.org/project/breathe/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,47 +27,47 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D system-lua=true  \
-    .. || exit 1
+    -D system-lua=true || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 PIPEWIRE_LAUNCHER="/usr/bin/pipewire-launcher.sh"
 cat << EOF > "${TMP_DIR}${PIPEWIRE_LAUNCHER}"
 #!/bin/sh
 # Begin ${PIPEWIRE_LAUNCHER}
 
-# First, kill any previous instances of pipewire, wireplumber, or pipewire-pulse
-# that are running. Multiple instances of the daemon can not be run at the same
-# time, and this helps prevent possible errors if a user logs out or logs in
-# too fast, and restores audio if Pipewire hangs and needs to be reset.
+# First, kill any previous instances of pipewire, wireplumber, or
+# pipewire-pulse that are running. Multiple instances of the daemon can not be
+# run at the same time, and this helps prevent possible errors if a user logs
+# out or logs in too fast, and restores audio if Pipewire hangs and needs to be
+# reset.
 
-pkill -u \${USER} -fx /usr/bin/pipewire-pulse
-pkill -u \${USER} -fx /usr/bin/wireplumber
-pkill -u \${USER} -fx /usr/bin/pipewire
+pkill -u ${USER} -fx /usr/bin/pipewire-pulse
+pkill -u ${USER} -fx /usr/bin/wireplumber
+pkill -u ${USER} -fx /usr/bin/pipewire
 
 # Start Pipewire first.
-exec /usr/bin/pipewire &
+/usr/bin/pipewire &
 
-# Next, we need to wait until pipewire is up before starting wireplumber.
-# This prevents a possible race condition where pipewire takes too long
-# to start, as some users have run into.
-while [ \$(pgrep -f /usr/bin/pipewire) = "" ]; do
-   sleep 1
+# Next, we need to wait until pipewire is up before starting wireplumber. This
+# prevents a possible race condition where pipewire takes too long to start, as
+# some users have run into.
+while [ -z "\$(pgrep -f /usr/bin/pipewire)" ]; do
+   sleep 0.5
 done
 
 # Start Wireplumber now that Pipewire has been started.
-exec /usr/bin/wireplumber &
+/usr/bin/wireplumber &
 
 # Start the Pulseaudio server included with Pipewire.
-exec /usr/bin/pipewire-pulse &
+/usr/bin/pipewire-pulse &
 
 # End ${PIPEWIRE_LAUNCHER}
 EOF
@@ -81,6 +83,7 @@ Comment=Starts the Pipewire and Wireplumber daemons
 Exec=${PIPEWIRE_LAUNCHER}
 Terminal=false
 Type=Application
+Hidden=true
 EOF
 
 source "${ROOT}/stripping.sh"      || exit 1

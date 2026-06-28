@@ -4,11 +4,15 @@ PRGNAME="python3-pyxdg"
 ARCH_NAME="pyxdg"
 
 ### python-pyxdg (Python library to access freedesktop.org standards)
-# Python библиотека для доступа к стандартам freedesktop.org
+# Модуль для языка Python, который помогает программам строго следовать
+# стандартам консорциума freedesktop.org. Он отвечает за поиск правильных путей
+# к конфигурациям, иконкам и меню.
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              shared-mime-info
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -16,6 +20,10 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим сборку с Python 3.14
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-python3_14-fixes-1.patch" || exit 1
 
 pip3 wheel               \
     -w dist              \

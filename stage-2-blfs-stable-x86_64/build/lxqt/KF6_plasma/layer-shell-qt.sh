@@ -3,8 +3,9 @@
 PRGNAME="layer-shell-qt"
 
 ### layer-shell-qt (easily use clients based on a "wlr-layer-shell" protocol)
-# Компонент позволяющий приложениям легко использовать клиентов на основе
-# протокола wlr-layer-shell
+# Специальный компонент, который позволяет программам на Qt правильно
+# закреплять свои элементы интерфейса на экране в среде Wayland. Он нужен для
+# вывода панелей задач, уведомлений и фонов стола.
 
 # Required:    extra-cmake-modules
 #              qt6
@@ -26,20 +27,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

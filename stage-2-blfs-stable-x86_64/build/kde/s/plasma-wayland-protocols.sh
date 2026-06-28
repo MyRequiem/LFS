@@ -3,7 +3,8 @@
 PRGNAME="plasma-wayland-protocols"
 
 ### Plasma-wayland-protocols (Plasma protocols for Wayland)
-# Набор определений протоколов для KDE
+# Набор технических правил и протоколов для организации плавного взаимодействия
+# графических компонентов среды KDE Plasma в современном видеорежиме Wayland.
 
 # Required:    extra-cmake-modules
 # Recommended: no
@@ -19,9 +20,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+cmake .. \
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 

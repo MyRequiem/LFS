@@ -3,20 +3,19 @@
 PRGNAME="openbox"
 
 ### openbox (highly configurable desktop window manager)
-# Настраиваемый оконный менеджер рабочего стола с обширной поддержкой
-# стандартов. Это позволяет контролировать практически каждый аспект того, как
-# мы взаимодействуем со своим рабочим столом.
+# Легковесный, высокоскоростной и крайне минималистичный оконный менеджер для
+# графической системы X11. Он не содержит лишних элементов декора и идеально
+# подходит для сборки быстрых рабочих окружений.
 
 # Required:    Graphical Environments
-#              pango                    (скомпилирован с libxft, т.е. после xorg-libraries)
+#              pango                        (скомпилирован с libxft, т.е. после xorg-libraries)
 # Recommended: no
-# Optional:    dbus                     (runtime)
-#              imlib2                   (для поддержки иконок в меню по ПКМ)
-#              imagemagick              (для отображения фона рабочего стола при запуске, см. Конфигурация ниже)
+# Optional:    dbus                         (runtime)
+#              imlib2                       (для поддержки иконок в меню по ПКМ)
+#              imagemagick или feh          (runtime, для отображения фона рабочего стола при запуске)
 #              python3-pyxdg
 #              startup-notification
 #              librsvg
-#              lxqt-panel               (runtime)
 
 ###
 # Запуск Openbox командой startx
@@ -44,19 +43,19 @@ PRGNAME="openbox"
 #
 #    $ cp -rf /etc/xdg/openbox ~/.config/
 #
-# чтобы установить значок в меню по ПКМ
+# Чтобы установить значок в меню по ПКМ
 #    ~/.config/openbox/menu.xml
-#    добавим значок в тег <item>:
-#       <item label="Mplayer" icon="/usr/share/pixmaps/mplayer.png">
+#    Добавим значок в тег <item>, например, для Gimp:
+#       <item label="Gimp" icon="/usr/share/icons/hicolor/16x16/apps/gimp.png">
 #
-# многие другие аспекты поведения openbox настраиваются с помощью
+# Многие другие аспекты поведения openbox настраиваются с помощью
 #    ~/.config/openbox/rc.xml
-# например, какие сочетания клавиш используются для запуска программ или какая
+# Например, какие сочетания клавиш используются для запуска программ или какая
 # кнопка мыши запускает главное меню.
 #
-# тема и ее детали, которую Openbox применяет к окнам, настраивается в
+# Тема и ее детали, которую Openbox применяет к окнам, настраивается в
 #    ~/.config/openbox/rc.xml
-# получить список доступных тем можно командой:
+# Получить список доступных тем можно командой:
 #    $ ls -d /usr/share/themes/*/openbox-3 | sed 's#.*es/##;s#/o.*##'
 
 ROOT="/root/src/lfs"
@@ -66,10 +65,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# включим поддержку Python3
+# Включим поддержку Python3
 patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-${VERSION}-py3-1.patch" || exit 1
 
-autoreconf -fi        &&
+autoreconf -fi || exit 1
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
@@ -77,13 +76,13 @@ autoreconf -fi        &&
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# этот пакет создает три файла .desktop в /usr/share/xsessions/
-# Два из них не подходят для BLFS, поэтому удалим их
+# Этот пакет создает три файла .desktop в /usr/share/xsessions/
+# Два из них не подходят для BLFS, поэтому удалим их:
 rm -v "${TMP_DIR}/usr/share/xsessions/openbox"-{gnome,kde}.desktop
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -98,8 +97,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # standards support. It allows you to control almost every aspect of how you
 # interact with your desktop
 #
-# Home page: http://${PRGNAME}.org/
-# Download:  http://${PRGNAME}.org/dist/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://${PRGNAME}.org/
+# Download:  https://${PRGNAME}.org/dist/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
