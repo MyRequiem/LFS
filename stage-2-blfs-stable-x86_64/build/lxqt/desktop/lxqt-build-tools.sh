@@ -3,8 +3,9 @@
 PRGNAME="lxqt-build-tools"
 
 ### lxqt-build-tools (tools needed to build LXQt itself)
-# Несколько инструментов, необходимых для сборки LXQt, а также другие
-# компоненты, поддерживаемые проектом LXQt
+# Комплект служебных скриптов и макросов, необходимых разработчикам для
+# правильной сборки всех компонентов графического рабочего окружения LXQt из
+# исходного кода.
 
 # Required:    cmake
 #              qt6
@@ -21,19 +22,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

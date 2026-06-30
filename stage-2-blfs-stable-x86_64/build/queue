@@ -701,7 +701,6 @@ lxqt/KF6_plasma/libkscreen.sh
 lxqt/KF6_plasma/layer-shell-qt.sh
 l/muparser.sh
 # ======= LXQt Desktop Components =======
-
 lxqt/desktop/lxqt-build-tools.sh
 lxqt/desktop/libdbusmenu-lxqt.sh
 lxqt/desktop/libqtxdg.sh
@@ -710,8 +709,7 @@ lxqt/desktop/liblxqt.sh
 lxqt/desktop/libsysstat.sh
 lxqt/desktop/qtxdg-tools.sh
 lxqt/desktop/libfm-extra.sh
-lxqt/desktop/menu-cache.sh    [СОБРАТЬ БЕЗ gtk-doc И ВЫПИЛИТЬ ЕГО]
-s/gtk-doc.sh
+lxqt/desktop/menu-cache.sh
 lxqt/desktop/libfm-qt.sh
 lxqt/desktop/lxqt-globalkeys.sh
 lxqt/desktop/lxqt-qtplugin.sh
@@ -730,6 +728,7 @@ lxqt/desktop/lxqt-session.sh
 lxqt/desktop/xdg-desktop-portal-lxqt.sh
 lxqt/desktop/obconf-qt.sh
 # ======= LXQt Applications =======
+
 lxqt/apps/lximage-qt.sh
 lxqt/apps/lxqt-notificationd.sh
 lxqt/apps/pavucontrol-qt.sh

@@ -3,7 +3,9 @@
 PRGNAME="lxqt-panel"
 
 ### lxqt-panel (lightweight X11 desktop panel)
-# Легковесная панель рабочего стола X11
+# Главная рабочая панель графической оболочки LXQt, на которой располагаются
+# основные элементы интерфейса. Она отвечает за вывод меню приложений, списка
+# запущенных окон, часов и системного трея с виджетами.
 
 # Required:    layer-shell-qt       или plasma
 #              libdbusmenu-lxqt
@@ -20,7 +22,7 @@ PRGNAME="lxqt-panel"
 # Optional:    no
 
 # Конфиг:
-#    /usr/share/lxqt/panel.conf
+#    /etc/xdg/lxqt/panel.conf
 #    ~/.config/lxqt/panel.conf
 
 ROOT="/root/src/lfs"
@@ -33,19 +35,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -4,8 +4,9 @@ PRGNAME="libfm-extra"
 ARCH_NAME="libfm"
 
 ### libfm-extra (library required by the menu-cache-gen program)
-# Библиотека, необходимая для программы menu-cache-gen, установливаемая с
-# пакетом 'menu-cache'
+# Дополнительный программный модуль, расширяющий возможности базовой библиотеки
+# файлового менеджера. Он содержит специфические функции для интеграции
+# сторонних утилит в меню системы.
 
 # Required:    glib
 # Recommended: no
@@ -33,10 +34,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

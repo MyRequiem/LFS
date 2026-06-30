@@ -3,7 +3,9 @@
 PRGNAME="lxqt-session"
 
 ### lxqt-session (default session manager for LXQt)
-# Менеджер сеансов (session manager) для LXQt по умолчанию
+# Ключевой диспетчер сеанса, который полностью управляет процессом запуска и
+# завершения работы графической среды LXQt. Он по очереди загружает все
+# необходимые службы, панели и восстанавливает окна предыдущего рабочего стола.
 
 # Required:    liblxqt
 #              qtxdg-tools
@@ -46,19 +48,19 @@ sed -e '/TryExec/s|=|=/usr/bin/|' -i xsession/lxqt.desktop.in || exit 1
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

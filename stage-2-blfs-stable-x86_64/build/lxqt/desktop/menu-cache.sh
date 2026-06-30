@@ -3,11 +3,11 @@
 PRGNAME="menu-cache"
 
 ### menu-cache (creating and utilizing caches application menus)
-# Библиотека для создания и использования кеша для ускорения манипуляций с меню
-# приложений, определенных freedesktop.org
+# Специальный системный демон, который кэширует структуру меню приложений для
+# ускорения его работы. Он избавляет систему от необходимости заново читать все
+# ярлыки при каждом открытии меню.
 
-# Required:    gtk-doc
-#              libfm-extra
+# Required:    libfm-extra
 # Recommended: no
 # Optional:    xdg-utils
 
@@ -18,19 +18,62 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-sh autogen.sh     &&
+###
+# Жестко требует наличие пакета gtk-doc (утилиту gtkdocize, m4-макросы и т.д.),
+# поэтому соберем gtk-doc в дереве исходников menu-cache без установки в
+# систему, а потом ХАКНЕМ сам menu-cache.
+###
+
+tar xvf "${SOURCES}/gtk-doc"*.tar.?z* || exit 1
+cd gtk-doc-* || exit 1
+
+mkdir -p build
+cd build || exit 1
+
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D tests=false || exit 1
+
+ninja || exit 1
+
+# переходим в корень исходников menu-cache
+cd ../../ || exit 1
+
+cp gtk-doc-*/build/buildsystems/autotools/gtkdocize . || exit 1
+
+mkdir -p fake/aclocal
+mkdir -p fake/gtk-doc/data
+
+cp gtk-doc-*/build/buildsystems/autotools/gtk-doc.m4 fake/aclocal/  || exit 1
+cp gtk-doc-*/buildsystems/autotools/gtk-doc.make fake/gtk-doc/data/ || exit 1
+
+rm -rf gtk-doc-*
+
+# ХАК: Переписываем внутренние переменные путей внутри скрипта gtkdocize.
+# Заставим его считать, что системный префикс - это наша локальная директория
+# fake
+sed -e "s|^prefix=.*|prefix=\"$(pwd)/fake\"|g"   \
+    -e "s|^datadir=.*|datadir=\"$(pwd)/fake\"|g" \
+    -i gtkdocize || exit 1
+
+PATH=".:${PATH}"              \
+ACLOCAL_PATH="./fake/aclocal" \
+sh autogen.sh || exit 1
+
 ./configure       \
     --prefix=/usr \
     --disable-static || exit 1
 
-make || exit 1
-# пакет не имеет набора тестов
-make install DESTDIR="${TMP_DIR}"
+SDIRS="libmenu-cache menu-cache-gen menu-cache-daemon"
+make SUBDIRS="${SDIRS}" || exit 1
+make SUBDIRS="${SDIRS}" install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

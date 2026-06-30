@@ -3,7 +3,9 @@
 PRGNAME="obconf-qt"
 
 ### obconf-qt (Qt-based configuration tool for Openbox)
-# Инструмент настройки Openbox на основе Qt
+# Графическая утилита для тонкой настройки внешнего вида и поведения оконного
+# менеджера Openbox, переписанная на Qt. Она позволяет менять темы оформления
+# рамок окон, настраивать шрифты, заголовки и правила размещения окон.
 
 # Required:    hicolor-icon-theme
 #              lxqt-build-tools
@@ -22,19 +24,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # это последний пакет из раздела LXQt Desktop Components, поэтому обновим
