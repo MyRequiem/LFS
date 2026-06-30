@@ -3,7 +3,9 @@
 PRGNAME="startup-notification"
 
 ### startup-notification ("busy" cursors support)
-# Библиотеки для уведомлений о запуске приложений с помощью курсора
+# Небольшой, но полезный механизм, который информирует пользователя о том, что
+# программа начала запускаться. Именно он заставляет курсор превращаться в
+# песочные часы или «прыгать», пока приложение грузится.
 
 # Required:    xorg-libraries
 #              xcb-util
@@ -25,8 +27,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

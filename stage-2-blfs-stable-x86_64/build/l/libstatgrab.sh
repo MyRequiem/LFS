@@ -3,9 +3,9 @@
 PRGNAME="libstatgrab"
 
 ### libstatgrab (access to statistics about the system on which it's run)
-# Библиотека, обеспечивающая кроссплатформенный доступ к статистике о системе:
-# использование ЦП, памяти, сетевой трафик, дисковое пространство, дисковый
-# ввод-вывод и многое другое.
+# Удобная системная библиотека, предоставляющая программистам единый интерфейс
+# для сбора статистики о работе компьютера. Она умеет быстро считывать
+# показатели процессора, памяти, дисков, сети.
 
 # Required:    no
 # Recommended: no
@@ -18,19 +18,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
+./configure             \
+    --prefix=/usr       \
+    --disable-static    \
+    --without-log4cplus \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

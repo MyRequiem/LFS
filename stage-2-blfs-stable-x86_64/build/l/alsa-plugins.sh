@@ -3,7 +3,10 @@
 PRGNAME="alsa-plugins"
 
 ### alsa-plugins (Advanced Linux Sound Architecture Plugins)
-# Плагины для различных аудио библиотек и звуковых серверов
+# Набор дополнений (плагинов), которые расширяют возможности стандартной
+# звуковой системы ALSA. Они позволяют программно изменять звук, смешивать
+# потоки от разных приложений и выводить аудио через современные звуковые
+# серверы.
 
 # Required:    alsa-lib
 # Recommended: no
@@ -11,9 +14,8 @@ PRGNAME="alsa-plugins"
 #              libsamplerate
 #              pulseaudio
 #              speex
-#              jack    (https://jackaudio.org/)
-#              libavtp (https://github.com/AVnu/libavtp/)
-#              maemo   (https://maemo.org/)
+#              jack             (https://jackaudio.org/)
+#              libavtp          (https://github.com/AVnu/libavtp/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -30,8 +32,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

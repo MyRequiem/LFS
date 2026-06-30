@@ -3,11 +3,13 @@
 PRGNAME="python3-libvirt"
 ARCH_NAME="libvirt_python"
 
-### python3-libvirt (python bindings for libvirt)
-# Привязки Python3 для libvirt
+### python3-libvirt (Python bindings for libvirt)
+# Набор модулей, позволяющий Python-программам управлять виртуализацией через
+# libvirt. В системе необходим как связующее звено между графическим
+# интерфейсом virt-manager и системной службой управления виртуальными машинами
+# (libvirt).
 
-# Required:    libyajl
-#              libvirt
+# Required:    libvirt
 # Recommended: no
 # Optional:    no
 
@@ -32,6 +34,8 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -39,17 +43,17 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (python bindings for libvirt)
+# Package: ${PRGNAME} (Python bindings for libvirt)
 #
 # This package provides a python binding to the libvirt.so, libvirt-qemu.so,
 # and libvirt-lxc.so library API's

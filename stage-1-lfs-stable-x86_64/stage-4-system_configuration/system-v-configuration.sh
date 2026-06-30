@@ -225,17 +225,18 @@ EOF
 # каталоги /tmp/.ICE-unix и /tmp/.X11-unix Это можно сделать, создав запись в
 # скрипте конфигурации /etc/sysconfig/createfiles. Этот файл уже установлен с
 # пакетом lfs-bootscripts и его синтаксис описан в нем.
-
 CREATEFILES="/etc/sysconfig/createfiles"
-# удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
-sed -i '$ d' "${CREATEFILES}"
-# допишем в конец файла
-cat << EOF >> "${CREATEFILES}"
+if ! grep -q ICE-unix "${CREATEFILES}"; then
+    # удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
+    sed -i '$ d' "${CREATEFILES}"
+    # допишем в конец файла
+    cat << EOF >> "${CREATEFILES}"
 /tmp/.ICE-unix    dir    1777    root    root
 /tmp/.X11-unix    dir    1777    root    root
 
 # End ${CREATEFILES}
 EOF
+fi
 
 if [ -f "${RC_LOCAL}" ]; then
     mv "${RC_LOCAL}" "${RC_LOCAL}.old"

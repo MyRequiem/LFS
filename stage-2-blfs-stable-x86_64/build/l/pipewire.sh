@@ -2,9 +2,10 @@
 
 PRGNAME="pipewire"
 
-### Pipewire (multimedia processing)
-# API сервера и пользовательского пространства для обработки мультимедиа и
-# подключения к мультимедийным устройствам.
+### PipeWire (multimedia processing)
+# Современный мультимедийный сервер нового поколения для управления потоками
+# аудио и видео с минимальной задержкой. Он призван объединить и заменить собой
+# старые звуковые системы PulseAudio и JACK.
 
 # Required:    no
 # Recommended: bluez
@@ -25,7 +26,7 @@ PRGNAME="pipewire"
 #              libsndfile
 #              libusb
 #              opus
-#              sdl2
+#              sdl2-compat
 #              valgrind
 #              vulkan-loader
 #              xorg-libraries
@@ -59,10 +60,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

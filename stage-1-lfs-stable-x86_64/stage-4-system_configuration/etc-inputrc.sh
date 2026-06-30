@@ -55,6 +55,13 @@ set enable-bracketed-paste off
 "\\C-n": history-search-forward
 "\\C-h": backward-delete-char
 
+# Map Cyrillic Alt+key sequences to readline functions.
+# Required because multi-byte UTF-8 Cyrillic characters break the default
+# Esc+key handling in non-English layouts, causing cursor displacement.
+"\\eа": forward-word
+"\\eи": backward-word
+"\\eв": kill-word
+
 # End ${INPUTRC}
 EOF
 

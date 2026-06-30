@@ -1,46 +1,60 @@
 #! /bin/bash
 
 PRGNAME="vim"
+CTAGS_ARCH_NAME="universal-ctags"
 
 ### Vim (Vi IMproved)
-# Powerful text editor
+# Легендарный текстовый редактор, ориентированный на максимально быструю работу
+# с кодом и текстом. Обладает огромным количеством функций и позволяет
+# выполнять сложные правки парой нажатий клавиш.
 
 # Required:    no
 # Recommended: Graphical Environments
 #              gtk+3
 # Optional:    curl или wget            (для некоторых тестов)
 #              gpm
+#              libcanberra
 #              lua
 #              ruby
 #              rsync
+#              libsodium                (https://libsodium.gitbook.io/doc/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-9.*")"
+if [ -n "${INSTALLED}" ]; then
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
+fi
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc"
-mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
+mkdir -pv "${TMP_DIR}/"{etc,usr/share/doc}
 
 # ctags когда-то входил в состав редактора Vim, добавим сами:
-CTAGSVER="$(find "${SOURCES}" -type f -name "ctags-*.tar.?z" | rev | \
-    cut -d . -f 3- | cut -d - -f 1 | rev )"
+CTAGSVER="$(find "${SOURCES}" -type f -name "${CTAGS_ARCH_NAME}-*.tar.?z" \
+    | rev | cut -d . -f 3- | cut -d - -f 1 | rev )"
 
 if [ -z "${CTAGSVER}" ]; then
     echo "Error:"
-    echo "ctags source arhive not found in ${SOURCES}"
+    echo "${CTAGS_ARCH_NAME} source arhive not found in ${SOURCES}"
     exit 1
 fi
 
-tar xvf "${SOURCES}/ctags-${CTAGSVER}".tar.?z || exit 1
-cd "ctags-${CTAGSVER}" || exit 1
+tar xvf "${SOURCES}/${CTAGS_ARCH_NAME}-${CTAGSVER}".tar.?z || exit 1
+cd "${CTAGS_ARCH_NAME}-${CTAGSVER}" || exit 1
 
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 if [ ! -r configure ]; then
     if [ -x ./autogen.sh ]; then
@@ -59,7 +73,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}" || exit 1
 
 cd .. || exit 1
-rm -rf "ctags-${CTAGSVER}"
+rm -rf "${CTAGS_ARCH_NAME}-${CTAGSVER}"
 
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
@@ -156,6 +170,7 @@ EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,9 +3,10 @@
 PRGNAME="brotli"
 
 ### brotli (general-purpose lossless compression algorithm)
-# Универсальный алгоритм сжатия данных. Метод сжатия brotli основан на
-# современном варианте алгоритма LZ77, энтропийном кодировании Хаффмана и
-# моделировании контекста 2-го порядка.
+# Современный алгоритм сжатия данных, который делает файлы намного меньше без
+# потери качества, чтобы они быстрее передавались по сети. Он эффективнее
+# старого формата GZIP, поэтому веб-страницы с ним загружаются быстрее, а
+# мобильный трафик расходуется экономнее.
 
 # Required:    cmake
 # Recommended: no
@@ -24,25 +25,36 @@ cd build || exit 1
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -G Ninja .. || exit 1
 
-make || exit 1
-# make test
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # сразу устанавливаем пакет в систему для сборки Python3 bindings
-make install
-make install DESTDIR="${TMP_DIR}"
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 cd .. || exit 1
 
 # Python3 bindings
-# не позволяем скрипту setup.py заново собирать весь пакет, вместо этого
-# используем уже установленные библиотеки
-sed "/c\/.*\.[ch]'/d;\
-     /include_dirs=\[/\
-     i libraries=['brotlicommon','brotlidec','brotlienc']," \
+# разрешить создание привязки Python3 с USE_SYSTEM_BROTLI=1, но без
+# установленного модуля pkgconfig Python 3
+sed -e '/libraries +=/s/=.*/= [required_system_library[3:]]/' \
+    -e '/package_configuration/d'                             \
+    -e '/pkgconfig/d'                                         \
     -i setup.py || exit 1
 
+# удалим Python3 модули, если уже установлены
+PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+rm -rf "/usr/lib/python${PYTHON_MAJ_VER}/site-packages/__pycache__/brotli"*
+rm -rf "/usr/lib/python${PYTHON_MAJ_VER}/site-packages/"/{,_}brotli*
+
+USE_SYSTEM_BROTLI=1      \
 pip3 wheel               \
     -w dist              \
     --no-build-isolation \
@@ -57,8 +69,11 @@ pip3 install            \
     --no-user           \
     Brotli || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

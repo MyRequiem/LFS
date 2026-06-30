@@ -3,11 +3,10 @@
 PRGNAME="cairo"
 
 ### Cairo (graphics library used by GTK+)
-# Библиотека для отрисовки векторной графики с открытым исходным кодом.
-# Включает в себя аппаратно-независимый прикладной программный интерфейс для
-# разработчиков программного обеспечения. Cairo предоставляет графические
-# примитивы для отрисовки двумерных изображений посредством разнообразных
-# бекендов. Когда есть возможность, Cairo использует аппаратное ускорение.
+# Специальный «движок» для векторного рисования, который позволяет программам
+# создавать качественную 2D-графику (линии, текст, фигуры). Делает картинку
+# четкой и красивой на любом устройстве: хоть на экране монитора, хоть при
+# печати на бумаге или сохранении в PDF.
 
 # Required:    libpng
 #              pixman
@@ -22,8 +21,8 @@ PRGNAME="cairo"
 #              lzo
 #              poppler
 #              valgrind
-#              gtk+2       (https://download.gnome.org/sources/gtk+/2.24/)
-#              libspectre  (https://www.freedesktop.org/wiki/Software/libspectre/)
+#              gtk+2            (https://download.gnome.org/sources/gtk+/2.24/)
+#              libspectre       (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -44,8 +43,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

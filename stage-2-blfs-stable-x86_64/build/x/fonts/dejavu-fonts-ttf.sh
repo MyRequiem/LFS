@@ -3,7 +3,9 @@
 PRGNAME="dejavu-fonts-ttf"
 
 ### dejavu-fonts-ttf (DejaVu fonts)
-# Семейство шрифтов, основанное на шрифтах Bitstream Vera
+# Универсальное семейство шрифтов, которое славится своей огромной базой
+# символов. Оно корректно отображает почти любые редкие знаки и языки, сохраняя
+# при этом приятный внешний вид.
 
 # Required:    xcursor-themes
 #              xorg-applications
@@ -24,10 +26,7 @@ cp ttf/*.ttf "${TMP_DIR}${INSTALL_DIR}"
 cd fontconfig || exit 1
 for CONF in *; do
     cp "${CONF}" "${TMP_DIR}/etc/fonts/conf.avail/"
-    (
-        cd "${TMP_DIR}/etc/fonts/conf.d/" || exit 1
-        ln -sf "../conf.avail/${CONF}" "${CONF}"
-    )
+    ln -s "../conf.avail/${CONF}" "${TMP_DIR}/etc/fonts/conf.d/${CONF}"
 done
 
 chown root:root "${TMP_DIR}/etc/fonts/conf.avail"/*

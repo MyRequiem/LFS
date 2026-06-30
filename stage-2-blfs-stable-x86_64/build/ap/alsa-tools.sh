@@ -3,13 +3,15 @@
 PRGNAME="alsa-tools"
 
 ### alsa-tools (advanced tools for various soundcards)
-# Специальные инструменты для различных звуковых карт
+# Набор узкоспециализированных утилит для глубокой настройки профессиональных
+# аудиокарт. Они позволяют управлять сложными функциями звукового железа,
+# которые недоступны обычным микшерам.
 
 # Required:    alsa-lib
-# Recommended: no
-# Optional:    gtk+3    (для сборки hdajackretask)
-#              fltk     (для сборки hdspconf и hdspmixer)
-#              gtk+2    (https://download.gnome.org/sources/gtk+/2.24/) для сборки echomixer, envy24control и rmedigicontrol
+# Recommended: gtk+3        (для сборки hdajackretask)
+#              gtk4         (для сборки envy24control)
+#              fltk         (для сборки hdspconf и hdspmixer)
+# Optional:    gtk+2        (для сборки echomixer и rmedigicontrol) https://download.gnome.org/sources/gtk+/2.24/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,7 +22,7 @@ mkdir -pv "${TMP_DIR}"
 
 # удалим некоторые инструменты, которым нужен Qt2 или Qt3 или GTK+2, а также
 # два ненужных файла
-rm -rf qlo10k1 echomixer envy24control rmedigicontrol Makefile gitcompile
+rm -rf qlo10k1 echomixer rmedigicontrol Makefile gitcompile
 
 for TOOL in * ; do
     TOOL_DIR="${TOOL}"
@@ -30,37 +32,33 @@ for TOOL in * ; do
 
     ./configure \
         --prefix=/usr || {
-            echo "Error configure ${TOOL} !!!"
+            echo "Error configure ${TOOL}"
             exit 1
         }
 
     make || {
-        echo "Error make ${TOOL} !!!"
-        exit 1
-    }
-
-    # сразу уставливаем в систему
-    make install || {
-        echo "Error install tool ${TOOL} !!!"
+        echo "Error make ${TOOL}"
         exit 1
     }
 
     make install DESTDIR="${TMP_DIR}" || {
-        echo "Error install tool ${TOOL} !!!"
+        echo "Error install tool ${TOOL}"
         exit 1
     }
 
-    /sbin/ldconfig
+    source "${ROOT}/stripping.sh"      || exit 1
+    source "${ROOT}/update-info-db.sh" || exit 1
+    source "${ROOT}/clean-locales.sh"  || exit 1
+    /bin/cp -vpR "${TMP_DIR}"/* /
+
+    # обновляем кэш динамического загрузчика
+    ldconfig
 
     popd || exit 1
 done
 unset TOOL TOOL_DIR
 
-chmod 644 "${TMP_DIR}/etc/hotplug/usb/tascam_fw.usermap"
-
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vpR "${TMP_DIR}"/* /
+chmod 644 /etc/hotplug/usb/tascam_fw.usermap
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (advanced tools for various soundcards)

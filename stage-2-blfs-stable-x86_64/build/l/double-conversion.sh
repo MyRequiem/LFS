@@ -3,8 +3,10 @@
 PRGNAME="double-conversion"
 
 ### Double-conversion (Efficient binary<->decimal conversions)
-# библиотека содержит процедуры двоично-десятичного и десятично-двоичного
-# преобразования
+# Библиотека содержит процедуры для быстрого и точного двоично-десятичного и
+# десятично-двоичного преобразования. Критически важный инструмент, который
+# гарантирует, что числа в программах будут отображаться без ошибок округления
+# и лишних знаков.
 
 # Required:    cmake
 # Recommended: no
@@ -31,15 +33,18 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Efficient binary<->decimal conversions)
 #
 # Efficient binary-decimal and decimal-binary conversion routines for IEEE
-# doubles
+# doubles.
 #
 # Home page: https://github.com/google/${PRGNAME}
 # Download:  https://github.com/google/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz

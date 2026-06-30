@@ -3,12 +3,14 @@
 PRGNAME="giflib"
 
 ### giflib (Graphics Interchange Format image library)
-# Библиотека для чтения и записи изображений в формате GIF (Graphics
-# Interchange Format), а также программы для конвертации и работы с GIF файлами
+# Легковесная и проверенная временем библиотека и утилиты, созданные специально
+# для работы с форматом GIF (Graphics Interchange Format). Позволяют программам
+# быстро открывать, создавать и редактировать анимированные и статичные
+# изображения этого типа.
 
 # Required:    no
 # Recommended: no
-# Optional:    xmlto
+# Optional:    xmlto    (нужен при запуске 'make' после 'make clean')
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,25 +19,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
-
-# исправим несколько уязвимостей безопасности в утилите 'gif2rgb'
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
-
-# удалим ненужную зависимость от ImageMagick
-cp pic/gifgrid.gif doc/giflib-logo.gif
-
 make || exit 1
-# пакет не имеет набора тестов
-make PREFIX=/usr install DESTDIR="${TMP_DIR}"
+# make check
+make            \
+    PREFIX=/usr \
+    DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # удалим статическую библиотеку
 rm -f "${TMP_DIR}/usr/lib/libgif.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -1,14 +1,16 @@
 #! /bin/bash
 
 PRGNAME="libxml2"
-XMLTS_VER="20130923"
 
 ### libxml2 (XML parser library)
-# Библиотеки и утилиты для анализа XML файлов
+# Библиотека для чтения и записи XML-файлов, которые широко используются для
+# хранения настроек и обмена данными.
 
 # Required:    no
-# Recommended: icu      (для лучшей поддержки UNICODE)
-# Optional:    valgrind (для тестов)
+# Recommended: icu                      (для лучшей поддержки UNICODE)
+# Optional:    --- для документации ---
+#              doxygen
+#              libxslt
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,39 +19,41 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-ICU="--without-icu"
-command -v icu-config &>/dev/null && ICU="--with-icu"
+# Удалим ненужный вызов git в meson.build
+sed -i "/'git'/,+3d" meson.build || exit 1
 
-# включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
-#    --with-history
-# собирать модуль libxml2 для Python3 вместо Python2
-#    PYTHON=/usr/bin/python3
-./configure                 \
-    --prefix=/usr           \
-    --sysconfdir=/etc       \
-    --disable-static        \
-    --with-history          \
-    "${ICU}"                \
-    PYTHON=/usr/bin/python3 \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+ICU="disabled"
+command -v icu-config &>/dev/null && ICU="enabled"
 
-make || exit 1
+mkdir -p build
+cd build || exit 1
 
-### тесты
-# tar xf "${SOURCES}/xmlts${XMLTS_VER}.tar.gz"
-# make check > check.log
-# grep -E '^Total|expected|Ran' check.log
+# Включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
+#    -D history=enabled
+# Python bindings устарели из-за недостатков конструкции API и будут удалены в
+# libxml2-2.16.x, а так же их сборка в версии 2.15.x требует жесткую
+# зависимость doxygen
+#    -D python=disabled
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D history=enabled  \
+    -D python=disabled  \
+    -D docs=disabled    \
+    -D icu="${ICU}" || exit 1
 
-make install DESTDIR="${TMP_DIR}"
+ninja || exit 1
+DESTDIR="${TMP_DIR}" ninja install
 
-# предотвратим ненужное связывание некоторых пакетов с ICU
-rm -vf "${TMP_DIR}/usr/lib/${PRGNAME}.la"
-sed '/libs=/s/xml2.*/xml2"/' -i "${TMP_DIR}/usr/bin/xml2-config"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+# Пакеты, которые зависят он libxml2 будут связываться только с общими
+# библиотеками, а не со статическими
+sed "s/--static/--shared/" -i "${TMP_DIR}/usr/bin/xml2-config"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
@@ -70,7 +74,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

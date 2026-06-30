@@ -4,7 +4,9 @@ PRGNAME="perl-business-isbn-data"
 ARCH_NAME="Business-ISBN-Data"
 
 ### Business::ISBN::Data (data pack for Business::ISBN)
-# Пакет данных для Perl модуля Business::ISBN
+# Актуальный справочник данных, необходимых для проверки и обработки
+# международных стандартных книжных номеров (ISBN). Содержит информацию о кодах
+# стран и издательских групп.
 
 # Required:    no
 # Recommended: no
@@ -22,13 +24,16 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
-    -exec rm {} \;
+    -exec rm {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

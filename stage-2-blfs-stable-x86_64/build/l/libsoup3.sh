@@ -4,9 +4,10 @@ PRGNAME="libsoup3"
 ARCH_NAME="libsoup"
 
 ### libsoup (an HTTP client/server library)
-# Реализация HTTP клиент/сервер библиотеки на C, использующей GObjects и glib
-# для интеграции с приложениями GTK+, а также синхронный API, подходящий для
-# использования в многопоточных приложениях
+# Современная версия библиотеки libsoup, которая делает сетевое взаимодействие
+# приложений еще быстрее и безопаснее благодаря поддержке протокола HTTP/2.
+# Основное отличие от libsoup2 для пользователя - она лучше оптимизирована под
+# современные стандарты интернета и требования безопасности.
 
 # Required:    glib-networking
 #              libpsl
@@ -18,13 +19,12 @@ ARCH_NAME="libsoup"
 #              apache-httpd
 #              brotli
 #              curl
+#              python3-gi-docgen
 #              mit-kerberos-v5
 #              php                  (собранный с поддержкой xmlrpc-epi)
 #              samba
 #              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
 #              wstest               (https://github.com/posener/wstest)
-#              --- для документации ---
-#              python3-gi-docgen
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -44,23 +44,26 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 # исправим несколько уязвимостей безопасности
 patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch"
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
-# исправим путь установки API документации:
+# исправим путь установки API документации
 sed 's/apiversion/soup_version/' -i docs/reference/meson.build || exit 1
 
 mkdir build
 cd build || exit 1
 
+# не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе
+#    --wrap-mode=nodownload
 meson setup                \
     --prefix=/usr          \
     --buildtype=release    \
@@ -76,8 +79,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

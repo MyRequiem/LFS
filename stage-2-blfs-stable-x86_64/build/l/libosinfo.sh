@@ -3,11 +3,9 @@
 PRGNAME="libosinfo"
 
 ### libosinfo (operating systems library)
-# API библиотеки на основе GObject для управления информацией об операционных
-# системах, гипервизорами и виртуальными аппаратными устройствами, которые они
-# могут поддерживать. Включает в себя базу данных, содержащую метаданные
-# устройств и предоставляет API для сопоставления/идентификации оптимальных
-# устройств для развертывания операционной системы на гипервизоре.
+# Библиотека, которая предоставляет программам удобный доступ к базе данных
+# osinfo-db. С ее помощью менеджеры виртуальных машин автоматически подбирают
+# идеальные настройки для установки новой системы.
 
 # Required:    osinfo-db
 # Recommended: no
@@ -20,6 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим сборку с libxml2 >=2.14
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-libxml2-2.14.patch" || exit 1
 
@@ -28,7 +27,7 @@ cd build || exit 1
 
 PCI_IDS="/usr/share/hwdata/pci.ids"
 USB_IDS="/usr/share/hwdata/usb.ids"
-meson setup                           \
+meson setup ..                        \
     --prefix=/usr                     \
     --buildtype=release               \
     --sysconfdir=/etc                 \
@@ -36,14 +35,16 @@ meson setup                           \
     -D enable-gtk-doc=false           \
     -D enable-tests=false             \
     -D with-pci-ids-path="${PCI_IDS}" \
-    -D with-usb-ids-path="${USB_IDS}" \
-    .. || exit 1
+    -D with-usb-ids-path="${USB_IDS}" || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,21 +3,22 @@
 PRGNAME="glib"
 
 ### GLib (library of C routines)
-# Библиотеки низкого уровня, которые включают подпрограммы поддержки C, такие
-# как списки, деревья, хэши, распределение памяти и многое другое.
+# Базовая библиотека, предоставляющая основные типы данных и полезные функции
+# для многих Linux-программ и графических оболочек, например списки, деревья,
+# хэши, распределение памяти и многое другое.
 
 # Required:    no
 # Recommended: python3-docutils
 #              libxslt
-# Optional:    shared-mime-info     (runtime)
-#              desktop-file-utils   (runtime)
+# Optional:    shared-mime-info         (runtime)
+#              desktop-file-utils       (runtime)
 #              gdb
-#              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
+#              sysprof                  (https://wiki.gnome.org/Apps/Sysprof)
 #              --- для тестов ---
 #              cairo
 #              dbus
 #              fuse3
-#              bindfs               (https://bindfs.org/)
+#              bindfs                   (https://bindfs.org/)
 #              gjs
 #              glib-networking
 #              --- для сборки документации и man-страниц ---
@@ -50,6 +51,10 @@ mkdir -pv "${TMP_DIR}/etc/profile.d"
 #    export GLIB_LOG_LEVEL=4
 patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-skip_warnings-1.patch" || exit 1
 
+# исправим проблему повреждения памяти, обнаруженную при сборке с glibc-2.43
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
 mkdir build
 cd build || exit 1
 
@@ -63,9 +68,15 @@ meson setup ..                \
 
 ninja || exit 1
 
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # сразу устанавливаем в систему для последующей сборки gobject-introspection
-ninja install
-DESTDIR=${TMP_DIR} ninja install
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 ###
 # собираем gobject-introspection
@@ -80,8 +91,19 @@ meson setup "gobject-introspection-${GI_VER}" gi-build \
 
 ninja -C gi-build || exit 1
 
-ninja -C gi-build install
-DESTDIR=${TMP_DIR} ninja -C gi-build install
+# нельзя запускать тесты от пользователя root, иначе они потерпят неудачу и в
+# /usr останется всякий мусор
+# unset GLIB_LOG_LEVEL
+# ninja -C gi-build test
+
+DESTDIR="${TMP_DIR}" ninja -C gi-build install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 ###
 # создадим introspection data
@@ -91,8 +113,9 @@ meson configure \
 
 ninja || exit 1
 
-ninja install
-DESTDIR=${TMP_DIR} ninja install
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # устанавливаем переменные среды GLIB_LOG_LEVEL (см. выше), G_FILENAME_ENCODING
 # и G_BROKEN_FILENAMES в /etc/profile.d/glib.sh
@@ -147,6 +170,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${GLIB_SH}"

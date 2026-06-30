@@ -4,9 +4,9 @@ PRGNAME="gtkmm3"
 ARCH_NAME="gtkmm"
 
 ### GTKmm3 (C++ interface for GTK+3)
-# C++ интерфейс для популярной библиотеки графического интерфейса GTK+3.
-# Основные моменты это безопасные обратные вызовы и полный набор виджетов,
-# которые легко расширяются с помощью наследования.
+# Полноценный набор инструментов на C++ для создания современных оконных
+# приложений. С его помощью программисты рисуют кнопки, меню и окна, используя
+# технологии GTK третьего поколения.
 
 # Required:    atkmm22
 #              gtk+3
@@ -33,9 +33,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -43,26 +43,24 @@ mkdir -pv "${TMP_DIR}"
 mkdir "${PRGNAME}-build"
 cd "${PRGNAME}-build" || exit 1
 
-meson setup                      \
-    --prefix=/usr                \
-    --buildtype=release          \
-    -D build-x11-api=true        \
-    -D build-tests=false         \
-    -D build-documentation=false \
-    .. || exit 1
+meson setup ..            \
+    --prefix=/usr         \
+    --buildtype=release   \
+    -D build-x11-api=true \
+    -D build-tests=false  \
+    -D build-documentation=false || exit 1
 
 ninja || exit 1
-# тесты нужно запускать в графической среде
+# тесты нужно запускать в графической среде, т.к. некоторые тесты запускают
+# графические окна
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-DOC_DIR="${TMP_DIR}/usr/share/doc/${PRGNAME}"
-if [ -d "${DOC_DIR}-3.0" ]; then
-    mv  "${DOC_DIR}-3.0" "${DOC_DIR}-${VERSION}"
-fi
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

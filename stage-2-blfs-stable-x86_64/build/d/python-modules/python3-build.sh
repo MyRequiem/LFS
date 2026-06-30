@@ -4,12 +4,14 @@ PRGNAME="python3-build"
 ARCH_NAME="build"
 
 ### Build (A simple, correct Python build frontend)
-# инструмент для сборки Python пакетов в соответствии с PEP517 спецификацией
+# Простой и стандартный инструмент (фронтенд) для сборки Python-пакетов из
+# исходного кода. Он автоматически превращает исходники программ в готовые к
+# установке архивы (wheel), избавляя систему от устаревшего вызова скриптов
+# setup.py.
 
-# Required:    python3-pyproject-hooks
-#              python3-installer
+# Required:    python3-installer
+#              python3-pyproject-hooks
 #              python3-importlib-metadata
-#              python3-tomli
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-pytest
@@ -41,6 +43,8 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -48,13 +52,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

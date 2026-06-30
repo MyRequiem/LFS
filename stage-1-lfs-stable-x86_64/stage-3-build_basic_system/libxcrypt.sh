@@ -3,8 +3,10 @@
 PRGNAME="libxcrypt"
 
 ### libxcrypt (library for one-way hashing of passwords)
-# Современная библиотека для шифрования и проверки паролей пользователей при
-# входе в систему.
+# Системная библиотека для безопасного шифрования и проверки паролей
+# пользователей при входе в систему. Предоставляет функции хэширования (такие
+# как SHA-512, bcrypt или Argon2) для защиты учетных записей от
+# несанкционированного доступа.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -40,10 +42,11 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

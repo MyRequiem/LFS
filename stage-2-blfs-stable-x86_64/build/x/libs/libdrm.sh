@@ -3,21 +3,22 @@
 PRGNAME="libdrm"
 
 ### libdrm (A library to support Direct Rendering)
-# Библиотека реализует интерфейс для служб DRM (Direct Rendering) ядра, прямой
-# рендеринг manager в операционных системах, поддерживающих интерфейс ioctl.
-# Используется для поддержки аппаратного ускорения 3D рендеринга.
+# «Прямой провод» к видеокарте. Библиотека реализует интерфейс для служб DRM
+# (Direct Rendering) ядра, что позволяет программам общаться с графическим
+# процессором напрямую для максимальной скорости отрисовки (рендеринга).
+# Используется для поддержки аппаратного 3D ускорения.
 
 # Required:    no
-# Recommended: xorg-libraries   (для intel kms api support, требуемой для mesa)
-# Optional:    cairo            (для тестов)
-#              cmake            (может использоваться для поиска зависимостей без файлов pkgconfig)
+# Recommended: xorg-libraries       (для intel KMS API support, требуемой для mesa)
+# Optional:    cairo                (для тестов)
+#              cmake                (может использоваться для поиска зависимостей без файлов pkgconfig)
 #              docbook-xml
 #              docbook-xsl
 #              python3-docutils
-#              libxslt          (для сборки man-страниц)
+#              libxslt              (для сборки man-страниц)
 #              libatomic-ops
 #              valgrind
-#              cunit            (для amdgpu тестов) https://cunit.sourceforge.net/
+#              cunit                (для amdgpu тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -32,7 +33,6 @@ cd build || exit 1
 
 # включаем поддержку Udev вместо mknod
 #    -Dudev=true
-#
 meson setup                   \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
@@ -44,8 +44,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

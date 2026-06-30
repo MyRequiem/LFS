@@ -3,8 +3,9 @@
 PRGNAME="xsel"
 
 ### XSel (program for getting/setting the contents of the X selection)
-# Утилита командной строки для получения содержимого выделения в X и его
-# помещения/вставки в/из clipboard
+# Утилита, которая умеет виртуозно манипулировать текстом в буфере обмена и
+# выделениях. Она позволяет программам быстро обмениваться данными через
+# выделение мышкой, что очень удобно в работе.
 
 # Required:    xorg-libraries
 # Recommended: no
@@ -26,8 +27,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

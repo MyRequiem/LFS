@@ -3,7 +3,8 @@
 PRGNAME="duktape"
 
 ### Duktape (embeddable Javascript engine)
-# Встраиваемый Javascript-движок. Легко интегрируется в проекты C/C++
+# Крошечный исполнитель сценариев JavaScript (Javascript-движок). Позволяет
+# встраивать логику этого популярного языка в небольшие системные программы.
 
 # Required:    no
 # Recommended: no
@@ -20,8 +21,11 @@ sed -i 's/-Os/-O2/' Makefile.sharedlibrary         || exit 1
 make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr || exit 1
 make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

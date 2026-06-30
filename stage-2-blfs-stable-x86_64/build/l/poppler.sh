@@ -3,9 +3,9 @@
 PRGNAME="poppler"
 
 ### Poppler (a library for rendering PDF documents)
-# Библиотека, основанная на программе просмотра PDF-файлов xpdf, которая не
-# предоставляет общую библиотеку. Осуществляет рендеринг PDF и предоставляет
-# инструменты командной строки для работы с PDF файлами
+# Популярная библиотека для качественного рендеринга и просмотра документов в
+# формате PDF. На ее основе построена работа большинства современных программ
+# для чтения электронных книг в Linux.
 
 # Required:    cmake
 #              fontconfig
@@ -76,15 +76,18 @@ cd "${PRGNAME}-data-${POPPLER_DATA_VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 make \
     prefix=/usr install DESTDIR="${TMP_DIR}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

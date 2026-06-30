@@ -3,12 +3,15 @@
 PRGNAME="xcb-util"
 
 ### xcb-util (utility libraries for X protocol C-language Binding)
-# Дополнительные расширения для библиотеки XCB, многие из которых ранее
-# присутствовали в Xlib, но не являются частью основного протокола X.
+# Основной набор вспомогательных модулей, которые делают работу с библиотекой
+# XCB более удобной и понятной для разработчиков. Он заменяет сложные
+# низкоуровневые команды на простые функции для создания графических элементов
+# интерфейса. Многие модули из этого набора ранее присутствовали в Xlib, но на
+# данный момент не являются частью основного протокола X.
 
 # Required:    libxcb
 # Recommended: no
-# Optional:    doxygen (для создания документации)
+# Optional:    doxygen    (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,8 +29,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

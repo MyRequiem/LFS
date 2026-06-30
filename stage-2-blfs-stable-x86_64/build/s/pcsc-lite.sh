@@ -3,10 +3,9 @@
 PRGNAME="pcsc-lite"
 
 ### PC/SC-lite (Middleware to access a smart card using SCard API)
-# Популярный набор спецификаций для доступа к смарткартам. Спецификации
-# регламентируют программный интерфейс пользователя (автора приложения с
-# использованием смарткарт) с одной стороны и программный интерфейс драйверов
-# считывателей смарткарт с другой стороны.
+# Программный слой для подключения и работы с устройствами чтения смарт-карт и
+# электронных ключей. Он отвечает за безопасную авторизацию пользователя в
+# системе через физические токены.
 
 # Required:    no
 # Recommended: no
@@ -34,19 +33,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
+    --buildtype=release \
     -D libsystemd=false \
-    -D libudev=true     \
-    .. || exit 1
+    -D libudev=true || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/lib/systemd"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+rm -rf "${TMP_DIR}/usr/sysusers.d"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

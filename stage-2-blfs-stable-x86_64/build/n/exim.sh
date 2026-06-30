@@ -3,9 +3,9 @@
 PRGNAME="exim"
 
 ### Exim (the Exim MTA - Mail Transfer Agent)
-# Представляет собой универсальный и гибкий почтовик с широкими возможностями
-# для проверки входящей электронной почты, а так же может быть интегрирован с
-# другими инструментами для работы с электронной почтой.
+# Мощный и гибкий агент передачи почты, который отвечает за маршрутизацию и
+# доставку электронных писем в системе. Он часто используется в роли основного
+# почтового сервера.
 
 # Required:    libnsl
 #              perl-file-fcntllock
@@ -65,13 +65,15 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # man-страница
 install -v -m644 "doc/${PRGNAME}.8" "${TMP_DIR}${MAN}"
 
 # ссылка в /usr/sbin/
 #    sendmail -> exim
-# для приложений, которым это необходимо, а exim принимает большинство
-# параметров командной строки sendmail
+# для приложений, которым это необходимо (например, для fcron), а сам exim
+# принимает большинство параметров командной строки sendmail
 ln -sfv exim "${TMP_DIR}/usr/sbin/sendmail"
 
 install -v -d -m750 -o exim -g exim "${TMP_DIR}/var/spool/${PRGNAME}"
@@ -107,8 +109,14 @@ if [ -f "${EXIM_CONF}" ]; then
     mv "${EXIM_CONF}" "${EXIM_CONF}.old"
 fi
 
+# остановим exim, если запущен
+if pgrep -x exim &>/dev/null; then
+    /etc/rc.d/init.d/exim stop
+fi
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${ALIASES}"

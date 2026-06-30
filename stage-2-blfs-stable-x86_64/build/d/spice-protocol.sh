@@ -3,10 +3,9 @@
 PRGNAME="spice-protocol"
 
 ### spice-protocol (SPICE protocol headers)
-# Протокол Spice определяет набор сообщений для доступа, управления, и
-# получение данных от удаленных вычислительных устройств (клавиатура, видео,
-# мышь и т.д.) по сетям и отправки им вывода. Пакет содержит заголовочные
-# файлы.
+# Набор правил и технических протоколов (заголовочных файлов) для организации
+# удаленного доступа к рабочему столу. Он координирует передачу видео, звука и
+# команд мыши между сервером и клиентом.
 
 # Required:    no
 # Recommended: no
@@ -22,15 +21,17 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup       \
-    --prefix=/usr \
-    .. || exit 1
+meson setup .. \
+    --prefix=/usr || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

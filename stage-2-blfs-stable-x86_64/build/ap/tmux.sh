@@ -3,9 +3,8 @@
 PRGNAME="tmux"
 
 ### Tmux (terminal multiplexer)
-# Терминальный мультиплексор, предоставляющий пользователю доступ к нескольким
-# терминалам в рамках одного экрана. Является более современной альтернативой
-# утилиты GNU screen
+# Терминальный мультиплексор, позволяющий работать с несколькими окнами
+# терминала в одном и сохранять сессию при отключении от сервера.
 
 # Required:    libevent
 #              yasm
@@ -18,21 +17,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
+mkdir -pv "${TMP_DIR}/etc"
 
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
     --disable-systemd \
     --disable-static  \
-    --docdir="${DOCS}" || exit 1
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-# документация
-cp -a README CHANGES example_tmux.conf "${TMP_DIR}${DOCS}"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 TMUX_CONFIG="/etc/tmux.conf"
 cat << EOF > "${TMP_DIR}${TMUX_CONFIG}"

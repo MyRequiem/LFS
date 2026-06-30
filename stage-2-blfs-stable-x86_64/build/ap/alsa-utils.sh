@@ -3,7 +3,9 @@
 PRGNAME="alsa-utils"
 
 ### alsa-utils (Advanced Linux Sound Architecture utilities)
-# Пакет содержит утилиты для использования с ALSA и управления звуковой картой:
+# Коллекция базовых инструментов для настройки звука. С их помощью можно
+# отрегулировать громкость, выбрать активный микрофон, проверить работу
+# динамиков и др.
 #    alsactl       - управление настройками звуковой карты
 #    arecord/aplay - захват и воспроизведение аудио
 #    amixer        - консольный микшер
@@ -12,10 +14,10 @@ PRGNAME="alsa-utils"
 # Required:    alsa-lib
 # Recommended: no
 # Optional:    python3-docutils
-#              fftw              (для сборки Basic Audio Tester (BAT))
+#              fftw                 (для сборки Basic Audio Tester (BAT))
 #              libsamplerate
-#              xmlto             (для создания man-страниц)
-#              dialog            (https://hightek.org/projects/dialog/)
+#              xmlto                (для создания man-страниц)
+#              dialog               (https://hightek.org/projects/dialog/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,8 +28,8 @@ mkdir -pv "${TMP_DIR}"
 
 XMLTO="--disable-xmlto"
 BAT="--disable-bat"
-command -v xmlto       &>/dev/null && XMLTO="--enable-xmlto"
-command -v fftw-wisdom &>/dev/null && BAT="--enable-bat"
+command -v xmlto &>/dev/null && XMLTO="--enable-xmlto"
+pkgconf fftw3    &>/dev/null && BAT="--enable-bat"
 
 # отключаем создание конфигурации alsaconf, которая не совместима с Udev
 #    --disable-alsaconf
@@ -43,6 +45,8 @@ command -v fftw-wisdom &>/dev/null && BAT="--enable-bat"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # ### Конфигурация:
 #    - любых пользователей, использующих звуковые устройства нужно добавить в
@@ -68,6 +72,7 @@ make install DESTDIR="${TMP_DIR}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # при первом запуске утилиты 'alsactl' (обычно запускается из стандартного

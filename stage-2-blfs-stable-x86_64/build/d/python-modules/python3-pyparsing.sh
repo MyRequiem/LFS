@@ -4,15 +4,15 @@ PRGNAME="python3-pyparsing"
 ARCH_NAME="pyparsing"
 
 ### pyparsing (parsing module for python)
-# Альтернативный подход к созданию и выполнению простой грамматики (синтаксиса)
-# вместо традиционного подхода lex/yacc или использования обычных выражений.
-# Модуль pyparsing предоставляет библиотеку классов, которые клиент использует
-# для построения грамматики непосредственно в коде Python
+# Удобная Python библиотека, которая помогает программам разбирать сложный
+# текст, конфигурационные файлы и команды. Она превращает хаотичные строки
+# данных в понятную для кода структуру.
 
 # Required:    no
 # Recommended: no
 # optional:    --- для тестов ---
 #              python3-railroad-diagrams    (https://pypi.org/project/railroad-diagrams/)
+#              matplotlib                   (https://matplotlib.org/)
 #              python3-pytes
 
 ROOT="/root/src/lfs"
@@ -36,6 +36,8 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -43,13 +45,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

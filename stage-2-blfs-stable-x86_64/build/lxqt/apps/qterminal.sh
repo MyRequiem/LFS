@@ -3,7 +3,9 @@
 PRGNAME="qterminal"
 
 ### qterminal (Qt widget based terminal emulator)
-# Эмулятор терминала на основе виджета Qt с поддержкой нескольких вкладок
+# Современный, быстрый и функциональный эмулятор терминала для графической
+# среды LXQt. Поддерживает работу со множеством вкладок, разделение экрана на
+# несколько рабочих зон и гибкую настройку тем оформления.
 
 # Required:    qtermwidget
 # Recommended: no
@@ -19,19 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -57,7 +57,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -svf ../bin/udevadm "${TMP_DIR}/usr/sbin/udevadm"
 
@@ -127,8 +127,9 @@ tar -xOf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}.tar.xz" \
 chmod 755 "${TMP_DIR}/usr/lib/udev/init-net-rules.sh"
 chmod 755 "${TMP_DIR}/usr/lib/udev/write_net_rules"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 ### Конфигурация Udev

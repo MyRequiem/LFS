@@ -3,13 +3,14 @@
 PRGNAME="json-glib"
 
 ### JSON-GLib (a de/serialization library for the JS Object Notation)
-# Библиотека, обеспечивающая поддержку сериализации и десериализации для
-# формата JavaScript Object Notation (JSON), описанного в RFC 4627
+# Библиотека, позволяющая программам легко читать и записывать данные в формате
+# JSON. Создана специально для интеграции с программной средой  GNOME и
+# использует ее стандарты типов данных (GObject).
 
 # Required:    glib
 # Recommended: no
-# Optional:    python3-docutils
-#              python3-gi-docgen
+# Optional:    python3-docutils     (для создания man-страниц)
+#              python3-gi-docgen    (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,22 +22,23 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D man=true         \
-    -D gtk_doc=disabled \
     -D tests=false      \
-    .. || exit 1
+    -D gtk_doc=disabled \
+    -D documentation=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-chmod 644 "${TMP_DIR}/usr/share/man/man1"/*
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

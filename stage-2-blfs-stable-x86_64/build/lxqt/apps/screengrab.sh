@@ -3,10 +3,12 @@
 PRGNAME="screengrab"
 
 ### screengrab (tool for making screenshots)
-# Кроссплатформенный инструмент для создания скриншотов
+# Удобная графическая утилита для создания скриншотов всего экрана, отдельной
+# области или конкретного окна программы. Позволяет сразу сохранить снимок в
+# нужном формате или быстро отправить его на популярные фотохостинги.
 
 # Required:    lxqt-build-tools
-#              kwindowsystem    или kde-frameworks
+#              kwindowsystem или kde-frameworks
 #              libqtxdg
 # Recommended: no
 # Optional:    no
@@ -21,20 +23,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+xdg-icon-resource forceupdate --theme hicolor || exit 1
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (tool for making screenshots)

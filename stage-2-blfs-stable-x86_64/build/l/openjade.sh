@@ -3,7 +3,10 @@
 PRGNAME="openjade"
 
 ### OpenJade (DSSSL engine for SGML and XML transformations)
-# Движок DSSSL для преобразования SGML и XML в RTF, TeX
+# Мощная программа-обработчик, которая превращает документы в форматах SGML и
+# XML в другие форматы (например, в печатный формат или HTML). Она работает на
+# основе специальных правил оформления (DSSSL) и часто используется как
+# «движок» для сборки сложной технической документации.
 
 # Required:    opensp
 # Recommended: no
@@ -40,6 +43,8 @@ make || exit 1
 make install     DESTDIR="${TMP_DIR}"
 make install-man DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 ln -svf openjade       "${TMP_DIR}/usr/bin/jade"
 ln -svf libogrove.so   "${TMP_DIR}/usr/lib/libgrove.so"
 ln -svf libospgrove.so "${TMP_DIR}/usr/lib/libspgrove.so"
@@ -63,6 +68,7 @@ cp "${OPENJADE_CAT}"     "${TMP_DIR}/etc/sgml/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

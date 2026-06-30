@@ -3,7 +3,9 @@
 PRGNAME="imake"
 
 ### imake (C preprocessor interface to the make utility)
-# Генерирует Makefile из шаблонов Imakefile
+# Историческая система автоматизации сборки, на которой строилась вся
+# графическая среда X11. Она до сих пор нужна для компиляции некоторых базовых
+# компонентов графической системы.
 
 # Required:    xorg-cf-files
 # Recommended: no
@@ -16,17 +18,22 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure              \
-    --prefix=/usr        \
-    --sysconfdir=/etc    \
-    --localstatedir=/var \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
-make install DESTDIR="${TMP_DIR}"
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
+
+ninja || exit 1
+# пакет не имеет набора тестов
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

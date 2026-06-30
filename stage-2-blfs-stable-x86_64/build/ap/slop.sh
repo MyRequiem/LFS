@@ -3,9 +3,13 @@
 PRGNAME="slop"
 
 ### slop (selection query)
-# Утилита, запрашивающая выбор прямоугольной области экрана мышью
+# Небольшая утилита, которая позволяет пользователю выделить мышкой область на
+# экране и копирует ее точные координаты. Она часто используется в связке с
+# утилитами для создания скриншотов (например, maim).
 
 # Required:    cmake
+#              xorg-libraries
+#              glew
 #              glm
 # Recommended: no
 # Optional:    no
@@ -28,8 +32,11 @@ cmake ..                                \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

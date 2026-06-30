@@ -3,7 +3,11 @@
 PRGNAME="libadwaita"
 
 ### libadwaita (GTK 4 library implementing the GNOME HIG)
-# Библиотека GTK4, реализующая GNOME HIG и дополняющая GTK
+# Библиотека компонентов, которая определяет современный внешний вид и
+# поведение интерфейса приложений для рабочей среды GNOME. Предоставляет
+# готовые виджеты (кнопки, панели, вкладки), чтобы программы автоматически
+# выглядели красиво, адаптировались под экраны смартфонов и поддерживали темную
+# тему.
 
 # Required:    appstream
 #              gtk4
@@ -22,18 +26,23 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D tests=false      \
-    .. || exit 1
+    -D examples=false   \
+    -D vapi=false       \
+    -D introspection=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

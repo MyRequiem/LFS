@@ -3,7 +3,8 @@
 PRGNAME="bash-completion"
 
 ### bash-completion (programmable completion for the bash shell)
-# Добавляет в оболочку bash автозавершение для команд
+# Умное дополнение команд в терминале (автозавершение), которое позволяет
+# автоматически дописывать пути и параметры при нажатии клавиши <TAB>
 
 # Required:    no
 # Recommended: no

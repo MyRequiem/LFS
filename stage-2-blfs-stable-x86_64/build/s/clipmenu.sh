@@ -3,7 +3,9 @@
 PRGNAME="clipmenu"
 
 ### clipmenu (simple clipboard manager using dmenu)
-# простой менеджер буфера обмена, использующий dmenu или rofi
+# Удобная история буфера обмена, построенная на базе dmenu. Она хранит всё, что
+# вы копировали ранее, позволяет быстро выбрать нужный фрагмент из списка и
+# вставить его снова.
 
 # Required:    clipnotify
 #              dmenu
@@ -21,11 +23,9 @@ mkdir -pv "${TMP_DIR}/usr/bin"
 patch --verbose -p1 -i \
     "${SOURCES}/set-cachedir-path-to-home-dir_cache-${VERSION}.diff" || exit 1
 
-cp "${SOURCES}/clearclipmenu" clipmenu clipmenud "${TMP_DIR}/usr/bin"
-chmod 755 "${TMP_DIR}/usr/bin"/*
+install -m755 -o root -g root "${SOURCES}/clearclipmenu" clipmenu clipmenud \
+    "${TMP_DIR}/usr/bin" || exit 1
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

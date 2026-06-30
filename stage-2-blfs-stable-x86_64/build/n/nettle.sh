@@ -3,9 +3,8 @@
 PRGNAME="nettle"
 
 ### Nettle (small cryptographic library)
-# Криптографическая библиотека для C++, Python, Pike и других
-# объектно-ориентированных языков программирования, а так же для таких
-# приложений как LSH, GNUPG и т.п.
+# Компактная и быстрая библиотека, содержащая основные криптографические
+# алгоритмы для защиты данных.
 
 # Required:    no
 # Recommended: no
@@ -26,6 +25,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 chmod -v 755 "${TMP_DIR}/usr/lib/lib"{hogweed,nettle}.so
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -41,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # space.
 #
 # Home page: https://www.lysator.liu.se/~nisse/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

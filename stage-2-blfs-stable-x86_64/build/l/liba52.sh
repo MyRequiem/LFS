@@ -4,9 +4,9 @@ PRGNAME="liba52"
 ARCH_NAME="a52dec"
 
 ### Liba52 (library for decoding ATSC A/52 streams)
-# Библиотека для декодирования потоков ATSC A/52 (также известных как AC-3).
-# Стандарт A/52 используется во множестве приложений для работы с цифровыми
-# телевизорами и DVD
+# Библиотека для декодирования потоков ATSC A/52 (также известных как AC-3 или
+# Dolby Digital). Она используется в плеерах и видеоредакторах для
+# воспроизведения многоканального звука из DVD и цифрового ТВ.
 
 # Required:    no
 # Recommended: no
@@ -30,6 +30,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # копируем заголовок a52_internal.h в /usr/include/a52dec для того, чтобы такие
 # пакеты как 'xine-lib' могли компилироваться и компоноваться с уже
 # установленным в системе liba52
@@ -37,6 +39,7 @@ cp "${PRGNAME}/a52_internal.h" "${TMP_DIR}/usr/include/${ARCH_NAME}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

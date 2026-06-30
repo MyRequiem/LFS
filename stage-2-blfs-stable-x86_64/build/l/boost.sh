@@ -3,10 +3,9 @@
 PRGNAME="boost"
 
 ### Boost (Boost C++ Libraries)
-# Набор библиотек классов, использующих функциональность языка C++ и
-# предоставляющих удобный кроссплатформенный высокоуровневый интерфейс для
-# лаконичного кодирования различных повседневных подзадач программирования
-# (работа с данными, алгоритмами, файлами, потоками и т. п.)
+# Огромная коллекция библиотек для C++, расширяющая стандартные возможности
+# языка. Является критической зависимостью для сборки многих современных
+# программ.
 
 # Required:    no
 # Recommended: which
@@ -32,9 +31,9 @@ cd "${PRGNAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
@@ -70,6 +69,8 @@ rm -rf /usr/lib/cmake/[Bb]oost*
     threading=multi \
     link=shared     \
     --prefix="${TMP_DIR}/usr"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

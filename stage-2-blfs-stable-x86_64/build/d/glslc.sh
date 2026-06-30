@@ -4,7 +4,11 @@ PRGNAME="glslc"
 ARCH_NAME="shaderc"
 
 ### glslc (command line compiler for OpenGL Shading Language)
-# компилятор командной строки для языка OpenGL Shading от Google
+# Консольный компилятор для языка OpenGL Shading от Google, который превращает
+# человекочитаемый код шейдеров (GLSL или HLSL) в бинарный формат SPIR-V,
+# понятный для Vulkan и современных версий OpenGL. Он работает как обертка над
+# базовыми инструментами (glslang), добавляя удобный интерфейс в стиле GCC или
+# Clang и поддержку включения  файлов через #include
 
 # Required:    cmake
 #              glslang
@@ -33,10 +37,10 @@ cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D SHADERC_SKIP_TESTS=ON     \
-    -G Ninja                     \
-    .. || exit 1
+    -G Ninja .. || exit 1
 
-ninja || exit 1
+ninja glslc/glslc || exit 1
+
 install -vm755 glslc/glslc "${TMP_DIR}/usr/bin"
 
 source "${ROOT}/stripping.sh"      || exit 1

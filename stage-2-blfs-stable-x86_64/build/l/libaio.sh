@@ -3,9 +3,9 @@
 PRGNAME="libaio"
 
 ### libaio (asynchronous I/O library)
-# Библиотека предоставляет встроенный в Linux API для асинхронного ввода-вывода
-# (async I/O или aio). Такое API имеет более богатый набор возможностей, чем
-# простой асинхронный ввод/вывод POSIX объектов.
+# Библиотека, позволяющая программам общаться с диском в «фоновом режиме»
+# (асинхронный ввод-вывод). Пока данные записываются или читаются, процессор
+# может заниматься другими задачами, не дожидаясь ответа от железа.
 
 # Required:    no
 # Recommended: no
@@ -24,6 +24,8 @@ sed -i '/install.*libaio.a/s/^/#/' src/Makefile || exit 1
 make || exit 1
 # make partcheck
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

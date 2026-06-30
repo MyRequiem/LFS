@@ -3,9 +3,9 @@
 PRGNAME="traceroute"
 
 ### Traceroute (IP packet route tracing utility)
-# Утилита, которая используется для отображения сетевого маршрута, по которому
-# пакеты достигают определенного хоста. Если обнаруживается проблема
-# подключения к другой системе, traceroute может помочь ее определить.
+# Классическая сетевая утилита, которая показывает точный маршрут прохождения
+# сетевых пакетов до удаленного сервера. Она помогает находить проблемные и
+# медленные узлы связи на пути трафика.
 
 # Required:    no
 # Recommended: no
@@ -22,11 +22,13 @@ mkdir -pv "${TMP_DIR}"{/usr/bin,"${MAN_PAGE}"}
 make || exit 1
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
-ln -sv -f traceroute   "${TMP_DIR}/usr/bin/traceroute6"
-ln -sv -f traceroute.8 "${TMP_DIR}/usr/share/man/man8/traceroute6.8"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# этот пакет перезаписывает утилиту traceroute, установленную в LFS с пакетом
-# inetutils. Данная версия более мощная и имеет многие дополнительные опции
+ln -sv -f traceroute   "${TMP_DIR}/usr/bin/traceroute6"
+ln -sv -f traceroute.8 "${TMP_DIR}${MAN_PAGE}/traceroute6.8"
+
+# Этот пакет перезаписывает утилиту traceroute, установленную в LFS с пакетом
+# inetutils. Данная версия более мощная и имеет многие дополнительные опции:
 rm -f /usr/bin/traceroute
 rm -f /usr/share/man/man1/traceroute.1
 
@@ -35,6 +37,7 @@ sed '/\/usr\/share\/man\/man1\/traceroute.1/d' -i /var/log/packages/inetutils-*
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

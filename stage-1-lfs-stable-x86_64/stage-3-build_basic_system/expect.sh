@@ -28,9 +28,9 @@ cd "${PRGNAME}${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 # для сборки потребуются PTY, поэтому убедимся, что PTY работает правильно в
 # среде chroot (команда должна вывести в терминал "ok")
@@ -56,14 +56,15 @@ make || make -j1 || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so
 ln -svf "expect${VERSION}/libexpect${VERSION}.so" "${TMP_DIR}/usr/lib"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

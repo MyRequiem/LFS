@@ -3,7 +3,9 @@
 PRGNAME="mpv"
 
 ### mpv (a movie player based on MPlayer and mplayer2)
-# Кроссплатформенный медиаплеер на основе MPlayer/mplayer2
+# Минималистичный, но крайне мощный медиаплеер, запускаемый через командную
+# строку или сторонние оболочки. Поддерживает практически все форматы медиа
+# файлов и обеспечивает плавное воспроизведение видео.
 
 # Required:    alsa-lib
 #              ffmpeg
@@ -13,7 +15,6 @@ PRGNAME="mpv"
 #              pulseaudio
 # Recommended: libjpeg-turbo
 #              libva
-#              libvdpau
 #              luajit
 #              uchardet
 #              vulkan-loader
@@ -22,7 +23,7 @@ PRGNAME="mpv"
 #              libdvdnav
 #              libbluray        (https://www.videolan.org/developers/libbluray.html)
 #              pipewire
-#              sdl2
+#              sdl2-compat
 #              jack             (https://jackaudio.org/)
 #              openal           (https://openal.org/)
 #              libcaca          (https://github.com/cacalabs/libcaca)
@@ -37,28 +38,23 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с ffmpeg > 7.0
-sed -i 's/AV_OPT_TYPE_CHANNEL_LAYOUT/AV_OPT_TYPE_CHLAYOUT/' \
-    filters/f_lavfi.c || exit 1
-
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D x11=enabled      \
-    -D sdl2=enabled     \
-    .. || exit 1
+    -D x11=enabled || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 gtk-update-icon-cache -qtf /usr/share/icons/hicolor

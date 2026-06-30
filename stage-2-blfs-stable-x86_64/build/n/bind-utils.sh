@@ -4,7 +4,9 @@ PRGNAME="bind-utils"
 ARCH_NAME="bind"
 
 ### bind-utils (collection client side programs from BIND)
-# Набор клиентских утилит, входящих в состав BIND: nslookup, dig и host
+# Набор «сетевых инструментов» (например, dig и host). Они помогают проверить,
+# правильно ли работает интернет-адрес сайта и как на него реагируют
+# DNS-серверы.
 
 # Required:    liburcu
 #              libuv
@@ -23,8 +25,9 @@ MAN1="/usr/share/man/man1"
 MAN8="/usr/share/man/man8"
 mkdir -pv "${TMP_DIR}"{"${MAN1}","${MAN8}"}
 
-./configure \
-    --prefix=/usr || exit 1
+./configure       \
+    --prefix=/usr \
+    --sysconfdir=/etc || exit 1
 
 make -C lib/isc      && \
 make -C lib/dns      && \
@@ -49,6 +52,8 @@ make -C bin/rndc     install DESTDIR="${TMP_DIR}" || exit 1
 
 cp -v doc/man/{dig.1,host.1,nslookup.1,nsupdate.1} "${TMP_DIR}${MAN1}"
 cp -v doc/man/rndc.8                               "${TMP_DIR}${MAN8}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -31,12 +31,13 @@ make || make -j1 || exit 1
 rm -f "/usr/bin/${PRGNAME}-${VERSION}"
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/awk.1"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

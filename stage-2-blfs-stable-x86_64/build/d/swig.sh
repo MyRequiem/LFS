@@ -3,16 +3,13 @@
 PRGNAME="swig"
 
 ### SWIG (Simplified Wrapper and Interface Generator)
-# Инструмент для связывания программ и библиотек, написанных на C и C++ с
-# интерпретируемыми (Tcl, Perl, Python, Ruby, PHP) или компилируемыми (Java,
-# C#, Scheme, OCaml) языками. Основная цель: обеспечение возможности вызова
-# функций, написанных на одних языках, из кода на других языках. Программист
-# создаёт файл с описанием экспортируемых функций, SWIG генерирует исходный код
-# для склеивания C/C++ и нужного языка, и затем создаёт исполняемый файл.
+# Инструмент для связывания кода, написанного на языках C или C++, с другими
+# языками вроде Tcl, Python, Perl, PHP, Ruby, Java, C# и т.д. Позволяет
+# разработчикам использовать готовые быстрые модули в своих проектах.
 
 # Required:    no
 # Recommended: no
-# Optional:    boost (для тестов)
+# Optional:    boost    (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,23 +18,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# отключаем сборку тестов и примеров для javascript
-#    --without-javascript
-# отключает принудительное соответствие компилятора ansi, что вызывает ошибки в
-# заголовках Lua >= 5.3
-#    --without-maximum-compile-warnings
-./configure              \
-    --prefix=/usr        \
-    --without-javascript \
-    --without-maximum-compile-warnings || exit 1
+./configure \
+    --prefix=/usr || exit 1
 
 make || exit 1
 # тесты
 # make JSCXX=g++ TCL_INCLUDE= -k check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

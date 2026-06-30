@@ -3,9 +3,9 @@
 PRGNAME="cups"
 
 ### Cups (Common UNIX Printing System)
-# Сервер печати для UNIX-подобных операционных систем. Компьютер с запущенным
-# сервером CUPS представляет собой сетевой узел, который принимает задания на
-# печать от клиентов, обрабатывает их и отправляет на соответствующий принтер.
+# Стандартная система печати для Linux. Управляет очередью печати документов,
+# содержит драйверы для тысяч моделей принтеров и позволяет печатать как через
+# USB, так и по сети.
 #
 # Состав CUPS:
 #    - диспетчер печати
@@ -43,8 +43,7 @@ PRGNAME="cups"
 #    /etc/cups/*
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
+source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
 VERSION="$(find "${SOURCES}" -type f \
@@ -62,12 +61,17 @@ cd "${PRGNAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим проблему во время выполнения (runtime), вызванную повреждением
+# указателя при использовании IPP
+sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
+    || exit 1
 
 # создадим группу lpadmin и пользователя lp (группа lp уже создана с пакетом
 # 'main-directory-tree')
@@ -86,6 +90,7 @@ mkdir -pv "${TMP_DIR}"
 # /etc/rc.d
 #    --with-rcdir=/tmp/cupsinit
 ./configure                      \
+    --prefix=/usr                \
     --libdir=/usr/lib            \
     --with-rcdir=/tmp/cupsinit   \
     --with-rundir=/run/cups      \
@@ -101,6 +106,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}"/{tmp,run,var/run}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # создадим базовый файл конфигурации клиента cups
 echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \
@@ -114,6 +120,7 @@ echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 command -v gtk-update-icon-cache &>/dev/null && \

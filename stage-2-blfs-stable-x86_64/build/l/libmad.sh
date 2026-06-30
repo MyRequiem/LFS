@@ -3,7 +3,9 @@
 PRGNAME="libmad"
 
 ### libmad (MAD - high-quality MPEG Audio Decoder)
-# Высококачественный MPEG аудиодекодер, поддерживающий 24-битный вывод
+# Высокоточная библиотека для качественного декодирования аудиофайлов формата
+# MP3 с полной поддержкой 24-битного звука. Выполняет все расчеты на уровне
+# целых чисел, что экономит ресурсы процессора.
 
 # Required:    no
 # Recommended: no
@@ -19,7 +21,7 @@ mkdir -pv "${TMP_DIR}/usr/lib/pkgconfig"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-fixes-1.patch" || exit 1
 
-sed "s@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g" -i configure.ac &&
+sed "s@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g" -i configure.ac || exit 1
 
 # без этих файлов autoreconf может возвращать ошибку
 touch NEWS AUTHORS ChangeLog
@@ -32,6 +34,8 @@ autoreconf -fi || exit 1
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # некоторые пакеты проверяют наличие файла pkg-config для libmad
 cat << EOF > "${TMP_DIR}/usr/lib/pkgconfig/mad.pc"
@@ -50,6 +54,7 @@ EOF
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

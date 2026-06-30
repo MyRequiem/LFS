@@ -4,7 +4,9 @@ PRGNAME="noto-color-emoji-ttf"
 ARCH_NAME="noto-emoji"
 
 ### noto-color-emoji-ttf (Noto Emoji fonts)
-# Цветные эмодзи в формате TTF
+# Специальный шрифт от Google, который добавляет в вашу систему поддержку ярких
+# и цветных смайликов (эмодзи). С ним общение в чатах становится привычным и
+# выразительным.
 
 # Required:    xorg-applications
 #              fontconfig

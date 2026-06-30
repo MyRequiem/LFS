@@ -46,14 +46,15 @@ make || make -j1 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # создадим ссылку в /usr/bin/
 #    sh -> bash
 ln -svf bash "${TMP_DIR}/usr/bin/sh"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 
 ###
 # ${TMP_DIR}/usr/bin/bash сразу уставливаем в систему командой install, т.к.

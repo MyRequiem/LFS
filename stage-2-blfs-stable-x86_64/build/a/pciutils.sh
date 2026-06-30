@@ -3,8 +3,9 @@
 PRGNAME="pciutils"
 
 ### pciutils (PCI utilities)
-# Пакет PCI Utils содержит набор утилит для вывода списка устройств PCI (lspci),
-# проверки их состояния и настройки их регистров конфигурации (setpci)
+# Набор утилит для просмотра информации об устройствах, подключенных к шине
+# PCI, например, видеокарт или сетевых адаптеров (lspci), проверки их состояния
+# и настройки их регистров конфигурации (setpci)
 
 # Required:    no
 # Recommended: hwdata (runtime)
@@ -33,6 +34,8 @@ make PREFIX=/usr                \
      DESTDIR="${TMP_DIR}" install install-lib
 
 chmod -v 755 "${TMP_DIR}/usr/lib/libpci.so"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

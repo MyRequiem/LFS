@@ -3,15 +3,15 @@
 PRGNAME="xorgproto"
 
 ### xorgproto (the header files for building X Window System)
-# Заголовочные файлы, необходимые для сборки X Window System
-# (Graphical Environments)
+# Огромная база технических описаний (заголовочных файлов) графической системы.
+# Это «словарь», на котором общаются окна программ и монитор в системе X11.
 
 # Required:    util-macros
 # Recommended: no
 # Optional:    fop
 #              libxslt
 #              xmlto
-#              python3-asciidoc (для создания документации)
+#              python3-asciidoc    (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,7 +27,6 @@ cd build || exit 1
 # устанавим устаревшие заголовки, необходимые для старых программ, например,
 # LessTif
 #    -D legacy=true
-#
 meson setup                   \
     --prefix="${XORG_PREFIX}" \
     -D legacy=true            \
@@ -37,12 +36,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
-DOCS="${TMP_DIR}${XORG_PREFIX}/share/doc"
-[ -d "${DOCS}/${PRGNAME}" ] && \
-    mv "${DOCS}/${PRGNAME}"{,"-${VERSION}"}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,8 +3,9 @@
 PRGNAME="cargo-c"
 
 ### cargo-c (cargo applet to build and install C-ABI libraries)
-# cargo апплет для создания и установки C-ABI совместимых динамических и
-# статических библиотек
+# Вспомогательный инструмент для разработчиков на Rust. Он позволяет собирать
+# Rust-библиотеки так, чтобы их понимали старые добрые программы, написанные на
+# C.
 
 # Required:    rustc
 # Recommended: libssh2
@@ -26,17 +27,21 @@ mkdir -pv "${TMP_DIR}/usr/bin/"
 # загрузим файл определения версий для зависимостей, которые будут скачиваться
 # во время сборки
 HOME_PAGE="https://github.com/lu-zero/${PRGNAME}"
-curl -fLO "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock"
+# curl -fLO "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock"
+wget "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock" || exit 1
 
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
-cargo build --release
+cargo build --release || exit 1
 # cargo test --release
 install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} \
     "${TMP_DIR}/usr/bin/"
 
 unset LIB{SSH2,SQLITE3}_SYS_USE_PKG_CONFIG
+
+# очистим rust кэш, мусор не нужен
+rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

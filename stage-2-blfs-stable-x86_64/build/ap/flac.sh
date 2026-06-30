@@ -3,12 +3,10 @@
 PRGNAME="flac"
 
 ### FLAC (Free Lossless Audio Codec)
-# Свободный аудиокодек, предназначенный для сжатия аудиоданных без потерь. В
-# отличие от аудиокодеков, обеспечивающих сжатие с потерями (MP3, AAC, WMA, Ogg
-# Vorbis, Opus), FLAC, как и любой другой lossless-кодек, не удаляет никакой
-# информации из аудиопотока и подходит как для прослушивания музыки на
-# высококачественной звуковоспроизводящей аппаратуре, так и для архивирования
-# аудиоколлекций.
+# FLAC (Free Lossless Audio Codec) - библиотека для сжатия звука без потери
+# качества: она уменьшает размер файла почти вдвое, сохраняя каждый бит
+# оригинала нетронутым. В отличие от MP3, при использовании FLAC аудио после
+# распаковки остается идентичным студийной записи или CD.
 
 # Required:    no
 # Recommended: no
@@ -33,8 +31,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

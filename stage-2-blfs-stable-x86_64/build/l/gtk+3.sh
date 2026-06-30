@@ -4,9 +4,10 @@ PRGNAME="gtk+3"
 ARCH_NAME="gtk"
 
 ### GTK+3 (multi-platform GUI toolkit)
-# GTK (GIMP ToolKit) - кроссплатформенная библиотека элементов интерфейса
-# (фреймворк). Наряду с библиотекой Qt является одной из наиболее популярных на
-# сегодняшний день библиотек для X
+# Популярный набор инструментов (фреймворк) для создания графических
+# интерфейсов пользователя: окон, кнопок, меню и текстовых полей. Это «лицо»
+# рабочего стола GNOME и сотен программ (таких как GIMP или Inkscape), которое
+# отвечает за то, как приложение выглядит и реагирует на клики.
 
 # Required:    at-spi2-core
 #              gdk-pixbuf
@@ -22,7 +23,8 @@ ARCH_NAME="gtk"
 #              wayland-protocols
 #              glib
 # Optional:    colord
-#              cups
+#              libcups или cups
+#              evince                (runtime, для среств просмотра печати)
 #              gtk-doc
 #              libcloudproviders
 #              python3-pyatspi2      (для тестов)
@@ -55,9 +57,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -65,11 +67,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+# по молчанию "cups,file,lpr,papi,test" - нам это не нужно
+#    -D print_backends="file"
 meson setup ..               \
     --prefix=/usr            \
     --buildtype=release      \
     -D man=true              \
     -D broadway_backend=true \
+    -D print_backends="file" \
     -D examples=false        \
     -D tests=false || exit 1
 
@@ -78,17 +83,18 @@ ninja || exit 1
 # dbus-run-session ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # создадим/обновим кэш модулей GTK+3 /usr/lib/gtk-3.x/3.x.x/immodules.cache
-gtk-query-immodules-3.0 --update-cache
+gtk-query-immodules-3.0 --update-cache || exit 1
 
 # создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
-glib-compile-schemas /usr/share/glib-2.0/schemas
+glib-compile-schemas /usr/share/glib-2.0/schemas || exit 1
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

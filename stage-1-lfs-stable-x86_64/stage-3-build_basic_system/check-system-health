@@ -1,0 +1,144 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Author:  MyRequiem <mrvladislavovich@gmail.com>
+
+Verifies the integrity of installed packages by cross-referencing files on disk
+with their records in /var/log/packages/. Identifies missing files and
+calculates the health percentage of the installed software base.
+"""
+
+import os
+import sys
+import math
+import argparse
+
+class CheckSystemHealth:
+    def __init__(self):
+        # check for root privileges to ensure access to system logs and
+        # directories
+        if os.geteuid() != 0:
+            sys.exit("Error: Root privileges are required to run this script.")
+
+        # default path for Slackware-style package logs
+        self.var_log_packages = '/var/log/packages/'
+        self.log_path = '/tmp/check-system-health-log.txt'
+        self.has_missing = False
+
+        # statistics counters for final report
+        self.total_packages = 0
+        self.total_files = 0
+        self.missing_files = 0
+
+        # ANSI color codes for terminal highlighting
+        self.colors = {
+            'lred': '\x1b[1;31m',
+            'lgreen': '\x1b[1;32m',
+            'reset': '\x1b[0m'
+        }
+
+        # initialize (truncate) the log file for a fresh run
+        open(self.log_path, 'w').close()
+
+    def parse_arguments(self):
+        # set up command line arguments
+        parser = argparse.ArgumentParser(
+            description="Check the integrity of installed packages by verifying their files.",
+            formatter_class=argparse.RawTextHelpFormatter
+        )
+        parser.add_argument(
+            "package_path",
+            nargs="?",
+            help="Optional: Path to a specific package log\n"
+                 "Example: /var/log/packages/binutils-2.46.0\n"
+                 "If omitted, all packages are checked."
+        )
+        return parser.parse_args()
+
+    def get_pkg_list(self, target_path: str) -> list:
+        # returns a list containing one specific package or all found in the
+        # system log
+        if target_path:
+            if os.path.isfile(target_path):
+                self.total_packages = 1
+                return [target_path]
+            else:
+                sys.exit(f"Error: File {target_path} not found.")
+
+        if not os.path.exists(self.var_log_packages):
+            sys.exit(f"Error: {self.var_log_packages} not found.")
+
+        # scan the package log directory
+        pkgs = [os.path.join(self.var_log_packages, p) for p in os.listdir(self.var_log_packages)]
+        self.total_packages = len(pkgs)
+        return pkgs
+
+    def check_file_exists(self, file_path: str, package: str) -> None:
+        # ignore specific file types that are often deleted or modified by
+        # design
+        skip_prefixes = ('/etc/rc.d/rc',)
+        skip_suffixes = ('.la', '.dir')
+
+        if (not file_path.endswith(skip_suffixes) and
+            not file_path.startswith(skip_prefixes)):
+
+            self.total_files += 1
+            # verify if the file actually exists on the filesystem
+            if not os.path.exists(file_path):
+                self.has_missing = True
+                self.missing_files += 1
+
+                # immediate visual feedback for missing files
+                print(f"Package: {self.colors['lgreen']}{package}{self.colors['reset']}")
+                print(f"    Missing: {self.colors['lred']}{file_path}{self.colors['reset']}")
+
+                # log the issue for later review
+                with open(self.log_path, 'a') as f:
+                    f.write(f"Package: {package}\n    {file_path}\n")
+
+    def main(self) -> None:
+        args = self.parse_arguments()
+        pkg_paths = self.get_pkg_list(args.package_path)
+
+        # process each package log file
+        for pkg_path in pkg_paths:
+            pkg_name = os.path.basename(pkg_path)
+            try:
+                with open(pkg_path, 'r', encoding='utf-8', errors='ignore') as pkgfile:
+                    for line in pkgfile:
+                        line = line.strip()
+                        # only check lines that look like absolute file paths
+                        if line.startswith('/'):
+                            self.check_file_exists(line, pkg_name)
+            except (OSError, IOError) as e:
+                print(f"Error reading {pkg_name}: {e}")
+
+        # calculate system integrity percentage (down to two decimal places)
+        integrity = 100.0
+        if self.total_files > 0:
+            if self.missing_files > 0:
+                val = ((self.total_files - self.missing_files) / self.total_files) * 100
+                integrity = math.floor(val * 100) / 100.0
+
+        # print final summary report
+        print("-" * 30)
+        print(f"Total packages: {self.total_packages}")
+        print(f"Total files checked: {self.total_files}")
+        print(f"System integrity: {integrity:.2f}%")
+        print("-" * 30)
+
+        if self.has_missing:
+            print(f"Log file: {self.log_path}")
+        else:
+            # clean up log file if no issues were detected
+            print(f"{self.colors['lgreen']}Congratulations! All package files are in place.{self.colors['reset']}")
+            if os.path.exists(self.log_path):
+                os.remove(self.log_path)
+        print("-" * 30)
+
+if __name__ == "__main__":
+    try:
+        CheckSystemHealth().main()
+    except KeyboardInterrupt:
+        print("\nInterrupted by user. Exiting...")

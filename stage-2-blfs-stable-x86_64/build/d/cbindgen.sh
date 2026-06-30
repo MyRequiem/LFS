@@ -3,7 +3,9 @@
 PRGNAME="cbindgen"
 
 ### Cbindgen (generating C bindings for Rust code)
-# генерация C-bindings для Rust кода
+# Инструмент, который автоматически создает заголовочные файлы на C/C++ для
+# библиотек, написанных на Rust. Он позволяет программам на Си или C++ легко
+# «понимать» код на Rust и использовать его функции.
 
 # Required:    rustc
 # Recommended: no
@@ -11,9 +13,9 @@ PRGNAME="cbindgen"
 
 ###
 # NOTE
-###
 #    Для сборки требуется сеть Internet, поэтому СОБИРАЕМ ТОЛЬКО В ЧИСТОЙ LFS
 #    системе (не в chroot хоста)
+###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,6 +27,9 @@ mkdir -pv "${TMP_DIR}/usr/bin"
 cargo build --release || exit 1
 # cargo test --release
 install -Dm755 target/release/cbindgen "${TMP_DIR}/usr/bin/"
+
+# очистим rust кэш, мусор не нужен
+rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

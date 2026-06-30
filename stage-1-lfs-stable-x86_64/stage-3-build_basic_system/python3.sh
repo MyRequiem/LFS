@@ -11,12 +11,14 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                    || exit 1
 source "${ROOT}unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
-INSTALLED="$(find /var/log/packages/ -type f -name "python3-3.*")"
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-3.*")"
 if [ -n "${INSTALLED}" ]; then
-    INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
-    echo "${INSTALLED_VERSION} already installed. Before building Python3 "
-    echo "package, you need to remove it."
-    removepkg --no-color "${INSTALLED}"
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
 fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
@@ -38,7 +40,7 @@ make || make -j1 || exit 1
 # make test TESTOPTS="--timeout 120"
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 cat << EOF > "${TMP_DIR}/etc/pip.conf"
 [global]
@@ -48,8 +50,9 @@ root-user-action = ignore
 disable-pip-version-check = true
 EOF
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,8 +3,10 @@
 PRGNAME="guile"
 
 ### Guile (GNU's Ubiquitous Intelligent Language for Extension)
-# Реализация языка программирования Scheme, рекомендованная в качестве
-# скриптового языка, встраиваемого в программные продукты проекта GNU
+# Компактный интерпретатор языка программирования Scheme, созданный в рамках
+# проекта GNU. Он используется как встроенный язык расширения, позволяющий
+# пользователям писать свои скрипты для программ. Рекомендуется в качестве
+# скриптового языка, встраиваемого в программные продукты проекта GNU.
 
 # Required:    gc
 #              libunistring
@@ -20,7 +22,6 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 LIBS="/usr/share/gdb/auto-load/usr/lib"
 mkdir -pv "${TMP_DIR}${LIBS}"
 
-CC="gcc -std=gnu17"  \
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -30,11 +31,16 @@ make || exit 1
 # ./check-guile
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 mv "${TMP_DIR}/usr/lib/libguile-"*-gdb.scm "${TMP_DIR}${LIBS}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+ldconfig
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (GNU's Ubiquitous Intelligent Language for Extension)
@@ -46,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # choice of languages.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

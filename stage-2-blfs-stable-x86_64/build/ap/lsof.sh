@@ -3,12 +3,13 @@
 PRGNAME="lsof"
 
 ### lsof (list open files)
-# Утилита для вывода информации о файлах, которые открыты процессами,
-# запущенными в системе.
+# Полезная системная утилита для вывода подробного списка всех открытых в
+# данный момент файлов и сетевых соединений. Она незаменима для поиска
+# программ, которые блокируют диски или порты.
 
 # Required:    libtirpc
 # Recommended: no
-# Optional:    nmap     (для тестов)
+# Optional:    nmap         (для тестов)
 
 ### Конфигурация ядра (для запуска тестов)
 #    CONFIG_POSIX_MQUEUE=y
@@ -28,8 +29,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

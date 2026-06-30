@@ -19,9 +19,9 @@ mkdir -pv "${TMP_DIR}${ETC_DEFAULT}"
 # Coreutils предоставляет лучшую версию этой утилиты. Также отменим установку
 # ман-страниц, которые уже были установлены вместе с пакетом man-pages
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in || exit 1
-find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
-find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
-find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \+
+find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \+
+find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \+
 
 # вместо использования DES метода шифрования паролей (по умолчанию) будем
 # использовать более безопасный метод YESCRYPT, который также позволяет
@@ -55,10 +55,11 @@ make || make -j1 || exit 1
 make exec_prefix=/usr install DESTDIR="${TMP_DIR}"
 make -C man install-man DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 ###

@@ -2,6 +2,14 @@
 
 # Written for Linux From Scratch by MyRequiem <mrvladislavovich@gmail.com>
 
+# Properly uninstalls the specified package from the system. The utility
+# analyzes the installation log in /var/log/packages/, removes all associated
+# files and empty directories, and updates the system's installed software
+# database.
+#
+# Prevents "orphaned" files and maintains filesystem integrity after package
+# removal.
+
 if test "${EUID}" -ne 0; then
     echo "$(basename "$0") must be run as the root user! "
     exit 1
@@ -21,6 +29,7 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
     Packages that can only be updated and copied, but cannot be completely
     remove from the system:
         main-directory-tree
+        syshealth-utils
         lfs-bootscripts
         network-configuration
         system-v-configuration
@@ -35,20 +44,20 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
         zstd
         readline
 
-Params:
-  --fake            generate a report to the standard output about which files
-                    and directories would be removed, but does not actually
-                    remove the package
+Parameters:
+  --fake        Dry run: generate a report to standard output of files
+                and directories that would be removed without actually
+                deleting the package.
 
-  --backup        the complete package subtree is reconstructed in
-                    /var/log/setup/tmp/preserved/pkgname-version and then
-                    package will be deleted from system
+  --backup      Reconstruct the complete package subtree in
+                /var/log/setup/tmp/preserved/pkgname-version
+                before removing the package from the system.
 
-  --copy            the complete package subtree is reconstructed in
-                    /var/log/setup/tmp/preserved/pkgname-version
-                    but the package is not removed from the system
+  --copy        Reconstruct the complete package subtree in
+                /var/log/setup/tmp/preserved/pkgname-version
+                without removing the package from the system.
 
-  --no-color        do not colorize output
+  --no-color    Disable colorized output.
 
 EOF
 }
@@ -246,6 +255,7 @@ fi
 
 STRICT_PKGS="\
 main-directory-tree \
+syshealth-utils \
 lfs-bootscripts \
 network-configuration \
 system-v-configuration \

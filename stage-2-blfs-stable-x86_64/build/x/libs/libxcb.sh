@@ -3,11 +3,8 @@
 PRGNAME="libxcb"
 
 ### libxcb (X protocol C-language Binding)
-# Библиотеки предоставляющие интерфейс для протокола XCB (X protocol C-language
-# Binding), который полностью заменяет Xlib. Фактически, libX11 в наибольшей
-# степени использует libxcb. В портировании на XCB есть несколько преимуществ,
-# такие как использование меньшего объема памяти, скрытие задержки, прямой
-# доступ по протоколу и улучшенная поддержка потоков.
+# Библиотека для отправки команд графическому серверу. Она работает быстрее
+# старых аналогов и лучше справляется с многозадачностью в графических окнах.
 
 # Required:    libxau
 #              xcb-proto
@@ -33,8 +30,11 @@ LC_ALL=en_US.UTF-8 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

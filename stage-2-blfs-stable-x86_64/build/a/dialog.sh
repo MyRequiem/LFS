@@ -3,7 +3,9 @@
 PRGNAME="dialog"
 
 ### dialog (display dialog boxes from shell scripts)
-# утилита для создания диалоговых окон из сценариев оболочки
+# Удобная программка, которая позволяет разработчикам легко встраивать красивые
+# текстовые меню и окна вопросов прямо в командную строку. Это делает
+# управление системой через терминал гораздо нагляднее.
 
 # Required:    no
 # Recommended: no
@@ -36,9 +38,9 @@ mkdir -pv "${TMP_DIR}/etc"
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 # исправим проблемы форматирования
 zcat "${SOURCES}/${PRGNAME}.all.use_height.diff.gz" | \
@@ -58,13 +60,16 @@ zcat "${SOURCES}/${PRGNAME}.no.aspect.ratio.autoajust.patch.gz" | \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим статическую библиотеку
-rm -rf "${TMP_DIR}/usr/lib"
+rm -rf "${TMP_DIR}/usr/lib/lib${PRGNAME}.a"
 
 cat "${SOURCES}/dialogrc" > "${TMP_DIR}/etc/dialogrc" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

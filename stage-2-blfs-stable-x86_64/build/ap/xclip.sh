@@ -3,7 +3,10 @@
 PRGNAME="xclip"
 
 ### xclip (command-line interface to the X clipboard)
-# Утилита командной строки, предоставляющая интерфейс для работы с X clipboard
+# Маленькая, но мощная программа для терминала, которая связывает командную
+# строку с буфером обмена (интерфейс для работы с X clipboard). С её помощью
+# можно одной командой отправить вывод любого скрипта в «копировать -
+# вставить».
 
 # Required:    xorg-libraries
 # Recommended: no
@@ -26,8 +29,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,11 +3,9 @@
 PRGNAME="lzip"
 
 ### Lzip (a lossless data compressor)
-# Предоставляет алгорит сжатия данных без потерь с пользовательским
-# интерфейсом, аналогичным из gzip или bzip2. Lzip распаковывает почти так же
-# быстро, как gzip и сжимает лучше, чем bzip2, что делает его очень подходящим
-# для распространения программного обеспечения и архивирование данных. Lzip -
-# это чистая реализация алгоритма LZMA.
+# Мощный архиватор, который использует алгоритм LZMA для очень сильного сжатия
+# данных. Часто применяется для долгосрочного хранения важных бэкапов с высокой
+# степенью надежности.
 
 # Required:    no
 # Recommended: no
@@ -40,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # data archiving. Lzip is a clean implementation of the LZMA algorithm.
 #
 # Home page: https://www.nongnu.org/${PRGNAME}/${PRGNAME}.html
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://download.savannah.nongnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -4,11 +4,15 @@ PRGNAME="python3-pyxdg"
 ARCH_NAME="pyxdg"
 
 ### python-pyxdg (Python library to access freedesktop.org standards)
-# Python библиотека для доступа к стандартам freedesktop.org
+# Модуль для языка Python, который помогает программам строго следовать
+# стандартам консорциума freedesktop.org. Он отвечает за поиск правильных путей
+# к конфигурациям, иконкам и меню.
 
 # Required:    no
 # Recommended: no
-# Optional:    no
+# Optional:    --- для тестов ---
+#              python3-pytest
+#              shared-mime-info
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -16,6 +20,10 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
+
+# исправим сборку с Python 3.14
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-python3_14-fixes-1.patch" || exit 1
 
 pip3 wheel               \
     -w dist              \
@@ -31,6 +39,8 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -38,13 +48,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

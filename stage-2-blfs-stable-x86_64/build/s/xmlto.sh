@@ -3,9 +3,10 @@
 PRGNAME="xmlto"
 
 ### xmlto (front-end to a XSL toolchain)
-# Внешний интерфейс для цепочки инструментов XSL. Выбирает соответствующую
-# таблицу стилей для преобразования и применяет ее, используя внешний
-# XSLT-процессор. Также выполняет любую необходимую последующую обработку.
+# Удобная утилита-помощник, которая в одну команду превращает XML-документы
+# (например, DocBook) в нужный пользователю формат: HTML, PDF, текстовый файл,
+# man-страницу. Она сама находит и запускает все необходимые сложные программы
+# и стили, чтобы пользователю не пришлось делать это вручную.
 
 # Required:    docbook-xml
 #              docbook-xsl
@@ -37,8 +38,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

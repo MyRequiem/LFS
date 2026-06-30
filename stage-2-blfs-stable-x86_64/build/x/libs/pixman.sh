@@ -3,9 +3,11 @@
 PRGNAME="pixman"
 
 ### Pixman (pixel manipulation library)
-# Библиотека содержит низкоуровневые процедуры обработки пикселей такие как
-# компоновка изображений и трапецеидальная растеризация. Используется как xorg,
-# так и cairo.
+# Крошечная, но очень быстрая библиотека, которая занимается расчётами для
+# рисования пикселей на экране: смешиванием цветов, наложением теней и
+# масштабированием картинок. Она работает «под капотом» у таких гигантов, как
+# графический движок Cairo или сервер X.Org, отвечая за то, чтобы интерфейс
+# отрисовывался плавно.
 
 # Required:    no
 # Recommended: no
@@ -32,8 +34,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,12 +3,13 @@
 PRGNAME="libusb"
 
 ### libusb (USB library)
-# Библиотека, используемая некоторыми приложениями для доступа к USB
-# устройствам.
+# Библиотека, дающая программам возможность напрямую общаться с
+# USB-устройствами без специальных драйверов в ядре.
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen (для создания документации)
+# Optional:    doxygen     (для документации)
+#              umockdev    (для тестов)
 
 ### Конфигурация ядра
 #    CONFIG_USB_SUPPORT=y
@@ -30,8 +31,11 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# для тестов нужен пакет umockdev и конфигурация с --enable-tests-build
+# make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,13 +3,14 @@
 PRGNAME="libxslt"
 
 ### libxslt (XML transformation library)
-# Библиотеки поддержки XSLT для libxml2
-# (XSLT - язык, используемый для преобразования документов XML)
+# Инструмент для преобразования одних XML-документов в другие (например, в HTML
+# или текст) с помощью таблиц стилей.
 
 # Required:    libxml2
-# Recommended: docbook-xml
+# Recommended: --- runtime ---
+#              docbook-xml
 #              docbook-xsl
-# Optional:    libgcrypt
+# Optional:    libgcrypt        (требуется только для устаревшего криптографического расширения EXSLT)
 
 ### NOTE:
 # Recommended: docbook-xml и docbook-xsl
@@ -23,18 +24,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-DOC_DIR="/usr/share/doc"
 ./configure          \
     --prefix=/usr    \
     --disable-static \
-    --docdir="${DOC_DIR}/${PRGNAME}-${VERSION}" || exit 1
+    --without-python \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}${DOC_DIR}"
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -3,28 +3,18 @@
 PRGNAME="fltk"
 
 ### FLTK (The Fast Light Tool Kit)
-# Кросс-платформенная библиотека (Unix/Linux/Windows/MacOS) инструментов для
-# построения графического интерфейса пользователя (GUI). Изначально создавалась
-# для поддержки 3D графики и поэтому имеет встроенный интерфейс для OpenGL, но
-# хорошо подходит и для программирования обычных интерфейсов пользователя.
-# Библиотека использует свои собственные независимые системы виджетов, графики
-# и событий, что позволяет писать программы одинаково выглядящие и работающие
-# на разных операционных системах. В отличие от других подобных библиотек (Qt,
-# GTK+, wxWidgets) FLTK ограничивается только графической функциональностью,
-# поэтому она имеет малый размер, обычно компонуется статически, не использует
-# сложных макросов, препроцессоров и продвинутых возможностей языка C++
-# (шаблоны, исключения, пространства имен). Вкупе с малым размером кода, это
-# облегчает использование библиотеки не очень искушенными пользователями.
+# Невероятно компактная библиотека для создания оконных интерфейсов, которая
+# практически не потребляет системных ресурсов. Идеально подходит для маленьких
+# утилит, где важна скорость работы и малый размер.
 
 # Required:    xorg-libraries
-# Recommended: hicolor-icon-theme
+# Recommended: glu
+#              hicolor-icon-theme
 #              libjpeg-turbo
 #              libpng
 # Optional:    alsa-lib
 #              desktop-file-utils
 #              doxygen
-#              glu
-#              mesa
 #              texlive или install-tl-unx
 
 ROOT="/root/src/lfs"
@@ -46,35 +36,39 @@ cd "${PRGNAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# man-страницы устанавливаем в /usr/share/man/ а не в /usr/share/man/cat*
-sed -i -e '/cat./d' documentation/Makefile || exit 1
+mkdir build
+cd build || exit 1
 
-./configure       \
-    --prefix=/usr \
-    --enable-shared || exit 1
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D FLTK_BUILD_SHARED_LIBS=ON \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -G "Ninja" .. || exit 1
 
-make || exit 1
+ninja || exit 1
 
 # NOTE: тесты для пакета интерактивны
-# ./test/unittests
+# bin/test/unittests
 #
-# кроме того, в каталоге ./test есть еще 70 исполняемых тестовых программ,
+# кроме того, в каталоге ./test есть еще набор исполняемых тестовых программ,
 # которые можно запускать индивидуально
 
-make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
+DESTDIR="${TMP_DIR}" ninja install
 
-rm -vf "${TMP_DIR}/usr/lib/libfltk"*.a
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+rm -f "${TMP_DIR}/usr/lib/libfltk"*.a
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

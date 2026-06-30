@@ -3,8 +3,9 @@
 PRGNAME="libass"
 
 ### libass (Subtitle renderer for the ASS/SSA)
-# Портативный рендерер субтитров формата ASS/SSA (Advanced Substation
-# Alpha/Substation Alpha)
+# Библиотека для качественного рендеринга и отображения субтитров в
+# видеофайлах. Обеспечивает точное совпадение шрифтов и стилей текста с
+# задумкой автора видео.
 
 # Required:    freetype
 #              fribidi
@@ -28,8 +29,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

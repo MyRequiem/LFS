@@ -3,8 +3,9 @@
 PRGNAME="lximage-qt"
 
 ### lximage-qt (lightweight image viewer and screenshot program)
-# Простая и быстрая программа для просмотра изображений и создания снимков
-# экрана.
+# Легковесная и очень быстрая программа для просмотра изображений и фотографий
+# в среде LXQt. Она поддерживает базовые операции с графикой вроде
+# масштабирования и поворота, а также умеет быстро делать снимки экрана.
 
 # Required:    libfm-qt
 # Recommended: no
@@ -20,19 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 xdg-icon-resource forceupdate --theme hicolor || exit 1

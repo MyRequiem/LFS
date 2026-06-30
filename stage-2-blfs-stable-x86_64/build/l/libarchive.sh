@@ -3,9 +3,10 @@
 PRGNAME="libarchive"
 
 ### libarchive (archive reading library)
-# Портативная и эффективная библиотека C, которая может читать и писать
-# потоковые архивы в различных форматах, а также включает реализацию общих
-# инструментов командной строки tar, cpio и zcat
+# Универсальная библиотека, позволяющая программам работать с архивами разных
+# форматов (tar, zip, iso и др.) как с обычными каталогами, а также включает в
+# себя реализацию общих инструментов командной строки bsdcat, bsdcpio, bsdtar,
+# bsdunzip
 
 # Required:    no
 # Recommended: no
@@ -31,6 +32,8 @@ pkg-config lzo2 &>/dev/null && LZO2="--with-lzo2"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # создадим ссылку
 #    unzip -> bsdunzip

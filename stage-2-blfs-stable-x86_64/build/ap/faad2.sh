@@ -3,8 +3,9 @@
 PRGNAME="faad2"
 
 ### FAAD2 (MPEG2 and MPEG-4 AAC decoder)
-# Декодер для схемы сжатия звука с потерями, указанной в MPEG-2 Part 7 и MPEG-4
-# Part 3, известной как Advanced Audio Coding (AAC)
+# Очень быстрый программный декодер аудиопотоков формата AAC (Advanced Audio
+# Coding). Используется медиаплеерами для качественного воспроизведения музыки
+# и звуковых дорожек в современных видеофайлах.
 
 # Required:    cmake
 # Recommended: no
@@ -14,8 +15,7 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-PKG_VERSION="${VERSION//_/.}"
-TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKG_VERSION}"
+TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 mkdir build
@@ -31,14 +31,17 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # базовая функциональность может быть протестирована путем декодирования .aac
 # файла в .wav формат и последующего его воспроизведения
 #
-#    # faad -o sample.wav "${SOURCES}/sample.aac"
+#    $ faad -o sample.wav "${SOURCES}/sample.aac"
 #       должно отобразиться сообщение об авторских правах и информация о файле:
 #
 #           sample.aac file info:
@@ -54,9 +57,9 @@ source "${ROOT}/update-info-db.sh" || exit 1
 #           ---------------------
 #
 #    воспроизведем файл
-#    # aplay sample.wav
+#    $ aplay sample.wav
 
-cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (MPEG2 and MPEG-4 AAC decoder)
 #
 # FAAD2 is a decoder for a lossy sound compression scheme specified in MPEG-2
@@ -68,4 +71,4 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"
 EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
-    "${TMP_DIR}" "${PRGNAME}-${PKG_VERSION}"
+    "${TMP_DIR}" "${PRGNAME}-${VERSION}"

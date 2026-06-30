@@ -3,8 +3,9 @@
 PRGNAME="htop"
 
 ### htop (ncurses-based interactive process viewer)
-# ncurses утилита для просмотра и управления процессами. Похожа на 'top', но
-# более удобная и мощная
+# Наглядный и интерактивный монитор процессов для терминала (ncurses),
+# позволяющий удобно следить за нагрузкой на систему и управлять запущенными
+# программами.
 
 # Required:    no
 # Recommended: no
@@ -34,6 +35,8 @@ fi
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

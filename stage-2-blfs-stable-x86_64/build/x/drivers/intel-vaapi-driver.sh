@@ -3,8 +3,9 @@
 PRGNAME="intel-vaapi-driver"
 
 ### intel-vaapi-driver (VA driver for Intel G45 & HD Graphics family)
-# реализация VA-API для чипсетов Intel G45 и Intel HD Graphics
-# (семейство Intel Core)
+# Специальный драйвер для видеокарт Intel, который берет на себя тяжелую работу
+# по декодированию видео. Благодаря ему процессор меньше греется, а видео
+# высокого качества не тормозит.
 
 # Required:    libva
 # Recommended: no
@@ -13,6 +14,7 @@ PRGNAME="intel-vaapi-driver"
 ### Конфигурация ядра
 #    CONFIG_DRM=y|m
 #    CONFIG_DRM_I915=y|m
+#    CONFIG_DRM_XE=y|m
 
 ROOT="/root/src/lfs"
 source "$ROOT/check_environment.sh"                  || exit 1
@@ -29,8 +31,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,7 +3,9 @@
 PRGNAME="libptytty"
 
 ### libptytty (independent and secure pty/tty and utmp/wtmp/lastlog handling)
-# библиотека позволяющая безопасную обработка pty/tty и utmp/wtmp/lastlog
+# Техническая библиотека, которая помогает программам правильно создавать и
+# закрывать виртуальные консоли. Это важная деталь «под капотом» любого
+# эмулятора терминала.
 
 # Required:    cmake
 # Recommended: no
@@ -19,18 +21,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                                \
-    -D CMAKE_INSTALL_PREFIX=/usr     \
-    -D CMAKE_BUILD_TYPE=Release      \
-    -D PT_UTMP_FILE:STRING=/run/utmp \
+cmake                            \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -D PT_UTMP_FILE=/run/utmp    \
     .. || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

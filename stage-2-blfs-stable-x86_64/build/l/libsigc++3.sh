@@ -4,8 +4,9 @@ PRGNAME="libsigc++3"
 ARCH_NAME="libsigc++"
 
 ### libsigc++ version 3 (typesafe callback system for standard C++)
-# Библиотека реализует систему безопасных обратных вызовов (callbacks) для
-# стандарта C++
+# Библиотека, которая помогает разным частям сложной программы общаться между
+# собой с помощью сигналов (событий) и безопасных обратных вызовов (callbacks).
+# Часто встречается в графических интерфейсах.
 
 # Required:    no
 # Recommended: boost
@@ -36,27 +37,32 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим обнаружение Boost во время конфигурации пакета
+sed -i "s/'system',//" meson.build
+
 mkdir bld
 cd bld || exit 1
 
-meson setup                     \
-    --prefix=/usr               \
-    --buildtype=release         \
-    -Dbuild-documentation=false \
-    -Dbuild-examples=false      \
-    -Dbuild-tests=false         \
+meson setup                      \
+    --prefix=/usr                \
+    --buildtype=release          \
+    -D build-documentation=false \
+    -D build-examples=false      \
+    -D build-tests=false         \
     .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

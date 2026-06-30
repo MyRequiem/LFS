@@ -3,8 +3,8 @@
 PRGNAME="libva"
 
 ### libva (Video Acceleration API)
-# Библиотеки VAAPI (Video Acceleration API) для разрешения доступа к
-# аппаратному обеспечению для ускорения обработки видео и разгрузки ЦП
+# Библиотека, позволяющая видеокартам брать на себя задачу по обработке видео
+# (декодирование и кодирование), разгружая основной процессор.
 
 # Required:    libdrm
 # Recommended: mesa (циклическая зависимость: сначала собираем libva без
@@ -12,10 +12,10 @@ PRGNAME="libva"
 #                    установки mesa пересобираем libva)
 #              --- runtime ---
 #              intel-vaapi-driver
-#              intel-media
+#              intel-media-driver
 # Optional:    doxygen
 #              wayland
-#              intel-gpu-tools    (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
+#              intel-gpu-tools       (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -35,8 +35,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 /usr/sbin/ldconfig

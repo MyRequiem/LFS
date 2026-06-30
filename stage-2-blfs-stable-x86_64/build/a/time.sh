@@ -3,11 +3,12 @@
 PRGNAME="time"
 
 ### Time (the GNU time command for measuring program resource use)
-# Программа, которая измеряет ресурсы процессора, такие как время и память,
-# которые используют другие программы. Версия GNU может форматировать вывод
-# произвольно с помощью строки формата printf-style. Хотя оболочка bash имеет
-# встроенную команду 'time', обеспечивающую аналогичные функции, эта утилита
-# требуется LSB (Linux Standard Base)
+# Классическая консольная утилита, которая измеряет точное время выполнения
+# любой запущенной команды или программы. Она также показывает количество
+# затраченных системных ресурсов и оперативной памяти. Данная GNU версия может
+# форматировать вывод произвольно с помощью параметра --format. Хотя оболочка
+# bash имеет встроенную команду 'time', обеспечивающую аналогичные функции, эта
+# утилита требуется LSB (Linux Standard Base).
 
 # Required:    no
 # Recommended: no
@@ -20,10 +21,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим ошибку сборки с gcc-15
-sed -i 's/sighandler interrupt_signal/__sighandler_t interrupt_signal/' \
-    src/time.c || exit 1
-
 ./configure \
     --prefix=/usr || exit 1
 
@@ -31,8 +28,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Standard Base)
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

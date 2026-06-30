@@ -3,10 +3,10 @@
 PRGNAME="libev"
 
 ### libev (a high-performance event loop/model)
-# Полнофункциональный и высокопроизводительный пакет обработки событий,
-# созданный по образцу libevent, но без его ограничений и ошибок. Используется
-# в GNU Virtual Private Ethernet, rxvt-unicode, auditd и многих других
-# программах.
+# Высокоэффективная библиотека для программ, которым нужно следить за
+# множеством событий одновременно (сеть, таймеры, файлы, i3, rxvt-unicode и
+# т.д.). Она делает работу софта быстрой и предсказуемой даже под большой
+# нагрузкой.
 
 # Required:    no
 # Recommended: no
@@ -28,6 +28,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # чтобы не конфликтовать с пакетом libevent, мы перемещаем заголовок event.h во
 # вложенную директорию /usr/include/libev/ Затем, если для сборки какого-либо
 # софта требуется этот заголовок, нужно явно указать его местоположение
@@ -37,6 +39,7 @@ mv "${TMP_DIR}/usr/include/event.h" "${TMP_DIR}${HEADER_SUBFOLDER}/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

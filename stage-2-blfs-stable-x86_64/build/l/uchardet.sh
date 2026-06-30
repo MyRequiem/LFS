@@ -3,10 +3,9 @@
 PRGNAME="uchardet"
 
 ### Uchardet (encoding detector library)
-# библиотека для распознавания кодировок, которая принимает последовательность
-# байтов в неизвестной кодировке символов без какой-либо дополнительной
-# информации и пытается определить ее кодировку. Возвращаемые имена кодировок
-# совместимы с iconv
+# Библиотека для автоматического определения кодировки текста, основанная на
+# алгоритмах браузера Mozilla. Помогает программам корректно отображать символы
+# и избегать появления нечитаемых иероглифов.
 
 # Required:    cmake
 # Recommended: no
@@ -22,19 +21,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                                   \
+cmake ..                                \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D BUILD_STATIC=OFF                 \
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -W no-dev                           \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

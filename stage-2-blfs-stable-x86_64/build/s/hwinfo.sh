@@ -3,7 +3,10 @@
 PRGNAME="hwinfo"
 
 ### hwinfo (Hardware detection tool)
-# Утилита, обнаруживающая и отображающая оборудование компьютера (hardware)
+# Мощная системная утилита от проекта openSUSE для глубокого анализа и
+# идентификации аппаратного обеспечения компьютера. Она собирает подробные
+# технические характеристики процессора, материнской платы, дисков и
+# видеокарты.
 
 # Required:    libx86emu
 # Recommended: no
@@ -28,12 +31,15 @@ echo "${VERSION}" > VERSION
 make -j1 LIBDIR=/usr/lib                              || exit 1
 make -j1 LIBDIR=/usr/lib install DESTDIR="${TMP_DIR}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # man-страницы
 install -m 644 "doc/${PRGNAME}.8" "${TMP_DIR}${MANDIR}/man8/"
 install -m 644 doc/*.1            "${TMP_DIR}${MANDIR}/man1/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

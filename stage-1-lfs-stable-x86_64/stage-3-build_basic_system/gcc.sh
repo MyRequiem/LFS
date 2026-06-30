@@ -77,7 +77,7 @@ make || make -j1 || exit 1
 # установим пакет
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # создадим символическую ссылку в /usr/lib/, требуемую FHS по "историческим"
 # причинам
@@ -114,8 +114,9 @@ if [ -d /usr/x86_64-lfs-linux-gnu ]; then
     rm -f  /usr/lib/libstdc++.so.6.0.33-gdb.py
 fi
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 chmod 755 /usr/lib/libgcc_s.so{,.1}

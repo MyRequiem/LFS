@@ -3,7 +3,8 @@
 PRGNAME="graphene"
 
 ### Graphene (a thin layer of types for graphic libraries)
-# Тонкий слой типов для графических библиотек.
+# Быстрая математика для 3D. Библиотека оптимизирована специально для
+# мгновенных расчетов движения объектов в пространстве.
 
 # Required:    glib
 # Recommended: no
@@ -19,17 +20,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

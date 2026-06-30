@@ -3,9 +3,11 @@
 PRGNAME="libcap-ng"
 
 ### libcap-ng (capabilities library and utilities)
-# Библиотека предназначенная для программирования с возможностями POSIX. В
-# пакет также входят утилиты, помогающие проанализировать систему на предмет
-# запущенных программ, которые могут иметь слишком много привилегий.
+# Библиотека, позволяющая тонко настраивать права доступа для программ (POSIX
+# capabilities), не давая им лишних полномочий. Это значительно повышает
+# безопасность: если программа будет взломана, хакер не получит контроля над
+# всей системой. Создана как более простая и безопасная альтернатива
+# традиционной библиотеке libcap.
 
 # Required:    no
 # Recommended: no
@@ -28,8 +30,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

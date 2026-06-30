@@ -3,9 +3,9 @@
 PRGNAME="iso-codes"
 
 ### ISO Codes (ISO-standard lists)
-# Пакет предоставляет списки различных стандартов ISO (страна, язык, названия
-# валют и т.д.), которые используются в качестве центральной базы данных для
-# доступа к этим данным.
+# Огромный справочник стандартных названий стран, языков и валют. Программы
+# используют его, чтобы во всей системе географические названия отображались
+# единообразно и правильно переводились на русский язык.
 
 # Required:    no
 # Recommended: no
@@ -20,19 +20,18 @@ VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure \
+mkdir build
+cd build || exit 1
+
+meson setup .. \
     --prefix=/usr || exit 1
 
-make || exit 1
-# make check
-
-# если мы устанавливаем пакет поверх предыдущей установленной версии,
-# 'make install' потерпит неудачу при создании некоторых символических ссылок,
-# поэтому добавим параметр 'LN_S' для принудительного обновления ссылок
-make install LN_S='ln -sfn' DESTDIR="${TMP_DIR}"
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

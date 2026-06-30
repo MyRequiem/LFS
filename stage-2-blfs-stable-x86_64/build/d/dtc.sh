@@ -3,10 +3,9 @@
 PRGNAME="dtc"
 
 ### dtc (Device Tree Compiler for Flat Device Trees)
-# Инструмент, который переводит текстовое описание компьютерного железа в
-# специальный бинарный файл, понятный ядру Linux. Он помогает операционной
-# системе узнать, какие компоненты установлены в устройстве и как с ними
-# правильно работать.
+# Компилятор дерева устройств, который переводит понятные человеку описания
+# электроники в двоичный код для ядра операционной системы. Необходим для
+# правильной настройки аппаратной части компьютера.
 
 # Required:    no
 # Recommended: no
@@ -21,33 +20,31 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с glibc >=2.43
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-glibc_fixes-1.patch" || exit 1
-
 mkdir build
 cd build || exit 1
 
 # предотвращаем создание Python3 модуля с помощью устаревшего метода setup.py
-# Далее мы создадим модуль с помощью pip3 wheel
+# (далее мы создадим модуль с помощью pip3 wheel)
 #    -D python=disabled
-meson setup ..          \
-    --prefix=/usr       \
-    --buildtype=release \
+meson setup ..                \
+    --prefix=/usr             \
+    --buildtype=release       \
+    -D default_library=shared \
     -D python=disabled || exit 1
 
 ninja || exit 1
-
-# тесты
-# CC='gcc -Wl,-z,noexecstack' meson test -v
-
-# сразу устанавливаем в систему для дальнейшей сборки Python3 модуля
-ninja install
+# ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm /usr/lib/libfdt.a
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# соберем Python3 модуль
+# сразу устанавливаем в систему для дальнейшей сборки Python3 модуля
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
+
+# если установлен swig соберем Python3 модуль
 if command -v swig &>/dev/null; then
     pip3 wheel               \
         -w dist              \
@@ -62,13 +59,25 @@ if command -v swig &>/dev/null; then
         --find-links dist   \
         --no-user           \
         libfdt
+
+    rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+    # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+    # перемещаем ее в ${TMP_DIR}/usr/
+    PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
+    TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
+    [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
+        mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
+
+    # удаляем все скомпилированные байт-коды
+    rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+    rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
+
+    source "${ROOT}/stripping.sh"      || exit 1
+    source "${ROOT}/update-info-db.sh" || exit 1
+    source "${ROOT}/clean-locales.sh"  || exit 1
+    /bin/cp -vpR "${TMP_DIR}"/* /
 fi
-
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
-
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
-/bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Device Tree Compiler for Flat Device Trees)

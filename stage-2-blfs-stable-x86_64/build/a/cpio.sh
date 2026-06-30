@@ -3,8 +3,10 @@
 PRGNAME="cpio"
 
 ### cpio (backup and archiving utility)
-# Программа для управления архивами файлов. Пакет также включает mt - программу
-# управления накопителем на магнитной ленте.
+# Традиционный системный инструмент для создания файловых архивов и копирования
+# файлов в специальные архивные хранилища. Он активно используется при создании
+# загрузочных образов системы. Пакет также включает mt - программу управления
+# накопителем на магнитной ленте.
 
 # Required:    no
 # Recommended: no
@@ -37,8 +39,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -52,7 +57,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a pipe.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

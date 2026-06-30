@@ -3,8 +3,9 @@
 PRGNAME="fribidi"
 
 ### FriBidi (Unicode BiDirectional algorithm library)
-# Библиотека реализует двунаправленный алгоритм Unicode, который необходим для
-# поддержки языков с написанием справа налево, таких как арабский и иврит
+# Библиотека, которая учит программы правильно отображать текст, читающийся
+# справа налево (например, арабский или иврит). Она следит за тем, чтобы
+# символы выстраивались в нужном порядке и не перемешивались.
 
 # Required:    no
 # Recommended: no
@@ -30,6 +31,8 @@ meson setup             \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

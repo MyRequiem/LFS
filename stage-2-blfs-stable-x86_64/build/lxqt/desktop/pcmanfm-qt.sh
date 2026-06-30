@@ -3,15 +3,16 @@
 PRGNAME="pcmanfm-qt"
 
 ### pcmanfm-qt (file and desktop icon manager)
-# Файловый менеджер и менеджер значков на рабочем столе (Qt порт pcmanfm и
-# libfm)
+# Официальный и очень быстрый файловый менеджер для рабочего окружения LXQt,
+# переписанный на фреймворке Qt. Он обеспечивает удобную работу с папками,
+# вкладками и одновременно управляет выводом иконок на рабочий стол.
 
-# Required:    layer-shell-qt или plasma
+# Required:    layer-shell-qt       или plasma
 #              liblxqt
 #              libfm-qt
 #              lxqt-menu-data
-# Recommended: gvfs             (runtime)
-#              oxygen-icons     (или другая тема на выбор, т.к. в некоторых случаях могут отсутствовать иконки)
+# Recommended: gvfs                 (runtime)
+#              oxygen-icons         (или другая тема на выбор, т.к. в некоторых случаях могут отсутствовать иконки)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -24,16 +25,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # чтобы pcmanfm-qt было легче найти в меню, изменим .desktop файл
 sed -e '/Categories=/s/=/=System;FileTools;/'   \
@@ -42,6 +42,7 @@ sed -e '/Categories=/s/=/=System;FileTools;/'   \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

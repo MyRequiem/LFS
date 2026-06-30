@@ -3,7 +3,9 @@
 PRGNAME="lxqt-themes"
 
 ### lxqt-themes (graphics files and themes for the LXQt desktop)
-# Набор графических файлов и тем для рабочего стола LXQt
+# Официальный комплект стандартных тем оформления, обоев рабочего стола и
+# графических стилей для среды LXQt. Эти файлы задают внешний вид панелей, меню
+# и других элементов интерфейса по умолчанию.
 
 # Required:    lxqt-build-tools
 # Recommended: no
@@ -19,19 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

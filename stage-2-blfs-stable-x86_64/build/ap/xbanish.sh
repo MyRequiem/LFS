@@ -3,7 +3,9 @@
 PRGNAME="xbanish"
 
 ### xbanish (banish the mouse cursor when typing)
-# Утилита, которая прячет курсор при наборе текста (при нажатии любой клавиши)
+# Эстетичная утилита, которая мгновенно прячет курсор мыши, как только вы
+# начинаете набирать текст на клавиатуре. Это помогает сосредоточиться на
+# печати и не загораживать себе обзор.
 
 # Required:    no
 # Recommended: no
@@ -23,8 +25,11 @@ make install                   \
     MANDIR=/usr/share/man/man1 \
     DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

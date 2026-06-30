@@ -2,17 +2,32 @@
 
 PRGNAME="sshfs"
 
-### sshfs (filesystem client based on the SSH)
-# sshfs (Secure SHell FileSystem) - клиентская программа для Linux,
-# используемая для удаленного управления файлами по протоколу SSH (точнее, его
-# расширению SFTP) таким образом, как будто они находятся на локальном
-# компьютере.
+### sshfs (Secure SHell FileSystem)
+# Утилита, позволяющая подключить папку с удаленного сервера так, будто она
+# находится прямо на вашем компьютере, через протокол SSH.
 
 # Required:    fuse3
 #              glib
 #              openssh
 # Recommended: no
 # Optional:    python3-docutils (для создания man-страниц)
+
+###
+# HOW TO:
+###
+# Например, чтобы подключить удаленную директорию к локальному пути
+# ~/examplepath (каталог должен существовать, и у вас должны быть разрешения на
+# запись в него):
+#    $ sshfs example.com:/home/username ~/examplepath
+#
+# Размонтировать можно несколькими способами:
+#    $ fusermount3 -u ~/examplepath
+#    или
+#    $ umount ~/examplepath
+#
+# Монтируем удаленную директорию /home/myrequiem/tmp в локальную ~/tmp/slackSSH
+#    $ mkdir -p ~/tmp/slackSSH
+#    $ sshfs myrequiem@slack:/home/myrequiem/tmp ~/tmp/slackSSH
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,21 +39,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # пакет не содержит набора тестов
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
-# Package: ${PRGNAME} (filesystem client based on the SSH)
+# Package: ${PRGNAME} (Secure SHell FileSystem)
 #
 # The Sshfs package contains a filesystem client based on the SSH File Transfer
 # Protocol. This is useful for mounting a remote computer that you have ssh

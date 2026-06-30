@@ -4,8 +4,8 @@ PRGNAME="lmdb"
 ARCH_NAME="openldap-LMDB"
 
 ### LMDB (Lightning Memory-Mapped Database)
-# Сверхбыстрое и сверхкомпактное встроенное хранилище данных 'ключ-значение'.
-# Разработан для проекта OpenLDAP
+# Сверхбыстрая и компактная база данных "ключ-значение" в виде обычного файла,
+# оптимизированная для мгновенного чтения.
 
 # Required:    no
 # Recommended: no
@@ -36,9 +36,9 @@ cd "${ARCH_NAME}_${VERSION}-${HASH_COMMIT}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 cd libraries/liblmdb || exit 1
 
@@ -47,6 +47,8 @@ make || exit 1
 sed -i 's| liblmdb.a||' Makefile
 # пакет не имеет набора тестов
 make prefix=/usr install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

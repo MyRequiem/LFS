@@ -3,11 +3,8 @@
 PRGNAME="libevent"
 
 ### libevent (event loop library)
-# Библиотека обеспечивающая асинхронное уведомление о событиях. Libevent API
-# предоставляет механизм выполнения функции callback, когда конкретное событие
-# происходит в файловом дескрипторе или по истечении времени ожидания. libevent
-# также поддерживает обратные вызовы, запускаемые сигналами и регулярными
-# тайм-аутами.
+# Библиотека для эффективной обработки сетевых событий, позволяющая программам
+# быстро обслуживать тысячи одновременных соединений.
 
 # Required:    no
 # Recommended: no
@@ -32,9 +29,9 @@ cd "${PRGNAME}-${VERSION}-stable" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -53,6 +50,8 @@ make || exit 1
 # make verify
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

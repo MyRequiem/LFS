@@ -3,13 +3,11 @@
 PRGNAME="gimp"
 
 ### Gimp (The GNU Image Manipulation Program)
-# Мощный инструмент для обработки цифровых изображений. GIMP предоставляет
-# пользователю широкий выбор инструментов для работы с изображениями,
-# рисования, обработки и рендеринга. Открытая и расширяемая архитектура GIMP
-# делают его очень удобным инструментом для ретуши фотографий и изображений,
-# веб-графики, дизайна или цифровой иллюстрации.
+# Профессиональный растровый графический редактор, предназначенный для ретуши
+# фотографий, создания рисунков, коллажей, веб-графики и т.д. Это мощный
+# бесплатный аналог популярных коммерческих программ.
 
-# Required:    appstream-glib
+# Required:    appstream
 #              gegl
 #              gexiv2
 #              glib-networking
@@ -21,7 +19,7 @@ PRGNAME="gimp"
 #              libxml2
 #              lcms2
 #              mypaint-brushes
-#              poppler
+#              poppler              (собранный с poppler-date)
 # Recommended: graphviz
 #              ghostscript
 #              iso-codes
@@ -30,9 +28,9 @@ PRGNAME="gimp"
 #              xdg-utils
 # Optional:    aalib
 #              alsa-lib
-#              appstream            (для одного теста)
 #              python3-gi-docgen
 #              gjs
+#              libheif
 #              libjxl
 #              libmng
 #              libunwind
@@ -43,8 +41,6 @@ PRGNAME="gimp"
 #              libbacktrace         (https://github.com/ianlancetaylor/libbacktrace)
 #              libiff               (https://github.com/svanderburg/libiff)
 #              libilbm              (https://github.com/svanderburg/libilbm)
-#              libheif              (https://github.com/strukturag/libheif/)
-#              libde265             (https://github.com/strukturag/libde265/)
 #              libwmf               (https://wvware.sourceforge.net/libwmf.html)
 #              openexr              (https://www.openexr.com/)
 #              qoi                  (https://github.com/phoboslab/qoi)
@@ -63,13 +59,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# при обновлении с предыдущей версии удалим некоторые файлы и каталоги из
+# При обновлении с предыдущей версии удалим некоторые файлы и каталоги из
 # старой установки, иначе система сборки может ошибочно их подобрать, что
 # приведет к сбою
 rm -rf /usr/{lib,share}/gimp/3.0
 rm -f  /usr/share/gir-1.0/Gimp-3.0.gir
 rm -f  /usr/lib/girepository-1.0/Gimp-3.0.typelib
 rm -f  /usr/lib/libgimp*-3.0.so*
+
+# исправим сборку с  gexiv2 >=0.16.0
+MAC_OS="build/macos/patches"
+patch --verbose -Np1 -i \
+    "${MAC_OS}/0001-build-macos-Do-not-require-gexiv2-0.14-on-homebrew.patch" \
+        || exit 1
 
 mkdir gimp-build
 cd gimp-build || exit 1
@@ -83,13 +85,14 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим кэш иконок и базу desktop-файлов
+# Обновим кэш иконок и базу desktop-файлов:
 #    /usr/share/icons/hicolor/index.theme
 #    /usr/share/applications/mimeinfo.cache
 gtk-update-icon-cache -qtf /usr/share/icons/hicolor

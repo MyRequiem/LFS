@@ -3,9 +3,8 @@
 PRGNAME="libssh2"
 
 ### Libssh2 (SSH2 library)
-# Многоплатформенная библиотека C, реализующая протоколы SSHv2 на стороне
-# клиента и сервера. С libssh можно удаленно выполнять программы, передавать
-# файлы и использовать безопасный и прозрачный туннель
+# Библиотека, позволяющая программам безопасно передавать данные и выполнять
+# команды через зашифрованный протокол SSH
 
 # Required:    no
 # Recommended: no
@@ -30,6 +29,8 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

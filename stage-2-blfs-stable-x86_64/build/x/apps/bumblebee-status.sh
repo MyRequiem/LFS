@@ -3,11 +3,16 @@
 PRGNAME="bumblebee-status"
 
 ### bumblebee-status (status line generator for i3wm)
-# Модульный генератор строки состояния для оконного менеджера i3
+# Гибкий и модульный конструктор информационной полосы (статус-бара) для
+# оконного менеджера i3. Позволяет выводить заряд батареи, время, погоду и
+# любые другие системные данные.
 
 # Required:    i3
-# Recommended: python3-psutil    (для модулей cpu и cpu2)
-#              hddtemp           (для модуля hddtemp)
+# Recommended: --- runtime ---
+#              python3-psutil       (для модулей cpu, cpu2 и др.)
+#              hddtemp              (для модуля hddtemp)
+#              pavucontrol          (для модуля pulseaudio: pasink.right-click="pavucontrol")
+#              zenity               (для модуля date: date_custom.click_cmd="zenity --calendar")
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -20,8 +25,11 @@ mkdir -pv "${TMP_DIR}"
 python3 setup.py build || exit 1
 python3 setup.py install --optimize=1 --root="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

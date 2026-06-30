@@ -3,7 +3,9 @@
 PRGNAME="gpgmepp"
 
 ### gpgmepp (C++ wrapper to gpgme)
-# C++ оболочка (библиотека) для gpgme
+# Специальная программная обертка на языке C++ для удобного использования
+# функций шифрования GnuPG. Она помогает разработчикам быстро добавлять защиту
+# данных и цифровые подписи в свои приложения.
 
 # Required:    cmake
 #              gpgme
@@ -20,16 +22,18 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+cmake .. \
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make || exit
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

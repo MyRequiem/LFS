@@ -3,7 +3,8 @@
 PRGNAME="xxkb"
 
 ### xxkb (simple X keyboard layout switcher)
-# Переключатель и индикатор раскладки клавиатуры
+# Индикатор раскладки клавиатуры в трее. Умеет запоминать язык для каждого окна
+# отдельно: например, в браузере - русский, а в терминале - английский.
 
 # Required:    imake
 # Recommended: no
@@ -28,9 +29,9 @@ cd "${PRGNAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN_DIR="/usr/share/man/man1"
@@ -40,11 +41,14 @@ xmkmf                          || exit 1
 make EXTRA_DEFINES=-USHAPE_EXT || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 cp "${PRGNAME}.man" "${TMP_DIR}${MAN_DIR}/${PRGNAME}.1"
 rm -rf "${TMP_DIR}/usr/lib"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

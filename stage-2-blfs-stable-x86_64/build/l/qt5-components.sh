@@ -4,16 +4,14 @@ PRGNAME="qt5-components"
 ARCH_NAME="qt-everywhere-opensource-src"
 
 ### Qt (a multi-platform C++ graphical user interface toolkit)
-# Кроссплатформенный C++ фреймворк, широко использующийся для разработки
-# прикладного программного обеспечения с графическим пользовательским
-# интерфейсом (GUI), а также для разработки программ без графического
-# интерфейса (инструменты командной строки и консоли для серверов). Одним из
-# основных пользователей Qt является KDE Frameworks 5 (KF5)
+# Набор ключевых библиотек пятого поколения Qt, которые служат каркасом для
+# множества графических приложений. Эти компоненты отвечают за отрисовку
+# кнопок, работу с сетью и мультимедиа в программах, еще не перешедших на Qt6.
 
 # Required:    xorg-libraries
 # Recommended: alsa-lib
 #              at-spi2-core
-#              cups
+#              libcups или cups
 #              dbus
 #              double-conversion
 #              glib
@@ -30,7 +28,7 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              xcb-util-wm
 # Optional:    gtk+3
 #              libinput
-#              mariadb или mysql (https://www.mysql.com/)
+#              mariadb или mysql        (https://www.mysql.com/)
 #              mit-kerberos-v5
 #              mtdev
 #              postgresql
@@ -55,41 +53,19 @@ cd "qt-everywhere-src-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 
 # NOTE:
 # Qt5 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
 # устанавливать в /opt/qt5-${VERSION}
-export QT5PREFIX=/opt/qt5
-
-# /etc
-#     |
-#     profile.d/qt5.sh
-#     sudoers.d/qt5
-#     ld.so.conf.d/qt5.conf
-# /usr
-#     |
-#     bin/
-# /opt
-#     |
-#     qt5               (ссылка на qt5-${VERSION}/)
-#     qt5-${VERSION}/
+export QT5PREFIX="/opt/qt5-${VERSION}"
 
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d,ld.so.conf.d},usr/bin}
-mkdir -pv "${TMP_DIR}${QT5PREFIX}-${VERSION}"
-# qt5 -> qt5-${VERSION}
-ln -sv "qt5-${VERSION}" "${TMP_DIR}${QT5PREFIX}-${VERSION}/../qt5"
-
-# исправления, предложенные KDE
-patch -Np1 --verbose -i \
-    "${SOURCES}/${ARCH_NAME}-${VERSION}-kf5-1.patch" || exit 1
-
-# патч предполагает наличие git репозитория
-mkdir -pv qtbase/.git
+mkdir -pv "${TMP_DIR}${QT5PREFIX}"
 
 # список компонентов в файле tempconf, которые будут пропущены при компиляции
 # shellcheck disable=SC2010
@@ -161,21 +137,21 @@ make install INSTALL_ROOT="${TMP_DIR}"
 #    /opt/qt5/lib/libQt5MultimediaQuick.prl
 #    ...
 find "${TMP_DIR}${QT5PREFIX}"/ -name "*.prl" \
-    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
 
-QT5BINDIR="${QT5PREFIX}/bin"
 # некоторые пакеты, например vlc, ищут определенные исполняемые файлы в
 # /usr/bin с суффиксом -qt5, поэтому создадим необходимые ссылки
 #    /usr/bin/qmake-qt5 -> /opt/qt5-${VERSION}/bin/qmake
 #    /usr/bin/moc-qt5   -> /opt/qt5-${VERSION}/bin/moc
 #    ...
+QT5BINDIR="${QT5PREFIX}/bin"
 for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
     ln -sfv "../..${QT5BINDIR}/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
 done
 
 # добавим путь поиска библиотек для динамического загрузчика
 cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/qt5.conf"
-/opt/qt5/lib
+${QT5PREFIX}/lib
 EOF
 
 # QT5DIR также должен быть доступен пользователю root

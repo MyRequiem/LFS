@@ -1,0 +1,121 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Author:  MyRequiem <mrvladislavovich@gmail.com>
+
+Scans /etc/rc.d/rcX.d/ directories to identify duplicate or broken symbolic
+links. Ensures that multiple runlevel links do not point to the same service
+script and that all existing links have valid targets.
+"""
+
+import os
+import sys
+import time
+import argparse
+from collections import defaultdict
+
+def main():
+    # ensure the script is run with root privileges
+    if os.geteuid() != 0:
+        sys.exit("Error: Root privileges are required to run this script.")
+
+    # argument parser configuration
+    parser = argparse.ArgumentParser(
+        description="Check and audit symbolic links in /etc/rc.d/rcX.d/"
+    )
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Show all links, not just duplicates or broken ones"
+    )
+
+    args = parser.parse_args()
+
+    rc_base = '/etc/rc.d'
+    # ANSI color codes for terminal output
+    colors = {
+        'lred': '\x1b[1;31m',
+        'lgreen': '\x1b[1;32m',
+        'reset': '\x1b[0m',
+        'yellow': '\x1b[1;33m'
+    }
+
+    # filter and sort directories like rc0.d, ... rc6.d,  rcS.d
+    rc_dirs = sorted([d for d in os.listdir(rc_base) if d.startswith('rc') and d.endswith('.d')])
+    found_issues = False
+
+    for rcd in rc_dirs:
+        dir_path = os.path.join(rc_base, rcd)
+        targets = defaultdict(list)
+        broken_links = []
+        all_links = []
+
+        # scan each directory for symbolic links
+        for entry in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, entry)
+            if os.path.islink(file_path):
+                target = os.path.realpath(file_path)
+                all_links.append(entry)
+                if not os.path.exists(target):
+                    broken_links.append(entry)
+                else:
+                    targets[target].append(entry)
+
+        header_printed = False
+
+        def print_header():
+            nonlocal header_printed
+            if not header_printed:
+                print(f"\n{colors['lgreen']}[ Directory: {dir_path} ]{colors['reset']}")
+                header_printed = True
+
+        # if verbose mode is enabled, display the full audit of all links
+        if args.verbose and all_links:
+            print_header()
+            print(f"{colors['yellow']}Full audit (all links):{colors['reset']}")
+            for l in sorted(all_links):
+                full_link_path = os.path.join(dir_path, l)
+                mtime = os.lstat(full_link_path).st_mtime
+                t_str = time.strftime('%d-%m-%Y %H:%M:%S', time.localtime(mtime))
+                print(f"  -> {l:<12} (Modified: {t_str})")
+
+        # report duplicate links pointing to the same target
+        for target, links in targets.items():
+            if len(links) > 1:
+                found_issues = True
+                print_header()
+                print(f"Duplicate links for target: {os.path.basename(target)}")
+                for l in sorted(links):
+                    full_link_path = os.path.join(dir_path, l)
+                    mtime = os.lstat(full_link_path).st_mtime
+                    t_str = time.strftime('%d-%m-%Y %H:%M:%S', time.localtime(mtime))
+                    print(f"  -> {colors['lred']}{l:<12}{colors['reset']} (Modified: {t_str})")
+
+        # report broken symlinks
+        if broken_links:
+            found_issues = True
+            print_header()
+            print(f"{colors['lred']}Broken links found (target missing):{colors['reset']}")
+            for bl in sorted(broken_links):
+                print(f"  -> {bl}")
+
+    # final summary message
+    if not found_issues:
+        if args.verbose:
+            print(f"{colors['lgreen']}Audit complete. Everything looks fine.{colors['reset']}")
+        else:
+            print(f"{colors['lgreen']}Congratulations! No duplicate or broken rc-links found in {rc_base}/rcX.d/{colors['reset']}")
+    else:
+        print("-" * 30)
+        print("Review the red entries and remove outdated links manually.")
+        print("-" * 30)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\nInterrupted. Exiting...")
+        sys.exit(1)

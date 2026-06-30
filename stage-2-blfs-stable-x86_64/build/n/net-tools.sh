@@ -3,8 +3,8 @@
 PRGNAME="net-tools"
 
 ### Net-tools (base Linux networking utilities)
-# Основной набор инструментов, таких как route, arp и т. д., которые
-# используется для настройки сетевой подсистемы ядра Linux.
+# Классический набор инструментов для настройки сети и просмотра параметров
+# сетевых интерфейсов.
 
 # Required:    no
 # Recommended: no
@@ -33,6 +33,8 @@ rm -f  "${TMP_DIR}/usr/bin"/{nis,yp}domainname
 rm -f  "${TMP_DIR}/usr/bin"/{hostname,dnsdomainname,domainname,ifconfig}
 rm -f  "${TMP_DIR}/usr/share/man/man8/ifconfig.8"
 rm -rf "${TMP_DIR}/usr/share/man/man1"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

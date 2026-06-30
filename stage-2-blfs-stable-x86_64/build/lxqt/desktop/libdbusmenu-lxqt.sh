@@ -3,7 +3,9 @@
 PRGNAME="libdbusmenu-lxqt"
 
 ### libdbusmenu-lxqt (Qt implementation of the DBusMenu protocol)
-# Реализация DBusMenu протокола на Qt
+# Специализированный модуль, который позволяет передавать структуры меню
+# графических приложений через системную шину данных D-Bus. Он используется для
+# вывода меню программ в общую панель задач.
 
 # Required:    cmake
 # Recommended: no
@@ -20,20 +22,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

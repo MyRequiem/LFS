@@ -3,8 +3,8 @@
 PRGNAME="archivemount"
 
 ### archivemount (mounts an archive for access as a file system)
-# Виртуальная файловая система, основанная на FUSE для файловых архивов tar,
-# pax, cpio, образы iso9660 (CD-ROM), zip, shar, rar 7z
+# Основанная на FUSE утилита для монтирования архивов, позволяющая открывать и
+# изменять содержимое архива так же просто, как файлы в обычной директории.
 
 # Required:    libarchive
 #              fuse3
@@ -30,9 +30,9 @@ cd "${PRGNAME}-ng-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -41,6 +41,8 @@ sed -i '/^\.Li.*umount/s,umount,fusermount Fl u,' "${PRGNAME}.1.in" || exit 1
 
 make VERSION="${VERSION}"
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

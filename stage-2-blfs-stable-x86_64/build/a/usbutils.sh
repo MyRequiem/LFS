@@ -3,8 +3,9 @@
 PRGNAME="usbutils"
 
 ### usbutils (USB utilities)
-# Утилиты, используемые для отображения информации о шинах USB в системе и
-# подключенных к ним устройствах
+# Комплект сервисных утилит для вывода подробной информации о шинах USB в
+# системе и подключенных к компьютеру USB-устройствах. В его состав входит
+# известная команда lsusb для диагностики оборудования.
 
 # Required:    libusb
 # Recommended: hwdata    (runtime)
@@ -28,8 +29,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

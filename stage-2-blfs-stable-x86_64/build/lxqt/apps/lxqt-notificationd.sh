@@ -3,8 +3,9 @@
 PRGNAME="lxqt-notificationd"
 
 ### lxqt-notificationd (LXQt notification daemon)
-# Реализация демона уведомлений LXQt в соответствии со спецификацией
-# уведомлений рабочего стола.
+# Системный демон, отвечающий за сбор, обработку и вывод всплывающих
+# графических уведомлений на рабочем столе. Он аккуратно показывает сообщения
+# от программ в углу экрана, не отвлекая пользователя от работы.
 
 # Required:    liblxqt
 # Recommended: no
@@ -20,19 +21,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

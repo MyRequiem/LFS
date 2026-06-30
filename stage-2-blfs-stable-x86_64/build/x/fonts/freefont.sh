@@ -3,8 +3,9 @@
 PRGNAME="freefont"
 
 ### GNU FreeFont (free family of scalable outline fonts)
-# Семейство масштабируемых контурных шрифтов, подходящих для общего
-# использования и совместимые со всеми современными операционными системами.
+# Большая коллекция свободных шрифтов на все случаи жизни. Она включает в себя
+# как классические варианты для печати документов, так и современные экранные
+# шрифты, заменяя собой платные аналоги.
 
 # Required:    xorg-applications
 #              fontconfig
@@ -32,9 +33,9 @@ tar -C otf -xvf "${SOURCES}/${PRGNAME}-otf-${VERSION}"*.tar.?z* || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"

@@ -3,22 +3,23 @@
 PRGNAME="imlib2"
 
 ### imlib2 (successor to Imlib)
-# Графическая библиотека для быстрой загрузки, сохранения, рендеринга,
-# модификации изображений
+# Высокопроизводительный графический движок, способный обрабатывать изображения
+# с невероятной скоростью. Он идеально подходит для программ, которым нужно
+# мгновенно масштабировать, поворачивать или фильтровать картинки.
 
 # Required:    xorg-libraries
 # Recommended: giflib
 #              librsvg
 # Optional:    doxygen
 #              highway
+#              libheif
 #              libjpeg-turbo
 #              libjxl
 #              libpng
 #              libtiff
 #              libwebp
-#              libheif      (https://github.com/strukturag/libheif)
-#              libid3tag    (https://sourceforge.net/projects/mad/)
-#              libspectre   (https://www.freedesktop.org/wiki/Software/libspectre/)
+#              libid3tag            (https://sourceforge.net/projects/mad/)
+#              libspectre           (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -35,8 +36,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

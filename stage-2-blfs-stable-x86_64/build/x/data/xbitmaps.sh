@@ -3,7 +3,9 @@
 PRGNAME="xbitmaps"
 
 ### xbitmaps (miscellaneous X bitmap files)
-# Пакет содержит растровые изображения, используемые X-приложениями
+# Коллекция маленьких черно-белых изображений в специальном формате, которые
+# используются системой для создания текстур фона, узоров и простейших иконок в
+# старых графических приложениях.
 
 # Required:    util-macros
 # Recommended: no
@@ -24,8 +26,11 @@ mkdir -pv "${TMP_DIR}"
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

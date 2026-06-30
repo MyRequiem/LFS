@@ -3,7 +3,9 @@
 PRGNAME="libkscreen"
 
 ### libkscreen (KDE Screen Management library)
-# Библиотека управления экраном KDE
+# Внутренний системный модуль KDE, управляющий настройками мониторов и экранных
+# разрешений. Он отвечает за правильное поведение системы при подключении
+# проекторов или нескольких дисплеев.
 
 # Required:    kwayland
 #              plasma-wayland-protocols
@@ -26,42 +28,26 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                                   \
+cmake ..                                \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D CMAKE_BUILD_TYPE=Release         \
     -D CMAKE_INSTALL_LIBEXECDIR=libexec \
     -D KDE_INSTALL_USE_QT_SYS_PATHS=ON  \
     -D BUILD_TESTING=OFF                \
-    -W no-dev                           \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # удалим systemd модуль, который бесполезен в нашей System V системе
 rm -fv "${TMP_DIR}/usr/lib/systemd/user/plasma-kscreen.service"
 
-###
-# WARNINIG
-###
-# Пакет устанавливает плагины в директорию /opt/qt6
-#    /opt/qt6/plugins/kf6/kscreen/KSC_Fake.so и другие в эту же директорию
-# но /opt/qt6 является ссылкой на директорию qt6-x.x.x
-#
-# В данном случае плагин установлен в директорию
-#    DESTDIR/opt/qt6/plugins/kf6/kscreen/
-# поэтому при копировании директории DESTDIR/opt/qt6 в корень системы
-# произойдет ошибка, т.к. существует ссылка /opt/qt6
-#
-# Переименуем DESTDIR/opt/qt6 в qt6-x.x.x
-REAL_QT6DIR="/opt/$(readlink "${QT6DIR}")"
-mv "${TMP_DIR}${QT6DIR}" "${TMP_DIR}${REAL_QT6DIR}"
-
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

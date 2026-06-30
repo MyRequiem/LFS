@@ -3,8 +3,10 @@
 PRGNAME="xcb-util-image"
 
 ### xcb-util-image (port of Xlib's XImage and XShmImage functions)
-# Пакет предоставляет дополнительные расширения для библиотеки XCB (X protocol
-# C-language Binding)
+# Программный модуль для библиотеки XCB, предназначенный для эффективного
+# управления изображениями и пиксельными картами в графической среде. Он
+# позволяет приложениям быстро загружать, изменять и выводить картинки на
+# экран, используя ресурсы X-сервера.
 
 # Required:    xcb-util
 # Recommended: no
@@ -26,8 +28,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

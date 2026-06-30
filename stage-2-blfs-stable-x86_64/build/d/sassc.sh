@@ -3,8 +3,9 @@
 PRGNAME="sassc"
 
 ### SassC (Sass CSS preprocessor)
-# Sass - язык препроцессора CSS, позволяющий добавлять новые возможности CSS.
-# SassC - командная оболочка для библиотеки libsass
+# Инструмент для сборки стильных интерфейсов (язык препроцессора CSS).
+# Превращает исходный код тем оформления в готовые файлы дизайна для окон
+# графических приложений.
 
 # Required:    no
 # Recommended: no
@@ -30,10 +31,16 @@ make || exit 1
 # пакет не имеет набора тестов
 # установим в ${TMP_DIR} и сразу в систему
 make install DESTDIR="${TMP_DIR}"
-make install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
+/bin/cp -vpR "${TMP_DIR}"/* /
 
 # теперь собираем оболочку командной строки
-popd &&
+popd || exit 1
 autoreconf -fi &&
 ./configure \
     --prefix=/usr || exit 1
@@ -42,8 +49,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

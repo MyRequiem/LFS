@@ -4,7 +4,9 @@ PRGNAME="python3-mako"
 ARCH_NAME="mako"
 
 ### Mako (A python templating language)
-# Python модуль, реализующий сверхбыстрое и легкое создание шаблонов
+# Сверхбыстрый «движок» для создания текстовых шаблонов. Программисты
+# используют его, чтобы быстро генерировать веб-страницы или части программного
+# кода на основе заданных правил.
 
 # Required:    no
 # Recommended: no
@@ -31,6 +33,8 @@ pip3 install            \
     --no-user           \
     Mako || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -38,13 +42,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

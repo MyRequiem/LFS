@@ -3,14 +3,15 @@
 PRGNAME="babl"
 
 ### babl (pixel format translation library)
-# Динамические библиотеки преобразования любого формата пикселей, а также
-# фреймворк для добавления новых цветовых моделей и типов данных.
+# Специализированный графический модуль, который отвечает за точное и быстрое
+# преобразование пикселей между различными цветовыми форматами. Он является
+# ключевой деталью для редактора GEGL.
 
 # Required:    no
 # Recommended: glib
 #              librsvg
-# Optional:    lcms2
-#              w3m      (http://w3m.sourceforge.net/)
+#              lcms2
+# Optional:    w3m          (http://w3m.sourceforge.net/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,18 +23,20 @@ mkdir -pv "${TMP_DIR}"
 mkdir bld
 cd bld || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D with-docs=false  \
-    .. || exit 1
+    -D with-docs=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

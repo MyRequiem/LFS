@@ -3,48 +3,28 @@
 PRGNAME="libvirt"
 
 ### libvirt (The virtualization API)
-# Набор инструментов для взаимодействия с возможностями виртуализации ядра
-# Linux
+# Главный программный комплекс для управления различными технологиями
+# виртуализации в Linux из единого центра. Он предоставляет общий интерфейс для
+# настройки виртуальных машин, сетей и хранилищ.
 
-# Required:    gtk+3
+# Required:    qemu
+#              libxml2
 #              libyajl
-#              iptables
+#              iptables    (runtime)
 #              dnsmasq
-#              python3-pygobject3
-#              python3-urlgrabber
-#              libosinfo
 # Recommended: no
 # Optional:    no
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-[0-9]*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar -xvJf "${SOURCES}/${PRGNAME}-${VERSION}".tar.xz* || exit 1
-cd "${PRGNAME}-${VERSION}" || exit 1
-
-chown -R root:root .
-find -L . \
-    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
-    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/etc/rc.d/"
+mkdir -pv "${TMP_DIR}/etc/rc.d"
 
 # sysctld файлы в /etc/sysctl.d/ вместо /usr/lib/sysctl
 sed "s|prefix / 'lib' / 'sysctl.d'|sysconfdir / 'sysctl.d'|" \
-    -i src/remote/meson.build
+    -i src/remote/meson.build || exit 1
 
 # разрешим любому пользователю состоящему в группе 'kvm' подключаться к
 # System Libvirtd без ввода пароля
@@ -56,26 +36,32 @@ sed -e "s,@VIRTGROUP@,$VIRTGROUP,g" -i src/remote/libvirtd.rules || exit 1
 mkdir build
 cd build || exit 1
 
-meson setup ..                  \
-    --prefix=/usr               \
-    --buildtype=release         \
-    --sysconfdir=/etc           \
-    --localstatedir=/var        \
-    -D qemu_user=root           \
-    -D qemu_group=kvm           \
-    -D tests=disabled           \
-    -D expensive_tests=disabled \
-    -D init_script=none         \
+meson setup ..                            \
+    --prefix=/usr                         \
+    --buildtype=release                   \
+    --sysconfdir=/etc                     \
+    --localstatedir=/var                  \
+    -D qemu_user=root                     \
+    -D qemu_group=kvm                     \
+    -D driver_network=enabled             \
+    -D firewall_backend_priority=iptables \
+    -D libpcap=disabled                   \
+    -D apparmor=disabled                  \
+    -D selinux=disabled                   \
+    -D numad=disabled                     \
+    -D wireshark_dissector=disabled       \
+    -D tests=disabled                     \
+    -D expensive_tests=disabled           \
+    -D init_script=none                   \
     -D docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-(
-    cd "${TMP_DIR}" || exit 1
-    rm -rf {etc/logrotate.d,run,usr/share/doc}
-)
+rm -rf "${TMP_DIR}/etc/logrotate.d"
+rm -rf "${TMP_DIR}/run"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # используем группу kvm, исправляем права авторизации и учитываем тот факт, что
 # по умолчанию у нас нет сертификатов
@@ -101,12 +87,13 @@ sed -i  "s|^\#seccomp_sandbox = 1|seccomp_sandbox = 0|" \
         "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
 
 RC_LIBVIRT="/etc/rc.d/rc.libvirt"
-cp "${SOURCES}/rc.libvirt" "${TMP_DIR}${RC_LIBVIRT}"
+cp "${SOURCES}/rc.libvirt" "${TMP_DIR}${RC_LIBVIRT}" || exit 1
 chown root:root            "${TMP_DIR}${RC_LIBVIRT}"
 chmod 754                  "${TMP_DIR}${RC_LIBVIRT}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

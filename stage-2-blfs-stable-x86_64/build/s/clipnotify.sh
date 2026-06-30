@@ -3,8 +3,9 @@
 PRGNAME="clipnotify"
 
 ### clipnotify (waits until a new selection is available)
-# Простая утилита, которая, используя расширение XFIXES для X11, ожидает пока
-# не будет доступен новый выбор для выделения, а затем завершает работу
+# Системный наблюдатель, который тихо сидит в памяти и ждет момента, когда вы
+# что-то скопируете. Как только это происходит, он подает сигнал другим
+# программам (например, менеджерам буфера обмена).
 
 # Required:    no
 # Recommended: no
@@ -17,13 +18,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/bin"
 
-gcc \
-    "${PRGNAME}.c" -o "${PRGNAME}" -lX11 -lXfixes || exit 1
+gcc "${PRGNAME}.c" -o "${PRGNAME}" -lX11 -lXfixes || exit 1
 
-cp "${PRGNAME}" "${TMP_DIR}/usr/bin"
+install -m755 -o root -g root "${PRGNAME}" "${TMP_DIR}/usr/bin"
 
 source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

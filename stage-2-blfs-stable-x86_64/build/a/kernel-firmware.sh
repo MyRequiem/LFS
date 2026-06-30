@@ -4,7 +4,8 @@ PRGNAME="kernel-firmware"
 ARCH_NAME="linux-firmware"
 
 ### Firmware for the linux kernel
-# Файлы прошивки для ядра Linux которые используются для аппаратных драйверов.
+# Набор «прошивок» для аппаратных устройств, необходимых ядру Linux для
+# корректной работы оборудования.
 
 # Required:    no
 # Recommended: no

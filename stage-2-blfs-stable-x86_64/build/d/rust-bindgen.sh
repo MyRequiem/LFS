@@ -3,7 +3,10 @@
 PRGNAME="rust-bindgen"
 
 ### rust-bindgen (generating Rust bindings from C/C++ headers)
-# генерирование Rust-bindings из заголовков C/C ++
+# Инструмент, который  автоматически создает обертки на языке Rust для
+# существующих библиотек на Си и C++. С его помощью не нужно вручную
+# переписывать заголовки Си-кода, чтобы вызвать их функции из вашего проекта на
+# Rust.
 
 # Required:    rustc
 #              llvm
@@ -25,16 +28,20 @@ mkdir -pv "${TMP_DIR}/usr/bin"
 
 cargo build --release || exit 1
 # cargo test --release
-install -v -m755 target/release/bindgen /usr/bin/
 install -v -m755 target/release/bindgen "${TMP_DIR}/usr/bin/"
 
 BASH_COMPL="/usr/share/bash-completion/completions"
 mkdir -p "${TMP_DIR}${BASH_COMPL}"
-bindgen --generate-shell-completions bash > "${TMP_DIR}${BASH_COMPL}/bindgen"
+touch "${TMP_DIR}${BASH_COMPL}/bindgen"
+
+# очистим rust кэш, мусор не нужен
+rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+bindgen --generate-shell-completions bash > "${BASH_COMPL}/bindgen"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (generating Rust bindings from C/C++ headers)
@@ -43,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # C/C++ headers
 #
 # Home page: https://github.com/rust-lang/${PRGNAME}/
-# Download:  https://github.com/rust-lang/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/rust-lang/${PRGNAME}/archive/refs/tags/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

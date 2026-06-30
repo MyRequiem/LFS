@@ -3,12 +3,12 @@
 PRGNAME="xcb-proto"
 
 ### xcb-proto (X protocol C-language Binding protocol descriptions)
-# Пакет предоставляет описания протокола XML-XCB, которые libxcb использует для
-# генерирования большей части своего кода и API
+# Техническое описание современного языка общения программ с видеокартой. Это
+# более быстрая и легкая альтернатива старым правилам X11.
 
 # Required:    no
 # Recommended: no
-# Optional:    libxml2 (для тестов)
+# Optional:    libxml2    (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,11 +28,12 @@ make install DESTDIR="${TMP_DIR}"
 
 # при обновлении пакета с версии <=1.15.1 нужно удалить
 # ${XORG_PREFIX}/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
-# ${XORG_PREFIX}/share/pkgconfig
+# ${XORG_PREFIX}/share/pkgconfig/
 rm -f "${XORG_PREFIX}/lib/pkgconfig/${PRGNAME}.pc"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

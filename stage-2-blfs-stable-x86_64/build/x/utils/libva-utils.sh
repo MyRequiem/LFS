@@ -3,8 +3,9 @@
 PRGNAME="libva-utils"
 
 ### Libva-utils (VA-API utilities)
-# Набор утилит для VA-API (Video Acceleration API): av1encode, avcenc,
-# avcstreamoutdemo, h264encode, hevcencode и др.
+# Набор утилит для проверки и отладки аппаратного ускорения видео  (VA-API -
+# Video Acceleration API). Например утилита vainfo покажет какие видеокодеки
+# система умеет обрабатывать силами видеокарты.
 
 # Required:    libva
 # Recommended: no
@@ -32,8 +33,11 @@ ninja || exit 1
 # пакет не имеет набора тестов
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 /usr/sbin/ldconfig

@@ -3,8 +3,8 @@
 PRGNAME="hddtemp"
 
 ### hddtemp (reads hard disk S.M.A.R.T. info and reports temperature)
-# Утилита, предназначенная для чтения S.M.A.R.T. параметров жесткого диска и
-# отчета о его температуре.
+# Утилита для считывания данных со встроенных датчиков жестких дисков и SSD,
+# показывая их текущую температуру для предотвращения перегрева.
 
 # Required:    no
 # Recommended: no
@@ -31,9 +31,9 @@ cd "${PRGNAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${PKGVERSION}"
 mkdir -pv "${TMP_DIR}/etc/${PRGNAME}"
@@ -51,16 +51,36 @@ patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-${VERSION}.patch" || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-install -D -m 644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+install -m644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
+
+# остановим демон (если запущен) перед обновлением
+pkill --full "hddtemp --daemon" &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # для разрешения доступа к данным о температуре жесткого диска обычным
 # пользователям, установим suid-бит для /usr/sbin/hddtemp
 #    rwsr-xr-x или 4755
 chmod u+s /usr/sbin/hddtemp
+
+# запустим hddtemp как демон
+hddtemp --daemon /dev/sda || {
+echo "Error start hddtemp:"
+echo "# hddtemp --daemon /dev/sda"
+exit 1
+}
+
+echo ""
+echo "----------------------------------------"
+echo "TEST hddtemp: $ hddtemp /dev/sda"
+hddtemp /dev/sda
+echo "----------------------------------------"
+echo ""
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKGVERSION}"
 # Package: ${PRGNAME} (reads hard disk S.M.A.R.T. info and reports temperature)

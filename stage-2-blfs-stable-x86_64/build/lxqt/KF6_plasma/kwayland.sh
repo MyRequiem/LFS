@@ -3,7 +3,9 @@
 PRGNAME="kwayland"
 
 ### kwayland (Qt-style API to interact with wayland)
-# Qt API для взаимодействия с Wayland клиентами и сервером
+# Программная библиотека, которая связывает графические компоненты среды KDE со
+# спецификациями видеосервера Wayland. Она необходима для точного и быстрого
+# вывода элементов интерфейса на экран.
 
 # Required:    extra-cmake-modules
 #              mesa                         (собранная с поддержкой wayland)
@@ -27,23 +29,23 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                                   \
+cmake ..                                \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D CMAKE_BUILD_TYPE=Release         \
     -D CMAKE_INSTALL_LIBEXECDIR=libexec \
     -D KDE_INSTALL_USE_QT_SYS_PATHS=ON  \
     -D BUILD_TESTING=OFF                \
-    -W no-dev                           \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

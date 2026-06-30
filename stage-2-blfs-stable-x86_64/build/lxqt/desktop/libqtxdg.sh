@@ -3,7 +3,9 @@
 PRGNAME="libqtxdg"
 
 ### libqtxdg (Qt implementation freedesktop.org XDG specifications)
-# Qt реализация freedesktop.org XDG спецификации
+# Вспомогательная библиотека для правильной обработки стандартов
+# freedesktop.org внутри графической среды LXQt. Она отвечает за корректную
+# загрузку иконок, ярлыков приложений и типов файлов.
 
 # Required:    cmake
 #              lxqt-build-tools
@@ -23,35 +25,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
-
-###
-# WARNINIG
-###
-# Пакет устанавливает плагин в директорию /opt/qt6
-#    /opt/qt6/plugins/iconengines/libQt6XdgIconPlugin.so
-# но /opt/qt6 является ссылкой на директорию qt6-x.x.x
-#
-# В данном случае плагин установлен в директорию
-#    DESTDIR/opt/qt6/plugins/iconengines/
-# поэтому при копировании директории DESTDIR/opt/qt6 в корень системы
-# произойдет ошибка, т.к. существует ссылка /opt/qt6
-#
-# Переименуем DESTDIR/opt/qt6 в qt6-x.x.x
-REAL_QT6DIR="/opt/$(readlink "${QT6DIR}")"
-mv "${TMP_DIR}${QT6DIR}" "${TMP_DIR}${REAL_QT6DIR}"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,9 +3,9 @@
 PRGNAME="osinfo-db"
 
 ### osinfo-db (operating systems database)
-# База данных osinfo предоставляет информацию об операционных системах и
-# платформы гипервизора для облегчения автоматизированной установки и настройки
-# новых виртуальных машин.
+# Справочник (база данных) с техническими параметрами сотен операционных
+# систем. Она подскажет эмулятору виртуальной машины, сколько оперативной
+# памяти и ядер процессора нужно конкретной системе для запуска.
 
 # Required:    osinfo-db-tools
 # Recommended: no
@@ -28,8 +28,11 @@ osinfo-db-import            \
     --dir /usr/share/osinfo \
     "${SRC_ARCH}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

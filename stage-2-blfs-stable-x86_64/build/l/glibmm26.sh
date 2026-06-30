@@ -4,18 +4,18 @@ PRGNAME="glibmm26"
 ARCH_NAME="glibmm"
 
 ### GLibmm (C++ bindings for glib)
-# Набор C++ bindings для GLib, включая кроссплатформенные API, такие как
-# std::string-like (UTF8 строковый класс), строковые служебные методы для
-# доступа к файлам и потокам
+# Прослойка для языка C++, которая адаптирует возможности системной библиотеки
+# GLib под современный стиль программирования. Это делает код программ более
+# читаемым и надежным (версия 2.6).
 
 # Required:    glib
 #              libsigc++2
 # Recommended: no
 # Optional:    doxygen
-#              glib-networking (для тестов)
-#              gnutls          (для тестов)
+#              glib-networking      (для тестов)
+#              gnutls               (для тестов)
 #              libxslt
-#              mm-common       (https://download.gnome.org/sources/mm-common/)
+#              mm-common            (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -36,9 +36,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -46,19 +46,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir bld
 cd bld || exit 1
 
-meson setup                      \
+meson setup ..                   \
     --prefix=/usr                \
     --buildtype=release          \
     -D build-documentation=false \
-    -D build-examples=false      \
-    .. || exit 1
+    -D build-examples=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

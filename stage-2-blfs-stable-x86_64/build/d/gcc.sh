@@ -3,14 +3,17 @@
 PRGNAME="gcc"
 
 ### GCC (GNU compiler collection)
-# Коллекция компиляторов для C, C++, Fortran, Go, Objective-C, Objective-C++ и
-# Modula2 кода.
+# Самый главный инструмент разработчика - компилятор. Он переводит понятный
+# человеку программный код в бинарные инструкции, которые умеет выполнять
+# процессор. Данная сборка включает в себя компиляторы C, C++, Fortran, Go,
+# Objective-C, Objective-C++ и Modula2 кода.
 
 # Required:    no
 # Recommended: no
 # Optional:    --- для тестов ---
 #              gdb
 #              graphviz
+#              libpng
 #              valgrind
 #              isl          (для включения оптимизации graphite) https://repo.or.cz/isl.git
 
@@ -27,6 +30,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 GDB="/usr/share/gdb/auto-load/usr/lib"
 mkdir -pv "${TMP_DIR}"{"${GDB}",/usr/lib/bfd-plugins}
+
+# исправим сборку с glibc >=2.43
+sed -i 's/char [*]q/const &/' libgomp/affinity-fmt.c
 
 # установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
 sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 || exit 1
@@ -79,7 +85,9 @@ make || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
-# переместим некоторые файлы
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+# переместим некоторые файлы *gdb.py
 mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 
 LIB_GCC="/usr/lib/gcc/$(gcc -dumpmachine)/${VERSION}"
@@ -107,6 +115,7 @@ ln -sfv "../../libexec/${PRGNAME}/${DUMPMACHINE}/${VERSION}/liblto_plugin.so" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -116,7 +125,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # C++, Fortran, Go, Objective-C, Objective-C++ and m2 compilers
 #
 # Home page: https://${PRGNAME}.gnu.org/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

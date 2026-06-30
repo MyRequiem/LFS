@@ -3,11 +3,9 @@
 PRGNAME="libportal"
 
 ### libportal (Flatpak portal library)
-# Библиотека упрощающая взаимодействие с порталами D-Bus. Предоставляет
-# разработчикам удобный асинхронный интерфейс в стиле GIO, скрывая сложность
-# прямого использования D-Bus, что позволяет приложениям безопасно и эффективно
-# получать доступ к системным функциям, таким как открытие файлов, доступ к
-# камере или местоположению и т.д.
+# Удобная программная прослойка, которая упрощает изолированным приложениям
+# доступ к функциям рабочего стола через систему D-Bus порталов. Она отвечает
+# за безопасность при запросе доступа к файлам или камере.
 
 # Required:    glib
 # Recommended: gtk+3
@@ -27,7 +25,8 @@ PRGNAME="libportal"
 ###
 # WARNING
 ###
-# Перед переустановкой пакета его нужно сначала удалить из системы
+# Перед переустановкой пакета его нужно сначала удалить из системы:
+#    $ removepkg --backup /var/log/packages/libportal-<version>
 ###
 
 ROOT="/root/src/lfs"
@@ -43,21 +42,23 @@ patch --verbose -Np1 -i \
 mkdir build
 cd build || exit 1
 
-meson setup                 \
-    --prefix=/usr           \
-    --buildtype=release     \
-    -D docs=false           \
-    -D backend-qt5=disabled \
-    .. || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D vapi=false       \
+    -D docs=false       \
+    -D tests=false      \
+    -D backend-qt5=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,7 +3,9 @@
 PRGNAME="libsecret"
 
 ### libsecret (library to access the Secret Service API)
-# Библиотека на основе GObject для доступа к Secret Service API
+# Защищенный программный сейф, предназначенный для безопасного хранения паролей
+# и секретных ключей (Secret Service API). Он шифрует данные и выдает их только
+# авторизованным приложениям, защищая вашу личную информацию.
 
 # Required:    glib
 #              gnome-keyring            (runtime)
@@ -34,14 +36,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir bld
 cd bld || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D gtk_doc=false    \
-    .. || exit 1
+    -D gtk_doc=false || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # тестирование нужно проводить только после установки пакета в систему и при
 # запущенном сеансе Xorg с помощью dbus-launch
@@ -49,6 +52,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

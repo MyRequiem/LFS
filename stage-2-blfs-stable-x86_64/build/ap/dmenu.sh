@@ -3,7 +3,9 @@
 PRGNAME="dmenu"
 
 ### dmenu (dynamic menu for X)
-# Универсальное и удобное меню для X
+# Гениально простое меню, которое появляется тонкой полоской вверху экрана. Оно
+# позволяет мгновенно находить и запускать программы, просто введя пару первых
+# букв их названия.
 
 # Required:    no
 # Recommended: no
@@ -26,12 +28,14 @@ patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-xyw-${VERSION}.diff" || exit 1
 
 make install PREFIX=/usr DESTDIR="${TMP_DIR}"
 
-cp "${SOURCES}/dmenu_pass" "${TMP_DIR}/usr/bin"
-chown root:root "${TMP_DIR}/usr/bin"/*
-chmod 755 "${TMP_DIR}/usr/bin"/*
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+install -m755 -o root -g root "${SOURCES}/dmenu_pass" \
+    "${TMP_DIR}/usr/bin" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

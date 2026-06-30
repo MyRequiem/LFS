@@ -3,8 +3,7 @@
 PRGNAME="which"
 
 ### Which (shows the full path to shell commands)
-# Команда 'which' принимает один или несколько аргументов и для каждого выводит
-# полный путь к исполняемым файлам
+# Простая утилита, которая выводит полный путь к указанному исполняемому файлу.
 
 # Required:    no
 # Recommended: no
@@ -24,6 +23,8 @@ make || exit 1
 # пакет не содержит набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -39,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # function in many shells.
 #
 # Home page: https://carlowood.github.io/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

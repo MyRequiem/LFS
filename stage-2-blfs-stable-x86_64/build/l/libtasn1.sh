@@ -3,8 +3,8 @@
 PRGNAME="libtasn1"
 
 ### libtasn1 (ASN.1 library)
-# C-библиотека для кодирования и декодирования данных DER/BER в
-# телекоммуникационных и компьютерных сетях следуя схеме ASN.1
+# Библиотека для работы со структурами данных ASN.1, которые повсеместно
+# используются в криптографии и сетевых протоколах.
 
 # Required:    no
 # Recommended: no
@@ -26,6 +26,8 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
@@ -39,7 +41,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and computer networking.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

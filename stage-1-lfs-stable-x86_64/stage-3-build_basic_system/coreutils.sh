@@ -71,7 +71,7 @@ make || make -j1 || exit 1
 # устанавливаем пакет
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # утилита chroot в /usr/sbin
 mv -v "${TMP_DIR}/usr/bin/chroot" "${TMP_DIR}/usr/sbin"
@@ -80,8 +80,9 @@ mv -v "${TMP_DIR}/usr/bin/chroot" "${TMP_DIR}/usr/sbin"
 mv -v "${TMP_DIR}/usr/share/man/man1/chroot.1" "${TMP_DIR}${MAN8}/chroot.8"
 sed -i 's/"1"/"8"/' "${TMP_DIR}${MAN8}/chroot.8"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 
 # утилиту 'cp' устанавливаем командой install, т.к. скопировать ее из DESTDIR
 # будет не возможно по понятным причинам

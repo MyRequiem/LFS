@@ -3,7 +3,8 @@
 PRGNAME="hicolor-icon-theme"
 
 ### hicolor-icon-theme (default icon theme)
-# Default fallback icon theme
+# Скелет для системных значков. Задает стандартные папки, в которых программы
+# ищут свои иконки.
 
 # Required:    no
 # Recommended: no

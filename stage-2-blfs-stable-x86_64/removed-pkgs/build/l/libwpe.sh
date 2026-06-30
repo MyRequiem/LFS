@@ -22,11 +22,10 @@ DOCS="false"
 mkdir build
 cd build || exit 1
 
-meson                      \
+meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \
-    -Dbuild-docs="${DOCS}" \
-    .. || exit 1
+    -D build-docs="${DOCS}" || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов

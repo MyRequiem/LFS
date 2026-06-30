@@ -23,7 +23,7 @@ make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # некоторые программы еще не знают о flex и пытаются запустить его
 # предшественника lex. Для поддержки этих программ создадим символическую
@@ -31,8 +31,9 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 ln -sv flex   "${TMP_DIR}/usr/bin/lex"
 ln -sv flex.1 "${TMP_DIR}/usr/share/man/man1/lex.1"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

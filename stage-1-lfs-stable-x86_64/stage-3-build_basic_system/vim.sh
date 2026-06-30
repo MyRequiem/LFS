@@ -3,8 +3,9 @@
 PRGNAME="vim"
 
 ### Vim (Vi IMproved)
-# Продвинутый текстовый редактор, любимый профессионалами за скорость работы и
-# мощные функции правки кода.
+# Легендарный текстовый редактор, ориентированный на максимально быструю работу
+# с кодом и текстом. Обладает огромным количеством функций и позволяет
+# выполнять сложные правки парой нажатий клавиш.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -88,8 +89,9 @@ set helplang=en
 " End ${VIMRC}
 EOF
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -24,10 +24,9 @@ GTK_DOC="false"
 mkdir build
 cd build || exit 1
 
-meson                      \
-    --prefix=/usr          \
-    -Dgtk_doc="${GTK_DOC}" \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    -D gtk_doc="${GTK_DOC}" || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов

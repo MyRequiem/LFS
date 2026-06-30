@@ -3,15 +3,15 @@
 PRGNAME="w3m"
 
 ### w3m (text based web browser and pager)
-# Консольный клиент World Wide Web (браузер) с возможностью отображения
-# HTML-таблиц, фреймов и изображений, а так же поддерживает просмотр с
-# вкладками.
+# Текстовый веб-браузер и просмотрщик документов, работающий прямо внутри
+# консоли с возможностью отображения HTML-таблиц, фреймов и изображений, а так
+# же поддерживает просмотр с вкладками.
 
 # Required:    gc
-# Recommended: no
-# Optional:    glib
+# Recommended: glib
 #              imlib2
 #              gdk-pixbuf
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -33,14 +33,20 @@ cd "${PRGNAME}-${ARCH_VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# для gcc>11
+# уберем строку status info с глупой и ненужной информацией внизу окна браузера
+# типа:
+#    Viewing[SSL] <LFS Patches Project Homepage>
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-hide-status-info.patch" || exit 1
+
+# для GCC >11
 SLKCFLAGS="-std=gnu17"
 CFLAGS="${SLKCFLAGS}"                    \
 CXXFLAGS="${SLKCFLAGS}"                  \
@@ -59,7 +65,7 @@ CXXFLAGS="${SLKCFLAGS}"                  \
     --disable-mouse                      \
     --disable-w3mmailer                  \
     --with-editor=/usr/bin/vim           \
-    --with-browser=google-chrome         \
+    --with-browser=zen-browser           \
     --with-termlib="terminfo ncurses"    \
     --with-imagelib="gdk-pixbuf2 imlib2" \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
@@ -68,8 +74,11 @@ make || exit 1
 # пакет не имеет наборат тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -82,7 +91,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # files residing on remote systems. It can display HTML tables, frames, and
 # images, and supports tabbed browsing.
 #
-# Hom page: https://${PRGNAME}.sourceforge.net/
+# Hom page: https://sourceforge.net/projects/${PRGNAME}/
 # Download: https://deb.debian.org/debian/pool/main/w/${PRGNAME}/${PRGNAME}_${ARCH_VERSION}.orig.tar.xz
 #
 EOF

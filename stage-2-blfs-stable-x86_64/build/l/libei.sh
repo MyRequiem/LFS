@@ -3,17 +3,18 @@
 PRGNAME="libei"
 
 ### libei (library for Emulated Input)
-# Библиотека эмуляции ввода, в первую очередь ориентированная на стек Wayland
+# Современная библиотека для управления эмуляцией ввода. Она позволяет
+# безопасно передавать движения мыши и нажатия клавиш между разными
+# графическими серверами, сохраняя высокий уровень защиты.
 
-# Required:    python3-attrs
-#              elogind
+# Required:    elogind
 # Recommended: no
 # Optional:    libevdev
 #              libxkbcommon
 #              libxml2
 #              --- для тестов ---
-#              munit                (https://github.com/nemequ/munit)
-#              python3-structlog    (https://pypi.org/project/structlog/)
+#              munit                    (https://github.com/nemequ/munit)
+#              python3-structlog        (https://pypi.org/project/structlog/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -38,8 +39,11 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

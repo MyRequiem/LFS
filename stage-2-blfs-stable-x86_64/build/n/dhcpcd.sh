@@ -3,8 +3,8 @@
 PRGNAME="dhcpcd"
 
 ### dhcpcd (DHCP client daemon)
-# DHCP client daemon на этапе конфигурации сетевого устройства обращается к
-# серверу DHCP и получает от него нужные параметры
+# Клиент для автоматического получения сетевого IP-адреса и других настроек
+# интернета от роутера или провайдера.
 
 # Required:    no
 # Recommended: no
@@ -54,6 +54,8 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 # install network service script: /usr/lib/services/dhcpcd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -63,9 +65,10 @@ make install DESTDIR="${TMP_DIR}"
 )
 
 # файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0
-# устанавливается в LFS вместе с пакетом network-configuration
+# устанавливается в LFS вместе с пакетом network-configuration, установим как
+# .new файл для dhcp
 IFCONFIG_ETH0="/etc/sysconfig/ifconfig.eth0"
-cat << EOF > "${IFCONFIG_ETH0}"
+cat << EOF > "${IFCONFIG_ETH0}.new"
 # Begin ${IFCONFIG_ETH0}
 
 ONBOOT=no
@@ -98,6 +101,9 @@ DHCPCD_CONF="/etc/dhcpcd.conf"
 if [ -f "${DHCPCD_CONF}" ]; then
     mv "${DHCPCD_CONF}" "${DHCPCD_CONF}.old"
 fi
+
+# убьем dhcpcd перед установкой, если запущен
+killall dhcpcd &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

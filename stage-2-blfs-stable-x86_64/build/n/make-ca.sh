@@ -3,12 +3,12 @@
 PRGNAME="make-ca"
 
 ### make-ca (deliver and manage a complete PKI configuration)
-# Инфраструктура открытых ключей (PKI) и методы проверки их подлинности в
-# ненадежных сетях.
+# Утилита для создания и обновления общесистемного хранилища доверенных
+# сертификатов безопасности.
 
-# Required:    p11-kit (собранный с уже установленным libtasn1)
+# Required:    p11-kit  (runtime, собранный с уже установленным libtasn1)
 # Recommended: no
-# Optional:    nss
+# Optional:    nss      (runtime)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -16,6 +16,10 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/"{ssl/local,cron.weekly}
+
+# удалим устаревшую опцию -t из команды mktemp в скрипте, которая может
+# привести к нежелательным последствиям, особенно если устанавливаем в DESTDIR
+sed '/mktemp/s/-t //' -i make-ca
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -38,7 +42,6 @@ cat << EOF > "${TMP_DIR}${UPDATE_PKI}"
 
 /usr/sbin/make-ca -g
 EOF
-chmod 754 "${TMP_DIR}${UPDATE_PKI}"
 
 ### добавим дополнительные CA Certificates в /etc/ssl/local
 openssl x509 -in "${SOURCES}/root.crt" \
@@ -60,6 +63,9 @@ openssl x509 -in "${SOURCES}/class3.crt" \
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
+
+chmod 754 "/etc/cron.weekly"
+chmod 754 "${UPDATE_PKI}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (deliver and manage a complete PKI configuration)

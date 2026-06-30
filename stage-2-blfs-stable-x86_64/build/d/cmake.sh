@@ -3,7 +3,9 @@
 PRGNAME="cmake"
 
 ### CMake (cross-platform, open-source make system)
-# Современный набор инструментов, используемый для генерации Makefile
+# Умный помощник для сборки сложных программ (система сборки). Он сам
+# проверяет, какие библиотеки установлены в системе, подготавливает проект к
+# правильной компиляции, создает Makefile.
 
 # Required:    no
 # Recommended: curl
@@ -33,24 +35,9 @@ mkdir -pv "${TMP_DIR}"
 # /usr/lib64/
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
 
-ZLIB="--no-system-zlib"
-NGHTTP2="--no-system-nghttp2"
-BZIP2="--no-system-bzip2"
-EXPAT="--no-system-expat"
-CURL="--no-system-curl"
-LIBARCHIVE="--no-system-libarchive"
-QT_GUI="--no-qt-gui"
-
-[ -x /usr/lib/libz.so ]             && ZLIB="--system-zlib"
-[ -x /usr/lib/libnghttp2.so ]       && NGHTTP2="--system-nghttp2"
-command -v bzip2        &>/dev/null && BZIP2="--system-bzip2"
-command -v xmlwf        &>/dev/null && EXPAT="--system-expat"
-command -v curl         &>/dev/null && CURL="--system-curl"
-command -v bsdcat       &>/dev/null && LIBARCHIVE="--system-libarchive"
-# command -v assistant    &>/dev/null && QT_GUI="--qt-gui"
-
-# заставляет CMake связываться с Zlib, Bzip2, cURL, Expat и libarchive которые
-# уже установлены в системе
+# заставляет систему сборки связываться с установленной в системе версией для
+# всех необходимых библиотек (zlib, bzip2, curl, expat, libarchive и т.д.),
+# кроме тех, которые явно указаны с помощью опции --no-system-*
 #    --system-libs
 # использовать внутренние версии библиотек JSON-C++, cppdap и rhash вместо
 # системных
@@ -64,13 +51,7 @@ command -v bsdcat       &>/dev/null && LIBARCHIVE="--system-libarchive"
     --no-system-jsoncpp  \
     --no-system-cppdap   \
     --no-system-librhash \
-    "${ZLIB}"            \
-    "${NGHTTP2}"         \
-    "${BZIP2}"           \
-    "${EXPAT}"           \
-    "${CURL}"            \
-    "${LIBARCHIVE}"      \
-    "${QT_GUI}"          \
+    --no-qt-gui          \
     --docdir="/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -81,6 +62,8 @@ make || exit 1
 #     bin/ctest -j"${NUMJOBS}" -O "${PRGNAME}-${VERSION}-test.log"
 
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

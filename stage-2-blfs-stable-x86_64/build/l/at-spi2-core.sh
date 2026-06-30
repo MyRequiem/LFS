@@ -3,10 +3,10 @@
 PRGNAME="at-spi2-core"
 
 ### At-Spi2 Core (Assistive Technology Service Provider Interface core)
-# At-Spi2 Core предоставляет фреймворк для обеспечения двунаправленной связи
-# между вспомогательными технологиями (AT) и приложениями. Является стандартом
-# для обеспечения доступности открытых рабочих столов под руководством проекта
-# GNOME
+# Основной «движок» для специальных возможностей, который помогает программам
+# обмениваться данными с экранными дикторами или экранными клавиатурами. Он
+# служит мостом, через который вспомогательные технологии (например, для
+# слабовидящих) «видят», что происходит в окнах других приложений.
 
 # Required:    dbus
 #              glib
@@ -45,10 +45,22 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
 rm -rf "${TMP_DIR}/tmp"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+AUTOSTART="/etc/xdg/autostart/at-spi-dbus-bus.desktop"
+# сервис будет виден в GUI настройках системы (например в lxqt-config-session),
+# не нужно ничего прятать
+sed -i 's/NoDisplay=true/NoDisplay=false/g' "${TMP_DIR}${AUTOSTART}" || exit 1
+
+# запретим запускать at-spi-bus-launcher при старте системы (скроем .desktop,
+# для системы как будто его нет)
+sed -i '$a Hidden=true' "${TMP_DIR}${AUTOSTART}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

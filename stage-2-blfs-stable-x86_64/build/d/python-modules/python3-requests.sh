@@ -4,7 +4,9 @@ PRGNAME="python3-requests"
 ARCH_NAME="requests"
 
 ### Requests (HTTP request library for python)
-# Python-библиотека HTTP-запросов
+# Пожалуй, самая популярная библиотека для работы с интернетом в Python. Она
+# делает отправку запросов к сайтам максимально простой и понятной даже
+# новичку.
 
 # Required:    python3-charset-normalizer
 #              python3-idna
@@ -14,14 +16,11 @@ ARCH_NAME="requests"
 # Optional:    --- для тестов ---
 #              python3-pytest
 #              python3-pysocks                      (https://pypi.org/project/PySocks/)
-#              python3-flask           version<2    (https://pypi.org/project/Flask/)
-#              python3-httpbin                      (https://pypi.org/project/httpbin/)
-#              python3-markupsafe      version<2.1  (https://pypi.org/project/MarkupSafe/)
 #              python3-pytest-mock                  (https://pypi.org/project/pytest-mock/)
 #              python3-pytest-httpbin               (https://pypi.org/project/pytest-httpbin/)
-#              python3-sphinx          version<5    (https://pypi.org/project/Sphinx/)
+#              python3-pytest-cov                   (https://pypi.org/project/pytest-cov/)
+#              python3-pytest-xdist                 (https://pypi.org/project/pytest-xdist/)
 #              python3-trustme                      (https://pypi.org/project/trustme/)
-#              python3-werkzeug        version<2    (https://pypi.org/project/Werkzeug/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -51,6 +50,8 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
@@ -58,13 +59,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

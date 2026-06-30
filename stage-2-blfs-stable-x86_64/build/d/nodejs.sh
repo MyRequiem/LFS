@@ -4,10 +4,11 @@ PRGNAME="nodejs"
 ARCH_NAME="node"
 
 ### Node.js (JavaScript runtime)
-# Среда выполнения кода JavaScript, построенная на движке Chrome V8 JavaScript.
-# Node.js использует управляемую событиями неблокирующую модель ввода/вывода,
-# которая делает его легким и эффективным. Пакетная система npm (Node Package
-# Manager), является крупнейшей системой библиотек с открытым исходным кодом.
+# Популярная программная платформа, построенная на движке Chrome V8 JavaScript,
+# которая позволяет запускать код на языке JavaScript прямо на сервере или в
+# системе. Она необходима для работы множества современных веб-инструментов.
+# Пакетная система npm (Node Package Manager), является крупнейшей системой
+# библиотек с открытым исходным кодом.
 
 # Required:    which
 # Recommended: brotli
@@ -15,6 +16,7 @@ ARCH_NAME="node"
 #              icu
 #              libuv
 #              nghttp2
+#              simdutf
 # Optional:    http-parser    (https://github.com/nodejs/http-parser)
 #              npm            (если не установлен, будет собрана внутренняя копия npm) https://www.npmjs.com/
 
@@ -31,8 +33,9 @@ mkdir -pv "${TMP_DIR}"
     --shared-brotli  \
     --shared-cares   \
     --shared-libuv   \
-    --shared-openssl \
     --shared-nghttp2 \
+    --shared-openssl \
+    --shared-simdutf \
     --shared-zlib    \
     --with-intl=system-icu || exit 1
 
@@ -40,14 +43,11 @@ make || exit 1
 # make test-only
 make install DESTDIR="${TMP_DIR}"
 
-# удалим документацию
-(
-    cd "${TMP_DIR}/usr/share/" || exit 1
-    rm -rf doc
-)
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

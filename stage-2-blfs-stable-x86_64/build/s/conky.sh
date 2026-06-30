@@ -3,8 +3,10 @@
 PRGNAME="conky"
 
 ### conky (light-weight system monitor for X)
-# Легкий системный монитор для X, который отображает любую информация о системе
-# на рабочем столе
+# Легковесный и гибко настраиваемый системный монитор, который выводит
+# параметры компьютера прямо на рабочий стол. Он позволяет в реальном времени
+# следить за нагрузкой процессора, использованием оперативной памяти, сетью и
+# т.д.
 
 # Required:    cmake
 #              cairo
@@ -53,12 +55,12 @@ cmake                                            \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses,nano,vim}
+
 cd .. || exit 1
 
-rm -rf "${TMP_DIR}"/{vim,nano,usr/share/doc}
-
 # удалим статическую библиотеку
-find "${TMP_DIR}" -type f -name "*.a" -exec rm -f {} \;
+find "${TMP_DIR}" -type f -name "*.a" -exec rm -f {} \+
 
 # man страница
 MAN="/usr/share/man/man1"
@@ -80,6 +82,7 @@ cp extras/vim/ftdetect/conkyrc.vim     "${TMP_DIR}${VIMFILES}/ftdetect/"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

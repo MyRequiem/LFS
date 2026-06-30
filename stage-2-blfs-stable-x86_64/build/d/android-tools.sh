@@ -3,14 +3,15 @@
 PRGNAME="android-tools"
 
 ### android-tools (adb and fastboot tools)
-# Инструменты ADB и Fastboot от Android SDK
+# Официальный комплект консольных утилит для взаимодействия с мобильными
+# устройствами на базе Android прямо из Linux. Сюда входят инструменты от
+# Android SDK - adb и fastboot для отладки, прошивки и передачи файлов.
 
 # Required:    cmake
 #              protobuf
 #              fmt
-#              gtest
 # Recommended: no
-# Optional:    no
+# Optional:    gtest        (https://github.com/google/googletest)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,8 +20,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# исправим ошибку сборки с protobuf-3x.x
 patch --verbose -Np1 -d "vendor/extras" -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-fix-protobuf-3x.x-build.patch" || exit 1
+
+# отучим android-tools от зависимости gtest: подменим заголовок gtest_prod.h
+# заглушкой (пакет gtest сделал в Optional, но на самом деле без следующих 3
+# строк он Required)
+mkdir -p vendor/libbase/include/gtest &&
+    echo "#define FRIEND_TEST(test_case_name, test_name)" > \
+    vendor/libbase/include/gtest/gtest_prod.h
 
 mkdir -p build
 cd build || exit 1
@@ -38,8 +47,11 @@ cmake                                      \
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

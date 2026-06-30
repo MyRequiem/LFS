@@ -3,8 +3,9 @@
 PRGNAME="rpm"
 
 ### rpm (RPM package format tool)
-# Инструмент от Red Hat Software, используемый для установки и удаления пакетов
-# в формате .rpm
+# Традиционная и мощная система управления пакетами, разработанная компанией
+# Red Hat для установки, обновления и удаления программ. Она автоматически
+# отслеживает зависимости компонентов софта внутри системы.
 
 # Required:    cmake
 # Recommended: no
@@ -33,10 +34,11 @@ cmake                            \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share/doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

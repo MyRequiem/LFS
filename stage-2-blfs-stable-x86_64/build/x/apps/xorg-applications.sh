@@ -4,7 +4,9 @@ PRGNAME="xorg-applications"
 PKG_VERSION="11"
 
 ### Xorg Applications (Xorg Applications)
-# Основные приложения поставляемые с Xorg
+# Набор стандартных служебных программ для графической среды X11. Сюда входят
+# базовые часы, калькулятор, утилиты для настройки монитора и другие полезные
+# инструменты первой необходимости.
 
 # Required:    libpng
 #              mesa
@@ -12,8 +14,8 @@ PKG_VERSION="11"
 #              xcb-util
 # Recommended: no
 # Optional:    linux-pam
-#              cairo-5c  (https://www.cairographics.org/releases/)
-#              nickle    (только для запуска не документированного скрипта xkeyhost) http://nickle.org/
+#              cairo-5c     (https://www.cairographics.org/releases/)
+#              nickle       (только для запуска не документированного скрипта xkeyhost) http://nickle.org/
 
 ###
 # NOTES:
@@ -209,9 +211,9 @@ for PKGNAME in ${PACKAGES}; do
     chown -R root:root .
     find -L . \
         \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-        -o -perm 511 \) -exec chmod 755 {} \; -o \
+        -o -perm 511 \) -exec chmod 755 {} \+ -o \
         \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-        -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+        -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
     # shellcheck disable=SC2086
     ./configure        \
@@ -255,6 +257,26 @@ for PKGNAME in ${PACKAGES}; do
         for FILE in *; do
             install-info --dir-file="${INFO}/dir" "${FILE}" 2>/dev/null
         done
+    fi
+
+    # удалим документацию
+    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help}
+
+    # удалим лишние локали
+    LOCALEDIR="${PKG_INSTALL_DIR}/usr/share/X11/locale"
+    # оставляем только нужные локали
+    KEEP_LOCALES="ru ru_RU ru_RU.UTF-8 en en_US en_US.UTF-8 en_GB en_GB.UTF-8"
+    if [ -d "${LOCALEDIR}" ]; then
+        # формируем аргументы для find: ! -name 'ru' ! -name 'en' ...
+        FIND_ARGS=""
+        for LOC in ${KEEP_LOCALES}; do
+            FIND_ARGS="${FIND_ARGS} ! -name ${LOC}"
+        done
+
+        # удаляем всё, что не входит в список (только директории 1-го уровня)
+        # shellcheck disable=SC2086
+        find "${LOCALEDIR}" -mindepth 1 -maxdepth 1 \
+            -type d ${FIND_ARGS} -exec rm -rf {} +
     fi
 
     # имя пакета в нижний регистр

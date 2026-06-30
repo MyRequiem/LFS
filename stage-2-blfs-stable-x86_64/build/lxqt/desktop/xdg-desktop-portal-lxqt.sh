@@ -3,7 +3,9 @@
 PRGNAME="xdg-desktop-portal-lxqt"
 
 ### xdg-desktop-portal-lxqt (backend for xdg-desktop-portal that is using Qt)
-# Бэкэнд для xdg-desktop-portal, использующий библиотеку Qt
+# Специализированный программный портал, созданный для интеграции изолированных
+# приложений в графическую среду LXQt. Он позволяет программам из контейнеров
+# Flatpak или Snap безопасно открывать файлы и выводить уведомления.
 
 # Required:    libfm-qt
 #              kwindowsystem или kde-frameworks
@@ -21,19 +23,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release  \
-    .. || exit 1
+    -D CMAKE_BUILD_TYPE=Release || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# удалим systemd модуль, который бесполезен в нашей SysVinit системе
+rm -rf "${TMP_DIR}/usr/lib/systemd"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

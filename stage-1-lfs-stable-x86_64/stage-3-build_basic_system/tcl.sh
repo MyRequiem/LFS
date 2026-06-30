@@ -28,9 +28,9 @@ cd "${PRGNAME}${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 SRCDIR="$(pwd)"
 cd unix || exit 1
@@ -63,7 +63,7 @@ sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.4|/usr/lib/itcl4.3.4|" \
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # сделаем установленную библиотеку доступной для записи, чтобы позже можно было
 # удалить отладочную информацию (debugging symbols)
@@ -80,8 +80,9 @@ ln -sfv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 # устанавливается с пакетом Perl
 mv -v "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 chmod 644 "/usr/lib/libtclstub${MAJ_VERSION}.a"

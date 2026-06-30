@@ -8,8 +8,8 @@ PRGNAME="ncurses"
 # задавать экранные координаты, цвет фона и выводимых символов.
 
 ROOT="/"
-source "${ROOT}check_environment.sh"                   || exit 1
-source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
@@ -41,6 +41,8 @@ make || make -j1 || exit 1
 # помощью DESTDIR правильно заменив библиотеку libncursesw.so.${LIB_VERSION}
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # заголовочный файл curs.h содержит определения различных структур данных
 # ncurses. с разными определениями макросов препроцессора могут использоваться
 # два разных набора определений структуры данных: 8-битное определение
@@ -61,8 +63,9 @@ done
 # для старых приложений, которые ищут -lcurses во время сборки
 ln -sfv libncursesw.so "${TMP_DIR}/usr/lib/libcurses.so"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh"      || exit 1
+source "${ROOT}update-info-db.sh" || exit 1
+source "${ROOT}clean-locales.sh"  || exit 1
 
 # файл сначала удаляется в системе, а потом копируется на его исходное место
 #    --remove-destination

@@ -3,8 +3,8 @@
 PRGNAME="sbc"
 
 ### SBC (Sub Band Codec for bluetooth audio output)
-# Цифровой аудиокодер/декодер, используемый для передачи данных в устройства
-# вывода звука Bluetooth (наушники, колонки)
+# Кодек для беспроводного звука. Необходим для передачи аудио на
+# Bluetooth-наушники и колонки.
 
 # Required:    no
 # Recommended: no
@@ -17,16 +17,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+./configure          \
+    --prefix=/usr    \
+    --disable-static \
+    --disable-tester || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

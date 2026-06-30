@@ -60,8 +60,7 @@ install -vm755  "${PRGNAME}"         "${TMP_DIR}/usr/bin/"
 install -vDm644 misc/bash-completion "${TMP_DIR}/usr/${BASH_COMPL}/${PRGNAME}"
 install -vDm644 misc/zsh-completion  "${TMP_DIR}/usr/${ZSH_COMPL}/_${PRGNAME}"
 
-source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}stripping.sh" || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

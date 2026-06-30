@@ -3,13 +3,12 @@
 PRGNAME="extra-cmake-modules"
 
 ### extra-cmake-modules (extra KDE CMake modules)
-# дополнительные модули CMake, необходимые для компиляции KDE Frameworks 5
+# Коллекция дополнительных скриптов (модулей) для системы сборки CMake.
 
 # Required:    cmake
 # Recommended: qt6
-# Optional:    python3-sphinx
-#              python3-pyqt    (https://pypi.org/project/PyQt5/)
-#              reusetool       (https://github.com/fsfe/reuse-tool/)
+# Optional:    python3-sphinx    (для документации)
+#              reusetool         (для тестов) https://github.com/fsfe/reuse-tool/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,9 +16,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
-
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fix-1.patch" || exit 1
 
 # запретим приложениям, использующих cmake, пытаться установить файлы в
 # [/usr]/lib64
@@ -37,14 +33,17 @@ cd build || exit 1
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_WITH_QT6=ON         \
-    .. || exit 1
+    -D DOC_INSTALL_DIR="/usr/share/doc/${PRGNAME}-${VERSION}" .. || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

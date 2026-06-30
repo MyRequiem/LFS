@@ -3,9 +3,8 @@
 PRGNAME="adobe-source-code-pro-font-otf"
 
 ### Source Code Pro (monospaced font)
-# Набор моноширинных шрифтов, которые были разработаны для удобной работы в
-# среде программирования. Это семейство шрифтов является дополнительным к
-# семейству Source Sans
+# Набор высококачественных моноширинных шрифтов от компании Adobe, созданный
+# специально для программистов.
 
 # Required:    xorg-applications
 #              fontconfig
@@ -31,9 +30,9 @@ cd "source-code-pro-"* || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"

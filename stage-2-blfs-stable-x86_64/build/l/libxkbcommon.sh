@@ -3,10 +3,10 @@
 PRGNAME="libxkbcommon"
 
 ### libxkbcommon (library to handle keyboard descriptions)
-# Компилятор раскладки клавиатуры и вспомогательная библиотека, которая
-# обрабатывает сокращенное подмножество раскладок клавиш, в соответствии со
-# спецификацией XKB. В основном предназначен для клиентских инструментов,
-# оконных менеджеров и других системных приложений.
+# Библиотека для обработки нажатий клавиш, которая превращает скан-коды от
+# железа в понятные символы и действия в соответствии со спецификацией XKB. В
+# основном предназначена для клиентских инструментов, оконных менеджеров и
+# других системных приложений.
 
 # Required:    xkeyboard-config
 # Recommended: libxcb
@@ -34,8 +34,11 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

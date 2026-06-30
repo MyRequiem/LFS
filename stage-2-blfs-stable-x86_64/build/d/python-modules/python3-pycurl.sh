@@ -4,7 +4,9 @@ PRGNAME="python3-pycurl"
 ARCH_NAME="pycurl"
 
 ### pycurl (Python interface to cURL library)
-# Python интерфейс для libcurl
+# Библиотека, которая позволяет Python-программам отправлять сетевые запросы,
+# скачивать файлы и обмениваться данными с веб-сайтами. Она представляет собой
+# быструю Python-обертку над мощной системной утилитой cURL (libcurl).
 
 # Required:    curl
 # Recommended: no
@@ -31,8 +33,7 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
-# shellcheck disable=SC2115
-rm -rf "${TMP_DIR}/usr/share"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
@@ -41,13 +42,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

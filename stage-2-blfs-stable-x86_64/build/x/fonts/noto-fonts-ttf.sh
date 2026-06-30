@@ -4,7 +4,9 @@ PRGNAME="noto-fonts-ttf"
 ARCH_NAME="noto-fonts-subset"
 
 ### Noto fonts (Googles Noto fonts)
-# TTF шрифты от Google
+# Глобальный проект шрифтов, название которого расшифровывается как «No Tofu»
+# (нет квадратикам). Его цель - сделать так, чтобы любой текст на любом языке
+# мира отображался корректно.
 
 # Required:    xorg-applications
 #              fontconfig
@@ -29,9 +31,9 @@ tar -xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"

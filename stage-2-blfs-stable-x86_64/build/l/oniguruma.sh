@@ -4,8 +4,9 @@ PRGNAME="oniguruma"
 ARCH_NAME="onig"
 
 ### oniguruma (Regular expressions library)
-# Библиотека регулярных выражений. Для каждого регулярного выражения может быть
-# указана разная кодировка символов.
+# Мощная библиотека для работы с регулярными выражениями, поддерживающая
+# различные кодировки текста. Помогает программам быстро искать и обрабатывать
+# сложные текстовые шаблоны.
 
 # Required:    no
 # Recommended: no
@@ -28,8 +29,11 @@ mkdir -pv "${TMP_DIR}"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

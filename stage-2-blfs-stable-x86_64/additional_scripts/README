@@ -4,6 +4,7 @@
 Копируем в /mnt/lfs/root/src/lfs/ сборочный скрипт для пакета и вспомогательные
 скрипты:
     ./check_environment.sh
+    ./clean-locales.sh
     ./config_file_processing.sh
     ./stripping.sh
     ./unpack_source_archive.sh

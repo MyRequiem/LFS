@@ -4,9 +4,9 @@ PRGNAME="gcr4"
 ARCH_NAME="gcr"
 
 ### Gcr (crypto library and ui for gnome-keyring)
-# Библиотеки для отображения сертификатов и доступа к криптографическому
-# интерфейсу ключей. Также предоставляет средство просмотра зашифрованных
-# файлов в GNOME
+# Обновленная и более защищенная версия библиотеки для работы с сертификатами и
+# паролями. Она использует современные алгоритмы шифрования для обеспечения
+# безопасности всей операционной системы.
 
 # Required:    glib
 #              libgcrypt
@@ -39,9 +39,9 @@ cd "${ARCH_NAME}-${VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -49,12 +49,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D gtk_doc=false    \
-    -D ssh_agent=false  \
-    .. || exit 1
+    -D gtk_doc=false || exit 1
 
 ninja || exit 1
 
@@ -63,10 +61,11 @@ ninja || exit 1
 
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share/gtk-doc"
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

@@ -3,9 +3,9 @@
 PRGNAME="luit"
 
 ### luit (character encoding convertor for X11 terminals)
-# Фильтр, который можно запускать между приложением и UTF-8 эмулятором
-# терминала, например xterm. Он преобразует вывод приложения из кодировки
-# локали в UTF-8 и конвертирует ввод терминала из UTF-8 в кодировку локали
+# Невидимый, но важный помощник для терминала, который на лету перекодирует
+# текст. Он позволяет старым программам, не знающим про Unicode, правильно
+# отображать буквы русского алфавита.
 
 # Required:    xorg-applications
 # Recommended: no
@@ -27,8 +27,11 @@ make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

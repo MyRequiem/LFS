@@ -4,9 +4,11 @@ PRGNAME="python3-urlgrabber"
 ARCH_NAME="urlgrabber"
 
 ### urlgrabber (python url-fetching module)
-# Python2 модуль, который значительно упрощает выборку URL из файлов.
-# Предназначен для использования в программах, которым нужны общие (но не
-# обязательно простые) функции извлечения URL
+# Продвинутая библиотека для скачивания файлов по протоколам HTTP, FTP и из
+# локальной сети. Поддерживает докачку при обрыве связи, работу через прокси и
+# ограничение скорости. Используется в системных скриптах автоматизации для
+# надежной загрузки исходного кода и данных, в графическом интерфейсе
+# virt-manager используется при сетевой установке ОС.
 
 # Required:    python3-six
 #              python3-pycurl
@@ -34,11 +36,10 @@ pip3 install            \
     --no-user           \
     "${ARCH_NAME}" || exit 1
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # исправим shebang
 sed 's/\/python/\/python3/' -i "${TMP_DIR}/usr/libexec/urlgrabber-ext-down"
-
-# shellcheck disable=SC2115
-rm -rf "${TMP_DIR}/usr/share"
 
 # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
@@ -47,13 +48,13 @@ TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды из ${TMP_DIR}/usr/bin/, если таковые
-# имеются
-PYCACHE="${TMP_DIR}/usr/bin/__pycache__"
-[ -d "${PYCACHE}" ] && rm -rf "${PYCACHE}"
+# удаляем все скомпилированные байт-коды
+rm -rf "${TMP_DIR}/usr/bin/__pycache__"
+rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

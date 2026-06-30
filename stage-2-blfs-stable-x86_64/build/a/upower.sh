@@ -3,46 +3,27 @@
 PRGNAME="upower"
 
 ### UPower (power management abstraction daemon)
-# Интерфейс для предоставления списка устройств питания, прослушивание событий
-# этих устройств, запросов истории и статистики. Любое приложение или служба в
-# системе может получить доступ к службе org.freedesktop.UPower через системную
-# шину сообщений. Некоторые операции (например приостановка системы) ограничены
-# использованием PolicyKit.
+# Важная системная служба, которая неустанно следит за уровнем заряда батареи и
+# состоянием электропитания. Она сообщает системе, когда нужно переходить в
+# режим экономии или предупредить пользователя о разрядке.
 
 # Required:    libgudev
 #              libusb
 # Recommended: no
 # Optional:    glib
 #              gtk-doc
-#              libxslt
-#              docbook-xsl
+#              libxslt                  (для создания man-страниц)
+#              docbook-xsl              (для создания man-страниц)
 #              python3-pygobject3
 #              python3-dbusmock
-#              umockdev             (для тестов)
-#              libimobiledevice     (https://libimobiledevice.org/)
+#              umockdev                 (для тестов)
+#              libimobiledevice         (https://libimobiledevice.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d v -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}-v${VERSION}"*.tar.?z* || exit 1
-cd "${PRGNAME}-v${VERSION}" || exit 1
-
-chown -R root:root .
-find -L . \
-    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
-    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -50,6 +31,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
+# если оба опциональных пакета libxslt и docbook-xsl не установлены, делаем
+# -D man=false
 meson setup ..                 \
     --prefix=/usr              \
     --buildtype=release        \
@@ -60,14 +43,17 @@ meson setup ..                 \
 
 ninja || exit 1
 
-# тестовый набор должен запускаться из локальной GUI сессии, запущенной с
+# тестовый набор должен запускаться в графической среде, запущенной с
 # dbus-launch
 # LC_ALL=C ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

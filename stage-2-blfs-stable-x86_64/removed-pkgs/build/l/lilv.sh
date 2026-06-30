@@ -21,7 +21,7 @@ mkdir build
 cd build
 
 export PYTHON=python3
-meson ..                 \
+meson setup ..           \
     --prefix=/usr        \
     --buildtype=release  \
     --localstatedir=/var \

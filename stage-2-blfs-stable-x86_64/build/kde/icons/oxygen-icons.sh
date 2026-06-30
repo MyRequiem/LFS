@@ -3,7 +3,9 @@
 PRGNAME="oxygen-icons"
 
 ### oxygen-icons (Oxygen theme for KDE)
-# современная тема иконок для KDE
+# Набор классических и очень детальных иконок, ставших визитной карточкой
+# многих графических сред Linux, например KDE. Они обеспечивают единый и
+# профессиональный внешний вид всех кнопок, папок и меню в системе.
 
 # Required:    extra-cmake-modules
 #              qt6
@@ -25,14 +27,18 @@ cd build || exit 1
 
 cmake                            \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-dev .. || exit 1
 
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+touch "${TMP_DIR}/usr/share/icons/oxygen/icon-theme.cache"
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

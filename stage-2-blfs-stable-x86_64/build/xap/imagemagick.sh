@@ -4,15 +4,16 @@ PRGNAME="imagemagick"
 ARCH_NAME="ImageMagick"
 
 ### ImageMagick (a robust collection of image processing tools)
-# Набор программ (консольных утилит) для чтения и редактирования файлов
-# множества графических форматов.
+# Огромный универсальный программный комплекс для пакетного редактирования,
+# конвертации и обработки изображений через командную строку. Он незаменим для
+# автоматизации графических задач в любых скриптах.
 
 # Required:    no
 # Recommended: xorg-libraries
 # Optional:    --- Системные утилиты ---
 #              7zip
 #              llvm
-#              cups
+#              libcups или cups
 #              curl
 #              ffmpeg
 #              fftw
@@ -20,14 +21,15 @@ ARCH_NAME="ImageMagick"
 #              wget
 #              xdg-utils
 #              xterm
-#              dmalloc             (https://dmalloc.com/)
-#              electric-fence      (https://linux.softpedia.com/get/Programming/Debuggers/Electric-Fence-3305.shtml/)
-#              gnupg или pgp       (https://www.openpgp.org/about/)
-#              profiles            (https://imagemagick.org/archive/delegates/)
+#              dmalloc                          (https://dmalloc.com/)
+#              electric-fence                   (https://linux.softpedia.com/get/Programming/Debuggers/Electric-Fence-3305.shtml/)
+#              gnupg или pgp                    (https://www.openpgp.org/about/)
+#              profiles                         (https://imagemagick.org/archive/delegates/)
 #              --- Графические библиотеки ---
 #              jasper
 #              lcms2
 #              libgxps
+#              libheif
 #              libjpeg-turbo
 #              libjxl
 #              libpng
@@ -37,38 +39,36 @@ ARCH_NAME="ImageMagick"
 #              libwebp
 #              openjpeg
 #              pango
-#              djvulibre           (https://djvu.sourceforge.net/)
-#              libfpx              (https://imagemagick.org/archive/delegates/)
-#              flif                (https://github.com/FLIF-hub/FLIF/releases)
-#              jbig-kit            (https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
-#              libheif             (https://github.com/strukturag/libheif/)
-#              libde265            (https://github.com/strukturag/libde265/)
-#              libraqm             (https://github.com/HOST-Oman/libraqm/)
-#              liquid-rescale      (https://liblqr.wikidot.com/en:download-page)
-#              openexr             (https://www.openexr.com/)
-#              ralcgm              (http://www.agocg.ac.uk/train/cgm/ralcgm.htm)
+#              djvulibre                        (https://djvu.sourceforge.net/)
+#              libfpx                           (https://imagemagick.org/archive/delegates/)
+#              flif                             (https://github.com/FLIF-hub/FLIF/releases)
+#              jbig-kit                         (https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
+#              libraqm                          (https://github.com/HOST-Oman/libraqm/)
+#              liquid-rescale                   (https://liblqr.wikidot.com/en:download-page)
+#              openexr                          (https://www.openexr.com/)
+#              ralcgm                           (http://www.agocg.ac.uk/train/cgm/ralcgm.htm)
 #              --- Графические утилиты ---
 #              dejavu-fonts-ttf
 #              ghostscript
 #              gimp
 #              graphviz
 #              inkscape
-#              blender             (https://www.blender.org/)
-#              corefonts           (https://corefonts.sourceforge.net/)
-#              ghostpcl            (https://ghostscript.com/releases/gpcldnld.html)
-#              gnuplot             (http://www.gnuplot.info/)
-#              pov-ray             (https://www.povray.org/)
-#              radiance            (https://www.radiance-online.org/)
+#              blender                          (https://www.blender.org/)
+#              corefonts                        (https://corefonts.sourceforge.net/)
+#              ghostpcl                         (https://ghostscript.com/releases/gpcldnld.html)
+#              gnuplot                          (http://www.gnuplot.info/)
+#              pov-ray                          (https://www.povray.org/)
+#              radiance                         (https://www.radiance-online.org/)
 #              --- Инструменты преобразования (конвертеры) ---
 #              enscript
 #              potrace
 #              texlive или install-tl-unx
-#              autotrace           (https://autotrace.sourceforge.net/)
-#              geoexpress          (https://www.extensis.com/)
-#              hp2xx               (https://www.gnu.org/software/hp2xx/)
-#              libwmf              (https://wvware.sourceforge.net/)
-#              uniconvertor        (https://sk1project.net/uc2/)
-#              utah-raster-toolkit (https://www.cs.utah.edu/gdc/projects/urt/)
+#              autotrace                        (https://autotrace.sourceforge.net/)
+#              geoexpress                       (https://www.extensis.com/)
+#              hp2xx                            (https://www.gnu.org/software/hp2xx/)
+#              libwmf                           (https://wvware.sourceforge.net/)
+#              uniconvertor                     (https://sk1project.net/uc2/)
+#              utah-raster-toolkit              (https://www.cs.utah.edu/gdc/projects/urt/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -90,9 +90,9 @@ cd "${ARCH_NAME}-${ARCH_VERSION}" || exit 1
 chown -R root:root .
 find -L . \
     \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \; -o \
+    -o -perm 511 \) -exec chmod 755 {} \+ -o \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -101,6 +101,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr     \
     --sysconfdir=/etc \
     --enable-hdri     \
+    --with-rsvg       \
     --with-modules    \
     --with-perl       \
     --disable-static || exit 1
@@ -110,13 +111,16 @@ make || exit 1
 make DOCUMENTATION_PATH="/usr/share/doc/${PRGNAME}-${VERSION}" \
     install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
-    -exec rm {} \;
+    -exec rm {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

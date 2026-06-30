@@ -2,10 +2,10 @@
 
 PRGNAME="luajit"
 
-### luajit (Just-In-Time compiler for Lua)
-# Компилятор для языка программирования Lua. Его часто используют как
-# промежуточное высоко производительное программное обеспечение для сценариев.
-# Использует малый объем памяти.
+### LuaJIT (Just-In-Time compiler for Lua)
+# Высокопроизводительный компилятор для языка Lua, что делает выполнение
+# скриптов почти таким же быстрым, как у программ на C при использовании
+# минимального объема памяти.
 
 # Required:    no
 # Recommended: no
@@ -24,6 +24,8 @@ mkdir -pv "${TMP_DIR}"
 make PREFIX=/usr amalg
 # пакет не имеет набора тестов
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 # удалим статическую библиотеку
 rm -v "${TMP_DIR}/usr/lib/libluajit-5.1.a"

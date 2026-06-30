@@ -3,12 +3,11 @@
 PRGNAME="tunctl"
 
 ### tunctl (tool for controlling the TUN/TAP driver in Linux)
-# tunctl используется для настройки и поддержки сетевых интерфейсов TUN/TAP,
-# позволяя пользовательским приложениям имитировать сетевой трафик. Такие
-# интерфейсы полезны для программного обеспечения VPN, виртуализации, эмуляции,
-# моделирования и ряда других приложений.
+# Специальная утилита для создания и настройки виртуальных сетевых интерфейсов
+# TUN и TAP в ядре Linux. Используется для организации работы VPN-соединений и
+# виртуальных машин.
 
-# Required:    docbook-utils (для создания man-страницы)
+# Required:    docbook-utils    (для создания man-страницы)
 # Recommended: no
 # Optional:    no
 
@@ -22,10 +21,13 @@ mkdir -pv "${TMP_DIR}"
 make BIN_DIR=/usr/sbin || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 chmod 644 "${TMP_DIR}/usr/share/man/man8/${PRGNAME}.8"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -3,8 +3,8 @@
 PRGNAME="libsndfile"
 
 ### libsndfile (C library for reading and writing wav files)
-# C-библиотека для чтения и записи файлов, содержащих сэмплированные
-# аудиоданные (например MS Windows WAV и Apple/SGI AIFF)
+# Библиотека для чтения и записи аудиофайлов. Понимает десятки форматов звука,
+# от профессиональных до самых простых.
 
 # Required:    no
 # Recommended: flac
@@ -22,19 +22,26 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим для сборки с gcc 15
-sed '/typedef enum/,/bool ;/d' -i src/ALAC/alac_{en,de}coder.c
+# исправим для сборки с GCC >=15
+sed -i '/typedef enum/,/bool ;/d' src/ALAC/alac_{en,de}coder.c
 
 ./configure       \
     --prefix=/usr \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
+
+# отключим тесты Opus, которые не будут работать в opus >=1.6.1
+# sed '/ogg_opus/,+1s/HAVE_[A-Z_]*/0/' -i tests/lossy_comp_test.c || exit 1
 # make check
+
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

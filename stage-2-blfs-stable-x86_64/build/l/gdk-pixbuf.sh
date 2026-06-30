@@ -3,49 +3,58 @@
 PRGNAME="gdk-pixbuf"
 
 ### gdk-pixbuf (image library used by GTK+ v2/3)
-# Библиотека, которая загружает данные изображений в различных форматах в
-# буферы в памяти. Затем буферы можно масштабировать, компоновать, измененять,
-# сохранять или обрабатывать.
+# Библиотека для загрузки изображений и управления ими (манипуляции с
+# пикселями, изменение размера), которая используется в интерфейсах на базе
+# GTK. Она превращает файлы разных форматов (PNG, JPEG, TIFF) в понятные
+# программе объекты в памяти.
 
 # Required:    glib
-#              libjpeg-turbo
-#              libpng
 #              shared-mime-info
 # Recommended: python3-docutils
-#              librsvg            (runtime)
-#              libtiff
-# Optional:    python3-gi-docgen  (для генерации документации)
-#              libavif            (runtime, для загрузки изображений AVIF)
-#              libjxl             (runtime, для загрузки изображений jpeg xl)
-#              webp-pixbuf-loader (runtime, для загрузки изображений webp)
+#              glycin               (циклическая зависимость: сначала собираем
+#                                       без glycin, потом пересобираем уже с
+#                                       установленным glycin)
+# Optional:    python3-gi-docgen    (для генерации документации)
+#              libavif              (runtime, deprecated)
+#              libjpeg-turbo        (deprecated)
+#              libjxl               (runtime, deprecated)
+#              libpng               (deprecated)
+#              librsvg              (runtime, deprecated)
+#              libtiff              (deprecated)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr/lib/gdk-pixbuf-2.0/2.10.0"
 
 mkdir build
 cd build || exit 1
 
-# включаем загрузчики для различных форматов изображений, например BMP и XPM
-#    -D others=enabled
-# не позволяем meson загружать любые дополнительные зависимости, которые не
-# установлены в системе
-#    --wrap-mode=nofallback
+# Выключаем glycin (он нахрен не нужен, принудительно изолирует процессы через
+# bwrap и падает на LFS). Возвращаем стандартные нативные загрузчики
+# изображений напрямую в процесс GTK:
 meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
-    -D others=enabled   \
-    --wrap-mode=nofallback || exit 1
+    -D png=enabled      \
+    -D gif=enabled      \
+    -D jpeg=enabled     \
+    -D tiff=enabled     \
+    -D glycin=disabled  \
+    -D man=false        \
+    -D gtk_doc=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 # создаем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache

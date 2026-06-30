@@ -3,13 +3,9 @@
 PRGNAME="libpsl"
 
 ### libpsl (A Public Suffix List)
-# Public Suffix List (PSL) - библиотека суффиксов доменов верхнего уровня (Top
-# Level Domains - TLD). TLD включает глобальные домены верхнего уровня (gTLD),
-# такие как .com и .net, Country Top Level Домены (ccTLD), такие как .de и .cn
-# и домены верхнего уровня бренда (Brand Top Level Domains), такие как .apple и
-# .google. Брендовые TLD позволяют пользователям регистрировать свой
-# собственный домен верхнего уровня, который существует на том же уровне что и
-# gTLDs
+# Библиотека для работы со списком публичных доменных суффиксов (.ru, .com,
+# .net, .io и т.д.), помогающая браузерам и утилитам правильно определять
+# границы сайтов.
 
 # Required:    no
 # Recommended: libidn2
@@ -26,7 +22,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# принудительно используем Python3
+# изменим shebang с python на python3
 sed -i 's/env python/&3/' src/psl-make-dafsa || exit 1
 
 mkdir build
@@ -40,6 +36,8 @@ meson setup             \
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -4,7 +4,9 @@ PRGNAME="polkit-qt"
 ARCH_NAME="polkit-qt-1"
 
 ### Polkit-Qt (Qt polkit API wrapper)
-# Предоставляет API для PolicyKit в среде Qt
+# Программная обертка, которая адаптирует возможности системы безопасности
+# PolicyKit (Polkit) для использования в графическом фреймворке Qt. Она
+# отвечает за вывод аккуратных окон запроса пароля администратора.
 
 # Required:    cmake
 #              polkit
@@ -22,21 +24,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D QT_MAJOR_VERSION=6        \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-dev || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -45,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Polkit-Qt provides an API to PolicyKit in the Qt environment
 #
 # Home page: https://download.kde.org/stable/${ARCH_NAME}/
-# Download:  https://download.kde.org/stable/${ARCH_NAME}/${ARCH_NAME}-0.200.0.tar.xz
+# Download:  https://download.kde.org/stable/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 
