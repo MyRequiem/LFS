@@ -99,7 +99,7 @@ https://www.linuxfromscratch.org/patches/blfs/12.4/docbook-utils-0.6.14-grep_fix
 https://github.com/itstool/itstool/archive/2.0.7/itstool-2.0.7.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/13.0/itstool-2.0.7-lxml-1.patch
 https://deb.debian.org/debian/pool/main/a/archivemount/archivemount_1b.orig.tar.gz
-https://github.com/rclone/rclone/releases/download/v1.73.3/rclone-v1.73.3-linux-amd64.deb
+https://github.com/rclone/rclone/releases/download/v1.74.3/rclone-v1.74.3-linux-amd64.deb
 https://github.com/vifm/vifm/releases/download/v0.14.4/vifm-0.14.4.tar.bz2
 https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
 https://www.kernel.org/pub/software/scm/git/git-2.53.0.tar.xz
@@ -451,7 +451,7 @@ https://gitlab.freedesktop.org/libinput/libei/-/archive/1.5.0/libei-1.5.0.tar.bz
 https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.tar.gz
 https://www.x.org/pub/individual/xserver/xwayland-24.1.11.tar.xz
 https://www.x.org/pub/individual/xserver/xorg-server-21.1.22.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/svn/xorg-server-21.1.22-tearfree_backport-1.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/xorg-server/xorg-server-21.1.22-tearfree_backport-1.patch
 https://www.x.org/pub/individual/app/xinit-1.4.4.tar.xz
 https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
 https://www.x.org/pub/individual/driver/xf86-input-libinput-1.5.0.tar.xz
@@ -531,7 +531,7 @@ https://downloads.xvid.com/downloads/xvidcore-1.3.7.tar.gz
 https://github.com/Dav1dde/glad/archive/v2.0.8/glad-2.0.8.tar.gz
 https://github.com/haasn/libplacebo/archive/v7.360.1/libplacebo-7.360.1.tar.gz
 https://ffmpeg.org/releases/ffmpeg-8.1.1.tar.xz
-https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-8.1.1-chromium_method-1.patch
+https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/ffmpeg/ffmpeg-8.1.1-chromium_method-1.patch
 https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.8.tar.xz
 https://github.com/mpv-player/mpv/archive/v0.41.0/mpv-0.41.0.tar.gz
 https://download.videolan.org/vlc/3.0.23/vlc-3.0.23.tar.xz
@@ -675,15 +675,13 @@ https://github.com/lxqt/lxqt-session/releases/download/2.4.0/lxqt-session-2.4.0.
 https://github.com/lxqt/xdg-desktop-portal-lxqt/releases/download/1.4.0/xdg-desktop-portal-lxqt-1.4.0.tar.xz
 https://github.com/lxqt/obconf-qt/releases/download/0.16.6/obconf-qt-0.16.6.tar.xz
 # ======= LXQt Applications =======
-
-
-https://github.com/lxqt/lximage-qt/releases/download/2.2.0/lximage-qt-2.2.0.tar.xz
-https://github.com/lxqt/lxqt-notificationd/releases/download/2.2.0/lxqt-notificationd-2.2.0.tar.xz
-https://github.com/lxqt/pavucontrol-qt/releases/download/2.2.0/pavucontrol-qt-2.2.0.tar.xz
-https://github.com/lxqt/qps/releases/download/2.11.1/qps-2.11.1.tar.xz
-https://github.com/lxqt/qtermwidget/releases/download/2.2.0/qtermwidget-2.2.0.tar.xz
-https://github.com/lxqt/qterminal/releases/download/2.2.1/qterminal-2.2.1.tar.xz
-https://github.com/lxqt/screengrab/releases/download/3.0.0/screengrab-3.0.0.tar.xz
+https://github.com/lxqt/lximage-qt/releases/download/2.4.0/lximage-qt-2.4.0.tar.xz
+https://github.com/lxqt/lxqt-notificationd/releases/download/2.4.0/lxqt-notificationd-2.4.0.tar.xz
+https://github.com/lxqt/pavucontrol-qt/releases/download/2.4.0/pavucontrol-qt-2.4.0.tar.xz
+https://github.com/lxqt/qps/releases/download/2.13.0/qps-2.13.0.tar.xz
+https://github.com/lxqt/qtermwidget/releases/download/2.4.0/qtermwidget-2.4.0.tar.xz
+https://github.com/lxqt/qterminal/releases/download/2.4.0/qterminal-2.4.0.tar.xz
+https://github.com/lxqt/screengrab/releases/download/3.2.0/screengrab-3.2.0.tar.xz
 # ==============================================================================
 
 # vim:ft=conf nowrap

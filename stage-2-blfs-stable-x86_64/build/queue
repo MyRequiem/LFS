@@ -728,7 +728,6 @@ lxqt/desktop/lxqt-session.sh
 lxqt/desktop/xdg-desktop-portal-lxqt.sh
 lxqt/desktop/obconf-qt.sh
 # ======= LXQt Applications =======
-
 lxqt/apps/lximage-qt.sh
 lxqt/apps/lxqt-notificationd.sh
 lxqt/apps/pavucontrol-qt.sh
