@@ -674,6 +674,7 @@ ap/rpm.sh
 l/libxcrypt-compat.sh
 xap/openoffice.sh
 s/conky.sh
+d/python-modules/python3-mutagen.sh
 ###
 # =================================== LXQt =====================================
 ###
