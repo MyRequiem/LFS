@@ -1,4 +1,7 @@
 +--------------------------+
+[27.07.2026]
+* BLFS: Added the brave-origin package (Official Minimalist chromium-based Brave Browser)
++--------------------------+
 [15.07.2026]
 * BLFS: Upgraded Vim to version 9.2.0782.
 * BLFS: Updated vim.sh build script to modify default settings in /etc/vimrc.

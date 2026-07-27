@@ -512,7 +512,7 @@ l/appstream.sh
 l/libadwaita.sh
 ap/zenity.sh
 x/apps/bumblebee-status.sh
-# === google-chrome, zen-browser ====
+# === google-chrome, zen-browser, brave-origin ====
 l/nspr.sh
 l/nss.sh
 # пакет libcups - это урезанный пакет cups (только основная библиотека и
@@ -533,6 +533,7 @@ l/nss.sh
 l/libcups.sh ИЛИ ap/cups.sh
 xap/google-chrome.sh
 xap/zen-browser.sh
+xap/brave-origin.sh
 # ======= mirage =======
 a/inih.sh
 l/exiv2.sh

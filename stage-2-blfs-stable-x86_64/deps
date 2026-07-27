@@ -45,6 +45,7 @@ blfs-bootscripts
 bluez                                   pulseaudio, gst-plugins-bad, qt6, python3, qemu, pipewire
 boost                                   highlight, libsigc++2, libsigc++3, cairomm114, cairomm118, swig, poppler
 bpf-utils                               iptables
+brave-origin
 breathe                                 wireplumber
 brotli                                  gnutls, curl, freetype, libsoup2, libsoup3, exiv2, nodejs
 bs2b                                    gst-plugins-bad
@@ -82,7 +83,7 @@ cppunit                                 taglib
 cracklib                                libpwquality, mit-kerberos-v5
 cranelift                               rustc
 cunit                                   libdrm
-cups                                    gtk+3, gtk4, qt5-components, qt6, google-chrome, zen-browser, openjdk, imagemagick
+cups                                    gtk+3, gtk4, qt5-components, qt6, google-chrome, zen-browser, brave-origin, openjdk, imagemagick
 cups-filters                            cups
 curl                                    gnupg, git, lnav, cmake, rustc, fontconfig, libvpx, libsoup2, libsoup3, gst-plugins-bad, feh, vim, appstream, exiv2, qemu, python3-pycurl, poppler, imagemagick, conky
 cxxopts                                 pamixer
@@ -328,7 +329,7 @@ libcdio                                 gst-plugins-ugly, ffmpeg
 libcelt                                 ffmpeg
 libclc                                  mesa
 libcloudproviders                       gtk+3, gtk4
-libcups                                 gtk+3, gtk4, qt5-components, qt6, google-chrome, zen-browser, openjdk, imagemagick
+libcups                                 gtk+3, gtk4, qt5-components, qt6, google-chrome, zen-browser, brave-origin, openjdk, imagemagick
 libdbusmenu-lxqt                        lxqt-qtplugin, lxqt-panel
 libdc1394                               ffmpeg, vlc
 libdc1394_2                             gst-plugins-bad
@@ -583,7 +584,7 @@ noto-fonts-ttf
 npm                                     nodejs
 npth                                    gnupg
 nspr                                    nss
-nss                                     p11-kit, make-ca, google-chrome, zen-browser, poppler
+nss                                     p11-kit, make-ca, google-chrome, zen-browser, brave-origin, poppler
 ntp                                     dhcpcd
 nuklear                                 libplacebo
 numactl                                 x265, qemu
@@ -796,8 +797,8 @@ qemu                                    libvirt
 qjson                                   libdbusmenu-lxqt
 qoi                                     gimp
 qps
-qt5-components                          pinentry, google-chrome, zen-browser
-qt6                                     pinentry, highlight, cmake, v4l-utils, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, google-chrome, zen-browser, vlc, flameshot, poppler, libportal, polkit-qt, kwindowsystem, kconfig, solid, kidletime, kwayland, libkscreen, layer-shell-qt, lxqt-build-tools, libqtxdg, libfm-qt, obconf-qt, qtermwidget
+qt5-components                          pinentry, google-chrome, zen-browser, brave-origin
+qt6                                     pinentry, highlight, cmake, v4l-utils, gst-plugins-good, extra-cmake-modules, oxygen-icons, appstream, google-chrome, zen-browser, brave-origin, vlc, flameshot, poppler, libportal, polkit-qt, kwindowsystem, kconfig, solid, kidletime, kwayland, libkscreen, layer-shell-qt, lxqt-build-tools, libqtxdg, libfm-qt, obconf-qt, qtermwidget
 qterminal
 qtermwidget                             qterminal
 qtxdg-tools                             lxqt-session
