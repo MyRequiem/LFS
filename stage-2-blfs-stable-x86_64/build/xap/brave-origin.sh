@@ -50,7 +50,7 @@ read -r YESNO
 }
 
 DEB_PACKAGE="${PRGNAME}_${VERSION}_amd64.deb"
-rm -f "${SOURCES}/${DEB_PACKAGE}"
+rm -f "${SOURCES}/${PRGNAME}_"*
 
 # Качаем актуальный стабильный релиз .deb с GitHub.
 GIT_HOME_PAGE="https://github.com/brave/brave-browser"
