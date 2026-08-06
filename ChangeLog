@@ -1,4 +1,7 @@
 +--------------------------+
+[06.08.2026]
+* LFS: Added syshealth-utils-menu to the syshealth-utils package.
++--------------------------+
 [27.07.2026]
 * BLFS: Added the brave-origin package (Official Minimalist chromium-based Brave Browser)
 +--------------------------+

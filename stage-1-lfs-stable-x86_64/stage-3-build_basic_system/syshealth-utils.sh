@@ -182,6 +182,31 @@ PRGNAME="syshealth-utils"
 #                   сам пакет при этом не удаляется из системы.
 #       --no-color: Отключает цветной вывод в консоль.
 ###
+# --------------------
+# syshealth-utils-menu
+# --------------------
+#    Интерактивное текстовое меню для удобного запуска всех утилит пакета.
+#    Позволяет выполнять системные проверки и аудит без необходимости вводить
+#    команды вручную.
+#
+#    Поведение:
+#       Запуск меню:
+#       $ syshealth-utils-menu
+#
+#       Утилита открывает curses-интерфейс в терминале. Выбранная пользователем
+#       команда выполняется в чистом системном окруженииk
+#
+#    === LFS System Health Utils ===
+#
+#      > 1) Edit ~/.syshealth-utils-rc
+#        2) Check System Dependencies
+#        3) Check System Health
+#        4) Find Orphans
+#        5) Find New/Old Configs
+#        6) Check RC Duplicates
+#        7) Remove .la Files
+#        8) Exit
+###
 
 source "/check_environment.sh" || exit 1
 
@@ -193,6 +218,7 @@ find-new-config \
 find-orphans \
 remove-la-files.sh \
 removepkg \
+syshealth-utils-menu \
 "
 
 for SCRIPT in ${SCRIPTS} ; do
@@ -218,18 +244,20 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 # libraries or broken package installations.
 #
 # Included tools:
-#    * check-rc-duplicates - Finds duplicate or broken runlevel links in the
+#    * check-rc-duplicates  - Finds duplicate or broken runlevel links in the
 #                               /etc/rc.d/rcX.d/
-#    * check-system-deps   - Verifies ELF binary dependencies via ldd.
-#    * check-system-health - Validates files against package logs.
-#    * find-new-config     - Searches for .new and .old configuration files in
+#    * check-system-deps    - Verifies ELF binary dependencies via ldd.
+#    * check-system-health  - Validates files against package logs.
+#    * find-new-config      - Searches for .new and .old configuration files in
 #                               the /etc directory.
-#    * find-orphans        - Scans for files and directories not tracked by the
+#    * find-orphans         - Scans for files and directories not tracked by the
 #                               package manager. Cross-references the live
 #                               filesystem against installed package logs in
 #                               /var/log/packages.
-#    * remove-la-files.sh  - Strips libtool archives (.la) from the system.
-#    * removepkg           - Properly uninstalls packages from the system.
+#    * remove-la-files.sh   - Strips libtool archives (.la) from the system.
+#    * removepkg            - Properly uninstalls packages from the system.
+#    * syshealth-utils-menu - Provides a simple text menu to easily launch
+#                                 any of the utilities listed above.
 #
 /usr/sbin/check-rc-duplicates
 /usr/sbin/check-system-deps
@@ -238,4 +266,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}"
 /usr/sbin/find-orphans
 /usr/sbin/remove-la-files.sh
 /usr/sbin/removepkg
+/usr/sbin/syshealth-utils-menu
 EOF

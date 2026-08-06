@@ -12,10 +12,11 @@ main-directory-tree.sh
 #    find-orphans
 #    remove-la-files.sh
 #    removepkg
+#    syshealth-utils-menu
 #
 ###
 # NOTE:
-#    все эти 7 утилит (перечисленные выше) нужно положить в корень системы
+#    все эти 8 утилит (перечисленные выше) нужно положить в корень системы
 #    вместе со скриптом syshealth-utils.sh, т.к. он будет их копировать в
 #    /usr/sbin/
 ###

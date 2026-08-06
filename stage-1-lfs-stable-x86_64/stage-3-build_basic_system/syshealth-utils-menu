@@ -1,0 +1,241 @@
+#!/usr/bin/env python3
+
+r"""
+This tool provides a simple text menu to run utilities from the syshealth-utils
+package.
+    __    ___________    _____            __               ____  __
+   / /   / ____/ ___/   / ___/__  _______/ /_  ___  ____ _/ / /_/ /_
+  / /   / /_   \__ \    \__ \/ / / / ___/ __ \/ _ \/ __ `/ / __/ __ \
+ / /___/ __/  ___/ /   ___/ / /_/ (__  ) / / /  __/ /_/ / / /_/ / / /
+/_____/_/    /____/   /____/\__, /____/_/ /_/\___/\__,_/_/\__/_/ /_/
+                           /____/
+   __  ____  _ __        ___        _____            __
+  / / / / /_(_) /____   ( _ )      / ___/__  _______/ /____  ____ ___
+ / / / / __/ / / ___/  / __ \/|    \__ \/ / / / ___/ __/ _ \/ __ `__ \
+/ /_/ / /_/ / (__  )  / /_/  <    ___/ / /_/ (__  ) /_/  __/ / / / / /
+\____/\__/_/_/____/   \____/\/   /____/\__, /____/\__/\___/_/ /_/ /_/
+                                      /____/
+    ___             ___ __     __  ___
+   /   | __  ______/ (_) /_   /  |/  /__  ____  __  __
+  / /| |/ / / / __  / / __/  / /|_/ / _ \/ __ \/ / / /
+ / ___ / /_/ / /_/ / / /_   / /  / /  __/ / / / /_/ /
+/_/  |_\__,_/\__,_/_/\__/  /_/  /_/\___/_/ /_/\__,_/
+"""
+
+
+import curses
+import os
+import subprocess
+import sys
+
+# expanduser() replaces ~ with the full path to the user's home directory.
+CONFIG="~/.syshealth-utils-rc"
+CONFIG_PATH = os.path.expanduser(CONFIG)
+
+# These are the default menu items.
+# Format: "<Name shown in menu> | <actual terminal command to run>".
+DEFAULT_CONFIG = f"""Edit {CONFIG} | vim {CONFIG}
+Check System Dependencies | check-system-deps
+Check System Health | check-system-health
+Find Orphans | find-orphans
+Find New/Old Configs | find-new-config
+Check RC Duplicates | check-rc-duplicates
+Remove .la Files | remove-la-files.sh
+
+# vim:ft=conf"""
+
+
+def load_config() -> list[tuple[str, str | None]]:
+    """
+    Initializes and reads the configuration file.
+    Return a list of tuples.
+    """
+    if not os.path.exists(CONFIG_PATH):
+        with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+            f.write(DEFAULT_CONFIG)
+
+    items = []
+    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            # Skip empty lines, comments starting with '#', and lines without
+            # the '|' separator.
+            if line and not line.startswith('#') and "|" in line:
+                # The '1' means split only once, so the command can safely
+                # contain more '|'. split() returns a list, which is unpacked
+                # into 'name' and 'cmd' variables.
+                name, cmd = line.split("|", 1)
+                # Add the item to our menu list, removing any accidental
+                # spaces.
+                # items will contain a list of tuples: [('name', 'cmd'), ...]
+                items.append((name.strip(), cmd.strip()))
+
+    # Add a permanent "Exit" option at the very bottom of the menu.
+    items.append(("Exit", None))
+    return items
+
+
+def draw_menu(stdscr, menu_items) -> int:
+    """
+    Draws the interactive menu on the screen and handles keyboard navigation.
+
+    This function loops continuously, clearing and redrawing the screen
+    whenever the user moves the cursor up or down. When the user presses the
+    <Enter> key, it returns the index of the selected item.
+
+    Args:
+        stdscr (curses.window): The main terminal window object automatically
+                                provided by curses.wrapper().
+        menu_items (list): A list of (name, cmd) tuples loaded from the config.
+
+    Returns:
+        int: The index of the selected menu item.
+    """
+
+    # Hide the blinking text cursor to make the menu look cleaner.
+    curses.curs_set(0)
+
+    # Define a color pair and assign it a unique ID (number 1): green text on a
+    # black background. We will use this color pair to highlight the currently
+    # selected row. ID 0 is reserved for default terminal colors (black and
+    # white). We can create more pairs like ID 2 (Red on Black) or ID 3 (Yellow
+    # on Blue) if needed.
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    # Define color pair 2: cyan text on a black background.
+    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
+
+    # Track the index of the currently highlighted menu item. Start at 0 to
+    # focus on the very first item in the menu list.
+    current_row = 0
+
+    # Main menu loop: redraws the screen every time the user moves up or down.
+    while True:
+        try:
+            stdscr.clear()
+
+            # Draw the main title at the top in bright cyan bold text. A_BOLD
+            # turns the default dim brown color into a vibrant cyan.
+            stdscr.addstr(
+                1,
+                2,
+                "=== LFS System Health Utils ===",
+                curses.color_pair(2) | curses.A_BOLD,
+            )
+
+            # Draw all the menu options on the screen.
+            # enumerate(iterable, start=0) - simultaneously retrieves the index
+            # and value of each item while looping through a collection (e.g.,
+            # a list or a string).
+            for ind, (name, _) in enumerate(menu_items):
+                x = 4       # Move text a bit to the right.
+                y = 3 + ind # Place each item on a new line below the title.
+
+                # Extract only the name from the (name, command) tuple.
+                item_name = f"{ind + 1}) {name}"
+
+                # If this is the active row, highlight it with a green color
+                # and a bold arrow.
+                if ind == current_row:
+                    stdscr.attron(curses.color_pair(1) | curses.A_BOLD)
+                    stdscr.addstr(y, x - 2, f"> {item_name}")
+                    stdscr.attroff(curses.color_pair(1) | curses.A_BOLD)
+
+                # Otherwise, just draw it as normal text with spaces instead of
+                # an arrow.
+                else:
+                    stdscr.addstr(y, x, f"{item_name}")
+
+            # Refresh the screen to apply all the drawings from the memory
+            # canvas.
+            stdscr.refresh()
+            # Wait for the user to press a key and capture its code.
+            key = stdscr.getch()
+
+            # Handle "Move Up" action (Up arrow key or 'k' for Vim users).
+            if key == curses.KEY_UP or key == ord("k"):
+                # Use modulo (%) to wrap around to the bottom when moving up
+                # from the very first item.
+                current_row = (current_row - 1) % len(menu_items)
+
+            # Handle "Move Down" action (Down arrow key or 'j' for Vim users).
+            elif key == curses.KEY_DOWN or key == ord("j"):
+                # Use modulo (%) to wrap around to the top when moving down
+                # from the very last item.
+                current_row = (current_row + 1) % len(menu_items)
+
+            # Jump to the very first item (Vim style 'g').
+            elif key == ord("g"):
+                current_row = 0
+
+            # Jump to the very last item (Vim style 'G' / Shift+g).
+            elif key == ord("G"):
+                current_row = len(menu_items) - 1
+
+            # Handle "Select" action (Enter keys, carriage return, or 'l' like
+            # Vim).
+            elif key in [curses.KEY_ENTER, 10, 13, ord("l")]:
+                return current_row
+
+        except KeyboardInterrupt:
+            # Handle <Ctrl+C> gracefully without breaking the terminal layout.
+            # Safely exit by returning the index of the last option ("Exit").
+            return len(menu_items) - 1
+
+
+def main():
+    while True:
+        # Reload configuration on every loop iteration
+        menu_items = load_config()
+
+        # Start the curses interface:
+        # curses.wrapper() does three important things:
+        # 1. Initializes the terminal for safe TUI rendering (hides cursor,
+        #    turns off echoing).
+        # 2. Passes 'menu_items' as an argument directly into 'draw_menu'
+        #    function.
+        # 3. Automatically restores your normal terminal look, even if the
+        #    program crashes.
+        #
+        # When draw_menu() returns, curses safely closes and restores the
+        # normal terminal look.
+        selected_ind = curses.wrapper(draw_menu, menu_items)
+        # Unpack the selected item's name and its corresponding shell command.
+        selected_text, command = menu_items[selected_ind]
+
+        # If the user selected "Exit" or the command is missing, shut down
+        # cleanly.
+        if selected_text == "Exit" or command is None:
+            sys.exit(0)
+
+        # Check if the chosen option is specifically meant for editing the
+        # config file.
+        is_config_edit = bool(command and CONFIG in command)
+
+        # For regular system utils, print a nice bright green header in the
+        # terminal before running the actual command.
+        if not is_config_edit:
+            print(f"\n\033[1;32m>>> {selected_text} <<<\033[0m\n")
+
+        try:
+            # Run the command in the standard system shell. This is safe
+            # because curses is completely turned off at this point.
+            subprocess.run(command, shell=True)
+        except KeyboardInterrupt:
+            # Handle <Ctrl+C> gracefully if the user interrupts the running
+            # utility.
+            print("\nProcess interrupted by user.")
+
+        # Return to menu ONLY if we edited the config file. Otherwise exit.
+        if is_config_edit:
+            continue
+
+        break
+
+
+if __name__ == "__main__":
+    # Check if the script is run by the root user. System audit tools require
+    # root privileges to access restricted system files.
+    if os.geteuid() != 0:
+        sys.exit("Error: Root privileges are required to run this script.")
+
+    main()
