@@ -14,7 +14,7 @@ ARCH_NAME="LSB-Tools"
 #    $ lsb_release -a
 #       Distributor ID: Linux From Scratch
 #       Description:    Linux From Scratch
-#       Release:        13.0
+#       Release:        13.1
 #       Codename:       MyRequiem
 #
 # Утилиты для активации/деактивации скриптов автозапуска в /etc/rc.d/init.d/

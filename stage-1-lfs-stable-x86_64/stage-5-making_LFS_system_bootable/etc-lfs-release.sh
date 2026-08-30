@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="etc-lfs-release"
-LFS_VERSION="13.0"
+LFS_VERSION="13.1"
 
 ### /etc/lfs-release (system info)
 # /etc/lfs-release - содержит версию LFS системы
