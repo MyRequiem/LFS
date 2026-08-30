@@ -97,7 +97,7 @@ clear_console
 
 ### Linux Kernel
 echo "Linux Kernel: $(uname -r)"
-echo "Required: >=5.4"
+echo "Required: >=5.10"
 clear_console
 
 ### M4
