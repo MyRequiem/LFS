@@ -72,8 +72,6 @@ expat.sh
 inetutils.sh
 less.sh
 perl.sh
-perl-xml-parser.sh
-intltool.sh
 autoconf.sh
 automake.sh
 openssl.sh
