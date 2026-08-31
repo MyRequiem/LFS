@@ -23,7 +23,7 @@ echo 'int main(){}' > dummy.c
 echo "ls -l dummy.c"
 ls -l dummy.c
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -38,7 +38,7 @@ cc dummy.c -v -Wl,--verbose &> dummy.log
 echo "ls -l a.out"
 ls -l a.out
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -54,7 +54,7 @@ echo ""
 echo "# The output should be something like this:"
 echo "#     [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]"
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -78,7 +78,7 @@ echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/Scrt1.o succee
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crti.o succeeded"
 echo "/usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/../../../../lib/crtn.o succeeded"
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -101,7 +101,7 @@ echo " /usr/local/include"
 echo " /usr/lib/gcc/x86_64-pc-linux-gnu/${VERSION}/include-fixed"
 echo " /usr/include"
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -126,7 +126,7 @@ echo 'SEARCH_DIR("/usr/local/lib")'
 echo 'SEARCH_DIR("/lib")'
 echo 'SEARCH_DIR("/usr/lib")'
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -142,7 +142,7 @@ echo ""
 echo "# The output should be something like this:"
 echo "attempt to open /usr/lib/libc.so.6 succeeded"
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
@@ -158,7 +158,7 @@ echo ""
 echo "# The output should be something like this:"
 echo "found ld-linux-x86-64.so.2 at /usr/lib/ld-linux-x86-64.so.2"
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
