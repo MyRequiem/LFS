@@ -57,7 +57,7 @@ fi
 # ---------------------
 # |-sda1  /boot [LFS]
 #           |
-#           vmlinuz -> vmlinuz-generic-6.18.16
+#           vmlinuz -> vmlinuz-generic-7.1.12
 # |-sda5  /     [корень LFS]
 # |-sda8  /     [корень Slackware]
 #         |
@@ -89,9 +89,9 @@ set default=0
 set timeout=7
 
 # LFS
-menuentry "GNU/Linux LFS-13.1       Linux-6.18.16" {
+menuentry "GNU/Linux LFS-13.1       Linux-7.1.12" {
     set root=(hd0,1)
-    linux /vmlinuz      root=${HD}5 ro net.ifnames=0 vt.default_utf8=1 video=nouveau:modeset=1 video=i915:modeset=1
+    linux /vmlinuz      root=${HD}5 ro net.ifnames=0 vt.default_utf8=1 vga=791 modprobe.blacklist=nouveau
 }
 
 # Slackware
