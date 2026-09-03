@@ -17,7 +17,7 @@ PRGNAME="binutils"
 #    обновлении LFS, пакет binutils пересобираем и устанавливаем дважды, и
 #    только потом удаляем библиотеки предыдущей версии. Пересборка дважды
 #    гарантирует, что линковщик корректно связывается с Glibc и самим собой,
-#    исключая «фантомные» зависимости от старых библиотек
+#    исключая «фантомные» зависимости от старых библиотек.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -27,53 +27,54 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# документация Binutils рекомендует собирать binutils в отдельном каталоге
+# Документация Binutils рекомендует собирать binutils в отдельном каталоге.
 mkdir build
 cd build || exit 1
 
-### Конфигурация
-# создать оригинальный компоновщик bdf и установить его как ld (компоновщик по
+### Конфигурация:
+# Создать оригинальный компоновщик bdf и установить его как ld (компоновщик по
 # умолчанию) и ld.bfd
 #    --enable-ld=default
-# включаем поддержку плагинов для компоновщика
+# Включаем поддержку плагинов для компоновщика.
 #    --enable-plugins
-# включаем 64-битную поддержку. Может не понадобиться на 64-битных системах, но
-# не повредит
+# Включаем 64-битную поддержку. Может не понадобиться на 64-битных системах, но
+# не повредит.
 #    --enable-64-bit-bfd
-# использовать уже установленную библиотеку zlib, а не собирать встроенную
-# версию
+# Использовать уже установленную библиотеку zlib, а не собирать встроенную
+# версию.
 #    --with-system-zlib
-../configure            \
-    --prefix=/usr       \
-    --sysconfdir=/etc   \
-    --enable-ld=default \
-    --enable-plugins    \
-    --enable-shared     \
-    --disable-werror    \
-    --enable-64-bit-bfd \
-    --enable-new-dtags  \
-    --with-system-zlib  \
+../configure                 \
+    --prefix=/usr            \
+    --sysconfdir=/etc        \
+    --enable-ld=default      \
+    --enable-plugins         \
+    --enable-shared          \
+    --disable-werror         \
+    --enable-64-bit-bfd      \
+    --enable-new-dtags       \
+    --with-system-zlib       \
+    --with-lib-path=/usr/lib \
     --enable-default-hash-style=gnu || exit 1
 
-# обычно tooldir, т.е. каталог, где в конечном итоге будут находиться
+# Обычно tooldir, т.е. каталог, где в конечном итоге будут находиться
 # исполняемые файлы, устанавливается в $(exec_prefix)/$(target_alias)
 # Машины с архитектурой x86_64 будут расширять этот путь до
 # /usr/x86_64-unknown-linux-gnu, но каталог x86_64-unknown-linux-gnu в /usr нам
-# не требуется, поэтому явно указываем tooldir
+# не требуется, поэтому явно указываем tooldir.
 make tooldir=/usr || make -j1 tooldir=/usr || exit 1
 
 ###
 # Важно !!!
 ###
 # Набор тестов для Binutils на данном этапе считается критическим. Нельзя
-# пропускать его ни при каких обстоятельствах
+# пропускать его ни при каких обстоятельствах.
 # make -k check
 # получить список неудачных тестов:
 #    # grep '^FAIL:' $(find -name '*.log')
 
 make tooldir=/usr install DESTDIR="${TMP_DIR}"
 
-# удалим бесполезные статические библиотеки и документацию
+# Удалим бесполезные статические библиотеки и документацию.
 rm -f  "${TMP_DIR}/usr/lib"/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="glibc"
-TZDATA_VERSION="2026a"
+TZDATA_VERSION="2026c"
 TIMEZONE="Europe/Astrakhan"
 
 ### Glibc (GNU C libraries)
@@ -14,14 +14,14 @@ TIMEZONE="Europe/Astrakhan"
 ###
 # IMPORTANT:
 ###
-# При обновлении Glibc до новой minor версии (например, с версии 2.42 до 2.43)
+# При обновлении Glibc до новой minor версии (например, с версии 2.43 до 2.44)
 # на рабочей системе LFS, необходимо принять дополнительные меры
 # предосторожности, чтобы избежать нарушений работы системы.
 #
-# ДО СБОРКИ обновленного Glibc:
-#    - если обновляем LFS до более новой версии, то нужно обновить ядро
+# ДО СБОРКИ Glibc:
+#    - Если обновляем LFS до более новой версии, то нужно обновить ядро
 #       (kernel-source, kernel-headers, kernel-generic, kernel-modules) до
-#       новой версии и перезагрузить систему
+#       новой версии и перезагрузить систему.
 #
 # Сборка Glibc:
 #    ../configure \
@@ -33,7 +33,7 @@ TIMEZONE="Europe/Astrakhan"
 #    install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 #    make install
 #
-# После установки нового Glibc >> НЕМЕДЛЕННО << перезагрузить систему
+# После установки нового Glibc >> НЕМЕДЛЕННО << перезагрузить систему.
 ###
 
 ROOT="/"
@@ -51,69 +51,74 @@ if [ ! -f "${SOURCES}/tzdata${TZDATA_VERSION}.tar.gz" ]; then
     exit 1
 fi
 
-# некоторые из программ Glibc используют не FHS-совместимый каталог /var/db для
+# Некоторые из программ Glibc используют не FHS-совместимый каталог /var/db для
 # хранения run-time данных. Применим патч, который удаляет ссылки на каталог
-# /var/db и заменяет их на
+# /var/db и заменяет их на:
 #    /var/cache/nscd    - для nscd
 #    /var/lib/nss_db    - для nss_db
 patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-fhs-1.patch" || exit 1
 
-# документация glibc рекомендует собирать glibc в отдельном каталоге
+# Патч устраняет падение при вызове функции tanh(3) на старых процессорах
+# x86_64, а также чинит параллельную сборку и установку при использовании флага
+# make -j X
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
+# Документация glibc рекомендует собирать glibc в отдельном каталоге.
 mkdir -v build
 cd build || exit 1
 
-# утилиты ldconfig и sln будут установлены в /usr/sbin
+# Утилиты ldconfig и sln будут установлены в /usr/sbin (/sbin by default).
 echo "rootsbindir=/usr/sbin" > configparms
 
-### Конфигурация
-# отключает параметр -Werror, передаваемый в GCC. Это необходимо для запуска
+### Конфигурация:
+# Отключает параметр -Werror, передаваемый в GCC. Это необходимо для запуска
 # набора тестов.
 #    --disable-werror
-# не создавать nscd (name service cache daemon), который больше не используется
+# Не создавать nscd (name service cache daemon), который больше не используется.
 #    --disable-nscd
-# устанавливать библиотеки в /usr/lib вместо /lib64 по умолчанию для x86-64
-# архитектуры
+# Устанавливать библиотеки в /usr/lib вместо /lib64 по умолчанию для x86-64
+# архитектуры.
 #    libc_cv_slibdir=/usr/lib
-# повышает безопасность системы, добавляя дополнительный код для проверки
-# переполнения буфера, например при атаках с разрушением стека
+# Повышает безопасность системы, добавляя дополнительный код для проверки
+# переполнения буфера, например при атаках с разрушением стека.
 #    --enable-stack-protector=strong
-# указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.4
-# (более ранние версии поддерживаться не будут)
-#    --enable-kernel=5.4
+# Указывает Glibc скомпилировать библиотеку с поддержкой ядер Linux >=5.10
+# (более ранние версии поддерживаться не будут).
+#    --enable-kernel=5.10
 ../configure                        \
     --prefix=/usr                   \
     --disable-werror                \
     --disable-nscd                  \
     libc_cv_slibdir=/usr/lib        \
     --enable-stack-protector=strong \
-    --enable-kernel=5.4 || exit 1
+    --enable-kernel=5.10 || exit 1
 
 make || make -j1 || exit 1
 # make check
 
-# если конфиг динамического загрузчика /etc/ld.so.conf не существует, то на
-# этапе установки Glibc будет жаловаться на его отсутствие
+# Если конфиг динамического загрузчика /etc/ld.so.conf не существует, то на
+# этапе установки Glibc будет жаловаться на его отсутствие.
 LD_SO_CONF="/etc/ld.so.conf"
 ! [ -r "${LD_SO_CONF}" ] && touch "${LD_SO_CONF}"
 
-# исправим Makefile, чтобы пропустить устаревшую проверку работоспособности
-# Glibc, которая не работает в современной конфигурации
+# Исправим Makefile, чтобы пропустить устаревшую проверку работоспособности
+# Glibc, которая не работает в современной конфигурации.
 sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile || exit 1
 
 make DESTDIR="${TMP_DIR}" install
 install -vm755 "${TMP_DIR}/usr/lib"/*.so.* /usr/lib
 make install
 
-# исправим жестко закодированный путь к динамическому загрузчику в скрипте ldd
+# Исправим жестко закодированный путь к динамическому загрузчику в скрипте ldd.
 sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd || exit 1
 
-# ни одна из локалей не требуется на данный момент, но если некоторые из них
+# Ни одна из локалей не требуется на данный момент, но если некоторые из них
 # отсутствуют, тестовые наборы пакетов, которые мы будет устанавливать позже,
 # пропустят важные тесты, поэтому установим минимальный набор локалей,
 # необходимых для оптимального охвата тестов. Отдельные локали могут быть
 # установлены с помощью утилиты localedef. Результат ее работы добавляется в
-# файл
-#    /usr/lib/locale/locale-archive
+# файл /usr/lib/locale/locale-archive
 mkdir -pv /usr/lib/locale
 localedef -i C -f UTF-8 C.UTF-8
 localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
@@ -154,11 +159,11 @@ localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
 cp /usr/lib/locale/locale-archive "${TMP_DIR}/usr/lib/locale/"
 
 ###
-# Конфигурация Glibc
+# Конфигурация Glibc.
 ###
 
-### Псевдонимы локалей
-# в файле /usr/share/locale/locale.alias пропишем псевдонимы для русской локали
+### Псевдонимы локалей.
+# В файле /usr/share/locale/locale.alias пропишем псевдонимы для русской локали
 # с кодировкой UTF-8
 # уберем:
 #    russian         ru_RU.ISO-8859-5
@@ -169,7 +174,7 @@ cp /usr/lib/locale/locale-archive "${TMP_DIR}/usr/lib/locale/"
 sed -i 's/^russian.*$/russian         ru_RU.UTF-8\nru_RU           ru_RU.UTF-8\nru              ru_RU.UTF-8/' \
     "${TMP_DIR}/usr/share/locale/locale.alias"
 
-### создаем файл конфигурации для name service switch /etc/nsswitch.conf
+### Создаем файл конфигурации для name service switch /etc/nsswitch.conf
 NSSWITCH_CONFIG="/etc/nsswitch.conf"
 cat << EOF > "${TMP_DIR}${NSSWITCH_CONFIG}"
 # Begin ${NSSWITCH_CONFIG}
@@ -189,9 +194,9 @@ rpc: files
 # End ${NSSWITCH_CONFIG}
 EOF
 
-### Установка и настройка данных часового пояса
+### Установка и настройка данных часового пояса.
 ZONEINFO_DIR="${TMP_DIR}${ZONEINFO}"
-# компилируем файлы Time Zone Data и помещаем их в /usr/share/zoneinfo
+# Компилируем файлы Time Zone Data и помещаем их в /usr/share/zoneinfo
 tar -xvf "${SOURCES}/tzdata${TZDATA_VERSION}.tar.gz" || exit 1
 for TZ in etcetera southamerica northamerica europe africa antarctica \
         asia australasia backward; do
@@ -202,23 +207,23 @@ done
 
 cp -v zone.tab zone1970.tab iso3166.tab "${ZONEINFO_DIR}"
 
-# при создании файла posixrules мы используем Нью-Йорк, потому что POSIX
-# требует, чтобы правила перехода на летнее время соответствовали правилам США
+# При создании файла posixrules мы используем Нью-Йорк, потому что POSIX
+# требует, чтобы правила перехода на летнее время соответствовали правилам США.
 zic -d "${ZONEINFO_DIR}" -p America/New_York
 
-# один из способов определить местный часовой пояс:
+# Один из способов определить местный часовой пояс:
 #     $ tzselect
-# после ответа на несколько вопросов о местоположении сценарий выведет название
+# После ответа на несколько вопросов о местоположении сценарий выведет название
 # часового пояса (например, Europe/Astrakhan). В каталоге /usr/share/zoneinfo
 # перечислены также некоторые другие возможные часовые пояса, которые не
-# определены сценарием, но могут использоваться
+# определены сценарием, но могут использоваться.
 
-# создадим ссылку
+# Создадим ссылку:
 #    /etc/localtime -> ../usr/share/zoneinfo/${TIMEZONE}
 ln -sfv "../usr/share/zoneinfo/${TIMEZONE}" "${TMP_DIR}/etc/localtime"
 
 ###
-# Конфигурация динамического загрузчика
+# Конфигурация динамического загрузчика.
 ###
 # По умолчанию динамический загрузчик ld-linux-x86-64.so.2 при запуске программ
 # ищет нужные динамические библиотеки в /usr/lib/ Однако если в каталогах
@@ -246,7 +251,7 @@ EOF
 source "${ROOT}update-info-db.sh" || exit 1
 source "${ROOT}clean-locales.sh"  || exit 1
 
-# устанавливаем конфиги и директории в корень системы
+# Устанавливаем конфиги и директории в корень системы.
 /bin/cp -vR "${TMP_DIR}"/etc       /
 /bin/cp -vR "${TMP_DIR}"/usr/share /usr
 /bin/cp -vR "${TMP_DIR}"/var       /
