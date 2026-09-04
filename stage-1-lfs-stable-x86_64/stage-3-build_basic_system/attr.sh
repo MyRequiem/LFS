@@ -27,7 +27,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# установим библиотеку libattr.so командой 'install', иначе, если пакет уже
+# Установим библиотеку libattr.so командой 'install', иначе, если пакет уже
 # установлен, при копировании в корень системы выдаст ошибку:
 #    ./attr.sh: Ошибка сегментирования /bin/cp -vR "${TMP_DIR}"/* /
 install -vm755 "${TMP_DIR}/usr/lib/libattr".so* /usr/lib
@@ -48,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Control Lists (ACLs) are implemented using extended attributes.
 #
 # Home page: https://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

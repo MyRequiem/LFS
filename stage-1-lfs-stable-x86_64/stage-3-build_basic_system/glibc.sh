@@ -64,7 +64,7 @@ patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-fhs-1.patch" || exit 1
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
-# Документация glibc рекомендует собирать glibc в отдельном каталоге.
+# Документация рекомендует собирать Glibc в отдельном каталоге.
 mkdir -v build
 cd build || exit 1
 
@@ -266,7 +266,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to compile programs.
 #
 # Home page: https://www.gnu.org/software/libc/
-# Download:  https://ftp.gnu.org/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

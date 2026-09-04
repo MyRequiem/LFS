@@ -14,13 +14,23 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-./configure          \
-    --prefix=/usr    \
-    --disable-static \
-    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+# Циклическая зависимость с пакетом meson.
+MESON_VERSION="$(echo "${SOURCES}/meson"-*.tar.?z* | rev | \
+    cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-make || make -j1 || exit 1
-make install DESTDIR="${TMP_DIR}"
+tar -xvf "${SOURCES}/meson-${MESON_VERSION}.tar.gz" || exit 1
+
+mkdir build
+cd build || exit 1
+
+python3 "../meson-${MESON_VERSION}/meson.py" setup \
+    --prefix=/usr       \
+    --buildtype=release \
+    .. || exit 1
+
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 

@@ -92,7 +92,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Objective-C, Fortran, and most other programming languages.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://sourceware.org/pub/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

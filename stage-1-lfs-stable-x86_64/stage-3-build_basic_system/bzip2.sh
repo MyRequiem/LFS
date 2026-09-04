@@ -72,7 +72,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # compressors.
 #
 # Home page: https://sourceforge.net/projects/${PRGNAME}/
-# Download:  https://www.sourceware.org/pub/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

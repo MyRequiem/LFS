@@ -4,7 +4,7 @@ PRGNAME="expect"
 
 ### Expect (program that talks to other interactive programs)
 # Инструмент для автоматизации интерактивных программ, который может сам
-# «отвечать» на вопросы системы (например, при вводе паролей в скриптах)
+# «отвечать» на вопросы системы (например, при вводе паролей в скриптах).
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -32,18 +32,18 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-# для сборки потребуются PTY, поэтому убедимся, что PTY работает правильно в
-# среде chroot (команда должна вывести в терминал "ok")
+# Для сборки потребуются PTY, поэтому убедимся, что PTY работает правильно в
+# среде chroot (команда должна вывести в терминал "ok").
 python3 -c 'from pty import spawn; spawn(["echo", "ok"])' || exit 1
 
-# вносим некоторые изменения, чтобы разрешить gcc >= 14.1
+# Вносим некоторые изменения, чтобы разрешить gcc >=15.1
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-gcc15-1.patch" || exit 1
 
-# указывает где находится конфигурационный скрипт tclConfig.sh из пакета tcl
+# Указывает где находится конфигурационный скрипт tclConfig.sh из пакета tcl.
 #    --with-tcl=/usr/lib
-# явно указываем, где искать внутренние заголовки Tcl
-#    --with-tclinclude=/usr/
+# Явно указываем, где искать внутренние заголовки Tcl.
+#    --with-tclinclude=/usr/include
 ./configure                 \
     --prefix=/usr           \
     --with-tcl=/usr/lib     \
@@ -58,7 +58,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# ссылка в /usr/lib
+# Ссылка в /usr/lib
 #    libexpect${VERSION}.so -> expect${VERSION}/libexpect${VERSION}.so
 ln -svf "expect${VERSION}/libexpect${VERSION}.so" "${TMP_DIR}/usr/lib"
 

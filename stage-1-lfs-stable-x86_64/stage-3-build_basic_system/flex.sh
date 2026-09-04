@@ -25,9 +25,9 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# некоторые программы еще не знают о flex и пытаются запустить его
+# Некоторые программы еще не знают о flex и пытаются запустить его
 # предшественника lex. Для поддержки этих программ создадим символическую
-# ссылку lex -> flex в /usr/bin, которая запускает flex в режиме эмуляции lex
+# ссылку lex -> flex в /usr/bin, которая запускает flex в режиме эмуляции lex.
 ln -sv flex   "${TMP_DIR}/usr/bin/lex"
 ln -sv flex.1 "${TMP_DIR}/usr/share/man/man1/lex.1"
 

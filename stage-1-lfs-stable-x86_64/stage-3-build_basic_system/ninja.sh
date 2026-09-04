@@ -16,7 +16,7 @@ BASH_COMPL="share/bash-completion/completions"
 ZSH_COMPL="share/zsh/site-functions"
 mkdir -pv "${TMP_DIR}/usr"/{bin,"${BASH_COMPL}","${ZSH_COMPL}"}
 
-# при запуске ninja обычно запускает максимальное количество процессов
+# При запуске ninja обычно запускает максимальное количество процессов
 # параллельно. По умолчанию это количество ядер в системе + 2. В некоторых
 # случаях это может перегреть процессор или привести к нехватке памяти в
 # системе. Если запустить из командной строки с параметром -jN, где N - число
@@ -26,7 +26,7 @@ mkdir -pv "${TMP_DIR}/usr"/{bin,"${BASH_COMPL}","${ZSH_COMPL}"}
 # сборки, например:
 #    # export NINJAJOBS="-j4"
 
-# добавим возможность использовать переменную окружения NINJAJOBS
+# Добавим возможность использовать переменную окружения NINJAJOBS
 sed -i "/int Guess/a \\
   char* jobs = getenv( \"NINJAJOBS\" );\\
 \\
@@ -47,15 +47,15 @@ sed -i "/int Guess/a \\
   return countProcs;\\
 " src/ninja.cc || exit 1
 
-# заставляет ninja пересобрать себя под текущую систему
+# Заставляет ninja пересобрать себя под текущую систему.
 #    --bootstrap
 python3 configure.py \
     --bootstrap      \
     --verbose || exit 1
 
-# тесты не могут выполняться в среде chroot, а также требуется cmake
+# Тесты не могут выполняться в среде chroot, а также требуется cmake.
 
-# устанавливаем пакет
+# Устанавливаем пакет.
 install -vm755  "${PRGNAME}"         "${TMP_DIR}/usr/bin/"
 install -vDm644 misc/bash-completion "${TMP_DIR}/usr/${BASH_COMPL}/${PRGNAME}"
 install -vDm644 misc/zsh-completion  "${TMP_DIR}/usr/${ZSH_COMPL}/_${PRGNAME}"

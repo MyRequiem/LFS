@@ -33,8 +33,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # This is utility, used to identify files.
 #
-# Home page: https://www.darwinsys.com/file/
-# Download:  https://astron.com/pub/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Home page: https://www.darwinsys.com/${PRGNAME}/
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

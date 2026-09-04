@@ -39,6 +39,7 @@ flex.sh
 tcl.sh
 expect.sh
 dejagnu.sh
+ninja.sh
 pkgconf.sh
 binutils.sh
 gmp.sh
@@ -83,7 +84,6 @@ python3-flit-core.sh
 python3-packaging.sh
 python3-wheel.sh
 python3-setuptools.sh
-ninja.sh
 meson.sh
 kmod.sh
 coreutils.sh
