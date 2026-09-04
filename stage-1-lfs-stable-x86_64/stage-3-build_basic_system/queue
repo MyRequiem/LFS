@@ -57,6 +57,7 @@ libxcrypt.sh
 #    а shadow.sh в этом списке пропускаем !!!
 ###
 shadow.sh
+gawk.sh
 gcc.sh
 check-compiling-and-linking.sh
 ncurses.sh
@@ -88,7 +89,6 @@ meson.sh
 kmod.sh
 coreutils.sh
 diffutils.sh
-gawk.sh
 findutils.sh
 groff.sh
 grub.sh

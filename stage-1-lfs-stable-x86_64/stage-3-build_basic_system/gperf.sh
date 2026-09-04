@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # including GNU C, GNU C++, GNU Java, GNU Pascal, GNU Modula 3, and GNU indent.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

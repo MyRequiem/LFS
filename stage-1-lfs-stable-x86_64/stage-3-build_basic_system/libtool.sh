@@ -23,7 +23,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим статическую библиотеку, которая нужна только для тестов
+# Удалим статическую библиотеку, которая нужна только для тестов.
 rm -fv "${TMP_DIR}/usr/lib/libltdl.a"
 
 source "${ROOT}stripping.sh"      || exit 1
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # your Makefile, Makefile.in, or Makefile.am.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

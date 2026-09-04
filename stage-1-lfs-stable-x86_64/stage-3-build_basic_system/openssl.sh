@@ -22,12 +22,8 @@ mkdir -pv "${TMP_DIR}"
     zlib-dynamic || exit 1
 
 make || make -j1 || exit 1
-
 # HARNESS_JOBS=$(nproc) make test
-
-# устанавливаем пакет
-sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile || exit 1
-make MANSUFFIX=ssl install DESTDIR="${TMP_DIR}"
+make INSTALL_LIBS= MANSUFFIX=ssl install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 

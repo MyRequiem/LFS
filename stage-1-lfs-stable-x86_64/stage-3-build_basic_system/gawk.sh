@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# не будем устанавливать некоторые ненужные файлы из группы extras
+# Не будем устанавливать некоторые ненужные файлы из группы extras.
 sed -i 's/extras//' Makefile.in || exit 1
 
 ./configure \
@@ -26,8 +26,8 @@ make || make -j1 || exit 1
 # su tester -c "PATH=${PATH} make check"
 # chown -R root:root .
 
-# жесткая ссылка gawk-${VERSION} не будет создана, если она уже существует,
-# поэтому удалим эту ссылку из системы
+# Жесткая ссылка gawk-${VERSION} не будет создана, если она уже существует,
+# поэтому удалим эту ссылку из системы.
 rm -f "/usr/bin/${PRGNAME}-${VERSION}"
 make install DESTDIR="${TMP_DIR}"
 
@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # extensions.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

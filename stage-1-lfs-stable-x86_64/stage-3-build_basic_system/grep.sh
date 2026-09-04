@@ -14,8 +14,8 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# отключим вывод предупреждений об использовании egrep и fgrep, которые
-# приводят к сбою тестов некоторых пакетов
+# Отключим вывод предупреждений об использовании egrep и fgrep, которые
+# приводят к сбою тестов некоторых пакетов.
 sed -i "s/echo/#echo/" src/egrep.sh || exit 1
 
 ./configure \
@@ -40,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and then prints the matching lines.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
