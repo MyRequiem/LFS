@@ -29,7 +29,6 @@ Usage: removepkg [params] [/var/log/packages/]pkgname-version
     Packages that can only be updated and copied, but cannot be completely
     remove from the system:
         main-directory-tree
-        syshealth-utils
         lfs-bootscripts
         network-configuration
         system-v-configuration
@@ -255,7 +254,6 @@ fi
 
 STRICT_PKGS="\
 main-directory-tree \
-syshealth-utils \
 lfs-bootscripts \
 network-configuration \
 system-v-configuration \

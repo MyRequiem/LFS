@@ -1,6 +1,7 @@
 #! /bin/bash
 
 PRGNAME="syshealth-utils"
+VERSION="1.0.3"
 
 #
 # Version: 1.0.0 [25.03.2026]
@@ -232,7 +233,7 @@ for SCRIPT in ${SCRIPTS} ; do
     install -v -m 754 -o root -g root "/${SCRIPT}" /usr/sbin/
 done
 
-cat << EOF > "/var/log/packages/${PRGNAME}"
+cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (System Health and Audit Utilities)
 #
 # A collection of Python and Bash scripts designed to audit and maintain the

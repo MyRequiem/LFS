@@ -24,13 +24,14 @@ class CheckSystemDeps:
 
         # list of paths to skip during scanning
         self.blacklist = [
+            '/opt/brave-origin/',
             '/opt/google/',
             '/opt/openoffice4/',
             '/opt/zen-browser/',
             '/usr/bin/rclone',
             '/usr/bin/shellcheck',
             '/usr/lib/firmware/',
-            '/usr/lib/grub/'
+            '/usr/lib/grub/',
         ]
 
         # default directories to check if no target is provided
@@ -39,7 +40,7 @@ class CheckSystemDeps:
             '/usr/bin',
             '/usr/lib',
             '/usr/libexec',
-            '/usr/sbin'
+            '/usr/sbin',
         ]
 
         self.log_path = f"/tmp/{os.path.basename(__file__)}.log"
