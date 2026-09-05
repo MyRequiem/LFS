@@ -28,6 +28,20 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-*")"
+if [ -n "${INSTALLED}" ]; then
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo ""
+    echo "============================================================"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    echo "============================================================"
+    echo ""
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
+fi
+
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 BASH_COMPLETION="/etc/bash_completion.d"
 MAN="/usr/share/man"
@@ -39,21 +53,30 @@ mkdir -pv "${TMP_DIR}"{"${BASH_COMPLETION}","${MAN}"}
     --with-libpcre2       \
     --with-gitconfig=/etc/gitconfig || exit 1
 
-make || exit 1
+# Собираем без Rustc.
+#    NO_RUST=1
+# Не создаем /usr/share/gitweb/ - древний веб-интерфейс для просмотра
+# git-репозиториев в браузере.
+#    NO_GITWEB=YesPlease
+make          \
+    NO_RUST=1 \
+    NO_GITWEB=YesPlease || exit 1
 
-# тесты
+# Тесты.
 # GIT_UNZIP=nonexist make test -k |& tee test.log
 # make -C t aggregate-results
 
-# устанавливаем пакет
-PERL_MAJ_VERSION="$(perl --version | grep -oE '\(v.*\)' | cut -d v -f 2 | \
-    cut -d . -f 1,2)"
-make perllibdir="/usr/lib/perl5/${PERL_MAJ_VERSION}/site_perl" install \
-    DESTDIR="${TMP_DIR}"
+# Устанавливаем пакет.
+PERL_MAJ_VERSION="$(perl -e 'print $^V' | cut -d v -f 2- | cut -d . -f 1,2)"
+make                    \
+    NO_RUST=1           \
+    NO_GITWEB=YesPlease \
+    perllibdir="/usr/lib/perl5/${PERL_MAJ_VERSION}/site_perl" \
+    install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
-# устанавливаем man-страницы
+# Устанавливаем man-страницы.
 tar -xf "${SOURCES}/${PRGNAME}-manpages-${VERSION}.tar.xz" \
     -C "${TMP_DIR}/${MAN}" --no-same-owner --no-overwrite-dir || exit 1
 

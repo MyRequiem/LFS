@@ -39,6 +39,10 @@ mkdir -pv "${TMP_DIR}/etc"
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-security_fixes-2.patch" || exit 1
 
+# Выполнить обширные, но трудоемкие шаги по оптимизации. Интерпретатор
+# собирается дважды. В первой сборке выполняются тесты и используются для
+# улучшения оптимизированной финальной версии.
+#    --enable-optimizations
 ./configure                \
     --prefix=/usr          \
     --enable-shared        \
