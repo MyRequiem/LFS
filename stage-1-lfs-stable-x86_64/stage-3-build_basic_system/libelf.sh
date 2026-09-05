@@ -20,11 +20,11 @@ mkdir -pv "${TMP_DIR}/usr/lib/pkgconfig"
     --disable-debuginfod \
     --enable-libdebuginfod=dummy || exit 1
 
-# собираем только libelf
+# Собираем только Libelf
 make -C lib    || exit 1
 make -C libelf || exit 1
 
-# тесты ошибочны с glibc >=2.43
+# make -k check
 
 make -C libelf install DESTDIR="${TMP_DIR}"
 install -vm644 config/libelf.pc "${TMP_DIR}/usr/lib/pkgconfig/"
@@ -42,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Libelf is part of elfutils package.
 #
 # Home page: https://sourceware.org/ftp/${ARCH_NAME}/
-# Download:  https://sourceware.org/ftp/${ARCH_NAME}/${VERSION}/${ARCH_NAME}-${VERSION}.tar.bz2
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${ARCH_NAME}-${VERSION}.tar.bz2
 #
 EOF
 

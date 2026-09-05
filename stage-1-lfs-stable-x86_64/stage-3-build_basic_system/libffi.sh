@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# GCC будет проводить оптимизацию сборки для текущей системы
+# GCC будет проводить оптимизацию сборки для текущей системы.
 #    --with-gcc-arch=native
 ./configure          \
     --prefix=/usr    \
