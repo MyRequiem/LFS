@@ -57,10 +57,10 @@ https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.tar.bz2
 https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.35.tar.bz2
 https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.4/cyrus-sasl-2.1.28-gcc15_fixes-1.patch
-https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.12.tgz
-https://www.linuxfromscratch.org/patches/blfs/13.0/openldap-2.6.12-consolidated-1.patch
+https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.7.0.tgz
+https://www.linuxfromscratch.org/patches/blfs/13.1/openldap-2.7.0-consolidated-1.patch
 https://github.com/libfuse/libfuse/releases/download/fuse-3.18.2/fuse-3.18.2.tar.gz
-https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.18.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.21.tar.bz2
 https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.22.4.tar.gz
 https://files.pythonhosted.org/packages/source/M/Mako/mako-1.3.10.tar.gz
 https://files.pythonhosted.org/packages/source/l/lxml/lxml-6.0.2.tar.gz
@@ -75,7 +75,7 @@ https://anduin.linuxfromscratch.org/BLFS/luajit/luajit-20260213.tar.xz
 https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
 http://www.andre-simon.de/zip/highlight-4.19.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-https://github.com/libarchive/libarchive/releases/download/v3.8.6/libarchive-3.8.6.tar.xz
+https://github.com/libarchive/libarchive/releases/download/v3.8.9/libarchive-3.8.9.tar.xz
 https://github.com/bdwgc/bdwgc/releases/download/v8.2.12/gc-8.2.12.tar.gz
 https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/w3m/w3m-hide-status-info.patch
