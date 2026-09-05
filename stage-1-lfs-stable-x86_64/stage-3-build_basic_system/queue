@@ -80,6 +80,7 @@ openssl.sh
 libelf.sh
 libffi.sh
 sqlite.sh
+mpdecimal.sh
 python3.sh
 python3-flit-core.sh
 python3-packaging.sh
