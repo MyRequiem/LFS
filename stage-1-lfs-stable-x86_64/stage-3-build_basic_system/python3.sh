@@ -25,10 +25,17 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# связываться с уже установленной системной версией Expat
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-openssl_4-1.patch" || exit 1
+
+# Связываться с уже установленной системной версией Expat.
 #    --with-system-expat
-# связываться с уже установленной системной версией libffi
+# Связываться с уже установленной системной версией libffi.
 #    --with-system-ffi
+# Выполнить обширные, но трудоемкие шаги по оптимизации. Интерпретатор
+# собирается дважды. В первой сборке выполняются тесты и используются для
+# улучшения оптимизированной финальной версии.
+#    --enable-optimizations
 ./configure                \
     --prefix=/usr          \
     --enable-shared        \
