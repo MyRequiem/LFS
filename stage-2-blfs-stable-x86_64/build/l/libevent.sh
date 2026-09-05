@@ -36,7 +36,7 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим shebang для event_rpcgen.py
+# Исправим shebang для event_rpcgen.py
 #    #!/usr/bin/env python -> #!/usr/bin/env python3
 sed -i 's/python/&3/' event_rpcgen.py || exit 1
 
@@ -46,7 +46,7 @@ sed -i 's/python/&3/' event_rpcgen.py || exit 1
 
 make || exit 1
 
-# тесты
+# Тесты.
 # make verify
 
 make install DESTDIR="${TMP_DIR}"
