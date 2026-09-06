@@ -90,6 +90,7 @@ https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.47.4/e2fsprogs-
 https://github.com/troglobit/sysklogd/releases/download/v2.7.2/sysklogd-2.7.2.tar.gz
 https://github.com/slicer69/sysvinit/releases/download/3.14/sysvinit-3.14.tar.xz
 https://www.linuxfromscratch.org/patches/lfs/13.1/sysvinit-3.14-consolidated-1.patch
+
 https://www.linuxfromscratch.org/lfs/downloads/12.4/lfs-bootscripts-20250827.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-fix-install-path.diff
 https://github.com/MyRequiem/LFS/raw/master/stage-1-lfs-stable-x86_64/patches/lfs-bootscripts/lfs-bootscripts-from-udev-to-eudev.diff

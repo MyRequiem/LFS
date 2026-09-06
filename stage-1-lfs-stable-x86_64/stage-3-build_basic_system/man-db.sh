@@ -15,22 +15,22 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# отключает установку пользователя man для программы man
+# Отключает установку пользователя man для программы man.
 #    --disable-setuid
-# общесистемные файлы кэша принадлежат пользователю bin
+# Общесистемные файлы кэша принадлежат пользователю bin.
 #    --enable-cache-owner=bin
-# программы по умолчанию, которые можно установить позже: браузер w3m
+# Программы по умолчанию, которые можно установить позже: браузер w3m.
 #    --with-browser=/usr/bin/w3m
 # 'vgrind' преобразует исходные тексты программы во входные данные Groff
 #    --with-vgrind=/usr/bin/vgrind
 # 'grap' полезен для набора графов в документах Groff
 #    --with-grap=/usr/bin/grap
-# не позволяем устанавливать ненужные системные каталоги и файлы
+# Не позволяем устанавливать ненужные системные каталоги и файлы.
 #    --with-systemdtmpfilesdir=
 #    --with-systemdsystemunitdir=
 # NOTE:
-# утилиты vgrind и grap обычно не требуются для просмотра man-страниц и не
-# входят в состав LFS и BLFS, w3m установим в BLFS
+#    Утилиты vgrind и grap обычно не требуются для просмотра man-страниц и не
+#    входят в состав LFS и BLFS, w3m установим в BLFS.
 ./configure                       \
     --prefix=/usr                 \
     --sysconfdir=/etc             \
@@ -49,7 +49,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует
+# Бэкапим конфиг /etc/man_db.conf перед установкой пакета, если он существует.
 MAN_DB_CONF="/etc/man_db.conf"
 if [ -f "${MAN_DB_CONF}" ]; then
     mv "${MAN_DB_CONF}" "${MAN_DB_CONF}.old"
@@ -72,7 +72,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # efficient implementation of the -K (full text search) option.
 #
 # Home page: https://www.nongnu.org/${PRGNAME}/
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

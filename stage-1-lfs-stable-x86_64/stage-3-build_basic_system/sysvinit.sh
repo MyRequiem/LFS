@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# по умолчанию пакет sysvinit устанавливает (в том числе):
+# По умолчанию пакет sysvinit устанавливает (в том числе):
 #    - ссылку в /usr/bin/
 #       pidof -> /usr/sbin/killall5
 #       но утилита /usr/bin/pidof уже установлена с пакетом procps-ng
@@ -27,12 +27,12 @@ mkdir -pv "${TMP_DIR}"
 #    - /usr/bin/utmpdump
 #    - /usr/bin/wall
 #
-# применим патч, предотвращающий создание этих утилит и ссылок, а так же
-# исправляющий предупреждение компилятора
+# Применим патч, предотвращающий создание этих утилит и ссылок, а так же
+# исправляющий предупреждение компилятора.
 patch --verbose -Np1 -i \
     "/sources/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
 
-# исправим пути установки
+# Исправим пути установки:
 #    /bin  -> /usr/bin
 #    /sbin -> /usr/sbin
 sed -e 's/ \/bin/ \/usr\/bin/' \
@@ -40,7 +40,7 @@ sed -e 's/ \/bin/ \/usr\/bin/' \
     -i src/Makefile || exit 1
 
 make || make -j1 || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

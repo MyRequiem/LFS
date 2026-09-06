@@ -24,12 +24,12 @@ mkdir -p "${TMP_DIR}/etc"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-### конфиг /etc/syslog.conf
+### Конфиг /etc/syslog.conf
 SYSLOG_CONF="/etc/syslog.conf"
 cat << EOF > "${TMP_DIR}${SYSLOG_CONF}"
 # Begin ${SYSLOG_CONF} - configuration file for syslogd(8)
@@ -82,12 +82,12 @@ secure_mode 2
 # End ${SYSLOG_CONF}
 EOF
 
-# бэкапим /etc/syslog.conf
+# Бэкапим /etc/syslog.conf
 if [ -f "${SYSLOG_CONF}" ]; then
     mv "${SYSLOG_CONF}" "${SYSLOG_CONF}.old"
 fi
 
-# если собираем на живой системе, то /usr/sbin/syslogd будет занят, поэтому
+# Если собираем на живой системе, то /usr/sbin/syslogd будет занят, поэтому
 # сразу установим его командой install
 install -vm755 "${TMP_DIR}/usr/sbin/syslogd" /usr/sbin || exit 1
 mv "${TMP_DIR}/usr/sbin/syslogd" /tmp/

@@ -4,7 +4,7 @@ PRGNAME="e2fsprogs"
 
 ### E2fsprogs (ext2 and ext3 filesystems utilities)
 # Набор важнейших инструментов для обслуживания файловых систем семейства Ext
-# (проверка дисков на ошибки, форматирование и настройка)
+# (проверка дисков на ошибки, форматирование и настройка).
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -14,16 +14,16 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# документация E2fsprogs рекомендует собирать пакет в отдельном каталоге
+# Документация E2fsprogs рекомендует собирать пакет в отдельном каталоге.
 mkdir build
 cd build || exit 1
 
-# создаем общие библиотеки (shared), которые используются некоторыми
-# программами в этом пакете
+# Создаем общие библиотеки (shared), которые используются некоторыми
+# программами в этом пакете.
 #    --enable-elf-shlibs
-# не будем собирать и устанавливать libuuid, библиотеки libblkid, демон uuidd и
+# Не будем собирать и устанавливать библиотеки libblkid, libuuid, демон uuidd и
 # оболочку fsck, т.к. в уже установленном пакете util-linux содержатся более
-# свежие версии этих утилит
+# свежие версии этих утилит.
 #    --disable-*
 ../configure              \
     --prefix=/usr         \
@@ -40,19 +40,19 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим бесполезные статические библиотеки
+# Удалим бесполезные статические библиотеки.
 rm -fv "${TMP_DIR}/usr/lib"/{libcom_err,libe2p,libext2fs,libss}.a
 
-# пакет устанавливает сжатый libext2fs.info.gz, распакуем его
+# Пакет устанавливает сжатый libext2fs.info.gz, распакуем его.
 gunzip -v "${TMP_DIR}/usr/share/info/libext2fs.info.gz" || exit 1
 
-# установим дополнительную документацию в систему info (/usr/share/info/)
+# Установим дополнительную документацию в систему info (/usr/share/info/).
 makeinfo -o doc/com_err.info ../lib/et/com_err.texinfo
 install -v -m644 doc/com_err.info "${TMP_DIR}/usr/share/info"
 
-# некоторые утилиты, не входящие в LFS и BLFS, не могут распознать файловую
+# Некоторые утилиты, не входящие в LFS и BLFS, не могут распознать файловую
 # систему ext4 с включенной функцией Metadata_csum_seed, поэтому удалим эту
-# функцию из списка функций ext4 по умолчанию
+# функцию из списка функций ext4 по умолчанию.
 sed 's/metadata_csum_seed,//' -i "${TMP_DIR}/etc/mke2fs.conf"
 
 source "${ROOT}stripping.sh"      || exit 1
