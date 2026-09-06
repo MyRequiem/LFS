@@ -18,7 +18,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr || exit 1
 
 make || make -j1 || exit 1
-# тесты требуют пакет 'check', который был удален из LFS
+# Тесты требуют пакет 'check', который был удален из LFS.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # subprocesses in a flexible and convenient way.
 #
 # Home page: https://${PRGNAME}.nongnu.org/
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -26,9 +26,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-9.*")"
 if [ -n "${INSTALLED}" ]; then
     PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo ""
+    echo "============================================================"
     echo "${PKGNAME_VERSION} already installed."
     echo "Before building ${PRGNAME} package, you need to remove it."
     echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    echo "============================================================"
+    echo ""
     sleep 10
     yes | removepkg --backup "${INSTALLED}"
 fi

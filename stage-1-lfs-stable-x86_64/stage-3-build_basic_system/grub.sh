@@ -23,14 +23,14 @@ mkdir -pv "${TMP_DIR}"
 # оптимизацией.
 unset {C,CPP,CXX,LD}FLAGS
 
-# исправим ошибку, появившуюся в grub-2.14
+# Исправим ошибку, появившуюся в grub-2.14
 sed 's/--image-base/--nonexist-linker-option/' -i configure || exit 1
 
-# минимизирует сборку, отключая некоторые особенности и тестирование программ,
-# которые не нужны для LFS
+# Минимизирует сборку, отключая некоторые особенности и тестирование программ,
+# которые не нужны для LFS.
 #    --disable-efiemu
-# позволяет не прерывать сборку при появлении предупреждений для более поздних
-# версий Flex
+# Позволяет не прерывать сборку при появлении предупреждений для более поздних
+# версий Flex.
 #    --disable-werror
 ./configure           \
     --prefix=/usr     \
@@ -40,7 +40,7 @@ sed 's/--image-base/--nonexist-linker-option/' -i configure || exit 1
 
 make || make -j1 || exit 1
 
-# запускать набор тестов для этого пакета не рекомендуется
+# Запускать набор тестов для этого пакета не рекомендуется.
 # make check
 
 make install DESTDIR="${TMP_DIR}"
@@ -58,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The GRand Unified Bootloader (GNU GRUB) is a multiboot boot loader.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

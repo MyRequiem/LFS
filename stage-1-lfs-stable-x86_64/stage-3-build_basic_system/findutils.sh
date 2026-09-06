@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# задает расположение базы данных locatedb в соответствии со стандартом FHS
+# Задает расположение базы данных locatedb в соответствии со стандартом FHS.
 #    --localstatedir=/var/lib/locate
 ./configure       \
     --prefix=/usr \
@@ -22,9 +22,9 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# тесты запускаем от пользователя tester
+# Тесты запускаем от пользователя tester.
 # chown -Rv tester .
-# su tester -c "PATH=${PATH} make check"
+# su tester -c "PATH=${PATH} make check -k"
 # chown -Rv root:root .
 
 make install DESTDIR="${TMP_DIR}"
@@ -48,7 +48,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # to GNU.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
