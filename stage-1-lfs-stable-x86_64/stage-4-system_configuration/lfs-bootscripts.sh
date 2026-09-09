@@ -3,7 +3,7 @@
 PRGNAME="lfs-bootscripts"
 
 ### LFS-Bootscripts (scripts to start/stop the LFS system)
-# Пакет содержит набор скриптов для запуска/остановки системы LFS
+# Пакет содержит набор скриптов для запуска/остановки системы LFS.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -14,7 +14,7 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим пути установки:
+# Исправим пути установки:
 #    /lib  => /usr/lib
 #    /sbin => /usr/sbin
 patch --verbose -Np1 -i \
@@ -25,7 +25,7 @@ patch --verbose -Np1 -i \
 #     -e 's|SBIN=${DESTDIR}/sbin|SBIN=${DESTDIR}/usr/sbin|'   \
 #     -i Makefile || exit 1
 
-# у нас установлен Eudev вместо Udev, адаптируем скрипт запуска
+# У нас установлен Eudev вместо Udev, адаптируем скрипт запуска
 # /etc/rc.d/init.d/udev
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-from-udev-to-eudev.diff" || exit 1

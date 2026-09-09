@@ -30,14 +30,14 @@ mkdir -pv "${TMP_DIR}/etc"/{rc.d,sysconfig}
 #    5 -  Full multiuser mode with display manager
 #    6 -  reboot
 
-# уровень запуска по умолчанию
-# запускаются все скрипты в /etc/rc.d/rc?.d/, где '?' - уровень запуска,
+# Уровень запуска по умолчанию.
+# Запускаются все скрипты в /etc/rc.d/rc?.d/, где '?' - уровень запуска,
 # определенный в /etc/inittab
 #    id:3:initdefault:
 
-# запускаются все скрипты в /etc/rc.d/rcS.d
+# Запускаются все скрипты в /etc/rc.d/rcS.d
 # si::sysinit:/etc/rc.d/init.d/rc S
-# в самом скрипте /etc/rc.d/init.d/rc используется такая конструкция:
+# В самом скрипте /etc/rc.d/init.d/rc используется такая конструкция:
 # ...
 # [ "${1}" != "" ] && runlevel=${1}
 # ...
@@ -89,13 +89,13 @@ cat << EOF > "${TMP_DIR}${INITTAB}"
 # $ man inittab
 ###
 
-# default run-level (Multi-user, console only)
+# Default run-level (Multi-user, console only).
 id:3:initdefault:
 
-# system initialization (runs all scripts in /etc/rc.d/rcS.d)
+# System initialization (runs all scripts in /etc/rc.d/rcS.d).
 si::sysinit:/etc/rc.d/init.d/rc S
 
-# runlevel scripts (halt, single-user, multi-user, and reboot)
+# Runlevel scripts (halt, single-user, multi-user, and reboot).
 l0:0:wait:/etc/rc.d/init.d/rc  0
 l1:S1:wait:/etc/rc.d/init.d/rc 1
 l2:2:wait:/etc/rc.d/init.d/rc  2
@@ -104,14 +104,14 @@ l4:4:wait:/etc/rc.d/init.d/rc  4
 l5:5:wait:/etc/rc.d/init.d/rc  5
 l6:6:wait:/etc/rc.d/init.d/rc  6
 
-# execute local startup script for runlevel 3
+# Execute local startup script for runlevel 3.
 rc:3:wait:/etc/rc.d/rc.local
 
-# single-user mode and maintenance logins
+# Single-user mode and maintenance logins.
 su:S06:once:/sbin/sulogin
 s1:1:respawn:/sbin/sulogin
 
-# standard virtual consoles (getty) in multi-user mode
+# Standard virtual consoles (getty) in multi-user mode.
 1:2345:respawn:/sbin/agetty --noclear tty1 38400
 2:2345:respawn:/sbin/agetty tty2 38400
 3:2345:respawn:/sbin/agetty tty3 38400
@@ -123,7 +123,7 @@ s1:1:respawn:/sbin/sulogin
 EOF
 
 ###
-# Конфигурация системных часов
+# Конфигурация системных часов.
 ###
 # Скрипт /etc/rc.d/init.d/setclock запускается через udev, когда ядро
 # обнаруживает аппаратные средства при загрузке системы. Он считывает время с
@@ -132,10 +132,10 @@ EOF
 # /etc/localtime, который сообщает программе hwclock часовой пояс пользователя.
 # Нет никакого способа определить, установлены ли аппаратные часы в UTC,
 # поэтому их необходимо настраивать вручную в BIOS. Вывести время аппаратных
-# часов можно командой
-#    # hwclock --localtime --show
-# а вывести локальное время, с учетом часового пояса, можно командой
-#    # hwclock --show
+# часов можно командой:
+#    $ hwclock --localtime --show
+# Вывести локальное время, с учетом часового пояса, можно командой:
+#    $ hwclock --show
 
 # Если же аппаратные часы не установлены в UTC (в BIOS установлено локальное
 # время), то в /etc/sysconfig/clock нужно установить UTC=0 Так же параметры
@@ -155,19 +155,19 @@ CLOCKPARAMS=
 EOF
 
 ###
-# Конфигурация консоли
+# Конфигурация консоли.
 ###
 # Скрипт /etc/rc.d/init.d/console устанавливает раскладку клавиатуры, шрифт и
 # уровень логирования сообщений ядра для консоли. Все эти параметры настройки
 # он берет из файла конфигурации /etc/sysconfig/console
-# Этот конфиг контролирует только текстовую консоль Linux и не имеет ничего
-# общего с настройкой графических терминалов в X
+# Этот конфиг контролирует только текстовую консоль Linux (TTY) и не имеет
+# ничего общего с настройкой графических терминалов в X.
 
 # Параметры для /etc/sysconfig/console
 # ------------------------------------
-# LOGLEVEL           - уровень логирования сообщений ядра отправляемых в dmesg
-#                       (от 1 - без сообщений, до 8. По умолчанию 7)
-# KEYMAP             - аргументы для программы loadkeys, которая загружает
+# LOGLEVEL           - Уровень логирования сообщений ядра отправляемых в dmesg
+#                       (от 1 - без сообщений, до 8. По умолчанию 7).
+# KEYMAP             - Аргументы для программы loadkeys, которая загружает
 #                       раскладку клавиатуры (имя таблицы ключей) из
 #                       /usr/share/keymaps/. Если эта переменная не
 #                       установлена, загрузочный скрипт не запустит программу
@@ -176,21 +176,21 @@ EOF
 #                       одинаковое имя, но находятся в разных директориях,
 #                       например 'cz' и его варианты в qwerty/ и qwertz/, то
 #                       нужно указывать родительский каталог qwerty/cz, чтобы
-#                       гарантировать, что загружена правильная таблица ключей
-# KEYMAP_CORRECTIONS - эта редко используемая переменная указывает аргументы
+#                       гарантировать, что загружена правильная таблица ключей.
+# KEYMAP_CORRECTIONS - Эта редко используемая переменная указывает аргументы
 #                       для второго вызова loadkeys. Иногда это требуется для
 #                       корректировки. Например, чтобы включить знак 'евро' в
 #                       раскладке клавиатуры, в которой его нет, установим эту
 #                       переменную в "euro2"
-# FONT               - указывает аргументы для программы setfont. Как правило,
+# FONT               - Указывает аргументы для программы setfont. Как правило,
 #                       включает в себя имя шрифта, которые находятся в
 #                       /usr/share/consolefonts
-# UNICODE            - установка в '1', 'yes' или 'true' включает UTF-8 режим
-#                       консоли
-# LEGACY_CHARSET     - для многих раскладок клавиатуры нет стандартной Unicode
+# UNICODE            - Установка в '1', 'yes' или 'true' включает UTF-8 режим
+#                       консоли.
+# LEGACY_CHARSET     - Для многих раскладок клавиатуры нет стандартной Unicode
 #                       раскладки в пакете kbd. Загрузочный скрипт преобразует
 #                       доступную раскладку в UTF-8 на лету, если эта
-#                       переменная установлена в кодировку не UTF-8
+#                       переменная установлена в кодировку не UTF-8.
 
 CONSOLE="/etc/sysconfig/console"
 cat << EOF > "${TMP_DIR}${CONSOLE}"
@@ -198,20 +198,20 @@ cat << EOF > "${TMP_DIR}${CONSOLE}"
 
 UNICODE="1"
 
-### layout
+### Layout.
 # /usr/share/keymaps/i386/qwerty/ruwin_cplk-UTF-8.map.gz
 KEYMAP="ruwin_cplk-UTF-8"
 
-### font
-# fonts testing in the console
+### Font.
+# Fonts testing in the console:
 #    $ setfont /path/to/font.ext.gz
-#    for example:
+#    For example:
 #    $ setfont -v /usr/share/consolefonts/ter-v14n.psf.gz
 #
-# display all characters (glyphs) of the current font
+# Uisplay all characters (glyphs) of the current font:
 #    $ showconsolefont
 #
-# install the font from the terminus-font package (specify only the name)
+# Install the font from the terminus-font package (specify only the name):
 # /usr/share/consolefonts/ter-v14n.psf.gz
 FONT="ter-v14n"
 
@@ -227,9 +227,9 @@ EOF
 # пакетом lfs-bootscripts и его синтаксис описан в нем.
 CREATEFILES="/etc/sysconfig/createfiles"
 if ! grep -q ICE-unix "${CREATEFILES}"; then
-    # удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles"
+    # Удалим последнюю строку из конфига: "# End /etc/sysconfig/createfiles".
     sed -i '$ d' "${CREATEFILES}"
-    # допишем в конец файла
+    # Допишем в конец файла.
     cat << EOF >> "${CREATEFILES}"
 /tmp/.ICE-unix    dir    1777    root    root
 /tmp/.X11-unix    dir    1777    root    root
@@ -264,40 +264,40 @@ config_file_processing "${CONSOLE}"
 chmod 754 "${RC_LOCAL}"
 
 ###
-# Настройка сценариев загрузки и завершения работы
+# Настройка сценариев загрузки и завершения работы.
 ###
-# сценарии загрузки LFS загружают и выключают систему довольно эффективным
+# Сценарии загрузки LFS загружают и выключают систему довольно эффективным
 # способом, но есть несколько настроек, которые можно сделать в файле
-# /etc/sysconfig/rc.site для увеличения скорости
+# /etc/sysconfig/rc.site для увеличения скорости.
 
-# команда udev_retry при загрузке обычно требуется только если каталог /var
-# монтируется как отдельный раздел. Если это не так, отменим ее запуск
+# Команда udev_retry при загрузке обычно требуется только если каталог /var
+# монтируется как отдельный раздел. Если это не так, отменим ее запуск:
 sed -i 's/.*OMIT_UDEV_RETRY_SETTLE.*/OMIT_UDEV_RETRY_SETTLE=yes/' \
     /etc/sysconfig/rc.site
 
-# по умолчанию проверка файловой системы утилитой fsck во время загрузки ничего
+# По умолчанию проверка файловой системы утилитой fsck во время загрузки ничего
 # не выводит в консоль. Такое поведение может создавать ощущение паузы во время
-# процесса загрузки. Включим вывод утилиты fsck
+# процесса загрузки. Включим вывод утилиты fsck.
 sed -i 's/.*VERBOSE_FSCK.*/VERBOSE_FSCK=yes/' /etc/sysconfig/rc.site
 
-# при перезагрузке можно полностью пропустить проверку файловой системы, если
+# При перезагрузке можно полностью пропустить проверку файловой системы, если
 # создать файл /fastboot, либо перезагрузить систему с помьщью команды
-#    # shutdown -f -r now
+#    $ shutdown -f -r now
 # Так же можно принудительно проверить все файловые системы, создав файл
 # /forcefsck или запустив
-#    # shutdown -F [-r] now
+#    $ shutdown -F [-r] now
 # Установка переменной FASTBOOT=y в файле /etc/sysconfig/rc.site отключит fsck
 # во время процесса загрузки, но это не рекомендуется делать на постоянной
 # основе.
 
-# как правило, все файлы в каталоге /tmp удаляются во время загрузки, что
+# Как правило, все файлы в каталоге /tmp удаляются во время загрузки, что
 # увеличивает общее время загрузки. Отключим очистку директории /tmp
 sed -i 's/.*SKIPTMPCLEAN.*/SKIPTMPCLEAN=yes/' /etc/sysconfig/rc.site
 
-# во время выключения системы программа init посылает сигнал TERM каждой
+# Во время выключения системы программа init посылает сигнал TERM каждой
 # запущенной программе, затем ждет установленного таймаута (по умолчанию 3 сек)
 # Этот таймаут можно отключить
-#    # shutdown -t0 -r now
+#    $ shutdown -t0 -r now
 # или установить KILLDELAY=0 в файле /etc/sysconfig/rc.site
 sed -i 's/.*KILLDELAY.*/KILLDELAY=0/' /etc/sysconfig/rc.site
 

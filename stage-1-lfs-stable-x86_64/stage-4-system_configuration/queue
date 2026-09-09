@@ -1,5 +1,5 @@
 ###
-# Переходим в chroot окружение (если устанавливаем систему с нуля)
+# Переходим в chroot окружение (если устанавливаем систему с нуля).
 ./entering-chroot-env.sh
 ###
 lfs-bootscripts.sh
@@ -10,6 +10,5 @@ etc-profile.sh
 etc-inputrc.sh
 etc-shells.sh
 etc-issue.sh
-
 
 # vim:ft=conf

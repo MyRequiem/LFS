@@ -22,27 +22,27 @@ cat << EOF > "${TMP_DIR}${INPUTRC}"
 # This file configures keyboard input for programs using readline.
 # See 'man 3 readline' for more examples.
 
-# configure the system bell (none, visible, and audible)
+# Configure the system bell (none, visible, and audible).
 set bell-style none
 
-# enable 8 bit input
+# Enable 8 bit input.
 set meta-flag On
 set input-meta On
 
-# turns off 8th bit stripping
+# Turns off 8th bit stripping.
 set convert-meta Off
 
-# keep the 8th bit for display
+# Keep the 8th bit for display.
 set output-meta On
 
 TAB: menu-complete
 
 set echo-control-characters off
 
-# disable highlighted pasted text in the terminal
+# Disable highlighted pasted text in the terminal.
 set enable-bracketed-paste off
 
-### for linux console
+### For linux console.
 "\\e[1~": beginning-of-line
 "\\e[4~": end-of-line
 "\\e[5~": beginning-of-history
@@ -50,7 +50,7 @@ set enable-bracketed-paste off
 "\\e[3~": delete-char
 "\\e[2~": quoted-insert
 
-### for xterm
+### For xterm.
 "\\C-p": history-search-backward
 "\\C-n": history-search-forward
 "\\C-h": backward-delete-char
