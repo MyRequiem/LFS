@@ -4,7 +4,7 @@ https://github.com/lfs-book/LSB-Tools/releases/download/v0.12/LSB-Tools-0.12.tar
 https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.xz
 https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-words-2.10.3.xz
 https://github.com/linux-pam/linux-pam/releases/download/v1.7.2/Linux-PAM-1.7.2.tar.xz
-https://github.com/shadow-maint/shadow/releases/download/4.19.4/shadow-4.19.4.tar.xz
+https://github.com/shadow-maint/shadow/releases/download/4.20.2/shadow-4.20.2.tar.xz
 https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.5/libpwquality-1.4.5.tar.bz2
 https://github.com/scop/bash-completion/releases/download/2.17.0/bash-completion-2.17.0.tar.xz
 https://www.kernel.org/pub/linux/kernel/firmware/linux-firmware-20260309.tar.gz
@@ -29,7 +29,7 @@ https://github.com/rockdaboot/libpsl/releases/download/0.21.5/libpsl-0.21.5.tar.
 https://ftpmirror.gnu.org/wget/wget-1.25.0.tar.gz
 https://sysstat.github.io/sysstat-packages/sysstat-12.7.9.tar.xz
 https://downloads.sourceforge.net/project/net-tools/net-tools-2.10.tar.xz
-https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz
+https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.5p1.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.59.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.0.tar.bz2
 https://www.libssh2.org/download/libssh2-1.11.1.tar.gz
@@ -38,7 +38,7 @@ https://github.com/vcrhonek/hwdata/archive/v0.405/hwdata-0.405.tar.gz
 https://mj.ucw.cz/download/linux/pci/pciutils-3.14.0.tar.gz
 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.2.tar.bz2
 https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.8.tar.bz2
-https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.3.2.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.3.3.tar.bz2
 https://download.savannah.gnu.org/releases/dmidecode/dmidecode-3.7.tar.xz
 https://github.com/hramrach/lm-sensors/archive/V3-6-2/lm-sensors-3-6-2.tar.gz
 https://github.com/NetworkConfiguration/dhcpcd/releases/download/v10.3.0/dhcpcd-10.3.0.tar.xz
@@ -47,8 +47,8 @@ https://www.linuxfromscratch.org/patches/blfs/12.4/wireless_tools-29-fix_iwlist_
 https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz
 https://github.com/htop-dev/htop/releases/download/3.4.1/htop-3.4.1.tar.xz
 https://www.kernel.org/pub/software/network/iw/iw-6.17.tar.xz
-https://w1.fi/releases/wpa_supplicant-2.11.tar.gz
-https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
+https://w1.fi/releases/wpa_supplicant-2.12.tar.gz
+https://github.com/libevent/libevent/releases/download/release-2.1.13-stable/libevent-2.1.13-stable.tar.gz
 https://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
 https://download.gnome.org/sources/libxml2/2.15/libxml2-2.15.2.tar.xz
@@ -57,10 +57,10 @@ https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.tar.bz2
 https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.35.tar.bz2
 https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
 https://www.linuxfromscratch.org/patches/blfs/12.4/cyrus-sasl-2.1.28-gcc15_fixes-1.patch
-https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.12.tgz
-https://www.linuxfromscratch.org/patches/blfs/13.0/openldap-2.6.12-consolidated-1.patch
+https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.7.0.tgz
+https://www.linuxfromscratch.org/patches/blfs/13.1/openldap-2.7.0-consolidated-1.patch
 https://github.com/libfuse/libfuse/releases/download/fuse-3.18.2/fuse-3.18.2.tar.gz
-https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.18.tar.bz2
+https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.21.tar.bz2
 https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.22.4.tar.gz
 https://files.pythonhosted.org/packages/source/M/Mako/mako-1.3.10.tar.gz
 https://files.pythonhosted.org/packages/source/l/lxml/lxml-6.0.2.tar.gz
@@ -75,7 +75,7 @@ https://anduin.linuxfromscratch.org/BLFS/luajit/luajit-20260213.tar.xz
 https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
 http://www.andre-simon.de/zip/highlight-4.19.tar.bz2
 https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
-https://github.com/libarchive/libarchive/releases/download/v3.8.6/libarchive-3.8.6.tar.xz
+https://github.com/libarchive/libarchive/releases/download/v3.8.9/libarchive-3.8.9.tar.xz
 https://github.com/bdwgc/bdwgc/releases/download/v8.2.12/gc-8.2.12.tar.gz
 https://deb.debian.org/debian/pool/main/w/w3m/w3m_0.5.3+git20230121.orig.tar.xz
 https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/patches/w3m/w3m-hide-status-info.patch
@@ -102,8 +102,8 @@ https://deb.debian.org/debian/pool/main/a/archivemount/archivemount_1b.orig.tar.
 https://github.com/rclone/rclone/releases/download/v1.74.3/rclone-v1.74.3-linux-amd64.deb
 https://github.com/vifm/vifm/releases/download/v0.14.4/vifm-0.14.4.tar.bz2
 https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
-https://www.kernel.org/pub/software/scm/git/git-2.53.0.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-manpages-2.53.0.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.55.0.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-manpages-2.55.0.tar.xz
 https://github.com/rfc1036/whois/archive/v5.6.6/whois-5.6.6.tar.gz
 https://github.com/soimort/translate-shell/archive/v0.9.7.1/translate-shell-0.9.7.1.tar.gz
 https://www.ezix.org/software/files/lshw-B.02.20.tar.gz
@@ -501,7 +501,7 @@ https://github.com/thkukuk/libnsl/releases/download/v2.0.1/libnsl-2.0.1.tar.xz
 https://www.python.org/ftp/python/3.14.4/Python-3.14.4.tar.xz
 https://www.linuxfromscratch.org/patches/blfs/13.0/Python-3.14.4-security_fixes-2.patch
 https://www.python.org/ftp/python/doc/3.14.4/python-3.14.4-docs-html.tar.bz2
-https://github.com/vim/vim/archive/v9.2.0488/vim-9.2.0488.tar.gz
+https://github.com/vim/vim/archive/v9.2.0782/vim-9.2.0782.tar.gz
 https://github.com/universal-ctags/ctags/releases/download/v6.2.1/universal-ctags-6.2.1.tar.gz
 https://files.pythonhosted.org/packages/source/p/psutil/psutil-7.2.2.tar.gz
 https://download.savannah.gnu.org/releases/hddtemp/hddtemp-0.3-beta15.tar.bz2
@@ -620,6 +620,7 @@ https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/openo
 # ======================
 https://github.com/brndnmtthws/conky/archive/v1.24.2/conky-1.24.2.tar.gz
 https://slackbuilds.org/slackbuilds/15.0/system/conky/conky.1.gz
+https://files.pythonhosted.org/packages/source/m/mutagen/mutagen-1.48.1.tar.gz
 # =================================== LXQt =====================================
 # ======= Misc Dependencies =======
 https://github.com/libexif/libexif/releases/download/v0.6.26/libexif-0.6.26.tar.bz2

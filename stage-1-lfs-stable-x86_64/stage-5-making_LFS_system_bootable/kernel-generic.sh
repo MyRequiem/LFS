@@ -31,24 +31,24 @@ fi
 
 cd "${SRC_DIR}" || exit 1
 
-# очистим дерево исходников
+# Очистим дерево исходников.
 echo "make mrproper..."
 make mrproper
 
-# копируем заранее приготовленный конфиг
+# Копируем заранее приготовленный конфиг.
 cp "${CONFIG}" .config || exit 1
 
 make oldconfig
 
-# собираем ядро
+# Собираем ядро.
 make bzImage || exit 1
 
-# устанавливаем собранное ядро, System.map и config в /boot
+# Устанавливаем собранное ядро, System.map и config в /boot
 install -vm644 arch/x86/boot/bzImage "/boot/vmlinuz-generic-${VERSION}"
 install -vm644 System.map            "/boot/System.map-generic-${VERSION}"
 install -vm644 .config               "/boot/config-generic-${VERSION}"
 
-# ссылки в /boot
+# Ссылки в /boot
 #    vmlinuz    -> vmlinuz-generic-${VERSION}
 #    System.map -> System.map-generic-${VERSION}
 #    config     -> config-generic-${VERSION}

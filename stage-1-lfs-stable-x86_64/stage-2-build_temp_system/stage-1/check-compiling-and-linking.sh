@@ -24,7 +24,7 @@ echo 'int main(){}' | "${LFS_TGT}-gcc" -xc -
 echo "ls -l a.out"
 ls -l a.out
 echo ""
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""

@@ -20,9 +20,9 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# здесь можно запускать тесты в несколько потоков (это ускорит тестирование
+# Здесь можно запускать тесты в несколько потоков (это ускорит тестирование
 # даже в системах с одним процессором (ядром), из-за внутренних задержек в
-# отдельных тестах)
+# отдельных тестах).
 # make -j$(($(nproc)>4?$(nproc):4)) check
 
 make install DESTDIR="${TMP_DIR}"
@@ -47,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # "perl" packages to be able to use automake.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

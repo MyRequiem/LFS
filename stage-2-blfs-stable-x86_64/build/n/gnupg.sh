@@ -32,13 +32,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# создаем утилитy g13
-#    --enable-g13
 ../configure             \
     --prefix=/usr        \
     --localstatedir=/var \
     --sysconfdir=/etc    \
-    --enable-g13         \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
@@ -46,6 +43,8 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+
+killall gpg-agent &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

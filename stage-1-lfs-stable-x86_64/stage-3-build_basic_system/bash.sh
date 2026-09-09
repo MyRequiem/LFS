@@ -18,8 +18,8 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# использовать библиотеку readline, которая уже устанавлена в системе вместо
-# использования собственной внутренней версии
+# Используем библиотеку readline, которая уже устанавлена в системе вместо
+# использования собственной внутренней версии.
 #    --with-installed-readline
 ./configure                   \
     --prefix=/usr             \
@@ -29,10 +29,10 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# набор тестов этого пакета предназначен для запуска пользователем без
+# Набор тестов этого пакета предназначен для запуска пользователем без
 # полномочий root, который владеет терминалом, подключенным к стандартному
 # вводу. Чтобы удовлетворить требование, создадим новый псевдо-терминал,
-# используя Expect, и запустим тесты от имени пользователя tester
+# используя Expect, и запустим тесты от имени пользователя tester.
 #
 # chown -Rv tester .
 # LC_ALL=C.UTF-8 su -s /usr/bin/expect tester << "EOF"
@@ -48,7 +48,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# создадим ссылку в /usr/bin/
+# Создадим ссылку в /usr/bin/
 #    sh -> bash
 ln -svf bash "${TMP_DIR}/usr/bin/sh"
 
@@ -64,10 +64,10 @@ source "${ROOT}clean-locales.sh"  || exit 1
 # «Text file busy» возникает потому, что мы пытаемся перезаписать файл
 # /usr/bin/bash в тот момент, когда он запущен и используется системой (как
 # минимум данным скриптом). Linux запрещает прямую модификацию исполняемого
-# файла, если он находится в памяти
+# файла, если он находится в памяти.
 install -vm755 "${TMP_DIR}/usr/bin/bash" /usr/bin || exit 1
 
-# копируем все остальное в корень системы (без /usr/bin/bash)
+# Копируем все остальное в корень системы (без /usr/bin/bash).
 mv "${TMP_DIR}/usr/bin/bash" /tmp/
 /bin/cp -vR "${TMP_DIR}"/* /
 mv /tmp/bash "${TMP_DIR}/usr/bin/"
@@ -81,7 +81,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # must be present for the system to boot properly.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

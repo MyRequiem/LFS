@@ -14,9 +14,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# ключ позволяет создать библиотеку совместимости, содержащую старые функции
-# DBM (libgdbm_compat.so), так как некоторые пакеты за пределами LFS могут
-# требовать этих более старых процедур
+# Ключ позволяет создать библиотеку совместимости, содержащую старые функции
+# DBM (libgdbm_compat.so), т.к. некоторые пакеты за пределами LFS могут
+# требовать этих более старых процедур.
 #    --enable-libgdbm-compat
 ./configure          \
     --prefix=/usr    \
@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # with its data.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

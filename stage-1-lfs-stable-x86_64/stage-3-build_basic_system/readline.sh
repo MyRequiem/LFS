@@ -77,7 +77,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # previous commands.
 #
 # Home page: https://tiswww.case.edu/php/chet/${PRGNAME}/rltop.html
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -2,7 +2,7 @@
 
 PRGNAME="mpfr"
 
-### Mpfr (Multiple-Precision Floating-Point Reliable Library)
+### MPFR (Multiple-Precision Floating-Point Reliable Library)
 # Библиотека для высокоточных расчетов с плавающей запятой, гарантирующая
 # одинаковый результат на любых типах процессоров.
 
@@ -22,8 +22,8 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# набор тестов для Mpfr на данном этапе считается критичным, нельзя пропускать
-# его ни при каких обстоятельствах
+# Набор тестов для MPFR на данном этапе считается критичным, нельзя пропускать
+# его ни при каких обстоятельствах.
 # make check
 
 make install DESTDIR="${TMP_DIR}"
@@ -45,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # efficient and has well-defined semantics.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

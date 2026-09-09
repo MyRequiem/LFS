@@ -22,10 +22,10 @@ mkdir -pv "${TMP_DIR}"
 # тестах или других приложениях, использующих библиотеки gmp возникают ошибки с
 # сообщением "Illegal instruction". В этом случае gmp следует сконфигурировать
 # с параметром --build=x86_64-unknown-linux-gnu, где unknown это slackware, lfs
-# и т.д., а затем пересобрать
+# и т.д., а затем пересобрать.
 
-# корректируем для совместимости с gcc>=15
-sed -i '/long long t1;/,+1s/()/(...)/' configure
+# Корректируем для совместимости с GCC >=15.
+sed -i '/long long t1;/,+1s/()/(...)/' configure || exit 1
 
 # включаем поддержку C++
 #    --enable-cxx
@@ -38,18 +38,10 @@ sed -i '/long long t1;/,+1s/()/(...)/' configure
 make || make -j1 || exit 1
 
 # Набор тестов для Gmp на данном этапе считается критическим. Нельзя пропускать
-# его ни при каких обстоятельствах
-# make check 2>&1 | tee gmp-check-log
-
-# убедимся, что все 199 тестов в наборе пройдены
-# echo ""
-# echo "======================= Test results ======================="
-# echo "There must be 199 tests passed:"
-# awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
-# echo "============================================================"
-# echo -n "View the results and then press any key... "
-# read -r JUNK
-# echo "${JUNK}" > /dev/null
+# его ни при каких обстоятельствах.
+# make check
+# Убедимся, что все 199 тестов в наборе пройдены:
+# cat $(find -name '*.log') | grep -c ^PASS
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -68,7 +60,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # functions, and the functions have a regular interface.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

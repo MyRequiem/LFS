@@ -26,10 +26,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# установим совместимость с fltk-1.4.4
-sed -i "/FLTK 1/s/3/4/"   configure || exit 1
-sed -i '14466 s/1.3/1.4/' configure || exit 1
-
 ./configure       \
     --prefix=/usr \
     --enable-pinentry-tty || exit 1

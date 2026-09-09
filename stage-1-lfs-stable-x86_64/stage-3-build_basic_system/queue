@@ -1,5 +1,5 @@
 ###
-# Переходим в chroot окружение (если LFS система еще не установлена)
+# Переходим в chroot окружение (если LFS система еще не установлена).
 ./entering-chroot-env.sh
 ###
 main-directory-tree.sh
@@ -12,12 +12,12 @@ main-directory-tree.sh
 #    find-orphans
 #    remove-la-files.sh
 #    removepkg
+#    syshealth-utils-menu
 #
 ###
 # NOTE:
-#    все эти 7 утилит (перечисленные выше) нужно положить в корень системы
-#    вместе со скриптом syshealth-utils.sh, т.к. он будет их копировать в
-#    /usr/sbin/
+#    Все эти 8 утилит (перечисленные выше) нужно положить в корень системы
+#    вместе со скриптом syshealth-utils.sh
 ###
 syshealth-utils.sh
 
@@ -38,6 +38,7 @@ flex.sh
 tcl.sh
 expect.sh
 dejagnu.sh
+ninja.sh
 pkgconf.sh
 binutils.sh
 gmp.sh
@@ -55,6 +56,7 @@ libxcrypt.sh
 #    а shadow.sh в этом списке пропускаем !!!
 ###
 shadow.sh
+gawk.sh
 gcc.sh
 check-compiling-and-linking.sh
 ncurses.sh
@@ -71,25 +73,22 @@ expat.sh
 inetutils.sh
 less.sh
 perl.sh
-perl-xml-parser.sh
-intltool.sh
 autoconf.sh
 automake.sh
 openssl.sh
 libelf.sh
 libffi.sh
 sqlite.sh
+mpdecimal.sh
 python3.sh
 python3-flit-core.sh
 python3-packaging.sh
 python3-wheel.sh
 python3-setuptools.sh
-ninja.sh
 meson.sh
 kmod.sh
 coreutils.sh
 diffutils.sh
-gawk.sh
 findutils.sh
 groff.sh
 grub.sh
@@ -110,10 +109,10 @@ texinfo.sh
 vim.sh
 python3-markupsafe.sh
 python3-jinja2.sh
-# начиная с версии LFS 13.0 пакет udev заменен на eudev. Если вы обновляете LFS
+# Начиная с версии LFS 13.0 пакет udev заменен на eudev. Если вы обновляете LFS
 # c версии < 13.x до версии >=13.x, то перед установкой eudev нужно
-# >>>ОБЯЗАТЕЛЬНО<<< удалить пакет udev
-#    # removepkg --backup /var/log/packages/udev-<version>
+# >>>ОБЯЗАТЕЛЬНО<<< удалить пакет udev.
+#    $ removepkg --backup /var/log/packages/udev-<version>
 eudev.sh
 man-db.sh
 procps-ng.sh
@@ -122,11 +121,7 @@ e2fsprogs.sh
 sysklogd.sh
 sysvinit.sh
 # ========================================================
-# если обновляем LFS до новой версии, очищаем директорию
-#    /var/log/removed_la_files/
-# ========================================================
 remove-la-files.sh
 strip.sh
-
 
 # vim:ft=conf

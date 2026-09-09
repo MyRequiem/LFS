@@ -15,15 +15,15 @@ DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}${DOC_DIR}"
 
-# поведение клавиш <Backspace> и <Delete> не одинаково для всех раскладок в
+# Поведение клавиш <Backspace> и <Delete> не одинаково для всех раскладок в
 # пакете Kbd. Следующий патч исправляет эту проблему для i386 раскладки - после
-# его применения клавиши <Backspace> и <Delete> генерируют символ с кодом 127
+# его применения клавиши <Backspace> и <Delete> генерируют символ с кодом 127.
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-backspace-1.patch" || exit 1
 
-# не будем создавать утилиту resizecons, для которой требуется более
+# Не будем создавать утилиту resizecons, для которой требуется более
 # неиспользуемая библиотека svgalib, a так же отключим созданием man-страницы
-# для нее
+# для нее.
 sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure      || exit 1
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in || exit 1
 

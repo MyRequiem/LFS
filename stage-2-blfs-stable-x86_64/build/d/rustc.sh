@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="rustc"
-BLFS_VER="13.0"
+BLFS_VER="13.1"
 
 ### Rustc (The Rust programming language)
 # Компилятор современного языка программирования Rust. Он славится тем, что

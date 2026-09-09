@@ -4,7 +4,7 @@ PRGNAME="patch"
 
 ### Patch (apply a diff file to an original file or files)
 # Программа для автоматического внесения изменений в текстовые файлы на основе
-# специальных файлов различий (.patch, .diff) обычно создаваемых утилитой diff
+# специальных файлов различий (.patch, .diff) обычно создаваемых утилитой diff.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
@@ -35,7 +35,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # usually source code.
 #
 # Home page: https://savannah.gnu.org/projects/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

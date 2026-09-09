@@ -15,9 +15,9 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# отключает сборку и установку большинства статических библиотек
+# Отключает сборку и установку большинства статических библиотек.
 #    --without-normal
-# ключ генерирует и устанавливает файлы .pc для pkg-config
+# Ключ генерирует и устанавливает файлы .pc для pkg-config.
 #    --enable-pc-files
 ./configure                 \
     --prefix=/usr           \
@@ -31,19 +31,20 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# в состав пакета входят наборы тестов, но их можно запустить только после
-# того, как пакет будет установлен
+# В состав пакета входят наборы тестов, но их можно запустить только после
+# того, как пакет будет установлен.
 
-# если пакет уже установлен, установка пакета сразу в корень системы командой
-# 'make install' перезапишет libncursesw.so.${LIB_VERSION} Это может привести к
-# сбою настроек терминала и ошибки оболочки (Segmentation fault), которая будет
-# пытаться использовать код и данные из прежней библиотеки. Установим пакет с
-# помощью DESTDIR правильно заменив библиотеку libncursesw.so.${LIB_VERSION}
+# Если пакет уже установлен, установка пакета сразу в корень системы командой
+# 'make install' перезапишет libncursesw.so.${LIB_VERSION}. Это может привести
+# к сбою настроек терминала и ошибки оболочки (Segmentation fault), которая
+# будет пытаться использовать код и данные из прежней библиотеки. Установим
+# пакет с помощью DESTDIR правильно заменив библиотеку
+# libncursesw.so.${LIB_VERSION}.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# заголовочный файл curs.h содержит определения различных структур данных
+# Заголовочный файл curs.h содержит определения различных структур данных
 # ncurses. с разными определениями макросов препроцессора могут использоваться
 # два разных набора определений структуры данных: 8-битное определение
 # совместимо с libncurses.so, а определение расширенных символов совместимо с
@@ -52,27 +53,27 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 # структуры данных расширенных символов, совместимое с libncursesw.so
 sed -e 's/^#if.*XOPEN.*$/#if 1/' -i "${TMP_DIR}/usr/include/curses.h" || exit 1
 
-# многие приложения все еще ожидают, что компоновщик сможет найти обычные
+# Многие приложения все еще ожидают, что компоновщик сможет найти обычные
 # libncurses.so, а не wide-character libncursesw.so библиотеки. Обманем такие
-# приложения
+# приложения.
 for LIB in ncurses form panel menu ; do
     ln -sfv "lib${LIB}w.so" "${TMP_DIR}/usr/lib/lib${LIB}.so"
     ln -sfv "${LIB}w.pc"    "${TMP_DIR}/usr/lib/pkgconfig/${LIB}.pc"
 done
 
-# для старых приложений, которые ищут -lcurses во время сборки
+# Для старых приложений, которые ищут -lcurses во время сборки.
 ln -sfv libncursesw.so "${TMP_DIR}/usr/lib/libcurses.so"
 
 source "${ROOT}stripping.sh"      || exit 1
 source "${ROOT}update-info-db.sh" || exit 1
 source "${ROOT}clean-locales.sh"  || exit 1
 
-# файл сначала удаляется в системе, а потом копируется на его исходное место
+# Файл сначала удаляется в системе, а потом копируется на его исходное место.
 #    --remove-destination
 cp --remove-destination -av "${TMP_DIR}"/* /
 
-# снова соберем пакет для построения 5 версии библиотеки, которая все еще
-# требуется некоторым программам
+# Снова соберем пакет для построения 5 версии библиотеки, которая все еще
+# требуется некоторым программам.
 make distclean
 ./configure               \
     --prefix=/usr         \
@@ -84,7 +85,7 @@ make distclean
 
 make sources libs || make -j1 sources libs || exit 1
 
-# stripping
+# Stripping.
 BINARY="$(find lib/ -type f -name "*.so.5*" -print0 | \
     xargs -0 file 2>/dev/null | /bin/grep -e "executable" -e "shared object" | \
     /bin/grep ELF | cut -f 1 -d :)"

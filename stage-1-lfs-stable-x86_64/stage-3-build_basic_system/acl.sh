@@ -22,19 +22,19 @@ mkdir -pv "${TMP_DIR}"
 
 make || make -j1 || exit 1
 
-# тесты Acl должны выполняться в файловой системе, которая поддерживает
+# Тесты Acl должны выполняться в файловой системе, которая поддерживает
 # контроль доступа после того, как был собран пакет Coreutils с библиотеками
 # Acl. На данный момент Coreutils был собран без Acl при построении временной
 # системы LFS:
 #    stage-2-build_temp_system/stage-1/coreutils.sh
-# поэтому тесты мы пропускаем (можно запустить после сборки пакета coreutils)
+# поэтому тесты мы пропускаем (можно запустить после сборки пакета coreutils).
 # make check
 
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# установим библиотеку libacl.so командой 'install', иначе, если пакет уже
+# Установим библиотеку libacl.so командой 'install', иначе, если пакет уже
 # установлен, при копировании в корень системы выдаст ошибку:
 #    ./acl.sh: Ошибка сегментирования /bin/cp -vR "${TMP_DIR}"/* /
 install -vm755 "${TMP_DIR}/usr/lib/libacl".so* /usr/lib
@@ -53,7 +53,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # rights for files and directories.
 #
 # Home page: https://savannah.nongnu.org/projects/${PRGNAME}
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

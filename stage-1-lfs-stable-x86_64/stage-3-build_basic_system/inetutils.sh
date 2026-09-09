@@ -14,27 +14,27 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/usr/sbin"
 
-# исправим сборку с gcc >=14.1
+# Исправим сборку с GCC >=14.1
 sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c || exit 1
 
-# по умолчанию пакет устанавливает демон сетевого журнала, которые ведет
+# По умолчанию пакет устанавливает демон сетевого журнала, которые ведет
 # логирование. Мы не будем его устанавливать, т.к. пакет Util-Linux содержит
-# более продвинутую версию
+# более продвинутую версию.
 #    --disable-logger
 # НЕ собирать утилиту 'whois', которая считается устаревшей. В BLFS описана
 # более лучшая альтернатива данной утилите.
 #    --disable-whois
-# эти параметры отключают сборку устаревших программ, которые не должны
+# Эти параметры отключают сборку устаревших программ, которые не должны
 # использоваться из-за проблем безопасности. Функции, предоставляемые этими
-# программами полностью заменяет пакет openssh из BLFS
+# программами полностью заменяет пакет openssh из BLFS.
 #    --disable-rcp
 #    --disable-rexec
 #    --disable-rlogin
 #    --disable-rsh
-# отключаем установку различных сетевых серверов. Эти серверы считаются
+# Отключаем установку различных сетевых серверов. Эти серверы считаются
 # неподходящими для базовой LFS системы. Некоторые из них небезопасны по своей
 # природе и считаются безопасными только в доверенных сетях. Для этих серверов
-# существуют более лучшие и безопасные альтернативы
+# существуют более лучшие и безопасные альтернативы.
 #    --disable-servers
 ./configure              \
     --prefix=/usr        \
@@ -54,7 +54,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# переместим утилиту 'ifconfig' из /usr/bin в /usr/sbin
+# Переместим утилиту 'ifconfig' из /usr/bin в /usr/sbin
 mv -v "${TMP_DIR}/usr"/{,s}bin/ifconfig
 
 source "${ROOT}stripping.sh"      || exit 1
@@ -62,7 +62,7 @@ source "${ROOT}update-info-db.sh" || exit 1
 source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
-# добавим suid-бит утилите ping для ее запуска от обычного пользователя
+# Добавим suid-бит утилите ping для ее запуска от обычного пользователя.
 chmod 4711 /usr/bin/ping
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -73,7 +73,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # traceroute
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

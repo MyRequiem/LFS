@@ -15,10 +15,10 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# отключаем сборку утилиты kill, которая будет установлена с пакетом util-linux
+# Отключаем сборку утилиты kill, которая будет установлена с пакетом util-linux.
 #    --disable-kill
-# включаем поддержку ncursesw для команды watch, чтобы она могла обрабатывать
-# 8-битные символы
+# Включаем поддержку ncursesw для команды watch, чтобы она могла обрабатывать
+# 8-битные символы.
 #    --enable-watch8bit
 ./configure            \
     --prefix=/usr      \

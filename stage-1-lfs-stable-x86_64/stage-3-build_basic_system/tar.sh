@@ -14,10 +14,13 @@ TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# заставляет тест для mknod запускаться от имени пользователя root. Вообще
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-acl_fix-1.patch" || exit 1
+
+# Заставляет тест для mknod запускаться от имени пользователя root. Вообще
 # считается опасным запускать этот тест от имени root, но в данный момент он
 # запускается в системе, которая построена частично и работает только в chroot
-# окружении
+# окружении.
 #    FORCE_UNSAFE_CONFIGURE=1
 FORCE_UNSAFE_CONFIGURE=1 \
 ./configure              \
@@ -43,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # file.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# создание обычного пользователя LFS системы
+# Создание обычного пользователя LFS системы.
 
 ROOT="/"
 source "${ROOT}check_environment.sh" || exit 1
@@ -12,11 +12,11 @@ if [ -z "${USERNAME}" ]; then
     exit 1
 fi
 
-#    -d    - домашний каталог
-#    -m    - создать домашний каталог
-#    -g    - группа
-#    -k    - не копировать файлы/директории из /etc/skel (/dev/null)
-#    -s    - оболочка
+# -d    - Домашний каталог.
+# -m    - Создать домашний каталог.
+# -g    - Группа.
+# -k    - Не копировать файлы/директории из /etc/skel (/dev/null).
+# -s    - Оболочка.
 useradd -d "/home/${USERNAME}" \
         -m                     \
         -g users               \
@@ -26,5 +26,5 @@ useradd -d "/home/${USERNAME}" \
 
 chown "${USERNAME}":users "/home/${USERNAME}"
 chmod 711 "/home/${USERNAME}"
-# устанавливаем пароль для нового пользователя
+# Устанавливаем пароль для нового пользователя.
 passwd "${USERNAME}"

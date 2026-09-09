@@ -15,15 +15,15 @@ rm -rf "${TMP_DIR}"
 ETC_DEFAULT="/etc/default"
 mkdir -pv "${TMP_DIR}${ETC_DEFAULT}"
 
-# отключим установку программы 'groups' и ее man-страниц, так как пакет
+# Отключим установку программы 'groups' и ее man-страниц, так как пакет
 # Coreutils предоставляет лучшую версию этой утилиты. Также отменим установку
-# ман-страниц, которые уже были установлены вместе с пакетом man-pages
+# ман-страниц, которые уже были установлены вместе с пакетом man-pages.
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in || exit 1
 find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \+
 find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \+
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \+
 
-# вместо использования DES метода шифрования паролей (по умолчанию) будем
+# Вместо использования DES метода шифрования паролей (по умолчанию) будем
 # использовать более безопасный метод YESCRYPT, который также позволяет
 # использовать пароли длиной более 8 символов. Также необходимо изменить
 # устаревшее местоположение /var/spool/mail для пользовательских почтовых
@@ -36,11 +36,11 @@ sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:' \
     -i etc/login.defs
 
 # /usr/bin/passwd должен существовать перед сборкой, потому что его
-# расположение жестко закодировано в некоторых утилитах пакета
+# расположение жестко закодировано в некоторых утилитах пакета.
 PASSWD="/usr/bin/passwd"
 ! [ -r "${PASSWD}" ] && touch "${PASSWD}"
 
-# максимальная длина имени пользователя или группы 32 символа
+# Максимальная длина имени пользователя или группы 32 символа.
 #    --with-group-name-max-length=32
 ./configure             \
     --sysconfdir=/etc   \
@@ -51,7 +51,7 @@ PASSWD="/usr/bin/passwd"
     --with-group-name-max-length=32 || exit 1
 
 make || make -j1 || exit 1
-# пакет не имеет тестового набора
+# Пакет не имеет тестового набора.
 make exec_prefix=/usr install DESTDIR="${TMP_DIR}"
 make -C man install-man DESTDIR="${TMP_DIR}"
 
@@ -63,10 +63,10 @@ source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 ###
-# Конфигурация
+# Конфигурация.
 ###
 
-# создадим файл /etc/default/useradd
+# Создадим файл /etc/default/useradd
 mkdir -p "${ETC_DEFAULT}"
 useradd -D --gid 999
 # /etc/default/useradd содержит параметр CREATE_MAIL_SPOOL=yes, который
@@ -75,17 +75,17 @@ useradd -D --gid 999
 sed -i '/MAIL/s/yes/no/' "${ETC_DEFAULT}/useradd" || exit 1
 cp "${ETC_DEFAULT}/useradd" "${TMP_DIR}${ETC_DEFAULT}"
 
-# на утилиту 'passwd' установим suid бит, чтобы любой пользователь мог ее
+# На утилиту 'passwd' установим suid бит, чтобы любой пользователь мог ее
 # запустить с правами владельца (root). Необходимо, чтобы пользователь сам мог
 # менять свой пароль.
 chmod 4711 /usr/bin/passwd
 
-# включим теневые пароли
+# Включим теневые пароли.
 pwconv
-# включим теневые групповые пароли
+# Включим теневые групповые пароли.
 grpconv
 
-# установим пароль для суперпользователя
+# Установим пароль для суперпользователя.
 passwd root
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -20,8 +20,7 @@ source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
     --prefix=/usr                       \
     --host="${LFS_TGT}"                 \
     --build="$(build-aux/config.guess)" \
-    --enable-install-program=hostname   \
-    --enable-no-install-program=kill,uptime || exit 1
+    --enable-install-program=hostname || exit 1
 
 make || make -j1 || exit 1
 make DESTDIR="${LFS}" install

@@ -7,9 +7,10 @@ PRGNAME="eudev"
 # оборудование (флешки, мышки и т.д.) и создает нужные файлы для работы с ними.
 
 ROOT="/"
-source "${ROOT}check_environment.sh" || exit 1
+source "${ROOT}check_environment.sh"                  || exit 1
+source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# удалим пакет udev если он установлен (при переходе с LFS < 13.x на >=13.x)
+# Удалим пакет udev если он установлен (при переходе с LFS < 13.x на >=13.x).
 UDEV_PKG="$(find /var/log/packages/ -type f -name "udev-[0-9]*")"
 if [ -n "${UDEV_PKG}" ]; then
     UDEV_VERSION="$(echo "${UDEV_PKG}" | rev | cut -d / -f 1 | rev)"
@@ -19,14 +20,12 @@ if [ -n "${UDEV_PKG}" ]; then
     removepkg --backup --no-color "${UDEV_PKG}"
 fi
 
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
-
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# в правилах Eudev по умолчанию закомментируем ненужную группу sgx, иначе будет
-# засорять лог сообщениями, что такой группы не существует
+# В правилах Eudev по умолчанию закомментируем ненужную группу sgx, иначе будет
+# засорять лог сообщениями, что такой группы не существует.
 sed '/sgx/s/^/# /' -i rules/50-udev-default.rules || exit 1
 
 if ! [ -r configure ]; then
@@ -61,23 +60,23 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -svf ../bin/udevadm "${TMP_DIR}/usr/sbin/udevadm"
 
-# некоторые правила от Patrick J. Volkerding (Slackware) и Gemini :)
+# Некоторые правила от Patrick J. Volkerding (Slackware) и Gemini :).
 cat > "${TMP_DIR}/etc/udev/rules.d/60-lfs-desktop.rules" << "EOF"
 # Slackware permission rules
 #
 # These rules are here instead of 40-slackware.rules because many of them need
-# to run after the block section in 50-udev.default.rules
+# to run after the block section in 50-udev.default.rules.
 #
 
-# all disks with group disk
+# All disks with group disk.
 KERNEL!="fd*", SUBSYSTEM=="block", GROUP="disk"
 
-# put all removable devices in group "plugdev"
+# Put all removable devices in group "plugdev".
 KERNEL=="sd*[!0-9]", ATTR{removable}=="1", GROUP="plugdev"
 KERNEL=="sd*[0-9]", ATTRS{removable}=="1", GROUP="plugdev"
 
-# Many hot-pluggable devices (ZIP, Jazz, LS-120, etc...)
-# need to be in plugdev, too.
+# Many hot-pluggable devices (ZIP, Jazz, LS-120, etc...) need to be in plugdev,
+# too.
 KERNEL=="diskonkey*",    GROUP="plugdev"
 KERNEL=="jaz*",          GROUP="plugdev"
 KERNEL=="pocketzip*",    GROUP="plugdev"
@@ -85,16 +84,16 @@ KERNEL=="zip*",          GROUP="plugdev"
 KERNEL=="ls120",         GROUP="plugdev"
 KERNEL=="microdrive*",   GROUP="plugdev"
 
-# CD group and permissions
+# CD group and permissions.
 ENV{ID_CDROM}=="?*",     GROUP="cdrom", MODE="0660"
 KERNEL=="pktcdvd",       GROUP="cdrom", MODE="0660"
 KERNEL=="pktcdvd[0-9]*", GROUP="cdrom", MODE="0660"
 
-# permissions for SCSI sg devices
+# Permissions for SCSI sg devices.
 SUBSYSTEMS=="scsi", KERNEL=="s[gt][0-9]*", ATTRS{type}=="5", \
     GROUP="cdrom", MODE="0660"
 
-# make DRI video devices usable by anyone in group "video":
+# Make DRI video devices usable by anyone in group "video":
 KERNEL=="card[0-9]*", GROUP:="video"
 
 EOF
@@ -103,19 +102,19 @@ UDEV_LFS="udev-lfs"
 UDEV_LFS_VERSION="$(echo "${SOURCES}/${UDEV_LFS}"-*.tar.?z* | rev | \
     cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-# установим некоторые пользовательские правила, которые будут полезные в LFS
-# (читаем сразу из архива udev-lfs-${VERSION}.tar.xz без его распаковки)
+# Установим некоторые пользовательские правила, которые будут полезные в LFS
+# (читаем сразу из архива udev-lfs-${VERSION}.tar.xz без его распаковки).
 tar -xOf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}.tar.xz" \
     "${UDEV_LFS}-${UDEV_LFS_VERSION}/55-lfs.rules" >         \
     "${TMP_DIR}/etc/udev/rules.d/55-lfs.rules"
 
-# изменим /usr/lib/udev/rule_generator.functions, как предлагает LFS
+# Изменим /usr/lib/udev/rule_generator.functions, как предлагает LFS.
 tar -xOf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}.tar.xz"     \
     "${UDEV_LFS}-${UDEV_LFS_VERSION}/rule_generator.functions" | \
     sed "s|^PATH=.*|PATH='/usr/sbin:/usr/bin'|" >                \
     "${TMP_DIR}/usr/lib/udev/rule_generator.functions"
 
-# добавим /usr/lib/udev/{init-net-rules.sh,write_net_rules}
+# Добавим /usr/lib/udev/{init-net-rules.sh,write_net_rules}.
 tar -xOf "${SOURCES}/${UDEV_LFS}-${UDEV_LFS_VERSION}.tar.xz" \
     "${UDEV_LFS}-${UDEV_LFS_VERSION}/init-net-rules.sh" >    \
     "${TMP_DIR}/usr/lib/udev/init-net-rules.sh"
@@ -132,17 +131,17 @@ source "${ROOT}update-info-db.sh" || exit 1
 source "${ROOT}clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
-### Конфигурация Udev
-# информация об аппаратных устройствах хранится в каталогах
+### Конфигурация Udev.
+# Информация об аппаратных устройствах хранится в каталогах:
 #    /etc/udev/hwdb.d/
-# для Eudev нужно, чтобы эта информация была собрана в двоичной базе данных
+# Для Eudev нужно, чтобы эта информация была собрана в двоичной базе данных:
 #    /etc/udev/hwdb.bin
-# создадим эту исходную базу данных
+# Создадим эту исходную базу данных:
 udevadm hwdb --update
 
 cp -v /etc/udev/hwdb.bin "${TMP_DIR}/etc/udev/" || exit 1
 
-# обновим dynamic linker run‐time bindings
+# Обновим dynamic linker run‐time bindings.
 ldconfig
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

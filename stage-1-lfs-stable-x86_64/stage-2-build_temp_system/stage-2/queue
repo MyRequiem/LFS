@@ -18,6 +18,8 @@ rev.sh
 gettext.sh
 bison.sh
 perl.sh
+zlib.sh
+mpdecimal.sh
 python3.sh
 texinfo.sh
 util-linux.sh

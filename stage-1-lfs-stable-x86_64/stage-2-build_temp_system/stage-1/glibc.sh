@@ -20,10 +20,18 @@ ln -sfv ../lib/ld-linux-x86-64.so.2 "${LFS}/lib64"
 # /mnt/lfs/lib64/ld-lsb-x86-64.so.3 -> ../lib/ld-linux-x86-64.so.2
 ln -sfv ../lib/ld-linux-x86-64.so.2 "${LFS}/lib64/ld-lsb-x86-64.so.3"
 
-# некоторые программы Glibc используют несовместимый с FHS каталог /var/db для
-# хранения своих run-time данных. Применим патч, чтобы такие программы
-# сохраняли свои run-time данные в FHS-совместимых каталогах
+# Некоторые из программ Glibc используют не FHS-совместимый каталог /var/db для
+# хранения run-time данных. Применим патч, который удаляет ссылки на каталог
+# /var/db и заменяет их на:
+#    /var/cache/nscd    - для nscd
+#    /var/lib/nss_db    - для nss_db
 patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-fhs-1.patch" || exit 1
+
+# Патч устраняет падение при вызове функции tanh(3) на старых процессорах
+# x86_64, а также чинит параллельную сборку и установку при использовании флага
+# make -j X
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
 
 # документация glibc рекомендует собирать glibc в отдельном каталоге
 mkdir build
@@ -64,11 +72,10 @@ echo "rootsbindir=/usr/sbin" > configparms
     --build="$(../scripts/config.guess)" \
     --disable-nscd                       \
     libc_cv_slibdir=/usr/lib             \
-    --enable-kernel=5.4 || exit 1
+    --enable-kernel=5.10 || exit 1
 
 make || make -j1 || exit 1
 make DESTDIR="${LFS}" install
 
-# исправим жестко запрограммированный путь к исполняемому загрузчику в скрипте
-# ldd
+# исправим жестко закодированный путь к исполняемому загрузчику в скрипте ldd
 sed '/RTLDLIST=/s@/usr@@g' -i "${LFS}/usr/bin/ldd"

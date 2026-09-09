@@ -41,23 +41,23 @@ cd unix || exit 1
 
 make || make -j1 || exit 1
 
-# удаляем ссылки на каталог сборки из файлов конфигурации и заменяем их на
-# каталог установки
+# Удаляем ссылки на каталог сборки из файлов конфигурации и заменяем их на
+# каталог установки.
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 sed -e "s|$SRCDIR/unix|/usr/lib|" \
     -e "s|$SRCDIR|/usr/include|"  \
     -i tclConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.12|/usr/lib/tdbc1.1.12|"           \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.12/generic|/usr/include|"               \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.12/library|/usr/lib/tcl${MAJ_VERSION}|" \
-    -e "s|$SRCDIR/pkgs/tdbc1.1.12|/usr/include|"                       \
-    -i pkgs/tdbc1.1.12/tdbcConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.13|/usr/lib/tdbc1.1.13|"           \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.13/generic|/usr/include|"               \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.13/library|/usr/lib/tcl${MAJ_VERSION}|" \
+    -e "s|$SRCDIR/pkgs/tdbc1.1.13|/usr/include|"                       \
+    -i pkgs/tdbc1.1.13/tdbcConfig.sh
 
-sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.4|/usr/lib/itcl4.3.4|" \
-    -e "s|$SRCDIR/pkgs/itcl4.3.4/generic|/usr/include|"    \
-    -e "s|$SRCDIR/pkgs/itcl4.3.4|/usr/include|"            \
-    -i pkgs/itcl4.3.4/itclConfig.sh
+sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.7|/usr/lib/itcl4.3.7|" \
+    -e "s|$SRCDIR/pkgs/itcl4.3.7/generic|/usr/include|"    \
+    -e "s|$SRCDIR/pkgs/itcl4.3.7|/usr/include|"            \
+    -i pkgs/itcl4.3.7/itclConfig.sh
 
 # LC_ALL=C.UTF-8 make test
 
@@ -65,19 +65,19 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# сделаем установленную библиотеку доступной для записи, чтобы позже можно было
-# удалить отладочную информацию (debugging symbols)
+# Сделаем установленную библиотеку доступной для записи, чтобы позже можно было
+# удалить отладочную информацию (debugging symbols).
 chmod -v u+w "${TMP_DIR}/usr/lib/libtcl${MAJ_VERSION}.so"
 
-# устанавливаем заголовки, которые требуются для сборки пакета Expect
+# Устанавливаем заголовки, которые требуются для сборки пакета Expect.
 make install-private-headers DESTDIR="${TMP_DIR}"
 
-# создаем символическую ссылку в /usr/bin/
+# Создаем символическую ссылку в /usr/bin/
 #    tclsh -> tclsh${MAJ_VERSION}
 ln -sfv "tclsh${MAJ_VERSION}" "${TMP_DIR}/usr/bin/tclsh"
 
-# переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
-# устанавливается с пакетом Perl
+# Переименуем man-страницу Thread.3 в Tcl_Thread.3, т.к. страница Thread.3
+# устанавливается с пакетом Perl.
 mv -v "${TMP_DIR}/usr/share/man/man3"/{Thread,Tcl_Thread}.3
 
 source "${ROOT}stripping.sh"      || exit 1

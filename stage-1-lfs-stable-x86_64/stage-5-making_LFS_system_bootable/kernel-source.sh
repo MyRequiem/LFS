@@ -36,11 +36,11 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-# очистим дерево исходников
+# Очистим дерево исходников.
 echo -e "\n# make mrproper..."
 make mrproper || exit 1
 
-# ссылка в /usr/src
+# Ссылка в /usr/src
 #    linux -> linux-${VERSION}
 ln -svf "${ARCH_NAME}-${VERSION}" "${USR_SRC}/linux"
 
@@ -60,5 +60,5 @@ cat << EOF > "${TARGET}"
 EOF
 
 find "${USR_SRC}/${ARCH_NAME}-${VERSION}" | sort >> "${TARGET}"
-# удалим пустые строки
+# Удалим пустые строки.
 sed -i '/^$/d' "${TARGET}"

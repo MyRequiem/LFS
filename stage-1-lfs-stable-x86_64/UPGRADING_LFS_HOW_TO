@@ -6,17 +6,17 @@
 Glibc и базовых утилит. Подчеркнуты критические этапы, такие как двойная
 пересборка binutils, ручная очистка старых файлов и регулярные перезагрузки для
 обеспечения стабильности. Инструкция обеспечивает надежный подход к переходу на
-новые версии LFS
+новые версии LFS.
 
 ###
-# INFO
-#    Обновления LFS выходят раз в полгода, обычно 1 марта и 1 сентября
+# INFO:
+#    Обновления LFS выходят раз в полгода, обычно 1 марта и 1 сентября.
 ###
 
 ###
 # ATTENTION !!!
 #    -------
-#    Перед обновлением нужно удалять пакеты:
+#    Следующие пакеты перед обновлением необходимо удалять:
 #       perl            (скрипт сборки сам удалит)
 #       python3         (скрипт сборки сам удалит)
 #       python3-<...>   (python3 модули)
@@ -29,141 +29,136 @@ Glibc и базовых утилит. Подчеркнуты критическ�
 ###
 
 ###
-# Перед обновлением системы чистим директории:
-#    /var/log/removed_la_files/
-#    /var/log/removed_packages/
-#    /var/log/setup/tmp/preserved/
+# Чистим директории:
+###
+/var/log/removed_la_files/
+/var/log/removed_packages/
+/var/log/setup/tmp/preserved/
 ###
 
-1) Сначала обновим ядро до актуальной версии
-    ./stage-5-making_LFS_system_bootable/
+###
+# Если обновляемся с версий <=13.0, удаляем пакеты, которые перенесены в BLFS.
+###
+perl-xml-parser
+intltool
+###
 
-    -------------
-    Kernel Source
-    -------------
-        # удаляем пакет kernel-source-${CURRENT_KERNEL_VERSION}
-            rm -f  /usr/src/linux
-            rm -rf /usr/src/linux-${CURRENT_KERNEL_VERSION}
-            rm -f  /var/log/packages/kernel-source-${CURRENT_KERNEL_VERSION}
-        # устанавливаем исходники нового ядра
-            ./kernel-source.sh
+###
+# GCC + зависимости (если есть новые версии).
+###
+stage-3-build_basic_system/
+./gmp.sh
+./mpfr.sh
+./mpc.sh
+./gcc.sh
+./check-compiling-and-linking.sh
+###
 
-    --------------
-    Kernel Headers
-    --------------
-        # обновляем заголовки ядра
-            ./kernel-headers.sh ${NEW_KERNEL_VERSION}
+###
+# Linux Kernel
+###
+stage-5-making_LFS_system_bootable/
+./kernel-source.sh
+./kernel-headers.sh ${NEW_KERNEL_VERSION}
+./kernel-generic.sh ${NEW_KERNEL_VERSION}
+./kernel-modules.sh ${NEW_KERNEL_VERSION}
+# Загрузчик GRUB.
+# Сначала обновляем версию LFS и ядра в скрипте set-grub-config.sh
+#    menuentry "GNU/Linux LFS-<lfs_version>    Linux-${NEW_KERNEL_VERSION}" {
+./set-grub-config.sh
+###
 
-        # чистим систему от старых заголовков, не присутствующих в новой версии
-        # ядра на основе анализа разницы файлов
-            /var/log/packages/kernel-headers-{${CURRENT_KERNEL_VERSION},${NEW_KERNEL_VERSION}}
+---------------------
+ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+---------------------
 
-        # удаляем файл /var/log/packages/kernel-headers-${CURRENT_KERNEL_VERSION}
+###
+# Glibc
+#
+# WARNING:
+#    Собираем glibc в чистой консоли linux (TTY, без загруженной сессии X).
+###
+stage-3-build_basic_system/
+# Описание в скрипте glibc.sh, сам скрипт уже адаптирован к обновлениям.
+./glibc.sh
 
-    ------------
-    Linux Kernel
-    ------------
-        # собираем и устанавливаем новое ядро
-            ./kernel-generic.sh ${NEW_KERNEL_VERSION}
+---------------------
+ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+---------------------
 
-        # чистим систему от старого ядра на основе анализа разницы файлов
-            /var/log/packages/kernel-generic-{${CURRENT_KERNEL_VERSION},${NEW_KERNEL_VERSION}}
+# Чистим систему от старого пакета glibc на основе анализа разницы файлов:
+/var/log/packages/glibc-{old_version,new_version}
 
-        # удаляем файл /var/log/packages/kernel-generic-${CURRENT_KERNEL_VERSION}
+# обновим кэш библиотек в системе /etc/ld.so.cache
+$ ldconfig
 
-    --------------
-    Kernel Modules
-    --------------
-        # собираем и устанавливаем модули для нового ядра
-            ./kernel-modules.sh ${NEW_KERNEL_VERSION}
+---------------------
+ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+---------------------
 
-        # удаляем старые модули
-            removepkg /var/log/packages/kernel-modules-${CURRENT_KERNEL_VERSION}
+###
+# Binutils
+#
+# WARNING:
+#    Пакет binutils пересобираем и устанавливаем дважды, и только потом удаляем
+#    библиотеки предыдущей версии. Пересборка дважды гарантирует, что линковщик
+#    корректно связывается с новой версией Glibc и самим собой, исключая
+#    «фантомные» зависимости от старых библиотек.
+./binutils.sh
+./binutils.sh
+# Чистим binutils от предыдущей версии на основе анализа разницы файлов:
+#    /var/log/packages/binutils-{${OLD_VERSION},${NEW_VERSION}}
+# Для проверки целостности Toolchain пересоберем еще раз :))
+$ ldconfig
+./binutils.sh
 
-    --------------
-    Загрузчик GRUB
-    --------------
-        # сначала обновляем версию LFS и ядра в скрипте set-grub-config.sh
-        #    menuentry "GNU/Linux LFS-<lfs_version>        Linux-${NEW_KERNEL_VERSION}" {
-        # затем запускаем:
-        ./set-grub-config.sh
+###
+# Пересоберем GCC с новым glibc и binutils
+./gcc.sh
+# Контрольная проверка Toolchain
+./check-compiling-and-linking.sh
+###
 
+###
+# Пересобираем разделы сборки LFS: stage-{3,4,5}-...
+#
+# WARNING:
+#    С этого момента и до конца обновления НЕ перезагружаем систему !!!
+###
+stage-3-build_basic_system/
+---------------------------
+main-directory-tree.sh  * уже установлено
+syshealth-utils.sh      * если есть новая версия
+glibc.sh                * уже обновлено
+binutils                * уже обновлено
+gcc.sh                  * уже обновлено
 
-    ---------------------
-    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
-    ---------------------
+stage-4-system_configuration/
+-----------------------------
+./lfs-bootscripts.sh  * Если есть более новая версия. После установки
+                        внимательно проверить наличие дубликатов ссылок для
+                        запуска/останова системы в /etc/rc.d/rc*.d/ с помощью
+                        скрипта $ check-rc-duplicates И УДАЛИТЬ ЛИШНЕЕ
+./terminus-font.sh    * если есть более новая версия
 
+###
+# WARNING
+###
+# Проверяем на наличие .new или *.old конфигов в /etc с помощью скрипта:
+#    $ find-new-config
+# Исправляем то, что нужно (*.new и *.old не должны остаться в системе).
 
-2) Обновление Glibc
+stage-5-making_LFS_system_bootable/
+-----------------------------------
+kernel-source.sh          * уже обновлено
+kernel-headers.sh         * уже обновлено
+kernel-generic.sh         * уже обновлено
+kernel-modules.sh         * уже обновлено
+set-grub-config.sh        * конфиг GRUB уже установлен
+creating-regular-user.sh  * обычный пользователь уже существует
 
-    ###
-    # WARNING:
-    #    собираем glibc в чистой консоли linux (TTY, без загруженной сессии X)
-    ###
-
-    stage-3-build_basic_system/
-        # описание в скрипте glibc.sh, сам скрипт уже адаптирован к обновлениям
-        ./glibc.sh
-
-    ---------------------
-    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
-    ---------------------
-
-        # чистим систему от старого пакета glibc на основе анализа разницы
-        # файлов
-            /var/log/packages/glibc-{old_version,new_version}
-
-        # удаляем файл /var/log/packages/glibc-<old_version>
-
-    ---------------------
-    ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
-    ---------------------
-
-    # обновим кэш библиотек в системе /etc/ld.so.cache
-    # ldconfig
-
-
-3) Пересобираем разделы сборки LFS: stage-{3,4,5}-...
-
-    stage-3-build_basic_system/
-        main-directory-tree.sh          * уже установлено
-        syshealth-utils.sh              * уже установлено
-        glibc.sh                        * уже обновлено
-
-        ###
-        # WARNING:
-        #    пакет binutils пересобираем и устанавливаем дважды, и только потом
-        #    удаляем библиотеки предыдущей версии. Пересборка дважды
-        #    гарантирует, что линковщик корректно связывается с новой версией
-        #    Glibc и самим собой, исключая «фантомные» зависимости от старых
-        #    библиотек
-        ./binutils.sh
-        ./binutils.sh
-        # чистим binutils от предыдущей версии на основе анализа разницы файлов
-        #    /var/log/packages/binutils-{${OLD_VERSION},${NEW_VERSION}}
-        # для проверки целостности Toolchain пересоберем еще раз :))
-        ./binutils.sh
-
-    stage-4-system_configuration/
-        ./lfs-bootscripts.sh            * после установки внимательно проверить
-                                            наличие дубликатов ссылок для
-                                            запуска/останова системы в
-                                            /etc/rc.d/rc* И УДАЛИТЬ ЛИШНЕЕ
-        ./terminus-font.sh              * если есть более новая версия
-
-        ###
-        # WARNING
-        ###
-        # Проверяем на наличие .new или *.old конфигов в /etc, исправляем то,
-        # что нужно (*.new и *.old не должны остаться в системе):
-        $ find /etc -type f -name "*.new" ; find /etc -type f -name "*.old"
-
-    stage-5-making_LFS_system_bootable/
-        kernel-source.sh                * уже обновлено
-        kernel-headers.sh               * уже обновлено
-        kernel-generic.sh               * уже обновлено
-        kernel-modules.sh               * уже обновлено
-        set-grub-config.sh              * уже обновлено
-        creating-regular-user.sh        * обычный пользователь уже существует
+---------------------
+ПЕРЕЗАГРУЖАЕМ СИСТЕМУ
+---------------------
 
 # vim:ft=conf

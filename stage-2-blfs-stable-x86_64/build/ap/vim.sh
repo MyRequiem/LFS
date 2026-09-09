@@ -26,9 +26,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-9.*")"
 if [ -n "${INSTALLED}" ]; then
     PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo ""
+    echo "============================================================"
     echo "${PKGNAME_VERSION} already installed."
     echo "Before building ${PRGNAME} package, you need to remove it."
     echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    echo "============================================================"
+    echo ""
     sleep 10
     yes | removepkg --backup "${INSTALLED}"
 fi
@@ -142,30 +146,41 @@ rm -f "${TMP_DIR}/usr/share/applications/vim.desktop"
 
 # конфигурация по умолчанию
 cat << EOF > "${TMP_DIR}/etc/vimrc"
-" ensure defaults are set before customizing settings,
-" not after source \$VIMRUNTIME/defaults.vim
-let skip_defaults_vim = 1
+vim9script
 
-language en_US
+# gVim compatibility fix: prevent double-sourcing via the /etc/gvimrc symlink.
+if has_key(g:, 'skip_defaults_vim')
+    finish
+endif
 
-set nocompatible
+# Ensure defaults are set before customizing settings, not after source
+g:skip_defaults_vim = 1
+
+language messages en_US.UTF-8
+
 syntax on
-filetype on
-filetype plugin on
 filetype plugin indent on
-set background=dark
-set number
-set backspace=indent,eol,start
-set nobackup
-set noswapfile
-set noundofile
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set shiftround
-set expandtab
-set helplang=en
+
+# Visual & Behavior Comfort:
+&background = 'dark'
+&number = true
+&laststatus = 2
+
+# Search Settings
+&incsearch = true
+&hlsearch = true
+
+# Text Editing & Tabs
+&tabstop = 4
+&shiftwidth = 4
+&softtabstop = 4
+&shiftround = true
+&expandtab = true
+
+# Disable Swap, Backup and Undo Files
+&backup = false
+&swapfile = false
+&undofile = false
 EOF
 
 source "${ROOT}/stripping.sh"      || exit 1

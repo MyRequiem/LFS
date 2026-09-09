@@ -21,6 +21,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-security_fixes-1.patch" || exit 1
+
 ./configure                \
     --prefix=/usr          \
     --disable-docker-tests \

@@ -74,12 +74,13 @@ cd build || exit 1
 ../configure                  \
     --target="${LFS_TGT}"     \
     --prefix="${LFS}/tools"   \
-    --with-glibc-version=2.43 \
+    --with-glibc-version=2.44 \
     --with-sysroot="${LFS}"   \
     --with-newlib             \
     --without-headers         \
     --enable-default-pie      \
     --enable-default-ssp      \
+    --disable-fixincludes     \
     --disable-nls             \
     --disable-shared          \
     --disable-multilib        \
@@ -103,6 +104,5 @@ make install
 # файлом и не включает расширенные функции системного заголовка. Такая ситуация
 # подходит для сборки glibc, но полный внутренний заголовок понадобится позже,
 # поэтому создадим полную версию внутреннего заголовка:
-cd ..
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-    "$(dirname "$("${LFS_TGT}"-gcc -print-libgcc-file-name)")"/include/limits.h
+cat ../gcc/{limitx,glimits,limity}.h  > \
+    "$("${LFS_TGT}"-gcc -print-file-name=include)/limits.h"

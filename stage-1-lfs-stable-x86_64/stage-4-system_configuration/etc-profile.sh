@@ -3,7 +3,7 @@
 PRGNAME="etc-profile"
 
 ### /etc/profile (system-wide defaults)
-# Общесистемные настройки оболочки
+# Общесистемные настройки оболочки:
 #    /etc/dircolors
 #    /etc/profile
 #    /etc/profile.d/dircolors.sh

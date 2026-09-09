@@ -16,39 +16,36 @@ if [ -n "${INSTALLED}" ]; then
     INSTALLED_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
     echo "${INSTALLED_VERSION} already installed. Before building perl "
     echo "package, you need to remove it."
-    removepkg --no-color "${INSTALLED}"
+    removepkg --backup "${INSTALLED}"
 fi
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# данная версия Perl создает модули Compress::Raw::Zlib и Compress::Raw::BZip2
+# Данная версия Perl создает модули Compress::Raw::Zlib и Compress::Raw::BZip2
 # По умолчанию Perl будет использовать внутреннюю копию этих модулей для
 # сборки. Попросим сборку Perl использовать библиотеки, которые уже установлены
-# в системе
+# в системе.
 export BUILD_ZLIB=False
 export BUILD_BZIP2=0
 
 # -des - это сочетание трех параметров:
-#     -d    - использовать значения по умолчанию для всех элементов
-#     -e    - обеспечивает выполнение всех заданий
-#     -s    - заставляет "замолчать" несущественный вывод
-# путь для установки модулей Perl
-#    -Dvendorprefix=/usr
-# поскольку Groff еще не установлен, Configure считает, что мы не хотим
-# устанавливать man-страницы. Отменим его решение и укажем явно пути для
-# где Perl ищет установленные модули
-#    -Dsitelib,-Dprivlib,-Darchlib, ...
-# man-страниц
+#     -d    - Использовать значения по умолчанию для всех элементов.
+#     -e    - Обеспечивает выполнение всех заданий.
+#     -s    - Заставляет "замолчать" несущественный вывод.
+# Пути для модулей.
+#    -D privlib, -D archlib, -D sitelib, ...
+# Поскольку Groff еще не установлен, Configure считает, что мы не хотим
+# устанавливать man-страницы. Следующие парамтры переопределяют его поведение.
 #    -D man1dir=/usr/share/man/man1
 #    -D man3dir=/usr/share/man/man3
-# используем 'less' вместо 'more'
+# Используем 'less' вместо 'more'.
 #    -D pager="/usr/bin/less -isR"
-# создадим общий libperl, необходимый для некоторых модулей perl
+# Создадим общий libperl, необходимый для некоторых модулей Perl.
 #    -D useshrplib
-# сборка Perl с поддержкой потоков
-#    -Dusethreads
+# Сборка Perl с поддержкой потоков.
+#    -D usethreads
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1,2)"
 sh Configure                                              \
     -des                                                  \
@@ -72,7 +69,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+
@@ -92,7 +89,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # be practical (easy to use, efficient, complete) rather than beautiful (tiny,
 # elegant, minimal).
 #
-# Home page: https://www.perl.org/
+# Home page: https://www.${PRGNAME}.org/
 # Download:  https://www.cpan.org/src/5.0/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF

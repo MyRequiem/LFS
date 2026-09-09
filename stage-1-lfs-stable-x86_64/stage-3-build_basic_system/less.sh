@@ -38,7 +38,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # faster than text editors like vi.
 #
 # Home page: https://www.greenwoodsoftware.com/${PRGNAME}/
-# Download:  https://www.greenwoodsoftware.com/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

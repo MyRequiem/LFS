@@ -13,15 +13,16 @@ PRGNAME="bash"
 source "$(pwd)/check_environment.sh"                  || exit 1
 source "$(pwd)/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# опция отключает использование функции выделения памяти (malloc) Bash,
+# Опция отключает использование функции выделения памяти (malloc) Bash,
 # которая, как известно, вызывает ошибки сегментации. Теперь Bash будет
-# использовать функции malloc из Glibc, которые более стабильны
+# использовать функции malloc из Glibc, которые более стабильны.
 #    --without-bash-malloc
 ./configure                              \
     --prefix=/usr                        \
     --build="$(sh support/config.guess)" \
     --host="${LFS_TGT}"                  \
-    --without-bash-malloc || exit 1
+    --without-bash-malloc                \
+    --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || make -j1 || exit 1
 make DESTDIR="${LFS}" install

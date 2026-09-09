@@ -11,12 +11,26 @@ ROOT="/"
 source "${ROOT}check_environment.sh"                  || exit 1
 source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
+INSTALLED="$(find /var/log/packages/ -type f -name "${PRGNAME}-9.*")"
+if [ -n "${INSTALLED}" ]; then
+    PKGNAME_VERSION="$(echo "${INSTALLED}" | rev | cut -d / -f 1 | rev)"
+    echo ""
+    echo "============================================================"
+    echo "${PKGNAME_VERSION} already installed."
+    echo "Before building ${PRGNAME} package, you need to remove it."
+    echo "Wait 10 seconds before deleting or press <Ctrl-C> to exit."
+    echo "============================================================"
+    echo ""
+    sleep 10
+    yes | removepkg --backup "${INSTALLED}"
+fi
+
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 DOCS="/usr/share/doc"
 mkdir -pv "${TMP_DIR}"{/etc,"${DOCS}"}
 
-# изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
+# Изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
 echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 
@@ -25,30 +39,30 @@ echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 
 make || make -j1 || exit 1
 
-# тесты будем запускать от пользователя tester
+# Тесты будем запускать от пользователя tester.
 # chown -Rv tester .
 # sed '/test_plugin_glvs/d' -i src/testdir/Make_all.mak
 #
-# набор тестов выводит много двоичных данных в stdout, что может привести к
+# Набор тестов выводит много двоичных данных в stdout, что может привести к
 # проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
-# файл
+# файл.
 # su tester -c "TERM=xterm-256color LANG=en_US.UTF-8 make -j1 test" \
 #    &> vim-test.log
 # chown -Rv root:root .
 
 make install DESTDIR="${TMP_DIR}"
 
-# ссылка в /usr/bin
+# Ссылка в /usr/bin
 #    vi -> vim
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
-for MAN_PATH in  "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
+for MAN_PATH in "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
     ln -sv vim.1 "$(dirname "${MAN_PATH}")/vi.1"
 done
 
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 
-# по умолчанию документация устанавливается в /usr/share/vim/, поэтому
+# По умолчанию документация устанавливается в /usr/share/vim/, поэтому
 # установим ссылку в /usr/share/doc/
 #    vim-${VERSION} -> ../vim/vimXX/doc
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
@@ -56,7 +70,7 @@ MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
 ln -snvf "../vim/vim${MAJ_VER}${MIN_VER}/doc" \
     "${TMP_DIR}/usr/share/doc/${PRGNAME}-${VERSION}"
 
-# конфигурация по умолчанию
+# Конфигурация по умолчанию.
 VIMRC="/etc/vimrc"
 cat << EOF > "${TMP_DIR}${VIMRC}"
 " Begin ${VIMRC}
