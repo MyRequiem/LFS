@@ -4,10 +4,10 @@ PRGNAME="etc-lfs-release"
 LFS_VERSION="13.1"
 
 ### /etc/lfs-release (system info)
-# /etc/lfs-release - содержит версию LFS системы
-# /etc/lsb-release - информация о системе
-# /etc/os-release  - информация о системе, которая используется systemd и
-#                       некоторыми графическими средами рабочего стола
+# /etc/lfs-release - Содержит версию LFS системы.
+# /etc/lsb-release - Информация о системе.
+# /etc/os-release  - Информация о системе, которая используется systemd и
+#                    некоторыми графическими средами рабочего стола.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1

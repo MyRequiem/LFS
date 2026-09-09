@@ -10,7 +10,7 @@ TMP_PART="/dev/sda7"
 
 ### /etc/fstab (partition mount settings)
 # /etc/fstab - файл в котором хранятся настройки монтирования различных
-# разделов, включая корень и swap
+# разделов, включая корень и swap.
 
 ROOT="/"
 source "${ROOT}check_environment.sh"      || exit 1
