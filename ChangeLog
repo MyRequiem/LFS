@@ -1,12 +1,102 @@
++==========================+
+[09.09.2026]
+* LFS: Released version 13.1.
+* LFS: This release features Linux kernel 7.1.12.
+* LFS: Toolchain components include GCC 16.2.0, Glibc 2.44, and Binutils 2.47.
++==========================+
+[06.09.2026]
+* LFS: Upgraded the util-linux package from 2.41.3 to 2.42.2.
+* LFS: Upgraded the procps-ng package from 4.0.6 to 4.0.7.
+* LFS: Upgraded the vim package from 9.2.1021 to 9.2.1036.
+* LFS: Upgraded the kbd package from 2.9.0 to 2.10.0.
+* LFS: Upgraded the iproute2 package from 6.19.0 to 7.1.0.
+* LFS: Upgraded the groff package from 1.24.0 to 1.24.1.
+* LFS: Upgraded the findutils package from 4.10.0 to 4.11.0.
+* LFS: Upgraded the meson package from 1.10.1 to 1.12.0.
+* LFS: Upgraded the python3-setuptools package from 82.0.1 to 84.0.0.
+* LFS: Upgraded the python3-wheel package from 0.46.3 to 0.48.0.
+* LFS: Upgraded the python3-packaging package from 26.0 to 26.3.
+* LFS: Upgraded the python3-flit-core package from 3.12.0 to 4.0.2.
++--------------------------+
+[05.09.2026]
+* BLFS: Upgraded the libevent package from 2.1.12 to 2.1.13.
+* BLFS: Upgraded the pinentry package from 1.3.2 to 1.3.3.
+* BLFS: Upgraded the gnupg package from 2.5.18 to 2.5.21.
+* BLFS: Upgraded the openldap package from 2.6.12 to 2.7.0.
+* BLFS: Upgraded the libarchive package from 3.8.6 to 3.8.9.
+* LFS: Upgraded the syshealth-utils package to 1.0.3.
+* LFS: Upgraded the python3 package from 3.14.4 to 3.14.7.
+* LFS: Added the mpdecimal package (v4.0.1).
+* LFS: Upgraded the sqlite package from 3.51.3 to 3.53.4.
+* LFS: Upgraded the libffi package from 3.5.2 to 3.8.0.
+* LFS: Upgraded the libelf package from 0.194 to 0.195.
++--------------------------+
+[04.09.2026]
+* BLFS: Upgraded the wpa-supplicant package from 2.11 to 2.12.
+* BLFS: Upgraded the openssh package from 10.2p1 to 10.5p1.
+* LFS: Upgraded the coreutils package from 9.10 to 9.11.
+* LFS: Upgraded the openssl package from 3.6.1 to 4.0.1.
+* LFS: Upgraded the autoconf package from 2.72 to 2.73.
+* BLFS: Upgraded the git package from 2.53.0 to 2.55.0.
+* LFS: Upgraded the vim package from 9.2.0782 to 9.2.1021.
+* BLFS: Removed the perl-xml-parser package.
+* BLFS: Removed the perl-uri package.
+* BLFS: Removed the perl-types-serialiser package.
+* BLFS: Removed the perl-sgmlspm package.
+* BLFS: Removed the perl-net-ssleay package.
+* BLFS: Removed the perl-mime-base32 package.
+* BLFS: Removed the perl-json-xs package.
+* BLFS: Removed the perl-io-socket-ssl package.
+* BLFS: Removed the perl-file-fcntllock package.
+* BLFS: Removed the perl-common-sense package.
+* BLFS: Removed the perl-canary-stability package.
+* BLFS: Removed the perl-business-isbn-data package.
+* BLFS: Removed the perl-business-isbn package.
+* BLFS: Removed the perl-anyevent-i3 package.
+* BLFS: Removed the perl-anyevent package.
+* BLFS: Removed the imagemagick package.
+* LFS: Upgraded the perl package from 5.42.1 to 5.44.0.
+* LFS: Upgraded the less package from 692 to 704.
+* LFS: Upgraded the inetutils package from 2.7 to 2.8.
+* LFS: Upgraded the expat package from 2.7.4 to 2.8.3.
+* LFS: Upgraded the libtool package from 2.5.4 to 2.6.2.
+* LFS: Upgraded the sed package from 4.9 to 4.10.
+* LFS: Upgraded the gawk package from 5.4.0 to 5.4.1.
+* LFS: Upgraded the shadow package from 4.19.4 to 4.20.2.
+* LFS: Upgraded the libcap package from 2.77 to 2.78.
+* LFS: Upgraded the acl package from 2.3.2 to 2.4.0.
+* LFS: Upgraded the attr package from 2.5.2 to 2.6.0.
++--------------------------+
+[03.09.2026]
+* LFS: Upgraded the pkgconf package from 2.5.1 to 3.0.5.
+* LFS: Upgraded the tcl package from 8.6.17 to 8.6.18.
+* LFS: Upgraded the file package from 5.47 to 5.48.
+* LFS: Upgraded the xz package from 5.8.2 to 5.8.3.
+* LFS: Upgraded the iana-etc package from 20260306 to 20260805.
+* LFS: Upgraded the man-pages package from 6.17 to 6.18.
+* LFS: Upgraded the binutils package from 2.46 to 2.47.
+* LFS: Upgraded the glibc package from 2.43 to 2.44.
+* LFS: Upgraded the kernel-modules package from 6.18.16 to 7.1.12.
+* LFS: Upgraded the kernel-generic package from 6.18.16 to 7.1.12.
+* LFS: Upgraded the kernel-headers package from 6.18.16 to 7.1.12.
++--------------------------+
+[31.08.2026]
+* LFS: Upgraded the kernel-source package from 6.18.16 to 7.1.12.
+* LFS: Upgraded the gcc package from 15.2.0 to 16.2.0.
+* LFS: Upgraded the mpc package from 1.3.1 to 1.4.1.
++--------------------------+
+[30.08.2026]
+* LFS: Removed the perl-xml-parser package.
+* LFS: Removed the intltool package.
 +--------------------------+
 [06.08.2026]
 * LFS: Added syshealth-utils-menu to the syshealth-utils package.
 +--------------------------+
 [27.07.2026]
-* BLFS: Added the brave-origin package (Official Minimalist chromium-based Brave Browser)
+* BLFS: Added the brave-origin package (Official Minimalist chromium-based Brave Browser).
 +--------------------------+
 [15.07.2026]
-* BLFS: Upgraded Vim to version 9.2.0782.
+* BLFS: Upgraded the vim package to version 9.2.0782.
 * BLFS: Updated vim.sh build script to modify default settings in /etc/vimrc.
 * BLFS: Added the python3-mutagen-1.48.1 package (Python module and tools for audio metadata).
 +--------------------------+
