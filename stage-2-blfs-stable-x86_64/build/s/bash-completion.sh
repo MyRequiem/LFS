@@ -4,7 +4,7 @@ PRGNAME="bash-completion"
 
 ### bash-completion (programmable completion for the bash shell)
 # Умное дополнение команд в терминале (автозавершение), которое позволяет
-# автоматически дописывать пути и параметры при нажатии клавиши <TAB>
+# автоматически дописывать пути и параметры при нажатии клавиши <TAB>.
 
 # Required:    no
 # Recommended: no
@@ -18,15 +18,14 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 autoreconf -vif || exit 1
-./configure           \
-  --prefix=/usr       \
-  --sysconfdir=/etc   \
-  --mandir=/usr/man   \
-  --infodir=/usr/info \
-  --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
+./configure     \
+  --prefix=/usr \
+  --sysconfdir=/etc || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 

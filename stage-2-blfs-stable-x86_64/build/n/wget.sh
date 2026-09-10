@@ -23,7 +23,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# wget бует использовать OpenSSL вместо GnuTLS
+# Сделаем пакет совместимым с OpenSSL 4.x.x.
+NEW_LINE='#if !defined OPENSSL_NO_SSL3_METHOD '
+NEW_LINE+='&& OPENSSL_VERSION_NUMBER < 0x40000000L'
+sed -i "/SSL3/c ${NEW_LINE}" src/openssl.c || exit 1
+
+# Wget бует использовать OpenSSL вместо GnuTLS.
 #    --with-ssl=openssl
 ./configure            \
     --prefix=/usr      \
@@ -34,7 +39,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -50,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # off.
 #
 # Home page: https://www.gnu.org/software/${PRGNAME}/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -7,7 +7,7 @@ ARCH_NAME="LSB-Tools"
 # Инструменты для обеспечения соответствия системы стандарту LSB, что помогает
 # сторонним программам корректно работать в Linux.
 #
-# Выводит определенную информацию о LSB (Linux Standards Base) и дистрибутиве
+# Выводит определенную информацию о LSB (Linux Standards Base) и дистрибутиве.
 #    /usr/bin/lsb_release
 #
 # Например:
@@ -32,19 +32,18 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -p "${TMP_DIR}"
 
-# по DESTDIR пакет устанавливает директорию ${DESTDIR}/usr/lib/lsb/, но в LFS
+# По DESTDIR пакет устанавливает директорию ${DESTDIR}/usr/lib/lsb/, но в LFS
 # системе /usr/lib/lsb это ссылка на /usr/lib/services/
 #    /usr/lib/lsb -> services/
-# и при копировании $TMP_DIR в корень системы произойдет ошибка, поэтому
-# изменим путь установки:
+# При копировании $TMP_DIR в корень системы произойдет ошибка, поэтому изменим
+# путь установки:
 sed "s|/lsb/|/services/|" -i Makefile || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-# удалим ссылку:
+# Удалим ссылку которую не нужно устанавливать:
 #    /usr/sbin/lsbinstall -> /usr/lib/services/lsbinstall
-# которую не нужно устанавливать
 rm -f "${TMP_DIR}/usr/sbin/lsbinstall"
 
 /bin/cp -vpR "${TMP_DIR}"/* /

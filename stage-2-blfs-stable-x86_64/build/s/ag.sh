@@ -5,7 +5,7 @@ ARCH_NAME="the_silver_searcher"
 
 ### The Silver Searcher (grep-like text search, but faster)
 # Очень быстрая утилита для поиска нужного текста или строк внутри файлов по
-# заданным ключевым словам. Аналог утилиты grep но с акцентом на скорость.
+# заданным ключевым словам. Аналог утилиты grep, но с акцентом на скорость.
 
 # Required:    pcre
 # Recommended: no
@@ -33,10 +33,11 @@ CXXFLAGS="${SLKCFLAGS}" \
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

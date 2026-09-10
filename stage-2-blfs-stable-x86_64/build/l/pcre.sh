@@ -4,11 +4,11 @@ PRGNAME="pcre"
 
 ### PCRE (Perl-compatible regular expression library)
 # Библиотека для поиска и обработки текста с помощью мощных регулярных
-# выражений в стиле языка Perl
+# выражений в стиле языка Perl.
 
 # Required:    no
 # Recommended: no
-# Optional:    valgrind
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -17,20 +17,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# включает поддержку Unicode и код для обработки UTF-8/16/32 символов
+# Включает поддержку Unicode и код для обработки UTF-8/16/32 символов.
 #    --enable-unicode-properties
-# включает поддержку 16-битных символов
+# Включает поддержку 16-битных символов.
 #    --enable-pcre16
-# включает поддержку 32-битных символов
+# Включает поддержку 32-битных символов.
 #    --enable-pcre32
-# добавляет поддержку pcregrep для чтения сжатых файлов .gz
+# Добавляет поддержку pcregrep для чтения сжатых файлов .gz
 #    --enable-pcregrep-libz
-# добавляет поддержку pcregrep для чтения сжатых файлов .bz2
+# Добавляет поддержку pcregrep для чтения сжатых файлов .bz2
 #    --enable-pcregrep-libbz2
-# добавляет функции редактирования строк и истории в программу pcretest
+# Добавляет функции редактирования строк и истории в программу pcretest.
 #    --enable-pcretest-libreadline
-# включает компиляцию "Just-in-time", что может значительно ускорить
-# сопоставление с паттерном
+# Включает компиляцию "Just-in-time", что может значительно ускорить
+# сопоставление с паттерном.
 #    --enable-jit
 ./configure                       \
     --prefix=/usr                 \
@@ -49,10 +49,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

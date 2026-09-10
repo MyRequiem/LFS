@@ -21,24 +21,16 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 CRON_WEEKLY="/etc/cron.weekly"
 mkdir -pv "${TMP_DIR}${CRON_WEEKLY}"
 
-# удалим строки с 20 и до конца файла
+# Удалим строки с 20 и до конца файла.
 sed '20,$ d' -i trust/trust-extract-compat || exit 1
 
-# добавим в конец файла
+# Добавим в конец файла:
 cat >> trust/trust-extract-compat << "EOF"
 # Copy existing anchor modifications to /etc/ssl/local
 /usr/libexec/make-ca/copy-trust-modifications
 
 # Update trust stores
 /usr/sbin/make-ca -r
-
-# Download ca-certificates needed for cURL
-echo -ne "\nDownload https://curl.haxx.se/ca/cacert.pem ... "
-wget -q -P /etc/ssl/certs https://curl.haxx.se/ca/cacert.pem || {
-    echo "Error download cacert.pem!"
-    exit 1
-}
-echo "Ok"
 EOF
 
 mkdir p11-build
@@ -55,19 +47,19 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
 
-# ссылка
+# Ссылка:
 #    /usr/bin/update-ca-certificates -> ../libexec/p11-kit/trust-extract-compat
 ln -sfv "../libexec/${PRGNAME}/trust-extract-compat" \
     "${TMP_DIR}/usr/bin/update-ca-certificates"
 
-# чтобы сделать систему прозрачной для центров сертификации при использовании
+# Чтобы сделать систему прозрачной для центров сертификации при использовании
 # приложений поддерживающих NSS, модуль /usr/lib/pkcs11/p11-kit-trust.so можно
-# использовать как замену для /usr/lib/libnssckbi.so из пакета nss
+# использовать как замену для /usr/lib/libnssckbi.so из пакета nss.
 #
-# создадим ссылку /usr/lib/libnssckbi.so -> pkcs11/p11-kit-trust.so
+# Создадим ссылку /usr/lib/libnssckbi.so -> pkcs11/p11-kit-trust.so
 ln -svf pkcs11/${PRGNAME}-trust.so "${TMP_DIR}/usr/lib/libnssckbi.so"
 
-# будем периодически обновлять сертификаты (раз в неделю), настроим через fcron
+# Будем периодически обновлять сертификаты (раз в неделю), настроим через fcron
 UPDATE_CERTIFICATES="${CRON_WEEKLY}/update-ca-certificates.sh"
 cat << EOF > "${TMP_DIR}${UPDATE_CERTIFICATES}"
 #!/bin/bash

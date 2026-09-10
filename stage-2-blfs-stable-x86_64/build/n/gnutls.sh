@@ -27,36 +27,15 @@ PRGNAME="gnutls"
 #              trousers                     (поддержка Trusted Platform Module) https://sourceforge.net/projects/trousers/files/
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${PRGNAME}-${VERSION}"*.tar.?z* || exit 1
-
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2,3)"
-cd "${PRGNAME}-${MAJ_VERSION}" || exit 1
-
-chown -R root:root .
-find -L . \
-    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \+ -o \
-    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -p "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}"
 
-# указываем GnuTLS использовать хранилище доверия PKCS#11 по умолчанию
+# Указываем GnuTLS использовать хранилище доверия PKCS#11 по умолчанию.
 #    --with-default-trust-store-pkcs11="pkcs11:"
-# включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
+# Включаем совместимость с OpenSSL и собираем библиотеку libgnutls-openssl.so
 #    --enable-openssl-compatibility
 ./configure                                         \
     --prefix=/usr                                   \
@@ -68,7 +47,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

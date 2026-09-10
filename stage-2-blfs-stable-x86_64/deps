@@ -41,7 +41,6 @@ bibtex
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
 blender                                 imagemagick
-blfs-bootscripts
 bluez                                   pulseaudio, gst-plugins-bad, qt6, python3, qemu, pipewire
 boost                                   highlight, libsigc++2, libsigc++3, cairomm114, cairomm118, swig, poppler
 bpf-utils                               iptables
@@ -111,7 +110,8 @@ docbook-dtd3                            docbook-dsssl, docbook-utils
 docbook-dtd4                            docbook-dsssl
 docbook-utils                           libsigc++2, libsigc++3, fontconfig, flac, fcron, tunctl
 docbook-xml                             linux-pam, libxslt, glib, xmlto, itstool, libsigc++2, libsigc++3, elogind, polkit, libdrm, wayland, xdg-user-dirs, libsecret, i3
-docbook-xsl                             linux-pam, libxslt, glib, xmlto, elogind, polkit, libdrm, wayland, gtk+3, xdg-user-dirs, upower, libsecret, appstream
+docbook-xsl                             libxslt, glib, xmlto, elogind, polkit, libdrm, wayland, gtk+3, xdg-user-dirs, upower, libsecret, appstream
+docbook-xsl-ns                          linux-pam
 docbook2x                               git
 docker                                  libssh2, libfyaml
 doctest                                 fast-float
@@ -226,7 +226,7 @@ gstreamer                               gst-plugins-base, spice, spice-gtk, pipe
 gtest                                   protobuf, android-tools
 gtk+2                                   cairo, alsa-tools
 gtk+3                                   pixman, adwaita-icon-theme, gstreamer, pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, libinput, qt5-components, qt6, gcr3, alsa-tools, gtkmm3, vim, gsimplecal, mirage, vte3, qemu, spice-gtk, gtk-vnc, gtksourceview4, poppler, gimp, libportal, libqtxdg
-gtk-doc                                 libtasn1, p11-kit, gnutls, libidn, libidn2, libpsl, glib, harfbuzz, dbus-glib, polkit, cairo, gtk+3, libgudev, upower, libxklavier, libxmlb, gexiv2, gtksourceview4, poppler, gegl
+gtk-doc                                 libtasn1, p11-kit, libidn, libidn2, gnutls, libpsl, glib, harfbuzz, dbus-glib, polkit, cairo, gtk+3, libgudev, upower, libxklavier, libxmlb, gexiv2, gtksourceview4, poppler, gegl
 gtk-vnc                                 virt-manager
 gtk4                                    python3-pygobject3, adwaita-icon-theme, gcr4, alsa-tools, gtkmm4, libadwaita, zenity, vte3, libportal
 gtkmm3
@@ -365,7 +365,7 @@ libgudev                                gst-plugins-base, upower, gimp
 libgxps                                 imagemagick
 libheif                                 imlib2, gimp, imagemagick
 libid3tag                               imlib2
-libidn                                  libpsl, gnutls, whois, vlc, exim
+libidn                                  gnutls, libpsl, whois, vlc, exim
 libidn2                                 gnutls, libpsl, wget, curl, whois
 libiec61883                             gst-plugins-good, ffmpeg
 libiff                                  gimp
@@ -913,7 +913,7 @@ utfcpp                                  taglib
 util-macros                             xorgproto, xbitmaps
 v4l-utils                               gst-plugins-good, ffmpeg, vlc, gegl, pipewire
 vala                                    librsvg, libsoup2, libsoup3, libxklavier, libsecret, gcr3, gcr4, libadwaita, gexiv2, vte3, spice-gtk, gtk-vnc, libvirt-glib, gtksourceview4, gegl, libportal
-valgrind                                libtasn1, pcre, nettle, libseccomp, gnutls, libidn, libpsl, wget, curl, libksba, git, lvm2, gcc, llvm, dbus, elogind, ruby, cairo, libdrm, mesa, gstreamer, flac, pulseaudio, mit-kerberos-v5, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libevdev, libinput, libsecret, gcr3, gcr4, xterm, python3, gtksourceview4, pipewire
+valgrind                                libtasn1, nettle, libidn, libseccomp, gnutls, libpsl, wget, curl, libksba, git, lvm2, gcc, llvm, dbus, elogind, ruby, cairo, libdrm, mesa, gstreamer, flac, pulseaudio, mit-kerberos-v5, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, libevdev, libinput, libsecret, gcr3, gcr4, xterm, python3, gtksourceview4, pipewire
 vcdimager                               vlc
 vde2                                    qemu
 vdo                                     lvm2

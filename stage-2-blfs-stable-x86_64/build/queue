@@ -1,10 +1,13 @@
 # ================================== PART 1 ====================================
 a/blfs-bootscripts.sh
+chore(blfs): update PART 1 packages from blfs-bootscripts to wget
 s/lsb-tools.sh
 # === linux-pam ===
 a/cracklib.sh
 a/linux-pam.sh
 a/shadow.sh
+# Пакет libpwquality перед обновлением/переустановкой удалить.
+#    # removepkg --backup /var/log/packages/libpwquality-<version>
 l/libpwquality.sh
 # =================
 s/bash-completion.sh
@@ -15,16 +18,18 @@ n/p11-kit.sh
 n/make-ca.sh
 l/pcre.sh
 s/ag.sh
+# Пакет libunistring перед переустановкой/обновлением НЕ удалять.
 l/libunistring.sh
 n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
-# python3 модули удаляем из системы перед обновлением
+# python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
+# Пакет libpsl перед переустановкой/обновлением НЕ удалять.
 l/libpsl.sh
 n/wget.sh
 ap/sysstat.sh
