@@ -13,6 +13,11 @@ PRGNAME="dhcpcd"
 #              chronyd   (https://chrony.tuxfamily.org/)
 #              ypbind    (https://github.com/thkukuk/ypbind-mt/)
 
+### NOTE:
+# После переустановки пакета нужно перезапустить интерфейс eth0 или wlan0 (в
+# зависимости от того, как настроен доступ в интернет):
+#    $ ifdown wlan0 && ifup wlan0
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -22,17 +27,17 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 VAR_LIB_DHCPCD="/var/lib/dhcpcd"
 mkdir -pv "${TMP_DIR}${VAR_LIB_DHCPCD}"
 
-# директория /var/lib/dhcpcd должна присутствовать в системе
+# Директория /var/lib/dhcpcd должна присутствовать в системе.
 if ! [ -d "${VAR_LIB_DHCPCD}" ]; then
     install -v -m700 -d      "${VAR_LIB_DHCPCD}"
     chown   -v dhcpcd:dhcpcd "${VAR_LIB_DHCPCD}"
 fi
 
-# добавим группу dhcpcd, если не существует
+# Добавим группу dhcpcd, если не существует.
 ! grep -qE "^dhcpcd:" /etc/group  && \
     groupadd -g 52 dhcpcd
 
-# добавим пользователя dhcpcd, если не существует
+# Добавим пользователя dhcpcd, если не существует.
 ! grep -qE "^dhcpcd:" /etc/passwd && \
     useradd -c 'dhcpcd PrivSep'      \
             -d ${VAR_LIB_DHCPCD}     \
@@ -40,7 +45,7 @@ fi
             -s /bin/false            \
             -u 52 dhcpcd
 
-# по умолчанию /var/db не соответствует FHS
+# Соответствие FHS (по умолчанию /var/db не соответствует).
 #    --dbdir=/var/lib/dhcpcd
 ./configure                      \
     --prefix=/usr                \
@@ -54,17 +59,17 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# install network service script: /usr/lib/services/dhcpcd
+# Установим скрипт автозапуска сервиса /usr/lib/services/dhcpcd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
-    # по умолчанию устанавливается в /lib/services/, нам нужно в
+    # По умолчанию устанавливается в /lib/services/, нам нужно в
     # /usr/lib/services/
     make install-service-dhcpcd DESTDIR="${TMP_DIR}/usr"
 )
 
-# файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0
+# Файл конфигурации запуска Ethernet интерфейса /etc/sysconfig/ifconfig.eth0
 # устанавливается в LFS вместе с пакетом network-configuration, установим как
 # .new файл для dhcp
 IFCONFIG_ETH0="/etc/sysconfig/ifconfig.eth0"
@@ -107,6 +112,7 @@ killall dhcpcd &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${DHCPCD_CONF}"

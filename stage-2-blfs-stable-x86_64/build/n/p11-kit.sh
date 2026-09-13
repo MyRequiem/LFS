@@ -45,7 +45,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # Ссылка:
 #    /usr/bin/update-ca-certificates -> ../libexec/p11-kit/trust-extract-compat

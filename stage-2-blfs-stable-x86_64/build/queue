@@ -1,6 +1,5 @@
 # ================================== PART 1 ====================================
 a/blfs-bootscripts.sh
-chore(blfs): update PART 1 packages from blfs-bootscripts to wget
 s/lsb-tools.sh
 # === linux-pam ===
 a/cracklib.sh
@@ -24,7 +23,7 @@ n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
-# python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-cython.sh
 l/libseccomp.sh
@@ -52,12 +51,10 @@ l/libnl.sh
 ap/htop.sh
 n/iw.sh
 n/wpa-supplicant.sh
-# если libevent уже установлен (обновляем систему), то собирать в чистой
-# консоли (TTY) при НЕ запущенном tmux
+# Пакет libevent собирать в чистой консоли (TTY) БЕЗ запущенного tmux.
 l/libevent.sh
 d/yasm.sh
-# если tmux уже установлен (обновляем систему) и запущен, выгрузить его из
-# памяти при переустановке
+# Пакет tmux пересобирать/обновлять БЕЗ запущенного tmux.
 ap/tmux.sh
 l/libxml2.sh
 l/libxslt.sh
@@ -67,7 +64,8 @@ n/cyrus-sasl.sh
 n/openldap.sh
 l/fuse3.sh
 n/gnupg.sh
-# python3 модули удаляем из системы перед обновлением
+
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-mako.sh
@@ -172,12 +170,14 @@ l/iso-codes.sh
 l/libaio.sh
 a/lvm2.sh
 l/libpng.sh
-# перед обновлением gcc не удаляем его из системы :))
+# Перед обновлением gcc не удаляем его из системы :))
 d/gcc.sh
 n/nghttp2.sh
+# Пересоберем curl.
+n/curl.sh
 d/cmake.sh
 # === python3-pygments ===
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-trove-classifiers.sh
 d/python-modules/python3-setuptools-scm.sh
@@ -196,14 +196,16 @@ d/python-modules/python3-requests.sh
 l/popt.sh
 n/rsync.sh
 l/libyaml.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyyaml.sh
 l/libunwind.sh
 d/llvm.sh
 l/icu.sh
 # ====================================
-# пересоберем собранные ранее пакеты, зависящие от icu
+# Пересоберем собранные ранее пакеты, зависящие от icu
+# =======
+# Пакет libpsl перед переустановкой/обновлением НЕ удалять.
 l/libpsl.sh
 l/libxml2.sh
 l/boost.sh
@@ -247,15 +249,12 @@ a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
 d/patchelf.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
-# wpa-supplicant пересобираем только если устанавливаем систему с нуля для
-# интеграции с dbus
-n/wpa-supplicant.sh
 # пакет elogind
 #    * пересобирать/обновлять в чистой TTY (без иксов)
 #    * дописывает 2 строки в /etc/pam.d/system-session , который принадлежит
@@ -318,7 +317,7 @@ l/libxkbcommon.sh
 d/sassc.sh
 l/gtk+3.sh
 l/graphene.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
@@ -450,7 +449,7 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
@@ -506,7 +505,7 @@ d/python3.sh
 #    # removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
 # === bumblebee-status ===
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
@@ -555,7 +554,7 @@ a/fcron.sh
 l/libass.sh
 l/fdk-aac.sh
 l/xvid.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-glad.sh
 l/libplacebo.sh
@@ -576,7 +575,7 @@ l/simdutf.sh
 l/vte3.sh
 l/libslirp.sh
 s/usbredir.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
@@ -595,7 +594,7 @@ l/libosinfo.sh
 s/gtk-vnc.sh
 l/libvirt-glib.sh
 n/tunctl.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
@@ -690,7 +689,7 @@ l/libportal.sh
 l/pipewire.sh
 l/wireplumber.sh
 l/xdg-desktop-portal.sh
-# python3 модули удаляем из системы перед обновлением
+# Python3 модули удаляем из системы перед обновлением.
 #    # removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh

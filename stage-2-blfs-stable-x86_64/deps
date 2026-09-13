@@ -36,7 +36,7 @@ avahi                                   pulseaudio, gtk4, cups, vlc, pipewire
 babl                                    gegl
 bash-completion                         elogind, bubblewrap, gstreamer
 bellagio-openmax                        mesa
-berkeley-db                             linux-pam, cyrus-sasl, openldap, ruby, python3
+berkeley-db                             linux-pam, cyrus-sasl, ruby, python3
 bibtex
 bind-utils                              mit-kerberos-v5
 bindfs                                  glib
@@ -128,7 +128,7 @@ efl                                     pinentry
 electric-fence                          lame, imagemagick
 elinks                                  xmlto
 elogind                                 polkit, alsa-lib, pulseaudio, libei, xorg-server, appstream, qemu, wireplumber
-emacs                                   libidn, desktop-file-utils, pinentry, xterm, guile
+emacs                                   libidn, pinentry, desktop-file-utils, xterm, guile
 enscript                                imagemagick
 evince                                  gtk+3, gtk4
 exim                                    gnupg, sudo, fcron, at
@@ -168,7 +168,7 @@ fuse3                                   gnupg, glib, sshfs, archivemount, vifm, 
 game-music-emu                          gst-plugins-bad, vlc
 gc                                      w3m, guile
 gcc                                     cmake
-gcr3                                    gnome-keyring, pinentry
+gcr3                                    pinentry, gnome-keyring
 gcr4                                    pinentry
 gdb                                     python3-cython, openssh, glib, gcc, rustc, python3, guile
 gdk-pixbuf                              w3m, librsvg, gtk+3, gst-plugins-good, gtk4, rxvt-unicode, poppler, gegl, xdg-desktop-portal
@@ -200,7 +200,7 @@ gnome-keyring                           libsecret
 gnome-shell                             polkit
 gnupg                                   git, gpgme, gcr3, gcr4, imagemagick
 gnuplot                                 imagemagick
-gnutls                                  wget, curl, gnupg, openldap, glib-networking, libsecret, gcr4, glibmm26, glibmm28, libcups, cups, ffmpeg, vlc, vte3, qemu, gtk-vnc, exim
+gnutls                                  wget, curl, openldap, gnupg, glib-networking, libsecret, gcr4, glibmm26, glibmm28, libcups, cups, ffmpeg, vlc, vte3, qemu, gtk-vnc, exim
 google-chrome
 goom                                    vlc
 gpac                                    x264
@@ -551,7 +551,7 @@ mesa-demos                              mesa
 microdns                                gst-plugins-bad
 minisql                                 unixodbc
 mirage
-mit-kerberos-v5                         curl, openssh, sudo, cyrus-sasl, libsoup2, libsoup3, qt5-components, qt6, libtirpc
+mit-kerberos-v5                         openssh, curl, cyrus-sasl, sudo, libsoup2, libsoup3, qt5-components, qt6, libtirpc
 mjpeg-tools                             gst-plugins-bad
 mm-common                               libsigc++2, libsigc++3, glibmm26, glibmm28
 mono                                    libidn
@@ -606,13 +606,13 @@ openh264                                gst-plugins-bad
 openjade                                docbook-dsssl, docbook-utils
 openjdk                                 libidn, cmake
 openjpeg                                gst-plugins-bad, ffmpeg, poppler, gimp, imagemagick
-openldap                                curl, gnupg, sudo, cyrus-sasl, mit-kerberos-v5, exim
+openldap                                curl, cyrus-sasl, gnupg, sudo, mit-kerberos-v5, exim
 openmax                                 vlc
 openoffice
 opensc                                  openssh
 openslp                                 openldap
 opensp                                  openjade, docbook-dsssl
-openssh                                 curl, sshfs, git, libssh2, gcr4, gnome-keyring, flameshot
+openssh                                 libssh2, curl, sshfs, git, gcr4, gnome-keyring, flameshot
 opie                                    sudo
 opus                                    libsndfile, gst-plugins-base, gst-plugins-bad, ffmpeg, vlc, spice, pipewire
 orc                                     pulseaudio, gst-plugins-base, gst-plugins-good, gst-plugins-bad, gst-plugins-ugly, spice
@@ -723,7 +723,6 @@ python3-installer                       python3-build
 python3-ipaddr                          virt-manager
 python3-kdcproxy                        mit-kerberos-v5
 python3-libvirt                         virt-manager
-python3-looseversion                    fuse3
 python3-lxml                            itstool, elogind, virt-manager, wireplumber
 python3-mako                            glib, mesa
 python3-markdown                        glib
@@ -753,7 +752,7 @@ python3-pyproject-hooks                 python3-build
 python3-pyproject-metadata              python3-meson
 python3-pyrad                           mit-kerberos-v5
 python3-pysocks                         python3-urllib3, python3-requests
-python3-pytest                          python3-cython, fuse3, python3-mako, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyyaml, python3-pyproject-metadata, python3-meson, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, python3-glad, python3-six, python3-pyparsing, osinfo-db-tools, python3-pyproject-hooks, python3-build, libportal, xdg-desktop-portal, python3-pyxdg
+python3-pytest                          python3-cython, python3-mako, python3-trove-classifiers, python3-setuptools-scm, python3-pluggy, python3-pathspec, python3-editables, python3-pygments, python3-hatch-vcs, python3-urllib3, python3-idna, python3-charset-normalizer, python3-requests, python3-pyyaml, python3-pyproject-metadata, python3-meson, xkeyboard-config, python3-pycairo, python3-pygobject3, brotli, libinput, python3-hatch-fancy-pypi-readme, python3-attrs, python3-psutil, python3-glad, python3-six, python3-pyparsing, osinfo-db-tools, python3-pyproject-hooks, python3-build, libportal, xdg-desktop-portal, python3-pyxdg
 python3-pytest-cov                      python3-charset-normalizer, python3-requests, python3-build
 python3-pytest-httpbin                  python3-requests
 python3-pytest-instafail                python3-psutil
@@ -879,7 +878,7 @@ sysstat                                 openssh
 taglib                                  gst-plugins-good, vlc
 tcb                                     shadow
 tdb                                     pulseaudio, exim
-texlive                                 libunistring, gnutls, libassuan, libgcrypt, gnupg, llvm, graphite2, fontconfig, libvorbis, opus, libunwind, jasper, fltk, ffmpeg, dtc, cpio, imagemagick
+texlive                                 libunistring, gnutls, libgcrypt, libassuan, gnupg, llvm, graphite2, fontconfig, libvorbis, opus, libunwind, jasper, fltk, ffmpeg, dtc, cpio, imagemagick
 thin-provisioning-tools                 lvm2
 time
 tint2
@@ -938,7 +937,7 @@ webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
 weston                                  xwayland
 wget                                    vim, openjdk, imagemagick
-which                                   libseccomp, openssh, lm-sensors, fuse3, boost, lvm2, freetype, libvpx, nodejs, openjdk
+which                                   libseccomp, boost, lvm2, freetype, libvpx, nodejs, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wine                                    python3-glad

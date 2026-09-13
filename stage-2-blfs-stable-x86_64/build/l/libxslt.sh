@@ -14,8 +14,8 @@ PRGNAME="libxslt"
 
 ### NOTE:
 # Recommended: docbook-xml и docbook-xsl
-#    хоть зависимости и не прямые, но многие приложения, использующие libxslt
-#    ожидают наличия этих двух пакетов
+#    Хоть зависимости и не прямые, но многие приложения, использующие libxslt
+#    ожидают наличия этих двух пакетов.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,10 +34,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

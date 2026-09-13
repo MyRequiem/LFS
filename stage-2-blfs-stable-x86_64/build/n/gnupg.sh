@@ -42,8 +42,9 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
+# Остановим gpg-agent (если запущен).
 killall gpg-agent &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1

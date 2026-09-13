@@ -10,11 +10,11 @@ PRGNAME="sysstat"
 # Recommended: no
 # Optional:    no
 
-# Конфигурация
+# Конфигурация:
 #    /etc/sysstat/sysstat
 #    /etc/sysstat/sysstat.ioconf
 #
-# Примеры сбора информации истории Sysstat по расписанию с помощью fcron
+# Примеры сбора информации истории Sysstat по расписанию с помощью fcron.
 # (см. $ man sa1 и $ man sa2)
 #
 # 8am-7pm activity reports every 10 minutes during weekdays
@@ -23,10 +23,10 @@ PRGNAME="sysstat"
 # 7pm-8am activity reports every hour during weekdays
 # 0 19-7 * * 1-5 /usr/lib/sa/sa1 &
 
-# activity reports every hour on Saturday and Sunday
+# Activity reports every hour on Saturday and Sunday.
 # 0 * * * 0,6 /usr/lib/sa/sa1 &
 
-# daily summary prepared at 19:05
+# Daily summary prepared at 19:05.
 # 5 19 * * * /usr/lib/sa/sa2 -A &
 
 ROOT="/root/src/lfs"
@@ -37,7 +37,7 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устанавливаем права root:root для man-страниц
+# Устанавливаем права root:root для man-страниц.
 #    --disable-file-attr
 sa_lib_dir=/usr/lib/sa  \
 sa_dir=/var/log/sa      \
@@ -47,15 +47,18 @@ conf_dir=/etc/sysstat   \
     --disable-file-attr || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# man страницы запакованы в *.xz, распакуем их
+Отключим сценарии для fcron:
+chmod 644 "${TMP_DIR}/etc/cron."{hourly,daily}/sysstat
+
+# Man страницы запакованы в *.xz, распакуем их:
 find "${TMP_DIR}/usr/share/man/" -type f -name "*.xz" -exec unxz {} \+
 
-# автозапуск очистки счетчиков ядра для sysstat при запуске системы
+# Автозапуск очистки счетчиков ядра для sysstat при запуске системы.
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-sysstat DESTDIR="${TMP_DIR}"

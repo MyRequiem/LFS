@@ -6,7 +6,7 @@ PRGNAME="lm-sensors"
 # Средство для мониторинга показателей датчиков материнской платы: температуры
 # процессора, скорости вентиляторов и напряжения.
 
-# Required:    which
+# Required:    no
 # Recommended: no
 # Optional:    rrdtool    https://oss.oetiker.ch/rrdtool/    (для сборки sensord)
 #              dmidecode  https://www.nongnu.org/dmidecode/  (runtime)
@@ -29,8 +29,8 @@ PRGNAME="lm-sensors"
 # Данный конфиг изменять не следует, а все настройки для конкретных материнских
 # плат делать в пользовательских конфигах /etc/sensors.d/*
 #
-# Определим все аппаратные датчики, которые есть в системе
-#    # sensors-detect
+# Определим все аппаратные датчики, которые есть в системе:
+#    $ sensors-detect
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -64,15 +64,18 @@ make                   \
     BUILD_STATIC_LIB=0 \
     MANDIR=/usr/share/man || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
 make                   \
     PREFIX=/usr        \
     BUILD_STATIC_LIB=0 \
     MANDIR=/usr/share/man install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

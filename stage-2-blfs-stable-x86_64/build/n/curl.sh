@@ -8,6 +8,7 @@ PRGNAME="curl"
 
 # Required:    no
 # Recommended: libpsl
+#              nghttp2              (требуется для использования системного cURL в Rustc)
 #              make-ca              (runtime)
 # Optional:    brotli
 #              c-ares
@@ -15,7 +16,6 @@ PRGNAME="curl"
 #              libidn2
 #              libssh2
 #              mit-kerberos-v5
-#              nghttp2
 #              openldap
 #              samba
 #              gsasl                (https://www.gnu.org/software/gsasl/)
@@ -38,24 +38,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-LIBSSH2="--without-libssh2"
-pkg-config libssh2 && LIBSSH2="--with-libssh2"
-
 ./configure          \
     --prefix=/usr    \
     --disable-static \
     --with-openssl   \
-    "${LIBSSH2}"     \
     --with-ca-path=/etc/ssl/certs || exit 1
 
 make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -68,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # cookies, file transfer resume and more.
 #
 # Home page: https://${PRGNAME}.se/
-# Download:  https://${PRGNAME}.se/download/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/${PRGNAME}-${VERSION//./_}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

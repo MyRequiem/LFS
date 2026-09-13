@@ -21,11 +21,11 @@ ARCH_NAME="wpa_supplicant"
 #    CONFIG_NETDEVICES=y
 #    CONFIG_WLAN=y
 
-# Конфигурация wpa_supplicant
-# ----------------------------
+### Конфигурация:
+# ---------------
 # /etc/sysconfig/wpa_supplicant-wlan0.conf
 #
-# настроить подключение по названию точки доступа (SSID) и паролю
+# Настроить подключение по названию точки доступа (SSID) и паролю:
 #    cat << EOF > /etc/sysconfig/wpa_supplicant-wlan0.conf
 #    ctrl_interface=/run/wpa_supplicant
 #    ctrl_interface_group=root
@@ -38,10 +38,10 @@ ARCH_NAME="wpa_supplicant"
 #    # wpa_passphrase SSID SECRET_PASSWORD >> \
 #           /etc/sysconfig/wpa_supplicant-wlan0.conf
 #
-# все параметры и их описание см. в исходниках
+# Все параметры и их описание см. в исходниках
 # wpa_supplicant/wpa_supplicant.conf
 #
-# подключиться к беспроводной точке доступа после настройки всех конфигов
+# Подключиться к беспроводной точке доступа после настройки всех конфигов:
 #    # ifup wlan0
 
 ROOT="/root/src/lfs"
@@ -54,7 +54,7 @@ mkdir -pv "${TMP_DIR}"/{etc/sysconfig,usr/sbin,usr/share/man/man{5,8}}
 
 cd "${ARCH_NAME}" || exit 1
 
-# создадим файл конфигурации для сборки (см. описание опций в исходном коде
+# Создадим файл конфигурации для сборки (см. описание опций в исходном коде
 # wpa_supplicant/defconfig)
 cat << EOF > .config
 CONFIG_BACKEND=file
@@ -111,40 +111,21 @@ CONFIG_DPP=y
 CFLAGS += -I/usr/include/libnl3
 EOF
 
-if [ -x /usr/bin/dbus-daemon ]; then
-    cat << EOF >> .config
-CONFIG_CTRL_IFACE_DBUS=y
-CONFIG_CTRL_IFACE_DBUS_NEW=y
-CONFIG_CTRL_IFACE_DBUS_INTRO=y
-EOF
-fi
+make BINDIR=/usr/sbin LIBDIR=/usr/lib || exit 1
 
-make BINDIR=/usr/sbin LIBDIR=/usr/lib
+# Пакет не имеет набора тестов.
 
-# пакет не имеет набора тестов
-
-# в /usr/sbin/
+# В /usr/sbin/
 #    wpa_cli
 #    wpa_passphrase
 #    wpa_supplicant
 install -v -m755 wpa_{cli,passphrase,supplicant} "${TMP_DIR}/usr/sbin/"
 
-# man страницы
+# Man страницы.
 install -v -m644 doc/docbook/wpa_supplicant.conf.5 \
     "${TMP_DIR}/usr/share/man/man5/"
 install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 \
     "${TMP_DIR}/usr/share/man/man8/"
-
-if [ -x /usr/bin/dbus-daemon ]; then
-    SYSTEM_SERVICES="/usr/share/dbus-1/system-services"
-    install -v -d -m755  "${TMP_DIR}${SYSTEM_SERVICES}"
-    install -v -m644 "dbus/fi.w1.wpa_supplicant1.service" \
-        "${TMP_DIR}${SYSTEM_SERVICES}/"
-
-    install -v -d -m755 "${TMP_DIR}/etc/dbus-1/system.d"
-    install -v -m644 "dbus/dbus-wpa_supplicant.conf" \
-        "${TMP_DIR}/etc/dbus-1/system.d/wpa_supplicant.conf"
-fi
 
 WPA_SUPPLICANT_WLAN0_CONF="/etc/sysconfig/wpa_supplicant-wlan0.conf"
 cat << EOF > "${TMP_DIR}${WPA_SUPPLICANT_WLAN0_CONF}"
@@ -197,25 +178,28 @@ if [ -f "${IFCONFIG_WLAN0}" ]; then
     mv "${IFCONFIG_WLAN0}" "${IFCONFIG_WLAN0}.old"
 fi
 
-# сервис /usr/lib/services/wpa
+# Автозапуск сервиса /usr/lib/services/wpa
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-service-wpa DESTDIR="${TMP_DIR}/usr"
 )
 
-# если wpa_supplicant запущен, то при копировании с DESTDIR будет ошибка,
-# установим корректно:
+# Если wpa_supplicant запущен, то при копировании с DESTDIR будет ошибка.
+# Установим корректно:
 install -vm755 "${TMP_DIR}/usr/sbin/wpa_supplicant" /usr/sbin/ || exit 1
+mv "${TMP_DIR}/usr/sbin/wpa_supplicant" /tmp
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
+mv /tmp/wpa_supplicant "${TMP_DIR}/usr/sbin/"
+
 config_file_processing "${WPA_SUPPLICANT_WLAN0_CONF}"
 config_file_processing "${IFCONFIG_WLAN0}"
 
-# перезапустим интерфейс, если запущен
+# Перезапустим интерфейс, если запущен:
 if pgrep -l wpa_supplicant &>/dev/null; then
     ifdown wlan0 && sleep 3 && ifup wlan0
 fi
@@ -231,7 +215,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # connecting to a password protected wireless access point.
 #
 # Home page: http://hostap.epitest.fi/${ARCH_NAME}/
-# Download:  https://w1.fi/releases/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://sources.voidlinux.org/${ARCH_NAME}-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

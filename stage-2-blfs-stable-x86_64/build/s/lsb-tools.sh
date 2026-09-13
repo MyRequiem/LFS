@@ -42,10 +42,15 @@ sed "s|/lsb/|/services/|" -i Makefile || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 # Удалим ссылку которую не нужно устанавливать:
 #    /usr/sbin/lsbinstall -> /usr/lib/services/lsbinstall
 rm -f "${TMP_DIR}/usr/sbin/lsbinstall"
 
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

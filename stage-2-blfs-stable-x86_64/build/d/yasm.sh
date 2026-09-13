@@ -6,7 +6,7 @@ PRGNAME="yasm"
 # Быстрый и современный ассемблер, используемый для компиляции низкоуровневого
 # кода, оптимизированного под конкретные процессоры. Это полностью переписанный
 # и улучшенный ассемблер NASM. Yasm построен «модульно», что позволяет легко
-# добавлять новые формы синтаксиса, препроцессоры и т. п.
+# добавлять новые формы синтаксиса, препроцессоры и т.п.
 
 # Required:    no
 # Recommended: no
@@ -20,12 +20,12 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему при сборке с gcc-15
+# Исправим проблему при сборке с gcc-15.
 sed -e \
     's/def __cplusplus/ defined(__cplusplus) || __STDC_VERSION__ >= 202311L/' \
-    -i libyasm/bitvect.h
+    -i libyasm/bitvect.h || exit 1
 
-# исключаем сборку vsyasm и ytasm, которые используются только в Windows
+# Исключаем сборку vsyasm и ytasm, которые используются только в Windows.
 sed -i 's#) ytasm.*#)#' Makefile.in || exit 1
 
 ./configure \
@@ -35,10 +35,11 @@ make || exit 1
 # make -j1 check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -51,7 +52,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # RDOFF2, COFF, Win32, and Win64 object formats, and generates source debugging
 # information in STABS, DWARF 2, and CodeView 8 formats.
 #
-# Home page: https://github.com/yasm/yasm
+# Home page: https://github.com/${PRGNAME}/${PRGNAME}
 # Download:  https://www.tortall.net/projects/${PRGNAME}/releases/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

@@ -29,7 +29,7 @@ mkdir -pv "${TMP_DIR}/etc"
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 TMUX_CONFIG="/etc/tmux.conf"
 cat << EOF > "${TMP_DIR}${TMUX_CONFIG}"
@@ -48,6 +48,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${TMUX_CONFIG}"

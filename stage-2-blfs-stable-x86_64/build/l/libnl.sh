@@ -22,16 +22,17 @@ mkdir -pv "${TMP_DIR}"
     --sysconfdir=/etc \
     --disable-static || exit 1
 
-# если команда make выполняется в несколько потоков, то это может нарушить
-# работу терминала и вызвать некоторые «забавные» визуальные эффекты
+# Если команда make выполняется в несколько потоков, то это может нарушить
+# работу терминала и вызвать некоторые «забавные» визуальные эффекты.
 make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
