@@ -12,7 +12,7 @@ source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
-mkdir -pv "${TMP_DIR}"
+mkdir -pv "${TMP_DIR}/usr/share/groff/site-tmac"
 
 # Groff ожидает, что переменная окружения PAGE будет содержать размер страницы
 # по умолчанию. Для пользователей в Соединенных Штатах подходит PAGE=letter. В
@@ -24,6 +24,17 @@ PAGE=A4 ./configure \
 make || make -j1 || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
+
+# Добавляем хак для шрифта CW (и на всякий случай для EX, который тоже спамит).
+# Без этого при открытии man-страниц где упомянуты данные шрифты выводит
+# предупреждения типа:
+#    troff:<standard input>:165: warning: cannot select font 'CW'
+cat << 'EOF' >> "${TMP_DIR}/usr/share/groff/site-tmac/man.local"
+
+.\" Local fix for viman/groff 1.24+ font warnings
+.if n .ftr CW B
+.if n .ftr EX B
+EOF
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
