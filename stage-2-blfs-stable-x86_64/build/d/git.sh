@@ -8,12 +8,13 @@ PRGNAME="git"
 
 # Required:    no
 # Recommended: curl
+#              rustc                    (рекомендуется для сборки)
 # Optional:    apache-httpd             (для некоторых тестов)
 #              fcron                    (для планирования заданий обслуживания git)
 #              gnupg
 #              openssh
 #              subversion               (собранный с perl bindings для git svn)
-#              tk                       (скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
+#              tk                       (runtime, скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
 #              valgrind
 #              --- для команды 'git send-email' ---
 #              perl-authen-sasl         (https://metacpan.org/pod/Authen::SASL)
@@ -53,13 +54,17 @@ mkdir -pv "${TMP_DIR}"{"${BASH_COMPLETION}","${MAN}"}
     --with-libpcre2       \
     --with-gitconfig=/etc/gitconfig || exit 1
 
-# Собираем без Rustc.
+# Git начиная с версии 2.55.x рекомендует rustc для сборки. Мы собираем Git в
+# режиме совместимости БЕЗ Rust.
 #    NO_RUST=1
+# Без поддержки subversion.
+#    NO_CVS=YesPlease
 # Не создаем /usr/share/gitweb/ - древний веб-интерфейс для просмотра
 # git-репозиториев в браузере.
 #    NO_GITWEB=YesPlease
-make          \
-    NO_RUST=1 \
+make                 \
+    NO_RUST=1        \
+    NO_CVS=YesPlease \
     NO_GITWEB=YesPlease || exit 1
 
 # Тесты.
@@ -70,11 +75,12 @@ make          \
 PERL_MAJ_VERSION="$(perl -e 'print $^V' | cut -d v -f 2- | cut -d . -f 1,2)"
 make                    \
     NO_RUST=1           \
+    NO_CVS=YesPlease    \
     NO_GITWEB=YesPlease \
     perllibdir="/usr/lib/perl5/${PERL_MAJ_VERSION}/site_perl" \
     install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # Устанавливаем man-страницы.
 tar -xf "${SOURCES}/${PRGNAME}-manpages-${VERSION}.tar.xz" \

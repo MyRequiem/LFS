@@ -17,12 +17,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с glibc >=2.43
-# shellcheck disable=SC2046
-# shellcheck disable=SC2185
-sed -r '/_GL_EXTERN_C/s/w?memchr|bsearch/(&)/' \
-    -i $(find -name \*.in.h) || exit 1
-
 ./configure          \
     --prefix=/usr    \
     --disable-static \
@@ -32,10 +26,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -45,7 +40,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # manipulating C strings according to the Unicode standard.
 #
 # Home page: https://www.gnu.org/s/${PRGNAME}
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

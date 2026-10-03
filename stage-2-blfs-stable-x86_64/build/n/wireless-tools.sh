@@ -5,7 +5,7 @@ ARCH_NAME="wireless_tools"
 
 ### wireless-tools (utilities for wireless networking)
 # Набор базовых утилит для настройки и диагностики беспроводных сетей Wi-Fi:
-# ifrename, iwconfig, iwevent, iwgetid, iwlist, iwpriv, iwspy
+# ifrename, iwconfig, iwevent, iwgetid, iwlist, iwpriv, iwspy.
 
 # Required:    no
 # Recommended: no
@@ -48,20 +48,21 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устраним проблему, возникающую если доступно несколько беспроводных сетей
+# Устраним проблему, возникающую если доступно несколько беспроводных сетей.
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-fix_iwlist_scanning-1.patch" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make                        \
     PREFIX="${TMP_DIR}/usr" \
     INSTALL_MAN="${TMP_DIR}/usr/share/man" install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

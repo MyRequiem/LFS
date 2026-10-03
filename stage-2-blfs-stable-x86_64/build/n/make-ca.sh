@@ -17,23 +17,23 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/"{ssl/local,cron.weekly}
 
-# удалим устаревшую опцию -t из команды mktemp в скрипте, которая может
-# привести к нежелательным последствиям, особенно если устанавливаем в DESTDIR
+# Удалим устаревшую опцию -t из команды mktemp в скрипте, которая может
+# привести к нежелательным последствиям, особенно если устанавливаем в DESTDIR.
 sed '/mktemp/s/-t //' -i make-ca
 
 make install DESTDIR="${TMP_DIR}"
 
-# скрипт 'make-ca' загрузит в /etc/ssl/ файл certdata.txt, затем загрузит в
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Скрипт 'make-ca' загрузит в /etc/ssl/ файл certdata.txt, затем загрузит в
 # /etc/pki/ и обработает сертификаты включенные в него, для использования в
 # качестве якорей доверия модуля p11-kit
-# "${TMP_DIR}/usr/sbin/make-ca" --get --destdir "${TMP_DIR}"
-#    --get    - загрузить файл certdata.txt
-#
-# чтобы не использовать утилиту make-ca при установке пакета, мы сразу скачали
+#    "${TMP_DIR}/usr/sbin/make-ca" --get --destdir "${TMP_DIR}"
+# Чтобы не использовать утилиту make-ca при установке пакета, мы сразу скачали
 # файл certdata.txt в директорию исходников: /root/src/lfs/src/certdata.txt
 cp "${SOURCES}/certdata.txt" "${TMP_DIR}/etc/ssl/" || exit 1
 
-# копируем /etc/make-ca/make-ca.conf.dist в make-ca.conf
+# Копируем /etc/make-ca/make-ca.conf.dist в make-ca.conf
 cp "${TMP_DIR}/etc/${PRGNAME}/${PRGNAME}.conf"{.dist,} || exit 1
 
 UPDATE_PKI="/etc/cron.weekly/update-pki.sh"
@@ -43,7 +43,7 @@ cat << EOF > "${TMP_DIR}${UPDATE_PKI}"
 /usr/sbin/make-ca -g
 EOF
 
-### добавим дополнительные CA Certificates в /etc/ssl/local
+### Добавим дополнительные CA Certificates в /etc/ssl/local
 openssl x509 -in "${SOURCES}/root.crt" \
     -text                              \
     -fingerprint                       \
@@ -62,6 +62,7 @@ openssl x509 -in "${SOURCES}/class3.crt" \
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 chmod 754 "/etc/cron.weekly"

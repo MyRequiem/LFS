@@ -18,13 +18,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/"usr/{bin,lib/7zip}
 
+# Отключаем -Werror, иначе компилятор будет падат при каждом предупреждении:
+sed -i 's/-Werror //g' CPP/7zip/7zip_gcc.mak || exit 1
+
 (
     for TARGET in Bundles/{Alone,Alone7z,Format7zF,SFXCon} UI/Console; do
         make -C "CPP/7zip/${TARGET}" -f ../../cmpl_gcc.mak || exit 1
     done
 )
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
 install -vDm755 CPP/7zip/Bundles/Alone{/b/g/7za,7z/b/g/7zr} \
                 CPP/7zip/Bundles/Format7zF/b/g/7z.so        \

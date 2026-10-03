@@ -8,31 +8,27 @@ ARCH_NAME="fuse"
 # файловые системы без вмешательства в глубокие настройки ядра Linux. Fuse v3 -
 # это обновленное поколение этой технологии, которое делает работу таких
 # виртуальных систем быстрее и стабильнее, исправляя внутренние ошибки и
-# ограничения, которые были в Fuse v2
+# ограничения, которые были в Fuse v2.
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen               (для сборки API документации)
-#              --- для тестов ---
-#              python3-pytest
-#              which
-#              python3-looseversion  (https://pypi.org/project/looseversion/)
+# Optional:    doxygen    (для сборки API документации)
 
-### Конфигурация ядра
+### Конфигурация ядра.
 #    CONFIG_FUSE_FS=y|m
 #    CONFIG_CUSE=y|m        (для тестов)
 
 ###
-# Тесты
+# Тесты.
 ###
 #    Можно сразу очень быстро проверить работоспособность fuse3 вот таким
 #    смешным способом:). В исходниках лежит <path_to_src_dir>/example/hello.c,
-#    после компиляции данного пакета генерируется бинарник
+#    после компиляции данного пакета генерируется бинарник:
 #    <path_to_src_dir>/build/example/hello
 #    $ mkdir -p /tmp/fuse3-test
 #    $ <path_to_src_dir>/build/example/hello /tmp/fuse3-test
 #    Монтируется директория /tmp/fuse3-test и в ней должен лежать текстовый
-#    файл hellow содержащий текст "Hello World!"
+#    файл hellow содержащий текст "Hello World!".
 #    $ ls /tmp/fuse3-test/
 #    hello
 #    $ cat /tmp/fuse3-test/hello
@@ -43,33 +39,14 @@ ARCH_NAME="fuse"
 ###
 
 ROOT="/root/src/lfs"
-source "${ROOT}/check_environment.sh"      || exit 1
-source "${ROOT}/config_file_processing.sh" || exit 1
-
-SOURCES="${ROOT}/src"
-VERSION="$(find "${SOURCES}" -type f \
-    -name "${ARCH_NAME}-3*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
-    rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
-
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
-rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}"
-cd "${BUILD_DIR}" || exit 1
-
-tar xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
-cd "${ARCH_NAME}-${VERSION}" || exit 1
-
-chown -R root:root .
-find -L . \
-    \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-    -o -perm 511 \) -exec chmod 755 {} \+ -o \
-    \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-    -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
+source "${ROOT}/check_environment.sh"                    || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
+source "${ROOT}/config_file_processing.sh"               || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# отключим установку ненужного загрузочного скрипта и правила udev
+# Отключим установку ненужного загрузочного скрипта и правил udev.
 sed -i '/^udev/,$ s/^/#/' util/meson.build || exit 1
 
 mkdir build
@@ -80,20 +57,13 @@ meson setup ..    \
     --buildtype=release || exit 1
 
 ninja || exit 1
-
-### тесты
-# python3 -m venv --system-site-packages testenv &&
-# source testenv/bin/activate                    &&
-# pip3 install looseversion                      &&
-# python3 -m pytest
-# deactivate
-
+# meson test -v
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ### Конфигурация Fuse
-# некоторые параметры политики монтирования могут быть установлены в файле
+# Некоторые параметры политики монтирования могут быть установлены в файле
 # /etc/fuse.conf
 FUSE_CONF="/etc/${ARCH_NAME}.conf"
 cat << EOF > "${TMP_DIR}${FUSE_CONF}"
@@ -125,11 +95,12 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-chmod u+s /usr/bin/fusermount3
-
 config_file_processing "${FUSE_CONF}"
+
+chmod u+s /usr/bin/fusermount3
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (Filesystem in Userspace)

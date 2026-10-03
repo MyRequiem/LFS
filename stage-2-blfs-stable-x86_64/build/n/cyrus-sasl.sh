@@ -27,19 +27,19 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с gcc-15
+# Исправим сборку с GCC >=15
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-gcc15_fixes-1.patch" || exit 1
 
 autoreconf -fiv || exit 1
 
-# исправим сборку с gcc >=14
+# Исправим сборку с GCC >=14
 sed '/saslint/a #include <time.h>'       -i lib/saslutil.c || exit 1
 sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
 
-# база данных sasldb создается в /var/lib/sasl (по умолчанию в /etc)
+# База данных sasldb создается в /var/lib/sasl (по умолчанию в /etc).
 #    --with-dbpath=/var/lib/sasl/sasldb2
-# saslauthd использует FHS-совместимый каталог /var/run/saslauthd
+# saslauthd будет использовать FHS-совместимый каталог.
 #    --with-saslauthd=/var/run/saslauthd
 ./configure                             \
     --prefix=/usr                       \
@@ -51,16 +51,16 @@ sed '/plugin_common/a #include <time.h>' -i plugins/cram.c || exit 1
     --with-saslauthd=/var/run/saslauthd \
     --without-pam || exit 1
 
-# пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
+# Пакет не поддерживаем сборку в несколько потоков, поэтому явно указываем -j1
 make -j1 || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 mkdir -p "${TMP_DIR}/var/lib/sasl"
 
-# init script: /etc/rc.d/init.d/saslauthd
+# Установим скрипт автозапуска /etc/rc.d/init.d/saslauthd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-saslauthd DESTDIR="${TMP_DIR}"
@@ -73,6 +73,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SASLAUTHD}"

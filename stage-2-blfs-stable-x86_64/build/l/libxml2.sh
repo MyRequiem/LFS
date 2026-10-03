@@ -7,7 +7,7 @@ PRGNAME="libxml2"
 # хранения настроек и обмена данными.
 
 # Required:    no
-# Recommended: icu                      (для лучшей поддержки UNICODE)
+# Recommended: icu    (для лучшей поддержки UNICODE)
 # Optional:    --- для документации ---
 #              doxygen
 #              libxslt
@@ -28,11 +28,11 @@ command -v icu-config &>/dev/null && ICU="enabled"
 mkdir -p build
 cd build || exit 1
 
-# Включает поддержку Readline при запуске xmlcatalog или xmllint в консоли
+# Включает поддержку Readline при запуске xmlcatalog или xmllint в консоли.
 #    -D history=enabled
 # Python bindings устарели из-за недостатков конструкции API и будут удалены в
 # libxml2-2.16.x, а так же их сборка в версии 2.15.x требует жесткую
-# зависимость doxygen
+# зависимость doxygen.
 #    -D python=disabled
 meson setup ..          \
     --prefix=/usr       \
@@ -45,10 +45,10 @@ meson setup ..          \
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # Пакеты, которые зависят он libxml2 будут связываться только с общими
-# библиотеками, а не со статическими
+# библиотеками, а не со статическими.
 sed "s/--static/--shared/" -i "${TMP_DIR}/usr/bin/xml2-config"
 
 source "${ROOT}/stripping.sh"      || exit 1

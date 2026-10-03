@@ -37,15 +37,26 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# Исправляем ошибку в man-странице: заменяем стандартный 'umount' на
+# 'fusermount -u', так как FUSE-диски правильно размонтировать именно им.
 sed -i '/^\.Li.*umount/s,umount,fusermount Fl u,' "${PRGNAME}.1.in" || exit 1
 
-make VERSION="${VERSION}"
+# Обходим привязку к .git в Makefile: фиксируем версию и дату для man-страницы.
+# VERSION и SOURCE_DATE_EPOCH передаются вручную, так как исходники берутся из
+# тарболла, а не из git-репозитория. Это предотвращает не критичные ошибки
+# сборки 'fatal: не найден git репозиторий' и 'date: invalid date', а также
+# корректно прописывает дату сборки в man-страницу.
+make                     \
+    VERSION="${VERSION}" \
+    SOURCE_DATE_EPOCH="$(stat -c %Y archivemount.1.in)" || exit 1
+
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

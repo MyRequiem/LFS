@@ -13,13 +13,12 @@ PRGNAME="libpwquality"
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
-source "${ROOT}/config_file_processing.sh"             || exit 1
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
-mkdir -pv "${TMP_DIR}/etc/pam.d"
+mkdir -pv "${TMP_DIR}"
 
-# отключаем создание python модуля с помощью устаревшей команды сборки setup.py
-# и далее создадим его с помощью команды  pip3 wheel
+# Отключаем создание python модуля с помощью устаревшей команды сборки setup.py
+# и далее создадим его с помощью команды  pip3 wheel.
 #    --disable-python-bindings
 ./configure                            \
     --prefix=/usr                      \
@@ -34,9 +33,9 @@ pip3 wheel               \
     --no-build-isolation \
     --no-deps            \
     --no-cache-dir       \
-    "${PWD}/python"
+    "${PWD}/python" || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -45,19 +44,19 @@ pip3 install            \
     --no-index          \
     --find-links dist   \
     --no-user           \
-    pwquality
+    pwquality || exit 1
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ###
 # Конфигурация PAM
 ###
 # libpwquality является заменой устаревшего модуля PAM pam_cracklib.so -
-# настроим систему на использование модуля pam_pwquality
-
+# настроим систему на использование модуля pam_pwquality. Файл
+# /etc/pam.d/system-password уже установлен с пакетом linux-pam.
 SYSTEM_PASSWORD="/etc/pam.d/system-password"
-cp "${SYSTEM_PASSWORD}" "${TMP_DIR}${SYSTEM_PASSWORD}"
-cat << EOF > "${TMP_DIR}${SYSTEM_PASSWORD}"
+if ! grep -q pam_pwquality "${SYSTEM_PASSWORD}"; then
+    cat << EOF > "${SYSTEM_PASSWORD}"
 # check new passwords for strength (man pam_pwquality)
 password  required    pam_pwquality.so  authtok_type=UNIX retry=1 difok=1 \\
                                         minlen=8 dcredit=0 ucredit=0      \\
@@ -75,17 +74,12 @@ password  required    pam_pwquality.so  authtok_type=UNIX retry=1 difok=1 \\
 password  required    pam_unix.so       yescrypt shadow try_first_pass
 
 EOF
-
-if [ -f "${SYSTEM_PASSWORD}" ]; then
-    mv "${SYSTEM_PASSWORD}" "${SYSTEM_PASSWORD}.old"
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
-
-config_file_processing "${SYSTEM_PASSWORD}"
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (password quality checking library)

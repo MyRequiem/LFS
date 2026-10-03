@@ -21,10 +21,11 @@ DOC_DIR="/usr/share/doc/${PRGNAME}-${VERSION}"
 make prefix=/usr docdir="${DOC_DIR}"                              || exit 1
 make prefix=/usr docdir="${DOC_DIR}" install DESTDIR="${TMP_DIR}" || exit 1
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

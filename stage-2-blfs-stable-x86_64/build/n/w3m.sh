@@ -40,7 +40,7 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# уберем строку status info с глупой и ненужной информацией внизу окна браузера
+# Уберем строку status info с глупой и ненужной информацией внизу окна браузера
 # типа:
 #    Viewing[SSL] <LFS Patches Project Homepage>
 patch --verbose -Np1 -i \
@@ -71,10 +71,10 @@ CXXFLAGS="${SLKCFLAGS}"                  \
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет наборат тестов
+# Пакет не имеет наборат тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -91,7 +91,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # files residing on remote systems. It can display HTML tables, frames, and
 # images, and supports tabbed browsing.
 #
-# Hom page: https://sourceforge.net/projects/${PRGNAME}/
+# Hom page: https://${PRGNAME}.sourceforge.net/
 # Download: https://deb.debian.org/debian/pool/main/w/${PRGNAME}/${PRGNAME}_${ARCH_VERSION}.orig.tar.xz
 #
 EOF

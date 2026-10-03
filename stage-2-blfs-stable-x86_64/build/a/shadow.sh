@@ -13,7 +13,7 @@ PRGNAME="shadow"
 
 ### NOTE:
 # Пакет уже установлен в LFS. После установки linux-pam пакет shadow нужно
-# пересобрать и настроить для работы с PAM
+# пересобрать и настроить для работы с PAM.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,27 +23,21 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/pam.d"
 
-# не устанавливаем утилиту groups (входит в состав пакета 'coreutils' и
-# является предпочтительной)
-# shellcheck disable=SC2016
-sed -i 's/groups$(EXEEXT) //' src/Makefile.in                     || exit 1
-find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \+ || exit 1
-
-# не устанавливаем man-страницы getspnam.3 и passwd.5 (уже установлены с
-# пакетом 'man-pages')
+# Не устанавливаем man-страницы getspnam.3 и passwd.5 (уже установлены с
+# пакетом 'man-pages').
 find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \+ || exit 1
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \+ || exit 1
 
-# вместо использования DES метода шифрования паролей (по умолчанию) будем
+# Вместо использования SHA512 метода шифрования паролей (по умолчанию) будем
 # использовать более безопасный метод YESCRYPT, который также позволяет
 # использовать пароли длиной более 8 символов. Также необходимо изменить
 # устаревшее местоположение /var/spool/mail для пользовательских почтовых
 # ящиков, которые Shadow использует по умолчанию, на /var/mail, используемое в
 # LFS. Еще удалим /bin и /sbin из PATH, поскольку они являются символическими
 # ссылками на свои аналоги в /usr
-sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD YESCRYPT@' \
-    -e 's@/var/spool/mail@/var/mail@'                   \
-    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                  \
+sed -e 's@#ENCRYPT_METHOD SHA512@ENCRYPT_METHOD YESCRYPT@' \
+    -e 's@/var/spool/mail@/var/mail@'                      \
+    -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                     \
     -i etc/login.defs || exit 1
 
 ./configure           \
@@ -54,30 +48,30 @@ sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD YESCRYPT@' \
     --with-{b,yes}crypt || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
-# предотвращаем установку поставляемых файлов конфигурации PAM в /etc/pam.d/
-# мы создадим эти файлы конфигурации явно
+# Предотвращаем установку поставляемых файлов конфигурации PAM в /etc/pam.d/
+# (мы создадим эти файлы конфигурации явно).
 #    pamddir=
 make exec_prefix=/usr pamddir= install DESTDIR="${TMP_DIR}"
 make -C man install-man DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ###
-# Конфигурация для работы с Linux-PAM
+# Конфигурация для работы с Linux-PAM.
 ###
-
+#
 # Конфиги:
 #    /etc/pam.d/*
 #    /etc/pam.conf
 #    /etc/login.defs
 #    /etc/security/*
 
-# программа входа в систему в настоящее время выполняет множество функций,
+# Программа входа в систему в настоящее время выполняет множество функций,
 # которые теперь должны обрабатывать модули Linux-PAM. Следующая команда sed
 # закомментирует соответствующие строки в файле /etc/login.defs и запретит
-# пользователю выполнять эти функции
+# пользователю выполнять эти функции.
 LOGIN_DEFS="/etc/login.defs"
 for FUNCTION in FAIL_DELAY               \
                 FAILLOG_ENAB             \

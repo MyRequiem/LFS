@@ -14,30 +14,35 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-VERSION="$(echo "${VERSION}" | cut -d _ -f 2)"
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# сборка и установка пакета должна производится в один поток, все утилиты
-# устанавливаем в /usr/bin/
-export BINDIR='/usr/bin' SBINDIR='/usr/bin' && \
-yes "" |  make -j1 || exit 1
-# пакет не имеет набора тестов
-make -j1 install DESTDIR="${TMP_DIR}"
-unset BINDIR SBINDIR
+# Сборка и установка пакета должна производится в один поток.
+export BINDIR='/usr/bin' SBINDIR='/usr/bin'
+yes "" | make -j1 config || exit 1
 
-# утилиты ifconfig и hostname, уже были установлены в системе с пакетом
+# Утилиты netrom, x25 и rose отключены в Linux-7.1.x.
+sed -e /ROM/s/1/0/  \
+    -e /X25/s/1/0/  \
+    -e /ROSE/s/1/0/ \
+    -i config.h || exit 1
+
+# Пакет не имеет набора тестов.
+make -j1 install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Утилиты ifconfig и hostname, уже были установлены в системе с пакетом
 # inetutils (LFS), поэтому удалим их. Так же удалим утилиты, которые не
-# подходят для нашей системы и лишние man-страницы
+# подходят для нашей системы и лишние man-страницы.
 rm -f  "${TMP_DIR}/usr/bin"/{nis,yp}domainname
 rm -f  "${TMP_DIR}/usr/bin"/{hostname,dnsdomainname,domainname,ifconfig}
-rm -f  "${TMP_DIR}/usr/share/man/man8/ifconfig.8"
 rm -rf "${TMP_DIR}/usr/share/man/man1"
-
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -f  "${TMP_DIR}/usr/share/man/man8/ifconfig.8"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

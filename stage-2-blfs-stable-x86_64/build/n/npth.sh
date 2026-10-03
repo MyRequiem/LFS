@@ -5,7 +5,7 @@ PRGNAME="npth"
 ### NPth (New GNU Portable Threads Library)
 # Библиотека для управления параллельными задачами в программах (потоками в
 # пользовательском пространстве), ориентированная на использование в проектах
-# GnuPG
+# GnuPG.
 
 # Required:    no
 # Recommended: no
@@ -25,10 +25,11 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

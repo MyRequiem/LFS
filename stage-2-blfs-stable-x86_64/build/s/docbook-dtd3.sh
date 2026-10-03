@@ -39,7 +39,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 SHARE_SGML="/usr/share/sgml/docbook/sgml-dtd-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/sgml,"${SHARE_SGML}"}
 
-# удалим некоторые определения из файла-каталога
+# Удалим некоторые определения из файла-каталога.
 sed -i -e '/ISO 8879/d'                                           \
        -e 's|DTDDECL "-//OASIS//DTD DocBook V3.1//EN"|SGMLDECL|g' \
        docbook.cat || exit 1

@@ -12,7 +12,6 @@ PRGNAME="openssh"
 #              linux-pam
 #              Graphical Environments
 #              mit-kerberos-v5
-#              which                    (для тестов)
 #              net-tools                (runtime)
 #              sysstat                  (runtime)
 #              libedit                  (https://www.thrysoee.dk/editline)
@@ -20,10 +19,10 @@ PRGNAME="openssh"
 #              opensc                   (https://github.com/OpenSC/OpenSC/wiki)
 #              libsectok                (http://www.citi.umich.edu/projects/smartcard/sectok.html)
 
-### Конфиги
-#    /.ssh/*
+### Конфиги:
 #    /etc/ssh/ssh_config
 #    /etc/ssh/sshd_config
+#    ~/.ssh/*
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,15 +33,15 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man1"
 mkdir -pv "${TMP_DIR}${MAN}"
 
-# каталог /var/lib/sshd должен существовать в системе
+# Каталог /var/lib/sshd должен существовать в системе.
 install -v -g sys -m700 -d /var/lib/sshd
 install -v -g sys -m700 -d "${TMP_DIR}/var/lib/sshd"
 
-# добавим группу sshd, если не существует
+# Добавим группу sshd, если не существует.
 ! grep -qE "^sshd:" /etc/group  && \
     groupadd -g 50 sshd
 
-# добавим пользователя sshd, если не существует
+# Добавим пользователя sshd, если не существует.
 ! grep -qE "^sshd:" /etc/passwd && \
     useradd -c 'sshd PrivSep' \
             -d /var/lib/sshd  \
@@ -63,14 +62,14 @@ make || exit 1
 # make -j1 tests
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # /usr/bin/ssh-copy-id
 install -v -m755 contrib/ssh-copy-id "${TMP_DIR}/usr/bin"
-# man-страница
+# Man-страница.
 install -v -m644 contrib/ssh-copy-id.1 "${TMP_DIR}${MAN}"
 
-# для запуска SSH сервера при старте системы добавим скрипт инициализации в
+# Для запуска SSH сервера при старте системы добавим скрипт инициализации в
 # /etc/rc.d/init.d/ и ссылки в /etc/rc.d/rc{0-6}.d/
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -88,13 +87,14 @@ if [ -f "${SSHD_CONFIG}" ]; then
     mv "${SSHD_CONFIG}" "${SSHD_CONFIG}.old"
 fi
 
-# остановим демон, если запущен (переустанавливаем пакет)
+# Остановим демон, если запущен (переустанавливаем пакет).
 if [ -x /etc/rc.d/init.d/sshd ]; then
     /etc/rc.d/init.d/sshd stop
 fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${SSH_CONFIG}"
@@ -102,16 +102,8 @@ config_file_processing "${SSHD_CONFIG}"
 
 /etc/rc.d/init.d/sshd start
 
-# создадим новые ключи хоста в /etc/ssh/, если они еще не существуют
-# ssh_host_dsa_key
-# ssh_host_dsa_key.pub
-# ssh_host_ecdsa_key
-# ssh_host_ecdsa_key.pub
-# ssh_host_ed25519_key
-# ssh_host_ed25519_key.pub
-# ssh_host_rsa_key
-# ssh_host_rsa_key.pub
-ssh-keygen -A
+# Создадим новые хост-ключи /etc/ssh/ssh_host_*, если они еще не существуют:
+! compgen -G "/etc/ssh/ssh_host_*" &>/dev/null && ssh-keygen -A
 
 cp /etc/ssh/ssh_host_* "${TMP_DIR}/etc/ssh"
 

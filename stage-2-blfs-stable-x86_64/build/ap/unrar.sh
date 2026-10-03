@@ -38,8 +38,8 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 make -f makefile
-# пакет не имеет набора тестов
-install -v -m755 -D unrar "${TMP_DIR}/usr/bin/unrar"
+# Пакет не имеет набора тестов.
+install -v -m755 -D "${PRGNAME}" "${TMP_DIR}/usr/bin/${PRGNAME}"
 
 source "${ROOT}/stripping.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /

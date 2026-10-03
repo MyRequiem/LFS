@@ -29,7 +29,7 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -sv sgmlspl.pl "${TMP_DIR}/usr/bin/sgmlspl"
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="lmdb"
-ARCH_NAME="openldap-LMDB"
+ARCH_NAME="LMDB"
 
 ### LMDB (Lightning Memory-Mapped Database)
 # Сверхбыстрая и компактная база данных "ключ-значение" в виде обычного файла,
@@ -15,12 +15,9 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-TARBALL="$(find "${SOURCES}" -type f \
+VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}_*.tar.?z*" 2>/dev/null | sort | head -n 1 | rev | \
-    cut -d / -f 1 | rev)"
-
-VERSION="$(echo "${TARBALL}" | cut -d _ -f 2- | cut -d - -f 1)"
-HASH_COMMIT="$(echo "${TARBALL}" | cut -d - -f 3- | cut -d . -f 1)"
+    cut -d . -f 3- | cut -d _ -f 1 | rev)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -30,8 +27,8 @@ cd "${BUILD_DIR}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-tar xvf "${SOURCES}/${ARCH_NAME}_${VERSION}-${HASH_COMMIT}"*.tar.?z* || exit 1
-cd "${ARCH_NAME}_${VERSION}-${HASH_COMMIT}" || exit 1
+tar xvf "${SOURCES}/${ARCH_NAME}_${VERSION}".tar.?z* || exit 1
+cd "openldap-${ARCH_NAME}_${VERSION}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -43,15 +40,18 @@ find -L . \
 cd libraries/liblmdb || exit 1
 
 make || exit 1
-# не устанавливаем статическую библиотеку liblmdb.a
-sed -i 's| liblmdb.a||' Makefile
-# пакет не имеет набора тестов
+
+# Пакет не имеет набора тестов.
+
+# Не устанавливаем статическую библиотеку liblmdb.a
+sed -i 's| liblmdb.a||' Makefile || exit 1
 make prefix=/usr install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -64,7 +64,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Developed for the OpenLDAP Project.
 #
 # Home page: https://www.symas.com/symas-embedded-database-${PRGNAME}
-# Download:  https://git.openldap.org/openldap/openldap/-/archive/LMDB_${VERSION}.tar.bz2
+# Download:  https://github.com/openldap/openldap/archive/refs/tags/${ARCH_NAME}_${VERSION}.tar.gz
 #
 EOF
 

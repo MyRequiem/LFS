@@ -18,18 +18,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# не сжимаем man-страницы
+# Не сжимаем man-страницы.
 sed -i '/GZIP/s/^/#/' makefile || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make doc_dir="/usr/share/doc/${PRGNAME}-${VERSION}/" install \
     DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

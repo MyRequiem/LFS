@@ -17,27 +17,29 @@ ARCH_NAME="Linux-PAM"
 #              libeconf                     (https://github.com/openSUSE/libeconf)
 #              --- для документации ---
 #              docbook-xml
-#              docbook-xsl
+#              docbook-xsl-ns
 #              fop                          (pdf)
 #              libxslt
 #              lynx                         (plain text)
 
-### Конфигурация ядра
+###
+# Конфигурация ядра.
 #    CONFIG_AUDIT=y
+###
 
 ###
 # IMPORTANT
 ###
 # После установки/переустановки/обновления 'linux-pam' пакет 'shadow'
-# ОБЯЗАТЕЛЬНО должен быть пересобран и сконфигурирован для работы с Linux PAM
+# ОБЯЗАТЕЛЬНО должен быть пересобран и сконфигурирован для работы с Linux PAM.
 #
 # Нужно быть осторожными при изменении файлов в /etc/pam.d/, иначе система
-# может стать совершенно непригодной для использования
+# может стать совершенно непригодной для использования.
 #
 # Переустановка/обновление данного пакета перезаписывает файлы конфигурации:
 #    /usr/share/pam/environment
 #    /usr/share/pam/security/
-# Нужно ОБЯЗАТЕЛЬНО сделать их резервные копии
+# Нужно ОБЯЗАТЕЛЬНО сделать их резервные копии.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -58,17 +60,17 @@ meson setup ..          \
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 chmod -v 4755 "${TMP_DIR}/usr/sbin/unix_chkpwd"
 
-# удалим бесполезный каталог
+# Удалим бесполезный каталог.
 rm -rf "${TMP_DIR}/usr/lib/systemd"
 
 ###
-# Конфигурация Linux-PAM
+# Конфигурация Linux-PAM.
 ###
-
+#
 # Конфиги:
 #    /etc/pam.d/*
 #    /etc/security/*
@@ -119,9 +121,9 @@ if [ -f "${SYSTEM_PASSWORD}" ]; then
     mv "${SYSTEM_PASSWORD}" "${SYSTEM_PASSWORD}.old"
 fi
 
-# добавим ограничительный конфиг /etc/pam.d/other с которым приложения,
+# Добавим ограничительный конфиг /etc/pam.d/other с которым приложения,
 # поддерживающие PAM, не будут запускаться, если не существует файла
-# конфигурации специально для этого приложения
+# конфигурации специально для этого приложения.
 OTHER="/etc/pam.d/other"
 cat << EOF > "${TMP_DIR}${OTHER}"
 auth        required        pam_warn.so

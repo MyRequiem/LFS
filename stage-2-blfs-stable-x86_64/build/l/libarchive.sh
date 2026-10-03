@@ -6,7 +6,7 @@ PRGNAME="libarchive"
 # Универсальная библиотека, позволяющая программам работать с архивами разных
 # форматов (tar, zip, iso и др.) как с обычными каталогами, а также включает в
 # себя реализацию общих инструментов командной строки bsdcat, bsdcpio, bsdtar,
-# bsdunzip
+# bsdunzip.
 
 # Required:    no
 # Recommended: no
@@ -33,15 +33,16 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# создадим ссылку
+# Создадим ссылку:
 #    unzip -> bsdunzip
-# т.к. пакет unzip больше не поддерживается (unmaintained)
+# т.к. пакет unzip больше не поддерживается (unmaintained).
 ln -sfv bsdunzip "${TMP_DIR}/usr/bin/unzip"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

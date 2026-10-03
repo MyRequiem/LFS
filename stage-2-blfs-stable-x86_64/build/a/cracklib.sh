@@ -13,11 +13,11 @@ PRGNAME="cracklib"
 ### IMPORTANT
 # Если хотим обеспечить поддержку надежных паролей в системе, после
 # установки/переустановки/обновления пакета CrackLib необходимо пересобрать
-# пакет 'shadow'
+# пакет 'shadow'.
 
 ### NOTE:
 # Далее мы будем устанавливать пакет 'linux-pam', после которого 'shadow' нужно
-# будет обязательно пересобрать
+# будет обязательно пересобрать.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -36,20 +36,20 @@ mkdir -pv "${TMP_DIR}"{"${LIB_CRACKLIB}","${DICT}"}
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# создадим список нежелательных слов для выбора в качестве паролей
+# Создадим список нежелательных слов для выбора в качестве паролей
 # cracklib-words-2.10.3.xz
-# можно скачать и установить сколько угодно таких списков
+# Можно скачать и установить сколько угодно таких списков:
 #    https://www.skullsecurity.org/wiki/Passwords
 xzcat "${SOURCES}/${PRGNAME}-words-${VERSION}.xz" > \
     "${TMP_DIR}${DICT}/cracklib-words" || exit 1
 
-# ссылка /usr/share/dict/words -> cracklib-words
+# Ссылка /usr/share/dict/words -> cracklib-words
 ln -v -sf cracklib-words "${TMP_DIR}${DICT}/words"
 
-# создадим свой список слов cracklib-extra-words, например, с одним словом -
-# имя хоста
+# Создадим свой список слов cracklib-extra-words, например, с одним словом -
+# имя хоста.
 hostname >> "${TMP_DIR}${DICT}/cracklib-extra-words"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -57,22 +57,21 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# создадим словарь /usr/lib/cracklib/pw_dict.{hwm,pwd,pwi}
+# Создадим словарь /usr/lib/cracklib/pw_dict.{hwm,pwd,pwi}
 create-cracklib-dict               \
     /usr/share/dict/cracklib-words \
     /usr/share/dict/cracklib-extra-words
 
 cp "${LIB_CRACKLIB}"/* "${TMP_DIR}${LIB_CRACKLIB}"/
 
-# тест python-модуля (только после установки пакета)
+# Тест python-модуля (только после установки пакета):
 #    $ python3 -c 'import cracklib; cracklib.test()'
 #    cracklib is installed in: /usr/lib/python3.14/site-packages
-#    cracklib is installed in: /usr/lib/python3.14/site-packages
 #    cracklib version: 2.8.19
-#    3.14.3 (main, Mar 15 2026, 03:27:09) [GCC 15.2.0]
+#    3.14.7 (main, Sep  5 2026, 07:54:40) [GCC 16.2.0]
 #    ...........
 #    ----------------------------------------------------------------------
-#    Ran 11 tests in 0.008s
+#    Ran 11 tests in 0.007s
 #
 #    OK
 

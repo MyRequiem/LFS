@@ -11,9 +11,10 @@ PRGNAME="docbook-utils"
 # Required:    openjade
 #              docbook-dsssl
 #              docbook-dtd3
-# Recommended: no
-# Optional:    perl-sgmlspm             (для конвертации в man и texinfo)
+# Recommended: --- runtime ---
+#              perl-sgmlspm             (для конвертации в man и texinfo)
 #              lynx или links или w3m   (http://w3m.sourceforge.net/) для конвертации в ASCII text
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,11 +23,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим синтаксис в сценарии jw (Jade Wrapper) для grep
+# Исправим синтаксис в сценарии jw (Jade Wrapper) для grep.
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-grep_fix-1.patch" || exit 1
 
-# изменим каталог установки HTML-документов
+# Изменим каталог установки HTML-документов.
 sed -i 's:/html::' doc/HTML/Makefile.in || exit 1
 
 ./configure       \
@@ -34,12 +35,12 @@ sed -i 's:/html::' doc/HTML/Makefile.in || exit 1
     --mandir=/usr/share/man || exit 1
 
 make || exit 1
-# пакет не имет набора тестов
+# Пакет не имет набора тестов.
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# установим некоторые ссылки для совместимости
+# Установим некоторые ссылки для совместимости.
 for DOCTYPE in html ps dvi man pdf rtf tex texi txt; do
     ln -svf "docbook2${DOCTYPE}" "${TMP_DIR}/usr/bin/db2${DOCTYPE}"
 done
@@ -61,7 +62,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # languages.
 #
 # Home page: https://sourceware.org/docbook-tools/
-# Download:  https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

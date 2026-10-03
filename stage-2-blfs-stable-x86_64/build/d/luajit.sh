@@ -18,20 +18,21 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# параметр amalg обеспечивает объединенную сборку, т.е. ядро LuaJIT
+# Параметр amalg обеспечивает объединенную сборку, т.е. ядро LuaJIT
 # компилируется как один огромный C-файл, что позволяет GCC генерировать более
-# быстрый и короткий код
+# быстрый и короткий код.
 make PREFIX=/usr amalg
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим статическую библиотеку
+# Удалим статическую библиотеку.
 rm -v "${TMP_DIR}/usr/lib/libluajit-5.1.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -42,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # performance while also having a low memory footprint.
 #
 # Home page: https://${PRGNAME}.org
-# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://ftp.lfs-matrix.net/pub/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

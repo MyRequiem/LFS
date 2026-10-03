@@ -13,7 +13,6 @@ PRGNAME="openldap"
 #              mariadb или postgresql или mysql (http://www.mysql.com/)
 #              openslp                          (http://www.openslp.org/)
 #              wiredtiger                       (https://www.mongodb.com/docs/manual/core/wiredtiger/)
-#              berkeley-db                      (https://www.oracle.com/database/technologies/related/berkeleydb.html)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,7 +23,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
 ### NOTE:
-# собираем ТОЛЬКО клиентскую сторону и библиотеки
+# Собираем ТОЛЬКО клиентскую сторону и библиотеки.
 
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-consolidated-1.patch" || exit 1
@@ -40,10 +39,10 @@ autoconf || exit 1
 
 make depend || exit 1
 make        || exit 1
-# при сборке только клиента и библиотек тесты не доступны
+# При сборке только клиента и библиотек тесты недоступны.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 LDAP_CONF="/etc/openldap/ldap.conf"
 if [ -f "${LDAP_CONF}" ]; then
@@ -52,6 +51,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LDAP_CONF}"
@@ -65,7 +65,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # used to provide authentication (such as for email)
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://www.${PRGNAME}.org/software/download/OpenLDAP/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
+# Download:  https://mirror.math.princeton.edu/pub/${PRGNAME}/${PRGNAME}-release/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 
