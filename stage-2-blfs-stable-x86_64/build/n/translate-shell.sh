@@ -17,21 +17,24 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим prefix в Makefile:
+# Исправим prefix в Makefile.
 #    PREFIX= /usr/local -> /usr
 #    TARGET= bash       -> ''
-sed                                  \
-  -e '/^PREFIX/s,\(/usr\)/local,\1,' \
-  -e '/^TARGET/s,bash,'"$TARGET"','  \
-  -i Makefile || exit 1
+sed                                    \
+    -e '/^PREFIX/s,\(/usr\)/local,\1,' \
+    -e '/^TARGET/s,bash,'"$TARGET"','  \
+    -i Makefile || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 find "${TMP_DIR}/usr/share/man" -type f -exec chmod 644 {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

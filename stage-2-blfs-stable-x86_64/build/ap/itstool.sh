@@ -20,8 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# применим патч, чтобы использовать python3-lxml для обработки файлов XML
-# вместо устаревшего (отключенного по умолчанию) модуля Python из libxml2
+# Применим патч, чтобы использовать python3-lxml для обработки файлов XML
+# вместо устаревшего (отключенного по умолчанию) модуля Python из libxml2.
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-lxml-1.patch" || exit 1
 
@@ -33,7 +33,7 @@ make || exit 1
 # python3 tests/run_tests.py
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

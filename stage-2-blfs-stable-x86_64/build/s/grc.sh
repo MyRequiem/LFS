@@ -25,6 +25,8 @@ mkdir -pv "${TMP_DIR}${ETC_DEFAULT}"
 
 rm -f "${TMP_DIR}/etc/${PRGNAME}".{fish,zsh}
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 cat << EOF > "${TMP_DIR}${ETC_DEFAULT}/${PRGNAME}"
 GRC_ALIASES=true
 EOF
@@ -42,6 +44,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${GRC_CONF}"

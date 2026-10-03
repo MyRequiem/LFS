@@ -18,13 +18,14 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-# whois и mkpasswd
+# Установка whois, password и файлов локали.
 make prefix=/usr install-whois    BASEDIR="${TMP_DIR}"
 make prefix=/usr install-mkpasswd BASEDIR="${TMP_DIR}"
-# файлы локали
 make prefix=/usr install-pos      BASEDIR="${TMP_DIR}"
 
-# утилита mkpasswd уже была установлена в LFS с пакетом expect, удалим ее
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Утилита mkpasswd уже была установлена в LFS с пакетом expect, удалим ее.
 rm -f /usr/bin/mkpasswd /usr/share/man/man1/mkpasswd.1
 sed '/mkpasswd/d' -i /var/log/packages/expect-*
 

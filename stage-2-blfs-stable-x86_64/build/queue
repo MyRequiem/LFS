@@ -6,7 +6,7 @@ a/cracklib.sh
 a/linux-pam.sh
 a/shadow.sh
 # Пакет libpwquality перед обновлением/переустановкой удалить.
-#    # removepkg --backup /var/log/packages/libpwquality-<version>
+#    $ removepkg --backup /var/log/packages/libpwquality-<version>
 l/libpwquality.sh
 # =================
 s/bash-completion.sh
@@ -24,7 +24,7 @@ n/npth.sh
 l/libidn.sh
 l/libidn2.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
@@ -64,14 +64,13 @@ n/cyrus-sasl.sh
 n/openldap.sh
 l/fuse3.sh
 n/gnupg.sh
-
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-lxml.sh
-# если пакет уже установлен (обновляем систему), glib сначала нужно удалить
-#    # removepkg --backup /var/log/packages/glib-<version>
+# Пакет glib удаляем перед пересборкой/обновлением.
+#    $ removepkg --backup /var/log/packages/glib-<version>
 l/glib.sh
 n/sshfs.sh
 d/lua.sh
@@ -80,11 +79,13 @@ l/boost.sh
 ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
-# если обновляем систему, пакет gc перед обновлением НЕ удалять. При компиляции
-# ранее пакет make с ним связывается и без gc сборка будет невозможной.
+# Перед переустановкой/обновлением пакет gc НЕ удалять.
 d/gc.sh
 n/w3m.sh
 # === Документация, XML, SGML, man ====
+# При обновлении BLFS пакеты этой группы (docbook-xml - itstool) нужно сначала
+# удалить из системы.
+#    $ removepkg --backup /var/log/packages/<pkgname>-<version>
 s/docbook-xml.sh
 s/docbook-xsl.sh
 s/xmlto.sh
@@ -114,9 +115,8 @@ ap/unrar.sh
 ap/lzip.sh
 ap/7zip.sh
 a/lrzip.sh
-# перед переустановкой/обновлением пакета sudo, его сначала нужно удалить из
-# системы:
-#    # removepkg --backup /var/log/packages/sudo-<version>
+# Удаляем пакет sudo перед переустановкой/обновлением:
+#    $ removepkg --backup /var/log/packages/sudo-<version>
 ap/sudo.sh
 # На данный момент установлены все необходимые пакеты для более-менее
 # комфортной работы в чистой linux-консоли:
@@ -130,10 +130,10 @@ ap/sudo.sh
 #    - консольный браузер w3m
 #    - git
 #    - htop
-# поэтому можно загрузить LFS и далее собирать пакеты в чистой среде без chroot
+# Можно загрузить LFS и далее собирать пакеты в чистой среде без chroot.
 #
 # NOTE:
-#    в файле /root/src/lfs/check_environment.sh необходимо закомментировать
+#    В файле /root/src/lfs/check_environment.sh необходимо закомментировать
 #    строки, которые отвечают за проверку chroot среды:
 #
 # ==================== /root/src/lfs/check_environment.sh ======================
@@ -149,7 +149,7 @@ ap/sudo.sh
 # необходимо обновить/установить ssl-сертификаты, иначе он будет ругаться на их
 # отсутствие: unable to get local issuer certificate
 #
-#    # update-ca-certificates
+#    $ update-ca-certificates
 #    ......
 #    ......
 #    ......
@@ -178,7 +178,7 @@ n/curl.sh
 d/cmake.sh
 # === python3-pygments ===
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-trove-classifiers.sh
 d/python-modules/python3-setuptools-scm.sh
 d/python-modules/python3-pluggy.sh
@@ -197,7 +197,7 @@ l/popt.sh
 n/rsync.sh
 l/libyaml.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyyaml.sh
 l/libunwind.sh
 d/llvm.sh
@@ -250,7 +250,7 @@ l/dbus-glib.sh
 #=== python3-dbus ========
 d/patchelf.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
@@ -309,7 +309,7 @@ x/utils/libva-utils.sh
 x/libs/libepoxy.sh
 l/hicolor-icon-theme.sh
 # пакет xkeyboard-config удалить перед обновлением версии
-#    # removepkg --backup /var/log/packages/xkeyboard-config-<version>
+#    $ removepkg --backup /var/log/packages/xkeyboard-config-<version>
 # если изменяли /usr/share/X11/xkb/symbols/capslock, например добавляли
 # какие-то свои секции, то сохраните его перед удалением пакета
 x/data/xkeyboard-config.sh
@@ -318,7 +318,7 @@ d/sassc.sh
 l/gtk+3.sh
 l/graphene.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
 l/adwaita-icon-theme.sh
@@ -410,7 +410,7 @@ l/gcr3.sh
 l/gcr4.sh
 l/libcap-ng.sh
 l/gnome-keyring.sh
-# пересоберем pinentry уже со всеми зависимостями
+# Пересоберем pinentry уже со всеми зависимостями.
 n/pinentry.sh
 n/libtirpc.sh
 a/dialog.sh
@@ -418,7 +418,7 @@ l/alsa-plugins.sh
 ap/alsa-utils.sh
 ap/alsa-tools.sh
 l/imlib2.sh
-# пересоберем w3m уже со всеми зависимостями
+# Пересоберем w3m уже со всеми зависимостями.
 n/w3m.sh
 l/glibmm26.sh
 l/atkmm22.sh
@@ -426,10 +426,10 @@ l/cairomm114.sh
 l/pangomm24.sh
 l/gtkmm3.sh
 ###
-# ATTENTION
-#    major.minor версия пакета glib должна быть == major.minor версии пакета
+# ATTENTION:
+#    Major.Minor версия пакета glib должна быть == Major.Minor версии пакета
 #    glibmm28. Например:
-#       <pkg-name>-<major>.<minor>.<micro>
+#       <pkg-name>-<Major>.<Minor>.<Micro>
 #       glib-2.86.4 => glibmm28-2.86.0
 l/glibmm28.sh
 l/cairomm118.sh
@@ -450,7 +450,7 @@ x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
 l/libei.sh
@@ -502,11 +502,11 @@ x/apps/i3.sh
 l/libnsl.sh
 d/python3.sh
 # пакет vim перед обновлением удалить из системы
-#    # removepkg --backup /var/log/packages/vim-<version>
+#    $ removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
 # === bumblebee-status ===
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
 ap/gsimplecal.sh
@@ -555,7 +555,7 @@ l/libass.sh
 l/fdk-aac.sh
 l/xvid.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-glad.sh
 l/libplacebo.sh
 l/ffmpeg.sh
@@ -576,7 +576,7 @@ l/vte3.sh
 l/libslirp.sh
 s/usbredir.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
 d/spice-protocol.sh
@@ -595,7 +595,7 @@ s/gtk-vnc.sh
 l/libvirt-glib.sh
 n/tunctl.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
 d/python-modules/python3-libvirt.sh
@@ -690,7 +690,7 @@ l/pipewire.sh
 l/wireplumber.sh
 l/xdg-desktop-portal.sh
 # Python3 модули удаляем из системы перед обновлением.
-#    # removepkg --backup /var/log/packages/<pkg_name>-<version>
+#    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh
 s/tint2.sh

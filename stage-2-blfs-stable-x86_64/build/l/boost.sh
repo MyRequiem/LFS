@@ -17,8 +17,8 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}-*.tar.?z*" \
-    2>/dev/null | head -n 1 | cut -d - -f 2)"
+VERSION="$(find ${SOURCES} -type f -name "${PRGNAME}-*.tar.?z*" 2>/dev/null | \
+    head -n 1 | cut -d - -f 2)"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
@@ -38,7 +38,7 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr"
 
-# пакет лучше собирать в несколько потоков
+# Пакет лучше собирать в несколько потоков.
 NUMJOBS="${MAKEFLAGS}"
 [ -z "${NUMJOBS}" ] && NUMJOBS="-j$(nproc)"
 
@@ -46,16 +46,16 @@ NUMJOBS="${MAKEFLAGS}"
     --prefix=/usr \
     --with-python=python3 || exit 1
 
-# гарантирует, что Boost будет построен с поддержкой многопоточности
+# Гарантирует, что Boost будет построен с поддержкой многопоточности.
 #    threading=multi
-# создаем только shared библиотеки, за исключением libboost_exception и
-# libboost_test_exec_monitor, которые создаются как статические
+# Создаем только shared библиотеки, за исключением libboost_exception и
+# libboost_test_exec_monitor, которые создаются как статические.
 #    link=shared
 ./b2 stage "${NUMJOBS}" \
     threading=multi     \
     link=shared || exit 1
 
-# тесты
+# Тесты.
 # pushd tools/build/test || exit 1
 # python3 test_all.py
 # popd || exit 1
@@ -70,10 +70,11 @@ rm -rf /usr/lib/cmake/[Bb]oost*
     link=shared     \
     --prefix="${TMP_DIR}/usr"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

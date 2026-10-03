@@ -17,7 +17,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# некоторые пакеты проверяют файл pkg-config для Lua, поэтому создадим его
+# Некоторые пакеты проверяют файл pkg-config для Lua, поэтому создадим его.
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > lua.pc
 V=${MAJ_VERSION}
@@ -45,13 +45,13 @@ EOF
 patch -Np1 --verbose -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-shared_library-1.patch" || exit 1
 
-make linux
+make linux || exit 1
 
-# тест запустит интерпретатор и выведет версию lua
+# Тест запустит интерпретатор и выведет версию lua.
 echo -e "\n--- Test Lua version ---"
 make test
 echo -e "------------------------"
-echo -n "Press any key... "
+echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 
@@ -64,10 +64,11 @@ make                                                                 \
 
 install -v -m644 -D lua.pc "${TMP_DIR}/usr/lib/pkgconfig/lua.pc"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

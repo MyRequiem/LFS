@@ -10,8 +10,17 @@ ARCH_NAME="OpenSP"
 
 # Required:    sgml-common
 # Recommended: no
-# Optional:    libnsl
+# Optional:    libnsl       (см. NOTE)
 #              xmlto
+
+### NOTE:
+# libnsl (Network Support Library) - библиотека, которая исторически
+# использовалась для поддержки сетевых служб NIS/YP (Network Information
+# Service) и RPC (Remote Procedure Call). Современный OpenSP используется
+# локально (например, как транзитивная зависимость для OpenJade, сборки
+# документации DocBook или валидации локальных XML/SGML-файлов). Для
+# стандартных сетевых запросов сегодня применяются совершенно другие механизмы,
+# а не архаичный NIS.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -23,7 +32,7 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-gcc14-1.patch" || exit 1
 
-# предотвратим некоторые надоедливые сообщения во время работы openjade
+# Предотвратим некоторые надоедливые сообщения во время работы openjade.
 sed -i 's/32,/253,/' lib/Syntax.cxx                     || exit 1
 sed -i 's/LITLEN          240 /LITLEN          8092/' \
     unicode/{gensyntax.pl,unicode.syn}                  || exit 1
@@ -43,7 +52,7 @@ make                                                     \
     docdir="/usr/share/doc/${PRGNAME}-${VERSION}"        \
     install  DESTDIR="${TMP_DIR}" || exit 1
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -v -sf onsgmls   "${TMP_DIR}/usr/bin/nsgmls"
 ln -v -sf osgmlnorm "${TMP_DIR}/usr/bin/sgmlnorm"

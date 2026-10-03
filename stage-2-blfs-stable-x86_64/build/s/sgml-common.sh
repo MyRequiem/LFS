@@ -13,6 +13,9 @@ PRGNAME="sgml-common"
 # Recommended: no
 # Optional:    no
 
+### NOTE:
+# Перед переустановкой/обновлением пакет нужно удалить из системы.
+
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
@@ -20,7 +23,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим синтаксис doc/man/Makefile.am для текущей версии Automake
+# Исправим синтаксис doc/man/Makefile.am для текущей версии Automake.
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-manpage-1.patch" || exit 1
 
@@ -30,19 +33,10 @@ autoreconf -f -i || exit 1
     --sysconfdir=/etc || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make docdir=/usr/share/doc install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
-
-# перед обновлением пакета нужно удалить некоторые файлы
-if command -v install-catalog &>/dev/null; then
-    install-catalog --remove /etc/sgml/sgml-ent.cat \
-        /usr/share/sgml/sgml-iso-entities-8879.1986/catalog
-
-    install-catalog --remove /etc/sgml/sgml-docbook.cat \
-        /etc/sgml/sgml-ent.cat
-fi
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -64,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and maintaining centralized SGML catalogs.
 #
 # Home page: https://sourceware.org/ftp/docbook-tools/
-# Download:  https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/${PRGNAME}-${VERSION}.tgz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tgz
 #
 EOF
 

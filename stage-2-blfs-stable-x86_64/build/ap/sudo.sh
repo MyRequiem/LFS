@@ -21,7 +21,7 @@ PRGNAME="sudo"
 # WARNING
 ###
 # Перед переустановкой/обновлением пакета, его сначала нужно удалить из
-# системы, сохранив /etc/sudoers и /etc/sudoers.d/myrequiem
+# системы.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,7 +31,11 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/pam.d"
 
-# использовать переменную окружения EDITOR для visudo
+# Исправим сборку с openssl-4.x.x
+sed -e 's/\([->.a-zA-Z_]*\)->length/ASN1_STRING_length(\1)/' \
+    -i lib/iolog/hostcheck.c || exit 1
+
+# Использовать переменную окружения EDITOR для visudo.
 #    --with-env-editor
 ./configure                                         \
     --prefix=/usr                                   \
@@ -43,17 +47,17 @@ mkdir -pv "${TMP_DIR}/etc/pam.d"
 
 make || exit 1
 
-# тесты
-#    # env LC_ALL=C make check |& tee make-check.log
-# проверим результаты
-#    # grep failed ../make-check.log
+# Тесты.
+#    $ LC_ALL=C make check |& tee make-check.log
+# Проверим результаты:
+#    $ grep failed make-check.log
 
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/run"
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
+# Закомментируем строку 'root ALL=(ALL:ALL) ALL' в /etc/sudoers
 SUDOERS="/etc/sudoers"
 sed -e "s#^root ALL=(ALL:ALL) ALL#\# root ALL=(ALL:ALL) ALL#" -i \
     "${TMP_DIR}${SUDOERS}"

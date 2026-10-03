@@ -19,15 +19,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc/sgml"
 
-# исправим проблемы при сборке с использованием новых компиляторов
+# Исправим проблемы при сборке с использованием новых компиляторов.
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-upstream-1.patch" || exit 1
 
-# исправим проблему сборки с  perl >= 5.16
+# Исправим проблему сборки с  perl >= 5.16.
 sed -i -e '/getopts/{N;s#&G#g#;s#do .getopts.pl.;##;}' \
        -e '/use POSIX/ause Getopt::Std;' msggen.pl || exit 1
 
-# устанавливаем CXXFLAGS для предотвращения ошибок сегментации
+# Устанавливаем CXXFLAGS для предотвращения ошибок сегментации.
 export CXXFLAGS="${CXXFLAGS:--O2 -g} -fno-lifetime-dse" &&
 ./configure                                      \
     --prefix=/usr                                \
@@ -39,11 +39,11 @@ export CXXFLAGS="${CXXFLAGS:--O2 -g} -fno-lifetime-dse" &&
     --datadir="/usr/share/sgml/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install     DESTDIR="${TMP_DIR}"
 make install-man DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 ln -svf openjade       "${TMP_DIR}/usr/bin/jade"
 ln -svf libogrove.so   "${TMP_DIR}/usr/lib/libgrove.so"
@@ -77,7 +77,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The OpenJade package contains a DSSSL engine. This is useful for SGML and XML
 # transformations into RTF, TeX, SGML and XML.
 #
-# Home page: http://${PRGNAME}.sourceforge.net/
+# Home page: https://${PRGNAME}.sourceforge.net/
 # Download:  https://downloads.sourceforge.net/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF

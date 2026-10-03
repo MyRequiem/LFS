@@ -10,9 +10,10 @@ ARCH_NAME="${PRGNAME}-nons"
 # будет выглядеть в итоге (шрифты, отступы, таблицы).
 
 # Required:    libxml2
-#              docbook-xml
+#              docbook-xml      (зачем см. ниже)
 # Recommended: no
-# Optional:    apache-ant       (для сборки "webhelp" документации)
+# Optional:    --- runtime ---
+#              apache-ant       (для сборки "webhelp" документации)
 #              libxslt
 #              ruby             (для использования таблиц стилей "epub")
 #              zip              (для сборки "epub3" документации)
@@ -27,7 +28,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 XSL_STYLESHEETS="/usr/share/xml/docbook/xsl-stylesheets-nons-${VERSION}"
 mkdir -pv "${TMP_DIR}${XSL_STYLESHEETS}"
 
-# исправим проблему переполнения стека при выполнении рекурсии
+# Исправим проблему переполнения стека при выполнении рекурсии.
 patch --verbose -Np1 -i \
     "${SOURCES}/${ARCH_NAME}-${VERSION}-stack_fix-1.patch" || exit 1
 

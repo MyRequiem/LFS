@@ -8,8 +8,8 @@ PRGNAME="docbook-xml"
 # гарантирует, что структура вашего текста будет логичной и понятной для
 # программ, которые потом превратят его в красивый PDF, веб или man-страницу.
 
-# Required:    libarchive  (для распаковки архива с исходниками)
-#              libxml2
+# Required:    libxml2
+#              libarchive  (для распаковки архива с исходниками)
 # Recommended: no
 # Optional:    no
 
@@ -21,7 +21,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 XML_DTD="/usr/share/xml/docbook/xml-dtd-${VERSION}"
 mkdir -pv "${TMP_DIR}"{/etc/xml,"${XML_DTD}"}
 
-# устанавливаем
+# Устанавливаем:
 # shellcheck disable=SC2035
 cp -v -af --no-preserve=ownership \
     catalog.xml \
@@ -31,9 +31,9 @@ cp -v -af --no-preserve=ownership \
     *.mod       \
     "${TMP_DIR}${XML_DTD}"
 
-# поставляемый с пакетом catalog.xml обрабатывает формальные общедоступные
+# Поставляемый с пакетом catalog.xml обрабатывает формальные общедоступные
 # идентификаторы XML DTD DocBook-${VERSION}. Нам нужно добавить еще несколько
-# записей для обработки URL-адресов DTD
+# записей для обработки URL-адресов DTD.
 xmlcatalog --noout --add "rewriteSystem"               \
     "http://www.oasis-open.org/docbook/xml/${VERSION}" \
     "file://${XML_DTD}"                                \
@@ -44,7 +44,7 @@ xmlcatalog --noout --add "rewriteURI"                  \
     "file://${XML_DTD}"                                \
     "${TMP_DIR}${XML_DTD}/catalog.xml" || exit 1
 
-### /etc/xml/catalog
+# /etc/xml/catalog
 xmlcatalog --noout --create "${TMP_DIR}/etc/xml/catalog"
 
 xmlcatalog --noout --add "delegatePublic"  \
@@ -67,8 +67,8 @@ xmlcatalog --noout --add "delegateURI"     \
     "file://${XML_DTD}/catalog.xml" \
     "${TMP_DIR}/etc/xml/catalog" || exit 1
 
-# будем использовать docbook-xml-${VERSION} при запросе любой версии 4.x
-# (4.1.2, 4.2, 4.3, 4.4)
+# Будем использовать docbook-xml-${VERSION} при запросе любой версии 4.x
+# (4.1.2, 4.2, 4.3, 4.4).
 for DTDVERSION in 4.1.2 4.2 4.3 4.4; do
     xmlcatalog --noout --add "public"                                      \
         "-//OASIS//DTD DocBook XML V${DTDVERSION}//EN"                     \

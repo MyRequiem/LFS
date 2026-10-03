@@ -35,12 +35,15 @@ find -L . \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
 make -f unix/Makefile generic CC="gcc -std=gnu89" || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make prefix="${TMP_DIR}/usr" MANDIR="${TMP_DIR}/usr/share/man/man1" \
     -f unix/Makefile install
 
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

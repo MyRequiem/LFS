@@ -19,7 +19,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 MAN="/usr/share/man/man3"
 mkdir -pv "${TMP_DIR}${MAN}"
 
-# соберем C++ библиотеку вместе со стандартной библиотекой C
+# Соберем C++ библиотеку вместе со стандартной библиотекой C.
 #    --enable-cplusplus
 ./configure            \
     --prefix=/usr      \
@@ -31,13 +31,14 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 install -v -m644 "doc/${PRGNAME}.man" "${TMP_DIR}${MAN}/${PRGNAME}_malloc.3"
 ln -svf "${PRGNAME}_malloc.3" "${TMP_DIR}${MAN}/${PRGNAME}.3"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
