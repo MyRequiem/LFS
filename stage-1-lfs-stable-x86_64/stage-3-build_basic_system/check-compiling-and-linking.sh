@@ -4,7 +4,7 @@
 # полностью готова, важно снова убедиться, что компиляция и компоновка будут
 # работать должным образом.
 
-# вывод сообщений всех последующих команд должен быть на английском языке
+# Вывод сообщений всех последующих команд должен быть на английском языке.
 LC_MESSAGES=en_US.UTF-8
 LC_CTYPE=en_US.UTF-8
 LANG=en_US.UTF-8
@@ -17,7 +17,7 @@ echo ""
 echo "--------"
 echo "Step: 1"
 echo "--------"
-echo "# creating simple C-file"
+echo "# Creating simple C-file"
 echo "echo 'int main(){}' > dummy.c"
 echo 'int main(){}' > dummy.c
 echo "ls -l dummy.c"
@@ -31,8 +31,8 @@ echo ""
 echo "--------"
 echo "Step: 2"
 echo "--------"
-echo "# compiling source file dummy.c using 'cc' (link to gcc)'"
-echo "# (as a result of compilation, an object file a.out is generated)"
+echo "# Compiling source file dummy.c using 'cc' (link to gcc)'."
+echo "# As a result of compilation, an object file a.out is generated."
 echo "cc dummy.c -v -Wl,--verbose &> dummy.log"
 cc dummy.c -v -Wl,--verbose &> dummy.log
 echo "ls -l a.out"
@@ -46,8 +46,8 @@ echo ""
 echo "--------"
 echo "Step: 3"
 echo "--------"
-# посмотрим имя динамического компоновщика
-echo "# show dynamic linker name"
+# Посмотрим имя динамического компоновщика.
+echo "# Show dynamic linker name."
 echo "readelf -l a.out | grep ': /lib'"
 readelf -l a.out | grep ': /lib'
 echo ""
@@ -58,18 +58,18 @@ echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
-# если вывод не такой, как указано выше, или вывод не был получен вообще,
+# Если вывод не такой, как указано выше, или вывод не был получен вообще,
 # значит что-то не так.
 
 echo "--------"
 echo "Step: 4"
 echo "--------"
 VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
-# проверим настройки для стартовых файлов
+# Проверим настройки для стартовых файлов:
 # /usr/lib/Scrt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
-echo "# make sure that we're setup to use the correct start files"
+echo "# Make sure that we're setup to use the correct start files."
 echo "grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log"
 grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
 echo ""
@@ -89,8 +89,8 @@ echo ""
 echo "--------"
 echo "Step: 5"
 echo "--------"
-# убедимся, что компилятор ищет правильные заголовочные файлы
-echo "# verify that the compiler is searching for the correct header files"
+# Убедимся, что компилятор ищет правильные заголовочные файлы.
+echo "# Verify that the compiler is searching for the correct header files."
 echo "grep -B4 '^ /usr/include' dummy.log"
 grep -B4 '^ /usr/include' dummy.log
 echo ""
@@ -109,14 +109,15 @@ echo ""
 echo "--------"
 echo "Step: 6"
 echo "--------"
-# убедимся, что новый компоновщик использует правильные пути для поиска
-echo "verify that the new linker is being used with the correct search paths"
+# Убедимся, что новый компоновщик использует правильные пути для поиска.
+echo "# Verify that the new linker is being used with the correct search paths."
 printf "grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\\\n|g'\n"
 grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\n|g'
 echo ""
-# ссылки на пути, в которых есть компоненты с -linux-gnu, должны
-# игнорироваться, но весь остальной вывод должен быть такой
-echo "# The output should be something like this:"
+# Ссылки на пути, в которых есть компоненты с -linux-gnu, должны
+# игнорироваться, но весь остальной вывод должен быть такой:
+echo "# References to paths that have components with '-linux-gnu' should "
+echo "# be ignored, but otherwise the output of the last command should be:"
 echo 'SEARCH_DIR("/usr/x86_64-pc-linux-gnu/lib64")'
 echo 'SEARCH_DIR("/usr/local/lib64")'
 echo 'SEARCH_DIR("/lib64")'
@@ -134,8 +135,8 @@ echo ""
 echo "--------"
 echo "Step: 7"
 echo "--------"
-# убедимся, что мы используем правильный libc
-echo "# make sure that we're using the correct libc"
+# Убедимся, что мы используем правильный libc
+echo "# Make sure that we're using the correct libc"
 echo 'grep "/lib.*/libc.so.6 " dummy.log'
 grep "/lib.*/libc.so.6 " dummy.log
 echo ""
@@ -150,8 +151,8 @@ echo ""
 echo "--------"
 echo "Step: 8"
 echo "--------"
-# наконец, убедимся, что GCC использует правильный динамический компоновщик
-echo "# make sure GCC is using the correct dynamic linker"
+# Наконец, убедимся, что GCC использует правильный динамический компоновщик.
+echo "# Make sure GCC is using the correct dynamic linker."
 echo "grep found dummy.log"
 grep found dummy.log
 echo ""
@@ -162,9 +163,9 @@ echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
-# если выходные данные не отображаются, как показано выше, или не получены
+# Если выходные данные не отображаются, как показано выше, или не получены
 # вообще, значит, что-то серьезно не так. Любые проблемы должны быть решены,
 # прежде чем продолжить процесс сборки.
 
-# очистим созданные нами тестовые файлы
+# Очистим созданные нами тестовые файлы:
 rm -fv dummy.c a.out dummy.log
