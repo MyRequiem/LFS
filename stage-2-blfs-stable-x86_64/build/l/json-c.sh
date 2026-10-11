@@ -19,10 +19,6 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с CMake-4.0
-sed -i 's/VERSION 2.8/VERSION 4.0/' apps/CMakeLists.txt  || exit 1
-sed -i 's/VERSION 3.9/VERSION 4.0/' tests/CMakeLists.txt || exit 1
-
 mkdir build
 cd build || exit 1
 
@@ -33,13 +29,14 @@ cmake                           \
     .. || exit 1
 
 make || exit 1
-# make test
+# make USE_VALGRIND=0 test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

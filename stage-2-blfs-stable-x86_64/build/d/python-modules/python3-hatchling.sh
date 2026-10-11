@@ -7,9 +7,9 @@ ARCH_NAME="hatchling"
 # Современная система для «упаковки» программ на Python. Она берет исходный код
 # и превращает его в готовый пакет, который легко установить в систему.
 
-# Required:    python3-editables
-#              python3-pathspec
+# Required:    python3-pathspec
 #              python3-pluggy
+#              python3-tomlkit
 #              python3-trove-classifiers
 # Recommended: no
 # Optional:    no
@@ -37,14 +37,14 @@ pip3 install            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды
+# Удаляем все скомпилированные байт-коды.
 rm -rf "${TMP_DIR}/usr/bin/__pycache__"
 rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 

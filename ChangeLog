@@ -1,5 +1,36 @@
+[11.10.2026]
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the json-c package from 0.18 to 0.19.
++--------------------------+
+[06.10.2026]
+* BLFS: Upgraded the llvm package from 22.1.0 to 23.1.0.
+* BLFS: Upgraded the rsync package from 3.4.1 to 3.5.1.
++--------------------------+
+[05.10.2026]
+* BLFS: Upgraded the python3-requests package from 2.32.5 to 2.34.2.
+* BLFS: Upgraded the python3-urllib3 package from 2.6.3 to 2.7.0.
+* BLFS: Upgraded the python3-idna package from 3.11 to 3.18.
+* BLFS: Upgraded the python3-charset-normalizer package from 3.4.4 to 3.4.7.
+* BLFS: Upgraded the python3-pygments package from 2.20.0 to 2.21.0.
+* BLFS: Upgraded the python3-hatchling package from 1.28.0 to 1.32.0.
+* BLFS: Upgraded the python3-trove-classifiers package from 2026.1.14.14 to 2026.6.1.19.
+* BLFS: Added the package python3-tomlkit (v0.15.1).
+* BLFS: Added the package python3-poetry-core (v2.4.1).
++--------------------------+
+[04.10.2026]
+* BLFS: Removed the python3-editables package.
+* BLFS: Upgraded the python3-setuptools-scm package from 9.2.2 to 10.1.2.
+* BLFS: Added the package python3-vcs-versioning (v2.2.4).
+* BLFS: Upgraded the python3-pathspec package from 1.0.4 to 1.1.1.
+* BLFS: Upgraded the cmake package from 4.3.1 to 4.4.3.
+* BLFS: Upgraded the nghttp2 package from 1.68.1 to 1.70.0.
 +--------------------------+
 [03.10.2026]
+* BLFS: Upgraded the libpng package from 1.6.56 to 1.6.59.
+* BLFS: Upgraded the lvm2 package from 2.03.39 to 2.03.42.
+* BLFS: Upgraded the libuv package from 1.52.1 to 1.53.0.
+* BLFS: Upgraded the fribidi package from 1.0.16 to 1.0.17.
 * BLFS: Upgraded the 7zip package from 26.00 to 26.03.
 +--------------------------+
 [25.09.2026]

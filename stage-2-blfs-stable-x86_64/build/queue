@@ -17,18 +17,18 @@ n/p11-kit.sh
 n/make-ca.sh
 l/pcre.sh
 s/ag.sh
-# Пакет libunistring перед переустановкой/обновлением НЕ удалять.
+# Пакет libunistring перед обновлением/переустановкой НЕ удалять.
 l/libunistring.sh
 n/nettle.sh
 n/npth.sh
 l/libidn.sh
 l/libidn2.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-cython.sh
 l/libseccomp.sh
 n/gnutls.sh
-# Пакет libpsl перед переустановкой/обновлением НЕ удалять.
+# Пакет libpsl перед обновлением/переустановкой НЕ удалять.
 l/libpsl.sh
 n/wget.sh
 ap/sysstat.sh
@@ -64,12 +64,12 @@ n/cyrus-sasl.sh
 n/openldap.sh
 l/fuse3.sh
 n/gnupg.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-docutils.sh
 d/python-modules/python3-mako.sh
 d/python-modules/python3-lxml.sh
-# Пакет glib удаляем перед пересборкой/обновлением.
+# Пакет glib удаляем перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/glib-<version>
 l/glib.sh
 n/sshfs.sh
@@ -79,7 +79,7 @@ l/boost.sh
 ap/highlight.sh
 l/lzo.sh
 l/libarchive.sh
-# Перед переустановкой/обновлением пакет gc НЕ удалять.
+# Перед обновлением/переустановкой пакет gc НЕ удалять.
 d/gc.sh
 n/w3m.sh
 # === Документация, XML, SGML, man ====
@@ -115,7 +115,7 @@ ap/unrar.sh
 ap/lzip.sh
 ap/7zip.sh
 a/lrzip.sh
-# Удаляем пакет sudo перед переустановкой/обновлением:
+# Удаляем пакет sudo перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/sudo-<version>
 ap/sudo.sh
 # На данный момент установлены все необходимые пакеты для более-менее
@@ -170,33 +170,35 @@ l/iso-codes.sh
 l/libaio.sh
 a/lvm2.sh
 l/libpng.sh
-# Перед обновлением gcc не удаляем его из системы :))
+# Перед обновлением gcc >> НЕ << удаляем его из системы (^_^)
 d/gcc.sh
 n/nghttp2.sh
-# Пересоберем curl.
+# Пересоберем curl
 n/curl.sh
 d/cmake.sh
 # === python3-pygments ===
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
-d/python-modules/python3-trove-classifiers.sh
+d/python-modules/python3-pathspec.sh
+d/python-modules/python3-vcs-versioning.sh
 d/python-modules/python3-setuptools-scm.sh
 d/python-modules/python3-pluggy.sh
-d/python-modules/python3-pathspec.sh
-d/python-modules/python3-editables.sh
+d/python-modules/python3-poetry-core.sh
+d/python-modules/python3-tomlkit.sh
+d/python-modules/python3-trove-classifiers.sh
 d/python-modules/python3-hatchling.sh
 d/python-modules/python3-pygments.sh
 # === python3-requests ===
+d/python-modules/python3-charset-normalizer.sh
+d/python-modules/python3-idna.sh
 d/python-modules/python3-hatch-vcs.sh
 d/python-modules/python3-urllib3.sh
-d/python-modules/python3-idna.sh
-d/python-modules/python3-charset-normalizer.sh
 d/python-modules/python3-requests.sh
 # ========================
 l/popt.sh
 n/rsync.sh
 l/libyaml.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyyaml.sh
 l/libunwind.sh
@@ -205,12 +207,13 @@ l/icu.sh
 # ====================================
 # Пересоберем собранные ранее пакеты, зависящие от icu
 # =======
-# Пакет libpsl перед переустановкой/обновлением НЕ удалять.
+# Пакет libpsl перед обновлением/переустановкой НЕ удалять.
 l/libpsl.sh
 l/libxml2.sh
 l/boost.sh
 # ====================================
 l/json-c.sh
+
 d/nasm.sh
 l/libjpeg-turbo.sh
 l/liburcu.sh
@@ -218,9 +221,9 @@ n/bind-utils.sh
 l/libsigc++2.sh
 l/libsigc++3.sh
 # ==============================
-# собираем в ЧИСТОЙ LFS системе (требуется сеть Internet для загрузки Rust
-# зависимостей во время сборки). Перед обновлением пакетов старую версию нужно
-# удалить из системы.
+# Собираем в ЧИСТОЙ LFS системе (требуется сеть Internet для загрузки Rust
+# зависимостей во время сборки). Перед обновлением/переустановкой пакетов
+# старую версию нужно удалить из системы.
 d/rustc.sh
 d/cargo-c.sh
 ap/lnav.sh
@@ -237,27 +240,26 @@ l/freetype.sh
 l/harfbuzz.sh
 l/freetype.sh
 ap/graphite2.sh
-# если обновляем систему, fontconfig лучше собирать в чистом TTY (без иксов),
-# иначе отвалится vim, tmux, bumblebee-status и т.д.
+# Если обновляем/переустанавливаем fontconfig, то лучше собирать пакет в чистом
+# TTY, иначе отвалится vim, tmux, bumblebee-status и т.д.
 x/misc/fontconfig.sh
-# в чистом TTY сначала удаляем пакет xorg-libraries, затем собираем и
-# устанавливаем
+# Пакет xorg-libraries перед обновлением/переустановкой нужно удалить и собрать
+# в чистой TTY.
 x/libs/xorg-libraries.sh
-# пакет dbus НЕ удалять перед пересборкой/обновлением, собирать в чистой TTY
-# (без иксов)
+# Пакет dbus НЕ удалять перед обновлением/переустановкой, собирать в чистой TTY.
 a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
 d/patchelf.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyproject-metadata.sh
 d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
-# пакет elogind
-#    * пересобирать/обновлять в чистой TTY (без иксов)
-#    * дописывает 2 строки в /etc/pam.d/system-session , который принадлежит
+# Пакет elogind
+#    * Обновлять/пересобирать в чистой TTY.
+#    * Дописывает 2 строки в /etc/pam.d/system-session , который принадлежит
 #       пакету linux-pam. После пересборки/обновления elogind проверить чтобы
 #       не было дубликатов этих 2-х строк.
 a/elogind.sh
@@ -269,9 +271,9 @@ l/gsettings-desktop-schemas.sh
 l/at-spi2-core.sh
 l/shared-mime-info.sh
 # ====================
-# Все остальное до пакета fcron (включительно) обновлять в чистой TTY удалив
-# пакеты mesа, qt5-components, qt6 и другие пакеты со сломанными зависимостями
-# (проверяем утилитой check-system-deps)
+# Все остальное до пакета fcron (включительно) обновлять/пересобирать в чистой
+# TTY удалив пакеты mesа, qt5-components, qt6 и другие пакеты со сломанными
+# зависимостями (проверяем утилитой check-system-deps).
 x/libs/pixman.sh
 l/cairo.sh
 l/pango.sh
@@ -280,7 +282,7 @@ l/gdk-pixbuf.sh
 l/dav1d.sh
 l/librsvg.sh
 x/libs/libdrm.sh
-# пересоберем cairo
+# Пересоберем cairo
 l/cairo.sh
 s/bubblewrap.sh
 l/libtiff.sh
@@ -296,7 +298,7 @@ d/spirv-headers.sh
 l/spirv-tools.sh
 d/spirv-llvm-translator.sh
 x/misc/glslang.sh
-l/libclc.sh
+l/libclc.sh    [ВЫПИЛИТЬ !!!]
 d/cbindgen.sh
 d/rust-bindgen.sh
 x/misc/mesa.sh
@@ -308,16 +310,16 @@ x/libs/libva.sh
 x/utils/libva-utils.sh
 x/libs/libepoxy.sh
 l/hicolor-icon-theme.sh
-# пакет xkeyboard-config удалить перед обновлением версии
+# Пакет xkeyboard-config удалить перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/xkeyboard-config-<version>
-# если изменяли /usr/share/X11/xkb/symbols/capslock, например добавляли
-# какие-то свои секции, то сохраните его перед удалением пакета
+# Если изменяли /usr/share/X11/xkb/symbols/capslock, например добавляли
+# какие-то свои секции, то сохраните его перед удалением пакета.
 x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
 d/sassc.sh
 l/gtk+3.sh
 l/graphene.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
@@ -336,8 +338,8 @@ l/libsamplerate.sh
 l/sbc.sh
 d/orc.sh
 # ==========================
-# удалить при следующем обновлении qt6/LFS - qt6 его зацепила как зависимость,
-# но сам пакет в системе не нужен
+# Удалить при следующем обновлении qt6/LFS - qt6 его зацепила как зависимость,
+# но сам пакет в системе не нужен.
 # !!!
 s/pcsc-lite.sh
 # ==========================
@@ -350,7 +352,7 @@ l/x265.sh
 l/libmpeg2.sh
 n/mit-kerberos-v5.sh
 l/glib-networking.sh
-# пакет brotli перед обновлением НЕ удаляем из системы
+# Пакет brotli перед обновлением/переустановкой НЕ удаляем из системы.
 l/brotli.sh
 l/libsoup2.sh
 l/libsoup3.sh
@@ -388,7 +390,7 @@ l/qt5-components.sh
 l/fftw.sh
 l/giflib.sh
 l/libwebp.sh
-# пересоберем libtiff
+# Пересоберем libtiff
 l/libtiff.sh
 l/libmng.sh
 l/jasper.sh
@@ -449,7 +451,7 @@ x/fonts/opendesktop-fonts-ttf.sh
 x/libs/libxcvt.sh
 x/apps/luit.sh
 x/misc/xterm.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
@@ -461,7 +463,7 @@ x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
 x/drivers/xorg-libinput-driver.sh
 x/drivers/xorg-evdev-driver.sh
-# Graphical Environments полностью установлено (кроме оконного менеджера i3)
+# Graphical Environments полностью установлено (кроме оконного менеджера i3).
 ap/xclip.sh
 ap/xsel.sh
 l/openjpeg.sh
@@ -501,11 +503,11 @@ x/apps/i3.sh
 # ==========
 l/libnsl.sh
 d/python3.sh
-# пакет vim перед обновлением удалить из системы
+# Пакет vim перед обновлением/переустановкой удалить из системы.
 #    $ removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
 # === bumblebee-status ===
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-psutil.sh
 s/hddtemp.sh
@@ -519,7 +521,7 @@ x/apps/bumblebee-status.sh
 # === google-chrome, zen-browser, brave-origin ====
 l/nspr.sh
 l/nss.sh
-# пакет libcups - это урезанный пакет cups (только основная библиотека и
+# Пакет libcups - это урезанный пакет cups (только основная библиотека и
 # заголовки):
 #    /usr/lib/libcups.so
 #    /usr/include/cups/*
@@ -529,10 +531,10 @@ l/nss.sh
 # развертывания полной инфраструктуры CUPS.
 #
 # ВНИМАНИЕ: пакеты libcups и cups ВЗАИМОИСКЛЮЧАЕМЫ
-# - если нужен сервер печати (демон): ставьте ap/cups.sh
-# - если принтера нет и нужна только компиляция/запуск зависимого софта:
+# - Если нужен сервер печати (демон): ставьте ap/cups.sh
+# - Если принтера нет и нужна только компиляция/запуск зависимого софта:
 #    ставьте l/libcups.sh
-# - если cups уже установлен в системе: ПРОПУСТИТЕ установку libcups или
+# - Если cups уже установлен в системе: ПРОПУСТИТЕ установку libcups или
 #    удалите cups и соберите libcups
 l/libcups.sh ИЛИ ap/cups.sh
 xap/google-chrome.sh
@@ -548,13 +550,13 @@ n/ntp.sh
 a/fcron.sh
 # ================================== PART 3 ====================================
 ###
-# Переходим в иксы (графическую сессию i3)
+# Переходим в иксы (графическую сессию i3).
 ###
 # ======= ffmpeg, mpv, vlc =======
 l/libass.sh
 l/fdk-aac.sh
 l/xvid.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-glad.sh
 l/libplacebo.sh
@@ -575,7 +577,7 @@ l/simdutf.sh
 l/vte3.sh
 l/libslirp.sh
 s/usbredir.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
@@ -594,7 +596,7 @@ l/libosinfo.sh
 s/gtk-vnc.sh
 l/libvirt-glib.sh
 n/tunctl.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pycurl.sh
 d/python-modules/python3-urlgrabber.sh
@@ -639,8 +641,8 @@ a/usbutils.sh
 #    /usr/lib/libguile-3.0.so.1.7.0
 #    /usr/share/gdb/auto-load/usr/lib/libguile-3.0.so.1.7.0-gdb.scm
 #    /usr/share/guile/3.0/srfi/srfi-64/testing.scm
-# Вот эти 4 файла выше и удаляем из системы, они остались от старой версии
-# guile и больше не принадлежат ни одному из пакетов.
+# Вот эти 4 файла выше удаляем из системы, они остались от старой версии guile
+# и больше не принадлежат ни одному из пакетов.
 #
 # Проверяем:
 #    $ ls -l /usr/lib/libguile*
@@ -689,7 +691,7 @@ l/libportal.sh
 l/pipewire.sh
 l/wireplumber.sh
 l/xdg-desktop-portal.sh
-# Python3 модули удаляем из системы перед обновлением.
+# Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyxdg.sh
 s/openbox.sh

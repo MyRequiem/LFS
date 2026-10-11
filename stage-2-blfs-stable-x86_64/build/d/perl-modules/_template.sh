@@ -17,13 +17,13 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
+# Стандартная установка.
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# установка с помощью модуля Build (пакет perl-module-build)
+# Установка с помощью модуля Build (пакет perl-module-build).
 perl Build.PL || exit 1
 ./Build       || exit 1
 # ./Build test
@@ -31,7 +31,7 @@ perl Build.PL || exit 1
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

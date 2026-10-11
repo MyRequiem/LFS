@@ -12,8 +12,8 @@ PRGNAME="gcc"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              gdb
-#              graphviz
-#              libpng
+#              graphviz     (собранный с libpng)
+#              libxml2      (для поддержки COBOL)
 #              valgrind
 #              isl          (для включения оптимизации graphite) https://repo.or.cz/isl.git
 
@@ -31,10 +31,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 GDB="/usr/share/gdb/auto-load/usr/lib"
 mkdir -pv "${TMP_DIR}"{"${GDB}",/usr/lib/bfd-plugins}
 
-# исправим сборку с glibc >=2.43
-sed -i 's/char [*]q/const &/' libgomp/affinity-fmt.c
-
-# установим имя каталога для 64-битных библиотек по умолчанию как 'lib'
+# Установим имя каталога для 64-битных библиотек по умолчанию как 'lib'.
 sed -i.orig '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64 || exit 1
 
 mkdir build
@@ -43,20 +40,22 @@ cd build || exit 1
 ###
 # NOTE:
 ###
-#    Так же поддерживаются языки COBOL (только x86_64), Ada, D. Поддержка
-#    языков Ada и D по умолчанию отключена. Эти фронтенды написаны на самих
-#    себе, т.е. Аda написана на Ada, D написан на D, поэтому для их сборки в
-#    системе уже должен присутствовать рабочий компилятор Ada (GNAT) или D
-#    (GDC). В нашей системе LFS эти компиляторы отсутствуют, а только базового
-#    C/C++ недостаточно для сборки этих специфических компонентов.
+#    Так же поддерживаются языки COBOL - Common Business Oriented Language
+#    (только x86_64), Ada, D. Поддержка языков Ada и D по умолчанию отключена.
+#    Для сборки COBOL требуется дополнительная библиотека libxml2. Что касается
+#    Ada и D — эти фронтенды написаны на самих себе (т.е. Аda написана на Ada,
+#    D на D). Поэтому для их сборки в системе уже должен присутствовать рабочий
+#    компилятор Ada (GNAT) или D (GDC). В нашей системе LFS эти компиляторы
+#    отсутствуют, а только базового C/C++ недостаточно для сборки этих
+#    специфических компонентов.
 #
-# сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
-# а не на собственную внутреннюю копию
+# Сообщим GCC, что нужно ссылаться на установленную в системе библиотеку Zlib,
+# а не на собственную внутреннюю копию.
 #    --with-system-zlib
-# делает параметр -fpie параметром по умолчанию при компиляции программ
+# Делает параметр -fpie параметром по умолчанию при компиляции программ.
 #    --enable-default-pie
-# делает параметр -fstack-protector-strong параметром по умолчанию при
-# компиляции программ
+# Делает параметр -fstack-protector-strong параметром по умолчанию при
+# компиляции программ.
 #    --enable-default-ssp
 ../configure              \
     --prefix=/usr         \
@@ -76,37 +75,36 @@ make || exit 1
 # Набор тестов для GCC на данном этапе считается критическим. Нельзя пропускать
 # его ни при каких обстоятельствах. Если установлены опциональные пакеты gdb и
 # valgrind, то будет запущено больше тестов, часть из которых будут терпеть
-# неудачу и сообщать FAIL. Начиная с gcc-12.2.0 в среде LFS тестирование выдает
-# не менее 80 ошибок.
+# неудачу и сообщать FAIL.
 #
 # make -k check
-# пишем результаты тестов в gcc-test.log
+# Пишем результаты тестов в gcc-test.log
 # ../contrib/test_summary 2>&1 | grep -A7 Summ > gcc-test.log
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# переместим некоторые файлы *gdb.py
+# Переместим некоторые файлы *gdb.py
 mv -v "${TMP_DIR}/usr/lib"/*gdb.py "${TMP_DIR}${GDB}"
 
 LIB_GCC="/usr/lib/gcc/$(gcc -dumpmachine)/${VERSION}"
 chown -vR root:root "${TMP_DIR}${LIB_GCC}/include"{,-fixed}
 
-# создадим символическую ссылку в /usr/lib/ требуемую FHS по историческим
-# причинам
+# Создадим символическую ссылку в /usr/lib/ требуемую FHS по историческим
+# причинам.
 #    cpp -> ../bin/cpp
 ln -svf ../bin/cpp "${TMP_DIR}/usr/lib"
 
-# многие программы используют имя 'cc' для вызова компилятора C, поэтому
+# Многие программы используют имя 'cc' для вызова компилятора C, поэтому
 # создадим символическую ссылку cc -> gcc в /usr/bin/
 ln -svf gcc "${TMP_DIR}/usr/bin/cc"
 
 ln -sv "${PRGNAME}.1" "${TMP_DIR}/usr/share/man/man1/cc.1"
 
-# добавим символическую ссылку в  /usr/lib/bfd-plugins/ для совместимости,
+# Добавим символическую ссылку в  /usr/lib/bfd-plugins/ для совместимости,
 # чтобы включить сборку программ с оптимизацией компоновки LTO (Link Time
-# Optimization)
+# Optimization).
 #    liblto_plugin.so -> \
 #    ../../libexec/gcc/x86_64-pc-linux-gnu/${VERSION}/liblto_plugin.so
 DUMPMACHINE="$("${TMP_DIR}/usr/bin/${PRGNAME}" -dumpmachine)"
@@ -125,7 +123,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # C++, Fortran, Go, Objective-C, Objective-C++ and m2 compilers
 #
 # Home page: https://${PRGNAME}.gnu.org/
-# Download:  https://ftpmirror.gnu.org/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/mirrors/gnu/${PRGNAME}/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
@@ -138,19 +136,19 @@ echo "---------------"
 
 # После установки необходимо убедиться, что основные функции (компиляция и
 # компоновка) работают должным образом. Вывод сообщений всех последующих команд
-# должен быть на английском языке
+# должен быть на английском языке.
 LC_MESSAGES=en_US.UTF-8
 LC_CTYPE=en_US.UTF-8
 LANG=en_US.UTF-8
 export LANG LC_CTYPE LC_MESSAGES
 
-# для проверки работоспособности создадим простейший фиктивный C-файл и
+# Для проверки работоспособности создадим простейший фиктивный C-файл и
 # скомпилируем его собранным нами gcc для генерации объектного файла a.out:
 echo ""
 echo "--------"
 echo "Step: 1"
 echo "--------"
-echo "# creating simple C-file"
+echo "# Creating simple C-file"
 echo "echo 'int main(){}' > dummy.c"
 echo 'int main(){}' > dummy.c
 echo "ls -l dummy.c"
@@ -164,8 +162,8 @@ echo ""
 echo "--------"
 echo "Step: 2"
 echo "--------"
-echo "# compiling source file dummy.c using 'cc' (link to gcc)'"
-echo "# (as a result of compilation, an object file a.out is generated)"
+echo "# Compiling source file dummy.c using 'cc' (link to gcc)'."
+echo "# As a result of compilation, an object file a.out is generated."
 echo "cc dummy.c -v -Wl,--verbose &> dummy.log"
 cc dummy.c -v -Wl,--verbose &> dummy.log
 echo "ls -l a.out"
@@ -179,8 +177,8 @@ echo ""
 echo "--------"
 echo "Step: 3"
 echo "--------"
-# посмотрим имя динамического компоновщика
-echo "# show dynamic linker name"
+# Посмотрим имя динамического компоновщика.
+echo "# Show dynamic linker name."
 echo "readelf -l a.out | grep ': /lib'"
 readelf -l a.out | grep ': /lib'
 echo ""
@@ -191,18 +189,18 @@ echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
-# если вывод не такой, как указано выше, или вывод не был получен вообще,
+# Если вывод не такой, как указано выше, или вывод не был получен вообще,
 # значит что-то не так.
 
 echo "--------"
 echo "Step: 4"
 echo "--------"
 VERSION="$(gcc --version | head -n 1 | cut -d " " -f 3)"
-# проверим настройки для стартовых файлов
+# Проверим настройки для стартовых файлов:
 # /usr/lib/Scrt1.o
 # /usr/lib/crti.o
 # /usr/lib/crtn.o
-echo "# make sure that we're setup to use the correct start files"
+echo "# Make sure that we're setup to use the correct start files."
 echo "grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log"
 grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
 echo ""
@@ -222,8 +220,8 @@ echo ""
 echo "--------"
 echo "Step: 5"
 echo "--------"
-# убедимся, что компилятор ищет правильные заголовочные файлы
-echo "# verify that the compiler is searching for the correct header files"
+# Убедимся, что компилятор ищет правильные заголовочные файлы.
+echo "# Verify that the compiler is searching for the correct header files."
 echo "grep -B4 '^ /usr/include' dummy.log"
 grep -B4 '^ /usr/include' dummy.log
 echo ""
@@ -242,14 +240,15 @@ echo ""
 echo "--------"
 echo "Step: 6"
 echo "--------"
-# убедимся, что новый компоновщик использует правильные пути для поиска
-echo "verify that the new linker is being used with the correct search paths"
+# Убедимся, что новый компоновщик использует правильные пути для поиска.
+echo "# Verify that the new linker is being used with the correct search paths."
 printf "grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\\\n|g'\n"
 grep 'SEARCH.*/usr/lib' dummy.log | sed 's|; |\n|g'
 echo ""
-# ссылки на пути, в которых есть компоненты с -linux-gnu, должны
-# игнорироваться, но весь остальной вывод должен быть такой
-echo "# The output should be something like this:"
+# Ссылки на пути, в которых есть компоненты с -linux-gnu, должны
+# игнорироваться, но весь остальной вывод должен быть такой:
+echo "# References to paths that have components with '-linux-gnu' should "
+echo "# be ignored, but otherwise the output of the last command should be:"
 echo 'SEARCH_DIR("/usr/x86_64-pc-linux-gnu/lib64")'
 echo 'SEARCH_DIR("/usr/local/lib64")'
 echo 'SEARCH_DIR("/lib64")'
@@ -267,8 +266,8 @@ echo ""
 echo "--------"
 echo "Step: 7"
 echo "--------"
-# убедимся, что мы используем правильный libc
-echo "# make sure that we're using the correct libc"
+# Убедимся, что мы используем правильный libc
+echo "# Make sure that we're using the correct libc"
 echo 'grep "/lib.*/libc.so.6 " dummy.log'
 grep "/lib.*/libc.so.6 " dummy.log
 echo ""
@@ -283,8 +282,8 @@ echo ""
 echo "--------"
 echo "Step: 8"
 echo "--------"
-# наконец, убедимся, что GCC использует правильный динамический компоновщик
-echo "# make sure GCC is using the correct dynamic linker"
+# Наконец, убедимся, что GCC использует правильный динамический компоновщик.
+echo "# Make sure GCC is using the correct dynamic linker."
 echo "grep found dummy.log"
 grep found dummy.log
 echo ""
@@ -295,9 +294,9 @@ echo -n "Press <Enter>... "
 read -r JUNK
 echo "${JUNK}" > /dev/null
 echo ""
-# если выходные данные не отображаются, как показано выше, или не получены
+# Если выходные данные не отображаются, как показано выше, или не получены
 # вообще, значит, что-то серьезно не так. Любые проблемы должны быть решены,
 # прежде чем продолжить процесс сборки.
 
-# очистим созданные нами тестовые файлы
+# Очистим созданные нами тестовые файлы:
 rm -fv dummy.c a.out dummy.log

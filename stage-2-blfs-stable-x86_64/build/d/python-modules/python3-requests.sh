@@ -11,16 +11,42 @@ ARCH_NAME="requests"
 # Required:    python3-charset-normalizer
 #              python3-idna
 #              python3-urllib3
-# Recommended: make-ca
-#              p11-kit
+# Recommended: make-ca и p11-kit            (для избавления от ненужной зависимости python3-certifi)
 # Optional:    --- для тестов ---
 #              python3-pytest
-#              python3-pysocks                      (https://pypi.org/project/PySocks/)
-#              python3-pytest-mock                  (https://pypi.org/project/pytest-mock/)
-#              python3-pytest-httpbin               (https://pypi.org/project/pytest-httpbin/)
-#              python3-pytest-cov                   (https://pypi.org/project/pytest-cov/)
-#              python3-pytest-xdist                 (https://pypi.org/project/pytest-xdist/)
-#              python3-trustme                      (https://pypi.org/project/trustme/)
+#              python3-pysocks              (https://pypi.org/project/PySocks/)
+#              python3-pytest-mock          (https://pypi.org/project/pytest-mock/)
+#              python3-pytest-httpbin       (https://pypi.org/project/pytest-httpbin/)
+#              python3-pytest-cov           (https://pypi.org/project/pytest-cov/)
+#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
+#              python3-trustme              (https://pypi.org/project/trustme/)
+
+###
+# NOTE:
+###
+#    Можно проверить библиотеку после установки. https://httpbin.org/get -
+#    сервис работает как зеркало: он просто собирает информацию о запросе и
+#    отдаёт её обратно, чтобы можно было проверить, всё ли правильно улетело в
+#    сеть.
+#
+#    >>> import requests
+#    >>> response = requests.get('https://httpbin.org/get?my=test')
+#    >>> print(response.status_code)
+#    200
+#    >>> print(response.json())
+#    {
+#       'args': {'my': 'test'},
+#       'headers': {
+#           'Accept': '*/*',
+#           'Accept-Encoding': 'gzip, deflate, br, zstd',
+#           'Host': 'httpbin.org',
+#           'User-Agent': 'python-requests/2.34.2',
+#           'X-Amzn-Trace-Id': 'Root=1-6ac375e8-743eb5dd3891c2e272ca10ed'
+#       },
+#       'origin': '213.88.2.183',
+#       'url': 'https://httpbin.org/get'
+#    }
+###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -29,12 +55,12 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# применим патч, чтобы переменная среды _PIP_STANDALONE_CERT, которая содержит
+# Применим патч, чтобы переменная среды _PIP_STANDALONE_CERT, которая содержит
 # путь к системным сертификатам /etc/pki/tls/certs/ca-bundle.crt и
-# устанавливается после пересборки Python3 в BLFS (см. build/d/python3.sh),
-# также могла использоваться этим модулем
+# устанавливается после пересборки Python3 в BLFS (см. ../python3.sh), также
+# могла использоваться этим модулем.
 patch --verbose -Np1 -i \
-    "${SOURCES}/${ARCH_NAME}-use_system_certs-1.patch" || exit 1
+    "${SOURCES}/${ARCH_NAME}-use_system_certs-2.patch" || exit 1
 
 pip3 wheel               \
     -w dist              \
@@ -52,14 +78,14 @@ pip3 install            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды
+# Удаляем все скомпилированные байт-коды.
 rm -rf "${TMP_DIR}/usr/bin/__pycache__"
 rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 

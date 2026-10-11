@@ -18,17 +18,18 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# отключим установку статической библиотеки
+# Отключим установку статической библиотеки.
 sed -i '/install.*libaio.a/s/^/#/' src/Makefile || exit 1
 
 make || exit 1
 # make partcheck
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -42,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # API.
 #
 # Home page: https://pagure.io/${PRGNAME}
-# Download:  https://pagure.io/${PRGNAME}/archive/${PRGNAME}-${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

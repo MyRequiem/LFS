@@ -4,10 +4,11 @@ PRGNAME="python3-setuptools-scm"
 ARCH_NAME="setuptools_scm"
 
 ### Setuptools_scm (manage versions by scm tags)
-# Утилита, которая автоматически определяет номер версии программы на Python,
-# просто заглядывая в историю изменений Git.
+# Плагин-интегратор, который берет готовую версию из vcs-versioning и
+# встраивает её в процесс сборки пакета через Setuptools. Он служит мостом
+# между ядром вычислений и самой системой сборки Python.
 
-# Required:    no
+# Required:    python3-vcs-versioning
 # Recommended: no
 # Optional:    --- для тестов ---
 #              python3-build
@@ -15,12 +16,12 @@ ARCH_NAME="setuptools_scm"
 #              mercurial
 #              python3-pytest
 #              sudo
-#              python3-pytest-timeout
-#              python3-rich
-#              python3-ruff
-#              python3-mypy
-#              python3-griffe
-#              python3-flake8
+#              python3-pytest-timeout   (https://pypi.org/project/pytest-timeout/)
+#              python3-rich             (https://pypi.org/project/rich/)
+#              python3-ruff             (https://pypi.org/project/ruff/)
+#              python3-mypy             (https://pypi.org/project/mypy/)
+#              python3-griffe           (https://pypi.org/project/griffe/)
+#              python3-flake8           (https://pypi.org/project/flake8/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -45,14 +46,14 @@ pip3 install            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды
+# Удаляем все скомпилированные байт-коды.
 rm -rf "${TMP_DIR}/usr/bin/__pycache__"
 rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 

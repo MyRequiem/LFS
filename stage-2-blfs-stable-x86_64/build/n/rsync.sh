@@ -20,8 +20,8 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# по соображениям безопасности запуск сервера rsync в качестве демона должен
-# производиться от пользователя rsyncd входящего в группу rsyncd
+# По соображениям безопасности запуск сервера rsync в качестве демона должен
+# производиться от пользователя rsyncd входящего в группу rsyncd.
 ! grep -qE "^rsyncd:" /etc/group  && \
     groupadd -g 48 rsyncd
 
@@ -33,11 +33,7 @@ mkdir -pv "${TMP_DIR}/etc"
             -s /bin/false      \
             -u 48 rsyncd
 
-# исправим проблему безопасности
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
-
-# используем zlib установленный в системе
+# Используем zlib установленный в системе.
 #    --without-included-zlib
 ./configure          \
     --prefix=/usr    \
@@ -45,16 +41,12 @@ patch --verbose -Np1 -i \
     --without-included-zlib || exit 1
 
 make || exit 1
-
-# тесты
-# sed -i '/typedef/d' wildtest.c
 # make check
-
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# конфиг
+# Конфиг.
 RSYNCD_CONF="/etc/rsyncd.conf"
 cat << EOF > "${TMP_DIR}${RSYNCD_CONF}"
 # This is a basic rsync configuration file. It exports a single module without
@@ -72,7 +64,7 @@ use chroot = yes
     gid = rsyncd
 EOF
 
-# init script: /etc/rc.d/init.d/rsyncd
+# скрипт запуска /etc/rc.d/init.d/rsyncd
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-rsyncd DESTDIR="${TMP_DIR}"
@@ -84,6 +76,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${RSYNCD_CONF}"
@@ -99,7 +92,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # both sets of files are present at one of the ends of the link beforehand.
 #
 # Home page: https://${PRGNAME}.samba.org
-# Download:  https://www.samba.org/ftp/${PRGNAME}/src/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

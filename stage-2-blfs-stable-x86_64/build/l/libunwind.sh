@@ -10,7 +10,7 @@ PRGNAME="libunwind"
 
 # Required:    no
 # Recommended: no
-# Optional:    texlive (требуется утилита latex2man)
+# Optional:    texlive    (требуется только утилита latex2man)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

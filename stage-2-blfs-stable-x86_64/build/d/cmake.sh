@@ -31,16 +31,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# запрещаем приложениям, использующим cmake при сборке устанавливать файлы в
-# /usr/lib64/
+# Запрещаем приложениям, которые используют cmake при сборке устанавливать
+# файлы в /usr/lib64/
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
 
-# заставляет систему сборки связываться с установленной в системе версией для
+# Заставляет систему сборки связываться с установленной в системе версией для
 # всех необходимых библиотек (zlib, bzip2, curl, expat, libarchive и т.д.),
 # кроме тех, которые явно указаны с помощью опции --no-system-*
 #    --system-libs
-# использовать внутренние версии библиотек JSON-C++, cppdap и rhash вместо
-# системных
+# Использовать внутренние версии библиотек JSON-C++, cppdap и rhash вместо
+# системных.
 #    --no-system-jsoncpp
 #    --no-system-cppdap
 #    --no-system-librhash
@@ -56,17 +56,16 @@ sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake || exit 1
 
 make || exit 1
 
-# тесты
 # NUMJOBS="$(nproc)"
-# LC_ALL=en_US.UTF-8 && \
-#     bin/ctest -j"${NUMJOBS}" -O "${PRGNAME}-${VERSION}-test.log"
+# bin/ctest -j"${NUMJOBS}"
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

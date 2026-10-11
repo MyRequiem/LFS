@@ -62,11 +62,11 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# создаем shared библиотеку команд для сборки демона событий
+# Создаем shared библиотеку команд для сборки демона событий.
 #    --enable-cmdlib
-# установливаем файлы поддержки для pkg-config
+# Установливаем файлы поддержки для pkg-config
 #    --enable-pkgconfig
-# включаем синхронизацию с Udev
+# Включаем синхронизацию с Udev
 #    --enable-udev_sync
 ./configure                       \
     --prefix=/usr                 \
@@ -76,8 +76,8 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-### тесты
-# тесты используют udev для синхронизации логических томов, поэтому правила LVM
+### Тесты.
+# Тесты используют udev для синхронизации логических томов, поэтому правила LVM
 # udev и некоторые утилиты из пакета lvm2 должны быть уже установлены. Если мы
 # устанавливаем LVM2 в первый раз, то установим минимальный набор утилит для
 # запуска тестов:
@@ -87,27 +87,27 @@ make || exit 1
 #     make -C libdm install
 # fi
 #
-# тестам необходима возможность создавать и удалять узлы устройств в каталоге
+# Тестам необходима возможность создавать и удалять узлы устройств в каталоге
 # /tmp
 # mount -o remount,dev /tmp
 #
-# запускаем тесты
+# Запускаем тесты:
 # LC_ALL=en_US.UTF-8 make check_local
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим правило, которое выполняется в другом скрипте
+# Удалим правило, которое выполняется в другом скрипте.
 rm -fv "${TMP_DIR}/usr/lib/udev/rules.d/69-dm-lvm.rules"
 
-# конфиг /etc/lvm/lvm.conf
+# Конфиг /etc/lvm/lvm.conf
 LVM_CONF="/etc/lvm/lvm.conf"
 if [ -f "${LVM_CONF}" ]; then
     mv "${LVM_CONF}" "${LVM_CONF}.old"
 fi
 
-# конфиг /etc/lvm/lvmlocal.conf
+# Конфиг /etc/lvm/lvmlocal.conf
 LVMLOCAL_CONF="/etc/lvm/lvmlocal.conf"
 if [ -f "${LVMLOCAL_CONF}" ]; then
     mv "${LVMLOCAL_CONF}" "${LVMLOCAL_CONF}.old"
@@ -115,6 +115,7 @@ fi
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LVM_CONF}"
@@ -129,7 +130,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # mirroring and low storage footprint snapshots.
 #
 # Home page: https://github.com/lvmteam/${PRGNAME}/
-# Download:  https://sourceware.org/ftp/${PRGNAME}/${ARCH_NAME}.${VERSION}.tgz
+# Download:  http://ftp.twaren.net/Unix/sourceware.org/${PRGNAME}/${ARCH_NAME}.${VERSION}.tgz
 #
 EOF
 

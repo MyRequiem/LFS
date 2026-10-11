@@ -62,36 +62,49 @@ patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-add_xdemos-4.patch" || exit 1
 mkdir build
 cd build || exit 1
 
-# Gallium3D и Vulkan драйверы (см. meson.options в дереве исходников)
-#    -D gallium-drivers=...
-#    -D vulkan-drivers=...
+# ==============================================================================
+# Опции gallium-drivers и vulkan-drivers определяют список собираемых
+# графических драйверов Mesa. Ограничение списка ускоряет компиляцию.
 #
-# Gallium Drivers
-#    iris    - современный драйвер для Intel
-#    i915    - для старых видеокарт Intel (до 2014 года)
-#    nouveau - для NVIDIA
-#    zink    - OpenGL поверх Vulkan
-#    virgl   - для qemu
-GDRV="iris,i915,nouveau,softpipe,zink,virgl"
-VDRV="intel,nouveau,swrast,virtio"
-LAYERS="device-select,intel-nullhw,overlay"
+# ДРАЙВЕРА (в зависимости от вашей видеокарты):
+# 1. AMD (современные карты и процессоры Ryzen):
+#    - gallium:  radeonsi (OpenGL)
+#    - vulkan:   amd (драйвер RADV)
+# 2. Intel (современные встроенные Iris/Xe и дискретные Arc):
+#    - gallium:  iris (OpenGL)
+#    - vulkan:   intel (драйвер ANV)
+# 3. Старые Intel (до 2014 года)
+#    - gallium: i915,crocus
+#    - vulkan: intel
+# 4. Nvidia (открытый графический стек):
+#    - gallium:  nouveau (OpenGL)
+#    - vulkan:   nouveau (Vulkan)
+# 5. Программный рендеринг (задействует CPU, если видеокарта не заводится):
+#    - vulkan:  swrast (Крайне рекомендуется всегда оставлять в списке)
+#
+# ПРИМЕЧАНИЕ ПО OPENCL:
+# Опция gallium-rusticl=false полностью отключают старый и новый движки OpenCL
+# внутри Mesa. Это избавляет систему от проблемного и тяжелого пакета libclc,
+# сохраняя 3D-графику и Vulkan в идеальном состоянии.
+# ==============================================================================
+
+GDRV="i915,crocus,softpipe"
+VDRV="intel,swrast"
 meson setup ..                   \
     --prefix="${XORG_PREFIX}"    \
     --buildtype=release          \
-    -D platforms=x11,wayland     \
+    -D platforms=x11             \
     -D gallium-drivers="${GDRV}" \
     -D vulkan-drivers="${VDRV}"  \
-    -D gallium-rusticl=true      \
     -D valgrind=disabled         \
     -D video-codecs=all          \
     -D libunwind=disabled        \
-    -D vulkan-layers="${LAYERS}" \
+    -D gallium-rusticl=false     \
     -D llvm=enabled              \
     -D shared-llvm=enabled       \
     -D gles1=disabled            \
     -D gles2=enabled             \
-    -D microsoft-clc=disabled    \
-    -D build-tests=false || exit 1
+    -D microsoft-clc=disabled || exit 1
 
 ninja || exit 1
 # с выводом ошибок сборки в файл
