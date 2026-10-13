@@ -39,7 +39,7 @@ make -C bin/nsupdate && \
 make -C bin/rndc     && \
 make -C doc || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
 make -C lib/isc      install DESTDIR="${TMP_DIR}" && \
 make -C lib/dns      install DESTDIR="${TMP_DIR}" && \
@@ -53,10 +53,11 @@ make -C bin/rndc     install DESTDIR="${TMP_DIR}" || exit 1
 cp -v doc/man/{dig.1,host.1,nslookup.1,nsupdate.1} "${TMP_DIR}${MAN1}"
 cp -v doc/man/rndc.8                               "${TMP_DIR}${MAN8}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

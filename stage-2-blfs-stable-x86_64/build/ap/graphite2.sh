@@ -4,7 +4,7 @@ PRGNAME="graphite2"
 
 ### Graphite2 (rendering engine for graphite fonts)
 # Умный движок для отображения сложных шрифтов, основаный на формате TrueType.
-# Он умеет правильно расставлять символы в языках со специфическими правилами
+# Умеет правильно расставлять символы в языках со специфическими правилами
 # письма.
 
 # Required:    cmake
@@ -28,11 +28,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# если не установлен пакет python3-fonttools, то некоторые тесты не проходят.
+# Если не установлен пакет python3-fonttools, то некоторые тесты не проходят.
 # Исправим:
 sed -i '/cmptest/d' tests/CMakeLists.txt || exit 1
 
-# исправим проблему сборки путем обновления синтаксиса в соответствии с
+# Исправим проблему сборки путем обновления синтаксиса в соответствии с
 # CMake >=4.0.0
 sed -i '/cmake_policy(SET CMP0012 NEW)/d' CMakeLists.txt || exit 1
 sed -i 's/PythonInterp/Python3/'          CMakeLists.txt || exit 1
@@ -40,7 +40,7 @@ sed -i 's/PythonInterp/Python3/'          CMakeLists.txt || exit 1
 find . -name CMakeLists.txt | \
     xargs sed -i 's/VERSION 2.8.0 FATAL_ERROR/VERSION 4.0.0/'
 
-# исправим проблему сборки с GCC-15
+# Исправим проблему сборки с GCC >=15.
 sed -i '/Font.h/i #include <cstdint>' \
     tests/featuremap/featuremaptest.cpp || exit 1
 
@@ -55,7 +55,7 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

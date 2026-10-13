@@ -4,7 +4,7 @@ PRGNAME="patchelf"
 
 ### Patchelf (tool to modify ELF binaries/libraries)
 # Маленькая утилита для «хирургического» вмешательства в готовые программы
-# (исполняемые файлы или ELF библиотеки). Она позволяет изменить пути поиска
+# (исполняемые файлы или ELF библиотеки). Позволяет изменить пути поиска
 # библиотек без пересборки всего пакета.
 
 # Required:    no
@@ -23,10 +23,10 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check
+# LC_ALL=C make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -1,6 +1,25 @@
+[13.10.2026]
+* BLFS: Upgraded the python3-meson package from 0.19.0 to 0.20.0.
+* BLFS: Upgraded the python3-pyproject-metadata package from 0.11.0 to 0.12.1.
+* BLFS: Upgraded the patchelf package from 0.18.0 to 0.19.2.
+* BLFS: Upgraded the dbus-glib package from 0.114 to 0.116.
+* BLFS: Upgraded the libXi package from 1.8.2 to 1.8.3 (part of xorg-libraries package).
+* BLFS: Upgraded the libXfont2 package from 2.0.7 to 2.0.9 (part of xorg-libraries package).
+* BLFS: Upgraded the libXpm package from 3.5.18 to 3.5.19 (part of xorg-libraries package).
+* BLFS: Upgraded the fontconfig package from 2.17.1 to 2.18.3.
+* BLFS: Upgraded the harfbuzz package from 14.1.0 to 14.6.0.
+* BLFS: Upgraded the xorgproto package from 2025.1 to 2026.1.
+* BLFS: Upgraded the gpgme package from 2.0.1 to 2.2.0.
+[12.10.2026]
+* BLFS: Upgraded the elogind package from 255.22 to 257.16.
+* BLFS: Upgraded the lnav package from 0.13.2 to 0.14.1.
+* BLFS: Upgraded the cargo-c package from 0.10.21 to 0.10.25.
+* BLFS: Upgraded the rustc package from 1.94.0 to 1.99.0.
+* BLFS: Upgraded the bind-utils package from 9.20.20 to 9.20.29.
+* BLFS: Upgraded the liburcu package from 0.15.6 to 0.15.7.
+* BLFS: Upgraded the libjpeg-turbo package from 3.1.4.1 to 3.2.0.
 [11.10.2026]
-* BLFS: Upgraded the  package from  to .
-* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the nasm package from 3.01 to 3.02.
 * BLFS: Upgraded the json-c package from 0.18 to 0.19.
 +--------------------------+
 [06.10.2026]

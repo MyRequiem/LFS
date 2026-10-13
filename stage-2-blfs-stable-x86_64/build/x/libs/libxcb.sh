@@ -8,7 +8,7 @@ PRGNAME="libxcb"
 
 # Required:    libxau
 #              xcb-proto
-# Recommended: libxdmcp
+# Recommended: libxdmcp    (требуется для Mesa)
 # Optional:    doxygen
 #              libxslt
 
@@ -30,7 +30,7 @@ LC_ALL=en_US.UTF-8 make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -23,9 +23,9 @@ PRGNAME="dbus"
 ###
 # WARNING:
 # Пакет собирать в чистой LFS по двум причинам:
-#   - на хосте уже запущен DBus, а при установке данного пакета в chroot среде
-#     запустится еще один экземпляр, что нам не нужно
-#   - для корректной генерации UUID D-Bus (/var/lib/dbus/machine-id)
+#   * На хосте уже запущен DBus, а при установке данного пакета в chroot среде
+#     запустится еще один экземпляр, что нам не нужно.
+#   * Для корректной генерации UUID D-Bus (/var/lib/dbus/machine-id).
 ###
 
 ROOT="/root/src/lfs"
@@ -47,7 +47,7 @@ meson setup ..             \
 
 ninja || exit 1
 
-# тесты проводятся после установки пакета в систему и запуска DBus сервиса
+# Тесты проводятся после установки пакета в систему и запуска DBus сервиса.
 # meson configure     \
 #     -D asserts=true \
 #     -D intrusive_tests=true || exit 1
@@ -58,30 +58,30 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/var/run"
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# создадим ссылку в /etc/
+# Создадим ссылку в /etc/
 #    machine-id -> /var/lib/dbus/machine-id
 ln -svf ../var/lib/dbus/machine-id "${TMP_DIR}/etc/machine-id"
 
 ###
-# Конфигурация D-Bus
+# Конфигурация D-Bus.
 ###
 #
 #    /etc/dbus-1/session.conf
 #    /etc/dbus-1/system.conf
 #    /etc/dbus-1/system.d/*
 #
-# перечисленные файлы конфигурации, вероятно, не следует изменять, и если
-# изменения необходимы, нужно создать
+# Перечисленные файлы конфигурации, вероятно, не следует изменять, и если
+# изменения необходимы, нужно создать:
 #    /etc/dbus-1/session-local.conf
 # и/или
 #    /etc/dbus-1/system-local.conf
-# и именно там вносить любые изменения
+# и именно там вносить любые изменения.
 
-# некоторые пакеты устанавливают файлы *.service D-Bus не по стандартному пути
+# Некоторые пакеты устанавливают файлы *.service D-Bus не по стандартному пути
 # /usr/share/dbus-1/services/, а в каталог /usr/local/share/dbus-1/services/,
-# поэтому этот каталог нужно добавить в пути поиска
+# поэтому этот каталог нужно добавить в пути поиска.
 SESSION_LOCAL_CONF="/etc/dbus-1/session-local.conf"
 cat << EOF > "${TMP_DIR}${SESSION_LOCAL_CONF}"
 <!DOCTYPE busconfig PUBLIC
@@ -95,7 +95,7 @@ cat << EOF > "${TMP_DIR}${SESSION_LOCAL_CONF}"
 </busconfig>
 EOF
 
-# для автозапуска демона D-Bus при загрузке системы установим скрипт
+# Для автозапуска демона D-Bus при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/dbus
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -106,28 +106,28 @@ EOF
 # пользователь требующий доступа к сервисам D-Bus также должен будет запустить
 # демон для своего сеанса. Для этого можно использовать несколько методов:
 #
-#  * запуск dbus-launch из ~/.xinitrc, например при запуске оконного менеджера
+#  * Запуск dbus-launch из ~/.xinitrc, например при запуске оконного менеджера
 #    i3
 #        exec dbus-launch /usr/bin/i3
 #
-#  * из файла ~/.xsession с тем же синтаксисом
+#  * Из файла ~/.xsession с тем же синтаксисом.
 #
-#  * запуск сессионного демона без указания программы
+#  * Запуск сессионного демона без указания программы.
 #
 #       # Start the D-Bus session daemon
 #       eval `dbus-launch`
 #       export DBUS_SESSION_BUS_ADDRESS
 #
-#    этот метод не остановит демон сеанса при выходе из оболочки, поэтому нам
+#    Этот метод не остановит демон сеанса при выходе из оболочки, поэтому нам
 #    нужно добавить в ~/.bash_logout
 #
 #       # Kill the D-Bus session daemon
 #       kill $DBUS_SESSION_BUS_PID
 #
-#  * другие примеры для KDM с KDE
+#  * Другие примеры для KDM с KDE
 #       http://www.linuxfromscratch.org/hints/downloads/files/starting-and-stopping-dbus-with-kdm.txt
 
-# остановим D-Bus сервис (если запущен)
+# Остановим D-Bus сервис (если запущен).
 if pgrep dbus &>/dev/null; then
     /etc/rc.d/init.d/dbus stop
 fi
@@ -143,13 +143,13 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 
 config_file_processing "${SESSION_LOCAL_CONF}"
 
-# если сначала устанавливали во временный каталог (DESTDIR), то нужно исправить
-# владельца и разрешения для dbus-daemon-launch-helper
+# Если сначала устанавливали во временный каталог (DESTDIR), то нужно исправить
+# владельца и разрешения для dbus-daemon-launch-helper.
 HELPER="/usr/libexec/dbus-daemon-launch-helper"
 chown -v root:messagebus "${HELPER}"
 chmod -v 4750            "${HELPER}"
 
-# запустим D-Bus
+# Запустим D-Bus
 /etc/rc.d/init.d/dbus start
 
 cp -v /var/lib/dbus/machine-id "${TMP_DIR}/var/lib/dbus/"

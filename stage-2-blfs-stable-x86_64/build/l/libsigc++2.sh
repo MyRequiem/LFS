@@ -44,28 +44,28 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим обнаружение Boost во время конфигурации пакета
+# Исправим обнаружение Boost во время конфигурации пакета.
 sed -i "s/'system',//" meson.build
 
 mkdir bld
 cd bld || exit 1
 
-meson setup                      \
+meson setup ..                   \
     --prefix=/usr                \
     --buildtype=release          \
     -D build-documentation=false \
     -D build-examples=false      \
-    -D build-tests=false         \
-    .. || exit 1
+    -D build-tests=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

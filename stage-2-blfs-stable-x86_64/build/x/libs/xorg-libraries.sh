@@ -27,19 +27,19 @@ source "${ROOT}/xorg_config.sh"       || exit 1
 TMP="/tmp/build-${PRGNAME}-${PKG_VERSION}"
 rm -rf "${TMP}"
 
-# директория для сборки всего пакета
+# Директория для сборки всего пакета.
 TMP_PACKAGE="${TMP}/package-${PRGNAME}-${PKG_VERSION}"
 mkdir -pv "${TMP_PACKAGE}"
 
-# директория для распаковки исходников
+# Директория для распаковки исходников.
 TMP_SRC="${TMP}/src"
 mkdir -pv "${TMP_SRC}"
 
-# директория для установки пакетов по отдельности
+# Директория для установки пакетов по отдельности.
 TMP_PKGS="${TMP}/pkgs"
 mkdir -p "${TMP_PKGS}"
 
-# список всех пакетов
+# Список всех пакетов.
 PACKAGES="\
 xtrans \
 libX11 \
@@ -82,7 +82,7 @@ show_error() {
 }
 
 get_pkg_version() {
-    # $1 - имя пакета, версию которого нужно найти
+    # $1 - Имя пакета, версию которого нужно найти.
     local TARBOL_VERSION
     TARBOL_VERSION="$(find "${SOURCES}" -type f \
         -name "${1}-[0-9]*.tar.?z*" 2>/dev/null | sort | \
@@ -95,16 +95,16 @@ for PKGNAME in ${PACKAGES}; do
     echo -e "\n***************** Building ${PKGNAME} package *****************"
     sleep 1
 
-    # определяем версию пакета
+    # Определяем версию пакета.
     VERSION="$(get_pkg_version "${PKGNAME}")"
 
-    # версия не найдена
+    # Версия не найдена.
     if [ -z "${VERSION}" ]; then
         show_error "Version for '${PKGNAME}' package not found in ${SOURCES}"
         exit 1
     fi
 
-    # распаковываем архив
+    # Распаковываем архив.
     cd "${TMP_SRC}" || exit 1
     echo "Unpacking ${PKGNAME}-${VERSION} source archive..."
     tar xvf "${SOURCES}/${PKGNAME}-${VERSION}".tar.?z* &>/dev/null || {
@@ -123,7 +123,7 @@ for PKGNAME in ${PACKAGES}; do
 
     DOCDIR="--docdir=${XORG_PREFIX}/share/doc/${PKGNAME}-${VERSION}"
 
-    # конфигурация
+    # Конфигурация.
     case "${PKGNAME}" in
         libXfont2)
             # shellcheck disable=SC2086
@@ -148,8 +148,8 @@ for PKGNAME in ${PACKAGES}; do
             ;;
 
         libXpm)
-            # разрешим сборку пакета без установленного опционального пакета
-            # ncompress
+            # Разрешим сборку пакета без установленного опционального пакета
+            # ncompress.
             #    --disable-open-zfile
             # shellcheck disable=SC2086
             ./configure        \
@@ -164,10 +164,9 @@ for PKGNAME in ${PACKAGES}; do
             mkdir build
             cd build || exit 1
 
-            meson setup                   \
+            meson setup ..                \
                 --prefix="${XORG_PREFIX}" \
-                --buildtype=release       \
-                .. || {
+                --buildtype=release || {
                     show_error "'meson configure' for ${PKGNAME} package"
                     exit 1
                 }
@@ -183,7 +182,7 @@ for PKGNAME in ${PACKAGES}; do
             ;;
     esac
 
-    # сборка
+    # Сборка.
     if [[ "${PKGNAME}" == "libpciaccess" || \
             "${PKGNAME}" == "libxkbfile" ]]; then
         ninja || {
@@ -197,7 +196,7 @@ for PKGNAME in ${PACKAGES}; do
         }
     fi
 
-    # директория для установки собранного пакета
+    # Директория для установки собранного пакета.
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
     mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
@@ -217,7 +216,7 @@ for PKGNAME in ${PACKAGES}; do
         }
     fi
 
-    # stripping
+    # Stripping.
     BINARY="$(find "${PKG_INSTALL_DIR}" -type f -print0 | \
         xargs -0 file 2>/dev/null | grep -e "executable" -e "shared object" | \
         grep ELF | cut -f 1 -d :)"
@@ -226,23 +225,23 @@ for PKGNAME in ${PACKAGES}; do
         strip --strip-unneeded "${BIN}"
     done
 
-    # обновляем базу данных info (/usr/share/info/dir)
+    # Обновляем базу данных info (/usr/share/info/dir).
     INFO="/usr/share/info"
     if [ -d "${PKG_INSTALL_DIR}${INFO}" ]; then
         cd "${PKG_INSTALL_DIR}${INFO}" || exit 1
-        # оставляем только *info* файлы
+        # Оставляем только *info* файлы.
         find . -type f ! -name "*info*" -delete
         for FILE in *; do
             install-info --dir-file="${INFO}/dir" "${FILE}" 2>/dev/null
         done
     fi
 
-    # удалим документацию
-    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help}
+    # Удалим документацию.
+    rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-    # удалим лишние локали
+    # Удалим лишние локали.
     LOCALEDIR="${PKG_INSTALL_DIR}/usr/share/X11/locale"
-    # оставляем только нужные локали
+    # Оставляем только нужные локали.
     KEEP_LOCALES="ru ru_RU ru_RU.UTF-8 en en_US en_US.UTF-8 en_GB en_GB.UTF-8"
     if [ -d "${LOCALEDIR}" ]; then
         # формируем аргументы для find: ! -name 'ru' ! -name 'en' ...
@@ -251,16 +250,16 @@ for PKGNAME in ${PACKAGES}; do
             FIND_ARGS="${FIND_ARGS} ! -name ${LOC}"
         done
 
-        # удаляем всё, что не входит в список (только директории 1-го уровня)
+        # Удаляем всё, что не входит в список (только директории 1-го уровня).
         # shellcheck disable=SC2086
         find "${LOCALEDIR}" -mindepth 1 -maxdepth 1 \
             -type d ${FIND_ARGS} -exec rm -rf {} +
     fi
 
-    # имя пакета в нижний регистр
+    # Имя пакета в нижний регистр.
     PKGNAME="$(echo "${PKGNAME}" | tr '[:upper:]' '[:lower:]')"
 
-    # пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
+    # Пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
     (
         cd "${PKG_INSTALL_DIR}" || exit 1
 
@@ -278,17 +277,18 @@ for PKGNAME in ${PACKAGES}; do
 #
 EOF
         find . | cut -d . -f 2- | sort >> "${LOG}"
-        # удалим пустые строки в файле
+        # Удалим пустые строки в файле.
         sed -i '/^$/d' "${LOG}"
-        # комментируем все пути
+        # Комментируем все пути.
         sed -i 's/^\//# \//g' "${LOG}"
     )
 
-    # копируем собранный пакет в директорию основного пакета и в корень системы
+    # Копируем собранный пакет в директорию основного пакета и в корень
+    # системы.
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* "${TMP_PACKAGE}"/
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* /
 
-    # для сборки следующих пакетов, которые могут быть зависимы от текущего,
+    # Для сборки следующих пакетов, которые могут быть зависимы от текущего,
     # нужно найти установленные библиотеки текущего пакета и кэшировать их в
     # /etc/ld.so.cache
     ldconfig

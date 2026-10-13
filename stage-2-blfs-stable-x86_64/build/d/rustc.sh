@@ -13,7 +13,6 @@ BLFS_VER="13.1"
 # Recommended: libssh2
 #              llvm
 # Optional:    gdb          (для тестов)
-#              git          (для тестов)
 #              cranelift    (https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)
 #              jemalloc     (https://jemalloc.net/)
 #              libgccjit    (GCC собранный с параметром --enable-languages=jit)
@@ -26,6 +25,28 @@ BLFS_VER="13.1"
 #  * Требуется интернет подключение, поэтому пакет собираем в ЧИСТОЙ LFS
 #       системе (не в chroot). Rustc нуждается в некоторых бинарниках для
 #       сборки, которые будут загружаться из сети.
+
+### INFO
+# ------------------
+# Тест после сборки:
+# ------------------
+# $ rustc --version
+# rustc 1.99.0 (b940084d7 2026-09-28) (for BLFS 13.1)
+#
+# $ echo 'fn main() { println!("Rustc Ok"); }' > /tmp/test.rs
+# $ rustc -O /tmp/test.rs -o /tmp/test
+# $ /tmp/test
+# Rustc Ok
+#
+# $ ldd /tmp/test
+#    linux-vdso.so.1 (0x00007f0cef665000)
+#    libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x00007f0cef5ca000)
+#    libc.so.6 => /usr/lib/libc.so.6 (0x00007f0cef3d3000)
+#    /lib64/ld-linux-x86-64.so.2 (0x00007f0cef667000)
+#
+# $ rustc --target=x86_64-unknown-linux-gnu /tmp/test.rs -o /tmp/test2
+# $ /tmp/test2
+# Rustc Ok
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -63,7 +84,7 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# конфиг для сборки
+### Конфиг для сборки.
 cat << EOF > config.toml
 # See bootstrap.toml.example for more possible options, and see
 # src/bootstrap/defaults/bootstrap.dist.toml for a few options automatically
@@ -73,7 +94,7 @@ cat << EOF > config.toml
 # Tell x.py that the editors have reviewed the content of this file and updated
 # it to follow the major changes of the building system, so x.py will not warn
 # users to review that information.
-change-id = 148671
+change-id = 160100
 
 [llvm]
 # When using the system installed copy of LLVM, prefer the shared libraries
@@ -88,9 +109,6 @@ description = "for BLFS ${BLFS_VER}"
 
 # Omit the documentation to save time and space (the default is to build them).
 docs = false
-
-# Do not look for new versions of the dependencies online.
-locked-deps = true
 
 # Only install these extended tools. Cargo, clippy, rustdoc, and rustfmt are
 # installed by a default rustup installation, and rust-src is needed to build
@@ -119,16 +137,15 @@ llvm-config = "/usr/bin/llvm-config"
 llvm-config = "/usr/bin/llvm-config"
 EOF
 
-### сборка
+### Сборка.
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
 export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 ./x.py build || exit 1
 
-### тесты
-# SSL_CERT_DIR=/etc/ssl/certs \
-# ./x.py test --verbose --no-fail-fast | tee rustc-testlog
+### Тесты.
+# ./x.py test --no-fail-fast | tee rustc-testlog
 #
-# проверка результатов:
+# Проверка результатов:
 # grep '^test result:' rustc-testlog | \
 #     awk '{sum1 += $4; sum2 += $6} END { print sum1 " passed; " sum2 " failed" }'
 
@@ -136,10 +153,11 @@ DESTDIR="${TMP_DIR}" ./x.py install
 
 unset LIB{SSH2,SQLITE3}_SYS_USE_PKG_CONFIG
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 rm -rf /root/.cargo

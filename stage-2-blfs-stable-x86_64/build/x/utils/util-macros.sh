@@ -4,8 +4,8 @@ PRGNAME="util-macros"
 
 ### util-macros (autoconf support for X11)
 # Набор стандартных правил (m4 макросов, которые используются скриптами
-# configure.ac) для сборки графической системы X.Org. Они следят за тем, чтобы
-# все детали «иксов» собирались правильно и единообразно.
+# configure.ac) для сборки графической системы X.Org. Следят за тем, чтобы все
+# детали «иксов» собирались правильно и единообразно.
 
 # Required:    no
 # Recommended: no
@@ -23,8 +23,10 @@ mkdir -pv "${TMP_DIR}"
 ./configure \
     ${XORG_CONFIG} || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

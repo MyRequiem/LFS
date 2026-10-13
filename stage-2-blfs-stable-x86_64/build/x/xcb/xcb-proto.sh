@@ -26,7 +26,9 @@ PYTHON=python3 \
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# при обновлении пакета с версии <=1.15.1 нужно удалить
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# При обновлении пакета с версии <=1.15.1 нужно удалить
 # ${XORG_PREFIX}/lib/pkgconfig/xcb-proto.pc, т.к. он будет установлен в
 # ${XORG_PREFIX}/share/pkgconfig/
 rm -f "${XORG_PREFIX}/lib/pkgconfig/${PRGNAME}.pc"

@@ -3,14 +3,13 @@
 PRGNAME="freetype"
 
 ### FreeType (A free, high-quality, and portable font engine)
-# Главный «художник» шрифтов в системе. Она отвечает за то, чтобы символы на
-# экране выглядели гладкими, четкими и легко читались при любом размере, т.е.
-# за рендеринг шрифтов TrueType, OpenType, Type 1.
+# Главный «художник» шрифтов в системе. Отвечает за то, чтобы символы на экране
+# выглядели гладкими, четкими и легко читались при любом размере, т.е. за
+# рендеринг шрифтов TrueType, OpenType, Type 1.
 
 # Required:    no
-# Recommended: harfbuzz             (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
+# Recommended: harfbuzz             runtime (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
 #              libpng
-#              which
 # Optional:    brotli
 #              librsvg
 #              python3-docwriter    (для сборки документации) https://pypi.org/project/docwriter/
@@ -22,17 +21,17 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# включим проверку таблиц GX/AAT и OpenType
+# Включим проверку таблиц GX/AAT и OpenType.
 #    # AUX_MODULES += gxvalid --> AUX_MODULES +=
 #    # AUX_MODULES += otvalid --> AUX_MODULES +=
 sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg || exit 1
 
-# включим субпиксельный рендеринг (раскомментируем определение)
+# Включим субпиксельный рендеринг (раскомментируем определение).
 #    #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING)
 sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     -i include/freetype/config/ftoption.h || exit 1
 
-# устанавливаем man-страницы для freetype-config
+# Устанавливаем man-страницы для freetype-config.
 #    --enable-freetype-config
 ./configure                  \
     --prefix=/usr            \
@@ -41,10 +40,10 @@ sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     --with-harfbuzz=dynamic || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

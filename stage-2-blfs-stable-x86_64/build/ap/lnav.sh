@@ -7,9 +7,10 @@ PRGNAME="lnav"
 # подсвечивает важное и объединяет сообщения из разных файлов.
 
 # Required:    rustc
-# Recommended: no
-# Optional:    curl
-#              libarchive
+#              curl
+#              libunistring
+# Recommended: libarchive
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,12 +25,12 @@ mkdir -pv "${TMP_DIR}"
 #    избежании Download ERROR во время сборки.
 ###
 
-cd src/third-party/prqlc-c/ || exit 1
-# скачает и распакует все зависимости в директорию vendor
+cd src/third-party/lnav-rs-ext || exit 1
+# Скачает и распакует все зависимости в директорию vendor.
 cargo vendor || exit 1
 
-# настройка cargo для использования локальных (vendored) зависимостей без сети
-# (мы уже их скачали и распаковали)
+# Настройка cargo для использования локальных (vendored) зависимостей без сети
+# (мы уже их скачали и распаковали).
 mkdir -pv .cargo
 cat << EOF > .cargo/config.toml
 [source.crates-io]
@@ -50,9 +51,9 @@ cd - || exit 1
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# очистим rust кэш, мусор не нужен
+# Очистим rust кэш, мусор не нужен.
 rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1

@@ -213,7 +213,6 @@ l/libxml2.sh
 l/boost.sh
 # ====================================
 l/json-c.sh
-
 d/nasm.sh
 l/libjpeg-turbo.sh
 l/liburcu.sh
@@ -246,7 +245,9 @@ x/misc/fontconfig.sh
 # Пакет xorg-libraries перед обновлением/переустановкой нужно удалить и собрать
 # в чистой TTY.
 x/libs/xorg-libraries.sh
-# Пакет dbus НЕ удалять перед обновлением/переустановкой, собирать в чистой TTY.
+# Пакет dbus НЕ удалять перед обновлением/переустановкой, собирать в чистой
+# TTY. После установки проверить дублитаты скриптов запуска сервиса:
+#    $ check-rc-duplicates
 a/dbus.sh
 l/dbus-glib.sh
 #=== python3-dbus ========
@@ -258,10 +259,11 @@ d/python-modules/python3-meson.sh
 d/python-modules/python3-dbus.sh
 # ========================
 # Пакет elogind
+#    * Перед обновлением/переустановкой удалить пакет:
+#       $ killall elogind-daemon 2>/dev/null
+#       $ killall elogind 2>/dev/null
+#       $ removepkg --backup /var/log/packages/elogind-<version>
 #    * Обновлять/пересобирать в чистой TTY.
-#    * Дописывает 2 строки в /etc/pam.d/system-session , который принадлежит
-#       пакету linux-pam. После пересборки/обновления elogind проверить чтобы
-#       не было дубликатов этих 2-х строк.
 a/elogind.sh
 d/duktape.sh
 l/polkit.sh
@@ -305,7 +307,6 @@ x/misc/mesa.sh
 # ====================
 x/misc/glu.sh
 x/misc/freeglut.sh
-l/harfbuzz.sh
 x/libs/libva.sh
 x/utils/libva-utils.sh
 x/libs/libepoxy.sh
@@ -405,6 +406,8 @@ kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
+l/harfbuzz.sh
+l/freetype.sh
 s/desktop-file-utils.sh
 l/fltk.sh
 l/libsecret.sh

@@ -3,9 +3,8 @@
 PRGNAME="harfbuzz"
 
 ### HarfBuzz (OpenType text shaping engine)
-# Важнейшая библиотека для формирования текста OpenType. Она соединяет
-# отдельные буквы в красивые слоги и лигатуры, что критично для многих мировых
-# языков.
+# Важнейшая библиотека для формирования текста OpenType. Соединяет отдельные
+# буквы в красивые слоги и лигатуры, что критично для многих мировых языков.
 
 # Required:    no
 # Recommended: freetype             (пересобрать данную зависимость после сборки harfbuzz)
@@ -21,6 +20,15 @@ PRGNAME="harfbuzz"
 #              python3-fonttools    (для тестов) https://pypi.org/project/fonttools/
 #              ragel                (https://www.colm.net/open-source/ragel/)
 #              wasm-micro-runtime   (https://github.com/bytecodealliance/wasm-micro-runtime)
+
+### NOTE
+# Проверить работу можно в X-сессии (после пересборки с cairo). Например с TTF
+# файлом пакета dejavu-fonts-ttf.
+#
+# $ hb-view                   \
+#     --output-file=hello.png \
+#     /usr/share/fonts/dejavu-fonts-ttf/DejaVuSans.ttf "Hello World."
+# $ mirage hello.png
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -46,7 +54,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

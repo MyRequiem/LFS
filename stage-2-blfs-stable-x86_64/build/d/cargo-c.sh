@@ -13,8 +13,8 @@ PRGNAME="cargo-c"
 
 ###
 # NOTE:
-#    для сборки требуется интернет подключение, собираем в ЧИСТОЙ LFS системе
-#    (не в chroot)
+#    Для сборки требуется интернет подключение, собираем в ЧИСТОЙ LFS системе
+#    (не в chroot).
 ###
 
 ROOT="/root/src/lfs"
@@ -24,8 +24,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/bin/"
 
-# загрузим файл определения версий для зависимостей, которые будут скачиваться
-# во время сборки
+# Загрузим файл определения версий для зависимостей, которые будут скачиваться
+# во время сборки.
 HOME_PAGE="https://github.com/lu-zero/${PRGNAME}"
 # curl -fLO "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock"
 wget "${HOME_PAGE}/releases/download/v${VERSION}/Cargo.lock" || exit 1
@@ -40,7 +40,7 @@ install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} \
 
 unset LIB{SSH2,SQLITE3}_SYS_USE_PKG_CONFIG
 
-# очистим rust кэш, мусор не нужен
+# Очистим rust кэш, мусор не нужен.
 rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1

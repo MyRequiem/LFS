@@ -21,13 +21,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir -pv build
 cd build || exit 1
 
-# заставляет cmake удалять жестко закодированные пути поиска библиотеки (rpath)
+# Заставляет cmake удалять жестко закодированные пути поиска библиотеки (rpath)
 # при установке двоичного исполняемого файла или общей библиотеки, но для этого
 # пакета не требуется rpath после его установки в стандартное расположение, и
 # rpath иногда может вызывать нежелательные эффекты или даже проблемы с
-# безопасностью
+# безопасностью.
 #    -D CMAKE_SKIP_INSTALL_RPATH=ON
-# обеспевает совместимость с libjpeg версии 8
+# Обеспевает совместимость с libjpeg версии 8 (создать libjpeg.so.8).
 #    -D WITH_JPEG8=ON
 cmake                                                              \
     -D CMAKE_INSTALL_PREFIX=/usr                                   \
@@ -43,10 +43,11 @@ make || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

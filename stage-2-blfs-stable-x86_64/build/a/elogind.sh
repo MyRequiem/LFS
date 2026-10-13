@@ -3,13 +3,13 @@
 PRGNAME="elogind"
 
 ### elogind (logind extracted from systemd)
-# Мастер управления сеансами. Он следит за тем, кто зашел в систему, и дает
+# Мастер управления сеансами. Следит за тем, кто зашел в систему, и дает
 # программам разрешение на работу с оборудованием (звуком, видео) без участия
 # громоздких систем.
 
 # Required:    no
 # Recommended: dbus               (runtime)
-#              linux-pam
+#              linux-pam          (для Xorg)
 #              polkit             (runtime)
 #              --- для сборки man-страниц ---
 #              docbook-xml
@@ -24,27 +24,17 @@ PRGNAME="elogind"
 #              kexec              (https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kexec/)
 #              selinux            (https://selinuxproject.org/page/Main_Page)
 
-### Конфигурация ядра
+### Конфигурация ядра.
 #    CONFIG_CGROUPS=y
 #    CONFIG_INOTIFY_USER=y
 #    CONFIG_TMPFS=y
 #    CONFIG_TMPFS_POSIX_ACL=y
 #
-# кроме того, для некоторых тестов требуется криптографическое API ядра
-# пользовательского пространства
+# Кроме того, для некоторых тестов требуется криптографическое API ядра
+# пользовательского пространства.
 #    CONFIG_CRYPTO=y
 #    CONFIG_CRYPTO_USER=m|y
 #    CONFIG_CRYPTO_USER_API_HASH=m|y
-
-###
-# NOTE:
-# для автозапуска демона добавляем в /etc/rc.d/rc.local
-###
-# start elogind
-# if [ -x /usr/libexec/elogind ]; then
-#     echo -n "  *   Starting elogind: /usr/libexec/elogind --daemon ..."
-#     /usr/libexec/elogind --daemon && echo " [  OK  ]"
-# fi
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -57,25 +47,29 @@ mkdir -pv "${TMP_DIR}/etc/pam.d"
 mkdir build
 cd build || exit 1
 
-# определяет, убиваются ли процессы пользователя, если он выходит из системы.
+# В версии elogind-257.16 ошибка в синтаксисе XML файла мануала, поэтому
+# отключаем генерацию man-страниц.
+#    -D man=false
+# Определяет, убиваются ли процессы пользователя, если он выходит из системы.
 # Значение по умолчанию 'true', но это не соответствует традиционному
-# использованию мультиплексоров screen или tmux
+# использованию мультиплексоров screen или tmux.
 #    -D default-kill-user-processes=false
 meson setup ..                            \
     --prefix=/usr                         \
     --buildtype=release                   \
-    -D man=auto                           \
+    -D man=false                          \
     -D cgroup-controller=elogind          \
     -D dev-kvm-mode=0660                  \
     -D dbuspolicydir=/etc/dbus-1/system.d \
     -D default-kill-user-processes=false  \
+    -D default-hierarchy=unified          \
     -D docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # /usr/lib/pkgconfig/
 #    libsystemd.pc -> libelogind.pc
@@ -85,24 +79,34 @@ ln -sfv  libelogind.pc "${TMP_DIR}/usr/lib/pkgconfig/libsystemd.pc"
 #    systemd -> elogind/
 ln -sfvn elogind "${TMP_DIR}/usr/include/systemd"
 
-### Конфигурация
+### Конфигурация.
 #    /etc/elogind/logind.conf
+#    /etc/elogind/sleep.conf
 
 LOGIND_CONF="/etc/elogind/logind.conf"
-# не убиваем пользовательские процессы, если юзер выходит из системы
+# Не убиваем пользовательские процессы, если юзер выходит из системы.
 sed -e '/\[Login\]/a KillUserProcesses=no' -i "${TMP_DIR}${LOGIND_CONF}"
+
+SLEEP_CONF="/etc/elogind/sleep.conf"
+echo "SuspendState=mem" >> "${TMP_DIR}${SLEEP_CONF}"
 
 if [ -f "${LOGIND_CONF}" ]; then
     mv "${LOGIND_CONF}" "${LOGIND_CONF}.old"
 fi
 
+if [ -f "${SLEEP_CONF}" ]; then
+    mv "${SLEEP_CONF}" "${SLEEP_CONF}.old"
+fi
+
 ### Конфигурация Linux PAM
-cp /etc/pam.d/system-session "${TMP_DIR}/etc/pam.d/"
-cat << EOF >> "${TMP_DIR}/etc/pam.d/system-session"
+# /etc/pam.d/system-session принадлежит пакету linux-pam.
+if ! grep -q pam_elogind.so /etc/pam.d/system-session ; then
+    cat << EOF >> /etc/pam.d/system-session
 session   required    pam_loginuid.so
 session   optional    pam_elogind.so
 
 EOF
+fi
 
 cat << EOF > "${TMP_DIR}/etc/pam.d/elogind-user"
 account  required    pam_access.so
@@ -120,12 +124,18 @@ password required    pam_deny.so
 
 EOF
 
+killall elogind-daemon 2>/dev/null
+killall elogind 2>/dev/null
+
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 config_file_processing "${LOGIND_CONF}"
+config_file_processing "${SLEEP_CONF}"
+
+/usr/libexec/elogind --daemon
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (logind extracted from systemd)
@@ -138,7 +148,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # /run/systemd layout.
 #
 # Home page: https://github.com/${PRGNAME}/${PRGNAME}
-# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/V${VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -181,7 +181,7 @@ ghostpcl                                imagemagick
 ghostscript                             cairo, gimp, imagemagick
 giflib                                  libwebp, imlib2, openjdk
 gimp                                    imagemagick
-git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, rustc, harfbuzz, python3-meson, vulkan-loader, xwayland, openjpeg, libfyaml, fast-float, vte3, openjdk, flameshot, poppler
+git                                     libidn2, cmake, python3-setuptools-scm, python3-hatch-vcs, llvm, harfbuzz, python3-meson, vulkan-loader, xwayland, openjpeg, libfyaml, fast-float, vte3, openjdk, flameshot, poppler
 gjs                                     glib, libsecret, gimp
 glade                                   gtksourceview4
 glew                                    harfbuzz, slop
@@ -460,7 +460,7 @@ libtizonia                              mesa
 libu2f-emu                              qemu
 libumfpack                              gegl
 libunibreak                             libass
-libunistring                            libidn2, gnutls, libpsl, guile
+libunistring                            libidn2, gnutls, libpsl, lnav, guile
 libunwind                               llvm, mesa, gstreamer, libinput, xorg-server, libplacebo, gimp
 libupnp                                 vlc
 liburcu                                 bind-utils
@@ -940,7 +940,7 @@ webkitgtk                               zenity
 webrtc-audio-processing                 pulseaudio
 weston                                  xwayland
 wget                                    vim, openjdk, imagemagick
-which                                   libseccomp, boost, lvm2, freetype, libvpx, nodejs, openjdk
+which                                   libseccomp, boost, lvm2, libvpx, nodejs, openjdk
 whois
 wildmidi                                gst-plugins-bad
 wine                                    python3-glad

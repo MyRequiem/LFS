@@ -3,7 +3,7 @@
 PRGNAME="fontconfig"
 
 ### Fontconfig (Font library and tools)
-# Система управления шрифтами. Она помогает программам находить нужные шрифты и
+# Система управления шрифтами. Помогает программам находить нужные шрифты и
 # заменять недостающие символы похожими из других начертаний.
 
 # Required:    freetype
@@ -34,29 +34,30 @@ mkdir -pv "${TMP_DIR}/etc/fonts/conf.avail"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make check    (для некоторых тестов необходимо интернет соединение)
+# make check    (Для некоторых тестов необходимо интернет соединение.)
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# man-страницы
+# Man-страницы.
 install -v -dm755                 "${TMP_DIR}/usr/share/man"/man{1,3,5}
 install -v -m644 fc-*/*.1         "${TMP_DIR}/usr/share/man/man1"
 install -v -m644 doc/*.3          "${TMP_DIR}/usr/share/man/man3"
 install -v -m644 doc/fonts-conf.5 "${TMP_DIR}/usr/share/man/man5"
 
-# Конфигурация Fontconfig
-# -----------------------
+# ------------------------
+# Конфигурация Fontconfig.
+# ------------------------
 #
-# конфиги:
+# Конфиги:
 #    /etc/fonts/fonts.conf
 #    /etc/fonts/conf.d/*
 #    /etc/fonts/conf.avail/*
 #    /usr/share/fontconfig/conf.avail/*
 #
-# основной файл конфигурации:
+# Основной файл конфигурации:
 #    /etc/fonts/fonts.conf
-# он также читает
+# Он также читает:
 #    /etc/fonts/local.conf
 # и все ссылки на конфиги в
 #    /etc/fonts/conf.d/
