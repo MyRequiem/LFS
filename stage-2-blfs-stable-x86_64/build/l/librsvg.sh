@@ -15,14 +15,14 @@ PRGNAME="librsvg"
 #                                       как Required)
 # Recommended: glib
 #              vala
-# Optional:    python3-docutils     (для генерации man-страниц)
+# Optional:    dav1d                (для поддержки встроенного AVIF в SVG)
+#              python3-docutils     (для генерации man-страниц)
 #              python3-gi-docgen    (для документации)
-#              dav1d                (для поддержки встроенного AVIF в SVG)
 
 ###
 # NOTE:
-#    при сборке скачиваются дополнительные файлы из сети Internet, поэтому
-#    пакет необходимо собирать в чистой среде LFS (не в среде chroot хоста)
+#    При сборке скачиваются дополнительные файлы из сети Internet, поэтому
+#    пакет необходимо собирать в чистой среде LFS (не в среде chroot хоста).
 ###
 
 ROOT="/root/src/lfs"
@@ -32,9 +32,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим путь установки API документации
-sed -e "/OUTDIR/s|,| / 'librsvg-2.62.1', '--no-namespace-dir',|" \
-    -e '/output/s|Rsvg-2.0|librsvg-2.62.1|'                      \
+# Исправим путь установки API документации.
+sed -e "/OUTDIR/s|,| / 'librsvg-2.63.2', '--no-namespace-dir',|" \
+    -e '/output/s|Rsvg-2.0|librsvg-2.63.2|'                      \
     -i doc/meson.build || exit 1
 
 ###
@@ -43,11 +43,11 @@ sed -e "/OUTDIR/s|,| / 'librsvg-2.62.1', '--no-namespace-dir',|" \
 #    избежании Download ERROR во время сборки.
 ###
 
-# скачает и распакует все зависимости в директорию vendor
+# Скачает и распакует все зависимости в директорию vendor.
 cargo vendor || exit 1
 
-# настройка cargo для использования локальных (vendored) зависимостей без сети
-# (мы уже их скачали и распаковали)
+# Настройка cargo для использования локальных (vendored) зависимостей без сети
+# (мы уже их скачали и распаковали).
 mkdir -pv .cargo
 cat << EOF > .cargo/config.toml
 [source.crates-io]
@@ -60,28 +60,26 @@ EOF
 mkdir build
 cd build || exit 1
 
-meson setup                  \
-    --prefix=/usr            \
-    --buildtype=release      \
-    -D pixbuf-loader=enabled \
-    .. || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D pixbuf-loader=enabled || exit 1
 
 ninja || exit 1
 # meson test -v
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновляем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache
-command -v gdk-pixbuf-query-loaders && \
-    gdk-pixbuf-query-loaders --update-cache
+# Обновим файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache
+gdk-pixbuf-query-loaders --update-cache
 
-# очистим rust кэш, мусор не нужен
+# Очистим rust кэш, мусор не нужен.
 rm -rf /root/.cargo
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

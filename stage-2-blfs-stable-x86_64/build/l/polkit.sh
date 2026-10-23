@@ -5,7 +5,7 @@ PRGNAME="polkit"
 ### Polkit (PolicyKit authentication framework)
 # Policy Toolkit - системная служба, которая управляет правами доступа и
 # позволяет обычным пользователям выполнять административные задачи без ввода
-# пароля суперпользователя (root). Она работает как «пропускной пункт», который
+# пароля суперпользователя (root). Работает как «пропускной пункт», который
 # проверяет, разрешено ли конкретному пользователю или программе совершить
 # определенное действие в системе. Использование Polkit противопоставляется
 # использованию таких систем, как sudo, но не наделяет процесс пользователя
@@ -39,11 +39,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# добавим группу polkitd, если не существует
+# Добавим группу polkitd, если не существует.
 ! grep -qE "^polkitd:" /etc/group  && \
     groupadd -fg 27 polkitd
 
-# добавим пользователя polkitd, если не существует
+# Добавим пользователя polkitd, если не существует.
 ! grep -qE "^polkitd:" /etc/passwd && \
     useradd -c "PolicyKit Daemon Owner" \
             -d /etc/polkit-1 \
@@ -66,9 +66,9 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим директории, которые не нужны в SysV системе
+# Удалим директории, которые не нужны в SysV системе.
 rm -rf "${TMP_DIR}/tmp"
 rm -rf "${TMP_DIR}/usr/lib"/{sysusers,tmpfiles}.d
 

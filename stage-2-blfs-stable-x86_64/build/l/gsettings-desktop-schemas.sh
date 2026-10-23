@@ -19,29 +19,28 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим некоторые устаревшие записи в шаблонах схем
+# Исправим некоторые устаревшие записи в шаблонах схем.
 sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in || exit 1
 
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
+# Создадим/обновим /usr/share/glib-2.0/schemas/gschemas.compiled
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"

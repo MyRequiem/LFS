@@ -11,7 +11,8 @@ PRGNAME="shared-mime-info"
 # Required:    glib
 #              libxml2
 # Recommended: no
-# Optional:    xmlto
+# Optional:    git          (для тестов)
+#              xmlto
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,19 +24,22 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# указываем системе сборки запускать update-mime-database во время установки
+# Указываем системе сборки запускать update-mime-database во время установки.
 #    -D update-mimedb=true
-meson setup               \
+meson setup ..            \
     --prefix=/usr         \
     --buildtype=release   \
     -D update-mimedb=true \
-    .. || exit 1
+    -D build-tests=false || exit 1
 
 ninja || exit 1
+
+# meson configure -D build-tests=true || exit 1
 # ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

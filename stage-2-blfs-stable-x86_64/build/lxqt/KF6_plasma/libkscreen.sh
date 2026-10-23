@@ -7,9 +7,7 @@ PRGNAME="libkscreen"
 # разрешений. Он отвечает за правильное поведение системы при подключении
 # проекторов или нескольких дисплеев.
 
-# Required:    kwayland
-#              plasma-wayland-protocols
-#              qt6
+# Required:    qt6
 # Recommended: no
 # Optional:    no
 

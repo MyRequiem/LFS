@@ -16,7 +16,7 @@ PRGNAME="cairo"
 # Optional:    ghostscript
 #              gtk-doc
 #              libdrm
-#              librsvg
+#              librsvg          (для сборки вспомогательных утилит и тестирования самого cairo)
 #              libxml2
 #              lzo
 #              poppler
@@ -34,16 +34,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -59,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (eg. through the X Render Extension or OpenGL).
 #
 # Home page: https://www.cairographics.org/
-# Download:  https://www.cairographics.org/releases/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

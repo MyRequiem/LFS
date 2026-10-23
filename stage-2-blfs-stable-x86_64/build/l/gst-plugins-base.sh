@@ -22,7 +22,6 @@ PRGNAME="gst-plugins-base"
 #              libvorbis
 #              mesa
 #              pango
-#              wayland-protocols
 #              xorg-libraries
 # Optional:    graphene
 #              gtk+3                  (для сборки примеров)

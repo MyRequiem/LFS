@@ -10,10 +10,8 @@ PRGNAME="libxkbcommon"
 
 # Required:    xkeyboard-config
 # Recommended: libxcb
-#              wayland
-#              wayland-protocols
 # Optional:    doxygen
-#              xorg-server или xwayland (только утилита Xvfb для тестов)
+#              xorg-server (только утилита Xvfb для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

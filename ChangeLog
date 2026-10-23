@@ -1,3 +1,43 @@
+[23.10.2026]
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the libva-utils package from 2.23.0 to 2.24.0.
+* BLFS: Removed the libei package.
+* BLFS: Removed the kwayland package.
+* BLFS: Removed the plasma-wayland-protocols package.
+* BLFS: Removed the xwayland package.
+* BLFS: Removed the wayland-protocols package.
+* BLFS: Removed the wayland package.
+[22.10.2026]
+* BLFS: Upgraded the mesa package from 26.0.1 to 26.2.3.
+* BLFS: Upgraded the libclc package from 22.1.0 to 23.1.0.
+* BLFS: Upgraded the rust-bindgen package from 0.72.1 to 0.73.2.
+* BLFS: Upgraded the cbindgen package from 0.29.2 to 0.29.4.
+* BLFS: Upgraded the glslang package from 16.2.0 to 16.6.0.
+* BLFS: Upgraded the vulkan-loader package from 1.4.341 to 1.4.363.0.
+* BLFS: Upgraded the vulkan-headers package from 1.4.341 to 1.4.363.0.
+[16.10.2026]
+* BLFS: Upgraded the spirv-llvm-translator package from 22.1.1 to 23.1.2.
+* BLFS: Upgraded the spirv-tools package from 1.4.341.0 to 1.4.363.0.
+* BLFS: Upgraded the spirv-headers package from 1.4.341.0 to 1.4.363.0.
+* BLFS: Upgraded the cmake package from 4.4.3 to 4.4.4.
+[15.10.2026]
+* BLFS: Upgraded the libva package from 2.23.0 to 2.24.1.
+* BLFS: Upgraded the lcms2 package from 2.18 to 2.19.1.
+* BLFS: Removed the bubblewrap package.
+* BLFS: Upgraded the libdrm package from 2.4.131 to 2.4.134.
+[14.10.2026]
+* BLFS: Upgraded the librsvg package from 2.62.1 to 2.63.2.
+* BLFS: Upgraded the dav1d package from 1.5.3 to 1.5.4.
+* BLFS: Upgraded the gdk-pixbuf package from 2.44.6 to 2.44.8.
+* BLFS: Upgraded the libtiff package from 4.7.1 to 4.7.2.
+* BLFS: Upgraded the pango package from 1.57.1 to 1.58.2.
+* BLFS: Upgraded the cairo package from 1.18.4 to 1.18.6.
+* BLFS: Upgraded the shared-mime-info package from 2.4 to 2.5.1.
+* BLFS: Upgraded the at-spi2-core package from 2.60.0 to 2.62.1.
+* BLFS: Upgraded the gsettings-desktop-schemas package from 49.1 to 51.0.
+* BLFS: Upgraded the ruby package from 4.0.2 to 4.0.7.
+* BLFS: Upgraded the tk package from 8.6.17 to 8.6.18.
 [13.10.2026]
 * BLFS: Upgraded the python3-meson package from 0.19.0 to 0.20.0.
 * BLFS: Upgraded the python3-pyproject-metadata package from 0.11.0 to 0.12.1.

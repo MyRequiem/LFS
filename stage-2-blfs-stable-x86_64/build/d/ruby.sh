@@ -39,10 +39,17 @@ mkdir -pv "${TMP_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# make -k check
-make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+# make -k check
+
+# Если переменная XDG_DATA_HOME не установлена, процесс установки создает
+# каталог ${HOME}/.local/share, если он не существует. В зависимости от способа
+# получения привилегий root, это может привести к созданию файлов принадлежащих
+# root в домашнем каталоге пользователя или в /root, что также нежелательно.
+#    XDG_DATA_HOME=/tmp
+XDG_DATA_HOME=/tmp make install DESTDIR="${TMP_DIR}"
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -20,15 +20,23 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
-    --disable-static || exit 1
+mkdir build
+cd build || exit 1
 
-make || exit 1
-# make check
-make install DESTDIR="${TMP_DIR}"
+# Прикол от разработчиков :)) Параметр utils в meson_options.txt (lcms2-2.19.1)
+# по умолчанию false. Соответственно утилиты jpgicc, linkicc, psicc, tifdiff,
+# tificc, transicc не компилируется.
+#    -D utils=true
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D utils=true || exit 1
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+ninja || exit 1
+# ninja test
+DESTDIR="${TMP_DIR}" ninja install
+
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -51,7 +59,3 @@ EOF
 
 source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
-
-echo -e "\n---------------\nRemoving *.la files..."
-remove-la-files.sh
-echo "---------------"

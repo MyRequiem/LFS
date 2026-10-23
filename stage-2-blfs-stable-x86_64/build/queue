@@ -280,35 +280,29 @@ x/libs/pixman.sh
 l/cairo.sh
 l/pango.sh
 d/vala.sh
+l/libtiff.sh
+l/giflib.sh
 l/gdk-pixbuf.sh
 l/dav1d.sh
 l/librsvg.sh
 x/libs/libdrm.sh
-# Пересоберем cairo
-l/cairo.sh
-s/bubblewrap.sh
-l/libtiff.sh
 l/lcms2.sh
-l/gdk-pixbuf.sh
-# ======= mesa =======
 x/libs/libva.sh
-x/libs/wayland.sh
-x/libs/wayland-protocols.sh
-d/vulkan-headers.sh
-x/libs/vulkan-loader.sh
 d/spirv-headers.sh
 l/spirv-tools.sh
 d/spirv-llvm-translator.sh
+d/vulkan-headers.sh
+x/libs/vulkan-loader.sh
 x/misc/glslang.sh
-l/libclc.sh    [ВЫПИЛИТЬ !!!]
 d/cbindgen.sh
 d/rust-bindgen.sh
+l/libclc.sh
 x/misc/mesa.sh
-# ====================
-x/misc/glu.sh
-x/misc/freeglut.sh
 x/libs/libva.sh
 x/utils/libva-utils.sh
+
+x/misc/glu.sh
+x/misc/freeglut.sh
 x/libs/libepoxy.sh
 l/hicolor-icon-theme.sh
 # Пакет xkeyboard-config удалить перед обновлением/переустановкой.
@@ -389,7 +383,6 @@ l/unixodbc.sh
 l/qt5-components.sh
 # === qt6 ===
 l/fftw.sh
-l/giflib.sh
 l/libwebp.sh
 # Пересоберем libtiff
 l/libtiff.sh
@@ -458,9 +451,7 @@ x/misc/xterm.sh
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-hatch-fancy-pypi-readme.sh
 d/python-modules/python3-attrs.sh
-l/libei.sh
 x/apps/xdg-utils.sh
-x/xserver/xwayland.sh
 x/xserver/xorg-server.sh
 x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
@@ -622,7 +613,7 @@ ap/slop.sh
 ap/maim.sh
 s/jq.sh
 l/md4c.sh
-xap/flameshot.sh
+xap/flameshot.sh [ВЫПИЛИТЬ !!!]
 a/time.sh
 a/tree.sh
 a/usbutils.sh
@@ -690,10 +681,10 @@ d/python-modules/python3-mutagen.sh
 ###
 # ======= Misc Dependencies =======
 l/libexif.sh
-l/libportal.sh
-l/pipewire.sh
-l/wireplumber.sh
-l/xdg-desktop-portal.sh
+l/libportal.sh [ВЫПИЛИТЬ !!!]
+l/pipewire.sh [ВЫПИЛИТЬ !!!]
+l/wireplumber.sh [ВЫПИЛИТЬ !!!]
+l/xdg-desktop-portal.sh [ВЫПИЛИТЬ !!!]
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-pyxdg.sh
@@ -702,12 +693,10 @@ s/tint2.sh
 l/libstatgrab.sh
 kde/l/polkit-qt.sh
 # ======= KF6, Plasma =======
-kde/s/plasma-wayland-protocols.sh
 lxqt/KF6_plasma/kwindowsystem.sh
 lxqt/KF6_plasma/kconfig.sh
 lxqt/KF6_plasma/solid.sh
 lxqt/KF6_plasma/kidletime.sh
-lxqt/KF6_plasma/kwayland.sh
 lxqt/KF6_plasma/libkscreen.sh
 lxqt/KF6_plasma/layer-shell-qt.sh
 l/muparser.sh
@@ -736,7 +725,7 @@ lxqt/desktop/lxqt-policykit.sh
 lxqt/desktop/lxqt-sudo.sh
 lxqt/desktop/lxqt-openssh-askpass.sh
 lxqt/desktop/lxqt-session.sh
-lxqt/desktop/xdg-desktop-portal-lxqt.sh
+lxqt/desktop/xdg-desktop-portal-lxqt.sh [ВЫПИЛИТЬ !!!]
 lxqt/desktop/obconf-qt.sh
 # ======= LXQt Applications =======
 lxqt/apps/lximage-qt.sh

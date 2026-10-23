@@ -19,7 +19,6 @@ ARCH_NAME="SDL3"
 #              pipewire
 #              pulseaudio
 #              vulkan-loader
-#              wayland-protocols
 #              xorg-libraries
 # Optional:    ibus
 #              jack                     (https://jackaudio.org/)

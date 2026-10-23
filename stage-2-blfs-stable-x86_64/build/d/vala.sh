@@ -7,13 +7,13 @@ PRGNAME="vala"
 # (GObject), который позволяет писать быстрые системные приложения, используя
 # простой и понятный синтаксис.
 
-# Required:    glib
-# Recommended: graphviz   (для сборки утилиты 'valadoc')
-# Optional:    dbus       (для тестов)
-#              libxslt    (для документации)
-#              help2man   (https://www.gnu.org/software/help2man/)
-#              jing       (https://github.com/relaxng/jing-trang)
-#              weasyprint (https://weasyprint.org/)
+# Required:    glib         (GObject Introspection требуется для тестов)
+# Recommended: graphviz     (для сборки утилиты 'valadoc' и API документации)
+# Optional:    dbus         (для тестов)
+#              libxslt      (для документации)
+#              help2man     (https://www.gnu.org/software/help2man/)
+#              jing         (https://github.com/relaxng/jing-trang)
+#              weasyprint   (https://weasyprint.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -22,6 +22,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# Отключает сборку документации API. По умолчанию она включена, но требует
+# graphviz и валит конфигурацию, если его нет.
+#    --disable-valadoc
 ./configure       \
     --prefix=/usr \
     --disable-valadoc || exit 1
@@ -30,7 +33,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

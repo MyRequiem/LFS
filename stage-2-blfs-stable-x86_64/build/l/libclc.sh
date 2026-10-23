@@ -9,7 +9,8 @@ ARCH_NAME="llvm-project"
 # которая учит графический процессор понимать и исполнять код, написанный для
 # научных и инженерных расчетов.
 
-# Required:    spirv-llvm-translator
+# Required:    llvm
+#              spirv-llvm-translator
 # Recommended: no
 # Optional:    no
 
@@ -25,10 +26,16 @@ mkdir -pv "${TMP_DIR}/usr"/{include/clc,lib/pkgconfig}
 mkdir -pv "${PRGNAME}/build"
 cd "${PRGNAME}/build" || exit 1
 
-# Конфигурация TARGETS для драйверов:
+# Конфигурация TARGET для драйверов:
+# ----------------------------------
+# В версии libclc >= 23.1.0 параметр LIBCLC_TARGETS заменен на LIBCLC_TARGET и
+# принимает строго ОДИН таргет за раз. Сборка нескольких архитектур теперь
+# реализуется через повторную компиляцию нужного таргета, повторной установкой
+# в DESTDIR и только потом в систему.
+#
 #    * Intel и универсальной поддержки OpenCL в Mesa
-#       spirv-mesa3d-
-#       spirv64-mesa3d-
+#       spirv--
+#       spirv64--
 #    * NVIDIA
 #       nvptx64--
 #       nvptx64--nvidiacl
@@ -44,22 +51,28 @@ cd "${PRGNAME}/build" || exit 1
 #      и они полагаются на таргеты spirv-mesa3d-, а не на clspv
 #       clspv--
 #       clspv64--
-TRGTS="spirv-mesa3d-;spirv64-mesa3d-;nvptx64--;nvptx64--nvidiacl;nvptx64-nvidia-cuda"
-cmake                                     \
-    -D CMAKE_INSTALL_PREFIX=/usr          \
-    -D CMAKE_BUILD_TYPE=Release           \
-    -D LIBCLC_TARGETS_TO_BUILD="${TRGTS}" \
-    -G Ninja                              \
+#
+# Для Intel
+TRGTS="spirv64--"
+cmake                                    \
+    -D CMAKE_INSTALL_PREFIX=/usr         \
+    -D CMAKE_BUILD_TYPE=Release          \
+    -D CMAKE_CLC_COMPILER=/usr/bin/clang \
+    -D CMAKE_C_COMPILER=/usr/bin/gcc     \
+    -D CMAKE_CXX_COMPILER=/usr/bin/g++   \
+    -D LIBCLC_TARGET="${TRGTS}"          \
+    -W no-author                         \
+    -G Ninja                             \
     .. || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# Разработчики llvm-project, зачем вы кидаете заголовки куда попало? Наведем
-# порядок:
+# Разложим заголовочные файлы по стандартным путям (/usr/include/clc), где Mesa
+# их сможет найти.
 cp -vpR ../clc/include/clc/*          "${TMP_DIR}/usr/include/clc/"
 cp -vpR ../clc/include/clc/internal/* "${TMP_DIR}/usr/include/clc/"
 rm -rf "${TMP_DIR}/usr/include/clc/internal"
@@ -67,14 +80,14 @@ rm -rf "${TMP_DIR}/usr/include/clc/internal"
 cp -vpR ../opencl/include/* "${TMP_DIR}/usr/include/"
 
 rm -rf "${TMP_DIR}/usr/share/pkgconfig"
-cat << EOF > "${TMP_DIR}/usr/lib/pkgconfig/libclc.pc"
+cat << EOF > "${TMP_DIR}/usr/lib/pkgconfig/${PRGNAME}.pc"
 prefix=/usr
 includedir=\${prefix}/include
 libexecdir=\${prefix}/share/clc
 
-Name: libclc
+Name: ${PRGNAME}
 Description: Library requirements of the OpenCL C programming language
-Version: 0.2.0
+Version: ${VERSION}
 Cflags: -I\${includedir}
 Libs: -L\${libexecdir}
 EOF
@@ -91,7 +104,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # the OpenCL C programming language, as specified by the OpenCL 1.1
 # Specification
 #
-# Home page: https://libclc.llvm.org/
+# Home page: https://${PRGNAME}.llvm.org/
 # Download:  https://github.com/llvm/${ARCH_NAME}/releases/download/llvmorg-${VERSION}/${ARCH_NAME}-${VERSION}.src.tar.xz
 #
 EOF

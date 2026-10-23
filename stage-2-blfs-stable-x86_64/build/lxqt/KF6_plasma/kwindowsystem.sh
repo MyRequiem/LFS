@@ -8,7 +8,6 @@ PRGNAME="kwindowsystem"
 # графических серверов X11 и Wayland.
 
 # Required:    extra-cmake-modules
-#              plasma-wayland-protocols
 #              qt6
 #              xorg-libraries
 # Recommended: no

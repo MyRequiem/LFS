@@ -8,7 +8,6 @@ PRGNAME="kidletime"
 # своевременного тушения экрана или перехода в спящий режим.
 
 # Required:    extra-cmake-modules
-#              plasma-wayland-protocols
 #              qt6
 # Recommended: no
 # Optional:    no

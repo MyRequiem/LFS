@@ -46,7 +46,6 @@ PRGNAME="gst-plugins-bad"
 #              valgrind
 #              vulkan-loader
 #              glslc
-#              wayland              (gtk+3 должен быть скомпилирован с поддержкой Wayland)
 #              x265
 #              zxing-cpp
 #              bs2b                 (https://bs2b.sourceforge.net/)

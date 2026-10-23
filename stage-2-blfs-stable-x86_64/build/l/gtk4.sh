@@ -17,7 +17,6 @@ ARCH_NAME="gtk"
 #              libxkbcommon
 #              pango
 #              python3-pygobject3
-#              wayland-protocols
 # Recommended: adwaita-icon-theme    (по умолчанию для некоторых ключей настроек gtk4)
 #              gst-plugins-bad       (собранный с libvpx)
 #              glslc
@@ -90,9 +89,7 @@ meson setup ..               \
 ninja || exit 1
 
 ###
-# Тесты проводятся в графической среде
-# если запущена сессия wayland, то вместо x11 указываем wayland
-#    --setup wayland
+# Тесты проводятся в графической среде.
 ###
 # sed "s@'oc'@& / 'gtk-4.22.3'@" -i ../docs/reference/meson.build
 # meson configure -D documentation=true || exit 1

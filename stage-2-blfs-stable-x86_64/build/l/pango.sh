@@ -29,21 +29,21 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# не позволяем meson загружать любые дополнительные зависимости, которые не
-# установлены в системе
+# Не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе.
 #    --wrap-mode=nofallback
-meson setup                  \
-    --prefix=/usr            \
-    --buildtype=release      \
-    --wrap-mode=nofallback   \
-    -D introspection=enabled \
-    .. || exit 1
+meson setup ..             \
+    --prefix=/usr          \
+    --buildtype=release    \
+    --wrap-mode=nofallback \
+    -D man-pages=true      \
+    -D introspection=enabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

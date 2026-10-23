@@ -26,7 +26,6 @@ PRGNAME="gst-plugins-good"
 #              taglib
 #              valgrind
 #              v4l-utils
-#              wayland
 #              alsa-oss          (https://www.alsa-project.org/files/pub/oss-lib/)
 #              python3-hotdoc    (https://pypi.org/project/hotdoc/)
 #              jack              (https://jackaudio.org/)

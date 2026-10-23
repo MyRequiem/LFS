@@ -14,8 +14,7 @@ PRGNAME="libva"
 #              intel-vaapi-driver
 #              intel-media-driver
 # Optional:    doxygen
-#              wayland
-#              intel-gpu-tools       (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
+#              intel-gpu-tools      (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -32,10 +31,10 @@ meson setup                   \
     --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

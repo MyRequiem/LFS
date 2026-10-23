@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="vulkan-headers"
-ARCH_NAME="Vulkan-Headers"
+ARCH_NAME="Vulkan-Headers-vulkan-sdk"
 
 ### Vulkan-Headers (set of header files for build and link Vulkan API)
 # Набор заголовочных файлов с описанием правил и команд, которые нужны
@@ -30,7 +30,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -43,8 +43,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The Vulkan-Headers package contains a set of header files necessary to build
 # and link applications against the Vulkan API
 #
-# Home page: https://github.com/KhronosGroup/${ARCH_NAME}/
-# Download:  https://github.com/KhronosGroup/${ARCH_NAME}/archive/v${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://github.com/KhronosGroup/Vulkan-Headers/
+# Download:  https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

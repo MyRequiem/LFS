@@ -19,8 +19,6 @@ ARCH_NAME="gtk"
 #              iso-codes
 #              libxkbcommon
 #              libxslt               (для создания man-страниц)
-#              wayland
-#              wayland-protocols
 #              glib
 # Optional:    colord
 #              libcups или cups

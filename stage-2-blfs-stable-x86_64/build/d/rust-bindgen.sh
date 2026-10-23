@@ -17,7 +17,7 @@ PRGNAME="rust-bindgen"
 # NOTE
 ###
 #    Для сборки требуется сеть Internet, поэтому СОБИРАЕМ ТОЛЬКО В ЧИСТОЙ LFS
-#    системе (не в chroot хоста)
+#    системе (не в chroot хоста).
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -34,7 +34,7 @@ BASH_COMPL="/usr/share/bash-completion/completions"
 mkdir -p "${TMP_DIR}${BASH_COMPL}"
 touch "${TMP_DIR}${BASH_COMPL}/bindgen"
 
-# очистим rust кэш, мусор не нужен
+# Очистим rust кэш, мусор не нужен.
 rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1

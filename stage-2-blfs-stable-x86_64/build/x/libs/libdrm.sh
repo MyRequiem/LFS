@@ -16,9 +16,9 @@ PRGNAME="libdrm"
 #              docbook-xsl
 #              python3-docutils
 #              libxslt              (для сборки man-страниц)
-#              libatomic-ops
+#              libatomic-ops        (для процессоров, которые не поддерживают атомарные операции на аппаратном уровне)
 #              valgrind
-#              cunit                (для amdgpu тестов) https://cunit.sourceforge.net/
+#              cunit                (для AMDGPU тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,20 +31,19 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# включаем поддержку Udev вместо mknod
+# Включаем поддержку Udev вместо mknod.
 #    -Dudev=true
-meson setup                   \
+meson setup ..                \
     --prefix="${XORG_PREFIX}" \
     --buildtype=release       \
     -D udev=true              \
-    -D valgrind=disabled      \
-    .. || exit 1
+    -D valgrind=disabled || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -62,7 +61,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # drivers, libva and similar projects.
 #
 # Home page: https://dri.freedesktop.org/wiki/DRM/
-# Download:  https://dri.freedesktop.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

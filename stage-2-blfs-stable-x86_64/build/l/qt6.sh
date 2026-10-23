@@ -32,7 +32,6 @@ ARCH_NAME="qt-everywhere-src"
 #              libxkbcommon
 #              mesa
 #              mtdev
-#              wayland
 #              xcb-util-cursor
 #              xcb-util-image
 #              xcb-util-keysyms

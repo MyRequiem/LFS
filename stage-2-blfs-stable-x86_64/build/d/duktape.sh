@@ -21,7 +21,7 @@ sed -i 's/-Os/-O2/' Makefile.sharedlibrary         || exit 1
 make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr || exit 1
 make -f Makefile.sharedlibrary INSTALL_PREFIX=/usr install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -37,7 +37,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -50,8 +50,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # The Glslang package contains an frontend and validator for OpenGL, OpenGL ES,
 # and Vulkan shaders
 #
-# Home page: https://github.com/KhronosGroup/glslang/
-# Download:  https://github.com/KhronosGroup/glslang/archive/14.3.0/glslang-14.3.0.tar.gz
+# Home page: https://github.com/KhronosGroup/${PRGNAME}/
+# Download:  https://github.com/KhronosGroup/${PRGNAME}/archive/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -14,7 +14,7 @@ PRGNAME="cbindgen"
 ###
 # NOTE
 #    Для сборки требуется сеть Internet, поэтому СОБИРАЕМ ТОЛЬКО В ЧИСТОЙ LFS
-#    системе (не в chroot хоста)
+#    системе (не в chroot хоста).
 ###
 
 ROOT="/root/src/lfs"
@@ -28,7 +28,7 @@ cargo build --release || exit 1
 # cargo test --release
 install -Dm755 target/release/cbindgen "${TMP_DIR}/usr/bin/"
 
-# очистим rust кэш, мусор не нужен
+# Очистим rust кэш, мусор не нужен.
 rm -rf /root/.cargo
 
 source "${ROOT}/stripping.sh"      || exit 1

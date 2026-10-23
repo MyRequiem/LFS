@@ -14,7 +14,7 @@ PRGNAME="xorg-server"
 #              xkeyboard-config         (runtime и для тестов)
 # Recommended: dbus
 #              elogind                  (runtime)
-#              libepoxy                 (для glamor и xwayland)
+#              libepoxy                 (для glamor)
 #              libtirpc
 #              xorg-libinput-driver     (runtime)
 # Optional:    acpid                    (runtime)

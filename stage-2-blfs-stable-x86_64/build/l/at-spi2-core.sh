@@ -26,10 +26,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# отключим сборку GTK+2 модуля
+# Отключим сборку GTK+2 модуля.
 #    -D gtk2_atk_adaptor=false
-# помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
-# System V не может использовать этот файл
+# Помещаем файл модуля systemd в /tmp, откуда мы его потом удаляем, т.к.
+# System V не может использовать этот файл.
 #    -D systemd_user_dir=/tmp
 meson setup ..                \
     --prefix=/usr             \
@@ -39,8 +39,8 @@ meson setup ..                \
 
 ninja || exit 1
 
-# тесты нужно запускать в графическом окружении с уже установленным пакетом
-# at-spi2-core
+# Тесты нужно запускать в графическом окружении с уже установленным пакетом
+# at-spi2-core в систему.
 # dbus-run-session ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
@@ -50,12 +50,12 @@ rm -rf "${TMP_DIR}/tmp"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 AUTOSTART="/etc/xdg/autostart/at-spi-dbus-bus.desktop"
-# сервис будет виден в GUI настройках системы (например в lxqt-config-session),
-# не нужно ничего прятать
+# Сервис будет виден в GUI настройках системы (например в lxqt-config-session),
+# не нужно ничего прятать.
 sed -i 's/NoDisplay=true/NoDisplay=false/g' "${TMP_DIR}${AUTOSTART}" || exit 1
 
-# запретим запускать at-spi-bus-launcher при старте системы (скроем .desktop,
-# для системы как будто его нет)
+# Запретим запускать at-spi-bus-launcher при старте системы (скроем .desktop,
+# для системы как будто его нет).
 sed -i '$a Hidden=true' "${TMP_DIR}${AUTOSTART}" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1

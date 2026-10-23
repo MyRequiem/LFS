@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="vulkan-loader"
-ARCH_NAME="Vulkan-Loader"
+ARCH_NAME="Vulkan-Loader-vulkan-sdk"
 
 ### Vulkan-Loader (library which provides the Vulkan API)
 # Системный «диспетчер», который находит доступные в системе видеокарты и их
@@ -12,14 +12,8 @@ ARCH_NAME="Vulkan-Loader"
 # Required:    cmake
 #              vulkan-headers
 #              xorg-libraries
-# Recommended: wayland
-#              mesa                 (runtime)
+# Recommended: mesa                 (runtime)
 # Optional:    git                  (для тестов)
-
-###
-# NOTE:
-#    Для сборки требуется интернет.
-###
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -40,8 +34,8 @@ cmake                              \
 
 ninja|| exit 1
 
-### тесты
-# необходима сеть Internet и установленный пакет git
+### Тесты.
+# Требуется сеть Internet и установленный пакет git.
 #
 # sed "s/'git', 'clone'/&, '--depth=1', '-b', self.commit/" \
 #     -i ../scripts/update_deps.py || exit 1
@@ -51,12 +45,12 @@ ninja|| exit 1
 #     -D UPDATE_DEPS=ON \
 #     .. || exit 1
 #
-# ninja || exit
+# ninja || exit 1
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -70,8 +64,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # and provides core support for graphics drivers for Vulkan
 #
 #
-# Home page: https://github.com/KhronosGroup/${ARCH_NAME}/
-# Download:  https://github.com/KhronosGroup/${ARCH_NAME}/archive/v${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
+# Home page: https://github.com/KhronosGroup/Vulkan-Loader/
+# Download:  https://github.com/KhronosGroup/Vulkan-Loader/archive/vulkan-sdk-${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -27,7 +27,7 @@ make            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим статическую библиотеку
+# Удалим статическую библиотеку.
 rm -f "${TMP_DIR}/usr/lib/libgif.a"
 
 source "${ROOT}/stripping.sh"      || exit 1

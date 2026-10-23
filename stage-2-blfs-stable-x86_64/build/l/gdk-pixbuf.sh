@@ -57,7 +57,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# создаем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache
+# Создаем файл /usr/lib/gdk-pixbuf-x.x/x.x.x/loaders.cache
 gdk-pixbuf-query-loaders --update-cache
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
