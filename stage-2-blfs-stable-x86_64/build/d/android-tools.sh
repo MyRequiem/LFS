@@ -34,15 +34,15 @@ mkdir -p vendor/libbase/include/gtest &&
 mkdir -p build
 cd build || exit 1
 
-cmake                                      \
+cmake ..                                   \
     -D CMAKE_INSTALL_PREFIX=/usr           \
     -D CMAKE_BUILD_TYPE=Release            \
     -D CMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
     -D protobuf_MODULE_COMPATIBLE=ON       \
     -D ANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
     -D ANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON \
-    -G Ninja -Wno-dev                      \
-    .. || exit 1
+    -W no-author                           \
+    -G Ninja || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install

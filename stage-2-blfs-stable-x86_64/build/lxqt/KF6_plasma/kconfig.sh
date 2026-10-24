@@ -33,7 +33,7 @@ cmake ..                                \
     -D CMAKE_INSTALL_LIBEXECDIR=libexec \
     -D KDE_INSTALL_USE_QT_SYS_PATHS=ON  \
     -D BUILD_TESTING=OFF                \
-    -W no-dev || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

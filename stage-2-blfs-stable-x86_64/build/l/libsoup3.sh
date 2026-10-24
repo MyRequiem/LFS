@@ -64,7 +64,7 @@ cd build || exit 1
 # не позволяем meson загружать любые дополнительные зависимости, которые не
 # установлены в системе
 #    --wrap-mode=nodownload
-meson setup                \
+meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \
     --wrap-mode=nofallback \
@@ -72,8 +72,7 @@ meson setup                \
     -D gssapi=disabled     \
     -D sysprof=disabled    \
     -D tests=false         \
-    -D docs=disabled       \
-    .. || exit 1
+    -D docs=disabled || exit 1
 
 ninja || exit 1
 # ninja test

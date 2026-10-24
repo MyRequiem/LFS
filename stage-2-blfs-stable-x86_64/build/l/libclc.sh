@@ -54,7 +54,7 @@ cd "${PRGNAME}/build" || exit 1
 #
 # Для Intel
 TRGTS="spirv64--"
-cmake                                    \
+cmake ..                                 \
     -D CMAKE_INSTALL_PREFIX=/usr         \
     -D CMAKE_BUILD_TYPE=Release          \
     -D CMAKE_CLC_COMPILER=/usr/bin/clang \
@@ -62,8 +62,7 @@ cmake                                    \
     -D CMAKE_CXX_COMPILER=/usr/bin/g++   \
     -D LIBCLC_TARGET="${TRGTS}"          \
     -W no-author                         \
-    -G Ninja                             \
-    .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 # ninja test

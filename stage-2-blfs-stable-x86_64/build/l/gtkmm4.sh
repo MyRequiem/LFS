@@ -43,12 +43,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup                      \
-    --prefix=/usr                \
-    --buildtype=release          \
-    -D build-tests=false         \
-    -D build-documentation=false \
-    .. || exit 1
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D build-tests=false \
+    -D build-documentation=false || exit 1
 
 ninja || exit 1
 # тесты нужно запускать в графической среде, т.к. некоторые тесты запускают

@@ -1,6 +1,9 @@
+[24.10.2026]
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the libxkbcommon package from 1.13.0 to 1.13.2.
+* BLFS: Upgraded the xkeyboard-config package from 2.47 to 2.48.
 [23.10.2026]
-* BLFS: Upgraded the  package from  to .
-* BLFS: Upgraded the  package from  to .
 * BLFS: Upgraded the libva-utils package from 2.23.0 to 2.24.0.
 * BLFS: Removed the libei package.
 * BLFS: Removed the kwayland package.

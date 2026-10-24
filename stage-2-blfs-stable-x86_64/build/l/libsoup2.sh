@@ -53,15 +53,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
+meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D vapi=enabled     \
     -D gssapi=disabled  \
     -D sysprof=disabled \
     -D tests=false      \
-    -D gtk_doc=false    \
-    .. || exit 1
+    -D gtk_doc=false || exit 1
 
 ninja || exit 1
 # ninja test

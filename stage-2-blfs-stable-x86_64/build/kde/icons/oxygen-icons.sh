@@ -25,9 +25,9 @@ sed -i '/( oxygen/ s/)/scalable )/' CMakeLists.txt || exit 1
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -W no-dev .. || exit 1
+    -W no-author || exit 1
 
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"

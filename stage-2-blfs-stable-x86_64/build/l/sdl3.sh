@@ -34,14 +34,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D SDL_TEST_LIBRARY=OFF      \
     -D SDL_STATIC=OFF            \
     -D SDL_RPATH=OFF             \
-    -W no-dev                    \
-    -G Ninja .. || exit 1
+    -W no-author                 \
+    -G Ninja || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install

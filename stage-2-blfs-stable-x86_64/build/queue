@@ -300,7 +300,6 @@ l/libclc.sh
 x/misc/mesa.sh
 x/libs/libva.sh
 x/utils/libva-utils.sh
-
 x/misc/glu.sh
 x/misc/freeglut.sh
 x/libs/libepoxy.sh
@@ -313,6 +312,7 @@ x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
 d/sassc.sh
 l/gtk+3.sh
+
 l/graphene.sh
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>

@@ -24,14 +24,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                                \
+cmake ..                             \
     -D CMAKE_INSTALL_PREFIX=/usr     \
     -D CMAKE_BUILD_TYPE=Release      \
     -D ALLOW_EXTERNAL_SPIRV_TOOLS=ON \
     -D BUILD_SHARED_LIBS=ON          \
     -D GLSLANG_TESTS=OFF             \
-    -G Ninja                         \
-    .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 # ninja test

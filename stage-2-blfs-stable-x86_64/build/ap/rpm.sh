@@ -21,15 +21,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build_
 cd build_ || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D WITH_LIBDW=OFF            \
     -D WITH_AUDIT=OFF            \
     -D WITH_SELINUX=OFF          \
     -D WITH_SEQUOIA=OFF          \
-    -W no-dev                    \
-    .. || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

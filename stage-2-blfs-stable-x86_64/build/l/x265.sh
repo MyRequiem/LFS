@@ -49,7 +49,7 @@ cmake                                   \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D GIT_ARCHETYPE=1                  \
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -W no-dev                           \
+    -W no-author                        \
     ../source || exit 1
 
 make || exit 1

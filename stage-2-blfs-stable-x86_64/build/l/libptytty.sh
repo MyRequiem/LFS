@@ -21,11 +21,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
-    -D PT_UTMP_FILE=/run/utmp    \
-    .. || exit 1
+    -D PT_UTMP_FILE=/run/utmp || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

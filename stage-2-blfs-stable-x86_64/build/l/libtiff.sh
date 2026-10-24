@@ -26,11 +26,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p tiff-build
 cd tiff-build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -W no-author                 \
-    -G Ninja .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 # ninja test

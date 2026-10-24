@@ -29,15 +29,14 @@ cd build || exit 1
 #    -D CMAKE_SKIP_INSTALL_RPATH=ON
 # Обеспевает совместимость с libjpeg версии 8 (создать libjpeg.so.8).
 #    -D WITH_JPEG8=ON
-cmake                                                              \
+cmake ..                                                           \
     -D CMAKE_INSTALL_PREFIX=/usr                                   \
     -D CMAKE_BUILD_TYPE=RELEASE                                    \
     -D ENABLE_STATIC=FALSE                                         \
     -D CMAKE_INSTALL_DEFAULT_LIBDIR=lib                            \
     -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
     -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    -D WITH_JPEG8=ON                                               \
-    .. || exit 1
+    -D WITH_JPEG8=ON || exit 1
 
 make || exit 1
 # make test

@@ -40,13 +40,13 @@ cd build || exit 1
 #    -DTESTDATADIR="${PWD}/testfiles"
 # устанавливаем старые заголовки Xpdf, необходимые для некоторых программ
 #    -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
-cmake                                     \
+cmake ..                                  \
     -D CMAKE_BUILD_TYPE=Release           \
     -D CMAKE_INSTALL_PREFIX=/usr          \
     -D TESTDATADIR="${PWD}/testfiles"     \
     -D ENABLE_QT5=OFF                     \
     -D ENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-    -G Ninja .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 

@@ -30,10 +30,10 @@ sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")' \
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_WITH_QT6=ON         \
-    -D DOC_INSTALL_DIR="/usr/share/doc/${PRGNAME}-${VERSION}" .. || exit 1
+    -D DOC_INSTALL_DIR="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

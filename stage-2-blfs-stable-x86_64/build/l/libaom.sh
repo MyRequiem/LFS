@@ -22,13 +22,13 @@ mkdir -pv "${TMP_DIR}"
 mkdir aom-build
 cd aom-build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D BUILD_SHARED_LIBS=1       \
     -D ENABLE_DOCS=no            \
     -D ENABLE_NASM=yes           \
-    -G Ninja .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 # пакет не имеет набора тестов

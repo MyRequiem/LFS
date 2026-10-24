@@ -22,18 +22,18 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                                \
+cmake ..                             \
     -D CMAKE_INSTALL_PREFIX=/usr     \
     -D CMAKE_BUILD_TYPE=Release      \
     -D CMAKE_INSTALL_LIBDIR=/usr/lib \
     -D BUILD_SHARED_LIBS=ON          \
     -D FMT_TEST=OFF                  \
-    -G Ninja .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 
 # тесты
-# cmake -D FMT_TEST=ON .. &&
+# cmake .. -D FMT_TEST=ON &&
 # ninja                   &&
 # ninja test
 

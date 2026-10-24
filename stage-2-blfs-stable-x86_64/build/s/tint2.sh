@@ -28,14 +28,13 @@ cd build || exit 1
 # Обеспечим совместимость со свежим CMake 4.x.x
 #    CMAKE_POLICY_VERSION_MINIMUM=3.5
 # Не нужно мусорить в логе/выводе предупреждениями для разработчиков :)
-#    -W no-dev
+#    -W no-author
 LDFLAGS="-lm" \
-cmake                                   \
+cmake ..                                \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D CMAKE_BUILD_TYPE=Release         \
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -W no-dev                           \
-    .. || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

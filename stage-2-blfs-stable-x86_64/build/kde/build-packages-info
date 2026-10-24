@@ -4,8 +4,8 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 --------------------
 # Дополнительные пакеты могут требовать дополнительные зависимости. Проверяем в
 # корне исходников так:
-#    # cmake -W no-dev -LAH .
-#           -W no-dev    - не выводить сообщения от разработчиков
+#    # cmake -W no-author -LAH .
+#           -W no-author - не выводить сообщения от разработчиков
 #           -L           - вывод списка всех переменных (без расширенных),
 #                           хранящихся в кэше CMake (CMakeCache.txt), который
 #                           генерируется после запуска CMake
@@ -17,7 +17,7 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 #
 #    Например получить переменные (без расширенных) с их описанием, записать их
 #    в файл и просмотреть с подсветкой синтаксиса в Vim
-#       $ cmake -W no-dev -LH . &> CMAKE_PARAMETERS
+#       $ cmake -W no-uthor -LH . &> CMAKE_PARAMETERS
 #       $ echo -e "\n# vim:ft=cmakecache" >> CMAKE_PARAMETERS
 #       $ vim CMAKE_PARAMETERS
 #
@@ -29,7 +29,7 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 # mkdir build
 # cd build || exit 1
 #
-# cmake                                                         \
+# cmake ..                                                      \
 #     -D CMAKE_INSTALL_PREFIX=/usr                              \
 #     -D CMAKE_BUILD_TYPE=Release                               \
 #     -D CMAKE_INSTALL_LIBEXECDIR=libexec                       \
@@ -39,8 +39,7 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 #     -D BUILD_SHARED_LIBS=ON                                   \
 #     -D BUILD_TESTING=OFF                                      \
 #     -D BUILD_KCM_TABLET=OFF                                   \
-#     -W no-dev                                                 \
-#     .. || exit 1
+#     -W no-author || exit 1
 #
 # make || exit 1
 # make install DESTDIR="..."

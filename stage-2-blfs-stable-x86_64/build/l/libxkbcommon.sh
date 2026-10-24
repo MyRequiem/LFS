@@ -8,10 +8,10 @@ PRGNAME="libxkbcommon"
 # основном предназначена для клиентских инструментов, оконных менеджеров и
 # других системных приложений.
 
-# Required:    xkeyboard-config
+# Required:    xkeyboard-config     (runtime)
 # Recommended: libxcb
 # Optional:    doxygen
-#              xorg-server (только утилита Xvfb для тестов)
+#              xorg-server          (только утилита Xvfb для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,16 +23,17 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..          \
-    --prefix=/usr       \
-    --buildtype=release \
-    -D enable-docs=false || exit 1
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D enable-docs=false \
+    -D enable-wayland=false || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

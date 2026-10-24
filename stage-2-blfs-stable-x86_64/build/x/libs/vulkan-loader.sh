@@ -25,12 +25,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                              \
+cmake ..                           \
     -D CMAKE_INSTALL_PREFIX=/usr   \
     -D CMAKE_BUILD_TYPE=Release    \
     -D CMAKE_SKIP_INSTALL_RPATH=ON \
-    -G Ninja                       \
-    .. || exit 1
+    -G Ninja || exit 1
 
 ninja|| exit 1
 
@@ -40,10 +39,9 @@ ninja|| exit 1
 # sed "s/'git', 'clone'/&, '--depth=1', '-b', self.commit/" \
 #     -i ../scripts/update_deps.py || exit 1
 #
-# cmake                 \
+# cmake ..              \
 #     -D BUILD_TESTS=ON \
-#     -D UPDATE_DEPS=ON \
-#     .. || exit 1
+#     -D UPDATE_DEPS=ON || exit 1
 #
 # ninja || exit 1
 # ninja test

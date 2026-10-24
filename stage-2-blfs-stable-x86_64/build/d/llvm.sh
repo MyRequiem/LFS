@@ -89,7 +89,7 @@ cd "${PRGNAME}/build" || exit 1
 # "sed"-костылей для раскладки заголовков.
 
 CC=gcc CXX=g++                                 \
-cmake                                          \
+cmake ..                                       \
     -D CMAKE_INSTALL_PREFIX=/usr               \
     -D CMAKE_SKIP_INSTALL_RPATH=ON             \
     -D LLVM_ENABLE_FFI=ON                      \
@@ -105,8 +105,7 @@ cmake                                          \
     -D CLANG_DEFAULT_PIE_ON_LINUX=ON           \
     -D CLANG_CONFIG_FILE_SYSTEM_DIR=/etc/clang \
     -W no-author                               \
-    -G Ninja                                   \
-    .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 

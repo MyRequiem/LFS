@@ -26,14 +26,13 @@ cd BUILD || exit 1
 
 # удаляем пути поиска встроенной библиотеки
 #    -DCMAKE_SKIP_INSTALL_RPATH=YES
-cmake                                                              \
-    -D CMAKE_INSTALL_PREFIX=/usr                                   \
-    -D CMAKE_BUILD_TYPE=Release                                    \
-    -D CMAKE_SKIP_INSTALL_RPATH=ON                                 \
-    -D JAS_ENABLE_DOC=NO                                           \
-    -D ALLOW_IN_SOURCE_BUILD=YES                                   \
-    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" \
-    .. || exit 1
+cmake ..                           \
+    -D CMAKE_INSTALL_PREFIX=/usr   \
+    -D CMAKE_BUILD_TYPE=Release    \
+    -D CMAKE_SKIP_INSTALL_RPATH=ON \
+    -D JAS_ENABLE_DOC=NO           \
+    -D ALLOW_IN_SOURCE_BUILD=YES   \
+    -D CMAKE_INSTALL_DOCDIR="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
 # make test

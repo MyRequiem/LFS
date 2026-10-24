@@ -35,15 +35,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                                       \
+cmake ..                                    \
     -D CMAKE_INSTALL_PREFIX=/usr            \
     -D CMAKE_BUILD_TYPE=Release             \
     -D BUILD_SHARED_LIBS=ON                 \
     -D BUILD_STATIC_LIBS=OFF                \
     -D KDSingleApplication_STATIC=OFF       \
     -D QTCOLORWIDGETS_BUILD_STATIC_LIBS=OFF \
-    -W no-dev                               \
-    .. || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

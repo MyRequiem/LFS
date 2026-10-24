@@ -21,9 +21,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+cmake .. \
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 # пакет не имеет набора тестов
 make install DESTDIR="${TMP_DIR}"

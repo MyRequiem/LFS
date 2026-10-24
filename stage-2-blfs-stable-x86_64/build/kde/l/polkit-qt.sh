@@ -28,7 +28,7 @@ cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release  \
     -D QT_MAJOR_VERSION=6        \
-    -W no-dev || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 # пакет не имеет набора тестов

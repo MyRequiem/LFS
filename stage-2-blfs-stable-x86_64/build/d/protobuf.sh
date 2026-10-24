@@ -25,14 +25,14 @@ cd build || exit 1
 
 # utf8_range нужен для сборки пакета android-tools
 #    -D utf8_range_ENABLE_INSTALL=ON
-cmake                                 \
+cmake ..                              \
     -D CMAKE_INSTALL_PREFIX=/usr      \
     -D CMAKE_BUILD_TYPE=Release       \
     -D CMAKE_SKIP_INSTALL_RPATH=ON    \
     -D protobuf_BUILD_TESTS=OFF       \
     -D protobuf_BUILD_SHARED_LIBS=ON  \
     -D utf8_range_ENABLE_INSTALL=ON   \
-    -G Ninja .. || exit 1
+    -G Ninja || exit 1
 
 ninja || exit 1
 DESTDIR="${TMP_DIR}" ninja install

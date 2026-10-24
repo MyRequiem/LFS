@@ -3,8 +3,8 @@
 PRGNAME="libepoxy"
 
 ### libepoxy (OpenGL function pointer management library)
-# Умный посредник для графики. Он автоматически находит нужные функции
-# видеокарты, избавляя программистов от рутины.
+# Умный посредник для графики. Автоматически находит нужные функции видеокарты,
+# избавляя программистов от рутины.
 
 # Required:    mesa
 # Recommended: no
@@ -20,16 +20,15 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup             \
-    --prefix=/usr       \
-    --buildtype=release \
-    .. || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

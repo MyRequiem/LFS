@@ -31,7 +31,7 @@ ARCH_NAME="gtk"
 #              papi                  (https://icl.utk.edu/papi/)
 
 ###
-# Конфигурация
+# Конфигурация.
 ###
 #    ~/.config/gtk-3.0/settings.ini
 #    /etc/gtk-3.0/settings.ini
@@ -65,23 +65,24 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# по молчанию "cups,file,lpr,papi,test" - нам это не нужно
+# По молчанию "cups,file,lpr,papi,test" - нам это не нужно.
 #    -D print_backends="file"
 meson setup ..               \
     --prefix=/usr            \
     --buildtype=release      \
     -D man=true              \
     -D broadway_backend=true \
+    -D wayland_backend=false \
     -D print_backends="file" \
     -D examples=false        \
     -D tests=false || exit 1
 
 ninja || exit 1
-# тесты нужно запускать в графической среде
+# Тесты нужно запускать в графической среде.
 # dbus-run-session ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

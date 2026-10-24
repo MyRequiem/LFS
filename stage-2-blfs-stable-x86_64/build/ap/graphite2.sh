@@ -47,9 +47,8 @@ sed -i '/Font.h/i #include <cstdint>' \
 mkdir build
 cd build || exit 1
 
-cmake                            \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    .. || exit 1
+cmake .. \
+    -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
 make || exit 1
 # make test

@@ -25,7 +25,7 @@ cmake ..                                \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D BUILD_STATIC=OFF                 \
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -W no-dev || exit 1
+    -W no-author || exit 1
 
 make || exit 1
 # make test

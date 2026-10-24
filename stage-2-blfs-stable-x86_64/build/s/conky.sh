@@ -28,7 +28,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir -p build
 cd build || exit 1
 
-cmake                                            \
+cmake ..                                         \
     -D CMAKE_INSTALL_PREFIX=/usr                 \
     -D CMAKE_BUILD_TYPE=Release                  \
     -D BUILD_APCUPSD=OFF                         \
@@ -49,8 +49,7 @@ cmake                                            \
     -D CURSES_LIBRARY=/usr/lib/libcurses.so      \
     -D LOCALE_DIR=/usr/share/locale              \
     -D PACKAGE_LIBRARY_DIR="/usr/lib/${PRGNAME}" \
-    -D USE_CCACHE=OFF                            \
-    .. || exit 1
+    -D USE_CCACHE=OFF || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"

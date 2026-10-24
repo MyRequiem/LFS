@@ -22,11 +22,10 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                           \
+cmake ..                        \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release  \
-    -DBUILD_STATIC_LIBS=OFF     \
-    .. || exit 1
+    -DBUILD_STATIC_LIBS=OFF || exit 1
 
 make || exit 1
 # make USE_VALGRIND=0 test

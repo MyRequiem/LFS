@@ -28,12 +28,11 @@ done
 mkdir build
 cd build || exit 1
 
-cmake                                   \
-    -D CMAKE_INSTALL_PREFIX=/usr        \
-    -D CMAKE_BUILD_TYPE=Release         \
-    -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON   \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    .. || exit 1
+cmake ..                              \
+    -D CMAKE_INSTALL_PREFIX=/usr      \
+    -D CMAKE_BUILD_TYPE=Release       \
+    -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 

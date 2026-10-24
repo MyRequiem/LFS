@@ -25,11 +25,11 @@ mkdir -pv "${TMP_DIR}/usr/share"
 mkdir build
 cd build || exit 1
 
-cmake                            \
+cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D BUILD_STATIC_LIBS=OFF     \
-    -D BUILD_DOC=OFF .. || exit 1
+    -D BUILD_DOC=OFF || exit 1
 
 make || exit 1
 

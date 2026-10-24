@@ -18,7 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# сначала соберем библиотеку libsass
+# Сначала соберем библиотеку libsass.
 tar -xf "${SOURCES}/libsass"-*.tar.gz || exit 1
 pushd libsass-* || exit 1
 
@@ -28,28 +28,28 @@ autoreconf -fi &&
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
-# установим в ${TMP_DIR} и сразу в систему
+# Пакет не имеет набора тестов.
+# Установим в ${TMP_DIR} и сразу в систему.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# теперь собираем оболочку командной строки
+# Теперь собираем оболочку командной строки.
 popd || exit 1
 autoreconf -fi &&
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

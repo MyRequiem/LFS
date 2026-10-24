@@ -23,14 +23,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-cmake                              \
+cmake ..                           \
     -D CMAKE_INSTALL_PREFIX=/usr   \
     -D CMAKE_BUILD_TYPE=Release    \
     -D CMAKE_SKIP_INSTALL_RPATH=ON \
     -D SDL2COMPAT_STATIC=OFF       \
     -D SDL2COMPAT_TESTS=OFF        \
-    -W no-dev                      \
-    -G Ninja .. || exit 1
+    -W no-author                   \
+    -G Ninja || exit 1
 
 ninja || exit 1
 
