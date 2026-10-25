@@ -4,7 +4,9 @@ PRGNAME="perl-class-inspector"
 ARCH_NAME="Class-Inspector"
 
 ### Class::Inspector (get information about a class and its structure)
-# Class::Inspector Perl модуль
+# Помогает программе «заглянуть» внутрь любого Perl-класса и узнать его
+# структуру. Нужен разработчикам, чтобы автоматически проверять, какие методы и
+# функции доступны в коде.
 
 # Required:    no
 # Recommended: no
@@ -22,13 +24,16 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

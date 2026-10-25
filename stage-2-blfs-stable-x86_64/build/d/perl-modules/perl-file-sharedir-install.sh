@@ -4,7 +4,9 @@ PRGNAME="perl-file-sharedir-install"
 ARCH_NAME="File-ShareDir-Install"
 
 ### File::ShareDir::Install (install shared files)
-# File::ShareDir::Install Perl модуль
+# Инструмент для этапа установки модулей. Он нужен авторам программ, чтобы
+# правильно скопировать и надежно сохранить вспомогательные файлы (картинки,
+# конфигурации) в общую системную папку.
 
 # Required:    no
 # Recommended: no
@@ -22,13 +24,16 @@ make             || exit 1
 # make test
 make install DESTDIR="${TMP_DIR}"
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
