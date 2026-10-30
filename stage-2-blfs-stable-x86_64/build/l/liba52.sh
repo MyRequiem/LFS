@@ -32,9 +32,9 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# копируем заголовок a52_internal.h в /usr/include/a52dec для того, чтобы такие
+# Копируем заголовок a52_internal.h в /usr/include/a52dec для того, чтобы такие
 # пакеты как 'xine-lib' могли компилироваться и компоноваться с уже
-# установленным в системе liba52
+# установленным в системе liba52.
 cp "${PRGNAME}/a52_internal.h" "${TMP_DIR}/usr/include/${ARCH_NAME}"
 
 source "${ROOT}/stripping.sh"      || exit 1

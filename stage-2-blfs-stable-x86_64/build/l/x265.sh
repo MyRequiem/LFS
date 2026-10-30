@@ -38,27 +38,22 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим некоторые настройки политики CMake, которые больше не совместимы с
-# CMake-4.0
-sed -r '/cmake_policy.*(0025|0054)/d' -i source/CMakeLists.txt || exit 1
-
 mkdir bld
 cd bld || exit 1
 
 cmake                                   \
     -D CMAKE_INSTALL_PREFIX=/usr        \
     -D GIT_ARCHETYPE=1                  \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -W no-author                        \
     ../source || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# не используем статическую библиотеку
+# Не используем статическую библиотеку.
 rm -vf "${TMP_DIR}/usr/lib/lib${PRGNAME}.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -73,7 +68,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # the H.265/MPEG-H HEVC compression format.
 #
 # Home page: https://www.videolan.org/developers/${PRGNAME}.html
-# Download:  https://bitbucket.org/multicoreware/${PRGNAME}_git/downloads/${PRGNAME}_${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}_${VERSION}.tar.gz
 #
 EOF
 

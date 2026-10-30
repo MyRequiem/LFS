@@ -24,7 +24,7 @@ cd build || exit 1
 cmake .. \
     -D CMAKE_INSTALL_PREFIX=/usr || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

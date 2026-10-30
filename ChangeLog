@@ -1,6 +1,35 @@
+[30.10.2026]
+* BLFS: Upgraded the gtk4 package from 4.22.3 to 4.22.4.
+* BLFS: Removed the gst-plugins-ugly package.
+* BLFS: Removed the gst-plugins-bad package.
+* BLFS: Upgraded the gst-plugins-good package from 1.28.2 to 1.28.8.
+* BLFS: Upgraded the gst-plugins-base package from 1.28.2 to 1.28.8.
+* BLFS: Upgraded the faad2 package from 2.11.2 to 2.11.4.
+* BLFS: Upgraded the taglib package from 2.3 to 2.3.2.
+* BLFS: Upgraded the utfcpp package from 4.1.1 to 4.2.1.
+* BLFS: Upgraded the glslc package from 2026.1 to 2026.4.
+* BLFS: Upgraded the libaom package from 3.13.3 to 3.15.2.
+* BLFS: Upgraded the libsoup3 package from 3.6.6 to 3.8.1.
+* BLFS: Upgraded the brotli package from 1.2.0 to 1.2.1.
+* BLFS: Upgraded the glib-networking package from 2.80.1 to 2.90.1.
+[29.10.2026]
+* BLFS: Upgraded the x265 package from 4.1 to 4.3.
+* BLFS: Upgraded the mpg123 package from 1.33.4 to 1.33.7.
+* BLFS: Upgraded the sdl2-compat package from 2.32.66 to 2.32.74.
+[25.10.2026]
+* BLFS: Upgraded the sdl3 package from 3.4.4 to 3.4.18.
+* BLFS: Added the package perl-xml-parser (v2.59).
+* BLFS: Added the package perl-file-sharedir (v1.118).
+* BLFS: Added the package perl-file-sharedir-install (v0.14).
+* BLFS: Added the package perl-class-inspector (v1.36).
 [24.10.2026]
-* BLFS: Upgraded the  package from  to .
-* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the orc package from 0.4.42 to 0.4.44.
+* BLFS: Upgraded the alsa-lib package from 1.2.15.3 to 1.2.16.1.
+* BLFS: Upgraded the gstreamer package from 1.28.2 to 1.28.8.
+* BLFS: Upgraded the libvpx package from 1.16.0 to 1.17.0.
+* BLFS: Upgraded the adwaita-icon-theme package from 49.0 to 51.0.
+* BLFS: Upgraded the python3-pygobject3 package from 3.56.2 to 3.58.1.
+* BLFS: Upgraded the python3-pycairo package from 1.29.0 to 1.29.2.
 * BLFS: Upgraded the libxkbcommon package from 1.13.0 to 1.13.2.
 * BLFS: Upgraded the xkeyboard-config package from 2.47 to 2.48.
 [23.10.2026]
@@ -181,22 +210,6 @@
 * LFS: Upgraded the autoconf package from 2.72 to 2.73.
 * BLFS: Upgraded the git package from 2.53.0 to 2.55.0.
 * LFS: Upgraded the vim package from 9.2.0782 to 9.2.1021.
-* BLFS: Removed the perl-xml-parser package.
-* BLFS: Removed the perl-uri package.
-* BLFS: Removed the perl-types-serialiser package.
-* BLFS: Removed the perl-sgmlspm package.
-* BLFS: Removed the perl-net-ssleay package.
-* BLFS: Removed the perl-mime-base32 package.
-* BLFS: Removed the perl-json-xs package.
-* BLFS: Removed the perl-io-socket-ssl package.
-* BLFS: Removed the perl-file-fcntllock package.
-* BLFS: Removed the perl-common-sense package.
-* BLFS: Removed the perl-canary-stability package.
-* BLFS: Removed the perl-business-isbn-data package.
-* BLFS: Removed the perl-business-isbn package.
-* BLFS: Removed the perl-anyevent-i3 package.
-* BLFS: Removed the perl-anyevent package.
-* BLFS: Removed the imagemagick package.
 * LFS: Upgraded the perl package from 5.42.1 to 5.44.0.
 * LFS: Upgraded the less package from 692 to 704.
 * LFS: Upgraded the inetutils package from 2.7 to 2.8.

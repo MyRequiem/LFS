@@ -12,7 +12,7 @@ PRGNAME="libsndfile"
 #              libvorbis
 # Optional:    alsa-lib
 #              lame
-#              mpg123
+#              mpg123       (библиотека libmpg123.so - декодирование MP3)
 #              speex
 
 ROOT="/root/src/lfs"
@@ -22,8 +22,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим для сборки с GCC >=15
-sed -i '/typedef enum/,/bool ;/d' src/ALAC/alac_{en,de}coder.c
+# Исправим для сборки с GCC >=15
+sed -i '/typedef enum/,/bool ;/d' src/ALAC/alac_{en,de}coder.c || exit 1
 
 ./configure       \
     --prefix=/usr \
@@ -31,13 +31,14 @@ sed -i '/typedef enum/,/bool ;/d' src/ALAC/alac_{en,de}coder.c
 
 make || exit 1
 
-# отключим тесты Opus, которые не будут работать в opus >=1.6.1
+# Отключим тесты Opus, которые не будут работать в opus >=1.6.1 и приведут к
+# досрочному завершению набора тестов.
 # sed '/ogg_opus/,+1s/HAVE_[A-Z_]*/0/' -i tests/lossy_comp_test.c || exit 1
 # make check
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

@@ -19,6 +19,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# Запретим установку статических библиотек.
+sed -i 's/aom aom_static/aom/' cmake/aom_install.cmake || exit 1
+
 mkdir aom-build
 cd aom-build || exit 1
 
@@ -31,13 +34,13 @@ cmake ..                         \
     -G Ninja || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+
+# Тесты требуют сеть интернет и занимают очень много времени.
+# ninja runtests
+
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
-
-# удалим статическую библиотеку
-rm -fv "${TMP_DIR}/usr/lib/libaom.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

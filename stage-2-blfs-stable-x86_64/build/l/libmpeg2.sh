@@ -18,7 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# устраним проблему сборки с GCC >=15.0
+# Устраним проблему сборки с GCC >=15.0
 sed -i 's/static const/static/' "${PRGNAME}/idct_mmx.c" || exit 1
 
 ./configure         \

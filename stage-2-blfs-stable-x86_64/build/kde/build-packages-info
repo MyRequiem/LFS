@@ -17,7 +17,7 @@ https://download.kde.org/stable/release-service/25.08.0/src/
 #
 #    Например получить переменные (без расширенных) с их описанием, записать их
 #    в файл и просмотреть с подсветкой синтаксиса в Vim
-#       $ cmake -W no-uthor -LH . &> CMAKE_PARAMETERS
+#       $ cmake -W no-author -LH . &> CMAKE_PARAMETERS
 #       $ echo -e "\n# vim:ft=cmakecache" >> CMAKE_PARAMETERS
 #       $ vim CMAKE_PARAMETERS
 #

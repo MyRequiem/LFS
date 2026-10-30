@@ -10,8 +10,8 @@ PRGNAME="x264"
 
 # Required:    no
 # Recommended: nasm
-# Optional:    ffms2              (https://github.com/FFMS/ffms2)
-#              gpac или liblsmash (https://github.com/gpac/gpac/releases/) (https://github.com/l-smash/l-smash)
+# Optional:    ffms2                 (https://github.com/FFMS/ffms2)
+#              gpac или liblsmash    (https://github.com/gpac/gpac/releases/) (https://github.com/l-smash/l-smash)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,8 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# отключаем создание кодировщика командной строки, который является избыточным,
-# поскольку для большинства форматов требуется FFmpeg
+# Отключаем создание кодировщика командной строки, который является избыточным,
+# поскольку для большинства форматов требуется FFmpeg.
 #    --disable-cli
 ./configure         \
     --prefix=/usr   \
@@ -29,7 +29,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-cli || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -46,7 +46,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # H.264/MPEG-4 AVC format
 #
 # Home page: https://www.videolan.org/developers/${PRGNAME}.html
-# Download:  https://anduin.linuxfromscratch.org/BLFS/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

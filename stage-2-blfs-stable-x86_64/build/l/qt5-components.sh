@@ -68,6 +68,17 @@ mkdir -pv "${TMP_DIR}${QT5PREFIX}"
 
 # список компонентов в файле tempconf, которые будут пропущены при компиляции
 # shellcheck disable=SC2010
+
+!!!
+ДОБАВИТЬ:
+
+-no-cups
+
+УБРАТЬ ИЗ СПИСКА:
+    tools => -skip qttools (всякие Assistant, Designer и т.д.)
+    wayland => -no-wayland или -skip qtwayland (-skip - ИИ говорит)
+!!!
+
 ls -Fd qt* | grep / | sed 's/^/-skip /;s@/@@' > tempconf || exit 1
 sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
 

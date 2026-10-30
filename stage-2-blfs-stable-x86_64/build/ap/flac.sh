@@ -31,7 +31,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # GPL.
 #
 # Home page: https://xiph.org/${PRGNAME}/
-# Download:  https://github.com/xiph/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

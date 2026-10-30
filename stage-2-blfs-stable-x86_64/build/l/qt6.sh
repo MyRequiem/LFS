@@ -94,6 +94,51 @@ export QT6PREFIX="/opt/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"/{profile.d,sudoers.d,ld.so.conf.d}
 mkdir -pv "${TMP_DIR}${QT6PREFIX}"
 
+# Не собирать тяжелые примеры кода и демо-приложения.
+#    -nomake examples
+# Не зашивать жесткие пути к библиотекам (RPATH) в бинарники.
+#    -no-rpath
+# Отключить генерацию отчетов Software Bill of Materials.
+#    -no-sbom
+# Отправлять системные логи Qt в стандартный демон syslog.
+#    -syslog
+# Полностью отключить поддержку Wayland и его плагинов.
+#    -no-wayland
+# Отвязать Qt6 от логирования в systemd (systemd-journald). У нас чистый
+# SysVinit
+#    -no-journald
+# Отключить поддержку древних резистивных тачскринов (привет из 2000-х). Полный
+# рудимент для ПК.
+#    -no-tslib
+# Отключить древний графический бэкенд (фреймворк DirectFB) для вывода на экран
+# в обход X11/Wayland. Не нужен.
+#    -no-directfb
+# Отключить поддержку печати на принтерах через CUPS.
+#    -no-cups
+# Вырезать тяжелый модуль 3D-графики.
+#    -skip qt3d
+# Вырезать физический движок для Quick3D.
+#    -skip qtquick3dphysics
+# Вырезать монструозный Chromium-движок браузера.
+#    -skip qtwebengine
+# Вырезать медиа-движок (не нужен для VLC, mpv, LXQt и т.д.).
+#    -skip qtmultimedia
+# Вырезать поддержку Bluetooth и NFC. Qt-приложения для LXQt его не просят.
+#    -skip qtconnectivity
+# Вырезать позиционирование и гео-карты (нужно для всяких фитнес-трекеров или
+# навигаторов). В ПК-дистрибутиве мертвый груз.
+#    -skip qtlocation
+# Вырезать поддержку датчиков (акселерометр, датчик света, гироскоп). Нужно
+# только для планшетов и мобилок.
+#    -skip qtsensors
+# Специфические фреймворки создания диаграмм состояний (SCXML) для
+# программистов. Обычному софту и DE не нужны вообще.
+#    -skip qtscxml
+#    -skip qtstatemachine
+# Модуль собирает тяжелые GUI-утилиты: Qt Designer, Assistant (справка),
+# Linguist (переводчик). Используются разраборчиками на Qt, для работы готовых
+# программ они не нужны.
+#    -skip qttools
 ./configure                \
     -prefix "${QT6PREFIX}" \
     -sysconfdir /etc/xdg   \
@@ -104,98 +149,41 @@ mkdir -pv "${TMP_DIR}${QT6PREFIX}"
     -no-rpath              \
     -no-sbom               \
     -syslog                \
+    -no-wayland            \
+    -no-journald           \
+    -no-tslib              \
+    -no-directfb           \
+    -no-cups               \
     -skip qt3d             \
     -skip qtquick3dphysics \
-    -skip qtwebengine || exit 1
+    -skip qtwebengine      \
+    -skip qtmultimedia     \
+    -skip qtconnectivity   \
+    -skip qtlocation       \
+    -skip qtsensors        \
+    -skip qtscxml          \
+    -skip qtstatemachine   \
+    -skip qttools || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
-# удалим ссылки на каталог сборки из установленных библиотек
+# Удалим ссылки на каталог сборки из установленных библиотек:
 #    /opt/${PRGNAME}/lib/libQt6Purchasing.prl
 #    /opt/${PRGNAME}/lib/libQt6MultimediaQuick.prl
 #    ...
 find "${TMP_DIR}${QT6PREFIX}"/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
 
-PIXMAPS="/usr/share/pixmaps"
-mkdir -p "${TMP_DIR}${PIXMAPS}"
-
-pushd qttools/src || exit 1
-install -v -Dm644 assistant/assistant/images/assistant-128.png       \
-    "${TMP_DIR}${PIXMAPS}/assistant-${PRGNAME}.png"                  &&
-install -v -Dm644 designer/src/designer/images/designer.png          \
-    "${TMP_DIR}${PIXMAPS}/designer-${PRGNAME}.png"                   &&
-install -v -Dm644 linguist/linguist/images/icons/linguist-128-32.png \
-    "${TMP_DIR}${PIXMAPS}/linguist-${PRGNAME}.png"                   &&
-install -v -Dm644 qdbus/qdbusviewer/images/qdbusviewer-128.png       \
-    "${TMP_DIR}${PIXMAPS}/qdbusviewer-${PRGNAME}.png"                &&
-popd || exit 1
-
-APPLICATIONS="/usr/share/applications"
-mkdir -p "${TMP_DIR}${APPLICATIONS}"
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/assistant-${PRGNAME}.desktop"
-[Desktop Entry]
-Name=Qt6 Assistant
-Comment=Shows Qt6 documentation and examples
-Exec=${QT6PREFIX}/bin/assistant
-Icon=assistant-${PRGNAME}.png
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;Documentation;
-EOF
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/designer-${PRGNAME}.desktop"
-[Desktop Entry]
-Name=Qt6 Designer
-GenericName=Interface Designer
-Comment=Design GUIs for Qt6 applications
-Exec=${QT6PREFIX}/bin/designer
-Icon=designer-${PRGNAME}.png
-MimeType=application/x-designer;
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;
-EOF
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/linguist-${PRGNAME}.desktop"
-[Desktop Entry]
-Name=Qt6 Linguist
-Comment=Add translations to Qt6 applications
-Exec=${QT6PREFIX}/bin/linguist
-Icon=linguist-${PRGNAME}.png
-MimeType=text/vnd.trolltech.linguist;application/x-linguist;
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;
-EOF
-
-cat << EOF > "${TMP_DIR}${APPLICATIONS}/qdbusviewer-${PRGNAME}.desktop"
-[Desktop Entry]
-Name=Qt6 QDbusViewer
-GenericName=D-Bus Debugger
-Comment=Debug D-Bus applications
-Exec=${QT6PREFIX}/bin/qdbusviewer
-Icon=qdbusviewer-${PRGNAME}.png
-Terminal=false
-Encoding=UTF-8
-Type=Application
-Categories=Qt;Development;Debugger;
-EOF
-
-# QT6DIR также должен быть доступен пользователю root
+# QT6DIR также должен быть доступен пользователю root.
 SUDOERS="/etc/sudoers.d/${PRGNAME}"
 cat > "${TMP_DIR}${SUDOERS}" << "EOF"
 Defaults env_keep += QT6DIR
 EOF
 chmod 440 "${TMP_DIR}${SUDOERS}"
 
-# добавим путь поиска библиотек для динамического загрузчика
+# Добавим путь поиска библиотек для динамического загрузчика.
 cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/${PRGNAME}.conf"
 ${QT6PREFIX}/lib
 EOF

@@ -24,9 +24,11 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# уберем два ошибочных теста
-mv -v tests/test_gdbus.py{,.nouse}
-mv -v tests/test_overrides_gtk.py{,.nouse}
+# Если не установлен пакет gtk4, отключим два теста:
+if ! [ -x /usr/bin/gtk4-demo ]; then
+    mv -v tests/test_gdbus.py{,.nouse}
+    mv -v tests/test_overrides_gtk.py{,.nouse}
+fi
 
 mkdir build
 cd build || exit 1
@@ -36,7 +38,7 @@ meson setup ..    \
     --buildtype=release || exit 1
 
 ninja || exit 1
-# тесты необходимо проводить в графической среде
+# Тесты необходимо проводить в графической среде.
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 

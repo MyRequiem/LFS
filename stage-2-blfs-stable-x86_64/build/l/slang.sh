@@ -24,14 +24,14 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 DOCS="/usr/share/doc/${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}${DOCS}/slsh"
 
-# используем системную версию Readline вместо содержащейся в пакете slang
+# Используем системную версию Readline вместо содержащейся в пакете slang
 #    --with-readline=gnu
 ./configure           \
     --prefix=/usr     \
     --sysconfdir=/etc \
     --with-readline=gnu || exit 1
 
-# пакет не поддерживает сборку и установку в несколько потоков
+# Пакет не поддерживает сборку и установку в несколько потоков.
 make -j1 RPATH= || exit 1
 # LC_ALL=C make check
 make -j1                        \

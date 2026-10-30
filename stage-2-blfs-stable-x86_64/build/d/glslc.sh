@@ -23,7 +23,7 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/usr/bin"
 
-# разрешим сборку с Glslang и SPIRV-Tools
+# Разрешим сборку с установленными в системе Glslang и SPIRV-Tools.
 sed '/build-version/d'   -i glslc/CMakeLists.txt            || exit 1
 sed '/third_party/d'     -i CMakeLists.txt                  || exit 1
 sed 's|SPIRV|glslang/&|' -i libshaderc_util/src/compiler.cc || exit 1
@@ -44,7 +44,6 @@ ninja glslc/glslc || exit 1
 install -vm755 glslc/glslc "${TMP_DIR}/usr/bin"
 
 source "${ROOT}/stripping.sh"      || exit 1
-source "${ROOT}/update-info-db.sh" || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

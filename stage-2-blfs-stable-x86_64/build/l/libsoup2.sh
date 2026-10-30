@@ -11,19 +11,18 @@ ARCH_NAME="libsoup"
 # Required:    glib-networking
 #              libpsl
 #              libxml2
-#              nghttp2
 # Recommended: glib
 #              vala
 # Optional:    --- для тестов ---
 #              apache-httpd
 #              brotli
-#              curl                 (для тестов)
-#              python3-gi-docgen
+#              curl
 #              mit-kerberos-v5
 #              php                  (собранный с поддержкой xmlrpc-epi)
 #              samba
 #              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
-#              wstest               (https://github.com/posener/wstest)
+#              --- для документации ---
+#              dtk-doc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

@@ -26,7 +26,7 @@ ARCH_NAME="krb5"
 ### NOTE
 # В системе обязательно потребуется какое-то средство синхронизации времени,
 # например ntp, т.к. Kerberos не будет аутентифицироваться, если есть разница
-# во времени между керберизованным клиентом и KDC сервером
+# во времени между керберизованным клиентом и KDC сервером.
 
 ### Конфигурация
 #    /etc/krb5.conf
@@ -39,13 +39,21 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# исправим проблему, выявленную при сборке с glibc >=2.43
+# Исправим проблему, выявленную при сборке с glibc >=2.43
 patch --verbose -Np1 -i \
     "${SOURCES}/mitkrb-${VERSION}-upstream_fix-1.patch" || exit 1
 
+# Устраним две проблемы безопасности, выявленные в upstream.
+patch --verbose -Np1 -i \
+    "${SOURCES}/mitkrb-${VERSION}-security_fix-1.patch" || exit 1
+
+# Исправим сборку с OpenSSL-4.x.x
+patch --verbose -Np1 -i \
+    "${SOURCES}/mitkrb-${VERSION}-openssl_4_fixes-1.patch" || exit 1
+
 cd src || exit 1
 
-# удалим заведомо неудачный тест
+# Удалим заведомо неудачный тест.
 sed -i -e '/eq 0/{N;s/12 //}' plugins/kdb/db2/libdb2/test/run.test || exit 1
 
 ./configure                  \
@@ -92,8 +100,8 @@ cat << EOF > "${TMP_DIR}${KRB5_CONF}.example"
 # End ${KRB5_CONF}
 EOF
 
-# установим загрузочный скрипт /etc/rc.d/init.d/krb5 для запуска Kerberos
-# сервиса при загрузке системы
+# Установим загрузочный скрипт /etc/rc.d/init.d/krb5 для запуска Kerberos
+# сервиса при загрузке системы.
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-krb5 DESTDIR="${TMP_DIR}"

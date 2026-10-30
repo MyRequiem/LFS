@@ -11,7 +11,7 @@ ARCH_NAME="pycairo"
 
 # Required:    cairo
 # Recommended: no
-# Optional:    python3-pytest (для тестов)
+# Optional:    python3-pytest    (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

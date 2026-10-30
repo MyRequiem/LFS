@@ -19,16 +19,13 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# при обновлении пакета до новой версии, обновим временные метки всех файлов,
-# чтобы система сборки не сохранила файлы из старого пакета
+# При обновлении пакета до новой версии, обновим временные метки (дату
+# изменения) всех файлов дерева исходников, чтобы система сборки не сохранила
+# файлы из старого пакета.
 # shellcheck disable=SC2038,SC2185
 find -type f | xargs touch
 
-# обновление безопасности
-patch --verbose -Np1 -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-security_fix-1.patch" || exit 1
-
-# сохраняем владельца и разрешения при копировании файлов
+# Сохраняем владельца и разрешения при копировании файлов.
 sed -i 's/cp -p/cp/' build/make/Makefile || exit 1
 
 mkdir libvpx-build
@@ -41,13 +38,13 @@ cd libvpx-build || exit 1
 
 make || exit 1
 
-# набор тестов загружает несколько файлов как часть процесса тестирования,
-# поэтому необходимо подключение к сети Internet
+# Набор тестов загружает несколько файлов как часть процесса тестирования,
+# поэтому необходимо подключение к сети Internet.
 # LD_LIBRARY_PATH=. make test
 
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

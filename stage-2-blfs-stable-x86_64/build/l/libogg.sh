@@ -28,7 +28,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # single physical bit stream. Its needed to use the Ogg Vorbis audio format.
 #
 # Home page: https://www.xiph.org/ogg/
-# Download:  https://downloads.xiph.org/releases/ogg/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

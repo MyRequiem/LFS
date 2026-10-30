@@ -29,7 +29,7 @@ make || exit 1
 # make -j1 check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -45,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (patent free) format.
 #
 # Home page: https://www.xiph.org/vorbis/
-# Download:  https://downloads.xiph.org/releases/vorbis/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

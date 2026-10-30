@@ -15,13 +15,13 @@ PRGNAME="gst-plugins-good"
 #              lame
 #              libsoup3
 #              libvpx
-#              mpg123
+#              mpg123            (библиотека libmpg123.so - декодирование MP3)
 #              nasm
 #              pulseaudio
 # Optional:    aalib
 #              gtk+3             (для сборки примеров)
 #              libdv
-#              qt6
+#              qt6               (для сборки libgstqml6.so и libgstqmlgl.so - нужны только для стриминга GStreamer+QML, плейерам vlc, mpv они не нужны)
 #              speex
 #              taglib
 #              valgrind
@@ -49,11 +49,12 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..           \
-    --prefix=/usr        \
-    --buildtype=release  \
-    -D examples=disabled \
-    -D doc=disabled      \
+meson setup ..             \
+    --prefix=/usr          \
+    --buildtype=release    \
+    -D qt-wayland=disabled \
+    -D examples=disabled   \
+    -D doc=disabled        \
     -D tests=disabled || exit 1
 
 ninja || exit 1

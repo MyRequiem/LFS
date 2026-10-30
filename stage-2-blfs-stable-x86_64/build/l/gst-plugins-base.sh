@@ -41,15 +41,11 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим нерабочий тест
-sed -i '/tcase_add_test (tc_chain, test_reorder_buffer);/d' \
-    tests/check/libs/gstglcolorconvert.c || exit 1
-
 mkdir build
 cd build || exit 1
 
-# не позволяем мезону загружать любые дополнительные зависимости, которые не
-# установлены в системе
+# Не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе.
 #    --wrap-mode=nodownload
 meson setup ..             \
     --prefix=/usr          \
@@ -61,7 +57,7 @@ meson setup ..             \
 
 ninja || exit 1
 
-# тесты проводятся в графической среде
+# Тесты проводятся в графической среде.
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

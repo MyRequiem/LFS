@@ -99,6 +99,10 @@ s/docbook-dtd4.sh
 s/docbook-dsssl.sh
 ap/docbook-utils.sh
 ap/itstool.sh
+d/perl-modules/perl-class-inspector.sh
+d/perl-modules/perl-file-sharedir-install.sh
+d/perl-modules/perl-file-sharedir.sh
+d/perl-modules/perl-xml-parser.sh
 # =====================================
 s/archivemount.sh
 n/rclone.sh
@@ -312,7 +316,6 @@ x/data/xkeyboard-config.sh
 l/libxkbcommon.sh
 d/sassc.sh
 l/gtk+3.sh
-
 l/graphene.sh
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
@@ -320,6 +323,10 @@ d/python-modules/python3-pycairo.sh
 d/python-modules/python3-pygobject3.sh
 l/adwaita-icon-theme.sh
 l/libvpx.sh
+# Если мы обновляем пакет gstreamer, то сначала нужно удалить все его плагины
+# (пакеты gst-plugins-*), и другие пакеты, касающиеся /usr/bin/gst-*,
+# /usr/{lib,libexec}/gstreamer-1.0 и сам пакет gstreamer, а затем все заново
+# пересобрать.
 l/gstreamer.sh
 l/alsa-lib.sh
 a/libgudev.sh
@@ -330,18 +337,13 @@ l/lame.sh
 ap/opus.sh
 l/libsndfile.sh
 l/libsamplerate.sh
-l/sbc.sh
 d/orc.sh
-# ==========================
-# Удалить при следующем обновлении qt6/LFS - qt6 его зацепила как зависимость,
-# но сам пакет в системе не нужен.
-# !!!
-s/pcsc-lite.sh
-# ==========================
 ap/pulseaudio.sh
 l/sdl3.sh
 l/sdl2-compat.sh
 ap/mpg123.sh
+# Пересоберем libsndfile уже с библиотекой libmpg123.so (декодирование MP3).
+l/libsndfile.sh
 l/x264.sh
 l/x265.sh
 l/libmpeg2.sh
@@ -364,9 +366,8 @@ l/aalib.sh
 l/libmad.sh
 l/gst-plugins-base.sh
 l/gst-plugins-good.sh
-l/gst-plugins-bad.sh
-l/gst-plugins-ugly.sh
 l/gtk4.sh
+
 # === qt5-components ===
 l/double-conversion.sh
 x/xcb/xcb-util.sh
@@ -556,8 +557,6 @@ d/python-modules/python3-glad.sh
 l/libplacebo.sh
 l/ffmpeg.sh
 l/uchardet.sh
-# пересобираем gst-plugins-bad
-l/gst-plugins-bad.sh
 ap/mpv.sh
 xap/vlc.sh
 # === android-tools ===

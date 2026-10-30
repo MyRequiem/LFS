@@ -34,7 +34,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
@@ -50,7 +50,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Internet.
 #
 # Home page: https://${PRGNAME}-codec.org/
-# Download:  https://downloads.xiph.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -16,7 +16,7 @@ PRGNAME="alsa-lib"
 #    CONFIG_SOUND=y|m
 #    CONFIG_SND=y|m
 #    Device Drivers ⇒ Sound card support ⇒ Advanced Linux Sound Architecture ->
-#    выбираем свои драйвера
+#    Выбираем драйвера под свое железо.
 
 ### Конфиги
 #    /etc/asound.conf
@@ -37,9 +37,9 @@ make        || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# конфигурационные файлы
+# Конфигурационные файлы.
 tar -C "${TMP_DIR}/usr/share/alsa" --strip-components=1 \
     -xf "${SOURCES}/alsa-ucm-conf-${VERSION}.tar.bz2" || exit 1
 

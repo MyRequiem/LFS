@@ -18,7 +18,7 @@ ARCH_NAME="gtk"
 #              pango
 #              python3-pygobject3
 # Recommended: adwaita-icon-theme    (по умолчанию для некоторых ключей настроек gtk4)
-#              gst-plugins-bad       (собранный с libvpx)
+#              gst-plugins-bad
 #              glslc
 #              gst-plugins-good      (собранный с libvpx, runtime)
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
@@ -40,9 +40,9 @@ ARCH_NAME="gtk"
 #              sysprof               (https://wiki.gnome.org/Apps/Sysprof)
 
 ### Конфигурация ядра:
-#    CONFIG_UDMABUF=y    (если X11+<i3wm|LXQt> - данная опция в конфиге ядра
+#    CONFIG_UDMABUF=y    Если X11+<i3wm|LXQt> - данная опция в конфиге ядра
 #                           необязательна, разницы в выводе картинки на экран
-#                           не будет)
+#                           не будет.
 
 ### Конфигурация:
 #    /usr/share/gtk-4.0/settings.ini
@@ -77,28 +77,37 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..               \
-    --prefix=/usr            \
-    --buildtype=release      \
-    -D broadway-backend=true \
-    -D introspection=enabled \
-    -D vulkan=enabled        \
-    -D build-examples=false  \
-    -D build-tests=false || exit 1
+meson setup ..                  \
+    --prefix=/usr               \
+    --buildtype=release         \
+    --wrap-mode=nodownload      \
+    -D broadway-backend=false   \
+    -D introspection=enabled    \
+    -D x11-backend=true         \
+    -D wayland-backend=false    \
+    -D win32-backend=false      \
+    -D macos-backend=false      \
+    -D android-backend=false    \
+    -D media-gstreamer=disabled \
+    -D colord=disabled          \
+    -D tracker=disabled         \
+    -D vulkan=disabled          \
+    -D cloudproviders=disabled  \
+    -D documentation=false      \
+    -D build-demos=false        \
+    -D build-examples=false     \
+    -D build-tests=false        \
+    -D build-testsuite=false || exit 1
 
 ninja || exit 1
 
 ###
 # Тесты проводятся в графической среде.
 ###
-# sed "s@'oc'@& / 'gtk-4.22.3'@" -i ../docs/reference/meson.build
-# meson configure -D documentation=true || exit 1
-# ninja || exit 1
-# запуск тестов
 # env -u{GALLIUM_DRIVER,MESA_LOADER_DRIVER_OVERRIDE}              \
 #         LIBGL_ALWAYS_SOFTWARE=1 VK_LOADER_DRIVERS_SELECT='lvp*' \
 #             dbus-run-session meson test --setup x11             \
-#                                         --no-suite=headless'
+#                                         --no-suite=headless
 
 DESTDIR="${TMP_DIR}" ninja install
 

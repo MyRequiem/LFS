@@ -27,7 +27,7 @@ cmake ..                         \
     -D BUILD_SHARED_LIBS=ON || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -37,11 +37,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# базовая функциональность может быть протестирована путем декодирования .aac
-# файла в .wav формат и последующего его воспроизведения
+# Базовая функциональность может быть протестирована путем декодирования .aac
+# файла в .wav формат и последующего его воспроизведения утилитой aplay (пакет
+# alsa-utils).
 #
 #    $ faad -o sample.wav "${SOURCES}/sample.aac"
-#       должно отобразиться сообщение об авторских правах и информация о файле:
+#       Должно отобразиться сообщение об авторских правах и информация о файле:
 #
 #           sample.aac file info:
 #           ADTS, 4.608 sec, 13 kbps, 16000 Hz
@@ -55,7 +56,7 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 #           | 01 | Right front    |
 #           ---------------------
 #
-#    воспроизведем файл
+#    Воспроизведем файл:
 #    $ aplay sample.wav
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

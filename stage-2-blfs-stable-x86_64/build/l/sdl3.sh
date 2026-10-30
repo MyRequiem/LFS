@@ -31,6 +31,11 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# Исправим возможные конфликты и сбои с getresuid (техническая системная
+# функция запроса идентификатора пользователя).
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
+
 mkdir build
 cd build || exit 1
 
@@ -40,6 +45,20 @@ cmake ..                         \
     -D SDL_TEST_LIBRARY=OFF      \
     -D SDL_STATIC=OFF            \
     -D SDL_RPATH=OFF             \
+    -D SDL_DBUS=OFF              \
+    -D SDL_X11=ON                \
+    -D SDL_WAYLAND=OFF           \
+    -D SDL_WAYLAND_SHARED=OFF    \
+    -D SDL_VULKAN=OFF            \
+    -D SDL_RENDER_VULKAN=OFF     \
+    -D SDL_PIPEWIRE=OFF          \
+    -D SDL_PIPEWIRE_SHARED=OFF   \
+    -D SDL_JACK=OFF              \
+    -D SDL_JACK_SHARED=OFF       \
+    -D SDL_SNDIO=OFF             \
+    -D SDL_SNDIO_SHARED=OFF      \
+    -D SDL_HIDAPI_JOYSTICK=OFF   \
+    -D SDL_CAMERA=OFF            \
     -W no-author                 \
     -G Ninja || exit 1
 
@@ -58,11 +77,11 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 # Simple DirectMedia Layer is a cross-platform development library designed to
 # provide low-level access to audio, keyboard, mouse, joystick, and graphics
-# hardware ia via OpenGL. It is used by video playback software, emulators, and
+# hardware via OpenGL. It is used by video playback software, emulators, and
 # games.
 #
 # Home page: https://libsdl.org/
-# Download:  https://www.libsdl.org/release/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/SDL/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

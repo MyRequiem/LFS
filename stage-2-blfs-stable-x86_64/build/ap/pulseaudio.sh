@@ -15,6 +15,7 @@ PRGNAME="pulseaudio"
 #              elogind
 #              glib
 #              speex
+#              perl-xml-parser          (для создания man-страниц)
 #              xorg-libraries
 # Optional:    avahi
 #              bluez
@@ -23,18 +24,18 @@ PRGNAME="pulseaudio"
 #              gst-plugins-base
 #              gtk+3
 #              libsamplerate
-#              sbc                     (поддержка bluetooth)
+#              sbc                      (поддержка bluetooth)
 #              valgrind
-#              check                   (https://libcheck.github.io/check/)
-#              jack                    (https://jackaudio.org/)
-#              libasyncns              (https://0pointer.de/lennart/projects/libasyncns/)
-#              lirc                    (https://www.lirc.org/)
-#              orc                     (https://gstreamer.freedesktop.org/src/orc/)
-#              soxr                    (https://sourceforge.net/p/soxr/wiki/Home/)
-#              tdb                     (https://tdb.samba.org/)
-#              webrtc-audio-processing (https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/)
+#              check                    (https://libcheck.github.io/check/)
+#              jack                     (https://jackaudio.org/)
+#              libasyncns               (https://0pointer.de/lennart/projects/libasyncns/)
+#              lirc                     (https://www.lirc.org/)
+#              orc                      (https://gstreamer.freedesktop.org/src/orc/)
+#              soxr                     (https://sourceforge.net/p/soxr/wiki/Home/)
+#              tdb                      (https://tdb.samba.org/)
+#              webrtc-audio-processing  (https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/)
 
-### Конфигурация
+### Конфигурация:
 #    /etc/pulse/daemon.conf
 #    /etc/pulse/client.conf
 #    /etc/pulse/default.pa
@@ -62,7 +63,7 @@ ninja || exit 1
 # ninja test
 DESTDIR="${TMP_DIR}" ninja install
 
-rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help}
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 if [ -d "${TMP_DIR}/lib" ]; then
     (
@@ -72,12 +73,13 @@ if [ -d "${TMP_DIR}/lib" ]; then
     )
 fi
 
-# не нужны никакие общесистемные автостарты и загрузки модулей для PulseAudio
-# (скроем .desktop для системы, как будто его нет)
+# Не нужны никакие общесистемные автостарты и загрузки модулей для PulseAudio
+# (скроем .desktop для системы, как будто его нет).
 sed -i '$a Hidden=true' \
-    "${TMP_DIR}/etc/xdg/autostart/pulseaudio.desktop" || exit 1
+    "${TMP_DIR}/etc/xdg/autostart/${PRGNAME}.desktop" || exit 1
+
 rm -rf "${TMP_DIR}/etc/xdg/Xwayland-session.d"
-rm -f  "${TMP_DIR}/usr/share/dbus-1/system.d/pulseaudio-system.conf"
+rm -rf "${TMP_DIR}/usr/share/dbus-1"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

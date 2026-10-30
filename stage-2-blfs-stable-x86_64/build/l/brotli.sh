@@ -10,7 +10,10 @@ PRGNAME="brotli"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    python3-pytest (для тестов)
+# Optional:    python3-pytest    (для тестов)
+
+### NOTE:
+# Пакет перед обновлением/переустановкой НЕ удаляем из системы.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,7 +36,10 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# сразу устанавливаем пакет в систему для сборки Python3 bindings
+# Удалим старые библиотеки если пакет установлен.
+rm -f /usr/lib/libbrotli*
+
+# Сразу устанавливаем пакет в систему для сборки Python3 bindings.
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
@@ -41,15 +47,15 @@ source "${ROOT}/clean-locales.sh"  || exit 1
 
 cd .. || exit 1
 
-# Python3 bindings
-# разрешить создание привязки Python3 с USE_SYSTEM_BROTLI=1, но без
+### Python3 bindings
+# Разрешить создание привязки Python3 с USE_SYSTEM_BROTLI=1, но без
 # установленного модуля pkgconfig Python 3
 sed -e '/libraries +=/s/=.*/= [required_system_library[3:]]/' \
     -e '/package_configuration/d'                             \
     -e '/pkgconfig/d'                                         \
     -i setup.py || exit 1
 
-# удалим Python3 модули, если уже установлены
+# Удалим Python3 модули, если уже установлены.
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 rm -rf "/usr/lib/python${PYTHON_MAJ_VER}/site-packages/__pycache__/brotli"*
 rm -rf "/usr/lib/python${PYTHON_MAJ_VER}/site-packages/"/{,_}brotli*

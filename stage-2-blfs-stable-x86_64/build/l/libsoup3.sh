@@ -51,19 +51,15 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим несколько уязвимостей безопасности
-patch --verbose -Np1 -i \
-    "${SOURCES}/${ARCH_NAME}-${VERSION}-upstream_fixes-1.patch" || exit 1
-
-# исправим путь установки API документации
+# Исправим путь установки API документации.
 sed 's/apiversion/soup_version/' -i docs/reference/meson.build || exit 1
 
 mkdir build
 cd build || exit 1
 
-# не позволяем meson загружать любые дополнительные зависимости, которые не
-# установлены в системе
-#    --wrap-mode=nodownload
+# Не позволяем meson загружать любые дополнительные зависимости, которые не
+# установлены в системе.
+#    --wrap-mode=nofallback
 meson setup ..             \
     --prefix=/usr          \
     --buildtype=release    \

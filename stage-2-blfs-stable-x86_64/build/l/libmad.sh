@@ -23,7 +23,7 @@ patch --verbose -Np1 -i \
 
 sed "s@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g" -i configure.ac || exit 1
 
-# без этих файлов autoreconf может возвращать ошибку
+# Без этих файлов autoreconf может возвращать ошибку.
 touch NEWS AUTHORS ChangeLog
 autoreconf -fi || exit 1
 
@@ -32,12 +32,12 @@ autoreconf -fi || exit 1
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# некоторые пакеты проверяют наличие файла pkg-config для libmad
+# Некоторые пакеты проверяют наличие файла pkg-config для libmad.
 cat << EOF > "${TMP_DIR}/usr/lib/pkgconfig/mad.pc"
 prefix=/usr
 exec_prefix=\${prefix}
@@ -67,7 +67,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # PCM output, applications using MAD are able to produce high quality audio.
 #
 # Home page: https://www.underbit.com/products/mad/
-# Download:  https://downloads.sourceforge.net/mad/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

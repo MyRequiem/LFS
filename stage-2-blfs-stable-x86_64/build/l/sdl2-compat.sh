@@ -38,7 +38,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим статическую библиотеку
+# Удалим статическую библиотеку.
 rm -vf "${TMP_DIR}/usr/lib/libSDL2_test.a"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -54,7 +54,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # hardware via OpenGL
 #
 # Home page: https://libsdl.org/
-# Download:  https://www.libsdl.org/release/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/sdl/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

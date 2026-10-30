@@ -28,7 +28,7 @@ cmake ..                         \
     -D BUILD_SHARED_LIBS=ON || exit 1
 
 make || exit 1
-# для тестов требуется пакет cppunit
+# Для тестов требуется пакет cppunit.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

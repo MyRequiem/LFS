@@ -25,9 +25,9 @@ meson setup .. \
     --prefix=/usr || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
-# перед установкой удалим старые иконки
+# Перед установкой удалим старые иконки.
 rm -rf /usr/share/icons/Adwaita/
 DESTDIR="${TMP_DIR}" ninja install
 
@@ -38,7 +38,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# создадим/обновим /usr/share/icons/Adwaita/icon-theme.cache
+# Создадим/обновим /usr/share/icons/Adwaita/icon-theme.cache
 gtk-update-icon-cache /usr/share/icons/Adwaita/
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"

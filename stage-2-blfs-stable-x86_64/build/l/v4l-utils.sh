@@ -37,7 +37,7 @@ meson setup ..          \
     -D doxygen-doc=disabled || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -59,7 +59,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # (libv4l), and providing tools to test V4L devices
 #
 # Home page: https://www.linuxtv.org
-# Download:  https://www.linuxtv.org/downloads/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
