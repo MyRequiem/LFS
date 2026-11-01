@@ -9,7 +9,7 @@ PRGNAME="fribidi"
 
 # Required:    no
 # Recommended: no
-# Optional:    c2man (для сборки man-страниц) http://www.ciselant.de/c2man/c2man.html
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

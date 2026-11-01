@@ -12,8 +12,8 @@ PRGNAME="docbook-utils"
 #              docbook-dsssl
 #              docbook-dtd3
 # Recommended: --- runtime ---
-#              perl-sgmlspm             (для конвертации в man и texinfo)
-#              lynx или links или w3m   (http://w3m.sourceforge.net/) для конвертации в ASCII text
+#              perl-sgmlspm    (для конвертации в man и texinfo)
+#              w3m
 # Optional:    no
 
 ROOT="/root/src/lfs"

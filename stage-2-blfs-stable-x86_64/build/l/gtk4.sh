@@ -18,7 +18,6 @@ ARCH_NAME="gtk"
 #              pango
 #              python3-pygobject3
 # Recommended: adwaita-icon-theme    (по умолчанию для некоторых ключей настроек gtk4)
-#              gst-plugins-bad
 #              glslc
 #              gst-plugins-good      (собранный с libvpx, runtime)
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
@@ -81,20 +80,15 @@ meson setup ..                  \
     --prefix=/usr               \
     --buildtype=release         \
     --wrap-mode=nodownload      \
-    -D broadway-backend=false   \
+    -D broadway-backend=true    \
     -D introspection=enabled    \
+    -D man-pages=true           \
     -D x11-backend=true         \
     -D wayland-backend=false    \
     -D win32-backend=false      \
     -D macos-backend=false      \
-    -D android-backend=false    \
     -D media-gstreamer=disabled \
-    -D colord=disabled          \
-    -D tracker=disabled         \
     -D vulkan=disabled          \
-    -D cloudproviders=disabled  \
-    -D documentation=false      \
-    -D build-demos=false        \
     -D build-examples=false     \
     -D build-tests=false        \
     -D build-testsuite=false || exit 1

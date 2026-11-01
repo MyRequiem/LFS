@@ -9,9 +9,7 @@ PRGNAME="libseccomp"
 # Required:    no
 # Recommended: no
 # Optional:    which            (для тестов)
-#              valgrind
 #              python3-cython   (для python bindings)
-#              lcov             (https://github.com/linux-test-project/lcov)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -17,19 +17,7 @@ PRGNAME="curl"
 #              libssh2
 #              mit-kerberos-v5
 #              openldap
-#              samba
-#              gsasl                (https://www.gnu.org/software/gsasl/)
-#              impacket             (https://www.secureauth.com/labs/open-source-tools/impacket)
-#              libmetalink          (https://launchpad.net/libmetalink/)
-#              librtmp              (http://rtmpdump.mplayerhq.hu/)
-#              ngtcp2               (https://github.com/ngtcp2/ngtcp2/)
-#              quiche               (https://github.com/cloudflare/quiche)
-#              spnego               (http://spnego.sourceforge.net/)
-#              --- для тестов ---
-#              apache-httpd
-#              stunnel              (для HTTPS and FTPS тестов)
-#              openssh
-#              valgrind
+#              openssh              (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

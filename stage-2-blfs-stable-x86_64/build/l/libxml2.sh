@@ -7,10 +7,8 @@ PRGNAME="libxml2"
 # хранения настроек и обмена данными.
 
 # Required:    no
-# Recommended: icu    (для лучшей поддержки UNICODE)
-# Optional:    --- для документации ---
-#              doxygen
-#              libxslt
+# Recommended: icu        (для лучшей поддержки UNICODE)
+# Optional:    libxslt    (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -10,9 +10,7 @@ ARCH_NAME="jasper-version"
 
 # Required:    cmake
 # Recommended: libjpeg-turbo
-# Optional:    freeglut         (для создания утилиты jiv)
-#              doxygen          (для создания html документации)
-#              texlive          (для создания pdf документации)
+# Optional:    freeglut         (для создания jiv - JasPer Image Viewer, cli-утилита для просмотра изображений .jp2, .j2k)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -24,8 +22,6 @@ mkdir -pv "${TMP_DIR}"
 mkdir BUILD || exit 1
 cd BUILD || exit 1
 
-# удаляем пути поиска встроенной библиотеки
-#    -DCMAKE_SKIP_INSTALL_RPATH=YES
 cmake ..                           \
     -D CMAKE_INSTALL_PREFIX=/usr   \
     -D CMAKE_BUILD_TYPE=Release    \

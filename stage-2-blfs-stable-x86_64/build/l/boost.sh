@@ -10,8 +10,6 @@ PRGNAME="boost"
 # Required:    no
 # Recommended: which
 # Optional:    icu
-#              python3-numpy
-#              open-mpi         (https://www.open-mpi.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

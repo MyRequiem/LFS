@@ -1,3 +1,11 @@
+[01.11.2026]
+* BLFS: Upgraded the qt6 package from 6.11.0 to 6.12.0.
+* BLFS: Upgraded the protobuf package from 34.1 to 36.2.
+* BLFS: Upgraded the abseil-cpp package from 20260107.1 to 20260817.0.
+[31.10.2026]
+* BLFS: Upgraded the qt5-components package from 5.15.18 to 5.15.19.
+* BLFS: Upgraded the libinput package from 1.31.1 to 1.32.0.
+* BLFS: Upgraded the libevdev package from 1.13.6 to 1.14.0.
 [30.10.2026]
 * BLFS: Upgraded the gtk4 package from 4.22.3 to 4.22.4.
 * BLFS: Removed the gst-plugins-ugly package.

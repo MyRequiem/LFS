@@ -9,7 +9,7 @@ PRGNAME="libassuan"
 
 # Required:    libgpg-error
 # Recommended: no
-# Optional:    texlive или install-tl-unx (для создания pdf и ps документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

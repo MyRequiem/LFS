@@ -9,7 +9,6 @@ PRGNAME="libidn2"
 # Required:    no
 # Recommended: libunistring
 # Optional:    git
-#              gtk-doc (для создания API документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

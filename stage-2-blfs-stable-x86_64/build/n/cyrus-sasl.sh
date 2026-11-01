@@ -10,14 +10,7 @@ PRGNAME="cyrus-sasl"
 # Recommended: lmdb
 # Optional:    linux-pam
 #              mit-kerberos-v5
-#              mariadb или mysql              (https://www.mysql.com/)
 #              openldap
-#              postgresql
-#              python3-sphinx
-#              berkeley-db                    (https://www.oracle.com/database/technologies/related/berkeleydb.html)
-#              krb4                           (https://stuff.mit.edu/afs/net.mit.edu/project/attic/krb4/)
-#              dmalloc                        (https://dmalloc.com/)
-#              perl-pod-pom-view-restructured (https://metacpan.org/pod/Pod::POM::View::Restructured)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

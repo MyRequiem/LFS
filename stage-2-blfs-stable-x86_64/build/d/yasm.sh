@@ -11,7 +11,6 @@ PRGNAME="yasm"
 # Required:    no
 # Recommended: no
 # Optional:    python3-cython
-#              python2          (https://www.python.org/downloads/release/python-2718/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

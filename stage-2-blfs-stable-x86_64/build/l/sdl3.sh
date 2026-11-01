@@ -20,8 +20,7 @@ ARCH_NAME="SDL3"
 #              pulseaudio
 #              vulkan-loader
 #              xorg-libraries
-# Optional:    ibus
-#              jack                     (https://jackaudio.org/)
+# Optional:    jack                     (https://jackaudio.org/)
 #              sndio                    (https://sndio.org/)
 
 ROOT="/root/src/lfs"

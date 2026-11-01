@@ -9,21 +9,12 @@ PRGNAME="git"
 # Required:    no
 # Recommended: curl
 #              rustc                    (рекомендуется для сборки)
-# Optional:    apache-httpd             (для некоторых тестов)
-#              fcron                    (для планирования заданий обслуживания git)
+# Optional:    fcron                    (для планирования заданий обслуживания git)
 #              gnupg
 #              openssh
-#              subversion               (собранный с perl bindings для git svn)
 #              tk                       (runtime, скрипт 'gitk' *** simple Git repository viewer *** использует tk для запуска)
-#              valgrind
-#              --- для команды 'git send-email' ---
-#              perl-authen-sasl         (https://metacpan.org/pod/Authen::SASL)
-#              perl-io-socket-ssl
-#              --- для сборки man-страниц и документации ---
+#              perl-io-socket-ssl       (для команды 'git send-email')
 #              xmlto                    (для сборки man-страниц)
-#              python3-asciidoc
-#              dblatex                  (для сборки мануалов в pdf формате) http://dblatex.sourceforge.net/
-#              docbook2x                (для создания страниц info) http://docbook2x.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

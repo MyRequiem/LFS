@@ -18,15 +18,15 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# пакет будем собирать три раза для разных библиотек с разными значениями
+# Пакет будем собирать три раза для разных библиотек с разными значениями
 # точности для чисел:
 #    - float       (32 битные числа одинарной точности)
 #    - double      (64 битные числа двойной точности)
 #    - long double (80 битные числа двойной расширенной точности)
 
-# собирать libfftw3_threads.so (используется, например, плагином GIMP от GMIC)
+### Для double (по умолчанию).
+# Собирать libfftw3_threads.so (используется, например, плагином GIMP от GMIC).
 #    --enable-threads
-# для double (по умолчанию)
 ./configure          \
     --prefix=/usr    \
     --enable-shared  \
@@ -40,7 +40,7 @@ make || exit 1
 # make check
 make install DESTDIR="${TMP_DIR}"
 
-# для float
+### Для float
 make clean &&        \
 ./configure          \
     --prefix=/usr    \
@@ -55,7 +55,7 @@ make clean &&        \
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
-# для long double
+### Для long double
 make clean &&        \
 ./configure          \
     --prefix=/usr    \

@@ -9,13 +9,12 @@ PRGNAME="docbook-dsssl"
 # превращения исходного кода в готовый сверстанный текст.
 
 # Required:    sgml-common
-#              --- для тестирования набора инструментов DocBook SGML ---
+# Recommended: no
+# Optional:    --- для тестирования набора инструментов DocBook SGML ---
 #              docbook-dtd3
 #              docbook-dtd4
 #              opensp
 #              openjade
-# Recommended: no
-# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

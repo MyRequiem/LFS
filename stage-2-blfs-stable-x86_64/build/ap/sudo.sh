@@ -11,11 +11,7 @@ PRGNAME="sudo"
 # Optional:    linux-pam
 #              mit-kerberos-v5
 #              openldap
-#              MTA              (dovecot или exim или postfix или sendmail)
-#              afs              (http://www.openafs.org/)
-#              libaudit         (https://github.com/linux-audit/audit-userspace)
-#              opie             (https://sourceforge.net/projects/opie/files/)
-#              sssd             (https://sssd.io/)
+#              exim
 
 ###
 # WARNING

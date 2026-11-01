@@ -27,10 +27,8 @@ ARCH_NAME="qt-everywhere-opensource-src"
 #              xcb-util-wm
 # Optional:    gtk+3
 #              libinput
-#              mariadb или mysql        (https://www.mysql.com/)
 #              mit-kerberos-v5
 #              mtdev
-#              postgresql
 #              unixodbc
 
 ROOT="/root/src/lfs"
@@ -58,29 +56,16 @@ find -L . \
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 
-# NOTE:
-# Qt5 рекомендуется устанавливать в каталог, отличный от /usr, поэтому будем
-# устанавливать в /opt/qt5-${VERSION}
+# Устанавливаем в /opt
 export QT5PREFIX="/opt/qt5-${VERSION}"
 
 mkdir -pv "${TMP_DIR}"/{etc/{profile.d,sudoers.d,ld.so.conf.d},usr/bin}
 mkdir -pv "${TMP_DIR}${QT5PREFIX}"
 
-# список компонентов в файле tempconf, которые будут пропущены при компиляции
-# shellcheck disable=SC2010
-
-!!!
-ДОБАВИТЬ:
-
--no-cups
-
-УБРАТЬ ИЗ СПИСКА:
-    tools => -skip qttools (всякие Assistant, Designer и т.д.)
-    wayland => -no-wayland или -skip qtwayland (-skip - ИИ говорит)
-!!!
-
-ls -Fd qt* | grep / | sed 's/^/-skip /;s@/@@' > tempconf || exit 1
-sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
+# Список компонентов в файле tempconf, которые будут пропущены при компиляции.
+# shellcheck disable=SC2012
+ls -Fd qt* | /usr/bin/grep / | sed 's/^/-skip /;s@/@@' >  tempconf || exit 1
+sed -i -r '/base|x11extras|svg|declarative|xmlpatterns/d' tempconf || exit 1
 
 # -----------
 # ./tempconf
@@ -112,15 +97,16 @@ sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
 # -skip qtserialbus
 # -skip qtserialport
 # -skip qtspeech
+# -skip qttools
 # -skip qttranslations
 # -skip qtvirtualkeyboard
+# -skip qtwayland
 # -skip qtwebchannel
 # -skip qtwebengine
 # -skip qtwebglplugin
 # -skip qtwebsockets
 # -skip qtwebview
 # -skip qtwinextras
-# -skip qtxmlpatterns
 
 # shellcheck disable=SC2046
 ./configure                \
@@ -129,9 +115,10 @@ sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
     -confirm-license       \
     -opensource            \
     -dbus-linked           \
-    -openssl-linked        \
+    -no-openssl            \
     -system-harfbuzz       \
     -system-sqlite         \
+    -no-cups               \
     -nomake examples       \
     -nomake tests          \
     -no-rpath              \
@@ -139,27 +126,32 @@ sed -i -r '/base|tools|x11extras|svg|declarative|wayland/d' tempconf
     $(cat tempconf) || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install INSTALL_ROOT="${TMP_DIR}"
 
-# удалим ссылки на каталог сборки из установленных библиотек
+rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+
+# Удалим ссылки на каталог сборки из установленных библиотек.
 #    /opt/qt5/lib/libQt5Purchasing.prl
 #    /opt/qt5/lib/libQt5MultimediaQuick.prl
+#    ...
 #    ...
 find "${TMP_DIR}${QT5PREFIX}"/ -name "*.prl" \
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \+
 
-# некоторые пакеты, например vlc, ищут определенные исполняемые файлы в
-# /usr/bin с суффиксом -qt5, поэтому создадим необходимые ссылки
+# Некоторые пакеты, например vlc, ищут определенные исполняемые файлы в
+# /usr/bin с суффиксом -qt5, поэтому создадим необходимые ссылки.
 #    /usr/bin/qmake-qt5 -> /opt/qt5-${VERSION}/bin/qmake
 #    /usr/bin/moc-qt5   -> /opt/qt5-${VERSION}/bin/moc
 #    ...
-QT5BINDIR="${QT5PREFIX}/bin"
+#    ...
 for FILE in moc uic rcc qmake lconvert lrelease lupdate; do
-    ln -sfv "../..${QT5BINDIR}/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
+    if [ -x "${TMP_DIR}${QT5PREFIX}/bin/${FILE}" ]; then
+        ln -sfv "../..${QT5PREFIX}/bin/${FILE}" "${TMP_DIR}/usr/bin/${FILE}-qt5"
+    fi
 done
 
-# добавим путь поиска библиотек для динамического загрузчика
+# Добавим путь поиска библиотек для динамического загрузчика.
 cat << EOF > "${TMP_DIR}/etc/ld.so.conf.d/qt5.conf"
 ${QT5PREFIX}/lib
 EOF
@@ -187,9 +179,10 @@ chmod 755 "${TMP_DIR}${QT5_SH}"
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим кэш динамического загрузчика
+# Обновим кэш динамического загрузчика.
 ldconfig
 
 MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"

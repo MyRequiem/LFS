@@ -12,7 +12,7 @@ ARCH_NAME="fuse"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen    (для сборки API документации)
+# Optional:    no
 
 ### Конфигурация ядра.
 #    CONFIG_FUSE_FS=y|m

@@ -9,7 +9,7 @@ PRGNAME="gc"
 
 # Required:    no
 # Recommended: no
-# Optional:    libatomic-ops
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

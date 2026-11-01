@@ -9,9 +9,7 @@ ARCH_NAME="cython"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              gdb
-#              python3-pytest
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

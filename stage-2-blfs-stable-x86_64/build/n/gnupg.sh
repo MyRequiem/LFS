@@ -15,12 +15,9 @@ PRGNAME="gnupg"
 #              pinentry
 # Optional:    curl
 #              fuse3
-#              imagemagick                  (для создания документации)
+#              imagemagick    (для создания документации)
 #              libusb
-#              MTA                          (dovecot или exim или postfix или sendmail)
-#              texlive или install-tl-unx
-#              fig2dev                      (для создания документации) http://mcj.sourceforge.net/
-#              adns                         (http://www.chiark.greenend.org.uk/~ian/adns/)
+#              exim
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

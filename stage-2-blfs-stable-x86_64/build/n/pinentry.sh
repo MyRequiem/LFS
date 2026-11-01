@@ -10,14 +10,11 @@ PRGNAME="pinentry"
 # Required:    libassuan
 #              libgpg-error
 # Recommended: no
-# Optional:    emacs             (для сборки pinentry-emacs)
-#              fltk              (для сборки pinentry-fltk)
+# Optional:    fltk              (для сборки pinentry-fltk)
 #              gcr4 или gcr3     (для сборки pinentry-gnome3)
 #              qt5-components    (для сборки pinentry-qt5)
 #              qt6               (для сборки pinentry-qt)
-#              kde-frameworks
 #              libsecret
-#              efl               (https://www.enlightenment.org/about-efl)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

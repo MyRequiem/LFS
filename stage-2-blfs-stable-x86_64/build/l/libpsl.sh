@@ -10,10 +10,8 @@ PRGNAME="libpsl"
 # Required:    no
 # Recommended: libidn2
 #              libunistring
-# Optional:    gtk-doc          (для сборки документации)
-#              icu              (может использоваться вместо libidn2)
+# Optional:    icu              (может использоваться вместо libidn2)
 #              libidn           (может использоваться вместо libidn2)
-#              valgrind         (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

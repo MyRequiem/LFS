@@ -9,7 +9,7 @@ PRGNAME="7zip"
 
 # Required:    no
 # Recommended: no
-# Optional:    uasm    (https://github.com/Terraspace/UASM)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

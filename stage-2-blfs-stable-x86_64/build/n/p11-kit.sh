@@ -9,8 +9,7 @@ PRGNAME="p11-kit"
 # Required:   no
 # Recommended libtasn1
 #             make-ca       (runtime)
-# Optional:   gtk-doc
-#             libxslt
+# Optional:   libxslt
 #             nss           (runtime)
 
 ROOT="/root/src/lfs"

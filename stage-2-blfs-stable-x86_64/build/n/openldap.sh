@@ -10,9 +10,6 @@ PRGNAME="openldap"
 # Recommended: cyrus-sasl
 # Optional:    gnutls
 #              unixodbc
-#              mariadb или postgresql или mysql (http://www.mysql.com/)
-#              openslp                          (http://www.openslp.org/)
-#              wiredtiger                       (https://www.mongodb.com/docs/manual/core/wiredtiger/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

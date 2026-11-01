@@ -8,7 +8,7 @@ PRGNAME="libunistring"
 
 # Required:    no
 # Recommended: no
-# Optional:    texlive или install-tl-unx (для пересборки документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

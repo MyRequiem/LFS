@@ -10,11 +10,8 @@ PRGNAME="wget"
 # Recommended: libpsl
 #              make-ca            (runtime)
 # Optional:    gnutls
-#              perl-http-daemon   (для тестов)
 #              perl-io-socket-ssl (для тестов)
 #              libidn2
-#              libproxy
-#              valgrind           (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

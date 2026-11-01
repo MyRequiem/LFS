@@ -13,7 +13,6 @@ PRGNAME="mpg123"
 # Optional:    pulseaudio
 #              sdl2-compat
 #              jack         (https://jackaudio.org/)
-#              openal       (https://openal.org/)
 #              portaudio    (https://www.portaudio.com/)
 
 ROOT="/root/src/lfs"

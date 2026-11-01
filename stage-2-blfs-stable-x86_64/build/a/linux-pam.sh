@@ -11,16 +11,9 @@ ARCH_NAME="Linux-PAM"
 # Recommended: no
 # Optional:    libnsl
 #              libtirpc
-#              rpcsvc-proto
-#              berkeley-db                  (https://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz)
-#              libaudit                     (https://github.com/linux-audit/audit-userspace)
-#              libeconf                     (https://github.com/openSUSE/libeconf)
 #              --- для документации ---
 #              docbook-xml
-#              docbook-xsl-ns
-#              fop                          (pdf)
 #              libxslt
-#              lynx                         (plain text)
 
 ###
 # Конфигурация ядра.

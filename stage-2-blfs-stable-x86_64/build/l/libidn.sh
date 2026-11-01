@@ -8,11 +8,7 @@ PRGNAME="libidn"
 
 # Required:    no
 # Recommended: no
-# Optional:    emacs
-#              gtk-doc      (для сборки API документации)
-#              openjdk
-#              valgrind
-#              mono         (https://www.mono-project.com/)
+# Optional:    openjdk
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

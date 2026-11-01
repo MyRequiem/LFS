@@ -11,7 +11,7 @@ PRGNAME="protobuf"
 # Required:    abseil-cpp
 #              cmake
 # Recommended: no
-# Optional:    gtest        для тестов (https://github.com/google/googletest)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -32,9 +32,11 @@ cmake ..                              \
     -D protobuf_BUILD_TESTS=OFF       \
     -D protobuf_BUILD_SHARED_LIBS=ON  \
     -D utf8_range_ENABLE_INSTALL=ON   \
+    -W no-author                      \
     -G Ninja || exit 1
 
 ninja || exit 1
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

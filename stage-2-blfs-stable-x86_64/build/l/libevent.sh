@@ -8,7 +8,7 @@ PRGNAME="libevent"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen    (для сборки API-документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"

@@ -12,22 +12,15 @@ PRGNAME="glib"
 #              libxslt
 # Optional:    shared-mime-info         (runtime)
 #              desktop-file-utils       (runtime)
-#              gdb
-#              sysprof                  (https://wiki.gnome.org/Apps/Sysprof)
 #              --- для тестов ---
 #              cairo
 #              dbus
 #              fuse3
-#              bindfs                   (https://bindfs.org/)
-#              gjs                      (для некоторых тестов GObject Introspection)
 #              glib-networking
 #              --- для сборки документации и man-страниц ---
-#              gtk-doc
 #              docbook-xml
 #              docbook-xsl
-#              python3-gi-docgen
 #              python3-mako
-#              python3-markdown
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

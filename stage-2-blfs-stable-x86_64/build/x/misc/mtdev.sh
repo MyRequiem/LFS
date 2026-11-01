@@ -23,7 +23,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -45,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # a free license.
 #
 # Home page: https://bitmath.org/code/${PRGNAME}/
-# Download:  https://bitmath.org/code/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

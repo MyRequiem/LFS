@@ -12,7 +12,6 @@ PRGNAME="libssh2"
 #              libgcrypt           (можно использовать вместо openssl)
 #              --- для тестов ---
 #              openssh
-#              docker              (https://www.docker.com/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

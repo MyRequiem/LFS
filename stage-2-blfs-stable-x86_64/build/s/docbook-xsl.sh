@@ -13,12 +13,9 @@ ARCH_NAME="${PRGNAME}-nons"
 #              docbook-xml      (зачем см. ниже)
 # Recommended: no
 # Optional:    --- runtime ---
-#              apache-ant       (для сборки "webhelp" документации)
 #              libxslt
 #              ruby             (для использования таблиц стилей "epub")
 #              zip              (для сборки "epub3" документации)
-#              saxon6           (используется вместе с apache-ant) https://sourceforge.net/projects/saxon/files/saxon6/
-#              xerces2-java     (используется вместе с apache-ant) http://xerces.apache.org/xerces2-j/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

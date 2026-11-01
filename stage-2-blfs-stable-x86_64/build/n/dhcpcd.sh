@@ -10,8 +10,6 @@ PRGNAME="dhcpcd"
 # Recommended: no
 # Optional:    llvm
 #              ntp
-#              chronyd   (https://chrony.tuxfamily.org/)
-#              ypbind    (https://github.com/thkukuk/ypbind-mt/)
 
 ### NOTE:
 # После переустановки пакета нужно перезапустить интерфейс eth0 или wlan0 (в

@@ -8,8 +8,7 @@ PRGNAME="libusb"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen     (для документации)
-#              umockdev    (для тестов)
+# Optional:    no
 
 ### Конфигурация ядра
 #    CONFIG_USB_SUPPORT=y

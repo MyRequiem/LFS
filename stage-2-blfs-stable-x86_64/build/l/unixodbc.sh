@@ -28,7 +28,7 @@ autoreconf -fiv || exit 1
     --sysconfdir=/etc/unixODBC || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

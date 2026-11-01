@@ -8,8 +8,7 @@ PRGNAME="lm-sensors"
 
 # Required:    no
 # Recommended: no
-# Optional:    rrdtool    https://oss.oetiker.ch/rrdtool/    (для сборки sensord)
-#              dmidecode  https://www.nongnu.org/dmidecode/  (runtime)
+# Optional:    dmidecode  https://www.nongnu.org/dmidecode/  (runtime)
 
 ### Конфигурация ядра
 #    CONFIG_ACPI=y

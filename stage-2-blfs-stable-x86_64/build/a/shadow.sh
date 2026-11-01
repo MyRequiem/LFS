@@ -8,8 +8,7 @@ PRGNAME="shadow"
 
 # Required:    linux-pam
 # Recommended: no
-# Optional:    libbsd       (https://libbsd.freedesktop.org/wiki/)
-#              tcb          (https://www.openwall.com/tcb/)
+# Optional:    no
 
 ### NOTE:
 # Пакет уже установлен в LFS. После установки linux-pam пакет shadow нужно

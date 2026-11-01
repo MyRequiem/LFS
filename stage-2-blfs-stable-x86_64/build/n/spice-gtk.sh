@@ -18,7 +18,6 @@ PRGNAME="spice-gtk"
 #              gstreamer
 #              gst-plugins-base
 #              gst-plugins-good
-#              gst-plugins-bad
 # Optional:    libcacard            (https://www.spice-space.org/)
 #              usbredir             (https://www.spice-space.org)
 #              phodav               (https://wiki.gnome.org/phodav)

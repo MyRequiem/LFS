@@ -8,7 +8,7 @@ PRGNAME="nettle"
 
 # Required:    no
 # Recommended: no
-# Optional:    valgrind (для тестов)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
