@@ -12,9 +12,7 @@ ARCH_NAME="libXdmcp"
 # Recommended: no
 # Optional:    --- для сборки документации ---
 #              xmlto
-#              fop
 #              libxslt
-#              xorg-sgml-doctools    (https://gitlab.freedesktop.org/xorg/doc/xorg-sgml-doctools)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

@@ -10,7 +10,7 @@ PRGNAME="desktop-file-utils"
 
 # Required:    glib
 # Recommended: no
-# Optional:    emacs
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -19,19 +19,19 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# если мы обновляем пакет с предыдущей версии, необходимо удалить ссылку
+# Если мы обновляем пакет с предыдущей версии, необходимо удалить ссылку.
 #    /usr/bin/desktop-file-edit -> desktop-file-install
 rm -fv /usr/bin/desktop-file-edit
 
 mkdir build
 cd build || exit 1
 
-meson setup ..          \
-    --prefix=/usr       \
+meson setup ..    \
+    --prefix=/usr \
     --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -41,21 +41,22 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-### Конфигурация
+###
 # Спецификация XDG Base Directory
 #    https://specifications.freedesktop.org/basedir-spec/latest/
-# определяет стандартные месторасположения данных и файлов конфигурации для
+###
+# Определяет стандартные месторасположения данных и файлов конфигурации для
 # приложений. Эти файлы могут быть использованы, например, чтобы определить
 # структуру меню и пункты меню на рабочем столе и в рабочей среде.
 #
 # файлы конфигурации: $XDG_CONFIG_DIRS
-#                     по умолчанию /etc/xdg
+#                     По умолчанию /etc/xdg
 # файлы данных:       $XDG_DATA_DIRS
-#                     по умолчанию /usr/share и /usr/local/share
+#                     По умолчанию /usr/share и /usr/local/share
 #
 # Среды GNOME, KDE и XFCE придерживаются этих настроек.
 
-# если директория /usr/share/applications/ уже существует, то создадим/обновим
+# Если директория /usr/share/applications/ уже существует, то создадим/обновим
 # файл кэша для базы данных MIME
 #    /usr/share/applications/mimeinfo.cache
 APPLICATIONS="/usr/share/applications"

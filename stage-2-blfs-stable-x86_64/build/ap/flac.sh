@@ -12,8 +12,6 @@ PRGNAME="flac"
 # Recommended: no
 # Optional:    libogg
 #              docbook-utils
-#              doxygen
-#              valgrind
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -10,22 +10,14 @@ ARCH_NAME="llvm-project"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    doxygen
-#              git
-#              graphviz
+# Optional:    git
 #              libunwind
 #              libxml2
 #              python3-psutil               (для тестов)
 #              python3-pygments
 #              python3-pyyaml
 #              rsync                        (для тестов)
-#              python3-sphinx
-#              texlive или install-tl-unx
-#              valgrind
 #              zip
-#              python3-myst-parser          (https://pypi.org/project/myst-parser/)
-#              ocaml                        (https://ocaml.org/)
-#              z3                           (https://github.com/Z3Prover/z3)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

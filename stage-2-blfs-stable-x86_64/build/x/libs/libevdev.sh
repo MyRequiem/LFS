@@ -9,9 +9,7 @@ PRGNAME="libevdev"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen
-#              valgrind
-#              check        (для тестов) https://libcheck.github.io/check/
+# Optional:    no
 
 ### Конфигурация ядра
 #    CONFIG_INPUT=y

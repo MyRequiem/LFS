@@ -23,20 +23,10 @@ ARCH_NAME="gtk"
 #              hicolor-icon-theme    (для тестов и для настроек по умолчанию)
 #              vulkan-loader
 #              glib
-# Optional:    avahi                 (для некоторых тестов)
-#              colord
-#              libcups или cups
+# Optional:    libcups или cups
 #              python3-docutils      (для сборки man-страниц)
-#              evince                (runtime, для среств просмотра печати)
-#              python3-gi-docgen     (для сборки документации)
 #              highlight             (используется gtk4-demo для подсветки синтаксиса исходного кода)
-#              libcloudproviders
 #              sassc
-#              tinysparql
-#              accesskit-c           (https://github.com/AccessKit/accesskit-c)
-#              cpdb                  (https://github.com/OpenPrinting/cpdb-libs)
-#              python3-pydbus        (https://pypi.org/project/pydbus/)
-#              sysprof               (https://wiki.gnome.org/Apps/Sysprof)
 
 ### Конфигурация ядра:
 #    CONFIG_UDMABUF=y    Если X11+<i3wm|LXQt> - данная опция в конфиге ядра

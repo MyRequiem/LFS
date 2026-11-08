@@ -10,7 +10,7 @@ PRGNAME="brotli"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    python3-pytest    (для тестов)
+# Optional:    no
 
 ### NOTE:
 # Пакет перед обновлением/переустановкой НЕ удаляем из системы.

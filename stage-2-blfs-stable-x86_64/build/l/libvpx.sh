@@ -10,7 +10,6 @@ PRGNAME="libvpx"
 # Recommended: yasm или nasm
 #              which            (для поиска yasm или nasm во время конфигурации)
 # Optional:    curl             (скачивает необходимые файлы для тестов)
-#              doxygen          (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

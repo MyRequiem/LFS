@@ -10,7 +10,7 @@ PRGNAME="taglib"
 # Required:    cmake
 #              utfcpp
 # Recommended: no
-# Optional:    cppunit    (для тестов) https://freedesktop.org/wiki/Software/cppunit/
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

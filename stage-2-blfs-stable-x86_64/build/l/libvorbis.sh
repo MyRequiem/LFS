@@ -10,9 +10,7 @@ PRGNAME="libvorbis"
 
 # Required:    libogg
 # Recommended: no
-# Optional:    --- для документации ---
-#              doxygen
-#              texlive or install-tl-unx (для сборки документации в формате pdf)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

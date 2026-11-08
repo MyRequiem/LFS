@@ -9,8 +9,7 @@ PRGNAME="libxcb"
 # Required:    libxau
 #              xcb-proto
 # Recommended: libxdmcp    (требуется для Mesa)
-# Optional:    doxygen
-#              libxslt
+# Optional:    libxslt
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

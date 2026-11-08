@@ -12,9 +12,8 @@ ARCH_NAME="bind"
 #              libuv
 # Recommended: json-c
 #              nghttp2
-# Optional:    libcap           (собранный с PAM)
+# Optional:    libcap           (LFS, пересобранный с собранный с PAM)
 #              libxml2
-#              python3-sphinx
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

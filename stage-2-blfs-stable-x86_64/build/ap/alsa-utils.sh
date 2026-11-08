@@ -17,7 +17,7 @@ PRGNAME="alsa-utils"
 #              fftw                 (для сборки Basic Audio Tester (BAT))
 #              libsamplerate
 #              xmlto                (для создания man-страниц)
-#              dialog               (https://hightek.org/projects/dialog/)
+#              dialog
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -31,9 +31,9 @@ BAT="--disable-bat"
 command -v xmlto &>/dev/null && XMLTO="--enable-xmlto"
 pkgconf fftw3    &>/dev/null && BAT="--enable-bat"
 
-# отключаем создание конфигурации alsaconf, которая не совместима с Udev
+# Отключаем создание конфигурации alsaconf, которая не совместима с Udev.
 #    --disable-alsaconf
-# используем библиотеки ncurses для расширенных символов
+# Используем библиотеки ncurses для расширенных символов.
 #    --with-curses=ncursesw
 ./configure            \
     --prefix=/usr      \
@@ -49,21 +49,21 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 # ### Конфигурация:
-#    - любых пользователей, использующих звуковые устройства нужно добавить в
-#       группу audio
-#           # usermod -a -G audio <username>
+#    - Любых пользователей, использующих звуковые устройства нужно добавить в
+#       группу audio:
+#           $ usermod -a -G audio <username>
 #
-#    - по умолчанию все каналы звуковой карты отключены. Для включения
-#       используем утилиту 'alsamixer'
+#    - По умолчанию все каналы звуковой карты отключены. Для включения
+#       используем утилиту 'alsamixer'.
 #
-#    - протестировать настройки звука (должен быть слышен шум в динамиках):
+#    - Протестировать настройки звука (должен быть слышен шум в динамиках):
 #       $ speaker-test
 #
-#    - проигрывание звуков для тестирования динамиков
+#    - Проигрывание звуков для тестирования динамиков:
 #       (находятся в /usr/share/sounds/alsa)
 #       $ aplay /usr/share/sounds/alsa/Front_Left.wav
 
-# для автоматического сохранения и восстановления настроек громкости при
+# Для автоматического сохранения и восстановления настроек громкости при
 # перезагрузке системы установим загрузочный скрипт /etc/rc.d/init.d/alsa
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -75,10 +75,9 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# при первом запуске утилиты 'alsactl' (обычно запускается из стандартного
-# правила udev) будет жаловаться на отсутствие файла
-#    /var/lib/alsa/asound.state
-#  сразу создадим его:
+# При первом запуске утилиты 'alsactl' (обычно запускается из стандартного
+# правила udev) будет жаловаться на отсутствие файла /var/lib/alsa/asound.state.
+# Сразу создадим его:
 alsactl -L store
 cp /var/lib/alsa/asound.state "${TMP_DIR}/var/lib/alsa/"
 

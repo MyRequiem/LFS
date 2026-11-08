@@ -10,13 +10,8 @@ PKG_VERSION="11"
 # Required:    fontconfig
 #              libxcb
 # Recommended: no
-# Optional:    --- для сборки документации ---
-#              python3-asciidoc
-#              xmlto
-#              fop
-#              links или lynx или w3m       (http://w3m.sourceforge.net/)
-#              --- для некоторых тестов ---
-#              ncompress                    (https://github.com/vapier/ncompress)
+# Optional:    xmlto
+#              w3m
 
 ROOT="/root/src/lfs"
 SOURCES="${ROOT}/src"

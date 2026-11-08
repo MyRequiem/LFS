@@ -11,11 +11,7 @@ ARCH_NAME="pygobject"
 
 # Required:    glib
 # Recommended: python3-pycairo
-# Optional:    --- для тестов ---
-#              gtk4
-#              python3-pytest
-#              python3-pep8         (https://pypi.org/project/pep8/)
-#              python3-pyflakes     (https://pypi.org/project/pyflakes/)
+# Optional:    gtk4             (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

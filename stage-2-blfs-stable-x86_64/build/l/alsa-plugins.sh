@@ -13,9 +13,6 @@ PRGNAME="alsa-plugins"
 # Optional:    ffmpeg
 #              libsamplerate
 #              pulseaudio
-#              speex
-#              jack             (https://jackaudio.org/)
-#              libavtp          (https://github.com/AVnu/libavtp/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -24,12 +21,16 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
+# Исправим сборку с ffmpeg-9
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-ffmpeg-9.0.patch" || exit 1
+
 ./configure       \
     --prefix=/usr \
     --sysconfdir=/etc || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

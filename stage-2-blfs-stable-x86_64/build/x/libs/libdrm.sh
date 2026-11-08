@@ -16,9 +16,6 @@ PRGNAME="libdrm"
 #              docbook-xsl
 #              python3-docutils
 #              libxslt              (для сборки man-страниц)
-#              libatomic-ops        (для процессоров, которые не поддерживают атомарные операции на аппаратном уровне)
-#              valgrind
-#              cunit                (для AMDGPU тестов) https://cunit.sourceforge.net/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

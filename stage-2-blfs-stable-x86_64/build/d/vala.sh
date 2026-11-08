@@ -8,12 +8,10 @@ PRGNAME="vala"
 # простой и понятный синтаксис.
 
 # Required:    glib         (GObject Introspection требуется для тестов)
-# Recommended: graphviz     (для сборки утилиты 'valadoc' и API документации)
+# Recommended: no
 # Optional:    dbus         (для тестов)
 #              libxslt      (для документации)
-#              help2man     (https://www.gnu.org/software/help2man/)
-#              jing         (https://github.com/relaxng/jing-trang)
-#              weasyprint   (https://weasyprint.org/)
+#              help2man
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

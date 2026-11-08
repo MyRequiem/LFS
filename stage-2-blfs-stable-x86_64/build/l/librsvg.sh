@@ -10,14 +10,11 @@ PRGNAME="librsvg"
 # Required:    cairo
 #              cargo-c
 #              pango
-#              gdk-pixbuf           (в BLFS указана как Recommended, но без
-#                                       него не собирается, поэтому указываю
-#                                       как Required)
+#              gdk-pixbuf           (в BLFS указана как Recommended, но без него не собирается, поэтому указываю как Required)
 # Recommended: glib
 #              vala
 # Optional:    dav1d                (для поддержки встроенного AVIF в SVG)
 #              python3-docutils     (для генерации man-страниц)
-#              python3-gi-docgen    (для документации)
 
 ###
 # NOTE:

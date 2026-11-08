@@ -12,7 +12,7 @@ PRGNAME="gnome-keyring"
 # Recommended: linux-pam
 #              libxslt
 #              openssh
-# Optional:    libcap-ng    (https://people.redhat.com/sgrubb/libcap-ng/)
+# Optional:    libcap-ng
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,7 +21,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим устаревшую запись в шаблоне xml схем
+# Исправим устаревшую запись в шаблоне xml схем.
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
 mkdir build-gkr
@@ -34,7 +34,7 @@ meson setup ..          \
 
 ninja || exit 1
 
-# для запуска тестов необходима запущенная сессия DBus
+# Для запуска тестов необходима запущенная сессия DBus.
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
@@ -42,8 +42,8 @@ DESTDIR="${TMP_DIR}" ninja install
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 AUTOSTART="/etc/xdg/autostart"
-# сервисы будут видны в GUI настройках системы (например в lxqt-config-session),
-# не нужно ничего прятать
+# Сервисы будут видны в GUI настройках системы (например в lxqt-config-session),
+# не нужно ничего прятать.
 sed -i 's/NoDisplay=true/NoDisplay=false/g' \
     "${TMP_DIR}${AUTOSTART}/gnome-keyring-pkcs11.desktop" || exit 1
 sed -i 's/NoDisplay=true/NoDisplay=false/g' \
@@ -54,7 +54,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (a tool to handle security credentials)
 #
@@ -64,7 +63,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # gnome-keyring-daemon.
 #
 # Home page: https://wiki.gnome.org/Projects/GnomeKeyring
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -10,7 +10,7 @@ PRGNAME="slang"
 # Required:    no
 # Recommended: no
 # Optional:    libpng
-#              oniguruma    (https://github.com/kkos/oniguruma)
+#              oniguruma
 
 ### Конфигурация:
 #    /etc/slsh.rc

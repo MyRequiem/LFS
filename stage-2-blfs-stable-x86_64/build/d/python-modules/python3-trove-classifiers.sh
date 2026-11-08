@@ -10,7 +10,7 @@ ARCH_NAME="trove_classifiers"
 
 # Required:    no
 # Recommended: no
-# Optional:    python3-pytest (для тестов)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

@@ -9,7 +9,7 @@ PRGNAME="dbus-glib"
 # Required:    dbus
 #              glib
 # Recommended: no
-# Optional:    gtk-doc
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

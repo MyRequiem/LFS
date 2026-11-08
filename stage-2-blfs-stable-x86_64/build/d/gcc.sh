@@ -10,12 +10,7 @@ PRGNAME="gcc"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              gdb
-#              graphviz     (собранный с libpng)
-#              libxml2      (для поддержки COBOL)
-#              valgrind
-#              isl          (для включения оптимизации graphite) https://repo.or.cz/isl.git
+# Optional:    libxml2    (для поддержки COBOL)
 
 ### NOTE
 # Если в системе присутствуют сторонние модули ядра (например, nvidia.ko и

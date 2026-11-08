@@ -8,9 +8,7 @@ PRGNAME="json-c"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    --- для документации ---
-#              doxygen
-#              graphviz
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

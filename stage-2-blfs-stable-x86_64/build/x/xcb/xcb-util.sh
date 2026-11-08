@@ -11,7 +11,7 @@ PRGNAME="xcb-util"
 
 # Required:    libxcb
 # Recommended: no
-# Optional:    doxygen    (для создания документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

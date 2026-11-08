@@ -10,17 +10,7 @@ ARCH_NAME="LVM2"
 
 # Required:    libaio
 # Recommended: no
-# Optional:    btrfs-progs
-#              dosfstools
-#              jfsutils
-#              mdadm
-#              parted
-#              valgrind
-#              which
-#              xfsprogs
-#              reiserfsprogs           (https://mirrors.edge.kernel.org/pub/linux/kernel/people/jeffm/reiserfsprogs/)
-#              thin-provisioning-tools (https://github.com/jthornber/thin-provisioning-tools)
-#              vdo                     (https://github.com/dm-vdo/vdo)
+# Optional:    which
 
 ### Конфигурация ядра
 #    CONFIG_BLK_DEV=y
@@ -68,10 +58,10 @@ mkdir -pv "${TMP_DIR}"
 #    --enable-pkgconfig
 # Включаем синхронизацию с Udev
 #    --enable-udev_sync
-./configure                       \
-    --prefix=/usr                 \
-    --enable-cmdlib               \
-    --enable-pkgconfig            \
+./configure            \
+    --prefix=/usr      \
+    --enable-cmdlib    \
+    --enable-pkgconfig \
     --enable-udev_sync || exit 1
 
 make || exit 1

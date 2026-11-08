@@ -10,16 +10,7 @@ PRGNAME="graphite2"
 # Required:    cmake
 # Recommended: no
 # Optional:    freetype
-#              silgraphite                  (для сборки утилиты comparerender - test and benchmarking tool) https://sourceforge.net/projects/silgraphite/files/silgraphite
 #              harfbuzz                     (для более полного функционала)
-#              graphite-font                (runtime) https://graphite.sil.org/
-#              --- для документации ---
-#              python3-asciidoc
-#              doxygen
-#              texlive или install-tl-unx
-#              dblatex                      (http://dblatex.sourceforge.net/)
-#              --- для тестов ---
-#              python3-fonttools            (https://pypi.org/project/fonttools/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

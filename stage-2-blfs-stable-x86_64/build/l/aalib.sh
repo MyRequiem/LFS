@@ -14,7 +14,6 @@ DIR_VERSION="1.4.0"
 # Optional:    xorg-libraries    (runtime)
 #              xorg-fonts        (runtime)
 #              slang
-#              gpm
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

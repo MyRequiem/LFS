@@ -20,24 +20,11 @@ PRGNAME="gst-plugins-good"
 #              pulseaudio
 # Optional:    aalib
 #              gtk+3             (для сборки примеров)
-#              libdv
 #              qt6               (для сборки libgstqml6.so и libgstqmlgl.so - нужны только для стриминга GStreamer+QML, плейерам vlc, mpv они не нужны)
-#              speex
 #              taglib
-#              valgrind
 #              v4l-utils
-#              alsa-oss          (https://www.alsa-project.org/files/pub/oss-lib/)
-#              python3-hotdoc    (https://pypi.org/project/hotdoc/)
-#              jack              (https://jackaudio.org/)
-#              libcaca           (https://github.com/cacalabs/libcaca)
-#              libavc1394        (https://sourceforge.net/projects/libavc1394/)
-#              libiec61883       (https://sourceforge.net/projects/libraw1394/)
-#              libraw1394        (https://sourceforge.net/projects/libraw1394/)
-#              libshout          (https://www.icecast.org/)
-#              libsoup2          (https://download.gnome.org/sources/libsoup/2.74/)
-#              orc               (https://gstreamer.freedesktop.org/src/orc/)
-#              twolame           (https://www.twolame.org/)
-#              wavpack           (https://www.wavpack.com/)
+#              libsoup2
+#              orc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

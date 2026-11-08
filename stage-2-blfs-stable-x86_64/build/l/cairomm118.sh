@@ -11,7 +11,7 @@ ARCH_NAME="cairomm"
 # Required:    cairo
 #              libsigc++3
 # Recommended: boost        (для тестов)
-# Optional:    doxygen
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

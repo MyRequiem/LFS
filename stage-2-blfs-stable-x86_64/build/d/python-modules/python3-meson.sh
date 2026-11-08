@@ -13,8 +13,6 @@ ARCH_NAME="meson_python"
 #              python3-build
 #              python3-cython
 #              git
-#              python3-pytest
-#              python3-pytest-mock  (https://pypi.org/project/pytest-mock/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

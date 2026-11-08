@@ -10,8 +10,7 @@ PRGNAME="libxkbcommon"
 
 # Required:    xkeyboard-config     (runtime)
 # Recommended: libxcb
-# Optional:    doxygen
-#              xorg-server          (только утилита Xvfb для тестов)
+# Optional:    xorg-server          (только утилита Xvfb для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

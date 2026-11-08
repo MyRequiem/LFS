@@ -9,7 +9,7 @@ PRGNAME="gpgme"
 
 # Required:    libassuan
 # Recommended: gnupg
-# Optional:    doxygen
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -12,7 +12,7 @@ PRGNAME="glib-networking"
 #              gnutls
 # Recommended: gsettings-desktop-schemas
 #              make-ca
-# Optional:    libproxy                     (https://github.com/libproxy/libproxy)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

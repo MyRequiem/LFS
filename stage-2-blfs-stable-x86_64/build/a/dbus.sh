@@ -13,12 +13,7 @@ PRGNAME="dbus"
 # Optional:    --- для тестов ---
 #              python3-dbus
 #              python3-pygobject3
-#              valgrind
-#              --- для документации ---
-#              doxygen
 #              xmlto                (для сборки man-страниц)
-#              python3-ducktype     (https://pypi.org/project/mallard-ducktype/)
-#              yelp-tools           (http://ftp.gnome.org/pub/gnome/sources/yelp-tools/)
 
 ###
 # WARNING:

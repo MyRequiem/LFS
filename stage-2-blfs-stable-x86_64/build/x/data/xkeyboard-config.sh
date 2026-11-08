@@ -10,8 +10,6 @@ PRGNAME="xkeyboard-config"
 # Recommended: no
 # Optional:    --- для тестов ---
 #              libxkbcommon
-#              python3-pytest
-#              python3-xdist                (https://pypi.org/project/pytest-xdist/)
 #              xorg-applications
 
 ROOT="/root/src/lfs"

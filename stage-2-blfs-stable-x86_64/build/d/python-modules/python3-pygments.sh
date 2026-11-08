@@ -9,8 +9,7 @@ ARCH_NAME="pygments"
 
 # Required:    python3-hatchling
 # Recommended: no
-# Optional:    python3-pytest
-#              python3-wcag-contrast-ratio (https://pypi.org/project/wcag-contrast-ratio/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

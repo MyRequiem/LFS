@@ -11,11 +11,9 @@ ARCH_NAME="glibmm"
 # Required:    glib
 #              libsigc++2
 # Recommended: no
-# Optional:    doxygen
-#              glib-networking      (для тестов)
+# Optional:    glib-networking      (для тестов)
 #              gnutls               (для тестов)
 #              libxslt
-#              mm-common            (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -63,7 +61,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (C++ bindings for glib)
 #
@@ -73,7 +70,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # threads.
 #
 # Home page: https://www.gtkmm.org/
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

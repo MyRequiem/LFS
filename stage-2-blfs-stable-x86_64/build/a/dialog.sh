@@ -42,7 +42,7 @@ find -L . \
     \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
     -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-# исправим проблемы форматирования
+# Исправим проблемы форматирования.
 zcat "${SOURCES}/${PRGNAME}.all.use_height.diff.gz" | \
     patch -p1 --verbose || exit 1
 zcat "${SOURCES}/${PRGNAME}.smaller.min.height.diff.gz" | \
@@ -62,7 +62,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим статическую библиотеку
+# Удалим статическую библиотеку.
 rm -rf "${TMP_DIR}/usr/lib/lib${PRGNAME}.a"
 
 cat "${SOURCES}/dialogrc" > "${TMP_DIR}/etc/dialogrc" || exit 1

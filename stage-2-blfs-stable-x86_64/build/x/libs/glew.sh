@@ -18,22 +18,20 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# библиотеку устанавливаем в /usr/lib/
+# Библиотеку устанавливаем в /usr/lib/
 sed -i 's%lib64%lib%g' config/Makefile.linux || exit 1
 
-# 's%lib64%lib%g'       - библиотеки устанавливаем в /usr/lib
-# '/glew.lib.static:/d' - не устанавлиаваем статическую библиотеку
-# 's|/local||'          - пакет устанавливаем в /usr
+# Не устанавлиаваем статическую библиотеку, пакет устанавливаем в /usr
 sed -e '/glew.lib.static:/d' \
     -e '/0644 .*STATIC/d'    \
     -e 's/glew.lib.static//' \
     -e 's|/local||' -i Makefile || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 
-# install.all - устанавливаем библиотеку libGLEW.so и утилиты 'glewinfo' и
-# 'visualinfo'
+# Устанавливаем библиотеку libGLEW.so и утилиты 'glewinfo' и 'visualinfo'
+#    install.all
 make install.all DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

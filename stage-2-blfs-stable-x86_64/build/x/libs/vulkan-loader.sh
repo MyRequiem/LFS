@@ -12,8 +12,8 @@ ARCH_NAME="Vulkan-Loader-vulkan-sdk"
 # Required:    cmake
 #              vulkan-headers
 #              xorg-libraries
-# Recommended: mesa                 (runtime)
-# Optional:    git                  (для тестов)
+# Recommended: mesa             (runtime)
+# Optional:    git              (для тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

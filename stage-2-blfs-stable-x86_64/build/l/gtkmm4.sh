@@ -11,8 +11,7 @@ ARCH_NAME="gtkmm"
 # Required:    gtk4
 #              pangomm25
 # Recommended: no
-# Optional:    doxygen          (для сборки документации)
-#              vulkan-loader
+# Optional:    vulkan-loader
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -50,9 +49,11 @@ meson setup ..           \
     -D build-documentation=false || exit 1
 
 ninja || exit 1
-# тесты нужно запускать в графической среде, т.к. некоторые тесты запускают
-# графические окна
+
+# Тесты нужно запускать в графической среде, т.к. некоторые тесты запускают
+# графические окна.
 # ninja test
+
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -62,7 +63,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (C++ interface for GTK+4)
 #
@@ -71,7 +71,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # that are easily extensible via inheritance.
 #
 # Home page: https://www.${ARCH_NAME}.org/
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

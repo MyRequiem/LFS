@@ -12,11 +12,7 @@ BLFS_VER="13.1"
 #              curl
 # Recommended: libssh2
 #              llvm
-# Optional:    gdb          (для тестов)
-#              cranelift    (https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)
-#              jemalloc     (https://jemalloc.net/)
-#              libgccjit    (GCC собранный с параметром --enable-languages=jit)
-#              libgit2      (https://libgit2.org/)
+# Optional:    no
 
 ###
 # WARNING

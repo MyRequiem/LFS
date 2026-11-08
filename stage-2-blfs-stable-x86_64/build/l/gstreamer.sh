@@ -11,14 +11,10 @@ PRGNAME="gstreamer"
 # Required:    glib
 # Recommended: no
 # Optional:    gtk+3              (для генерации примеров)
-#              gsl                (для одного из тестов)
 #              libnsl
 #              libunwind
 #              rustc
-#              valgrind
-#              bash-completion    (https://github.com/scop/bash-completion/)
-#              python3-hotdoc     (https://pypi.org/project/hotdoc/)
-#              libdw              (https://sourceware.org/elfutils/)
+#              bash-completion
 
 ###
 # WARNINGS:

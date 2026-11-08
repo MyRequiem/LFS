@@ -16,12 +16,10 @@ ARCH_NAME="SDL3"
 #              libusb
 #              libxkbcommon
 #              mesa
-#              pipewire
 #              pulseaudio
 #              vulkan-loader
 #              xorg-libraries
-# Optional:    jack                     (https://jackaudio.org/)
-#              sndio                    (https://sndio.org/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

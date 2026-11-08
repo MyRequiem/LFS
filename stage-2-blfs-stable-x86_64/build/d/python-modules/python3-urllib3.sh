@@ -9,19 +9,7 @@ ARCH_NAME="urllib3"
 
 # Required:    python3-hatch-vcs
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-httpx             (https://pypi.org/project/httpx/)
-#              python3-hypercorn         (https://pypi.org/project/Hypercorn/)
-#              python3-mock              (https://pypi.org/project/mock/)
-#              python3-pysocks           (https://pypi.org/project/PySocks/)
-#              python3-pytest-timeout    (https://pypi.org/project/pytest-timeout/)
-#              python3-dateutil          (https://pypi.org/project/python-dateutil/)
-#              python3-quart             (https://pypi.org/project/Quart/)
-#              python3-quart-trio        (https://pypi.org/project/quart-trio/)
-#              python3-tornado           (https://pypi.org/project/tornado/)
-#              python3-trio              (https://pypi.org/project/trio/)
-#              python3-trustme           (https://pypi.org/project/trustme/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

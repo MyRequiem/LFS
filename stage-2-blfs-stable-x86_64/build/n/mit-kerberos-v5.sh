@@ -13,15 +13,8 @@ ARCH_NAME="krb5"
 # Recommended: no
 # Optional:    bind-utils
 #              cracklib
-#              keyutils
 #              openldap
-#              valgrind          (для тестов)
 #              yasm
-#              libedit           (http://thrysoee.dk/editline/)
-#              cmocka            (https://cmocka.org/)
-#              python3-kdcproxy  (https://pypi.org/project/kdcproxy/)
-#              python3-pyrad     (https://pypi.org/project/pyrad/)
-#              resolv-wrapper    (https://cwrap.org/resolv_wrapper.html)
 
 ### NOTE
 # В системе обязательно потребуется какое-то средство синхронизации времени,

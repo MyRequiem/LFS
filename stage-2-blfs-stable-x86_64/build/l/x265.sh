@@ -10,7 +10,7 @@ PRGNAME="x265"
 
 # Required:    cmake
 # Recommended: nasm
-# Optional:    numactl    (https://github.com/numactl/numactl)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

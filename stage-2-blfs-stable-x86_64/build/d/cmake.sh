@@ -15,14 +15,8 @@ PRGNAME="cmake"
 # Optional:    gcc                  (для gfortran)
 #              --- для тестов ---
 #              git
-#              mercurial
 #              openjdk
 #              qt6                  (для сборки Qt-based GUI)
-#              python3-sphinx       (для сборки документации) https://pypi.org/project/Sphinx/
-#              subversion
-#              cppdap               (https://github.com/google/cppdap/)
-#              jsoncpp              (https://github.com/open-source-parsers/jsoncpp/)
-#              rhash                (https://rhash.sourceforge.io/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

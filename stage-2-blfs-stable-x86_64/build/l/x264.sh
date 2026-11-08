@@ -10,8 +10,7 @@ PRGNAME="x264"
 
 # Required:    no
 # Recommended: nasm
-# Optional:    ffms2                 (https://github.com/FFMS/ffms2)
-#              gpac или liblsmash    (https://github.com/gpac/gpac/releases/) (https://github.com/l-smash/l-smash)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -12,8 +12,7 @@ PRGNAME="libxklavier"
 #              libxml2
 #              xorg-libraries
 # Recommended: no
-# Optional:    gtk-doc
-#              vala
+# Optional:    vala
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,7 +26,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -43,7 +42,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # libxklavier is a utility library to make XKB stuff easier for X keyboard
 #
 # Home page: https://www.freedesktop.org/wiki/Software/LibXklavier
-# Download:  https://people.freedesktop.org/~svu/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

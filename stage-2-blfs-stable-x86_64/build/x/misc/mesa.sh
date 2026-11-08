@@ -22,16 +22,8 @@ PRGNAME="mesa"
 #              cbindgen
 #              make-ca
 #              rust-bindgen
-# Optional:    libdisplay-info
-#              libunwind
+# Optional:    libunwind
 #              lm-sensors
-#              valgrind
-#              mesa-demos                   (ftp://ftp.freedesktop.org/pub/mesa/demos/)
-#                                               Патч ниже добавляет теже утилиты, что и mesa-demos
-#                                               (glxinfo и glxgears), поэтому при его использовании в
-#                                               пакете mesa-demos нет необходимости
-#              libglvnd                     (https://www.linuxfromscratch.org/glfs/view/dev/shareddeps/libglvnd.html)
-#              opencl-icd-loader            (https://github.com/KhronosGroup/OpenCL-ICD-Loader)
 
 ###
 # WARNING:

@@ -8,10 +8,8 @@ PRGNAME="xorgproto"
 
 # Required:    util-macros
 # Recommended: no
-# Optional:    fop
-#              libxslt
+# Optional:    libxslt
 #              xmlto
-#              python3-asciidoc    (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

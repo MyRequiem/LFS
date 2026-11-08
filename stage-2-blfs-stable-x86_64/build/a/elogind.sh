@@ -17,12 +17,7 @@ PRGNAME="elogind"
 #              libxslt
 # Optional:    --- для тестов ---
 #              python3-lxml
-#              zsh
-#              valgrind
-#              audit-userspace    (https://github.com/linux-audit/audit-userspace)
-#              bash-completion    (https://github.com/scop/bash-completion)
-#              kexec              (https://mirrors.edge.kernel.org/pub/linux/utils/kernel/kexec/)
-#              selinux            (https://selinuxproject.org/page/Main_Page)
+#              bash-completion
 
 ### Конфигурация ядра.
 #    CONFIG_CGROUPS=y

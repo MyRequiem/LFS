@@ -9,8 +9,7 @@ PRGNAME="libuv"
 
 # Required:    no
 # Recommended: no
-# Optional:    python3-sphinx
-#              python3-sphinx-copybutton    (https://pypi.org/project/sphinx-copybutton/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

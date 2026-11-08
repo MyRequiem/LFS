@@ -12,7 +12,6 @@ PRGNAME="gst-plugins-base"
 
 # Required:    gstreamer
 # Recommended: alsa-lib
-#              cdparanoia-III         (для сборки cdda плагина)
 #              glib
 #              iso-codes
 #              libgudev
@@ -24,15 +23,10 @@ PRGNAME="gst-plugins-base"
 #              pango
 #              xorg-libraries
 # Optional:    graphene
-#              gtk+3                  (для сборки примеров)
+#              gtk+3            (для сборки примеров)
 #              opus
 #              sdl2-compat
-#              valgrind
-#              python3-hotdoc         (https://pypi.org/project/hotdoc/)
-#              libtheora              (https://www.theora.org/)
-#              libvisual              (http://libvisual.org/)
-#              orc                    (https://gstreamer.freedesktop.org/src/orc/)
-#              tremor                 (https://wiki.xiph.org/Tremor)
+#              orc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

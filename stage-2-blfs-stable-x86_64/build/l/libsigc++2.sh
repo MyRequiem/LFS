@@ -14,9 +14,6 @@ ARCH_NAME="libsigc++"
 # Optional:    --- для сборки документации ---
 #              docbook-utils
 #              docbook-xml
-#              doxygen
-#              fop
-#              mm-common    (https://download.gnome.org/sources/mm-common/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

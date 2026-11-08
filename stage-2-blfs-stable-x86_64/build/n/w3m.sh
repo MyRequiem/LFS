@@ -46,7 +46,7 @@ mkdir -pv "${TMP_DIR}"
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-hide-status-info.patch" || exit 1
 
-# для GCC >11
+# для GCC >=12
 SLKCFLAGS="-std=gnu17"
 CFLAGS="${SLKCFLAGS}"                    \
 CXXFLAGS="${SLKCFLAGS}"                  \

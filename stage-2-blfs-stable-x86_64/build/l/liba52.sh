@@ -10,7 +10,7 @@ ARCH_NAME="a52dec"
 
 # Required:    no
 # Recommended: no
-# Optional:    djbfft    (https://cr.yp.to/djbfft.html)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

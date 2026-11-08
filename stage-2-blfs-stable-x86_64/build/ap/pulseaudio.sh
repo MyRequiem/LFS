@@ -14,26 +14,13 @@ PRGNAME="pulseaudio"
 #              dbus
 #              elogind
 #              glib
-#              speex
-#              perl-xml-parser          (для создания man-страниц)
+#              perl-xml-parser    (для создания man-страниц)
 #              xorg-libraries
-# Optional:    avahi
-#              bluez
-#              doxygen
-#              fftw
+# Optional:    fftw
 #              gst-plugins-base
 #              gtk+3
 #              libsamplerate
-#              sbc                      (поддержка bluetooth)
-#              valgrind
-#              check                    (https://libcheck.github.io/check/)
-#              jack                     (https://jackaudio.org/)
-#              libasyncns               (https://0pointer.de/lennart/projects/libasyncns/)
-#              lirc                     (https://www.lirc.org/)
-#              orc                      (https://gstreamer.freedesktop.org/src/orc/)
-#              soxr                     (https://sourceforge.net/p/soxr/wiki/Home/)
-#              tdb                      (https://tdb.samba.org/)
-#              webrtc-audio-processing  (https://freedesktop.org/software/pulseaudio/webrtc-audio-processing/)
+#              orc
 
 ### Конфигурация:
 #    /etc/pulse/daemon.conf

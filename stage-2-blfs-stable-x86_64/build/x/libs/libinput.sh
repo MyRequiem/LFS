@@ -10,18 +10,10 @@ PRGNAME="libinput"
 # Required:    libevdev
 #              mtdev
 # Recommended: no
-# Optional:    valgrind
-#              gtk+3                      (для сборки GUI event viewer)
+# Optional:    gtk+3                      (для сборки GUI event viewer)
 #              libunwind
-#              libwacom
-#              doxygen
-#              graphviz
 #              lua
-#              python3-recommonmark
-#              python3-sphinx-rtd-theme
 #              python3-pyparsing
-#              python3-pytest
-#              check                      (https://libcheck.github.io/check/)
 
 ### Конфигурация ядра
 #    CONFIG_INPUT=y

@@ -13,16 +13,11 @@ PRGNAME="cairo"
 # Recommended: fontconfig
 #              glib
 #              xorg-libraries
-# Optional:    ghostscript
-#              gtk-doc
-#              libdrm
+# Optional:    libdrm
 #              librsvg          (для сборки вспомогательных утилит и тестирования самого cairo)
 #              libxml2
 #              lzo
 #              poppler
-#              valgrind
-#              gtk+2            (https://download.gnome.org/sources/gtk+/2.24/)
-#              libspectre       (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

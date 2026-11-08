@@ -11,12 +11,7 @@ ARCH_NAME="poetry_core"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-build
-#              python3-pytest-cov    (https://pypi.org/project/pytest-cov/)
-#              python3-pytest-mock   (https://pypi.org/project/pytest-mock/)
-#              python3-virtualenv    (https://pypi.org/project/virtualenv/)
+# Optional:    python3-build
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

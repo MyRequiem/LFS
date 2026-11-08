@@ -9,8 +9,7 @@ PRGNAME="rsync"
 
 # Required:    no
 # Recommended: popt
-# Optional:    doxygen
-#              xxhash    (https://xxhash.com/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

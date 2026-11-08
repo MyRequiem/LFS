@@ -23,8 +23,14 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-./configure       \
-    --prefix=/usr \
+# Скрипт configure от pinentry жестко использует c++11 для проверок. Qt6 >=6.12
+# строго требует C++17, иначе сборка падает при наличие в системе пакета qt6 и
+# попытке конфигурации для сборки pinentry-qt (--enable-pinentry-qt=auto по
+# умолчанию).
+#    CXX="g++ -std=gnu++17"
+CXX="g++ -std=gnu++17" \
+./configure            \
+    --prefix=/usr      \
     --enable-pinentry-tty || exit 1
 
 make || exit 1
@@ -32,6 +38,7 @@ make || exit 1
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
+rm -rf "${TMP_DIR}/usr/share"/{applications,pixmaps}
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

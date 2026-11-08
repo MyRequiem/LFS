@@ -8,8 +8,7 @@ PRGNAME="libgudev"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gtk-doc      (для сборки API документации)
-#              umockdev     (для тестов)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

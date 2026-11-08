@@ -11,13 +11,8 @@ PRGNAME="nghttp2"
 # Recommended: libxml2
 # Optional:    --- используются при сборке полного пакета, а не только основных библиотек ---
 #              c-ares
-#              jansson
 #              libevent
-#              python3-sphinx
-#              jemalloc         (https://jemalloc.net/)
-#              libev            (software.schmorp.de/pkg/libev.html)
-#              mruby            (https://mruby.org/)
-#              spdylay          (https://tatsuhiro-t.github.io/spdylay/)
+#              libev
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

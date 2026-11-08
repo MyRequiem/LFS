@@ -19,7 +19,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# включим масштабируемые иконки
+# Включим масштабируемые иконки.
 sed -i '/( oxygen/ s/)/scalable )/' CMakeLists.txt || exit 1
 
 mkdir build
@@ -29,7 +29,7 @@ cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -W no-author || exit 1
 
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -47,7 +47,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Oxygen provides a complete and modern icon theme for KDE
 #
 # Home page: https://kde.org/
-# Download:  https://download.kde.org/stable/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -9,9 +9,7 @@ PRGNAME="nasm"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для документации ---
-#              python3-asciidoc
-#              xmlto
+# Optional:    xmlto
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

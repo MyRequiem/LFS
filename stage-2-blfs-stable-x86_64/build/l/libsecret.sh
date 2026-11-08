@@ -11,20 +11,16 @@ PRGNAME="libsecret"
 #              gnome-keyring            (runtime)
 # Recommended: libgcrypt или gnutls
 #              vala
-# Optional:    python3-gi-docgen        (для сборки документации)
-#              docbook-xml
+# Optional:    docbook-xml
 #              docbook-xsl
 #              libxslt                  (для сборки man-страниц)
-#              valgrind                 (для тестов)
-#              tpm2-tss                 (https://github.com/tpm2-software/tpm2-tss)
 #              --- для тестов ---
 #              python3-dbus
-#              gjs
 #              python3-pygobject3
 
 ### NOTE:
 # Все пакеты, использующие libsecret, ожидают, что gnome-keyring установлен в
-# системе
+# системе (runtime).
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -46,8 +42,8 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# тестирование нужно проводить только после установки пакета в систему и при
-# запущенном сеансе Xorg с помощью dbus-launch
+# Тестирование нужно проводить только после установки пакета в систему и при
+# запущенном сеансе Xorg с помощью dbus-launch.
 # dbus-run-session ninja test
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -55,7 +51,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (library to access the Secret Service API)
 #
@@ -63,7 +58,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Secret Service API
 #
 # Home page: https://wiki.gnome.org/Projects/Libsecret
-# Download:  https://download.gnome.org/sources/${PRGNAME}/${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

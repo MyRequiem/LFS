@@ -11,9 +11,7 @@ PRGNAME="opus"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для документации ---
-#              doxygen
-#              texlive or install-tl-unx
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

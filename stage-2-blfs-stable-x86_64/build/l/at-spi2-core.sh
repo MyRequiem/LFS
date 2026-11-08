@@ -13,8 +13,7 @@ PRGNAME="at-spi2-core"
 #              gsettings-desktop-schemas
 #              xorg-libraries
 # Recommended: no
-# Optional:    python3-gi-docgen
-#              python3-sphinx
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

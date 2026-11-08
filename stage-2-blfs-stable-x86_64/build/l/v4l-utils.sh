@@ -11,12 +11,9 @@ PRGNAME="v4l-utils"
 # Recommended: alsa-lib
 #              glu
 #              libjpeg-turbo
-# Optional:    doxygen
-#              qt6              (для сборки qv4l2 и qvidcap - тестовые утилыты для видеокамер)
+# Optional:    qt6              (для сборки qv4l2 и qvidcap - тестовые утилыты для видеокамер)
 #              sdl2-compat
 #              llvm
-#              libbpf           (https://github.com/libbpf/libbpf)
-#              sdl-image        (https://github.com/libsdl-org/SDL_image)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

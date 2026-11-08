@@ -15,13 +15,13 @@ PRGNAME="xdg-user-dirs"
 #              libxslt
 
 ###
-# Конфигурация
+# Конфигурация.
 ###
 
-### Названия и пути к основным пользовательским каталогам
+### Названия и пути к основным пользовательским каталогам.
 # /etc/xdg/user-dirs.defaults
-#    # значения переменных являются относительными путями от домашнего
-#    # каталога пользователя, которые переводятся в локаль пользователя
+#    # Значения переменных являются относительными путями от домашнего
+#    # каталога пользователя, которые переводятся в локаль пользователя.
 #    DESKTOP=Desktop
 #    DOWNLOAD=Downloads
 #    TEMPLATES=Templates
@@ -31,12 +31,12 @@ PRGNAME="xdg-user-dirs"
 #    PICTURES=Pictures
 #    VIDEOS=Videos
 #
-#    # альтернативные варианты
+#    # Альтернативные варианты.
 #    MUSIC=Documents/Music
 #    PICTURES=Documents/Pictures
 #    VIDEOS=Documents/Videos
 #
-# Можно переопределить эти значения в конфиге каждого пользователя
+# Можно переопределить эти значения в конфиге каждого пользователя.
 # ~/.config/user-dirs.dirs
 #    XDG_DESKTOP_DIR="$HOME/desktop"
 #    XDG_DOWNLOAD_DIR="$HOME/tmp"
@@ -47,13 +47,14 @@ PRGNAME="xdg-user-dirs"
 #    XDG_PICTURES_DIR="$HOME/docs/images"
 #    XDG_VIDEOS_DIR="$HOME/media/video"
 
-### контроль поведения утилиты xdg-user-dirs-update при входе пользователя
-# /etc/xdg/user-dirs.conf
+### Контроль поведения утилиты xdg-user-dirs-update при входе пользователя.
 #
-#    # также можно настроить конфигурацию для каждого пользователя в
-#    #    ~/.config/user-dirs.conf
-#    # или установить переменные окружения
-#    # XDG_CONFIG_HOME и/или XDG_CONFIG_DIRS
+#    /etc/xdg/user-dirs.conf
+#
+#    Также можно настроить конфигурацию для каждого пользователя в
+#       ~/.config/user-dirs.conf
+#    Или установить переменные окружения:
+#    XDG_CONFIG_HOME и/или XDG_CONFIG_DIRS
 #
 #    enabled=True
 #    filename_encoding=UTF-8
@@ -62,10 +63,7 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
-# Живут в другом измерении? Зачем так именовать директорию с исходниками и сам
-# архив ???
-#    xdg-user-dirs-vX.XX.tar.gz
-# Ясен хрен что это версия.
+# xdg-user-dirs-vX.XX.tar.gz
 VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
@@ -74,14 +72,14 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# если не установлены ВСЕ опциональные зависимости, делаем -D docs=false
+# Если не установлены ВСЕ опциональные зависимости, делаем -D docs=false
 meson setup ..          \
     --prefix=/usr       \
     --buildtype=release \
     -D docs=true || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

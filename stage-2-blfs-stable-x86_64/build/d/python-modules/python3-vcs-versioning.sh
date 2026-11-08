@@ -10,9 +10,7 @@ ARCH_NAME="vcs_versioning"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-pytest-timeout
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

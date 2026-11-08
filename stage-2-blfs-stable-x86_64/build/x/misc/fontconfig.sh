@@ -11,12 +11,10 @@ PRGNAME="fontconfig"
 # Optional:    json-c
 #              libxml2
 #              --- для тестов ---
-#              bubblewrap
 #              curl
 #              libarchive
 #              --- для сборки документации ---
 #              docbook-utils
-#              texlive или install-tl-unx
 #              perl-sgmlspm
 
 ROOT="/root/src/lfs"

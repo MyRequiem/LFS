@@ -20,15 +20,8 @@ ARCH_NAME="gtk"
 #              libxkbcommon
 #              libxslt               (для создания man-страниц)
 #              glib
-# Optional:    colord
-#              libcups или cups
-#              evince                (runtime, для среств просмотра печати)
-#              gtk-doc
-#              libcloudproviders
-#              python3-pyatspi2      (для тестов)
+# Optional:    libcups или cups
 #              sassc
-#              tinysparql
-#              papi                  (https://icl.utk.edu/papi/)
 
 ###
 # Конфигурация.

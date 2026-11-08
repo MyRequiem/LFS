@@ -10,7 +10,7 @@ PRGNAME="libaom"
 
 # Required:    cmake
 # Recommended: yasm или nasm
-# Optional:    doxygen
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -13,7 +13,6 @@ PRGNAME="libsndfile"
 # Optional:    alsa-lib
 #              lame
 #              mpg123       (библиотека libmpg123.so - декодирование MP3)
-#              speex
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

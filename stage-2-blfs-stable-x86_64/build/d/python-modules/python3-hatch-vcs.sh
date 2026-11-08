@@ -10,9 +10,7 @@ ARCH_NAME="hatch_vcs"
 # Required:    python3-hatchling
 #              python3-setuptools-scm
 # Recommended: no
-# Optional:    --- для тестов ---
-#              git
-#              python3-pytest
+# Optional:    git
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

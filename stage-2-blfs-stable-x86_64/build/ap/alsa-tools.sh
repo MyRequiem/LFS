@@ -11,7 +11,7 @@ PRGNAME="alsa-tools"
 # Recommended: gtk+3        (для сборки hdajackretask)
 #              gtk4         (для сборки envy24control)
 #              fltk         (для сборки hdspconf и hdspmixer)
-# Optional:    gtk+2        (для сборки echomixer и rmedigicontrol) https://download.gnome.org/sources/gtk+/2.24/
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,8 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# удалим некоторые инструменты, которым нужен Qt2 или Qt3 или GTK+2, а также
-# два ненужных файла
+# Удалим некоторые инструменты, которым нужен Qt2 или Qt3 или GTK+2, а также
+# два ненужных файла.
 rm -rf qlo10k1 echomixer rmedigicontrol Makefile gitcompile
 
 for TOOL in * ; do
@@ -51,7 +51,7 @@ for TOOL in * ; do
     source "${ROOT}/clean-locales.sh"  || exit 1
     /bin/cp -vpR "${TMP_DIR}"/* /
 
-    # обновляем кэш динамического загрузчика
+    # Обновляем кэш динамического загрузчика.
     ldconfig
 
     popd || exit 1

@@ -9,15 +9,11 @@ PRGNAME="upower"
 
 # Required:    libgudev
 #              libusb
-# Recommended: no
+# Recommended: polkit
 # Optional:    glib
-#              gtk-doc
-#              libxslt                  (для создания man-страниц)
-#              docbook-xsl              (для создания man-страниц)
+#              libxslt              (для создания man-страниц)
+#              docbook-xsl          (для создания man-страниц)
 #              python3-pygobject3
-#              python3-dbusmock
-#              umockdev                 (для тестов)
-#              libimobiledevice         (https://libimobiledevice.org/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -31,7 +27,7 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# если оба опциональных пакета libxslt и docbook-xsl не установлены, делаем
+# Если оба опциональных пакета libxslt и docbook-xsl не установлены, делаем
 # -D man=false
 meson setup ..                 \
     --prefix=/usr              \
@@ -43,8 +39,7 @@ meson setup ..                 \
 
 ninja || exit 1
 
-# тестовый набор должен запускаться в графической среде, запущенной с
-# dbus-launch
+# Тестовый набор должен запускаться в графической среде.
 # LC_ALL=C ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

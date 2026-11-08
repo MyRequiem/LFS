@@ -14,15 +14,9 @@ ARCH_NAME="libsoup"
 # Recommended: glib
 #              vala
 # Optional:    --- для тестов ---
-#              apache-httpd
 #              brotli
 #              curl
 #              mit-kerberos-v5
-#              php                  (собранный с поддержкой xmlrpc-epi)
-#              samba
-#              sysprof              (https://wiki.gnome.org/Apps/Sysprof)
-#              --- для документации ---
-#              dtk-doc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1

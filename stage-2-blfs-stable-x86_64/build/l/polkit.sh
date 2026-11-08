@@ -20,13 +20,7 @@ PRGNAME="polkit"
 #              libxslt
 #              docbook-xml
 #              docbook-xsl
-# Optional:    --- для тестов ---
-#              gtk-doc
-#              python3-dbusmock
-#              polkit-kde-agent     (Plasma для KDE)
-#              gnome-shell          (для GNOME)
-#              polkit-gnome         (для XFCE)
-#              lxqt-policykit       (для LXQt)
+# Optional:    lxqt-policykit
 
 ### Конфигурация ядра
 #    CONFIG_NAMESPACES=y

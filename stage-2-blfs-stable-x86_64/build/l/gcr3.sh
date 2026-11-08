@@ -16,8 +16,7 @@ ARCH_NAME="gcr"
 #              libsecret
 #              libxslt
 #              vala
-# Optional:    python3-gi-docgen
-#              valgrind
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -44,10 +43,10 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку если openssh не установлен
+# Исправим сборку если openssh не установлен.
 sed '/ssh.add/d; /ssh.agent/d' -i meson.build || exit 1
 
-# исправим устаревшие записи в файлах схем
+# Исправим устаревшие записи в файлах схем.
 sed -i 's:"/desktop:"/org:' schema/*.xml || exit 1
 
 mkdir build
@@ -61,7 +60,7 @@ meson setup ..          \
 
 ninja || exit 1
 
-# тесты запускаются только в графической среде
+# Тесты запускаются только в графической среде.
 # ninja test
 
 DESTDIR="${TMP_DIR}" ninja install
@@ -73,7 +72,6 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-MAJ_VERSION="$(echo "${VERSION}" | cut -d . -f 1,2)"
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (crypto library and ui for gnome-keyring)
 #
@@ -81,7 +79,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # stores. It also provides the viewer for crypto files on the GNOME desktop.
 #
 # Home page: https://www.gnome.org/
-# Download:  https://download.gnome.org/sources/${ARCH_NAME}/${MAJ_VERSION}/${ARCH_NAME}-${VERSION}.tar.xz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${ARCH_NAME}/${ARCH_NAME}-${VERSION}.tar.xz
 #
 EOF
 

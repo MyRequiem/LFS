@@ -12,14 +12,7 @@ ARCH_NAME="requests"
 #              python3-idna
 #              python3-urllib3
 # Recommended: make-ca и p11-kit            (для избавления от ненужной зависимости python3-certifi)
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-pysocks              (https://pypi.org/project/PySocks/)
-#              python3-pytest-mock          (https://pypi.org/project/pytest-mock/)
-#              python3-pytest-httpbin       (https://pypi.org/project/pytest-httpbin/)
-#              python3-pytest-cov           (https://pypi.org/project/pytest-cov/)
-#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
-#              python3-trustme              (https://pypi.org/project/trustme/)
+# Optional:    no
 
 ###
 # NOTE:

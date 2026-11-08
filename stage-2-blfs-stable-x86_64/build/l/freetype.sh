@@ -8,11 +8,10 @@ PRGNAME="freetype"
 # рендеринг шрифтов TrueType, OpenType, Type 1.
 
 # Required:    no
-# Recommended: harfbuzz             runtime (сначала устанавливаем без harfbuzz, потом пересобираем freetype)
+# Recommended: harfbuzz    (runtime) сначала устанавливаем без harfbuzz, потом пересобираем freetype
 #              libpng
 # Optional:    brotli
 #              librsvg
-#              python3-docwriter    (для сборки документации) https://pypi.org/project/docwriter/
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

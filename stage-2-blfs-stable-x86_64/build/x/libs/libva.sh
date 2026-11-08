@@ -10,11 +10,8 @@ PRGNAME="libva"
 # Recommended: mesa (циклическая зависимость: сначала собираем libva без
 #                    поддержки egl и glx, т.е. без пакета mesa, и после
 #                    установки mesa пересобираем libva)
-#              --- runtime ---
-#              intel-vaapi-driver
-#              intel-media-driver
-# Optional:    doxygen
-#              intel-gpu-tools      (https://gitlab.freedesktop.org/drm/igt-gpu-tools)
+#              intel-vaapi-driver    (runtime)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

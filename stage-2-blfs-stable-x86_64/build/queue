@@ -169,7 +169,6 @@ ap/sudo.sh
 #    /etc/pki/tls/java/cacerts...Done!
 # ================================== PART 2 ====================================
 l/fribidi.sh
-
 l/libuv.sh
 l/iso-codes.sh
 l/libaio.sh
@@ -393,7 +392,6 @@ d/abseil-cpp.sh
 d/protobuf.sh
 l/qt6.sh
 # ===========
-
 x/misc/xdg-user-dirs.sh
 a/upower.sh
 kde/d/extra-cmake-modules.sh
@@ -401,6 +399,7 @@ kde/icons/oxygen-icons.sh
 l/libxklavier.sh
 x/libs/startup-notification.sh
 x/libs/glew.sh
+# Пересоберем harfbuzz и freetype
 l/harfbuzz.sh
 l/freetype.sh
 s/desktop-file-utils.sh
@@ -427,16 +426,19 @@ l/pangomm24.sh
 l/gtkmm3.sh
 ###
 # ATTENTION:
-#    Major.Minor версия пакета glib должна быть == Major.Minor версии пакета
-#    glibmm28. Например:
+#    Major.Minor версия ПАКЕТОВ glib, cairo, gtk4 должна быть == Major.Minor
+#    версии пакета glibmm28, cairomm118 и gtkmm4 соответственно. Например:
 #       <pkg-name>-<Major>.<Minor>.<Micro>
-#       glib-2.86.4 => glibmm28-2.86.0
+#       glib-2.88.3  => glibmm28-2.88.1
+#       cairo-1.18.6 => cairomm118-1.18.1
+#       gtk4-4.22.4  => gtkmm4-4.22.0
 l/glibmm28.sh
 l/cairomm118.sh
 l/pangomm25.sh
 l/gtkmm4.sh
 x/data/xbitmaps.sh
 x/apps/xorg-applications.sh
+
 x/data/xcursor-themes.sh
 x/fonts/xorg-fonts.sh
 x/fonts/adobe-source-code-pro-font-otf.sh
@@ -682,8 +684,6 @@ d/python-modules/python3-mutagen.sh
 # ======= Misc Dependencies =======
 l/libexif.sh
 l/libportal.sh [ВЫПИЛИТЬ !!!]
-l/pipewire.sh [ВЫПИЛИТЬ !!!]
-l/wireplumber.sh [ВЫПИЛИТЬ !!!]
 l/xdg-desktop-portal.sh [ВЫПИЛИТЬ !!!]
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>

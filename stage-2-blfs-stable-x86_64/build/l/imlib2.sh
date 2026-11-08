@@ -10,16 +10,10 @@ PRGNAME="imlib2"
 # Required:    xorg-libraries
 # Recommended: giflib
 #              librsvg
-# Optional:    doxygen
-#              highway
-#              libheif
-#              libjpeg-turbo
-#              libjxl
+# Optional:    libjpeg-turbo
 #              libpng
 #              libtiff
 #              libwebp
-#              libid3tag            (https://sourceforge.net/projects/mad/)
-#              libspectre           (https://www.freedesktop.org/wiki/Software/libspectre/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -33,7 +27,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

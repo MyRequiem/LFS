@@ -11,9 +11,7 @@ ARCH_NAME="tomlkit"
 
 # Required:    python3-poetry-core
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-pytest-cov    (https://pypi.org/project/pytest-cov/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

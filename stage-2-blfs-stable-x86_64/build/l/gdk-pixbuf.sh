@@ -11,16 +11,10 @@ PRGNAME="gdk-pixbuf"
 # Required:    glib
 #              shared-mime-info
 # Recommended: python3-docutils
-#              glycin               (циклическая зависимость: сначала собираем
-#                                       без glycin, потом пересобираем уже с
-#                                       установленным glycin)
-# Optional:    python3-gi-docgen    (для генерации документации)
-#              libavif              (runtime, deprecated)
-#              libjpeg-turbo        (deprecated)
-#              libjxl               (runtime, deprecated)
-#              libpng               (deprecated)
-#              librsvg              (runtime, deprecated)
-#              libtiff              (deprecated)
+# Optional:    libjpeg-turbo
+#              libpng
+#              librsvg              (runtime)
+#              libtiff
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

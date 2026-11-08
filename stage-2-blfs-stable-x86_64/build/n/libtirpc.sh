@@ -12,8 +12,8 @@ PRGNAME="libtirpc"
 # Optional:    mit-kerberos-v5 (для GSSAPI)
 
 ### NOTE:
-# при обновлении этого пакета также необходимо обновить/пересобрать любую
-# существующую версию пакета rpcbind
+# При обновлении этого пакета также необходимо обновить/пересобрать любую
+# существующую версию пакета rpcbind.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -29,7 +29,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-gssapi || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

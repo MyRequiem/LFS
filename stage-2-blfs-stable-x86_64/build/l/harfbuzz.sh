@@ -11,15 +11,10 @@ PRGNAME="harfbuzz"
 #              glib
 #              graphite2            (нужен для сборки texlive или libreoffice с системным harfbuzz)
 #              icu
-# Optional:    cairo                (для сборки утилиты 'hb-view')
+# Optional:    cairo                (для сборки утилиты 'hb-view' - визуализация (рендеринг) строки текста с использованием конкретного файла шрифта)
 #              git
-#              gtk-doc
 #              glew
 #              mesa
-#              glfw                 (https://linuxfromscratch.org/slfs/view/dev/graph/glfw.html)
-#              python3-fonttools    (для тестов) https://pypi.org/project/fonttools/
-#              ragel                (https://www.colm.net/open-source/ragel/)
-#              wasm-micro-runtime   (https://github.com/bytecodealliance/wasm-micro-runtime)
 
 ### NOTE
 # Проверить работу можно в X-сессии (после пересборки с cairo). Например с TTF

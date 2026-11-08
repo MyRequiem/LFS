@@ -9,8 +9,7 @@ PRGNAME="alsa-lib"
 
 # Required:    no
 # Recommended: elogind    (runtime)
-# Optional:    doxygen
-#              python2    (https://www.python.org/downloads/release/python-2718/)
+# Optional:    no
 
 ### Конфигурация ядра
 #    CONFIG_SOUND=y|m

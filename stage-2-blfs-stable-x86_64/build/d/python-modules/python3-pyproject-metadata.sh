@@ -10,8 +10,7 @@ ARCH_NAME="pyproject_metadata"
 
 # Required:    no
 # Recommended: no
-# Optional:    python3-pytest            (для тестов)
-#              python3-exceptiongroup    (https://pypi.org/project/exceptiongroup/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

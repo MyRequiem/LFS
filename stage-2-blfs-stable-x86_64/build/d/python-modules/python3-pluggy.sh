@@ -10,7 +10,7 @@ ARCH_NAME="pluggy"
 
 # Required:    no
 # Recommended: python3-setuptools-scm
-# Optional:    python3-pytest
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

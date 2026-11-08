@@ -14,10 +14,7 @@ PRGNAME="pango"
 # Recommended: cairo               (собранный после harfbuzz)
 #              xorg-libraries
 # Optional:    python3-docutils    (для man-страниц)
-#              python3-gi-docgen   (для документации)
-#              help2man            (https://www.gnu.org/software/help2man/) для генерации man-страниц
-#              libthai             (https://linux.thai.net/projects/libthai)
-#              sysprof             (https://wiki.gnome.org/Apps/Sysprof)
+#              help2man            (для man-страниц)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -10,10 +10,8 @@ PRGNAME="lame"
 
 # Required:    no
 # Recommended: no
-# Optional:    dmalloc              (https://dmalloc.com/)
-#              electric-fence       (https://linux.softpedia.com/get/Programming/Debuggers/Electric-Fence-3305.shtml/)
-#              libsndfile
-#              nasm                 (оптимизация сборки, но только для 32-bit x86)
+# Optional:    libsndfile
+#              nasm         (оптимизация сборки, но только для 32-bit x86)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

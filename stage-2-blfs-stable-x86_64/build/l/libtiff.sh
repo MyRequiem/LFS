@@ -11,10 +11,7 @@ ARCH_NAME="tiff"
 # Recommended: no
 # Optional:    freeglut         (для сборки утилиты tiffgt)
 #              libjpeg-turbo
-#              python3-sphinx
 #              libwebp
-#              jbig-kit         (http://www.cl.cam.ac.uk/~mgk25/jbigkit/)
-#              lerc             (https://www.osgeo.org/projects/lerc-limited-error-raster-compression/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

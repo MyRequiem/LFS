@@ -9,7 +9,7 @@ ARCH_NAME="yaml"
 
 # Required:    no
 # Recommended: no
-# Optional:    doxygen
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1

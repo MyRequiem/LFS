@@ -8,7 +8,7 @@ PRGNAME="libepoxy"
 
 # Required:    mesa
 # Recommended: no
-# Optional:    doxygen
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

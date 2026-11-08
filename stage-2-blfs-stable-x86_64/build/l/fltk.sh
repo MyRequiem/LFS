@@ -8,14 +8,12 @@ PRGNAME="fltk"
 # утилит, где важна скорость работы и малый размер.
 
 # Required:    xorg-libraries
-# Recommended: glu
-#              hicolor-icon-theme
+# Recommended: hicolor-icon-theme
 #              libjpeg-turbo
 #              libpng
 # Optional:    alsa-lib
 #              desktop-file-utils
-#              doxygen
-#              texlive или install-tl-unx
+#              mesa
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
@@ -43,28 +41,26 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-mkdir build
-cd build || exit 1
+# Избегаем установки man-страниц в /usr/share/man/cat*
+sed -i -e '/cat./d' documentation/Makefile || exit 1
 
-cmake ..                         \
-    -D CMAKE_INSTALL_PREFIX=/usr \
-    -D FLTK_BUILD_SHARED_LIBS=ON \
-    -D CMAKE_BUILD_TYPE=Release  \
-    -G Ninja || exit 1
+./configure       \
+    --prefix=/usr \
+    --enable-shared || exit 1
 
-ninja || exit 1
+make || exit 1
 
-# NOTE: тесты для пакета интерактивны
+# NOTE: Тесты для пакета интерактивны.
 # bin/test/unittests
 #
-# кроме того, в каталоге ./test есть еще набор исполняемых тестовых программ,
-# которые можно запускать индивидуально
+# Кроме того, в каталоге ./test есть еще набор исполняемых тестовых программ,
+# которые можно запускать индивидуально.
 
-DESTDIR="${TMP_DIR}" ninja install
+make docdir="/usr/share/doc/${PRGNAME}-${VERSION}" install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-rm -f "${TMP_DIR}/usr/lib/libfltk"*.a
+rm -fv /usr/lib/libfltk*.a
 
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1

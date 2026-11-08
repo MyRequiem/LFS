@@ -13,15 +13,7 @@ ARCH_NAME="setuptools_scm"
 # Optional:    --- для тестов ---
 #              python3-build
 #              git
-#              mercurial
-#              python3-pytest
 #              sudo
-#              python3-pytest-timeout   (https://pypi.org/project/pytest-timeout/)
-#              python3-rich             (https://pypi.org/project/rich/)
-#              python3-ruff             (https://pypi.org/project/ruff/)
-#              python3-mypy             (https://pypi.org/project/mypy/)
-#              python3-griffe           (https://pypi.org/project/griffe/)
-#              python3-flake8           (https://pypi.org/project/flake8/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
