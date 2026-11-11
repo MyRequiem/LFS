@@ -10,7 +10,6 @@ PRGNAME="json-glib"
 # Required:    glib
 # Recommended: no
 # Optional:    python3-docutils     (для создания man-страниц)
-#              python3-gi-docgen    (для создания документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

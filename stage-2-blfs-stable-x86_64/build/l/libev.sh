@@ -30,11 +30,11 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# чтобы не конфликтовать с пакетом libevent, мы перемещаем заголовок event.h во
+# Чтобы не конфликтовать с пакетом libevent, мы перемещаем заголовок event.h во
 # вложенную директорию /usr/include/libev/ Затем, если для сборки какого-либо
-# софта требуется этот заголовок, нужно явно указать его местоположение
+# софта требуется этот заголовок, нужно явно указать его местоположение:
 #    CPPFLAGS="-I/usr/include/libev"
-# Например для сборки пакетов 'nghttp2' и 'i3' этот заголовок не нужен
+# Например для сборки пакетов 'nghttp2' и 'i3' этот заголовок не нужен.
 mv "${TMP_DIR}/usr/include/event.h" "${TMP_DIR}${HEADER_SUBFOLDER}/"
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -49,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # but is faster, scales better and is more correct, and also more featureful.
 #
 # Home page: https://software.schmorp.de/pkg/${PRGNAME}.html
-# Download:  https://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

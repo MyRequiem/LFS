@@ -27,7 +27,7 @@ cmake ..                         \
     -D PT_UTMP_FILE=/run/utmp || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -44,7 +44,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # secure pty/tty and utmp/wtmp/lastlog handling.
 #
 # Home page: https://github.com/yusiwen/${PRGNAME}
-# Download:  https://dist.schmorp.de/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

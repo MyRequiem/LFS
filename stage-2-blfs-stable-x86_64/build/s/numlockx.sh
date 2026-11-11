@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # achieve this).
 #
 # Home page: https://github.com/rg3/${PRGNAME}
-# Download:  https://ponce.cc/slackware/sources/repo/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/rg3/${PRGNAME}/releases/download/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

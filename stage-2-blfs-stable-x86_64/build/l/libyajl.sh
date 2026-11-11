@@ -28,11 +28,10 @@ done
 mkdir build
 cd build || exit 1
 
-cmake ..                              \
-    -D CMAKE_INSTALL_PREFIX=/usr      \
-    -D CMAKE_BUILD_TYPE=Release       \
-    -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON \
-    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 || exit 1
+cmake ..                         \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release  \
+    -W no-author || exit 1
 
 make install DESTDIR="${TMP_DIR}"
 
@@ -50,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # small validating JSON generator. YAJL is released under the ISC license.
 #
 # Home page: https://lloyd.github.io/${ARCH_NAME}/
-# Download:  https://fossies.org/linux/www/old/${ARCH_NAME}-${VERSION}.tar.gz
+# Download:  https://github.com/lloyd/${ARCH_NAME}/archive/refs/tags/${VERSION}/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

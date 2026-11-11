@@ -13,7 +13,6 @@ PRGNAME="openjpeg"
 #              lcms2
 #              libpng
 #              libtiff
-#              doxygen      (для сборки API документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -28,8 +27,7 @@ cd build || exit 1
 cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_STATIC_LIBS=OFF     \
-    -D BUILD_DOC=OFF || exit 1
+    -D BUILD_STATIC_LIBS=OFF || exit 1
 
 make || exit 1
 
@@ -43,7 +41,8 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если не собирали документацию, то и man-страницы не устанавливаются, исправим
+# Если не собирали документацию, то и man-страницы не устанавливаются.
+# Исправим:
 cp -rv ../doc/man -T "${TMP_DIR}/usr/share/man"
 
 source "${ROOT}/stripping.sh"      || exit 1

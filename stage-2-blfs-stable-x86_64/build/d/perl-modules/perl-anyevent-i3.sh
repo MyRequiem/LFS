@@ -27,7 +27,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

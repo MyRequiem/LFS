@@ -7,7 +7,7 @@ PRGNAME="clipnotify"
 # что-то скопируете. Как только это происходит, он подает сигнал другим
 # программам (например, менеджерам буфера обмена).
 
-# Required:    no
+# Required:    xorg-libraries
 # Recommended: no
 # Optional:    no
 

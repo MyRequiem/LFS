@@ -9,10 +9,7 @@ ARCH_NAME="URI"
 # собирать ссылки обратно.
 
 # Required:    perl-mime-base32
-# Recommended: --- для тестов ---
-#              perl-test-fatal
-#              perl-test-needs
-#              perl-test-warnings
+# Recommended: no
 # Optional:    perl-business-isbn
 
 ROOT="/root/src/lfs"
@@ -29,7 +26,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

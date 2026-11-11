@@ -12,10 +12,10 @@ PRGNAME="rxvt-unicode"
 # Required:    libptytty
 #              Graphical Environments
 # Recommended: no
-# Optional:    gdk-pixbuf               (для возможности уставливать фоновые изображения)
+# Optional:    gdk-pixbuf               (для возможности устанавливать фоновые изображения)
 #              startup-notification
 
-### Конфигурация
+### Конфигурация.
 #    /etc/X11/app-defaults/URxvt
 #    ~/.Xresources или ~/.Xdefaults
 #
@@ -33,22 +33,22 @@ APPLICATIONS="/usr/share/applications"
 TERMINFO_DIR="/usr/share/terminfo"
 mkdir -p "${TMP_DIR}"{${ETC_APP_DEFAULTS},${APPLICATIONS},${TERMINFO_DIR}}
 
-# меняем Hotkey для запуска плагина searchable-scrollback (поиск) с M-s на M-z
+# Меняем Hotkey для запуска плагина searchable-scrollback (поиск) с M-s на M-z
 sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
 
-# Когда приложение внутри терминала (например, тема оформления в Vim или сам
-# tmux) хочет узнать текущий цвет фона или текста, оно посылает запрос (OSC
-# последовательность). URxvt должен ответить, какой цвет установлен и ответ
-# должен заканчиваться специальным символом-терминатором: либо коротким BEL
-# (звуковой сигнал, \a), либо длинным ST (String Terminator, ESC \). Без
-# sed-патча: URxvt пытается ответить тем же символом, который пришел в запросе.
-# Но он делает это некорректно, если запрос был «длинным» (7-битным). С патчем:
-# urxvt принудительно всегда отвечает через ESC \. Это «железобетонный» способ,
+# Когда приложение внутри терминала (например Vim или tmux) хочет узнать
+# текущий цвет фона или текста, оно посылает запрос (OSC последовательность).
+# URxvt должен ответить, какой цвет установлен и ответ должен заканчиваться
+# специальным символом-терминатором: либо коротким BEL (звуковой сигнал, \a),
+# либо длинным ST (String Terminator, ESC \). Без sed-патча: URxvt пытается
+# ответить тем же символом, который пришел в запросе. Но он делает это
+# некорректно, если запрос был «длинным» (7-битным). С патчем: urxvt
+# принудительно всегда отвечает через ESC \. Это «железобетонный» способ,
 # который понимают все современные программы.
 #
 ###
 # Две команды sed ниже - это моя переделка оригинального патча от Патрика
-# (Patrick J. Volkerding, Slackware)
+# (Patrick J. Volkerding, Slackware).
 ###
 # Index: src/command.C
 # --- src/command.C.orig
@@ -68,6 +68,9 @@ sed -e 's/M-s/M-z/g' -i src/perl/searchable-scrollback || exit 1
 #
 sed -i 's/%s%c"\(.*minCOLOR.*\), resp/%s%c"\1/' src/command.C || exit 1
 sed -i 's/%s%c"\(.*rgba_str\)/%s\\033\\\\"\1/'  src/command.C || exit 1
+
+# Удалим функцию, которая конфликтует с определениями C++23 GCC >=16
+sed '/interpolation/,+7d' -i src/rxvtutil.h || exit 1
 
 export TERMINFO="${TMP_DIR}${TERMINFO_DIR}"
 ./configure                       \
@@ -102,7 +105,7 @@ export TERMINFO="${TMP_DIR}${TERMINFO_DIR}"
     --docdir="/usr/share/doc/${PRGNAME}-${VERSION}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -144,7 +147,9 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-update-desktop-database -q
+# Обновим кэш MIME-типов и ассоциаций для ярлыков приложений в
+# /usr/share/applications/
+command -v update-desktop-database &>/dev/null &&  update-desktop-database -q
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Package: ${PRGNAME} (enhanced version of rxvt terminal emulator)
@@ -154,7 +159,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # same transparency capabilities as ATerm. It can be extended using Perl.
 #
 # Home page: https://github.com/exg/${PRGNAME}
-# Download:  https://dist.schmorp.de/${PRGNAME}/Attic/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

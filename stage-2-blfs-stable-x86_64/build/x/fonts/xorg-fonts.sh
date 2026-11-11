@@ -9,7 +9,7 @@ PKG_VERSION="11"
 # обеспечивают читаемость текста в самых простых элементах интерфейса.
 
 # Required:    xcursor-themes
-#              fontconfig
+#              fontconfig       (для команды fc-cache в этом скрипте)
 # Recommended: no
 # Optional:    no
 
@@ -26,7 +26,7 @@ show_error() {
 }
 
 get_pkg_version() {
-    # $1 - имя пакета, версию которого нужно найти
+    # $1 - Имя пакета, версию которого нужно найти.
     local TARBOL_VERSION
     TARBOL_VERSION="$(find "${SOURCES}" -type f \
         -name "${1}-[0-9]*.tar.?z*" 2>/dev/null | sort | \
@@ -38,20 +38,20 @@ get_pkg_version() {
 TMP="/tmp/build-${PRGNAME}-${PKG_VERSION}"
 rm -rf "${TMP}"
 
-# директория для сборки всего пакета
+# Директория для сборки всего пакета.
 TMP_PACKAGE="${TMP}/package-${PRGNAME}-${PKG_VERSION}"
 FONTS="/usr/share/fonts"
 mkdir -pv "${TMP_PACKAGE}${FONTS}/X11"
 
-# директория для распаковки исходников
+# Директория для распаковки исходников.
 TMP_SRC="${TMP}/src"
 mkdir -pv "${TMP_SRC}"
 
-# директория для установки пакетов по отдельности
+# Директория для установки пакетов по отдельности.
 TMP_PKGS="${TMP}/pkgs"
 mkdir -p "${TMP_PKGS}"
 
-# список всех пакетов
+# Список всех пакетов.
 PACKAGES="\
 font-util
 encodings
@@ -75,16 +75,16 @@ for PKGNAME in ${PACKAGES}; do
     echo -e "\n***************** Building ${PKGNAME} package *****************"
     sleep 1
 
-    # определяем версию пакета
+    # Определяем версию пакета.
     VERSION="$(get_pkg_version "${PKGNAME}")"
 
-    # версия не найдена
+    # Версия не найдена.
     if [ -z "${VERSION}" ]; then
         show_error "Version for '${PKGNAME}' package not found in ${SOURCES}"
         exit 1
     fi
 
-    # распаковываем архив
+    # Распаковываем архив.
     cd "${TMP_SRC}" || exit 1
     echo "Unpacking ${PKGNAME}-${VERSION} source archive..."
     tar xvf "${SOURCES}/${PKGNAME}-${VERSION}".tar.?z* &>/dev/null || {
@@ -108,13 +108,13 @@ for PKGNAME in ${PACKAGES}; do
             exit 1
         }
 
-    # сборка
+    # Сборка.
     make || {
         show_error "'make' for ${PKGNAME} package"
         exit 1
     }
 
-    # директория для установки собранного пакета
+    # Директория для установки собранного пакета.
     PKG_INSTALL_DIR="${TMP_PKGS}/package-${PKGNAME}-${VERSION}"
     mkdir -pv "${PKG_INSTALL_DIR}/var/log/packages"
 
@@ -125,11 +125,11 @@ for PKGNAME in ${PACKAGES}; do
 
     rm -rf "${PKG_INSTALL_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-    # удаляем файлы fonts.dir и fonts.scale
+    # Удаляем файлы fonts.dir и fonts.scale
     find "${PKG_INSTALL_DIR}${FONTS}" \
         -type f \( -name fonts.dir -o -name fonts.scale \) -delete
 
-    # stripping
+    # Stripping.
     BINARY="$(find "${PKG_INSTALL_DIR}" -type f -print0 | \
         xargs -0 file 2>/dev/null | grep -e "executable" -e "shared object" | \
         grep ELF | cut -f 1 -d :)"
@@ -138,7 +138,7 @@ for PKGNAME in ${PACKAGES}; do
         strip --strip-unneeded "${BIN}"
     done
 
-    # обновляем базу данных info (/usr/share/info/dir)
+    # Обновляем базу данных info (/usr/share/info/dir).
     INFO="/usr/share/info"
     if [ -d "${PKG_INSTALL_DIR}${INFO}" ]; then
         cd "${PKG_INSTALL_DIR}${INFO}" || exit 1
@@ -149,10 +149,10 @@ for PKGNAME in ${PACKAGES}; do
         done
     fi
 
-    # имя пакета в нижний регистр
+    # Имя пакета в нижний регистр.
     PKGNAME="$(echo "${PKGNAME}" | tr '[:upper:]' '[:lower:]')"
 
-    # пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
+    # Пишем в ${PKG_INSTALL_DIR}/var/log/packages/${PKGNAME}-${VERSION}
     (
         cd "${PKG_INSTALL_DIR}" || exit 1
 
@@ -166,25 +166,26 @@ for PKGNAME in ${PACKAGES}; do
 #
 EOF
         find . | cut -d . -f 2- | sort >> "${LOG}"
-        # удалим пустые строки в файле
+        # Удалим пустые строки в файле.
         sed -i '/^$/d' "${LOG}"
-        # комментируем все пути
+        # Комментируем все пути.
         sed -i 's/^\//# \//g' "${LOG}"
     )
 
-    # копируем собранный пакет в директорию основного пакета и в корень системы
+    # Копируем собранный пакет в директорию основного пакета и в корень
+    # системы.
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* "${TMP_PACKAGE}"/
     /bin/cp -vpR "${PKG_INSTALL_DIR}"/* /
 done
 
-# обновим индексы установленных шрифтов (fonts.dir и fonts.scale) , а так же
+# Обновим индексы установленных шрифтов (fonts.dir и fonts.scale) , а так же
 # создадим ссылки на директории в /usr/share/fonts
 for FONTDIR in "${FONTS}/X11"/*; do
     (
         cd "${FONTDIR}" || exit 1
-        # создаем индекс файлов масштабируемых шрифтов
+        # Создаем индекс файлов масштабируемых шрифтов.
         mkfontscale .
-        # создаем индекс файлов шрифтов в каталоге
+        # Создаем индекс файлов шрифтов в каталоге.
         mkfontdir .
 
         cp fonts.dir fonts.scale "${TMP_PACKAGE}${FONTDIR}"
@@ -197,7 +198,7 @@ for FONTDIR in "${FONTS}/X11"/*; do
     )
 done
 
-# создаем файлы кэша информации о шрифтах для fontconfig
+# Создаем файлы кэша информации о шрифтах для fontconfig.
 fc-cache -f
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${PKG_VERSION}"

@@ -23,7 +23,8 @@ cd build || exit 1
 
 cmake ..                         \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_BUILD_TYPE=Release || exit 1
+    -D CMAKE_BUILD_TYPE=Release  \
+    -W no-author || exit 1
 
 make || exit 1
 make install DESTDIR="${TMP_DIR}"
@@ -42,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # style syntax for options.
 #
 # Home page: https://github.com/jarro2783/${PRGNAME}
-# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/jarro2783/${PRGNAME}/archive/refs/tags/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

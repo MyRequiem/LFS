@@ -8,11 +8,9 @@ PRGNAME="xterm"
 # работу в любых текстовых режимах.
 
 # Required:    luit
-#              dejavu-fonts-ttf     (runtime)
+#              dejavu-fonts-ttf    (runtime)
 # Recommended: no
-# Optional:    emacs
-#              valgrind
-#              man2html             (http://www.nongnu.org/man2html/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,27 +23,28 @@ APPLICATIONS="/usr/share/applications"
 TERMINFO_DIR="/usr/share/terminfo"
 mkdir -p "${TMP_DIR}"{${APP_DEFAULTS},${APPLICATIONS},${TERMINFO_DIR}}
 
-# для согласованностью с консолью Linux клавиша Backspace должна отправлять
-# символ с кодом 127
+# Для согласованностью с консолью Linux клавиша Backspace должна отправлять
+# символ с кодом 127.
 sed -i '/v0/{n;s/new:/new:kb=^?:/}' termcap || exit 1
 printf '\tkbs=\\177,\n' >> terminfo         || exit 1
 
-export TERMINFO="${TMP_DIR}${TERMINFO_DIR}"
 # shellcheck disable=SC2086
+TERMINFO=/usr/share/terminfo \
 ./configure        \
     ${XORG_CONFIG} \
     --with-app-defaults="${APP_DEFAULTS}" || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 cp -v ./{,u}"${PRGNAME}.desktop" "${TMP_DIR}${APPLICATIONS}/"
 
-# общесистемная конфигурация xterm
-# (конфиги для каждого пользователя находятся в ~/.Xresources)
+# Общесистемная конфигурация.
+# Конфиги для каждого пользователя находятся в
+#    ~/.Xresources
 cat << EOF > "${TMP_DIR}${APP_DEFAULTS}/XTerm"
 *VT100*locale:        true
 *VT100*faceName:      Monospace

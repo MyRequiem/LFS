@@ -5,7 +5,8 @@ PRGNAME="xorg-cf-files"
 ### xorg-cf-files (X11 config files for imake)
 # Набор старых конфигурационных файлов, которые необходимы для сборки
 # классического софта c помощью системы сборки imake. Это своего рода «архив
-# чертежей», без которых не соберутся некоторые старые программы.
+# чертежей», без которых не соберутся некоторые старые программы, например
+# xxkb.
 
 # Required:    no
 # Recommended: no
@@ -26,7 +27,7 @@ meson setup ..    \
     --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

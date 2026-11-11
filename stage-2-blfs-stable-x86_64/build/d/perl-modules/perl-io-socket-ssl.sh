@@ -10,7 +10,7 @@ ARCH_NAME="IO-Socket-SSL"
 
 # Required:    make-ca
 #              perl-net-ssleay
-# Recommended: perl-uri             (для доступа к international domain names)
+# Recommended: perl-uri         (для доступа к international domain names)
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -27,13 +27,13 @@ mkdir -pv "${TMP_DIR}"
 # external sites [Y/n]
 yes | perl Makefile.PL || exit 1
 make                   || exit 1
-# для тестов требуется сеть Internet
+# Для тестов требуется сеть Internet.
 # make test
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

@@ -11,16 +11,13 @@ PRGNAME="xorg-server"
 # Required:    libxcvt
 #              pixman
 #              xorg-fonts               (только пакет font-util)
-#              xkeyboard-config         (runtime и для тестов)
+#              xkeyboard-config         (runtime)
 # Recommended: dbus
 #              elogind                  (runtime)
 #              libepoxy                 (для glamor)
 #              libtirpc
 #              xorg-libinput-driver     (runtime)
-# Optional:    acpid                    (runtime)
-#              doxygen                  (для документации)
-#              fop                      (для документации)
-#              libunwind
+# Optional:    libunwind
 #              nettle
 #              libgcrypt
 #              xcb-util-image           (для сборки Xephyr)
@@ -29,8 +26,6 @@ PRGNAME="xorg-server"
 #              xcb-util-wm              (для сборки Xephyr)
 #              xcb-util-cursor          (для сборки Xephyr)
 #              xmlto                    (для документации)
-#              rendercheck              (для тестов)          https://gitlab.freedesktop.org/xorg/test/rendercheck
-#              xorg-sgml-doctools       (для документации)    https://www.x.org/archive/individual/doc/
 
 ###
 # WARNING:
@@ -43,7 +38,7 @@ PRGNAME="xorg-server"
 # Конфигурация ядра
 ###
 # Традиционные драйверы Device Dependent X (DDX), такие как xf86-video-nouveau,
-# xf86-video-intel и т.д. были удалены из BLFS в пользу драйвера modesetting
+# xf86-video-intel и т.д. были удалены в пользу драйвера modesetting
 # (modesetting_drv.so), который будет создан как часть этого пакета. Чтобы
 # использовать этот драйвер, ядро должно предоставить драйвер Direct Rendering
 # Manager (DRM) для графического процессора:
@@ -160,7 +155,6 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # Foundation from the XFree86 Project's XFree86 4.4rc2 release. The XFree86
 # release was originally derived from X386 1.2 by Thomas Roell which was
 # contributed to X11R5 by Snitily Graphics Consulting Service.
-#
 #
 # Home page: https://www.x.org
 # Download:  https://www.x.org/pub/individual/xserver/${PRGNAME}-${VERSION}.tar.xz

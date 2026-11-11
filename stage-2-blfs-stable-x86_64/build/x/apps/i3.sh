@@ -23,10 +23,8 @@ PRGNAME="i3"
 #              perl-anyevent-i3
 # Recommended: dmenu
 # Optional:    --- для документации ---
-#              python3-asciidoc
 #              xmlto
 #              docbook-xml
-#              perl-pod-simple              (http://search.cpan.org/dist/Pod-Simple/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -48,7 +46,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses,xsessions}
 
-# заменим терминал по умолчанию i3-sensible-terminal на uxterm
+# Заменим терминал по умолчанию i3-sensible-terminal на uxterm
 sed -i 's/i3-sensible-terminal/uxterm/' "${TMP_DIR}/etc/i3/config" || exit 1
 
 source "${ROOT}/stripping.sh"      || exit 1

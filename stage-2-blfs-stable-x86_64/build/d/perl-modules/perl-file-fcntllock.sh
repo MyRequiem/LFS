@@ -19,7 +19,6 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# стандартная установка
 perl Makefile.PL || exit 1
 make             || exit 1
 # make test
@@ -27,7 +26,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

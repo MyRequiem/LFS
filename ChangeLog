@@ -1,3 +1,21 @@
+[10.11.2026]
+* BLFS: Upgraded the  package from  to .
+* BLFS: Upgraded the  package from  to .
+[10.11.2026]
+* BLFS: Upgraded the perl-io-socket-ssl package from 2.098 to 2.099.
+* BLFS: Upgraded the perl-uri package from 5.34 to 5.40.
+* BLFS: Upgraded the perl-business-isbn package from 3.013 to 3.014.
+* BLFS: Upgraded the perl-business-isbn-data package from 20260311.001 to 20260617.001.
+* BLFS: Upgraded the perl-net-ssleay package from 1.94 to 1.96.
+* BLFS: Upgraded the feh package from 3.12.1 to 3.13.1.
+[09.11.2026]
+* BLFS: Upgraded the xorg-server package from 21.1.22 to 21.1.25.
+* BLFS: Upgraded the python3-attrs package from 25.4.0 to 26.1.0.
+* BLFS: Upgraded the xterm package from 410 to 412.
+* BLFS: Upgraded the luit package from 20250912 to 20260907.
+* BLFS: Upgraded the noto-fonts-ttf package from 2026.05.01 to 2026.11.01.
+* BLFS: Upgraded the noto-color-emoji-ttf package from 2.051 to 18.0.
+* BLFS: Changed adobe-source-code-pro-font-otf package version from 1.026 to 2.042R_u.
 [08.11.2026]
 * BLFS: Upgraded the xstdcmap package from 1.0.5 to 1.0.6 (part of xorg-applications package).
 * BLFS: Upgraded the xlsfonts package from 1.0.8 to 1.0.9 (part of xorg-applications package).

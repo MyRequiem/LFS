@@ -23,8 +23,10 @@ mkdir -pv "${TMP_DIR}/usr/bin"
 patch --verbose -p1 -i \
     "${SOURCES}/set-cachedir-path-to-home-dir_cache-${VERSION}.diff" || exit 1
 
-install -m755 -o root -g root "${SOURCES}/clearclipmenu" clipmenu clipmenud \
-    "${TMP_DIR}/usr/bin" || exit 1
+install -m755 -o root -g root  \
+    "${SOURCES}/clearclipmenu" \
+    clipmenu                   \
+    clipmenud "${TMP_DIR}/usr/bin" || exit 1
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 

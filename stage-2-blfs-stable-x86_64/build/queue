@@ -438,7 +438,6 @@ l/pangomm25.sh
 l/gtkmm4.sh
 x/data/xbitmaps.sh
 x/apps/xorg-applications.sh
-
 x/data/xcursor-themes.sh
 x/fonts/xorg-fonts.sh
 x/fonts/adobe-source-code-pro-font-otf.sh
@@ -461,7 +460,10 @@ x/apps/xinit.sh
 x/drivers/intel-vaapi-driver.sh
 x/drivers/xorg-libinput-driver.sh
 x/drivers/xorg-evdev-driver.sh
-# Graphical Environments полностью установлено (кроме оконного менеджера i3).
+#===============================================================================
+# Graphical Environments (Графическое окружения) полностью установлено.
+# Установим оконный менеджер i3wm (Improved tiling X11 Window Manager)
+#===============================================================================
 ap/xclip.sh
 ap/xsel.sh
 l/openjpeg.sh
@@ -477,7 +479,7 @@ s/clipnotify.sh
 s/clipmenu.sh
 ap/feh.sh
 ap/password-store.sh
-# === perl + i3 ===
+# === i3 + perl deps ===
 d/perl-modules/perl-common-sense.sh
 d/perl-modules/perl-canary-stability.sh
 d/perl-modules/perl-types-serialiser.sh
@@ -498,7 +500,8 @@ ap/pamixer.sh
 l/json-glib.sh
 xap/pavucontrol.sh
 x/apps/i3.sh
-# ==========
+
+# ======================
 l/libnsl.sh
 d/python3.sh
 # Пакет vim перед обновлением/переустановкой удалить из системы.

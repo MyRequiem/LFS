@@ -26,10 +26,11 @@ mkdir -pv "${TMP_DIR}"
 # shellcheck disable=SC2086
 ./configure        \
     ${XORG_CONFIG} \
+    --enable-x11   \
     --disable-wayland || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

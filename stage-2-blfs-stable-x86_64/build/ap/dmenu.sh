@@ -8,11 +8,11 @@ PRGNAME="dmenu"
 # букв их названия.
 
 # Required:    no
-# Recommended: no
-# Optional:    --- runtime ---
+# Recommended: --- runtime ---
 #              password-store
 #              clipmenu
 #              xsel
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -21,9 +21,9 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# добавляет параметр -bw (ширина рамки окна)
+# Добавляет параметр -bw (ширина рамки окна).
 patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-border-${VERSION}.diff" || exit 1
-# добавляет параметры -x -y -z (настройка местоположения и ширины окна)
+# Добавляет параметры -x -y -z (настройка местоположения и ширины окна).
 patch --verbose -p1 -i "${SOURCES}/${PRGNAME}-xyw-${VERSION}.diff" || exit 1
 
 make install PREFIX=/usr DESTDIR="${TMP_DIR}"

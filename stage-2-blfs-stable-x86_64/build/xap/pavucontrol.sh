@@ -12,8 +12,7 @@ PRGNAME="pavucontrol"
 #              libsigc++3
 #              pulseaudio
 # Recommended: no
-# Optional:    libcanberra
-#              lynx             (для создания README файла)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,13 +24,12 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..          \
-    --prefix=/usr       \
-    --buildtype=release \
-    -D lynx=disabled || exit 1
+meson setup ..    \
+    --prefix=/usr \
+    --buildtype=release || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

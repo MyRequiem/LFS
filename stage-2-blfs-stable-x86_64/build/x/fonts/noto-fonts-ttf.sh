@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRGNAME="noto-fonts-ttf"
-ARCH_NAME="noto-fonts-subset"
+ARCH_NAME="noto-monthly-release"
 
 ### Noto fonts (Googles Noto fonts)
 # Глобальный проект шрифтов, название которого расшифровывается как «No Tofu»
@@ -21,12 +21,20 @@ VERSION="$(find "${SOURCES}" -type f \
     -name "${ARCH_NAME}-*.tar.?z*" 2>/dev/null | sort | head -n 1 | \
     rev | cut -d . -f 3- | cut -d - -f 1 | rev)"
 
-BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}/"
+# Узнаем точное имя корневой папки внутри архива.
+# notofonts.github.io-noto-monthly-release-2026.11.01
+ARCH_DIR_NAME="$(tar -tf \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}".tar.?z* 2>/dev/null | head -n 1 | \
+    cut -d/ -f1)"
+# notofonts.github.io-noto-monthly-release-2026.11.01
+
+BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
-mkdir -pv "${BUILD_DIR}/${PRGNAME}-${VERSION}"
-cd "${BUILD_DIR}/${PRGNAME}-${VERSION}" || exit 1
+mkdir -pv "${BUILD_DIR}"
+cd "${BUILD_DIR}" || exit 1
 
 tar -xvf "${SOURCES}/${ARCH_NAME}-${VERSION}"*.tar.?z* || exit 1
+cd "${ARCH_DIR_NAME}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -39,17 +47,23 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 INSTALL_DIR="/usr/share/fonts/${PRGNAME}/"
 mkdir -pv "${TMP_DIR}${INSTALL_DIR}"
 
-cp fonts/*.ttf "${TMP_DIR}${INSTALL_DIR}"
+# Устанавливаем только базовые начертания шрифтов.
+find fonts/*/hinted/ttf -maxdepth 1 -type f \( \
+    -name "*-Regular.ttf" -o \
+    -name "*-Bold.ttf"    -o \
+    -name "*-Italic.ttf"  -o \
+    -name "*-BoldItalic.ttf" \
+    \) -exec cp -t "${TMP_DIR}${INSTALL_DIR}/" {} \+
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим индексы установленных шрифтов
+# Обновим индексы установленных шрифтов.
 cd "${INSTALL_DIR}" || exit 1
-# создаем индекс файлов масштабируемых шрифтов
+# Создаем индекс файлов масштабируемых шрифтов.
 mkfontscale .
-# создаем индекс файлов шрифтов в каталоге
+# Создаем индекс файлов шрифтов в каталоге.
 mkfontdir .
-# создаем файлы кэша информации о шрифтах для fontconfig
+# Создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
 
 cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
@@ -65,8 +79,8 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # project aims to eliminate 'tofu': blank rectangles shown when no font is
 # available for your text.
 #
-# Home page: https://github.com/googlefonts/noto-fonts/
-# Download:  https://mirrors.slackware.com/slackware/slackware64-current/source/x/${PRGNAME}/${ARCH_NAME}-${VERSION}.tar.lz
+# Home page: https://github.com/notofonts/notofonts.github.io/
+# Download:  https://github.com/notofonts/notofonts.github.io/archive/refs/tags/${ARCH_NAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -15,17 +15,32 @@ ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh" || exit 1
 
 SOURCES="${ROOT}/src"
-ARCH_NAME="$(find "${SOURCES}" -type f -name "*R-vf.tar.*" | rev | \
+SRC_ARCH="$(find "${SOURCES}" -type f -name "*R-vf.tar.*" | rev | \
     cut -d / -f 1 | rev)"
-VERSION=$(echo "${ARCH_NAME}" | cut -d R -f 1)
+
+# Имя директории внутри архива.
+ARCH_DIR_NAME="$(tar -tf "${SOURCES}/${SRC_ARCH}" 2>/dev/null | head -n 1 | \
+    cut -d / -f 1)"
+
+# Превращаем имя директории внутри архива
+# (source-code-pro-2.042R-u-1.062R-i-1.026R-vf) в массив parts, разделяя по
+# дефисам.
+IFS='-' read -r -a parts <<< "$ARCH_DIR_NAME"
+
+# Собираем теги по индексам массива.
+VER_1="${parts[3]}-${parts[4]}" # 2.042R-u
+VER_2="${parts[5]}-${parts[6]}" # 1.062R-i
+VER_3="${parts[7]}-${parts[8]}" # 1.026R-vf
+
+VERSION="${VER_1//-/_}"
 
 BUILD_DIR="/tmp/build-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${BUILD_DIR}"
 cd "${BUILD_DIR}" || exit 1
 
-tar xvf "${SOURCES}/${ARCH_NAME}" || exit 1
-cd "source-code-pro-"* || exit 1
+tar xvf "${SOURCES}/${SRC_ARCH}" || exit 1
+cd "source-code-pro-${VER_1}-${VER_2}-${VER_3}" || exit 1
 
 chown -R root:root .
 find -L . \
@@ -42,13 +57,13 @@ cp OTF/*.otf "${TMP_DIR}${INSTALL_DIR}"
 
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим индексы установленных шрифтов
+### Обновим индексы установленных шрифтов.
 cd "${INSTALL_DIR}" || exit 1
-# создаем индекс файлов масштабируемых шрифтов
+# Создаем индекс файлов масштабируемых шрифтов.
 mkfontscale .
-# создаем индекс файлов шрифтов в каталоге
+# Создаем индекс файлов шрифтов в каталоге.
 mkfontdir .
-# создаем файлы кэша информации о шрифтах для fontconfig
+# Создаем файлы кэша информации о шрифтах для fontconfig
 fc-cache -f
 
 cp fonts.dir fonts.scale "${TMP_DIR}${INSTALL_DIR}"
@@ -61,7 +76,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # design to the Source Sans family.
 #
 # Home page: https://github.com/adobe-fonts/source-code-pro/
-# Download:  https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/2.042R-u/1.062R-i/${VERSION}R-vf.tar.gz
+# Download:  https://github.com/adobe-fonts/source-code-pro/archive/refs/tags/${VER_1}/${VER_2}/${VER_3}.tar.gz
 #
 EOF
 

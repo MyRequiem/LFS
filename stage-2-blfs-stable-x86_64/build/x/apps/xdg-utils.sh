@@ -8,10 +8,10 @@ PRGNAME="xdg-utils"
 # умолчанию» или выбор нужного приложения для файла.
 
 # Required:    xmlto
-#              lynx или links или w3m    (http://w3m.sourceforge.net/)
-#              xorg-applications         (runtime)
+#              w3m
+#              xorg-applications    (runtime)
 # Recommended: no
-# Optional:    dbus
+# Optional:    dbus                 (runtime)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -27,8 +27,8 @@ mkdir -pv "${TMP_DIR}"
 
 make || exit 1
 
-# тесты должны запускаться при запущенном сеансе Х. Не рекомендуется запускать
-# от пользователя root
+# Тесты должны запускаться при запущенном сеансе Х. Не рекомендуется запускать
+# от пользователя root.
 # make -k test
 
 make install DESTDIR="${TMP_DIR}"

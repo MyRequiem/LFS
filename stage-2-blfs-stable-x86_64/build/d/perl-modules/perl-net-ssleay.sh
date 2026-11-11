@@ -5,8 +5,8 @@ ARCH_NAME="Net-SSLeay"
 
 ### Net::SSLeay (Perl extension for using OpenSSL)
 # Модуль-посредник, обеспечивающий поддержку защищенного соединения SSL/TLS в
-# Perl. Он необходим для того, чтобы ваши скрипты могли безопасно скачивать
-# данные из интернета по протоколу HTTPS.
+# Perl. Необходим для того, чтобы скрипты могли безопасно скачивать данные из
+# интернета по протоколу HTTPS.
 
 # Required:    no
 # Recommended: no
@@ -19,9 +19,13 @@ source "${ROOT}/unpack_source_archive.sh" "${ARCH_NAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# в процессе сборки задается вопрос: хотите ли вы запустить внешние тесты,
+# Применим патч для совместимости с OpenSSL-4
+patch --verbose -Np1 -i \
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-openssl4_fixes-2.patch" || exit 1
+
+# В процессе сборки задается вопрос: хотите ли вы запустить внешние тесты,
 # которые завершатся ошибкой, если нет подключения к сети Internet (значение по
-# умолчанию - 'n'). С помощью инструкции [yes ''] пропускаем эти тесты
+# умолчанию - 'n'). С помощью инструкции [yes ''] пропускаем эти тесты.
 yes '' | perl Makefile.PL || exit 1
 make                      || exit 1
 # make test || true
@@ -29,7 +33,7 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать
+# Удалим perllocal.pod и другие служебные файлы, которые не нужно устанавливать.
 find "${TMP_DIR}" \
     \( -name perllocal.pod -o -name ".packlist" -o -name "*.bs" \) \
     -exec rm {} \+

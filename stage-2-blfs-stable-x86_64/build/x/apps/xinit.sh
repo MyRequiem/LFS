@@ -4,16 +4,11 @@ PRGNAME="xinit"
 
 ### xinit (scripts to start X11 server)
 # Маленькая утилита, которая дает команду на запуск графического сервера.
-# Обычно она срабатывает сразу после загрузки системы, превращая черный
-# текстовый экран в полноценный рабочий стол.
+# Обычно она запускается сразу после загрузки системы, превращая черный
+# текстовый экран (TTY) в полноценный рабочий стол.
 
 # Required:    xorg-libraries
-# Recommended: --- runtime ---
-#              --- используются по умолчанию в /etc/X11/app-defaults/xinitrc
-#              --- при запуске xorg-server, если не существует ~/.xinitrc
-#              twm
-#              xclock
-#              xterm
+# Recommended: xterm
 # Optional:    no
 
 ROOT="/root/src/lfs"
@@ -30,7 +25,7 @@ mkdir -pv "${TMP_DIR}/etc/X11/app-defaults/xinitrc.d"
     --with-xinitdir=/etc/X11/app-defaults || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -48,10 +43,10 @@ ldconfig
 # на первом доступном неиспользуемом виртуальном терминале, обычно tty7. Для
 # этого установим suid-бит для Xorg
 chmod u+s "${XORG_PREFIX}/bin/Xorg"
-# на этом этапе мы можем запустить Xorg на виртуальном терминале tty7 с помощью
+# На этом этапе мы можем запустить Xorg на виртуальном терминале tty7 с помощью
 # команды:
 #    $ startx [clieng_arguments] -- vt7
-# теперь можно переключаться между tty1 и tty7 по Ctrl-Alt-F1 и Ctrl-Alt-F7
+# Теперь можно переключаться между tty1 и tty7 по Ctrl-Alt-F1 и Ctrl-Alt-F7
 
 # Чтобы автоматически запускать Xorg на первом доступном неиспользуемом
 # виртуальном терминале, изменим сценарий startx
@@ -72,8 +67,8 @@ sed -i '/$serverargs $vtarg/ s/serverargs/: #&/' \
 #    5:2345:respawn:/sbin/agetty tty5 9600
 #    6:2345:respawn:/sbin/agetty tty6 9600
 #
-# то Xorg будет запускаться на tty7 без указания параметров в командной строке,
-# просто запустив
+# Тогда Xorg будет запускаться на tty7 без указания параметров в командной
+# строке, просто запустив:
 #    $ startx
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

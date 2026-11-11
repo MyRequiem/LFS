@@ -8,15 +8,13 @@ PRGNAME="feh"
 # картинку на рабочий стол.
 
 # Required:    libpng
-#              imlib2               (собранный с giflib для тестов)
+#              imlib2           (собранный с giflib для тестов)
 # Recommended: curl
+#              noto-fonts-ttf
 # Optional:    libexif
 #              --- runtime ---
 #              libjpeg-turbo
 #              imagemagick
-#              --- для тестов ---
-#              perl-test-command
-#              mandoc               (https://mandoc.bsd.lv/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -25,7 +23,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# добавим версию к названию каталога с документацией
+# Добавим версию к названию каталога с документацией.
 sed -i "s:doc/feh:&-${VERSION}:" config.mk || exit 1
 
 make PREFIX=/usr || exit 1
@@ -51,7 +49,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # mouse wheel/keyboard control.
 #
 # Home page: https://${PRGNAME}.finalrewind.org
-# Download:  https://${PRGNAME}.finalrewind.org/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror-hk.koddos.net/blfs/conglomeration/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

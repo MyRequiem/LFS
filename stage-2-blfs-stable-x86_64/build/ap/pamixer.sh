@@ -4,7 +4,7 @@ PRGNAME="pamixer"
 
 ### pamixer (pulseaudio command line mixer)
 # Удобная консольная утилита для управления громкостью звука в системе
-# PulseAudio. Она позволяет менять громкость или отключать звук для конкретных
+# PulseAudio. Позволяет менять громкость или отключать звук для конкретных
 # приложений через простые команды в терминале.
 
 # Required:    pulseaudio
@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # levels of the audio sinks.
 #
 # Home page: https://github.com/cdemoulins/${PRGNAME}
-# Download:  https://github.com/MyRequiem/LFS/raw/master/stage-2-blfs-stable-x86_64/src/${PRGNAME}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://github.com/cdemoulins/${PRGNAME}/archive/refs/tags/${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 
