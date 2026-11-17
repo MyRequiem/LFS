@@ -56,10 +56,6 @@ make install DESTDIR="${TMP_DIR}"
 #    vi -> vim
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
-for MAN_PATH in "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
-    ln -sv vim.1 "$(dirname "${MAN_PATH}")/vi.1"
-done
-
 rm -rf "${TMP_DIR}/usr/share"/{applications,icons}
 
 # По умолчанию документация устанавливается в /usr/share/vim/, поэтому
