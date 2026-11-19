@@ -10,8 +10,8 @@ PRGNAME="fcron"
 
 # Required:    no
 # Recommended: no
-# Optional:    MTA            dovecot, exim, postfix или sendmail
-#              vim            (или любой другой текстовый редактор)
+# Optional:    exim
+#              vim              (или любой другой текстовый редактор)
 #              linux-pam
 #              docbook-utils
 
@@ -40,12 +40,11 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"/{etc/pam.d,var/spool/fcron}
 
-### должны существовать пользователь и группа fcron
-# добавим группу fcron, если не существует
+# Добавим группу fcron, если не существует.
 ! grep -qE "^fcron:" /etc/group  && \
     groupadd -g 22 fcron
 
-# добавим пользователя fcron, если не существует
+# Добавим пользователя fcron, если не существует.
 ! grep -qE "^fcron:" /etc/passwd && \
     useradd -c "Fcron User" \
             -d /dev/null    \
@@ -53,15 +52,15 @@ mkdir -pv "${TMP_DIR}"/{etc/pam.d,var/spool/fcron}
             -s /bin/false   \
             -u 22 fcron
 
-# исправим некоторые пути, жестко закодированные в документации
+# Исправим некоторые пути, жестко закодированные в документации.
 find doc -type f -exec sed -i 's:/usr/local::g' {} \+
 
-# не отправлять результаты выполнения команд на почту
+# Не отправлять результаты выполнения команд на почту.
 #    --without-sendmail
-# не устанавливать скрипт инициализации при загрузке системы (мы есго установим
-# из blfs-bootscripts, см. ниже)
+# Не устанавливать скрипт инициализации при загрузке системы (мы есго установим
+# из blfs-bootscripts, см. ниже).
 #    --with-boot-install=no
-# не собирать системные модули, которые не нужны для System V
+# Не собирать системные модули, которые не нужны для System V
 #    --with-systemdsystemunitdir=no
 ./configure                \
     --prefix=/usr          \
@@ -72,12 +71,12 @@ find doc -type f -exec sed -i 's:/usr/local::g' {} \+
     --with-systemdsystemunitdir=no || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# скрипт run-parts from Slackware
+# Скрипт run-parts from Slackware
 RUN_PARTS="/usr/bin/run-parts"
 cat << EOF > "${TMP_DIR}${RUN_PARTS}"
 #!/bin/sh
@@ -149,7 +148,7 @@ cat << EOF > "${TMP_DIR}${SYSTAB}.orig"
 &bootrun 42 12      1 * *    root run-parts /etc/cron.monthly
 EOF
 
-# добавим обновление базы данных пакета findutils
+# Добавим обновление базы данных пакета findutils
 UPDDB="/etc/cron.hourly/upddb.sh"
 cat <<  EOF > "${TMP_DIR}${UPDDB}"
 #! /bin/bash
@@ -158,7 +157,7 @@ ionice -c3 nice -n 19 /usr/bin/updatedb
 EOF
 chmod 755 "${TMP_DIR}${UPDDB}"
 
-# для автозапуска fcron демона при загрузке системы установим скрипт
+# Для автозапуска fcron демона при загрузке системы установим скрипт
 # инициализации /etc/rc.d/init.d/fcron
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
@@ -167,7 +166,7 @@ chmod 755 "${TMP_DIR}${UPDDB}"
 
 rm -rf "${TMP_DIR}/var/run"
 
-# остановим fcron перед установкой (если запущен)
+# Остановим fcron перед установкой (если запущен).
 if pgrep -x fcron &>/dev/null; then
     /etc/rc.d/init.d/fcron stop
 fi
@@ -177,9 +176,9 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# запустим fcron демон
+# Запустим fcron демон.
 /etc/rc.d/init.d/fcron start
-# сгенерируем /var/spool/fcron/systab
+# Сгенерируем /var/spool/fcron/systab
 fcrontab -z -u systab
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"

@@ -39,7 +39,7 @@ read -r YESNO
     exit 0
 }
 
-# удаляем установленную версию
+# Удаляем установленную версию.
 [ -n "${INSTALLED_VER}" ] && \
     yes | removepkg --backup "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
 

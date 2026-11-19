@@ -7,7 +7,8 @@ PRGNAME="gsimplecal"
 # мыши. У него нет лишних функций, он просто показывает даты, не отвлекая от
 # работы.
 
-# Required:    gtk+3
+# Required:    glib
+#              gtk+3
 # Recommended: no
 # Optional:    no
 

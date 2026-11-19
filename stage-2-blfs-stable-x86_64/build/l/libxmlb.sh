@@ -9,8 +9,7 @@ PRGNAME="libxmlb"
 
 # Required:    glib
 # Recommended: no
-# Optional:    gtk-doc
-#              libstemmer    (https://github.com/zvelo/libstemmer)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

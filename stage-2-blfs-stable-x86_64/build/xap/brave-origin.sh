@@ -89,7 +89,7 @@ find -L . \
 
 ln -svf "../../opt/${PRGNAME}/${PRGNAME}" "${TMP_DIR}/usr/bin/${PRGNAME}-stable"
 
-# распакуем man-страницу
+# Распакуем man-страницу.
 gunzip "${TMP_DIR}/usr/share/man/man1/${PRGNAME}-stable.1.gz"
 rm -f "${TMP_DIR}/usr/share/man/man1/${PRGNAME}.1.gz"
 

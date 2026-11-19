@@ -55,7 +55,7 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
 install -m644 "${SOURCES}/${PRGNAME}.db" "${TMP_DIR}/etc/${PRGNAME}/"
 
-# остановим демон (если запущен) перед обновлением
+# Остановим демон (если запущен).
 pkill --full "hddtemp --daemon" &>/dev/null
 
 source "${ROOT}/stripping.sh"      || exit 1
@@ -63,12 +63,12 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# для разрешения доступа к данным о температуре жесткого диска обычным
+# Для разрешения доступа к данным о температуре жесткого диска обычным
 # пользователям, установим suid-бит для /usr/sbin/hddtemp
 #    rwsr-xr-x или 4755
 chmod u+s /usr/sbin/hddtemp
 
-# запустим hddtemp как демон
+# Запустим hddtemp как демон.
 hddtemp --daemon /dev/sda || {
 echo "Error start hddtemp:"
 echo "# hddtemp --daemon /dev/sda"
@@ -89,7 +89,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${PKGVERSION}"
 # information from the given hard disk and report the temperature of the disk.
 #
 # Home page: https://savannah.nongnu.org/projects/${PRGNAME}/
-# Download:  https://download.savannah.gnu.org/releases/${PRGNAME}/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror.yandex.ru/mirrors/redcorelinux/amd64/distfiles-next/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

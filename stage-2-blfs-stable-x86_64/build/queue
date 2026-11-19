@@ -500,12 +500,10 @@ ap/pamixer.sh
 l/json-glib.sh
 xap/pavucontrol.sh
 x/apps/i3.sh
-
 # ======================
 l/libnsl.sh
+ap/lsof.sh
 d/python3.sh
-# Пакет vim перед обновлением/переустановкой удалить из системы.
-#    $ removepkg --backup /var/log/packages/vim-<version>
 ap/vim.sh
 # === bumblebee-status ===
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
@@ -560,6 +558,7 @@ l/xvid.sh
 # Python3 модули удаляем из системы перед обновлением/переустановкой.
 #    $ removepkg --backup /var/log/packages/<pkg_name>-<version>
 d/python-modules/python3-glad.sh
+d/python-modules/python3-mutagen.sh
 l/libplacebo.sh
 l/ffmpeg.sh
 l/uchardet.sh
@@ -658,7 +657,6 @@ a/usbutils.sh
 #
 #    Все Ok :)
 d/guile.sh
-ap/lsof.sh
 n/exim.sh
 ap/at.sh
 l/gpgmepp.sh
@@ -680,7 +678,6 @@ ap/rpm.sh
 l/libxcrypt-compat.sh
 xap/openoffice.sh
 s/conky.sh
-d/python-modules/python3-mutagen.sh
 ###
 # =================================== LXQt =====================================
 ###

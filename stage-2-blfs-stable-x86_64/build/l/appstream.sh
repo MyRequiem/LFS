@@ -16,11 +16,8 @@ ARCH_NAME="AppStream"
 #              libxml2
 #              libxmlb
 #              libxslt
-# Recommended: docbook-xsl
-# Optional:    python3-gi-docgen
-#              qt6
-#              daps                 (https://github.com/openSUSE/daps)
-#              libstemmer           (https://github.com/zvelo/libstemmer)
+# Recommended: no
+# Optional:    qt6
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -33,15 +30,19 @@ mkdir -pv "${TMP_DIR}${METAINFO}"
 mkdir build
 cd build || exit 1
 
-meson setup ..               \
-    --prefix=/usr            \
-    --buildtype=release      \
-    -D apidocs=false         \
-    -D bash-completion=false \
-    -D stemming=false        \
-    -D systemd=false         \
-    -D compose=false         \
-    -D svg-support=false || exit 1
+meson setup ..                \
+    --prefix=/usr             \
+    --buildtype=release       \
+    -D apidocs=false          \
+    -D bash-completion=false  \
+    -D stemming=false         \
+    -D systemd=false          \
+    -D gir=false              \
+    -D tools=false            \
+    -D zstd-support=false     \
+    -D blake3-support=false   \
+    -D display-detection=none \
+    -D man=false || exit 1
 
 ninja || exit 1
 # ninja test

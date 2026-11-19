@@ -8,38 +8,31 @@ PRGNAME="cups"
 # USB, так и по сети.
 #
 # Состав CUPS:
-#    - диспетчер печати
-#    - планировщик
-#    - система фильтрации, преобразующая данные печати в формат, понятный
-#       принтеру
-#    - Back-end - система, отправляющая данные на устройства печати
+#    - Диспетчер печати.
+#    - Планировщик.
+#    - Система фильтрации, преобразующая данные печати в формат, понятный
+#       принтеру.
+#    - Back-end - система, отправляющая данные на устройства печати.
 
 # Required:    gnutls
-# Recommended: colord
-#              dbus
+# Recommended: dbus
 #              libusb
 #              linux-pam
 #              xdg-utils
-# Optional:    avahi
-#              libpaper
-#              php
-#              python2          (https://www.python.org/downloads/release/python-2718/)
-#              cups-filters
-#              gutenprint
-#              hplip            (для принтеров HP - https://developers.hp.com/hp-linux-imaging-and-printing)
+# Optional:    no
 
-### Конфигурация ядра
-# Для USB принтеров
+### Конфигурация ядра.
+# Для USB принтеров:
 #    CONFIG_USB_SUPPORT=y
 #    CONFIG_USB_OHCI_HCD=y|m
 #    CONFIG_USB_UHCI_HCD=y|m
 #    CONFIG_USB_PRINTER=y|m
-# Для принтеров, подключаемых через параллельный порт
+# Для принтеров, подключаемых через параллельный порт:
 #    CONFIG_PARPORT=y|m
 #    CONFIG_PARPORT_PC=y|m
 #    CONFIG_PRINTER=y|m
 
-### Конфиги
+### Конфиги:
 #    /etc/cups/*
 
 ROOT="/root/src/lfs"
@@ -68,13 +61,13 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему во время выполнения (runtime), вызванную повреждением
+# Исправим проблему во время выполнения (runtime), вызванную повреждением
 # указателя при использовании IPP
 sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
     || exit 1
 
-# создадим группу lpadmin и пользователя lp (группа lp уже создана с пакетом
-# 'main-directory-tree')
+# Создадим группу lpadmin и пользователя lp (группа lp уже создана с пакетом
+# 'main-directory-tree').
 ! grep -qE "^lpadmin:" /etc/group  && \
     groupadd -g 19 lpadmin
 
@@ -85,7 +78,7 @@ sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
             -s /bin/false              \
             -u 9 lp
 
-# устанавливаем поставляемый с пакетом загрузочный скрипт в /tmp вместо
+# Устанавливаем поставляемый с пакетом загрузочный скрипт в /tmp вместо
 # /etc/rc.d, а затем его удалим. Позже мы установим свой загрузочный скрипт в
 # /etc/rc.d
 #    --with-rcdir=/tmp/cupsinit
@@ -100,7 +93,7 @@ sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
 
 make || exit 1
 
-# тесты нужно проводит в графической среде
+# Тесты нужно проводит в графической среде.
 # LC_ALL=C make -k check
 
 make install DESTDIR="${TMP_DIR}"
@@ -108,11 +101,11 @@ make install DESTDIR="${TMP_DIR}"
 rm -rf "${TMP_DIR}"/{tmp,run,var/run}
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# создадим базовый файл конфигурации клиента cups
+# Создадим базовый файл конфигурации клиента cups.
 echo "ServerName /run/${PRGNAME}/${PRGNAME}.sock" > \
     "${TMP_DIR}/etc/${PRGNAME}/client.conf"
 
-# установим загрузочный скрипт для запуска cups при старте системы
+# Установим загрузочный скрипт для запуска cups при старте системы.
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-cups DESTDIR="${TMP_DIR}"

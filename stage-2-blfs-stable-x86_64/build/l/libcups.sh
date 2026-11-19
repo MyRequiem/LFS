@@ -42,10 +42,10 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим проблему во время выполнения (runtime), вызванную повреждением
+# Исправим проблему во время выполнения (runtime), вызванную повреждением
 # указателя при использовании IPP
-sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c \
-    || exit 1
+sed -i '/& ipp->prev)/s/prev/& \&\& ipp->prev->next == *attr/' cups/ipp.c || \
+    exit 1
 
 ./configure                \
     --prefix=/usr          \

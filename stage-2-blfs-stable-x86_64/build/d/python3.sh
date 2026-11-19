@@ -10,14 +10,8 @@ ARCH_NAME="Python"
 
 # Required:    no
 # Recommended: no
-# Optional:    bluez
-#              gdb              (для некоторых тестов)
-#              valgrind
-#              libmpdec         (http://www.bytereef.org/mpdecimal/)
-#              --- для создания дополнительных модулей ---
-#              libnsl
+# Optional:    libnsl
 #              tk
-#              berkeley-db      (устаревшее) https://anduin.linuxfromscratch.org/BLFS/bdb/db-5.3.28.tar.gz
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -36,8 +30,10 @@ fi
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
+# Патч для адаптации Python 3 к OpenSSL-4 и исправляющий некоторые проблемы
+# безопасности.
 patch --verbose -Np1 -i \
-    "${SOURCES}/${ARCH_NAME}-${VERSION}-security_fixes-2.patch" || exit 1
+    "${SOURCES}/${ARCH_NAME}-${VERSION}-openssl_4-1.patch" || exit 1
 
 # Выполнить обширные, но трудоемкие шаги по оптимизации. Интерпретатор
 # собирается дважды. В первой сборке выполняются тесты и используются для
@@ -62,7 +58,7 @@ root-user-action = ignore
 disable-pip-version-check = true
 EOF
 
-# устанавливаем документацию
+# Устанавливаем документацию.
 DOCS="${TMP_DIR}/usr/share/doc/python-${VERSION}/html"
 install -v -dm755 "${DOCS}"
 tar                       \
@@ -72,12 +68,12 @@ tar                       \
     -C "${DOCS}"          \
     -xvf "${SOURCES}/python-${VERSION}-docs-html.tar.bz2" || exit 1
 
-# чтобы python3 мог найти установленную документацию, создадим независимую от
+# Чтобы python3 мог найти установленную документацию, создадим независимую от
 # версии Python3 ссылку в /usr/share/doc/
 #    python-3 -> python3-${VERSION}
 ln -svfn "python-${VERSION}" "${TMP_DIR}/usr/share/doc/python-3"
 
-# добавим переменную окружения PYTHONDOCS содержащую путь к документации
+# Добавим переменную окружения PYTHONDOCS содержащую путь к документации
 # Python3
 PROFILE_D="/etc/profile.d"
 install -v -dm755 "${TMP_DIR}${PROFILE_D}"
@@ -89,11 +85,11 @@ export PYTHONDOCS=/usr/share/doc/python-3/html
 EOF
 chmod 755 "${TMP_DIR}${PYTHON3_PYTHONDOCS_SH}"
 
-# make-ca уже установлен, и корневые системные сертификаты обновлены командой
-#    # update-ca-certificates
-# добавим переменную окружения _PIP_STANDALONE_CERT содержащую путь к системным
-# сертификатам, которые будет использовать 'pip' (по умолчанию он устанавливает
-# собственные сертификаты)
+# Пакет make-ca уже установлен, и корневые системные сертификаты обновлены
+# командой update-ca-certificates. Добавим переменную окружения
+# _PIP_STANDALONE_CERT содержащую путь к системным сертификатам, которые будет
+# использовать утилита pip (по умолчанию она устанавливает собственные
+# сертификаты).
 PYTHON3_CERTS_SH="${PROFILE_D}/python3-certs.sh"
 cat << EOF > "${TMP_DIR}${PYTHON3_CERTS_SH}"
 #! /bin/bash

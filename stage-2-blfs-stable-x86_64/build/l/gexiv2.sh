@@ -9,7 +9,7 @@ PRGNAME="gexiv2"
 
 # Required:    exiv2
 # Recommended: vala
-# Optional:    gtk-doc    (для создания документации)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

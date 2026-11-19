@@ -21,7 +21,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с gexiv2-0.16.0
+# Исправим сборку с gexiv2-0.16.x
 sed -i 's/0.10/0.16/' mirage/__init__.py || exit 1
 
 python3 setup.py build || exit 1

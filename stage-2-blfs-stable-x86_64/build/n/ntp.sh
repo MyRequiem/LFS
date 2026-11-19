@@ -11,8 +11,6 @@ PRGNAME="ntp"
 # Recommended: no
 # Optional:    libcap               (собранный с PAM)
 #              libevent
-#              libedit              (https://www.thrysoee.dk/editline/)
-#              autogen              (https://www.gnu.org/software/autogen/)
 
 # * Постоянный мониторинг: Демон регулярно (раз в несколько минут) опрашивает
 #    удаленные серверы точного времени. Коррекция времени происходит с учетом
@@ -34,7 +32,7 @@ PRGNAME="ntp"
 #    завершит работу, чтобы не испортить данные.
 
 ### NOTE:
-# После установки пакета можно проверить его работу
+# После установки пакета можно проверить его работу.
 #    $ /etc/rc.d/init.d/ntpd stop
 #    $ ntpd -q
 #    $ /etc/rc.d/init.d/ntpd start
@@ -48,11 +46,11 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/etc"
 
-# добавим группу ntp, если не существует
+# Добавим группу ntp, если не существует.
 ! grep -qE "^ntp:" /etc/group  && \
     groupadd -g 87 ntp
 
-# добавим пользователя ntp, если не существует
+# Добавим пользователя ntp, если не существует.
 ! grep -qE "^ntp:" /etc/passwd &&      \
     useradd -c "Network Time Protocol" \
             -d /var/lib/ntp            \
@@ -60,20 +58,24 @@ mkdir -pv "${TMP_DIR}/etc"
             -s /bin/false              \
             -u 87 ntp
 
-# исправим проблему сборки с glibc >=2.43
+# Исправим проблему сборки с glibc >=2.43
 sed -i 's/getclock/getclock memchr/' sntp/m4/ntp_libntp.m4 || exit 1
 sed -i 's/pthread_detach(NULL)/pthread_detach(0)/' \
     sntp/m4/openldap-thread-check.m4 || exit 1
 
 autoreconf -fiv || exit 1
 
-# применим исправление в апстрим, для предотвращения ошибки сегментации
-sed -i "/ep.*FAILED/,+4s/ep/ep2/" ntpd/ntp_io.c
+# Применим исправление в апстрим, для предотвращения ошибки сегментации.
+sed -i "/ep.*FAILED/,+4s/ep/ep2/" ntpd/ntp_io.c || exit 1
+
+# Патч для сборки с OpenSSL-4.x
+patch --verbose -Np1 -i \
+    "${SOURCES}/${PRGNAME}-${VERSION}-openssl_4-1.patch" || exit 1
 
 # ntpd запускается от имени пользователя ntp, поэтому используем возможности
 # Linux для управления системным временем без полномочий root
 #    --enable-linuxcaps
-# включаем поддержку Readline для утилит ntpdc и ntpq
+# Включаем поддержку Readline для утилит ntpdc и ntpq
 #    --with-lineeditlibs=readline
 ./configure                      \
     --prefix=/usr                \
@@ -98,7 +100,7 @@ echo "0.000" > "${TMP_DIR}${VAR_LIB_NTP}/ntp.drift"
 chown ntp:ntp  "${TMP_DIR}${VAR_LIB_NTP}/ntp.drift"
 chmod 644      "${TMP_DIR}${VAR_LIB_NTP}/ntp.drift"
 
-### Конфигурация
+### Конфигурация.
 NTP_CONF="/etc/ntp.conf"
 cat << EOF > "${TMP_DIR}${NTP_CONF}"
 # Start ${NTP_CONF}
@@ -138,7 +140,7 @@ server 3.pool.ntp.org iburst
 # End ${NTP_CONF}
 EOF
 
-# добавим скрипт получения разницы локального и точного временем
+# Добавим скрипт получения разницы локального и точного временем.
 NTPDIFF="/usr/sbin/ntpdiff"
 cat << EOF > "${TMP_DIR}${NTPDIFF}"
 #!/bin/bash
@@ -147,7 +149,7 @@ ntpdate -q pool.ntp.org | /usr/bin/grep ntpdate
 EOF
 chmod 755 "${TMP_DIR}${NTPDIFF}"
 
-# скрипт инициализцации при запуске системы
+# Скрипт инициализцации при запуске системы.
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-ntpd DESTDIR="${TMP_DIR}"
@@ -157,7 +159,7 @@ if [ -f "${NTP_CONF}" ]; then
     mv "${NTP_CONF}" "${NTP_CONF}.old"
 fi
 
-# остановим демон, если запущен
+# Остановим демон, если запущен.
 if pgrep -x ntpd &>/dev/null; then
     /etc/rc.d/init.d/ntpd stop
 fi
@@ -179,7 +181,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # between various computers over a network.
 #
 # Home page: https://www.${PRGNAME}.org/
-# Download:  https://www.eecis.udel.edu/~${PRGNAME}/ntp_spool/${PRGNAME}4/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
+# Download:  https://www.eecis.udel.edu/~${PRGNAME}/${PRGNAME}_spool/${PRGNAME}4/${PRGNAME}-${MAJ_VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

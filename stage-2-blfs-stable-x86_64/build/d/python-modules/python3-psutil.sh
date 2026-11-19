@@ -10,15 +10,7 @@ ARCH_NAME="psutil"
 
 # Required:    no
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-colorama             (https://pypi.org/project/colorama/)
-#              python3-pyleak               (https://pypi.org/project/pyleak/)
-#              python3-pyperf               (https://pypi.org/project/pyperf/)
-#              python3-pypinfo              (https://pypi.org/project/pyinfo/)
-#              python3-pytest-instafail     (https://pypi.org/project/pytest-instafail/)
-#              python3-pytest-subtests      (https://pypi.org/project/pytest-subtests/)
-#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -43,14 +35,14 @@ pip3 install            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды
+# Удаляем все скомпилированные байт-коды.
 rm -rf "${TMP_DIR}/usr/bin/__pycache__"
 rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 

@@ -12,12 +12,9 @@ CTAGS_ARCH_NAME="universal-ctags"
 # Recommended: Graphical Environments
 #              gtk+3
 # Optional:    curl или wget            (для некоторых тестов)
-#              gpm
-#              libcanberra
 #              lua
 #              ruby
 #              rsync
-#              libsodium                (https://libsodium.gitbook.io/doc/)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -40,7 +37,8 @@ fi
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}/"{etc,usr/share/doc}
 
-# ctags когда-то входил в состав редактора Vim, добавим сами:
+# Инструмент ctags когда-то входил в состав редактора Vim, поэтому добавим его
+# сами в пакет.
 CTAGSVER="$(find "${SOURCES}" -type f -name "${CTAGS_ARCH_NAME}-*.tar.?z" \
     | rev | cut -d . -f 3- | cut -d - -f 1 | rev )"
 
@@ -50,6 +48,9 @@ if [ -z "${CTAGSVER}" ]; then
     exit 1
 fi
 
+###
+# Сначала соберем ctags
+###
 tar xvf "${SOURCES}/${CTAGS_ARCH_NAME}-${CTAGSVER}".tar.?z || exit 1
 cd "${CTAGS_ARCH_NAME}-${CTAGSVER}" || exit 1
 
@@ -79,7 +80,10 @@ make install DESTDIR="${TMP_DIR}" || exit 1
 cd .. || exit 1
 rm -rf "${CTAGS_ARCH_NAME}-${CTAGSVER}"
 
-# изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
+###
+# Cобираем Vim
+###
+# Изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
 echo '#define SYS_VIMRC_FILE  "/etc/vimrc"'  >> src/feature.h
 echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
@@ -117,25 +121,22 @@ echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' >> src/feature.h
 
 make || exit 1
 
-# набор тестов выводит много двоичных данных в stdout, что может привести к
-# проблемам с настройками текущего терминала, поэтому перенаправим вывод в лог
+# Набор тестов выводит много двоичных данных в stdout, что может привести к
+# проблемам с настройками текущего терминала, поэтому перенаправим вывод в
+# файл:
 # make -j1 test &> vim-test.log
 
 make install DESTDIR="${TMP_DIR}"
 
-# ссылка в /usr/bin
+# Ссылка в /usr/bin
 #    vi -> vim
 ln -sv vim "${TMP_DIR}/usr/bin/vi"
 
 # /etc/gvimrc будет ссылкой на /etc/vimrc
 ln -svf vimrc "${TMP_DIR}/etc/gvimrc"
 
-for MAN_PATH in  "${TMP_DIR}/usr/share/man"/{,*/}man1/vim.1; do
-    ln -sv vim.1 "$(dirname "${MAN_PATH}")/vi.1"
-done
-
-# по умолчанию документация устанавливается в /usr/share/vim/, поэтому
-# установим ссылку в /usr/share/doc/
+# По умолчанию документация устанавливается в /usr/share/vim/, поэтому создадим
+# ссылку в /usr/share/doc/
 #    vim-${VERSION} -> ../vim/vimXX/doc
 MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
 MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"

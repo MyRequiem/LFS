@@ -1,6 +1,20 @@
-[10.11.2026]
-* BLFS: Upgraded the  package from  to .
-* BLFS: Upgraded the  package from  to .
+[19.11.2026]
+* BLFS: Upgraded the fcron package from 3.4.0 to 3.4.1.
+* BLFS: Upgraded the gexiv2 package from 0.16.0 to 0.16.2.
+[18.11.2026]
+* BLFS: Upgraded the exiv2 package from 0.28.8 to 0.28.9.
+* BLFS: Upgraded the inih package from 62 to 63.
+* BLFS: Upgraded the nss package from 3.124 to 3.133.
+* BLFS: Upgraded the nspr package from 4.39 to 4.40.
+[17.11.2026]
+* BLFS: Upgraded the libadwaita package from 1.9.0 to 1.9.3.
+* BLFS: Upgraded the appstream package from 1.1.2 to 1.2.3.
+* BLFS: Upgraded the libxmlb package from 0.3.26 to 0.3.30.
+* BLFS: Upgraded the gsimplecal package from 2.5.2 to 2.5.4.
+* BLFS: Upgraded the vim package from 9.2.1225 to 9.2.1355.
+[11.11.2026]
+* BLFS: Upgraded the vim package from 9.2.1036 to 9.2.1225.
+* BLFS: Upgraded the lsof package from 4.99.6 to 4.99.7.
 [10.11.2026]
 * BLFS: Upgraded the perl-io-socket-ssl package from 2.098 to 2.099.
 * BLFS: Upgraded the perl-uri package from 5.34 to 5.40.

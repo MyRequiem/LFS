@@ -38,7 +38,7 @@ read -r YESNO
     exit 0
 }
 
-# удаляем установленную версию
+# Удаляем установленную версию.
 [ -n "${INSTALLED_VER}" ] && \
     yes | removepkg --backup "/var/log/packages/${PRGNAME}-${INSTALLED_VER}"
 
@@ -51,7 +51,7 @@ ar p "${SOURCES}/${ARCH_NAME}" data.tar.xz | tar xJv || exit 1
 chown -R root:root .
 chmod -R u+w,go+r-w,a-s .
 
-# расписание cron предназначено только для Debian/Ubuntu
+# Расписание cron предназначено только для Debian/Ubuntu
 rm -rf etc
 rm -rf "${TMP_DIR}/opt/google/chrome/cron"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gnome-control-center,gtk-doc,help,licenses}
@@ -59,7 +59,7 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gnome-control-center,gtk-doc,help,licenses}
 chmod 0755 .
 chmod 4711 opt/google/chrome/chrome-sandbox
 
-# ссылки на стандартные названия библиотек mozilla
+# Ссылки на стандартные названия библиотек Mozilla
 sed -i 's,libnss3.so.1d,libnss3.so\x00\x00\x00,g;
         s,libnssutil3.so.1d,libnssutil3.so\x00\x00\x00,g;
         s,libsmime3.so.1d,libsmime3.so\x00\x00\x00,g;

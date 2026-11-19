@@ -11,11 +11,7 @@ PRGNAME="exiv2"
 # Recommended: brotli
 #              curl
 #              inih
-# Optional:    libssh                       (https://www.libssh.org/)
-#              --- для документации ---
-#              doxygen
-#              graphviz
-#              libxslt
+# Optional:    libxslt
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

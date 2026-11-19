@@ -9,7 +9,7 @@ PRGNAME="lsof"
 
 # Required:    libtirpc
 # Recommended: no
-# Optional:    nmap         (для тестов)
+# Optional:    no
 
 ### Конфигурация ядра (для запуска тестов)
 #    CONFIG_POSIX_MQUEUE=y
@@ -26,7 +26,10 @@ mkdir -pv "${TMP_DIR}"
     --disable-static || exit 1
 
 make || exit 1
+
+# Для тестов нужен пакет nmap (не входит в состав дистрибутива).
 # make check
+
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

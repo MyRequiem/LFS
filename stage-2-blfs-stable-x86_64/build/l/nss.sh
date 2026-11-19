@@ -23,15 +23,15 @@ patch -Np1 --verbose -i "${SOURCES}/${PRGNAME}-standalone-1.patch" || exit 1
 
 cd "${PRGNAME}" || exit 1
 
-# не включать в бинарники отладочную информацию и использовать оптимизацию
-# компилятора по умолчанию
+# Не включать в бинарники отладочную информацию и использовать оптимизацию
+# компилятора по умолчанию.
 #    BUILD_OPT=1
-# расположение заголовочных файлов nspr
+# Расположение заголовочных файлов nspr
 #    NSPR_INCLUDE_DIR=/usr/include/nspr
-# связываем библиотеку libssl3.so с установленной в системе zlib, а не с
-# версией, которая имеется в дереве исходников
+# Связываем библиотеку libssl3.so с установленной в системе zlib, а не с
+# версией, которая имеется в дереве исходников.
 #    USE_SYSTEM_ZLIB=1
-# указываем флаги компоновщика, необходимые для связи с библиотекой zlib
+# Указываем флаги компоновщика, необходимые для связи с библиотекой zlib
 #    ZLIB_LIBS=-lz
 make                                   \
     BUILD_OPT=1                        \
@@ -42,7 +42,7 @@ make                                   \
     NSS_USE_SYSTEM_SQLITE=1            \
     USE_64=1 || exit 1
 
-# тесты
+# Тесты.
 # cd tests || exit 1
 # HOST=localhost DOMSUF=localdomain ./all.sh || exit 1
 # cd ../ || exit 1
@@ -63,7 +63,7 @@ install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} "${TMP_DIR}/usr/bin/"
 # /usr/lib/pkgconfig/
 install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${TMP_DIR}/usr/lib/pkgconfig/"
 
-# ссылка
+# Ссылка
 #    /usr/lib/libnssckbi.so -> ./pkcs11/p11-kit-trust.so
 # устанавливается с пакетом p11-kit, поэтому удалим /usr/lib/libnssckbi.so из
 # временной директории пакета nss

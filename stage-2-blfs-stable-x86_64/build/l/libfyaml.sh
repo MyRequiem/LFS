@@ -10,15 +10,10 @@ PRGNAME="libfyaml"
 # файлов. Является современной альтернативой libyaml.
 
 # Required:    no
-# Recommended: libyaml                      (для поддержки YAML 0.1)
-# Optional:    --- для документации ---
-#              git
-#              python3-sphinx
-#              python3-sphinx-rtd-theme
-#              --- для тестов ---
-#              docker                       (https://www.docker.com/)
-#              jq                           (https://jqlang.org/)
-#              check                        (https://libcheck.github.io/check/)
+# Recommended: libyaml    (для поддержки YAML 0.1)
+# Optional:    git
+#              llvm
+#              jq
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

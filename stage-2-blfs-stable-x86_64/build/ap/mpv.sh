@@ -41,9 +41,12 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..          \
-    --prefix=/usr       \
-    --buildtype=release \
+meson setup ..           \
+    --prefix=/usr        \
+    --buildtype=release  \
+    -D wayland=disabled  \
+    -D pipewire=disabled \
+    -D xv=enabled        \
     -D x11=enabled || exit 1
 
 ninja || exit 1
