@@ -22,7 +22,7 @@ TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 rm -rf "${BUILD_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# команда osinfo-db-import - пакет osinfo-db-tools
+# Команда osinfo-db-import - пакет osinfo-db-tools
 osinfo-db-import            \
     --root "${TMP_DIR}"     \
     --dir /usr/share/osinfo \
@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # provisioning of new virtual machines.
 #
 # Home page: https://libosinfo.org/
-# Download:  https://releases.pagure.org/libosinfo/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

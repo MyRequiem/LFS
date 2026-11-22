@@ -14,7 +14,6 @@ PRGNAME="gtk-vnc"
 #              vala
 #              pulseaudio
 # Optional:    cyrus-sasl
-#              python3-gi-docgen    (для документации)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -26,9 +25,11 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-meson setup ..    \
-    --prefix=/usr \
-    --buildtype=release || exit 1
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    -D gi-docs=disabled \
+    -D introspection=enabled || exit 1
 
 ninja || exit 1
 # ninja test

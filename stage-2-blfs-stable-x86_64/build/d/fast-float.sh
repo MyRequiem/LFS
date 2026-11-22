@@ -10,8 +10,7 @@ ARCH_NAME="fast_float"
 
 # Required:    cmake
 # Recommended: no
-# Optional:    git          (для скачивания некоторых тестов)
-#              doctest      (https://github.com/doctest/doctest)
+# Optional:    git    (для скачивания некоторых тестов)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -28,7 +27,7 @@ cmake ..                         \
     -D CMAKE_BUILD_TYPE=Release  \
     -G Ninja || exit 1
 
-### тесты (нужна сеть Internet)
+### Тесты (нужна сеть Internet).
 # cmake .. -D FASTFLOAT_TEST=ON && ninja && ninja test
 
 DESTDIR="${TMP_DIR}" ninja install

@@ -18,7 +18,7 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с libxml2 >=2.14
+# Исправим сборку с libxml2 >=2.14
 patch --verbose -Np1 -i \
     "${SOURCES}/${PRGNAME}-${VERSION}-libxml2-2.14.patch" || exit 1
 
@@ -56,7 +56,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # optimal devices for deploying an operating system on a hypervisor.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://releases.pagure.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

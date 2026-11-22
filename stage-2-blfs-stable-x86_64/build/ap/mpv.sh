@@ -18,18 +18,12 @@ PRGNAME="mpv"
 #              luajit
 #              uchardet
 #              vulkan-loader
-# Optional:    libdvdcss
-#              libdvdread
-#              libdvdnav
-#              libbluray        (https://www.videolan.org/developers/libbluray.html)
-#              pipewire
-#              sdl2-compat
-#              jack             (https://jackaudio.org/)
-#              openal           (https://openal.org/)
-#              libcaca          (https://github.com/cacalabs/libcaca)
-#              svgalib          (https://www.svgalib.org/)
-#              --- для документации ---
-#              python3-docutils
+# Optional:    sdl2-compat
+#              python3-docutils    (для документации)
+
+### Конфигурация:
+#    /etc/mpv/*
+#    ~/.config/mpv/*
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -50,7 +44,7 @@ meson setup ..           \
     -D x11=enabled || exit 1
 
 ninja || exit 1
-# пакет не имеет набора тестов
+# Пакет не имеет набора тестов.
 DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}

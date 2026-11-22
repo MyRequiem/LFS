@@ -45,7 +45,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # usbredirserver.
 #
 # Home page: https://www.spice-space.org
-# Download:  https://www.spice-space.org/download/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

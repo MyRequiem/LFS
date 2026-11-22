@@ -9,7 +9,7 @@ PRGNAME="spice-gtk"
 
 # Required:    gtk+3
 #              json-glib
-#              spice                (https://www.spice-space.org/)
+#              spice
 #              vala
 # Recommended: polkit
 #              pulseaudio
@@ -19,9 +19,7 @@ PRGNAME="spice-gtk"
 #              gst-plugins-base
 #              gst-plugins-good
 #              libcap-ng
-# Optional:    libcacard            (https://www.spice-space.org/)
-#              usbredir             (https://www.spice-space.org)
-#              phodav               (https://wiki.gnome.org/phodav)
+# Optional:    usbredir
 
 ### INFO
 # Например, открыть в окне GTK запущенную виртуальную машину:
@@ -69,7 +67,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # A Gtk client and libraries for spice remote desktop servers
 #
 # Home page: https://www.spice-space.org
-# Download:  https://www.spice-space.org/download/gtk/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

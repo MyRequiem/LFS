@@ -83,8 +83,8 @@ l/libarchive.sh
 d/gc.sh
 n/w3m.sh
 # === Документация, XML, SGML, man ====
-# При обновлении BLFS пакеты этой группы (docbook-xml - itstool) нужно сначала
-# удалить из системы.
+# При обновлении BLFS пакеты этой группы (docbook-xml - perl-xml-parser) нужно
+# сначала удалить из системы.
 #    $ removepkg --backup /var/log/packages/<pkgname>-<version>
 s/docbook-xml.sh
 s/docbook-xsl.sh
@@ -569,6 +569,7 @@ l/fmt.sh
 d/android-tools.sh
 # === qemu, libvirt, virt-manager ===
 d/swig.sh
+# Пакет dtc удаляем из системы перед обновлением/переустановкой.
 d/dtc.sh
 d/fast-float.sh
 l/simdutf.sh
@@ -581,13 +582,13 @@ d/python-modules/python3-six.sh
 d/python-modules/python3-pyparsing.sh
 d/spice-protocol.sh
 n/spice.sh
+n/spice-gtk.sh
 s/qemu.sh
 n/libmnl.sh
 n/libnftnl.sh
 n/iptables.sh
 n/dnsmasq.sh
 l/libvirt.sh
-n/spice-gtk.sh
 s/osinfo-db-tools.sh
 s/osinfo-db.sh
 l/libosinfo.sh
@@ -603,6 +604,7 @@ d/python-modules/python3-installer.sh
 d/python-modules/python3-pyproject-hooks.sh
 d/python-modules/python3-ipaddr.sh
 d/python-modules/python3-zipp.sh
+d/python-modules/python3-lazy-importer.sh
 d/python-modules/python3-importlib-metadata.sh
 d/python-modules/python3-build.sh
 l/gtksourceview4.sh

@@ -12,7 +12,6 @@ PRGNAME="libass"
 # Recommended: fontconfig
 #              nasm
 # Optional:    harfbuzz
-#              libunibreak    (https://github.com/adah1972/libunibreak)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

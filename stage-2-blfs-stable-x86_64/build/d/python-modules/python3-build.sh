@@ -9,18 +9,10 @@ ARCH_NAME="build"
 # установке архивы (wheel), избавляя систему от устаревшего вызова скриптов
 # setup.py.
 
-# Required:    python3-installer
-#              python3-pyproject-hooks
-#              python3-importlib-metadata
-# Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-filelock             (https://pypi.org/project/filelock/)
-#              python3-pytest-cov           (https://pypi.org/project/pytest-cov/)
-#              python3-pytest-mock          (https://pypi.org/project/pytest-mock/)
-#              python3-pytest-rerunfailures (https://pypi.org/project/pytest-rerunfailures/)
-#              python3-pytest-xdist         (https://pypi.org/project/pytest-xdist/)
-#              python3-uv                   (https://pypi.org/project/uv/)
+# Required:    python3-pyproject-hooks
+# Recommended: python3-importlib-metadata
+#              python3-installer
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -45,14 +37,14 @@ pip3 install            \
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+# Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
 # перемещаем ее в ${TMP_DIR}/usr/
 PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
 TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
 [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
     mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-# удаляем все скомпилированные байт-коды
+# Удаляем все скомпилированные байт-коды.
 rm -rf "${TMP_DIR}/usr/bin/__pycache__"
 rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 

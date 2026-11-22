@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #    - libvirt-gobject - GObjects for managing libvirt objects
 #
 # Home page: https://libvirt.org
-# Download:  https://download.libvirt.org/glib/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

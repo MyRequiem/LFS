@@ -43,7 +43,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # header files.
 #
 # Home page: https://www.spice-space.org
-# Download:  https://www.spice-space.org/download/releases/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

@@ -10,17 +10,16 @@ ARCH_NAME="vte"
 # редакторы или файловые менеджеры.
 
 # Required:    libxml2
-# Recommended: fast-float           (если не установлен, то будет скачан с Internet)
-#              fmt                  (если не установлен, то будет скачан с Internet)
+# Recommended: fast-float       (если не установлен, то будет скачан с Internet)
+#              fmt              (если не установлен, то будет скачан с Internet)
 #              icu
 #              gnutls
 #              glib
 #              gtk+3
 #              gtk4
-#              simdutf              (если не установлен, то будет скачан с Internet)
+#              simdutf          (если не установлен, то будет скачан с Internet)
 #              vala
-# Optional:    python3-gi-docgen
-#              git и make-ca        (оба сразу, для скачивания fast-float, fmt и simdutf если не установлены)
+#              git и make-ca    (оба сразу, для скачивания fast-float, fmt и simdutf если не установлены)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                    || exit 1
@@ -43,7 +42,7 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# удалим 2 скрипта в /etc/profile.d/, которые не используются в LFS
+# Удалим 2 скрипта в /etc/profile.d/, которые не используются в дистрибутиве.
 rm -f "${TMP_DIR}/etc/profile.d"/vte.{csh,sh}
 
 source "${ROOT}/stripping.sh"      || exit 1

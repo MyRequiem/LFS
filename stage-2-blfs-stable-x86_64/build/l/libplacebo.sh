@@ -12,9 +12,6 @@ PRGNAME="libplacebo"
 #              vulkan-loader
 # Optional:    lcms2
 #              libunwind
-#              dovi-tool        (https://github.com/quietvoid/dovi_tool/)
-#              nuklear          (https://github.com/Immediate-Mode-UI/Nuklear)
-#              xxhash           (https://github.com/Cyan4973/xxHash)
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1

@@ -22,7 +22,7 @@ mkdir -pv "${TMP_DIR}"
     --prefix=/usr || exit 1
 
 make || exit 1
-# тесты
+# Тесты.
 # make JSCXX=g++ TCL_INCLUDE= -k check
 make install DESTDIR="${TMP_DIR}"
 

@@ -8,7 +8,7 @@ PRGNAME="spice"
 # работаете за реальным физическим компьютером.
 
 # Required:    glib
-#              spice-protocol       (https://www.spice-space.org)
+#              spice-protocol
 #              pixman
 #              libjpeg-turbo
 #              python3-six
@@ -17,8 +17,7 @@ PRGNAME="spice"
 # Optional:    cyrus-sasl
 #              opus
 #              gstreamer
-#              orc                  (https://gstreamer.freedesktop.org/src/orc/)
-#              libcacard            (https://gitlab.freedesktop.org/spice/libcacard)
+#              orc
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -56,7 +55,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # experience.
 #
 # Home page: https://www.${PRGNAME}-space.org
-# Download:  https://www.${PRGNAME}-space.org/download/releases/${PRGNAME}-${VERSION}.tar.bz2
+# Download:  https://mirror.yandex.ru/macports/distfiles/${PRGNAME}-server/${PRGNAME}-${VERSION}.tar.bz2
 #
 EOF
 

@@ -10,8 +10,12 @@ PRGNAME="dtc"
 # Required:    no
 # Recommended: no
 # Optional:    libyaml
-#              swig         (для сборки Python3 модуля)
-#              texlive
+#              --- для сборки Python3 модуля ---
+#              python3-meson
+#              swig
+
+### NOTE:
+# Пакет dtc >>> УДАЛИТЬ <<< из системы перед обновлением/переустановкой.
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -23,8 +27,8 @@ mkdir -pv "${TMP_DIR}"
 mkdir build
 cd build || exit 1
 
-# предотвращаем создание Python3 модуля с помощью устаревшего метода setup.py
-# (далее мы создадим модуль с помощью pip3 wheel)
+# Предотвращаем создание Python3 модуля с помощью устаревшего метода setup.py
+# (далее мы создадим модуль с помощью pip3 wheel).
 #    -D python=disabled
 meson setup ..                \
     --prefix=/usr             \
@@ -38,14 +42,20 @@ DESTDIR="${TMP_DIR}" ninja install
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# сразу устанавливаем в систему для дальнейшей сборки Python3 модуля
+# Сразу устанавливаем в систему для дальнейшей сборки Python3 модуля.
 source "${ROOT}/stripping.sh"      || exit 1
 source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# если установлен swig соберем Python3 модуль
+# Если установлен python3-meson и swig соберем Python3 модуль.
 if command -v swig &>/dev/null; then
+    # Исправим код для совместимости с SWIG 4.5.x
+    sed -e 's/PyString_FromString/PyUnicode_FromString/' \
+        -e 's/PyString_AsString/PyBytes_AsString/'       \
+        -e 's/PyInt_AsLong/PyLong_AsLong/'               \
+        -i ../pylibfdt/libfdt.i || exit 1
+
     pip3 wheel               \
         -w dist              \
         --no-build-isolation \
@@ -62,14 +72,14 @@ if command -v swig &>/dev/null; then
 
     rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-    # если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
+    # Если есть директория ${TMP_DIR}/usr/lib/pythonX.X/site-packages/bin/
     # перемещаем ее в ${TMP_DIR}/usr/
     PYTHON_MAJ_VER="$(python3 -V | cut -d ' ' -f 2 | cut -d . -f 1,2)"
     TMP_SITE_PACKAGES="${TMP_DIR}/usr/lib/python${PYTHON_MAJ_VER}/site-packages"
     [ -d "${TMP_SITE_PACKAGES}/bin" ] && \
         mv "${TMP_SITE_PACKAGES}/bin" "${TMP_DIR}/usr/"
 
-    # удаляем все скомпилированные байт-коды
+    # Удаляем все скомпилированные байт-коды.
     rm -rf "${TMP_DIR}/usr/bin/__pycache__"
     rm -rf "${TMP_SITE_PACKAGES}/__pycache__"
 
@@ -88,7 +98,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # binary object (DTB).
 #
 # Home page: https://git.kernel.org/cgit/utils/${PRGNAME}/${PRGNAME}.git
-# Download:  https://kernel.org/pub/software/utils/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/dgibson/${PRGNAME}/archive/v${VERSION}/${PRGNAME}-${VERSION}.tar.gz
 #
 EOF
 

@@ -11,7 +11,7 @@ PRGNAME="android-tools"
 #              protobuf
 #              fmt
 # Recommended: no
-# Optional:    gtest        (https://github.com/google/googletest)
+# Optional:    no
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
@@ -20,13 +20,8 @@ source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим ошибку сборки с protobuf-3x.x
-patch --verbose -Np1 -d "vendor/extras" -i \
-    "${SOURCES}/${PRGNAME}-${VERSION}-fix-protobuf-3x.x-build.patch" || exit 1
-
-# отучим android-tools от зависимости gtest: подменим заголовок gtest_prod.h
-# заглушкой (пакет gtest сделал в Optional, но на самом деле без следующих 3
-# строк он Required)
+# Отучим android-tools от гугловской зависимости gtest - подменим заголовок
+# gtest_prod.h заглушкой.
 mkdir -p vendor/libbase/include/gtest &&
     echo "#define FRIEND_TEST(test_case_name, test_name)" > \
     vendor/libbase/include/gtest/gtest_prod.h

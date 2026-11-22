@@ -12,15 +12,15 @@ PRGNAME="osinfo-db-tools"
 #              libarchive
 #              libxml2
 #              libxslt
-#              libsoup2         (https://download.gnome.org/sources/libsoup/2.74/)
+#              libsoup2
 # Recommended: no
-# Optional:    --- для тестов ---
-#              python3-pytest
-#              python3-requests
+# Optional:    python3-requests
 
 ROOT="/root/src/lfs"
 source "${ROOT}/check_environment.sh"                  || exit 1
 source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
+
+VERSION="$(echo "${VERSION}" | cut -d v -f 2)"
 
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
@@ -51,7 +51,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # about operating systems for use with virtualization
 #
 # Home page: https://libosinfo.org/
-# Download:  https://releases.pagure.org/libosinfo/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://gitlab.com/libosinfo/${PRGNAME}/-/archive/v${VERSION}/${PRGNAME}-v${VERSION}.tar.bz2
 #
 EOF
 

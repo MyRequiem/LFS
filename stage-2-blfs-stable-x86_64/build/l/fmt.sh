@@ -32,7 +32,7 @@ cmake ..                             \
 
 ninja || exit 1
 
-# тесты
+### Тесты.
 # cmake .. -D FMT_TEST=ON &&
 # ninja                   &&
 # ninja test

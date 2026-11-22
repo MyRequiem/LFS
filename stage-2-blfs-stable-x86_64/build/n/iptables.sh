@@ -3,21 +3,15 @@
 PRGNAME="iptables"
 
 ### Iptables (IP packet filter administration)
-# Классический встроенный инструмент для настройки сетевого защитного экрана в
-# системе Linux. Он управляет правилами прохождения сетевых пакетов, защищая
-# компьютер от внешних угроз и хакерских атак.
+# Классический встроенный инструмент для настройки сетевого защитного экрана
+# (брандмауэр) в Linux. Управляет правилами прохождения сетевых пакетов,
+# защищая от внешних угроз и хакерских атак.
 
-# Required:    --- для сборки xtables-nft-multi, требуется для libvirt ---
-#              libmnl
-#              libnftnl
+# Required:    libnftnl  (для сборки xtables-nft-multi, требуется для libvirt)
 # Recommended: no
-# Optional:    libpcap                  (для сборки CLI утилиты конфигурации nfsynproxy)
-#              bpf-utils                (для поддержки berkely packet filter) https://github.com/tadamdam/bpf-utils
-#              libnfnetlink             (для поддержки connlabel) https://netfilter.org/projects/libnfnetlink/
-#              libnetfilter-conntrack   (для поддержки connlabel) https://netfilter.org/projects/libnetfilter_conntrack/
-#              nftables                 (для поддержки connlabel) https://netfilter.org/projects/nftables/
+# Optional:    no
 
-### Конфигурация ядра
+### Конфигурация ядра.
 # Брандмауэр в Linux управляется через интерфейс netfilter ядра Linux. Чтобы
 # использовать iptables для настройки netfilter, необходимы следующие параметры
 # конфигурации ядра:
@@ -65,9 +59,6 @@ source "${ROOT}/config_file_processing.sh"             || exit 1
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# Собирать библиотеку libipq.so, которая используется некоторыми пакетами за
-# пределами BLFS
-#    --enable-libipq
 ./configure              \
     --prefix=/usr        \
     --sbindir=/usr/sbin  \
@@ -77,7 +68,7 @@ mkdir -pv "${TMP_DIR}"
     --disable-bpf-compiler || exit 1
 
 make || exit 1
-# пакет не содержит набора тестов
+# Пакет не содержит набора тестов.
 make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
@@ -85,16 +76,16 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 ###
 # Утилита xtables-legacy-multi
 ###
-# Linux 5.x - 6.16.x  - была объявлена устаревшей (Deprecated)
-# Linux >=6.17.x      - по привычке шлет ядру старые системные вызовы, а ядро
-#                           их физически больше не поддерживает (по умолчанию)
+# Linux 5.x - 6.16.x  - Была объявлена устаревшей (Deprecated).
+# Linux >=6.17.x      - По привычке шлет ядру старые системные вызовы, а ядро
+#                       их физически больше не поддерживает (по умолчанию).
 ###
 # ПЕРЕКЛЮЧЕНИЕ НА СОВРЕМЕННЫЙ NFT-БЭКЕНД
 ###
-# Начиная с Linux 6.17.x классический legacy-код файрвола по умолчанию отключен.
-# Параметр CONFIG_IP_NF_IPTABLES=m теперь является "обманкой"
+# Начиная с Linux 6.17.x классический legacy-код файрвола по умолчанию
+# отключен. Параметр CONFIG_IP_NF_IPTABLES=m теперь является "обманкой"
 # (shim-прослойкой) внутри модуля nf_tables.ko - физический файл ip_tables.ko
-# больше НЕ создается (по умолчанию):
+# больше НЕ создается (по умолчанию).
 #
 # CONFIG_IP_NF_IPTABLES=m
 #    $ find /lib/modules/ -type f -name "*table*"
@@ -102,20 +93,21 @@ rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 #    /lib/modules/6.18.16/kernel/net/netfilter/nf_tables.ko
 #
 #    ####
-#    HO, если установлено:
+#    HO, если установлены следующие параметры конфигурации ядра, то
+#    ip_tables.ko собирается:
 #       CONFIG_NETFILTER_XTABLES_LEGACY=y
 #       CONFIG_IP_NF_IPTABLES_LEGACY=m
-#    то ip_tables.ko собирается:
+#
 #       $ find /lib/modules/ -type f -name "*table*"
-#           /lib/modules/6.18.16/kernel/net/netfilter/x_tables.ko
-#           /lib/modules/6.18.16/kernel/net/netfilter/nf_tables.ko
-#           /lib/modules/6.18.16/kernel/net/ipv4/netfilter/ip_tables.ko
-#           /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_mangle.ko
-#           /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_filter.ko
-#           /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_nat.ko
+#       /lib/modules/6.18.16/kernel/net/netfilter/x_tables.ko
+#       /lib/modules/6.18.16/kernel/net/netfilter/nf_tables.ko
+#       /lib/modules/6.18.16/kernel/net/ipv4/netfilter/ip_tables.ko
+#       /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_mangle.ko
+#       /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_filter.ko
+#       /lib/modules/6.18.16/kernel/net/ipv4/netfilter/iptable_nat.ko
 #    Если разработчики ядра не просто объявили ip_tables.ko как Deprecated, но
 #    и спрятали в конфиге, то скоро этот код будет вообще вырезан, поэтому
-#    лучше сразу перейдем на NFT
+#    лучше сразу перейдем на NFT.
 #    ####
 #
 # По умолчанию сборка iptables создает ссылки на legacy:
@@ -134,7 +126,7 @@ if [ -e "${TMP_DIR}/usr/sbin/ip6tables" ]; then
     ln -sf xtables-nft-multi "${TMP_DIR}/usr/sbin/ip6tables-restore"
 fi
 
-# Скрипт /etc/rc.d/init.d/iptables для запуска iptables при старте системы
+# Скрипт /etc/rc.d/init.d/iptables для запуска iptables при старте системы.
 (
     cd "${ROOT}/blfs-bootscripts" || exit 1
     make install-iptables DESTDIR="${TMP_DIR}"

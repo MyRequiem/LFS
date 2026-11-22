@@ -38,22 +38,21 @@ find -L . \
 TMP_DIR="${BUILD_DIR}/package-${PRGNAME}-${VERSION}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим сборку с gcc-15
+# Исправим сборку с gcc >=15
 sed -i '/typedef int bool;/d' src/encoder.h || exit 1
 
 cd build/generic || exit 1
 
-# исправим ошибку, возникающую при запуске 'make install' при
-# переустановке/обновлении пакета
+# Исправим ошибку, возникающую при запуске 'make install' при
+# переустановке/обновлении пакета.
 sed -i 's/^LN_S=@LN_S@/& -f -v/' platform.inc.in || exit 1
 
 ./configure \
     --prefix=/usr || exit 1
 
 make || exit 1
-# пакет не имеет набора тестов
-
-# отключаем установку статической библиотеки
+# Пакет не имеет набора тестов.
+# Отключаем установку статической библиотеки.
 sed -i '/libdir.*STATIC_LIB/ s/^/#/' Makefile || exit 1
 make install DESTDIR="${TMP_DIR}"
 

@@ -20,7 +20,7 @@ PRGNAME="virt-manager"
 #              python3-requests
 #              python3-build
 #              python3-urlgrabber
-#              gtksourceview4       (runtime)
+#              gtksourceview4
 # Recommended: no
 # Optional:    no
 
@@ -38,16 +38,16 @@ mkdir -pv "${TMP_DIR}/usr/share/"{icons/hicolor,glib-2.0/schemas}
 # Патч устраняет несовместимость с libxml2 >= 2.15.x и готовит пакет к
 # libxml2-2.16
 #
-#    - вырезает использование устаревших Python-биндингов libxml2, что
-#       избавляет от AttributeError на методах keepBlanksDefault, parseDoc, ...
-#    - переводит внутренний движок парсинга (virtinst/xmlapi.py) на библиотеку
-#       lxml
-#    - сохраняет многопоточную безопасность при работе с libvirt-python API
+#    - Вырезает использование устаревших Python-биндингов libxml2, что
+#      избавляет от AttributeError на методах keepBlanksDefault, parseDoc, ...
+#    - Переводит внутренний движок парсинга (virtinst/xmlapi.py) на библиотеку
+#      lxml
+#    - Сохраняет многопоточную безопасность при работе с libvirt-python API
 #
 # Требования (Runtime):
-#    - необходим установленный пакет python-lxml в системе
+#    - Необходим установленный пакет python3-lxml в системе.
 # Преимущества:
-#    - позволяет собирать сам системный libxml2 с флагом -D python=disabled
+#    - Позволяет собирать сам системный libxml2 с флагом -D python=disabled
 # ==============================================================================
 patch --verbose -Np1 -i "${SOURCES}/${PRGNAME}-libxml2-compat.patch" || exit 1
 
@@ -73,7 +73,7 @@ source "${ROOT}/update-info-db.sh" || exit 1
 source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vpR "${TMP_DIR}"/* /
 
-# обновим кэш иконок приложений и схемы для Glib
+# Обновим кэш иконок приложений и схемы для Glib
 gtk-update-icon-cache -q -t /usr/share/icons/hicolor
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
@@ -90,7 +90,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # console to the guest domain.
 #
 # Home page: https://${PRGNAME}.org/
-# Download:  https://releases.pagure.org/${PRGNAME}/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://github.com/${PRGNAME}/${PRGNAME}/releases/download/v${VERSION}/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 

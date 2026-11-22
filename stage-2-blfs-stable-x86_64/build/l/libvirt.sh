@@ -26,8 +26,8 @@ mkdir -pv "${TMP_DIR}/etc/rc.d"
 sed "s|prefix / 'lib' / 'sysctl.d'|sysconfdir / 'sysctl.d'|" \
     -i src/remote/meson.build || exit 1
 
-# разрешим любому пользователю состоящему в группе 'kvm' подключаться к
-# System Libvirtd без ввода пароля
+# Разрешим любому пользователю состоящему в группе 'kvm' подключаться к System
+# Libvirtd без ввода пароля.
 patch --verbose -p1 < "${SOURCES}/use-virtgroup-in-polkit-rules.diff" || exit 1
 
 VIRTGROUP="kvm"
@@ -63,8 +63,8 @@ rm -rf "${TMP_DIR}/etc/logrotate.d"
 rm -rf "${TMP_DIR}/run"
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-# используем группу kvm, исправляем права авторизации и учитываем тот факт, что
-# по умолчанию у нас нет сертификатов
+# Используем группу kvm, исправляем права авторизации и учитываем тот факт, что
+# по умолчанию у нас нет сертификатов.
 sed \
     -e "s|^\#unix_sock_group\ =\ \"libvirt\"|unix_sock_group = \"$VIRTGROUP\"|" \
     -e "s|^\#unix_sock_rw_perms\ =\ \"0770\"|unix_sock_rw_perms = \"0770\"|" \
@@ -73,7 +73,7 @@ sed \
     -e "s|^\#listen_tls|listen_tls|" \
     -i "${TMP_DIR}/etc/libvirt/libvirtd.conf" || exit 1
 
-# раскомментируем строку
+# Раскомментируем строку
 #    #group = "root" или #group = "kvm"
 # в group = "kvm"
 sed \
@@ -81,7 +81,7 @@ sed \
     -e "s|^\#group\ =\ \"$VIRTGROUP\"|group = \"$VIRTGROUP\"|" \
     -i "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
 
-# отключим поддержку seccomp, иначе виртуальные машины не запустятся с новой
+# Отключим поддержку seccomp, иначе виртуальные машины не запустятся с новой
 # комбинацией libvirt/qemu combo 20220212 bkw
 sed -i  "s|^\#seccomp_sandbox = 1|seccomp_sandbox = 0|" \
         "${TMP_DIR}/etc/libvirt/qemu.conf" || exit 1
@@ -103,7 +103,7 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 # recent versions of Linux (and other OSes)
 #
 # Home page: https://${PRGNAME}.org
-# Download:  https://${PRGNAME}.org/sources/${PRGNAME}-${VERSION}.tar.xz
+# Download:  https://source.ipfire.org/source-2.x/${PRGNAME}-${VERSION}.tar.xz
 #
 EOF
 
