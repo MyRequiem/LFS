@@ -6,16 +6,20 @@ PRGNAME="intltool"
 # Набор инструментов, помогающий разработчикам переводить описания программ и
 # конфигурационные файлы на разные языки.
 
-ROOT="/"
-source "${ROOT}check_environment.sh"                  || exit 1
-source "${ROOT}unpack_source_archive.sh" "${PRGNAME}" || exit 1
+# Required:    perl-xml-parser
+# Recommended: no
+# Optional:    no
+
+ROOT="/root/src/lfs"
+source "${ROOT}/check_environment.sh"                  || exit 1
+source "${ROOT}/unpack_source_archive.sh" "${PRGNAME}" || exit 1
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
 rm -rf "${TMP_DIR}"
 mkdir -pv "${TMP_DIR}"
 
-# исправим предупреждение, вызванное perl-5.22 и более поздними версиями
-# '\${' --> '\$\{'
+# Исправим предупреждение, вызванное perl-5.22 и более поздними версиями.
+#    '\${' --> '\$\{'
 sed -i 's:\\\${:\\\$\\{:' intltool-update.in || exit 1
 
 ./configure \
@@ -27,9 +31,9 @@ make install DESTDIR="${TMP_DIR}"
 
 rm -rf "${TMP_DIR}/usr/share"/{doc,gtk-doc,help,licenses}
 
-source "${ROOT}stripping.sh"      || exit 1
-source "${ROOT}update-info-db.sh" || exit 1
-source "${ROOT}clean-locales.sh"  || exit 1
+source "${ROOT}/stripping.sh"      || exit 1
+source "${ROOT}/update-info-db.sh" || exit 1
+source "${ROOT}/clean-locales.sh"  || exit 1
 /bin/cp -vR "${TMP_DIR}"/* /
 
 cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
@@ -43,5 +47,5 @@ cat << EOF > "/var/log/packages/${PRGNAME}-${VERSION}"
 #
 EOF
 
-source "${ROOT}write_to_var_log_packages.sh" \
+source "${ROOT}/write_to_var_log_packages.sh" \
     "${TMP_DIR}" "${PRGNAME}-${VERSION}"
